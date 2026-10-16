@@ -1,0 +1,470 @@
+{
+  "boss-fire-attack1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-6.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-attack1.wav",
+    "duration": 0.38,
+    "rms": 0.15,
+    "peak": 0.4717,
+    "sha256": "0a6706ad292adf8d44abef48867587de344bd9eb68e6b98146100328be111daf"
+  },
+  "boss-fire-attack2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-7.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-attack2.wav",
+    "duration": 0.405,
+    "rms": 0.15,
+    "peak": 0.5149,
+    "sha256": "bd1098ee470db91767507919b2c62e60c81903659d331a3f6da6b5800d445e71"
+  },
+  "boss-fire-attack3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-4.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-attack3.wav",
+    "duration": 0.43,
+    "rms": 0.15,
+    "peak": 0.5341,
+    "sha256": "dc8bb78b0348b0a66dad790b837f0becdd77f5fb0e0acf0e1e1b2cd43d7b075f"
+  },
+  "boss-fire-hurt1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-7.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-hurt1.wav",
+    "duration": 0.25,
+    "rms": 0.15,
+    "peak": 0.469,
+    "sha256": "f52316d65bdf4ec955c971fed54b543747aef4bf7dc185a2fad2a8d170d41083"
+  },
+  "boss-fire-hurt2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-4.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-hurt2.wav",
+    "duration": 0.275,
+    "rms": 0.15,
+    "peak": 0.5088,
+    "sha256": "ba377230a142aece487ed16781cc87a87339591b73748ae4a523457be0abf2b5"
+  },
+  "boss-fire-hurt3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-6.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-hurt3.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.4481,
+    "sha256": "14443c2fcdfcde9bb5faf1798bd3903cb157742e01e8ed21d3ccec851b7cde78"
+  },
+  "boss-fire-cast": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-6.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-cast.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.4846,
+    "sha256": "e3a0e0bd7d2fe7c728c859c88c528a85f91f98b758ed5162e9ebd088e5e97c15"
+  },
+  "boss-fire-release": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-6.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-release.wav",
+    "duration": 0.65,
+    "rms": 0.15,
+    "peak": 0.4785,
+    "sha256": "ba3182080f091cc3accdf9cffda8f99b68be53046a129f258e41ad466fade25f"
+  },
+  "boss-fire-death": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-6.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.84,
+    "file": "reimagined/boss-fire-death.wav",
+    "duration": 0.95,
+    "rms": 0.15,
+    "peak": 0.5248,
+    "sha256": "b00153c449b8ccdd2da5f67f2849b52c7ddab3c0dc8aa37b5cac98ea5d7bebb9"
+  },
+  "boss-earth-attack1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-1.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-attack1.wav",
+    "duration": 0.38,
+    "rms": 0.15,
+    "peak": 0.528,
+    "sha256": "585bbe66c6e210275346786575a0aedd2e3e9fec029a57e0b9857663a4ec81cb"
+  },
+  "boss-earth-attack2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-5.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-attack2.wav",
+    "duration": 0.405,
+    "rms": 0.15,
+    "peak": 0.6435,
+    "sha256": "6a2b3a2d93068dd0f1040c5e1234a3af22d57cf667c17ace86b8da64eaa7a698"
+  },
+  "boss-earth-attack3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-2.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-attack3.wav",
+    "duration": 0.43,
+    "rms": 0.15,
+    "peak": 0.6013,
+    "sha256": "2f8d133402fe93475a48fa366e181c432d8434ce2e644f639eec00859b762140"
+  },
+  "boss-earth-hurt1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-5.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-hurt1.wav",
+    "duration": 0.25,
+    "rms": 0.15,
+    "peak": 0.6079,
+    "sha256": "43b634674a65bf1c4e2719878ab44521fc99d7cce9e5fdc858c29c22cbb2f081"
+  },
+  "boss-earth-hurt2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-2.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-hurt2.wav",
+    "duration": 0.275,
+    "rms": 0.15,
+    "peak": 0.5457,
+    "sha256": "b3a60f1dedf8625208eda3a82a38058678b0ee92a0697a6be022069c2a0b5be0"
+  },
+  "boss-earth-hurt3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-1.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-hurt3.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.567,
+    "sha256": "089c39961aa742c56ee25d81fd1ff962dfad9d4cc037c4e746636f55923bf6ec"
+  },
+  "boss-earth-cast": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-1.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-cast.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.5584,
+    "sha256": "2b0a090ea5b661dcc7244bdd40bbe76a60db724962b2c6c400befcd415a1d6d0"
+  },
+  "boss-earth-release": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-1.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-release.wav",
+    "duration": 0.65,
+    "rms": 0.15,
+    "peak": 0.5666,
+    "sha256": "6a15f04b99853f5621cfccdd4917491b430ff77b5c3a67c5a76b86af419ab738"
+  },
+  "boss-earth-death": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-1.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.67,
+    "file": "reimagined/boss-earth-death.wav",
+    "duration": 0.95,
+    "rms": 0.15,
+    "peak": 0.6159,
+    "sha256": "a4cac73911905b6d29f026418afdda8cfe7e2f6b4b884d1b12241bb1623496b8"
+  },
+  "boss-ice-attack1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-8.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-attack1.wav",
+    "duration": 0.38,
+    "rms": 0.15,
+    "peak": 0.5416,
+    "sha256": "59eee0a2d29c8ece63bace16ca2da1bb3065e3da84e99d8aff5778a21cf3aaa4"
+  },
+  "boss-ice-attack2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-9.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-attack2.wav",
+    "duration": 0.405,
+    "rms": 0.15,
+    "peak": 0.5007,
+    "sha256": "3c97058b9eeffb5ff1523f465433239c439eead43f9a00d2053a173ce171e3db"
+  },
+  "boss-ice-attack3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-3.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-attack3.wav",
+    "duration": 0.43,
+    "rms": 0.15,
+    "peak": 0.6576,
+    "sha256": "e0acb01c8403cf9b09b5050a99478b70679942fe18872baf2cfa9cf41f7dba3a"
+  },
+  "boss-ice-hurt1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-9.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-hurt1.wav",
+    "duration": 0.25,
+    "rms": 0.15,
+    "peak": 0.4628,
+    "sha256": "89c1cce880f26b455d11c2ef413fbf19da86449b9313c8a8f27f51dc3c4bbccf"
+  },
+  "boss-ice-hurt2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-3.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-hurt2.wav",
+    "duration": 0.275,
+    "rms": 0.15,
+    "peak": 0.6134,
+    "sha256": "9b9bbd8954df42605058e74b72ebe82581e613d74249c270523f0dd97b672465"
+  },
+  "boss-ice-hurt3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-8.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-hurt3.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.5604,
+    "sha256": "68177d983de4d15184fa94840f36d6805bd809b08d91c49f6ae7bf31cd0e4bf3"
+  },
+  "boss-ice-cast": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-8.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-cast.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.5793,
+    "sha256": "80907edfacaddd2a87ac2f5536ff9171d9f78c1c31d2ab8863256458d20bc290"
+  },
+  "boss-ice-release": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-8.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-release.wav",
+    "duration": 0.65,
+    "rms": 0.15,
+    "peak": 0.5787,
+    "sha256": "8bc0783d4b4150620b2e7efbfc4c845fc7b0697e33fa79538725512acdd95e95"
+  },
+  "boss-ice-death": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-8.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 1.08,
+    "file": "reimagined/boss-ice-death.wav",
+    "duration": 0.95,
+    "rms": 0.15,
+    "peak": 0.5826,
+    "sha256": "3b5df2fd882ce5a74333b1a336d243d90d6a8890a18c29530702d816e837cda9"
+  },
+  "boss-lightning-attack1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-10.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-attack1.wav",
+    "duration": 0.38,
+    "rms": 0.15,
+    "peak": 0.5111,
+    "sha256": "705eee04386e94f37293353821341042332a4472fbb4d1353801b8320b970241"
+  },
+  "boss-lightning-attack2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-4.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-attack2.wav",
+    "duration": 0.405,
+    "rms": 0.15,
+    "peak": 0.5371,
+    "sha256": "a119a2b639e8e4f44004157d4fe51f30197370ddfbeed9001a3e4af413121469"
+  },
+  "boss-lightning-attack3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-7.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-attack3.wav",
+    "duration": 0.43,
+    "rms": 0.15,
+    "peak": 0.5404,
+    "sha256": "ba350f3ec98aa5b4edc7e305dfa0dc934ce17762b9b193fb13b107f65303edc5"
+  },
+  "boss-lightning-hurt1": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-4.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-hurt1.wav",
+    "duration": 0.25,
+    "rms": 0.15,
+    "peak": 0.5275,
+    "sha256": "0a719d181033f0d0d14dec723536e1b696ddf2073bbb987c62fcdd823fdc634e"
+  },
+  "boss-lightning-hurt2": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-7.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-hurt2.wav",
+    "duration": 0.275,
+    "rms": 0.15,
+    "peak": 0.5007,
+    "sha256": "a5fd3cb5b50dfbdf4368e57ab220b27531085b0026745c308d801ab5210c4365"
+  },
+  "boss-lightning-hurt3": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-10.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-hurt3.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.4913,
+    "sha256": "a361f920b67f025ee8fd8b5fb4de196d6721ea0916209205da7f687c530b99d8"
+  },
+  "boss-lightning-cast": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-10.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-cast.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.5679,
+    "sha256": "4ff6ffecd3b750fb6f9fd3b717e47cbaef78a2c29e839265f195be47beba9e42"
+  },
+  "boss-lightning-release": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-10.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-release.wav",
+    "duration": 0.65,
+    "rms": 0.15,
+    "peak": 0.5656,
+    "sha256": "06fb7fab91e033a680df2e3596a07acec02582dcddacdff1ab2eaa03954d7022"
+  },
+  "boss-lightning-death": {
+    "category": "creature-performance",
+    "sources": [
+      "sources\\creatures\\pack\\monster_sfx_pack\\monster-10.wav"
+    ],
+    "license": "CC0 / Ogrebane",
+    "pitch": 0.92,
+    "file": "reimagined/boss-lightning-death.wav",
+    "duration": 0.95,
+    "rms": 0.15,
+    "peak": 0.6181,
+    "sha256": "b551eba3290f37755afc768089b1f43926b1461b9aae803e81b3645d234038d8"
+  }
+}

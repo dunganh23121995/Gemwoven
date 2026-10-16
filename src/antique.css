@@ -1,0 +1,46 @@
+/* A carved spellbook: aged brass, walnut, oxblood leather and parchment. */
+:root{
+  --gold:#e5c17c;--ink:#f1e3c5;--muted:#bda988;--line:#876338;
+  --antique-vine:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c29956' stroke-opacity='.16' stroke-width='.8'%3E%3Cpath d='M60 0C24 25 96 35 60 60S24 95 60 120M0 60C25 24 35 96 60 60S95 24 120 60M60 23C39 39 39 41 60 60C81 41 81 39 60 23ZM23 60C39 39 41 39 60 60C41 81 39 81 23 60ZM60 97C81 81 81 79 60 60C39 79 39 81 60 97ZM97 60C81 81 79 81 60 60C79 39 81 39 97 60Z'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+body{
+  background-image:radial-gradient(ellipse at 50% 12%,#6c4e2938,transparent 55%),var(--antique-vine),linear-gradient(110deg,#120f10,#241a16 48%,#120f10);
+  background-size:auto,120px 120px,auto;background-attachment:fixed;
+}
+body::before{background-image:repeating-linear-gradient(95deg,#e8c98a03 0 1px,transparent 1px 5px);background-size:auto;opacity:1}
+.antique-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.app{padding-top:10px}
+.app-header{position:relative;height:40px;margin-bottom:8px;padding:0 4px 5px}
+.brand b{color:#f2dca8;text-shadow:0 2px 1px #000,0 0 18px #d7a75720;font-variant:small-caps;letter-spacing:.3px;font-size:24px}
+.brand-dot{color:#bb8444}.brand-mark{border-radius:7px;background:radial-gradient(ellipse at 45% 25%,#637357,#263c32 70%);border:1px solid #d2ac66;box-shadow:inset 0 0 0 2px #1d251d,inset 0 0 0 3px #b391514d,0 2px 5px #0007;transform:rotate(-7deg);color:#f7dba0}
+.app-header>.antique-flourish{position:absolute;bottom:-7px;left:32%;width:36%;height:18px;opacity:.85;pointer-events:none}
+.header-tools{gap:5px}.icon-button{background:linear-gradient(145deg,#52402c,#241e1a 80%);border:1px solid #a27c47;border-radius:7px;color:#e5c996;box-shadow:inset 0 0 0 2px #1c1816,inset 0 0 0 3px #7c5e354d,0 2px 4px #0006}
+.icon-button:hover{background:linear-gradient(145deg,#6b5233,#34251d);border-color:#e2bd79;color:#fff0c8}
+.icon-button[aria-pressed=true]{background:linear-gradient(145deg,#7e6032,#423118);color:#fff0b8;border-color:#efd190;box-shadow:inset 0 0 0 2px #44311d,0 0 9px #e0b95b35}
+.battle-card,.puzzle-card{position:relative;border:1px solid #b58b4e;border-radius:10px;background-image:linear-gradient(135deg,#65502a16,transparent 40%),var(--antique-vine),linear-gradient(150deg,#32271f,#211e1c 55%,#27241e);background-size:auto,150px 150px,auto;box-shadow:0 4px 0 #0c0b0a,0 7px 24px #0008,inset 0 0 0 3px #2b2119,inset 0 0 0 4px #8f6b3c6e}
+.battle-card::before,.puzzle-card::before{content:"";position:absolute;inset:4px;border:1px solid #a8804538;border-radius:6px;pointer-events:none;z-index:10}
+.antique-trim{position:absolute;inset:0;z-index:13;pointer-events:none;overflow:hidden;border-radius:inherit}
+.antique-corner{position:absolute;width:43px;height:43px;filter:drop-shadow(0 1px 1px #000b)}
+.antique-corner.tl{left:0;top:0}.antique-corner.tr{right:0;top:0;transform:scaleX(-1)}.antique-corner.bl{left:0;bottom:0;transform:scaleY(-1)}.antique-corner.br{right:0;bottom:0;transform:scale(-1)}
+.section-heading{background:linear-gradient(90deg,#a57e3c10,#d9b77615,#a57e3c10);color:#f0d6a0;border-bottom:1px solid #b18a4930;margin:0 7px 4px;padding:6px 23px 5px;font-family:Cambria,Georgia,serif;letter-spacing:1.2px}
+.chapter-label{color:#c5aa7b}.live-dot{background:#ead394;box-shadow:0 0 0 2px #e4bf7020,0 0 8px #eac76f60}
+.vital-name strong{font-family:Cambria,Georgia,serif;color:#f4deb6;letter-spacing:.3px}.health-label{color:#cdbd9d}.health-track{border-color:#382516;background:#151916;box-shadow:0 0 0 1px #ac874e75,inset 0 2px 4px #0008;border-radius:3px}.health-track i{border-radius:2px}.versus{color:#c4a46a}.element-pill{border-radius:3px;background:#211c19}
+.enemy-intent{border-color:#97744670;border-radius:5px;background:linear-gradient(120deg,#493329,#302720);box-shadow:inset 0 0 0 2px #c2994a0b}.intent-icon{background:#231c18;border-color:#a57a4266;color:#e8c99b;border-radius:4px}.enemy-intent small{color:#c5aa83}.enemy-intent strong{color:#f0dbb9}
+.ultimate{border-radius:5px;border-color:#a3815970;background:linear-gradient(125deg,#403246,#24202c);box-shadow:inset 0 0 0 2px #b28b5015}.ultimate.ready{background:linear-gradient(125deg,#76502c,#523329 60%,#53422d);border-color:#e9c77e;box-shadow:inset 0 0 0 2px #38261b,0 0 15px #dfaf5525}.ultimate-copy strong{font-family:Cambria,Georgia,serif;color:#f6dfb3}.ultimate-icon{color:#e0bc80}.energy-number{color:#ead29b}
+.battle-message{color:#cfbd9c;font-family:Cambria,Georgia,serif;letter-spacing:.1px}
+.puzzle-card{padding-top:10px}
+.board-heading{position:relative;min-height:32px;padding:3px 8px 5px;margin:0 -2px 3px;background:linear-gradient(110deg,#b68f50,#ead7aa 20%,#dfc695 75%,#b88d4b);border:1px solid #8c6537;border-radius:3px;box-shadow:inset 0 0 0 2px #f6e8bd4d,inset 0 0 10px #6b452035,0 2px 4px #0004}
+.board-heading h2{color:#3c2a1b;font-family:Cambria,Georgia,serif;font-size:19px;letter-spacing:.2px;text-shadow:0 1px #fff0c1a6}.score span{color:#654b2a}.score strong{color:#51361d;text-shadow:0 1px #fff3ce;font-family:Cambria,Georgia,serif}
+.board-heading>.antique-flourish{position:absolute;bottom:-3px;left:25%;width:50%;height:16px;filter:drop-shadow(0 1px #3b2c1d);pointer-events:none}
+.board-toolbar{color:#d1bf9c}.turn-chip{border-radius:4px;border-color:#b0935855;background:#303f2d;color:#e5e2b6;box-shadow:inset 0 0 0 1px #171d15}.turn-chip.busy{background:#403044;color:#ecd8ff}.turn-chip.enemy{background:#512e2a;color:#f2c39e}
+#comboLabel{color:#ddc89e}.hint-button{color:#efd19a}
+.board-frame{border-radius:9px;border-color:#dbb676;background:linear-gradient(135deg,#eed391,#876130 21%,#bf9754 48%,#60421f 73%,#dfbd77);box-shadow:0 3px 0 #100d0a,0 5px 15px #0008,inset 0 0 0 1px #fbe1a45c,inset 0 0 0 3px #3e2f1d}
+.board-frame::before{content:"";position:absolute;inset:2px;border:1px solid #f9e1a345;border-radius:6px;pointer-events:none;z-index:12}
+.board,.board-effects{border-radius:5px}.board{box-shadow:inset 0 0 15px #0008,0 0 0 1px #45381d}
+.board-frame.enemy-turn{border-color:#dfa478;box-shadow:0 3px 0 #180d09,0 0 0 2px #b3563d45,0 5px 15px #0007}
+.puzzle-card .antique-corner{width:32px;height:32px}
+.tile-legend{color:#e5d4b4}.legend-item{color:#e5d4b4}.legend-item small{color:#bda984}
+dialog{border-radius:12px;border-color:#c29b5d;background-image:radial-gradient(ellipse at 50% 0,#97733d22,transparent 65%),var(--antique-vine),linear-gradient(140deg,#30261f,#1d1c19);background-size:auto,150px 150px,auto;box-shadow:0 20px 80px #000c,inset 0 0 0 4px #292018,inset 0 0 0 5px #9c784738;color:#f1dfbc}
+dialog .antique-corner{width:55px;height:55px}.modal-eyebrow{color:#d7b579}dialog h2{color:#f2dca8}.dialog-intro,.dialog-footnote,.selection-note,.help-dialog p,.result-dialog p{color:#c8b596}.class-card{border-radius:7px;border-color:#9b784a70;background:radial-gradient(ellipse at 50% 25%,#c4ab6030,transparent 65%),linear-gradient(145deg,#3d3529,#27221e);box-shadow:inset 0 0 0 3px #c49f5010}.class-card.chosen{border-color:#f0d291;background:radial-gradient(ellipse at 50% 25%,#d6b16a36,transparent 65%),linear-gradient(145deg,#51432d,#30291f);box-shadow:inset 0 0 0 2px #efd39935,0 0 15px #d6a65125}.class-card .class-subtitle,.class-card .class-trait{color:#c6b998}.class-card strong{color:#f3dca9}.primary-button{color:#332414;border-radius:5px;background:linear-gradient(#edd399,#c49b58);border-color:#f0d9a2;box-shadow:0 3px 0 #65441f,inset 0 0 0 2px #704a2526}.dialog-close{border-color:#a7834c;background:#423122;color:#edd5a6;border-radius:5px;z-index:15}.help-legend,.element-cycle,.special-gallery{border-color:#96734566;background:#25231c}.special-gallery-head{background:#473724;color:#eed299}
+@media(max-width:370px){.brand b{font-size:22px}.antique-corner{width:36px;height:36px}.board-heading h2{font-size:16px}.board-heading{padding-left:7px;padding-right:7px}.icon-button{border-radius:6px}}
+@media(min-width:600px){.app{border-color:#aa854545;border-radius:15px;background:linear-gradient(145deg,#5d47202b,#181410bb);box-shadow:0 24px 80px #0008,inset 0 0 0 3px #b38f3d0b}}

@@ -1,0 +1,182 @@
+{
+  "fire-charge": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/fire-charge.wav",
+    "duration": 1.1,
+    "rms": 0.12,
+    "peak": 0.4234,
+    "sha256": "cd6d4da1916d16b35eeeea0230c9382d6629ba8e028d15a6aa3f8bfcbaedf368"
+  },
+  "fire-launch": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/fire-launch.wav",
+    "duration": 0.36,
+    "rms": 0.12,
+    "peak": 0.4938,
+    "sha256": "a054eb5995826b7251d6a29662530f12989c9fa7a43a0388d1a373f82e7d55c6"
+  },
+  "fire-impact": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/fire-impact.wav",
+    "duration": 0.44,
+    "rms": 0.12,
+    "peak": 0.4941,
+    "sha256": "a18e88e804fd70cdb9822cefcd71ee5e580dcb32615e139f5a0879beddfab6b8"
+  },
+  "fire-finish": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/fire-finish.wav",
+    "duration": 0.68,
+    "rms": 0.12,
+    "peak": 0.4903,
+    "sha256": "e8dd719227bea8d9f5c4394d0ff5c8fad34d7590b0b3669121009654273728e7"
+  },
+  "fire-receive": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/fire-receive.wav",
+    "duration": 0.55,
+    "rms": 0.12,
+    "peak": 0.4665,
+    "sha256": "994a72a28d32330ce950024359ddc1b4fbdfc6c63b6986fb68488309bb0e370a"
+  },
+  "earth-charge": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/earth-charge.wav",
+    "duration": 1.1,
+    "rms": 0.12,
+    "peak": 0.3945,
+    "sha256": "7d56d469592793d4254a7399f9c11121ba55c36b73fb1829e9a5c135241eef32"
+  },
+  "earth-launch": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/earth-launch.wav",
+    "duration": 0.36,
+    "rms": 0.12,
+    "peak": 0.4294,
+    "sha256": "f270964364a422204f5ef23ef9efc21b948174e095e52d5bc9ca7e020214289e"
+  },
+  "earth-impact": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/earth-impact.wav",
+    "duration": 0.44,
+    "rms": 0.12,
+    "peak": 0.4724,
+    "sha256": "4d1edc5b2cb83c1da0b7aca7952d6a11670d5a183a73efeea871562b85fb1886"
+  },
+  "earth-finish": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/earth-finish.wav",
+    "duration": 0.68,
+    "rms": 0.12,
+    "peak": 0.4655,
+    "sha256": "55830323363dcceb301a441f90c0ec609bd13ac03fd624136a0e345ea1d3db01"
+  },
+  "earth-receive": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/earth-receive.wav",
+    "duration": 0.55,
+    "rms": 0.12,
+    "peak": 0.4372,
+    "sha256": "1104e20e2d4132f7b5170d68e6e607777ec2a7246c7b49214184d01ad568619b"
+  },
+  "ice-charge": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/ice-charge.wav",
+    "duration": 1.1,
+    "rms": 0.12,
+    "peak": 0.357,
+    "sha256": "4d639a8b30ce4885896bf122f44b9c3d72a424acfceb023468e380c3386b1830"
+  },
+  "ice-launch": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/ice-launch.wav",
+    "duration": 0.36,
+    "rms": 0.12,
+    "peak": 0.4472,
+    "sha256": "a8ee37e3dd970af9e36105a0fc6a09a828d2f42c009ed388e23857f19116b78b"
+  },
+  "ice-impact": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/ice-impact.wav",
+    "duration": 0.44,
+    "rms": 0.12,
+    "peak": 0.4583,
+    "sha256": "fc3ee27638450ea5c1c77dab704e399a9a98c54e1bbe55d2d1f8d7ed6204be24"
+  },
+  "ice-finish": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/ice-finish.wav",
+    "duration": 0.68,
+    "rms": 0.12,
+    "peak": 0.4558,
+    "sha256": "bc4660d1b7d9972ade8e45e445759a0111979bde1aaf58e4b92e0eeadf3b10a2"
+  },
+  "ice-receive": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/ice-receive.wav",
+    "duration": 0.55,
+    "rms": 0.12,
+    "peak": 0.3846,
+    "sha256": "180671106c550ef24255a5a72b9fdbfd826b38acfa7a814548f2b41fcc555966"
+  },
+  "lightning-charge": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/lightning-charge.wav",
+    "duration": 1.1,
+    "rms": 0.12,
+    "peak": 0.477,
+    "sha256": "387ea589ed019cb9a8dfff3a04d8bf51fe5ec3c1fa55ce15064ceeee4d1d71f7"
+  },
+  "lightning-launch": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/lightning-launch.wav",
+    "duration": 0.36,
+    "rms": 0.12,
+    "peak": 0.5114,
+    "sha256": "a4be7ef31bab7b40d60311672bdb5e0784584a0c6cd7809604492a27342417be"
+  },
+  "lightning-impact": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/lightning-impact.wav",
+    "duration": 0.44,
+    "rms": 0.12,
+    "peak": 0.5053,
+    "sha256": "f0c81af9e62a6347eac15c3a746e896e3190dee5356a00ad19d5cfb263a181ee"
+  },
+  "lightning-finish": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/lightning-finish.wav",
+    "duration": 0.68,
+    "rms": 0.12,
+    "peak": 0.5047,
+    "sha256": "c2301d8e2a89b5ae6b429779382c03feabe6ffce8548201e3ddaf0ab28e7ac8e"
+  },
+  "lightning-receive": {
+    "category": "original-elemental-sfx",
+    "license": "Project original",
+    "file": "reimagined/lightning-receive.wav",
+    "duration": 0.55,
+    "rms": 0.12,
+    "peak": 0.4703,
+    "sha256": "8851d31c944cb738ccc85f4e1b36fada2dad3005adbe613101c0ddde1af37d5c"
+  }
+}

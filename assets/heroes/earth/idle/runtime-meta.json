@@ -1,0 +1,51 @@
+{
+  "hero": "earth",
+  "action": "idle",
+  "accepted": true,
+  "atlas": "idle.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "frameOrder": "row-major",
+  "loop": true,
+  "frameDuration": 230,
+  "origin": [
+    128.0,
+    236
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png",
+    "idle/frame-02.png",
+    "idle/frame-03.png"
+  ],
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "1c80ddb321fa47f9efdb3d6877e17a0c86f8c84cb1b450c0a825befca0c0336a",
+    "e40796260e76cf6dd2371978effddaf33ccb831077b03932565ee5a432629e75",
+    "5a16cdd6ed3c3d9fa7639c1056a9c0dccaad7e9afb2b63a917321aa505fffdb7",
+    "a86380919a44c848fa195adc2cb2d28203bf587d088e1478e9cf18b20542b8ac"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "source": "assets/raw/earth-idle.png",
+  "sourceSha256": "3c02d7a37be68be08bc6a844f379991c393f5e16f06a366cda2bb09b762c5163",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5057344156612094,
+    "output_subject_height_mean": 159.25,
+    "body_scale_cv": 0.010317372499793297,
+    "anchor_x_std": 0.0009765625,
+    "anchor_y_std": 0.0009765625,
+    "anchor_y_mean": 0.9189453125
+  },
+  "originalAnchorYStd": 0.021966042297989333,
+  "recoveredGridCrossings": [],
+  "reviewedFootRootFrames": []
+}

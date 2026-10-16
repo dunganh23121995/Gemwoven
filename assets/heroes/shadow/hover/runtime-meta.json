@@ -1,0 +1,56 @@
+{
+  "hero": "shadow",
+  "action": "hover",
+  "accepted": true,
+  "atlas": "hover.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128.0,
+    241
+  ],
+  "frameFiles": [
+    "hover/frame-00.png",
+    "hover/frame-01.png",
+    "hover/frame-02.png",
+    "hover/frame-03.png",
+    "hover/frame-04.png",
+    "hover/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "22c7abfc62a4b6fad6f97e7a00e19146b3d1b4d9dcb4b5e476a20c929a5a173f",
+    "3b244189915ddb4dcca56b8743993bd85cca66e99ac94541f497d921bd76319f",
+    "9150dc992d9aa7c0f022a003f962f5e888db43b7f74d661abfcabaa4557f7435",
+    "569b69fe5f0d103916e19d232eb894614606ff3d7c37a9de8ab730aabda8207f",
+    "a0ee4d0937981c19566977e355e867ff995801548ca297a889a9d17ea8bada5f",
+    "22f73a5641767fd9901f034b40cbf35c5d0d5bde25a5bf7874dcde5128176223"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/shadow-hover.png",
+  "sourceSha256": "7db0f11c3db9f73cfe526e54c6539036cd6eaee4291f9c8bcb757d74c3710557",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4758197210427604,
+    "output_subject_height_mean": 194.0,
+    "body_scale_cv": 0.002158346740742278,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.0014917238590351043,
+    "anchor_y_mean": 0.9794921875,
+    "profile_body_scale_drift": 0.02135387174839065
+  },
+  "originalAnchorYStd": 0.00406575390520729,
+  "recoveredGridCrossings": []
+}

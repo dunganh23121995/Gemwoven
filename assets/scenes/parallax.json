@@ -1,0 +1,136 @@
+{
+  "visual_model": "parallax_layers",
+  "world_width_viewports": 2.5,
+  "actors_separate": true,
+  "collision": "none; scripted battle lane",
+  "scenes": {
+    "fire": [
+      {
+        "layer": "far",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.18,
+        "file": "fire-far.webp",
+        "alpha": false
+      },
+      {
+        "layer": "mid",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.52,
+        "file": "fire-mid.webp",
+        "alpha": true
+      },
+      {
+        "layer": "near",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 1,
+        "file": "fire-near.webp",
+        "alpha": true
+      }
+    ],
+    "earth": [
+      {
+        "layer": "far",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.18,
+        "file": "earth-far.webp",
+        "alpha": false
+      },
+      {
+        "layer": "mid",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.52,
+        "file": "earth-mid.webp",
+        "alpha": true
+      },
+      {
+        "layer": "near",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 1,
+        "file": "earth-near.webp",
+        "alpha": true
+      }
+    ],
+    "ice": [
+      {
+        "layer": "far",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.18,
+        "file": "ice-far.webp",
+        "alpha": false
+      },
+      {
+        "layer": "mid",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.52,
+        "file": "ice-mid.webp",
+        "alpha": true
+      },
+      {
+        "layer": "near",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 1,
+        "file": "ice-near.webp",
+        "alpha": true
+      }
+    ],
+    "lightning": [
+      {
+        "layer": "far",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.18,
+        "file": "lightning-far.webp",
+        "alpha": false
+      },
+      {
+        "layer": "mid",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 0.52,
+        "file": "lightning-mid.webp",
+        "alpha": true
+      },
+      {
+        "layer": "near",
+        "size": [
+          1024,
+          512
+        ],
+        "speed": 1,
+        "file": "lightning-near.webp",
+        "alpha": true
+      }
+    ]
+  }
+}

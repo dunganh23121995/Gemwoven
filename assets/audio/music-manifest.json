@@ -1,0 +1,38 @@
+{
+  "fire": {
+    "file": "music/fire.ogg",
+    "title": "Tro ấm",
+    "bpm": 66,
+    "duration": 58.1818125,
+    "sha256": "76d60047a950290379931e47a49ff047de837c023dac6cfff7a7cf3ba3e23d80",
+    "rms": 0.11500000208616257,
+    "original": true
+  },
+  "earth": {
+    "file": "music/earth.ogg",
+    "title": "Rêu và ánh nắng",
+    "bpm": 64,
+    "duration": 60.0,
+    "sha256": "b9245673ea3d2715c9484a25931771d7b020fcaf86d4c7489be3b159d020f8f6",
+    "rms": 0.11500000208616257,
+    "original": true
+  },
+  "ice": {
+    "file": "music/ice.ogg",
+    "title": "Trăng trên tuyết",
+    "bpm": 60,
+    "duration": 64.0,
+    "sha256": "872ff77411af3bdf2efa28c352fa30096708f9904acb4495cecd6858ea30adae",
+    "rms": 0.11500000208616257,
+    "original": true
+  },
+  "lightning": {
+    "file": "music/lightning.ogg",
+    "title": "Gió trên tháp",
+    "bpm": 68,
+    "duration": 56.47059375,
+    "sha256": "5078a61d7cfb21fb344168f4f3fe5e063ec61ba5873e2d9c3ce522edfac51b5a",
+    "rms": 0.11500000208616257,
+    "original": true
+  }
+}

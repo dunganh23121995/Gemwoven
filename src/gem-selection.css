@@ -1,0 +1,70 @@
+/* Compact portrait jewels: cropped finished character art under glass facets. */
+#selectDialog{width:min(420px,calc(100% - 24px));padding:26px 22px 22px;overflow-x:hidden}
+#selectDialog h2{font-size:25px;line-height:1.15;margin:14px 0 12px}
+#selectDialog .dialog-intro{font-size:11px;line-height:1.65;margin-bottom:20px}
+#selectDialog .class-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 12px;padding:10px 5px 8px;isolation:isolate}
+#selectDialog .gem-choice{grid-column:span 2;position:relative;display:block;aspect-ratio:1;width:100%;padding:0;border:0;border-radius:50%;background:none;box-shadow:none;overflow:visible;transition:transform .22s;isolation:isolate;touch-action:manipulation}
+#selectDialog .gem-choice:nth-child(4){grid-column:2/span 2}
+#selectDialog .gem-choice:nth-child(5){grid-column:4/span 2}
+#selectDialog .gem-choice::before{content:'';position:absolute;inset:-5px;border:1px solid #e7c77835;border-radius:50%;box-shadow:0 0 10px #0008;transition:box-shadow .22s,border-color .22s}
+#selectDialog .gem-choice.chosen::before{border-color:#ffe2a1;box-shadow:0 0 0 2px #ca9d4640,0 0 20px var(--gem-color),inset 0 0 13px #f9dc8d60}
+#selectDialog .gem-choice::after{content:none}
+#selectDialog .gem-choice:hover{transform:translateY(-3px)}
+#selectDialog .gem-choice:focus-visible{outline:2px solid #fff1c7;outline-offset:9px}
+.avatar-gem{display:block;position:absolute;inset:0;overflow:hidden;border-radius:50%;border:2px solid #dfc28b;background:radial-gradient(ellipse at 30% 17%,#ffffffa0,transparent 42%),radial-gradient(ellipse at 65% 78%,var(--gem-color),#101b2be8 80%);box-shadow:inset 3px 4px 6px #fff5,inset -5px -7px 9px #030616c9,0 7px 8px #0009}
+.gem-portrait{position:absolute;inset:5%;border-radius:50%;overflow:hidden;filter:drop-shadow(0 3px 3px #0009)}
+.gem-portrait>.sprite-body{position:absolute;width:235%;height:235%;left:50%;top:-55%;transform:translateX(-50%)!important;filter:none}
+.gem-facets{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 22deg at 50% 48%,#d7f8ff35 0deg 40deg,#0000 40deg 90deg,#0006 90deg 140deg,#fff1 140deg 180deg,#0005 180deg 220deg,#fff3 220deg 265deg,#0000 265deg 310deg,#fff5 310deg 360deg);mask:radial-gradient(ellipse,transparent 53%,#000 56%);box-shadow:inset 0 0 0 5px #e6faff18;pointer-events:none}
+.gem-gloss{position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse 45% 15% at 35% 13%,#fff9,#fff2 75%,transparent),radial-gradient(ellipse 26% 9% at 70% 88%,var(--gem-light),transparent);pointer-events:none}
+.gem-gloss::after{content:'';position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 43%,#fff6 49%,#ffffecb0 50%,transparent 57%);animation:jewel-sheen 5s ease-in-out infinite;animation-delay:var(--glint-delay);opacity:0}
+.gem-sparkles{position:absolute;inset:0;pointer-events:none}
+.gem-sparkles i{position:absolute;left:12%;top:15%;width:15px;height:15px;background:#fff9d6;clip-path:polygon(50% 0,60% 39%,100% 50%,61% 60%,50% 100%,39% 60%,0 50%,39% 40%);filter:drop-shadow(0 0 4px #fff);animation:jewel-twinkle 2.8s ease-in-out infinite;animation-delay:var(--glint-delay)}
+.gem-sparkles i:nth-child(2){left:84%;top:64%;width:11px;height:11px;animation-delay:calc(var(--glint-delay) - .9s)}
+.gem-sparkles i:nth-child(3){left:62%;top:5%;width:7px;height:7px;animation-delay:calc(var(--glint-delay) - 1.8s)}
+#selectDialog .selection-note{font-family:Cambria,Georgia,serif;font-size:16px;color:#f3da9c;margin:19px 0 16px;min-height:24px}
+#selectDialog .dialog-footnote{display:none}
+@keyframes jewel-sheen{0%,40%{transform:translateX(-75%);opacity:0}52%{opacity:.55}67%,100%{transform:translateX(75%);opacity:0}}
+@keyframes jewel-twinkle{0%,100%{opacity:.2;transform:scale(.5) rotate(0deg)}45%{opacity:1;transform:scale(1.2) rotate(15deg)}70%{opacity:.35;transform:scale(.65) rotate(0deg)}}
+body.reduced-motion .gem-gloss::after,body.reduced-motion .gem-sparkles i{animation:none}
+@media(prefers-reduced-motion:reduce){.gem-gloss::after,.gem-sparkles i{animation:none}}
+@media(max-width:350px){#selectDialog{padding:20px 16px}#selectDialog .class-grid{gap:16px 11px}#selectDialog h2{font-size:22px}}
+
+/* The jewels open a full portrait and a readable field guide. */
+#selectDialog [hidden]{display:none!important}
+#selectDialog{padding:0;overflow:hidden}
+.hero-selection-scroll{max-height:calc(100dvh - 34px);overflow:auto;overscroll-behavior:contain;padding:26px 22px 22px;scrollbar-width:thin;scrollbar-color:#a88b57 #231f1a}
+#selectDialog.showing-hero .hero-selection-scroll{padding-bottom:0}
+#selectDialog.showing-hero h2{font-size:34px;letter-spacing:.5px;margin:12px 0 3px;color:#ffe2a2}
+#selectDialog.showing-hero .dialog-intro{margin-bottom:0;color:#dbc69d;font-size:12px}
+#selectTitle:focus{outline:none}
+.hero-showcase{position:relative;height:230px;isolation:isolate;margin:0 -8px 8px;overflow:hidden}
+.hero-showcase::before{content:'';position:absolute;inset:14px 8% 0;background:radial-gradient(ellipse at 50% 65%,var(--hero-tint),transparent 68%);opacity:.3;z-index:-1}
+.hero-showcase::after{content:'';position:absolute;bottom:0;left:16%;right:16%;height:35px;border:1px solid #d8b86a70;border-radius:50%;background:radial-gradient(ellipse,#dec07826,transparent 68%);box-shadow:0 0 18px #dec07818,inset 0 0 12px #dec07818;transform:rotateX(30deg);z-index:-1}
+.hero-showcase-art{position:absolute;left:50%;bottom:8px;width:320px;height:320px;transform:translateX(-50%);pointer-events:none}
+.hero-showcase-art>.sprite-body{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 8px 7px #0009)}
+.hero-showcase[data-hero="earth"] .hero-showcase-art{margin-left:30px}
+.hero-showcase[data-hero="shadow"] .hero-showcase-art{margin-left:15px}
+.hero-showcase[data-hero="lightning"] .hero-showcase-art{animation:hero-preview-float 3.6s ease-in-out infinite}
+.hero-detail-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:12px 0;background:#c4a35e38;border:1px solid #c4a35e55;border-radius:9px;overflow:hidden}
+.hero-detail-stats>div{padding:10px 4px;background:#181b1be8}
+.hero-detail-stats dt{font-size:10px;color:#c6b995;line-height:1.5}
+.hero-detail-stats dd{margin:3px 0 0;font:700 20px Cambria,Georgia,serif;color:#ffdf99;font-variant-numeric:tabular-nums}
+.detail-label{font-size:9px;letter-spacing:1.4px;color:#c8a969;font-weight:700}
+.hero-detail-passive{text-align:left;padding:3px 4px 10px}
+.hero-detail-passive p{font-size:12px;line-height:1.65;color:#eee0bf;margin:4px 0 0}
+.hero-detail-skill{text-align:left;padding:14px 15px;border:1px solid #bb98545e;border-radius:9px;background:linear-gradient(130deg,#e1b66412,#0c181b70);box-shadow:inset 3px 0 0 var(--hero-tint)}
+.hero-detail-skill h3{font:700 21px Cambria,Georgia,serif;color:#ffe3a4;margin:6px 0 8px}
+.hero-detail-skill p{color:#e4dac5;font-size:12px;line-height:1.8;margin:0}
+.hero-detail-skill small{display:block;font-size:10px;color:#c1b08d;line-height:1.6;margin-top:10px;padding-top:9px;border-top:1px solid #c4a35e30}
+.hero-detail-note{font-size:10px;color:#b4a993;line-height:1.6;text-align:left;margin:10px 3px}
+.hero-carryover{color:#f1d49a;border:1px solid #c4a35e45;background:#bd974518;border-radius:7px;text-align:left;padding:10px;font-size:11px;line-height:1.7}
+.hero-detail-actions{position:sticky;bottom:0;padding:13px 0 8px;background:linear-gradient(#262319f5,#201e18);box-shadow:0 -8px 14px #201e1870;z-index:2}
+#selectDialog .hero-detail-actions .primary-button{min-height:46px;font-size:14px;letter-spacing:.4px}
+.hero-back-button{width:100%;min-height:44px;border:0;background:transparent;color:#ddc99d;font-size:12px;cursor:pointer;margin-top:3px}
+.hero-back-button:hover{color:#fff0bd;background:#c4a35e10;border-radius:6px}
+.hero-back-button:focus-visible,#selectDialog .primary-button:focus-visible{outline:2px solid #ffe3a4;outline-offset:2px}
+@keyframes hero-preview-float{0%,100%{transform:translate(-50%,-2px)}50%{transform:translate(-50%,-10px)}}
+body.reduced-motion .hero-showcase-art{animation:none!important}
+@media(prefers-reduced-motion:reduce){.hero-showcase-art{animation:none!important}}
+@media(max-width:350px){.hero-showcase{height:210px}.hero-showcase-art{width:292px;height:292px}.hero-detail-skill{padding:12px}.hero-detail-skill p{font-size:11px}}
+@media(max-width:350px){.hero-selection-scroll{padding:20px 16px}}

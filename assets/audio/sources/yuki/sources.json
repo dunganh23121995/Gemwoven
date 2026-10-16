@@ -1,0 +1,28 @@
+[
+  {
+    "file": "ice-crack.mp3",
+    "author": "j_p_higgins",
+    "source_url": "https://freesound.org/people/j_p_higgins/sounds/262633/",
+    "download_url": "https://cdn.freesound.org/previews/262/262633_3175560-hq.mp3",
+    "license": "CC0-1.0",
+    "sha256": "fd315b43416e6867910f13ceb4202e2ed90f7d694f8ec412166fa142b1ca51bd"
+  },
+  {
+    "file": "rock-impact.mp3",
+    "author": "shutup_outcast",
+    "source_url": "https://freesound.org/people/shutup_outcast/sounds/367828/",
+    "download_url": "https://cdn.freesound.org/previews/367/367828_6104883-hq.mp3",
+    "license": "CC0-1.0",
+    "sha256": "835cd99b0f4edb0376df3fa4f4908537861d711b3976263a0c7b11ec8457437f"
+  },
+  {
+    "file": "deep-boom.mp3",
+    "title": "Deep Boom",
+    "author": "Za-Games",
+    "source_url": "https://freesound.org/people/Za-Games/sounds/539968/",
+    "download_url": "https://cdn.freesound.org/previews/539/539968_12029332-hq.mp3",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sha256": "4fac9ac15770cb443432bf440ffb66db599e4f0b9935d34fe3e0460e2bbf5daa"
+  }
+]

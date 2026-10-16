@@ -1,0 +1,211 @@
+{
+  "raw_source": "assets/raw/enemy-ice.png",
+  "raw_sha256": "fe5b207655615a2323f3d76a5dabe079c5a5aa1d9870f3f1ac27ce97f601c885",
+  "raw_dimensions": [
+    1536,
+    1024
+  ],
+  "raw_cell_dimensions": [
+    512.0,
+    512.0
+  ],
+  "normalization": "one uniform raw-cell magnification; translation only per frame",
+  "normalized_cell_size": 512,
+  "canonical_feet_line": 470,
+  "original_anchor_y_std": 0.005722134059650699,
+  "interior_color_preservation": "exterior flood key + exact magenta holes + boundary-only despill",
+  "frames": [
+    {
+      "index": 0,
+      "source_bbox": [
+        94,
+        105,
+        475,
+        442
+      ],
+      "source_anchor": [
+        275.0,
+        428.0
+      ],
+      "source_anchor_normalized": [
+        0.537109375,
+        0.8359375
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        75,
+        147
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        381,
+        337
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 83983
+    },
+    {
+      "index": 1,
+      "source_bbox": [
+        609,
+        133,
+        984,
+        438
+      ],
+      "source_anchor": [
+        271.0,
+        424.0
+      ],
+      "source_anchor_normalized": [
+        0.529296875,
+        0.828125
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        82,
+        179
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        375,
+        305
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 78849
+    },
+    {
+      "index": 2,
+      "source_bbox": [
+        1083,
+        99,
+        1481,
+        438
+      ],
+      "source_anchor": [
+        280.0,
+        422.0
+      ],
+      "source_anchor_normalized": [
+        0.546875,
+        0.82421875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        35,
+        147
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        398,
+        339
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 91359
+    },
+    {
+      "index": 3,
+      "source_bbox": [
+        21,
+        596,
+        476,
+        949
+      ],
+      "source_anchor": [
+        295.0,
+        419.0
+      ],
+      "source_anchor_normalized": [
+        0.576171875,
+        0.818359375
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        3,
+        135
+      ],
+      "canonical_containment_translation": [
+        21,
+        0
+      ],
+      "canonical_size": [
+        455,
+        353
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 97733
+    },
+    {
+      "index": 4,
+      "source_bbox": [
+        610,
+        617,
+        987,
+        948
+      ],
+      "source_anchor": [
+        276.0,
+        422.0
+      ],
+      "source_anchor_normalized": [
+        0.5390625,
+        0.82421875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        78,
+        153
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        377,
+        331
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 82684
+    },
+    {
+      "index": 5,
+      "source_bbox": [
+        1117,
+        615,
+        1499,
+        952
+      ],
+      "source_anchor": [
+        274.0,
+        426.0
+      ],
+      "source_anchor_normalized": [
+        0.53515625,
+        0.83203125
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        75,
+        147
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        382,
+        337
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 84116
+    }
+  ]
+}

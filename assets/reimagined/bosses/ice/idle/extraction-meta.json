@@ -1,0 +1,167 @@
+{
+  "raw_source": "assets/raw/reimagined/bosses/ice-idle.png",
+  "raw_sha256": "99550f605d9d5a0558318bae7e7a8aff4daa107efa5649f870515d75808ab575",
+  "raw_dimensions": [
+    1254,
+    1254
+  ],
+  "raw_cell_dimensions": [
+    627.0,
+    627.0
+  ],
+  "normalization": "one uniform raw-cell magnification; translation only per frame",
+  "normalized_cell_size": 512,
+  "canonical_feet_line": 470,
+  "original_anchor_y_std": 0.008467607887398459,
+  "interior_color_preservation": "exterior flood key + exact magenta holes + boundary-only despill",
+  "frames": [
+    {
+      "index": 0,
+      "source_bbox": [
+        109,
+        29,
+        629,
+        608
+      ],
+      "source_anchor": [
+        401.0,
+        579.0
+      ],
+      "source_anchor_normalized": [
+        0.6395534290271132,
+        0.9234449760765551
+      ],
+      "source_grid_boundary_crossing_recovered": true,
+      "canonical_translation": [
+        18,
+        21
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.4433811802233,
+        470.12280701754383
+      ],
+      "canonical_size": [
+        425,
+        473
+      ],
+      "shared_raw_magnification": 0.8165869218500797,
+      "component_area": 180973
+    },
+    {
+      "index": 1,
+      "source_bbox": [
+        721,
+        30,
+        1237,
+        609
+      ],
+      "source_anchor": [
+        381.0,
+        581.0
+      ],
+      "source_anchor_normalized": [
+        0.6076555023923444,
+        0.9266347687400319
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        22,
+        20
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.3604465709729,
+        469.93939393939394
+      ],
+      "canonical_size": [
+        421,
+        473
+      ],
+      "shared_raw_magnification": 0.8165869218500797,
+      "component_area": 179355
+    },
+    {
+      "index": 2,
+      "source_bbox": [
+        107,
+        643,
+        628,
+        1225
+      ],
+      "source_anchor": [
+        399.0,
+        569.0
+      ],
+      "source_anchor_normalized": [
+        0.6363636363636364,
+        0.9074960127591707
+      ],
+      "source_grid_boundary_crossing_recovered": true,
+      "canonical_translation": [
+        18,
+        18
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.4433811802233,
+        469.5725677830941
+      ],
+      "canonical_size": [
+        425,
+        475
+      ],
+      "shared_raw_magnification": 0.8165869218500797,
+      "component_area": 181189
+    },
+    {
+      "index": 3,
+      "source_bbox": [
+        721,
+        646,
+        1239,
+        1226
+      ],
+      "source_anchor": [
+        383.0,
+        570.0
+      ],
+      "source_anchor_normalized": [
+        0.6108452950558214,
+        0.9090909090909091
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        20,
+        20
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        255.99362041467305,
+        469.93939393939394
+      ],
+      "canonical_size": [
+        423,
+        474
+      ],
+      "shared_raw_magnification": 0.8165869218500797,
+      "component_area": 179977
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "element": "earth",
+  "name": "Hộ Vệ Rêu Ngọc",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "frameOrder": "row-major",
+  "facing": "left",
+  "accepted": true,
+  "origin": [
+    128.0,
+    231
+  ],
+  "scaleProfile": "creature-scale-profile.json",
+  "source": "assets/raw/enemy-earth.png",
+  "sourceSha256": "aca996d1ce4bb3abaa5af3d938da7e397e44ce640cc86dd939391c50e0afa4eb",
+  "action": "attack",
+  "atlas": "attack.webp",
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "loop": false,
+  "frameDuration": 210,
+  "frameDurations": [
+    220,
+    250,
+    160,
+    190,
+    210,
+    270
+  ],
+  "impactFrame": 3,
+  "frameFiles": [
+    "attack/frame-00.png",
+    "attack/frame-01.png",
+    "attack/frame-02.png",
+    "attack/frame-03.png",
+    "attack/frame-04.png",
+    "attack/frame-05.png"
+  ],
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5128061988312368,
+    "output_subject_height_mean": 142.66666666666666,
+    "body_scale_cv": 0.03045544093791752,
+    "anchor_x_std": 0.0428749370469452,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.91796875
+  },
+  "recoveredGridCrossings": [
+    2,
+    3
+  ]
+}

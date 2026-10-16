@@ -1,0 +1,45 @@
+{
+  "element": "fire",
+  "name": "Rồng Hổ Phách",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "frameOrder": "row-major",
+  "facing": "left",
+  "accepted": true,
+  "origin": [
+    128.0,
+    231
+  ],
+  "scaleProfile": "creature-scale-profile.json",
+  "source": "assets/raw/enemy-fire.png",
+  "sourceSha256": "6b80d04c4574012148a73d0f32a87e42e63651588f05cb79d652a80aadce7075",
+  "action": "idle",
+  "atlas": "idle.webp",
+  "columns": 2,
+  "rows": 1,
+  "frames": 2,
+  "loop": true,
+  "frameDuration": 520,
+  "frameDurations": [
+    520,
+    520
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png"
+  ],
+  "derivedFrom": {
+    "action": "attack",
+    "frames": [
+      0,
+      5
+    ],
+    "method": "reuse accepted ready and recovered authored poses"
+  },
+  "qc": {
+    "emptyFrames": [],
+    "edgeTouchFrames": [],
+    "sharedScale": true,
+    "completeSilhouettes": true
+  }
+}

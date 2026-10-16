@@ -1,0 +1,87 @@
+{
+  "hero": "ice",
+  "action": "buff",
+  "accepted": true,
+  "atlas": "buff.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128,
+    244
+  ],
+  "frameFiles": [
+    "buff/frame-00.png",
+    "buff/frame-01.png",
+    "buff/frame-02.png",
+    "buff/frame-03.png",
+    "buff/frame-04.png",
+    "buff/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "327d6710b9d3732f9211a757d5381f7505fbfdac03ffe05c4c929735ca6e8842",
+    "78dd19561feede947b2e29f08064013848965bbd19ffcb8426ff7c5b20b71d2e",
+    "d10776ed8ac493089b62d14428357ca805600c523293ac12d3eb0558b6b3509c",
+    "098e3359ca96117fa4cf5723278d8bf8c239ba684ab40ff7baed9d2c9c4f7016",
+    "3824b6fb9edea8f0527ee113b7eeca536dfa9b443997fccec7026cd9735d3050",
+    "cb981e276e309a412cc80c73a20c4adcca7aac260b35260b5ad520e94d8476c8"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/reimagined/heroes/ice-buff.png",
+  "sourceSha256": "800bb1a993010659837aebff95b54f9a6220532583287fbac2ca82904076e918",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5335171571954231,
+    "output_subject_height_mean": 172.0,
+    "body_scale_cv": 0.003031703596992062,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.00016013507651450418,
+    "anchor_y_mean": 0.9178971354166663,
+    "profile_body_scale_drift": 0.03842136504695459
+  },
+  "originalAnchorYStd": 0.0009162124895802825,
+  "recoveredGridCrossings": [],
+  "headAnchors": [
+    [
+      128,
+      88
+    ],
+    [
+      129,
+      88
+    ],
+    [
+      130,
+      91
+    ],
+    [
+      129,
+      89
+    ],
+    [
+      128,
+      88
+    ],
+    [
+      128,
+      88
+    ]
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    21
+  ]
+}

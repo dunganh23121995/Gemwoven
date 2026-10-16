@@ -1,0 +1,839 @@
+{
+  "version": 2,
+  "actions": [
+    {
+      "family": "heroes",
+      "key": "ice",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5548346622962096,
+        "output_subject_height_mean": 171.0,
+        "body_scale_cv": 0.0015631102258164956,
+        "anchor_x_std": 0.0008457279333832408,
+        "anchor_y_std": 0.0008288133747121301,
+        "anchor_y_mean": 0.918447265624998
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "ice",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5354209822503333,
+        "output_subject_height_mean": 170.5,
+        "body_scale_cv": 0.009086036476029376,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.034990027417414526
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "ice",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5425596557453369,
+        "output_subject_height_mean": 171.33333333333334,
+        "body_scale_cv": 0.01586126803963572,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.02212371970430249
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "ice",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5290578589023797,
+        "output_subject_height_mean": 164.33333333333334,
+        "body_scale_cv": 0.01346988766835382,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.04645853106428388
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "ice",
+      "action": "buff",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5335171571954231,
+        "output_subject_height_mean": 172.0,
+        "body_scale_cv": 0.003031703596992062,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.00016013507651450418,
+        "anchor_y_mean": 0.9178971354166663,
+        "profile_body_scale_drift": 0.03842136504695459
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "ice",
+      "action": "run",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.48829232352497737,
+        "output_subject_height_mean": 168.5,
+        "body_scale_cv": 0.03463987925893556,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0088371562242827,
+        "anchor_y_mean": 0.9742838541666666,
+        "profile_body_scale_drift": 0.11993183427986198
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "lightning",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5302631462389206,
+        "output_subject_height_mean": 167.0,
+        "body_scale_cv": 0.005351724724495977,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0013810679320049757,
+        "anchor_y_mean": 0.892578125,
+        "profile_body_scale_drift": 0.011764146164521483
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "lightning",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5096159451815461,
+        "output_subject_height_mean": 165.0,
+        "body_scale_cv": 0.010725292707697894,
+        "anchor_x_std": 0.009462527248534266,
+        "anchor_y_std": 0.0024359748611809512,
+        "anchor_y_mean": 0.8795572916666666,
+        "profile_body_scale_drift": 0.050243728445455105
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "lightning",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5043757041006594,
+        "output_subject_height_mean": 167.0,
+        "body_scale_cv": 0.024156896836514036,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0021592609312209633,
+        "anchor_y_mean": 0.8854166666666666,
+        "profile_body_scale_drift": 0.06000981186197174
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "lightning",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5026512838350942,
+        "output_subject_height_mean": 163.66666666666666,
+        "body_scale_cv": 0.018556076401563006,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.004318521862441927,
+        "anchor_y_mean": 0.8893229166666666,
+        "profile_body_scale_drift": 0.0632235632712469
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "lightning",
+      "action": "buff",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5120059185226907,
+        "output_subject_height_mean": 166.16666666666666,
+        "body_scale_cv": 0.0042952500296848896,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.001752983335655763,
+        "anchor_y_mean": 0.8922526041666666,
+        "profile_body_scale_drift": 0.045789605313982684
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "lightning",
+      "action": "hover",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4997073091682534,
+        "output_subject_height_mean": 168.83333333333334,
+        "body_scale_cv": 0.0045770877843361426,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.9921875,
+        "profile_body_scale_drift": 0.06871016240450922
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "fire",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5859882106084224,
+        "output_subject_height_mean": 189.5,
+        "body_scale_cv": 0.001378394285205612,
+        "anchor_x_std": 0.0009765625,
+        "anchor_y_std": 0.0009765625,
+        "anchor_y_mean": 0.9189453125
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "fire",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5512703489178781,
+        "output_subject_height_mean": 168.16666666666666,
+        "body_scale_cv": 0.017785897833013112,
+        "anchor_x_std": 0.017888843312544384,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.059246689714964273
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "fire",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5642041506568093,
+        "output_subject_height_mean": 180.16666666666666,
+        "body_scale_cv": 0.017650621934407616,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.03717491164027875
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "fire",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5549920397232683,
+        "output_subject_height_mean": 175.5,
+        "body_scale_cv": 0.022417388534066853,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.052895553739846224
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "earth",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.6260221612043748,
+        "output_subject_height_mean": 196.5,
+        "body_scale_cv": 0.0016635958164746272,
+        "anchor_x_std": 0.0008457279333832408,
+        "anchor_y_std": 0.0008457279333832408,
+        "anchor_y_mean": 0.91748046875
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "earth",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5815577465808627,
+        "output_subject_height_mean": 178.5,
+        "body_scale_cv": 0.010130243755750171,
+        "anchor_x_std": 0.006615365049772648,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.07102690188789662
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "earth",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5856944922793609,
+        "output_subject_height_mean": 180.16666666666666,
+        "body_scale_cv": 0.009894142257360699,
+        "anchor_x_std": 0.012889967365379772,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.06441891585344106
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "earth",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5909216714927469,
+        "output_subject_height_mean": 179.33333333333334,
+        "body_scale_cv": 0.00945528019074591,
+        "anchor_x_std": 0.005795733663660436,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.05606908490923024
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "ice",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5709975651393132,
+        "output_subject_height_mean": 194.25,
+        "body_scale_cv": 0.0006580882489722905,
+        "anchor_x_std": 0.0009765625,
+        "anchor_y_std": 0.0009765625,
+        "anchor_y_mean": 0.9189453125
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "ice",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5587338033035268,
+        "output_subject_height_mean": 175.83333333333334,
+        "body_scale_cv": 0.03325043090374274,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0002183660134298323,
+        "anchor_y_mean": 0.9180664062500009,
+        "profile_body_scale_drift": 0.021477783066893186
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "ice",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5538366122456172,
+        "output_subject_height_mean": 183.0,
+        "body_scale_cv": 0.030560101258681315,
+        "anchor_x_std": 0.005011329530709848,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.030054336377965174
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "ice",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5444030472020799,
+        "output_subject_height_mean": 178.5,
+        "body_scale_cv": 0.013498541804756561,
+        "anchor_x_std": 0.0003639433557128564,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.04657553650118407
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "lightning",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5988956028894933,
+        "output_subject_height_mean": 187.0,
+        "body_scale_cv": 0.00019447780912606975,
+        "anchor_x_std": 0.0008457279333832408,
+        "anchor_y_std": 0.0008457279333832408,
+        "anchor_y_mean": 0.91845703125
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "lightning",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5559940495353873,
+        "output_subject_height_mean": 178.0,
+        "body_scale_cv": 0.030942425363075225,
+        "anchor_x_std": 0.005823093691405702,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.07163444371125571
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "lightning",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5734464568637644,
+        "output_subject_height_mean": 173.0,
+        "body_scale_cv": 0.04155347974787588,
+        "anchor_x_std": 0.0007278867114257127,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.04249345946596428
+      }
+    },
+    {
+      "family": "bosses",
+      "key": "lightning",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5685457425857688,
+        "output_subject_height_mean": 174.66666666666666,
+        "body_scale_cv": 0.021532964074420884,
+        "anchor_x_std": 0.0007278867114257127,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.05067637858300411
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.543518678478276,
+        "output_subject_height_mean": 144.75,
+        "body_scale_cv": 0.004208338528142707,
+        "anchor_x_std": 0.007627196949127592,
+        "anchor_y_std": 0.0008457279333832408,
+        "anchor_y_mean": 0.91845703125,
+        "profile_body_scale_drift": 0.039289602983395344
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5148623065626451,
+        "output_subject_height_mean": 140.0,
+        "body_scale_cv": 0.028648009236849965,
+        "anchor_x_std": 0.04830009633070679,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.015505697657465456
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5305783976478603,
+        "output_subject_height_mean": 140.5,
+        "body_scale_cv": 0.02412241021293215,
+        "anchor_x_std": 0.036463055985976815,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.014545836376533838
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5211481230971629,
+        "output_subject_height_mean": 139.0,
+        "body_scale_cv": 0.02747313454997447,
+        "anchor_x_std": 0.007168852716648842,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.0034862693852382165
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "buff",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5178013499890474,
+        "output_subject_height_mean": 142.16666666666666,
+        "body_scale_cv": 0.018120822467554212,
+        "anchor_x_std": 0.006420274389100268,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.00988580381255022
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "run",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4537771518636742,
+        "output_subject_height_mean": 145.0,
+        "body_scale_cv": 0.010055599922184324,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0014557734228514256,
+        "anchor_y_mean": 0.9505208333333334,
+        "profile_body_scale_drift": 0.13230971689194015
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "earth",
+      "action": "smash",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5108975145304256,
+        "output_subject_height_mean": 142.33333333333334,
+        "body_scale_cv": 0.047413182890991966,
+        "anchor_x_std": 0.04325999191201802,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.023086977382044016
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "idle",
+      "frames": 4,
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5293005767908197,
+        "output_subject_height_mean": 164.5,
+        "body_scale_cv": 0.002537093010663853,
+        "anchor_x_std": 0.0009765625,
+        "anchor_y_std": 0.0008457279333832408,
+        "anchor_y_mean": 0.91943359375
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "attack",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.49184503094037607,
+        "output_subject_height_mean": 158.5,
+        "body_scale_cv": 0.0423075251135169,
+        "anchor_x_std": 0.04512897610839419,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.07076422640144986
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "cast",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5070368594047788,
+        "output_subject_height_mean": 163.83333333333334,
+        "body_scale_cv": 0.007557106051995365,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.042062522434846095
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "hurt",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5010231282788333,
+        "output_subject_height_mean": 154.66666666666666,
+        "body_scale_cv": 0.018222908676235283,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.05342417853279913
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "buff",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5087669028000202,
+        "output_subject_height_mean": 164.33333333333334,
+        "body_scale_cv": 0.00978315639355651,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.03879397622291725
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "run",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.46979672705918407,
+        "output_subject_height_mean": 163.33333333333334,
+        "body_scale_cv": 0.02761948662173036,
+        "anchor_x_std": 0.00036394335571285634,
+        "anchor_y_std": 0.0094848973205296,
+        "anchor_y_mean": 0.9697265625,
+        "profile_body_scale_drift": 0.11241977118636615
+      }
+    },
+    {
+      "family": "heroes",
+      "key": "fire",
+      "action": "smash",
+      "frames": 6,
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4923873075238398,
+        "output_subject_height_mean": 162.83333333333334,
+        "body_scale_cv": 0.016240456437908914,
+        "anchor_x_std": 0.02211626009305082,
+        "anchor_y_std": 0.00011646187383065617,
+        "anchor_y_mean": 0.9179166666666655,
+        "profile_body_scale_drift": 0.0697397110178628
+      }
+    }
+  ]
+}

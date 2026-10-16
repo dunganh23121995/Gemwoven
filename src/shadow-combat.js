@@ -1,0 +1,151 @@
+// Layered effects and rigid actor translations; authored frames carry each pose.
+function mountShadowVeil(){
+  const veil=document.createElement('span');veil.className='shadow-veil';veil.setAttribute('aria-hidden','true');
+  veil.innerHTML=Array.from({length:5},(_,i)=>`<i style="--i:${i}"></i>`).join('');actor('hero').append(veil);
+}
+function bladeFacing(direction){
+  const root=actor('hero'),sprite=root.querySelector('.sprite-body');root.dataset.facing=String(direction);
+  sprite.style.scale=direction+' 1';updateActorHead(sprite,sprite.dataset.action,+sprite.dataset.frame);
+}
+function shadowEcho(x,y,pending,direction=1,delay=0){
+  if(reduced)return;
+  const root=actor('hero'),rect=root.getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
+  const node=document.createElement('span');node.className='shadow-afterimage';node.setAttribute('aria-hidden','true');
+  node.style.cssText=`left:${x??rect.left-scene.left}px;top:${y??rect.top-scene.top}px;width:${rect.width}px;height:${rect.height}px`;
+  const sprite=root.querySelector('.sprite-body').cloneNode(true);sprite.removeAttribute('role');sprite.removeAttribute('aria-label');node.append(sprite);$('combatEffects').append(node);
+  pending.push(animate(node,[{opacity:.58,translate:'0 0'},{opacity:.3,translate:`${-direction*9}px -2px`,offset:.4},{opacity:0,translate:`${-direction*23}px -7px`}],{duration:380,delay,easing:'ease-out',fill:'both'}).finally(()=>node.remove()));
+}
+function shadowTransitEchoes(fromX,toX,pending){
+  if(reduced)return;
+  const rect=actor('hero').getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
+  const count=actor('hero').classList.contains('shadow-burst')?8:3;
+  for(let i=0;i<count;i++)shadowEcho(rect.left-scene.left+(toX-fromX)*i/count,rect.top-scene.top,pending,toX>fromX?1:-1,i*7);
+}
+function quickBladeCut(point,key,index,direction,pending){
+  if(reduced)return;
+  const color=combatV3Palette[key],size=Math.min(230,point.width*1.18),angle=index%2?-24:25;
+  const node=combatV3Element('quick-blade-cut '+key,point,size,combatV3Svg('<path d="M9 138Q95 29 212 81Q119 49 9 138Z" fill="var(--combat-deep)" opacity=".8"/><path d="M12 129Q106 35 213 80Q117 57 12 129Z" fill="var(--combat-main)"/><path d="M17 120Q118 45 210 79Q121 64 17 120Z" fill="var(--combat-light)"/><path d="M28 112Q119 52 205 77" stroke="white" stroke-width="2" stroke-linecap="round"/>'),color);
+  node.dataset.cutDirection=direction>0?'right':'left';node.dataset.cutIndex=index;
+  pending.push(animate(node,[{opacity:0,transform:`translate(-50%,-50%) rotate(${angle-20}deg) scaleX(${direction*.5})`},{opacity:1,transform:`translate(-50%,-50%) rotate(${angle}deg) scaleX(${direction})`,offset:.2},{opacity:.85,offset:.5},{opacity:0,transform:`translate(calc(-50% + ${direction*22}px),-50%) rotate(${angle+15}deg) scaleX(${direction*1.12})`}],{duration:210,easing:'ease-out'}).finally(()=>node.remove()));
+  for(let i=0;i<5;i++){
+    const ember=combatV3Element('blade-ember '+key,{x:point.x,y:point.y},4+i%2*3,'',color);
+    pending.push(animate(ember,[{opacity:.9,transform:'translate(-50%,-50%)'},{opacity:0,transform:`translate(${direction*(25+i*11)}px,${(i-2)*17}px) scale(.2)`}],{duration:290+i*15,easing:'ease-out'}).finally(()=>ember.remove()));
+  }
+}
+function bladeContact(raw,ledger,index,direction,critical,pending){
+  const key=state.key,result=damage('hero',raw,ledger);
+  combatVoice('enemy','hurt');combatV3HitSound(key,index===4);
+  if(key==='shadow'&&!reduced){
+    const pulse=combatV3Element('shadow-contact',combatV3Point('enemy'),85,'',combatV3Palette.shadow);
+    pending.push(animate(pulse,[{opacity:.85,transform:'translate(-50%,-50%) scale(.4)'},{opacity:.6,transform:'translate(-50%,-50%) scale(.9)',offset:.25},{opacity:0,transform:'translate(-50%,-50%) scale(1.4)'}],{duration:240}).finally(()=>pulse.remove()));
+  }else if(key!=='shadow')combatV3Impact('enemy',key,direction,index===4,pending);
+  combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?(critical?'crit':'damage'):'armor',index,pending);
+  hitAccents('hero',result,critical,pending);combatV3Camera(direction,index===4,false,pending);setSpriteAction('enemy','hurt',220);
+  return result;
+}
+async function shadowAttack(raw,{hits=1,damageLedger=null,attackChain=1}={}){
+  const root=actor('hero'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
+  const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,to.x-from.x-from.width*.25);
+  const chain=Math.max(1,Math.floor(attackChain)),critical=chain>=3&&chain%3===0;
+  raw*=attackChainMultiplier(chain)*(critical?1.5:1);hits=Math.max(1,Math.min(8,Math.round(hits)||1));
+  const ledger=damageLedger||{raw:0,applied:0};let amount=0,blocked=0;
+  root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.attackChain=chain;root.dataset.attackStance='shadow-draw';
+  try{
+    combatVoice('hero','attack');playNoctSound('draw',{volume:.18});setSpriteFrame('hero','attack',0);await wait(70);
+    setSpriteFrame('hero','cast',3);shadowTransitEchoes(0,travel,pending);playNoctSound('dash',{volume:.22,pan:.28});
+    await animate(root,[{transform:old||'none'},{transform:`translateX(${travel}px)`}],{duration:120,easing:'cubic-bezier(.12,.8,.3,1)'});root.style.transform=`translateX(${travel}px)`;
+    for(let i=0;i<hits;i++){
+      const direction=i%2?-1:1;setSpriteFrame('hero','attack',i%2?3:2);
+      quickBladeCut(combatV3Point('enemy'),'shadow',i,direction,pending);combatV3Whoosh('shadow',critical,100);
+      const result=bladeContact(raw/hits,ledger,i,direction,critical,pending);amount+=result.amount;blocked+=result.blocked;
+      await wait(85);
+    }
+    setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(travel,0,pending);
+    await animate(root,[{transform:root.style.transform},{transform:old||'none'}],{duration:180,easing:'ease-out'});root.style.transform=old;
+    bladeFacing(1);setSpriteFrame('hero','attack',5);playNoctSound('sheath',{volume:.18});await Promise.all(pending);return {amount,blocked};
+  }finally{
+    await Promise.allSettled(pending);root.style.transform=old;root.style.zIndex=oldZ;bladeFacing(1);delete root.dataset.facing;delete root.dataset.attackChain;delete root.dataset.attackStance;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
+  }
+}
+async function bladeRage(key,raw,onRelease=()=>{}){
+  const shadow=key==='shadow',root=actor('hero'),target=actor('enemy'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
+  const from=combatV3Point('hero'),to=combatV3Point('enemy'),near=Math.max(0,to.x-from.x-from.width*.27),far=Math.min(to.x-from.x+32,$('scene').clientWidth-from.width*.44-from.x);
+  const start=performance.now(),at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
+  const move=async(x,duration)=>{const previous=root.style.transform||'none';await animate(root,[{transform:previous},{transform:`translateX(${x}px)`}],{duration,easing:'ease-in-out'});root.style.transform=`translateX(${x}px)`;};
+  const ledger={raw:0,applied:0};let amount=0,blocked=0,currentX=0;
+  const aura=document.createElement('span');aura.className='ultimate-aura rage-aura'+(shadow?' shadow-rage-aura':'');aura.style.setProperty('--aura-color',combatV3Palette[key].main);aura.innerHTML='<i class="aura-halo"></i><i class="aura-ring"></i>';root.append(aura);
+  root.classList.add('combat-v3-acting','charging-ultimate');root.style.zIndex='4';root.dataset.ragePhase='chant';
+  try{
+    combatVoice('hero','cast');combatV3ChargeSound(key,true);popActorSkill('hero',HEROES[key].skill,true,pending);
+    pending.push(animate(aura,[{opacity:0,transform:'scale(.5)'},{opacity:.95,transform:'scale(1)',offset:.65},{opacity:0,transform:'scale(1.25)'}],{duration:1100}).finally(()=>aura.remove()));
+    setSpriteFrame('hero','cast',0);await at(300);setSpriteFrame('hero','cast',1);await at(shadow?550:650);setSpriteFrame('hero','cast',2);
+    if(shadow){root.dataset.ragePhase='slow-glide';setSpriteFrame('hero','cast',3);await move(near*.55,800);currentX=near*.55;}
+    else{await at(1000);root.dataset.ragePhase='lunge';setSpriteFrame('hero','attack',1);await move(near,350);currentX=near;}
+    root.classList.remove('charging-ultimate');aura.remove();
+    if(shadow)root.classList.add('shadow-burst');
+    const times=shadow?[1560,1740,1920,2100,2280]:[1600,1730,1860,1990,2120,2250];
+    for(let i=0;i<times.length;i++){
+      await at(times[i]-(shadow?110:55));root.dataset.ragePhase=shadow?'shadow-dash':'rapid-slash';root.dataset.rageHit=String(i+1);
+      const direction=i%2?-1:1,endX=shadow?(direction>0?far:near):near+(direction>0?5:-5);
+      if(shadow){bladeFacing(direction);setSpriteFrame('hero','cast',4);shadowTransitEchoes(currentX,endX,pending);playNoctSound('dash',{volume:.18,pan:direction*.35});}
+      else setSpriteFrame('hero','attack',i%2?4:1);
+      combatV3Whoosh(key,true,110);await move(endX,shadow?110:55);currentX=endX;
+      setSpriteFrame('hero','attack',shadow?2:[3,2,4,3,2,4][i]);root.dataset.ragePhase='impact';
+      if(i===0)combatVoice('hero','release');quickBladeCut(combatV3Point('enemy'),key,i,direction,pending);
+      if(shadow)shadowEcho(null,null,pending,direction);
+      const result=bladeContact(raw/times.length,ledger,i,direction,false,pending);amount+=result.amount;blocked+=result.blocked;
+      if(i===times.length-1){onRelease(pending);update();}
+    }
+    await at(2450);root.dataset.ragePhase='recover';root.classList.remove('shadow-burst');
+    if(shadow){setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(currentX,0,pending);}else setSpriteFrame('hero','attack',5);
+    await move(0,350);root.style.transform=old;bladeFacing(1);setSpriteFrame('hero',shadow?'cast':'attack',5);if(shadow)playNoctSound('sheath',{volume:.24});
+    await at(3000);await Promise.all(pending);return {amount,blocked};
+  }finally{
+    await Promise.allSettled(pending);aura.remove();root.style.transform=old;root.style.zIndex=oldZ;bladeFacing(1);delete root.dataset.facing;delete root.dataset.ragePhase;delete root.dataset.rageHit;root.classList.remove('combat-v3-acting','charging-ultimate','shadow-burst');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
+  }
+}
+async function departShadowHero(){
+  const root=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children],pending=[];root.dataset.departing='true';
+  try{
+    setSpriteFrame('hero','hover',0);
+    await animate(root,[{transform:'translateY(0px)'},{transform:'translateY(-12px)'}],{duration:reduced?1:260,easing:'ease-out'});
+    const start=performance.now(),duration=reduced?1:2400;let lastEcho=0;
+    await new Promise(resolve=>{
+      function tick(now){
+        const p=Math.min(1,(now-start)/duration),camera=width*.95*p;
+        root.style.transform=`translate(${width*1.65*p-camera}px,${-12-Math.sin(p*Math.PI*3)*2}px)`;root.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
+        setSpriteFrame('hero','hover',Math.floor((now-start)/180)%6);
+        if(now-lastEcho>320){shadowEcho(null,null,pending);lastEcho=now;}
+        layers.forEach(layer=>layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`);
+        if(p<1)requestAnimationFrame(tick);else resolve();
+      }requestAnimationFrame(tick);
+    });
+    await animate(root,[{opacity:1},{opacity:0}],{duration:180});root.style.opacity='0';await Promise.all(pending);
+  }finally{delete root.dataset.departing;delete root.dataset.worldX;root.style.transform='';setSpriteAction('hero','idle');}
+}
+// A stream of overlapping curved, feathered plumes instead of a rigid polygon.
+combatV3Breath=function(sourcePoint,targetPoint,ultimate,pending){
+  if(reduced)return;
+  const direction=targetPoint.x>sourcePoint.x?1:-1,frame=+actor('enemy').querySelector('.sprite-body').dataset.frame;
+  const mouth=[[54,154],[66,181],[47,168],[42,162],[60,166],[65,153]][frame]||[44,162];
+  const start={x:sourcePoint.x-sourcePoint.width*.5+sourcePoint.width*mouth[0]/256,y:sourcePoint.y-sourcePoint.height*.62+sourcePoint.height*mouth[1]/256};
+  const dx=targetPoint.x-start.x,dy=targetPoint.y-start.y,count=ultimate?24:15;
+  for(let i=0;i<count;i++){
+    const lane=(i%5-2)/2,size=(ultimate?44:32)+i%3*7;
+    const node=combatV3Element('dragon-flame-plume',start,size,'',combatV3Palette.fire);node.dataset.flameLayer=i%3;
+    const angle=Math.atan2(dy,dx)*180/Math.PI;
+    const pose=(p,scale)=>`translate(calc(-50% + ${dx*p}px),calc(-50% + ${dy*p+Math.sin(p*Math.PI*1.5+i*.65)*lane*(ultimate?22:14)*p}px)) rotate(${angle+Math.sin(p*5+i)*15}deg) scale(${scale*1.8},${scale*.7})`;
+    pending.push(animate(node,[{opacity:0,transform:pose(0,.15)},{opacity:.6,transform:pose(.15,.4),offset:.13},{opacity:.65,transform:pose(.6,.8),offset:.5},{opacity:.4,transform:pose(1,1.15),offset:.8},{opacity:0,transform:pose(1.18,1.5)}],{duration:ultimate?540:390,delay:i*(ultimate?12:10),easing:'linear'}).finally(()=>node.remove()));
+  }
+  for(let i=0;i<8;i++){
+    const node=combatV3Element('dragon-flame-ember',start,3+i%3,'',combatV3Palette.fire);
+    pending.push(animate(node,[{opacity:0,transform:'translate(-50%,-50%)'},{opacity:.9,offset:.2},{opacity:0,transform:`translate(${dx*(.8+i%3*.13)}px,${dy-22-i*7}px) scale(.1)`}],{duration:520,delay:i*28,easing:'ease-out'}).finally(()=>node.remove()));
+  }
+};
+rageSkyfall=function(side,key,pending){
+  if(reduced)return;
+  const target=combatV3Point(side==='hero'?'enemy':'hero'),top=-Math.max(180,$('scene').clientHeight*.65),height=target.y-top+30;
+  const node=document.createElement('span');node.className='rage-skyfall '+key;node.dataset.skyOrigin=String(top);node.style.cssText=`left:${target.x}px;top:${top}px;height:${height}px;--rage-color:${combatV3Palette[key].main}`;
+  node.innerHTML='<i></i><b></b><em></em>';$('combatEffects').append(node);
+  pending.push(animate(node,[{opacity:0,transform:`translate(-50%,${-height}px)`},{opacity:1,offset:.12},{opacity:1,transform:'translate(-50%,0)',offset:.56},{opacity:.9,offset:.78},{opacity:0,transform:'translate(-50%,8px)'}],{duration:650,easing:'cubic-bezier(.3,0,.75,1)'}).finally(()=>node.remove()));
+};

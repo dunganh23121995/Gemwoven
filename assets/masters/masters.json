@@ -1,0 +1,128 @@
+{
+  "source": "assets\\raw\\heroes.png",
+  "cell_size": 768,
+  "subject_height": 500,
+  "feet_line": 630,
+  "characters": {
+    "fire": {
+      "id": 1,
+      "bbox": [
+        54,
+        2,
+        603,
+        599
+      ],
+      "area": 168508,
+      "source_crop": [
+        49,
+        0,
+        608,
+        604
+      ],
+      "output_alpha_bbox": [
+        154,
+        130,
+        614,
+        630
+      ],
+      "opaque_area": 123815,
+      "reference": "fire.png",
+      "transparent": "fire-transparent.png",
+      "qc": {
+        "complete_silhouette": true,
+        "edge_touch": false,
+        "feet_aligned": true
+      }
+    },
+    "earth": {
+      "id": 2,
+      "bbox": [
+        650,
+        10,
+        1209,
+        599
+      ],
+      "area": 180387,
+      "source_crop": [
+        645,
+        5,
+        1214,
+        604
+      ],
+      "output_alpha_bbox": [
+        146,
+        130,
+        621,
+        630
+      ],
+      "opaque_area": 135270,
+      "reference": "earth.png",
+      "transparent": "earth-transparent.png",
+      "qc": {
+        "complete_silhouette": true,
+        "edge_touch": false,
+        "feet_aligned": true
+      }
+    },
+    "ice": {
+      "id": 3,
+      "bbox": [
+        59,
+        594,
+        587,
+        1230
+      ],
+      "area": 190934,
+      "source_crop": [
+        54,
+        589,
+        592,
+        1235
+      ],
+      "output_alpha_bbox": [
+        177,
+        130,
+        591,
+        630
+      ],
+      "opaque_area": 122040,
+      "reference": "ice.png",
+      "transparent": "ice-transparent.png",
+      "qc": {
+        "complete_silhouette": true,
+        "edge_touch": false,
+        "feet_aligned": true
+      }
+    },
+    "lightning": {
+      "id": 4,
+      "bbox": [
+        695,
+        613,
+        1227,
+        1230
+      ],
+      "area": 193592,
+      "source_crop": [
+        690,
+        608,
+        1232,
+        1235
+      ],
+      "output_alpha_bbox": [
+        168,
+        130,
+        599,
+        630
+      ],
+      "opaque_area": 132510,
+      "reference": "lightning.png",
+      "transparent": "lightning-transparent.png",
+      "qc": {
+        "complete_silhouette": true,
+        "edge_touch": false,
+        "feet_aligned": true
+      }
+    }
+  }
+}

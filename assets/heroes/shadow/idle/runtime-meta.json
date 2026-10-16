@@ -1,0 +1,51 @@
+{
+  "hero": "shadow",
+  "action": "idle",
+  "accepted": true,
+  "atlas": "idle.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "frameOrder": "row-major",
+  "loop": true,
+  "frameDuration": 230,
+  "origin": [
+    128.0,
+    241
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png",
+    "idle/frame-02.png",
+    "idle/frame-03.png"
+  ],
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "dea866295e84af3f6b81ccae6afc26bbff0a18cb6599de7148f94cc0d6fa2299",
+    "f9b7cf3e92024d064bf1069671c5d402906082e4eee183b7dec1164c93ec6c00",
+    "75f1969875ee795050c4e6cbb9db6381a5d2fce84162fe47885808f667a4d0a0",
+    "0ee4c57eb87cf985a07b834625ab8ceafde962a6b7bd57798b9c96a098ebb146"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/shadow-idle.png",
+  "sourceSha256": "7993f22d976f77a1be9d7879c0a351950a856ab147a71c4f2b544303a5fd88b7",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4862020165479339,
+    "output_subject_height_mean": 161.75,
+    "body_scale_cv": 0.00684142706953569,
+    "anchor_x_std": 0.0016194456984157226,
+    "anchor_y_std": 0.0009765625,
+    "anchor_y_mean": 0.9189453125
+  },
+  "originalAnchorYStd": 0.00545246982901809,
+  "recoveredGridCrossings": []
+}

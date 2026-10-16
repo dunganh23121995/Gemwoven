@@ -1,0 +1,66 @@
+{
+  "map_mode": "baked_scene_mode",
+  "visual_model": "baked_raster",
+  "collision_model": "none",
+  "runtime_object_model": "none",
+  "engine_target": "project-native HTML",
+  "source": "built-in image_gen",
+  "scenes": {
+    "fire": {
+      "image": "fire.webp",
+      "source": "fire.png",
+      "prompt": "fire.prompt.txt",
+      "actor_safe_area": [
+        0.12,
+        0.65,
+        0.88,
+        0.96
+      ],
+      "occlusion": "none",
+      "camera": "fixed side-view",
+      "gameplay_geometry": "none; decorative battle background only"
+    },
+    "earth": {
+      "image": "earth.webp",
+      "source": "earth.png",
+      "prompt": "earth.prompt.txt",
+      "actor_safe_area": [
+        0.12,
+        0.65,
+        0.88,
+        0.96
+      ],
+      "occlusion": "none",
+      "camera": "fixed side-view",
+      "gameplay_geometry": "none; decorative battle background only"
+    },
+    "ice": {
+      "image": "ice.webp",
+      "source": "ice.png",
+      "prompt": "ice.prompt.txt",
+      "actor_safe_area": [
+        0.12,
+        0.65,
+        0.88,
+        0.96
+      ],
+      "occlusion": "none",
+      "camera": "fixed side-view",
+      "gameplay_geometry": "none; decorative battle background only"
+    },
+    "lightning": {
+      "image": "lightning.webp",
+      "source": "lightning.png",
+      "prompt": "lightning.prompt.txt",
+      "actor_safe_area": [
+        0.12,
+        0.65,
+        0.88,
+        0.96
+      ],
+      "occlusion": "none",
+      "camera": "fixed side-view",
+      "gameplay_geometry": "none; decorative battle background only"
+    }
+  }
+}

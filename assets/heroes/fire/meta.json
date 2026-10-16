@@ -1,0 +1,229 @@
+{
+  "hero": "fire",
+  "cellSize": 256,
+  "actions": {
+    "idle": {
+      "hero": "fire",
+      "action": "idle",
+      "accepted": true,
+      "atlas": "idle.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "frameOrder": "row-major",
+      "loop": true,
+      "frameDuration": 230,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "idle/frame-00.png",
+        "idle/frame-01.png",
+        "idle/frame-02.png",
+        "idle/frame-03.png"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/fire-idle.png",
+      "sourceSha256": "db00f8f4fcffccd84214affd4e5e3bd80e131db1c0ce9bc7176d571d5f6cc7cf",
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4806003574552101,
+        "output_subject_height_mean": 159.75,
+        "body_scale_cv": 0.005879388162045024,
+        "anchor_x_std": 0.0009765625,
+        "anchor_y_std": 0.0008457279333832408,
+        "anchor_y_mean": 0.91845703125,
+        "profile_body_scale_drift": 0.0
+      },
+      "recoveredGridCrossings": [],
+      "uniqueFrames": 4,
+      "framePixelHashes": [
+        "18c173583989d69756fe5669c2a2b155465124093b17d19e5c0fbdb04b6c3ce2",
+        "d550513e5d47e36ffaaa85e4ff53156266060cd8d80d70ea5d53eaafcb7463a8",
+        "6e4324a45fd2ab6ffdd0de03348b8f8542cde318b26134dd52cb3eca5b2848e2",
+        "7b1119fd172f43a52488b8657680e38dfb3f5995c953cf3254330b117571f517"
+      ],
+      "originalAnchorYStd": 0.0006906103698440696,
+      "reviewedFootRootFrames": []
+    },
+    "attack": {
+      "hero": "fire",
+      "action": "attack",
+      "accepted": true,
+      "atlas": "attack.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "attack/frame-00.png",
+        "attack/frame-01.png",
+        "attack/frame-02.png",
+        "attack/frame-03.png",
+        "attack/frame-04.png",
+        "attack/frame-05.png"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/fire-attack.png",
+      "sourceSha256": "d71f24668a5191b199bc42344c3c74ca53932231467aa9733434b32fab048ab2",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.47229343753699354,
+        "output_subject_height_mean": 162.16666666666666,
+        "body_scale_cv": 0.05239740086521493,
+        "anchor_x_std": 0.0024359748611809512,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.017284464710350833
+      },
+      "recoveredGridCrossings": [],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "87eb14373cc33889126f5d9e342f27833b51e5131428e1024d160a19a090262a",
+        "71e47b619004c5c9efec8cec10e942f33ea21ad33c8064fd22eca0276c237d8b",
+        "ed9a8e31909ae19b28b961ef9a2ef20eb512ce65362e4cc17d481e7ca50ccf57",
+        "f953197925b6718eee07d8096a3ed0a0fbc559e062ba8054c99ee05d785ab522",
+        "4d199695d7dc080a2c0e6ff490c8c9a48ffd60800b63808e6582c8b9d897285f",
+        "1e350ed27ba74461e491ba6b12ee26561e0adc49b6d259df4e3d42ee5f1692ce"
+      ],
+      "originalAnchorYStd": 0.0349158082794311,
+      "reviewedFootRootFrames": []
+    },
+    "cast": {
+      "hero": "fire",
+      "action": "cast",
+      "accepted": true,
+      "atlas": "cast.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "cast/frame-00.png",
+        "cast/frame-01.png",
+        "cast/frame-02.png",
+        "cast/frame-03.png",
+        "cast/frame-04.png",
+        "cast/frame-05.png"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/fire-cast.png",
+      "sourceSha256": "04a90cb05f2c32abb01de958d127045501dc2227a91210870c69b69e00b4642c",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4568649555007523,
+        "output_subject_height_mean": 177.83333333333334,
+        "body_scale_cv": 0.014074996285831993,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.0493869835639269
+      },
+      "recoveredGridCrossings": [
+        3,
+        4
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "9c0bea47ac4bcb2591fad213dd7180336843036cf03a09c2f5d637bcd4f40033",
+        "acc99f1a14cf2ce6688852cfb54afd0d8acf9eb64d97c38025dbcdf778ef4cbc",
+        "dd16e16ac887c1848698fc25a2312a71dbec0435888d3ccdd8d8b472c0d9e1f8",
+        "77c4e85be9f24118d4ebf43e9ad4787b8ac8f0bfaf9fb18eb02ea6dd63872401",
+        "41cb6ce2a2d1120eef9eb9bc6c0e442c7448650107b8e79aadb873c0e08d9d96",
+        "b783a73b8268524bdf57adf06bc478e9b3ecfbad4df7b95fc8676a043132968a"
+      ],
+      "originalAnchorYStd": 0.0013421567791724156,
+      "reviewedFootRootFrames": []
+    },
+    "run": {
+      "hero": "fire",
+      "action": "run",
+      "accepted": true,
+      "atlas": "run.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "run/frame-00.png",
+        "run/frame-01.png",
+        "run/frame-02.png",
+        "run/frame-03.png",
+        "run/frame-04.png",
+        "run/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "62b3109bd099fe5eb5df62cc00c6b7e82db680fc2f3a8dc3ec307634dea5fcd2",
+        "cd9d0e7ec8af6ee224c5e1326d8803db18db4fe56e9761af125bd05268f04ac3",
+        "33919a2b079d2ac012da4831699d5281e90f8748deb18b2d15c4d0ecefdd1d45",
+        "af5ff7dcdfe6ae3ccf10d4ba6ef94470765c0f6c97da4a1c5cb83e91c5578ed6",
+        "a71ab7f4abb35d8d76d33023322a016c5148d37a98d11e0ed3063fddabba39eb",
+        "ebb70c9b84bb8689a4b42686ed5b43bafe17921a620c1ce12ef53da62dc5e57a"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/fire-run.png",
+      "sourceSha256": "bea986d38b82f2478d7d8807546d9223f127bd0b49f1a6c6d853539194f1fa2e",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.471476137304707,
+        "output_subject_height_mean": 168.16666666666666,
+        "body_scale_cv": 0.035533604013299386,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.017079765133261593,
+        "anchor_y_mean": 0.9606119791666666,
+        "profile_body_scale_drift": 0.01898504653391453
+      },
+      "originalAnchorYStd": 0.033730304764004966,
+      "recoveredGridCrossings": []
+    }
+  }
+}

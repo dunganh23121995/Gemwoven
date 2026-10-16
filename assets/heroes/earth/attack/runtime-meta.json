@@ -1,0 +1,59 @@
+{
+  "hero": "earth",
+  "action": "attack",
+  "accepted": true,
+  "atlas": "attack.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128.0,
+    236
+  ],
+  "frameFiles": [
+    "attack/frame-00.png",
+    "attack/frame-01.png",
+    "attack/frame-02.png",
+    "attack/frame-03.png",
+    "attack/frame-04.png",
+    "attack/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "9d4abb764bbed104525e6bb970cca4fc1403182194010722b2f9be060f6a0f1d",
+    "64024dcacf80e4438dd71e127b5e49d4f2346e947fbb09b3ee1a2577c89c5b71",
+    "bf2f0c092847ac178dc276fdb4a487361d0a2089e0ef16e7c5ae3d52d0721524",
+    "8379ab944314acaed55d0021ae938c87fcc65919802d2ca2da1b6d12733ec632",
+    "1a8e28dd4242435a412e0a1f738786cba062f9c588526b7881847ecd54480077",
+    "932407da7028c0a03e0b824d834d8de4ad33bb9495eace6ade7349fbd9669aa7"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "source": "assets/raw/earth-attack.png",
+  "sourceSha256": "8ac7abdc7c4e99d323e2b70ae64e1112fd568a159c9aa7af03e11ca5f55d6a1c",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4795571491820034,
+    "output_subject_height_mean": 150.66666666666666,
+    "body_scale_cv": 0.05017137386867423,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.91796875,
+    "profile_body_scale_drift": 0.05176089597339584
+  },
+  "originalAnchorYStd": 0.049277446536891305,
+  "recoveredGridCrossings": [],
+  "reviewedFootRootFrames": [
+    3,
+    4
+  ]
+}

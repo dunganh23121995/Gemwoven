@@ -1,0 +1,418 @@
+{
+  "mika-attack1": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\attack1.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-attack1.wav",
+    "duration": 0.297,
+    "rms": 0.14,
+    "peak": 0.5781,
+    "sha256": "328fa45e089d253e129f43c0bf8b71dedc782d7cdefcd4ef1482f5d9b5351706"
+  },
+  "mika-attack2": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\attack2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-attack2.wav",
+    "duration": 0.327,
+    "rms": 0.14,
+    "peak": 0.5487,
+    "sha256": "21c38ade80c66a8271f1aea984997c17b8799f52ff3607861066cdf8e1bb8a0e"
+  },
+  "mika-attack3": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\attack3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-attack3.wav",
+    "duration": 0.391,
+    "rms": 0.14,
+    "peak": 0.5479,
+    "sha256": "83f4b47e8f3c8dd8ac3acab2499630f197250d3f8ecfb4d7c7f01a19dd263bfe"
+  },
+  "mika-hurt1": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\damaged1.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-hurt1.wav",
+    "duration": 0.474,
+    "rms": 0.14,
+    "peak": 0.5854,
+    "sha256": "adf4fed88ac217c4657364d8324cfa5547d0d4bf8384c180817a4629087e1acc"
+  },
+  "mika-hurt2": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\damaged2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-hurt2.wav",
+    "duration": 0.373,
+    "rms": 0.14,
+    "peak": 0.5486,
+    "sha256": "ad8f91a4cc65d3a687b736f4599b7168453f13261ab7ae2828269889e21be193"
+  },
+  "mika-hurt3": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\damaged3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-hurt3.wav",
+    "duration": 0.392,
+    "rms": 0.14,
+    "peak": 0.5366,
+    "sha256": "6a447e88839a2a7153c4a0378742550c45e8f8bb11791a59b5ef9cddb9c9306a"
+  },
+  "mika-cast": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\fire.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-cast.wav",
+    "duration": 0.662,
+    "rms": 0.14,
+    "peak": 0.4723,
+    "sha256": "88cbe80ea1a3f3b86c02931b46b5b33a3d00828fa5d930bc42c69e1da815cb52"
+  },
+  "mika-release": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 3\\burn.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.02,
+    "pitch": 0.98,
+    "file": "reimagined/mika-release.wav",
+    "duration": 0.543,
+    "rms": 0.14,
+    "peak": 0.4956,
+    "sha256": "2dc215f3f25e21f0f711053eba4af3c673d51895c0446bafa47570ad735f2407"
+  },
+  "yuki-attack1": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\attack1.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-attack1.wav",
+    "duration": 0.39,
+    "rms": 0.14,
+    "peak": 0.5412,
+    "sha256": "f2e476cee304f89dfd2db577eac913a1c78659f7d1061b2c433686eac8943a8b"
+  },
+  "yuki-attack2": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\attack2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-attack2.wav",
+    "duration": 0.405,
+    "rms": 0.14,
+    "peak": 0.5526,
+    "sha256": "6d5fcd25a0985ab3c4bb0c93d7161429578c3f2f1cf44a001ff7fd79a2574651"
+  },
+  "yuki-attack3": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\attack3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-attack3.wav",
+    "duration": 0.347,
+    "rms": 0.14,
+    "peak": 0.5763,
+    "sha256": "b97c6d121498d0528a7d386e704b0de9b9389b4021a154ba29a66efadac846e7"
+  },
+  "yuki-hurt1": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\damaged1.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-hurt1.wav",
+    "duration": 0.527,
+    "rms": 0.14,
+    "peak": 0.6042,
+    "sha256": "73d86b95def8838df58eaa5dbaff48915b8f0825f10baf5c5742f0b19da676fa"
+  },
+  "yuki-hurt2": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\damaged2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-hurt2.wav",
+    "duration": 0.339,
+    "rms": 0.14,
+    "peak": 0.5238,
+    "sha256": "f562d4c4cf1ebbd78238f82a44b670ed9778ab1d635402c911429bdfd3673b0e"
+  },
+  "yuki-hurt3": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\damaged3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-hurt3.wav",
+    "duration": 0.39,
+    "rms": 0.14,
+    "peak": 0.5291,
+    "sha256": "27be21d3d63ade277ab0f00119f4cfae4c9108f17188e3ea2ca35ad01a0cd9f8"
+  },
+  "yuki-cast": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\ice.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-cast.wav",
+    "duration": 0.485,
+    "rms": 0.14,
+    "peak": 0.5319,
+    "sha256": "edc315659b0602a77ae13789764a096eb910f20a40244b3e8a024bfb729b29ab"
+  },
+  "yuki-release": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 2\\freeze.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 0.93,
+    "pitch": 0.97,
+    "file": "reimagined/yuki-release.wav",
+    "duration": 0.669,
+    "rms": 0.14,
+    "peak": 0.4015,
+    "sha256": "c3fb969f881f531eb0b5005f3bd8cb6d9e6f6b0ff3b4c4602626825bb1af7861"
+  },
+  "lumi-attack1": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\attack1.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-attack1.wav",
+    "duration": 0.365,
+    "rms": 0.14,
+    "peak": 0.5805,
+    "sha256": "31283b7d9c19b313d7514d265292e9cb8f9f948f67b4c9b50ba84e4e4c60f520"
+  },
+  "lumi-attack2": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\attack2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-attack2.wav",
+    "duration": 0.403,
+    "rms": 0.14,
+    "peak": 0.5335,
+    "sha256": "2020312fe10ca71cf6b403b2612911c3453d7d8f9b737fee3aec0ffcb31531d9"
+  },
+  "lumi-attack3": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\attack3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-attack3.wav",
+    "duration": 0.406,
+    "rms": 0.14,
+    "peak": 0.511,
+    "sha256": "50b4e4eeb8aed651a081796f4cfc600eca5dc3a91074075a470a849f92a076db"
+  },
+  "lumi-hurt1": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\damaged1.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-hurt1.wav",
+    "duration": 0.287,
+    "rms": 0.14,
+    "peak": 0.514,
+    "sha256": "fadad51dc8acd5461b9060a2ba579dd668505c81de1e0995a68dc12b2530912b"
+  },
+  "lumi-hurt2": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\damaged2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-hurt2.wav",
+    "duration": 0.384,
+    "rms": 0.14,
+    "peak": 0.5467,
+    "sha256": "261b8b832215de8d8e32c61719a00c9271fc8fdeecd976f22aa4ce6286f35c43"
+  },
+  "lumi-hurt3": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\damaged3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-hurt3.wav",
+    "duration": 0.322,
+    "rms": 0.14,
+    "peak": 0.5511,
+    "sha256": "ca24c5b9395aa657c9d0becb781204a982ad459a37ce29bc36112dc854fb7155"
+  },
+  "lumi-cast": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\jump2.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-cast.wav",
+    "duration": 0.314,
+    "rms": 0.14,
+    "peak": 0.5685,
+    "sha256": "9a87fbf7841d61ee4717c286f22692390224e116b8be88d9b3d1026141ac4224"
+  },
+  "lumi-release": {
+    "sources": [
+      "sources\\female\\RPG Voice Starter Pack\\Type 1\\attack3.wav"
+    ],
+    "license": "CC0 / Cici Fyre",
+    "tempo": 1.06,
+    "pitch": 1.0,
+    "file": "reimagined/lumi-release.wav",
+    "duration": 0.406,
+    "rms": 0.14,
+    "peak": 0.511,
+    "sha256": "50b4e4eeb8aed651a081796f4cfc600eca5dc3a91074075a470a849f92a076db"
+  },
+  "nori-attack1": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\07_budouka_attack.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-attack1.wav",
+    "duration": 0.506,
+    "rms": 0.14,
+    "peak": 0.4759,
+    "sha256": "69947102debc86dcb265fc99a36e2456af44f22cb1920782a9e32233e4366a44"
+  },
+  "nori-attack2": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\09_budouka_attack.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-attack2.wav",
+    "duration": 1.029,
+    "rms": 0.14,
+    "peak": 0.4502,
+    "sha256": "2f41898fb6f3c2029f9bb7744bb6a954cd780d7a38d3a17e09e478bbcdeb45a9"
+  },
+  "nori-attack3": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\10_budouka_attack.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-attack3.wav",
+    "duration": 2.033,
+    "rms": 0.14,
+    "peak": 0.4766,
+    "sha256": "ec146461d0affd69e3bf4aaa8cbec5c2a195b1af2b41aba6fdd361b01fa1d19c"
+  },
+  "nori-hurt1": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\14_budouka_damage.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-hurt1.wav",
+    "duration": 0.792,
+    "rms": 0.14,
+    "peak": 0.7859,
+    "sha256": "5f542893ac821d0c098e1bc27597b6c4df15ebcedb3843fec8410827ebb1b07c"
+  },
+  "nori-hurt2": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\15_budouka_damage.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-hurt2.wav",
+    "duration": 0.747,
+    "rms": 0.14,
+    "peak": 0.5519,
+    "sha256": "25897abe9c9068ee8eda9dcd053ff9cbf7ce3cbb603f0ad71a4d3f8c9bf37099"
+  },
+  "nori-hurt3": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\16_budouka_damage.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-hurt3.wav",
+    "duration": 0.679,
+    "rms": 0.14,
+    "peak": 0.4551,
+    "sha256": "5360331b2568ae140d1123da5402f3b86c7be15cb96520ed04d094bda230ffce"
+  },
+  "nori-cast": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\12_budouka_attack.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-cast.wav",
+    "duration": 1.718,
+    "rms": 0.14,
+    "peak": 0.461,
+    "sha256": "193550a898d0f4e3c6cdd27e680f794ddbe1f3ea58ee74d217dd0db32d3e70ca"
+  },
+  "nori-release": {
+    "sources": [
+      "sources\\fighter\\BattleVoice_budouka\\wav\\11_budouka_attack.wav"
+    ],
+    "license": "YouFulca, credited in game",
+    "tempo": 0.97,
+    "pitch": 0.95,
+    "file": "reimagined/nori-release.wav",
+    "duration": 1.769,
+    "rms": 0.14,
+    "peak": 0.4448,
+    "sha256": "789dbcfcd08e8423e6b056221492395969f2d2fc22feb540a9f5964c4ce63bd0"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "hero": "lightning",
+  "action": "attack",
+  "accepted": true,
+  "atlas": "attack.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128,
+    231
+  ],
+  "frameFiles": [
+    "attack/frame-00.png",
+    "attack/frame-01.png",
+    "attack/frame-02.png",
+    "attack/frame-03.png",
+    "attack/frame-04.png",
+    "attack/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "c78fcd57dccc429fe3a86c7bf6f85e9aac13ca89555a6b4edf3559a0a31dfe8a",
+    "04abbbeb6a8e3489023be681b3ec3a1c6adcb723509507158f5c50808a059332",
+    "c45f0a5c24a70b756e3612ed0c881446b2d1385195a1ee6681b7f4c9b088b468",
+    "94c812ccbb101d6324b56a03977b5645b65fa0b6b19db61489a3a8cc20a2ca42",
+    "5320c8ddb6b1f5642bf24f3d43eefd72803ea0221c824542b99a389ac4d6cac5",
+    "1c46bd3cb9197c119a289148ed41035ece561896b6c05f00a0097d0285fefce7"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/reimagined/heroes/lightning-attack.png",
+  "sourceSha256": "8ab4a38bfb6befce262dfbd7aaa54020f2488edadb1dec1669a5848868bfe34f",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5096159451815461,
+    "output_subject_height_mean": 165.0,
+    "body_scale_cv": 0.010725292707697894,
+    "anchor_x_std": 0.009462527248534266,
+    "anchor_y_std": 0.0024359748611809512,
+    "anchor_y_mean": 0.8795572916666666,
+    "profile_body_scale_drift": 0.050243728445455105
+  },
+  "originalAnchorYStd": 0.029877067462457725,
+  "recoveredGridCrossings": [],
+  "headAnchors": [
+    [
+      117,
+      86
+    ],
+    [
+      118,
+      86
+    ],
+    [
+      119,
+      87
+    ],
+    [
+      117,
+      98
+    ],
+    [
+      109,
+      94
+    ],
+    [
+      117,
+      87
+    ]
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    8
+  ]
+}

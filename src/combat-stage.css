@@ -1,0 +1,32 @@
+/* The arena occupies the entire combat card. Status follows authored heads. */
+.battle-card{display:block;padding:0;overflow:hidden}
+.battle-card .scene{display:block;margin:0;min-height:240px;height:clamp(240px,calc(100svh - min(100vw,440px) - 130px),350px);border-radius:9px;isolation:isolate}
+.battle-card .scene::after{background:linear-gradient(#09191d40,transparent 25% 85%,#0c1b18a6)!important;pointer-events:none}
+.scene .hero-actor{width:clamp(200px,54vw,240px);height:clamp(200px,54vw,240px);left:calc(27% - clamp(100px,27vw,120px));bottom:16px}
+.scene .enemy-actor{width:clamp(224px,58vw,260px);height:clamp(224px,58vw,260px);right:calc(23% - clamp(112px,29vw,130px));bottom:16px}
+.scene .actor.boss{width:clamp(245px,64vw,282px);height:clamp(245px,64vw,282px);right:calc(23% - clamp(122.5px,32vw,141px));bottom:12px}
+.scene .boss-sigil{display:none}
+.arena-stage{position:absolute;left:17px;top:12px;z-index:3;font:700 9px Cambria,Georgia,serif;letter-spacing:1.5px;color:#e4d2a2;opacity:.85;text-shadow:0 1px 3px #000}
+.actor-head-anchor{position:absolute;width:0;height:0;pointer-events:none}
+.actor-hud{position:absolute;z-index:8;width:108px;transform:translate(-50%,-100%);pointer-events:none;text-align:center;filter:drop-shadow(0 2px 3px #000b)}
+.actor-hud .vital-name{justify-content:center;gap:4px;line-height:16px;margin:0}
+.actor-hud .vital-name strong{font:700 12px Cambria,Georgia,serif;max-width:96px;color:#fff0c7;overflow:visible;text-overflow:clip;white-space:nowrap;letter-spacing:.2px}
+.actor-hud .element-pill{display:none}
+.actor-hud .health-label{display:flex;justify-content:center;align-items:center;gap:5px;margin:1px 0 3px;font-size:8px;line-height:10px;color:#fff6e5}
+.actor-hud .health-track{height:6px;border:1px solid #bfa16b80;background:#0a1719c9;box-shadow:0 1px 4px #0008;border-radius:4px;overflow:hidden}
+.actor-hud .shield-label{display:inline-flex;align-items:center;gap:2px;color:#c1eaff}.actor-hud .shield-label svg{width:9px;height:9px}.actor-hud [hidden]{display:none!important}
+.head-rage-track{height:3px;margin:3px 8px 0;background:#130c2499;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px #cfb88433}
+.head-rage-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,#a986ff,#ffc979);box-shadow:0 0 6px #d5aaff;transition:width .16s}
+.actor-hud .status-row{justify-content:center;min-height:0;gap:4px;padding:3px 0 0}
+.actor-hud .status-pill{display:inline-flex;align-items:center;gap:2px;font-size:8px;line-height:11px;padding:0 3px;background:#10212ccb;border:1px solid #9bc4d755;border-radius:3px}.actor-hud .status-pill svg{width:9px;height:9px}
+.battle-message{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.actor-skill-pop{position:absolute;z-index:12;pointer-events:none;white-space:nowrap;font:800 13px Cambria,Georgia,serif;color:#fff5d2;text-align:center;text-shadow:0 2px 3px #041115,0 0 9px var(--skill-color);transform:translateX(-50%)}
+.actor-skill-pop.is-ultimate{font-size:18px;font-style:italic;color:#fff8d9;-webkit-text-stroke:.25px #ffe5a7;text-shadow:0 2px 2px #362015,0 0 12px var(--skill-color),0 0 23px var(--skill-color)}
+.ultimate-aura{position:absolute;inset:27% 10% 1%;z-index:-1;pointer-events:none;transform-origin:50% 80%}
+.aura-halo{position:absolute;inset:-15% -15% 0;border-radius:50%;background:radial-gradient(ellipse,#fff8d62e 0%,color-mix(in srgb,var(--aura-color) 55%,transparent) 35%,transparent 70%);filter:blur(7px)}
+.aura-ring{position:absolute;inset:9% 15% 0;border:2px solid var(--aura-color);border-radius:50%;box-shadow:0 0 20px var(--aura-color),inset 0 0 18px var(--aura-color);transform:rotate(-20deg)}
+.aura-ring.second{inset:20% 4% 3%;transform:rotate(32deg);border-width:1px;opacity:.75}
+.ultimate-aura b{position:absolute;left:50%;top:48%;width:5px;height:5px;background:#fff8ce;box-shadow:0 0 9px var(--aura-color);border-radius:50%;transform:rotate(var(--ray)) translateY(-70px)}
+.actor.charging-ultimate .sprite-body{filter:drop-shadow(0 0 9px #fff1bc) drop-shadow(0 0 17px var(--element,#ffc079))}
+body.reduced-motion .ultimate-aura{display:none}
+@media(max-width:370px){.actor-hud{width:94px}.actor-hud .vital-name strong{font-size:11px}.actor-skill-pop.is-ultimate{font-size:16px}}

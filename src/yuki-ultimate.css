@@ -1,0 +1,10 @@
+.yuki-staff-light{position:absolute;width:48px;height:48px;margin:-24px;z-index:4;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(circle,#fff 0%,#eaffff 5%,#a1eaffb8 15%,#70d8ff45 34%,transparent 70%);filter:drop-shadow(0 0 5px #92e6ff)}
+.yuki-staff-light i{position:absolute;inset:32%;border-radius:50%;background:radial-gradient(circle,#fff,#d8fbff60 45%,transparent 75%);box-shadow:0 0 11px #b6f4ff}
+.yuki-staff-light b{position:absolute;inset:-25%;border-radius:50%;background:radial-gradient(ellipse,#b9eaff25,transparent 68%);animation:yuki-staff-breathe .8s ease-in-out infinite alternate}
+@keyframes yuki-staff-breathe{to{opacity:.6;scale:1.18}}
+.rage-skyfall.yuki-glacier{position:absolute;pointer-events:none;z-index:7;background:none;filter:drop-shadow(0 0 9px #b4eeff75);transform-origin:50% 50%;overflow:visible}
+.yuki-glacier img{display:block;width:100%;height:100%;object-fit:contain}
+.yuki-glacier:before{content:'';position:absolute;inset:-95% 22% 35%;z-index:-1;opacity:.5;background:linear-gradient(transparent,#b3eaff25 65%,#ddfaff77);filter:blur(12px);border-radius:50%}
+.yuki-glacier.shattering:before{opacity:0}
+.yuki-frost-mist{background:radial-gradient(ellipse,#efffff9c,#b6eaff55 33%,transparent 70%);filter:blur(6px);mix-blend-mode:screen;z-index:6;pointer-events:none}
+.yuki-ice-fragment{position:absolute;z-index:8;pointer-events:none;height:auto;filter:drop-shadow(0 0 3px #c8f6ff);clip-path:polygon(18% 8%,95% 35%,44% 95%,4% 56%)}

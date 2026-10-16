@@ -1,0 +1,77 @@
+{
+  "hero": "ice",
+  "action": "idle",
+  "accepted": true,
+  "atlas": "idle.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "frameOrder": "row-major",
+  "loop": true,
+  "frameDuration": 230,
+  "origin": [
+    128,
+    244
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png",
+    "idle/frame-02.png",
+    "idle/frame-03.png"
+  ],
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "f7075104836c6170361b8b0e9979e86ed7cc2298a8c4fb30f8846b891234cf8d",
+    "a9e2d0bd2d4b1f7a583f5432d14858499a99dd3fe31dbfa2e4b25b8acb41f207",
+    "9cb5c62693042c50f1b6b7852b6a56b4ca1a78962e3bcf4e0a544bd9f1c65e56",
+    "7da54a9d6a428e987448f5663e3aef8bdea73c1e1a80b84edf2ba29e90852c6b"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/reimagined/bosses/ice-idle.png",
+  "sourceSha256": "99550f605d9d5a0558318bae7e7a8aff4daa107efa5649f870515d75808ab575",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5709975651393132,
+    "output_subject_height_mean": 194.25,
+    "body_scale_cv": 0.0006580882489722905,
+    "anchor_x_std": 0.0009765625,
+    "anchor_y_std": 0.0009765625,
+    "anchor_y_mean": 0.9189453125
+  },
+  "originalAnchorYStd": 0.008467607887398459,
+  "recoveredGridCrossings": [
+    0,
+    2
+  ],
+  "headAnchors": [
+    [
+      77,
+      82
+    ],
+    [
+      79,
+      82
+    ],
+    [
+      78,
+      82
+    ],
+    [
+      79,
+      82
+    ]
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    11
+  ]
+}

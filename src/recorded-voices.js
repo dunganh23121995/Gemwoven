@@ -1,0 +1,70 @@
+// Separate hero performances and creature SFX, embedded for offline playback.
+const voiceBuffers=new Map(),activeVoices=new Map(),voiceVariants=new Map();
+let voiceEpoch=0,bossDeathVoicePlayed=false;
+function decodeCombatVoice(context,id){
+  if(!voiceBuffers.has(id))voiceBuffers.set(id,(async()=>{
+    const binary=atob(ART.voices[id].src.split(',')[1]),bytes=new Uint8Array(binary.length);
+    for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+    return context.decodeAudioData(bytes.buffer);
+  })().catch(error=>{voiceBuffers.delete(id);throw error;}));
+  return voiceBuffers.get(id);
+}
+async function warmCombatVoices(){
+  const context=combatV3AudioContext();if(!context)return;
+  await Promise.allSettled(Object.keys(ART.voices).map(id=>decodeCombatVoice(context,id)));
+}
+function stopCombatVoices(){
+  stopNoctSounds();
+  stopCastSounds();
+  voiceEpoch++;
+  for(const entry of activeVoices.values())if(entry.source)try{entry.source.stop();}catch{}
+  activeVoices.clear();
+  for(const side of ['hero','enemy'])delete actor(side).dataset.voiceClip;
+}
+async function combatVoice(side,kind='attack'){
+  const death=side==='enemy'&&kind==='death';
+  if(death){
+    if(!state.boss||state.enemyHp>0||bossDeathVoicePlayed)return false;
+    bossDeathVoicePlayed=true;
+    // The finishing roar replaces an in-flight hurt/attack, including a clip
+    // that is still decoding. Subsequent combo hits cannot interrupt it.
+    const previous=activeVoices.get(side);activeVoices.delete(side);
+    if(previous?.source)try{previous.source.stop();}catch{}
+  }else if(side==='enemy'&&state.enemyHp<=0)return false;
+  const context=combatV3AudioContext();if(!context||activeVoices.has(side))return false;
+  const key=side==='hero'?state.key:state.enemyKey,monster=side==='enemy';
+  const family=monster?(state.boss?'boss-':'creature-')+key:{fire:'mika',earth:'nori',ice:'yuki',lightning:'lumi',shadow:'noct'}[key];
+  const variantKey=family+kind,index=voiceVariants.get(variantKey)||0;
+  const id=family+'-'+kind+(['attack','hurt'].includes(kind)?index%3+1:'');
+  const entry={epoch:voiceEpoch,id,source:null};activeVoices.set(side,entry);
+  try{
+    const buffer=await decodeCombatVoice(context,id);
+    if(!sound||entry.epoch!==voiceEpoch||activeVoices.get(side)!==entry)return false;
+    voiceVariants.set(variantKey,index+1);
+    const source=context.createBufferSource(),gain=context.createGain(),filter=context.createBiquadFilter(),now=context.currentTime;
+    source.buffer=buffer;
+    source.playbackRate.value=1;
+    filter.type='highpass';filter.frequency.value=monster?30:95;
+    gain.gain.value=monster?(death?.85:state.boss?.68:.58):key==='shadow'?1:.90;
+    source.connect(filter);filter.connect(gain);gain.connect(audioOutput(context,'voices'));
+    // A quiet, short room reflection gives the whole syllable a natural tail.
+    const delay=context.createDelay(.2),reflection=context.createGain();delay.delayTime.value=monster?.028:.075;reflection.gain.value=monster?.045:key==='shadow'?.025:.08;
+    gain.connect(delay);delay.connect(reflection);reflection.connect(audioOutput(context,'voices'));
+    entry.source=source;actor(side).dataset.voiceClip=id;
+    source.onended=()=>{
+      if(activeVoices.get(side)===entry){activeVoices.delete(side);delete actor(side).dataset.voiceClip;}
+      source.disconnect();filter.disconnect();
+      setTimeout(()=>{gain.disconnect();delay.disconnect();reflection.disconnect();},160);
+    };
+    source.start(now);return true;
+  }catch(error){if(activeVoices.get(side)===entry)activeVoices.delete(side);return false;}
+  finally{if(entry.epoch!==voiceEpoch&&activeVoices.get(side)===entry)activeVoices.delete(side);}
+}
+$('startBtn').addEventListener('click',()=>queueMicrotask(warmCombatVoices));
+$('soundBtn').addEventListener('click',()=>queueMicrotask(()=>sound?warmCombatVoices():stopCombatVoices()));
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCombatVoices();});
+$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Noct: <a href="https://youfulca.com/2022/08/06/cool/" target="_blank" rel="noopener">YouFulca · Cool / Lone Rival</a></p>');
+$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Voice: <a href="https://opengameart.org/content/female-rpg-voice-starter-pack" target="_blank" rel="noopener">Cici Fyre</a> · <a href="https://opengameart.org/content/monster-sound-effects-pack" target="_blank" rel="noopener">Ogrebane</a> · <a href="https://youfulca.com/2022/08/07/fighter/" target="_blank" rel="noopener">YouFulca</a></p>');
+$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Sấm: <a href="https://freesound.org/people/seth-m/sounds/458015/" target="_blank" rel="noopener">seth-m</a> · Sét đánh: <a href="https://freesound.org/people/Simon%20Spiers/sounds/437243/" target="_blank" rel="noopener">Simon Spiers</a> (CC0, đã biên tập)</p>');
+$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Băng nộ Yuki: <a href="https://freesound.org/people/j_p_higgins/sounds/262633/" target="_blank" rel="noopener">j_p_higgins · Ice Crack 3</a> · <a href="https://freesound.org/people/Za-Games/sounds/539968/" target="_blank" rel="noopener">Za-Games · Deep Boom</a> (CC0, đã lọc âm, phối và thêm vang trầm)</p>');
+$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Khiên Nori: <a href="https://freesound.org/people/Hybrid_V/sounds/319590/" target="_blank" rel="noopener">Hybrid_V · Shield Bash Impact</a> — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (đã cắt, EQ và thêm vang). Gió lửa Mika: <a href="https://freesound.org/people/hnhnh/sounds/244926/" target="_blank" rel="noopener">hnhnh · fire-whoosh.wav</a> (CC0, đã biên tập).</p>');

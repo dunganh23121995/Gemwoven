@@ -1,0 +1,9 @@
+.mika-blade-pivot{position:absolute;z-index:5;width:0;height:0;pointer-events:none;transform-origin:0 0}
+.mika-flame-blade{position:absolute;left:0;top:0;display:block;background-size:200% 200%;background-repeat:no-repeat;transform-origin:50% 95.3125%;filter:drop-shadow(0 0 3px #fff19c) drop-shadow(0 0 9px #ff651f);will-change:transform;mix-blend-mode:screen}
+.mika-impact-flare{background:radial-gradient(ellipse,#fff9db 0,#ffe79b 12%,#ff8c25a0 37%,transparent 70%);mix-blend-mode:screen;filter:blur(2px)}
+.mika-impact-explosion{background-size:300% 200%;background-repeat:no-repeat;filter:drop-shadow(0 0 5px #ff781f);z-index:6}
+.mika-impact-shockwave{background:radial-gradient(ellipse,transparent 51%,#ff9c3340 55%,#ffedb8d0 58%,#ffad4b60 61%,transparent 67%);mix-blend-mode:screen;filter:blur(.6px)}
+.mika-impact-ember{border-radius:65% 30% 65% 30%;background:radial-gradient(ellipse at 40% 35%,#fffbe1 0 20%,#ffcf62 35%,#ff6519 65%,transparent 85%);box-shadow:0 0 5px #ff8a22;mix-blend-mode:screen;z-index:7}
+.mika-sword-wave{background-size:200% 200%;background-repeat:no-repeat;filter:drop-shadow(0 0 5px #fff4ab) drop-shadow(0 0 12px #ff7a18);mix-blend-mode:screen;z-index:7}
+.mika-impact-burst{background:radial-gradient(circle,#fffce8 0,#fff1a6 9%,#ffb442b0 24%,#ff4e1c60 42%,transparent 68%);mix-blend-mode:screen;filter:blur(1px)}
+body.reduced-motion .mika-blade-pivot,body.reduced-motion .mika-impact,body.reduced-motion .mika-sword-wave{display:none}

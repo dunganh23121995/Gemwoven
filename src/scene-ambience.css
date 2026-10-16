@@ -1,0 +1,22 @@
+/* Individual translate leaves the victory camera's transform free to pan. */
+.landscape .parallax-layer[data-depth="0"]{scale:1.04;transform-origin:0 50%;animation:scenery-breathe-far 24s ease-in-out infinite alternate}
+.landscape .parallax-layer[data-depth="1"]{scale:1.025;transform-origin:0 50%;animation:scenery-breathe-mid 18s ease-in-out infinite alternate}
+@keyframes scenery-breathe-far{from{translate:-3px -1px}to{translate:-10px -3px}}
+@keyframes scenery-breathe-mid{from{translate:-2px 0}to{translate:-5px -2px}}
+.scene .scene-motes{display:none}
+.scene-atmosphere{--mist:172,205,169;--speck:#e9f9b2;position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;contain:paint}
+.scene[data-biome="fire"] .scene-atmosphere{--mist:216,147,105;--speck:#ffd18c}
+.scene[data-biome="ice"] .scene-atmosphere{--mist:166,216,245;--speck:#e1faff}
+.scene[data-biome="lightning"] .scene-atmosphere{--mist:175,179,219;--speck:#e3d9ff}
+.ambient-mist{position:absolute;inset:0 -22%;opacity:.42;background:radial-gradient(ellipse at 25% 75%,rgba(var(--mist),.19),transparent 50%),radial-gradient(ellipse at 76% 35%,rgba(var(--mist),.13),transparent 47%);animation:ambient-mist-drift 32s ease-in-out infinite alternate}
+.ambient-mist.mist-near{inset:45% -30% -15%;opacity:.32;animation-duration:23s;animation-delay:-12s;animation-direction:alternate-reverse}
+.ambient-speck{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:var(--speck);box-shadow:0 0 7px 2px color-mix(in srgb,var(--speck) 40%,transparent);opacity:0;animation:ambient-speck-rise var(--duration) var(--delay) linear infinite}
+.scene[data-biome="ice"] .ambient-speck{animation-name:ambient-snow-fall;box-shadow:0 0 4px var(--speck)}
+.scene[data-biome="lightning"] .ambient-speck{--size:2px;animation-name:ambient-wind-drift;box-shadow:0 0 5px var(--speck)}
+@keyframes ambient-mist-drift{from{transform:translateX(-5%) translateY(1%)}to{transform:translateX(7%) translateY(-2%)}}
+@keyframes ambient-speck-rise{0%{transform:translate(0,25px);opacity:0}20%{opacity:.48}55%{opacity:.24}75%{opacity:.5}100%{transform:translate(var(--drift),-50px);opacity:0}}
+@keyframes ambient-snow-fall{0%{transform:translate(0,-50px);opacity:0}20%,70%{opacity:.45}100%{transform:translate(var(--drift),55px);opacity:0}}
+@keyframes ambient-wind-drift{0%{transform:translate(-30px,10px);opacity:0}25%,65%{opacity:.3}100%{transform:translate(45px,-15px);opacity:0}}
+body.reduced-motion .scene-atmosphere{display:none}
+body.reduced-motion .landscape .parallax-layer{animation:none;translate:0 0;scale:1}
+body.ambience-paused .scene-atmosphere *,body.ambience-paused .landscape .parallax-layer{animation-play-state:paused}

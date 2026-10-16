@@ -1,0 +1,78 @@
+Combat recordings used in Mam Phep (2026-10-15)
+
+Scene music (V23): four original instrumental ambient compositions, generated
+for this game by scripts/prepare_scene_music.py. No third-party music samples.
+Fire: Tro am; earth: Reu va anh nang; ice: Trang tren tuyet;
+lightning: Gio tren thap. Stereo Ogg loops, 56-64 seconds, embedded offline.
+
+Female RPG Voice Starter Pack - Cici Fyre / cicifyre
+https://opengameart.org/content/female-rpg-voice-starter-pack
+License: CC0. Three acted female timbres; nonverbal effort/pain clips only.
+Original files under sources/female; normalized mono PCM with pitch-preserving
+tempo adjustment, full breath tails and occasional two-syllable sequences.
+
+Creature sounds (V22): new short banks, no human adventurer lines used.
+Monster Sound Effects Pack - Ogrebane, CC0
+https://opengameart.org/content/monster-sound-effects-pack
+Raw sources under sources/creatures/pack/monster_sfx_pack. Short excerpts,
+filtering, pitch/time adjustment and subtle elemental textures; 0.22..0.55 s.
+Earlier Darsycho/trazzz123 recordings are retained locally but not embedded.
+Exact sources: creature-manifest.json. Build: prepare_creature_voices.py.
+Four additional elemental boss defeat roars use the same CC0 creature
+recordings, with a 0.95-second envelope and a soft decaying tail.
+Legacy Brandon Song sources remain local but are not included in Game.html.
+
+Fighter battle voice - YouFulca
+https://youfulca.com/2022/08/07/fighter/
+Terms: https://youfulca.com/kiyaku_jp/ (checked 2026-10-15).
+Free use in finished games, commercial/noncommercial; modifications allowed.
+Copyright remains YouFulca. Do not redistribute as a standalone voice pack
+or claim the recordings as original. Include this credit when distributing
+the game. Raw sources are local production inputs, not a new asset library.
+Used by Nori: 07/08/09 attack, 14/15/16 damage, 12 charge, 11 release.
+
+Japanese battle voice direction also referenced:
+https://mitsugetsu-eight.itch.io/voice-assets-10-character-girls-voice-tsukaeru-battle-female-vol-2
+No audio from that paid pack is included.
+
+Runtime clips and exact source mappings: manifest.json.
+Build: python scripts/prepare_combat_voices.py; python build.py.
+No voice cloning, TTS or oscillator imitation is used for these voices.
+
+Noct: YouFulca - Cool / Lone Rival voice performance (replaces Fighter bank).
+https://youfulca.com/2022/08/06/cool/
+Terms: https://youfulca.com/kiyaku_jp/ (checked 2026-10-15).
+Original recordings: sources/cool/BattleVoice_cool/wav/.
+Attack: 07/08/11; hurt: 14/15/16; preparation: 21; release: 09.
+Mild 0.96 pitch adjustment with original timing; warm low mids, clear
+consonants and soft saturation. No thick synthetic whisper layer.
+No spectral whisper synthesis, no voice cloning. Eight dedicated clips;
+exact sources and processing in noct-manifest.json.
+Build: python scripts/prepare_noct_voices.py.
+Same YouFulca terms as above: finished game use and processing permitted;
+do not redistribute the recordings as a standalone voice asset pack.
+
+Noct wind/katana sound direction references Riot's Yasuo champion showcase:
+https://www.leagueoflegends.com/en-us/champions/yasuo/
+https://www.youtube.com/watch?v=fkM20LgOdKQ
+No Riot recordings are embedded. Voice remains licensed YouFulca recordings.
+Katana recordings by Taira Komori, TK'S FREE SOUND FX:
+https://taira-komori.net/jidaigeki01en.html
+Terms: https://taira-komori.net/freesounden.html (checked 2026-10-15).
+Free use and processing within games; no standalone sample redistribution.
+Sources: cutting_with_a_katana1/2/3, extracting_a_sword1, sword_attack1.
+Layered with original filtered-wind textures, time-compressed and normalized.
+Exact source mapping: noct-sfx-manifest.json.
+Build: python scripts/prepare_noct_sounds.py.
+
+Cast redesign (2026-10-15): new processed banks from the licensed sources above.
+Mika: Cici Fyre Type 3; Yuki: Type 2; Lumi: Type 1. Nori: YouFulca Fighter
+07/09/10 attack, 14/15/16 hurt, 12 cast, 11 release. Voices retain natural
+performances with mild pitch/tempo, presence EQ and level normalization.
+Exact source files and output metadata: cast-voice-manifest.json (32 clips).
+Boss-only voices: Ogrebane CC0 creature sources, filtered/pitched excerpts;
+boss-voice-manifest.json (36 clips). No human voice is used for these bosses.
+Elemental charge/launch/impact/finish/receive sounds are original synthesized
+textures; cast-sfx-manifest.json (20 clips), no third-party samples.
+Build: python scripts/prepare_cast_audio.py; python build.py.
+The approved Noct voice and katana/wind banks are unchanged.

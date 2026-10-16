@@ -1,0 +1,56 @@
+{
+  "hero": "shadow",
+  "action": "attack",
+  "accepted": true,
+  "atlas": "attack.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128.0,
+    241
+  ],
+  "frameFiles": [
+    "attack/frame-00.png",
+    "attack/frame-01.png",
+    "attack/frame-02.png",
+    "attack/frame-03.png",
+    "attack/frame-04.png",
+    "attack/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "f914b4dd681d067b830a0c75f6acb120fe35bb49a7e361656262852c15cc595b",
+    "3ca49b61d5f2ad7d3c331f54323e49cb0b53bd2c41d099806018c86e646edfb9",
+    "04f45ed33e17df0805ccba50aa59e99162d6b1a6061fe02c9cc111018ed0788d",
+    "b6ccd5993be02fa093c7d74e9cb0d448ecadb6af87cd7c24608ea2a3aba1d8e5",
+    "8a23471061b5e558d8779d7bbaf3c93ae83c1f4bfe2822e0b069b7ddd387d90d",
+    "2f49fb2927984a15c7ebd95c8fd27b712801204323f92129c5a737243cdfac41"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/shadow-attack.png",
+  "sourceSha256": "5bca4e2e1cb7d2a69d76c15f34e3efc4bb528bfbca5c5c4f43cf47fb11cebcca",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4544505291716681,
+    "output_subject_height_mean": 160.5,
+    "body_scale_cv": 0.029244678850237692,
+    "anchor_x_std": 0.0014557734228514254,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.91796875,
+    "profile_body_scale_drift": 0.0653051330426464
+  },
+  "originalAnchorYStd": 0.001752983335655763,
+  "recoveredGridCrossings": []
+}

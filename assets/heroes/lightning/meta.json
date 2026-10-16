@@ -1,0 +1,225 @@
+{
+  "hero": "lightning",
+  "cellSize": 256,
+  "actions": {
+    "idle": {
+      "hero": "lightning",
+      "action": "idle",
+      "accepted": true,
+      "atlas": "idle.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "frameOrder": "row-major",
+      "loop": true,
+      "frameDuration": 230,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "idle/frame-00.png",
+        "idle/frame-01.png",
+        "idle/frame-02.png",
+        "idle/frame-03.png"
+      ],
+      "uniqueFrames": 4,
+      "framePixelHashes": [
+        "87497a98112831fc114a78585d46f41bd1b46b565b981f88dd0b3b37efccf7f7",
+        "2a84295d837aedf076fa2c17fc0471b8613700d2d725d3691fab33fc32014841",
+        "8b41a070ebb116a2113539a1d17c0c6ea3724d5d5b27e390b4e23aaaf7a908e1",
+        "6bfb4f459817cadeaf2b5427f00f9c1109ae1093e9cece75568e15de888cc47d"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/lightning-idle.png",
+      "sourceSha256": "255e115442854c9d17a54a271b853d39c4ae7a4f5f7e0a2ed48c28d8584d32ad",
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5342525780801854,
+        "output_subject_height_mean": 173.0,
+        "body_scale_cv": 0.0027951511880171605,
+        "anchor_x_std": 0.0004228639666916204,
+        "anchor_y_std": 0.0013810679320049757,
+        "anchor_y_mean": 0.919921875
+      },
+      "originalAnchorYStd": 0.025518341307814996,
+      "recoveredGridCrossings": [],
+      "reviewedFootRootFrames": []
+    },
+    "attack": {
+      "hero": "lightning",
+      "action": "attack",
+      "accepted": true,
+      "atlas": "attack.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "attack/frame-00.png",
+        "attack/frame-01.png",
+        "attack/frame-02.png",
+        "attack/frame-03.png",
+        "attack/frame-04.png",
+        "attack/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "3329f0358302bef2a3a81aaa18ee93db9debd36567412ea458bdcf09be5dde29",
+        "05c7a507994e1c66ff38d8a8cd914966650ba9b4d187ceac5918c1df0ba90e7d",
+        "cb79841a712674fed163cea11d7af612f9ed037424731b9765ddfd6ebd628b0e",
+        "6e5091ba4db96329fa2b499f0330e1a41c3cf4cd85c7357485e92ece6276dcfa",
+        "776e9c453efe1a87eb5c3841dd4f3d3e82aee928d3f020eea099a590e43e9014",
+        "3ad0157fb1cd617e793f2b7d1ed340da64557ec26387526dc042f757ec7909f7"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/lightning-attack.png",
+      "sourceSha256": "ba38cec73837e42f0a9901de74e91f1a497addc6279b96d4e6c6d1a1051f0765",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4959609428229514,
+        "output_subject_height_mean": 160.5,
+        "body_scale_cv": 0.009542246491379637,
+        "anchor_x_std": 0.0058230936914057015,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.07167328119376315
+      },
+      "originalAnchorYStd": 0.030329389378625723,
+      "recoveredGridCrossings": [],
+      "reviewedFootRootFrames": []
+    },
+    "cast": {
+      "hero": "lightning",
+      "action": "cast",
+      "accepted": true,
+      "atlas": "cast.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "cast/frame-00.png",
+        "cast/frame-01.png",
+        "cast/frame-02.png",
+        "cast/frame-03.png",
+        "cast/frame-04.png",
+        "cast/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "ae0fbfb0cbe93ff744355ad4e33d8e03bdd79337f56bc6c2a918e1f3b9744f97",
+        "a315a1a7f65fbead80d33a17da7af3d8e04ffff0e02aa2c043e42587c5d23621",
+        "33212ec5fffcfa3936ec784c8b312bfd70b413d0edfe57ebf9a373428bf0ff5d",
+        "8cb36aaa0d3710975a1b6b77525063a9ba7d017382ec0184b45758170b7e2e6f",
+        "ee574d26dec980de368a12ed8ef88a00576a90294a81384b7aa590d229c7f5e7",
+        "e399b345f652cbd7d5a5d0178d3e8d24fa9d7ff30685b8f6c4ef2bc88fa90f27"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/lightning-cast.png",
+      "sourceSha256": "1806bffea950dda57c74e21fb3168332113f1a73bd6704ffb6f5dd93be742ee9",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5204230042712155,
+        "output_subject_height_mean": 177.33333333333334,
+        "body_scale_cv": 0.020518736361239073,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.025885834484254633
+      },
+      "originalAnchorYStd": 0.006253051013118016,
+      "recoveredGridCrossings": [],
+      "reviewedFootRootFrames": []
+    },
+    "run": {
+      "hero": "lightning",
+      "action": "run",
+      "accepted": true,
+      "atlas": "run.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "run/frame-00.png",
+        "run/frame-01.png",
+        "run/frame-02.png",
+        "run/frame-03.png",
+        "run/frame-04.png",
+        "run/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "705378d988558202ca3e89ce746c7370296e573c4d4c0ab106ca558b6e7a8ded",
+        "8ebbc80198bfec0abaa185e66806da73455ecf4abdb2843ecac2639864439113",
+        "7748a5ad2b5453c9e175aeb00fc148e3e2539bc4bc37dbb65f6e3674059094f5",
+        "4bd28f60b34a2a56567c09186d9b43a00b7573cddd476b77d13f33f2f45e898d",
+        "ae17e6ac10d7f692608fefa9de37694c0a04a4565a1d01393a902631a5f67790",
+        "75211e1dba2b40b6d5a976662b078570af0f3a690e8e0ef73da141c934804661"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/lightning-run.png",
+      "sourceSha256": "6c1b7248a014c7788513be5e7f055441674b7e1ba789ecf869934af4fbae388c",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5093747703649701,
+        "output_subject_height_mean": 172.83333333333334,
+        "body_scale_cv": 0.02681894683209368,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.012039871099548781,
+        "anchor_y_mean": 0.974609375,
+        "profile_body_scale_drift": 0.046565629696374455
+      },
+      "originalAnchorYStd": 0.031156612304431116,
+      "recoveredGridCrossings": []
+    }
+  }
+}

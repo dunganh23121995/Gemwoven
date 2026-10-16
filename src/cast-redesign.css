@@ -1,0 +1,56 @@
+.cast-fx{pointer-events:none;mix-blend-mode:screen;filter:drop-shadow(0 0 5px var(--combat-main));z-index:5}
+.cast-fx svg{width:100%;height:100%;overflow:visible}
+.cast-channel,.cast-ward{color:var(--combat-main);filter:drop-shadow(0 0 9px var(--combat-main)) drop-shadow(0 0 2px #fff8dc)}
+.cast-channel svg,.cast-ward svg{fill:var(--combat-main);fill-opacity:.38;stroke:var(--combat-light);stroke-width:1.5}
+.cast-channel .emblem-core,.cast-ward .emblem-core{fill:var(--combat-light);fill-opacity:.85;stroke:none}
+.cast-channel .emblem-lines,.cast-ward .emblem-lines{fill:none;stroke:var(--combat-light);stroke-width:2;stroke-linejoin:round}
+.cast-channel[data-caster="enemy"]{filter:drop-shadow(0 0 12px var(--combat-deep)) drop-shadow(0 0 3px var(--combat-main));mix-blend-mode:normal}
+.cast-channel[data-caster="enemy"] svg{fill-opacity:.2;stroke-width:2.5}
+.cast-bloom{background:radial-gradient(ellipse,#fffbedb0 0%,var(--combat-main) 13%,transparent 68%);filter:blur(3px);border-radius:50%}
+.cast-particle{background:var(--combat-light);box-shadow:0 0 7px 2px var(--combat-main)}
+.cast-particle.cast-fire{border-radius:80% 12% 80% 30%;background:linear-gradient(130deg,#fff8ba,#ff943d 55%,#e64427)}
+.cast-particle.cast-earth{clip-path:polygon(25% 0,85% 15%,100% 70%,40% 100%,0 60%);background:linear-gradient(130deg,#f3ffb5,#80b86b 40%,#385a4a)}
+.cast-particle.cast-ice{clip-path:polygon(50% 0,75% 35%,100% 50%,70% 65%,50% 100%,30% 65%,0 50%,25% 35%);background:#eaffff}
+.cast-particle.cast-lightning{clip-path:polygon(50% 0,60% 35%,100% 50%,60% 65%,50% 100%,40% 65%,0 50%,40% 35%);background:#fff0bd}
+.cast-fault{filter:drop-shadow(0 0 7px #c5f989);transform-origin:50% 50%}
+.cast-monolith{mix-blend-mode:normal;filter:drop-shadow(0 0 4px #bddc7f)}
+.cast-flame-petal{filter:drop-shadow(0 0 8px #ff752c) blur(.4px)}
+.cast-snow-bloom{filter:drop-shadow(0 0 7px #70dfff) drop-shadow(0 0 2px white)}
+.cast-electric-crown{filter:drop-shadow(0 0 8px #bd8aff) drop-shadow(0 0 2px #fff)}
+.living-electricity .living-arc{stroke-dasharray:13 4;animation:cast-current .19s linear infinite}
+@keyframes cast-current{to{stroke-dashoffset:-34}}
+.rage-skyfall.cast-skyfall{width:100px;background:none;filter:drop-shadow(0 0 10px var(--rage-color));transform-origin:top center;overflow:visible}
+.cast-skyfall svg{display:block;width:100%;height:100%;overflow:visible}
+.cast-skyfall.lightning .storm-column{stroke-linejoin:round;stroke-linecap:round;animation:cast-storm-wave .17s ease-in-out infinite alternate}
+@keyframes cast-storm-wave{to{transform:translateX(3px);stroke-dashoffset:14}}
+.actor.boss[data-element="fire"] .boss-gloom{filter:hue-rotate(285deg);opacity:.85}
+.actor.boss[data-element="earth"] .boss-gloom{filter:hue-rotate(45deg);opacity:.65}
+.actor.boss[data-element="ice"] .boss-gloom{filter:hue-rotate(155deg);opacity:.65}
+.actor.boss[data-element="lightning"] .boss-gloom{filter:hue-rotate(220deg);opacity:.8}
+.actor.boss .boss-sigil{display:none}
+.hero-actor[data-hero="lightning"][data-floating="true"]:before{opacity:.35;scale:.75;translate:0 14px;filter:blur(3px)}
+.hero-actor[data-hero="lightning"][data-floating="false"]{transition:translate .22s ease-in}
+/* New body sheets share a lower floor; lift their portrait crop into the jewel. */
+.gem-choice:not([data-class="shadow"]) .gem-portrait>.sprite-body{top:-85%}
+/* Lumi: fine branching plasma with a white core and a diffuse violet corona. */
+.cast-fx.lumi-electric,.rage-skyfall.lumi-electric{filter:none;mix-blend-mode:screen}
+.lumi-electric svg{fill:none;fill-opacity:1;stroke:none;overflow:visible}
+.lumi-electric path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.lumi-electric .electric-haze{stroke:#8462f5;stroke-width:14;opacity:.38;filter:blur(7px)}
+.lumi-electric .electric-halo{stroke:#bda7ff;stroke-width:4;opacity:.8;filter:blur(1.7px)}
+.lumi-electric .electric-branches{stroke:#c1dcff;stroke-width:.75;opacity:.75;filter:drop-shadow(0 0 2px #947aff)}
+.lumi-electric .electric-core{stroke:#f5fcff;stroke-width:1.25;filter:drop-shadow(0 0 2px #ded3ff)}
+.rage-skyfall.lumi-electric{transform:translateX(-50%)}
+.rage-skyfall.lumi-electric .electric-core{stroke-width:1.9}
+.rage-skyfall.lumi-electric .electric-halo{stroke-width:5}
+.lumi-storm-cloud{position:absolute;top:-30px;left:0;width:100%;height:105px;z-index:9;pointer-events:none;isolation:isolate;mask-image:linear-gradient(#000 0%,#000 65%,transparent 100%)}
+.lumi-storm-cloud i{position:absolute;left:var(--puff-x);top:var(--puff-y);width:var(--puff-size);height:68px;border-radius:50%;background:radial-gradient(ellipse at 48% 28%,#8993b9b8 0%,#414961e0 30%,#202336eb 55%,#151c2a00 75%);filter:blur(6px);animation:lumi-cloud-drift 2.6s ease-in-out var(--puff-delay) infinite alternate}
+.lumi-storm-cloud b{position:absolute;inset:20px 4% -8px;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse at 65% 55%,#eeecffcc,#b8adff69 25%,transparent 64%);filter:blur(9px)}
+@keyframes lumi-cloud-drift{from{transform:translate(-7px,-3px) scale(1)}to{transform:translate(8px,4px) scale(1.15,.9)}}
+.lumi-storm-bolt .electric-haze{stroke-width:18;opacity:.45}
+.lumi-charge-mantle{background:radial-gradient(ellipse at 50% 80%,#7a7dff15,transparent 65%);z-index:3}
+.lumi-charge-mantle .electric-haze{stroke:#7b8dff;stroke-width:10;opacity:.22;filter:blur(5px)}
+.lumi-charge-mantle .electric-halo{stroke:#a3cfff;stroke-width:3;opacity:.55;filter:blur(1.5px)}
+.lumi-charge-mantle .electric-core{stroke:#ecf8ff;stroke-width:.85;opacity:.9}
+.lumi-charge-mantle .electric-branches{stroke:#b6d9ff;stroke-width:.5;opacity:.45}
+.hero-actor[data-hero="lightning"] .rage-aura .aura-ring{display:none}

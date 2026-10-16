@@ -1,0 +1,77 @@
+{
+  "hero": "lightning",
+  "action": "idle",
+  "accepted": true,
+  "atlas": "idle.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "frameOrder": "row-major",
+  "loop": true,
+  "frameDuration": 230,
+  "origin": [
+    128,
+    231
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png",
+    "idle/frame-02.png",
+    "idle/frame-03.png"
+  ],
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "c7b1b11b0da8940473cdf804c1bd3912e48ff5cc5b6dae2ca479f6c55e5818d0",
+    "01dd426ecf344165909e28e269c6008c234eead7421ec3f1e126fef3d879fd14",
+    "0f78081a43350a27e5c66841faf4b5907408fd600a0954d3cd942ccf157fb9b0",
+    "bf9f41f9c95d703e7a2ba2d54ccb88e904234df487c3946f818763cc9779d2ab"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/reimagined/heroes/lightning-idle.png",
+  "sourceSha256": "8dbc8d04db57bdc34ce91a4f19b4a022b7a34471fd46c6811320f311643baf0d",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5302631462389206,
+    "output_subject_height_mean": 167.0,
+    "body_scale_cv": 0.005351724724495977,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.0013810679320049757,
+    "anchor_y_mean": 0.892578125,
+    "profile_body_scale_drift": 0.011764146164521483
+  },
+  "originalAnchorYStd": 0.013719817012827158,
+  "recoveredGridCrossings": [
+    1
+  ],
+  "headAnchors": [
+    [
+      117,
+      84
+    ],
+    [
+      116,
+      83
+    ],
+    [
+      113,
+      87
+    ],
+    [
+      117,
+      85
+    ]
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    8
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "hero": "shadow",
+  "cellSize": 256,
+  "actions": {
+    "idle": {
+      "hero": "shadow",
+      "action": "idle",
+      "accepted": true,
+      "atlas": "idle.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "frameOrder": "row-major",
+      "loop": true,
+      "frameDuration": 230,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "idle/frame-00.png",
+        "idle/frame-01.png",
+        "idle/frame-02.png",
+        "idle/frame-03.png"
+      ],
+      "uniqueFrames": 4,
+      "framePixelHashes": [
+        "dea866295e84af3f6b81ccae6afc26bbff0a18cb6599de7148f94cc0d6fa2299",
+        "f9b7cf3e92024d064bf1069671c5d402906082e4eee183b7dec1164c93ec6c00",
+        "75f1969875ee795050c4e6cbb9db6381a5d2fce84162fe47885808f667a4d0a0",
+        "0ee4c57eb87cf985a07b834625ab8ceafde962a6b7bd57798b9c96a098ebb146"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/shadow-idle.png",
+      "sourceSha256": "7993f22d976f77a1be9d7879c0a351950a856ab147a71c4f2b544303a5fd88b7",
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4862020165479339,
+        "output_subject_height_mean": 161.75,
+        "body_scale_cv": 0.00684142706953569,
+        "anchor_x_std": 0.0016194456984157226,
+        "anchor_y_std": 0.0009765625,
+        "anchor_y_mean": 0.9189453125
+      },
+      "originalAnchorYStd": 0.00545246982901809,
+      "recoveredGridCrossings": []
+    },
+    "attack": {
+      "hero": "shadow",
+      "action": "attack",
+      "accepted": true,
+      "atlas": "attack.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "attack/frame-00.png",
+        "attack/frame-01.png",
+        "attack/frame-02.png",
+        "attack/frame-03.png",
+        "attack/frame-04.png",
+        "attack/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "f914b4dd681d067b830a0c75f6acb120fe35bb49a7e361656262852c15cc595b",
+        "3ca49b61d5f2ad7d3c331f54323e49cb0b53bd2c41d099806018c86e646edfb9",
+        "04f45ed33e17df0805ccba50aa59e99162d6b1a6061fe02c9cc111018ed0788d",
+        "b6ccd5993be02fa093c7d74e9cb0d448ecadb6af87cd7c24608ea2a3aba1d8e5",
+        "8a23471061b5e558d8779d7bbaf3c93ae83c1f4bfe2822e0b069b7ddd387d90d",
+        "2f49fb2927984a15c7ebd95c8fd27b712801204323f92129c5a737243cdfac41"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/shadow-attack.png",
+      "sourceSha256": "5bca4e2e1cb7d2a69d76c15f34e3efc4bb528bfbca5c5c4f43cf47fb11cebcca",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4544505291716681,
+        "output_subject_height_mean": 160.5,
+        "body_scale_cv": 0.029244678850237692,
+        "anchor_x_std": 0.0014557734228514254,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.0653051330426464
+      },
+      "originalAnchorYStd": 0.001752983335655763,
+      "recoveredGridCrossings": []
+    },
+    "cast": {
+      "hero": "shadow",
+      "action": "cast",
+      "accepted": true,
+      "atlas": "cast.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "cast/frame-00.png",
+        "cast/frame-01.png",
+        "cast/frame-02.png",
+        "cast/frame-03.png",
+        "cast/frame-04.png",
+        "cast/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "11f0c3f85f4045fb2fb039afdee857c100aaac6c11b5545a25c1bfb50f30991c",
+        "7c0a09f1d4659c41b2bf7e5a1e93a36dcb81b76f4ed8dac1ed55a4b37a3c8a5a",
+        "dee9bab67c5dba06eb914626b2670c14e31a4727fccd3c3208a289778bd76e03",
+        "58b0a075b694a8e54047a58f1ac299655b8ccff36bab0e1083630b5ef7b31e5f",
+        "ce84281ae7dda00ecea4efe6ea3945a246b15d4ee63d316c937d6e28fd10bdb2",
+        "3c38d42a894ded8acd27687f6153fa7ef9a19d62d0dd19297040a11816a90281"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/shadow-cast.png",
+      "sourceSha256": "8d8d2957ca377cc471ff3556a829c19027b4351d5d04af7a99bc3b3c5dd863c1",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4447692175374445,
+        "output_subject_height_mean": 144.83333333333334,
+        "body_scale_cv": 0.04129490265451338,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.0852172504438895
+      },
+      "originalAnchorYStd": 0.01862024693499361,
+      "recoveredGridCrossings": []
+    },
+    "buff": {
+      "hero": "shadow",
+      "action": "buff",
+      "accepted": true,
+      "atlas": "buff.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "buff/frame-00.png",
+        "buff/frame-01.png",
+        "buff/frame-02.png",
+        "buff/frame-03.png",
+        "buff/frame-04.png",
+        "buff/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "48fe5b3a12d23c37285ff731f92b6945a1cf18009d9e574c01ae4947f1b3f66b",
+        "a5b53610acb8f0739452359fc0226bf559fd6d6d3cbe574aa621c730079f67a0",
+        "00c53c731f448fa7e2339155ae37d59458ac374367354656ed36c3ea277d57d1",
+        "6e3c51261048d71448fd67a2cd9e3ba57a782d20cb73bbdb581a34cc61d5805a",
+        "bd5449af6b317456d2d2dbfe4ce2c68ce0c5d0f7d4d969a818c25613dadf6da1",
+        "1fe6c7d05d6f3ba2f6d93f6b234a6796c373d508ea2d4f3cc8af27ea6eb52a6e"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/shadow-buff.png",
+      "sourceSha256": "da727184afd8021d94083c54823334dc5d867ad818c35c880f82acf0264f126e",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.47073353242326016,
+        "output_subject_height_mean": 156.83333333333334,
+        "body_scale_cv": 0.005074298360416047,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.03181493206157593
+      },
+      "originalAnchorYStd": 0.0,
+      "recoveredGridCrossings": []
+    },
+    "hover": {
+      "hero": "shadow",
+      "action": "hover",
+      "accepted": true,
+      "atlas": "hover.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        241
+      ],
+      "frameFiles": [
+        "hover/frame-00.png",
+        "hover/frame-01.png",
+        "hover/frame-02.png",
+        "hover/frame-03.png",
+        "hover/frame-04.png",
+        "hover/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "22c7abfc62a4b6fad6f97e7a00e19146b3d1b4d9dcb4b5e476a20c929a5a173f",
+        "3b244189915ddb4dcca56b8743993bd85cca66e99ac94541f497d921bd76319f",
+        "9150dc992d9aa7c0f022a003f962f5e888db43b7f74d661abfcabaa4557f7435",
+        "569b69fe5f0d103916e19d232eb894614606ff3d7c37a9de8ab730aabda8207f",
+        "a0ee4d0937981c19566977e355e867ff995801548ca297a889a9d17ea8bada5f",
+        "22f73a5641767fd9901f034b40cbf35c5d0d5bde25a5bf7874dcde5128176223"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/shadow-hover.png",
+      "sourceSha256": "7db0f11c3db9f73cfe526e54c6539036cd6eaee4291f9c8bcb757d74c3710557",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4758197210427604,
+        "output_subject_height_mean": 194.0,
+        "body_scale_cv": 0.002158346740742278,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0014917238590351043,
+        "anchor_y_mean": 0.9794921875,
+        "profile_body_scale_drift": 0.02135387174839065
+      },
+      "originalAnchorYStd": 0.00406575390520729,
+      "recoveredGridCrossings": []
+    }
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "creature-fire-attack1": {
+    "file": "creatures/creature-fire-attack1.wav",
+    "duration": 0.32,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-6.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "e497a7276e95ccf75a145c199bd5c565510094be934ff97ae2ce1d4e5c820b82"
+  },
+  "creature-fire-attack2": {
+    "file": "creatures/creature-fire-attack2.wav",
+    "duration": 0.35,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-7.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "2bfc7bd9cbfeecafb8f2fd3a95719d3f0a5926c65092445c2e23178b813a4ae4"
+  },
+  "creature-fire-attack3": {
+    "file": "creatures/creature-fire-attack3.wav",
+    "duration": 0.38,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-4.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "f0f3cbb6f59d4b39b7d89c20ba9f38e830f7f8a04010b417473dfa9321d8292f"
+  },
+  "creature-fire-hurt1": {
+    "file": "creatures/creature-fire-hurt1.wav",
+    "duration": 0.22,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-7.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "85da38ae84bd5b8a3d3aa078c3edd03d434775b4e5c7d8d383335419bf607318"
+  },
+  "creature-fire-hurt2": {
+    "file": "creatures/creature-fire-hurt2.wav",
+    "duration": 0.25,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-4.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "4b0ce0117411a98a8687b6a11c38726614f79652bb774161c7c50a380a9a3f6a"
+  },
+  "creature-fire-hurt3": {
+    "file": "creatures/creature-fire-hurt3.wav",
+    "duration": 0.28,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-6.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "629655b758e451fc9b55d0846432b71e3064902c54a8d8526d9422bea290fa1c"
+  },
+  "creature-fire-cast": {
+    "file": "creatures/creature-fire-cast.wav",
+    "duration": 0.4,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-6.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "3cca8d920c4a1321de039e6d174d222d1e3434b0793514add7b52e07a94de619"
+  },
+  "creature-fire-release": {
+    "file": "creatures/creature-fire-release.wav",
+    "duration": 0.55,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-6.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "cbf112b72787b814e1fcbcbdba22bfe969ae9a5b33c8840c89a27e44a34d85e8"
+  },
+  "creature-fire-death": {
+    "file": "creatures/creature-fire-death.wav",
+    "duration": 0.95,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-6.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "94c64772fcd8f54fe9640c92443aa7a42b3dc12716a9b958bfc09ec1b490a237"
+  },
+  "creature-earth-attack1": {
+    "file": "creatures/creature-earth-attack1.wav",
+    "duration": 0.32,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-1.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "a28c5402414f8aeb4b4ff111d6814a40c4edef140e334b64702032535bb614d9"
+  },
+  "creature-earth-attack2": {
+    "file": "creatures/creature-earth-attack2.wav",
+    "duration": 0.35,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-5.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "07ed09d98228398d61ce8e4b58d5bcd4b2a7a4978d2f1695bad8852777cd08e1"
+  },
+  "creature-earth-attack3": {
+    "file": "creatures/creature-earth-attack3.wav",
+    "duration": 0.38,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-2.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "a12e3ab28514641f2be7907324d92e2c61fb62c2ac54a59ccd4491c5c430f869"
+  },
+  "creature-earth-hurt1": {
+    "file": "creatures/creature-earth-hurt1.wav",
+    "duration": 0.22,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-5.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "15d58bc4e6bab5e255a73cc54e8feaac649bf56beedf1610349b741cbd6825e8"
+  },
+  "creature-earth-hurt2": {
+    "file": "creatures/creature-earth-hurt2.wav",
+    "duration": 0.25,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-2.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "957e4c2938cf85f0ff6b01a971429adf565b080349a45cd35c94110b3e81b081"
+  },
+  "creature-earth-hurt3": {
+    "file": "creatures/creature-earth-hurt3.wav",
+    "duration": 0.28,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-1.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "ee903bdc0e38292586c76afbf04004c9837554a50cc54abb41d08f0e5e7fc00b"
+  },
+  "creature-earth-cast": {
+    "file": "creatures/creature-earth-cast.wav",
+    "duration": 0.4,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-1.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "ecebf1f187adadc1b87f6bf7910b1ad9c1dc601f41a60db11822a79894593daf"
+  },
+  "creature-earth-release": {
+    "file": "creatures/creature-earth-release.wav",
+    "duration": 0.55,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-1.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "1bf8a028a48e1c137d4a5e34df40cf0d02f359e2e9d0caaaed2b63b839b9d3fa"
+  },
+  "creature-earth-death": {
+    "file": "creatures/creature-earth-death.wav",
+    "duration": 0.95,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-1.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "9f62cfa4db8a2baff0edcf3fe510ab46853c74afd13efcf9faa600020469072f"
+  },
+  "creature-ice-attack1": {
+    "file": "creatures/creature-ice-attack1.wav",
+    "duration": 0.32,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-8.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "d3c84bad66b9cf4915da4e44965799ec9af8b6cefd971e9371776b0d59dd85ac"
+  },
+  "creature-ice-attack2": {
+    "file": "creatures/creature-ice-attack2.wav",
+    "duration": 0.35,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-9.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "b47867d1e4be5eb8feec3a09e99cf272b29710c4b0f601f4e8831505d7ace386"
+  },
+  "creature-ice-attack3": {
+    "file": "creatures/creature-ice-attack3.wav",
+    "duration": 0.38,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-3.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "5b876c991a71415aedfe26e368da4d988316ae4ca1f3167a4ea8aa8cb5155259"
+  },
+  "creature-ice-hurt1": {
+    "file": "creatures/creature-ice-hurt1.wav",
+    "duration": 0.22,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-9.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "862cae2e36828c5f3e08824906c131f9368242273870d35ba7afc14bf3599547"
+  },
+  "creature-ice-hurt2": {
+    "file": "creatures/creature-ice-hurt2.wav",
+    "duration": 0.25,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-3.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "80e70c9e2b0df945092c6c37791cf66300c3d6f3ca5e7f2179b4980ab4577bbc"
+  },
+  "creature-ice-hurt3": {
+    "file": "creatures/creature-ice-hurt3.wav",
+    "duration": 0.28,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-8.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "c4c95fca91f8c06df078786a844bcc3b217f1138142c45700d071989adf929e3"
+  },
+  "creature-ice-cast": {
+    "file": "creatures/creature-ice-cast.wav",
+    "duration": 0.4,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-8.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "9ff0c512993213b2aed6e1f1814fe76c389c648960c7ad5044d61c574d2de8ff"
+  },
+  "creature-ice-release": {
+    "file": "creatures/creature-ice-release.wav",
+    "duration": 0.55,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-8.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "e0458fb101d139b7ac9ae68567ca4cf69f66cd5f288aea8b3c0cb2d1639683e0"
+  },
+  "creature-ice-death": {
+    "file": "creatures/creature-ice-death.wav",
+    "duration": 0.95,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-8.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "db21dd9ec7060b3d8e0b4db90dc7b64c57b855b611d810110f75305d3f1d3a83"
+  },
+  "creature-lightning-attack1": {
+    "file": "creatures/creature-lightning-attack1.wav",
+    "duration": 0.32,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-10.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "404cfb7d8dc4d9877527cb763e38afa9f3296a7008f661cada58be8a49583597"
+  },
+  "creature-lightning-attack2": {
+    "file": "creatures/creature-lightning-attack2.wav",
+    "duration": 0.35,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-4.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "445da7ab5786b4ac106058c0281e50f9ba6e3c823b09db2b5107ffdfc5b4c265"
+  },
+  "creature-lightning-attack3": {
+    "file": "creatures/creature-lightning-attack3.wav",
+    "duration": 0.38,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-7.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "e31993d5a4d7fd57321b99f67baef3a7992d66f1fe94922e483d06d34c99cf6c"
+  },
+  "creature-lightning-hurt1": {
+    "file": "creatures/creature-lightning-hurt1.wav",
+    "duration": 0.22,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-4.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "a6bb77707f9d9fb31ad73601b49b4f88f7fc42882a4d1b556774b2da4e1dae95"
+  },
+  "creature-lightning-hurt2": {
+    "file": "creatures/creature-lightning-hurt2.wav",
+    "duration": 0.25,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-7.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "07c4d98d65b907ac195864b78a1ec618078ae33185dadb70fc73040b7a75d295"
+  },
+  "creature-lightning-hurt3": {
+    "file": "creatures/creature-lightning-hurt3.wav",
+    "duration": 0.28,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-10.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "dd27725334c606f296ffba9123bd9ef933cde23404e7f1208432bbf120642c22"
+  },
+  "creature-lightning-cast": {
+    "file": "creatures/creature-lightning-cast.wav",
+    "duration": 0.4,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-10.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "16e5aed85cfd870fdf2096fd2ca349daae53dbd9ffb8fd84c704eaab199ccd2b"
+  },
+  "creature-lightning-release": {
+    "file": "creatures/creature-lightning-release.wav",
+    "duration": 0.55,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-10.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "7c997feef1f9929b499d7a78f7551a0be61c84d7632dfba537bc1cc5cd5a9f90"
+  },
+  "creature-lightning-death": {
+    "file": "creatures/creature-lightning-death.wav",
+    "duration": 0.95,
+    "sources": [
+      "sources/creatures/pack/monster_sfx_pack/monster-10.wav"
+    ],
+    "category": "creature-sfx",
+    "sha256": "629dfb1a8985994bdad322beb47a9e1ebad1532de2117dc9335b5796c2d44aa9"
+  }
+}

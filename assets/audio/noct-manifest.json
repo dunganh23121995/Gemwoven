@@ -1,0 +1,146 @@
+{
+  "noct-attack1": {
+    "file": "voices/noct-attack1.wav",
+    "duration": 0.518,
+    "sources": [
+      "cool/BattleVoice_cool/wav/07_cool_attack.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Haa",
+    "direction": "Short exhaled cut",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.3742,
+    "sourceSha256": "b528ec9289a25867376224932c4be68ce505077ebbc0616d1390fde480121210",
+    "sha256": "f6ccf6a1d71afb74bcc386a12d18719b217e22e824da6fe6016712d98a88cf15"
+  },
+  "noct-attack2": {
+    "file": "voices/noct-attack2.wav",
+    "duration": 0.396,
+    "sources": [
+      "cool/BattleVoice_cool/wav/08_cool_attack.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Taa",
+    "direction": "Quick second cut",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.3773,
+    "sourceSha256": "763f123668a761e09841d2d143e8eeec5cb7be038821e750675fd150e433d5df",
+    "sha256": "3a37198cee2bb04bd5b8456fccb43104aa16aebfb860351bc0c8d08c6f3f4a90"
+  },
+  "noct-attack3": {
+    "file": "voices/noct-attack3.wav",
+    "duration": 0.477,
+    "sources": [
+      "cool/BattleVoice_cool/wav/11_cool_attack.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Ima da",
+    "direction": "Decisive quick strike",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.4001,
+    "sourceSha256": "5f23d3288f195046da84df60814061587cb5abe0362e1e23e1fbb56bda455149",
+    "sha256": "3820e8cb5042f692e299ff2d02dc5a9e5a961596aedbfdae38386b7ba13b9f76"
+  },
+  "noct-hurt1": {
+    "file": "voices/noct-hurt1.wav",
+    "duration": 0.651,
+    "sources": [
+      "cool/BattleVoice_cool/wav/14_cool_damage.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Gu",
+    "direction": "Restrained pain grunt",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.6296,
+    "sourceSha256": "341f5ccdfce38ceaddd69aa58b437e7dc03b27d5f8744850e47f1d1affcf77ef",
+    "sha256": "957f7855223a4eeca85fad74c0fc6897c42733432ff7c8d1ceb29e409543bf6a"
+  },
+  "noct-hurt2": {
+    "file": "voices/noct-hurt2.wav",
+    "duration": 0.392,
+    "sources": [
+      "cool/BattleVoice_cool/wav/15_cool_damage.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Gua",
+    "direction": "Short impact response",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.3977,
+    "sourceSha256": "1959dfc535315eb1f5b4396e7a296e9836c36ebe8d7e0ee906de929d3498a0eb",
+    "sha256": "221135b330e8a6307cb0037b5cc05c18dd55fc96c67847f7675fc00c7de52e51"
+  },
+  "noct-hurt3": {
+    "file": "voices/noct-hurt3.wav",
+    "duration": 0.661,
+    "sources": [
+      "cool/BattleVoice_cool/wav/16_cool_damage.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Chi",
+    "direction": "Clenched-teeth response",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.4459,
+    "sourceSha256": "32eaec3d7ab24534ad80be74ad0b95589be7b205917d40284e129e3b5b74cbd1",
+    "sha256": "0c73983c728da086daa91f4acc74be3e6b26ad43cb11ac9e3b0755598aff5ddc"
+  },
+  "noct-cast": {
+    "file": "voices/noct-cast.wav",
+    "duration": 0.565,
+    "sources": [
+      "cool/BattleVoice_cool/wav/21_cool_avoid.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Mikitta",
+    "direction": "Calm focused anticipation",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.4233,
+    "sourceSha256": "e17c0b11d8bd4dbf36eabc2025e72fe33184ad2c901d9f116ee93257ea5ad346",
+    "sha256": "3dad36e15769367b1203b0fc0fcb2e3910b4f9ffdc90c0e86c4c321716fbe40b"
+  },
+  "noct-release": {
+    "file": "voices/noct-release.wav",
+    "duration": 0.565,
+    "sources": [
+      "cool/BattleVoice_cool/wav/09_cool_attack.wav"
+    ],
+    "sourceUrl": "https://youfulca.com/2022/08/06/cool/",
+    "termsUrl": "https://youfulca.com/kiyaku_jp/",
+    "performer": "YouFulca",
+    "bank": "Cool / Lone Rival",
+    "utterance": "Kurae",
+    "direction": "Decisive release",
+    "processing": "0.96 pitch; original timing; warm low mids, clear consonants, soft grain; no synthetic breath",
+    "rms": 0.15,
+    "peak": 0.4173,
+    "sourceSha256": "de664e183fbbbd30b12a9feffed04130d812c99e46cf00975d7d0e80d1d7b1c4",
+    "sha256": "4417d70cc65b02664ce2438829171ef20e88dd2ef6a90d9a292d2c29957ce101"
+  }
+}

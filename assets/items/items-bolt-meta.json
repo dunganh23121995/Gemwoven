@@ -1,0 +1,136 @@
+{
+  "source": "assets\\raw\\items-bolt.png",
+  "source_preserved": true,
+  "kind": "bolt",
+  "cell_size": 192,
+  "sixth_slot": "processor padding only; duplicate sword; not exported",
+  "items": [
+    {
+      "name": "sword-bolt",
+      "source_bbox": [
+        40,
+        93,
+        413,
+        526
+      ],
+      "source_size": [
+        373,
+        433
+      ],
+      "main_component_area": 67023,
+      "output_bbox": [
+        22,
+        10,
+        170,
+        182
+      ],
+      "png": "sword-bolt.png",
+      "webp": "sword-bolt.webp"
+    },
+    {
+      "name": "heart-bolt",
+      "source_bbox": [
+        436,
+        116,
+        835,
+        517
+      ],
+      "source_size": [
+        399,
+        401
+      ],
+      "main_component_area": 102012,
+      "output_bbox": [
+        10,
+        10,
+        181,
+        182
+      ],
+      "png": "heart-bolt.png",
+      "webp": "heart-bolt.webp"
+    },
+    {
+      "name": "crystal-bolt",
+      "source_bbox": [
+        912,
+        91,
+        1156,
+        537
+      ],
+      "source_size": [
+        244,
+        446
+      ],
+      "main_component_area": 75319,
+      "output_bbox": [
+        49,
+        10,
+        143,
+        182
+      ],
+      "png": "crystal-bolt.png",
+      "webp": "crystal-bolt.webp"
+    },
+    {
+      "name": "snow-bolt",
+      "source_bbox": [
+        26,
+        636,
+        406,
+        1074
+      ],
+      "source_size": [
+        380,
+        438
+      ],
+      "main_component_area": 89224,
+      "output_bbox": [
+        21,
+        10,
+        170,
+        182
+      ],
+      "png": "snow-bolt.png",
+      "webp": "snow-bolt.webp"
+    },
+    {
+      "name": "shield-bolt",
+      "source_bbox": [
+        428,
+        651,
+        833,
+        1075
+      ],
+      "source_size": [
+        405,
+        424
+      ],
+      "main_component_area": 105808,
+      "output_bbox": [
+        13,
+        10,
+        178,
+        182
+      ],
+      "png": "shield-bolt.png",
+      "webp": "shield-bolt.webp"
+    }
+  ],
+  "qc_summary": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.490310486964522,
+    "output_subject_height_mean": 172.0,
+    "body_scale_cv": 0.08363732797673637,
+    "anchor_x_std": 0.00043487501917991264,
+    "anchor_y_std": 0.00046125461254611916,
+    "anchor_y_mean": 0.49953874538745385
+  },
+  "edge_touch_frames": [],
+  "empty_frames": [],
+  "paste_clamped_frames": [],
+  "preview": "items-bolt-qc.png"
+}

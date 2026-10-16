@@ -1,0 +1,296 @@
+{
+  "mika-attack1": {
+    "file": "voices/mika-attack1.wav",
+    "duration": 0.417,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/attack1.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "bad02f53df147519a5e2ea53a6431581945d0a1311b0be3d4266456979634d2d"
+  },
+  "mika-hurt1": {
+    "file": "voices/mika-hurt1.wav",
+    "duration": 0.619,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/damaged1.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "9e43d743fe23acf3a7b2f4389461f6bdf57f9829eb7fb131ca001596a72db914"
+  },
+  "mika-attack2": {
+    "file": "voices/mika-attack2.wav",
+    "duration": 0.501,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/attack2.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "1763a7f3199f114b033aedfdbf40a31fd47c18a7913bcb759744a2590ad21282"
+  },
+  "mika-hurt2": {
+    "file": "voices/mika-hurt2.wav",
+    "duration": 0.511,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/damaged2.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "a9f06ff8057f650dac2bb454ce13cdf15874bdf5246f19eac6d77ce79f5ff873"
+  },
+  "mika-attack3": {
+    "file": "voices/mika-attack3.wav",
+    "duration": 0.564,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/attack3.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "1b9a505971b2c468111bd1aaa13eec5f88fa11bd2b072ffa23e1d5178440ac2e"
+  },
+  "mika-hurt3": {
+    "file": "voices/mika-hurt3.wav",
+    "duration": 0.524,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/damaged3.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "005afae280a64cc7a611b2609327d811b9af82a8ca6db7ad1b93fd2aba58284d"
+  },
+  "mika-cast": {
+    "file": "voices/mika-cast.wav",
+    "duration": 1.241,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/healed1.wav",
+      "female/RPG Voice Starter Pack/Type 3/attack1.wav"
+    ],
+    "tempo": 0.8,
+    "sha256": "e501d8742785983a2d4ec6133fd2a36391c12c68a587f9bea29538d3cbab2a98"
+  },
+  "mika-release": {
+    "file": "voices/mika-release.wav",
+    "duration": 1.065,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 3/attack2.wav",
+      "female/RPG Voice Starter Pack/Type 3/attack3.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "f4ec7ebcd3347b05b5f7a449d6d68d003db0b967fba67ea4417f94616c3ab3df"
+  },
+  "yuki-attack1": {
+    "file": "voices/yuki-attack1.wav",
+    "duration": 0.532,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/attack1.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "c51375391b966c564583509f74c35f86adf4ab7e8f862b3a9e8ef7d43d450e9c"
+  },
+  "yuki-hurt1": {
+    "file": "voices/yuki-hurt1.wav",
+    "duration": 0.696,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/damaged1.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "791cc91019bc87d7b031b9a02bc81f4d8a5c864865b51a11e9d1ea49b9ea31b3"
+  },
+  "yuki-attack2": {
+    "file": "voices/yuki-attack2.wav",
+    "duration": 0.551,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/attack2.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "36e3aac910c23c52384c9fb9957ee7652c6f336631e52f59a4a228cbba745920"
+  },
+  "yuki-hurt2": {
+    "file": "voices/yuki-hurt2.wav",
+    "duration": 0.457,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/damaged2.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "9ff980475fe5efb266323275db393830e714936c6d167b81297361eb908d5efa"
+  },
+  "yuki-attack3": {
+    "file": "voices/yuki-attack3.wav",
+    "duration": 0.479,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/attack3.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "b63d8d210bd63a624f3b12038124ae630cb9eeb1a48e00c6ea9b0da34cbe38a1"
+  },
+  "yuki-hurt3": {
+    "file": "voices/yuki-hurt3.wav",
+    "duration": 0.527,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/damaged3.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "26816c192d92155a3d508d7ca801a2a30e087cf594d280a72ca1b9c16f5e7806"
+  },
+  "yuki-cast": {
+    "file": "voices/yuki-cast.wav",
+    "duration": 1.131,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/healed1.wav",
+      "female/RPG Voice Starter Pack/Type 2/attack1.wav"
+    ],
+    "tempo": 0.8,
+    "sha256": "84847af7eb2053ee462c817c05254b28955dd47611f0ab0ebe1c943061ebd6c5"
+  },
+  "yuki-release": {
+    "file": "voices/yuki-release.wav",
+    "duration": 1.031,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 2/attack2.wav",
+      "female/RPG Voice Starter Pack/Type 2/attack3.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "0b5b008bf2f324e19401ba934bd5df82091ae9ae3698b38b956d9d3a0230a8e7"
+  },
+  "lumi-attack1": {
+    "file": "voices/lumi-attack1.wav",
+    "duration": 0.51,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/attack1.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "24cc401d7f12e542b3c3f2f660661845e8de1baa4cd56f9120c5f83a0279fe7e"
+  },
+  "lumi-hurt1": {
+    "file": "voices/lumi-hurt1.wav",
+    "duration": 0.398,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/damaged1.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "71c61856120ab461e29e75930258dd2df43b84dd5bc841828ec7916b23bcad3c"
+  },
+  "lumi-attack2": {
+    "file": "voices/lumi-attack2.wav",
+    "duration": 0.571,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/attack2.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "74455af9f6d92d3102e71a231a14956216b211ee6bd942e3c8c819256a200fa8"
+  },
+  "lumi-hurt2": {
+    "file": "voices/lumi-hurt2.wav",
+    "duration": 0.514,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/damaged2.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "56a7b49515692f59a1667d8955d019f0b60ee620ee1763025ee1ef883d3f6dd0"
+  },
+  "lumi-attack3": {
+    "file": "voices/lumi-attack3.wav",
+    "duration": 0.574,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/attack3.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "3562b0c446320287d9367c05c9d5afd6675fa162b9634280bc203191643e5c2b"
+  },
+  "lumi-hurt3": {
+    "file": "voices/lumi-hurt3.wav",
+    "duration": 0.442,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/damaged3.wav"
+    ],
+    "tempo": 0.78,
+    "sha256": "f7de95d98dc416af19dd642917f6dd45aabedcd35c48496f68cbe275d3713434"
+  },
+  "lumi-cast": {
+    "file": "voices/lumi-cast.wav",
+    "duration": 1.345,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/healed1.wav",
+      "female/RPG Voice Starter Pack/Type 1/attack1.wav"
+    ],
+    "tempo": 0.8,
+    "sha256": "217f92add4cb840069cb2ac5649d7110beb9e524beaa0ae8fda1f9c4fd5570a8"
+  },
+  "lumi-release": {
+    "file": "voices/lumi-release.wav",
+    "duration": 1.144,
+    "sources": [
+      "female/RPG Voice Starter Pack/Type 1/attack2.wav",
+      "female/RPG Voice Starter Pack/Type 1/attack3.wav"
+    ],
+    "tempo": 0.75,
+    "sha256": "18b84054c26b42e2c63a90648017dbcb216931e4c4ba9421b0d7c406b3fce6dc"
+  },
+  "nori-attack1": {
+    "file": "voices/nori-attack1.wav",
+    "duration": 0.541,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/07_budouka_attack.wav"
+    ],
+    "tempo": 1,
+    "sha256": "8b81ad925572f7e9ab94960d63e47e911f4e548544712806b3453be8b13ba787"
+  },
+  "nori-attack2": {
+    "file": "voices/nori-attack2.wav",
+    "duration": 0.63,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/08_budouka_attack.wav"
+    ],
+    "tempo": 1,
+    "sha256": "751274e5a17ca6535caf3bdd6867228c72ccb661dcf6a927a6c613200d2a935b"
+  },
+  "nori-attack3": {
+    "file": "voices/nori-attack3.wav",
+    "duration": 1.038,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/09_budouka_attack.wav"
+    ],
+    "tempo": 1,
+    "sha256": "3da30faa6c29c78a7ba64e25c279629e8ee3226d5faee09113a227b54e728757"
+  },
+  "nori-hurt1": {
+    "file": "voices/nori-hurt1.wav",
+    "duration": 0.814,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/14_budouka_damage.wav"
+    ],
+    "tempo": 1,
+    "sha256": "200296501259f22a91cd53c9b8db7c2d9f1c9bab860cc8ad0eb59aa2b5c83841"
+  },
+  "nori-hurt2": {
+    "file": "voices/nori-hurt2.wav",
+    "duration": 0.789,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/15_budouka_damage.wav"
+    ],
+    "tempo": 1,
+    "sha256": "fef44804a43f7a60b9057cd03e984a6d645d3084afab982a7cc6a2106b443eb3"
+  },
+  "nori-hurt3": {
+    "file": "voices/nori-hurt3.wav",
+    "duration": 0.713,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/16_budouka_damage.wav"
+    ],
+    "tempo": 1,
+    "sha256": "4dea041ce59a013bfe24a43c72fd78b5c80fe052d4fe2781f0777bcf1a16024a"
+  },
+  "nori-cast": {
+    "file": "voices/nori-cast.wav",
+    "duration": 1.703,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/12_budouka_attack.wav"
+    ],
+    "tempo": 1,
+    "sha256": "a188776a5d915758116dba2baa79392e468abdac0f53547569ed908748dd428e"
+  },
+  "nori-release": {
+    "file": "voices/nori-release.wav",
+    "duration": 1.754,
+    "sources": [
+      "fighter/BattleVoice_budouka/wav/11_budouka_attack.wav"
+    ],
+    "tempo": 1,
+    "sha256": "fc730b8dcbfaa08b4fefa837508661b457393a83a70e52d4f21d7593d2e63534"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "hero": "ice",
+  "action": "run",
+  "accepted": true,
+  "atlas": "run.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128.0,
+    241
+  ],
+  "frameFiles": [
+    "run/frame-00.png",
+    "run/frame-01.png",
+    "run/frame-02.png",
+    "run/frame-03.png",
+    "run/frame-04.png",
+    "run/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "3f2aa3c39368a72bf5dca7116e31c3b64e5b2b6967c1981f5ab6e4fb67ab7721",
+    "0af796cc5b6afcb34d650674b602549e1446315313547a224c75a7c8c3186eb6",
+    "8a65fe9e35f5f381133efe83ca25392acc490e4366b7d17ae70ff36e1e3cd50c",
+    "244c8469b662f2dba16a5383b505e90f1b399eafa31aba3463b85eeb780c1d5b",
+    "f141d5a46db3a0649254500f39c15a01354c40ae4536a6a64db05637f6e105c2",
+    "1f7de7a369f70b4d72764479851b1f31ec8b53693eb70d601f84c10cafe0b49a"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/ice-run.png",
+  "sourceSha256": "7d27a73f59461140d36ce53aa0855b9cf64be3b60d073029bac315910519a46b",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5126673372427052,
+    "output_subject_height_mean": 183.5,
+    "body_scale_cv": 0.016795780452629097,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.016779328084452958,
+    "anchor_y_mean": 0.9762369791666666,
+    "profile_body_scale_drift": 0.024017769897539454
+  },
+  "originalAnchorYStd": 0.03293395799463995,
+  "recoveredGridCrossings": []
+}

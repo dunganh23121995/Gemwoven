@@ -1,0 +1,97 @@
+{
+  "slash1": {
+    "file": "noct-sfx/slash1.wav",
+    "duration": 0.23,
+    "sources": [
+      "cutting_with_a_katana1.mp3",
+      "original filtered wind"
+    ],
+    "rms": 0.12,
+    "peak": 0.4836,
+    "sha256": "2e048239aaa75ac68d7a622e21485cfb966784182af06dd74d898fe137cd650a"
+  },
+  "slash2": {
+    "file": "noct-sfx/slash2.wav",
+    "duration": 0.26,
+    "sources": [
+      "cutting_with_a_katana2.mp3",
+      "original filtered wind"
+    ],
+    "rms": 0.12,
+    "peak": 0.4169,
+    "sha256": "e9f6e80d9fc687962946b5b85ebeaf200ea441d535ec60480e89e06d908a235b"
+  },
+  "slash3": {
+    "file": "noct-sfx/slash3.wav",
+    "duration": 0.29,
+    "sources": [
+      "cutting_with_a_katana3.mp3",
+      "original filtered wind"
+    ],
+    "rms": 0.12,
+    "peak": 0.3994,
+    "sha256": "1394097a1da79e37ca18c2fc43ba148c0763353b438b6ba4f960e8818b07029b"
+  },
+  "hit": {
+    "file": "noct-sfx/hit.wav",
+    "duration": 0.17,
+    "sources": [
+      "sword_attack1.mp3"
+    ],
+    "rms": 0.105,
+    "peak": 0.4498,
+    "sha256": "dc6acc3e17508571cb6bb9f6ad2b84fd04def32866edc8bda0da07b2ec821f0e"
+  },
+  "finish": {
+    "file": "noct-sfx/finish.wav",
+    "duration": 0.46,
+    "sources": [
+      "cutting_with_a_katana3.mp3",
+      "original low wind"
+    ],
+    "rms": 0.14,
+    "peak": 0.4677,
+    "sha256": "de9c464eacb188798f96a9b33e5aa54496aa1d8e9e92a5c8e5f4f048a6de8245"
+  },
+  "draw": {
+    "file": "noct-sfx/draw.wav",
+    "duration": 0.36,
+    "sources": [
+      "extracting_a_sword1.mp3"
+    ],
+    "rms": 0.1,
+    "peak": 0.3528,
+    "sha256": "3fff8bd6ea90a8a2795969f463fb394f91de091ad747995c1bd1a441da3a08a9"
+  },
+  "sheath": {
+    "file": "noct-sfx/sheath.wav",
+    "duration": 0.24,
+    "sources": [
+      "extracting_a_sword1.mp3 (reversed)"
+    ],
+    "rms": 0.08,
+    "peak": 0.2854,
+    "sha256": "b8e5bbbd0f2783fb6a5bcca686c9994c1b684f5b60618ecc86f3dad82577fa8b"
+  },
+  "dash": {
+    "file": "noct-sfx/dash.wav",
+    "duration": 0.18,
+    "sources": [
+      "original filtered wind"
+    ],
+    "rms": 0.09,
+    "peak": 0.3218,
+    "sha256": "7e4b4d9ba60d618fa877aa53ade673688eb498a4b5ee8368d063f025ec021234"
+  },
+  "charge": {
+    "file": "noct-sfx/charge.wav",
+    "duration": 1.1,
+    "sources": [
+      "original filtered wind",
+      "extracting_a_sword1.mp3"
+    ],
+    "rms": 0.09,
+    "peak": 0.4037,
+    "sha256": "760f824510994bebef96991cf619228e6c9cf1963bd83c85132a39a845f0c812"
+  }
+}

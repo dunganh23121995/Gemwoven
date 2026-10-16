@@ -1,0 +1,31 @@
+const assert=require('node:assert/strict');
+const {chromium}=require(require('path').join(require('os').tmpdir(),'minipuzzle-qa/node_modules/playwright'));
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+ const page=await browser.newPage({viewport:{width:1280,height:1000}}),errors=[],checks=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ await page.addInitScript(()=>{let seed=1972;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};});await page.goto('http://127.0.0.1:8000/Game.html?qa');if(await page.locator('#heroList').isVisible())await page.locator('.gem-choice.chosen').click();await page.locator('#startBtn').click();
+ const move=await page.evaluate(()=>{const m=gameQA.legalMoves()[0];return [m.a.id,m.b.id];});
+ const a=await page.locator(`[data-id="${move[0]}"]`).boundingBox(),b=await page.locator(`[data-id="${move[1]}"]`).boundingBox();
+ await page.mouse.move(a.x+a.width/2,a.y+a.height/2);await page.mouse.down();await page.mouse.move(b.x+b.width/2,b.y+b.height/2,{steps:8});await page.mouse.up();
+ await page.waitForFunction(()=>!gameQA.locked,{},{timeout:120000});assert.ok(await page.evaluate(()=>gameQA.state.score>0));assert.equal(await page.locator('.tile.selected').count(),0);checks.push('Actual mouse drag resolves once and leaves no accidental selection');
+ await page.evaluate(()=>{gameQA.configure({key:'lightning',stage:5,boss:true,enemyKey:'ice',hp:200,armor:999,energy:100});});await page.screenshot({path:'qa/boss-game.png',fullPage:true});
+ await page.locator('#skillBtn').click();await page.waitForFunction(()=>document.querySelector('#heroActor').dataset.state==='cast');await page.screenshot({path:'qa/hero-cast.png',fullPage:true});
+ await page.waitForFunction(()=>!gameQA.locked,{},{timeout:120000});assert.equal(await page.evaluate(()=>gameQA.effects),0);assert.equal(await page.locator('#combatEffects > *').count(),0);checks.push('Full-speed ultimate and boss turn clean up every combat effect');
+ await page.evaluate(()=>{
+   gameQA.configure({stage:1,key:'earth',hp:320,enemyKey:'fire',enemyHp:100000,enemyMax:100000});
+   const t=Array.from({length:8},(_,r)=>Array.from({length:8},(_,c)=>(r*2+c)%5));t[3][1]=t[3][2]=t[3][3]=0;
+   gameQA.setBoard(t,[{r:3,c:2,kind:'bomb'},{r:4,c:3,kind:'bolt'}]);window.qaPending=gameQA.resolveBoard('hero');
+ });
+ await page.waitForFunction(()=>document.querySelector('#boardEffects').childElementCount>0);await page.screenshot({path:'qa/board-special.png',fullPage:true});
+ await page.waitForFunction(()=>[...document.querySelectorAll('.tile')].some(e=>e.getAnimations().length>0),{},{timeout:120000});await page.setViewportSize({width:900,height:980});
+ await page.evaluate(async()=>{await window.qaPending;await gameQA.settle();});
+ assert.equal(await page.evaluate(()=>gameQA.matches().tiles.length),0);assert.equal(await page.locator('.tile').count(),64);assert.equal(await page.evaluate(()=>gameQA.effects),0);assert.equal(await page.locator('#boardEffects > *').count(),0);checks.push('Full-speed chained specials survive resize during gravity');
+ await page.evaluate(()=>{gameQA.configure({stage:1,key:'fire',hp:170,enemyKey:'earth',enemyHp:350,enemyMax:350,enemyTurn:3,energy:100});});const intent=await page.locator('#intentName').textContent();await page.locator('#skillBtn').click();await page.waitForFunction(()=>!gameQA.locked,{},{timeout:120000});assert.ok((await page.locator('#logEntries').textContent()).includes('dùng '+intent));checks.push('Monster executes telegraphed action even when damage changes its healing threshold');
+ assert.equal(await page.locator('#soundBtn').getAttribute('aria-pressed'),'true');await page.locator('#soundBtn').click();assert.equal(await page.locator('#soundBtn').getAttribute('aria-pressed'),'false');await page.locator('#soundBtn').click();assert.equal(await page.locator('#soundBtn').getAttribute('aria-pressed'),'true');checks.push('Sound starts enabled and can be muted and restored');
+ const mobileContext=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,isMobile:true});
+ const mobile=await mobileContext.newPage();mobile.on('pageerror',e=>errors.push(e.message));await mobile.goto('http://127.0.0.1:8000/Game.html?qa');if(await mobile.locator('#heroList').isVisible())await mobile.locator('.gem-choice.chosen').tap();await mobile.locator('#startBtn').tap();await mobile.screenshot({path:'qa/mobile-final.png',fullPage:true});
+ const pair=await mobile.evaluate(()=>{const m=gameQA.legalMoves()[0];return [m.a.id,m.b.id];});await mobile.locator(`[data-id="${pair[0]}"]`).tap();assert.equal(await mobile.locator('.tile.selected').count(),1);await mobile.locator(`[data-id="${pair[1]}"]`).tap();await mobile.waitForFunction(()=>!gameQA.locked,{},{timeout:120000});assert.ok(await mobile.evaluate(()=>gameQA.state.score>0));assert.equal(await mobile.locator('.tile.selected').count(),0);checks.push('Real touch taps select then swap on a mobile viewport');
+ await mobile.locator('#motionBtn').tap();assert.equal(await mobile.locator('body').evaluate(e=>e.classList.contains('reduced-motion')),true);checks.push('Reduced motion toggle is usable on mobile');
+ assert.deepEqual(errors,[]);console.log(JSON.stringify({passed:checks.length,checks,errors},null,2));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});

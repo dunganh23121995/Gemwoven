@@ -1,0 +1,23 @@
+# Local game snapshots
+/Game.backup-*.html
+
+# Python / local tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Generated QA captures and reports (keep the test scripts)
+/qa/*.png
+/qa/*.jpg
+/qa/*.webp
+/qa/*.json
+/qa/results.txt

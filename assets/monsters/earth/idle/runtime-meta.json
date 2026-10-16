@@ -1,0 +1,45 @@
+{
+  "element": "earth",
+  "name": "Hộ Vệ Rêu Ngọc",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "frameOrder": "row-major",
+  "facing": "left",
+  "accepted": true,
+  "origin": [
+    128.0,
+    231
+  ],
+  "scaleProfile": "creature-scale-profile.json",
+  "source": "assets/raw/enemy-earth.png",
+  "sourceSha256": "aca996d1ce4bb3abaa5af3d938da7e397e44ce640cc86dd939391c50e0afa4eb",
+  "action": "idle",
+  "atlas": "idle.webp",
+  "columns": 2,
+  "rows": 1,
+  "frames": 2,
+  "loop": true,
+  "frameDuration": 520,
+  "frameDurations": [
+    520,
+    520
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png"
+  ],
+  "derivedFrom": {
+    "action": "attack",
+    "frames": [
+      0,
+      5
+    ],
+    "method": "reuse accepted ready and recovered authored poses"
+  },
+  "qc": {
+    "emptyFrames": [],
+    "edgeTouchFrames": [],
+    "sharedScale": true,
+    "completeSilhouettes": true
+  }
+}

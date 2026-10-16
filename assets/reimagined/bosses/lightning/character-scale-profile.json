@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "name": "lightning",
+  "processing": {
+    "cell_size": 256,
+    "fit_scale": 0.82,
+    "trim_border": 0,
+    "edge_clean_depth": 0,
+    "align": "feet",
+    "shared_scale": true,
+    "scale_strategy": "preserve",
+    "component_mode": "largest",
+    "component_padding": 0,
+    "min_component_area": 12,
+    "edge_touch_margin": 2
+  },
+  "output_origin": [
+    128.0,
+    233
+  ],
+  "reference": {
+    "target": "player",
+    "mode": "idle",
+    "rows": 2,
+    "cols": 2,
+    "body_scale_mean": 0.5988956028894933,
+    "body_scale_cv": 0.00019447780912606975,
+    "anchor_y_mean": 0.91845703125
+  },
+  "qc": {
+    "max_body_scale_drift": 0.08
+  }
+}

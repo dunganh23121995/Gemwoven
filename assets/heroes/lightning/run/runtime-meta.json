@@ -1,0 +1,56 @@
+{
+  "hero": "lightning",
+  "action": "run",
+  "accepted": true,
+  "atlas": "run.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128.0,
+    241
+  ],
+  "frameFiles": [
+    "run/frame-00.png",
+    "run/frame-01.png",
+    "run/frame-02.png",
+    "run/frame-03.png",
+    "run/frame-04.png",
+    "run/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "705378d988558202ca3e89ce746c7370296e573c4d4c0ab106ca558b6e7a8ded",
+    "8ebbc80198bfec0abaa185e66806da73455ecf4abdb2843ecac2639864439113",
+    "7748a5ad2b5453c9e175aeb00fc148e3e2539bc4bc37dbb65f6e3674059094f5",
+    "4bd28f60b34a2a56567c09186d9b43a00b7573cddd476b77d13f33f2f45e898d",
+    "ae17e6ac10d7f692608fefa9de37694c0a04a4565a1d01393a902631a5f67790",
+    "75211e1dba2b40b6d5a976662b078570af0f3a690e8e0ef73da141c934804661"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/lightning-run.png",
+  "sourceSha256": "6c1b7248a014c7788513be5e7f055441674b7e1ba789ecf869934af4fbae388c",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5093747703649701,
+    "output_subject_height_mean": 172.83333333333334,
+    "body_scale_cv": 0.02681894683209368,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.012039871099548781,
+    "anchor_y_mean": 0.974609375,
+    "profile_body_scale_drift": 0.046565629696374455
+  },
+  "originalAnchorYStd": 0.031156612304431116,
+  "recoveredGridCrossings": []
+}

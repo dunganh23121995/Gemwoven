@@ -1,0 +1,87 @@
+{
+  "hero": "earth",
+  "action": "buff",
+  "accepted": true,
+  "atlas": "buff.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128,
+    244
+  ],
+  "frameFiles": [
+    "buff/frame-00.png",
+    "buff/frame-01.png",
+    "buff/frame-02.png",
+    "buff/frame-03.png",
+    "buff/frame-04.png",
+    "buff/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "92bfb62fee55a36fdc16b5d4a593dd29387a84cfd9d19659691504638bcaad77",
+    "63da114a33534bf40b110ec14fa2a614a27a2352762eaa90be2cc7631c1f93e8",
+    "8f60d728bbfb6fb82b98a207ba20e6ca40926fc3e50dc51993407b80c09aafc4",
+    "596411de826e33e5bb0eb19f1242bf53bd97ec1f428b9c81d062f8291dca72fc",
+    "4a3672195105232893a892062d0db27686e31e78bb6c469601d2839c66d860c9",
+    "f1d3c9b796593a5354f44a253c02b820859430f6cd3bfb5a38978871e49d0587"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/reimagined/heroes/earth-buff.png",
+  "sourceSha256": "bbeff8f921b3e765f533245040e69a412ad1499c33c38f34d78d90d1992c059e",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5178013499890474,
+    "output_subject_height_mean": 142.16666666666666,
+    "body_scale_cv": 0.018120822467554212,
+    "anchor_x_std": 0.006420274389100268,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.91796875,
+    "profile_body_scale_drift": 0.00988580381255022
+  },
+  "originalAnchorYStd": 0.03232505466882381,
+  "recoveredGridCrossings": [],
+  "headAnchors": [
+    [
+      103,
+      112
+    ],
+    [
+      105,
+      112
+    ],
+    [
+      106,
+      112
+    ],
+    [
+      107,
+      116
+    ],
+    [
+      107,
+      117
+    ],
+    [
+      105,
+      115
+    ]
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    21
+  ]
+}

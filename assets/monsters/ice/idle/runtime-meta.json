@@ -1,0 +1,45 @@
+{
+  "element": "ice",
+  "name": "Cú Tuyết Pha Lê",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "frameOrder": "row-major",
+  "facing": "left",
+  "accepted": true,
+  "origin": [
+    128.0,
+    231
+  ],
+  "scaleProfile": "creature-scale-profile.json",
+  "source": "assets/raw/enemy-ice.png",
+  "sourceSha256": "fe5b207655615a2323f3d76a5dabe079c5a5aa1d9870f3f1ac27ce97f601c885",
+  "action": "idle",
+  "atlas": "idle.webp",
+  "columns": 2,
+  "rows": 1,
+  "frames": 2,
+  "loop": true,
+  "frameDuration": 520,
+  "frameDurations": [
+    520,
+    520
+  ],
+  "frameFiles": [
+    "idle/frame-00.png",
+    "idle/frame-01.png"
+  ],
+  "derivedFrom": {
+    "action": "attack",
+    "frames": [
+      0,
+      5
+    ],
+    "method": "reuse accepted ready and recovered authored poses"
+  },
+  "qc": {
+    "emptyFrames": [],
+    "edgeTouchFrames": [],
+    "sharedScale": true,
+    "completeSilhouettes": true
+  }
+}

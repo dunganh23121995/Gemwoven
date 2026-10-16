@@ -1,0 +1,18 @@
+.quick-blade-cut{filter:drop-shadow(0 0 5px var(--combat-main));mix-blend-mode:screen;z-index:6}
+.quick-blade-cut.shadow{mix-blend-mode:normal;filter:drop-shadow(0 0 7px #08101d) drop-shadow(0 0 3px #87bdd3)}
+.blade-ember{border-radius:50%;background:radial-gradient(#fff,var(--combat-main) 30%,transparent 72%);mix-blend-mode:screen}
+.blade-ember.shadow{background:radial-gradient(#9edbea,#332447 40%,transparent 72%);mix-blend-mode:normal}
+.shadow-contact{background:radial-gradient(ellipse,#dbffff99,#6093a54d 17%,#0a071abb 40%,transparent 70%);border-radius:50%;filter:blur(2px)}
+.shadow-afterimage{position:absolute;pointer-events:none;z-index:3;opacity:0;filter:brightness(.32) sepia(.2) drop-shadow(0 0 3px #7394a9)}
+.actor.shadow-burst>.sprite-body{opacity:.32}
+.shadow-afterimage>.sprite-body{position:absolute;inset:0;width:100%;height:100%;filter:none}
+.shadow-veil{position:absolute;inset:38% 21% 4%;pointer-events:none;z-index:-1;filter:blur(3px)}
+.shadow-veil i{position:absolute;left:calc(5% + var(--i)*18%);bottom:3%;width:32%;height:65%;border-radius:50%;background:radial-gradient(ellipse,#080812cc,#17162688 45%,transparent 72%);animation:shadow-wisp calc(3s + var(--i)*.3s) calc(var(--i)*-.7s) ease-in-out infinite}
+@keyframes shadow-wisp{0%,100%{opacity:.3;transform:translateY(5px) scale(.8)}50%{opacity:.8;transform:translate(-6px,-17px) scale(1.15)}}
+.shadow-rage-aura .aura-halo{background:radial-gradient(ellipse,#060510cc,#1c203888 42%,#77bed329 60%,transparent 72%);mix-blend-mode:normal}
+.dragon-flame-plume{opacity:0;border-radius:45% 55% 62% 38%;background:radial-gradient(ellipse at 38% 47%,#fff8ce 0%,#ffdf8bee 12%,#ff9c35c9 37%,#f3421c70 57%,transparent 74%);filter:blur(1.5px);mix-blend-mode:screen;z-index:5}
+.dragon-flame-plume[data-flame-layer="1"]{background:radial-gradient(ellipse,#fff3a9cc,#ffbd4adb 22%,#ec4e2270 52%,transparent 73%);filter:blur(2.5px)}
+.dragon-flame-plume[data-flame-layer="2"]{background:radial-gradient(ellipse,#ffe8adcc,#fb8b3bab 32%,#c9322150 57%,transparent 75%)}
+.dragon-flame-ember{opacity:0;background:#ffdc97;box-shadow:0 0 5px #ff7e38;border-radius:50%;mix-blend-mode:screen}
+body.reduced-motion .shadow-veil{display:none}
+body.ambience-paused .shadow-veil i{animation-play-state:paused}

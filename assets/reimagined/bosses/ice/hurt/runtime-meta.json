@@ -1,0 +1,89 @@
+{
+  "hero": "ice",
+  "action": "hurt",
+  "accepted": true,
+  "atlas": "hurt.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128,
+    244
+  ],
+  "frameFiles": [
+    "hurt/frame-00.png",
+    "hurt/frame-01.png",
+    "hurt/frame-02.png",
+    "hurt/frame-03.png",
+    "hurt/frame-04.png",
+    "hurt/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "78c3dda3bb4d8935bbd254e7535830fb7efd0483c77f858977cbb55236a35471",
+    "82cbf78d65aabc0654d3e376cf2398b3b5f97817db6fe3de0babc6a8a292a26f",
+    "e44b3dc2a4dfca291175d34bbe8986263d68e323602dfbe77e1cea7d4c027357",
+    "539519db499cda660957d4497bdc8acebc93e4d71f601a2b0a3c2285a2c56f37",
+    "e3c183e8a816d86d3eef0fe8dbf9cd5d8c2884b277b8de7d3f4a99dfb9ce39d5",
+    "abafa1a94bd91222c7d5703533e863ecdeb620c2057fa3de568950ab368179fd"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "reviewedFootRootFrames": [],
+  "source": "assets/raw/reimagined/bosses/ice-hurt.png",
+  "sourceSha256": "949e690265a48a456fae9b059cb77ea06e7cabf093f5e377a2fd3286351b5113",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5444030472020799,
+    "output_subject_height_mean": 178.5,
+    "body_scale_cv": 0.013498541804756561,
+    "anchor_x_std": 0.0003639433557128564,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.91796875,
+    "profile_body_scale_drift": 0.04657553650118407
+  },
+  "originalAnchorYStd": 0.021513947450336336,
+  "recoveredGridCrossings": [
+    3
+  ],
+  "headAnchors": [
+    [
+      78,
+      88
+    ],
+    [
+      80,
+      89
+    ],
+    [
+      80,
+      97
+    ],
+    [
+      78,
+      113
+    ],
+    [
+      80,
+      95
+    ],
+    [
+      78,
+      94
+    ]
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    11
+  ]
+}

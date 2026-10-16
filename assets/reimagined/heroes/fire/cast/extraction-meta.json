@@ -1,0 +1,241 @@
+{
+  "raw_source": "assets/raw/reimagined/heroes/fire-cast.png",
+  "raw_sha256": "11f93ac4131e374bdcfd5ffcc06cc25d5c2da241e0e2d23d64095d8b9b4d1b12",
+  "raw_dimensions": [
+    1536,
+    1024
+  ],
+  "raw_cell_dimensions": [
+    512.0,
+    512.0
+  ],
+  "normalization": "one uniform raw-cell magnification; translation only per frame",
+  "normalized_cell_size": 512,
+  "canonical_feet_line": 470,
+  "original_anchor_y_std": 0.0021592609312209633,
+  "interior_color_preservation": "exterior flood key + exact magenta holes + boundary-only despill",
+  "frames": [
+    {
+      "index": 0,
+      "source_bbox": [
+        77,
+        37,
+        393,
+        481
+      ],
+      "source_anchor": [
+        250.0,
+        463.0
+      ],
+      "source_anchor_normalized": [
+        0.48828125,
+        0.904296875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        83,
+        44
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.0,
+        470.0
+      ],
+      "canonical_size": [
+        316,
+        444
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 70735
+    },
+    {
+      "index": 1,
+      "source_bbox": [
+        579,
+        40,
+        893,
+        481
+      ],
+      "source_anchor": [
+        238.0,
+        463.0
+      ],
+      "source_anchor_normalized": [
+        0.46484375,
+        0.904296875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        85,
+        47
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.0,
+        470.0
+      ],
+      "canonical_size": [
+        314,
+        441
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 69624
+    },
+    {
+      "index": 2,
+      "source_bbox": [
+        1091,
+        38,
+        1418,
+        481
+      ],
+      "source_anchor": [
+        236.0,
+        462.0
+      ],
+      "source_anchor_normalized": [
+        0.4609375,
+        0.90234375
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        87,
+        46
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.0,
+        470.0
+      ],
+      "canonical_size": [
+        327,
+        443
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 72016
+    },
+    {
+      "index": 3,
+      "source_bbox": [
+        76,
+        546,
+        403,
+        990
+      ],
+      "source_anchor": [
+        247.0,
+        460.0
+      ],
+      "source_anchor_normalized": [
+        0.482421875,
+        0.8984375
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        85,
+        44
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.0,
+        470.0
+      ],
+      "canonical_size": [
+        327,
+        444
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 73558
+    },
+    {
+      "index": 4,
+      "source_bbox": [
+        580,
+        548,
+        893,
+        991
+      ],
+      "source_anchor": [
+        237.0,
+        461.0
+      ],
+      "source_anchor_normalized": [
+        0.462890625,
+        0.900390625
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        87,
+        45
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.0,
+        470.0
+      ],
+      "canonical_size": [
+        313,
+        443
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 69605
+    },
+    {
+      "index": 5,
+      "source_bbox": [
+        1084,
+        549,
+        1403,
+        991
+      ],
+      "source_anchor": [
+        233.0,
+        461.0
+      ],
+      "source_anchor_normalized": [
+        0.455078125,
+        0.900390625
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        83,
+        46
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "reviewed_foot_root": false,
+      "canonical_anchor": [
+        256.0,
+        470.0
+      ],
+      "canonical_size": [
+        319,
+        442
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 70246
+    }
+  ]
+}

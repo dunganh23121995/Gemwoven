@@ -1,0 +1,284 @@
+{
+  "hero": "earth",
+  "cellSize": 256,
+  "actions": {
+    "idle": {
+      "hero": "earth",
+      "action": "idle",
+      "accepted": true,
+      "atlas": "idle.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "frameOrder": "row-major",
+      "loop": true,
+      "frameDuration": 230,
+      "origin": [
+        128.0,
+        236
+      ],
+      "frameFiles": [
+        "idle/frame-00.png",
+        "idle/frame-01.png",
+        "idle/frame-02.png",
+        "idle/frame-03.png"
+      ],
+      "uniqueFrames": 4,
+      "framePixelHashes": [
+        "1c80ddb321fa47f9efdb3d6877e17a0c86f8c84cb1b450c0a825befca0c0336a",
+        "e40796260e76cf6dd2371978effddaf33ccb831077b03932565ee5a432629e75",
+        "5a16cdd6ed3c3d9fa7639c1056a9c0dccaad7e9afb2b63a917321aa505fffdb7",
+        "a86380919a44c848fa195adc2cb2d28203bf587d088e1478e9cf18b20542b8ac"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/earth-idle.png",
+      "sourceSha256": "3c02d7a37be68be08bc6a844f379991c393f5e16f06a366cda2bb09b762c5163",
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5057344156612094,
+        "output_subject_height_mean": 159.25,
+        "body_scale_cv": 0.010317372499793297,
+        "anchor_x_std": 0.0009765625,
+        "anchor_y_std": 0.0009765625,
+        "anchor_y_mean": 0.9189453125
+      },
+      "originalAnchorYStd": 0.021966042297989333,
+      "recoveredGridCrossings": [],
+      "reviewedFootRootFrames": []
+    },
+    "attack": {
+      "hero": "earth",
+      "action": "attack",
+      "accepted": true,
+      "atlas": "attack.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        236
+      ],
+      "frameFiles": [
+        "attack/frame-00.png",
+        "attack/frame-01.png",
+        "attack/frame-02.png",
+        "attack/frame-03.png",
+        "attack/frame-04.png",
+        "attack/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "9d4abb764bbed104525e6bb970cca4fc1403182194010722b2f9be060f6a0f1d",
+        "64024dcacf80e4438dd71e127b5e49d4f2346e947fbb09b3ee1a2577c89c5b71",
+        "bf2f0c092847ac178dc276fdb4a487361d0a2089e0ef16e7c5ae3d52d0721524",
+        "8379ab944314acaed55d0021ae938c87fcc65919802d2ca2da1b6d12733ec632",
+        "1a8e28dd4242435a412e0a1f738786cba062f9c588526b7881847ecd54480077",
+        "932407da7028c0a03e0b824d834d8de4ad33bb9495eace6ade7349fbd9669aa7"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/earth-attack.png",
+      "sourceSha256": "8ac7abdc7c4e99d323e2b70ae64e1112fd568a159c9aa7af03e11ca5f55d6a1c",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4795571491820034,
+        "output_subject_height_mean": 150.66666666666666,
+        "body_scale_cv": 0.05017137386867423,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.05176089597339584
+      },
+      "originalAnchorYStd": 0.049277446536891305,
+      "recoveredGridCrossings": [],
+      "reviewedFootRootFrames": [
+        3,
+        4
+      ]
+    },
+    "cast": {
+      "hero": "earth",
+      "action": "cast",
+      "accepted": true,
+      "atlas": "cast.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        236
+      ],
+      "frameFiles": [
+        "cast/frame-00.png",
+        "cast/frame-01.png",
+        "cast/frame-02.png",
+        "cast/frame-03.png",
+        "cast/frame-04.png",
+        "cast/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "3d5edc51ab9bef2ad309d9a384eb0fce4102bc1fdb96045d9b858d47c6ea893b",
+        "d3643e350229d289b9773d15fd8d6055760317d4a512a84d0d5ee4c79c6a1748",
+        "eee4181844b9969aba99ce0d5d44de5d07ee7b0de802d47e1c19e2d6cec584c7",
+        "8049f7527a03f0af2ba316bef16600b29f609ad244cf95fb8cfa7f193001eaac",
+        "be02d95f4b96937e151c214c3b29a810b6c2e0f8d4a6f71f9f760d98b5b2202e",
+        "de2e5e545639d7ec88e16186d73e4e22811e6792e61a2b380e189a03994d888d"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "source": "assets/raw/earth-cast.png",
+      "sourceSha256": "d4c3ef4156537f85f1c3c86cc40a7cd10a2f34e1331fd6f5d252b96ca1681c5e",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.46618538656733755,
+        "output_subject_height_mean": 144.5,
+        "body_scale_cv": 0.028790089630611103,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.0782011820219205
+      },
+      "originalAnchorYStd": 0.015529766200360107,
+      "recoveredGridCrossings": [],
+      "reviewedFootRootFrames": []
+    },
+    "run": {
+      "hero": "earth",
+      "action": "run",
+      "accepted": true,
+      "atlas": "run.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        236
+      ],
+      "frameFiles": [
+        "run/frame-00.png",
+        "run/frame-01.png",
+        "run/frame-02.png",
+        "run/frame-03.png",
+        "run/frame-04.png",
+        "run/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "17c6dc71193a32175bbc7aeca8b7302e0c2ab2702f2d0c4a61cf41a7b6aede78",
+        "eaf2b9a7c041ab79085ce677cc292f00ba281d6c2b15c0ce04852cf5acd28bc5",
+        "8e979b82335b730ca2fc3db9a977950d9debd5a26588a32069107f1bc11f4a38",
+        "d5284227d10ce01403fcfd36d717d3dda3677e3d0df75f10014f43a71574fe46",
+        "04d0124574fc1def1b2655cd10039176bbff7e28f3e962e5e7a8d45969532f5c",
+        "2e638f1560e194332447d4696138b2129af7a390bfb73d0842fa4ac7a718d829"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/earth-run.png",
+      "sourceSha256": "52913ed3d082ecd51004092e1c5bf73da7c424abd97845dd1365b54927205d6d",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.43860285386605513,
+        "output_subject_height_mean": 154.33333333333334,
+        "body_scale_cv": 0.03498216929041932,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.005338938628534091,
+        "anchor_y_mean": 0.9436848958333334,
+        "profile_body_scale_drift": 0.13274074240604095
+      },
+      "originalAnchorYStd": 0.03672475202127722,
+      "recoveredGridCrossings": []
+    },
+    "smash": {
+      "hero": "earth",
+      "action": "smash",
+      "accepted": true,
+      "atlas": "smash.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128.0,
+        236
+      ],
+      "frameFiles": [
+        "smash/frame-00.png",
+        "smash/frame-01.png",
+        "smash/frame-02.png",
+        "smash/frame-03.png",
+        "smash/frame-04.png",
+        "smash/frame-05.png"
+      ],
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "9e5e99686626a95af12945c4e2cd8c7bc3a56e9c3307329b3c57192d254f5c40",
+        "69a792f86de7df178fd833206c225732180d776bfa694b53fe5341dc97756e1f",
+        "5afe28883b0c6d9e164a81cf54d86754746f8d5930eb459341f813b24281bfea",
+        "2ca0f8784d45f6e73fe1eb27c5da2ba8d0f9d72efa64bebdad1f1ba81500f141",
+        "549e8f7228162a6725be9fc3a5be04e741767cc9ee43e6d78e00bc7a61b4e607",
+        "f22690157cec928495c8f53aa5a793c63068a57aea174bdcf2d770da179042b9"
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+      "reviewedFootRootFrames": [],
+      "source": "assets/raw/earth-smash.png",
+      "sourceSha256": "f1c218585e35cf9bc446caf59280a8de84d282f6a093912b9403330a82e273e5",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5096915939159231,
+        "output_subject_height_mean": 168.66666666666666,
+        "body_scale_cv": 0.037601099800083936,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.91796875,
+        "profile_body_scale_drift": 0.007824617293525682
+      },
+      "originalAnchorYStd": 0.010618168248893289,
+      "recoveredGridCrossings": []
+    }
+  }
+}

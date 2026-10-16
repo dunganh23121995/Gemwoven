@@ -1,0 +1,19 @@
+.sprite-body{display:block;width:100%;height:100%;background-repeat:no-repeat;background-position:0 0;background-size:100% 100%;transition:none!important;image-rendering:auto;animation:none!important;pointer-events:none;filter:drop-shadow(0 5px 2px #0009)}
+.actor .sprite-body{position:absolute;inset:0;transform:none!important;transform-origin:50% 94%}
+.scene .actor,.scene .actor.boss{bottom:0}
+.scene .hero-actor{width:200px;height:200px;left:calc(25% - 100px)}
+.scene .actor:before{bottom:4%}
+.scene .boss-sigil{top:33%}
+.class-card .character-preview{position:relative;overflow:hidden}.character-preview>.sprite-body{position:absolute;width:205px;height:205px;left:50%;bottom:-10px;transform:translateX(-50%)!important;filter:drop-shadow(0 4px 3px #0006)}
+.result-art{position:relative;overflow:hidden}.result-art>.sprite-body{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%)!important;width:245px;height:245px}
+.boss-sigil{position:absolute;z-index:3;top:7%;left:calc(50% - 12px);height:24px;width:24px;color:#f9d67d;filter:drop-shadow(0 0 6px #ffb642)}
+.actor.boss:after{content:'';position:absolute;inset:24% 18% 7%;z-index:-1;border:1px solid #ecc57452;border-radius:50%;box-shadow:0 0 25px #ffca5430,inset 0 0 20px #ffbe3320}
+.landscape img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 62%;filter:brightness(.85) saturate(.95)}
+.scene:after{background:linear-gradient(#132d31,transparent 10%,transparent 90%,#11292d)!important}
+.item-art{display:block;pointer-events:none;object-fit:contain;user-select:none;-webkit-user-drag:none}.legend-icon img{width:100%;height:100%;object-fit:contain}.gem>svg{display:none}.gem{isolation:isolate}.special .gem{box-shadow:inset 0 0 8px #c9e9ff24,0 0 4px #0007!important}.special.bolt .gem{border-color:#9adbdf66!important}.special.bomb .gem{border-color:#e8a46277!important}.special.core .gem{background:radial-gradient(#2d2449,#11242e)!important}.special .item-art{filter:drop-shadow(0 0 3px #97ddff70)!important}.special.bomb .item-art{filter:drop-shadow(0 0 3px #ff9d4970)!important}
+.special-tier{position:absolute;bottom:0;right:1px;font-size:8px;font-family:Georgia,serif;font-weight:800;line-height:11px;padding:0 2px;color:#ffe8a3;text-shadow:0 1px 2px #000;background:#10252ed9;border:1px solid #e5c77366;border-radius:3px;z-index:3}
+.help-item-art{width:28px;height:28px;object-fit:contain}.special-gallery{border:1px solid #8b96734d;border-radius:12px;overflow:hidden;margin-top:16px;background:#0b1b22}.special-gallery-head,.special-gallery-row{display:grid;grid-template-columns:repeat(3,1fr);align-items:center;text-align:center}.special-gallery-head{padding:8px 0;background:#203b3b;font-size:10px;color:#e4c990}.special-gallery-row+ .special-gallery-row{border-top:1px solid #ffffff0a}.special-gallery-row img{height:46px;width:46px;object-fit:contain}.special-gallery-row>span{padding:3px}
+.vital-name strong{min-width:0;overflow:hidden;text-overflow:ellipsis}.element-pill{flex-shrink:0}.scene-location{display:none!important}.scene-motes{opacity:.4}
+.brand b,dialog h2,.class-card strong{font-family:Cambria,Georgia,"Times New Roman",serif}
+.hint-button,.icon-button{position:relative}.hint-button:before{content:"";position:absolute;inset:-9px -3px}.icon-button:before{content:"";position:absolute;inset:-3px}
+@media(max-width:370px){.character-preview>.sprite-body{height:185px;width:185px}.special-tier{font-size:7px;line-height:9px}.boss-sigil{top:9%}}

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "name": "fire",
+  "processing": {
+    "cell_size": 256,
+    "fit_scale": 0.88,
+    "trim_border": 0,
+    "edge_clean_depth": 0,
+    "align": "feet",
+    "shared_scale": true,
+    "scale_strategy": "preserve",
+    "component_mode": "largest",
+    "component_padding": 0,
+    "min_component_area": 12,
+    "edge_touch_margin": 2
+  },
+  "output_origin": [
+    128.0,
+    241
+  ],
+  "reference": {
+    "target": "player",
+    "mode": "idle",
+    "rows": 2,
+    "cols": 2,
+    "body_scale_mean": 0.4806003574552101,
+    "body_scale_cv": 0.005879388162045024,
+    "anchor_y_mean": 0.92041015625
+  },
+  "qc": {
+    "max_body_scale_drift": 0.08
+  }
+}

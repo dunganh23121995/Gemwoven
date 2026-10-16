@@ -1,0 +1,56 @@
+{
+  "hero": "earth",
+  "action": "cast",
+  "accepted": true,
+  "atlas": "cast.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128.0,
+    236
+  ],
+  "frameFiles": [
+    "cast/frame-00.png",
+    "cast/frame-01.png",
+    "cast/frame-02.png",
+    "cast/frame-03.png",
+    "cast/frame-04.png",
+    "cast/frame-05.png"
+  ],
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "3d5edc51ab9bef2ad309d9a384eb0fce4102bc1fdb96045d9b858d47c6ea893b",
+    "d3643e350229d289b9773d15fd8d6055760317d4a512a84d0d5ee4c79c6a1748",
+    "eee4181844b9969aba99ce0d5d44de5d07ee7b0de802d47e1c19e2d6cec584c7",
+    "8049f7527a03f0af2ba316bef16600b29f609ad244cf95fb8cfa7f193001eaac",
+    "be02d95f4b96937e151c214c3b29a810b6c2e0f8d4a6f71f9f760d98b5b2202e",
+    "de2e5e545639d7ec88e16186d73e4e22811e6792e61a2b380e189a03994d888d"
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
+  "source": "assets/raw/earth-cast.png",
+  "sourceSha256": "d4c3ef4156537f85f1c3c86cc40a7cd10a2f34e1331fd6f5d252b96ca1681c5e",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.46618538656733755,
+    "output_subject_height_mean": 144.5,
+    "body_scale_cv": 0.028790089630611103,
+    "anchor_x_std": 0.0,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.91796875,
+    "profile_body_scale_drift": 0.0782011820219205
+  },
+  "originalAnchorYStd": 0.015529766200360107,
+  "recoveredGridCrossings": [],
+  "reviewedFootRootFrames": []
+}

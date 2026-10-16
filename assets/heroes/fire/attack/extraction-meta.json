@@ -1,0 +1,211 @@
+{
+  "raw_source": "assets/raw/fire-attack.png",
+  "raw_sha256": "d71f24668a5191b199bc42344c3c74ca53932231467aa9733434b32fab048ab2",
+  "raw_dimensions": [
+    1536,
+    1024
+  ],
+  "raw_cell_dimensions": [
+    512.0,
+    512.0
+  ],
+  "normalization": "one uniform raw-cell magnification; translation only per frame",
+  "normalized_cell_size": 512,
+  "canonical_feet_line": 470,
+  "original_anchor_y_std": 0.0349158082794311,
+  "interior_color_preservation": "exterior flood key + exact magenta holes + boundary-only despill",
+  "frames": [
+    {
+      "index": 0,
+      "source_bbox": [
+        77,
+        89,
+        454,
+        465
+      ],
+      "source_anchor": [
+        243.0,
+        447.0
+      ],
+      "source_anchor_normalized": [
+        0.474609375,
+        0.873046875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        90,
+        112
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        377,
+        376
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 67132
+    },
+    {
+      "index": 1,
+      "source_bbox": [
+        573,
+        50,
+        920,
+        465
+      ],
+      "source_anchor": [
+        240.0,
+        447.0
+      ],
+      "source_anchor_normalized": [
+        0.46875,
+        0.873046875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        77,
+        73
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        347,
+        415
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 73904
+    },
+    {
+      "index": 2,
+      "source_bbox": [
+        1057,
+        116,
+        1514,
+        465
+      ],
+      "source_anchor": [
+        236.0,
+        448.0
+      ],
+      "source_anchor_normalized": [
+        0.4609375,
+        0.875
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        52,
+        138
+      ],
+      "canonical_containment_translation": [
+        -1,
+        0
+      ],
+      "canonical_size": [
+        457,
+        349
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 71800
+    },
+    {
+      "index": 3,
+      "source_bbox": [
+        70,
+        590,
+        487,
+        943
+      ],
+      "source_anchor": [
+        326.0,
+        410.0
+      ],
+      "source_anchor_normalized": [
+        0.63671875,
+        0.80078125
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        3,
+        138
+      ],
+      "canonical_containment_translation": [
+        3,
+        0
+      ],
+      "canonical_size": [
+        417,
+        353
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 70423
+    },
+    {
+      "index": 4,
+      "source_bbox": [
+        577,
+        603,
+        999,
+        943
+      ],
+      "source_anchor": [
+        273.0,
+        411.0
+      ],
+      "source_anchor_normalized": [
+        0.533203125,
+        0.802734375
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        48,
+        150
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        422,
+        340
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 68524
+    },
+    {
+      "index": 5,
+      "source_bbox": [
+        1092,
+        568,
+        1477,
+        945
+      ],
+      "source_anchor": [
+        241.0,
+        414.0
+      ],
+      "source_anchor_normalized": [
+        0.470703125,
+        0.80859375
+      ],
+      "source_grid_boundary_crossing_recovered": false,
+      "canonical_translation": [
+        83,
+        112
+      ],
+      "canonical_containment_translation": [
+        0,
+        0
+      ],
+      "canonical_size": [
+        385,
+        377
+      ],
+      "shared_raw_magnification": 1.0,
+      "component_area": 67937
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10282d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23e2e8dc'/%3E%3Cpath d='M24 6C8 3 4 13 9 21s19 3 15-15M8 26 21 9' fill='none' stroke='%23849c7d' stroke-width='2'/%3E%3C/svg%3E">
+<title>Mầm Phép · Khu rừng thức giấc</title>
+<style>/* GAME_CSS */</style>
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <a class="brand" href="#" aria-label="Mầm Phép"><span class="brand-mark" data-icon="leaf"></span><span><b>Mầm Phép<span class="brand-dot">.</span></b><small>MỘT CHUYẾN PHIÊU LƯU NHỎ</small></span></a>
+    <div class="header-tools"><button class="icon-button" id="soundBtn" aria-label="Bật âm thanh" aria-pressed="false" title="Âm thanh"></button><button class="icon-button" id="motionBtn" aria-label="NO FX" aria-pressed="false" title="NO FX: đang tắt · bấm để tắt hiệu ứng"></button><button class="icon-button" id="audioSettingsBtn" aria-label="Cài đặt âm thanh" title="Cài đặt âm thanh" aria-haspopup="dialog" aria-controls="audioSettingsDialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 3v18M12 3v18M20 3v18"/><path d="M1 8h6M9 16h6M17 8h6" stroke-width="4"/></svg></button><button class="icon-button" id="helpBtn" aria-label="Cách chơi" title="Cách chơi"></button></div>
+  </header>
+  <section class="journey"><div><span class="eyebrow">CHƯƠNG 01 · KHU RỪNG THỨC GIẤC</span><h1>Mỗi kết nối, một phép màu.</h1></div><div class="journey-track" id="journeyTrack" aria-label="Tiến trình hành trình"></div></section>
+  <main class="game-layout">
+    <section class="adventure-column">
+      <div class="battle-card" id="battleCard">
+        <div class="scene" id="scene"><div class="landscape" id="landscape"></div><div class="scene-motes"><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="arena-stage" id="stageLabel"></span>
+          <div class="actor hero-actor" id="heroActor"></div><div class="actor enemy-actor" id="enemyActor"></div>
+          <div class="combat-effects" id="combatEffects" aria-hidden="true"></div>
+          <div class="actor-hud" id="heroHeadHud" aria-label="Thông tin nhân vật">
+          <div class="vital-name"><strong id="heroName"></strong><span id="heroElement" class="element-pill"></span></div>
+          <div class="health-label"><span id="heroHpText"></span><span class="shield-label" id="heroArmor"></span></div>
+          <div class="health-track"><i id="heroHpTrail" class="health-trail"></i><i id="heroHp"></i></div>
+          <div class="head-rage-track" role="meter" id="heroRage" aria-label="Nộ" aria-valuemin="0" aria-valuemax="100"><i id="heroRageFill"></i></div>
+          <div class="status-row" id="heroStatuses"></div>
+        </div>
+          <div class="actor-hud" id="enemyHeadHud" aria-label="Thông tin đối thủ">
+          <div class="vital-name"><strong id="enemyName"></strong><span id="enemyElement" class="element-pill"></span></div>
+          <div class="health-label"><span id="enemyHpText"></span><span class="shield-label" id="enemyArmor"></span></div>
+          <div class="health-track"><i id="enemyHpTrail" class="health-trail"></i><i id="enemyHp"></i></div>
+          <div class="head-rage-track" role="meter" id="enemyRage" aria-label="Nộ" aria-valuemin="0" aria-valuemax="100"><i id="enemyRageFill"></i></div>
+          <div class="status-row" id="enemyStatuses"></div>
+        </div>
+        </div>
+        <div class="battle-message" id="message" role="status" aria-live="polite"></div>
+      </div>
+      <div class="field-note"><span class="note-spark" data-icon="spark"></span><div><strong id="tipTitle">Nhỏ bé. Nhưng đầy phép màu.</strong><p id="tipText">Ghép 4 ngọc tạo Sao băng, ghép 5 tạo Bom. Những kết nối lớn mang đến bất ngờ lớn!</p></div></div>
+      <details class="battle-log"><summary>Nhật ký chiến đấu <span id="logCount">0 sự kiện</span></summary><ol id="logEntries"></ol></details>
+    </section>
+    <section class="puzzle-card" aria-label="Bàn ngọc phép thuật">
+      <div class="board-heading"><div><span class="eyebrow">KẾT NỐI SỨC MẠNH</span><h2>Bàn ngọc phép thuật</h2></div><div class="score"><span>ĐIỂM HÀNH TRÌNH</span><strong id="score">0</strong></div></div>
+      <div class="board-toolbar"><span class="turn-chip" id="turnChip"><i></i> Lượt của bạn</span><span id="comboLabel">Ghép 3 để tung phép</span><button class="hint-button" id="hintBtn" aria-label="Gợi ý một nước đi"><span data-icon="bulb"></span> Gợi ý</button></div>
+      <div class="board-frame" id="boardFrame"><div class="board" id="board" role="grid" aria-label="Bàn cờ 8 hàng 8 cột. Chọn hai ô liền kề hoặc kéo để đổi chỗ." aria-rowcount="8" aria-colcount="8"></div><svg class="board-effects" id="boardEffects" viewBox="0 0 800 800" aria-hidden="true"></svg><div class="board-toast" id="boardToast" aria-live="polite"></div></div>
+      <div class="tile-legend" id="tileLegend"></div>
+      <div class="board-footer"><span data-icon="mouse"></span><span>Chạm hai ngọc kề nhau hoặc kéo để đổi chỗ.</span></div>
+    </section>
+  </main>
+  <footer class="app-footer"><span>MỘT CHÚT PHÉP THUẬT, MỘT CHÚT CAN ĐẢM.</span><span id="footerStage">Hành trình của bạn bắt đầu ở đây <span>✦</span></span></footer>
+</div>
+<dialog id="selectDialog" class="select-dialog" aria-labelledby="selectTitle">
+  <div class="hero-selection-scroll" id="heroSelectionScroll">
+  <div class="modal-eyebrow"><span data-icon="spark"></span> CUỘC PHIÊU LƯU ĐANG CHỜ</div>
+  <h2 id="selectTitle" tabindex="-1">Chọn chiến binh của bạn.</h2>
+  <p class="dialog-intro" id="selectIntro"></p>
+  <div id="heroList"><div class="class-grid" id="classGrid"></div><p class="selection-note" id="selectionNote">Chạm vào ngọc để xem tướng</p></div>
+  <section id="heroDetail" aria-label="Thông tin chiến binh" hidden>
+    <div class="hero-showcase" id="heroShowcase"></div>
+    <dl class="hero-detail-stats" id="heroDetailStats"></dl>
+    <div class="hero-detail-passive"><span class="detail-label">ĐẶC TRƯNG</span><p id="heroDetailTrait"></p></div>
+    <section class="hero-detail-skill" aria-labelledby="heroSkillName"><span class="detail-label">TUYỆT KỸ · 100 NỘ</span><h3 id="heroSkillName"></h3><p id="heroSkillDescription"></p><small>Tự thi triển khi đủ nộ · thời gian ra chiêu 3 giây</small></section>
+    <p class="hero-detail-note" id="heroStatNote"></p>
+    <p class="hero-carryover" id="heroCarryover" hidden></p>
+    <div class="hero-detail-actions"><button class="primary-button" id="startBtn">Xuất chiến <span aria-hidden="true">→</span></button><button class="hero-back-button" id="heroBackBtn"><span aria-hidden="true">←</span> Quay lại danh sách</button></div>
+  </section>
+  </div>
+</dialog>
+<dialog id="audioSettingsDialog" class="audio-settings-dialog" aria-labelledby="audioSettingsTitle">
+  <button class="dialog-close" data-close="audioSettingsDialog" aria-label="Đóng cài đặt âm thanh">×</button>
+  <div class="modal-eyebrow">TÙY CHỈNH</div><h2 id="audioSettingsTitle">Âm thanh</h2>
+  <p>Chỉnh riêng từng loại âm thanh theo ý bạn.</p>
+  <p id="audioMutedNote" hidden>Loa đang tắt. Bật lại nút loa để nghe âm thanh.</p>
+  <div class="audio-level"><div class="audio-level-heading"><label for="volume-music">Nhạc nền</label><output id="volume-music-value" for="volume-music">10%</output></div><input type="range" id="volume-music" min="0" max="100" step="1" value="10" aria-describedby="volume-music-hint"><small id="volume-music-hint">Giai điệu của từng vùng đất</small></div>
+  <div class="audio-level"><div class="audio-level-heading"><label for="volume-effects">Âm thanh game</label><output id="volume-effects-value" for="volume-effects">100%</output></div><input type="range" id="volume-effects" min="0" max="100" step="1" value="100" aria-describedby="volume-effects-hint"><small id="volume-effects-hint">Ghép ngọc, combo và hiệu ứng chiến đấu</small></div>
+  <div class="audio-level"><div class="audio-level-heading"><label for="volume-voices">Giọng nhân vật</label><output id="volume-voices-value" for="volume-voices">29%</output></div><input type="range" id="volume-voices" min="0" max="100" step="1" value="29" aria-describedby="volume-voices-hint"><small id="volume-voices-hint">Tiếng tướng và quái khi ra chiêu, trúng đòn</small></div>
+  <div class="audio-settings-actions"><button class="audio-reset" id="audioResetBtn">Mặc định</button><button class="primary-button" data-close="audioSettingsDialog">Xong</button></div>
+</dialog>
+<dialog id="helpDialog" class="help-dialog" aria-labelledby="helpTitle"><button class="dialog-close" data-close="helpDialog" aria-label="Đóng hướng dẫn">×</button><div class="modal-eyebrow">CẨM NANG NHỎ</div><h2 id="helpTitle">Phép thuật bắt đầu từ 3.</h2><p>Đổi chỗ hai ngọc liền kề để ghép từ 3 ngọc cùng loại. Nước đi không tạo bộ sẽ được trả lại và không mất lượt.</p><div class="help-legend" id="helpLegend"></div><h3>Kết nối đặc biệt</h3><p><b>4 ngọc → Sao băng:</b> nổ vùng 5 × 5 quanh tâm.<br><b>5 ngọc → Bom:</b> tia điện lan tới tất cả ngọc cùng loại.<br><b>6+ ngọc → Cầu vồng:</b> đổi với ngọc kề để xóa loại đó; chạm trực tiếp để chọn một loại ngẫu nhiên. <br><b>Hai Cầu vồng:</b> kéo đổi chỗ hai ngọc kề nhau để nổ toàn bàn N lần. N là số ngọc đặc biệt trên bàn lúc đổi chỗ (tính cả hai Cầu vồng). Mỗi lần nổ xong sẽ rơi đầy ngọc mới rồi mới nổ tiếp; số lần không tăng thêm. Các ngọc đặc biệt có thể kích hoạt lẫn nhau.</p><h3>Đọc ý định, chọn nước đi</h3><p>Cả hai bên luân phiên ghép trên cùng bàn. Đối thủ đánh dấu hai ngọc trước khi đổi chỗ, rồi có thể tăng giáp, hồi máu hoặc tung kỹ năng nguyên tố. Ghép Băng để chặn lượt quái. Đủ 100 nộ sẽ tự động tung tuyệt kỹ. Nhân vật phát hào quang trước khi ra chiêu; tên, máu và nộ di chuyển theo đầu nhân vật.</p><div class="element-cycle">Lửa → Băng → Đất → Sét → Lửa</div><p>Đánh vào hệ bị khắc chế gây thêm 50% sát thương. Máu, giáp và năng lượng được giữ khi qua màn; đổi nhân vật sẽ giới hạn máu theo nhân vật mới.</p><h3>Mỗi 5 màn, một boss</h3><p>Boss có tạo hình lớn hơn, tự ghép ngọc trên bàn và tích nộ để tung tuyệt kỹ. Từ màn 5, đối thủ chọn nước theo tình thế; từ màn 10 biết xét nước đáp trả; từ màn 20 tính thêm nước tiếp theo. Dưới 40% máu, boss nổi giận và đánh mạnh hơn. Xem boss tiếp theo trước khi chọn lại nhân vật. Nếu boss kích hoạt ngọc đặc biệt của bạn, phần ngọc đó vẫn mang lợi ích cho bạn.</p><h3>Bàn phím & tùy chọn</h3><p>Dùng phím mũi tên để di chuyển trên bàn; Enter hoặc Space để chọn. Escape đóng hướng dẫn. Mặc định chơi ở tốc độ nhanh với đầy đủ hiệu ứng. Bấm NO FX để tắt hiệu ứng; nút sáng khi NO FX bật, bấm lại để khôi phục hiệu ứng. Âm thanh bật khi bắt đầu chơi; nút loa dùng để tắt hoặc bật lại.</p></dialog>
+<dialog id="resultDialog" class="result-dialog" aria-labelledby="resultTitle"><div class="result-art" id="resultArt"></div><div class="modal-eyebrow" id="resultEyebrow">MỘT CHIẾN THẮNG NHỎ</div><h2 id="resultTitle">Khu rừng mỉm cười!</h2><p id="resultDesc"></p><div class="result-stats"><div><small>MÀN ĐẠT ĐƯỢC</small><strong id="resultStage">01</strong></div><div><small>ĐIỂM HÀNH TRÌNH</small><strong id="resultScore">0</strong></div></div><button class="primary-button" id="nextBtn">Đi tiếp <span>→</span></button></dialog>
+<script>/* GAME_JS */</script>
+</body>
+</html>

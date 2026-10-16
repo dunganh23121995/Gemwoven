@@ -1,0 +1,13 @@
+.restoration-field{position:absolute;left:7%;top:28%;width:86%;height:67%;z-index:2;pointer-events:none;--restoration:#a1f6bd;--restoration-gold:#fff1b9}
+.restoration-floor{position:absolute;bottom:1%;left:50%;width:86%;height:24%;border-radius:50%;background:radial-gradient(ellipse,#f8ffce55,transparent 62%);border:1px solid #d5ffdba8;box-shadow:0 0 9px #9af2b873,inset 0 0 8px #b2f8be4d}
+.restoration-orbit{position:absolute;left:50%;bottom:8%;width:92%;height:29%;border-radius:50%;border:1px solid transparent;border-top-color:var(--restoration-gold);border-bottom-color:var(--restoration);filter:drop-shadow(0 0 3px var(--restoration));transform:translateX(-50%)}
+.restoration-petal{position:absolute;width:13px;height:21px;color:#abf3b7;filter:drop-shadow(0 0 4px #befaafaa)}
+.restoration-petal:nth-of-type(3n){color:#ffefd1;width:10px;height:17px}.restoration-petal:nth-of-type(3n+1){color:#d0f9b9}
+.restoration-petal svg{width:100%;height:100%;overflow:visible}
+.crystal-sanctuary{--restoration:#b5e8ff;--restoration-gold:#fff2c9}
+.crystal-sanctuary .restoration-floor{border-color:#ceeaffaa;background:radial-gradient(ellipse,#a6dfff33,transparent 65%);box-shadow:0 0 12px #91cfff66,inset 0 0 8px #caeaff40}
+.sanctuary-veil{position:absolute;inset:0 8% 5%;border-radius:52% 52% 43% 43%;background:radial-gradient(ellipse,transparent 51%,#a0dfff15 66%,#e4f7ff66 70%,#b7deff15 73%,transparent 76%);opacity:.8}
+.sanctuary-arch{position:absolute;inset:1% 8% 7%;border:1px solid transparent;border-radius:50%;border-left-color:#fff1b9c9;border-right-color:#b4e5ffa6;filter:drop-shadow(0 0 3px #b1dfff);transform:rotate(-17deg)}
+.sanctuary-arch.arch-right{inset:5% 16% 10%;transform:rotate(19deg);border-left-color:#bcf1ffad;border-right-color:#fff1b988}
+.sanctuary-crystal{position:absolute;width:9px;height:18px;clip-path:polygon(50% 0,100% 45%,50% 100%,0 45%);background:linear-gradient(110deg,#fff7ce,#d1f3ff 42%,#76b9e2 50%,#e9faff);filter:drop-shadow(0 0 4px #b6dfff)}
+body.reduced-motion .restoration-field{display:none}
