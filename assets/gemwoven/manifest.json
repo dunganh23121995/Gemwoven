@@ -908,81 +908,82 @@
     ]
   },
   "home-summon": {
-    "file": "assets/gemwoven/items/home-summon.png",
+    "file": "assets/gemwoven/items/home-summon-painted.webp",
     "width": 506,
     "height": 502,
-    "source": "raw/buildings-v2.png",
+    "source": "assets/gemwoven/raw/home-painted-a/summon-raw.png",
     "textless": true,
-    "crop": [
-      0,
-      0,
-      512,
-      512
+    "reference": "assets/gemwoven/items/home-summon.png",
+    "transparent": true,
+    "purpose": "Full Home building repaint matching the background illustration style and foliage palette.",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-painted-a/summon-prompt.txt"
     ]
   },
   "home-arena": {
-    "file": "assets/gemwoven/items/home-arena.png",
+    "file": "assets/gemwoven/items/home-arena-painted.webp",
     "width": 524,
     "height": 506,
-    "source": "raw/buildings-v2.png",
+    "source": "assets/gemwoven/raw/home-painted-a/arena-raw.png",
     "textless": true,
-    "crop": [
-      512,
-      0,
-      1024,
-      512
+    "reference": "assets/gemwoven/items/home-arena.png",
+    "transparent": true,
+    "purpose": "Full Home building repaint matching the background illustration style and foliage palette.",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-painted-a/arena-prompt.txt"
     ]
   },
   "home-shop": {
-    "file": "assets/gemwoven/items/home-shop.png",
+    "file": "assets/gemwoven/items/home-shop-painted.webp",
     "width": 502,
     "height": 510,
-    "source": "raw/buildings-v2.png",
+    "source": "assets/gemwoven/raw/home-painted-b/home-shop-raw.png",
     "textless": true,
-    "crop": [
-      1024,
-      0,
-      1536,
-      512
+    "reference": "assets/gemwoven/items/home-shop.png",
+    "transparent": true,
+    "purpose": "Full Home building repaint matching the background illustration style and foliage palette.",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-painted-b/prompts.json"
     ]
   },
   "home-upgrade": {
-    "file": "assets/gemwoven/items/home-upgrade.png",
+    "file": "assets/gemwoven/items/home-upgrade-painted.webp",
     "width": 512,
     "height": 519,
-    "source": "raw/buildings-v2.png",
+    "source": "assets/gemwoven/raw/home-painted-a/upgrade-raw.png",
     "textless": true,
-    "crop": [
-      0,
-      512,
-      512,
-      1024
+    "reference": "assets/gemwoven/items/home-upgrade.png",
+    "transparent": true,
+    "purpose": "Full Home building repaint matching the background illustration style and foliage palette.",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-painted-a/upgrade-prompt.txt"
     ]
   },
   "home-forge": {
-    "file": "assets/gemwoven/items/home-forge.png",
+    "file": "assets/gemwoven/items/home-forge-painted.webp",
     "width": 510,
     "height": 519,
-    "source": "raw/buildings-v2.png",
+    "source": "assets/gemwoven/raw/home-painted-b/home-forge-raw.png",
     "textless": true,
-    "crop": [
-      512,
-      512,
-      1024,
-      1024
+    "reference": "assets/gemwoven/items/home-forge.png",
+    "transparent": true,
+    "purpose": "Full Home building repaint matching the background illustration style and foliage palette.",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-painted-b/prompts.json",
+      "assets/gemwoven/raw/home-painted-b/forge-top-repair-prompt.txt"
     ]
   },
   "home-tavern": {
-    "file": "assets/gemwoven/items/home-tavern.png",
+    "file": "assets/gemwoven/items/home-tavern-painted.webp",
     "width": 522,
     "height": 516,
-    "source": "raw/buildings-v2.png",
+    "source": "assets/gemwoven/raw/home-painted-b/home-tavern-raw.png",
     "textless": true,
-    "crop": [
-      1024,
-      512,
-      1536,
-      1024
+    "reference": "assets/gemwoven/items/home-tavern.png",
+    "transparent": true,
+    "purpose": "Full Home building repaint matching the background illustration style and foliage palette.",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-painted-b/prompts.json"
     ]
   },
   "exp-book": {
@@ -7330,5 +7331,294 @@
         ]
       }
     }
+  },
+  "background-home": {
+    "file": "assets/gemwoven/backgrounds/home-leaf-detail.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/home-leaf-detail/home-leaf-detail.generated.png",
+    "reference": "assets/gemwoven/backgrounds/home-canopy.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-leaf-detail/home-leaf-detail.prompt.txt"
+    ],
+    "purpose": "Clear overlapping canopy shapes in a calm palette; Home buildings remain independent interactive art."
+  },
+  "home-idle-novice": {
+    "width": 114,
+    "height": 184,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/novice/idle/frame-00.png",
+      "assets/heroes/novice/idle/frame-01.png",
+      "assets/heroes/novice/idle/frame-02.png",
+      "assets/heroes/novice/idle/frame-03.png"
+    ],
+    "crop": [
+      55,
+      69,
+      169,
+      253
+    ],
+    "file": "assets/gemwoven/items/home-idle-novice.webp",
+    "frameOrder": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "frameDuration": 240,
+    "loop": true
+  },
+  "home-idle-novice-poster": {
+    "width": 114,
+    "height": 184,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/novice/idle/frame-00.png",
+      "assets/heroes/novice/idle/frame-01.png",
+      "assets/heroes/novice/idle/frame-02.png",
+      "assets/heroes/novice/idle/frame-03.png"
+    ],
+    "crop": [
+      55,
+      69,
+      169,
+      253
+    ],
+    "file": "assets/gemwoven/items/home-idle-novice-poster.webp"
+  },
+  "home-idle-fire": {
+    "width": 151,
+    "height": 167,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/fire/idle/frame-00.png",
+      "assets/heroes/fire/idle/frame-01.png",
+      "assets/heroes/fire/idle/frame-02.png",
+      "assets/heroes/fire/idle/frame-03.png"
+    ],
+    "crop": [
+      57,
+      85,
+      208,
+      252
+    ],
+    "file": "assets/gemwoven/items/home-idle-fire.webp",
+    "frameOrder": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "frameDuration": 240,
+    "loop": true
+  },
+  "home-idle-fire-poster": {
+    "width": 151,
+    "height": 167,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/fire/idle/frame-00.png",
+      "assets/heroes/fire/idle/frame-01.png",
+      "assets/heroes/fire/idle/frame-02.png",
+      "assets/heroes/fire/idle/frame-03.png"
+    ],
+    "crop": [
+      57,
+      85,
+      208,
+      252
+    ],
+    "file": "assets/gemwoven/items/home-idle-fire-poster.webp"
+  },
+  "home-idle-ice": {
+    "width": 153,
+    "height": 190,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/ice/idle/frame-00.png",
+      "assets/heroes/ice/idle/frame-01.png",
+      "assets/heroes/ice/idle/frame-02.png",
+      "assets/heroes/ice/idle/frame-03.png"
+    ],
+    "crop": [
+      50,
+      65,
+      203,
+      255
+    ],
+    "file": "assets/gemwoven/items/home-idle-ice.webp",
+    "frameOrder": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "frameDuration": 240,
+    "loop": true
+  },
+  "home-idle-ice-poster": {
+    "width": 153,
+    "height": 190,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/ice/idle/frame-00.png",
+      "assets/heroes/ice/idle/frame-01.png",
+      "assets/heroes/ice/idle/frame-02.png",
+      "assets/heroes/ice/idle/frame-03.png"
+    ],
+    "crop": [
+      50,
+      65,
+      203,
+      255
+    ],
+    "file": "assets/gemwoven/items/home-idle-ice-poster.webp"
+  },
+  "home-idle-earth": {
+    "width": 161,
+    "height": 169,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/earth/idle/frame-00.png",
+      "assets/heroes/earth/idle/frame-01.png",
+      "assets/heroes/earth/idle/frame-02.png",
+      "assets/heroes/earth/idle/frame-03.png"
+    ],
+    "crop": [
+      40,
+      78,
+      201,
+      247
+    ],
+    "file": "assets/gemwoven/items/home-idle-earth.webp",
+    "frameOrder": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "frameDuration": 240,
+    "loop": true
+  },
+  "home-idle-earth-poster": {
+    "width": 161,
+    "height": 169,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/earth/idle/frame-00.png",
+      "assets/heroes/earth/idle/frame-01.png",
+      "assets/heroes/earth/idle/frame-02.png",
+      "assets/heroes/earth/idle/frame-03.png"
+    ],
+    "crop": [
+      40,
+      78,
+      201,
+      247
+    ],
+    "file": "assets/gemwoven/items/home-idle-earth-poster.webp"
+  },
+  "home-idle-lightning": {
+    "width": 163,
+    "height": 179,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/lightning/idle/frame-00.png",
+      "assets/heroes/lightning/idle/frame-01.png",
+      "assets/heroes/lightning/idle/frame-02.png",
+      "assets/heroes/lightning/idle/frame-03.png"
+    ],
+    "crop": [
+      46,
+      76,
+      209,
+      255
+    ],
+    "file": "assets/gemwoven/items/home-idle-lightning.webp",
+    "frameOrder": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "frameDuration": 240,
+    "loop": true
+  },
+  "home-idle-lightning-poster": {
+    "width": 163,
+    "height": 179,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/lightning/idle/frame-00.png",
+      "assets/heroes/lightning/idle/frame-01.png",
+      "assets/heroes/lightning/idle/frame-02.png",
+      "assets/heroes/lightning/idle/frame-03.png"
+    ],
+    "crop": [
+      46,
+      76,
+      209,
+      255
+    ],
+    "file": "assets/gemwoven/items/home-idle-lightning-poster.webp"
+  },
+  "home-idle-shadow": {
+    "width": 159,
+    "height": 169,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/shadow/idle/frame-00.png",
+      "assets/heroes/shadow/idle/frame-01.png",
+      "assets/heroes/shadow/idle/frame-02.png",
+      "assets/heroes/shadow/idle/frame-03.png"
+    ],
+    "crop": [
+      40,
+      82,
+      199,
+      251
+    ],
+    "file": "assets/gemwoven/items/home-idle-shadow.webp",
+    "frameOrder": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "frameDuration": 240,
+    "loop": true
+  },
+  "home-idle-shadow-poster": {
+    "width": 159,
+    "height": 169,
+    "transparent": true,
+    "sources": [
+      "assets/heroes/shadow/idle/frame-00.png",
+      "assets/heroes/shadow/idle/frame-01.png",
+      "assets/heroes/shadow/idle/frame-02.png",
+      "assets/heroes/shadow/idle/frame-03.png"
+    ],
+    "crop": [
+      40,
+      82,
+      199,
+      251
+    ],
+    "file": "assets/gemwoven/items/home-idle-shadow-poster.webp"
   }
 }

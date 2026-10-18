@@ -3,7 +3,8 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'../..'),errors=[];
 const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(String(e)));vc.on('error',e=>errors.push(String(e)));
 const dom=new JSDOM(fs.readFileSync(path.join(root,'Gemwoven.html'),'utf8'),{url:'http://localhost/Gemwoven.html',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
-const w=dom.window,d=w.document;w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};w.matchMedia=()=>({matches:true});w.HTMLElement.prototype.scrollIntoView=function(){};
+const motionPreference={matches:true};
+const w=dom.window,d=w.document;w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};w.matchMedia=()=>motionPreference;w.HTMLElement.prototype.scrollIntoView=function(){};
 for(const name of ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','ui'])w.eval(fs.readFileSync(path.join(root,`src/gemwoven/${name}.js`),'utf8'));
 const sleep=()=>new Promise(r=>setTimeout(r,15));
 const click=action=>{const node=d.querySelector(`[data-action="${action}"]`);assert.ok(node,action);assert.equal(node.disabled,false,action);node.click();return node;};
@@ -12,6 +13,11 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
 (async()=>{
   assert.equal(w.GEMWOVEN_GAME.engine.read().wallet.gems,0);assert.equal(d.title,'Gemwoven · Trang Chủ');
   let screens=0;
+  assert.equal(d.querySelector('[data-node="home.hero"]').dataset.asset,'home-idle-novice-poster','Reduced motion uses the matching idle poster');
+  motionPreference.matches=false;await go('inventory');await go('home');
+  assert.equal(d.querySelector('[data-node="home.hero"]').dataset.asset,'home-idle-novice','Home displays the selected hero idle animation');
+  assert.equal(d.querySelector('[data-node="home.hero"]').dataset.action,'hero:novice','Animated hero still opens the hero page');
+  motionPreference.matches=true;await go('inventory');await go('home');
   for(const key of w.GEMWOVEN_LAYOUT.order){await go(key);const ids=[...d.querySelectorAll('[data-node]')].map(n=>n.dataset.node);assert.equal(new Set(ids).size,ids.length,key);assert.equal(d.querySelectorAll('.bottom-nav').length,key==='campaign'?0:7,key);if(key!=='home')assert.equal(d.querySelector(`[data-node="${key}.settings"]`),null,'Settings button belongs only on Home');for(const im of d.querySelectorAll('#scene img'))assert.ok(fs.existsSync(path.join(root,im.getAttribute('src'))),im.src);screens++;}
   const layers={home:['quests','explore','feature-chat','right-offline'],campaign:['title-board','stage-1','stage-2','back'],summon:['central-crystal','featured-board','pity-board','portrait-fire','summon-one','summon-ten'],inventory:['category-all','category-material','detail-panel','detail-art'],skills:['path-title-board','hero-model','detail-panel','node-0','node-3','locked-4'],quests:['quest-panel','quest-art','quest-accept','tavern-tab-0','tavern-tab-3'],tavern:['title-board','left-chalkboard','quest-panel'],upgrade:['hero-model','gear-weapon','gear-pants','gear-glasses','relic','upgrade-material-panel'],forge:['floating-sword','forge-panel','weapon-card'],shop:['product-preview','description-board','purchase-board'],arena:['fighter-fire','rank-one','mode-solo','mode-team']};
   const captures=[];

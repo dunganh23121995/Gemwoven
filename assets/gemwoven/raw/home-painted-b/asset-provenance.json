@@ -1,0 +1,11 @@
+{
+  "generation": "Built-in image_gen, separate full painterly repaint edit of each original building",
+  "model_instruction": "Art delegated to gpt-6-astra with high reasoning",
+  "shop_style_reference": "assets/gemwoven/backgrounds/home-canopy.webp",
+  "forge_and_tavern_style_reference": "assets/gemwoven/backgrounds/home-leaf-detail.webp",
+  "original_targets": ["assets/gemwoven/items/home-shop.png", "assets/gemwoven/items/home-forge.png", "assets/gemwoven/items/home-tavern.png"],
+  "prompts": "prompts.json; forge-top-repair-prompt.txt records the follow-up that completed the top rim of the chimney",
+  "raw_generations": "home-shop-raw.png, home-forge-first-raw.png, home-forge-raw.png (selected chimney repair), home-tavern-raw.png",
+  "exports": "export_assets.py fits each generated visible-alpha bounding box to the original asset bounding box and saves same-size RGBA PNG and lossless WebP. Original source images and raw generations remain intact.",
+  "inspection": "All final assets visually inspected at runtime dimensions. Entire architecture repainted into softer natural daylight materials; main objects and blank sign locations retained. Original canvas sizes and six-pixel margins restored. Transparent alpha spans 0..255. Decoded lossless WebP RGBA exactly equals PNG."
+}

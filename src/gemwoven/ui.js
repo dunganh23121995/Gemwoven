@@ -10,6 +10,8 @@
   const iconFor={home:'nav-home',inventory:'nav-bag',skills:'nav-skills',arena:'nav-arena',summon:'nav-summon',shop:'icon-shop',forge:'icon-forge',upgrade:'nav-heroes',tavern:'icon-tavern'};
   if(game)for(const [key,entry]of Object.entries(game.extra))iconFor[key]=entry[1];
   const heroNames={novice:'Tân',fire:'Mika',ice:'Yuki',earth:'Nori',lightning:'Lumi',shadow:'Noct'};
+  const idleMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')||{matches:false};
+  idleMotion.addEventListener?.('change',()=>{if(state.screen==='home')render();});
   const itemNames={'fire-essence':'Tinh Hoa Hỏa',coins:'Đồng Vàng',mana:'Đá Ngọc',amber:'Đá Nâng Cấp',scroll:'Sách Kỹ Năng','hero-fragment':'Mảnh Tướng',ticket:'Vé Triệu Hồi',chest:'Rương Hiếm',hammer:'Búa Rèn',potion:'Thuốc Đột Phá',ingot:'Thỏi Sắt',emerald:'Tinh Thạch Mộc','fire-sword':'Kiếm Hỏa Ngục','icon-book':'Sách Kinh Nghiệm','avatar-fire':'Mảnh Tướng Mika'};
   function art(key){const img=document.createElement('img');img.src=(assets[key]||assets['icon-hero']).file;img.alt='';img.draggable=false;return img;}
   function box(el,r){['left','top','width','height'].forEach((p,i)=>el.style[p]=`${r[i]}px`);}
@@ -20,6 +22,10 @@
     const displayedHero=game&&node.id==='home.hero'?game.engine.read().selected:state.hero;
     if(node.id.endsWith('.profile'))node.icon=`portrait-${game?game.engine.read().selected:state.hero}`;
     if(['upgrade.hero-model','home.hero'].includes(node.id)){node.asset=`hero-${displayedHero}`;node.action=`hero:${displayedHero}`;copy[node.text]=heroNames[displayedHero];}
+    if(node.id==='home.hero'){
+      const idle=`home-idle-${displayedHero}${idleMotion.matches?'-poster':''}`;
+      if(assets[idle])node.asset=idle;
+    }
     if(['upgrade.evolution-now','upgrade.evolution-next','upgrade.evolution-locked'].includes(node.id)){node.asset=`portrait-${state.hero}`;if(node.id.endsWith('now'))node.action=`hero:${state.hero}`;}
     let el;
     if(node.kind==='content'){el=document.createElement('section');el.className='live-panel';el.style.backgroundImage=`url("${assets[node.backgroundAsset||'panel-parchment'].file}")`;el.style.setProperty('--game-button-art',`url("${assets['button-gold'].file}")`);node.build(el);}
@@ -29,7 +35,7 @@
       if(node.disabled)el.disabled=true;
       for(const [key,value]of Object.entries(node.data||{}))el.dataset[key]=value;
       el.setAttribute('aria-label',copy[node.text]);
-      const bg=art(node.asset);bg.className='art';bg.style.objectFit=node.fit||'contain';el.append(bg);
+      const bg=art(node.asset);bg.className='art';bg.style.objectFit=node.fit||'contain';if(node.id==='home.hero')bg.style.objectPosition='center bottom';el.append(bg);
       if(node.icon){const icon=art(node.icon);icon.className='icon';box(icon,node.iconRect);el.append(icon);}
       if(node.labelAsset){const plate=art(node.labelAsset);plate.className='label-art';box(plate,node.labelRect);el.append(plate);}
       if(!node.labelHidden){const label=document.createElement('span');label.className='copy-layer';setText(label,node.text);decorateText(label,node);if(node.labelRect)box(label,node.labelRect);el.append(label);}

@@ -34,7 +34,7 @@ manifest=json.loads((ROOT/'assets/gemwoven/manifest.json').read_text(encoding='u
 for a in manifest.values():a['file']=data_uri(a['file'])
 backdrops={}
 for key in ['home','inventory','skills','arena','summon','shop','forge','upgrade','tavern']:
-    backdrops[key]={'background':data_uri(f'assets/gemwoven/backgrounds/{key}.webp')}
+    backdrops[key]={'background':data_uri(merged.get('background-'+key,{}).get('file',f'assets/gemwoven/backgrounds/{key}.webp'))}
 for name in ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','ui']:
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
     if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
@@ -54,6 +54,7 @@ paths+=list((ROOT/'assets/gemwoven/encounters').rglob('*.webp'))
 paths+=[ROOT/f'assets/gemwoven/{name}.json' for name in ['boss-expansion-a','boss-expansion-b'] if (ROOT/f'assets/gemwoven/{name}.json').exists()]
 paths+=[ROOT/'assets/audio/music/earth.ogg']
 paths+=[ROOT/'assets/gemwoven/manifest.json',ROOT/'assets/gemwoven/prompts.json',Path(__file__)]
+paths+=[ROOT/'scripts/prepare_home_idle.py']
 paths+=[ROOT/'assets/gemwoven/prompts-v2.json',ROOT/'scripts/prepare_gemwoven_expansion.py']
 paths+=[ROOT/'assets/gemwoven/journey-items.json',ROOT/'assets/gemwoven/raw/journey-art-prompts.json',ROOT/'scripts/package_journey_art.py']
 paths+=[ROOT/f'assets/gemwoven/{name}.json' for name in ['chapter-map-items','boss-items','existing-boss-items','theme-creature-items','equipment-art-items','chapter-ecosystem-items'] if (ROOT/f'assets/gemwoven/{name}.json').exists()]

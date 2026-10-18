@@ -1,0 +1,144 @@
+{
+  "tool": "built-in image_gen",
+  "processing": "Crop near-transparent perimeter at alpha >16 plus 2px, uniformly downscale with Lanczos to original content envelope, bottom anchor 6px, preserve actual alpha, lossless exact WebP. Original sources untouched.",
+  "assets": [
+    {
+      "name": "summon",
+      "source_size": [
+        506,
+        502
+      ],
+      "output_size": [
+        506,
+        502
+      ],
+      "source_bbox": [
+        6,
+        6,
+        500,
+        496
+      ],
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "generated_content_crop": [
+        19,
+        13,
+        1220,
+        1214
+      ],
+      "output_bbox": [
+        8,
+        6,
+        498,
+        496
+      ],
+      "max_alpha_on_edges": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_pixels": 62270,
+      "webp_lossless_equal": true,
+      "style_reference": "home-calm-crisp.webp"
+    },
+    {
+      "name": "arena",
+      "source_size": [
+        524,
+        506
+      ],
+      "output_size": [
+        524,
+        506
+      ],
+      "source_bbox": [
+        6,
+        6,
+        518,
+        500
+      ],
+      "generated_size": [
+        1277,
+        1232
+      ],
+      "generated_content_crop": [
+        14,
+        16,
+        1226,
+        1166
+      ],
+      "output_bbox": [
+        6,
+        14,
+        518,
+        500
+      ],
+      "max_alpha_on_edges": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_pixels": 100508,
+      "webp_lossless_equal": true,
+      "style_reference": "home-calm-crisp.webp"
+    },
+    {
+      "name": "upgrade",
+      "source_size": [
+        512,
+        519
+      ],
+      "output_size": [
+        512,
+        519
+      ],
+      "source_bbox": [
+        6,
+        6,
+        506,
+        513
+      ],
+      "generated_size": [
+        1244,
+        1265
+      ],
+      "generated_content_crop": [
+        52,
+        17,
+        1181,
+        1188
+      ],
+      "output_bbox": [
+        11,
+        6,
+        500,
+        513
+      ],
+      "max_alpha_on_edges": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_pixels": 59190,
+      "webp_lossless_equal": true,
+      "style_reference": "home-canopy.webp"
+    }
+  ]
+}

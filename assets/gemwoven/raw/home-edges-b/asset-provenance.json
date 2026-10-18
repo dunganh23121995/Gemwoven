@@ -1,0 +1,9 @@
+{
+  "generation": "Built-in image_gen, separate transparent edit for each original building",
+  "model_instruction": "Art delegated to gpt-6-astra with high reasoning",
+  "shop_and_forge_style_reference": "assets/gemwoven/backgrounds/home-calm-crisp.webp",
+  "tavern_style_reference": "assets/gemwoven/backgrounds/home-canopy.webp",
+  "prompts": "prompts.json; tavern-prompt-used.txt contains the final additional canopy instruction",
+  "exports": "export_assets.py fits each generated visible-alpha bounding box to the original asset bounding box and saves same-size RGBA PNG and lossless WebP. Source images and raw generations remain intact.",
+  "inspection": "All final assets visually inspected at runtime dimensions. Warm central detail and blank signboards retained. Perimeter foliage uses crisp subdued moss/olive/teal clusters. Canvas dimensions, six-pixel original margins, genuine transparency and byte-identical lossless WebP decoded RGBA checked."
+}

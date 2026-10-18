@@ -50,7 +50,7 @@
     const [x,y,w,h]=rect;const cw=w/items.length;
     items.forEach(([asset,label],i)=>button(`${id}-${i}`,'card-dark',[x+i*cw+5,y,cw-10,h],label,`item:${asset}`,{icon:asset,iconRect:[cw*.18,15,cw*.59,h*.62],labelRect:[5,h*.75,cw-20,h*.19],size:24,fit:'fill'}));
   }
-  function begin(key,number){active=key;screens[key]={key,name:names[key],background:`assets/gemwoven/backgrounds/${key}.webp`,nodes:[]};header();}
+  function begin(key,number){active=key;screens[key]={key,name:names[key],background:window.GEMWOVEN_ASSETS['background-'+key]?.file||`assets/gemwoven/backgrounds/${key}.webp`,nodes:[]};header();}
 
   begin('arena',1);
   sides();
