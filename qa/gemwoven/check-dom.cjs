@@ -1,4 +1,4 @@
-/* DOM interaction checks. No browser engine or visual/layout assertions. */
+/* Legacy composition checks, kept as a source-art regression suite. */
 const {JSDOM,VirtualConsole}=require('./runtime/node_modules/jsdom');
 const fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../..'),errors=[],checks=[];

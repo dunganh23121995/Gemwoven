@@ -1,0 +1,138 @@
+{
+  "boss": "elderbloom",
+  "action": "idle",
+  "accepted": true,
+  "facing": "left",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "frameOrder": "row-major",
+  "loop": true,
+  "frameDuration": 220,
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "9deee6d231f06f269c4079455df18092290a5e222d90331f5f511d0cc0e0b7bf",
+    "efc85b08f89d4978f19e9d920d4774695a5bf7f3ce4aad2b91de8a2825eb29a6",
+    "7136127efa8e3ae3e6573f1e24ef414e2f1cf969ddfecd06623d019996c380ce",
+    "9f9e712afb4518d9dde1a0a23ca54c336c65e2ca26db76fd34d7a3599cde30bc"
+  ],
+  "alphaBounds": [
+    [
+      31,
+      53,
+      203,
+      247
+    ],
+    [
+      30,
+      52,
+      204,
+      247
+    ],
+    [
+      31,
+      53,
+      204,
+      247
+    ],
+    [
+      29,
+      53,
+      203,
+      247
+    ]
+  ],
+  "heads": [
+    [
+      128,
+      119
+    ],
+    [
+      128,
+      118
+    ],
+    [
+      128,
+      119
+    ],
+    [
+      128,
+      119
+    ]
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5751965316009151,
+    "output_subject_height_mean": 194.25,
+    "body_scale_cv": 0.0036428605145795772,
+    "anchor_x_std": 0.0018452245819270754,
+    "anchor_y_std": 0.0006150748606423265,
+    "anchor_y_mean": 0.9286221590909092
+  },
+  "source": "assets/gemwoven/raw/boss-chapters-2026/elderbloom/idle-raw.png",
+  "sourceSha256": "dd15be61291d6995f72b37e4a0a4be6317b1faf31627127b64dbf0046142604e",
+  "safeGridRecovery": [
+    {
+      "originalBounds": [
+        49,
+        12,
+        587,
+        618
+      ],
+      "sourceSize": [
+        538,
+        606
+      ],
+      "mirrored": true
+    },
+    {
+      "originalBounds": [
+        673,
+        10,
+        1217,
+        618
+      ],
+      "sourceSize": [
+        544,
+        608
+      ],
+      "mirrored": true
+    },
+    {
+      "originalBounds": [
+        47,
+        640,
+        587,
+        1245
+      ],
+      "sourceSize": [
+        540,
+        605
+      ],
+      "mirrored": true
+    },
+    {
+      "originalBounds": [
+        676,
+        639,
+        1221,
+        1245
+      ],
+      "sourceSize": [
+        545,
+        606
+      ],
+      "mirrored": true
+    }
+  ],
+  "processor": "generate2dsprite preserve-scale strict QC",
+  "finalOutputEdgeTouchCount": 0,
+  "presentationAnchor": "processor feet anchor"
+}

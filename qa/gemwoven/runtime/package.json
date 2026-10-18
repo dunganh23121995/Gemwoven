@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node ../check-dom.cjs"
+    "test": "node ../check-progression.cjs && node ../check-boss-chapters.cjs && node ../check-live-ui.cjs && node ../check-combat-progression.cjs",
+    "test:art": "node ../check-dom.cjs",
+    "test:offline": "node ../check-offline.cjs"
   },
   "devDependencies": {
     "jsdom": "29.1.1"

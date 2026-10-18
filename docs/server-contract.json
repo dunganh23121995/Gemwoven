@@ -1,0 +1,26 @@
+{
+  "status": "planned-not-implemented",
+  "purpose": "Replace local saves before enabling real payments, global rankings, or online PvP.",
+  "currencyRules": {
+    "premium": "Credit gems only from a verified payment-provider callback. Never trust client currency or reward amounts.",
+    "idempotency": "Unique provider transaction ID, ledger entry, and database transaction are mandatory.",
+    "dailyReset": "Server clock at 00:00 GMT+7; training-seal acquisition cap 1600/account/day.",
+    "offline": "Server last-claim timestamp; 12-hour cap; rate derived from stored hero levels and cleared stages."
+  },
+  "plannedEndpoints": [
+    {"method": "GET", "path": "/api/player", "auth": "player-session", "returns": "server-owned profile, revision, serverTime"},
+    {"method": "POST", "path": "/api/claim/offline", "auth": "player-session", "transaction": "claim timestamp + wallet + daily seals"},
+    {"method": "POST", "path": "/api/claim/daily/:id", "auth": "player-session", "transaction": "completion + unique day/id receipt + wallet"},
+    {"method": "POST", "path": "/api/summon", "auth": "player-session", "request": {"count": "1 or 10", "payment": "tickets or gems", "idempotencyKey": "unique"}, "transaction": "debit + server RNG + pity + roster/material/gear + result receipt"},
+    {"method": "POST", "path": "/api/heroes/:id/upgrade", "auth": "player-session", "transaction": "ownership + costs + caps + stat changes"},
+    {"method": "POST", "path": "/api/matches", "auth": "player-session", "returns": "opaque match ID + server seed + pinned normalized stats"},
+    {"method": "POST", "path": "/api/matches/:id/moves", "auth": "match-participant", "validation": "turn owner, adjacent cells, resulting match, authoritative board and HP"},
+    {"method": "POST", "path": "/api/matches/:id/settle", "auth": "player-session", "transaction": "terminal server state + unique reward receipt; never accept client win flag"},
+    {"method": "POST", "path": "/api/pvp/queue", "auth": "player-session", "status": "future online PvP"},
+    {"method": "GET", "path": "/api/rankings/boss", "auth": "public", "ranking": "verified highest floor, then fewer turns, then earliest achievement"},
+    {"method": "GET", "path": "/api/events", "auth": "public", "filter": "enabled and valid visibility window"},
+    {"method": "PUT", "path": "/api/admin/events/:id", "auth": "admin-role + CSRF/session checks", "schema": "event.schema.json", "audit": true},
+    {"method": "POST", "path": "/api/payments/provider-callback", "auth": "provider signature", "status": "coming-soon; no payment handling exists yet"}
+  ],
+  "securityBoundary": "The browser implementation is a playable local prototype. It cannot provide authoritative anti-cheat, monetary integrity, admin access control, or cross-device ranking."
+}

@@ -1,0 +1,139 @@
+{
+  "boss": "frostregent",
+  "action": "cast",
+  "accepted": true,
+  "facing": "left",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 135,
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "31a5cedf9f3327d364aeb5ffa41611b340543e95161143b0be3abc535a3062f6",
+    "f8d07808cb89da37bbc760158f17fe5a6e6ede571c372aac7c8728ec07ef2673",
+    "5c27b0feff348554c9c0d6e3216e8137336c9d31004505335cae0ee5311b94c7",
+    "e0c389c59577a1fdd446f6886acb415e21fa46c832688998e95e3b412970be75"
+  ],
+  "alphaBounds": [
+    [
+      40,
+      56,
+      217,
+      245
+    ],
+    [
+      40,
+      56,
+      215,
+      245
+    ],
+    [
+      39,
+      56,
+      217,
+      245
+    ],
+    [
+      40,
+      56,
+      217,
+      245
+    ]
+  ],
+  "heads": [
+    [
+      128,
+      85
+    ],
+    [
+      128,
+      85
+    ],
+    [
+      128,
+      85
+    ],
+    [
+      128,
+      85
+    ]
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.5148390592968735,
+    "output_subject_height_mean": 189.0,
+    "body_scale_cv": 0.00578165399152113,
+    "anchor_x_std": 0.00035511363636364646,
+    "anchor_y_std": 0.0005022065207290963,
+    "anchor_y_mean": 0.5348011363636364,
+    "profile_body_scale_drift": 5.141925977225625e-06
+  },
+  "source": "assets/gemwoven/raw/boss-chapters-2026/frostregent/cast-raw.png",
+  "sourceSha256": "69d5de3da0931a73005054b7e1c3a3b2b11ff7f3472e7909fe2e98dc28a1d4e6",
+  "safeGridRecovery": [
+    {
+      "originalBounds": [
+        36,
+        23,
+        589,
+        613
+      ],
+      "sourceSize": [
+        553,
+        590
+      ],
+      "mirrored": true
+    },
+    {
+      "originalBounds": [
+        667,
+        22,
+        1215,
+        613
+      ],
+      "sourceSize": [
+        548,
+        591
+      ],
+      "mirrored": true
+    },
+    {
+      "originalBounds": [
+        35,
+        647,
+        592,
+        1239
+      ],
+      "sourceSize": [
+        557,
+        592
+      ],
+      "mirrored": true
+    },
+    {
+      "originalBounds": [
+        664,
+        648,
+        1216,
+        1239
+      ],
+      "sourceSize": [
+        552,
+        591
+      ],
+      "mirrored": true
+    }
+  ],
+  "processor": "generate2dsprite preserve-scale strict QC",
+  "finalOutputEdgeTouchCount": 0,
+  "presentationAnchor": "complete silhouette bottom at 245"
+}

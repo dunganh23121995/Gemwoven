@@ -1,0 +1,27 @@
+{
+  "asset": "assets/gemwoven/backgrounds/journey-forest-close.webp",
+  "raw": "assets/gemwoven/raw/journey-close/journey-forest-close.png",
+  "prompt": "assets/gemwoven/raw/journey-close/journey-forest-close.prompt.txt",
+  "generation": "built-in ImageGen",
+  "styleReference": "assets/gemwoven/backgrounds/chapters/forest.webp",
+  "mapMode": "baked_scene_mode",
+  "purpose": "Decorative stage-selection background; encounter actors, stage platforms, labels and clouds are separate runtime layers.",
+  "width": 1024,
+  "height": 1536,
+  "normalizedCoordinateOrigin": "top-left",
+  "encounterAnchorsBottomToTop": [
+    { "x": 0.48, "y": 0.92 },
+    { "x": 0.65, "y": 0.65 },
+    { "x": 0.33, "y": 0.41 },
+    { "x": 0.69, "y": 0.215 }
+  ],
+  "rendering": "Preserve the 2:3 aspect ratio. Use the full artwork width as the map width. Place stage platform centers at the anchors and place actor feet on their stage platforms.",
+  "repeat": "Both borders continue through a broadly centered road. This is visually repeatable but not pixel-seamless. Stack copies in the same orientation, overlap about 5 percent of image height, use a short alpha crossfade and existing cloud art around outer seam edges. Do not vertically mirror stairs. Keep center-road cloud opacity light.",
+  "visualQA": {
+    "viewedFinalWebP": true,
+    "noDestinationOrEndpoint": true,
+    "noWholeIslandOutline": true,
+    "noBakedUIOrActors": true,
+    "fourClearEncounterAreas": true
+  }
+}

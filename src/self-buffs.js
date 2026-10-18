@@ -1,7 +1,7 @@
 // Actor-local spirals: back strands pass behind the body, front strands over it.
 // Cosmetic motion uses deterministic phases, never the board's random stream.
 const selfBuffJobs=new Map();
-const selfBuffColors={fire:[255,187,113],earth:[124,237,164],ice:[161,235,255],lightning:[203,177,255],shadow:[148,201,224]};
+const selfBuffColors={fire:[255,187,113],earth:[124,237,164],ice:[161,235,255],lightning:[203,177,255],shadow:[148,201,224],novice:[194,174,139]};
 function createSelfBuffFlow(kind,{persistent=false,duration=950}={}){
   const root=actor('hero'),key=state.key,field=document.createElement('span'),back=document.createElement('canvas'),front=document.createElement('canvas');
   field.className='restoration-field self-buff-flow';field.dataset.buffKind=kind;
@@ -135,7 +135,7 @@ async function tickNoriRenewal(){
   // One pulse at the beginning of the next player turn, even if the enemy skipped.
   // Refreshing the skill replaces the remaining duration; it never stacks ticks.
   state.noriRegenTurns--;
-  const gained=Math.max(0,Math.min(40,HEROES.earth.hp-state.hp));state.hp+=gained;
+  const gained=Math.max(0,Math.min(progressionHeal(40),HEROES.earth.hp-state.hp));state.hp+=gained;
   update();const pending=[];
   if(gained){combatV3BuffSound('heal');combatV3Number('hero','+'+gained+' HP','heal',0,pending);}
   if(!state.noriRegenTurns)pending.push(selfBuffSpiral('heal',650));

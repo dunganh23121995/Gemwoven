@@ -31,5 +31,9 @@ Thumbs.db
 /qa/**/*.webp
 /qa/**/dom-results.json
 /qa/**/layout.json
+/qa/**/pipeline-meta.json
+/qa/**/*.gif
 /assets/gemwoven/*contact-sheet*.jpg
 /assets/gemwoven/reference/
+/assets/heroes/novice/contact-sheet.jpg
+/tmp/boss-expansion-b/

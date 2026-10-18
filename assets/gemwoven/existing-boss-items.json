@@ -1,0 +1,32 @@
+{
+  "items": {
+    "boss-earth": {
+      "file": "items/boss-earth.webp",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sourceFrame": "assets/reimagined/bosses/earth/idle/frame-00.png"
+    },
+    "boss-fire": {
+      "file": "items/boss-fire.webp",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sourceFrame": "assets/reimagined/bosses/fire/idle/frame-00.png"
+    },
+    "boss-ice": {
+      "file": "items/boss-ice.webp",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sourceFrame": "assets/reimagined/bosses/ice/idle/frame-00.png"
+    },
+    "boss-lightning": {
+      "file": "items/boss-lightning.webp",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sourceFrame": "assets/reimagined/bosses/lightning/idle/frame-00.png"
+    }
+  }
+}

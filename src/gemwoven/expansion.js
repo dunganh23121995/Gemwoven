@@ -89,8 +89,9 @@
       text('count-'+asset,count,[x+77,y+86,67,30],21);
     });
     if(pages>1){button('previous','nav-tile',[726,463,30,27],'‹','bag-page:-1',{size:23});text('page',`${page+1} / ${pages}`,[762,463,73,27],19);button('next','nav-tile',[842,463,30,27],'›','bag-page:1',{size:23});}
-    const item=inventory.find(p=>p[0]===selected)||list[0];
+    const item=list.find(p=>p[0]===selected)||list[0];
     panel('detail-panel',[18,1130,906,351]);
+    if(!item){text('empty','Chưa có vật phẩm trong mục này',[275,670,590,90],30);footer();return {page,pages,visible:[]};}
     image('detail-slot','inventory-slot',[50,1170,226,231],{fit:'fill'});
     button('detail-art',item[0],[68,1190,192,192],item[1],'item:'+item[0],{labelHidden:true});
     text('item-title-'+selected,item[1],[307,1162,401,48],35,{tone:'ink',align:'left'});

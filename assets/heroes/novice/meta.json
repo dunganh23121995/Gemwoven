@@ -1,0 +1,404 @@
+{
+  "hero": "novice",
+  "name": "Tân",
+  "cellSize": 256,
+  "actions": {
+    "idle": {
+      "hero": "novice",
+      "action": "idle",
+      "accepted": true,
+      "atlas": "idle.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "count": 4,
+      "cols": 2,
+      "frameOrder": "row-major",
+      "loop": true,
+      "frameDuration": 220,
+      "origin": [
+        128,
+        244
+      ],
+      "headAnchors": [
+        [
+          121,
+          78
+        ],
+        [
+          122,
+          78
+        ],
+        [
+          122,
+          79
+        ],
+        [
+          121,
+          78
+        ]
+      ],
+      "frameFiles": [
+        "idle/frame-00.png",
+        "idle/frame-01.png",
+        "idle/frame-02.png",
+        "idle/frame-03.png"
+      ],
+      "floorAligned": true,
+      "presentationTranslation": [
+        0,
+        13
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "source": "assets/gemwoven/raw/novice-idle.png",
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4496771436989365,
+        "output_subject_height_mean": 177.5,
+        "body_scale_cv": 0.002390925751789799,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0006995358673541304,
+        "anchor_y_mean": 0.9042810985460421
+      },
+      "uniqueFrames": 4,
+      "framePixelHashes": [
+        "5ba8f0ccd92648cbe0ffdb16ac49a798ddffb07c68e7228286e2ef138e0a42a2",
+        "eccb06b8ffdef9aa676b99d04b8ebac00f309d1989143d700db1c39456412558",
+        "6fe9a24c6decc5f74062351f9f5db74141d7e2a5cc3ef80baa755ba0b7f427c9",
+        "f4010fffa04d599ef7aef1af1c73c6cd5befbba1a79a13c574f2ba6d22a929f8"
+      ]
+    },
+    "attack": {
+      "hero": "novice",
+      "action": "attack",
+      "accepted": true,
+      "atlas": "attack.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "count": 6,
+      "cols": 3,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 110,
+      "origin": [
+        128,
+        244
+      ],
+      "headAnchors": [
+        [
+          119,
+          76
+        ],
+        [
+          113,
+          76
+        ],
+        [
+          122,
+          76
+        ],
+        [
+          118,
+          77
+        ],
+        [
+          114,
+          76
+        ],
+        [
+          118,
+          76
+        ]
+      ],
+      "frameFiles": [
+        "attack/frame-00.png",
+        "attack/frame-01.png",
+        "attack/frame-02.png",
+        "attack/frame-03.png",
+        "attack/frame-04.png",
+        "attack/frame-05.png"
+      ],
+      "floorAligned": true,
+      "presentationTranslation": [
+        0,
+        13
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "source": "assets/gemwoven/raw/novice-attack.png",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4520310971019425,
+        "output_subject_height_mean": 178.0,
+        "body_scale_cv": 0.006008852639322066,
+        "anchor_x_std": 0.015821261526330288,
+        "anchor_y_std": 0.0009920634920634885,
+        "anchor_y_mean": 0.9097222222222223,
+        "profile_body_scale_drift": 0.005234763287373045
+      },
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "7f5c439a7ad1e1d91806d4970ce1470b882ba46f16438f7a311d863930e18794",
+        "3d6537957310f5d084df5e5106578cf343dac56e049bfb7dae544545502d6b23",
+        "4a4988777868a54d4d2298aa16b3a6186bd9b2589950c26e67be9d00cc1d9642",
+        "21f9b998da0f5980ed35537125bafd27c72f31acbd205886cef75f58337754f4",
+        "d264018feef432c348de582ccdbf98c4ccdb7d3a171a8482ef9011d05658cc1b",
+        "e62437544e80f38005cacbe77008e51867dc4dbc0c88312f46636d0243dc6eca"
+      ]
+    },
+    "cast": {
+      "hero": "novice",
+      "action": "cast",
+      "accepted": true,
+      "atlas": "cast.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "count": 6,
+      "cols": 3,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 150,
+      "origin": [
+        128,
+        244
+      ],
+      "headAnchors": [
+        [
+          121,
+          78
+        ],
+        [
+          121,
+          78
+        ],
+        [
+          121,
+          78
+        ],
+        [
+          121,
+          79
+        ],
+        [
+          121,
+          78
+        ],
+        [
+          122,
+          78
+        ]
+      ],
+      "frameFiles": [
+        "cast/frame-00.png",
+        "cast/frame-01.png",
+        "cast/frame-02.png",
+        "cast/frame-03.png",
+        "cast/frame-04.png",
+        "cast/frame-05.png"
+      ],
+      "floorAligned": true,
+      "presentationTranslation": [
+        0,
+        13
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "source": "assets/gemwoven/raw/novice-cast.png",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4511228029327376,
+        "output_subject_height_mean": 177.83333333333334,
+        "body_scale_cv": 0.005819675151362001,
+        "anchor_x_std": 0.0007394404687499277,
+        "anchor_y_std": 0.0009920634920634885,
+        "anchor_y_mean": 0.9017857142857144,
+        "profile_body_scale_drift": 0.0032148826198046265
+      },
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "7215390d0fe3193d6c728c394e603dfdb026ebebdddb278504be96dc915478e4",
+        "bc3f7cb55850c7cc08afcb4ffa33e9143c1e64e6b48749765dfafbcdfa190898",
+        "307497bde438f2946d3e62ffdced48354caf0cad48bbd007bc9b7967d2bff4fb",
+        "fa9f19af16626ea82cc7822d728043d25a23a148aa3b8f39fcb25fca16d63f06",
+        "eba04db52ae477e68148768d9ec936d9da8745cbad4f2485117f1890b9ff741b",
+        "6eb643c252ae06d14a33f3446478ef9bea8c1916346dccd43e61d309e42de561"
+      ]
+    },
+    "hurt": {
+      "hero": "novice",
+      "action": "hurt",
+      "accepted": true,
+      "atlas": "hurt.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "count": 6,
+      "cols": 3,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 90,
+      "origin": [
+        128,
+        244
+      ],
+      "headAnchors": [
+        [
+          119,
+          76
+        ],
+        [
+          113,
+          76
+        ],
+        [
+          122,
+          76
+        ],
+        [
+          118,
+          77
+        ],
+        [
+          114,
+          76
+        ],
+        [
+          118,
+          76
+        ]
+      ],
+      "frameFiles": [
+        "hurt/frame-00.png",
+        "hurt/frame-01.png",
+        "hurt/frame-02.png",
+        "hurt/frame-03.png",
+        "hurt/frame-04.png",
+        "hurt/frame-05.png"
+      ],
+      "floorAligned": true,
+      "presentationTranslation": [
+        0,
+        13
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "source": "assets/gemwoven/raw/novice-attack.png",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4520310971019425,
+        "output_subject_height_mean": 178.0,
+        "body_scale_cv": 0.006008852639322066,
+        "anchor_x_std": 0.015821261526330288,
+        "anchor_y_std": 0.0009920634920634885,
+        "anchor_y_mean": 0.9097222222222223,
+        "profile_body_scale_drift": 0.005234763287373045
+      },
+      "uniqueFrames": 6,
+      "framePixelHashes": [
+        "7f5c439a7ad1e1d91806d4970ce1470b882ba46f16438f7a311d863930e18794",
+        "3d6537957310f5d084df5e5106578cf343dac56e049bfb7dae544545502d6b23",
+        "4a4988777868a54d4d2298aa16b3a6186bd9b2589950c26e67be9d00cc1d9642",
+        "21f9b998da0f5980ed35537125bafd27c72f31acbd205886cef75f58337754f4",
+        "d264018feef432c348de582ccdbf98c4ccdb7d3a171a8482ef9011d05658cc1b",
+        "e62437544e80f38005cacbe77008e51867dc4dbc0c88312f46636d0243dc6eca"
+      ],
+      "fallbackOf": "attack",
+      "note": "Explicit fallback reuse of attack poses; runtime may apply recoil translation/tint."
+    },
+    "run": {
+      "hero": "novice",
+      "action": "run",
+      "accepted": true,
+      "atlas": "run.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "count": 4,
+      "cols": 2,
+      "frameOrder": "row-major",
+      "loop": true,
+      "frameDuration": 100,
+      "origin": [
+        128,
+        244
+      ],
+      "headAnchors": [
+        [
+          157,
+          65
+        ],
+        [
+          135,
+          63
+        ],
+        [
+          154,
+          67
+        ],
+        [
+          135,
+          66
+        ]
+      ],
+      "frameFiles": [
+        "run/frame-00.png",
+        "run/frame-01.png",
+        "run/frame-02.png",
+        "run/frame-03.png"
+      ],
+      "floorAligned": true,
+      "presentationTranslation": [
+        0,
+        13
+      ],
+      "sharedScaleProfile": "character-scale-profile.json",
+      "source": "assets/gemwoven/raw/novice-run.png",
+      "qc": {
+        "frame_count": 4,
+        "valid_frame_count": 4,
+        "empty_count": 0,
+        "edge_touch_count": 1,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4684219787427759,
+        "output_subject_height_mean": 185.25,
+        "body_scale_cv": 0.01658992406885603,
+        "anchor_x_std": 0.12014108487470639,
+        "anchor_y_std": 0.035107130552666774,
+        "anchor_y_mean": 0.8747980613893376,
+        "profile_body_scale_drift": 0.041685096310764
+      },
+      "uniqueFrames": 4,
+      "framePixelHashes": [
+        "dbd61ae39a0459b1b272fa55321c0190f90cd2496f504e417d5efe8e9df7cb1e",
+        "d88f8aed4421d0c554b8e5ba3a32b8e7d6208bb7e72637514a7e16cf05d6c4eb",
+        "5f380c9ca60bef3b837352c530cdcf366eb1fdea92ee75ec1260ccdc27a9e218",
+        "f49fceb2b9cc90e971b48d4bcd4e396d1740d49212ae4ef4a95fd7acb468c4be"
+      ]
+    }
+  }
+}

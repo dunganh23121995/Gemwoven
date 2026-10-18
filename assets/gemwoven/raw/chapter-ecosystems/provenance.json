@@ -1,0 +1,181 @@
+{
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "style": "clean_hd",
+  "rawBackground": "#FF00FF",
+  "layout": "three columns, two rows, row-major",
+  "notes": "Original generated sheets are preserved. Extractor uses manually reviewed empty gutters without repainting source art. Final sprites are static cutouts, not animation frames.",
+  "entries": [
+    {
+      "theme": "eldergrove",
+      "raw": "eldergrove.png",
+      "prompt": "eldergrove-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_39 PM-1.png",
+      "layoutReference": "layout-guide.png",
+      "layoutEditPrompt": "eldergrove-layout-fix-prompt.txt",
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-2fc51018-e353-4d50-ad42-7377ed58fd31.png"
+    },
+    {
+      "theme": "caldera",
+      "raw": "caldera.png",
+      "prompt": "caldera-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_41 PM-2.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-7985b0a2-b922-4120-94f1-4352a31a481d.png"
+    },
+    {
+      "theme": "glacier",
+      "raw": "glacier.png",
+      "prompt": "glacier-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_42 PM-3.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-1dd558db-4a33-43b7-80c5-a5ec99435d06.png"
+    },
+    {
+      "theme": "stormspire",
+      "raw": "stormspire.png",
+      "prompt": "stormspire-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_44 PM-4.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-2701d0fa-5d27-4470-84dc-1af93ffaf752.png"
+    },
+    {
+      "theme": "soulcrypt",
+      "raw": "soulcrypt.png",
+      "prompt": "soulcrypt-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_45 PM-5.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-db954f07-3fe7-4e97-a2c5-e87871aaac38.png"
+    },
+    {
+      "theme": "mycelium",
+      "raw": "mycelium.png",
+      "prompt": "mycelium-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_46 PM-6.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-bccba329-d4e8-4cc5-8d13-abf1fe3d150b.png"
+    },
+    {
+      "theme": "geode",
+      "raw": "geode.png",
+      "prompt": "geode-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_48 PM-7.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-bc1e7bac-5685-4263-a6d2-ad9f3d9ed5c7.png"
+    },
+    {
+      "theme": "hourglass",
+      "raw": "hourglass.png",
+      "prompt": "hourglass-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_49 PM-8.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-d98a464b-8234-4076-b118-def9270e1e7f.png"
+    },
+    {
+      "theme": "coralreef",
+      "raw": "coralreef.png",
+      "prompt": "coralreef-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_51 PM-9.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-3dd8daa6-1dcf-4ff8-ab21-68b4ef106292.png"
+    },
+    {
+      "theme": "moonkeep",
+      "raw": "moonkeep.png",
+      "prompt": "moonkeep-prompt.txt",
+      "reference": "ChatGPT Image Oct 18, 2026, 05_42_52 PM-10.png",
+      "layoutReference": "eldergrove.png",
+      "layoutEditPrompt": null,
+      "subjects": [
+        "ordinary",
+        "ordinary",
+        "ordinary",
+        "elite",
+        "elite",
+        "artifact"
+      ],
+      "originalOutput": "C:\\Users\\dungca\\.codex\\generated_images\\01a14eb0-2297-7d40-a43e-cbc52b646e24\\exec-8c7fb98d-ee27-4eeb-8785-b81725fbee9f.png"
+    }
+  ]
+}

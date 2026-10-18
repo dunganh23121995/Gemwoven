@@ -1,0 +1,20 @@
+Use case: stylized-concept.
+Asset: production background-only art for a vertical scrolling fantasy RPG stage-selection map. Portrait 1024 x 1536.
+Use the visible forest image as the STYLE REFERENCE: sunny hand-painted HD anime fantasy environment, creamy gold flagstones, moss, twisting tree roots, lush emerald foliage, small white/pink flowers, floating rock cliffs and cyan waterfalls into pale mist. Recompose the path completely.
+
+CRITICAL GEOMETRY: depict EXACTLY EIGHT distinct broad FLAT stone landings, evenly spaced vertically across the entire portrait. Count eight terraces. Connect each consecutive landing with one short diagonal staircase running through the vertical gap BETWEEN terraces. The path serpentines upward: bottom right, left, right, left, right, left, right, top left. Uniform scale all the way up, orthographic 3/4 overhead view, no perspective shrinking, no horizon.
+Each landing is an elongated left-to-right oval/rounded rectangular area of flat flagstones. Every landing must have a minimum 280 pixels of unobstructed horizontal floor and 85 pixels of floor depth. Keep the landing center completely flat: absolutely no stair treads, cliff face, rails, plants, or props at its center. The stairs join a side or corner of each landing. No stairs crossing the center. No extra side platforms or ambiguous half-landings.
+
+Exact target FLOOR contact center positions, measured from top-left of the full 1024x1536 image:
+Top landing 1 at (369,96).
+Landing 2 at (655,288).
+Landing 3 at (369,480).
+Landing 4 at (655,672).
+Landing 5 at (369,864).
+Landing 6 at (655,1056).
+Landing 7 at (369,1248).
+Bottom landing 8 at (655,1440).
+These positions identify flat floor, not terrace edge or front wall. Make each landing's visible flat stone floor extend about 165px LEFT and RIGHT and 45px ABOVE and BELOW its target center. There is clear vertical separation between all eight flat floors. The intervening 100px bands contain staircase connections and scenery. A short stone path continues through the top image edge and through the bottom image edge, implying an infinite route. No temple, finish line, shrine, gate, or destination building.
+
+Surround the zigzag path with richly detailed forest on floating rocky islands and slim waterfalls along the outer edges. Keep the paths bright, clean, legible and naturally integrated with the landscape; foliage stays off each flat landing interior. Moss only in cracks and at outer edges. Small stone posts allowed at exterior path corners away from standing centers. Beautiful continuous world, no panels or visible row dividers.
+NO characters, actors, animals, monsters, treasure, UI, labels, letters, numbers, icons, circles, glowing pads, outlines, arrows, debug markers, watermark or borders. Exactly eight empty flat terraces, not five or six.

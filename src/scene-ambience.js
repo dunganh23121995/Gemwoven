@@ -29,7 +29,7 @@ function stopSceneMusic(){
 }
 async function syncSceneMusic(){
   if(!sceneMusicStarted||!sound||document.hidden){stopSceneMusic();return;}
-  const key=state.enemyKey;
+  const key=progressionMusicKey();
   if(sceneMusicCurrent?.key===key){
     // Cancel an obsolete decode if a quick transition returns to this scene.
     if(sceneMusicPending){sceneMusicEpoch++;sceneMusicPending=null;}
@@ -40,7 +40,7 @@ async function syncSceneMusic(){
   const epoch=++sceneMusicEpoch;sceneMusicPending=key;
   try{
     const buffer=await decodeSceneMusic(context,key);
-    if(epoch!==sceneMusicEpoch||!sound||document.hidden||state.enemyKey!==key)return;
+    if(epoch!==sceneMusicEpoch||!sound||document.hidden||progressionMusicKey()!==key)return;
     const source=context.createBufferSource(),gain=context.createGain(),now=context.currentTime;
     source.buffer=buffer;source.loop=true;source.loopStart=0;source.loopEnd=buffer.duration;
     const offset=(sceneMusicOffsets.get(key)||0)%buffer.duration;

@@ -1,0 +1,34 @@
+{
+  "relic-novice": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-50aaa361-3003-4589-a363-b1d681a2a5c6.png",
+    "raw": "relic-novice-raw.png"
+  },
+  "relic-fire": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-e8c89809-a8cc-4801-b021-f6576ad094cd.png",
+    "raw": "relic-fire-raw.png"
+  },
+  "relic-ice": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-a276eee2-4b1f-48e3-97ff-4b4c2765095c.png",
+    "raw": "relic-ice-raw.png"
+  },
+  "relic-earth": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-90d8afc5-e0d8-4918-b09d-0a6f93871308.png",
+    "raw": "relic-earth-raw.png"
+  },
+  "relic-lightning": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-3a21a3d8-0f73-4ecb-9d84-554f5b59c6dc.png",
+    "raw": "relic-lightning-raw.png"
+  },
+  "relic-shadow": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-d95bb72c-4472-43b6-ad4e-4019aac1f065.png",
+    "raw": "relic-shadow-raw.png"
+  },
+  "gear": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-d2224195-c879-4b50-85b3-7a21af5bbd36.png",
+    "raw": "gear-raw.png"
+  },
+  "gear-armor": {
+    "original": "C:\\Users\\dungca\\.codex\\generated_images\\01a14e91-efaf-75e1-be5f-1e4eea710a0c\\exec-312ec594-3ef1-460d-ab5f-92c4a028e517.png",
+    "raw": "gear-armor-raw.png"
+  }
+}

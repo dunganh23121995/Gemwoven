@@ -1,0 +1,1601 @@
+[
+  {
+    "id": "elderbloom",
+    "theme": "eldergrove",
+    "name": "Cổ Vương Bạch Hoa",
+    "chapterName": "Thánh Lâm Bạch Hoa",
+    "element": "earth",
+    "backdrop": "forest",
+    "tile": 0,
+    "status": "Rễ Ký Sinh",
+    "gauge": "Nhựa Sống",
+    "passive": "Mỗi lượt mọc thêm 1 Rễ Ký Sinh; rễ gây hao máu và nuôi hồi phục. Hai vệ rễ tiếp sức khi còn sống.",
+    "counter": "Ấn Trảm Mạch",
+    "artifact": "sapbreaker",
+    "counterText": "Cắt nhựa hồi phục và sát thương gai; dạng IV chặn vệ rễ tái sinh trong hai lượt sau khi phá.",
+    "mechanic": "growth",
+    "tick": 0.012,
+    "ordinary": [
+      [
+        "sproutling",
+        "Mầm Bạch Hoa"
+      ],
+      [
+        "barkmoth",
+        "Ngài Vỏ Cây"
+      ],
+      [
+        "vineboar",
+        "Lợn Rừng Dây Leo"
+      ]
+    ],
+    "elites": [
+      [
+        "rootwarden",
+        "Vệ Rễ Cổ Mộc"
+      ],
+      [
+        "thornstag",
+        "Hươu Gai Bạch Hoa"
+      ]
+    ],
+    "eliteLessons": [
+      "Phá giáp rễ bằng ngọc Kiếm trước khi nó hồi máu.",
+      "Tích Khiên trước nhịp phản gai; hạ nhanh để không chồng Rễ."
+    ],
+    "skills": [
+      {
+        "name": "Chưởng Rễ Đâm Xuyên",
+        "phase": 1,
+        "description": "Hai đòn 55%, thêm một Rễ.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.1,
+            "hits": 2
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Vỏ Cây Bạch Hoa",
+        "phase": 1,
+        "description": "Lá chắn 8% HP boss, hồi 2% HP.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.08
+          },
+          {
+            "type": "heal",
+            "pct": 0.02
+          }
+        ]
+      },
+      {
+        "name": "Gọi Vệ Rễ",
+        "phase": 1,
+        "description": "Triệu hồi hai vệ, mỗi vệ 4% HP boss; nhận 40% sát thương thay boss.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Nở Hoa Ký Sinh",
+        "phase": 2,
+        "description": "Ba đòn 45%, thêm hai Rễ, hút 18 năng lượng.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.35,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 2
+          },
+          {
+            "type": "drain",
+            "amount": 18
+          }
+        ]
+      },
+      {
+        "name": "Mùa Xuân Vĩnh Cửu",
+        "phase": 2,
+        "description": "Hồi 6% HP boss, dựng lại vỏ cây 6%.",
+        "effects": [
+          {
+            "type": "heal",
+            "pct": 0.06
+          },
+          {
+            "type": "ward",
+            "pct": 0.06
+          }
+        ]
+      },
+      {
+        "name": "Thiên Căn Sụp Đổ",
+        "phase": 3,
+        "description": "Niệm một lượt rồi đánh 190%, cộng thêm 12% mỗi Rễ còn lại.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 1.9
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 21,
+    "counterKey": "artifact-eldergrove",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "cinderheart",
+    "theme": "caldera",
+    "name": "Bạo Chúa Tâm Nham",
+    "chapterName": "Hỏa Ngục Tâm Nham",
+    "element": "fire",
+    "backdrop": "volcano",
+    "tile": 3,
+    "status": "Nhiệt Tích Tụ",
+    "gauge": "Áp Suất Lò",
+    "passive": "Nhiệt tăng mỗi lượt. Ở 5 tầng, đòn kế tiếp nung chảy thêm giáp; nhịp xả nhiệt có báo trước.",
+    "counter": "Lõi Phong Nhiệt",
+    "artifact": "heatseal",
+    "counterText": "Giảm bỏng và áp suất; dạng IV giữ giáp khỏi nung chảy, mở hai lượt đánh vào lõi sau khi ngắt xả.",
+    "mechanic": "heat",
+    "tick": 0.014,
+    "ordinary": [
+      [
+        "emberimp",
+        "Tiểu Quỷ Than Hồng"
+      ],
+      [
+        "slagbeetle",
+        "Bọ Xỉ Nham"
+      ],
+      [
+        "ashhound",
+        "Khuyển Tro"
+      ]
+    ],
+    "elites": [
+      [
+        "basaltbrute",
+        "Đấu Sĩ Huyền Nham"
+      ],
+      [
+        "furnacepriest",
+        "Tư Tế Lò Thiêu"
+      ]
+    ],
+    "eliteLessons": [
+      "Dùng ngọc Tuyết để hạ Nhiệt và bẻ chuỗi đấm.",
+      "Phá lá chắn trước lời niệm, giữ lượt hồi máu cho đợt xả."
+    ],
+    "skills": [
+      {
+        "name": "Song Quyền Nham Chấn",
+        "phase": 1,
+        "description": "Hai cú đấm 60%, tăng hai Nhiệt.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.2,
+            "hits": 2
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Giáp Huyền Nham",
+        "phase": 1,
+        "description": "Vỏ giáp 10% HP boss, hút 15 năng lượng.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.1
+          },
+          {
+            "type": "drain",
+            "amount": 15
+          }
+        ]
+      },
+      {
+        "name": "Gọi Quỷ Lò",
+        "phase": 1,
+        "description": "Hai quỷ lò chia sát thương và tăng áp suất.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Nung Chảy Phòng Tuyến",
+        "phase": 2,
+        "description": "Phá 40% giáp tướng trước cú đấm 140%.",
+        "effects": [
+          {
+            "type": "shatter",
+            "fraction": 0.4
+          },
+          {
+            "type": "hit",
+            "power": 1.4,
+            "hits": 1
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Mưa Tro Tàn",
+        "phase": 2,
+        "description": "Bốn đợt 35%, thêm hai Nhiệt.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.4,
+            "hits": 4
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Trái Tim Phun Trào",
+        "phase": 3,
+        "description": "Niệm một lượt, xả 205%; Nhiệt còn lại tăng sức nổ.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 2.05
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 22,
+    "counterKey": "artifact-caldera",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "frostregent",
+    "theme": "glacier",
+    "name": "Nữ Đế Băng Tinh",
+    "chapterName": "Vương Cung Băng Tinh",
+    "element": "ice",
+    "backdrop": "ice",
+    "tile": 1,
+    "status": "Hàn Ấn",
+    "gauge": "Tuyết Táng",
+    "passive": "Hàn Ấn tích mỗi lượt làm hao sinh lực và giảm năng lượng nhận; không khóa liên tục lượt người chơi.",
+    "counter": "Đăng Hỏa Tan Băng",
+    "artifact": "thawflame",
+    "counterText": "Giảm Hàn Ấn và phần năng lượng bị đóng băng; dạng IV mở điểm yếu khi ngắt Tuyết Táng.",
+    "mechanic": "frost",
+    "tick": 0.011,
+    "ordinary": [
+      [
+        "snowhare",
+        "Thỏ Sương"
+      ],
+      [
+        "iceling",
+        "Tinh Linh Băng Vụn"
+      ],
+      [
+        "frostmoth",
+        "Ngài Băng"
+      ]
+    ],
+    "elites": [
+      [
+        "rimeknight",
+        "Kỵ Sĩ Sương Giá"
+      ],
+      [
+        "blizzardowl",
+        "Cú Tuyết Bão"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Tim để đốt Hàn Ấn, không tiêu tuyệt kỹ vào vỏ băng.",
+      "Giữ năng lượng cho lượt sau khi vỏ băng vỡ."
+    ],
+    "skills": [
+      {
+        "name": "Băng Thương Tam Liên",
+        "phase": 1,
+        "description": "Ba thương 36%, thêm một Hàn Ấn.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.08,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Kính Băng Phản Chiếu",
+        "phase": 1,
+        "description": "Dựng vỏ băng 9% HP, hồi 2%.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.09
+          },
+          {
+            "type": "heal",
+            "pct": 0.02
+          }
+        ]
+      },
+      {
+        "name": "Gọi Hầu Cận Băng",
+        "phase": 1,
+        "description": "Hai hầu cận giữ lá chắn và tích Tuyết Táng.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Vương Miện Hàn Ngục",
+        "phase": 2,
+        "description": "Đánh 130%, hút 28 năng lượng, thêm Hàn Ấn.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.3,
+            "hits": 1
+          },
+          {
+            "type": "drain",
+            "amount": 28
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Mưa Tinh Thể",
+        "phase": 2,
+        "description": "Năm mảnh 28%, thêm hai Hàn Ấn.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.4,
+            "hits": 5
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Tuyết Táng Vĩnh Dạ",
+        "phase": 3,
+        "description": "Niệm một lượt; nổ Hàn Ấn với 185% sức mạnh.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 1.85
+          },
+          {
+            "type": "drain",
+            "amount": 25
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 23,
+    "counterKey": "artifact-glacier",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "tempestwing",
+    "theme": "stormspire",
+    "name": "Lôi Hoàng Kim Dực",
+    "chapterName": "Thiên Đài Bão Điện",
+    "element": "lightning",
+    "backdrop": "thunder",
+    "tile": 4,
+    "status": "Điện Tích",
+    "gauge": "Tâm Bão",
+    "passive": "Điện Tích gây giật cuối lượt. Khi có vệ phong, tăng sát thương sét nối; ghép Khiên để tiếp đất.",
+    "counter": "Trụ Tiếp Địa",
+    "artifact": "groundrod",
+    "counterText": "Giảm điện giật và hút năng lượng; dạng IV cắt sét nối khi vệ phong bị hạ.",
+    "mechanic": "storm",
+    "tick": 0.013,
+    "ordinary": [
+      [
+        "sparkfinch",
+        "Sẻ Chớp"
+      ],
+      [
+        "cloudjelly",
+        "Sứa Mây Điện"
+      ],
+      [
+        "gustfox",
+        "Cáo Gió"
+      ]
+    ],
+    "elites": [
+      [
+        "voltgryphon",
+        "Sư Ưng Lôi"
+      ],
+      [
+        "stormtotem",
+        "Tế Trụ Bão"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Khiên để xả điện trước chuỗi đánh nối.",
+      "Phá trụ trước khi tích đủ Tâm Bão."
+    ],
+    "skills": [
+      {
+        "name": "Lôi Trảo Liên Kích",
+        "phase": 1,
+        "description": "Ba trảo 38%, thêm Điện Tích.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.14,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Lông Vũ Thiên Lôi",
+        "phase": 1,
+        "description": "Lá chắn 8% và hút 18 năng lượng.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.08
+          },
+          {
+            "type": "drain",
+            "amount": 18
+          }
+        ]
+      },
+      {
+        "name": "Gọi Vệ Phong",
+        "phase": 1,
+        "description": "Hai vệ phong tiếp sức cho sét nối.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Sấm Xuyên Tầng Mây",
+        "phase": 2,
+        "description": "Phá 25% giáp rồi bốn đợt sét tổng 145%.",
+        "effects": [
+          {
+            "type": "shatter",
+            "fraction": 0.25
+          },
+          {
+            "type": "hit",
+            "power": 1.45,
+            "hits": 4
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Mắt Bão Cướp Linh",
+        "phase": 2,
+        "description": "Hút 35 năng lượng, gây 105%, thêm hai Điện Tích.",
+        "effects": [
+          {
+            "type": "drain",
+            "amount": 35
+          },
+          {
+            "type": "hit",
+            "power": 1.05,
+            "hits": 1
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Thiên Phạt Cửu Lôi",
+        "phase": 3,
+        "description": "Niệm một lượt; chín nhịp sét tổng 195%, nổ Điện Tích.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 1.95
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 24,
+    "counterKey": "artifact-stormspire",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "souljailer",
+    "theme": "soulcrypt",
+    "name": "Cai Ngục Vong Đăng",
+    "chapterName": "Ngục Đăng Vong Hồn",
+    "element": "ice",
+    "backdrop": "haunted",
+    "tile": 2,
+    "status": "Hồn Bị Giam",
+    "gauge": "Hồn Đăng",
+    "passive": "Hồn bị giam hao máu và nuôi hồi phục của cai ngục. Niệm thu hồn có thể ngắt; không tức tử vô điều kiện.",
+    "counter": "Đèn Bình Minh",
+    "artifact": "dawnlantern",
+    "counterText": "Giảm hút hồn, hồi phục và sát thương bào mòn; dạng IV giải một hồn mỗi ba lượt.",
+    "mechanic": "souls",
+    "tick": 0.012,
+    "ordinary": [
+      [
+        "wisp",
+        "Đốm Hồn"
+      ],
+      [
+        "bonecrow",
+        "Quạ Xương Trắng"
+      ],
+      [
+        "chainrat",
+        "Chuột Xiềng"
+      ]
+    ],
+    "elites": [
+      [
+        "cagekeeper",
+        "Giám Ngục Hồn Lung"
+      ],
+      [
+        "veilassassin",
+        "Sát Thủ Hắc Màn"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Ngọc năng lượng để soi lồng hồn và ngắt niệm.",
+      "Phá đám hộ vệ trước khi dùng tuyệt kỹ."
+    ],
+    "skills": [
+      {
+        "name": "Liềm Cắt Hồn",
+        "phase": 1,
+        "description": "Hai nhát tổng 115%, giam một Hồn.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.15,
+            "hits": 2
+          },
+          {
+            "type": "stack",
+            "count": 1
+          },
+          {
+            "type": "heal",
+            "pct": 0.015
+          }
+        ]
+      },
+      {
+        "name": "Lồng Đèn U Minh",
+        "phase": 1,
+        "description": "Lá chắn 8%, hút 20 năng lượng.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.08
+          },
+          {
+            "type": "drain",
+            "amount": 20
+          }
+        ]
+      },
+      {
+        "name": "Gọi Hồn Canh Ngục",
+        "phase": 1,
+        "description": "Hai hồn canh chia sát thương và nuôi lồng đèn.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Xiềng Xích Hút Sinh",
+        "phase": 2,
+        "description": "130% sức mạnh; hút 25 năng lượng; hồi 4%.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.3,
+            "hits": 1
+          },
+          {
+            "type": "drain",
+            "amount": 25
+          },
+          {
+            "type": "heal",
+            "pct": 0.04
+          }
+        ]
+      },
+      {
+        "name": "Tế Lễ Ngục Đăng",
+        "phase": 2,
+        "description": "Thêm hai Hồn, hồi 5%, gây 80%.",
+        "effects": [
+          {
+            "type": "stack",
+            "count": 2
+          },
+          {
+            "type": "heal",
+            "pct": 0.05
+          },
+          {
+            "type": "hit",
+            "power": 0.8,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "name": "Đại Thu Hồn",
+        "phase": 3,
+        "description": "Niệm một lượt; 180%, tăng theo hồn còn bị giam, có thể sống sót bằng HP/giáp.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 1.8
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 25,
+    "counterKey": "artifact-soulcrypt",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "sporefather",
+    "theme": "mycelium",
+    "name": "Lão Vương Bào Tử",
+    "chapterName": "Rừng Nấm Dịch Lục",
+    "element": "earth",
+    "backdrop": "marsh",
+    "tile": 1,
+    "status": "Độc Bào Tử",
+    "gauge": "Mật Độ Bào Tử",
+    "passive": "Tự phát tán một tầng Độc mỗi lượt. Tối đa năm tầng; độc không bỏ lượt và không tự lan ngoài trận.",
+    "counter": "Chén Thanh Độc",
+    "artifact": "antivenom",
+    "counterText": "Giảm độc đúng chủ đề tới 80%; dạng IV tẩy một tầng mỗi ba lượt và giảm hồi sinh nấm.",
+    "mechanic": "poison",
+    "tick": 0.016,
+    "ordinary": [
+      [
+        "sporecap",
+        "Nấm Bào Tử Non"
+      ],
+      [
+        "sludgesnail",
+        "Ốc Bùn Độc"
+      ],
+      [
+        "rottick",
+        "Ve Mục"
+      ]
+    ],
+    "elites": [
+      [
+        "plagueherald",
+        "Sứ Giả Ôn Bào"
+      ],
+      [
+        "sporetoad",
+        "Cóc Vương Bào Tử"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Tim liên tục để giải độc trước khi dồn sát thương.",
+      "Tập ngắt nấm niệm, tránh để nhiều lượt độc tích."
+    ],
+    "skills": [
+      {
+        "name": "Gậy Nấm Hoại Sinh",
+        "phase": 1,
+        "description": "110% sức mạnh, thêm một tầng Độc.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.1,
+            "hits": 1
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Mũ Nấm Tái Sinh",
+        "phase": 1,
+        "description": "Lá chắn 7%, hồi 3%.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.07
+          },
+          {
+            "type": "heal",
+            "pct": 0.03
+          }
+        ]
+      },
+      {
+        "name": "Gọi Nấm Con",
+        "phase": 1,
+        "description": "Hai nấm con chia sát thương và lan độc.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Mưa Bào Tử Lục",
+        "phase": 2,
+        "description": "Ba đợt tổng 110%, thêm hai Độc.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.1,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Hấp Thu Hoại Chất",
+        "phase": 2,
+        "description": "Hồi 5%, hút 20 năng lượng và gây 90%.",
+        "effects": [
+          {
+            "type": "heal",
+            "pct": 0.05
+          },
+          {
+            "type": "drain",
+            "amount": 20
+          },
+          {
+            "type": "hit",
+            "power": 0.9,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "name": "Đại Dịch Nở Hoa",
+        "phase": 3,
+        "description": "Niệm một lượt; nổ độc 175% và thêm hai tầng Độc.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 1.75
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 26,
+    "counterKey": "artifact-mycelium",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "prismback",
+    "theme": "geode",
+    "name": "Huyền Quy Tinh Thành",
+    "chapterName": "Tinh Thành Trên Mai",
+    "element": "earth",
+    "backdrop": "crystal",
+    "tile": 0,
+    "status": "Vết Nứt Cộng Hưởng",
+    "gauge": "Lõi Tinh Thành",
+    "passive": "Mai bảo hộ riêng, hấp thụ sát thương trước HP. Cộng hưởng tích làm đòn giẫm mạnh; phá mai mở điểm yếu.",
+    "counter": "Âm Thoa Phá Tinh",
+    "artifact": "resonancefork",
+    "counterText": "Giảm phản chấn và vết nứt; tăng sát thương phá mai. Dạng IV giữ điểm yếu thêm hai lượt khi vỡ mai.",
+    "mechanic": "shell",
+    "tick": 0.009,
+    "ordinary": [
+      [
+        "shardmite",
+        "Mạt Tinh Phiến"
+      ],
+      [
+        "stonepup",
+        "Thạch Khuyển Non"
+      ],
+      [
+        "crystalbat",
+        "Dơi Lăng Tinh"
+      ]
+    ],
+    "elites": [
+      [
+        "rampartgolem",
+        "Thạch Vệ Thành Lũy"
+      ],
+      [
+        "prismseer",
+        "Tiên Tri Lăng Kính"
+      ]
+    ],
+    "eliteLessons": [
+      "Dồn ngọc Kiếm phá lớp mai rồi mới dùng tuyệt kỹ.",
+      "Dọn hộ vệ khi nó chuẩn bị dựng lại vỏ."
+    ],
+    "skills": [
+      {
+        "name": "Chấn Địa Tinh Nham",
+        "phase": 1,
+        "description": "Hai chấn động tổng 115%, thêm một Cộng Hưởng.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.15,
+            "hits": 2
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Tái Kết Mai Thành",
+        "phase": 1,
+        "description": "Dựng mai 12% HP boss, không hồi máu thật.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.12
+          }
+        ]
+      },
+      {
+        "name": "Gọi Vệ Tinh Thành",
+        "phase": 1,
+        "description": "Hai vệ tinh thành bảo vệ lõi.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Pháo Lăng Kính",
+        "phase": 2,
+        "description": "Bốn tia tổng 140%, phá 30% giáp.",
+        "effects": [
+          {
+            "type": "shatter",
+            "fraction": 0.3
+          },
+          {
+            "type": "hit",
+            "power": 1.4,
+            "hits": 4
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Cộng Hưởng Nghịch Chấn",
+        "phase": 2,
+        "description": "Hai Cộng Hưởng, dựng mai 6%, gây 85%.",
+        "effects": [
+          {
+            "type": "stack",
+            "count": 2
+          },
+          {
+            "type": "ward",
+            "pct": 0.06
+          },
+          {
+            "type": "hit",
+            "power": 0.85,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "name": "Thiên Thành Sụp Đổ",
+        "phase": 3,
+        "description": "Niệm một lượt; giẫm 210% và nổ Cộng Hưởng.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 2.1
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 27,
+    "counterKey": "artifact-geode",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "sandchronarch",
+    "theme": "hourglass",
+    "name": "Sa Vương Thời Luân",
+    "chapterName": "Sa Điện Thời Luân",
+    "element": "fire",
+    "backdrop": "desert",
+    "tile": 2,
+    "status": "Cát Thời Gian",
+    "gauge": "Nợ Thời Gian",
+    "passive": "Cát tích lũy gây bào mòn và giảm năng lượng. Hồi phục chỉ lấy từ giới hạn HP hiện tại, không hoàn tác sát thương đã gây theo lịch sử.",
+    "counter": "Sa Lậu Định Thời",
+    "artifact": "anchorhourglass",
+    "counterText": "Giảm Cát và nợ thời gian; dạng IV chặn hoàn nguyên hộ vệ sau khi đã phá.",
+    "mechanic": "time",
+    "tick": 0.01,
+    "ordinary": [
+      [
+        "dustscarab",
+        "Bọ Cát Bụi"
+      ],
+      [
+        "sandcobra",
+        "Hổ Mang Cát"
+      ],
+      [
+        "clockmote",
+        "Tinh Bụi Đồng Hồ"
+      ]
+    ],
+    "elites": [
+      [
+        "dunesentinel",
+        "Vệ Binh Cồn Cát"
+      ],
+      [
+        "chronoweaver",
+        "Kẻ Dệt Thời Khắc"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Ngọc để neo thời điểm, tránh tích nhiều nợ.",
+      "Phá vỏ trước khi vòng niệm hoàn nguyên kết thúc."
+    ],
+    "skills": [
+      {
+        "name": "Sa Nhận Phân Kỳ",
+        "phase": 1,
+        "description": "Ba nhát tổng 110%, thêm Cát.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.1,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Vành Sa Lậu",
+        "phase": 1,
+        "description": "Lá chắn 8%, hút 20 năng lượng.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.08
+          },
+          {
+            "type": "drain",
+            "amount": 20
+          }
+        ]
+      },
+      {
+        "name": "Gọi Ảnh Sa Vệ",
+        "phase": 1,
+        "description": "Hai sa vệ phân chia sát thương.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Đảo Chiều Tinh Sa",
+        "phase": 2,
+        "description": "Hồi 5% và dựng 5% vỏ cát; không hồi sinh boss đã chết.",
+        "effects": [
+          {
+            "type": "heal",
+            "pct": 0.05
+          },
+          {
+            "type": "ward",
+            "pct": 0.05
+          }
+        ]
+      },
+      {
+        "name": "Lãi Suất Thời Gian",
+        "phase": 2,
+        "description": "Hút 30 năng lượng, hai Cát, gây 110%.",
+        "effects": [
+          {
+            "type": "drain",
+            "amount": 30
+          },
+          {
+            "type": "stack",
+            "count": 2
+          },
+          {
+            "type": "hit",
+            "power": 1.1,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "name": "Chung Mạt Thời Luân",
+        "phase": 3,
+        "description": "Niệm một lượt; 190%, khuếch đại theo nợ còn lại.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 1.9
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 28,
+    "counterKey": "artifact-hourglass",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "coraltide",
+    "theme": "coralreef",
+    "name": "Hải Đế Châu San Hô",
+    "chapterName": "Long Cung Châu Triều",
+    "element": "ice",
+    "backdrop": "abyss",
+    "tile": 4,
+    "status": "Ướt Sâu",
+    "gauge": "Mực Triều",
+    "passive": "Triều dâng mỗi lượt. Ướt Sâu tăng sát thương triều và tiếp sức hồi phục; Khiên làm điểm neo.",
+    "counter": "Neo Châu Trấn Triều",
+    "artifact": "tideanchor",
+    "counterText": "Giảm triều, hút năng lượng và hồi phục theo triều; dạng IV phá khiên ngọc sau khi ngắt sóng lớn.",
+    "mechanic": "tide",
+    "tick": 0.012,
+    "ordinary": [
+      [
+        "reefcrab",
+        "Cua Rạn San Hô"
+      ],
+      [
+        "foamjelly",
+        "Sứa Bọt Triều"
+      ],
+      [
+        "pearleel",
+        "Lươn Ngọc"
+      ]
+    ],
+    "elites": [
+      [
+        "tidemarshal",
+        "Đốc Quân Thủy Triều"
+      ],
+      [
+        "coraloracle",
+        "Tế Sư San Hô"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Khiên để neo triều, chịu sóng trước khi phản công.",
+      "Dọn hộ vệ ngọc trai để ngắt hồi phục."
+    ],
+    "skills": [
+      {
+        "name": "Song Trảo Sóng Ngọc",
+        "phase": 1,
+        "description": "Hai trảo tổng 115%, thêm Ướt.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.15,
+            "hits": 2
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Kết Giới Trân Châu",
+        "phase": 1,
+        "description": "Lá chắn 9%, hồi 2%.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.09
+          },
+          {
+            "type": "heal",
+            "pct": 0.02
+          }
+        ]
+      },
+      {
+        "name": "Gọi San Hô Hộ Triều",
+        "phase": 1,
+        "description": "Hai hộ triều chia sát thương và nuôi ngọc.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Nghịch Lưu Rút Linh",
+        "phase": 2,
+        "description": "Hút 30 năng lượng, gây 130%.",
+        "effects": [
+          {
+            "type": "drain",
+            "amount": 30
+          },
+          {
+            "type": "hit",
+            "power": 1.3,
+            "hits": 1
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Trăng Triều Hồi Sinh",
+        "phase": 2,
+        "description": "Hồi 6%, thêm hai Ướt.",
+        "effects": [
+          {
+            "type": "heal",
+            "pct": 0.06
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Vạn Trượng Hải Triều",
+        "phase": 3,
+        "description": "Niệm một lượt; 200% và nổ Mực Triều.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 2
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 29,
+    "counterKey": "artifact-coralreef",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  },
+  {
+    "id": "moonfang",
+    "theme": "moonkeep",
+    "name": "Lang Vương Tử Nguyệt",
+    "chapterName": "Thành Trì Tử Nguyệt",
+    "element": "lightning",
+    "backdrop": "haunted",
+    "tile": 3,
+    "status": "Nguyệt Ấn",
+    "gauge": "Trăng Máu",
+    "passive": "Nguyệt Ấn gây hao máu, tăng sức kiếm. Hai ảnh lang che bản thể; dùng Tuyết để soi Nguyệt Ấn.",
+    "counter": "Kính Soi Tử Nguyệt",
+    "artifact": "moonmirror",
+    "counterText": "Giảm Nguyệt Ấn và sát thương ảo ảnh; dạng IV rút ngắn thời gian ảnh lang chắn bản thể.",
+    "mechanic": "moon",
+    "tick": 0.013,
+    "ordinary": [
+      [
+        "duskfang",
+        "Nanh Sói Hoàng Hôn"
+      ],
+      [
+        "moonmoth",
+        "Ngài Trăng"
+      ],
+      [
+        "shadowraven",
+        "Quạ Nguyệt Ảnh"
+      ]
+    ],
+    "elites": [
+      [
+        "lunarknight",
+        "Nguyệt Giáp Kỵ Sĩ"
+      ],
+      [
+        "eclipsestalker",
+        "Kẻ Săn Nhật Thực"
+      ]
+    ],
+    "eliteLessons": [
+      "Ghép Tuyết soi ấn, đánh giáp để lộ bản thể.",
+      "Không dồn tuyệt kỹ khi hai ảnh lang còn che chắn."
+    ],
+    "skills": [
+      {
+        "name": "Nguyệt Kiếm Tam Trảm",
+        "phase": 1,
+        "description": "Ba trảm tổng 120%, thêm Nguyệt Ấn.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.2,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Giáp Tử Nguyệt",
+        "phase": 1,
+        "description": "Lá chắn 8%, hút 15 năng lượng.",
+        "effects": [
+          {
+            "type": "ward",
+            "pct": 0.08
+          },
+          {
+            "type": "drain",
+            "amount": 15
+          }
+        ]
+      },
+      {
+        "name": "Song Ảnh Lang",
+        "phase": 1,
+        "description": "Hai ảnh lang chia sát thương cho bản thể.",
+        "effects": [
+          {
+            "type": "adds",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Kiếm Ảnh Truy Hồn",
+        "phase": 2,
+        "description": "Phá 35% giáp, ba nhát tổng 145%.",
+        "effects": [
+          {
+            "type": "shatter",
+            "fraction": 0.35
+          },
+          {
+            "type": "hit",
+            "power": 1.45,
+            "hits": 3
+          },
+          {
+            "type": "stack",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "Trăng Máu Hút Sinh",
+        "phase": 2,
+        "description": "Gây 105%, hồi 4% và thêm hai Nguyệt Ấn.",
+        "effects": [
+          {
+            "type": "hit",
+            "power": 1.05,
+            "hits": 1
+          },
+          {
+            "type": "heal",
+            "pct": 0.04
+          },
+          {
+            "type": "stack",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "Tử Nguyệt Chung Kiếm",
+        "phase": 3,
+        "description": "Niệm một lượt; 205% cộng sức mạnh Nguyệt Ấn. Có thể phá niệm hoặc dựng giáp chịu đòn.",
+        "effects": [
+          {
+            "type": "burst",
+            "power": 2.05
+          }
+        ],
+        "channel": true
+      }
+    ],
+    "chapter": 30,
+    "counterKey": "artifact-moonkeep",
+    "artifactRanks": [
+      0,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "eliteMilestones": [
+      10,
+      20,
+      30,
+      40
+    ],
+    "phaseNames": [
+      "Thức Tỉnh",
+      "Biến Chuyển",
+      "Cuồng Nộ"
+    ]
+  }
+]

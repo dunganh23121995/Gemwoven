@@ -1,0 +1,519 @@
+{
+  "bosses": {
+    "sporefather": {
+      "portrait": "assets/gemwoven/encounters/sporefather/portrait.webp",
+      "idle": {
+        "src": "assets/gemwoven/encounters/sporefather/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ]
+        ],
+        "frameDuration": 230
+      },
+      "cast": {
+        "src": "assets/gemwoven/encounters/sporefather/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "attack": {
+        "src": "assets/gemwoven/encounters/sporefather/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "hurt": {
+        "src": "assets/gemwoven/encounters/sporefather/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ],
+          [
+            128,
+            112
+          ]
+        ],
+        "frameDuration": 230
+      }
+    },
+    "prismback": {
+      "portrait": "assets/gemwoven/encounters/prismback/portrait.webp",
+      "idle": {
+        "src": "assets/gemwoven/encounters/prismback/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ]
+        ],
+        "frameDuration": 230
+      },
+      "cast": {
+        "src": "assets/gemwoven/encounters/prismback/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "attack": {
+        "src": "assets/gemwoven/encounters/prismback/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "hurt": {
+        "src": "assets/gemwoven/encounters/prismback/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ],
+          [
+            128,
+            135
+          ]
+        ],
+        "frameDuration": 230
+      }
+    },
+    "sandchronarch": {
+      "portrait": "assets/gemwoven/encounters/sandchronarch/portrait.webp",
+      "idle": {
+        "src": "assets/gemwoven/encounters/sandchronarch/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 230
+      },
+      "cast": {
+        "src": "assets/gemwoven/encounters/sandchronarch/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "attack": {
+        "src": "assets/gemwoven/encounters/sandchronarch/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "hurt": {
+        "src": "assets/gemwoven/encounters/sandchronarch/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 230
+      }
+    },
+    "coraltide": {
+      "portrait": "assets/gemwoven/encounters/coraltide/portrait.webp",
+      "idle": {
+        "src": "assets/gemwoven/encounters/coraltide/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ]
+        ],
+        "frameDuration": 230
+      },
+      "cast": {
+        "src": "assets/gemwoven/encounters/coraltide/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "attack": {
+        "src": "assets/gemwoven/encounters/coraltide/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "hurt": {
+        "src": "assets/gemwoven/encounters/coraltide/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ],
+          [
+            128,
+            110
+          ]
+        ],
+        "frameDuration": 230
+      }
+    },
+    "moonfang": {
+      "portrait": "assets/gemwoven/encounters/moonfang/portrait.webp",
+      "idle": {
+        "src": "assets/gemwoven/encounters/moonfang/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 230
+      },
+      "cast": {
+        "src": "assets/gemwoven/encounters/moonfang/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "attack": {
+        "src": "assets/gemwoven/encounters/moonfang/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 150
+      },
+      "hurt": {
+        "src": "assets/gemwoven/encounters/moonfang/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ],
+          [
+            128,
+            83
+          ]
+        ],
+        "frameDuration": 230
+      }
+    }
+  }
+}

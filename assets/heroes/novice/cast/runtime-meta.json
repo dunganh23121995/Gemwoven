@@ -1,0 +1,84 @@
+{
+  "hero": "novice",
+  "action": "cast",
+  "accepted": true,
+  "atlas": "cast.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 3,
+  "rows": 2,
+  "frames": 6,
+  "count": 6,
+  "cols": 3,
+  "frameOrder": "row-major",
+  "loop": false,
+  "frameDuration": 150,
+  "origin": [
+    128,
+    244
+  ],
+  "headAnchors": [
+    [
+      121,
+      78
+    ],
+    [
+      121,
+      78
+    ],
+    [
+      121,
+      78
+    ],
+    [
+      121,
+      79
+    ],
+    [
+      121,
+      78
+    ],
+    [
+      122,
+      78
+    ]
+  ],
+  "frameFiles": [
+    "cast/frame-00.png",
+    "cast/frame-01.png",
+    "cast/frame-02.png",
+    "cast/frame-03.png",
+    "cast/frame-04.png",
+    "cast/frame-05.png"
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    13
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "source": "assets/gemwoven/raw/novice-cast.png",
+  "qc": {
+    "frame_count": 6,
+    "valid_frame_count": 6,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4511228029327376,
+    "output_subject_height_mean": 177.83333333333334,
+    "body_scale_cv": 0.005819675151362001,
+    "anchor_x_std": 0.0007394404687499277,
+    "anchor_y_std": 0.0009920634920634885,
+    "anchor_y_mean": 0.9017857142857144,
+    "profile_body_scale_drift": 0.0032148826198046265
+  },
+  "uniqueFrames": 6,
+  "framePixelHashes": [
+    "7215390d0fe3193d6c728c394e603dfdb026ebebdddb278504be96dc915478e4",
+    "bc3f7cb55850c7cc08afcb4ffa33e9143c1e64e6b48749765dfafbcdfa190898",
+    "307497bde438f2946d3e62ffdced48354caf0cad48bbd007bc9b7967d2bff4fb",
+    "fa9f19af16626ea82cc7822d728043d25a23a148aa3b8f39fcb25fca16d63f06",
+    "eba04db52ae477e68148768d9ec936d9da8745cbad4f2485117f1890b9ff741b",
+    "6eb643c252ae06d14a33f3446478ef9bea8c1916346dccd43e61d309e42de561"
+  ]
+}

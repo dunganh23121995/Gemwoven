@@ -42,6 +42,7 @@ cast_sfx.update(json.loads((root/'assets/audio/yuki-glacier-manifest.json').read
 cast_sfx.update(json.loads((root/'assets/audio/mika-nori-manifest.json').read_text(encoding='utf-8')))
 art['castSounds']={key:{'src':'data:audio/wav;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
+if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
 art['music']={key:{'src':'data:audio/ogg;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration'],'title':value['title']} for key,value in music_manifest.items()}
 for key in keys:
     art['heroes'][key] = {
@@ -94,13 +95,46 @@ for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
     for suffix in ['', '-bolt', '-bomb']:
         art['items'][name + suffix] = image(f'assets/items/{name}{suffix}.webp')
 art['items']['core'] = image('assets/items/core.webp')
+novice_meta=json.loads((root/'assets/heroes/novice/meta.json').read_text(encoding='utf-8'))
+art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration']} for action,meta in novice_meta['actions'].items()}
+art['heroes']['novice']['buff']=art['heroes']['novice']['cast']
+art['campaignCreatures']={}
+journey_items=json.loads((root/'assets/gemwoven/journey-items.json').read_text(encoding='utf-8'))['items']
+for creature in ['slime','acorn','bat']:
+    meta=journey_items[f'monster-{creature}'];path=root/'assets/gemwoven'/meta['file']
+    art['campaignCreatures'][creature]={'src':image(path),'cols':1,'rows':1,'count':1,'heads':[[128,round(meta['alphaBounds'][1]/2)]]}
+art['evolution']={piece:image(f'assets/gemwoven/items/evo-{piece}.png') for piece in ['weapon','shoulders','gloves','boots','crest','aura']}
+for name in ['theme-creature-items','boss-items']:
+    catalog=json.loads((root/f'assets/gemwoven/{name}.json').read_text(encoding='utf-8'))['items']
+    art.setdefault('worldBosses',{})
+    for key,meta in catalog.items():
+        sheet={'src':image(root/'assets/gemwoven'/meta.get('webp',meta['file'])),'cols':1,'rows':1,'count':1,'heads':[[128,round(meta['alphaBounds'][1]/2)]]}
+        if key.startswith('creature-'):art['campaignCreatures'][key[9:]]=sheet
+        else:art['worldBosses'][key[5:]]={action:sheet for action in ['idle','attack','cast','hurt']}
+art['worldScenes']={p.stem:image(p) for p in (root/'assets/gemwoven/backgrounds/battles').glob('*.webp')}
+ecosystem_path=root/'assets/gemwoven/chapter-ecosystem-items.json'
+art['counterItems']={}
+if ecosystem_path.exists():
+    for key,meta in json.loads(ecosystem_path.read_text(encoding='utf-8'))['items'].items():
+        source=root/'assets/gemwoven'/meta.get('webp',meta['file'])
+        if key.startswith('creature-'):art['campaignCreatures'][key[9:]]={'src':image(source),'cols':1,'rows':1,'count':1,'heads':[[128,round(meta['alphaBounds'][1]/2)]]}
+        else:art['counterItems'][key[9:]]=image(source)
+for name in ['boss-expansion-a','boss-expansion-b']:
+    path=root/f'assets/gemwoven/{name}.json'
+    if not path.exists():continue
+    for key,data in json.loads(path.read_text(encoding='utf-8'))['bosses'].items():
+        art['worldBosses'][key]={action:{**data[action],'src':image(data[action]['src'] if data[action]['src'].startswith('assets/') else 'assets/gemwoven/'+data[action]['src'])} for action in ['idle','cast','attack','hurt']}
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                 for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css'])
-extensions = 'const ART=' + json.dumps(art, separators=(',', ':')) + ';\n'
+css += '\n'+(root/'src/progression-combat.css').read_text(encoding='utf-8')
+css += '\n'+(root/'src/expedition-combat.css').read_text(encoding='utf-8')
+extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART=' + json.dumps(art, separators=(',', ':')) + ';\n'
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                         for p in ['audio-settings.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js'])
+extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
+extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
 html = html.replace('/* GAME_CSS */', css).replace('/* GAME_JS */', js)
 (root / 'Game.html').write_text(html, encoding='utf-8')

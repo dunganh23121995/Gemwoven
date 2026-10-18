@@ -1,0 +1,224 @@
+GEMWOVEN — LUẬT CHƠI VÀ THIẾT KẾ HỆ THỐNG
+Phiên bản cơ chế 1, ngày 18/10/2026.
+Nguồn chuẩn có thể chạy: src/gemwoven/progression.js.
+
+1. PHẠM VI BẢN HIỆN TẠI
+Vòng chơi có lưu tiến độ trên trình duyệt: vượt ải, boss vô hạn, nhiệm vụ ngày,
+offline, triệu hồi, ghép mảnh, cấp/sao/tiến hóa, kỹ năng, trang bị và rèn.
+Combat dùng chỉ số và kỹ năng của bản lưu. PvP cục bộ hai người dùng chung
+thiết bị, ngoài ra có đấu tập AI. Chat cục bộ và nhật ký hệ thống đã có giao diện.
+Nạp/VIP, sự kiện có thưởng, chat trực tuyến, PvP online,
+3vs3 và BXH toàn máy chủ chờ phát hành; giao diện ghi rõ trạng thái.
+Studio sự kiện là bộ dựng cấu hình local, chưa phải admin có xác thực.
+Không tạo người chơi giả trong BXH.
+
+2. BẮT ĐẦU GAME VÀ LOẠI TIỀN
+Mọi người nhận Tân cấp 1, 1 sao; 1.200 vàng, 12 sách EXP, 5 quặng/gỗ/vải.
+Đá Ngọc và vé triệu hồi khởi đầu bằng 0. Nhiệm vụ ghé thăm cho vé đầu tiên.
+Tân: tướng Thường, 145 HP gốc, hệ số tấn công 0,85; kiếm gỗ, quần áo giản dị.
+Nhát Kiếm Cơ Bản gây 45 sát thương trước hệ số cấp/trang bị.
+Đá Ngọc: chỉ từ nạp tiền được máy chủ xác nhận trong phiên bản thanh toán sau.
+Không có nguồn Đá Ngọc từ nhiệm vụ, ải, boss, offline, triệu hồi hay admin.
+Vàng: nguồn chơi chính. Không bán Đá Ngọc hoặc vé bằng vàng.
+Vé: một vé từ nhiệm vụ ngày; thêm một vé ở các mốc cấp tướng 10, 25,
+50, 100, 150, ... 500. Mỗi tướng nhận mỗi mốc một lần, không nhân theo số sao.
+
+3. VƯỢT ẢI
+Home: biển Nhiệm Vụ mở bảng nhiệm vụ ngày; nút Khám Phá mở bản đồ ải.
+Rương offline là icon riêng ở thanh phải. Chat ở thanh trái; âm thanh ở Home.
+30 chương, mỗi chương 50 ải; tinh anh ở mốc 10/20/30/40, boss ở mốc 50.
+1.500 ải tổng cộng. Chương 1–20 giữ nguyên; chương 21–30 là thử thách cuối game,
+cấp gợi ý không vượt 500, có 10 boss mới theo ảnh, 30 quái thường và 20 tinh anh.
+Chi tiết riêng từng boss và công thức: docs/BOSS_CHAPTERS.html.
+Ải kế mở khi thắng ải trước; có thể đánh lại ải đã vượt. Thua không mất tiến độ.
+Cấp gợi ý = làm tròn lên(số ải/2). Mỗi chương có tranh đảo nổi và đường bậc thang riêng.
+Vàng mỗi thắng = 300 + 25 × số ải; thưởng lần đầu cộng 500 vàng.
+EXP = 8 + làm tròn xuống(số ải/3) sách. Lần đầu nhận 80 Ấn, đánh lại 10 Ấn.
+Boss chương cho 3 tinh hoa và 5 quặng; ải thường 2 quặng.
+Lần đầu vượt boss chương cho 3 mảnh tướng của kỳ triệu hồi hiện tại.
+Mỗi ải: 1 sao khi thắng; 2 sao nếu còn ít nhất 50% HP; 3 sao nếu đồng thời
+kết thúc trong 12 lượt (thường), 16 lượt (tinh anh), 20 lượt (boss).
+Giữ kỷ lục sao cao nhất khi đánh lại. Bản lưu cũ được giữ 1 sao/ải đã vượt.
+Tổng sao riêng từng chương có rương 50/100/150 sao, mỗi mốc nhận một lần.
+Ở mốc thứ R (1/2/3): 2.000×chương×R vàng, 25×R sách EXP, 5×R tinh hoa,
+10×R quặng và 50×R Ấn (vẫn chịu trần 1.600/ngày). Không có Đá Ngọc.
+14 boss cũ giữ bộ kỹ năng; 10 boss mới có sáu chiêu, ba pha và nội tại chủ đề.
+Các cơ chế: giáp, hồi phục, hút năng lượng,
+độc, thiêu đốt, hút máu, xuyên giáp, tụ lực và kết liễu. Nhạc boss theo 30 chủ đề;
+nhạc Home giữ nguyên. Boss cuối vùng bị mây che trước khi đến ải 49.
+Mỗi mã trận chỉ quyết toán một lần. Kết quả được lưu trước hoạt ảnh kết trận.
+
+4. BOSS VÔ HẠN
+Tầng kế mở sau thắng tầng trước; có thể farm bất kỳ tầng đã hạ.
+Cấp gợi ý = làm tròn lên(tầng × 1,8). Không trần tầng trên giao diện tiến độ.
+Thưởng cơ bản: 1.200 + 130 × tầng vàng; 16 + tầng sách EXP; 3 quặng;
+1 tinh hoa, thêm 1 tinh hoa mỗi tầng chia hết cho 5.
+12 boss đầu/ngày: 100% vàng và EXP. Từ boss 13: 25%, tối thiểu 2 sách EXP.
+24 boss đầu/ngày: 65 Ấn/trận, còn chịu trần nhận Ấn chung toàn tài khoản.
+Boss sau đó vẫn cho vàng, EXP và nguyên liệu, không cho thêm Ấn.
+Tầng 60 trở lên: 1% rơi một mảnh thần thạch; dùng chế tạo đồ Thần.
+BXH local ghi tầng cao nhất, tổng boss hạ và sát thương trận cao nhất.
+BXH online dự kiến: tầng cao nhất, số lượt kết thúc, thời điểm lập kỷ lục.
+Online phải dùng kết quả trận do máy chủ xác thực, không dùng điểm tự khai.
+
+5. OFFLINE VÀ NHIỆM VỤ NGÀY
+Tích tối đa 12 giờ. Vàng/giờ = 80 + cấp tướng cao nhất × 8 + số ải đã vượt × 15.
+Sách EXP/giờ = 2 + làm tròn xuống(số ải đã vượt/20).
+Ấn/giờ = 60, nằm trong trần nhận Ấn/ngày chung. Không có Đá Ngọc hoặc vé.
+Cần tích ít nhất một phút để nhận. Nhận sẽ bắt đầu lượt tích mới.
+Đồng hồ quay lùi không tạo thêm thưởng; đồng hồ vẫn do client quản lý trong
+bản local. Phiên bản phát hành cần timestamp máy chủ chống chỉnh giờ.
+Nhiệm vụ reset 00:00 GMT+7:
+- Ghé thăm: 500 vàng, 10 EXP, 80 Ấn, 1 vé.
+- Thắng 3 trận vượt ải: 1.500 vàng, 20 EXP, 120 Ấn.
+- Hạ 2 boss: 2.000 vàng, 25 EXP, 150 Ấn.
+- Dùng 1.000 vàng: 800 vàng, 1 bí kíp kỹ năng, 80 Ấn.
+Mỗi nhiệm vụ nhận một lần/ngày. Chưa có gói bù thưởng bằng tiền.
+
+6. CẤP 500 VÀ MỤC TIÊU MỘT NĂM
+Cấp tối đa từng tướng là 500; tăng sao không đặt lại cấp.
+Từ cấp L lên L+1 cần:
+- Vàng = ceil(60 + 1,9 × L²).
+- Sách EXP = ceil(2 + 0,6 × L).
+- Ấn tu luyện = ceil(6 + 0,04 × L + 0,014 × L²).
+Toàn tài khoản nhận tối đa 1.600 Ấn/ngày từ mọi nguồn; không mua bằng vàng.
+Mốc cấp | Vàng tích lũy | EXP tích lũy | Ấn tích lũy | Ngày tối thiểu theo Ấn
+50      | 79.770         | 853          | 933         | 1
+100     | 629.850        | 3.208        | 5.436       | 4
+180     | 3.673.698      | 10.096       | 28.793      | 18
+280     | 13.845.408     | 24.106       | 105.265     | 66
+400     | 40.405.580     | 48.838       | 303.323     | 190
+500     | 78.959.490     | 76.048       | 589.804     | 369
+369 ngày là cận dưới khi đều đặn đạt trần Ấn và tập trung một tướng.
+Chia nguyên liệu cho nhiều tướng, thiếu vàng hoặc nghỉ ngày sẽ kéo dài hơn.
+Đây là mục tiêu cân bằng dựa trên công thức, chưa phải dữ liệu retention thực tế.
+Level không bị khóa bởi sao; sao và tiến hóa là hai đường phát triển riêng.
+
+7. TĂNG SAO, TIẾN HÓA VÀ HÌNH ẢNH
+Giữ một bản chính, tiêu hao bản sao cùng tướng:
+1→2★: 1 bản sao, 10.000 vàng, 10 tinh hoa.
+2→3★: 2 bản sao, 35.000 vàng, 25 tinh hoa.
+3→4★: 3 bản sao, 100.000 vàng, 60 tinh hoa.
+4→5★: 5 bản sao, 300.000 vàng, 140 tinh hoa.
+5→6★: 8 bản sao, 1.000.000 vàng, 300 tinh hoa.
+Tổng 19 bản sao ngoài bản chính để đạt 6★. Mỗi sao thêm 12% HP nền, 9% công nền.
+Sáu bậc tiến hóa:
+1: cấp 50, 1★, 12.000 vàng, 15 tinh hoa, 20 quặng — thức tỉnh vũ khí.
+2: cấp 100, 2★, 40.000 vàng, 40 tinh hoa, 50 quặng — giáp vai, mở Biến dị.
+3: cấp 180, 3★, 120.000 vàng, 90 tinh hoa, 100 quặng — găng tay.
+4: cấp 280, 4★, 350.000 vàng, 180 tinh hoa, 180 quặng — giáp chân.
+5: cấp 400, 5★, 900.000 vàng, 360 tinh hoa, 300 quặng — dấu ấn, mở Chân thân.
+6: cấp 500, 6★, 2.200.000 vàng, 800 tinh hoa, 500 quặng — hào quang toàn thân.
+Mỗi bậc thêm 10% HP nền, 7% công nền. Các lớp hình được gắn lên nhân vật ở
+giao diện và combat; dùng chung ngôn ngữ kim loại/linh lực, giữ nhận diện gốc.
+Noct luôn che kín mặt. Chưa thay bằng sáu bộ animation toàn thân mới/tướng.
+Tân và sáu lớp biến đổi được tạo bằng Astra High, prompt lưu cùng nguồn ảnh.
+
+8. KỸ NĂNG ÁP DỤNG VÀO COMBAT
+Cây mặc định hiện tất cả nhánh. Nút Chủ động/Bị động/Biến dị/Chân thân lọc
+đúng loại; chọn một nút để xem điều kiện, cấp và nguyên liệu.
+Chủ động mở từ đầu. Bị động cần cấp 10. Biến dị cần cấp 100 + tiến hóa 2.
+Chân thân cần cấp 400 + tiến hóa 5. Mỗi kỹ năng tối đa 10 cấp.
+Tăng từ cấp kỹ năng R: (R+1)×1.800 vàng, R+1 bí kíp; hai nhánh cao cần
+thêm (R+1)×3 tinh hoa. Học từ 0→1 cũng tốn nguyên liệu.
+Chủ động: mỗi cấp sau cấp 1 tăng 8% sức mạnh tuyệt kỹ.
+Mika: kiếm lửa; bị động tăng công; Biến dị để lại thiêu đốt 2 lượt.
+Yuki: băng giáng/choáng; bị động giáp/giảm sát thương; Biến dị thêm lá chắn.
+Nori: khiên/choáng/tích lực ×3 và hồi máu; Biến dị tăng lá chắn.
+Lumi: 5 tia sét; bị động tăng tích năng lượng; Biến dị hút nộ đối thủ.
+Noct: 5 lần lướt chém; bị động tăng công; Biến dị thêm nhát tàn ảnh.
+Tân: kiếm gỗ; bị động phòng thủ nhẹ; Biến dị hồi 1% HP mỗi lượt.
+Chân thân tăng công và sức bền toàn trận. Chỉ nhánh đã học mới được kích hoạt.
+Kỹ năng và trang bị được chụp thành bộ chỉ số khi vào trận, không đổi giữa trận.
+
+9. TRIỆU HỒI
+Nút ×1 / ×10 có chữ giữa vùng. Không có bộ đếm vé/ngọc hay chọn nguồn ở dưới.
+Bấm nút sẽ đọc túi và hiện popup xác nhận. Đủ vé thì ưu tiên vé; thiếu vé
+thì đề xuất toàn bộ lượt bằng Đá Ngọc. Hủy popup không trừ gì; thiếu cả hai
+nguồn thì nút xác nhận bị khóa. Một vé hoặc 120 Đá Ngọc cho mỗi lần.
+Triệu hồi ×10 tiêu hao 10 vé hoặc 1.200 Đá Ngọc, không dùng lẫn hai nguồn.
+Tỷ lệ cơ bản, trước các mốc bảo đảm:
+- Tướng hiếm: 0,15%, chỉ tướng của banner đang phát hành; kỳ đầu là Mika.
+- Mảnh tướng: 1,35%, mỗi lần 2–5 mảnh của tướng thuộc banner hiện tại.
+- Tân: 6%.
+- Trang bị thường: 28,5%; Hiếm: 2%; Sử thi: 0,15%; Huyền thoại: 0,02%.
+- Trang bị Thần: 0,001%.
+- Nguyên liệu thông dụng: 61,829%.
+Tổng 100%. Ghép 80 mảnh cùng tướng ra một tướng/bản sao.
+Mỗi kỳ chỉ giới thiệu một tướng; ba ô nổi bật là trang bị phẩm cao.
+Đổi kỳ bằng cấu hình SUMMON_BANNER; các tướng chưa phát hành không ở pool.
+Bảo đảm một tướng hiếm muộn nhất lần 300 không ra tướng hiếm; một gói mảnh
+muộn nhất sau 30 lần không ra mảnh. Bảo đảm thay kết quả thường nên tỷ lệ
+dài hạn cao hơn tỷ lệ cơ bản. Không có bảo đảm trang bị Thần.
+Trừ tài nguyên và lưu kết quả trước, sau đó hoạt ảnh hội tụ ~2,7 giây mới mở.
+Bỏ qua hoạt ảnh chỉ mở sớm kết quả đã lưu, không quay lại kết quả khác.
+
+10. TRANG BỊ VÀ RÈN
+Ba ô: vũ khí, áo giáp, giày; bậc Thường/Tốt/Hiếm/Sử thi/Huyền thoại/Thần.
+Hệ số bậc: 1 / 1,6 / 2,5 / 4 / 7 / 11. Cường hóa tối đa +20, mỗi cấp +8%.
+Sáu ô đồ dùng chung giữa các tướng: vũ khí cộng Công; áo/mũ cộng HP; quần cộng HP
+và Thủ; kính cộng Công; giày cộng Thủ. Giảm sát thương tổng tối đa 50%.
+Một món chỉ thuộc một tướng tại một thời điểm; chuyển đồ tự tháo khỏi tướng trước.
+Chọn, tháo và cường hóa ngay trên trang Tướng, không mở popup hồ sơ.
+Trang bị chỉ gắn cho một tướng tại một thời điểm. Chuyển chủ tự tháo khỏi chủ cũ.
+Cường hóa luôn thành công: (cấp+1)×900 vàng và (cấp+1)×2 quặng.
+Phân rã trang bị chưa mặc thành quặng và vàng; đồ đang mặc phải tháo trước.
+Rèn Tốt/Hiếm/Sử thi/Huyền thoại mở sau ải 20/40/60/80.
+Đồ Thần cần ải 300 và 50 mảnh thần thạch ngoài nguyên liệu thông thường.
+Rèn bậc R=1..5: R²×8.000 vàng, R×25 quặng, R×15 gỗ, R×15 vải, R×10 tinh hoa.
+Đồ Thần có một thuộc tính:
+- Vũ khí: Chấn kích (12% choáng), Hút sinh lực (6% sát thương), hoặc Xuyên giáp
+  (8% bỏ qua nửa giáp mục tiêu cho đòn đó).
+- Áo/giày: Bất động (25% kháng mất lượt) hoặc Hộ thân (3% HP thành giáp/lượt).
+Hiệu ứng có xác suất giới hạn một lần/lượt, tránh chuỗi nhiều hit kích liên tiếp.
+
+11. PvP VÀ 3vs3
+PvP cục bộ: hai người dùng Tân cùng chỉ số 290 HP, công ×1,53; không kỹ năng
+cao, tiến hóa, đồ Thần hoặc VIP. Người 1 dùng bàn chính; người 2 tự chọn cặp
+ngọc trong bảng chuyển lượt. Bàn chung, cùng sản lượng kiếm/tim/khiên/năng lượng.
+Mỗi lần có hai ngọc kề hợp lệ mới xác nhận nước đi. Không có thưởng hoặc BXH.
+Đấu tập AI: tướng sở hữu được chuẩn hóa HP/công, bỏ hiệu ứng Thần, không thưởng.
+Online cần server ghép trận, xác thực lượt và seed ngọc; chưa giả lập đối thủ người.
+3vs3 đang thiết kế: đội ba vị trí, thay tướng khi bị hạ, mỗi người tối đa một
+tướng cùng tên, nộ riêng từng tướng, có thể chọn đội hình trước trận. Chưa bật.
+
+12. SỰ KIỆN, ADMIN VÀ VIP
+Studio có ID, tiêu đề, mô tả, banner, lịch bắt đầu/kết thúc, thứ tự và bật/tắt.
+Bật một cấu hình đúng lịch sẽ hiện trên trang Sự kiện với nhãn Coming soon.
+Có xuất JSON; nhập kết nối API và xác thực admin sẽ làm phía máy chủ sau.
+Không thực thi script hay phần thưởng tùy ý từ cấu hình.
+VIP 1..12 dự kiến theo tổng nạp xác thực: 100k, 300k, 600k, 1m, 2m, 4m,
+7m, 12m, 20m, 35m, 60m, 100m VND. Đây là số cấu hình có thể chỉnh trước phát hành.
+Quà vàng dự kiến 500×VIP/ngày; avatar từ VIP1, vào trận từ VIP3, chat từ VIP5,
+trang bị riêng từ VIP8, tướng riêng từ VIP10. Chưa trao đặc quyền hoặc mở thanh toán.
+Không dùng lợi thế chỉ số VIP trong PvP chuẩn hóa.
+
+13. CHẠY, KIỂM TRA VÀ ĐIỀU KIỆN PHÁT HÀNH
+python build.py
+python scripts/build_gemwoven.py
+python -m http.server 8765
+Mở http://localhost:8765/Gemwoven.html. Dùng cùng origin để Home và Game chia sẻ save.
+Gemwoven_6_Man.html là bản nhúng giao diện; Game.html là bản nhúng combat.
+Progression hiện lưu localStorage. Không thể dùng client save làm cơ sở nạp tiền
+hoặc xếp hạng thật: cần DB/ledger/timestamp và quyết toán trận trên server.
+Kiểm tra: cd qa/gemwoven/runtime rồi npm ci và npm test.
+Tests: kinh tế/giới hạn, DOM 20 màn, kỹ năng, triệu hồi, admin/XSS và combat/PvP cục bộ.
+Chưa xác nhận layout bằng browser trong phiên vì không có browser kết nối.
+
+BẢO BỐI RIÊNG TỪNG TƯỚNG
+Mỗi tướng có một bảo bối khởi đầu riêng, không trao đổi: Tân — La Bàn Lữ Hành;
+Mika — Hồ Lô Viêm Hồ; Yuki — Chuông Tuyết Nguyệt; Nori — Hạt Cổ Thụ;
+Lumi — Tinh Cầu Thiên Lôi; Noct — Ấn Nguyệt Vô Diện.
+5 dạng hình ảnh, tối đa cấp 100. Mỗi dạng mở thêm 20 cấp. Mỗi cấp sau 1 cộng
+0,25% HP và Công; mỗi dạng sau 1 cộng thêm 2,5%.
+Nâng cấp dùng vàng, tinh hoa và quặng; giá tăng theo cấp. Tiến hóa cần
+đạt giới hạn 20/40/60/80 của dạng và tướng cấp 50/100/150/200 tương ứng.
+Ở dạng E: giá tiến hóa = 50.000×E² vàng +40×E tinh hoa +5×E thần thạch.
+Không thể nâng quá cấp 100 hoặc tiến hóa vượt dạng 5. Chỉ số cộng vào combat.
+Tiến hóa bảo bối độc lập với sáu mốc tiến hóa cơ thể tướng.
+
+CỬA HÀNG
+Ô sản phẩm chỉ hiện icon; chọn sẽ hiện thông tin và giá trong khung gốc.
+Đồ thường dùng vàng; tinh hoa, thần thạch và đồ Huyền Thoại/Thần dùng Ngọc.
+Không bán tướng, mảnh tướng, vé hoặc tiền tệ. Mua trang bị nhận đúng loại/phẩm
+đã hiển thị; thuộc tính phụ Thần ngẫu nhiên theo bảng trong cơ chế.

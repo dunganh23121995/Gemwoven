@@ -1,82 +1,102 @@
-GEMWOVEN — BỘ GHÉP 9 MÀN GIAO DIỆN
+GEMWOVEN — GIAO DIỆN VÀ VÒNG CHƠI CÓ LƯU TIẾN ĐỘ
 
-Mở Gemwoven.html để xem mã nguồn cùng ảnh rời, không cần server.
-Gemwoven_6_Man.html là bản nhúng ngoại tuyến, tên cũ được giữ để tiện mở.
-Mở Gemwoven_Assets.html để xem/tải từng background và PNG thành phần.
-Chạy python scripts/build_gemwoven.py để tạo lại HTML ngoại tuyến và
-Gemwoven_UI_Kit.zip. Hai file đầu ra giữ local, không commit vào Git.
+CHẠY
+python build.py
+python scripts/build_gemwoven.py
+python -m http.server 8765
+Mở http://localhost:8765/Gemwoven.html. Home và Game phải chạy cùng origin để
+chia sẻ localStorage. Gemwoven_6_Man.html vẫn giữ tên cũ, hiện là bản nhúng hub.
+Game.html là bản nhúng combat. ZIP chứa cả hai và ảnh/source giao diện.
 
-PHẠM VI
-9 màn: Trang chủ, Túi đồ, Kỹ năng, Triệu hồi, Đấu trường, Cửa hàng,
-Rèn đồ, Tướng/Nâng cấp và Quán bia. Menu dưới gồm đúng 7 biểu tượng:
-Trang chủ, Tướng, Túi đồ, Kỹ năng, Triệu hồi, Đấu trường, Thêm.
-Các công trình tại Home là từng PNG độc lập có vùng bấm chuyển màn.
-Túi đồ có 20 vật phẩm, 7 danh mục, phân trang và xem mô tả vật phẩm.
-Kỹ năng có thể đổi 5 tướng và chọn 4 nhánh, tổng cộng 20 thiết kế kỹ năng.
-Chỉ ghép giao diện và tương tác cơ bản; chưa triển khai kinh tế, triệu hồi,
-nâng cấp thật hay mở khóa kỹ năng. Nút Tăng cấp mở bản xem thông tin.
-Game.html giữ nguyên gameplay. Nút Vào trận dẫn đến Game.html;
-file game combat không nằm trong ZIP giao diện.
+PHẦN CHƠI ĐÃ CÓ
+20 màn trong hub. Trang Tướng quản lý luôn trang bị; Khám Phá ẩn menu và có nút back riêng.
+Tân là tướng miễn phí ban đầu; kỳ triệu hồi đầu phát hành Mika. Mỗi kỳ chỉ
+có một tướng hiếm trong pool; các tướng khác hiện có trang xem trước.
+30 chương × 50 ải = 1.500 ải; boss vô hạn theo tầng; nhiệm vụ ngày, thưởng offline 12 giờ.
+Chương 21–30 bổ sung 10 boss theo ảnh tham khảo, giữ nguyên 14 boss và 20 chương trước.
+Mỗi boss mới có 3 pha HP, 6 chiêu chủ động, nội tại chủ đề, vỏ và hộ vệ có HP riêng.
+Tinh anh mốc 10/20/30/40 lần đầu đạt 3 sao cho 3 mảnh đồ khắc chế của đúng chương.
+Đủ 3/6/9/12 mảnh tự nâng 4 bậc hiệu lực 35/50/65/80%; không hao khi thua.
+Thiếu đồ vẫn vào boss được; cần xử lý cơ chế hoặc có chỉ số rất mạnh.
+Thiết kế đầy đủ: docs/BOSS_CHAPTERS.html; dữ liệu xuất: docs/boss-chapters.json.
+Cấp tối đa 500, 6 sao, 6 bậc tiến hóa từng phần, kỹ năng tối đa 10 cấp.
+Túi tài nguyên, ghép mảnh, trang bị theo phẩm chất, rèn/cường hóa/phân rã.
+Triệu hồi có vé/Đá Ngọc, tỷ lệ và bảo đảm công khai, hoạt ảnh trước kết quả.
+Popup trước khi chi: ưu tiên đủ vé, thiếu vé mới đề xuất Đá Ngọc; hủy không trừ.
+Bản đồ Khám Phá có 20 nền chủ đề; quái thường/tinh anh/boss, 1–3 sao/ải,
+rương 50/100/150 sao. Đợt trước thêm 10 boss và 38 quái theo chủ đề.
+Đợt này thêm 10 boss, 30 quái thường, 20 tinh anh, 10 đồ khắc chế và 10 nhạc chủ đề;
+giữ nguyên nhạc Home. Các vùng mới dùng lại nền cùng chủ đề, có quái và boss mới.
+Sáu ô đồ quanh tướng: áo, mũ, vũ khí, giày, quần, kính; đồ dùng chung giữa tướng.
+Ô bảo bối giữa dưới nhân vật: sáu bảo bối riêng, mỗi loại có năm dạng tiến hóa,
+nâng tối đa cấp 100. Chọn đồ và cường hóa ngay trong trang, không popup hồ sơ tướng.
+Cửa hàng bán vật liệu thường bằng vàng, đồ quý bằng Ngọc; không bán tướng.
+Home giữ Nhiệm Vụ riêng; rương offline ở thanh phải; âm thanh chỉ mở từ Home.
+Chat có soạn tin, biểu cảm, lưu tin cục bộ và tab nhật ký hệ thống.
+Chỉ số, kỹ năng, hiệu ứng đồ Thần và hình tiến hóa được nối vào combat.
+PvP cục bộ 1vs1 hai người cùng thiết bị dùng Tân chuẩn hóa; có đấu tập AI riêng.
+Kết quả trận có mã biên nhận, không cộng thưởng lặp khi gọi lại kết quả đó.
 
-THỐNG NHẤT NHÂN VẬT
-Mika, Yuki, Nori và Lumi lấy ảnh từ raw-sheet-clean.png của bộ combat
-assets/reimagined/heroes/<hệ>/idle/. Noct lấy từ assets/heroes/shadow/idle/.
-Chỉ cắt ảnh toàn thân và chân dung từ bản nguồn, không vẽ đổi khuôn mặt.
-Noct luôn đội mũ trùm kín mặt, chỉ thấy mắt xanh; áp dụng cả Quán bia.
-Yuki có tai thỏ và trượng băng; Nori có sừng và đại khiên; Lumi tóc vàng,
-mũ phù thủy tím; Mika giáp đỏ, khăn sáng màu và đuôi cáo cam.
-Manifest ghi nguồn ảnh để truy lại đúng sprite combat.
+KINH TẾ
+Đá Ngọc khởi đầu 0, không có trong bất kỳ thưởng gameplay nào.
+Chỉ được nhận Đá Ngọc từ nạp tiền xác thực, hệ thống này chưa mở.
+Vàng từ ải/boss/nhiệm vụ/offline. Vé từ nhiệm vụ ngày và các mốc cấp tướng.
+Từ cấp 1 lên 500 cần 589.804 Ấn. Trần toàn tài khoản 1.600 Ấn/ngày cho cận
+dưới 369 ngày khi tập trung một tướng; thiếu vàng/EXP hoặc nghỉ ngày sẽ lâu hơn.
+Chi tiết công thức, tỷ lệ, mốc và thiết kế: GEMWOVEN_SYSTEMS.txt.
 
-THIẾT KẾ KỸ NĂNG
-Tuyệt kỹ và đặc trưng hiện có giữ theo src/game.js:
-Mika: Viêm Long Trảm / Liệt Hỏa Kiếm Tâm.
-Yuki: Thiên Băng Giáng / Băng Tâm Hộ Thuẫn.
-Nori: Mộc Linh Hộ Thể / Đại Khiên Tích Lực.
-Lumi: Ngũ Tinh Lôi / Tinh Điện Cộng Hưởng.
-Noct: Ngũ Ảnh Trảm / Vô Diện Ảnh Bộ.
-Hai nhánh Biến dị, Chân thân cùng các chỉ số cấp kế tiếp là đề xuất thiết kế,
-chưa tích hợp logic combat. Dữ liệu nằm trong src/gemwoven/expansion.js.
+COMING SOON
+Nạp/VIP, sự kiện có thưởng, chat trực tuyến, PvP online, 3vs3 và BXH liên máy chủ.
+Trang Sự kiện nhận cấu hình từ Studio local: ID, lịch, banner, mô tả, bật/tắt.
+Studio có xuất JSON; schema trong docs/event.schema.json.
+docs/server-contract.json mô tả ranh giới và API dự kiến, chưa phải backend.
+VIP hiện chỉ hiển thị các mốc dự kiến, không thu tiền hoặc trao đặc quyền.
+Không xem client save là dữ liệu đáng tin cho giao dịch hoặc xếp hạng online.
 
-ASSET DÙNG CHO GAME
-assets/gemwoven/backgrounds/ — 9 nền PNG gốc và 9 WebP chạy thực tế.
-assets/gemwoven/items/ — 122 ảnh riêng, gồm 20 biểu tượng kỹ năng,
-6 công trình Home, menu, khung, vật phẩm, toàn thân và chân dung tướng.
-assets/gemwoven/raw/ — atlas nguồn để cắt/xuất lại asset.
-assets/gemwoven/manifest.json — file, kích thước, nguồn và tọa độ cắt.
-assets/gemwoven/prompts.json và prompts-v2.json — prompt built-in image_gen.
-Atlas nguồn là đầu vào sản xuất; ảnh overview/QA không đưa vào Git.
-Ảnh nút/khung không chứa nhãn chữ. Tên, số lượng và mô tả là HTML độc lập.
-Nhân vật NPC và trang trí không bấm được thuộc tranh nền.
+SOURCE CHÍNH
+src/gemwoven/progression.js — mô hình kinh tế/progression dùng chung hub/combat.
+src/gemwoven/progression-ui.js và progression.css — các màn có dữ liệu thật.
+src/progression-combat.js và progression-combat.css — nối mô hình với combat.
+src/gemwoven/screens.js, expansion.js — các lớp bố cục và ảnh mẫu ban đầu.
+src/gemwoven/copy.json — chữ cho lớp bố cục mẫu; build tạo lại copy.js.
+Nội dung tương tác mới lấy từ progression.js và progression-ui.js, không từ
+số liệu demo trong copy.json. Toàn bộ chữ là HTML, độc lập với ảnh.
 
-CHỈNH CHỮ VÀ BỐ CỤC
-1. Sửa src/gemwoven/copy.json rồi chạy python scripts/build_gemwoven.py.
-2. Sửa bố cục 6 màn gốc tại src/gemwoven/screens.js; 3 màn bổ sung, dữ liệu
-   kỹ năng và túi đồ tại src/gemwoven/expansion.js. Canvas 941 × 1672.
-3. “Kiểm tra bản ghép → Sửa chữ trực tiếp” cho phép sửa và xuất JSON.
-   Thay copy.json bằng JSON vừa xuất để lưu bền; sửa trong UI chỉ giữ phiên.
-   Tên/mô tả kỹ năng có khóa riêng cho từng tướng và từng nhánh.
-4. Nút “Ẩn toàn bộ chữ” và “Hiện viền vùng bấm” giúp xem các lớp độc lập.
+ASSET
+assets/gemwoven/backgrounds/ — 9 nền PNG và bản WebP chạy thực tế.
+assets/gemwoven/items/ — các PNG rời, gồm tướng/portrait, menu, item và đồ tiến hóa.
+assets/gemwoven/raw/ — atlas nguồn sản xuất; không phải ảnh overview để trình bày.
+assets/heroes/novice/ — idle/attack/cast/hurt/run của Tân, frame và metadata/QC.
+Run có chu kỳ riêng 4 tư thế, 100ms/frame; không dùng lại động tác đánh kiếm.
+Hurt hiện dùng lại pose attack kèm chuyển động recoil của runtime.
+assets/gemwoven/novice-items.json — các entry tích hợp Tân và overlay tiến hóa.
+assets/gemwoven/novice-prompts.json — prompt ImageGen được thực hiện bởi Astra High.
+Noct tiếp tục dùng bộ combat gốc, mặt che kín chỉ lộ mắt xanh.
 
-TÁI XUẤT
+TÁI XUẤT ẢNH
 python scripts/prepare_gemwoven.py
 python scripts/prepare_gemwoven_expansion.py
+python scripts/prepare_novice_art.py
+python build.py
 python scripts/build_gemwoven.py
-Cần Pillow, NumPy và SciPy. Chạy expansion sau script gốc để giữ bản v2.
-ZIP giao diện chứa ảnh cuối và mã nguồn; muốn tái cắt atlas cần checkout repo.
+Cần Pillow, NumPy và SciPy. Build hub hợp nhất novice-items.json vào manifest.
+Các atlas, master và metadata giữ trong repo để tái xuất không cần tạo ảnh lại.
 
 KIỂM TRA
 cd qa/gemwoven/runtime
 npm ci
 npm test
-Bài kiểm tra jsdom bao gồm 9 màn, menu 7 mục, 20 kỹ năng/5 tướng, túi đồ,
-chuyển màn, chọn item/tab, sửa chữ và các nút xem trước.
-Kết quả local: qa/gemwoven/dom-results.json (không commit).
-python scripts/render_gemwoven_layers.py tạo bản đối chiếu bố cục theo lớp;
-đây không phải screenshot trình duyệt. Phiên làm việc này không có trình
-duyệt kết nối nên chưa xác nhận hiển thị thực tế bằng browser.
+npm run test:art
+npm run test:offline
+test: mô hình kinh tế/giới hạn, DOM của 20 màn, combat lưu chỉ số và PvP cục bộ.
+test:art: regression bố cục 9 concept cũ. test:offline: smoke test HTML nhúng.
+DOM không kiểm tra pixel/layout của browser. Phiên hiện tại không có browser
+kết nối nên chưa xác nhận bố cục bằng trình duyệt thật.
+art-screens.js gắn dữ liệu thật vào các lớp ảnh của 9 màn gốc, giữ cây kỹ năng,
+cột danh mục túi đồ, cổng triệu hồi, bảng nhiệm vụ và menu có nhãn chữ riêng.
+python qa/gemwoven/render-layers.py ghép preview lớp ảnh từ layout.json do
+check-live-ui.cjs xuất ra; chỉ dùng xem bố cục tĩnh, không thay QA trình duyệt.
 
-QUY ƯỚC GIT
-Conventional Commits: feat(ui): ..., fix(ui): ..., chore(repo): ...
-Commit source, asset game, atlas nguồn, dependency lockfile.
-Không commit node_modules, ảnh QA, báo cáo tạm, HTML nhúng hoặc ZIP đầu ra.
-Push bình thường; không force push hoặc sửa lịch sử đã chia sẻ.
+GIT
+Conventional Commits. Giữ source/asset game, atlas, metadata, test và lockfile.
+Không commit HTML hub nhúng, ZIP, node_modules hoặc ảnh QA/contact-sheet.

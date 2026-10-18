@@ -1,0 +1,425 @@
+{
+  "target": "player",
+  "mode": "run",
+  "prompt": "",
+  "role": "",
+  "input": "C:\\Users\\dungca\\Downloads\\GameMiniPuzzle\\assets\\gemwoven\\raw\\novice-run.png",
+  "threshold": 100,
+  "edge_threshold": 150,
+  "duration": 100,
+  "rows": 2,
+  "cols": 2,
+  "cell_size": 256,
+  "fit_scale": 0.8,
+  "trim_border": 4,
+  "edge_clean_depth": 3,
+  "align": "feet",
+  "shared_scale": false,
+  "scale_strategy": "preserve",
+  "component_mode": "largest",
+  "component_padding": 0,
+  "min_component_area": 1,
+  "edge_touch_margin": 0,
+  "frame_labels": [
+    "run-1",
+    "run-2",
+    "run-3",
+    "run-4"
+  ],
+  "frames": [
+    {
+      "grid": [
+        0,
+        0
+      ],
+      "source_box": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "component_mode": "largest",
+      "component_count": 2,
+      "selected_component_area": 100799,
+      "selected_component_bbox": [
+        121,
+        27,
+        577,
+        585
+      ],
+      "crop_bbox": [
+        121,
+        27,
+        577,
+        585
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 100799,
+      "body_core_area": 87368,
+      "body_area_fraction": 0.22801903116444525,
+      "anchor_source": [
+        339.0,
+        537.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        151,
+        185
+      ],
+      "preserved_subject_size": [
+        151,
+        185
+      ],
+      "paste_position": [
+        56,
+        62
+      ],
+      "unclamped_paste_position": [
+        56,
+        62
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        66,
+        52,
+        217,
+        237
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3308562197092084,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        231
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 231,
+      "postprocess_translation": [
+        10,
+        -10
+      ]
+    },
+    {
+      "grid": [
+        0,
+        1
+      ],
+      "source_box": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "component_mode": "largest",
+      "component_count": 1,
+      "selected_component_area": 86642,
+      "selected_component_bbox": [
+        90,
+        26,
+        437,
+        594
+      ],
+      "crop_bbox": [
+        90,
+        26,
+        437,
+        594
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 86642,
+      "body_core_area": 83194,
+      "body_area_fraction": 0.2171254381317514,
+      "anchor_source": [
+        238.0,
+        574.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        115,
+        188
+      ],
+      "preserved_subject_size": [
+        115,
+        188
+      ],
+      "paste_position": [
+        79,
+        50
+      ],
+      "unclamped_paste_position": [
+        79,
+        50
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        55,
+        49,
+        170,
+        237
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3308562197092084,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        231
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 231,
+      "postprocess_translation": [
+        -24,
+        -1
+      ]
+    },
+    {
+      "grid": [
+        1,
+        0
+      ],
+      "source_box": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "component_mode": "largest",
+      "component_count": 4,
+      "selected_component_area": 94545,
+      "selected_component_bbox": [
+        102,
+        0,
+        555,
+        554
+      ],
+      "crop_bbox": [
+        102,
+        0,
+        555,
+        554
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 94545,
+      "body_core_area": 80028,
+      "body_area_fraction": 0.208862593009205,
+      "anchor_source": [
+        423.0,
+        513.0
+      ],
+      "source_edge_touch": true,
+      "output_edge_touch": false,
+      "edge_touch": true,
+      "output_size": [
+        150,
+        183
+      ],
+      "preserved_subject_size": [
+        150,
+        183
+      ],
+      "paste_position": [
+        22,
+        61
+      ],
+      "unclamped_paste_position": [
+        22,
+        61
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        59,
+        54,
+        209,
+        237
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3308562197092084,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        231
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 231,
+      "postprocess_translation": [
+        37,
+        -7
+      ]
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "source_box": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "component_mode": "largest",
+      "component_count": 1,
+      "selected_component_area": 89479,
+      "selected_component_bbox": [
+        81,
+        2,
+        450,
+        560
+      ],
+      "crop_bbox": [
+        81,
+        2,
+        450,
+        560
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 89479,
+      "body_core_area": 85794,
+      "body_area_fraction": 0.22391109742379836,
+      "anchor_source": [
+        252.0,
+        542.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        122,
+        185
+      ],
+      "preserved_subject_size": [
+        122,
+        185
+      ],
+      "paste_position": [
+        71,
+        52
+      ],
+      "unclamped_paste_position": [
+        71,
+        52
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        52,
+        52,
+        174,
+        237
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3308562197092084,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        231
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 231,
+      "postprocess_translation": [
+        -19,
+        0
+      ]
+    }
+  ],
+  "edge_touch_frames": [
+    [
+      1,
+      0
+    ]
+  ],
+  "source_edge_touch_frames": [
+    [
+      1,
+      0
+    ]
+  ],
+  "output_edge_touch_frames": [],
+  "empty_frames": [],
+  "paste_clamped_frames": [],
+  "qc_summary": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 1,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4684219787427759,
+    "output_subject_height_mean": 185.25,
+    "body_scale_cv": 0.01658992406885603,
+    "anchor_x_std": 0.12014108487470639,
+    "anchor_y_std": 0.035107130552666774,
+    "anchor_y_mean": 0.8747980613893376,
+    "profile_body_scale_drift": 0.041685096310764
+  },
+  "output_origin": [
+    128.0,
+    231
+  ],
+  "scale_profile": {
+    "path": "C:\\Users\\dungca\\Downloads\\GameMiniPuzzle\\assets\\heroes\\novice\\character-scale-profile.json",
+    "version": 1,
+    "name": "novice",
+    "reference_mode": "idle",
+    "processing_contract_applied": true
+  },
+  "qc_config": {
+    "strict_qc": true,
+    "reject_edge_touch": false,
+    "allow_source_edge_touch": true,
+    "max_body_scale_cv": 0.08,
+    "max_anchor_y_std": 0.05,
+    "max_profile_scale_drift": 0.08
+  },
+  "postprocess": {
+    "horizontalAnchor": "shared raw cell center",
+    "translations": [
+      [
+        10,
+        -10
+      ],
+      [
+        -24,
+        -1
+      ],
+      [
+        37,
+        -7
+      ],
+      [
+        -19,
+        0
+      ]
+    ],
+    "soleBaseline": 237,
+    "naturalPoseHeightPreserved": true,
+    "magentaVisiblePixelCount": 0,
+    "script": "scripts/prepare_novice_run.py",
+    "sourceEdgeReview": "Frame 3 hair whorl has a complete contour 3px below the raw cell top; profile trim is4px. Visually reviewed source-only edge override; no output contact or clamping."
+  }
+}

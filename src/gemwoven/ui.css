@@ -9,3 +9,4 @@
 .label-art{position:absolute;object-fit:fill;pointer-events:none}.node-button>.label-art+.copy-layer{padding:0 5px;font-weight:500}.skill-node{border-radius:50%}
 .hero-standing>.art{object-position:center bottom}.node-button[data-action^="select-hero:"]>.icon{border-radius:50%}
 .portrait-gem>.icon,.home-soul>.art{mask-image:linear-gradient(#000 72%,transparent 100%)}
+.node-button:disabled{cursor:default}.node-button:disabled>.art{filter:brightness(.75) saturate(.65)}.node-button:disabled:hover{transform:none;z-index:auto;filter:none}.material-missing>.copy-layer{color:#982f23;text-shadow:0 1px #fff3cb}.skill-unavailable>.art{filter:brightness(.62) saturate(.4)}

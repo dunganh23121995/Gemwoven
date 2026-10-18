@@ -1,0 +1,62 @@
+Use case: stylized-concept. Asset type: production clean HD 2D game character run animation sprite sheet.
+
+Use the images just shown as visual references. Image 1 (master.png) is the exact identity and art style for the plain starter traveler Tân. Image 2 (run-anchor.png) is the exact layout, scale and root template. Generate a NEW RUN ANIMATION of this same character. Change poses only; preserve his youthful chestnut-brown messy hair, brown eyes, friendly plain human face, large stylized head, olive green scarf, short brown lace-front tunic over cream sleeves, plain belt with square buckle, olive-brown trousers, leather wrist wraps, brown cuffed leather boots, simple wooden practice sword. No armor, metallic sword, magic, jewels or upgraded gear. Crisp smooth hand-painted anime game illustration exactly matching the reference; do not make pixel art.
+
+EXACT SHEET: tall portrait 1024 x 2048, exactly TWO columns by FOUR rows, 8 equal square invisible 512x512 slots. Read left-to-right then top-to-bottom. Background 100% uniform solid #FF00FF. No visible grid, borders, text, labels, numbers, lines or ground shadows.
+
+ANIMATION: smooth repeating energetic but grounded jogging/running toward SCREEN RIGHT, in place, three-quarter side view consistent with reference face. A real locomotion cycle, not attacks or waving. Torso leans slightly forward 8 degrees. Alternate the legs clearly through opposite strides; elbows bent and arms counter-swing against the legs. Right hand always holds the wooden sword LOW beside the hip, blade pointing diagonally forward/down in a safe carry, with only a small restrained swing. Never raise the sword, slash, chop, attack, thrust or put it overhead. Scarf trails gently to left, compact and connected.
+
+Ordered eight run phases:
+1: near leg stretches forward with its heel contacting the ground, far leg extended behind pushing with toe; opposite arms.
+2: near support knee flexes to absorb contact, far foot lifts behind.
+3: near leg under pelvis supports weight, far bent knee passes forward, near heel starts to rise.
+4: near toe pushes behind, far knee advances and far boot extends forward to prepare contact.
+5: far leg stretches forward with its heel contacting the ground, near leg extends behind pushing with toe; arms opposite to frame 1.
+6: far support knee flexes to absorb contact, near foot lifts behind.
+7: far leg under pelvis supports weight, near bent knee passes forward, far heel starts to rise.
+8: far toe pushes behind, near knee advances and near boot extends forward to prepare phase 1.
+Feet MUST alternate and poses MUST be visibly different across the full loop. At least one grounded contact in every frame; no floating jumps. No duplicate stationary standing frames.
+
+LOCK SCALE to anchor: preserve same camera distance, head size, torso thickness, limb lengths, boot size and wooden sword size in all 8 cells, matching anchor standing-equivalent height of 85% of each square cell. Do not enlarge or shrink poses to fill cells. Natural knee compression changes height modestly. Head/torso stay centered horizontally near slot center with stable pelvis; contact ground line is 92% down each cell. Full run silhouette including boots, scarf and sword must stay inside central 70% width, with safe magenta margins on all four sides. Keep every extremity intact and inside its own slot. No cropping, no crossing slot edges, no detached particles, no dust, no effects, no sparkles, no motion trails.
+
+REFINEMENT PASS:
+Refine the attached run animation sheet (image 1, novice-run-v1.png). Keep the exact character design, art style, grid shape, camera, scale, magenta background, safe margins and low wooden sword carry. Image 2 master remains exact identity. Fix ONLY the run's temporal poses to make a proper 8-frame cycle. Current poses repeat with arms frozen. Need clearly opposing arm-and-leg movement and eight consecutive phases, read left to right then next row.
+
+Two columns, four rows. No labels or visible grid. Each cell same body size, grounded foot baseline. LEFT/RIGHT below mean the character's anatomical limbs; do not mirror his head or sword hand.
+Frame 1: near left boot ahead right, far right boot behind left. Near left arm BACK, far right elbow FORWARD.
+Frame 2: near left boot supports beneath slightly forward torso, right heel rises behind. Arms approach center.
+Frame 3: left support boot under hip; right knee lifted passing in front, left arm begins FORWARD, right elbow back. Sword held by same near hand remains low and moves a little forward, no slash.
+Frame 4: right boot reaches forward nearing contact, left toe pushes behind; left forearm FORWARD at belt level, right arm BACK.
+Frame 5: far right boot ahead right on heel, near left boot behind left. Left arm FORWARD, right arm BACK, exactly opposite limb phase to frame 1.
+Frame 6: right boot supports beneath torso, left heel rises behind. Arms approach center.
+Frame 7: right support boot under hip; left knee passes lifted forward, left arm swings BACK, right elbow forward. Near arm returns sword to side/back carry.
+Frame 8: left boot reaches forward nearing contact, right toe pushes behind; left arm BACK, right elbow FORWARD. Flow seamlessly to frame 1.
+
+Both boots visibly change from forward to backward during full cycle. Maintain one planted contact or toe push in every pose. Do not use identical first-half and second-half limb poses. Arms must visibly counter-swing but sword stays BELOW belt/chest in all poses, close to character and well inside cell. No attack movement, no overhead sword, no sword trails. Scarf small natural follow-through. All same chestnut hair and friendly brown eyes, simple brown tunic cream sleeves olive scarf trousers leather boots. No magic/effects/dust. Whole character and wooden sword within each cell. Clean solid #FF00FF backdrop throughout.
+
+SIX-FRAME REGENERATION PASS:
+Create a polished production 2D GAME RUN CYCLE SPRITE SHEET for the exact young traveler in the two reference images just shown. Reference 1 locks the chestnut-haired boy's identity, face, brown eyes, proportions, olive scarf, brown lace-up tunic, cream sleeves, brown pants and leather boots. Reference 2 is a scale/layout anchor only. Match this smooth clean HD anime game art. Keep him plain and human with a WOODEN practice sword.
+
+Exactly 6 sequential frames, THREE columns and TWO rows, landscape 1536x1024, 512-square invisible cells. Uniform flat #FF00FF background, no gradient, no text, no visible lines. One complete continuous run loop facing right in three-quarter SIDE view: contact A, passing A, push-off A, contact B, passing B, push-off B. The second half is the opposite leg phase to the first half. Exaggerate readable alternating knee bends and leg strides. The knees bend, the heel lifts behind, the opposite knee passes forward and the next foot lands. Run naturally with a slight forward lean. Each frame a different temporal pose of the SAME run, NOT a different action or a copy of one running pose.
+
+Give him natural opposing arm counter-swing. Exactly TWO arms and TWO hands, correct anatomy. He carries the wooden sword beside his near hip in his near hand, tip angled forward and down, never above waist height. The sword arm has a small restrained running swing, free arm swings more. The sword stays close to body and does not cut across his face. This is travel between stages, not combat. No stabbing, slashing, chopping or striking. Scarf trails backward to left gently.
+
+Preserve exact head and torso size from the anchor, 85% standing-equivalent anatomical height inside each cell, contact foot baseline at92% cell height. Slight natural bob, one foot makes ground contact in each pose. Pelvis stays horizontally centered, fixed camera distance, no per-pose resizing. Full body, both boots, all hair, scarf and entire sword fit comfortably inside each cell, no crossing invisible edges, no crops, generous side margins. Keep sword low and contained. No detached dust, no FX, no glow, no shadow, no background objects. Only six crisp complete character sprites on #FF00FF.
+
+FOUR KEYFRAME REGENERATION:
+Create a SINGLE consistent animated character sprite sheet: the traveler boy from the reference, running toward screen right. FOUR frames in a 2-column x 2-row grid. 1024x1024. Match the reference's clean polished anime style, chestnut hair, brown eyes, olive scarf, brown tunic, cream sleeves, dark brown trousers, cuffed boots, wooden practice sword. Same head and anatomy proportions. Show more of his SIDE so the stride is clear. Same face identity.
+
+This is a FULL RUN CYCLE. Think animation keyframes, NOT four illustrations of the same running pose. Two legs must TRADE which one is in front. In the first half the near leg comes forward; in the second half it moves back and the far leg comes forward. His TWO arms counter-swing naturally, the free fist moves from forward to backward. The sword hand stays LOW, the whole wooden blade points down and stays close to his hip. Never attack.
+
+Frame top-left: extended stride, NEAR boot forward, FAR boot behind. Free arm forward, sword hand a little behind hip.
+Frame top-right: passing stride, NEAR boot grounded under hip, FAR knee lifted and passing forward. Free arm lowers, sword hand moves beside hip.
+Frame bottom-left: opposite extended stride, NEAR boot behind, FAR boot forward. Free arm back behind torso, sword hand a little forward of hip, wooden blade tilted steeply down to stay within frame.
+Frame bottom-right: opposite passing stride, FAR boot grounded under hip, NEAR knee lifted passing forward. Free arm comes forward again, sword hand returns beside hip.
+The visible near thigh must be markedly forward in frames1-2 and markedly backward in frame3. Exactly two arms, two hands, two legs. No duplicated limbs. Natural slight torso lean. Restrained carried sword, never thrust or slash. Scarf waves backward gently.
+
+Same scale in every cell: character standing-equivalent height85% of cell, foot contact92% down cell. Fixed pelvis center. Entire character and sword fully inside each cell, at least5% clear padding at sides/top/bottom, no clipping. Same camera. Uniform SOLID #FF00FF background with no gradients. NO text, borders, labels, particles, shadow, ground, dust, special effects or extra objects.
+ACCEPTED DELIVERY: four-keyframe generation (gpt-6-astra, reasoning high; built-in ImageGen).
+Raw original: assets/gemwoven/raw/novice-run.png. Processed source: assets/heroes/novice/run/run-1.png through run-4.png.
+Playback: row-major [0, 1, 2, 3], 100ms per frame, looping. Reprocess with python scripts/prepare_novice_run.py, then package with python scripts/prepare_novice_art.py.
+Shared scale profile: assets/heroes/novice/character-scale-profile.json. Uniform scale; deterministic chroma despill and root/sole translations only.
+Raw drafts are preserved in ignored qa/gemwoven/novice-run-rejected; accepted source remains unmodified.

@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "promptFile": "raw/bosses-expansion/prompts.json",
+  "coordinateConvention": "alphaBounds are [left,top,right,bottom], right/bottom exclusive",
+  "animationNote": "One static authored pose per boss. Runtime movement and VFX are separate.",
+  "items": {
+    "boss-mire": {
+      "name": "Mẫu Nấm Độc",
+      "file": "items/boss-mire.png",
+      "webp": "items/boss-mire.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        53,
+        71,
+        458,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-mire-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        102,
+        122,
+        1145,
+        1126
+      ],
+      "normalizationScale": 0.38844622,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-scarab": {
+      "name": "Bọ Vương Hoàng Kim",
+      "file": "items/boss-scarab.png",
+      "webp": "items/boss-scarab.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        36,
+        101,
+        476,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-scarab-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        75,
+        159,
+        1190,
+        1072
+      ],
+      "normalizationScale": 0.39461883,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-leviathan": {
+      "name": "Hải Long San Hô",
+      "file": "items/boss-leviathan.png",
+      "webp": "items/boss-leviathan.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        93,
+        71,
+        419,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-leviathan-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        216,
+        88,
+        1094,
+        1138
+      ],
+      "normalizationScale": 0.37142857,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-colossus": {
+      "name": "Cự Tượng Bánh Răng",
+      "file": "items/boss-colossus.png",
+      "webp": "items/boss-colossus.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        36,
+        117,
+        476,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-colossus-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        65,
+        184,
+        1196,
+        1067
+      ],
+      "normalizationScale": 0.38903625,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-prism": {
+      "name": "Nữ Vương Tinh Thể",
+      "file": "items/boss-prism.png",
+      "webp": "items/boss-prism.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        86,
+        71,
+        426,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-prism-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        173,
+        95,
+        1104,
+        1164
+      ],
+      "normalizationScale": 0.36482694,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-reaper": {
+      "name": "Tử Thần Nguyệt Ảnh",
+      "file": "items/boss-reaper.png",
+      "webp": "items/boss-reaper.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        48,
+        71,
+        463,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-reaper-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        78,
+        109,
+        1187,
+        1152
+      ],
+      "normalizationScale": 0.37392138,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-roc": {
+      "name": "Đại Bàng Thiên Phong",
+      "file": "items/boss-roc.png",
+      "webp": "items/boss-roc.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        79,
+        71,
+        433,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-roc-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        187,
+        74,
+        1168,
+        1155
+      ],
+      "normalizationScale": 0.36077706,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-briar": {
+      "name": "Nữ Hoàng Gai",
+      "file": "items/boss-briar.png",
+      "webp": "items/boss-briar.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        99,
+        71,
+        413,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-briar-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        181,
+        27,
+        1132,
+        1209
+      ],
+      "normalizationScale": 0.32994924,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-seraph": {
+      "name": "Hộ Vệ Nhật Quang",
+      "file": "items/boss-seraph.png",
+      "webp": "items/boss-seraph.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        92,
+        71,
+        419,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-seraph-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        194,
+        83,
+        1096,
+        1158
+      ],
+      "normalizationScale": 0.3627907,
+      "alphaNoiseCutoff": 8
+    },
+    "boss-eclipse": {
+      "name": "Long Đế Hư Không",
+      "file": "items/boss-eclipse.png",
+      "webp": "items/boss-eclipse.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        49,
+        71,
+        463,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "baseline": 461,
+      "raw": "raw/bosses-expansion/boss-eclipse-raw.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        80,
+        87,
+        1199,
+        1142
+      ],
+      "normalizationScale": 0.36966825,
+      "alphaNoiseCutoff": 8
+    }
+  }
+}

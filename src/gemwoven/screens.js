@@ -84,9 +84,7 @@
   image('guide','hero-guide',[100,784,214,251]);
   button('fragments','title-parchment',[756,919,163,95],'Mảnh Tướng','item:hero-fragment',{size:23,labelRect:[15,30,133,40],fit:'fill'});
   button('summon-one','button-blue',[191,991,273,130],'Triệu Hồi ×1','summon:one',{size:35,labelRect:[25,29,223,46]});
-  text('one-cost','1 vé',[249,1063,155,35],26);
   button('summon-ten','button-gold',[484,991,273,130],'Triệu Hồi ×10','summon:ten',{size:33,labelRect:[25,29,223,46]});
-  text('ten-cost','10 vé',[542,1063,155,35],26,{tone:'ink'});
   text('guarantee','Đảm bảo nhận tướng ★4+',[511,1120,246,33],23,{className:'text-backing'});
   panel('featured-board',[45,1160,853,189],true);
   text('featured-title','Tướng Nổi Bật',[69,1177,270,32],25,{align:'left'});

@@ -1,0 +1,302 @@
+{
+  "boss-forest": {
+    "file": "music/bosses/forest.ogg",
+    "title": "Tiếng Gọi Cổ Thụ",
+    "bpm": 104,
+    "duration": 36.9230625,
+    "original": true,
+    "loop": true,
+    "sha256": "de3d4ea0d69ffd5d37ea2ff55d45020970a5fef9bd456060fb7a6fa232add60c",
+    "rms": 0.1299024075269699
+  },
+  "boss-volcano": {
+    "file": "music/bosses/volcano.ogg",
+    "title": "Dung Nham Thức Tỉnh",
+    "bpm": 124,
+    "duration": 30.96775,
+    "original": true,
+    "loop": true,
+    "sha256": "0d7e54557a6b7ca40315056f893f71a9d3b37f3da701308e02194ebfe6386df7",
+    "rms": 0.12999999523162842
+  },
+  "boss-ice": {
+    "file": "music/bosses/ice.ogg",
+    "title": "Nguyệt Băng Quyết Chiến",
+    "bpm": 100,
+    "duration": 38.4,
+    "original": true,
+    "loop": true,
+    "sha256": "6721c169467f400dd349201b152a8ef0dba390ec859d352adbfe6c19e641c78a",
+    "rms": 0.12999999523162842
+  },
+  "boss-thunder": {
+    "file": "music/bosses/thunder.ogg",
+    "title": "Ngũ Lôi Thiên Đỉnh",
+    "bpm": 132,
+    "duration": 29.09090625,
+    "original": true,
+    "loop": true,
+    "sha256": "c98d0cf647ae5ff21bfc6d81fc7d65dc52bc55109b45b195ea6c10cc851d70ef",
+    "rms": 0.12999999523162842
+  },
+  "boss-marsh": {
+    "file": "music/bosses/marsh.ogg",
+    "title": "Vũ Điệu Bào Tử",
+    "bpm": 108,
+    "duration": 35.5555625,
+    "original": true,
+    "loop": true,
+    "sha256": "f059bc7d91a51dda1acdf7330d527bdc34366bd04a4c0ab6f9091d11bb4516ab",
+    "rms": 0.12999999523162842
+  },
+  "boss-desert": {
+    "file": "music/bosses/desert.ogg",
+    "title": "Hoàng Kim Sa Mạc",
+    "bpm": 116,
+    "duration": 33.1034375,
+    "original": true,
+    "loop": true,
+    "sha256": "593d9aa10fbfe40eb9d027ba45cdf169414b11731fb7247eb82ceea08ab4476c",
+    "rms": 0.12999999523162842
+  },
+  "boss-abyss": {
+    "file": "music/bosses/abyss.ogg",
+    "title": "Long Triều Vực Thẳm",
+    "bpm": 98,
+    "duration": 39.1836875,
+    "original": true,
+    "loop": true,
+    "sha256": "6909fc80891d587b3f4bbfed4cd59dbd9f1014d4f3416d3e1569da5749beb204",
+    "rms": 0.12999999523162842
+  },
+  "boss-foundry": {
+    "file": "music/bosses/foundry.ogg",
+    "title": "Nhịp Tim Bánh Răng",
+    "bpm": 128,
+    "duration": 30.0,
+    "original": true,
+    "loop": true,
+    "sha256": "a0a4a290791f0be8077e151b1fae863e4d60233d625d7156ac496cdcf29fe105",
+    "rms": 0.12999999523162842
+  },
+  "boss-crystal": {
+    "file": "music/bosses/crystal.ogg",
+    "title": "Lăng Kính Nổi Giận",
+    "bpm": 112,
+    "duration": 34.28571875,
+    "original": true,
+    "loop": true,
+    "sha256": "e90d73552f89a559ee9f32a036f499d33e7d8622e56e749325b114925d299583",
+    "rms": 0.12999999523162842
+  },
+  "boss-haunted": {
+    "file": "music/bosses/haunted.ogg",
+    "title": "Liềm Hồn Dưới Trăng",
+    "bpm": 102,
+    "duration": 37.6470625,
+    "original": true,
+    "loop": true,
+    "sha256": "f80115a55d1db08ed9a661748d613aefd1323fab0c2ddf6079671aff8085fc4b",
+    "rms": 0.1300000101327896
+  },
+  "boss-sky": {
+    "file": "music/bosses/sky.ogg",
+    "title": "Thiên Phong Tung Cánh",
+    "bpm": 126,
+    "duration": 30.4761875,
+    "original": true,
+    "loop": true,
+    "sha256": "e399eb0fb0a019ee7418a0dfad4d8f79717230767a95959dd29c915ca11c6043",
+    "rms": 0.12999999523162842
+  },
+  "boss-thorns": {
+    "file": "music/bosses/thorns.ogg",
+    "title": "Vương Miện Gai",
+    "bpm": 110,
+    "duration": 34.90909375,
+    "original": true,
+    "loop": true,
+    "sha256": "233a8b72ec5560c6890b572ccbbcecf105ce730ca13ffecb444d27691c4e4851",
+    "rms": 0.12999999523162842
+  },
+  "boss-celestial": {
+    "file": "music/bosses/celestial.ogg",
+    "title": "Nhật Quang Phán Quyết",
+    "bpm": 120,
+    "duration": 32.0,
+    "original": true,
+    "loop": true,
+    "sha256": "0d601df16b966ab31a3e544cabc9b09b191926fcc9b40a79e1bb4f18bbd6d8e7",
+    "rms": 0.1300000101327896
+  },
+  "boss-void": {
+    "file": "music/bosses/void.ogg",
+    "title": "Long Đế Nhật Thực",
+    "bpm": 106,
+    "duration": 36.22640625,
+    "original": true,
+    "loop": true,
+    "sha256": "a7864996af26d9be7a625b97be97d868bdea413fe4f82ee64361bf28dfedb9b9",
+    "rms": 0.1300000101327896
+  },
+  "boss-pine": {
+    "file": "music/bosses/pine.ogg",
+    "title": "Cuồng Phong Tùng Tuyết",
+    "bpm": 114,
+    "duration": 33.68421875,
+    "original": true,
+    "loop": true,
+    "sha256": "613c669225b67ce8a62d84420a6d2df616cc8341e6c920a6044c44c36d759680",
+    "rms": 0.12999999523162842
+  },
+  "boss-obsidian": {
+    "file": "music/bosses/obsidian.ogg",
+    "title": "Hắc Thạch Bạo Phát",
+    "bpm": 134,
+    "duration": 28.65671875,
+    "original": true,
+    "loop": true,
+    "sha256": "08bb43c17eb92cd63424a2074f90726cf408891e05ea09f7467a1a8704db2daa",
+    "rms": 0.12999999523162842
+  },
+  "boss-bamboo": {
+    "file": "music/bosses/bamboo.ogg",
+    "title": "Bích Ngọc Trúc Lâm",
+    "bpm": 118,
+    "duration": 32.542375,
+    "original": true,
+    "loop": true,
+    "sha256": "b6335e0ecaa8d43b518290b4024d60d86bf6634abeb09eb61862c6e1a37eb283",
+    "rms": 0.12999999523162842
+  },
+  "boss-coast": {
+    "file": "music/bosses/coast.ogg",
+    "title": "Hải Phong Lôi Vũ",
+    "bpm": 130,
+    "duration": 29.53846875,
+    "original": true,
+    "loop": true,
+    "sha256": "179af366460c828de1eaa9fb57c23ac92e684a172f88d1b66d003ae1d720ade3",
+    "rms": 0.12999999523162842
+  },
+  "boss-dream": {
+    "file": "music/bosses/dream.ogg",
+    "title": "Mộng Cảnh Rạn Vỡ",
+    "bpm": 108,
+    "duration": 35.5555625,
+    "original": true,
+    "loop": true,
+    "sha256": "b388e802292081e446714e5ae25d353a0b7770e49c2e3d6e3bab42e9b6d63783",
+    "rms": 0.12999999523162842
+  },
+  "boss-astral": {
+    "file": "music/bosses/astral.ogg",
+    "title": "Long Tinh Tận Thế",
+    "bpm": 122,
+    "duration": 31.47540625,
+    "original": true,
+    "loop": true,
+    "sha256": "a472a1aab41009223eb3e60ad953d00d364e395e0d9d0cd11bccf1ad7135c45b",
+    "rms": 0.12999999523162842
+  },
+  "boss-eldergrove": {
+    "file": "music/bosses/eldergrove.ogg",
+    "title": "Bạch Hoa Thức Giấc",
+    "bpm": 108,
+    "duration": 35.5555625,
+    "original": true,
+    "loop": true,
+    "sha256": "7263540ca9beb8bf22873a1063a70f6b0f4359fd9dbb8a1f13f3fe3b37731a63",
+    "rms": 0.12999999523162842
+  },
+  "boss-caldera": {
+    "file": "music/bosses/caldera.ogg",
+    "title": "Tâm Nham Bạo Phát",
+    "bpm": 136,
+    "duration": 28.23528125,
+    "original": true,
+    "loop": true,
+    "sha256": "d5a3b1bd6314d24bb7b3c9d9517600874cde962f654b4cb96ff4c7d8b3fccad2",
+    "rms": 0.12999999523162842
+  },
+  "boss-glacier": {
+    "file": "music/bosses/glacier.ogg",
+    "title": "Ngự Giá Băng Tinh",
+    "bpm": 102,
+    "duration": 37.6470625,
+    "original": true,
+    "loop": true,
+    "sha256": "dd0021c34f4a8f1cc1868686844857011a6d9d799e4978eb35bce73c6997c98b",
+    "rms": 0.12999999523162842
+  },
+  "boss-stormspire": {
+    "file": "music/bosses/stormspire.ogg",
+    "title": "Kim Dực Thiên Phạt",
+    "bpm": 140,
+    "duration": 27.4285625,
+    "original": true,
+    "loop": true,
+    "sha256": "fe0497ef38fdafd6035fb6133cf2b7ce477a9531237ea73159519e90ddec3149",
+    "rms": 0.12999999523162842
+  },
+  "boss-soulcrypt": {
+    "file": "music/bosses/soulcrypt.ogg",
+    "title": "Vong Đăng Thu Hồn",
+    "bpm": 96,
+    "duration": 40.0,
+    "original": true,
+    "loop": true,
+    "sha256": "842aad3fbca7709e9599fbfe9291808d9fdcbc00dfa41454bb5bd19c4804ef57",
+    "rms": 0.1300000101327896
+  },
+  "boss-mycelium": {
+    "file": "music/bosses/mycelium.ogg",
+    "title": "Ôn Bào Nở Rộ",
+    "bpm": 112,
+    "duration": 34.28571875,
+    "original": true,
+    "loop": true,
+    "sha256": "3572deca6267398a5efb7e7003864000bcc74f3b3799a87055d908118798dec8",
+    "rms": 0.12999999523162842
+  },
+  "boss-geode": {
+    "file": "music/bosses/geode.ogg",
+    "title": "Tinh Thành Chấn Địa",
+    "bpm": 116,
+    "duration": 33.1034375,
+    "original": true,
+    "loop": true,
+    "sha256": "4b7b039241db836da397cd1d6b7b7d58bca1911232e81e1aee845fad757e7086",
+    "rms": 0.12999999523162842
+  },
+  "boss-hourglass": {
+    "file": "music/bosses/hourglass.ogg",
+    "title": "Thời Luân Chung Mạt",
+    "bpm": 120,
+    "duration": 32.0,
+    "original": true,
+    "loop": true,
+    "sha256": "5045acb6b3961c116c9cd57e28ff8514c82a987c3463e3b2425f660d6751ab21",
+    "rms": 0.12999999523162842
+  },
+  "boss-coralreef": {
+    "file": "music/bosses/coralreef.ogg",
+    "title": "Châu Triều Nghịch Lưu",
+    "bpm": 106,
+    "duration": 36.22640625,
+    "original": true,
+    "loop": true,
+    "sha256": "ea74cf7aa7e7adf7c7d111874e304002c7b4ce413d0c25d468fa424ab75330de",
+    "rms": 0.12999999523162842
+  },
+  "boss-moonkeep": {
+    "file": "music/bosses/moonkeep.ogg",
+    "title": "Tử Nguyệt Chung Kiếm",
+    "bpm": 130,
+    "duration": 29.53846875,
+    "original": true,
+    "loop": true,
+    "sha256": "3efef90a32901d6f7ab3f7904aa40171e29bbe54122b53577ac48cdbdd39b23d",
+    "rms": 0.12999999523162842
+  }
+}

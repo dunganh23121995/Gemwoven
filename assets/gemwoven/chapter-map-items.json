@@ -1,0 +1,1342 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "mapMode": "baked_scene_mode",
+  "visualModel": "baked_raster",
+  "collisionModel": "none",
+  "runtimeObjectModel": "independent DOM stage nodes",
+  "coordinateConvention": "stageCenters are [x,y], bottom to top; safeContentRects are [x,y,width,height], all in final image pixels",
+  "items": {
+    "chapter-forest": {
+      "file": "backgrounds/chapters/forest.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/forest.png",
+      "promptFile": "raw/chapter-maps/forest.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": null
+    },
+    "chapter-volcano": {
+      "file": "backgrounds/chapters/volcano.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/volcano.png",
+      "promptFile": "raw/chapter-maps/volcano.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-ice": {
+      "file": "backgrounds/chapters/ice.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/ice.png",
+      "promptFile": "raw/chapter-maps/ice.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-thunder": {
+      "file": "backgrounds/chapters/thunder.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/thunder.png",
+      "promptFile": "raw/chapter-maps/thunder.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-marsh": {
+      "file": "backgrounds/chapters/marsh.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/marsh.png",
+      "promptFile": "raw/chapter-maps/marsh.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-desert": {
+      "file": "backgrounds/chapters/desert.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/desert.png",
+      "promptFile": "raw/chapter-maps/desert.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-abyss": {
+      "file": "backgrounds/chapters/abyss.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/abyss.png",
+      "promptFile": "raw/chapter-maps/abyss.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-foundry": {
+      "file": "backgrounds/chapters/foundry.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/foundry.png",
+      "promptFile": "raw/chapter-maps/foundry.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-crystal": {
+      "file": "backgrounds/chapters/crystal.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/crystal.png",
+      "promptFile": "raw/chapter-maps/crystal.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-haunted": {
+      "file": "backgrounds/chapters/haunted.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/haunted.png",
+      "promptFile": "raw/chapter-maps/haunted.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-sky": {
+      "file": "backgrounds/chapters/sky.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/sky.png",
+      "promptFile": "raw/chapter-maps/sky.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-thorns": {
+      "file": "backgrounds/chapters/thorns.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/thorns.png",
+      "promptFile": "raw/chapter-maps/thorns.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-celestial": {
+      "file": "backgrounds/chapters/celestial.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/celestial.png",
+      "promptFile": "raw/chapter-maps/celestial.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-void": {
+      "file": "backgrounds/chapters/void.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/void.png",
+      "promptFile": "raw/chapter-maps/void.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-pine": {
+      "file": "backgrounds/chapters/pine.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/pine.png",
+      "promptFile": "raw/chapter-maps/pine.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-obsidian": {
+      "file": "backgrounds/chapters/obsidian.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/obsidian.png",
+      "promptFile": "raw/chapter-maps/obsidian.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-bamboo": {
+      "file": "backgrounds/chapters/bamboo.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/bamboo.png",
+      "promptFile": "raw/chapter-maps/bamboo.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-coast": {
+      "file": "backgrounds/chapters/coast.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/coast.png",
+      "promptFile": "raw/chapter-maps/coast.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-dream": {
+      "file": "backgrounds/chapters/dream.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/dream.png",
+      "promptFile": "raw/chapter-maps/dream.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "chapter-astral": {
+      "file": "backgrounds/chapters/astral.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/chapter-maps/astral.png",
+      "promptFile": "raw/chapter-maps/astral.prompt.txt",
+      "stageCenters": [
+        [
+          350,
+          1340
+        ],
+        [
+          580,
+          1180
+        ],
+        [
+          370,
+          1030
+        ],
+        [
+          600,
+          900
+        ],
+        [
+          360,
+          760
+        ],
+        [
+          590,
+          650
+        ],
+        [
+          370,
+          560
+        ],
+        [
+          570,
+          470
+        ],
+        [
+          390,
+          390
+        ],
+        [
+          520,
+          350
+        ]
+      ],
+      "reference": "raw/chapter-maps/forest.png"
+    },
+    "map-back": {
+      "file": "items/map-back.png",
+      "width": 256,
+      "height": 256,
+      "textless": true,
+      "transparent": true,
+      "raw": "raw/chapter-maps/map-back.png",
+      "promptFile": "raw/chapter-maps/map-back.prompt.txt"
+    },
+    "map-cloud": {
+      "file": "items/map-cloud.png",
+      "width": 1100,
+      "height": 360,
+      "textless": true,
+      "transparent": true,
+      "raw": "raw/chapter-maps/map-cloud.png",
+      "promptFile": "raw/chapter-maps/map-cloud.prompt.txt"
+    },
+    "stage-platform": {
+      "file": "items/stage-platform.png",
+      "width": 320,
+      "height": 200,
+      "textless": true,
+      "transparent": true,
+      "raw": "raw/chapter-maps/stage-platform.png",
+      "promptFile": "raw/chapter-maps/stage-platform.prompt.txt",
+      "safeContentRects": {
+        "label": [
+          80,
+          40,
+          160,
+          80
+        ]
+      }
+    },
+    "chapter-banner": {
+      "file": "items/chapter-banner.png",
+      "width": 1100,
+      "height": 240,
+      "textless": true,
+      "transparent": true,
+      "raw": "raw/chapter-maps/chapter-banner.png",
+      "promptFile": "raw/chapter-maps/chapter-banner.prompt.txt",
+      "safeContentRects": {
+        "label": [
+          180,
+          65,
+          740,
+          110
+        ]
+      }
+    },
+    "journey-forest-close": {
+      "file": "backgrounds/journey-forest-close.webp",
+      "width": 1024,
+      "height": 1536,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/journey-close/journey-forest-close.png",
+      "promptFile": "raw/journey-close/journey-forest-close.prompt.txt",
+      "mapMode": "baked_scene_mode",
+      "runtimeObjectModel": "separate DOM encounters and clouds",
+      "stageCentersNormalized": [
+        [
+          0.48,
+          0.92
+        ],
+        [
+          0.65,
+          0.65
+        ],
+        [
+          0.33,
+          0.41
+        ],
+        [
+          0.69,
+          0.215
+        ]
+      ]
+    },
+    "journey-eight-landings": {
+      "file": "backgrounds/journey-eight-landings-loop.webp",
+      "width": 1024,
+      "height": 1536,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/journey-eight-landings-loop/raw.png",
+      "promptFile": "raw/journey-eight-landings-loop/prompt-refinement.txt",
+      "stageCenters": [
+        [
+          580,
+          1395
+        ],
+        [
+          360,
+          1228
+        ],
+        [
+          670,
+          1020
+        ],
+        [
+          350,
+          820
+        ],
+        [
+          670,
+          638
+        ],
+        [
+          350,
+          445
+        ],
+        [
+          660,
+          270
+        ],
+        [
+          380,
+          105
+        ]
+      ],
+      "safeFloorPolygons": [
+        [
+          [
+            475,
+            1365
+          ],
+          [
+            680,
+            1365
+          ],
+          [
+            680,
+            1425
+          ],
+          [
+            475,
+            1425
+          ]
+        ],
+        [
+          [
+            235,
+            1186
+          ],
+          [
+            475,
+            1194
+          ],
+          [
+            545,
+            1255
+          ],
+          [
+            190,
+            1265
+          ]
+        ],
+        [
+          [
+            550,
+            974
+          ],
+          [
+            790,
+            983
+          ],
+          [
+            850,
+            1054
+          ],
+          [
+            500,
+            1060
+          ]
+        ],
+        [
+          [
+            215,
+            782
+          ],
+          [
+            460,
+            787
+          ],
+          [
+            535,
+            850
+          ],
+          [
+            180,
+            858
+          ]
+        ],
+        [
+          [
+            540,
+            590
+          ],
+          [
+            780,
+            598
+          ],
+          [
+            850,
+            665
+          ],
+          [
+            490,
+            669
+          ]
+        ],
+        [
+          [
+            210,
+            400
+          ],
+          [
+            460,
+            412
+          ],
+          [
+            535,
+            473
+          ],
+          [
+            175,
+            477
+          ]
+        ],
+        [
+          [
+            525,
+            232
+          ],
+          [
+            780,
+            234
+          ],
+          [
+            850,
+            300
+          ],
+          [
+            490,
+            305
+          ]
+        ],
+        [
+          [
+            225,
+            75
+          ],
+          [
+            510,
+            70
+          ],
+          [
+            570,
+            125
+          ],
+          [
+            240,
+            137
+          ]
+        ]
+      ],
+      "registration": {
+        "anchor": "actor-feet / platform center",
+        "sourceBounds": [
+          0,
+          1536
+        ],
+        "order": "bottom-to-top",
+        "measured": true,
+        "edgeSockets": {
+          "top": [
+            518,
+            0
+          ],
+          "bottom": [
+            528,
+            1536
+          ]
+        }
+      }
+    }
+  }
+}

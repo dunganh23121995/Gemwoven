@@ -4,23 +4,30 @@
   const copy={...window.GEMWOVEN_DEFAULT_COPY,...window.GEMWOVEN_COPY};
   const state={screen:'home',mode:'solo',product:'fire-essence',quantity:1,groups:{},questHidden:false,hero:'fire',skill:0,category:'all',bagItem:'fire-essence',bagPage:0,bagPages:2};
   const editedCopy={};
+  const game=window.GEMWOVEN_GAME;
+  if(game)state.hero=game.initialHero;
   const $=id=>document.getElementById(id),scene=$('scene'),stage=$('stage'),dialog=$('preview-dialog');
   const iconFor={home:'nav-home',inventory:'nav-bag',skills:'nav-skills',arena:'nav-arena',summon:'nav-summon',shop:'icon-shop',forge:'icon-forge',upgrade:'nav-heroes',tavern:'icon-tavern'};
-  const heroNames={fire:'Mika',ice:'Yuki',earth:'Nori',lightning:'Lumi',shadow:'Noct'};
+  if(game)for(const [key,entry]of Object.entries(game.extra))iconFor[key]=entry[1];
+  const heroNames={novice:'Tân',fire:'Mika',ice:'Yuki',earth:'Nori',lightning:'Lumi',shadow:'Noct'};
   const itemNames={'fire-essence':'Tinh Hoa Hỏa',coins:'Đồng Vàng',mana:'Đá Ngọc',amber:'Đá Nâng Cấp',scroll:'Sách Kỹ Năng','hero-fragment':'Mảnh Tướng',ticket:'Vé Triệu Hồi',chest:'Rương Hiếm',hammer:'Búa Rèn',potion:'Thuốc Đột Phá',ingot:'Thỏi Sắt',emerald:'Tinh Thạch Mộc','fire-sword':'Kiếm Hỏa Ngục','icon-book':'Sách Kinh Nghiệm','avatar-fire':'Mảnh Tướng Mika'};
-  function art(key){const img=document.createElement('img');img.src=assets[key].file;img.alt='';img.draggable=false;return img;}
+  function art(key){const img=document.createElement('img');img.src=(assets[key]||assets['icon-hero']).file;img.alt='';img.draggable=false;return img;}
   function box(el,r){['left','top','width','height'].forEach((p,i)=>el.style[p]=`${r[i]}px`);}
   function setText(el,key,value){el.dataset.copy=key;el.textContent=value??copy[key]??'';}
   function decorateText(el,node){el.style.fontSize=`${node.size||28}px`;if(node.tone)el.classList.add(`tone-${node.tone}`);if(node.align)el.classList.add(`align-${node.align}`);}
   function makeNode(node){
     node={...node};
-    if(node.id.endsWith('.profile'))node.icon=`portrait-${state.hero}`;
-    if(['upgrade.hero-model','home.hero'].includes(node.id)){node.asset=`hero-${state.hero}`;node.action=`hero:${state.hero}`;copy[node.text]=heroNames[state.hero];}
+    const displayedHero=game&&node.id==='home.hero'?game.engine.read().selected:state.hero;
+    if(node.id.endsWith('.profile'))node.icon=`portrait-${game?game.engine.read().selected:state.hero}`;
+    if(['upgrade.hero-model','home.hero'].includes(node.id)){node.asset=`hero-${displayedHero}`;node.action=`hero:${displayedHero}`;copy[node.text]=heroNames[displayedHero];}
     if(['upgrade.evolution-now','upgrade.evolution-next','upgrade.evolution-locked'].includes(node.id)){node.asset=`portrait-${state.hero}`;if(node.id.endsWith('now'))node.action=`hero:${state.hero}`;}
     let el;
-    if(node.kind==='image')el=art(node.asset);
+    if(node.kind==='content'){el=document.createElement('section');el.className='live-panel';el.style.backgroundImage=`url("${assets[node.backgroundAsset||'panel-parchment'].file}")`;el.style.setProperty('--game-button-art',`url("${assets['button-gold'].file}")`);node.build(el);}
+    else if(node.kind==='image')el=art(node.asset);
     else if(node.kind==='button'){
       el=document.createElement('button');el.type='button';el.dataset.action=node.action;
+      if(node.disabled)el.disabled=true;
+      for(const [key,value]of Object.entries(node.data||{}))el.dataset[key]=value;
       el.setAttribute('aria-label',copy[node.text]);
       const bg=art(node.asset);bg.className='art';bg.style.objectFit=node.fit||'contain';el.append(bg);
       if(node.icon){const icon=art(node.icon);icon.className='icon';box(icon,node.iconRect);el.append(icon);}
@@ -44,8 +51,9 @@
   }
   function fit(){
     const mobile=innerWidth<=700;
-    const availableWidth=mobile?innerWidth:innerWidth-300;
-    const availableHeight=mobile?Math.max(500,innerHeight-92):innerHeight-24;
+    const exploring=state.screen==='campaign';
+    const availableWidth=mobile||exploring?innerWidth:innerWidth-300;
+    const availableHeight=exploring?innerHeight:mobile?Math.max(500,innerHeight-92):innerHeight-24;
     const scale=Math.max(.18,Math.min(availableWidth/941,availableHeight/1672,1));
     stage.style.transform=`scale(${scale})`;$('viewport').style.width=`${941*scale}px`;$('viewport').style.height=`${1672*scale}px`;
   }
@@ -53,20 +61,26 @@
   function changeText(id,value){const el=scene.querySelector(`[data-copy="${state.screen}.${id}"]`);if(el)el.textContent=value;}
   function render(){
     window.GEMWOVEN_REBUILD?.(state);
+    if(game)game.decorate(state);
+    // Live values and newly created labels must be copied after decoration.
+    // The initial copy snapshot predates menu labels and real wallet values.
+    if(game)Object.assign(copy,window.GEMWOVEN_DEFAULT_COPY);
     if(['skills','inventory'].includes(state.screen)){
       const contextual=/^(skills\.(skill-category|skill-level|hero-model|node-\d)|inventory\.(detail-art|item-type|item-action|held-count|page))$/;
-      for(const [key,value] of Object.entries(window.GEMWOVEN_DEFAULT_COPY))if(key.startsWith(state.screen+'.'))copy[key]=contextual.test(key)?value:(window.GEMWOVEN_COPY?.[key]??value);
+      for(const [key,value] of Object.entries(window.GEMWOVEN_DEFAULT_COPY))if(key.startsWith(state.screen+'.'))copy[key]=game||contextual.test(key)?value:(window.GEMWOVEN_COPY?.[key]??value);
     }
     Object.assign(copy,editedCopy);
-    const screen=layout.screens[state.screen];scene.replaceChildren();scene.style.backgroundImage=`url("${window.GEMWOVEN_BACKDROPS?.[state.screen]?.background||screen.background}")`;
+    document.body.classList.toggle('exploration-open',state.screen==='campaign');stage.dataset.screen=state.screen;
+    const screen=layout.screens[state.screen];scene.replaceChildren();scene.style.backgroundImage=`url("${window.GEMWOVEN_BACKDROPS?.[screen.backgroundKey||state.screen]?.background||screen.background}")`;
     const frag=document.createDocumentFragment();for(const node of screen.nodes)frag.append(makeNode(node));scene.append(frag);
     stage.setAttribute('aria-label',screen.name);
     document.title=`Gemwoven · ${screen.name}`;
     document.querySelectorAll('#screen-menu button').forEach(b=>{if(b.dataset.screen===state.screen)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
     scene.classList.remove('scene-enter');void scene.offsetWidth;scene.classList.add('scene-enter');
-    if(state.screen==='shop')refreshProduct();if(state.screen==='tavern'&&state.questHidden)setQuestHidden(true);
+    if(!game){if(state.screen==='shop')refreshProduct();if(state.screen==='tavern'&&state.questHidden)setQuestHidden(true);
     if(state.screen==='forge'&&state.groups['forge-tab'])changeText('forge-action',['CHẾ TẠO','CƯỜNG HÓA','KHẢM NGỌC'][Number(state.groups['forge-tab'].slice(-1))]);
-    if(state.screen==='upgrade'&&state.groups['upgrade-tab'])changeText('upgrade-action',['Tăng Level','Tăng Sao','Tiến Hóa'][Number(state.groups['upgrade-tab'].slice(-1))]);
+    if(state.screen==='upgrade'&&state.groups['upgrade-tab'])changeText('upgrade-action',['Tăng Level','Tăng Sao','Tiến Hóa'][Number(state.groups['upgrade-tab'].slice(-1))]);}
+    if(game)game.mount(state,{navigate,render,showModal});
     setEditMode($('edit-copy').checked);fit();requestAnimationFrame(fitCopy);
   }
   function fitCopy(){
@@ -108,6 +122,7 @@
   }
   function activate(action,button){
     requestAnimationFrame(fitCopy);
+    if(game?.handle(action,button,{navigate,render,showModal},state))return;
     const [type,value]=action.split(':');chooseGroup(button);
     if(type==='route')return navigate(value);
     if(type==='select-hero'){state.hero=value;state.skill=0;render();return;}
@@ -122,13 +137,13 @@
     if(type==='bag-category'){
       state.category=value;state.bagPage=0;
       const items=window.GEMWOVEN_INVENTORY.filter(p=>value==='all'||p[3]===value);
-      if(!items.some(p=>p[0]===state.bagItem))state.bagItem=items[0][0];render();return;
+      if(!items.some(p=>p[0]===state.bagItem))state.bagItem=items[0]?.[0]||'';render();return;
     }
     if(type==='mode'){state.mode=value;return;}
     if(type==='quantity'){state.quantity=Math.min(99,Math.max(1,state.quantity+Number(value)));refreshProduct();return;}
     if(type==='product'){state.product=value;state.quantity=1;refreshProduct();return;}
     if(type==='item')return showModal(window.GEMWOVEN_INVENTORY?.find(p=>p[0]===value)?.[1]||itemNames[value]||'Trang bị',[value]);
-    if(type==='hero'){state.hero=value;state.skill=0;return showModal(heroNames[value],[`hero-${value}`],window.GEMWOVEN_HEROES[value].title,[{label:'Bộ kỹ năng',route:'skills'},{label:'Nâng cấp',route:'upgrade'}]);}
+    if(type==='hero'){state.hero=value;state.skill=0;return navigate('upgrade');}
     if(type==='selected-product')return showModal(itemNames[state.product],[state.product]);
     if(type==='battle')return showModal(`Đấu trường ${state.mode==='solo'?'1v1':'3v3'}`,['hero-fire','hero-ice'],'',[{label:'Vào trận',href:'Game.html'}]);
     if(type==='summon')return showModal(value==='ten'?'Triệu Hồi ×10':'Triệu Hồi ×1',['summon-crystal','gem-fire'],'',[{label:'Xem tướng',route:'upgrade'}]);

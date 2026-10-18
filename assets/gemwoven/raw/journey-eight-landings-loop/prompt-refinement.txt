@@ -1,0 +1,7 @@
+Edit the provided forest map ONLY at its top and bottom edges. The image is 1024 pixels wide. The eight main terraces are correct and must remain unchanged.
+This is a VERTICALLY REPEATING texture. The road exiting the TOP must align EXACTLY with the road exiting the BOTTOM when copies are stacked.
+Current defect: road at top is too far LEFT; road at bottom is too far RIGHT.
+Move the TOP edge roadway RIGHT by approximately 180 pixels, so its exact boundary at the top is x392 to x632, centered at x512. Fill its OLD top-left position with dense leaves. The road should bend diagonally left into the existing first terrace just below.
+Move the BOTTOM edge roadway LEFT by approximately 130 pixels, so its exact boundary at the bottom is ALSO x392 to x632, centered at x512. Fill its OLD bottom-right position with dense leaves. The road should bend diagonally up-right into the existing bottom terrace.
+Both top and bottom edges must show the SAME 240px-wide pale cream cobblestone road in the EXACT CENTER, not in the left third or right third. At the image boundary, that central road is straight vertical, with left edge at 38 percent of image width and right edge at 62 percent. Dense dark green leaf borders frame it on both sides. It must be visibly possible to connect the bottom road directly to the top road without shifting either image sideways.
+Keep all eight existing terrace floors, foot locations, stone steps, waterfalls and forest artwork away from the two edge areas unchanged. No text, marks, actors, icons or extra terraces.

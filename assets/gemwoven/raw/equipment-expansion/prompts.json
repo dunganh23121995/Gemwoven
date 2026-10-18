@@ -1,0 +1,89 @@
+{
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "sheets": [
+    {
+      "key": "relic-novice",
+      "ids": [
+        "relic-novice-1",
+        "relic-novice-2",
+        "relic-novice-3",
+        "relic-novice-4",
+        "relic-novice-5"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: Gemwoven RPG inventory icon evolution atlas. Match the previously shown game item reference's polished clean HD painted fantasy style: bold clear silhouette, jewel-like highlights, dark fine contour, rich warm metallic shading, readable at small icon size. Do NOT draw characters or hands. Exact landscape 3:2 canvas, three columns and two rows of equal square invisible cells (3 columns x 2 rows). Each object centered at its own cell center; entire object including glow occupies only central 64% of its cell; wide transparent gutters all around. Read cells in order top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right. The first FIVE cells contain FIVE EVOLUTION FORMS of the same relic, each clearly a different design with the same identity. SIXTH cell bottom-right stays completely EMPTY AND TRANSPARENT. No visible grid, no borders, no text, no letters, no numbers, no labels, no UI tiles, no backgrounds, no floor, no shadow plate. Genuine transparent alpha background. All silhouettes complete and isolated; no glow, tassel, energy, wing or ornament may cross a cell boundary. Compact attached glow only in forms 4 and 5. Same three-quarter front view for all icons. Relic identity: Tan the humble brown-clothed wood-sword traveler's JOURNEY COMPASS, round navigational compass with a simple arrow needle, warm wood, brass and green accents; no alphabet compass letters. Cell1 simple small wooden compass with plain green needle and leather loop, no jewels or effects. Cell2 same compass with substantial bronze protective rim and two little folded metal corner brackets, no gems. Cell3 ornate gold-rim compass with four small emerald gems and engraved eight-point star needle, visibly upgraded. Cell4 awakened compass with pair of compact golden feather wings attached at sides, emerald center and two concentric mechanical rings. Cell5 transcendent adventure astrolabe, distinct layered star compass inside golden orbit rings with four short luminous emerald wing fins and a restrained warm golden halo behind it, majestic yet perfectly contained."
+    },
+    {
+      "key": "relic-fire",
+      "ids": [
+        "relic-fire-1",
+        "relic-fire-2",
+        "relic-fire-3",
+        "relic-fire-4",
+        "relic-fire-5"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: Gemwoven RPG inventory icon evolution atlas. Match the previously shown game item reference's polished clean HD painted fantasy style: bold clear silhouette, jewel-like highlights, dark fine contour, rich warm metallic shading, readable at small icon size. Do NOT draw characters or hands. Exact landscape 3:2 canvas, three columns and two rows of equal square invisible cells (3 columns x 2 rows). Each object centered at its own cell center; entire object including glow occupies only central 64% of its cell; wide transparent gutters all around. Read cells in order top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right. The first FIVE cells contain FIVE EVOLUTION FORMS of the same relic, each clearly a different design with the same identity. SIXTH cell bottom-right stays completely EMPTY AND TRANSPARENT. No visible grid, no borders, no text, no letters, no numbers, no labels, no UI tiles, no backgrounds, no floor, no shadow plate. Genuine transparent alpha background. All silhouettes complete and isolated; no glow, tassel, energy, wing or ornament may cross a cell boundary. Compact attached glow only in forms 4 and 5. Same three-quarter front view for all icons. Relic identity: Mika the red fox fire-swordswoman's FIRE FOX GOURD, double-lobed bottle with a small fox-ear stopper, red-orange terracotta and warm gold, a red cord. Cell1 plain orange double-lobed clay gourd with dark red cord tied at waist and small fox-ear stopper, no metal or gems. Cell2 gourd with brass metal waist and base fittings and twin short red tassels, no gems. Cell3 gourd with ornate gold fox-mask medallion around a ruby-red jewel on belly, luxurious gold stopper. Cell4 awakened fire-gourd with three compact sculpted flame-tail fins wrapping its lower sides, ruby core and orange light inside. Cell5 transcendent golden nine-tail fox-gourd, new faceted gold and crimson vessel silhouette surrounded by compact fan of nine fiery fox-tail ornaments, bright ruby heart and attached amber halo, no actual animal or character."
+    },
+    {
+      "key": "relic-ice",
+      "ids": [
+        "relic-ice-1",
+        "relic-ice-2",
+        "relic-ice-3",
+        "relic-ice-4",
+        "relic-ice-5"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: Gemwoven RPG inventory icon evolution atlas. Match the previously shown game item reference's polished clean HD painted fantasy style: bold clear silhouette, jewel-like highlights, dark fine contour, rich warm metallic shading, readable at small icon size. Do NOT draw characters or hands. Exact landscape 3:2 canvas, three columns and two rows of equal square invisible cells (3 columns x 2 rows). Each object centered at its own cell center; entire object including glow occupies only central 64% of its cell; wide transparent gutters all around. Read cells in order top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right. The first FIVE cells contain FIVE EVOLUTION FORMS of the same relic, each clearly a different design with the same identity. SIXTH cell bottom-right stays completely EMPTY AND TRANSPARENT. No visible grid, no borders, no text, no letters, no numbers, no labels, no UI tiles, no backgrounds, no floor, no shadow plate. Genuine transparent alpha background. All silhouettes complete and isolated; no glow, tassel, energy, wing or ornament may cross a cell boundary. Compact attached glow only in forms 4 and 5. Same three-quarter front view for all icons. Relic identity: Yuki the rabbit ice guardian's SNOW RABBIT BELL, pale blue rounded hanging bell with two rabbit ears at top and a white ribbon, silver, icy cyan, sapphire. Cell1 plain pale porcelain bell with short rabbit ear handle and single white ribbon, no metal trim or gems. Cell2 same bell reinforced by a silver rim and polished silver rabbit ears, two compact ribbon ends. Cell3 ornate icy silver bell bearing a large sapphire snowflake jewel on its front and small pearl trim. Cell4 awakened sapphire bell with pair of compact ice-crystal wings attached at sides, frosted bunny ears and gently glowing clapper. Cell5 transcendent snow-moon rabbit chime, transformed crystalline bell crown with long angular crystal rabbit ears and six compact snowflake petals, bright sapphire core inside a silver crescent halo, cold blue glow tightly attached, no animal or character. IMPORTANT LAYOUT: These are small icons in LARGE cells, not closeups. Limit all artwork and attached glow to the middle 60 percent of each cell. Leave at least 20 percent transparent padding on every side of every cell."
+    },
+    {
+      "key": "relic-earth",
+      "ids": [
+        "relic-earth-1",
+        "relic-earth-2",
+        "relic-earth-3",
+        "relic-earth-4",
+        "relic-earth-5"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: Gemwoven RPG inventory icon evolution atlas. Match the previously shown game item reference's polished clean HD painted fantasy style: bold clear silhouette, jewel-like highlights, dark fine contour, rich warm metallic shading, readable at small icon size. Do NOT draw characters or hands. Exact landscape 3:2 canvas, three columns and two rows of equal square invisible cells (3 columns x 2 rows). Each object centered at its own cell center; entire object including glow occupies only central 64% of its cell; wide transparent gutters all around. Read cells in order top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right. The first FIVE cells contain FIVE EVOLUTION FORMS of the same relic, each clearly a different design with the same identity. SIXTH cell bottom-right stays completely EMPTY AND TRANSPARENT. No visible grid, no borders, no text, no letters, no numbers, no labels, no UI tiles, no backgrounds, no floor, no shadow plate. Genuine transparent alpha background. All silhouettes complete and isolated; no glow, tassel, energy, wing or ornament may cross a cell boundary. Compact attached glow only in forms 4 and 5. Same three-quarter front view for all icons. Relic identity: Nori the forest shield guardian's ANCIENT TREE SEED, large acorn-like wooden seed with curled green sprout and woody root detail, chestnut brown, living emerald green and aged gold. Cell1 simple brown acorn seed with two fresh leaves, no fittings or magic. Cell2 sturdy seed in bronze root-shaped metal cradle and reinforced cap, still recognizably acorn. Cell3 golden-banded seed with emerald jewel embedded on shell and thicker spiral sprout above. Cell4 awakened seed with compact leaf wings spreading at sides, luminous emerald core visible through a split shell and short root tendrils curling underneath. Cell5 transcendent world-tree heart, transformed luminous faceted emerald seed with tiny sculpted golden tree crown growing above and symmetric root ring underneath, broad jade leaf wings and tightly contained green life aura, no landscape and no ground. IMPORTANT LAYOUT: These are small icons in LARGE cells, not closeups. Limit all artwork and attached glow to the middle 60 percent of each cell. Leave at least 20 percent transparent padding on every side of every cell."
+    },
+    {
+      "key": "relic-lightning",
+      "ids": [
+        "relic-lightning-1",
+        "relic-lightning-2",
+        "relic-lightning-3",
+        "relic-lightning-4",
+        "relic-lightning-5"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: Gemwoven RPG inventory icon evolution atlas. Match the previously shown game item reference's polished clean HD painted fantasy style: bold clear silhouette, jewel-like highlights, dark fine contour, rich warm metallic shading, readable at small icon size. Do NOT draw characters or hands. Exact landscape 3:2 canvas, three columns and two rows of equal square invisible cells (3 columns x 2 rows). Each object centered at its own cell center; entire object including glow occupies only central 64% of its cell; wide transparent gutters all around. Read cells in order top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right. The first FIVE cells contain FIVE EVOLUTION FORMS of the same relic, each clearly a different design with the same identity. SIXTH cell bottom-right stays completely EMPTY AND TRANSPARENT. No visible grid, no borders, no text, no letters, no numbers, no labels, no UI tiles, no backgrounds, no floor, no shadow plate. Genuine transparent alpha background. All silhouettes complete and isolated; no glow, tassel, energy, wing or ornament may cross a cell boundary. Compact attached glow only in forms 4 and 5. Same three-quarter front view for all icons. Relic identity: Lumi the lightning witch's THUNDER CELESTIAL ORB, purple glass spherical magic tool on a small crescent-like cradle, gold, violet, electric blue. Cell1 simple cloudy lavender glass orb with tiny pale-blue lightning streak inside and plain dark wooden foot, no metal rings or external effects. Cell2 violet orb enclosed by a clean brass meridian ring on bronze cradle, no gems. Cell3 ornate gold-ring orb with three amethyst jewels in the ring and bright star-shaped blue thunder core. Cell4 awakened thunder orb with two compact angular lightning-wing fins attached to outer ring, cyan arcs confined around orb. Cell5 transcendent celestial storm armillary, transformed luminous blue-violet star core inside three intricate golden orbit rings, four compact lightning prongs and a radiant violet halo closely behind, no detached sparks or broad lightning bolts. IMPORTANT LAYOUT: These are small icons in LARGE cells, not closeups. Limit all artwork and attached glow to the middle 60 percent of each cell. Leave at least 20 percent transparent padding on every side of every cell."
+    },
+    {
+      "key": "relic-shadow",
+      "ids": [
+        "relic-shadow-1",
+        "relic-shadow-2",
+        "relic-shadow-3",
+        "relic-shadow-4",
+        "relic-shadow-5"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: Gemwoven RPG inventory icon evolution atlas. Match the previously shown game item reference's polished clean HD painted fantasy style: bold clear silhouette, jewel-like highlights, dark fine contour, rich warm metallic shading, readable at small icon size. Do NOT draw characters or hands. Exact landscape 3:2 canvas, three columns and two rows of equal square invisible cells (3 columns x 2 rows). Each object centered at its own cell center; entire object including glow occupies only central 64% of its cell; wide transparent gutters all around. Read cells in order top-left, top-middle, top-right, bottom-left, bottom-middle, bottom-right. The first FIVE cells contain FIVE EVOLUTION FORMS of the same relic, each clearly a different design with the same identity. SIXTH cell bottom-right stays completely EMPTY AND TRANSPARENT. No visible grid, no borders, no text, no letters, no numbers, no labels, no UI tiles, no backgrounds, no floor, no shadow plate. Genuine transparent alpha background. All silhouettes complete and isolated; no glow, tassel, energy, wing or ornament may cross a cell boundary. Compact attached glow only in forms 4 and 5. Same three-quarter front view for all icons. Relic identity: Noct the completely faceless hooded shadow ninja's FACELESS MOON SEAL, obsidian oval hanging talisman bearing a smooth blank hood-like central motif and a crescent moon emblem, black, dark navy, silver, violet and cyan. IMPORTANT: this is an object, no human face, no nose or mouth, no skull. Cell1 simple dark stone oval seal on short black cord, small pale crescent engraved on completely smooth blank center, no gems. Cell2 obsidian seal protected by a silver crescent-shaped metal rim and a short dark tassel. Cell3 ornate black-silver seal with a violet moonstone jewel above the smooth blank face-shaped center and two silver corner points. Cell4 awakened seal with pair of compact raven-like shadow wing blades attached at sides, silver crescent crown and cyan thin edge light. Cell5 transcendent faceless lunar sigil, transformed angular obsidian mirror center with absolutely NO face inside, framed by overlapping silver crescents and four compact dark feather wings, violet moonstone and tightly attached eclipse halo, no character. IMPORTANT LAYOUT: These are small icons in LARGE cells, not closeups. Limit all artwork and attached glow to the middle 60 percent of each cell. Leave at least 20 percent transparent padding on every side of every cell."
+    },
+    {
+      "key": "gear",
+      "ids": [
+        "gear-helmet",
+        "gear-pants",
+        "gear-glasses"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: three shared equipment inventory icons for Gemwoven fantasy RPG. Match the previously shown polished clean HD painted item artwork: bold silhouettes, rich detailed metal shading, sharp readable forms, dark fine contour, small jewel-like highlights. EXACT 2x2 SQUARE atlas with four equally sized invisible square cells. TOP LEFT: one steel-blue fantasy adventurer helmet with open face opening, curved gold trim and small emerald set in forehead, elegant unisex medium armor, no head inside. TOP RIGHT: one full pair of dark brown adventurer trousers with leather belt, warm bronze knee plates and cream cuff stitching, both legs visible, no body or feet. BOTTOM LEFT: one pair of round fantasy scholar spectacles, golden brass frames, pale teal glass lenses, slightly three-quarter tilted view with short folded earpieces, small decorative green gem on bridge, unmistakably GLASSES not goggles. BOTTOM RIGHT cell completely EMPTY TRANSPARENT. Each icon centered in its own cell and fills only central 64% width/height with large empty transparent gutters. Genuine transparent alpha background. No text, numbers, labels, borders, frames, UI tile, floor, shadow plate, characters, hands or mannequins. No parts may cross any cell boundary; all icon silhouettes are fully contained."
+    },
+    {
+      "key": "gear-armor",
+      "ids": [
+        "gear-armor"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: one inventory equipment icon, gear-armor chest armor for Gemwoven RPG. Match the helmet and pants atlas just shown, same polished hand-painted clean HD fantasy game style, steel-blue metal, curved warm gold edging, small emerald accent. ONE complete torso cuirass chest armor, front three-quarter view: broad sculpted breastplate with small shoulder guards, visible fitted waist plate and dark leather straps at sides, empty neck opening at top. Icon must read as BODY ARMOR/CHESTPLATE distinct from helmet and shield. No wearer, no head, no face, no arms, no hands, no legs, no mannequin, no shield. Entire chestpiece centered within central 72 percent of square image with large transparent margin on all sides. Genuine transparent alpha background, crisp readable silhouette and rich volume, no text or labels, no frame, no UI tile, no floor, no shadow plate or detached glow."
+    }
+  ]
+}

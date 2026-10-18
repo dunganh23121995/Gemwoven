@@ -1,0 +1,1749 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "coordinateConvention": "alphaBounds use exclusive right/bottom",
+  "items": {
+    "creature-eldergrove-sproutling": {
+      "file": "items/creature-eldergrove-sproutling.png",
+      "png": "items/creature-eldergrove-sproutling.png",
+      "webp": "items/creature-eldergrove-sproutling.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        91,
+        52,
+        421,
+        461
+      ],
+      "theme": "eldergrove",
+      "role": "ordinary",
+      "name": "sproutling",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/eldergrove.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-eldergrove-barkmoth": {
+      "file": "items/creature-eldergrove-barkmoth.png",
+      "png": "items/creature-eldergrove-barkmoth.png",
+      "webp": "items/creature-eldergrove-barkmoth.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        66,
+        460,
+        461
+      ],
+      "theme": "eldergrove",
+      "role": "ordinary",
+      "name": "barkmoth",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/eldergrove.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-eldergrove-vineboar": {
+      "file": "items/creature-eldergrove-vineboar.png",
+      "png": "items/creature-eldergrove-vineboar.png",
+      "webp": "items/creature-eldergrove-vineboar.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        127,
+        460,
+        461
+      ],
+      "theme": "eldergrove",
+      "role": "ordinary",
+      "name": "vineboar",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/eldergrove.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-eldergrove-rootwarden": {
+      "file": "items/creature-eldergrove-rootwarden.png",
+      "png": "items/creature-eldergrove-rootwarden.png",
+      "webp": "items/creature-eldergrove-rootwarden.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        95,
+        52,
+        417,
+        461
+      ],
+      "theme": "eldergrove",
+      "role": "elite",
+      "name": "rootwarden",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/eldergrove.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-eldergrove-thornstag": {
+      "file": "items/creature-eldergrove-thornstag.png",
+      "png": "items/creature-eldergrove-thornstag.png",
+      "webp": "items/creature-eldergrove-thornstag.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        95,
+        52,
+        416,
+        461
+      ],
+      "theme": "eldergrove",
+      "role": "elite",
+      "name": "thornstag",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/eldergrove.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-eldergrove": {
+      "file": "items/artifact-eldergrove.png",
+      "png": "items/artifact-eldergrove.png",
+      "webp": "items/artifact-eldergrove.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        124,
+        51,
+        387,
+        460
+      ],
+      "theme": "eldergrove",
+      "role": "artifact",
+      "name": "sapbreaker",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/eldergrove.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-caldera-emberimp": {
+      "file": "items/creature-caldera-emberimp.png",
+      "png": "items/creature-caldera-emberimp.png",
+      "webp": "items/creature-caldera-emberimp.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        63,
+        460,
+        461
+      ],
+      "theme": "caldera",
+      "role": "ordinary",
+      "name": "emberimp",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/caldera.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-caldera-slagbeetle": {
+      "file": "items/creature-caldera-slagbeetle.png",
+      "png": "items/creature-caldera-slagbeetle.png",
+      "webp": "items/creature-caldera-slagbeetle.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        153,
+        460,
+        461
+      ],
+      "theme": "caldera",
+      "role": "ordinary",
+      "name": "slagbeetle",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/caldera.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-caldera-ashhound": {
+      "file": "items/creature-caldera-ashhound.png",
+      "png": "items/creature-caldera-ashhound.png",
+      "webp": "items/creature-caldera-ashhound.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        115,
+        460,
+        461
+      ],
+      "theme": "caldera",
+      "role": "ordinary",
+      "name": "ashhound",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/caldera.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-caldera-basaltbrute": {
+      "file": "items/creature-caldera-basaltbrute.png",
+      "png": "items/creature-caldera-basaltbrute.png",
+      "webp": "items/creature-caldera-basaltbrute.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        64,
+        460,
+        461
+      ],
+      "theme": "caldera",
+      "role": "elite",
+      "name": "basaltbrute",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/caldera.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-caldera-furnacepriest": {
+      "file": "items/creature-caldera-furnacepriest.png",
+      "png": "items/creature-caldera-furnacepriest.png",
+      "webp": "items/creature-caldera-furnacepriest.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        77,
+        52,
+        434,
+        461
+      ],
+      "theme": "caldera",
+      "role": "elite",
+      "name": "furnacepriest",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/caldera.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-caldera": {
+      "file": "items/artifact-caldera.png",
+      "png": "items/artifact-caldera.png",
+      "webp": "items/artifact-caldera.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        52,
+        51,
+        460,
+        460
+      ],
+      "theme": "caldera",
+      "role": "artifact",
+      "name": "heatseal",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/caldera.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-glacier-snowhare": {
+      "file": "items/creature-glacier-snowhare.png",
+      "png": "items/creature-glacier-snowhare.png",
+      "webp": "items/creature-glacier-snowhare.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        72,
+        52,
+        439,
+        461
+      ],
+      "theme": "glacier",
+      "role": "ordinary",
+      "name": "snowhare",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/glacier.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-glacier-iceling": {
+      "file": "items/creature-glacier-iceling.png",
+      "png": "items/creature-glacier-iceling.png",
+      "webp": "items/creature-glacier-iceling.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        67,
+        52,
+        445,
+        461
+      ],
+      "theme": "glacier",
+      "role": "ordinary",
+      "name": "iceling",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/glacier.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-glacier-frostmoth": {
+      "file": "items/creature-glacier-frostmoth.png",
+      "png": "items/creature-glacier-frostmoth.png",
+      "webp": "items/creature-glacier-frostmoth.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        82,
+        460,
+        461
+      ],
+      "theme": "glacier",
+      "role": "ordinary",
+      "name": "frostmoth",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/glacier.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-glacier-rimeknight": {
+      "file": "items/creature-glacier-rimeknight.png",
+      "png": "items/creature-glacier-rimeknight.png",
+      "webp": "items/creature-glacier-rimeknight.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        65,
+        52,
+        446,
+        461
+      ],
+      "theme": "glacier",
+      "role": "elite",
+      "name": "rimeknight",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/glacier.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-glacier-blizzardowl": {
+      "file": "items/creature-glacier-blizzardowl.png",
+      "png": "items/creature-glacier-blizzardowl.png",
+      "webp": "items/creature-glacier-blizzardowl.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        75,
+        52,
+        436,
+        461
+      ],
+      "theme": "glacier",
+      "role": "elite",
+      "name": "blizzardowl",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/glacier.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-glacier": {
+      "file": "items/artifact-glacier.png",
+      "png": "items/artifact-glacier.png",
+      "webp": "items/artifact-glacier.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        132,
+        51,
+        380,
+        460
+      ],
+      "theme": "glacier",
+      "role": "artifact",
+      "name": "thawflame",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/glacier.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-stormspire-sparkfinch": {
+      "file": "items/creature-stormspire-sparkfinch.png",
+      "png": "items/creature-stormspire-sparkfinch.png",
+      "webp": "items/creature-stormspire-sparkfinch.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        62,
+        52,
+        450,
+        461
+      ],
+      "theme": "stormspire",
+      "role": "ordinary",
+      "name": "sparkfinch",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/stormspire.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-stormspire-cloudjelly": {
+      "file": "items/creature-stormspire-cloudjelly.png",
+      "png": "items/creature-stormspire-cloudjelly.png",
+      "webp": "items/creature-stormspire-cloudjelly.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        98,
+        52,
+        414,
+        461
+      ],
+      "theme": "stormspire",
+      "role": "ordinary",
+      "name": "cloudjelly",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/stormspire.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-stormspire-gustfox": {
+      "file": "items/creature-stormspire-gustfox.png",
+      "png": "items/creature-stormspire-gustfox.png",
+      "webp": "items/creature-stormspire-gustfox.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        95,
+        460,
+        461
+      ],
+      "theme": "stormspire",
+      "role": "ordinary",
+      "name": "gustfox",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/stormspire.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-stormspire-voltgryphon": {
+      "file": "items/creature-stormspire-voltgryphon.png",
+      "png": "items/creature-stormspire-voltgryphon.png",
+      "webp": "items/creature-stormspire-voltgryphon.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        53,
+        52,
+        459,
+        461
+      ],
+      "theme": "stormspire",
+      "role": "elite",
+      "name": "voltgryphon",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/stormspire.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-stormspire-stormtotem": {
+      "file": "items/creature-stormspire-stormtotem.png",
+      "png": "items/creature-stormspire-stormtotem.png",
+      "webp": "items/creature-stormspire-stormtotem.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        64,
+        52,
+        448,
+        461
+      ],
+      "theme": "stormspire",
+      "role": "elite",
+      "name": "stormtotem",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/stormspire.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-stormspire": {
+      "file": "items/artifact-stormspire.png",
+      "png": "items/artifact-stormspire.png",
+      "webp": "items/artifact-stormspire.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        114,
+        51,
+        398,
+        460
+      ],
+      "theme": "stormspire",
+      "role": "artifact",
+      "name": "groundrod",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/stormspire.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-soulcrypt-wisp": {
+      "file": "items/creature-soulcrypt-wisp.png",
+      "png": "items/creature-soulcrypt-wisp.png",
+      "webp": "items/creature-soulcrypt-wisp.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        108,
+        52,
+        403,
+        461
+      ],
+      "theme": "soulcrypt",
+      "role": "ordinary",
+      "name": "wisp",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/soulcrypt.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-soulcrypt-bonecrow": {
+      "file": "items/creature-soulcrypt-bonecrow.png",
+      "png": "items/creature-soulcrypt-bonecrow.png",
+      "webp": "items/creature-soulcrypt-bonecrow.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        96,
+        460,
+        461
+      ],
+      "theme": "soulcrypt",
+      "role": "ordinary",
+      "name": "bonecrow",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/soulcrypt.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-soulcrypt-chainrat": {
+      "file": "items/creature-soulcrypt-chainrat.png",
+      "png": "items/creature-soulcrypt-chainrat.png",
+      "webp": "items/creature-soulcrypt-chainrat.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        223,
+        460,
+        461
+      ],
+      "theme": "soulcrypt",
+      "role": "ordinary",
+      "name": "chainrat",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/soulcrypt.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-soulcrypt-cagekeeper": {
+      "file": "items/creature-soulcrypt-cagekeeper.png",
+      "png": "items/creature-soulcrypt-cagekeeper.png",
+      "webp": "items/creature-soulcrypt-cagekeeper.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        93,
+        52,
+        418,
+        461
+      ],
+      "theme": "soulcrypt",
+      "role": "elite",
+      "name": "cagekeeper",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/soulcrypt.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-soulcrypt-veilassassin": {
+      "file": "items/creature-soulcrypt-veilassassin.png",
+      "png": "items/creature-soulcrypt-veilassassin.png",
+      "webp": "items/creature-soulcrypt-veilassassin.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        52,
+        460,
+        461
+      ],
+      "theme": "soulcrypt",
+      "role": "elite",
+      "name": "veilassassin",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/soulcrypt.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-soulcrypt": {
+      "file": "items/artifact-soulcrypt.png",
+      "png": "items/artifact-soulcrypt.png",
+      "webp": "items/artifact-soulcrypt.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        77,
+        51,
+        435,
+        460
+      ],
+      "theme": "soulcrypt",
+      "role": "artifact",
+      "name": "dawnlantern",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/soulcrypt.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-mycelium-sporecap": {
+      "file": "items/creature-mycelium-sporecap.png",
+      "png": "items/creature-mycelium-sporecap.png",
+      "webp": "items/creature-mycelium-sporecap.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        101,
+        460,
+        461
+      ],
+      "theme": "mycelium",
+      "role": "ordinary",
+      "name": "sporecap",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/mycelium.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-mycelium-sludgesnail": {
+      "file": "items/creature-mycelium-sludgesnail.png",
+      "png": "items/creature-mycelium-sludgesnail.png",
+      "webp": "items/creature-mycelium-sludgesnail.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        137,
+        460,
+        461
+      ],
+      "theme": "mycelium",
+      "role": "ordinary",
+      "name": "sludgesnail",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/mycelium.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-mycelium-rottick": {
+      "file": "items/creature-mycelium-rottick.png",
+      "png": "items/creature-mycelium-rottick.png",
+      "webp": "items/creature-mycelium-rottick.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        169,
+        460,
+        461
+      ],
+      "theme": "mycelium",
+      "role": "ordinary",
+      "name": "rottick",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/mycelium.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-mycelium-plagueherald": {
+      "file": "items/creature-mycelium-plagueherald.png",
+      "png": "items/creature-mycelium-plagueherald.png",
+      "webp": "items/creature-mycelium-plagueherald.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        74,
+        52,
+        438,
+        461
+      ],
+      "theme": "mycelium",
+      "role": "elite",
+      "name": "plagueherald",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/mycelium.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-mycelium-sporetoad": {
+      "file": "items/creature-mycelium-sporetoad.png",
+      "png": "items/creature-mycelium-sporetoad.png",
+      "webp": "items/creature-mycelium-sporetoad.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        104,
+        460,
+        461
+      ],
+      "theme": "mycelium",
+      "role": "elite",
+      "name": "sporetoad",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/mycelium.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-mycelium": {
+      "file": "items/artifact-mycelium.png",
+      "png": "items/artifact-mycelium.png",
+      "webp": "items/artifact-mycelium.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        117,
+        51,
+        395,
+        460
+      ],
+      "theme": "mycelium",
+      "role": "artifact",
+      "name": "antivenom",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/mycelium.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-geode-shardmite": {
+      "file": "items/creature-geode-shardmite.png",
+      "png": "items/creature-geode-shardmite.png",
+      "webp": "items/creature-geode-shardmite.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        129,
+        460,
+        461
+      ],
+      "theme": "geode",
+      "role": "ordinary",
+      "name": "shardmite",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/geode.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-geode-stonepup": {
+      "file": "items/creature-geode-stonepup.png",
+      "png": "items/creature-geode-stonepup.png",
+      "webp": "items/creature-geode-stonepup.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        53,
+        460,
+        461
+      ],
+      "theme": "geode",
+      "role": "ordinary",
+      "name": "stonepup",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/geode.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-geode-crystalbat": {
+      "file": "items/creature-geode-crystalbat.png",
+      "png": "items/creature-geode-crystalbat.png",
+      "webp": "items/creature-geode-crystalbat.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        68,
+        52,
+        443,
+        461
+      ],
+      "theme": "geode",
+      "role": "ordinary",
+      "name": "crystalbat",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/geode.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-geode-rampartgolem": {
+      "file": "items/creature-geode-rampartgolem.png",
+      "png": "items/creature-geode-rampartgolem.png",
+      "webp": "items/creature-geode-rampartgolem.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        65,
+        52,
+        447,
+        461
+      ],
+      "theme": "geode",
+      "role": "elite",
+      "name": "rampartgolem",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/geode.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-geode-prismseer": {
+      "file": "items/creature-geode-prismseer.png",
+      "png": "items/creature-geode-prismseer.png",
+      "webp": "items/creature-geode-prismseer.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        120,
+        52,
+        392,
+        461
+      ],
+      "theme": "geode",
+      "role": "elite",
+      "name": "prismseer",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/geode.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-geode": {
+      "file": "items/artifact-geode.png",
+      "png": "items/artifact-geode.png",
+      "webp": "items/artifact-geode.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        111,
+        51,
+        400,
+        460
+      ],
+      "theme": "geode",
+      "role": "artifact",
+      "name": "resonancefork",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/geode.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-hourglass-dustscarab": {
+      "file": "items/creature-hourglass-dustscarab.png",
+      "png": "items/creature-hourglass-dustscarab.png",
+      "webp": "items/creature-hourglass-dustscarab.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        153,
+        460,
+        461
+      ],
+      "theme": "hourglass",
+      "role": "ordinary",
+      "name": "dustscarab",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/hourglass.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-hourglass-sandcobra": {
+      "file": "items/creature-hourglass-sandcobra.png",
+      "png": "items/creature-hourglass-sandcobra.png",
+      "webp": "items/creature-hourglass-sandcobra.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        86,
+        52,
+        426,
+        461
+      ],
+      "theme": "hourglass",
+      "role": "ordinary",
+      "name": "sandcobra",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/hourglass.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-hourglass-clockmote": {
+      "file": "items/creature-hourglass-clockmote.png",
+      "png": "items/creature-hourglass-clockmote.png",
+      "webp": "items/creature-hourglass-clockmote.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        63,
+        52,
+        449,
+        461
+      ],
+      "theme": "hourglass",
+      "role": "ordinary",
+      "name": "clockmote",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/hourglass.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-hourglass-dunesentinel": {
+      "file": "items/creature-hourglass-dunesentinel.png",
+      "png": "items/creature-hourglass-dunesentinel.png",
+      "webp": "items/creature-hourglass-dunesentinel.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        59,
+        460,
+        461
+      ],
+      "theme": "hourglass",
+      "role": "elite",
+      "name": "dunesentinel",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/hourglass.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-hourglass-chronoweaver": {
+      "file": "items/creature-hourglass-chronoweaver.png",
+      "png": "items/creature-hourglass-chronoweaver.png",
+      "webp": "items/creature-hourglass-chronoweaver.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        58,
+        52,
+        453,
+        461
+      ],
+      "theme": "hourglass",
+      "role": "elite",
+      "name": "chronoweaver",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/hourglass.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-hourglass": {
+      "file": "items/artifact-hourglass.png",
+      "png": "items/artifact-hourglass.png",
+      "webp": "items/artifact-hourglass.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        58,
+        51,
+        453,
+        460
+      ],
+      "theme": "hourglass",
+      "role": "artifact",
+      "name": "anchorhourglass",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/hourglass.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-coralreef-reefcrab": {
+      "file": "items/creature-coralreef-reefcrab.png",
+      "png": "items/creature-coralreef-reefcrab.png",
+      "webp": "items/creature-coralreef-reefcrab.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        165,
+        460,
+        461
+      ],
+      "theme": "coralreef",
+      "role": "ordinary",
+      "name": "reefcrab",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/coralreef.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-coralreef-foamjelly": {
+      "file": "items/creature-coralreef-foamjelly.png",
+      "png": "items/creature-coralreef-foamjelly.png",
+      "webp": "items/creature-coralreef-foamjelly.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        68,
+        52,
+        443,
+        461
+      ],
+      "theme": "coralreef",
+      "role": "ordinary",
+      "name": "foamjelly",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/coralreef.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-coralreef-pearleel": {
+      "file": "items/creature-coralreef-pearleel.png",
+      "png": "items/creature-coralreef-pearleel.png",
+      "webp": "items/creature-coralreef-pearleel.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        71,
+        52,
+        441,
+        461
+      ],
+      "theme": "coralreef",
+      "role": "ordinary",
+      "name": "pearleel",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/coralreef.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-coralreef-tidemarshal": {
+      "file": "items/creature-coralreef-tidemarshal.png",
+      "png": "items/creature-coralreef-tidemarshal.png",
+      "webp": "items/creature-coralreef-tidemarshal.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        57,
+        52,
+        454,
+        461
+      ],
+      "theme": "coralreef",
+      "role": "elite",
+      "name": "tidemarshal",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/coralreef.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-coralreef-coraloracle": {
+      "file": "items/creature-coralreef-coraloracle.png",
+      "png": "items/creature-coralreef-coraloracle.png",
+      "webp": "items/creature-coralreef-coraloracle.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        55,
+        52,
+        457,
+        461
+      ],
+      "theme": "coralreef",
+      "role": "elite",
+      "name": "coraloracle",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/coralreef.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-coralreef": {
+      "file": "items/artifact-coralreef.png",
+      "png": "items/artifact-coralreef.png",
+      "webp": "items/artifact-coralreef.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        74,
+        51,
+        437,
+        460
+      ],
+      "theme": "coralreef",
+      "role": "artifact",
+      "name": "tideanchor",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/coralreef.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-moonkeep-duskfang": {
+      "file": "items/creature-moonkeep-duskfang.png",
+      "png": "items/creature-moonkeep-duskfang.png",
+      "webp": "items/creature-moonkeep-duskfang.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        79,
+        460,
+        461
+      ],
+      "theme": "moonkeep",
+      "role": "ordinary",
+      "name": "duskfang",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/moonkeep.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-moonkeep-moonmoth": {
+      "file": "items/creature-moonkeep-moonmoth.png",
+      "png": "items/creature-moonkeep-moonmoth.png",
+      "webp": "items/creature-moonkeep-moonmoth.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        55,
+        460,
+        461
+      ],
+      "theme": "moonkeep",
+      "role": "ordinary",
+      "name": "moonmoth",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/moonkeep.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-moonkeep-shadowraven": {
+      "file": "items/creature-moonkeep-shadowraven.png",
+      "png": "items/creature-moonkeep-shadowraven.png",
+      "webp": "items/creature-moonkeep-shadowraven.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        111,
+        460,
+        461
+      ],
+      "theme": "moonkeep",
+      "role": "ordinary",
+      "name": "shadowraven",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/moonkeep.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-moonkeep-lunarknight": {
+      "file": "items/creature-moonkeep-lunarknight.png",
+      "png": "items/creature-moonkeep-lunarknight.png",
+      "webp": "items/creature-moonkeep-lunarknight.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        62,
+        52,
+        450,
+        461
+      ],
+      "theme": "moonkeep",
+      "role": "elite",
+      "name": "lunarknight",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/moonkeep.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-moonkeep-eclipsestalker": {
+      "file": "items/creature-moonkeep-eclipsestalker.png",
+      "png": "items/creature-moonkeep-eclipsestalker.png",
+      "webp": "items/creature-moonkeep-eclipsestalker.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        51,
+        179,
+        460,
+        461
+      ],
+      "theme": "moonkeep",
+      "role": "elite",
+      "name": "eclipsestalker",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        461
+      ],
+      "raw": "raw/chapter-ecosystems/moonkeep.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "artifact-moonkeep": {
+      "file": "items/artifact-moonkeep.png",
+      "png": "items/artifact-moonkeep.png",
+      "webp": "items/artifact-moonkeep.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        129,
+        51,
+        382,
+        460
+      ],
+      "theme": "moonkeep",
+      "role": "artifact",
+      "name": "moonmirror",
+      "static": true,
+      "facing": "left",
+      "transparent": true,
+      "textless": true,
+      "origin": [
+        256,
+        256
+      ],
+      "raw": "raw/chapter-ecosystems/moonkeep.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    }
+  }
+}

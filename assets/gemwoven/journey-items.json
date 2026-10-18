@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "promptFile": "raw/journey-art-prompts.json",
+  "coordinateConvention": "safeContentRects are [x,y,width,height] in final image pixels",
+  "items": {
+    "journey-button": {
+      "file": "items/journey-button.png",
+      "width": 1050,
+      "height": 290,
+      "textless": true,
+      "transparent": true,
+      "safeContentRects": {
+        "label": [
+          260,
+          88,
+          540,
+          125
+        ]
+      },
+      "raw": "raw/journey-button-raw.png"
+    },
+    "chat-frame": {
+      "file": "items/chat-frame.png",
+      "width": 760,
+      "height": 1100,
+      "textless": true,
+      "transparent": true,
+      "safeContentRects": {
+        "header": [
+          152,
+          77,
+          456,
+          66
+        ],
+        "conversation": [
+          91,
+          198,
+          578,
+          649
+        ],
+        "input": [
+          91,
+          924,
+          578,
+          66
+        ]
+      },
+      "raw": "raw/chat-frame-raw.png"
+    },
+    "settings-frame": {
+      "file": "items/settings-frame.png",
+      "width": 760,
+      "height": 1000,
+      "textless": true,
+      "transparent": true,
+      "safeContentRects": {
+        "header": [
+          167,
+          110,
+          426,
+          50
+        ],
+        "content": [
+          99,
+          230,
+          562,
+          650
+        ]
+      },
+      "raw": "raw/settings-frame-raw.png"
+    },
+    "monster-slime": {
+      "file": "items/monster-slime.webp",
+      "png": "items/monster-slime.png",
+      "width": 512,
+      "height": 512,
+      "textless": true,
+      "transparent": true,
+      "facing": "left",
+      "static": true,
+      "raw": "raw/monster-slime-raw.png",
+      "alphaBounds": [
+        51,
+        83,
+        460,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "qc": {
+        "frame_count": 1,
+        "valid_frame_count": 1,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.5050686205134767,
+        "output_subject_height_mean": 378.0,
+        "body_scale_cv": 0.0,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.8452648475120479
+      }
+    },
+    "monster-acorn": {
+      "file": "items/monster-acorn.webp",
+      "png": "items/monster-acorn.png",
+      "width": 512,
+      "height": 512,
+      "textless": true,
+      "transparent": true,
+      "facing": "left",
+      "static": true,
+      "raw": "raw/monster-acorn-raw.png",
+      "alphaBounds": [
+        51,
+        73,
+        460,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "qc": {
+        "frame_count": 1,
+        "valid_frame_count": 1,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4940933523822913,
+        "output_subject_height_mean": 388.0,
+        "body_scale_cv": 0.0,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.8057784911717496
+      }
+    },
+    "monster-bat": {
+      "file": "items/monster-bat.webp",
+      "png": "items/monster-bat.png",
+      "width": 512,
+      "height": 512,
+      "textless": true,
+      "transparent": true,
+      "facing": "left",
+      "static": true,
+      "raw": "raw/monster-bat-raw.png",
+      "alphaBounds": [
+        51,
+        180,
+        460,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "qc": {
+        "frame_count": 1,
+        "valid_frame_count": 1,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.46134061779548813,
+        "output_subject_height_mean": 281.0,
+        "body_scale_cv": 0.0,
+        "anchor_x_std": 0.0,
+        "anchor_y_std": 0.0,
+        "anchor_y_mean": 0.7431781701444623
+      }
+    },
+    "journey-map": {
+      "file": "backgrounds/journey-map.webp",
+      "width": 941,
+      "height": 1672,
+      "textless": true,
+      "transparent": false,
+      "raw": "raw/journey-map-raw.png",
+      "role": "decorative backdrop; all stage nodes and rewards are DOM objects"
+    }
+  }
+}

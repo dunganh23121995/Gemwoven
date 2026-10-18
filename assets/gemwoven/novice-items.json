@@ -1,0 +1,94 @@
+{
+  "evo-shoulders": {
+    "file": "assets/gemwoven/items/evo-shoulders.png",
+    "width": 525,
+    "height": 298,
+    "source": "raw/evolution-overlays.png",
+    "crop": [
+      0,
+      70,
+      526,
+      430
+    ],
+    "textless": true
+  },
+  "evo-gloves": {
+    "file": "assets/gemwoven/items/evo-gloves.png",
+    "width": 425,
+    "height": 336,
+    "source": "raw/evolution-overlays.png",
+    "crop": [
+      540,
+      70,
+      1010,
+      445
+    ],
+    "textless": true
+  },
+  "evo-boots": {
+    "file": "assets/gemwoven/items/evo-boots.png",
+    "width": 441,
+    "height": 463,
+    "source": "raw/evolution-overlays.png",
+    "crop": [
+      50,
+      480,
+      530,
+      970
+    ],
+    "textless": true
+  },
+  "evo-weapon": {
+    "file": "assets/gemwoven/items/evo-weapon.png",
+    "width": 423,
+    "height": 477,
+    "source": "raw/evolution-overlays.png",
+    "crop": [
+      565,
+      480,
+      1010,
+      977
+    ],
+    "textless": true
+  },
+  "evo-crest": {
+    "file": "assets/gemwoven/items/evo-crest.png",
+    "width": 415,
+    "height": 273,
+    "source": "raw/evolution-overlays.png",
+    "crop": [
+      40,
+      1040,
+      500,
+      1390
+    ],
+    "textless": true
+  },
+  "evo-aura": {
+    "file": "assets/gemwoven/items/evo-aura.png",
+    "width": 505,
+    "height": 501,
+    "source": "raw/evolution-overlays.png",
+    "crop": [
+      520,
+      970,
+      1024,
+      1510
+    ],
+    "textless": true
+  },
+  "hero-novice": {
+    "file": "assets/gemwoven/items/hero-novice.png",
+    "width": 312,
+    "height": 548,
+    "source": "raw/novice-idle.png",
+    "textless": true
+  },
+  "portrait-novice": {
+    "file": "assets/gemwoven/items/portrait-novice.png",
+    "width": 210,
+    "height": 256,
+    "source": "raw/novice-idle.png",
+    "textless": true
+  }
+}

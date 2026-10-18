@@ -1,0 +1,523 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "bosses": {
+    "elderbloom": {
+      "portrait": "encounters/elderbloom/portrait.webp",
+      "idle": {
+        "src": "encounters/elderbloom/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            119
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            119
+          ],
+          [
+            128,
+            119
+          ]
+        ],
+        "frameDuration": 220
+      },
+      "cast": {
+        "src": "encounters/elderbloom/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            119
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            120
+          ],
+          [
+            128,
+            119
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "attack": {
+        "src": "encounters/elderbloom/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            119
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            120
+          ],
+          [
+            128,
+            119
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "hurt": {
+        "src": "encounters/elderbloom/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            119
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            119
+          ],
+          [
+            128,
+            119
+          ]
+        ],
+        "frameDuration": 220
+      }
+    },
+    "cinderheart": {
+      "portrait": "encounters/cinderheart/portrait.webp",
+      "idle": {
+        "src": "encounters/cinderheart/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ]
+        ],
+        "frameDuration": 220
+      },
+      "cast": {
+        "src": "encounters/cinderheart/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "attack": {
+        "src": "encounters/cinderheart/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "hurt": {
+        "src": "encounters/cinderheart/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ],
+          [
+            128,
+            115
+          ]
+        ],
+        "frameDuration": 220
+      }
+    },
+    "frostregent": {
+      "portrait": "encounters/frostregent/portrait.webp",
+      "idle": {
+        "src": "encounters/frostregent/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            84
+          ],
+          [
+            128,
+            84
+          ]
+        ],
+        "frameDuration": 220
+      },
+      "cast": {
+        "src": "encounters/frostregent/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "attack": {
+        "src": "encounters/frostregent/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "hurt": {
+        "src": "encounters/frostregent/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            85
+          ],
+          [
+            128,
+            84
+          ],
+          [
+            128,
+            84
+          ]
+        ],
+        "frameDuration": 220
+      }
+    },
+    "tempestwing": {
+      "portrait": "encounters/tempestwing/portrait.webp",
+      "idle": {
+        "src": "encounters/tempestwing/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            99
+          ],
+          [
+            128,
+            103
+          ],
+          [
+            128,
+            104
+          ],
+          [
+            128,
+            95
+          ]
+        ],
+        "frameDuration": 220
+      },
+      "cast": {
+        "src": "encounters/tempestwing/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            103
+          ],
+          [
+            128,
+            101
+          ],
+          [
+            128,
+            96
+          ],
+          [
+            128,
+            96
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "attack": {
+        "src": "encounters/tempestwing/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            103
+          ],
+          [
+            128,
+            101
+          ],
+          [
+            128,
+            96
+          ],
+          [
+            128,
+            96
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "hurt": {
+        "src": "encounters/tempestwing/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            99
+          ],
+          [
+            128,
+            103
+          ],
+          [
+            128,
+            104
+          ],
+          [
+            128,
+            95
+          ]
+        ],
+        "frameDuration": 220
+      }
+    },
+    "souljailer": {
+      "portrait": "encounters/souljailer/portrait.webp",
+      "idle": {
+        "src": "encounters/souljailer/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            127
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128,
+            126
+          ]
+        ],
+        "frameDuration": 220
+      },
+      "cast": {
+        "src": "encounters/souljailer/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            124
+          ],
+          [
+            128,
+            125
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128,
+            126
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "attack": {
+        "src": "encounters/souljailer/cast.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            124
+          ],
+          [
+            128,
+            125
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128,
+            126
+          ]
+        ],
+        "frameDuration": 135
+      },
+      "hurt": {
+        "src": "encounters/souljailer/idle.webp",
+        "cols": 2,
+        "rows": 2,
+        "count": 4,
+        "heads": [
+          [
+            128,
+            127
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128,
+            126
+          ]
+        ],
+        "frameDuration": 220
+      }
+    }
+  }
+}

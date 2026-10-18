@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "name": "tempestwing",
+  "processing": {
+    "cell_size": 256,
+    "fit_scale": 0.88,
+    "trim_border": 0,
+    "edge_clean_depth": 0,
+    "align": "center",
+    "shared_scale": true,
+    "scale_strategy": "preserve",
+    "component_mode": "all",
+    "component_padding": 0,
+    "min_component_area": 1,
+    "edge_touch_margin": 0
+  },
+  "output_origin": [
+    128.0,
+    128.0
+  ],
+  "reference": {
+    "target": "creature",
+    "mode": "idle",
+    "rows": 2,
+    "cols": 2,
+    "body_scale_mean": 0.5632403925096712,
+    "body_scale_cv": 0.01355973332585264,
+    "anchor_y_mean": 0.5316051136363636
+  },
+  "qc": {
+    "max_body_scale_drift": 0.1
+  }
+}

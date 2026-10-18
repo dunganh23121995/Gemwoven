@@ -6,6 +6,7 @@ const COMBAT_V3_STRIKES=Object.freeze({
   earth:{duration:470,contact:160},
   ice:{duration:460,contact:320},
   lightning:{duration:410,contact:115},
+  novice:{duration:470,contact:115},
   breath:{duration:560,contact:180}
 });
 // These wrappers are deliberately combat-local. Board and turn timing have
@@ -20,7 +21,8 @@ const combatV3Palette={
   earth:{main:'#c6e768',light:'#f8ffd1',deep:'#5aa16d'},
   ice:{main:'#67ddff',light:'#e5ffff',deep:'#448ed9'},
   lightning:{main:'#c19aff',light:'#fff4ac',deep:'#8254ec'},
-  shadow:{main:'#81b8cf',light:'#dcffff',deep:'#171126'}
+  shadow:{main:'#81b8cf',light:'#dcffff',deep:'#171126'},
+  novice:{main:'#c4a376',light:'#f6e6c6',deep:'#745d43'}
 };
 function combatV3Action(side,action,duration=0){
   actor(side).dataset.state=action;
@@ -54,7 +56,7 @@ async function combatV3Pose(node,transform,duration,easing='cubic-bezier(.22,.7,
   node.style.transform=transform;
 }
 function combatV3Cue(side,key,ultimate,hits,pending){
-  const title=side==='hero'?(ultimate?HEROES[key].skill:({fire:'Liệt diễm trảm',earth:'Trọng chùy',ice:'Băng thương',lightning:'Lôi kích'})[key]):(ultimate?MONSTERS[key].skill:MONSTERS[key].attack);
+  const title=side==='hero'?(ultimate?HEROES[key].skill:({fire:'Liệt diễm trảm',earth:'Trọng chùy',ice:'Băng thương',lightning:'Lôi kích',novice:'Kiếm gỗ'})[key]):(ultimate?MONSTERS[key].skill:MONSTERS[key].attack);
   return popActorSkill(side,title,ultimate,pending);
 }
 function combatV3Charge(side,key,ultimate,pending){
@@ -239,8 +241,8 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   if(ultimate)return rageChoreography(side,raw,{hits});
   if(side==='hero'&&state.key==='shadow')return shadowAttack(raw,{hits,damageLedger,attackChain});
   const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
-  const key=side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
-  const melee=key==='earth'||(key==='fire'&&side==='hero');
+  const key=progressionIsDuel()?'novice':side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
+  const melee=key==='earth'||(['fire','novice'].includes(key)&&side==='hero');
   const sourceOrigin=combatV3Point(side),targetOrigin=combatV3Point(targetSide);
   const travel=melee?Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43):0;
   const sourceTransform=source.style.transform,targetTransform=target.style.transform,sourceZ=source.style.zIndex,targetFilter=target.style.filter;

@@ -1,0 +1,72 @@
+{
+  "hero": "novice",
+  "action": "run",
+  "accepted": true,
+  "atlas": "run.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 2,
+  "rows": 2,
+  "frames": 4,
+  "count": 4,
+  "cols": 2,
+  "frameOrder": "row-major",
+  "loop": true,
+  "frameDuration": 100,
+  "origin": [
+    128,
+    244
+  ],
+  "headAnchors": [
+    [
+      157,
+      65
+    ],
+    [
+      135,
+      63
+    ],
+    [
+      154,
+      67
+    ],
+    [
+      135,
+      66
+    ]
+  ],
+  "frameFiles": [
+    "run/frame-00.png",
+    "run/frame-01.png",
+    "run/frame-02.png",
+    "run/frame-03.png"
+  ],
+  "floorAligned": true,
+  "presentationTranslation": [
+    0,
+    13
+  ],
+  "sharedScaleProfile": "character-scale-profile.json",
+  "source": "assets/gemwoven/raw/novice-run.png",
+  "qc": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 1,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.4684219787427759,
+    "output_subject_height_mean": 185.25,
+    "body_scale_cv": 0.01658992406885603,
+    "anchor_x_std": 0.12014108487470639,
+    "anchor_y_std": 0.035107130552666774,
+    "anchor_y_mean": 0.8747980613893376,
+    "profile_body_scale_drift": 0.041685096310764
+  },
+  "uniqueFrames": 4,
+  "framePixelHashes": [
+    "dbd61ae39a0459b1b272fa55321c0190f90cd2496f504e417d5efe8e9df7cb1e",
+    "d88f8aed4421d0c554b8e5ba3a32b8e7d6208bb7e72637514a7e16cf05d6c4eb",
+    "5f380c9ca60bef3b837352c530cdcf366eb1fdea92ee75ec1260ccdc27a9e218",
+    "f49fceb2b9cc90e971b48d4bcd4e396d1740d49212ae4ef4a95fd7acb468c4be"
+  ]
+}

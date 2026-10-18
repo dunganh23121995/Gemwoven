@@ -2,6 +2,7 @@ const audioDefaults={music:10,effects:100,voices:29},audioLevels={...audioDefaul
 const audioBuses=new Map(),audioStorageKey='mam-phep-audio-v1';
 try{
   const saved=JSON.parse(localStorage.getItem(audioStorageKey)||'null');
+  if(localStorage.getItem('gemwoven.audio-muted.v1')==='true')sound=false;
   for(const key of Object.keys(audioDefaults))if(typeof saved?.[key]==='number'&&Number.isFinite(saved[key]))audioLevels[key]=Math.round(Math.max(0,Math.min(100,saved[key])));
 }catch{}
 function audioOutput(context,channel){
@@ -42,3 +43,6 @@ $('audioSettingsDialog').addEventListener('click',event=>{
   if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)event.currentTarget.close();
 });
 renderAudioSettings();
+// The full settings live at Home; the combat speaker still offers quick mute.
+$('audioSettingsBtn').hidden=true;
+$('soundBtn').addEventListener('click',()=>{try{localStorage.setItem('gemwoven.audio-muted.v1',JSON.stringify(!sound));}catch{}});

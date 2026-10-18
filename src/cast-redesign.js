@@ -174,7 +174,7 @@ function castScatter(key,p,strong,pending,receive=false){
   }
 }
 function castAttackVisual(side,key,origin,contact,index,pending){
-  if(key==='shadow'||(side==='enemy'&&!state.boss)||key==='fire')return false;
+  if(key==='shadow'||key==='novice'||(side==='enemy'&&!state.boss)||key==='fire')return false;
   if(reduced)return true;
   if(key==='earth'){
     if(side==='hero')castFx(key,'hammer-weight',contact,115,combatV3Svg('<path d="M43 45Q131 12 171 121" stroke="var(--combat-main)" stroke-width="12" opacity=".45"/><path d="M43 45Q131 12 171 121" stroke="var(--combat-light)" stroke-width="3"/>'),230,pending);

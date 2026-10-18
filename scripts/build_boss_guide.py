@@ -1,0 +1,52 @@
+"""Publish the executable encounter definitions as a mobile-readable design guide."""
+from pathlib import Path
+import html,json,subprocess
+
+ROOT=Path(__file__).resolve().parents[1]
+result=subprocess.run(['node','-e',"process.stdout.write(JSON.stringify(require('./src/gemwoven/boss-chapters.js').definitions))"],cwd=ROOT,capture_output=True,check=True)
+definitions=json.loads(result.stdout.decode('utf-8'))
+escape=html.escape
+tiles=['Kiếm','Tim','Ngọc năng lượng','Tuyết','Khiên']
+colors={'earth':'#92c99d','fire':'#edaa75','ice':'#99d8ec','lightning':'#cbb2f3'}
+
+def effect_text(e):
+    kind=e['type']
+    if kind=='hit':return f"Đánh {round(e['power']*100)}% sức mạnh đòn boss, chia {e.get('hits',1)} nhịp."
+    if kind=='burst':return f"Đánh {round(e['power']*100)}% × [1 + 0,12 × tầng trạng thái × (1 − khắc chế)]. Có báo niệm trước."
+    if kind=='stack':return f"Thêm {e['count']} tầng trạng thái chủ đề, trần 5."
+    if kind=='ward':return f"Thêm vỏ bằng {round(e['pct']*100)}% HP boss, tổng vỏ không vượt 18% HP."
+    if kind=='heal':return f"Hồi {round(e['pct']*100,1)}% HP boss × (1 − khắc chế), không vượt HP tối đa."
+    if kind=='adds':return 'Gọi 2 hộ vệ, chia sẻ bể HP bằng 8% HP boss; chuyển 40% sát thương sang bể này sau khi vỏ vỡ.'
+    if kind=='drain':return f"Rút {e['amount']} năng lượng × (1 − khắc chế), không âm."
+    if kind=='shatter':return f"Mất {round(e['fraction']*100)}% lượng giáp đang có × (1 − khắc chế)."
+    return kind
+
+cards=[]
+for d in definitions:
+    start=(d['chapter']-1)*50
+    creature_rows=''.join(f'<tr><td>{escape(name)}</td><td>Quái thường {i+1}</td><td>Nhóm ải {[(1,9),(11,19),(21,29)][i][0]}–{[(1,9),(11,19),(21,29)][i][1]}; quay lại ở đoạn sau để thay đổi nhịp.</td></tr>' for i,(_,name) in enumerate(d['ordinary']))
+    for i,(_,name) in enumerate(d['elites']):
+        creature_rows+=f'<tr><td>{escape(name)}</td><td>Tinh anh mốc {10+i*10} và {30+i*10}</td><td>{escape(d["eliteLessons"][i])}</td></tr>'
+    skills=''.join(f'<article class="skill"><h4>Pha {s["phase"]} · {escape(s["name"])}</h4><p>{escape(s["description"])}</p><ul>'+''.join('<li>'+escape(effect_text(e))+'</li>' for e in s['effects'])+'</ul></article>' for s in d['skills'])
+    portrait=f'../assets/gemwoven/encounters/{d["id"]}/portrait.webp'
+    artifact=f'../assets/gemwoven/items/artifact-{d["theme"]}.webp'
+    cards.append(f'''<section id="{d['id']}" style="--accent:{colors[d['element']]}">
+      <div class="boss-heading"><img src="{portrait}" alt="{escape(d['name'])}"><div><small>CHƯƠNG {d['chapter']} · ẢI {start+1}–{start+50}</small><h2>{escape(d['name'])}</h2><p>{escape(d['chapterName'])}</p><p>Mẫu ảnh #{d['chapter']-20}. Giữ nguyên toàn bộ 14 boss và 20 chương đã có.</p></div></div>
+      <h3>Nội tại và nhịp chiến đấu</h3><p>{escape(d['passive'])}</p><p><b>{escape(d['status'])}:</b> mỗi tầng gây {d['tick']*100:g}% HP tối đa tướng mỗi lượt, trước phòng thủ và giảm từ vật phẩm; tối đa 5 tầng. Độc/môi trường xuyên lớp giáp tiêu hao, vẫn tính chỉ số phòng thủ.</p><p><b>{escape(d['gauge'])}:</b> mỗi lượt +8 + 2×pha + 3×số hộ vệ, nhân (1 − khắc chế). Đầy 100 gây thêm 5% HP tối đa × (1 − khắc chế), thêm 2 tầng trạng thái và trở về 35. Không mất lượt bí mật.</p>
+      <div class="counter"><img src="{artifact}" alt=""><div><h3>{escape(d['counter'])}</h3><p>{escape(d['counterText'])}</p><p>Ghép <b>6 ngọc {tiles[d['tile']]}</b>: xóa 1 tầng trạng thái, trừ 12 thanh cơ chế. Có thể chơi kỹ để đối phó khi chưa đủ vật phẩm.</p></div></div>
+      <h3>Quái thường và tinh anh</h3><div class="table-wrap"><table><thead><tr><th>Tên</th><th>Vai trò / vị trí</th><th>Bài học cơ chế</th></tr></thead><tbody>{creature_rows}</tbody></table></div>
+      <h3>Bộ kỹ năng</h3>{skills}
+      <h3>Nhịp pha cụ thể</h3><p>Pha I (&gt;70% HP): kỹ năng 1 → 2 → 3 → 1 → 2. Pha II (≤70% HP): 4 → 3 → 5 → 1 → 2. Pha III (≤35% HP): 6 → 4 → 5 → 6 → 3 → 4. Vòng lặp quay lại khi hết chuỗi.</p><p>Kỹ năng 6 dùng một hành động để niệm, hành động kế mới đánh. Trong cửa sổ đó, gây ít nhất 6% HP tối đa boss sau vỏ/hộ vệ/giáp hoặc ghép 6 ngọc {tiles[d['tile']]} để ngắt. Ngắt làm mất chiêu, giảm 2 tầng trạng thái, trừ 35 thanh cơ chế và lộ điểm yếu.</p>
+      <h3>Thu thập khắc chế trong chương</h3><p>Đánh tinh anh ở ải {start+10}, {start+20}, {start+30}, {start+40}, mỗi mốc lần đầu đạt 3 sao nhận 3 mảnh {escape(d['counter'])}. Tổng 12, không rơi ngẫu nhiên, không farm lặp. Đủ mốc tự ghép và nâng hiệu lực, không phải mua.</p>
+    </section>''')
+
+intro='''<header><small>GEMWOVEN · THIẾT KẾ & CƠ CHẾ CÓ THỂ CHẠY</small><h1>Mười chương boss mới</h1><p>Chương 21–30 · 500 ải bổ sung · 10 boss / 30 quái thường / 20 tinh anh / 10 vật phẩm khắc chế</p></header>
+<section><h2>Vòng khám phá và phần thưởng</h2><p>Mỗi chương 50 ải: 10/20/30/40 là tinh anh, 50 là boss. Những ải còn lại dùng ba loài quái của chủ đề. Mỗi tinh anh có dấu hiệu của cơ chế boss để người chơi học trước. Ba sao tinh anh: thắng, còn ít nhất 50% HP và kết thúc trong 16 lượt. Boss: cùng yêu cầu HP, trong 20 lượt.</p><table><thead><tr><th>Mảnh</th><th>Hiệu lực</th><th>Ý nghĩa</th></tr></thead><tbody><tr><td>0</td><td>0%</td><td>Vẫn được vào boss. Phải ghép ngọc giải cơ chế và có chỉ số mạnh.</td></tr><tr><td>3</td><td>35%</td><td>Ghép vật phẩm bậc I.</td></tr><tr><td>6</td><td>50%</td><td>Bậc II, giảm áp lực cơ chế nền.</td></tr><tr><td>9</td><td>65%</td><td>Bậc III, hỗ trợ đáng kể các pha dài.</td></tr><tr><td>12</td><td>80%</td><td>Bậc IV, thêm tẩy 1 tầng mỗi 3 lượt; hạn chế tái gọi hộ vệ sau khi phá.</td></tr></tbody></table><p>Vật phẩm thuộc riêng chủ đề, tự kích hoạt khi vào quái/tinh anh/boss chủ đề đó. Không tiêu hao, không chiếm sáu ô trang bị hoặc ô bảo bối tướng, không chuyển mảnh sang chương khác. Thua hay đánh lại không mất món đồ. Vé, tiền nạp và Đá Ngọc không liên quan đến việc thu thập này.</p><h3>Ba mức khó</h3><p>Quái thường: ba mẫu hành vi, mỗi ba lượt dùng chiêu học cơ chế; trạng thái tối đa hai tầng. Tinh anh: bốn chiêu nhỏ luân phiên, 65% sức mạnh chiêu boss và 40% áp lực môi trường; không gọi hộ vệ phụ. Boss: đủ chuỗi pha, hộ vệ, tài nguyên và chiêu niệm. Vật phẩm giúp lấy ba sao tinh anh tiếp theo, nhưng mốc đầu được thiết kế để vượt mà chưa có đồ.</p></section>
+<section><h2>Quy tắc chiến đấu chung</h2><p>Chỉ số cơ bản lấy từ cùng mô hình tiến độ đang dùng. Tướng vẫn tối đa cấp 500; chương mới là thử thách cuối game, không mở cấp 501–750. Mỗi pha chỉ tiến lên; boss hồi máu không quay ngược pha để lặp hiệu ứng chuyển pha. Không có hồi sinh sau khi đã chết.</p><p>Mỗi hành động boss có đúng một mục trong chuỗi. Đòn nhiều nhịp chia tổng sát thương, không nhân tổng sát thương theo số hit. Sức mạnh cơ sở kỹ năng boss = 14 + 1,1 × cấp gợi ý, rồi tính hệ số đánh, khắc hệ, giáp và phòng thủ đã có. Từ lượt 19, chiêu tăng 5% mỗi lượt, trần thêm 60%; đây là áp lực kéo dài, không tức tử.</p><p>Hộ vệ có bể HP thật, tách khỏi HP boss. Vỏ chắn bị đánh trước; sau đó hộ vệ chia 40% phần sát thương còn lại. Giết hộ vệ mở điểm yếu. Vỏ tổng trần 18% HP boss, không chồng vô hạn. Hồi phục và năng lượng luôn bị chặn ở giới hạn hợp lệ.</p><p>Vật phẩm giảm sát thương môi trường, hút năng lượng và hồi phục chủ đề theo đúng hiệu lực; phần vỏ tạo mới chỉ giảm bằng 35% hiệu lực đó. Không giảm toàn bộ đòn đánh vật lý. Khi ngắt niệm hoặc hạ hộ vệ, tướng gây thêm 15% + 4% × bậc vật phẩm trong cửa sổ điểm yếu. Bậc IV ngăn gọi lại hộ vệ trong hai lượt kể từ khi chúng bị phá.</p><p>Choáng/đóng băng dừng hành động boss, nhưng môi trường vẫn chạy. Choáng tích sát thương của Nori vẫn hết hạn và nổ đúng nhịp; không thể giữ boss trong trạng thái tích sát thương vĩnh viễn. Không thêm khóa lượt mới cho người chơi. Bảng combat luôn hiển thị pha, trạng thái, thanh cơ chế, vỏ, HP hộ vệ và tên chiêu kế tiếp.</p><h3>Lưu tiến độ và kiểm chứng</h3><p>Mỗi mốc tinh anh chỉ trao một lần sau quyết toán hợp lệ; 1–2 sao, thua trận, gọi lại mã trận hoặc đánh lặp không sinh thêm mảnh. Bản lưu cũ giữ tướng, đồ và 1.000 ải ban đầu. Hiệu lực khắc chế chụp tại lúc bắt đầu trận, không thay đổi giữa lượt vì chỉnh túi đồ. Các con số là bản cân bằng có thể chạy và kiểm thử; vẫn cần dữ liệu chơi thực để cân nhịp dài hạn.</p></section>'''
+
+styles='''*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#102722;color:#e9dfc6;font:16px/1.7 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:28px 20px 70px}header,section{background:#1b332c;border:1px solid #66734f;padding:25px 30px;margin:0 0 24px;border-radius:12px}header{background:#253a2b}h1,h2,h3,h4{font-family:Cambria,serif;color:var(--accent,#e1c98d);line-height:1.25}h1{font-size:38px;margin:12px 0}h2{font-size:30px}h3{font-size:23px}h4{font-size:19px;margin:0}small{color:#a5b09a;letter-spacing:.06em}p{margin:12px 0}nav{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 25px}a{color:#e9d6a4}nav a{padding:7px 13px;border:1px solid #727749;border-radius:8px;text-decoration:none}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:11px 13px;border:1px solid #607153;text-align:left;vertical-align:top}th{background:#2c4432}.table-wrap{overflow:auto}.boss-heading,.counter{display:flex;gap:25px;align-items:center}.boss-heading>img{width:235px;height:265px;object-fit:contain}.boss-heading>div{flex:1}.counter{background:#2a4331;padding:15px 20px;border-radius:10px}.counter>img{width:108px;height:130px;object-fit:contain}.skill{border-left:3px solid var(--accent);padding:13px 18px;background:#122b2480;margin:15px 0}.skill p,.skill ul{margin:9px 0}.skill li{font-size:14px}section{scroll-margin-top:20px}@media(max-width:650px){main{padding:12px 10px}header,section{padding:20px 17px}.boss-heading{display:block;text-align:center}.boss-heading>img{height:220px;width:220px}.counter{align-items:flex-start;gap:12px;padding:12px}.counter>img{width:65px;height:90px}h1{font-size:31px}h2{font-size:27px}table{font-size:13px}td,th{padding:8px}}'''
+navigation='<nav>'+''.join(f'<a href="#{d["id"]}">{d["chapter"]}. {escape(d["name"])}</a>' for d in definitions)+'</nav>'
+output='<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gemwoven — 10 chương boss mới</title><style>'+styles+'</style><main>'+intro+navigation+''.join(cards)+'</main></html>'
+(ROOT/'docs/BOSS_CHAPTERS.html').write_text(output,encoding='utf-8')
+(ROOT/'docs/boss-chapters.json').write_text(json.dumps(definitions,ensure_ascii=False,indent=2),encoding='utf-8')
+print('Wrote docs/BOSS_CHAPTERS.html and docs/boss-chapters.json')

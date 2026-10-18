@@ -50,17 +50,24 @@ async function departVictoriousHero(){
   if(state.key==='shadow')return departShadowHero();
   if(state.key==='lightning')return departLumiHero();
   const hero=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children];
+  // Tân has a complete run loop; the older heroes' sheets start with two
+  // anticipation poses before their four repeating strides.
+  const fullLoop=state.key==='novice',run=spriteDefinition('hero',state.key,'run').sheet;
   hero.dataset.departing='true';
   try{
-    setSpriteFrame('hero','run',0);await wait(reduced?0:200);
-    setSpriteFrame('hero','run',1);await wait(reduced?0:220);
+    setSpriteFrame('hero','run',0);
+    if(!fullLoop){
+      await wait(reduced?0:200);
+      setSpriteFrame('hero','run',1);await wait(reduced?0:220);
+    }
     const start=performance.now(),duration=reduced?1:2400;
     await new Promise(resolve=>{
       function tick(now){
         const p=Math.min(1,(now-start)/duration),camera=width*.95*p;
         hero.style.transform=`translateX(${width*1.65*p-camera}px)`;
         hero.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
-        setSpriteFrame('hero','run',2+Math.floor((now-start)/100)%4);
+        const elapsed=Math.max(0,now-start);
+        setSpriteFrame('hero','run',fullLoop?Math.floor(elapsed/(run.frameDuration||100))%run.count:2+Math.floor(elapsed/100)%4);
         layers.forEach(layer=>{layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`;});
         if(p<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);

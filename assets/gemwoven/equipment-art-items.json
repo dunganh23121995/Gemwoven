@@ -1,0 +1,1056 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "promptFile": "raw/equipment-expansion/prompts.json",
+  "coordinateConvention": "alphaBounds and sourceCrop are [left,top,right,bottom], right/bottom exclusive",
+  "items": {
+    "relic-novice-1": {
+      "file": "items/relic-novice-1.png",
+      "webp": "items/relic-novice-1.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        65,
+        44,
+        446,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-novice-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceAlphaBounds": [
+        90,
+        66,
+        413,
+        425
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "novice",
+      "form": 1
+    },
+    "relic-novice-2": {
+      "file": "items/relic-novice-2.png",
+      "webp": "items/relic-novice-2.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        65,
+        44,
+        446,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-novice-raw.png",
+      "sourceCrop": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceAlphaBounds": [
+        90,
+        66,
+        420,
+        433
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "novice",
+      "form": 2
+    },
+    "relic-novice-3": {
+      "file": "items/relic-novice-3.png",
+      "webp": "items/relic-novice-3.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        63,
+        44,
+        449,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-novice-raw.png",
+      "sourceCrop": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceAlphaBounds": [
+        91,
+        66,
+        426,
+        434
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "novice",
+      "form": 3
+    },
+    "relic-novice-4": {
+      "file": "items/relic-novice-4.png",
+      "webp": "items/relic-novice-4.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        44,
+        86,
+        468,
+        425
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-novice-raw.png",
+      "sourceCrop": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        48,
+        79,
+        470,
+        416
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "novice",
+      "form": 4
+    },
+    "relic-novice-5": {
+      "file": "items/relic-novice-5.png",
+      "webp": "items/relic-novice-5.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        44,
+        48,
+        468,
+        463
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-novice-raw.png",
+      "sourceCrop": [
+        512,
+        512,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        31,
+        11,
+        486,
+        456
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "novice",
+      "form": 5
+    },
+    "relic-fire-1": {
+      "file": "items/relic-fire-1.png",
+      "webp": "items/relic-fire-1.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        106,
+        44,
+        405,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-fire-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceAlphaBounds": [
+        102,
+        46,
+        397,
+        465
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "fire",
+      "form": 1
+    },
+    "relic-fire-2": {
+      "file": "items/relic-fire-2.png",
+      "webp": "items/relic-fire-2.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        89,
+        44,
+        422,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-fire-raw.png",
+      "sourceCrop": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceAlphaBounds": [
+        99,
+        40,
+        436,
+        469
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "fire",
+      "form": 2
+    },
+    "relic-fire-3": {
+      "file": "items/relic-fire-3.png",
+      "webp": "items/relic-fire-3.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        95,
+        44,
+        416,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-fire-raw.png",
+      "sourceCrop": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceAlphaBounds": [
+        122,
+        40,
+        446,
+        468
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "fire",
+      "form": 3
+    },
+    "relic-fire-4": {
+      "file": "items/relic-fire-4.png",
+      "webp": "items/relic-fire-4.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        74,
+        44,
+        437,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-fire-raw.png",
+      "sourceCrop": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        66,
+        29,
+        447,
+        474
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "fire",
+      "form": 4
+    },
+    "relic-fire-5": {
+      "file": "items/relic-fire-5.png",
+      "webp": "items/relic-fire-5.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        44,
+        45,
+        468,
+        466
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-fire-raw.png",
+      "sourceCrop": [
+        512,
+        512,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        34,
+        11,
+        520,
+        493
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "fire",
+      "form": 5
+    },
+    "relic-ice-1": {
+      "file": "items/relic-ice-1.png",
+      "webp": "items/relic-ice-1.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        46,
+        44,
+        466,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-ice-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceAlphaBounds": [
+        118,
+        108,
+        450,
+        443
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "ice",
+      "form": 1
+    },
+    "relic-ice-2": {
+      "file": "items/relic-ice-2.png",
+      "webp": "items/relic-ice-2.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        49,
+        44,
+        463,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-ice-raw.png",
+      "sourceCrop": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceAlphaBounds": [
+        79,
+        90,
+        427,
+        446
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "ice",
+      "form": 2
+    },
+    "relic-ice-3": {
+      "file": "items/relic-ice-3.png",
+      "webp": "items/relic-ice-3.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        55,
+        44,
+        457,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-ice-raw.png",
+      "sourceCrop": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceAlphaBounds": [
+        64,
+        83,
+        414,
+        452
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "ice",
+      "form": 3
+    },
+    "relic-ice-4": {
+      "file": "items/relic-ice-4.png",
+      "webp": "items/relic-ice-4.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        57,
+        44,
+        455,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-ice-raw.png",
+      "sourceCrop": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        82,
+        47,
+        447,
+        436
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "ice",
+      "form": 4
+    },
+    "relic-ice-5": {
+      "file": "items/relic-ice-5.png",
+      "webp": "items/relic-ice-5.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        76,
+        44,
+        436,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-ice-raw.png",
+      "sourceCrop": [
+        512,
+        512,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        72,
+        24,
+        439,
+        456
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "ice",
+      "form": 5
+    },
+    "relic-earth-1": {
+      "file": "items/relic-earth-1.png",
+      "webp": "items/relic-earth-1.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        109,
+        44,
+        403,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-earth-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceAlphaBounds": [
+        153,
+        90,
+        390,
+        432
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "earth",
+      "form": 1
+    },
+    "relic-earth-2": {
+      "file": "items/relic-earth-2.png",
+      "webp": "items/relic-earth-2.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        102,
+        44,
+        410,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-earth-raw.png",
+      "sourceCrop": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceAlphaBounds": [
+        138,
+        82,
+        400,
+        443
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "earth",
+      "form": 2
+    },
+    "relic-earth-3": {
+      "file": "items/relic-earth-3.png",
+      "webp": "items/relic-earth-3.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        103,
+        44,
+        409,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-earth-raw.png",
+      "sourceCrop": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceAlphaBounds": [
+        122,
+        67,
+        394,
+        444
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "earth",
+      "form": 3
+    },
+    "relic-earth-4": {
+      "file": "items/relic-earth-4.png",
+      "webp": "items/relic-earth-4.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        50,
+        44,
+        461,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-earth-raw.png",
+      "sourceCrop": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        89,
+        49,
+        464,
+        436
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "earth",
+      "form": 4
+    },
+    "relic-earth-5": {
+      "file": "items/relic-earth-5.png",
+      "webp": "items/relic-earth-5.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        48,
+        44,
+        464,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-earth-raw.png",
+      "sourceCrop": [
+        512,
+        512,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        55,
+        40,
+        461,
+        454
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "earth",
+      "form": 5
+    },
+    "relic-lightning-1": {
+      "file": "items/relic-lightning-1.png",
+      "webp": "items/relic-lightning-1.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        87,
+        44,
+        425,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-lightning-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceAlphaBounds": [
+        150,
+        109,
+        401,
+        424
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "lightning",
+      "form": 1
+    },
+    "relic-lightning-2": {
+      "file": "items/relic-lightning-2.png",
+      "webp": "items/relic-lightning-2.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        70,
+        44,
+        441,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-lightning-raw.png",
+      "sourceCrop": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceAlphaBounds": [
+        102,
+        82,
+        409,
+        433
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "lightning",
+      "form": 2
+    },
+    "relic-lightning-3": {
+      "file": "items/relic-lightning-3.png",
+      "webp": "items/relic-lightning-3.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        75,
+        44,
+        437,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-lightning-raw.png",
+      "sourceCrop": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceAlphaBounds": [
+        99,
+        50,
+        436,
+        445
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "lightning",
+      "form": 3
+    },
+    "relic-lightning-4": {
+      "file": "items/relic-lightning-4.png",
+      "webp": "items/relic-lightning-4.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        44,
+        44,
+        467,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-lightning-raw.png",
+      "sourceCrop": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        78,
+        31,
+        481,
+        435
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "lightning",
+      "form": 4
+    },
+    "relic-lightning-5": {
+      "file": "items/relic-lightning-5.png",
+      "webp": "items/relic-lightning-5.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        44,
+        53,
+        468,
+        458
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-lightning-raw.png",
+      "sourceCrop": [
+        512,
+        512,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        43,
+        25,
+        475,
+        438
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "lightning",
+      "form": 5
+    },
+    "relic-shadow-1": {
+      "file": "items/relic-shadow-1.png",
+      "webp": "items/relic-shadow-1.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        139,
+        44,
+        372,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-shadow-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceAlphaBounds": [
+        169,
+        80,
+        355,
+        418
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "shadow",
+      "form": 1
+    },
+    "relic-shadow-2": {
+      "file": "items/relic-shadow-2.png",
+      "webp": "items/relic-shadow-2.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        155,
+        44,
+        356,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-shadow-raw.png",
+      "sourceCrop": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceAlphaBounds": [
+        145,
+        45,
+        351,
+        480
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "shadow",
+      "form": 2
+    },
+    "relic-shadow-3": {
+      "file": "items/relic-shadow-3.png",
+      "webp": "items/relic-shadow-3.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        111,
+        44,
+        400,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-shadow-raw.png",
+      "sourceCrop": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceAlphaBounds": [
+        118,
+        46,
+        399,
+        458
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "shadow",
+      "form": 3
+    },
+    "relic-shadow-4": {
+      "file": "items/relic-shadow-4.png",
+      "webp": "items/relic-shadow-4.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        62,
+        44,
+        450,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-shadow-raw.png",
+      "sourceCrop": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        77,
+        40,
+        449,
+        447
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "shadow",
+      "form": 4
+    },
+    "relic-shadow-5": {
+      "file": "items/relic-shadow-5.png",
+      "webp": "items/relic-shadow-5.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        55,
+        44,
+        456,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/relic-shadow-raw.png",
+      "sourceCrop": [
+        512,
+        512,
+        1536,
+        1024
+      ],
+      "sourceAlphaBounds": [
+        48,
+        18,
+        465,
+        459
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "relic",
+      "hero": "shadow",
+      "form": 5
+    },
+    "gear-helmet": {
+      "file": "items/gear-helmet.png",
+      "webp": "items/gear-helmet.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        71,
+        44,
+        441,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/gear-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "sourceAlphaBounds": [
+        87,
+        64,
+        562,
+        609
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "equipment"
+    },
+    "gear-pants": {
+      "file": "items/gear-pants.png",
+      "webp": "items/gear-pants.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        99,
+        44,
+        412,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/gear-raw.png",
+      "sourceCrop": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "sourceAlphaBounds": [
+        126,
+        55,
+        515,
+        582
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "equipment"
+    },
+    "gear-glasses": {
+      "file": "items/gear-glasses.png",
+      "webp": "items/gear-glasses.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        44,
+        148,
+        468,
+        363
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/gear-raw.png",
+      "sourceCrop": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        50,
+        169,
+        613,
+        455
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "equipment"
+    },
+    "gear-armor": {
+      "file": "items/gear-armor.png",
+      "webp": "items/gear-armor.webp",
+      "width": 512,
+      "height": 512,
+      "alphaBounds": [
+        49,
+        44,
+        463,
+        468
+      ],
+      "transparent": true,
+      "static": true,
+      "raw": "raw/equipment-expansion/gear-armor-raw.png",
+      "sourceCrop": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "sourceAlphaBounds": [
+        144,
+        133,
+        1113,
+        1126
+      ],
+      "alphaNoiseCutoff": 8,
+      "type": "equipment"
+    }
+  }
+}

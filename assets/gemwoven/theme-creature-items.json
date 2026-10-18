@@ -1,0 +1,1074 @@
+{
+  "version": 1,
+  "generator": "built-in ImageGen",
+  "artModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "promptFile": "raw/theme-creatures/prompts.json",
+  "coordinateConvention": "alphaBounds are [left,top,right,bottom], exclusive right/bottom; origin is bottom-center",
+  "items": {
+    "creature-volcano-a": {
+      "file": "items/creature-volcano-a.webp",
+      "png": "items/creature-volcano-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Ember imp",
+      "theme": "volcano",
+      "role": "ordinary",
+      "alphaBounds": [
+        100,
+        72,
+        411,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-volcano-b": {
+      "file": "items/creature-volcano-b.webp",
+      "png": "items/creature-volcano-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Lava rockling",
+      "theme": "volcano",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        80,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-ice-a": {
+      "file": "items/creature-ice-a.webp",
+      "png": "items/creature-ice-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Snow rabbit",
+      "theme": "ice",
+      "role": "ordinary",
+      "alphaBounds": [
+        88,
+        72,
+        423,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-ice-b": {
+      "file": "items/creature-ice-b.webp",
+      "png": "items/creature-ice-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Frost wolf",
+      "theme": "ice",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        103,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        0,
+        3
+      ]
+    },
+    "creature-thunder-a": {
+      "file": "items/creature-thunder-a.webp",
+      "png": "items/creature-thunder-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Spark jelly",
+      "theme": "thunder",
+      "role": "ordinary",
+      "alphaBounds": [
+        84,
+        72,
+        427,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-thunder-b": {
+      "file": "items/creature-thunder-b.webp",
+      "png": "items/creature-thunder-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Storm hawk",
+      "theme": "thunder",
+      "role": "elite",
+      "alphaBounds": [
+        66,
+        72,
+        446,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "creature-marsh-a": {
+      "file": "items/creature-marsh-a.webp",
+      "png": "items/creature-marsh-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Toxic slug",
+      "theme": "marsh",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        103,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-marsh-b": {
+      "file": "items/creature-marsh-b.webp",
+      "png": "items/creature-marsh-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Spore toad",
+      "theme": "marsh",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        109,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-01.png",
+      "sourceCell": [
+        1,
+        3
+      ]
+    },
+    "creature-desert-a": {
+      "file": "items/creature-desert-a.webp",
+      "png": "items/creature-desert-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Sand jackal",
+      "theme": "desert",
+      "role": "ordinary",
+      "alphaBounds": [
+        64,
+        72,
+        447,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-desert-b": {
+      "file": "items/creature-desert-b.webp",
+      "png": "items/creature-desert-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Sand scorpion",
+      "theme": "desert",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        89,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-abyss-a": {
+      "file": "items/creature-abyss-a.webp",
+      "png": "items/creature-abyss-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Coral crab",
+      "theme": "abyss",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        139,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-abyss-b": {
+      "file": "items/creature-abyss-b.webp",
+      "png": "items/creature-abyss-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Deep jelly",
+      "theme": "abyss",
+      "role": "elite",
+      "alphaBounds": [
+        84,
+        72,
+        427,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        0,
+        3
+      ]
+    },
+    "creature-foundry-a": {
+      "file": "items/creature-foundry-a.webp",
+      "png": "items/creature-foundry-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Wind-up beetle",
+      "theme": "foundry",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        95,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-foundry-b": {
+      "file": "items/creature-foundry-b.webp",
+      "png": "items/creature-foundry-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Cog drone",
+      "theme": "foundry",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        105,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "creature-crystal-a": {
+      "file": "items/creature-crystal-a.webp",
+      "png": "items/creature-crystal-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Gem spider",
+      "theme": "crystal",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        145,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-crystal-b": {
+      "file": "items/creature-crystal-b.webp",
+      "png": "items/creature-crystal-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Crystal ooze",
+      "theme": "crystal",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        73,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-02.png",
+      "sourceCell": [
+        1,
+        3
+      ]
+    },
+    "creature-haunted-a": {
+      "file": "items/creature-haunted-a.webp",
+      "png": "items/creature-haunted-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Ghost lantern",
+      "theme": "haunted",
+      "role": "ordinary",
+      "alphaBounds": [
+        141,
+        72,
+        371,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-haunted-b": {
+      "file": "items/creature-haunted-b.webp",
+      "png": "items/creature-haunted-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Skeletal raven",
+      "theme": "haunted",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        104,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-sky-a": {
+      "file": "items/creature-sky-a.webp",
+      "png": "items/creature-sky-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Breeze fox",
+      "theme": "sky",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        100,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-sky-b": {
+      "file": "items/creature-sky-b.webp",
+      "png": "items/creature-sky-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Cloud owl",
+      "theme": "sky",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        100,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        0,
+        3
+      ]
+    },
+    "creature-thorns-a": {
+      "file": "items/creature-thorns-a.webp",
+      "png": "items/creature-thorns-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Thorn boar",
+      "theme": "thorns",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        106,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-thorns-b": {
+      "file": "items/creature-thorns-b.webp",
+      "png": "items/creature-thorns-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Vine bud",
+      "theme": "thorns",
+      "role": "elite",
+      "alphaBounds": [
+        70,
+        72,
+        442,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "creature-celestial-a": {
+      "file": "items/creature-celestial-a.webp",
+      "png": "items/creature-celestial-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Sun moth",
+      "theme": "celestial",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        132,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-celestial-b": {
+      "file": "items/creature-celestial-b.webp",
+      "png": "items/creature-celestial-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Golden cub",
+      "theme": "celestial",
+      "role": "elite",
+      "alphaBounds": [
+        64,
+        72,
+        447,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-03-v2.png",
+      "sourceCell": [
+        1,
+        3
+      ]
+    },
+    "creature-void-a": {
+      "file": "items/creature-void-a.webp",
+      "png": "items/creature-void-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Void eye",
+      "theme": "void",
+      "role": "ordinary",
+      "alphaBounds": [
+        110,
+        72,
+        402,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-void-b": {
+      "file": "items/creature-void-b.webp",
+      "png": "items/creature-void-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Eclipse hound",
+      "theme": "void",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        98,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-pine-a": {
+      "file": "items/creature-pine-a.webp",
+      "png": "items/creature-pine-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Pinecone boar",
+      "theme": "pine",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        88,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-pine-b": {
+      "file": "items/creature-pine-b.webp",
+      "png": "items/creature-pine-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Pine owl",
+      "theme": "pine",
+      "role": "elite",
+      "alphaBounds": [
+        86,
+        72,
+        425,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        0,
+        3
+      ]
+    },
+    "creature-obsidian-a": {
+      "file": "items/creature-obsidian-a.webp",
+      "png": "items/creature-obsidian-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Obsidian hound",
+      "theme": "obsidian",
+      "role": "ordinary",
+      "alphaBounds": [
+        64,
+        72,
+        447,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-obsidian-b": {
+      "file": "items/creature-obsidian-b.webp",
+      "png": "items/creature-obsidian-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Lava mite",
+      "theme": "obsidian",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        155,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "creature-bamboo-a": {
+      "file": "items/creature-bamboo-a.webp",
+      "png": "items/creature-bamboo-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Bamboo lizard",
+      "theme": "bamboo",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        121,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    },
+    "creature-bamboo-b": {
+      "file": "items/creature-bamboo-b.webp",
+      "png": "items/creature-bamboo-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Jade koi",
+      "theme": "bamboo",
+      "role": "elite",
+      "alphaBounds": [
+        79,
+        72,
+        433,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-04.png",
+      "sourceCell": [
+        1,
+        3
+      ]
+    },
+    "creature-coast-a": {
+      "file": "items/creature-coast-a.webp",
+      "png": "items/creature-coast-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Storm crab",
+      "theme": "coast",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        122,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-05.png",
+      "sourceCell": [
+        0,
+        0
+      ]
+    },
+    "creature-coast-b": {
+      "file": "items/creature-coast-b.webp",
+      "png": "items/creature-coast-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Wave gull",
+      "theme": "coast",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        77,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-05.png",
+      "sourceCell": [
+        0,
+        1
+      ]
+    },
+    "creature-dream-a": {
+      "file": "items/creature-dream-a.webp",
+      "png": "items/creature-dream-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Dream moth",
+      "theme": "dream",
+      "role": "ordinary",
+      "alphaBounds": [
+        69,
+        72,
+        443,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-05.png",
+      "sourceCell": [
+        0,
+        2
+      ]
+    },
+    "creature-dream-b": {
+      "file": "items/creature-dream-b.webp",
+      "png": "items/creature-dream-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Pillow phantom",
+      "theme": "dream",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        122,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-05.png",
+      "sourceCell": [
+        1,
+        0
+      ]
+    },
+    "creature-astral-a": {
+      "file": "items/creature-astral-a.webp",
+      "png": "items/creature-astral-a.png",
+      "width": 512,
+      "height": 512,
+      "name": "Star drake",
+      "theme": "astral",
+      "role": "ordinary",
+      "alphaBounds": [
+        61,
+        115,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-05.png",
+      "sourceCell": [
+        1,
+        1
+      ]
+    },
+    "creature-astral-b": {
+      "file": "items/creature-astral-b.webp",
+      "png": "items/creature-astral-b.png",
+      "width": 512,
+      "height": 512,
+      "name": "Astral orb",
+      "theme": "astral",
+      "role": "elite",
+      "alphaBounds": [
+        61,
+        104,
+        450,
+        461
+      ],
+      "origin": [
+        256,
+        461
+      ],
+      "facing": "left",
+      "static": true,
+      "transparent": true,
+      "textless": true,
+      "raw": "raw/theme-creatures/pack-05.png",
+      "sourceCell": [
+        1,
+        2
+      ]
+    }
+  }
+}

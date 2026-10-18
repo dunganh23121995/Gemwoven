@@ -83,20 +83,22 @@ function createLiveCombat(){
       const type=tile.type,hero=side==='hero',key=hero?state.key:state.enemyKey,own=counts[side];
       const reception=combatLootReceive(side,type);receiveJobs.add(reception);reception.finally(()=>receiveJobs.delete(reception));
       own[type]++;
+      if(hero&&typeof expeditionCollect==='function')expeditionCollect(type);
       if(hero){heroTiles++;state.score+=10*chain;}
       const energyKey=hero?'energy':'enemyEnergy',before=state[energyKey];
-      const energy=hero?([7,2,5,2,2][type]*(key==='lightning'?2:1)):3+(type===2&&own[2]===1?25:0);
+      const energy=progressionIsDuel()?[7,2,5,2,2][type]:hero?([7,2,5,2,2][type]*progressionEnergyMultiplier(key)):3+(type===2&&own[2]===1?25:0);
       state[energyKey]=Math.min(alive('hero')&&alive('enemy')?199:100,before+energy);
       receipt(side,'energy',state[energyKey]-before);
       if(hero&&own[3]>=3)state.frozen=true;
-      if(!hero&&type===3&&own[3]===1)state.energy=Math.max(0,state.energy-20);
+      if(!hero&&type===3&&own[3]>=3&&progressionIsDuel())state.playerFrozen=true;
+      if(!hero&&type===3&&own[3]===1&&!progressionIsDuel())state.energy=Math.max(0,state.energy-20);
       if(type===0){
-        const raw=8*(hero&&key==='fire'?1.6:1)*(hero?1:state.boss?1.15:.55);
+        const raw=8*(hero&&key==='fire'&&progressionPassiveEnabled(key)?1.6:1)*(progressionIsDuel()?1:hero?1:state.boss?1.15:.55);
         enqueue(side,'attack',raw);
       }else if(type===1||type===4){
         const kind=type===1?'heal':'armor',stat=type===1?(hero?'hp':'enemyHp'):(hero?'armor':'enemyArmor');
         const cap=type===1?(hero?HEROES[key].hp:state.enemyMax):999;
-        const amount=type===1?6:hero?(key==='ice'?8:4):5,gained=Math.max(0,Math.min(amount,cap-state[stat]));
+        const amount=type===1?(hero||progressionIsDuel()?progressionHeal(6):6):progressionIsDuel()?4:hero?(key==='ice'&&progressionPassiveEnabled(key)?8:4):5,gained=Math.max(0,Math.min(amount,cap-state[stat]));
         state[stat]+=gained;receipt(side,kind,gained);enqueue(side,kind,gained);
       }
       update();

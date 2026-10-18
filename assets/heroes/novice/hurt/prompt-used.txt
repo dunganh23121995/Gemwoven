@@ -1,0 +1,1 @@
+Fallback reuse of the independently generated attack sheet. No separate image generation.

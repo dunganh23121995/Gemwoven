@@ -1,0 +1,373 @@
+{
+  "target": "creature",
+  "mode": "cast",
+  "prompt": "",
+  "role": "",
+  "input": "assets\\gemwoven\\raw\\boss-chapters-2026\\sporefather\\cast.png",
+  "threshold": 100,
+  "edge_threshold": 150,
+  "duration": 200,
+  "rows": 2,
+  "cols": 2,
+  "cell_size": 256,
+  "fit_scale": 0.78,
+  "trim_border": 4,
+  "edge_clean_depth": 3,
+  "align": "feet",
+  "shared_scale": true,
+  "scale_strategy": "preserve",
+  "component_mode": "largest",
+  "component_padding": 0,
+  "min_component_area": 1,
+  "edge_touch_margin": 0,
+  "frame_labels": [
+    "cast-1",
+    "cast-2",
+    "cast-3",
+    "cast-4"
+  ],
+  "frames": [
+    {
+      "grid": [
+        0,
+        0
+      ],
+      "source_box": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "component_mode": "largest",
+      "component_count": 4,
+      "selected_component_area": 200768,
+      "selected_component_bbox": [
+        52,
+        8,
+        573,
+        593
+      ],
+      "crop_bbox": [
+        52,
+        8,
+        573,
+        593
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 200768,
+      "body_core_area": 144778,
+      "body_area_fraction": 0.3778516080707588,
+      "anchor_source": [
+        284.0,
+        577.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        168,
+        189
+      ],
+      "preserved_subject_size": [
+        168,
+        189
+      ],
+      "paste_position": [
+        53,
+        44
+      ],
+      "unclamped_paste_position": [
+        53,
+        44
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        53,
+        44,
+        221,
+        233
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3225848142164782,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        228
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 228
+    },
+    {
+      "grid": [
+        0,
+        1
+      ],
+      "source_box": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "component_mode": "largest",
+      "component_count": 5,
+      "selected_component_area": 198963,
+      "selected_component_bbox": [
+        13,
+        32,
+        587,
+        593
+      ],
+      "crop_bbox": [
+        13,
+        32,
+        587,
+        593
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 198963,
+      "body_core_area": 136077,
+      "body_area_fraction": 0.3551431382630278,
+      "anchor_source": [
+        284.0,
+        577.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        185,
+        181
+      ],
+      "preserved_subject_size": [
+        185,
+        181
+      ],
+      "paste_position": [
+        41,
+        52
+      ],
+      "unclamped_paste_position": [
+        41,
+        52
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        41,
+        52,
+        226,
+        233
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3225848142164782,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        228
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 228
+    },
+    {
+      "grid": [
+        1,
+        0
+      ],
+      "source_box": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "component_mode": "largest",
+      "component_count": 6,
+      "selected_component_area": 197363,
+      "selected_component_bbox": [
+        48,
+        8,
+        575,
+        593
+      ],
+      "crop_bbox": [
+        48,
+        8,
+        575,
+        593
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 197363,
+      "body_core_area": 143494,
+      "body_area_fraction": 0.37450053632807095,
+      "anchor_source": [
+        283.0,
+        577.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        170,
+        189
+      ],
+      "preserved_subject_size": [
+        170,
+        189
+      ],
+      "paste_position": [
+        52,
+        44
+      ],
+      "unclamped_paste_position": [
+        52,
+        44
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        52,
+        44,
+        222,
+        233
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3225848142164782,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        228
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 228
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "source_box": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "component_mode": "largest",
+      "component_count": 5,
+      "selected_component_area": 203338,
+      "selected_component_bbox": [
+        27,
+        7,
+        572,
+        593
+      ],
+      "crop_bbox": [
+        27,
+        7,
+        572,
+        593
+      ],
+      "source_frame_size": [
+        619,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 203338,
+      "body_core_area": 143857,
+      "body_area_fraction": 0.37544791875999906,
+      "anchor_source": [
+        283.0,
+        577.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        176,
+        189
+      ],
+      "preserved_subject_size": [
+        176,
+        189
+      ],
+      "paste_position": [
+        45,
+        44
+      ],
+      "unclamped_paste_position": [
+        45,
+        44
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        45,
+        44,
+        221,
+        233
+      ],
+      "scale_adjustment": 1.0,
+      "source_to_output_scale": 0.3225848142164782,
+      "bbox_scale_applied": false,
+      "scale_changed": false,
+      "anchor_target": [
+        128.0,
+        228
+      ],
+      "scale_strategy": "preserve",
+      "shared_center_x": 128.0,
+      "shared_feet_y": 228
+    }
+  ],
+  "edge_touch_frames": [],
+  "source_edge_touch_frames": [],
+  "output_edge_touch_frames": [],
+  "empty_frames": [],
+  "paste_clamped_frames": [],
+  "qc_summary": {
+    "frame_count": 4,
+    "valid_frame_count": 4,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.6088344414334864,
+    "output_subject_height_mean": 187.0,
+    "body_scale_cv": 0.012337579143330056,
+    "anchor_x_std": 0.0008077544426494387,
+    "anchor_y_std": 0.0,
+    "anchor_y_mean": 0.9321486268174475,
+    "profile_body_scale_drift": 0.007142486112949542
+  },
+  "output_origin": [
+    128.0,
+    228
+  ],
+  "scale_profile": {
+    "path": "assets\\gemwoven\\raw\\boss-chapters-2026\\sporefather\\scale-profile.json",
+    "version": 1,
+    "name": "sporefather",
+    "reference_mode": "idle",
+    "processing_contract_applied": true
+  },
+  "qc_config": {
+    "strict_qc": true,
+    "reject_edge_touch": false,
+    "allow_source_edge_touch": false,
+    "max_body_scale_cv": null,
+    "max_anchor_y_std": null,
+    "max_profile_scale_drift": 0.1
+  }
+}

@@ -8,9 +8,11 @@ const ELEMENTS = {
   earth:{label:'Đất',color:'#829a6d',light:'#e9efdd',beats:'lightning',icon:'leaf'},
   ice:{label:'Băng',color:'#7aacc0',light:'#e2f1f3',beats:'earth',icon:'snow'},
   lightning:{label:'Sét',color:'#a48ac4',light:'#eee4f5',beats:'fire',icon:'bolt'},
-  shadow:{label:'Bóng tối',color:'#8abcc6',light:'#263344',beats:null,icon:'moon'}
+  shadow:{label:'Bóng tối',color:'#8abcc6',light:'#263344',beats:null,icon:'moon'},
+  novice:{label:'Thường',color:'#b6a081',light:'#f1e6ce',beats:null,icon:'sword'}
 };
 const HEROES = {
+  novice:{name:'Tân',title:'Lữ Khách Tập Sự',hp:145,skill:'Nhát Kiếm Cơ Bản',desc:'Một nhát kiếm gỗ · 45 sát thương cơ bản',trait:'Tướng khởi đầu; kỹ năng và chỉ số ở mức cơ bản',color:'#b59b78',dark:'#735b43',hair:'#6e4935'},
   fire:{name:'Mika',title:'Viêm Kiếm Sĩ',hp:170,skill:'Viêm Long Trảm',desc:'Tụ lửa kéo dài kiếm · phóng kiếm khí phát nổ · 135 sát thương cơ bản',trait:'Kiếm gây thêm 60% sát thương',color:'#df9d82',dark:'#a66b64',hair:'#8f5c55'},
   earth:{name:'Nori',title:'Thiết Giáp Vệ',hp:320,skill:'Mộc Linh Hộ Thể',desc:'Choáng 2 lượt · tích sát thương rồi nổ ×3 · hồi 40 HP/lượt ×3',trait:'Sát thương đánh thường giảm 40% (chỉ còn 60% sát thương gốc) · Đại khiên tích lực',color:'#a1b28b',dark:'#708567',hair:'#777363'},
   ice:{name:'Yuki',title:'Băng Tâm Vệ',hp:200,skill:'Thiên Băng Giáng',desc:'+25 giáp · triệu hồi băng gây 60 sát thương · choáng 1 lượt',trait:'Khiên +8 giáp · giảm 20% sát thương',color:'#9cc6d0',dark:'#7399b2',hair:'#adbbd9'},
@@ -271,7 +273,7 @@ function damage(side,raw,ledger=null){
   const target=side==='hero'?'enemy':'hero',attackerKey=side==='hero'?state.key:state.enemyKey,defenderKey=side==='hero'?state.enemyKey:state.key;
   if(side==='hero'&&state.key==='earth')raw*=.6;
   if(ledger)ledger.raw+=raw;
-  let n=Math.round((ledger?ledger.raw:raw)*mult(attackerKey,defenderKey)*(side==='enemy'&&state.enraged?1.25:1));if(target==='hero'&&state.key==='ice')n=Math.round(n*.8);
+  let n=Math.round((ledger?ledger.raw:raw)*mult(attackerKey,defenderKey)*(side==='enemy'&&state.enraged?1.25:1));if(target==='hero'&&state.key==='ice'&&progressionPassiveEnabled('ice'))n=Math.round(n*.8);
   if(ledger){const total=n;n-=ledger.applied;ledger.applied=total;}
   if(side==='hero'&&state.key==='earth'&&state.noriStunTurns>0&&state.enemyHp>0&&state.hp>0){
     state.noriStoredDamage=(state.noriStoredDamage||0)+n;update();
@@ -388,7 +390,7 @@ async function perform(action){
   if(locked||ended||$('selectDialog').open||$('helpDialog').open||$('audioSettingsDialog').open||$('resultDialog').open)return;
   locked=true;clearSelection();updateTurn();
   try{
-    if(!state.playerFrozen){const consumed=await action();await castReadyUltimates();if(consumed&&state.enemyHp>0&&state.hp>0)await enemyAction();}
+    if(!state.playerFrozen){const consumed=await action();if(consumed&&typeof progressionRecordTurn==='function')progressionRecordTurn();await castReadyUltimates();if(consumed&&state.enemyHp>0&&state.hp>0)await enemyAction();}
     await castReadyUltimates();
     // Resolve disabled player turns before releasing input. Previously we showed
     // "Lượt bạn" while frozen, then silently consumed the user's next swap.
@@ -399,6 +401,7 @@ async function perform(action){
       await floating('hero','ĐÓNG BĂNG · MẤT LƯỢT','armor');
       await battleBeat(450);
       state.playerFrozen=false;update();
+      if(typeof progressionRecordTurn==='function')progressionRecordTurn();
       await enemyAction();await castReadyUltimates();
     }
     if(await finishBattle())return;
@@ -470,7 +473,8 @@ $('helpDialog').addEventListener('click',e=>{if(e.target===$('helpDialog')){cons
 document.querySelector('.brand').addEventListener('click',e=>e.preventDefault());
 function showSelection(initial){
   newRun=initial;chosen=initial?'fire':state.key;
-  $('classGrid').innerHTML=Object.keys(HEROES).map((key,i)=>{const h=HEROES[key];return `<button class="class-card gem-choice" data-class="${key}" aria-label="${h.name} · ${h.title}" title="${h.name}" aria-pressed="false" style="--gem-color:${ELEMENTS[key].color};--gem-light:${ELEMENTS[key].light};--glint-delay:${-i*.7}s"><span class="avatar-gem" aria-hidden="true"><span class="gem-portrait">${heroArt(key)}</span><span class="gem-facets"></span><span class="gem-gloss"></span></span><span class="gem-sparkles" aria-hidden="true"><i></i><i></i><i></i></span></button>`;}).join('');
+  chosen=progressionInitialHero(chosen);
+  $('classGrid').innerHTML=progressionHeroKeys().map((key,i)=>{const h=HEROES[key];return `<button class="class-card gem-choice" data-class="${key}" aria-label="${h.name} · ${h.title}" title="${h.name}" aria-pressed="false" style="--gem-color:${ELEMENTS[key].color};--gem-light:${ELEMENTS[key].light};--glint-delay:${-i*.7}s"><span class="avatar-gem" aria-hidden="true"><span class="gem-portrait">${heroArt(key)}</span><span class="gem-facets"></span><span class="gem-gloss"></span></span><span class="gem-sparkles" aria-hidden="true"><i></i><i></i><i></i></span></button>`;}).join('');
   $('classGrid').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{chosen=b.dataset.class;updateSelection();showHeroDetail();}));updateSelection();showHeroList(false);$('selectDialog').showModal();$('classGrid').querySelector(`[data-class="${chosen}"]`).focus();
 }
 function updateSelection(){
@@ -481,7 +485,7 @@ function showHeroList(focus=true){
   $('heroDetail').hidden=true;$('heroList').hidden=false;
   $('selectDialog').classList.remove('showing-hero');
   $('selectTitle').textContent=newRun?'Chọn chiến binh của bạn.':'Một chặng đường mới.';
-  $('selectIntro').textContent=newRun?'Năm chiến binh, năm phong cách. Bạn sẽ cùng ai lên đường?':'Màn '+state.stage+' · Quái hệ '+ELEMENTS[state.enemyKey].label+' đang chờ. Chọn người đồng hành tiếp theo.';
+  $('selectIntro').textContent=progressionSelectionIntro(newRun?'Chọn người đồng hành cho trận đánh.':'Màn '+state.stage+' · Quái hệ '+ELEMENTS[state.enemyKey].label+' đang chờ.');
   $('heroSelectionScroll').scrollTop=0;
   if(focus)$('classGrid').querySelector(`[data-class="${chosen}"]`).focus({preventScroll:true});
 }
@@ -502,7 +506,7 @@ function showHeroDetail(){
   const stats=[['Máu tối đa',h.hp+' HP'],['Sát thương / ngọc kiếm',chosen==='fire'?'12,8':chosen==='earth'?'4,8':'8'],['Giáp / ngọc khiên',chosen==='ice'?'+8':'+4'],['Hồi máu / ngọc tim','+6 HP']];
   $('heroDetailStats').innerHTML=stats.map(([label,value])=>`<div><dt>${label}</dt><dd>${value}</dd></div>`).join('');
   $('heroDetailTrait').textContent=h.trait+(chosen==='lightning'?' · Luôn lơ lửng khi còn sống.':'.');
-  $('heroSkillName').textContent=h.skill;$('heroSkillDescription').textContent=skillDetails[chosen];
+  $('heroSkillName').textContent=h.skill;$('heroSkillDescription').textContent=skillDetails[chosen]||h.desc;
   $('heroStatNote').textContent='Sát thương cơ bản trước khắc hệ, liên hoàn và chí mạng; làm tròn khi gây sát thương.';
   $('heroCarryover').hidden=newRun;
   $('heroCarryover').textContent=newRun?'':'Xuất chiến với '+Math.min(state.hp,h.hp)+'/'+h.hp+' HP · '+state.armor+' giáp · '+state.energy+'/100 nộ. Chỉ số được giữ từ màn trước, máu giới hạn theo tướng.';
@@ -543,6 +547,9 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   playCastSound,stopCastSounds,get castSounds(){return [...castSoundSources].map(({id})=>id);},
   spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads};},
   get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,
+  get progressionTurns(){return progressionTurn;},
+  get expedition(){return typeof expeditionState==='undefined'?null:expeditionState;},expeditionCollect,
+  get progressionEnemyEffects(){return {dot:progressionEnemyDot?{...progressionEnemyDot}:null,charge:progressionEnemyCharge};},
   configure(options){if(locked&&!$('selectDialog').open)throw Error('Wait for the current action to finish');Object.assign(state,options);if($('selectDialog').open)$('selectDialog').close();if($('resultDialog').open)$('resultDialog').close();startStage();Object.assign(state,options);plannedIntent=intent();renderActors();update();},
   setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
   setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;}
