@@ -66,15 +66,9 @@
   },
   "panel-parchment": {
     "file": "assets/gemwoven/items/panel-parchment.png",
-    "width": 378,
-    "height": 239,
-    "source": "raw/frames.png",
-    "crop": [
-      350,
-      252,
-      734,
-      585
-    ],
+    "width": 1689,
+    "height": 784,
+    "source": "raw/panel-v2.png",
     "textless": true
   },
   "card-dark": {
@@ -196,28 +190,22 @@
   },
   "avatar-ring": {
     "file": "assets/gemwoven/items/avatar-ring.png",
-    "width": 313,
-    "height": 336,
-    "source": "raw/frames.png",
+    "width": 438,
+    "height": 423,
+    "source": "raw/hud-v2.png",
+    "textless": true,
     "crop": [
-      951,
-      879,
-      1254,
-      1254
-    ],
-    "textless": true
+      0,
+      0,
+      512,
+      512
+    ]
   },
   "avatar-fire": {
     "file": "assets/gemwoven/items/avatar-fire.png",
-    "width": 272,
-    "height": 293,
-    "source": "raw/icons.png",
-    "crop": [
-      0,
-      0,
-      280,
-      312
-    ],
+    "width": 184,
+    "height": 212,
+    "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
     "textless": true
   },
   "icon-home": {
@@ -443,55 +431,55 @@
   },
   "icon-mail": {
     "file": "assets/gemwoven/items/icon-mail.png",
-    "width": 263,
-    "height": 202,
-    "source": "raw/icons.png",
+    "width": 417,
+    "height": 336,
+    "source": "raw/hud-v2.png",
+    "textless": true,
     "crop": [
-      841,
-      865,
-      1122,
-      1122
-    ],
-    "textless": true
+      0,
+      512,
+      512,
+      1024
+    ]
   },
   "icon-settings": {
     "file": "assets/gemwoven/items/icon-settings.png",
-    "width": 233,
-    "height": 233,
-    "source": "raw/icons.png",
+    "width": 355,
+    "height": 352,
+    "source": "raw/hud-v2.png",
+    "textless": true,
     "crop": [
-      1122,
-      865,
-      1402,
-      1122
-    ],
-    "textless": true
+      512,
+      512,
+      1024,
+      1024
+    ]
   },
   "hero-fire": {
     "file": "assets/gemwoven/items/hero-fire.png",
-    "width": 432,
-    "height": 434,
-    "source": "raw/heroes.png",
+    "width": 378,
+    "height": 455,
+    "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
+    "textless": true,
     "crop": [
       0,
       0,
-      452,
-      435
-    ],
-    "textless": true
+      512,
+      512
+    ]
   },
   "hero-ice": {
     "file": "assets/gemwoven/items/hero-ice.png",
-    "width": 422,
-    "height": 393,
-    "source": "raw/heroes.png",
+    "width": 353,
+    "height": 473,
+    "source": "assets/reimagined/heroes/ice/idle/raw-sheet-clean.png",
+    "textless": true,
     "crop": [
-      452,
       0,
-      889,
-      435
-    ],
-    "textless": true
+      0,
+      512,
+      512
+    ]
   },
   "hero-guide": {
     "file": "assets/gemwoven/items/hero-guide.png",
@@ -508,67 +496,37 @@
   },
   "gem-fire": {
     "file": "assets/gemwoven/items/gem-fire.png",
-    "width": 348,
-    "height": 404,
-    "source": "raw/heroes.png",
-    "crop": [
-      0,
-      435,
-      432,
-      827
-    ],
+    "width": 184,
+    "height": 212,
+    "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
     "textless": true
   },
   "gem-ice": {
     "file": "assets/gemwoven/items/gem-ice.png",
-    "width": 337,
-    "height": 399,
-    "source": "raw/heroes.png",
-    "crop": [
-      432,
-      435,
-      832,
-      827
-    ],
+    "width": 193,
+    "height": 249,
+    "source": "assets/reimagined/heroes/ice/idle/raw-sheet-clean.png",
     "textless": true
   },
   "gem-earth": {
     "file": "assets/gemwoven/items/gem-earth.png",
-    "width": 345,
-    "height": 399,
-    "source": "raw/heroes.png",
-    "crop": [
-      832,
-      435,
-      1254,
-      827
-    ],
+    "width": 171,
+    "height": 181,
+    "source": "assets/reimagined/heroes/earth/idle/raw-sheet-clean.png",
     "textless": true
   },
   "gem-lightning": {
     "file": "assets/gemwoven/items/gem-lightning.png",
-    "width": 342,
-    "height": 395,
-    "source": "raw/heroes.png",
-    "crop": [
-      0,
-      827,
-      433,
-      1254
-    ],
+    "width": 291,
+    "height": 223,
+    "source": "assets/reimagined/heroes/lightning/idle/raw-sheet-clean.png",
     "textless": true
   },
   "gem-shadow": {
     "file": "assets/gemwoven/items/gem-shadow.png",
-    "width": 323,
-    "height": 393,
-    "source": "raw/heroes.png",
-    "crop": [
-      433,
-      827,
-      834,
-      1254
-    ],
+    "width": 172,
+    "height": 185,
+    "source": "assets/heroes/shadow/idle/raw-sheet-clean.png",
     "textless": true
   },
   "summon-crystal": {
@@ -586,29 +544,29 @@
   },
   "coins": {
     "file": "assets/gemwoven/items/coins.png",
-    "width": 328,
-    "height": 280,
-    "source": "raw/items.png",
+    "width": 357,
+    "height": 357,
+    "source": "raw/hud-v2.png",
+    "textless": true,
     "crop": [
+      512,
       0,
-      0,
-      362,
-      362
-    ],
-    "textless": true
+      1024,
+      512
+    ]
   },
   "mana": {
     "file": "assets/gemwoven/items/mana.png",
-    "width": 323,
-    "height": 334,
-    "source": "raw/items.png",
+    "width": 212,
+    "height": 397,
+    "source": "raw/hud-v2.png",
+    "textless": true,
     "crop": [
-      362,
+      1024,
       0,
-      724,
-      362
-    ],
-    "textless": true
+      1536,
+      512
+    ]
   },
   "fire-essence": {
     "file": "assets/gemwoven/items/fire-essence.png",
@@ -651,15 +609,9 @@
   },
   "hero-fragment": {
     "file": "assets/gemwoven/items/hero-fragment.png",
-    "width": 329,
-    "height": 312,
-    "source": "raw/items.png",
-    "crop": [
-      362,
-      362,
-      724,
-      724
-    ],
+    "width": 184,
+    "height": 212,
+    "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
     "textless": true
   },
   "ticket": {
@@ -798,5 +750,749 @@
     "height": 162,
     "textless": true,
     "source": "items/quest-scene.png"
+  },
+  "nav-home": {
+    "file": "assets/gemwoven/items/nav-home.png",
+    "width": 344,
+    "height": 353,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      0,
+      362,
+      387
+    ]
+  },
+  "nav-heroes": {
+    "file": "assets/gemwoven/items/nav-heroes.png",
+    "width": 370,
+    "height": 360,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      362,
+      0,
+      724,
+      387
+    ]
+  },
+  "nav-bag": {
+    "file": "assets/gemwoven/items/nav-bag.png",
+    "width": 353,
+    "height": 345,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      724,
+      0,
+      1086,
+      387
+    ]
+  },
+  "nav-skills": {
+    "file": "assets/gemwoven/items/nav-skills.png",
+    "width": 319,
+    "height": 350,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      1086,
+      0,
+      1448,
+      387
+    ]
+  },
+  "nav-summon": {
+    "file": "assets/gemwoven/items/nav-summon.png",
+    "width": 360,
+    "height": 331,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      387,
+      362,
+      727
+    ]
+  },
+  "nav-arena": {
+    "file": "assets/gemwoven/items/nav-arena.png",
+    "width": 351,
+    "height": 319,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      362,
+      387,
+      724,
+      727
+    ]
+  },
+  "nav-more": {
+    "file": "assets/gemwoven/items/nav-more.png",
+    "width": 359,
+    "height": 316,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      724,
+      387,
+      1086,
+      727
+    ]
+  },
+  "skill-lock": {
+    "file": "assets/gemwoven/items/skill-lock.png",
+    "width": 338,
+    "height": 329,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      1086,
+      387,
+      1448,
+      727
+    ]
+  },
+  "inventory-slot": {
+    "file": "assets/gemwoven/items/inventory-slot.png",
+    "width": 341,
+    "height": 319,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      727,
+      362,
+      1086
+    ]
+  },
+  "skill-frame": {
+    "file": "assets/gemwoven/items/skill-frame.png",
+    "width": 346,
+    "height": 340,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      362,
+      727,
+      724,
+      1086
+    ]
+  },
+  "nameplate": {
+    "file": "assets/gemwoven/items/nameplate.png",
+    "width": 419,
+    "height": 205,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      724,
+      775,
+      1135,
+      1015
+    ]
+  },
+  "skill-banner": {
+    "file": "assets/gemwoven/items/skill-banner.png",
+    "width": 314,
+    "height": 328,
+    "source": "raw/menu-v2.png",
+    "textless": true,
+    "crop": [
+      1086,
+      727,
+      1448,
+      1086
+    ]
+  },
+  "home-summon": {
+    "file": "assets/gemwoven/items/home-summon.png",
+    "width": 506,
+    "height": 502,
+    "source": "raw/buildings-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      0,
+      512,
+      512
+    ]
+  },
+  "home-arena": {
+    "file": "assets/gemwoven/items/home-arena.png",
+    "width": 524,
+    "height": 506,
+    "source": "raw/buildings-v2.png",
+    "textless": true,
+    "crop": [
+      512,
+      0,
+      1024,
+      512
+    ]
+  },
+  "home-shop": {
+    "file": "assets/gemwoven/items/home-shop.png",
+    "width": 502,
+    "height": 510,
+    "source": "raw/buildings-v2.png",
+    "textless": true,
+    "crop": [
+      1024,
+      0,
+      1536,
+      512
+    ]
+  },
+  "home-upgrade": {
+    "file": "assets/gemwoven/items/home-upgrade.png",
+    "width": 512,
+    "height": 519,
+    "source": "raw/buildings-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      512,
+      512,
+      1024
+    ]
+  },
+  "home-forge": {
+    "file": "assets/gemwoven/items/home-forge.png",
+    "width": 510,
+    "height": 519,
+    "source": "raw/buildings-v2.png",
+    "textless": true,
+    "crop": [
+      512,
+      512,
+      1024,
+      1024
+    ]
+  },
+  "home-tavern": {
+    "file": "assets/gemwoven/items/home-tavern.png",
+    "width": 522,
+    "height": 516,
+    "source": "raw/buildings-v2.png",
+    "textless": true,
+    "crop": [
+      1024,
+      512,
+      1536,
+      1024
+    ]
+  },
+  "exp-book": {
+    "file": "assets/gemwoven/items/exp-book.png",
+    "width": 326,
+    "height": 354,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      0,
+      362,
+      375
+    ]
+  },
+  "skill-book": {
+    "file": "assets/gemwoven/items/skill-book.png",
+    "width": 340,
+    "height": 364,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      362,
+      0,
+      724,
+      375
+    ]
+  },
+  "crest": {
+    "file": "assets/gemwoven/items/crest.png",
+    "width": 321,
+    "height": 308,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      724,
+      0,
+      1086,
+      375
+    ]
+  },
+  "lightning-essence": {
+    "file": "assets/gemwoven/items/lightning-essence.png",
+    "width": 279,
+    "height": 347,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      1086,
+      0,
+      1448,
+      375
+    ]
+  },
+  "ice-essence": {
+    "file": "assets/gemwoven/items/ice-essence.png",
+    "width": 304,
+    "height": 334,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      375,
+      362,
+      727
+    ]
+  },
+  "herbs": {
+    "file": "assets/gemwoven/items/herbs.png",
+    "width": 356,
+    "height": 356,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      362,
+      375,
+      724,
+      727
+    ]
+  },
+  "wood": {
+    "file": "assets/gemwoven/items/wood.png",
+    "width": 368,
+    "height": 296,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      724,
+      375,
+      1086,
+      727
+    ]
+  },
+  "ore": {
+    "file": "assets/gemwoven/items/ore.png",
+    "width": 328,
+    "height": 307,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      1086,
+      375,
+      1448,
+      727
+    ]
+  },
+  "cloth": {
+    "file": "assets/gemwoven/items/cloth.png",
+    "width": 349,
+    "height": 314,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      0,
+      727,
+      362,
+      1086
+    ]
+  },
+  "leather": {
+    "file": "assets/gemwoven/items/leather.png",
+    "width": 360,
+    "height": 335,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      362,
+      727,
+      724,
+      1086
+    ]
+  },
+  "helmet": {
+    "file": "assets/gemwoven/items/helmet.png",
+    "width": 299,
+    "height": 341,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      724,
+      727,
+      1086,
+      1086
+    ]
+  },
+  "boots": {
+    "file": "assets/gemwoven/items/boots.png",
+    "width": 340,
+    "height": 332,
+    "source": "raw/inventory-v2.png",
+    "textless": true,
+    "crop": [
+      1086,
+      727,
+      1448,
+      1086
+    ]
+  },
+  "skill-fire-0": {
+    "file": "assets/gemwoven/items/skill-fire-0.png",
+    "width": 244,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      140,
+      0,
+      426,
+      220
+    ]
+  },
+  "skill-fire-1": {
+    "file": "assets/gemwoven/items/skill-fire-1.png",
+    "width": 245,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      426,
+      0,
+      717,
+      220
+    ]
+  },
+  "skill-fire-2": {
+    "file": "assets/gemwoven/items/skill-fire-2.png",
+    "width": 243,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      717,
+      0,
+      1004,
+      220
+    ]
+  },
+  "skill-fire-3": {
+    "file": "assets/gemwoven/items/skill-fire-3.png",
+    "width": 245,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      1004,
+      0,
+      1290,
+      220
+    ]
+  },
+  "skill-ice-0": {
+    "file": "assets/gemwoven/items/skill-ice-0.png",
+    "width": 246,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      140,
+      220,
+      426,
+      440
+    ]
+  },
+  "skill-ice-1": {
+    "file": "assets/gemwoven/items/skill-ice-1.png",
+    "width": 245,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      426,
+      220,
+      717,
+      440
+    ]
+  },
+  "skill-ice-2": {
+    "file": "assets/gemwoven/items/skill-ice-2.png",
+    "width": 244,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      717,
+      220,
+      1004,
+      440
+    ]
+  },
+  "skill-ice-3": {
+    "file": "assets/gemwoven/items/skill-ice-3.png",
+    "width": 245,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      1004,
+      220,
+      1290,
+      440
+    ]
+  },
+  "skill-earth-0": {
+    "file": "assets/gemwoven/items/skill-earth-0.png",
+    "width": 249,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      140,
+      440,
+      426,
+      660
+    ]
+  },
+  "skill-earth-1": {
+    "file": "assets/gemwoven/items/skill-earth-1.png",
+    "width": 246,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      426,
+      440,
+      717,
+      660
+    ]
+  },
+  "skill-earth-2": {
+    "file": "assets/gemwoven/items/skill-earth-2.png",
+    "width": 246,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      717,
+      440,
+      1004,
+      660
+    ]
+  },
+  "skill-earth-3": {
+    "file": "assets/gemwoven/items/skill-earth-3.png",
+    "width": 248,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      1004,
+      440,
+      1290,
+      660
+    ]
+  },
+  "skill-lightning-0": {
+    "file": "assets/gemwoven/items/skill-lightning-0.png",
+    "width": 265,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      140,
+      660,
+      426,
+      880
+    ]
+  },
+  "skill-lightning-1": {
+    "file": "assets/gemwoven/items/skill-lightning-1.png",
+    "width": 254,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      426,
+      660,
+      717,
+      880
+    ]
+  },
+  "skill-lightning-2": {
+    "file": "assets/gemwoven/items/skill-lightning-2.png",
+    "width": 257,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      717,
+      660,
+      1004,
+      880
+    ]
+  },
+  "skill-lightning-3": {
+    "file": "assets/gemwoven/items/skill-lightning-3.png",
+    "width": 264,
+    "height": 232,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      1004,
+      660,
+      1290,
+      880
+    ]
+  },
+  "skill-shadow-0": {
+    "file": "assets/gemwoven/items/skill-shadow-0.png",
+    "width": 266,
+    "height": 228,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      140,
+      880,
+      426,
+      1100
+    ]
+  },
+  "skill-shadow-1": {
+    "file": "assets/gemwoven/items/skill-shadow-1.png",
+    "width": 260,
+    "height": 228,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      426,
+      880,
+      717,
+      1100
+    ]
+  },
+  "skill-shadow-2": {
+    "file": "assets/gemwoven/items/skill-shadow-2.png",
+    "width": 265,
+    "height": 228,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      717,
+      880,
+      1004,
+      1100
+    ]
+  },
+  "skill-shadow-3": {
+    "file": "assets/gemwoven/items/skill-shadow-3.png",
+    "width": 271,
+    "height": 228,
+    "source": "raw/skills-v2.png",
+    "textless": true,
+    "crop": [
+      1004,
+      880,
+      1290,
+      1100
+    ]
+  },
+  "portrait-fire": {
+    "file": "assets/gemwoven/items/portrait-fire.png",
+    "width": 184,
+    "height": 212,
+    "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
+    "textless": true
+  },
+  "portrait-ice": {
+    "file": "assets/gemwoven/items/portrait-ice.png",
+    "width": 193,
+    "height": 249,
+    "source": "assets/reimagined/heroes/ice/idle/raw-sheet-clean.png",
+    "textless": true
+  },
+  "hero-earth": {
+    "file": "assets/gemwoven/items/hero-earth.png",
+    "width": 400,
+    "height": 402,
+    "source": "assets/reimagined/heroes/earth/idle/raw-sheet-clean.png",
+    "textless": true,
+    "crop": [
+      0,
+      0,
+      512,
+      512
+    ]
+  },
+  "portrait-earth": {
+    "file": "assets/gemwoven/items/portrait-earth.png",
+    "width": 171,
+    "height": 181,
+    "source": "assets/reimagined/heroes/earth/idle/raw-sheet-clean.png",
+    "textless": true
+  },
+  "hero-lightning": {
+    "file": "assets/gemwoven/items/hero-lightning.png",
+    "width": 339,
+    "height": 469,
+    "source": "assets/reimagined/heroes/lightning/idle/raw-sheet-clean.png",
+    "textless": true,
+    "crop": [
+      0,
+      0,
+      512,
+      512
+    ]
+  },
+  "portrait-lightning": {
+    "file": "assets/gemwoven/items/portrait-lightning.png",
+    "width": 291,
+    "height": 223,
+    "source": "assets/reimagined/heroes/lightning/idle/raw-sheet-clean.png",
+    "textless": true
+  },
+  "hero-shadow": {
+    "file": "assets/gemwoven/items/hero-shadow.png",
+    "width": 342,
+    "height": 381,
+    "source": "assets/heroes/shadow/idle/raw-sheet-clean.png",
+    "textless": true,
+    "crop": [
+      0,
+      0,
+      512,
+      512
+    ]
+  },
+  "portrait-shadow": {
+    "file": "assets/gemwoven/items/portrait-shadow.png",
+    "width": 172,
+    "height": 185,
+    "source": "assets/heroes/shadow/idle/raw-sheet-clean.png",
+    "textless": true
+  },
+  "footer-wood": {
+    "file": "assets/gemwoven/items/footer-wood.png",
+    "width": 953,
+    "height": 188,
+    "source": "backgrounds/inventory.png",
+    "textless": true
+  },
+  "hud-plus": {
+    "file": "assets/gemwoven/items/hud-plus.png",
+    "width": 343,
+    "height": 343,
+    "source": "raw/hud-v2.png",
+    "textless": true,
+    "crop": [
+      1024,
+      512,
+      1536,
+      1024
+    ]
   }
 }

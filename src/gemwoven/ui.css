@@ -3,3 +3,9 @@
 .node[hidden]{display:none!important}
 
 .node-text,.copy-layer{overflow-wrap:anywhere}
+
+.node-connector{transform-origin:left center;border-radius:8px;box-shadow:0 0 8px currentColor;pointer-events:none;opacity:.85}.node-surface.quantity{background:#241c16e8;border-radius:18px;pointer-events:none}.bottom-nav.selected{filter:drop-shadow(0 0 13px #f5bb50) brightness(1.12)}.bottom-nav:hover{z-index:1}.skill-tag{background:#d9b78966;border:1px solid #9d6836;border-radius:18px}.skill-node.selected{filter:drop-shadow(0 0 15px #ffe5a0) brightness(1.2)}.portrait-gem.element-fire>.art{filter:hue-rotate(110deg)}.portrait-gem.element-earth>.art{filter:hue-rotate(260deg)}.portrait-gem.element-lightning>.art{filter:hue-rotate(35deg)}.portrait-gem.element-shadow>.art{filter:hue-rotate(25deg) brightness(.8)}.home-place:hover{z-index:2}.node-button.bottom-nav{isolation:auto}.review nav{gap:5px}.review nav button{padding:7px 12px}@media(max-width:700px){.review nav{overflow-x:auto;justify-content:flex-start}.review nav button{min-width:58px;padding:6px;flex:none}.review h1{margin:0}.background-grid{grid-template-columns:repeat(3,1fr)}}
+
+.label-art{position:absolute;object-fit:fill;pointer-events:none}.node-button>.label-art+.copy-layer{padding:0 5px;font-weight:500}.skill-node{border-radius:50%}
+.hero-standing>.art{object-position:center bottom}.node-button[data-action^="select-hero:"]>.icon{border-radius:50%}
+.portrait-gem>.icon,.home-soul>.art{mask-image:linear-gradient(#000 72%,transparent 100%)}

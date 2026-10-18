@@ -17,11 +17,11 @@ html=html.replace('href="assets/gemwoven/items/mana.png"','href="'+data_uri('ass
 manifest=json.loads((ROOT/'assets/gemwoven/manifest.json').read_text(encoding='utf-8'))
 for a in manifest.values():a['file']=data_uri(a['file'])
 backdrops={}
-for key in ['arena','summon','shop','forge','upgrade','tavern']:
+for key in ['home','inventory','skills','arena','summon','shop','forge','upgrade','tavern']:
     backdrops[key]={'background':data_uri(f'assets/gemwoven/backgrounds/{key}.webp')}
-for name in ['assets','screens','copy','ui']:
+for name in ['assets','screens','expansion','copy','ui']:
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
-    if name=='screens':code+='\nfor (const [key,images] of Object.entries('+json.dumps(backdrops)+')) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
+    if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
     html=html.replace(f'<script src="src/gemwoven/{name}.js"></script>','<script>'+code.replace('</script','<\\/script')+'</script>')
 (ROOT/'Gemwoven_6_Man.html').write_text(html,encoding='utf-8')
 # Kit has editable source, separated PNGs and the standalone preview.
@@ -31,6 +31,7 @@ paths+=list((ROOT/'src/gemwoven').glob('*'))
 paths+=list((ROOT/'assets/gemwoven/items').glob('*.png'))
 paths+=list((ROOT/'assets/gemwoven/backgrounds').glob('*'))
 paths+=[ROOT/'assets/gemwoven/manifest.json',ROOT/'assets/gemwoven/prompts.json',Path(__file__)]
+paths+=[ROOT/'assets/gemwoven/prompts-v2.json',ROOT/'scripts/prepare_gemwoven_expansion.py']
 with zipfile.ZipFile(ROOT/'Gemwoven_UI_Kit.zip','w',zipfile.ZIP_DEFLATED) as z:
     for p in paths:z.write(p,p.relative_to(ROOT))
 print(f'Standalone: {(ROOT/"Gemwoven_6_Man.html").stat().st_size:,} bytes')

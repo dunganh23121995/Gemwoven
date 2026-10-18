@@ -1,8 +1,8 @@
 /* Coordinates use the 941 x 1672 concept canvas. Every hit target owns its art. */
 (() => {
   const W=941,H=1672, screens={}, copy={};
-  const names={arena:'Đấu Trường',summon:'Triệu Hồi',shop:'Cửa Hàng',forge:'Rèn Đồ',upgrade:'Nâng Cấp',tavern:'Quán Bia'};
-  const nav=[['home','Trang Chủ','icon-home'],['upgrade','Tướng','icon-hero'],['summon','Triệu Hồi','icon-summon'],['shop','Cửa Hàng','icon-shop'],['forge','Rèn Đồ','icon-forge'],['tavern','Quán Bia','icon-tavern'],['arena','Đấu Trường','icon-arena'],['more','Thêm','icon-grid']];
+  const names={home:'Trang Chủ',inventory:'Túi Đồ',skills:'Kỹ Năng',arena:'Đấu Trường',summon:'Triệu Hồi',shop:'Cửa Hàng',forge:'Rèn Đồ',upgrade:'Tướng',tavern:'Quán Bia'};
+  const nav=[['home','Trang Chủ','nav-home'],['upgrade','Tướng','nav-heroes'],['inventory','Túi Đồ','nav-bag'],['skills','Kỹ Năng','nav-skills'],['summon','Triệu Hồi','nav-summon'],['arena','Đấu Trường','nav-arena'],['more','Thêm','nav-more']];
   let active;
   function add(id,kind,rect,options={}) { const n={id:`${active}.${id}`,kind,rect,...options};screens[active].nodes.push(n);return n; }
   function image(id,asset,rect,options={}) { return add(id,'image',rect,{asset,...options}); }
@@ -14,27 +14,32 @@
   }
   function panel(id,rect,dark=false){image(id,dark?'card-dark':'panel-parchment',rect,{fit:'fill'});}
   function title(label,rect,light=false,icon){
-    image('title-board',light?'title-parchment':'title-wood',rect,{fit:'fill'});
-    text('title',label,[rect[0]+20,rect[1]+rect[3]*.42,rect[2]-40,rect[3]*.4],49,{tone:light?'ink':'gold'});
+    image('title-board',light?'nameplate':'title-wood',rect,{fit:'fill'});
+    text('title',label,[rect[0]+20,rect[1]+rect[3]*(light?.24:.42),rect[2]-40,rect[3]*(light?.5:.4)],49,{tone:light?'ink':'gold'});
     if(icon)image('title-icon',icon,[rect[0]+rect[2]*.39,rect[1]-22,rect[2]*.22,rect[3]*.5]);
   }
   function header(){
-    button('profile','avatar-fire',[25,8,128,128],'Hồ sơ tướng','route:upgrade',{labelHidden:true});
-    add('level-plate','surface',[158,36,177,47],{style:'currency'});
-    text('level','Lv.32',[158,34,177,43],27);
-    add('level-meter','bar',[165,82,164,13],{value:.64});
+    button('profile','avatar-ring',[25,8,128,128],'Hồ sơ tướng','route:upgrade',{icon:'portrait-fire',iconRect:[22,13,88,100],labelHidden:true});
+    add('level-plate','surface',[155,45,187,39],{style:'currency'});
+    add('level-meter','bar',[198,53,130,23],{value:.64});
+    add('level-badge','surface',[154,25,53,59],{style:'currency'});
+    text('level','32',[157,32,47,44],30);
     add('gold-plate','surface',[368,36,174,48],{style:'currency'});
     image('gold-icon','coins',[355,26,59,60]);text('gold','125.6K',[412,38,104,40],25);
-    button('gold-plus','nav-tile',[511,35,39,43],'+','route:shop',{size:30});
+    button('gold-plus','hud-plus',[511,35,39,43],'+','route:shop',{size:30});
     add('gem-plate','surface',[591,36,178,48],{style:'currency'});
     image('gem-icon','mana',[577,22,54,70]);text('gems','3,480',[625,38,99,40],25);
-    button('gems-plus','nav-tile',[729,35,39,43],'+','route:shop',{size:30});
+    button('gems-plus','hud-plus',[729,35,39,43],'+','route:shop',{size:30});
     button('mail','icon-mail',[795,30,62,61],'Hòm thư','preview:mail',{labelHidden:true});
     button('settings','icon-settings',[868,30,59,59],'Cài đặt','preview:settings',{labelHidden:true});
   }
   function footer(){
-    image('footer-board','title-wood',[-24,1483,990,189],{fit:'fill'});
-    nav.forEach(([route,label,icon],i)=>button(`nav-${route}`,'nav-tile',[12+i*115,1511,112,142],label,`route:${route}`,{icon,iconRect:[16,12,80,83],labelRect:[3,99,106,34],size:22,selected:route===active,role:'nav',fit:'fill'}));
+    image('footer-board','footer-wood',[0,1490,941,182],{fit:'fill'});
+    nav.forEach(([route,label,icon],i)=>{
+      const selected=route===active;
+      button(`nav-${route}`,icon,[21+i*130,1510,119,126],label,`route:${route}`,{labelHidden:true,selected,role:'nav',className:'bottom-nav'});
+      if(selected){image('nav-label-board','nameplate',[10+i*130,1607,143,53],{fit:'fill'});text('nav-active-label',label,[20+i*130,1614,123,34],23,{tone:'ink'});}
+    });
   }
   function sides(left=true,right=true){
     const a=left?[['event','Sự Kiện','icon-event'],['gift','Phúc Lợi','icon-gift'],['book','Thẻ Tháng','icon-book'],['chat','Cộng Đồng','icon-chat']]:[];
@@ -74,7 +79,7 @@
   image('story-flag','flag-gold',[735,135,101,300],{fit:'fill'});
   text('story','Ngọc\nKết Nối\nNhững\nTâm Hồn',[748,184,75,176],23,{tone:'ink'});
   const gems=[['fire',391,379,163,217],['ice',224,498,162,208],['earth',578,493,162,208],['lightning',228,697,170,214],['shadow',573,697,170,214]];
-  gems.forEach(([hero,x,y,w,h])=>button(`portrait-${hero}`,`gem-${hero}`,[x,y,w,h],hero==='fire'?'Mika':hero==='ice'?'Yuki':hero==='earth'?'Nori':hero==='lightning'?'Lumi':'Noct',`hero:${hero}`,{labelHidden:true}));
+  gems.forEach(([hero,x,y,w,h])=>button(`portrait-${hero}`,'summon-crystal',[x,y,w,h],hero==='fire'?'Mika':hero==='ice'?'Yuki':hero==='earth'?'Nori':hero==='lightning'?'Lumi':'Noct',`hero:${hero}`,{icon:`portrait-${hero}`,iconRect:[w*.16,h*.21,w*.68,h*.59],labelHidden:true,className:`portrait-gem element-${hero}`}));
   button('central-crystal','summon-crystal',[365,579,211,326],'Ngọc triệu hồi','summon:one',{labelHidden:true});
   image('guide','hero-guide',[100,784,214,251]);
   button('fragments','title-parchment',[756,919,163,95],'Mảnh Tướng','item:hero-fragment',{size:23,labelRect:[15,30,133,40],fit:'fill'});
@@ -189,4 +194,5 @@
 
   window.GEMWOVEN_LAYOUT={width:W,height:H,screens,names};
   window.GEMWOVEN_DEFAULT_COPY=copy;
+  window.GEMWOVEN_COMPONENTS={begin,image,text,button,panel,title,header,footer,add,materials};
 })();
