@@ -1,0 +1,49 @@
+/* DOM interaction checks. No browser engine or visual/layout assertions. */
+const {JSDOM,VirtualConsole}=require('./runtime/node_modules/jsdom');
+const fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../..'),errors=[],checks=[];
+const virtualConsole=new VirtualConsole();virtualConsole.on('jsdomError',e=>errors.push(String(e)));virtualConsole.on('error',e=>errors.push(String(e)));
+const dom=new JSDOM(fs.readFileSync(path.join(root,'Gemwoven.html'),'utf8'),{url:'http://localhost/Gemwoven.html',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole});
+const w=dom.window,d=w.document;
+w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
+for(const name of ['assets','screens','copy','ui'])w.eval(fs.readFileSync(path.join(root,`src/gemwoven/${name}.js`),'utf8'));
+const sleep=()=>new Promise(r=>setTimeout(r,15));
+async function go(key){w.location.hash=key;await sleep();assert.equal(d.title,`Gemwoven · ${w.GEMWOVEN_LAYOUT.names[key]}`);}
+function node(id){const el=d.querySelector(`[data-node="${id}"]`);assert.ok(el,id);return el;}
+function toggle(id,value){d.getElementById(id).checked=value;d.getElementById(id).dispatchEvent(new w.Event('change'));}
+function pass(label){checks.push(label);}
+(async()=>{
+  assert.equal(Object.keys(w.GEMWOVEN_LAYOUT.screens).length,6);
+  for(const [key,screen] of Object.entries(w.GEMWOVEN_LAYOUT.screens)){
+    await go(key);
+    assert.equal(d.querySelectorAll('#scene .node').length,screen.nodes.length);
+    const ids=screen.nodes.map(n=>n.id);assert.equal(new Set(ids).size,ids.length);
+    for(const button of d.querySelectorAll('#scene button')){
+      assert.ok(button.getAttribute('aria-label'));assert.ok(button.querySelector('img.art'));assert.ok(button.dataset.action);
+    }
+    for(const img of d.querySelectorAll('#scene img'))assert.ok(fs.existsSync(path.join(root,img.getAttribute('src'))),img.src);
+    assert.ok(fs.existsSync(path.join(root,screen.background)));
+    const next=Object.keys(w.GEMWOVEN_LAYOUT.screens)[(Object.keys(w.GEMWOVEN_LAYOUT.screens).indexOf(key)+1)%6];
+    node(`${key}.nav-${next}`).click();await sleep();assert.equal(d.title,`Gemwoven · ${w.GEMWOVEN_LAYOUT.names[next]}`);
+    pass(`${key}: composition, assets, labels, footer navigation`);
+  }
+  await go('arena');node('arena.mode-team').click();assert.equal(node('arena.mode-team').getAttribute('aria-pressed'),'true');assert.equal(node('arena.mode-solo').getAttribute('aria-pressed'),'false');node('arena.battle').click();assert.equal(d.getElementById('dialog-title').textContent,'Đấu trường 3v3');d.getElementById('close-dialog').click();assert.equal(d.getElementById('preview-dialog').open,false);pass('Arena mode and preview dialog');
+  await go('shop');node('shop.product-mana').click();assert.equal(d.querySelector('[data-copy="shop.product-name"]').textContent,'Đá Ngọc');node('shop.quantity-plus').click();assert.equal(d.querySelector('[data-copy="shop.purchase-price"]').textContent,'● 600');for(let i=0;i<4;i++)node('shop.quantity-minus').click();assert.equal(d.querySelector('[data-copy="shop.quantity"]').textContent,'1');pass('Independent product selection and quantity limits');
+  await go('forge');node('forge.forge-tab-2').click();assert.equal(d.querySelector('[data-copy="forge.forge-action"]').textContent,'KHẢM NGỌC');pass('Forge tabs');
+  await go('upgrade');node('upgrade.upgrade-tab-1').click();assert.equal(d.querySelector('[data-copy="upgrade.upgrade-action"]').textContent,'Tăng Sao');pass('Upgrade tabs');
+  await go('tavern');node('tavern.quest-dismiss').click();assert.equal(node('tavern.quest-panel').hidden,true);node('tavern.tavern-tab-1').click();assert.equal(node('tavern.quest-panel').hidden,false);pass('Tavern panel close and reopen');
+  toggle('hide-copy',true);assert.ok(d.getElementById('stage').classList.contains('hide-copy'));toggle('hide-copy',false);
+  toggle('show-bounds',true);assert.ok(d.getElementById('stage').classList.contains('show-bounds'));
+  toggle('edit-copy',true);const title=d.querySelector('[data-copy="tavern.title"]');title.textContent='Tên quán mới';title.dispatchEvent(new w.Event('input',{bubbles:true}));toggle('edit-copy',false);await go('arena');await go('tavern');assert.equal(d.querySelector('[data-copy="tavern.title"]').textContent,'Tên quán mới');pass('Hide text, outlines, edit persistence across screens');
+  // Every interactive item must execute its lightweight action without exceptions.
+  let exercised=0;
+  for(const [key,screen] of Object.entries(w.GEMWOVEN_LAYOUT.screens)){
+    for(const n of screen.nodes.filter(n=>n.kind==='button')){
+      await go(key);if(d.getElementById('preview-dialog').open)d.getElementById('close-dialog').click();node(n.id).click();await sleep();exercised++;
+    }
+  }
+  pass(`${exercised} button actions executed`);
+  assert.deepEqual(errors,[]);
+  const result={passed:true,scope:'jsdom: DOM and interaction logic only; no real browser visual testing',checks,buttonsExercised:exercised,errors};
+  fs.writeFileSync(path.join(__dirname,'dom-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));w.close();
+})().catch(e=>{console.error(e);w.close();process.exitCode=1;});

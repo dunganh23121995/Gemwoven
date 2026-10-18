@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#172522">
+  <title>Gemwoven · Sáu miền diệu ngọc</title>
+  <link rel="icon" href="assets/gemwoven/items/mana.png">
+  <link rel="stylesheet" href="src/gemwoven/ui.css">
+</head>
+<body>
+  <main class="workbench">
+    <aside class="review" aria-label="Điều hướng bản ghép">
+      <p class="eyebrow">SÁU MIỀN DIỆU NGỌC</p>
+      <h1>Gemwoven</h1>
+      <nav id="screen-menu" aria-label="Sáu màn hình"></nav>
+      <details>
+        <summary>Kiểm tra bản ghép</summary>
+        <label><input id="show-bounds" type="checkbox"> Hiện viền vùng bấm</label>
+        <label><input id="hide-copy" type="checkbox"> Ẩn toàn bộ chữ</label>
+        <label><input id="edit-copy" type="checkbox"> Sửa chữ trực tiếp</label>
+        <button id="export-copy" type="button">Xuất nội dung chữ</button>
+        <a href="Gemwoven_Assets.html" target="_blank" rel="noopener">Xem từng ảnh thành phần ↗</a>
+      </details>
+      <p class="review-note">Chọn một màn hoặc dùng thanh điều hướng bên dưới khung hình.</p>
+    </aside>
+    <div id="viewport">
+      <section id="stage" aria-label="Màn hình Gemwoven">
+        <div id="scene"></div>
+      </section>
+    </div>
+  </main>
+  <dialog id="preview-dialog" aria-labelledby="dialog-title">
+    <button class="close" id="close-dialog" aria-label="Đóng">×</button>
+    <h2 id="dialog-title"></h2>
+    <div id="dialog-art"></div>
+    <p id="dialog-copy"></p>
+    <div id="dialog-links"></div>
+    <button id="return-dialog" class="plain-button">Quay lại</button>
+  </dialog>
+  <script src="src/gemwoven/assets.js"></script>
+  <script src="src/gemwoven/screens.js"></script>
+  <script src="src/gemwoven/copy.js"></script>
+  <script src="src/gemwoven/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "gemwoven-ui-dom-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node ../check-dom.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "29.1.1"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

@@ -21,3 +21,15 @@ Thumbs.db
 /qa/*.webp
 /qa/*.json
 /qa/results.txt
+
+# Generated Gemwoven deliverables; rebuild from tracked source and production art.
+/Gemwoven_6_Man.html
+/Gemwoven_UI_Kit.zip
+/qa/**/*.png
+/qa/**/*.jpg
+/qa/**/*.jpeg
+/qa/**/*.webp
+/qa/**/dom-results.json
+/qa/**/layout.json
+/assets/gemwoven/*contact-sheet*.jpg
+/assets/gemwoven/reference/
