@@ -32,11 +32,13 @@ const server=http.createServer((req,res)=>{
     await route('campaign');
     assert.equal(await page.locator('.world-pin').count(),7);
     assert.equal(await page.locator('.next-stage .pin-lock').count(),0);
-    const terrain=await page.locator('.terrain-band').first().evaluate(e=>getComputedStyle(e).backgroundImage);
-    assert.ok(terrain.includes('/assets/gemwoven/')&&!terrain.includes('/src/gemwoven/assets/'),'Terrain resolves from page root');
-    assert.ok(await page.locator('.terrain-band').first().evaluate(async e=>{
-      const image=new Image();image.src=getComputedStyle(e).backgroundImage.slice(5,-2);await image.decode();return image.naturalWidth>0;
-    }));
+    // Beanstalk map: trunk and leaf pieces are separate images resolved from the page root.
+    for(const selector of ['.bean-stem','.bean-branch','.map-platform']){
+      const src=await page.locator(selector).first().getAttribute('src');
+      assert.ok(src.includes('assets/gemwoven/')&&!src.includes('src/gemwoven/assets/'),selector+' resolves from page root');
+      assert.ok(await page.locator(selector).first().evaluate(async e=>{await e.decode();return e.naturalWidth>0;}),selector+' loads');
+    }
+    assert.equal(await page.locator('.bean-leaf-group .world-pin').count(),7,'Every visible stage stands on a leaf');
     await page.locator('#viewport').screenshot({path:path.join(__dirname,'detail-campaign.png')});
     await route('home');
     assert.equal(await page.locator('.home-place textPath').count(),6);
@@ -64,20 +66,20 @@ const server=http.createServer((req,res)=>{
     for(const count of [1,10]){
       await page.locator(`[data-action="do:summon"][data-count="${count}"]`).first().click();
       await page.locator('#confirm-summon').click();
-      await page.waitForFunction(()=>document.querySelector('#summon-reveal').dataset.phase==='cards');
-      assert.equal(await page.locator('.summon-card').count(),count);
-      assert.equal(await page.locator('.summon-card.is-open').count(),0);
-      assert.equal(await page.locator('.summon-card-front[aria-hidden="true"]').count(),count);
+      await page.waitForFunction(()=>document.querySelector('#summon-reveal')?.dataset.phase==='cards',null,{timeout:15000});
+      assert.equal(await page.locator('.celestial-card').count(),count);
+      assert.equal(await page.locator('.celestial-card.is-open').count(),0);
+      assert.equal(await page.locator('.celestial-front[aria-hidden="true"]').count(),count);
       const committed=await page.evaluate(()=>GEMWOVEN_GAME.engine.exportSave());
       await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,`detail-summon-${count}-sealed.png`)});
-      await page.locator('.summon-card').first().click();
-      assert.equal(await page.locator('.summon-card.is-open').count(),1);
-      if(count>1)await page.locator('.reveal-skip').click();
+      await page.locator('.celestial-card').first().click();
+      assert.equal(await page.locator('.celestial-card.is-open').count(),1);
+      if(count>1)await page.locator('.celestial-open-all').click();
       await page.waitForTimeout(900);
-      assert.equal(await page.locator('.summon-card.is-open').count(),count);
+      assert.equal(await page.locator('.celestial-card.is-open').count(),count);assert.ok(await page.locator('.celestial-open-all').isDisabled(),'Open all ends once every card is revealed');
       assert.equal(await page.evaluate(()=>GEMWOVEN_GAME.engine.exportSave()),committed,'Revealing never rolls or spends again');
       await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,`detail-summon-${count}-open.png`)});
-      await page.getByRole('button',{name:'Tiếp tục',exact:true}).click();
+      await page.locator('.celestial-close').click();await page.waitForFunction(()=>!document.querySelector('#summon-reveal'));
     }
     assert.equal(await page.evaluate(()=>GEMWOVEN_GAME.engine.read().wallet.tickets),0);
     // All chapter backgrounds use the same validated URL/registration path.
@@ -120,11 +122,11 @@ const server=http.createServer((req,res)=>{
     await page.evaluate(()=>{const p=GEMWOVEN_GAME.engine.read();p.wallet.tickets=10;localStorage.setItem(GemwovenProgression.KEY,JSON.stringify(p));});
     await route('summon');
     await page.locator('[data-action="do:summon"][data-count="10"]').first().click();await page.locator('#confirm-summon').click();
-    await page.waitForFunction(()=>document.querySelector('#summon-reveal').dataset.phase==='cards');
-    await page.locator('.summon-card').first().focus();await page.keyboard.press('Enter');
-    assert.equal(await page.locator('.summon-card.is-open').count(),1,'Keyboard opens a card with reduced motion');
+    await page.waitForFunction(()=>document.querySelector('#summon-reveal')?.dataset.phase==='cards',null,{timeout:15000});
+    await page.locator('.celestial-card').first().focus();await page.keyboard.press('Enter');
+    assert.equal(await page.locator('.celestial-card.is-open').count(),1,'Keyboard opens a card with reduced motion');
     await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,'detail-mobile-summon.png')});
-    await page.locator('.reveal-skip').click();await page.getByRole('button',{name:'Tiếp tục',exact:true}).click();
+    await page.locator('.celestial-open-all').click();await page.locator('.celestial-close').click();await page.waitForFunction(()=>!document.querySelector('#summon-reveal'));
     assert.deepEqual(errors,[]);
     console.log('Browser passed: 20 screens, 30 chapter maps, engraved labels, material layout, x1/x10 sealed reveals, grounded combat, 3-speed camera, mobile and reduced motion.');
   }finally{await browser.close();}

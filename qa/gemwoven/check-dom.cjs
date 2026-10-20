@@ -17,10 +17,11 @@ function pass(label){checks.push(label);}
   assert.equal(d.title,'Gemwoven · Trang Chủ');
   for(const [key,screen] of Object.entries(w.GEMWOVEN_LAYOUT.screens)){
     await go(key);
-    assert.equal(d.querySelectorAll('#scene .node').length,screen.nodes.length);
+    // The legacy level bar is replaced by the experience ring around the avatar.
+    assert.equal(d.querySelectorAll('#scene .node').length,screen.nodes.filter(n=>!/\.(level-plate|level-meter|level-badge|level)$/.test(n.id)).length);
     const ids=screen.nodes.map(n=>n.id);assert.equal(new Set(ids).size,ids.length);
     for(const button of d.querySelectorAll('#scene button')){
-      assert.ok(button.getAttribute('aria-label'));assert.ok(button.querySelector('img.art'));assert.ok(button.dataset.action);
+      assert.ok(button.getAttribute('aria-label'));assert.ok(button.querySelector('img.art,img.hud-avatar-frame'));assert.ok(button.dataset.action);
     }
     for(const img of d.querySelectorAll('#scene img'))assert.ok(fs.existsSync(path.join(root,img.getAttribute('src'))),img.src);
     assert.ok(fs.existsSync(path.join(root,screen.background)));
