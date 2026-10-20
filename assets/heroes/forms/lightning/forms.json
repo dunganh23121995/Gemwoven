@@ -200,106 +200,133 @@
           "frameDuration": 120
         },
         "attack": {
-          "file": "assets/heroes/forms/lightning/form-2/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/lightning/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
               141,
-              62
+              49
             ],
             [
               141,
-              75
+              49
             ],
             [
               141,
-              68
+              43
             ],
             [
               141,
-              69
+              47
             ],
             [
               141,
-              65
+              46
             ],
             [
               141,
-              62
+              46
+            ],
+            [
+              141,
+              45
+            ],
+            [
+              141,
+              44
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "attack"
         },
         "cast": {
-          "file": "assets/heroes/forms/lightning/form-2/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/lightning/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
               141,
-              62
+              49
             ],
             [
               141,
-              60
+              49
             ],
             [
               141,
-              59
+              43
             ],
             [
               141,
-              60
+              47
             ],
             [
               141,
-              61
+              46
             ],
             [
               141,
-              61
+              46
+            ],
+            [
+              141,
+              45
+            ],
+            [
+              141,
+              44
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "cast"
         },
         "run": {
-          "file": "assets/heroes/forms/lightning/form-2/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/lightning/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
               141,
-              59
+              49
             ],
             [
               141,
-              57
+              49
             ],
             [
               141,
-              59
+              43
             ],
             [
               141,
-              62
+              47
             ],
             [
               141,
-              61
+              46
             ],
             [
               141,
-              62
+              46
+            ],
+            [
+              141,
+              45
+            ],
+            [
+              141,
+              44
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "run"
         }
       }
     }

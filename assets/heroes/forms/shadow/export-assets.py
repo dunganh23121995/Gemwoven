@@ -6,9 +6,9 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parents[3]
-NAMES = {"2": "Nguyệt Ảnh", "3": "Đế Vương Nhật Thực"}
+NAMES = {"2": "Nguyệt Ảnh", "3": "Tử Thần Vô Diện"}
 # Tight square head-and-shoulders crops; padded above the hood/crown for circles.
-PORTRAIT_BOXES = {"2": (106, 48, 214, 156), "3": (88, 48, 196, 156)}
+PORTRAIT_BOXES = {"2": (106, 48, 214, 156), "3": (106, 76, 192, 162)}
 # Authored hood-top landmarks in 256px runtime cells, excluding raised weapons.
 HEADS = {
     "2": {
@@ -18,7 +18,7 @@ HEADS = {
         "run": [[157, 60]] * 6,
     },
     "3": {
-        "idle": [[145, 72]] * 8,
+        "idle": [[148, 84]] * 8,  # Grim Reaper hood top; measure attack/cast/run after ImageGen
         "attack": [[145, 71], [145, 72], [147, 76], [146, 79], [146, 72], [145, 72]],
         "cast": [[145, 71], [144, 72], [143, 72], [144, 77], [144, 76], [145, 72]],
         "run": [[145, 74], [145, 74], [145, 75], [144, 74], [145, 74], [145, 74]],

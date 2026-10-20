@@ -49,55 +49,72 @@
           "frameDuration": 120
         },
         "attack": {
-          "file": "assets/heroes/forms/earth/form-2/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/earth/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
-              136,
-              51
+              132,
+              48
             ],
             [
-              137,
-              61
+              132,
+              48
             ],
             [
-              138,
-              73
+              132,
+              48
             ],
             [
-              136,
-              76
+              132,
+              48
             ],
             [
-              138,
-              51
+              132,
+              48
             ],
             [
-              136,
-              49
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "attack"
         },
         "cast": {
-          "file": "assets/heroes/forms/earth/form-2/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/earth/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
               132,
               48
             ],
             [
-              133,
-              50
+              132,
+              48
             ],
             [
-              134,
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
               48
             ],
             [
@@ -114,41 +131,51 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "cast"
         },
         "run": {
-          "file": "assets/heroes/forms/earth/form-2/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/earth/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
-              147,
-              55
+              132,
+              48
             ],
             [
-              142,
-              54
+              132,
+              48
             ],
             [
-              167,
-              58
+              132,
+              48
             ],
             [
-              145,
-              53
+              132,
+              48
             ],
             [
-              136,
-              57
+              132,
+              48
             ],
             [
-              163,
-              59
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "run"
         }
       }
     },

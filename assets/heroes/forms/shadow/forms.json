@@ -153,7 +153,7 @@
       }
     },
     "3": {
-      "name": "Đế Vương Nhật Thực",
+      "name": "Tử Thần Vô Diện",
       "poster": "assets/heroes/forms/shadow/form-3/master.png",
       "portrait": "assets/heroes/forms/shadow/form-3/portrait.png",
       "actions": {
@@ -164,142 +164,169 @@
           "count": 8,
           "heads": [
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ]
           ],
           "footY": 0.94,
           "frameDuration": 120
         },
         "attack": {
-          "file": "assets/heroes/forms/shadow/form-3/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/shadow/form-3/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
-              145,
-              71
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
             ],
             [
-              147,
-              76
+              148,
+              84
             ],
             [
-              146,
-              79
+              148,
+              84
             ],
             [
-              146,
-              72
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
+            ],
+            [
+              148,
+              84
+            ],
+            [
+              148,
+              84
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "attack"
         },
         "cast": {
-          "file": "assets/heroes/forms/shadow/form-3/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/shadow/form-3/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
-              145,
-              71
+              148,
+              84
             ],
             [
-              144,
-              72
+              148,
+              84
             ],
             [
-              143,
-              72
+              148,
+              84
             ],
             [
-              144,
-              77
+              148,
+              84
             ],
             [
-              144,
-              76
+              148,
+              84
             ],
             [
-              145,
-              72
+              148,
+              84
+            ],
+            [
+              148,
+              84
+            ],
+            [
+              148,
+              84
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "cast"
         },
         "run": {
-          "file": "assets/heroes/forms/shadow/form-3/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "file": "assets/heroes/forms/shadow/form-3/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
           "heads": [
             [
-              145,
-              74
+              148,
+              84
             ],
             [
-              145,
-              74
+              148,
+              84
             ],
             [
-              145,
-              75
+              148,
+              84
             ],
             [
-              144,
-              74
+              148,
+              84
             ],
             [
-              145,
-              74
+              148,
+              84
             ],
             [
-              145,
-              74
+              148,
+              84
+            ],
+            [
+              148,
+              84
+            ],
+            [
+              148,
+              84
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 120,
+          "pendingArt": "run"
         }
       }
     }
