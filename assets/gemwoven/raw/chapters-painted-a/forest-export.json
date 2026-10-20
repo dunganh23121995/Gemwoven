@@ -1,0 +1,21 @@
+{
+  "theme": "forest",
+  "tool": "built-in image_gen",
+  "raw_size": [
+    941,
+    1672
+  ],
+  "output_size": [
+    941,
+    1672
+  ],
+  "source_size": [
+    941,
+    1672
+  ],
+  "quality": 95,
+  "method": 6,
+  "output_bytes": 634908,
+  "geometry_review": "Visually compared platforms, stairs, top sanctuary, path bends, silhouettes and distant landmarks with source; same route and original broad coordinates preserved.",
+  "source_unchanged": true
+}

@@ -18,6 +18,7 @@ function mountActorHead(side){
 }
 function updateActorHead(sprite,action,frame){
   const root=sprite.parentElement;if(!root?.classList.contains('actor'))return;
+  root.style.setProperty('--foot-y',spriteDefinition(sprite.dataset.family,sprite.dataset.key,'idle').sheet.footY||.94);
   const pin=root.querySelector('.actor-head-anchor');if(!pin)return;
   const frames=HEAD_LANDMARKS[sprite.dataset.family][sprite.dataset.key]||{};
   const mapped=spriteDefinition(sprite.dataset.family,sprite.dataset.key,action).action;

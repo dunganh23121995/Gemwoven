@@ -1,0 +1,47 @@
+{
+  "tool": "built-in image_gen",
+  "style_references": [
+    "assets/gemwoven/backgrounds/home-leaf-detail.webp",
+    "assets/gemwoven/items/home-shop-painted.webp"
+  ],
+  "target": "baked_scene_mode / opaque menu background only",
+  "processing": "RGB opaque full-bleed, original 941x1672 canvas, exact lossless WebP. All raw PNGs and prompts retained. Original sources untouched.",
+  "assets": [
+    {
+      "name": "inventory",
+      "raw_size": [
+        941,
+        1672
+      ],
+      "final_size": [
+        941,
+        1672
+      ],
+      "lossless_equal": true
+    },
+    {
+      "name": "skills",
+      "raw_size": [
+        941,
+        1672
+      ],
+      "final_size": [
+        941,
+        1672
+      ],
+      "lossless_equal": true
+    },
+    {
+      "name": "upgrade",
+      "raw_size": [
+        941,
+        1672
+      ],
+      "final_size": [
+        941,
+        1672
+      ],
+      "lossless_equal": true
+    }
+  ]
+}

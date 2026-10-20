@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "name": "fire-form-2",
+  "processing": {
+    "cell_size": 256,
+    "fit_scale": 0.8,
+    "trim_border": 0,
+    "edge_clean_depth": 0,
+    "align": "feet",
+    "shared_scale": true,
+    "scale_strategy": "preserve",
+    "component_mode": "largest",
+    "component_padding": 0,
+    "min_component_area": 1,
+    "edge_touch_margin": 0
+  },
+  "output_origin": [
+    128.0,
+    231
+  ],
+  "reference": {
+    "target": "player",
+    "mode": "idle",
+    "rows": 4,
+    "cols": 2,
+    "body_scale_mean": 0.5802039518215532,
+    "body_scale_cv": 0.0028729717691789607,
+    "anchor_y_mean": 0.92529296875
+  },
+  "qc": {
+    "max_body_scale_drift": 0.08
+  }
+}

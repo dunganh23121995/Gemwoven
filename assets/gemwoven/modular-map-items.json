@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "coordinateConvention": "Source-image pixels; floorAnchor is the actor foot point",
+  "items": {
+    "map-sky-earth": {
+      "file": "assets/scenes/painted/earth-far.webp",
+      "width": 1536,
+      "height": 768,
+      "purpose": "Scenery only; no stage registration"
+    },
+    "map-sky-fire": {
+      "file": "assets/scenes/painted/fire-far.webp",
+      "width": 1536,
+      "height": 768,
+      "purpose": "Scenery only; no stage registration"
+    },
+    "map-sky-ice": {
+      "file": "assets/scenes/painted/ice-far.webp",
+      "width": 1536,
+      "height": 768,
+      "purpose": "Scenery only; no stage registration"
+    },
+    "map-sky-lightning": {
+      "file": "assets/scenes/painted/lightning-far.webp",
+      "width": 1536,
+      "height": 768,
+      "purpose": "Scenery only; no stage registration"
+    },
+    "map-platform-a": {
+      "file": "modular-map/platform-a.webp",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        107
+      ],
+      "sockets": {
+        "left": [
+          28,
+          112
+        ],
+        "right": [
+          484,
+          112
+        ]
+      },
+      "transparent": true
+    },
+    "map-platform-b": {
+      "file": "modular-map/platform-a.webp",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        107
+      ],
+      "sockets": {
+        "left": [
+          28,
+          112
+        ],
+        "right": [
+          484,
+          112
+        ]
+      },
+      "transparent": true
+    },
+    "map-bridge": {
+      "file": "modular-map/bridge.webp",
+      "width": 400,
+      "height": 100,
+      "transparent": true
+    },
+    "bean-leaf": {
+      "file": "beanstalk/leaf-platform.png",
+      "png": "leaf-platform.png",
+      "size": [
+        512,
+        320
+      ],
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "renderLayer": "behind-actors",
+      "defaultDirection": "petiole-left, leaf-tip-right",
+      "mirrorRule": "For the opposite side reflect all x coordinates as width-x.",
+      "raw": "raw/leaf-platform.png",
+      "prompt": "leaf-platform.prompt.txt",
+      "postprocess": "Horizontal mirror, Lanczos resize to 512x320, remove disconnected alpha specks while retaining 2px antialias fringe.",
+      "suggestedDisplayWidth": 350,
+      "width": 512,
+      "height": 320,
+      "transparent": true
+    },
+    "bean-stem": {
+      "schema": "gemwoven.beanstalk-double-stem.v1",
+      "file": "beanstalk/double-stem.png",
+      "png": "double-stem.png",
+      "size": [
+        384,
+        512
+      ],
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ],
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ],
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1,
+        "policy": "Align endpoint sockets; 1 source pixel overlap. End-strip crossfade is baked into this seamless export."
+      },
+      "renderLayer": "behind-leaves-and-actors, in-front-of-branch-roots",
+      "raw": "raw/double-stem.png",
+      "rawSize": [
+        1086,
+        1448
+      ],
+      "prompt": "double-stem.prompt.txt",
+      "exporter": "export-double-stem.py",
+      "generation": {
+        "tool": "built-in image_gen",
+        "artAgentModel": "gpt-6-astra",
+        "artAgentReasoning": "high",
+        "rawPreserved": true,
+        "styleReferences": [
+          "stem-segment.png",
+          "leaf-platform.png"
+        ]
+      },
+      "postprocess": "Remove disconnected alpha specks; Lanczos resize384x512; register both32px end strips to114px opaque width centered192 with smooth64px transition bands; crossfade generated strips in premultiplied alpha, remove duplicate32px strip, resize vertically to512; normalize final endpoints114px centered192. Lossless PNG/WebP.",
+      "notes": "Exactly two substantial intertwined stems. Source opaque endpoint width is2x the original stem's57px. Two small tendrils; no new leaf platforms or runtime code.",
+      "width": 384,
+      "height": 512,
+      "transparent": true
+    },
+    "bean-branch": {
+      "file": "beanstalk/branch-segment.png",
+      "png": "branch-segment.png",
+      "size": [
+        256,
+        96
+      ],
+      "sockets": {
+        "start": [
+          23,
+          49
+        ],
+        "end": [
+          242,
+          44
+        ]
+      },
+      "defaultDirection": "thick stem socket left, tapered leaf socket right",
+      "renderLayer": "behind-leaves",
+      "raw": "raw/branch-segment-magenta.png",
+      "cleanedSource": "raw/branch-segment-keyed.png",
+      "prompt": "branch-segment-magenta.prompt.txt",
+      "postprocess": "Sprite skill process single asset, largest component, threshold100 edgeThreshold150; crop [360,190,1704,550], resize240x64, paste[8,16] in256x96 canvas, remove disconnected alpha specks.",
+      "rejectedRaws": [
+        "raw/branch-segment.png",
+        "raw/branch-segment-clean-attempt.png"
+      ],
+      "rejectedPrompts": [
+        "branch-segment.prompt.txt",
+        "branch-segment-clean.prompt.txt"
+      ],
+      "width": 256,
+      "height": 96,
+      "transparent": true
+    }
+  }
+}

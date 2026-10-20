@@ -16,6 +16,11 @@ for(const [index,best,cleared,seals]of [[1,0,0,0],[1,1,1,1598],[50,0,49,0],[1010
 }
 assert.deepEqual(Object.keys(e.read().heroes),['novice']);assert.equal(e.read().wallet.gems,0);
 const reload=M.makeEngine(f.storage,{now:()=>clock,random:()=>roll});assert.equal(reload.read().heroes.novice.copies,1);
+{ // Local preview test balance: opt-in only, granted once, never through the reward pipeline.
+  const map=new Map(),storage={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)},opts={previewTickets:true,previewGems:true,now:()=>clock,random:()=>roll};
+  const preview=M.makeEngine(storage,opts);assert.equal(preview.read().wallet.gems,120000);assert.equal(preview.read().wallet.tickets,1000);
+  const again=M.makeEngine(storage,opts);assert.equal(again.read().wallet.gems,120000,'Preview gems are granted once');assert.equal(again.read().wallet.tickets,1000);
+}
 e.claimDaily('login');assert.equal(e.read().wallet.tickets,1);assert.throws(()=>e.claimDaily('login'));
 const before=e.exportSave();assert.throws(()=>e.summon(10));assert.equal(e.exportSave(),before,'Failed spending must be atomic');
 assert.throws(()=>e.summon(1,'gold'));assert.throws(()=>e.buy('gems'));assert.throws(()=>e.buy('tickets'));

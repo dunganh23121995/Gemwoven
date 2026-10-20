@@ -1,0 +1,16 @@
+{
+  "generator": "built-in ImageGen",
+  "artAgentModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "created": "2026-10-20",
+  "originalsUntouched": true,
+  "rawSha256": {
+    "attack-raw.png": "050284ee8faa400d2a33b4218ee76238314e961369df648c7610ebe8bd449792",
+    "cast-raw.png": "08a8a3f09de8d1068537f67eeb30e9c06ff7dfc3bcfd2dd9029d878d3a697e70",
+    "idle-raw.png": "4d3b36d3f4ca9f7006943c2b709365eeadbd8c002a64cfb9ff7199b89eb1232b",
+    "run-raw.png": "94647d4e1996db661eb7cc58ba6457ee838a747ecf7e341e7d3c0d95ceda0896"
+  },
+  "actions": "Separate idle8 (2x4), attack6/cast6/run6 (3x2)",
+  "processing": "Shared scale profiles; magenta key; transparent256pxcells; translation-only final visible bottom241; no per-frame rescale",
+  "notes": "Lumi form3 uses airborne center alignment; exact prompts and rejected wide Yuki3 attack retained."
+}

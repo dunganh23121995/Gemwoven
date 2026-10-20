@@ -34,7 +34,13 @@ const ENCOUNTER_SCENES={
 function renderEncounterScene(){
   const key=state.enemyKey,land=$('landscape');
   $('scene').dataset.biome=key;
-  land.innerHTML=ART.parallax[key].map((src,i)=>`<img class="encounter-scenery parallax-layer" data-depth="${i}" data-speed="${[.18,.52,1][i]}" src="${src}" alt="" draggable="false">`).join('');
+  land.innerHTML=ART.parallax[key].map((src,i)=>`<img class="encounter-scenery parallax-layer" data-depth="${i}" data-speed="${[.18,1,1.25][i]}" src="${src}" alt="" draggable="false">`).join('');
+  if(ART.chapterVista){
+    const far=land.firstElementChild,depth=document.createElement('div');
+    depth.className='encounter-scenery parallax-layer';depth.dataset.depth='0';depth.dataset.speed='.18';
+    far.className='far-panorama';far.replaceWith(depth);depth.append(far);
+    const vista=document.createElement('img');vista.className='chapter-vista';vista.src=ART.chapterVista;vista.alt='';depth.append(vista);
+  }
   $('scene').dataset.cameraX='0';
   mountSceneAmbience();
   land.classList.toggle('boss-landscape',state.boss);

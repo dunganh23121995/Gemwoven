@@ -3,6 +3,7 @@ from pathlib import Path
 import base64
 import json
 import sys
+import io
 from PIL import Image
 
 root = Path(__file__).resolve().parent
@@ -16,6 +17,17 @@ def image(path):
     return f'data:{mime};base64,' + base64.b64encode(p.read_bytes()).decode('ascii')
 
 
+def compact_image(path):
+    """Embed a lossless source sheet as high-quality lossy WebP.
+
+    Star-form atlases would otherwise push the tracked Game.html past GitHub's
+    100 MB file limit; the lossless originals stay in the repository.
+    """
+    buffer = io.BytesIO()
+    Image.open(root / path).convert('RGBA').save(buffer, 'WEBP', quality=95, method=6, alpha_quality=100)
+    return 'data:image/webp;base64,' + base64.b64encode(buffer.getvalue()).decode('ascii')
+
+
 def atlas(path, cols, rows, count, fallback):
     if not (root / path).exists():
         if not draft:
@@ -27,7 +39,7 @@ def atlas(path, cols, rows, count, fallback):
 art = {'heroes': {}, 'enemies': {}, 'items': {}, 'landscape': image('assets/landscape.webp')}
 art['skillFx'] = {'yukiBoulder': image('assets/fx/yuki/boulder.webp'), 'mikaBlade': image('assets/fx/mika/blade.webp'), 'mikaWave': image('assets/fx/mika/wave.webp'), 'mikaExplosion': image('assets/fx/mika/explosion.webp')}
 art['scenes'] = {key: image(f'assets/scenes/{key}.webp') for key in keys}
-art['parallax'] = {key: [image(f'assets/scenes/{key}-{layer}.webp') for layer in ['far', 'mid', 'near']] for key in keys}
+art['parallax'] = {key: [image(f'assets/scenes/painted/{key}-{layer}.webp') for layer in ['far', 'mid', 'near']] for key in keys}
 voice_manifest=json.loads((root/'assets/audio/manifest.json').read_text(encoding='utf-8'))
 voice_manifest.update(json.loads((root/'assets/audio/creature-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/noct-manifest.json').read_text(encoding='utf-8')))
@@ -125,16 +137,43 @@ for name in ['boss-expansion-a','boss-expansion-b']:
     for key,data in json.loads(path.read_text(encoding='utf-8'))['bosses'].items():
         art['worldBosses'][key]={action:{**data[action],'src':image(data[action]['src'] if data[action]['src'].startswith('assets/') else 'assets/gemwoven/'+data[action]['src'])} for action in ['idle','cast','attack','hurt']}
 
+# Use each idle sheet's opaque feet, rather than the bottom of its transparent canvas.
+def register_feet(sheet):
+    im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA')
+    frame=im.crop((0,0,im.width//sheet['cols'],im.height//sheet['rows']))
+    bounds=frame.getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
+    sheet['footY']=round(bounds[3]/frame.height,5) if bounds else .94
+    sheet['bodyHeight']=round((bounds[3]-bounds[1])/frame.height,5) if bounds else .75
+art['heroForms']={}
+art['formAuras']={}
+for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
+    data=json.loads(catalog.read_text(encoding='utf-8'))
+    art['formAuras'][catalog.parent.name]={**data,'src':image(data['file'])}
+for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
+    data=json.loads(catalog.read_text(encoding='utf-8'));forms={}
+    for form,entry in data['forms'].items():
+        actions={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in entry['actions'].items()}
+        actions['buff']=actions['cast'];actions['hover']=actions['run']
+        register_feet(actions['idle']);forms[form]=actions
+    art['heroForms'][data['hero']]=forms
+for family in ['heroes','enemies','bosses','worldBosses']:
+    for character in art[family].values():register_feet(character['idle'])
+for sheet in art['campaignCreatures'].values():register_feet(sheet)
+
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                 for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css'])
 css += '\n'+(root/'src/progression-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/expedition-combat.css').read_text(encoding='utf-8')
+css += '\n'+(root/'src/gemwoven/hero-forms.css').read_text(encoding='utf-8')
+css += '\n'+(root/'src/hero-forms-combat.css').read_text(encoding='utf-8')
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART=' + json.dumps(art, separators=(',', ':')) + ';\n'
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                         for p in ['audio-settings.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
+extensions += '\n'+(root/'src/gemwoven/form-effects.js').read_text(encoding='utf-8')
+extensions += '\n'+(root/'src/hero-forms-combat.js').read_text(encoding='utf-8')
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
 html = html.replace('/* GAME_CSS */', css).replace('/* GAME_JS */', js)
 (root / 'Game.html').write_text(html, encoding='utf-8')

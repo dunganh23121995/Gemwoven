@@ -1,0 +1,637 @@
+{
+  "schema": "gemwoven.beanstalk-themes.v1",
+  "themes": {
+    "reaper": {
+      "stem": "bean-reaper-stem",
+      "leaf": "bean-reaper-leaf",
+      "branch": "bean-reaper-branch"
+    },
+    "roc": {
+      "stem": "bean-roc-stem",
+      "leaf": "bean-roc-leaf",
+      "branch": "bean-roc-branch"
+    },
+    "briar": {
+      "stem": "bean-briar-stem",
+      "leaf": "bean-briar-leaf",
+      "branch": "bean-briar-branch"
+    },
+    "seraph": {
+      "stem": "bean-seraph-stem",
+      "leaf": "bean-seraph-leaf",
+      "branch": "bean-seraph-branch"
+    },
+    "eclipse": {
+      "stem": "bean-eclipse-stem",
+      "leaf": "bean-eclipse-leaf",
+      "branch": "bean-eclipse-branch"
+    },
+    "elderbloom": {
+      "stem": "bean-elderbloom-stem",
+      "leaf": "bean-elderbloom-leaf",
+      "branch": "bean-elderbloom-branch"
+    },
+    "cinderheart": {
+      "stem": "bean-cinderheart-stem",
+      "leaf": "bean-cinderheart-leaf",
+      "branch": "bean-cinderheart-branch"
+    },
+    "frostregent": {
+      "stem": "bean-frostregent-stem",
+      "leaf": "bean-frostregent-leaf",
+      "branch": "bean-frostregent-branch"
+    }
+  },
+  "items": {
+    "bean-reaper-stem": {
+      "file": "beanstalk/themes/reaper/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-reaper-leaf": {
+      "file": "beanstalk/themes/reaper/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-reaper-branch": {
+      "file": "beanstalk/themes/reaper/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          43
+        ],
+        "end": [
+          240,
+          34
+        ]
+      }
+    },
+    "bean-roc-stem": {
+      "file": "beanstalk/themes/roc/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-roc-leaf": {
+      "file": "beanstalk/themes/roc/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-roc-branch": {
+      "file": "beanstalk/themes/roc/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          43
+        ],
+        "end": [
+          240,
+          36
+        ]
+      }
+    },
+    "bean-briar-stem": {
+      "file": "beanstalk/themes/briar/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-briar-leaf": {
+      "file": "beanstalk/themes/briar/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-briar-branch": {
+      "file": "beanstalk/themes/briar/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          50
+        ],
+        "end": [
+          240,
+          41
+        ]
+      }
+    },
+    "bean-seraph-stem": {
+      "file": "beanstalk/themes/seraph/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-seraph-leaf": {
+      "file": "beanstalk/themes/seraph/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-seraph-branch": {
+      "file": "beanstalk/themes/seraph/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          46
+        ],
+        "end": [
+          240,
+          29
+        ]
+      }
+    },
+    "bean-eclipse-stem": {
+      "file": "beanstalk/themes/eclipse/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          250
+        ],
+        [
+          135,
+          250
+        ]
+      ]
+    },
+    "bean-eclipse-leaf": {
+      "file": "beanstalk/themes/eclipse/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-eclipse-branch": {
+      "file": "beanstalk/themes/eclipse/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          46
+        ],
+        "end": [
+          240,
+          25
+        ]
+      }
+    },
+    "bean-elderbloom-stem": {
+      "file": "beanstalk/themes/elderbloom/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-elderbloom-leaf": {
+      "file": "beanstalk/themes/elderbloom/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-elderbloom-branch": {
+      "file": "beanstalk/themes/elderbloom/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          44
+        ],
+        "end": [
+          240,
+          27
+        ]
+      }
+    },
+    "bean-cinderheart-stem": {
+      "file": "beanstalk/themes/cinderheart/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-cinderheart-leaf": {
+      "file": "beanstalk/themes/cinderheart/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-cinderheart-branch": {
+      "file": "beanstalk/themes/cinderheart/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          56
+        ],
+        "end": [
+          240,
+          43
+        ]
+      }
+    },
+    "bean-frostregent-stem": {
+      "file": "beanstalk/themes/frostregent/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueBounds": [
+        [
+          135,
+          249
+        ],
+        [
+          135,
+          249
+        ]
+      ]
+    },
+    "bean-frostregent-leaf": {
+      "file": "beanstalk/themes/frostregent/leaf.png",
+      "width": 512,
+      "height": 320,
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          100,
+          30
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-frostregent-branch": {
+      "file": "beanstalk/themes/frostregent/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          20,
+          46
+        ],
+        "end": [
+          240,
+          40
+        ]
+      }
+    }
+  },
+  "generation": {
+    "tool": "built-in image_gen",
+    "artAgentModel": "gpt-6-astra",
+    "artAgentReasoning": "high",
+    "rawPreserved": true
+  }
+}

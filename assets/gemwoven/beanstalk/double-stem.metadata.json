@@ -1,0 +1,58 @@
+{
+  "schema": "gemwoven.beanstalk-double-stem.v1",
+  "file": "double-stem.webp",
+  "png": "double-stem.png",
+  "size": [
+    384,
+    512
+  ],
+  "sockets": {
+    "start": [
+      192,
+      0
+    ],
+    "end": [
+      192,
+      512
+    ]
+  },
+  "endpointOpaqueWidths": [
+    114,
+    114
+  ],
+  "endpointOpaqueBounds": [
+    [
+      135,
+      249
+    ],
+    [
+      135,
+      249
+    ]
+  ],
+  "repeat": {
+    "axis": "vertical",
+    "overlapSourcePixels": 1,
+    "policy": "Align endpoint sockets; 1 source pixel overlap. End-strip crossfade is baked into this seamless export."
+  },
+  "renderLayer": "behind-leaves-and-actors, in-front-of-branch-roots",
+  "raw": "raw/double-stem.png",
+  "rawSize": [
+    1086,
+    1448
+  ],
+  "prompt": "double-stem.prompt.txt",
+  "exporter": "export-double-stem.py",
+  "generation": {
+    "tool": "built-in image_gen",
+    "artAgentModel": "gpt-6-astra",
+    "artAgentReasoning": "high",
+    "rawPreserved": true,
+    "styleReferences": [
+      "stem-segment.png",
+      "leaf-platform.png"
+    ]
+  },
+  "postprocess": "Remove disconnected alpha specks; Lanczos resize384x512; register both32px end strips to114px opaque width centered192 with smooth64px transition bands; crossfade generated strips in premultiplied alpha, remove duplicate32px strip, resize vertically to512; normalize final endpoints114px centered192. Lossless PNG/WebP.",
+  "notes": "Exactly two substantial intertwined stems. Source opaque endpoint width is2x the original stem's57px. Two small tendrils; no new leaf platforms or runtime code."
+}

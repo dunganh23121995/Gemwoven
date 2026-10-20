@@ -1,0 +1,11 @@
+.scene .hero-actor{--actor-size:calc(min(clamp(180px,48vw,213px),74cqh) * var(--hero-art-scale,1))}
+.scene .hero-actor[data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
+.scene .hero-actor[data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 9px var(--element)) brightness(1.06)}
+.scene .hero-actor .combat-form-aura{inset:12% 5% calc((1 - var(--foot-y,.94)) * 100%);z-index:0;pointer-events:none}
+.cast-star-form-2,.cast-star-form-3{mix-blend-mode:screen;filter:drop-shadow(0 0 6px var(--combat-main))}
+.cast-star-form-3{filter:drop-shadow(0 0 10px var(--combat-main))}
+.scene .hero-actor[data-hero-element="shadow"][data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
+.scene .hero-actor[data-hero-element="shadow"][data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 8px #06020f) drop-shadow(0 0 3px #8656ba)}
+.cast-shadow:is(.cast-star-form-2,.cast-star-form-3,.cast-form-weapon-2,.cast-form-weapon-3){mix-blend-mode:normal;--combat-light:#9871b8!important;--combat-main:#362047!important;filter:drop-shadow(0 0 9px #090310)}
+body.ambience-paused .hero-form-aura *{animation-play-state:paused!important}
+body.reduced-motion .hero-form-aura *{animation:none!important}

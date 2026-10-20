@@ -1,0 +1,805 @@
+{
+  "schema": "gemwoven.beanstalk-theme-art.v1",
+  "generation": {
+    "tool": "built-in image_gen",
+    "artAgentModel": "gpt-6-astra",
+    "artAgentReasoning": "high",
+    "rawPreserved": true
+  },
+  "themes": {
+    "fire": {
+      "stem": "bean-fire-stem",
+      "leaf": "bean-fire-leaf",
+      "branch": "bean-fire-branch"
+    },
+    "ice": {
+      "stem": "bean-ice-stem",
+      "leaf": "bean-ice-leaf",
+      "branch": "bean-ice-branch"
+    },
+    "lightning": {
+      "stem": "bean-lightning-stem",
+      "leaf": "bean-lightning-leaf",
+      "branch": "bean-lightning-branch"
+    },
+    "mire": {
+      "stem": "bean-mire-stem",
+      "leaf": "bean-mire-leaf",
+      "branch": "bean-mire-branch"
+    },
+    "scarab": {
+      "stem": "bean-scarab-stem",
+      "leaf": "bean-scarab-leaf",
+      "branch": "bean-scarab-branch"
+    },
+    "leviathan": {
+      "stem": "bean-leviathan-stem",
+      "leaf": "bean-leviathan-leaf",
+      "branch": "bean-leviathan-branch"
+    },
+    "colossus": {
+      "stem": "bean-colossus-stem",
+      "leaf": "bean-colossus-leaf",
+      "branch": "bean-colossus-branch"
+    },
+    "prism": {
+      "stem": "bean-prism-stem",
+      "leaf": "bean-prism-leaf",
+      "branch": "bean-prism-branch"
+    }
+  },
+  "items": {
+    "bean-fire-stem": {
+      "file": "beanstalk/themes/fire/stem.webp",
+      "png": "beanstalk/themes/fire/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-fire-leaf": {
+      "file": "beanstalk/themes/fire/leaf.webp",
+      "png": "beanstalk/themes/fire/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          160
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-fire-branch": {
+      "file": "beanstalk/themes/fire/branch.webp",
+      "png": "beanstalk/themes/fire/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          23,
+          46
+        ],
+        "end": [
+          242,
+          40
+        ]
+      }
+    },
+    "bean-ice-stem": {
+      "file": "beanstalk/themes/ice/stem.webp",
+      "png": "beanstalk/themes/ice/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-ice-leaf": {
+      "file": "beanstalk/themes/ice/leaf.webp",
+      "png": "beanstalk/themes/ice/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-ice-branch": {
+      "file": "beanstalk/themes/ice/branch.webp",
+      "png": "beanstalk/themes/ice/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          23,
+          46
+        ],
+        "end": [
+          242,
+          40
+        ]
+      }
+    },
+    "bean-lightning-stem": {
+      "file": "beanstalk/themes/lightning/stem.webp",
+      "png": "beanstalk/themes/lightning/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-lightning-leaf": {
+      "file": "beanstalk/themes/lightning/leaf.webp",
+      "png": "beanstalk/themes/lightning/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          160
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-lightning-branch": {
+      "file": "beanstalk/themes/lightning/branch.webp",
+      "png": "beanstalk/themes/lightning/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          23,
+          44
+        ],
+        "end": [
+          242,
+          38
+        ]
+      }
+    },
+    "bean-mire-stem": {
+      "file": "beanstalk/themes/mire/stem.webp",
+      "png": "beanstalk/themes/mire/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-mire-leaf": {
+      "file": "beanstalk/themes/mire/leaf.webp",
+      "png": "beanstalk/themes/mire/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          145
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-mire-branch": {
+      "file": "beanstalk/themes/mire/branch.webp",
+      "png": "beanstalk/themes/mire/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          23,
+          48
+        ],
+        "end": [
+          242,
+          46
+        ]
+      }
+    },
+    "bean-scarab-stem": {
+      "file": "beanstalk/themes/scarab/stem.webp",
+      "png": "beanstalk/themes/scarab/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-scarab-leaf": {
+      "file": "beanstalk/themes/scarab/leaf.webp",
+      "png": "beanstalk/themes/scarab/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          150
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-scarab-branch": {
+      "file": "beanstalk/themes/scarab/branch.webp",
+      "png": "beanstalk/themes/scarab/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          23,
+          46
+        ],
+        "end": [
+          242,
+          38
+        ]
+      }
+    },
+    "bean-leviathan-stem": {
+      "file": "beanstalk/themes/leviathan/stem.webp",
+      "png": "beanstalk/themes/leviathan/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-leviathan-leaf": {
+      "file": "beanstalk/themes/leviathan/leaf.webp",
+      "png": "beanstalk/themes/leviathan/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          148
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-leviathan-branch": {
+      "file": "beanstalk/themes/leviathan/branch.webp",
+      "png": "beanstalk/themes/leviathan/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "sockets": {
+        "start": [
+          23,
+          48
+        ],
+        "end": [
+          242,
+          45
+        ]
+      }
+    },
+    "bean-colossus-stem": {
+      "file": "beanstalk/themes/colossus/stem.webp",
+      "png": "beanstalk/themes/colossus/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+      "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+      "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+      "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+      "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-colossus-leaf": {
+      "file": "beanstalk/themes/colossus/leaf.webp",
+      "png": "beanstalk/themes/colossus/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+      "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+      "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+      "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+      "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          162
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-colossus-branch": {
+      "file": "beanstalk/themes/colossus/branch.webp",
+      "png": "beanstalk/themes/colossus/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+      "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+      "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+      "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+      "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+      "sockets": {
+        "start": [
+          23,
+          46
+        ],
+        "end": [
+          242,
+          36
+        ]
+      }
+    },
+    "bean-prism-stem": {
+      "file": "beanstalk/themes/prism/stem.webp",
+      "png": "beanstalk/themes/prism/stem.png",
+      "width": 384,
+      "height": 512,
+      "size": [
+        384,
+        512
+      ],
+      "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+      "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+      "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+      "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+      "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-prism-leaf": {
+      "file": "beanstalk/themes/prism/leaf.webp",
+      "png": "beanstalk/themes/prism/leaf.png",
+      "width": 512,
+      "height": 320,
+      "size": [
+        512,
+        320
+      ],
+      "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+      "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+      "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+      "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+      "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "sockets": {
+        "attach": [
+          14,
+          164
+        ]
+      },
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none",
+      "defaultDirection": "petiole-left, leaf-tip-right"
+    },
+    "bean-prism-branch": {
+      "file": "beanstalk/themes/prism/branch.webp",
+      "png": "beanstalk/themes/prism/branch.png",
+      "width": 256,
+      "height": 96,
+      "size": [
+        256,
+        96
+      ],
+      "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+      "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+      "renderLayer": "behind-actors",
+      "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+      "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+      "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+      "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+      "sockets": {
+        "start": [
+          23,
+          42
+        ],
+        "end": [
+          242,
+          35
+        ]
+      }
+    }
+  }
+}

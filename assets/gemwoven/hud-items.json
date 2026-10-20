@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "items": {
+    "hud-side-card": {
+      "file": "hud-connections/hanging-card.png",
+      "width": 256,
+      "height": 384,
+      "safeRects": {
+        "icon": [
+          72,
+          90,
+          112,
+          110
+        ],
+        "label": [
+          35,
+          215,
+          186,
+          60
+        ]
+      },
+      "sockets": {
+        "top": [
+          [
+            36,
+            24
+          ],
+          [
+            220,
+            24
+          ]
+        ],
+        "bottom": [
+          [
+            36,
+            338
+          ],
+          [
+            220,
+            338
+          ]
+        ]
+      },
+      "transparent": true
+    },
+    "hud-chain": {
+      "file": "hud-connections/gold-chain.png",
+      "width": 48,
+      "height": 256,
+      "transparent": true
+    },
+    "hud-menu-vine": {
+      "file": "hud-connections/vine-terminal-left.png",
+      "width": 180,
+      "height": 240,
+      "transparent": true
+    }
+  }
+}

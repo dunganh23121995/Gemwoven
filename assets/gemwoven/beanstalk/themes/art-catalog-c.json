@@ -1,0 +1,650 @@
+{
+  "themes": {
+    "tempestwing": {
+      "stem": "bean-tempestwing-stem",
+      "leaf": "bean-tempestwing-leaf",
+      "branch": "bean-tempestwing-branch"
+    },
+    "souljailer": {
+      "stem": "bean-souljailer-stem",
+      "leaf": "bean-souljailer-leaf",
+      "branch": "bean-souljailer-branch"
+    },
+    "sporefather": {
+      "stem": "bean-sporefather-stem",
+      "leaf": "bean-sporefather-leaf",
+      "branch": "bean-sporefather-branch"
+    },
+    "prismback": {
+      "stem": "bean-prismback-stem",
+      "leaf": "bean-prismback-leaf",
+      "branch": "bean-prismback-branch"
+    },
+    "sandchronarch": {
+      "stem": "bean-sandchronarch-stem",
+      "leaf": "bean-sandchronarch-leaf",
+      "branch": "bean-sandchronarch-branch"
+    },
+    "coraltide": {
+      "stem": "bean-coraltide-stem",
+      "leaf": "bean-coraltide-leaf",
+      "branch": "bean-coraltide-branch"
+    },
+    "moonfang": {
+      "stem": "bean-moonfang-stem",
+      "leaf": "bean-moonfang-leaf",
+      "branch": "bean-moonfang-branch"
+    }
+  },
+  "items": {
+    "bean-tempestwing-stem": {
+      "file": "beanstalk/themes/tempestwing/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-tempestwing-leaf": {
+      "file": "beanstalk/themes/tempestwing/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          160
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-tempestwing-branch": {
+      "file": "beanstalk/themes/tempestwing/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          45
+        ],
+        "end": [
+          242,
+          44
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    },
+    "bean-souljailer-stem": {
+      "file": "beanstalk/themes/souljailer/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-souljailer-leaf": {
+      "file": "beanstalk/themes/souljailer/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          159
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-souljailer-branch": {
+      "file": "beanstalk/themes/souljailer/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          44
+        ],
+        "end": [
+          242,
+          40
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    },
+    "bean-sporefather-stem": {
+      "file": "beanstalk/themes/sporefather/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-sporefather-leaf": {
+      "file": "beanstalk/themes/sporefather/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          174
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-sporefather-branch": {
+      "file": "beanstalk/themes/sporefather/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          44
+        ],
+        "end": [
+          242,
+          38
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    },
+    "bean-prismback-stem": {
+      "file": "beanstalk/themes/prismback/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-prismback-leaf": {
+      "file": "beanstalk/themes/prismback/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          148
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-prismback-branch": {
+      "file": "beanstalk/themes/prismback/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          48
+        ],
+        "end": [
+          242,
+          48
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    },
+    "bean-sandchronarch-stem": {
+      "file": "beanstalk/themes/sandchronarch/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-sandchronarch-leaf": {
+      "file": "beanstalk/themes/sandchronarch/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          144
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-sandchronarch-branch": {
+      "file": "beanstalk/themes/sandchronarch/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          46
+        ],
+        "end": [
+          242,
+          52
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    },
+    "bean-coraltide-stem": {
+      "file": "beanstalk/themes/coraltide/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-coraltide-leaf": {
+      "file": "beanstalk/themes/coraltide/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          152
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-coraltide-branch": {
+      "file": "beanstalk/themes/coraltide/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          48
+        ],
+        "end": [
+          242,
+          47
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    },
+    "bean-moonfang-stem": {
+      "file": "beanstalk/themes/moonfang/stem.png",
+      "width": 384,
+      "height": 512,
+      "sockets": {
+        "start": [
+          192,
+          0
+        ],
+        "end": [
+          192,
+          512
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c3/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c3/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1
+      },
+      "endpointOpaqueWidths": [
+        114,
+        114
+      ]
+    },
+    "bean-moonfang-leaf": {
+      "file": "beanstalk/themes/moonfang/leaf.png",
+      "width": 512,
+      "height": 320,
+      "sockets": {
+        "attach": [
+          14,
+          164
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c3/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c3/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      },
+      "floorAnchor": [
+        256,
+        142
+      ],
+      "actorSafeArea": {
+        "shape": "ellipse",
+        "center": [
+          256,
+          142
+        ],
+        "radii": [
+          110,
+          35
+        ]
+      },
+      "occlusionClass": "low",
+      "occupantPolicy": "none"
+    },
+    "bean-moonfang-branch": {
+      "file": "beanstalk/themes/moonfang/branch.png",
+      "width": 256,
+      "height": 96,
+      "sockets": {
+        "start": [
+          23,
+          44
+        ],
+        "end": [
+          242,
+          40
+        ]
+      },
+      "raw": "beanstalk/themes/raw/group-c3/raw-sheet.png",
+      "prompt": "beanstalk/themes/raw/group-c3/prompt-used.txt",
+      "generation": {
+        "tool": "built-in image_gen",
+        "model": "gpt-6-astra",
+        "reasoning": "high"
+      }
+    }
+  }
+}

@@ -18,7 +18,8 @@
     nodes=remove(nodes,new RegExp('\\.'+prefix+'-'));
     const entries=Object.entries(cost||{}).filter(([,n])=>n>0),[x,y,w,h]=rect,cw=w/Math.max(1,entries.length);
     entries.forEach(([id,n],i)=>{
-      nodes.push(button(key,prefix+'-'+i,`${short(id==='copies'?p.copies:owned(p,id))}/${short(n)}`,[x+i*cw+3,y,cw-6,h],'item:'+id,{}, {asset:'inventory-slot',icon:M.RESOURCES[id]?.[1]||'hero-fragment',iconRect:[cw*.2,7,cw*.6,h*.57],labelRect:[3,h*.69,cw-12,h*.26],size:entries.length>3?18:21,tone:'ink',className:((id==='copies'?p.copies:owned(p,id))>=n?'material-enough':'material-missing')}));
+      const available=id==='copies'?p.copies:owned(p,id),icon=id==='copies'?'portrait-'+(p.materialHero||p.selected):M.RESOURCES[id]?.[1]||'hero-fragment',well=h*.67,iconSize=Math.min(66,h*.52,cw-25);
+      nodes.push(button(key,prefix+'-'+i,`${short(available)} / ${short(n)}`,[x+i*cw+7,y,cw-14,h],'item:'+id,{}, {asset:'inventory-slot',icon,iconRect:[(cw-14-iconSize)/2,(well-iconSize)/2,iconSize,iconSize],labelRect:[0,well+3,cw-14,h-well-3],size:Math.min(entries.length>3?19:23,h*.22),tone:'gold',className:'material-tile '+(available>=n?'material-enough':'material-missing')}));
     });return nodes;
   }
   H.novice={...M.HEROES.novice,color:'#d3bd8b',weapon:'stat-attack',skills:[
@@ -90,6 +91,8 @@
     find(nodes,'featured-board').rect=[55,1170,832,170];label(nodes,'featured-title','Trang Bị Nổi Bật');label(nodes,'featured-note','Huyền Thoại · Thần\nTỷ lệ chi tiết bên dưới');find(nodes,'featured-note').rect=[575,1210,270,85];
     [['fire-sword','Kiếm Huyền Thoại','weapon','legendary'],['helmet','Giáp Thần','armor','divine'],['boots','Ủng Huyền Thoại','boots','legendary']].forEach(([asset,name,slot,rarity],i)=>nodes.push(button('summon','featured-gear-'+i,name,[85+i*150,1220,133,96],'journey:featured-gear',{slot,rarity,asset}, {asset:'inventory-slot',icon:asset,iconRect:[31,2,70,65],labelRect:[5,68,123,24],size:17,tone:'gold',className:'featured-equipment'})));
     label(nodes,'pity-label',`Còn ${300-p.summon.dry} lần tới bảo đảm tướng hiếm`);label(nodes,'pity-value',`${p.summon.dry} / 300`);find(nodes,'pity-meter').value=p.summon.dry/300;
+    nodes.push(button('summon','ticket-balance',`${fmt(p.wallet.tickets)} Vé Triệu Hồi`,[320,1130,301,40],'item:ticket',{},
+      {asset:'nameplate',icon:'ticket',iconRect:[14,3,36,34],labelRect:[53,5,234,28],size:21}));
     return nodes;
   }
   function quests(nodes,p,state,key){
@@ -115,7 +118,9 @@
       if(tab==='level'){if(h.level<500)c=M.levelCost(h.level);label(nodes,'level-preview',`Lv.${h.level} → Lv.${Math.min(500,h.level+1)}`);label(nodes,'upgrade-material-title','Nguyên liệu tăng cấp');disabled=!affordable(p,c);action(nodes,'upgrade-action','do:level',{hero},disabled);label(nodes,'upgrade-action',h.level===500?'Đã Tối Đa':'Tăng Level');}
       if(tab==='stars'){const s=h.stars<6?M.starCost(h.stars):null;c=s?{copies:s.copies,gold:s.gold,essence:s.essence}:null;label(nodes,'level-preview',`${h.stars} sao → ${Math.min(6,h.stars+1)} sao`);label(nodes,'upgrade-material-title','Bản sao · Vàng · Tinh hoa');disabled=!s||h.copies-1<s.copies||!affordable(p,{gold:s.gold,essence:s.essence});action(nodes,'upgrade-action','do:star',{hero},disabled);label(nodes,'upgrade-action','Tăng Sao');}
       if(tab==='evolution'){const e=M.EVOLUTION[h.evolution];c=e?{gold:e.gold,essence:e.essence,ore:e.ore}:null;label(nodes,'level-preview',`Tiến hóa ${h.evolution} / 6`);label(nodes,'upgrade-material-title',e?`Cần cấp ${e.level} · ${e.stars} sao`:'Đã lột xác toàn thân');disabled=!e||h.level<e.level||h.stars<e.stars||!affordable(p,c);action(nodes,'upgrade-action','do:evolve',{hero},disabled);label(nodes,'upgrade-action','Tiến Hóa');}
-      nodes=materials(nodes,'upgrade',{...p,copies:h.copies-1},c,[274,1155,409,130],'upgrade-materials');
+      find(nodes,'upgrade-material-panel').rect=[200,1096,541,230];
+      find(nodes,'upgrade-material-title').rect=[236,1124,469,35];
+      nodes=materials(nodes,'upgrade',{...p,copies:h.copies-1,materialHero:hero},c,[237,1170,467,130],'upgrade-materials');
       nodes.push(button('upgrade','select-active',p.selected===hero?'Đang xuất chiến':'Xuất chiến',[582,636,174,59],'do:select',{hero},{size:21,disabled:p.selected===hero}));
     }else{
       nodes=remove(nodes,/\.(stat-value-|upgrade-materials-)/);label(nodes,'level-preview','Chưa sở hữu');label(nodes,'exp-value',`${p.fragments[hero]||0} / 80 mảnh`);label(nodes,'hero-stars','☆☆☆☆☆☆');label(nodes,'upgrade-material-title','Ghép 80 mảnh để mở tướng');action(nodes,'upgrade-action','do:fuse',{hero},(p.fragments[hero]||0)<80);label(nodes,'upgrade-action','Ghép Tướng');find(nodes,'exp-meter').value=(p.fragments[hero]||0)/80;

@@ -1,0 +1,552 @@
+{
+  "group-b1": {
+    "reaper": {
+      "stem": {
+        "sourceCrop": [
+          59,
+          14,
+          227,
+          413
+        ],
+        "sourceSize": [
+          168,
+          399
+        ],
+        "alphaBounds": [
+          107,
+          0,
+          277,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          252,
+          135,
+          911,
+          382
+        ],
+        "sourceSize": [
+          659,
+          247
+        ],
+        "alphaBounds": [
+          10,
+          68,
+          502,
+          258
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          915,
+          214,
+          1235,
+          309
+        ],
+        "sourceSize": [
+          320,
+          95
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    },
+    "roc": {
+      "stem": {
+        "sourceCrop": [
+          59,
+          423,
+          224,
+          832
+        ],
+        "sourceSize": [
+          165,
+          409
+        ],
+        "alphaBounds": [
+          108,
+          0,
+          276,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          248,
+          525,
+          922,
+          791
+        ],
+        "sourceSize": [
+          674,
+          266
+        ],
+        "alphaBounds": [
+          10,
+          62,
+          502,
+          252
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          917,
+          624,
+          1239,
+          719
+        ],
+        "sourceSize": [
+          322,
+          95
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    },
+    "briar": {
+      "stem": {
+        "sourceCrop": [
+          52,
+          837,
+          223,
+          1243
+        ],
+        "sourceSize": [
+          171,
+          406
+        ],
+        "alphaBounds": [
+          110,
+          0,
+          272,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          242,
+          919,
+          917,
+          1195
+        ],
+        "sourceSize": [
+          675,
+          276
+        ],
+        "alphaBounds": [
+          10,
+          67,
+          502,
+          257
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          919,
+          1020,
+          1240,
+          1116
+        ],
+        "sourceSize": [
+          321,
+          96
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    }
+  },
+  "group-b2": {
+    "seraph": {
+      "stem": {
+        "sourceCrop": [
+          54,
+          10,
+          219,
+          418
+        ],
+        "sourceSize": [
+          165,
+          408
+        ],
+        "alphaBounds": [
+          95,
+          0,
+          289,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          236,
+          115,
+          910,
+          377
+        ],
+        "sourceSize": [
+          674,
+          262
+        ],
+        "alphaBounds": [
+          10,
+          62,
+          502,
+          252
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          918,
+          206,
+          1242,
+          298
+        ],
+        "sourceSize": [
+          324,
+          92
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    },
+    "eclipse": {
+      "stem": {
+        "sourceCrop": [
+          48,
+          421,
+          223,
+          841
+        ],
+        "sourceSize": [
+          175,
+          420
+        ],
+        "alphaBounds": [
+          96,
+          0,
+          288,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          235,
+          528,
+          926,
+          807
+        ],
+        "sourceSize": [
+          691,
+          279
+        ],
+        "alphaBounds": [
+          10,
+          63,
+          502,
+          253
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          918,
+          633,
+          1242,
+          728
+        ],
+        "sourceSize": [
+          324,
+          95
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    },
+    "elderbloom": {
+      "stem": {
+        "sourceCrop": [
+          44,
+          844,
+          210,
+          1247
+        ],
+        "sourceSize": [
+          166,
+          403
+        ],
+        "alphaBounds": [
+          116,
+          0,
+          264,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          235,
+          911,
+          925,
+          1211
+        ],
+        "sourceSize": [
+          690,
+          300
+        ],
+        "alphaBounds": [
+          10,
+          60,
+          502,
+          250
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          917,
+          1030,
+          1243,
+          1125
+        ],
+        "sourceSize": [
+          326,
+          95
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    }
+  },
+  "group-b3": {
+    "cinderheart": {
+      "stem": {
+        "sourceCrop": [
+          77,
+          15,
+          285,
+          501
+        ],
+        "sourceSize": [
+          208,
+          486
+        ],
+        "alphaBounds": [
+          114,
+          0,
+          268,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          321,
+          131,
+          1108,
+          443
+        ],
+        "sourceSize": [
+          787,
+          312
+        ],
+        "alphaBounds": [
+          10,
+          63,
+          502,
+          253
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          1075,
+          298,
+          1514,
+          420
+        ],
+        "sourceSize": [
+          439,
+          122
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    },
+    "frostregent": {
+      "stem": {
+        "sourceCrop": [
+          66,
+          512,
+          281,
+          1009
+        ],
+        "sourceSize": [
+          215,
+          497
+        ],
+        "alphaBounds": [
+          113,
+          0,
+          271,
+          512
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "leaf": {
+        "sourceCrop": [
+          320,
+          619,
+          1129,
+          941
+        ],
+        "sourceSize": [
+          809,
+          322
+        ],
+        "alphaBounds": [
+          10,
+          63,
+          502,
+          253
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      },
+      "branch": {
+        "sourceCrop": [
+          1079,
+          824,
+          1510,
+          935
+        ],
+        "sourceSize": [
+          431,
+          111
+        ],
+        "alphaBounds": [
+          8,
+          16,
+          248,
+          80
+        ],
+        "alphaExtrema": [
+          0,
+          255
+        ]
+      }
+    }
+  }
+}

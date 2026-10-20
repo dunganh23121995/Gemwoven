@@ -1,0 +1,13 @@
+# Reproducible processor intermediates and local visual QA.
+**/normalized-source.png
+**/raw-sheet.png
+**/raw-sheet-clean.png
+**/sheet-transparent.png
+**/animation.gif
+**/idle-[0-9]*.png
+**/attack-[0-9]*.png
+**/cast-[0-9]*.png
+**/run-[0-9]*.png
+**/action-anchor.png
+**/__pycache__/
+qa-*.png

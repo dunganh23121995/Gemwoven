@@ -1,0 +1,296 @@
+[
+  {
+    "theme": "fire",
+    "part": "stem",
+    "sourceBox": [
+      67,
+      9,
+      232,
+      415
+    ],
+    "size": [
+      384,
+      512
+    ],
+    "alphaBounds": [
+      112,
+      0,
+      271,
+      512
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    }
+  },
+  {
+    "theme": "fire",
+    "part": "leaf",
+    "sourceBox": [
+      249,
+      116,
+      922,
+      372
+    ],
+    "size": [
+      512,
+      320
+    ],
+    "alphaBounds": [
+      6,
+      62,
+      506,
+      250
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        160
+      ]
+    }
+  },
+  {
+    "theme": "fire",
+    "part": "branch",
+    "sourceBox": [
+      901,
+      242,
+      1240,
+      356
+    ],
+    "size": [
+      256,
+      96
+    ],
+    "alphaBounds": [
+      8,
+      16,
+      248,
+      80
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        40
+      ]
+    }
+  },
+  {
+    "theme": "ice",
+    "part": "stem",
+    "sourceBox": [
+      58,
+      426,
+      229,
+      826
+    ],
+    "size": [
+      384,
+      512
+    ],
+    "alphaBounds": [
+      112,
+      0,
+      271,
+      512
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    }
+  },
+  {
+    "theme": "ice",
+    "part": "leaf",
+    "sourceBox": [
+      244,
+      527,
+      923,
+      786
+    ],
+    "size": [
+      512,
+      320
+    ],
+    "alphaBounds": [
+      6,
+      62,
+      506,
+      250
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    }
+  },
+  {
+    "theme": "ice",
+    "part": "branch",
+    "sourceBox": [
+      901,
+      661,
+      1240,
+      777
+    ],
+    "size": [
+      256,
+      96
+    ],
+    "alphaBounds": [
+      8,
+      16,
+      248,
+      80
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        40
+      ]
+    }
+  },
+  {
+    "theme": "lightning",
+    "part": "stem",
+    "sourceBox": [
+      62,
+      835,
+      233,
+      1245
+    ],
+    "size": [
+      384,
+      512
+    ],
+    "alphaBounds": [
+      112,
+      0,
+      272,
+      512
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    }
+  },
+  {
+    "theme": "lightning",
+    "part": "leaf",
+    "sourceBox": [
+      245,
+      918,
+      922,
+      1180
+    ],
+    "size": [
+      512,
+      320
+    ],
+    "alphaBounds": [
+      6,
+      62,
+      506,
+      250
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        160
+      ]
+    }
+  },
+  {
+    "theme": "lightning",
+    "part": "branch",
+    "sourceBox": [
+      902,
+      1056,
+      1241,
+      1168
+    ],
+    "size": [
+      256,
+      96
+    ],
+    "alphaBounds": [
+      8,
+      16,
+      248,
+      80
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        38
+      ]
+    }
+  }
+]

@@ -1,0 +1,345 @@
+[
+  {
+    "theme": "tempestwing",
+    "stemBounds": [
+      107,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        160
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        45
+      ],
+      "end": [
+        242,
+        44
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        0,
+        276,
+        425
+      ],
+      "leaf": [
+        276,
+        0,
+        940,
+        425
+      ],
+      "branch": [
+        918,
+        0,
+        1254,
+        425
+      ]
+    }
+  },
+  {
+    "theme": "souljailer",
+    "stemBounds": [
+      107,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        159
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        40
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        425,
+        276,
+        830
+      ],
+      "leaf": [
+        276,
+        425,
+        940,
+        830
+      ],
+      "branch": [
+        918,
+        425,
+        1254,
+        830
+      ]
+    }
+  },
+  {
+    "theme": "sporefather",
+    "stemBounds": [
+      108,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        174
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        38
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        830,
+        276,
+        1254
+      ],
+      "leaf": [
+        276,
+        830,
+        940,
+        1254
+      ],
+      "branch": [
+        918,
+        830,
+        1254,
+        1254
+      ]
+    }
+  },
+  {
+    "theme": "prismback",
+    "stemBounds": [
+      107,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        148
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        48
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        0,
+        247,
+        420
+      ],
+      "leaf": [
+        247,
+        0,
+        940,
+        420
+      ],
+      "branch": [
+        908,
+        0,
+        1246,
+        420
+      ]
+    }
+  },
+  {
+    "theme": "sandchronarch",
+    "stemBounds": [
+      107,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        144
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        52
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        420,
+        247,
+        834
+      ],
+      "leaf": [
+        247,
+        420,
+        940,
+        834
+      ],
+      "branch": [
+        908,
+        420,
+        1246,
+        834
+      ]
+    }
+  },
+  {
+    "theme": "coraltide",
+    "stemBounds": [
+      107,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        152
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        47
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        834,
+        247,
+        1262
+      ],
+      "leaf": [
+        247,
+        834,
+        940,
+        1262
+      ],
+      "branch": [
+        908,
+        834,
+        1246,
+        1262
+      ]
+    }
+  },
+  {
+    "theme": "moonfang",
+    "stemBounds": [
+      107,
+      0,
+      277,
+      512
+    ],
+    "stemEndpointWidths": [
+      114,
+      114
+    ],
+    "leafSockets": {
+      "attach": [
+        14,
+        164
+      ]
+    },
+    "branchSockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        40
+      ]
+    },
+    "sourceBoxes": {
+      "stem": [
+        0,
+        0,
+        395,
+        809
+      ],
+      "leaf": [
+        395,
+        0,
+        1420,
+        809
+      ],
+      "branch": [
+        1420,
+        0,
+        1942,
+        809
+      ]
+    }
+  }
+]

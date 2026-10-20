@@ -1,0 +1,12 @@
+{
+  "generation": "Built-in image_gen; three separate full opaque style-transfer edits",
+  "model_instruction": "Art delegated to gpt-6-astra with high reasoning",
+  "source_backgrounds": ["assets/gemwoven/backgrounds/shop.webp", "assets/gemwoven/backgrounds/forge.webp", "assets/gemwoven/backgrounds/tavern.webp"],
+  "style_references": ["assets/gemwoven/backgrounds/home-leaf-detail.webp", "assets/gemwoven/items/home-shop-painted.webp"],
+  "layout_references_inspected": ["qa/gemwoven/layers-shop.jpg", "qa/gemwoven/layers-forge.jpg", "qa/gemwoven/layers-tavern.jpg"],
+  "prompts": "prompts.json",
+  "raw_generations": ["shop-raw.png", "forge-raw.png", "tavern-raw.png"],
+  "exports": "export_backgrounds.py preserves the portrait composition and resamples generated height by one or two pixels to exact original canvas sizes. Exports lossless WebP with decoded RGB equality check.",
+  "visual_review": "Final backgrounds inspected at full runtime canvas. Shop's two empty product shelf regions preserved. Forge's central anvil, right smith/furnace and lower floor zones retained. Tavern's existing party, pets, bar, table, window and major room geometry retained. No UI overlays or new text baked in. Matte painted wood/stone/foliage and restrained local warm lighting match the Home direction.",
+  "final_dimensions": {"shop": [941,1672], "forge": [941,1672], "tavern": [941,1671]}
+}

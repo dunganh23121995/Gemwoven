@@ -1,0 +1,296 @@
+[
+  {
+    "theme": "mire",
+    "part": "stem",
+    "sourceBox": [
+      46,
+      6,
+      224,
+      410
+    ],
+    "size": [
+      384,
+      512
+    ],
+    "alphaBounds": [
+      112,
+      0,
+      274,
+      512
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    }
+  },
+  {
+    "theme": "mire",
+    "part": "leaf",
+    "sourceBox": [
+      255,
+      123,
+      890,
+      399
+    ],
+    "size": [
+      512,
+      320
+    ],
+    "alphaBounds": [
+      6,
+      62,
+      506,
+      250
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        145
+      ]
+    }
+  },
+  {
+    "theme": "mire",
+    "part": "branch",
+    "sourceBox": [
+      863,
+      248,
+      1248,
+      405
+    ],
+    "size": [
+      256,
+      96
+    ],
+    "alphaBounds": [
+      8,
+      16,
+      248,
+      80
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        46
+      ]
+    }
+  },
+  {
+    "theme": "scarab",
+    "part": "stem",
+    "sourceBox": [
+      67,
+      420,
+      212,
+      821
+    ],
+    "size": [
+      384,
+      512
+    ],
+    "alphaBounds": [
+      112,
+      0,
+      272,
+      512
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    }
+  },
+  {
+    "theme": "scarab",
+    "part": "leaf",
+    "sourceBox": [
+      254,
+      518,
+      905,
+      783
+    ],
+    "size": [
+      512,
+      320
+    ],
+    "alphaBounds": [
+      6,
+      62,
+      506,
+      250
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        150
+      ]
+    }
+  },
+  {
+    "theme": "scarab",
+    "part": "branch",
+    "sourceBox": [
+      867,
+      669,
+      1249,
+      800
+    ],
+    "size": [
+      256,
+      96
+    ],
+    "alphaBounds": [
+      8,
+      16,
+      248,
+      80
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        38
+      ]
+    }
+  },
+  {
+    "theme": "leviathan",
+    "part": "stem",
+    "sourceBox": [
+      44,
+      826,
+      219,
+      1249
+    ],
+    "size": [
+      384,
+      512
+    ],
+    "alphaBounds": [
+      112,
+      0,
+      272,
+      512
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    }
+  },
+  {
+    "theme": "leviathan",
+    "part": "leaf",
+    "sourceBox": [
+      254,
+      901,
+      920,
+      1184
+    ],
+    "size": [
+      512,
+      320
+    ],
+    "alphaBounds": [
+      6,
+      62,
+      506,
+      250
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        148
+      ]
+    }
+  },
+  {
+    "theme": "leviathan",
+    "part": "branch",
+    "sourceBox": [
+      873,
+      1057,
+      1248,
+      1218
+    ],
+    "size": [
+      256,
+      96
+    ],
+    "alphaBounds": [
+      8,
+      16,
+      248,
+      80
+    ],
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        45
+      ]
+    }
+  }
+]

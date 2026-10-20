@@ -1,0 +1,307 @@
+{
+  "hero": "lightning",
+  "forms": {
+    "3": {
+      "name": "Thiên Lôi Tinh Chủ",
+      "poster": "assets/heroes/forms/lightning/form-3/master.png",
+      "portrait": "assets/heroes/forms/lightning/form-3/portrait.png",
+      "actions": {
+        "idle": {
+          "file": "assets/heroes/forms/lightning/form-3/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
+          "heads": [
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              47
+            ],
+            [
+              128,
+              45
+            ],
+            [
+              128,
+              46
+            ],
+            [
+              128,
+              45
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              47
+            ],
+            [
+              128,
+              47
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 120
+        },
+        "cast": {
+          "file": "assets/heroes/forms/lightning/form-3/cast.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              128,
+              63
+            ],
+            [
+              128,
+              63
+            ],
+            [
+              128,
+              65
+            ],
+            [
+              128,
+              59
+            ],
+            [
+              128,
+              64
+            ],
+            [
+              128,
+              64
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "attack": {
+          "file": "assets/heroes/forms/lightning/form-3/attack.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              128,
+              67
+            ],
+            [
+              128,
+              76
+            ],
+            [
+              128,
+              81
+            ],
+            [
+              128,
+              61
+            ],
+            [
+              128,
+              66
+            ],
+            [
+              128,
+              67
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "run": {
+          "file": "assets/heroes/forms/lightning/form-3/run.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              128,
+              58
+            ],
+            [
+              128,
+              61
+            ],
+            [
+              128,
+              58
+            ],
+            [
+              128,
+              63
+            ],
+            [
+              128,
+              65
+            ],
+            [
+              128,
+              63
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        }
+      }
+    },
+    "2": {
+      "name": "Tinh Lôi Pháp Sư",
+      "poster": "assets/heroes/forms/lightning/form-2/master.png",
+      "portrait": "assets/heroes/forms/lightning/form-2/portrait.png",
+      "actions": {
+        "idle": {
+          "file": "assets/heroes/forms/lightning/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
+          "heads": [
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              43
+            ],
+            [
+              141,
+              47
+            ],
+            [
+              141,
+              46
+            ],
+            [
+              141,
+              46
+            ],
+            [
+              141,
+              45
+            ],
+            [
+              141,
+              44
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 120
+        },
+        "attack": {
+          "file": "assets/heroes/forms/lightning/form-2/attack.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              141,
+              62
+            ],
+            [
+              141,
+              75
+            ],
+            [
+              141,
+              68
+            ],
+            [
+              141,
+              69
+            ],
+            [
+              141,
+              65
+            ],
+            [
+              141,
+              62
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "cast": {
+          "file": "assets/heroes/forms/lightning/form-2/cast.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              141,
+              62
+            ],
+            [
+              141,
+              60
+            ],
+            [
+              141,
+              59
+            ],
+            [
+              141,
+              60
+            ],
+            [
+              141,
+              61
+            ],
+            [
+              141,
+              61
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "run": {
+          "file": "assets/heroes/forms/lightning/form-2/run.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              141,
+              59
+            ],
+            [
+              141,
+              57
+            ],
+            [
+              141,
+              59
+            ],
+            [
+              141,
+              62
+            ],
+            [
+              141,
+              61
+            ],
+            [
+              141,
+              62
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'Gemwoven_6_Man.html'),'utf8');
 const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
-assert.equal(scripts.length,14);
+assert.equal(scripts.length,17);
 assert.ok(!html.includes('src="src/gemwoven/'));
 const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(String(e)));
 const dom=new JSDOM(html.replace(/<script>[\s\S]*?<\/script>/g,''),{runScripts:'outside-only',pretendToBeVisual:true,url:'file:///Gemwoven_6_Man.html',virtualConsole:vc});
@@ -17,7 +17,7 @@ function verify(){
 }
 (async()=>{
   verify();
-  for(const route of ['inventory','skills','campaign','chat','settings']){
+  for(const route of w.GEMWOVEN_LAYOUT.order){
     w.location.hash=route;await new Promise(r=>setTimeout(r,30));verify();
     if(route==='campaign'){
       assert.equal(d.querySelectorAll('.world-pin').length,7,'Portable map also hides distant stages');
@@ -34,5 +34,5 @@ function verify(){
   w.location.hash='skills';await new Promise(r=>setTimeout(r,30));d.querySelector('[data-action="do:hero"][data-hero="shadow"]').click();verify();
   assert.ok(d.querySelector('[data-node="skills.hero-model"]>.art').src.startsWith('data:image/'));
   const preview={screen:'campaign',chapter:21,chapterGuide:true,hero:'novice'};w.GEMWOVEN_GAME.decorate(preview);const guide=w.GEMWOVEN_LAYOUT.screens.campaign.nodes.find(n=>n.id==='campaign.field-guide');assert.ok(guide);const holder=d.createElement('section');guide.build(holder);assert.equal(holder.querySelectorAll('.chapter-skill').length,6);for(const im of holder.querySelectorAll('img'))assert.ok(im.src.startsWith('data:image/'),'Boss guide embeds its new sprites and artifact');
-  assert.deepEqual(errors,[]);console.log('Offline passed: Home, Inventory, Skills, Noct, exploration, chat and settings use embedded images after navigation.');w.close();
+  assert.deepEqual(errors,[]);console.log('Offline passed: all hub screens, Noct, exploration and boss guide use embedded images after navigation.');w.close();
 })().catch(e=>{console.error(e);w.close();process.exitCode=1;});

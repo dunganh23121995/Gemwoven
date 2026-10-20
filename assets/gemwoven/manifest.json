@@ -466,6 +466,12 @@
       0,
       512,
       512
+    ],
+    "footBounds": [
+      6,
+      6,
+      372,
+      449
     ]
   },
   "hero-ice": {
@@ -479,6 +485,12 @@
       0,
       512,
       512
+    ],
+    "footBounds": [
+      9,
+      6,
+      346,
+      467
     ]
   },
   "hero-guide": {
@@ -492,7 +504,13 @@
       1254,
       435
     ],
-    "textless": true
+    "textless": true,
+    "footBounds": [
+      11,
+      11,
+      338,
+      428
+    ]
   },
   "gem-fire": {
     "file": "assets/gemwoven/items/gem-fire.png",
@@ -612,7 +630,13 @@
     "width": 184,
     "height": 212,
     "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
-    "textless": true
+    "textless": true,
+    "footBounds": [
+      6,
+      6,
+      178,
+      206
+    ]
   },
   "ticket": {
     "file": "assets/gemwoven/items/ticket.png",
@@ -1427,6 +1451,12 @@
       0,
       512,
       512
+    ],
+    "footBounds": [
+      6,
+      7,
+      394,
+      395
     ]
   },
   "portrait-earth": {
@@ -1447,6 +1477,12 @@
       0,
       512,
       512
+    ],
+    "footBounds": [
+      6,
+      6,
+      332,
+      463
     ]
   },
   "portrait-lightning": {
@@ -1467,6 +1503,12 @@
       0,
       512,
       512
+    ],
+    "footBounds": [
+      6,
+      7,
+      336,
+      375
     ]
   },
   "portrait-shadow": {
@@ -1579,7 +1621,13 @@
     "width": 312,
     "height": 548,
     "source": "raw/novice-idle.png",
-    "textless": true
+    "textless": true,
+    "footBounds": [
+      6,
+      6,
+      306,
+      542
+    ]
   },
   "portrait-novice": {
     "file": "assets/gemwoven/items/portrait-novice.png",
@@ -1686,7 +1734,13 @@
       "anchor_x_std": 0.0,
       "anchor_y_std": 0.0,
       "anchor_y_mean": 0.8452648475120479
-    }
+    },
+    "footBounds": [
+      51,
+      83,
+      460,
+      461
+    ]
   },
   "monster-acorn": {
     "file": "assets/gemwoven/items/monster-acorn.webp",
@@ -1720,7 +1774,13 @@
       "anchor_x_std": 0.0,
       "anchor_y_std": 0.0,
       "anchor_y_mean": 0.8057784911717496
-    }
+    },
+    "footBounds": [
+      51,
+      73,
+      460,
+      461
+    ]
   },
   "monster-bat": {
     "file": "assets/gemwoven/items/monster-bat.webp",
@@ -1754,7 +1814,13 @@
       "anchor_x_std": 0.0,
       "anchor_y_std": 0.0,
       "anchor_y_mean": 0.7431781701444623
-    }
+    },
+    "footBounds": [
+      51,
+      180,
+      460,
+      461
+    ]
   },
   "journey-map": {
     "file": "assets/gemwoven/backgrounds/journey-map.webp",
@@ -1793,7 +1859,13 @@
       1126
     ],
     "normalizationScale": 0.38844622,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      53,
+      71,
+      458,
+      461
+    ]
   },
   "boss-scarab": {
     "name": "Bọ Vương Hoàng Kim",
@@ -1823,7 +1895,13 @@
       1072
     ],
     "normalizationScale": 0.39461883,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      36,
+      102,
+      476,
+      461
+    ]
   },
   "boss-leviathan": {
     "name": "Hải Long San Hô",
@@ -1853,7 +1931,13 @@
       1138
     ],
     "normalizationScale": 0.37142857,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      93,
+      71,
+      419,
+      461
+    ]
   },
   "boss-colossus": {
     "name": "Cự Tượng Bánh Răng",
@@ -1883,7 +1967,13 @@
       1067
     ],
     "normalizationScale": 0.38903625,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      36,
+      118,
+      476,
+      461
+    ]
   },
   "boss-prism": {
     "name": "Nữ Vương Tinh Thể",
@@ -1913,7 +2003,13 @@
       1164
     ],
     "normalizationScale": 0.36482694,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      86,
+      71,
+      426,
+      461
+    ]
   },
   "boss-reaper": {
     "name": "Tử Thần Nguyệt Ảnh",
@@ -1943,7 +2039,13 @@
       1152
     ],
     "normalizationScale": 0.37392138,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      48,
+      71,
+      463,
+      460
+    ]
   },
   "boss-roc": {
     "name": "Đại Bàng Thiên Phong",
@@ -1973,7 +2075,13 @@
       1155
     ],
     "normalizationScale": 0.36077706,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      79,
+      71,
+      433,
+      461
+    ]
   },
   "boss-briar": {
     "name": "Nữ Hoàng Gai",
@@ -2003,7 +2111,13 @@
       1209
     ],
     "normalizationScale": 0.32994924,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      99,
+      72,
+      412,
+      460
+    ]
   },
   "boss-seraph": {
     "name": "Hộ Vệ Nhật Quang",
@@ -2033,7 +2147,13 @@
       1158
     ],
     "normalizationScale": 0.3627907,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      92,
+      72,
+      418,
+      461
+    ]
   },
   "boss-eclipse": {
     "name": "Long Đế Hư Không",
@@ -2063,7 +2183,13 @@
       1142
     ],
     "normalizationScale": 0.36966825,
-    "alphaNoiseCutoff": 8
+    "alphaNoiseCutoff": 8,
+    "footBounds": [
+      49,
+      72,
+      463,
+      460
+    ]
   },
   "creature-volcano-a": {
     "file": "assets/gemwoven/items/creature-volcano-a.webp",
@@ -2091,6 +2217,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      100,
+      72,
+      411,
+      461
     ]
   },
   "creature-volcano-b": {
@@ -2119,6 +2251,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      61,
+      80,
+      450,
+      461
     ]
   },
   "creature-ice-a": {
@@ -2147,6 +2285,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      88,
+      72,
+      423,
+      461
     ]
   },
   "creature-ice-b": {
@@ -2175,6 +2319,12 @@
     "sourceCell": [
       0,
       3
+    ],
+    "footBounds": [
+      61,
+      103,
+      450,
+      461
     ]
   },
   "creature-thunder-a": {
@@ -2203,6 +2353,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      84,
+      72,
+      427,
+      461
     ]
   },
   "creature-thunder-b": {
@@ -2231,6 +2387,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      66,
+      72,
+      446,
+      461
     ]
   },
   "creature-marsh-a": {
@@ -2259,6 +2421,12 @@
     "sourceCell": [
       1,
       2
+    ],
+    "footBounds": [
+      61,
+      103,
+      450,
+      461
     ]
   },
   "creature-marsh-b": {
@@ -2287,6 +2455,12 @@
     "sourceCell": [
       1,
       3
+    ],
+    "footBounds": [
+      61,
+      109,
+      450,
+      461
     ]
   },
   "creature-desert-a": {
@@ -2315,6 +2489,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      64,
+      72,
+      447,
+      461
     ]
   },
   "creature-desert-b": {
@@ -2343,6 +2523,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      61,
+      89,
+      450,
+      461
     ]
   },
   "creature-abyss-a": {
@@ -2371,6 +2557,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      61,
+      139,
+      450,
+      461
     ]
   },
   "creature-abyss-b": {
@@ -2399,6 +2591,12 @@
     "sourceCell": [
       0,
       3
+    ],
+    "footBounds": [
+      84,
+      72,
+      427,
+      461
     ]
   },
   "creature-foundry-a": {
@@ -2427,6 +2625,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      61,
+      95,
+      450,
+      461
     ]
   },
   "creature-foundry-b": {
@@ -2455,6 +2659,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      61,
+      105,
+      450,
+      461
     ]
   },
   "creature-crystal-a": {
@@ -2483,6 +2693,12 @@
     "sourceCell": [
       1,
       2
+    ],
+    "footBounds": [
+      61,
+      145,
+      450,
+      461
     ]
   },
   "creature-crystal-b": {
@@ -2511,6 +2727,12 @@
     "sourceCell": [
       1,
       3
+    ],
+    "footBounds": [
+      61,
+      73,
+      450,
+      461
     ]
   },
   "creature-haunted-a": {
@@ -2539,6 +2761,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      141,
+      72,
+      371,
+      461
     ]
   },
   "creature-haunted-b": {
@@ -2567,6 +2795,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      61,
+      104,
+      450,
+      461
     ]
   },
   "creature-sky-a": {
@@ -2595,6 +2829,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      61,
+      100,
+      450,
+      461
     ]
   },
   "creature-sky-b": {
@@ -2623,6 +2863,12 @@
     "sourceCell": [
       0,
       3
+    ],
+    "footBounds": [
+      61,
+      100,
+      450,
+      461
     ]
   },
   "creature-thorns-a": {
@@ -2651,6 +2897,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      61,
+      106,
+      450,
+      461
     ]
   },
   "creature-thorns-b": {
@@ -2679,6 +2931,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      70,
+      72,
+      442,
+      461
     ]
   },
   "creature-celestial-a": {
@@ -2707,6 +2965,12 @@
     "sourceCell": [
       1,
       2
+    ],
+    "footBounds": [
+      61,
+      132,
+      450,
+      461
     ]
   },
   "creature-celestial-b": {
@@ -2735,6 +2999,12 @@
     "sourceCell": [
       1,
       3
+    ],
+    "footBounds": [
+      64,
+      72,
+      447,
+      461
     ]
   },
   "creature-void-a": {
@@ -2763,6 +3033,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      110,
+      72,
+      402,
+      461
     ]
   },
   "creature-void-b": {
@@ -2791,6 +3067,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      61,
+      98,
+      450,
+      461
     ]
   },
   "creature-pine-a": {
@@ -2819,6 +3101,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      61,
+      88,
+      450,
+      461
     ]
   },
   "creature-pine-b": {
@@ -2847,6 +3135,12 @@
     "sourceCell": [
       0,
       3
+    ],
+    "footBounds": [
+      86,
+      72,
+      425,
+      461
     ]
   },
   "creature-obsidian-a": {
@@ -2875,6 +3169,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      64,
+      72,
+      447,
+      461
     ]
   },
   "creature-obsidian-b": {
@@ -2903,6 +3203,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      61,
+      155,
+      450,
+      461
     ]
   },
   "creature-bamboo-a": {
@@ -2931,6 +3237,12 @@
     "sourceCell": [
       1,
       2
+    ],
+    "footBounds": [
+      61,
+      121,
+      450,
+      461
     ]
   },
   "creature-bamboo-b": {
@@ -2959,6 +3271,12 @@
     "sourceCell": [
       1,
       3
+    ],
+    "footBounds": [
+      79,
+      72,
+      433,
+      461
     ]
   },
   "creature-coast-a": {
@@ -2987,6 +3305,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      61,
+      122,
+      450,
+      461
     ]
   },
   "creature-coast-b": {
@@ -3015,6 +3339,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      61,
+      77,
+      450,
+      461
     ]
   },
   "creature-dream-a": {
@@ -3043,6 +3373,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      69,
+      72,
+      443,
+      461
     ]
   },
   "creature-dream-b": {
@@ -3071,6 +3407,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      61,
+      122,
+      450,
+      461
     ]
   },
   "creature-astral-a": {
@@ -3099,6 +3441,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      61,
+      115,
+      450,
+      461
     ]
   },
   "creature-astral-b": {
@@ -3127,6 +3475,12 @@
     "sourceCell": [
       1,
       2
+    ],
+    "footBounds": [
+      61,
+      104,
+      450,
+      461
     ]
   },
   "chapter-forest": {
@@ -4226,28 +4580,52 @@
     "width": 512,
     "height": 512,
     "transparent": true,
-    "sourceFrame": "assets/reimagined/bosses/earth/idle/frame-00.png"
+    "sourceFrame": "assets/reimagined/bosses/earth/idle/frame-00.png",
+    "footBounds": [
+      67,
+      71,
+      445,
+      461
+    ]
   },
   "boss-fire": {
     "file": "assets/gemwoven/items/boss-fire.webp",
     "width": 512,
     "height": 512,
     "transparent": true,
-    "sourceFrame": "assets/reimagined/bosses/fire/idle/frame-00.png"
+    "sourceFrame": "assets/reimagined/bosses/fire/idle/frame-00.png",
+    "footBounds": [
+      75,
+      74,
+      436,
+      461
+    ]
   },
   "boss-ice": {
     "file": "assets/gemwoven/items/boss-ice.webp",
     "width": 512,
     "height": 512,
     "transparent": true,
-    "sourceFrame": "assets/reimagined/bosses/ice/idle/frame-00.png"
+    "sourceFrame": "assets/reimagined/bosses/ice/idle/frame-00.png",
+    "footBounds": [
+      83,
+      73,
+      431,
+      459
+    ]
   },
   "boss-lightning": {
     "file": "assets/gemwoven/items/boss-lightning.webp",
     "width": 512,
     "height": 512,
     "transparent": true,
-    "sourceFrame": "assets/reimagined/bosses/lightning/idle/frame-00.png"
+    "sourceFrame": "assets/reimagined/bosses/lightning/idle/frame-00.png",
+    "footBounds": [
+      56,
+      73,
+      456,
+      461
+    ]
   },
   "relic-novice-1": {
     "file": "assets/gemwoven/items/relic-novice-1.webp",
@@ -5322,6 +5700,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      91,
+      52,
+      421,
+      461
     ]
   },
   "creature-eldergrove-barkmoth": {
@@ -5351,6 +5735,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      51,
+      66,
+      460,
+      461
     ]
   },
   "creature-eldergrove-vineboar": {
@@ -5380,6 +5770,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      127,
+      460,
+      461
     ]
   },
   "creature-eldergrove-rootwarden": {
@@ -5409,6 +5805,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      95,
+      52,
+      417,
+      461
     ]
   },
   "creature-eldergrove-thornstag": {
@@ -5438,6 +5840,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      95,
+      52,
+      416,
+      461
     ]
   },
   "artifact-eldergrove": {
@@ -5496,6 +5904,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      51,
+      63,
+      460,
+      461
     ]
   },
   "creature-caldera-slagbeetle": {
@@ -5525,6 +5939,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      51,
+      153,
+      460,
+      461
     ]
   },
   "creature-caldera-ashhound": {
@@ -5554,6 +5974,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      115,
+      460,
+      461
     ]
   },
   "creature-caldera-basaltbrute": {
@@ -5583,6 +6009,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      51,
+      64,
+      460,
+      461
     ]
   },
   "creature-caldera-furnacepriest": {
@@ -5612,6 +6044,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      77,
+      52,
+      434,
+      461
     ]
   },
   "artifact-caldera": {
@@ -5670,6 +6108,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      72,
+      52,
+      439,
+      461
     ]
   },
   "creature-glacier-iceling": {
@@ -5699,6 +6143,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      67,
+      52,
+      445,
+      461
     ]
   },
   "creature-glacier-frostmoth": {
@@ -5728,6 +6178,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      82,
+      460,
+      461
     ]
   },
   "creature-glacier-rimeknight": {
@@ -5757,6 +6213,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      65,
+      52,
+      446,
+      461
     ]
   },
   "creature-glacier-blizzardowl": {
@@ -5786,6 +6248,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      75,
+      52,
+      436,
+      461
     ]
   },
   "artifact-glacier": {
@@ -5844,6 +6312,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      62,
+      52,
+      450,
+      461
     ]
   },
   "creature-stormspire-cloudjelly": {
@@ -5873,6 +6347,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      98,
+      52,
+      414,
+      461
     ]
   },
   "creature-stormspire-gustfox": {
@@ -5902,6 +6382,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      95,
+      460,
+      461
     ]
   },
   "creature-stormspire-voltgryphon": {
@@ -5931,6 +6417,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      53,
+      52,
+      459,
+      461
     ]
   },
   "creature-stormspire-stormtotem": {
@@ -5960,6 +6452,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      64,
+      52,
+      448,
+      461
     ]
   },
   "artifact-stormspire": {
@@ -6018,6 +6516,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      108,
+      52,
+      403,
+      461
     ]
   },
   "creature-soulcrypt-bonecrow": {
@@ -6047,6 +6551,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      51,
+      96,
+      460,
+      461
     ]
   },
   "creature-soulcrypt-chainrat": {
@@ -6076,6 +6586,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      223,
+      460,
+      461
     ]
   },
   "creature-soulcrypt-cagekeeper": {
@@ -6105,6 +6621,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      93,
+      52,
+      418,
+      461
     ]
   },
   "creature-soulcrypt-veilassassin": {
@@ -6134,6 +6656,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      51,
+      52,
+      460,
+      461
     ]
   },
   "artifact-soulcrypt": {
@@ -6192,6 +6720,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      51,
+      101,
+      460,
+      461
     ]
   },
   "creature-mycelium-sludgesnail": {
@@ -6221,6 +6755,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      51,
+      137,
+      460,
+      461
     ]
   },
   "creature-mycelium-rottick": {
@@ -6250,6 +6790,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      169,
+      460,
+      461
     ]
   },
   "creature-mycelium-plagueherald": {
@@ -6279,6 +6825,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      74,
+      52,
+      438,
+      461
     ]
   },
   "creature-mycelium-sporetoad": {
@@ -6308,6 +6860,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      51,
+      104,
+      460,
+      461
     ]
   },
   "artifact-mycelium": {
@@ -6366,6 +6924,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      51,
+      129,
+      460,
+      461
     ]
   },
   "creature-geode-stonepup": {
@@ -6395,6 +6959,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      51,
+      53,
+      460,
+      461
     ]
   },
   "creature-geode-crystalbat": {
@@ -6424,6 +6994,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      68,
+      52,
+      443,
+      461
     ]
   },
   "creature-geode-rampartgolem": {
@@ -6453,6 +7029,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      65,
+      52,
+      447,
+      461
     ]
   },
   "creature-geode-prismseer": {
@@ -6482,6 +7064,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      120,
+      52,
+      392,
+      461
     ]
   },
   "artifact-geode": {
@@ -6540,6 +7128,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      51,
+      153,
+      460,
+      461
     ]
   },
   "creature-hourglass-sandcobra": {
@@ -6569,6 +7163,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      86,
+      52,
+      426,
+      461
     ]
   },
   "creature-hourglass-clockmote": {
@@ -6598,6 +7198,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      63,
+      52,
+      449,
+      461
     ]
   },
   "creature-hourglass-dunesentinel": {
@@ -6627,6 +7233,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      51,
+      59,
+      460,
+      461
     ]
   },
   "creature-hourglass-chronoweaver": {
@@ -6656,6 +7268,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      58,
+      52,
+      453,
+      461
     ]
   },
   "artifact-hourglass": {
@@ -6714,6 +7332,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      51,
+      165,
+      460,
+      461
     ]
   },
   "creature-coralreef-foamjelly": {
@@ -6743,6 +7367,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      68,
+      52,
+      443,
+      461
     ]
   },
   "creature-coralreef-pearleel": {
@@ -6772,6 +7402,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      71,
+      52,
+      441,
+      461
     ]
   },
   "creature-coralreef-tidemarshal": {
@@ -6801,6 +7437,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      57,
+      52,
+      454,
+      461
     ]
   },
   "creature-coralreef-coraloracle": {
@@ -6830,6 +7472,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      55,
+      52,
+      457,
+      461
     ]
   },
   "artifact-coralreef": {
@@ -6888,6 +7536,12 @@
     "sourceCell": [
       0,
       0
+    ],
+    "footBounds": [
+      51,
+      79,
+      460,
+      461
     ]
   },
   "creature-moonkeep-moonmoth": {
@@ -6917,6 +7571,12 @@
     "sourceCell": [
       0,
       1
+    ],
+    "footBounds": [
+      51,
+      55,
+      460,
+      461
     ]
   },
   "creature-moonkeep-shadowraven": {
@@ -6946,6 +7606,12 @@
     "sourceCell": [
       0,
       2
+    ],
+    "footBounds": [
+      51,
+      111,
+      460,
+      461
     ]
   },
   "creature-moonkeep-lunarknight": {
@@ -6975,6 +7641,12 @@
     "sourceCell": [
       1,
       0
+    ],
+    "footBounds": [
+      62,
+      52,
+      450,
+      461
     ]
   },
   "creature-moonkeep-eclipsestalker": {
@@ -7004,6 +7676,12 @@
     "sourceCell": [
       1,
       1
+    ],
+    "footBounds": [
+      51,
+      179,
+      460,
+      461
     ]
   },
   "artifact-moonkeep": {
@@ -7039,61 +7717,121 @@
     "file": "assets/gemwoven/encounters/elderbloom/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      65,
+      44,
+      447,
+      474
+    ]
   },
   "boss-cinderheart": {
     "file": "assets/gemwoven/encounters/cinderheart/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      41,
+      48,
+      471,
+      474
+    ]
   },
   "boss-frostregent": {
     "file": "assets/gemwoven/encounters/frostregent/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      57,
+      44,
+      455,
+      474
+    ]
   },
   "boss-tempestwing": {
     "file": "assets/gemwoven/encounters/tempestwing/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      76,
+      44,
+      436,
+      474
+    ]
   },
   "boss-souljailer": {
     "file": "assets/gemwoven/encounters/souljailer/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      53,
+      44,
+      459,
+      474
+    ]
   },
   "boss-sporefather": {
     "file": "assets/gemwoven/encounters/sporefather/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      42,
+      26,
+      470,
+      486
+    ]
   },
   "boss-prismback": {
     "file": "assets/gemwoven/encounters/prismback/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      26,
+      41,
+      486,
+      471
+    ]
   },
   "boss-sandchronarch": {
     "file": "assets/gemwoven/encounters/sandchronarch/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      51,
+      26,
+      461,
+      486
+    ]
   },
   "boss-coraltide": {
     "file": "assets/gemwoven/encounters/coraltide/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      48,
+      26,
+      463,
+      486
+    ]
   },
   "boss-moonfang": {
     "file": "assets/gemwoven/encounters/moonfang/portrait.webp",
     "width": 512,
     "height": 512,
-    "transparent": true
+    "transparent": true,
+    "footBounds": [
+      45,
+      26,
+      466,
+      486
+    ]
   },
   "journey-forest-close": {
     "file": "assets/gemwoven/backgrounds/journey-forest-close.webp",
@@ -7371,7 +8109,13 @@
       1
     ],
     "frameDuration": 240,
-    "loop": true
+    "loop": true,
+    "footBounds": [
+      10,
+      3,
+      109,
+      180
+    ]
   },
   "home-idle-novice-poster": {
     "width": 114,
@@ -7389,7 +8133,13 @@
       169,
       253
     ],
-    "file": "assets/gemwoven/items/home-idle-novice-poster.webp"
+    "file": "assets/gemwoven/items/home-idle-novice-poster.webp",
+    "footBounds": [
+      10,
+      3,
+      109,
+      180
+    ]
   },
   "home-idle-fire": {
     "width": 151,
@@ -7417,7 +8167,13 @@
       1
     ],
     "frameDuration": 240,
-    "loop": true
+    "loop": true,
+    "footBounds": [
+      7,
+      7,
+      147,
+      164
+    ]
   },
   "home-idle-fire-poster": {
     "width": 151,
@@ -7435,7 +8191,13 @@
       208,
       252
     ],
-    "file": "assets/gemwoven/items/home-idle-fire-poster.webp"
+    "file": "assets/gemwoven/items/home-idle-fire-poster.webp",
+    "footBounds": [
+      7,
+      7,
+      147,
+      164
+    ]
   },
   "home-idle-ice": {
     "width": 153,
@@ -7463,7 +8225,13 @@
       1
     ],
     "frameDuration": 240,
-    "loop": true
+    "loop": true,
+    "footBounds": [
+      5,
+      5,
+      149,
+      186
+    ]
   },
   "home-idle-ice-poster": {
     "width": 153,
@@ -7481,7 +8249,13 @@
       203,
       255
     ],
-    "file": "assets/gemwoven/items/home-idle-ice-poster.webp"
+    "file": "assets/gemwoven/items/home-idle-ice-poster.webp",
+    "footBounds": [
+      5,
+      5,
+      149,
+      186
+    ]
   },
   "home-idle-earth": {
     "width": 161,
@@ -7509,7 +8283,13 @@
       1
     ],
     "frameDuration": 240,
-    "loop": true
+    "loop": true,
+    "footBounds": [
+      7,
+      9,
+      157,
+      166
+    ]
   },
   "home-idle-earth-poster": {
     "width": 161,
@@ -7527,7 +8307,13 @@
       201,
       247
     ],
-    "file": "assets/gemwoven/items/home-idle-earth-poster.webp"
+    "file": "assets/gemwoven/items/home-idle-earth-poster.webp",
+    "footBounds": [
+      7,
+      9,
+      157,
+      166
+    ]
   },
   "home-idle-lightning": {
     "width": 163,
@@ -7555,7 +8341,13 @@
       1
     ],
     "frameDuration": 240,
-    "loop": true
+    "loop": true,
+    "footBounds": [
+      5,
+      3,
+      158,
+      176
+    ]
   },
   "home-idle-lightning-poster": {
     "width": 163,
@@ -7573,7 +8365,13 @@
       209,
       255
     ],
-    "file": "assets/gemwoven/items/home-idle-lightning-poster.webp"
+    "file": "assets/gemwoven/items/home-idle-lightning-poster.webp",
+    "footBounds": [
+      5,
+      3,
+      158,
+      176
+    ]
   },
   "home-idle-shadow": {
     "width": 159,
@@ -7601,7 +8399,13 @@
       1
     ],
     "frameDuration": 240,
-    "loop": true
+    "loop": true,
+    "footBounds": [
+      3,
+      4,
+      148,
+      165
+    ]
   },
   "home-idle-shadow-poster": {
     "width": 159,
@@ -7619,6 +8423,2751 @@
       199,
       251
     ],
-    "file": "assets/gemwoven/items/home-idle-shadow-poster.webp"
+    "file": "assets/gemwoven/items/home-idle-shadow-poster.webp",
+    "footBounds": [
+      3,
+      4,
+      148,
+      165
+    ]
+  },
+  "background-inventory": {
+    "file": "assets/gemwoven/backgrounds/inventory-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-a/inventory-raw.png",
+    "reference": "assets/gemwoven/backgrounds/inventory.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-a/inventory-prompt.txt"
+    ]
+  },
+  "background-skills": {
+    "file": "assets/gemwoven/backgrounds/skills-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-a/skills-raw.png",
+    "reference": "assets/gemwoven/backgrounds/skills.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-a/skills-prompt.txt"
+    ]
+  },
+  "background-upgrade": {
+    "file": "assets/gemwoven/backgrounds/upgrade-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-a/upgrade-raw.png",
+    "reference": "assets/gemwoven/backgrounds/upgrade.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-a/upgrade-prompt.txt"
+    ]
+  },
+  "background-shop": {
+    "file": "assets/gemwoven/backgrounds/shop-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-b/shop-raw.png",
+    "reference": "assets/gemwoven/backgrounds/shop.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-b/prompts.json"
+    ]
+  },
+  "background-forge": {
+    "file": "assets/gemwoven/backgrounds/forge-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-b/forge-raw.png",
+    "reference": "assets/gemwoven/backgrounds/forge.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-b/prompts.json"
+    ]
+  },
+  "background-tavern": {
+    "file": "assets/gemwoven/backgrounds/tavern-painted.webp",
+    "width": 941,
+    "height": 1671,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-b/tavern-raw.png",
+    "reference": "assets/gemwoven/backgrounds/tavern.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-b/prompts.json"
+    ]
+  },
+  "background-summon": {
+    "file": "assets/gemwoven/backgrounds/summon-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-c/summon-painted-focus.generated.png",
+    "reference": "assets/gemwoven/backgrounds/summon.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-c/summon-painted.prompt.txt",
+      "assets/gemwoven/raw/screens-painted-c/summon-painted-focus.prompt.txt"
+    ]
+  },
+  "background-arena": {
+    "file": "assets/gemwoven/backgrounds/arena-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-c/arena-painted-focus.generated.png",
+    "reference": "assets/gemwoven/backgrounds/arena.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-c/arena-painted.prompt.txt",
+      "assets/gemwoven/raw/screens-painted-c/arena-painted-focus.prompt.txt"
+    ]
+  },
+  "map-sky-earth": {
+    "file": "assets/scenes/painted/earth-far.webp",
+    "width": 1536,
+    "height": 768,
+    "purpose": "Scenery only; no stage registration"
+  },
+  "map-sky-fire": {
+    "file": "assets/scenes/painted/fire-far.webp",
+    "width": 1536,
+    "height": 768,
+    "purpose": "Scenery only; no stage registration"
+  },
+  "map-sky-ice": {
+    "file": "assets/scenes/painted/ice-far.webp",
+    "width": 1536,
+    "height": 768,
+    "purpose": "Scenery only; no stage registration"
+  },
+  "map-sky-lightning": {
+    "file": "assets/scenes/painted/lightning-far.webp",
+    "width": 1536,
+    "height": 768,
+    "purpose": "Scenery only; no stage registration"
+  },
+  "map-platform-a": {
+    "file": "assets/gemwoven/modular-map/platform-a.webp",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      107
+    ],
+    "sockets": {
+      "left": [
+        28,
+        112
+      ],
+      "right": [
+        484,
+        112
+      ]
+    },
+    "transparent": true
+  },
+  "map-platform-b": {
+    "file": "assets/gemwoven/modular-map/platform-a.webp",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      107
+    ],
+    "sockets": {
+      "left": [
+        28,
+        112
+      ],
+      "right": [
+        484,
+        112
+      ]
+    },
+    "transparent": true
+  },
+  "map-bridge": {
+    "file": "assets/gemwoven/modular-map/bridge.webp",
+    "width": 400,
+    "height": 100,
+    "transparent": true
+  },
+  "bean-leaf": {
+    "file": "assets/gemwoven/beanstalk/leaf-platform.png",
+    "png": "leaf-platform.png",
+    "size": [
+      512,
+      320
+    ],
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "renderLayer": "behind-actors",
+    "defaultDirection": "petiole-left, leaf-tip-right",
+    "mirrorRule": "For the opposite side reflect all x coordinates as width-x.",
+    "raw": "raw/leaf-platform.png",
+    "prompt": "leaf-platform.prompt.txt",
+    "postprocess": "Horizontal mirror, Lanczos resize to 512x320, remove disconnected alpha specks while retaining 2px antialias fringe.",
+    "suggestedDisplayWidth": 350,
+    "width": 512,
+    "height": 320,
+    "transparent": true
+  },
+  "bean-stem": {
+    "schema": "gemwoven.beanstalk-double-stem.v1",
+    "file": "assets/gemwoven/beanstalk/double-stem.png",
+    "png": "double-stem.png",
+    "size": [
+      384,
+      512
+    ],
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ],
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ],
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1,
+      "policy": "Align endpoint sockets; 1 source pixel overlap. End-strip crossfade is baked into this seamless export."
+    },
+    "renderLayer": "behind-leaves-and-actors, in-front-of-branch-roots",
+    "raw": "raw/double-stem.png",
+    "rawSize": [
+      1086,
+      1448
+    ],
+    "prompt": "double-stem.prompt.txt",
+    "exporter": "export-double-stem.py",
+    "generation": {
+      "tool": "built-in image_gen",
+      "artAgentModel": "gpt-6-astra",
+      "artAgentReasoning": "high",
+      "rawPreserved": true,
+      "styleReferences": [
+        "stem-segment.png",
+        "leaf-platform.png"
+      ]
+    },
+    "postprocess": "Remove disconnected alpha specks; Lanczos resize384x512; register both32px end strips to114px opaque width centered192 with smooth64px transition bands; crossfade generated strips in premultiplied alpha, remove duplicate32px strip, resize vertically to512; normalize final endpoints114px centered192. Lossless PNG/WebP.",
+    "notes": "Exactly two substantial intertwined stems. Source opaque endpoint width is2x the original stem's57px. Two small tendrils; no new leaf platforms or runtime code.",
+    "width": 384,
+    "height": 512,
+    "transparent": true
+  },
+  "bean-branch": {
+    "file": "assets/gemwoven/beanstalk/branch-segment.png",
+    "png": "branch-segment.png",
+    "size": [
+      256,
+      96
+    ],
+    "sockets": {
+      "start": [
+        23,
+        49
+      ],
+      "end": [
+        242,
+        44
+      ]
+    },
+    "defaultDirection": "thick stem socket left, tapered leaf socket right",
+    "renderLayer": "behind-leaves",
+    "raw": "raw/branch-segment-magenta.png",
+    "cleanedSource": "raw/branch-segment-keyed.png",
+    "prompt": "branch-segment-magenta.prompt.txt",
+    "postprocess": "Sprite skill process single asset, largest component, threshold100 edgeThreshold150; crop [360,190,1704,550], resize240x64, paste[8,16] in256x96 canvas, remove disconnected alpha specks.",
+    "rejectedRaws": [
+      "raw/branch-segment.png",
+      "raw/branch-segment-clean-attempt.png"
+    ],
+    "rejectedPrompts": [
+      "branch-segment.prompt.txt",
+      "branch-segment-clean.prompt.txt"
+    ],
+    "width": 256,
+    "height": 96,
+    "transparent": true
+  },
+  "hud-side-card": {
+    "file": "assets/gemwoven/hud-connections/hanging-card.png",
+    "width": 256,
+    "height": 384,
+    "safeRects": {
+      "icon": [
+        72,
+        90,
+        112,
+        110
+      ],
+      "label": [
+        35,
+        215,
+        186,
+        60
+      ]
+    },
+    "sockets": {
+      "top": [
+        [
+          36,
+          24
+        ],
+        [
+          220,
+          24
+        ]
+      ],
+      "bottom": [
+        [
+          36,
+          338
+        ],
+        [
+          220,
+          338
+        ]
+      ]
+    },
+    "transparent": true
+  },
+  "hud-chain": {
+    "file": "assets/gemwoven/hud-connections/gold-chain.png",
+    "width": 48,
+    "height": 256,
+    "transparent": true
+  },
+  "hud-menu-vine": {
+    "file": "assets/gemwoven/hud-connections/vine-terminal-left.png",
+    "width": 180,
+    "height": 240,
+    "transparent": true
+  },
+  "bean-fire-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/fire/stem.webp",
+    "png": "beanstalk/themes/fire/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-fire-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/fire/leaf.webp",
+    "png": "beanstalk/themes/fire/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        160
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-fire-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/fire/branch.webp",
+    "png": "beanstalk/themes/fire/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        40
+      ]
+    }
+  },
+  "bean-ice-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/ice/stem.webp",
+    "png": "beanstalk/themes/ice/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-ice-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/ice/leaf.webp",
+    "png": "beanstalk/themes/ice/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-ice-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/ice/branch.webp",
+    "png": "beanstalk/themes/ice/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        40
+      ]
+    }
+  },
+  "bean-lightning-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/lightning/stem.webp",
+    "png": "beanstalk/themes/lightning/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-lightning-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/lightning/leaf.webp",
+    "png": "beanstalk/themes/lightning/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        160
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-lightning-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/lightning/branch.webp",
+    "png": "beanstalk/themes/lightning/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a1/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        38
+      ]
+    }
+  },
+  "bean-mire-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/mire/stem.webp",
+    "png": "beanstalk/themes/mire/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-mire-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/mire/leaf.webp",
+    "png": "beanstalk/themes/mire/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        145
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-mire-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/mire/branch.webp",
+    "png": "beanstalk/themes/mire/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        46
+      ]
+    }
+  },
+  "bean-scarab-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/scarab/stem.webp",
+    "png": "beanstalk/themes/scarab/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-scarab-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/scarab/leaf.webp",
+    "png": "beanstalk/themes/scarab/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        150
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-scarab-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/scarab/branch.webp",
+    "png": "beanstalk/themes/scarab/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        38
+      ]
+    }
+  },
+  "bean-leviathan-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/leviathan/stem.webp",
+    "png": "beanstalk/themes/leviathan/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-leviathan-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/leviathan/leaf.webp",
+    "png": "beanstalk/themes/leviathan/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        148
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-leviathan-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/leviathan/branch.webp",
+    "png": "beanstalk/themes/leviathan/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-a2/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "sockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        45
+      ]
+    }
+  },
+  "bean-colossus-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/colossus/stem.webp",
+    "png": "beanstalk/themes/colossus/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+    "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+    "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+    "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+    "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-colossus-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/colossus/leaf.webp",
+    "png": "beanstalk/themes/colossus/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+    "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+    "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+    "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+    "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-colossus-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/colossus/branch.webp",
+    "png": "beanstalk/themes/colossus/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+    "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+    "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+    "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+    "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        36
+      ]
+    }
+  },
+  "bean-prism-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/prism/stem.webp",
+    "png": "beanstalk/themes/prism/stem.png",
+    "width": 384,
+    "height": 512,
+    "size": [
+      384,
+      512
+    ],
+    "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+    "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+    "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+    "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+    "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-prism-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/prism/leaf.webp",
+    "png": "beanstalk/themes/prism/leaf.png",
+    "width": 512,
+    "height": 320,
+    "size": [
+      512,
+      320
+    ],
+    "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+    "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+    "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+    "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+    "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        164
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-prism-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/prism/branch.webp",
+    "png": "beanstalk/themes/prism/branch.png",
+    "width": 256,
+    "height": 96,
+    "size": [
+      256,
+      96
+    ],
+    "raw": "beanstalk/themes/raw/group-a3/raw-sheet-magenta.png",
+    "prompt": "beanstalk/themes/raw/group-a3/prompt-used.txt",
+    "renderLayer": "behind-actors",
+    "cleanedSource": "beanstalk/themes/raw/group-a3/raw-sheet.png",
+    "cleanupPrompt": "beanstalk/themes/raw/group-a3/magenta-clean.prompt.txt",
+    "postprocess": "Hard magenta key tolerance30; 1px edge contraction; component extraction; Lanczos normalization. Hard key preserves genuine violet crystal facets.",
+    "rejectedRaw": "beanstalk/themes/raw/group-a3/raw-sheet-rejected-glow.png",
+    "sockets": {
+      "start": [
+        23,
+        42
+      ],
+      "end": [
+        242,
+        35
+      ]
+    }
+  },
+  "bean-reaper-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/reaper/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-reaper-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/reaper/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-reaper-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/reaper/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        43
+      ],
+      "end": [
+        240,
+        34
+      ]
+    }
+  },
+  "bean-roc-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/roc/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-roc-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/roc/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-roc-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/roc/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        43
+      ],
+      "end": [
+        240,
+        36
+      ]
+    }
+  },
+  "bean-briar-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/briar/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-briar-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/briar/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-briar-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/briar/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        50
+      ],
+      "end": [
+        240,
+        41
+      ]
+    }
+  },
+  "bean-seraph-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/seraph/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-seraph-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/seraph/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-seraph-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/seraph/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        46
+      ],
+      "end": [
+        240,
+        29
+      ]
+    }
+  },
+  "bean-eclipse-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/eclipse/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        250
+      ],
+      [
+        135,
+        250
+      ]
+    ]
+  },
+  "bean-eclipse-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/eclipse/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-eclipse-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/eclipse/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        46
+      ],
+      "end": [
+        240,
+        25
+      ]
+    }
+  },
+  "bean-elderbloom-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/elderbloom/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-elderbloom-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/elderbloom/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-elderbloom-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/elderbloom/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        44
+      ],
+      "end": [
+        240,
+        27
+      ]
+    }
+  },
+  "bean-cinderheart-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/cinderheart/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-cinderheart-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/cinderheart/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-cinderheart-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/cinderheart/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        56
+      ],
+      "end": [
+        240,
+        43
+      ]
+    }
+  },
+  "bean-frostregent-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/frostregent/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueBounds": [
+      [
+        135,
+        249
+      ],
+      [
+        135,
+        249
+      ]
+    ]
+  },
+  "bean-frostregent-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/frostregent/leaf.png",
+    "width": 512,
+    "height": 320,
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "sockets": {
+      "attach": [
+        14,
+        162
+      ]
+    },
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        100,
+        30
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none",
+    "defaultDirection": "petiole-left, leaf-tip-right"
+  },
+  "bean-frostregent-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/frostregent/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        20,
+        46
+      ],
+      "end": [
+        240,
+        40
+      ]
+    }
+  },
+  "bean-tempestwing-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/tempestwing/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-tempestwing-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/tempestwing/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        160
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-tempestwing-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/tempestwing/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        45
+      ],
+      "end": [
+        242,
+        44
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "bean-souljailer-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/souljailer/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-souljailer-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/souljailer/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        159
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-souljailer-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/souljailer/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        40
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "bean-sporefather-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/sporefather/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-sporefather-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/sporefather/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        174
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-sporefather-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/sporefather/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        38
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c1/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c1/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "bean-prismback-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/prismback/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-prismback-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/prismback/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        148
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-prismback-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/prismback/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        48
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "bean-sandchronarch-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/sandchronarch/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-sandchronarch-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/sandchronarch/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        144
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-sandchronarch-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/sandchronarch/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        46
+      ],
+      "end": [
+        242,
+        52
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "bean-coraltide-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/coraltide/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-coraltide-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/coraltide/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        152
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-coraltide-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/coraltide/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        48
+      ],
+      "end": [
+        242,
+        47
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c2/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c2/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "bean-moonfang-stem": {
+    "file": "assets/gemwoven/beanstalk/themes/moonfang/stem.png",
+    "width": 384,
+    "height": 512,
+    "sockets": {
+      "start": [
+        192,
+        0
+      ],
+      "end": [
+        192,
+        512
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c3/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c3/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "repeat": {
+      "axis": "vertical",
+      "overlapSourcePixels": 1
+    },
+    "endpointOpaqueWidths": [
+      114,
+      114
+    ]
+  },
+  "bean-moonfang-leaf": {
+    "file": "assets/gemwoven/beanstalk/themes/moonfang/leaf.png",
+    "width": 512,
+    "height": 320,
+    "sockets": {
+      "attach": [
+        14,
+        164
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c3/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c3/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    },
+    "floorAnchor": [
+      256,
+      142
+    ],
+    "actorSafeArea": {
+      "shape": "ellipse",
+      "center": [
+        256,
+        142
+      ],
+      "radii": [
+        110,
+        35
+      ]
+    },
+    "occlusionClass": "low",
+    "occupantPolicy": "none"
+  },
+  "bean-moonfang-branch": {
+    "file": "assets/gemwoven/beanstalk/themes/moonfang/branch.png",
+    "width": 256,
+    "height": 96,
+    "sockets": {
+      "start": [
+        23,
+        44
+      ],
+      "end": [
+        242,
+        40
+      ]
+    },
+    "raw": "beanstalk/themes/raw/group-c3/raw-sheet.png",
+    "prompt": "beanstalk/themes/raw/group-c3/prompt-used.txt",
+    "generation": {
+      "tool": "built-in image_gen",
+      "model": "gpt-6-astra",
+      "reasoning": "high"
+    }
+  },
+  "summon-lake": {
+    "file": "assets/gemwoven/summon-lake/scene.webp",
+    "width": 941,
+    "height": 1672
+  },
+  "form-ice-2": {
+    "file": "assets/heroes/forms/ice/form-2/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      55,
+      44,
+      201,
+      241
+    ],
+    "bodyAnchor": {
+      "x": 0.5625,
+      "crown": 0.1640625,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-ice-2": {
+    "file": "assets/heroes/forms/ice/form-2/portrait.png",
+    "width": 320,
+    "height": 400,
+    "footBounds": [
+      0,
+      6,
+      320,
+      394
+    ]
+  },
+  "form-idle-ice-2": {
+    "file": "assets/heroes/forms/ice/form-2/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.5625,
+      "crown": 0.1640625,
+      "foot": 0.94
+    },
+    "footBounds": [
+      55,
+      44,
+      201,
+      241
+    ]
+  },
+  "form-ice-3": {
+    "file": "assets/heroes/forms/ice/form-3/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      53,
+      50,
+      206,
+      241
+    ],
+    "bodyAnchor": {
+      "x": 0.5625,
+      "crown": 0.22265625,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-ice-3": {
+    "file": "assets/heroes/forms/ice/form-3/portrait.png",
+    "width": 320,
+    "height": 400,
+    "footBounds": [
+      0,
+      24,
+      320,
+      394
+    ]
+  },
+  "form-idle-ice-3": {
+    "file": "assets/heroes/forms/ice/form-3/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.5625,
+      "crown": 0.22265625,
+      "foot": 0.94
+    },
+    "footBounds": [
+      53,
+      50,
+      206,
+      241
+    ]
+  },
+  "form-lightning-3": {
+    "file": "assets/heroes/forms/lightning/form-3/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      42,
+      45,
+      215,
+      241
+    ],
+    "bodyAnchor": {
+      "x": 0.5,
+      "crown": 0.171875,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-lightning-3": {
+    "file": "assets/heroes/forms/lightning/form-3/portrait.png",
+    "width": 320,
+    "height": 400,
+    "footBounds": [
+      0,
+      50,
+      320,
+      377
+    ]
+  },
+  "form-idle-lightning-3": {
+    "file": "assets/heroes/forms/lightning/form-3/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.5,
+      "crown": 0.171875,
+      "foot": 0.94
+    },
+    "footBounds": [
+      42,
+      45,
+      215,
+      241
+    ]
+  },
+  "form-lightning-2": {
+    "file": "assets/heroes/forms/lightning/form-2/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      60,
+      51,
+      198,
+      240
+    ],
+    "bodyAnchor": {
+      "x": 0.55078125,
+      "crown": 0.19140625,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-lightning-2": {
+    "file": "assets/heroes/forms/lightning/form-2/portrait.png",
+    "width": 320,
+    "height": 400,
+    "footBounds": [
+      6,
+      69,
+      320,
+      368
+    ]
+  },
+  "form-idle-lightning-2": {
+    "file": "assets/heroes/forms/lightning/form-2/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.55078125,
+      "crown": 0.19140625,
+      "foot": 0.94
+    },
+    "footBounds": [
+      60,
+      51,
+      198,
+      240
+    ]
+  },
+  "form-shadow-2": {
+    "file": "assets/heroes/forms/shadow/form-2/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      46,
+      59,
+      210,
+      250
+    ],
+    "bodyAnchor": {
+      "x": 0.63671875,
+      "crown": 0.234375,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-shadow-2": {
+    "file": "assets/heroes/forms/shadow/form-2/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      26,
+      204,
+      256
+    ]
+  },
+  "form-idle-shadow-2": {
+    "file": "assets/heroes/forms/shadow/form-2/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.63671875,
+      "crown": 0.234375,
+      "foot": 0.94
+    },
+    "footBounds": [
+      46,
+      59,
+      210,
+      250
+    ]
+  },
+  "form-shadow-3": {
+    "file": "assets/heroes/forms/shadow/form-3/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      20,
+      59,
+      224,
+      247
+    ],
+    "bodyAnchor": {
+      "x": 0.56640625,
+      "crown": 0.28125,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-shadow-3": {
+    "file": "assets/heroes/forms/shadow/form-3/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      26,
+      209,
+      256
+    ]
+  },
+  "form-idle-shadow-3": {
+    "file": "assets/heroes/forms/shadow/form-3/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.56640625,
+      "crown": 0.28125,
+      "foot": 0.94
+    },
+    "footBounds": [
+      20,
+      59,
+      224,
+      247
+    ]
+  },
+  "form-earth-2": {
+    "file": "assets/heroes/forms/earth/form-2/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      36,
+      51,
+      217,
+      240
+    ],
+    "bodyAnchor": {
+      "x": 0.515625,
+      "crown": 0.1875,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-earth-2": {
+    "file": "assets/heroes/forms/earth/form-2/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      18,
+      256,
+      256
+    ]
+  },
+  "form-idle-earth-2": {
+    "file": "assets/heroes/forms/earth/form-2/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.515625,
+      "crown": 0.1875,
+      "foot": 0.94
+    },
+    "footBounds": [
+      36,
+      51,
+      217,
+      240
+    ]
+  },
+  "form-earth-3": {
+    "file": "assets/heroes/forms/earth/form-3/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      32,
+      47,
+      219,
+      239
+    ],
+    "bodyAnchor": {
+      "x": 0.51171875,
+      "crown": 0.1875,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-earth-3": {
+    "file": "assets/heroes/forms/earth/form-3/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      0,
+      256,
+      256
+    ]
+  },
+  "form-idle-earth-3": {
+    "file": "assets/heroes/forms/earth/form-3/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.51171875,
+      "crown": 0.1875,
+      "foot": 0.94
+    },
+    "footBounds": [
+      32,
+      48,
+      219,
+      239
+    ]
+  },
+  "form-fire-2": {
+    "file": "assets/heroes/forms/fire/form-2/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      46,
+      50,
+      226,
+      240
+    ],
+    "bodyAnchor": {
+      "x": 0.54296875,
+      "crown": 0.19140625,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-fire-2": {
+    "file": "assets/heroes/forms/fire/form-2/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      16,
+      256,
+      256
+    ]
+  },
+  "form-idle-fire-2": {
+    "file": "assets/heroes/forms/fire/form-2/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.54296875,
+      "crown": 0.19140625,
+      "foot": 0.94
+    },
+    "footBounds": [
+      46,
+      50,
+      225,
+      240
+    ]
+  },
+  "form-fire-3": {
+    "file": "assets/heroes/forms/fire/form-3/master.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      29,
+      51,
+      226,
+      243
+    ],
+    "bodyAnchor": {
+      "x": 0.53125,
+      "crown": 0.28125,
+      "foot": 0.94
+    }
+  },
+  "form-portrait-fire-3": {
+    "file": "assets/heroes/forms/fire/form-3/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      0,
+      256,
+      256
+    ]
+  },
+  "form-idle-fire-3": {
+    "file": "assets/heroes/forms/fire/form-3/hub-idle.webp",
+    "width": 256,
+    "height": 256,
+    "bodyAnchor": {
+      "x": 0.53125,
+      "crown": 0.28125,
+      "foot": 0.94
+    },
+    "footBounds": [
+      29,
+      51,
+      226,
+      243
+    ]
   }
 }

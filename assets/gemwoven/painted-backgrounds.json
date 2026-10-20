@@ -1,0 +1,113 @@
+{
+  "background-home": {
+    "file": "assets/gemwoven/backgrounds/home-leaf-detail.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/home-leaf-detail/home-leaf-detail.generated.png",
+    "reference": "assets/gemwoven/backgrounds/home-canopy.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/home-leaf-detail/home-leaf-detail.prompt.txt"
+    ],
+    "purpose": "Clear overlapping canopy shapes in a calm palette; Home buildings remain independent interactive art."
+  },
+  "background-inventory": {
+    "file": "assets/gemwoven/backgrounds/inventory-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-a/inventory-raw.png",
+    "reference": "assets/gemwoven/backgrounds/inventory.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-a/inventory-prompt.txt"
+    ]
+  },
+  "background-skills": {
+    "file": "assets/gemwoven/backgrounds/skills-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-a/skills-raw.png",
+    "reference": "assets/gemwoven/backgrounds/skills.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-a/skills-prompt.txt"
+    ]
+  },
+  "background-upgrade": {
+    "file": "assets/gemwoven/backgrounds/upgrade-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-a/upgrade-raw.png",
+    "reference": "assets/gemwoven/backgrounds/upgrade.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-a/upgrade-prompt.txt"
+    ]
+  },
+  "background-shop": {
+    "file": "assets/gemwoven/backgrounds/shop-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-b/shop-raw.png",
+    "reference": "assets/gemwoven/backgrounds/shop.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-b/prompts.json"
+    ]
+  },
+  "background-forge": {
+    "file": "assets/gemwoven/backgrounds/forge-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-b/forge-raw.png",
+    "reference": "assets/gemwoven/backgrounds/forge.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-b/prompts.json"
+    ]
+  },
+  "background-tavern": {
+    "file": "assets/gemwoven/backgrounds/tavern-painted.webp",
+    "width": 941,
+    "height": 1671,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-b/tavern-raw.png",
+    "reference": "assets/gemwoven/backgrounds/tavern.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-b/prompts.json"
+    ]
+  },
+  "background-summon": {
+    "file": "assets/gemwoven/backgrounds/summon-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-c/summon-painted-focus.generated.png",
+    "reference": "assets/gemwoven/backgrounds/summon.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-c/summon-painted.prompt.txt",
+      "assets/gemwoven/raw/screens-painted-c/summon-painted-focus.prompt.txt"
+    ]
+  },
+  "background-arena": {
+    "file": "assets/gemwoven/backgrounds/arena-painted.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/screens-painted-c/arena-painted-focus.generated.png",
+    "reference": "assets/gemwoven/backgrounds/arena.webp",
+    "promptFiles": [
+      "assets/gemwoven/raw/screens-painted-c/arena-painted.prompt.txt",
+      "assets/gemwoven/raw/screens-painted-c/arena-painted-focus.prompt.txt"
+    ]
+  }
+}

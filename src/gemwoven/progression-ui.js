@@ -2,7 +2,8 @@
 (() => {
   const M=window.GemwovenProgression,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
   let storage;try{storage=window.localStorage;}catch{storage=null;}
-  const engine=M.makeEngine(storage);
+  const localPreview=location.protocol==='file:'||['localhost','127.0.0.1','[::1]'].includes(location.hostname);
+  const engine=M.makeEngine(storage,{previewTickets:localPreview,previewGems:localPreview});
   const extra={campaign:['Vượt Ải','icon-quest','home'],boss:['Boss Vô Hạn','nav-arena','arena'],quests:['Nhiệm Vụ Ngày','icon-quest','tavern'],offline:['Kho Offline','chest','home'],equipment:['Trang Bị','helmet','forge'],events:['Sự Kiện','icon-event','home'],vip:['VIP','icon-crown','shop'],rankings:['Bảng Xếp Hạng','rank-gold','arena'],admin:['Studio Sự Kiện','icon-settings','home'],mail:['Hòm Thư','icon-mail','tavern'],settings:['Cài Đặt','icon-settings','home'],chat:['Cộng Đồng','icon-chat','tavern']};
   const baseNodes=Object.fromEntries(Object.entries(L.screens).map(([key,v])=>[key,v.nodes.slice()]));
   for(const [key,[name,,bg]]of Object.entries(extra)){L.names[key]=name;L.screens[key]={key,name,background:`assets/gemwoven/backgrounds/${bg}.webp`,backgroundKey:bg,nodes:[]};}
@@ -90,18 +91,7 @@
     return p;
   }
   const cooldown={summoning:false};
-  function resultsDialog(results){
-    let modal=document.getElementById('summon-reveal');if(!modal){modal=document.createElement('dialog');modal.id='summon-reveal';document.body.append(modal);}modal.replaceChildren();
-    const intro=document.createElement('div');intro.className='summon-animation';intro.innerHTML=`${img('summon-crystal','reveal-crystal')}<div class="reveal-rings"></div>${Array.from({length:32},(_,i)=>`<i style="--i:${i}"></i>`).join('')}<p>Những mảnh hồn đang hội tụ…</p>`;modal.append(intro);
-    const skip=document.createElement('button');skip.className='game-btn reveal-skip';skip.textContent='Bỏ qua hoạt ảnh';modal.append(skip);modal.showModal();
-    return new Promise(resolve=>{
-      let timer,done=false;
-      function reveal(){if(done)return;done=true;clearTimeout(timer);intro.remove();skip.remove();modal.classList.add('revealed');const title=document.createElement('h2');title.textContent='Kết quả triệu hồi';modal.append(title);const grid=document.createElement('div');grid.className='summon-results';
-        for(const r of results){const card=document.createElement('article');card.className='summon-result rarity-'+r.rarity;card.style.setProperty('--rarity',M.RARITIES[r.rarity].color);const asset=r.kind==='hero'?'hero-'+r.hero:r.kind==='fragments'?'portrait-'+r.hero:r.kind==='gear'?M.SLOT_ART[r.gear.slot]:M.RESOURCES[r.resource][1];card.innerHTML=img(asset)+`<b>${esc(r.name)}</b><small>${M.RARITIES[r.rarity].name}</small>`;grid.append(card);}modal.append(grid);const close=document.createElement('button');close.className='game-btn';close.textContent='Tiếp tục';close.addEventListener('click',()=>modal.close());modal.append(close);resolve();
-      }
-      skip.addEventListener('click',reveal);modal.oncancel=e=>{if(!done){e.preventDefault();reveal();}};modal.onclose=()=>{if(!done)reveal();modal.classList.remove('revealed');};timer=setTimeout(reveal,matchMedia('(prefers-reduced-motion: reduce)').matches?0:2700);
-    });
-  }
+  function resultsDialog(results){return window.GemwovenSummonReveal(results);}
   function download(name,value){const blob=new Blob([JSON.stringify(value,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function handle(action,el,ctx,state){
     if(action.startsWith('preview:')){const route={event:'events',gift:'vip',book:'vip',chat:'chat',mail:'mail',settings:'settings',trophy:'rankings',crown:'rankings',ranking:'rankings'}[action.slice(8)];if(route){ctx.navigate(route);return true;}}

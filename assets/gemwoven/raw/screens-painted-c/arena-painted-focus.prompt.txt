@@ -1,0 +1,8 @@
+Use case: precise-object-edit / eliminate blurred foreground.
+Input image 1 is the complete repainted Arena background and the exact edit target. Keep this image's entire composition, palette, lighting, architecture, platforms, flags, sky and distant scenery unchanged. Exact canvas 941 x 1672.
+
+One targeted correction only: the very near foliage and stone in the bottom corners, especially the bottom-right corner, are still optically blurred. Redraw the foreground leaves and stone edges in both bottom corners in completely clear focus. Use crisply defined individual tapered leaf shapes, selected central folds, clean overlapping leaves and occasional stem sprays matching the well-drawn leaves elsewhere in this same image. Redraw the blurred rightmost foreground stone blocks with clean sharp painted boundaries and simple matte shading. Foreground should be at least as clearly drawn as midground. No lens blur, no depth-of-field effect, no fuzzy brush smears, no defocus, no soft scalloped blobs. Keep smooth painterly shading inside clean edges. Do not use sharpening halos or photorealistic microtexture. Do not increase visual density, change colors, add decoration or add any objects.
+
+Preserve exact foreground foliage coverage, stone positions and geometry, path opening, steps, rail posts and flags. The foreground appears in focus while distant islands keep their existing atmospheric depth. No text, UI, actors or extra props. All other pixels should be preserved as closely as possible.
+
+Generation: built-in ImageGen, art delegated to gpt-6-astra at high reasoning effort. Edit source: raw/screens-painted-c/arena-painted.generated.png.

@@ -1,0 +1,67 @@
+{
+  "theme": "earth",
+  "raw": "raw-sheet.png",
+  "prompt": "prompt.txt",
+  "sourceSize": [
+    1024,
+    1536
+  ],
+  "sourcePanels": [
+    [
+      0,
+      0,
+      1024,
+      512
+    ],
+    [
+      0,
+      512,
+      1024,
+      1024
+    ],
+    [
+      0,
+      1024,
+      1024,
+      1536
+    ]
+  ],
+  "sourceGroundGeometry": {
+    "groundTop": 342,
+    "frontEdge": 416
+  },
+  "outputSize": [
+    1536,
+    768
+  ],
+  "groundY": 0.82,
+  "layers": {
+    "far": {
+      "file": "earth-far.webp",
+      "width": 1536,
+      "height": 768,
+      "scrollFactor": 0.18,
+      "alpha": false
+    },
+    "mid": {
+      "file": "earth-mid.webp",
+      "width": 1536,
+      "height": 768,
+      "scrollFactor": 0.48,
+      "alpha": true
+    },
+    "near": {
+      "file": "earth-near.webp",
+      "width": 1536,
+      "height": 768,
+      "scrollFactor": 0.9,
+      "alpha": true
+    }
+  },
+  "postprocess": [
+    "chroma key",
+    "ground plane registration",
+    "foreground component sizing below .92",
+    "WebP export"
+  ]
+}

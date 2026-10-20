@@ -1,0 +1,139 @@
+{
+  "schema": "gemwoven.painted-combat.v1",
+  "generator": "built-in ImageGen",
+  "artAgent": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "high"
+  },
+  "mapMode": "side_scroll_mode",
+  "visualModel": "parallax_layers",
+  "stageSegmentCount": 1,
+  "stageKind": "fixed-combat-arena",
+  "width": 1536,
+  "height": 768,
+  "groundY": 0.82,
+  "walkableBelt": {
+    "left": 0.1,
+    "right": 0.9,
+    "top": 0.73,
+    "bottom": 0.89
+  },
+  "groundTop": 0.68,
+  "frontEdge": 0.92,
+  "nearTop": 0.92,
+  "repeatPolicy": "overscan-clamp",
+  "repeatNote": "Use camera overscan for small motion; paintings are not seamless tiles.",
+  "collisionSource": "runtime geometry, never image pixels",
+  "renderOrder": [
+    "far",
+    "mid",
+    "actors",
+    "near"
+  ],
+  "themes": {
+    "earth": {
+      "layers": {
+        "far": {
+          "file": "earth-far.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.18,
+          "alpha": false
+        },
+        "mid": {
+          "file": "earth-mid.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.48,
+          "alpha": true
+        },
+        "near": {
+          "file": "earth-near.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.9,
+          "alpha": true
+        }
+      },
+      "source": "source/earth/metadata.json"
+    },
+    "fire": {
+      "layers": {
+        "far": {
+          "file": "fire-far.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.18,
+          "alpha": false
+        },
+        "mid": {
+          "file": "fire-mid.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.48,
+          "alpha": true
+        },
+        "near": {
+          "file": "fire-near.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.9,
+          "alpha": true
+        }
+      },
+      "source": "source/fire/metadata.json"
+    },
+    "ice": {
+      "layers": {
+        "far": {
+          "file": "ice-far.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.18,
+          "alpha": false
+        },
+        "mid": {
+          "file": "ice-mid.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.48,
+          "alpha": true
+        },
+        "near": {
+          "file": "ice-near.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.9,
+          "alpha": true
+        }
+      },
+      "source": "source/ice/metadata.json"
+    },
+    "lightning": {
+      "layers": {
+        "far": {
+          "file": "lightning-far.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.18,
+          "alpha": false
+        },
+        "mid": {
+          "file": "lightning-mid.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.48,
+          "alpha": true
+        },
+        "near": {
+          "file": "lightning-near.webp",
+          "width": 1536,
+          "height": 768,
+          "scrollFactor": 0.9,
+          "alpha": true
+        }
+      },
+      "source": "source/lightning/metadata.json"
+    }
+  }
+}

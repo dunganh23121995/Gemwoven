@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "name": "lightning-form-3",
+  "processing": {
+    "cell_size": 256,
+    "fit_scale": 0.84,
+    "trim_border": 0,
+    "edge_clean_depth": 0,
+    "align": "center",
+    "shared_scale": true,
+    "scale_strategy": "preserve",
+    "component_mode": "largest",
+    "component_padding": 2,
+    "min_component_area": 1,
+    "edge_touch_margin": 0
+  },
+  "output_origin": [
+    128.0,
+    128.0
+  ],
+  "reference": {
+    "target": "player",
+    "mode": "idle",
+    "rows": 4,
+    "cols": 2,
+    "body_scale_mean": 0.5542568920195471,
+    "body_scale_cv": 0.0058232349685600785,
+    "anchor_y_mean": 0.5229966139954854
+  },
+  "qc": {
+    "max_body_scale_drift": 0.1
+  }
+}

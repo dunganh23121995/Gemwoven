@@ -143,7 +143,9 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
   if(creature)ART.enemies[key]={idle:creature,attack:creature,cast:creature,hurt:creature};
   if(battle.boss&&ART.worldBosses?.[battle.bossId])ART.bosses[key]=ART.worldBosses[battle.bossId];
   const backdrop=progressionRules.WORLD.CHAPTERS[battle.chapter-1]?.backdrop||battle.theme;
-  if(ART.worldScenes?.[backdrop])ART.parallax[key]=[ART.worldScenes[backdrop]];
+  // The chapter's vista belongs only to the distant layer. Keep the authored
+  // horizontal fighting terrace and foreground instead of a vertical map crop.
+  if(ART.worldScenes?.[backdrop])ART.chapterVista=ART.worldScenes[backdrop];
   MONSTERS[key]={...MONSTERS[key],name:battle.enemyName,boss:battle.enemyName,skill:battle.skills[0],support:'Hộ Giáp',heal:'Hồi Sức'};
   const campaignSkill=enemySkill;
   enemySkill=async function({reserved=false}={}){

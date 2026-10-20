@@ -1,0 +1,307 @@
+{
+  "hero": "shadow",
+  "forms": {
+    "2": {
+      "name": "Nguyệt Ảnh",
+      "poster": "assets/heroes/forms/shadow/form-2/master.png",
+      "portrait": "assets/heroes/forms/shadow/form-2/portrait.png",
+      "actions": {
+        "idle": {
+          "file": "assets/heroes/forms/shadow/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
+          "heads": [
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 120
+        },
+        "attack": {
+          "file": "assets/heroes/forms/shadow/form-2/attack.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "cast": {
+          "file": "assets/heroes/forms/shadow/form-2/cast.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ],
+            [
+              163,
+              60
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "run": {
+          "file": "assets/heroes/forms/shadow/form-2/run.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              157,
+              60
+            ],
+            [
+              157,
+              60
+            ],
+            [
+              157,
+              60
+            ],
+            [
+              157,
+              60
+            ],
+            [
+              157,
+              60
+            ],
+            [
+              157,
+              60
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        }
+      }
+    },
+    "3": {
+      "name": "Đế Vương Nhật Thực",
+      "poster": "assets/heroes/forms/shadow/form-3/master.png",
+      "portrait": "assets/heroes/forms/shadow/form-3/portrait.png",
+      "actions": {
+        "idle": {
+          "file": "assets/heroes/forms/shadow/form-3/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
+          "heads": [
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              145,
+              72
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 120
+        },
+        "attack": {
+          "file": "assets/heroes/forms/shadow/form-3/attack.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              145,
+              71
+            ],
+            [
+              145,
+              72
+            ],
+            [
+              147,
+              76
+            ],
+            [
+              146,
+              79
+            ],
+            [
+              146,
+              72
+            ],
+            [
+              145,
+              72
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "cast": {
+          "file": "assets/heroes/forms/shadow/form-3/cast.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              145,
+              71
+            ],
+            [
+              144,
+              72
+            ],
+            [
+              143,
+              72
+            ],
+            [
+              144,
+              77
+            ],
+            [
+              144,
+              76
+            ],
+            [
+              145,
+              72
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "run": {
+          "file": "assets/heroes/forms/shadow/form-3/run.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              145,
+              74
+            ],
+            [
+              145,
+              74
+            ],
+            [
+              145,
+              75
+            ],
+            [
+              144,
+              74
+            ],
+            [
+              145,
+              74
+            ],
+            [
+              145,
+              74
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        }
+      }
+    }
+  }
+}

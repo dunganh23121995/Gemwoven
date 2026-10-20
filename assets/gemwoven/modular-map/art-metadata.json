@@ -1,0 +1,81 @@
+{
+  "schema": "gemwoven.modular_map_art.v1",
+  "generator": "built-in image_gen",
+  "artAgent": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "high"
+  },
+  "styleReferences": [
+    "assets/gemwoven/items/home-summon-painted.webp",
+    "assets/gemwoven/backgrounds/home-calm-crisp.webp"
+  ],
+  "coordinateConvention": "All anchors and socket coordinates are source pixels measured from the exported image top-left. Bounds use exclusive right and bottom.",
+  "processing": "Preserve original raw PNGs. Platform uniformly resized and centered in 512x320. Bridge cropped to alpha>16 bounds, uniformly fitted within 380x80 and centered in 400x100. Set only alpha<=4 to zero to remove nearly invisible generated background specks. Preserve other alpha values. Export PNG and exact lossless WebP.",
+  "sceneryRecommendation": "assets/scenes/painted/earth-far.webp is an existing scenery-only distant cloud/island plate. Runtime scenery and scene placement are handled separately.",
+  "assets": [
+    {
+      "id": "map-platform-a",
+      "image": "assets/gemwoven/modular-map/platform-a.webp",
+      "png": "assets/gemwoven/modular-map/platform-a.png",
+      "raw": "assets/gemwoven/modular-map/raw/platform-a.png",
+      "prompt": "assets/gemwoven/modular-map/platform-a.prompt.txt",
+      "rawSize": [1586, 992],
+      "size": [512, 320],
+      "sourceBounds": [16, 49, 498, 296],
+      "floorAnchor": [256, 107],
+      "floorEllipse": {
+        "center": [256, 107],
+        "radii": [228, 56]
+      },
+      "actorSafeArea": {
+        "center": [256, 107],
+        "radii": [160, 35]
+      },
+      "sockets": {
+        "left": [28, 112],
+        "right": [484, 112],
+        "upper": [256, 52],
+        "lower": [256, 161]
+      },
+      "occlusionClass": "walkable_low_dressing",
+      "occupantPolicy": "render platform below actors",
+      "qc": {
+        "visuallyInspected": true,
+        "alphaExtrema": [0, 255],
+        "transparentPixels": 83630,
+        "edgesTransparent": true,
+        "losslessWebpMatchesPng": true
+      }
+    },
+    {
+      "id": "map-bridge",
+      "image": "assets/gemwoven/modular-map/bridge.webp",
+      "png": "assets/gemwoven/modular-map/bridge.png",
+      "raw": "assets/gemwoven/modular-map/raw/bridge.png",
+      "prompt": "assets/gemwoven/modular-map/bridge.prompt.txt",
+      "rawSize": [1983, 793],
+      "size": [400, 100],
+      "sourceBounds": [10, 13, 390, 87],
+      "floorAnchor": [200, 45],
+      "sockets": {
+        "left": [22, 45],
+        "right": [378, 45]
+      },
+      "walkingStrip": {
+        "left": 22,
+        "right": 378,
+        "top": 25,
+        "bottom": 65
+      },
+      "occlusionClass": "walkable_low_dressing",
+      "occupantPolicy": "render bridge below platform rims and actors",
+      "qc": {
+        "visuallyInspected": true,
+        "alphaExtrema": [0, 255],
+        "transparentPixels": 16258,
+        "edgesTransparent": true,
+        "losslessWebpMatchesPng": true
+      }
+    }
+  ]
+}

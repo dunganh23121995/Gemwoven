@@ -1,0 +1,60 @@
+/* Ambient layers stay inside the scene; controls and labels keep their geometry. */
+.scene-life{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;contain:paint}
+.scene-life .life-glow{position:absolute;left:var(--x);top:var(--y);width:var(--size);aspect-ratio:1;border-radius:50%;background:radial-gradient(ellipse,var(--color),transparent 68%);mix-blend-mode:screen;animation:life-breathe 5s ease-in-out infinite alternate}
+.scene-life .life-particle{position:absolute;left:var(--x);top:var(--y);width:4px;height:6px;border-radius:50%;background:var(--color);box-shadow:0 0 10px var(--color);opacity:0;animation:life-rise var(--duration) var(--delay) linear infinite}
+.scene-life .life-mist{position:absolute;left:-15%;top:var(--y);width:130%;height:12%;border-radius:50%;background:radial-gradient(ellipse,var(--color),transparent 65%);filter:blur(12px);opacity:.16;animation:life-mist 19s ease-in-out infinite alternate}
+.scene-life[data-theme="forge"] .life-particle{width:3px;height:8px;border-radius:60% 10%}
+.scene-life[data-theme="tavern"] .life-particle{width:12px;height:20px;filter:blur(5px);opacity:.15;box-shadow:none}
+.scene-life[data-theme="skills"] .life-particle,.scene-life[data-theme="summon"] .life-particle{border-radius:0;rotate:45deg}
+.scene-life[data-theme="inventory"] .life-particle{width:3px;height:3px}
+.node.is-living-object>.art{animation:life-object 5s ease-in-out infinite alternate;transform-origin:50% 85%}
+.node.is-living-crystal>.art{animation:life-crystal 4s ease-in-out infinite}
+@keyframes life-breathe{from{opacity:.3;scale:.94}to{opacity:.65;scale:1.06}}
+@keyframes life-rise{0%{opacity:0;translate:0 16px}20%{opacity:.55}80%{opacity:.25}100%{opacity:0;translate:16px -70px}}
+@keyframes life-mist{to{translate:4% -8px;opacity:.26}}
+@keyframes life-object{to{translate:0 -3px;rotate:.35deg}}
+@keyframes life-crystal{50%{translate:0 -8px;filter:drop-shadow(0 0 10px #a4dfff88)}}
+body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body.page-hidden .node.is-living-crystal>.art{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.scene-life{display:none}.node.is-living-object>.art,.node.is-living-crystal>.art{animation:none}}
+
+/* Short real-time cinematic: sky -> starfall -> lake -> sealed cards. */
+#summon-reveal.celestial-reveal{box-sizing:border-box;position:fixed;width:min(580px,calc(100vw - 20px));height:min(950px,96dvh);max-height:96dvh;padding:0;border:1px solid #aebce18a;border-radius:20px;overflow:hidden;background:#08142e var(--lake) center/100% 100%;color:#f8edce;box-shadow:0 0 70px #3064bc50}
+.celestial-reveal::backdrop{background:#030916e8;backdrop-filter:blur(7px)}
+.celestial-reveal>header{position:absolute;inset:7% 25px auto;text-align:center;z-index:3;pointer-events:none;text-shadow:0 2px 9px #000}
+.celestial-reveal>header>small{font:10px/1.5 system-ui;letter-spacing:3px;color:#c9dcff}
+#summon-reveal.celestial-reveal h2{font:700 clamp(25px,5vw,38px)/1.3 Cambria,serif;color:#fff0bf;margin:7px 0}
+.celestial-status{font:14px/1.4 Cambria,serif;color:#dde8ff;margin:8px 0}
+.celestial-film,.celestial-water{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.celestial-water{inset:50% -10% -10%;width:120%;height:60%;background:repeating-linear-gradient(177deg,transparent 0 19px,#a3eaff0c 21px,transparent 23px 34px);animation:lake-current 7s ease-in-out infinite alternate;mix-blend-mode:screen}
+.celestial-reveal .celestial-close{position:absolute;right:12px;top:10px;z-index:6;width:36px;height:36px;padding:0;border:1px solid #d1ddff66;border-radius:50%;background:#111d3a99;color:#fff0d1;font:26px/1 system-ui;cursor:pointer}
+.celestial-reveal>footer{position:absolute;bottom:4%;left:5%;right:5%;z-index:5;text-align:center}
+.celestial-reveal>footer>p{font:11px system-ui;color:#c5d6ec;margin:10px 0 0;text-shadow:0 1px 4px #040d24}
+.celestial-open-all{width:200px;max-width:75%;padding:13px 20px;border:1px solid #f5d897;border-radius:7px;background:linear-gradient(#917346,#3b2b1d);box-shadow:0 0 24px #d5b96630,inset 0 0 0 3px #352515;color:#fff1c8;font:700 18px Cambria,serif;cursor:pointer}
+.celestial-open-all:disabled{opacity:.35;cursor:default}
+.celestial-deck{position:absolute;inset:24% 18px 17%;z-index:4;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-content:center;gap:15px 9px}
+.celestial-deck[hidden]{display:none!important}
+.celestial-card{position:relative;aspect-ratio:.61;min-width:0;padding:0;border:0;background:transparent;color:#fff;cursor:pointer;perspective:850px;animation:card-from-water .8s cubic-bezier(.16,.7,.2,1) var(--deal) both}
+.celestial-card-turn{position:absolute;inset:0;display:block;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.15,1)}
+.celestial-card.is-open .celestial-card-turn{transform:rotateY(180deg)}
+.celestial-back,.celestial-front{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;overflow:hidden;backface-visibility:hidden;border:2px solid var(--rarity);border-radius:7px;background:linear-gradient(145deg,#253e70,#10162e);box-shadow:inset 0 0 0 3px #051327,inset 0 0 0 4px #b3cdf64f,0 5px 15px #03091bad}
+.celestial-back::before{content:'';position:absolute;inset:12px;border:1px solid #c4ddff4d;rotate:5deg;border-radius:40% 40% 8px 8px}
+.celestial-back img{width:55%;height:45%;object-fit:contain;filter:drop-shadow(0 0 13px #7cd5ff)}
+.celestial-back b{color:#f6d991;font-size:22px;line-height:1}
+.celestial-back small{font:10px Cambria,serif;color:#c6d8f7}
+.celestial-front{transform:rotateY(180deg);background:radial-gradient(ellipse at 50% 35%,color-mix(in srgb,var(--rarity) 28%,#182844),#091329 80%);padding:8px 5px}
+.celestial-front img{width:100%;height:57%;object-fit:contain;filter:drop-shadow(0 3px 5px #0008)}
+.celestial-front strong{font:700 clamp(10px,1.8vw,12px)/1.25 Cambria,serif;text-align:center}
+.celestial-front small{font:9px/1.2 Cambria,serif;color:var(--rarity)}
+.celestial-card.rarity-legendary .celestial-back,.celestial-card.rarity-legendary .celestial-front{border:3px double #ffe195;box-shadow:0 0 15px #ffbc4977,inset 0 0 20px #ffbe3020}
+.celestial-card.rarity-divine .celestial-back,.celestial-card.rarity-divine .celestial-front{border:3px solid #d4faff;border-image:conic-gradient(#fff,#9cedff,#d6b6ff,#fff,#a4efff,#fff) 1;box-shadow:0 0 20px #9ce5ff99,inset 0 0 22px #c9b5ff30}
+.celestial-card.rarity-divine::after,.celestial-card.rarity-legendary::after{content:'✦';position:absolute;right:-5px;top:-10px;font-size:22px;color:#fff5cd;text-shadow:0 0 12px #fff;pointer-events:none;animation:rare-twinkle 2.5s ease-in-out infinite}
+.celestial-card.rarity-divine::after{content:'◇';color:#d2f7ff;font-size:28px}
+.celestial-reveal[data-count="1"] .celestial-deck{grid-template-columns:minmax(0,200px);justify-content:center}
+@keyframes card-from-water{from{opacity:0;transform:translateY(110px) scale(.45) rotateX(40deg);filter:brightness(2)}to{opacity:1;transform:none;filter:none}}
+@keyframes lake-current{to{translate:2% 10px;opacity:.5}}
+@keyframes rare-twinkle{50%{opacity:.45;scale:.8}}
+@media(max-width:480px){.celestial-deck{grid-template-columns:repeat(3,minmax(0,1fr));inset:23% 25px 16%;gap:9px 12px}.celestial-card{aspect-ratio:.8}.celestial-card:last-child:nth-child(10){grid-column:2}.celestial-front img{height:48%}.celestial-back img{height:37%}.celestial-reveal>header{top:5%}.celestial-reveal[data-count="1"] .celestial-card{aspect-ratio:.65}}
+@media(max-height:700px){.celestial-reveal[data-count="10"] .celestial-deck{grid-template-rows:repeat(2,minmax(0,1fr));align-content:stretch}.celestial-reveal[data-count="10"] .celestial-card{aspect-ratio:auto;min-height:0}.celestial-back,.celestial-front{gap:3px}.celestial-reveal>footer{bottom:2%}.celestial-open-all{padding:9px 15px}}
+@media(max-height:700px) and (max-width:480px){.celestial-reveal[data-count="10"] .celestial-deck{grid-template-rows:repeat(4,minmax(0,1fr));inset:23% 18px 18%}.celestial-back b{font-size:16px}.celestial-back small{font-size:9px}.celestial-status{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.celestial-reveal *{animation:none!important;transition:none!important}}
+body.page-hidden .celestial-reveal *{animation-play-state:paused!important}

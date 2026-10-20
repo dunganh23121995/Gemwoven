@@ -1,0 +1,4 @@
+python C:/Users/dungca/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py --input assets/gemwoven/beanstalk/themes/raw/group-a3/raw-sheet-magenta.png --out assets/gemwoven/beanstalk/themes/raw/group-a3/raw-sheet.png --key-color "#ff00ff" --tolerance 30 --edge-contract 1 --force
+python assets/gemwoven/beanstalk/themes/raw/group-a1/export.py group-a3
+
+Use hard key to preserve violet crystal facets; soft-matte dominance removes genuine purple pixels. Exporter removes residual magenta fringe only for the brass/steel Colossus material.

@@ -14,11 +14,27 @@
   function home(nodes){
     nodes=nodes.filter(n=>!/^home\.(live|feature-mail|feature-settings)$/.test(n.id));
     const quest=nodes.find(n=>n.id==='home.quests');quest.action='route:quests';C[quest.text]='Nhiệm Vụ';
+    quest.rect=[713,1146,210,173];quest.iconRect=[82,24,52,60];quest.className='home-quest-board';
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1040,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
-    nodes.push(button('home','feature-chat','Trò Chuyện','side-pennant',[10,383,96,109],'route:chat',{}, {icon:'icon-chat',iconRect:[26,15,45,54],labelRect:[3,79,90,26],size:17}));
+    nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
+    nodes.push(button('home','feature-chat','Trò Chuyện','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
     [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,asset,[844,172+i*116,85,92],'route:'+route,{}, {labelHidden:true,fit:'contain',className:'home-right-icon'})));
     nodes.push(button('home','explore','Khám Phá',A['journey-button']?'journey-button':'title-parchment',[215,1338,525,140],'route:campaign',{}, {labelRect:[130,44,265,56],size:43,tone:'ink',className:'explore-entry'}));
     return nodes;
+  }
+  // One source-art layout for every left hanging menu; its axis is the avatar's.
+  function hangingMenu(nodes){
+    const card=A['hud-side-card'];if(!card)return;
+    const width=128,height=164,center=92;
+    const scaleRect=r=>r.map((v,k)=>v*(k%2?height/card.height:width/card.width));
+    const cards=nodes.filter(n=>n.kind==='button'&&n.rect[0]<200&&
+      (n.id.startsWith('home.feature-')||n.asset==='side-pennant'||n.asset==='hud-side-card'));
+    cards.forEach((n,i)=>{
+      n.asset='hud-side-card';n.rect=[center-width/2,166+i*162,width,height];n.fit='fill';
+      n.iconRect=scaleRect(card.safeRects.icon);n.labelRect=scaleRect(card.safeRects.label);
+      n.size=18;n.labelHidden=false;n.className='home-feature-card hud-hanging-card';
+      if(n.id.endsWith('.side-book'))n.action='journey:monthly';
+    });
   }
   const mapTop=180,mapViewport=1672-mapTop,mapPitch=mapViewport/8;
   // The opening stretch previews stages 1–7; stage 8 starts under the clouds.
@@ -26,41 +42,72 @@
   const revealedStage=p=>Math.min(M.WORLD.MAX_STAGES,Math.max(Math.floor(p.campaign.cleared/50)*50+7,p.campaign.cleared+1));
   const rankedHeroes=p=>Object.keys(p.heroes).filter(key=>M.HEROES[key]).map(key=>({key,stats:M.stats(p,key)})).sort((a,b)=>b.stats.power-a.stats.power||p.heroes[b.key].level-p.heroes[a.key].level||a.key.localeCompare(b.key));
   function mapProfile(chapter){
-    const fresh=['forest','bamboo','eldergrove'].includes(chapter.id),assetKey=fresh?'journey-eight-landings':'chapter-'+(chapter.backdrop||chapter.id),asset=A[assetKey];
-    const anchors=asset.stageCenters.slice(0,8),topDown=[...anchors].reverse(),scaleX=941/asset.width;
-    const bounds=asset.registration?.sourceBounds||[topDown[0][1]-65,anchors[0][1]+80];
-    // Register the artwork and actors together: each measured floor point maps to its row's foot line.
-    const bleed=16,controls=[[bounds[0],0],...topDown.map(([,y],i)=>[y,(i+.68)*mapPitch+bleed]),[bounds[1],mapViewport+bleed*2]];
-    const bands=controls.slice(0,-1).map(([sourceTop,top],i)=>{const [sourceBottom,bottom]=controls[i+1],scaleY=(bottom-top)/(sourceBottom-sourceTop);return {top,height:bottom-top,sourceTop,sourceBottom,artSize:[941,asset.height*scaleY],artOffset:[0,-sourceTop*scaleY]};});
-    return {background:asset.file,assetKey,places:anchors.map(([x],i)=>[x*scaleX,(7-i+.68)*mapPitch]),sourceAnchors:anchors,sourceSize:[asset.width,asset.height],safeFloors:asset.safeFloorPolygons||[],bands,bleed,tileHeight:mapViewport+bleed*2,stride:mapViewport,artSize:[941,asset.height*scaleX],artOffset:[0,0]};
+    // Stage positions belong to the assembled map, never to the distant painting.
+    const element=chapter.element||M.encounter('campaign',(chapter.index-1)*50+1).element||'earth';
+    const assetKey='map-sky-'+(A['map-sky-'+element]?element:'earth'),asset=A[assetKey];
+    const places=Array.from({length:8},(_,i)=>[i%2?240:700,(7-i+.68)*mapPitch]);
+    // A boss owns a complete trunk/leaf/petiole kit; recurring chapters reuse that kit.
+    const parts=['stem','leaf','branch'],themed=parts.every(part=>A[`bean-${chapter.boss}-${part}`]);
+    const tree=Object.fromEntries(parts.map(part=>[part,themed?`bean-${chapter.boss}-${part}`:`bean-${part}`]));
+    return {background:asset.file,assetKey,places,sourceAnchors:places,sourceSize:[941,1492],
+      tree,bossTheme:chapter.boss,mode:'beanstalk-objects',stride:mapViewport,tileHeight:mapViewport,artSize:[941,1672],artOffset:[0,0]};
   }
-  function terrainTile(profile,top){
-    const tile=document.createElement('div');tile.className='map-island registered-terrain';tile.style.cssText=`top:${top-profile.bleed}px;height:${profile.tileHeight}px`;
-    for(const band of profile.bands){const part=document.createElement('div');part.className='terrain-band';part.style.cssText=`top:${band.top}px;height:${band.height+.4}px;background-size:${band.artSize.map(n=>n+'px').join(' ')};background-position:${band.artOffset.map(n=>n+'px').join(' ')}`;tile.append(part);}
-    return tile;
+  function placeActor(pin,key,height,footX,footY){
+    const asset=A[key]||A['icon-hero'],bounds=asset.footBounds||asset.alphaBounds||[0,0,asset.width,asset.height];
+    const scale=Math.min(height/(bounds[3]-bounds[1]),150/(bounds[2]-bounds[0]));
+    const actor=pin.querySelector('.pin-creature');if(!actor)return;
+    actor.style.cssText=`left:${footX-(bounds[0]+bounds[2])/2*scale}px;top:${footY-bounds[3]*scale}px;width:${asset.width*scale}px;height:${asset.height*scale}px`;
+  }
+  function linkedArt(parent,key,from,to,cls){
+    const asset=A[key],[sx,sy]=asset.sockets.start,[ex,ey]=asset.sockets.end;
+    const ux=ex-sx,uy=ey-sy,dx=to[0]-from[0],dy=to[1]-from[1],length2=ux*ux+uy*uy;
+    const a=(dx*ux+dy*uy)/length2,b=(dy*ux-dx*uy)/length2;
+    const sprite=document.createElement('img');sprite.className=cls;sprite.src=asset.file;sprite.alt='';sprite.draggable=false;
+    sprite.style.cssText=`width:${asset.width}px;height:${asset.height}px;transform:matrix(${a},${b},${-b},${a},${from[0]-a*sx+b*sy},${from[1]-b*sx-a*sy})`;
+    parent.append(sprite);
   }
   function mapContent(el,p,state,chapter){
-    const start=(chapter.index-1)*50+1,profile=mapProfile(chapter),{background,places,tileHeight,stride}=profile,islandCount=Math.ceil(50/places.length),mapHeight=islandCount*stride;
+    const start=(chapter.index-1)*50+1,profile=mapProfile(chapter),{background,places,tileHeight,stride,tree}=profile,islandCount=Math.ceil(50/places.length),mapHeight=islandCount*stride;
     const visible=Math.max(0,Math.min(50,revealedStage(p)-start+1)),leader=rankedHeroes(p)[0]?.key;
     const stageY=i=>(islandCount-1-Math.floor(i/places.length))*stride+places[i%places.length][1];
     // Trim undiscovered terrain out of the scroll range, rather than dimming 50 existing pins.
     const shown=visible+(visible<50?1:0),origin=Math.max(0,mapHeight-Math.max(8,shown)*mapPitch);
-    el.style.setProperty('--map-background',`url("${background}")`);
+    // Custom-property URLs resolve against the consuming stylesheet, not this page.
+    const mapURL=new URL(background,document.baseURI).href;
+    el.style.setProperty('--map-background',`url("${mapURL}")`);
     el.style.setProperty('--map-art-size',profile.artSize.map(n=>n+'px').join(' '));el.style.setProperty('--map-art-position',profile.artOffset.map(n=>n+'px').join(' '));
-    const world=document.createElement('div');world.className='map-world close-map eight-step-map';world.style.height=mapHeight-origin+'px';world.dataset.origin=origin;world.dataset.islands=islandCount;world.dataset.profile=JSON.stringify(profile);el.append(world);
-    for(let section=0;section<islandCount;section++){if(section*stride+tileHeight<=origin)continue;world.append(terrainTile(profile,section*stride-origin));}
+    const world=document.createElement('div');world.className='map-world close-map eight-step-map modular-map';world.style.height=mapHeight-origin+140+'px';world.dataset.origin=origin;world.dataset.islands=islandCount;world.dataset.profile=JSON.stringify(profile);el.append(world);
+    world.dataset.bossTheme=profile.bossTheme;
+    const assembly=document.createElement('div');assembly.className='map-assembly';world.append(assembly);
+    // Trunk, petioles, leaves and actors share motion so every attachment stays exact.
+    const stemPitch=mapPitch*2,stem=A[tree.stem],overlap=stem.repeat.overlapSourcePixels;
+    const stemOverlap=stemPitch*overlap/(stem.sockets.end[1]-stem.sockets.start[1]-overlap);
+    for(let y=-stemPitch;y<mapHeight-origin+140;y+=stemPitch){
+      linkedArt(assembly,tree.stem,[470,y],[470,y+stemPitch+stemOverlap],'bean-stem');
+    }
     for(let i=0;i<visible;i++){
       const n=start+i,e=M.encounter('campaign',n),open=n<=p.campaign.cleared+1,stars=p.campaign.stars[n]||0,[x]=places[i%places.length],top=stageY(i),size=e.boss?132:e.tier==='elite'?118:108;
       const asset=e.boss?'boss-'+e.bossId:A['creature-'+e.creature]?'creature-'+e.creature:'monster-'+e.creature;
-      const pin=document.createElement('button');pin.type='button';pin.className='world-pin '+e.tier+(n<=p.campaign.cleared?'':' locked')+(x>550?' label-left':'');pin.style.cssText=`left:${x-size/2}px;top:${top-origin-size*.835}px;width:${size}px;height:${size}px`;
+      const pin=document.createElement('button');pin.type='button';pin.className='world-pin '+e.tier+(open?'':' locked')+(x>550?' label-left':'');pin.style.cssText='left:0;top:0;width:350px;height:220px';
       pin.dataset.groundX=x;pin.dataset.groundY=top-origin;pin.dataset.sourceAnchor=JSON.stringify(profile.sourceAnchors[i%places.length]);
       pin.dataset.action='journey:stage';pin.dataset.index=n;pin.dataset.node='campaign.stage-'+n;pin.setAttribute('aria-label',`${e.name} · ${e.enemyName} · ${stars} sao · Xem thông tin`);
-      pin.innerHTML=img(A['stage-platform']?'stage-platform':'avatar-ring','pin-platform')+((!e.boss||open)?img(A[asset]?asset:'nav-arena','pin-creature'):img('map-cloud','pin-creature pin-mist'))+`<b>${n}</b>`+(n<=p.campaign.cleared?`<span class="pin-stars">${'★'.repeat(stars)+'☆'.repeat(3-stars)}</span>`:'');
+      pin.innerHTML=((!e.boss||open)?img(A[asset]?asset:'nav-arena','pin-creature'):img('map-cloud','pin-creature pin-mist'))+`<b>${n}</b>`+(n<=p.campaign.cleared?`<span class="pin-stars">${'★'.repeat(stars)+'☆'.repeat(3-stars)}</span>`:'');
       if(n>p.campaign.cleared)pin.innerHTML+=`<span class="pin-name">${esc(open?e.enemyName:'Chưa mở khóa')}</span>`;
-      if(n>p.campaign.cleared){pin.innerHTML+=img('skill-lock','pin-lock');pin.setAttribute('aria-label',`${e.name} · ${open?'Chưa vượt · Có thể xuất chiến':'Chưa mở khóa'} · Xem thông tin`);}
+      if(!open)pin.innerHTML+=img('skill-lock','pin-lock');
+      if(n>p.campaign.cleared)pin.setAttribute('aria-label',`${e.name} · ${open?'Chưa vượt · Có thể xuất chiến':'Chưa mở khóa'} · Xem thông tin`);
       if(n===p.campaign.cleared&&leader){pin.classList.add('cleared-hero');pin.dataset.hero=leader;pin.querySelector('.pin-creature')?.remove();pin.insertAdjacentHTML('beforeend',img('hero-'+leader,'pin-creature journey-hero')+`<span class="pin-name">${esc(M.HEROES[leader].name)} · Đã vượt</span>`);}
       if(n===p.campaign.cleared+1)pin.classList.add('next-stage');
-      world.append(pin);
+      const platformKey=tree.leaf,platform=A[platformKey],width=350,scale=width/platform.width,mirror=x<470;
+      const floor=platform.floorAnchor,footX=(mirror?platform.width-floor[0]:floor[0])*scale,footY=floor[1]*scale;
+      const group=document.createElement('div');group.className='map-platform-group bean-leaf-group';group.dataset.stage=n;group.dataset.facing=mirror?'left':'right';
+      group.style.cssText=`left:${x-footX}px;top:${top-origin-footY}px;width:${width}px;height:${platform.height*scale}px`;
+      group.innerHTML=img(platformKey,'map-platform');group.append(pin);
+      const attach=platform.sockets.attach,endX=x-footX+(mirror?platform.width-attach[0]:attach[0])*scale,endY=top-origin-footY+attach[1]*scale;
+      linkedArt(assembly,tree.branch,[470,endY+35],[endX,endY],'bean-branch');assembly.append(group);
+      pin.style.height=platform.height*scale+'px';pin.style.setProperty('--floor-x',footX+'px');pin.style.setProperty('--floor-y',footY+'px');
+      const actorKey=pin.classList.contains('cleared-hero')?'hero-'+leader:(!e.boss||open)?(A[asset]?asset:'nav-arena'):'map-cloud';
+      placeActor(pin,actorKey,pin.classList.contains('cleared-hero')?140:size,footX,footY);
+
     }
     // A compact cloud band hides only the highest undiscovered platform.
     if(visible<50){
@@ -71,15 +118,14 @@
     }
     // Save absolute map coordinates so revealing more terrain does not shift the remembered view.
     const advanced=state.mapProgress?.[chapter.index]!==p.campaign.cleared;
-    const maxScroll=mapHeight-origin-mapViewport;
-    const scroll=Math.max(0,Math.min(maxScroll,!advanced&&state.mapScroll?.[chapter.index]!=null?state.mapScroll[chapter.index]-origin:0));
+    const maxScroll=mapHeight-origin-mapViewport+140;
+    const scroll=Math.max(0,Math.min(maxScroll,!advanced&&state.mapScroll?.[chapter.index]!=null?state.mapScroll[chapter.index]-origin:visible<=7?140:0));
     state.mapProgress??={};state.mapProgress[chapter.index]=p.campaign.cleared;
     el.scrollTop=scroll;
     const alignHeader=()=>{
-      const scene=el.closest('#scene');if(!scene)return;const absolute=el.scrollTop+origin,section=Math.floor(absolute/stride);
+      const scene=el.closest('#scene');if(!scene)return;
       let header=scene.querySelector('.map-header-terrain');
-      if(!header){header=document.createElement('div');header.className='map-header-terrain';header.setAttribute('aria-hidden','true');header.style.setProperty('--map-background',`url("${background}")`);header.append(terrainTile(profile,0),terrainTile(profile,0));scene.prepend(header);}
-      [...header.children].forEach((tile,i)=>tile.style.top=`${mapTop+(section-1+i)*stride-absolute-profile.bleed}px`);
+      if(!header){header=document.createElement('div');header.className='map-header-terrain';header.setAttribute('aria-hidden','true');scene.prepend(header);}
       const bank=world.querySelector('.frontier-cloud');let sky=scene.querySelector('.map-header-cloud');
       if(bank&&!sky){
         sky=document.createElement('div');sky.className='map-header-cloud';sky.setAttribute('aria-hidden','true');
@@ -178,6 +224,7 @@
       nodes=nodes.filter(n=>n.kind!=='content');nodes.push(frame(key,key==='chat'?'chat-frame':'settings-frame',el=>key==='chat'?chat(el,p,state):settings(el),key==='chat'?'chat-panel':'settings-panel'));
     }
     if(key==='arena'){const enemy=nodes.find(n=>n.id==='arena.fighter-ice');if(enemy)enemy.className=((enemy.className||'')+' facing-left').trim();}
+    hangingMenu(nodes);
     L.screens[key].nodes=nodes;playHomeMusic(state);return p;
   };
   G.handle=(action,el,ctx,state)=>{
@@ -187,6 +234,7 @@
     if(action==='do:summon'){confirmSummon(Number(el.dataset.count||1),ctx,state);return true;}
     if(!action.startsWith('journey:'))return delegate(action,el,ctx,state);
     const command=action.slice(8),d=el.dataset;
+    if(command==='monthly')ctx.showModal('Thẻ Tháng · Coming soon',['icon-book'],'Thẻ Tháng đang được chuẩn bị. Quyền lợi và thanh toán sẽ được công bố khi hệ thống máy chủ ra mắt.');
     if(command==='stage'){const index=Number(d.index),p=G.engine.read();if(Number.isInteger(index)&&index>0&&index<=revealedStage(p)){state.mapStage=index;state.mapHero=rankedHeroes(p)[0]?.key;state.mapRewards=false;state.chapterGuide=false;ctx.render();}}
     if(command==='choose-hero'){if(state.mapStage&&G.engine.read().heroes[d.hero]){state.mapHero=d.hero;ctx.render();}}
     if(command==='close-stage'){state.mapStage=null;ctx.render();}

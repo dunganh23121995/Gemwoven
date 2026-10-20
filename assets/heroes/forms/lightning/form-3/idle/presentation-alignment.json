@@ -1,0 +1,39 @@
+{
+  "mode": "hover-center-to-visible-bottom",
+  "bottomY": 241,
+  "offsets": [
+    [
+      0,
+      15
+    ],
+    [
+      0,
+      15
+    ],
+    [
+      0,
+      14
+    ],
+    [
+      0,
+      14
+    ],
+    [
+      0,
+      14
+    ],
+    [
+      0,
+      14
+    ],
+    [
+      0,
+      14
+    ],
+    [
+      0,
+      14
+    ]
+  ],
+  "perFrameRescale": false
+}

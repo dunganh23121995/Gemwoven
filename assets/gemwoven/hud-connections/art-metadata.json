@@ -1,0 +1,78 @@
+{
+  "generation": {
+    "tool": "built-in ImageGen",
+    "artAgentModel": "gpt-6-astra",
+    "reasoningEffort": "high",
+    "referenceFiles": [
+      "assets/gemwoven/items/side-pennant.png",
+      "assets/gemwoven/items/footer-wood.png",
+      "assets/gemwoven/items/avatar-ring.png"
+    ],
+    "processing": "Deterministic crop, connected-alpha cleanup, Lanczos resize, PNG and lossless WebP export. Original raw files preserved.",
+    "exportScript": "export_assets.py"
+  },
+  "assets": {
+    "hanging-card": {
+      "png": "hanging-card.png",
+      "webp": "hanging-card.webp",
+      "raw": "raw/hanging-card.png",
+      "prompt": "hanging-card.prompt.txt",
+      "size": [256, 384],
+      "crop": [114, 7, 910, 1480],
+      "exportSize": [240, 368],
+      "exportPosition": [8, 8],
+      "transparent": true,
+      "textless": true,
+      "sockets": {
+        "topLeft": [36, 24],
+        "topRight": [220, 24],
+        "bottomLeft": [36, 338],
+        "bottomRight": [220, 338]
+      },
+      "safeRects": {
+        "icon": [72, 90, 112, 110],
+        "label": [35, 215, 186, 60],
+        "fullInterior": [36, 65, 184, 235]
+      },
+      "integration": "Paint chain behind card and overlap into the gold attachment ring. Both icon and label fit inside the brown leather. Geometry is in source pixels."
+    },
+    "gold-chain": {
+      "png": "gold-chain.png",
+      "webp": "gold-chain.webp",
+      "raw": "raw/gold-chain.png",
+      "prompt": "gold-chain.prompt.txt",
+      "size": [48, 256],
+      "crop": [414, 250, 544, 1274],
+      "exportSize": [32, 256],
+      "exportPosition": [8, 0],
+      "transparent": true,
+      "sockets": {
+        "start": [24, 0],
+        "end": [24, 256]
+      },
+      "repeat": {
+        "axis": "vertical",
+        "overlapSourcePixels": 1,
+        "policy": "Crop uses matching mid-link phases. Repeat at natural aspect ratio; overlap 1 source pixel if a seam appears. Clip the continuous chain to its required length rather than stretching individual links."
+      },
+      "integration": "Use two instances along the card's left/right socket x coordinates. Continue from avatar frame down to first card and from each card's bottom rings to the next top rings."
+    },
+    "vine-terminal-left": {
+      "png": "vine-terminal-left.png",
+      "webp": "vine-terminal-left.webp",
+      "raw": "raw/vine-terminal-left.png",
+      "prompt": "vine-terminal-left.prompt.txt",
+      "size": [180, 240],
+      "crop": [81, 37, 887, 1408],
+      "exportSize": [164, 224],
+      "exportPosition": [8, 8],
+      "transparent": true,
+      "sockets": {
+        "boardLeftEdge": [54, 120]
+      },
+      "openInteriorRect": [95, 62, 85, 124],
+      "mirrorRule": "Mirror horizontally for the right terminal, reflecting x as 180-x.",
+      "integration": "Overlay around the outer end of the existing footer-wood. Keep footer-wood itself unchanged. Place the boardLeftEdge socket near the board's left end; use the mirrored counterpart at the right end. Asset contains only vines and leaves."
+    }
+  }
+}

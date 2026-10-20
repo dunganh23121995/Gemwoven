@@ -1,0 +1,22 @@
+[
+  {
+    "asset": "assets\\gemwoven\\backgrounds\\summon-painted.webp",
+    "raw": "assets\\gemwoven\\raw\\screens-painted-c\\summon-painted-focus.generated.png",
+    "size": [
+      941,
+      1672
+    ],
+    "bytes": 2337214,
+    "lossless_pixel_equality": true
+  },
+  {
+    "asset": "assets\\gemwoven\\backgrounds\\arena-painted.webp",
+    "raw": "assets\\gemwoven\\raw\\screens-painted-c\\arena-painted-focus.generated.png",
+    "size": [
+      941,
+      1672
+    ],
+    "bytes": 2099548,
+    "lossless_pixel_equality": true
+  }
+]

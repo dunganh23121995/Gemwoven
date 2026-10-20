@@ -1,9 +1,9 @@
-// Finished raster art is animated by selecting authored frames, never by
-// interpolating the image coordinates between poses.
+// Action atlases retain their authored poses. Sparse idle sheets use a stable
+// ready pose with continuous, foot-anchored breathing instead of hard pose jumps.
 const spritePlayback=new WeakMap();
 let spriteFrameClock=0;
 function spriteDefinition(family,key,action){
-  const set=family==='hero'?ART.heroes[key]:state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
+  const set=family==='hero'?(ART.heroForms?.[key]?.[combatHeroForm(key)]||ART.heroes[key]):state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
   const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt?'hurt':'attack'):action;
   return {sheet:set[mapped]||set.attack||set.idle,action:set[mapped]?mapped:mapped==='idle'?'idle':'attack'};
 }
@@ -47,10 +47,9 @@ function spriteTick(now){
     if(reduced){if(el.dataset.frame!=='0')spriteApply(el,playback.action,0);return;}
     const def=spriteDefinition(el.dataset.family,el.dataset.key,playback.action).sheet;
     if(el.dataset.loop==='true'){
-      // Hold the readable ready pose longer; the blink is a short authored frame.
-      const nori=el.dataset.family==='hero'&&el.dataset.key==='earth';
-      const sequence=nori?[0,0,1,1,0,0,0,2,3,0]:def.count===4?[0,0,0,1,1,0,0,2,3,0]:[0,0,1,1];
-      const frame=sequence[Math.floor(Math.max(0,now-playback.start)/180)%sequence.length];
+      // Only dense, authored loops advance at rest. One/two/four-pose atlases
+      // otherwise pop at shoulders, eyes and weapons; CSS supplies a smooth breath.
+      const frame=def.count>=8?Math.floor(Math.max(0,now-playback.start)/(def.frameDuration||90))%def.count:0;
       if(+el.dataset.frame!==frame||el.dataset.action!=='idle')spriteApply(el,'idle',frame);
     }else{
       const elapsed=Math.max(0,now-playback.start);
@@ -70,11 +69,23 @@ renderActors=function(){
   $('heroActor').style.setProperty('--element',ELEMENTS[state.key].color);
   $('heroActor').dataset.hero=state.key;
   $('enemyActor').dataset.element=state.enemyKey;
+  const enemy=$('enemyActor'),tier=state.boss?'boss':progressionBattle?.tier==='elite'?'elite':'normal';
+  enemy.dataset.tier=progressionIsDuel()||progressionBattle?.mode==='pvp'?'duel':tier;
+  enemy.dataset.idleMotion=/bat|roc|wing|wisp|moth/.test(progressionBattle?.creature||progressionBattle?.bossId||'')?'hover':'breathe';
+  mountElementalBossAura(enemy);
   if(state.key==='shadow')mountShadowVeil();
-  mountBossGloom();renderEncounterScene();
+  renderEncounterScene();
   mountActorHead('hero');mountActorHead('enemy');
   setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
 };
+function mountElementalBossAura(root){
+  if(!state.boss||progressionIsDuel())return;
+  const aura=document.createElement('span');aura.className='boss-element-aura';aura.setAttribute('aria-hidden','true');
+  aura.style.setProperty('--element',({fire:'#ffad55',earth:'#b4de78',ice:'#9deaff',lightning:'#d7b3ff',shadow:'#bc9aef'})[state.enemyKey]||ELEMENTS[state.enemyKey].color);
+  aura.innerHTML='<i class="boss-aura-halo"></i><i class="boss-aura-ground"></i><i class="boss-aura-arc"></i><i class="boss-aura-arc second"></i>'+
+    Array.from({length:9},(_,i)=>`<b style="--delay:${-i*.47}s;--x:${i%2?96-i:4+i}%"></b>`).join('');
+  root.append(aura);
+}
 const itemNames=['sword','heart','crystal','snow','shield'];
 function itemImage(type,special=null){const name=special==='core'?'core':itemNames[type]+(special?'-'+special:'');return ART.items[name];}
 paintTile=function(t){

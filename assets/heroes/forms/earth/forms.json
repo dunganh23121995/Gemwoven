@@ -1,0 +1,307 @@
+{
+  "hero": "earth",
+  "forms": {
+    "2": {
+      "name": "Thánh Kỵ Cổ Mộc",
+      "poster": "assets/heroes/forms/earth/form-2/master.png",
+      "portrait": "assets/heroes/forms/earth/form-2/portrait.png",
+      "actions": {
+        "idle": {
+          "file": "assets/heroes/forms/earth/form-2/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
+          "heads": [
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 120
+        },
+        "attack": {
+          "file": "assets/heroes/forms/earth/form-2/attack.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              136,
+              51
+            ],
+            [
+              137,
+              61
+            ],
+            [
+              138,
+              73
+            ],
+            [
+              136,
+              76
+            ],
+            [
+              138,
+              51
+            ],
+            [
+              136,
+              49
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "cast": {
+          "file": "assets/heroes/forms/earth/form-2/cast.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              132,
+              48
+            ],
+            [
+              133,
+              50
+            ],
+            [
+              134,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              132,
+              48
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "run": {
+          "file": "assets/heroes/forms/earth/form-2/run.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              147,
+              55
+            ],
+            [
+              142,
+              54
+            ],
+            [
+              167,
+              58
+            ],
+            [
+              145,
+              53
+            ],
+            [
+              136,
+              57
+            ],
+            [
+              163,
+              59
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        }
+      }
+    },
+    "3": {
+      "name": "Thần Thuẫn Thế Giới",
+      "poster": "assets/heroes/forms/earth/form-3/master.png",
+      "portrait": "assets/heroes/forms/earth/form-3/portrait.png",
+      "actions": {
+        "idle": {
+          "file": "assets/heroes/forms/earth/form-3/idle.webp",
+          "cols": 2,
+          "rows": 4,
+          "count": 8,
+          "heads": [
+            [
+              131,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              131,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              131,
+              48
+            ],
+            [
+              132,
+              48
+            ],
+            [
+              131,
+              48
+            ],
+            [
+              132,
+              48
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 120
+        },
+        "attack": {
+          "file": "assets/heroes/forms/earth/form-3/attack.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              133,
+              49
+            ],
+            [
+              140,
+              62
+            ],
+            [
+              142,
+              69
+            ],
+            [
+              155,
+              80
+            ],
+            [
+              136,
+              55
+            ],
+            [
+              133,
+              48
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "cast": {
+          "file": "assets/heroes/forms/earth/form-3/cast.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              134,
+              52
+            ],
+            [
+              135,
+              51
+            ],
+            [
+              133,
+              66
+            ],
+            [
+              135,
+              57
+            ],
+            [
+              135,
+              54
+            ],
+            [
+              135,
+              52
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "run": {
+          "file": "assets/heroes/forms/earth/form-3/run.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              140,
+              54
+            ],
+            [
+              136,
+              56
+            ],
+            [
+              146,
+              59
+            ],
+            [
+              138,
+              54
+            ],
+            [
+              132,
+              58
+            ],
+            [
+              144,
+              69
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        }
+      }
+    }
+  }
+}
