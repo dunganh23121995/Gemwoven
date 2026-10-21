@@ -127,7 +127,20 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('.celestial-card.is-open').count(),1,'Keyboard opens a card with reduced motion');
     await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,'detail-mobile-summon.png')});
     await page.locator('.celestial-open-all').click();await page.locator('.celestial-close').click();await page.waitForFunction(()=>!document.querySelector('#summon-reveal'));
+    // Real phone emulation: overflow must never widen the layout viewport, and dialogs fit the screen.
+    const phone=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});
+    const mobile=await phone.newPage();mobile.on('pageerror',e=>errors.push(e.message));
+    await mobile.goto(url+'/Gemwoven.html');await mobile.waitForTimeout(300);
+    const fit=await mobile.evaluate(()=>({inner:innerWidth,client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,frame:document.getElementById('viewport').getBoundingClientRect().toJSON()}));
+    assert.equal(fit.inner,390,'Phone layout viewport is not widened by overflow');assert.ok(fit.scroll<=fit.client,'No horizontal scroll on phones');
+    assert.ok(fit.frame.left>=0&&fit.frame.right<=390.5,'Game frame fits the phone width');
+    await mobile.evaluate(()=>{location.hash='summon';});await mobile.waitForFunction(()=>document.querySelector('#stage').dataset.screen==='summon');
+    await mobile.evaluate(()=>document.querySelector('[data-action="do:rates"]').click());
+    const dialogBox=await mobile.locator('#preview-dialog').boundingBox(),closeBox=await mobile.locator('#close-dialog').boundingBox();
+    assert.ok(dialogBox.x>=0&&dialogBox.x+dialogBox.width<=390&&dialogBox.y>=0&&dialogBox.y+dialogBox.height<=844,'Dialogs fit the phone screen');
+    assert.ok(closeBox.width>=44&&closeBox.height>=44,'Dialog close is finger-sized');
+    await phone.close();
     assert.deepEqual(errors,[]);
-    console.log('Browser passed: 20 screens, 30 chapter maps, engraved labels, material layout, x1/x10 sealed reveals, grounded combat, 3-speed camera, mobile and reduced motion.');
+    console.log('Browser passed: 20 screens, 30 chapter maps, engraved labels, material layout, x1/x10 sealed reveals, grounded combat, 3-speed camera, mobile emulation fit, painted dialogs and reduced motion.');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

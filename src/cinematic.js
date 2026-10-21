@@ -14,8 +14,9 @@ function combatLootReceive(side,type){
 }
 function hitAccents(side,result,critical,pending){
   const target=side==='hero'?'enemy':'hero',attacker=side==='hero'?state.key:state.enemyKey,defender=side==='hero'?state.enemyKey:state.key;
-  if(critical)popActorSkill(target,'CHÍ MẠNG!',true,pending);
-  else if(mult(attacker,defender)>1)popActorSkill(target,'KHẮC HỆ ×1,5',false,pending);
+  // Callouts go to the far side of the target, away from the attacker's lunge.
+  if(critical)popActorSkill(target,'CHÍ MẠNG!',true,pending,{away:true});
+  else if(mult(attacker,defender)>1)popActorSkill(target,'KHẮC HỆ ×1,5',false,pending,{away:true});
 }
 function boardItemRecoil(center,strength=2){
   if(reduced)return Promise.resolve();
@@ -89,7 +90,7 @@ async function rageChoreography(side,raw,{hits=1,onRelease=()=>{}}={}){
       const result=damage(side,raw/times.length,ledger);amount+=result.amount;blocked+=result.blocked;
       combatVoice(targetSide,'hurt');if(lumiStorm)lumiThunderStrike(i);else combatV3HitSound(key,true);combatV3Impact(targetSide,key,direction,true,pending);combatV3Camera(direction,true,side==='enemy'&&state.boss,pending);
       combatV3Number(targetSide,result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents(side,result,false,pending);
-      setSpriteAction(targetSide,'hurt',230);fx(target,[{transform:oldTarget||'none'},{transform:`translate(${direction*13}px,-3px) rotate(${direction*5}deg)`,offset:.25},{transform:oldTarget||'none'}],230);
+      setSpriteAction(targetSide,'hurt',230);const recoil=combatOuterMotion(targetSide,13,5);fx(target,[{transform:oldTarget||'none'},{transform:`translate(${direction*recoil.distance}px,-3px) rotate(${direction*recoil.tilt}deg)`,offset:.25},{transform:oldTarget||'none'}],230);
       if(i===times.length-1){onRelease(pending);update();}
       if(sword&&i<times.length-1){await at(times[i]+130);setSpriteFrame(side,'attack',i?1:4);}
     }

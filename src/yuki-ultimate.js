@@ -1,4 +1,3 @@
-const YUKI_GLACIER={armor:25,damage:60};
 function prepareYukiGlacierAudio(){
   const context=combatV3AudioContext();if(!context)return;
   for(const kind of ['charge','fall','impact'])decodeCastSound(context,'ice-glacier-'+kind).catch(()=>{});
@@ -75,7 +74,7 @@ async function yukiGlacierUltimate(){
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   prepareYukiGlacierAudio();
   try{
-    const armor=Math.max(0,Math.min(YUKI_GLACIER.armor,999-state.armor));state.armor+=armor;update();
+    const kit=progressionKit('ice'),armor=Math.max(0,Math.min(kit.armor,combatArmorCap('hero')-state.armor));state.armor+=armor;update();
     if(armor)combatV3Number('hero','+'+armor+' GIÁP','armor',0,pending);
     pending.push(selfBuffSpiral('armor',1100));popActorSkill('hero',HEROES.ice.skill,true,pending);
     combatVoice('hero','cast');if(!reduced)playCastSound('ice','glacier-charge',{volume:.48,pan:-.18});
@@ -86,7 +85,10 @@ async function yukiGlacierUltimate(){
     root.dataset.ragePhase='skyfall';combatVoice('hero','release');if(!reduced)playCastSound('ice','glacier-fall',{volume:.56,pan:.18});
     setSpriteFrame('hero','cast',4);
     await boulder.drop();root.dataset.ragePhase='impact';
-    result=damage('hero',YUKI_GLACIER.damage);if(state.enemyHp>0)state.stunned=true;update();
+    result=damage('hero',kit.base);if(state.enemyHp>0)state.stunned=true;
+    // Third form: the moon glacier also drains the enemy's energy.
+    if(kit.enemyDrain&&state.enemyHp>0){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.enemyDrain);popActorSkill('enemy','−'+kit.enemyDrain+' NĂNG LƯỢNG',false,pending);}
+    update();
     boulder.shatter();yukiIceImpact(combatV3Point('enemy'),pending);
     combatVoice('enemy','hurt');playCastSound('ice','glacier-impact',{volume:.68,pan:.24});
     yukiMeteorShake(true,pending);setSpriteAction('enemy','hurt',350);

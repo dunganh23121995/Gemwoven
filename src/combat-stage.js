@@ -30,27 +30,97 @@ function combatHeadPoint(side){
   const r=pin?.getBoundingClientRect()||actor(side).getBoundingClientRect();
   return {x:r.left-scene.left,y:r.top-scene.top};
 }
+// HUDs, numbers and callouts use the actor's resting (idle) head: the layout box
+// ignores lunge/recoil transforms, so bars never ride along with an attack.
+function combatIdleHead(side){
+  const root=actor(side),s=root?.querySelector('.sprite-body');
+  if(!s||!root.offsetWidth||root.offsetParent!==$('scene'))return {...combatHeadPoint(side),width:root?.offsetWidth||200,height:root?.offsetHeight||200};
+  const sheet=spriteDefinition(s.dataset.family,s.dataset.key,'idle').sheet,frames=HEAD_LANDMARKS[s.dataset.family]?.[s.dataset.key]||{};
+  const head=(sheet.heads||frames.idle||[[128,78]])[0],crown=sheet.crown;
+  // Guessed anchors (x=128) use the painted body centre; the crown keeps the HUD above weapons, hoods and horns.
+  let x=head[0]===128&&sheet.bodyX?sheet.bodyX:head[0];const y=crown?Math.min(head[1],crown[1]):head[1];
+  if(root.dataset.facing==='-1'||root.classList.contains('duel-facing-left'))x=256-x;
+  // Lumi's levitation lifts her whole actor with `translate`; follow its resting height, not the bob.
+  const lift=root.dataset.floating==='true'?Math.round(parseFloat((root.style.translate||'').split(' ')[1])||0):0;
+  return {x:root.offsetLeft+x/256*root.offsetWidth,y:root.offsetTop+y/256*root.offsetHeight+lift,width:root.offsetWidth,height:root.offsetHeight};
+}
+// Floating numbers sit beside the body on the outer side, below the HUD.
+function combatNumberPoint(side,index=0,lift=0){
+  const p=combatIdleHead(side),scene=$('scene'),W=scene.clientWidth||375,H=scene.clientHeight||300,out=side==='hero'?-1:1;
+  const x=p.x+out*Math.min(64,p.width*.22)+(index%2?12:-8);
+  return {x:Math.max(34,Math.min(W-34,x)),y:Math.max(30,Math.min(H-34,p.y+Math.min(48,p.height*.3)+(index%3)*7+lift))};
+}
+function placeCombatHuds(points){
+  const scene=$('scene'),W=scene.clientWidth||375,boxes={};
+  for(const side of ['hero','enemy']){
+    const hud=$(side+'HeadHud');if(!hud)continue;
+    const w=hud.offsetWidth||108,h=hud.offsetHeight||48;
+    boxes[side]={hud,w,h,x:Math.max(w/2+4,Math.min(W-w/2-4,points[side].x)),bottom:Math.max(h+4,points[side].y-9)};
+  }
+  const a=boxes.hero,b=boxes.enemy;
+  // Resting HUDs never overlap: separate horizontally first, then vertically.
+  if(a&&b&&Math.abs(a.x-b.x)<(a.w+b.w)/2+6&&Math.abs(a.bottom-b.bottom)<Math.max(a.h,b.h)+4){
+    const need=(a.w+b.w)/2+6-Math.abs(a.x-b.x),left=a.x<=b.x?a:b,right=left===a?b:a;
+    left.x=Math.max(left.w/2+4,left.x-need/2);right.x=Math.min(W-right.w/2-4,left.x+(left.w+right.w)/2+6);
+    if(right.x-left.x<(left.w+right.w)/2+6){const low=a.bottom>=b.bottom?a:b,high=low===a?b:a;high.bottom=Math.max(high.h+4,low.bottom-low.h-4);}
+  }
+  for(const [side,box] of Object.entries(boxes)){
+    box.hud.style.left=box.x+'px';box.hud.style.top=box.bottom+'px';
+    // While the other actor attacks, its body passes in front of this HUD.
+    box.hud.style.zIndex=actor(side==='hero'?'enemy':'hero').classList.contains('combat-v3-acting')?'3':'';
+  }
+}
+// Free space between the arena's outer edge and the widest opaque pose of an
+// actor (all action frames, from build.py spans), measured at its resting box.
+function combatEdgeRoom(side){
+  const root=actor(side),s=root?.querySelector('.sprite-body'),W=$('scene').clientWidth;
+  if(!s||!root.offsetWidth||!W)return 99;
+  let lo=1,hi=0;
+  for(const action of ['idle','attack','cast','hurt']){const span=spriteDefinition(s.dataset.family,s.dataset.key,action).sheet.span;if(span){lo=Math.min(lo,span[0]);hi=Math.max(hi,span[1]);}}
+  if(hi<=lo)return 99;
+  if(root.dataset.facing==='-1'||root.classList.contains('duel-facing-left'))[lo,hi]=[1-hi,1-lo];
+  return side==='hero'?root.offsetLeft+lo*root.offsetWidth:W-(root.offsetLeft+hi*root.offsetWidth);
+}
+// Resting actors keep every pose at least 8px inside the arena (wide hammers,
+// enlarged star forms); attack motions then spend only the remaining room.
+const COMBAT_EDGE_MARGIN=8;
+function combatKeepInside(){
+  for(const side of ['hero','enemy']){
+    const root=actor(side);if(!root||root.classList.contains('combat-v3-acting')||(root.dataset.state&&root.dataset.state!=='idle'))continue;
+    const prop=side==='hero'?'marginLeft':'marginRight',current=parseFloat(root.style[prop])||0;
+    const base=combatEdgeRoom(side)-current,nudge=Math.min(48,Math.max(0,Math.ceil(COMBAT_EDGE_MARGIN-base)));
+    if(nudge!==current)root.style[prop]=nudge?nudge+'px':'';
+  }
+}
+function combatOuterMotion(side,distance,tilt){
+  const room=Math.max(0,combatEdgeRoom(side)-COMBAT_EDGE_MARGIN);
+  return {distance:Math.min(distance,room),tilt:tilt*Math.min(1,room/30)};
+}
 function followCombatHeads(){
   requestAnimationFrame(followCombatHeads);
   if(document.hidden)return;
-  const points={hero:combatHeadPoint('hero'),enemy:combatHeadPoint('enemy')};
+  combatKeepInside();
+  const points={hero:combatIdleHead('hero'),enemy:combatIdleHead('enemy')};
+  placeCombatHuds(points);
   for(const side of ['hero','enemy']){
     const hud=$(side+'HeadHud');if(!hud)continue;
-    hud.style.left=points[side].x+'px';hud.style.top=points[side].y-9+'px';
     hud.style.visibility='visible';
     hud.style.opacity=actor(side).style.opacity==='0'?'0':state[side==='hero'?'hp':'enemyHp']>0?'1':'.35';
   }
-  for(const popup of $('scene').querySelectorAll('[data-follow-actor]')){
-    const p=points[popup.dataset.followActor];if(!p)continue;
-    popup.style.left=p.x+'px';popup.style.top=p.y+Number(popup.dataset.headOffset||18)+'px';
-  }
+  for(const popup of $('scene').querySelectorAll('[data-follow-actor]'))placeCombatPopup(popup,points[popup.dataset.followActor]);
 }
-function popActorSkill(side,title,ultimate=false,pending){
+function placeCombatPopup(node,p){
+  if(!p)return;
+  const W=$('scene').clientWidth||375,w=node.offsetWidth||80,shift=Number(node.dataset.shift||0);
+  node.style.left=Math.max(w/2+4,Math.min(W-w/2-4,p.x+shift*p.width))+'px';node.style.top=Math.max(8,p.y+Number(node.dataset.headOffset||18))+'px';
+}
+// `away` moves a callout to the far side of the target, off the incoming attacker.
+function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
   const node=document.createElement('div');node.className='actor-skill-pop'+(ultimate?' is-ultimate':'');
-  node.dataset.followActor=side;node.dataset.headOffset=ultimate?'36':'24';node.textContent=title;
+  node.dataset.followActor=side;node.dataset.headOffset=away?'4':ultimate?'36':'24';node.textContent=title;
+  if(away)node.dataset.shift=String(side==='hero'?-.3:.3);
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey].main);
-  const p=combatHeadPoint(side);node.style.left=p.x+'px';node.style.top=p.y+Number(node.dataset.headOffset)+'px';
-  $('combatEffects').append(node);
+  $('combatEffects').append(node);placeCombatPopup(node,combatIdleHead(side));
   const job=animate(node,[{opacity:0,transform:'translate(-50%,10px) scale(.7)'},{opacity:1,transform:'translate(-50%,0) scale(1.08)',offset:.2},{opacity:1,transform:'translate(-50%,-5px) scale(1)',offset:.72},{opacity:0,transform:'translate(-50%,-17px) scale(.98)'}],{duration:ultimate?850:540,easing:'ease-out'}).finally(()=>node.remove());
   if(pending)pending.push(job);return job;
 }
@@ -74,10 +144,8 @@ async function heroUltimate(){
   const key=state.key;sfx('special');
   if(key==='earth')return noriRenewalUltimate();
   if(key==='ice')return yukiGlacierUltimate();
-  await rageChoreography('hero',{fire:135,earth:110,ice:100,lightning:140,shadow:150}[key],{
-    hits:key==='lightning'||key==='shadow'?5:1,onRelease(pending){
-    }
-  });
+  const kit=progressionKit(key);
+  await rageChoreography('hero',kit.base,{hits:Math.max(1,kit.hits),onRelease(pending){}});
 }
 async function castReadyUltimates(){
   for(const side of ['hero','enemy']){

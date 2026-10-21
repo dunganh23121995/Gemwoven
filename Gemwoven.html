@@ -35,13 +35,17 @@
       </section>
     </div>
   </main>
-  <dialog id="preview-dialog" aria-labelledby="dialog-title">
-    <button class="close" id="close-dialog" aria-label="Đóng">×</button>
-    <h2 id="dialog-title"></h2>
-    <div id="dialog-art"></div>
-    <p id="dialog-copy"></p>
-    <div id="dialog-links"></div>
-    <button id="return-dialog" class="plain-button">Quay lại</button>
+  <dialog id="preview-dialog" class="gw-dialog" aria-labelledby="dialog-title">
+    <span class="gw-emblem" aria-hidden="true"></span>
+    <header class="gw-head"><h2 id="dialog-title"></h2></header>
+    <button type="button" class="close gw-close" id="close-dialog" aria-label="Đóng">×</button>
+    <div class="gw-body" id="dialog-body">
+      <div id="dialog-art"></div>
+      <p id="dialog-copy"></p>
+      <div id="dialog-extra"></div>
+      <div id="dialog-links"></div>
+    </div>
+    <footer class="gw-actions"><button type="button" id="return-dialog" class="plain-button gw-btn">Quay lại</button></footer>
   </dialog>
   <script src="src/gemwoven/assets.js"></script>
   <script src="src/gemwoven/screens.js"></script>
@@ -59,6 +63,7 @@
   <script src="src/gemwoven/form-effects.js"></script>
   <script src="src/gemwoven/hero-forms.js"></script>
   <script src="src/gemwoven/summon-cinematic.js"></script>
+  <script src="src/gemwoven/living-hub.js"></script>
   <script src="src/gemwoven/ui.js"></script>
 </body>
 </html>

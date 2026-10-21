@@ -2,8 +2,9 @@
 (() => {
   const M=window.GemwovenProgression,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
   let storage;try{storage=window.localStorage;}catch{storage=null;}
-  const localPreview=location.protocol==='file:'||['localhost','127.0.0.1','[::1]'].includes(location.hostname);
-  const engine=M.makeEngine(storage,{previewTickets:localPreview,previewGems:localPreview});
+  // Preview tickets/gems/sample mail only for a local dev server; a portable HTML opened from disk is a real save.
+  const localPreview=/^https?:$/.test(location.protocol)&&['localhost','127.0.0.1','[::1]'].includes(location.hostname);
+  const engine=M.makeEngine(storage,{previewTickets:localPreview,previewGems:localPreview,previewMail:localPreview});
   const extra={campaign:['Vượt Ải','icon-quest','home'],boss:['Boss Vô Hạn','nav-arena','arena'],quests:['Nhiệm Vụ Ngày','icon-quest','tavern'],offline:['Kho Offline','chest','home'],equipment:['Trang Bị','helmet','forge'],events:['Sự Kiện','icon-event','home'],vip:['VIP','icon-crown','shop'],rankings:['Bảng Xếp Hạng','rank-gold','arena'],admin:['Studio Sự Kiện','icon-settings','home'],mail:['Hòm Thư','icon-mail','tavern'],settings:['Cài Đặt','icon-settings','home'],chat:['Cộng Đồng','icon-chat','tavern']};
   const baseNodes=Object.fromEntries(Object.entries(L.screens).map(([key,v])=>[key,v.nodes.slice()]));
   for(const [key,[name,,bg]]of Object.entries(extra)){L.names[key]=name;L.screens[key]={key,name,background:`assets/gemwoven/backgrounds/${bg}.webp`,backgroundKey:bg,nodes:[]};}
@@ -19,8 +20,60 @@
   const heroArt=(key,h)=>`<div class="hero-live evo-${h?.evolution||0}" data-evolution="${h?.evolution||0}">${img('hero-'+key,'hero-body',M.HEROES[key]?.name)}${M.EVOLUTION.slice(0,h?.evolution||0).map(e=>img('evo-'+e.piece,'evo-piece evo-'+e.piece)).join('')}</div>`;
   const heroTabs=(p,selected)=>`<div class="roster-live">${Object.entries(M.HEROES).map(([key,h])=>`<button type="button" data-action="do:hero" data-hero="${key}" class="${key===selected?'chosen':''} ${p.heroes[key]?'':'locked'}" aria-label="${esc(h.name)}${p.heroes[key]?'':' · chưa sở hữu'}">${img('portrait-'+key)}<span>${h.name}</span>${p.heroes[key]?'':'<small>Chưa có</small>'}</button>`).join('')}</div>`;
   const heading=(title,sub='')=>`<header class="game-heading"><h2>${esc(title)}</h2>${sub?`<p>${esc(sub)}</p>`:''}</header>`;
-  function panel(key,build,rect=[41,188,859,1291]){return {id:key+'.live',kind:'content',rect,build};}
+  function panel(key,build,rect=[41,188,859,1291]){return {id:key+'.live',kind:'content',rect,build,className:key==='mail'?'mail-panel':undefined};}
   function skeleton(key){const original=baseNodes[key]||baseNodes[extra[key]?.[2]||'home'];return original.filter(n=>/\.(profile|level-|level$|gold-|gold$|gem-|gems|mail$|settings$|footer-|nav-)/.test(n.id)&&!n.id.endsWith('.nav-label-board')&&!n.id.endsWith('.nav-active-label')).map(n=>{const x={...n,id:n.id.replace(/^[^.]+/,key)};if(x.text){x.text=n.text;C[x.text]=C[n.text]||'';}if(x.role==='nav')x.selected=x.action==='route:'+key;return x;});}
+  // ----- Mailbox ("Hòm Thư"): list, letter, rewards and the local studio form. -----
+  const mailIcon=m=>m.attachments.length?'icon-gift':m.kind==='system'?'crest':'scroll';
+  const resourceName=id=>M.RESOURCES[id]?.[0]||id,resourceArt=id=>M.RESOURCES[id]?.[1]||'crest';
+  function mailRow(m,now){
+    const expiry=m.claimed?'':M.mailExpiry(m.expiresAt,now),gift=m.attachments.length>0;
+    const thumbs=m.attachments.slice(0,4).map(a=>`<span class="mail-thumb">${img(resourceArt(a.resource),'',resourceName(a.resource))}<i>${esc(M.compact(a.count,1000))}</i></span>`).join('');
+    return `<button type="button" class="mail-row${m.read?'':' unread'}${gift?' is-gift':''}${m.claimed?' is-claimed':''}" data-action="do:mail-open" data-id="${esc(m.id)}" aria-label="${esc(m.title)}${m.read?' · đã đọc':' · thư mới'}${gift&&!m.claimed?' · có quà':''}">`+
+      `<span class="mail-icon">${img(mailIcon(m))}</span><span class="mail-main"><span class="mail-title-line"><b>${esc(m.title)}</b>${m.read?'':'<em class="mail-new">Mới</em>'}</span>`+
+      `<small class="mail-meta"><span class="mail-from">${esc(m.from)}</span><span class="mail-age">· ${esc(M.mailAge(m.sentAt,now))}</span></small>`+
+      (gift?`<span class="mail-thumbs">${thumbs}${m.claimed?'<span class="mail-claimed">✓ Đã nhận</span>':''}</span>`:'')+
+      (expiry?`<small class="mail-expiry">⏳ ${esc(expiry)}</small>`:'')+`</span></button>`;
+  }
+  function mailLetter(m,now){
+    const expiry=m.claimed?'':M.mailExpiry(m.expiresAt,now),gift=m.attachments.length>0;
+    const tag=m.source==='local-studio'?' · Studio local (thử nghiệm)':'';
+    const tiles=m.attachments.map(a=>{const name=resourceName(a.resource);return `<button type="button" class="mail-gift${m.claimed?' is-claimed':''}" data-action="item:${esc(a.resource)}" aria-label="${esc(name)} ×${fmt(a.count)} · xem thông tin"><span class="mail-slot">${img(resourceArt(a.resource),'',name)}</span><b>${esc(name)}</b><span class="mail-gift-count">×${fmt(a.count)}</span></button>`;}).join('');
+    return `<div class="mail-detail">${button('‹ Hộp thư','do:mail-back',{},false,'secondary mail-back')}<article class="mail-letter">`+
+      `<header class="mail-letter-head">${img(mailIcon(m),'mail-letter-icon')}<div><h3>${esc(m.title)}</h3><small>Từ: ${esc(m.from)}${esc(tag)}</small><small>${esc(M.mailAge(m.sentAt,now))}${expiry?' · '+esc(expiry):''}</small></div></header>`+
+      (m.body?`<p class="mail-body">${esc(m.body)}</p>`:'')+`</article>`+
+      // Attachments stay in view under the scrolling letter, right above the claim button.
+      (gift?`<section class="mail-attachments"><h4 class="mail-gifts-title">Quà đính kèm${m.claimed?' · <span class="mail-claimed">✓ Đã nhận</span>':' <small>· chạm để xem</small>'}</h4><div class="mail-gifts">${tiles}</div></section>`:'')+
+      `<div class="mail-footer">${m.pending?button('Nhận quà','do:mail-claim',{id:m.id}):''}${button('Xóa thư','do:mail-delete',{id:m.id},m.pending,'secondary')}</div>`+
+      (m.pending?'<p class="hint mail-tip">Nhận quà trước khi xóa thư.</p>':'')+`</div>`;
+  }
+  function mailPage(state){
+    const box=engine.mailbox(),tab=state.mailTab||'all',open=state.mailOpen&&box.mails.find(m=>m.id===state.mailOpen);
+    const sub=box.unread?`${box.unread} thư chưa đọc`:'Không có thư chưa đọc';
+    if(open)return heading('Hòm Thư')+mailLetter(open,box.now);
+    const list=box.mails.filter(m=>tab==='all'||(tab==='gift'?m.gift:!m.gift));
+    const empty=`<div class="mail-empty">${img('icon-mail','mail-empty-art')}<h3>${box.mails.length&&tab!=='all'?(tab==='gift'?'Chưa có thư quà':'Chưa có thông báo'):'Hòm thư trống'}</h3><p>Thông báo và quà từ Ban Quản Trị sẽ xuất hiện tại đây.</p></div>`;
+    return heading('Hòm Thư',sub)+`<div class="live-tabs mail-tabs">${[['all','Tất cả'],['gift','Quà'],['notice','Thông báo']].map(([id,label])=>button(label,'do:mail-tab',{tab:id},false,tab===id?'active':'')).join('')}</div>`+
+      `<div class="mail-list">${list.length?list.map(m=>mailRow(m,box.now)).join(''):empty}</div>`+
+      `<div class="mail-footer">${button('Nhận tất cả','do:mail-claim-all',{},!box.pending)}${button('Xóa thư đã đọc','do:mail-delete-read',{},!box.deletable,'secondary')}</div>`;
+  }
+  // Local studio prototype: mail lands only in this save; Đá Ngọc is not offered.
+  function mailStudio(){
+    const box=engine.mailbox(),options=M.MAIL_RESOURCES.map(id=>`<option value="${id}">${esc(resourceName(id))}</option>`).join('');
+    const sent=box.mails.filter(m=>m.source==='local-studio');
+    return `<section class="mail-studio"><h3>Gửi thư (bản thử nghiệm local)</h3><p class="hint">Studio chạy cục bộ trên thiết bị này, không phải trang quản trị đã xác thực. Thư chỉ vào Hòm Thư của bản lưu hiện tại; gửi thư thật cho người chơi cần máy chủ. Không thể đính kèm Đá Ngọc.</p>`+
+      `<form id="mail-form"><label>Tiêu đề<input name="title" required maxlength="${M.MAIL_TITLE_MAX}" placeholder="Ví dụ: Quà bảo trì"></label><label>Nội dung<textarea name="body" maxlength="${M.MAIL_BODY_MAX}" placeholder="Lời nhắn gửi người chơi"></textarea></label>`+
+      `<label>Người gửi<input name="from" maxlength="${M.MAIL_FROM_MAX}" value="Ban Quản Trị"></label><label>Loại thư<select name="kind"><option value="notice">Thông báo</option><option value="gift">Quà</option></select></label>`+
+      `<fieldset class="mail-attach"><legend>Vật phẩm đính kèm · tối đa ${M.MAIL_ATTACHMENTS} (thư Quà)</legend>${Array.from({length:M.MAIL_ATTACHMENTS},(_,i)=>`<div class="mail-attach-row"><select name="resource${i}" aria-label="Vật phẩm ${i+1}"><option value="">— Không —</option>${options}</select><input name="count${i}" type="number" min="1" max="${M.MAIL_COUNT_MAX}" step="1" inputmode="numeric" placeholder="Số lượng" aria-label="Số lượng ${i+1}"></div>`).join('')}</fieldset>`+
+      `<label>Thời hạn (ngày)<input name="expiryDays" type="number" min="${M.MAIL_EXPIRY_DAYS[0]}" max="${M.MAIL_EXPIRY_DAYS[1]}" value="7" inputmode="numeric"></label><button class="game-btn" type="submit">Gửi thư</button></form>`+
+      `<h3>Thư đã gửi từ studio</h3>${sent.length?sent.map(m=>`<article class="mail-sent"><div><b>${esc(m.title)}</b><small>${m.gift?'Quà':'Thông báo'} · ${m.claimed?'Đã nhận quà':m.read?'Đã đọc':'Chưa đọc'} · ${esc(M.mailExpiry(m.expiresAt,box.now))}</small></div>${button('Thu hồi','do:mail-recall',{id:m.id},false,'secondary')}</article>`).join(''):'<p class="hint">Chưa gửi thư nào.</p>'}</section>`;
+  }
+  // One reward sheet for every claim: each granted item as its picture in a slot, name and amount.
+  function showRewards(ctx,reward,title='Đã nhận',note=''){
+    const rows=Object.entries(reward||{}).filter(([id,n])=>M.RESOURCES[id]&&Number(n)>0);if(!rows.length)return false;
+    const wrap=document.createElement('div');wrap.className='reward-sheet';
+    wrap.innerHTML=`<div class="reward-grid">${rows.map(([id,n],i)=>`<div class="reward-tile" style="--i:${i}"><span class="reward-slot">${img(resourceArt(id),'',resourceName(id))}</span><b>${esc(resourceName(id))}</b><span>+${fmt(n)}</span></div>`).join('')}</div>`;
+    ctx.showModal(title,[],note,[],{kind:'rewards',content:wrap});return true;
+  }
   function page(key,p,state,ctx){
     const selected=state.hero||p.selected,h=p.heroes[selected],data=M.HEROES[selected];
     if(key==='upgrade'){
@@ -38,8 +91,8 @@
     }
     if(key==='skills'){
       const levels=h?.skills||[0,0,0,0],filter=state.skillFilter??'all',index=state.skill||0,types=['Chủ Động','Bị Động','Biến Dị','Chân Thân'];let c=null;try{if(h)c=M.skillCost(h,index);}catch{}
-      const unlocked=h&&M.skillUnlock(h,index),description=window.GEMWOVEN_HEROES[selected]?.skills[index]?.[1]||['Một nhát kiếm gỗ gây 45 sát thương cơ bản.','Thêm 2% khả năng phòng thủ cho lữ khách.','Mỗi lượt hồi 1% HP tối đa khi được mở.','Tăng nhẹ sức bền và sát thương khi được mở.'][index];
-      return heading('Con Đường Kỹ Năng','Chọn loại để lọc; Cây kỹ năng hiển thị toàn bộ nhánh.')+heroTabs(p,selected)+`<div class="live-tabs skill-filters">${button('Cây kỹ năng','do:skill-filter',{filter:'all'},false,filter==='all'?'active':'')}${types.map((t,i)=>button(t,'do:skill-filter',{filter:i},false,String(filter)===String(i)?'active':'')).join('')}</div><div class="skill-showcase">${heroArt(selected,h)}<div class="skill-tree ${filter==='all'?'full-tree':''}">${types.map((t,i)=>filter!=='all'&&String(i)!==String(filter)?'':`<button class="skill-live ${index===i?'chosen':''} ${h&&M.skillUnlock(h,i)?'':'locked'}" data-action="do:skill-node" data-index="${i}">${img(selected==='novice'?['stat-attack','stat-shield','stat-heart','crest'][i]:`skill-${selected}-${i}`)}<span>${esc(t)}</span><b>${levels[i]}/10</b></button>`).join('')}</div></div><section class="skill-info"><h3>${esc(data.skills[index])} · Lv.${levels[index]}</h3><p>${esc(description)}</p><p>${index===0?'Mỗi cấp sau cấp 1: +8% sức mạnh tuyệt kỹ.':index===1?'Cường hóa đặc trưng chiến đấu của tướng.':index===2?'Đổi nhịp chiến đấu bằng hiệu ứng nguyên tố sau tuyệt kỹ.':'Thức tỉnh: tăng sức bền và sát thương toàn trận.'}</p>${unlocked?'':`<p class="missing">${index===1?'Cần cấp 10.':index===2?'Cần cấp 100 và tiến hóa bậc 2.':index===3?'Cần cấp 400 và tiến hóa bậc 5.':'Cần sở hữu tướng.'}</p>`}${c?cost(p,c):''}${button(levels[index]>=10?'Đã tối đa':'Học / Tăng cấp','do:train',{hero:selected,index},!c||!canPay(p,c||{}))}</section>`;
+      const unlocked=h&&M.skillUnlock(h,index),text=M.skillText(selected,h,index),description=text.description;
+      return heading('Con Đường Kỹ Năng','Chọn loại để lọc; Cây kỹ năng hiển thị toàn bộ nhánh.')+heroTabs(p,selected)+`<div class="live-tabs skill-filters">${button('Cây kỹ năng','do:skill-filter',{filter:'all'},false,filter==='all'?'active':'')}${types.map((t,i)=>button(t,'do:skill-filter',{filter:i},false,String(filter)===String(i)?'active':'')).join('')}</div><div class="skill-showcase">${heroArt(selected,h)}<div class="skill-tree ${filter==='all'?'full-tree':''}">${types.map((t,i)=>filter!=='all'&&String(i)!==String(filter)?'':`<button class="skill-live ${index===i?'chosen':''} ${h&&M.skillUnlock(h,i)?'':'locked'}" data-action="do:skill-node" data-index="${i}">${img(selected==='novice'?['stat-attack','stat-shield','stat-heart','crest'][i]:`skill-${selected}-${i}`)}<span>${esc(t)}</span><b>${levels[i]}/10</b></button>`).join('')}</div></div><section class="skill-info"><h3>${esc(data.skills[index])} · Lv.${levels[index]}</h3><p>${esc(description)}</p><p>${esc(text.next||'')}</p>${unlocked?'':`<p class="missing">${esc(h?M.skillGateText(index):'Cần sở hữu tướng.')}</p>`}${c?cost(p,c):''}${button(levels[index]>=10?'Đã tối đa':'Học / Tăng cấp','do:train',{hero:selected,index},!c||!canPay(p,c||{}))}</section>`;
     }
     if(key==='campaign')return ''; // The illustrated scrolling map is owned by journey-ui.
     if(key==='boss'){
@@ -67,13 +120,26 @@
       return heading('Sự Kiện','Coming soon · Những chuyến phiêu lưu mới đang được chuẩn bị.')+(!items.length?`<div class="coming-soon">${img('icon-event')}<h3>Sắp có sự kiện đầu tiên</h3><p>Lịch sự kiện sẽ hiển thị tại đây khi được công bố.</p></div>`:items.map(e=>`<article class="event-live">${img(e.banner)}<h3>${esc(e.title)}</h3><p>${esc(e.description)}</p><span>Coming soon</span></article>`).join(''));
     }
     if(key==='vip')return heading('VIP & Nạp','Coming soon · Chưa mở thanh toán hoặc cấp quyền VIP.')+`<p>VIP hiện tại: ${p.vip.level} · Tổng nạp đã xác thực: ${fmt(p.vip.paidTotal)} ₫</p><p>Dự kiến: quà vàng hằng ngày, avatar, hiệu ứng vào trận/chat; mốc cao nhận trang bị và tướng riêng. Nội dung tướng riêng sẽ phát hành cùng VIP.</p><table><thead><tr><th>VIP</th><th>Tổng nạp dự kiến</th><th>Quà / đặc quyền dự kiến</th></tr></thead><tbody>${M.VIP.slice(1).map(v=>`<tr><td>${v.level}</td><td>${fmt(v.spend)} ₫</td><td>${fmt(v.dailyGold)} vàng/ngày${v.entryEffect?' · Hiệu ứng vào trận':''}${v.chatEffect?' · Hiệu ứng chat':''}${v.specialEquipment?' · Trang bị riêng':''}${v.specialHero?' · Tướng riêng':''}</td></tr>`).join('')}</tbody></table><p class="hint">Đấu tập/PvP chuẩn hóa không áp dụng lợi thế chỉ số VIP. Chưa có nút thanh toán hoạt động.</p>`;
-    if(key==='admin')return heading('Studio cấu hình sự kiện','Bản nháp local cho bộ điều khiển admin sau này; xuất JSON để tích hợp máy chủ.')+`<form id="event-form"><label>ID<input name="id" required pattern="[a-z0-9-]{1,50}" value="new-event"></label><label>Tiêu đề<input name="title" required maxlength="80" value="Sự kiện sắp ra mắt"></label><label>Mô tả<textarea name="description" maxlength="1200">Cuộc phiêu lưu mới đang được chuẩn bị.</textarea></label><label>Banner<select name="banner"><option value="icon-event">Lịch sự kiện</option><option value="icon-gift">Quà tặng</option><option value="icon-arena">Đấu trường</option><option value="chest">Rương</option></select></label><label>Bắt đầu<input name="startsAt" type="datetime-local"></label><label>Kết thúc<input name="endsAt" type="datetime-local"></label><label>Thứ tự<input name="order" type="number" min="0" max="999" value="0"></label><label><input name="enabled" type="checkbox"> Hiện trên trang Sự kiện (Coming soon)</label><button class="game-btn" type="submit">Lưu cấu hình</button></form>${button('Xuất JSON sự kiện','do:export-events')}<h3>Các bản nháp</h3>${p.events.map(e=>`<article><b>${esc(e.title)}</b><small> ${esc(e.id)} · ${e.enabled?'Hiện':'Ẩn'}</small>${button('Sửa','do:edit-event',{id:e.id})}${button('Gỡ khỏi danh sách','do:remove-event',{id:e.id})}</article>`).join('')}`+route('Xem trang sự kiện','events');
+    if(key==='admin')return heading('Studio cấu hình sự kiện','Bản thử nghiệm local, không phải trang quản trị đã xác thực. Xuất JSON để tích hợp máy chủ sau này.')+`<form id="event-form"><label>ID<input name="id" required pattern="[a-z0-9-]{1,50}" value="new-event"></label><label>Tiêu đề<input name="title" required maxlength="80" value="Sự kiện sắp ra mắt"></label><label>Mô tả<textarea name="description" maxlength="1200">Cuộc phiêu lưu mới đang được chuẩn bị.</textarea></label><label>Banner<select name="banner"><option value="icon-event">Lịch sự kiện</option><option value="icon-gift">Quà tặng</option><option value="icon-arena">Đấu trường</option><option value="chest">Rương</option></select></label><label>Bắt đầu<input name="startsAt" type="datetime-local"></label><label>Kết thúc<input name="endsAt" type="datetime-local"></label><label>Thứ tự<input name="order" type="number" min="0" max="999" value="0"></label><label><input name="enabled" type="checkbox"> Hiện trên trang Sự kiện (Coming soon)</label><button class="game-btn" type="submit">Lưu cấu hình</button></form>${button('Xuất JSON sự kiện','do:export-events')}<h3>Các bản nháp</h3>${p.events.map(e=>`<article><b>${esc(e.title)}</b><small> ${esc(e.id)} · ${e.enabled?'Hiện':'Ẩn'}</small>${button('Sửa','do:edit-event',{id:e.id})}${button('Gỡ khỏi danh sách','do:remove-event',{id:e.id})}</article>`).join('')}`+route('Xem trang sự kiện','events')+mailStudio();
     if(key==='settings')return heading('Cài Đặt & Bản Lưu')+`<p>Tiến độ được lưu trên trình duyệt hiện tại. Để chia sẻ tiến độ giữa Home và combat, hãy chạy cùng một địa chỉ HTTP (ví dụ localhost).</p>${button('Xuất bản sao tiến độ','do:backup')}<p>Không nhập bản lưu tùy ý hoặc chỉnh Đá Ngọc từ giao diện. Thanh toán và đồng bộ tài khoản sẽ nối máy chủ ở giai đoạn sau.</p>`+route('Studio cấu hình sự kiện','admin')+`<h3>Nhật ký gần đây</h3><ol class="activity-log">${p.log.slice(0,15).map(l=>`<li>${esc(l.message)}</li>`).join('')}</ol>`;
-    if(key==='mail')return heading('Hòm Thư')+img('icon-mail','feature-art')+`<p>Chưa có thư mới. Thưởng nhiệm vụ nhận tại Quán bia; phần thưởng sự kiện sẽ được gửi khi hệ thống máy chủ ra mắt.</p>`+route('Nhiệm vụ ngày','quests');
+    if(key==='mail')return mailPage(state);
     return heading('Cộng Đồng','Coming soon')+`<p>Chat và hiệu ứng VIP sẽ được mở cùng tài khoản trực tuyến.</p>`;
   }
+  // Screens visited, so a panel's back arrow returns where the player came from.
+  const trail=[];let goingBack=false;
+  function remember(key){
+    if(trail[trail.length-1]===key)return;
+    // Only the back arrow unwinds the trail; ordinary navigation (even A→B→A) always records forward.
+    if(goingBack){goingBack=false;trail.pop();if(trail[trail.length-1]!==key)trail.push(key);return;}
+    trail.push(key);if(trail.length>20)trail.shift();
+  }
+  addEventListener('hashchange',()=>{const key=location.hash.slice(1);if(L.screens[key])remember(key);});
+  function backNode(key){
+    const text=key+'.back';C[text]='Quay lại';
+    return {id:text,kind:'button',rect:[12,170,112,112],asset:A['map-back']?'map-back':'nav-tile',fit:'contain',text,labelHidden:true,action:'nav:back',className:'panel-back'};
+  }
   function decorate(state){
-    const p=engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;const key=state.screen;
+    const p=engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;const key=state.screen;remember(key);
     if(key==='home'){
       const removed=/home\.(shortcut-|right-|soul-)/;L.screens.home.nodes=baseNodes.home.filter(n=>!removed.test(n.id)).map(n=>{const x={...n};if(x.id==='home.hero'){x.kind='image';delete x.action;}if(x.id==='home.place-tavern')x.action='route:quests';if(x.id==='home.quests'){x.action='route:campaign';C[x.text]='Vượt Ải';}return x;});
       [['events','Sự Kiện','icon-event'],['vip','VIP','icon-crown'],['mail','Hòm Thư','icon-mail'],['settings','Cài Đặt','icon-settings']].forEach(([route,label,asset],i)=>{const text=`home.feature-${route}`;C[text]=label;L.screens.home.nodes.push({id:text,kind:'button',rect:[10,157+i*113,96,109],asset:'side-pennant',icon:asset,iconRect:[22,22,55,59],text,labelHidden:true,action:'route:'+route});});
@@ -82,7 +148,7 @@
       L.screens.summon.nodes=baseNodes.summon.filter(n=>/\.(profile|level-|level$|gold-|gold$|gem-|gems|mail$|settings$|footer-|nav-|portrait-|central-crystal|guide$|title$|subtitle)/.test(n.id)).map(n=>n.id==='summon.central-crystal'?{...n,action:'do:summon',count:1}:n);
       L.screens.summon.nodes.push(panel(key,el=>el.innerHTML=page(key,p,state),[52,976,837,500]));
     }else{
-      L.screens[key].nodes=skeleton(key);L.screens[key].nodes.push(panel(key,el=>el.innerHTML=page(key,p,state)));
+      L.screens[key].nodes=skeleton(key);L.screens[key].nodes.push(panel(key,el=>el.innerHTML=page(key,p,state)),backNode(key));
     }
     for(const n of L.screens[key].nodes){
       if(n.text){const suffix=n.id.split('.').slice(1).join('.');if(suffix==='gold')C[n.text]=fmt(p.wallet.gold);if(suffix==='gems')C[n.text]=fmt(p.wallet.gems);if(suffix==='level')C[n.text]=String(p.heroes[p.selected].level);}
@@ -91,9 +157,27 @@
     return p;
   }
   const cooldown={summoning:false};
+  // Rates read the shared summon table (out of 1,000,000) so the popup never drifts from the engine.
+  function ratesContent(p){
+    const table=M.SUMMON_TABLE||[['hero',1500],['fragments',13500],['novice',60000],['commonGear',285000],['rareGear',20000],['epicGear',1500],['legendaryGear',200],['divineGear',10],['material',618290]];
+    const R=M.RARITIES||{},gear=(rarity,fallback)=>'Trang bị '+(R[rarity]?.name||fallback);
+    const label={hero:['Tướng hiếm','portrait-fire','top'],fragments:['Mảnh tướng (2–5)','hero-fragment',''],novice:['Bản sao Tân','portrait-novice',''],
+      commonGear:[gear('common','Thường'),'helmet',''],rareGear:[gear('rare','Hiếm'),'helmet',''],epicGear:[gear('epic','Sử Thi'),'fire-sword','rare'],
+      legendaryGear:[gear('legendary','Huyền Thoại'),'fire-sword','top'],divineGear:[gear('divine','Thần'),'fire-sword','top'],material:['Nguyên liệu','ore','']};
+    const pct=n=>(n/10000).toLocaleString('vi-VN',{maximumFractionDigits:3})+'%';
+    const wrap=document.createElement('div');wrap.className='rates-sheet';
+    wrap.innerHTML=`<table class="gw-table"><thead><tr><th>Phần thưởng</th><th>Tỷ lệ</th></tr></thead><tbody>${table.map(([id,n])=>{const [name,asset,tone]=label[id]||[id,'crest',''];return `<tr class="${tone}"><td>${img(asset)}${esc(name)}</td><td>${pct(n)}</td></tr>`;}).join('')}</tbody></table>
+      <div class="gw-note"><b>Bảo đảm</b><p>• Tướng hiếm chắc chắn trong 300 lần kể từ tướng hiếm gần nhất · của bạn: ${fmt(p.summon.dry)}/300.</p><p>• Mảnh tướng xuất hiện sau tối đa 30 lần không có mảnh.</p><p>Ghép 80 mảnh cùng loại thành 1 tướng. Mốc bảo đảm thay kết quả thường nên tỷ lệ dài hạn cao hơn bảng.</p></div>`;
+    return wrap;
+  }
   function resultsDialog(results){return window.GemwovenSummonReveal(results);}
   function download(name,value){const blob=new Blob([JSON.stringify(value,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function handle(action,el,ctx,state){
+    if(action==='nav:back'){
+      // An open letter closes first; otherwise return to the previous screen (Home if none).
+      if(state.screen==='mail'&&state.mailOpen){state.mailOpen=null;ctx.render();return true;}
+      const target=trail[trail.length-2],next=target&&target!==state.screen&&L.screens[target]?target:'home';goingBack=next===target;ctx.navigate(next);return true;
+    }
     if(action.startsWith('preview:')){const route={event:'events',gift:'vip',book:'vip',chat:'chat',mail:'mail',settings:'settings',trophy:'rankings',crown:'rankings',ranking:'rankings'}[action.slice(8)];if(route){ctx.navigate(route);return true;}}
     if(!action.startsWith('do:'))return false;
     (async()=>{try{
@@ -125,19 +209,36 @@
         if(cooldown.summoning)return;cooldown.summoning=true;
         try{const results=engine.summon(Number(d.count||1),d.payment||state.summonPayment||'tickets');ctx.render();await resultsDialog(results);}finally{cooldown.summoning=false;}return;
       }else if(command==='last-summon'){await resultsDialog(p.summon.last);return;}
-      else if(command==='rates'){ctx.showModal('Tỷ lệ triệu hồi',[],'Tướng hiếm 0,15% · Mảnh tướng 1,35% · Tân 6% · Trang bị thường 28,5% · Hiếm 2% · Sử thi 0,15% · Huyền thoại 0,02% · Thần 0,001% · Nguyên liệu 61,829%.\n\nBảo đảm: tướng hiếm muộn nhất lần 300 kể từ tướng hiếm gần nhất; mảnh sau tối đa 30 lần không có mảnh. Mốc bảo đảm thay kết quả thường, nên tỷ lệ dài hạn cao hơn bảng cơ bản. Mỗi lần ra 2–5 mảnh cùng tướng; ghép 80 mảnh thành 1 tướng.');return;}
+      else if(command==='rates'){ctx.showModal('Tỷ lệ triệu hồi',[],'',[],{kind:'rates',content:ratesContent(p)});return;}
       else if(command==='soon'){ctx.showModal(d.feature+' · Coming soon',[],'Tính năng sẽ được phát hành riêng khi hệ thống máy chủ sẵn sàng.');return;}
       else if(command==='export-events'){download('gemwoven-events.json',{version:1,events:p.events});return;}
       else if(command==='backup'){download('gemwoven-save.json',p);return;}
       else if(command==='remove-event')engine.removeEvent(d.id);
+      else if(command==='mail-tab'){state.mailTab=d.tab;state.mailOpen=null;}
+      else if(command==='mail-open'){engine.readMail(d.id);state.mailOpen=d.id;}
+      else if(command==='mail-back')state.mailOpen=null;
+      else if(command==='mail-claim'){const got=engine.claimMail(d.id);ctx.render();showRewards(ctx,got,'Đã nhận quà');return;}
+      else if(command==='mail-claim-all'){const count=engine.mailbox().pending,got=engine.claimAllMail();ctx.render();showRewards(ctx,got,'Đã nhận quà',`Quà từ ${count} thư đã vào Túi Đồ.`);return;}
+      else if(command==='mail-delete'){engine.deleteMail(d.id);state.mailOpen=null;}
+      else if(command==='mail-delete-read'){const removed=engine.deleteReadMail();state.mailOpen=null;ctx.render();ctx.showModal('Đã dọn hòm thư',[],removed?`Đã xóa ${removed} thư đã đọc.`:'Không có thư nào để xóa.');return;}
+      else if(command==='mail-recall')engine.recallMail(d.id);
       else if(command==='edit-event'){const e=p.events.find(e=>e.id===d.id),f=document.getElementById('event-form');for(const [k,v]of Object.entries(e)){const field=f.elements.namedItem(k);if(field){if(field.type==='checkbox')field.checked=v;else field.value=v;}}f.scrollIntoView({block:'start'});return;}
       ctx.render();
-      if(result){const message=result.message||Object.entries(result).filter(([k,n])=>M.RESOURCES[k]&&n>0).map(([k,n])=>`${fmt(n)} ${M.RESOURCES[k][0]}`).join(' · ');if(message)ctx.showModal('Đã nhận',[],message);}
+      if(result){if(result.message)ctx.showModal('Đã nhận',[],result.message);else showRewards(ctx,result);}
     }catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}})();return true;
   }
   function mount(state,ctx){
     const p=engine.read();for(const id of ['gold','gems','level']){const node=document.querySelector(`[data-node="${state.screen}.${id}"]`);if(node)node.textContent=id==='gold'?fmt(p.wallet.gold):id==='gems'?fmt(p.wallet.gems):p.heroes[p.selected].level;}
+    if(state.screen!=='mail')state.mailOpen=null;
+    // Unread count sits on the painted red dot of the HUD envelope.
+    const box=engine.mailbox();for(const node of document.querySelectorAll('#scene [data-node$=".mail"]')){node.querySelector('.mail-count')?.remove();if(!box.unread)continue;const count=document.createElement('span');count.className='mail-count';count.setAttribute('aria-hidden','true');count.textContent=box.unread>99?'99+':String(box.unread);node.append(count);node.setAttribute('aria-label',`Hòm thư · ${box.unread} thư chưa đọc`);}
+    const mailForm=document.getElementById('mail-form');if(mailForm)mailForm.addEventListener('submit',e=>{e.preventDefault();try{
+      const f=new FormData(mailForm),attachments=[];
+      for(let i=0;i<M.MAIL_ATTACHMENTS;i++){const resource=String(f.get('resource'+i)||''),count=String(f.get('count'+i)||'').trim();if(!resource&&!count)continue;if(!resource)throw new Error(`Chọn vật phẩm cho dòng ${i+1}.`);attachments.push({resource,count:count?Number(count):0});}
+      engine.sendMail({title:String(f.get('title')||''),body:String(f.get('body')||''),from:String(f.get('from')||''),kind:String(f.get('kind')),expiryDays:Number(f.get('expiryDays')),attachments});
+      ctx.render();ctx.showModal('Đã gửi thư',['icon-mail'],'Thư đã vào Hòm Thư của bản lưu này (bản thử nghiệm local).',[{label:'Mở Hòm Thư',route:'mail'}]);
+    }catch(error){ctx.showModal('Thư chưa hợp lệ',[],error.message);}});
     const form=document.getElementById('event-form');if(form)form.addEventListener('submit',e=>{e.preventDefault();try{const draft=Object.fromEntries(new FormData(form));draft.enabled=form.elements.namedItem('enabled').checked;draft.status='coming-soon';engine.saveEvent(draft);ctx.render();ctx.showModal('Đã lưu bản nháp',[],'Mở Sự kiện để xem nội dung được bật hiển thị.');}catch(e){ctx.showModal('Cấu hình chưa hợp lệ',[],e.message);}});
   }
-  window.GEMWOVEN_GAME={engine,decorate,handle,mount,extra,initialHero:engine.read().selected};
+  window.GEMWOVEN_GAME={engine,decorate,handle,mount,extra,showRewards,initialHero:engine.read().selected};
 })();

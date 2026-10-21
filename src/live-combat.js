@@ -56,11 +56,10 @@ function createLiveCombat(){
     if(reduced||!value)return;
     const id=side+kind,existing=feedback.get(id);
     if(existing){existing.value+=value;existing.node.textContent=label(kind,existing.value);return;}
-    const point=combatV3Point(side),node=document.createElement('span');
+    const point=combatNumberPoint(side,0,kind==='heal'?0:kind==='armor'?22:42),node=document.createElement('span');
     node.className='combat-v3-number live-loot '+(kind==='heal'?'heal':kind==='armor'?'armor':'energy');
     node.dataset.lootSide=side;node.dataset.lootKind=kind;
-    node.style.left=(point.x+(kind==='armor'?25:kind==='energy'?-25:0))+'px';
-    node.style.top=Math.max(20,point.y-point.height*.12+(kind==='energy'?25:0))+'px';
+    node.style.left=point.x+'px';node.style.top=point.y+'px';
     node.textContent=label(kind,value);$('combatEffects').append(node);
     const item={node,value,job:null};feedback.set(id,item);
     item.job=animate(node,[{opacity:0,transform:'translate(-50%,8px) scale(.8)'},{opacity:1,transform:'translate(-50%,0) scale(1.05)',offset:.2},{opacity:1,offset:.72},{opacity:0,transform:'translate(-50%,-20px) scale(1)'}],{duration:440,easing:'ease-out'}).finally(()=>{node.remove();feedback.delete(id);});
@@ -93,12 +92,12 @@ function createLiveCombat(){
       if(!hero&&type===3&&own[3]>=3&&progressionIsDuel())state.playerFrozen=true;
       if(!hero&&type===3&&own[3]===1&&!progressionIsDuel())state.energy=Math.max(0,state.energy-20);
       if(type===0){
-        const raw=8*(hero&&key==='fire'&&progressionPassiveEnabled(key)?1.6:1)*(progressionIsDuel()?1:hero?1:state.boss?1.15:.55);
+        const raw=8*(hero?progressionSwordFactor(key):1)*(progressionIsDuel()?1:hero?1:state.boss?1.15:.55);
         enqueue(side,'attack',raw);
       }else if(type===1||type===4){
         const kind=type===1?'heal':'armor',stat=type===1?(hero?'hp':'enemyHp'):(hero?'armor':'enemyArmor');
-        const cap=type===1?(hero?HEROES[key].hp:state.enemyMax):999;
-        const amount=type===1?(hero||progressionIsDuel()?progressionHeal(6):6):progressionIsDuel()?4:hero?(key==='ice'&&progressionPassiveEnabled(key)?8:4):5,gained=Math.max(0,Math.min(amount,cap-state[stat]));
+        const cap=type===1?(hero?HEROES[key].hp:state.enemyMax):combatArmorCap(side);
+        const amount=combatTileYield(side,type),gained=Math.max(0,Math.min(amount,cap-state[stat]));
         state[stat]+=gained;receipt(side,kind,gained);enqueue(side,kind,gained);
       }
       update();

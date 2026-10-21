@@ -101,7 +101,7 @@ updateSettings=function(){originalBuffSettings();syncNoriRenewal();};
 async function noriRenewalUltimate(){
   if(state.hp<=0)return;
   const audio=combatV3AudioContext();if(audio)decodeCastSound(audio,'earth-shield-bash').catch(()=>{});
-  const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),old=root.style.transform,oldTarget=target.style.transform,oldZ=root.style.zIndex;
+  const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),old=root.style.transform,oldTarget=target.style.transform,oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');root.style.zIndex='4';
   try{
@@ -116,14 +116,14 @@ async function noriRenewalUltimate(){
     root.style.transform=`translate(${travel}px,0px)`;playCastSound('earth','launch',{volume:.22});
     await at(1550);root.dataset.ragePhase='renewal';setSpriteFrame('hero','cast',4);
     if(state.enemyHp>0){
-      state.noriStunTurns=2;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
-      playCastSound('earth','shield-bash',{volume:.62,pan:.2});popActorSkill('enemy','CHOÁNG · 2 LƯỢT',false,pending);
+      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
+      playCastSound('earth','shield-bash',{volume:.62,pan:.2});popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);
       castFx('earth','bloom',combatV3Point('enemy'),90,'',300,pending);
       combatV3Camera(1,true,false,pending);
       pending.push(animate(target,[{transform:oldTarget||'none'},{transform:'translate(12px,-2px) rotate(4deg)',offset:.25},{transform:oldTarget||'none'}],{duration:330,easing:'ease-out'}));
     }
-    state.noriRegenTurns=3;update();combatVoice('hero','release');combatV3BuffSound('heal');
-    popActorSkill('hero','Hồi phục · 3 lượt',false,pending);
+    state.noriRegenTurns=kit.regenTurns;update();combatVoice('hero','release');combatV3BuffSound('heal');
+    popActorSkill('hero','Hồi phục · '+kit.regenTurns+' lượt',false,pending);
     await at(2450);root.dataset.ragePhase='recover';setSpriteFrame('hero','cast',5);
     pending.push(animate(root,[{transform:root.style.transform},{transform:old||'none'}],{duration:400,easing:'ease-in-out'}));root.style.transform=old;
     await at(3000);await Promise.all(pending);
@@ -135,7 +135,7 @@ async function tickNoriRenewal(){
   // One pulse at the beginning of the next player turn, even if the enemy skipped.
   // Refreshing the skill replaces the remaining duration; it never stacks ticks.
   state.noriRegenTurns--;
-  const gained=Math.max(0,Math.min(progressionHeal(40),HEROES.earth.hp-state.hp));state.hp+=gained;
+  const gained=Math.max(0,Math.min(progressionHeal(progressionKit('earth').heal),HEROES.earth.hp-state.hp));state.hp+=gained;
   update();const pending=[];
   if(gained){combatV3BuffSound('heal');combatV3Number('hero','+'+gained+' HP','heal',0,pending);}
   if(!state.noriRegenTurns)pending.push(selfBuffSpiral('heal',650));
@@ -150,8 +150,9 @@ function syncNoriDamageSeal(){
   if(!(state.noriStunTurns>0)){seal?.remove();return;}
   if(!seal){seal=document.createElement('span');seal.className='nori-damage-seal';seal.setAttribute('aria-hidden','true');seal.innerHTML='<i></i><b></b>';target.append(seal);}
   seal.style.setProperty('--seal-power',String(Math.min(1,(state.noriStoredDamage||0)/100)));
-  seal.querySelector('b').textContent='TÍCH '+(state.noriStoredDamage||0)+' ×3';
-  const status=document.createElement('span');status.className='status-pill nori-seal-status';status.textContent=state.noriStunTurns+' lượt';status.title='Choáng của Nori · hết choáng nổ gấp 3 sát thương tích trữ';
+  const burst=progressionKit('earth').burst,times='×'+burst.toLocaleString('vi-VN');
+  seal.querySelector('b').textContent='TÍCH '+(state.noriStoredDamage||0)+' '+times;
+  const status=document.createElement('span');status.className='status-pill nori-seal-status';status.textContent=state.noriStunTurns+' lượt';status.title='Choáng của Nori · hết choáng nổ '+times+' sát thương tích trữ';
   $('enemyStatuses').append(status);
 }
 async function consumeNoriStunTurn(){
@@ -162,7 +163,7 @@ async function consumeNoriStunTurn(){
   if(state.noriStunTurns>0){update();return;}
   // Store post-element/critical damage before armor. Apply armor exactly once
   // to the burst, without multiplying elemental or Nori's base damage again.
-  const stored=state.noriStoredDamage||0;state.noriStoredDamage=0;update();
+  const stored=state.noriStoredDamage||0,burst=progressionKit('earth').burst,total=Math.round(stored*burst),times='×'+burst.toLocaleString('vi-VN');state.noriStoredDamage=0;update();
   if(!stored||state.enemyHp<=0||state.hp<=0)return;
   const target=actor('enemy'),jobs=[],point=combatV3Point('enemy');
   const flare=castFx('earth','seal-burst',point,150,'',650,jobs,[
@@ -173,15 +174,15 @@ async function consumeNoriStunTurn(){
   ]);
   if(flare)flare.dataset.stored=String(stored);
   await wait(reduced?0:160);
-  const result=applyCombatDamage('enemy',stored*3);
+  const result=applyCombatDamage('enemy',total);
   playCastSound('earth','finish',{volume:.34});if(state.enemyHp>0)combatVoice('enemy','hurt');
-  popActorSkill('enemy','BỘC PHÁ ×3',true,jobs);
+  popActorSkill('enemy','BỘC PHÁ '+times,true,jobs);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',0,jobs);
   castScatter('earth',point,true,jobs);combatV3Camera(1,true,false,jobs);setSpriteAction('enemy','hurt',400);
   const old=target.style.transform;
   jobs.push(animate(target,[{transform:old||'none'},{transform:'translate(9px,-5px) rotate(4deg)',offset:.2},{transform:old||'none'}],{duration:400}));
   try{await Promise.all(jobs);}finally{target.style.transform=old;setSpriteAction('enemy','idle');}
-  message('Mộc Linh bộc phá: '+stored+' ×3 = '+(stored*3)+' sát thương'+(result.blocked?' · chặn '+result.blocked+' bởi giáp':'')+'.');
+  message('Mộc Linh bộc phá: '+stored+' '+times+' = '+total+' sát thương'+(result.blocked?' · chặn '+result.blocked+' bởi giáp':'')+'.');
 }
 const originalRenewalEnemyAction=enemyAction;
 enemyAction=async function(){

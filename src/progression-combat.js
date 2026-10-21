@@ -1,7 +1,7 @@
 /* Connect the authored combat choreography to persistent progression. */
 const progressionRules=window.GemwovenProgression;
 const progressionSandbox=new URLSearchParams(location.search).has('qa')&&!new URLSearchParams(location.search).has('encounter');
-let progressionStore=null,progressionBattle=null,progressionError='',progressionReported=false,progressionReward={},progressionCasting=false,progressionTurn=0,progressionDot=0,progressionBossCast=0;
+let progressionStore=null,progressionBattle=null,progressionError='',progressionReported=false,progressionReward={},progressionCasting=false,progressionTurn=0,progressionDot=null,progressionBossCast=0;
 const progressionProcs=new Set();
 let progressionEnemyDot=null,progressionEnemyCharge=1;
 function progressionMusicKey(){const theme=progressionBattle?.music;return theme&&ART.music?.[theme]?theme:state.enemyKey;}
@@ -16,11 +16,48 @@ try{
 function progressionHeroKeys(){return progressionSandbox?Object.keys(HEROES):[progressionBattle?.hero||progressionStore?.read().selected||'novice'];}
 function progressionInitialHero(fallback){return progressionSandbox?fallback:progressionHeroKeys()[0];}
 function progressionSelectionIntro(fallback){return progressionBattle?progressionBattle.name+' · '+HEROES[progressionBattle.hero].name+' · Chỉ số theo bản lưu.':progressionError||fallback;}
-function progressionPassiveEnabled(key){return !progressionBattle||key!==progressionBattle.hero||progressionBattle.stats.skills[1]>0;}
+// Every skill number comes from the shared kit (progression.js). Saves made before
+// kits existed rebuild theirs from the stored ranks; the sandbox uses rank 1.
+const progressionKits=new Map();
+function progressionKit(key=state.key){
+  if(progressionBattle&&key===progressionBattle.hero){
+    const s=progressionBattle.stats;
+    return s.kit||(s.kit=progressionRules.skillKit(key,{level:1,stars:s.stars||1,evolution:s.evolution||0,skills:s.skills||[1,0,0,0]}));
+  }
+  const form=progressionSandbox&&key===state.key?Math.max(1,Math.min(3,state.form||1)):1,id=key+':'+form;
+  if(!progressionKits.has(id))progressionKits.set(id,progressionRules.skillKit(key,{level:1,stars:[1,4,6][form-1],evolution:0,skills:[1,0,0,0]}));
+  return progressionKits.get(id);
+}
 function progressionHeal(amount){return progressionBattle?Math.round(amount*Math.max(1,Math.sqrt(progressionBattle.stats.attack))):amount;}
+// Heart and shield tiles restore a share of the bearer's max HP, never less than
+// the early flat 6 HP / 4–8 / 5 armour. Enemies use smaller shares: their HP pool
+// is several times the hero's, so equal shares would out-heal a hero's damage.
+const COMBAT_HEART_SHARE={hero:.012,enemy:.002},COMBAT_SHIELD_SHARE={hero:.015,enemy:.003};
+function combatTileYield(side,type){
+  const hero=side==='hero';
+  if(progressionIsDuel())return type===1?progressionHeal(6):4;
+  const max=hero?HEROES[state.key].hp:state.enemyMax;
+  if(type===1)return Math.max(hero?progressionHeal(6):6,Math.round(max*COMBAT_HEART_SHARE[side]));
+  const flat=hero?progressionKit().shieldGem:5;
+  return Math.max(flat,Math.round(max*COMBAT_SHIELD_SHARE[side]*(hero?flat/4:1)));
+}
+// Status damage and silent HP/armour changes still get a readable number.
+function progressionShowResult(side,result,label='',index=0){
+  const pending=[];if(!result)return Promise.resolve();
+  if(label&&(result.amount||result.blocked))popActorSkill(side,label,false,pending,{away:true});
+  if(result.amount||result.blocked)combatV3Number(side,result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',index,pending);
+  return Promise.all(pending);
+}
+function progressionShowGain(side,kind,amount){
+  if(!(amount>0))return;
+  const pending=[];combatV3Number(side,'+'+amount+(kind==='heal'?' HP':' GIÁP'),kind==='heal'?'heal':'armor',1,pending);
+  // Heal and armour gains landing together stack instead of overlapping.
+  const node=$('combatEffects').lastElementChild;if(node&&kind!=='heal')node.style.top=(parseFloat(node.style.top)+26)+'px';
+}
 function progressionIsDuel(){return progressionBattle?.mode==='duel';}
 function progressionRecordTurn(){if(progressionBattle?.mode==='campaign')progressionTurn++;}
-function progressionEnergyMultiplier(key){if(key!=='lightning'||!progressionPassiveEnabled(key))return 1;return progressionBattle?2+.05*Math.max(0,progressionBattle.stats.skills[1]-1):2;}
+function progressionEnergyMultiplier(key){return progressionKit(key).energy;}
+function progressionSwordFactor(key){return progressionKit(key).sword;}
 if(progressionBattle)HEROES[progressionBattle.hero].hp=progressionBattle.stats.hp;
 
 const progressionOriginalVoices=combatVoice;
@@ -30,8 +67,8 @@ startStage=function(){
   if(progressionError){$('startBtn').disabled=true;message(progressionError);return;}
   if(progressionBattle){state.key=progressionBattle.hero;state.enemyKey=progressionBattle.enemyKey;state.stage=Math.max(1,Math.ceil(progressionBattle.recommended/5));HEROES[state.key].hp=progressionBattle.stats.hp;}
   progressionOriginalStart();
-  progressionProcs.clear();progressionTurn=0;progressionDot=0;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;
-  if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.mode==='pvp'?Math.round(HEROES[state.key].hp*1.15):progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=0;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':progressionBattle.mode==='pvp'?'Đấu tập AI; chỉ số chuẩn hóa.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
+  progressionProcs.clear();progressionTurn=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;
+  if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.mode==='pvp'?Math.round(HEROES[state.key].hp*1.15):progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':progressionBattle.mode==='pvp'?'Đấu tập AI; chỉ số chuẩn hóa.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
 const progressionOriginalRender=renderActors;
 renderActors=function(){
@@ -41,35 +78,44 @@ renderActors=function(){
     const sprite=enemy.querySelector('.sprite-body');updateActorHead(sprite,sprite.dataset.action,+sprite.dataset.frame);
   }
   if(!progressionBattle)return;
-  const root=actor('hero');root.dataset.evolution=progressionBattle.stats.evolution;
-  for(const e of progressionRules.EVOLUTION.slice(0,progressionBattle.stats.evolution)){
-    const piece=document.createElement('img');piece.className='combat-evo combat-evo-'+e.piece;piece.src=ART.evolution[e.piece];piece.alt='';piece.setAttribute('aria-hidden','true');root.append(piece);
-  }
+  const root=actor('hero'),evolution=Math.max(0,Math.min(6,progressionBattle.stats.evolution|0));root.dataset.evolution=evolution;
+  // Evolution reads as light around the current form instead of armour pasted
+  // over faces: a back-glow, a ground sigil and rising motes grow with each tier.
+  const sheet=spriteDefinition('hero',state.key,'idle').sheet,bodyHeight=sheet.bodyHeight||.75,foot=sheet.footY||.94,centre=sheet.bodyX||sheet.heads?.[0]?.[0];
+  root.style.setProperty('--evo-top',String(Math.max(0,foot-bodyHeight)));root.style.setProperty('--evo-h',String(bodyHeight));root.style.setProperty('--evo-x',String(centre?centre/256:.5));
+  if(!evolution)return;
+  const glow=document.createElement('span');glow.className='combat-evo-glow tier-'+evolution;glow.setAttribute('aria-hidden','true');glow.style.setProperty('--tier',String(evolution));
+  glow.innerHTML='<i class="evo-halo"></i><i class="evo-ring"></i>'+Array.from({length:evolution>=3?evolution:0},(_,i)=>`<b style="--i:${i}"></b>`).join('');
+  root.prepend(glow);
+  if(evolution>=6&&ART.evolution?.aura){const aura=document.createElement('img');aura.className='combat-evo combat-evo-aura';aura.src=ART.evolution.aura;aura.alt='';aura.setAttribute('aria-hidden','true');root.prepend(aura);}
 };
 const progressionOriginalUpdate=update;
 update=function(){progressionOriginalUpdate();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
 const progressionOriginalDetail=showHeroDetail;
 showHeroDetail=function(){
   progressionOriginalDetail();if(!progressionBattle)return;
-  const s=progressionBattle.stats,key=progressionBattle.hero;
-  const sword=8*s.attack*(key==='fire'&&progressionPassiveEnabled(key)?1.6:key==='earth'?.6:1);
-  const values=[['HP tối đa',s.hp+' HP'],['Sát thương / ngọc kiếm',sword.toFixed(1)],['Giáp / ngọc khiên',key==='ice'&&progressionPassiveEnabled(key)?'8':'4'],['Hồi máu / ngọc tim',progressionHeal(6)+' HP']];
+  const s=progressionBattle.stats,key=progressionBattle.hero,kit=progressionKit(key),save={level:1,stars:s.stars||1,evolution:s.evolution||0,skills:kit.ranks};
+  const sword=8*s.attack*kit.sword*kit.attackScale;
+  const values=[['HP tối đa',s.hp+' HP'],['Sát thương / ngọc kiếm',sword.toFixed(1)],['Giáp / ngọc khiên',String(combatTileYield('hero',4))],['Hồi máu / ngọc tim',combatTileYield('hero',1)+' HP']];
   $('heroDetailStats').innerHTML=values.map(([name,value])=>`<div><dt>${name}</dt><dd>${value}</dd></div>`).join('');
-  $('heroStatNote').textContent='Chỉ số đã tính cấp, sao, tiến hóa và trang bị của trận này; sát thương còn chịu khắc hệ và liên hoàn.';
+  $('heroSkillName').textContent=HEROES[key].skill;$('heroSkillDescription').textContent=progressionRules.skillText(key,save,0).description;
+  $('heroDetailTrait').textContent=progressionRules.skillText(key,save,1).description+(key==='lightning'?' Luôn lơ lửng khi còn sống.':'');
+  $('heroStatNote').textContent=progressionBattle.mode==='pvp'||progressionIsDuel()?'Đấu tập dùng chỉ số chuẩn hóa: kỹ năng cấp 1, không trang bị.':'Chỉ số đã tính cấp, sao, tiến hóa, kỹ năng và trang bị của trận này; sát thương còn chịu khắc hệ và liên hoàn.';
 };
 const progressionOriginalDamage=damage;
 damage=function(side,raw,ledger=null){
   if(!progressionBattle)return progressionOriginalDamage(side,raw,ledger);
-  const s=progressionBattle.stats;
-  const factor=side==='hero'?s.attack*(progressionCasting?s.active:1):progressionIsDuel()?s.attack:progressionBattle.mode==='pvp'?1.8:progressionBattle.enemyAttack;
+  const s=progressionBattle.stats,kit=progressionKit(progressionBattle.hero);
+  let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.mode==='pvp'?1.8:progressionBattle.enemyAttack;
+  if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   let bypassed=0;
   if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<.08){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
-  const iceReduction=side==='enemy'&&state.key==='ice'&&progressionPassiveEnabled('ice')?.8:1;
+  const iceReduction=side==='enemy'?1-progressionKit().damageReduction:1;
   const defenseMultiplier=Math.max(.5,(1-s.defense)*iceReduction)/iceReduction;
   const result=progressionOriginalDamage(side,raw*factor*(side==='enemy'?defenseMultiplier:1),ledger);
   if(bypassed)state.enemyArmor+=bypassed;
   if(side==='hero'&&result.amount>0){
-    if(s.affixes.includes('lifesteal'))state.hp=Math.min(HEROES[state.key].hp,state.hp+Math.floor(result.amount*.06));
+    if(s.affixes.includes('lifesteal')&&state.hp>0){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.floor(result.amount*.06));state.hp+=gained;progressionShowGain('hero','heal',gained);}
     if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<.12&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
   }
   update();return result;
@@ -78,16 +124,17 @@ const progressionOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
   progressionCasting=true;
   try{
+    const kit=progressionKit();
     if(state.key==='novice'){
-      const pending=[];popActorSkill('hero','Nhát Kiếm Cơ Bản',true,pending);setSpriteAction('hero','cast',700);await wait(reduced?0:350);await attack('hero',45,{hits:1});await Promise.all(pending);
+      const pending=[];popActorSkill('hero',HEROES.novice.skill,true,pending);setSpriteAction('hero','cast',700);await wait(reduced?0:350);await attack('hero',kit.base,{hits:kit.hits});await Promise.all(pending);
     }else await progressionOriginalUltimate();
-    if(progressionBattle?.stats.mutation&&state.enemyHp>0){
-      const rank=progressionBattle.stats.skills[2];
-      if(state.key==='fire')progressionDot=2;
-      if(state.key==='ice')state.armor=Math.min(999,state.armor+Math.round(HEROES.ice.hp*.06));
-      if(state.key==='earth')state.armor=Math.min(999,state.armor+Math.round(HEROES.earth.hp*.04));
-      if(state.key==='lightning'){state.enemyEnergy=Math.max(0,state.enemyEnergy-20-rank);state.energy=Math.min(99,state.energy+5);}
-      if(state.key==='shadow')applyCombatDamage('enemy',Math.round((12+rank*3)*progressionBattle.stats.attack));
+    const attackStat=progressionBattle?.stats.attack||1;
+    // Mika's burn comes from Biến Dị or her third form; the other effects need Biến Dị.
+    if(state.enemyHp>0&&state.hp>0&&(kit.mutation||kit.burn)){
+      if(kit.burn){progressionDot={turns:kit.burn.turns,amount:Math.max(1,Math.round(kit.burn.base*attackStat))};popActorSkill('enemy','THIÊU ĐỐT · '+kit.burn.turns+' LƯỢT',false);}
+      if(kit.mutation&&(state.key==='ice'||state.key==='earth')){const before=state.armor;state.armor=Math.min(combatArmorCap('hero'),state.armor+Math.round(HEROES[state.key].hp*kit.mutationArmor));progressionShowGain('hero','armor',state.armor-before);}
+      if(kit.mutation&&state.key==='lightning'){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.drain);state.energy=Math.min(99,state.energy+kit.energyReturn);}
+      if(kit.mutation&&state.key==='shadow')await progressionShowResult('enemy',applyCombatDamage('enemy',Math.round(kit.echo*attackStat)),'TÀN ẢNH',1);
       update();
     }
   }finally{progressionCasting=false;}
@@ -99,15 +146,15 @@ enemyAction=async function(){
     if(state.frozen||state.stunned){state.frozen=false;state.stunned=false;message('Người chơi 2 bị đóng băng, bỏ qua lượt.');return;}
     await opponentBoardTurn();await castReadyUltimates();plannedIntent=intent();return;
   }
-  if(progressionBattle&&progressionDot>0&&state.enemyHp>0){progressionDot--;const amount=Math.round(8*progressionBattle.stats.attack*(1+progressionBattle.stats.skills[2]*.1));applyCombatDamage('enemy',amount);await floating('enemy','Thiêu đốt −'+amount);}
-  if(progressionEnemyDot&&state.hp>0){const dot=progressionEnemyDot;const result=damage('enemy',dot.raw);await floating('hero',dot.name+' −'+result.amount);if(--dot.turns<=0)progressionEnemyDot=null;if(state.hp<=0)return;}
+  if(progressionDot?.turns>0&&state.enemyHp>0){progressionDot.turns--;const amount=progressionDot.amount;if(!progressionDot.turns)progressionDot=null;await progressionShowResult('enemy',applyCombatDamage('enemy',amount),'Thiêu đốt');}
+  if(progressionEnemyDot&&state.hp>0){const dot=progressionEnemyDot;const result=damage('enemy',dot.raw);await progressionShowResult('hero',result,dot.name);if(--dot.turns<=0)progressionEnemyDot=null;if(state.hp<=0)return;}
   if(progressionBattle?.tactical&&typeof expeditionEnemyTurn==='function')await expeditionEnemyTurn();else await progressionOriginalEnemy();
   if(!progressionBattle)return;
   const s=progressionBattle.stats;
   if(state.playerFrozen&&s.affixes.includes('steadfast')&&Math.random()<.25){state.playerFrozen=false;message('Bất động · Kháng mất lượt.');}
   if(state.hp>0&&state.enemyHp>0){
-    if(s.affixes.includes('ward'))state.armor=Math.min(999,state.armor+Math.round(HEROES[state.key].hp*.03));
-    if(state.key==='novice'&&s.mutation)state.hp=Math.min(HEROES.novice.hp,state.hp+Math.round(HEROES.novice.hp*.01));
+    if(s.affixes.includes('ward')){const before=state.armor;state.armor=Math.min(combatArmorCap('hero'),state.armor+Math.round(HEROES[state.key].hp*.03));progressionShowGain('hero','armor',state.armor-before);}
+    const kit=progressionKit();if(kit.regen){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.max(1,Math.round(HEROES[state.key].hp*kit.regen)));state.hp+=gained;progressionShowGain('hero','heal',gained);}
   }
   progressionProcs.clear();update();
 };
@@ -153,7 +200,8 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
     if(!progressionBattle||!['campaign','boss'].includes(progressionBattle.mode))return campaignSkill({reserved});
     if(!reserved)state.enemyEnergy=0;
     const phase=progressionBossCast++%battle.skills.length,name=battle.skills[phase];message(battle.enemyName+' dùng '+name);popActorSkill('enemy',name,true,[]);
-    const skill=battle.skillSet?.[phase],base=14+battle.recommended*(battle.boss?1.1:.65);
+    // Flat skill base: level scaling lives only in enemyAttack (progression.js).
+    const skill=battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
     if(!skill){if(battle.tier==='elite'&&phase===1)await buff('enemy','armor',Math.round(state.enemyMax*.04));else await attack('enemy',base);}
     else if(skill.kind==='guard')await buff('enemy','armor',Math.round(state.enemyMax*skill.shield));
     else if(skill.kind==='heal')await buff('enemy','heal',Math.round(state.enemyMax*skill.heal));

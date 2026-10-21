@@ -77,7 +77,7 @@ for a in manifest.values():a['file']=data_uri(a['file'])
 backdrops={}
 for key in ['home','inventory','skills','arena','summon','shop','forge','upgrade','tavern']:
     backdrops[key]={'background':data_uri(merged.get('background-'+key,{}).get('file',f'assets/gemwoven/backgrounds/{key}.webp'))}
-for name in ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','ui']:
+for name in ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','living-hub','ui']:
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
     if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
     if name=='journey-ui':code='window.GEMWOVEN_HOME_MUSIC='+json.dumps(data_uri('assets/audio/music/earth.ogg'))+';\n'+code

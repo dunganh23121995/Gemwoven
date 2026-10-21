@@ -18,8 +18,7 @@ renderActors=function(){
   root.style.setProperty('--hero-art-scale',Math.max(1,(form===3?.82:.75)/(body.bodyHeight||.75)));
   root.style.setProperty('--hero-visible-height',`calc(var(--actor-size) * ${body.bodyHeight||.75})`);
   root.style.setProperty('--form-color',key==='shadow'?'#7955a5':combatV3Palette[key].light);
-  if(form<2)return;
-  root.querySelectorAll('.combat-evo').forEach(node=>node.remove());
+  // Evolution pieces stay visible on every form; CSS re-anchors them per form body.
   if(form<3)return;
   const aura=document.createElement('span');aura.className='hero-form-effects combat-form-aura';aura.setAttribute('aria-hidden','true');
   aura.innerHTML=window.GemwovenFormEffects.markup(key,form,ART.formAuras?.[key]);

@@ -164,9 +164,10 @@ function combatV3Camera(direction,strong,boss,pending){
   ],{duration:210,easing:'ease-out'}));
 }
 function combatV3Number(side,value,kind,index,pending){
-  const p=combatV3Point(side),node=document.createElement('span');
+  // Resting-body anchor: numbers stay beside the target, clear of its HP bar.
+  const p=combatNumberPoint(side,index),node=document.createElement('span');
   node.className='combat-v3-number '+kind;node.textContent=value;
-  node.style.left=(p.x+(index%2?17:-12))+'px';node.style.top=Math.max(24,p.y-p.height*.22)+'px';
+  node.style.left=p.x+'px';node.style.top=p.y+'px';
   $('combatEffects').append(node);
   combatV3Fx(node,[{opacity:0,transform:'translate(-50%,8px) scale(.7)'},{opacity:1,transform:'translate(-50%,-8px) scale(1.1)',offset:.18},{opacity:1,transform:'translate(-50%,-17px) scale(1)',offset:.66},{opacity:0,transform:'translate(-50%,-43px) scale(.95)'}],{duration:790},pending);
 }
@@ -261,9 +262,11 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
     if(chain>1)popActorSkill(side,'ĐÒN ×'+chain+' · +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%',false,pending);
     if(!ultimate&&chain===1)combatV3Cue(side,key,false,hits,pending);
     combatV3Charge(side,key,ultimate,pending);
-    await combatV3Pose(source,`translate(${-direction*(ultimate?7:4)}px,0px) rotate(${-direction*(melee?3:1)}deg)`,ultimate?290:150);
+    // Wind-ups lean backwards only as far as the arena edge allows.
+    const lean=combatOuterMotion(side,ultimate?13:8,melee?7:2),lean1=combatOuterMotion(side,ultimate?7:4,melee?3:1);
+    await combatV3Pose(source,`translate(${-direction*lean1.distance}px,0px) rotate(${-direction*lean1.tilt}deg)`,ultimate?290:150);
     combatV3Frame(side,preparationAction,ultimate?1:opening.ready);
-    await combatV3Pose(source,`translate(${-direction*(ultimate?13:8)}px,${ultimate?-4:1}px) rotate(${-direction*(melee?7:2)}deg)`,ultimate?330:200);
+    await combatV3Pose(source,`translate(${-direction*lean.distance}px,${ultimate?-4:1}px) rotate(${-direction*lean.tilt}deg)`,ultimate?330:200);
     if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.anticipationHold);
     combatV3Frame(side,preparationAction,ultimate?2:opening.launch);
     if(melee){
@@ -311,7 +314,8 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
       }
       combatV3Camera(direction,strong,boss,pending);
       target.style.filter='brightness(1.35)';
-      await combatV3Pose(target,`translate(${direction*(strong||boss?15:9)}px,${strong||boss?-5:-2}px) rotate(${direction*(strong||boss?7:4)}deg)`,75);
+      const recoil=combatOuterMotion(targetSide,strong||boss?15:9,strong||boss?7:4);
+      await combatV3Pose(target,`translate(${direction*recoil.distance}px,${strong||boss?-5:-2}px) rotate(${direction*recoil.tilt}deg)`,75);
       await combatV3Wait(strong?105:melee?75:65); // restrained hit stop, no full-screen strobe
       target.style.filter='';
       combatV3Frame(side,action,strike.recover);
@@ -334,7 +338,7 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
 };
 buff=async function(side,kind,value,{alreadyApplied=false}={}){
   const isHero=side==='hero',hpKey=isHero?'hp':'enemyHp',armorKey=isHero?'armor':'enemyArmor',maximum=isHero?HEROES[state.key].hp:state.enemyMax;
-  const gained=alreadyApplied?value:Math.min(value,kind==='heal'?maximum-state[hpKey]:999-state[armorKey]);if(gained<=0)return 0;
+  const gained=alreadyApplied?value:Math.min(value,kind==='heal'?maximum-state[hpKey]:combatArmorCap(side)-state[armorKey]);if(gained<=0)return 0;
   const f=actor(side),transform=f.style.transform,pending=[],key=side==='hero'?state.key:state.enemyKey;
   const color=kind==='heal'?{main:'#79e3a9',light:'#ecffce',deep:'#388e77'}:combatV3Palette[key];
   const handSeal=isHero&&key==='shadow';

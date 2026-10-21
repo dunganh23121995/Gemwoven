@@ -13,7 +13,7 @@
       <header><small>GIAO ƯỚC DƯỚI NGÂN HÀ</small><h2>Hồ Tinh Tú</h2><p class="celestial-status" role="status">Tinh tú đang đáp lời…</p></header>
       <button type="button" class="celestial-close" aria-label="Đóng kết quả">×</button>
       <div class="celestial-deck" hidden></div>
-      <footer><button type="button" class="celestial-open-all" disabled>Mở tất cả</button><p>Phần thưởng đã được lưu vào túi đồ</p></footer>`;
+      <footer><button type="button" class="celestial-open-all gw-btn" disabled>Mở tất cả</button><p>Phần thưởng đã được lưu vào túi đồ</p></footer>`;
     document.body.append(modal);
     const canvas=modal.querySelector('canvas'),ctx=canvas.getContext('2d'),deck=modal.querySelector('.celestial-deck'),
       status=modal.querySelector('.celestial-status'),all=modal.querySelector('.celestial-open-all');

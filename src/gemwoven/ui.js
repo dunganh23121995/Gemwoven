@@ -16,6 +16,39 @@
   const itemNames={'fire-essence':'Tinh Hoa Hỏa',coins:'Đồng Vàng',mana:'Đá Ngọc',amber:'Đá Nâng Cấp',scroll:'Sách Kỹ Năng','hero-fragment':'Mảnh Tướng',ticket:'Vé Triệu Hồi',chest:'Rương Hiếm',hammer:'Búa Rèn',potion:'Thuốc Đột Phá',ingot:'Thỏi Sắt',emerald:'Tinh Thạch Mộc','fire-sword':'Kiếm Hỏa Ngục','icon-book':'Sách Kinh Nghiệm','avatar-fire':'Mảnh Tướng Mika'};
   function art(key){const img=document.createElement('img');img.src=(assets[key]||assets['icon-hero']).file;img.alt='';img.draggable=false;return img;}
   function box(el,r){['left','top','width','height'].forEach((p,i)=>el.style[p]=`${r[i]}px`);}
+  // Painted chrome shared by dialogs, framed panels and buttons (existing assets only).
+  const chrome={frame:'settings-frame',board:'panel-parchment',btn:'button-gold',wood:'tab-wood',close:'skill-frame',plate:'nameplate',slot:'inventory-slot',crest:'crest',card:'card-dark'};
+  for(const [name,key]of Object.entries(chrome))if(assets[key])document.documentElement.style.setProperty('--art-'+name,`url("${new URL(assets[key].file,document.baseURI).href}")`);
+  // In-scene sheets use the portrait frame: the title sits on its plank and a crest covers the cog.
+  function framePanel(el,node){
+    el.classList.add('gw-frame');el.style.setProperty('--s',(node.rect[2]/760).toFixed(4)+'px');
+    const head=el.querySelector(':scope>header');if(head)head.classList.add('gw-head');
+    if(!el.querySelector(':scope>.encounter-body')){
+      const body=document.createElement('div');body.className='gw-body';
+      const sub=head?.querySelector(':scope>p');if(sub){sub.classList.add('gw-sub');body.append(sub);}
+      for(const child of [...el.childNodes])if(child!==head)body.append(child);
+      el.append(body);
+    }
+    const emblem=document.createElement('span');emblem.className='gw-emblem';emblem.setAttribute('aria-hidden','true');el.prepend(emblem);
+  }
+  // Titles live on a painted plank: shrink long ones instead of letting them overflow.
+  function fitTitle(el,min=13){
+    if(!el?.clientWidth)return;el.style.fontSize='';let size=parseFloat(getComputedStyle(el).fontSize);
+    while(size>min&&(el.scrollWidth>el.clientWidth+1||el.scrollHeight>el.clientHeight+1))el.style.fontSize=`${--size}px`;
+  }
+  // Every modal (confirmations, galleries) shares the #preview-dialog shell and behaviour.
+  function makeDialog(id,title,className=''){
+    document.getElementById(id)?.remove();
+    const modal=document.createElement('dialog');modal.id=id;modal.className=('gw-dialog '+className).trim();modal.setAttribute('aria-label',title);
+    modal.innerHTML='<span class="gw-emblem" aria-hidden="true"></span><header class="gw-head"><h2></h2></header><button type="button" class="close gw-close" aria-label="Đóng">×</button><div class="gw-body"></div><footer class="gw-actions"></footer>';
+    modal.querySelector('h2').textContent=title;modal.querySelector('.gw-close').onclick=()=>modal.close();
+    modal.addEventListener('close',()=>modal.remove());
+    modal.addEventListener('click',e=>{if(e.target!==modal)return;const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)modal.close();});
+    modal.body=modal.querySelector('.gw-body');modal.actions=modal.querySelector('.gw-actions');
+    modal.present=()=>{document.body.append(modal);if(!modal.open)modal.showModal();fitTitle(modal.querySelector('h2'));(modal.querySelector('[autofocus]')||modal.actions.querySelector('button:not(:disabled)'))?.focus({preventScroll:true});};
+    document.body.append(modal);return modal;
+  }
+  window.GemwovenUI={fitTitle,framePanel,makeDialog};
   function setText(el,key,value){el.dataset.copy=key;el.textContent=value??copy[key]??'';}
   function decorateText(el,node){el.style.fontSize=`${node.size||28}px`;if(node.tone)el.classList.add(`tone-${node.tone}`);if(node.align)el.classList.add(`align-${node.align}`);}
   function engravedLabel(el,node){
@@ -119,7 +152,8 @@
     node={...node};
     const hudRects={
       'gold-plate':[215,36,235,48],'gold-icon':[200,25,59,60],'gold':[259,38,151,40],'gold-plus':[412,35,39,43],
-      'gem-plate':[490,36,235,48],'gem-icon':[476,22,54,70],'gems':[531,38,154,40],'gems-plus':[687,35,39,43]
+      'gem-plate':[490,36,235,48],'gem-icon':[476,22,54,70],'gems':[531,38,154,40],'gems-plus':[687,35,39,43],
+      'mail':[757,20,78,78],'settings':[852,20,78,78]
     };
     const suffix=node.id.split('.').pop();if(hudRects[suffix])node.rect=hudRects[suffix];
     if(['central-crystal','floating-sword','product-preview'].includes(suffix))node.className=((node.className||'')+' is-living-crystal').trim();
@@ -135,7 +169,14 @@
     if(['upgrade.evolution-now','upgrade.evolution-next','upgrade.evolution-locked'].includes(node.id)){node.asset=`portrait-${state.hero}`;if(node.id.endsWith('now'))node.action=`hero:${state.hero}`;}
     let el;
     if(node.id.endsWith('.profile')){node.rect=[20,7,144,144];el=profileNode(node);}
-    else if(node.kind==='content'){el=document.createElement('section');el.className='live-panel';el.style.backgroundImage=`url("${assets[node.backgroundAsset||'panel-parchment'].file}")`;el.style.setProperty('--game-button-art',`url("${new URL(assets['button-gold'].file,document.baseURI).href}")`);node.build(el);}
+    else if(node.kind==='content'){
+      el=document.createElement('section');el.className='live-panel';
+      // The scrolling map and the themed settings/chat art keep their own backgrounds.
+      const own=/(^|\s)(exploration-map|crafted-panel|outfit-panel)(\s|$)/.test(node.className||''),framed=!own;
+      if(/crafted-panel/.test(node.className||""))el.style.backgroundImage=`url("${assets[node.backgroundAsset||'panel-parchment'].file}")`;
+      el.style.setProperty('--game-button-art',`url("${new URL(assets['button-gold'].file,document.baseURI).href}")`);node.build(el);
+      if(framed)framePanel(el,node);
+    }
     else if(suffix==='footer-board'){
       el=document.createElement('span');el.className='footer-shell';const board=art(node.asset);board.className='footer-plank';el.append(board);
       if(assets['hud-menu-vine'])for(const side of ['left','right']){const vine=art('hud-menu-vine');vine.className='footer-vine '+side;el.append(vine);}
@@ -167,7 +208,8 @@
       if(node.style)el.classList.add(node.style);
     }
     el.classList.add('node',`node-${node.kind}`);if(node.className)el.classList.add(...node.className.split(' '));
-    el.dataset.node=node.id;if(node.asset)el.dataset.asset=node.asset;
+    // data.asset (e.g. featured gear art) must survive; the node's own art is only a fallback.
+    el.dataset.node=node.id;if(node.asset&&!(node.data&&'asset' in node.data))el.dataset.asset=node.asset;
     box(el,node.rect);if(node.kind==='image')el.style.objectFit=node.fit||'contain';
     if(formBody&&game){
       const target=node.id==='home.hero'?270:350;
@@ -177,12 +219,19 @@
     return el;
   }
   function fit(){
-    const mobile=innerWidth<=700;
-    const exploring=state.screen==='campaign';
-    const availableWidth=mobile||exploring?innerWidth:innerWidth-300;
-    const availableHeight=exploring?innerHeight:mobile?Math.max(500,innerHeight-92):innerHeight-24;
+    // Size from the layout viewport: on phones innerWidth grows whenever content overflows,
+    // which fed back into an ever wider stage that no longer fitted the screen.
+    const root=document.documentElement,width=root.clientWidth||innerWidth,height=root.clientHeight||innerHeight;
+    const mobile=width<=700,exploring=state.screen==='campaign';
+    document.body.classList.toggle('phone-frame',mobile);
+    const availableWidth=mobile||exploring?width:width-300;
+    const availableHeight=exploring||mobile?height:height-24;
     const scale=Math.max(.18,Math.min(availableWidth/941,availableHeight/1672,1));
-    stage.style.transform=`scale(${scale})`;$('viewport').style.width=`${941*scale}px`;$('viewport').style.height=`${1672*scale}px`;
+    const viewport=$('viewport');
+    stage.style.transform=`scale(${scale})`;viewport.style.width=`${941*scale}px`;viewport.style.height=`${1672*scale}px`;
+    // Dialogs centre on the game frame, not on the window behind the review sidebar.
+    const frame=viewport.getBoundingClientRect();
+    root.style.setProperty('--frame-cx',`${frame.left+frame.width/2}px`);root.style.setProperty('--frame-w',`${frame.width||941*scale}px`);
   }
   function nodeBy(id){return scene.querySelector(`[data-node="${state.screen}.${id}"]`);}
   function changeText(id,value){const el=scene.querySelector(`[data-copy="${state.screen}.${id}"]`);if(el)el.textContent=value;}
@@ -201,7 +250,7 @@
     const screen=layout.screens[state.screen],backgroundKey=screen.backgroundKey||state.screen;
     if(assets['background-'+backgroundKey])screen.background=assets['background-'+backgroundKey].file;
     scene.replaceChildren();scene.style.backgroundImage=`url("${window.GEMWOVEN_BACKDROPS?.[backgroundKey]?.background||screen.background}")`;
-      const frag=document.createDocumentFragment();for(const node of screen.nodes){if(/\.(level-plate|level-meter|level-badge|level)$/.test(node.id))continue;frag.append(makeNode(node));}scene.append(frag);hangingChains();ambientScene();
+      const frag=document.createDocumentFragment();for(const node of screen.nodes){if(/\.(level-plate|level-meter|level-badge|level)$/.test(node.id))continue;frag.append(makeNode(node));}scene.append(frag);hangingChains();ambientScene();window.GemwovenLivingHub?.mount(scene,state);
     stage.setAttribute('aria-label',screen.name);
     document.title=`Gemwoven · ${screen.name}`;
     document.querySelectorAll('#screen-menu button').forEach(b=>{if(b.dataset.screen===state.screen)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
@@ -224,17 +273,28 @@
     if(!layout.screens[key]){showDirectory();return;}
     if(dialog.open)dialog.close();if(location.hash===`#${key}`){state.screen=key;render();}else location.hash=key;
   }
-  function showModal(title,images=[],description='',links=[]){
+  // options.content: a trusted DOM node built by game code; options.kind tunes the layout.
+  function showModal(title,images=[],description='',links=[],options={}){
     $('dialog-title').textContent=title;$('dialog-copy').textContent=description;
-    $('dialog-art').replaceChildren(...images.filter(k=>assets[k]).map(art));$('dialog-links').replaceChildren();
+    dialog.dataset.kind=options.kind||(links.length>2?'directory':images.length?'item':'notice');
+    $('dialog-art').replaceChildren(...images.filter(k=>assets[k]).map(key=>{const slot=document.createElement('span');slot.className='dialog-item';slot.append(art(key));return slot;}));
+    $('dialog-extra').replaceChildren(...(options.content?[options.content]:[]));$('dialog-links').replaceChildren();
     for(const link of links){
-      const b=document.createElement(link.href?'a':'button');b.textContent=link.label;
+      const b=document.createElement(link.href?'a':'button');b.className=links.length>2?'dir-tile':'gw-btn';b.textContent=link.label;if(link.route===state.screen)b.setAttribute('aria-current','page');
       if(link.href)b.href=link.href;else{b.type='button';b.addEventListener('click',()=>navigate(link.route));}
       if(link.icon)b.prepend(art(link.icon));$('dialog-links').append(b);
     }
+    // The primary action owns focus; the close cross is never the autofocus target.
+    // One or two choices sit beside "Quay lại" in the footer; a long directory scrolls in the body.
+    const back=$('return-dialog'),holder=$('dialog-links'),inline=links.length>0&&links.length<=2;
+    if(inline)back.before(holder);else $('dialog-body').append(holder);holder.classList.toggle('inline',inline);
+    const primary=inline?holder.firstElementChild:back;
+    back.classList.toggle('secondary',primary!==back);
+    for(const b of dialog.querySelectorAll('[autofocus]'))b.removeAttribute('autofocus');primary.setAttribute('autofocus','');
     if(!dialog.open)dialog.showModal();
+    primary.focus?.({preventScroll:true});$('dialog-body').scrollTop=0;fitTitle($('dialog-title'));
   }
-  function showDirectory(){showModal('Khám phá Gemwoven',[],'',(layout.order||Object.keys(layout.screens)).map(key=>({label:layout.names[key],route:key,icon:iconFor[key]})));}
+  function showDirectory(){showModal('Khám phá Gemwoven',[],'',(layout.order||Object.keys(layout.screens)).map(key=>({label:layout.names[key],route:key,icon:iconFor[key]})),{kind:'directory'});}
   function chooseGroup(button){
     if(!button.dataset.group)return;state.groups[button.dataset.group]=button.dataset.node;
     scene.querySelectorAll(`[data-group="${button.dataset.group}"]`).forEach(el=>{const selected=el===button;el.classList.toggle('selected',selected);el.setAttribute('aria-pressed',String(selected));});

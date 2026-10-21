@@ -30,7 +30,7 @@ async function expeditionEnemyTurn(){
   if(state.noriStunTurns>0)await consumeNoriStunTurn();
   if(skipAction){state.frozen=false;state.stunned=false;message('Ngắt nhịp đối thủ · cơ chế môi trường vẫn tiếp diễn.');}
   turn='enemy';
-  const events=expeditionRules.advance(expeditionState,expeditionDef,state.enemyHp/state.enemyMax,{skipAction}),base=14+progressionBattle.recommended*(progressionBattle.boss?1.1:.65);
+  const events=expeditionRules.advance(expeditionState,expeditionDef,state.enemyHp/state.enemyMax,{skipAction}),base=(progressionBattle.enemySkillBase??(progressionBattle.boss?30:18))*(progressionBattle.boss?.45:1); // expedition bosses act every turn (plus hazards), so each hit carries less than a classic boss skill
   for(const e of events){
     if(state.hp<=0||state.enemyHp<=0)break;
     if(e.type==='phase'){message(expeditionDef.name+' · '+expeditionDef.phaseNames[e.phase-1]);actor('enemy').dataset.bossPhase=e.phase;await combatParticles('enemy',state.enemyKey,12);}

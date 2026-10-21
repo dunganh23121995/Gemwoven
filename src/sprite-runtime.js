@@ -97,7 +97,7 @@ paintTile=function(t){
 };
 function finishArtSetup(){
   $('tileLegend').innerHTML=TYPES.map((t,i)=>`<div class="legend-item"><span class="legend-icon"><img src="${itemImage(i)}" alt=""></span><span>${t.name}</span><small>${t.effect}</small></div>`).join('');
-  $('helpLegend').innerHTML=TYPES.map((t,i)=>`<div><img class="help-item-art" src="${itemImage(i)}" alt=""><span><b>${t.name}</b> · ${['8 sát thương mỗi ngọc, trước hệ số nhân vật và nguyên tố','Hồi 6 HP mỗi ngọc','Tích thêm năng lượng để dùng tuyệt kỹ','Ghép 3 để đóng băng quái trong 1 lượt','4 giáp mỗi ngọc; Yuki nhận 8'][i]}</span></div>`).join('');
+  $('helpLegend').innerHTML=TYPES.map((t,i)=>`<div><img class="help-item-art" src="${itemImage(i)}" alt=""><span><b>${t.name}</b> · ${['8 sát thương mỗi ngọc, trước hệ số nhân vật và nguyên tố','Hồi 1,2% HP tối đa mỗi ngọc (ít nhất 6 HP)','Tích thêm năng lượng để dùng tuyệt kỹ','Ghép 3 để đóng băng quái trong 1 lượt','Giáp bằng 1,5% HP tối đa mỗi ngọc (ít nhất 4); Yuki nhận gấp đôi'][i]}</span></div>`).join('');
   const gallery=document.createElement('div');gallery.className='special-gallery';gallery.innerHTML='<div class="special-gallery-head"><span>Item</span><span>Ghép 4 · Sao băng</span><span>Ghép 5 · Bùng nổ</span></div>'+TYPES.map((t,i)=>`<div class="special-gallery-row"><span><img src="${itemImage(i)}" alt="${t.name}"></span><span><img src="${itemImage(i,'bolt')}" alt="${t.name} Sao băng"></span><span><img src="${itemImage(i,'bomb')}" alt="${t.name} Bùng nổ"></span></div>`).join('');
   $('helpLegend').after(gallery);
   $('helpTitle').textContent='Kết nối. Tích lực. Bùng nổ.';

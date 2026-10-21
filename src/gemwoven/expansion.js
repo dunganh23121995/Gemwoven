@@ -1,42 +1,43 @@
-/* Nine layered screens. Skill proposals are presentation data, not combat rules. */
+/* Nine layered screens. Skill copy below is the rank-1 default; art-screens.js
+ * replaces it at runtime with text generated from progression.js skill kits. */
 (() => {
   const {begin,image,text,button,panel,title,footer,add,materials}=window.GEMWOVEN_COMPONENTS;
   const layout=window.GEMWOVEN_LAYOUT;
   const heroes={
     fire:{name:'Mika',title:'Viêm Kiếm Sĩ',element:'Hỏa',color:'#ff9a39',weapon:'fire-sword',skills:[
-      ['Viêm Long Trảm','Tụ lửa kéo dài lưỡi kiếm, phóng kiếm khí phát nổ. Gây 135 sát thương cơ bản.','135 → 150 sát thương'],
-      ['Liệt Hỏa Kiếm Tâm','Kiếm gây thêm 60% sát thương. Ngọn lửa theo từng nhịp chém của Mika.','60% → 65% sát thương kiếm'],
-      ['Hỏa Luân','Kiếm khí cuộn thành vòng lửa, để lại vùng thiêu đốt sau khi phát nổ.','Vùng thiêu đốt: 2 → 3 lượt'],
-      ['Cửu Vĩ Viêm Hồn','Hợp nhất với hỏa hồ, cường hóa lưỡi kiếm và ánh lửa quanh cơ thể.','Sức mạnh hỏa hồ: +15% → +20%']
+      ['Viêm Long Trảm','Kiếm khí rực lửa phát nổ, gây 135 sát thương cơ bản.','Sát thương 135'],
+      ['Liệt Hỏa Kiếm Tâm','Ngọc kiếm gây thêm 60% sát thương. Công +2,5%.','Công +2,5%'],
+      ['Hỏa Luân','Sau tuyệt kỹ, thiêu đốt địch 2 lượt, mỗi lượt 8,8 sát thương cơ bản.','Thiêu đốt 8,8/lượt · Thời gian 2 lượt'],
+      ['Cửu Vĩ Viêm Hồn','Thức tỉnh chân thân: Công +13%, HP +10% toàn trận.','Công +13% · HP +10%']
     ]},
     ice:{name:'Yuki',title:'Băng Tâm Vệ',element:'Băng',color:'#8de4ff',weapon:'ice-essence',skills:[
-      ['Thiên Băng Giáng','Nhận 25 giáp; triệu hồi băng gây 60 sát thương và làm choáng mục tiêu 1 lượt.','60 → 70 sát thương băng'],
-      ['Băng Tâm Hộ Thuẫn','Ngọc khiên cho 8 giáp. Yuki giảm 20% sát thương nhận vào.','20% → 24% giảm sát thương'],
-      ['Tuyết Liên Kết Giới','Hoa băng nở quanh đồng đội, giữ lại một phần giáp khi kết giới tan.','Giáp giữ lại: 10 → 15'],
-      ['Nguyệt Thố Băng Linh','Đánh thức linh thỏ dưới trăng; băng thương tỏa sáng và lớp giáp trở nên bền hơn.','Hiệu lực giáp: +15% → +20%']
+      ['Thiên Băng Giáng','Nhận 25 giáp; băng giáng gây 60 sát thương cơ bản và choáng 1 lượt.','Sát thương 60 · Giáp 25'],
+      ['Băng Tâm Hộ Thuẫn','Giảm 20% sát thương nhận vào; ngọc khiên cho 8 giáp. Phòng thủ +0,8%.','Phòng thủ +0,8%'],
+      ['Tuyết Liên Kết Giới','Sau tuyệt kỹ, nhận thêm giáp bằng 6% HP tối đa.','Giáp 6% HP'],
+      ['Nguyệt Thố Băng Linh','Thức tỉnh chân thân: Công +13%, HP +10% toàn trận.','Công +13% · HP +10%']
     ]},
     earth:{name:'Nori',title:'Thiết Giáp Vệ',element:'Mộc',color:'#a5d672',weapon:'stat-shield',skills:[
-      ['Mộc Linh Hộ Thể','Choáng 2 lượt; tích sát thương rồi bùng nổ ×3. Hồi 40 HP mỗi lượt trong 3 lượt.','Hồi phục: 40 → 45 HP/lượt'],
-      ['Đại Khiên Tích Lực','Đánh thường còn 60% sát thương gốc. Đại khiên tích lực để phản công.','Sức mạnh đại khiên: +5%'],
-      ['Căn Mạch Trói Buộc','Rễ cây lan từ mặt khiên, níu chân kẻ địch và bảo vệ vùng đất sau lưng Nori.','Thời gian trói: 1 → 2 lượt'],
-      ['Cổ Thụ Thần Vệ','Linh hồn cổ thụ bao bọc giáp xanh và đại khiên, tăng khả năng bảo vệ đồng đội.','Lá chắn đồng đội: 20 → 30']
+      ['Mộc Linh Hộ Thể','Choáng 2 lượt; sát thương tích trong lúc choáng nổ ×3. Hồi 40 HP/lượt trong 3 lượt.','Hồi 40 HP/lượt · Bộc phá ×3'],
+      ['Đại Khiên Tích Lực','Đánh thường còn 75% sát thương; đổi lại HP rất cao. HP +1,5%.','HP +1,5%'],
+      ['Căn Mạch Trói Buộc','Rễ cây hóa giáp: sau tuyệt kỹ nhận giáp bằng 4% HP tối đa.','Giáp 4% HP'],
+      ['Cổ Thụ Thần Vệ','Thức tỉnh chân thân: Công +13%, HP +10% toàn trận.','Công +13% · HP +10%']
     ]},
     lightning:{name:'Lumi',title:'Lôi Cuồng Sư',element:'Lôi',color:'#dcacff',weapon:'lightning-essence',skills:[
-      ['Ngũ Tinh Lôi','Gọi 5 tia sét liên tiếp từ pháp trận ngôi sao, gây tổng cộng 140 sát thương.','140 → 155 tổng sát thương'],
-      ['Tinh Điện Cộng Hưởng','Tích năng lượng nhanh gấp đôi. Các vì sao quanh trượng giữ lại điện tích.','Hiệu quả tích năng lượng: +10%'],
-      ['Lôi Vân Xoáy','Sét hợp thành vòng mây, lan điện giữa các mục tiêu đứng gần nhau.','Mục tiêu lan điện: 2 → 3'],
-      ['Thiên Tinh Pháp Sư','Thức tỉnh pháp sư thiên tinh; mũ trăng và trượng cộng hưởng giữa cơn bão.','Sát thương thiên tinh: +15% → +20%']
+      ['Ngũ Tinh Lôi','Gọi 5 tia sét liên tiếp, tổng 140 sát thương cơ bản.','Sát thương 140'],
+      ['Tinh Điện Cộng Hưởng','Năng lượng từ ngọc ×2,05.','Năng lượng ×2,05'],
+      ['Lôi Vân Xoáy','Sau tuyệt kỹ, hút 21 năng lượng của địch và hồi 5 năng lượng.','Hút 21 năng lượng'],
+      ['Thiên Tinh Pháp Sư','Thức tỉnh chân thân: Công +13%, HP +10% toàn trận.','Công +13% · HP +10%']
     ]},
     shadow:{name:'Noct',title:'Ảnh Kiếm Sĩ',element:'Ảnh',color:'#8cdde9',weapon:'stat-attack',skills:[
-      ['Ngũ Ảnh Trảm','Lướt qua mục tiêu bằng 5 nhát chém katana liên tiếp, gây tổng cộng 150 sát thương.','150 → 165 tổng sát thương'],
-      ['Vô Diện Ảnh Bộ','Lướt chém tốc độ cao, không chịu khắc hệ. Bóng tối luôn che kín khuôn mặt.','Tốc độ ảnh bộ: +5% → +8%'],
-      ['Tàn Ảnh Phân Thân','Để lại phân thân tại điểm lướt qua; bóng kiếm nối tiếp nhát chém cuối.','Sức mạnh tàn ảnh: 15% → 20%'],
-      ['Dạ Hành Vô Tướng','Hòa vào bóng đêm, chỉ còn đôi mắt xanh và đường kiếm lóe sáng dưới mũ trùm.','Sát thương kết liễu: +15% → +20%']
+      ['Ngũ Ảnh Trảm','5 lần lướt chém, tổng 150 sát thương cơ bản.','Sát thương 150'],
+      ['Vô Diện Ảnh Bộ','Không bị khắc hệ. Công +1,2%.','Công +1,2%'],
+      ['Tàn Ảnh Phân Thân','Sau tuyệt kỹ, tàn ảnh chém thêm 15 sát thương cơ bản.','Tàn ảnh 15 sát thương'],
+      ['Dạ Hành Vô Tướng','Thức tỉnh chân thân: Công +13%, HP +10% toàn trận.','Công +13% · HP +10%']
     ]}
   };
   const branches=['Chủ Động','Bị Động','Biến Dị','Chân Thân'];
   const inventory=[
-    ['coins','Đồng vàng','125.6K','item','Tiền vàng dùng tại cửa hàng, lò rèn và trên những chuyến hành trình.'],
+    ['coins','Đồng vàng','125,6 N','item','Tiền vàng dùng tại cửa hàng, lò rèn và trên những chuyến hành trình.'],
     ['mana','Lam ngọc','3.480','item','Tinh thể lưu giữ ánh sáng, dùng để kết nối những người bạn mới.'],
     ['exp-book','Sách EXP','248','book','Sách ghi chép kinh nghiệm giúp tướng trưởng thành.'],
     ['skill-book','Bí kíp kỹ năng','36','book','Những ghi chép cổ giúp mài giũa các kỹ năng.'],
@@ -78,17 +79,19 @@
   function bag(category='all',selected='fire-essence',page=0){
     begin('inventory');
     title('Túi Đồ',[564,302,346,114],true);
-    text('motto','Những điều nhỏ bé\nlàm nên hành trình vĩ đại.',[595,412,286,48],21,{className:'text-backing'});
     categories.forEach(([id,label,icon],i)=>button('category-'+id,id===category?'nameplate':'tab-wood',[16,484+i*87,205,85],label,'bag-category:'+id,{icon,iconRect:[17,19,45,46],labelRect:[63,14,128,56],size:25,tone:id===category?'ink':'gold',selected:id===category,fit:'fill'}));
     const list=inventory.filter(p=>category==='all'||p[3]===category);
     const pages=Math.max(1,Math.ceil(list.length/16));page=Math.min(page,pages-1);
+    // The pager takes the motto's place under the title when a category spans pages.
+    if(pages<2)text('motto','Những điều nhỏ bé\nlàm nên hành trình vĩ đại.',[586,414,304,70],26,{className:'text-backing'});
+    const compact=n=>/^\d{1,3}(\.\d{3})+$|^\d+$/.test(n)&&window.GemwovenProgression?window.GemwovenProgression.compact(Number(n.replace(/\./g,''))):n;
     list.slice(page*16,page*16+16).forEach(([asset,label,count],i)=>{
       const x=241+(i%4)*165,y=490+Math.floor(i/4)*159;
       button('item-'+asset,'inventory-slot',[x,y,151,149],label,'bag-item:'+asset,{icon:asset,iconRect:[26,12,103,94],labelRect:[8,112,135,30],labelAsset:'panel-parchment',size:20,tone:'ink',selected:asset===selected,fit:'fill'});
-      add('quantity-plate-'+asset,'surface',[x+79,y+87,65,28],{style:'quantity'});
-      text('count-'+asset,count,[x+77,y+86,67,30],21);
+      add('quantity-plate-'+asset,'surface',[x+60,y+100,86,40],{style:'quantity'});
+      text('count-'+asset,compact(count),[x+60,y+100,86,40],30);
     });
-    if(pages>1){button('previous','nav-tile',[726,463,30,27],'‹','bag-page:-1',{size:23});text('page',`${page+1} / ${pages}`,[762,463,73,27],19);button('next','nav-tile',[842,463,30,27],'›','bag-page:1',{size:23});}
+    if(pages>1){button('previous','nav-tile',[618,420,64,56],'‹','bag-page:-1',{size:40});text('page',`${page+1} / ${pages}`,[690,420,96,56],31,{className:'text-backing'});button('next','nav-tile',[794,420,64,56],'›','bag-page:1',{size:40});}
     const item=list.find(p=>p[0]===selected)||list[0];
     panel('detail-panel',[18,1130,906,351]);
     if(!item){text('empty','Chưa có vật phẩm trong mục này',[275,670,590,90],30);footer();return {page,pages,visible:[]};}
@@ -121,37 +124,39 @@
     image('path-title-board','nameplate',[535,147,359,113],{fit:'fill'});
     text('path-title','Con Đường Kỹ Năng',[560,177,309,51],32,{tone:'ink'});
     // Tab banners and all nodes own their independent raster art.
-    branches.forEach((label,i)=>button('branch-'+i,'skill-banner',[517+i*100,247,100,139],label,'skill:'+i,{icon:`skill-${hero}-${i}`,iconRect:[28,14,45,45],labelRect:[5,65,90,45],size:21,selected:selected===i,className:'skill-branch'}));
+    // Two-line banner labels stay readable on a phone (31 stage px ~ 13 CSS px).
+    branches.forEach((label,i)=>button('branch-'+i,'skill-banner',[517+i*100,247,100,139],label.replace(' ','\n'),'skill:'+i,{icon:`skill-${hero}-${i}`,iconRect:[32,6,36,36],labelRect:[0,42,100,70],size:29,selected:selected===i,className:'skill-branch'}));
     const equipment=[h.weapon,'helmet','stat-shield','crest','mana','boots'];
     equipment.forEach((asset,i)=>{
       const x=i<3?22:390,y=407+(i%3)*125;
-      button('equipment-'+i,'inventory-slot',[x,y,110,116],['Vũ khí','Mũ','Giáp','Ấn','Ngọc','Ủng'][i],'item:'+asset,{icon:asset,iconRect:[18,10,77,78],labelRect:[9,89,92,22],size:18,fit:'fill'});
+      button('equipment-'+i,'inventory-slot',[x,y,110,116],['Vũ khí','Mũ','Giáp','Ấn','Ngọc','Ủng'][i],'item:'+asset,{icon:asset,iconRect:[23,8,64,64],labelRect:[0,74,110,38],size:29,fit:'fill',className:'gear-slot-label'});
     });
     button('hero-model','hero-'+hero,[133,405,258,407],h.name,'hero:'+hero,{labelHidden:true,className:'hero-standing'});
-    image('hero-name-board','nameplate',[126,821,283,96],{fit:'fill'});
-    text('hero-name-'+hero,`Lv.32 · ${h.name}`,[147,834,241,35],29,{tone:'ink'});
-    text('hero-title-'+hero,h.title,[147,872,241,28],23,{tone:'ink'});
+    image('hero-name-board','nameplate',[108,800,319,108],{fit:'fill'});
+    text('hero-name-'+hero,`Lv.32 · ${h.name}`,[140,827,255,34],28,{tone:'ink'});
+    text('hero-title-'+hero,h.title,[140,861,255,30],25,{tone:'ink'});
     const positions=[[647,383],[529,510],[767,510],[647,641]];
-    [[708,488,588,570],[708,488,826,570],[588,580,708,702],[826,580,708,702],[708,720,590,802],[708,720,823,802],[590,807,708,885],[823,807,708,885]].forEach(([x1,y1,x2,y2],i)=>add('link-'+i,'connector',[x1,y1,Math.hypot(x2-x1,y2-y1),4],{angle:Math.atan2(y2-y1,x2-x1)*180/Math.PI,color:h.color}));
+    [[708,488,588,570],[708,488,826,570],[588,580,708,702],[826,580,708,702],[708,720,584,800],[708,720,832,800],[584,800,708,848],[832,800,708,848]].forEach(([x1,y1,x2,y2],i)=>add('link-'+i,'connector',[x1,y1,Math.hypot(x2-x1,y2-y1),4],{angle:Math.atan2(y2-y1,x2-x1)*180/Math.PI,color:h.color}));
     positions.forEach(([x,y],i)=>{
       button('node-'+i,`skill-${hero}-${i}`,[x,y,123,123],h.skills[i][0],'skill:'+i,{labelHidden:true,selected:selected===i,className:'skill-node'});
-      text('node-level-'+i,['3/5','2/5','1/5','1/5'][i],[x+27,y+103,70,28],22,{className:'text-backing'});
+      text('node-level-'+i,['3/5','2/5','1/5','1/5'][i],[x+19,y+100,86,34],29,{className:'text-backing'});
     });
-    [[540,755],[772,755],[656,838],[550,889],[773,889]].forEach(([x,y],i)=>button('locked-'+i,'skill-lock',[x,y,88,88],'Nhánh kỹ năng chưa mở','skill-locked:'+i,{labelHidden:true}));
-    panel('detail-panel',[15,973,911,503]);
-    image('selected-icon',`skill-${hero}-${selected}`,[52,1002,205,205]);
-    text('skill-name-'+hero+'-'+selected,skill[0],[281,1006,566,47],35,{tone:'ink',align:'left'});
-    text('skill-category',branches[selected],[284,1064,179,36],24,{tone:'ink',className:'skill-tag'});
-    text('skill-level',['Lv.3 / 5','Lv.2 / 5','Lv.1 / 5','Lv.1 / 5'][selected],[75,1168,156,35],26,{className:'text-backing'});
-    text('skill-description-'+hero+'-'+selected,skill[1],[281,1112,573,99],26,{tone:'ink',align:'left'});
-    text('materials-title','Nguyên liệu tăng cấp',[74,1232,353,35],26,{tone:'ink',align:'left'});
-    materials('skill-materials',[[hero==='fire'?'fire-essence':hero==='ice'?'ice-essence':hero==='earth'?'herbs':hero==='lightning'?'lightning-essence':'mana','12/8'],['skill-book','6/4'],['scroll','3/2'],['coins','125.6K / 20K']],[59,1277,409,110]);
-    text('next-title','Hiệu quả cấp kế tiếp',[509,1233,337,35],27,{tone:'ink',align:'left'});
-    text('next-effect-'+hero+'-'+selected,skill[2],[509,1283,337,71],26,{tone:'ink',align:'left'});
-    button('upgrade-skill','button-gold',[335,1382,304,81],'Tăng Cấp','skill-upgrade',{size:35,tone:'ink'});
+    // Future branches: a V under the last node plus one lock beside it on each side.
+    [[536,752],[784,752],[660,800],[536,650],[784,650]].forEach(([x,y],i)=>button('locked-'+i,'skill-lock',[x,y,97,97],'Nhánh kỹ năng mở rộng · Sắp ra mắt','skill-locked:'+i,{labelHidden:true}));
+    panel('detail-panel',[15,1004,911,484]);
+    image('selected-icon',`skill-${hero}-${selected}`,[56,1030,184,184]);
+    text('skill-name-'+hero+'-'+selected,skill[0],[268,1030,586,47],35,{tone:'ink',align:'left'});
+    text('skill-category',branches[selected],[270,1082,190,38],28,{tone:'ink',className:'skill-tag'});
+    text('skill-level',['Lv.3 / 5','Lv.2 / 5','Lv.1 / 5','Lv.1 / 5'][selected],[64,1180,168,38],29,{className:'text-backing'});
+    text('skill-description-'+hero+'-'+selected,skill[1],[268,1126,590,96],29,{tone:'ink',align:'left'});
+    text('materials-title','Nguyên liệu tăng cấp',[62,1234,400,38],29,{tone:'ink',align:'left'});
+    materials('skill-materials',[[hero==='fire'?'fire-essence':hero==='ice'?'ice-essence':hero==='earth'?'herbs':hero==='lightning'?'lightning-essence':'mana','12/8'],['skill-book','6/4'],['scroll','3/2'],['coins','125,6 N / 20 N']],[59,1277,409,110]);
+    text('next-title','Hiệu quả cấp kế tiếp',[500,1234,370,38],29,{tone:'ink',align:'left'});
+    text('next-effect-'+hero+'-'+selected,skill[2],[500,1278,370,100],29,{tone:'ink',align:'left'});
+    button('upgrade-skill','button-gold',[318,1386,304,90],'Tăng Cấp','skill-upgrade',{size:35,tone:'ink'});
     footer();
     // The roster sits below the hero name; all five heroes stay available.
-    Object.entries(heroes).forEach(([key,data],i)=>button('roster-'+key,'avatar-ring',[135+i*70,914,63,60],data.name,'select-hero:'+key,{icon:'portrait-'+key,iconRect:[11,8,42,43],labelHidden:true,selected:hero===key}));
+    Object.entries(heroes).forEach(([key,data],i)=>button('roster-'+key,'avatar-ring',[14+i*106,903,100,100],data.name,'select-hero:'+key,{icon:'portrait-'+key,iconRect:[17,13,66,68],labelHidden:true,selected:hero===key}));
   }
 
   home();bag();skills();

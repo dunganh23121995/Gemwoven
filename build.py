@@ -144,6 +144,29 @@ def register_feet(sheet):
     bounds=frame.getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
     sheet['footY']=round(bounds[3]/frame.height,5) if bounds else .94
     sheet['bodyHeight']=round((bounds[3]-bounds[1])/frame.height,5) if bounds else .75
+    if bounds:
+        # Crown: the highest opaque pixel of the resting pose, raised weapons and
+        # horns included, so the head HUD never sits on top of the painted body.
+        # x is the centre of the top fifth of the body (used when heads are guessed).
+        band=frame.crop((0,bounds[1],frame.width,bounds[1]+max(4,(bounds[3]-bounds[1])//5))).getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
+        cx=(band[0]+band[2])/2 if band else frame.width/2
+        sheet['crown']=[round(cx*256/frame.width),round(bounds[1]*256/frame.height)]
+        sheet['bodyX']=round((bounds[0]+bounds[2])/2*256/frame.width)
+
+# Horizontal reach of every frame of a sheet (fractions of the frame), so combat
+# can keep wind-ups, recoils and wide weapons inside the arena edges.
+_span_cache={}
+def register_span(sheet):
+    key=sheet['src'][-64:]+str(len(sheet['src']))+str(sheet['cols'])+str(sheet['rows'])
+    if key not in _span_cache:
+        im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA')
+        fw,fh=im.width//sheet['cols'],im.height//sheet['rows'];lo,hi=1.0,0.0
+        alpha=im.getchannel('A').point(lambda a:255 if a>=128 else 0)
+        for i in range(min(sheet.get('count',1),sheet['cols']*sheet['rows'])):
+            c,r=i%sheet['cols'],i//sheet['cols'];b=alpha.crop((c*fw,r*fh,(c+1)*fw,(r+1)*fh)).getbbox()
+            if b:lo=min(lo,b[0]/fw);hi=max(hi,b[2]/fw)
+        _span_cache[key]=[round(lo,4),round(hi,4)] if hi>lo else [0.0,1.0]
+    sheet['span']=_span_cache[key]
 art['heroForms']={}
 art['formAuras']={}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
@@ -159,6 +182,13 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
 for sheet in art['campaignCreatures'].values():register_feet(sheet)
+for family in ['heroes','enemies','bosses','worldBosses']:
+    for character in art[family].values():
+        for sheet in character.values():register_span(sheet)
+for forms in art['heroForms'].values():
+    for actions in forms.values():
+        for sheet in actions.values():register_span(sheet)
+for sheet in art['campaignCreatures'].values():register_span(sheet)
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')

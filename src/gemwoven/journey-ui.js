@@ -18,7 +18,7 @@
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1040,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Trò Chuyện','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
-    [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,asset,[844,172+i*116,85,92],'route:'+route,{}, {labelHidden:true,fit:'contain',className:'home-right-icon'})));
+    [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,asset,[841,160+i*112,98,104],'route:'+route,{}, {labelHidden:true,fit:'contain',className:'home-right-icon'})));
     nodes.push(button('home','explore','Khám Phá',A['journey-button']?'journey-button':'title-parchment',[215,1338,525,140],'route:campaign',{}, {labelRect:[130,44,265,56],size:43,tone:'ink',className:'explore-entry'}));
     return nodes;
   }
@@ -32,7 +32,8 @@
     cards.forEach((n,i)=>{
       n.asset='hud-side-card';n.rect=[center-width/2,166+i*162,width,height];n.fit='fill';
       n.iconRect=scaleRect(card.safeRects.icon);n.labelRect=scaleRect(card.safeRects.label);
-      n.size=18;n.labelHidden=false;n.className='home-feature-card hud-hanging-card';
+      // Label spans the plate's full painted width so it can be read on a phone.
+      n.labelRect=scaleRect([18,213,220,64]);n.size=23;n.labelHidden=false;n.className='home-feature-card hud-hanging-card';
       if(n.id.endsWith('.side-book'))n.action='journey:monthly';
     });
   }
@@ -144,53 +145,57 @@
     state.chapter=chapter;nodes=nodes.filter(n=>n.rect[1]<125&&!n.id.endsWith('.settings'));
     L.screens.campaign.backgroundKey=mapProfile(def).assetKey;L.screens.campaign.background=mapProfile(def).background;
     nodes.unshift({id:'campaign.map',kind:'content',rect:[0,mapTop,941,mapViewport],className:'exploration-map',backgroundAsset:'panel-parchment',build:el=>mapContent(el,p,state,def)});
-    nodes.push(image(key,'title-board',A['chapter-banner']?'chapter-banner':'title-wood',[220,111,500,128]),text(key,'title',`Chương ${chapter} · ${def.name}`,[265,135,410,43],30));
-    nodes.push(button(key,'rewards',`${progress.total}/150 ★`,'button-gold',[340,183,260,51],'journey:rewards',{}, {size:23,icon:'chest',iconRect:[12,4,38,40],labelRect:[56,8,190,32],tone:'ink'}));
-    nodes.push(button(key,'previous','‹','nav-tile',[12,765,95,120],'journey:chapter',{delta:-1},{size:65,disabled:chapter===1}),button(key,'next','›','nav-tile',[834,765,95,120],'journey:chapter',{delta:1},{size:65,disabled:chapter===M.WORLD.CHAPTERS.length||p.campaign.cleared<chapter*50}));
+    // Title stays on one line inside the banner's painted label area (safeContentRects.label); long names shrink.
+    nodes.push(image(key,'title-board',A['chapter-banner']?'chapter-banner':'title-wood',[170,100,600,150]),{...text(key,'title',`Chương ${chapter} · ${def.name}`,[262,141,417,69],32),className:'single-line'});
+    nodes.push(button(key,'rewards',`${progress.total}/150 ★`,'button-gold',[318,250,305,100],'journey:rewards',{}, {size:34,icon:'chest',iconRect:[40,18,64,64],labelRect:[104,24,170,52],tone:'ink'}));
+    nodes.push(button(key,'previous','‹','nav-tile',[8,720,100,106],'journey:chapter',{delta:-1},{size:66,disabled:chapter===1}),button(key,'next','›','nav-tile',[833,720,100,106],'journey:chapter',{delta:1},{size:66,disabled:chapter===M.WORLD.CHAPTERS.length||p.campaign.cleared<chapter*50}));
     nodes.push(button(key,'back','Về Thị Trấn',A['map-back']?'map-back':'journey-button',[759,1485,164,161],'route:home',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
     if(state.mapRewards){
-      nodes.push(image(key,'rewards-board','panel-parchment',[70,1100,800,325]),text(key,'rewards-title',`Rương sao · ${progress.total}/150 ★`,[130,1140,680,45],34,'ink'));
-      M.STAR_MILESTONES.forEach((milestone,i)=>nodes.push(button(key,'reward-'+milestone,progress.claimed.includes(milestone)?'Đã nhận':milestone+' ★','button-gold',[130+i*230,1212,218,102],'journey:claim-stars',{chapter,milestone},{icon:'chest',iconRect:[20,9,65,62],labelRect:[83,22,124,48],size:26,tone:'ink',disabled:progress.total<milestone||progress.claimed.includes(milestone)})));
-      nodes.push(text(key,'reward-note',state.mapMessage||'Tích lũy sao qua 50 ải để mở rương',[120,1334,700,42],23,'ink'));
+      nodes.push(image(key,'rewards-board','panel-parchment',[46,1078,849,370]),text(key,'rewards-title',`Rương sao · ${progress.total}/150 ★`,[110,1112,721,50],36,'ink'));
+      M.STAR_MILESTONES.forEach((milestone,i)=>nodes.push(button(key,'reward-'+milestone,progress.claimed.includes(milestone)?'Đã nhận':milestone+' ★','button-gold',[96+i*254,1180,240,112],'journey:claim-stars',{chapter,milestone},{icon:'chest',iconRect:[26,18,70,66],labelRect:[94,26,128,58],size:33,tone:'ink',disabled:progress.total<milestone||progress.claimed.includes(milestone)})));
+      nodes.push(text(key,'reward-note',state.mapMessage||'Tích lũy sao qua 50 ải để mở rương',[96,1318,749,92],31,'ink'));
     }
     if(state.mapStage&&M.WORLD.chapterForStage(state.mapStage).index===chapter){
       nodes=nodes.filter(n=>!['campaign.previous','campaign.next','campaign.rewards'].includes(n.id));
-      nodes.push({id:'campaign.encounter-sheet',kind:'content',rect:[28,280,885,1270],backgroundAsset:'panel-parchment',className:'encounter-sheet',build:el=>stagePreview(el,p,state.mapStage,state)});
+      nodes.push({id:'campaign.encounter-sheet',kind:'content',rect:[28,178,885,1302],backgroundAsset:'panel-parchment',className:'encounter-sheet',build:el=>stagePreview(el,p,state.mapStage,state)});
     }
     return nodes;
   }
-  function makeDialog(id,title){
-    document.getElementById(id)?.remove();const modal=document.createElement('dialog');modal.id=id;modal.className='journey-dialog';modal.setAttribute('aria-label',title);
-    const heading=document.createElement('h2');heading.textContent=title;modal.append(heading);const close=document.createElement('button');close.className='close';close.textContent='×';close.setAttribute('aria-label','Đóng');close.onclick=()=>modal.close();modal.append(close);modal.addEventListener('close',()=>modal.remove());document.body.append(modal);return modal;
-  }
-  function modalButton(modal,label,callback,disabled=false){const b=document.createElement('button');b.type='button';b.className='game-btn';b.textContent=label;b.disabled=disabled;b.onclick=callback;modal.append(b);return b;}
-  function paragraph(modal,value){const p=document.createElement('p');p.textContent=value;modal.append(p);return p;}
+  const makeDialog=(id,title)=>window.GemwovenUI.makeDialog(id,title,'journey-dialog');
+  function modalButton(modal,label,callback,disabled=false,secondary=false){const b=document.createElement('button');b.type='button';b.className='gw-btn'+(secondary?' secondary':'');b.textContent=label;b.disabled=disabled;b.onclick=callback;modal.actions.append(b);return b;}
+  function paragraph(modal,value,cls=''){const p=document.createElement('p');p.textContent=value;if(cls)p.className=cls;modal.body.append(p);return p;}
   const delegate=G.handle;
   function confirmSummon(count,ctx,state){
     const quote=G.engine.summonQuote(count),modal=makeDialog('summon-confirm',`Triệu Hồi ×${count}`),currency=quote.payment==='tickets'?'Vé Triệu Hồi':'Đá Ngọc';
-    const art=document.createElement('div');art.className='confirm-cost';art.innerHTML=img(quote.payment==='tickets'?'ticket':'mana')+`<strong>${fmt(quote.cost)} ${currency}</strong>`;modal.append(art);
-    paragraph(modal,quote.payment==='tickets'?'Vé trong túi đủ cho lượt này. Xác nhận sử dụng vé để triệu hồi.':`Bạn có ${fmt(quote.tickets)} vé, chưa đủ cho lượt ×${count}. Lượt này sẽ dùng ${fmt(quote.cost)} Đá Ngọc.`);
-    if(!quote.enough)paragraph(modal,`Chưa đủ tài nguyên. Cần ${count} vé hoặc ${fmt(count*120)} Đá Ngọc. Bạn chưa bị trừ vật phẩm.`);
+    const gems=G.engine.read().wallet.gems,gemCost=count*120,art=document.createElement('div');art.className='confirm-cost';
+    // Each case states one fact: what will be spent, or exactly what is missing.
+    if(quote.enough){
+      art.innerHTML=`<span class="cost-chip">${img(quote.payment==='tickets'?'ticket':'mana')}<strong>${fmt(quote.cost)} ${currency}</strong></span>`;modal.body.append(art);
+      paragraph(modal,quote.payment==='tickets'?`Dùng ${fmt(quote.cost)} trong ${fmt(quote.tickets)} vé đang có.`:`Bạn có ${fmt(quote.tickets)} vé, chưa đủ cho lượt ×${count}. Lượt này dùng ${fmt(quote.cost)} trong ${fmt(gems)} Đá Ngọc đang có.`);
+    }else{
+      art.classList.add('short');art.innerHTML=`<span class="cost-chip">${img('ticket')}<span class="cost-text"><strong>${fmt(count)} vé</strong><small>Đang có ${fmt(quote.tickets)}</small></span></span><b>hoặc</b><span class="cost-chip">${img('mana')}<span class="cost-text"><strong>${fmt(gemCost)} Đá Ngọc</strong><small>Đang có ${fmt(gems)}</small></span></span>`;modal.body.append(art);
+      paragraph(modal,'Chưa đủ vé hoặc Đá Ngọc cho lượt này. Bạn chưa bị trừ vật phẩm. Vé nhận thêm từ nhiệm vụ ngày và mốc cấp tướng.');
+    }
     const confirm=modalButton(modal,quote.enough?'Xác Nhận Dùng '+currency:'Chưa Đủ Tài Nguyên',()=>{
       const fresh=G.engine.summonQuote(count);
       if(fresh.payment!==quote.payment||fresh.enough!==quote.enough){modal.close();confirmSummon(count,ctx,state);return;}
       confirm.disabled=true;modal.close();delegate('do:summon',{dataset:{count:String(count),payment:quote.payment}},ctx,state);
-    },!quote.enough);confirm.id='confirm-summon';modalButton(modal,'Để Sau',()=>modal.close());modal.showModal();
+    },!quote.enough);confirm.id='confirm-summon';if(quote.enough)confirm.setAttribute('autofocus','');modalButton(modal,'Để Sau',()=>modal.close(),false,true);modal.present();
   }
   function stagePreview(el,p,index,state){
     const e=M.encounter('campaign',index),open=index<=p.campaign.cleared+1,quote=M.campaignRewardPreview(p,index,1),best=p.campaign.stars[index]||0;
     const roster=rankedHeroes(p),hero=p.heroes[state.mapHero]?state.mapHero:roster[0].key,heroStats=M.stats(p,hero);state.mapHero=hero;
     const asset=e.boss?'boss-'+e.bossId:A['creature-'+e.creature]?'creature-'+e.creature:'monster-'+e.creature;
     const loot=(id,n)=>`<span class="encounter-loot" title="${esc(M.RESOURCES[id][0])}">${img(M.RESOURCES[id][1])}<b>${fmt(n)}</b></span>`;
-    el.innerHTML=`<header class="encounter-heading"><div><small>${esc(e.name)}</small><h2>${esc(e.enemyName)}</h2></div><button class="encounter-close" data-action="journey:close-stage" aria-label="Đóng thông tin quái">×</button></header>
+    el.innerHTML=`<header class="encounter-heading"><small>${esc(e.name)}</small><h2>${esc(e.enemyName)}</h2><button type="button" class="encounter-close gw-close" data-action="journey:close-stage" aria-label="Đóng thông tin quái">×</button></header>
       <div class="encounter-body"><section class="encounter-identity">${img(asset,'encounter-monster')}<div><span class="encounter-tier">${e.boss?'Boss cuối chương':e.tier==='elite'?'Tinh anh':'Quái thường'}</span><p>Cấp gợi ý <strong>${e.recommended}</strong></p><p>Sinh lực <strong>${fmt(e.enemyHp)}</strong></p><p class="encounter-record">${'★'.repeat(best)+'☆'.repeat(3-best)} <small>Kỷ lục</small></p></div></section>
       <div class="encounter-skills"><b>Kỹ năng</b><p>${e.skills.map(esc).join(' · ')}</p></div>
       <div class="encounter-rewards-heading"><h3>Thưởng dự kiến</h3><span>${quote.first?'Lần thắng đầu':'Đánh lại'}</span></div>
-      <p class="encounter-common">Mỗi lần thắng ${Object.entries(quote.reward).filter(([id,n])=>!['gold','exp'].includes(id)&&n>0).map(([id,n])=>loot(id,n)).join('')}${quote.heroFragments?`<span class="encounter-loot" title="Mảnh ${M.HEROES[quote.heroFragments.hero].name}">${img('portrait-'+quote.heroFragments.hero)}<b>+3 mảnh</b></span>`:''}</p>
-      <div class="encounter-star-rewards">${[1,2,3].map(stars=>{const q=M.campaignRewardPreview(p,index,stars);return `<article data-stars="${stars}"><div class="encounter-condition"><b>${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</b><span>${stars===1?'Chiến thắng':stars===2?'Thắng, còn ≥50% HP':`Thắng, còn ≥50% HP · ≤${e.turnLimit} lượt`}</span></div><div class="encounter-row-loot">${loot('gold',q.reward.gold)}${loot('exp',q.reward.exp)}<small>${q.addedStars?`+${q.addedStars} sao chương`:'Đã đạt mốc sao này'}</small></div>${q.counterReward?`<div class="encounter-counter">${img(q.counterReward.key)}<span>+3 mảnh ${esc(q.counterReward.name)}<small>Chỉ nhận một lần tại mốc này</small></span></div>`:''}</article>`;}).join('')}</div>
-      <p class="encounter-reward-note">Nhận thưởng theo kết quả đạt được, không cộng dồn ba dòng. Sao mới tích vào rương chương 50 / 100 / 150 sao.</p>${quote.reward.seals===0?'<p class="encounter-reward-note">Ấn tu luyện đã đạt giới hạn ngày.</p>':''}
+      <p class="encounter-common">Mỗi lần thắng ${Object.entries(quote.reward).filter(([,n])=>n>0).map(([id,n])=>loot(id,n)).join('')}${quote.heroFragments?`<span class="encounter-loot" title="Mảnh ${M.HEROES[quote.heroFragments.hero].name}">${img('portrait-'+quote.heroFragments.hero)}<b>+3 mảnh</b></span>`:''}</p>
+      <div class="encounter-star-rewards">${[1,2,3].map(stars=>{const q=M.campaignRewardPreview(p,index,stars);return `<article data-stars="${stars}"><div class="encounter-condition"><b>${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</b><span>${stars===1?'Chiến thắng':stars===2?'Thắng, còn ≥50% HP':`Thắng, còn ≥50% HP · ≤${e.turnLimit} lượt`}</span></div><small class="encounter-star-gain">${q.addedStars?`+${q.addedStars} sao chương`:'Đã đạt'}</small>${q.counterReward?`<div class="encounter-counter">${img(q.counterReward.key)}<span>+3 mảnh ${esc(q.counterReward.name)}<small>Chỉ nhận một lần tại mốc này</small></span></div>`:''}</article>`;}).join('')}</div>
+      <p class="encounter-reward-note">Số sao chỉ quyết định sao chương (rương 50 / 100 / 150 sao) và mảnh khắc chế; vàng, EXP và vật phẩm giống nhau mỗi lần thắng.</p>${quote.reward.seals===0?'<p class="encounter-reward-note">Ấn tu luyện đã đạt giới hạn ngày.</p>':''}
       ${e.tactical&&e.boss?'<button class="encounter-guide-link" data-action="guide:open">Xem nội tại và cách khắc chế boss ›</button>':''}</div>
-      <footer><div class="encounter-roster-heading"><b>Chọn tướng</b><span>${esc(M.HEROES[hero].name)} · LC ${fmt(heroStats.power)}</span></div><div class="encounter-roster" aria-label="Tướng xuất chiến">${roster.map(({key},i)=>`<button data-action="journey:choose-hero" data-hero="${key}" class="${key===hero?'chosen':''}" aria-pressed="${key===hero}" aria-label="Chọn ${M.HEROES[key].name}">${img('portrait-'+key)}<span>${esc(M.HEROES[key].name)}</span>${i===0?'<i title="Lực chiến cao nhất">★</i>':''}</button>`).join('')}</div><button class="encounter-deploy" data-action="journey:challenge" data-index="${index}" ${open?'':'disabled'}>${open?'Xuất Chiến':'Vượt ải trước để mở'}</button><small>${open?`Cấp ${p.heroes[hero].level} · ${fmt(heroStats.hp)} HP`:`Cần vượt ải ${index-1}`}</small></footer>`;
+      <footer><div class="encounter-roster-heading"><b>Chọn tướng</b><span>${esc(M.HEROES[hero].name)} · LC ${fmt(heroStats.power)}</span></div><div class="encounter-roster" aria-label="Tướng xuất chiến">${roster.map(({key},i)=>`<button data-action="journey:choose-hero" data-hero="${key}" class="${key===hero?'chosen':''}" aria-pressed="${key===hero}" aria-label="Chọn ${M.HEROES[key].name}">${img('portrait-'+key)}<span>${esc(M.HEROES[key].name)}</span>${i===0?'<i title="Lực chiến cao nhất">★</i>':''}</button>`).join('')}</div><button type="button" class="encounter-deploy gw-btn" data-action="journey:challenge" data-index="${index}" ${open?'':'disabled'}>${open?'Xuất Chiến':'Vượt ải trước để mở'}</button><small>${open?`Cấp ${p.heroes[hero].level} · ${fmt(heroStats.hp)} HP`:`Cần vượt ải ${index-1}`}</small></footer>`;
   }
   const AUDIO_KEY='mam-phep-audio-v1',MUTE_KEY='gemwoven.audio-muted.v1',CHAT_KEY='gemwoven.chat.v1',audioDefaults={music:10,effects:100,voices:29};
   function readStorage(key,fallback){try{return JSON.parse(localStorage.getItem(key)||'null')??fallback;}catch{return fallback;}}
@@ -204,7 +209,7 @@
   }
   function settings(el){
     const levels=audioLevels(),muted=readStorage(MUTE_KEY,false);
-    el.innerHTML=`<header class="crafted-heading"><h2>Âm Thanh</h2><p>Điều chỉnh âm lượng cho cả thị trấn và chiến đấu</p></header><div class="sound-emblem">${img('icon-settings')}</div><form id="home-audio-form"><label class="mute-control"><input type="checkbox" name="muted" ${muted?'checked':''}> Tắt toàn bộ âm thanh</label>${[['music','Nhạc nền','Giai điệu của thị trấn và các vùng đất'],['effects','Hiệu ứng','Ghép ngọc, vũ khí và kỹ năng'],['voices','Lời thoại','Giọng nói của nhân vật trong trận']].map(([key,label,hint])=>`<label class="audio-slider"><span>${label}<output for="home-volume-${key}" id="home-output-${key}">${levels[key]}%</output></span><small>${hint}</small><input id="home-volume-${key}" name="${key}" type="range" min="0" max="100" value="${levels[key]}" aria-label="${label}"></label>`).join('')}<button type="button" class="game-btn" id="home-audio-reset">Mặc Định</button><p class="audio-save-note" role="status">Tự lưu khi điều chỉnh</p></form><button type="button" class="game-btn crafted-return" data-action="route:home">Về Thị Trấn</button>`;
+    el.innerHTML=`<header class="crafted-heading"><h2>Âm Thanh</h2><p>Điều chỉnh âm lượng cho cả thị trấn và chiến đấu</p></header><div class="sound-emblem">${img('icon-settings')}</div><form id="home-audio-form"><label class="mute-control"><input type="checkbox" name="muted" ${muted?'checked':''}> Tắt toàn bộ âm thanh</label>${[['music','Nhạc nền','Giai điệu của thị trấn và các vùng đất'],['effects','Hiệu ứng','Ghép ngọc, vũ khí và kỹ năng'],['voices','Lời thoại','Giọng nói của nhân vật trong trận']].map(([key,label,hint])=>`<label class="audio-slider"><span>${label}<output for="home-volume-${key}" id="home-output-${key}">${levels[key]}%</output></span><small>${hint}</small><input id="home-volume-${key}" name="${key}" type="range" min="0" max="100" value="${levels[key]}" aria-label="${label}"></label>`).join('')}<button type="button" class="game-btn secondary" id="home-audio-reset">Mặc Định</button><p class="audio-save-note" role="status">Tự lưu khi điều chỉnh</p></form><button type="button" class="game-btn crafted-return" data-action="route:home">Về Thị Trấn</button>`;
   }
   function chatRows(){const rows=readStorage(CHAT_KEY,[]);return Array.isArray(rows)?rows.filter(r=>typeof r.text==='string'&&r.text.trim()&&r.text.length<=240&&Number.isFinite(r.at)&&Math.abs(r.at)<=8.64e15&&M.HEROES[r.hero]).slice(-80):[];}
   function chat(el,p,state){

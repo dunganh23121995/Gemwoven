@@ -49,7 +49,7 @@
       const key=state.hero,form=M.heroForm(key,p.heroes[key]),caption=L.screens.upgrade.nodes.find(n=>n.id==='upgrade.hero-caption');
       if(caption){
         C[caption.text]=`${M.HEROES[key].name} · Hình thái ${form}/3 ›`;
-        Object.assign(caption,{kind:'button',asset:'nameplate',fit:'fill',action:'forms:gallery',data:{hero:key},size:20,tone:'ink',labelRect:[4,5,282,27],className:'hero-form-link'});
+        Object.assign(caption,{kind:'button',asset:'nameplate',fit:'fill',action:'forms:gallery',data:{hero:key},rect:[300,334,342,60],size:27,tone:'ink',labelRect:[22,10,298,40],className:'hero-form-link'});
       }
     }
     return p;
@@ -59,20 +59,29 @@
     if(action!=='forms:gallery')return handle(action,el,ctx,state);
     const key=el.dataset.hero||state.hero,p=G.engine.read(),current=M.heroForm(key,p.heroes[key]);
     if(!M.HERO_FORMS[key])return true;
-    const modal=document.createElement('dialog');modal.className='hero-form-gallery';modal.setAttribute('aria-label','Ba hình thái của '+M.HEROES[key].name);
-    const header=document.createElement('header');header.innerHTML=`<h2>${M.HEROES[key].name} · Ba hình thái</h2><p>4 sao · Thay đổi diện mạo — 6 sao · Thức tỉnh hào quang</p>`;
-    const close=document.createElement('button');close.textContent='×';close.setAttribute('aria-label','Đóng');close.onclick=()=>modal.close();header.append(close);modal.append(header);
-    const list=document.createElement('div');list.className='hero-form-gallery-list';modal.append(list);
-    M.HERO_FORMS[key].forEach((info,i)=>{
+    // Same painted dialog as every other popup; on a phone the three forms are a swipe carousel.
+    const modal=window.GemwovenUI.makeDialog('hero-form-gallery',M.HEROES[key].name+' · Ba hình thái','hero-form-gallery');modal.setAttribute('aria-label','Ba hình thái của '+M.HEROES[key].name);
+    const intro=document.createElement('p');intro.className='form-gallery-intro';intro.textContent='4 sao: đổi diện mạo · 6 sao: thức tỉnh hào quang';
+    const tabs=document.createElement('div');tabs.className='form-tabs';tabs.setAttribute('role','tablist');
+    const list=document.createElement('div');list.className='hero-form-gallery-list';modal.body.append(intro,tabs,list);
+    const cards=M.HERO_FORMS[key].map((info,i)=>{
       const form=i+1,card=document.createElement('article'),body=document.createElement('div');body.className='form-preview-body';
-      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?205:195);decorateBody(body,key,form);
-      card.dataset.current=String(form===current&&!!p.heroes[key]);
+      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?128:122);decorateBody(body,key,form);
+      card.dataset.current=String(form===current&&!!p.heroes[key]);card.dataset.form=form;
       const title=document.createElement('h3');title.textContent=info.name;
-      const note=document.createElement('p');note.textContent=`${[1,4,6][i]} sao · ${form===current&&p.heroes[key]?'Đang sử dụng':form<=current&&p.heroes[key]?'Đã mở':'Chưa mở'}`;
+      const note=document.createElement('p');note.className='form-state';note.textContent=`${[1,4,6][i]} sao · ${form===current&&p.heroes[key]?'Đang sử dụng':form<=current&&p.heroes[key]?'Đã mở':'Chưa mở'}`;
       const weapon=document.createElement('p');weapon.textContent=info.weapon;
-      const skill=document.createElement('strong');skill.textContent=info.skill;
-      card.append(body,title,note,weapon,skill);list.append(card);
+      const skill=document.createElement('strong');skill.textContent=info.skill+(info.power?` · Tuyệt kỹ ×${String(info.power).replace('.',',')}`:'');
+      card.append(body,title,note,weapon,skill);
+      if(info.signature){const sig=document.createElement('p');sig.className='form-signature';sig.textContent=info.signature;card.append(sig);}
+      list.append(card);
+      const tab=document.createElement('button');tab.type='button';tab.className='gw-btn secondary';tab.setAttribute('role','tab');tab.textContent=`${[1,4,6][i]} ★`;tab.setAttribute('aria-label',`Hình thái ${form}`);
+      tab.onclick=()=>list.scrollTo({left:card.offsetLeft-(list.clientWidth-card.clientWidth)/2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});tabs.append(tab);
+      return card;
     });
-    modal.addEventListener('close',()=>modal.remove(),{once:true});document.body.append(modal);modal.showModal();return true;
+    const mark=()=>{const center=list.scrollLeft+list.clientWidth/2;let best=0;cards.forEach((c,i)=>{if(Math.abs(c.offsetLeft+c.clientWidth/2-center)<Math.abs(cards[best].offsetLeft+cards[best].clientWidth/2-center))best=i;});[...tabs.children].forEach((t,i)=>{t.classList.toggle('secondary',i!==best);t.setAttribute('aria-selected',String(i===best));});};
+    list.addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});
+    modal.present();
+    const start=cards[Math.max(0,Math.min(2,current-1))];list.scrollLeft=start.offsetLeft-(list.clientWidth-start.clientWidth)/2;mark();return true;
   };
 })();

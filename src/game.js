@@ -14,7 +14,7 @@ const ELEMENTS = {
 const HEROES = {
   novice:{name:'Tân',title:'Lữ Khách Tập Sự',hp:145,skill:'Nhát Kiếm Cơ Bản',desc:'Một nhát kiếm gỗ · 45 sát thương cơ bản',trait:'Tướng khởi đầu; kỹ năng và chỉ số ở mức cơ bản',color:'#b59b78',dark:'#735b43',hair:'#6e4935'},
   fire:{name:'Mika',title:'Viêm Kiếm Sĩ',hp:170,skill:'Viêm Long Trảm',desc:'Tụ lửa kéo dài kiếm · phóng kiếm khí phát nổ · 135 sát thương cơ bản',trait:'Kiếm gây thêm 60% sát thương',color:'#df9d82',dark:'#a66b64',hair:'#8f5c55'},
-  earth:{name:'Nori',title:'Thiết Giáp Vệ',hp:320,skill:'Mộc Linh Hộ Thể',desc:'Choáng 2 lượt · tích sát thương rồi nổ ×3 · hồi 40 HP/lượt ×3',trait:'Sát thương đánh thường giảm 40% (chỉ còn 60% sát thương gốc) · Đại khiên tích lực',color:'#a1b28b',dark:'#708567',hair:'#777363'},
+  earth:{name:'Nori',title:'Thiết Giáp Vệ',hp:320,skill:'Mộc Linh Hộ Thể',desc:'Choáng 2 lượt · tích sát thương rồi nổ ×3 · hồi 40 HP/lượt ×3',trait:'Sát thương đánh thường giảm 25% (chỉ còn 75% sát thương gốc) · Đại khiên tích lực',color:'#a1b28b',dark:'#708567',hair:'#777363'},
   ice:{name:'Yuki',title:'Băng Tâm Vệ',hp:200,skill:'Thiên Băng Giáng',desc:'+25 giáp · triệu hồi băng gây 60 sát thương · choáng 1 lượt',trait:'Khiên +8 giáp · giảm 20% sát thương',color:'#9cc6d0',dark:'#7399b2',hair:'#adbbd9'},
   lightning:{name:'Lumi',title:'Lôi Cuồng Sư',hp:200,skill:'Ngũ Tinh Lôi',desc:'5 tia sét · tổng 140 sát thương',trait:'Tích năng lượng nhanh gấp đôi',color:'#b8a0d5',dark:'#8973ae',hair:'#d9bb8d'},
   shadow:{name:'Noct',title:'Ảnh Kiếm Sĩ',hp:190,skill:'Ngũ Ảnh Trảm',desc:'5 lượt lướt chém · tổng 150 sát thương',trait:'Lướt chém tốc độ · không chịu khắc hệ',color:'#7d9da9',dark:'#131722',hair:'#141820'}
@@ -267,13 +267,13 @@ async function ensurePlayable(){
   await Promise.all(tiles.map(t=>moveTile(t,origins.get(t).r,origins.get(t).c)));
 }
 function actor(side){return $(side==='hero'?'heroActor':'enemyActor');}
-async function floating(side,text,kind=''){const e=document.createElement('span');e.className='combat-number '+kind;e.textContent=text;e.style.left=side==='hero'?'20%':'69%';e.style.top='31%';$('combatEffects').append(e);await animate(e,[{opacity:0,transform:'translateY(8px) scale(.75)'},{opacity:1,transform:'translateY(-5px) scale(1.05)',offset:.2},{opacity:1,offset:.65},{opacity:0,transform:'translateY(-40px) scale(.95)'}],{duration:690});e.remove();}
+async function floating(side,text,kind=''){const e=document.createElement('span');e.className='combat-number '+kind;e.textContent=text;const at=combatNumberPoint(side,0,-8);e.style.left=at.x+'px';e.style.top=at.y+'px';e.style.transformOrigin='0 0';e.style.translate='-50% 0';$('combatEffects').append(e);await animate(e,[{opacity:0,transform:'translateY(8px) scale(.75)'},{opacity:1,transform:'translateY(-5px) scale(1.05)',offset:.2},{opacity:1,offset:.65},{opacity:0,transform:'translateY(-40px) scale(.95)'}],{duration:690});e.remove();}
 async function combatParticles(side,key,count=8){if(reduced)return;const rect=$('scene').getBoundingClientRect(),x=rect.width*(side==='hero'?.24:.76),y=rect.height*.48;await Promise.all(Array.from({length:count},(_,i)=>{const e=document.createElement('i');e.className='combat-particle';e.style.left=x+'px';e.style.top=y+'px';e.style.setProperty('--element',ELEMENTS[key].color);e.innerHTML=icon(i%3?'spark':ELEMENTS[key].icon);$('combatEffects').append(e);const angle=i*Math.PI*2/count;return animate(e,[{opacity:1,transform:'translate(0,0) scale(.6)'},{opacity:0,transform:`translate(${Math.cos(angle)*65}px,${Math.sin(angle)*50}px) scale(1)`}],{duration:520}).finally(()=>e.remove());}));}
 function damage(side,raw,ledger=null){
   const target=side==='hero'?'enemy':'hero',attackerKey=side==='hero'?state.key:state.enemyKey,defenderKey=side==='hero'?state.enemyKey:state.key;
-  if(side==='hero'&&state.key==='earth')raw*=.6;
+  if(side==='hero')raw*=progressionKit(state.key).attackScale;
   if(ledger)ledger.raw+=raw;
-  let n=Math.round((ledger?ledger.raw:raw)*mult(attackerKey,defenderKey)*(side==='enemy'&&state.enraged?1.25:1));if(target==='hero'&&state.key==='ice'&&progressionPassiveEnabled('ice'))n=Math.round(n*.8);
+  let n=Math.round((ledger?ledger.raw:raw)*mult(attackerKey,defenderKey)*(side==='enemy'&&state.enraged?1.25:1));if(target==='hero'&&progressionKit(state.key).damageReduction)n=Math.round(n*(1-progressionKit(state.key).damageReduction));
   if(ledger){const total=n;n-=ledger.applied;ledger.applied=total;}
   if(side==='hero'&&state.key==='earth'&&state.noriStunTurns>0&&state.enemyHp>0&&state.hp>0){
     state.noriStoredDamage=(state.noriStoredDamage||0)+n;update();
@@ -284,8 +284,12 @@ function damage(side,raw,ledger=null){
 function applyCombatDamage(target,n){
   const armorKey=target==='hero'?'armor':'enemyArmor',hpKey=target==='hero'?'hp':'enemyHp',blocked=Math.min(state[armorKey],n),previousHp=state[hpKey];state[armorKey]-=blocked;state[hpKey]=Math.max(0,state[hpKey]-(n-blocked));update();
   if(target==='enemy'&&state.boss&&previousHp>0&&state.enemyHp===0)combatVoice('enemy','death');
-  return {amount:n-blocked,blocked};
+  // Shown numbers are what the bar lost: overkill is clipped to the HP that remained.
+  return {amount:previousHp-state[hpKey],blocked};
 }
+// Armour scales with the bearer: 999 early, then half of a hero's max HP or 8% of
+// an enemy's (large boss pools would otherwise turn guard skills into walls).
+function combatArmorCap(side){return Math.max(999,Math.round(side==='hero'?HEROES[state.key].hp*.5:state.enemyMax*.08));}
 async function attack(side,raw,{ultimate=false,hits=1}={}){
   const source=actor(side),target=actor(side==='hero'?'enemy':'hero'),key=side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1,targetSide=side==='hero'?'enemy':'hero';
   source.dataset.state=ultimate?'cast':'attack';
@@ -307,7 +311,7 @@ async function attack(side,raw,{ultimate=false,hits=1}={}){
 }
 async function buff(side,kind,value){
   const isHero=side==='hero',hpKey=isHero?'hp':'enemyHp',armorKey=isHero?'armor':'enemyArmor',max=isHero?HEROES[state.key].hp:state.enemyMax;let gained;
-  if(kind==='heal'){gained=Math.min(value,max-state[hpKey]);state[hpKey]+=gained;}else{gained=Math.min(value,999-state[armorKey]);state[armorKey]+=gained;}
+  if(kind==='heal'){gained=Math.min(value,max-state[hpKey]);state[hpKey]+=gained;}else{gained=Math.min(value,combatArmorCap(side)-state[armorKey]);state[armorKey]+=gained;}
   if(!gained)return 0;
   const f=actor(side);f.dataset.state='buff';sfx('buff');update();const ring=document.createElement('span');ring.className='buff-ring';ring.style.left=(isHero?'24%':'76%');ring.style.top='44%';ring.style.margin='-47px';ring.style.color=kind==='heal'?'#a1c9a4':'#c4b0db';$('combatEffects').append(ring);
   await Promise.all([animate(ring,[{transform:'scale(.4)',opacity:0},{transform:'scale(.85)',opacity:.7,offset:.45},{transform:'scale(1.3)',opacity:0}],{duration:650}),animate(f,[{transform:'translateY(0)'},{transform:'translateY(-9px)',offset:.5},{transform:'translateY(0)'}],{duration:650}),floating(side,'+'+gained+(kind==='heal'?' HP':' giáp'),kind==='heal'?'good':'armor')]);ring.remove();f.dataset.state='idle';return gained;
@@ -345,7 +349,7 @@ async function enemySkill({reserved=false}={}){
   if(!reserved)state.enemyEnergy=0;message((state.boss?'Boss':'Quái')+' tung '+m.skill+'!');update();
   await rageChoreography('enemy',base*(key==='earth'?1.1:key==='ice'?.75:1),{
     hits:key==='fire'?3:key==='lightning'?(state.boss?5:3):1,onRelease(pending){
-      if(key==='earth'){state.enemyArmor=Math.min(999,state.enemyArmor+(state.boss?35:12+state.stage*2));pending.push(combatLootReceive('enemy',4));}
+      if(key==='earth'){state.enemyArmor=Math.min(combatArmorCap('enemy'),state.enemyArmor+(state.boss?35:12+state.stage*2));pending.push(combatLootReceive('enemy',4));}
       if(key==='ice'&&state.hp>0){state.playerFrozen=true;message('Băng tuyết bao phủ! Bạn sẽ mất 1 lượt hành động.');popActorSkill('hero','Đóng băng',false,pending);}
       if(key==='lightning'){state.energy=Math.max(0,state.energy-15);message('Dòng điện cuốn đi 15 năng lượng của bạn.');}
     }
@@ -363,7 +367,7 @@ async function enemyAction(){
   if(!state.boss&&it.kind==='board')message(MONSTERS[state.enemyKey].name+' dùng '+it.name+'.');
   if(state.boss&&!state.enraged&&state.enemyHp<=state.enemyMax*.4){state.enraged=true;message('Boss thức tỉnh! Sát thương tăng 25%.');await buff('enemy','armor',20+state.stage*2);}
   const played=await opponentBoardTurn();
-  if(!played)await attack('enemy',(10+5*(state.stage-1))*(state.boss?1.3:1));
+  if(!played)await attack('enemy',(progressionBattle?10:10+5*(state.stage-1))*(state.boss?1.3:1));
   if(state.enemyHp>0&&state.hp>0){
     await castReadyUltimates();
     if(!state.boss&&state.hp>0&&state.enemyHp>0&&!(state.noriStunTurns>0)){

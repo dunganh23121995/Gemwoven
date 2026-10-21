@@ -25,10 +25,10 @@
     add('level-badge','surface',[154,25,53,59],{style:'currency'});
     text('level','32',[157,32,47,44],30);
     add('gold-plate','surface',[368,36,174,48],{style:'currency'});
-    image('gold-icon','coins',[355,26,59,60]);text('gold','125.6K',[412,38,104,40],25);
+    image('gold-icon','coins',[355,26,59,60]);text('gold','125,6 N',[412,38,104,40],32);
     button('gold-plus','hud-plus',[511,35,39,43],'+','route:shop',{size:30});
     add('gem-plate','surface',[591,36,178,48],{style:'currency'});
-    image('gem-icon','mana',[577,22,54,70]);text('gems','3,480',[625,38,99,40],25);
+    image('gem-icon','mana',[577,22,54,70]);text('gems','3.480',[625,38,99,40],32);
     button('gems-plus','hud-plus',[729,35,39,43],'+','route:shop',{size:30});
     button('mail','icon-mail',[795,30,62,61],'Hòm thư','preview:mail',{labelHidden:true});
     button('settings','icon-settings',[868,30,59,59],'Cài đặt','preview:settings',{labelHidden:true});
@@ -38,13 +38,15 @@
     nav.forEach(([route,label,icon],i)=>{
       const selected=route===active;
       button(`nav-${route}`,icon,[21+i*130,1510,119,126],label,`route:${route}`,{labelHidden:true,selected,role:'nav',className:'bottom-nav'});
-      if(selected){image('nav-label-board','nameplate',[10+i*130,1607,143,53],{fit:'fill'});text('nav-active-label',label,[20+i*130,1614,123,34],23,{tone:'ink'});}
+      if(selected){image('nav-label-board','nameplate',[4+i*130,1600,156,60],{fit:'fill'});text('nav-active-label',label,[14+i*130,1608,136,42],28,{tone:'ink'});}
     });
   }
   function sides(left=true,right=true){
     const a=left?[['event','Sự Kiện','icon-event'],['gift','Phúc Lợi','icon-gift'],['book','Thẻ Tháng','icon-book'],['chat','Cộng Đồng','icon-chat']]:[];
     const b=right?[['quest','Nhiệm Vụ','icon-quest'],['mail','Hòm Thư','icon-mail'],['trophy','Thành Tựu','icon-trophy'],['crown','BXH','icon-crown']]:[];
-    [a,b].forEach((list,col)=>list.forEach(([id,label,icon],i)=>button(`side-${id}`,'side-pennant',[col?840:10,145+i*125,95,137],label,id==='quest'?'route:tavern':`preview:${id}`,{icon,iconRect:[25,35,48,48],labelRect:[5,89,85,29],size:20,fit:'fill'})));
+    a.forEach(([id,label,icon],i)=>button(`side-${id}`,'side-pennant',[10,145+i*125,95,137],label,`preview:${id}`,{icon,iconRect:[25,33,48,48],labelRect:[1,86,93,32],size:24,fit:'fill'}));
+    // Right pennants (the mail slot is not shown): taller banners with two-line names readable on a phone.
+    b.filter(([id])=>id!=='mail').forEach(([id,label,icon],i)=>button(`side-${id}`,'side-pennant',[834,145+i*172,104,160],label.replace(' ','\n'),id==='quest'?'route:tavern':`preview:${id}`,{icon,iconRect:[29,34,46,44],labelRect:[0,80,104,64],size:27,fit:'fill',className:'side-pennant-tall'}));
   }
   function materials(id,items,rect){
     const [x,y,w,h]=rect;const cw=w/items.length;
@@ -103,7 +105,7 @@
   text('shop-story','Vạn Vật\nNgọc Kết\nSức Mạnh\nĐồng Hành\nCùng Bạn!',[145,187,84,218],23,{tone:'ink'});
   add('speech-bubble','surface',[487,589,163,76],{style:'speech'});
   text('shopkeeper-line','Có thứ gì\ncần không nè?',[500,598,135,58],22,{tone:'ink'});
-  ['Vật Phẩm','Nguyên Liệu','Trang Bị'].forEach((label,i)=>button(`shop-tab-${i}`,'tab-wood',[120+i*247,768,239,67],label,`shop-tab:${i}`,{size:28,selected:i===0,group:'shop-tab'}));
+  ['Vật Phẩm','Nguyên Liệu','Trang Bị'].forEach((label,i)=>button(`shop-tab-${i}`,'tab-wood',[112+i*247,758,243,82],label,`shop-tab:${i}`,{size:31,selected:i===0,group:'shop-tab'}));
   const products=[['coins','Đồng Vàng','100'],['mana','Đá Ngọc','300'],['fire-essence','Tinh Hoa Hỏa','1,200'],['amber','Đá Nâng Cấp','800'],['scroll','Sách Kỹ Năng','2,000'],['hero-fragment','Mảnh Tướng','1,500'],['ticket','Vé Triệu Hồi','2,500'],['chest','Rương Hiếm','3,000'],['hammer','Búa Rèn','1,800'],['potion','Thuốc Đột Phá','1,000']];
   screens.shop.products=products;
   products.forEach(([asset,label,price],i)=>{
@@ -116,11 +118,11 @@
   text('product-description','Nguyên liệu quý hiếm,\nchứa sức mạnh của\nngọn lửa vĩnh hằng.\nDùng để nâng cấp kỹ năng\nvà đột phá tướng hệ Hỏa.',[91,1283,234,125],23,{tone:'ink',align:'left'});
   button('product-preview','fire-essence',[366,1153,232,276],'Xem vật phẩm','selected-product',{labelHidden:true});
   panel('purchase-board',[625,1230,245,202]);
-  button('quantity-minus','nav-tile',[658,1251,44,43],'−','quantity:-1',{size:31});
-  text('quantity','1',[711,1256,67,37],27,{tone:'ink'});
-  button('quantity-plus','nav-tile',[797,1251,44,43],'+','quantity:1',{size:31});
+  button('quantity-minus','nav-tile',[640,1244,60,58],'−','quantity:-1',{size:40});
+  text('quantity','1',[704,1250,82,46],33,{tone:'ink'});
+  button('quantity-plus','nav-tile',[790,1244,60,58],'+','quantity:1',{size:40});
   text('purchase-price','● 1,200',[661,1302,182,42],30,{tone:'ink'});
-  button('buy','button-gold',[650,1351,199,67],'Mua','selected-product',{size:32});
+  button('buy','button-gold',[636,1348,226,82],'Mua','selected-product',{size:34});
   footer();
 
   begin('forge',4);sides(true,false);
@@ -129,7 +131,7 @@
   text('forge-subtitle','Vũ khí tốt\nĐồng hành vạn dặm',[345,345,184,45],21);
   text('forge-story','Rèn\nlà một dạng\nkể chuyện',[834,265,80,110],24);
   button('floating-sword','fire-sword',[328,457,261,278],'Kiếm Hỏa Ngục','item:fire-sword',{labelHidden:true});
-  ['Chế Tạo','Cường Hóa','Khảm Ngọc'].forEach((label,i)=>button(`forge-tab-${i}`,'tab-wood',[73+i*271,867,267,83],label,`forge-tab:${i}`,{size:29,selected:i===1,group:'forge-tab',icon:['icon-forge','hammer','mana'][i],iconRect:[24,22,43,41],labelRect:[78,20,164,47]}));
+  ['Chế Tạo','Cường Hóa','Khảm Ngọc'].forEach((label,i)=>button(`forge-tab-${i}`,'tab-wood',[73+i*271,854,267,96],label,`forge-tab:${i}`,{size:31,selected:i===1,group:'forge-tab',icon:['icon-forge','hammer','mana'][i],iconRect:[22,24,48,48],labelRect:[74,22,170,52]}));
   panel('forge-panel',[63,947,820,491]);
   button('weapon-card','card-dark',[124,988,255,379],'Kiếm Hỏa Ngục','item:fire-sword',{icon:'fire-sword',iconRect:[25,12,205,266],labelRect:[10,283,235,43],size:25,fit:'fill'});
   text('weapon-stars','★★★★☆',[143,1316,215,38],36,{tone:'gold'});
@@ -137,7 +139,7 @@
   image('attack-strip','tab-wood',[409,1065,405,58],{fit:'fill'});
   text('attack-preview','⚔  Tấn Công   128 → 142',[427,1075,367,38],27);
   text('materials-title','Nguyên Liệu Cần Thiết',[416,1128,396,38],27,{tone:'ink'});
-  materials('forge-materials',[['mana','12/8'],['ingot','8/5'],['coins','125.6K / 2K']],[411,1166,394,125]);
+  materials('forge-materials',[['mana','12/8'],['ingot','8/5'],['coins','125,6 N / 2 N']],[411,1166,394,125]);
   text('success-rate','Tỷ lệ thành công: 100%',[424,1297,373,37],24,{tone:'green'});
   button('forge-action','button-gold',[445,1335,322,91],'CƯỜNG HÓA','forge-preview',{size:35});
   footer();
@@ -148,7 +150,7 @@
   text('upgrade-story','Mạnh hơn\nHơn nữa\nCùng nhau\nviết tiếp\nchuyến phiêu lưu!',[40,218,126,192],24);
   image('right-story-flag','flag-blue',[819,141,112,255],{fit:'fill'});
   text('potential','Tiềm năng\nvẫn còn\nrất nhiều…',[835,192,81,132],23);
-  ['Level','Tăng Sao','Tiến Hóa'].forEach((label,i)=>button(`upgrade-tab-${i}`,'tab-wood',[245+i*151,278,148,62],label,`upgrade-tab:${i}`,{size:25,selected:i===0,group:'upgrade-tab'}));
+  ['Level','Tăng Sao','Tiến Hóa'].forEach((label,i)=>button(`upgrade-tab-${i}`,'tab-wood',[226+i*164,268,160,76],label,`upgrade-tab:${i}`,{size:30,selected:i===0,group:'upgrade-tab'}));
   button('hero-model','hero-fire',[292,351,330,366],'Mika','hero:fire',{labelHidden:true});
   panel('evolution-panel',[767,395,166,508],true);
   button('evolution-now','gem-fire',[793,416,116,129],'Mika hiện tại','hero:fire',{labelHidden:true});
@@ -166,7 +168,7 @@
   add('exp-meter','bar',[288,1027,411,29],{value:.625});text('exp-value','1,250 / 2,000',[338,1066,284,28],22,{className:'text-backing'});
   panel('upgrade-material-panel',[235,1096,487,213]);
   text('upgrade-material-title','Nguyên liệu cần',[273,1127,409,29],26,{tone:'ink'});
-  materials('upgrade-materials',[['icon-book','12/5'],['emerald','26/10'],['coins','125.6K / 1K']],[274,1155,409,130]);
+  materials('upgrade-materials',[['icon-book','12/5'],['emerald','26/10'],['coins','125,6 N / 1 N']],[274,1155,409,130]);
   button('upgrade-action','button-gold',[301,1320,346,105],'Tăng Level','upgrade-preview',{size:39});
   footer();
 
@@ -186,8 +188,8 @@
   text('quest-description','Nghe nói có một thương nhân kỳ lạ xuất hiện ở rìa rừng…',[286,1252,568,35],23,{tone:'ink',align:'left'});
   text('reward-heading','Thưởng:',[286,1285,170,30],24,{tone:'ink',align:'left'});
   materials('quest-rewards',[['coins','1,500'],['mana','50'],['avatar-fire','3']],[288,1320,305,84]);
-  button('quest-accept','button-gold',[647,1309,231,88],'Nhận Nhiệm Vụ','quest-preview',{size:29});
-  button('quest-dismiss','nav-tile',[859,1171,41,42],'×','quest-dismiss',{size:31});
+  button('quest-accept','button-gold',[636,1300,250,100],'Nhận Nhiệm Vụ','quest-preview',{size:31});
+  button('quest-dismiss','nav-tile',[848,1158,62,62],'×','quest-dismiss',{size:42});
   footer();
 
   window.GEMWOVEN_LAYOUT={width:W,height:H,screens,names};

@@ -130,7 +130,7 @@ const OpponentAI = (() => {
 
   function damageValue(current, side, raw) {
     const enemy = side === 'enemy', attacker = enemy ? current.enemyKey : current.key, defender = enemy ? current.key : current.enemyKey;
-    if (!enemy && current.key === 'earth') raw *= .6;
+    if (!enemy && current.key === 'earth') raw *= .75;
     const beats = { fire: 'ice', ice: 'earth', earth: 'lightning', lightning: 'fire' };
     let value = Math.round(raw * (beats[attacker] === defender ? 1.5 : 1) * (enemy && current.enraged ? 1.25 : 1));
     if (enemy && current.key === 'ice') value = Math.round(value * .8);
