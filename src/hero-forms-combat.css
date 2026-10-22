@@ -1,4 +1,4 @@
-.scene .hero-actor{--actor-size:calc(min(clamp(180px,48vw,213px),74cqh) * var(--hero-art-scale,1))}
+.scene .hero-actor{--actor-size:calc(min(clamp(140px,37vw,170px),58cqh) * var(--hero-art-scale,1))}
 .scene .hero-actor[data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
 .scene .hero-actor[data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 9px var(--element)) brightness(1.06)}
 .scene .hero-actor .combat-form-aura{inset:12% 5% calc((1 - var(--foot-y,.94)) * 100%);z-index:auto;pointer-events:none}
