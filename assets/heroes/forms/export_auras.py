@@ -6,7 +6,7 @@ read order left-to-right, top-to-bottom of the 2x4 raw grid).
 
 Output per hero:
   aura.webp  2048x256 lossless RGBA horizontal strip (8 frames)
-  aura.json  runtime metadata
+  ../aura.json  runtime metadata read by both builds
 
 Usage: python assets/heroes/forms/export_auras.py [hero ...]
 """
@@ -23,6 +23,21 @@ HEROES = ("fire", "earth", "ice", "lightning", "shadow")
 COUNT = 8
 CELL = 256
 FRAME_DURATION = {"shadow": 190}
+# Elements with no legitimate violet: magenta key spill in their glows is removed.
+DESPILL = {"fire", "ice", "earth"}
+
+
+def despill(frame: Image.Image) -> Image.Image:
+    """Fade pixels whose red and blue both exceed green (chroma-key spill)."""
+    import numpy as np
+    a = np.asarray(frame, dtype=np.float32)
+    r, g, b, alpha = a[..., 0], a[..., 1], a[..., 2], a[..., 3]
+    spill = np.minimum(r, b) - g
+    fade = np.clip((spill - 24) / 70, 0, 1)
+    a[..., 3] = alpha * (1 - fade)
+    a[..., 0] = np.where(spill > 24, np.minimum(r, g + 24 + (r - g) * .3), r)
+    a[..., 2] = np.where(spill > 24, np.minimum(b, g + 24 + (b - g) * .3), b)
+    return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
 
 
 def export(hero: str) -> bool:
@@ -35,6 +50,8 @@ def export(hero: str) -> bool:
     strip = Image.new("RGBA", (CELL * COUNT, CELL), (0, 0, 0, 0))
     for index, path in enumerate(frames):
         frame = Image.open(path).convert("RGBA")
+        if hero in DESPILL:
+            frame = despill(frame)
         if frame.size != (CELL, CELL):
             raise ValueError(f"{path} is {frame.size}, expected {CELL}x{CELL}")
         strip.paste(frame, (index * CELL, 0))
@@ -48,7 +65,8 @@ def export(hero: str) -> bool:
         "frameDuration": FRAME_DURATION.get(hero, 160),
         "prompt": f"{rel}/prompt-used.txt",
     }
-    (aura_dir / "aura.json").write_text(json.dumps(meta) + "\n", encoding="utf-8")
+    # build.py and scripts/build_gemwoven.py read forms/<hero>/aura.json.
+    (FORMS / hero / "aura.json").write_text(json.dumps(meta) + "\n", encoding="utf-8")
     print(f"[ok] {hero}: {rel}/aura.webp")
     return True
 
