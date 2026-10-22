@@ -5,10 +5,11 @@
 .hero-form-aura{position:absolute;inset:4% -5% 2%;pointer-events:none;z-index:0;color:var(--form-color)}
 .form-halo{position:absolute;inset:3% -8% 0;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--form-color) 28%,transparent),transparent 68%);animation:form-pulse 4s ease-in-out infinite}
 .form-floor{position:absolute;left:10%;right:10%;bottom:3%;height:16%;border:1px solid currentColor;border-radius:50%;box-shadow:0 0 13px currentColor,inset 0 0 20px color-mix(in srgb,var(--form-color) 40%,transparent);opacity:.6;animation:form-pulse 3s ease-in-out infinite}
-/* Form-3 ribbons are an independent 8-frame strip: their own clock, not tied to body frames. */
-.form-aura-band{position:absolute;left:-28%;bottom:-7%;width:156%;aspect-ratio:1;background:var(--aura-sheet) 0 0/800% 100% no-repeat;animation:form-aura-strip var(--aura-cycle,1280ms) steps(8,jump-none) infinite}
+/* Form-3 cloud scrolls are an independent 8-frame strip: their own clock, not tied to body frames.
+   The cloud bank top (72% of the strip cell) sits on the feet line, so the hero stands on the clouds. */
+.form-aura-band{position:absolute;left:50%;bottom:0;width:112%;aspect-ratio:1;translate:-50% 27%;opacity:.92;background:var(--aura-sheet) 0 0/800% 100% no-repeat;animation:form-aura-strip var(--aura-cycle,1280ms) steps(8,jump-none) infinite}
 .form-aura-foreground{z-index:2}
-.form-aura-foreground .form-aura-band{-webkit-mask-image:linear-gradient(to top,#000 0 24%,transparent 42%);mask-image:linear-gradient(to top,#000 0 24%,transparent 42%)}
+.form-aura-foreground .form-aura-band{-webkit-mask-image:linear-gradient(to top,#000 0 13%,transparent 24%);mask-image:linear-gradient(to top,#000 0 13%,transparent 24%)}
 /* Noct's aura absorbs light; its strip carries the dark smoke bands. */
 [data-hero-element="shadow"] .form-halo{background:radial-gradient(ellipse,#090511a3 18%,#21102c70 43%,transparent 72%);animation:shadow-breathe 5s ease-in-out infinite}
 [data-hero-element="shadow"] .form-floor{border-color:#573775;box-shadow:0 0 16px #18091ccc,inset 0 0 25px #05020be6;opacity:.7}

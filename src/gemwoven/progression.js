@@ -35,8 +35,8 @@
       {name:'Tinh Lôi Sứ Giả',weapon:'Tinh điện trượng khắc sao',skill:'Tinh Lôi Ngũ Phạt',power:1.1},
       {name:'Thiên Tinh Lôi Chủ',weapon:'Thương quỹ đạo thiên hà',skill:'Cửu Thiên Tinh Phạt',power:1.25,signature:'Giáng 9 tia sét thay vì 5.'}],
     shadow:[{name:'Ảnh Kiếm Sĩ',weapon:'Kiếm vô diện',skill:'Ngũ Ảnh Trảm',power:1},
-      {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Ảnh kiếm đen',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
-      {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Tuyệt kỹ +50% sát thương khi địch dưới 30% HP.'}]
+      {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Nguyệt đao đen',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
+      {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Đoạt Hồn: tuyệt kỹ +50% sát thương khi địch dưới 30% HP.'}]
   };
   function heroForm(key,h){return key==='novice'?1:h?.stars>=6?3:h?.stars>=4?2:1;}
   // Relics belong to their hero; five visible forms, twenty training levels per form.
@@ -167,9 +167,9 @@
   function skillDescription(kit,slot){
     const k=kit.key;
     if(slot===0){
-      const signature=k==='fire'&&kit.form===3?` Luôn thiêu đốt ${vi(kit.burn.base)} sát thương cơ bản/lượt trong ${kit.burn.turns} lượt.`:k==='shadow'&&kit.execute?' Gây thêm 50% khi địch dưới 30% HP.':k==='ice'&&kit.enemyDrain?` Địch mất ${kit.enemyDrain} năng lượng.`:'';
+      const signature=k==='fire'&&kit.form===3?` Luôn thiêu đốt ${vi(kit.burn.base)} sát thương cơ bản/lượt trong ${kit.burn.turns} lượt.`:k==='shadow'&&kit.execute?' Đoạt Hồn: gây thêm 50% khi địch dưới 30% HP.':k==='ice'&&kit.enemyDrain?` Địch mất ${kit.enemyDrain} năng lượng.`:'';
       return {novice:()=>`Một nhát kiếm gỗ gây ${vi(kit.damage)} sát thương cơ bản.`,fire:()=>`Kiếm khí rực lửa phát nổ, gây ${vi(kit.damage)} sát thương cơ bản.`,ice:()=>`Nhận ${kit.armor} giáp; băng giáng gây ${vi(kit.damage)} sát thương cơ bản và choáng 1 lượt.`,
-        earth:()=>`Choáng ${kit.stun} lượt; sát thương tích trong lúc choáng nổ ×${vi(kit.burst,2)}. Hồi ${kit.heal} HP/lượt trong ${kit.regenTurns} lượt.`,lightning:()=>`Gọi ${kit.hits} tia sét liên tiếp, tổng ${vi(kit.damage)} sát thương cơ bản.`,shadow:()=>`${kit.hits} lần lướt chém, tổng ${vi(kit.damage)} sát thương cơ bản.`}[k]()+signature;
+        earth:()=>`Choáng ${kit.stun} lượt; sát thương tích trong lúc choáng nổ ×${vi(kit.burst,2)}. Hồi ${kit.heal} HP/lượt trong ${kit.regenTurns} lượt.`,lightning:()=>`Gọi ${kit.hits} tia sét liên tiếp, tổng ${vi(kit.damage)} sát thương cơ bản.`,shadow:()=>`${kit.hits} ${kit.form===3?'nhát liềm lướt':'lần lướt chém'}, tổng ${vi(kit.damage)} sát thương cơ bản.`}[k]()+signature;
     }
     if(slot===1){
       const learned=kit.levels[1]>0;

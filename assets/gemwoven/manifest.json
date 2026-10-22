@@ -10917,13 +10917,13 @@
     "width": 256,
     "height": 256,
     "footBounds": [
-      46,
-      59,
-      210,
-      250
+      26,
+      61,
+      223,
+      249
     ],
     "bodyAnchor": {
-      "x": 0.63671875,
+      "x": 0.67578125,
       "crown": 0.234375,
       "foot": 0.94
     }
@@ -10934,8 +10934,8 @@
     "height": 256,
     "footBounds": [
       0,
-      26,
-      204,
+      24,
+      215,
       256
     ]
   },
@@ -10944,15 +10944,15 @@
     "width": 256,
     "height": 256,
     "bodyAnchor": {
-      "x": 0.63671875,
+      "x": 0.67578125,
       "crown": 0.234375,
       "foot": 0.94
     },
     "footBounds": [
-      46,
-      59,
-      210,
-      250
+      26,
+      61,
+      223,
+      249
     ]
   },
   "form-shadow-3": {
@@ -11169,5 +11169,55 @@
       226,
       243
     ]
+  },
+  "form-aura-earth": {
+    "file": "assets/heroes/forms/earth/aura/aura.webp",
+    "count": 8,
+    "cols": 8,
+    "rows": 1,
+    "frameDuration": 160,
+    "prompt": "assets/heroes/forms/earth/aura/prompt-used.txt",
+    "width": 256,
+    "height": 256
+  },
+  "form-aura-fire": {
+    "file": "assets/heroes/forms/fire/aura/aura.webp",
+    "count": 8,
+    "cols": 8,
+    "rows": 1,
+    "frameDuration": 160,
+    "prompt": "assets/heroes/forms/fire/aura/prompt-used.txt",
+    "width": 256,
+    "height": 256
+  },
+  "form-aura-ice": {
+    "file": "assets/heroes/forms/ice/aura/aura.webp",
+    "count": 8,
+    "cols": 8,
+    "rows": 1,
+    "frameDuration": 160,
+    "prompt": "assets/heroes/forms/ice/aura/prompt-used.txt",
+    "width": 256,
+    "height": 256
+  },
+  "form-aura-lightning": {
+    "file": "assets/heroes/forms/lightning/aura/aura.webp",
+    "count": 8,
+    "cols": 8,
+    "rows": 1,
+    "frameDuration": 160,
+    "prompt": "assets/heroes/forms/lightning/aura/prompt-used.txt",
+    "width": 256,
+    "height": 256
+  },
+  "form-aura-shadow": {
+    "file": "assets/heroes/forms/shadow/aura/aura.webp",
+    "count": 8,
+    "cols": 8,
+    "rows": 1,
+    "frameDuration": 190,
+    "prompt": "assets/heroes/forms/shadow/aura/prompt-used.txt",
+    "width": 256,
+    "height": 256
   }
 }

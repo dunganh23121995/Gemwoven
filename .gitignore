@@ -42,3 +42,6 @@ Thumbs.db
 /qa/forms/
 /qa/gemwoven/beanstalk-processing/
 /qa/gemwoven/*-validation.json
+
+# Personal Claude Code settings
+.claude/settings.local.json

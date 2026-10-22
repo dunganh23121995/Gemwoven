@@ -32,6 +32,28 @@ function quickBladeCut(point,key,index,direction,pending){
     pending.push(animate(ember,[{opacity:.9,transform:'translate(-50%,-50%)'},{opacity:0,transform:`translate(${direction*(25+i*11)}px,${(i-2)*17}px) scale(.2)`}],{duration:290+i*15,easing:'ease-out'}).finally(()=>ember.remove()));
   }
 }
+// Six-star Noct is the Grim Reaper: scythe crescents, run-sheet glides and a soul harvest.
+function reaperForm(){return state.key==='shadow'&&typeof combatHeroForm==='function'&&combatHeroForm('shadow')===3;}
+function reaperDashFrame(i){setSpriteFrame('hero','run',i%6);}
+function reaperCut(point,index,direction,pending,size=Math.min(250,point.width*1.3)){
+  if(reduced)return;
+  const angle=index%2?-38:32;
+  const node=combatV3Element('reaper-cut',point,size,combatV3Svg('<path d="M24 172C30 82 98 22 196 30C122 46 66 98 52 178Z" fill="#07030e" opacity=".88"/><path d="M34 166C44 88 104 36 194 33C126 54 76 102 62 170Z" fill="#2c1745"/><path d="M48 158C62 94 112 48 192 36C132 62 92 104 78 160Z" fill="#8f6fd0" opacity=".7"/><path d="M60 150C76 100 118 58 190 38" stroke="#efe6ff" stroke-width="2.4" stroke-linecap="round"/>'),combatV3Palette.shadow);
+  node.dataset.cutDirection=direction>0?'right':'left';node.dataset.cutIndex=index;
+  pending.push(animate(node,[{opacity:0,transform:`translate(-50%,-50%) rotate(${angle-55*direction}deg) scaleX(${direction})`},{opacity:1,transform:`translate(-50%,-50%) rotate(${angle}deg) scaleX(${direction})`,offset:.32},{opacity:.75,offset:.6},{opacity:0,transform:`translate(-50%,-50%) rotate(${angle+25*direction}deg) scaleX(${direction*1.08})`}],{duration:260,easing:'cubic-bezier(.2,.7,.3,1)'}).finally(()=>node.remove()));
+}
+// Hắc Liêm Đoạt Hồn finale: a pale soul is torn out of the target and drawn into the reaper,
+// then one giant crescent falls across it. "ĐOẠT HỒN" marks the execute bonus (target under 30% HP).
+function reaperHarvest(pending,executed){
+  if(executed)popActorSkill('enemy','ĐOẠT HỒN',false,pending);
+  if(reduced)return;
+  const target=combatV3Point('enemy'),hero=combatV3Point('hero'),size=Math.min(320,target.width*1.7);
+  const scythe=combatV3Element('reaper-cut reaper-finale',{x:target.x,y:target.y-target.height*.1},size,combatV3Svg('<path d="M16 96C40 30 130 6 206 46C140 34 70 52 40 118Z" fill="#05020b" opacity=".92"/><path d="M28 94C58 38 134 18 202 48C138 44 82 62 52 112Z" fill="#33194f"/><path d="M40 92C70 48 136 28 200 50" stroke="#f3ecff" stroke-width="3" stroke-linecap="round"/>'),combatV3Palette.shadow);
+  pending.push(animate(scythe,[{opacity:0,transform:'translate(-50%,-50%) rotate(-70deg) scale(.7)'},{opacity:1,transform:'translate(-50%,-50%) rotate(10deg) scale(1)',offset:.35},{opacity:.85,offset:.65},{opacity:0,transform:'translate(-50%,-38%) rotate(35deg) scale(1.08)'}],{duration:560,easing:'cubic-bezier(.3,.8,.3,1)'}).finally(()=>scythe.remove()));
+  const soul=combatV3Element('reaper-soul',{x:target.x,y:target.y-target.height*.12},Math.min(70,target.width*.42),'<i></i>',combatV3Palette.shadow);
+  const dx=hero.x-target.x,dy=(hero.y-hero.height*.18)-(target.y-target.height*.12);
+  pending.push(animate(soul,[{opacity:0,transform:'translate(-50%,-50%) scale(.3)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.25},{opacity:.95,transform:`translate(calc(-50% + ${dx*.45}px),calc(-50% + ${dy*.45-34}px)) scale(.85)`,offset:.6},{opacity:0,transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(.25)`}],{duration:820,delay:180,easing:'ease-in-out',fill:'both'}).finally(()=>soul.remove()));
+}
 function bladeContact(raw,ledger,index,direction,critical,pending){
   const key=state.key,result=damage('hero',raw,ledger);
   combatVoice('enemy','hurt');combatV3HitSound(key,index===4);
@@ -46,21 +68,21 @@ function bladeContact(raw,ledger,index,direction,critical,pending){
 async function shadowAttack(raw,{hits=1,damageLedger=null,attackChain=1}={}){
   const root=actor('hero'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
   const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,to.x-from.x-from.width*.25);
-  const chain=Math.max(1,Math.floor(attackChain)),critical=chain>=3&&chain%3===0;
+  const chain=Math.max(1,Math.floor(attackChain)),critical=chain>=3&&chain%3===0,reaper=reaperForm();
   raw*=attackChainMultiplier(chain)*(critical?1.5:1);hits=Math.max(1,Math.min(8,Math.round(hits)||1));
   const ledger=damageLedger||{raw:0,applied:0};let amount=0,blocked=0;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.attackChain=chain;root.dataset.attackStance='shadow-draw';
   try{
     combatVoice('hero','attack');playNoctSound('draw',{volume:.18});setSpriteFrame('hero','attack',0);await wait(70);
-    setSpriteFrame('hero','cast',3);shadowTransitEchoes(0,travel,pending);playNoctSound('dash',{volume:.22,pan:.28});
+    if(reaper)reaperDashFrame(1);else setSpriteFrame('hero','cast',3);shadowTransitEchoes(0,travel,pending);playNoctSound('dash',{volume:.22,pan:.28});
     await animate(root,[{transform:old||'none'},{transform:`translateX(${travel}px)`}],{duration:120,easing:'cubic-bezier(.12,.8,.3,1)'});root.style.transform=`translateX(${travel}px)`;
     for(let i=0;i<hits;i++){
       const direction=i%2?-1:1;setSpriteFrame('hero','attack',i%2?3:2);
-      quickBladeCut(combatV3Point('enemy'),'shadow',i,direction,pending);combatV3Whoosh('shadow',critical,100);
+      if(reaper)reaperCut(combatV3Point('enemy'),i,direction,pending);else quickBladeCut(combatV3Point('enemy'),'shadow',i,direction,pending);combatV3Whoosh('shadow',critical,100);
       const result=bladeContact(raw/hits,ledger,i,direction,critical,pending);amount+=result.amount;blocked+=result.blocked;
       await wait(85);
     }
-    setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(travel,0,pending);
+    if(reaper)reaperDashFrame(4);else setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(travel,0,pending);
     await animate(root,[{transform:root.style.transform},{transform:old||'none'}],{duration:180,easing:'ease-out'});root.style.transform=old;
     bladeFacing(1);setSpriteFrame('hero','attack',5);playNoctSound('sheath',{volume:.18});await Promise.all(pending);return {amount,blocked};
   }finally{
@@ -68,7 +90,7 @@ async function shadowAttack(raw,{hits=1,damageLedger=null,attackChain=1}={}){
   }
 }
 async function bladeRage(key,raw,onRelease=()=>{}){
-  const shadow=key==='shadow',root=actor('hero'),target=actor('enemy'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
+  const shadow=key==='shadow',reaper=shadow&&reaperForm(),root=actor('hero'),target=actor('enemy'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
   const from=combatV3Point('hero'),to=combatV3Point('enemy'),near=Math.max(0,to.x-from.x-from.width*.27),far=Math.min(to.x-from.x+32,$('scene').clientWidth-from.width*.44-from.x);
   const start=performance.now(),at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   const move=async(x,duration)=>{const previous=root.style.transform||'none';await animate(root,[{transform:previous},{transform:`translateX(${x}px)`}],{duration,easing:'ease-in-out'});root.style.transform=`translateX(${x}px)`;};
@@ -79,7 +101,7 @@ async function bladeRage(key,raw,onRelease=()=>{}){
     combatVoice('hero','cast');combatV3ChargeSound(key,true);popActorSkill('hero',HEROES[key].skill,true,pending);
     pending.push(animate(aura,[{opacity:0,transform:'scale(.5)'},{opacity:.95,transform:'scale(1)',offset:.65},{opacity:0,transform:'scale(1.25)'}],{duration:1100}).finally(()=>aura.remove()));
     setSpriteFrame('hero','cast',0);await at(300);setSpriteFrame('hero','cast',1);await at(shadow?550:650);setSpriteFrame('hero','cast',2);
-    if(shadow){root.dataset.ragePhase='slow-glide';setSpriteFrame('hero','cast',3);await move(near*.55,800);currentX=near*.55;}
+    if(shadow){root.dataset.ragePhase='slow-glide';if(reaper)reaperDashFrame(0);else setSpriteFrame('hero','cast',3);await move(near*.55,800);currentX=near*.55;}
     else{await at(1000);root.dataset.ragePhase='lunge';setSpriteFrame('hero','attack',1);await move(near,350);currentX=near;}
     root.classList.remove('charging-ultimate');aura.remove();
     if(shadow)root.classList.add('shadow-burst');
@@ -87,18 +109,21 @@ async function bladeRage(key,raw,onRelease=()=>{}){
     for(let i=0;i<times.length;i++){
       await at(times[i]-(shadow?110:55));root.dataset.ragePhase=shadow?'shadow-dash':'rapid-slash';root.dataset.rageHit=String(i+1);
       const direction=i%2?-1:1,endX=shadow?(direction>0?far:near):near+(direction>0?5:-5);
-      if(shadow){bladeFacing(direction);setSpriteFrame('hero','cast',4);shadowTransitEchoes(currentX,endX,pending);playNoctSound('dash',{volume:.18,pan:direction*.35});}
+      if(shadow){bladeFacing(direction);if(reaper)reaperDashFrame(i+1);else setSpriteFrame('hero','cast',4);shadowTransitEchoes(currentX,endX,pending);playNoctSound('dash',{volume:.18,pan:direction*.35});}
       else setSpriteFrame('hero','attack',i%2?4:1);
       combatV3Whoosh(key,true,110);await move(endX,shadow?110:55);currentX=endX;
-      setSpriteFrame('hero','attack',shadow?2:[3,2,4,3,2,4][i]);root.dataset.ragePhase='impact';
-      if(i===0)combatVoice('hero','release');quickBladeCut(combatV3Point('enemy'),key,i,direction,pending);
+      setSpriteFrame('hero','attack',reaper?(i%2?4:3):shadow?2:[3,2,4,3,2,4][i]);root.dataset.ragePhase='impact';
+      if(i===0)combatVoice('hero','release');
+      if(reaper)reaperCut(combatV3Point('enemy'),i,direction,pending);else quickBladeCut(combatV3Point('enemy'),key,i,direction,pending);
       if(shadow)shadowEcho(null,null,pending,direction);
+      const last=i===times.length-1,kit=last&&reaper&&progressionBattle?progressionKit():null;
+      const executed=!!kit?.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold;
       const result=bladeContact(raw/times.length,ledger,i,direction,false,pending);amount+=result.amount;blocked+=result.blocked;
-      if(i===times.length-1){onRelease(pending);update();}
+      if(last){if(reaper)reaperHarvest(pending,executed);onRelease(pending);update();}
     }
     await at(2450);root.dataset.ragePhase='recover';root.classList.remove('shadow-burst');
-    if(shadow){setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(currentX,0,pending);}else setSpriteFrame('hero','attack',5);
-    await move(0,350);root.style.transform=old;bladeFacing(1);setSpriteFrame('hero',shadow?'cast':'attack',5);if(shadow)playNoctSound('sheath',{volume:.24});
+    if(shadow){if(reaper)reaperDashFrame(3);else setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(currentX,0,pending);}else setSpriteFrame('hero','attack',5);
+    await move(0,350);root.style.transform=old;bladeFacing(1);setSpriteFrame('hero',reaper?'attack':shadow?'cast':'attack',5);if(shadow)playNoctSound('sheath',{volume:.24});
     await at(3000);await Promise.all(pending);return {amount,blocked};
   }finally{
     await Promise.allSettled(pending);aura.remove();root.style.transform=old;root.style.zIndex=oldZ;bladeFacing(1);delete root.dataset.facing;delete root.dataset.ragePhase;delete root.dataset.rageHit;root.classList.remove('combat-v3-acting','charging-ultimate','shadow-burst');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');

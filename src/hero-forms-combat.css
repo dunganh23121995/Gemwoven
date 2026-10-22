@@ -9,3 +9,6 @@
 .cast-shadow:is(.cast-star-form-2,.cast-star-form-3,.cast-form-weapon-2,.cast-form-weapon-3){mix-blend-mode:normal;--combat-light:#9871b8!important;--combat-main:#362047!important;filter:drop-shadow(0 0 9px #090310)}
 body.ambience-paused .hero-form-aura *{animation-play-state:paused!important}
 body.reduced-motion .hero-form-aura *{animation:none!important}
+/* The cloud ring belongs to the resting pose; it thins out while the hero lunges so cuts stay readable. */
+.scene .hero-actor .combat-form-aura{transition:opacity .18s ease-out}
+.scene .hero-actor.combat-v3-acting .combat-form-aura{opacity:.22}

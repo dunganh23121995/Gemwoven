@@ -33,6 +33,9 @@ function heroFormMotif(key,form){
     const points=Array.from({length:n},(_,i)=>{const a=i*2*Math.PI/n-Math.PI/2;return [110+Math.cos(a)*80,110+Math.sin(a)*80];});
     return `<path d="${points.map(([x,y],i)=>`${i?'L':'M'}${x} ${y}`).join('')}Z" stroke="var(--combat-light)" stroke-width="1.5"/>`+points.map(([x,y])=>`<path d="M${x} ${y} 105 103 118 115 110 180" stroke="var(--combat-main)" stroke-width="2"/><path d="m${x} ${y-8} 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="var(--combat-light)"/>`).join('');
   }
+  // Reaper sigil: crescent scythe blades turning around a dark soul ring.
+  if(key==='shadow'&&strong)return `<circle cx="110" cy="110" r="70" fill="#06020dee" stroke="var(--combat-light)" stroke-width="1.5"/><circle cx="110" cy="110" r="34" stroke="var(--combat-light)" stroke-width="1" stroke-dasharray="4 6"/>`+
+    Array.from({length:6},(_,i)=>`<path d="M110 22C150 30 176 62 178 98C160 70 136 56 110 52Z" transform="rotate(${i*60} 110 110)" fill="#1b0c2be6" stroke="var(--combat-light)" stroke-width="1.4"/>`).join('');
   return `<circle cx="110" cy="110" r="66" fill="#06020dee" stroke="var(--combat-main)" stroke-width="2"/>`+
     Array.from({length:strong?8:4},(_,i)=>`<path d="M110 12C16 30 27 159 110 200C56 149 81 72 110 12Z" transform="rotate(${i*360/(strong?8:4)} 110 110)" fill="#10071be6" stroke="var(--combat-light)" stroke-width="1.2"/>`).join('');
 }
@@ -61,7 +64,8 @@ heroUltimate=async function(){
 const formOriginalAttack=attack;
 attack=async function(side,raw,options={}){
   const form=combatHeroForm(state.key),pending=[];
-  if(side==='hero'&&form===3&&!heroFormCasting&&!options.ultimate){
+  // Six-star Noct draws his own scythe crescents (shadow-combat.js reaperCut).
+  if(side==='hero'&&form===3&&!heroFormCasting&&!options.ultimate&&state.key!=='shadow'){
     const p=combatV3Point('enemy');
     const shadow=state.key==='shadow';
     castFx(state.key,'form-weapon-'+form,p,Math.min(190,p.width),combatV3Svg(

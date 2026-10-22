@@ -16,3 +16,9 @@
 .dragon-flame-ember{opacity:0;background:#ffdc97;box-shadow:0 0 5px #ff7e38;border-radius:50%;mix-blend-mode:screen}
 body.reduced-motion .shadow-veil{display:none}
 body.ambience-paused .shadow-veil i{animation-play-state:paused}
+/* Grim Reaper (six-star Noct): scythe crescents and the harvested soul. */
+.reaper-cut{mix-blend-mode:normal;z-index:6;filter:drop-shadow(0 0 8px #06020f) drop-shadow(0 0 4px #8d6ad4)}
+.reaper-finale{z-index:7;filter:drop-shadow(0 0 12px #05020b) drop-shadow(0 0 6px #a284ec)}
+.reaper-soul{z-index:7;opacity:0}
+.reaper-soul i{position:absolute;inset:0;border-radius:50% 50% 46% 46%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 38%,#fbf7ff 0 14%,#d5c4ff 26%,#8a6ad8aa 48%,transparent 70%);filter:blur(.6px) drop-shadow(0 0 8px #b79cff)}
+.reaper-soul i::after{content:'';position:absolute;left:30%;right:30%;top:55%;height:85%;border-radius:0 0 50% 50%;background:linear-gradient(#cdb9ffaa,transparent);filter:blur(2px)}
