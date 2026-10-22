@@ -38,7 +38,7 @@ function reaperDashFrame(i){setSpriteFrame('hero','run',i%6);}
 function reaperCut(point,index,direction,pending,size=Math.min(250,point.width*1.3)){
   if(reduced)return;
   const angle=index%2?-38:32;
-  const node=combatV3Element('reaper-cut',point,size,combatV3Svg('<path d="M24 172C30 82 98 22 196 30C122 46 66 98 52 178Z" fill="#07030e" opacity=".88"/><path d="M34 166C44 88 104 36 194 33C126 54 76 102 62 170Z" fill="#2c1745"/><path d="M48 158C62 94 112 48 192 36C132 62 92 104 78 160Z" fill="#8f6fd0" opacity=".7"/><path d="M60 150C76 100 118 58 190 38" stroke="#efe6ff" stroke-width="2.4" stroke-linecap="round"/>'),combatV3Palette.shadow);
+  const node=combatV3Element('reaper-cut',point,size,combatV3Svg('<path d="M24 172C30 82 98 22 196 30C122 46 66 98 52 178Z" fill="#07030e" opacity=".88"/><path d="M34 166C44 88 104 36 194 33C126 54 76 102 62 170Z" fill="#2a2a2e"/><path d="M48 158C62 94 112 48 192 36C132 62 92 104 78 160Z" fill="#9a9aa2" opacity=".7"/><path d="M60 150C76 100 118 58 190 38" stroke="#f2f2f4" stroke-width="2.4" stroke-linecap="round"/>'),combatV3Palette.shadow);
   node.dataset.cutDirection=direction>0?'right':'left';node.dataset.cutIndex=index;
   pending.push(animate(node,[{opacity:0,transform:`translate(-50%,-50%) rotate(${angle-55*direction}deg) scaleX(${direction})`},{opacity:1,transform:`translate(-50%,-50%) rotate(${angle}deg) scaleX(${direction})`,offset:.32},{opacity:.75,offset:.6},{opacity:0,transform:`translate(-50%,-50%) rotate(${angle+25*direction}deg) scaleX(${direction*1.08})`}],{duration:260,easing:'cubic-bezier(.2,.7,.3,1)'}).finally(()=>node.remove()));
 }
@@ -48,7 +48,7 @@ function reaperHarvest(pending,executed){
   if(executed)popActorSkill('enemy','ĐOẠT HỒN',false,pending);
   if(reduced)return;
   const target=combatV3Point('enemy'),hero=combatV3Point('hero'),size=Math.min(320,target.width*1.7);
-  const scythe=combatV3Element('reaper-cut reaper-finale',{x:target.x,y:target.y-target.height*.1},size,combatV3Svg('<path d="M16 96C40 30 130 6 206 46C140 34 70 52 40 118Z" fill="#05020b" opacity=".92"/><path d="M28 94C58 38 134 18 202 48C138 44 82 62 52 112Z" fill="#33194f"/><path d="M40 92C70 48 136 28 200 50" stroke="#f3ecff" stroke-width="3" stroke-linecap="round"/>'),combatV3Palette.shadow);
+  const scythe=combatV3Element('reaper-cut reaper-finale',{x:target.x,y:target.y-target.height*.1},size,combatV3Svg('<path d="M16 96C40 30 130 6 206 46C140 34 70 52 40 118Z" fill="#05020b" opacity=".92"/><path d="M28 94C58 38 134 18 202 48C138 44 82 62 52 112Z" fill="#2e2e33"/><path d="M40 92C70 48 136 28 200 50" stroke="#f4f4f6" stroke-width="3" stroke-linecap="round"/>'),combatV3Palette.shadow);
   pending.push(animate(scythe,[{opacity:0,transform:'translate(-50%,-50%) rotate(-70deg) scale(.7)'},{opacity:1,transform:'translate(-50%,-50%) rotate(10deg) scale(1)',offset:.35},{opacity:.85,offset:.65},{opacity:0,transform:'translate(-50%,-38%) rotate(35deg) scale(1.08)'}],{duration:560,easing:'cubic-bezier(.3,.8,.3,1)'}).finally(()=>scythe.remove()));
   const soul=combatV3Element('reaper-soul',{x:target.x,y:target.y-target.height*.12},Math.min(70,target.width*.42),'<i></i>',combatV3Palette.shadow);
   const dx=hero.x-target.x,dy=(hero.y-hero.height*.18)-(target.y-target.height*.12);

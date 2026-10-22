@@ -5,7 +5,7 @@
   for(const key of Object.keys(M.HEROES))for(const prefix of ['hero-','portrait-','home-idle-']){
     originals[prefix+key]=A[prefix+key];originals[prefix+key+'-poster']=A[prefix+key+'-poster'];
   }
-  const palette={fire:'#ffb35e',ice:'#a6efff',earth:'#bde88d',lightning:'#d6b7ff',shadow:'#7955a5'};
+  const palette={fire:'#ffb35e',ice:'#a6efff',earth:'#bde88d',lightning:'#d6b7ff',shadow:'#8d8d94'};
   function aura(key,form){
     const el=document.createElement('span');el.className='hero-form-effects';el.setAttribute('aria-hidden','true');
     el.innerHTML=window.GemwovenFormEffects.markup(key,form,A['form-aura-'+key]);

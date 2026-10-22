@@ -11217,6 +11217,7 @@
     "rows": 1,
     "frameDuration": 190,
     "prompt": "assets/heroes/forms/shadow/aura/prompt-used.txt",
+    "front": "assets/heroes/forms/shadow/aura/front/front.webp",
     "width": 256,
     "height": 256
   }

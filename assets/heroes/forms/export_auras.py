@@ -23,8 +23,8 @@ HEROES = ("fire", "earth", "ice", "lightning", "shadow")
 COUNT = 8
 CELL = 256
 FRAME_DURATION = {"shadow": 190}
-# Elements with no legitimate violet: magenta key spill in their glows is removed.
-DESPILL = {"fire", "ice", "earth"}
+# Auras with no legitimate violet: magenta key spill in their glows is removed.
+DESPILL = {"fire", "ice", "earth", "shadow"}  # lightning keeps its violet
 
 
 def despill(frame: Image.Image) -> Image.Image:
@@ -38,6 +38,30 @@ def despill(frame: Image.Image) -> Image.Image:
     a[..., 0] = np.where(spill > 24, np.minimum(r, g + 24 + (r - g) * .3), r)
     a[..., 2] = np.where(spill > 24, np.minimum(b, g + 24 + (b - g) * .3), b)
     return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
+
+
+# Optional front layer (aura/front/front-1..8.png) drawn over the body, e.g. Noct's waist sash.
+# The union of its frames is scaled to `width` and its lowest point placed on `bottom`, in the
+# 256px cell of the back layer (shoulder scarf about y 115, foot cushion top about y 195).
+FRONT = {"shadow": {"width": 116, "bottom": 170}}
+
+
+def export_front(hero: str, rel: str):
+    spec, folder = FRONT.get(hero), FORMS / hero / "aura" / "front"
+    if not spec or not (folder / "front-1.png").exists():
+        return None
+    frames = [Image.open(folder / f"front-{i}.png").convert("RGBA") for i in range(1, COUNT + 1)]
+    boxes = [f.getbbox() for f in frames]
+    left, top = min(b[0] for b in boxes), min(b[1] for b in boxes)
+    right, bottom = max(b[2] for b in boxes), max(b[3] for b in boxes)
+    scale = spec["width"] / (right - left)
+    strip = Image.new("RGBA", (CELL * COUNT, CELL), (0, 0, 0, 0))
+    for index, frame in enumerate(frames):
+        crop = despill(frame.crop((left, top, right, bottom)))
+        crop = crop.resize((round(crop.width * scale), round(crop.height * scale)), Image.Resampling.LANCZOS)
+        strip.alpha_composite(crop, (index * CELL + (CELL - crop.width) // 2, spec["bottom"] - crop.height))
+    strip.save(folder / "front.webp", "WEBP", lossless=True, quality=100, method=6, exact=True)
+    return f"{rel}/front/front.webp"
 
 
 def export(hero: str) -> bool:
@@ -65,6 +89,9 @@ def export(hero: str) -> bool:
         "frameDuration": FRAME_DURATION.get(hero, 160),
         "prompt": f"{rel}/prompt-used.txt",
     }
+    front = export_front(hero, rel)
+    if front:
+        meta["front"] = front
     # build.py and scripts/build_gemwoven.py read forms/<hero>/aura.json.
     (FORMS / hero / "aura.json").write_text(json.dumps(meta) + "\n", encoding="utf-8")
     print(f"[ok] {hero}: {rel}/aura.webp")

@@ -1,14 +1,16 @@
 .scene .hero-actor{--actor-size:calc(min(clamp(180px,48vw,213px),74cqh) * var(--hero-art-scale,1))}
 .scene .hero-actor[data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
 .scene .hero-actor[data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 9px var(--element)) brightness(1.06)}
-.scene .hero-actor .combat-form-aura{inset:12% 5% calc((1 - var(--foot-y,.94)) * 100%);z-index:0;pointer-events:none}
+.scene .hero-actor .combat-form-aura{inset:12% 5% calc((1 - var(--foot-y,.94)) * 100%);z-index:auto;pointer-events:none}
 .cast-star-form-2,.cast-star-form-3{mix-blend-mode:screen;filter:drop-shadow(0 0 6px var(--combat-main))}
 .cast-star-form-3{filter:drop-shadow(0 0 10px var(--combat-main))}
 .scene .hero-actor[data-hero-element="shadow"][data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
-.scene .hero-actor[data-hero-element="shadow"][data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 8px #06020f) drop-shadow(0 0 3px #8656ba)}
-.cast-shadow:is(.cast-star-form-2,.cast-star-form-3,.cast-form-weapon-2,.cast-form-weapon-3){mix-blend-mode:normal;--combat-light:#9871b8!important;--combat-main:#362047!important;filter:drop-shadow(0 0 9px #090310)}
+.scene .hero-actor[data-hero-element="shadow"][data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 8px #050506) drop-shadow(0 0 2px #8d8d94)}
+.cast-shadow:is(.cast-star-form-2,.cast-star-form-3,.cast-form-weapon-2,.cast-form-weapon-3){mix-blend-mode:normal;--combat-light:#b9b9c0!important;--combat-main:#2a2a30!important;filter:drop-shadow(0 0 9px #050506)}
 body.ambience-paused .hero-form-aura *{animation-play-state:paused!important}
 body.reduced-motion .hero-form-aura *{animation:none!important}
 /* The cloud ring belongs to the resting pose; it thins out while the hero lunges so cuts stay readable. */
 .scene .hero-actor .combat-form-aura{transition:opacity .18s ease-out}
 .scene .hero-actor.combat-v3-acting .combat-form-aura{opacity:.22}
+/* Combat sprites stand slightly above the aura box's bottom edge; seat Noct's cloud cushion under his boots. */
+.scene .hero-actor[data-hero-element="shadow"] .combat-form-aura .form-aura-band{translate:-50% 18%}

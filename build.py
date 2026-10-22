@@ -171,7 +171,7 @@ art['heroForms']={}
 art['formAuras']={}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
-    art['formAuras'][catalog.parent.name]={**data,'src':compact_image(data['file'])}
+    art['formAuras'][catalog.parent.name]={**data,'src':compact_image(data['file']),**({'frontSrc':compact_image(data['front'])} if data.get('front') else {})}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'));forms={}
     for form,entry in data['forms'].items():
