@@ -52,16 +52,35 @@ const formOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
   const key=state.key,form=combatHeroForm(key);
   // Six-star Noct's ultimate stages its own cast (outstretched hand and cursed fog).
-  if(form<3||key==='shadow')return formOriginalUltimate();
+  if(form<2||(form===3&&key==='shadow'))return formOriginalUltimate();
   const pending=[];heroFormCasting=true;
   try{
-    setSpriteAction('hero','cast',650);
-    heroFormSpell(key,form,combatV3Point('hero'),pending,true);
-    await wait(reduced?0:420);
-    heroFormSpell(key,form,combatV3Point('enemy'),pending);
+    if(form===3){setSpriteAction('hero','cast',650);heroFormSpell(key,form,combatV3Point('hero'),pending,true);await wait(reduced?0:420);}
+    formSkillStrike(key,form,pending);
     await formOriginalUltimate();await Promise.all(pending);
   }finally{heroFormCasting=false;if(state.hp>0)setSpriteAction('hero','idle');}
 };
+// Four- and six-star signature: a generated skill FX bursts on the foe just before the
+// ultimate's hits land (every rage skill shares the 0-3000 ms timeline), with its own sound;
+// the six-star strike is larger and adds an element flash and a heavier camera hit.
+function formSkillStrike(key,form,pending){
+  const sheet=ART.formSkillFx?.[key]?.[form];if(!sheet||reduced)return;
+  const delay=form===3?820:1250;
+  pending.push(wait(delay-120).then(()=>playCastSound(key,'form'+form,{volume:form===3?.36:.3,pan:.3})));
+  pending.push(wait(delay).then(()=>{
+    const target=combatV3Point('enemy'),size=Math.min($('scene').clientWidth*(form===3?.95:.75),target.width*(form===3?2.1:1.6));
+    const node=document.createElement('span');node.className=`form-skill-fx form-skill-${form} ${key}`;node.setAttribute('aria-hidden','true');
+    node.style.cssText=`left:${target.x}px;top:${target.y-target.height*.1}px;width:${size}px;height:${size}px;--fx-count:${sheet.count};background-image:url('${sheet.src}')`;
+    $('combatEffects').append(node);
+    const run=animate(node,[{backgroundPosition:'0% 0'},{backgroundPosition:'100% 0'}],{duration:sheet.count*sheet.frameDuration*(form===3?1.25:1),easing:`steps(${sheet.count},jump-none)`});
+    pending.push(run.finally(()=>node.remove()));
+    if(form===3){
+      const flash=document.createElement('span');flash.className='form-skill-flash '+key;flash.setAttribute('aria-hidden','true');$('combatEffects').append(flash);
+      pending.push(animate(flash,[{opacity:0},{opacity:.75,offset:.25},{opacity:0}],{duration:520}).finally(()=>flash.remove()));
+      pending.push(wait(sheet.frameDuration*3).then(()=>combatV3Camera(1,true,state.boss,pending)));
+    }else combatV3Camera(1,false,false,pending);
+  }));
+}
 const formOriginalAttack=attack;
 attack=async function(side,raw,options={}){
   const form=combatHeroForm(state.key),pending=[];

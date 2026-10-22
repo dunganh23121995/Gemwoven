@@ -52,6 +52,7 @@ cast_sfx=json.loads((root/'assets/audio/cast-sfx-manifest.json').read_text(encod
 cast_sfx.update(json.loads((root/'assets/audio/lumi-thunder-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/yuki-glacier-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/mika-nori-manifest.json').read_text(encoding='utf-8')))
+cast_sfx.update(json.loads((root/'assets/audio/form-skill-manifest.json').read_text(encoding='utf-8')))
 art['castSounds']={key:{'src':'data:audio/wav;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
@@ -168,6 +169,8 @@ def register_span(sheet):
         _span_cache[key]=[round(lo,4),round(hi,4)] if hi>lo else [0.0,1.0]
     sheet['span']=_span_cache[key]
 art['heroForms']={}
+form_skill_fx=json.loads((root/'assets/fx/forms/fx.json').read_text(encoding='utf-8'))
+art['formSkillFx']={hero:{form:{**sheet,'src':compact_image(sheet['file'])} for form,sheet in forms.items()} for hero,forms in form_skill_fx.items()}
 reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8'))
 art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
 art['formAuras']={}

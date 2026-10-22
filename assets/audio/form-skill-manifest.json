@@ -1,0 +1,95 @@
+{
+  "fire-form2": {
+    "file": "form-skills/fire-form2.wav",
+    "duration": 1.2,
+    "sources": [
+      "fire-launch.wav",
+      "fire-whoosh.mp3",
+      "fire-impact.wav"
+    ],
+    "sha256": "933cf2703e271b2f8bae460ba866985a339a9195ce90ede08a11282b9add2089"
+  },
+  "fire-form3": {
+    "file": "form-skills/fire-form3.wav",
+    "duration": 2.0,
+    "sources": [
+      "fire-finish.wav (reversed lead)",
+      "deep-boom.mp3",
+      "fire-whoosh.mp3",
+      "synth rumble"
+    ],
+    "sha256": "bae9f1d4e43f446a895bde78ad49a7df09bb96f8344e9da0fa50c2cdcbc176dd"
+  },
+  "ice-form2": {
+    "file": "form-skills/ice-form2.wav",
+    "duration": 1.3,
+    "sources": [
+      "ice-launch.wav",
+      "ice-crack.mp3",
+      "synth frost bells"
+    ],
+    "sha256": "3232686be8daf165b472e00a6b4fb7d8a6e25d79a397b63cd1f82c63606432f2"
+  },
+  "ice-form3": {
+    "file": "form-skills/ice-form3.wav",
+    "duration": 2.2,
+    "sources": [
+      "synth lotus bells",
+      "deep-boom.mp3",
+      "ice-finish.wav",
+      "ice-crack.mp3"
+    ],
+    "sha256": "9eabfb6225da9452cf7f1055889e25dd5468efd4379c21d73b06fe56e32a798c"
+  },
+  "earth-form2": {
+    "file": "form-skills/earth-form2.wav",
+    "duration": 1.3,
+    "sources": [
+      "rock-impact.mp3",
+      "earth-impact.wav",
+      "synth rumble and leaves"
+    ],
+    "sha256": "ae4908fb6b663f470d14846bce6fc869da7774664cfe7d9e759558756414aaed"
+  },
+  "earth-form3": {
+    "file": "form-skills/earth-form3.wav",
+    "duration": 2.2,
+    "sources": [
+      "synth rumble",
+      "earth-finish.wav",
+      "deep-boom.mp3",
+      "synth leaf storm",
+      "rock-impact.mp3"
+    ],
+    "sha256": "194d70cb77ab5236cf2cf75c0e5d77ea67e375ba97b79e0a2c41a0bd646325e2"
+  },
+  "lightning-form2": {
+    "file": "form-skills/lightning-form2.wav",
+    "duration": 1.3,
+    "sources": [
+      "simon-spiers-437243-hq.mp3 cracks",
+      "lightning-impact.wav"
+    ],
+    "sha256": "bedbdde4eba0446bca1ad0d79b699f5a6b6057959491f726b892ac89e5cf1e4f"
+  },
+  "lightning-form3": {
+    "file": "form-skills/lightning-form3.wav",
+    "duration": 2.3,
+    "sources": [
+      "synth constellation chime",
+      "simon-spiers-437243-hq.mp3 cracks",
+      "seth-m-458015-hq.mp3 roll",
+      "lightning-finish.wav"
+    ],
+    "sha256": "9dab66e241ddccd7c5e63921303d1b6869ef8e8f5ebea5abe5bd208f3e473b1c"
+  },
+  "shadow-form2": {
+    "file": "form-skills/shadow-form2.wav",
+    "duration": 1.1,
+    "sources": [
+      "noct-sfx slash2/slash3/finish",
+      "synth wind"
+    ],
+    "sha256": "86b78b9ba6f5467736c2ccf76a0edad786c430f33574b313650c5140728f72cc"
+  }
+}

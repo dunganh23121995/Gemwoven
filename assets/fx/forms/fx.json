@@ -1,0 +1,57 @@
+{
+  "earth": {
+    "2": {
+      "file": "assets/fx/forms/earth-2.webp",
+      "count": 8,
+      "frameDuration": 85
+    },
+    "3": {
+      "file": "assets/fx/forms/earth-3.webp",
+      "count": 8,
+      "frameDuration": 85
+    }
+  },
+  "fire": {
+    "2": {
+      "file": "assets/fx/forms/fire-2.webp",
+      "count": 8,
+      "frameDuration": 85
+    },
+    "3": {
+      "file": "assets/fx/forms/fire-3.webp",
+      "count": 8,
+      "frameDuration": 85
+    }
+  },
+  "ice": {
+    "2": {
+      "file": "assets/fx/forms/ice-2.webp",
+      "count": 8,
+      "frameDuration": 85
+    },
+    "3": {
+      "file": "assets/fx/forms/ice-3.webp",
+      "count": 8,
+      "frameDuration": 85
+    }
+  },
+  "lightning": {
+    "2": {
+      "file": "assets/fx/forms/lightning-2.webp",
+      "count": 8,
+      "frameDuration": 85
+    },
+    "3": {
+      "file": "assets/fx/forms/lightning-3.webp",
+      "count": 8,
+      "frameDuration": 85
+    }
+  },
+  "shadow": {
+    "2": {
+      "file": "assets/fx/forms/shadow-2.webp",
+      "count": 8,
+      "frameDuration": 85
+    }
+  }
+}

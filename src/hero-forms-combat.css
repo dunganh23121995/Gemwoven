@@ -14,3 +14,12 @@ body.reduced-motion .hero-form-aura *{animation:none!important}
 .scene .hero-actor.combat-v3-acting .combat-form-aura{opacity:.22}
 /* Combat sprites stand slightly above the aura box's bottom edge; seat Noct's cloud cushion under his boots. */
 .scene .hero-actor[data-hero-element="shadow"] .combat-form-aura .form-aura-band{translate:-50% 18%}
+/* Star-form skill strikes (assets/fx/forms): one generated sheet, its own clock. */
+.form-skill-fx{position:absolute;pointer-events:none;z-index:7;translate:-50% -50%;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%}
+.form-skill-fx.form-skill-3{z-index:8;filter:drop-shadow(0 0 10px var(--combat-glow,#fff8))}
+.form-skill-fx.fire{--combat-glow:#ffb35e}.form-skill-fx.ice{--combat-glow:#bfefff}.form-skill-fx.earth{--combat-glow:#d8f0a0}.form-skill-fx.lightning{--combat-glow:#f6dc8a}.form-skill-fx.shadow{--combat-glow:#0008}
+.form-skill-flash{position:absolute;inset:0;pointer-events:none;z-index:9;opacity:0;mix-blend-mode:screen}
+.form-skill-flash.fire{background:radial-gradient(circle at 72% 55%,#ffe6a8,#ff8a3c66 40%,transparent 75%)}
+.form-skill-flash.ice{background:radial-gradient(circle at 72% 55%,#ffffff,#a6e8ff66 40%,transparent 75%)}
+.form-skill-flash.earth{background:radial-gradient(circle at 72% 55%,#fff4c4,#9fd86a66 40%,transparent 75%)}
+.form-skill-flash.lightning{background:radial-gradient(circle at 72% 45%,#fffbe8,#c9a2ff66 40%,transparent 75%)}
