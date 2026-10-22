@@ -1,0 +1,54 @@
+{
+  "generator": "Codex CLI built-in image_gen via codex_image_gen.py",
+  "created": "2026-10-23",
+  "references": [
+    "source/action-identity.png (512px magenta crop of accepted idle raw-sheet cell 1)",
+    "source/action-anchor.png (existing current-design 3x2 anchor)"
+  ],
+  "actions": {
+    "attack": {
+      "accepted": {
+        "model": "gpt-6.1-sol",
+        "effort": "low",
+        "attempt": 2,
+        "raw": "attack/raw-sheet.png",
+        "sha256": "15087c7aeddc8640f64590241a58f78fd7dc04f9d0e174f2c9eac704f6ac7db9"
+      },
+      "rejected": [
+        {
+          "model": "gpt-6.1-sol",
+          "effort": "low",
+          "raw": "attack/rejected/raw-sheet-try1-sol-low.png",
+          "reason": "staff crescent and braid crossed into neighbouring raw cells (frames 3-4)"
+        }
+      ]
+    },
+    "cast": {
+      "accepted": {
+        "model": "gpt-6.1-sol",
+        "effort": "low",
+        "attempt": 1,
+        "raw": "cast/raw-sheet.png",
+        "sha256": "2e5e24c353d73ae07dd14ae60dfc7e3689817cecfb15446ac0427dc2bb0062ab"
+      }
+    },
+    "run": {
+      "accepted": {
+        "model": "gpt-6.1-sol",
+        "effort": "low",
+        "attempt": 2,
+        "raw": "run/raw-sheet.png",
+        "sha256": "7d024509d4027e126abfe4e533bf22d9c4cab2b63323ac48e52cf1c62672e380"
+      },
+      "rejected": [
+        {
+          "model": "gpt-6.1-sol",
+          "effort": "low",
+          "raw": "run/rejected/raw-sheet-try1-sol-low.png",
+          "reason": "weak stride: frames 1-3 and 4-6 nearly identical leg poses"
+        }
+      ]
+    }
+  },
+  "processing": "generate2dsprite.py process with character-scale-profile.json, strict QC; then translation-only visible-bottom alignment to y=241 (same as idle)"
+}
