@@ -11,12 +11,17 @@ function spriteMarkup(family,key,action='idle'){
   const {sheet}=spriteDefinition(family,key,action),name=family==='hero'?HEROES[key].name:MONSTERS[key].name;
   return `<span class="sprite-body" role="img" aria-label="${name}" data-family="${family}" data-key="${key}" data-action="${action}" data-frame="0" data-loop="true" style="background-image:url('${sheet.src}');background-size:${sheet.cols*100}% ${sheet.rows*100}%;background-position:0% 0%"></span>`;
 }
+function spriteCellPosition(sheet,frame){
+  const col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
+  return `${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
+}
 function spriteApply(el,action,index){
   if(!el)return;
   const {sheet,action:mapped}=spriteDefinition(el.dataset.family,el.dataset.key,action);
   const frame=Math.max(0,Math.min(sheet.count-1,Number.isFinite(index)?index:0)),col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   if(el.dataset.sheet!==mapped){el.style.backgroundImage=`url('${sheet.src}')`;el.style.backgroundSize=`${sheet.cols*100}% ${sheet.rows*100}%`;el.dataset.sheet=mapped;}
-  el.style.backgroundPosition=`${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
+  el.style.backgroundPosition=spriteCellPosition(sheet,frame);
+  if(action!=='idle')el.style.setProperty('--tween','0');
   el.dataset.action=action;el.dataset.frame=frame;
   updateActorHead(el,action,frame);
   if(el.dataset.family==='hero'&&el.dataset.key==='earth')updateNoriShieldAura(el);
@@ -34,7 +39,7 @@ function setSpriteFrame(side,action,index){
 }
 function spriteTick(now){
   requestAnimationFrame(spriteTick);
-  if(now-spriteFrameClock<45||document.hidden)return;
+  if(now-spriteFrameClock<30||document.hidden)return;
   spriteFrameClock=now;
   const modalOpen=$('selectDialog').open||$('resultDialog').open;
   document.querySelectorAll('.sprite-body').forEach(el=>{
@@ -49,8 +54,10 @@ function spriteTick(now){
     if(el.dataset.loop==='true'){
       // Only dense, authored loops advance at rest. One/two/four-pose atlases
       // otherwise pop at shoulders, eyes and weapons; CSS supplies a smooth breath.
-      const frame=def.count>=8?Math.floor(Math.max(0,now-playback.start)/(def.frameDuration||90))%def.count:0;
+      const progress=def.count>=8?Math.max(0,now-playback.start)/(def.frameDuration||90):0,frame=Math.floor(progress)%def.count;
       if(+el.dataset.frame!==frame||el.dataset.action!=='idle')spriteApply(el,'idle',frame);
+      // Idle breathes continuously: the next pose fades in over the current one (::after layer).
+      if(def.count>=8){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
     }else{
       const elapsed=Math.max(0,now-playback.start);
       const fallbackHurt=playback.action==='hurt'&&spriteDefinition(el.dataset.family,el.dataset.key,'hurt').action!=='hurt';

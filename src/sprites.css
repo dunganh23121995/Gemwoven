@@ -17,3 +17,7 @@
 .brand b,dialog h2,.class-card strong{font-family:Cambria,Georgia,"Times New Roman",serif}
 .hint-button,.icon-button{position:relative}.hint-button:before{content:"";position:absolute;inset:-9px -3px}.icon-button:before{content:"";position:absolute;inset:-3px}
 @media(max-width:370px){.character-preview>.sprite-body{height:185px;width:185px}.special-tier{font-size:7px;line-height:9px}.boss-sigil{top:9%}}
+
+/* Idle in-betweens: the next idle pose cross-fades over the current one, so breathing loops glide. */
+.actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:inherit;background-size:inherit;background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
+body.reduced-motion .actor>.sprite-body::after{display:none}

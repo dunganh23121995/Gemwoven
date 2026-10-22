@@ -35,7 +35,9 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
             cw,ch=sheet.width//idle['cols'],sheet.height//idle['rows']
             frames=[sheet.crop(((i%idle['cols'])*cw,(i//idle['cols'])*ch,(i%idle['cols']+1)*cw,(i//idle['cols']+1)*ch)).convert('RGBA') for i in range(idle['count'])]
             target=(ROOT/entry['poster']).with_name('hub-idle.webp')
-            frames[0].save(target,save_all=True,append_images=frames[1:],duration=idle.get('frameDuration',120),loop=0,lossless=True)
+            # Two cross-faded in-betweens per pose pair so the resting loop glides instead of stepping.
+            tweened=[f if not k else Image.blend(f,frames[(i+1)%len(frames)],k/3) for i,f in enumerate(frames) for k in range(3)]
+            tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=round(idle.get('frameDuration',120)/3),loop=0,lossless=True)
             bounds=frames[0].getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
             merged[f'form-idle-{hero}-{form}']={'file':target.relative_to(ROOT).as_posix(),'width':cw,'height':ch,'bodyAnchor':anchor,'footBounds':list(bounds)}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
