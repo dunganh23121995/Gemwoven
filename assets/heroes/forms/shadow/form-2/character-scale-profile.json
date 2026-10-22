@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "name": "noct-form2-subtle",
+  "name": "noct-form2-moon-blade",
   "processing": {
     "cell_size": 256,
     "fit_scale": 0.88,
@@ -23,9 +23,9 @@
     "mode": "idle",
     "rows": 4,
     "cols": 2,
-    "body_scale_mean": 0.548116909815421,
-    "body_scale_cv": 0.007082940469409505,
-    "anchor_y_mean": 0.9135057471264367
+    "body_scale_mean": 0.5387559762334326,
+    "body_scale_cv": 0.01620860234397424,
+    "anchor_y_mean": 0.8747126436781609
   },
   "qc": {
     "max_body_scale_drift": 0.1

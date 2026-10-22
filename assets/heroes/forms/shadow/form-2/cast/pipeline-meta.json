@@ -1,7 +1,7 @@
 {
   "target": "player",
   "mode": "cast",
-  "prompt": "Use case: stylized-concept. ONE six-frame CAST body animation for exact restrained Noct four-star rogue shown. Image1 locks identity, image2 locks anatomy/camera scale. Plain black hood, dark masked face with small pale blue non-glowing eyes, charcoal ragged cloak, brown leather belts, modest gunmetal bracers/boots. ONE short matte steel dagger stays down next to right hip. No new costume design. No glow/emission/aura/luminous outlines anywhere. EXACT3columns\u00d72rows square cells1536x1024. ONE compact cast action row-major: ready; left empty hand touches center chest; head inclines slightly; rotate left wrist palm upward directly beside chest; open fingers and move palm only a tiny distance forward while elbow remains BENT and touching waist; returnready. CRITICAL: every hand MUST STAY INSIDE BODY WIDTH, left wrist never extends farther than rightmost boot; do NOT fully extend the arm, no reaching outward. Keep entire pose within central78% cell width, including cape/dagger/hand, generous magenta safe padding all sides. Same head/torso/limb size as reference, body83% cellheight, feet94%cellheight, same root/camera in all six cells. No perframe zoom. Natural matte materials, no particles/projectiles/magiccircle/smoke/dust/mist/trails, no floor/shadow. 3/4facingRIGHT, cleanHDpaintedchibi. Background100% solid #FF00FF with no gradient, no gridlines/text/labels/borders.\n",
+  "prompt": "Image 1 is the exact character identity and art reference: Noct four-star form \"Da Anh Kiem Si\", a chibi hooded shadow swordsman in clean HD smooth painted game art (NOT pixel art). Keep him exactly: soft pointed black hood, completely black hidden face with ONLY two small luminous pale lavender-violet eyes, dark scarf, dark gunmetal forearm and shin guards half swallowed by a long layered black half-robe and torn cloak whose ragged edges are lined with deep violet, small dark boots; ONE long single-edged BLACK CRESCENT MOON-BLADE (strongly curved like a crescent moon, blackened steel, thin pale silver-violet edge, dark wrapped grip, small round guard). NO scythe, NO dagger, NO second weapon, NO silver chest plate, NO visible face or skin.\nImage 2 is a scale-and-root template made from the same accepted character. Preserve Image 2 exact cell locations, fixed camera distance, standing-equivalent anatomical scale, body-root position at the horizontal center of each cell, grounded foot-contact line at about 94% of cell height, and padding. Change only the action pose in each slot. Never zoom or resize a pose to fill its cell. Hood, torso, robe, boots and blade size must stay identical to Image 2 in every frame. Do not reproduce Image 2 as-is and do not draw any guide, border or separator.\n\nCreate a 6-frame SHADOW-STEP CAST animation sheet, body only (used for a gathering stance and then dashing strikes). Frame 1: ready stance, blade held diagonally in front of the body, tip down near the front boot. Frame 2: blade raised upright in front of the hood, free hand touching the flat of the blade, focusing, eyes a bit brighter. Frame 3: sinks into a low crouched draw stance, knees bent, blade held behind him angled DOWN with the tip near the ground just behind his rear heel, cloak gathering. Frame 4: forward-leaning low glide pose, body lowered and leaning to the right, blade trailing behind angled down, tip near the ground close to his rear heel, cloak tatters streaming back. Frame 5: explosive dash-lunge pose, torso stretched far forward, front knee deeply bent, rear leg extended, blade swept back and angled down along his rear leg, tip near the rear heel, cloak streaming back (keep the whole pose inside the cell; compress rather than translate). Frame 6: rise back to the ready stance of frame 1 (blade tip down near the front boot).\n\nBLADE CONTAINMENT (most important): the curved blade is the only long object. Imagine an invisible safe box covering the central 84% of every cell (8% margin on each side). The ENTIRE blade, from pommel to tip, plus the whole body and cloak, must stay inside that safe box in EVERY frame. During swings bend the elbow and keep the blade close to the body or angled up/down instead of reaching sideways; never let the tip point horizontally toward a neighbouring cell. Nothing from one frame may appear in another cell.\n\nFacing RIGHT in 3/4 view in every frame. Body plus blade only: NO slash arc, NO weapon trail, NO motion lines, NO particles, NO sparks, NO smoke, NO aura, NO afterimages, NO magic circle (effects are separate runtime layers). Keep the blade compact and close to the body so it stays fully inside its own cell; leave a clear magenta margin of at least 5% on all four sides of every cell. Same camera distance and same body scale in all 6 frames; body center stays near the cell center; feet stay on the same ground line except where noted.\nExactly 6 frames in a 3 columns x 2 rows grid of equal square 512x512 cells, total image 1536x1024, read left-to-right then next row. Background 100% solid flat #FF00FF magenta in every cell, no gradient, no floor, no ground shadow, no text, no labels, no numbers, no gridlines, no borders, no frames between cells. Clean HD smooth painted, NOT pixel art.\n",
   "role": "",
   "input": "assets\\heroes\\forms\\shadow\\form-2\\cast\\raw-sheet.png",
   "threshold": 100,
@@ -41,57 +41,57 @@
         512
       ],
       "component_mode": "largest",
-      "component_count": 1,
-      "selected_component_area": 85261,
+      "component_count": 13,
+      "selected_component_area": 82385,
       "selected_component_bbox": [
-        69,
-        51,
-        434,
-        477
+        96,
+        70,
+        504,
+        479
       ],
       "crop_bbox": [
-        69,
-        51,
-        434,
-        477
+        96,
+        70,
+        504,
+        479
       ],
       "source_frame_size": [
         504,
         504
       ],
       "is_empty": false,
-      "subject_area": 85261,
-      "body_core_area": 74741,
-      "body_area_fraction": 0.29423737087427565,
+      "subject_area": 82385,
+      "body_core_area": 62642,
+      "body_area_fraction": 0.2466065129755606,
       "anchor_source": [
-        255.0,
-        457.0
+        277.0,
+        452.0
       ],
-      "source_edge_touch": false,
+      "source_edge_touch": true,
       "output_edge_touch": false,
-      "edge_touch": false,
+      "edge_touch": true,
       "output_size": [
-        163,
-        190
+        182,
+        183
       ],
       "preserved_subject_size": [
-        163,
-        190
+        182,
+        183
       ],
       "paste_position": [
-        45,
-        60
+        47,
+        70
       ],
       "unclamped_paste_position": [
-        45,
-        60
+        47,
+        70
       ],
       "paste_clamped": false,
       "aligned_bbox": [
-        45,
-        60,
-        208,
-        250
+        47,
+        70,
+        229,
+        253
       ],
       "scale_adjustment": 1.0,
       "source_to_output_scale": 0.446984126984127,
@@ -117,57 +117,57 @@
         512
       ],
       "component_mode": "largest",
-      "component_count": 2,
-      "selected_component_area": 84527,
+      "component_count": 13,
+      "selected_component_area": 86018,
       "selected_component_bbox": [
-        69,
-        51,
-        433,
-        477
+        68,
+        25,
+        424,
+        480
       ],
       "crop_bbox": [
-        69,
-        51,
-        433,
-        477
+        68,
+        25,
+        424,
+        480
       ],
       "source_frame_size": [
         504,
         504
       ],
       "is_empty": false,
-      "subject_area": 84527,
-      "body_core_area": 74634,
-      "body_area_fraction": 0.29381613756613756,
+      "subject_area": 86018,
+      "body_core_area": 76506,
+      "body_area_fraction": 0.3011857520786092,
       "anchor_source": [
-        254.0,
-        458.0
+        279.0,
+        459.0
       ],
       "source_edge_touch": false,
       "output_edge_touch": false,
       "edge_touch": false,
       "output_size": [
-        163,
-        190
+        159,
+        203
       ],
       "preserved_subject_size": [
-        163,
-        190
+        159,
+        203
       ],
       "paste_position": [
-        45,
-        59
+        34,
+        47
       ],
       "unclamped_paste_position": [
-        45,
-        59
+        34,
+        47
       ],
       "paste_clamped": false,
       "aligned_bbox": [
-        45,
-        59,
-        208,
-        249
+        34,
+        47,
+        193,
+        250
       ],
       "scale_adjustment": 1.0,
       "source_to_output_scale": 0.446984126984127,
@@ -193,57 +193,57 @@
         512
       ],
       "component_mode": "largest",
-      "component_count": 1,
-      "selected_component_area": 84974,
+      "component_count": 11,
+      "selected_component_area": 73259,
       "selected_component_bbox": [
-        69,
-        51,
-        434,
-        477
+        5,
+        158,
+        441,
+        479
       ],
       "crop_bbox": [
-        69,
-        51,
-        434,
-        477
+        5,
+        158,
+        441,
+        479
       ],
       "source_frame_size": [
         504,
         504
       ],
       "is_empty": false,
-      "subject_area": 84974,
-      "body_core_area": 74618,
-      "body_area_fraction": 0.2937531494079113,
+      "subject_area": 73259,
+      "body_core_area": 57431,
+      "body_area_fraction": 0.22609205719324768,
       "anchor_source": [
-        254.0,
-        457.0
+        253.0,
+        465.0
       ],
       "source_edge_touch": false,
       "output_edge_touch": false,
       "edge_touch": false,
       "output_size": [
-        163,
-        190
+        195,
+        143
       ],
       "preserved_subject_size": [
-        163,
-        190
+        195,
+        143
       ],
       "paste_position": [
-        45,
-        60
+        17,
+        104
       ],
       "unclamped_paste_position": [
-        45,
-        60
+        17,
+        104
       ],
       "paste_clamped": false,
       "aligned_bbox": [
-        45,
-        60,
-        208,
-        250
+        17,
+        104,
+        212,
+        247
       ],
       "scale_adjustment": 1.0,
       "source_to_output_scale": 0.446984126984127,
@@ -269,57 +269,57 @@
         1024
       ],
       "component_mode": "largest",
-      "component_count": 1,
-      "selected_component_area": 85569,
+      "component_count": 7,
+      "selected_component_area": 75149,
       "selected_component_bbox": [
-        69,
-        52,
-        434,
-        477
+        24,
+        133,
+        504,
+        435
       ],
       "crop_bbox": [
-        69,
-        52,
-        434,
-        477
+        24,
+        133,
+        504,
+        435
       ],
       "source_frame_size": [
         504,
         504
       ],
       "is_empty": false,
-      "subject_area": 85569,
-      "body_core_area": 74418,
-      "body_area_fraction": 0.29296579743008316,
+      "subject_area": 75149,
+      "body_core_area": 47915,
+      "body_area_fraction": 0.18862985008818342,
       "anchor_source": [
-        255.0,
-        457.0
+        230.0,
+        418.0
       ],
-      "source_edge_touch": false,
+      "source_edge_touch": true,
       "output_edge_touch": false,
-      "edge_touch": false,
+      "edge_touch": true,
       "output_size": [
-        163,
-        190
+        215,
+        135
       ],
       "preserved_subject_size": [
-        163,
-        190
+        215,
+        135
       ],
       "paste_position": [
-        45,
-        60
+        36,
+        114
       ],
       "unclamped_paste_position": [
-        45,
-        60
+        36,
+        114
       ],
       "paste_clamped": false,
       "aligned_bbox": [
-        45,
-        60,
-        208,
-        250
+        36,
+        114,
+        251,
+        249
       ],
       "scale_adjustment": 1.0,
       "source_to_output_scale": 0.446984126984127,
@@ -345,56 +345,56 @@
         1024
       ],
       "component_mode": "largest",
-      "component_count": 1,
-      "selected_component_area": 85599,
+      "component_count": 8,
+      "selected_component_area": 80198,
       "selected_component_bbox": [
-        69,
-        52,
-        434,
-        477
+        5,
+        133,
+        504,
+        431
       ],
       "crop_bbox": [
-        69,
-        52,
-        434,
-        477
+        5,
+        133,
+        504,
+        431
       ],
       "source_frame_size": [
         504,
         504
       ],
       "is_empty": false,
-      "subject_area": 85599,
-      "body_core_area": 74458,
-      "body_area_fraction": 0.2931232678256488,
+      "subject_area": 80198,
+      "body_core_area": 51773,
+      "body_area_fraction": 0.2038178697404888,
       "anchor_source": [
-        255.0,
-        458.0
+        249.0,
+        410.0
       ],
-      "source_edge_touch": false,
+      "source_edge_touch": true,
       "output_edge_touch": false,
-      "edge_touch": false,
+      "edge_touch": true,
       "output_size": [
-        163,
-        190
+        223,
+        133
       ],
       "preserved_subject_size": [
-        163,
-        190
+        223,
+        133
       ],
       "paste_position": [
-        45,
-        60
+        19,
+        117
       ],
       "unclamped_paste_position": [
-        45,
-        60
+        19,
+        117
       ],
       "paste_clamped": false,
       "aligned_bbox": [
-        45,
-        60,
-        208,
+        19,
+        117,
+        242,
         250
       ],
       "scale_adjustment": 1.0,
@@ -421,57 +421,57 @@
         1024
       ],
       "component_mode": "largest",
-      "component_count": 1,
-      "selected_component_area": 85174,
+      "component_count": 22,
+      "selected_component_area": 83648,
       "selected_component_bbox": [
-        69,
-        52,
-        434,
-        477
+        66,
+        62,
+        484,
+        472
       ],
       "crop_bbox": [
-        69,
-        52,
-        434,
-        477
+        66,
+        62,
+        484,
+        472
       ],
       "source_frame_size": [
         504,
         504
       ],
       "is_empty": false,
-      "subject_area": 85174,
-      "body_core_area": 74701,
-      "body_area_fraction": 0.29407990047871,
+      "subject_area": 83648,
+      "body_core_area": 70986,
+      "body_area_fraction": 0.2794548374905518,
       "anchor_source": [
-        254.5,
-        458.0
+        280.0,
+        450.0
       ],
       "source_edge_touch": false,
       "output_edge_touch": false,
       "edge_touch": false,
       "output_size": [
-        163,
-        190
+        187,
+        183
       ],
       "preserved_subject_size": [
-        163,
-        190
+        187,
+        183
       ],
       "paste_position": [
-        45,
-        60
+        32,
+        68
       ],
       "unclamped_paste_position": [
-        45,
-        60
+        32,
+        68
       ],
       "paste_clamped": false,
       "aligned_bbox": [
-        45,
-        60,
-        208,
-        250
+        32,
+        68,
+        219,
+        251
       ],
       "scale_adjustment": 1.0,
       "source_to_output_scale": 0.446984126984127,
@@ -486,8 +486,34 @@
       "shared_feet_y": 241
     }
   ],
-  "edge_touch_frames": [],
-  "source_edge_touch_frames": [],
+  "edge_touch_frames": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "source_edge_touch_frames": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
   "output_edge_touch_frames": [],
   "empty_frames": [],
   "paste_clamped_frames": [],
@@ -495,15 +521,15 @@
     "frame_count": 6,
     "valid_frame_count": 6,
     "empty_count": 0,
-    "edge_touch_count": 0,
+    "edge_touch_count": 3,
     "paste_clamped_count": 0,
-    "body_scale_mean": 0.5419062812174392,
-    "output_subject_height_mean": 190.0,
-    "body_scale_cv": 0.0007965096441362322,
-    "anchor_x_std": 0.0008904042339838765,
-    "anchor_y_std": 0.0009920634920634885,
-    "anchor_y_mean": 0.9077380952380953,
-    "profile_body_scale_drift": 0.011330846552559892
+    "body_scale_mean": 0.48921706983382457,
+    "output_subject_height_mean": 163.33333333333334,
+    "body_scale_cv": 0.08255508305184565,
+    "anchor_x_std": 0.037202013519643494,
+    "anchor_y_std": 0.041154362926201185,
+    "anchor_y_mean": 0.8776455026455028,
+    "profile_body_scale_drift": 0.09195054641610845
   },
   "output_origin": [
     128.0,
@@ -512,16 +538,16 @@
   "scale_profile": {
     "path": "assets\\heroes\\forms\\shadow\\form-2\\character-scale-profile.json",
     "version": 1,
-    "name": "noct-form2-subtle",
+    "name": "noct-form2-moon-blade",
     "reference_mode": "idle",
     "processing_contract_applied": true
   },
   "qc_config": {
-    "strict_qc": true,
+    "strict_qc": false,
     "reject_edge_touch": false,
     "allow_source_edge_touch": false,
-    "max_body_scale_cv": 0.08,
-    "max_anchor_y_std": 0.05,
+    "max_body_scale_cv": null,
+    "max_anchor_y_std": null,
     "max_profile_scale_drift": 0.1
   }
 }
