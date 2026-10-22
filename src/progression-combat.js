@@ -1,7 +1,7 @@
 /* Connect the authored combat choreography to persistent progression. */
 const progressionRules=window.GemwovenProgression;
 const progressionSandbox=new URLSearchParams(location.search).has('qa')&&!new URLSearchParams(location.search).has('encounter');
-let progressionStore=null,progressionBattle=null,progressionError='',progressionReported=false,progressionReward={},progressionCasting=false,progressionTurn=0,progressionDot=null,progressionBossCast=0;
+let progressionVeil=0,progressionStore=null,progressionBattle=null,progressionError='',progressionReported=false,progressionReward={},progressionCasting=false,progressionTurn=0,progressionDot=null,progressionBossCast=0;
 const progressionProcs=new Set();
 let progressionEnemyDot=null,progressionEnemyCharge=1;
 function progressionMusicKey(){const theme=progressionBattle?.music;return theme&&ART.music?.[theme]?theme:state.enemyKey;}
@@ -67,7 +67,7 @@ startStage=function(){
   if(progressionError){$('startBtn').disabled=true;message(progressionError);return;}
   if(progressionBattle){state.key=progressionBattle.hero;state.enemyKey=progressionBattle.enemyKey;state.stage=Math.max(1,Math.ceil(progressionBattle.recommended/5));HEROES[state.key].hp=progressionBattle.stats.hp;}
   progressionOriginalStart();
-  progressionProcs.clear();progressionTurn=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;
+  progressionProcs.clear();progressionTurn=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.mode==='pvp'?Math.round(HEROES[state.key].hp*1.15):progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':progressionBattle.mode==='pvp'?'Đấu tập AI; chỉ số chuẩn hóa.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
 const progressionOriginalRender=renderActors;
@@ -103,7 +103,19 @@ showHeroDetail=function(){
   $('heroStatNote').textContent=progressionBattle.mode==='pvp'||progressionIsDuel()?'Đấu tập dùng chỉ số chuẩn hóa: kỹ năng cấp 1, không trang bị.':'Chỉ số đã tính cấp, sao, tiến hóa, kỹ năng và trang bị của trận này; sát thương còn chịu khắc hệ và liên hoàn.';
 };
 const progressionOriginalDamage=damage;
+// Six-star Noct: a veiled hero takes nothing from the enemy, and the ultimate's cuts ignore armour.
 damage=function(side,raw,ledger=null){
+  if(side==='enemy'&&progressionVeil>0)return progressionOriginalDamage(side,0,ledger);
+  if(side!=='hero'||!progressionCasting||!progressionKit().pierceArmor)return progressionDamage(side,raw,ledger);
+  const armor=state.enemyArmor;state.enemyArmor=0;
+  try{return progressionDamage(side,raw,ledger);}finally{state.enemyArmor=armor;}
+};
+const progressionOriginalNumber=combatV3Number;
+combatV3Number=function(side,text,kind,...rest){
+  if(side==='hero'&&progressionVeil>0&&/^(CHẶN 0|-0)$/.test(String(text)))return progressionOriginalNumber(side,'NÉ','armor',...rest);
+  return progressionOriginalNumber(side,text,kind,...rest);
+};
+function progressionDamage(side,raw,ledger=null){
   if(!progressionBattle)return progressionOriginalDamage(side,raw,ledger);
   const s=progressionBattle.stats,kit=progressionKit(progressionBattle.hero);
   let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.mode==='pvp'?1.8:progressionBattle.enemyAttack;
@@ -119,7 +131,7 @@ damage=function(side,raw,ledger=null){
     if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<.12&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
   }
   update();return result;
-};
+}
 const progressionOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
   progressionCasting=true;
@@ -137,6 +149,7 @@ heroUltimate=async function(){
       if(kit.mutation&&state.key==='shadow')await progressionShowResult('enemy',applyCombatDamage('enemy',Math.round(kit.echo*attackStat)),'TÀN ẢNH',1);
       update();
     }
+    if(kit.veil&&state.hp>0&&state.enemyHp>0){progressionVeil=kit.veil;actor('hero').dataset.veiled='true';popActorSkill('hero','HÓA MỜ',false);playNoctSound('veil',{volume:.3});}
   }finally{progressionCasting=false;}
 };
 const progressionOriginalEnemy=enemyAction;
@@ -146,6 +159,19 @@ enemyAction=async function(){
     if(state.frozen||state.stunned){state.frozen=false;state.stunned=false;message('Người chơi 2 bị đóng băng, bỏ qua lượt.');return;}
     await opponentBoardTurn();await castReadyUltimates();plannedIntent=intent();return;
   }
+  // While veiled, undo every harmful change the enemy turn makes (drain, new damage-over-time, freeze).
+  const veiled=progressionVeil>0,guard={energy:state.energy,dot:progressionEnemyDot};
+  try{await progressionEnemyTurn();}finally{
+    if(veiled){
+      if(state.energy<guard.energy)state.energy=guard.energy;
+      if(progressionEnemyDot&&progressionEnemyDot!==guard.dot)progressionEnemyDot=guard.dot?.turns>0?guard.dot:null;
+      state.playerFrozen=false;
+      if(--progressionVeil<=0){progressionVeil=0;delete actor('hero').dataset.veiled;}
+      update();
+    }
+  }
+};
+async function progressionEnemyTurn(){
   if(progressionDot?.turns>0&&state.enemyHp>0){progressionDot.turns--;const amount=progressionDot.amount;if(!progressionDot.turns)progressionDot=null;await progressionShowResult('enemy',applyCombatDamage('enemy',amount),'Thiêu đốt');}
   if(progressionEnemyDot&&state.hp>0){const dot=progressionEnemyDot;const result=damage('enemy',dot.raw);await progressionShowResult('hero',result,dot.name);if(--dot.turns<=0)progressionEnemyDot=null;if(state.hp<=0)return;}
   if(progressionBattle?.tactical&&typeof expeditionEnemyTurn==='function')await expeditionEnemyTurn();else await progressionOriginalEnemy();
@@ -157,7 +183,7 @@ enemyAction=async function(){
     const kit=progressionKit();if(kit.regen){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.max(1,Math.round(HEROES[state.key].hp*kit.regen)));state.hp+=gained;progressionShowGain('hero','heal',gained);}
   }
   progressionProcs.clear();update();
-};
+}
 const progressionOriginalFinish=finishBattle;
 finishBattle=async function(){
   if(progressionBattle&&!progressionReported&&(state.hp<=0||state.enemyHp<=0)){

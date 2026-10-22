@@ -1,0 +1,17 @@
+{
+  "mist": {
+    "file": "assets/fx/noct/mist.webp",
+    "count": 8,
+    "frameDuration": 110
+  },
+  "slash": {
+    "file": "assets/fx/noct/slash.webp",
+    "count": 6,
+    "frameDuration": 40
+  },
+  "hook": {
+    "file": "assets/fx/noct/hook.webp",
+    "count": 6,
+    "frameDuration": 60
+  }
+}

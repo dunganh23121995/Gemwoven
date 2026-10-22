@@ -51,7 +51,8 @@ function heroFormSpell(key,form,point,pending,opening=false){
 const formOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
   const key=state.key,form=combatHeroForm(key);
-  if(form<3)return formOriginalUltimate();
+  // Six-star Noct's ultimate stages its own cast (outstretched hand and cursed fog).
+  if(form<3||key==='shadow')return formOriginalUltimate();
   const pending=[];heroFormCasting=true;
   try{
     setSpriteAction('hero','cast',650);

@@ -36,7 +36,7 @@
       {name:'Thiên Tinh Lôi Chủ',weapon:'Thương quỹ đạo thiên hà',skill:'Cửu Thiên Tinh Phạt',power:1.25,signature:'Giáng 9 tia sét thay vì 5.'}],
     shadow:[{name:'Ảnh Kiếm Sĩ',weapon:'Kiếm vô diện',skill:'Ngũ Ảnh Trảm',power:1},
       {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Nguyệt đao đen',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
-      {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Đoạt Hồn: tuyệt kỹ +50% sát thương khi địch dưới 30% HP.'}]
+      {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Tuyệt kỹ xuyên giáp, +50% khi địch dưới 30% HP; sau đó hóa mờ, né mọi đòn và hiệu ứng bất lợi 1 lượt.'}]
   };
   function heroForm(key,h){return key==='novice'?1:h?.stars>=6?3:h?.stars>=4?2:1;}
   // Relics belong to their hero; five visible forms, twenty training levels per form.
@@ -145,7 +145,8 @@
     if(key==='ice'){kit.shieldGem=8;kit.damageReduction=.2;kit.defenseBonus=round(.008*passive);kit.armor=Math.round((base.armor+3*(active-1))*(form===3?1.6:1));kit.enemyDrain=form===3?25:0;kit.mutationArmor=mutation?round(.06+.005*(mutation-1)):0;}
     if(key==='earth'){kit.attackScale=.75;kit.hpBonus=round(.015*passive);kit.heal=Math.round((base.heal+5*(active-1))*formPower*bonus.power);kit.burst=round(base.burst+.1*(active-1)+(form===3?.5:0),2);kit.stun=base.stun;kit.regenTurns=base.regen+(form===3?1:0);kit.mutationArmor=mutation?round(.04+.005*(mutation-1)):0;}
     if(key==='lightning'){kit.energy=round(2+.05*passive);kit.hits=form===3?9:base.hits;kit.drain=mutation?20+mutation:0;kit.energyReturn=mutation?5:0;}
-    if(key==='shadow'){kit.attackBonus=round(.012*passive);kit.echo=mutation?12+3*mutation:0;kit.execute=form===3?{threshold:.3,bonus:1.5}:null;}
+    // Six-star Noct: nine reaping cuts that ignore armour, then one enemy turn of untouchable veil.
+    if(key==='shadow'){kit.attackBonus=round(.012*passive);kit.echo=mutation?12+3*mutation:0;kit.execute=form===3?{threshold:.3,bonus:1.5}:null;kit.hits=form===3?9:base.hits;kit.pierceArmor=form===3;kit.veil=form===3?1:0;}
     return kit;
   }
   const vi=(n,d=1)=>Number(n).toLocaleString('vi-VN',{maximumFractionDigits:d});
@@ -167,9 +168,9 @@
   function skillDescription(kit,slot){
     const k=kit.key;
     if(slot===0){
-      const signature=k==='fire'&&kit.form===3?` Luôn thiêu đốt ${vi(kit.burn.base)} sát thương cơ bản/lượt trong ${kit.burn.turns} lượt.`:k==='shadow'&&kit.execute?' Đoạt Hồn: gây thêm 50% khi địch dưới 30% HP.':k==='ice'&&kit.enemyDrain?` Địch mất ${kit.enemyDrain} năng lượng.`:'';
+      const signature=k==='fire'&&kit.form===3?` Luôn thiêu đốt ${vi(kit.burn.base)} sát thương cơ bản/lượt trong ${kit.burn.turns} lượt.`:k==='shadow'&&kit.execute?' Xuyên giáp; Đoạt Hồn: thêm 50% khi địch dưới 30% HP. Sau đó hóa mờ: né mọi đòn và hiệu ứng bất lợi trong 1 lượt.':k==='ice'&&kit.enemyDrain?` Địch mất ${kit.enemyDrain} năng lượng.`:'';
       return {novice:()=>`Một nhát kiếm gỗ gây ${vi(kit.damage)} sát thương cơ bản.`,fire:()=>`Kiếm khí rực lửa phát nổ, gây ${vi(kit.damage)} sát thương cơ bản.`,ice:()=>`Nhận ${kit.armor} giáp; băng giáng gây ${vi(kit.damage)} sát thương cơ bản và choáng 1 lượt.`,
-        earth:()=>`Choáng ${kit.stun} lượt; sát thương tích trong lúc choáng nổ ×${vi(kit.burst,2)}. Hồi ${kit.heal} HP/lượt trong ${kit.regenTurns} lượt.`,lightning:()=>`Gọi ${kit.hits} tia sét liên tiếp, tổng ${vi(kit.damage)} sát thương cơ bản.`,shadow:()=>`${kit.hits} ${kit.form===3?'nhát liềm lướt':'lần lướt chém'}, tổng ${vi(kit.damage)} sát thương cơ bản.`}[k]()+signature;
+        earth:()=>`Choáng ${kit.stun} lượt; sát thương tích trong lúc choáng nổ ×${vi(kit.burst,2)}. Hồi ${kit.heal} HP/lượt trong ${kit.regenTurns} lượt.`,lightning:()=>`Gọi ${kit.hits} tia sét liên tiếp, tổng ${vi(kit.damage)} sát thương cơ bản.`,shadow:()=>kit.form===3?`Sương đen trùm lấy địch, ${kit.hits} nhát liềm vô hình, tổng ${vi(kit.damage)} sát thương cơ bản.`:`${kit.hits} lần lướt chém, tổng ${vi(kit.damage)} sát thương cơ bản.`}[k]()+signature;
     }
     if(slot===1){
       const learned=kit.levels[1]>0;

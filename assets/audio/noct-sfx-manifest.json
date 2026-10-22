@@ -93,5 +93,39 @@
     "rms": 0.09,
     "peak": 0.4037,
     "sha256": "760f824510994bebef96991cf619228e6c9cf1963bd83c85132a39a845f0c812"
+  },
+  "mist": {
+    "file": "noct-sfx/mist.wav",
+    "duration": 1.05,
+    "sources": [
+      "original low wind and rumble",
+      "cutting_with_a_katana3.mp3 (reversed)"
+    ],
+    "rms": 0.12,
+    "peak": 0.6078,
+    "sha256": "5a6e886ff1dae3ec5ffc310ad37d51c802f1c773aa5b24b51ac80b76e02be745"
+  },
+  "hook": {
+    "file": "noct-sfx/hook.wav",
+    "duration": 0.42,
+    "sources": [
+      "original rising wind",
+      "extracting_a_sword1.mp3",
+      "sword_attack1.mp3"
+    ],
+    "rms": 0.13,
+    "peak": 0.594,
+    "sha256": "1657b28363062b65e06265ccf17d38bf6d7650e6955437420f9cfaed35cc58f3"
+  },
+  "veil": {
+    "file": "noct-sfx/veil.wav",
+    "duration": 0.75,
+    "sources": [
+      "original airy shimmer",
+      "cutting_with_a_katana1.mp3 (reversed)"
+    ],
+    "rms": 0.07,
+    "peak": 0.4358,
+    "sha256": "82f693b87acb6324bc8c14c55697db3fe912e82d46afaa4d500241b9d55c4b80"
   }
 }

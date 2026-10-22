@@ -168,6 +168,8 @@ def register_span(sheet):
         _span_cache[key]=[round(lo,4),round(hi,4)] if hi>lo else [0.0,1.0]
     sheet['span']=_span_cache[key]
 art['heroForms']={}
+reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8'))
+art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
 art['formAuras']={}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
