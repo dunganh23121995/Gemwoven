@@ -18,10 +18,11 @@ HEADS = {
         "run": [[157, 60]] * 6,
     },
     "3": {
-        "idle": [[148, 84]] * 8,  # Grim Reaper hood top; measure attack/cast/run after ImageGen
-        "attack": [[145, 71], [145, 72], [147, 76], [146, 79], [146, 72], [145, 72]],
-        "cast": [[145, 71], [144, 72], [143, 72], [144, 77], [144, 76], [145, 72]],
-        "run": [[145, 74], [145, 74], [145, 75], [144, 74], [145, 74], [145, 74]],
+        # Grim Reaper hood top: glowing-eye centre + (4, -43), the offset authored on idle.
+        "idle": [[148, 84]] * 8,
+        "attack": [[149, 96], [161, 97], [151, 94], [148, 93], [150, 111], [147, 97]],
+        "cast": [[145, 91], [142, 90], [140, 91], [141, 88], [140, 88], [141, 88]],
+        "run": [[165, 97], [186, 110], [178, 106], [167, 103], [183, 115], [173, 106]],
     },
 }
 
@@ -52,7 +53,8 @@ for form, name in NAMES.items():
         sheet = Image.open(source / "sheet-transparent.png").convert("RGBA")
         assert sheet.getextrema()[3] == (0, 255), f"Missing alpha: {source}"
         qc = meta["qc_summary"]
-        assert not qc["empty_count"] and not qc["edge_touch_count"] and not qc["paste_clamped_count"], source
+        # A raw blade tip may graze its source cell (reviewed, --allow-source-edge-touch); output frames may not.
+        assert not qc["empty_count"] and not meta["output_edge_touch_frames"] and not qc["paste_clamped_count"], source
         sheet.save(folder / f"{action}.webp", lossless=True, method=6)
         count = 8 if action == "idle" else 6
         for index in range(count):
