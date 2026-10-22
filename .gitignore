@@ -45,3 +45,8 @@ Thumbs.db
 
 # Personal Claude Code settings
 .claude/settings.local.json
+
+# Sprite processor intermediates: reproducible from the committed raw sheets and prompts.
+assets/**/animation.gif
+assets/**/raw-sheet-clean.png
+assets/**/sheet-transparent.png

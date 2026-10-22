@@ -56,8 +56,21 @@ FRONT = {
 RAW_CELL = {"fire", "ice", "earth", "lightning"}
 
 
+PROCESSOR = Path.home() / ".codex/skills/generate2dsprite/scripts/generate2dsprite.py"
+
+
 def raw_cells(hero: str) -> list[Image.Image]:
-    clean = Image.open(FORMS / hero / "aura" / "raw-sheet-clean.png").convert("RGBA")
+    aura_dir = FORMS / hero / "aura"
+    if not (aura_dir / "raw-sheet-clean.png").exists():
+        # The chroma-keyed sheet is a gitignored intermediate; rebuild it from the raw sheet.
+        import subprocess
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            subprocess.run([sys.executable, str(PROCESSOR), "process", "--input", str(aura_dir / "raw-sheet.png"), "--target", "asset",
+                            "--mode", "aura", "--output-dir", tmp, "--rows", "4", "--cols", "2", "--cell-size", str(CELL),
+                            "--component-mode", "all"], check=True, capture_output=True)
+            Image.open(Path(tmp) / "raw-sheet-clean.png").save(aura_dir / "raw-sheet-clean.png")
+    clean = Image.open(aura_dir / "raw-sheet-clean.png").convert("RGBA")
     w, h = clean.width / 2, clean.height / 4
     return [clean.crop((round(c * w), round(r * h), round((c + 1) * w), round((r + 1) * h))).resize((CELL, CELL), Image.Resampling.LANCZOS)
             for r in range(4) for c in range(2)]
