@@ -32,6 +32,8 @@ body.ambience-paused .combat-evo-glow *{animation-play-state:paused!important}
 .scene .enemy-actor[data-tier="elite"]{--actor-size:min(clamp(100px,27vw,122px),42cqh)}
 .scene .enemy-actor[data-tier="duel"]{--actor-size:min(clamp(115px,30vw,138px),48cqh)}
 .scene .actor.boss{--actor-size:min(clamp(158px,42vw,190px),58cqh);right:calc(18% - var(--actor-size)/2)}
+/* Vua Hỏa Long is the final boss: half again as large as other bosses. */
+.scene .actor.boss[data-element="fire"][data-boss-art="base"]{--actor-size:min(clamp(237px,63vw,285px),87cqh);right:calc(24% - var(--actor-size)/2)}
 .scene .actor,.scene .actor.boss{width:var(--actor-size);height:var(--actor-size);bottom:calc(18% - var(--actor-size) * (1 - var(--foot-y,.94)));z-index:2}
 .scene .actor::before{bottom:calc((1 - var(--foot-y,.94)) * 100% - 3px);left:31%;right:31%;height:5%;background:#11221bd0;filter:blur(3px);transform:none}
 @keyframes combat-sky-drift{to{translate:-5px 0}}
