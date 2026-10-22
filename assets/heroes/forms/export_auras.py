@@ -43,7 +43,24 @@ def despill(frame: Image.Image) -> Image.Image:
 # Optional front layer (aura/front/front-1..8.png) drawn over the body, e.g. Noct's waist sash.
 # The union of its frames is scaled to `width` and its lowest point placed on `bottom`, in the
 # 256px cell of the back layer (shoulder scarf about y 115, foot cushion top about y 195).
-FRONT = {"shadow": {"width": 116, "bottom": 170}}
+FRONT = {
+    "shadow": {"width": 116, "bottom": 170},
+    # Raw-cell auras below: head top about y 72, shoulders 115, waist 154, feet 210.
+    "fire": {"width": 74, "bottom": 202},       # flame tail across the shins
+    "ice": {"width": 84, "bottom": 190},        # frost mist across the knees
+    "earth": {"width": 82, "bottom": 166},      # leafy vine across the waist
+    "lightning": {"width": 104, "bottom": 166},  # front of the comet trail at the waist
+}
+# These sheets were drawn on a fixed imaginary-hero layout (feet at 82% of the cell), so
+# each raw cell is resized whole instead of fitted to its content.
+RAW_CELL = {"fire", "ice", "earth", "lightning"}
+
+
+def raw_cells(hero: str) -> list[Image.Image]:
+    clean = Image.open(FORMS / hero / "aura" / "raw-sheet-clean.png").convert("RGBA")
+    w, h = clean.width / 2, clean.height / 4
+    return [clean.crop((round(c * w), round(r * h), round((c + 1) * w), round((r + 1) * h))).resize((CELL, CELL), Image.Resampling.LANCZOS)
+            for r in range(4) for c in range(2)]
 
 
 def export_front(hero: str, rel: str):
@@ -71,13 +88,15 @@ def export(hero: str) -> bool:
     if missing:
         print(f"[skip] {hero}: missing {', '.join(missing)}")
         return False
+    if hero in RAW_CELL:
+        frames = raw_cells(hero)
     strip = Image.new("RGBA", (CELL * COUNT, CELL), (0, 0, 0, 0))
     for index, path in enumerate(frames):
-        frame = Image.open(path).convert("RGBA")
+        frame = path if isinstance(path, Image.Image) else Image.open(path).convert("RGBA")
         if hero in DESPILL:
             frame = despill(frame)
         if frame.size != (CELL, CELL):
-            raise ValueError(f"{path} is {frame.size}, expected {CELL}x{CELL}")
+            raise ValueError(f"{hero} frame {index + 1} is {frame.size}, expected {CELL}x{CELL}")
         strip.paste(frame, (index * CELL, 0))
     strip.save(aura_dir / "aura.webp", "WEBP", lossless=True, quality=100, method=6, exact=True)
     rel = f"assets/heroes/forms/{hero}/aura"
