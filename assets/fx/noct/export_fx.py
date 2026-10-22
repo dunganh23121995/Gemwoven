@@ -10,18 +10,17 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
-FX = {"mist": (8, 110), "slash": (6, 40), "hook": (6, 60)}  # frame count, ms per frame
+FX = {"mist": (8, 110), "slash": (6, 40), "hook": (6, 60), "fogcut": (6, 50)}  # frame count, ms per frame
 
 
 def despill(frame):
-    """Fade magenta key spill out of the soft smoke edges (the FX is monochrome)."""
+    """Noct's FX are monochrome: fade magenta key spill, then drop every pixel to grey."""
     a = np.asarray(frame, dtype=np.float32)
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
     spill = np.minimum(r, b) - g
-    a[..., 3] *= 1 - np.clip((spill - 12) / 50, 0, 1)
-    grey = (r + g + b) / 3
-    for c in range(3):
-        a[..., c] = np.where(spill > 12, np.minimum(a[..., c], grey), a[..., c])
+    a[..., 3] *= 1 - np.clip((spill - 6) / 40, 0, 1)
+    grey = r * .3 + g * .59 + b * .11
+    a[..., 0] = a[..., 1] = a[..., 2] = grey
     return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
 
 

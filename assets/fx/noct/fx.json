@@ -13,5 +13,10 @@
     "file": "assets/fx/noct/hook.webp",
     "count": 6,
     "frameDuration": 60
+  },
+  "fogcut": {
+    "file": "assets/fx/noct/fogcut.webp",
+    "count": 6,
+    "frameDuration": 50
   }
 }

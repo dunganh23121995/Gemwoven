@@ -140,17 +140,35 @@ function reaperFx(name,point,size,{rotate=0,flip=1,loop=false}={}){
   if(!loop)frames.finally(()=>node.remove());
   return node;
 }
+// A cut parts every fog layer along the blade's line for a moment, then the fog closes again.
+const FOGCUT_BASE=-38;// the fogcut sheet is drawn lower-left to upper-right
+function reaperFogGap(fogs,spot,angle,pending){
+  if(reduced)return;
+  const theta=angle*Math.PI/180,dir=[Math.sin(theta),-Math.cos(theta)];
+  for(const fog of fogs){
+    if(!fog?.isConnected)continue;
+    const box=fog.getBoundingClientRect(),scene=$('scene').getBoundingClientRect(),cx=box.left-scene.left+box.width/2,cy=box.top-scene.top+box.height/2;
+    const span=Math.abs(box.width*dir[0])+Math.abs(box.height*dir[1]),at=50+((spot.x-cx)*dir[0]+(spot.y-cy)*dir[1])/span*100;
+    const mask=gap=>gap?`linear-gradient(${angle}deg,#000 0 ${at-gap}%,transparent ${at-gap/3}% ${at+gap/3}%,#000 ${at+gap}% 100%)`:'none';
+    [[0,4.5],[90,3],[180,1.6],[260,0]].forEach(([delay,gap])=>pending.push(wait(delay).then(()=>{if(fog.isConnected){fog.style.maskImage=mask(gap);fog.style.webkitMaskImage=mask(gap);}})));
+  }
+}
 async function reaperVeilRage(raw,onRelease){
   const root=actor('hero'),target=actor('enemy'),pending=[],ledger={raw:0,applied:0},hits=9,hooks=new Set([3,7]);
   const start=performance.now(),at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
-  const enemy=combatV3Point('enemy'),fogPoint={x:enemy.x,y:enemy.y-enemy.height*.08},fogSize=Math.min($('scene').clientWidth*.62,enemy.width*1.55);
-  let amount=0,blocked=0,mist=null;
+  // The fog's flat base (88% of its cell) sinks below the boots and the dome clears the head and wings.
+  const enemy=combatV3Point('enemy'),scene=$('scene').getBoundingClientRect(),body=target.getBoundingClientRect();
+  const feet=body.bottom-scene.top-body.height*(1-(Number(getComputedStyle(target).getPropertyValue('--foot-y'))||.94));
+  const fogSize=Math.max(body.width,body.height)*1.25,fogPoint={x:body.left-scene.left+body.width/2-fogSize*.08,y:feet+fogSize*.06-fogSize*.38};// foes face left: lean the dome toward the head
+  const groundSize=fogSize*1.05,groundPoint={x:fogPoint.x-fogSize*.04,y:feet+groundSize*.1-groundSize*.38};
+  let amount=0,blocked=0,mist=null,ground=null;
   root.classList.add('combat-v3-acting');root.dataset.ragePhase='chant';
   try{
     combatVoice('hero','cast');playNoctSound('charge',{volume:.26});popActorSkill('hero',HEROES.shadow.skill,true,pending);
     setSpriteFrame('hero','cast',0);await at(260);setSpriteFrame('hero','cast',2);await at(460);
     root.dataset.ragePhase='smother';setSpriteFrame('hero','cast',3);playNoctSound('mist',{volume:.4,pan:.3});
-    mist=reaperFx('mist',fogPoint,fogSize,{loop:true});
+    mist=reaperFx('mist',fogPoint,fogSize,{loop:true});ground=reaperFx('mist',groundPoint,groundSize,{loop:true,flip:-1});
+    if(ground){ground.classList.add('reaper-ground-mist');pending.push(animate(ground,[{opacity:0,scale:.4},{opacity:1,scale:1}],{duration:380,easing:'cubic-bezier(.2,.8,.3,1)'}));}
     if(mist)pending.push(animate(mist,[{opacity:0,scale:.45},{opacity:1,scale:1}],{duration:420,easing:'cubic-bezier(.2,.8,.3,1)'}));
     target.classList.add('reaper-smothered');
     await at(900);setSpriteFrame('hero','cast',4);
@@ -163,8 +181,9 @@ async function reaperVeilRage(raw,onRelease){
         reaperFx('hook',{x:enemy.x,y:enemy.y-enemy.height*.05},enemy.width*1.15);playNoctSound('hook',{volume:.36,pan:.3});
         if(!reduced)pending.push(animate(target,[{translate:'0 0'},{translate:'0 -34px',offset:.35},{translate:'0 -30px',offset:.6},{translate:'0 0'}],{duration:420,easing:'cubic-bezier(.2,.9,.4,1)'}));
       }else{
-        const spot={x:enemy.x+(Math.random()-.5)*enemy.width*.35,y:enemy.y-enemy.height*(.05+Math.random()*.3)};
-        reaperFx('slash',spot,enemy.width*(.9+Math.random()*.3),{rotate:-35+Math.random()*90,flip:direction});
+        const spot={x:fogPoint.x+(Math.random()-.5)*fogSize*.3,y:fogPoint.y+(Math.random()-.3)*fogSize*.3},rotate=-30+Math.random()*75;
+        reaperFx('fogcut',spot,fogSize*(.75+Math.random()*.2),{rotate,flip:direction});
+        reaperFogGap([mist,ground],spot,direction>0?FOGCUT_BASE+rotate:-FOGCUT_BASE+rotate,pending);
         playNoctSound('slash'+(1+i%3),{volume:.24,pan:.3});
       }
       const kit=last&&progressionBattle?progressionKit():null,executed=!!kit?.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold;
@@ -172,13 +191,13 @@ async function reaperVeilRage(raw,onRelease){
       if(last){reaperHarvest(pending,executed);onRelease(pending);update();}
     }
     await at(2750);root.dataset.ragePhase='return';
-    if(mist){mist.style.opacity='0';pending.push(animate(mist,[{opacity:1},{opacity:0,scale:1.15}],{duration:380}).finally(()=>mist.remove()));}
+    for(const fog of [mist,ground])if(fog){fog.style.opacity='0';pending.push(animate(fog,[{opacity:1},{opacity:0,scale:1.15}],{duration:380}).finally(()=>fog.remove()));}
     target.classList.remove('reaper-smothered');
     setSpriteAction('hero','idle');playNoctSound('veil',{volume:.22});
     await animate(root,[{opacity:0},{opacity:1}],{duration:reduced?1:320});root.style.opacity='';
     await at(3200);await Promise.all(pending);return {amount,blocked};
   }finally{
-    await Promise.allSettled(pending);mist?.remove();target.classList.remove('reaper-smothered');
+    await Promise.allSettled(pending);mist?.remove();ground?.remove();target.classList.remove('reaper-smothered');
     root.style.opacity='';
     delete root.dataset.ragePhase;delete root.dataset.rageHit;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }

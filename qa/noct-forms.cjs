@@ -17,7 +17,7 @@ const {chromium}=require(path.resolve('qa/gemwoven/runtime/node_modules/playwrig
    await page.waitForTimeout(400);await page.screenshot({path:`qa/out/noct-form${form}-idle.png`});
    const ult=page.evaluate(async()=>{
     const root=document.querySelector('#heroActor'),start=performance.now(),actions=new Set(),cuts=[];
-    const kinds=['quick-blade-cut','reaper-cut','reaper-fx-mist','reaper-fx-slash','reaper-fx-hook'];
+    const kinds=['quick-blade-cut','reaper-cut','reaper-fx-mist','reaper-fx-fogcut','reaper-fx-hook'];
     const observer=new MutationObserver(rs=>{for(const r of rs)for(const n of r.addedNodes){const k=kinds.find(c=>n.classList?.contains(c));if(k)cuts.push(k+(n.classList.contains('reaper-finale')?':finale':''));}});
     observer.observe(document.querySelector('#combatEffects'),{childList:true});
     const timer=setInterval(()=>{const s=root.querySelector('.sprite-body');actions.add(s.dataset.action+':'+s.dataset.frame);},12);
@@ -29,8 +29,8 @@ const {chromium}=require(path.resolve('qa/gemwoven/runtime/node_modules/playwrig
    assert.ok(r.ms>=2900&&r.ms<4800,`form ${form} ultimate ${r.ms}`);
    assert.equal(r.souls,0,'effects cleaned up');
    if(form===3){
-    assert.equal(r.cuts.filter(c=>c==='reaper-fx-mist').length,1,'cursed fog smothers the target');
-    assert.equal(r.cuts.filter(c=>c==='reaper-fx-slash').length,7);assert.equal(r.cuts.filter(c=>c==='reaper-fx-hook').length,2);
+    assert.equal(r.cuts.filter(c=>c==='reaper-fx-mist').length,2,'fog dome plus ground fog smother the target');
+    assert.equal(r.cuts.filter(c=>c==='reaper-fx-fogcut').length,7);assert.equal(r.cuts.filter(c=>c==='reaper-fx-hook').length,2);
     assert.ok(r.cuts.includes('reaper-cut:finale'));assert.ok(!r.cuts.includes('quick-blade-cut'));
     assert.ok(r.actions.includes('cast:3'),'hand thrust toward the enemy');assert.equal(r.fog,0,'fog cleaned up');
     assert.equal(r.damage,150,'cuts ignore armour');assert.equal(r.armor,500,'armour is bypassed, not consumed');

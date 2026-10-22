@@ -29,5 +29,5 @@ body.ambience-paused .shadow-veil i{animation-play-state:paused}
 body.reduced-motion .scene .hero-actor[data-veiled="true"]>.sprite-body{animation:none}
 /* Cursed fog, invisible reaping cuts and the hook rip, from assets/fx/noct. */
 .reaper-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;translate:-50% -50%}
-.reaper-mist{z-index:5}.reaper-fx-slash{z-index:7}.reaper-fx-hook{z-index:7}
+.reaper-mist{z-index:5}.reaper-ground-mist{z-index:6}.reaper-fx-slash,.reaper-fx-fogcut,.reaper-fx-hook{z-index:7}
 .scene .actor.reaper-smothered>.sprite-body{filter:brightness(.35) saturate(.4)!important;transition:filter .3s}
