@@ -250,7 +250,7 @@
     const screen=layout.screens[state.screen],backgroundKey=screen.backgroundKey||state.screen;
     if(assets['background-'+backgroundKey])screen.background=assets['background-'+backgroundKey].file;
     scene.replaceChildren();scene.style.backgroundImage=`url("${window.GEMWOVEN_BACKDROPS?.[backgroundKey]?.background||screen.background}")`;
-      const frag=document.createDocumentFragment();for(const node of screen.nodes){if(/\.(level-plate|level-meter|level-badge|level)$/.test(node.id))continue;frag.append(makeNode(node));}scene.append(frag);hangingChains();ambientScene();window.GemwovenLivingHub?.mount(scene,state);
+      const frag=document.createDocumentFragment();for(const node of screen.nodes){if(/\.(level-plate|level-meter|level-badge|level)$/.test(node.id))continue;frag.append(makeNode(node));}scene.append(frag);hangingChains();ambientScene();window.GemwovenLivingHub?.mount(scene,state);window.GemwovenLivingMotion?.mount(scene,state);
     stage.setAttribute('aria-label',screen.name);
     document.title=`Gemwoven · ${screen.name}`;
     document.querySelectorAll('#screen-menu button').forEach(b=>{if(b.dataset.screen===state.screen)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});

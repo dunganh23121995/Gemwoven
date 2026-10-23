@@ -1,0 +1,32 @@
+{
+  "bird": {
+    "file": "assets/gemwoven/ambient/bird.webp",
+    "count": 4,
+    "frameDuration": 110
+  },
+  "butterfly": {
+    "file": "assets/gemwoven/ambient/butterfly.webp",
+    "count": 4,
+    "frameDuration": 90
+  },
+  "leaf": {
+    "file": "assets/gemwoven/ambient/leaf.webp",
+    "count": 4,
+    "frameDuration": 160
+  },
+  "foam": {
+    "file": "assets/gemwoven/ambient/foam.webp",
+    "count": 8,
+    "frameDuration": 90
+  },
+  "forge": {
+    "file": "assets/gemwoven/ambient/forge.webp",
+    "count": 8,
+    "frameDuration": 90
+  },
+  "portal": {
+    "file": "assets/gemwoven/ambient/portal.webp",
+    "count": 8,
+    "frameDuration": 95
+  }
+}

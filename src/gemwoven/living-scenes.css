@@ -102,3 +102,30 @@ body.page-hidden .living-hub *,body.page-hidden .living-hub *::before,body.page-
 body.reduced-motion .living-hub,body.reduced-motion .living-hub-rune,body.reduced-motion .lh-tap{display:none}
 body.reduced-motion .lh-rig,body.reduced-motion .lh-call>.art{animation:none}
 @media(prefers-reduced-motion:reduce){.living-hub,.living-hub-rune,.lh-tap{display:none}.lh-rig,.node.lh-call>.art{animation:none}.node-button:active{scale:1}}
+/* Painted-background motion (living-motion.js): behind every control, never interactive. */
+.living-motion{position:absolute;left:0;top:0;width:941px;height:1672px;z-index:0;pointer-events:none;overflow:hidden}
+.living-motion i{position:absolute;display:block;pointer-events:none}
+.lm-flow{background-size:941px 1672px;background-repeat:no-repeat;filter:brightness(1.22) saturate(1.1);-webkit-mask-repeat:no-repeat,repeat,no-repeat;mask-repeat:no-repeat,repeat,no-repeat;-webkit-mask-composite:source-in,source-in;mask-composite:intersect,intersect;animation:lm-stream .55s linear infinite}
+@keyframes lm-stream{from{-webkit-mask-position:0 0,0 0,var(--water);mask-position:0 0,0 0,var(--water)}to{-webkit-mask-position:0 0,0 var(--period),var(--water);mask-position:0 0,0 var(--period),var(--water)}}
+.lm-sprite{background:var(--sheet) 0 0/calc(var(--count) * 100%) 100% no-repeat;animation:lm-frames var(--cycle) steps(var(--count),jump-none) infinite}
+@keyframes lm-frames{from{background-position:0 0}to{background-position:100% 0}}
+.lm-foam{opacity:.88}
+.lm-fire{mix-blend-mode:screen;opacity:.9}
+.lm-portal{mix-blend-mode:screen;opacity:.85;transform:scaleY(var(--squash,1))}
+.lm-portal::after{content:'';position:absolute;inset:0;background:inherit;animation:inherit;opacity:.6;transform:rotate(180deg) scale(.7)}
+.lm-sparks b{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff3b0;box-shadow:0 0 6px #ffae3c,0 0 2px #fff;opacity:0;animation:lm-spark 2.4s var(--t) ease-out infinite}
+@keyframes lm-spark{0%,70%{opacity:0;transform:none}72%{opacity:1;transform:none}100%{opacity:0;transform:rotate(var(--a)) translateX(var(--d)) translateY(10px)}}
+.lm-lane{left:0;width:56px;height:56px;animation:lm-cross var(--dur) var(--delay) linear infinite}
+.lm-lane[style*="--dir:-1"]{animation-name:lm-cross-back}
+.lm-bird{width:56px;height:56px;transform:scale(var(--scale,1)) scaleX(var(--dir,1));animation-duration:var(--cycle),2.6s;animation-name:lm-frames,lm-bob;animation-timing-function:steps(var(--count),jump-none),ease-in-out;animation-iteration-count:infinite}
+@keyframes lm-cross{from{translate:-90px 0}to{translate:1031px -40px}}
+@keyframes lm-cross-back{from{translate:1031px 0}to{translate:-90px -30px}}
+@keyframes lm-bob{50%{translate:0 -12px}}
+.lm-wander{width:34px;height:34px;animation:lm-wander 9s var(--delay) ease-in-out infinite}
+.lm-butterfly{width:34px;height:34px}
+@keyframes lm-wander{0%,100%{translate:0 0}25%{translate:var(--range) calc(var(--range) * -.5)}50%{translate:calc(var(--range) * .3) calc(var(--range) * -.9)}75%{translate:calc(var(--range) * -.6) calc(var(--range) * -.3)}}
+.lm-fall{width:30px;height:30px;opacity:0;animation:lm-fall 11s var(--delay) linear infinite}
+.lm-leaf{width:30px;height:30px;animation-duration:var(--cycle),2.2s;animation-name:lm-frames,lm-sway;animation-timing-function:steps(var(--count),jump-none),ease-in-out;animation-iteration-count:infinite}
+@keyframes lm-fall{0%{opacity:0;translate:0 0}8%{opacity:1}85%{opacity:1}100%{opacity:0;translate:var(--drift) 620px}}
+@keyframes lm-sway{50%{translate:22px 0;rotate:calc(var(--spin,1) * 40deg)}}
+body.page-hidden .living-motion *{animation-play-state:paused!important}

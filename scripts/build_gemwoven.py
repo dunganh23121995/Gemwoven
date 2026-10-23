@@ -40,6 +40,9 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
             tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=round(idle.get('frameDuration',120)/3),loop=0,lossless=True)
             bounds=frames[0].getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
             merged[f'form-idle-{hero}-{form}']={'file':target.relative_to(ROOT).as_posix(),'width':cw,'height':ch,'bodyAnchor':anchor,'footBounds':list(bounds)}
+for name,sheet in json.loads((ROOT/'assets/gemwoven/ambient/ambient.json').read_text(encoding='utf-8')).items():
+    merged['ambient-'+name]={**sheet,'width':192*sheet['count'],'height':192}
+for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
     merged['form-aura-'+catalog.parent.name]={**data,'width':256,'height':256}
@@ -79,7 +82,7 @@ for a in manifest.values():a['file']=data_uri(a['file'])
 backdrops={}
 for key in ['home','inventory','skills','arena','summon','shop','forge','upgrade','tavern']:
     backdrops[key]={'background':data_uri(merged.get('background-'+key,{}).get('file',f'assets/gemwoven/backgrounds/{key}.webp'))}
-for name in ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','living-hub','ui']:
+for name in ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','living-hub','living-motion','ui']:
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
     if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
     if name=='journey-ui':code='window.GEMWOVEN_HOME_MUSIC='+json.dumps(data_uri('assets/audio/music/earth.ogg'))+';\n'+code

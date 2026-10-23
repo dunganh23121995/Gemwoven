@@ -11224,5 +11224,62 @@
     "front": "assets/heroes/forms/shadow/aura/front/front.webp",
     "width": 256,
     "height": 256
+  },
+  "ambient-bird": {
+    "file": "assets/gemwoven/ambient/bird.webp",
+    "count": 4,
+    "frameDuration": 110,
+    "width": 768,
+    "height": 192
+  },
+  "ambient-butterfly": {
+    "file": "assets/gemwoven/ambient/butterfly.webp",
+    "count": 4,
+    "frameDuration": 90,
+    "width": 768,
+    "height": 192
+  },
+  "ambient-leaf": {
+    "file": "assets/gemwoven/ambient/leaf.webp",
+    "count": 4,
+    "frameDuration": 160,
+    "width": 768,
+    "height": 192
+  },
+  "ambient-foam": {
+    "file": "assets/gemwoven/ambient/foam.webp",
+    "count": 8,
+    "frameDuration": 90,
+    "width": 1536,
+    "height": 192
+  },
+  "ambient-forge": {
+    "file": "assets/gemwoven/ambient/forge.webp",
+    "count": 8,
+    "frameDuration": 90,
+    "width": 1536,
+    "height": 192
+  },
+  "ambient-portal": {
+    "file": "assets/gemwoven/ambient/portal.webp",
+    "count": 8,
+    "frameDuration": 95,
+    "width": 1536,
+    "height": 192
+  },
+  "ambient-water-home": {
+    "file": "assets/gemwoven/ambient/water-home.webp",
+    "width": 941,
+    "height": 1672
+  },
+  "ambient-water-summon": {
+    "file": "assets/gemwoven/ambient/water-summon.webp",
+    "width": 941,
+    "height": 1672
+  },
+  "ambient-water-arena": {
+    "file": "assets/gemwoven/ambient/water-arena.webp",
+    "width": 941,
+    "height": 1672
   }
 }
