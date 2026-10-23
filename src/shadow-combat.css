@@ -36,8 +36,5 @@ body.reduced-motion .scene .hero-actor[data-veiled="true"]>.sprite-body{animatio
 .reaper-smoke .smoke-core{position:absolute;left:24%;right:24%;top:30%;bottom:20%;border-radius:45% 45% 30% 30%;background:radial-gradient(ellipse at 50% 60%,#08080af2 35%,#0c0c10b0 60%,transparent 76%);filter:blur(6px);animation:smoke-core 3.2s ease-in-out infinite}
 .reaper-smoke i{position:absolute;translate:-50% -50%;background:var(--puffs) calc(var(--cell) * 33.333%) 0/400% 100% no-repeat;opacity:var(--o);animation:smoke-billow var(--dur) var(--delay) ease-in-out infinite alternate;will-change:transform}
 @keyframes smoke-billow{from{transform:translate(0,0) rotate(var(--r0)) scale(calc(var(--s0) * var(--flip)),var(--s0))}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r1)) scale(calc(var(--s1) * var(--flip)),var(--s1))}}
-.reaper-smoke-plume{position:absolute;z-index:5;pointer-events:none}
-.reaper-smoke-plume i{position:absolute;translate:-50% -50%;background:var(--puffs) calc(var(--cell) * 33.333%) 0/400% 100% no-repeat;opacity:0;animation:smoke-rise var(--dur) var(--delay) cubic-bezier(.3,.5,.5,1) infinite;will-change:transform,opacity}
-@keyframes smoke-rise{0%{opacity:0;transform:translate(0,0) rotate(var(--r0)) scale(calc(.8 * var(--flip)),.8)}8%{opacity:.95}50%{opacity:.6}100%{opacity:0;transform:translate(var(--rx),var(--ry)) rotate(var(--r1)) scale(calc(var(--grow) * var(--flip)),var(--grow))}}
 @keyframes smoke-core{50%{transform:scale(1.05,.97) translateY(-2%)}}
 .reaper-wisp{position:absolute;z-index:6;pointer-events:none;background-repeat:no-repeat;background-size:400% 100%;opacity:0}

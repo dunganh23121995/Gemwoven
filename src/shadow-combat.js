@@ -174,23 +174,6 @@ function reaperSmoke(box){
   cloud.innerHTML=`<b class="smoke-core"></b>`+puffs.join('');
   $('combatEffects').append(cloud);return cloud;
 }
-// Above the dome the smoke keeps boiling upward: puffs leave the crown, swell, curl and thin out
-// as they climb past the foe's HP bar (the HUD layer stays on top, so the bar remains readable).
-function reaperSmokePlume(box){
-  const sheet=ART.reaperFx?.puffs;if(!sheet||reduced)return null;
-  const unit=Math.min(box.w,box.h),rise=unit*.8,W=box.w*1.1,H=rise+unit*.6;
-  const plume=document.createElement('span');plume.className='reaper-smoke-plume';plume.setAttribute('aria-hidden','true');
-  plume.style.cssText=`left:${box.x+box.w/2-W/2}px;top:${box.y+unit*.45-H}px;width:${W}px;height:${H}px;--puffs:url('${sheet.src}')`;
-  const rnd=(a,b)=>a+Math.random()*(b-a),count=22,puffs=[];
-  for(let i=0;i<count;i++){
-    // Many large overlapping puffs born in the crown and staggered evenly in time, so they merge
-    // into one boiling column that widens and thins as it climbs.
-    const lane=((i*7)%count)/(count-1)-.5,x=W/2+lane*box.w*.5+rnd(-.03,.03)*box.w,size=rnd(.3,.42)*unit,dur=rnd(2.4,3.2);
-    puffs.push(`<i style="left:${x}px;top:${H-unit*.26}px;width:${size}px;height:${size}px;--cell:${i%4};--flip:${Math.random()<.5?-1:1};--r0:${rnd(-40,40)}deg;--r1:${rnd(-110,110)}deg;--rx:${lane*unit*.2+rnd(-.08,.08)*unit}px;--ry:${-rise*rnd(.7,1)}px;--grow:${rnd(1.5,1.9)};--dur:${dur}s;--delay:${-i/count*dur}s"></i>`);
-  }
-  plume.innerHTML=puffs.join('');
-  $('combatEffects').append(plume);return plume;
-}
 // A cut drags the smoke with it: puffs near the cut line are shoved apart and swept along the
 // swing, then roll back, while a few torn wisps fly off along the blade's path.
 function reaperSmokeSweep(cloud,spot,angle,length,pending){
@@ -239,12 +222,14 @@ async function reaperVeilRage(raw,onRelease){
   const feet=body.bottom,fogSize=Math.max(body.width,body.height)*1.35,fogPoint={x:(body.left+body.right)/2,y:feet-body.height*.45};
   // The smoke box covers the body with margin, its floor just below the feet.
   // Foes face left: the box leans a little toward the head.
-  const smokeBox={w:body.width*1.38,h:body.height*1.42};smokeBox.x=fogPoint.x-smokeBox.w*.56;smokeBox.y=feet+smokeBox.h*.08-smokeBox.h;
+  // A small foe still vanishes into a big cloud: the smoke is never smaller than the foe's
+  // whole sprite cell, whatever the size of the body drawn in it.
+  const smokeBox={w:Math.max(body.width*1.38,cell.width*1.15),h:Math.max(body.height*1.42,cell.height*1.05)};smokeBox.x=fogPoint.x-smokeBox.w*.56;smokeBox.y=feet+smokeBox.h*.08-smokeBox.h;
   // A huge foe's cloud stops short of Noct's spot instead of swallowing the whole arena.
   const reach=root.getBoundingClientRect(),limit=reach.left-scene.left+reach.width*.62;
   if(smokeBox.x<limit){smokeBox.w-=limit-smokeBox.x;smokeBox.x=limit;}
   const lift=Math.min(34,body.height*.16);// the hook tugs the foe up by a share of its own height
-  let amount=0,blocked=0,mist=null,ground=null,plume=null;
+  let amount=0,blocked=0,mist=null,ground=null;
   root.classList.add('combat-v3-acting');root.dataset.ragePhase='chant';root.dataset.foeHudOver='true';
   try{
     combatVoice('hero','cast');playNoctSound('charge',{volume:.26});popActorSkill('hero',HEROES.shadow.skill,true,pending);
@@ -252,8 +237,6 @@ async function reaperVeilRage(raw,onRelease){
     root.dataset.ragePhase='smother';setSpriteFrame('hero','cast',3);playNoctSound('mist',{volume:.4,pan:.3});
     mist=reaperSmoke(smokeBox);
     if(mist)pending.push(animate(mist,[{opacity:0,scale:'.35 .2',translate:`${-smokeBox.w*.35}px 0`},{opacity:1,scale:'1 1',translate:'0 0'}],{duration:620,easing:'cubic-bezier(.2,.8,.3,1)'}));
-    plume=reaperSmokePlume(smokeBox);
-    if(plume)pending.push(animate(plume,[{opacity:0},{opacity:0,offset:.45},{opacity:1}],{duration:900,easing:'ease-out'}));
     target.classList.add('reaper-smothered');
     await at(900);setSpriteFrame('hero','cast',4);
     root.dataset.ragePhase='vanish';shadowEcho(null,null,pending,1);
@@ -280,13 +263,12 @@ async function reaperVeilRage(raw,onRelease){
     }
     await at(2750);root.dataset.ragePhase='return';
     for(const fog of [mist,ground])if(fog){fog.style.opacity='0';pending.push(animate(fog,[{opacity:1},{opacity:0,scale:1.15}],{duration:380}).finally(()=>fog.remove()));}
-    if(plume){plume.style.opacity='0';pending.push(animate(plume,[{opacity:1,translate:'0 0'},{opacity:0,translate:`0 ${-smokeBox.h*.12}px`}],{duration:520,easing:'ease-out'}).finally(()=>plume.remove()));}
     target.classList.remove('reaper-smothered');
     setSpriteAction('hero','idle');playNoctSound('veil',{volume:.22});
     await animate(root,[{opacity:0},{opacity:1}],{duration:reduced?1:320});root.style.opacity='';
     await at(3200);await Promise.all(pending);return {amount,blocked};
   }finally{
-    await Promise.allSettled(pending);mist?.remove();ground?.remove();plume?.remove();target.classList.remove('reaper-smothered');
+    await Promise.allSettled(pending);mist?.remove();ground?.remove();target.classList.remove('reaper-smothered');
     root.style.opacity='';
     delete root.dataset.ragePhase;delete root.dataset.rageHit;delete root.dataset.foeHudOver;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }
