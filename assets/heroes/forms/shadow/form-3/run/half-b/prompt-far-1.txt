@@ -1,0 +1,6 @@
+Image 1 is the exact character and art style (Noct, chibi faceless grim reaper running to the right, scythe over the shoulder, torn black robe streaming back). Draw this same character, same size, same position, same weapon and cloak, in the OPPOSITE stride phase of the run cycle, with clear depth between the two legs:
+- The NEAR leg (closest to the viewer) is drawn fully visible, slightly lighter grey-black with a soft rim light on the boot, stretched far BACK to the lower left, its boot sole showing.
+- The FAR leg (further from the viewer) is darker, slightly smaller and partly hidden behind the near thigh and the robe, stepping FORWARD to the lower right with its boot touching the ground in front.
+- The legs visibly CROSS at the knees.
+- The free fist swings opposite to the legs.
+Facing right, 3/4 view, same camera as Image 1. Body and held weapon only, no motion lines, dust, smoke, aura, shadow or ground. Solid flat #FF00FF magenta background, no text.

@@ -20,7 +20,7 @@ HEADS = {
         "idle": [[148, 84]] * 8,
         "attack": [[149, 96], [161, 97], [151, 94], [148, 93], [150, 111], [147, 97]],
         "cast": [[145, 91], [142, 90], [140, 91], [141, 88], [140, 88], [141, 88]],
-        "run": [[165, 97], [186, 110], [178, 106], [167, 103], [183, 115], [173, 106]],
+        "run": [[185, 116], [176, 102], [196, 97], [192, 113], [174, 105], [179, 107]],
         "hover": [[156, 90], [155, 90], [156, 90], [156, 90], [156, 91], [159, 92]],
     },
 }
@@ -138,16 +138,20 @@ def ensure_frames(folder, action):
     source = folder / action
     if (source / f"{action}-1.png").exists() and (source / "raw-sheet-clean.png").exists():
         return
-    # Form 3's committed frame-XX.png are the accepted frames; never re-derive them.
-    if folder.name == "form-3" and (source / "frame-00.png").exists():
+    # Form 3's committed frame-XX.png are the accepted frames; never re-derive them (run is
+    # rebuilt from its raw sheet, whose frames 4-6 were redrawn with the legs swapped).
+    if folder.name == "form-3" and action != "run" and (source / "frame-00.png").exists():
         return
     import subprocess
     import sys
     rows, cols = (4, 2) if action == "idle" else (2, 3)
+    # Form 3's run streams its robe wide: a fixed smaller scale keeps every frame inside the cell.
+    scale = ["--cell-size", "256", "--fit-scale", "0.85", "--trim-border", "4", "--edge-clean-depth", "3", "--align", "feet",
+             "--scale-strategy", "preserve", "--component-mode", "largest"] if (folder.name, action) == ("form-3", "run")         else ["--scale-profile", str(folder / "character-scale-profile.json")]
     subprocess.run([sys.executable, str(PROCESSOR), "process", "--input", str(source / "raw-sheet.png"), "--target", "player",
                     "--mode", action, "--output-dir", str(source), "--rows", str(rows), "--cols", str(cols),
                     "--duration", "120" if action == "idle" else "100", "--prompt-file", str(source / "prompt-used.txt"),
-                    "--scale-profile", str(folder / "character-scale-profile.json")], check=True, capture_output=True)
+                    *scale], check=True, capture_output=True)
 
 
 parser = argparse.ArgumentParser()

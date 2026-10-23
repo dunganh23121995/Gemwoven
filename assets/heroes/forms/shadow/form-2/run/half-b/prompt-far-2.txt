@@ -1,0 +1,5 @@
+Image 1 is the exact character and art style (Noct, chibi hooded shadow swordsman running to the right, long black crescent moon-blade trailing low behind in his right hand, torn violet-lined cloak streaming back). Draw this same character, same size, same position, same weapon and cloak, in the OPPOSITE stride phase of the run cycle, with clear depth between the two legs:
+- PUSH-OFF phase: the FAR leg (darker, partly hidden) is planted under the body bearing the weight.
+- The NEAR leg (fully visible, lighter with a soft rim light on the boot) bends at the knee and lifts behind the body, its boot sole showing as it leaves the ground.
+- The free fist swings opposite to the legs.
+Facing right, 3/4 view, same camera as Image 1. Body and held weapon only, no motion lines, dust, smoke, aura, shadow or ground. Solid flat #FF00FF magenta background, no text.
