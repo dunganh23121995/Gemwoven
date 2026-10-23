@@ -47,7 +47,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
       <button data-do="hit">Bị đánh (thử hoá mờ)</button>
     </div>
     <div class="row" style="margin-top:8px">
-      <label>Đối thủ <select id="enemy"><option value="boss">Vua Hỏa Long (boss)</option></select></label>
+      <label>Đối thủ <select id="enemy"></select></label>
       <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
       <label><input type="checkbox" id="armor"> Địch có 500 giáp</label>
     </div>
@@ -73,15 +73,24 @@ const say=t=>$('status').textContent=t;
 let originalMob=null;
 function enemy(){
   const id=$('enemy').value,art=gq().art;
-  originalMob??={art:art.enemies.fire,name:gq().monsters.fire.name};
-  if(id==='boss'){art.enemies.fire=originalMob.art;gq().monsters.fire.name=originalMob.name;return {stage:5,qaElite:false};}
+  originalMob??={art:art.enemies.fire,name:gq().monsters.fire.name,bosses:{...art.bosses}};
+  if(id.startsWith('boss:')){
+    // Like a campaign boss stage: the chapter's element key, its world-boss sheet when it has one.
+    const [,chapter]=id.split(':'),ch=gq().chapters.find(c=>c.id===chapter),key=ch.element,world=art.worldBosses?.[ch.boss];
+    art.bosses[key]=world||originalMob.bosses[key];gq().monsters[key].boss=gq().bossDefs[ch.boss]?.name||ch.boss;
+    return {stage:5,enemyKey:key,qaElite:false,qaBossArt:world?ch.boss:'base'};
+  }
+  art.enemies.fire=originalMob.art;
   const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire={idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
-  return {stage:4,qaElite:tier==='elite'};
+  return {stage:4,enemyKey:'fire',qaElite:tier==='elite',qaBossArt:''};
 }
 // Grouped as the campaign uses them: each chapter's ordinary creatures and its larger elites.
 function fillEnemies(){
-  if($('enemy').options.length>1)return;
+  if($('enemy').options.length)return;
   const art=gq().art.campaignCreatures,groups={normal:'Quái thường',elite:'Quái tinh anh'};
+  const bosses=document.createElement('optgroup');bosses.label='Boss (màn 50 của mỗi chương)';
+  for(const ch of gq().chapters){const o=document.createElement('option');o.value='boss:'+ch.id;o.textContent=`Boss · Ch.${ch.index} ${ch.name} · ${gq().bossDefs[ch.boss]?.name||ch.boss}${gq().art.worldBosses?.[ch.boss]?'':' (dùng hình boss hệ chung)'}`;bosses.append(o);}
+  $('enemy').append(bosses);
   for(const [tier,label] of Object.entries(groups)){
     const g=document.createElement('optgroup');g.label=label;
     for(const ch of gq().chapters){
@@ -93,7 +102,7 @@ function fillEnemies(){
   }
 }
 function configure(){
-  gq().configure({key:'shadow',enemyKey:'fire',form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
+  gq().configure({key:'shadow',form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
   gq().setReduced(!$('fx').checked);loadSheets();
 }
 async function boot(){

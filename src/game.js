@@ -556,6 +556,6 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   get progressionEnemyEffects(){return {dot:progressionEnemyDot?{...progressionEnemyDot}:null,charge:progressionEnemyCharge};},
   configure(options){if(locked&&!$('selectDialog').open)throw Error('Wait for the current action to finish');Object.assign(state,options);if($('selectDialog').open)$('selectDialog').close();if($('resultDialog').open)$('resultDialog').close();startStage();Object.assign(state,options);plannedIntent=intent();renderActors();update();},
   setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
-  setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get chapters(){return progressionRules.WORLD.CHAPTERS;}
+  setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get chapters(){return progressionRules.WORLD.CHAPTERS;},get bossDefs(){return progressionRules.WORLD.BOSSES;}
 };
 })();
