@@ -1,0 +1,79 @@
+{
+  "master": "assets/gemwoven/items/boss-ice.webp",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 8,
+      "dy": -10,
+      "scale": 1.1248,
+      "error": 0.1152,
+      "moving_share": 0.006
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 7,
+      "dy": -9,
+      "scale": 1.1296,
+      "error": 0.1409,
+      "moving_share": 0.0094
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 8,
+      "dy": -10,
+      "scale": 1.1184,
+      "error": 0.1279,
+      "moving_share": 0.0077
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 7,
+      "dy": -10,
+      "scale": 1.1184,
+      "error": 0.1556,
+      "moving_share": 0.0242
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 8,
+      "dy": -9,
+      "scale": 1.1312,
+      "error": 0.1052,
+      "moving_share": 0.006
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 7,
+      "dy": -9,
+      "scale": 1.1298,
+      "error": 0.131,
+      "moving_share": 0.0107
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 8,
+      "dy": -9,
+      "scale": 1.1312,
+      "error": 0.1133,
+      "moving_share": 0.0068
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 7,
+      "dy": -8,
+      "scale": 1.1298,
+      "error": 0.1223,
+      "moving_share": 0.0033
+    }
+  ],
+  "jitter": [
+    1.84,
+    2.2,
+    5.19,
+    5.37,
+    1.72,
+    2.06,
+    0.69,
+    0.45
+  ]
+}

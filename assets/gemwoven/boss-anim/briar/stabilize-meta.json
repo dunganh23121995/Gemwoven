@@ -1,0 +1,79 @@
+{
+  "master": "assets/gemwoven/items/boss-briar.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": -3,
+      "dy": -9,
+      "scale": 1.1469,
+      "error": 0.1004,
+      "moving_share": 0.0012
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": -3,
+      "dy": -9,
+      "scale": 1.1469,
+      "error": 0.114,
+      "moving_share": 0.0016
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": -6,
+      "dy": -10,
+      "scale": 1.1352,
+      "error": 0.1296,
+      "moving_share": 0.0054
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -3,
+      "dy": -10,
+      "scale": 1.1419,
+      "error": 0.1336,
+      "moving_share": 0.0076
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": -5,
+      "dy": -10,
+      "scale": 1.1404,
+      "error": 0.1522,
+      "moving_share": 0.0117
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": -3,
+      "dy": -9,
+      "scale": 1.1469,
+      "error": 0.1438,
+      "moving_share": 0.0098
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": -3,
+      "dy": -10,
+      "scale": 1.1354,
+      "error": 0.0977,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": -3,
+      "dy": -9,
+      "scale": 1.1354,
+      "error": 0.1154,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    0.48,
+    0.88,
+    1.41,
+    1.97,
+    1.05,
+    1.05,
+    0.0,
+    0.15
+  ]
+}

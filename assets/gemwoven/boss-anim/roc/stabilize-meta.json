@@ -1,0 +1,79 @@
+{
+  "master": "assets/gemwoven/items/boss-roc.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 5,
+      "dy": -14,
+      "scale": 1.149,
+      "error": 0.1537,
+      "moving_share": 0.0215
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 4,
+      "dy": -14,
+      "scale": 1.1541,
+      "error": 0.1783,
+      "moving_share": 0.025
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 4,
+      "dy": -14,
+      "scale": 1.1408,
+      "error": 0.215,
+      "moving_share": 0.0446
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 4,
+      "dy": -14,
+      "scale": 1.1424,
+      "error": 0.1387,
+      "moving_share": 0.0034
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 3,
+      "dy": -14,
+      "scale": 1.1218,
+      "error": 0.2405,
+      "moving_share": 0.0508
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 4,
+      "dy": -14,
+      "scale": 1.1359,
+      "error": 0.1769,
+      "moving_share": 0.0193
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 5,
+      "dy": -13,
+      "scale": 1.128,
+      "error": 0.1629,
+      "moving_share": 0.0069
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 5,
+      "dy": -12,
+      "scale": 1.1346,
+      "error": 0.1404,
+      "moving_share": 0.0053
+    }
+  ],
+  "jitter": [
+    2.52,
+    7.39,
+    6.37,
+    8.24,
+    7.55,
+    2.05,
+    0.24,
+    2.12
+  ]
+}

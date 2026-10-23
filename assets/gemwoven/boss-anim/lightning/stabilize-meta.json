@@ -1,0 +1,79 @@
+{
+  "master": "assets/gemwoven/items/boss-lightning.webp",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 13,
+      "dy": -8,
+      "scale": 1.3114,
+      "error": 0.1143,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 13,
+      "dy": -7,
+      "scale": 1.3161,
+      "error": 0.1372,
+      "moving_share": 0.0088
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 13,
+      "dy": -7,
+      "scale": 1.3161,
+      "error": 0.1273,
+      "moving_share": 0.0063
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 13,
+      "dy": -7,
+      "scale": 1.3161,
+      "error": 0.1458,
+      "moving_share": 0.0057
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 13,
+      "dy": -8,
+      "scale": 1.3161,
+      "error": 0.1183,
+      "moving_share": 0.0009
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 13,
+      "dy": -9,
+      "scale": 1.3112,
+      "error": 0.134,
+      "moving_share": 0.0056
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 14,
+      "dy": -8,
+      "scale": 1.3161,
+      "error": 0.1253,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 13,
+      "dy": -8,
+      "scale": 1.3114,
+      "error": 0.1287,
+      "moving_share": 0.0056
+    }
+  ],
+  "jitter": [
+    0.48,
+    0.36,
+    0.29,
+    0.34,
+    0.3,
+    0.26,
+    0.24,
+    0.24
+  ]
+}

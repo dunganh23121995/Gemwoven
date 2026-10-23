@@ -1,0 +1,79 @@
+{
+  "master": "assets/gemwoven/items/boss-fire.webp",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 19,
+      "dy": -11,
+      "scale": 1.1813,
+      "error": 0.1371,
+      "moving_share": 0.0429
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 19,
+      "dy": -11,
+      "scale": 1.1725,
+      "error": 0.1535,
+      "moving_share": 0.0582
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 19,
+      "dy": -11,
+      "scale": 1.1707,
+      "error": 0.1704,
+      "moving_share": 0.0687
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 18,
+      "dy": -12,
+      "scale": 1.1557,
+      "error": 0.137,
+      "moving_share": 0.0191
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 19,
+      "dy": -11,
+      "scale": 1.1764,
+      "error": 0.1301,
+      "moving_share": 0.0262
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 20,
+      "dy": -11,
+      "scale": 1.1813,
+      "error": 0.1306,
+      "moving_share": 0.0305
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 18,
+      "dy": -12,
+      "scale": 1.1609,
+      "error": 0.1527,
+      "moving_share": 0.0464
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 20,
+      "dy": -11,
+      "scale": 1.1813,
+      "error": 0.1498,
+      "moving_share": 0.0475
+    }
+  ],
+  "jitter": [
+    8.57,
+    7.6,
+    11.34,
+    2.83,
+    1.21,
+    6.11,
+    2.03,
+    3.01
+  ]
+}
