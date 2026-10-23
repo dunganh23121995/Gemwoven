@@ -29,7 +29,7 @@ body.ambience-paused .combat-evo-glow *{animation-play-state:paused!important}
    of the stage open for lunges, projectiles and ultimates. */
 .scene .hero-actor{--actor-size:min(clamp(115px,30vw,138px),48cqh);left:calc(21% - var(--actor-size)/2)}
 .scene .enemy-actor{--actor-size:clamp(108px,28.5vw,129px);right:calc(20% - var(--actor-size)/2)}
-.scene .enemy-actor[data-tier="elite"]{--actor-size:min(clamp(100px,27vw,122px),42cqh)}
+.scene .enemy-actor[data-tier="elite"]{--actor-size:min(clamp(140px,37vw,168px),60cqh)}
 .scene .enemy-actor[data-tier="duel"]{--actor-size:min(clamp(115px,30vw,138px),48cqh)}
 .scene .actor.boss{--actor-size:min(clamp(158px,42vw,190px),58cqh);right:calc(18% - var(--actor-size)/2)}
 /* Vua Hỏa Long is the final boss: half again as large as other bosses. */

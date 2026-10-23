@@ -1037,7 +1037,7 @@ body.ambience-paused .combat-evo-glow *{animation-play-state:paused!important}
    of the stage open for lunges, projectiles and ultimates. */
 .scene .hero-actor{--actor-size:min(clamp(115px,30vw,138px),48cqh);left:calc(21% - var(--actor-size)/2)}
 .scene .enemy-actor{--actor-size:clamp(108px,28.5vw,129px);right:calc(20% - var(--actor-size)/2)}
-.scene .enemy-actor[data-tier="elite"]{--actor-size:min(clamp(100px,27vw,122px),42cqh)}
+.scene .enemy-actor[data-tier="elite"]{--actor-size:min(clamp(140px,37vw,168px),60cqh)}
 .scene .enemy-actor[data-tier="duel"]{--actor-size:min(clamp(115px,30vw,138px),48cqh)}
 .scene .actor.boss{--actor-size:min(clamp(158px,42vw,190px),58cqh);right:calc(18% - var(--actor-size)/2)}
 /* Vua Hỏa Long is the final boss: half again as large as other bosses. */
@@ -2541,7 +2541,7 @@ renderActors=function(){
   $('heroActor').style.setProperty('--element',ELEMENTS[state.key].color);
   $('heroActor').dataset.hero=state.key;
   $('enemyActor').dataset.element=state.enemyKey;
-  const enemy=$('enemyActor'),tier=state.boss?'boss':progressionBattle?.tier==='elite'?'elite':'normal';
+  const enemy=$('enemyActor'),tier=state.boss?'boss':progressionBattle?.tier==='elite'||state.qaElite?'elite':'normal';// qaElite: test builds (Noct Studio)
   enemy.dataset.tier=progressionIsDuel()||progressionBattle?.mode==='pvp'?'duel':tier;
   // Which boss sheet is shown: a world boss id, or "base" for the element's own boss (fire = the dragon king).
   enemy.dataset.bossArt=!state.boss?'':progressionBattle?.bossId&&ART.worldBosses?.[progressionBattle.bossId]?progressionBattle.bossId:'base';
@@ -6157,7 +6157,7 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   get progressionEnemyEffects(){return {dot:progressionEnemyDot?{...progressionEnemyDot}:null,charge:progressionEnemyCharge};},
   configure(options){if(locked&&!$('selectDialog').open)throw Error('Wait for the current action to finish');Object.assign(state,options);if($('selectDialog').open)$('selectDialog').close();if($('resultDialog').open)$('resultDialog').close();startStage();Object.assign(state,options);plannedIntent=intent();renderActors();update();},
   setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
-  setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;}
+  setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get chapters(){return progressionRules.WORLD.CHAPTERS;}
 };
 })();
 </script>

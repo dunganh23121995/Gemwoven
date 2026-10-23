@@ -91,7 +91,7 @@ renderActors=function(){
   $('heroActor').style.setProperty('--element',ELEMENTS[state.key].color);
   $('heroActor').dataset.hero=state.key;
   $('enemyActor').dataset.element=state.enemyKey;
-  const enemy=$('enemyActor'),tier=state.boss?'boss':progressionBattle?.tier==='elite'?'elite':'normal';
+  const enemy=$('enemyActor'),tier=state.boss?'boss':progressionBattle?.tier==='elite'||state.qaElite?'elite':'normal';// qaElite: test builds (Noct Studio)
   enemy.dataset.tier=progressionIsDuel()||progressionBattle?.mode==='pvp'?'duel':tier;
   // Which boss sheet is shown: a world boss id, or "base" for the element's own boss (fire = the dragon king).
   enemy.dataset.bossArt=!state.boss?'':progressionBattle?.bossId&&ART.worldBosses?.[progressionBattle.bossId]?progressionBattle.bossId:'base';

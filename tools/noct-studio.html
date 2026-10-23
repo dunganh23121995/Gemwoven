@@ -47,7 +47,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
       <button data-do="hit">Bị đánh (thử hoá mờ)</button>
     </div>
     <div class="row" style="margin-top:8px">
-      <label>Đối thủ <select id="enemy"><option value="boss">Vua Hỏa Long (boss)</option><option value="mob">Quái thường</option></select></label>
+      <label>Đối thủ <select id="enemy"><option value="boss">Vua Hỏa Long (boss)</option></select></label>
       <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
       <label><input type="checkbox" id="armor"> Địch có 500 giáp</label>
     </div>
@@ -69,7 +69,29 @@ const $=id=>document.getElementById(id),frame=$('game');
 let form=3,game=null,sheets={},action='idle',img=null,cur=0,playing=true,last=0,acc=0;
 const win=()=>frame.contentWindow,gq=()=>win()?.gameQA;
 const say=t=>$('status').textContent=t;
-function enemy(){return $('enemy').value==='boss'?{stage:5}:{stage:4};}
+// Common foes are the campaign creatures, wired the way a campaign battle wires them.
+let originalMob=null;
+function enemy(){
+  const id=$('enemy').value,art=gq().art;
+  originalMob??={art:art.enemies.fire,name:gq().monsters.fire.name};
+  if(id==='boss'){art.enemies.fire=originalMob.art;gq().monsters.fire.name=originalMob.name;return {stage:5,qaElite:false};}
+  const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire={idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
+  return {stage:4,qaElite:tier==='elite'};
+}
+// Grouped as the campaign uses them: each chapter's ordinary creatures and its larger elites.
+function fillEnemies(){
+  if($('enemy').options.length>1)return;
+  const art=gq().art.campaignCreatures,groups={normal:'Quái thường',elite:'Quái tinh anh'};
+  for(const [tier,label] of Object.entries(groups)){
+    const g=document.createElement('optgroup');g.label=label;
+    for(const ch of gq().chapters){
+      const list=tier==='elite'?(ch.elites||[]):(ch.ordinary||ch.creatures||[]);
+      for(const entry of list){const key=Array.isArray(entry)?entry[0]:entry;if(!art[key])continue;
+        const o=document.createElement('option');o.value=tier+':'+key;o.textContent=`${label} · ${ch.name||ch.id} · ${Array.isArray(entry)?entry[1]:key}`;g.append(o);}
+    }
+    $('enemy').append(g);
+  }
+}
 function configure(){
   gq().configure({key:'shadow',enemyKey:'fire',form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
   gq().setReduced(!$('fx').checked);loadSheets();
@@ -81,10 +103,10 @@ async function boot(){
   d.querySelector('[data-class="shadow"]').click();
   const list=d.getElementById('heroList');if(list&&list.offsetParent)d.querySelector('.gem-choice.chosen')?.click();
   d.getElementById('startBtn').click();
-  await new Promise(r=>setTimeout(r,300));configure();say('Sẵn sàng');
+  await new Promise(r=>setTimeout(r,300));fillEnemies();configure();say('Sẵn sàng');
 }
 frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
-$('reload').onclick=()=>{frame.src='../Game.html?qa&t='+Date.now();};
+$('reload').onclick=()=>{originalMob=null;frame.src='../Game.html?qa&t='+Date.now();};
 $('forms').onclick=e=>{const b=e.target.closest('button');if(!b)return;form=+b.dataset.form;for(const x of $('forms').children)x.classList.toggle('on',x===b);configure();};
 for(const id of ['enemy','fx','armor'])$(id).onchange=configure;
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
