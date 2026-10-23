@@ -598,18 +598,20 @@ dialog h2 { font-size: 28px; line-height: 1.2; margin: 11px 0 10px; }
 .actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img,none);background-size:var(--tween-size,auto);background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
 body.reduced-motion .actor>.sprite-body::after{display:none}
 
-/* Noct at rest (the way Spine/Live2D chibi idles move): a single drawing, the whole body
-   breathing about the feet, and the lower robe split onto its own layer that sways like cloth
-   in a slow wind. The two halves overlap on a soft band, so the seam is invisible. */
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body{background-image:none!important;animation:noct-breathe 4.6s ease-in-out infinite}
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::before,
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img);background-size:var(--tween-size);background-position:var(--cell-pos,0 0);background-repeat:no-repeat;opacity:1}
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::before{-webkit-mask-image:linear-gradient(#000 0 66%,transparent 76%);mask-image:linear-gradient(#000 0 66%,transparent 76%)}
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::after{-webkit-mask-image:linear-gradient(transparent 0 60%,#000 72%);mask-image:linear-gradient(transparent 0 60%,#000 72%);transform-origin:50% 62%;animation:noct-cloak 3.3s ease-in-out infinite}
-@keyframes noct-breathe{0%,100%{scale:1 1;translate:0 0}45%{scale:1.008 1.022;translate:0 -1.5px}}
-@keyframes noct-cloak{0%,100%{transform:skewX(-2.2deg) translateX(1px)}50%{transform:skewX(2.4deg) translateX(-1.5px) scaleY(1.015)}}
-body.reduced-motion .scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body,
-body.reduced-motion .scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::after{animation:none}
+/* Noct at rest breathes like a Spine/Live2D chibi idle, from one drawing split into three
+   layers (noctRigLayout in sprite-runtime.js): the chest swells up from the waist on the inhale,
+   the hood rides up with it a beat later and nods, and the heavy robe hem lags and sways. The
+   feet never move. Inhale is quicker than exhale, then a short rest. */
+.noct-rig{display:none}
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body{background-image:none!important}
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body>.noct-rig{display:block;position:absolute;inset:0;pointer-events:none;background-image:var(--tween-img);background-size:var(--tween-size);background-position:var(--cell-pos,0 0);background-repeat:no-repeat}
+.noct-rig.torso{-webkit-mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));transform-origin:50% var(--rig-waist);animation:noct-chest 4.4s ease-in-out infinite}
+.noct-rig.head{-webkit-mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));transform-origin:50% var(--rig-neck);animation:noct-hood 4.4s ease-in-out .12s infinite}
+.noct-rig.hem{-webkit-mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));transform-origin:50% var(--rig-hem-top);animation:noct-hem 4.4s ease-in-out .35s infinite}
+@keyframes noct-chest{0%,100%{transform:none}38%{transform:scale(1.012,1.03)}80%{transform:scale(1.001,1.003)}}
+@keyframes noct-hood{0%,100%{transform:none}38%{transform:translateY(var(--rig-lift)) rotate(-.6deg)}58%{transform:translateY(calc(var(--rig-lift) * .7)) rotate(.35deg)}80%{transform:translateY(calc(var(--rig-lift) * .1))}}
+@keyframes noct-hem{0%,100%{transform:skewX(-1.2deg)}38%{transform:skewX(1.8deg) scaleY(1.012)}70%{transform:skewX(-.6deg) scaleY(1.004)}}
+body.reduced-motion .scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body>.noct-rig{animation:none}
 
 ﻿/* One luminous announcement per cascade wave; the count has no visual cap. */
 .combo-layer{position:absolute;inset:5px;z-index:11;pointer-events:none;overflow:hidden;border-radius:6px;isolation:isolate;color:var(--combo-color,#89e9ff)}
@@ -2465,11 +2467,25 @@ function spriteDefinition(family,key,action){
 }
 function spriteMarkup(family,key,action='idle'){
   const {sheet}=spriteDefinition(family,key,action),name=family==='hero'?HEROES[key].name:MONSTERS[key].name;
-  return `<span class="sprite-body" role="img" aria-label="${name}" data-family="${family}" data-key="${key}" data-action="${action}" data-frame="0" data-loop="true" style="background-image:url('${sheet.src}');background-size:${sheet.cols*100}% ${sheet.rows*100}%;background-position:0% 0%"></span>`;
+  const rig=family==='hero'&&key==='shadow'?'<i class="noct-rig torso"></i><i class="noct-rig head"></i><i class="noct-rig hem"></i>':'';
+  return `<span class="sprite-body" role="img" aria-label="${name}" data-family="${family}" data-key="${key}" data-action="${action}" data-frame="0" data-loop="true" style="background-image:url('${sheet.src}');background-size:${sheet.cols*100}% ${sheet.rows*100}%;background-position:0% 0%">${rig}</span>`;
 }
 function spriteCellPosition(sheet,frame){
   const col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   return `${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
+}
+// Noct's breathing rig, laid out from the idle sheet's hood-top landmark and foot line (fractions
+// of the cell). The torso layer sits underneath and stays opaque across both seams; the hood and
+// the robe hem fade in over it on soft bands, and the hood rises exactly as far as the expanding
+// chest moves its top edge, so the layers never show a seam or a double image.
+function noctRigLayout(el,sheet){
+  const crown=(sheet.heads?.[0]?.[1]??48)/256,foot=sheet.footY||.94,h=foot-crown,at=f=>((crown+f*h)*100).toFixed(2)+'%';
+  const waist=crown+.74*h,chest=crown+.3*h,swell=.03;
+  el.style.setProperty('--rig-torso-top',at(.22));el.style.setProperty('--rig-torso-bottom',at(.8));
+  el.style.setProperty('--rig-head-solid',at(.28));el.style.setProperty('--rig-head-fade',at(.36));
+  el.style.setProperty('--rig-hem-fade',at(.66));el.style.setProperty('--rig-hem-solid',at(.74));
+  el.style.setProperty('--rig-waist',(waist*100).toFixed(2)+'%');el.style.setProperty('--rig-neck',(chest*100).toFixed(2)+'%');
+  el.style.setProperty('--rig-hem-top',at(.68));el.style.setProperty('--rig-lift',(-(waist-chest)*swell*100).toFixed(3)+'%');
 }
 function spriteApply(el,action,index){
   if(!el)return;
@@ -2480,6 +2496,7 @@ function spriteApply(el,action,index){
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
   if(action!=='idle')el.style.setProperty('--tween','0');
   el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);el.style.setProperty('--cell-pos',el.style.backgroundPosition);
+  if(el.dataset.key==='shadow'&&action==='idle')noctRigLayout(el,sheet);
   // Noct moves like black mist: outside idle, each pose change leaves the previous pose
   // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
   if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){

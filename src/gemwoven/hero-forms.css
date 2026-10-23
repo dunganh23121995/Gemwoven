@@ -58,7 +58,11 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 [data-hero-element="shadow"] .form-aura-front .form-aura-band{animation:noct-aura-float 5.6s ease-in-out -1.6s infinite!important}
 @keyframes noct-aura-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3.5%) scale(1.015,.99)}}
 
-/* Noct in the hub: one drawing that breathes about the feet. */
-.noct-still>.art,.noct-still>img{animation:noct-hub-breathe 4.6s ease-in-out infinite;transform-origin:50% 94%}
-@keyframes noct-hub-breathe{0%,100%{scale:1 1;translate:0 0}45%{scale:1.008 1.02;translate:0 -1px}}
-@media(prefers-reduced-motion:reduce){.noct-still>.art,.noct-still>img{animation:none}}
+/* Noct in the hub breathes with the same three-layer rig as in combat (sprites.css). */
+.noct-hub-rig.torso{-webkit-mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));transform-origin:50% var(--rig-waist);animation:noct-chest 4.4s ease-in-out infinite}
+.noct-hub-rig.head{-webkit-mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));transform-origin:50% var(--rig-neck);animation:noct-hood 4.4s ease-in-out .12s infinite}
+.noct-hub-rig.hem{-webkit-mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));transform-origin:50% var(--rig-hem-top);animation:noct-hem 4.4s ease-in-out .35s infinite}
+@keyframes noct-chest{0%,100%{transform:none}38%{transform:scale(1.012,1.03)}80%{transform:scale(1.001,1.003)}}
+@keyframes noct-hood{0%,100%{transform:none}38%{transform:translateY(var(--rig-lift)) rotate(-.6deg)}58%{transform:translateY(calc(var(--rig-lift) * .7)) rotate(.35deg)}80%{transform:translateY(calc(var(--rig-lift) * .1))}}
+@keyframes noct-hem{0%,100%{transform:skewX(-1.2deg)}38%{transform:skewX(1.8deg) scaleY(1.012)}70%{transform:skewX(-.6deg) scaleY(1.004)}}
+@media(prefers-reduced-motion:reduce){.noct-hub-rig{animation:none!important}}
