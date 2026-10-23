@@ -11287,6 +11287,54 @@
     "width": 256,
     "height": 256
   },
+  "creature-abyss-reefcorsair": {
+    "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      62,
+      455,
+      456
+    ]
+  },
+  "creature-abyss-tidecaller": {
+    "file": "assets/gemwoven/elites/abyss-tidecaller/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      91,
+      57,
+      420,
+      456
+    ]
+  },
+  "creature-celestial-dawncleric": {
+    "file": "assets/gemwoven/elites/celestial-dawncleric/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      80,
+      57,
+      431,
+      456
+    ]
+  },
+  "creature-celestial-sunpaladin": {
+    "file": "assets/gemwoven/elites/celestial-sunpaladin/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      75,
+      455,
+      456
+    ]
+  },
   "creature-crystal-gemsage": {
     "file": "assets/gemwoven/elites/crystal-gemsage/master.png",
     "width": 512,
@@ -11308,6 +11356,30 @@
       56,
       96,
       455,
+      456
+    ]
+  },
+  "creature-desert-sandpriest": {
+    "file": "assets/gemwoven/elites/desert-sandpriest/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      100,
+      57,
+      412,
+      456
+    ]
+  },
+  "creature-desert-scarabguard": {
+    "file": "assets/gemwoven/elites/desert-scarabguard/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      61,
+      57,
+      450,
       456
     ]
   },
@@ -11419,6 +11491,42 @@
       456
     ]
   },
+  "creature-ice-snowwitch": {
+    "file": "assets/gemwoven/elites/ice-snowwitch/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      80,
+      57,
+      432,
+      456
+    ]
+  },
+  "creature-marsh-bogstalker": {
+    "file": "assets/gemwoven/elites/marsh-bogstalker/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      82,
+      455,
+      456
+    ]
+  },
+  "creature-marsh-sporewitch": {
+    "file": "assets/gemwoven/elites/marsh-sporewitch/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      82,
+      455,
+      456
+    ]
+  },
   "creature-moonkeep-eclipsehuntress": {
     "file": "assets/gemwoven/elites/moonkeep-eclipsehuntress/master.png",
     "width": 512,
@@ -11443,6 +11551,42 @@
       456
     ]
   },
+  "creature-sky-cloudmonk": {
+    "file": "assets/gemwoven/elites/sky-cloudmonk/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      82,
+      57,
+      430,
+      456
+    ]
+  },
+  "creature-sky-windknight": {
+    "file": "assets/gemwoven/elites/sky-windknight/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      81,
+      455,
+      456
+    ]
+  },
+  "creature-stormspire-stormshaman": {
+    "file": "assets/gemwoven/elites/stormspire-stormshaman/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      72,
+      57,
+      439,
+      456
+    ]
+  },
   "creature-stormspire-voltlancer": {
     "file": "assets/gemwoven/elites/stormspire-voltlancer/master.png",
     "width": 512,
@@ -11452,6 +11596,78 @@
       106,
       59,
       406,
+      456
+    ]
+  },
+  "creature-thorns-briarduelist": {
+    "file": "assets/gemwoven/elites/thorns-briarduelist/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      85,
+      455,
+      456
+    ]
+  },
+  "creature-thorns-vinehexer": {
+    "file": "assets/gemwoven/elites/thorns-vinehexer/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      69,
+      57,
+      443,
+      456
+    ]
+  },
+  "creature-thunder-sparkmage": {
+    "file": "assets/gemwoven/elites/thunder-sparkmage/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      63,
+      455,
+      456
+    ]
+  },
+  "creature-thunder-stormblade": {
+    "file": "assets/gemwoven/elites/thunder-stormblade/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      57,
+      108,
+      455,
+      456
+    ]
+  },
+  "creature-void-starseer": {
+    "file": "assets/gemwoven/elites/void-starseer/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      79,
+      59,
+      432,
+      456
+    ]
+  },
+  "creature-void-voidknight": {
+    "file": "assets/gemwoven/elites/void-voidknight/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      100,
+      455,
       456
     ]
   },
