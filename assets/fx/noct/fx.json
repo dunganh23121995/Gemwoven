@@ -1,9 +1,4 @@
 {
-  "mist": {
-    "file": "assets/fx/noct/mist.webp",
-    "count": 8,
-    "frameDuration": 110
-  },
   "slash": {
     "file": "assets/fx/noct/slash.webp",
     "count": 6,
@@ -18,5 +13,10 @@
     "file": "assets/fx/noct/fogcut.webp",
     "count": 6,
     "frameDuration": 50
+  },
+  "puffs": {
+    "file": "assets/fx/noct/puffs.webp",
+    "count": 4,
+    "frameDuration": 0
   }
 }

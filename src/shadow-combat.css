@@ -31,3 +31,9 @@ body.reduced-motion .scene .hero-actor[data-veiled="true"]>.sprite-body{animatio
 .reaper-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;translate:-50% -50%}
 .reaper-mist{z-index:5}.reaper-ground-mist{z-index:6}.reaper-fx-slash,.reaper-fx-fogcut,.reaper-fx-hook{z-index:7}
 .scene .actor.reaper-smothered>.sprite-body{filter:brightness(.35) saturate(.4)!important;transition:filter .3s}
+/* Reaper smoke (reaperSmoke): a dark blurred core under many independently billowing puffs. */
+.reaper-smoke{position:absolute;z-index:5;pointer-events:none;transform-origin:50% 100%}
+.reaper-smoke .smoke-core{position:absolute;left:24%;right:24%;top:30%;bottom:20%;border-radius:45% 45% 30% 30%;background:radial-gradient(ellipse at 50% 60%,#08080af2 35%,#0c0c10b0 60%,transparent 76%);filter:blur(6px);animation:smoke-core 3.2s ease-in-out infinite}
+.reaper-smoke i{position:absolute;translate:-50% -50%;background:var(--puffs) calc(var(--cell) * 33.333%) 0/400% 100% no-repeat;opacity:var(--o);animation:smoke-billow var(--dur) var(--delay) ease-in-out infinite alternate;will-change:transform}
+@keyframes smoke-billow{from{transform:translate(0,0) rotate(var(--r0)) scale(calc(var(--s0) * var(--flip)),var(--s0))}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r1)) scale(calc(var(--s1) * var(--flip)),var(--s1))}}
+@keyframes smoke-core{50%{transform:scale(1.05,.97) translateY(-2%)}}

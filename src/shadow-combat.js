@@ -142,6 +142,28 @@ function reaperFx(name,point,size,{rotate=0,flip=1,loop=false}={}){
 }
 // A cut parts every fog layer along the blade's line for a moment, then the fog closes again.
 const FOGCUT_BASE=-38;// the fogcut sheet is drawn lower-left to upper-right
+// Volumetric smoke: dozens of soft photographic puffs (assets/fx/noct/puffs) layered over a dark
+// core, each one slowly billowing, rolling, swelling and drifting on its own clock, so the fog
+// churns like real smoke instead of looping one painted shape.
+function reaperSmoke(box){
+  const sheet=ART.reaperFx?.puffs;if(!sheet||reduced)return null;
+  // The element is padded well beyond the smoke so the cut mask never squares off its edges.
+  const unit=Math.min(box.w,box.h),pad=unit*.45,W=box.w+pad*2,H=box.h+pad*2;
+  const cloud=document.createElement('span');cloud.className='reaper-smoke';cloud.setAttribute('aria-hidden','true');
+  cloud.style.cssText=`left:${box.x-pad}px;top:${box.y-pad}px;width:${W}px;height:${H}px;--puffs:url('${sheet.src}')`;
+  const rnd=(a,b)=>a+Math.random()*(b-a),puffs=[];
+  // Rows from the ground up: wide low banks, a dense body, smaller rising crowns. Every puff,
+  // at its largest swell and drift, stays inside the box (a masked box clips its children).
+  const rows=[[.9,8,.36,.46],[.72,8,.34,.44],[.52,7,.32,.42],[.32,6,.28,.36],[.16,4,.2,.27]];
+  for(const [yy,count,min,max] of rows)for(let i=0;i<count;i++){
+    const size=rnd(min,max)*unit,reach=size*.5*1.3+unit*.06,dx=rnd(-.05,.05)*unit,dy=-rnd(.02,.07)*unit;
+    const x=pad+Math.max(reach-pad,Math.min(box.w-reach+pad,((i+.5)/count+rnd(-.05,.05))*box.w));
+    const y=pad+Math.max(reach-dy-pad,Math.min(box.h-reach+pad,(yy+rnd(-.04,.04))*box.h));
+    puffs.push(`<i style="left:${x}px;top:${y}px;width:${size}px;height:${size}px;--cell:${Math.floor(Math.random()*4)};--flip:${Math.random()<.5?-1:1};--r0:${rnd(-30,30)}deg;--r1:${rnd(-70,70)}deg;--s0:${rnd(.75,.92)};--s1:${rnd(1.08,1.3)};--dx:${dx}px;--dy:${dy}px;--dur:${rnd(2.4,4.2)}s;--delay:${-rnd(0,4)}s;--o:${rnd(.8,1)}"></i>`);
+  }
+  cloud.innerHTML=`<b class="smoke-core"></b>`+puffs.join('');
+  $('combatEffects').append(cloud);return cloud;
+}
 function reaperFogGap(fogs,spot,angle,pending){
   if(reduced)return;
   const theta=angle*Math.PI/180,dir=[Math.sin(theta),-Math.cos(theta)];
@@ -160,16 +182,16 @@ async function reaperVeilRage(raw,onRelease){
   const enemy=combatV3Point('enemy'),scene=$('scene').getBoundingClientRect(),body=target.getBoundingClientRect();
   const feet=body.bottom-scene.top-body.height*(1-(Number(getComputedStyle(target).getPropertyValue('--foot-y'))||.94));
   const fogSize=Math.max(body.width,body.height)*1.25,fogPoint={x:body.left-scene.left+body.width/2-fogSize*.08,y:feet+fogSize*.06-fogSize*.38};// foes face left: lean the dome toward the head
-  const groundSize=fogSize*1.05,groundPoint={x:fogPoint.x-fogSize*.04,y:feet+groundSize*.1-groundSize*.38};
+  // The smoke box covers the foe's whole sprite with margin, its floor just below the feet.
+  const smokeBox={w:Math.max(body.width*1.12,fogSize*.75),h:Math.max(body.height*.88,fogSize*.68)};smokeBox.x=fogPoint.x-smokeBox.w*.54;smokeBox.y=feet+smokeBox.h*.1-smokeBox.h;
   let amount=0,blocked=0,mist=null,ground=null;
   root.classList.add('combat-v3-acting');root.dataset.ragePhase='chant';
   try{
     combatVoice('hero','cast');playNoctSound('charge',{volume:.26});popActorSkill('hero',HEROES.shadow.skill,true,pending);
     setSpriteFrame('hero','cast',0);await at(260);setSpriteFrame('hero','cast',2);await at(460);
     root.dataset.ragePhase='smother';setSpriteFrame('hero','cast',3);playNoctSound('mist',{volume:.4,pan:.3});
-    mist=reaperFx('mist',fogPoint,fogSize,{loop:true});ground=reaperFx('mist',groundPoint,groundSize,{loop:true,flip:-1});
-    if(ground){ground.classList.add('reaper-ground-mist');pending.push(animate(ground,[{opacity:0,scale:.4},{opacity:1,scale:1}],{duration:380,easing:'cubic-bezier(.2,.8,.3,1)'}));}
-    if(mist)pending.push(animate(mist,[{opacity:0,scale:.45},{opacity:1,scale:1}],{duration:420,easing:'cubic-bezier(.2,.8,.3,1)'}));
+    mist=reaperSmoke(smokeBox);
+    if(mist)pending.push(animate(mist,[{opacity:0,scale:'.35 .2',translate:`${-smokeBox.w*.35}px 0`},{opacity:1,scale:'1 1',translate:'0 0'}],{duration:620,easing:'cubic-bezier(.2,.8,.3,1)'}));
     target.classList.add('reaper-smothered');
     await at(900);setSpriteFrame('hero','cast',4);
     root.dataset.ragePhase='vanish';shadowEcho(null,null,pending,1);
