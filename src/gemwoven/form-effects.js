@@ -11,7 +11,7 @@
     requestAnimationFrame(tick);
     if(document.hidden)return;
     for(const band of bands){
-      const ms=Number(band.dataset.frameMs)||260,t=reduced()?0:now/ms,frame=Math.floor(t)%8,mix=ease(t%1);
+      const ms=Number(band.dataset.frameMs)||260,t=reduced()||band.dataset.still?0:now/ms,frame=Math.floor(t)%8,mix=ease(t%1);
       band.style.setProperty('--aura-a',position(frame));band.style.setProperty('--aura-b',position((frame+1)%8));
       band.style.setProperty('--aura-in',mix.toFixed(3));band.style.setProperty('--aura-out',(1-mix**3).toFixed(3));
     }
@@ -24,7 +24,8 @@
       const source=asset&&(asset.src||asset.file),url=source?new URL(source,document.baseURI).href:'';
       // Slower than the authored strip: each frame melts into the next instead of stepping.
       const frameMs=Math.max(300,Math.round((asset?.frameDuration||160)*(key==='shadow'?2.6:1.8)));
-      const style=url?`data-frame-ms="${frameMs}" style="--aura-sheet:url('${url.replace(/"/g,'&quot;')}')"`:'';
+      // Noct's generated cloud frames do not line up; he keeps a single cloud that floats.
+      const style=url?`data-frame-ms="${frameMs}"${key==='shadow'?' data-still="1"':''} style="--aura-sheet:url('${url.replace(/"/g,'&quot;')}')"`:'';
       const band=url?`<i class="form-aura-band" ${style}></i>`:'';if(band)setTimeout(start);
       // Optional front strip on the same clock (Noct's waist sash), drawn over the body.
       const frontSource=asset&&(asset.frontSrc||asset.front),frontUrl=frontSource?new URL(frontSource,document.baseURI).href:'';

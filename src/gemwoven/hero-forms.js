@@ -12,6 +12,7 @@
     return el;
   }
   function decorateBody(el,key,form){
+    if(key==='shadow')el.classList.add('noct-still');
     if(key==='novice'||form<2)return;
     el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
     el.style.setProperty('--form-color',palette[key]);if(form===3)el.append(aura(key,form));
@@ -30,7 +31,8 @@
     for(const key of Object.keys(M.HERO_FORMS)){
       const form=M.heroForm(key,snapshot.heroes[key]),poster=A[`form-${key}-${form}`],portrait=A[`form-portrait-${key}-${form}`],idle=A[`form-idle-${key}-${form}`];
       A['hero-'+key]=poster||originals['hero-'+key];A['portrait-'+key]=portrait||originals['portrait-'+key];
-      A['home-idle-'+key]=idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
+      // Noct rests on one drawing (CSS breathing), never on a stepped idle animation.
+      A['home-idle-'+key]=key==='shadow'?(poster||originals['hero-'+key]):idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
     }
     const p=decorate(state);
     if(state.screen==='skills'){
@@ -66,7 +68,7 @@
     const list=document.createElement('div');list.className='hero-form-gallery-list';modal.body.append(intro,tabs,list);
     const cards=M.HERO_FORMS[key].map((info,i)=>{
       const form=i+1,card=document.createElement('article'),body=document.createElement('div');body.className='form-preview-body';
-      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?128:122);decorateBody(body,key,form);
+      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&key!=='shadow'&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?128:122);decorateBody(body,key,form);
       card.dataset.current=String(form===current&&!!p.heroes[key]);card.dataset.form=form;
       const title=document.createElement('h3');title.textContent=info.name;
       const note=document.createElement('p');note.className='form-state';note.textContent=`${[1,4,6][i]} sao · ${form===current&&p.heroes[key]?'Đang sử dụng':form<=current&&p.heroes[key]?'Đã mở':'Chưa mở'}`;

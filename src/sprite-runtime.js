@@ -23,7 +23,7 @@ function spriteApply(el,action,index){
   if(el.dataset.sheet!==mapped){el.style.backgroundImage=`url('${sheet.src}')`;el.style.backgroundSize=`${sheet.cols*100}% ${sheet.rows*100}%`;el.dataset.sheet=mapped;}
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
   if(action!=='idle')el.style.setProperty('--tween','0');
-  el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);
+  el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);el.style.setProperty('--cell-pos',el.style.backgroundPosition);
   // Noct moves like black mist: outside idle, each pose change leaves the previous pose
   // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
   if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){
@@ -63,10 +63,12 @@ function spriteTick(now){
     if(el.dataset.loop==='true'){
       // Only dense, authored loops advance at rest. One/two/four-pose atlases
       // otherwise pop at shoulders, eyes and weapons; CSS supplies a smooth breath.
-      const progress=def.count>=8?Math.max(0,now-playback.start)/(def.frameDuration||90):0,frame=Math.floor(progress)%def.count;
+      // Noct never steps through idle frames: one drawing breathes and sways (sprites.css).
+      const still=el.dataset.key==='shadow'&&el.dataset.family==='hero';
+      const progress=def.count>=8&&!still?Math.max(0,now-playback.start)/(def.frameDuration||90):0,frame=Math.floor(progress)%def.count;
       if(+el.dataset.frame!==frame||el.dataset.action!=='idle')spriteApply(el,'idle',frame);
       // Idle breathes continuously: the next pose fades in over the current one (::after layer).
-      if(def.count>=8){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
+      if(def.count>=8&&!still){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
     }else{
       const elapsed=Math.max(0,now-playback.start);
       const fallbackHurt=playback.action==='hurt'&&spriteDefinition(el.dataset.family,el.dataset.key,'hurt').action!=='hurt';

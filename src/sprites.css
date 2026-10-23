@@ -21,3 +21,16 @@
 /* Idle in-betweens: the next idle pose cross-fades over the current one, so breathing loops glide. */
 .actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img,none);background-size:var(--tween-size,auto);background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
 body.reduced-motion .actor>.sprite-body::after{display:none}
+
+/* Noct at rest (the way Spine/Live2D chibi idles move): a single drawing, the whole body
+   breathing about the feet, and the lower robe split onto its own layer that sways like cloth
+   in a slow wind. The two halves overlap on a soft band, so the seam is invisible. */
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body{background-image:none!important;animation:noct-breathe 4.6s ease-in-out infinite}
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::before,
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img);background-size:var(--tween-size);background-position:var(--cell-pos,0 0);background-repeat:no-repeat;opacity:1}
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::before{-webkit-mask-image:linear-gradient(#000 0 66%,transparent 76%);mask-image:linear-gradient(#000 0 66%,transparent 76%)}
+.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::after{-webkit-mask-image:linear-gradient(transparent 0 60%,#000 72%);mask-image:linear-gradient(transparent 0 60%,#000 72%);transform-origin:50% 62%;animation:noct-cloak 3.3s ease-in-out infinite}
+@keyframes noct-breathe{0%,100%{scale:1 1;translate:0 0}45%{scale:1.008 1.022;translate:0 -1.5px}}
+@keyframes noct-cloak{0%,100%{transform:skewX(-2.2deg) translateX(1px)}50%{transform:skewX(2.4deg) translateX(-1.5px) scaleY(1.015)}}
+body.reduced-motion .scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body,
+body.reduced-motion .scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body::after{animation:none}
