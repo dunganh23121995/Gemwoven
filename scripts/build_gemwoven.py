@@ -51,6 +51,9 @@ for name in ['boss-expansion-a','boss-expansion-b']:
     path=ROOT/f'assets/gemwoven/{name}.json'
     if path.exists():
         for key,boss in json.loads(path.read_text(encoding='utf-8'))['bosses'].items():merged['boss-'+key]={'file':boss['portrait'] if boss['portrait'].startswith('assets/') else 'assets/gemwoven/'+boss['portrait'],'width':512,'height':512,'transparent':True}
+# Humanoid elites designed for their chapter boss (assets/gemwoven/elites/<id>/master.png).
+for master in sorted((ROOT/'assets/gemwoven/elites').glob('*/master.png')):
+    with Image.open(master) as im:merged['creature-'+master.parent.name]={'file':master.relative_to(ROOT).as_posix(),'width':im.width,'height':im.height,'transparent':True}
 # Foot registration uses the visible sprite, excluding transparent canvas padding.
 for key,asset in merged.items():
     if key.startswith(('hero-','home-idle-','creature-','monster-','boss-')) and (ROOT/asset['file']).is_file():

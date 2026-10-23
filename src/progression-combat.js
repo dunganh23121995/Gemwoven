@@ -213,7 +213,8 @@ if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Tr
 
 if(['campaign','boss'].includes(progressionBattle?.mode)){
   const battle=progressionBattle,key=battle.enemyKey,creature=ART.campaignCreatures?.[battle.creature];
-  if(creature)ART.enemies[key]={idle:creature,attack:creature,cast:creature,hurt:creature};
+  // Elites carry a looping idle plus a still pose for strikes; ordinary foes are one painting.
+  if(creature)ART.enemies[key]=creature.idle?{idle:creature.idle,attack:creature.still,cast:creature.still,hurt:creature.still}:{idle:creature,attack:creature,cast:creature,hurt:creature};
   if(battle.boss&&ART.worldBosses?.[battle.bossId])ART.bosses[key]=ART.worldBosses[battle.bossId];
   const backdrop=progressionRules.WORLD.CHAPTERS[battle.chapter-1]?.backdrop||battle.theme;
   // The chapter's vista belongs only to the distant layer. Keep the authored

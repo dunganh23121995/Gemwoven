@@ -4,6 +4,8 @@ import base64
 import json
 import sys
 import io
+import hashlib
+import subprocess
 from PIL import Image
 
 root = Path(__file__).resolve().parent
@@ -28,6 +30,17 @@ def compact_image(path):
     return 'data:image/webp;base64,' + base64.b64encode(buffer.getvalue()).decode('ascii')
 
 
+def sound(path):
+    """Embed a sound effect as Ogg Vorbis (like the music). WAV sources are transcoded once into
+    a local cache; this keeps the tracked Game.html under GitHub's 100 MB file limit."""
+    source=root/path
+    if source.suffix!='.wav':return 'data:audio/ogg;base64,'+base64.b64encode(source.read_bytes()).decode('ascii')
+    data=source.read_bytes();cached=root/'.build-cache/audio'/(hashlib.sha1(data).hexdigest()+'.ogg')
+    if not cached.exists():
+        cached.parent.mkdir(parents=True,exist_ok=True)
+        subprocess.run(['ffmpeg','-v','error','-y','-i',str(source),'-c:a','libvorbis','-q:a','6',str(cached)],check=True)
+    return 'data:audio/ogg;base64,'+base64.b64encode(cached.read_bytes()).decode('ascii')
+
 def atlas(path, cols, rows, count, fallback):
     if not (root / path).exists():
         if not draft:
@@ -45,17 +58,19 @@ voice_manifest.update(json.loads((root/'assets/audio/creature-manifest.json').re
 voice_manifest.update(json.loads((root/'assets/audio/noct-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/cast-voice-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/boss-voice-manifest.json').read_text(encoding='utf-8')))
-art['voices']={key:{'src':'data:audio/wav;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration']} for key,value in voice_manifest.items()}
+art['voices']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in voice_manifest.items()}
 noct_sfx=json.loads((root/'assets/audio/noct-sfx-manifest.json').read_text(encoding='utf-8'))
-art['noctSounds']={key:{'src':'data:audio/wav;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration']} for key,value in noct_sfx.items()}
+art['noctSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in noct_sfx.items()}
 cast_sfx=json.loads((root/'assets/audio/cast-sfx-manifest.json').read_text(encoding='utf-8'))
 cast_sfx.update(json.loads((root/'assets/audio/lumi-thunder-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/yuki-glacier-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/mika-nori-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/form-skill-manifest.json').read_text(encoding='utf-8')))
-art['castSounds']={key:{'src':'data:audio/wav;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration']} for key,value in cast_sfx.items()}
+art['castSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
+# Boss themes of chapters folded into another chapter (same boss) are no longer played.
+for retired in ['pine','obsidian','bamboo','coast','dream','astral']:music_manifest.pop('boss-'+retired,None)
 art['music']={key:{'src':'data:audio/ogg;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration'],'title':value['title']} for key,value in music_manifest.items()}
 for key in keys:
     art['heroes'][key] = {
@@ -138,6 +153,42 @@ for name in ['boss-expansion-a','boss-expansion-b']:
     for key,data in json.loads(path.read_text(encoding='utf-8'))['bosses'].items():
         art['worldBosses'][key]={action:{**data[action],'src':image(data[action]['src'] if data[action]['src'].startswith('assets/') else 'assets/gemwoven/'+data[action]['src'])} for action in ['idle','cast','attack','hurt']}
 
+# Humanoid elites (assets/gemwoven/elites/<id>/): a stabilized 8-frame idle (2x4, 256px cells);
+# their strikes hold the first idle pose, since combat supplies the lunge and recoil.
+for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
+    idle={'src':image(folder),'cols':2,'rows':4,'count':8,'frameDuration':150,'heads':[[128,48]]*8}
+    still={**idle,'count':1,'heads':[[128,48]]}
+    master=folder.with_name('master.png')
+    if not master.exists():master=root/f'assets/gemwoven/items/creature-{folder.parent.name}.png'
+    art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if master.exists() else ''}
+# Chapter bosses (assets/gemwoven/boss-anim/<id>/): an 8-frame idle for all 24 and a 3x2 cast
+# sheet for the bosses that had only one painting. The new idle is framed on its own, so every
+# other action sheet grows about the feet by the ratio of the body heights (one size per boss).
+def body_height(sheet,frame=0):
+    im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows']
+    b=im.crop(((frame%sheet['cols'])*fw,(frame//sheet['cols'])*fh,(frame%sheet['cols']+1)*fw,(frame//sheet['cols']+1)*fh)).getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
+    return (b[3]-b[1])/fh if b else 0
+for folder in sorted((root/'assets/gemwoven/boss-anim').glob('*/idle.webp')):
+    key=folder.parent.name;family='bosses' if key in art['bosses'] else 'worldBosses'
+    if key not in art[family]:continue
+    actions=art[family][key];old=actions['idle']
+    idle={'src':image(folder),'cols':2,'rows':4,'count':8,'frameDuration':160,'heads':[[128,48]]*8}
+    if old['count']==1:
+        # A boss that was one painting: it now holds its first idle pose to strike and recoil.
+        still={**idle,'count':1,'heads':[[128,48]]}
+        for action in actions:actions[action]=still
+    else:
+        ratio=body_height(idle)/max(1e-6,body_height(old))
+        sheets={}
+        for action,sheet in actions.items():
+            if id(sheet) not in sheets:sheets[id(sheet)]={**sheet,'scale':round(sheet.get('scale',1)*ratio,4)}
+            actions[action]=sheets[id(sheet)]
+    actions['idle']=idle
+    cast=folder.with_name('cast.webp')
+    if family=='worldBosses' and cast.exists():
+        sheet={'src':image(cast),'cols':3,'rows':2,'count':6,'heads':[[128,48]]*6}
+        sheet['scale']=round(body_height(idle)/max(1e-6,body_height(sheet)),4)
+        actions['cast']=sheet;actions['attack']=sheet
 # Use each idle sheet's opaque feet, rather than the bottom of its transparent canvas.
 def register_feet(sheet):
     im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA')
@@ -187,14 +238,20 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     art['heroForms'][data['hero']]=forms
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
-for sheet in art['campaignCreatures'].values():register_feet(sheet)
+def creature_sheets():
+    for entry in art['campaignCreatures'].values():yield from ([entry['idle'],entry['still']] if 'idle' in entry else [entry])
+for sheet in creature_sheets():register_feet(sheet)
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():
         for sheet in character.values():register_span(sheet)
 for forms in art['heroForms'].values():
     for actions in forms.values():
         for sheet in actions.values():register_span(sheet)
-for sheet in art['campaignCreatures'].values():register_span(sheet)
+for sheet in creature_sheets():register_span(sheet)
+for family in ['bosses','worldBosses']:
+    for character in art[family].values():
+        for sheet in character.values():
+            if sheet.get('scale') and 'footY' not in sheet:register_feet(sheet)
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')

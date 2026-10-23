@@ -1,0 +1,361 @@
+{
+  "note": "Elite foes: humanoid, themed by their chapter boss; idle 8 frames (2x4, 256px cells), stabilized.",
+  "elites": {
+    "forest-rootknight": {
+      "theme": "forest",
+      "name": "Hiệp Sĩ Rễ Cổ",
+      "brief": "armored forest knight in living bark plate with moss and small leaves, round wooden root shield and a stone-headed mace",
+      "boss": "earth",
+      "status": "new",
+      "replaces": null
+    },
+    "forest-leafarcher": {
+      "theme": "forest",
+      "name": "Xạ Thủ Lá Rừng",
+      "brief": "slender hooded forest archer in a cloak of overlapping green leaves, longbow of curved branch, quiver of feather arrows",
+      "boss": "earth",
+      "status": "new",
+      "replaces": null
+    },
+    "volcano-flamelancer": {
+      "theme": "volcano",
+      "name": "Thương Binh Hỏa Long",
+      "brief": "warrior in dark red dragon-scale armor with a horned dragon helm, long flaming lance, small glowing ember cracks",
+      "boss": "fire",
+      "status": "new",
+      "replaces": null
+    },
+    "volcano-ashcultist": {
+      "theme": "volcano",
+      "name": "Tư Tế Tro Tàn",
+      "brief": "hooded fire cultist in charred grey and crimson robes, swinging a burning censer on a chain",
+      "boss": "fire",
+      "status": "new",
+      "replaces": null
+    },
+    "ice-frostguard": {
+      "theme": "ice",
+      "name": "Vệ Binh Băng Nguyệt",
+      "brief": "palace guard in pale blue and silver plate with a crescent-moon helm crest, long ice halberd",
+      "boss": "ice",
+      "status": "new",
+      "replaces": null
+    },
+    "ice-snowwitch": {
+      "theme": "ice",
+      "name": "Phù Thủy Tuyết",
+      "brief": "snow witch in white fur-trimmed robes and a tall frost hat, crystal staff topped by a crescent moon of ice",
+      "boss": "ice",
+      "status": "new",
+      "replaces": null
+    },
+    "thunder-stormblade": {
+      "theme": "thunder",
+      "name": "Kiếm Sĩ Lôi Đình",
+      "brief": "agile swordsman in indigo armor with gold trim, twin curved blades crackling with small lightning, long scarf",
+      "boss": "lightning",
+      "status": "new",
+      "replaces": null
+    },
+    "thunder-sparkmage": {
+      "theme": "thunder",
+      "name": "Pháp Sư Tia Chớp",
+      "brief": "battle mage in violet and gold robes with a lightning-rod staff and a star-pattern mantle",
+      "boss": "lightning",
+      "status": "new",
+      "replaces": null
+    },
+    "marsh-bogstalker": {
+      "theme": "marsh",
+      "name": "Thợ Săn Đầm Lầy",
+      "brief": "masked swamp hunter in reed and leather armor with mushroom caps on the shoulders, barbed bone spear",
+      "boss": "mire",
+      "status": "new",
+      "replaces": null
+    },
+    "marsh-sporewitch": {
+      "theme": "marsh",
+      "name": "Phù Thủy Bào Tử",
+      "brief": "hunched toxic witch in a mossy shawl and a giant mushroom-cap hat, gnarled staff with green spore puffs",
+      "boss": "mire",
+      "status": "new",
+      "replaces": null
+    },
+    "desert-scarabguard": {
+      "theme": "desert",
+      "name": "Vệ Binh Bọ Vàng",
+      "brief": "temple guard in golden scarab-shell armor and a scarab helm, khopesh sword and round sun shield",
+      "boss": "scarab",
+      "status": "new",
+      "replaces": null
+    },
+    "desert-sandpriest": {
+      "theme": "desert",
+      "name": "Tư Tế Cát Vàng",
+      "brief": "desert priest in white and gold wrappings with a jackal-ear headdress and an ankh-topped staff",
+      "boss": "scarab",
+      "status": "new",
+      "replaces": null
+    },
+    "abyss-reefcorsair": {
+      "theme": "abyss",
+      "name": "Hải Tặc San Hô",
+      "brief": "sea corsair in a coral-encrusted coat and tricorne hat with shells, curved cutlass, barnacled boots",
+      "boss": "leviathan",
+      "status": "new",
+      "replaces": null
+    },
+    "abyss-tidecaller": {
+      "theme": "abyss",
+      "name": "Pháp Sư Triều Dâng",
+      "brief": "sea mage in flowing teal robes with fin-like sleeves and a pearl circlet, trident staff",
+      "boss": "leviathan",
+      "status": "new",
+      "replaces": null
+    },
+    "foundry-gearknight": {
+      "theme": "foundry",
+      "name": "Hiệp Sĩ Bánh Răng",
+      "brief": "knight in brass steam-powered armor with visible gears and pipes, piston warhammer",
+      "boss": "colossus",
+      "status": "new",
+      "replaces": null
+    },
+    "foundry-tinkerer": {
+      "theme": "foundry",
+      "name": "Thợ Máy Hơi Nước",
+      "brief": "goggled engineer in a leather apron and brass harness, giant wrench, a small clockwork drone at the shoulder",
+      "boss": "colossus",
+      "status": "new",
+      "replaces": null
+    },
+    "crystal-shardblade": {
+      "theme": "crystal",
+      "name": "Kiếm Sĩ Lăng Tinh",
+      "brief": "swordsman in faceted crystal armor in prism colors, long translucent crystal greatsword",
+      "boss": "prism",
+      "status": "new",
+      "replaces": null
+    },
+    "crystal-gemsage": {
+      "theme": "crystal",
+      "name": "Hiền Giả Ngọc",
+      "brief": "robed sage in deep blue with embedded gemstones, holding a crystal orb ringed by small cut gems",
+      "boss": "prism",
+      "status": "new",
+      "replaces": null
+    },
+    "haunted-gravewarden": {
+      "theme": "haunted",
+      "name": "Thủ Mộ Nhân",
+      "brief": "tall gaunt gravekeeper in a tattered coat and wide hat, ghost lantern in one hand and a long iron shovel",
+      "boss": "reaper",
+      "status": "new",
+      "replaces": null
+    },
+    "haunted-bonepaladin": {
+      "theme": "haunted",
+      "name": "Hiệp Sĩ Xương",
+      "brief": "undead paladin in pale bone and dark iron armor, skull pauldrons, ghostly blue eyes, heavy rune sword",
+      "boss": "reaper",
+      "status": "new",
+      "replaces": null
+    },
+    "sky-windknight": {
+      "theme": "sky",
+      "name": "Kỵ Sĩ Phong Vũ",
+      "brief": "knight in white and sky-blue armor with feathered wings on the helm and shoulders, long wind spear",
+      "boss": "roc",
+      "status": "new",
+      "replaces": null
+    },
+    "sky-cloudmonk": {
+      "theme": "sky",
+      "name": "Tăng Nhân Mây",
+      "brief": "cloud monk in light flowing robes and prayer beads, standing on a small puff of cloud",
+      "boss": "roc",
+      "status": "new",
+      "replaces": null
+    },
+    "thorns-briarduelist": {
+      "theme": "thorns",
+      "name": "Kiếm Khách Gai Hồng",
+      "brief": "elegant duelist in a dark rose-red coat wrapped in thorny vines, thin rapier with a rose guard",
+      "boss": "briar",
+      "status": "new",
+      "replaces": null
+    },
+    "thorns-vinehexer": {
+      "theme": "thorns",
+      "name": "Phù Thủy Dây Leo",
+      "brief": "witch with a crown of thorns and a dress of living vines and roses, twisted vine staff",
+      "boss": "briar",
+      "status": "new",
+      "replaces": null
+    },
+    "celestial-sunpaladin": {
+      "theme": "celestial",
+      "name": "Thánh Kỵ Nhật Quang",
+      "brief": "radiant paladin in white and gold armor with a sun-disc crest, tower shield and longsword",
+      "boss": "seraph",
+      "status": "new",
+      "replaces": null
+    },
+    "celestial-dawncleric": {
+      "theme": "celestial",
+      "name": "Giáo Sĩ Bình Minh",
+      "brief": "cleric in cream and gold vestments with a censer of warm light and a book on a chain",
+      "boss": "seraph",
+      "status": "new",
+      "replaces": null
+    },
+    "void-voidknight": {
+      "theme": "void",
+      "name": "Hắc Kỵ Hư Không",
+      "brief": "knight in black and deep purple armor with star-speckled cracks, void greatsword, tattered cape",
+      "boss": "eclipse",
+      "status": "new",
+      "replaces": null
+    },
+    "void-starseer": {
+      "theme": "void",
+      "name": "Tiên Tri Tinh Thực",
+      "brief": "hooded seer in a starry indigo robe with an eclipse-shaped staff and a small dark orb ringed by stars",
+      "boss": "eclipse",
+      "status": "new",
+      "replaces": null
+    },
+    "eldergrove-blossomranger": {
+      "theme": "eldergrove",
+      "name": "Du Hiệp Bạch Hoa",
+      "brief": "ranger in white blossom and bark leather armor, flower-bud hood, short twin blades of polished wood",
+      "boss": "elderbloom",
+      "status": "new",
+      "replaces": "eldergrove-thornstag"
+    },
+    "glacier-blizzardmage": {
+      "theme": "glacier",
+      "name": "Pháp Sư Bão Tuyết",
+      "brief": "frost mage in a thick white and ice-blue cloak with snowflake runes and an owl-feather mantle, staff with a blizzard orb",
+      "boss": "frostregent",
+      "status": "new",
+      "replaces": "glacier-blizzardowl"
+    },
+    "stormspire-voltlancer": {
+      "theme": "stormspire",
+      "name": "Thương Kỵ Lôi Dực",
+      "brief": "lancer in gold and blue armor with gryphon-wing pauldrons and a lightning lance",
+      "boss": "tempestwing",
+      "status": "new",
+      "replaces": "stormspire-voltgryphon"
+    },
+    "stormspire-stormshaman": {
+      "theme": "stormspire",
+      "name": "Pháp Sư Tế Bão",
+      "brief": "storm shaman with a feathered headdress, totem staff crackling with lightning, rune-painted robes",
+      "boss": "tempestwing",
+      "status": "new",
+      "replaces": "stormspire-stormtotem"
+    },
+    "mycelium-mycoknight": {
+      "theme": "mycelium",
+      "name": "Hiệp Sĩ Nấm",
+      "brief": "knight in armor grown from mushroom caps and fungal plates, spore-dripping morning star",
+      "boss": "sporefather",
+      "status": "new",
+      "replaces": "mycelium-sporetoad"
+    },
+    "moonkeep-eclipsehuntress": {
+      "theme": "moonkeep",
+      "name": "Nữ Thợ Săn Nhật Thực",
+      "brief": "huntress in dark violet leather with moon-silver trim and a panther-ear hood, twin crescent daggers",
+      "boss": "moonfang",
+      "status": "new",
+      "replaces": "moonkeep-eclipsestalker"
+    },
+    "eldergrove-rootwarden": {
+      "theme": "eldergrove",
+      "boss": "elderbloom",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-eldergrove-rootwarden.png"
+    },
+    "caldera-basaltbrute": {
+      "theme": "caldera",
+      "boss": "cinderheart",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-caldera-basaltbrute.png"
+    },
+    "caldera-furnacepriest": {
+      "theme": "caldera",
+      "boss": "cinderheart",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-caldera-furnacepriest.png"
+    },
+    "glacier-rimeknight": {
+      "theme": "glacier",
+      "boss": "frostregent",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-glacier-rimeknight.png"
+    },
+    "soulcrypt-cagekeeper": {
+      "theme": "soulcrypt",
+      "boss": "souljailer",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-soulcrypt-cagekeeper.png"
+    },
+    "soulcrypt-veilassassin": {
+      "theme": "soulcrypt",
+      "boss": "souljailer",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-soulcrypt-veilassassin.png"
+    },
+    "mycelium-plagueherald": {
+      "theme": "mycelium",
+      "boss": "sporefather",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-mycelium-plagueherald.png"
+    },
+    "geode-rampartgolem": {
+      "theme": "geode",
+      "boss": "prismback",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-geode-rampartgolem.png"
+    },
+    "geode-prismseer": {
+      "theme": "geode",
+      "boss": "prismback",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-geode-prismseer.png"
+    },
+    "hourglass-dunesentinel": {
+      "theme": "hourglass",
+      "boss": "sandchronarch",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-hourglass-dunesentinel.png"
+    },
+    "hourglass-chronoweaver": {
+      "theme": "hourglass",
+      "boss": "sandchronarch",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-hourglass-chronoweaver.png"
+    },
+    "coralreef-tidemarshal": {
+      "theme": "coralreef",
+      "boss": "coraltide",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-coralreef-tidemarshal.png"
+    },
+    "coralreef-coraloracle": {
+      "theme": "coralreef",
+      "boss": "coraltide",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-coralreef-coraloracle.png"
+    },
+    "moonkeep-lunarknight": {
+      "theme": "moonkeep",
+      "boss": "moonfang",
+      "status": "existing",
+      "master": "assets/gemwoven/items/creature-moonkeep-lunarknight.png"
+    }
+  }
+}

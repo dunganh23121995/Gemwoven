@@ -81,7 +81,7 @@ function enemy(){
     return {stage:5,enemyKey:key,qaElite:false,qaBossArt:world?ch.boss:'base'};
   }
   art.enemies.fire=originalMob.art;
-  const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire={idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
+  const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire=c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
   return {stage:4,enemyKey:'fire',qaElite:tier==='elite',qaBossArt:''};
 }
 // Grouped as the campaign uses them: each chapter's ordinary creatures and its larger elites.
@@ -96,7 +96,7 @@ function fillEnemies(){
     for(const ch of gq().chapters){
       const list=tier==='elite'?(ch.elites||[]):(ch.ordinary||ch.creatures||[]);
       for(const entry of list){const key=Array.isArray(entry)?entry[0]:entry;if(!art[key])continue;
-        const o=document.createElement('option');o.value=tier+':'+key;o.textContent=`${label} · ${ch.name||ch.id} · ${Array.isArray(entry)?entry[1]:key}`;g.append(o);}
+        const o=document.createElement('option');o.value=tier+':'+key;o.textContent=`${label} · ${ch.name||ch.id} · ${Array.isArray(entry)?entry[1]:gq().creatureNames?.[ch.id]?.[key]||key}`;g.append(o);}
     }
     $('enemy').append(g);
   }

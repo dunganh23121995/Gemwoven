@@ -50,3 +50,6 @@ Thumbs.db
 assets/**/animation.gif
 assets/**/raw-sheet-clean.png
 assets/**/sheet-transparent.png
+
+# Build cache (transcoded audio)
+/.build-cache/

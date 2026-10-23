@@ -60,7 +60,7 @@ function expeditionHud(){
   panel.innerHTML=`<div class="expedition-phase"><b>${d.phaseNames[t.phase-1]} · ${t.turn} lượt</b><span>${d.status} <strong>${t.stacks}/5</strong></span></div><div class="expedition-gauge"><label>${d.gauge} ${Math.round(t.gauge)}%</label><meter min="0" max="100" value="${t.gauge}"></meter></div><div class="expedition-counter">${relic?`<img src="${relic}" alt="">`:''}<span>${d.counter} · ${stars}/12 mảnh<br><b>${t.rank?'Giảm '+Math.round(expeditionRules.resist(t)*100)+'% cơ chế chủ đề':'Chưa có khắc chế · Có thể quay lại tinh anh'}</b></span></div><div class="expedition-pools"><span>Vỏ bảo hộ ${Math.ceil(t.ward)}</span><span>Hộ vệ ${Math.ceil(t.addHp)}/${Math.ceil(t.addMax)}</span></div><p class="expedition-forecast ${f.channel?'channeling':''}"><b>${f.name}</b> · ${f.description}</p>`;
   let minions=$('expeditionMinions');if(!minions){minions=document.createElement('div');minions.id='expeditionMinions';minions.className='expedition-minions';$('scene').append(minions);}
   minions.replaceChildren();
-  if(t.addHp>0)for(const [id,name]of d.elites){const src=ART.campaignCreatures?.[d.theme+'-'+id]?.src;if(!src)continue;const image=document.createElement('img');image.src=src;image.alt=name;minions.append(image);}
+  if(t.addHp>0)for(const [id,name]of d.elites){const art=ART.campaignCreatures?.[d.theme+'-'+id],src=art?.portrait||art?.src;if(!src)continue;const image=document.createElement('img');image.src=src;image.alt=name;minions.append(image);}
 }
 const expeditionUpdate=update;
 update=function(){expeditionUpdate();expeditionHud();};

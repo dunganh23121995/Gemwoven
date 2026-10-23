@@ -1,0 +1,25 @@
+Elite / boss idle recipe (all art from codex_image_gen.py; model ladder: gpt-6.1-sol low -> medium -> high -> gpt-6-astra medium -> high, escalate only when output fails review)
+
+Paths: GEN=C:/Users/dungc/.claude/skills/generate2dsprite/scripts/codex_image_gen.py
+       PROC=C:/Users/dungc/.codex/skills/generate2dsprite/scripts/generate2dsprite.py
+       ANCHOR=C:/Users/dungc/.codex/skills/generate2dsprite/scripts/make_anchor_layout.py
+       STAB=assets/gemwoven/elites/stabilize_idle.py
+
+1. Master (new designs only): one character, full body, facing LEFT, 3/4 view, standing ready pose, chibi fantasy RPG
+   proportions matching the existing elites, clean HD smooth painted game art (NOT pixel art), solid flat #FF00FF
+   background, no ground/shadow/text. Refs: a style elite (e.g. assets/gemwoven/items/creature-glacier-rimeknight.png
+   on magenta) and the chapter boss image (theme/palette). Generate raw-master.png (1:1), then
+   python PROC process --input raw-master.png --target creature --mode idle --output-dir proc-master --rows 1 --cols 1
+     --cell-size 512 --fit-scale 0.78 --align feet --scale-strategy fit --component-mode largest
+   and copy proc-master/idle-1.png to master.png (transparent, feet near y 461 of 512).
+2. Idle: identity.png = master on #FF00FF; python ANCHOR --input identity.png --rows 4 --cols 2 --cell-width 512
+   --cell-height 512 --subject-height-ratio 0.8 --feet-ratio 0.94 --output anchor.png
+   prompt: Image 1 identity, Image 2 eight-cell template; 8-frame idle loop 2 cols x 4 rows 1024x2048; head, face,
+   body, arms, hands, weapon and feet stay EXACTLY as Image 2; only cloth/hair/tails/flames/lights/held effects
+   sway or flicker + slow breathing; frame 8 flows into frame 1; feet line 94%; magenta bg; no text/borders.
+   (see assets/gemwoven/elites/caldera-furnacepriest/prompt-idle.txt)
+   python PROC process --input raw-idle.png --target creature --mode idle --output-dir proc --rows 4 --cols 2
+     --cell-size 256 --fit-scale 0.86 --align feet --scale-strategy preserve --component-mode largest
+   python STAB <master.png> stable proc/idle-{1..8}.png      (writes stable/idle.webp + stabilize-meta.json)
+   Accept when the stable sheet looks right and jitter values in stabilize-meta.json average <= 7.
+   Then copy stable/idle.webp and stable/stabilize-meta.json up into the folder and delete proc*, stable/, anchor.png, identity.png.

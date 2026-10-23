@@ -253,19 +253,20 @@
     check(['campaign','boss','pvp','duel'].includes(mode),'Chế độ chưa phát hành.');check(int(index,1,mode==='campaign'?WORLD.MAX_STAGES:1000000),'Ải không hợp lệ.');
     const chapter=mode==='campaign'?WORLD.chapterForStage(index):WORLD.CHAPTERS[(index-1)%WORLD.CHAPTERS.length],bossDef=WORLD.BOSSES[chapter.boss];
     const depth=mode==='campaign'?Math.ceil(index/2):Math.ceil(index*1.8),recommended=Math.min(MAX_LEVEL,depth),boss=mode==='boss'||mode==='campaign'&&index%50===0;
-    const tier=boss?'boss':mode==='campaign'&&index%10===0?'elite':'normal';
-    const local=(index-1)%50+1,creatureId=mode==='campaign'&&!boss?(chapter.ordinary?tier==='elite'?chapter.elites[(local/10-1)%2]:chapter.ordinary[Math.floor((local-1)/10)%3]:chapter.creatures[tier==='elite'?chapter.creatures.length-1:(index-1)%chapter.creatures.length]):null;
-    const creature=creatureId?CREATURES.find(c=>c.id===creatureId)||{id:creatureId,name:chapter.ordinary?WORLD.CREATURE_NAMES[chapter.id][creatureId]:WORLD.CREATURE_NAMES[chapter.id][creatureId.endsWith('-b')?1:0],skill:tier==='elite'?'Đòn Cường Hóa':'Tấn Công'}:null;
+    const every=WORLD.ELITE_EVERY,tier=boss?'boss':mode==='campaign'&&index%every===0?'elite':'normal';
+    const local=(index-1)%50+1,variant=mode!=='campaign'||boss?0:tier==='elite'?(local/every-1)%2:(local-1)%chapter.ordinary.length;
+    const creatureId=mode==='campaign'&&!boss?(tier==='elite'?chapter.elites:chapter.ordinary)[variant]:null;
+    const creature=creatureId?CREATURES.find(c=>c.id===creatureId)||{id:creatureId,name:WORLD.CREATURE_NAMES[chapter.id][creatureId],skill:tier==='elite'?'Đòn Cường Hóa':'Tấn Công'}:null;
     // Campaign HP growth halves after stage 200 (stages 1–200 unchanged) so late
-    // stages track hero damage; expedition bosses (stages 1050+) are longer
-    // phase fights (×3 → ×4 HP by stage 1500) with a 35-turn limit. Endless
+    // stages track hero damage; expedition bosses (stages 750+) are longer
+    // phase fights (×3 → ×4 HP by stage 1200) with a 35-turn limit. Endless
     // keeps its steeper ranking curve.
     const lateBoss=mode==='campaign'&&tier==='boss'&&!!bossDef.tactical,growth=mode==='campaign'&&index>200?1.6+(index-200)*.0013:1+index*.003;
-    const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-1000)/500:2.25):tier==='elite'?1.5:1):(120+depth*18)*(boss?1.7:1);
+    const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-700)/500:2.25):tier==='elite'?1.5:1):(120+depth*18)*(boss?1.7:1);
     return {mode,index,recommended,boss,tier,chapter:chapter.index,theme:chapter.id,bossId:chapter.boss,music:boss?chapter.music:chapter.element,creature:creature?.id||null,enemyName:boss?bossDef.name:creature?.name||'Vệ Binh Tinh Anh',turnLimit:tier==='boss'?(lateBoss?35:20):tier==='elite'?16:12,
       enemyKey:mode==='pvp'||mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth),enemyAttack:enemyAttackFor(mode,index,tier,recommended),enemySkillBase:ENEMY_SKILL_BASE[tier],
       skills:tier==='boss'?bossDef.skills.map(s=>s.name):tier==='elite'?['Đòn Cường Hóa','Hộ Giáp']:[creature?.skill||'Đánh Thường'],
-      skillSet:boss?bossDef.skills:[],tactical:!!bossDef.tactical,variant:chapter.ordinary?(tier==='elite'?(local/10-1)%2:Math.floor((local-1)/10)%3):0,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='pvp'?'Đấu tập 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
+      skillSet:boss?bossDef.skills:[],tactical:!!bossDef.tactical,variant,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='pvp'?'Đấu tập 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
   }
   function stageStars(b,won,performance={}){
     if(!won)return 0;
@@ -275,10 +276,14 @@
   }
   // First clears pay in full. Replays pay half the base gold/EXP and 1 Tinh hoa on a
   // chapter boss; after REPLAY_DAILY_WINS campaign wins in a day they pay 15% and 1 quặng.
+  // Beating a chapter boss the first time is the chapter's big payout (gold and materials).
+  const chapterClear=chapter=>({gold:10000+chapter*4000,exp:60+chapter*10,essence:10+chapter,ore:30+chapter*3,skillBooks:2+Math.floor(chapter/4),divineOre:chapter>=8?1+Math.floor((chapter-8)/6):0});
   const REPLAY_DAILY_WINS=20,BOSS_DAILY_WINS=12;
   function campaignLoot(p,b){
     const first=b.index>p.campaign.cleared,late=!first&&(p.daily.campaignWins||0)>=REPLAY_DAILY_WINS,k=first?1:late?.15:.5;
-    return {gold:Math.floor((300+b.index*25)*k)+(first?500:0),exp:Math.max(1,Math.floor((8+Math.floor(b.index/3))*k)),seals:first?80:10,ore:late?1:b.boss?5:2,essence:!b.boss||late?0:first?3:1};
+    const loot={gold:Math.floor((300+b.index*25)*k)+(first?500:0),exp:Math.max(1,Math.floor((8+Math.floor(b.index/3))*k)),seals:first?80:10,ore:late?1:b.boss?5:b.tier==='elite'?3:2,essence:!b.boss||late?0:first?3:1};
+    if(first&&b.boss)for(const [key,value]of Object.entries(chapterClear(b.chapter)))if(value)loot[key]=(loot[key]||0)+value;
+    return loot;
   }
   const sealRoom=p=>Math.max(0,DAILY_SEAL_CAP-(p.daily.seals||0));
   // What claiming a daily quest pays right now: Ấn is limited by today's remaining cap.
@@ -313,9 +318,11 @@
     const milestones=[...new Set(claimed)],shards=milestones.length*3,rank=shards/3;
     return {theme:d.theme,chapter,name:d.counter,key:d.counterKey,claimed:milestones,shards,required:12,rank,reduction:d.artifactRanks[rank],description:d.counterText};
   }
+  // Saves from the 30-chapter map (1500 stages) keep their progress up to the current last stage.
+  function clampCampaign(p){p.campaign.cleared=Math.min(p.campaign.cleared,WORLD.MAX_STAGES);for(const n of Object.keys(p.campaign.stars))if(Number(n)>WORLD.MAX_STAGES)delete p.campaign.stars[n];if(p.pending?.mode==='campaign'&&p.pending.index>WORLD.MAX_STAGES)p.pending=null;}
   function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
     let memory,sequence=0;
-    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(p.pending)p.pending={...encounter(p.pending.mode,p.pending.index),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
+    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...encounter(p.pending.mode,p.pending.index),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
     function save(p){p.updated=now();p.revision++;if(storage)storage.setItem(KEY,JSON.stringify(p));else memory=clone(p);return p;}
     // Device-clock guard (stopgap until server time): the save remembers the latest time it
     // has seen. Setting the clock back never re-opens daily resets, Ấn caps or idle income;
@@ -368,7 +375,7 @@
       begin:(mode,index)=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(['pvp','duel'].includes(mode))check(index===1,'Trận đấu tập không hợp lệ.');const e=encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,['pvp','duel'].includes(mode))};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
-        if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.index%50===0){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
+        if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
         if(won&&b.mode==='campaign')p.campaign.stars[b.index]=Math.max(p.campaign.stars[b.index]||0,stageStars(b,won,performance));
         if(won&&b.mode==='campaign'&&b.tier==='elite'&&stageStars(b,true,performance)===3){const counter=counterProgress(p,b.chapter),local=(b.index-1)%50+1;if(counter&&!counter.claimed.includes(local)){p.campaign.artifacts[counter.theme]={claimed:[...counter.claimed,local]};counterReward={...counterProgress(p,b.chapter),earned:3};}}
         if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;}}

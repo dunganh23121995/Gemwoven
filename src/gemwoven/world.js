@@ -19,14 +19,32 @@
     seraph:{name:'Hộ Vệ Nhật Quang',element:'fire',skills:[skill('Nhật Kiếm','pierce',1.2,{pierce:.4}),skill('Ánh Dương Tái Sinh','heal',0,{heal:.08}),skill('Hào Quang Phán Quyết','strike',1.35,{hits:3})]},
     eclipse:{name:'Long Đế Hư Không',element:'lightning',skills:[skill('Nhật Thực','drain',1.1,{drain:30}),skill('Hư Không Phán Quyết','execute',1.15,{threshold:.35,bonus:1.6}),skill('Tinh Vân Bạo Phát','burn',1,{turns:2,dot:.3})]}
   };
+  // Each chapter belongs to one boss; ordinary foes take turns stage by stage, the two
+  // humanoid elites alternate on stages 5, 10, ... 45 and the boss holds stage 50.
   const CHAPTERS=[
-    ['forest','Cổ Lâm Nguyên Sơ','earth'],['volcano','Miệng Núi Lửa','fire'],['ice','Băng Nguyệt Phế Tích','ice'],['thunder','Thiên Thành Lôi Vũ','lightning'],
-    ['marsh','Đầm Bào Tử','mire'],['desert','Thánh Điện Cát Vàng','scarab'],['abyss','Vực San Hô','leviathan'],['foundry','Lò Rèn Cơ Khí','colossus'],
-    ['crystal','Động Tinh Thể','prism'],['haunted','Nghĩa Địa Nguyệt Ảnh','reaper'],['sky','Thiên Không Phong Thành','roc'],['thorns','Vườn Gai Nguyền','briar'],
-    ['celestial','Nhật Quang Thánh Cung','seraph'],['void','Nhật Thực Hư Không','eclipse'],['pine','Đỉnh Tùng Tuyết','ice'],['obsidian','Hắc Thạch Dung Nham','fire'],
-    ['bamboo','Trúc Lâm Bích Ngọc','earth'],['coast','Bờ Biển Bão Tố','lightning'],['dream','Mộng Cảnh Tím','prism'],['astral','Đỉnh Long Tinh Tú','eclipse']
-  ].map(([id,name,boss],i)=>({id,name,boss,index:i+1,size:50,element:BOSSES[boss].element,music:'boss-'+id,creatures:id==='forest'?['slime','acorn','bat']:[id+'-a',id+'-b']}));
-  const CREATURE_NAMES={volcano:['Quỷ Than','Thạch Dung'],ice:['Thỏ Tuyết','Sói Băng'],thunder:['Sứa Điện','Ưng Sấm'],marsh:['Ốc Độc','Cóc Bào Tử'],desert:['Sói Cát','Bọ Cạp Cát'],abyss:['Cua San Hô','Sứa Triều'],foundry:['Bọ Dây Cót','Phi Cơ Bánh Răng'],crystal:['Nhện Ngọc','Slime Tinh Thể'],haunted:['Đèn Hồn','Quạ Xương'],sky:['Cáo Gió','Cú Mây'],thorns:['Lợn Rừng Gai','Mầm Dây Leo'],celestial:['Bướm Nhật Quang','Sư Tử Ánh Vàng'],void:['Mắt Hư Không','Khuyển Nhật Thực'],pine:['Lợn Tùng Băng','Cú Tuyết'],obsidian:['Khuyển Hắc Thạch','Mạt Dung Nham'],bamboo:['Thằn Lằn Trúc','Cá Chép Ngọc'],coast:['Cua Bão','Hải Âu Sóng'],dream:['Bướm Mộng','U Linh Gối'],astral:['Ấu Long Sao','Tinh Cầu Linh']};
+    ['forest','Cổ Lâm Nguyên Sơ','earth',['slime','acorn','bat','bamboo-a','bamboo-b'],[['rootknight','Hiệp Sĩ Rễ Cổ'],['leafarcher','Xạ Thủ Lá Rừng']]],
+    ['volcano','Miệng Núi Lửa','fire',['volcano-a','volcano-b','obsidian-a','obsidian-b'],[['flamelancer','Thương Binh Hỏa Long'],['ashcultist','Tư Tế Tro Tàn']]],
+    ['ice','Băng Nguyệt Phế Tích','ice',['ice-a','ice-b','pine-a','pine-b'],[['frostguard','Vệ Binh Băng Nguyệt'],['snowwitch','Phù Thủy Tuyết']]],
+    ['thunder','Thiên Thành Lôi Vũ','lightning',['thunder-a','thunder-b','coast-a','coast-b'],[['stormblade','Kiếm Sĩ Lôi Đình'],['sparkmage','Pháp Sư Tia Chớp']]],
+    ['marsh','Đầm Bào Tử','mire',['marsh-a','marsh-b'],[['bogstalker','Thợ Săn Đầm Lầy'],['sporewitch','Phù Thủy Bào Tử']]],
+    ['desert','Thánh Điện Cát Vàng','scarab',['desert-a','desert-b'],[['scarabguard','Vệ Binh Bọ Vàng'],['sandpriest','Tư Tế Cát Vàng']]],
+    ['abyss','Vực San Hô','leviathan',['abyss-a','abyss-b'],[['reefcorsair','Hải Tặc San Hô'],['tidecaller','Pháp Sư Triều Dâng']]],
+    ['foundry','Lò Rèn Cơ Khí','colossus',['foundry-a','foundry-b'],[['gearknight','Hiệp Sĩ Bánh Răng'],['tinkerer','Thợ Máy Hơi Nước']]],
+    ['crystal','Động Tinh Thể','prism',['crystal-a','crystal-b','dream-a','dream-b'],[['shardblade','Kiếm Sĩ Lăng Tinh'],['gemsage','Hiền Giả Ngọc']]],
+    ['haunted','Nghĩa Địa Nguyệt Ảnh','reaper',['haunted-a','haunted-b'],[['gravewarden','Thủ Mộ Nhân'],['bonepaladin','Hiệp Sĩ Xương']]],
+    ['sky','Thiên Không Phong Thành','roc',['sky-a','sky-b'],[['windknight','Kỵ Sĩ Phong Vũ'],['cloudmonk','Tăng Nhân Mây']]],
+    ['thorns','Vườn Gai Nguyền','briar',['thorns-a','thorns-b'],[['briarduelist','Kiếm Khách Gai Hồng'],['vinehexer','Phù Thủy Dây Leo']]],
+    ['celestial','Nhật Quang Thánh Cung','seraph',['celestial-a','celestial-b'],[['sunpaladin','Thánh Kỵ Nhật Quang'],['dawncleric','Giáo Sĩ Bình Minh']]],
+    ['void','Nhật Thực Hư Không','eclipse',['void-a','void-b','astral-a','astral-b'],[['voidknight','Hắc Kỵ Hư Không'],['starseer','Tiên Tri Tinh Thực']]]
+  ].map(([id,name,boss,ordinary,elites],i)=>({id,name,boss,index:i+1,size:50,element:BOSSES[boss].element,music:'boss-'+id,ordinary,elites:elites.map(([e])=>id+'-'+e),creatures:[...ordinary,...elites.map(([e])=>id+'-'+e)],eliteNames:elites}));
+  const ORDINARY_NAMES={volcano:['Quỷ Than','Thạch Dung'],ice:['Thỏ Tuyết','Sói Băng'],thunder:['Sứa Điện','Ưng Sấm'],marsh:['Ốc Độc','Cóc Bào Tử'],desert:['Sói Cát','Bọ Cạp Cát'],abyss:['Cua San Hô','Sứa Triều'],foundry:['Bọ Dây Cót','Phi Cơ Bánh Răng'],crystal:['Nhện Ngọc','Slime Tinh Thể'],haunted:['Đèn Hồn','Quạ Xương'],sky:['Cáo Gió','Cú Mây'],thorns:['Lợn Rừng Gai','Mầm Dây Leo'],celestial:['Bướm Nhật Quang','Sư Tử Ánh Vàng'],void:['Mắt Hư Không','Khuyển Nhật Thực'],pine:['Lợn Tùng Băng','Cú Tuyết'],obsidian:['Khuyển Hắc Thạch','Mạt Dung Nham'],bamboo:['Thằn Lằn Trúc','Cá Chép Ngọc'],coast:['Cua Bão','Hải Âu Sóng'],dream:['Bướm Mộng','U Linh Gối'],astral:['Ấu Long Sao','Tinh Cầu Linh']};
+  // CREATURE_NAMES[chapter][creature id] for every foe without a hand-made CREATURES entry.
+  const CREATURE_NAMES={};
+  for(const c of CHAPTERS){
+    CREATURE_NAMES[c.id]=Object.fromEntries(c.eliteNames.map(([e,name])=>[c.id+'-'+e,name]));
+    for(const o of c.ordinary){const [theme,side]=o.split('-');if(ORDINARY_NAMES[theme])CREATURE_NAMES[c.id][o]=ORDINARY_NAMES[theme][side==='b'?1:0];}
+    delete c.eliteNames;
+  }
   for(const d of EXPANSION.definitions){
     BOSSES[d.id]={name:d.name,element:d.element,skills:d.skills,tactical:true};
     const ordinary=d.ordinary.map(([id])=>d.theme+'-'+id),elites=d.elites.map(([id])=>d.theme+'-'+id);
@@ -51,5 +69,5 @@
   ].map(([id,name,kind,target,rarity,currency,price,asset,description])=>({id,name,kind,target,rarity,currency,price,asset,description}));
   for(const [slot,name]of [['helmet','Mũ'],['pants','Quần'],['glasses','Kính']])for(const [rarity,label,price]of [['legendary','Huyền Thoại',2000],['divine','Thần',5200]])SHOP.push({id:rarity+'-'+slot,name:name+' '+label,kind:'gear',target:slot,rarity,currency:'gems',price,asset:'gear-'+slot,description:name+' dùng chung giữa các tướng. Cường hóa tối đa +20.'});
   for(const row of SHOP)if(row.kind==='gear'&&row.target==='armor')row.asset='gear-armor';
-  return {BOSSES,CHAPTERS,CREATURE_NAMES,SHOP,chapterForStage,EXPANSION,MAX_STAGES:CHAPTERS.length*50};
+  return {BOSSES,CHAPTERS,CREATURE_NAMES,SHOP,chapterForStage,EXPANSION,MAX_STAGES:CHAPTERS.length*50,ELITE_EVERY:5};
 });
