@@ -302,26 +302,32 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
       await combatV3Pose(source,`translate(${direction*(travel+(melee?8:3))}px,${strike.lift}px) rotate(${direction*strike.tilt}deg)`,contactDelay,'cubic-bezier(.2,.8,.35,1)');
       // HP changes only once the visual weapon actually reaches its target.
       combatV3Frame(side,action,strike.contact);
+      const evade=noctEvades(targetSide);
       const result=damage(side,raw/hits,damageLedger);total+=result.amount;blocked+=result.blocked;stored+=result.stored||0;
-      combatVoice(targetSide,'hurt');hitAccents(side,result,critical,pending);
-      combatV3Action(targetSide,'hurt',strong||boss?560:410);combatV3HitSound(key,strong||boss);
-      combatV3Impact(targetSide,key,direction,strong||boss,pending);
-      if(key==='earth')combatV3Earth(contact,ultimate,pending);
+      if(evade)noctDodge(direction,pending);
+      else{
+        combatVoice(targetSide,'hurt');hitAccents(side,result,critical,pending);
+        combatV3Action(targetSide,'hurt',strong||boss?560:410);combatV3HitSound(key,strong||boss);
+        combatV3Impact(targetSide,key,direction,strong||boss,pending);
+        if(key==='earth')combatV3Earth(contact,ultimate,pending);
+      }
       combatV3Number(targetSide,result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
       if(hits>1){
         const count=document.createElement('span');count.className='combat-v3-hit-count';count.textContent=String(i+1).padStart(2,'0')+' / '+String(hits).padStart(2,'0');$('combatEffects').append(count);
         combatV3Fx(count,[{opacity:0,transform:'translate(-50%,5px)'},{opacity:1,transform:'translate(-50%,0)',offset:.2},{opacity:0,transform:'translate(-50%,-3px)'}],{duration:520},pending);
       }
-      combatV3Camera(direction,strong,boss,pending);
-      target.style.filter='brightness(1.35)';
-      const recoil=combatOuterMotion(targetSide,strong||boss?15:9,strong||boss?7:4);
-      await combatV3Pose(target,`translate(${direction*recoil.distance}px,${strong||boss?-5:-2}px) rotate(${direction*recoil.tilt}deg)`,75);
+      if(!evade){
+        combatV3Camera(direction,strong,boss,pending);
+        target.style.filter='brightness(1.35)';
+        const recoil=combatOuterMotion(targetSide,strong||boss?15:9,strong||boss?7:4);
+        await combatV3Pose(target,`translate(${direction*recoil.distance}px,${strong||boss?-5:-2}px) rotate(${direction*recoil.tilt}deg)`,75);
+      }
       await combatV3Wait(strong?105:melee?75:65); // restrained hit stop, no full-screen strobe
       target.style.filter='';
       combatV3Frame(side,action,strike.recover);
       await combatV3Pose(target,'translate(0px,0px) rotate(0deg)',last?300:melee?175:130);
       combatV3Frame(side,action,5);
-      combatV3Action(targetSide,'idle');
+      if(!evade)combatV3Action(targetSide,'idle');
       if(!last)await combatV3Wait(melee?85:55);
     }
     await combatV3Pose(source,'translate(0px,0px) rotate(0deg)',ultimate?390:310);

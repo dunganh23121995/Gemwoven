@@ -87,10 +87,13 @@ async function rageChoreography(side,raw,{hits=1,onRelease=()=>{}}={}){
       if(sword)combatV3Slash(contact,key,i,true,direction,pending);
       else if(hammer)combatV3Earth(contact,true,pending);
       else if(!caster)combatV3Breath(combatV3Point(side),contact,true,pending);
-      const result=damage(side,raw/times.length,ledger);amount+=result.amount;blocked+=result.blocked;
-      combatVoice(targetSide,'hurt');if(lumiStorm)lumiThunderStrike(i);else combatV3HitSound(key,true);combatV3Impact(targetSide,key,direction,true,pending);combatV3Camera(direction,true,side==='enemy'&&state.boss,pending);
-      combatV3Number(targetSide,result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents(side,result,false,pending);
-      setSpriteAction(targetSide,'hurt',230);const recoil=combatOuterMotion(targetSide,13,5);fx(target,[{transform:oldTarget||'none'},{transform:`translate(${direction*recoil.distance}px,-3px) rotate(${direction*recoil.tilt}deg)`,offset:.25},{transform:oldTarget||'none'}],230);
+      const evade=noctEvades(targetSide),result=damage(side,raw/times.length,ledger);amount+=result.amount;blocked+=result.blocked;
+      if(evade){noctDodge(direction,pending);combatV3Number(targetSide,'NÉ','armor',i,pending);}
+      else{
+        combatVoice(targetSide,'hurt');if(lumiStorm)lumiThunderStrike(i);else combatV3HitSound(key,true);combatV3Impact(targetSide,key,direction,true,pending);combatV3Camera(direction,true,side==='enemy'&&state.boss,pending);
+        combatV3Number(targetSide,result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents(side,result,false,pending);
+        setSpriteAction(targetSide,'hurt',230);const recoil=combatOuterMotion(targetSide,13,5);fx(target,[{transform:oldTarget||'none'},{transform:`translate(${direction*recoil.distance}px,-3px) rotate(${direction*recoil.tilt}deg)`,offset:.25},{transform:oldTarget||'none'}],230);
+      }
       if(i===times.length-1){onRelease(pending);update();}
       if(sword&&i<times.length-1){await at(times[i]+130);setSpriteFrame(side,'attack',i?1:4);}
     }

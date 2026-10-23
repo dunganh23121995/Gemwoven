@@ -54,6 +54,16 @@ function reaperHarvest(pending,executed){
   const dx=hero.x-target.x,dy=(hero.y-hero.height*.18)-(target.y-target.height*.12);
   pending.push(animate(soul,[{opacity:0,transform:'translate(-50%,-50%) scale(.3)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.25},{opacity:.95,transform:`translate(calc(-50% + ${dx*.45}px),calc(-50% + ${dy*.45-34}px)) scale(.85)`,offset:.6},{opacity:0,transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(.25)`}],{duration:820,delay:180,easing:'ease-in-out',fill:'both'}).finally(()=>soul.remove()));
 }
+// Veiled Noct (after Hắc Liêm Đoạt Hồn) is not there to be hit: blows pass through the air.
+function noctEvades(targetSide){return targetSide==='hero'&&state.key==='shadow'&&typeof progressionVeil!=='undefined'&&progressionVeil>0;}
+function noctDodge(direction,pending){
+  playNoctSound('dash',{volume:.2,pan:-.3});
+  if(reduced)return;
+  const root=actor('hero'),body=root.querySelector('.sprite-body');
+  shadowEcho(null,null,pending,-direction);
+  pending.push(animate(body,[{opacity:.42,filter:'blur(0px)'},{opacity:.12,filter:'blur(2px)',offset:.35},{opacity:.42,filter:'blur(0px)'}],{duration:360,easing:'ease-out'}));
+  pending.push(animate(root,[{translate:'0 0'},{translate:`${direction*14}px -3px`,offset:.4},{translate:'0 0'}],{duration:360,easing:'cubic-bezier(.2,.8,.3,1)'}));
+}
 function bladeContact(raw,ledger,index,direction,critical,pending){
   const key=state.key,result=damage('hero',raw,ledger);
   combatVoice('enemy','hurt');combatV3HitSound(key,index===4);

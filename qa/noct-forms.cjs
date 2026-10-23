@@ -35,8 +35,16 @@ const {chromium}=require(path.resolve('qa/gemwoven/runtime/node_modules/playwrig
     assert.ok(r.actions.includes('cast:3'),'hand thrust toward the enemy');assert.equal(r.fog,0,'fog cleaned up');
     assert.equal(r.damage,150,'cuts ignore armour');assert.equal(r.armor,500,'armour is bypassed, not consumed');
     assert.ok(r.veiled,'Noct returns veiled');
-    const veil=await page.evaluate(async()=>{const hp=gameQA.state.hp;await gameQA.attack('enemy',100);return {lost:hp-gameQA.state.hp,dodge:[...document.querySelectorAll('#combatEffects *')].some(n=>n.textContent==='NÉ')};});
+    const veil=await page.evaluate(async()=>{
+      const hp=gameQA.state.hp,root=document.querySelector('#heroActor'),seen=new Set(),texts=new Set();
+      const obs=new MutationObserver(rs=>{for(const r of rs)for(const n of r.addedNodes)if(n.textContent)texts.add(n.textContent.trim());});obs.observe(document.querySelector('#combatEffects'),{childList:true,subtree:true});
+      const t=setInterval(()=>{seen.add(root.querySelector('.sprite-body').dataset.action+'|'+root.dataset.state);},10);
+      await gameQA.attack('enemy',100);clearInterval(t);obs.disconnect();
+      return {lost:hp-gameQA.state.hp,states:[...seen],texts:[...texts],sounds:gameQA.noctSounds.map(s=>s.id)};
+    });
     assert.equal(veil.lost,0,'veiled Noct takes no damage');
+    assert.ok(veil.states.every(s=>!s.includes('hurt')),'no hurt reaction while veiled: '+veil.states);
+    assert.ok(veil.texts.includes('NÉ'),'dodge label shown');
    }else{
     assert.ok(r.actions.every(a=>!a.startsWith('run:')));assert.equal(r.cuts.filter(c=>c==='quick-blade-cut').length,5);
    }
