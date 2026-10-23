@@ -51,19 +51,23 @@ def register(frame, master, anchor):
     rows = lambda a: np.where(a.max(axis=1) > .5)[0]
     fr, mr = rows(frame[..., 3]), rows(master[..., 3])
     s0 = (mr.max() - mr.min()) / max(1, fr.max() - fr.min())
+    mc = ndimage.center_of_mass(master[..., 3] > .5)
     best = None
-    for s in (s0 * k for k in (0.96, 0.98, 1.0, 1.02, 1.04)):
-        for dy in range(-10, 11, 2):
-            for dx in range(-10, 11, 2):
+    for s in (s0 * k for k in (0.86, 0.89, 0.92, 0.95, 0.98, 1.0, 1.02, 1.05, 1.08, 1.11, 1.14)):
+        fc = ndimage.center_of_mass(warp(frame, 0, 0, s, anchor)[..., 3] > .5)
+        gx, gy = round(mc[1] - fc[1]), round(mc[0] - fc[0])
+        for dy in range(gy - 8, gy + 9, 2):
+            for dx in range(gx - 8, gx + 9, 2):
                 err = score(warp(frame, dx, dy, s, anchor), master, mask)
                 if best is None or err < best[0]:
                     best = (err, dx, dy, s)
-    _, dx0, dy0, s = best
-    for dy in range(dy0 - 1, dy0 + 2):
-        for dx in range(dx0 - 1, dx0 + 2):
-            err = score(warp(frame, dx, dy, s, anchor), master, mask)
-            if err < best[0]:
-                best = (err, dx, dy, s)
+    _, dx0, dy0, s1 = best
+    for s in (s1 * k for k in (0.99, 1.0, 1.01)):
+        for dy in range(dy0 - 1, dy0 + 2):
+            for dx in range(dx0 - 1, dx0 + 2):
+                err = score(warp(frame, dx, dy, s, anchor), master, mask)
+                if err < best[0]:
+                    best = (err, dx, dy, s)
     return best
 
 

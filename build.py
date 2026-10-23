@@ -161,6 +161,10 @@ for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
     master=folder.with_name('master.png')
     if not master.exists():master=root/f'assets/gemwoven/items/creature-{folder.parent.name}.png'
     art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if master.exists() else ''}
+# A new elite whose idle is not drawn yet stands as its master painting.
+for master in sorted((root/'assets/gemwoven/elites').glob('*/master.png')):
+    if not master.with_name('idle.webp').exists():
+        art['campaignCreatures'][master.parent.name]={'src':image(master),'cols':1,'rows':1,'count':1,'heads':[[128,48]]}
 # Chapter bosses (assets/gemwoven/boss-anim/<id>/): an 8-frame idle for all 24 and a 3x2 cast
 # sheet for the bosses that had only one painting. The new idle is framed on its own, so every
 # other action sheet grows about the feet by the ratio of the body heights (one size per boss).

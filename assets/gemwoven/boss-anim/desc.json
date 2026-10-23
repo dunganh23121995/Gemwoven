@@ -1,0 +1,162 @@
+{
+ "earth": {
+  "desc": "a hulking moss-covered stone golem with gold-banded boulder fists, a glowing green crystal in its chest and little bonsai trees and moss growing on its head, shoulders and back",
+  "fixed": "arms, boulder fists, gold bands",
+  "motion": "the leaves of the little trees and the hanging moss tufts sway gently, the green chest crystal pulses brighter and dimmer, a few tiny leaves drift"
+ },
+ "fire": {
+  "desc": "a red fire dragon with cream horns, a spiky red mane, glowing molten-orange cracks on its chest and belly, and large red wings raised behind it",
+  "fixed": "legs, claws, horns, wing bones",
+  "motion": "the wing membranes ripple slightly and the wing tips lift and lower a little, the tail tip curls gently, the molten cracks pulse with glow, small embers rise from the mane"
+ },
+ "ice": {
+  "desc": "a white and blue frost beast with crystalline ice feathers, a feathered ice crest, a blue crystal gem on its chest and a large fluffy feathered tail",
+  "fixed": "legs, claws, crest base",
+  "motion": "the crest feathers and tail feathers ruffle softly, the chest gem shimmers, tiny snow sparkles glint around the feathers"
+ },
+ "lightning": {
+  "desc": "a purple storm beast with golden flame-shaped horns and spikes, a lavender mane, and a crackling violet flame on its tail tip",
+  "fixed": "legs, claws, golden horns and spikes",
+  "motion": "the lavender mane fur ripples, tiny violet sparks crackle along the gold spikes, the tail-tip flame flickers and curls"
+ },
+ "mire": {
+  "desc": "a swamp mushroom shaman with a huge spotted purple mushroom cap, a tattered mossy green robe and a twisted staff topped with little glowing mushrooms",
+  "fixed": "arms, hands, staff, mushroom cap",
+  "motion": "the ragged robe hem and moss tatters sway, the little mushrooms on the staff glow brighter and dimmer, a few tiny spores drift up",
+  "kind": "spell-cast",
+  "windup": "it draws the mushroom staff back and the staff mushrooms glow brighter",
+  "strike": "the staff thrust forward in a spell release, glowing staff tip pointing",
+  "kind2": "spell"
+ },
+ "scarab": {
+  "desc": "a golden armoured scarab beetle with a teal gem-inlaid shell, a radiant golden sun-crest on its head and curved golden mandibles, standing on golden legs",
+  "fixed": "legs, mandibles, sun-crest",
+  "motion": "the teal shell gems glint and pulse, the sun-crest rays shimmer with light, the shell rises and falls very slightly",
+  "kind": "attack",
+  "windup": "it rears up slightly on its back legs, mandibles opening, the sun-crest glowing",
+  "strike": "a lunging mandible snap, head and front legs pushed forward",
+  "kind2": "snap"
+ },
+ "leviathan": {
+  "desc": "a teal sea-serpent dragon with pink coral antlers, pink-edged fins along its coiled body and a cream belly",
+  "fixed": "coiled body, front claws, coral antlers",
+  "motion": "the pink fins and fin frills ripple as if underwater, the whiskers drift, the tail-tip fin waves gently, a few tiny bubbles rise",
+  "kind": "attack",
+  "windup": "it coils tighter and draws its head back, jaws closed, fins flaring",
+  "strike": "a lunging bite, head and neck thrust forward with jaws open",
+  "kind2": "bite"
+ },
+ "colossus": {
+  "desc": "a bronze clockwork golem with huge riveted fists, a glowing cyan gear core in its chest and cyan lights in its armour",
+  "fixed": "arms, fists, armour plates",
+  "motion": "the cyan chest core and the cyan lights in the armour pulse brighter and dimmer, the gear ring around the chest core turns slowly; no steam, no smoke, no particles",
+  "kind": "attack",
+  "windup": "it draws its huge right fist back, the cyan core glowing brighter",
+  "strike": "a heavy forward punch with the giant fist",
+  "kind2": "punch"
+ },
+ "prism": {
+  "desc": "a crystalline mantis-fairy with iridescent lavender crystal wings, a crown of purple crystals, long antennae and slender clawed limbs",
+  "fixed": "limbs, claws, crystal crown",
+  "motion": "the crystal wings flutter gently and shimmer with rainbow light, the antennae sway, small sparkles glint on the crystals",
+  "kind": "spell-cast",
+  "windup": "it raises its crystal claws and its wings spread a little, the crystal crown glowing",
+  "strike": "a forward claw thrust releasing a small attached crystal glow at the claw tips",
+  "kind2": "spell"
+ },
+ "reaper": {
+  "desc": "a small hooded reaper in a tattered dark-blue cloak with glowing cyan eyes in the shadowed hood, holding a crescent-bladed scythe",
+  "fixed": "hood, arms, hands, scythe",
+  "motion": "the tattered cloak hem, the ragged hood tip and the torn sleeves flutter and ripple, the cyan eyes glow brighter and dimmer",
+  "kind": "attack",
+  "windup": "it lifts the scythe back over its shoulder, eyes glowing brighter",
+  "strike": "a forward scythe swing, the blade sweeping down in front",
+  "kind2": "swing"
+ },
+ "roc": {
+  "desc": "a giant teal and white roc eagle with gold-trimmed feathers, a hooked golden beak and large raised wings",
+  "fixed": "legs, talons, beak, wing bones",
+  "motion": "the wing feathers and head crest feathers ruffle in the wind, the tail feathers sway slightly",
+  "kind": "attack",
+  "windup": "it rears back and lifts its wings higher, beak open",
+  "strike": "a forward strike with beak and lowered head, wings beating forward",
+  "kind2": "strike"
+ },
+ "briar": {
+  "desc": "a thorny rose dryad queen made of green vines with red roses, a rose crown and a gown of leaves and red petals",
+  "fixed": "arms, hands, rose crown",
+  "motion": "the leaves, rose petals and loose vine tendrils sway and curl, a single petal drifts",
+  "kind": "spell-cast",
+  "windup": "it draws its vine arms back and the roses glow and open wider",
+  "strike": "both vine arms thrust forward, thorny vine tendrils lashing a short way out from its hands",
+  "kind2": "spell"
+ },
+ "seraph": {
+  "desc": "a golden armoured angel knight with a halo crown, large cream feathered wings and a big golden sword planted point-down",
+  "fixed": "arms, hands, sword, armour",
+  "motion": "the wing feathers ruffle softly and the wings lift and settle very slightly, the halo glows brighter and dimmer, tiny golden sparkles glint",
+  "kind": "attack",
+  "windup": "it lifts the golden sword up and back with both hands, halo glowing brighter",
+  "strike": "a forward overhead sword slash, the blade brought down in front",
+  "kind2": "slash"
+ },
+ "eclipse": {
+  "desc": "a dark purple eclipse dragon with gold-trimmed horns and armour plates, starry night-sky wing membranes and glowing violet runes",
+  "fixed": "legs, claws, horns, wing bones",
+  "motion": "the stars in the wing membranes twinkle and the membranes ripple slightly, the violet runes pulse, the tail tip curls gently",
+  "kind": "attack",
+  "windup": "it draws its head back and lifts its starry wings, the violet runes glowing brighter",
+  "strike": "a lunging forward bite with jaws open and head thrust forward",
+  "kind2": "bite"
+ },
+ "elderbloom": {
+  "desc": "an ancient treant giant of twisted wood and moss with an antler-like branch crown, small white flowers and a glowing green heart crystal",
+  "fixed": "arms, wooden fists, branch crown",
+  "motion": "the leaves, hanging moss and vines sway, the white flowers bob, the green heart crystal pulses brighter and dimmer"
+ },
+ "cinderheart": {
+  "desc": "a molten lava-rock golem with flaming horns, glowing orange magma cracks and a swirling fire core in its chest",
+  "fixed": "arms, rock fists, horns",
+  "motion": "the flames on the horns flicker and curl, the magma cracks pulse with glow, the fire core swirls, small embers drift up"
+ },
+ "frostregent": {
+  "desc": "an ice queen with long flowing silver-white hair, a crystal crown, a layered pale-blue gown and an ice-crystal staff",
+  "fixed": "arms, hands, staff, crown",
+  "motion": "the long hair and gown layers sway gently, the staff crystal sparkles, a few snowflakes drift"
+ },
+ "tempestwing": {
+  "desc": "a blue and gold storm griffin with raised blue feathered wings, golden armour plates and glowing blue gems",
+  "fixed": "legs, talons, beak, armour, wing bones",
+  "motion": "the wing and neck feathers ruffle, the blue gems flicker with tiny sparks"
+ },
+ "souljailer": {
+  "desc": "a hooded purple wraith jailer with a large scythe, a hanging soul lantern, a glowing violet core in its chest and tattered purple wisps",
+  "fixed": "hood, arms, scythe, lantern frame",
+  "motion": "the tattered purple cloth wisps writhe and flow, the lantern flame flickers, the violet chest core pulses"
+ },
+ "sporefather": {
+  "desc": "a giant mushroom golem made of red-capped toadstools and moss, holding a staff topped with glowing mushrooms",
+  "fixed": "arms, staff, mushroom caps",
+  "motion": "the glowing mushrooms pulse brighter and dimmer, the hanging moss sways"
+ },
+ "prismback": {
+  "desc": "a colossal tortoise carrying a castle of blue crystals, little trees and waterfalls on its shell",
+  "fixed": "legs, head, shell, castle",
+  "motion": "the little waterfalls flow, the blue crystals sparkle and pulse, the small trees sway"
+ },
+ "sandchronarch": {
+  "desc": "a golden sand djinn with a crowned turbaned head, golden armour, flowing golden sashes and a swirling sand tail instead of legs",
+  "fixed": "arms, hands, armour, crown",
+  "motion": "the swirling sand tail flows and churns, the golden sashes ripple, the teal gems glow"
+ },
+ "coraltide": {
+  "desc": "a coral sea-serpent queen with pink-red coral antlers, teal and white scales and a long coiled body",
+  "fixed": "coiled body, coral antlers, claws",
+  "motion": "the fins and coral fronds ripple as if underwater, a few tiny bubbles rise"
+ },
+ "moonfang": {
+  "desc": "an armoured werewolf knight in dark steel armour with violet moon glow, a purple cape and a sword held point-down",
+  "fixed": "arms, hands, sword, armour",
+  "motion": "the purple cape and fur ruff sway, the violet glow pulses"
+ }
+}
