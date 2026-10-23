@@ -8401,7 +8401,7 @@
     "frameDuration": 240,
     "loop": true,
     "footBounds": [
-      3,
+      0,
       4,
       148,
       165
@@ -10949,9 +10949,9 @@
       "foot": 0.94
     },
     "footBounds": [
-      26,
+      18,
       61,
-      223,
+      225,
       249
     ]
   },
@@ -10992,7 +10992,7 @@
       "foot": 0.94
     },
     "footBounds": [
-      36,
+      17,
       47,
       192,
       250
@@ -11281,5 +11281,10 @@
     "file": "assets/gemwoven/ambient/water-arena.webp",
     "width": 941,
     "height": 1672
+  },
+  "scythe-mask": {
+    "file": "assets/heroes/forms/shadow/form-3/scythe-mask.png",
+    "width": 256,
+    "height": 256
   }
 }

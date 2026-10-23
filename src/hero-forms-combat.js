@@ -1,6 +1,7 @@
 /* Star forms change the authored body, weapon and spell presentation.
  * Damage/status resolution remains in the established combat/progression paths. */
 let heroFormCasting=false;
+if(ART.scytheGlint)document.documentElement.style.setProperty('--scythe-mask',`url('${ART.scytheGlint}')`);
 function combatHeroForm(key){
   if(key==='novice')return 1;
   if(progressionBattle?.hero===key)return progressionBattle.stats.form||progressionRules.heroForm(key,{stars:progressionBattle.stats.stars||1});

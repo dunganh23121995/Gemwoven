@@ -22,17 +22,9 @@
 .actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img,none);background-size:var(--tween-size,auto);background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
 body.reduced-motion .actor>.sprite-body::after{display:none}
 
-/* Noct at rest breathes like a Spine/Live2D chibi idle, from one drawing split into three
-   layers (noctRigLayout in sprite-runtime.js): the chest swells up from the waist on the inhale,
-   the hood rides up with it a beat later and nods, and the heavy robe hem lags and sways. The
-   feet never move. Inhale is quicker than exhale, then a short rest. */
-.noct-rig{display:none}
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body{background-image:none!important}
-.scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body>.noct-rig{display:block;position:absolute;inset:0;pointer-events:none;background-image:var(--tween-img);background-size:var(--tween-size);background-position:var(--cell-pos,0 0);background-repeat:no-repeat}
-.noct-rig.torso{-webkit-mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));transform-origin:50% var(--rig-waist);animation:noct-chest 4.4s ease-in-out infinite}
-.noct-rig.head{-webkit-mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));transform-origin:50% var(--rig-neck);animation:noct-hood 4.4s ease-in-out .12s infinite}
-.noct-rig.hem{-webkit-mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));transform-origin:50% var(--rig-hem-top);animation:noct-hem 4.4s ease-in-out .35s infinite}
-@keyframes noct-chest{0%,100%{transform:none}38%{transform:scale(1.012,1.03)}80%{transform:scale(1.001,1.003)}}
-@keyframes noct-hood{0%,100%{transform:none}38%{transform:translateY(var(--rig-lift)) rotate(-.6deg)}58%{transform:translateY(calc(var(--rig-lift) * .7)) rotate(.35deg)}80%{transform:translateY(calc(var(--rig-lift) * .1))}}
-@keyframes noct-hem{0%,100%{transform:skewX(-1.2deg)}38%{transform:skewX(1.8deg) scaleY(1.012)}70%{transform:skewX(-.6deg) scaleY(1.004)}}
-body.reduced-motion .scene .hero-actor[data-hero="shadow"][data-state="idle"]>.sprite-body>.noct-rig{animation:none}
+/* Six-star Noct at rest: every few seconds a band of cold light runs along the scythe blade
+   (masked to the blade drawn in the accepted master, which every idle frame keeps). */
+.scythe-glint{display:none;position:absolute;inset:0;pointer-events:none;z-index:2;-webkit-mask:var(--scythe-mask) 0 0/100% 100% no-repeat;mask:var(--scythe-mask) 0 0/100% 100% no-repeat;background:linear-gradient(115deg,transparent 0 45.4%,#ffffff35 46.6%,#ffffff 47.7%,#ffffff 48.5%,#ffffff35 49.6%,transparent 50.8%),linear-gradient(115deg,transparent 0 46.8%,#ffffff 47.8%,#ffffff 48.4%,transparent 49.4%) 130% 0/300% 100% no-repeat;background-repeat:no-repeat;background-size:300% 100%;mix-blend-mode:plus-lighter;filter:drop-shadow(0 0 3px #e9e0ff) drop-shadow(0 0 6px #b9a6ff)}
+.scene .hero-actor[data-hero="shadow"][data-hero-form="3"][data-state="idle"] .scythe-glint{display:block;animation:scythe-glint 5.8s ease-in-out infinite}
+@keyframes scythe-glint{0%,70%{background-position:62% 0;opacity:0}71.5%{opacity:1}86%{background-position:20% 0;opacity:1}88%,100%{background-position:20% 0;opacity:0}}
+body.reduced-motion .scythe-glint{animation:none!important;display:none!important}

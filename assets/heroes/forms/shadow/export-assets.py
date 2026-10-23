@@ -213,3 +213,7 @@ for form, name in NAMES.items():
         print(form, action, "QC", json.dumps(qc))
     manifest["forms"][form] = form_meta
 (ROOT / "forms.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+# Noct rests on the stabilized cloth idle loops; repackage them over the idle written above.
+import runpy  # noqa: E402
+runpy.run_path(str(ROOT / "package_cloth_idle.py"))

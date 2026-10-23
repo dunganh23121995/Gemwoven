@@ -42,6 +42,7 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
             merged[f'form-idle-{hero}-{form}']={'file':target.relative_to(ROOT).as_posix(),'width':cw,'height':ch,'bodyAnchor':anchor,'footBounds':list(bounds)}
 for name,sheet in json.loads((ROOT/'assets/gemwoven/ambient/ambient.json').read_text(encoding='utf-8')).items():
     merged['ambient-'+name]={**sheet,'width':192*sheet['count'],'height':192}
+merged['scythe-mask']={'file':'assets/heroes/forms/shadow/form-3/scythe-mask.png','width':256,'height':256}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))

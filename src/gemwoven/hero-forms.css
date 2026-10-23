@@ -58,11 +58,7 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 [data-hero-element="shadow"] .form-aura-front .form-aura-band{animation:noct-aura-float 5.6s ease-in-out -1.6s infinite!important}
 @keyframes noct-aura-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3.5%) scale(1.015,.99)}}
 
-/* Noct in the hub breathes with the same three-layer rig as in combat (sprites.css). */
-.noct-hub-rig.torso{-webkit-mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));mask-image:linear-gradient(transparent 0 calc(var(--rig-torso-top) - 2%),#000 var(--rig-torso-top) var(--rig-torso-bottom),transparent calc(var(--rig-torso-bottom) + 2%));transform-origin:50% var(--rig-waist);animation:noct-chest 4.4s ease-in-out infinite}
-.noct-hub-rig.head{-webkit-mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));mask-image:linear-gradient(#000 0 var(--rig-head-solid),transparent var(--rig-head-fade));transform-origin:50% var(--rig-neck);animation:noct-hood 4.4s ease-in-out .12s infinite}
-.noct-hub-rig.hem{-webkit-mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));mask-image:linear-gradient(transparent 0 var(--rig-hem-fade),#000 var(--rig-hem-solid));transform-origin:50% var(--rig-hem-top);animation:noct-hem 4.4s ease-in-out .35s infinite}
-@keyframes noct-chest{0%,100%{transform:none}38%{transform:scale(1.012,1.03)}80%{transform:scale(1.001,1.003)}}
-@keyframes noct-hood{0%,100%{transform:none}38%{transform:translateY(var(--rig-lift)) rotate(-.6deg)}58%{transform:translateY(calc(var(--rig-lift) * .7)) rotate(.35deg)}80%{transform:translateY(calc(var(--rig-lift) * .1))}}
-@keyframes noct-hem{0%,100%{transform:skewX(-1.2deg)}38%{transform:skewX(1.8deg) scaleY(1.012)}70%{transform:skewX(-.6deg) scaleY(1.004)}}
-@media(prefers-reduced-motion:reduce){.noct-hub-rig{animation:none!important}}
+/* Six-star Noct in the hub: the scythe glint, laid exactly over the hero image. */
+.scythe-glint.hub{display:block;pointer-events:none;z-index:2;-webkit-mask:var(--scythe-mask) 0 0/100% 100% no-repeat;mask:var(--scythe-mask) 0 0/100% 100% no-repeat;background:linear-gradient(115deg,transparent 0 45.4%,#ffffff35 46.6%,#ffffff 47.7%,#ffffff 48.5%,#ffffff35 49.6%,transparent 50.8%),linear-gradient(115deg,transparent 0 46.8%,#ffffff 47.8%,#ffffff 48.4%,transparent 49.4%) 130% 0/300% 100% no-repeat;background-repeat:no-repeat;background-size:300% 100%;mix-blend-mode:plus-lighter;filter:drop-shadow(0 0 3px #e9e0ff) drop-shadow(0 0 6px #b9a6ff);animation:scythe-glint 5.8s ease-in-out infinite}
+@keyframes scythe-glint{0%,70%{background-position:62% 0;opacity:0}71.5%{opacity:1}86%{background-position:20% 0;opacity:1}88%,100%{background-position:20% 0;opacity:0}}
+@media(prefers-reduced-motion:reduce){.scythe-glint.hub{display:none}}

@@ -78,7 +78,7 @@ for key in keys:
         run['heads'].append([round(sum(p[0] for p in top)/max(1,len(top))), box[1]])
     art['heroes'][key]['run'] = run
 shadow_heads = {
-    'idle': [[140,88],[140,88],[140,89],[140,89]],
+    'idle': [[140,88]]*8,  # idle-cloth.webp: 8 stabilized cloth frames (package_cloth_idle.py)
     'attack': [[140,89],[156,113],[140,89],[112,90],[134,105],[140,89]],
     'cast': [[139,92],[161,111],[188,114],[189,115],[195,127],[140,92]],
     'buff': [[141,93],[139,94],[140,94],[140,98],[140,94],[142,94]],
@@ -86,8 +86,8 @@ shadow_heads = {
 }
 art['heroes']['shadow'] = {}
 for action, heads in shadow_heads.items():
-    art['heroes']['shadow'][action] = {'src':image(f'assets/heroes/shadow/{action}.webp'),
-        'cols':2 if action=='idle' else 3,'rows':2,'count':len(heads),'heads':heads}
+    art['heroes']['shadow'][action] = {'src':image(f'assets/heroes/shadow/{"idle-cloth" if action=="idle" else action}.webp'),
+        'cols':2 if action=='idle' else 3,'rows':4 if action=='idle' else 2,'count':len(heads),'heads':heads,**({'frameDuration':150} if action=='idle' else {})}
 art['heroes']['earth']['smash'] = atlas('assets/heroes/earth/smash.webp',3,2,6,'assets/masters/earth-transparent.png')
 art['heroes']['earth']['smash']['heads'] = [[144,84],[132,79],[119,86],[140,89],[126,94],[127,87]]
 # Reimagined main cast: every action must have passed the shared-scale pipeline.
@@ -171,6 +171,7 @@ def register_span(sheet):
 art['heroForms']={}
 form_skill_fx=json.loads((root/'assets/fx/forms/fx.json').read_text(encoding='utf-8'))
 art['formSkillFx']={hero:{form:{**sheet,'src':compact_image(sheet['file'])} for form,sheet in forms.items()} for hero,forms in form_skill_fx.items()}
+art['scytheGlint']=image('assets/heroes/forms/shadow/form-3/scythe-mask.png')
 reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8'))
 art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
 art['formAuras']={}

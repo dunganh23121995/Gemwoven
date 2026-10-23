@@ -11,18 +11,12 @@
     el.innerHTML=window.GemwovenFormEffects.markup(key,form,A['form-aura-'+key]);
     return el;
   }
-  // Noct's resting drawing breathes through three masked copies (same rig as combat).
-  function noctRig(el){
-    const image=el.querySelector('.art,img');if(!image||el.querySelector('.noct-hub-rig'))return;
-    const crown=Number(el.dataset.crown)||.25,foot=Number(el.dataset.foot)||.94,h=foot-crown,at=f=>((crown+f*h)*100).toFixed(2)+'%',waist=crown+.74*h,neck=crown+.3*h;
-    const vars={'--rig-torso-top':at(.22),'--rig-torso-bottom':at(.8),'--rig-head-solid':at(.28),'--rig-head-fade':at(.36),'--rig-hem-fade':at(.66),'--rig-hem-solid':at(.74),
-      '--rig-waist':(waist*100).toFixed(2)+'%','--rig-neck':(neck*100).toFixed(2)+'%','--rig-hem-top':at(.68),'--rig-lift':(-(waist-neck)*3).toFixed(3)+'%'};
-    for(const [k,v] of Object.entries(vars))el.style.setProperty(k,v);
-    image.classList.add('noct-hub-rig','torso');
-    for(const part of ['head','hem']){const copy=image.cloneNode();copy.classList.remove('torso');copy.classList.add(part);copy.alt='';copy.setAttribute('aria-hidden','true');image.after(copy);}
-  }
   function decorateBody(el,key,form){
-    if(key==='shadow'){el.classList.add('noct-still');noctRig(el);}
+    if(key==='shadow'&&form===3&&A['scythe-mask']&&!el.querySelector('.scythe-glint')){
+      const image=el.querySelector('.art,img'),glint=document.createElement('i');glint.className='scythe-glint hub';
+      if(image)glint.style.cssText=image.style.cssText;glint.style.setProperty('--scythe-mask',`url('${new URL(A['scythe-mask'].file,document.baseURI).href}')`);
+      image?.after(glint);
+    }
     if(key==='novice'||form<2)return;
     el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
     el.style.setProperty('--form-color',palette[key]);if(form===3)el.append(aura(key,form));
@@ -32,7 +26,7 @@
     const b=asset.footBounds||[0,0,asset.width,asset.height],a=asset.bodyAnchor||{x:(b[0]+b[2])/2/asset.width,crown:b[1]/asset.height,foot:b[3]/asset.height};
     const height=target/Math.max(.1,a.foot-a.crown),width=height*asset.width/asset.height;
     Object.assign(image.style,{position:'absolute',inset:'auto',width:width+'px',height:height+'px',maxWidth:'none',left:`calc(50% - ${width*a.x}px)`,bottom:-(height*(1-a.foot))+'px',translate:'none',padding:'0',objectFit:'contain'});
-    el.style.setProperty('--hero-visible-height',target+'px');el.classList.add('hero-body-normalized');el.dataset.crown=a.crown;el.dataset.foot=a.foot;
+    el.style.setProperty('--hero-visible-height',target+'px');el.classList.add('hero-body-normalized');
   }
   window.GEMWOVEN_FORMS={decorateBody,fitBody};
   const decorate=G.decorate;
@@ -41,8 +35,7 @@
     for(const key of Object.keys(M.HERO_FORMS)){
       const form=M.heroForm(key,snapshot.heroes[key]),poster=A[`form-${key}-${form}`],portrait=A[`form-portrait-${key}-${form}`],idle=A[`form-idle-${key}-${form}`];
       A['hero-'+key]=poster||originals['hero-'+key];A['portrait-'+key]=portrait||originals['portrait-'+key];
-      // Noct rests on one drawing (CSS breathing), never on a stepped idle animation.
-      A['home-idle-'+key]=key==='shadow'?(poster||originals['hero-'+key]):idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
+      A['home-idle-'+key]=idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
     }
     const p=decorate(state);
     if(state.screen==='skills'){
@@ -78,7 +71,7 @@
     const list=document.createElement('div');list.className='hero-form-gallery-list';modal.body.append(intro,tabs,list);
     const cards=M.HERO_FORMS[key].map((info,i)=>{
       const form=i+1,card=document.createElement('article'),body=document.createElement('div');body.className='form-preview-body';
-      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&key!=='shadow'&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?128:122);decorateBody(body,key,form);
+      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?128:122);decorateBody(body,key,form);
       card.dataset.current=String(form===current&&!!p.heroes[key]);card.dataset.form=form;
       const title=document.createElement('h3');title.textContent=info.name;
       const note=document.createElement('p');note.className='form-state';note.textContent=`${[1,4,6][i]} sao · ${form===current&&p.heroes[key]?'Đang sử dụng':form<=current&&p.heroes[key]?'Đã mở':'Chưa mở'}`;

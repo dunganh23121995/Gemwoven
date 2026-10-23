@@ -9,25 +9,13 @@ function spriteDefinition(family,key,action){
 }
 function spriteMarkup(family,key,action='idle'){
   const {sheet}=spriteDefinition(family,key,action),name=family==='hero'?HEROES[key].name:MONSTERS[key].name;
-  const rig=family==='hero'&&key==='shadow'?'<i class="noct-rig torso"></i><i class="noct-rig head"></i><i class="noct-rig hem"></i>':'';
+  // Six-star Noct's scythe catches a travelling glint now and then (CSS, masked to the blade).
+  const rig=family==='hero'&&key==='shadow'?'<i class="scythe-glint"></i>':'';
   return `<span class="sprite-body" role="img" aria-label="${name}" data-family="${family}" data-key="${key}" data-action="${action}" data-frame="0" data-loop="true" style="background-image:url('${sheet.src}');background-size:${sheet.cols*100}% ${sheet.rows*100}%;background-position:0% 0%">${rig}</span>`;
 }
 function spriteCellPosition(sheet,frame){
   const col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   return `${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
-}
-// Noct's breathing rig, laid out from the idle sheet's hood-top landmark and foot line (fractions
-// of the cell). The torso layer sits underneath and stays opaque across both seams; the hood and
-// the robe hem fade in over it on soft bands, and the hood rises exactly as far as the expanding
-// chest moves its top edge, so the layers never show a seam or a double image.
-function noctRigLayout(el,sheet){
-  const crown=(sheet.heads?.[0]?.[1]??48)/256,foot=sheet.footY||.94,h=foot-crown,at=f=>((crown+f*h)*100).toFixed(2)+'%';
-  const waist=crown+.74*h,chest=crown+.3*h,swell=.03;
-  el.style.setProperty('--rig-torso-top',at(.22));el.style.setProperty('--rig-torso-bottom',at(.8));
-  el.style.setProperty('--rig-head-solid',at(.28));el.style.setProperty('--rig-head-fade',at(.36));
-  el.style.setProperty('--rig-hem-fade',at(.66));el.style.setProperty('--rig-hem-solid',at(.74));
-  el.style.setProperty('--rig-waist',(waist*100).toFixed(2)+'%');el.style.setProperty('--rig-neck',(chest*100).toFixed(2)+'%');
-  el.style.setProperty('--rig-hem-top',at(.68));el.style.setProperty('--rig-lift',(-(waist-chest)*swell*100).toFixed(3)+'%');
 }
 function spriteApply(el,action,index){
   if(!el)return;
@@ -38,7 +26,6 @@ function spriteApply(el,action,index){
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
   if(action!=='idle')el.style.setProperty('--tween','0');
   el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);el.style.setProperty('--cell-pos',el.style.backgroundPosition);
-  if(el.dataset.key==='shadow'&&action==='idle')noctRigLayout(el,sheet);
   // Noct moves like black mist: outside idle, each pose change leaves the previous pose
   // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
   if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){
@@ -78,12 +65,10 @@ function spriteTick(now){
     if(el.dataset.loop==='true'){
       // Only dense, authored loops advance at rest. One/two/four-pose atlases
       // otherwise pop at shoulders, eyes and weapons; CSS supplies a smooth breath.
-      // Noct never steps through idle frames: one drawing breathes and sways (sprites.css).
-      const still=el.dataset.key==='shadow'&&el.dataset.family==='hero';
-      const progress=def.count>=8&&!still?Math.max(0,now-playback.start)/(def.frameDuration||90):0,frame=Math.floor(progress)%def.count;
+      const progress=def.count>=8?Math.max(0,now-playback.start)/(def.frameDuration||90):0,frame=Math.floor(progress)%def.count;
       if(+el.dataset.frame!==frame||el.dataset.action!=='idle')spriteApply(el,'idle',frame);
       // Idle breathes continuously: the next pose fades in over the current one (::after layer).
-      if(def.count>=8&&!still){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
+      if(def.count>=8){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
     }else{
       const elapsed=Math.max(0,now-playback.start);
       const fallbackHurt=playback.action==='hurt'&&spriteDefinition(el.dataset.family,el.dataset.key,'hurt').action!=='hurt';

@@ -17,36 +17,36 @@
               60
             ],
             [
-              166,
-              59
+              173,
+              60
             ],
             [
               173,
-              58
-            ],
-            [
-              166,
-              56
-            ],
-            [
-              172,
-              57
-            ],
-            [
-              165,
-              57
+              60
             ],
             [
               173,
-              57
+              60
             ],
             [
-              166,
-              56
+              173,
+              60
+            ],
+            [
+              173,
+              60
+            ],
+            [
+              173,
+              60
+            ],
+            [
+              173,
+              60
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/shadow/form-2/attack.webp",
@@ -231,7 +231,7 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/shadow/form-3/attack.webp",

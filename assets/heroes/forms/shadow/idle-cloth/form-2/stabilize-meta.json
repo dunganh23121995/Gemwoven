@@ -1,0 +1,62 @@
+{
+  "master": "assets/heroes/forms/shadow/form-2/master.png",
+  "form": "2",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 6,
+      "dy": -1,
+      "scale": 1.2089490445859872,
+      "rigid_error": 0.0728
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 6,
+      "dy": 0,
+      "scale": 1.2089490445859872,
+      "rigid_error": 0.0692
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 5,
+      "dy": -2,
+      "scale": 1.1910828025477707,
+      "rigid_error": 0.0698
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 6,
+      "dy": -2,
+      "scale": 1.2012974683544304,
+      "rigid_error": 0.0729
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 5,
+      "dy": 0,
+      "scale": 1.2089490445859872,
+      "rigid_error": 0.0755
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 6,
+      "dy": 0,
+      "scale": 1.2089490445859872,
+      "rigid_error": 0.0717
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 5,
+      "dy": 0,
+      "scale": 1.2089490445859872,
+      "rigid_error": 0.071
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 6,
+      "dy": -2,
+      "scale": 1.1910828025477707,
+      "rigid_error": 0.0705
+    }
+  ]
+}
