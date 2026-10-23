@@ -11286,5 +11286,197 @@
     "file": "assets/heroes/forms/shadow/form-3/scythe-mask.png",
     "width": 256,
     "height": 256
+  },
+  "creature-crystal-gemsage": {
+    "file": "assets/gemwoven/elites/crystal-gemsage/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      70,
+      57,
+      442,
+      456
+    ]
+  },
+  "creature-crystal-shardblade": {
+    "file": "assets/gemwoven/elites/crystal-shardblade/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      96,
+      455,
+      456
+    ]
+  },
+  "creature-eldergrove-blossomranger": {
+    "file": "assets/gemwoven/elites/eldergrove-blossomranger/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      82,
+      57,
+      429,
+      456
+    ]
+  },
+  "creature-forest-leafarcher": {
+    "file": "assets/gemwoven/elites/forest-leafarcher/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      72,
+      455,
+      456
+    ]
+  },
+  "creature-forest-rootknight": {
+    "file": "assets/gemwoven/elites/forest-rootknight/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      64,
+      455,
+      456
+    ]
+  },
+  "creature-foundry-gearknight": {
+    "file": "assets/gemwoven/elites/foundry-gearknight/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      107,
+      455,
+      456
+    ]
+  },
+  "creature-foundry-tinkerer": {
+    "file": "assets/gemwoven/elites/foundry-tinkerer/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      72,
+      455,
+      456
+    ]
+  },
+  "creature-glacier-blizzardmage": {
+    "file": "assets/gemwoven/elites/glacier-blizzardmage/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      81,
+      57,
+      430,
+      456
+    ]
+  },
+  "creature-haunted-bonepaladin": {
+    "file": "assets/gemwoven/elites/haunted-bonepaladin/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      56,
+      60,
+      455,
+      456
+    ]
+  },
+  "creature-haunted-gravewarden": {
+    "file": "assets/gemwoven/elites/haunted-gravewarden/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      70,
+      57,
+      441,
+      456
+    ]
+  },
+  "creature-ice-frostguard": {
+    "file": "assets/gemwoven/elites/ice-frostguard/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      113,
+      58,
+      399,
+      456
+    ]
+  },
+  "creature-moonkeep-eclipsehuntress": {
+    "file": "assets/gemwoven/elites/moonkeep-eclipsehuntress/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      87,
+      57,
+      424,
+      456
+    ]
+  },
+  "creature-mycelium-mycoknight": {
+    "file": "assets/gemwoven/elites/mycelium-mycoknight/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      91,
+      57,
+      420,
+      456
+    ]
+  },
+  "creature-stormspire-voltlancer": {
+    "file": "assets/gemwoven/elites/stormspire-voltlancer/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      106,
+      59,
+      406,
+      456
+    ]
+  },
+  "creature-volcano-ashcultist": {
+    "file": "assets/gemwoven/elites/volcano-ashcultist/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      73,
+      57,
+      438,
+      456
+    ]
+  },
+  "creature-volcano-flamelancer": {
+    "file": "assets/gemwoven/elites/volcano-flamelancer/master.png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "footBounds": [
+      92,
+      57,
+      419,
+      456
+    ]
   }
 }
