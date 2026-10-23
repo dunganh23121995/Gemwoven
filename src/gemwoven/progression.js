@@ -313,7 +313,7 @@
     const milestones=[...new Set(claimed)],shards=milestones.length*3,rank=shards/3;
     return {theme:d.theme,chapter,name:d.counter,key:d.counterKey,claimed:milestones,shards,required:12,rank,reduction:d.artifactRanks[rank],description:d.counterText};
   }
-  function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
+  function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
     let memory,sequence=0;
     function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(p.pending)p.pending={...encounter(p.pending.mode,p.pending.index),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
     function save(p){p.updated=now();p.revision++;if(storage)storage.setItem(KEY,JSON.stringify(p));else memory=clone(p);return p;}
@@ -411,6 +411,10 @@
     // Keep the ordinary reward pipeline's premium-currency rejection intact.
     if(previewGems&&!load().previewGrants?.includes('summon-gems-preview-2026-10')){
       tx(p=>{p.wallet.gems+=120000;(p.previewGrants??=[]).push('summon-gems-preview-2026-10');note(p,'Bản thử nghiệm · Cấp 120.000 Đá Ngọc để thử triệu hồi');});
+    }
+    // Local test build: Noct owned at six stars so his three forms can be played. Never gameplay.
+    if(previewHeroes&&!load().previewGrants?.includes('noct-preview-2026-10')){
+      tx(p=>{p.heroes.shadow={...heroSave(),...p.heroes.shadow,stars:6};(p.previewGrants??=[]).push('noct-preview-2026-10');note(p,'Bản thử nghiệm · Sở hữu Noct 6 sao để thử');});
     }
     // One sample gift so the local preview can exercise claiming; never sent to a real save.
     if(previewMail&&!load().previewGrants?.includes('mail-preview-2026-10')){
