@@ -40,7 +40,7 @@
     inventory:{butterflies:[[140,1500,50]],leaves:[[860,160]]},
     tavern:{butterflies:[[120,1480,50]],leaves:[[900,240]]}
   };
-  const reduced=()=>document.body.classList.contains('reduced-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced=()=>document.body.classList.contains('reduced-motion')||!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   const sprite=(name,cls,style)=>{
     const s=A['ambient-'+name];if(!s)return '';
     // Absolute URL: a url() inside a custom property resolves against the stylesheet otherwise.
