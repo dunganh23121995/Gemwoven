@@ -24,6 +24,10 @@ function spriteApply(el,action,index){
   const previous={image:el.style.backgroundImage,size:el.style.backgroundSize,position:el.style.backgroundPosition,frame:el.dataset.frame,action:el.dataset.action};
   if(el.dataset.sheet!==mapped){el.style.backgroundImage=`url('${sheet.src}')`;el.style.backgroundSize=`${sheet.cols*100}% ${sheet.rows*100}%`;el.dataset.sheet=mapped;}
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
+  // Sheets drawn smaller than the idle carry a scale: grow the drawing box about the feet so the
+  // character keeps one size across actions (the cell always fills the box).
+  const grow=(sheet.scale||1)-1,foot=sheet.footY||.94;
+  for(const [k,v] of Object.entries(grow?{left:-grow*50+'%',top:-grow*foot*100+'%',width:(1+grow)*100+'%',height:(1+grow)*100+'%'}:{left:'',top:'',width:'',height:''}))el.style.setProperty(k,v,grow?'important':'');
   if(action!=='idle')el.style.setProperty('--tween','0');
   el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);el.style.setProperty('--cell-pos',el.style.backgroundPosition);
   // Noct moves like black mist: outside idle, each pose change leaves the previous pose

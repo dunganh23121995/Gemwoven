@@ -154,6 +154,11 @@ def ensure_frames(folder, action):
                     *scale], check=True, capture_output=True)
 
 
+# Six-star action sheets were drawn smaller than the idle (hood-matched: attack 0.90, cast 0.95,
+# run 0.93, hover 0.92). The runtime enlarges them about the feet by these factors so Noct keeps
+# his size when he moves from rest into an action.
+ACTION_SCALE = {"3": {"attack": 1.111, "cast": 1.053, "run": 1.075, "hover": 1.087}}
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--form", choices=("2", "3"), action="append")
 selected = parser.parse_args().form or list(NAMES)
@@ -183,7 +188,8 @@ for form, name in NAMES.items():
         count, cols = (8, 2) if action == "idle" else (6, 3)
         entry = {
             "file": f"{prefix}/{action}.webp", "cols": cols, "rows": count // cols, "count": count,
-            "heads": heads[action], "footY": 0.94, "frameDuration": 120 if action == "idle" else 100,
+            "heads": heads[action],
+            **({"scale": ACTION_SCALE[form][action]} if action in ACTION_SCALE.get(form, {}) else {}), "footY": 0.94, "frameDuration": 120 if action == "idle" else 100,
         }
         if not (source / f"{action}-1.png").exists():
             # Accepted sheet whose processor intermediates are gone: keep the committed runtime files.
@@ -211,6 +217,7 @@ for form, name in NAMES.items():
             "rows": 4 if action == "idle" else 2,
             "count": count,
             "heads": heads[action],
+            **({"scale": ACTION_SCALE[form][action]} if action in ACTION_SCALE.get(form, {}) else {}),
             "footY": 0.94,
             "frameDuration": 120 if action == "idle" else 100,
         }

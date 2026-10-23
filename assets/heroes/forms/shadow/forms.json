@@ -265,7 +265,8 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.111
         },
         "cast": {
           "file": "assets/heroes/forms/shadow/form-3/cast.webp",
@@ -299,7 +300,8 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.053
         },
         "run": {
           "file": "assets/heroes/forms/shadow/form-3/run.webp",
@@ -333,7 +335,8 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.075
         },
         "hover": {
           "file": "assets/heroes/forms/shadow/form-3/hover.webp",
@@ -367,7 +370,8 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.087
         }
       }
     }
