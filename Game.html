@@ -595,7 +595,7 @@ dialog h2 { font-size: 28px; line-height: 1.2; margin: 11px 0 10px; }
 @media(max-width:370px){.character-preview>.sprite-body{height:185px;width:185px}.special-tier{font-size:7px;line-height:9px}.boss-sigil{top:9%}}
 
 /* Idle in-betweens: the next idle pose cross-fades over the current one, so breathing loops glide. */
-.actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:inherit;background-size:inherit;background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
+.actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img,none);background-size:var(--tween-size,auto);background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
 body.reduced-motion .actor>.sprite-body::after{display:none}
 
 ﻿/* One luminous announcement per cascade wave; the count has no visual cap. */
@@ -1098,14 +1098,14 @@ body.reduced-motion .boss-element-aura>b{display:none}
 .has-hero-form[data-hero-element="shadow"]>.art,.has-hero-form[data-hero-element="shadow"]>img{filter:drop-shadow(0 3px 2px #0006)}
 .has-hero-form[data-hero-element="shadow"][data-hero-form="3"]>.art,.has-hero-form[data-hero-element="shadow"][data-hero-form="3"]>img{filter:drop-shadow(0 0 8px #050506) drop-shadow(0 0 2px #8d8d94)}
 @keyframes form-aura-strip{from{background-position:0 0}to{background-position:100% 0}}
-/* The aura never sits still: the next frame fades in over the current one (::after one frame
-   ahead, fading over one frame) and the whole band drifts and breathes; front pieces sway
-   out of phase with the back layer. */
-.form-aura-band{--aura-frame:calc(var(--aura-cycle,1280ms) / 8);background:none!important;animation:form-aura-drift 6.4s ease-in-out infinite!important;transform-origin:50% 72%}
-.form-aura-band::before,.form-aura-band::after{content:'';position:absolute;inset:0;background:var(--aura-sheet) 0 0/800% 100% no-repeat;animation:form-aura-strip var(--aura-cycle,1280ms) steps(8,jump-none) infinite}
-.form-aura-band::after{animation:form-aura-strip var(--aura-cycle,1280ms) steps(8,jump-none) calc(var(--aura-frame) * -1) infinite,form-aura-fade var(--aura-frame) linear infinite}
+/* The aura never sits still: form-effects.js cross-fades consecutive frames on one clock
+   (::before fading out, ::after fading in) and the whole band drifts and breathes; front pieces
+   sway out of phase with the back layer. */
+.form-aura-band{background:none!important;animation:form-aura-drift 6.4s ease-in-out infinite!important;transform-origin:50% 72%}
+.form-aura-band::before,.form-aura-band::after{content:'';position:absolute;inset:0;background:var(--aura-sheet) 0 0/800% 100% no-repeat}
+.form-aura-band::before{background-position:var(--aura-a,0 0);opacity:var(--aura-out,1)}
+.form-aura-band::after{background-position:var(--aura-b,0 0);opacity:var(--aura-in,0)}
 .form-aura-front .form-aura-band{animation:form-aura-sway 4.6s ease-in-out -1.9s infinite!important;transform-origin:50% 62%}
-@keyframes form-aura-fade{from{opacity:0}to{opacity:1}}
 @keyframes form-aura-drift{0%,100%{transform:none}30%{transform:translate(1.2%,-2.2%) rotate(1.4deg) scale(1.02,.985)}65%{transform:translate(-1.4%,-.8%) rotate(-1.1deg) scale(.99,1.015)}}
 @keyframes form-aura-sway{0%,100%{transform:none}50%{transform:translate(-2.5%,1.8%) rotate(-2.4deg) scaleX(1.04)}}
 @keyframes shadow-breathe{50%{opacity:.7;scale:1.09}}
@@ -1130,6 +1130,9 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .hero-form-gallery article strong{margin-top:4px;font:700 15px/1.3 Cambria,serif;color:#ffd98c}
 .hero-form-gallery{padding-inline:calc(80*var(--s))}
 .hero-form-gallery article .form-signature{margin-top:4px!important;font-size:13px!important;color:#f3c98a!important;font-style:italic}
+/* Noct's aura is black mist: slower, softer drift and a faint blur on the cloud edges. */
+[data-hero-element="shadow"] .form-aura-band{animation-duration:10s!important;filter:blur(.5px)}
+[data-hero-element="shadow"] .form-aura-front .form-aura-band{animation-duration:7.5s!important}
 
 .scene .hero-actor{--actor-size:calc(min(clamp(115px,30vw,138px),48cqh) * var(--hero-art-scale,1))}
 .scene .hero-actor[data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
@@ -2365,10 +2368,10 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     if(previewGems&&!load().previewGrants?.includes('summon-gems-preview-2026-10')){
       tx(p=>{p.wallet.gems+=120000;(p.previewGrants??=[]).push('summon-gems-preview-2026-10');note(p,'Bản thử nghiệm · Cấp 120.000 Đá Ngọc để thử triệu hồi');});
     }
-    // Local test build: Noct owned at six stars so his three forms can be played. Never gameplay.
-    if(previewHeroes&&!load().previewGrants?.includes('noct-preview-2026-10')){
-      tx(p=>{p.heroes.shadow={...heroSave(),...p.heroes.shadow,stars:6};(p.previewGrants??=[]).push('noct-preview-2026-10');note(p,'Bản thử nghiệm · Sở hữu Noct 6 sao để thử');});
-    }
+    // Test builds: Noct and Mika owned at six stars so their three forms can be played. Never gameplay.
+    for(const [key,grantId,name] of [['shadow','noct-preview-2026-10','Noct'],['fire','mika-preview-2026-10','Mika']])
+      if(previewHeroes&&!load().previewGrants?.includes(grantId))
+        tx(p=>{p.heroes[key]={...heroSave(),...p.heroes[key],stars:6};(p.previewGrants??=[]).push(grantId);note(p,`Bản thử nghiệm · Sở hữu ${name} 6 sao để thử`);});
     // One sample gift so the local preview can exercise claiming; never sent to a real save.
     if(previewMail&&!load().previewGrants?.includes('mail-preview-2026-10')){
       tx(p=>{if(p.mail.length<MAIL_LIMIT)p.mail.push({id:'preview-gift-2026-10',kind:'gift',from:MAIL_ADMIN,title:'Quà thử nghiệm',
@@ -2453,9 +2456,18 @@ function spriteApply(el,action,index){
   if(!el)return;
   const {sheet,action:mapped}=spriteDefinition(el.dataset.family,el.dataset.key,action);
   const frame=Math.max(0,Math.min(sheet.count-1,Number.isFinite(index)?index:0)),col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
+  const previous={image:el.style.backgroundImage,size:el.style.backgroundSize,position:el.style.backgroundPosition,frame:el.dataset.frame,action:el.dataset.action};
   if(el.dataset.sheet!==mapped){el.style.backgroundImage=`url('${sheet.src}')`;el.style.backgroundSize=`${sheet.cols*100}% ${sheet.rows*100}%`;el.dataset.sheet=mapped;}
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
   if(action!=='idle')el.style.setProperty('--tween','0');
+  el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);
+  // Noct moves like black mist: outside idle, each pose change leaves the previous pose
+  // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
+  if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){
+    el.style.setProperty('--tween-img',previous.image);el.style.setProperty('--tween-size',previous.size);el.style.setProperty('--tween-pos',previous.position);
+    el.getAnimations({subtree:true}).filter(a=>a.id==='mist-dissolve').forEach(a=>a.cancel());
+    const fade=el.animate([{opacity:.9,filter:'blur(0px)'},{opacity:0,filter:'blur(2.5px)'}],{duration:240,easing:'ease-out',pseudoElement:'::after'});fade.id='mist-dissolve';
+  }
   el.dataset.action=action;el.dataset.frame=frame;
   updateActorHead(el,action,frame);
   if(el.dataset.family==='hero'&&el.dataset.key==='earth')updateNoriShieldAura(el);
@@ -5945,13 +5957,32 @@ update=function(){expeditionUpdate();expeditionHud();};
 
 /* Independent aura atlases: their clock and layers do not belong to body actions. */
 (() => {
+  // One clock drives every aura: the current frame (::before) fades out while the next frame
+  // (::after) fades in, both set in the same tick so the two layers can never drift apart.
+  const reduced=()=>document.body?.classList.contains('reduced-motion')||!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const ease=t=>t*t*(3-2*t),position=frame=>`${frame/7*100}% 0`;
+  let ticking=false;
+  function tick(now){
+    const bands=document.querySelectorAll('.form-aura-band');
+    if(!bands.length){ticking=false;return;}
+    requestAnimationFrame(tick);
+    if(document.hidden)return;
+    for(const band of bands){
+      const ms=Number(band.dataset.frameMs)||260,t=reduced()?0:now/ms,frame=Math.floor(t)%8,mix=ease(t%1);
+      band.style.setProperty('--aura-a',position(frame));band.style.setProperty('--aura-b',position((frame+1)%8));
+      band.style.setProperty('--aura-in',mix.toFixed(3));band.style.setProperty('--aura-out',(1-mix**3).toFixed(3));
+    }
+  }
+  const start=()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}};
   window.GemwovenFormEffects={
     markup(key,form,asset){
       if(form!==3)return '';
       // Combat embeds the strip as `src` (data URI); the hub manifest uses `file`.
       const source=asset&&(asset.src||asset.file),url=source?new URL(source,document.baseURI).href:'';
-      const style=url?`style="--aura-sheet:url('${url.replace(/"/g,'&quot;')}');--aura-cycle:${(asset.frameDuration||160)*(asset.count||8)}ms"`:'';
-      const band=url?`<i class="form-aura-band" ${style}></i>`:'';
+      // Slower than the authored strip: each frame melts into the next instead of stepping.
+      const frameMs=Math.max(300,Math.round((asset?.frameDuration||160)*(key==='shadow'?2.6:1.8)));
+      const style=url?`data-frame-ms="${frameMs}" style="--aura-sheet:url('${url.replace(/"/g,'&quot;')}')"`:'';
+      const band=url?`<i class="form-aura-band" ${style}></i>`:'';if(band)setTimeout(start);
       // Optional front strip on the same clock (Noct's waist sash), drawn over the body.
       const frontSource=asset&&(asset.frontSrc||asset.front),frontUrl=frontSource?new URL(frontSource,document.baseURI).href:'';
       const front=frontUrl?`<span class="hero-form-aura form-aura-foreground form-aura-front"><i class="form-aura-band" ${style.replace(url,frontUrl)}></i></span>`:'';

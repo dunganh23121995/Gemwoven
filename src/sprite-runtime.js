@@ -19,9 +19,18 @@ function spriteApply(el,action,index){
   if(!el)return;
   const {sheet,action:mapped}=spriteDefinition(el.dataset.family,el.dataset.key,action);
   const frame=Math.max(0,Math.min(sheet.count-1,Number.isFinite(index)?index:0)),col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
+  const previous={image:el.style.backgroundImage,size:el.style.backgroundSize,position:el.style.backgroundPosition,frame:el.dataset.frame,action:el.dataset.action};
   if(el.dataset.sheet!==mapped){el.style.backgroundImage=`url('${sheet.src}')`;el.style.backgroundSize=`${sheet.cols*100}% ${sheet.rows*100}%`;el.dataset.sheet=mapped;}
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
   if(action!=='idle')el.style.setProperty('--tween','0');
+  el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);
+  // Noct moves like black mist: outside idle, each pose change leaves the previous pose
+  // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
+  if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){
+    el.style.setProperty('--tween-img',previous.image);el.style.setProperty('--tween-size',previous.size);el.style.setProperty('--tween-pos',previous.position);
+    el.getAnimations({subtree:true}).filter(a=>a.id==='mist-dissolve').forEach(a=>a.cancel());
+    const fade=el.animate([{opacity:.9,filter:'blur(0px)'},{opacity:0,filter:'blur(2.5px)'}],{duration:240,easing:'ease-out',pseudoElement:'::after'});fade.id='mist-dissolve';
+  }
   el.dataset.action=action;el.dataset.frame=frame;
   updateActorHead(el,action,frame);
   if(el.dataset.family==='hero'&&el.dataset.key==='earth')updateNoriShieldAura(el);

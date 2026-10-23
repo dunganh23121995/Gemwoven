@@ -412,10 +412,10 @@
     if(previewGems&&!load().previewGrants?.includes('summon-gems-preview-2026-10')){
       tx(p=>{p.wallet.gems+=120000;(p.previewGrants??=[]).push('summon-gems-preview-2026-10');note(p,'Bản thử nghiệm · Cấp 120.000 Đá Ngọc để thử triệu hồi');});
     }
-    // Local test build: Noct owned at six stars so his three forms can be played. Never gameplay.
-    if(previewHeroes&&!load().previewGrants?.includes('noct-preview-2026-10')){
-      tx(p=>{p.heroes.shadow={...heroSave(),...p.heroes.shadow,stars:6};(p.previewGrants??=[]).push('noct-preview-2026-10');note(p,'Bản thử nghiệm · Sở hữu Noct 6 sao để thử');});
-    }
+    // Test builds: Noct and Mika owned at six stars so their three forms can be played. Never gameplay.
+    for(const [key,grantId,name] of [['shadow','noct-preview-2026-10','Noct'],['fire','mika-preview-2026-10','Mika']])
+      if(previewHeroes&&!load().previewGrants?.includes(grantId))
+        tx(p=>{p.heroes[key]={...heroSave(),...p.heroes[key],stars:6};(p.previewGrants??=[]).push(grantId);note(p,`Bản thử nghiệm · Sở hữu ${name} 6 sao để thử`);});
     // One sample gift so the local preview can exercise claiming; never sent to a real save.
     if(previewMail&&!load().previewGrants?.includes('mail-preview-2026-10')){
       tx(p=>{if(p.mail.length<MAIL_LIMIT)p.mail.push({id:'preview-gift-2026-10',kind:'gift',from:MAIL_ADMIN,title:'Quà thử nghiệm',
