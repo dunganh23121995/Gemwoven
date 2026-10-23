@@ -267,7 +267,20 @@ css += '\n'+(root/'src/progression-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/expedition-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/gemwoven/hero-forms.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/hero-forms-combat.css').read_text(encoding='utf-8')
-extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART=' + json.dumps(art, separators=(',', ':')) + ';\n'
+# The same picture is often referenced several times (a still pose shares its idle sheet, a
+# one-painting boss uses it for every action). Embed each data URI once and resolve the
+# references when the page starts.
+blobs,blob_index=[],{}
+def share_blobs(node):
+    if isinstance(node,dict):return {k:share_blobs(v) for k,v in node.items()}
+    if isinstance(node,list):return [share_blobs(v) for v in node]
+    if isinstance(node,str) and node.startswith('data:') and len(node)>4096:
+        if node not in blob_index:blob_index[node]=len(blobs);blobs.append(node)
+        return f'@blob:{blob_index[node]}'
+    return node
+shared_art=share_blobs(art)
+resolve_blobs="(function resolve(node){for(const k in node){const v=node[k];if(typeof v==='string'&&v.startsWith('@blob:'))node[k]=ART_BLOBS[+v.slice(6)];else if(v&&typeof v==='object')resolve(v);}})(ART);\n"
+extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                         for p in ['audio-settings.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')

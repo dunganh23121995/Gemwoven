@@ -244,7 +244,10 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
   const key=progressionIsDuel()?'novice':side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
   const sourceOrigin=combatV3Point(side),targetOrigin=combatV3Point(targetSide);
-  const reach=Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43);
+  // A pounce stops with the foe's drawn body (its sheet span, not its whole cell) at the
+  // hero's front, however large the foe is.
+  const foeSpan=side==='enemy'?spriteDefinition('enemy',state.enemyKey,'attack').sheet.span:null;
+  const reach=foeSpan?Math.max(0,sourceOrigin.x-sourceOrigin.width*(.5-foeSpan[0])-(targetOrigin.x+targetOrigin.width*.3)):Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43);
   // Foes pounce on the hero for a basic attack; only one that stands too far away (more than
   // half the arena to cover) strikes from range with its element instead.
   const foe=side==='enemy'&&!progressionIsDuel(),pounce=foe&&reach<=$('scene').clientWidth*.5;
@@ -264,7 +267,8 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
     const preparationAction=ultimate?'cast':'attack';
     combatV3Action(side,preparationAction,ultimate?900:620);combatV3Frame(side,preparationAction,ultimate?0:opening.windup);
     if(chain>1)popActorSkill(side,'ĐÒN ×'+chain+' · +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%',false,pending);
-    if(!ultimate&&chain===1)combatV3Cue(side,key,false,hits,pending);
+    if(pounce)popActorSkill(side,'Vồ tới',false,pending);
+    else if(!ultimate&&chain===1)combatV3Cue(side,key,false,hits,pending);
     combatV3Charge(side,key,ultimate,pending);
     // Wind-ups lean backwards only as far as the arena edge allows.
     const lean=combatOuterMotion(side,ultimate?13:8,melee?7:2),lean1=combatOuterMotion(side,ultimate?7:4,melee?3:1);

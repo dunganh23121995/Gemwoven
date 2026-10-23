@@ -274,10 +274,21 @@ async function reaperVeilRage(raw,onRelease){
     delete root.dataset.ragePhase;delete root.dataset.rageHit;delete root.dataset.foeHudOver;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }
 }
+// Six-star Noct leaves a cleared stage hauling the harvested soul behind him, hooked on the back
+// of his scythe; it strains and trails a beat behind his bobbing flight.
+function noctSoul(root){
+  const sheet=ART.reaperFx?.soul;if(!sheet||reduced||combatHeroForm('shadow')!==3)return null;
+  const soul=document.createElement('span');soul.className='noct-soul';soul.setAttribute('aria-hidden','true');
+  soul.style.cssText=`--fx-count:${sheet.count};background-image:url('${sheet.src}');--soul-ms:${sheet.count*sheet.frameDuration}ms`;
+  root.prepend(soul);
+  animate(soul,[{opacity:0,translate:'18% -6%',scale:'.6'},{opacity:1,translate:'0 0',scale:'1'}],{duration:420,easing:'cubic-bezier(.2,.9,.3,1.2)'});
+  return soul;
+}
 async function departShadowHero(){
   const root=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children],pending=[];root.dataset.departing='true';
+  let soul=null;
   try{
-    setSpriteFrame('hero','hover',0);
+    setSpriteFrame('hero','hover',0);soul=noctSoul(root);if(soul)playNoctSound('hook',{volume:.2,pan:-.2});
     await animate(root,[{transform:'translateY(0px)'},{transform:'translateY(-12px)'}],{duration:reduced?1:260,easing:'ease-out'});
     const start=performance.now(),duration=reduced?1:2400;let lastEcho=0;
     await new Promise(resolve=>{
@@ -291,7 +302,7 @@ async function departShadowHero(){
       }requestAnimationFrame(tick);
     });
     await animate(root,[{opacity:1},{opacity:0}],{duration:180});root.style.opacity='0';await Promise.all(pending);
-  }finally{delete root.dataset.departing;delete root.dataset.worldX;root.style.transform='';setSpriteAction('hero','idle');}
+  }finally{soul?.remove();delete root.dataset.departing;delete root.dataset.worldX;root.style.transform='';setSpriteAction('hero','idle');}
 }
 // A stream of overlapping curved, feathered plumes instead of a rigid polygon.
 combatV3Breath=function(sourcePoint,targetPoint,ultimate,pending){

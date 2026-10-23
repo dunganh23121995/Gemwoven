@@ -36,5 +36,11 @@ body.reduced-motion .scene .hero-actor[data-veiled="true"]>.sprite-body{animatio
 .reaper-smoke .smoke-core{position:absolute;left:24%;right:24%;top:30%;bottom:20%;border-radius:45% 45% 30% 30%;background:radial-gradient(ellipse at 50% 60%,#08080af2 35%,#0c0c10b0 60%,transparent 76%);filter:blur(6px);animation:smoke-core 3.2s ease-in-out infinite}
 .reaper-smoke i{position:absolute;translate:-50% -50%;background:var(--puffs) calc(var(--cell) * 33.333%) 0/400% 100% no-repeat;opacity:var(--o);animation:smoke-billow var(--dur) var(--delay) ease-in-out infinite alternate;will-change:transform}
 @keyframes smoke-billow{from{transform:translate(0,0) rotate(var(--r0)) scale(calc(var(--s0) * var(--flip)),var(--s0))}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r1)) scale(calc(var(--s1) * var(--flip)),var(--s1))}}
+/* The soul hangs from the hook at the back of the scythe and streams out behind Noct. */
+.noct-soul{position:absolute;z-index:1;pointer-events:none;width:78%;aspect-ratio:1;left:-46%;top:-8%;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;
+  animation:noct-soul-frames var(--soul-ms) steps(var(--fx-count),jump-none) infinite,noct-soul-trail 1.1s ease-in-out infinite;filter:drop-shadow(0 0 4px #d8ecffaa)}
+@keyframes noct-soul-frames{from{background-position:0% 0}to{background-position:100% 0}}
+@keyframes noct-soul-trail{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(7%) rotate(3deg)}}
+body.reduced-motion .noct-soul{display:none}
 @keyframes smoke-core{50%{transform:scale(1.05,.97) translateY(-2%)}}
 .reaper-wisp{position:absolute;z-index:6;pointer-events:none;background-repeat:no-repeat;background-size:400% 100%;opacity:0}
