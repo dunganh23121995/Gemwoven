@@ -66,8 +66,10 @@ function placeCombatHuds(points){
   }
   for(const [side,box] of Object.entries(boxes)){
     box.hud.style.left=box.x+'px';box.hud.style.top=box.bottom+'px';
-    // While the other actor attacks, its body passes in front of this HUD.
-    box.hud.style.zIndex=actor(side==='hero'?'enemy':'hero').classList.contains('combat-v3-acting')?'3':'';
+    // While the other actor attacks, its body passes in front of this HUD (unless the attacker
+    // keeps the foe's HUD over its effects, like Noct vanishing into his smoke).
+    const other=actor(side==='hero'?'enemy':'hero');
+    box.hud.style.zIndex=other.classList.contains('combat-v3-acting')&&!other.dataset.foeHudOver?'3':'';
   }
 }
 // Free space between the arena's outer edge and the widest opaque pose of an
