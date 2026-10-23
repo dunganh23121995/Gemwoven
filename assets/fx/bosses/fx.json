@@ -1,0 +1,122 @@
+{
+  "earth": {
+    "file": "assets/fx/bosses/earth.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire": {
+    "file": "assets/fx/bosses/fire.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice": {
+    "file": "assets/fx/bosses/ice.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning": {
+    "file": "assets/fx/bosses/lightning.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire": {
+    "file": "assets/fx/bosses/mire.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab": {
+    "file": "assets/fx/bosses/scarab.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan": {
+    "file": "assets/fx/bosses/leviathan.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus": {
+    "file": "assets/fx/bosses/colossus.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism": {
+    "file": "assets/fx/bosses/prism.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper": {
+    "file": "assets/fx/bosses/reaper.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "roc": {
+    "file": "assets/fx/bosses/roc.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar": {
+    "file": "assets/fx/bosses/briar.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph": {
+    "file": "assets/fx/bosses/seraph.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse": {
+    "file": "assets/fx/bosses/eclipse.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom": {
+    "file": "assets/fx/bosses/elderbloom.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart": {
+    "file": "assets/fx/bosses/cinderheart.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent": {
+    "file": "assets/fx/bosses/frostregent.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing": {
+    "file": "assets/fx/bosses/tempestwing.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer": {
+    "file": "assets/fx/bosses/souljailer.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather": {
+    "file": "assets/fx/bosses/sporefather.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback": {
+    "file": "assets/fx/bosses/prismback.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch": {
+    "file": "assets/fx/bosses/sandchronarch.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide": {
+    "file": "assets/fx/bosses/coraltide.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang": {
+    "file": "assets/fx/bosses/moonfang.webp",
+    "count": 6,
+    "frameDuration": 70
+  }
+}

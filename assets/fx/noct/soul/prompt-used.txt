@@ -1,0 +1,10 @@
+Create an animated VFX sprite sheet: one captured SOUL being dragged along by a grim reaper. Exactly six frames in a 3 COLUMNS x 2 ROWS grid of equal square cells, landscape 1536x1024 canvas, read left-to-right then next row. It is a seamless loop: frame 6 flows back into frame 1.
+
+The soul is a pale silver-white spectral wisp lying HORIZONTALLY across the middle of each cell. At the RIGHT end is its head: a small anguished ghostly face with two hollow black eye sockets and an open, wailing hollow black mouth, as if pulled forward by a hook. Behind the head the soul's body tapers into one long flowing ghost tail that streams to the LEFT, getting thinner toward a pointed wispy tip, like a comet tail trailing behind something moving to the right. A faint cold pale-blue glow inside the body near the head is allowed.
+
+Animation: the head stays at the same place in every frame (right of centre, vertically centred) with the same size; only the tail ripples in a travelling S-wave from head to tip (the wave crest moves leftward a little each frame), and the face strains: mouth stretching wider and narrower, head tilting very slightly. The whole soul has the same length, thickness and position in all six frames.
+
+The soul must be OPAQUE and solid-painted: a clean, crisp silhouette with solid silver-white and light grey shading (#c8ccd4 to #ffffff, shadows #8a9098), thin darker grey outline, the inner glow painted as solid pale blue (#bfe0ff), never transparent haze, no soft smoke, no mist, no semi-transparent edges, no floating particles. Strictly cold white, silver, grey and the faint pale blue only. NO purple, NO violet, NO pink, NO magenta, NO green in the effect.
+
+Clean HD painterly anime game VFX, NOT pixel art. No reaper, no scythe, no hook, no chain, no character body, no text, no labels, no borders, no grid lines, no ground, no shadow.
+Background 100% solid flat #FF00FF magenta, no gradient. Every frame stays fully inside its own cell: the soul spans about 75% of the cell width, with at least 8% magenta padding on all four sides; the tail tip never crosses a cell edge.

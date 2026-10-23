@@ -18,5 +18,10 @@
     "file": "assets/fx/noct/puffs.webp",
     "count": 4,
     "frameDuration": 0
+  },
+  "soul": {
+    "file": "assets/fx/noct/soul.webp",
+    "count": 6,
+    "frameDuration": 90
   }
 }

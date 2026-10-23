@@ -45,4 +45,22 @@ for index in range(4):
 strip.save(ROOT / "puffs.webp", "WEBP", quality=90, alpha_quality=95, method=6)
 meta["puffs"] = {"file": "assets/fx/noct/puffs.webp", "count": 4, "frameDuration": 0}
 print("[ok] puffs")
+
+
+def soul_clean(frame):
+    """The captured soul keeps its cold white and faint blue glow: fade magenta spill, then cap red at green so no pink/violet survives."""
+    a = np.asarray(frame, dtype=np.float32)
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    spill = np.minimum(r, b) - g
+    a[..., 3] *= 1 - np.clip((spill - 6) / 40, 0, 1)
+    a[..., 0] = np.minimum(r, g)
+    return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
+
+
+strip = Image.new("RGBA", (256 * 6, 256), (0, 0, 0, 0))
+for index in range(6):
+    strip.alpha_composite(soul_clean(Image.open(ROOT / "soul" / f"soul-{index + 1}.png").convert("RGBA")), (256 * index, 0))
+strip.save(ROOT / "soul.webp", "WEBP", lossless=True, method=6, exact=True)
+meta["soul"] = {"file": "assets/fx/noct/soul.webp", "count": 6, "frameDuration": 90}
+print("[ok] soul")
 (ROOT / "fx.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
