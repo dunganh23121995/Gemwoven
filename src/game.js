@@ -428,6 +428,7 @@ async function trySwap(a,b){
 function activateCore(t){return perform(async()=>{await resolveBoard('hero',makePlan(null,null,'hero',t,rand(5)));return true;});}
 function activateSkill(){
   if(state.energy<100)return;
+  if(typeof foeSilenced==='function'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');return;}
   return perform(async()=>{
     state.energy-=100;update();await heroUltimate();
     return true;
@@ -556,6 +557,8 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   get progressionEnemyEffects(){return {dot:progressionEnemyDot?{...progressionEnemyDot}:null,charge:progressionEnemyCharge};},
   configure(options){if(locked&&!$('selectDialog').open)throw Error('Wait for the current action to finish');Object.assign(state,options);if($('selectDialog').open)$('selectDialog').close();if($('resultDialog').open)$('resultDialog').close();startStage();Object.assign(state,options);plannedIntent=intent();renderActors();update();},
   setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
-  setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get creatureNames(){return progressionRules.WORLD.CREATURE_NAMES;},get chapters(){return progressionRules.WORLD.CHAPTERS;},get bossDefs(){return progressionRules.WORLD.BOSSES;}
+  setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get creatureNames(){return progressionRules.WORLD.CREATURE_NAMES;},get foeStatuses(){return foeStatuses;},get foeHaste(){return foeHaste;},resetFoeStatuses(){foeStatusReset();},tickFoeStatuses(){return tickFoeStatuses();},applyFoeStatus(s,base){return applyFoeStatus(s,base);},castReadyUltimates(){return castReadyUltimates();},foeSkills(){const o=state.qaFoeFx;if(!o)return [];const W=progressionRules.WORLD;return (o.tier==='boss'?W.BOSSES[o.boss]?.skills:o.tier==='elite'?W.ELITE_SKILLS[o.creature]:[W.COMMON_SKILL])||[];},
+  foeCast(index,base=30){const s=this.foeSkills()[index];if(!s)return;const hit=s.effects?.find(e=>e.type==='hit'||e.type==='burst'),ward=s.effects?.find(e=>e.type==='ward'),heal=s.effects?.find(e=>e.type==='heal');
+    const skill=s.effects?{name:s.name,move:s.move,ult:s.ult,kind:s.kind,power:hit?.power||0,hits:hit?.hits||1,shield:ward?.pct,heal:heal?.pct,status:s.effects.find(e=>e.type==='status')}:s;return castFoeSkill(skill,base);},get chapters(){return progressionRules.WORLD.CHAPTERS;},get bossDefs(){return progressionRules.WORLD.BOSSES;}
 };
 })();

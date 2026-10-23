@@ -40,6 +40,7 @@ async function expeditionEnemyTurn(){
     if(e.type==='cast'){
       message(progressionBattle.enemyName+' · '+e.name);popActorSkill('enemy',e.name,true,[]);setSpriteAction('enemy','cast',760);
       casting=skills.find(s=>s.name===e.name)||null;
+      if(casting?.ult)popActorSkill('enemy','TUYỆT CHIÊU',true,[]);
       if(casting?.effects?.some(x=>x.type==='ward'||x.type==='heal'))await foeSkillAura();
     }
     if(e.type==='windup'){message('Đang niệm '+e.name+'! Phá niệm trong lượt kế tiếp.');await floating('enemy','NIỆM CHIÊU','armor');}
@@ -50,10 +51,11 @@ async function expeditionEnemyTurn(){
       await floating('hero',expeditionDef.status+' −'+result.amount);
     }
     if(e.type==='hit'||e.type==='burst'){
-      if(casting&&!e.addAttack&&expeditionState.tier!=='normal')await foeSkillStrike({kind:casting.kind||(casting.effects.some(x=>x.type==='drain')?'drain':'strike')},base*e.power,e.hits||1);
+      if(casting&&!e.addAttack&&expeditionState.tier!=='normal')await foeSkillStrike({kind:casting.kind,move:casting.move},base*e.power,e.hits||1);
       else await attack('enemy',base*e.power,{hits:e.hits||1});
     }
     if(e.type==='heal')await buff('enemy','heal',Math.round(state.enemyMax*e.pct));
+    if(e.type==='status')await applyFoeStatus(e,base);
     if(e.type==='drain')state.energy=Math.max(0,state.energy-e.amount);
     if(e.type==='shatter')state.armor=Math.max(0,Math.round(state.armor*(1-e.fraction)));
     update();

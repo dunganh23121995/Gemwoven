@@ -3,21 +3,39 @@
   'use strict';
   const EXPANSION=typeof module==='object'&&module.exports?require('./boss-chapters.js'):globalThis.GemwovenBossChapters;
   const skill=(name,kind,power=1,extra={})=>({name,kind,power,...extra});
+  // Each boss fights with its own kit: three skills and a signature ultimate (ult:true), each
+  // staged with a move that suits its body (move: lunge, charge, slam, breath, volley, beam,
+  // eruption, rain, roar, tether, vanish, aura) and, for the ultimates, a status nobody else uses.
+  const st=(id,turns,value=0,target='hero')=>({id,turns,value,target});
   const BOSSES={
-    earth:{name:'Cổ Thụ Thần Vệ',element:'earth',skills:[skill('Nanh Vuốt','strike',1.1),skill('Giáp Cổ Thụ','guard',0,{shield:.1}),skill('Hút Linh Lực','drain',.75,{drain:20})]},
-    fire:{name:'Hỏa Long Tro Tàn',element:'fire',skills:[skill('Tam Liên Hỏa Tức','strike',1.25,{hits:3}),skill('Vảy Dung Nham','guard',0,{shield:.09}),skill('Tro Tàn Thiêu Đốt','burn',.8,{turns:2,dot:.22})]},
-    ice:{name:'Nữ Vương Băng Nguyệt',element:'ice',skills:[skill('Băng Thương','strike',1.15,{hits:2}),skill('Kết Giới Băng','guard',0,{shield:.12}),skill('Hàn Phong','drain',.85,{drain:25})]},
-    lightning:{name:'Lôi Vương Thiên Đỉnh',element:'lightning',skills:[skill('Ngũ Lôi','strike',1.3,{hits:5}),skill('Điện Trường','drain',.8,{drain:25}),skill('Tụ Điện','charge',.7,{charge:1.35})]},
-    mire:{name:'Mẫu Nấm Độc',element:'earth',skills:[skill('Bào Tử Độc','poison',.65,{turns:3,dot:.18}),skill('Tán Nấm Hồi Sinh','heal',0,{heal:.08}),skill('Rễ Bào Tử','drain',.95,{drain:18})]},
-    scarab:{name:'Bọ Vương Hoàng Kim',element:'fire',skills:[skill('Giáp Cát Hoàng Kim','guard',0,{shield:.15}),skill('Lưỡi Cưa Sa Mạc','pierce',1.15,{pierce:.5}),skill('Cơn Lốc Cát','strike',1.25,{hits:3})]},
-    leviathan:{name:'Hải Long San Hô',element:'ice',skills:[skill('Sóng Nghiền','strike',1.2,{hits:2}),skill('Dòng Triều Hồi Phục','heal',0,{heal:.1}),skill('Xoáy Biển Sâu','drain',.9,{drain:30})]},
-    colossus:{name:'Cự Tượng Bánh Răng',element:'lightning',skills:[skill('Nạp Lõi Hơi Nước','charge',.5,{charge:1.5}),skill('Búa Tạ Cơ Khí','strike',1.4),skill('Giáp Bánh Răng','guard',0,{shield:.13})]},
-    prism:{name:'Nữ Vương Tinh Thể',element:'ice',skills:[skill('Lăng Kính Liên Kích','strike',1.2,{hits:4}),skill('Vỏ Tinh Thể','guard',0,{shield:.1}),skill('Quang Phổ Rạn Nứt','pierce',1.1,{pierce:.65})]},
-    reaper:{name:'Tử Thần Nguyệt Ảnh',element:'ice',skills:[skill('Liềm Hồn','lifesteal',1.1,{leech:.35}),skill('Hút Hồn','drain',.9,{drain:35}),skill('Nguyệt Trảm','execute',1.1,{threshold:.4,bonus:1.5})]},
-    roc:{name:'Đại Bàng Thiên Phong',element:'lightning',skills:[skill('Phong Vũ','strike',1.2,{hits:3}),skill('Lông Vũ Hộ Thể','guard',0,{shield:.08}),skill('Lốc Cướp Linh','drain',1,{drain:20})]},
-    briar:{name:'Nữ Hoàng Gai',element:'earth',skills:[skill('Gai Độc','poison',.8,{turns:2,dot:.25}),skill('Hoa Ăn Linh','lifesteal',1,{leech:.3}),skill('Rừng Gai','guard',0,{shield:.12})]},
-    seraph:{name:'Hộ Vệ Nhật Quang',element:'fire',skills:[skill('Nhật Kiếm','pierce',1.2,{pierce:.4}),skill('Ánh Dương Tái Sinh','heal',0,{heal:.08}),skill('Hào Quang Phán Quyết','strike',1.35,{hits:3})]},
-    eclipse:{name:'Long Đế Hư Không',element:'lightning',skills:[skill('Nhật Thực','drain',1.1,{drain:30}),skill('Hư Không Phán Quyết','execute',1.15,{threshold:.35,bonus:1.6}),skill('Tinh Vân Bạo Phát','burn',1,{turns:2,dot:.3})]}
+    earth:{name:'Cổ Thụ Thần Vệ',element:'earth',skills:[skill('Nanh Vuốt','strike',1.1,{move:'lunge'}),skill('Giáp Cổ Thụ','guard',0,{shield:.1,move:'aura'}),skill('Hút Linh Lực','drain',.75,{drain:20,move:'tether'}),
+      skill('Thần Mộc Bất Tử','strike',.9,{move:'slam',heal:.06,status:st('undying',2,0,'self'),ult:true,description:'Nện đất, hồi 6% HP và bất tử 2 lượt (HP không xuống dưới 1).'})]},
+    fire:{name:'Hỏa Long Tro Tàn',element:'fire',skills:[skill('Tam Liên Hỏa Tức','strike',1.25,{hits:3,move:'breath'}),skill('Vảy Dung Nham','guard',0,{shield:.09,move:'aura'}),skill('Tro Tàn Thiêu Đốt','burn',.8,{turns:2,dot:.22,move:'lunge'}),
+      skill('Long Viêm Diệt Thế','strike',1.3,{move:'breath',status:st('dot',3,.32),ult:true,description:'Biển lửa rồng: thiêu đốt nặng suốt 3 lượt.'})]},
+    ice:{name:'Nữ Vương Băng Nguyệt',element:'ice',skills:[skill('Băng Thương','strike',1.15,{hits:2,move:'volley'}),skill('Kết Giới Băng','guard',0,{shield:.12,move:'aura'}),skill('Hàn Phong','drain',.85,{drain:25,move:'roar'}),
+      skill('Nguyệt Băng Phong Ấn','strike',1.1,{hits:3,move:'rain',status:st('stun',1),ult:true,description:'Mưa giáo băng đông cứng tướng: mất 1 lượt.'})]},
+    lightning:{name:'Lôi Vương Thiên Đỉnh',element:'lightning',skills:[skill('Ngũ Lôi','strike',1.3,{hits:5,move:'rain'}),skill('Điện Trường','drain',.8,{drain:25,move:'roar'}),skill('Tụ Điện','charge',.7,{charge:1.35,move:'lunge'}),
+      skill('Lôi Thần Quang Pháo','strike',2.2,{move:'beam',pierce:1,ult:true,description:'Tia lôi quang xuyên thủng toàn bộ giáp.'})]},
+    mire:{name:'Mẫu Nấm Độc',element:'earth',skills:[skill('Bào Tử Độc','poison',.65,{turns:3,dot:.18,move:'eruption'}),skill('Tán Nấm Hồi Sinh','heal',0,{heal:.08,move:'aura'}),skill('Rễ Bào Tử','drain',.95,{drain:18,move:'tether'}),
+      skill('Bào Tử Mê Loạn','strike',.7,{hits:4,move:'rain',status:st('confuse',2,.5),ult:true,description:'Bào tử mê hồn: 2 lượt, một nửa sát thương của tướng dội ngược vào chính mình.'})]},
+    scarab:{name:'Bọ Vương Hoàng Kim',element:'fire',skills:[skill('Giáp Cát Hoàng Kim','guard',0,{shield:.15,move:'aura'}),skill('Lưỡi Cưa Sa Mạc','pierce',1.15,{pierce:.5,move:'charge'}),skill('Cơn Lốc Cát','strike',1.25,{hits:3,move:'lunge'}),
+      skill('Lời Nguyền Pharaoh','strike',1,{move:'slam',status:st('antiheal',3),ult:true,description:'Ấn nguyền cát vàng: tướng không thể hồi máu trong 3 lượt.'})]},
+    leviathan:{name:'Hải Long San Hô',element:'ice',skills:[skill('Sóng Nghiền','strike',1.2,{hits:2,move:'lunge'}),skill('Dòng Triều Hồi Phục','heal',0,{heal:.1,move:'aura'}),skill('Xoáy Biển Sâu','drain',.9,{drain:30,move:'eruption'}),
+      skill('Hải Triều Tái Sinh','heal',0,{heal:.22,shield:.06,move:'aura',ult:true,description:'Triều cường hồi 22% HP và dựng lá chắn 6%.'})]},
+    colossus:{name:'Cự Tượng Bánh Răng',element:'lightning',skills:[skill('Nạp Lõi Hơi Nước','charge',.5,{charge:1.5,move:'roar'}),skill('Búa Tạ Cơ Khí','strike',1.4,{move:'lunge'}),skill('Giáp Bánh Răng','guard',0,{shield:.13,move:'aura'}),
+      skill('Trọng Chùy Phá Giáp','strike',1.4,{move:'slam',shatter:1,status:st('vulnerable',3,.3),ult:true,description:'Đập nát toàn bộ giáp; tướng nhận thêm 30% sát thương trong 3 lượt.'})]},
+    prism:{name:'Nữ Vương Tinh Thể',element:'ice',skills:[skill('Lăng Kính Liên Kích','strike',1.2,{hits:4,move:'volley'}),skill('Vỏ Tinh Thể','guard',0,{shield:.1,move:'aura'}),skill('Quang Phổ Rạn Nứt','pierce',1.1,{pierce:.65,move:'beam'}),
+      skill('Lăng Kính Suy Nhược','strike',.9,{move:'eruption',status:st('weaken',3,.4),ult:true,description:'Lăng kính bẻ cong sức mạnh: sát thương của tướng giảm 40% trong 3 lượt.'})]},
+    reaper:{name:'Tử Thần Nguyệt Ảnh',element:'ice',skills:[skill('Liềm Hồn','lifesteal',1.1,{leech:.35,move:'lunge'}),skill('Hút Hồn','drain',.9,{drain:35,move:'tether'}),skill('Nguyệt Trảm','execute',1.1,{threshold:.4,bonus:1.5,move:'charge'}),
+      skill('Ảnh Hồn Tiêu Biến','strike',.8,{move:'vanish',status:st('stealth',1,0,'self'),ult:true,description:'Tan vào bóng trăng: mọi đòn đánh trượt trong lượt tới.'})]},
+    roc:{name:'Đại Bàng Thiên Phong',element:'lightning',skills:[skill('Phong Vũ','strike',1.2,{hits:3,move:'volley'}),skill('Lông Vũ Hộ Thể','guard',0,{shield:.08,move:'aura'}),skill('Lốc Cướp Linh','drain',1,{drain:20,move:'roar'}),
+      skill('Đại Bàng Bổ Nhào','drain',1.8,{drain:100,move:'charge',ult:true,description:'Bổ nhào từ trời cao, cuốn sạch năng lượng của tướng.'})]},
+    briar:{name:'Nữ Hoàng Gai',element:'earth',skills:[skill('Gai Độc','poison',.8,{turns:2,dot:.25,move:'eruption'}),skill('Hoa Ăn Linh','lifesteal',1,{leech:.3,move:'tether'}),skill('Rừng Gai','guard',0,{shield:.12,move:'aura'}),
+      skill('Vương Miện Gai Phản','strike',.6,{move:'eruption',status:st('reflect',2,.35,'self'),ult:true,description:'Vương miện gai: 2 lượt, 35% sát thương tướng gây ra bị dội ngược.'})]},
+    seraph:{name:'Hộ Vệ Nhật Quang',element:'fire',skills:[skill('Nhật Kiếm','pierce',1.2,{pierce:.4,move:'lunge'}),skill('Ánh Dương Tái Sinh','heal',0,{heal:.08,move:'aura'}),skill('Hào Quang Phán Quyết','strike',1.35,{hits:3,move:'rain'}),
+      skill('Phong Ấn Thánh Quang','strike',1.1,{move:'beam',status:st('silence',2),ult:true,description:'Thánh quang phong ấn: tướng không thể dùng tuyệt kỹ trong 2 lượt.'})]},
+    eclipse:{name:'Long Đế Hư Không',element:'lightning',skills:[skill('Nhật Thực','drain',1.1,{drain:30,move:'roar'}),skill('Hư Không Phán Quyết','execute',1.15,{threshold:.35,bonus:1.6,move:'beam'}),skill('Tinh Vân Bạo Phát','burn',1,{turns:2,dot:.3,move:'breath'}),
+      skill('Hố Đen Nuốt Chửng','strike',1.2,{move:'tether',status:st('haste',1,0,'self'),ult:true,description:'Hố đen kéo tướng lại gần; Long Đế hành động thêm một lượt.'})]}
   };
   // Each chapter belongs to one boss; ordinary foes take turns stage by stage, the two
   // humanoid elites alternate on stages 5, 10, ... 45 and the boss holds stage 50.
@@ -104,11 +122,14 @@
     'moonkeep-lunarknight':[['Nguyệt Kiếm','strike',.9,{hits:2}],['Giáp Trăng Bạc','guard',0,{shield:.06}]],
     'moonkeep-eclipsehuntress':[['Song Dao Lưỡi Liềm','strike',.8,{hits:4}],['Vết Cắn Nhật Thực','lifesteal',.8,{leech:.2}]]
   }).map(([id,list])=>[id,list.map(([name,kind,power,extra])=>skill(name,kind,power,extra))]));
+  // How each elite skill is staged: knights lunge, charge or slam; archers and mages cast.
+  const ELITE_MOVES={'forest-rootknight':'lunge aura','forest-leafarcher':'volley volley','volcano-flamelancer':'charge aura','volcano-ashcultist':'eruption tether','ice-frostguard':'lunge aura','ice-snowwitch':'roar aura','thunder-stormblade':'lunge roar','thunder-sparkmage':'rain tether','marsh-bogstalker':'charge eruption','marsh-sporewitch':'rain aura','desert-scarabguard':'lunge aura','desert-sandpriest':'tether aura','abyss-reefcorsair':'lunge tether','abyss-tidecaller':'volley aura','foundry-gearknight':'slam aura','foundry-tinkerer':'lunge aura','crystal-shardblade':'charge aura','crystal-gemsage':'volley tether','haunted-gravewarden':'slam tether','haunted-bonepaladin':'lunge aura','sky-windknight':'charge aura','sky-cloudmonk':'lunge aura','thorns-briarduelist':'lunge tether','thorns-vinehexer':'eruption aura','celestial-sunpaladin':'lunge aura','celestial-dawncleric':'eruption aura','void-voidknight':'slam aura','void-starseer':'rain tether','eldergrove-rootwarden':'tether aura','eldergrove-blossomranger':'lunge eruption','caldera-basaltbrute':'lunge aura','caldera-furnacepriest':'eruption aura','glacier-rimeknight':'lunge aura','glacier-blizzardmage':'rain roar','stormspire-voltlancer':'charge roar','stormspire-stormshaman':'rain tether','soulcrypt-cagekeeper':'tether aura','soulcrypt-veilassassin':'lunge vanish','mycelium-plagueherald':'eruption roar','mycelium-mycoknight':'slam aura','geode-rampartgolem':'slam aura','geode-prismseer':'beam aura','hourglass-dunesentinel':'lunge aura','hourglass-chronoweaver':'tether roar','coralreef-tidemarshal':'lunge aura','coralreef-coraloracle':'tether aura','moonkeep-lunarknight':'lunge aura','moonkeep-eclipsehuntress':'lunge tether'};
+  for(const [id,list] of Object.entries(ELITE_SKILLS))ELITE_MOVES[id].split(' ').forEach((move,i)=>{list[i].move=move;});
   // The same skills as phase-fight effects (expansion chapters run on boss-tactics.js).
   function tacticalSkill(s){
     const hit={type:'hit',power:s.power,hits:s.hits||1},effects={guard:[{type:'ward',pct:s.shield}],heal:[{type:'heal',pct:s.heal}],drain:[{type:'drain',amount:s.drain},hit],
       burn:[hit,{type:'stack',count:1}],poison:[hit,{type:'stack',count:1}],pierce:[{type:'shatter',fraction:s.pierce*.5},hit],lifesteal:[hit,{type:'heal',pct:.02}]}[s.kind]||[hit];
-    return {name:s.name,kind:s.kind,effects};
+    return {name:s.name,kind:s.kind,move:s.move,ult:s.ult,effects};
   }
   const chapterForStage=n=>CHAPTERS[Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((n-1)/50)))];
   const SHOP=[

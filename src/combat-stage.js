@@ -154,6 +154,7 @@ async function castReadyUltimates(){
     if(state.hp<=0||state.enemyHp<=0)return;
     if(side==='enemy'&&state.noriStunTurns>0)continue;
     const key=side==='hero'?'energy':'enemyEnergy';if(state[key]<100)continue;
+    if(side==='hero'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');continue;}
     state[key]-=100;update();
     if(side==='hero')await heroUltimate();else await enemySkill({reserved:true});
   }

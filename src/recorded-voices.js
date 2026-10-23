@@ -21,6 +21,14 @@ function stopCombatVoices(){
   activeVoices.clear();
   for(const side of ['hero','enemy'])delete actor(side).dataset.voiceClip;
 }
+// A campaign boss or elite speaks with its own cast voice; anything else falls back to the
+// element's creature (or boss) voice.
+function foeVoiceFamily(key){
+  const battle=typeof progressionBattle!=='undefined'?progressionBattle:null,cast=ART.voiceCasting||{};
+  const owner=state.qaFoeFx||{boss:battle?.bossId,tier:battle?.tier};
+  const own=state.boss?cast.bosses?.[owner.boss]:owner.tier==='elite'?cast.elites?.[battle?.creature||state.qaFoeFx?.creature]:null;
+  return own&&ART.voices[own+'-attack1']?own:(state.boss?'boss-':'creature-')+key;
+}
 async function combatVoice(side,kind='attack'){
   const death=side==='enemy'&&kind==='death';
   if(death){
@@ -33,7 +41,7 @@ async function combatVoice(side,kind='attack'){
   }else if(side==='enemy'&&state.enemyHp<=0)return false;
   const context=combatV3AudioContext();if(!context||activeVoices.has(side))return false;
   const key=side==='hero'?state.key:state.enemyKey,monster=side==='enemy';
-  const family=monster?(state.boss?'boss-':'creature-')+key:{fire:'mika',earth:'nori',ice:'yuki',lightning:'lumi',shadow:'noct'}[key];
+  const family=monster?foeVoiceFamily(key):{fire:'mika',earth:'nori',ice:'yuki',lightning:'lumi',shadow:'noct'}[key];
   const variantKey=family+kind,index=voiceVariants.get(variantKey)||0;
   const id=family+'-'+kind+(['attack','hurt'].includes(kind)?index%3+1:'');
   const entry={epoch:voiceEpoch,id,source:null};activeVoices.set(side,entry);

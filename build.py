@@ -59,6 +59,10 @@ voice_manifest.update(json.loads((root/'assets/audio/noct-manifest.json').read_t
 voice_manifest.update(json.loads((root/'assets/audio/cast-voice-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/boss-voice-manifest.json').read_text(encoding='utf-8')))
 art['voices']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in voice_manifest.items()}
+# Which voice each boss and elite speaks with (assets/audio/voice-casting.json): humans with a
+# clear gender get male/female voices, monsters get their own creature recordings.
+casting=json.loads((root/'assets/audio/voice-casting.json').read_text(encoding='utf-8'))
+art['voiceCasting']={group:{key:entry['family'] for key,entry in casting[group].items()} for group in ['bosses','elites']}
 noct_sfx=json.loads((root/'assets/audio/noct-sfx-manifest.json').read_text(encoding='utf-8'))
 art['noctSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in noct_sfx.items()}
 cast_sfx=json.loads((root/'assets/audio/cast-sfx-manifest.json').read_text(encoding='utf-8'))
@@ -153,14 +157,18 @@ for name in ['boss-expansion-a','boss-expansion-b']:
     for key,data in json.loads(path.read_text(encoding='utf-8'))['bosses'].items():
         art['worldBosses'][key]={action:{**data[action],'src':image(data[action]['src'] if data[action]['src'].startswith('assets/') else 'assets/gemwoven/'+data[action]['src'])} for action in ['idle','cast','attack','hurt']}
 
+# The foes the campaign actually fields (world.js), so retired creatures are not embedded.
+campaign_foes=json.loads(subprocess.run(['node','-e',"const W=require('./src/gemwoven/world.js');console.log(JSON.stringify({foes:W.CHAPTERS.flatMap(c=>[...c.ordinary,...c.elites]),guards:W.EXPANSION.definitions.map(d=>d.theme)}))"],cwd=root,capture_output=True,text=True,check=True).stdout)
 # Humanoid elites (assets/gemwoven/elites/<id>/): a stabilized 8-frame idle (2x4, 256px cells);
 # their strikes hold the first idle pose, since combat supplies the lunge and recoil.
 for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
     idle={'src':image(folder),'cols':2,'rows':4,'count':8,'frameDuration':150,'heads':[[128,48]]*8}
     still={**idle,'count':1,'heads':[[128,48]]}
+    # Only expansion bosses summon their elites as guards (the HUD shows their portraits).
     master=folder.with_name('master.png')
     if not master.exists():master=root/f'assets/gemwoven/items/creature-{folder.parent.name}.png'
-    art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if master.exists() else ''}
+    guard=folder.parent.name.split('-')[0] in campaign_foes['guards']
+    art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if guard and master.exists() else ''}
 # A new elite whose idle is not drawn yet stands as its master painting.
 for master in sorted((root/'assets/gemwoven/elites').glob('*/master.png')):
     if not master.with_name('idle.webp').exists():
@@ -245,6 +253,7 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     art['heroForms'][data['hero']]=forms
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
+for retired in [k for k in art['campaignCreatures'] if k not in campaign_foes['foes']]:del art['campaignCreatures'][retired]
 def creature_sheets():
     for entry in art['campaignCreatures'].values():yield from ([entry['idle'],entry['still']] if 'idle' in entry else [entry])
 for sheet in creature_sheets():register_feet(sheet)

@@ -46,6 +46,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
       <button data-do="depart">Bay rời màn</button>
       <button data-do="hit">Bị đánh (thử hoá mờ)</button>
     </div>
+    <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button></div>
     <div class="row" style="margin-top:8px">
       <label>Đối thủ <select id="enemy"></select></label>
       <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
@@ -78,11 +79,12 @@ function enemy(){
     // Like a campaign boss stage: the chapter's element key, its world-boss sheet when it has one.
     const [,chapter]=id.split(':'),ch=gq().chapters.find(c=>c.id===chapter),key=ch.element,world=art.worldBosses?.[ch.boss];
     art.bosses[key]=world||originalMob.bosses[key];gq().monsters[key].boss=gq().bossDefs[ch.boss]?.name||ch.boss;
-    return {stage:5,enemyKey:key,qaElite:false,qaBossArt:world?ch.boss:'base'};
+    return {stage:5,enemyKey:key,qaElite:false,qaBossArt:world?ch.boss:'base',qaFoeFx:{boss:ch.boss,tier:'boss'}};
   }
   art.enemies.fire=originalMob.art;
   const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire=c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
-  return {stage:4,enemyKey:'fire',qaElite:tier==='elite',qaBossArt:''};
+  const home=gq().chapters.find(c=>(c.elites||[]).includes(key)||(c.ordinary||c.creatures||[]).includes(key));
+  return {stage:4,enemyKey:'fire',qaElite:tier==='elite',qaBossArt:'',qaFoeFx:{boss:home?.boss,tier,creature:key}};
 }
 // Grouped as the campaign uses them: each chapter's ordinary creatures and its larger elites.
 function fillEnemies(){
@@ -103,7 +105,7 @@ function fillEnemies(){
 }
 function configure(){
   gq().configure({key:'shadow',form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
-  gq().setReduced(!$('fx').checked);loadSheets();
+  gq().setReduced(!$('fx').checked);loadSheets();fillFoeSkills();
 }
 async function boot(){
   say('Đang tải game…');
@@ -129,6 +131,11 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     say('Xong: '+b.textContent);
   }catch(e){say('Lỗi: '+e.message);}
 });
+// The selected foe's own skills, cast exactly as in a battle (move, effect, statuses).
+function fillFoeSkills(){const q=gq();if(!q)return;$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.move||'vồ')+(s.status?' · '+s.status.id:'');return o;}));}
+$('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').selectedOptions[0];say('Đang chạy: '+(o?.textContent||''));
+  const index=+$('foeSkill').value,label=o?.textContent||'';
+  try{configure();$('foeSkill').value=index;await q.foeCast(index);say('Xong: '+label);}catch(e){say('Lỗi: '+e.message);}};
 function loadSheets(){
   const art=gq().art;
   sheets=form===1?art.heroes.shadow:art.heroForms.shadow[String(form)];

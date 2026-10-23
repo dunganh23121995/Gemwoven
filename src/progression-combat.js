@@ -56,7 +56,7 @@ function progressionShowGain(side,kind,amount){
 }
 function progressionIsDuel(){return progressionBattle?.mode==='duel';}
 function progressionRecordTurn(){if(progressionBattle?.mode==='campaign')progressionTurn++;}
-function progressionEnergyMultiplier(key){return progressionKit(key).energy;}
+function progressionEnergyMultiplier(key){return progressionKit(key).energy*(typeof foeHas==='function'&&foeHas('chill')?1-foeStatuses.chill.value:1);}
 function progressionSwordFactor(key){return progressionKit(key).sword;}
 if(progressionBattle)HEROES[progressionBattle.hero].hp=progressionBattle.stats.hp;
 
@@ -160,21 +160,25 @@ enemyAction=async function(){
     await opponentBoardTurn();await castReadyUltimates();plannedIntent=intent();return;
   }
   // While veiled, undo every harmful change the enemy turn makes (drain, new damage-over-time, freeze).
-  const veiled=progressionVeil>0,guard={energy:state.energy,dot:progressionEnemyDot};
+  const veiled=progressionVeil>0,guard={energy:state.energy,dot:progressionEnemyDot,statuses:Object.fromEntries(Object.entries(foeStatuses).map(([id,s])=>[id,{...s}]))};
   try{await progressionEnemyTurn();}finally{
     if(veiled){
       if(state.energy<guard.energy)state.energy=guard.energy;
       if(progressionEnemyDot&&progressionEnemyDot!==guard.dot)progressionEnemyDot=guard.dot?.turns>0?guard.dot:null;
       state.playerFrozen=false;
+      for(const id of Object.keys(foeStatuses))if(FOE_STATUS[id]?.side==='hero'){if(guard.statuses[id])foeStatuses[id]=guard.statuses[id];else delete foeStatuses[id];}
       if(--progressionVeil<=0){progressionVeil=0;delete actor('hero').dataset.veiled;}
       update();
     }
   }
 };
 async function progressionEnemyTurn(){
+  await tickFoeStatuses();if(state.hp<=0||state.enemyHp<=0)return;
   if(progressionDot?.turns>0&&state.enemyHp>0){progressionDot.turns--;const amount=progressionDot.amount;if(!progressionDot.turns)progressionDot=null;await progressionShowResult('enemy',applyCombatDamage('enemy',amount),'Thiêu đốt');}
   if(progressionEnemyDot&&state.hp>0){const dot=progressionEnemyDot;const result=damage('enemy',dot.raw);await progressionShowResult('hero',result,dot.name);if(--dot.turns<=0)progressionEnemyDot=null;if(state.hp<=0)return;}
-  if(progressionBattle?.tactical&&typeof expeditionEnemyTurn==='function')await expeditionEnemyTurn();else await progressionOriginalEnemy();
+  const act=()=>progressionBattle?.tactical&&typeof expeditionEnemyTurn==='function'?expeditionEnemyTurn():progressionOriginalEnemy();
+  await act();
+  while(foeHaste>0&&state.hp>0&&state.enemyHp>0){foeHaste--;message((progressionBattle?.enemyName||'Địch')+' hành động thêm một lượt!');await act();}
   if(!progressionBattle)return;
   const s=progressionBattle.stats;
   if(state.playerFrozen&&s.affixes.includes('steadfast')&&Math.random()<.25){state.playerFrozen=false;message('Bất động · Kháng mất lượt.');}
@@ -226,20 +230,13 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
     if(progressionBattle?.tactical)return;
     if(!progressionBattle||!['campaign','boss'].includes(progressionBattle.mode))return campaignSkill({reserved});
     if(!reserved)state.enemyEnergy=0;
-    const phase=progressionBossCast++%battle.skills.length,name=battle.skills[phase];message(battle.enemyName+' dùng '+name);popActorSkill('enemy',name,true,[]);
+    const phase=progressionBossCast++%battle.skills.length;
     // Flat skill base: level scaling lives only in enemyAttack (progression.js).
     const skill=battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
-    if(!skill){if(battle.tier==='elite'&&phase===1)await buff('enemy','armor',Math.round(state.enemyMax*.04));else await attack('enemy',base);}
-    else if(skill.kind==='guard'){await foeSkillAura();await buff('enemy','armor',Math.round(state.enemyMax*skill.shield));}
-    else if(skill.kind==='heal'){await foeSkillAura();await buff('enemy','heal',Math.round(state.enemyMax*skill.heal));}
+    if(!skill){const name=battle.skills[phase];message(battle.enemyName+' dùng '+name);popActorSkill('enemy',name,true,[]);await attack('enemy',base);}
     else{
-      if(skill.drain)state.energy=Math.max(0,state.energy-skill.drain);
-      let raw=base*(skill.power||1)*progressionEnemyCharge;progressionEnemyCharge=1;
-      if(skill.kind==='execute'&&state.hp/HEROES[state.key].hp<skill.threshold)raw*=skill.bonus;
-      const reservedArmor=skill.pierce?Math.floor(state.armor*skill.pierce):0;state.armor-=reservedArmor;
-      const previous=state.hp;
-      try{await foeSkillStrike(skill,raw,skill.hits||1);}finally{state.armor+=reservedArmor;}
-      if(skill.leech&&previous>state.hp)await buff('enemy','heal',Math.round((previous-state.hp)*skill.leech));
+      const charge=progressionEnemyCharge;progressionEnemyCharge=1;
+      await castFoeSkill(skill,base,{charge});
       if(skill.kind==='burn'||skill.kind==='poison')progressionEnemyDot={name:skill.kind==='burn'?'Thiêu đốt':'Độc',turns:skill.turns,raw:base*skill.dot};
       if(skill.charge)progressionEnemyCharge=skill.charge;
     }

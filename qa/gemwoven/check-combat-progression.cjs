@@ -54,11 +54,12 @@ async function run(hero,mode='campaign',index=1){
   if(encounter.creature)assert.equal(qa.spriteInfo('enemy',encounter.enemyKey,'idle').count,qa.art.campaignCreatures[encounter.creature]?.idle?8:1,'Campaign foes are rendered in combat (elites with their 8-frame idle): '+encounter.creature);
   if(encounter.boss&&index===50){qa.state.hp=10000;qa.state.energy=50;qa.state.enemyArmor=0;for(let i=0;i<3;i++)await qa.enemySkill({reserved:true});assert.ok(qa.state.enemyArmor>0,'Boss uses its armor skill');assert.equal(qa.state.energy,30,'Boss uses its energy-drain skill');assert.ok(qa.state.hp<10000,'Boss also uses a damaging skill');qa.state.hp=encounter.stats.hp;qa.state.enemyArmor=0;}
   if(mode==='boss'&&!encounter.tactical){
-    assert.ok(encounter.skillSet.length===3);for(const skill of encounter.skillSet){qa.state.hp=10000;qa.state.enemyHp=5000;qa.state.enemyMax=10000;qa.state.energy=100;qa.state.armor=0;qa.state.enemyArmor=0;await qa.enemySkill({reserved:true});
+    assert.ok(encounter.skillSet.length===4&&encounter.skillSet[3].ult,'Three skills and a signature ultimate');for(const skill of encounter.skillSet){qa.resetFoeStatuses();qa.state.hp=10000;qa.state.enemyHp=5000;qa.state.enemyMax=10000;qa.state.energy=100;qa.state.armor=0;qa.state.enemyArmor=0;await qa.enemySkill({reserved:true});
       if(skill.kind==='guard')assert.ok(qa.state.enemyArmor>0,'Guard creates real armor');
       else if(skill.kind==='heal')assert.ok(qa.state.enemyHp>5000,'Healing restores actual HP');
       else {assert.ok(qa.state.hp<10000,'Boss attack reaches saved HP');if(skill.drain)assert.equal(qa.state.energy,100-skill.drain);if(skill.leech)assert.ok(qa.state.enemyHp>5000);if(skill.dot)assert.ok(qa.progressionEnemyEffects.dot?.turns>0);if(skill.charge)assert.ok(qa.progressionEnemyEffects.charge>1);}
-    }qa.state.hp=encounter.stats.hp;qa.state.enemyHp=10000;qa.state.enemyMax=10000;qa.state.armor=0;qa.state.enemyArmor=0;
+      if(skill.status){const s=skill.status;if(s.id==='stun')assert.equal(qa.state.playerFrozen,true,'Stun costs the hero a turn');else if(s.id==='haste')assert.ok(qa.foeHaste>0);else assert.ok(qa.foeStatuses[s.id]?.turns===s.turns,`${skill.name} lays ${s.id}`);qa.state.playerFrozen=false;}
+    }qa.resetFoeStatuses();qa.state.hp=encounter.stats.hp;qa.state.enemyHp=10000;qa.state.enemyMax=10000;qa.state.armor=0;qa.state.enemyArmor=0;
   }
   if(encounter.tactical&&encounter.boss){
     assert.equal(qa.spriteInfo('enemy',encounter.enemyKey,'idle').count,4,'New boss uses authored animation instead of the legacy boss');
@@ -109,6 +110,19 @@ if(hero==='earth'){assert.equal(qa.state.noriStunTurns,2);assert.ok(qa.state.arm
   if(hero!=='earth'&&!(qa.expedition?.ward>0)){const keep=qa.state.enemyHp;qa.state.enemyArmor=0;qa.state.enemyHp=5;const over=qa.damage('hero',100000);assert.equal(over.amount,5,'Overkill numbers show only the HP that remained');qa.state.enemyHp=keep;}
   qa.state.enemyHp=0;await qa.finishBattle();const rewardSave=JSON.parse(w.localStorage.getItem(M.KEY));assert.equal(rewardSave.campaign.cleared,mode==='campaign'?index:0);if(mode==='campaign')assert.equal(rewardSave.campaign.stars[index],3);assert.equal(rewardSave.pending,null);assert.equal(rewardSave.wallet.gems,0);
   const gold=rewardSave.wallet.gold;await qa.finishBattle();assert.equal(JSON.parse(w.localStorage.getItem(M.KEY)).wallet.gold,gold,'Result cannot grant twice');
+  if(hero==='fire'&&mode==='campaign'&&index===1){ // Foe statuses change the real rules, then expire.
+    qa.resetFoeStatuses();qa.state.enemyArmor=0;qa.state.armor=0;qa.state.enemyHp=qa.state.enemyMax=100000;qa.state.hp=1000;
+    const plain=qa.damage('hero',100).amount;qa.state.enemyHp=100000;
+    await qa.applyFoeStatus({id:'weaken',turns:2,value:.5});assert.ok(Math.abs(qa.damage('hero',100).amount-plain/2)<=1,'Weaken halves hero damage');
+    await qa.applyFoeStatus({id:'stealth',turns:1,target:'self'});assert.equal(qa.damage('hero',100).amount,0,'Stealth makes hero attacks miss');
+    await qa.tickFoeStatuses();assert.equal(qa.foeStatuses.stealth,undefined,'One-turn stealth ends at the next foe turn');assert.equal(qa.foeStatuses.weaken.turns,1);
+    qa.resetFoeStatuses();await qa.applyFoeStatus({id:'undying',turns:2,target:'self'});qa.state.enemyHp=50;qa.damage('hero',100000);assert.equal(qa.state.enemyHp,1,'Undying keeps the foe at 1 HP');
+    qa.resetFoeStatuses();qa.state.hp=500;await qa.applyFoeStatus({id:'antiheal',turns:3});assert.equal(await qa.buff('hero','heal',100),0,'Anti-heal blocks healing');
+    qa.resetFoeStatuses();await qa.applyFoeStatus({id:'silence',turns:2});qa.state.energy=100;await qa.castReadyUltimates();assert.equal(qa.state.energy,100,'Silence keeps the ultimate from firing');
+    qa.resetFoeStatuses();qa.state.hp=1000;await qa.applyFoeStatus({id:'dot',turns:2,value:.5},40);await qa.tickFoeStatuses();assert.ok(qa.state.hp<1000,'Damage over time ticks at the foe turn');
+    qa.resetFoeStatuses();qa.state.hp=1000;qa.state.enemyHp=100000;await qa.applyFoeStatus({id:'confuse',turns:2,value:.5});const hit=qa.damage('hero',100).amount;assert.ok(qa.state.hp<1000&&hit>0,'Confusion turns part of the hero damage back on the hero');
+    qa.resetFoeStatuses();
+  }
   assert.deepEqual(errors,[]);w.close();return hero+':'+mode+':'+index;
 }
 // Enemy pressure has a single linear scaling and stays survivable on deep endless floors.

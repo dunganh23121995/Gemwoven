@@ -27,6 +27,7 @@
       if(e.type==='heal')events.push({type:'heal',pct:e.pct*scale*(1-r)});
       if(e.type==='drain')events.push({type:'drain',amount:Math.ceil(e.amount*scale*(1-r))});
       if(e.type==='shatter')events.push({type:'shatter',fraction:def.mechanic==='heat'&&t.rank===4?0:e.fraction*(1-r)});
+      if(e.type==='status')events.push({...e});
       if(e.type==='adds'&&t.tier==='boss'&&t.addLock===0&&t.addHp===0){t.addCount=2;t.addMax=t.bossMax*.08*(1-r*.25);t.addHp=t.addMax;}
     }
     return events;

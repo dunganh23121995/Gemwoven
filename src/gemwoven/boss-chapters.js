@@ -45,6 +45,24 @@
       eliteLessons:['Ghép Tuyết soi ấn, đánh giáp để lộ bản thể.','Không dồn tuyệt kỹ khi hai ảnh lang còn che chắn.'],
       skills:[skill('Nguyệt Kiếm Tam Trảm',1,'Ba trảm tổng 120%, thêm Nguyệt Ấn.',[hit(1.2,3),stack()]),skill('Giáp Tử Nguyệt',1,'Lá chắn 8%, hút 15 năng lượng.',[ward(.08),drain(15)]),skill('Song Ảnh Lang',1,'Hai ảnh lang chia sát thương cho bản thể.',[adds()]),skill('Kiếm Ảnh Truy Hồn',2,'Phá 35% giáp, ba nhát tổng 145%.',[{type:'shatter',fraction:.35},hit(1.45,3),stack()]),skill('Trăng Máu Hút Sinh',2,'Gây 105%, hồi 4% và thêm hai Nguyệt Ấn.',[hit(1.05),heal(.04),stack(2)]),skill('Tử Nguyệt Chung Kiếm',3,'Niệm một lượt; 205% cộng sức mạnh Nguyệt Ấn. Có thể phá niệm hoặc dựng giáp chịu đòn.',[burst(2.05)],{channel:true})]}
   ];
+  // Staging and signature ultimate of every expansion boss: each skill names a move that suits
+  // the boss's body, and the phase-3 ultimate adds a status no other boss uses.
+  const STAGING={
+    elderbloom:{moves:'lunge aura roar tether aura slam',status:{id:'regen',turns:3,value:.05,target:'self'},note:'Tái sinh 5% HP mỗi lượt trong 3 lượt.'},
+    cinderheart:{moves:'lunge aura roar slam rain eruption',status:{id:'armorlock',turns:3},note:'Giáp của tướng tan chảy: không thể tăng giáp trong 3 lượt.'},
+    frostregent:{moves:'volley aura roar beam rain eruption',status:{id:'chill',turns:3,value:.5},note:'Hàn ấn: tướng chỉ nhận một nửa năng lượng trong 3 lượt.'},
+    tempestwing:{moves:'lunge aura roar charge tether rain',status:{id:'mark',turns:2,value:.18},note:'Ấn sấm: sau 2 lượt nổ tung, gây 18% HP tối đa của tướng.'},
+    souljailer:{moves:'lunge aura roar tether eruption vanish',status:{id:'curse',turns:3,value:.22},note:'Nguyền rủa tăng dần: mỗi lượt sát thương mạnh hơn.'},
+    sporefather:{moves:'slam aura roar rain tether eruption',status:{id:'blind',turns:2,value:.5},note:'Bào tử che mắt: đòn của tướng trượt 50% trong 2 lượt.'},
+    prismback:{moves:'slam aura roar beam roar eruption',status:{id:'invulnerable',turns:1,target:'self'},note:'Thành lũy tuyệt đối: miễn mọi sát thương trong lượt tới.'},
+    sandchronarch:{moves:'volley aura roar aura tether beam',status:{id:'rewind',turns:1,value:.6,target:'self'},note:'Nghịch thời: hồi lại 60% máu đã mất kể từ lần nghịch thời trước.'},
+    coraltide:{moves:'lunge aura roar tether aura breath',status:{id:'wash',turns:1},note:'Hải triều cuốn trôi toàn bộ giáp và năng lượng của tướng.'},
+    moonfang:{moves:'lunge aura roar vanish lunge charge',status:{id:'frenzy',turns:3,value:.5,target:'self'},note:'Cuồng huyết: hút 50% sát thương gây ra thành máu trong 3 lượt.'}
+  };
+  for(const d of definitions){
+    const s=STAGING[d.id];s.moves.split(' ').forEach((move,i)=>{d.skills[i].move=move;});
+    const ult=d.skills[5];ult.ult=true;ult.effects.push({type:'status',...s.status});ult.description+=' '+s.note;
+  }
   definitions.forEach((d,i)=>{d.chapter=15+i;d.counterKey='artifact-'+d.theme;d.artifactRanks=[0,.35,.5,.65,.8];d.eliteMilestones=[10,20,30,40];d.phaseNames=['Thức Tỉnh','Biến Chuyển','Cuồng Nộ'];});
   return {definitions,byId:Object.fromEntries(definitions.map(d=>[d.id,d])),byTheme:Object.fromEntries(definitions.map(d=>[d.theme,d]))};
 });

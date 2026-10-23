@@ -53,7 +53,7 @@ for(let i=1;i<=25;i++){const b=boss.engine.begin('boss',1);const r=boss.engine.s
 assert.equal(firstBoss.gold,1330);assert.equal(lastBoss.gold,332);assert.equal(lastBoss.seals,0);assert.ok(boss.engine.read().daily.seals<=1600);assert.equal(boss.engine.read().boss.best,1);
 const duel=boss.engine.begin('duel',1);assert.equal(duel.stats.hp,290);assert.deepEqual(duel.stats.affixes,[]);const beforeDuel=boss.engine.read().wallet.gold;boss.engine.settle(duel.token,true,290);assert.equal(boss.engine.read().wallet.gold,beforeDuel);
 const journey=fixture(),j=journey.engine;
-assert.equal(M.encounter('campaign',1).tier,'normal');assert.equal(M.encounter('campaign',10).tier,'elite');assert.equal(M.encounter('campaign',20).tier,'elite');assert.equal(M.encounter('campaign',50).tier,'boss');assert.equal(M.encounter('campaign',50).skills.length,3);
+assert.equal(M.encounter('campaign',1).tier,'normal');assert.equal(M.encounter('campaign',10).tier,'elite');assert.equal(M.encounter('campaign',20).tier,'elite');assert.equal(M.encounter('campaign',50).tier,'boss');assert.equal(M.encounter('campaign',50).skills.length,4);assert.ok(M.encounter('campaign',50).skillSet[3].ult,'Every boss has a signature ultimate');
 assert.equal(M.stageStars(M.encounter('campaign',1),true,{hpRatio:.8,turns:12}),3);assert.equal(M.stageStars(M.encounter('campaign',1),true,{hpRatio:.8,turns:13}),2);assert.equal(M.stageStars(M.encounter('campaign',1),true,{hpRatio:.49,turns:3}),1);assert.equal(M.stageStars(M.encounter('campaign',1),false,{hpRatio:1,turns:1}),0);
 assert.throws(()=>j.claimChapter(1,10));
 for(let i=1;i<=50;i++){const b=j.begin('campaign',i);j.settle(b.token,true,100,{hpRatio:.8,turns:3});}
