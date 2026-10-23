@@ -141,7 +141,7 @@ function reaperFx(name,point,size,{rotate=0,flip=1,loop=false}={}){
   return node;
 }
 // A cut parts every fog layer along the blade's line for a moment, then the fog closes again.
-const FOGCUT_BASE=-38;// the fogcut sheet is drawn lower-left to upper-right
+const FOGCUT_BASE=-28;// chord of the fogcut crescent, drawn lower-left up to the right
 // Volumetric smoke: dozens of soft photographic puffs (assets/fx/noct/puffs) layered over a dark
 // core, each one slowly billowing, rolling, swelling and drifting on its own clock, so the fog
 // churns like real smoke instead of looping one painted shape.
@@ -154,7 +154,7 @@ function reaperSmoke(box){
   const rnd=(a,b)=>a+Math.random()*(b-a),puffs=[];
   // Rows from the ground up: wide low banks, a dense body, smaller rising crowns. Every puff,
   // at its largest swell and drift, stays inside the box (a masked box clips its children).
-  const rows=[[.9,8,.36,.46],[.72,8,.34,.44],[.52,7,.32,.42],[.32,6,.28,.36],[.16,4,.2,.27]];
+  const rows=[[.9,8,.36,.46],[.72,8,.34,.44],[.52,7,.32,.42],[.32,7,.28,.36],[.17,5,.17,.23]];
   for(const [yy,count,min,max] of rows)for(let i=0;i<count;i++){
     const size=rnd(min,max)*unit,reach=size*.5*1.3+unit*.06,dx=rnd(-.05,.05)*unit,dy=-rnd(.02,.07)*unit;
     const x=pad+Math.max(reach-pad,Math.min(box.w-reach+pad,((i+.5)/count+rnd(-.05,.05))*box.w));
@@ -183,7 +183,7 @@ async function reaperVeilRage(raw,onRelease){
   const feet=body.bottom-scene.top-body.height*(1-(Number(getComputedStyle(target).getPropertyValue('--foot-y'))||.94));
   const fogSize=Math.max(body.width,body.height)*1.25,fogPoint={x:body.left-scene.left+body.width/2-fogSize*.08,y:feet+fogSize*.06-fogSize*.38};// foes face left: lean the dome toward the head
   // The smoke box covers the foe's whole sprite with margin, its floor just below the feet.
-  const smokeBox={w:Math.max(body.width*1.12,fogSize*.75),h:Math.max(body.height*.88,fogSize*.68)};smokeBox.x=fogPoint.x-smokeBox.w*.54;smokeBox.y=feet+smokeBox.h*.1-smokeBox.h;
+  const smokeBox={w:Math.max(body.width*1.12,fogSize*.75),h:Math.max(body.height*.95,fogSize*.72)};smokeBox.x=fogPoint.x-smokeBox.w*.54;smokeBox.y=feet+smokeBox.h*.1-smokeBox.h;
   let amount=0,blocked=0,mist=null,ground=null;
   root.classList.add('combat-v3-acting');root.dataset.ragePhase='chant';
   try{
@@ -203,8 +203,9 @@ async function reaperVeilRage(raw,onRelease){
         reaperFx('hook',{x:enemy.x,y:enemy.y-enemy.height*.05},enemy.width*1.15);playNoctSound('hook',{volume:.36,pan:.3});
         if(!reduced)pending.push(animate(target,[{translate:'0 0'},{translate:'0 -34px',offset:.35},{translate:'0 -30px',offset:.6},{translate:'0 0'}],{duration:420,easing:'cubic-bezier(.2,.9,.4,1)'}));
       }else{
-        const spot={x:fogPoint.x+(Math.random()-.5)*fogSize*.3,y:fogPoint.y+(Math.random()-.3)*fogSize*.3},rotate=-30+Math.random()*75;
-        reaperFx('fogcut',spot,fogSize*(.75+Math.random()*.2),{rotate,flip:direction});
+        // Scythe crescents about half the smoke's size, landing anywhere on the shrouded body.
+        const unit=Math.min(smokeBox.w,smokeBox.h),spot={x:smokeBox.x+smokeBox.w*(.3+Math.random()*.4),y:smokeBox.y+smokeBox.h*(.3+Math.random()*.4)},rotate=-40+Math.random()*80;
+        reaperFx('fogcut',spot,unit*(.5+Math.random()*.14),{rotate,flip:direction});
         reaperFogGap([mist,ground],spot,direction>0?FOGCUT_BASE+rotate:-FOGCUT_BASE+rotate,pending);
         playNoctSound('slash'+(1+i%3),{volume:.24,pan:.3});
       }
