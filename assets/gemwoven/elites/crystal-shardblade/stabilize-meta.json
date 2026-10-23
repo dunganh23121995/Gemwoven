@@ -1,0 +1,79 @@
+{
+  "master": "master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0047,
+      "error": 0.1814,
+      "moving_share": 0.0102
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0047,
+      "error": 0.2055,
+      "moving_share": 0.0192
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0047,
+      "error": 0.2303,
+      "moving_share": 0.0198
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0047,
+      "error": 0.1863,
+      "moving_share": 0.0111
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0047,
+      "error": 0.1969,
+      "moving_share": 0.0164
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9997,
+      "error": 0.1659,
+      "moving_share": 0.0055
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9997,
+      "error": 0.1953,
+      "moving_share": 0.0173
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0047,
+      "error": 0.1887,
+      "moving_share": 0.0121
+    }
+  ],
+  "jitter": [
+    4.37,
+    2.65,
+    4.74,
+    3.21,
+    4.79,
+    4.61,
+    3.3,
+    0.46
+  ]
+}

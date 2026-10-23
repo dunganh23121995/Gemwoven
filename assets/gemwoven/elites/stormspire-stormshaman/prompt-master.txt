@@ -1,0 +1,10 @@
+Image 1 is the STYLE reference: an existing elite enemy from this game. Match its rendering exactly: clean HD smooth painted chibi-fantasy RPG game art, rich painterly shading, crisp dark outline, the same proportions and level of detail. NOT pixel art.
+Image 2 is the chapter boss this elite serves (Tempestwing, a royal storm gryphon in gold armor with deep-blue feathers). Use it only for theme, materials and palette; do NOT copy its body.
+Image 3 is the old creature this elite replaces (a living storm totem of blue stone and gold with feather wings). Palette and material reference only; the new character is NOT an animal.
+
+Create ONE new HUMANOID elite enemy: a STORM SHAMAN: tall robust tribal spellcaster, a HUMAN man with a clearly visible human face (stern eyes, painted blue lightning marks on the cheeks, braided beard), NO mask, NO beak, NOT a bird-man; on his head a large a deep storm-blue hooded cowl with a small gold gryphon-crest circlet (no feathered headdress, no war bonnet, no tribal or real-culture regalia), long layered robes in deep blue and cream with gold trim and glowing lightning-bolt runes, a gold storm-medallion on the chest, holding a carved wooden totem staff topped by a gryphon head wrapped by a few thin crisp blue-white lightning bolts drawn with hard edges (no soft glow, no halo, no bloom).
+Palette: deep blue, sky blue, cream, gold, warm wood brown, small electric blue-white sparks.
+He/she is an elite: a bit bigger, broader and more imposing than an ordinary foe, with a confident menacing presence, but the same chibi-fantasy proportions as Image 1 (slightly large head, sturdy limbs).
+Full body, head to feet visible, facing LEFT (the body and face turned toward the left side of the image), 3/4 view, standing ready pose with both feet planted, weapon kept close to the body.
+One character only, centered, about 80% of the image height, generous empty margin on every side, nothing cut off.
+Background 100% solid flat #FF00FF magenta, no gradient, no ground, no shadow, no aura, no text, no labels, no border. Do not use magenta or hot pink anywhere on the character.

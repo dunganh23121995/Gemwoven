@@ -1,0 +1,10 @@
+Image 1 is the STYLE reference: an existing elite enemy from this game. Match its rendering exactly: clean HD smooth painted chibi-fantasy RPG game art, rich painterly shading, crisp dark outline, the same proportions and level of detail. NOT pixel art.
+Image 2 is the chapter boss this elite serves (the Frost Regent, a regal ice queen in white and ice-blue robes with a crystal crown and a frost staff). Use it only for theme, materials and palette; do NOT copy its body.
+Image 3 is the old creature this elite replaces (a white snowy owl with ice-crystal feathers). Palette and material reference only; the new character is NOT an animal.
+
+Create ONE new HUMANOID elite enemy: a FROST MAGE: tall imposing spellcaster in a thick white and ice-blue cloak embroidered with glowing snowflake runes, a mantle of white owl feathers over the shoulders, a deep hood or tall frosty collar with a calm stern face, holding upright a tall silver staff topped by a swirling blizzard orb of snow and pale blue light.
+Palette: snow white, ice blue, pale silver, small cyan glows.
+He/she is an elite: a bit bigger, broader and more imposing than an ordinary foe, with a confident menacing presence, but the same chibi-fantasy proportions as Image 1 (slightly large head, sturdy limbs).
+Full body, head to feet visible, facing LEFT (the body and face turned toward the left side of the image), 3/4 view, standing ready pose with both feet planted, weapon kept close to the body.
+One character only, centered, about 80% of the image height, generous empty margin on every side, nothing cut off.
+Background 100% solid flat #FF00FF magenta, no gradient, no ground, no shadow, no aura, no text, no labels, no border. Do not use magenta or hot pink anywhere on the character.

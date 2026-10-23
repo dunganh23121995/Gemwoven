@@ -1,0 +1,10 @@
+Image 1 is the STYLE reference: an existing elite enemy from this game. Match its rendering exactly: clean HD smooth painted chibi-fantasy RPG game art, rich painterly shading, crisp dark outline, the same proportions and level of detail. NOT pixel art.
+Image 2 is the chapter boss this elite serves (Elderbloom, an ancient moss-and-bark forest colossus with white flowers and a green heart gem). Use it only for theme, materials and palette; do NOT copy its body.
+Image 3 is the old creature this elite replaces (a graceful forest stag of bark and leaves with white blossoms). Palette and material reference only; the new character is NOT an animal.
+
+Create ONE new HUMANOID elite enemy: a forest RANGER: lithe but battle-hardened, armor of polished bark leather and layered white blossom petals, a hood shaped like a closed flower bud with a few white petals and green leaves, a short leafy cape, a small glowing green gem at the chest, holding two short twin blades of polished golden-brown wood (one in each hand, held low and close to the body).
+Palette: moss green, warm bark brown, cream-white blossoms, small glowing jade-green accents.
+He/she is an elite: a bit bigger, broader and more imposing than an ordinary foe, with a confident menacing presence, but the same chibi-fantasy proportions as Image 1 (slightly large head, sturdy limbs).
+Full body, head to feet visible, facing LEFT (the body and face turned toward the left side of the image), 3/4 view, standing ready pose with both feet planted, weapon kept close to the body.
+One character only, centered, about 80% of the image height, generous empty margin on every side, nothing cut off.
+Background 100% solid flat #FF00FF magenta, no gradient, no ground, no shadow, no aura, no text, no labels, no border. Do not use magenta or hot pink anywhere on the character.

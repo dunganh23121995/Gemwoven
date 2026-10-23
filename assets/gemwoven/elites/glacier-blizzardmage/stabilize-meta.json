@@ -1,0 +1,79 @@
+{
+  "master": "assets/gemwoven/elites/glacier-blizzardmage/master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1509,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1555,
+      "moving_share": 0.0038
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1938,
+      "moving_share": 0.0077
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.2288,
+      "moving_share": 0.0204
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.1748,
+      "moving_share": 0.004
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1675,
+      "moving_share": 0.0075
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1608,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1574,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    0.43,
+    1.28,
+    4.05,
+    4.0,
+    2.42,
+    1.63,
+    0.0,
+    0.0
+  ]
+}
