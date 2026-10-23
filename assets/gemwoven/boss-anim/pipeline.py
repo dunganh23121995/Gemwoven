@@ -50,7 +50,7 @@ Same scale, camera and feet line (94% of cell height) in every cell, body centre
 
 CAST = """Image 1 is the exact character and art reference (a fantasy RPG chapter boss: {desc}). Image 2 repeats that exact character in six cells and is the template for slot position, scale and feet line.
 Create a 6-frame {kind} animation, 3 columns x 2 rows, 1536x1024, read row-major, facing LEFT exactly like Image 1: 1 ready pose (like Image 1); 2 wind-up, gathering power: {windup}; 3 {strike} toward the LEFT; 4 peak of the {kind2}, fully extended toward the left; 5 recoil, pulling back; 6 settling back to the ready pose of frame 1.
-Never redesign it: same head, face, colours, markings, armour, accessories and proportions as Image 1 in every frame; only the pose changes. Body only: no detached projectiles, no beams, no slash arcs, no big effects; a small glow attached to the body is fine. Same scale and camera as Image 2, feet on the same line as Image 2 in every cell, body centred in its cell with generous magenta padding; nothing (wings, tail, limbs, weapon) may cross a cell edge.
+Never redesign it: same head, face, colours, markings, armour, accessories and proportions as Image 1 in every frame; only the pose changes. Body only: no detached projectiles, no beams, no slash arcs, no big effects; a small glow attached to the body is fine. Same scale and camera as Image 2 in all six cells: the boss is drawn at exactly the size it has in Image 2, never zoomed in or enlarged; the head, torso and legs have exactly the same pixel size in all six cells (the action frames are not bigger than the ready frames), feet on the same line as Image 2 in every cell. The body stays planted at the same spot as Image 2 in every cell (no stepping or sliding); only the head, arms, weapon, wings and tail move, and the motion is compact: the forward reach stays inside the cell with at least 12% magenta margin on every side; nothing (wings, tail, limbs, weapon) may touch or cross a cell edge. Glows are small and opaque; no orbs, sparkles, smoke or mist.
 Background 100% solid flat #FF00FF magenta, no gradient, no ground, no shadow, no text, no labels, no borders, no grid lines. Clean HD smooth painted game art, NOT pixel art."""
 
 
@@ -107,7 +107,7 @@ def cast(b, model=None, effort=None):
     if model:
         identity(b, d)
         run([sys.executable, ANCHOR, "--input", f"{rel}/identity.png", "--rows", "2", "--cols", "3", "--cell-width", "512",
-             "--cell-height", "512", "--subject-height-ratio", "0.66", "--feet-ratio", "0.86", "--output", f"{rel}/anchor.png"])
+             "--cell-height", "512", "--subject-height-ratio", "0.72", "--feet-ratio", "0.88", "--output", f"{rel}/anchor.png"])
         e = DESC[b]
         (d / "prompt-cast.txt").write_text(CAST.format(**e) + "\n", encoding="utf-8")
         run([sys.executable, GEN, "--prompt-file", f"{rel}/prompt-cast.txt", "--out", f"{rel}/raw-cast.png",

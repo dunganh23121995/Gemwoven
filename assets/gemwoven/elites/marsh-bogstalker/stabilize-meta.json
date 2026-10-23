@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\marsh-bogstalker\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1151,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0051,
+      "error": 0.1265,
+      "moving_share": 0.0012
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1232,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.1438,
+      "moving_share": 0.0009
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9904,
+      "error": 0.131,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0004,
+      "error": 0.1317,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9954,
+      "error": 0.1212,
+      "moving_share": 0.0023
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0052,
+      "error": 0.1386,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    0.28,
+    0.28,
+    0.2,
+    0.2,
+    0.0,
+    0.43,
+    0.43,
+    0.0
+  ]
+}

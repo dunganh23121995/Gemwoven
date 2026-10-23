@@ -1,5 +1,5 @@
 {
-  "master": "master.png",
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\haunted-bonepaladin\\master.png",
   "frames": [
     {
       "frame": "idle-1.png",
@@ -44,10 +44,10 @@
     {
       "frame": "idle-6.png",
       "dx": 0,
-      "dy": 0,
-      "scale": 0.9997,
-      "error": 0.1866,
-      "moving_share": 0.0164
+      "dy": -1,
+      "scale": 0.9897,
+      "error": 0.1817,
+      "moving_share": 0.0154
     },
     {
       "frame": "idle-7.png",
@@ -60,10 +60,10 @@
     {
       "frame": "idle-8.png",
       "dx": 0,
-      "dy": 0,
-      "scale": 0.9997,
-      "error": 0.1678,
-      "moving_share": 0.0061
+      "dy": -1,
+      "scale": 0.9897,
+      "error": 0.1571,
+      "moving_share": 0.0027
     }
   ],
   "jitter": [
@@ -71,9 +71,9 @@
     4.05,
     7.69,
     8.39,
-    4.96,
-    2.32,
-    0.26,
-    2.23
+    4.79,
+    2.04,
+    0.13,
+    2.32
   ]
 }

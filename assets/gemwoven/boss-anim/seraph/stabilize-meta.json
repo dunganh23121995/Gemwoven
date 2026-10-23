@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\boss-seraph.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1516,
+      "moving_share": 0.0139
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9999,
+      "error": 0.1597,
+      "moving_share": 0.0228
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1663,
+      "moving_share": 0.038
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9953,
+      "error": 0.154,
+      "moving_share": 0.0182
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1539,
+      "moving_share": 0.0136
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1488,
+      "moving_share": 0.0111
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9999,
+      "error": 0.1246,
+      "moving_share": 0.0032
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0051,
+      "error": 0.1489,
+      "moving_share": 0.0138
+    }
+  ],
+  "jitter": [
+    3.85,
+    7.68,
+    7.92,
+    2.39,
+    0.94,
+    2.61,
+    3.69,
+    1.75
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\thorns-vinehexer\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1841,
+      "moving_share": 0.0246
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1543,
+      "moving_share": 0.0195
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1635,
+      "moving_share": 0.0284
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9848,
+      "error": 0.1852,
+      "moving_share": 0.0223
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9996,
+      "error": 0.1759,
+      "moving_share": 0.03
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0149,
+      "error": 0.1909,
+      "moving_share": 0.0245
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9998,
+      "error": 0.1682,
+      "moving_share": 0.0188
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.1641,
+      "moving_share": 0.0187
+    }
+  ],
+  "jitter": [
+    2.99,
+    3.21,
+    3.64,
+    3.78,
+    4.16,
+    3.27,
+    2.42,
+    3.0
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\abyss-reefcorsair\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1366,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1631,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9855,
+      "error": 0.1587,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9904,
+      "error": 0.1775,
+      "moving_share": 0.0058
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1407,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1624,
+      "moving_share": 0.001
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1508,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1565,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    0.0,
+    0.0,
+    1.32,
+    1.32,
+    0.18,
+    0.18,
+    0.0,
+    0.0
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\boss-prism.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0052,
+      "error": 0.1822,
+      "moving_share": 0.0172
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9913,
+      "error": 0.1927,
+      "moving_share": 0.0179
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0004,
+      "error": 0.2007,
+      "moving_share": 0.0175
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0056,
+      "error": 0.2039,
+      "moving_share": 0.0281
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0056,
+      "error": 0.2104,
+      "moving_share": 0.0288
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0003,
+      "error": 0.1936,
+      "moving_share": 0.0185
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0004,
+      "error": 0.1751,
+      "moving_share": 0.015
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0004,
+      "error": 0.1855,
+      "moving_share": 0.0152
+    }
+  ],
+  "jitter": [
+    1.61,
+    1.75,
+    4.43,
+    3.14,
+    4.4,
+    3.0,
+    1.64,
+    1.04
+  ]
+}

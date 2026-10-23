@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\stormspire-stormshaman\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9902,
+      "error": 0.1293,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.168,
+      "moving_share": 0.0212
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1595,
+      "moving_share": 0.0111
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1749,
+      "moving_share": 0.0287
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1304,
+      "moving_share": 0.0014
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9902,
+      "error": 0.1743,
+      "moving_share": 0.0194
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9902,
+      "error": 0.1408,
+      "moving_share": 0.0082
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1271,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    6.02,
+    6.05,
+    7.26,
+    7.82,
+    5.88,
+    6.04,
+    1.02,
+    0.0
+  ]
+}

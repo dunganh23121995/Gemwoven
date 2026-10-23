@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\creature-geode-rampartgolem.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.1846,
+      "moving_share": 0.0056
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.2016,
+      "moving_share": 0.0193
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.2192,
+      "moving_share": 0.0301
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.2017,
+      "moving_share": 0.0152
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.1861,
+      "moving_share": 0.0058
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.1719,
+      "moving_share": 0.0039
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9848,
+      "error": 0.1643,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9947,
+      "error": 0.1541,
+      "moving_share": 0.0051
+    }
+  ],
+  "jitter": [
+    2.82,
+    4.05,
+    4.08,
+    2.33,
+    0.6,
+    0.42,
+    0.82,
+    0.57
+  ]
+}

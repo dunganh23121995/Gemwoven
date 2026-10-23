@@ -36,9 +36,11 @@ def fit_master(path, cell):
 
 def warp(img, dx, dy, s, anchor):
     ax, ay = anchor
-    im = Image.fromarray((img * 255).astype("uint8"), "RGBA")
+    # Resample premultiplied (RGBa): straight-alpha bicubic drags the dark colour of nearly
+    # transparent edge pixels into moving cloth tips as smudges.
+    im = Image.fromarray((img * 255).astype("uint8"), "RGBA").convert("RGBa")
     coeffs = (1 / s, 0, ax - (ax + dx) / s, 0, 1 / s, ay - (ay + dy) / s)
-    return np.asarray(im.transform(im.size, Image.AFFINE, coeffs, Image.BICUBIC), dtype=np.float32) / 255
+    return np.asarray(im.transform(im.size, Image.AFFINE, coeffs, Image.BICUBIC).convert("RGBA"), dtype=np.float32) / 255
 
 
 def score(t, master, mask):

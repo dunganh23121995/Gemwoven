@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\boss-anim\\frostregent\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0047,
+      "error": 0.2415,
+      "moving_share": 0.0235
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 2,
+      "scale": 1.0151,
+      "error": 0.2516,
+      "moving_share": 0.0283
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.005,
+      "error": 0.2488,
+      "moving_share": 0.0313
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.01,
+      "error": 0.2487,
+      "moving_share": 0.0271
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9998,
+      "error": 0.2456,
+      "moving_share": 0.0246
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.2614,
+      "moving_share": 0.0305
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0047,
+      "error": 0.2333,
+      "moving_share": 0.0257
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.2399,
+      "moving_share": 0.0204
+    }
+  ],
+  "jitter": [
+    4.66,
+    4.54,
+    6.57,
+    5.6,
+    5.29,
+    5.25,
+    3.31,
+    1.1
+  ]
+}

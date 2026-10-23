@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\creature-coralreef-coraloracle.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2554,
+      "moving_share": 0.0191
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.2612,
+      "moving_share": 0.0157
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9898,
+      "error": 0.3319,
+      "moving_share": 0.0596
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2887,
+      "moving_share": 0.0264
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2652,
+      "moving_share": 0.0282
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2382,
+      "moving_share": 0.0128
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2843,
+      "moving_share": 0.0288
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2399,
+      "moving_share": 0.0173
+    }
+  ],
+  "jitter": [
+    3.7,
+    14.34,
+    13.15,
+    2.78,
+    3.81,
+    2.18,
+    4.19,
+    1.69
+  ]
+}

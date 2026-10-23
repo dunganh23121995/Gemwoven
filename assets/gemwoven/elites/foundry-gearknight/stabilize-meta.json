@@ -1,5 +1,5 @@
 {
-  "master": "master.png",
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\foundry-gearknight\\master.png",
   "frames": [
     {
       "frame": "idle-1.png",
@@ -12,9 +12,9 @@
     {
       "frame": "idle-2.png",
       "dx": 0,
-      "dy": 0,
-      "scale": 1.0049,
-      "error": 0.1311,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1244,
       "moving_share": 0.0
     },
     {
@@ -28,25 +28,25 @@
     {
       "frame": "idle-4.png",
       "dx": 0,
-      "dy": 1,
-      "scale": 1.0049,
-      "error": 0.1232,
-      "moving_share": 0.0068
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1206,
+      "moving_share": 0.0063
     },
     {
       "frame": "idle-5.png",
       "dx": 0,
-      "dy": 0,
-      "scale": 1.0049,
-      "error": 0.1176,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1046,
       "moving_share": 0.0
     },
     {
       "frame": "idle-6.png",
       "dx": 0,
-      "dy": 1,
-      "scale": 0.9951,
-      "error": 0.1309,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1244,
       "moving_share": 0.0102
     },
     {
@@ -69,10 +69,10 @@
   "jitter": [
     0.84,
     0.0,
-    1.28,
-    1.28,
-    1.53,
-    1.44,
+    1.13,
+    1.13,
+    1.54,
+    1.45,
     0.55,
     0.54
   ]

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\celestial-dawncleric\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1989,
+      "moving_share": 0.0139
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1773,
+      "moving_share": 0.0135
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1942,
+      "moving_share": 0.0176
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1942,
+      "moving_share": 0.0148
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1971,
+      "moving_share": 0.0112
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1821,
+      "moving_share": 0.0049
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.2013,
+      "moving_share": 0.0153
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9947,
+      "error": 0.1692,
+      "moving_share": 0.01
+    }
+  ],
+  "jitter": [
+    1.68,
+    4.92,
+    4.49,
+    2.85,
+    3.06,
+    5.11,
+    2.76,
+    1.92
+  ]
+}

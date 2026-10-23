@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\creature-caldera-basaltbrute.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0016,
+      "error": 0.1057,
+      "moving_share": 0.0146
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0015,
+      "error": 0.1085,
+      "moving_share": 0.0186
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.006,
+      "error": 0.1083,
+      "moving_share": 0.0215
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9995,
+      "error": 0.1279,
+      "moving_share": 0.0386
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0075,
+      "error": 0.1025,
+      "moving_share": 0.02
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0062,
+      "error": 0.1066,
+      "moving_share": 0.0131
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0016,
+      "error": 0.092,
+      "moving_share": 0.0124
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0109,
+      "error": 0.1015,
+      "moving_share": 0.014
+    }
+  ],
+  "jitter": [
+    2.47,
+    2.42,
+    4.41,
+    4.51,
+    2.94,
+    0.72,
+    0.96,
+    0.72
+  ]
+}

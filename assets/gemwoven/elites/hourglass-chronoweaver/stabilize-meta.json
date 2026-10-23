@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\creature-hourglass-chronoweaver.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.2231,
+      "moving_share": 0.0106
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0052,
+      "error": 0.2716,
+      "moving_share": 0.0356
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0002,
+      "error": 0.1965,
+      "moving_share": 0.0122
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0002,
+      "error": 0.2364,
+      "moving_share": 0.0214
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.209,
+      "moving_share": 0.0102
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2316,
+      "moving_share": 0.0099
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2112,
+      "moving_share": 0.0087
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.222,
+      "moving_share": 0.014
+    }
+  ],
+  "jitter": [
+    6.06,
+    7.06,
+    4.86,
+    5.42,
+    3.29,
+    2.94,
+    2.76,
+    2.88
+  ]
+}

@@ -1,79 +1,79 @@
 {
-  "master": "master.png",
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\volcano-ashcultist\\master.png",
   "frames": [
     {
       "frame": "idle-1.png",
-      "dx": 11,
-      "dy": -10,
-      "scale": 1.2038,
-      "error": 0.2862,
-      "moving_share": 0.0462
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9997,
+      "error": 0.1397,
+      "moving_share": 0.004
     },
     {
       "frame": "idle-2.png",
-      "dx": 11,
-      "dy": -11,
-      "scale": 1.1734,
-      "error": 0.2182,
-      "moving_share": 0.0184
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0046,
+      "error": 0.1735,
+      "moving_share": 0.0179
     },
     {
       "frame": "idle-3.png",
-      "dx": 11,
-      "dy": -11,
-      "scale": 1.1667,
-      "error": 0.2503,
-      "moving_share": 0.0248
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0046,
+      "error": 0.1924,
+      "moving_share": 0.0278
     },
     {
       "frame": "idle-4.png",
-      "dx": 11,
-      "dy": -11,
-      "scale": 1.19,
-      "error": 0.2852,
-      "moving_share": 0.0484
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.1515,
+      "moving_share": 0.0094
     },
     {
       "frame": "idle-5.png",
-      "dx": 11,
-      "dy": -11,
-      "scale": 1.1734,
-      "error": 0.1839,
-      "moving_share": 0.0064
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0046,
+      "error": 0.1493,
+      "moving_share": 0.0048
     },
     {
       "frame": "idle-6.png",
-      "dx": 11,
-      "dy": -11,
-      "scale": 1.1499,
-      "error": 0.2678,
-      "moving_share": 0.034
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0097,
+      "error": 0.2073,
+      "moving_share": 0.0388
     },
     {
       "frame": "idle-7.png",
-      "dx": 11,
-      "dy": -11,
-      "scale": 1.1734,
-      "error": 0.2154,
-      "moving_share": 0.0188
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0046,
+      "error": 0.169,
+      "moving_share": 0.0177
     },
     {
       "frame": "idle-8.png",
-      "dx": 11,
-      "dy": -10,
-      "scale": 1.1969,
-      "error": 0.2701,
-      "moving_share": 0.0346
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0097,
+      "error": 0.1378,
+      "moving_share": 0.0021
     }
   ],
   "jitter": [
-    9.17,
-    2.94,
-    10.11,
-    8.46,
-    4.86,
-    4.71,
-    7.48,
-    5.42
+    3.13,
+    3.21,
+    5.04,
+    2.37,
+    6.51,
+    5.54,
+    2.64,
+    0.77
   ]
 }

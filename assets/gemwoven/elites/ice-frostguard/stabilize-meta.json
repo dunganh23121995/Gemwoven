@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\ice-frostguard\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1416,
+      "moving_share": 0.0034
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.1747,
+      "moving_share": 0.0072
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9849,
+      "error": 0.1654,
+      "moving_share": 0.0013
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9947,
+      "error": 0.1571,
+      "moving_share": 0.0053
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1283,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.1446,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1563,
+      "moving_share": 0.0071
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1456,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    0.9,
+    2.17,
+    1.58,
+    1.55,
+    0.0,
+    2.07,
+    2.07,
+    1.39
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\creature-coralreef-tidemarshal.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1717,
+      "moving_share": 0.0076
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2104,
+      "moving_share": 0.0223
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1777,
+      "moving_share": 0.0063
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.005,
+      "error": 0.1914,
+      "moving_share": 0.0137
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.1694,
+      "moving_share": 0.0086
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2028,
+      "moving_share": 0.0235
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2124,
+      "moving_share": 0.0316
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 0.9999,
+      "error": 0.2157,
+      "moving_share": 0.015
+    }
+  ],
+  "jitter": [
+    6.0,
+    5.95,
+    3.52,
+    3.45,
+    4.64,
+    6.91,
+    7.08,
+    3.52
+  ]
+}

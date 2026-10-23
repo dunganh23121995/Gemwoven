@@ -1,79 +1,79 @@
 {
-  "master": "master.png",
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\foundry-tinkerer\\master.png",
   "frames": [
     {
       "frame": "idle-1.png",
       "dx": 0,
-      "dy": -1,
-      "scale": 0.9855,
-      "error": 0.1395,
-      "moving_share": 0.0034
+      "dy": 0,
+      "scale": 1.0051,
+      "error": 0.1339,
+      "moving_share": 0.0022
     },
     {
       "frame": "idle-2.png",
-      "dx": 1,
-      "dy": 1,
-      "scale": 1.0052,
-      "error": 0.1845,
-      "moving_share": 0.0081
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.154,
+      "moving_share": 0.0083
     },
     {
       "frame": "idle-3.png",
       "dx": 0,
       "dy": -1,
-      "scale": 0.9761,
-      "error": 0.1488,
-      "moving_share": 0.0081
+      "scale": 0.9906,
+      "error": 0.1471,
+      "moving_share": 0.0046
     },
     {
       "frame": "idle-4.png",
       "dx": 0,
-      "dy": 1,
-      "scale": 0.9956,
-      "error": 0.1694,
-      "moving_share": 0.0052
+      "dy": -1,
+      "scale": 0.9904,
+      "error": 0.1443,
+      "moving_share": 0.0061
     },
     {
       "frame": "idle-5.png",
       "dx": 0,
       "dy": -1,
-      "scale": 0.9761,
-      "error": 0.1461,
-      "moving_share": 0.0088
+      "scale": 0.9906,
+      "error": 0.1423,
+      "moving_share": 0.0065
     },
     {
       "frame": "idle-6.png",
-      "dx": 0,
-      "dy": 1,
-      "scale": 0.9956,
-      "error": 0.1698,
-      "moving_share": 0.007
+      "dx": 1,
+      "dy": 0,
+      "scale": 0.9906,
+      "error": 0.1495,
+      "moving_share": 0.0066
     },
     {
       "frame": "idle-7.png",
       "dx": 0,
-      "dy": -1,
-      "scale": 0.9808,
-      "error": 0.152,
-      "moving_share": 0.0053
+      "dy": 0,
+      "scale": 1.0002,
+      "error": 0.1391,
+      "moving_share": 0.0032
     },
     {
       "frame": "idle-8.png",
-      "dx": 0,
-      "dy": 1,
-      "scale": 1.0004,
-      "error": 0.1627,
-      "moving_share": 0.0026
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0002,
+      "error": 0.1492,
+      "moving_share": 0.0023
     }
   ],
   "jitter": [
-    1.87,
-    1.92,
-    1.28,
-    1.34,
-    1.62,
-    1.14,
+    1.06,
+    0.67,
     0.59,
-    0.49
+    0.56,
+    0.53,
+    0.73,
+    0.21,
+    0.1
   ]
 }

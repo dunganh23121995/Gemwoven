@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\abyss-tidecaller\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1842,
+      "moving_share": 0.0012
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.1585,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9852,
+      "error": 0.1632,
+      "moving_share": 0.001
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9903,
+      "error": 0.165,
+      "moving_share": 0.001
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9855,
+      "error": 0.1625,
+      "moving_share": 0.0009
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9954,
+      "error": 0.1698,
+      "moving_share": 0.0021
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9855,
+      "error": 0.152,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.1681,
+      "moving_share": 0.0009
+    }
+  ],
+  "jitter": [
+    0.23,
+    0.04,
+    0.04,
+    0.04,
+    0.16,
+    0.16,
+    0.04,
+    0.27
+  ]
+}

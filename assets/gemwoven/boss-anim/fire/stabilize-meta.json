@@ -1,79 +1,79 @@
 {
-  "master": "assets/gemwoven/items/boss-fire.webp",
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\boss-fire.webp",
   "frames": [
     {
       "frame": "idle-1.png",
-      "dx": 19,
-      "dy": -11,
-      "scale": 1.1813,
-      "error": 0.1371,
-      "moving_share": 0.0429
+      "dx": 2,
+      "dy": 1,
+      "scale": 1.0151,
+      "error": 0.1339,
+      "moving_share": 0.0414
     },
     {
       "frame": "idle-2.png",
-      "dx": 19,
-      "dy": -11,
-      "scale": 1.1725,
-      "error": 0.1535,
-      "moving_share": 0.0582
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0148,
+      "error": 0.1679,
+      "moving_share": 0.057
     },
     {
       "frame": "idle-3.png",
-      "dx": 19,
-      "dy": -11,
-      "scale": 1.1707,
-      "error": 0.1704,
-      "moving_share": 0.0687
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.015,
+      "error": 0.1776,
+      "moving_share": 0.0704
     },
     {
       "frame": "idle-4.png",
-      "dx": 18,
-      "dy": -12,
-      "scale": 1.1557,
-      "error": 0.137,
-      "moving_share": 0.0191
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.1332,
+      "moving_share": 0.0251
     },
     {
       "frame": "idle-5.png",
-      "dx": 19,
-      "dy": -11,
-      "scale": 1.1764,
-      "error": 0.1301,
-      "moving_share": 0.0262
+      "dx": 1,
+      "dy": 2,
+      "scale": 1.0254,
+      "error": 0.134,
+      "moving_share": 0.0287
     },
     {
       "frame": "idle-6.png",
-      "dx": 20,
-      "dy": -11,
-      "scale": 1.1813,
-      "error": 0.1306,
-      "moving_share": 0.0305
+      "dx": 2,
+      "dy": 2,
+      "scale": 1.0202,
+      "error": 0.1219,
+      "moving_share": 0.0264
     },
     {
       "frame": "idle-7.png",
-      "dx": 18,
-      "dy": -12,
-      "scale": 1.1609,
-      "error": 0.1527,
-      "moving_share": 0.0464
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.015,
+      "error": 0.143,
+      "moving_share": 0.0514
     },
     {
       "frame": "idle-8.png",
-      "dx": 20,
-      "dy": -11,
-      "scale": 1.1813,
-      "error": 0.1498,
-      "moving_share": 0.0475
+      "dx": 2,
+      "dy": 1,
+      "scale": 1.0202,
+      "error": 0.1421,
+      "moving_share": 0.0468
     }
   ],
   "jitter": [
-    8.57,
-    7.6,
-    11.34,
-    2.83,
-    1.21,
-    6.11,
-    2.03,
-    3.01
+    8.24,
+    8.59,
+    11.54,
+    1.66,
+    0.75,
+    7.46,
+    4.33,
+    2.32
   ]
 }

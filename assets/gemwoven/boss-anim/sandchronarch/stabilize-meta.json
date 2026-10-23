@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\boss-anim\\sandchronarch\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2064,
+      "moving_share": 0.0117
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2203,
+      "moving_share": 0.0274
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.2161,
+      "moving_share": 0.0192
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1957,
+      "moving_share": 0.0059
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2134,
+      "moving_share": 0.0221
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2105,
+      "moving_share": 0.0186
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2181,
+      "moving_share": 0.0251
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1688,
+      "moving_share": 0.006
+    }
+  ],
+  "jitter": [
+    4.09,
+    3.85,
+    3.91,
+    4.64,
+    7.6,
+    5.68,
+    5.58,
+    1.22
+  ]
+}

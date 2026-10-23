@@ -24,8 +24,8 @@
   "fixed": "arms, hands, staff, mushroom cap",
   "motion": "the ragged robe hem and moss tatters sway, the little mushrooms on the staff glow brighter and dimmer, a few tiny spores drift up",
   "kind": "spell-cast",
-  "windup": "it draws the mushroom staff back and the staff mushrooms glow brighter",
-  "strike": "the staff thrust forward in a spell release, glowing staff tip pointing",
+  "windup": "it draws the mushroom staff back and the little staff mushrooms brighten (no orb, no sparkles)",
+  "strike": "the staff thrust forward in a short, compact spell release, staff tip pointing left but kept well inside the cell",
   "kind2": "spell"
  },
  "scarab": {
@@ -49,19 +49,19 @@
  "colossus": {
   "desc": "a bronze clockwork golem with huge riveted fists, a glowing cyan gear core in its chest and cyan lights in its armour",
   "fixed": "arms, fists, armour plates",
-  "motion": "the cyan chest core and the cyan lights in the armour pulse brighter and dimmer, the gear ring around the chest core turns slowly; no steam, no smoke, no particles",
+  "motion": "the small gear wheels on the shoulders and the head crest rotate slowly, the cyan lights on the shoulders, elbows, knees and fists blink brighter and dimmer one after another, the chest core pulses; no steam, no smoke, no particles",
   "kind": "attack",
   "windup": "it draws its huge right fist back, the cyan core glowing brighter",
-  "strike": "a heavy forward punch with the giant fist",
+  "strike": "a short, compact forward punch with the giant fist (the arm stays bent; the fist ends well inside the cell, far from its left edge)",
   "kind2": "punch"
  },
  "prism": {
   "desc": "a crystalline mantis-fairy with iridescent lavender crystal wings, a crown of purple crystals, long antennae and slender clawed limbs",
   "fixed": "limbs, claws, crystal crown",
-  "motion": "the crystal wings flutter gently and shimmer with rainbow light, the antennae sway, small sparkles glint on the crystals",
+  "motion": "the crystal wings keep their exact shape, colours and position and only their tips flutter very slightly, the antennae tips sway slightly, a tiny sparkle glints on the crystal crown",
   "kind": "spell-cast",
-  "windup": "it raises its crystal claws and its wings spread a little, the crystal crown glowing",
-  "strike": "a forward claw thrust releasing a small attached crystal glow at the claw tips",
+  "windup": "it raises its crystal claws and its wings spread a little; no glow on the claws",
+  "strike": "a forward thrust of both crystal claws (solid crystal, no glow, no pink light)",
   "kind2": "spell"
  },
  "reaper": {
@@ -103,7 +103,7 @@
  "eclipse": {
   "desc": "a dark purple eclipse dragon with gold-trimmed horns and armour plates, starry night-sky wing membranes and glowing violet runes",
   "fixed": "legs, claws, horns, wing bones",
-  "motion": "the stars in the wing membranes twinkle and the membranes ripple slightly, the violet runes pulse, the tail tip curls gently",
+  "motion": "the wings stay fully raised in exactly the same position and outline while the stars in the wing membranes twinkle, the violet runes pulse, the tail tip curls gently",
   "kind": "attack",
   "windup": "it draws its head back and lifts its starry wings, the violet runes glowing brighter",
   "strike": "a lunging forward bite with jaws open and head thrust forward",
@@ -122,7 +122,7 @@
  "frostregent": {
   "desc": "an ice queen with long flowing silver-white hair, a crystal crown, a layered pale-blue gown and an ice-crystal staff",
   "fixed": "arms, hands, staff, crown",
-  "motion": "the long hair and gown layers sway gently, the staff crystal sparkles, a few snowflakes drift"
+  "motion": "only the ends of the long hair and the lowest edge of the gown sway very slightly, the staff crystal glints; everything else, including the gown pattern and colours, stays identical to Image 2; no snowflakes"
  },
  "tempestwing": {
   "desc": "a blue and gold storm griffin with raised blue feathered wings, golden armour plates and glowing blue gems",
@@ -137,17 +137,17 @@
  "sporefather": {
   "desc": "a giant mushroom golem made of red-capped toadstools and moss, holding a staff topped with glowing mushrooms",
   "fixed": "arms, staff, mushroom caps",
-  "motion": "the glowing mushrooms pulse brighter and dimmer, the hanging moss sways"
+  "motion": "the glowing mushroom lamp on top of the staff and the little mushrooms on its head glow clearly brighter and dimmer, the small mushroom caps along its outline bob gently, the loose moss strands at its edges sway visibly"
  },
  "prismback": {
   "desc": "a colossal tortoise carrying a castle of blue crystals, little trees and waterfalls on its shell",
   "fixed": "legs, head, shell, castle",
-  "motion": "the little waterfalls flow, the blue crystals sparkle and pulse, the small trees sway"
+  "motion": "the small trees along the top and sides of the shell sway visibly, the tall blue crystal spires on the outline sparkle and pulse, the waterfalls flow, the tail tip and the moss fringe at the shell edge sway slightly"
  },
  "sandchronarch": {
   "desc": "a golden sand djinn with a crowned turbaned head, golden armour, flowing golden sashes and a swirling sand tail instead of legs",
   "fixed": "arms, hands, armour, crown",
-  "motion": "the swirling sand tail flows and churns, the golden sashes ripple, the teal gems glow"
+  "motion": "the tips of the golden sashes and the end of the sand tail ripple gently while keeping their overall shape, the teal gems glow; the sand tail keeps the same outline and colours as Image 2"
  },
  "coraltide": {
   "desc": "a coral sea-serpent queen with pink-red coral antlers, teal and white scales and a long coiled body",

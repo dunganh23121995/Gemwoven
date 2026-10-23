@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\moonkeep-eclipsehuntress\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1529,
+      "moving_share": 0.0018
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1735,
+      "moving_share": 0.0094
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 0.9999,
+      "error": 0.2346,
+      "moving_share": 0.0176
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9902,
+      "error": 0.1988,
+      "moving_share": 0.0338
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1682,
+      "moving_share": 0.0043
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1474,
+      "moving_share": 0.0026
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1474,
+      "moving_share": 0.0031
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0001,
+      "error": 0.144,
+      "moving_share": 0.0019
+    }
+  ],
+  "jitter": [
+    1.48,
+    2.76,
+    7.25,
+    7.64,
+    0.37,
+    0.23,
+    0.06,
+    0.03
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\void-voidknight\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0098,
+      "error": 0.2567,
+      "moving_share": 0.0463
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.257,
+      "moving_share": 0.0435
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0048,
+      "error": 0.2453,
+      "moving_share": 0.0428
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.2215,
+      "moving_share": 0.0282
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9996,
+      "error": 0.2445,
+      "moving_share": 0.0308
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0048,
+      "error": 0.2399,
+      "moving_share": 0.0274
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9998,
+      "error": 0.2372,
+      "moving_share": 0.0383
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9897,
+      "error": 0.2289,
+      "moving_share": 0.0218
+    }
+  ],
+  "jitter": [
+    5.93,
+    4.45,
+    4.82,
+    3.6,
+    2.71,
+    4.75,
+    3.26,
+    5.48
+  ]
+}

@@ -1,77 +1,77 @@
 {
-  "master": "assets/gemwoven/items/boss-scarab.png",
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\boss-scarab.png",
   "frames": [
     {
       "frame": "idle-1.png",
-      "dx": 16,
-      "dy": -20,
-      "scale": 1.4619,
-      "error": 0.0966,
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.995,
+      "error": 0.0994,
       "moving_share": 0.0
     },
     {
       "frame": "idle-2.png",
-      "dx": 16,
-      "dy": -20,
-      "scale": 1.4622,
-      "error": 0.1164,
-      "moving_share": 0.0045
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.995,
+      "error": 0.116,
+      "moving_share": 0.0022
     },
     {
       "frame": "idle-3.png",
-      "dx": 15,
-      "dy": -22,
-      "scale": 1.4507,
-      "error": 0.1253,
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9948,
+      "error": 0.1184,
       "moving_share": 0.0078
     },
     {
       "frame": "idle-4.png",
-      "dx": 16,
-      "dy": -21,
-      "scale": 1.458,
-      "error": 0.1386,
-      "moving_share": 0.0091
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0043,
+      "error": 0.1315,
+      "moving_share": 0.0092
     },
     {
       "frame": "idle-5.png",
-      "dx": 15,
-      "dy": -21,
-      "scale": 1.4545,
-      "error": 0.1035,
-      "moving_share": 0.0018
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9945,
+      "error": 0.0989,
+      "moving_share": 0.0025
     },
     {
       "frame": "idle-6.png",
-      "dx": 15,
-      "dy": -22,
-      "scale": 1.451,
-      "error": 0.0947,
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.0943,
       "moving_share": 0.0
     },
     {
       "frame": "idle-7.png",
-      "dx": 15,
-      "dy": -20,
-      "scale": 1.4622,
-      "error": 0.0912,
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.995,
+      "error": 0.0867,
       "moving_share": 0.0
     },
     {
       "frame": "idle-8.png",
-      "dx": 15,
-      "dy": -20,
-      "scale": 1.4622,
-      "error": 0.1052,
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.995,
+      "error": 0.0988,
       "moving_share": 0.0
     }
   ],
   "jitter": [
-    1.0,
-    0.7,
-    0.78,
-    1.37,
-    0.34,
+    0.42,
+    1.1,
+    0.77,
+    1.32,
+    0.51,
     0.0,
     0.0,
     0.0

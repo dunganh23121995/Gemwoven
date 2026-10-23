@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\boss-anim\\prismback\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1535,
+      "moving_share": 0.0099
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9996,
+      "error": 0.1479,
+      "moving_share": 0.0083
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1566,
+      "moving_share": 0.0219
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1394,
+      "moving_share": 0.0073
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1536,
+      "moving_share": 0.0119
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1557,
+      "moving_share": 0.0064
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1425,
+      "moving_share": 0.0196
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.136,
+      "moving_share": 0.0092
+    }
+  ],
+  "jitter": [
+    1.25,
+    2.65,
+    2.13,
+    1.01,
+    1.16,
+    2.55,
+    2.38,
+    1.14
+  ]
+}

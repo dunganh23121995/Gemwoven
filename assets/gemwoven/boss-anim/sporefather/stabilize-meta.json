@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\boss-anim\\sporefather\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0099,
+      "error": 0.1413,
+      "moving_share": 0.0053
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0099,
+      "error": 0.1584,
+      "moving_share": 0.0094
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1733,
+      "moving_share": 0.0108
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1829,
+      "moving_share": 0.0248
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0051,
+      "error": 0.1657,
+      "moving_share": 0.0168
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1628,
+      "moving_share": 0.0094
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.01,
+      "error": 0.1571,
+      "moving_share": 0.0078
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.01,
+      "error": 0.1566,
+      "moving_share": 0.0061
+    }
+  ],
+  "jitter": [
+    0.85,
+    1.25,
+    2.22,
+    2.67,
+    1.48,
+    0.51,
+    0.78,
+    0.63
+  ]
+}

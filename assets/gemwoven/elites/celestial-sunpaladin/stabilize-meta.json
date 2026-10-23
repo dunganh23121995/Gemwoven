@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\celestial-sunpaladin\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.136,
+      "moving_share": 0.0052
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1562,
+      "moving_share": 0.0092
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.146,
+      "moving_share": 0.0124
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.005,
+      "error": 0.1481,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.1174,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 0.9996,
+      "error": 0.1649,
+      "moving_share": 0.0074
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9996,
+      "error": 0.1562,
+      "moving_share": 0.0093
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9996,
+      "error": 0.1287,
+      "moving_share": 0.0043
+    }
+  ],
+  "jitter": [
+    1.89,
+    2.73,
+    4.83,
+    0.0,
+    1.43,
+    2.47,
+    1.52,
+    0.26
+  ]
+}

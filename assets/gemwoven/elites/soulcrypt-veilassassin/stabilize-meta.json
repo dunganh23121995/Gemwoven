@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\creature-soulcrypt-veilassassin.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0099,
+      "error": 0.2736,
+      "moving_share": 0.0363
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2654,
+      "moving_share": 0.0388
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2696,
+      "moving_share": 0.0422
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2409,
+      "moving_share": 0.0199
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2472,
+      "moving_share": 0.0221
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9898,
+      "error": 0.2645,
+      "moving_share": 0.0306
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2545,
+      "moving_share": 0.0386
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.2583,
+      "moving_share": 0.0285
+    }
+  ],
+  "jitter": [
+    3.36,
+    2.44,
+    3.31,
+    1.52,
+    2.31,
+    3.33,
+    3.16,
+    1.42
+  ]
+}

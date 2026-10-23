@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\thunder-stormblade\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.2334,
+      "moving_share": 0.009
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.2488,
+      "moving_share": 0.0099
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.2402,
+      "moving_share": 0.011
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.2401,
+      "moving_share": 0.0089
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2453,
+      "moving_share": 0.0095
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2404,
+      "moving_share": 0.0084
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.2375,
+      "moving_share": 0.0108
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2499,
+      "moving_share": 0.0086
+    }
+  ],
+  "jitter": [
+    0.16,
+    0.65,
+    0.76,
+    0.44,
+    0.13,
+    0.41,
+    0.41,
+    0.16
+  ]
+}
