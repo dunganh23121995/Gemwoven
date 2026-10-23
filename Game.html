@@ -828,6 +828,7 @@ body.reduced-motion .scene .hero-actor[data-veiled="true"]>.sprite-body{animatio
 .reaper-smoke i{position:absolute;translate:-50% -50%;background:var(--puffs) calc(var(--cell) * 33.333%) 0/400% 100% no-repeat;opacity:var(--o);animation:smoke-billow var(--dur) var(--delay) ease-in-out infinite alternate;will-change:transform}
 @keyframes smoke-billow{from{transform:translate(0,0) rotate(var(--r0)) scale(calc(var(--s0) * var(--flip)),var(--s0))}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r1)) scale(calc(var(--s1) * var(--flip)),var(--s1))}}
 @keyframes smoke-core{50%{transform:scale(1.05,.97) translateY(-2%)}}
+.reaper-wisp{position:absolute;z-index:6;pointer-events:none;background-repeat:no-repeat;background-size:400% 100%;opacity:0}
 
 /* Compact portrait jewels: cropped finished character art under glass facets. */
 #selectDialog{width:min(420px,calc(100% - 24px));padding:26px 22px 22px;overflow-x:hidden}
@@ -4695,10 +4696,10 @@ async function bladeRage(key,raw,onRelease=()=>{}){
 // Hắc Liêm Đoạt Hồn (six-star Noct): an outstretched hand smothers the foe in cursed fog, the
 // reaper vanishes, nine unseen scythe cuts (two of them hooks that rip the foe upward) land
 // inside the fog, the soul is harvested, and Noct returns veiled (the veil itself is rules-side).
-function reaperFx(name,point,size,{rotate=0,flip=1,loop=false}={}){
+function reaperFx(name,point,size,{rotate=0,flip=1,loop=false,stretch=1}={}){
   const sheet=ART.reaperFx?.[name];if(!sheet||reduced)return null;
   const node=document.createElement('span');node.className='reaper-fx reaper-fx-'+name+(name==='mist'?' reaper-mist':'');node.setAttribute('aria-hidden','true');
-  node.style.cssText=`left:${point.x}px;top:${point.y}px;width:${size}px;height:${size}px;--fx-count:${sheet.count};background-image:url('${sheet.src}');transform:rotate(${rotate}deg) scaleX(${flip})`;
+  node.style.cssText=`left:${point.x}px;top:${point.y}px;width:${size}px;height:${size}px;--fx-count:${sheet.count};background-image:url('${sheet.src}');transform:rotate(${rotate}deg) scale(${flip*stretch},1)`;
   $('combatEffects').append(node);
   const frames=animate(node,[{backgroundPosition:'0% 0'},{backgroundPosition:'100% 0'}],{duration:sheet.count*sheet.frameDuration,easing:`steps(${sheet.count},jump-none)`,iterations:loop?Infinity:1});
   if(!loop)frames.finally(()=>node.remove());
@@ -4727,6 +4728,30 @@ function reaperSmoke(box){
   }
   cloud.innerHTML=`<b class="smoke-core"></b>`+puffs.join('');
   $('combatEffects').append(cloud);return cloud;
+}
+// A cut drags the smoke with it: puffs near the cut line are shoved apart and swept along the
+// swing, then roll back, while a few torn wisps fly off along the blade's path.
+function reaperSmokeSweep(cloud,spot,angle,length,pending){
+  if(!cloud?.isConnected||reduced)return;
+  const t=[Math.cos(angle*Math.PI/180),Math.sin(angle*Math.PI/180)],n=[-t[1],t[0]];
+  const scene=$('scene').getBoundingClientRect(),box=cloud.getBoundingClientRect(),ox=box.left-scene.left,oy=box.top-scene.top,reach=length*.32;
+  for(const puff of cloud.querySelectorAll('i')){
+    const x=ox+parseFloat(puff.style.left)-spot.x,y=oy+parseFloat(puff.style.top)-spot.y;
+    const along=x*t[0]+y*t[1],across=x*n[0]+y*n[1];
+    if(Math.abs(along)>length*.6||Math.abs(across)>reach)continue;
+    const near=1-Math.abs(across)/reach,push=Math.sign(across||1)*reach*.55*near,sweep=length*.22*near;
+    const dx=n[0]*push+t[0]*sweep,dy=n[1]*push+t[1]*sweep;
+    pending.push(animate(puff,[{translate:'-50% -50%'},{translate:`calc(-50% + ${dx}px) calc(-50% + ${dy}px)`,offset:.28},{translate:`calc(-50% + ${dx*.35}px) calc(-50% + ${dy*.35}px)`,offset:.7},{translate:'-50% -50%'}],{duration:900,easing:'cubic-bezier(.15,.75,.3,1)'}));
+  }
+  const sheet=ART.reaperFx?.puffs;if(!sheet)return;
+  for(let i=0;i<4;i++){
+    const start=(i/3-.5)*length*.7,size=length*(.16+Math.random()*.08);
+    const wisp=document.createElement('span');wisp.className='reaper-wisp';wisp.setAttribute('aria-hidden','true');
+    wisp.style.cssText=`left:${spot.x+t[0]*start}px;top:${spot.y+t[1]*start}px;width:${size}px;height:${size}px;background-image:url('${sheet.src}');background-position:${(i%4)*33.333}% 0`;
+    $('combatEffects').append(wisp);
+    const fly=length*(.35+Math.random()*.2),curl=(Math.random()-.5)*length*.25;
+    pending.push(animate(wisp,[{opacity:0,transform:`translate(-50%,-50%) rotate(${angle}deg) scale(.4,.25)`},{opacity:.9,transform:`translate(calc(-50% + ${t[0]*fly*.35}px),calc(-50% + ${t[1]*fly*.35}px)) rotate(${angle+20}deg) scale(1.1,.45)`,offset:.3},{opacity:0,transform:`translate(calc(-50% + ${t[0]*fly+n[0]*curl}px),calc(-50% + ${t[1]*fly+n[1]*curl}px)) rotate(${angle+70}deg) scale(1.4,.8)`}],{duration:760,delay:i*28,easing:'cubic-bezier(.2,.7,.4,1)'}).finally(()=>wisp.remove()));
+  }
 }
 function reaperFogGap(fogs,spot,angle,pending){
   if(reduced)return;
@@ -4768,8 +4793,11 @@ async function reaperVeilRage(raw,onRelease){
         if(!reduced)pending.push(animate(target,[{translate:'0 0'},{translate:'0 -34px',offset:.35},{translate:'0 -30px',offset:.6},{translate:'0 0'}],{duration:420,easing:'cubic-bezier(.2,.9,.4,1)'}));
       }else{
         // Scythe crescents about half the smoke's size, landing anywhere on the shrouded body.
-        const unit=Math.min(smokeBox.w,smokeBox.h),spot={x:smokeBox.x+smokeBox.w*(.3+Math.random()*.4),y:smokeBox.y+smokeBox.h*(.3+Math.random()*.4)},rotate=-40+Math.random()*80;
-        reaperFx('fogcut',spot,unit*(.5+Math.random()*.14),{rotate,flip:direction});
+        // Long scythe crescents (stretched along their chord) sweeping across the shrouded body.
+        const unit=Math.min(smokeBox.w,smokeBox.h),spot={x:smokeBox.x+smokeBox.w*(.38+Math.random()*.24),y:smokeBox.y+smokeBox.h*(.36+Math.random()*.28)},rotate=-35+Math.random()*70;
+        const size=unit*(.78+Math.random()*.14),stretch=1.45,chord=(direction>0?FOGCUT_BASE:180-FOGCUT_BASE)+rotate;
+        reaperFx('fogcut',spot,size,{rotate,flip:direction,stretch});
+        reaperSmokeSweep(mist,spot,chord,size*stretch*.85,pending);
         reaperFogGap([mist,ground],spot,direction>0?FOGCUT_BASE+rotate:-FOGCUT_BASE+rotate,pending);
         playNoctSound('slash'+(1+i%3),{volume:.24,pan:.3});
       }
