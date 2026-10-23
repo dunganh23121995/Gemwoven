@@ -222,9 +222,10 @@ async function reaperVeilRage(raw,onRelease){
   const feet=body.bottom,fogSize=Math.max(body.width,body.height)*1.35,fogPoint={x:(body.left+body.right)/2,y:feet-body.height*.45};
   // The smoke box covers the body with margin, its floor just below the feet.
   // Foes face left: the box leans a little toward the head.
-  // A small foe still vanishes into a big cloud: the smoke is never smaller than the foe's
-  // whole sprite cell, whatever the size of the body drawn in it.
-  const smokeBox={w:Math.max(body.width*1.38,cell.width*1.15),h:Math.max(body.height*1.42,cell.height*1.05)};smokeBox.x=fogPoint.x-smokeBox.w*.56;smokeBox.y=feet+smokeBox.h*.08-smokeBox.h;
+  // A small foe still vanishes into a big cloud: the smoke is never smaller than an elite's
+  // sprite cell (a common foe's cell is drawn 1.3x smaller), whatever the body drawn in it.
+  const least=target.dataset.tier==='normal'?1.3:1;
+  const smokeBox={w:Math.max(body.width*1.38,cell.width*1.15*least),h:Math.max(body.height*1.42,cell.height*1.05*least)};smokeBox.x=fogPoint.x-smokeBox.w*.56;smokeBox.y=feet+smokeBox.h*.08-smokeBox.h;
   // A huge foe's cloud stops short of Noct's spot instead of swallowing the whole arena.
   const reach=root.getBoundingClientRect(),limit=reach.left-scene.left+reach.width*.62;
   if(smokeBox.x<limit){smokeBox.w-=limit-smokeBox.x;smokeBox.x=limit;}
