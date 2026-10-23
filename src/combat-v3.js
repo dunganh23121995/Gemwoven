@@ -243,9 +243,13 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   if(side==='hero'&&state.key==='shadow')return shadowAttack(raw,{hits,damageLedger,attackChain});
   const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
   const key=progressionIsDuel()?'novice':side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
-  const melee=key==='earth'||(['fire','novice'].includes(key)&&side==='hero');
   const sourceOrigin=combatV3Point(side),targetOrigin=combatV3Point(targetSide);
-  const travel=melee?Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43):0;
+  const reach=Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43);
+  // Foes pounce on the hero for a basic attack; only one that stands too far away (more than
+  // half the arena to cover) strikes from range with its element instead.
+  const foe=side==='enemy'&&!progressionIsDuel(),pounce=foe&&reach<=$('scene').clientWidth*.5;
+  const melee=foe?pounce:key==='earth'||(['fire','novice'].includes(key)&&side==='hero');
+  const travel=melee?reach:0;
   const sourceTransform=source.style.transform,targetTransform=target.style.transform,sourceZ=source.style.zIndex,targetFilter=target.style.filter;
   const pending=[];let total=0,blocked=0,stored=0;
   const chain=ultimate?1:Math.max(1,Math.floor(attackChain)),variant=(chain-1)%3;
@@ -288,10 +292,11 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
         combatV3Frame(side,action,strike.launch);await combatV3Wait(melee?45:35);
       }
       const origin=combatV3Point(side),contact=combatV3Point(targetSide);
-      const contactDelay=COMBAT_V3_STRIKES[key==='fire'&&side==='enemy'?'breath':key].contact;
+      const contactDelay=COMBAT_V3_STRIKES[pounce?'novice':key==='fire'&&side==='enemy'?'breath':key].contact;
       combatV3Whoosh(key,strong||boss,contactDelay);
       if(melee||key==='lightning')combatV3AttackTrail(origin,contact,key,direction,contactDelay,pending);
-      if(castAttackVisual(side,key,origin,contact,strikeIndex,pending)){}
+      if(pounce)combatV3Slash({x:contact.x-direction*15,y:contact.y+5,width:contact.width},key,strikeIndex,false,direction,pending);
+      else if(castAttackVisual(side,key,origin,contact,strikeIndex,pending)){}
       else if(key==='fire'&&side==='hero')combatV3Slash(contact,key,strikeIndex,ultimate,direction,pending);
       else if(key==='fire')combatV3Breath(origin,contact,ultimate,pending);
       else if(key==='ice')combatV3Ice(origin,contact,ultimate,i,direction,pending);

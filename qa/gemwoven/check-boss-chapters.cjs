@@ -13,6 +13,21 @@ for(const chapter of M.WORLD.CHAPTERS){
   assert.equal(chapter.elites.length,2);assert.deepEqual([...new Set(stages.filter(s=>s.tier==='elite').map(s=>s.creature))].sort(),[...chapter.elites].sort(),'Both chapter elites alternate');
   for(const s of stages.filter(s=>!s.boss))assert.ok(s.enemyName&&s.enemyName!=='Vệ Binh Tinh Anh',`Named foe at ${s.index}`);
 }
+{ // Bosses never share a skill; elites have their own chapter skills, weaker than their boss; common foes share one.
+  const W=M.WORLD,owner=new Map();
+  for(const [id,b] of Object.entries(W.BOSSES))for(const s of b.skills){assert.ok(!owner.has(s.name),`${s.name} is used by ${owner.get(s.name)} and ${id}`);owner.set(s.name,id);}
+  const strength=s=>(s.power||0)+(s.shield||0)*5+(s.heal||0)*5+(s.drain||0)/40;
+  for(const chapter of W.CHAPTERS){
+    const bossSkills=W.BOSSES[chapter.boss].skills,bossTop=Math.max(...bossSkills.map(s=>s.power||0),...bossSkills.flatMap(s=>(s.effects||[]).map(e=>e.power||0)));
+    for(const id of chapter.elites){
+      const own=W.ELITE_SKILLS[id];assert.equal(own.length,2,id);
+      for(const s of own){assert.ok(!owner.has(s.name),`${s.name} reused by ${id}`);owner.set(s.name,id);assert.ok((s.power||0)<bossTop,`${id} ${s.name} weaker than ${chapter.boss}`);assert.ok(strength(s)<1.3);}
+    }
+    const stages=Array.from({length:49},(_,i)=>M.encounter('campaign',(chapter.index-1)*50+i+1));
+    for(const e of stages.filter(e=>e.tier==='normal'))assert.deepEqual(e.skills,[W.COMMON_SKILL.name],'Every common foe has the same skill');
+    for(const e of stages.filter(e=>e.tier==='elite'))assert.deepEqual(e.skills,W.ELITE_SKILLS[e.creature].map(s=>s.name));
+  }
+}
 { // The chapter boss's first clear is the chapter's big payout; replays and elites are not.
   const p=engine.read(),boss=M.encounter('campaign',100),elite=M.encounter('campaign',95);p.campaign.cleared=99;p.daily.campaignWins=0;
   const first=M.campaignRewardPreview(p,100,3).reward,eliteLoot=M.campaignRewardPreview(p,95,3).reward;
@@ -53,4 +68,4 @@ for(const d of D.definitions){
   const small=T.create(d,{tier:'normal',variant:0});let smallHazard=false;for(let i=0;i<15;i++){smallHazard=T.advance(small,d,1).some(e=>e.type==='hazard')||smallHazard;assert.ok(small.stacks<=2);}assert.ok(smallHazard,'Ordinary monsters teach a weakened version of the actual environment hazard');
 }
 assert.equal(engine.read().wallet.gems,0);assert.throws(()=>M.encounter('campaign',1501));
-console.log(JSON.stringify({passed:true,bosses:D.definitions.length,checks:'24 chapters, one boss each; elites every 5 stages; big gem-free chapter-clear reward; 24 bosses; elite 3-star-only fragments; no replay farming; persistent nonconsumable counters; snapshot rank; phases; telegraph interruption; real minion HP; 80% typed resistance; no gameplay gems'},null,2));
+console.log(JSON.stringify({passed:true,bosses:D.definitions.length,checks:'24 chapters, one boss each; unique boss skills, own weaker elite skills, one shared common-foe skill; elites every 5 stages; big gem-free chapter-clear reward; 24 bosses; elite 3-star-only fragments; no replay farming; persistent nonconsumable counters; snapshot rank; phases; telegraph interruption; real minion HP; 80% typed resistance; no gameplay gems'},null,2));

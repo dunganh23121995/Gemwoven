@@ -8,7 +8,8 @@ startStage=function(){
   expeditionState=null;
   expeditionStart();
   if(!expeditionDef||progressionError)return;
-  expeditionState=expeditionRules.create(expeditionDef,{rank:progressionBattle.counter?.rank||0,heroMax:HEROES[state.key].hp,bossMax:state.enemyMax,tier:progressionBattle.tier,variant:progressionBattle.variant});
+  const own=progressionBattle.tier==='boss'?null:(progressionBattle.skillSet||[]).map(progressionRules.WORLD.tacticalSkill);
+  expeditionState=expeditionRules.create(expeditionDef,{rank:progressionBattle.counter?.rank||0,heroMax:HEROES[state.key].hp,bossMax:state.enemyMax,tier:progressionBattle.tier,variant:progressionBattle.variant,skills:own?.length?own:null});
   document.body.classList.add('expedition-combat');plannedIntent=intent();update();
 };
 const expeditionApplyDamage=applyCombatDamage;
@@ -31,10 +32,16 @@ async function expeditionEnemyTurn(){
   if(skipAction){state.frozen=false;state.stunned=false;message('Ngắt nhịp đối thủ · cơ chế môi trường vẫn tiếp diễn.');}
   turn='enemy';
   const events=expeditionRules.advance(expeditionState,expeditionDef,state.enemyHp/state.enemyMax,{skipAction}),base=(progressionBattle.enemySkillBase??(progressionBattle.boss?30:18))*(progressionBattle.boss?.45:1); // expedition bosses act every turn (plus hazards), so each hit carries less than a classic boss skill
+  // Hits that belong to a cast skill are staged with the foe's own effect (foe-skills.js).
+  const skills=[...(expeditionState.own||[]),...expeditionDef.skills];let casting=null;
   for(const e of events){
     if(state.hp<=0||state.enemyHp<=0)break;
     if(e.type==='phase'){message(expeditionDef.name+' · '+expeditionDef.phaseNames[e.phase-1]);actor('enemy').dataset.bossPhase=e.phase;await combatParticles('enemy',state.enemyKey,12);}
-    if(e.type==='cast'){message(progressionBattle.enemyName+' · '+e.name);popActorSkill('enemy',e.name,true,[]);setSpriteAction('enemy','cast',760);}
+    if(e.type==='cast'){
+      message(progressionBattle.enemyName+' · '+e.name);popActorSkill('enemy',e.name,true,[]);setSpriteAction('enemy','cast',760);
+      casting=skills.find(s=>s.name===e.name)||null;
+      if(casting?.effects?.some(x=>x.type==='ward'||x.type==='heal'))await foeSkillAura();
+    }
     if(e.type==='windup'){message('Đang niệm '+e.name+'! Phá niệm trong lượt kế tiếp.');await floating('enemy','NIỆM CHIÊU','armor');}
     if(e.type==='interrupt'){message('Đã phá '+e.name+' · Lộ điểm yếu!');await floating('enemy','PHÁ NIỆM','good');}
     if(e.type==='hazard'){
@@ -42,7 +49,10 @@ async function expeditionEnemyTurn(){
       const armor=state.armor;state.armor=0;const result=applyCombatDamage('hero',Math.round(e.amount*(1-progressionBattle.stats.defense)));state.armor=armor;
       await floating('hero',expeditionDef.status+' −'+result.amount);
     }
-    if(e.type==='hit'||e.type==='burst')await attack('enemy',base*e.power,{hits:e.hits||1});
+    if(e.type==='hit'||e.type==='burst'){
+      if(casting&&!e.addAttack&&expeditionState.tier!=='normal')await foeSkillStrike({kind:casting.kind||(casting.effects.some(x=>x.type==='drain')?'drain':'strike')},base*e.power,e.hits||1);
+      else await attack('enemy',base*e.power,{hits:e.hits||1});
+    }
     if(e.type==='heal')await buff('enemy','heal',Math.round(state.enemyMax*e.pct));
     if(e.type==='drain')state.energy=Math.max(0,state.energy-e.amount);
     if(e.type==='shatter')state.armor=Math.max(0,Math.round(state.armor*(1-e.fraction)));

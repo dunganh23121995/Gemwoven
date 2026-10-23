@@ -227,6 +227,9 @@ art['heroForms']={}
 form_skill_fx=json.loads((root/'assets/fx/forms/fx.json').read_text(encoding='utf-8'))
 art['formSkillFx']={hero:{form:{**sheet,'src':compact_image(sheet['file'])} for form,sheet in forms.items()} for hero,forms in form_skill_fx.items()}
 art['scytheGlint']=image('assets/heroes/forms/shadow/form-3/scythe-mask.png')
+# Each chapter boss's signature skill effect (also used, smaller, by that chapter's elites).
+boss_fx_path=root/'assets/fx/bosses/fx.json'
+art['bossFx']={boss:{**sheet,'src':compact_image(sheet['file'])} for boss,sheet in json.loads(boss_fx_path.read_text(encoding='utf-8')).items() if (root/sheet['file']).exists()} if boss_fx_path.exists() else {}
 reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8'))
 art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
 art['formAuras']={}
@@ -259,14 +262,14 @@ for family in ['bosses','worldBosses']:
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
-                for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css'])
+                for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css', 'foe-skills.css'])
 css += '\n'+(root/'src/progression-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/expedition-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/gemwoven/hero-forms.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/hero-forms-combat.css').read_text(encoding='utf-8')
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART=' + json.dumps(art, separators=(',', ':')) + ';\n'
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
-                        for p in ['audio-settings.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js'])
+                        for p in ['audio-settings.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/gemwoven/form-effects.js').read_text(encoding='utf-8')

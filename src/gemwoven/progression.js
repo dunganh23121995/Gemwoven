@@ -256,7 +256,9 @@
     const every=WORLD.ELITE_EVERY,tier=boss?'boss':mode==='campaign'&&index%every===0?'elite':'normal';
     const local=(index-1)%50+1,variant=mode!=='campaign'||boss?0:tier==='elite'?(local/every-1)%2:(local-1)%chapter.ordinary.length;
     const creatureId=mode==='campaign'&&!boss?(tier==='elite'?chapter.elites:chapter.ordinary)[variant]:null;
-    const creature=creatureId?CREATURES.find(c=>c.id===creatureId)||{id:creatureId,name:WORLD.CREATURE_NAMES[chapter.id][creatureId],skill:tier==='elite'?'Đòn Cường Hóa':'Tấn Công'}:null;
+    const creature=creatureId?CREATURES.find(c=>c.id===creatureId)||{id:creatureId,name:WORLD.CREATURE_NAMES[chapter.id][creatureId]}:null;
+    // Bosses and elites fight with their own skills; every common foe shares one skill.
+    const skillSet=boss?bossDef.skills:tier==='elite'?WORLD.ELITE_SKILLS[creatureId]||[WORLD.COMMON_SKILL]:mode==='campaign'?[WORLD.COMMON_SKILL]:[];
     // Campaign HP growth halves after stage 200 (stages 1–200 unchanged) so late
     // stages track hero damage; expedition bosses (stages 750+) are longer
     // phase fights (×3 → ×4 HP by stage 1200) with a 35-turn limit. Endless
@@ -265,8 +267,8 @@
     const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-700)/500:2.25):tier==='elite'?1.5:1):(120+depth*18)*(boss?1.7:1);
     return {mode,index,recommended,boss,tier,chapter:chapter.index,theme:chapter.id,bossId:chapter.boss,music:boss?chapter.music:chapter.element,creature:creature?.id||null,enemyName:boss?bossDef.name:creature?.name||'Vệ Binh Tinh Anh',turnLimit:tier==='boss'?(lateBoss?35:20):tier==='elite'?16:12,
       enemyKey:mode==='pvp'||mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth),enemyAttack:enemyAttackFor(mode,index,tier,recommended),enemySkillBase:ENEMY_SKILL_BASE[tier],
-      skills:tier==='boss'?bossDef.skills.map(s=>s.name):tier==='elite'?['Đòn Cường Hóa','Hộ Giáp']:[creature?.skill||'Đánh Thường'],
-      skillSet:boss?bossDef.skills:[],tactical:!!bossDef.tactical,variant,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='pvp'?'Đấu tập 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
+      skills:skillSet.length?skillSet.map(s=>s.name):['Đánh Thường'],
+      skillSet,tactical:!!bossDef.tactical,variant,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='pvp'?'Đấu tập 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
   }
   function stageStars(b,won,performance={}){
     if(!won)return 0;

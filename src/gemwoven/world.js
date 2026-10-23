@@ -51,6 +51,65 @@
     CHAPTERS.push({id:d.theme,name:d.chapterName,boss:d.id,index:d.chapter,size:50,element:d.element,music:'boss-'+d.theme,creatures:[...ordinary,...elites],ordinary,elites,backdrop:d.backdrop,counterKey:d.counterKey});
     CREATURE_NAMES[d.theme]=Object.fromEntries([...d.ordinary,...d.elites].map(([id,name])=>[d.theme+'-'+id,name]));
   }
+  // Every common foe has the same single skill; each elite has two skills of its own, themed on
+  // its chapter but weaker than the chapter boss (lower power, smaller shields/heals/drains).
+  const COMMON_SKILL=skill('Vồ Hung Bạo','strike',1.3);
+  const ELITE_SKILLS=Object.fromEntries(Object.entries({
+    'forest-rootknight':[['Chùy Đá Rễ','strike',.95],['Khiên Rễ Cổ','guard',0,{shield:.05}]],
+    'forest-leafarcher':[['Mưa Tên Lá','strike',.85,{hits:3}],['Tên Gai Độc','poison',.55,{turns:2,dot:.12}]],
+    'volcano-flamelancer':[['Thương Hỏa Long Xuyên','pierce',.9,{pierce:.35}],['Giáp Vảy Đỏ','guard',0,{shield:.05}]],
+    'volcano-ashcultist':[['Lư Hương Tro Tàn','burn',.6,{turns:2,dot:.15}],['Khói Tế Lễ','drain',.6,{drain:12}]],
+    'ice-frostguard':[['Kích Băng Nguyệt','strike',.9,{hits:2}],['Tường Băng','guard',0,{shield:.06}]],
+    'ice-snowwitch':[['Gió Tuyết Cuốn','drain',.65,{drain:15}],['Trăng Băng Hồi Phục','heal',0,{heal:.04}]],
+    'thunder-stormblade':[['Song Kiếm Lôi Đình','strike',.85,{hits:4}],['Tích Lôi','charge',.5,{charge:1.25}]],
+    'thunder-sparkmage':[['Tia Chớp Nối','strike',.8,{hits:3}],['Điện Trường Nhỏ','drain',.6,{drain:15}]],
+    'marsh-bogstalker':[['Giáo Xương Gai','pierce',.9,{pierce:.3}],['Bẫy Bùn Độc','poison',.55,{turns:2,dot:.12}]],
+    'marsh-sporewitch':[['Mưa Bào Tử','poison',.5,{turns:3,dot:.1}],['Nấm Hồi Sinh','heal',0,{heal:.05}]],
+    'desert-scarabguard':[['Khopesh Mặt Trời','strike',.95],['Khiên Bọ Vàng','guard',0,{shield:.06}]],
+    'desert-sandpriest':[['Lời Nguyền Cát','drain',.6,{drain:15}],['Ankh Hồi Sinh','heal',0,{heal:.05}]],
+    'abyss-reefcorsair':[['Đường Kiếm San Hô','strike',.85,{hits:2}],['Cướp Linh Hải Tặc','lifesteal',.8,{leech:.2}]],
+    'abyss-tidecaller':[['Đinh Ba Triều Dâng','strike',.8,{hits:3}],['Vòng Nước Hộ Thân','guard',0,{shield:.05}]],
+    'foundry-gearknight':[['Búa Piston','strike',1],['Giáp Hơi Nước','guard',0,{shield:.06}]],
+    'foundry-tinkerer':[['Cờ Lê Xoáy','strike',.8,{hits:2}],['Drone Sửa Chữa','heal',0,{heal:.05}]],
+    'crystal-shardblade':[['Kiếm Lăng Tinh','pierce',.9,{pierce:.35}],['Vỏ Pha Lê','guard',0,{shield:.05}]],
+    'crystal-gemsage':[['Ngọc Cầu Phân Quang','strike',.8,{hits:3}],['Ngọc Hấp Linh','drain',.6,{drain:15}]],
+    'haunted-gravewarden':[['Xẻng Đào Mộ','strike',.95],['Đèn Hồn Hút Khí','drain',.6,{drain:15}]],
+    'haunted-bonepaladin':[['Kiếm Ấn Xương','execute',.85,{threshold:.35,bonus:1.4}],['Khiên Xương','guard',0,{shield:.06}]],
+    'sky-windknight':[['Thương Phong Xuyên','pierce',.9,{pierce:.3}],['Lông Vũ Hộ Giáp','guard',0,{shield:.05}]],
+    'sky-cloudmonk':[['Chưởng Mây','strike',.8,{hits:2}],['Mây Lành','heal',0,{heal:.05}]],
+    'thorns-briarduelist':[['Kiếm Gai Hồng','strike',.85,{hits:3}],['Hồng Hút Máu','lifesteal',.8,{leech:.2}]],
+    'thorns-vinehexer':[['Dây Leo Siết','poison',.55,{turns:2,dot:.14}],['Vương Miện Gai','guard',0,{shield:.05}]],
+    'celestial-sunpaladin':[['Nhật Kiếm Thánh','strike',.95,{hits:2}],['Khiên Mặt Trời','guard',0,{shield:.06}]],
+    'celestial-dawncleric':[['Lư Hương Thánh','burn',.55,{turns:2,dot:.13}],['Thánh Quang Bình Minh','heal',0,{heal:.05}]],
+    'void-voidknight':[['Đại Kiếm Hư Vô','execute',.9,{threshold:.35,bonus:1.4}],['Áo Choàng Tinh Tú','guard',0,{shield:.05}]],
+    'void-starseer':[['Mưa Sao Băng','strike',.8,{hits:3}],['Cầu Tinh Thực','drain',.65,{drain:15}]],
+    'eldergrove-rootwarden':[['Rễ Trói Buộc','drain',.6,{drain:15}],['Vỏ Cây Cổ Mộc','guard',0,{shield:.06}]],
+    'eldergrove-blossomranger':[['Song Đao Bạch Hoa','strike',.85,{hits:2}],['Phấn Hoa Ký Sinh','poison',.5,{turns:2,dot:.12}]],
+    'caldera-basaltbrute':[['Quyền Huyền Nham','strike',.95,{hits:2}],['Da Đá Nung','guard',0,{shield:.06}]],
+    'caldera-furnacepriest':[['Lửa Lò Thiêu','burn',.6,{turns:2,dot:.15}],['Tế Lửa Hồi Nguyên','heal',0,{heal:.04}]],
+    'glacier-rimeknight':[['Trảm Sương Giá','strike',.9,{hits:2}],['Giáp Sương','guard',0,{shield:.06}]],
+    'glacier-blizzardmage':[['Mưa Băng Vụn','strike',.75,{hits:3}],['Cầu Bão Tuyết','drain',.65,{drain:15}]],
+    'stormspire-voltlancer':[['Thương Lôi Dực','pierce',.9,{pierce:.35}],['Tụ Sấm','charge',.5,{charge:1.25}]],
+    'stormspire-stormshaman':[['Trụ Sét Tế','strike',.8,{hits:3}],['Mưa Bão Hút Linh','drain',.6,{drain:15}]],
+    'soulcrypt-cagekeeper':[['Xích Giam Hồn','drain',.65,{drain:15}],['Lồng Sắt Hộ Thân','guard',0,{shield:.06}]],
+    'soulcrypt-veilassassin':[['Dao Bóng','strike',.8,{hits:3}],['Ám Sát Hắc Màn','execute',.85,{threshold:.35,bonus:1.45}]],
+    'mycelium-plagueherald':[['Ôn Bào Lan Tràn','poison',.55,{turns:3,dot:.1}],['Chuông Dịch','drain',.6,{drain:12}]],
+    'mycelium-mycoknight':[['Chùy Nấm Bào Tử','strike',.9,{hits:2}],['Giáp Mũ Nấm','guard',0,{shield:.06}]],
+    'geode-rampartgolem':[['Đấm Thành Lũy','strike',1],['Tường Tinh Thạch','guard',0,{shield:.07}]],
+    'geode-prismseer':[['Tia Lăng Kính','pierce',.85,{pierce:.35}],['Tinh Quang Hồi Phục','heal',0,{heal:.04}]],
+    'hourglass-dunesentinel':[['Giáo Cồn Cát','strike',.9,{hits:2}],['Khiên Cát Lún','guard',0,{shield:.06}]],
+    'hourglass-chronoweaver':[['Sợi Thời Khắc','drain',.65,{drain:18}],['Ngưng Đọng','charge',.5,{charge:1.3}]],
+    'coralreef-tidemarshal':[['Đinh Ba Thủy Triều','strike',.9,{hits:2}],['Giáp Ngọc Trai','guard',0,{shield:.06}]],
+    'coralreef-coraloracle':[['Sóng Ngầm','drain',.6,{drain:15}],['Lời Tiên Tri San Hô','heal',0,{heal:.05}]],
+    'moonkeep-lunarknight':[['Nguyệt Kiếm','strike',.9,{hits:2}],['Giáp Trăng Bạc','guard',0,{shield:.06}]],
+    'moonkeep-eclipsehuntress':[['Song Dao Lưỡi Liềm','strike',.8,{hits:4}],['Vết Cắn Nhật Thực','lifesteal',.8,{leech:.2}]]
+  }).map(([id,list])=>[id,list.map(([name,kind,power,extra])=>skill(name,kind,power,extra))]));
+  // The same skills as phase-fight effects (expansion chapters run on boss-tactics.js).
+  function tacticalSkill(s){
+    const hit={type:'hit',power:s.power,hits:s.hits||1},effects={guard:[{type:'ward',pct:s.shield}],heal:[{type:'heal',pct:s.heal}],drain:[{type:'drain',amount:s.drain},hit],
+      burn:[hit,{type:'stack',count:1}],poison:[hit,{type:'stack',count:1}],pierce:[{type:'shatter',fraction:s.pierce*.5},hit],lifesteal:[hit,{type:'heal',pct:.02}]}[s.kind]||[hit];
+    return {name:s.name,kind:s.kind,effects};
+  }
   const chapterForStage=n=>CHAPTERS[Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((n-1)/50)))];
   const SHOP=[
     ['exp','Sách EXP','resource','exp','common','gold',120,'exp-book','Kinh nghiệm để tăng cấp tướng.'],
@@ -69,5 +128,5 @@
   ].map(([id,name,kind,target,rarity,currency,price,asset,description])=>({id,name,kind,target,rarity,currency,price,asset,description}));
   for(const [slot,name]of [['helmet','Mũ'],['pants','Quần'],['glasses','Kính']])for(const [rarity,label,price]of [['legendary','Huyền Thoại',2000],['divine','Thần',5200]])SHOP.push({id:rarity+'-'+slot,name:name+' '+label,kind:'gear',target:slot,rarity,currency:'gems',price,asset:'gear-'+slot,description:name+' dùng chung giữa các tướng. Cường hóa tối đa +20.'});
   for(const row of SHOP)if(row.kind==='gear'&&row.target==='armor')row.asset='gear-armor';
-  return {BOSSES,CHAPTERS,CREATURE_NAMES,SHOP,chapterForStage,EXPANSION,MAX_STAGES:CHAPTERS.length*50,ELITE_EVERY:5};
+  return {BOSSES,CHAPTERS,CREATURE_NAMES,SHOP,chapterForStage,EXPANSION,MAX_STAGES:CHAPTERS.length*50,ELITE_EVERY:5,COMMON_SKILL,ELITE_SKILLS,tacticalSkill};
 });

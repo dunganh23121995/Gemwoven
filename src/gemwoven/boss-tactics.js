@@ -2,8 +2,8 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.GemwovenBossTactics=api;})(typeof globalThis!=='undefined'?globalThis:this,()=>{
   'use strict';
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  function create(def,{rank=0,heroMax=1000,bossMax=1000,tier='boss',variant=0}={}){
-    return {id:def.id,tier,variant,rank:clamp(Math.floor(rank),0,4),heroMax,bossMax,phase:1,turn:0,cast:0,stacks:0,gauge:0,ward:tier==='boss'&&def.mechanic==='shell'?Math.round(bossMax*.12):0,addHp:0,addMax:0,addCount:0,addLock:0,channel:null,cleanseTiles:0,vulnerable:0,events:[]};
+  function create(def,{rank=0,heroMax=1000,bossMax=1000,tier='boss',variant=0,skills=null}={}){
+    return {id:def.id,tier,variant,own:tier==='boss'?null:skills,rank:clamp(Math.floor(rank),0,4),heroMax,bossMax,phase:1,turn:0,cast:0,stacks:0,gauge:0,ward:tier==='boss'&&def.mechanic==='shell'?Math.round(bossMax*.12):0,addHp:0,addMax:0,addCount:0,addLock:0,channel:null,cleanseTiles:0,vulnerable:0,events:[]};
   }
   const resist=t=>[0,.35,.5,.65,.8][t.rank];
   function collect(t,def,type){
@@ -33,8 +33,8 @@
   }
   function nextSkill(t,def,atTurn=t.turn+1){
     if(t.channel)return t.channel.skill;
-    if(t.tier==='normal')return atTurn%3===0?def.skills[[0,1,3][t.variant%3]]:{name:'Đòn đánh thường',effects:[{type:'hit',power:1.4}]};
-    if(t.tier==='elite')return def.skills[[0,1,3,4][(t.cast+t.variant)%4]];
+    if(t.tier==='normal')return atTurn%3===0?(t.own?.[0]||def.skills[[0,1,3][t.variant%3]]):{name:'Đòn đánh thường',effects:[{type:'hit',power:1.4}]};
+    if(t.tier==='elite')return t.own?t.own[t.cast%t.own.length]:def.skills[[0,1,3,4][(t.cast+t.variant)%4]];
     const cycle=t.phase===1?[0,1,2,0,1]:t.phase===2?[3,2,4,0,1]:[5,3,4,5,2,3];
     return def.skills[cycle[t.cast%cycle.length]];
   }

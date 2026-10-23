@@ -230,15 +230,15 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
     // Flat skill base: level scaling lives only in enemyAttack (progression.js).
     const skill=battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
     if(!skill){if(battle.tier==='elite'&&phase===1)await buff('enemy','armor',Math.round(state.enemyMax*.04));else await attack('enemy',base);}
-    else if(skill.kind==='guard')await buff('enemy','armor',Math.round(state.enemyMax*skill.shield));
-    else if(skill.kind==='heal')await buff('enemy','heal',Math.round(state.enemyMax*skill.heal));
+    else if(skill.kind==='guard'){await foeSkillAura();await buff('enemy','armor',Math.round(state.enemyMax*skill.shield));}
+    else if(skill.kind==='heal'){await foeSkillAura();await buff('enemy','heal',Math.round(state.enemyMax*skill.heal));}
     else{
       if(skill.drain)state.energy=Math.max(0,state.energy-skill.drain);
       let raw=base*(skill.power||1)*progressionEnemyCharge;progressionEnemyCharge=1;
       if(skill.kind==='execute'&&state.hp/HEROES[state.key].hp<skill.threshold)raw*=skill.bonus;
       const reservedArmor=skill.pierce?Math.floor(state.armor*skill.pierce):0;state.armor-=reservedArmor;
       const previous=state.hp;
-      try{await attack('enemy',raw,{hits:skill.hits||1});}finally{state.armor+=reservedArmor;}
+      try{await foeSkillStrike(skill,raw,skill.hits||1);}finally{state.armor+=reservedArmor;}
       if(skill.leech&&previous>state.hp)await buff('enemy','heal',Math.round((previous-state.hp)*skill.leech));
       if(skill.kind==='burn'||skill.kind==='poison')progressionEnemyDot={name:skill.kind==='burn'?'Thiêu đốt':'Độc',turns:skill.turns,raw:base*skill.dot};
       if(skill.charge)progressionEnemyCharge=skill.charge;
