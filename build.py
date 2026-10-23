@@ -181,7 +181,7 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'));forms={}
     for form,entry in data['forms'].items():
         actions={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in entry['actions'].items()}
-        actions['buff']=actions['cast'];actions['hover']=actions['run']
+        actions['buff']=actions['cast'];actions.setdefault('hover',actions['run'])
         register_feet(actions['idle']);forms[form]=actions
     art['heroForms'][data['hero']]=forms
 for family in ['heroes','enemies','bosses','worldBosses']:

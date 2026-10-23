@@ -21,6 +21,16 @@
 .has-hero-form[data-hero-element="shadow"]>.art,.has-hero-form[data-hero-element="shadow"]>img{filter:drop-shadow(0 3px 2px #0006)}
 .has-hero-form[data-hero-element="shadow"][data-hero-form="3"]>.art,.has-hero-form[data-hero-element="shadow"][data-hero-form="3"]>img{filter:drop-shadow(0 0 8px #050506) drop-shadow(0 0 2px #8d8d94)}
 @keyframes form-aura-strip{from{background-position:0 0}to{background-position:100% 0}}
+/* The aura never sits still: the next frame fades in over the current one (::after one frame
+   ahead, fading over one frame) and the whole band drifts and breathes; front pieces sway
+   out of phase with the back layer. */
+.form-aura-band{--aura-frame:calc(var(--aura-cycle,1280ms) / 8);background:none!important;animation:form-aura-drift 6.4s ease-in-out infinite!important;transform-origin:50% 72%}
+.form-aura-band::before,.form-aura-band::after{content:'';position:absolute;inset:0;background:var(--aura-sheet) 0 0/800% 100% no-repeat;animation:form-aura-strip var(--aura-cycle,1280ms) steps(8,jump-none) infinite}
+.form-aura-band::after{animation:form-aura-strip var(--aura-cycle,1280ms) steps(8,jump-none) calc(var(--aura-frame) * -1) infinite,form-aura-fade var(--aura-frame) linear infinite}
+.form-aura-front .form-aura-band{animation:form-aura-sway 4.6s ease-in-out -1.9s infinite!important;transform-origin:50% 62%}
+@keyframes form-aura-fade{from{opacity:0}to{opacity:1}}
+@keyframes form-aura-drift{0%,100%{transform:none}30%{transform:translate(1.2%,-2.2%) rotate(1.4deg) scale(1.02,.985)}65%{transform:translate(-1.4%,-.8%) rotate(-1.1deg) scale(.99,1.015)}}
+@keyframes form-aura-sway{0%,100%{transform:none}50%{transform:translate(-2.5%,1.8%) rotate(-2.4deg) scaleX(1.04)}}
 @keyframes shadow-breathe{50%{opacity:.7;scale:1.09}}
 @keyframes form-pulse{50%{opacity:.45;scale:1.06}}
 .hero-form-link{z-index:4}

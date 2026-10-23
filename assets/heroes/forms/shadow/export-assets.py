@@ -21,6 +21,7 @@ HEADS = {
         "attack": [[149, 96], [161, 97], [151, 94], [148, 93], [150, 111], [147, 97]],
         "cast": [[145, 91], [142, 90], [140, 91], [141, 88], [140, 88], [141, 88]],
         "run": [[165, 97], [186, 110], [178, 106], [167, 103], [183, 115], [173, 106]],
+        "hover": [[156, 90], [155, 90], [156, 90], [156, 90], [156, 91], [159, 92]],
     },
 }
 
@@ -110,7 +111,7 @@ def register_form2(folder):
     scale = (iys.max() - iys.min()) / (ays.max() - ays.min())
     tx = (ixs.min() + ixs.max()) / 2 - scale * (axs.min() + axs.max()) / 2
     ty = iys.max() - scale * ays.max()
-    for action in ("attack", "cast", "run"):
+    for action in ("attack", "cast", "run", "hover"):
         clean = Image.open(folder / f"{action}/raw-sheet-clean.png").convert("RGBA")
         cell = clean.width // 3
         size = round(cell * scale)
@@ -129,6 +130,26 @@ def register_form2(folder):
     return {action: locate_heads(idle[0], items) for action, items in frames.items()}
 
 
+PROCESSOR = Path.home() / ".codex/skills/generate2dsprite/scripts/generate2dsprite.py"
+
+
+def ensure_frames(folder, action):
+    """Processor outputs are gitignored intermediates; rebuild them from the raw sheet when missing."""
+    source = folder / action
+    if (source / f"{action}-1.png").exists() and (source / "raw-sheet-clean.png").exists():
+        return
+    # Form 3's committed frame-XX.png are the accepted frames; never re-derive them.
+    if folder.name == "form-3" and (source / "frame-00.png").exists():
+        return
+    import subprocess
+    import sys
+    rows, cols = (4, 2) if action == "idle" else (2, 3)
+    subprocess.run([sys.executable, str(PROCESSOR), "process", "--input", str(source / "raw-sheet.png"), "--target", "player",
+                    "--mode", action, "--output-dir", str(source), "--rows", str(rows), "--cols", str(cols),
+                    "--duration", "120" if action == "idle" else "100", "--prompt-file", str(source / "prompt-used.txt"),
+                    "--scale-profile", str(folder / "character-scale-profile.json")], check=True, capture_output=True)
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--form", choices=("2", "3"), action="append")
 selected = parser.parse_args().form or list(NAMES)
@@ -138,6 +159,8 @@ for form, name in NAMES.items():
     if form not in selected:
         continue
     folder = ROOT / f"form-{form}"
+    for action in ("idle", "attack", "cast", "run", "hover"):
+        ensure_frames(folder, action)
     prefix = folder.relative_to(REPO).as_posix()
     form_meta = {
         "name": name,
@@ -146,11 +169,22 @@ for form, name in NAMES.items():
         "actions": {},
     }
     heads = register_form2(folder) if form == "2" else HEADS[form]
-    master = Image.open(folder / "idle/idle-1.png").convert("RGBA")
+    first = folder / "idle/idle-1.png"
+    master = Image.open(first if first.exists() else folder / "idle/frame-00.png").convert("RGBA")
     master.save(folder / "master.png")
     master.crop(PORTRAIT_BOXES[form]).resize((256, 256), Image.Resampling.LANCZOS).save(folder / "portrait.png")
-    for action in ("idle", "attack", "cast", "run"):
+    # hover: the levitation sheet used to travel between stages (it replaces run there).
+    for action in ("idle", "attack", "cast", "run", "hover"):
         source = folder / action
+        count, cols = (8, 2) if action == "idle" else (6, 3)
+        entry = {
+            "file": f"{prefix}/{action}.webp", "cols": cols, "rows": count // cols, "count": count,
+            "heads": heads[action], "footY": 0.94, "frameDuration": 120 if action == "idle" else 100,
+        }
+        if not (source / f"{action}-1.png").exists():
+            # Accepted sheet whose processor intermediates are gone: keep the committed runtime files.
+            form_meta["actions"][action] = entry
+            continue
         meta = json.loads((source / "pipeline-meta.json").read_text())
         meta["prompt"] = (source / "prompt-used.txt").read_text(encoding="utf-8-sig")
         (source / "pipeline-meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
@@ -161,7 +195,8 @@ for form, name in NAMES.items():
         count, cols = (8, 2) if action == "idle" else (6, 3)
         sheet = Image.new("RGBA", (256 * cols, 256 * (count // cols)), (0, 0, 0, 0))
         for index in range(count):
-            frame = Image.open(source / f"{action}-{index + 1}.png").convert("RGBA")
+            processed = source / f"{action}-{index + 1}.png"
+            frame = Image.open(processed if processed.exists() else source / f"frame-{index:02d}.png").convert("RGBA")
             frame.save(source / f"frame-{index:02d}.png")
             sheet.alpha_composite(frame, (index % cols * 256, index // cols * 256))
         assert sheet.getextrema()[3] == (0, 255), f"Missing alpha: {source}"

@@ -149,6 +149,40 @@
           ],
           "footY": 0.94,
           "frameDuration": 100
+        },
+        "hover": {
+          "file": "assets/heroes/forms/shadow/form-2/hover.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              173,
+              49
+            ],
+            [
+              170,
+              49
+            ],
+            [
+              170,
+              50
+            ],
+            [
+              173,
+              44
+            ],
+            [
+              171,
+              44
+            ],
+            [
+              172,
+              44
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
         }
       }
     },
@@ -296,6 +330,40 @@
             [
               173,
               106
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "hover": {
+          "file": "assets/heroes/forms/shadow/form-3/hover.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              156,
+              90
+            ],
+            [
+              155,
+              90
+            ],
+            [
+              156,
+              90
+            ],
+            [
+              156,
+              90
+            ],
+            [
+              156,
+              91
+            ],
+            [
+              159,
+              92
             ]
           ],
           "footY": 0.94,
