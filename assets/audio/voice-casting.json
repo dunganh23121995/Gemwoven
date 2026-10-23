@@ -1,0 +1,351 @@
+{
+  "note": "Combat voice casting. family = clip prefix in boss-voice-manifest.json (<family>-attack1..3, hurt1..3, cast, release, death). The four original bosses (earth/fire/ice/lightning) use named families so the elemental fallback boss-<element>-* stays unchanged. Elite variants: a = lighter/agile, b = heavy/deep.",
+  "bosses": {
+    "earth": {
+      "voice": "treant-golem",
+      "family": "boss-grovewarden",
+      "note": "Cổ Thụ Thần Vệ: moss-and-stone tree golem, no human face. Real grizzly-bear roars pitched down with creaking wood and grinding stone."
+    },
+    "fire": {
+      "voice": "dragon",
+      "family": "boss-ashdragon",
+      "note": "Hỏa Long Tro Tàn: red winged dragon. Real lion roars (slowed) over an alligator growl, ember breath."
+    },
+    "ice": {
+      "voice": "frost-beast",
+      "family": "boss-moonfrost",
+      "note": "Nữ Vương Băng Nguyệt: the art is a white feathered fox/owl-like beast, not a human queen. Real red-fox screams, slowed, with a frosty snake-hiss breath."
+    },
+    "lightning": {
+      "voice": "storm-lion",
+      "family": "boss-thunderking",
+      "note": "Lôi Vương Thiên Đỉnh: purple maned feline beast. Real tiger snarls and roar with a lion layer and electric crackle."
+    },
+    "mire": {
+      "voice": "female",
+      "family": "boss-mire",
+      "note": "Mẫu Nấm Độc: robed mushroom matron with a staff and hands, humanoid, named \"mother\". Old-witch voice actor (CC0), lowered, with a demonic double."
+    },
+    "scarab": {
+      "voice": "insect-beetle",
+      "family": "boss-scarab",
+      "note": "Bọ Vương Hoàng Kim: giant golden beetle. Real Madagascar hissing-cockroach hisses, slowed, with cicada chitter and a low body."
+    },
+    "leviathan": {
+      "voice": "sea-serpent",
+      "family": "boss-leviathan",
+      "note": "Hải Long San Hô: teal coral sea serpent. Real crocodile screams (slowed) and alligator growls over a low humpback-whale bed."
+    },
+    "colossus": {
+      "voice": "steam-golem",
+      "family": "boss-colossus",
+      "note": "Cự Tượng Bánh Răng: brass gear golem, a machine. Distorted real elephant trumpet slowed into a mechanical bellow, steam hiss, stressed metal."
+    },
+    "prism": {
+      "voice": "insect-queen",
+      "family": "boss-prism",
+      "note": "Nữ Vương Tinh Thể: crowned crystal mantis/wasp queen with an insect head (compound eyes, mandibles), not a human face. Real wasp buzz and cicada with scraping glass."
+    },
+    "reaper": {
+      "voice": "undead-wraith",
+      "family": "boss-reaper",
+      "note": "Tử Thần Nguyệt Ảnh: hooded reaper with no visible face, gender not shown. Performed shrieking wraith voice (CC0), ghost breath and moan."
+    },
+    "roc": {
+      "voice": "giant-bird",
+      "family": "boss-roc",
+      "note": "Đại Bàng Thiên Phong: giant eagle. Real red-tailed hawk screeches, slowed for size."
+    },
+    "briar": {
+      "voice": "female",
+      "family": "boss-briar",
+      "note": "Nữ Hoàng Gai: thorn queen, clearly a woman (face, rose crown, gown). Female fighting-grunt actor (CC0) with a light weight double; death from a separate female agony recording."
+    },
+    "seraph": {
+      "voice": "male",
+      "family": "boss-seraph",
+      "note": "Hộ Vệ Nhật Quang: broad armored winged knight, male build. Male fight grunts for attacks, a male pain-grunt actor for hurt/cast/release/death, lowered with a light double."
+    },
+    "eclipse": {
+      "voice": "void-dragon",
+      "family": "boss-eclipse",
+      "note": "Long Đế Hư Không: starry void dragon. CC0 composite roars built from real lion, elephant, crocodile and alligator recordings, slowed and darkened."
+    },
+    "elderbloom": {
+      "voice": "antlered-treant",
+      "family": "boss-elderbloom",
+      "note": "Cổ Vương Bạch Hoa: antlered treant. Real moose/elk bellows with tree-trunk creaks."
+    },
+    "cinderheart": {
+      "voice": "magma-golem",
+      "family": "boss-cinderheart",
+      "note": "Bạo Chúa Tâm Nham: lava rock golem. Real gorilla roar and black-bear growl, slowed, on a lion growl rumble with grinding stone and embers."
+    },
+    "frostregent": {
+      "voice": "female",
+      "family": "boss-frostregent",
+      "note": "Nữ Đế Băng Tinh: ice empress, clearly a woman. Female battle-cry actor (CC0), slightly lowered, cold presence, octave shadow."
+    },
+    "tempestwing": {
+      "voice": "thunderbird",
+      "family": "boss-tempestwing",
+      "note": "Lôi Hoàng Kim Dực: armored storm eagle. Real eagle squawks and calls with electric crackle; a different species and recordist from the roc."
+    },
+    "souljailer": {
+      "voice": "undead-jailer",
+      "family": "boss-souljailer",
+      "note": "Cai Ngục Vong Đăng: hooded lantern wraith, gender not shown. Low performed ghost/demon groans (CC0) with a moaning-wraith layer."
+    },
+    "sporefather": {
+      "voice": "fungal-giant",
+      "family": "boss-sporefather",
+      "note": "Lão Vương Bào Tử: mushroom-covered giant with no human face. Real camel groans (gurgling) slowed, with creaking wood. Borderline: humanoid silhouette and \"father\" in the name."
+    },
+    "prismback": {
+      "voice": "crystal-tortoise",
+      "family": "boss-prismback",
+      "note": "Huyền Quy Tinh Thành: giant tortoise carrying a crystal citadel. Real elephant trumpet and rumble slowed, with stone and glass grind."
+    },
+    "sandchronarch": {
+      "voice": "male",
+      "family": "boss-sandchronarch",
+      "note": "Sa Vương Thời Luân: robed, masked sand king with a humanoid body, a male ruler. Aggressive male growl actor (CC0), lowered, demonic double and sand grit; death from a male scream recording."
+    },
+    "coraltide": {
+      "voice": "sea-dragon",
+      "family": "boss-coraltide",
+      "note": "Hải Đế Châu San Hô: coral sea dragon. Real sea-lion roars (slowed) over a humpback-whale bed; mammalian, unlike the reptilian leviathan."
+    },
+    "moonfang": {
+      "voice": "wolf",
+      "family": "boss-moonfang",
+      "note": "Lang Vương Tử Nguyệt: wolf-headed armored werewolf. Real wolf growls, dog snarls and a solitary wolf howl for cast/death. Borderline: humanoid body, but the head is fully a wolf."
+    }
+  },
+  "elites": {
+    "forest-rootknight": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "forest-leafarcher": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "hooded and masked, gender not shown; default male"
+    },
+    "volcano-flamelancer": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "volcano-ashcultist": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "hooded, gender not shown"
+    },
+    "ice-frostguard": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "ice-snowwitch": {
+      "voice": "female",
+      "family": "elite-female-a"
+    },
+    "thunder-stormblade": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: brief says swordsman"
+    },
+    "thunder-sparkmage": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: brief has no gender cue"
+    },
+    "marsh-bogstalker": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: masked hunter"
+    },
+    "marsh-sporewitch": {
+      "voice": "female",
+      "family": "elite-female-a",
+      "note": "no image yet: witch"
+    },
+    "desert-scarabguard": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "no image yet"
+    },
+    "desert-sandpriest": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet"
+    },
+    "abyss-reefcorsair": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "no image yet"
+    },
+    "abyss-tidecaller": {
+      "voice": "female",
+      "family": "elite-female-b",
+      "note": "no image yet: prompt gives long flowing hair and a pearl circlet"
+    },
+    "foundry-gearknight": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "foundry-tinkerer": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "bearded engineer"
+    },
+    "crystal-shardblade": {
+      "voice": "male",
+      "family": "elite-male-a"
+    },
+    "crystal-gemsage": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "bearded sage"
+    },
+    "haunted-gravewarden": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "haunted-bonepaladin": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "sky-windknight": {
+      "voice": "male",
+      "family": "elite-male-a"
+    },
+    "sky-cloudmonk": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: monk"
+    },
+    "thorns-briarduelist": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: brief has no gender cue"
+    },
+    "thorns-vinehexer": {
+      "voice": "female",
+      "family": "elite-female-b",
+      "note": "no image yet: witch in a dress of vines"
+    },
+    "celestial-sunpaladin": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "no image yet"
+    },
+    "celestial-dawncleric": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: mitred cleric, no gender cue"
+    },
+    "void-voidknight": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "no image yet"
+    },
+    "void-starseer": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "no image yet: hooded seer, no gender cue"
+    },
+    "eldergrove-blossomranger": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "hooded and masked, gender not shown; default male"
+    },
+    "glacier-blizzardmage": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "long hair but a male-presenting face"
+    },
+    "stormspire-voltlancer": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "stormspire-stormshaman": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "bearded"
+    },
+    "mycelium-mycoknight": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "moonkeep-eclipsehuntress": {
+      "voice": "female",
+      "family": "elite-female-a"
+    },
+    "eldergrove-rootwarden": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "humanoid tree golem: deep male variant"
+    },
+    "caldera-basaltbrute": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "humanoid lava golem: deep male variant"
+    },
+    "caldera-furnacepriest": {
+      "voice": "male",
+      "family": "elite-male-a"
+    },
+    "glacier-rimeknight": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "soulcrypt-cagekeeper": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "soulcrypt-veilassassin": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "hooded, gender not shown"
+    },
+    "mycelium-plagueherald": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "bearded mushroom elder"
+    },
+    "geode-rampartgolem": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "humanoid stone golem: deep male variant"
+    },
+    "geode-prismseer": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "hooded crystal face, gender not shown"
+    },
+    "hourglass-dunesentinel": {
+      "voice": "male",
+      "family": "elite-male-b"
+    },
+    "hourglass-chronoweaver": {
+      "voice": "male",
+      "family": "elite-male-a",
+      "note": "hooded and masked, gender not shown"
+    },
+    "coralreef-tidemarshal": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "sea-dragon warrior"
+    },
+    "coralreef-coraloracle": {
+      "voice": "female",
+      "family": "elite-female-b",
+      "note": "mermaid"
+    },
+    "moonkeep-lunarknight": {
+      "voice": "male",
+      "family": "elite-male-b",
+      "note": "wolf-headed knight"
+    }
+  }
+}
