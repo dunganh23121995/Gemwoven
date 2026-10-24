@@ -10,7 +10,7 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
-FX = {"slash": (6, 40), "hook": (6, 60), "fogcut": (6, 50)}  # mist/ is the retired painted fog, kept as source  # frame count, ms per frame
+FX = {"slash": (6, 40), "hook": (6, 60), "fogcut": (6, 50)}  # frame count, ms per frame
 
 
 def despill(frame):
