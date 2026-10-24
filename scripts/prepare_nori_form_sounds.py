@@ -1,9 +1,9 @@
 """Nori's star-form ultimate sounds (src/forms-nori.js): ONE natural recording per clip, cut to its motion.
 
-Like his form-1 sounds, every clip is a single recording: an excerpt whose natural attack lands on the motion's
-frame, a gentle high-pass, gain and edge fades; no layering, pitch or time changes, synthesis or limiting. Each clip
-is as long as its motion on screen (measured in the studio, see the beat column) and fades out by the time the
-next motion starts, so one motion never rings over the next.
+Like his form-1 sounds, few long clips, each a single clean real recording: an excerpt whose natural attack lands
+on the motion's frame, a gentle high-pass, gain (never into distortion) and edge fades, natural decay kept; no
+layering, pitch or time changes, synthesis, saturation or limiting. Each ultimate ends on a long FINAL clip that
+starts on its decisive hit and rings out for 3.5-4.6 s past the visuals.
 Writes assets/audio/hero-forms/earth/*.wav and assets/audio/hero-forms/earth-manifest.json (merged by build.py
 into ART.castSounds; played as playCastSound('earth', '<name>')).
 Sources: form 1's own gather (reimagined/earth-charge.wav) and shield bash recording (sources/mika-nori), and
@@ -26,25 +26,21 @@ TARGET_RMS, MAX_PEAK = .12, .85
 # name: (source, excerpt start, end (s), high-pass Hz, fade in, fade out, beat on screen)
 # the excerpt length is the beat's length (ms in the beat text, measured from the ultimate's start)
 CLIPS = {
-    # shared by both forms
-    'heal-bed': ('fs:368453', 3.9, 5.15, 150, .25, .3, 'the healing spiral around him (bed), 0-1100 / 0-1250 ms'),
+    # shared by both forms (all real recordings; form 1's synthesized gather/rush textures are not reused)
+    'gather': ('fs:368453', 3.0, 4.95, 150, .3, .35, 'the healing spiral rises around him as he lifts the hammer, 0-1100 / 0-1250 ms'),
     'swing': ('fs:475135', .05, .30, 60, .01, .06, 'the hammer swings down into the blow, 770-920 / 1500-1640 ms'),
-    'slam': ('fs:513694', .04, 1.10, 35, .002, .3, 'the hammer hits the ground; its weight rings on under the quake, 920 / 1640 ms on'),
-    'pebble': ('fs:336023', 1.94, 2.12, 80, .002, .06, 'one burst of the running jade crack, played once per burst'),
     # Ngọc Thụ Hộ Thể (four stars)
-    'f2-gather': ('form1:earth-charge', .36, 1.10, 0, .02, .2, 'hammer raised in the healing spiral, 0-760 ms'),
-    'crack-run': ('fs:222521', 1.0, 1.52, 80, .03, .12, 'the jade crack running along the ground, 990-1510 ms'),
-    'sprout': ('fs:479160', 0, .72, 120, .02, .15, "jade vines burst at the foe's feet and hold it bound, 1180-1900 ms"),
-    'jade': ('fs:419146', .3, .76, 300, .03, .15, 'the bound jade sapling opens and gleams, 1450-1900 ms'),
-    'shatter': ('fs:221528', .28, .95, 150, .002, .2, 'the vines and sapling shatter into jade shards, 1900-2400 ms'),
+    'slam': ('fs:513694', .04, 1.10, 35, .002, .3, 'the hammer hits the ground, its weight ringing out, 920-1980 ms'),
+    'crack-run': ('fs:735401', 1.1, 1.42, 80, .02, .12, 'the jade crack running along the ground, 990-1310 ms'),
+    'sprout': ('fs:479160', 0, 1.58, 120, .02, .3, "jade vines burst at the foe's feet and hold it bound, 1190-2780 ms"),
+    'jade-ring': ('fs:448075', 0, 4.6, 80, .002, 1.2, 'FINAL: the jade binding seals the foe and rings out, 1190-5800 ms (natural decay)'),
+    'shatter': ('fs:221528', .28, 1.9, 150, .002, .4, 'the vines and sapling shatter into jade shards, 1900-3500 ms'),
     # Vạn Mộc Thiên Thành (six stars)
-    'f3-gather': ('form1:earth-charge', .17, 1.10, 0, .02, .2, 'hammer raised in the healing spiral, 0-950 ms'),
-    'rush': ('form1:earth-launch', 0, .29, 0, .005, .08, 'the shield charge, 970-1260 ms'),
-    'f3-bash': ('form1:shield-bash', .08, .33, 45, .002, .1, 'shield bash, 1260-1400 ms'),
-    'roots': ('fs:222521', 2.0, 2.72, 80, .03, .15, "the roots crack up through the soil and lock the cage, 1710-2430 ms"),
-    'roots-break': ('fs:552006', 4.36, 4.86, 100, .002, .2, 'the root cage snaps and crumbles, 2660-3150 ms'),
-    'grow': ('fs:848983', 1.15, 1.9, 50, .05, .15, "the world-tree shoots up from the foe's feet, 1700-2450 ms"),
-    'leaves': ('fs:368453', 5.6, 6.3, 150, .08, .25, 'its blazing crown sheds its leaves and fades, 2450-3150 ms'),
+    'rush': ('fs:475135', 0, .75, 60, .01, .2, 'the shield charge, 970-1720 ms'),
+    'f3-bash': ('form1:shield-bash', .08, 1.0, 45, .002, .25, 'shield bash, 1270-2190 ms (form 1 recording, natural decay)'),
+    'world-tree': ('fs:494071', 4.52, 8.0, 40, .01, .8, 'FINAL: the hammer brings the world-tree crashing up from the ground, 1630-5110 ms (natural decay)'),
+    'roots': ('fs:735401', 1.45, 2.35, 80, .03, .3, 'the roots crack up through the soil and lock the cage, 1700-2600 ms'),
+    'leaves': ('fs:368453', 5.6, 6.6, 150, .1, .4, 'the blazing crown sheds its leaves, 2450-3450 ms'),
 }
 
 

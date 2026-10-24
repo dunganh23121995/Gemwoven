@@ -349,23 +349,22 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25, round 3): every visible segment scored for its whole
-duration (a continuous bed under synced hits), each clip ONE real recording minimally edited (excerpt with
-its natural attack and decay, gentle high-pass, gain, short fades; no layering, pitch or time changes, no
-synthesis), cut to the segment it scores. Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json
-(segment, source, checksums). Build: python scripts/prepare_mika_form_sounds.py.
+Mika four- and six-star ultimates (2026-10-25, round 4): few, long clips in form 1's style; each ultimate
+ends on a long roaring-fire tail that starts on the damage hit and rings out with its natural decay. Each clip
+is ONE clean real recording (checked for clipping and noise), minimally edited: excerpt with its natural attack
+and decay, gentle high-pass, gain (peak <= 0.82, no limiting or saturation), short fades; no layering, pitch or
+time changes, no synthesis. Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json (beat,
+source, checksums). Build: python scripts/prepare_mika_form_sounds.py.
   Taira Komori, TK'S FREE SOUND FX (see the katana terms above): extracting_a_sword1 (sword raised),
   sword_attack1 (the cleave).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
-  #490166 "Flamethrower" by SamsterBirdies, https://freesound.org/people/SamsterBirdies/sounds/490166/ (blade igniting and towering)
-  #828433 "Fire Erupted" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/ (slam through the foe)
-  #395039 "Flamethrower_Weapon_Long_Bursts.wav" by AslakHostaker, https://freesound.org/people/AslakHostaker/sounds/395039/ (flames roaring across the stage)
-  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (tails flaring)
-  #186932 "fire_explosion.wav" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/ (glaive drawn back)
-  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (spinning sweep)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (sun burst)
-  #252092 "fireball_impact2.wav" by pepingrillin, https://freesound.org/people/pepingrillin/sounds/252092/ (each spirit wave bursting)
-  #698209 "Fire Large Roar And Hiss With Crackles.mp3" by theoneandtruelybitch, https://freesound.org/people/theoneandtruelybitch/sounds/698209/ (the foe burning)
+  #395039 "Flamethrower_Weapon_Long_Bursts.wav" by AslakHostaker, https://freesound.org/people/AslakHostaker/sounds/395039/ (form 2 blade blazing; form 2 final roaring tail)
+  #843247 "Explosion 1 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843247/ (form 2 slam; edit of a CC0 recording by Ñado)
+  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring, glaive drawn back)
+  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst)
+  #252092 "fireball_impact2.wav" by pepingrillin, https://freesound.org/people/pepingrillin/sounds/252092/ (form 3 each spirit wave)
+  #674902 "S30-36 Napalm bomb explosion.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/674902/ (form 3 final roaring tail)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length
@@ -453,3 +452,39 @@ Still one natural recording per clip (excerpt, high-pass, gain, edge fades). Cli
   f3-halberd  "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0-1.0)
   f3-close    "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0-1.0)
   f3-burst    "Glass break - Long" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/ (CC0-1.0)
+
+Yuki form 2-3 ultimates, round 4 (2026-10-25; supersedes the Yuki form 2-3 lists above): form 1 style,
+few long clips with their natural attack and decay, each ultimate ending on a long tail from the damage hit
+(form 1's deep boom, full sustain, under a 4.4 s / 2.8 s natural glass collapse). One clean recording per clip,
+checked for clipping and noise; excerpt, high-pass, gain (peak <= 0.82) and edge fades only, no limiting.
+  crack       "ice-crack" by j_p_higgins, https://freesound.org/people/j_p_higgins/sounds/262633/ (CC0-1.0)
+  boom        "Deep Boom" by Za-Games, https://freesound.org/people/Za-Games/sounds/539968/ (CC0-1.0)
+  f2-gather   "Belltree.aif" by acmkyne, https://freesound.org/people/acmkyne/sounds/145578/ (CC0-1.0)
+  f2-beam     "Woosh" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/683096/ (CC0-1.0)
+  f2-freeze   "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0-1.0)
+  f2-shatter  "Glass break - Long" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/ (CC0-1.0)
+  f3-aegis    "ice sounds 7.wav" by creeeeak, https://freesound.org/people/creeeeak/sounds/437323/ (CC0-1.0)
+  f3-fan      "Short Wind/Air Woosh | A gust of wind" by NIKOKnecht, https://freesound.org/people/NIKOKnecht/sounds/569109/ (CC0-1.0)
+  f3-lotus    "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0-1.0)
+  f3-halberd  "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0-1.0)
+  f3-burst    "R28-11-Glass Windows Break.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/487137/ (CC0-1.0)
+
+Lumi four- and six-star kit, round 4 (2026-10-25): each ultimate now ends on a long thunder sound left to ring
+out with its natural decay (f2-last: Simon Spiers' close strike #437243, 4.0 s; f3-last: seth-m's big thunder
+clap #458015, 4.5 s; both form 1's own recordings). The six-star galaxy appears with a real slinky-laser foley
+and hangs on a metal spring's long ringing resonance (replacing the singing bowl); the Tesla-coil bed and the
+bug-zapper spark (#415962, #707797, #189630: clipped or lo-fi sources) are no longer used and were removed; the
+four-star basic hit is now one burst of kev_durr's 35 kV sparks (#396470). Every source checked clean: no
+clipping, noise floor at least 50 dB under its loudest part (sparks: continuous crackle by nature).
+  #376694 "Laser" (slinky laser) by Daleonfire, https://freesound.org/people/Daleonfire/sounds/376694/ (CC0)
+  #49706 "metal_spring_scrape_resonance.wav" by Halion, https://freesound.org/people/Halion/sounds/49706/ (CC0)
+
+Nori four- and six-star ultimates, round 4 (2026-10-25): like form 1, few long clips, each one clean real recording
+with its natural decay (excerpt, high-pass, gain, edge fades; no synthesis, saturation or limiting), and each
+ultimate ends on a long final clip from its decisive hit: the jade ring (4.6 s) and the world-tree crash (3.5 s).
+The gather is now a real recording (rising leaves) instead of form 1's synthesized texture, the shield charge a
+real swoosh. The crack and root beds moved from #222521 (too hot) to #735401; #419146, #336023, #552006 and
+#848983 are no longer used by Nori. New recordings (CC0 1.0):
+  jade ring (final, 4*)    #448075 "33cm ceramic bowl - tone - cloth mallet 01.wav" by Anthousai, https://freesound.org/people/Anthousai/sounds/448075/ (CC0)
+  world-tree (final, 6*)   #494071 "Big Tree Fall in Forest" by Kinoton, https://freesound.org/people/Kinoton/sounds/494071/ (CC0)
+  crack run, roots         #735401 "Ice - Fracture, roots or growing plants" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/735401/ (CC0)

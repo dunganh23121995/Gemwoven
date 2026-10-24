@@ -1,8 +1,8 @@
 {
-  "earth-heal-bed": {
-    "file": "hero-forms/earth/nori-heal-bed.wav",
-    "duration": 1.25,
-    "beat": "the healing spiral around him (bed), 0-1100 / 0-1250 ms",
+  "earth-gather": {
+    "file": "hero-forms/earth/nori-gather.wav",
+    "duration": 1.95,
+    "beat": "the healing spiral rises around him as he lifts the hammer, 0-1100 / 0-1250 ms",
     "sources": [
       {
         "title": "LeavesRustling.mp3",
@@ -13,10 +13,10 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 3.9-5.15 s of one recording, 150 Hz high-pass, gain, edge fades",
+    "processing": "excerpt 3.0-4.95 s of one recording, 150 Hz high-pass, gain, edge fades",
     "peak": 0.85,
-    "rms": 0.0714,
-    "sha256": "1ad05c4db3cb1bb7db0e7a65040b186621061828fbe273723e58d70ee8341199"
+    "rms": 0.0859,
+    "sha256": "f71a865a1667cf61f0320bb449adf8b0b0c646c5010a507ada927bee4c3f8a4a"
   },
   "earth-swing": {
     "file": "hero-forms/earth/nori-swing.wav",
@@ -40,7 +40,7 @@
   "earth-slam": {
     "file": "hero-forms/earth/nori-slam.wav",
     "duration": 1.06,
-    "beat": "the hammer hits the ground; its weight rings on under the quake, 920 / 1640 ms on",
+    "beat": "the hammer hits the ground, its weight ringing out, 920-1980 ms",
     "sources": [
       {
         "title": "impact-stone-heavy.wav",
@@ -56,65 +56,29 @@
     "rms": 0.0433,
     "sha256": "80f533486e7fdfbfb4442206e4fe08b552f4a0d6ee6129df4a421cca6754cd94"
   },
-  "earth-pebble": {
-    "file": "hero-forms/earth/nori-pebble.wav",
-    "duration": 0.18,
-    "beat": "one burst of the running jade crack, played once per burst",
-    "sources": [
-      {
-        "title": "Rocks.wav",
-        "author": "adamgryu",
-        "source_url": "https://freesound.org/people/adamgryu/sounds/336023/",
-        "license": "CC0-1.0",
-        "sha256": "55857f7eca1d95fd4826e643c7ed9d95944145d945398b652e25f0d9d8c9e358"
-      }
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpt 1.94-2.12 s of one recording, 80 Hz high-pass, gain, edge fades",
-    "peak": 0.85,
-    "rms": 0.0698,
-    "sha256": "3d1c07572fd356a85a74387d23421efd587af9dd6b8b3257f8292b8b93cf13c5"
-  },
-  "earth-f2-gather": {
-    "file": "hero-forms/earth/nori-f2-gather.wav",
-    "duration": 0.74,
-    "beat": "hammer raised in the healing spiral, 0-760 ms",
-    "sources": [
-      {
-        "title": "Nori form 1 earth-charge (assets/audio/reimagined/earth-charge.wav)",
-        "license": "Project original",
-        "sha256": "7d56d469592793d4254a7399f9c11121ba55c36b73fb1829e9a5c135241eef32"
-      }
-    ],
-    "license": "Project original",
-    "processing": "excerpt 0.36-1.1 s of one recording, gain, edge fades",
-    "peak": 0.3701,
-    "rms": 0.12,
-    "sha256": "8117347a160fc9b02f9b510ccdf584fc6e2e1bc019bc52d804566641339eedb3"
-  },
   "earth-crack-run": {
     "file": "hero-forms/earth/nori-crack-run.wav",
-    "duration": 0.52,
-    "beat": "the jade crack running along the ground, 990-1510 ms",
+    "duration": 0.32,
+    "beat": "the jade crack running along the ground, 990-1310 ms",
     "sources": [
       {
-        "title": "Cracking Earthquake (cracking soil, cracking stone)",
-        "author": "uagadugu",
-        "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
+        "title": "Ice - Fracture, roots or growing plants",
+        "author": "Vrymaa",
+        "source_url": "https://freesound.org/people/Vrymaa/sounds/735401/",
         "license": "CC0-1.0",
-        "sha256": "c0711d04a2c000e0dfbbd9284210056051920b1768b26403182f22d12703a0b8"
+        "sha256": "ca8e70be274ecdc6e32a44180da9c4858aa5be855937c32947f9cbb23db2e093"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 1.0-1.52 s of one recording, 80 Hz high-pass, gain, edge fades",
-    "peak": 0.4399,
-    "rms": 0.12,
-    "sha256": "44f458050c84e56551ae462872b7bed878e7578848a71f7e70353adce6bd4c81"
+    "processing": "excerpt 1.1-1.42 s of one recording, 80 Hz high-pass, gain, edge fades",
+    "peak": 0.85,
+    "rms": 0.0914,
+    "sha256": "eb82b30ab0d3eb94b583e6156fb17cf6368b414fd43fa04f4204328a9af5612e"
   },
   "earth-sprout": {
     "file": "hero-forms/earth/nori-sprout.wav",
-    "duration": 0.72,
-    "beat": "jade vines burst at the foe's feet and hold it bound, 1180-1900 ms",
+    "duration": 1.58,
+    "beat": "jade vines burst at the foe's feet and hold it bound, 1190-2780 ms",
     "sources": [
       {
         "title": "Big plants (crops) growing quickly",
@@ -125,34 +89,34 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0-0.72 s of one recording, 120 Hz high-pass, gain, edge fades",
+    "processing": "excerpt 0-1.58 s of one recording, 120 Hz high-pass, gain, edge fades",
     "peak": 0.85,
-    "rms": 0.0774,
-    "sha256": "a96b67f0b2aed3a075a482dd04719714a7e51905f006a7da36495c2fcd26ec35"
+    "rms": 0.0781,
+    "sha256": "99596d543edb709a014d410c5404a141de6e90227d44056301253a65063a3876"
   },
-  "earth-jade": {
-    "file": "hero-forms/earth/nori-jade.wav",
-    "duration": 0.46,
-    "beat": "the bound jade sapling opens and gleams, 1450-1900 ms",
+  "earth-jade-ring": {
+    "file": "hero-forms/earth/nori-jade-ring.wav",
+    "duration": 4.6,
+    "beat": "FINAL: the jade binding seals the foe and rings out, 1190-5800 ms (natural decay)",
     "sources": [
       {
-        "title": "Ringing sound from crystal glass. Tune: C",
-        "author": "PappaBert",
-        "source_url": "https://freesound.org/people/PappaBert/sounds/419146/",
+        "title": "33cm ceramic bowl - tone - cloth mallet 01.wav",
+        "author": "Anthousai",
+        "source_url": "https://freesound.org/people/Anthousai/sounds/448075/",
         "license": "CC0-1.0",
-        "sha256": "8a009e543fcfe4290183bb88fabfec5f65520f268adf2be517f125312735131f"
+        "sha256": "ba0578055d72f38fe4cf0c5aafa5e34420db28141e374f8dd8193b38ff471a29"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.3-0.76 s of one recording, 300 Hz high-pass, gain, edge fades",
-    "peak": 0.2724,
+    "processing": "excerpt 0-4.6 s of one recording, 80 Hz high-pass, gain, edge fades",
+    "peak": 0.8349,
     "rms": 0.12,
-    "sha256": "2a14aa2b32e1d123b0949db080571c7b9077ebdd20060b0f2efa3f5110c9f31d"
+    "sha256": "eb4551cd3051fa91202ef8747859640868f9089ca42eabf41d01bdf016a457bc"
   },
   "earth-shatter": {
     "file": "hero-forms/earth/nori-shatter.wav",
-    "duration": 0.67,
-    "beat": "the vines and sapling shatter into jade shards, 1900-2400 ms",
+    "duration": 1.62,
+    "beat": "the vines and sapling shatter into jade shards, 1900-3500 ms",
     "sources": [
       {
         "title": "Glass Break",
@@ -163,49 +127,34 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.28-0.95 s of one recording, 150 Hz high-pass, gain, edge fades",
+    "processing": "excerpt 0.28-1.9 s of one recording, 150 Hz high-pass, gain, edge fades",
     "peak": 0.85,
-    "rms": 0.0639,
-    "sha256": "201adf16f089657b68eb008b7940c87c264869f5e393a8f2e35eacd74c8c19a6"
-  },
-  "earth-f3-gather": {
-    "file": "hero-forms/earth/nori-f3-gather.wav",
-    "duration": 0.93,
-    "beat": "hammer raised in the healing spiral, 0-950 ms",
-    "sources": [
-      {
-        "title": "Nori form 1 earth-charge (assets/audio/reimagined/earth-charge.wav)",
-        "license": "Project original",
-        "sha256": "7d56d469592793d4254a7399f9c11121ba55c36b73fb1829e9a5c135241eef32"
-      }
-    ],
-    "license": "Project original",
-    "processing": "excerpt 0.17-1.1 s of one recording, gain, edge fades",
-    "peak": 0.3944,
-    "rms": 0.12,
-    "sha256": "a94005deb13c1928386559662ae8c8412a9b6c95f56dbd0fc313813dab49c037"
+    "rms": 0.0411,
+    "sha256": "f0a96ef77e4a9108b596df09ebfe6b323106535a28e2f21b01972a69000c6ea7"
   },
   "earth-rush": {
     "file": "hero-forms/earth/nori-rush.wav",
-    "duration": 0.29,
-    "beat": "the shield charge, 970-1260 ms",
+    "duration": 0.75,
+    "beat": "the shield charge, 970-1720 ms",
     "sources": [
       {
-        "title": "Nori form 1 earth-launch (assets/audio/reimagined/earth-launch.wav)",
-        "license": "Project original",
-        "sha256": "f270964364a422204f5ef23ef9efc21b948174e095e52d5bc9ca7e020214289e"
+        "title": "FX - Swoosh - Low Pitch",
+        "author": "bolkmar",
+        "source_url": "https://freesound.org/people/bolkmar/sounds/475135/",
+        "license": "CC0-1.0",
+        "sha256": "f618f47f61005225e6442e2b0e385fd0b3950b307fd932fee4497bb663885278"
       }
     ],
-    "license": "Project original",
-    "processing": "excerpt 0-0.29 s of one recording, gain, edge fades",
-    "peak": 0.3907,
+    "license": "CC0-1.0",
+    "processing": "excerpt 0-0.75 s of one recording, 60 Hz high-pass, gain, edge fades",
+    "peak": 0.7839,
     "rms": 0.12,
-    "sha256": "7aa9648e680f24d4f461317caa3bece0076fd2d884bcedc536fe73409162624f"
+    "sha256": "17ad8952855aa4e97ca939d2f2ca2e05492bbb99ffdea45ac06179dfc88cf90b"
   },
   "earth-f3-bash": {
     "file": "hero-forms/earth/nori-f3-bash.wav",
-    "duration": 0.25,
-    "beat": "shield bash, 1260-1400 ms",
+    "duration": 0.92,
+    "beat": "shield bash, 1270-2190 ms (form 1 recording, natural decay)",
     "sources": [
       {
         "title": "Shield Bash Impact (form 1 earth-shield-bash source)",
@@ -216,72 +165,53 @@
       }
     ],
     "license": "CC-BY-4.0",
-    "processing": "excerpt 0.08-0.33 s of one recording, 45 Hz high-pass, gain, edge fades",
-    "peak": 0.3729,
+    "processing": "excerpt 0.08-1.0 s of one recording, 45 Hz high-pass, gain, edge fades",
+    "peak": 0.6892,
     "rms": 0.12,
-    "sha256": "35526abebc44218d06aec77e9775fb1232121b4e876f1f496ba86f6582b25a74"
+    "sha256": "f4a1b7c93c0e7ff3502f24d9b6f33f8ab947b385f3f6d610edb2c08c6bfb65db"
+  },
+  "earth-world-tree": {
+    "file": "hero-forms/earth/nori-world-tree.wav",
+    "duration": 3.464,
+    "beat": "FINAL: the hammer brings the world-tree crashing up from the ground, 1630-5110 ms (natural decay)",
+    "sources": [
+      {
+        "title": "Big Tree Fall in Forest",
+        "author": "Kinoton",
+        "source_url": "https://freesound.org/people/Kinoton/sounds/494071/",
+        "license": "CC0-1.0",
+        "sha256": "82f789dd3fd7e0d54c8c6795660ba7ac1c5f049d8abc12a36053d12cb9557fa4"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 4.52-8.0 s of one recording, 40 Hz high-pass, gain, edge fades",
+    "peak": 0.85,
+    "rms": 0.0727,
+    "sha256": "b46ed40b505b4e58302937f4a8841565267c38c42ccb540042481f672159f537"
   },
   "earth-roots": {
     "file": "hero-forms/earth/nori-roots.wav",
-    "duration": 0.72,
-    "beat": "the roots crack up through the soil and lock the cage, 1710-2430 ms",
+    "duration": 0.9,
+    "beat": "the roots crack up through the soil and lock the cage, 1700-2600 ms",
     "sources": [
       {
-        "title": "Cracking Earthquake (cracking soil, cracking stone)",
-        "author": "uagadugu",
-        "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
+        "title": "Ice - Fracture, roots or growing plants",
+        "author": "Vrymaa",
+        "source_url": "https://freesound.org/people/Vrymaa/sounds/735401/",
         "license": "CC0-1.0",
-        "sha256": "c0711d04a2c000e0dfbbd9284210056051920b1768b26403182f22d12703a0b8"
+        "sha256": "ca8e70be274ecdc6e32a44180da9c4858aa5be855937c32947f9cbb23db2e093"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 2.0-2.72 s of one recording, 80 Hz high-pass, gain, edge fades",
-    "peak": 0.5043,
-    "rms": 0.12,
-    "sha256": "f6d188d41e1c8aa0d0e96d5f2e7671aeec4530e82d55d20bd3e0aab1313fb662"
-  },
-  "earth-roots-break": {
-    "file": "hero-forms/earth/nori-roots-break.wav",
-    "duration": 0.5,
-    "beat": "the root cage snaps and crumbles, 2660-3150 ms",
-    "sources": [
-      {
-        "title": "Twig being snapped (multiple takes)",
-        "author": "ZoshP",
-        "source_url": "https://freesound.org/people/ZoshP/sounds/552006/",
-        "license": "CC0-1.0",
-        "sha256": "880f3cc183eb1e7865ef6df85786d67b09739b423097a65a9e0b82712c408d96"
-      }
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpt 4.36-4.86 s of one recording, 100 Hz high-pass, gain, edge fades",
+    "processing": "excerpt 1.45-2.35 s of one recording, 80 Hz high-pass, gain, edge fades",
     "peak": 0.85,
-    "rms": 0.0381,
-    "sha256": "5705854296e6df9b101b5d6c84c0c2597ca092fe7f20daab52295f4946cb5f07"
-  },
-  "earth-grow": {
-    "file": "hero-forms/earth/nori-grow.wav",
-    "duration": 0.75,
-    "beat": "the world-tree shoots up from the foe's feet, 1700-2450 ms",
-    "sources": [
-      {
-        "title": "trees_creaking_loudl",
-        "author": "Sprust",
-        "source_url": "https://freesound.org/people/Sprust/sounds/848983/",
-        "license": "CC0-1.0",
-        "sha256": "4df29007bb4b86b6ea8b1254f9b5c7810ca4075870cd614b202608cc38196e95"
-      }
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpt 1.15-1.9 s of one recording, 50 Hz high-pass, gain, edge fades",
-    "peak": 0.85,
-    "rms": 0.0563,
-    "sha256": "79593afbf24a16beccc7d4e0a5a9fef30a0b72837a199a598e355d05b5badda1"
+    "rms": 0.1045,
+    "sha256": "2000b718d86debc96243ec9cfee0c9c51803cb52e4bd0911ca08de15d280944e"
   },
   "earth-leaves": {
     "file": "hero-forms/earth/nori-leaves.wav",
-    "duration": 0.7,
-    "beat": "its blazing crown sheds its leaves and fades, 2450-3150 ms",
+    "duration": 1.0,
+    "beat": "the blazing crown sheds its leaves, 2450-3450 ms",
     "sources": [
       {
         "title": "LeavesRustling.mp3",
@@ -292,9 +222,9 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 5.6-6.3 s of one recording, 150 Hz high-pass, gain, edge fades",
+    "processing": "excerpt 5.6-6.6 s of one recording, 150 Hz high-pass, gain, edge fades",
     "peak": 0.85,
-    "rms": 0.0748,
-    "sha256": "fefac036bbadd2d8aad640ec1eb88a4ee1d8636807a6dcfed2f321e0a933b459"
+    "rms": 0.0733,
+    "sha256": "53d04fa94cd81691d14a73d8f3c337ad4b08378cc93f1b856587e76be0210c39"
   }
 }
