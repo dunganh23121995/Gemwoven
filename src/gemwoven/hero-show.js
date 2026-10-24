@@ -75,7 +75,8 @@
       if(stopped)return;timer=requestAnimationFrame(tick);
       if(stage.isConnected)tick.seen=true;else if(tick.seen){stopped=true;return;}   // the screen was re-rendered
       if(playing){
-        const p=playing;if(now-p.last<p.ms)return;p.last=now;stage.style.backgroundPosition=cell(p.frame);
+        // An action may hold some frames longer (show.sheets.timing: ms per frame).
+        const p=playing,hold=show.sheets.timing?.[p.src]?.[Math.max(0,p.frame-1)]??p.ms;if(p.frame&&now-p.last<hold)return;p.last=now;stage.style.backgroundPosition=cell(p.frame);
         if(++p.frame>=8){playing=null;sheet(show.sheets.idle);next=now+5000+Math.random()*4000;p.done?.();}
         return;
       }

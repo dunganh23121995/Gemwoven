@@ -11314,6 +11314,7 @@
         "assets/heroes/forms/shadow/form-3/showcase/scythespin.webp",
         "assets/heroes/forms/shadow/form-3/showcase/darkpalm.webp"
       ],
+      "timing": {},
       "emerge": "assets/heroes/forms/shadow/form-3/showcase/emerge.webp",
       "rift": "assets/heroes/forms/shadow/form-3/showcase/rift.webp"
     }
@@ -11340,6 +11341,18 @@
         "assets/heroes/forms/shadow/form-1/showcase/drawsword.webp",
         "assets/heroes/forms/shadow/form-1/showcase/eyeflash.webp"
       ],
+      "timing": {
+        "assets/heroes/forms/shadow/form-1/showcase/drawsword.webp": [
+          130,
+          150,
+          170,
+          1200,
+          1200,
+          170,
+          150,
+          130
+        ]
+      },
       "rift": "assets/heroes/forms/shadow/form-1/showcase/rift.webp"
     }
   },
@@ -11365,6 +11378,7 @@
         "assets/heroes/forms/shadow/form-2/showcase/moonglint.webp",
         "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp"
       ],
+      "timing": {},
       "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
     }
   },

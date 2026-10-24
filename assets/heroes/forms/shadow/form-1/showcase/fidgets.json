@@ -4,7 +4,17 @@
       "name": "drawsword",
       "label": "Rút kiếm cầm hai tay",
       "file": "drawsword.webp",
-      "whole": true
+      "whole": true,
+      "frameMs": [
+        130,
+        150,
+        170,
+        1200,
+        1200,
+        170,
+        150,
+        130
+      ]
     },
     {
       "name": "eyeflash",

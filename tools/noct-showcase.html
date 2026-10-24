@@ -41,7 +41,7 @@ for(const [form,name] of forms){
   const host=card.querySelector('.hero'),row=card.querySelector('.row');
   let current=null;
   function mount(){
-    current?.stop();host.innerHTML='';
+    current?.stop();host.innerHTML='';host.dataset.heroElement='shadow';
     const img=document.createElement('img');img.className='art';img.src=new URL(show.file,document.baseURI).href;
     // Like the hub: the centre of the boots stands at the middle of the spot (and of the cloud ring).
     // Like the hub's fitBody: every form drawn at one visible height, boots centred on the spot.
