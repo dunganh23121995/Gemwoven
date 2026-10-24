@@ -11383,38 +11383,14 @@
     "sheets": {
       "idle": "assets/heroes/forms/shadow/form-2/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/shadow/form-2/showcase/optA.webp",
-        "assets/heroes/forms/shadow/form-2/showcase/optB.webp",
-        "assets/heroes/forms/shadow/form-2/showcase/optC.webp",
-        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp"
+        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp",
+        "assets/heroes/forms/shadow/form-2/showcase/optC.webp"
       ],
       "labels": [
-        "Kiểu A · Chém ngang rút đao",
-        "Kiểu B · Vẽ vòng hư không dưới đất",
-        "Kiểu C · Hai ngón xé không gian",
-        "Mắt lóe, khói đen cuộn"
+        "Mắt lóe, khói đen cuộn",
+        "Hai ngón xé không gian"
       ],
       "timing": {
-        "assets/heroes/forms/shadow/form-2/showcase/optA.webp": [
-          140,
-          130,
-          130,
-          350,
-          600,
-          500,
-          200,
-          150
-        ],
-        "assets/heroes/forms/shadow/form-2/showcase/optB.webp": [
-          150,
-          200,
-          220,
-          400,
-          600,
-          400,
-          220,
-          150
-        ],
         "assets/heroes/forms/shadow/form-2/showcase/optC.webp": [
           150,
           220,

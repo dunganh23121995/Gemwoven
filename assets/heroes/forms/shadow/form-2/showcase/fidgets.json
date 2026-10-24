@@ -1,54 +1,6 @@
 {
   "fidgets": [
     {
-      "name": "optA",
-      "label": "Kiểu A · Chém ngang rút đao",
-      "file": "optA.webp",
-      "whole": true,
-      "frameMs": [
-        140,
-        130,
-        130,
-        350,
-        600,
-        500,
-        200,
-        150
-      ]
-    },
-    {
-      "name": "optB",
-      "label": "Kiểu B · Vẽ vòng hư không dưới đất",
-      "file": "optB.webp",
-      "whole": true,
-      "frameMs": [
-        150,
-        200,
-        220,
-        400,
-        600,
-        400,
-        220,
-        150
-      ]
-    },
-    {
-      "name": "optC",
-      "label": "Kiểu C · Hai ngón xé không gian",
-      "file": "optC.webp",
-      "whole": true,
-      "frameMs": [
-        150,
-        220,
-        240,
-        400,
-        600,
-        500,
-        200,
-        150
-      ]
-    },
-    {
       "name": "eyeflare",
       "label": "Mắt lóe, khói đen cuộn",
       "file": "eyeflare.webp",
@@ -59,6 +11,22 @@
       "label": "Rạch không gian bước ra",
       "file": "rift.webp",
       "whole": false
+    },
+    {
+      "name": "optC",
+      "label": "Hai ngón xé không gian",
+      "file": "optC.webp",
+      "whole": false,
+      "frameMs": [
+        150,
+        220,
+        240,
+        400,
+        600,
+        500,
+        200,
+        150
+      ]
     }
   ]
 }
