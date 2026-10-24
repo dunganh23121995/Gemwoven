@@ -49,8 +49,12 @@ def score(t, master, mask):
     return np.abs(pm(t) - pm(master))[mask].mean() + np.abs(t[..., 3] - master[..., 3])[mask].mean()
 
 
-def register(frame, master, anchor):
+def register(frame, master, anchor, legs=False):
     mask = ndimage.binary_dilation(master[..., 3] > .5, iterations=3)
+    if legs:
+        # Fit on the lower body only (legs, boots, cloak hem): arms and weapons above may move freely.
+        ys = np.where(master[..., 3] > .5)[0]
+        mask[:int(ys.max() - (ys.max() - ys.min()) * .32)] = False
     rows = lambda a: np.where(a.max(axis=1) > .5)[0]
     fr, mr = rows(frame[..., 3]), rows(master[..., 3])
     s0 = (mr.max() - mr.min()) / max(1, fr.max() - fr.min())
@@ -89,6 +93,7 @@ def main():
     ap.add_argument("--min-area", type=int, default=60, help="smallest moving patch kept (px); lower it for small glows")
     ap.add_argument("--open", type=int, default=2, help="opening iterations that drop thin slivers")
     ap.add_argument("--no-refine", action="store_true", help="with --same-transform: place every frame exactly like the last one (cells drawn on one template)")
+    ap.add_argument("--lock-legs", action="store_true", help="fit every frame (shift and scale) on the master's lower body, so the hero stands still while arms and weapons move")
     ap.add_argument("--grow", type=int, default=0, help="widen the taken motion by N px so no sliver of the master's old pose remains")
     args = ap.parse_args()
     out = Path(args.out_dir)
@@ -106,7 +111,9 @@ def main():
         fixed = register(last, master, anchor)
     for index, path in enumerate(args.frames):
         frame = rgba(Image.open(path).resize((args.cell, args.cell), Image.Resampling.LANCZOS))
-        if args.same_transform and fixed and args.no_refine:
+        if args.lock_legs:
+            err, dx, dy, s = register(frame, master, anchor, legs=True)
+        elif args.same_transform and fixed and args.no_refine:
             dx, dy, s = fixed[1:]; err = score(warp(frame, dx, dy, s, anchor), master, ndimage.binary_dilation(master[..., 3] > .5, iterations=3))
         elif args.same_transform and fixed:
             # Same scale as frame 1; the position is refined on the legs alone (they never move in

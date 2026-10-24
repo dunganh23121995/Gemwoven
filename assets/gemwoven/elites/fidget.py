@@ -107,7 +107,19 @@ def key_cells(raw, out_dir, cell=256, green=False):
         img.resize((cell, round(cell * h / w)), Image.Resampling.LANCZOS).crop((0, 0, cell, cell)).save(out_dir / f"idle-{i + 1}.png")
 
 
-def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=256, fill=.80):
+def boots(img):
+    """(x, y): midpoint of the two boots (solid runs >= 8px in the lowest 7% of the body) and the sole."""
+    a = np.asarray(img.convert("RGBA"))[..., 3] >= 128
+    ys = np.where(a.any(axis=1))[0]
+    if not len(ys):
+        return None
+    h = ys.max() - ys.min(); low = a[ys.max() - int(h * .07):ys.max() + 1]
+    cols = low.sum(0); hit = np.where(cols >= max(3, cols.max() * .45))[0]
+    runs = [r for r in np.split(hit, np.where(np.diff(hit) > 2)[0] + 1) if len(r) >= 8]
+    return ((runs[0].min() + runs[-1].max()) / 2, ys.max()) if len(runs) >= 2 else None
+
+
+def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=256, fill=.80, lock_legs=False):
     d = WORK / cid.replace("/", "_") / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
@@ -128,6 +140,15 @@ def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=25
         # keep: a weapon that crosses the legs moves the leg-area error without the body moving.
         if not keep and errors[i] > max(.5, errors[0] * 3):
             frames[i] = frames[0] if i >= 6 else frames[i - 1]; print("frame", i + 1, "off the master's feet, replaced")
+    if lock_legs:
+        # Stand still: shift every frame (never scale) so its two boots sit exactly where the
+        # resting frame's boots are; frames whose boots cannot be found keep their place.
+        ref = boots(frames[0])
+        for i, f in enumerate(frames):
+            got = boots(f)
+            if ref and got and i:
+                moved = Image.new("RGBA", f.size, (0, 0, 0, 0)); moved.paste(f, (round(ref[0] - got[0]), round(ref[1] - got[1])), f)
+                frames[i] = moved
     sheet = Image.new("RGBA", (cell * 2, cell * 4), (0, 0, 0, 0))
     for i, f in enumerate(frames):
         sheet.alpha_composite(f, ((i % 2) * cell, (i // 2) * cell))
@@ -168,6 +189,6 @@ if __name__ == "__main__":
         core = next((int(f.split("=")[1]) for f in flags if f.startswith("--core=")), 9999)
         cell = next((int(f.split("=")[1]) for f in flags if f.startswith("--cell=")), 256)
         fill = next((float(f.split("=")[1]) for f in flags if f.startswith("--fill=")), .80)
-        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags, cell=cell, fill=fill)
+        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags, cell=cell, fill=fill, lock_legs="--lock-legs" in flags)
     else:
         accept(cid, name, args[0], whole="--whole" in flags)
