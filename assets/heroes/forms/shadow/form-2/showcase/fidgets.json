@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "moonglint",
+      "label": "Ánh trăng chạy dọc lưỡi kiếm",
+      "file": "moonglint.webp",
+      "whole": false
+    },
+    {
+      "name": "rift",
+      "label": "Rạch không gian bước ra",
+      "file": "rift.webp",
+      "whole": false
+    },
+    {
+      "name": "eyeflare",
+      "label": "Mắt lóe, khói đen cuộn",
+      "file": "eyeflare.webp",
+      "whole": false
+    }
+  ]
+}

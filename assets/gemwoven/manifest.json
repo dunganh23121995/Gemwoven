@@ -11317,6 +11317,54 @@
       "rift": "assets/heroes/forms/shadow/form-3/showcase/rift.webp"
     }
   },
+  "show-shadow-1": {
+    "file": "assets/heroes/forms/shadow/form-1/showcase/poster.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      29,
+      36,
+      228,
+      241
+    ],
+    "bodyAnchor": {
+      "x": 0.619140625,
+      "crown": 0.140625,
+      "foot": 0.94140625
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/shadow/form-1/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/shadow/form-1/showcase/swordflip.webp",
+        "assets/heroes/forms/shadow/form-1/showcase/eyeflash.webp"
+      ],
+      "rift": "assets/heroes/forms/shadow/form-1/showcase/rift.webp"
+    }
+  },
+  "show-shadow-2": {
+    "file": "assets/heroes/forms/shadow/form-2/showcase/poster.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      14,
+      36,
+      243,
+      241
+    ],
+    "bodyAnchor": {
+      "x": 0.4921875,
+      "crown": 0.140625,
+      "foot": 0.94140625
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/shadow/form-2/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/shadow/form-2/showcase/moonglint.webp",
+        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp"
+      ],
+      "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
+    }
+  },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",
     "width": 512,

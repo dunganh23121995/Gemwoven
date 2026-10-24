@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "swordflip",
+      "label": "Xoay kiếm",
+      "file": "swordflip.webp",
+      "whole": true
+    },
+    {
+      "name": "eyeflash",
+      "label": "Mắt lóe sáng",
+      "file": "eyeflash.webp",
+      "whole": false
+    },
+    {
+      "name": "rift",
+      "label": "Rạch không gian bước ra",
+      "file": "rift.webp",
+      "whole": false
+    }
+  ]
+}

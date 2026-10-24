@@ -86,6 +86,7 @@ def main():
     ap.add_argument("--whole-loop", action="store_true", help="like --whole for every frame, 1 and 8 included (a resting loop drawn entirely by Codex)")
     ap.add_argument("--min-area", type=int, default=60, help="smallest moving patch kept (px); lower it for small glows")
     ap.add_argument("--open", type=int, default=2, help="opening iterations that drop thin slivers")
+    ap.add_argument("--no-refine", action="store_true", help="with --same-transform: place every frame exactly like the last one (cells drawn on one template)")
     ap.add_argument("--grow", type=int, default=0, help="widen the taken motion by N px so no sliver of the master's old pose remains")
     args = ap.parse_args()
     out = Path(args.out_dir)
@@ -96,9 +97,16 @@ def main():
     core = ndimage.distance_transform_edt(master[..., 3] > .5) > args.core
     pm = lambda a: np.concatenate([a[..., :3] * a[..., 3:], a[..., 3:]], -1)
     frames, report, fixed = [], [], None
+    if args.same_transform:
+        # The placement comes from the LAST frame, which every action ends on in the resting pose
+        # (an entrance's first frame may hold only a slash in the air, with no body to fit).
+        last = rgba(Image.open(args.frames[-1]).resize((args.cell, args.cell), Image.Resampling.LANCZOS))
+        fixed = register(last, master, anchor)
     for index, path in enumerate(args.frames):
         frame = rgba(Image.open(path).resize((args.cell, args.cell), Image.Resampling.LANCZOS))
-        if args.same_transform and fixed:
+        if args.same_transform and fixed and args.no_refine:
+            dx, dy, s = fixed[1:]; err = score(warp(frame, dx, dy, s, anchor), master, ndimage.binary_dilation(master[..., 3] > .5, iterations=3))
+        elif args.same_transform and fixed:
             # Same scale as frame 1; the position is refined on the legs alone (they never move in
             # an idle action), so a frame Codex drew a little higher or lower still lands its feet.
             s = fixed[3]; legs = ndimage.binary_dilation(master[..., 3] > .5, iterations=3); legs[:int(anchor[1] - (anchor[1] - ys.min()) * .35)] = False

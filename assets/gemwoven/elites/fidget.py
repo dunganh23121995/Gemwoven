@@ -107,7 +107,7 @@ def key_cells(raw, out_dir, cell=256, green=False):
         img.resize((cell, round(cell * h / w)), Image.Resampling.LANCZOS).crop((0, 0, cell, cell)).save(out_dir / f"idle-{i + 1}.png")
 
 
-def proc(cid, name, core=9999, whole=False, all_whole=False):
+def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False):
     d = WORK / cid.replace("/", "_") / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
@@ -125,7 +125,8 @@ def proc(cid, name, core=9999, whole=False, all_whole=False):
     errors = [f["error"] for f in meta["frames"]]
     frames = [Image.open(d / f"stable/idle-{i + 1}.png") for i in range(8)]
     for i in range(1, 8):
-        if errors[i] > max(.5, errors[0] * 3):
+        # keep: a weapon that crosses the legs moves the leg-area error without the body moving.
+        if not keep and errors[i] > max(.5, errors[0] * 3):
             frames[i] = frames[0] if i >= 6 else frames[i - 1]; print("frame", i + 1, "off the master's feet, replaced")
     sheet = Image.new("RGBA", (512, 1024), (0, 0, 0, 0))
     for i, f in enumerate(frames):
@@ -165,6 +166,6 @@ if __name__ == "__main__":
         gen(cid, name, *args, loop="--loop" in flags, green="--green" in flags)
     elif cmd == "proc":
         core = next((int(f.split("=")[1]) for f in flags if f.startswith("--core=")), 9999)
-        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags)
+        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags)
     else:
         accept(cid, name, args[0], whole="--whole" in flags)
