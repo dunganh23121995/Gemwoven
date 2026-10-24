@@ -7,15 +7,15 @@
       "whole": true
     },
     {
-      "name": "entrance",
-      "label": "Sao băng sét đánh hiện thân",
-      "file": "entrance.webp",
-      "whole": false
-    },
-    {
       "name": "staffspin",
       "label": "Vung trượng tóe điện",
       "file": "staffspin.webp",
+      "whole": false
+    },
+    {
+      "name": "entrance",
+      "label": "Sét vỡ sao, mũ rơi lên đầu",
+      "file": "entrance.webp",
       "whole": false
     }
   ]

@@ -1,0 +1,27 @@
+{
+ "dir": "assets/heroes/forms/lightning/form-1/showcase",
+ "identity": "C:/Users/dungc/AppData/Local/Temp/claude/d--Project-Gemwoven/3eb0861d-1c9d-43a7-b472-681bd095a67e/scratchpad/lumi/identity1.png",
+ "what": "Lumi, a cheerful chibi witch girl (she/her): long wavy golden-blonde hair with two braids tied by small dark ribbons, big violet eyes, small pointed ears, an open-mouthed cheeky smile; a huge dark purple witch hat with a gold rim, small gold stars on the brim, a gold crescent-moon emblem on the band and a long floppy bent tip ending in a dangling cyan-and-gold star charm; a dark purple cloak with gold trim and gold star prints, white ruffled cuffs, black top and black shorts, brown leather belts with a gold-bound spellbook hanging at her hip, black boots with gold and cyan gems; a gold staff topped by a glowing purple orb in a spiky gold cage, held upright in her hand on the image's right side; she floats lightly just above the ground, facing right in a 3/4 view",
+ "pose": "She hovers playfully a little above the ground with her knees bent and boots kicked back, leaning forward with a cheeky grin; her staff is held up and forward in her hand on the image's right side, its purple orb crackling with a small opaque gold zigzag lightning spark, and her other hand is raised by her cheek making a peace sign. The floppy hat tip with its star charm swings behind her.",
+ "idle": "a slow, gentle floating hover. Face, eyes, body, arms, legs, the staff and the hat brim stay exactly as in Image 1 in every frame. Only these move, each a SMALL step from the previous frame: the long floppy tip of her witch hat swings softly like a slow pendulum (frame 1 rest, frames 2-3 the tip lifts a little, frame 4 highest, frames 5-6 it sinks back past rest, frame 7 lowest, frame 8 halfway back to rest) with its dangling star following and twinkling; the loose ends of her golden hair and the cloak hem drift in the same slow wave; the purple orb on the staff and the small gold stars on the hat glow brighter around frame 4 and dimmer around frame 8. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+ "fidgets": [
+  [
+   "hatpush",
+   "Đẩy vành mũ cười tinh nghịch",
+   "her peace-sign hand moves up and pushes the front of her hat brim up with two fingers, she gives a wide mischievous grin with one eye closed in a wink, and a small opaque gold star pops out at the tip of the floppy hat (biggest at frames 4-5) and shrinks back into the star charm; then her hand returns to the peace sign by her cheek. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   true
+  ],
+  [
+   "staffspin",
+   "Xoay trượng tóe điện",
+   "her staff hand twirls the staff in one full spin like a baton (the staff keeps its length and stays in her hand), then she stops it upright again and a small bright gold-and-cyan zigzag lightning spark crackles around the purple orb at its head (frames 5-6) and fades. Only the staff arm and the staff move. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   false
+  ]
+ ],
+ "entrance": "Frame 1: no girl yet, only a small bright gold shooting star high in the cell with a short solid gold streak behind it. Frame 2: a jagged gold-and-cyan zigzag lightning bolt strikes her spot from top to bottom, no girl yet. Frame 3: the bolt shatters into a burst of many small solid gold stars and short cyan zigzag sparks flying outward from her spot, no girl yet, no glow. Frame 4: with a pop the girl appears in the middle of the star burst in her pose, in full colour, but WITHOUT her hat: bare golden head with the two braids, her purple witch hat is spinning in the air high above her. Frame 5: no silhouette, she is in full colour, grinning and looking up, the hat drops toward her head, a few stars still around her. Frame 6: the hat lands on her head, tilted and bouncing, its floppy tip flipped up, she squeezes her eyes shut happily. Frame 7: the hat settles straight, the floppy tip swings down, the last tiny stars vanish. Frame 8: exactly the resting showcase pose of Image 1, hat on, nothing extra. No glowing silhouette or outline in any frame. The girl keeps exactly the same size and place as Image 1 in frames 4-8.",
+ "entrance_label": "Sét vỡ sao, mũ rơi lên đầu",
+ "green": true,
+ "only": [
+  "entrance"
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "dir": "assets/heroes/forms/lightning/form-3/showcase",
+ "identity": "assets/heroes/forms/lightning/form-3/master.png",
+ "what": "Lumi, a radiant chibi star witch girl (she/her): very long flowing golden-blonde hair with a small dark ribbon, amber-gold eyes, an open-mouthed happy smile; a huge purple witch hat with a wide white-and-gold brim, gold star prints, a gold crescent-moon emblem and tall gold star spikes on the band, and a long floppy purple-and-white striped tip ending in a dangling gold star; small golden feathered wing pauldrons on her shoulders; a white-and-gold armoured dress with a violet star gem on the chest, wide white sleeves, a flowing purple cape with white-and-gold edges and little gold stars dangling from its hem, white-and-gold armoured boots; a long gold spear-staff topped by a bright gold four-pointed star inside two thin crossing pink-and-gold orbit rings, held upright in her hand on the image's right side, with small gold star charms hanging from it; she floats lightly just above the ground, facing right in a 3/4 view",
+ "pose": "She hovers majestically a little above the ground, her small golden wings spread, holding the galaxy-orbit spear-staff high and forward in her hand on the image's right side so the bright gold star and its two crossing orbit rings shine above her, her other hand open and sweeping outward at her side; a confident radiant smile, cape and long hair flowing behind her.",
+ "idle": "a slow, gentle floating hover. Face, eyes, body, arms, legs, the spear-staff and the hat brim stay exactly as in Image 1 in every frame. Only these move, each a SMALL step from the previous frame: the long floppy tip of her witch hat swings softly like a slow pendulum (frame 1 rest, frames 2-3 the tip lifts a little, frame 4 highest, frames 5-6 it sinks back past rest, frame 7 lowest, frame 8 halfway back to rest) with its dangling star following and twinkling; the loose ends of her golden hair and the cape hem with its dangling gold stars drift in the same slow wave; the gold star at the spear head glows brighter around frame 4 and dimmer around frame 8 and its two thin orbit rings rotate a little each frame; the small golden wings flutter very slightly. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+ "fidgets": [
+  [
+   "orbitspin",
+   "Xoay thương quỹ đạo",
+   "she twirls the spear-staff in her hand in one spin and the two thin orbit rings around its gold star swing around it like planet orbits, turning to a different tilt each frame, with a small gold-and-cyan zigzag lightning crackle on the star at the peak (frames 4-5); then the spear stops where it was and the rings settle. Only her spear arm, the spear and its rings move. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   false
+  ],
+  [
+   "wingtwirl",
+   "Dang cánh xoay vòng",
+   "the small golden feathered wing pauldrons open and she does a happy little twirl IN PLACE, like a figurine turning on a music box, always the same distance from the camera: frame 2 the wings open a little wider and she lifts slightly, frame 3 she turns toward the viewer, frame 4 she is seen from behind with the spear still in her hand, frame 5 she turns back toward the right, frame 6 she faces right again with a joyful smile and the wings open, frame 7 the wings fold back to small shoulder pauldrons as in Image 1. STRICT SIZE: in every frame her head, hat brim, body and legs have EXACTLY the same size as in Image 1 (the hat brim is the same width in every frame, the boots end on the same line); the front-facing frame 3 must NOT be bigger, closer or taller than the others; the wings are never wider than her hat brim. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   true
+  ]
+ ],
+ "entrance": "Frame 1: no girl yet, only nine small bright gold stars in a wide ring high in the cell. Frame 2: the nine stars streak inward toward one point above her spot, each with a short solid gold trail. Frame 3: they merge into one blazing gold star. Frame 4: it drops as a huge jagged gold-and-cyan lightning bolt striking her spot from top to bottom, no girl yet. Frame 5: the bolt splits open into a bright pale-gold silhouette of her with wings spread and spear raised. Frame 6: the silhouette becomes the girl in full colour, wings spread wide, cape and hair blown upward, a ring of small gold stars around her feet. Frame 7: she sinks gently into her hover, wings folding to their resting spread, the star ring fading. Frame 8: exactly the resting showcase pose, nothing extra.",
+ "entrance_label": "Cửu tinh hợp lôi giáng thế",
+ "green": true,
+ "only": [
+  "wingtwirl"
+ ]
+}

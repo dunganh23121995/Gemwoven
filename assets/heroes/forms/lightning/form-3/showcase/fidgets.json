@@ -7,16 +7,16 @@
       "whole": false
     },
     {
-      "name": "wingtwirl",
-      "label": "Dang cánh xoay vòng",
-      "file": "wingtwirl.webp",
-      "whole": true
-    },
-    {
       "name": "entrance",
       "label": "Cửu tinh hợp lôi giáng thế",
       "file": "entrance.webp",
       "whole": false
+    },
+    {
+      "name": "wingtwirl",
+      "label": "Dang cánh xoay vòng",
+      "file": "wingtwirl.webp",
+      "whole": true
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+ "dir": "assets/heroes/forms/lightning/form-2/showcase",
+ "identity": "assets/heroes/forms/lightning/form-2/master.png",
+ "what": "Lumi, a cheerful chibi witch girl (she/her): long wavy golden-blonde hair with two braids tied by small dark ribbons, big violet eyes, small pointed ears, an open-mouthed happy smile; a huge dark purple witch hat with a gold rim, gold star prints on the brim, a large gold crescent-moon emblem with a gem on the band and a long floppy bent tip ending in a dangling cyan-and-gold star charm; a dark purple high-collared cloak with gold trim and gold star prints, white ruffled cuffs, black top and black shorts, brown leather belts with a gold-bound spellbook at her hip, black boots with gold and cyan gems; a gold staff topped by a glowing purple orb in a spiky gold cage, held upright in her hand on the image's right side; she floats lightly just above the ground, facing right in a 3/4 view",
+ "pose": "She hovers gracefully a little above the ground, one knee raised, holding her staff out diagonally in her hand on the image's right side with its purple orb crackling with a thin opaque gold lightning arc, and her other hand held up open at shoulder height with a small bright gold five-pointed star floating just above her palm. A bright, mischievous smile, cloak swept back.",
+ "idle": "a slow, gentle floating hover. Face, eyes, body, arms, legs, the staff and the hat brim stay exactly as in Image 1 in every frame. Only these move, each a SMALL step from the previous frame: the long floppy tip of her witch hat swings softly like a slow pendulum (frame 1 rest, frames 2-3 the tip lifts a little, frame 4 highest, frames 5-6 it sinks back past rest, frame 7 lowest, frame 8 halfway back to rest) with its dangling star following and twinkling; the loose ends of her golden hair and the cloak hem drift in the same slow wave; the small gold star above her palm bobs a tiny bit and twinkles and the purple orb glows brighter around frame 4 and dimmer around frame 8. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+ "fidgets": [
+  [
+   "startoss",
+   "Tung sao bắt lại",
+   "frame 2: her open free hand dips a little, the gold star resting above her palm. Frame 3: she flicks her hand up and the star flies up in an arc: a BIG bright solid gold five-pointed star, about the size of her face, fully opaque with a dark gold outline, already above her shoulder. Frame 4: the star is at the top of its arc, clearly ABOVE the top of her hat, spinning, she looks up at it with a grin. Frame 5: the star falls back down beside her face. Frame 6: she catches it in her open palm with a happy squint, eyes closed in two happy arcs. Frame 7: the star settles back above her palm, her eyes open again. The star is the same big size in every frame. Her body, legs, cloak, staff, hat and head stay exactly as in Image 1; only her free arm, her eyes and the star change. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   false
+  ],
+  [
+   "zigzag",
+   "Tia sét nhảy giữa ngón tay",
+   "her free hand turns and spreads its fingers, and a small bright gold-and-cyan zigzag lightning arc jumps between her fingertips, hopping from finger to finger (frames 3-6, an opaque crisp zigzag), then fades and the small gold star floats back above her palm. Only her free hand and the lightning move. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   false
+  ]
+ ],
+ "entrance": "Frame 1: no girl yet, only five small bright gold stars hanging in the air in a big star-shaped constellation where she will be. Frame 2: thin crisp gold-and-cyan zigzag lightning lines link the five stars to each other, still no girl. Frame 3: the lightning lines bend into a glowing pale-gold outline of her figure with hat and staff. Frame 4: the outline flashes and fills into a bright pale-gold solid silhouette of her pose. Frame 5: the silhouette turns into the girl in full colour, cloak and hair blown outward, the five stars shrinking around her. Frame 6: she hovers with a cheerful grin, the star over her palm lighting up. Frame 7: cloak and hair fall back, the last stars vanish. Frame 8: exactly the resting showcase pose, nothing extra.",
+ "entrance_label": "Chòm sao nối sét hiện thân",
+ "green": true,
+ "only": [
+  "startoss"
+ ]
+}

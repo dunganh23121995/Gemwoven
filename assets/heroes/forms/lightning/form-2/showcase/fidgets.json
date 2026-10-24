@@ -1,12 +1,6 @@
 {
   "fidgets": [
     {
-      "name": "startoss",
-      "label": "Tung sao bắt lại",
-      "file": "startoss.webp",
-      "whole": false
-    },
-    {
       "name": "zigzag",
       "label": "Tia sét nhảy giữa ngón tay",
       "file": "zigzag.webp",
@@ -17,6 +11,22 @@
       "label": "Chòm sao nối sét hiện thân",
       "file": "entrance.webp",
       "whole": false
+    },
+    {
+      "name": "startoss",
+      "label": "Tung sao bắt lại",
+      "file": "startoss.webp",
+      "whole": false,
+      "frameMs": [
+        130,
+        130,
+        140,
+        320,
+        140,
+        320,
+        150,
+        130
+      ]
     }
   ]
 }
