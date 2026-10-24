@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "eyeflare",
+      "label": "Mắt hồn ma rực sáng",
+      "file": "eyeflare.webp",
+      "whole": false
+    },
+    {
+      "name": "soulfist",
+      "label": "Nắm đấm lửa hồn",
+      "file": "soulfist.webp",
+      "whole": false
+    }
+  ]
+}

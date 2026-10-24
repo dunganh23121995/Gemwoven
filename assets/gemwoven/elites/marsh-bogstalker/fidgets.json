@@ -5,6 +5,12 @@
       "label": "Nấm vai phun bào tử",
       "file": "mushrooms.webp",
       "whole": false
+    },
+    {
+      "name": "eyeglare",
+      "label": "Mặt nạ trừng mắt",
+      "file": "eyeglare.webp",
+      "whole": false
     }
   ]
 }

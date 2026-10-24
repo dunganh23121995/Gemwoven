@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "rapiersalute",
+      "label": "Chào kiếm kiểu đấu sĩ",
+      "file": "rapiersalute.webp",
+      "whole": true
+    },
+    {
+      "name": "roses",
+      "label": "Hoa hồng nở rộ",
+      "file": "roses.webp",
+      "whole": false
+    }
+  ]
+}

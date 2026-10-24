@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "staffbloom",
+      "label": "Nụ hồng trên gậy nở",
+      "file": "staffbloom.webp",
+      "whole": false
+    },
+    {
+      "name": "vinecurl",
+      "label": "Dây gai mọc từ lòng bàn tay",
+      "file": "vinecurl.webp",
+      "whole": false
+    }
+  ]
+}
