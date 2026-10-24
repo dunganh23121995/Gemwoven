@@ -110,6 +110,9 @@
           });
         },60);
       },
+      // Play one of the hero's occasional actions now (index into show.sheets.fidgets).
+      act(i){const src=(show.sheets.fidgets||[])[i];if(src)preload(src).then(()=>play(src,130));},
+      fidgets:(show.sheets.fidgets||[]).length,
       stop(){stopped=true;cancelAnimationFrame(timer);stage.remove();image.classList.remove('hero-show-under');image.style.opacity='';host.classList.remove('has-hero-show');}
     };
   }
