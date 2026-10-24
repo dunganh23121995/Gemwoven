@@ -62,3 +62,13 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .scythe-glint.hub{display:block;pointer-events:none;z-index:2;-webkit-mask:var(--scythe-mask) 0 0/100% 100% no-repeat;mask:var(--scythe-mask) 0 0/100% 100% no-repeat;background:linear-gradient(115deg,transparent 0 45.4%,#ffffff35 46.6%,#ffffff 47.7%,#ffffff 48.5%,#ffffff35 49.6%,transparent 50.8%),linear-gradient(115deg,transparent 0 46.8%,#ffffff 47.8%,#ffffff 48.4%,transparent 49.4%) 130% 0/300% 100% no-repeat;background-repeat:no-repeat;background-size:300% 100%;mix-blend-mode:plus-lighter;filter:drop-shadow(0 0 3px #e9e0ff) drop-shadow(0 0 6px #b9a6ff);animation:scythe-glint 5.8s ease-in-out infinite}
 @keyframes scythe-glint{0%,70%{background-position:62% 0;opacity:0}71.5%{opacity:1}86%{background-position:20% 0;opacity:1}88%,100%{background-position:20% 0;opacity:0}}
 .reduced-motion .scythe-glint.hub{display:none}
+/* Hero showcase (hero-show.js): the drawn sheet is laid exactly over the hero image it replaces. */
+.hero-show{display:block;position:absolute;pointer-events:none;z-index:1;background-repeat:no-repeat;background-size:200% 400%;transition:filter .9s ease-out,opacity .9s ease-out}
+.hero-show-under{opacity:0!important}
+.has-hero-show .scythe-glint{display:none!important}
+.hero-show.is-emerging{filter:brightness(.25) saturate(.4)}
+.hero-show-smoke{position:absolute;inset:-10% -25% -6%;pointer-events:none;z-index:2}
+.hero-show-smoke i{position:absolute;aspect-ratio:1;translate:-50% -50%;background-size:400% 100%;background-position:calc(var(--cell) * 33.333%) 0;background-repeat:no-repeat;filter:brightness(.35);opacity:0;animation:hero-show-puff-in .5s var(--delay) ease-out forwards}
+.hero-show-smoke.is-thinning i{animation:hero-show-puff-out 2.6s calc(var(--delay) * 2) ease-in forwards}
+@keyframes hero-show-puff-in{from{opacity:0;transform:scale(.5) rotate(0)}to{opacity:.95;transform:scale(1) rotate(var(--r))}}
+@keyframes hero-show-puff-out{from{opacity:.95;transform:scale(1) rotate(var(--r))}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.45) rotate(calc(var(--r) * 1.6))}}

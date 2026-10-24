@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "scythespin",
+      "label": "Xoay lưỡi hái",
+      "file": "scythespin.webp",
+      "whole": true
+    },
+    {
+      "name": "darkpalm",
+      "label": "Lửa đen trong lòng bàn tay",
+      "file": "darkpalm.webp",
+      "whole": false
+    },
+    {
+      "name": "emerge",
+      "label": "Bước ra từ bóng tối",
+      "file": "emerge.webp",
+      "whole": false
+    }
+  ]
+}

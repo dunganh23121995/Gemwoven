@@ -40,13 +40,13 @@ from action_idle import master_of  # noqa: E402
 TAIL = """Everything opaque: no smoke, mist, steam, haze, motion lines or loose particles. No ground, no shadow. Background 100% solid flat #FF00FF magenta, no gradient, no text, no labels, no borders, no grid lines. Clean HD smooth painted game art, NOT pixel art."""
 
 PROMPT = """Image 1 is the exact character and art reference ({what}). Image 2 shows the eight cells, each with that character in its resting pose at the same size and ground line.
-Draw an 8-frame animation, 2 columns x 4 rows, 1024x2048, read row-major, facing LEFT exactly like Image 1: a short occasional idle action played now and then while the character waits for battle.
+Draw an 8-frame animation, 2 columns x 4 rows, 1024x2048, read row-major, facing exactly the same way as Image 1: a short occasional idle action played now and then while the character waits for battle.
 Frame 1 and frame 8 are exactly the resting pose of Image 1. Frames 2-7: {action}
 Only the parts named above move; everything else (body, legs, feet, face, head position, size) stays exactly as in Image 1 in every frame. The design, colours, proportions and every detail stay IDENTICAL to Image 1. Same scale and camera in every cell, feet on the same ground line (94% of cell height), nothing crossing the cell edges.
 """ + TAIL
 
 LOOP = """Image 1 is the exact character and art reference ({what}). Image 2 shows the eight cells, each with that character in its resting pose at the same size and ground line.
-Draw an 8-frame looping IDLE animation, 2 columns x 4 rows, 1024x2048, read row-major, facing LEFT exactly like Image 1, like the lively battle idle of a mobile RPG monster: {action}
+Draw an 8-frame looping IDLE animation, 2 columns x 4 rows, 1024x2048, read row-major, facing exactly the same way as Image 1, like the lively battle idle of a mobile RPG monster: {action}
 Frame 1 is exactly the resting pose of Image 1 and frame 8 flows smoothly back into frame 1. Every frame is a real redrawn pose (squash, stretch, lean), never a copy. The design, colours, proportions and every detail stay IDENTICAL to Image 1; the size stays the same apart from the squash and stretch. Same scale and camera in every cell, the lowest point on the same ground line (94% of cell height), nothing crossing the cell edges.
 """ + TAIL
 
@@ -60,7 +60,7 @@ def run(*cmd):
 
 def gen(cid, name, model, effort, what, action, loop=False, green=False):
     """green: draw on #00FF00 for characters whose own colours are close to magenta (pink/violet)."""
-    d = WORK / cid / name; d.mkdir(parents=True, exist_ok=True)
+    d = WORK / cid.replace("/", "_") / name; d.mkdir(parents=True, exist_ok=True)
     (d / "green").unlink(missing_ok=True)
     if green:
         (d / "green").write_text("", encoding="utf-8")
@@ -107,8 +107,8 @@ def key_cells(raw, out_dir, cell=256, green=False):
         img.resize((cell, round(cell * h / w)), Image.Resampling.LANCZOS).crop((0, 0, cell, cell)).save(out_dir / f"idle-{i + 1}.png")
 
 
-def proc(cid, name, core=9999, whole=False):
-    d = WORK / cid / name
+def proc(cid, name, core=9999, whole=False, all_whole=False):
+    d = WORK / cid.replace("/", "_") / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
     key_cells(d / "raw.png", d / "cells", green=(d / "green").exists())
@@ -117,7 +117,7 @@ def proc(cid, name, core=9999, whole=False):
     # body by spread wings or a raised arm. Only what really moves is taken from the drawing.
     master = master_of(cid)
     # A common foe's resting loop is Codex's drawing in every frame (no master frame at the seam).
-    extra = ["--whole-loop"] if name == "idle" else ["--whole"] if whole else []
+    extra = ["--whole-loop"] if name == "idle" and core == 9999 or all_whole else ["--whole"] if whole else []
     out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, "--open", 1, "--min-area", 20, *extra)
     # A frame whose legs still do not match the master after placement (Codex moved the whole body)
     # is replaced like a clipped one: by the previous good frame, or by the rest pose near the end.
@@ -135,6 +135,8 @@ def proc(cid, name, core=9999, whole=False):
 
 
 def home(cid):
+    if (ROOT / cid).is_dir():
+        return ROOT / cid
     for d in [ROOT / "assets/gemwoven/elites" / cid, ROOT / "assets/gemwoven/boss-anim" / cid]:
         if d.is_dir():
             return d
@@ -142,7 +144,7 @@ def home(cid):
 
 
 def accept(cid, name, label, whole=False):
-    src, dst = WORK / cid / name, home(cid)
+    src, dst = WORK / cid.replace("/", "_") / name, home(cid)
     dst.mkdir(parents=True, exist_ok=True)
     shutil.copy2(src / "raw.png", dst / f"raw-{name}.png")
     shutil.copy2(src / "prompt.txt", dst / f"prompt-{name}.txt")
@@ -162,6 +164,7 @@ if __name__ == "__main__":
     if cmd == "gen":
         gen(cid, name, *args, loop="--loop" in flags, green="--green" in flags)
     elif cmd == "proc":
-        proc(cid, name, whole="--whole" in flags)
+        core = next((int(f.split("=")[1]) for f in flags if f.startswith("--core=")), 9999)
+        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags)
     else:
         accept(cid, name, args[0], whole="--whole" in flags)

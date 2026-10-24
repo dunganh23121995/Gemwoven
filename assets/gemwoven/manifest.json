@@ -11287,6 +11287,35 @@
     "width": 256,
     "height": 256
   },
+  "noct-puffs": {
+    "file": "assets/fx/noct/puffs.webp",
+    "width": 1024,
+    "height": 256
+  },
+  "show-shadow-3": {
+    "file": "assets/heroes/forms/shadow/form-3/showcase/poster.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      39,
+      36,
+      217,
+      241
+    ],
+    "bodyAnchor": {
+      "x": 0.5234375,
+      "crown": 0.140625,
+      "foot": 0.94140625
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/shadow/form-3/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/shadow/form-3/showcase/scythespin.webp",
+        "assets/heroes/forms/shadow/form-3/showcase/darkpalm.webp"
+      ],
+      "emerge": "assets/heroes/forms/shadow/form-3/showcase/emerge.webp"
+    }
+  },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",
     "width": 512,

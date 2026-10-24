@@ -12,10 +12,16 @@
     return el;
   }
   function decorateBody(el,key,form){
-    if(key==='shadow'&&form===3&&A['scythe-mask']&&!el.querySelector('.scythe-glint')){
+    const showcase=!!A[`show-${key}-${form}`]?.sheets;
+    if(key==='shadow'&&form===3&&!showcase&&A['scythe-mask']&&!el.querySelector('.scythe-glint')){
       const image=el.querySelector('.art,img'),glint=document.createElement('i');glint.className='scythe-glint hub';
       if(image)glint.style.cssText=image.style.cssText;glint.style.setProperty('--scythe-mask',`url('${new URL(A['scythe-mask'].file,document.baseURI).href}')`);
       image?.after(glint);
+    }
+    if(showcase){
+      const show=window.GemwovenHeroShow?.attach(el,key,form);
+      // The summoning entrance plays the first time the hero appears on Home in this visit.
+      if(show&&el.dataset.node==='home.hero'&&!window.__gemwovenHeroEntered){window.__gemwovenHeroEntered=true;show.summon();}
     }
     if(key==='novice'||form<2)return;
     el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
@@ -36,6 +42,8 @@
       const form=M.heroForm(key,snapshot.heroes[key]),poster=A[`form-${key}-${form}`],portrait=A[`form-portrait-${key}-${form}`],idle=A[`form-idle-${key}-${form}`];
       A['hero-'+key]=poster||originals['hero-'+key];A['portrait-'+key]=portrait||originals['portrait-'+key];
       A['home-idle-'+key]=idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
+      // A showcase pose replaces the resting body on every screen outside combat.
+      const show=A[`show-${key}-${form}`];if(show?.sheets){A['home-idle-'+key]=show;A['home-idle-'+key+'-poster']=show;}
     }
     const p=decorate(state);
     if(state.screen==='skills'){

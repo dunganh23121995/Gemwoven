@@ -32,6 +32,8 @@ Everything opaque: no smoke, mist, steam, haze, glow halos, motion lines or loos
 
 
 def master_of(cid):
+    if (ROOT / cid / "master.png").exists():   # a hero pose folder, e.g. assets/heroes/forms/shadow/form-3/showcase
+        return ROOT / cid / "master.png"
     for p in [ROOT / f"assets/gemwoven/elites/{cid}/master.png", ROOT / f"assets/gemwoven/items/creature-{cid}.png", ROOT / f"assets/gemwoven/items/monster-{cid}.png"]:
         if p.exists():
             return p

@@ -49,6 +49,23 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
 for name,sheet in json.loads((ROOT/'assets/gemwoven/ambient/ambient.json').read_text(encoding='utf-8')).items():
     merged['ambient-'+name]={**sheet,'width':192*sheet['count'],'height':192}
 merged['scythe-mask']={'file':'assets/heroes/forms/shadow/form-3/scythe-mask.png','width':256,'height':256}
+merged['noct-puffs']={'file':'assets/fx/noct/puffs.webp','width':1024,'height':256}
+# Showcase poses for the screens outside combat (hero-show.js): a drawn resting loop, occasional
+# actions (fidgets.json) and the summoning entrance (emerge.webp). The first loop frame is the poster
+# the hub lays out; the sheets are drawn over it.
+for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
+    if not (show_dir/'idle.webp').exists():continue
+    hero,form=show_dir.parent.parent.name,show_dir.parent.name.split('-')[1]
+    with Image.open(show_dir/'idle.webp') as sheet:
+        first=sheet.convert('RGBA').crop((0,0,sheet.width//2,sheet.height//4))
+    first.save(show_dir/'poster.png')
+    alpha=first.getchannel('A').point(lambda a:255 if a>=128 else 0);box=alpha.getbbox()
+    band=alpha.crop((0,box[3]-max(4,(box[3]-box[1])//8),first.width,box[3])).getbbox()
+    book=json.loads((show_dir/'fidgets.json').read_text(encoding='utf-8'))['fidgets'] if (show_dir/'fidgets.json').exists() else []
+    rel=lambda f:(show_dir/f).relative_to(ROOT).as_posix()
+    merged[f'show-{hero}-{form}']={'file':rel('poster.png'),'width':first.width,'height':first.height,'footBounds':list(box),
+        'bodyAnchor':{'x':(band[0]+band[2])/2/first.width,'crown':box[1]/first.height,'foot':box[3]/first.height},
+        'sheets':{'idle':rel('idle.webp'),'fidgets':[rel(f['file']) for f in book if f['name']!='emerge'],'emerge':rel('emerge.webp') if (show_dir/'emerge.webp').exists() else None}}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
@@ -93,7 +110,7 @@ for a in manifest.values():a['file']=data_uri(a['file'])
 backdrops={}
 for key in ['home','inventory','skills','arena','summon','shop','forge','upgrade','tavern']:
     backdrops[key]={'background':data_uri(merged.get('background-'+key,{}).get('file',f'assets/gemwoven/backgrounds/{key}.webp'))}
-for name in ['motion-setting','assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','living-hub','living-motion','ui']:
+for name in ['motion-setting','assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-show','hero-forms','summon-cinematic','living-hub','living-motion','ui']:
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
     if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
     if name=='journey-ui':code='window.GEMWOVEN_HOME_MUSIC='+json.dumps(data_uri('assets/audio/music/earth.ogg'))+';\n'+code
