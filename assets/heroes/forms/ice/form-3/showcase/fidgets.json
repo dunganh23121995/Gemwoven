@@ -1,12 +1,6 @@
 {
   "fidgets": [
     {
-      "name": "twirl",
-      "label": "Xoay kích trăng",
-      "file": "twirl.webp",
-      "whole": true
-    },
-    {
       "name": "entrance",
       "label": "Thiên Nguyệt Tuyết Liên",
       "file": "entrance.webp",
@@ -27,6 +21,12 @@
         150,
         130
       ]
+    },
+    {
+      "name": "twirl",
+      "label": "Xoay kích trăng",
+      "file": "twirl.webp",
+      "whole": false
     }
   ]
 }

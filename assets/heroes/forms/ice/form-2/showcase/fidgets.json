@@ -1,18 +1,6 @@
 {
   "fidgets": [
     {
-      "name": "brushfrost",
-      "label": "Phủi sương trên tai",
-      "file": "brushfrost.webp",
-      "whole": true
-    },
-    {
-      "name": "entrance",
-      "label": "Trăng sương giáng thế",
-      "file": "entrance.webp",
-      "whole": false
-    },
-    {
       "name": "moonglow",
       "label": "Nâng trượng gọi trăng",
       "file": "moonglow.webp",
@@ -27,6 +15,18 @@
         150,
         130
       ]
+    },
+    {
+      "name": "brushfrost",
+      "label": "Phủi sương trên tai",
+      "file": "brushfrost.webp",
+      "whole": false
+    },
+    {
+      "name": "entrance",
+      "label": "Trăng sương giáng thế",
+      "file": "entrance.webp",
+      "whole": false
     }
   ]
 }

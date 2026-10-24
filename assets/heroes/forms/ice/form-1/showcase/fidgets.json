@@ -1,18 +1,6 @@
 {
   "fidgets": [
     {
-      "name": "entrance",
-      "label": "Tuyết xoáy kết băng",
-      "file": "entrance.webp",
-      "whole": false
-    },
-    {
-      "name": "earflick",
-      "label": "Tai thỏ giật giật",
-      "file": "earflick.webp",
-      "whole": true
-    },
-    {
       "name": "snowflake",
       "label": "Gõ trượng kết bông tuyết",
       "file": "snowflake.webp",
@@ -27,6 +15,18 @@
         150,
         130
       ]
+    },
+    {
+      "name": "earflick",
+      "label": "Tai thỏ giật giật",
+      "file": "earflick.webp",
+      "whole": false
+    },
+    {
+      "name": "entrance",
+      "label": "Tuyết xoáy kết băng",
+      "file": "entrance.webp",
+      "whole": false
     }
   ]
 }
