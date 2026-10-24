@@ -70,30 +70,38 @@ def clip(name, ref, start, end, beat, fade_in=.006, fade_out=.12, highpass=45, r
     print('[ok]', name, USED[f'fire-{name}']['duration'], 's peak', USED[f'fire-{name}']['peak'], 'rms', USED[f'fire-{name}']['rms'])
 
 
-# Each clip is cut to its motion on screen (beat start-end in src/forms-mika.js, measured in the studio):
-# its natural attack on the motion's first frame, faded out by the time the next motion starts.
+# Each clip is cut to the visible segment it scores (measured in the studio, src/forms-mika.js), its
+# natural attack on the segment's first frame: continuous effects get a continuous bed, each burst its
+# own synced hit (one clip, played once per burst), big moments keep their natural tail.
 
-# ---- Four-star: Hồ Diễm Long Trảm (mikaLongCleave) -----------------------------------------------
-# 0-300 ms, the broadsword raised: a steel blade drawn and ringing.
+# ---- Four-star: Hồ Diễm Long Trảm (mikaLongCleave, 2300 ms) --------------------------------------
+# 0-300 ms, the broadsword raised: a steel blade drawn and ringing (over the fire bed).
 clip('f2-raise', ('katana', 'extracting_a_sword1.mp3'), 0, .3, 'sword raised upright (0-300 ms)', fade_out=.08)
-# 300-950 ms, the blade blazes up into fox-fire: form 1's fire whoosh, its rising first 0.65 s.
-clip('f2-blaze', ('mika-nori', 'fire-whoosh.mp3'), .12, .77, 'blade blazes up into fox-fire (300-950 ms)', fade_in=.03, fade_out=.08)
+# 0-1170 ms, the fox-fire blade igniting and towering until the cleave lands: a flamethrower lighting
+# up and roaring.
+clip('f2-blaze', ('freesound', '490166'), .9, 2.07, 'fox-fire blade ignites and towers (0-1170 ms)', fade_in=.01, fade_out=.12)
 # 950-1170 ms, the overhead cleave: a blade cutting the air, peaking as it comes down.
 clip('f2-cleave', ('katana', 'sword_attack1.mp3'), 0, .22, 'giant blade swung down (950-1170 ms)', fade_in=.003, fade_out=.05)
-# 1170-1850 ms, the slam through the foe and the cut burning on the floor: a fire eruption and its
-# crackling decay, faded out as she recovers.
-clip('f2-impact', ('freesound', '828433'), .93, 1.61, 'slam through the foe, cut burning on the floor (1170-1850 ms)', fade_in=.003, fade_out=.25)
+# 1170-1640 ms, the slam through the foe: a fire eruption's whoomph and first roar.
+clip('f2-impact', ('freesound', '828433'), .93, 1.4, 'slam through the foe (1170-1640 ms)', fade_in=.003, fade_out=.15)
+# 1250-2300 ms, the flames roaring across the stage (blade lying through the foe until ~1670, floor cut
+# burning 1280-1820) and dying away: the end of a long flamethrower burst with its natural tail.
+clip('f2-roar', ('freesound', '395039'), 12.25, 13.3, 'flames roar across the stage, floor cut burning, dying away (1250-2300 ms)', fade_in=.08, fade_out=.06)
 
-# ---- Six-star: Cửu Dương Hồ Diễm (mikaNineSunSweep) ----------------------------------------------
-# 0-650 ms, the nine tails flare into a sun: a magic-fire bloom.
+# ---- Six-star: Cửu Dương Hồ Diễm (mikaNineSunSweep, 2850 ms) -------------------------------------
+# 0-650 ms, the nine tails flare into a sun behind her: a magic-fire bloom.
 clip('f3-flare', ('freesound', '761330'), .5, 1.15, 'nine tails flare into a sun (0-650 ms)', fade_in=.02, fade_out=.15)
 # 650-1250 ms, the glaive drawn back and growing: a fire rising toward the sweep.
 clip('f3-draw', ('freesound', '186932'), 1.0, 1.6, 'glaive drawn back and growing (650-1250 ms)', fade_in=.08, fade_out=.08)
 # 1250-1420 ms, the flat spinning sweep and crescent cut: one fast fire whoosh.
 clip('f3-sweep', ('freesound', '260555'), .18, .35, 'spinning sweep and crescent cut (1250-1420 ms)', fade_in=.003, fade_out=.05)
-# 1420-2350 ms, the nine-tailed sun bursts on the foe (the spirits run in under its decay).
-clip('f3-sun', ('freesound', '855898'), 0, .93, 'nine-tailed sun bursts on the foe (1420-2350 ms)', fade_in=.002, fade_out=.25)
-# 2350-2850 ms, the burn takes hold: the foe left sizzling.
-clip('f3-burn', ('freesound', '137262'), .25, .75, 'the burn takes hold (2350-2850 ms)', fade_in=.01, fade_out=.15, highpass=300, rms=.09)
+# 1420-2050 ms, the nine-tailed sun bursting on the foe (ring and crescent fading under it): an
+# explosion with its rolling tail.
+clip('f3-sun', ('freesound', '855898'), 0, .63, 'nine-tailed sun bursts on the foe (1420-2050 ms)', fade_in=.002, fade_out=.15)
+# Each wave of fox-fire spirits bursting on the foe (2000, 2240, 2480 ms): one fireball impact per wave.
+clip('f3-fireball', ('freesound', '252092'), 0, .3, 'a wave of fox-fire spirits bursts on the foe (once per wave)', fade_in=.002, fade_out=.1)
+# 1550-2850 ms, the spirits running in and the foe burning under their bursts: a large fire roaring
+# and crackling, faded out with the last flames.
+clip('f3-burning', ('freesound', '698209'), .25, 1.55, 'fire spirits run in, the foe burns under their bursts (1550-2850 ms)', fade_in=.12, fade_out=.25)
 
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
