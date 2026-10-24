@@ -4,7 +4,7 @@
     "earth": {
       "voice": "treant-golem",
       "family": "boss-grovewarden",
-      "note": "Cổ Thụ Thần Vệ: moss-and-stone tree golem, no human face. Real grizzly-bear roars pitched down with creaking wood and grinding stone."
+      "note": "Thạch Mộc Cự Vệ: moss-and-stone tree golem, no human face. Real grizzly-bear roars pitched down with creaking wood and grinding stone."
     },
     "fire": {
       "voice": "dragon",
@@ -14,12 +14,12 @@
     "ice": {
       "voice": "frost-beast",
       "family": "boss-moonfrost",
-      "note": "Nữ Vương Băng Nguyệt: the art is a white feathered fox/owl-like beast, not a human queen. Real red-fox screams, slowed, with a frosty snake-hiss breath."
+      "note": "Băng Nguyệt Linh Hồ: the art is a white feathered fox/owl-like beast, not a human queen. Real red-fox screams, slowed, with a frosty snake-hiss breath."
     },
     "lightning": {
       "voice": "storm-lion",
       "family": "boss-thunderking",
-      "note": "Lôi Vương Thiên Đỉnh: purple maned feline beast. Real tiger snarls and roar with a lion layer and electric crackle."
+      "note": "Lôi Sư Thiên Đỉnh: purple maned feline beast. Real tiger snarls and roar with a lion layer and electric crackle."
     },
     "mire": {
       "voice": "female",
@@ -44,7 +44,7 @@
     "prism": {
       "voice": "insect-queen",
       "family": "boss-prism",
-      "note": "Nữ Vương Tinh Thể: crowned crystal mantis/wasp queen with an insect head (compound eyes, mandibles), not a human face. Real wasp buzz and cicada with scraping glass."
+      "note": "Bọ Ngựa Lăng Tinh: crowned crystal mantis/wasp queen with an insect head (compound eyes, mandibles), not a human face. Real wasp buzz and cicada with scraping glass."
     },
     "reaper": {
       "voice": "undead-wraith",
@@ -64,7 +64,7 @@
     "seraph": {
       "voice": "male",
       "family": "boss-seraph",
-      "note": "Hộ Vệ Nhật Quang: broad armored winged knight, male build. Male fight grunts for attacks, a male pain-grunt actor for hurt/cast/release/death, lowered with a light double."
+      "note": "Thiên Sứ Nhật Quang: broad armored winged knight, male build. Male fight grunts for attacks, a male pain-grunt actor for hurt/cast/release/death, lowered with a light double."
     },
     "eclipse": {
       "voice": "void-dragon",
@@ -74,7 +74,7 @@
     "elderbloom": {
       "voice": "antlered-treant",
       "family": "boss-elderbloom",
-      "note": "Cổ Vương Bạch Hoa: antlered treant. Real moose/elk bellows with tree-trunk creaks."
+      "note": "Thụ Vương Bạch Hoa: antlered treant. Real moose/elk bellows with tree-trunk creaks."
     },
     "cinderheart": {
       "voice": "magma-golem",
@@ -89,7 +89,7 @@
     "tempestwing": {
       "voice": "thunderbird",
       "family": "boss-tempestwing",
-      "note": "Lôi Hoàng Kim Dực: armored storm eagle. Real eagle squawks and calls with electric crackle; a different species and recordist from the roc."
+      "note": "Sư Ưng Lôi Hoàng: armored storm eagle. Real eagle squawks and calls with electric crackle; a different species and recordist from the roc."
     },
     "souljailer": {
       "voice": "undead-jailer",
@@ -114,7 +114,7 @@
     "coraltide": {
       "voice": "sea-dragon",
       "family": "boss-coraltide",
-      "note": "Hải Đế Châu San Hô: coral sea dragon. Real sea-lion roars (slowed) over a humpback-whale bed; mammalian, unlike the reptilian leviathan."
+      "note": "Long Vương Châu Triều: coral sea dragon. Real sea-lion roars (slowed) over a humpback-whale bed; mammalian, unlike the reptilian leviathan."
     },
     "moonfang": {
       "voice": "wolf",

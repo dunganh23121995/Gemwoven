@@ -8,13 +8,13 @@
   // eruption, rain, roar, tether, vanish, aura) and, for the ultimates, a status nobody else uses.
   const st=(id,turns,value=0,target='hero')=>({id,turns,value,target});
   const BOSSES={
-    earth:{name:'Cổ Thụ Thần Vệ',element:'earth',skills:[skill('Nanh Vuốt','strike',1.1,{move:'lunge'}),skill('Giáp Cổ Thụ','guard',0,{shield:.1,move:'aura'}),skill('Hút Linh Lực','drain',.75,{drain:20,move:'tether'}),
+    earth:{name:'Thạch Mộc Cự Vệ',element:'earth',skills:[skill('Nanh Vuốt','strike',1.1,{move:'lunge'}),skill('Giáp Cổ Thụ','guard',0,{shield:.1,move:'aura'}),skill('Hút Linh Lực','drain',.75,{drain:20,move:'tether'}),
       skill('Thần Mộc Bất Tử','strike',.9,{move:'slam',heal:.06,status:st('undying',2,0,'self'),ult:true,description:'Nện đất, hồi 6% HP và bất tử 2 lượt (HP không xuống dưới 1).'})]},
     fire:{name:'Hỏa Long Tro Tàn',element:'fire',skills:[skill('Tam Liên Hỏa Tức','strike',1.25,{hits:3,move:'breath'}),skill('Vảy Dung Nham','guard',0,{shield:.09,move:'aura'}),skill('Tro Tàn Thiêu Đốt','burn',.8,{turns:2,dot:.22,move:'lunge'}),
       skill('Long Viêm Diệt Thế','strike',1.3,{move:'breath',status:st('dot',3,.32),ult:true,description:'Biển lửa rồng: thiêu đốt nặng suốt 3 lượt.'})]},
-    ice:{name:'Nữ Vương Băng Nguyệt',element:'ice',skills:[skill('Băng Thương','strike',1.15,{hits:2,move:'volley'}),skill('Kết Giới Băng','guard',0,{shield:.12,move:'aura'}),skill('Hàn Phong','drain',.85,{drain:25,move:'roar'}),
+    ice:{name:'Băng Nguyệt Linh Hồ',element:'ice',skills:[skill('Băng Thương','strike',1.15,{hits:2,move:'volley'}),skill('Kết Giới Băng','guard',0,{shield:.12,move:'aura'}),skill('Hàn Phong','drain',.85,{drain:25,move:'roar'}),
       skill('Nguyệt Băng Phong Ấn','strike',1.1,{hits:3,move:'rain',status:st('stun',1),ult:true,description:'Mưa giáo băng đông cứng tướng: mất 1 lượt.'})]},
-    lightning:{name:'Lôi Vương Thiên Đỉnh',element:'lightning',skills:[skill('Ngũ Lôi','strike',1.3,{hits:5,move:'rain'}),skill('Điện Trường','drain',.8,{drain:25,move:'roar'}),skill('Tụ Điện','charge',.7,{charge:1.35,move:'lunge'}),
+    lightning:{name:'Lôi Sư Thiên Đỉnh',element:'lightning',skills:[skill('Ngũ Lôi','strike',1.3,{hits:5,move:'rain'}),skill('Điện Trường','drain',.8,{drain:25,move:'roar'}),skill('Tụ Điện','charge',.7,{charge:1.35,move:'lunge'}),
       skill('Lôi Thần Quang Pháo','strike',2.2,{move:'beam',pierce:1,ult:true,description:'Tia lôi quang xuyên thủng toàn bộ giáp.'})]},
     mire:{name:'Mẫu Nấm Độc',element:'earth',skills:[skill('Bào Tử Độc','poison',.65,{turns:3,dot:.18,move:'eruption'}),skill('Tán Nấm Hồi Sinh','heal',0,{heal:.08,move:'aura'}),skill('Rễ Bào Tử','drain',.95,{drain:18,move:'tether'}),
       skill('Bào Tử Mê Loạn','strike',.7,{hits:4,move:'rain',status:st('confuse',2,.5),ult:true,description:'Bào tử mê hồn: 2 lượt, một nửa sát thương của tướng dội ngược vào chính mình.'})]},
@@ -24,7 +24,7 @@
       skill('Hải Triều Tái Sinh','heal',0,{heal:.22,shield:.06,move:'aura',ult:true,description:'Triều cường hồi 22% HP và dựng lá chắn 6%.'})]},
     colossus:{name:'Cự Tượng Bánh Răng',element:'lightning',skills:[skill('Nạp Lõi Hơi Nước','charge',.5,{charge:1.5,move:'roar'}),skill('Búa Tạ Cơ Khí','strike',1.4,{move:'lunge'}),skill('Giáp Bánh Răng','guard',0,{shield:.13,move:'aura'}),
       skill('Trọng Chùy Phá Giáp','strike',1.4,{move:'slam',shatter:1,status:st('vulnerable',3,.3),ult:true,description:'Đập nát toàn bộ giáp; tướng nhận thêm 30% sát thương trong 3 lượt.'})]},
-    prism:{name:'Nữ Vương Tinh Thể',element:'ice',skills:[skill('Lăng Kính Liên Kích','strike',1.2,{hits:4,move:'volley'}),skill('Vỏ Tinh Thể','guard',0,{shield:.1,move:'aura'}),skill('Quang Phổ Rạn Nứt','pierce',1.1,{pierce:.65,move:'beam'}),
+    prism:{name:'Bọ Ngựa Lăng Tinh',element:'ice',skills:[skill('Lăng Kính Liên Kích','strike',1.2,{hits:4,move:'volley'}),skill('Vỏ Tinh Thể','guard',0,{shield:.1,move:'aura'}),skill('Quang Phổ Rạn Nứt','pierce',1.1,{pierce:.65,move:'beam'}),
       skill('Lăng Kính Suy Nhược','strike',.9,{move:'eruption',status:st('weaken',3,.4),ult:true,description:'Lăng kính bẻ cong sức mạnh: sát thương của tướng giảm 40% trong 3 lượt.'})]},
     reaper:{name:'Tử Thần Nguyệt Ảnh',element:'ice',skills:[skill('Liềm Hồn','lifesteal',1.1,{leech:.35,move:'lunge'}),skill('Hút Hồn','drain',.9,{drain:35,move:'tether'}),skill('Nguyệt Trảm','execute',1.1,{threshold:.4,bonus:1.5,move:'charge'}),
       skill('Ảnh Hồn Tiêu Biến','strike',.8,{move:'vanish',status:st('stealth',1,0,'self'),ult:true,description:'Tan vào bóng trăng: mọi đòn đánh trượt trong lượt tới.'})]},
@@ -32,7 +32,7 @@
       skill('Đại Bàng Bổ Nhào','drain',1.8,{drain:100,move:'charge',ult:true,description:'Bổ nhào từ trời cao, cuốn sạch năng lượng của tướng.'})]},
     briar:{name:'Nữ Hoàng Gai',element:'earth',skills:[skill('Gai Độc','poison',.8,{turns:2,dot:.25,move:'eruption'}),skill('Hoa Ăn Linh','lifesteal',1,{leech:.3,move:'tether'}),skill('Rừng Gai','guard',0,{shield:.12,move:'aura'}),
       skill('Vương Miện Gai Phản','strike',.6,{move:'eruption',status:st('reflect',2,.35,'self'),ult:true,description:'Vương miện gai: 2 lượt, 35% sát thương tướng gây ra bị dội ngược.'})]},
-    seraph:{name:'Hộ Vệ Nhật Quang',element:'fire',skills:[skill('Nhật Kiếm','pierce',1.2,{pierce:.4,move:'lunge'}),skill('Ánh Dương Tái Sinh','heal',0,{heal:.08,move:'aura'}),skill('Hào Quang Phán Quyết','strike',1.35,{hits:3,move:'rain'}),
+    seraph:{name:'Thiên Sứ Nhật Quang',element:'fire',skills:[skill('Nhật Kiếm','pierce',1.2,{pierce:.4,move:'lunge'}),skill('Ánh Dương Tái Sinh','heal',0,{heal:.08,move:'aura'}),skill('Hào Quang Phán Quyết','strike',1.35,{hits:3,move:'rain'}),
       skill('Phong Ấn Thánh Quang','strike',1.1,{move:'beam',status:st('silence',2),ult:true,description:'Thánh quang phong ấn: tướng không thể dùng tuyệt kỹ trong 2 lượt.'})]},
     eclipse:{name:'Long Đế Hư Không',element:'lightning',skills:[skill('Nhật Thực','drain',1.1,{drain:30,move:'roar'}),skill('Hư Không Phán Quyết','execute',1.15,{threshold:.35,bonus:1.6,move:'beam'}),skill('Tinh Vân Bạo Phát','burn',1,{turns:2,dot:.3,move:'breath'}),
       skill('Hố Đen Nuốt Chửng','strike',1.2,{move:'tether',status:st('haste',1,0,'self'),ult:true,description:'Hố đen kéo tướng lại gần; Long Đế hành động thêm một lượt.'})]}

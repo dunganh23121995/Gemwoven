@@ -1976,7 +1976,7 @@
     ]
   },
   "boss-prism": {
-    "name": "Nữ Vương Tinh Thể",
+    "name": "Bọ Ngựa Lăng Tinh",
     "file": "assets/gemwoven/items/boss-prism.webp",
     "webp": "items/boss-prism.webp",
     "width": 512,
@@ -2120,7 +2120,7 @@
     ]
   },
   "boss-seraph": {
-    "name": "Hộ Vệ Nhật Quang",
+    "name": "Thiên Sứ Nhật Quang",
     "file": "assets/gemwoven/items/boss-seraph.webp",
     "webp": "items/boss-seraph.webp",
     "width": 512,

@@ -2,7 +2,7 @@
   {
     "id": "elderbloom",
     "theme": "eldergrove",
-    "name": "Cổ Vương Bạch Hoa",
+    "name": "Thụ Vương Bạch Hoa",
     "chapterName": "Thánh Lâm Bạch Hoa",
     "element": "earth",
     "backdrop": "forest",
@@ -35,8 +35,8 @@
         "Vệ Rễ Cổ Mộc"
       ],
       [
-        "thornstag",
-        "Hươu Gai Bạch Hoa"
+        "blossomranger",
+        "Du Hiệp Bạch Hoa"
       ]
     ],
     "eliteLessons": [
@@ -58,7 +58,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Vỏ Cây Bạch Hoa",
@@ -73,7 +74,8 @@
             "type": "heal",
             "pct": 0.02
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Vệ Rễ",
@@ -84,7 +86,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Nở Hoa Ký Sinh",
@@ -104,7 +107,8 @@
             "type": "drain",
             "amount": 18
           }
-        ]
+        ],
+        "move": "tether"
       },
       {
         "name": "Mùa Xuân Vĩnh Cửu",
@@ -119,12 +123,13 @@
             "type": "ward",
             "pct": 0.06
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Thiên Căn Sụp Đổ",
         "phase": 3,
-        "description": "Niệm một lượt rồi đánh 190%, cộng thêm 12% mỗi Rễ còn lại.",
+        "description": "Niệm một lượt rồi đánh 190%, cộng thêm 12% mỗi Rễ còn lại. Tái sinh 5% HP mỗi lượt trong 3 lượt.",
         "effects": [
           {
             "type": "burst",
@@ -133,12 +138,21 @@
           {
             "type": "stack",
             "count": 2
+          },
+          {
+            "type": "status",
+            "id": "regen",
+            "turns": 3,
+            "value": 0.05,
+            "target": "self"
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "slam",
+        "ult": true
       }
     ],
-    "chapter": 21,
+    "chapter": 15,
     "counterKey": "artifact-eldergrove",
     "artifactRanks": [
       0,
@@ -218,7 +232,8 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Giáp Huyền Nham",
@@ -233,7 +248,8 @@
             "type": "drain",
             "amount": 15
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Quỷ Lò",
@@ -244,7 +260,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Nung Chảy Phòng Tuyến",
@@ -264,7 +281,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "slam"
       },
       {
         "name": "Mưa Tro Tàn",
@@ -280,12 +298,13 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "rain"
       },
       {
         "name": "Trái Tim Phun Trào",
         "phase": 3,
-        "description": "Niệm một lượt, xả 205%; Nhiệt còn lại tăng sức nổ.",
+        "description": "Niệm một lượt, xả 205%; Nhiệt còn lại tăng sức nổ. Giáp của tướng tan chảy: không thể tăng giáp trong 3 lượt.",
         "effects": [
           {
             "type": "burst",
@@ -294,12 +313,19 @@
           {
             "type": "stack",
             "count": 2
+          },
+          {
+            "type": "status",
+            "id": "armorlock",
+            "turns": 3
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "eruption",
+        "ult": true
       }
     ],
-    "chapter": 22,
+    "chapter": 16,
     "counterKey": "artifact-caldera",
     "artifactRanks": [
       0,
@@ -356,8 +382,8 @@
         "Kỵ Sĩ Sương Giá"
       ],
       [
-        "blizzardowl",
-        "Cú Tuyết Bão"
+        "blizzardmage",
+        "Pháp Sư Bão Tuyết"
       ]
     ],
     "eliteLessons": [
@@ -379,7 +405,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "volley"
       },
       {
         "name": "Kính Băng Phản Chiếu",
@@ -394,7 +421,8 @@
             "type": "heal",
             "pct": 0.02
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Hầu Cận Băng",
@@ -405,7 +433,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Vương Miện Hàn Ngục",
@@ -425,7 +454,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "beam"
       },
       {
         "name": "Mưa Tinh Thể",
@@ -441,12 +471,13 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "rain"
       },
       {
         "name": "Tuyết Táng Vĩnh Dạ",
         "phase": 3,
-        "description": "Niệm một lượt; nổ Hàn Ấn với 185% sức mạnh.",
+        "description": "Niệm một lượt; nổ Hàn Ấn với 185% sức mạnh. Hàn ấn: tướng chỉ nhận một nửa năng lượng trong 3 lượt.",
         "effects": [
           {
             "type": "burst",
@@ -455,12 +486,20 @@
           {
             "type": "drain",
             "amount": 25
+          },
+          {
+            "type": "status",
+            "id": "chill",
+            "turns": 3,
+            "value": 0.5
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "eruption",
+        "ult": true
       }
     ],
-    "chapter": 23,
+    "chapter": 17,
     "counterKey": "artifact-glacier",
     "artifactRanks": [
       0,
@@ -484,7 +523,7 @@
   {
     "id": "tempestwing",
     "theme": "stormspire",
-    "name": "Lôi Hoàng Kim Dực",
+    "name": "Sư Ưng Lôi Hoàng",
     "chapterName": "Thiên Đài Bão Điện",
     "element": "lightning",
     "backdrop": "thunder",
@@ -513,12 +552,12 @@
     ],
     "elites": [
       [
-        "voltgryphon",
-        "Sư Ưng Lôi"
+        "voltlancer",
+        "Thương Kỵ Lôi Dực"
       ],
       [
-        "stormtotem",
-        "Tế Trụ Bão"
+        "stormshaman",
+        "Pháp Sư Tế Bão"
       ]
     ],
     "eliteLessons": [
@@ -540,7 +579,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Lông Vũ Thiên Lôi",
@@ -555,7 +595,8 @@
             "type": "drain",
             "amount": 18
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Vệ Phong",
@@ -566,7 +607,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Sấm Xuyên Tầng Mây",
@@ -586,7 +628,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "charge"
       },
       {
         "name": "Mắt Bão Cướp Linh",
@@ -606,22 +649,31 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "tether"
       },
       {
         "name": "Thiên Phạt Cửu Lôi",
         "phase": 3,
-        "description": "Niệm một lượt; chín nhịp sét tổng 195%, nổ Điện Tích.",
+        "description": "Niệm một lượt; chín nhịp sét tổng 195%, nổ Điện Tích. Ấn sấm: sau 2 lượt nổ tung, gây 18% HP tối đa của tướng.",
         "effects": [
           {
             "type": "burst",
             "power": 1.95
+          },
+          {
+            "type": "status",
+            "id": "mark",
+            "turns": 2,
+            "value": 0.18
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "rain",
+        "ult": true
       }
     ],
-    "chapter": 24,
+    "chapter": 18,
     "counterKey": "artifact-stormspire",
     "artifactRanks": [
       0,
@@ -705,7 +757,8 @@
             "type": "heal",
             "pct": 0.015
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Lồng Đèn U Minh",
@@ -720,7 +773,8 @@
             "type": "drain",
             "amount": 20
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Hồn Canh Ngục",
@@ -731,7 +785,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Xiềng Xích Hút Sinh",
@@ -751,7 +806,8 @@
             "type": "heal",
             "pct": 0.04
           }
-        ]
+        ],
+        "move": "tether"
       },
       {
         "name": "Tế Lễ Ngục Đăng",
@@ -771,22 +827,31 @@
             "power": 0.8,
             "hits": 1
           }
-        ]
+        ],
+        "move": "eruption"
       },
       {
         "name": "Đại Thu Hồn",
         "phase": 3,
-        "description": "Niệm một lượt; 180%, tăng theo hồn còn bị giam, có thể sống sót bằng HP/giáp.",
+        "description": "Niệm một lượt; 180%, tăng theo hồn còn bị giam, có thể sống sót bằng HP/giáp. Nguyền rủa tăng dần: mỗi lượt sát thương mạnh hơn.",
         "effects": [
           {
             "type": "burst",
             "power": 1.8
+          },
+          {
+            "type": "status",
+            "id": "curse",
+            "turns": 3,
+            "value": 0.22
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "vanish",
+        "ult": true
       }
     ],
-    "chapter": 25,
+    "chapter": 19,
     "counterKey": "artifact-soulcrypt",
     "artifactRanks": [
       0,
@@ -843,8 +908,8 @@
         "Sứ Giả Ôn Bào"
       ],
       [
-        "sporetoad",
-        "Cóc Vương Bào Tử"
+        "mycoknight",
+        "Hiệp Sĩ Nấm"
       ]
     ],
     "eliteLessons": [
@@ -866,7 +931,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "slam"
       },
       {
         "name": "Mũ Nấm Tái Sinh",
@@ -881,7 +947,8 @@
             "type": "heal",
             "pct": 0.03
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Nấm Con",
@@ -892,7 +959,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Mưa Bào Tử Lục",
@@ -908,7 +976,8 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "rain"
       },
       {
         "name": "Hấp Thu Hoại Chất",
@@ -928,12 +997,13 @@
             "power": 0.9,
             "hits": 1
           }
-        ]
+        ],
+        "move": "tether"
       },
       {
         "name": "Đại Dịch Nở Hoa",
         "phase": 3,
-        "description": "Niệm một lượt; nổ độc 175% và thêm hai tầng Độc.",
+        "description": "Niệm một lượt; nổ độc 175% và thêm hai tầng Độc. Bào tử che mắt: đòn của tướng trượt 50% trong 2 lượt.",
         "effects": [
           {
             "type": "burst",
@@ -942,12 +1012,20 @@
           {
             "type": "stack",
             "count": 2
+          },
+          {
+            "type": "status",
+            "id": "blind",
+            "turns": 2,
+            "value": 0.5
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "eruption",
+        "ult": true
       }
     ],
-    "chapter": 26,
+    "chapter": 20,
     "counterKey": "artifact-mycelium",
     "artifactRanks": [
       0,
@@ -1027,7 +1105,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "slam"
       },
       {
         "name": "Tái Kết Mai Thành",
@@ -1038,7 +1117,8 @@
             "type": "ward",
             "pct": 0.12
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Vệ Tinh Thành",
@@ -1049,7 +1129,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Pháo Lăng Kính",
@@ -1069,7 +1150,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "beam"
       },
       {
         "name": "Cộng Hưởng Nghịch Chấn",
@@ -1089,22 +1171,31 @@
             "power": 0.85,
             "hits": 1
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Thiên Thành Sụp Đổ",
         "phase": 3,
-        "description": "Niệm một lượt; giẫm 210% và nổ Cộng Hưởng.",
+        "description": "Niệm một lượt; giẫm 210% và nổ Cộng Hưởng. Thành lũy tuyệt đối: miễn mọi sát thương trong lượt tới.",
         "effects": [
           {
             "type": "burst",
             "power": 2.1
+          },
+          {
+            "type": "status",
+            "id": "invulnerable",
+            "turns": 1,
+            "target": "self"
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "eruption",
+        "ult": true
       }
     ],
-    "chapter": 27,
+    "chapter": 21,
     "counterKey": "artifact-geode",
     "artifactRanks": [
       0,
@@ -1184,7 +1275,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "volley"
       },
       {
         "name": "Vành Sa Lậu",
@@ -1199,7 +1291,8 @@
             "type": "drain",
             "amount": 20
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi Ảnh Sa Vệ",
@@ -1210,7 +1303,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Đảo Chiều Tinh Sa",
@@ -1225,7 +1319,8 @@
             "type": "ward",
             "pct": 0.05
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Lãi Suất Thời Gian",
@@ -1245,22 +1340,32 @@
             "power": 1.1,
             "hits": 1
           }
-        ]
+        ],
+        "move": "tether"
       },
       {
         "name": "Chung Mạt Thời Luân",
         "phase": 3,
-        "description": "Niệm một lượt; 190%, khuếch đại theo nợ còn lại.",
+        "description": "Niệm một lượt; 190%, khuếch đại theo nợ còn lại. Nghịch thời: hồi lại 60% máu đã mất kể từ lần nghịch thời trước.",
         "effects": [
           {
             "type": "burst",
             "power": 1.9
+          },
+          {
+            "type": "status",
+            "id": "rewind",
+            "turns": 1,
+            "value": 0.6,
+            "target": "self"
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "beam",
+        "ult": true
       }
     ],
-    "chapter": 28,
+    "chapter": 22,
     "counterKey": "artifact-hourglass",
     "artifactRanks": [
       0,
@@ -1284,7 +1389,7 @@
   {
     "id": "coraltide",
     "theme": "coralreef",
-    "name": "Hải Đế Châu San Hô",
+    "name": "Long Vương Châu Triều",
     "chapterName": "Long Cung Châu Triều",
     "element": "ice",
     "backdrop": "abyss",
@@ -1340,7 +1445,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Kết Giới Trân Châu",
@@ -1355,7 +1461,8 @@
             "type": "heal",
             "pct": 0.02
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Gọi San Hô Hộ Triều",
@@ -1366,7 +1473,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Nghịch Lưu Rút Linh",
@@ -1386,7 +1494,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "tether"
       },
       {
         "name": "Trăng Triều Hồi Sinh",
@@ -1401,22 +1510,30 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Vạn Trượng Hải Triều",
         "phase": 3,
-        "description": "Niệm một lượt; 200% và nổ Mực Triều.",
+        "description": "Niệm một lượt; 200% và nổ Mực Triều. Hải triều cuốn trôi toàn bộ giáp và năng lượng của tướng.",
         "effects": [
           {
             "type": "burst",
             "power": 2
+          },
+          {
+            "type": "status",
+            "id": "wash",
+            "turns": 1
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "breath",
+        "ult": true
       }
     ],
-    "chapter": 29,
+    "chapter": 23,
     "counterKey": "artifact-coralreef",
     "artifactRanks": [
       0,
@@ -1473,8 +1590,8 @@
         "Nguyệt Giáp Kỵ Sĩ"
       ],
       [
-        "eclipsestalker",
-        "Kẻ Săn Nhật Thực"
+        "eclipsehuntress",
+        "Nữ Thợ Săn Nhật Thực"
       ]
     ],
     "eliteLessons": [
@@ -1496,7 +1613,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Giáp Tử Nguyệt",
@@ -1511,7 +1629,8 @@
             "type": "drain",
             "amount": 15
           }
-        ]
+        ],
+        "move": "aura"
       },
       {
         "name": "Song Ảnh Lang",
@@ -1522,7 +1641,8 @@
             "type": "adds",
             "count": 2
           }
-        ]
+        ],
+        "move": "roar"
       },
       {
         "name": "Kiếm Ảnh Truy Hồn",
@@ -1542,7 +1662,8 @@
             "type": "stack",
             "count": 1
           }
-        ]
+        ],
+        "move": "vanish"
       },
       {
         "name": "Trăng Máu Hút Sinh",
@@ -1562,22 +1683,32 @@
             "type": "stack",
             "count": 2
           }
-        ]
+        ],
+        "move": "lunge"
       },
       {
         "name": "Tử Nguyệt Chung Kiếm",
         "phase": 3,
-        "description": "Niệm một lượt; 205% cộng sức mạnh Nguyệt Ấn. Có thể phá niệm hoặc dựng giáp chịu đòn.",
+        "description": "Niệm một lượt; 205% cộng sức mạnh Nguyệt Ấn. Có thể phá niệm hoặc dựng giáp chịu đòn. Cuồng huyết: hút 50% sát thương gây ra thành máu trong 3 lượt.",
         "effects": [
           {
             "type": "burst",
             "power": 2.05
+          },
+          {
+            "type": "status",
+            "id": "frenzy",
+            "turns": 3,
+            "value": 0.5,
+            "target": "self"
           }
         ],
-        "channel": true
+        "channel": true,
+        "move": "charge",
+        "ult": true
       }
     ],
-    "chapter": 30,
+    "chapter": 24,
     "counterKey": "artifact-moonkeep",
     "artifactRanks": [
       0,

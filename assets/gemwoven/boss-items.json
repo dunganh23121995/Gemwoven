@@ -128,7 +128,7 @@
       "alphaNoiseCutoff": 8
     },
     "boss-prism": {
-      "name": "Nữ Vương Tinh Thể",
+      "name": "Bọ Ngựa Lăng Tinh",
       "file": "items/boss-prism.png",
       "webp": "items/boss-prism.webp",
       "width": 512,
@@ -248,7 +248,7 @@
       "alphaNoiseCutoff": 8
     },
     "boss-seraph": {
-      "name": "Hộ Vệ Nhật Quang",
+      "name": "Thiên Sứ Nhật Quang",
       "file": "items/boss-seraph.png",
       "webp": "items/boss-seraph.webp",
       "width": 512,
