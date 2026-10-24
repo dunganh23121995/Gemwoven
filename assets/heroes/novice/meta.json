@@ -11,13 +11,13 @@
       "frameWidth": 256,
       "frameHeight": 256,
       "columns": 2,
-      "rows": 2,
-      "frames": 4,
-      "count": 4,
+      "rows": 4,
+      "frames": 8,
+      "count": 8,
       "cols": 2,
       "frameOrder": "row-major",
       "loop": true,
-      "frameDuration": 220,
+      "frameDuration": 150,
       "origin": [
         128,
         244
@@ -28,24 +28,35 @@
           78
         ],
         [
-          122,
+          121,
           78
         ],
         [
-          122,
-          79
+          121,
+          78
+        ],
+        [
+          121,
+          78
+        ],
+        [
+          121,
+          78
+        ],
+        [
+          121,
+          78
+        ],
+        [
+          121,
+          78
         ],
         [
           121,
           78
         ]
       ],
-      "frameFiles": [
-        "idle/frame-00.png",
-        "idle/frame-01.png",
-        "idle/frame-02.png",
-        "idle/frame-03.png"
-      ],
+      "frameFiles": [],
       "floorAligned": true,
       "presentationTranslation": [
         0,

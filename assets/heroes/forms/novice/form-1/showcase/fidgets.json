@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "swing",
+      "label": "Vung kiếm tập",
+      "file": "swing.webp",
+      "whole": true
+    },
+    {
+      "name": "scratch",
+      "label": "Gãi đầu cười ngượng",
+      "file": "scratch.webp",
+      "whole": true
+    },
+    {
+      "name": "entrance",
+      "label": "Chạy tới phanh lại",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}
