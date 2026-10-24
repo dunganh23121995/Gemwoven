@@ -22,31 +22,31 @@
             ],
             [
               144,
-              41
+              42
             ],
             [
               144,
-              41
+              42
             ],
             [
               144,
-              41
+              42
             ],
             [
               144,
-              40
+              42
             ],
             [
               144,
-              41
+              42
             ],
             [
               144,
-              41
+              42
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/ice/form-2/attack.webp",
@@ -169,7 +169,7 @@
             ],
             [
               144,
-              58
+              57
             ],
             [
               144,
@@ -177,11 +177,7 @@
             ],
             [
               144,
-              53
-            ],
-            [
-              144,
-              58
+              57
             ],
             [
               144,
@@ -189,15 +185,19 @@
             ],
             [
               144,
-              56
+              57
             ],
             [
               144,
-              58
+              57
+            ],
+            [
+              144,
+              57
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "run": {
           "file": "assets/heroes/forms/ice/form-3/run.webp",

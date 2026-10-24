@@ -1,0 +1,32 @@
+{
+  "fidgets": [
+    {
+      "name": "entrance",
+      "label": "Tuyết xoáy kết băng",
+      "file": "entrance.webp",
+      "whole": false
+    },
+    {
+      "name": "earflick",
+      "label": "Tai thỏ giật giật",
+      "file": "earflick.webp",
+      "whole": true
+    },
+    {
+      "name": "snowflake",
+      "label": "Gõ trượng kết bông tuyết",
+      "file": "snowflake.webp",
+      "whole": false,
+      "frameMs": [
+        130,
+        150,
+        160,
+        600,
+        600,
+        160,
+        150,
+        130
+      ]
+    }
+  ]
+}
