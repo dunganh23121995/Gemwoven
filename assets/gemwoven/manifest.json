@@ -10751,7 +10751,7 @@
       241
     ],
     "bodyAnchor": {
-      "x": 0.466796875,
+      "x": 0.46484375,
       "crown": 0.1640625,
       "foot": 0.94140625
     }
@@ -10772,12 +10772,12 @@
     "width": 256,
     "height": 256,
     "bodyAnchor": {
-      "x": 0.466796875,
+      "x": 0.46484375,
       "crown": 0.1640625,
       "foot": 0.94140625
     },
     "footBounds": [
-      55,
+      51,
       44,
       201,
       241
@@ -10794,7 +10794,7 @@
       241
     ],
     "bodyAnchor": {
-      "x": 0.484375,
+      "x": 0.482421875,
       "crown": 0.22265625,
       "foot": 0.94140625
     }
@@ -10815,13 +10815,13 @@
     "width": 256,
     "height": 256,
     "bodyAnchor": {
-      "x": 0.484375,
+      "x": 0.482421875,
       "crown": 0.22265625,
       "foot": 0.94140625
     },
     "footBounds": [
-      53,
-      50,
+      51,
+      49,
       206,
       241
     ]
@@ -10837,7 +10837,7 @@
       241
     ],
     "bodyAnchor": {
-      "x": 0.4296875,
+      "x": 0.431640625,
       "crown": 0.171875,
       "foot": 0.94140625
     }
@@ -10858,13 +10858,13 @@
     "width": 256,
     "height": 256,
     "bodyAnchor": {
-      "x": 0.4296875,
+      "x": 0.431640625,
       "crown": 0.171875,
       "foot": 0.94140625
     },
     "footBounds": [
       42,
-      45,
+      47,
       215,
       241
     ]
@@ -10882,7 +10882,7 @@
     "bodyAnchor": {
       "x": 0.49609375,
       "crown": 0.19140625,
-      "foot": 0.9375
+      "foot": 0.921875
     }
   },
   "form-portrait-lightning-2": {
@@ -10903,13 +10903,13 @@
     "bodyAnchor": {
       "x": 0.49609375,
       "crown": 0.19140625,
-      "foot": 0.9375
+      "foot": 0.921875
     },
     "footBounds": [
       60,
       51,
-      198,
-      240
+      200,
+      236
     ]
   },
   "form-shadow-2": {
@@ -11121,7 +11121,7 @@
       "foot": 0.9375
     },
     "footBounds": [
-      46,
+      41,
       50,
       225,
       240
@@ -11392,6 +11392,472 @@
       ],
       "timing": {},
       "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
+    }
+  },
+  "show-earth-1": {
+    "file": "assets/heroes/forms/earth/form-1/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      81,
+      119,
+      303,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5169270833333334,
+      "bodyX": 0.5065104166666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/earth/form-1/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/earth/form-1/showcase/shieldslam.webp",
+        "assets/heroes/forms/earth/form-1/showcase/neckroll.webp"
+      ],
+      "labels": [
+        "Nện khiên xuống đất",
+        "Vươn vai vác chùy"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/earth/form-1/showcase/entrance.webp"
+    }
+  },
+  "show-earth-3": {
+    "file": "assets/heroes/forms/earth/form-3/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      81,
+      119,
+      302,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5052083333333334,
+      "bodyX": 0.4765625,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/earth/form-3/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/earth/form-3/showcase/bloom.webp",
+        "assets/heroes/forms/earth/form-3/showcase/rootcreep.webp"
+      ],
+      "labels": [
+        "Hoa nở trên gạc và vai",
+        "Cắm chùy, rễ lan ra"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/earth/form-3/showcase/entrance.webp"
+    }
+  },
+  "show-fire-1": {
+    "file": "assets/heroes/forms/fire/form-1/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      107,
+      119,
+      281,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5455729166666666,
+      "bodyX": 0.5481770833333334,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/fire/form-1/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/fire/form-1/showcase/flameblade.webp",
+        "assets/heroes/forms/fire/form-1/showcase/foxgrin.webp"
+      ],
+      "labels": [
+        "Lửa chạy dọc lưỡi kiếm",
+        "Vểnh tai cười tinh nghịch"
+      ],
+      "timing": {
+        "assets/heroes/forms/fire/form-1/showcase/flameblade.webp": [
+          130,
+          130,
+          150,
+          260,
+          420,
+          150,
+          130,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/fire/form-1/showcase/entrance.webp"
+    }
+  },
+  "show-fire-2": {
+    "file": "assets/heroes/forms/fire/form-2/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      112,
+      119,
+      271,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5338541666666666,
+      "bodyX": 0.5390625,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/fire/form-2/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/fire/form-2/showcase/shouldersword.webp",
+        "assets/heroes/forms/fire/form-2/showcase/kitsunebi.webp"
+      ],
+      "labels": [
+        "Vác kiếm lên vai",
+        "Thổi lửa hồ ly"
+      ],
+      "timing": {
+        "assets/heroes/forms/fire/form-2/showcase/shouldersword.webp": [
+          130,
+          150,
+          160,
+          900,
+          160,
+          170,
+          150,
+          130
+        ],
+        "assets/heroes/forms/fire/form-2/showcase/kitsunebi.webp": [
+          130,
+          150,
+          200,
+          260,
+          700,
+          180,
+          150,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
+    }
+  },
+  "show-fire-3": {
+    "file": "assets/heroes/forms/fire/form-3/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      93,
+      119,
+      285,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5442708333333334,
+      "bodyX": 0.5104166666666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/fire/form-3/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/fire/form-3/showcase/tailfan.webp",
+        "assets/heroes/forms/fire/form-3/showcase/glaivespin.webp"
+      ],
+      "labels": [
+        "Xòe chín đuôi",
+        "Xoay nguyệt đao"
+      ],
+      "timing": {
+        "assets/heroes/forms/fire/form-3/showcase/tailfan.webp": [
+          130,
+          130,
+          140,
+          150,
+          700,
+          150,
+          140,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/fire/form-3/showcase/entrance.webp"
+    }
+  },
+  "show-ice-1": {
+    "file": "assets/heroes/forms/ice/form-1/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      98,
+      121,
+      273,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.53125,
+      "bodyX": 0.5026041666666666,
+      "crown": 0.3151041666666667,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/ice/form-1/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/ice/form-1/showcase/earflick.webp",
+        "assets/heroes/forms/ice/form-1/showcase/snowflake.webp"
+      ],
+      "labels": [
+        "Tai thỏ giật giật",
+        "Gõ trượng kết bông tuyết"
+      ],
+      "timing": {
+        "assets/heroes/forms/ice/form-1/showcase/snowflake.webp": [
+          130,
+          150,
+          160,
+          600,
+          600,
+          160,
+          150,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/ice/form-1/showcase/entrance.webp"
+    }
+  },
+  "show-ice-2": {
+    "file": "assets/heroes/forms/ice/form-2/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      105,
+      118,
+      279,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5234375,
+      "bodyX": 0.48828125,
+      "crown": 0.3072916666666667,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/ice/form-2/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/ice/form-2/showcase/brushfrost.webp",
+        "assets/heroes/forms/ice/form-2/showcase/moonglow.webp"
+      ],
+      "labels": [
+        "Phủi sương trên tai",
+        "Nâng trượng gọi trăng"
+      ],
+      "timing": {
+        "assets/heroes/forms/ice/form-2/showcase/moonglow.webp": [
+          130,
+          150,
+          160,
+          700,
+          700,
+          160,
+          150,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/ice/form-2/showcase/entrance.webp"
+    }
+  },
+  "show-ice-3": {
+    "file": "assets/heroes/forms/ice/form-3/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      106,
+      119,
+      278,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5104166666666666,
+      "bodyX": 0.4973958333333333,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/ice/form-3/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/ice/form-3/showcase/twirl.webp",
+        "assets/heroes/forms/ice/form-3/showcase/fanwave.webp"
+      ],
+      "labels": [
+        "Xoay kích trăng",
+        "Mở quạt băng"
+      ],
+      "timing": {
+        "assets/heroes/forms/ice/form-3/showcase/fanwave.webp": [
+          130,
+          150,
+          160,
+          600,
+          600,
+          160,
+          150,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
+    }
+  },
+  "show-lightning-1": {
+    "file": "assets/heroes/forms/lightning/form-1/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      82,
+      121,
+      299,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.4036458333333333,
+      "bodyX": 0.4205729166666667,
+      "crown": 0.3151041666666667,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/lightning/form-1/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/lightning/form-1/showcase/hatpush.webp",
+        "assets/heroes/forms/lightning/form-1/showcase/staffspin.webp"
+      ],
+      "labels": [
+        "Đẩy vành mũ cười tinh nghịch",
+        "Vung trượng tóe điện"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/lightning/form-1/showcase/entrance.webp"
+    }
+  },
+  "show-lightning-2": {
+    "file": "assets/heroes/forms/lightning/form-2/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      79,
+      119,
+      300,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.4830729166666667,
+      "bodyX": 0.48828125,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/lightning/form-2/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/lightning/form-2/showcase/startoss.webp",
+        "assets/heroes/forms/lightning/form-2/showcase/zigzag.webp"
+      ],
+      "labels": [
+        "Tung sao bắt lại",
+        "Tia sét nhảy giữa ngón tay"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
+    }
+  },
+  "show-lightning-3": {
+    "file": "assets/heroes/forms/lightning/form-3/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      94,
+      124,
+      289,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.4739583333333333,
+      "bodyX": 0.4049479166666667,
+      "crown": 0.3229166666666667,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/lightning/form-3/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/lightning/form-3/showcase/orbitspin.webp",
+        "assets/heroes/forms/lightning/form-3/showcase/wingtwirl.webp"
+      ],
+      "labels": [
+        "Xoay thương quỹ đạo",
+        "Dang cánh xoay vòng"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/lightning/form-3/showcase/entrance.webp"
+    }
+  },
+  "show-novice-1": {
+    "file": "assets/heroes/forms/novice/form-1/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      117,
+      119,
+      267,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5520833333333334,
+      "bodyX": 0.5533854166666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/novice/form-1/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/novice/form-1/showcase/swing.webp",
+        "assets/heroes/forms/novice/form-1/showcase/scratch.webp"
+      ],
+      "labels": [
+        "Vung kiếm tập",
+        "Gãi đầu cười ngượng"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/novice/form-1/showcase/entrance.webp"
+    }
+  },
+  "show-earth-2": {
+    "file": "assets/heroes/forms/earth/form-2/showcase/poster.png",
+    "width": 384,
+    "height": 384,
+    "footBounds": [
+      93,
+      119,
+      290,
+      330
+    ],
+    "bodyAnchor": {
+      "x": 0.5286458333333334,
+      "bodyX": 0.5299479166666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/earth/form-2/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/earth/form-2/showcase/shieldtap.webp",
+        "assets/heroes/forms/earth/form-2/showcase/leafsprout.webp"
+      ],
+      "labels": [
+        "Gõ chùy lên khiên",
+        "Lá non mọc trên gạc"
+      ],
+      "timing": {},
+      "entrance": "assets/heroes/forms/earth/form-2/showcase/entrance.webp"
     }
   },
   "creature-abyss-reefcorsair": {
