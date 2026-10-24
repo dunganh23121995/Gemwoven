@@ -1,0 +1,17 @@
+{
+  "slash": {
+    "file": "assets/fx/heroes/novice/slash.webp",
+    "count": 6,
+    "frameDuration": 55
+  },
+  "burst": {
+    "file": "assets/fx/heroes/novice/burst.webp",
+    "count": 6,
+    "frameDuration": 60
+  },
+  "aura": {
+    "file": "assets/fx/heroes/novice/aura.webp",
+    "count": 6,
+    "frameDuration": 90
+  }
+}

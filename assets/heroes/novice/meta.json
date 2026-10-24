@@ -410,6 +410,69 @@
         "5f380c9ca60bef3b837352c530cdcf366eb1fdea92ee75ec1260ccdc27a9e218",
         "f49fceb2b9cc90e971b48d4bcd4e396d1740d49212ae4ef4a95fd7acb468c4be"
       ]
+    },
+    "skill": {
+      "hero": "novice",
+      "action": "skill",
+      "accepted": true,
+      "atlas": "skill.webp",
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 3,
+      "rows": 2,
+      "frames": 6,
+      "count": 6,
+      "cols": 3,
+      "frameOrder": "row-major",
+      "loop": false,
+      "frameDuration": 120,
+      "origin": [
+        128,
+        244
+      ],
+      "headAnchors": [
+        [
+          112,
+          72
+        ],
+        [
+          95,
+          77
+        ],
+        [
+          154,
+          104
+        ],
+        [
+          97,
+          55
+        ],
+        [
+          120,
+          103
+        ],
+        [
+          101,
+          69
+        ]
+      ],
+      "floorAligned": true,
+      "source": "assets/heroes/novice/skill/raw-sheet.png",
+      "model": "gpt-6-astra (high)",
+      "note": "Kiếm Nhiệt Huyết: plant, wind-up, dash, rise, overhead slash, follow-through (body + wooden sword; FX in assets/fx/heroes/novice)",
+      "qc": {
+        "frame_count": 6,
+        "valid_frame_count": 6,
+        "empty_count": 0,
+        "edge_touch_count": 0,
+        "paste_clamped_count": 0,
+        "body_scale_mean": 0.4317535242068859,
+        "output_subject_height_mean": 176.16666666666666,
+        "body_scale_cv": 0.02855012430017316,
+        "anchor_x_std": 0.020344693670994757,
+        "anchor_y_std": 0.02774823637010342,
+        "anchor_y_mean": 0.8700396825396824
+      }
     }
   }
 }

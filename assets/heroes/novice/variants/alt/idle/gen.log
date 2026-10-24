@@ -1,0 +1,25 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\heroes\\novice\\variants\\alt\\idle\\raw-sheet.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-60ba-71e1-8460-17f0d63d16dc\\exec-ac7dca71-2330-432c-95db-40a6256f26e2.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-56f7-7832-92b3-d7cf1a76610a\\exec-65b22ecb-5017-4b56-92df-a31c2f7c6d03.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-1465-7c20-9ec4-9cd84955135c\\exec-806abc4e-1dfa-4f8e-beef-f374573b6ada.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-57ea-7d63-a7b9-c058ffe3d304\\exec-4aca1abe-efd2-4e6f-9d4f-78de356c2230.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-144a-75a2-af94-58c9aa1fd968\\exec-3bbc403f-5327-4b97-974f-3747766e4ef9.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-5760-7442-8d22-2c70ab7488bc\\exec-a8ffe8e1-adba-457c-9a7d-9e8268acfedf.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-1394-74e3-857f-5fff410a4b09\\exec-ac714fc3-1d01-486c-bad0-317545046023.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-13d4-7b82-8369-0307a0b13203\\exec-8ca28645-ba1b-4732-9270-8860005bd0c7.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-1439-7882-830e-cad1628f34f6\\exec-fb638cf2-992b-45cc-bc3e-d67be6be1883.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-142a-7b90-843c-d54459f87f23\\exec-18ef49ad-61c5-42e0-9597-cfb6dab22b35.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-571c-7f73-9d0a-8bf00a75c224\\exec-651b860a-49b0-4466-b0f2-2f00a377cd7a.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-1439-7b02-a9ae-d84ec0575401\\exec-0db37459-901a-4684-b1c7-ad65bf623a26.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-578e-7be2-99aa-8f6499dd6afb\\exec-c83c8be5-0693-4495-b249-8fabdcb841df.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-1473-70f2-91b4-5792e27c386a\\exec-ba815cc3-c771-4b4f-8676-c85e0e7ff414.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-1420-7f60-9c1e-0a57b2a5c28e\\exec-66a00908-63fd-4bae-87c4-cb7e2762ce25.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16ead-5828-7881-9be3-ba893bafdaba\\exec-c07c3aa6-2ccf-4efb-b8e6-c0a4049637b7.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "seconds": 45.3
+}

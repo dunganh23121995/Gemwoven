@@ -296,6 +296,11 @@ for forms in art['heroForms'].values():
     for actions in forms.values():
         for sheet in actions.values():register_span(sheet)
 for sheet in creature_sheets():register_span(sheet)
+# Alternative drawings stand and reach like the live ones (feet line, drawn height, horizontal span).
+for looks in art['heroVariants'].values():
+    for actions in looks.values():
+        register_feet(actions['idle'])
+        for sheet in actions.values():register_span(sheet)
 for family in ['bosses','worldBosses']:
     for character in art[family].values():
         for sheet in character.values():

@@ -1,1 +1,16 @@
-/* tan form kits */
+/* Tân's Kiếm Nhiệt Huyết (forms-tan.js). */
+/* While he burns with fighting spirit his whole drawing carries a warm golden rim. */
+.scene .hero-actor[data-hero-element="novice"]>.sprite-body{transition:filter .3s ease-out}
+.scene .hero-actor.tan-spirit>.sprite-body{filter:drop-shadow(0 0 2px #ffe08a) drop-shadow(0 0 7px #ff9f3acc) brightness(1.06)}
+/* The spirit flare stands behind him, its ground ring (91% down its cell) on his feet line: a
+   golden glow about his own height, not a bonfire (he has no element). */
+.tan-spirit-aura{position:absolute;z-index:0;left:-2%;width:104%;height:104%;top:calc((var(--foot-y,.94) - .946) * 100%);pointer-events:none;
+  background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;transform-origin:50% 91%;opacity:.78;filter:saturate(.75) brightness(1.15);
+  animation:tan-aura-frames var(--fx-ms) steps(var(--fx-count),jump-none) infinite}
+@keyframes tan-aura-frames{from{background-position:0% 0}to{background-position:100% 0}}
+.tan-fx{position:absolute;z-index:7;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;translate:-50% -50%}
+.tan-fx-burst{z-index:8}
+.tan-echo{position:absolute;z-index:3;pointer-events:none;opacity:0;filter:sepia(1) saturate(3.2) hue-rotate(-8deg) brightness(1.25) drop-shadow(0 0 5px #ffb347)}
+.tan-echo>.sprite-body{position:absolute;inset:0;width:100%;height:100%;filter:none}
+.tan-flash{position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(ellipse at 70% 60%,#fff2c2 0,#ffc25a88 30%,transparent 70%)}
+body.reduced-motion .tan-spirit-aura,body.reduced-motion .tan-echo{display:none}

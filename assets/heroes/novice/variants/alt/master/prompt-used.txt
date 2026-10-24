@@ -1,0 +1,12 @@
+Use case: character master for a 2D mobile RPG. Image 1 is ONLY a reference for the game's art style, rendering, chibi proportions (big head, about 2.6 heads tall), camera distance and 3/4 facing-right view. Do NOT copy his outfit, colours or hairstyle: design a FRESH, more appealing look for the same role.
+
+Character: Tân, an eager apprentice traveller boy (about 13), the starter hero, full of passionate rookie spirit. New design:
+- spiky, lively dark auburn hair with a few bold tufts, big bright amber eyes, a confident lopsided grin showing one tooth, a small adhesive bandage across his nose bridge
+- a long bright red cloth headband tied at the back, its two ends fluttering behind his head (his signature silhouette)
+- a short deep teal-blue traveller's jacket with rolled-up sleeves and warm mustard-gold trim, worn open over a cream shirt; a brown leather cross-strap with a small brass compass pinned on the chest
+- a rolled tan bedroll strapped diagonally across his back (small, tucked close to the body)
+- dark brown knee-length shorts with a pouch belt, bandage wraps on the shins, sturdy rust-brown boots with turned-down cuffs, fingerless brown gloves
+- ONE wooden training sword held in his right hand pointing down-forward: a sturdy light wooden blade with a red cloth-wrapped grip and a small round wooden guard; clearly wood, not metal
+Palette: teal blue, red, mustard gold, warm browns, cream. Friendly, energetic, readable silhouette.
+
+Clean HD hand-painted chibi JRPG game art matching Image 1's brushwork and line quality, NOT pixel art. Full body, standing ready stance, three-quarter view facing RIGHT, centered, standing height about 80% of the image height, boots at about 92% of the height, generous padding on all sides; nothing touches the image edge. No glow, no aura, no particles, no effects, no ground, no shadow. Background 100% solid flat #FF00FF magenta, no gradient, no text, no labels, no border. Square 1024x1024 image, exactly one character.

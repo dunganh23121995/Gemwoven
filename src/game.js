@@ -12,7 +12,7 @@ const ELEMENTS = {
   novice:{label:'Thường',color:'#b6a081',light:'#f1e6ce',beats:null,icon:'sword'}
 };
 const HEROES = {
-  novice:{name:'Tân',title:'Lữ Khách Tập Sự',hp:145,skill:'Nhát Kiếm Cơ Bản',desc:'Một nhát kiếm gỗ · 45 sát thương cơ bản',trait:'Tướng khởi đầu; kỹ năng và chỉ số ở mức cơ bản',color:'#b59b78',dark:'#735b43',hair:'#6e4935'},
+  novice:{name:'Tân',title:'Lữ Khách Tập Sự',hp:145,skill:'Kiếm Nhiệt Huyết',desc:'Một nhát kiếm gỗ · 45 sát thương cơ bản',trait:'Tướng khởi đầu; kỹ năng và chỉ số ở mức cơ bản',color:'#b59b78',dark:'#735b43',hair:'#6e4935'},
   fire:{name:'Mika',title:'Viêm Kiếm Sĩ',hp:170,skill:'Viêm Long Trảm',desc:'Tụ lửa kéo dài kiếm · phóng kiếm khí phát nổ · 135 sát thương cơ bản',trait:'Kiếm gây thêm 60% sát thương',color:'#df9d82',dark:'#a66b64',hair:'#8f5c55'},
   earth:{name:'Nori',title:'Thiết Giáp Vệ',hp:320,skill:'Mộc Linh Hộ Thể',desc:'Choáng 2 lượt · tích sát thương rồi nổ ×3 · hồi 40 HP/lượt ×3',trait:'Sát thương đánh thường giảm 25% (chỉ còn 75% sát thương gốc) · Đại khiên tích lực',color:'#a1b28b',dark:'#708567',hair:'#777363'},
   ice:{name:'Yuki',title:'Băng Tâm Vệ',hp:200,skill:'Thiên Băng Giáng',desc:'+25 giáp · triệu hồi băng gây 60 sát thương · choáng 1 lượt',trait:'Khiên +8 giáp · giảm 20% sát thương',color:'#9cc6d0',dark:'#7399b2',hair:'#adbbd9'},

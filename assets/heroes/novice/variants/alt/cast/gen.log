@@ -1,0 +1,12 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\heroes\\novice\\variants\\alt\\cast\\raw-sheet.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a16eae-b1ba-7123-ad8d-9df7c2a084b7\\exec-4cdb830a-9165-4f5e-b630-1fd3ae43e173.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16eae-d267-7451-b533-5ebfd77ae795\\exec-adf54dab-a7c1-43a9-9289-49c2e22d3474.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a16eae-d260-7431-8a57-a2434f83fae4\\exec-acb729d8-7abf-48cf-afcd-ff0e05df9a25.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "seconds": 50.0
+}
