@@ -20,6 +20,34 @@
     }
     host.append(cloud);setTimeout(()=>cloud.remove(),1600);
   }
+  // A whirlwind of Noct's soft smoke (the puffs of his reaper fog): puffs orbit a funnel that is
+  // narrow at the ground and wide at the top, spinning up, then tightening into a thin column.
+  // done() fires when the column is tightest (the moment space is cut open).
+  function whirlwind(host,stage,done){
+    const puffs=A['noct-puffs'];if(!puffs){done();return;}
+    // Layout units of the hero's own drawing box (the hub scales the whole scene with a transform).
+    const W=stage.offsetWidth,H=stage.offsetHeight,cx=stage.offsetLeft+W/2,ground=stage.offsetTop+H*.94,tall=H*.82;
+    const wind=document.createElement('span');wind.className='hero-show-whirl';wind.setAttribute('aria-hidden','true');host.append(wind);
+    const parts=Array.from({length:34},(_,i)=>{
+      const el=document.createElement('i');el.style.backgroundImage=`url('${url(puffs.file)}')`;el.style.setProperty('--cell',i%4);wind.append(el);
+      return {el,t:i/33,a:Math.random()*Math.PI*2,size:(.3+.24*(i/33))*W*(.8+Math.random()*.4),spin:(Math.random()-.5)*2};
+    });
+    const start=performance.now(),T=1900,cut=.72;let fired=false;
+    function frame(now){
+      const k=Math.min(1,(now-start)/T);
+      const open=k<.55?k/.55:1,squeeze=k<.55?1:1-(k-.55)/.45*.85;    // spin up, then tighten
+      const speed=5+11*k,fade=k<.12?k/.12:k>.86?(1-k)/.14:1;
+      for(const p of parts){
+        p.a+=speed*.016*(1.4-p.t*.6);
+        const r=(.05+.33*p.t)*W*open*squeeze,depth=Math.sin(p.a);
+        const x=cx+Math.cos(p.a)*r,y=ground-p.t*tall*(.35+.65*open)+depth*r*.18,sc=.75+.25*(depth+1)/2;
+        p.el.style.cssText=`background-image:${p.el.style.backgroundImage};--cell:${p.el.style.getPropertyValue('--cell')};left:${x}px;top:${y}px;width:${p.size}px;opacity:${(.5+.4*(depth+1)/2)*fade};transform:translate(-50%,-50%) scale(${sc}) rotate(${p.a*40+p.spin*90}deg);z-index:${depth>0?2:1}`;
+      }
+      if(!fired&&k>=cut){fired=true;done();}
+      if(k<1&&wind.isConnected)requestAnimationFrame(frame);else wind.remove();
+    }
+    requestAnimationFrame(frame);
+  }
   function attach(host,hero,form){
     const show=A[`show-${hero}-${form}`];if(!show?.sheets)return null;
     const image=host.querySelector('.art,img');if(!image)return null;
@@ -48,20 +76,17 @@
     }
     timer=requestAnimationFrame(tick);
     return {
-      // The summoning entrance: a void vortex spins open and collapses to a point, the hero slashes
-      // space open from the other side and steps out of the rift, then its cloud ring bursts out.
+      // The summoning entrance: Noct's soft smoke whirls up into a gloomy whirlwind and tightens
+      // into a column; in it a cut opens in space and he steps out of the rift; only then does his
+      // cloud ring burst out around him.
       summon(){
-        if(!show.sheets.rift||!show.sheets.vortex||reduced())return;
+        if(!show.sheets.rift||reduced())return;
         stage.style.opacity='0';
         setTimeout(()=>{
           if(!stage.isConnected)return;
           const ring=host.querySelector('.hero-form-effects');if(ring)ring.style.opacity='0';
-          const vortex=document.createElement('span');vortex.className='hero-show-vortex';vortex.setAttribute('aria-hidden','true');
-          vortex.style.backgroundImage=`url('${url(show.sheets.vortex)}')`;vortex.style.backgroundPosition=cell(0);host.append(vortex);
-          vortex.animate([{rotate:'0deg'},{rotate:'540deg'}],{duration:1300,easing:'cubic-bezier(.4,0,.6,1)'});
-          let f=0;const spin=setInterval(()=>{
-            if(++f<8){vortex.style.backgroundPosition=cell(f);return;}
-            clearInterval(spin);vortex.remove();if(!stage.isConnected)return;
+          whirlwind(host,stage,()=>{
+            if(!stage.isConnected)return;
             stage.style.opacity='';
             play(show.sheets.rift,150,()=>{
               if(!ring||!stage.isConnected)return;
@@ -69,7 +94,7 @@
               ring.style.transformOrigin='50% 66%';
               ring.animate([{transform:'scale(.3)',opacity:0},{transform:'scale(1.3)',opacity:1,offset:.45},{transform:'scale(1)',opacity:1}],{duration:700,easing:'cubic-bezier(.2,.9,.3,1)'});
             });
-          },160);
+          });
         },60);
       },
       stop(){stopped=true;cancelAnimationFrame(timer);stage.remove();image.classList.remove('hero-show-under');image.style.opacity='';host.classList.remove('has-hero-show');}

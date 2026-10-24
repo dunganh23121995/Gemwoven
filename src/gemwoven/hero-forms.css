@@ -71,4 +71,5 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 @keyframes hero-show-wisp{0%{opacity:0;transform:scale(.4) rotate(0)}20%{opacity:.32}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.5) rotate(var(--r))}}
 /* The form's cloud ring shares the hero's box, so it can spin and scale about the body. */
 .hero-form-effects{position:absolute;inset:0;pointer-events:none}
-.hero-show-vortex{position:absolute;left:50%;top:56%;width:120%;aspect-ratio:1;translate:-50% -50%;pointer-events:none;z-index:2;background-repeat:no-repeat;background-size:200% 400%}
+.hero-show-whirl{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hero-show-whirl i{position:absolute;aspect-ratio:1;background-size:400% 100%;background-position:calc(var(--cell) * 33.333%) 0;background-repeat:no-repeat;filter:brightness(.42) saturate(.2)}
