@@ -66,9 +66,8 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .hero-show{display:block;position:absolute;pointer-events:none;z-index:1;background-repeat:no-repeat;background-size:200% 400%;transition:filter .9s ease-out,opacity .9s ease-out}
 .hero-show-under{opacity:0!important}
 .has-hero-show .scythe-glint{display:none!important}
-.hero-show.is-emerging{filter:brightness(.25) saturate(.4)}
-.hero-show-smoke{position:absolute;inset:-10% -25% -6%;pointer-events:none;z-index:2}
-.hero-show-smoke i{position:absolute;aspect-ratio:1;translate:-50% -50%;background-size:400% 100%;background-position:calc(var(--cell) * 33.333%) 0;background-repeat:no-repeat;filter:brightness(.35);opacity:0;animation:hero-show-puff-in .5s var(--delay) ease-out forwards}
-.hero-show-smoke.is-thinning i{animation:hero-show-puff-out 2.6s calc(var(--delay) * 2) ease-in forwards}
-@keyframes hero-show-puff-in{from{opacity:0;transform:scale(.5) rotate(0)}to{opacity:.95;transform:scale(1) rotate(var(--r))}}
-@keyframes hero-show-puff-out{from{opacity:.95;transform:scale(1) rotate(var(--r))}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.45) rotate(calc(var(--r) * 1.6))}}
+.hero-show-smoke{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hero-show-smoke i{position:absolute;aspect-ratio:1;translate:-50% -50%;background-size:400% 100%;background-position:calc(var(--cell) * 33.333%) 0;background-repeat:no-repeat;filter:brightness(.4);opacity:0;animation:hero-show-wisp 1.4s ease-out forwards}
+@keyframes hero-show-wisp{0%{opacity:0;transform:scale(.4) rotate(0)}20%{opacity:.32}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.5) rotate(var(--r))}}
+/* The form's cloud ring shares the hero's box, so it can spin and scale about the body. */
+.hero-form-effects{position:absolute;inset:0;pointer-events:none}

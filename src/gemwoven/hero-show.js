@@ -9,17 +9,16 @@
   const url=file=>new URL(file,document.baseURI).href;
   const reduced=()=>document.documentElement.classList.contains('reduced-motion');
   const cell=(i)=>`${(i%2)*100}% ${Math.floor(i/2)/3*100}%`;
-  function smoke(stage){
-    // Soft photographic puffs (the same ones as Noct's reaper fog) piled over the hero.
-    const puffs=A['noct-puffs'];if(!puffs)return null;
+  // A few faint wisps of smoke thrown out when the cloud ring bursts.
+  function wisps(host){
+    const puffs=A['noct-puffs'];if(!puffs)return;
     const cloud=document.createElement('span');cloud.className='hero-show-smoke';cloud.setAttribute('aria-hidden','true');
-    const rnd=(a,b)=>a+Math.random()*(b-a);
-    for(let i=0;i<22;i++){
-      const p=document.createElement('i');
-      p.style.cssText=`left:${rnd(8,92)}%;top:${rnd(18,96)}%;width:${rnd(38,62)}%;--cell:${i%4};--r:${rnd(-60,60)}deg;--dx:${rnd(-18,18)}%;--dy:${rnd(-30,-8)}%;--delay:${rnd(0,.5)}s;background-image:url('${url(puffs.file)}')`;
+    for(let i=0;i<10;i++){
+      const a=i/10*Math.PI*2+Math.random()*.4,p=document.createElement('i');
+      p.style.cssText=`left:50%;top:62%;width:${34+Math.random()*16}%;--cell:${i%4};--r:${Math.round(Math.random()*120-60)}deg;--dx:${Math.round(Math.cos(a)*120)}%;--dy:${Math.round(Math.sin(a)*70)}%;background-image:url('${url(puffs.file)}')`;
       cloud.append(p);
     }
-    stage.append(cloud);return cloud;
+    host.append(cloud);setTimeout(()=>cloud.remove(),1600);
   }
   function attach(host,hero,form){
     const show=A[`show-${hero}-${form}`];if(!show?.sheets)return null;
@@ -33,7 +32,7 @@
     host.querySelector('.scythe-glint')?.remove();
     let timer=0,playing=null,frame=0,next=performance.now()+4000+Math.random()*3000,stopped=false;
     const sheet=src=>{stage.style.backgroundImage=`url('${url(src)}')`;};
-    function play(src,ms,done){playing={src,ms,frame:0,last:0,done};sheet(src);stage.style.backgroundPosition=cell(0);}
+    function play(src,ms,done,from=0){playing={src,ms,frame:from,last:0,done};sheet(src);stage.style.backgroundPosition=cell(from);}
     function tick(now){
       if(stopped)return;timer=requestAnimationFrame(tick);
       if(stage.isConnected)tick.seen=true;else if(tick.seen){stopped=true;return;}   // the screen was re-rendered
@@ -49,12 +48,26 @@
     }
     timer=requestAnimationFrame(tick);
     return {
-      // The summoning entrance: smoke covers the spot, the hero steps out of the dark as it thins.
+      // The summoning entrance: the hero's cloud ring spins small, round and fast, then bursts
+      // open, and in that burst the hero takes shape out of the dark.
       summon(){
         if(!show.sheets.emerge||reduced())return;
-        const cloud=smoke(stage.parentElement);stage.classList.add('is-emerging');
-        setTimeout(()=>play(show.sheets.emerge,170,()=>stage.classList.remove('is-emerging')),450);
-        if(cloud)setTimeout(()=>cloud.classList.add('is-thinning'),700),setTimeout(()=>cloud.remove(),3600);
+        stage.style.opacity='0';
+        setTimeout(()=>{
+          if(!stage.isConnected)return;
+          const ring=host.querySelector('.hero-form-effects'),total=2200,burst=.62;
+          if(ring){ring.style.transformOrigin='50% 66%';ring.animate([
+            {transform:'scale(.22) rotate(0deg)',opacity:0},{opacity:1,offset:.08},
+            {transform:'scale(.46) rotate(1080deg)',offset:burst,easing:'cubic-bezier(.15,.9,.3,1)'},
+            {transform:'scale(1.3) rotate(1440deg)',opacity:1,offset:.76},
+            {transform:'scale(1) rotate(1440deg)',opacity:1}],{duration:total,easing:'cubic-bezier(.5,0,.75,1)'});}
+          setTimeout(()=>{
+            if(!stage.isConnected)return;
+            wisps(host);stage.style.opacity='';
+            stage.animate([{opacity:0,filter:'brightness(3) blur(3px)'},{opacity:1,filter:'brightness(1.4) blur(0px)',offset:.35},{opacity:1,filter:'brightness(1) blur(0px)'}],{duration:650,easing:'ease-out'});
+            play(show.sheets.emerge,75,null,3);
+          },ring?total*burst:0);
+        },60);
       },
       stop(){stopped=true;cancelAnimationFrame(timer);stage.remove();image.classList.remove('hero-show-under');image.style.opacity='';host.classList.remove('has-hero-show');}
     };
