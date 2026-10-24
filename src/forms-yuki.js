@@ -80,6 +80,11 @@ function yukiPrepareSounds(names){
   const context=combatV3AudioContext();if(!context)return;
   for(const name of names)decodeCastSound(context,'ice-'+name).catch(()=>{});
 }
+function yukiScore(at,pending,hit,cues){
+  yukiPrepareSounds([...new Set([hit,...cues.map(c=>c[1])])]);
+  if(reduced)return;
+  for(const [ms,name,volume,pan] of cues)pending.push(at(ms).then(()=>yukiSound(name,{volume,pan})));
+}
 function yukiSound(name,{volume=.5,pan=0,hit=false}={}){
   if(reduced&&!hit)return;
   window.yukiSoundLog?.push([name,Math.round(performance.now())]);
@@ -125,16 +130,26 @@ async function yukiMoonfrostUltimate(){
   const root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,pending=[],at=yukiUltimateTimer();
   const kit=progressionKit('ice'),foe=yukiFoeBody();
   let result={amount:0,blocked:0},moon=null,beam=null,seal=null;
-  yukiPrepareSounds(['f2-moonrise','f2-beam','f2-spikes','f2-shatter']);
+  // Score: a bed under every continuous effect, a synced hit on every crack and burst (ms from the start).
+  yukiScore(at,pending,'f2-shatter',[
+    [0,'f2-wind',.3,-.2],        // chant + armour spiral (bed, 0-1.4 s)
+    [560,'f2-moonrise',.42,-.25],// moon rises behind her (0.56-1.22 s)
+    [1250,'f2-beam',.5,.25],     // moonbeam falls; whoosh peaks as it lands at 1.42 s
+    [1320,'f2-beamhum',.3,.3],   // the beam rings while it stands on the foe (bed, 1.32-2.02 s)
+    [1420,'f2-freeze',.5,.3],    // spikes grow, prison holds (bed, 1.42-2.24 s)
+    [1640,'crack',.55,.3],       // the prison locks (1.70 s)
+    [2090,'crack',.5,.3],        // white cracks run through the spikes (2.15 s)
+    [2200,'boom',.5,.2],         // weight under the shatter (peaks 2.32 s); the shatter itself plays on the hit
+    [2400,'f2-tinkle',.3,.3]]);  // shards rain down, moon fades (2.40-3.2 s)
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
     setSpriteFrame('hero','skill',0);await at(260);setSpriteFrame('hero','skill',1);
-    await at(560);root.dataset.ragePhase='moonrise';setSpriteFrame('hero','skill',2);moon=yukiRisingMoon(pending);yukiSound('f2-moonrise',{volume:.42,pan:-.25});
+    await at(560);root.dataset.ragePhase='moonrise';setSpriteFrame('hero','skill',2);moon=yukiRisingMoon(pending);
     await at(900);setSpriteFrame('hero','skill',3);
     if(moon)pending.push(animate(moon.node,[{filter:'brightness(1) drop-shadow(0 0 4px #bdf3ff)'},{filter:'brightness(1.5) drop-shadow(0 0 14px #e8fdff)',offset:.5},{filter:'brightness(1.15) drop-shadow(0 0 7px #bdf3ff)'}],{duration:420,fill:'forwards'}));
     await at(1130);combatVoice('hero','release');
-    await at(1250);root.dataset.ragePhase='moonbeam';setSpriteFrame('hero','skill',4);yukiSound('f2-beam',{volume:.5,pan:.25});// whoosh peaks as the beam lands (1.42 s)
+    await at(1250);root.dataset.ragePhase='moonbeam';setSpriteFrame('hero','skill',4);
     // The column of frozen moonlight falls from the top of the sky onto the foe's feet.
     const sheet=ART.heroFx?.ice?.beam;
     if(sheet&&!reduced){
@@ -146,7 +161,7 @@ async function yukiMoonfrostUltimate(){
     combatV3Camera(1,false,state.boss,pending);setSpriteAction('enemy','hurt',260);
     // Frost spikes bloom in a ring round the foe's feet and close into an ice prison.
     seal=yukiStrip('seal',{x:foe.x,feet:foe.feet+4,width:Math.min($('scene').clientWidth*.6,Math.max(foe.width*1.55,foe.height*.95,90))});
-    seal?.play(0,3,85);yukiSound('f2-spikes',{volume:.55,pan:.3});
+    seal?.play(0,3,85);
     await at(1600);setSpriteFrame('hero','skill',5);
     await at(1700);yukiFreezeFoe(true);seal?.set(4);
     beam?.stop();beam?.fade(260,pending);beam=null;
@@ -181,13 +196,23 @@ async function yukiSnowLotusUltimate(){
   const root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,pending=[],at=yukiUltimateTimer();
   const kit=progressionKit('ice'),foe=yukiFoeBody(),hero=yukiHeroBody();
   let result={amount:0,blocked:0},aegis=null,gust=null,lotus=null,cut=null;
-  yukiPrepareSounds(['f3-aegis','f3-fan','f3-halberd','f3-close','f3-burst']);
+  yukiScore(at,pending,'f3-burst',[
+    [0,'f3-chimes',.3,-.25],     // the crystal aegis turns round her (bed, 0-2.6 s)
+    [0,'f3-aegis',.45,-.25],     // plates clink as it spirals up (0-0.62 s)
+    [300,'f3-fanopen',.45,-.15], // the frost fan snaps open (0.30 s)
+    [640,'f3-fan',.5,-.05],      // fan sweep, snowy gust to the foe (0.64-1.28 s)
+    [840,'f3-lotus',.42,.3],     // the lotus blooms, stands open, closes (bed, 0.84-2.24 s)
+    [1360,'f3-halberd',.55,.1],  // halberd swing, swish peaks on the cut (1.50 s)
+    [1440,'crack',.45,.3],       // the crescent cuts the foe (1.50 s)
+    [1600,'f3-close',.5,.3],     // petals grind shut (crunches 1.64 / 1.78 s)
+    [2020,'crack',.5,.3],        // the bud cracks (2.08 s)
+    [2200,'boom',.55,.2]]);      // weight under the burst; the burst itself plays on the hit (2.24 s)
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
-    setSpriteFrame('hero','skill',0);aegis=yukiAegis(pending);yukiSound('f3-aegis',{volume:.45,pan:-.25});
+    setSpriteFrame('hero','skill',0);aegis=yukiAegis(pending);
     await at(300);setSpriteFrame('hero','skill',1);
-    await at(640);root.dataset.ragePhase='fan';setSpriteFrame('hero','skill',2);yukiSound('f3-fan',{volume:.5,pan:-.05});
+    await at(640);root.dataset.ragePhase='fan';setSpriteFrame('hero','skill',2);
     // The fan's gust of snow carries from her open fan to the foe.
     const gustWidth=Math.max(hero.height*1.35,foe.height);
     gust=yukiStrip('fan',{x:hero.x+hero.width*.55,y:hero.top+hero.height*.42,width:gustWidth});
@@ -203,14 +228,12 @@ async function yukiSnowLotusUltimate(){
     lotus?.play(0,2,95);
     await at(1130);gust?.fade(120,pending);gust=null;
     await at(1150);root.dataset.ragePhase='raise';setSpriteFrame('hero','skill',3);
-    await at(1360);yukiSound('f3-halberd',{volume:.55,pan:.1});// its swish peaks on the cut at 1500 ms
     await at(1400);combatVoice('hero','release');
     await at(1500);root.dataset.ragePhase='crescent';setSpriteFrame('hero','skill',4);
     // The halberd's crescent cuts across the foe as the lotus closes round it.
     cut=yukiStrip('crescent',{x:foe.x,y:foe.y,width:Math.min($('scene').clientWidth*.7,Math.max(foe.height,foe.width)*1.45)});
     cut?.play(0,5,55);combatV3Camera(1,true,state.boss,pending);setSpriteAction('enemy','hurt',300);
     await at(1600);yukiReparent(lotus,$('combatEffects'));lotus?.node.classList.remove('yuki-under');lotus?.play(3,4,95);
-    await at(1660);yukiSound('f3-close',{volume:.55,pan:.3});// the crack lands as the bud closes
     await at(1800);yukiFreezeFoe(true);cut?.remove();cut=null;
     await at(1960);root.dataset.ragePhase='bloom-hold';setSpriteFrame('hero','skill',5);
     await at(2080);lotus?.set(5);

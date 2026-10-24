@@ -1,4 +1,61 @@
 {
+  "ice-crack": {
+    "file": "hero-forms/ice/crack.wav",
+    "duration": 0.39,
+    "beat": "one sharp ice crack, at +0.06 s (prison locks, ice cracks, crescent cut); form 1's ice-crack recording",
+    "sources": [
+      {
+        "title": "ice-crack",
+        "author": "j_p_higgins",
+        "source_url": "https://freesound.org/people/j_p_higgins/sounds/262633/",
+        "license": "CC0-1.0",
+        "sha256": "fd315b43416e6867910f13ceb4202e2ed90f7d694f8ec412166fa142b1ca51bd"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.56-0.95 s, 120 Hz high-pass, gain, 4 ms / 150 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.016,
+    "sha256": "051b153b8b5bbc2d21325118c1175bbc713d3d7050ced6dadc3115b1dcba5da9"
+  },
+  "ice-boom": {
+    "file": "hero-forms/ice/boom.wav",
+    "duration": 1.16,
+    "beat": "deep boom under the shatter/burst, peaks at +0.12 s; form 1's deep-boom recording",
+    "sources": [
+      {
+        "title": "Deep Boom",
+        "author": "Za-Games",
+        "source_url": "https://freesound.org/people/Za-Games/sounds/539968/",
+        "license": "CC0-1.0",
+        "sha256": "4fac9ac15770cb443432bf440ffb66db599e4f0b9935d34fe3e0460e2bbf5daa"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.44-1.60 s, 35 Hz high-pass, gain, 30 ms / 450 ms edge fades; natural attack and tail",
+    "peak": 0.49,
+    "rms": 0.12,
+    "sha256": "028bb8c75229bed05b688c7824a2e4888706e843dc22376db7531fcb9b67b518"
+  },
+  "ice-f2-wind": {
+    "file": "hero-forms/ice/f2-wind.wav",
+    "duration": 1.4,
+    "beat": "bed: icy wind while she chants and the armour spiral wraps her, 0-1.4 s",
+    "sources": [
+      {
+        "title": "FX Blizzard (JH).wav",
+        "author": "Johnnie_Holiday",
+        "source_url": "https://freesound.org/people/Johnnie_Holiday/sounds/700233/",
+        "license": "CC0-1.0",
+        "sha256": "f2bab44e0013160a40a0d195dca39b3b1c994af3b82e7e41ebd0b9be48d310f3"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 2.00-3.40 s, 150 Hz high-pass, gain, 200 ms / 350 ms edge fades; natural attack and tail",
+    "peak": 0.435,
+    "rms": 0.12,
+    "sha256": "a93e4219c0da9a597ea3a150be45e5119a991a81209ecd2836ef519e5c9d79b2"
+  },
   "ice-f2-moonrise": {
     "file": "hero-forms/ice/f2-moonrise.wav",
     "duration": 0.66,
@@ -21,7 +78,7 @@
   "ice-f2-beam": {
     "file": "hero-forms/ice/f2-beam.wav",
     "duration": 0.25,
-    "beat": "moonbeam falls 1.25 s and lands 1.42 s; whoosh peaks at the landing, gone by 1.50 s",
+    "beat": "moonbeam falls 1.25 s and lands 1.42 s; whoosh peaks at the landing",
     "sources": [
       {
         "title": "Woosh",
@@ -37,29 +94,48 @@
     "rms": 0.12,
     "sha256": "ff773f8e1e7de379bcbd4f0ff4bf10a6a2de351eccd8875941962398cca9ea78"
   },
-  "ice-f2-spikes": {
-    "file": "hero-forms/ice/f2-spikes.wav",
-    "duration": 0.75,
-    "beat": "frost spikes crack up and lock the prison: 1.42-2.24 s (cracks at 1.54 and 1.94 s); form 1's ice-crack recording",
+  "ice-f2-beamhum": {
+    "file": "hero-forms/ice/f2-beamhum.wav",
+    "duration": 0.7,
+    "beat": "bed: the frozen moonbeam rings while it stands on the foe, 1.32-2.02 s",
     "sources": [
       {
-        "title": "ice-crack",
-        "author": "j_p_higgins",
-        "source_url": "https://freesound.org/people/j_p_higgins/sounds/262633/",
+        "title": "glass - singing wine glass - half full 05.wav",
+        "author": "Anthousai",
+        "source_url": "https://freesound.org/people/Anthousai/sounds/447799/",
         "license": "CC0-1.0",
-        "sha256": "fd315b43416e6867910f13ceb4202e2ed90f7d694f8ec412166fa142b1ca51bd"
+        "sha256": "be71d0fc3fedb5b75aa6231be9df0e4576f7b44ffca8e298f82f37196090e7cf"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.40-1.15 s, 120 Hz high-pass, gain, 6 ms / 150 ms edge fades; natural attack and tail",
+    "processing": "excerpt 1.60-2.30 s, 200 Hz high-pass, gain, 80 ms / 300 ms edge fades; natural attack and tail",
+    "peak": 0.287,
+    "rms": 0.12,
+    "sha256": "adc3ac1da1de85a8e857cfaff1caa54caa73c61871e2404379dcad6bec1b557d"
+  },
+  "ice-f2-freeze": {
+    "file": "hero-forms/ice/f2-freeze.wav",
+    "duration": 0.82,
+    "beat": "bed: frost spikes grow and the prison holds, crackling, 1.42-2.24 s",
+    "sources": [
+      {
+        "title": "ice grinding cracking freezing designed.wav",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/452645/",
+        "license": "CC0-1.0",
+        "sha256": "fbce968d974ffa4644d10bc93da951e79bd3a978382f99909aabffac65fa0053"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.40-1.22 s, 120 Hz high-pass, gain, 20 ms / 120 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.013,
-    "sha256": "c128d1626284c51fa440fc8dd40304e85ee943dcd5182698d896cc4cdcc495ee"
+    "rms": 0.031,
+    "sha256": "08322dfd831181696bacdf2fe7da42ecd26632578ff7e855018b3e929e5950fa"
   },
   "ice-f2-shatter": {
     "file": "hero-forms/ice/f2-shatter.wav",
-    "duration": 0.75,
-    "beat": "the ice prison shatters (damage): 2.24-3.0 s",
+    "duration": 0.9,
+    "beat": "the ice prison shatters (damage) at 2.24 s, natural debris tail",
     "sources": [
       {
         "title": "Ice break",
@@ -70,10 +146,48 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 6.50-7.25 s, 60 Hz high-pass, gain, 3 ms / 300 ms edge fades; natural attack and tail",
+    "processing": "excerpt 6.50-7.40 s, 60 Hz high-pass, gain, 3 ms / 350 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.024,
-    "sha256": "53379257b269e9924464636e201f7c0f597cf76cae93d6976472c32a0db11543"
+    "rms": 0.023,
+    "sha256": "0e5b85f53ef9ef7f9d413389f36aee1b3ed923f88afaf0191d92596d0297c45b"
+  },
+  "ice-f2-tinkle": {
+    "file": "hero-forms/ice/f2-tinkle.wav",
+    "duration": 0.8,
+    "beat": "shards rain down and the moon fades, 2.40-3.2 s",
+    "sources": [
+      {
+        "title": "Glass break - Long",
+        "author": "Vrymaa",
+        "source_url": "https://freesound.org/people/Vrymaa/sounds/789213/",
+        "license": "CC0-1.0",
+        "sha256": "e2c361e0e3be192031e81aaca2ee69fbb3454e27552bfb55e6a86e976efbb30f"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.55-1.35 s, 500 Hz high-pass, gain, 50 ms / 350 ms edge fades; natural attack and tail",
+    "peak": 0.63,
+    "rms": 0.12,
+    "sha256": "2d121bd89de256cabdd387a8b90f57f1bd179ae356c70e9fa0fb580ce44597fc"
+  },
+  "ice-f3-chimes": {
+    "file": "hero-forms/ice/f3-chimes.wav",
+    "duration": 2.6,
+    "beat": "bed: the crystal aegis turns round her for the whole ultimate, 0-2.6 s",
+    "sources": [
+      {
+        "title": "Night Wind Chimes",
+        "author": "itsgabbo",
+        "source_url": "https://freesound.org/people/itsgabbo/sounds/667173/",
+        "license": "CC0-1.0",
+        "sha256": "1d7414c1d5145c8730fb3121887f1ac3840ba0cdaa1c6f490cf992b32db87f24"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.75-3.35 s, 250 Hz high-pass, gain, 150 ms / 400 ms edge fades; natural attack and tail",
+    "peak": 0.676,
+    "rms": 0.12,
+    "sha256": "b572903b86be986c6f95f0ffbce4eefe4736012bbe50a28d9fd40410fa49be96"
   },
   "ice-f3-aegis": {
     "file": "hero-forms/ice/f3-aegis.wav",
@@ -94,6 +208,25 @@
     "rms": 0.047,
     "sha256": "9ca3014eb76e636ad9438c323b4708a4b1559a2dafc2b09c3d715a74e0a5147a"
   },
+  "ice-f3-fanopen": {
+    "file": "hero-forms/ice/f3-fanopen.wav",
+    "duration": 0.6,
+    "beat": "the frost fan snaps open beside her face: 0.30-0.90 s",
+    "sources": [
+      {
+        "title": "Folding Fan - Opening",
+        "author": "nahkd123",
+        "source_url": "https://freesound.org/people/nahkd123/sounds/805399/",
+        "license": "CC0-1.0",
+        "sha256": "87455c82016a7fb645646328d738ece185580b998f09fb1304a2f3a63fd06cab"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.00-0.60 s, 200 Hz high-pass, gain, 4 ms / 100 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.069,
+    "sha256": "4929d4132e358c8fabbe7e2c89aaee8048a0d70d6892dd08e142805a8fd3f460"
+  },
   "ice-f3-fan": {
     "file": "hero-forms/ice/f3-fan.wav",
     "duration": 0.64,
@@ -112,6 +245,25 @@
     "peak": 0.541,
     "rms": 0.12,
     "sha256": "0ce8b9ee79c27d097054bc8b274d5073c465598204ce333f7eb8221c3fb5dbdf"
+  },
+  "ice-f3-lotus": {
+    "file": "hero-forms/ice/f3-lotus.wav",
+    "duration": 1.4,
+    "beat": "bed: the ice lotus blooms, stands open and closes, creaking: 0.84-2.24 s",
+    "sources": [
+      {
+        "title": "ice grinding cracking freezing designed.wav",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/452645/",
+        "license": "CC0-1.0",
+        "sha256": "fbce968d974ffa4644d10bc93da951e79bd3a978382f99909aabffac65fa0053"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 2.00-3.40 s, 120 Hz high-pass, gain, 50 ms / 150 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.027,
+    "sha256": "23a0f2fa7a7e7507afd06c058bfec5be5d03ca77facfbfefba346c42b338a8c9"
   },
   "ice-f3-halberd": {
     "file": "hero-forms/ice/f3-halberd.wav",
@@ -134,27 +286,27 @@
   },
   "ice-f3-close": {
     "file": "hero-forms/ice/f3-close.wav",
-    "duration": 0.55,
-    "beat": "the lotus cracks shut round the foe: 1.66-2.21 s (cracks at 1.76 and 1.92 s); form 1's ice-crack recording",
+    "duration": 0.35,
+    "beat": "the petals grind shut: 1.60-1.95 s (crunches at 1.64 and 1.78 s)",
     "sources": [
       {
-        "title": "ice-crack",
-        "author": "j_p_higgins",
-        "source_url": "https://freesound.org/people/j_p_higgins/sounds/262633/",
+        "title": "ice grinding cracking freezing designed.wav",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/452645/",
         "license": "CC0-1.0",
-        "sha256": "fd315b43416e6867910f13ceb4202e2ed90f7d694f8ec412166fa142b1ca51bd"
+        "sha256": "fbce968d974ffa4644d10bc93da951e79bd3a978382f99909aabffac65fa0053"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.90-1.45 s, 120 Hz high-pass, gain, 10 ms / 150 ms edge fades; natural attack and tail",
+    "processing": "excerpt 5.50-5.85 s, 120 Hz high-pass, gain, 5 ms / 100 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.013,
-    "sha256": "7360c84cdf5fcb888db4b14f8946c70c56625e10e507f4289e05f9da8b734a99"
+    "rms": 0.041,
+    "sha256": "a8fe342b68e557b58a4745b4d1c46c70e1493d3580cd355219e67f7ef7e1bec4"
   },
   "ice-f3-burst": {
     "file": "hero-forms/ice/f3-burst.wav",
-    "duration": 0.76,
-    "beat": "the lotus bursts into glassy shards and snow petals (damage): 2.24-3.0 s",
+    "duration": 1.1,
+    "beat": "the lotus bursts into glassy shards and snow petals (damage) at 2.24 s, natural tinkling tail",
     "sources": [
       {
         "title": "Glass break - Long",
@@ -165,9 +317,9 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.18-0.94 s, 80 Hz high-pass, gain, 4 ms / 300 ms edge fades; natural attack and tail",
-    "peak": 0.781,
-    "rms": 0.12,
-    "sha256": "a1311e5795adc0ea5ec4503a1cd9bd47271488d69a9ec0b08f9068c67663c7fa"
+    "processing": "excerpt 0.20-1.30 s, 80 Hz high-pass, gain, 4 ms / 400 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.114,
+    "sha256": "47b4f21ee4b2cda30f18ac5bbf271673291942c78e06327c0f1e1f1890c424c0"
   }
 }
