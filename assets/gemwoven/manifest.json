@@ -11383,22 +11383,46 @@
     "sheets": {
       "idle": "assets/heroes/forms/shadow/form-2/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp",
-        "assets/heroes/forms/shadow/form-2/showcase/spacerip.webp"
+        "assets/heroes/forms/shadow/form-2/showcase/optA.webp",
+        "assets/heroes/forms/shadow/form-2/showcase/optB.webp",
+        "assets/heroes/forms/shadow/form-2/showcase/optC.webp",
+        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp"
       ],
       "labels": [
-        "Mắt lóe, khói đen cuộn",
-        "Chém xé không gian"
+        "Kiểu A · Chém ngang rút đao",
+        "Kiểu B · Vẽ vòng hư không dưới đất",
+        "Kiểu C · Hai ngón xé không gian",
+        "Mắt lóe, khói đen cuộn"
       ],
       "timing": {
-        "assets/heroes/forms/shadow/form-2/showcase/spacerip.webp": [
+        "assets/heroes/forms/shadow/form-2/showcase/optA.webp": [
           140,
-          190,
-          380,
-          110,
-          700,
+          130,
+          130,
+          350,
           600,
+          500,
+          200,
+          150
+        ],
+        "assets/heroes/forms/shadow/form-2/showcase/optB.webp": [
+          150,
+          200,
           220,
+          400,
+          600,
+          400,
+          220,
+          150
+        ],
+        "assets/heroes/forms/shadow/form-2/showcase/optC.webp": [
+          150,
+          220,
+          240,
+          400,
+          600,
+          500,
+          200,
           150
         ]
       },
