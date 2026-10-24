@@ -162,7 +162,7 @@
     const bodyForm=formBody&&game?window.GemwovenProgression.heroForm(displayedHero,game.engine.read().heroes[displayedHero]):1;
     if(node.id.endsWith('.profile'))node.icon=`portrait-${game?game.engine.read().selected:state.hero}`;
     if(['upgrade.hero-model','home.hero'].includes(node.id)){node.asset=`hero-${displayedHero}`;node.action=`hero:${displayedHero}`;copy[node.text]=heroNames[displayedHero];}
-    if(node.id==='home.hero'||formBody&&bodyForm>1){
+    if(node.id==='home.hero'||formBody&&(bodyForm>1||assets[`show-${displayedHero}-${bodyForm}`])){
       const idle=`home-idle-${displayedHero}${idleMotion.matches?'-poster':''}`;
       if(assets[idle])node.asset=idle;
     }
