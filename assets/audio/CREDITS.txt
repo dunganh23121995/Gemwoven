@@ -349,22 +349,21 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25, round 4): few, long clips in form 1's style; each ultimate
-ends on a long roaring-fire tail that starts on the damage hit and rings out with its natural decay. Each clip
-is ONE clean real recording (checked for clipping and noise), minimally edited: excerpt with its natural attack
-and decay, gentle high-pass, gain (peak <= 0.82, no limiting or saturation), short fades; no layering, pitch or
-time changes, no synthesis. Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json (beat,
-source, checksums). Build: python scripts/prepare_mika_form_sounds.py.
-  Taira Komori, TK'S FREE SOUND FX (see the katana terms above): extracting_a_sword1 (sword raised),
-  sword_attack1 (the cleave).
+Mika four- and six-star ultimates (2026-10-25, round 5, rebuilt from scratch on her form-1 sound, modelled
+on Yuki's set): the backbone is Mika's own form-1 recordings, "fire-whoosh.wav" by hnhnh,
+https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and, in full, the 3.8 s
+finale ringing out from the damage hit) and Taira Komori's katana recordings (TK'S FREE SOUND FX, see the katana
+terms above: extracting_a_sword1 = a blade drawn, sword_attack1 = the swing, cutting_with_a_katana1 = the cut).
+Every other cue is the literal sound of what is on screen. Each clip is ONE clean real recording, minimally
+edited (excerpt with its natural attack and decay, gentle high-pass, gain with peak <= 0.82, short fades; no
+layering, pitch or time change, limiting or synthesis). Clips: hero-forms/fire/*.wav, manifest
+hero-forms/fire-manifest.json. Build: python scripts/prepare_mika_form_sounds.py.
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
-  #395039 "Flamethrower_Weapon_Long_Bursts.wav" by AslakHostaker, https://freesound.org/people/AslakHostaker/sounds/395039/ (form 2 blade blazing; form 2 final roaring tail)
-  #843247 "Explosion 1 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843247/ (form 2 slam; edit of a CC0 recording by Ñado)
-  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring, glaive drawn back)
+  #843247 "Explosion 1 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843247/ (form 2 cut bursting into flame on the floor; edit of a CC0 recording by Ñado)
+  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring)
   #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst, the damage hit)
   #252092 "fireball_impact2.wav" by pepingrillin, https://freesound.org/people/pepingrillin/sounds/252092/ (form 3 each spirit wave)
-  #674902 "S30-36 Napalm bomb explosion.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/674902/ (form 3 final roaring tail)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length
@@ -488,3 +487,30 @@ real swoosh. The crack and root beds moved from #222521 (too hot) to #735401; #4
   jade ring (final, 4*)    #448075 "33cm ceramic bowl - tone - cloth mallet 01.wav" by Anthousai, https://freesound.org/people/Anthousai/sounds/448075/ (CC0)
   world-tree (final, 6*)   #494071 "Big Tree Fall in Forest" by Kinoton, https://freesound.org/people/Kinoton/sounds/494071/ (CC0)
   crack run, roots         #735401 "Ice - Fracture, roots or growing plants" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/735401/ (CC0)
+
+Lumi four- and six-star kit, round 5 (2026-10-25): the whole set rebuilt from scratch the way Yuki's approved set is
+made (replaces every earlier Lumi form-2/3 clip). The backbone is her own form-1 storm (sources/thunder, credited
+above): every star bolt cracks with Simon Spiers' close lightning strike (#437243), and each ultimate ends on seth-m's
+big thunder clap (#458015) ringing out 3.6 s with its natural decay. Other cues are the literal sound of the motion:
+mark tree as the stars form / stream (#796546), a tingsha ring as the pentagram locks (#435074), slinky-laser foley
+as the galaxy appears and for the six-star shot (#376694), a stick whoosh for the four-star throw (#352719), the
+tingsha for the six-star ring hit. One clean recording per clip: excerpt, high-pass, gain, edge fades only.
+No longer used and removed: #800115, #49706, #396470, #271370 (and #536741, auditioned only).
+Clips: hero-forms/lightning/*.wav, manifest hero-forms/lightning-manifest.json. Build: python scripts/prepare_lumi_form_sounds.py.
+
+Nori four- and six-star ultimates, rebuilt from scratch (round 5, 2026-10-25), made the way Yuki's approved set is:
+replaces all of Nori's earlier form 2-3 clips and sources (the recordings of the Nori sections above that no other
+sound uses were removed). Backbone: form 1's one real ultimate recording, the shield bash (Hybrid_V, above); form
+1's earth-charge/launch/finish are synthesized and are not used. Every other cue is one clean real recording, the
+literal sound of its motion: excerpt, gentle high-pass, gain, short edge fades; natural attack and decay kept; no
+layering, pitch/time change, synthesis, saturation or limiting. Clips: hero-forms/earth/*.wav, manifest
+hero-forms/earth-manifest.json. Build: python scripts/prepare_nori_form_sounds.py. Sources (CC0 1.0):
+  gather (leaves, wind)  #569786 "spooky leaves and wind.wav" by taure, https://freesound.org/people/taure/sounds/569786/
+  hammer swing           #427979 "Short Whoosh, 13x" by Kinoton, https://freesound.org/people/Kinoton/sounds/427979/
+  hammer into the earth  #734629 "Body - Fall, heavy dangerous" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/734629/
+  boom under the slam    #512483 "Hard Stomp Sound" by phiIRaco, https://freesound.org/people/phiIRaco/sounds/512483/
+  roots / vines tearing  #869103 "Tall dead tree splintering then falling to ground with crashing Impact" by ozymandias37, https://freesound.org/people/ozymandias37/sounds/869103/
+  jade shatter           #524999 "ceramic cup shatters on tile floor" by geraldfiebig, https://freesound.org/people/geraldfiebig/sounds/524999/
+  shield charge          #770083 "Footsteps Knight team - Walk & run, castle hall" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/770083/
+  world-tree creaking    #675785 "S29-24 Creak and roll of old sailing boat; closer; wood stressing.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/675785/
+  falling leaves         #489911 "FallingLeaves" by falcospizaetus, https://freesound.org/people/falcospizaetus/sounds/489911/

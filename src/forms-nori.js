@@ -90,9 +90,10 @@ combatV3Earth=function(point,ultimate,pending){
   if(strip)pending.push(strip.play(NORI_SEQUENCE.quake,120));
 };
 
-// Sounds (scripts/prepare_nori_form_sounds.py): like form 1, few long clips, each one clean real recording with
-// its natural decay, synced to the motions (gather, swing, blow, crack, vines/roots, shatter, leaves), and each
-// ultimate ends on a long FINAL clip from its decisive hit that rings out 3.5-4.6 s (the jade ring, the world-tree).
+// Sounds (scripts/prepare_nori_form_sounds.py), built like Yuki's: a few clean real recordings, each the literal
+// sound of its motion with its natural attack and decay (leaves swirling up, the whoosh, the hammer thudding into
+// the earth, splintering roots, the jade shatter, the creaking tree, falling leaves; form 1's own shield bash), and
+// the slam is the loudest moment, a deep boom ringing out ~4 s under it to the end of the ultimate.
 function noriWarmSounds(names){const audio=combatV3AudioContext();if(audio)for(const name of names)decodeCastSound(audio,'earth-'+name).catch(()=>{});}
 // a cue `delay` ms from now (its own clock, so a beat never waits on the staging's awaits)
 function noriCue(pending,name,delay,volume,pan=.3){pending.push(wait(reduced?0:delay).then(()=>playCastSound('earth',name,{volume,pan})));}
@@ -104,12 +105,12 @@ function noriCue(pending,name,delay,volume,pan=.3){pending.push(wait(reduced?0:d
 // star world-tree: no shield rush, one blow, the bind and the renewal. Same rules as noriFormUltimate.
 async function noriJadeUltimate(){
   if(state.hp<=0)return;
-  noriWarmSheets(2);noriWarmSounds(['gather','swing','slam','crack-run','sprout','jade-ring','shatter']);
+  noriWarmSheets(2);noriWarmSounds(['gather','swing','slam','boom','roots','shatter']);
   const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   root.dataset.ragePhase='chant';root.dataset.noriUltimate='2';root.classList.add('combat-v3-acting');root.style.zIndex='4';
   try{
-    combatVoice('hero','cast');playCastSound('earth','gather',{volume:.4,pan:-.2});
+    combatVoice('hero','cast');playCastSound('earth','gather',{volume:.55,pan:-.2});
     popActorSkill('hero',HEROES.earth.skill,true,pending);
     pending.push(selfBuffSpiral('heal',1100));
     setSpriteFrame('hero','cast',0);await at(220);setSpriteFrame('hero','cast',1);
@@ -118,8 +119,9 @@ async function noriJadeUltimate(){
     await at(760);root.dataset.ragePhase='hammer';setSpriteFrame('hero','attack',2);
     playCastSound('earth','swing',{volume:.45,pan:-.2});
     await at(900);root.dataset.ragePhase='slam';setSpriteFrame('hero','attack',3);
-    playCastSound('earth','slam',{volume:.8,pan:-.1});combatV3Camera(1,true,false,pending);
-    noriCue(pending,'crack-run',70,.5,.1);
+    playCastSound('earth','slam',{volume:.85,pan:-.1});playCastSound('earth','boom',{volume:.5,pan:0});combatV3Camera(1,true,false,pending);
+    // the crack splinters along the ground and on into the jade vines tearing up at the foe's feet
+    noriCue(pending,'roots',70,.75,.2);
     const scene=$('scene').getBoundingClientRect(),sprite=root.querySelector('.sprite-body').getBoundingClientRect();
     const ground=sprite.top-scene.top+sprite.height*(spriteDefinition('hero','earth','idle').sheet.footY||.94),hammerX=sprite.left-scene.left+sprite.width*.86;
     const slam=noriStrip('quake',{x:hammerX,feet:ground,width:Math.min(100,sprite.width*.7),className:'form-2'});
@@ -132,9 +134,8 @@ async function noriJadeUltimate(){
     }
     // The jade sapling bursts at the foe's feet and binds it.
     await at(900+70*steps+60);root.dataset.ragePhase='bind';setSpriteFrame('hero','attack',4);
-    playCastSound('earth','sprout',{volume:.45,pan:.3});
-    // FINAL: the jade binding rings out long past the visuals; the shatter as the vines crack (strip frame 5)
-    playCastSound('earth','jade-ring',{volume:.5,pan:.25});noriCue(pending,'shatter',710,.55);
+    // the shatter as the jade vines crack (strip frame 5)
+    noriCue(pending,'shatter',710,.6);
     const foeNow=noriFoeBody(),width=Math.max(110,Math.min(foeNow.width*1.45,scene.width*.6));
     const jade=noriStrip('jade',{x:foeNow.x,feet:foeNow.feet,width,className:'form-2'});
     if(jade)pending.push(jade.play(NORI_SEQUENCE.jade,200));
@@ -160,14 +161,14 @@ async function noriJadeUltimate(){
 async function noriFormUltimate(form){
   if(state.hp<=0)return;
   noriWarmSheets(form);
-  noriWarmSounds(['gather','rush','f3-bash','swing','world-tree','roots','leaves']);
+  noriWarmSounds(['gather','rush','bash','swing','slam','boom','roots','tree','leaves']);
   const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),old=root.style.transform,oldTarget=target.style.transform,oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   const six=form===3;
   root.dataset.ragePhase='chant';root.dataset.noriUltimate=String(form);root.classList.add('combat-v3-acting');root.style.zIndex='4';
   try{
     // Chant: the hammer rises to the sky inside the healing spiral.
-    combatVoice('hero','cast');playCastSound('earth','gather',{volume:.4,pan:-.2});
+    combatVoice('hero','cast');playCastSound('earth','gather',{volume:.55,pan:-.2});
     popActorSkill('hero',HEROES.earth.skill,true,pending);
     pending.push(selfBuffSpiral('heal',1250));
     setSpriteFrame('hero','cast',0);await at(260);setSpriteFrame('hero','cast',1);
@@ -177,19 +178,19 @@ async function noriFormUltimate(form){
     const scene=$('scene').getBoundingClientRect(),cell=root.getBoundingClientRect(),foe=noriFoeBody();
     const shieldFront=cell.left-scene.left+cell.width*.84,travel=Math.max(0,foe.left+foe.width*.06-shieldFront);
     pending.push(animate(root,[{transform:old||'none'},{transform:`translate(${travel}px,0px)`}],{duration:reduced?1:300,easing:'cubic-bezier(.5,0,.2,1)'}));
-    root.style.transform=`translate(${travel}px,0px)`;playCastSound('earth','rush',{volume:.35,pan:0});
+    root.style.transform=`translate(${travel}px,0px)`;playCastSound('earth','rush',{volume:.4,pan:0});
     // Shield bash.
     await at(1250);root.dataset.ragePhase='bash';setSpriteFrame('hero','cast',4);
-    playCastSound('earth','f3-bash',{volume:.6,pan:.2});combatV3Camera(1,false,false,pending);
+    playCastSound('earth','bash',{volume:.6,pan:.2});combatV3Camera(1,false,false,pending);
     if(state.enemyHp>0&&!reduced)pending.push(animate(target,[{transform:oldTarget||'none'},{transform:'translate(10px,-2px) rotate(3deg)',offset:.3},{transform:oldTarget||'none'}],{duration:300,easing:'ease-out'}));
     // The hammer comes down: roots burst from the foe's feet and cage it (the stun).
     await at(1390);root.dataset.ragePhase='hammer';setSpriteFrame('hero','attack',1);
     await at(1500);setSpriteFrame('hero','attack',2);playCastSound('earth','swing',{volume:.5,pan:.1});
     await at(1620);root.dataset.ragePhase='slam';setSpriteFrame('hero','attack',3);
-    // FINAL: the world-tree crashes up out of the ground and rings out long past the visuals; the roots crack up
-    // and lock (cage frames 0-4); the crown sheds its leaves (tree frame 5 on)
-    playCastSound('earth','world-tree',{volume:.9,pan:.15});combatV3Camera(1,true,state.boss,pending);
-    noriCue(pending,'roots',70,.4);noriCue(pending,'leaves',810,.4);
+    // the slam with the deep boom ringing out under it; the roots splinter up and lock (cage frames 0-4), the tree
+    // creaks up (tree frames 0-4), the crown sheds its leaves (tree frame 5 on)
+    playCastSound('earth','slam',{volume:.9,pan:.15});playCastSound('earth','boom',{volume:.55,pan:.1});combatV3Camera(1,true,state.boss,pending);
+    noriCue(pending,'roots',70,.75);noriCue(pending,'tree',60,.5);noriCue(pending,'leaves',810,.5);
     const hammerX=cell.left-scene.left+travel+cell.width*(six?.84:.88),ground=cell.top-scene.top+cell.height*.93;
     const quake=noriStrip('quake',{x:hammerX,feet:ground,width:Math.min(110,cell.width*.75),className:'form-'+form});
     if(quake)pending.push(quake.play(NORI_SEQUENCE.quake,120));

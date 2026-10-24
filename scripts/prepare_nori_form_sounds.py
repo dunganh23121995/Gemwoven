@@ -1,87 +1,81 @@
-"""Nori's star-form ultimate sounds (src/forms-nori.js): ONE natural recording per clip, cut to its motion.
+"""Nori's four- and six-star ultimate sounds (src/forms-nori.js), rebuilt from scratch the way Yuki's approved set is.
 
-Like his form-1 sounds, few long clips, each a single clean real recording: an excerpt whose natural attack lands
-on the motion's frame, a gentle high-pass, gain (never into distortion) and edge fades, natural decay kept; no
-layering, pitch or time changes, synthesis, saturation or limiting. Each ultimate ends on a long FINAL clip that
-starts on its decisive hit and rings out for 3.5-4.6 s past the visuals.
-Writes assets/audio/hero-forms/earth/*.wav and assets/audio/hero-forms/earth-manifest.json (merged by build.py
-into ART.castSounds; played as playCastSound('earth', '<name>')).
-Sources: form 1's own gather (reimagined/earth-charge.wav) and shield bash recording (sources/mika-nori), and
-Freesound CC0 uploads in sources/freesound/<id>-*/ (source.json: title, author, URL, licence, SHA-256).
-Rebuild: python scripts/prepare_nori_form_sounds.py"""
+Backbone: Nori's form-1 ultimate has one real recording, the shield bash (sources/mika-nori/shield-bash.mp3,
+Hybrid_V); earth-charge, earth-launch and earth-finish are synthesized textures and are not used. The shield bash
+plays for the six-star bash as in form 1. Every other cue is the literal sound of its motion, one clean real
+recording each (Freesound CC0 HQ previews in sources/freesound/<id>-<slug>/ with source.json): leaves and wind
+swirling up, a heavy whoosh, a heavy body falling on the ground for the hammer, a deep stomp boom with its long
+natural decay under it (the loudest moment, ringing out ~4 s), splintering wood for vines and roots tearing the
+soil, a ceramic shatter for the jade, a stressed wooden hull creaking for the growing tree, falling leaves, armoured
+footsteps for the charge. Processing: excerpt, gentle high-pass, gain to ~0.12 RMS with a peak ceiling (never
+pushed into distortion), short edge fades; natural attack and tail kept; no layering, pitch/time change,
+synthesis, saturation or limiting. Sources were checked for clipping, hiss and noise floor.
+Output: assets/audio/hero-forms/earth/*.wav and assets/audio/hero-forms/earth-manifest.json
+(merged by build.py into ART.castSounds as earth-<name>). Rebuild: python scripts/prepare_nori_form_sounds.py
+"""
 from pathlib import Path
 import hashlib
 import json
 import subprocess
-import numpy as np
+
 import imageio_ffmpeg
+import numpy as np
 from scipy.io import wavfile
-from scipy.signal import butter, sosfiltfilt
+from scipy.signal import butter, sosfilt
 
-ROOT = Path(__file__).resolve().parents[1] / 'assets/audio'
-OUT = ROOT / 'hero-forms/earth'
+AUDIO = Path(__file__).resolve().parents[1] / 'assets/audio'
+OUT = AUDIO / 'hero-forms/earth'
 RATE = 32000
-TARGET_RMS, MAX_PEAK = .12, .85
-
-# name: (source, excerpt start, end (s), high-pass Hz, fade in, fade out, beat on screen)
-# the excerpt length is the beat's length (ms in the beat text, measured from the ultimate's start)
-CLIPS = {
-    # shared by both forms (all real recordings; form 1's synthesized gather/rush textures are not reused)
-    'gather': ('fs:368453', 3.0, 4.95, 150, .3, .35, 'the healing spiral rises around him as he lifts the hammer, 0-1100 / 0-1250 ms'),
-    'swing': ('fs:475135', .05, .30, 60, .01, .06, 'the hammer swings down into the blow, 770-920 / 1500-1640 ms'),
-    # Ngọc Thụ Hộ Thể (four stars)
-    'slam': ('fs:513694', .04, 1.10, 35, .002, .3, 'the hammer hits the ground, its weight ringing out, 920-1980 ms'),
-    'crack-run': ('fs:735401', 1.1, 1.42, 80, .02, .12, 'the jade crack running along the ground, 990-1310 ms'),
-    'sprout': ('fs:479160', 0, 1.58, 120, .02, .3, "jade vines burst at the foe's feet and hold it bound, 1190-2780 ms"),
-    'jade-ring': ('fs:448075', 0, 4.6, 80, .002, 1.2, 'FINAL: the jade binding seals the foe and rings out, 1190-5800 ms (natural decay)'),
-    'shatter': ('fs:221528', .28, 1.9, 150, .002, .4, 'the vines and sapling shatter into jade shards, 1900-3500 ms'),
-    # Vạn Mộc Thiên Thành (six stars)
-    'rush': ('fs:475135', 0, .75, 60, .01, .2, 'the shield charge, 970-1720 ms'),
-    'f3-bash': ('form1:shield-bash', .08, 1.0, 45, .002, .25, 'shield bash, 1270-2190 ms (form 1 recording, natural decay)'),
-    'world-tree': ('fs:494071', 4.52, 8.0, 40, .01, .8, 'FINAL: the hammer brings the world-tree crashing up from the ground, 1630-5110 ms (natural decay)'),
-    'roots': ('fs:735401', 1.45, 2.35, 80, .03, .3, 'the roots crack up through the soil and lock the cage, 1700-2600 ms'),
-    'leaves': ('fs:368453', 5.6, 6.6, 150, .1, .4, 'the blazing crown sheds its leaves, 2450-3450 ms'),
-}
+MANIFEST = {}
 
 
 def source(ref):
-    kind, key = ref.split(':', 1)
-    if kind == 'fs':
-        folder = next((ROOT / 'sources/freesound').glob(f'{key}-*'))
+    """'mika-nori/shield-bash.mp3' (form 1's own recording) or a Freesound id."""
+    if '/' in ref:
+        path = AUDIO / 'sources' / ref
+        meta = next(s for s in json.loads((path.parent / 'sources.json').read_text(encoding='utf-8')) if s['file'] == path.name)
+        meta = {'title': 'Shield Bash Impact (form 1 earth-shield-bash)', **meta}
+    else:
+        folder = next((AUDIO / 'sources/freesound').glob(f'{ref}-*'))
         meta = json.loads((folder / 'source.json').read_text(encoding='utf-8'))
-        return folder / meta['file'], {k: meta[k] for k in ('title', 'author', 'source_url', 'license', 'sha256')}
-    if key == 'shield-bash':
-        meta = next(s for s in json.loads((ROOT / 'sources/mika-nori/sources.json').read_text()) if s['file'] == 'shield-bash.mp3')
-        return ROOT / 'sources/mika-nori/shield-bash.mp3', {'title': 'Shield Bash Impact (form 1 earth-shield-bash source)', **{k: meta[k] for k in ('author', 'source_url', 'license', 'sha256')}}
-    cast = json.loads((ROOT / 'cast-sfx-manifest.json').read_text(encoding='utf-8'))[key]
-    return ROOT / cast['file'], {'title': f'Nori form 1 {key} (assets/audio/{cast["file"]})', 'license': cast['license'], 'sha256': cast['sha256']}
+        path = folder / meta['file']
+    data = subprocess.check_output([imageio_ffmpeg.get_ffmpeg_exe(), '-v', 'error', '-i', str(path), '-ar', str(RATE), '-ac', '2', '-f', 'f32le', 'pipe:1'])
+    return np.frombuffer(data, dtype='<f4').reshape(-1, 2).astype(float), meta
 
 
-def main():
+def clip(name, ref, start, end, beat, highpass=60, fade_in=.006, fade_out=.25, target_rms=.12, ceiling=.82):
+    x, meta = source(ref)
+    x = x[round(start * RATE):round(end * RATE)].copy()
+    x = sosfilt(butter(2, highpass, btype='highpass', fs=RATE, output='sos'), x, axis=0)
+    t = np.arange(len(x)) / RATE
+    x *= (np.minimum(1, t / fade_in) * np.minimum(1, (len(x) / RATE - t) / fade_out))[:, None]
+    x *= min(ceiling / max(1e-6, np.abs(x).max()), target_rms / max(1e-6, float(np.sqrt(np.mean(x * x)))))
     OUT.mkdir(parents=True, exist_ok=True)
-    for old in OUT.glob('*.wav'):
-        old.unlink()
-    manifest = {}
-    for name, (ref, start, end, hp, fin, fout, beat) in CLIPS.items():
-        path, credit = source(ref)
-        pcm = subprocess.check_output([imageio_ffmpeg.get_ffmpeg_exe(), '-v', 'error', '-i', str(path), '-ac', '1', '-ar', str(RATE), '-f', 'f32le', 'pipe:1'])
-        y = np.frombuffer(pcm, '<f4').astype(float)[int(start * RATE):int(end * RATE)]
-        y = y - y.mean()
-        if hp: y = sosfiltfilt(butter(2, hp, btype='highpass', fs=RATE, output='sos'), y)
-        t = np.arange(len(y)) / RATE
-        y *= np.minimum(1, t / fin) * np.minimum(1, (len(y) / RATE - t) / fout)
-        # toward form 1's level; a transient keeps its natural peak under the ceiling instead of being limited
-        y *= min(TARGET_RMS / np.sqrt(np.mean(y * y)), MAX_PEAK / np.abs(y).max())
-        file = OUT / f'nori-{name}.wav'
-        wavfile.write(file, RATE, np.round(y * 32767).astype(np.int16))
-        manifest['earth-' + name] = {'file': file.relative_to(ROOT).as_posix(), 'duration': round(len(y) / RATE, 3), 'beat': beat,
-                                     'sources': [credit], 'license': credit['license'],
-                                     'processing': f'excerpt {start}-{end} s of one recording' + (f', {hp} Hz high-pass' if hp else '') + ', gain, edge fades',
-                                     'peak': round(float(np.abs(y).max()), 4), 'rms': round(float(np.sqrt(np.mean(y * y))), 4),
-                                     'sha256': hashlib.sha256(file.read_bytes()).hexdigest()}
-    (ROOT / 'hero-forms/earth-manifest.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    print(json.dumps({k: {n: v[n] for n in ('duration', 'peak', 'rms')} for k, v in manifest.items()}, indent=1))
+    target = OUT / f'{name}.wav'
+    wavfile.write(target, RATE, np.round(x * 32767).astype(np.int16))
+    MANIFEST[f'earth-{name}'] = {
+        'file': target.relative_to(AUDIO).as_posix(), 'duration': round(len(x) / RATE, 3), 'beat': beat,
+        'sources': [{k: meta[k] for k in ['title', 'author', 'source_url', 'license', 'sha256'] if k in meta}],
+        'license': meta['license'],
+        'processing': f'excerpt {start:.2f}-{end:.2f} s, {highpass} Hz high-pass, gain, {fade_in * 1000:.0f} ms / {fade_out * 1000:.0f} ms edge fades; natural attack and tail',
+        'peak': round(float(np.abs(x).max()), 3), 'rms': round(float(np.sqrt(np.mean(x * x))), 3),
+        'sha256': hashlib.sha256(target.read_bytes()).hexdigest()}
+    print(f'[ok] {name:10s} {len(x) / RATE:.2f}s peak {MANIFEST[f"earth-{name}"]["peak"]} rms {MANIFEST[f"earth-{name}"]["rms"]}')
 
 
-if __name__ == '__main__':
-    main()
+for old in OUT.glob('*.wav'):
+    old.unlink()
+# Shared (both forms)
+clip('gather', '569786', 2.0, 4.0, 'chant: leaves and wind swirl up around him as the healing spiral rises and he lifts the hammer, 0-2.0 s', highpass=120, fade_in=.25, fade_out=.5)
+clip('swing', '427979', .22, .75, 'the hammer swings down; the whoosh peaks on the blow', highpass=80, fade_in=.01, fade_out=.2)
+clip('slam', '734629', .46, 1.36, 'the hammer hits the earth: a heavy weight thudding into the ground, natural settle', highpass=35, fade_in=.003, fade_out=.3)
+clip('boom', '512483', 0, 4.2, 'deep stomp boom under the slam, ringing out with its natural decay (~4 s), the end of the ultimate', highpass=30, fade_in=.01, fade_out=.9)
+clip('roots', '869103', 3.36, 4.36, 'wood splintering: vines/roots tear up through the soil and lock the foe, natural crackle', highpass=100, fade_in=.02, fade_out=.3)
+# Four-star: Ngọc Thụ Hộ Thể
+clip('shatter', '524999', .17, 2.4, 'the jade vines and sapling shatter like porcelain; the shards settle naturally', highpass=120, fade_in=.003, fade_out=.6)
+# Six-star: Vạn Mộc Thiên Thành
+clip('rush', '770083', 36.55, 36.92, 'armoured footsteps: the shield charge', highpass=60, fade_in=.005, fade_out=.1)
+clip('bash', 'mika-nori/shield-bash.mp3', .08, 1.0, "the shield bash: form 1's own recording, natural decay", highpass=45, fade_in=.002, fade_out=.25)
+clip('tree', '675785', 2.6, 4.6, 'the world-tree grows: a great wooden hull creaking and stressing, natural swell and fall', highpass=50, fade_in=.05, fade_out=.4)
+clip('leaves', '489911', 0, 2.45, 'the blazing crown sheds its leaves as it fades', highpass=150, fade_in=.01, fade_out=.5)
+(AUDIO / 'hero-forms/earth-manifest.json').write_text(json.dumps(MANIFEST, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
