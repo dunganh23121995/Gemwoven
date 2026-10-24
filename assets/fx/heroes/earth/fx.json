@@ -1,0 +1,26 @@
+{
+  "tree": {
+    "file": "assets/fx/heroes/earth/tree.webp",
+    "count": 8,
+    "frameDuration": 95,
+    "aspect": 1,
+    "foot": 0.9375,
+    "anchorX": 0.4984
+  },
+  "roots": {
+    "file": "assets/fx/heroes/earth/roots.webp",
+    "count": 8,
+    "frameDuration": 80,
+    "aspect": 1,
+    "foot": 0.7,
+    "anchorX": 0.5
+  },
+  "quake": {
+    "file": "assets/fx/heroes/earth/quake.webp",
+    "count": 8,
+    "frameDuration": 60,
+    "aspect": 1,
+    "foot": 0.775,
+    "anchorX": 0.515
+  }
+}

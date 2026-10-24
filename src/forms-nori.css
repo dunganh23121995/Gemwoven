@@ -1,1 +1,10 @@
-/* nori form kits */
+/* Nori's star-form skill art (forms-nori.js): authored strips stepped frame by frame. */
+.nori-fx{position:absolute;pointer-events:none;z-index:6;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%}
+.nori-fx-roots{filter:drop-shadow(0 0 5px #d8f0a088)}
+.nori-fx-roots.form-3{filter:drop-shadow(0 0 7px #ffe8909a)}
+.nori-fx-quake{filter:drop-shadow(0 0 4px #c6e76888)}
+/* The world-tree rises behind the foe: a layer under the actors, over the landscape. */
+.nori-fx-back{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.nori-fx-tree{filter:drop-shadow(0 0 10px #ffe9a0aa)}
+/* The shield glow's sockets are form 1's drawings; the star forms carry their own form aura. */
+.hero-actor:is([data-hero-form="2"],[data-hero-form="3"]) .nori-shield-aura{display:none}
