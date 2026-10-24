@@ -149,7 +149,17 @@ def main():
             take = np.isin(labels, [i + 1 for i, n in enumerate(sizes) if n >= args.min_area])
         if args.grow:
             take = ndimage.binary_dilation(take, iterations=args.grow)
+        # Where the drawing left an area empty (an ear, a braid or a tail that swung away), the
+        # master's faint anti-aliased outline must not stay behind as a ghost line; a 1-2 px rim
+        # offset is not a vacated part.
+        vacated = ndimage.binary_opening((master[..., 3] > .02) & (moved[..., 3] < .1) & ~core, iterations=1)
+        vl, vn = ndimage.label(vacated)
+        if vn:
+            vs = ndimage.sum(vacated, vl, range(1, vn + 1)); vacated = np.isin(vl, [i + 1 for i, n in enumerate(vs) if n >= 25])
+        vacated = ndimage.binary_dilation(vacated, iterations=2)
+        take = take | vacated
         weight = np.asarray(Image.fromarray((take * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(2.2)), dtype=np.float32)[..., None] / 255
+        weight = np.maximum(weight, vacated[..., None].astype(np.float32))
         if args.whole_loop or (args.whole and 0 < index < len(args.frames) - 1):
             weight = np.ones_like(weight)
         mixed = pm(master) * (1 - weight) + pm(moved) * weight
