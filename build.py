@@ -71,6 +71,8 @@ cast_sfx.update(json.loads((root/'assets/audio/lumi-thunder-manifest.json').read
 cast_sfx.update(json.loads((root/'assets/audio/yuki-glacier-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/mika-nori-manifest.json').read_text(encoding='utf-8')))
 cast_sfx.update(json.loads((root/'assets/audio/form-skill-manifest.json').read_text(encoding='utf-8')))
+# Each hero's own form-kit sounds (src/forms-<hero>.js): assets/audio/hero-forms/<hero>-manifest.json.
+for manifest in sorted((root/'assets/audio/hero-forms').glob('*-manifest.json')):cast_sfx.update(json.loads(manifest.read_text(encoding='utf-8')))
 art['castSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
