@@ -94,6 +94,7 @@ def main():
     ap.add_argument("--open", type=int, default=2, help="opening iterations that drop thin slivers")
     ap.add_argument("--no-refine", action="store_true", help="with --same-transform: place every frame exactly like the last one (cells drawn on one template)")
     ap.add_argument("--lock-legs", action="store_true", help="fit every frame (shift and scale) on the master's lower body, so the hero stands still while arms and weapons move")
+    ap.add_argument("--free", default="", help="x0,y0,x1,y1 (cell fractions): a part that moves away (a fist leaving the chest) is taken from the drawing there even inside the rigid core")
     ap.add_argument("--grow", type=int, default=0, help="widen the taken motion by N px so no sliver of the master's old pose remains")
     args = ap.parse_args()
     out = Path(args.out_dir)
@@ -102,6 +103,9 @@ def main():
     ys, xs = np.where(master[..., 3] > .5)
     anchor = (float(np.median(xs)), float(ys.max()))
     core = ndimage.distance_transform_edt(master[..., 3] > .5) > args.core
+    if args.free:
+        x0, y0, x1, y1 = (float(v) for v in args.free.split(","))
+        core[int(y0 * args.cell):int(y1 * args.cell), int(x0 * args.cell):int(x1 * args.cell)] = False
     pm = lambda a: np.concatenate([a[..., :3] * a[..., 3:], a[..., 3:]], -1)
     frames, report, fixed = [], [], None
     if args.same_transform:
@@ -133,7 +137,10 @@ def main():
             fixed = (err, dx, dy, s)
         moved = warp(frame, dx, dy, s, anchor)
         change = np.abs(pm(moved) - pm(master)).max(-1)
-        take = (change > .2) & ~core                        # real motion only, never the body core
+        free = np.zeros_like(core)
+        if args.free:
+            free[int(y0 * args.cell):int(y1 * args.cell), int(x0 * args.cell):int(x1 * args.cell)] = True
+        take = ((change > .2) & ~core) | (free & (change > .06))                        # real motion only, never the body core
         take = ndimage.binary_opening(take, iterations=args.open) if args.open else take  # thin slivers on rigid outlines are jitter, not motion
         labels, count = ndimage.label(take)
         if count:

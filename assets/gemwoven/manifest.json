@@ -11390,18 +11390,7 @@
         "Mắt lóe, khói đen cuộn",
         "Hai ngón xé không gian"
       ],
-      "timing": {
-        "assets/heroes/forms/shadow/form-2/showcase/optC.webp": [
-          150,
-          220,
-          240,
-          400,
-          600,
-          500,
-          200,
-          150
-        ]
-      },
+      "timing": {},
       "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
     }
   },

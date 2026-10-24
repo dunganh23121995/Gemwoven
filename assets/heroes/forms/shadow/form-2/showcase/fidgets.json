@@ -16,17 +16,7 @@
       "name": "optC",
       "label": "Hai ngón xé không gian",
       "file": "optC.webp",
-      "whole": false,
-      "frameMs": [
-        150,
-        220,
-        240,
-        400,
-        600,
-        500,
-        200,
-        150
-      ]
+      "whole": false
     }
   ]
 }
