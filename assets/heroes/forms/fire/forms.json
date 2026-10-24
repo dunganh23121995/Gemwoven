@@ -405,6 +405,41 @@
           "footY": 0.94,
           "frameDuration": 90,
           "scale": 1.6957
+        },
+        "slash": {
+          "file": "assets/heroes/forms/fire/form-3/slash.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              136,
+              72
+            ],
+            [
+              136,
+              72
+            ],
+            [
+              136,
+              72
+            ],
+            [
+              136,
+              72
+            ],
+            [
+              136,
+              72
+            ],
+            [
+              136,
+              72
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100,
+          "scale": 2.186
         }
       }
     }

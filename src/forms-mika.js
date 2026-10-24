@@ -26,8 +26,8 @@ mikaFlameRage=function(raw,onRelease=()=>{}){
 let mikaSlashForm=0;
 const mikaStarUltimate=()=>formOriginalUltimate();
 const mikaStarAttack=form=>async(raw,options)=>{
-  mikaSlashForm=form;
-  try{return await formOriginalAttack('hero',raw,options);}finally{mikaSlashForm=0;}
+  mikaSlashForm=form;mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_FIRST;mikaSlashShorten=form===3?mikaGlaiveShortening():0;
+  try{return await formOriginalAttack('hero',raw,options);}finally{mikaSlashForm=0;mikaSlashShorten=0;}
 };
 HERO_KITS.fire={forms:{
   2:{ultimate:mikaStarUltimate,attack:mikaStarAttack(2)},
@@ -163,8 +163,10 @@ async function mikaLongCleave(raw,onRelease){
     await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';setSpriteFrame('hero','skill',3);
     result=mikaContact(raw,onRelease,pending);
-    const line=mikaGrip(2,3);
-    mikaBurst('impact2',{x:foe.x,y:line.y},Math.min($('scene').clientWidth*.8,foe.width*2.1),pending,{hold:1.1});
+    // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
+    // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
+    const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));
+    pending.push(wait(reduced?0:80).then(()=>mikaBurst('impact2',{x:foe.x-foe.width*.1,y:foe.bottom-cut*.03},cut,pending,{hold:1.15,className:'mika-floor-cut'})));
     mikaShake(pending,1);mikaFlash(pending,'cleave');combatV3Camera(1,true,state.boss,pending);
     if(arc){const node=arc.node;pending.push((async()=>{await wait(90);mikaFxFrame(node,'arc2',2);await wait(110);mikaFxFrame(node,'arc2',3);await animate(node,[{opacity:1},{opacity:0}],{duration:220,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+110);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='follow';
@@ -275,6 +277,39 @@ combatV3Slash=function(point,key,index,ultimate,direction,pending){
     }
     await animate(node,[{opacity:1},{opacity:0}],{duration:120,fill:'forwards'});
   })().finally(()=>node.remove()));
+};
+
+// ---- Six-star basic attack: the long glaive swung from the butt of its shaft -------------------------
+// The shared lunge (combat-v3.js) asks for "attack" frames by role (wind-up, ready, launch, contact,
+// recover, rest) with indices that differ per chain stance. Six-star Mika plays her own "slash" sheet
+// in that order instead: ready with both hands at the shaft's end, the glaive swung back behind her,
+// swept forward low, held out at full reach on contact, carried up past the foe, then settling.
+const MIKA_SLASH_FIRST=[0,1,2,2,3,4],MIKA_SLASH_NEXT=[1,1,2,3,4];
+let mikaSlashCalls=0,mikaSlashOrder=MIKA_SLASH_FIRST,mikaSlashShorten=0;
+const mikaBaseFrame=combatV3Frame,mikaBaseAction=combatV3Action,mikaBasePose=combatV3Pose;
+combatV3Frame=function(side,action,index){
+  if(mikaSlashForm!==3||side!=='hero'||action!=='attack')return mikaBaseFrame(side,action,index);
+  // Index 5 is always the rest after a cut; the next cut of a multi-hit chain starts from wind-up.
+  if(index===5){mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_NEXT;return mikaBaseFrame(side,'slash',5);}
+  return mikaBaseFrame(side,'slash',mikaSlashOrder[Math.min(mikaSlashCalls++,mikaSlashOrder.length-1)]);
+};
+combatV3Action=function(side,action,duration){
+  return mikaBaseAction(side,mikaSlashForm===3&&side==='hero'&&action==='attack'?'slash':action,duration);
+};
+// The glaive reaches far: the lunge stops short, so the crescent (not her body) meets the foe.
+function mikaGlaiveShortening(){
+  const sheet=mikaSheet('slash3')&&ART.heroForms?.fire?.['3']?.slash;if(!sheet)return 0;
+  const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,Math.abs(to.x-from.x)-from.width*.43);
+  // Contact pose: the crescent's middle sits 0.40 of the drawn cell right of its centre.
+  const reach=from.width*(sheet.scale||1)*.40,foe=mikaFoeBody();
+  return Math.max(0,Math.min(travel,travel-(foe.x-from.x-reach)));
+}
+combatV3Pose=function(node,transform,...rest){
+  if(mikaSlashShorten&&node===actor('hero')){
+    const m=/^translate\((-?[\d.]+)px,/.exec(transform);
+    if(m&&+m[1]>0)transform=transform.replace(m[0],`translate(${Math.max(0,+m[1]-mikaSlashShorten)}px,`);
+  }
+  return mikaBasePose(node,transform,...rest);
 };
 
 // ---- Six-star departure: a fox-like dash ----------------------------------------------------------

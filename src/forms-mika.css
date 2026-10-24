@@ -15,4 +15,6 @@
 .scene .hero-actor .mika-tail-flare{position:absolute;left:44%;top:52%;width:128%;aspect-ratio:1;translate:-50% -50%;z-index:0;pointer-events:none;background-repeat:no-repeat;filter:drop-shadow(0 0 10px #ff9a3caa)}
 /* The departure fox runs clear of the dash's streaming tails, a stride behind and in front of them. */
 .scene .hero-actor[data-hero-element="fire"][data-hero-form="3"] .depart-fox{left:-58%;z-index:2}
+/* Six-star dash: the standing aura's flame wisps would float in front of her face as she runs. */
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"][data-departing] .combat-form-aura{opacity:0!important;transition:opacity .15s}
 body.reduced-motion .mika-tail-flare,body.reduced-motion .mika-fx,body.reduced-motion .mika-fox-spirit{display:none}
