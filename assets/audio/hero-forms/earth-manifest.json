@@ -1,0 +1,195 @@
+{
+  "earth-f2-gather": {
+    "file": "hero-forms/earth/nori-f2-gather.wav",
+    "duration": 1.0,
+    "sources": [
+      {
+        "title": "LeavesRustling.mp3",
+        "author": "SierraHWills",
+        "source_url": "https://freesound.org/people/SierraHWills/sounds/368453/",
+        "license": "CC0-1.0",
+        "sha256": "f21fc63b6a3601c57969ae6285d61c66f5f6d148e03ade79dbfb66bd9c0b8461"
+      },
+      {
+        "title": "Big plants (crops) growing quickly",
+        "author": "Contant_aghony",
+        "source_url": "https://freesound.org/people/Contant_aghony/sounds/479160/",
+        "license": "CC0-1.0",
+        "sha256": "6e8750b3cb9e7d25bbb1f6bf2977a819261266a6f65c06d814ca092a826f7121"
+      }
+    ],
+    "license": "CC0-1.0",
+    "peak": 0.4953,
+    "rms": 0.1039,
+    "sha256": "3956addfda1b17f5415f145c6b6c19c5002bb8c3ef6c29c4259f2be9dd24cac1"
+  },
+  "earth-f3-gather": {
+    "file": "hero-forms/earth/nori-f3-gather.wav",
+    "duration": 1.1,
+    "sources": [
+      {
+        "title": "LeavesRustling.mp3",
+        "author": "SierraHWills",
+        "source_url": "https://freesound.org/people/SierraHWills/sounds/368453/",
+        "license": "CC0-1.0",
+        "sha256": "f21fc63b6a3601c57969ae6285d61c66f5f6d148e03ade79dbfb66bd9c0b8461"
+      },
+      {
+        "title": "trees_creaking_loudl",
+        "author": "Sprust",
+        "source_url": "https://freesound.org/people/Sprust/sounds/848983/",
+        "license": "CC0-1.0",
+        "sha256": "4df29007bb4b86b6ea8b1254f9b5c7810ca4075870cd614b202608cc38196e95"
+      }
+    ],
+    "license": "CC0-1.0",
+    "peak": 0.4975,
+    "rms": 0.1001,
+    "sha256": "f6f90b3cbb33d6a09d87516e6e01c0209b2d84adbc7de73a9083e7445d31913c"
+  },
+  "earth-f2-slam": {
+    "file": "hero-forms/earth/nori-f2-slam.wav",
+    "duration": 1.1,
+    "sources": [
+      {
+        "title": "Cracking Earthquake (cracking soil, cracking stone)",
+        "author": "uagadugu",
+        "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
+        "license": "CC0-1.0",
+        "sha256": "c0711d04a2c000e0dfbbd9284210056051920b1768b26403182f22d12703a0b8"
+      },
+      {
+        "title": "impact-stone-heavy.wav",
+        "author": "kasparsj",
+        "source_url": "https://freesound.org/people/kasparsj/sounds/513694/",
+        "license": "CC0-1.0",
+        "sha256": "adcb2d60ec1d36174e3580927c73b0118a73939c0f6883ed33e524ac0ebffb19"
+      },
+      {
+        "title": "Shield Bash Impact",
+        "author": "Hybrid_V",
+        "source_url": "https://freesound.org/people/Hybrid_V/sounds/319590/",
+        "license": "CC-BY-4.0",
+        "sha256": "2e2200b04c71c9fb4437bbed7a951502c1352bd93700f1bd1f77e64aaa0ac748"
+      }
+    ],
+    "license": "CC-BY-4.0 + CC0-1.0",
+    "peak": 0.4975,
+    "rms": 0.0692,
+    "sha256": "4cbb0530043617b2b313ea54e66d6b05d7af298fa37ad22eea0b131f1e2540a7"
+  },
+  "earth-f3-slam": {
+    "file": "hero-forms/earth/nori-f3-slam.wav",
+    "duration": 1.4,
+    "sources": [
+      {
+        "title": "Cracking Earthquake (cracking soil, cracking stone)",
+        "author": "uagadugu",
+        "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
+        "license": "CC0-1.0",
+        "sha256": "c0711d04a2c000e0dfbbd9284210056051920b1768b26403182f22d12703a0b8"
+      },
+      {
+        "title": "impact-stone-heavy.wav",
+        "author": "kasparsj",
+        "source_url": "https://freesound.org/people/kasparsj/sounds/513694/",
+        "license": "CC0-1.0",
+        "sha256": "adcb2d60ec1d36174e3580927c73b0118a73939c0f6883ed33e524ac0ebffb19"
+      },
+      {
+        "title": "Shield Bash Impact",
+        "author": "Hybrid_V",
+        "source_url": "https://freesound.org/people/Hybrid_V/sounds/319590/",
+        "license": "CC-BY-4.0",
+        "sha256": "2e2200b04c71c9fb4437bbed7a951502c1352bd93700f1bd1f77e64aaa0ac748"
+      }
+    ],
+    "license": "CC-BY-4.0 + CC0-1.0",
+    "peak": 0.4975,
+    "rms": 0.069,
+    "sha256": "7abcfb84124f694cc3a41d3d704f5a1eb656d3e8194c7399380ab4277d4054f3"
+  },
+  "earth-f2-bind": {
+    "file": "hero-forms/earth/nori-f2-bind.wav",
+    "duration": 2.0,
+    "sources": [
+      {
+        "title": "Ringing sound from crystal glass. Tune: C",
+        "author": "PappaBert",
+        "source_url": "https://freesound.org/people/PappaBert/sounds/419146/",
+        "license": "CC0-1.0",
+        "sha256": "8a009e543fcfe4290183bb88fabfec5f65520f268adf2be517f125312735131f"
+      },
+      {
+        "title": "Big plants (crops) growing quickly",
+        "author": "Contant_aghony",
+        "source_url": "https://freesound.org/people/Contant_aghony/sounds/479160/",
+        "license": "CC0-1.0",
+        "sha256": "6e8750b3cb9e7d25bbb1f6bf2977a819261266a6f65c06d814ca092a826f7121"
+      },
+      {
+        "title": "Xylophone crystal chimes",
+        "author": "lori.mortimer",
+        "source_url": "https://freesound.org/people/lori.mortimer/sounds/707618/",
+        "license": "CC0-1.0",
+        "sha256": "b7c03f8f770c32e6f1d52359a256472f6ed65a2a2b80d2b3d1b882e48bc9479b"
+      },
+      {
+        "title": "Ice - Fracture, roots or growing plants",
+        "author": "Vrymaa",
+        "source_url": "https://freesound.org/people/Vrymaa/sounds/735401/",
+        "license": "CC0-1.0",
+        "sha256": "ca8e70be274ecdc6e32a44180da9c4858aa5be855937c32947f9cbb23db2e093"
+      }
+    ],
+    "license": "CC0-1.0",
+    "peak": 0.4916,
+    "rms": 0.1039,
+    "sha256": "726d1f40d9168b8242e8a60ac84270c3c71c8b3dbd0b72ba4ef06205be55c3d3"
+  },
+  "earth-f3-grow": {
+    "file": "hero-forms/earth/nori-f3-grow.wav",
+    "duration": 2.8,
+    "sources": [
+      {
+        "title": "Slow wooden creaks x5",
+        "author": "peridactyloptrix",
+        "source_url": "https://freesound.org/people/peridactyloptrix/sounds/218163/",
+        "license": "CC0-1.0",
+        "sha256": "6d2c6ac54a786b6153316f1ed1608aa156e6a2f02a275519e4300696328ee253"
+      },
+      {
+        "title": "LeavesRustling.mp3",
+        "author": "SierraHWills",
+        "source_url": "https://freesound.org/people/SierraHWills/sounds/368453/",
+        "license": "CC0-1.0",
+        "sha256": "f21fc63b6a3601c57969ae6285d61c66f5f6d148e03ade79dbfb66bd9c0b8461"
+      },
+      {
+        "title": "Plant Growing",
+        "author": "IENBA",
+        "source_url": "https://freesound.org/people/IENBA/sounds/648958/",
+        "license": "CC0-1.0",
+        "sha256": "d277faeb28a0f92c9401e5da6bc4a5f84fecf9e630bc85f17669c14ee3b622fe"
+      },
+      {
+        "title": "Ice - Fracture, roots or growing plants",
+        "author": "Vrymaa",
+        "source_url": "https://freesound.org/people/Vrymaa/sounds/735401/",
+        "license": "CC0-1.0",
+        "sha256": "ca8e70be274ecdc6e32a44180da9c4858aa5be855937c32947f9cbb23db2e093"
+      },
+      {
+        "title": "trees_creaking_loudl",
+        "author": "Sprust",
+        "source_url": "https://freesound.org/people/Sprust/sounds/848983/",
+        "license": "CC0-1.0",
+        "sha256": "4df29007bb4b86b6ea8b1254f9b5c7810ca4075870cd614b202608cc38196e95"
+      }
+    ],
+    "license": "CC0-1.0",
+    "peak": 0.4975,
+    "rms": 0.0962,
+    "sha256": "aabf2fa5ffd3e2732c41a48babe29dca9888f165a6ca3d020ad33dc8e083ca3b"
+  }
+}
