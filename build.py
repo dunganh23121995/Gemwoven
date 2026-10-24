@@ -62,7 +62,7 @@ art['voices']={key:{'src':sound('assets/audio/'+value['file']),'duration':value[
 # Which voice each boss and elite speaks with (assets/audio/voice-casting.json): humans with a
 # clear gender get male/female voices, monsters get their own creature recordings.
 casting=json.loads((root/'assets/audio/voice-casting.json').read_text(encoding='utf-8'))
-art['voiceCasting']={group:{key:entry['family'] for key,entry in casting[group].items()} for group in ['bosses','elites']}
+art['voiceCasting']={group:{key:entry['family'] for key,entry in casting[group].items()} for group in ['bosses','elites','creatures'] if group in casting}
 noct_sfx=json.loads((root/'assets/audio/noct-sfx-manifest.json').read_text(encoding='utf-8'))
 art['noctSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in noct_sfx.items()}
 cast_sfx=json.loads((root/'assets/audio/cast-sfx-manifest.json').read_text(encoding='utf-8'))

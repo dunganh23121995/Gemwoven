@@ -3,40 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>So sánh dáng nghỉ</title>
+<title>Dáng nghỉ quái</title>
 <style>
   :root{color-scheme:dark;--bg:#1d2320;--card:#28302b;--ink:#eef1e8;--muted:#a9b3a6;--accent:#e2b85c}
   body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif;padding:16px}
-  h1{font-size:20px;margin:0 0 4px}p{color:var(--muted);margin:0 0 16px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  h1{font-size:20px;margin:0 0 4px}p{color:var(--muted);margin:0 0 16px;max-width:760px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
   .card{background:var(--card);border-radius:10px;padding:12px}
   .card h2{font-size:15px;margin:0 0 8px}
-  .pair{display:flex;gap:10px}.pair figure{margin:0;flex:1;text-align:center}
-  figcaption{font-size:13px;color:var(--muted)}figcaption b{color:var(--accent)}
-  .sprite{width:100%;aspect-ratio:1;background-repeat:no-repeat;background-size:200% 400%;background-color:#3a4a3e;border-radius:8px;image-rendering:auto}
-  label{display:inline-flex;gap:6px;align-items:center;margin-bottom:12px;color:var(--muted)}
+  .sprite{width:100%;aspect-ratio:1;background-repeat:no-repeat;background-size:200% 400%;background-color:#3a4a3e;border-radius:8px}
+  .now{font-size:13px;color:var(--accent);min-height:20px;margin:6px 0}
+  .row{display:flex;flex-wrap:wrap;gap:6px}
+  button{background:#3b4a40;color:var(--ink);border:1px solid #56685b;border-radius:6px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}
+  button:hover{background:#4a5d50}
 </style>
 </head>
 <body>
-<h1>Dáng nghỉ: vải bay (cũ) và động tác riêng từng nhân vật (mới)</h1>
-<p>Bản mới là 8 khung vẽ thật, mỗi nhân vật một động tác nghỉ riêng: hiệp sĩ dồn trọng tâm và nhấc chùy, rồng thở, hạ đầu khịt mũi, khép mở cánh, Mẫu Nấm đung đưa tựa gậy và vẫy tay.</p>
-<label>Tốc độ (ms/khung) <input id="ms" type="range" min="80" max="300" value="150"> <span id="msv">150</span></label>
+<h1>Dáng nghỉ: đứng yên, thỉnh thoảng làm động tác riêng</h1>
+<p>Nhân vật đứng nghỉ bình thường; cứ vài giây lại ngẫu nhiên làm một động tác của riêng nó rồi trở về dáng nghỉ. Bấm nút để xem ngay một động tác.</p>
 <div class="grid" id="grid"></div>
 <script>
-const items=[
-  ['forest-rootknight','Hiệp Sĩ Rễ Cổ (tinh anh)','../assets/gemwoven/elites/forest-rootknight/idle.webp'],
-  ['fire','Hỏa Long Tro Tàn (boss)','../assets/gemwoven/boss-anim/fire/idle.webp'],
-  ['mire','Mẫu Nấm Độc (boss)','../assets/gemwoven/boss-anim/mire/idle.webp']
+const ROOT='../';
+const foes=[
+  {name:'Hiệp Sĩ Rễ Cổ (tinh anh)',idle:'assets/gemwoven/elites/forest-rootknight/idle.webp',acts:[['Gõ khiên 2 cái','.build-cache/fidgets/forest-rootknight/tapshield/fidget.webp'],['Vác chùy lên vai','.build-cache/fidgets/forest-rootknight/shoulder/fidget.webp']]},
+  {name:'Hỏa Long Tro Tàn (boss)',idle:'assets/gemwoven/boss-anim/fire/idle.webp',acts:[['Ngực rực dung nham','.build-cache/fidgets/fire/lavachest/fidget.webp'],['Vươn cánh','.build-cache/fidgets/fire/wings/fidget.webp']]},
+  {name:'Mẫu Nấm Độc (boss)',idle:'assets/gemwoven/boss-anim/mire/idle.webp',acts:[],hurt:'.build-cache/action-idle/mire/idle.webp'}
 ];
-const grid=document.getElementById('grid'),sprites=[];
-for(const [id,name,old] of items){
+const pos=f=>`${(f%2)*100}% ${Math.floor(f/2)/3*100}%`;
+const actors=[];
+for(const foe of foes){
   const card=document.createElement('section');card.className='card';
-  card.innerHTML=`<h2>${name}</h2><div class="pair"><figure><div class="sprite" style="background-image:url('${old}')"></div><figcaption>Cũ · vải bay</figcaption></figure><figure><div class="sprite" style="background-image:url('../.build-cache/action-idle/${id}/idle.webp')"></div><figcaption><b>Mới · động tác riêng</b></figcaption></figure></div>`;
-  grid.append(card);sprites.push(...card.querySelectorAll('.sprite'));
+  card.innerHTML=`<h2>${foe.name}</h2><div class="sprite"></div><div class="now"></div><div class="row"></div>`;
+  const a={foe,el:card.querySelector('.sprite'),now:card.querySelector('.now'),sheet:foe.idle,frame:0,playing:null,next:performance.now()+3000+Math.random()*3000};
+  a.el.style.backgroundImage=`url('${ROOT}${foe.idle}')`;
+  const row=card.querySelector('.row');
+  for(const [label,src] of foe.acts){const b=document.createElement('button');b.textContent=label;b.onclick=()=>play(a,label,src,140);row.append(b);}
+  if(foe.hurt){const b=document.createElement('button');b.textContent='Khi bị đánh';b.onclick=()=>play(a,'Khi bị đánh',foe.hurt,110);row.append(b);}
+  grid.append(card);actors.push(a);
 }
-let ms=150,frame=0,last=0;
-document.getElementById('ms').oninput=e=>{ms=+e.target.value;document.getElementById('msv').textContent=ms;};
-function tick(t){requestAnimationFrame(tick);if(t-last<ms)return;last=t;frame=(frame+1)%8;for(const s of sprites)s.style.backgroundPosition=`${(frame%2)*100}% ${Math.floor(frame/2)/3*100}%`;}
+function play(a,label,src,ms){a.playing={src,frame:0,ms,last:0};a.now.textContent=label;a.el.style.backgroundImage=`url('${ROOT}${src}')`;}
+let last=0;
+function tick(t){
+  requestAnimationFrame(tick);
+  for(const a of actors){
+    if(a.playing){
+      const p=a.playing;if(t-p.last<p.ms)continue;p.last=t;
+      a.el.style.backgroundPosition=pos(p.frame);
+      if(++p.frame>=8){a.playing=null;a.now.textContent='';a.el.style.backgroundImage=`url('${ROOT}${a.foe.idle}')`;a.next=t+4000+Math.random()*4000;}
+      continue;
+    }
+    if(t-(a.last||0)>150){a.last=t;a.frame=(a.frame+1)%8;a.el.style.backgroundPosition=pos(a.frame);}
+    if(a.foe.acts.length&&t>a.next){const [label,src]=a.foe.acts[Math.floor(Math.random()*a.foe.acts.length)];play(a,label,src,140);}
+  }
+}
 requestAnimationFrame(tick);
 </script>
 </body>

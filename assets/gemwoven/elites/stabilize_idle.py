@@ -81,6 +81,8 @@ def main():
     ap.add_argument("--core", type=float, default=10, help="pixels inside the master silhouette kept rigid")
     ap.add_argument("--cell", type=int, default=256)
     ap.add_argument("--cols", type=int, default=2)
+    ap.add_argument("--same-transform", action="store_true", help="register frame 1 only and place every frame like it (frames drawn at one scale, e.g. an action whose big moving parts would pull a per-frame registration)")
+    ap.add_argument("--grow", type=int, default=0, help="widen the taken motion by N px so no sliver of the master's old pose remains")
     args = ap.parse_args()
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -89,10 +91,22 @@ def main():
     anchor = (float(np.median(xs)), float(ys.max()))
     core = ndimage.distance_transform_edt(master[..., 3] > .5) > args.core
     pm = lambda a: np.concatenate([a[..., :3] * a[..., 3:], a[..., 3:]], -1)
-    frames, report = [], []
+    frames, report, fixed = [], [], None
     for index, path in enumerate(args.frames):
         frame = rgba(Image.open(path).resize((args.cell, args.cell), Image.Resampling.LANCZOS))
-        err, dx, dy, s = register(frame, master, anchor)
+        if args.same_transform and fixed:
+            # Same scale as frame 1; the position is refined on the legs alone (they never move in
+            # an idle action), so a frame Codex drew a little higher or lower still lands its feet.
+            s = fixed[3]; legs = ndimage.binary_dilation(master[..., 3] > .5, iterations=3); legs[:int(anchor[1] - (anchor[1] - ys.min()) * .35)] = False
+            # First guess: put this frame's soles on the master's soles, feet centred on the master's feet.
+            probe = warp(frame, fixed[1], fixed[2], s, anchor)[..., 3] > .5; py, px = np.where(probe)
+            gy = int(round(ys.max() - py.max())); low = px[py > py.max() - (ys.max() - ys.min()) * .12]
+            gx = int(round(np.median(xs[ys > ys.max() - (ys.max() - ys.min()) * .12]) - np.median(low)))
+            err, dx, dy = min((score(warp(frame, x, y, s, anchor), master, legs), x, y) for y in range(fixed[2] + gy - 8, fixed[2] + gy + 9, 2) for x in range(fixed[1] + gx - 8, fixed[1] + gx + 9, 2))
+            err, dx, dy = min((score(warp(frame, x, y, s, anchor), master, legs), x, y) for y in range(dy - 1, dy + 2) for x in range(dx - 1, dx + 2))
+        else:
+            err, dx, dy, s = register(frame, master, anchor)
+            fixed = (err, dx, dy, s)
         moved = warp(frame, dx, dy, s, anchor)
         change = np.abs(pm(moved) - pm(master)).max(-1)
         take = (change > .2) & ~core                        # real motion only, never the body core
@@ -101,6 +115,8 @@ def main():
         if count:
             sizes = ndimage.sum(take, labels, range(1, count + 1))
             take = np.isin(labels, [i + 1 for i, n in enumerate(sizes) if n >= 60])
+        if args.grow:
+            take = ndimage.binary_dilation(take, iterations=args.grow)
         weight = np.asarray(Image.fromarray((take * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(2.2)), dtype=np.float32)[..., None] / 255
         mixed = pm(master) * (1 - weight) + pm(moved) * weight
         alpha = mixed[..., 3:]

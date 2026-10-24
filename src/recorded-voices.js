@@ -21,12 +21,13 @@ function stopCombatVoices(){
   activeVoices.clear();
   for(const side of ['hero','enemy'])delete actor(side).dataset.voiceClip;
 }
-// A campaign boss or elite speaks with its own cast voice; anything else falls back to the
-// element's creature (or boss) voice.
+// A campaign boss, elite or common foe speaks with its cast voice (common foes by species);
+// anything uncast falls back to the element's creature (or boss) voice.
 function foeVoiceFamily(key){
   const battle=typeof progressionBattle!=='undefined'?progressionBattle:null,cast=ART.voiceCasting||{};
   const owner=state.qaFoeFx||{boss:battle?.bossId,tier:battle?.tier};
-  const own=state.boss?cast.bosses?.[owner.boss]:owner.tier==='elite'?cast.elites?.[battle?.creature||state.qaFoeFx?.creature]:null;
+  const creature=battle?.creature||state.qaFoeFx?.creature;
+  const own=state.boss?cast.bosses?.[owner.boss]:owner.tier==='elite'?cast.elites?.[creature]:cast.creatures?.[creature];
   return own&&ART.voices[own+'-attack1']?own:(state.boss?'boss-':'creature-')+key;
 }
 async function combatVoice(side,kind='attack'){
@@ -72,7 +73,7 @@ $('startBtn').addEventListener('click',()=>queueMicrotask(warmCombatVoices));
 $('soundBtn').addEventListener('click',()=>queueMicrotask(()=>sound?warmCombatVoices():stopCombatVoices()));
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCombatVoices();});
 $('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Noct: <a href="https://youfulca.com/2022/08/06/cool/" target="_blank" rel="noopener">YouFulca · Cool / Lone Rival</a></p>');
-$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Voice: <a href="https://opengameart.org/content/female-rpg-voice-starter-pack" target="_blank" rel="noopener">Cici Fyre</a> · <a href="https://opengameart.org/content/monster-sound-effects-pack" target="_blank" rel="noopener">Ogrebane</a> · <a href="https://youfulca.com/2022/08/07/fighter/" target="_blank" rel="noopener">YouFulca</a></p>');
+$('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Voice: <a href="https://opengameart.org/content/female-rpg-voice-starter-pack" target="_blank" rel="noopener">Cici Fyre</a> · <a href="https://freesound.org/" target="_blank" rel="noopener">Freesound (CC0)</a> · <a href="https://youfulca.com/2022/08/07/fighter/" target="_blank" rel="noopener">YouFulca</a></p>');
 $('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Sấm: <a href="https://freesound.org/people/seth-m/sounds/458015/" target="_blank" rel="noopener">seth-m</a> · Sét đánh: <a href="https://freesound.org/people/Simon%20Spiers/sounds/437243/" target="_blank" rel="noopener">Simon Spiers</a> (CC0, đã biên tập)</p>');
 $('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Băng nộ Yuki: <a href="https://freesound.org/people/j_p_higgins/sounds/262633/" target="_blank" rel="noopener">j_p_higgins · Ice Crack 3</a> · <a href="https://freesound.org/people/Za-Games/sounds/539968/" target="_blank" rel="noopener">Za-Games · Deep Boom</a> (CC0, đã lọc âm, phối và thêm vang trầm)</p>');
 $('helpDialog').insertAdjacentHTML('beforeend','<p class="voice-credits">Khiên Nori: <a href="https://freesound.org/people/Hybrid_V/sounds/319590/" target="_blank" rel="noopener">Hybrid_V · Shield Bash Impact</a> — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> (đã cắt, EQ và thêm vang). Gió lửa Mika: <a href="https://freesound.org/people/hnhnh/sounds/244926/" target="_blank" rel="noopener">hnhnh · fire-whoosh.wav</a> (CC0, đã biên tập).</p>');
