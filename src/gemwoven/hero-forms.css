@@ -63,7 +63,7 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 @keyframes scythe-glint{0%,70%{background-position:62% 0;opacity:0}71.5%{opacity:1}86%{background-position:20% 0;opacity:1}88%,100%{background-position:20% 0;opacity:0}}
 .reduced-motion .scythe-glint.hub{display:none}
 /* Hero showcase (hero-show.js): the drawn sheet is laid exactly over the hero image it replaces. */
-.hero-show{display:block;position:absolute;pointer-events:none;z-index:1;background-repeat:no-repeat;background-size:200% 400%;transition:filter .9s ease-out,opacity .9s ease-out}
+.hero-show{display:block;position:absolute;pointer-events:none;z-index:1;background-repeat:no-repeat;background-size:200% 400%}
 .hero-show-under{opacity:0!important}
 .has-hero-show .scythe-glint{display:none!important}
 .hero-show-smoke{position:absolute;inset:0;pointer-events:none;z-index:2}
@@ -71,3 +71,4 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 @keyframes hero-show-wisp{0%{opacity:0;transform:scale(.4) rotate(0)}20%{opacity:.32}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.5) rotate(var(--r))}}
 /* The form's cloud ring shares the hero's box, so it can spin and scale about the body. */
 .hero-form-effects{position:absolute;inset:0;pointer-events:none}
+.hero-show-vortex{position:absolute;left:50%;top:56%;width:120%;aspect-ratio:1;translate:-50% -50%;pointer-events:none;z-index:2;background-repeat:no-repeat;background-size:200% 400%}

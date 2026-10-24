@@ -17,6 +17,12 @@
       "label": "Bước ra từ bóng tối",
       "file": "emerge.webp",
       "whole": false
+    },
+    {
+      "name": "rift",
+      "label": "Rạch không gian bước ra",
+      "file": "rift.webp",
+      "whole": false
     }
   ]
 }

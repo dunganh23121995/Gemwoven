@@ -11313,7 +11313,9 @@
         "assets/heroes/forms/shadow/form-3/showcase/scythespin.webp",
         "assets/heroes/forms/shadow/form-3/showcase/darkpalm.webp"
       ],
-      "emerge": "assets/heroes/forms/shadow/form-3/showcase/emerge.webp"
+      "emerge": "assets/heroes/forms/shadow/form-3/showcase/emerge.webp",
+      "rift": "assets/heroes/forms/shadow/form-3/showcase/rift.webp",
+      "vortex": "assets/heroes/forms/shadow/form-3/showcase/vortex.webp"
     }
   },
   "creature-abyss-reefcorsair": {

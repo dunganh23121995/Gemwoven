@@ -48,25 +48,28 @@
     }
     timer=requestAnimationFrame(tick);
     return {
-      // The summoning entrance: the hero's cloud ring spins small, round and fast, then bursts
-      // open, and in that burst the hero takes shape out of the dark.
+      // The summoning entrance: a void vortex spins open and collapses to a point, the hero slashes
+      // space open from the other side and steps out of the rift, then its cloud ring bursts out.
       summon(){
-        if(!show.sheets.emerge||reduced())return;
+        if(!show.sheets.rift||!show.sheets.vortex||reduced())return;
         stage.style.opacity='0';
         setTimeout(()=>{
           if(!stage.isConnected)return;
-          const ring=host.querySelector('.hero-form-effects'),total=2200,burst=.62;
-          if(ring){ring.style.transformOrigin='50% 66%';ring.animate([
-            {transform:'scale(.22) rotate(0deg)',opacity:0},{opacity:1,offset:.08},
-            {transform:'scale(.46) rotate(1080deg)',offset:burst,easing:'cubic-bezier(.15,.9,.3,1)'},
-            {transform:'scale(1.3) rotate(1440deg)',opacity:1,offset:.76},
-            {transform:'scale(1) rotate(1440deg)',opacity:1}],{duration:total,easing:'cubic-bezier(.5,0,.75,1)'});}
-          setTimeout(()=>{
-            if(!stage.isConnected)return;
-            wisps(host);stage.style.opacity='';
-            stage.animate([{opacity:0,filter:'brightness(3) blur(3px)'},{opacity:1,filter:'brightness(1.4) blur(0px)',offset:.35},{opacity:1,filter:'brightness(1) blur(0px)'}],{duration:650,easing:'ease-out'});
-            play(show.sheets.emerge,75,null,3);
-          },ring?total*burst:0);
+          const ring=host.querySelector('.hero-form-effects');if(ring)ring.style.opacity='0';
+          const vortex=document.createElement('span');vortex.className='hero-show-vortex';vortex.setAttribute('aria-hidden','true');
+          vortex.style.backgroundImage=`url('${url(show.sheets.vortex)}')`;vortex.style.backgroundPosition=cell(0);host.append(vortex);
+          vortex.animate([{rotate:'0deg'},{rotate:'540deg'}],{duration:1300,easing:'cubic-bezier(.4,0,.6,1)'});
+          let f=0;const spin=setInterval(()=>{
+            if(++f<8){vortex.style.backgroundPosition=cell(f);return;}
+            clearInterval(spin);vortex.remove();if(!stage.isConnected)return;
+            stage.style.opacity='';
+            play(show.sheets.rift,150,()=>{
+              if(!ring||!stage.isConnected)return;
+              ring.style.opacity='';wisps(host);
+              ring.style.transformOrigin='50% 66%';
+              ring.animate([{transform:'scale(.3)',opacity:0},{transform:'scale(1.3)',opacity:1,offset:.45},{transform:'scale(1)',opacity:1}],{duration:700,easing:'cubic-bezier(.2,.9,.3,1)'});
+            });
+          },160);
         },60);
       },
       stop(){stopped=true;cancelAnimationFrame(timer);stage.remove();image.classList.remove('hero-show-under');image.style.opacity='';host.classList.remove('has-hero-show');}
