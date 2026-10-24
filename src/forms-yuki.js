@@ -71,19 +71,34 @@ function yukiReparent(strip,parent){
 // The foe turns to ice while it is held in the prison or the lotus.
 function yukiFreezeFoe(on){actor('enemy').classList.toggle('yuki-frozen',on);}
 
+// ---- Sounds ---------------------------------------------------------------------------------------
+// Each beat has its own clip from real recordings (scripts/prepare_yuki_form_sounds.py,
+// assets/audio/hero-forms/ice-manifest.json -> ART.castSounds['ice-<name>']). With reduced motion the
+// timeline collapses, so only the hit is heard. window.yukiSoundLog (QA) records when each one fires.
+// Decoded up front, as form 1's glacier audio, so the first beats are not late.
+function yukiPrepareSounds(names){
+  const context=combatV3AudioContext();if(!context)return;
+  for(const name of names)decodeCastSound(context,'ice-'+name).catch(()=>{});
+}
+function yukiSound(name,{volume=.5,pan=0,hit=false}={}){
+  if(reduced&&!hit)return;
+  window.yukiSoundLog?.push([name,Math.round(performance.now())]);
+  playCastSound('ice',name,{volume,pan});
+}
+
 // ---- Shared rules: exactly form 1's armour gain and single hit -------------------------------------
 function yukiUltimateOpening(kit,pending){
   const armor=Math.max(0,Math.min(kit.armor,combatArmorCap('hero')-state.armor));state.armor+=armor;update();
   if(armor)combatV3Number('hero','+'+armor+' GIÁP','armor',0,pending);
   pending.push(selfBuffSpiral('armor',1100));popActorSkill('hero',HEROES.ice.skill,true,pending);
-  combatVoice('hero','cast');if(!reduced)playCastSound('ice','glacier-charge',{volume:.42,pan:-.18});
+  combatVoice('hero','cast');
 }
-function yukiUltimateHit(kit,pending){
+function yukiUltimateHit(kit,pending,sound){
   const result=damage('hero',kit.base);if(state.enemyHp>0)state.stunned=true;
   // Third form: the foe also loses energy.
   if(kit.enemyDrain&&state.enemyHp>0){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.enemyDrain);popActorSkill('enemy','−'+kit.enemyDrain+' NĂNG LƯỢNG',false,pending);}
   update();
-  combatVoice('enemy','hurt');playCastSound('ice','glacier-impact',{volume:.62,pan:.24});setSpriteAction('enemy','hurt',350);
+  combatVoice('enemy','hurt');yukiSound(sound,{volume:.62,pan:.24,hit:true});setSpriteAction('enemy','hurt',350);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',0,pending);
   if(state.enemyHp>0)pending.push(wait(kit.enemyDrain?420:0).then(()=>popActorSkill('enemy','CHOÁNG',false,pending)));
   hitAccents('hero',result,false,pending);
@@ -110,15 +125,16 @@ async function yukiMoonfrostUltimate(){
   const root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,pending=[],at=yukiUltimateTimer();
   const kit=progressionKit('ice'),foe=yukiFoeBody();
   let result={amount:0,blocked:0},moon=null,beam=null,seal=null;
+  yukiPrepareSounds(['f2-moonrise','f2-beam','f2-spikes','f2-freeze','f2-shatter']);
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
     setSpriteFrame('hero','skill',0);await at(260);setSpriteFrame('hero','skill',1);
-    await at(560);root.dataset.ragePhase='moonrise';setSpriteFrame('hero','skill',2);moon=yukiRisingMoon(pending);
+    await at(560);root.dataset.ragePhase='moonrise';setSpriteFrame('hero','skill',2);moon=yukiRisingMoon(pending);yukiSound('f2-moonrise',{volume:.42,pan:-.25});
     await at(900);setSpriteFrame('hero','skill',3);
     if(moon)pending.push(animate(moon.node,[{filter:'brightness(1) drop-shadow(0 0 4px #bdf3ff)'},{filter:'brightness(1.5) drop-shadow(0 0 14px #e8fdff)',offset:.5},{filter:'brightness(1.15) drop-shadow(0 0 7px #bdf3ff)'}],{duration:420,fill:'forwards'}));
-    await at(1130);combatVoice('hero','release');if(!reduced)playCastSound('ice','form2',{volume:.4,pan:.3});
-    await at(1250);root.dataset.ragePhase='moonbeam';setSpriteFrame('hero','skill',4);
+    await at(1130);combatVoice('hero','release');
+    await at(1250);root.dataset.ragePhase='moonbeam';setSpriteFrame('hero','skill',4);yukiSound('f2-beam',{volume:.5,pan:.25});
     // The column of frozen moonlight falls from the top of the sky onto the foe's feet.
     const sheet=ART.heroFx?.ice?.beam;
     if(sheet&&!reduced){
@@ -130,14 +146,14 @@ async function yukiMoonfrostUltimate(){
     combatV3Camera(1,false,state.boss,pending);setSpriteAction('enemy','hurt',260);
     // Frost spikes bloom in a ring round the foe's feet and close into an ice prison.
     seal=yukiStrip('seal',{x:foe.x,feet:foe.feet+4,width:Math.min($('scene').clientWidth*.6,Math.max(foe.width*1.55,foe.height*.95,90))});
-    seal?.play(0,3,85);
+    seal?.play(0,3,85);yukiSound('f2-spikes',{volume:.55,pan:.3});
     await at(1600);setSpriteFrame('hero','skill',5);
-    await at(1700);yukiFreezeFoe(true);seal?.set(4);
+    await at(1700);yukiFreezeFoe(true);seal?.set(4);yukiSound('f2-freeze',{volume:.5,pan:.3});
     beam?.stop();beam?.fade(260,pending);beam=null;
     await at(2150);seal?.set(5);
     await at(2240);root.dataset.ragePhase='shatter';
     seal?.play(6,7,90);yukiFreezeFoe(false);
-    result=yukiUltimateHit(kit,pending);
+    result=yukiUltimateHit(kit,pending,'f2-shatter');
     yukiMeteorShake(true,pending);
     pending.push(animate(target,[{transform:oldTarget||'none'},{transform:'translate(4px,6px) rotate(2deg)',offset:.25},{transform:oldTarget||'none'}],{duration:350,easing:'ease-out'}));
     if(moon){moon.stop();moon.fade(420,pending,{translate:`0 ${-10}px`});moon=null;}
@@ -165,12 +181,13 @@ async function yukiSnowLotusUltimate(){
   const root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,pending=[],at=yukiUltimateTimer();
   const kit=progressionKit('ice'),foe=yukiFoeBody(),hero=yukiHeroBody();
   let result={amount:0,blocked:0},aegis=null,gust=null,lotus=null,cut=null;
+  yukiPrepareSounds(['f3-aegis','f3-fan','f3-bloom','f3-halberd','f3-close','f3-burst']);
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
-    setSpriteFrame('hero','skill',0);aegis=yukiAegis(pending);
+    setSpriteFrame('hero','skill',0);aegis=yukiAegis(pending);yukiSound('f3-aegis',{volume:.45,pan:-.25});
     await at(300);setSpriteFrame('hero','skill',1);
-    await at(640);root.dataset.ragePhase='fan';setSpriteFrame('hero','skill',2);if(!reduced)playCastSound('ice','launch',{volume:.3,pan:0});
+    await at(640);root.dataset.ragePhase='fan';setSpriteFrame('hero','skill',2);yukiSound('f3-fan',{volume:.5,pan:-.05});
     // The fan's gust of snow carries from her open fan to the foe.
     const gustWidth=Math.max(hero.height*1.35,foe.height);
     gust=yukiStrip('fan',{x:hero.x+hero.width*.55,y:hero.top+hero.height*.42,width:gustWidth});
@@ -183,21 +200,22 @@ async function yukiSnowLotusUltimate(){
     // It opens under the foe (inside its actor, behind the body), so the foe stands in the flower.
     const cell=target.getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
     await at(840);lotus=yukiStrip('lotus',{x:foe.x-(cell.left-scene.left),feet:foe.feet+6-(cell.top-scene.top),width:lotusWidth,parent:target,className:'yuki-under'});
-    lotus?.play(0,2,95);
+    lotus?.play(0,2,95);yukiSound('f3-bloom',{volume:.45,pan:.3});
     await at(1130);gust?.fade(120,pending);gust=null;
     await at(1150);root.dataset.ragePhase='raise';setSpriteFrame('hero','skill',3);
-    await at(1400);combatVoice('hero','release');if(!reduced)playCastSound('ice','form3',{volume:.38,pan:.3});
+    await at(1400);combatVoice('hero','release');
+    await at(1440);yukiSound('f3-halberd',{volume:.55,pan:.1});// its whoosh peaks on the cut at 1500 ms
     await at(1500);root.dataset.ragePhase='crescent';setSpriteFrame('hero','skill',4);
     // The halberd's crescent cuts across the foe as the lotus closes round it.
     cut=yukiStrip('crescent',{x:foe.x,y:foe.y,width:Math.min($('scene').clientWidth*.7,Math.max(foe.height,foe.width)*1.45)});
     cut?.play(0,5,55);combatV3Camera(1,true,state.boss,pending);setSpriteAction('enemy','hurt',300);
-    await at(1600);yukiReparent(lotus,$('combatEffects'));lotus?.node.classList.remove('yuki-under');lotus?.play(3,4,95);
+    await at(1600);yukiReparent(lotus,$('combatEffects'));lotus?.node.classList.remove('yuki-under');lotus?.play(3,4,95);yukiSound('f3-close',{volume:.55,pan:.3});
     await at(1800);yukiFreezeFoe(true);cut?.remove();cut=null;
     await at(1960);root.dataset.ragePhase='bloom-hold';setSpriteFrame('hero','skill',5);
     await at(2080);lotus?.set(5);
     await at(2240);root.dataset.ragePhase='bloom-burst';yukiFreezeFoe(false);
     lotus?.play(6,7,110);
-    result=yukiUltimateHit(kit,pending);
+    result=yukiUltimateHit(kit,pending,'f3-burst');
     yukiMeteorShake(true,pending);
     const flash=document.createElement('span');flash.className='yuki-lotus-flash';flash.setAttribute('aria-hidden','true');$('combatEffects').append(flash);
     pending.push(animate(flash,[{opacity:0},{opacity:.7,offset:.2},{opacity:0}],{duration:460}).finally(()=>flash.remove()));

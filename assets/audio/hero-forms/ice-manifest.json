@@ -1,0 +1,153 @@
+{
+  "ice-f2-moonrise": {
+    "file": "hero-forms/ice/f2-moonrise.wav",
+    "duration": 1.7,
+    "beat": "moon rises behind her (skill frame 2)",
+    "sources": [
+      "#271355 \"PB Bar Chimes (long)\" by petebuchwald, https://freesound.org/people/petebuchwald/sounds/271355/",
+      "#639429 \"Crystal Twinkle\" by LaurenPonder, https://freesound.org/people/LaurenPonder/sounds/639429/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.44,
+    "rms": 0.112,
+    "sha256": "8d90c0e83f48a5a8152d8c1e57daf520a07695d651777d9191879921bc54a7cc"
+  },
+  "ice-f2-beam": {
+    "file": "hero-forms/ice/f2-beam.wav",
+    "duration": 1.6,
+    "beat": "column of frozen moonlight lands on the foe at +0.17 s",
+    "sources": [
+      "#683096 \"Woosh\" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/683096/",
+      "#614832 \"2022-01-14-crystal-bell-08.flac\" by arseniiv, https://freesound.org/people/arseniiv/sounds/614832/",
+      "#639429 \"Crystal Twinkle\" by LaurenPonder, https://freesound.org/people/LaurenPonder/sounds/639429/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.41,
+    "rms": 0.114,
+    "sha256": "88cfbee24eae15930bda930aa06ff86c7b65acc0c8942889a0e5d3392541b861"
+  },
+  "ice-f2-spikes": {
+    "file": "hero-forms/ice/f2-spikes.wav",
+    "duration": 0.8,
+    "beat": "ice spikes crackle up round the foe (seal frames 0-3)",
+    "sources": [
+      "#452645 \"ice grinding cracking freezing designed.wav\" by kyles, https://freesound.org/people/kyles/sounds/452645/",
+      "#703115 \"crush1.wav\" by franzzle, https://freesound.org/people/franzzle/sounds/703115/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.051,
+    "sha256": "915f4e438808f45b0979c9eeac2eb640da596b368599a40baf6c36b304b52f8d"
+  },
+  "ice-f2-freeze": {
+    "file": "hero-forms/ice/f2-freeze.wav",
+    "duration": 1.0,
+    "beat": "the ice prison freezes tight (seal frame 4)",
+    "sources": [
+      "#844260 \"Subzero Frost Loop (Short)\" by qubodup, https://freesound.org/people/qubodup/sounds/844260/",
+      "#437323 \"ice sounds 7.wav\" by creeeeak, https://freesound.org/people/creeeeak/sounds/437323/",
+      "#745014 \"Glass Ping\" by tix99, https://freesound.org/people/tix99/sounds/745014/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.054,
+    "sha256": "f93b9e0fab090a01d6fdb6886ef72b6964a1448da722dca2d1a7a4cc222e1ba9"
+  },
+  "ice-f2-shatter": {
+    "file": "hero-forms/ice/f2-shatter.wav",
+    "duration": 1.9,
+    "beat": "glassy shatter of the ice prison (damage beat)",
+    "sources": [
+      "#422633 \"Break something (ice/glass/...)\" by Aurelon, https://freesound.org/people/Aurelon/sounds/422633/",
+      "#329744 \"Ice break\" by humanoide9000, https://freesound.org/people/humanoide9000/sounds/329744/",
+      "#789213 \"Glass break - Long\" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.085,
+    "sha256": "47a91e683fe885491a4285173789bd102f7219996abc2ccb19cff6e23fefaeee"
+  },
+  "ice-f3-aegis": {
+    "file": "hero-forms/ice/f3-aegis.wav",
+    "duration": 1.2,
+    "beat": "ice armour plates clink as the aegis spirals up her (0-0.56 s)",
+    "sources": [
+      "#437323 \"ice sounds 7.wav\" by creeeeak, https://freesound.org/people/creeeeak/sounds/437323/",
+      "#745014 \"Glass Ping\" by tix99, https://freesound.org/people/tix99/sounds/745014/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.071,
+    "sha256": "f856270221c0c40d5756527dacabe045771cc5aa5d7859fe7a4deffcce3f2259"
+  },
+  "ice-f3-fan": {
+    "file": "hero-forms/ice/f3-fan.wav",
+    "duration": 1.3,
+    "beat": "fan swish and snowy gust (skill frame 2, gust strip)",
+    "sources": [
+      "#805399 \"Folding Fan - Opening\" by nahkd123, https://freesound.org/people/nahkd123/sounds/805399/",
+      "#569109 \"Short Wind/Air Woosh | A gust of wind\" by NIKOKnecht, https://freesound.org/people/NIKOKnecht/sounds/569109/",
+      "#639429 \"Crystal Twinkle\" by LaurenPonder, https://freesound.org/people/LaurenPonder/sounds/639429/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.429,
+    "rms": 0.111,
+    "sha256": "3d8290485f991e9185000071e198a5bd5dea63a84f3bc4d63d768fba8f69c36a"
+  },
+  "ice-f3-bloom": {
+    "file": "hero-forms/ice/f3-bloom.wav",
+    "duration": 1.5,
+    "beat": "the ice lotus blooms open under the foe (lotus frames 0-2)",
+    "sources": [
+      "#452645 \"ice grinding cracking freezing designed.wav\" by kyles, https://freesound.org/people/kyles/sounds/452645/",
+      "#858114 \"Crystal Bell — Bb3\" by bassimat, https://freesound.org/people/bassimat/sounds/858114/",
+      "#145578 \"Belltree.aif\" by acmkyne, https://freesound.org/people/acmkyne/sounds/145578/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.435,
+    "rms": 0.111,
+    "sha256": "7f846a28f4de85ba9ab5ba3cfe7e7cda28ec2e328af6793268e577387f318020"
+  },
+  "ice-f3-halberd": {
+    "file": "hero-forms/ice/f3-halberd.wav",
+    "duration": 0.8,
+    "beat": "moon halberd swish (skill frame 4)",
+    "sources": [
+      "#507466 \"Clean fast Swoosh.aiff\" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/",
+      "#240640 \"Metallic Whoosh.wav\" by MissCellany, https://freesound.org/people/MissCellany/sounds/240640/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.08,
+    "sha256": "adfba08e7b16cb710fb742a975e7d3140f31e8c92d3038f0e41cce25d3156cde"
+  },
+  "ice-f3-close": {
+    "file": "hero-forms/ice/f3-close.wav",
+    "duration": 1.0,
+    "beat": "the lotus closes round the foe (lotus frames 3-4)",
+    "sources": [
+      "#452645 \"ice grinding cracking freezing designed.wav\" by kyles, https://freesound.org/people/kyles/sounds/452645/",
+      "#703115 \"crush1.wav\" by franzzle, https://freesound.org/people/franzzle/sounds/703115/",
+      "#844260 \"Subzero Frost Loop (Short)\" by qubodup, https://freesound.org/people/qubodup/sounds/844260/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.054,
+    "sha256": "7da81b1757d6b847b37e794913428760b41371ddf877ad235858f1b010a5e4aa"
+  },
+  "ice-f3-burst": {
+    "file": "hero-forms/ice/f3-burst.wav",
+    "duration": 2.4,
+    "beat": "the lotus bursts into snow petals (damage beat)",
+    "sources": [
+      "#422633 \"Break something (ice/glass/...)\" by Aurelon, https://freesound.org/people/Aurelon/sounds/422633/",
+      "#329744 \"Ice break\" by humanoide9000, https://freesound.org/people/humanoide9000/sounds/329744/",
+      "#789213 \"Glass break - Long\" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/",
+      "#271355 \"PB Bar Chimes (long)\" by petebuchwald, https://freesound.org/people/petebuchwald/sounds/271355/"
+    ],
+    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
+    "peak": 0.492,
+    "rms": 0.097,
+    "sha256": "a6446a9f041c5103f3ea6ff4e95f0dbbdbde2b685b2faff8294050f32a7a5772"
+  }
+}
