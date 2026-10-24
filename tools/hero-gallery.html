@@ -27,6 +27,28 @@ button:hover{border-color:var(--gold)}button.on{background:var(--gold);color:#1a
 label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .status{color:var(--dim);font-size:13px}
 .note{color:var(--dim);font-size:13px;margin:6px 0 0}
+.combat{flex:none;display:flex;flex-direction:column;gap:8px;width:390px;max-width:100%}
+.combat-bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0;gap:6px}
+.combat-bar button{flex:1 1 auto;padding:10px 8px;font-weight:600}
+.combat-bar button.hot{border-color:var(--gold);color:var(--gold)}
+.combat-bar button.busy{background:var(--gold);color:#1a1409}
+[hidden]{display:none!important}
+@media (max-width:760px){
+  body{padding:8px}
+  header{gap:8px;margin-bottom:6px}
+  h1{font-size:16px;width:100%}
+  header label,header select{flex:1 1 auto}
+  #forms button{padding:8px 10px}
+  .layout{flex-direction:column;gap:10px}
+  /* The fight and its buttons stay pinned at the top while the rest scrolls underneath. */
+  .combat{width:100%;position:sticky;top:0;z-index:6;background:var(--bg);padding-bottom:6px}
+  .combat-bar{position:static}
+  header label{flex:1 1 40%}
+  .combat-bar button{font-size:15px;padding:12px 6px;min-width:30%}
+  .side{min-width:0;width:100%}
+  .shows{grid-template-columns:1fr 1fr}
+  .viewer canvas.play{width:100%;height:auto;max-width:256px}
+}
 .shows{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
 .show h3{font-size:13px;margin:0 0 6px;color:var(--ink)}
 .show.cur h3{color:var(--gold)}
@@ -52,7 +74,17 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
   <button id="reload" title="Tải lại sau khi build lại Game.html">Tải lại game</button>
 </header>
 <div class="layout">
-  <div class="game"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
+  <div class="combat">
+    <!-- The combat actions sit right above the fight (sticky on a phone) so they are easy to tap and watch. -->
+    <div class="combat-bar row">
+      <button data-do="idle">Nghỉ</button>
+      <button data-do="attack">Đánh thường</button>
+      <button data-do="ultimate" class="hot">Tuyệt kỹ</button>
+      <button data-do="depart">Rời sân</button>
+      <button data-do="hit">Bị đánh</button>
+    </div>
+    <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
+  </div>
   <div class="side">
     <section>
       <h2>Ngoài trận · Home, Tướng, Kỹ Năng (mọi hình thái để so sánh)</h2>
@@ -60,13 +92,6 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
     </section>
     <section>
       <h2>Trong trận · hình thái đang chọn</h2>
-      <div class="row">
-        <button data-do="idle">Nghỉ</button>
-        <button data-do="attack">Đánh thường</button>
-        <button data-do="ultimate">Tuyệt kỹ</button>
-        <button data-do="depart">Rời sân</button>
-        <button data-do="hit">Bị đánh</button>
-      </div>
       <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button></div>
       <div class="row" style="margin-top:8px">
         <label>Đối thủ <select id="enemy"></select></label>
@@ -196,11 +221,22 @@ async function boot(){
   d.getElementById('startBtn').click();
   await new Promise(r=>setTimeout(r,300));fillEnemies();configure();say('Sẵn sàng');
 }
+// On a phone the 390x844 game frame is scaled down to the screen width (the game itself is unchanged).
+// On a phone only the battle scene of the frame is shown (its title bar and gem board are cut off),
+// so the fight and the buttons above it fit on screen together.
+const SCENE={top:72,bottom:424};
+function fitGame(){
+  const box=$('gameBox'),phone=innerWidth<=760,w=box.parentElement.clientWidth,k=Math.min(1,w/390);
+  box.style.width=390*k+'px';box.style.height=(phone?(SCENE.bottom-SCENE.top):844)*k+'px';
+  frame.style.transformOrigin='0 0';
+  frame.style.transform=`translateY(${phone?-SCENE.top*k:0}px) scale(${k})`;
+}
+addEventListener('resize',fitGame);fitGame();
 frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
 $('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src='Game.html?qa&t='+Date.now();};
 for(const id of ['enemy','fx','armor','variant'])$(id).onchange=configure;
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
-  const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);
+  const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);b.classList.add('busy');
   try{
     if(b.dataset.do!=='hit')configure();
     if(b.dataset.do==='attack')await q.attack('hero',100,{attackChain:1});
@@ -208,7 +244,7 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     if(b.dataset.do==='depart')await q.departVictoriousHero();
     if(b.dataset.do==='hit'){const hp=q.state.hp;await q.attack('enemy',100);say(`Bị đánh: mất ${hp-q.state.hp} HP`);return;}
     say('Xong: '+b.textContent);
-  }catch(e){say('Lỗi: '+e.message);}
+  }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');}
 });
 function fillFoeSkills(){const q=gq();if(!q)return;$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.move||'vồ')+(s.status?' · '+s.status.id:'');return o;}));}
 $('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').selectedOptions[0],index=+$('foeSkill').value,label=o?.textContent||'';say('Đang chạy: '+label);
