@@ -10,15 +10,16 @@ python $F proc $CI idle --as-is --core=3 --free=0.15,0.4,0.41,0.68
 python $P/lock.py .build-cache/fidgets/assets_heroes_forms_novice_form-1_combat-idle/idle/fidget.webp "116,104,170,145;0,168,256,256"
 python $F accept $CI idle "Nghỉ"; python assets/heroes/forms/combat_idle.py package novice 1
 
-# B. showcase idle (raw-idle.png, gpt-6.1-sol low): master everywhere, Codex drawing only for the scarf and the hair tuft
-python $F proc $SC idle --core=3 --cell=384 --fill=.55 --free=0.25,0.42,0.385,0.73 && cp $B/idle/fidget.webp /tmp/idle-core3.webp
+# B. showcase idle (raw-idle.png, gpt-6-astra high): a small heel bounce drawn whole by Codex (knees dip, body bobs);
+# the face is the master's face placed where the drawn head bobs to (whole-pixel shift), the boots are the master's;
+# frame 1 = the master. (/tmp/master-cell.png = frame 1 of the previous accepted showcase idle, i.e. the master pose cell.)
 python $F proc $SC idle --cell=384 --fill=.55 && cp $B/idle/fidget.webp /tmp/idle-whole.webp
-python $P/compose.py /tmp/idle-core3.webp /tmp/idle-whole.webp $B/idle/fidget.webp "95,150,154,282;154,199,164,282;164,228,182,282;198,108,238,138"
+python $P/bobface.py /tmp/idle-whole.webp /tmp/master-cell.png $B/idle/fidget.webp 186,148,240,194 150,300,275,340
 python $F accept $SC idle "Nghỉ"
 
 # swing + scratch (gpt-6.1-sol medium): whole frames, legs locked
 python $F proc $SC swing --whole --lock-legs --keep --cell=384 --fill=.55 && python $F accept $SC swing "Vung kiếm tập" --whole
-python $F proc $SC scratch --whole --lock-legs --keep --cell=384 --fill=.55 && python $F accept $SC scratch "Gãi đầu cười ngượng" --whole
+python $F proc $SC scratch --whole --lock-legs --keep --cell=384 --fill=.55 && python $F accept $SC scratch "Gãi đầu cười ngượng" --whole   # then frameMs [90,90,70,70,70,70,100,100] in fidgets.json (quick scratch)
 
 # entrance (raw-entrance.png from prompt-entrance.txt, gpt-6.1-sol high, drawn with codex_image_gen.py directly):
 # whole frames centred on the boots, then the run-in frames placed left so he runs in from the side; frame 8 = resting master

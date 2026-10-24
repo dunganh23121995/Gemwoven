@@ -77,13 +77,14 @@
       if(playing){
         // An action may hold some frames longer (show.sheets.timing: ms per frame).
         const p=playing,hold=show.sheets.timing?.[p.src]?.[Math.max(0,p.frame-1)]??p.ms;if(p.frame&&now-p.last<hold)return;p.last=now;stage.style.backgroundPosition=cell(p.frame);
-        if(++p.frame>=8){playing=null;sheet(show.sheets.idle);next=now+5000+Math.random()*4000;p.done?.();}
+        // Actions start and end on the resting pose, so the loop picks up again from its first frame.
+        if(++p.frame>=8){playing=null;frame=0;tick.last=now;sheet(show.sheets.idle);stage.style.backgroundPosition=cell(0);next=now+5000+Math.random()*4000;p.done?.();}
         return;
       }
       if(reduced())return;
       if(now-(tick.last||0)>=150){tick.last=now;frame=(frame+1)%8;stage.style.backgroundPosition=cell(frame);}
       const fidgets=show.sheets.fidgets||[];
-      if(fidgets.length&&now>next){
+      if(fidgets.length&&now>next&&frame===0){   // only from the resting pose: a bouncing loop never jumps
         const pick=fidgets[Math.floor(Math.random()*fidgets.length)];
         if(isReady(pick)&&isReady(show.sheets.idle))play(pick,130);else next=now+1000;
       }
