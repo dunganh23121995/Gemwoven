@@ -11303,7 +11303,7 @@
       241
     ],
     "bodyAnchor": {
-      "x": 0.5234375,
+      "x": 0.619140625,
       "crown": 0.140625,
       "foot": 0.94140625
     },
@@ -11319,23 +11319,23 @@
   },
   "show-shadow-1": {
     "file": "assets/heroes/forms/shadow/form-1/showcase/poster.png",
-    "width": 256,
-    "height": 256,
+    "width": 384,
+    "height": 384,
     "footBounds": [
-      29,
-      36,
-      228,
-      241
+      103,
+      119,
+      281,
+      330
     ],
     "bodyAnchor": {
-      "x": 0.619140625,
-      "crown": 0.140625,
-      "foot": 0.94140625
+      "x": 0.5807291666666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
     },
     "sheets": {
       "idle": "assets/heroes/forms/shadow/form-1/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/shadow/form-1/showcase/swordflip.webp",
+        "assets/heroes/forms/shadow/form-1/showcase/drawsword.webp",
         "assets/heroes/forms/shadow/form-1/showcase/eyeflash.webp"
       ],
       "rift": "assets/heroes/forms/shadow/form-1/showcase/rift.webp"
@@ -11343,18 +11343,18 @@
   },
   "show-shadow-2": {
     "file": "assets/heroes/forms/shadow/form-2/showcase/poster.png",
-    "width": 256,
-    "height": 256,
+    "width": 384,
+    "height": 384,
     "footBounds": [
-      14,
-      36,
-      243,
-      241
+      73,
+      119,
+      310,
+      330
     ],
     "bodyAnchor": {
-      "x": 0.4921875,
-      "crown": 0.140625,
-      "foot": 0.94140625
+      "x": 0.6315104166666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
     },
     "sheets": {
       "idle": "assets/heroes/forms/shadow/form-2/showcase/idle.webp",

@@ -1,16 +1,16 @@
 {
   "fidgets": [
     {
-      "name": "swordflip",
-      "label": "Xoay kiếm",
-      "file": "swordflip.webp",
+      "name": "drawsword",
+      "label": "Rút kiếm cầm hai tay",
+      "file": "drawsword.webp",
       "whole": true
     },
     {
       "name": "eyeflash",
       "label": "Mắt lóe sáng",
       "file": "eyeflash.webp",
-      "whole": false
+      "whole": true
     },
     {
       "name": "rift",

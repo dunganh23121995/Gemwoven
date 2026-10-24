@@ -50,6 +50,15 @@ for name,sheet in json.loads((ROOT/'assets/gemwoven/ambient/ambient.json').read_
     merged['ambient-'+name]={**sheet,'width':192*sheet['count'],'height':192}
 merged['scythe-mask']={'file':'assets/heroes/forms/shadow/form-3/scythe-mask.png','width':256,'height':256}
 merged['noct-puffs']={'file':'assets/fx/noct/puffs.webp','width':1024,'height':256}
+def boots_centre(alpha,box):
+    # Midpoint between the two boots: solid runs at least 8px wide in the lowest 7% of the body, so
+    # a scythe tip or a blade point touching the ground never pulls the centre (and the cloud
+    # ring drawn about it) off the hero's feet.
+    import numpy as np
+    a=np.asarray(alpha)>0;h=box[3]-box[1];low=a[box[3]-1-int(h*.07):box[3]]
+    cols=low.sum(0);hit=np.where(cols>=max(3,cols.max()*.45))[0]
+    runs=[r for r in np.split(hit,np.where(np.diff(hit)>2)[0]+1) if len(r)>=8]
+    return (runs[0].min()+runs[-1].max())/2 if runs else (box[0]+box[2])/2
 # Showcase poses for the screens outside combat (hero-show.js): a drawn resting loop, occasional
 # actions (fidgets.json) and the summoning entrance (emerge.webp). The first loop frame is the poster
 # the hub lays out; the sheets are drawn over it.
@@ -60,11 +69,11 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
         first=sheet.convert('RGBA').crop((0,0,sheet.width//2,sheet.height//4))
     first.save(show_dir/'poster.png')
     alpha=first.getchannel('A').point(lambda a:255 if a>=128 else 0);box=alpha.getbbox()
-    band=alpha.crop((0,box[3]-max(4,(box[3]-box[1])//8),first.width,box[3])).getbbox()
+    feet_x=boots_centre(alpha,box)
     book=json.loads((show_dir/'fidgets.json').read_text(encoding='utf-8'))['fidgets'] if (show_dir/'fidgets.json').exists() else []
     rel=lambda f:(show_dir/f).relative_to(ROOT).as_posix()
     merged[f'show-{hero}-{form}']={'file':rel('poster.png'),'width':first.width,'height':first.height,'footBounds':list(box),
-        'bodyAnchor':{'x':(band[0]+band[2])/2/first.width,'crown':box[1]/first.height,'foot':box[3]/first.height},
+        'bodyAnchor':{'x':feet_x/first.width,'crown':box[1]/first.height,'foot':box[3]/first.height},
         'sheets':{'idle':rel('idle.webp'),'fidgets':[rel(f['file']) for f in book if f['name'] not in ('emerge','rift')],
                   **{name:rel(name+'.webp') for name in ['emerge','rift','vortex'] if (show_dir/(name+'.webp')).exists()}}}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}

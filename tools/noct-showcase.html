@@ -14,7 +14,7 @@
   .card{background:var(--card);border-radius:10px;padding:12px}
   .card h2{font-size:16px;margin:0 0 8px}
   .stage{position:relative;width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;background:linear-gradient(#5f7d8f,#9fb59b 70%,#6d7d5e 70%)}
-  .hero{position:absolute;inset:6% 10% 4%}
+  .hero{position:absolute;inset:0}
   .hero>img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain}
   .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   button{background:#3b4a40;color:var(--ink);border:1px solid #56685b;border-radius:6px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
@@ -32,7 +32,7 @@
 <script>
 const A=window.GEMWOVEN_ASSETS;
 const forms=[[1,'Dạng 1 · Ảnh Kiếm Sĩ'],[2,'Dạng 2 · Dạ Ảnh'],[3,'Dạng 3 · Tử Thần']];
-const labels={1:['Xoay kiếm','Mắt lóe sáng'],2:['Ánh trăng dọc lưỡi kiếm','Mắt lóe, khói đen cuộn'],3:['Xoay lưỡi hái','Lửa đen trong lòng bàn tay']};
+const labels={1:['Rút kiếm cầm hai tay','Mắt lóe sáng'],2:['Ánh trăng dọc lưỡi kiếm','Mắt lóe, khói đen cuộn'],3:['Xoay lưỡi hái','Lửa đen trong lòng bàn tay']};
 for(const [form,name] of forms){
   const show=A[`show-shadow-${form}`];if(!show)continue;
   const card=document.createElement('section');card.className='card';
@@ -43,8 +43,11 @@ for(const [form,name] of forms){
   function mount(){
     current?.stop();host.innerHTML='';
     const img=document.createElement('img');img.className='art';img.src=new URL(show.file,document.baseURI).href;
-    img.style.cssText='position:absolute;left:0;top:0;width:100%;height:100%';host.append(img);
-    if(form===3&&window.GemwovenFormEffects){const fx=document.createElement('span');fx.className='hero-form-effects';fx.setAttribute('aria-hidden','true');fx.innerHTML=GemwovenFormEffects.markup('shadow',3,A['form-aura-shadow']);host.append(fx);}
+    // Like the hub: the centre of the boots stands at the middle of the spot (and of the cloud ring).
+    // Like the hub's fitBody: every form drawn at one visible height, boots centred on the spot.
+    const a=show.bodyAnchor,h=.56/(a.foot-a.crown);
+    img.style.cssText=`position:absolute;width:${h*100}%;height:${h*100}%;left:${(.5-a.x*h)*100}%;top:${(.84-a.foot*h)*100}%`;host.append(img);
+    if(form===3&&window.GemwovenFormEffects){const fx=document.createElement('span');fx.className='hero-form-effects';fx.style.cssText=`bottom:16%;--hero-visible-height:${host.clientHeight*.56}px`;fx.setAttribute('aria-hidden','true');fx.innerHTML=GemwovenFormEffects.markup('shadow',3,A['form-aura-shadow']);host.append(fx);}
     current=GemwovenHeroShow.attach(host,'shadow',form);
   }
   mount();

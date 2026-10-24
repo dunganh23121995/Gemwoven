@@ -46,11 +46,14 @@ def main(spec_path, model="gpt-6.1-sol", effort="low"):
         (d / "proc-master/idle-1.png").replace(d / "master.png")
         (d / "identity.png").unlink()
     what = spec["what"] + ", standing in his showcase pose facing right"
-    jobs = [("idle", "Nghỉ", spec["idle"], "--core=12", True)] + [(n, l, a, "--whole" if w else "", False) for n, l, a, w in spec["fidgets"]] + [("rift", "Rạch không gian bước ra", spec["rift"], "--all-whole", False)]
+    jobs = [("idle", "Nghỉ", spec["idle"], "--core=12", True)] + [(n, l, a, "--whole" if w else "", False) for n, l, a, w in spec["fidgets"]]
+    jobs = [j for j in jobs if j[0] in spec.get("only", [j[0] for j in jobs] + ["rift"])] + ([("rift", "Rạch không gian bước ra", spec["rift"], "--all-whole", False)] if "rift" in spec.get("only", ["rift"]) else [])
     for name, label, action, flag, loop in jobs:
         run(FIDGET, "gen", rel, name, model, effort, what, action, *(["--loop"] if loop else []))
-        run(FIDGET, "proc", rel, name, *([flag] if flag else []))
+        run(FIDGET, "proc", rel, name, *([flag] if flag else []), "--cell=384", "--fill=.55")   # roomy cells: wide moves are never cut
         run(FIDGET, "accept", rel, name, label, *(["--whole"] if flag == "--whole" else []))
+        if name == "rift":
+            run(ROOT / "assets/heroes/forms/gloom_rift.py", d)
 
 
 if __name__ == "__main__":

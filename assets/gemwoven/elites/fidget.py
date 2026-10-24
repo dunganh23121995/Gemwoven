@@ -107,18 +107,18 @@ def key_cells(raw, out_dir, cell=256, green=False):
         img.resize((cell, round(cell * h / w)), Image.Resampling.LANCZOS).crop((0, 0, cell, cell)).save(out_dir / f"idle-{i + 1}.png")
 
 
-def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False):
+def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=256, fill=.80):
     d = WORK / cid.replace("/", "_") / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
-    key_cells(d / "raw.png", d / "cells", green=(d / "green").exists())
+    key_cells(d / "raw.png", d / "cells", cell=cell, green=(d / "green").exists())
     # Codex draws all 8 frames at one scale on the template, so every frame is placed exactly like
     # the resting first frame (feet refined on the legs); a per-frame fit would be pulled off the
     # body by spread wings or a raised arm. Only what really moves is taken from the drawing.
     master = master_of(cid)
     # A common foe's resting loop is Codex's drawing in every frame (no master frame at the seam).
     extra = ["--whole-loop"] if name == "idle" and core == 9999 or all_whole else ["--whole"] if whole else []
-    out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, "--open", 1, "--min-area", 20, *extra)
+    out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, "--cell", cell, "--fill", fill, "--open", 1, "--min-area", 20, *extra)
     # A frame whose legs still do not match the master after placement (Codex moved the whole body)
     # is replaced like a clipped one: by the previous good frame, or by the rest pose near the end.
     meta = json.loads((d / "stable/stabilize-meta.json").read_text())
@@ -128,9 +128,9 @@ def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False):
         # keep: a weapon that crosses the legs moves the leg-area error without the body moving.
         if not keep and errors[i] > max(.5, errors[0] * 3):
             frames[i] = frames[0] if i >= 6 else frames[i - 1]; print("frame", i + 1, "off the master's feet, replaced")
-    sheet = Image.new("RGBA", (512, 1024), (0, 0, 0, 0))
+    sheet = Image.new("RGBA", (cell * 2, cell * 4), (0, 0, 0, 0))
     for i, f in enumerate(frames):
-        sheet.alpha_composite(f, ((i % 2) * 256, (i // 2) * 256))
+        sheet.alpha_composite(f, ((i % 2) * cell, (i // 2) * cell))
     sheet.save(d / "fidget.webp", lossless=True, method=6)
     print(cid, name, out.strip())
 
@@ -166,6 +166,8 @@ if __name__ == "__main__":
         gen(cid, name, *args, loop="--loop" in flags, green="--green" in flags)
     elif cmd == "proc":
         core = next((int(f.split("=")[1]) for f in flags if f.startswith("--core=")), 9999)
-        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags)
+        cell = next((int(f.split("=")[1]) for f in flags if f.startswith("--cell=")), 256)
+        fill = next((float(f.split("=")[1]) for f in flags if f.startswith("--fill=")), .80)
+        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags, cell=cell, fill=fill)
     else:
         accept(cid, name, args[0], whole="--whole" in flags)

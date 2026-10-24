@@ -21,16 +21,17 @@ def rgba(img):
     return np.asarray(img.convert("RGBA"), dtype=np.float32) / 255
 
 
-def fit_master(path, cell):
+def fit_master(path, cell, fill=.80):
     """Master on a cell x cell canvas with its feet on the shared sole line (94% of the cell)."""
     im = Image.open(path).convert("RGBA")
     box = im.getbbox()
     im = im.crop(box)
-    target_h = cell * 0.80
+    target_h = cell * fill
     scale = min(target_h / im.height, cell * 0.92 / im.width)
     im = im.resize((max(1, round(im.width * scale)), max(1, round(im.height * scale))), Image.Resampling.LANCZOS)
     out = Image.new("RGBA", (cell, cell), (0, 0, 0, 0))
-    out.alpha_composite(im, ((cell - im.width) // 2, round(cell * 0.94) - im.height))
+    foot = .94 if fill >= .8 else .86   # a roomy cell also leaves room below the feet (a rift, a cloud)
+    out.alpha_composite(im, ((cell - im.width) // 2, round(cell * foot) - im.height))
     return rgba(out)
 
 
@@ -80,6 +81,7 @@ def main():
     ap.add_argument("frames", nargs="+")
     ap.add_argument("--core", type=float, default=10, help="pixels inside the master silhouette kept rigid")
     ap.add_argument("--cell", type=int, default=256)
+    ap.add_argument("--fill", type=float, default=.80, help="master height as a share of the cell (lower = more room for wide actions)")
     ap.add_argument("--cols", type=int, default=2)
     ap.add_argument("--same-transform", action="store_true", help="register frame 1 only and place every frame like it (frames drawn at one scale, e.g. an action whose big moving parts would pull a per-frame registration)")
     ap.add_argument("--whole", action="store_true", help="place every frame but keep its drawing whole (frames 1 and 8 stay the master)")
@@ -91,7 +93,7 @@ def main():
     args = ap.parse_args()
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    master = fit_master(args.master, args.cell)
+    master = fit_master(args.master, args.cell, args.fill)
     ys, xs = np.where(master[..., 3] > .5)
     anchor = (float(np.median(xs)), float(ys.max()))
     core = ndimage.distance_transform_edt(master[..., 3] > .5) > args.core
