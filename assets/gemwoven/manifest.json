@@ -11459,9 +11459,9 @@
     "width": 384,
     "height": 384,
     "footBounds": [
-      107,
+      106,
       119,
-      281,
+      278,
       330
     ],
     "bodyAnchor": {
@@ -11606,12 +11606,12 @@
     "sheets": {
       "idle": "assets/heroes/forms/ice/form-1/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/ice/form-1/showcase/earflick.webp",
-        "assets/heroes/forms/ice/form-1/showcase/snowflake.webp"
+        "assets/heroes/forms/ice/form-1/showcase/snowflake.webp",
+        "assets/heroes/forms/ice/form-1/showcase/earflick.webp"
       ],
       "labels": [
-        "Tai thỏ giật giật",
-        "Gõ trượng kết bông tuyết"
+        "Gõ trượng kết bông tuyết",
+        "Tai thỏ giật giật"
       ],
       "timing": {
         "assets/heroes/forms/ice/form-1/showcase/snowflake.webp": [
@@ -11647,12 +11647,12 @@
     "sheets": {
       "idle": "assets/heroes/forms/ice/form-2/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/ice/form-2/showcase/brushfrost.webp",
-        "assets/heroes/forms/ice/form-2/showcase/moonglow.webp"
+        "assets/heroes/forms/ice/form-2/showcase/moonglow.webp",
+        "assets/heroes/forms/ice/form-2/showcase/brushfrost.webp"
       ],
       "labels": [
-        "Phủi sương trên tai",
-        "Nâng trượng gọi trăng"
+        "Nâng trượng gọi trăng",
+        "Phủi sương trên tai"
       ],
       "timing": {
         "assets/heroes/forms/ice/form-2/showcase/moonglow.webp": [
@@ -11688,12 +11688,12 @@
     "sheets": {
       "idle": "assets/heroes/forms/ice/form-3/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/ice/form-3/showcase/twirl.webp",
-        "assets/heroes/forms/ice/form-3/showcase/fanwave.webp"
+        "assets/heroes/forms/ice/form-3/showcase/fanwave.webp",
+        "assets/heroes/forms/ice/form-3/showcase/twirl.webp"
       ],
       "labels": [
-        "Xoay kích trăng",
-        "Mở quạt băng"
+        "Mở quạt băng",
+        "Xoay kích trăng"
       ],
       "timing": {
         "assets/heroes/forms/ice/form-3/showcase/fanwave.webp": [
@@ -11759,14 +11759,25 @@
     "sheets": {
       "idle": "assets/heroes/forms/lightning/form-2/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/lightning/form-2/showcase/startoss.webp",
-        "assets/heroes/forms/lightning/form-2/showcase/zigzag.webp"
+        "assets/heroes/forms/lightning/form-2/showcase/zigzag.webp",
+        "assets/heroes/forms/lightning/form-2/showcase/startoss.webp"
       ],
       "labels": [
-        "Tung sao bắt lại",
-        "Tia sét nhảy giữa ngón tay"
+        "Tia sét nhảy giữa ngón tay",
+        "Tung sao bắt lại"
       ],
-      "timing": {},
+      "timing": {
+        "assets/heroes/forms/lightning/form-2/showcase/startoss.webp": [
+          130,
+          130,
+          140,
+          320,
+          140,
+          320,
+          150,
+          130
+        ]
+      },
       "entrance": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
     }
   },
@@ -11826,7 +11837,18 @@
         "Vung kiếm tập",
         "Gãi đầu cười ngượng"
       ],
-      "timing": {},
+      "timing": {
+        "assets/heroes/forms/novice/form-1/showcase/scratch.webp": [
+          90,
+          90,
+          70,
+          70,
+          70,
+          70,
+          100,
+          100
+        ]
+      },
       "entrance": "assets/heroes/forms/novice/form-1/showcase/entrance.webp"
     }
   },
@@ -11849,12 +11871,12 @@
     "sheets": {
       "idle": "assets/heroes/forms/earth/form-2/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/earth/form-2/showcase/shieldtap.webp",
-        "assets/heroes/forms/earth/form-2/showcase/leafsprout.webp"
+        "assets/heroes/forms/earth/form-2/showcase/leafsprout.webp",
+        "assets/heroes/forms/earth/form-2/showcase/shieldtap.webp"
       ],
       "labels": [
-        "Gõ chùy lên khiên",
-        "Lá non mọc trên gạc"
+        "Lá non mọc trên gạc",
+        "Gõ chùy lên khiên"
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-2/showcase/entrance.webp"
