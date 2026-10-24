@@ -54,12 +54,14 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .hero-form-gallery{padding-inline:calc(80*var(--s))}
 .hero-form-gallery article .form-signature{margin-top:4px!important;font-size:13px!important;color:#f3c98a!important;font-style:italic}
 /* Noct's aura is black mist: slower, softer drift and a faint blur on the cloud edges. */
-/* Noct's aura: the floor cloud stays put under his boots; the clouds, chain and sash above
-   drift up and down together as one slow, gentle float (same phase, no squash). */
+/* Noct's aura: the floor cloud stays put under his boots; the top ring floats slowly up and
+   down; the middle ring (waist sash) floats on a quicker, offset rhythm (no squash). */
 [data-hero-element="shadow"] .form-aura-band{animation:noct-aura-float 7s ease-in-out infinite!important;filter:blur(.4px)}
-[data-hero-element="shadow"] .form-aura-front .form-aura-band{animation:noct-aura-float 7s ease-in-out infinite!important}
+[data-hero-element="shadow"] .form-aura-front .form-aura-band{animation:noct-aura-float-mid 5.2s ease-in-out -2.1s infinite!important}
 [data-hero-element="shadow"] .form-aura-floorpart,[data-hero-element="shadow"] .form-aura-foreground:not(.form-aura-front) .form-aura-band{animation:none!important}
 @keyframes noct-aura-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.6%)}}
+/* The middle ring (waist sash) breathes on its own rhythm: quicker, offset, a touch of side drift. */
+@keyframes noct-aura-float-mid{0%,100%{transform:translate(0,0)}35%{transform:translate(.8%,-1.2%)}70%{transform:translate(-.6%,-.5%)}}
 
 /* Six-star Noct in the hub: the scythe glint, laid exactly over the hero image. */
 .scythe-glint.hub{display:block;pointer-events:none;z-index:2;-webkit-mask:var(--scythe-mask) 0 0/100% 100% no-repeat;mask:var(--scythe-mask) 0 0/100% 100% no-repeat;background:linear-gradient(115deg,transparent 0 45.4%,#ffffff35 46.6%,#ffffff 47.7%,#ffffff 48.5%,#ffffff35 49.6%,transparent 50.8%),linear-gradient(115deg,transparent 0 46.8%,#ffffff 47.8%,#ffffff 48.4%,transparent 49.4%) 130% 0/300% 100% no-repeat;background-repeat:no-repeat;background-size:300% 100%;mix-blend-mode:plus-lighter;filter:drop-shadow(0 0 3px #e9e0ff) drop-shadow(0 0 6px #b9a6ff);animation:scythe-glint 5.8s ease-in-out infinite}
