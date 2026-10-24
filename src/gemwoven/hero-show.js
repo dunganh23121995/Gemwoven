@@ -26,8 +26,11 @@
     const image=host.querySelector('.art,img');if(!image)return null;
     host.querySelector('.hero-show')?.remove();
     const stage=document.createElement('span');stage.className='hero-show';stage.setAttribute('aria-hidden','true');
-    stage.style.cssText=image.style.cssText;stage.style.backgroundImage=`url('${url(show.sheets.idle)}')`;
-    image.after(stage);image.classList.add('hero-show-under');host.classList.add('has-hero-show');
+    // The essentials are inline so a stale cached stylesheet can never show both bodies at once.
+    stage.style.cssText=image.style.cssText;
+    Object.assign(stage.style,{display:'block',position:'absolute',pointerEvents:'none',zIndex:'1',backgroundRepeat:'no-repeat',backgroundSize:'200% 400%',backgroundPosition:cell(0),backgroundImage:`url('${url(show.sheets.idle)}')`});
+    image.after(stage);image.classList.add('hero-show-under');image.style.opacity='0';host.classList.add('has-hero-show');
+    host.querySelector('.scythe-glint')?.remove();
     let timer=0,playing=null,frame=0,next=performance.now()+4000+Math.random()*3000,stopped=false;
     const sheet=src=>{stage.style.backgroundImage=`url('${url(src)}')`;};
     function play(src,ms,done){playing={src,ms,frame:0,last:0,done};sheet(src);stage.style.backgroundPosition=cell(0);}
@@ -53,7 +56,7 @@
         setTimeout(()=>play(show.sheets.emerge,170,()=>stage.classList.remove('is-emerging')),450);
         if(cloud)setTimeout(()=>cloud.classList.add('is-thinning'),700),setTimeout(()=>cloud.remove(),3600);
       },
-      stop(){stopped=true;cancelAnimationFrame(timer);stage.remove();image.classList.remove('hero-show-under');host.classList.remove('has-hero-show');}
+      stop(){stopped=true;cancelAnimationFrame(timer);stage.remove();image.classList.remove('hero-show-under');image.style.opacity='';host.classList.remove('has-hero-show');}
     };
   }
   window.GemwovenHeroShow={attach};
