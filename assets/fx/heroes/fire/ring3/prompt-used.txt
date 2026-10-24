@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika in her nine-tailed form with a crescent moon glaive).
+Subject: the trail of a colossal HORIZONTAL spinning sweep made of fox-fire, seen from the side at a low angle: a very flat wide ELLIPSE ring of flame lying horizontally, like a ring of fire around a dancer seen nearly edge-on. The ellipse is centered in each cell, as wide as 94% of the cell and about 55% of the cell height. The FRONT (lower) half of the ellipse is thick, bright and in front; the BACK (upper) half is thinner and dimmer. White-gold molten leading edge, golden-orange body, crimson flame tongues and small fox-fire wisps trailing off the outer rim.
+Layout: EXACTLY 1 column x 4 rows, four equal wide horizontal strip cells stacked vertically, landscape 1536x1024, each cell 1536 wide x 256 tall. The ellipse has the same center and size in every cell.
+Frame 1 (top strip): the sweep starting at the far LEFT end of the ellipse and coming around the front: only the left end and the front-left quarter of the lower arc are blazing.
+Frame 2: the whole front (lower) half of the ellipse blazing from the left end to the right end, the brightest leading edge at the far RIGHT end.
+Frame 3: the complete ring blazing, the back upper half now lit too but dimmer.
+Frame 4: the ring breaking apart into separate flame tongues and embers, fading.
+Opaque painted flames with crisp shapes, no soft haze, no glow halo spreading into the background, no smoke clouds. Everything stays fully inside its own strip with magenta margin above and below; nothing crosses a cell edge. No weapon, no hand, no character.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

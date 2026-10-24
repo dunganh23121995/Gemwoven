@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika in her nine-tailed form).
+Subject: "nine suns of fox-fire": the finishing burst of her nine-tailed ultimate on an enemy. A blazing white-gold sun core with NINE great curved flame tails fanning out of it like a nine-tailed fox's tails spread in a full circle, each tail an orange-crimson flame plume with a cream-white tip, small fox-fire wisps between them.
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square image 1024x1024. Read left-to-right, then the next row. The burst is centered at the same point in every cell.
+Frame 1: ignition, a small intense white-gold sun core with the nine flame tails just sprouting, short.
+Frame 2: the nine flame tails whipping outward, half length, curving like a pinwheel.
+Frame 3: full bloom, the nine long flame tails spread in a full circle around the sun core, filling about 85% of the cell.
+Frame 4: the tails breaking into embers and fox-fire wisps, the core fading.
+Opaque painted flames with crisp shapes, no soft haze, no glow halo spreading into the background, no smoke clouds. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No character, no fox face, no weapon.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika, fox-girl swordswoman).
+Subject: the impact of a colossal fox-fire broadsword cleave landing on an enemy: a HORIZONTAL cut of fire. Centered in each cell.
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square image 1024x1024. Read left-to-right, then the next row. The impact is centered at the same point in every cell.
+Frame 1: contact, a razor-thin blinding white-gold horizontal slash line across the middle of the cell with a bright star flash at its center and sparks.
+Frame 2: the slash line bursts open into a wide horizontal blade of orange and crimson flame, flames shooting up and down from the cut, fox-fire wisps.
+Frame 3: the cut flames rise upward like a burning wall, the line breaking into flame tongues, embers flying.
+Frame 4: fading flame tongues and drifting embers, mostly gone.
+Opaque painted flames with crisp shapes, no soft haze, no glow halo spreading into the background, no smoke clouds. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No character, no weapon.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

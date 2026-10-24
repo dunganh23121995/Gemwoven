@@ -1,0 +1,66 @@
+{
+  "blade2": {
+    "file": "assets/fx/heroes/fire/blade2.webp",
+    "count": 3,
+    "frameDuration": 70,
+    "width": 768,
+    "height": 230,
+    "base": [
+      0.0299,
+      0.5
+    ]
+  },
+  "glaive3": {
+    "file": "assets/fx/heroes/fire/glaive3.webp",
+    "count": 3,
+    "frameDuration": 70,
+    "width": 768,
+    "height": 230,
+    "base": [
+      0.0299,
+      0.5
+    ]
+  },
+  "ring3": {
+    "file": "assets/fx/heroes/fire/ring3.webp",
+    "count": 4,
+    "frameDuration": 70,
+    "width": 768,
+    "height": 128
+  },
+  "arc2": {
+    "file": "assets/fx/heroes/fire/arc2.webp",
+    "count": 4,
+    "frameDuration": 70,
+    "width": 384,
+    "height": 384
+  },
+  "impact2": {
+    "file": "assets/fx/heroes/fire/impact2.webp",
+    "count": 4,
+    "frameDuration": 80,
+    "width": 384,
+    "height": 384
+  },
+  "impact3": {
+    "file": "assets/fx/heroes/fire/impact3.webp",
+    "count": 4,
+    "frameDuration": 85,
+    "width": 384,
+    "height": 384
+  },
+  "slash2": {
+    "file": "assets/fx/heroes/fire/slash2.webp",
+    "count": 4,
+    "frameDuration": 45,
+    "width": 320,
+    "height": 320
+  },
+  "slash3": {
+    "file": "assets/fx/heroes/fire/slash3.webp",
+    "count": 4,
+    "frameDuration": 45,
+    "width": 320,
+    "height": 320
+  }
+}

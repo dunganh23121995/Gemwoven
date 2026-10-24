@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika, fox-girl swordswoman with a straight broadsword).
+Subject: the slash of one heavy broadsword cut wreathed in fox-fire, for a basic sword attack: a thick, heavy crescent slash arc running diagonally from the upper-left down to the lower-right of the cell, curving outward (bulging toward the upper-right), with a white-hot steel-bright inner edge, golden-orange flame body and crimson flame tongues trailing off its outer rim.
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square image 1024x1024. Read left-to-right, then the next row. The arc keeps the same position and size in every cell, filling about 80% of the cell.
+Frame 1: the cut in progress, only the upper-left half of the arc formed with a bright leading tip.
+Frame 2: the full crescent arc blazing, brightest.
+Frame 3: the arc thinning, flame tongues peeling off its rim.
+Frame 4: only a faint thin trace and embers left.
+Opaque painted flames with crisp shapes, no soft haze, no glow halo spreading into the background, no smoke clouds. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No sword, no hand, no character.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

@@ -1,1 +1,18 @@
-/* mika form kits */
+/* Mika's star-form staging (forms-mika.js): her own fox-fire weapon, trails and bursts. */
+.mika-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-position:0 0;will-change:transform,opacity}
+.mika-giant{z-index:3;filter:drop-shadow(0 0 7px #ff8a2acc) drop-shadow(0 0 16px #ff5a1a88)}
+.mika-arc{z-index:2;opacity:.85;transform:translate(0,-100%);transform-origin:0 100%;filter:drop-shadow(0 0 8px #ff7a2aaa)}
+.mika-ring{z-index:2;transform:translate(-50%,-50%);filter:drop-shadow(0 0 6px #ff8a2aaa)}
+.mika-impact2,.mika-impact3{z-index:4;filter:drop-shadow(0 0 10px #ffb24acc)}
+.mika-slash{z-index:4;filter:drop-shadow(0 0 5px #ffb24aaa)}
+.mika-fox-spirit{position:absolute;z-index:3;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;animation:depart-frames var(--fx-ms) steps(var(--fx-count),jump-none) infinite;filter:drop-shadow(0 0 6px #ff9a3caa)}
+.mika-flash{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen}
+.mika-flash.cleave{background:linear-gradient(90deg,#ff7a2a00 0%,#ffb35a55 45%,#fff0c066 70%,#ff7a2a00 100%)}
+.mika-flash.sun{background:radial-gradient(circle at 76% 58%,#fff3c8aa 0%,#ffb04a66 22%,#ff5a1a00 55%)}
+/* Six-star gather: the nine tails' aura flares instead of dimming like other heroes' while acting. */
+.scene .hero-actor[data-mika-flare] .combat-form-aura{opacity:1;filter:brightness(1.45) saturate(1.25);transition:opacity .2s,filter .2s}
+/* Behind her back (first child of the actor, under the sprite), at body height. */
+.scene .hero-actor .mika-tail-flare{position:absolute;left:44%;top:52%;width:128%;aspect-ratio:1;translate:-50% -50%;z-index:0;pointer-events:none;background-repeat:no-repeat;filter:drop-shadow(0 0 10px #ff9a3caa)}
+/* The departure fox runs clear of the dash's streaming tails, a stride behind and in front of them. */
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"] .depart-fox{left:-58%;z-index:2}
+body.reduced-motion .mika-tail-flare,body.reduced-motion .mika-fx,body.reduced-motion .mika-fox-spirit{display:none}
