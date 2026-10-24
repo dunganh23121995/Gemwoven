@@ -1,41 +1,41 @@
 {
   "lightning-crack": {
     "file": "hero-forms/lightning/crack.wav",
-    "duration": 0.4,
-    "beat": "every star bolt: one close lightning crack per bolt, synced to its strike (form 1's Spiers strike)",
+    "duration": 0.45,
+    "beat": "every star bolt (and the four-star basic hit): one sharp, dry close lightning crack with its short snap, synced to its strike",
     "sources": [
       {
-        "title": "Very close lightning strike.",
-        "author": "Simon Spiers",
-        "source_url": "https://freesound.org/people/Simon%20Spiers/sounds/437243/",
+        "title": "thunder sharp dry crack 2 by cognito perceptu",
+        "author": "cognito%20perceptu",
+        "source_url": "https://freesound.org/people/cognito%20perceptu/sounds/721072/",
         "license": "CC0-1.0",
-        "sha256": "9e4169956c8ff03d204923cd4e8ef6c036c6724af92c269ef42e484ee583dbe7"
+        "sha256": "ec5176a575b972a4802a2589296a8474371eeab186a65bb195f53733ea83d5f8"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 20.78-21.18 s, 60 Hz high-pass, gain, 4 ms / 180 ms edge fades; natural attack and tail",
+    "processing": "excerpt 0.78-1.23 s, 60 Hz high-pass, gain, 4 ms / 180 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.218,
-    "sha256": "a65dfe23442659ff7bddb952d253aaba801d1c6da64207ca2e3dd8beaec82768"
+    "rms": 0.122,
+    "sha256": "8220ae14f5f06ea8a4b2f76b4e176028f12280c747e3ebaae2deaa6db77333bb"
   },
-  "lightning-thunder": {
-    "file": "hero-forms/lightning/thunder.wav",
-    "duration": 3.6,
-    "beat": "the last bolt (damage finale): form 1's big thunder clap with its natural decay ringing out (3.6 s)",
+  "lightning-strike": {
+    "file": "hero-forms/lightning/strike.wav",
+    "duration": 1.2,
+    "beat": "the last bolt (damage finale): a big close crack-crash whose own reverberant decay ends the ultimate (1.2 s, no roll)",
     "sources": [
       {
-        "title": "big thunder clap",
-        "author": "seth-m",
-        "source_url": "https://freesound.org/people/seth-m/sounds/458015/",
+        "title": "230713 Thunder, close crack crash big, mixpre6 AT875r EM272s, Stratford ON 2am",
+        "author": "TRP",
+        "source_url": "https://freesound.org/people/TRP/sounds/717907/",
         "license": "CC0-1.0",
-        "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3"
+        "sha256": "b106efe7033b30553a77ebdfdd142752821022c262a138321ae2f8180dec9c44"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.70-4.30 s, 35 Hz high-pass, gain, 4 ms / 1000 ms edge fades; natural attack and tail",
+    "processing": "excerpt 0.55-1.75 s, 40 Hz high-pass, gain, 4 ms / 450 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.093,
-    "sha256": "1ae134148a169ed8300b284b32427b34384f61ae3b502046d497cc625e473656"
+    "rms": 0.104,
+    "sha256": "be29cf89591b74895bf786c7022d1494616b31ca1f7a27819a017141b2be4331"
   },
   "lightning-stars": {
     "file": "hero-forms/lightning/stars.wav",

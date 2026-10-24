@@ -94,7 +94,7 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
       lumiFx(burst,to,Math.min(190,Math.max(110,body.height*1.15)));
       const result=damage('hero',raw/hits,damageLedger);amount+=result.amount;blocked+=result.blocked;stored+=result.stored||0;
       combatVoice('enemy','hurt');hitAccents('hero',result,critical,pending);
-      combatV3Action('enemy','hurt',critical?560:410);lumiSound(form===3?'ring':'crack',{volume:form===3?(critical?.45:.38):(critical?.34:.28),pan:.25},true);
+      combatV3Action('enemy','hurt',critical?560:410);lumiSound(form===3?'ring':'crack',{volume:form===3?(critical?.45:.38):(critical?.48:.4),pan:.25},true);
       combatV3Number('enemy',result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
       lumiHitCount(i,hits,pending);combatV3Camera(1,critical,false,pending);lumiRecoil(target,oldTarget,critical,pending);
       await wait(170);setSpriteFrame('hero','attack',5);await wait(i<hits-1?90:200);
@@ -113,10 +113,10 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
 function lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending){
   const result=damage('hero',raw/count,ledger),last=i===count-1;
   combatVoice('enemy','hurt');
-  // Form 1's storm is the backbone: every bolt cracks with its close strike (synced per bolt); the last also
-  // lets form 1's big thunder clap ring out with its natural decay. Volumes keep the mix peak <= .8.
-  lumiSound('crack',{volume:last?.6:form===3?.38:.45,pan:.22+(i%2?.08:-.08)},i===0||last);
-  if(last)lumiSound('thunder',{volume:form===3?.85:.75,pan:.15},true);
+  // Each bolt is a real close lightning strike hitting the ground (one crack per bolt, synced); the last is a
+  // bigger close crack-crash whose own short reverberant decay ends the ultimate. No rolling thunder.
+  // Volumes keep the mix peak <= .8.
+  lumiSound(last?'strike':'crack',{volume:last?LUMI_STRIKE_VOLUME[form]:LUMI_CRACK_VOLUME[form],pan:.22+(i%2?.08:-.08)},i===0||last);
   combatV3Camera(1,true,false,pending);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents('hero',result,false,pending);
   setSpriteAction('enemy','hurt',230);lumiRecoil(target,oldTarget,last,pending);
@@ -203,7 +203,8 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   }
 }
 // Her kit's own sounds (assets/audio/hero-forms/lightning, scripts/prepare_lumi_form_sounds.py).
-const LUMI_SOUNDS={2:['stars','seal','crack','thunder','throw'],3:['laser','stream','crack','thunder','shot','ring']};
+const LUMI_SOUNDS={2:['stars','seal','crack','strike','throw'],3:['laser','stream','crack','strike','shot','ring']};
+const LUMI_CRACK_VOLUME={2:.65,3:.55},LUMI_STRIKE_VOLUME={2:.95,3:1};
 function warmLumiSounds(form){
   const context=combatV3AudioContext();if(!context)return;
   for(const name of LUMI_SOUNDS[form]||[])if(ART.castSounds['lightning-'+name])decodeCastSound(context,'lightning-'+name).catch(()=>{});

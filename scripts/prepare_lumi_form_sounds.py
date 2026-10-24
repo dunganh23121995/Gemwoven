@@ -1,13 +1,14 @@
-"""Lumi's four- and six-star ultimate sounds (src/forms-lumi.js), rebuilt the way Yuki's approved set is made.
+"""Lumi's four- and six-star ultimate sounds (src/forms-lumi.js), made the way Yuki's approved set is made.
 
-The backbone is Lumi's OWN form-1 storm: every star bolt cracks with Simon Spiers' close lightning strike and each
-ultimate ends on seth-m's big thunder clap ringing out with its natural decay (both from sources/thunder, the
-recordings of assets/audio/lumi-thunder-manifest.json), so forms 2-3 sound like the same storm mage, just bigger.
+Every star bolt is a real recording of lightning striking the ground at close range: one sharp, dry close crack per
+bolt (cognito perceptu #721072), and the last bolt is a bigger close crack-crash (TRP #717907) whose own short
+reverberant decay ends the ultimate. No rolling thunder rumble anywhere (player: "Tiếng sấm rền thì bỏ").
 Every other cue is the literal sound of its motion: a mark tree as the stars form (form 2) and stream along the
 galaxy (form 3), a tingsha ring as the pentagram locks, a real slinky-laser foley as the orbit rings spin off the
 spear, a stick whoosh as a star is thrown.
-ONE clean real recording per clip, minimally processed: an excerpt, a gentle high-pass, gain and edge fades, so each
-keeps its natural attack and decay. No layering, pitch or time change, synthesis, saturation or limiting.
+ONE clean real recording per clip (checked: no clipping, low noise), minimally processed: an excerpt, a gentle
+high-pass, gain and edge fades, so each keeps its natural attack and decay. No layering, pitch or time change,
+synthesis, saturation or limiting.
 Output: assets/audio/hero-forms/lightning/*.wav and assets/audio/hero-forms/lightning-manifest.json
 (merged by build.py into ART.castSounds as lightning-<name>). Rebuild: python scripts/prepare_lumi_form_sounds.py
 """
@@ -24,21 +25,11 @@ from scipy.signal import butter, sosfilt
 AUDIO = Path(__file__).resolve().parents[1] / 'assets/audio'
 OUT = AUDIO / 'hero-forms/lightning'
 RATE = 32000
-FORM1 = {  # form 1's own storm recordings (sources/thunder)
-    'spiers': ('thunder/simon-spiers-437243-hq.mp3', 'thunder/simon-source.json'),
-    'clap': ('thunder/seth-m-458015-hq.mp3', 'thunder/source.json'),
-}
-
-
 def source(ref):
-    """A form-1 storm recording ('spiers', 'clap') or a Freesound id kept in sources/freesound."""
-    if ref in FORM1:
-        path, meta_path = (AUDIO / 'sources' / p for p in FORM1[ref])
-        meta = json.loads(meta_path.read_text(encoding='utf-8'))
-    else:
-        folder = next((AUDIO / 'sources/freesound').glob(f'{ref}-*'))
-        meta = json.loads((folder / 'source.json').read_text(encoding='utf-8'))
-        path = folder / meta['file']
+    """A Freesound recording kept in sources/freesound/<id>-<slug>/ (source.json: title, author, URL, licence, SHA-256)."""
+    folder = next((AUDIO / 'sources/freesound').glob(f'{ref}-*'))
+    meta = json.loads((folder / 'source.json').read_text(encoding='utf-8'))
+    path = folder / meta['file']
     data = subprocess.check_output([imageio_ffmpeg.get_ffmpeg_exe(), '-v', 'error', '-i', str(path),
                                     '-ar', str(RATE), '-ac', '2', '-f', 'f32le', 'pipe:1'])
     return np.frombuffer(data, dtype='<f4').reshape(-1, 2).astype(float), meta
@@ -69,11 +60,11 @@ def clip(name, ref, start, end, beat, highpass=80, fade_in=.006, fade_out=.25, t
 OUT.mkdir(parents=True, exist_ok=True)
 for old in OUT.glob('*.wav'):
     old.unlink()
-# Backbone (form 1's storm). The crack: the first close strike of Spiers' recording, before its rumble.
-clip('crack', 'spiers', 20.78, 21.18, 'every star bolt: one close lightning crack per bolt, synced to its strike (form 1\'s Spiers strike)',
+# The bolts: real close lightning strikes on the ground, crack and short reverberant snap, no rumble.
+clip('crack', 721072, .78, 1.23, 'every star bolt (and the four-star basic hit): one sharp, dry close lightning crack with its short snap, synced to its strike',
      highpass=60, fade_in=.004, fade_out=.18, target_rms=1)
-clip('thunder', 'clap', .70, 4.30, 'the last bolt (damage finale): form 1\'s big thunder clap with its natural decay ringing out (3.6 s)',
-     highpass=35, fade_in=.004, fade_out=1.0, target_rms=1)
+clip('strike', 717907, .55, 1.75, 'the last bolt (damage finale): a big close crack-crash whose own reverberant decay ends the ultimate (1.2 s, no roll)',
+     highpass=40, fade_in=.004, fade_out=.45, target_rms=1)
 # Four-star Tinh Lôi Ngũ Phạt
 clip('stars', 796546, .0, 1.7, 'four-star: the five stars leave the orb and form in the sky, mark-tree run with its natural decay (0.46-2.2 s)',
      highpass=200, fade_out=.5)
