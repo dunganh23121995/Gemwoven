@@ -35,7 +35,7 @@
 @keyframes form-pulse{50%{opacity:.45;scale:1.06}}
 .hero-form-link{z-index:4}
 body.page-hidden .hero-form-aura *{animation-play-state:paused}
-@media(prefers-reduced-motion:reduce){.hero-form-aura *{animation:none!important}}
+.reduced-motion .hero-form-aura *{animation:none!important}
 /* Form gallery: the shared painted dialog; three dark cards in a swipeable row. */
 .hero-form-gallery .gw-body{display:flex;flex-direction:column;overflow:hidden;padding-bottom:4px}
 .hero-form-gallery .gw-actions:empty{display:none}
@@ -61,4 +61,4 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 /* Six-star Noct in the hub: the scythe glint, laid exactly over the hero image. */
 .scythe-glint.hub{display:block;pointer-events:none;z-index:2;-webkit-mask:var(--scythe-mask) 0 0/100% 100% no-repeat;mask:var(--scythe-mask) 0 0/100% 100% no-repeat;background:linear-gradient(115deg,transparent 0 45.4%,#ffffff35 46.6%,#ffffff 47.7%,#ffffff 48.5%,#ffffff35 49.6%,transparent 50.8%),linear-gradient(115deg,transparent 0 46.8%,#ffffff 47.8%,#ffffff 48.4%,transparent 49.4%) 130% 0/300% 100% no-repeat;background-repeat:no-repeat;background-size:300% 100%;mix-blend-mode:plus-lighter;filter:drop-shadow(0 0 3px #e9e0ff) drop-shadow(0 0 6px #b9a6ff);animation:scythe-glint 5.8s ease-in-out infinite}
 @keyframes scythe-glint{0%,70%{background-position:62% 0;opacity:0}71.5%{opacity:1}86%{background-position:20% 0;opacity:1}88%,100%{background-position:20% 0;opacity:0}}
-@media(prefers-reduced-motion:reduce){.scythe-glint.hub{display:none}}
+.reduced-motion .scythe-glint.hub{display:none}

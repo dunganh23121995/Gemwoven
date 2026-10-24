@@ -57,7 +57,7 @@
 .modular-map .world-pin .pin-lock{left:calc(var(--floor-x) + 34px);top:calc(var(--floor-y) - 24px);width:29px;height:34px}
 .modular-map .next-stage::after{content:'';position:absolute;left:calc(var(--floor-x) - 65px);top:calc(var(--floor-y) - 18px);width:130px;height:34px;border:2px solid #ffdf87;border-radius:50%;box-shadow:0 0 14px #fbe8a5,inset 0 0 12px #fbe8a566;pointer-events:none;z-index:-1;animation:stage-beacon 3s ease-in-out infinite}
 @keyframes map-assembly-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
-@media(prefers-reduced-motion:reduce){.map-assembly,.home-place{animation:none!important}}
+.reduced-motion .map-assembly,.reduced-motion .home-place{animation:none!important}
 
 /* A continuous living stem replaces the diagonal plank links. */
 .bean-stem,.bean-branch{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none;object-fit:fill}

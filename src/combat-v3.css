@@ -33,5 +33,5 @@
 .combat-v3-hit-count{position:absolute;bottom:18px;left:50%;z-index:9;border:1px solid #f8d78980;border-radius:6px;padding:4px 9px;background:#293448df;color:#fff0c0;letter-spacing:2px;font-size:10px;font-weight:800;font-variant-numeric:tabular-nums;pointer-events:none}
 .combat-v3-acting{will-change:transform}
 .reduced-motion .combat-v3-effect{filter:none!important;box-shadow:none!important}
-@media(prefers-reduced-motion:reduce){.combat-v3-acting{will-change:auto}}
+.reduced-motion .combat-v3-acting{will-change:auto}
 @media(max-width:520px){.combat-v3-cue{top:4px;padding:5px 17px 6px}.combat-v3-cue small{font-size:5px;margin-bottom:2px}.combat-v3-cue strong{font-size:9px}.combat-v3-cue.is-ultimate{padding:6px 20px 7px}.combat-v3-cue.is-ultimate strong{font-size:12px}.combat-v3-hit-count{bottom:9px;font-size:8px;padding:3px 7px}.combat-v3-number{font-size:27px}.combat-v3-number.heal,.combat-v3-number.armor{font-size:21px}}

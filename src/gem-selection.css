@@ -26,7 +26,7 @@
 @keyframes jewel-sheen{0%,40%{transform:translateX(-75%);opacity:0}52%{opacity:.55}67%,100%{transform:translateX(75%);opacity:0}}
 @keyframes jewel-twinkle{0%,100%{opacity:.2;transform:scale(.5) rotate(0deg)}45%{opacity:1;transform:scale(1.2) rotate(15deg)}70%{opacity:.35;transform:scale(.65) rotate(0deg)}}
 body.reduced-motion .gem-gloss::after,body.reduced-motion .gem-sparkles i{animation:none}
-@media(prefers-reduced-motion:reduce){.gem-gloss::after,.gem-sparkles i{animation:none}}
+.reduced-motion .gem-gloss::after,.reduced-motion .gem-sparkles i{animation:none}
 @media(max-width:350px){#selectDialog{padding:20px 16px}#selectDialog .class-grid{gap:16px 11px}#selectDialog h2{font-size:22px}}
 
 /* The jewels open a full portrait and a readable field guide. */
@@ -65,6 +65,6 @@ body.reduced-motion .gem-gloss::after,body.reduced-motion .gem-sparkles i{animat
 .hero-back-button:focus-visible,#selectDialog .primary-button:focus-visible{outline:2px solid #ffe3a4;outline-offset:2px}
 @keyframes hero-preview-float{0%,100%{transform:translate(-50%,-2px)}50%{transform:translate(-50%,-10px)}}
 body.reduced-motion .hero-showcase-art{animation:none!important}
-@media(prefers-reduced-motion:reduce){.hero-showcase-art{animation:none!important}}
+.reduced-motion .hero-showcase-art{animation:none!important}
 @media(max-width:350px){.hero-showcase{height:210px}.hero-showcase-art{width:292px;height:292px}.hero-detail-skill{padding:12px}.hero-detail-skill p{font-size:11px}}
 @media(max-width:350px){.hero-selection-scroll{padding:20px 16px}}

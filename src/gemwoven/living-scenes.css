@@ -15,7 +15,7 @@
 @keyframes life-object{to{translate:0 -3px;rotate:.35deg}}
 @keyframes life-crystal{50%{translate:0 -8px;filter:drop-shadow(0 0 10px #a4dfff88)}}
 body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body.page-hidden .node.is-living-crystal>.art{animation-play-state:paused}
-@media(prefers-reduced-motion:reduce){.scene-life{display:none}.node.is-living-object>.art,.node.is-living-crystal>.art{animation:none}}
+.reduced-motion .scene-life{display:none}.reduced-motion .node.is-living-object>.art,.reduced-motion .node.is-living-crystal>.art{animation:none}
 
 /* Short real-time cinematic: sky -> starfall -> lake -> sealed cards. */
 #summon-reveal.celestial-reveal{box-sizing:border-box;position:fixed;width:min(580px,calc(100vw - 20px));height:min(950px,96dvh);max-height:96dvh;padding:0;border:1px solid #aebce18a;border-radius:20px;overflow:hidden;background:#08142e var(--lake) center/100% 100%;color:#f8edce;box-shadow:0 0 70px #3064bc50}
@@ -56,7 +56,7 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 @media(max-width:480px){.celestial-deck{grid-template-columns:repeat(3,minmax(0,1fr));inset:23% 25px 16%;gap:9px 12px}.celestial-card{aspect-ratio:.8}.celestial-card:last-child:nth-child(10){grid-column:2}.celestial-front img{height:48%}.celestial-back img{height:37%}.celestial-reveal>header{top:5%}.celestial-reveal[data-count="1"] .celestial-card{aspect-ratio:.65}}
 @media(max-height:700px){.celestial-reveal[data-count="10"] .celestial-deck{grid-template-rows:repeat(2,minmax(0,1fr));align-content:stretch}.celestial-reveal[data-count="10"] .celestial-card{aspect-ratio:auto;min-height:0}.celestial-back,.celestial-front{gap:3px}.celestial-reveal>footer{bottom:2%}.celestial-open-all{padding:9px 15px}}
 @media(max-height:700px) and (max-width:480px){.celestial-reveal[data-count="10"] .celestial-deck{grid-template-rows:repeat(4,minmax(0,1fr));inset:23% 18px 18%}.celestial-back b{font-size:16px}.celestial-back small{font-size:9px}.celestial-status{font-size:12px}}
-@media(prefers-reduced-motion:reduce){.celestial-reveal *{animation:none!important;transition:none!important}}
+.reduced-motion .celestial-reveal *{animation:none!important;transition:none!important}
 body.page-hidden .celestial-reveal *{animation-play-state:paused!important}
 
 /* Living hub: light and motion over the painted scenes (src/gemwoven/living-hub.js). */
@@ -101,7 +101,7 @@ body.page-hidden .celestial-reveal *{animation-play-state:paused!important}
 body.page-hidden .living-hub *,body.page-hidden .living-hub *::before,body.page-hidden .living-hub *::after,body.page-hidden .living-hub-rune *,body.page-hidden .lh-rig,body.page-hidden .lh-call>.art{animation-play-state:paused!important}
 body.reduced-motion .living-hub,body.reduced-motion .living-hub-rune,body.reduced-motion .lh-tap{display:none}
 body.reduced-motion .lh-rig,body.reduced-motion .lh-call>.art{animation:none}
-@media(prefers-reduced-motion:reduce){.living-hub,.living-hub-rune,.lh-tap{display:none}.lh-rig,.node.lh-call>.art{animation:none}.node-button:active{scale:1}}
+.reduced-motion .living-hub,.reduced-motion .living-hub-rune,.reduced-motion .lh-tap{display:none}.reduced-motion .lh-rig,.reduced-motion .node.lh-call>.art{animation:none}.reduced-motion .node-button:active{scale:1}
 /* Painted-background motion (living-motion.js): behind every control, never interactive. */
 .living-motion{position:absolute;left:0;top:0;width:941px;height:1672px;z-index:0;pointer-events:none;overflow:hidden}
 .living-motion i{position:absolute;display:block;pointer-events:none}
