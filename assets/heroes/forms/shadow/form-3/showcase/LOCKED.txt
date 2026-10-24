@@ -1,0 +1,4 @@
+LOCKED (approved by the user, 2026-10-24): Noct form 3 showcase and summoning entrance.
+Do not regenerate or edit these sheets (idle, scythespin, darkpalm, rift) or the entrance sequence in
+src/gemwoven/hero-show.js (soft-smoke whirlwind -> rift cut, he steps out -> his cloud ring bursts)
+without the user's request.

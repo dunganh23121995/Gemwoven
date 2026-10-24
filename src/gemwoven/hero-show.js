@@ -48,9 +48,19 @@
     }
     requestAnimationFrame(frame);
   }
+  // Every sheet is fetched and decoded before it is shown: swapping to a sheet that is still
+  // loading leaves the hero blank for a frame (the flicker seen when an action starts or ends).
+  const decoded=new Map();
+  function preload(src){
+    if(!src)return Promise.resolve();
+    if(!decoded.has(src)){const img=new Image();img.src=url(src);decoded.set(src,{img,ready:false,promise:(img.decode?img.decode():Promise.resolve()).then(()=>{decoded.get(src).ready=true;},()=>{decoded.get(src).ready=true;})});}
+    return decoded.get(src).promise;
+  }
+  const isReady=src=>!!decoded.get(src)?.ready;
   function attach(host,hero,form){
     const show=A[`show-${hero}-${form}`];if(!show?.sheets)return null;
     const image=host.querySelector('.art,img');if(!image)return null;
+    for(const src of [show.sheets.idle,...(show.sheets.fidgets||[]),show.sheets.rift])preload(src);
     host.querySelector('.hero-show')?.remove();
     const stage=document.createElement('span');stage.className='hero-show';stage.setAttribute('aria-hidden','true');
     // The essentials are inline so a stale cached stylesheet can never show both bodies at once.
@@ -72,7 +82,10 @@
       if(reduced())return;
       if(now-(tick.last||0)>=150){tick.last=now;frame=(frame+1)%8;stage.style.backgroundPosition=cell(frame);}
       const fidgets=show.sheets.fidgets||[];
-      if(fidgets.length&&now>next)play(fidgets[Math.floor(Math.random()*fidgets.length)],130);
+      if(fidgets.length&&now>next){
+        const pick=fidgets[Math.floor(Math.random()*fidgets.length)];
+        if(isReady(pick)&&isReady(show.sheets.idle))play(pick,130);else next=now+1000;
+      }
     }
     timer=requestAnimationFrame(tick);
     return {
