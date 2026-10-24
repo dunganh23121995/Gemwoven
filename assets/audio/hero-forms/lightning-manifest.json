@@ -1,8 +1,8 @@
 {
   "lightning-f2-summon": {
     "file": "hero-forms/lightning/f2-summon.wav",
-    "duration": 0.5,
-    "beat": "four-star ultimate 460-980: she raises her orb, the five stars leave it",
+    "duration": 0.52,
+    "beat": "four-star ultimate 460-980: she raises her orb, the five stars leave it and fly up",
     "sources": [
       {
         "title": "Mark Tree Fast Down Scale",
@@ -14,20 +14,20 @@
         "sha256": "bcabd347f31cdfd6c079a4c649ab1c490e1887cc7e7f86d1a354d4adf1c03f2a",
         "excerpt": [
           0.0,
-          0.5
+          0.52
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 80 Hz high-pass, gain, edge fades; original pitch, speed and tail",
-    "peak": 0.5424,
-    "rms": 0.1034,
-    "sha256": "b0029543681995791ef7d5d540bf637b56ebd6033158d7d8f4e265dcb4557cd7"
+    "peak": 0.546,
+    "rms": 0.1036,
+    "sha256": "5fbf6847d7e5f945b121539010b875e0dc1e6f6482c568bfd5d4a1aeb4e0338a"
   },
   "lightning-f2-star": {
     "file": "hero-forms/lightning/f2-star.wav",
     "duration": 0.08,
-    "beat": "four-star ultimate 980-1330: one click as each star lands (5 x, 85 ms apart)",
+    "beat": "four-star ultimate 980-1340: one click as each star lands (5 x, 85 ms apart)",
     "sources": [
       {
         "title": "quartz crystal tapping ceramic plate-004.wav",
@@ -49,10 +49,35 @@
     "rms": 0.0695,
     "sha256": "85dba4ac10b5a83611e6e41a7dfd6295547a3faa50723b40b3b01fd35e9c68db"
   },
+  "lightning-f2-arcs": {
+    "file": "hero-forms/lightning/f2-arcs.wav",
+    "duration": 1.51,
+    "beat": "four-star ultimate 1320-2830: the pentagram draws itself and crackles with arcs until it fades",
+    "sources": [
+      {
+        "title": "Electric Sparks.wav",
+        "author": "kev_durr",
+        "source_url": "https://freesound.org/people/kev_durr/sounds/396470/",
+        "file": "sources/freesound/396470-electric-sparks-wav/396470-electric-sparks-wav.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "11d14640af7799238736ed289138cd88fc632464b6a99aebd07c65581793225c",
+        "excerpt": [
+          0.1,
+          1.61
+        ]
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "one excerpt, 120 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.9,
+    "rms": 0.0436,
+    "sha256": "0733cc79f67c9997277a851cf127b78b27d2677ae13f8a83c02b2721be4811b8"
+  },
   "lightning-f2-bolt": {
     "file": "hero-forms/lightning/f2-bolt.wav",
     "duration": 0.24,
-    "beat": "four-star ultimate 1620-1860 and 1860-2100: bolts 1 and 3 strike (crack until the next cracking bolt)",
+    "beat": "four-star ultimate 1620-2100: each of the first four star bolts and its ground strike (once per bolt)",
     "sources": [
       {
         "title": "Very close lightning strike.",
@@ -76,8 +101,8 @@
   },
   "lightning-f2-last": {
     "file": "hero-forms/lightning/f2-last.wav",
-    "duration": 0.45,
-    "beat": "four-star ultimate 2100-2550: the last bolt and the big star burst (thunder clap, cut before its roll)",
+    "duration": 1.2,
+    "beat": "four-star ultimate 2100-3300: the fifth bolt, the big star burst and flash, with the clap's natural tail",
     "sources": [
       {
         "title": "big thunder clap",
@@ -89,15 +114,15 @@
         "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3",
         "excerpt": [
           0.7,
-          1.15
+          1.9
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 40 Hz high-pass, gain, edge fades; original pitch, speed and tail",
     "peak": 0.9,
-    "rms": 0.2231,
-    "sha256": "233e530c6cf05f9ea3f05a80c0ee122e86cf7d6eba007629099589ba84d74aec"
+    "rms": 0.1747,
+    "sha256": "4efa4f1d304342fea06a3a966fc41b25b59021d9fface9690c61906d0689a008"
   },
   "lightning-throw": {
     "file": "hero-forms/lightning/throw.wav",
@@ -151,8 +176,8 @@
   },
   "lightning-f3-galaxy": {
     "file": "hero-forms/lightning/f3-galaxy.wav",
-    "duration": 0.95,
-    "beat": "six-star ultimate 460-1410: the orbit rings spin off and open into the galaxy (rubbed singing bowl swell)",
+    "duration": 2.41,
+    "beat": "six-star ultimate 460-2870: the orbit rings spin off, open into the galaxy, it hangs turning and collapses (rubbed singing bowl)",
     "sources": [
       {
         "title": "Tibetan_Singing_bowl_1",
@@ -164,15 +189,15 @@
         "sha256": "ccd035bca90f250ffaf113f13600950720e0023daafca8b354b6115c022fd81e",
         "excerpt": [
           0.2,
-          1.15
+          2.61
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 100 Hz high-pass, gain, edge fades; original pitch, speed and tail",
-    "peak": 0.2357,
-    "rms": 0.1056,
-    "sha256": "45e777ac7ddaf59190761b01b17fb13f1b23dcdf6f4b4b8cd0dff2d380302be9"
+    "peak": 0.218,
+    "rms": 0.1075,
+    "sha256": "cdac7e9453c2f9e95ae100f8a1a65a0eada252ac71a3ad0455ab7182e7956a08"
   },
   "lightning-f3-twinkle": {
     "file": "hero-forms/lightning/f3-twinkle.wav",
@@ -199,10 +224,35 @@
     "rms": 0.1039,
     "sha256": "061e9d08a1c1aa6b21971b5f255617daa2d12ed2c6dfabbf1ea6468453f6b0ac"
   },
+  "lightning-f3-arcs": {
+    "file": "hero-forms/lightning/f3-arcs.wav",
+    "duration": 1.0,
+    "beat": "six-star ultimate 1450-2450: the galaxy rains bolts, Tesla-coil discharge roaring under them",
+    "sources": [
+      {
+        "title": "high-voltage-discharge-2.wav",
+        "author": "follytowers",
+        "source_url": "https://freesound.org/people/follytowers/sounds/415962/",
+        "file": "sources/freesound/415962-high-voltage-discharge-2-wav/415962-high-voltage-discharge-2-wav.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "be3537b032cd1121d73a44b0bc46c173cb639ca20dbac964be19b03968989e7f",
+        "excerpt": [
+          1.7,
+          2.7
+        ]
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "one excerpt, 60 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.6692,
+    "rms": 0.1055,
+    "sha256": "b8a1435ae2aa4f709f5991b6f0e5696ae984c0662cfe19d9a5d8fb76cb7ac875"
+  },
   "lightning-f3-bolt": {
     "file": "hero-forms/lightning/f3-bolt.wav",
-    "duration": 0.38,
-    "beat": "six-star ultimate 1450-1840 and 1840-2230: bolts 1 and 5 of nine strike (crack until the next cracking bolt)",
+    "duration": 0.32,
+    "beat": "six-star ultimate 1450-2230: each of the first eight star bolts and its ground strike (once per bolt, 98 ms apart)",
     "sources": [
       {
         "title": "Very close lightning strike.",
@@ -214,20 +264,20 @@
         "sha256": "9e4169956c8ff03d204923cd4e8ef6c036c6724af92c269ef42e484ee583dbe7",
         "excerpt": [
           20.79,
-          21.17
+          21.11
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 40 Hz high-pass, gain, edge fades; original pitch, speed and tail",
     "peak": 0.9,
-    "rms": 0.2304,
-    "sha256": "378e35a0a23c47cc3004b8fada2079003f5b15b25924de792510d4fe3eeb2904"
+    "rms": 0.2462,
+    "sha256": "9f8239fda9c7342573f6431cf531f2d473c77d20d206a0ae91eb571c2362ca59"
   },
   "lightning-f3-last": {
     "file": "hero-forms/lightning/f3-last.wav",
-    "duration": 0.7,
-    "beat": "six-star ultimate 2230-2930: the last bolt from the galaxy's heart and the ring burst (the whole thunder clap, cut before its roll)",
+    "duration": 1.5,
+    "beat": "six-star ultimate 2230-3730: the ninth bolt from the galaxy's heart, the ring burst and flash, with the clap's natural tail",
     "sources": [
       {
         "title": "big thunder clap",
@@ -239,15 +289,15 @@
         "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3",
         "excerpt": [
           0.7,
-          1.4
+          2.2
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 35 Hz high-pass, gain, edge fades; original pitch, speed and tail",
     "peak": 0.9,
-    "rms": 0.2157,
-    "sha256": "80a78028a5a162acd95f7ca4d31cca9b1974cfb05c5b236a9ea7530ae0d03803"
+    "rms": 0.1613,
+    "sha256": "70e04fe3a192bbbbc7609bea82e496dc79cc076b29cdb235722354e02158e696"
   },
   "lightning-f3-ring": {
     "file": "hero-forms/lightning/f3-ring.wav",

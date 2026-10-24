@@ -42,6 +42,10 @@ SRC = {
     "stick": (FS + "352719-woosh-stick-swung-in-the-air/352719-woosh-stick-swung-in-the-air.mp3",
               "Woosh (stick swung in the air)", "Dalesome", "https://freesound.org/people/Dalesome/sounds/352719/"),
     "spark": (FS + "189630-spark/189630-spark.mp3", "Spark", "elliott.klein", "https://freesound.org/people/elliott.klein/sounds/189630/"),
+    "sparks": (FS + "396470-electric-sparks-wav/396470-electric-sparks-wav.mp3", "Electric Sparks.wav", "kev_durr",
+               "https://freesound.org/people/kev_durr/sounds/396470/"),
+    "tesla": (FS + "415962-high-voltage-discharge-2-wav/415962-high-voltage-discharge-2-wav.mp3", "high-voltage-discharge-2.wav",
+              "follytowers", "https://freesound.org/people/follytowers/sounds/415962/"),
     "clap": ("sources/thunder/seth-m-458015-hq.mp3", "big thunder clap", "seth-m", "https://freesound.org/people/seth-m/sounds/458015/"),
     "crack": ("sources/thunder/simon-spiers-437243-hq.mp3", "Very close lightning strike.", "Simon Spiers",
               "https://freesound.org/people/Simon%20Spiers/sounds/437243/"),
@@ -77,21 +81,23 @@ def clip(out, name, start, length, beat, highpass=80, fade_in=.003, fade_out=.12
     print(f"{out:12} {len(x) / RATE:.2f}s peak {np.abs(x).max():.2f}  <- {title}")
 
 
-# Each clip starts on its motion's frame and is faded out by the time the next motion starts (beat windows
-# in ms on the skill clock of src/forms-lumi.js are noted per clip).
+# Each clip starts on its segment's frame and lasts as long as that segment is on screen (windows in ms on the
+# skill clock of src/forms-lumi.js). Continuous effects get a continuous recording, every bolt its own crack.
 # Four-star Tinh Lôi Sứ Giả
-clip("f2-summon", "marktree", .0, .5, "four-star ultimate 460-980: she raises her orb, the five stars leave it", fade_out=.18)
-clip("f2-star", "quartz", .42, .08, "four-star ultimate 980-1330: one click as each star lands (5 x, 85 ms apart)", highpass=300, fade_out=.025)
-clip("f2-bolt", "crack", 20.79, .24, "four-star ultimate 1620-1860 and 1860-2100: bolts 1 and 3 strike (crack until the next cracking bolt)", highpass=40, fade_out=.08, rms=1)
-clip("f2-last", "clap", .70, .45, "four-star ultimate 2100-2550: the last bolt and the big star burst (thunder clap, cut before its roll)", highpass=40, fade_in=.005, fade_out=.15, rms=1)
-# Both basic attacks (throw 0-230 ms of flight)
+clip("f2-summon", "marktree", .0, .52, "four-star ultimate 460-980: she raises her orb, the five stars leave it and fly up", fade_out=.18)
+clip("f2-star", "quartz", .42, .08, "four-star ultimate 980-1340: one click as each star lands (5 x, 85 ms apart)", highpass=300, fade_out=.025)
+clip("f2-arcs", "sparks", .1, 1.51, "four-star ultimate 1320-2830: the pentagram draws itself and crackles with arcs until it fades", highpass=120, fade_in=.06, fade_out=.38)
+clip("f2-bolt", "crack", 20.79, .24, "four-star ultimate 1620-2100: each of the first four star bolts and its ground strike (once per bolt)", highpass=40, fade_out=.08, rms=1)
+clip("f2-last", "clap", .70, 1.2, "four-star ultimate 2100-3300: the fifth bolt, the big star burst and flash, with the clap's natural tail", highpass=40, fade_in=.005, fade_out=.5, rms=1)
+# Both basic attacks (throw: 230 ms of flight)
 clip("throw", "stick", .08, .23, "basic attack, forms 2-3: the star / ring bolt leaves the weapon and flies (230 ms)", highpass=120, fade_out=.07)
 clip("f2-pop", "spark", .0, .17, "four-star basic attack: the crackling star bursts on the foe (until the recovery frame)", highpass=300, fade_out=.04)
 # Six-star Thiên Tinh Lôi Chủ
-clip("f3-galaxy", "bowlrub", .2, .95, "six-star ultimate 460-1410: the orbit rings spin off and open into the galaxy (rubbed singing bowl swell)", highpass=100, fade_in=.05, fade_out=.3)
+clip("f3-galaxy", "bowlrub", .2, 2.41, "six-star ultimate 460-2870: the orbit rings spin off, open into the galaxy, it hangs turning and collapses (rubbed singing bowl)", highpass=100, fade_in=.05, fade_out=.42)
 clip("f3-twinkle", "tingsha", .0, .45, "six-star ultimate 1000-1450: stars twinkle along the galaxy's arms ('tinh tinh'); also her hop onto the spear", highpass=300, fade_out=.15)
-clip("f3-bolt", "crack", 20.79, .38, "six-star ultimate 1450-1840 and 1840-2230: bolts 1 and 5 of nine strike (crack until the next cracking bolt)", highpass=40, fade_out=.12, rms=1)
-clip("f3-last", "clap", .70, .7, "six-star ultimate 2230-2930: the last bolt from the galaxy's heart and the ring burst (the whole thunder clap, cut before its roll)", highpass=35, fade_in=.005, fade_out=.25, rms=1)
+clip("f3-arcs", "tesla", 1.7, 1.0, "six-star ultimate 1450-2450: the galaxy rains bolts, Tesla-coil discharge roaring under them", highpass=60, fade_in=.03, fade_out=.2)
+clip("f3-bolt", "crack", 20.79, .32, "six-star ultimate 1450-2230: each of the first eight star bolts and its ground strike (once per bolt, 98 ms apart)", highpass=40, fade_out=.1, rms=1)
+clip("f3-last", "clap", .70, 1.5, "six-star ultimate 2230-3730: the ninth bolt from the galaxy's heart, the ring burst and flash, with the clap's natural tail", highpass=35, fade_in=.005, fade_out=.6, rms=1)
 clip("f3-ring", "bowlstrike", .02, .35, "six-star basic attack: the orbit-ring shockwave on the foe (until the recovery frame)", highpass=120, fade_out=.15)
 (BASE / "hero-forms/lightning-manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 print(len(manifest), "sounds")
