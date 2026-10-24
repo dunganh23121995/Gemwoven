@@ -349,32 +349,65 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25): one clip per visual beat of Hồ Diễm Long Trảm (sword raised
-and set alight, blade blazing up into fox-fire, overhead cleave, slam through the foe, burning cut on the
-floor, sword settling) and Cửu Dương Hồ Diễm (nine tails flaring into a sun, glaive drawn back and growing,
-flat spinning sweep, colossal crescent cut, nine-tailed sun burst, nine fox-fire spirits running in and
-bursting, the burn taking hold). Edited from real recordings: excerpts, resampled pitch, EQ, layering,
-fades and a soft limiter; no synthesis. Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json
-(sources, checksums). Build: python scripts/prepare_mika_form_sounds.py.
-Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0:
-  #107589 "unsheath_sword.wav" by Qat, https://freesound.org/people/Qat/sounds/107589/ (CC0)
-  #137262 "Water sizzle 1.wav" by xenognosis, https://freesound.org/people/xenognosis/sounds/137262/ (CC0)
-  #181563 "Fire Crackling 01.wav" by kingsrow, https://freesound.org/people/kingsrow/sounds/181563/ (CC0)
-  #186374 "Bonfire Being Lit" by samararaine, https://freesound.org/people/samararaine/sounds/186374/ (CC0)
-  #186932 "fire_explosion.wav" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/ (CC0)
-  #244926 "fire-whoosh.wav" by hnhnh, https://freesound.org/people/hnhnh/sounds/244926/ (CC0)
-  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (CC0)
-  #352719 "Woosh (stick swung in the air)" by Dalesome, https://freesound.org/people/Dalesome/sounds/352719/ (CC0, reused)
-  #431174 "Fireball Explosion.wav" by Blankened, https://freesound.org/people/Blankened/sounds/431174/ (CC0)
-  #463766 "up swish x2 HZA 07-03-2019.wav" by hz37, https://freesound.org/people/hz37/sounds/463766/ (CC0)
-  #483316 "R09-74-Fire Torch.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/ (CC0)
-  #507466 "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0, reused)
-  #513694 "impact-stone-heavy.wav" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/ (CC0, reused)
-  #632344 "Shimmer" by adh.dreaming, https://freesound.org/people/adh.dreaming/sounds/632344/ (CC0)
-  #719638 "Lasso rope being spun, spinning through air then throw" by zapsplat.com, https://freesound.org/people/zapsplat.com/sounds/719638/ (CC0)
-  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (CC0)
-  #786713 "Shing!" by TheAcidRomance, https://freesound.org/people/TheAcidRomance/sounds/786713/ (CC0)
-  #827320 "Dog Running Past" by qubodup, https://freesound.org/people/qubodup/sounds/827320/ (CC0)
-  #828433 "Fire Erupted" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/ (CC0)
-  #832436 "Fox screaming during the night" by felix.blume, https://freesound.org/people/felix.blume/sounds/832436/ (CC0, reused)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (CC0)
+Mika four- and six-star ultimates (2026-10-25, redone): a few well-spaced cues per ultimate, each ONE
+real recording minimally edited (excerpt with its natural attack and decay, gentle high-pass, gain, short
+fades; no layering, pitch or time changes, no synthesis), as form 1's sounds are. Clips:
+hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json (beat, source, checksums).
+Build: python scripts/prepare_mika_form_sounds.py.
+  Each clip is cut to its motion on screen (attack on the motion's frame, faded out before the next motion).
+  Hồ Diễm Long Trảm: sword raised = extracting_a_sword1 and the cleave = sword_attack1 (Taira Komori,
+  TK'S FREE SOUND FX, see the katana terms above); blade blazing = form 1's "fire-whoosh.wav" by hnhnh,
+  https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori); slam and burning cut =
+  #828433 "Fire Erupted" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/ (CC0).
+  Cửu Dương Hồ Diễm: tails flaring = #761330 "Magic Fire Spell Movement" by TheLittleCrow,
+  https://freesound.org/people/TheLittleCrow/sounds/761330/ (CC0); glaive drawn back = #186932
+  "fire_explosion.wav" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/ (CC0); spinning
+  sweep = #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/
+  (CC0); sun burst = #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/
+  (CC0); burn = #137262 "Water sizzle 1.wav" by xenognosis, https://freesound.org/people/xenognosis/sounds/137262/ (CC0).
+Sources in sources/freesound/<id>-<title>/ (source.json with URL, licence, SHA-256).
+
+Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
+per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length
+of its motion on screen and faded out before the next motion starts. The gathers and the shield bash are cut from
+form 1's own sounds (reimagined/earth-charge.wav; Shield Bash Impact by Hybrid_V, credited above). Clips:
+hero-forms/earth/nori-*.wav, manifest hero-forms/earth-manifest.json (beat, excerpt, checksums). Build: python
+scripts/prepare_nori_form_sounds.py. #218163, #648958, #707618 and #735401 listed above are no longer used.
+  slam (both forms)      #513694 "impact-stone-heavy.wav" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/ (CC0)
+  jade vines burst (4*)  #479160 "Big plants (crops) growing quickly" by Contant_aghony, https://freesound.org/people/Contant_aghony/sounds/479160/ (CC0)
+  jade sapling (4*)      #419146 "Ringing sound from crystal glass. Tune: C" by PappaBert, https://freesound.org/people/PappaBert/sounds/419146/ (CC0)
+  world-tree rising (6*) #848983 "trees_creaking_loudl" by Sprust, https://freesound.org/people/Sprust/sounds/848983/ (CC0)
+  crown shedding (6*)    #368453 "LeavesRustling.mp3" by SierraHWills, https://freesound.org/people/SierraHWills/sounds/368453/ (CC0)
+
+Yuki form 2-3 ultimates, redone 2026-10-25 (replaces the earlier layered Yuki form 2-3 clips; their
+unused sources were removed): ONE natural recording per clip, excerpted so its own attack lands on the
+motion's frame and faded out before the next motion starts (high-pass, gain, short edge fades only).
+Clips: hero-forms/ice/*.wav, manifest hero-forms/ice-manifest.json. Build: python scripts/prepare_yuki_form_sounds.py.
+  f2-moonrise "Belltree.aif" by acmkyne, https://freesound.org/people/acmkyne/sounds/145578/ (CC0-1.0)
+  f2-beam     "Woosh" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/683096/ (CC0-1.0)
+  f2-spikes   "ice-crack" by j_p_higgins, https://freesound.org/people/j_p_higgins/sounds/262633/ (CC0-1.0)
+  f2-shatter  "Ice break" by humanoide9000, https://freesound.org/people/humanoide9000/sounds/329744/ (CC0-1.0)
+  f3-aegis    "ice sounds 7.wav" by creeeeak, https://freesound.org/people/creeeeak/sounds/437323/ (CC0-1.0)
+  f3-fan      "Short Wind/Air Woosh | A gust of wind" by NIKOKnecht, https://freesound.org/people/NIKOKnecht/sounds/569109/ (CC0-1.0)
+  f3-halberd  "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0-1.0)
+  f3-close    "ice-crack" by j_p_higgins, https://freesound.org/people/j_p_higgins/sounds/262633/ (CC0-1.0)
+  f3-burst    "Glass break - Long" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/ (CC0-1.0)
+
+Lumi four- and six-star kit, redo (2026-10-25; replaces the layered clips of the section above, whose sources
+#614833, #734238, #326368, #235463, #415962, #536741, #338730 and #411928 are no longer used and were removed):
+ONE natural recording per clip, like her form-1 sounds: an excerpt cut to its motion on screen, a gentle
+high-pass, gain and short edge fades; no layering, pitch/time change, synthesis or limiting. Build-up:
+f2-summon (mark tree), f2-star (one quartz tap, played once per star), f3-galaxy (rubbed singing bowl swell),
+f3-twinkle (tingsha). Hits, as heavy as form 1's storm but with no thunder roll: f2-bolt / f3-bolt (crack of
+Simon Spiers' close lightning strike #437243), f2-last / f3-last (seth-m's big thunder clap #458015 cut before
+its roll); both recordings are form 1's own (sources/thunder, credited above). Basic attacks: throw (stick
+whoosh), f2-pop (spark), f3-ring (singing bowl strike). Clips: hero-forms/lightning/*.wav, manifest
+hero-forms/lightning-manifest.json (beat, excerpt, checksums). Build: python scripts/prepare_lumi_form_sounds.py.
+Freesound public HQ MP3 previews, all CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/).
+  #796546 "Mark Tree Fast Down Scale" by mbthetd, https://freesound.org/people/mbthetd/sounds/796546/ (CC0)
+  #800115 "quartz crystal tapping ceramic plate-004.wav" by CVLTIV8R, https://freesound.org/people/CVLTIV8R/sounds/800115/ (CC0)
+  #435074 "Tingsha Cymbal" by steffcaffrey, https://freesound.org/people/steffcaffrey/sounds/435074/ (CC0)
+  #707797 "Tibetan_Singing_bowl_1" by TheGreenEyedGhost, https://freesound.org/people/TheGreenEyedGhost/sounds/707797/ (CC0)
+  #271370 "singing bowl strike sound" by inoshirodesign, https://freesound.org/people/inoshirodesign/sounds/271370/ (CC0)
+  #352719 "Woosh (stick swung in the air)" by Dalesome, https://freesound.org/people/Dalesome/sounds/352719/ (CC0)
+  #189630 "Spark" by elliott.klein, https://freesound.org/people/elliott.klein/sounds/189630/ (CC0)
