@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "shieldslam",
+      "label": "Nện khiên xuống đất",
+      "file": "shieldslam.webp",
+      "whole": false
+    },
+    {
+      "name": "neckroll",
+      "label": "Vươn vai vác chùy",
+      "file": "neckroll.webp",
+      "whole": true
+    },
+    {
+      "name": "entrance",
+      "label": "Rễ cây nứt vỏ bước ra",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}

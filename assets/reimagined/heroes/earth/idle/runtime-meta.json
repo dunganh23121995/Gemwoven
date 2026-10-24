@@ -6,32 +6,22 @@
   "frameWidth": 256,
   "frameHeight": 256,
   "columns": 2,
-  "rows": 2,
-  "frames": 4,
+  "rows": 4,
+  "frames": 8,
   "frameOrder": "row-major",
   "loop": true,
-  "frameDuration": 230,
+  "frameDuration": 150,
   "origin": [
     128,
     244
   ],
-  "frameFiles": [
-    "idle/frame-00.png",
-    "idle/frame-01.png",
-    "idle/frame-02.png",
-    "idle/frame-03.png"
-  ],
-  "uniqueFrames": 4,
-  "framePixelHashes": [
-    "9ae3aa8f808ecdbafacdc1aa1c9d4ae32632e8f58420aec928716021b34ab8eb",
-    "c8911033b45ba28a521a43ed1afd8c0a084fd44f79e72cee02bf4a9a47b4fca4",
-    "65a10e7beac88a1eb709ad1274172905093de41ce4637f527e2bd8c417d4dfb3",
-    "00a52761cd7e7a665b590bac71cbe3ce2afcb8f40795c37ae021e88da5c00daa"
-  ],
+  "frameFiles": [],
+  "uniqueFrames": 8,
+  "framePixelHashes": [],
   "sharedScaleProfile": "character-scale-profile.json",
   "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
   "reviewedFootRootFrames": [],
-  "source": "assets/raw/reimagined/heroes/earth-idle.png",
+  "source": "assets/heroes/forms/earth/form-1/combat-idle/raw-idle.png",
   "sourceSha256": "5c80b449bc172d0b3541d297b669aaedbb394c92398c10a82d39ada2afec09e2",
   "qc": {
     "frame_count": 4,
@@ -55,15 +45,31 @@
       111
     ],
     [
-      103,
+      102,
       111
     ],
     [
-      104,
+      102,
       111
     ],
     [
-      104,
+      102,
+      111
+    ],
+    [
+      102,
+      111
+    ],
+    [
+      102,
+      111
+    ],
+    [
+      102,
+      111
+    ],
+    [
+      102,
       111
     ]
   ],

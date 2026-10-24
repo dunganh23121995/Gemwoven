@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "entrance",
+      "label": "Ngọc thụ hóa thân",
+      "file": "entrance.webp",
+      "whole": false
+    },
+    {
+      "name": "shieldtap",
+      "label": "Gõ chùy lên khiên",
+      "file": "shieldtap.webp",
+      "whole": true
+    },
+    {
+      "name": "leafsprout",
+      "label": "Lá non mọc trên gạc",
+      "file": "leafsprout.webp",
+      "whole": true
+    }
+  ]
+}

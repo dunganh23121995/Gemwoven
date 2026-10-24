@@ -46,7 +46,7 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/earth/form-2/attack.webp",
@@ -168,7 +168,7 @@
               48
             ],
             [
-              132,
+              131,
               48
             ],
             [
@@ -176,7 +176,7 @@
               48
             ],
             [
-              132,
+              131,
               48
             ],
             [
@@ -184,7 +184,7 @@
               48
             ],
             [
-              132,
+              131,
               48
             ],
             [
@@ -192,12 +192,12 @@
               48
             ],
             [
-              132,
+              131,
               48
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/earth/form-3/attack.webp",

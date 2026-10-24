@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "bloom",
+      "label": "Hoa nở trên gạc và vai",
+      "file": "bloom.webp",
+      "whole": false
+    },
+    {
+      "name": "entrance",
+      "label": "Thế giới thụ giáng thế",
+      "file": "entrance.webp",
+      "whole": false
+    },
+    {
+      "name": "rootcreep",
+      "label": "Cắm chùy, rễ lan ra",
+      "file": "rootcreep.webp",
+      "whole": false
+    }
+  ]
+}
