@@ -85,6 +85,7 @@ def main():
     ap.add_argument("frames", nargs="+")
     ap.add_argument("--core", type=float, default=10, help="pixels inside the master silhouette kept rigid")
     ap.add_argument("--cell", type=int, default=256)
+    ap.add_argument("--as-is", action="store_true", help="the master is already a cell of the sheet being replaced: keep its size and place (combat sheets must not change scale)")
     ap.add_argument("--fill", type=float, default=.80, help="master height as a share of the cell (lower = more room for wide actions)")
     ap.add_argument("--cols", type=int, default=2)
     ap.add_argument("--same-transform", action="store_true", help="register frame 1 only and place every frame like it (frames drawn at one scale, e.g. an action whose big moving parts would pull a per-frame registration)")
@@ -99,7 +100,7 @@ def main():
     args = ap.parse_args()
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    master = fit_master(args.master, args.cell, args.fill)
+    master = rgba(Image.open(args.master).convert("RGBA").resize((args.cell, args.cell), Image.Resampling.LANCZOS)) if args.as_is else fit_master(args.master, args.cell, args.fill)
     ys, xs = np.where(master[..., 3] > .5)
     anchor = (float(np.median(xs)), float(ys.max()))
     core = ndimage.distance_transform_edt(master[..., 3] > .5) > args.core

@@ -119,7 +119,7 @@ def boots(img):
     return ((runs[0].min() + runs[-1].max()) / 2, ys.max()) if len(runs) >= 2 else None
 
 
-def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=256, fill=.80, lock_legs=False, free=""):
+def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=256, fill=.80, lock_legs=False, free="", as_is=False):
     d = WORK / cid.replace("/", "_") / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
@@ -132,6 +132,8 @@ def proc(cid, name, core=9999, whole=False, all_whole=False, keep=False, cell=25
     extra = ["--whole-loop"] if name == "idle" and core == 9999 or all_whole else ["--whole"] if whole else []
     if free:
         extra += ["--free", free]
+    if as_is:
+        extra.append("--as-is")
     out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, "--cell", cell, "--fill", fill, "--open", 1, "--min-area", 20, *extra)
     # A frame whose legs still do not match the master after placement (Codex moved the whole body)
     # is replaced like a clipped one: by the previous good frame, or by the rest pose near the end.
@@ -191,6 +193,6 @@ if __name__ == "__main__":
         core = next((int(f.split("=")[1]) for f in flags if f.startswith("--core=")), 9999)
         cell = next((int(f.split("=")[1]) for f in flags if f.startswith("--cell=")), 256)
         fill = next((float(f.split("=")[1]) for f in flags if f.startswith("--fill=")), .80)
-        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags, cell=cell, fill=fill, lock_legs="--lock-legs" in flags, free=next((f.split("=")[1] for f in flags if f.startswith("--free=")), ""))
+        proc(cid, name, core=core, whole="--whole" in flags, all_whole="--all-whole" in flags, keep="--keep" in flags, cell=cell, fill=fill, lock_legs="--lock-legs" in flags, free=next((f.split("=")[1] for f in flags if f.startswith("--free=")), ""), as_is="--as-is" in flags)
     else:
         accept(cid, name, args[0], whole="--whole" in flags)

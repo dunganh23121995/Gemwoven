@@ -89,11 +89,23 @@
       }
     }
     timer=requestAnimationFrame(tick);
+    // A hero's own drawn entrance (its element gathers and it takes shape); the form aura, if
+    // any, bursts out once the hero stands.
+    function entrance(){
+      if(reduced())return;
+      const ring=host.querySelector('.hero-form-effects');if(ring)ring.style.opacity='0';
+      preload(show.sheets.entrance).then(()=>play(show.sheets.entrance,140,()=>{
+        if(!ring||!stage.isConnected)return;
+        ring.style.opacity='';ring.style.transformOrigin='50% 66%';
+        ring.animate([{transform:'scale(.3)',opacity:0},{transform:'scale(1.25)',opacity:1,offset:.45},{transform:'scale(1)',opacity:1}],{duration:650,easing:'cubic-bezier(.2,.9,.3,1)'});
+      }));
+    }
     return {
       // The summoning entrance: Noct's soft smoke whirls up into a gloomy whirlwind and tightens
       // into a column; in it a cut opens in space and he steps out of the rift; only then does his
       // cloud ring burst out around him.
       summon(){
+        if(show.sheets.entrance&&!show.sheets.rift)return entrance();
         if(!show.sheets.rift||reduced())return;
         stage.style.opacity='0';
         setTimeout(()=>{

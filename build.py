@@ -121,7 +121,8 @@ for family in ['heroes', 'bosses']:
             meta = json.loads((base/'runtime-meta.json').read_text(encoding='utf-8'))
             if not meta['accepted']: raise ValueError(f'Unaccepted art: {base}')
             sheet = {'src':image(base.parent/f'{action}.webp'), 'cols':meta['columns'],
-                     'rows':meta['rows'], 'count':meta['frames'], 'heads':meta['headAnchors']}
+                     'rows':meta['rows'], 'count':meta['frames'], 'heads':meta['headAnchors'],
+                     **({'frameDuration':meta['frameDuration']} if meta['frames'] >= 8 else {})}
             art[family].setdefault(key,{})[action]=sheet
 for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
     for suffix in ['', '-bolt', '-bomb']:
