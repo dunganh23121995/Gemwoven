@@ -13,6 +13,20 @@ function spriteMarkup(family,key,action='idle'){
   const rig=family==='hero'&&key==='shadow'?'<i class="scythe-glint"></i>':'';
   return `<span class="sprite-body" role="img" aria-label="${name}" data-family="${family}" data-key="${key}" data-action="${action}" data-frame="0" data-loop="true" style="background-image:url('${sheet.src}');background-size:${sheet.cols*100}% ${sheet.rows*100}%;background-position:0% 0%">${rig}</span>`;
 }
+// Foes at rest now and then play one of their own short actions ("fidgets": an 8-frame sheet that
+// starts and ends in the resting pose), then go back to the idle loop. Returns true while one plays.
+function spriteFidget(el,def,playback,now){
+  playback.fidgetAt??=now+3000+Math.random()*4000;
+  if(!playback.fidget){
+    if(now<playback.fidgetAt)return false;
+    playback.fidget={sheet:def.fidgets[Math.floor(Math.random()*def.fidgets.length)],start:now};
+  }
+  const f=playback.fidget,frame=Math.floor((now-f.start)/(f.sheet.frameDuration||130));
+  if(frame>=f.sheet.count){playback.fidget=null;playback.fidgetAt=now+4000+Math.random()*4000;el.dataset.sheet='';return false;}
+  if(el.dataset.sheet!=='fidget'){el.style.backgroundImage=`url('${f.sheet.src}')`;el.style.backgroundSize=`${f.sheet.cols*100}% ${f.sheet.rows*100}%`;el.dataset.sheet='fidget';}
+  el.style.backgroundPosition=spriteCellPosition(f.sheet,frame);el.style.setProperty('--tween','0');el.dataset.frame=frame;el.dataset.action='idle';
+  return true;
+}
 function spriteCellPosition(sheet,frame){
   const col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   return `${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
@@ -66,6 +80,7 @@ function spriteTick(now){
     if(playback.manual)return;
     if(reduced){if(el.dataset.frame!=='0')spriteApply(el,playback.action,0);return;}
     const def=spriteDefinition(el.dataset.family,el.dataset.key,playback.action).sheet;
+    if(el.dataset.loop==='true'&&def.fidgets?.length&&!reduced&&spriteFidget(el,def,playback,now))return;
     if(el.dataset.loop==='true'){
       // Only dense, authored loops advance at rest. One/two/four-pose atlases
       // otherwise pop at shoulders, eyes and weapons; CSS supplies a smooth breath.

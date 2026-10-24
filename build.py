@@ -159,6 +159,17 @@ for name in ['boss-expansion-a','boss-expansion-b']:
 
 # The foes the campaign actually fields (world.js), so retired creatures are not embedded.
 campaign_foes=json.loads(subprocess.run(['node','-e',"const W=require('./src/gemwoven/world.js');console.log(JSON.stringify({foes:W.CHAPTERS.flatMap(c=>[...c.ordinary,...c.elites]),guards:W.EXPANSION.definitions.map(d=>d.theme)}))"],cwd=root,capture_output=True,text=True,check=True).stdout)
+# Occasional idle actions of an elite or boss (fidgets.json next to its idle; fidget.py).
+def fidget_sheets(folder):
+    book=folder/'fidgets.json'
+    if not book.exists():return []
+    return [{'src':image(folder/f['file']),'cols':2,'rows':4,'count':8,'frameDuration':130,'heads':[[128,48]]*8,'label':f['label']} for f in json.loads(book.read_text(encoding='utf-8'))['fidgets'] if (folder/f['file']).exists()]
+# Common foes rest in a lively 8-frame loop (assets/gemwoven/creatures/<id>/idle.webp, drawn by Codex
+# frame by frame); they strike in their resting pose.
+for folder in sorted((root/'assets/gemwoven/creatures').glob('*/idle.webp')):
+    if folder.parent.name not in campaign_foes['foes']:continue
+    idle={'src':image(folder),'cols':2,'rows':4,'count':8,'frameDuration':120,'heads':[[128,48]]*8}
+    art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':{**idle,'count':1,'heads':[[128,48]]},'portrait':''}
 # Humanoid elites (assets/gemwoven/elites/<id>/): a stabilized 8-frame idle (2x4, 256px cells);
 # their strikes hold the first idle pose, since combat supplies the lunge and recoil.
 for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
@@ -168,6 +179,7 @@ for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
     master=folder.with_name('master.png')
     if not master.exists():master=root/f'assets/gemwoven/items/creature-{folder.parent.name}.png'
     guard=folder.parent.name.split('-')[0] in campaign_foes['guards']
+    idle['fidgets']=fidget_sheets(folder.parent)
     art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if guard and master.exists() else ''}
 # A new elite whose idle is not drawn yet stands as its master painting.
 for master in sorted((root/'assets/gemwoven/elites').glob('*/master.png')):
@@ -195,7 +207,10 @@ for folder in sorted((root/'assets/gemwoven/boss-anim').glob('*/idle.webp')):
         for action,sheet in actions.items():
             if id(sheet) not in sheets:sheets[id(sheet)]={**sheet,'scale':round(sheet.get('scale',1)*ratio,4)}
             actions[action]=sheets[id(sheet)]
+    idle['fidgets']=fidget_sheets(folder.parent)
     actions['idle']=idle
+    hurt=folder.with_name('hurt.webp')
+    if hurt.exists():actions['hurt']={'src':image(hurt),'cols':2,'rows':4,'count':8,'heads':[[128,48]]*8}
     cast=folder.with_name('cast.webp')
     if family=='worldBosses' and cast.exists():
         sheet={'src':image(cast),'cols':3,'rows':2,'count':6,'heads':[[128,48]]*6}
