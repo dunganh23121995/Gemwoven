@@ -349,23 +349,23 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25, redone): a few well-spaced cues per ultimate, each ONE
-real recording minimally edited (excerpt with its natural attack and decay, gentle high-pass, gain, short
-fades; no layering, pitch or time changes, no synthesis), as form 1's sounds are. Clips:
-hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json (beat, source, checksums).
-Build: python scripts/prepare_mika_form_sounds.py.
-  Each clip is cut to its motion on screen (attack on the motion's frame, faded out before the next motion).
-  Hồ Diễm Long Trảm: sword raised = extracting_a_sword1 and the cleave = sword_attack1 (Taira Komori,
-  TK'S FREE SOUND FX, see the katana terms above); blade blazing = form 1's "fire-whoosh.wav" by hnhnh,
-  https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori); slam and burning cut =
-  #828433 "Fire Erupted" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/ (CC0).
-  Cửu Dương Hồ Diễm: tails flaring = #761330 "Magic Fire Spell Movement" by TheLittleCrow,
-  https://freesound.org/people/TheLittleCrow/sounds/761330/ (CC0); glaive drawn back = #186932
-  "fire_explosion.wav" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/ (CC0); spinning
-  sweep = #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/
-  (CC0); sun burst = #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/
-  (CC0); burn = #137262 "Water sizzle 1.wav" by xenognosis, https://freesound.org/people/xenognosis/sounds/137262/ (CC0).
-Sources in sources/freesound/<id>-<title>/ (source.json with URL, licence, SHA-256).
+Mika four- and six-star ultimates (2026-10-25, round 3): every visible segment scored for its whole
+duration (a continuous bed under synced hits), each clip ONE real recording minimally edited (excerpt with
+its natural attack and decay, gentle high-pass, gain, short fades; no layering, pitch or time changes, no
+synthesis), cut to the segment it scores. Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json
+(segment, source, checksums). Build: python scripts/prepare_mika_form_sounds.py.
+  Taira Komori, TK'S FREE SOUND FX (see the katana terms above): extracting_a_sword1 (sword raised),
+  sword_attack1 (the cleave).
+  Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
+  #490166 "Flamethrower" by SamsterBirdies, https://freesound.org/people/SamsterBirdies/sounds/490166/ (blade igniting and towering)
+  #828433 "Fire Erupted" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/ (slam through the foe)
+  #395039 "Flamethrower_Weapon_Long_Bursts.wav" by AslakHostaker, https://freesound.org/people/AslakHostaker/sounds/395039/ (flames roaring across the stage)
+  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (tails flaring)
+  #186932 "fire_explosion.wav" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/ (glaive drawn back)
+  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (spinning sweep)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (sun burst)
+  #252092 "fireball_impact2.wav" by pepingrillin, https://freesound.org/people/pepingrillin/sounds/252092/ (each spirit wave bursting)
+  #698209 "Fire Large Roar And Hiss With Crackles.mp3" by theoneandtruelybitch, https://freesound.org/people/theoneandtruelybitch/sounds/698209/ (the foe burning)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length
@@ -411,3 +411,45 @@ Freesound public HQ MP3 previews, all CC0 1.0 (https://creativecommons.org/publi
   #271370 "singing bowl strike sound" by inoshirodesign, https://freesound.org/people/inoshirodesign/sounds/271370/ (CC0)
   #352719 "Woosh (stick swung in the air)" by Dalesome, https://freesound.org/people/Dalesome/sounds/352719/ (CC0)
   #189630 "Spark" by elliott.klein, https://freesound.org/people/elliott.klein/sounds/189630/ (CC0)
+
+Lumi four- and six-star kit, round 3 (2026-10-25): every visible segment scored. Every star bolt now cracks
+(f2-bolt / f3-bolt, the same Spiers crack replayed per bolt), the finales keep the clap's natural tail, and the
+hanging signs get continuous beds: f2-arcs (the pentagram's crackling arcs: real 35 kV DC sparks) and f3-arcs
+(Tesla-coil discharge roaring under the galaxy's rain of bolts); f3-galaxy now sustains the rubbed singing bowl for
+the whole time the galaxy hangs. Still one recording per clip, excerpt + high-pass + gain + fades only.
+  #396470 "Electric Sparks.wav" by kev_durr, https://freesound.org/people/kev_durr/sounds/396470/ (CC0)
+  #415962 "high-voltage-discharge-2.wav" by follytowers, https://freesound.org/people/follytowers/sounds/415962/ (CC0)
+
+Nori four- and six-star ultimates, round 3 (2026-10-25): every visible segment is now scored for its whole length
+(healing spiral, hammer swing, blow, jade crack running and each of its bursts, vines/roots growing and holding,
+the shatter, the world-tree growing, leaves falling, the cage crumbling), still one natural recording per clip
+(excerpt, high-pass, gain, edge fades): continuous beds under synced hits. Form 1's own earth-launch now also
+plays for the shield charge. New and reused recordings (CC0 1.0), besides those of the section above:
+  hammer swing        #475135 "FX - Swoosh - Low Pitch" by bolkmar, https://freesound.org/people/bolkmar/sounds/475135/ (CC0)
+  jade shatter        #221528 "Glass Break" by unfa, https://freesound.org/people/unfa/sounds/221528/ (CC0)
+  crack run, roots    #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
+  crack bursts        #336023 "Rocks.wav" by adamgryu, https://freesound.org/people/adamgryu/sounds/336023/ (CC0, reused)
+  cage snapping       #552006 "Twig being snapped (multiple takes)" by ZoshP, https://freesound.org/people/ZoshP/sounds/552006/ (CC0, reused)
+
+
+Yuki form 2-3 ultimates, round 3 (2026-10-25; supersedes the Yuki form 2-3 list above): every visible
+segment is scored, a continuous bed (icy wind, singing glass, ice crackling, wind chimes) under a synced hit
+for each crack and burst, with form 1's ice-crack and deep-boom recordings for the cracks and the weight.
+Still one natural recording per clip (excerpt, high-pass, gain, edge fades). Clips: hero-forms/ice/*.wav.
+  crack       "ice-crack" by j_p_higgins, https://freesound.org/people/j_p_higgins/sounds/262633/ (CC0-1.0)
+  boom        "Deep Boom" by Za-Games, https://freesound.org/people/Za-Games/sounds/539968/ (CC0-1.0)
+  f2-wind     "FX Blizzard (JH).wav" by Johnnie_Holiday, https://freesound.org/people/Johnnie_Holiday/sounds/700233/ (CC0-1.0)
+  f2-moonrise "Belltree.aif" by acmkyne, https://freesound.org/people/acmkyne/sounds/145578/ (CC0-1.0)
+  f2-beam     "Woosh" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/683096/ (CC0-1.0)
+  f2-beamhum  "glass - singing wine glass - half full 05.wav" by Anthousai, https://freesound.org/people/Anthousai/sounds/447799/ (CC0-1.0)
+  f2-freeze   "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0-1.0)
+  f2-shatter  "Ice break" by humanoide9000, https://freesound.org/people/humanoide9000/sounds/329744/ (CC0-1.0)
+  f2-tinkle   "Glass break - Long" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/ (CC0-1.0)
+  f3-chimes   "Night Wind Chimes" by itsgabbo, https://freesound.org/people/itsgabbo/sounds/667173/ (CC0-1.0)
+  f3-aegis    "ice sounds 7.wav" by creeeeak, https://freesound.org/people/creeeeak/sounds/437323/ (CC0-1.0)
+  f3-fanopen  "Folding Fan - Opening" by nahkd123, https://freesound.org/people/nahkd123/sounds/805399/ (CC0-1.0)
+  f3-fan      "Short Wind/Air Woosh | A gust of wind" by NIKOKnecht, https://freesound.org/people/NIKOKnecht/sounds/569109/ (CC0-1.0)
+  f3-lotus    "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0-1.0)
+  f3-halberd  "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0-1.0)
+  f3-close    "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0-1.0)
+  f3-burst    "Glass break - Long" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/ (CC0-1.0)
