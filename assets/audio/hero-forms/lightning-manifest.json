@@ -1,266 +1,277 @@
 {
   "lightning-f2-summon": {
     "file": "hero-forms/lightning/f2-summon.wav",
-    "duration": 1.05,
-    "beat": "four-star ultimate: she raises her orb and the stars leave it",
+    "duration": 0.5,
+    "beat": "four-star ultimate 460-980: she raises her orb, the five stars leave it",
     "sources": [
-      "jcdecha, Wind_Chimes_single.wav (#235463)",
-      "arseniiv, crystal bell 01/08 (#614833, #614832)"
+      {
+        "title": "Mark Tree Fast Down Scale",
+        "author": "mbthetd",
+        "source_url": "https://freesound.org/people/mbthetd/sounds/796546/",
+        "file": "sources/freesound/796546-mark-tree-fast-down-scale/796546-mark-tree-fast-down-scale.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "bcabd347f31cdfd6c079a4c649ab1c490e1887cc7e7f86d1a354d4adf1c03f2a",
+        "excerpt": [
+          0.0,
+          0.5
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4161,
-    "rms": 0.1117,
-    "sha256": "22f8df54ee100499d90f3b04c657b037c2fc304973b168816abeb62ef723d954"
+    "processing": "one excerpt, 80 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.5424,
+    "rms": 0.1034,
+    "sha256": "b0029543681995791ef7d5d540bf637b56ebd6033158d7d8f4e265dcb4557cd7"
   },
-  "lightning-f2-star1": {
-    "file": "hero-forms/lightning/f2-star1.wav",
-    "duration": 0.42,
-    "beat": "four-star ultimate: star 1 reaches its place in the sky",
+  "lightning-f2-star": {
+    "file": "hero-forms/lightning/f2-star.wav",
+    "duration": 0.08,
+    "beat": "four-star ultimate 980-1330: one click as each star lands (5 x, 85 ms apart)",
     "sources": [
-      "NoisyRedFox, Crystal1 (#734238)",
-      "arseniiv, crystal bell 08 (#614832)"
+      {
+        "title": "quartz crystal tapping ceramic plate-004.wav",
+        "author": "CVLTIV8R",
+        "source_url": "https://freesound.org/people/CVLTIV8R/sounds/800115/",
+        "file": "sources/freesound/800115-quartz-crystal-tapping-ceramic-plate-004/800115-quartz-crystal-tapping-ceramic-plate-004.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "d89d596f4f026cea558aec5e6dee2b4158f0161f282d845017ee023a52f0e106",
+        "excerpt": [
+          0.42,
+          0.5
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0818,
-    "sha256": "c7b24500fd2e8468ef6002f3bced03fb90fd4c475a362bdd27d0e5d72b44529c"
-  },
-  "lightning-f2-star2": {
-    "file": "hero-forms/lightning/f2-star2.wav",
-    "duration": 0.42,
-    "beat": "four-star ultimate: star 2 reaches its place in the sky",
-    "sources": [
-      "NoisyRedFox, Crystal1 (#734238)",
-      "arseniiv, crystal bell 08 (#614832)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0691,
-    "sha256": "f2a32ceb825dec95efcbc16a3f4d8186df031c1a3b7e0c359be2a577ecf99d15"
-  },
-  "lightning-f2-star3": {
-    "file": "hero-forms/lightning/f2-star3.wav",
-    "duration": 0.42,
-    "beat": "four-star ultimate: star 3 reaches its place in the sky",
-    "sources": [
-      "NoisyRedFox, Crystal1 (#734238)",
-      "arseniiv, crystal bell 08 (#614832)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0714,
-    "sha256": "acfa85200a08290067985d8db9b8d8cd45bb41d93fd41377466fc6585023b4a1"
-  },
-  "lightning-f2-star4": {
-    "file": "hero-forms/lightning/f2-star4.wav",
-    "duration": 0.42,
-    "beat": "four-star ultimate: star 4 reaches its place in the sky",
-    "sources": [
-      "NoisyRedFox, Crystal1 (#734238)",
-      "arseniiv, crystal bell 08 (#614832)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0648,
-    "sha256": "b4b39cfb75ede90d8b76836ab1ce5740918b8563146e2b36913cac26721a919c"
-  },
-  "lightning-f2-star5": {
-    "file": "hero-forms/lightning/f2-star5.wav",
-    "duration": 0.42,
-    "beat": "four-star ultimate: star 5 reaches its place in the sky",
-    "sources": [
-      "NoisyRedFox, Crystal1 (#734238)",
-      "arseniiv, crystal bell 08 (#614832)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.064,
-    "sha256": "820b135c44595cce68cb5c57d50c480cade806db338263346836eda2e6a3dd00"
-  },
-  "lightning-f2-seal": {
-    "file": "hero-forms/lightning/f2-seal.wav",
-    "duration": 1.6,
-    "beat": "four-star ultimate: the pentagram closes (a crystal major chord with a crackle along its lines)",
-    "sources": [
-      "iospyrakis, crystal bell (#326368)",
-      "arseniiv, crystal bell 01/08 (#614833, #614832)",
-      "egomassive, Zap.ogg (Jacob's ladder, #536741)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0756,
-    "sha256": "1f82fa1835e951da41364e7791da426b60b4a43eec4bf745578e8fd62fddf27c"
+    "processing": "one excerpt, 300 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.7371,
+    "rms": 0.0695,
+    "sha256": "85dba4ac10b5a83611e6e41a7dfd6295547a3faa50723b40b3b01fd35e9c68db"
   },
   "lightning-f2-bolt": {
     "file": "hero-forms/lightning/f2-bolt.wav",
-    "duration": 0.62,
-    "beat": "four-star ultimate: one star fires its bolt; sparkle where it lands",
+    "duration": 0.24,
+    "beat": "four-star ultimate 1620-1860 and 1860-2100: bolts 1 and 3 strike (crack until the next cracking bolt)",
     "sources": [
-      "Simon Spiers, Very close lightning strike (#437243), first crack only",
-      "follytowers, high-voltage-discharge-2 (Tesla coil, #415962)",
-      "arseniiv, crystal bell 08 (#614832)"
+      {
+        "title": "Very close lightning strike.",
+        "author": "Simon Spiers",
+        "source_url": "https://freesound.org/people/Simon%20Spiers/sounds/437243/",
+        "file": "sources/thunder/simon-spiers-437243-hq.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "9e4169956c8ff03d204923cd4e8ef6c036c6724af92c269ef42e484ee583dbe7",
+        "excerpt": [
+          20.79,
+          21.03
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4776,
-    "rms": 0.0993,
-    "sha256": "db06019259e78b62852693dd6c88db1b2e6f95046f42cf8222c433299e174ef2"
+    "processing": "one excerpt, 40 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.9,
+    "rms": 0.2635,
+    "sha256": "e1d6da7940beafa5a9c3319905b40a148203807bfdbefd9f87d3834490c9aff0"
   },
-  "lightning-f2-finale": {
-    "file": "hero-forms/lightning/f2-finale.wav",
-    "duration": 1.5,
-    "beat": "four-star ultimate: the last bolt and the big star burst",
+  "lightning-f2-last": {
+    "file": "hero-forms/lightning/f2-last.wav",
+    "duration": 0.45,
+    "beat": "four-star ultimate 2100-2550: the last bolt and the big star burst (thunder clap, cut before its roll)",
     "sources": [
-      "Simon Spiers, Very close lightning strike (#437243), first crack only",
-      "follytowers, high-voltage-discharge-2 (#415962)",
-      "egomassive, Zap.ogg (#536741)",
-      "iospyrakis, crystal bell (#326368)",
-      "jcdecha, Wind_Chimes_single.wav (#235463)"
+      {
+        "title": "big thunder clap",
+        "author": "seth-m",
+        "source_url": "https://freesound.org/people/seth-m/sounds/458015/",
+        "file": "sources/thunder/seth-m-458015-hq.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3",
+        "excerpt": [
+          0.7,
+          1.15
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.073,
-    "sha256": "5f13d0d708fd376fbd0e4d0d238bfe7ef0a4bcecdd7ac8ec5dba0cecf4fe5070"
+    "processing": "one excerpt, 40 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.9,
+    "rms": 0.2231,
+    "sha256": "233e530c6cf05f9ea3f05a80c0ee122e86cf7d6eba007629099589ba84d74aec"
   },
-  "lightning-f2-throw": {
-    "file": "hero-forms/lightning/f2-throw.wav",
-    "duration": 0.42,
-    "beat": "four-star basic attack: she flings the crackling star",
+  "lightning-throw": {
+    "file": "hero-forms/lightning/throw.wav",
+    "duration": 0.23,
+    "beat": "basic attack, forms 2-3: the star / ring bolt leaves the weapon and flies (230 ms)",
     "sources": [
-      "Dalesome, Woosh (stick swung in the air) (#352719)",
-      "elliott.klein, Spark (#189630)"
+      {
+        "title": "Woosh (stick swung in the air)",
+        "author": "Dalesome",
+        "source_url": "https://freesound.org/people/Dalesome/sounds/352719/",
+        "file": "sources/freesound/352719-woosh-stick-swung-in-the-air/352719-woosh-stick-swung-in-the-air.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5dc0966b3f689fde08955ab18a3b8dc636cc3db96d105e90b427af54184c3016",
+        "excerpt": [
+          0.08,
+          0.31
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4501,
-    "rms": 0.1027,
-    "sha256": "7c0b17ed22881cd665ce996dc290b5552f9441ea59612f71bf30b24bfd873b08"
+    "processing": "one excerpt, 120 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.4633,
+    "rms": 0.0973,
+    "sha256": "d3c40c269cabc02fbf68ede3c307a8b1dde6ce55194337775a56ffc7e5d27987"
   },
   "lightning-f2-pop": {
     "file": "hero-forms/lightning/f2-pop.wav",
-    "duration": 0.55,
-    "beat": "four-star basic attack: the star bursts on the foe",
+    "duration": 0.17,
+    "beat": "four-star basic attack: the crackling star bursts on the foe (until the recovery frame)",
     "sources": [
-      "NoisyRedFox, Crystal1 (#734238)",
-      "elliott.klein, Spark (#189630)",
-      "arseniiv, crystal bell 01 (#614833)"
+      {
+        "title": "Spark",
+        "author": "elliott.klein",
+        "source_url": "https://freesound.org/people/elliott.klein/sounds/189630/",
+        "file": "sources/freesound/189630-spark/189630-spark.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "73081928ac0a508c07d1dfd984ebc9e6418e516b8401f377bdc93174a77c1ac7",
+        "excerpt": [
+          0.0,
+          0.17
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0734,
-    "sha256": "dce9b1684c57646c2895bbd6735bad8c7890c82c9d5403867c9cfa8717f5bb19"
+    "processing": "one excerpt, 300 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.9,
+    "rms": 0.0742,
+    "sha256": "d48a24ed37b6aa284eb74eb1d8201acbedc7eee2283bce41c9b348b071b315db"
   },
   "lightning-f3-galaxy": {
     "file": "hero-forms/lightning/f3-galaxy.wav",
-    "duration": 2.6,
-    "beat": "six-star ultimate: the orbit rings spin off the spear and open into the galaxy (it hums while it hangs)",
+    "duration": 0.95,
+    "beat": "six-star ultimate 460-1410: the orbit rings spin off and open into the galaxy (rubbed singing bowl swell)",
     "sources": [
-      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
-      "omnomducks, Wine glass hum (#338730)"
+      {
+        "title": "Tibetan_Singing_bowl_1",
+        "author": "TheGreenEyedGhost",
+        "source_url": "https://freesound.org/people/TheGreenEyedGhost/sounds/707797/",
+        "file": "sources/freesound/707797-tibetan-singing-bowl-1/707797-tibetan-singing-bowl-1.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "ccd035bca90f250ffaf113f13600950720e0023daafca8b354b6115c022fd81e",
+        "excerpt": [
+          0.2,
+          1.15
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4792,
-    "rms": 0.1108,
-    "sha256": "a69060521558bd70a5887a74087e88394e21992c161de4a5c68bf60c4115328b"
+    "processing": "one excerpt, 100 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.2357,
+    "rms": 0.1056,
+    "sha256": "45e777ac7ddaf59190761b01b17fb13f1b23dcdf6f4b4b8cd0dff2d380302be9"
   },
   "lightning-f3-twinkle": {
     "file": "hero-forms/lightning/f3-twinkle.wav",
-    "duration": 1.0,
-    "beat": "six-star ultimate: stars stream along the galaxy's arms ('tinh tinh')",
+    "duration": 0.45,
+    "beat": "six-star ultimate 1000-1450: stars twinkle along the galaxy's arms ('tinh tinh'); also her hop onto the spear",
     "sources": [
-      "arseniiv, crystal bell 08 (#614832)",
-      "jcdecha, Wind_Chimes_single.wav (#235463)"
+      {
+        "title": "Tingsha Cymbal",
+        "author": "steffcaffrey",
+        "source_url": "https://freesound.org/people/steffcaffrey/sounds/435074/",
+        "file": "sources/freesound/435074-tingsha-cymbal/435074-tingsha-cymbal.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "c21f4d8a2031203ac8ac9b380fe68558093d7e752f463ff04ab2d97936002ab6",
+        "excerpt": [
+          0.0,
+          0.45
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4623,
-    "rms": 0.1099,
-    "sha256": "626e22f9d9acd45be7fe98212d7994d4f442a78c1f99d1e4233a9cef30525a09"
+    "processing": "one excerpt, 300 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.7439,
+    "rms": 0.1039,
+    "sha256": "061e9d08a1c1aa6b21971b5f255617daa2d12ed2c6dfabbf1ea6468453f6b0ac"
   },
-  "lightning-f3-bolt1": {
-    "file": "hero-forms/lightning/f3-bolt1.wav",
-    "duration": 0.42,
-    "beat": "six-star ultimate: one of the nine star bolts (two takes, alternated)",
+  "lightning-f3-bolt": {
+    "file": "hero-forms/lightning/f3-bolt.wav",
+    "duration": 0.38,
+    "beat": "six-star ultimate 1450-1840 and 1840-2230: bolts 1 and 5 of nine strike (crack until the next cracking bolt)",
     "sources": [
-      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
-      "follytowers, high-voltage-discharge-2 (#415962)",
-      "Simon Spiers, Very close lightning strike (#437243), first crack only"
+      {
+        "title": "Very close lightning strike.",
+        "author": "Simon Spiers",
+        "source_url": "https://freesound.org/people/Simon%20Spiers/sounds/437243/",
+        "file": "sources/thunder/simon-spiers-437243-hq.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "9e4169956c8ff03d204923cd4e8ef6c036c6724af92c269ef42e484ee583dbe7",
+        "excerpt": [
+          20.79,
+          21.17
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4458,
-    "rms": 0.1094,
-    "sha256": "47b379b9a5265c8efc09f2b1ee70748a8f09c2415e799636959edd027e9249fd"
+    "processing": "one excerpt, 40 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.9,
+    "rms": 0.2304,
+    "sha256": "378e35a0a23c47cc3004b8fada2079003f5b15b25924de792510d4fe3eeb2904"
   },
-  "lightning-f3-bolt2": {
-    "file": "hero-forms/lightning/f3-bolt2.wav",
-    "duration": 0.42,
-    "beat": "six-star ultimate: one of the nine star bolts (two takes, alternated)",
+  "lightning-f3-last": {
+    "file": "hero-forms/lightning/f3-last.wav",
+    "duration": 0.7,
+    "beat": "six-star ultimate 2230-2930: the last bolt from the galaxy's heart and the ring burst (the whole thunder clap, cut before its roll)",
     "sources": [
-      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
-      "follytowers, high-voltage-discharge-2 (#415962)",
-      "Simon Spiers, Very close lightning strike (#437243), first crack only"
+      {
+        "title": "big thunder clap",
+        "author": "seth-m",
+        "source_url": "https://freesound.org/people/seth-m/sounds/458015/",
+        "file": "sources/thunder/seth-m-458015-hq.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3",
+        "excerpt": [
+          0.7,
+          1.4
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.4228,
-    "rms": 0.1097,
-    "sha256": "0685e5721e7f8b8df446b63468e3b6bad57b833d8baa058628e820795b28b52f"
-  },
-  "lightning-f3-finale": {
-    "file": "hero-forms/lightning/f3-finale.wav",
-    "duration": 2.0,
-    "beat": "six-star ultimate: the last bolt from the galaxy's heart and the ring burst",
-    "sources": [
-      "inoshirodesign, singing bowl strike sound (#271370)",
-      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
-      "Simon Spiers, Very close lightning strike (#437243), first crack only",
-      "follytowers, high-voltage-discharge-2 (#415962)",
-      "iospyrakis, crystal bell (#326368)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0823,
-    "sha256": "d685f979873f8364201140b6cd29a12a5228221870f76aa75ceb8b0db9553520"
-  },
-  "lightning-f3-shot": {
-    "file": "hero-forms/lightning/f3-shot.wav",
-    "duration": 0.5,
-    "beat": "six-star basic attack: the orbit-ring bolt leaves the spear",
-    "sources": [
-      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
-      "arseniiv, crystal bell 08 (#614832)"
-    ],
-    "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0963,
-    "sha256": "44405bf4b47f498916a0096d9e9ee56d4ee35d8b7cf537aeeb66891868867e51"
+    "processing": "one excerpt, 35 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.9,
+    "rms": 0.2157,
+    "sha256": "80a78028a5a162acd95f7ca4d31cca9b1974cfb05c5b236a9ea7530ae0d03803"
   },
   "lightning-f3-ring": {
     "file": "hero-forms/lightning/f3-ring.wav",
-    "duration": 0.8,
-    "beat": "six-star basic attack: the ring shockwave on the foe",
+    "duration": 0.35,
+    "beat": "six-star basic attack: the orbit-ring shockwave on the foe (until the recovery frame)",
     "sources": [
-      "inoshirodesign, singing bowl strike sound (#271370)",
-      "follytowers, high-voltage-discharge-2 (#415962)",
-      "NoisyRedFox, Crystal1 (#734238)"
+      {
+        "title": "singing bowl strike sound",
+        "author": "inoshirodesign",
+        "source_url": "https://freesound.org/people/inoshirodesign/sounds/271370/",
+        "file": "sources/freesound/271370-singing-bowl-strike-sound/271370-singing-bowl-strike-sound.mp3",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "5841d9a2a3ad026c69ec9c72f0a604a540e48235a0bc9aaf5c1c900986f780bc",
+        "excerpt": [
+          0.02,
+          0.37
+        ]
+      }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
-    "peak": 0.482,
-    "rms": 0.0854,
-    "sha256": "6e874bc438d74cc3d9a93c871364c9bba6e485387658f02679a198d84a410976"
+    "processing": "one excerpt, 120 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.3663,
+    "rms": 0.105,
+    "sha256": "3aa45f6b6909e8547202adb8fcbec82e8ddea4b7d2d287b8768c941b37aa0a39"
   }
 }

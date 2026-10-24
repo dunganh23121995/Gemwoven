@@ -86,7 +86,7 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
       setSpriteFrame('hero','attack',pose.windup);
       if(!reduced)pending.push(animate(root,[{transform:old||'none'},{transform:'translate(-6px,-2px)'}],{duration:150,easing:'ease-out',fill:'forwards'}));
       await wait(i?110:170);
-      setSpriteFrame('hero','attack',pose.launch);lumiSound(form===3?'f3-shot':'f2-throw',{volume:.34,pan:-.15},true);
+      setSpriteFrame('hero','attack',pose.launch);lumiSound('throw',{volume:.34,pan:-.15},true);
       const body=lumiFoeBody(),from=lumiTip(form,'attack',pose.launch),to={x:body.x-body.width*.08,y:body.top+body.height*.45};
       if(!reduced)pending.push(animate(root,[{transform:'translate(-6px,-2px)'},{transform:'translate(3px,0px)'},{transform:old||'none'}],{duration:320,easing:'ease-out'}));
       await lumiThrow(projectile,from,to,form===3?Math.min(118,body.height*.85+30):Math.min(104,body.height*.7+30),reduced?1:230);
@@ -113,8 +113,9 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
 function lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending){
   const result=damage('hero',raw/count,ledger),last=i===count-1;
   combatVoice('enemy','hurt');
-  // A crisp electric zap per bolt (no thunder roll: there is no storm cloud in these forms).
-  lumiSound(last?`f${form}-finale`:form===3?'f3-bolt'+(1+i%2):'f2-bolt',{volume:last?.5:form===3?.28:.32,pan:.22+(i%2?.08:-.08)},i===0||last);
+  // A few crisp lightning cracks, spaced out (every 2nd bolt of five, every 4th of nine, and the last), each cut
+  // before the next cracking bolt; no thunder roll: there is no storm cloud in these forms.
+  if(last||i%(form===3?4:2)===0)lumiSound(last?`f${form}-last`:`f${form}-bolt`,{volume:last?(form===3?.95:.85):.7,pan:.22+(i%2?.08:-.08)},i===0||last);
   combatV3Camera(1,true,false,pending);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents('hero',result,false,pending);
   setSpriteAction('enemy','hurt',230);lumiRecoil(target,oldTarget,last,pending);
@@ -140,7 +141,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   try{
     combatVoice('hero','cast');warmLumiSounds(form);popActorSkill('hero',HEROES.lightning.skill,true,pending);
     setSpriteFrame('hero','skill',0);await at(200);setSpriteFrame('hero','skill',1);await at(460);setSpriteFrame('hero','skill',2);
-    root.dataset.ragePhase='summon';root.dataset.lumiSky='true';lumiSound(form===3?'f3-galaxy':'f2-summon',{volume:form===3?.42:.36,pan:.1},true);
+    root.dataset.ragePhase='summon';root.dataset.lumiSky='true';lumiSound(form===3?'f3-galaxy':'f2-summon',{volume:form===3?.5:.36,pan:.1},true);
     const tip=lumiTip(form,'skill',2);
     // Five stars on the seal's circle (its drawn radius is .36 of the cell), top first, clockwise.
     const stars=Array.from({length:5},(_,k)=>{const a=-Math.PI/2+k*2*Math.PI/5;return {x:sky.x+Math.cos(a)*sign*.36,y:sky.y+Math.sin(a)*sign*.36};});
@@ -150,7 +151,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       const motes=[];
       stars.forEach((p,k)=>{
         const leave=520+k*85,land=leave+460;
-        pending.push(at(land).then(()=>lumiSound(`f2-star${k+1}`,{volume:.34,pan:.05+k*.05},k===0)));
+        pending.push(at(land).then(()=>lumiSound('f2-star',{volume:.3,pan:.05+k*.05},k===0)));
         const mote=lumiFx('idlestar',tip,sign*.17,{loop:true,cls:'lumi-mote'});if(!mote)return;motes.push(mote);
         const to={translate:`calc(-50% + ${p.x-tip.x}px) calc(-50% + ${p.y-tip.y}px)`,scale:'1.15'};
         mote.style.opacity='0';
@@ -159,18 +160,17 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       await at(1100);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
       await at(1320);
       seal=lumiFx('pentagram',sky,sign,{frames:[0,1,2,3,4,5],frameMs:80,loop:3,cls:'lumi-sky'});motes.forEach(mote=>mote.remove());
-      pending.push(at(1480).then(()=>lumiSound('f2-seal',{volume:.42,pan:.2},true)));
       await at(1500);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }else{
       // The rings around her spear's star spin off it and open into a galaxy over the foe (laser sweep
-      // into a spatial hum), stars twinkle along its arms ("tinh tinh").
+      // rubbed singing-bowl swell), stars twinkle along its arms ("tinh tinh").
       galaxy=lumiFx('galaxy',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:5,cls:'lumi-sky'});
       if(galaxy){
         galaxy.style.scale='.6';
         spin=galaxy.animate([{rotate:'0deg'},{rotate:'-360deg'}],{duration:4200,iterations:Infinity});
         pending.push(animate(galaxy,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:640,delay:480,easing:'cubic-bezier(.45,.05,.3,1)',fill:'both'}).then(()=>{galaxy.style.left=sky.x+'px';galaxy.style.top=sky.y+'px';galaxy.style.scale='1';}));
       }
-      pending.push(at(1000).then(()=>lumiSound('f3-twinkle',{volume:.34,pan:.15})));
+      pending.push(at(1000).then(()=>lumiSound('f3-twinkle',{volume:.32,pan:.15})));
       await at(1080);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
       await at(1340);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }
@@ -202,8 +202,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   }
 }
 // Her kit's own sounds (assets/audio/hero-forms/lightning, scripts/prepare_lumi_form_sounds.py).
-const LUMI_SOUNDS={2:['f2-summon','f2-star1','f2-star2','f2-star3','f2-star4','f2-star5','f2-seal','f2-bolt','f2-finale','f2-throw','f2-pop'],
-  3:['f3-galaxy','f3-twinkle','f3-bolt1','f3-bolt2','f3-finale','f3-shot','f3-ring']};
+const LUMI_SOUNDS={2:['f2-summon','f2-star','f2-bolt','f2-last','throw','f2-pop'],3:['f3-galaxy','f3-twinkle','f3-bolt','f3-last','throw','f3-ring']};
 function warmLumiSounds(form){
   const context=combatV3AudioContext();if(!context)return;
   for(const name of LUMI_SOUNDS[form]||[])if(ART.castSounds['lightning-'+name])decodeCastSound(context,'lightning-'+name).catch(()=>{});
