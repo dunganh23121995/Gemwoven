@@ -1,0 +1,35 @@
+Foe idle motion recipe (approved by the user on the pilots: forest-rootknight, fire, mire)
+
+Tool: python assets/gemwoven/elites/fidget.py (read its docstring). Art only from Codex (codex_image_gen.py via
+the tool); never stretch, warp or squash a master in code: every moving frame is a real Codex drawing.
+Model ladder: start gpt-6.1-sol low; escalate (sol medium, sol high, gpt-6-astra medium, gpt-6-astra high) only when
+the result fails review. Generate sequentially.
+
+ELITES AND BOSSES: keep their current calm idle; add TWO occasional actions ("fidgets") each, designed for THAT
+character from its master image and brief: something it would do while waiting for battle, using what it has
+(weapon, shield, staff, wings, tail, claws, a glowing core, a lantern, a book, a hat...). Examples the user approved:
+  knight: "brings the shield forward and taps the mace on it twice" / "rests the mace on his shoulder, holds, lowers"
+  dragon: "the lava cracks on the chest flare bright then cool" / "spreads its wings wide, holds, folds them"
+  mushroom witch: "taps her staff on the ground twice, the spore bulb pulses" / "straightens her mushroom cap"
+Write the action as frames 2-7 (frame 1 and 8 = rest), name the parts that move, say everything else (body, legs,
+face) stays exactly as in Image 1. Keep motion local; whole-body moves look wrong. Prefer a weapon/limb gesture plus a
+glow/element accent, and make the two fidgets different in kind.
+  gen   python fidget.py gen <id> <name> sol low "<what it is>" "<action>"
+  proc  python fidget.py proc <id> <name>            (add --whole only for big moves where Codex shifts the body or
+                                                       head too, e.g. wings opening wide: then frames are used whole)
+  check READ .build-cache/fidgets/<id>/<name>/fidget.webp (2x4, 256 cells). Reject and regenerate when:
+        a part appears twice (old pose left behind = ghost), the face/head is distorted or redrawn differently,
+        the body jumps in size or position, a frame is cut off, the action is not what was asked, colours drift.
+        Look at the face at 2x zoom. A ghost head/limb with normal proc means: try --whole, or regenerate.
+  accept python fidget.py accept <id> <name> "<Vietnamese label>" [--whole]
+  The tool replaces clipped/misplaced frames by held ones; a fidget where more than two frames were replaced is
+  rejected (regenerate).
+
+COMMON FOES: one looping 8-frame idle each, lively like Motocombat battle monsters: a squash-and-stretch hop,
+bob or sway that suits the creature (slime squishes and bounces, bat flaps and hovers, bird bobs and ruffles,
+crab sways side to side with claws up, plant creature sways, ghost floats). Frames are whole Codex drawings.
+  gen   python fidget.py gen <id> idle sol low "<what it is>" "<the loop>" --loop
+  proc  python fidget.py proc <id> idle --whole
+  check same rules (no size jumps beyond the squash, no redesign between frames, smooth loop)
+  accept python fidget.py accept <id> idle "Nghỉ"
+Master images: assets/gemwoven/items/creature-<id>.png, or monster-<id>.png for slime, acorn, bat.

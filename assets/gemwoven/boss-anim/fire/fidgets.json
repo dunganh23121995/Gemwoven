@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "lavachest",
+      "label": "Ngực rực dung nham",
+      "file": "lavachest.webp",
+      "whole": false
+    },
+    {
+      "name": "wings",
+      "label": "Vươn cánh",
+      "file": "wings.webp",
+      "whole": true
+    }
+  ]
+}

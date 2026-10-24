@@ -32,7 +32,7 @@ Everything opaque: no smoke, mist, steam, haze, glow halos, motion lines or loos
 
 
 def master_of(cid):
-    for p in [ROOT / f"assets/gemwoven/elites/{cid}/master.png", ROOT / f"assets/gemwoven/items/creature-{cid}.png"]:
+    for p in [ROOT / f"assets/gemwoven/elites/{cid}/master.png", ROOT / f"assets/gemwoven/items/creature-{cid}.png", ROOT / f"assets/gemwoven/items/monster-{cid}.png"]:
         if p.exists():
             return p
     if cid in BASE:

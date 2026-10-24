@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "tapshield",
+      "label": "Gõ chùy vào khiên",
+      "file": "tapshield.webp",
+      "whole": false
+    },
+    {
+      "name": "shoulder",
+      "label": "Vác chùy lên vai",
+      "file": "shoulder.webp",
+      "whole": false
+    }
+  ]
+}
