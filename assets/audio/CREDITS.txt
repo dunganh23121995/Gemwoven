@@ -280,3 +280,101 @@ by a hero; unchanged: pitch-preserving tempo, EQ, light double, small room tail)
 
 Older downloads kept under sources/freesound but no longer used by any clip:
 #82325, #204963, #346140, #412940, #472401, #479814, #529462, #802601, #848983, #848984
+
+Yuki four- and six-star ultimates (2026-10-25): one clip per visual beat of Nguyệt Sương Băng Giáng
+(f2-moonrise, f2-beam, f2-spikes, f2-freeze, f2-shatter) and Thiên Nguyệt Tuyết Liên (f3-aegis, f3-fan,
+f3-bloom, f3-halberd, f3-close, f3-burst), all from real recordings: excerpts, resampling for pitch, band
+filters, fades, layering, short stereo reflections and a soft peak limiter; no synthesis.
+Clips: hero-forms/ice/*.wav, manifest hero-forms/ice-manifest.json (beat, sources, checksums).
+Build: python scripts/prepare_yuki_form_sounds.py. Sources kept in sources/freesound/<id>-<slug>/ with
+source.json; Freesound public HQ MP3 previews, all CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/).
+  #271355 "PB Bar Chimes (long)" by petebuchwald, https://freesound.org/people/petebuchwald/sounds/271355/ (CC0)
+  #145578 "Belltree.aif" by acmkyne, https://freesound.org/people/acmkyne/sounds/145578/ (CC0)
+  #639429 "Crystal Twinkle" by LaurenPonder, https://freesound.org/people/LaurenPonder/sounds/639429/ (CC0)
+  #614832 "2022-01-14-crystal-bell-08.flac" by arseniiv, https://freesound.org/people/arseniiv/sounds/614832/ (CC0)
+  #683096 "Woosh" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/683096/ (CC0)
+  #452645 "ice grinding cracking freezing designed.wav" by kyles, https://freesound.org/people/kyles/sounds/452645/ (CC0)
+  #844260 "Subzero Frost Loop (Short)" by qubodup, https://freesound.org/people/qubodup/sounds/844260/ (CC0)
+  #329744 "Ice break" by humanoide9000, https://freesound.org/people/humanoide9000/sounds/329744/ (CC0)
+  #422633 "Break something (ice/glass/...)" by Aurelon, https://freesound.org/people/Aurelon/sounds/422633/ (CC0)
+  #437323 "ice sounds 7.wav" by creeeeak, https://freesound.org/people/creeeeak/sounds/437323/ (CC0)
+  #745014 "Glass Ping" by tix99, https://freesound.org/people/tix99/sounds/745014/ (CC0)
+  #805399 "Folding Fan - Opening" by nahkd123, https://freesound.org/people/nahkd123/sounds/805399/ (CC0)
+  #569109 "Short Wind/Air Woosh | A gust of wind" by NIKOKnecht, https://freesound.org/people/NIKOKnecht/sounds/569109/ (CC0)
+  #507466 "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0)
+  #240640 "Metallic Whoosh.wav" by MissCellany, https://freesound.org/people/MissCellany/sounds/240640/ (CC0)
+  #703115 "crush1.wav" by franzzle, https://freesound.org/people/franzzle/sounds/703115/ (CC0)
+  #789213 "Glass break - Long" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/789213/ (CC0)
+  #858114 "Crystal Bell — Bb3" by bassimat, https://freesound.org/people/bassimat/sounds/858114/ (CC0)
+
+Lumi four- and six-star kit (2026-10-25): no thunder roll (forms 2-3 have no storm cloud). Tinh Lôi Ngũ Phạt:
+f2-summon (chime shimmer as she raises the orb), f2-star1..5 (one crystal "kịch" per star, rising), f2-seal
+(crystal chord as the pentagram closes), f2-bolt / f2-finale (crack + Tesla zap + sparkle); basic attack
+f2-throw / f2-pop. Cửu Thiên Tinh Phạt: f3-galaxy (slinky-laser sweep into a wine-glass hum), f3-twinkle,
+f3-bolt1/2 (slinky laser + zap), f3-finale (singing-bowl ring burst); basic attack f3-shot / f3-ring.
+All from real recordings: excerpts, resampling for pitch, band filters, fades, layering and a soft peak
+limiter; no synthesis. Clips: hero-forms/lightning/*.wav, manifest hero-forms/lightning-manifest.json (beat,
+sources, checksums). Build: python scripts/prepare_lumi_form_sounds.py. Sources kept in
+sources/freesound/<id>-<slug>/ with source.json; Freesound public HQ MP3 previews, all CC0 1.0
+(https://creativecommons.org/publicdomain/zero/1.0/). The bolts reuse only the first close crack of
+Simon Spiers' "Very close lightning strike" (#437243, sources/thunder, already credited above).
+  #614832 "2022-01-14-crystal-bell-08.flac" by arseniiv, https://freesound.org/people/arseniiv/sounds/614832/ (CC0)
+  #614833 "2022-01-14-crystal-bell-01.flac" by arseniiv, https://freesound.org/people/arseniiv/sounds/614833/ (CC0)
+  #734238 "Crystal1" by NoisyRedFox, https://freesound.org/people/NoisyRedFox/sounds/734238/ (CC0)
+  #326368 "crystal bell" by iospyrakis, https://freesound.org/people/iospyrakis/sounds/326368/ (CC0)
+  #271370 "singing bowl strike sound" by inoshirodesign, https://freesound.org/people/inoshirodesign/sounds/271370/ (CC0)
+  #235463 "Wind_Chimes_single.wav" by jcdecha, https://freesound.org/people/jcdecha/sounds/235463/ (CC0)
+  #415962 "high-voltage-discharge-2.wav" by follytowers, https://freesound.org/people/follytowers/sounds/415962/ (CC0)
+  #536741 "Zap.ogg" by egomassive, https://freesound.org/people/egomassive/sounds/536741/ (CC0)
+  #189630 "Spark" by elliott.klein, https://freesound.org/people/elliott.klein/sounds/189630/ (CC0)
+  #338730 "Wine glass hum" by omnomducks, https://freesound.org/people/omnomducks/sounds/338730/ (CC0)
+  #411928 "Lasers Firing (slinky).m4a" by SoaringAaronJohnson51397, https://freesound.org/people/SoaringAaronJohnson51397/sounds/411928/ (CC0)
+  #352719 "Woosh (stick swung in the air)" by Dalesome, https://freesound.org/people/Dalesome/sounds/352719/ (CC0)
+
+Nori four- and six-star ultimates (2026-10-25): one clip per visual beat of Ngọc Thụ Hộ Thể (hammer raised,
+hammer into the ground, jade sapling binding the foe) and Vạn Mộc Thiên Thành (hammer raised, hammer slam,
+world-tree rising); the shield bash keeps earth-shield-bash. Edited from real recordings: windows, resampled
+pitch, EQ, layering, fades and a soft limiter; no synthesis. Clips: hero-forms/earth/*.wav, manifest
+hero-forms/earth-manifest.json (sources, checksums). Build: python scripts/prepare_nori_form_sounds.py.
+Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the credited shield bash above:
+  #648958 "Plant Growing" by IENBA, https://freesound.org/people/IENBA/sounds/648958/ (CC0)
+  #479160 "Big plants (crops) growing quickly" by Contant_aghony, https://freesound.org/people/Contant_aghony/sounds/479160/ (CC0)
+  #735401 "Ice - Fracture, roots or growing plants" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/735401/ (CC0)
+  #368453 "LeavesRustling.mp3" by SierraHWills, https://freesound.org/people/SierraHWills/sounds/368453/ (CC0)
+  #419146 "Ringing sound from crystal glass. Tune: C" by PappaBert, https://freesound.org/people/PappaBert/sounds/419146/ (CC0)
+  #707618 "Xylophone crystal chimes" by lori.mortimer, https://freesound.org/people/lori.mortimer/sounds/707618/ (CC0)
+  #218163 "Slow wooden creaks x5" by peridactyloptrix, https://freesound.org/people/peridactyloptrix/sounds/218163/ (CC0)
+  #848983 "trees_creaking_loudl" by Sprust, https://freesound.org/people/Sprust/sounds/848983/ (CC0, reused)
+  #513694 "impact-stone-heavy.wav" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/ (CC0, reused)
+  #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
+  "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
+
+Mika four- and six-star ultimates (2026-10-25): one clip per visual beat of Hồ Diễm Long Trảm (sword raised
+and set alight, blade blazing up into fox-fire, overhead cleave, slam through the foe, burning cut on the
+floor, sword settling) and Cửu Dương Hồ Diễm (nine tails flaring into a sun, glaive drawn back and growing,
+flat spinning sweep, colossal crescent cut, nine-tailed sun burst, nine fox-fire spirits running in and
+bursting, the burn taking hold). Edited from real recordings: excerpts, resampled pitch, EQ, layering,
+fades and a soft limiter; no synthesis. Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json
+(sources, checksums). Build: python scripts/prepare_mika_form_sounds.py.
+Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0:
+  #107589 "unsheath_sword.wav" by Qat, https://freesound.org/people/Qat/sounds/107589/ (CC0)
+  #137262 "Water sizzle 1.wav" by xenognosis, https://freesound.org/people/xenognosis/sounds/137262/ (CC0)
+  #181563 "Fire Crackling 01.wav" by kingsrow, https://freesound.org/people/kingsrow/sounds/181563/ (CC0)
+  #186374 "Bonfire Being Lit" by samararaine, https://freesound.org/people/samararaine/sounds/186374/ (CC0)
+  #186932 "fire_explosion.wav" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/ (CC0)
+  #244926 "fire-whoosh.wav" by hnhnh, https://freesound.org/people/hnhnh/sounds/244926/ (CC0)
+  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (CC0)
+  #352719 "Woosh (stick swung in the air)" by Dalesome, https://freesound.org/people/Dalesome/sounds/352719/ (CC0, reused)
+  #431174 "Fireball Explosion.wav" by Blankened, https://freesound.org/people/Blankened/sounds/431174/ (CC0)
+  #463766 "up swish x2 HZA 07-03-2019.wav" by hz37, https://freesound.org/people/hz37/sounds/463766/ (CC0)
+  #483316 "R09-74-Fire Torch.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/ (CC0)
+  #507466 "Clean fast Swoosh.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/ (CC0, reused)
+  #513694 "impact-stone-heavy.wav" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/ (CC0, reused)
+  #632344 "Shimmer" by adh.dreaming, https://freesound.org/people/adh.dreaming/sounds/632344/ (CC0)
+  #719638 "Lasso rope being spun, spinning through air then throw" by zapsplat.com, https://freesound.org/people/zapsplat.com/sounds/719638/ (CC0)
+  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (CC0)
+  #786713 "Shing!" by TheAcidRomance, https://freesound.org/people/TheAcidRomance/sounds/786713/ (CC0)
+  #827320 "Dog Running Past" by qubodup, https://freesound.org/people/qubodup/sounds/827320/ (CC0)
+  #828433 "Fire Erupted" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/ (CC0)
+  #832436 "Fox screaming during the night" by felix.blume, https://freesound.org/people/felix.blume/sounds/832436/ (CC0, reused)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (CC0)
