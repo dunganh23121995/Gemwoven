@@ -114,7 +114,9 @@ function mikaFlash(pending,kind){
 
 // ---- Sound: one clip per beat (assets/audio/hero-forms/fire, scripts/prepare_mika_form_sounds.py) ----
 // A few well-spaced cues, each one natural recording (never more than two sounding at once).
-const MIKA_SOUNDS={2:['f2-raise','f2-blaze','f2-cleave','f2-impact','f2-roar'],3:['f3-flare','f3-draw','f3-sweep','f3-sun','f3-fireball','f3-burning']};
+// Each ultimate ends on a long roaring-fire tail from the hit, ringing out past the visuals (as form 1's
+// 3.9 s flame whoosh does).
+const MIKA_SOUNDS={2:['f2-raise','f2-blaze','f2-cleave','f2-impact','f2-tail'],3:['f3-flare','f3-draw','f3-sweep','f3-sun','f3-fireball','f3-tail']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -175,12 +177,10 @@ async function mikaLongCleave(raw,onRelease){
       arc={node:mikaFxNode('arc2','mika-arc')};arc.node.style.cssText+=`;left:${c.x}px;top:${c.y}px;width:${size}px;height:${size}px`;mikaFxFrame(arc.node,'arc2',0);}}
     await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';setSpriteFrame('hero','skill',3);
-    result=mikaContact(raw,onRelease,pending);mikaSound('f2-impact',.5,.3);
+    result=mikaContact(raw,onRelease,pending);mikaSound('f2-impact',.5,.3);mikaSound('f2-tail',.44,.2);
     // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
     // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
     const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));
-    // The flames roar across the stage while the blade lies through the foe and the floor cut burns.
-    pending.push(wait(reduced?0:80).then(()=>mikaSound('f2-roar',.46,.2)));
     pending.push(wait(reduced?0:80).then(()=>mikaBurst('impact2',{x:foe.x-foe.width*.1,y:foe.bottom-cut*.03},cut,pending,{hold:1.15,className:'mika-floor-cut'})));
     mikaShake(pending,1);mikaFlash(pending,'cleave');combatV3Camera(1,true,state.boss,pending);
     if(arc){const node=arc.node;pending.push((async()=>{await wait(90);mikaFxFrame(node,'arc2',2);await wait(110);mikaFxFrame(node,'arc2',3);await animate(node,[{opacity:1},{opacity:0}],{duration:220,fill:'forwards'});})().finally(()=>node.remove()));}
@@ -259,15 +259,12 @@ async function mikaNineSunSweep(raw,onRelease){
     if(!reduced&&mikaSheet('ring3')){ring=mikaFxNode('ring3','mika-ring');const width=reach*2/.94;ring.style.cssText+=`;width:${width}px;height:${width*mikaSheet('ring3').height/mikaSheet('ring3').width}px`;mikaFxFrame(ring,'ring3',0);}
     await at(SWEEP+100);setSpriteFrame('hero','skill',3);if(ring)mikaFxFrame(ring,'ring3',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';delete root.dataset.mikaFlare;
-    result=mikaContact(raw,onRelease,pending);mikaSound('f3-sun',.52,.3);
+    result=mikaContact(raw,onRelease,pending);mikaSound('f3-sun',.52,.3);mikaSound('f3-tail',.42,.25);
     mikaBurst('impact3',{x:foe.x,y:foe.y},Math.min($('scene').clientWidth*.85,Math.max(foe.width,foe.height)*1.9),pending,{hold:1.25,fade:240});
     mikaShake(pending,1.25);mikaFlash(pending,'sun');combatV3Camera(1,true,state.boss,pending);
     if(ring){const node=ring;pending.push((async()=>{await wait(110);mikaFxFrame(node,'ring3',2);await wait(170);mikaFxFrame(node,'ring3',3);await animate(node,[{opacity:1},{opacity:0}],{duration:260,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+130);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='spirits';
     mikaFoxSpirits({x:mikaGrip(3,4).x,foot:hero.foot},foe,pending);
-    // The spirits are fire: a large fire roars and crackles from their run until the last wave's flames
-    // are gone (~1300 ms), a continuous bed under the per-wave fireball hits.
-    mikaSound('f3-burning',.34,.3);
     await at(2350);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
     await at(2850);await Promise.all(pending);return result;
   }finally{

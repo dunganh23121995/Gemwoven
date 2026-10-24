@@ -20,22 +20,22 @@
   },
   "fire-f2-blaze": {
     "file": "hero-forms/fire/f2-blaze.wav",
-    "duration": 1.17,
-    "beat": "fox-fire blade ignites and towers (0-1170 ms)",
+    "duration": 1.3,
+    "beat": "fox-fire blade ignites and towers (0-1300 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Flamethrower",
-        "author": "SamsterBirdies",
-        "source_url": "https://freesound.org/people/SamsterBirdies/sounds/490166/",
+        "title": "Flamethrower_Weapon_Long_Bursts.wav",
+        "author": "AslakHostaker",
+        "source_url": "https://freesound.org/people/AslakHostaker/sounds/395039/",
         "license": "CC0-1.0",
-        "sha256": "989b81015c7ab9759c106df548a0db18666b72bc12d37d90fabb0fb0a004959b"
+        "sha256": "84af8524ed8d26b6d1b6c2a11c30cb922a1ffe4cab7afaaa30fa3a4c676434d2"
       }
     ],
-    "processing": "excerpt 0.90-2.07 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.355,
-    "rms": 0.11,
-    "sha256": "09150d3673eeb4346ea1a30ceaf45bcd8f01ab86ab8a910d6f05540240a48422"
+    "processing": "excerpt 2.15-3.45 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.092,
+    "sha256": "d1d979801248921ba0fef4f0cca7788a1e460105aa1900bcaccb7c5ee026a73f"
   },
   "fire-f2-cleave": {
     "file": "hero-forms/fire/f2-cleave.wav",
@@ -58,27 +58,27 @@
   },
   "fire-f2-impact": {
     "file": "hero-forms/fire/f2-impact.wav",
-    "duration": 0.47,
-    "beat": "slam through the foe (1170-1640 ms)",
+    "duration": 0.738,
+    "beat": "slam through the foe (1170 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Fire Erupted",
-        "author": "Saladsounds",
-        "source_url": "https://freesound.org/people/Saladsounds/sounds/828433/",
+        "title": "Explosion 1 (Burning Car rec by Ñado) by qubodup",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/843247/",
         "license": "CC0-1.0",
-        "sha256": "0ef1745d67416bcd5e0ebc68a85df28da344b15b0dc5a767cd0844228b568513"
+        "sha256": "39f808229291c75ff48650301bcb4c82282b6a632a4fcaedce3ea3f77e71f5cb"
       }
     ],
-    "processing": "excerpt 0.93-1.40 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.611,
-    "rms": 0.11,
-    "sha256": "3fe74b182322b6a3f984fcca46840d027765c3645b573d2c6f33935a952ccd10"
+    "processing": "excerpt 0.00-0.74 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.1,
+    "sha256": "3a56a85e28244229a8e476f4b6d875a5cdce40f45fe03737be60a25f8309b18c"
   },
-  "fire-f2-roar": {
-    "file": "hero-forms/fire/f2-roar.wav",
-    "duration": 1.05,
-    "beat": "flames roar across the stage, floor cut burning, dying away (1250-2300 ms)",
+  "fire-f2-tail": {
+    "file": "hero-forms/fire/f2-tail.wav",
+    "duration": 4.1,
+    "beat": "flames roar across the stage and ring out (from the hit, 1170 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -89,15 +89,15 @@
         "sha256": "84af8524ed8d26b6d1b6c2a11c30cb922a1ffe4cab7afaaa30fa3a4c676434d2"
       }
     ],
-    "processing": "excerpt 12.25-13.30 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.674,
+    "processing": "excerpt 9.40-13.50 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.605,
     "rms": 0.11,
-    "sha256": "3ecc5ef28f994c96a0557ef080ce30b4b318269734b5acb4c44cc97098451217"
+    "sha256": "84f819c1c2fbcef5c01e40d0ada514891883445df9cb474d01c7fb16f38428cc"
   },
   "fire-f3-flare": {
     "file": "hero-forms/fire/f3-flare.wav",
-    "duration": 0.65,
-    "beat": "nine tails flare into a sun (0-650 ms)",
+    "duration": 0.95,
+    "beat": "nine tails flare into a sun (0-950 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -108,34 +108,34 @@
         "sha256": "4de65b8c7c3a311c86e9c4c25ebe6fd11201e8d07c58eee4c3ea7ac1721690ea"
       }
     ],
-    "processing": "excerpt 0.50-1.15 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.777,
-    "rms": 0.11,
-    "sha256": "083217b30a0bd8affaba6eb23facd1ab4d42b23fd840993aff9085466d8d2c09"
+    "processing": "excerpt 0.50-1.45 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.096,
+    "sha256": "1deb257d6c1504661d913ed93d9d9ec85da94b470ce7df535c95b16cace390f4"
   },
   "fire-f3-draw": {
     "file": "hero-forms/fire/f3-draw.wav",
-    "duration": 0.6,
-    "beat": "glaive drawn back and growing (650-1250 ms)",
+    "duration": 0.95,
+    "beat": "glaive drawn back and growing (650-1600 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "fire_explosion.wav",
-        "author": "ReadeOnly",
-        "source_url": "https://freesound.org/people/ReadeOnly/sounds/186932/",
+        "title": "Magic Fire Spell Movement",
+        "author": "TheLittleCrow",
+        "source_url": "https://freesound.org/people/TheLittleCrow/sounds/761330/",
         "license": "CC0-1.0",
-        "sha256": "bba0795c63de133c0e578c52e3cfd5c39a4b25aba8abdccbb9ee6f9bea294355"
+        "sha256": "4de65b8c7c3a311c86e9c4c25ebe6fd11201e8d07c58eee4c3ea7ac1721690ea"
       }
     ],
-    "processing": "excerpt 1.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.682,
+    "processing": "excerpt 2.65-3.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.77,
     "rms": 0.11,
-    "sha256": "a67a4b3aa83b20abf248240cb4c0cd746b8d7f104d7f6fab7bcbb69d870a5cd8"
+    "sha256": "3d26c25599fdfc74a53e2f30fea8f04810688acbd4bd11af02c196a814b59cb6"
   },
   "fire-f3-sweep": {
     "file": "hero-forms/fire/f3-sweep.wav",
-    "duration": 0.17,
-    "beat": "spinning sweep and crescent cut (1250-1420 ms)",
+    "duration": 0.52,
+    "beat": "spinning sweep and crescent cut (1250 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -146,15 +146,15 @@
         "sha256": "1e5d6abef9718b55d1015d590d25d18d552dd74e4077b6228a72667964ad427d"
       }
     ],
-    "processing": "excerpt 0.18-0.35 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.371,
+    "processing": "excerpt 0.18-0.70 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.41,
     "rms": 0.11,
-    "sha256": "cd129ba9fa3a5bcc1978f38bfb609f4cebe97dc735ed1ae790b0a97f5c632426"
+    "sha256": "88ec2b2033cd1b60c6878b7073a31855c8d47442b266856b5720c35c27452442"
   },
   "fire-f3-sun": {
     "file": "hero-forms/fire/f3-sun.wav",
-    "duration": 0.63,
-    "beat": "nine-tailed sun bursts on the foe (1420-2050 ms)",
+    "duration": 1.23,
+    "beat": "nine-tailed sun bursts on the foe (1420 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -165,14 +165,14 @@
         "sha256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259"
       }
     ],
-    "processing": "excerpt 0.00-0.63 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.811,
-    "rms": 0.11,
-    "sha256": "920540396f7110c174bff3b821aa04be36c83a4a0caaf047fab96a98b0e0165b"
+    "processing": "excerpt 0.00-1.23 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.08,
+    "sha256": "f62c2a9374851e39e2283af160ff22c6a9733cc682d0ac815145e003278e74c7"
   },
   "fire-f3-fireball": {
     "file": "hero-forms/fire/f3-fireball.wav",
-    "duration": 0.3,
+    "duration": 0.5,
     "beat": "a wave of fox-fire spirits bursts on the foe (once per wave)",
     "license": "CC0-1.0",
     "sources": [
@@ -184,28 +184,28 @@
         "sha256": "eddd873126bb0d2b615b77f5366bebfe84b2b820effaa2c25aa345b39945d5b3"
       }
     ],
-    "processing": "excerpt 0.00-0.30 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.461,
+    "processing": "excerpt 0.00-0.50 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.491,
     "rms": 0.11,
-    "sha256": "7301e76d4fae4b3834851ac0e90718a68fe506497c789d7d3babc8a4791aeb7e"
+    "sha256": "d8fd3f6dead1632be8251ad228011620aa7dd36c67d28e32702337907db06688"
   },
-  "fire-f3-burning": {
-    "file": "hero-forms/fire/f3-burning.wav",
-    "duration": 1.3,
-    "beat": "fire spirits run in, the foe burns under their bursts (1550-2850 ms)",
+  "fire-f3-tail": {
+    "file": "hero-forms/fire/f3-tail.wav",
+    "duration": 5.6,
+    "beat": "the fire roars on the foe and rings out (from the hit, 1420 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Fire Large Roar And Hiss With Crackles.mp3",
-        "author": "theoneandtruelybitch",
-        "source_url": "https://freesound.org/people/theoneandtruelybitch/sounds/698209/",
+        "title": "S30-36 Napalm bomb explosion.wav by craigsmith",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/674902/",
         "license": "CC0-1.0",
-        "sha256": "849bc4c8ffb1b295dc793627d3693aa19a5f973b9507194b7c8c230d2ab7fbb2"
+        "sha256": "1fafd2de132216d2bac6f770be067b005faad329cbd5e49d61f0f8ad241cdcc4"
       }
     ],
-    "processing": "excerpt 0.25-1.55 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.639,
-    "rms": 0.11,
-    "sha256": "819d82114b18ad611a7aa87b960f2ba8b4ffec3d37a920845cb71ae4502ec5f9"
+    "processing": "excerpt 0.35-5.95 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.105,
+    "sha256": "19e41d5f2a7934b7607a2a26d351232d180ad11094f544fab465d26f484af024"
   }
 }
