@@ -96,8 +96,8 @@
   },
   "ice-f2-shatter": {
     "file": "hero-forms/ice/f2-shatter.wav",
-    "duration": 4.4,
-    "beat": "the ice prison shatters (damage, 2.24 s) and the shards ring down for 4.4 s",
+    "duration": 1.8,
+    "beat": "the ice prison shatters (damage, 2.24 s); the shards settle in 1.8 s (shorter tail: the player found 4.4 s too echoing)",
     "sources": [
       {
         "title": "Glass break - Long",
@@ -108,10 +108,29 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.20-4.60 s, 80 Hz high-pass, gain, 4 ms / 1000 ms edge fades; natural attack and tail",
+    "processing": "excerpt 0.20-2.00 s, 80 Hz high-pass, gain, 4 ms / 700 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.065,
-    "sha256": "0a949bfc83cd8839a90559a7aef4d1b12f90ccebe8a1d6ee805077c96622164b"
+    "rms": 0.096,
+    "sha256": "0aedb1d22c470f032dd39e9172dd53960b3ceaf941aa56059e2172c53a7d4bf0"
+  },
+  "ice-f2-boom": {
+    "file": "hero-forms/ice/f2-boom.wav",
+    "duration": 2.0,
+    "beat": "form 1's deep boom under the form-2 shatter, cut to 2 s with a natural fade so the ending stays clean",
+    "sources": [
+      {
+        "title": "Deep Boom",
+        "author": "Za-Games",
+        "source_url": "https://freesound.org/people/Za-Games/sounds/539968/",
+        "license": "CC0-1.0",
+        "sha256": "4fac9ac15770cb443432bf440ffb66db599e4f0b9935d34fe3e0460e2bbf5daa"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.10-2.10 s, 30 Hz high-pass, gain, 30 ms / 800 ms edge fades; natural attack and tail",
+    "peak": 0.583,
+    "rms": 0.12,
+    "sha256": "bba95bed2da4d6b17d6611f2d9d13485104ac4f545e21dac26ee3df6970196c3"
   },
   "ice-f3-aegis": {
     "file": "hero-forms/ice/f3-aegis.wav",

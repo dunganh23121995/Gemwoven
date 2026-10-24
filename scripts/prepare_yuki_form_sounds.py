@@ -73,7 +73,8 @@ clip('boom', 'yuki/deep-boom.mp3', .10, 3.19, "form 1's deep boom with its full 
 clip('f2-gather', '145578', .30, 2.30, 'chant and moonrise: a bell-tree shimmer that blooms and decays naturally, 0-2.0 s', highpass=250, fade_in=.05, fade_out=.5)
 clip('f2-beam', '683096', .75, 1.72, 'the moonbeam falls; the whoosh peaks as it lands (1.42 s) and dies away naturally', highpass=150, fade_in=.02, fade_out=.35)
 clip('f2-freeze', '452645', .40, 1.40, 'bed: frost spikes grow and the prison holds, crackling, 1.42-2.4 s', highpass=120, fade_in=.02, fade_out=.3)
-clip('f2-shatter', '789213', .20, 4.60, 'the ice prison shatters (damage, 2.24 s) and the shards ring down for 4.4 s', highpass=80, fade_in=.004, fade_out=1.0)
+clip('f2-shatter', '789213', .20, 2.00, 'the ice prison shatters (damage, 2.24 s); the shards settle in 1.8 s (shorter tail: the player found 4.4 s too echoing)', highpass=80, fade_in=.004, fade_out=.7)
+clip('f2-boom', 'yuki/deep-boom.mp3', .10, 2.10, "form 1's deep boom under the form-2 shatter, cut to 2 s with a natural fade so the ending stays clean", highpass=30, fade_in=.03, fade_out=.8)
 # ---- Six-star: Thiên Nguyệt Tuyết Liên -------------------------------------------------------------
 clip('f3-aegis', '437323', .15, 1.30, 'ice armour plates clink as the aegis spirals up, natural ring-out, 0-1.15 s', highpass=200, fade_in=.01, fade_out=.4)
 clip('f3-fan', '569109', .95, 2.20, 'frost fan sweep and snowy gust to the foe, natural rise and fall, 0.64-1.9 s', highpass=120, fade_in=.03, fade_out=.5)
