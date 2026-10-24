@@ -71,8 +71,14 @@ clip('swing', '427979', .22, .75, 'the hammer swings down; the whoosh peaks on t
 clip('slam', '734629', .46, 1.36, 'the hammer hits the earth: a heavy weight thudding into the ground, natural settle', highpass=35, fade_in=.003, fade_out=.3)
 clip('boom', '512483', 0, 4.2, 'deep stomp boom under the slam, ringing out with its natural decay (~4 s), the end of the ultimate', highpass=30, fade_in=.01, fade_out=.9)
 clip('roots', '869103', 3.36, 4.36, 'wood splintering: vines/roots tear up through the soil and lock the foe, natural crackle', highpass=100, fade_in=.02, fade_out=.3)
-# Four-star: Ngọc Thụ Hộ Thể
-clip('shatter', '524999', .17, 2.4, 'the jade vines and sapling shatter like porcelain; the shards settle naturally', highpass=120, fade_in=.003, fade_out=.6)
+# Four-star: Ngọc Thụ Hộ Thể (rebuilt again on its own; the six-star set above/below is approved and unchanged)
+clip('f2-swirl', '397988', 5.3, 7.3, 'chant: the healing spiral, glassy stone wind chimes shimmering (jade), 0-2.0 s', highpass=200, fade_in=.15, fade_out=.6)
+clip('f2-swing', '244598', 4.18, 4.6, 'the hammer swings down; the swish peaks on the blow', highpass=80, fade_in=.01, fade_out=.12)
+clip('f2-strike', '669719', 4.53, 5.35, 'the jade hammer strikes the ground hard: a heavy thump on stone, natural settle (the loudest hit)', highpass=35, fade_in=.002, fade_out=.25)
+clip('f2-rubble', '703247', 0, 4.6, 'under the strike the ground cracks open and the crack runs to the foe: stone debris crashing and crumbling, ringing out with its natural decay to the end', highpass=40, fade_in=.01, fade_out=.9)
+clip('f2-vines', '862083', .93, 1.65, 'the jade vines and sapling burst up: a fresh plant stalk snapping and cracking', highpass=120, fade_in=.005, fade_out=.2)
+clip('f2-clink', '634154', 4.98, 5.95, 'the vines lock round the foe and the sapling opens: a ringing ceramic/jade clink with its natural ring', highpass=150, fade_in=.002, fade_out=.25)
+clip('f2-shatter', '675897', 3.94, 6.6, 'the jade shatters like pottery and its pieces settle: the natural ending', highpass=80, fade_in=.003, fade_out=.6)
 # Six-star: Vạn Mộc Thiên Thành
 clip('rush', '770083', 36.55, 36.92, 'armoured footsteps: the shield charge', highpass=60, fade_in=.005, fade_out=.1)
 clip('bash', 'mika-nori/shield-bash.mp3', .08, 1.0, "the shield bash: form 1's own recording, natural decay", highpass=45, fade_in=.002, fade_out=.25)

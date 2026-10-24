@@ -94,24 +94,138 @@
     "rms": 0.028,
     "sha256": "fd982be2d5206d5d78476ba8dff1e222dfc1d415e8dcdd715aea7618d0971fd4"
   },
-  "earth-shatter": {
-    "file": "hero-forms/earth/shatter.wav",
-    "duration": 2.23,
-    "beat": "the jade vines and sapling shatter like porcelain; the shards settle naturally",
+  "earth-f2-swirl": {
+    "file": "hero-forms/earth/f2-swirl.wav",
+    "duration": 2.0,
+    "beat": "chant: the healing spiral, glassy stone wind chimes shimmering (jade), 0-2.0 s",
     "sources": [
       {
-        "title": "ceramic cup shatters on tile floor",
-        "author": "geraldfiebig",
-        "source_url": "https://freesound.org/people/geraldfiebig/sounds/524999/",
+        "title": "various Glassy Stone Windchime sounds",
+        "author": "reconsider59",
+        "source_url": "https://freesound.org/people/reconsider59/sounds/397988/",
         "license": "CC0-1.0",
-        "sha256": "bdddd8950ca6b37941a328ec436d5cb193ec01040b28ae2cfa3e1e3db948e69c"
+        "sha256": "d0f3d8965dbba9bb858399a9d27a3117528d5e6aa7a8d048030e9678cc50960c"
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.17-2.40 s, 120 Hz high-pass, gain, 3 ms / 600 ms edge fades; natural attack and tail",
+    "processing": "excerpt 5.30-7.30 s, 200 Hz high-pass, gain, 150 ms / 600 ms edge fades; natural attack and tail",
     "peak": 0.82,
-    "rms": 0.077,
-    "sha256": "688df662e8f1ecc2e288babd37f5b778640e14fbba908f3ec6cc8352bc99c9d2"
+    "rms": 0.066,
+    "sha256": "bcc8d7eed58a744999df9f241a17b6fb71d9b8e744263fb89f326d200fa79a18"
+  },
+  "earth-f2-swing": {
+    "file": "hero-forms/earth/f2-swing.wav",
+    "duration": 0.42,
+    "beat": "the hammer swings down; the swish peaks on the blow",
+    "sources": [
+      {
+        "title": "Golf Swing Swoosh",
+        "author": "Cornwallis89",
+        "source_url": "https://freesound.org/people/Cornwallis89/sounds/244598/",
+        "license": "CC0-1.0",
+        "sha256": "e4061a07af94366c19ff30115db589720a8d51b26c5bcff3b55f307ed36fda2b"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 4.18-4.60 s, 80 Hz high-pass, gain, 10 ms / 120 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.096,
+    "sha256": "6453029616ad74019fe3a274a1cf2da4953a68d4878b3a29b22ffe5d065a15bf"
+  },
+  "earth-f2-strike": {
+    "file": "hero-forms/earth/f2-strike.wav",
+    "duration": 0.82,
+    "beat": "the jade hammer strikes the ground hard: a heavy thump on stone, natural settle (the loudest hit)",
+    "sources": [
+      {
+        "title": "heavy thumps on stone.wav",
+        "author": "vestibule-door",
+        "source_url": "https://freesound.org/people/vestibule-door/sounds/669719/",
+        "license": "CC0-1.0",
+        "sha256": "da6f3b942234966737112da0e06fc3638b5602e8ffbe711f863abbcb3ef3eba4"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 4.53-5.35 s, 35 Hz high-pass, gain, 2 ms / 250 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.06,
+    "sha256": "df8b771d67593db34b064fcc3cfa1d5649f59f56e38a8eb5900992c905640fce"
+  },
+  "earth-f2-rubble": {
+    "file": "hero-forms/earth/f2-rubble.wav",
+    "duration": 4.6,
+    "beat": "under the strike the ground cracks open and the crack runs to the foe: stone debris crashing and crumbling, ringing out with its natural decay to the end",
+    "sources": [
+      {
+        "title": "Big falling debris (crash)",
+        "author": "xkeril",
+        "source_url": "https://freesound.org/people/xkeril/sounds/703247/",
+        "license": "CC0-1.0",
+        "sha256": "6d812be91eec9ceea5d4ad50ab8d0c290977be7f1a24f5ae25327dec0a94b944"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.00-4.60 s, 40 Hz high-pass, gain, 10 ms / 900 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.076,
+    "sha256": "831e81f890ba1a9e995eb5cf3f5fd7033bc30a02c16b6fb13cc82055ae43ee7d"
+  },
+  "earth-f2-vines": {
+    "file": "hero-forms/earth/f2-vines.wav",
+    "duration": 0.72,
+    "beat": "the jade vines and sapling burst up: a fresh plant stalk snapping and cracking",
+    "sources": [
+      {
+        "title": "260710- Breaking cucumber - snap and crack 1",
+        "author": "Valerie-Vivegnis",
+        "source_url": "https://freesound.org/people/Valerie-Vivegnis/sounds/862083/",
+        "license": "CC0-1.0",
+        "sha256": "c7c9bbee2416b11ba8cbfba949f42e50dec25a6f6b2161c42fc5b5c48eafac50"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 0.93-1.65 s, 120 Hz high-pass, gain, 5 ms / 200 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.02,
+    "sha256": "47e916953eb78d9b2d15ce9e0bd8aa396a3c3ecfff73753238180d9ec89cd021"
+  },
+  "earth-f2-clink": {
+    "file": "hero-forms/earth/f2-clink.wav",
+    "duration": 0.97,
+    "beat": "the vines lock round the foe and the sapling opens: a ringing ceramic/jade clink with its natural ring",
+    "sources": [
+      {
+        "title": "Large Ceramic Plate Hit",
+        "author": "Erbsland-Music",
+        "source_url": "https://freesound.org/people/Erbsland-Music/sounds/634154/",
+        "license": "CC0-1.0",
+        "sha256": "60948ea1e85913d32bbc69800d5f1cd0ede110b80790874c401ce21ece45d7aa"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 4.98-5.95 s, 150 Hz high-pass, gain, 2 ms / 250 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.026,
+    "sha256": "f226270025e43e2b88b07749c2eddd17d525485d7f3d4a2171e200c3dab1006b"
+  },
+  "earth-f2-shatter": {
+    "file": "hero-forms/earth/f2-shatter.wav",
+    "duration": 2.66,
+    "beat": "the jade shatters like pottery and its pieces settle: the natural ending",
+    "sources": [
+      {
+        "title": "S10-21 Pottery fall and breaks; several takes.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/675897/",
+        "license": "CC0-1.0",
+        "sha256": "aa47a49724f28b003dce4099e0497ea556af01c820e6e4316fd1a093b85dd3af"
+      }
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpt 3.94-6.60 s, 80 Hz high-pass, gain, 3 ms / 600 ms edge fades; natural attack and tail",
+    "peak": 0.82,
+    "rms": 0.091,
+    "sha256": "ba68a8731908bf5a5d5f27630505c8eef3b1cb8c4248f171ccc42d163081db04"
   },
   "earth-rush": {
     "file": "hero-forms/earth/rush.wav",

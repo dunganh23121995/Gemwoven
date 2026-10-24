@@ -105,23 +105,25 @@ function noriCue(pending,name,delay,volume,pan=.3){pending.push(wait(reduced?0:d
 // star world-tree: no shield rush, one blow, the bind and the renewal. Same rules as noriFormUltimate.
 async function noriJadeUltimate(){
   if(state.hp<=0)return;
-  noriWarmSheets(2);noriWarmSounds(['gather','swing','slam','boom','roots','shatter']);
+  noriWarmSheets(2);noriWarmSounds(['f2-swirl','f2-swing','f2-strike','f2-rubble','f2-vines','f2-clink','f2-shatter']);
   const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   root.dataset.ragePhase='chant';root.dataset.noriUltimate='2';root.classList.add('combat-v3-acting');root.style.zIndex='4';
   try{
-    combatVoice('hero','cast');playCastSound('earth','gather',{volume:.55,pan:-.2});
+    // Four-star sounds (f2-*): stone/jade wind chimes, a swish, a heavy thump on stone with stone debris
+    // crumbling under it to the end, a plant stalk snapping, a ringing ceramic clink, pottery shattering and
+    // settling (scripts/prepare_nori_form_sounds.py).
+    combatVoice('hero','cast');playCastSound('earth','f2-swirl',{volume:.55,pan:-.2});
     popActorSkill('hero',HEROES.earth.skill,true,pending);
     pending.push(selfBuffSpiral('heal',1100));
     setSpriteFrame('hero','cast',0);await at(220);setSpriteFrame('hero','cast',1);
     await at(480);setSpriteFrame('hero','cast',2);
     // One blow into the ground in front of him.
     await at(760);root.dataset.ragePhase='hammer';setSpriteFrame('hero','attack',2);
-    playCastSound('earth','swing',{volume:.45,pan:-.2});
+    playCastSound('earth','f2-swing',{volume:.45,pan:-.2});
     await at(900);root.dataset.ragePhase='slam';setSpriteFrame('hero','attack',3);
-    playCastSound('earth','slam',{volume:.85,pan:-.1});playCastSound('earth','boom',{volume:.5,pan:0});combatV3Camera(1,true,false,pending);
-    // the crack splinters along the ground and on into the jade vines tearing up at the foe's feet
-    noriCue(pending,'roots',70,.75,.2);
+    // the strike, and the ground cracking open under it as the crack runs to the foe (rings out to the end)
+    playCastSound('earth','f2-strike',{volume:.95,pan:-.1});playCastSound('earth','f2-rubble',{volume:.5,pan:.1});combatV3Camera(1,true,false,pending);
     const scene=$('scene').getBoundingClientRect(),sprite=root.querySelector('.sprite-body').getBoundingClientRect();
     const ground=sprite.top-scene.top+sprite.height*(spriteDefinition('hero','earth','idle').sheet.footY||.94),hammerX=sprite.left-scene.left+sprite.width*.86;
     const slam=noriStrip('quake',{x:hammerX,feet:ground,width:Math.min(100,sprite.width*.7),className:'form-2'});
@@ -134,8 +136,8 @@ async function noriJadeUltimate(){
     }
     // The jade sapling bursts at the foe's feet and binds it.
     await at(900+70*steps+60);root.dataset.ragePhase='bind';setSpriteFrame('hero','attack',4);
-    // the shatter as the jade vines crack (strip frame 5)
-    noriCue(pending,'shatter',710,.6);
+    // the vines snap up, lock with a jade clink as the sapling opens (strip frame 4), then shatter and settle (frame 5)
+    playCastSound('earth','f2-vines',{volume:.9,pan:.3});noriCue(pending,'f2-clink',270,.7);noriCue(pending,'f2-shatter',710,.65);
     const foeNow=noriFoeBody(),width=Math.max(110,Math.min(foeNow.width*1.45,scene.width*.6));
     const jade=noriStrip('jade',{x:foeNow.x,feet:foeNow.feet,width,className:'form-2'});
     if(jade)pending.push(jade.play(NORI_SEQUENCE.jade,200));
