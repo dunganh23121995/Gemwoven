@@ -116,8 +116,7 @@ function lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending){
   // Every bolt cracks as it strikes (the same close-lightning crack each time); the last is the big thunder clap
   // with its natural tail. No thunder roll: there is no storm cloud in these forms.
   // Volumes keep the summed peak <= .8 on the (unlimited) effects bus while the hits stay the loudest.
-  lumiSound(last?`f${form}-last`:`f${form}-bolt`,{volume:last?(form===3?.85:.8):form===3?.38:.45,pan:.22+(i%2?.08:-.08)},i===0||last);
-  if(i===0&&form===3)lumiSound('f3-arcs',{volume:.2,pan:.2});// the galaxy's rain of bolts roars like a Tesla coil
+  lumiSound(last?`f${form}-last`:`f${form}-bolt`,{volume:last?(form===3?.82:.76):form===3?.36:.42,pan:.22+(i%2?.08:-.08)},i===0||last);
   combatV3Camera(1,true,false,pending);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents('hero',result,false,pending);
   setSpriteAction('enemy','hurt',230);lumiRecoil(target,oldTarget,last,pending);
@@ -162,11 +161,11 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       await at(1100);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
       await at(1320);
       seal=lumiFx('pentagram',sky,sign,{frames:[0,1,2,3,4,5],frameMs:80,loop:3,cls:'lumi-sky'});motes.forEach(mote=>mote.remove());
-      lumiSound('f2-arcs',{volume:.25,pan:.2},true);// the seal crackles with arcs while it hangs
+      lumiSound('f2-arcs',{volume:.22,pan:.2},true);// the seal crackles with arcs while it hangs
       await at(1500);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }else{
       // The rings around her spear's star spin off it and open into a galaxy over the foe (laser sweep
-      // rubbed singing-bowl swell), stars twinkle along its arms ("tinh tinh").
+      // slinky-laser foley), stars twinkle along its arms ("tinh tinh") and it hangs ringing.
       galaxy=lumiFx('galaxy',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:5,cls:'lumi-sky'});
       if(galaxy){
         galaxy.style.scale='.6';
@@ -174,6 +173,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
         pending.push(animate(galaxy,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:640,delay:480,easing:'cubic-bezier(.45,.05,.3,1)',fill:'both'}).then(()=>{galaxy.style.left=sky.x+'px';galaxy.style.top=sky.y+'px';galaxy.style.scale='1';}));
       }
       pending.push(at(1000).then(()=>lumiSound('f3-twinkle',{volume:.32,pan:.15})));
+      pending.push(at(1100).then(()=>lumiSound('f3-hum',{volume:.26,pan:.2},true)));// the galaxy hangs: a long ringing resonance
       await at(1080);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
       await at(1340);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }
@@ -205,7 +205,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   }
 }
 // Her kit's own sounds (assets/audio/hero-forms/lightning, scripts/prepare_lumi_form_sounds.py).
-const LUMI_SOUNDS={2:['f2-summon','f2-star','f2-arcs','f2-bolt','f2-last','throw','f2-pop'],3:['f3-galaxy','f3-twinkle','f3-arcs','f3-bolt','f3-last','throw','f3-ring']};
+const LUMI_SOUNDS={2:['f2-summon','f2-star','f2-arcs','f2-bolt','f2-last','throw','f2-pop'],3:['f3-galaxy','f3-twinkle','f3-hum','f3-bolt','f3-last','throw','f3-ring']};
 function warmLumiSounds(form){
   const context=combatV3AudioContext();if(!context)return;
   for(const name of LUMI_SOUNDS[form]||[])if(ART.castSounds['lightning-'+name])decodeCastSound(context,'lightning-'+name).catch(()=>{});

@@ -1,8 +1,8 @@
 {
   "lightning-f2-summon": {
     "file": "hero-forms/lightning/f2-summon.wav",
-    "duration": 0.52,
-    "beat": "four-star ultimate 460-980: she raises her orb, the five stars leave it and fly up",
+    "duration": 0.9,
+    "beat": "four-star ultimate 460-1360: she raises her orb, the five stars leave it and fly up (mark tree, natural decay)",
     "sources": [
       {
         "title": "Mark Tree Fast Down Scale",
@@ -14,15 +14,15 @@
         "sha256": "bcabd347f31cdfd6c079a4c649ab1c490e1887cc7e7f86d1a354d4adf1c03f2a",
         "excerpt": [
           0.0,
-          0.52
+          0.9
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 80 Hz high-pass, gain, edge fades; original pitch, speed and tail",
-    "peak": 0.546,
-    "rms": 0.1036,
-    "sha256": "5fbf6847d7e5f945b121539010b875e0dc1e6f6482c568bfd5d4a1aeb4e0338a"
+    "peak": 0.6343,
+    "rms": 0.0994,
+    "sha256": "31fb80a69ad012ea84f7c5225b002e55ffac2c76126c8b63b8d4dbbaea9fad54"
   },
   "lightning-f2-star": {
     "file": "hero-forms/lightning/f2-star.wav",
@@ -52,7 +52,7 @@
   "lightning-f2-arcs": {
     "file": "hero-forms/lightning/f2-arcs.wav",
     "duration": 1.51,
-    "beat": "four-star ultimate 1320-2830: the pentagram draws itself and crackles with arcs until it fades",
+    "beat": "four-star ultimate 1320-2830: the pentagram draws itself and crackles with arcs until it fades (35 kV sparks)",
     "sources": [
       {
         "title": "Electric Sparks.wav",
@@ -101,28 +101,28 @@
   },
   "lightning-f2-last": {
     "file": "hero-forms/lightning/f2-last.wav",
-    "duration": 1.2,
-    "beat": "four-star ultimate 2100-3300: the fifth bolt, the big star burst and flash, with the clap's natural tail",
+    "duration": 4.0,
+    "beat": "four-star ultimate 2100-6100: the fifth bolt and the big star burst; the close strike rings out with its own decay",
     "sources": [
       {
-        "title": "big thunder clap",
-        "author": "seth-m",
-        "source_url": "https://freesound.org/people/seth-m/sounds/458015/",
-        "file": "sources/thunder/seth-m-458015-hq.mp3",
+        "title": "Very close lightning strike.",
+        "author": "Simon Spiers",
+        "source_url": "https://freesound.org/people/Simon%20Spiers/sounds/437243/",
+        "file": "sources/thunder/simon-spiers-437243-hq.mp3",
         "license": "CC0-1.0",
         "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3",
+        "sha256": "9e4169956c8ff03d204923cd4e8ef6c036c6724af92c269ef42e484ee583dbe7",
         "excerpt": [
-          0.7,
-          1.9
+          20.79,
+          24.79
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 40 Hz high-pass, gain, edge fades; original pitch, speed and tail",
     "peak": 0.9,
-    "rms": 0.1747,
-    "sha256": "4efa4f1d304342fea06a3a966fc41b25b59021d9fface9690c61906d0689a008"
+    "rms": 0.0794,
+    "sha256": "84f5496fa5d01767560740374f6e9f952f07db76f7c6d4a1a13019fb0ca6753c"
   },
   "lightning-throw": {
     "file": "hero-forms/lightning/throw.wav",
@@ -151,53 +151,53 @@
   },
   "lightning-f2-pop": {
     "file": "hero-forms/lightning/f2-pop.wav",
-    "duration": 0.17,
-    "beat": "four-star basic attack: the crackling star bursts on the foe (until the recovery frame)",
+    "duration": 0.22,
+    "beat": "four-star basic attack: the crackling star bursts on the foe (one burst of 35 kV sparks)",
     "sources": [
       {
-        "title": "Spark",
-        "author": "elliott.klein",
-        "source_url": "https://freesound.org/people/elliott.klein/sounds/189630/",
-        "file": "sources/freesound/189630-spark/189630-spark.mp3",
+        "title": "Electric Sparks.wav",
+        "author": "kev_durr",
+        "source_url": "https://freesound.org/people/kev_durr/sounds/396470/",
+        "file": "sources/freesound/396470-electric-sparks-wav/396470-electric-sparks-wav.mp3",
         "license": "CC0-1.0",
         "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "sha256": "73081928ac0a508c07d1dfd984ebc9e6418e516b8401f377bdc93174a77c1ac7",
+        "sha256": "11d14640af7799238736ed289138cd88fc632464b6a99aebd07c65581793225c",
         "excerpt": [
-          0.0,
-          0.17
+          8.34,
+          8.56
         ]
       }
     ],
     "license": "CC0-1.0",
-    "processing": "one excerpt, 300 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "processing": "one excerpt, 200 Hz high-pass, gain, edge fades; original pitch, speed and tail",
     "peak": 0.9,
-    "rms": 0.0742,
-    "sha256": "d48a24ed37b6aa284eb74eb1d8201acbedc7eee2283bce41c9b348b071b315db"
+    "rms": 0.0436,
+    "sha256": "e2a61830d46291c3d52e98e9a665e90be928231c0ac6bf33bc4e8aaef6712e28"
   },
   "lightning-f3-galaxy": {
     "file": "hero-forms/lightning/f3-galaxy.wav",
-    "duration": 2.41,
-    "beat": "six-star ultimate 460-2870: the orbit rings spin off, open into the galaxy, it hangs turning and collapses (rubbed singing bowl)",
+    "duration": 0.918,
+    "beat": "six-star ultimate 460-1380: the orbit rings spin off the spear and open into the galaxy (slinky laser foley)",
     "sources": [
       {
-        "title": "Tibetan_Singing_bowl_1",
-        "author": "TheGreenEyedGhost",
-        "source_url": "https://freesound.org/people/TheGreenEyedGhost/sounds/707797/",
-        "file": "sources/freesound/707797-tibetan-singing-bowl-1/707797-tibetan-singing-bowl-1.mp3",
+        "title": "Laser",
+        "author": "Daleonfire",
+        "source_url": "https://freesound.org/people/Daleonfire/sounds/376694/",
+        "file": "sources/freesound/376694-laser/376694-laser.mp3",
         "license": "CC0-1.0",
         "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "sha256": "ccd035bca90f250ffaf113f13600950720e0023daafca8b354b6115c022fd81e",
+        "sha256": "c4e9f572dc5b5567d9ffc683732b79bc5da095215c8e88b3a377b2f476830aae",
         "excerpt": [
-          0.2,
-          2.61
+          0.15,
+          1.07
         ]
       }
     ],
     "license": "CC0-1.0",
-    "processing": "one excerpt, 100 Hz high-pass, gain, edge fades; original pitch, speed and tail",
-    "peak": 0.218,
-    "rms": 0.1075,
-    "sha256": "cdac7e9453c2f9e95ae100f8a1a65a0eada252ac71a3ad0455ab7182e7956a08"
+    "processing": "one excerpt, 80 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.6802,
+    "rms": 0.0907,
+    "sha256": "7bc402a13499f13e13838a053c695549818f38aeafca30495ae7c26ce6e49580"
   },
   "lightning-f3-twinkle": {
     "file": "hero-forms/lightning/f3-twinkle.wav",
@@ -224,30 +224,30 @@
     "rms": 0.1039,
     "sha256": "061e9d08a1c1aa6b21971b5f255617daa2d12ed2c6dfabbf1ea6468453f6b0ac"
   },
-  "lightning-f3-arcs": {
-    "file": "hero-forms/lightning/f3-arcs.wav",
-    "duration": 1.0,
-    "beat": "six-star ultimate 1450-2450: the galaxy rains bolts, Tesla-coil discharge roaring under them",
+  "lightning-f3-hum": {
+    "file": "hero-forms/lightning/f3-hum.wav",
+    "duration": 3.0,
+    "beat": "six-star ultimate 1100-4100: the galaxy hangs and turns; a metal spring's long ringing resonance, natural decay",
     "sources": [
       {
-        "title": "high-voltage-discharge-2.wav",
-        "author": "follytowers",
-        "source_url": "https://freesound.org/people/follytowers/sounds/415962/",
-        "file": "sources/freesound/415962-high-voltage-discharge-2-wav/415962-high-voltage-discharge-2-wav.mp3",
+        "title": "metal_spring_scrape_resonance.wav",
+        "author": "Halion",
+        "source_url": "https://freesound.org/people/Halion/sounds/49706/",
+        "file": "sources/freesound/49706-metal-spring-scrape-resonance-wav/49706-metal-spring-scrape-resonance-wav.mp3",
         "license": "CC0-1.0",
         "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "sha256": "be3537b032cd1121d73a44b0bc46c173cb639ca20dbac964be19b03968989e7f",
+        "sha256": "e3bb22124b6614905b9904ec42eb2b73f5646705336c269834c8b458b0253439",
         "excerpt": [
-          1.7,
-          2.7
+          0.0,
+          3.0
         ]
       }
     ],
     "license": "CC0-1.0",
-    "processing": "one excerpt, 60 Hz high-pass, gain, edge fades; original pitch, speed and tail",
-    "peak": 0.6692,
-    "rms": 0.1055,
-    "sha256": "b8a1435ae2aa4f709f5991b6f0e5696ae984c0662cfe19d9a5d8fb76cb7ac875"
+    "processing": "one excerpt, 80 Hz high-pass, gain, edge fades; original pitch, speed and tail",
+    "peak": 0.8976,
+    "rms": 0.0877,
+    "sha256": "be31c0b7edbd8582f4e9578ba67fadaf82c83f06dfdbc4f38581314fbf4305ec"
   },
   "lightning-f3-bolt": {
     "file": "hero-forms/lightning/f3-bolt.wav",
@@ -276,8 +276,8 @@
   },
   "lightning-f3-last": {
     "file": "hero-forms/lightning/f3-last.wav",
-    "duration": 1.5,
-    "beat": "six-star ultimate 2230-3730: the ninth bolt from the galaxy's heart, the ring burst and flash, with the clap's natural tail",
+    "duration": 4.5,
+    "beat": "six-star ultimate 2230-6730: the ninth bolt from the galaxy's heart and the ring burst; the thunder clap rings out with its own decay",
     "sources": [
       {
         "title": "big thunder clap",
@@ -289,15 +289,15 @@
         "sha256": "a3641e7c7a00edf79658c60de035fb845f8d81c104543382e8f91bdc7cb23fc3",
         "excerpt": [
           0.7,
-          2.2
+          5.2
         ]
       }
     ],
     "license": "CC0-1.0",
     "processing": "one excerpt, 35 Hz high-pass, gain, edge fades; original pitch, speed and tail",
     "peak": 0.9,
-    "rms": 0.1613,
-    "sha256": "70e04fe3a192bbbbc7609bea82e496dc79cc076b29cdb235722354e02158e696"
+    "rms": 0.0971,
+    "sha256": "c5894b4c1577696f2afd725c6abf063105907c45f471d233dff916c55c9d9667"
   },
   "lightning-f3-ring": {
     "file": "hero-forms/lightning/f3-ring.wav",
