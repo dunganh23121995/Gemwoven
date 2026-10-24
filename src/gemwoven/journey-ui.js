@@ -15,7 +15,7 @@
     nodes=nodes.filter(n=>!/^home\.(live|feature-mail|feature-settings)$/.test(n.id));
     const quest=nodes.find(n=>n.id==='home.quests');quest.action='route:quests';C[quest.text]='Nhiệm Vụ';
     quest.rect=[713,1146,210,173];quest.iconRect=[82,24,52,60];quest.className='home-quest-board';
-    const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1040,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
+    const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1014,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Trò Chuyện','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
     [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,asset,[841,160+i*112,98,104],'route:'+route,{}, {labelHidden:true,fit:'contain',className:'home-right-icon'})));

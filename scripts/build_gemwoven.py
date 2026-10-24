@@ -31,7 +31,7 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
             first=sheet.crop((0,0,sheet.width//idle['cols'],sheet.height//idle['rows'])).convert('RGBA').getchannel('A').point(lambda a:255 if a>=128 else 0)
             box=first.getbbox();band=first.crop((0,box[3]-max(4,(box[3]-box[1])//8),first.width,box[3])).getbbox()
             feet_x=((band[0]+band[2])/2)/first.width if band else head[0]/256
-        anchor={'x':feet_x,'crown':head[1]/256,'foot':idle.get('footY',.94)}
+        anchor={'x':feet_x,'crown':head[1]/256,'foot':box[3]/first.height}  # the drawing's real lowest point (Noct's mist, a hem)
         for prefix,field in [('form','poster'),('form-portrait','portrait')]:
             with Image.open(ROOT/entry[field]) as im:
                 bounds=im.convert('RGBA').getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()

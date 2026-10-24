@@ -10753,7 +10753,7 @@
     "bodyAnchor": {
       "x": 0.466796875,
       "crown": 0.1640625,
-      "foot": 0.94
+      "foot": 0.94140625
     }
   },
   "form-portrait-ice-2": {
@@ -10774,7 +10774,7 @@
     "bodyAnchor": {
       "x": 0.466796875,
       "crown": 0.1640625,
-      "foot": 0.94
+      "foot": 0.94140625
     },
     "footBounds": [
       55,
@@ -10796,7 +10796,7 @@
     "bodyAnchor": {
       "x": 0.484375,
       "crown": 0.22265625,
-      "foot": 0.94
+      "foot": 0.94140625
     }
   },
   "form-portrait-ice-3": {
@@ -10817,7 +10817,7 @@
     "bodyAnchor": {
       "x": 0.484375,
       "crown": 0.22265625,
-      "foot": 0.94
+      "foot": 0.94140625
     },
     "footBounds": [
       53,
@@ -10839,7 +10839,7 @@
     "bodyAnchor": {
       "x": 0.4296875,
       "crown": 0.171875,
-      "foot": 0.94
+      "foot": 0.94140625
     }
   },
   "form-portrait-lightning-3": {
@@ -10860,7 +10860,7 @@
     "bodyAnchor": {
       "x": 0.4296875,
       "crown": 0.171875,
-      "foot": 0.94
+      "foot": 0.94140625
     },
     "footBounds": [
       42,
@@ -10882,7 +10882,7 @@
     "bodyAnchor": {
       "x": 0.49609375,
       "crown": 0.19140625,
-      "foot": 0.94
+      "foot": 0.9375
     }
   },
   "form-portrait-lightning-2": {
@@ -10903,7 +10903,7 @@
     "bodyAnchor": {
       "x": 0.49609375,
       "crown": 0.19140625,
-      "foot": 0.94
+      "foot": 0.9375
     },
     "footBounds": [
       60,
@@ -10925,7 +10925,7 @@
     "bodyAnchor": {
       "x": 0.486328125,
       "crown": 0.234375,
-      "foot": 0.94
+      "foot": 0.97265625
     }
   },
   "form-portrait-shadow-2": {
@@ -10946,7 +10946,7 @@
     "bodyAnchor": {
       "x": 0.486328125,
       "crown": 0.234375,
-      "foot": 0.94
+      "foot": 0.97265625
     },
     "footBounds": [
       18,
@@ -10968,7 +10968,7 @@
     "bodyAnchor": {
       "x": 0.46484375,
       "crown": 0.328125,
-      "foot": 0.94
+      "foot": 0.9765625
     }
   },
   "form-portrait-shadow-3": {
@@ -10989,7 +10989,7 @@
     "bodyAnchor": {
       "x": 0.46484375,
       "crown": 0.328125,
-      "foot": 0.94
+      "foot": 0.9765625
     },
     "footBounds": [
       17,
@@ -11011,7 +11011,7 @@
     "bodyAnchor": {
       "x": 0.521484375,
       "crown": 0.1875,
-      "foot": 0.94
+      "foot": 0.9375
     }
   },
   "form-portrait-earth-2": {
@@ -11032,7 +11032,7 @@
     "bodyAnchor": {
       "x": 0.521484375,
       "crown": 0.1875,
-      "foot": 0.94
+      "foot": 0.9375
     },
     "footBounds": [
       36,
@@ -11054,7 +11054,7 @@
     "bodyAnchor": {
       "x": 0.498046875,
       "crown": 0.1875,
-      "foot": 0.94
+      "foot": 0.93359375
     }
   },
   "form-portrait-earth-3": {
@@ -11075,7 +11075,7 @@
     "bodyAnchor": {
       "x": 0.498046875,
       "crown": 0.1875,
-      "foot": 0.94
+      "foot": 0.93359375
     },
     "footBounds": [
       32,
@@ -11097,7 +11097,7 @@
     "bodyAnchor": {
       "x": 0.521484375,
       "crown": 0.19140625,
-      "foot": 0.94
+      "foot": 0.9375
     }
   },
   "form-portrait-fire-2": {
@@ -11118,7 +11118,7 @@
     "bodyAnchor": {
       "x": 0.521484375,
       "crown": 0.19140625,
-      "foot": 0.94
+      "foot": 0.9375
     },
     "footBounds": [
       46,
@@ -11140,7 +11140,7 @@
     "bodyAnchor": {
       "x": 0.5,
       "crown": 0.28125,
-      "foot": 0.94
+      "foot": 0.94921875
     }
   },
   "form-portrait-fire-3": {
@@ -11161,7 +11161,7 @@
     "bodyAnchor": {
       "x": 0.5,
       "crown": 0.28125,
-      "foot": 0.94
+      "foot": 0.94921875
     },
     "footBounds": [
       29,
