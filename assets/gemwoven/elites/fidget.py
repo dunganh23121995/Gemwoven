@@ -83,7 +83,7 @@ def key_cells(raw, out_dir, cell=256):
         img.resize((cell, round(cell * h / w)), Image.Resampling.LANCZOS).crop((0, 0, cell, cell)).save(out_dir / f"idle-{i + 1}.png")
 
 
-def proc(cid, name, core=9999):
+def proc(cid, name, core=9999, whole=False):
     d = WORK / cid / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
@@ -92,7 +92,10 @@ def proc(cid, name, core=9999):
     # the resting first frame; a per-frame fit would be pulled off the body by spread wings or a
     # raised arm. Only what really moves is taken from the drawing (no rigid core, slivers absorbed).
     master = master_of(cid)
-    out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3)
+    # whole: a big action (spread wings) where Codex also shifts the head or body a little; mixing
+    # it with the master would show two heads, so the drawn frame is used whole (only placed).
+    extra = ["--whole"] if whole else []
+    out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, *extra)
     # A frame whose legs still do not match the master after placement (Codex moved the whole body)
     # is replaced like a clipped one: by the previous good frame, or by the rest pose near the end.
     import json
@@ -110,4 +113,4 @@ def proc(cid, name, core=9999):
 
 if __name__ == "__main__":
     cmd, cid, name, *rest = sys.argv[1:]
-    gen(cid, name, *rest) if cmd == "gen" else proc(cid, name)
+    gen(cid, name, *rest) if cmd == "gen" else proc(cid, name, whole="--whole" in rest)

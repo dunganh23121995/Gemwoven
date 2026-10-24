@@ -82,6 +82,7 @@ def main():
     ap.add_argument("--cell", type=int, default=256)
     ap.add_argument("--cols", type=int, default=2)
     ap.add_argument("--same-transform", action="store_true", help="register frame 1 only and place every frame like it (frames drawn at one scale, e.g. an action whose big moving parts would pull a per-frame registration)")
+    ap.add_argument("--whole", action="store_true", help="place every frame but keep its drawing whole (frames 1 and 8 stay the master)")
     ap.add_argument("--grow", type=int, default=0, help="widen the taken motion by N px so no sliver of the master's old pose remains")
     args = ap.parse_args()
     out = Path(args.out_dir)
@@ -118,6 +119,8 @@ def main():
         if args.grow:
             take = ndimage.binary_dilation(take, iterations=args.grow)
         weight = np.asarray(Image.fromarray((take * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(2.2)), dtype=np.float32)[..., None] / 255
+        if args.whole and 0 < index < len(args.frames) - 1:
+            weight = np.ones_like(weight)
         mixed = pm(master) * (1 - weight) + pm(moved) * weight
         alpha = mixed[..., 3:]
         colour = np.where(alpha > 1e-4, mixed[..., :3] / np.maximum(alpha, 1e-4), 0)
