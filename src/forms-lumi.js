@@ -80,13 +80,13 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
   let amount=0,blocked=0,stored=0;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';scene.classList.add('combat-v3-active');root.dataset.attackChain=chain;root.dataset.attackStance='lumi-star';
   try{
-    combatVoice('hero','attack');
+    combatVoice('hero','attack');warmLumiSounds(form);
     popActorSkill('hero',chain>1?'ĐÒN ×'+chain+' · +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%':form===3?'Quỹ Đạo Lôi':'Tinh Lôi Tiêu',false,pending);
     for(let i=0;i<hits;i++){
       setSpriteFrame('hero','attack',pose.windup);
       if(!reduced)pending.push(animate(root,[{transform:old||'none'},{transform:'translate(-6px,-2px)'}],{duration:150,easing:'ease-out',fill:'forwards'}));
       await wait(i?110:170);
-      setSpriteFrame('hero','attack',pose.launch);combatV3Whoosh('lightning',critical,100);
+      setSpriteFrame('hero','attack',pose.launch);lumiSound(form===3?'f3-shot':'f2-throw',{volume:.34,pan:-.15},true);
       const body=lumiFoeBody(),from=lumiTip(form,'attack',pose.launch),to={x:body.x-body.width*.08,y:body.top+body.height*.45};
       if(!reduced)pending.push(animate(root,[{transform:'translate(-6px,-2px)'},{transform:'translate(3px,0px)'},{transform:old||'none'}],{duration:320,easing:'ease-out'}));
       await lumiThrow(projectile,from,to,form===3?Math.min(118,body.height*.85+30):Math.min(104,body.height*.7+30),reduced?1:230);
@@ -94,7 +94,7 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
       lumiFx(burst,to,Math.min(190,Math.max(110,body.height*1.15)));
       const result=damage('hero',raw/hits,damageLedger);amount+=result.amount;blocked+=result.blocked;stored+=result.stored||0;
       combatVoice('enemy','hurt');hitAccents('hero',result,critical,pending);
-      combatV3Action('enemy','hurt',critical?560:410);combatV3HitSound('lightning',critical);
+      combatV3Action('enemy','hurt',critical?560:410);lumiSound(form===3?'f3-ring':'f2-pop',{volume:critical?.4:.32,pan:.25},true);
       combatV3Number('enemy',result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
       lumiHitCount(i,hits,pending);combatV3Camera(1,critical,false,pending);lumiRecoil(target,oldTarget,critical,pending);
       await wait(170);setSpriteFrame('hero','attack',5);await wait(i<hits-1?90:200);
@@ -110,10 +110,11 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
 }
 /* Ultimate (Tinh Lôi Ngũ Phạt / Cửu Thiên Tinh Phạt). rageChoreography's contract: a 0-3000 ms
  * timeline, `hits` blows of raw/hits each through damage() with one ledger, onRelease on the last. */
-function lumiBoltHit(i,count,raw,ledger,target,oldTarget,pending){
+function lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending){
   const result=damage('hero',raw/count,ledger),last=i===count-1;
   combatVoice('enemy','hurt');
-  if(!(reduced&&i>0))playCastSound('lightning','thunder-'+(i===0?'open':last?'tail':'crack'),{volume:i===0?.6:last?.68:.3,pan:.22+(i%2?.08:-.08)});
+  // A crisp electric zap per bolt (no thunder roll: there is no storm cloud in these forms).
+  lumiSound(last?`f${form}-finale`:form===3?'f3-bolt'+(1+i%2):'f2-bolt',{volume:last?.5:form===3?.28:.32,pan:.22+(i%2?.08:-.08)},i===0||last);
   combatV3Camera(1,true,false,pending);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents('hero',result,false,pending);
   setSpriteAction('enemy','hurt',230);lumiRecoil(target,oldTarget,last,pending);
@@ -137,37 +138,48 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   let amount=0,blocked=0,seal=null,galaxy=null,spin=null;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='chant';root.dataset.foeHudOver='true';
   try{
-    combatVoice('hero','cast');prepareLumiThunder();popActorSkill('hero',HEROES.lightning.skill,true,pending);
+    combatVoice('hero','cast');warmLumiSounds(form);popActorSkill('hero',HEROES.lightning.skill,true,pending);
     setSpriteFrame('hero','skill',0);await at(200);setSpriteFrame('hero','skill',1);await at(460);setSpriteFrame('hero','skill',2);
-    root.dataset.ragePhase='summon';root.dataset.lumiSky='true';playCastSound('lightning','form'+form,{volume:.3,pan:.25});
+    root.dataset.ragePhase='summon';root.dataset.lumiSky='true';lumiSound(form===3?'f3-galaxy':'f2-summon',{volume:form===3?.42:.36,pan:.1},true);
     const tip=lumiTip(form,'skill',2);
     // Five stars on the seal's circle (its drawn radius is .36 of the cell), top first, clockwise.
     const stars=Array.from({length:5},(_,k)=>{const a=-Math.PI/2+k*2*Math.PI/5;return {x:sky.x+Math.cos(a)*sign*.36,y:sky.y+Math.sin(a)*sign*.36};});
     if(form===2){
-      // Five stars leave her raised orb and fly up to their places in the sky.
+      // Five stars leave her raised orb one after another and fly up to their places in the sky; each
+      // one clicks into place ("kịch", rising), then the seal draws itself and rings out as a chord.
+      const motes=[];
       stars.forEach((p,k)=>{
-        const mote=lumiFx('idlestar',tip,sign*.17,{loop:true,cls:'lumi-mote'});if(!mote)return;
-        pending.push(animate(mote,[{translate:'-50% -50%',scale:'.4',opacity:0},{opacity:1,scale:'1',offset:.2},{translate:`calc(-50% + ${(p.x-tip.x)*.55}px) calc(-50% + ${(p.y-tip.y)*.55-30}px)`,offset:.6},{translate:`calc(-50% + ${p.x-tip.x}px) calc(-50% + ${p.y-tip.y}px)`,scale:'1.15',opacity:1}],{duration:520,delay:k*45,easing:'cubic-bezier(.35,.1,.3,1)',fill:'both'}).finally(()=>mote.remove()));
+        const leave=520+k*85,land=leave+460;
+        pending.push(at(land).then(()=>lumiSound(`f2-star${k+1}`,{volume:.34,pan:.05+k*.05},k===0)));
+        const mote=lumiFx('idlestar',tip,sign*.17,{loop:true,cls:'lumi-mote'});if(!mote)return;motes.push(mote);
+        const to={translate:`calc(-50% + ${p.x-tip.x}px) calc(-50% + ${p.y-tip.y}px)`,scale:'1.15'};
+        mote.style.opacity='0';
+        pending.push(animate(mote,[{translate:'-50% -50%',scale:'.4',opacity:0},{opacity:1,scale:'1',offset:.2},{translate:`calc(-50% + ${(p.x-tip.x)*.55}px) calc(-50% + ${(p.y-tip.y)*.55-30}px)`,offset:.6},{...to,opacity:1}],{duration:460,delay:Math.max(0,start+leave-performance.now()),easing:'cubic-bezier(.35,.1,.3,1)',fill:'both'}).then(()=>{Object.assign(mote.style,to);mote.style.opacity='1';}));
       });
-      await at(1000);
-      seal=lumiFx('pentagram',sky,sign,{frames:[0,1,2,3,4,5],frameMs:95,loop:3,cls:'lumi-sky'});
+      await at(1100);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
+      await at(1320);
+      seal=lumiFx('pentagram',sky,sign,{frames:[0,1,2,3,4,5],frameMs:80,loop:3,cls:'lumi-sky'});motes.forEach(mote=>mote.remove());
+      pending.push(at(1480).then(()=>lumiSound('f2-seal',{volume:.42,pan:.2},true)));
+      await at(1500);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }else{
-      // The rings around her spear's star spin off it and open into a galaxy over the foe.
+      // The rings around her spear's star spin off it and open into a galaxy over the foe (laser sweep
+      // into a spatial hum), stars twinkle along its arms ("tinh tinh").
       galaxy=lumiFx('galaxy',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:5,cls:'lumi-sky'});
       if(galaxy){
         galaxy.style.scale='.6';
         spin=galaxy.animate([{rotate:'0deg'},{rotate:'-360deg'}],{duration:4200,iterations:Infinity});
         pending.push(animate(galaxy,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:640,delay:480,easing:'cubic-bezier(.45,.05,.3,1)',fill:'both'}).then(()=>{galaxy.style.left=sky.x+'px';galaxy.style.top=sky.y+'px';galaxy.style.scale='1';}));
       }
+      pending.push(at(1000).then(()=>lumiSound('f3-twinkle',{volume:.34,pan:.15})));
+      await at(1080);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
+      await at(1340);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }
-    await at(1080);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
-    await at(1340);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     // Bolts: the seal's stars fire in its drawing order; the galaxy rains from all over its disc,
     // the last bolt the biggest, straight from its heart. They land along the foe's feet.
-    const step=Math.min(150,(form===3?880:640)/count),order=[0,2,4,1,3];
+    const first=form===2?1620:1450,step=form===2?Math.min(130,600/count):Math.min(150,880/count),order=[0,2,4,1,3];
     root.dataset.ragePhase='skyfall';
     for(let i=0;i<count;i++){
-      await at(1450+i*step);
+      await at(first+i*step);
       const last=i===count-1,lane=count>1?(i*.618)%1-.5:0;
       let from;
       if(form===2)from=stars[order[i%5]];
@@ -176,7 +188,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       if(form===2)lumiFx('starpop',from,sign*.42,{frameMs:45});// the star that fires flares
       lumiStarBolt(from,to,last?strike*1.3:strike,last);
       if(last){lumiFx(form===3?'ringburst':'starpop',{x:body.x,y:body.top+body.height*.5},Math.min(240,body.height*1.6+40),{cls:'lumi-finale'});lumiFlash(pending);}
-      const result=lumiBoltHit(i,count,raw,ledger,target,oldTarget,pending);amount+=result.amount;blocked+=result.blocked;
+      const result=lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending);amount+=result.amount;blocked+=result.blocked;
       if(last){onRelease(pending);update();}
     }
     await at(2450);root.dataset.ragePhase='recover';delete root.dataset.lumiSky;setSpriteFrame('hero','skill',5);
@@ -189,6 +201,15 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
     delete root.dataset.ragePhase;delete root.dataset.foeHudOver;delete root.dataset.lumiSky;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }
 }
+// Her kit's own sounds (assets/audio/hero-forms/lightning, scripts/prepare_lumi_form_sounds.py).
+const LUMI_SOUNDS={2:['f2-summon','f2-star1','f2-star2','f2-star3','f2-star4','f2-star5','f2-seal','f2-bolt','f2-finale','f2-throw','f2-pop'],
+  3:['f3-galaxy','f3-twinkle','f3-bolt1','f3-bolt2','f3-finale','f3-shot','f3-ring']};
+function warmLumiSounds(form){
+  const context=combatV3AudioContext();if(!context)return;
+  for(const name of LUMI_SOUNDS[form]||[])if(ART.castSounds['lightning-'+name])decodeCastSound(context,'lightning-'+name).catch(()=>{});
+}
+// NO FX keeps only the essential beats so stacked cues never play all at once.
+function lumiSound(name,options,essential=false){if(reduced&&!essential)return;playCastSound('lightning',name,options);}
 function lumiFlash(pending){
   if(reduced)return;
   const flash=document.createElement('span');flash.className='form-skill-flash lightning';flash.setAttribute('aria-hidden','true');$('combatEffects').append(flash);
@@ -207,7 +228,7 @@ async function departLumiRide(){
   let fx=null;
   try{
     setSpriteFrame('hero','skill',1);await wait(reduced?0:220);
-    const p=combatV3Point('hero');lumiFx('starpop',{x:p.x,y:p.y-p.height*.08},p.width*.8);
+    const p=combatV3Point('hero');lumiFx('starpop',{x:p.x,y:p.y-p.height*.08},p.width*.8);lumiSound('f3-twinkle',{volume:.3,pan:-.2});
     root.dataset.riding='true';setSpriteFrame('hero','ride',0);fx=departFx('lightning');
     await animate(root,[{transform:'translate(0px,0px)'},{transform:'translate(0px,-8px)'}],{duration:reduced?1:260,easing:'ease-out'});
     const start=performance.now(),duration=reduced?1:2400;
@@ -248,4 +269,4 @@ function warmLumiArt(){
   swatch.style.backgroundImage=urls.map(url=>`url('${url}')`).join(',');actor('hero').append(swatch);
 }
 const lumiFormRender=renderActors;
-renderActors=function(){lumiFormRender();mountLumiIdleStars();if(state.key==='lightning')warmLumiArt();};
+renderActors=function(){lumiFormRender();mountLumiIdleStars();if(state.key==='lightning'){warmLumiArt();if(sound)warmLumiSounds(combatHeroForm('lightning'));}};

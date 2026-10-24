@@ -1,0 +1,266 @@
+{
+  "lightning-f2-summon": {
+    "file": "hero-forms/lightning/f2-summon.wav",
+    "duration": 1.05,
+    "beat": "four-star ultimate: she raises her orb and the stars leave it",
+    "sources": [
+      "jcdecha, Wind_Chimes_single.wav (#235463)",
+      "arseniiv, crystal bell 01/08 (#614833, #614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4161,
+    "rms": 0.1117,
+    "sha256": "22f8df54ee100499d90f3b04c657b037c2fc304973b168816abeb62ef723d954"
+  },
+  "lightning-f2-star1": {
+    "file": "hero-forms/lightning/f2-star1.wav",
+    "duration": 0.42,
+    "beat": "four-star ultimate: star 1 reaches its place in the sky",
+    "sources": [
+      "NoisyRedFox, Crystal1 (#734238)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0818,
+    "sha256": "c7b24500fd2e8468ef6002f3bced03fb90fd4c475a362bdd27d0e5d72b44529c"
+  },
+  "lightning-f2-star2": {
+    "file": "hero-forms/lightning/f2-star2.wav",
+    "duration": 0.42,
+    "beat": "four-star ultimate: star 2 reaches its place in the sky",
+    "sources": [
+      "NoisyRedFox, Crystal1 (#734238)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0691,
+    "sha256": "f2a32ceb825dec95efcbc16a3f4d8186df031c1a3b7e0c359be2a577ecf99d15"
+  },
+  "lightning-f2-star3": {
+    "file": "hero-forms/lightning/f2-star3.wav",
+    "duration": 0.42,
+    "beat": "four-star ultimate: star 3 reaches its place in the sky",
+    "sources": [
+      "NoisyRedFox, Crystal1 (#734238)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0714,
+    "sha256": "acfa85200a08290067985d8db9b8d8cd45bb41d93fd41377466fc6585023b4a1"
+  },
+  "lightning-f2-star4": {
+    "file": "hero-forms/lightning/f2-star4.wav",
+    "duration": 0.42,
+    "beat": "four-star ultimate: star 4 reaches its place in the sky",
+    "sources": [
+      "NoisyRedFox, Crystal1 (#734238)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0648,
+    "sha256": "b4b39cfb75ede90d8b76836ab1ce5740918b8563146e2b36913cac26721a919c"
+  },
+  "lightning-f2-star5": {
+    "file": "hero-forms/lightning/f2-star5.wav",
+    "duration": 0.42,
+    "beat": "four-star ultimate: star 5 reaches its place in the sky",
+    "sources": [
+      "NoisyRedFox, Crystal1 (#734238)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.064,
+    "sha256": "820b135c44595cce68cb5c57d50c480cade806db338263346836eda2e6a3dd00"
+  },
+  "lightning-f2-seal": {
+    "file": "hero-forms/lightning/f2-seal.wav",
+    "duration": 1.6,
+    "beat": "four-star ultimate: the pentagram closes (a crystal major chord with a crackle along its lines)",
+    "sources": [
+      "iospyrakis, crystal bell (#326368)",
+      "arseniiv, crystal bell 01/08 (#614833, #614832)",
+      "egomassive, Zap.ogg (Jacob's ladder, #536741)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0756,
+    "sha256": "1f82fa1835e951da41364e7791da426b60b4a43eec4bf745578e8fd62fddf27c"
+  },
+  "lightning-f2-bolt": {
+    "file": "hero-forms/lightning/f2-bolt.wav",
+    "duration": 0.62,
+    "beat": "four-star ultimate: one star fires its bolt; sparkle where it lands",
+    "sources": [
+      "Simon Spiers, Very close lightning strike (#437243), first crack only",
+      "follytowers, high-voltage-discharge-2 (Tesla coil, #415962)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4776,
+    "rms": 0.0993,
+    "sha256": "db06019259e78b62852693dd6c88db1b2e6f95046f42cf8222c433299e174ef2"
+  },
+  "lightning-f2-finale": {
+    "file": "hero-forms/lightning/f2-finale.wav",
+    "duration": 1.5,
+    "beat": "four-star ultimate: the last bolt and the big star burst",
+    "sources": [
+      "Simon Spiers, Very close lightning strike (#437243), first crack only",
+      "follytowers, high-voltage-discharge-2 (#415962)",
+      "egomassive, Zap.ogg (#536741)",
+      "iospyrakis, crystal bell (#326368)",
+      "jcdecha, Wind_Chimes_single.wav (#235463)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.073,
+    "sha256": "5f13d0d708fd376fbd0e4d0d238bfe7ef0a4bcecdd7ac8ec5dba0cecf4fe5070"
+  },
+  "lightning-f2-throw": {
+    "file": "hero-forms/lightning/f2-throw.wav",
+    "duration": 0.42,
+    "beat": "four-star basic attack: she flings the crackling star",
+    "sources": [
+      "Dalesome, Woosh (stick swung in the air) (#352719)",
+      "elliott.klein, Spark (#189630)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4501,
+    "rms": 0.1027,
+    "sha256": "7c0b17ed22881cd665ce996dc290b5552f9441ea59612f71bf30b24bfd873b08"
+  },
+  "lightning-f2-pop": {
+    "file": "hero-forms/lightning/f2-pop.wav",
+    "duration": 0.55,
+    "beat": "four-star basic attack: the star bursts on the foe",
+    "sources": [
+      "NoisyRedFox, Crystal1 (#734238)",
+      "elliott.klein, Spark (#189630)",
+      "arseniiv, crystal bell 01 (#614833)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0734,
+    "sha256": "dce9b1684c57646c2895bbd6735bad8c7890c82c9d5403867c9cfa8717f5bb19"
+  },
+  "lightning-f3-galaxy": {
+    "file": "hero-forms/lightning/f3-galaxy.wav",
+    "duration": 2.6,
+    "beat": "six-star ultimate: the orbit rings spin off the spear and open into the galaxy (it hums while it hangs)",
+    "sources": [
+      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
+      "omnomducks, Wine glass hum (#338730)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4792,
+    "rms": 0.1108,
+    "sha256": "a69060521558bd70a5887a74087e88394e21992c161de4a5c68bf60c4115328b"
+  },
+  "lightning-f3-twinkle": {
+    "file": "hero-forms/lightning/f3-twinkle.wav",
+    "duration": 1.0,
+    "beat": "six-star ultimate: stars stream along the galaxy's arms ('tinh tinh')",
+    "sources": [
+      "arseniiv, crystal bell 08 (#614832)",
+      "jcdecha, Wind_Chimes_single.wav (#235463)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4623,
+    "rms": 0.1099,
+    "sha256": "626e22f9d9acd45be7fe98212d7994d4f442a78c1f99d1e4233a9cef30525a09"
+  },
+  "lightning-f3-bolt1": {
+    "file": "hero-forms/lightning/f3-bolt1.wav",
+    "duration": 0.42,
+    "beat": "six-star ultimate: one of the nine star bolts (two takes, alternated)",
+    "sources": [
+      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
+      "follytowers, high-voltage-discharge-2 (#415962)",
+      "Simon Spiers, Very close lightning strike (#437243), first crack only"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4458,
+    "rms": 0.1094,
+    "sha256": "47b379b9a5265c8efc09f2b1ee70748a8f09c2415e799636959edd027e9249fd"
+  },
+  "lightning-f3-bolt2": {
+    "file": "hero-forms/lightning/f3-bolt2.wav",
+    "duration": 0.42,
+    "beat": "six-star ultimate: one of the nine star bolts (two takes, alternated)",
+    "sources": [
+      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
+      "follytowers, high-voltage-discharge-2 (#415962)",
+      "Simon Spiers, Very close lightning strike (#437243), first crack only"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.4228,
+    "rms": 0.1097,
+    "sha256": "0685e5721e7f8b8df446b63468e3b6bad57b833d8baa058628e820795b28b52f"
+  },
+  "lightning-f3-finale": {
+    "file": "hero-forms/lightning/f3-finale.wav",
+    "duration": 2.0,
+    "beat": "six-star ultimate: the last bolt from the galaxy's heart and the ring burst",
+    "sources": [
+      "inoshirodesign, singing bowl strike sound (#271370)",
+      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
+      "Simon Spiers, Very close lightning strike (#437243), first crack only",
+      "follytowers, high-voltage-discharge-2 (#415962)",
+      "iospyrakis, crystal bell (#326368)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0823,
+    "sha256": "d685f979873f8364201140b6cd29a12a5228221870f76aa75ceb8b0db9553520"
+  },
+  "lightning-f3-shot": {
+    "file": "hero-forms/lightning/f3-shot.wav",
+    "duration": 0.5,
+    "beat": "six-star basic attack: the orbit-ring bolt leaves the spear",
+    "sources": [
+      "SoaringAaronJohnson51397, Lasers Firing (slinky) (#411928)",
+      "arseniiv, crystal bell 08 (#614832)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0963,
+    "sha256": "44405bf4b47f498916a0096d9e9ee56d4ee35d8b7cf537aeeb66891868867e51"
+  },
+  "lightning-f3-ring": {
+    "file": "hero-forms/lightning/f3-ring.wav",
+    "duration": 0.8,
+    "beat": "six-star basic attack: the ring shockwave on the foe",
+    "sources": [
+      "inoshirodesign, singing bowl strike sound (#271370)",
+      "follytowers, high-voltage-discharge-2 (#415962)",
+      "NoisyRedFox, Crystal1 (#734238)"
+    ],
+    "license": "CC0-1.0",
+    "processing": "excerpts, resampling, band filters, layering, fades, peak limiting, loudness normalisation",
+    "peak": 0.482,
+    "rms": 0.0854,
+    "sha256": "6e874bc438d74cc3d9a93c871364c9bba6e485387658f02679a198d84a410976"
+  }
+}
