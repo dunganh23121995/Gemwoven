@@ -53,7 +53,8 @@ function heroFormSpell(key,form,point,pending,opening=false){
 }
 const formOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
-  const key=state.key,form=combatHeroForm(key);
+  const key=state.key,form=combatHeroForm(key),own=heroKit(key,form,'ultimate');
+  if(own)return own();
   // Six-star Noct's ultimate stages its own cast (outstretched hand and cursed fog).
   if(form<2||(form===3&&key==='shadow'))return formOriginalUltimate();
   const pending=[];heroFormCasting=true;
@@ -86,7 +87,8 @@ function formSkillStrike(key,form,pending){
 }
 const formOriginalAttack=attack;
 attack=async function(side,raw,options={}){
-  const form=combatHeroForm(state.key),pending=[];
+  const form=combatHeroForm(state.key),pending=[],own=side==='hero'&&!options.ultimate&&!heroFormCasting?heroKit(state.key,form,'attack'):null;
+  if(own)return own(raw,options);
   // Six-star Noct draws his own scythe crescents (shadow-combat.js reaperCut).
   if(side==='hero'&&form===3&&!heroFormCasting&&!options.ultimate&&state.key!=='shadow'){
     const p=combatV3Point('enemy');

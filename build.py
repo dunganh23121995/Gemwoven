@@ -2,6 +2,7 @@
 from pathlib import Path
 import base64
 import json
+import os
 import sys
 import io
 import hashlib
@@ -262,6 +263,13 @@ boss_fx_path=root/'assets/fx/bosses/fx.json'
 art['bossFx']={boss:{**sheet,'src':compact_image(sheet['file'])} for boss,sheet in json.loads(boss_fx_path.read_text(encoding='utf-8')).items() if (root/sheet['file']).exists()} if boss_fx_path.exists() else {}
 reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8'))
 art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
+# Each hero's own skill art for its forms (src/forms-<hero>.js): assets/fx/heroes/<key>/fx.json.
+art['heroFx']={path.parent.name:{name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in json.loads(path.read_text(encoding='utf-8')).items()} for path in sorted((root/'assets/fx/heroes').glob('*/fx.json'))}
+# Alternative drawings of a hero for the studio to compare (assets/heroes/<key>/variants/<name>/meta.json).
+art['heroVariants']={}
+for path in sorted((root/'assets/heroes').glob('*/variants/*/meta.json')):
+    meta=json.loads(path.read_text(encoding='utf-8'))
+    art['heroVariants'].setdefault(path.parents[2].name,{})[path.parent.name]={action:{'src':image(path.parent/sheet['atlas']),'cols':sheet['columns'],'rows':sheet['rows'],'count':sheet['frames'],'heads':sheet['headAnchors'],'frameDuration':sheet['frameDuration']} for action,sheet in meta['actions'].items()}
 depart_fx_path=root/'assets/fx/depart/fx.json'
 art['departFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in json.loads(depart_fx_path.read_text(encoding='utf-8')).items()} if depart_fx_path.exists() else {}
 art['formAuras']={}
@@ -315,12 +323,17 @@ shared_art=share_blobs(art)
 resolve_blobs="(function resolve(node){for(const k in node){const v=node[k];if(typeof v==='string'&&v.startsWith('@blob:'))node[k]=ART_BLOBS[+v.slice(6)];else if(v&&typeof v==='object')resolve(v);}})(ART);\n"
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
-                        for p in ['audio-settings.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js'])
+                        for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/gemwoven/form-effects.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/hero-forms-combat.js').read_text(encoding='utf-8')
+# Each hero's own form staging (hero-kits.js), after the shared form wrappers it builds on.
+hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan']
+extensions += '\n'+'\n'.join((root/f'src/{name}.js').read_text(encoding='utf-8') for name in hero_kit_files)
+css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for name in hero_kit_files)
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
 html = html.replace('/* GAME_CSS */', css).replace('/* GAME_JS */', js)
-(root / 'Game.html').write_text(html, encoding='utf-8')
+# Written whole and swapped in, so a page loading while another build runs never reads half a file.
+(root / 'Game.html.tmp').write_text(html, encoding='utf-8'); os.replace(root / 'Game.html.tmp', root / 'Game.html')
 print(f'Built Game.html ({len(html.encode("utf-8")):,} bytes).')

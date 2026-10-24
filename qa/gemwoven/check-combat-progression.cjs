@@ -36,7 +36,7 @@ async function run(hero,mode='campaign',index=1){
   w.localStorage.setItem('mam-phep-audio-v1',JSON.stringify({music:37,effects:55,voices:24}));
   w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
   w.HTMLElement.prototype.animate=function(){return {finished:Promise.resolve(),cancel(){},finish(){},effect:{target:this}};};
-  const files=['audio-settings','sprite-runtime','combo-v4','opponent-ai','opponent-turn','board-sequence','combat-v3','live-combat','antique-trim','combat-stage','adventure-effects','noct-audio','recorded-voices','restoration','cinematic','scene-ambience','shadow-combat','hero-departures','cast-redesign','self-buffs','yuki-ultimate','mika-ultimate','foe-skills'];
+  const files=['audio-settings','hero-kits','sprite-runtime','combo-v4','opponent-ai','opponent-turn','board-sequence','combat-v3','live-combat','antique-trim','combat-stage','adventure-effects','noct-audio','recorded-voices','restoration','cinematic','scene-ambience','shadow-combat','hero-departures','cast-redesign','self-buffs','yuki-ultimate','mika-ultimate','foe-skills'];
   const extensions=read('src/gemwoven/boss-chapters.js')+'\n'+read('src/gemwoven/boss-tactics.js')+'\n'+read('src/gemwoven/world.js')+'\n'+read('src/gemwoven/progression.js')+'\nconst ART='+JSON.stringify(art())+';\n'+files.map(f=>read('src/'+f+'.js')).join('\n')+'\n'+read('src/progression-combat.js')+'\n'+read('src/expedition-combat.js');
   w.eval(read('src/game.js').replace('/* GAME_EXTENSIONS */',extensions));
   const qa=w.gameQA;assert.ok(qa);qa.setReduced(true);d.getElementById('soundBtn').click();

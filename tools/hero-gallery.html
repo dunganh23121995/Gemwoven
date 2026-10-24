@@ -46,6 +46,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
 <header>
   <h1>Studio tướng</h1>
   <label>Tướng <select id="hero"></select></label>
+  <label id="variantBox" hidden>Bản vẽ <select id="variant"></select></label>
   <div class="row" id="forms"></div>
   <span class="status" id="status">Đang tải game…</span>
   <button id="reload" title="Tải lại sau khi build lại Game.html">Tải lại game</button>
@@ -175,6 +176,13 @@ function fillEnemies(){
 function configure(){
   const q=gq();if(!q?.art)return;
   q.configure({key:hero,form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
+  // An alternative drawing of this hero (ART.heroVariants), if any, to compare with the current one.
+  const variants=Object.keys(q.art.heroVariants?.[hero]||{}),pick=$('variant').value;
+  $('variantBox').hidden=!variants.length;
+  $('variant').replaceChildren(...[['','Hiện tại'],...variants.map(v=>[v,'Bản mới · '+v])].map(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;return o;}));
+  $('variant').value=variants.includes(pick)?pick:'';
+  for(const other of Object.keys(q.art.heroVariants||{}))if(other!==hero)q.heroVariant(other,null);
+  if(variants.length)q.heroVariant(hero,$('variant').value||null);
   q.setReduced(!$('fx').checked);loadSheets();fillFoeSkills();
   const f=M.HERO_FORMS[hero]?.[form-1];
   $('kit').textContent=f?`${f.name} · vũ khí: ${f.weapon} · tuyệt kỹ: ${f.skill}${f.signature?' · '+f.signature:''}`:`${M.HEROES[hero].name} · tuyệt kỹ: ${M.HEROES[hero].skills?.[0]||''}`;
@@ -190,7 +198,7 @@ async function boot(){
 }
 frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
 $('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src='Game.html?qa&t='+Date.now();};
-for(const id of ['enemy','fx','armor'])$(id).onchange=configure;
+for(const id of ['enemy','fx','armor','variant'])$(id).onchange=configure;
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
   const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);
   try{

@@ -53,6 +53,7 @@ function mountBossGloom(){
 }
 let stageTransition=false;
 async function departVictoriousHero(){
+  const own=typeof combatHeroForm==='function'&&heroKit(state.key,combatHeroForm(state.key),'depart');if(own)return own();
   if(state.key==='shadow')return departShadowHero();
   if(state.key==='lightning')return departLumiHero();
   const hero=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children];
