@@ -48,7 +48,7 @@
     }
     if(state.screen==='home'&&M.heroForm(p.selected,p.heroes[p.selected])>1){
       const body=L.screens.home.nodes.find(n=>n.id==='home.hero');
-      if(body)body.rect=[338,967,290,305];
+      if(body)body.rect=[338,975,290,305];
     }
     if(state.screen==='upgrade'&&state.hero!=='novice'){
       const key=state.hero,form=M.heroForm(key,p.heroes[key]),caption=L.screens.upgrade.nodes.find(n=>n.id==='upgrade.hero-caption');
