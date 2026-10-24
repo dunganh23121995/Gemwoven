@@ -1,13 +1,16 @@
-"""Mika's four- and six-star ultimate sounds (src/forms-mika.js): a few well-spaced cues per ultimate.
+"""Mika's four- and six-star ultimate sounds (src/forms-mika.js), rebuilt from scratch on her form-1 sound.
 
-Like form 1's sounds (scripts/prepare_mika_nori_audio.py), each clip is ONE clean real recording (checked:
-no clipping, low noise floor), minimally edited: an excerpt with its natural attack and decay, a gentle
-high-pass, gain (never past a 0.82 peak, no limiting or saturation) and short edge fades. No layering, pitch
-shifting, time-stretching or synthesis. Few, long clips; each ultimate ends on a long roaring-fire tail that
-starts on the damage hit and rings out with its natural decay, as form 1's 3.9 s flame whoosh does.
+Modelled on Yuki's approved set (scripts/prepare_yuki_form_sounds.py): the backbone is Mika's OWN form-1
+recordings, hnhnh's fire whoosh (sources/mika-nori/fire-whoosh.mp3: form 1's flame charge and its 3.9 s
+flame whoosh) and Taira Komori's katana recordings, so forms 2-3 sound like the same swordswoman, only
+bigger; every other cue is the literal sound of the thing on screen (a fire blooming, a fire whoosh for the
+spin, a fire explosion for the sun, fireball hits for the spirits). The damage hit is the loudest clip and
+form 1's full flame whoosh rings out from it (3.8 s, natural decay).
+Each clip is ONE clean real recording, minimally edited: an excerpt with its natural attack and decay, a
+gentle high-pass, gain (peak <= 0.82, no limiting or saturation) and short edge fades. No layering, pitch or
+time change, no synthesis.
 Output: assets/audio/hero-forms/fire/*.wav and assets/audio/hero-forms/fire-manifest.json
-(merged by build.py into ART.castSounds as fire-<name>).
-Rebuild: python scripts/prepare_mika_form_sounds.py
+(merged by build.py into ART.castSounds as fire-<name>). Rebuild: python scripts/prepare_mika_form_sounds.py
 """
 from pathlib import Path
 import hashlib
@@ -71,36 +74,35 @@ def clip(name, ref, start, end, beat, fade_in=.006, fade_out=.12, highpass=45, r
     print('[ok]', name, USED[f'fire-{name}']['duration'], 's peak', USED[f'fire-{name}']['peak'], 'rms', USED[f'fire-{name}']['rms'])
 
 
-# Hits are synced to their frames (measured in the studio, src/forms-mika.js); the beds breathe with their
-# natural attack and decay; the final tail starts on the damage hit and rings out well past the visuals.
+WHOOSH = ('mika-nori', 'fire-whoosh.mp3')     # form 1's flame charge and flame whoosh
+for old in OUT.glob('*.wav'):
+    old.unlink()   # the set is rebuilt whole
 
-# ---- Four-star: Hồ Diễm Long Trảm (mikaLongCleave, visuals 0-2300 ms) -----------------------------
-# 0 ms, the broadsword raised: a steel blade drawn and ringing.
-clip('f2-raise', ('katana', 'extracting_a_sword1.mp3'), 0, .3, 'sword raised upright (0-300 ms)', fade_out=.08)
-# 0-1300 ms, the fox-fire blade lighting up and towering: a flamethrower igniting and roaring, fading
-# under the cleave and the hit.
-clip('f2-blaze', ('freesound', '395039'), 2.15, 3.45, 'fox-fire blade ignites and towers (0-1300 ms)', fade_in=.005, fade_out=.3)
-# 950-1170 ms, the overhead cleave: a blade cutting the air, peaking as it comes down.
-clip('f2-cleave', ('katana', 'sword_attack1.mp3'), 0, .22, 'giant blade swung down (950-1170 ms)', fade_in=.003, fade_out=.05)
-# 1170 ms, the slam through the foe: a fire explosion.
-clip('f2-impact', ('freesound', '843247'), 0, .74, 'slam through the foe (1170 ms)', fade_in=.002, fade_out=.1)
-# From the hit, 4.1 s: the flames roar across the stage, the floor cut burns, and the fire dies away with
-# the recording's own shut-off decay (the end of a long flamethrower burst).
-clip('f2-tail', ('freesound', '395039'), 9.4, 13.5, 'flames roar across the stage and ring out (from the hit, 1170 ms)', fade_in=.04, fade_out=.25)
+# ---- Backbone: form 1's recordings, shared by both forms ------------------------------------------
+# The gather, like form 1's flame charge: the fire whoosh catching and swelling (0-1.3 s, fades under
+# the swing).
+clip('gather', WHOOSH, .03, 1.33, 'fire catching and swelling on the weapon (gather, from 0 ms)', fade_in=.005, fade_out=.35)
+# The finale, form 1's full flame whoosh with its own decay, ringing out from the damage hit.
+clip('finale', WHOOSH, .05, 3.86, "form 1's full flame whoosh ringing out from the damage hit (3.8 s)", fade_in=.005, fade_out=.3)
+# A steel blade drawn and ringing (the broadsword raised, the glaive drawn back).
+clip('draw', ('katana', 'extracting_a_sword1.mp3'), 0, .5, 'a steel blade drawn and ringing', fade_out=.08)
+# A blade swung through the air, its swish peaking as it comes down.
+clip('swing', ('katana', 'sword_attack1.mp3'), 0, .6, 'a blade swung through the air (peak at +0.15 s)', fade_in=.003, fade_out=.2)
+# A blade cutting through (form 2's damage hit, form 3's crescent).
+clip('cut', ('katana', 'cutting_with_a_katana1.mp3'), .1, .72, 'a blade cutting through the foe', fade_in=.003, fade_out=.15)
 
-# ---- Six-star: Cửu Dương Hồ Diễm (mikaNineSunSweep, visuals 0-2850 ms) ----------------------------
-# 0-950 ms, the nine tails flare into a sun: a magic-fire bloom and its natural decay.
-clip('f3-flare', ('freesound', '761330'), .5, 1.45, 'nine tails flare into a sun (0-950 ms)', fade_in=.02, fade_out=.15)
-# 650-1600 ms, the glaive drawn back and growing: the same recording's second fire movement.
-clip('f3-draw', ('freesound', '761330'), 2.65, 3.6, 'glaive drawn back and growing (650-1600 ms)', fade_in=.03, fade_out=.15)
-# 1250 ms, the flat spinning sweep and crescent cut: a fire whoosh and its decay.
-clip('f3-sweep', ('freesound', '260555'), .18, .7, 'spinning sweep and crescent cut (1250 ms)', fade_in=.003, fade_out=.15)
-# 1420 ms, the nine-tailed sun bursts on the foe: a fire explosion.
-clip('f3-sun', ('freesound', '855898'), 0, 1.23, 'nine-tailed sun bursts on the foe (1420 ms)', fade_in=.002, fade_out=.2)
-# Each wave of fox-fire spirits bursting on the foe (2000, 2240, 2480 ms): one fireball impact per wave.
-clip('f3-fireball', ('freesound', '252092'), 0, .5, 'a wave of fox-fire spirits bursts on the foe (once per wave)', fade_in=.002, fade_out=.2)
-# From the hit, 5.6 s: a napalm fireball roaring up under the spirits' run and bursts, then dying away
-# with its full natural decay.
-clip('f3-tail', ('freesound', '674902'), .35, 5.95, 'the fire roars on the foe and rings out (from the hit, 1420 ms)', fade_in=.01, fade_out=.3)
+# ---- Four-star: Hồ Diễm Long Trảm -------------------------------------------------------------------
+# The cut burning along the floor: a fire erupting on the ground.
+clip('f2-floor', ('freesound', '843247'), 0, .74, 'the cut bursts into flame along the floor', fade_in=.002, fade_out=.1)
 
-(AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+# ---- Six-star: Cửu Dương Hồ Diễm --------------------------------------------------------------------
+# The nine tails flare into a sun: a fire blooming open.
+clip('f3-flare', ('freesound', '761330'), .5, 1.45, 'the nine tails flare into a sun of fire', fade_in=.02, fade_out=.15)
+# The flat spinning sweep: a fire whoosh.
+clip('f3-sweep', ('freesound', '260555'), .18, .7, 'the glaive spun flat, a ring of fire', fade_in=.003, fade_out=.15)
+# The nine-tailed sun bursts on the foe (damage hit): a fire explosion.
+clip('f3-sun', ('freesound', '855898'), 0, 1.23, 'the nine-tailed sun bursts on the foe (damage hit)', fade_in=.002, fade_out=.2)
+# Each wave of fox-fire spirits bursting on the foe: a fireball impact.
+clip('f3-fireball', ('freesound', '252092'), 0, .5, 'a wave of fox-fire spirits bursts on the foe', fade_in=.002, fade_out=.2)
+
+(AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')

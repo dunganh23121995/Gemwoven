@@ -1,8 +1,46 @@
 {
-  "fire-f2-raise": {
-    "file": "hero-forms/fire/f2-raise.wav",
-    "duration": 0.3,
-    "beat": "sword raised upright (0-300 ms)",
+  "fire-gather": {
+    "file": "hero-forms/fire/gather.wav",
+    "duration": 1.3,
+    "beat": "fire catching and swelling on the weapon (gather, from 0 ms)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "fire-whoosh.mp3",
+        "author": "hnhnh",
+        "source_url": "https://freesound.org/people/hnhnh/sounds/244926/",
+        "license": "CC0-1.0",
+        "sha256": "f7c5e6618b15c4f07502d3ceb9ce52a9146401ce0f5b8acbf8c41c51e8030bfa"
+      }
+    ],
+    "processing": "excerpt 0.03-1.33 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.549,
+    "rms": 0.11,
+    "sha256": "d460e6376ea5c57c2e8ecae0f4ec06a0c1e2d4cd2b4a4561d8945dc4e5cb1ba8"
+  },
+  "fire-finale": {
+    "file": "hero-forms/fire/finale.wav",
+    "duration": 3.807,
+    "beat": "form 1's full flame whoosh ringing out from the damage hit (3.8 s)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "fire-whoosh.mp3",
+        "author": "hnhnh",
+        "source_url": "https://freesound.org/people/hnhnh/sounds/244926/",
+        "license": "CC0-1.0",
+        "sha256": "f7c5e6618b15c4f07502d3ceb9ce52a9146401ce0f5b8acbf8c41c51e8030bfa"
+      }
+    ],
+    "processing": "excerpt 0.05-3.86 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.605,
+    "rms": 0.11,
+    "sha256": "a5701804e867197755d08b6ae69d13f7db7a1fb5731c01d6c404ab288b8aa47c"
+  },
+  "fire-draw": {
+    "file": "hero-forms/fire/draw.wav",
+    "duration": 0.5,
+    "beat": "a steel blade drawn and ringing",
     "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
     "sources": [
       {
@@ -13,34 +51,15 @@
         "sha256": "12f14b66c15a52b50ef3b8ad8dc6b7d59b81a6d77a7e974b9e720c3efb305640"
       }
     ],
-    "processing": "excerpt 0.00-0.30 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.611,
+    "processing": "excerpt 0.00-0.50 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.644,
     "rms": 0.11,
-    "sha256": "5f28f683eb6a30af7abd089c6bcde83e40ec590b2838e739aced4fdc8503f4ca"
+    "sha256": "efcf6c1e05c22373b7bc4da8e26117229c628a67cd2babfba87a18d62d47ce43"
   },
-  "fire-f2-blaze": {
-    "file": "hero-forms/fire/f2-blaze.wav",
-    "duration": 1.3,
-    "beat": "fox-fire blade ignites and towers (0-1300 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Flamethrower_Weapon_Long_Bursts.wav",
-        "author": "AslakHostaker",
-        "source_url": "https://freesound.org/people/AslakHostaker/sounds/395039/",
-        "license": "CC0-1.0",
-        "sha256": "84af8524ed8d26b6d1b6c2a11c30cb922a1ffe4cab7afaaa30fa3a4c676434d2"
-      }
-    ],
-    "processing": "excerpt 2.15-3.45 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.092,
-    "sha256": "d1d979801248921ba0fef4f0cca7788a1e460105aa1900bcaccb7c5ee026a73f"
-  },
-  "fire-f2-cleave": {
-    "file": "hero-forms/fire/f2-cleave.wav",
-    "duration": 0.22,
-    "beat": "giant blade swung down (950-1170 ms)",
+  "fire-swing": {
+    "file": "hero-forms/fire/swing.wav",
+    "duration": 0.6,
+    "beat": "a blade swung through the air (peak at +0.15 s)",
     "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
     "sources": [
       {
@@ -51,19 +70,38 @@
         "sha256": "9a4241f1b0e48876f0d0d99d6b5a59fefaf2d276f4877d1734ba9cdc2cdb0ade"
       }
     ],
-    "processing": "excerpt 0.00-0.22 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-0.60 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.086,
-    "sha256": "a12bb30fc848d161c40069934b479dd0431b7779eaaa7229bbe11993c9802821"
+    "rms": 0.062,
+    "sha256": "a11b7c59d8ae91634d77287932852babdc6bc52e94bfe63b0bf6b139f3ba186d"
   },
-  "fire-f2-impact": {
-    "file": "hero-forms/fire/f2-impact.wav",
+  "fire-cut": {
+    "file": "hero-forms/fire/cut.wav",
+    "duration": 0.618,
+    "beat": "a blade cutting through the foe",
+    "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
+    "sources": [
+      {
+        "title": "cutting_with_a_katana1.mp3",
+        "author": "Taira Komori (TK'S FREE SOUND FX)",
+        "source_url": "https://taira-komori.net/jidaigeki01en.html",
+        "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
+        "sha256": "06dc24a331c4352e74a22be3cc412d97113529c053bd57e3dd04efe2ff708bee"
+      }
+    ],
+    "processing": "excerpt 0.10-0.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.696,
+    "rms": 0.11,
+    "sha256": "55d7a11eacc1f1f949ce953d2c977b867bd66d90cb1668522e0d805ef67eddfa"
+  },
+  "fire-f2-floor": {
+    "file": "hero-forms/fire/f2-floor.wav",
     "duration": 0.738,
-    "beat": "slam through the foe (1170 ms)",
+    "beat": "the cut bursts into flame along the floor",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Explosion 1 (Burning Car rec by Ñado) by qubodup",
+        "title": "Explosion 1 (Burning Car rec by Ñado)",
         "author": "qubodup",
         "source_url": "https://freesound.org/people/qubodup/sounds/843247/",
         "license": "CC0-1.0",
@@ -75,29 +113,10 @@
     "rms": 0.1,
     "sha256": "3a56a85e28244229a8e476f4b6d875a5cdce40f45fe03737be60a25f8309b18c"
   },
-  "fire-f2-tail": {
-    "file": "hero-forms/fire/f2-tail.wav",
-    "duration": 4.1,
-    "beat": "flames roar across the stage and ring out (from the hit, 1170 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Flamethrower_Weapon_Long_Bursts.wav",
-        "author": "AslakHostaker",
-        "source_url": "https://freesound.org/people/AslakHostaker/sounds/395039/",
-        "license": "CC0-1.0",
-        "sha256": "84af8524ed8d26b6d1b6c2a11c30cb922a1ffe4cab7afaaa30fa3a4c676434d2"
-      }
-    ],
-    "processing": "excerpt 9.40-13.50 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.605,
-    "rms": 0.11,
-    "sha256": "84f819c1c2fbcef5c01e40d0ada514891883445df9cb474d01c7fb16f38428cc"
-  },
   "fire-f3-flare": {
     "file": "hero-forms/fire/f3-flare.wav",
     "duration": 0.95,
-    "beat": "nine tails flare into a sun (0-950 ms)",
+    "beat": "the nine tails flare into a sun of fire",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -113,29 +132,10 @@
     "rms": 0.096,
     "sha256": "1deb257d6c1504661d913ed93d9d9ec85da94b470ce7df535c95b16cace390f4"
   },
-  "fire-f3-draw": {
-    "file": "hero-forms/fire/f3-draw.wav",
-    "duration": 0.95,
-    "beat": "glaive drawn back and growing (650-1600 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Magic Fire Spell Movement",
-        "author": "TheLittleCrow",
-        "source_url": "https://freesound.org/people/TheLittleCrow/sounds/761330/",
-        "license": "CC0-1.0",
-        "sha256": "4de65b8c7c3a311c86e9c4c25ebe6fd11201e8d07c58eee4c3ea7ac1721690ea"
-      }
-    ],
-    "processing": "excerpt 2.65-3.60 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.77,
-    "rms": 0.11,
-    "sha256": "3d26c25599fdfc74a53e2f30fea8f04810688acbd4bd11af02c196a814b59cb6"
-  },
   "fire-f3-sweep": {
     "file": "hero-forms/fire/f3-sweep.wav",
     "duration": 0.52,
-    "beat": "spinning sweep and crescent cut (1250 ms)",
+    "beat": "the glaive spun flat, a ring of fire",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -154,7 +154,7 @@
   "fire-f3-sun": {
     "file": "hero-forms/fire/f3-sun.wav",
     "duration": 1.23,
-    "beat": "nine-tailed sun bursts on the foe (1420 ms)",
+    "beat": "the nine-tailed sun bursts on the foe (damage hit)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -173,7 +173,7 @@
   "fire-f3-fireball": {
     "file": "hero-forms/fire/f3-fireball.wav",
     "duration": 0.5,
-    "beat": "a wave of fox-fire spirits bursts on the foe (once per wave)",
+    "beat": "a wave of fox-fire spirits bursts on the foe",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -188,24 +188,5 @@
     "peak": 0.491,
     "rms": 0.11,
     "sha256": "d8fd3f6dead1632be8251ad228011620aa7dd36c67d28e32702337907db06688"
-  },
-  "fire-f3-tail": {
-    "file": "hero-forms/fire/f3-tail.wav",
-    "duration": 5.6,
-    "beat": "the fire roars on the foe and rings out (from the hit, 1420 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "S30-36 Napalm bomb explosion.wav by craigsmith",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/674902/",
-        "license": "CC0-1.0",
-        "sha256": "1fafd2de132216d2bac6f770be067b005faad329cbd5e49d61f0f8ad241cdcc4"
-      }
-    ],
-    "processing": "excerpt 0.35-5.95 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.105,
-    "sha256": "19e41d5f2a7934b7607a2a26d351232d180ad11094f544fab465d26f484af024"
   }
 }
