@@ -1,0 +1,26 @@
+{
+ "dir": "assets/heroes/forms/fire/form-1/showcase",
+ "identity": "C:/Users/dungc/AppData/Local/Temp/claude/d--Project-Gemwoven/3eb0861d-1c9d-43a7-b472-681bd095a67e/scratchpad/mika/identity-f1.png",
+ "what": "Mika the fox-girl flame swordswoman, a chibi fantasy RPG heroine: pointed orange fox ears with cream inner fur, long red-orange hair with a long braid swept back behind her, a red ribbon and a small gold flower ornament in her hair, amber eyes, a cream-white scarf whose ends blow back behind her, a ragged red shawl with ember-orange edges trailing behind her shoulders, black and red lacquered samurai light armour with gold trim and a gold shoulder guard, a red tabard with a gold crest, black armoured greaves with gold knee plates, ONE big fluffy orange fox tail with a cream-white tip behind her on the LEFT side of the image, a slim silver katana with a gold guard",
+ "pose": "She stands in a springy, playful ready stance, knees slightly bent and feet apart, her katana held low in her right hand at her side with the blade angled down toward the ground in front of her, her left hand raised in front of her chest making a fox hand sign (middle and ring fingers touching the thumb, index and little finger raised like fox ears), a cheeky confident grin, her ONE big fox tail curled up high behind her on the left, the scarf ends and shawl blowing back.",
+ "idle": "a springy, playful idle: her body, face, hands, katana and boots stay still; her ONE big fox tail stays behind her on the LEFT in every frame (it never crosses to the other side and never jumps) and swishes in a smooth S-curve, the white tip curling up a little more each frame (frames 1-4) and back down (frames 5-8), each frame only a small step from the one before; her fox ears twitch once (frames 3-4); her braid, scarf ends and shawl tatters sway gently with the tail.",
+ "fidgets": [
+  [
+   "flameblade",
+   "Lửa chạy dọc lưỡi kiếm",
+   "she gives the katana a quick wrist flick, lifting the blade up in front of her (frames 2-3); a bright orange flame ignites at the guard and races along the blade to the tip until the whole blade is wrapped in flame (frames 3-5); she flicks it once more and the flame snuffs out from guard to tip (frame 6) and the katana returns to its low resting position (frame 7). Her legs, body and face stay in place. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Keep every part inside its cell with margin.",
+   true
+  ],
+  [
+   "foxgrin",
+   "Vểnh tai cười tinh nghịch",
+   "her fox ears perk straight up (frame 2), she tilts her head slightly and gives a cheeky wink with a wide grin showing a small fang (frames 3-5) while her ONE fox tail wags quickly behind her, always staying on the LEFT side (frames 3-6), then her ears relax and her face returns to the resting expression (frames 6-7). Her legs, body, hands and katana stay in place.",
+   true
+  ]
+ ],
+ "entrance": "her fox-fire summoning, everything drawn SMALL enough to stay well inside each cell: the flames never rise higher than the top of her ears in Image 1 and never spread wider than her tail and scarf. Frame 1: no character yet, only three small round orange fox-fire flames (kitsunebi) floating in a ring just above the ground where she will stand. Frame 2: the fox-fires circle and multiply into a ring of six small flames on the ground. Frame 3: the flames rush together and rise into a whirling flame pillar the same height as she is, its top shaped like a fox head with two pointed ears. Frame 4: the fox-shaped flame pillar, her dark silhouette visible inside it. Frame 5: she springs up out of the top of the flame pillar, katana in hand, her fox tail streaming, the pillar collapsing below her (her head still inside the cell). Frame 6: she lands in a low crouch, a few small flames flickering out around her boots. Frame 7: she rises from the crouch, the last small flames winking out. Frame 8: exactly the resting pose of Image 1, no flames. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks.",
+ "entrance_label": "Hồ hỏa triệu hồi",
+ "only": [
+  "entrance"
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "dir": "assets/heroes/forms/fire/form-2/showcase",
+ "identity": "assets/heroes/forms/fire/form-2/master.png",
+ "what": "Mika in her Fox-Flame Sword Guard form, a chibi fox-girl heroine: big orange fox ears with cream inner fur, long red-orange hair with a braid, a red ribbon and a gold flower ornament in her hair, amber eyes, a red scarf, ornate black and gold plate armour with red accents, long red cape tails with gold flame patterns flowing behind her, a red tabard skirt with a gold flame crest, black and gold armoured boots, ONE big fluffy orange fox tail with a cream-white tip behind her on the LEFT side of the image, a big broad greatsword with a wide silver blade and a gold crossguard",
+ "pose": "She stands tall like a guardian knight, the big greatsword planted point-down on the ground in front of her, both gauntleted hands resting stacked on top of its crossguard and grip, chin up with a bold confident smile, feet planted apart, her ONE big fox tail raised proudly behind her on the left, the red cape tails flowing back.",
+ "idle": "a proud, steady idle: her body, face, hands, greatsword and boots stay still; her ONE big fox tail stays behind her on the LEFT in every frame (it never crosses to the other side and never jumps) and sways in a slow smooth S-curve, the tip lifting a little more each frame (frames 1-4) and lowering back (frames 5-8); her fox ears twitch once (frames 5-6); her braid and red cape tails ripple gently.",
+ "fidgets": [
+  [
+   "shouldersword",
+   "Vác kiếm lên vai",
+   "she pulls the greatsword up from the ground with one hand (frame 2), swings it up and rests the broad blade on her shoulder, the blade pointing back behind her, her other hand on her hip, with a relaxed grin (frames 3-5, held), then swings it back down and plants it point-down in front of her again with both hands on the crossguard (frames 6-7). Her legs and feet stay planted.",
+   true
+  ],
+  [
+   "kitsunebi",
+   "Thổi lửa hồ ly",
+   "she lifts one hand from the crossguard and raises it near her face with the index finger pointing up (frame 2), purses her lips and blows softly on her fingertip (frame 3), a small round orange fox-fire flame (kitsunebi) pops alight on her fingertip (frame 4) and she smiles at it as it flickers (frame 5), then she closes her hand around it and the flame is gone (frame 6) as her hand returns to the crossguard (frame 7). Her legs, body and tail stay in place. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Keep every part inside its cell with margin.",
+   true
+  ]
+ ],
+ "entrance": "her fox-fire summoning, everything drawn SMALL enough to stay well inside each cell: the flames never rise higher than the tip of her ears in Image 1 and never spread wider than her cape. Frame 1: no character yet, only a small ring of orange fox-fire flames burning on the ground where she will stand. Frame 2: her big greatsword falls from above and stabs point-first into the centre of the flame ring. Frame 3: flames spiral up around the planted sword into a whirling flame column as tall as she is. Frame 4: the flame column takes the shape of a sitting fox made of orange fire, its two ears pointed up, wrapped around the sword. Frame 5: the flame fox splits open down the middle into two tall flame halves hugging her sides closely (no wider than her cape), and she appears between them gripping the sword's crossguard with both hands. Frame 6: she stands behind the planted sword, the two flame halves shrunk to knee-high flames at her sides. Frame 7: only a few small flames left at her boots. Frame 8: exactly the resting pose of Image 1, no flames. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Every frame keeps a clear empty margin of at least one sixth of the cell on the left and right.",
+ "entrance_label": "Hồ hỏa giáng kiếm",
+ "only": [
+  "entrance"
+ ]
+}

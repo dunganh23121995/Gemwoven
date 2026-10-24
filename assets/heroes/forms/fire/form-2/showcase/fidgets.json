@@ -1,0 +1,42 @@
+{
+  "fidgets": [
+    {
+      "name": "shouldersword",
+      "label": "Vác kiếm lên vai",
+      "file": "shouldersword.webp",
+      "whole": true,
+      "frameMs": [
+        130,
+        150,
+        160,
+        900,
+        160,
+        170,
+        150,
+        130
+      ]
+    },
+    {
+      "name": "kitsunebi",
+      "label": "Thổi lửa hồ ly",
+      "file": "kitsunebi.webp",
+      "whole": true,
+      "frameMs": [
+        130,
+        150,
+        200,
+        260,
+        700,
+        180,
+        150,
+        130
+      ]
+    },
+    {
+      "name": "entrance",
+      "label": "Hồ hỏa giáng kiếm",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}

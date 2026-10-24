@@ -6,32 +6,22 @@
   "frameWidth": 256,
   "frameHeight": 256,
   "columns": 2,
-  "rows": 2,
-  "frames": 4,
+  "rows": 4,
+  "frames": 8,
   "frameOrder": "row-major",
   "loop": true,
-  "frameDuration": 230,
+  "frameDuration": 150,
   "origin": [
     128,
     244
   ],
-  "frameFiles": [
-    "idle/frame-00.png",
-    "idle/frame-01.png",
-    "idle/frame-02.png",
-    "idle/frame-03.png"
-  ],
-  "uniqueFrames": 4,
-  "framePixelHashes": [
-    "cfe7ac2665edcf3ec06afe25434ee6d91c859da8b318969a1aa83fb25df85687",
-    "76c835176bc7105c97438dcd7c40de46f292c9333a36e2cd8b02afdfe0dbb4e6",
-    "1376c2c050636c5f1641517848502965229ce899bad63c253bcd57db4c2abf91",
-    "e1af921883bddf127f50c432417449eda375f11303529546b91ea2ada02424b2"
-  ],
+  "frameFiles": [],
+  "uniqueFrames": 8,
+  "framePixelHashes": [],
   "sharedScaleProfile": "character-scale-profile.json",
   "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
   "reviewedFootRootFrames": [],
-  "source": "assets/raw/reimagined/heroes/fire-idle.png",
+  "source": "assets/heroes/forms/fire/form-1/combat-idle/raw-idle.png",
   "sourceSha256": "70e38714326d335203bc697a54820e19164e912f6745f44582ec861162b1e3a8",
   "qc": {
     "frame_count": 4,
@@ -55,15 +45,31 @@
     ],
     [
       137,
-      93
+      94
     ],
     [
       137,
-      93
+      94
     ],
     [
-      136,
-      92
+      137,
+      94
+    ],
+    [
+      137,
+      94
+    ],
+    [
+      137,
+      94
+    ],
+    [
+      137,
+      94
+    ],
+    [
+      137,
+      94
     ]
   ],
   "floorAligned": true,

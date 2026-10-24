@@ -1,0 +1,32 @@
+{
+  "fidgets": [
+    {
+      "name": "entrance",
+      "label": "Cửu vĩ hồ hỏa giáng thế",
+      "file": "entrance.webp",
+      "whole": false
+    },
+    {
+      "name": "tailfan",
+      "label": "Xòe chín đuôi",
+      "file": "tailfan.webp",
+      "whole": false,
+      "frameMs": [
+        130,
+        130,
+        140,
+        150,
+        700,
+        150,
+        140,
+        130
+      ]
+    },
+    {
+      "name": "glaivespin",
+      "label": "Xoay nguyệt đao",
+      "file": "glaivespin.webp",
+      "whole": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "fidgets": [
+    {
+      "name": "flameblade",
+      "label": "Lửa chạy dọc lưỡi kiếm",
+      "file": "flameblade.webp",
+      "whole": true,
+      "frameMs": [
+        130,
+        130,
+        150,
+        260,
+        420,
+        150,
+        130,
+        130
+      ]
+    },
+    {
+      "name": "foxgrin",
+      "label": "Vểnh tai cười tinh nghịch",
+      "file": "foxgrin.webp",
+      "whole": true
+    },
+    {
+      "name": "entrance",
+      "label": "Hồ hỏa triệu hồi",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}

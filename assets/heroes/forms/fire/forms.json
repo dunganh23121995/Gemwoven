@@ -18,7 +18,7 @@
             ],
             [
               139,
-              50
+              49
             ],
             [
               139,
@@ -26,27 +26,27 @@
             ],
             [
               139,
-              50
-            ],
-            [
-              138,
               49
-            ],
-            [
-              138,
-              49
-            ],
-            [
-              138,
-              50
             ],
             [
               139,
-              50
+              49
+            ],
+            [
+              139,
+              49
+            ],
+            [
+              139,
+              49
+            ],
+            [
+              139,
+              49
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/fire/form-2/attack.webp",
@@ -197,7 +197,7 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/fire/form-3/attack.webp",
