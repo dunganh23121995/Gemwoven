@@ -3,9 +3,7 @@ const noctSoundBuffers=new Map(),noctSoundSources=new Set();
 let noctSoundEpoch=0,noctSlashVariant=0;
 function decodeNoctSound(context,id){
   if(!noctSoundBuffers.has(id))noctSoundBuffers.set(id,(async()=>{
-    const binary=atob(ART.noctSounds[id].src.split(',')[1]),bytes=new Uint8Array(binary.length);
-    for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
-    return context.decodeAudioData(bytes.buffer);
+    return context.decodeAudioData(await artBytes(ART.noctSounds[id].src));
   })().catch(error=>{noctSoundBuffers.delete(id);throw error;}));
   return noctSoundBuffers.get(id);
 }

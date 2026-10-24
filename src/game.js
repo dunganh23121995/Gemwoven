@@ -84,6 +84,12 @@ const activeAnimations=new Set();
 const rand=n=>Math.floor(Math.random()*n);
 const mult=(a,b)=>ELEMENTS[a].beats===b?1.5:1;
 const wait=ms=>new Promise(r=>setTimeout(r,reduced?Math.min(ms/6,10):ms));
+// Sound bytes behind an ART src: a linked file (Game.html serves its art beside it) or, in an
+// embedded build, a data URI.
+async function artBytes(src){
+  if(src.startsWith('data:')){const binary=atob(src.split(',')[1]),bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);return bytes.buffer;}
+  const response=await fetch(src);if(!response.ok)throw Error('Missing sound '+src);return response.arrayBuffer();
+}
 function animate(el,frames,options={}){
   if(!el||!el.isConnected)return Promise.resolve();
   // Avoid a display-frame wait for each reduced-motion Web Animation. A short

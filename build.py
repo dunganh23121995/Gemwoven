@@ -14,33 +14,32 @@ draft = '--draft' in sys.argv
 keys = ['fire', 'earth', 'ice', 'lightning']
 
 
+# Game.html links its art and sounds instead of embedding them (the embedded page had grown past
+# GitHub's 100 MB file limit): every src is a path relative to the repository root, where the page
+# lives. Serve the repository over HTTP (python tools/dev_server.py) to play.
+def rel(path):
+    p = Path(path)
+    p = p if p.is_absolute() else root / p
+    return p.relative_to(root).as_posix()
+
+
 def image(path):
-    p = root / path
-    mime = 'image/webp' if p.suffix == '.webp' else 'image/png'
-    return f'data:{mime};base64,' + base64.b64encode(p.read_bytes()).decode('ascii')
+    return rel(path)
 
 
 def compact_image(path):
-    """Embed a lossless source sheet as high-quality lossy WebP.
-
-    Star-form atlases would otherwise push the tracked Game.html past GitHub's
-    100 MB file limit; the lossless originals stay in the repository.
-    """
-    buffer = io.BytesIO()
-    Image.open(root / path).convert('RGBA').save(buffer, 'WEBP', quality=95, method=6, alpha_quality=100)
-    return 'data:image/webp;base64,' + base64.b64encode(buffer.getvalue()).decode('ascii')
+    return rel(path)
 
 
 def sound(path):
-    """Embed a sound effect as Ogg Vorbis (like the music). WAV sources are transcoded once into
-    a local cache; this keeps the tracked Game.html under GitHub's 100 MB file limit."""
-    source=root/path
-    if source.suffix!='.wav':return 'data:audio/ogg;base64,'+base64.b64encode(source.read_bytes()).decode('ascii')
-    data=source.read_bytes();cached=root/'.build-cache/audio'/(hashlib.sha1(data).hexdigest()+'.ogg')
-    if not cached.exists():
-        cached.parent.mkdir(parents=True,exist_ok=True)
-        subprocess.run(['ffmpeg','-v','error','-y','-i',str(source),'-c:a','libvorbis','-q:a','6',str(cached)],check=True)
-    return 'data:audio/ogg;base64,'+base64.b64encode(cached.read_bytes()).decode('ascii')
+    return rel(path)
+
+
+def load_pil(src):
+    """The image behind an ART src (a repository path, or a data URI from older builds)."""
+    if src.startswith('data:'):
+        return Image.open(io.BytesIO(base64.b64decode(src.split(',', 1)[1])))
+    return Image.open(root / src)
 
 def atlas(path, cols, rows, count, fallback):
     if not (root / path).exists():
@@ -76,7 +75,7 @@ music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(en
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
 # Boss themes of chapters folded into another chapter (same boss) are no longer played.
 for retired in ['pine','obsidian','bamboo','coast','dream','astral']:music_manifest.pop('boss-'+retired,None)
-art['music']={key:{'src':'data:audio/ogg;base64,'+base64.b64encode((root/'assets/audio'/value['file']).read_bytes()).decode('ascii'),'duration':value['duration'],'title':value['title']} for key,value in music_manifest.items()}
+art['music']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration'],'title':value['title']} for key,value in music_manifest.items()}
 for key in keys:
     art['heroes'][key] = {
         action: atlas(f'assets/heroes/{key}/{action}.webp', 2 if action == 'idle' else 3,
@@ -190,7 +189,7 @@ for master in sorted((root/'assets/gemwoven/elites').glob('*/master.png')):
 # sheet for the bosses that had only one painting. The new idle is framed on its own, so every
 # other action sheet grows about the feet by the ratio of the body heights (one size per boss).
 def body_height(sheet,frame=0):
-    im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows']
+    im=load_pil(sheet['src']).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows']
     b=im.crop(((frame%sheet['cols'])*fw,(frame//sheet['cols'])*fh,(frame%sheet['cols']+1)*fw,(frame//sheet['cols']+1)*fh)).getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
     return (b[3]-b[1])/fh if b else 0
 for folder in sorted((root/'assets/gemwoven/boss-anim').glob('*/idle.webp')):
@@ -219,7 +218,7 @@ for folder in sorted((root/'assets/gemwoven/boss-anim').glob('*/idle.webp')):
         actions['cast']=sheet;actions['attack']=sheet
 # Use each idle sheet's opaque feet, rather than the bottom of its transparent canvas.
 def register_feet(sheet):
-    im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA')
+    im=load_pil(sheet['src']).convert('RGBA')
     frame=im.crop((0,0,im.width//sheet['cols'],im.height//sheet['rows']))
     bounds=frame.getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
     sheet['footY']=round(bounds[3]/frame.height,5) if bounds else .94
@@ -245,7 +244,7 @@ _span_cache={}
 def register_span(sheet):
     key=sheet['src'][-64:]+str(len(sheet['src']))+str(sheet['cols'])+str(sheet['rows'])
     if key not in _span_cache:
-        im=Image.open(io.BytesIO(base64.b64decode(sheet['src'].split(',',1)[1]))).convert('RGBA')
+        im=load_pil(sheet['src']).convert('RGBA')
         fw,fh=im.width//sheet['cols'],im.height//sheet['rows'];lo,hi=1.0,0.0
         alpha=im.getchannel('A').point(lambda a:255 if a>=128 else 0)
         for i in range(min(sheet.get('count',1),sheet['cols']*sheet['rows'])):

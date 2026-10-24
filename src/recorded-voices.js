@@ -3,9 +3,7 @@ const voiceBuffers=new Map(),activeVoices=new Map(),voiceVariants=new Map();
 let voiceEpoch=0,bossDeathVoicePlayed=false;
 function decodeCombatVoice(context,id){
   if(!voiceBuffers.has(id))voiceBuffers.set(id,(async()=>{
-    const binary=atob(ART.voices[id].src.split(',')[1]),bytes=new Uint8Array(binary.length);
-    for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
-    return context.decodeAudioData(bytes.buffer);
+    return context.decodeAudioData(await artBytes(ART.voices[id].src));
   })().catch(error=>{voiceBuffers.delete(id);throw error;}));
   return voiceBuffers.get(id);
 }

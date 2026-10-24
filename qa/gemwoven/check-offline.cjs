@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'../..');
 const html=fs.readFileSync(path.join(root,'Gemwoven_6_Man.html'),'utf8');
 const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
-assert.equal(scripts.length,19);
+assert.equal(scripts.length,21);
 assert.ok(!html.includes('src="src/gemwoven/'));
 const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(String(e)));
 const dom=new JSDOM(html.replace(/<script>[\s\S]*?<\/script>/g,''),{runScripts:'outside-only',pretendToBeVisual:true,url:'file:///Gemwoven_6_Man.html',virtualConsole:vc});

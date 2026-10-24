@@ -3,9 +3,7 @@ const sceneMusicBuffers=new Map(),sceneMusicVoices=new Set(),sceneMusicOffsets=n
 let sceneMusicStarted=false,sceneMusicEpoch=0,sceneMusicPending=null,sceneMusicCurrent=null;
 function decodeSceneMusic(context,key){
   if(!sceneMusicBuffers.has(key))sceneMusicBuffers.set(key,(async()=>{
-    const binary=atob(ART.music[key].src.split(',')[1]),bytes=new Uint8Array(binary.length);
-    for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
-    return context.decodeAudioData(bytes.buffer);
+    return context.decodeAudioData(await artBytes(ART.music[key].src));
   })().catch(error=>{sceneMusicBuffers.delete(key);throw error;}));
   return sceneMusicBuffers.get(key);
 }

@@ -9,8 +9,7 @@ function stopCastSounds(){
 }
 function decodeCastSound(context,id){
   if(!castSoundBuffers.has(id))castSoundBuffers.set(id,(async()=>{
-    const data=Uint8Array.from(atob(ART.castSounds[id].src.split(',')[1]),c=>c.charCodeAt(0));
-    return context.decodeAudioData(data.buffer);
+    return context.decodeAudioData(await artBytes(ART.castSounds[id].src));
   })().catch(error=>{castSoundBuffers.delete(id);throw error;}));
   return castSoundBuffers.get(id);
 }
