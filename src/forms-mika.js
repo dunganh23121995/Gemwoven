@@ -208,7 +208,7 @@ function mikaFoxSpirits(from,foe,pending){
     // Three waves of three (one lane each), so each wave's bursts land together with one fireball sound.
     const delay=Math.floor(i/3)*MIKA_SPIRIT_WAVE+i%3*20;
     pending.push(animate(node,[{opacity:0,transform:'translate(-50%,-50%) scale(.5)'},{opacity:1,transform:`translate(calc(-50% + ${dx*.25}px),-50%) scale(1)`,offset:.25},{opacity:1,transform:`translate(calc(-50% + ${dx}px),calc(-50% - ${6+i%3*5}px)) scale(1)`,offset:.86},{opacity:0,transform:`translate(calc(-50% + ${dx+12}px),calc(-50% - 14px)) scale(1.35)`}],{duration:520,delay,easing:'cubic-bezier(.35,.1,.55,1)',fill:'backwards'}).finally(()=>node.remove()));
-    pending.push(wait(delay+450).then(()=>{if(!reduced){if(i%3===0)mikaSound('f3-fireball',.42,.3);mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
+    pending.push(wait(delay+450).then(()=>{if(!reduced){if(i%3===0)mikaSound('f3-fireball',.5,.3);mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
   }
 }
 // The nine tails flare: a nine-tailed sun of fox-fire (impact3) opens behind her back.
@@ -267,7 +267,7 @@ async function mikaNineSunSweep(raw,onRelease){
     mikaFoxSpirits({x:mikaGrip(3,4).x,foot:hero.foot},foe,pending);
     // The spirits are fire: a large fire roars and crackles from their run until the last wave's flames
     // are gone (~1300 ms), a continuous bed under the per-wave fireball hits.
-    mikaSound('f3-burning',.4,.3);
+    mikaSound('f3-burning',.34,.3);
     await at(2350);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
     await at(2850);await Promise.all(pending);return result;
   }finally{
