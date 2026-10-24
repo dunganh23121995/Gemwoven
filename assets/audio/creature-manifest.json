@@ -322,5 +322,5855 @@
     ],
     "category": "creature-sfx",
     "sha256": "629dfb1a8985994bdad322beb47a9e1ebad1532de2117dc9335b5796c2d44aa9"
+  },
+  "creature-slime-attack1": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/751338-slime-attack-1/751338-slime-attack-1.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/751338-slime-attack-1/751338-slime-attack-1.mp3",
+        "start": 0.0,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/751338/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-attack1.wav",
+    "duration": 0.3,
+    "rms": 0.0921,
+    "peak": 0.92,
+    "sha256": "65a5e2e024e1d17e9bca21a1053f7fd044f1f1bcd2759c968b2418576f731fa5"
+  },
+  "creature-slime-attack2": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/751339-slime-attack-2/751339-slime-attack-2.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/751339-slime-attack-2/751339-slime-attack-2.mp3",
+        "start": 0.0,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/751339/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-attack2.wav",
+    "duration": 0.3,
+    "rms": 0.0919,
+    "peak": 0.92,
+    "sha256": "e4be1c0d7f1c335d45468b512d3852013930d731850eb4e8f572efa475c6b97e"
+  },
+  "creature-slime-attack3": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/751341-slime-jump-1/751341-slime-jump-1.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/751341-slime-jump-1/751341-slime-jump-1.mp3",
+        "start": 0.0,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/751341/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-attack3.wav",
+    "duration": 0.3,
+    "rms": 0.0616,
+    "peak": 0.92,
+    "sha256": "277debe77621a7c38a5547b254e9681a11511337b2d4b350e1828edfdd3cc59d"
+  },
+  "creature-slime-hurt1": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/442772-slime-squish/442772-slime-squish.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/442772-slime-squish/442772-slime-squish.mp3",
+        "start": 0.0,
+        "length": 0.38,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/442772/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-hurt1.wav",
+    "duration": 0.38,
+    "rms": 0.15,
+    "peak": 0.8061,
+    "sha256": "cc8e73875672240dc8b4ffb5ed142b3d857884c4aa095adb48e581c7acc6b892"
+  },
+  "creature-slime-hurt2": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/751342-slime-jump-2/751342-slime-jump-2.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/751342-slime-jump-2/751342-slime-jump-2.mp3",
+        "start": 0.0,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/751342/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-hurt2.wav",
+    "duration": 0.3,
+    "rms": 0.077,
+    "peak": 0.92,
+    "sha256": "cba5700da6375162fabd7516d4679fddf76b85e43e235ce099a56f91e0ac6900"
+  },
+  "creature-slime-hurt3": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/751340-slime-death/751340-slime-death.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/751340-slime-death/751340-slime-death.mp3",
+        "start": 0.0,
+        "length": 0.28,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/751340/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-hurt3.wav",
+    "duration": 0.28,
+    "rms": 0.1051,
+    "peak": 0.92,
+    "sha256": "bf397ce3e1672c0a13171a80a9273179400877d8e9e41ee988d234f3ed6bfd8a"
+  },
+  "creature-slime-cast": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/680447-slime-squishing-sounds/680447-slime-squishing-sounds.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/680447-slime-squishing-sounds/680447-slime-squishing-sounds.mp3",
+        "start": 131.57,
+        "length": 0.88,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / rubberduck9999 (Freesound)",
+    "source_url": "https://freesound.org/people/rubberduck9999/sounds/680447/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-cast.wav",
+    "duration": 0.77,
+    "rms": 0.0662,
+    "peak": 0.92,
+    "sha256": "4dc197ca3a14e6bbc599c02a9a2425f326ed8ca3c1f1e95c31a38f5a0033c0d9"
+  },
+  "creature-slime-release": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/680447-slime-squishing-sounds/680447-slime-squishing-sounds.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/680447-slime-squishing-sounds/680447-slime-squishing-sounds.mp3",
+        "start": 104.17,
+        "length": 1.23,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / rubberduck9999 (Freesound)",
+    "source_url": "https://freesound.org/people/rubberduck9999/sounds/680447/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-release.wav",
+    "duration": 1.227,
+    "rms": 0.0598,
+    "peak": 0.92,
+    "sha256": "7deea33156052d2f36f7702126978c3425a78c60e8a3ecba7b49b57ec12626be"
+  },
+  "creature-slime-death": {
+    "category": "creature-recording",
+    "voice": "slime",
+    "sources": [
+      "sources/freesound/680447-slime-squishing-sounds/680447-slime-squishing-sounds.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/680447-slime-squishing-sounds/680447-slime-squishing-sounds.mp3",
+        "start": 95.66,
+        "length": 1.53,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / rubberduck9999 (Freesound)",
+    "source_url": "https://freesound.org/people/rubberduck9999/sounds/680447/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-slime-death.wav",
+    "duration": 1.518,
+    "rms": 0.0938,
+    "peak": 0.92,
+    "sha256": "8ec34b0ea9de899c5bf2887f4383a3f9a6cb2467fe7d713af965f16e07f96879"
+  },
+  "creature-bat-attack1": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3",
+        "start": 3.46,
+        "length": 0.67,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / coelhoigor (Freesound)",
+    "source_url": "https://freesound.org/people/coelhoigor/sounds/455593/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-attack1.wav",
+    "duration": 0.67,
+    "rms": 0.098,
+    "peak": 0.92,
+    "sha256": "9cb5d753ae26766069865ac0bed0b7d1c64c45381c335d5babdd666e1e10ef8b"
+  },
+  "creature-bat-attack2": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3",
+        "start": 8.7,
+        "length": 0.8,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437967/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-attack2.wav",
+    "duration": 0.8,
+    "rms": 0.15,
+    "peak": 0.8996,
+    "sha256": "c2f22161307706837ddef2a074b266275679093b65f0979fe655bf1a91d26f78"
+  },
+  "creature-bat-attack3": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3",
+        "start": 14.13,
+        "length": 0.37,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / coelhoigor (Freesound)",
+    "source_url": "https://freesound.org/people/coelhoigor/sounds/455593/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-attack3.wav",
+    "duration": 0.37,
+    "rms": 0.15,
+    "peak": 0.7584,
+    "sha256": "32b1d11bd9a5a8e77549d03941bf6f140df0a3464ee77c6dc34a3c9e4072a425"
+  },
+  "creature-bat-hurt1": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3",
+        "start": 18.14,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / coelhoigor (Freesound)",
+    "source_url": "https://freesound.org/people/coelhoigor/sounds/455593/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-hurt1.wav",
+    "duration": 0.35,
+    "rms": 0.0877,
+    "peak": 0.92,
+    "sha256": "6c2a84f97aa72d536629dfbd2a34437890afe9b2c0d26a9f9612cd583cfbbbd8"
+  },
+  "creature-bat-hurt2": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3",
+        "start": 3.37,
+        "length": 0.46,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437967/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-hurt2.wav",
+    "duration": 0.46,
+    "rms": 0.15,
+    "peak": 0.6523,
+    "sha256": "359511d51cb444f60ee6962fb1cac4b6783c465afdc041107ccfd7b46b60976e"
+  },
+  "creature-bat-hurt3": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/455593-bat-chirp-close-up/455593-bat-chirp-close-up.mp3",
+        "start": 11.53,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / coelhoigor (Freesound)",
+    "source_url": "https://freesound.org/people/coelhoigor/sounds/455593/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-hurt3.wav",
+    "duration": 0.349,
+    "rms": 0.1073,
+    "peak": 0.92,
+    "sha256": "71f29bd79b11845ebef2032378781c29e57322217ade3f09b0760b2faf3547c6"
+  },
+  "creature-bat-cast": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3",
+        "start": 14.02,
+        "length": 1.13,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437967/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-cast.wav",
+    "duration": 1.13,
+    "rms": 0.15,
+    "peak": 0.807,
+    "sha256": "5c5b31b6c26d300869e8b580eb5ebbf44d7a86881bbcfd9dc63f9a5b74c67258"
+  },
+  "creature-bat-release": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/667579-bat-screech/667579-bat-screech.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/667579-bat-screech/667579-bat-screech.mp3",
+        "start": 3.43,
+        "length": 1.06,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Yoyodaman234 (Freesound)",
+    "source_url": "https://freesound.org/people/Yoyodaman234/sounds/667579/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-release.wav",
+    "duration": 1.06,
+    "rms": 0.15,
+    "peak": 0.8867,
+    "sha256": "54e909054f3f5c20c93fe07dc4fbe823233ade063259b5900f9d1f9a48552f0c"
+  },
+  "creature-bat-death": {
+    "category": "creature-recording",
+    "voice": "bat",
+    "sources": [
+      "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437967-g12-35-bats-chirping-wav/437967-g12-35-bats-chirping-wav.mp3",
+        "start": 0.0,
+        "length": 1.23,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437967/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bat-death.wav",
+    "duration": 1.157,
+    "rms": 0.15,
+    "peak": 0.7623,
+    "sha256": "7c1ccb507bce4ac70d7bad077b7f7f4c8973accfe914f0eeafcc0a320ae21220"
+  },
+  "creature-rodent-attack1": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 9.34,
+        "length": 0.6,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-attack1.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.7558,
+    "sha256": "641fbecbf98baaff2cda2e492655cdb59a4672f611c0a45706de02ee132e9725"
+  },
+  "creature-rodent-attack2": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 14.28,
+        "length": 0.72,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-attack2.wav",
+    "duration": 0.715,
+    "rms": 0.15,
+    "peak": 0.8671,
+    "sha256": "0ad42c570ae8c97a8596b928712875b30e708621e84b89db474e0d31db4fdf36"
+  },
+  "creature-rodent-attack3": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 19.15,
+        "length": 0.54,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-attack3.wav",
+    "duration": 0.54,
+    "rms": 0.15,
+    "peak": 0.6942,
+    "sha256": "cefc92764bcbeb794771f2df26d554b19abcccee5ea2bcf7f326e7b48eb8ef20"
+  },
+  "creature-rodent-hurt1": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 10.04,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-hurt1.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.8098,
+    "sha256": "3d1df47d2e39b09b0f8712bf4b9e9277ccb27194714b96494d2610b161e69a9f"
+  },
+  "creature-rodent-hurt2": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/143125-ratsqueak-wav/143125-ratsqueak-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/143125-ratsqueak-wav/143125-ratsqueak-wav.mp3",
+        "start": 9.35,
+        "length": 0.36,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Zabuhailo (Freesound)",
+    "source_url": "https://freesound.org/people/Zabuhailo/sounds/143125/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-hurt2.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.5066,
+    "sha256": "7b305b1401ac75f59ee1bac6e6185a8fc2eec675842fa9d9a9e8bbc2c6438991"
+  },
+  "creature-rodent-hurt3": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 1.95,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-hurt3.wav",
+    "duration": 0.35,
+    "rms": 0.1366,
+    "peak": 0.92,
+    "sha256": "71486b805364b58f2e1b8c526da9d63262380a510a001558f0bc56aaf154dc5f"
+  },
+  "creature-rodent-cast": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 25.73,
+        "length": 1.05,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-cast.wav",
+    "duration": 1.05,
+    "rms": 0.1346,
+    "peak": 0.92,
+    "sha256": "7d31ff24635264084473a0a7efde5fd320595db04085b176acd3ad50206f8fe7"
+  },
+  "creature-rodent-release": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 17.46,
+        "length": 0.84,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-release.wav",
+    "duration": 0.84,
+    "rms": 0.15,
+    "peak": 0.8441,
+    "sha256": "5e65b4880d8a6d7fef3672029fff9cead16208c2af6e267fe0f969d34747e0ce"
+  },
+  "creature-rodent-death": {
+    "category": "creature-recording",
+    "voice": "rodent",
+    "sources": [
+      "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/463789-mouse-squeaks-wav/463789-mouse-squeaks-wav.mp3",
+        "start": 20.36,
+        "length": 1.5,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / shyguy014 (Freesound)",
+    "source_url": "https://freesound.org/people/shyguy014/sounds/463789/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rodent-death.wav",
+    "duration": 1.483,
+    "rms": 0.142,
+    "peak": 0.92,
+    "sha256": "6f28dc9427c54e76d5898e0e355d95e03700bb942019af88e144218949d2c731"
+  },
+  "creature-songbird-attack1": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812033-excited-bird-chirp/812033-excited-bird-chirp.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812033-excited-bird-chirp/812033-excited-bird-chirp.mp3",
+        "start": 0.0,
+        "length": 0.43,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812033/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-attack1.wav",
+    "duration": 0.394,
+    "rms": 0.132,
+    "peak": 0.92,
+    "sha256": "7269a54351252f923450d9c55ac799f868bbab195fb6ca0176160ec45ee2b495"
+  },
+  "creature-songbird-attack2": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812036-upset-bird-chirp/812036-upset-bird-chirp.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812036-upset-bird-chirp/812036-upset-bird-chirp.mp3",
+        "start": 0.0,
+        "length": 0.38,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812036/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-attack2.wav",
+    "duration": 0.378,
+    "rms": 0.1273,
+    "peak": 0.92,
+    "sha256": "654bec34eacf5d48788d8d8746975af5d55e851b8e586b08e753be36d18cb636"
+  },
+  "creature-songbird-attack3": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812034-irritated-bird-chirp/812034-irritated-bird-chirp.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812034-irritated-bird-chirp/812034-irritated-bird-chirp.mp3",
+        "start": 0.0,
+        "length": 0.32,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812034/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-attack3.wav",
+    "duration": 0.32,
+    "rms": 0.15,
+    "peak": 0.8877,
+    "sha256": "5b663a69e52f1442e5f5700f0397d9d82e389579a63246e4d1958b29295346ab"
+  },
+  "creature-songbird-hurt1": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812024-bird-asking-for-food/812024-bird-asking-for-food.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812024-bird-asking-for-food/812024-bird-asking-for-food.mp3",
+        "start": 0.0,
+        "length": 0.52,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812024/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-hurt1.wav",
+    "duration": 0.52,
+    "rms": 0.141,
+    "peak": 0.92,
+    "sha256": "dcb032c083e687c5c70e9fd44f5511d9d51f79b799864a4b3df1818d060001cf"
+  },
+  "creature-songbird-hurt2": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812008-upset-bird/812008-upset-bird.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812008-upset-bird/812008-upset-bird.mp3",
+        "start": 0.16,
+        "length": 0.37,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812008/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-hurt2.wav",
+    "duration": 0.358,
+    "rms": 0.1338,
+    "peak": 0.92,
+    "sha256": "60f76a9cb14c4dc05565dc636794b92587cb67086c6a19f2d1ca8d7ce6f45e42"
+  },
+  "creature-songbird-hurt3": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812031-disappointed-bird-chirp/812031-disappointed-bird-chirp.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812031-disappointed-bird-chirp/812031-disappointed-bird-chirp.mp3",
+        "start": 0.0,
+        "length": 0.34,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812031/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-hurt3.wav",
+    "duration": 0.338,
+    "rms": 0.1244,
+    "peak": 0.92,
+    "sha256": "82d37af2ba01655b7c38dbad26e2dcb7948f16eabf90464e1c7f5caba47d1dbf"
+  },
+  "creature-songbird-cast": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812025-bird-chatting-smack/812025-bird-chatting-smack.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812025-bird-chatting-smack/812025-bird-chatting-smack.mp3",
+        "start": 0.0,
+        "length": 1.31,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812025/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-cast.wav",
+    "duration": 1.31,
+    "rms": 0.142,
+    "peak": 0.92,
+    "sha256": "6493a581aa348c1c01871b62837b97939af5395e415c0fec35603a9863542402"
+  },
+  "creature-songbird-release": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812027-bird-giggle/812027-bird-giggle.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812027-bird-giggle/812027-bird-giggle.mp3",
+        "start": 0.0,
+        "length": 1.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812027/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-release.wav",
+    "duration": 1.35,
+    "rms": 0.1437,
+    "peak": 0.92,
+    "sha256": "f7fb7c2a9ba39e3ec0bb97521ed39ae048560bd5488a03dcad423f6f3bf8504c"
+  },
+  "creature-songbird-death": {
+    "category": "creature-recording",
+    "voice": "songbird",
+    "sources": [
+      "sources/freesound/812026-bird-freaking-out/812026-bird-freaking-out.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/812026-bird-freaking-out/812026-bird-freaking-out.mp3",
+        "start": 0.0,
+        "length": 1.5,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/812026/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-songbird-death.wav",
+    "duration": 1.5,
+    "rms": 0.15,
+    "peak": 0.8593,
+    "sha256": "756ad22a9f7d9ad78dca275fe037dddb517a0ebbd6cc25e36bdfe6235b8ea6d6"
+  },
+  "creature-gull-attack1": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/263786-seagull-single-call/263786-seagull-single-call.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/263786-seagull-single-call/263786-seagull-single-call.mp3",
+        "start": 0.0,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / steaq (Freesound)",
+    "source_url": "https://freesound.org/people/steaq/sounds/263786/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-attack1.wav",
+    "duration": 0.35,
+    "rms": 0.15,
+    "peak": 0.514,
+    "sha256": "173cc361ce758a60445ec725cabc80c4c8951c9254c1671677cac22eca1874fc"
+  },
+  "creature-gull-attack2": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 2.61,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-attack2.wav",
+    "duration": 0.44,
+    "rms": 0.15,
+    "peak": 0.849,
+    "sha256": "b1e46c89290929aec3e15d390e86d9e065b3e54ac49a3a51c20203c3510239bb"
+  },
+  "creature-gull-attack3": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 6.31,
+        "length": 0.76,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-attack3.wav",
+    "duration": 0.76,
+    "rms": 0.15,
+    "peak": 0.8779,
+    "sha256": "d11bd544b4fd33a26770f6f4b3bde4779414374bdd257c209e0dbbe848b1fd5b"
+  },
+  "creature-gull-hurt1": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 0.93,
+        "length": 0.37,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-hurt1.wav",
+    "duration": 0.37,
+    "rms": 0.15,
+    "peak": 0.8193,
+    "sha256": "e3b22a81951958aa8eee7a1b73a3a19cd29cb382d08dd994ddc441024eaf5f93"
+  },
+  "creature-gull-hurt2": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/507380-seagulls-in-kiel-wav/507380-seagulls-in-kiel-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/507380-seagulls-in-kiel-wav/507380-seagulls-in-kiel-wav.mp3",
+        "start": 7.48,
+        "length": 0.45,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / svenne2000 (Freesound)",
+    "source_url": "https://freesound.org/people/svenne2000/sounds/507380/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-hurt2.wav",
+    "duration": 0.45,
+    "rms": 0.15,
+    "peak": 0.865,
+    "sha256": "d40405fd5aebc79c04c97429db285878ed976b9354d6fd1a33d1cf1d1da6fdef"
+  },
+  "creature-gull-hurt3": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 7.41,
+        "length": 0.37,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-hurt3.wav",
+    "duration": 0.37,
+    "rms": 0.15,
+    "peak": 0.8499,
+    "sha256": "4fd853ade2c4b7fb87f12d578b10193bb2bbdceb42db9a0c62fd46595c489e21"
+  },
+  "creature-gull-cast": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 9.35,
+        "length": 1.0,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-cast.wav",
+    "duration": 1.0,
+    "rms": 0.13,
+    "peak": 0.92,
+    "sha256": "4f80114d8789eb7323a2c30cf6e50474abb6c12595d85f2d87376e832cefdd9d"
+  },
+  "creature-gull-release": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 3.14,
+        "length": 0.75,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-release.wav",
+    "duration": 0.75,
+    "rms": 0.15,
+    "peak": 0.6622,
+    "sha256": "cb7fd2047f89931e8b53bca299682159394ad0cccabcb47bf1795e704e5342a7"
+  },
+  "creature-gull-death": {
+    "category": "creature-recording",
+    "voice": "gull",
+    "sources": [
+      "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/510917-seagulls-short-wav/510917-seagulls-short-wav.mp3",
+        "start": 3.91,
+        "length": 1.74,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Lydmakeren (Freesound)",
+    "source_url": "https://freesound.org/people/Lydmakeren/sounds/510917/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-gull-death.wav",
+    "duration": 1.74,
+    "rms": 0.1487,
+    "peak": 0.92,
+    "sha256": "97a6b91424e9b5ff5404662efd4c60d5f846ca0e1f76d7d18d6b6172fe1334d5"
+  },
+  "creature-owl-attack1": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3",
+        "start": 48.63,
+        "length": 0.79,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / raoul_slayer (Freesound)",
+    "source_url": "https://freesound.org/people/raoul_slayer/sounds/101344/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-attack1.wav",
+    "duration": 0.777,
+    "rms": 0.15,
+    "peak": 0.6748,
+    "sha256": "7cfd1e441499cf3c94ded0bb4c90754e8cf543a487a3e6321c8d5ecb85a0cbf8"
+  },
+  "creature-owl-attack2": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/181134-church-barn-owl-aif/181134-church-barn-owl-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/181134-church-barn-owl-aif/181134-church-barn-owl-aif.mp3",
+        "start": 0.84,
+        "length": 0.68,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / ikbenraar (Freesound)",
+    "source_url": "https://freesound.org/people/ikbenraar/sounds/181134/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-attack2.wav",
+    "duration": 0.68,
+    "rms": 0.15,
+    "peak": 0.7779,
+    "sha256": "f2fc0d2012f05ffe432f6411b2dd1064ba493225f60df06a20f2316026190b45"
+  },
+  "creature-owl-attack3": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3",
+        "start": 84.74,
+        "length": 0.79,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / raoul_slayer (Freesound)",
+    "source_url": "https://freesound.org/people/raoul_slayer/sounds/101344/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-attack3.wav",
+    "duration": 0.79,
+    "rms": 0.15,
+    "peak": 0.7837,
+    "sha256": "a6d2d3181925ff52e6134e6498bf2b236f3646c27089e1e5229ce0b8657167a4"
+  },
+  "creature-owl-hurt1": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3",
+        "start": 101.61,
+        "length": 0.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / raoul_slayer (Freesound)",
+    "source_url": "https://freesound.org/people/raoul_slayer/sounds/101344/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-hurt1.wav",
+    "duration": 0.69,
+    "rms": 0.15,
+    "peak": 0.732,
+    "sha256": "e29b9e14b5b575f5b2b81496d4f4040e13ac9d35e566abd4edc109dce46eb76e"
+  },
+  "creature-owl-hurt2": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/181134-church-barn-owl-aif/181134-church-barn-owl-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/181134-church-barn-owl-aif/181134-church-barn-owl-aif.mp3",
+        "start": 2.48,
+        "length": 0.68,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / ikbenraar (Freesound)",
+    "source_url": "https://freesound.org/people/ikbenraar/sounds/181134/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-hurt2.wav",
+    "duration": 0.674,
+    "rms": 0.15,
+    "peak": 0.7568,
+    "sha256": "ab0ce8aab89f40a88a1f330b3f0570a06a589a8405d49a8c5a509e44a8514ecf"
+  },
+  "creature-owl-hurt3": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/101344-barnowl-wav/101344-barnowl-wav.mp3",
+        "start": 97.99,
+        "length": 0.46,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / raoul_slayer (Freesound)",
+    "source_url": "https://freesound.org/people/raoul_slayer/sounds/101344/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-hurt3.wav",
+    "duration": 0.45,
+    "rms": 0.15,
+    "peak": 0.8069,
+    "sha256": "9055f6263af73fbfe80527f0794d8275ede3e0a8ddbe0295eff15629f00e3eec"
+  },
+  "creature-owl-cast": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/479588-r01-27-great-horned-owl-hoot-wav/479588-r01-27-great-horned-owl-hoot-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479588-r01-27-great-horned-owl-hoot-wav/479588-r01-27-great-horned-owl-hoot-wav.mp3",
+        "start": 4.04,
+        "length": 1.14,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479588/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-cast.wav",
+    "duration": 1.139,
+    "rms": 0.15,
+    "peak": 0.4609,
+    "sha256": "0349133c7e1bb36d2565f2aa2451c04479ac75c2da8783b5d43652b41ed0a605"
+  },
+  "creature-owl-release": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/181134-church-barn-owl-aif/181134-church-barn-owl-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/181134-church-barn-owl-aif/181134-church-barn-owl-aif.mp3",
+        "start": 3.99,
+        "length": 1.23,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / ikbenraar (Freesound)",
+    "source_url": "https://freesound.org/people/ikbenraar/sounds/181134/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-release.wav",
+    "duration": 1.215,
+    "rms": 0.1413,
+    "peak": 0.92,
+    "sha256": "d21696c16a3ef79279fe4bd197c39a662fc6b7352052de8e7b0e1dcd10c05ec8"
+  },
+  "creature-owl-death": {
+    "category": "creature-recording",
+    "voice": "owl",
+    "sources": [
+      "sources/freesound/573771-screech-owl-wav/573771-screech-owl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/573771-screech-owl-wav/573771-screech-owl-wav.mp3",
+        "start": 4.73,
+        "length": 1.85,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / mael46 (Freesound)",
+    "source_url": "https://freesound.org/people/mael46/sounds/573771/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-owl-death.wav",
+    "duration": 1.85,
+    "rms": 0.15,
+    "peak": 0.5833,
+    "sha256": "759c977e3c3c84b8b40ad9cc3708c503826e4efa1fdc6746618d3a4f38824645"
+  },
+  "creature-raptor-attack1": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 5.5,
+        "length": 0.62,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-attack1.wav",
+    "duration": 0.62,
+    "rms": 0.15,
+    "peak": 0.5316,
+    "sha256": "841f5eb1dff174e1c9b9fcb026c891f3be4d824dd3a88a216cb097304acb0807"
+  },
+  "creature-raptor-attack2": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 8.04,
+        "length": 0.7,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-attack2.wav",
+    "duration": 0.693,
+    "rms": 0.15,
+    "peak": 0.517,
+    "sha256": "ee72698af3f83bd528e7faa31d7f2fe622da0595d45e24e459493de5cda1a42a"
+  },
+  "creature-raptor-attack3": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 7.17,
+        "length": 0.62,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-attack3.wav",
+    "duration": 0.612,
+    "rms": 0.15,
+    "peak": 0.5875,
+    "sha256": "257d755d6511b8c7eddeb1a0eaae44a7b18902dd66f73dc148bc89b00b3b592f"
+  },
+  "creature-raptor-hurt1": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 3.53,
+        "length": 0.42,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-hurt1.wav",
+    "duration": 0.406,
+    "rms": 0.15,
+    "peak": 0.4227,
+    "sha256": "ca0aa04d48ec6fb903997de887bb0cb6a9f34e6c6c621a60c866f7d5b750550d"
+  },
+  "creature-raptor-hurt2": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/381200-eagle-cry-wav/381200-eagle-cry-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/381200-eagle-cry-wav/381200-eagle-cry-wav.mp3",
+        "start": 0.64,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / kaydinhamby (Freesound)",
+    "source_url": "https://freesound.org/people/kaydinhamby/sounds/381200/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-hurt2.wav",
+    "duration": 0.35,
+    "rms": 0.15,
+    "peak": 0.6281,
+    "sha256": "25898a82d0b566d524a316726265633ab5d44410edd0d7de3ca97cc898ef4102"
+  },
+  "creature-raptor-hurt3": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 2.67,
+        "length": 0.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-hurt3.wav",
+    "duration": 0.385,
+    "rms": 0.15,
+    "peak": 0.4389,
+    "sha256": "a477e1b3c8df6a45eb582494fb07d6d46199fdde670b48f5caf74aa32c1ff133"
+  },
+  "creature-raptor-cast": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 4.66,
+        "length": 0.81,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-cast.wav",
+    "duration": 0.683,
+    "rms": 0.15,
+    "peak": 0.6924,
+    "sha256": "bc7c201d5d270a396f20aaa6d7b2ff98d3378861970886a56cc6af002bc5303c"
+  },
+  "creature-raptor-release": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 6.34,
+        "length": 0.61,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-release.wav",
+    "duration": 0.61,
+    "rms": 0.15,
+    "peak": 0.5529,
+    "sha256": "9c7aad5e04c7421d67a75c9effba73a7b092111217fbac773681e5d235c69e9c"
+  },
+  "creature-raptor-death": {
+    "category": "creature-recording",
+    "voice": "raptor",
+    "sources": [
+      "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770032-bird-red-shouldered-hawk/770032-bird-red-shouldered-hawk.mp3",
+        "start": 0.15,
+        "length": 1.38,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770032/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-raptor-death.wav",
+    "duration": 1.171,
+    "rms": 0.15,
+    "peak": 0.6137,
+    "sha256": "7c0729e639e120a11a011d1946febce0bfea627659a902bcfd94f972c43a4521"
+  },
+  "creature-crow-attack1": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3",
+        "start": 2.27,
+        "length": 0.41,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mish7913 (Freesound)",
+    "source_url": "https://freesound.org/people/Mish7913/sounds/741366/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-attack1.wav",
+    "duration": 0.392,
+    "rms": 0.15,
+    "peak": 0.6851,
+    "sha256": "6a31b0fe567f4903937b6cb0a291d36c53a06488953a3cf727c94851b4269f3f"
+  },
+  "creature-crow-attack2": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/361470-crow-caw/361470-crow-caw.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/361470-crow-caw/361470-crow-caw.mp3",
+        "start": 0.06,
+        "length": 0.33,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/361470/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-attack2.wav",
+    "duration": 0.325,
+    "rms": 0.15,
+    "peak": 0.6433,
+    "sha256": "08a9dd325d592f7e0ea7f33308be03b3d2b4616c6ec18d28a3c2e7be26440d8c"
+  },
+  "creature-crow-attack3": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3",
+        "start": 1.68,
+        "length": 0.4,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mish7913 (Freesound)",
+    "source_url": "https://freesound.org/people/Mish7913/sounds/741366/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-attack3.wav",
+    "duration": 0.386,
+    "rms": 0.15,
+    "peak": 0.7237,
+    "sha256": "eb75507029c4da0bdde26a4f7144154e638edf1e4634c82bcbe3d68174ced126"
+  },
+  "creature-crow-hurt1": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/855096-unusual-crow-caw-call-2/855096-unusual-crow-caw-call-2.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/855096-unusual-crow-caw-call-2/855096-unusual-crow-caw-call-2.mp3",
+        "start": 0.0,
+        "length": 0.42,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/855096/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-hurt1.wav",
+    "duration": 0.42,
+    "rms": 0.15,
+    "peak": 0.6753,
+    "sha256": "2b3c88fefca53d4dab67e6a8405dfcff0fc846308176dd8f29df2208aef2dd3a"
+  },
+  "creature-crow-hurt2": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/855095-unusual-crow-caw-call-1/855095-unusual-crow-caw-call-1.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/855095-unusual-crow-caw-call-1/855095-unusual-crow-caw-call-1.mp3",
+        "start": 0.0,
+        "length": 0.38,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/855095/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-hurt2.wav",
+    "duration": 0.38,
+    "rms": 0.15,
+    "peak": 0.5654,
+    "sha256": "2d98ee3c4af46f257444d15deffee4c6b1a237ec1be686efab6a2e42fcaa2109"
+  },
+  "creature-crow-hurt3": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3",
+        "start": 4.14,
+        "length": 0.4,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mish7913 (Freesound)",
+    "source_url": "https://freesound.org/people/Mish7913/sounds/741366/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-hurt3.wav",
+    "duration": 0.374,
+    "rms": 0.15,
+    "peak": 0.7963,
+    "sha256": "4996233416e55a68af79072448ce4dde2f91fa7442ec65846ec9324e53163110"
+  },
+  "creature-crow-cast": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3",
+        "start": 2.9,
+        "length": 1.18,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mish7913 (Freesound)",
+    "source_url": "https://freesound.org/people/Mish7913/sounds/741366/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-cast.wav",
+    "duration": 1.002,
+    "rms": 0.15,
+    "peak": 0.7697,
+    "sha256": "c8717ef91bece9cfc6fac5272a01d5fd9b3b95c82247da1a361ad35beae49e99"
+  },
+  "creature-crow-release": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/813115-crow-caw/813115-crow-caw.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/813115-crow-caw/813115-crow-caw.mp3",
+        "start": 0.01,
+        "length": 0.62,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / qubodup (Freesound)",
+    "source_url": "https://freesound.org/people/qubodup/sounds/813115/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-release.wav",
+    "duration": 0.609,
+    "rms": 0.15,
+    "peak": 0.6233,
+    "sha256": "8213e7d390cb9b46de7edb2503f548d04b4fa22285736ab779d530683c167f92"
+  },
+  "creature-crow-death": {
+    "category": "creature-recording",
+    "voice": "crow",
+    "sources": [
+      "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/741366-hooded-crow-cawing/741366-hooded-crow-cawing.mp3",
+        "start": 0.1,
+        "length": 1.57,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mish7913 (Freesound)",
+    "source_url": "https://freesound.org/people/Mish7913/sounds/741366/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crow-death.wav",
+    "duration": 1.403,
+    "rms": 0.15,
+    "peak": 0.8264,
+    "sha256": "2c6d6643243799c9fae5e6ca966c8de1343300968fb164381c09c77814e7bd48"
+  },
+  "creature-rabbit-attack1": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3",
+        "start": 2.58,
+        "length": 0.57,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479607/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-attack1.wav",
+    "duration": 0.57,
+    "rms": 0.15,
+    "peak": 0.4343,
+    "sha256": "2fbb64cc1d4dc0d9b1aefec7186aa0de3126952fce46519d6f57a455510e552a"
+  },
+  "creature-rabbit-attack2": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3",
+        "start": 8.98,
+        "length": 0.62,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/583078/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-attack2.wav",
+    "duration": 0.616,
+    "rms": 0.15,
+    "peak": 0.7221,
+    "sha256": "54e0ea434908782584ecd40ecc369952b897c5216452107ab9f6faec8155b7f2"
+  },
+  "creature-rabbit-attack3": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3",
+        "start": 4.95,
+        "length": 0.5,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479607/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-attack3.wav",
+    "duration": 0.5,
+    "rms": 0.15,
+    "peak": 0.5273,
+    "sha256": "4238f36cf86e5c9bc5611a3e71e98c47848e6c0b5654a39e3b362a64876f1a36"
+  },
+  "creature-rabbit-hurt1": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3",
+        "start": 1.69,
+        "length": 0.43,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479607/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-hurt1.wav",
+    "duration": 0.43,
+    "rms": 0.15,
+    "peak": 0.4909,
+    "sha256": "cbb7ec60055462757ecb76ca965559c2a66177319e3ca819b2bf391c8f3e718b"
+  },
+  "creature-rabbit-hurt2": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3",
+        "start": 19.14,
+        "length": 0.63,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/583078/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-hurt2.wav",
+    "duration": 0.63,
+    "rms": 0.15,
+    "peak": 0.7685,
+    "sha256": "a69db8c87a436bd4f3c3f8aacbdc2a4c24b3d9b18106f630b0d890d5894a4f8e"
+  },
+  "creature-rabbit-hurt3": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479607-r28-21-close-hungry-guinea-pig-wav/479607-r28-21-close-hungry-guinea-pig-wav.mp3",
+        "start": 3.5,
+        "length": 0.46,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479607/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-hurt3.wav",
+    "duration": 0.46,
+    "rms": 0.15,
+    "peak": 0.4071,
+    "sha256": "0681722793feb828de2b047566df5c5d6c905856902e9fe47fa679a52e150240"
+  },
+  "creature-rabbit-cast": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3",
+        "start": 36.47,
+        "length": 0.9,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/583078/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-cast.wav",
+    "duration": 0.9,
+    "rms": 0.1478,
+    "peak": 0.92,
+    "sha256": "467a45931eae11f4691d39e7635f04887c6150e3ead752b29ee319c52039bfe6"
+  },
+  "creature-rabbit-release": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3",
+        "start": 16.61,
+        "length": 0.98,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/583078/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-release.wav",
+    "duration": 0.98,
+    "rms": 0.15,
+    "peak": 0.6655,
+    "sha256": "95699d23bc23037f6a81dc912eb0272accfb717589130a61fa9a758499f3ade5"
+  },
+  "creature-rabbit-death": {
+    "category": "creature-recording",
+    "voice": "rabbit",
+    "sources": [
+      "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/583078-squeaking-guinea-pigs/583078-squeaking-guinea-pigs.mp3",
+        "start": 6.51,
+        "length": 1.56,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/583078/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rabbit-death.wav",
+    "duration": 1.555,
+    "rms": 0.141,
+    "peak": 0.92,
+    "sha256": "1eb6a82f95d50592a2134196b7cb6c3a3db9f6e6a779b698f1e2d227fee0d45a"
+  },
+  "creature-fox-attack1": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 30.39,
+        "length": 0.72,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-attack1.wav",
+    "duration": 0.719,
+    "rms": 0.15,
+    "peak": 0.8152,
+    "sha256": "a7e88d682bae3d40283f1ce04b993bead32d9bde3ef92b58ad735e69f601f4f7"
+  },
+  "creature-fox-attack2": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 9.47,
+        "length": 0.66,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-attack2.wav",
+    "duration": 0.657,
+    "rms": 0.15,
+    "peak": 0.9098,
+    "sha256": "4edcd21a8c2fcbf45d3e11240d4bb30739c350f81980e8c6d1e7cba52276a17a"
+  },
+  "creature-fox-attack3": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 25.87,
+        "length": 0.45,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-attack3.wav",
+    "duration": 0.45,
+    "rms": 0.1485,
+    "peak": 0.92,
+    "sha256": "0369042aae00ac3220864848a68907f3ec4131c1d59c84568d97486f91aadf46"
+  },
+  "creature-fox-hurt1": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 26.89,
+        "length": 0.3,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-hurt1.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.8508,
+    "sha256": "5f8a781c29a2b226507a84bb57262be5e558099fc3f4712229aaab47e5afebe0"
+  },
+  "creature-fox-hurt2": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 63.57,
+        "length": 0.54,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-hurt2.wav",
+    "duration": 0.54,
+    "rms": 0.15,
+    "peak": 0.8314,
+    "sha256": "d9e6711f01b0793ed689a9764d2cc2163fe7b64a6241cfeb8cc14fdafe3ce816"
+  },
+  "creature-fox-hurt3": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 41.61,
+        "length": 0.45,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-hurt3.wav",
+    "duration": 0.45,
+    "rms": 0.15,
+    "peak": 0.8139,
+    "sha256": "1109ca3d2c66ea5351472a70a7e7c8a6b1da5a3fb8ba26bde20a353cbfcb4135"
+  },
+  "creature-fox-cast": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 1.05,
+        "length": 0.73,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-cast.wav",
+    "duration": 0.729,
+    "rms": 0.15,
+    "peak": 0.8148,
+    "sha256": "257f787fdfc4c4cd1c6e8f28390465c9064bc1ccd4c9f0264f725d4d01bb15f1"
+  },
+  "creature-fox-release": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 24.08,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-release.wav",
+    "duration": 0.647,
+    "rms": 0.15,
+    "peak": 0.7521,
+    "sha256": "02376735ebc553ecbb2fd7b65798b2b7794d5dd233b195081b0238e9ae683b7e"
+  },
+  "creature-fox-death": {
+    "category": "creature-recording",
+    "voice": "fox",
+    "sources": [
+      "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/832436-fox-screaming-during-the-night/832436-fox-screaming-during-the-night.mp3",
+        "start": 3.64,
+        "length": 0.85,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/832436/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-fox-death.wav",
+    "duration": 0.842,
+    "rms": 0.15,
+    "peak": 0.7836,
+    "sha256": "99f9dfe3e80449e4cb92f4cf1ef43d2dcb4367a0ebad0c09d0ea37c21ae157e6"
+  },
+  "creature-wolf-attack1": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/420452-barking-5-wav/420452-barking-5-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/420452-barking-5-wav/420452-barking-5-wav.mp3",
+        "start": 0.0,
+        "length": 0.55,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mrthenoronha (Freesound)",
+    "source_url": "https://freesound.org/people/Mrthenoronha/sounds/420452/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-attack1.wav",
+    "duration": 0.55,
+    "rms": 0.1254,
+    "peak": 0.92,
+    "sha256": "b9cf66adc29696131a145823bada6c4fc042bec390d2031d5394c3d9ccd705a3"
+  },
+  "creature-wolf-attack2": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/439535-angry-dog/439535-angry-dog.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/439535-angry-dog/439535-angry-dog.mp3",
+        "start": 2.65,
+        "length": 0.5,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / CmdRobot (Freesound)",
+    "source_url": "https://freesound.org/people/CmdRobot/sounds/439535/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-attack2.wav",
+    "duration": 0.5,
+    "rms": 0.15,
+    "peak": 0.4167,
+    "sha256": "4aea410e83d75f4f16f82db9da96317822a17d17af5f23065139bd9d57f05320"
+  },
+  "creature-wolf-attack3": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/479633-r01-63-dog-snarling-and-attacking-wav/479633-r01-63-dog-snarling-and-attacking-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479633-r01-63-dog-snarling-and-attacking-wav/479633-r01-63-dog-snarling-and-attacking-wav.mp3",
+        "start": 8.79,
+        "length": 0.5,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479633/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-attack3.wav",
+    "duration": 0.5,
+    "rms": 0.15,
+    "peak": 0.6128,
+    "sha256": "51e9c99a4dd8ca1a2dfdcdd9295f3410c9114b418d0bd4b423edb94660ce9583"
+  },
+  "creature-wolf-hurt1": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/420449-barking-2-wav/420449-barking-2-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/420449-barking-2-wav/420449-barking-2-wav.mp3",
+        "start": 0.02,
+        "length": 0.4,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mrthenoronha (Freesound)",
+    "source_url": "https://freesound.org/people/Mrthenoronha/sounds/420449/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-hurt1.wav",
+    "duration": 0.383,
+    "rms": 0.15,
+    "peak": 0.7057,
+    "sha256": "852717accd4f878017c81803d162d38cce81c65c351241784ee9f3c15c2294dc"
+  },
+  "creature-wolf-hurt2": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/420447-barking-4-wav/420447-barking-4-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/420447-barking-4-wav/420447-barking-4-wav.mp3",
+        "start": 0.0,
+        "length": 0.37,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Mrthenoronha (Freesound)",
+    "source_url": "https://freesound.org/people/Mrthenoronha/sounds/420447/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-hurt2.wav",
+    "duration": 0.366,
+    "rms": 0.15,
+    "peak": 0.8338,
+    "sha256": "1c28d96d785d561710dea7af4354e70dbdf264990ea8640a05ff538536e84bad"
+  },
+  "creature-wolf-hurt3": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/439535-angry-dog/439535-angry-dog.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/439535-angry-dog/439535-angry-dog.mp3",
+        "start": 8.76,
+        "length": 0.61,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / CmdRobot (Freesound)",
+    "source_url": "https://freesound.org/people/CmdRobot/sounds/439535/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-hurt3.wav",
+    "duration": 0.61,
+    "rms": 0.15,
+    "peak": 0.6209,
+    "sha256": "2e1da2ac0ed32595cbf30c20d77977d9c92669af314a5c8107398a760f676ca2"
+  },
+  "creature-wolf-cast": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/479633-r01-63-dog-snarling-and-attacking-wav/479633-r01-63-dog-snarling-and-attacking-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479633-r01-63-dog-snarling-and-attacking-wav/479633-r01-63-dog-snarling-and-attacking-wav.mp3",
+        "start": 44.8,
+        "length": 1.19,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479633/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-cast.wav",
+    "duration": 1.19,
+    "rms": 0.15,
+    "peak": 0.5324,
+    "sha256": "fbc629f5df72ff89136b53988a165e2037af679bec45cbf490e4f93b457732e8"
+  },
+  "creature-wolf-release": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/439535-angry-dog/439535-angry-dog.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/439535-angry-dog/439535-angry-dog.mp3",
+        "start": 0.04,
+        "length": 1.19,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / CmdRobot (Freesound)",
+    "source_url": "https://freesound.org/people/CmdRobot/sounds/439535/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-release.wav",
+    "duration": 1.19,
+    "rms": 0.15,
+    "peak": 0.4185,
+    "sha256": "ecee6b02979f259659c967bf0828176fdee9c011ca37904f15e8499beac002ef"
+  },
+  "creature-wolf-death": {
+    "category": "creature-recording",
+    "voice": "wolf",
+    "sources": [
+      "sources/freesound/158780-wolves-wav/158780-wolves-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/158780-wolves-wav/158780-wolves-wav.mp3",
+        "start": 7.74,
+        "length": 1.73,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Paresh (Freesound)",
+    "source_url": "https://freesound.org/people/Paresh/sounds/158780/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-wolf-death.wav",
+    "duration": 1.73,
+    "rms": 0.15,
+    "peak": 0.6979,
+    "sha256": "0d81b729ea455e9e65c434ad0fe4bb06772e187df87d5e446d658de5362f35e7"
+  },
+  "creature-bigcat-attack1": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3",
+        "start": 17.01,
+        "length": 0.79,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-attack1.wav",
+    "duration": 0.79,
+    "rms": 0.15,
+    "peak": 0.5901,
+    "sha256": "7717ae113f1629d4e5765e28ff76c81e5f60c32d39a2455f608fa0067b4f67dc"
+  },
+  "creature-bigcat-attack2": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3",
+        "start": 13.43,
+        "length": 0.79,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-attack2.wav",
+    "duration": 0.79,
+    "rms": 0.15,
+    "peak": 0.5891,
+    "sha256": "b757b51ed2d389f3bb217ec10f0f63dbf07eabaf3e8f8bdbe34a5ec6869a4d00"
+  },
+  "creature-bigcat-attack3": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3",
+        "start": 15.37,
+        "length": 0.6,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-attack3.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.7775,
+    "sha256": "c9ad8120b1718c603c46bcdb12260298985cd151fb460917365c1d823ed2e25e"
+  },
+  "creature-bigcat-hurt1": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3",
+        "start": 20.6,
+        "length": 0.64,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-hurt1.wav",
+    "duration": 0.64,
+    "rms": 0.15,
+    "peak": 0.6403,
+    "sha256": "60a731a34e437ff5a5f35604d6ab8a41938488c5e5a2c054aca37daf0a4a0e95"
+  },
+  "creature-bigcat-hurt2": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3",
+        "start": 18.94,
+        "length": 0.53,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-hurt2.wav",
+    "duration": 0.53,
+    "rms": 0.15,
+    "peak": 0.7787,
+    "sha256": "ef2da74690037b00b4b5c62dacf056eb211c176827776b5121848f3f07ac8e3b"
+  },
+  "creature-bigcat-hurt3": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/437978-g12-45-tiger-hiss-and-growl-wav/437978-g12-45-tiger-hiss-and-growl-wav.mp3",
+        "start": 8.2,
+        "length": 0.53,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/437978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-hurt3.wav",
+    "duration": 0.53,
+    "rms": 0.15,
+    "peak": 0.8082,
+    "sha256": "1227187f17c2cb89bf8b46ee24d8ace2396d535626f9d24e92b75dd5ce857560"
+  },
+  "creature-bigcat-cast": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/223978-lion-lament/223978-lion-lament.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/223978-lion-lament/223978-lion-lament.mp3",
+        "start": 19.74,
+        "length": 1.15,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / roman_cgr (Freesound)",
+    "source_url": "https://freesound.org/people/roman_cgr/sounds/223978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-cast.wav",
+    "duration": 1.146,
+    "rms": 0.15,
+    "peak": 0.9028,
+    "sha256": "8f14e49394791997f3051f9ad85ae4adf90478b15ecbfbbc9b0ecd56e21b3c34"
+  },
+  "creature-bigcat-release": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/811790-tiger-roar-female/811790-tiger-roar-female.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/811790-tiger-roar-female/811790-tiger-roar-female.mp3",
+        "start": 0.0,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / eZZin (Freesound)",
+    "source_url": "https://freesound.org/people/eZZin/sounds/811790/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-release.wav",
+    "duration": 0.65,
+    "rms": 0.15,
+    "peak": 0.915,
+    "sha256": "9b108679508d79be1afa503f391c85d08cefd8bf8053c17ce31a6db95c9cd64c"
+  },
+  "creature-bigcat-death": {
+    "category": "creature-recording",
+    "voice": "bigcat",
+    "sources": [
+      "sources/freesound/223978-lion-lament/223978-lion-lament.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/223978-lion-lament/223978-lion-lament.mp3",
+        "start": 13.56,
+        "length": 1.83,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / roman_cgr (Freesound)",
+    "source_url": "https://freesound.org/people/roman_cgr/sounds/223978/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-bigcat-death.wav",
+    "duration": 1.828,
+    "rms": 0.15,
+    "peak": 0.9064,
+    "sha256": "534420739f56d616b4d1d98541d1f2b28c499d4435bd58ef1725e457cbdd12dc"
+  },
+  "creature-boar-attack1": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3",
+        "start": 1.57,
+        "length": 0.62,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/352698/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-attack1.wav",
+    "duration": 0.62,
+    "rms": 0.1059,
+    "peak": 0.92,
+    "sha256": "24493b81299873b1c2749f151b1bd7f2bf6bf2d93430d8c1c40a76bf93936910"
+  },
+  "creature-boar-attack2": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3",
+        "start": 0.82,
+        "length": 0.7,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/352698/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-attack2.wav",
+    "duration": 0.7,
+    "rms": 0.1334,
+    "peak": 0.92,
+    "sha256": "7ee877f5a298cfe403e7fa3ba1a9e4008d7a6a273ebfc94e798ff204e38e14d0"
+  },
+  "creature-boar-attack3": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3",
+        "start": 0.04,
+        "length": 0.75,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/352698/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-attack3.wav",
+    "duration": 0.746,
+    "rms": 0.1278,
+    "peak": 0.92,
+    "sha256": "5f1856f0b812ce719e49849f8ab96a7ffa0191d4fa5ab5729d25b8c5d509d6e4"
+  },
+  "creature-boar-hurt1": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3",
+        "start": 5.57,
+        "length": 0.42,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/352698/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-hurt1.wav",
+    "duration": 0.418,
+    "rms": 0.1307,
+    "peak": 0.92,
+    "sha256": "76cb86c76e0ef8fa848902782431d7464db174da4027d0b1953fc6bf47f9484a"
+  },
+  "creature-boar-hurt2": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/842313-swine-pig-dinosaur-like-grunt/842313-swine-pig-dinosaur-like-grunt.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/842313-swine-pig-dinosaur-like-grunt/842313-swine-pig-dinosaur-like-grunt.mp3",
+        "start": 0.96,
+        "length": 0.54,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TheKingOfGeeks360 (Freesound)",
+    "source_url": "https://freesound.org/people/TheKingOfGeeks360/sounds/842313/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-hurt2.wav",
+    "duration": 0.54,
+    "rms": 0.15,
+    "peak": 0.5884,
+    "sha256": "5c249aa68974781c0cd3007c98db71237dddd2312febf103c080d1af755a1620"
+  },
+  "creature-boar-hurt3": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3",
+        "start": 2.28,
+        "length": 0.49,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/352698/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-hurt3.wav",
+    "duration": 0.49,
+    "rms": 0.1462,
+    "peak": 0.92,
+    "sha256": "b6c6d4335e84a472941ee420485550117face2157a7b399580c832f70d4e7f1d"
+  },
+  "creature-boar-cast": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/158746-a-pig-grunting-grumbling-and-falling-asl/158746-a-pig-grunting-grumbling-and-falling-asl.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/158746-a-pig-grunting-grumbling-and-falling-asl/158746-a-pig-grunting-grumbling-and-falling-asl.mp3",
+        "start": 46.7,
+        "length": 0.98,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/158746/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-cast.wav",
+    "duration": 0.98,
+    "rms": 0.15,
+    "peak": 0.8629,
+    "sha256": "b45f42e56fad0a23e228bd20fe8eb4df420723509fad6888c6f9ef718d439570"
+  },
+  "creature-boar-release": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/352698-angry-pig-oinking/352698-angry-pig-oinking.mp3",
+        "start": 4.79,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jofae (Freesound)",
+    "source_url": "https://freesound.org/people/Jofae/sounds/352698/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-release.wav",
+    "duration": 0.6,
+    "rms": 0.1088,
+    "peak": 0.92,
+    "sha256": "f6c9aed74afb781883c8b29efe01915a3ebe9f5f80244ee26bad4c871dc223ca"
+  },
+  "creature-boar-death": {
+    "category": "creature-recording",
+    "voice": "boar",
+    "sources": [
+      "sources/freesound/158746-a-pig-grunting-grumbling-and-falling-asl/158746-a-pig-grunting-grumbling-and-falling-asl.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/158746-a-pig-grunting-grumbling-and-falling-asl/158746-a-pig-grunting-grumbling-and-falling-asl.mp3",
+        "start": 2.97,
+        "length": 1.53,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/158746/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-boar-death.wav",
+    "duration": 1.53,
+    "rms": 0.15,
+    "peak": 0.556,
+    "sha256": "f2628917b1fcc08fd34901281405c9021b40ead2973ac71c6e48d6ed66b2bef8"
+  },
+  "creature-reptile-attack1": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3",
+        "start": 12.43,
+        "length": 0.71,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SieuAmThanh (Freesound)",
+    "source_url": "https://freesound.org/people/SieuAmThanh/sounds/546873/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-attack1.wav",
+    "duration": 0.682,
+    "rms": 0.1472,
+    "peak": 0.92,
+    "sha256": "5c7fc90adf17b04e1b93a5e7512e0a596e64446bbf6feb2a5c9f4cb285fd7ffc"
+  },
+  "creature-reptile-attack2": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/686626-tookgeh-gecko/686626-tookgeh-gecko.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/686626-tookgeh-gecko/686626-tookgeh-gecko.mp3",
+        "start": 14.83,
+        "length": 0.77,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Organuz (Freesound)",
+    "source_url": "https://freesound.org/people/Organuz/sounds/686626/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-attack2.wav",
+    "duration": 0.77,
+    "rms": 0.1367,
+    "peak": 0.92,
+    "sha256": "7d3c24382e4d24ac51f7c94c1f82aa71c5d1670800f82e455b6e103632b6bccf"
+  },
+  "creature-reptile-attack3": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3",
+        "start": 38.2,
+        "length": 0.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SieuAmThanh (Freesound)",
+    "source_url": "https://freesound.org/people/SieuAmThanh/sounds/546873/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-attack3.wav",
+    "duration": 0.675,
+    "rms": 0.1462,
+    "peak": 0.92,
+    "sha256": "4af31b987a2edb1aa3a8cd5acb29881ae53fc010d633759196045584e90c0ad8"
+  },
+  "creature-reptile-hurt1": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/351301-gekko-mp3/351301-gekko-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/351301-gekko-mp3/351301-gekko-mp3.mp3",
+        "start": 3.77,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / mopedmetzger (Freesound)",
+    "source_url": "https://freesound.org/people/mopedmetzger/sounds/351301/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-hurt1.wav",
+    "duration": 0.325,
+    "rms": 0.15,
+    "peak": 0.92,
+    "sha256": "5aa63a4a353db230b70ca9ae938c49881f310c59c21cf6f19f565f5c37c3e855"
+  },
+  "creature-reptile-hurt2": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/400573-tha-ngla-ng-wav/400573-tha-ngla-ng-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/400573-tha-ngla-ng-wav/400573-tha-ngla-ng-wav.mp3",
+        "start": 0.02,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SieuAmThanh (Freesound)",
+    "source_url": "https://freesound.org/people/SieuAmThanh/sounds/400573/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-hurt2.wav",
+    "duration": 0.35,
+    "rms": 0.1124,
+    "peak": 0.92,
+    "sha256": "e486f63cb34779e1d5bc6ca025ef8be6ddf06beb67cdd4c657be97187acbee2b"
+  },
+  "creature-reptile-hurt3": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/351301-gekko-mp3/351301-gekko-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/351301-gekko-mp3/351301-gekko-mp3.mp3",
+        "start": 1.12,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / mopedmetzger (Freesound)",
+    "source_url": "https://freesound.org/people/mopedmetzger/sounds/351301/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-hurt3.wav",
+    "duration": 0.347,
+    "rms": 0.15,
+    "peak": 0.9189,
+    "sha256": "46c87c2edbdf3d9dc9cc0750436c6b92ee2f404faddb0cb5d472ad621c95be1b"
+  },
+  "creature-reptile-cast": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3",
+        "start": 46.69,
+        "length": 0.94,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SieuAmThanh (Freesound)",
+    "source_url": "https://freesound.org/people/SieuAmThanh/sounds/546873/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-cast.wav",
+    "duration": 0.918,
+    "rms": 0.117,
+    "peak": 0.92,
+    "sha256": "7c97ca2179f621eb3d085fd83fee69633fe1b2d4b1b2e8f2af31713fcbbdb678"
+  },
+  "creature-reptile-release": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/677430-ta-c-ke-mo-t/677430-ta-c-ke-mo-t.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/677430-ta-c-ke-mo-t/677430-ta-c-ke-mo-t.mp3",
+        "start": 0.03,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SieuAmThanh (Freesound)",
+    "source_url": "https://freesound.org/people/SieuAmThanh/sounds/677430/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-release.wav",
+    "duration": 0.622,
+    "rms": 0.1381,
+    "peak": 0.92,
+    "sha256": "6b4cdcdf98d1358e2c086ddaef680425b88b0ee1456e7a84b2c41b7f167007b7"
+  },
+  "creature-reptile-death": {
+    "category": "creature-recording",
+    "voice": "reptile",
+    "sources": [
+      "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/546873-ta-c-ke-4/546873-ta-c-ke-4.mp3",
+        "start": 18.63,
+        "length": 0.91,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SieuAmThanh (Freesound)",
+    "source_url": "https://freesound.org/people/SieuAmThanh/sounds/546873/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-reptile-death.wav",
+    "duration": 0.886,
+    "rms": 0.123,
+    "peak": 0.92,
+    "sha256": "735a177b5ba5b44261fc03849f94cf75058001ea482b0bb6b6cf3ba2ade18b59"
+  },
+  "creature-frog-attack1": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/397568-frog-croak-ambient/397568-frog-croak-ambient.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/397568-frog-croak-ambient/397568-frog-croak-ambient.mp3",
+        "start": 23.53,
+        "length": 0.63,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Sojan (Freesound)",
+    "source_url": "https://freesound.org/people/Sojan/sounds/397568/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-attack1.wav",
+    "duration": 0.596,
+    "rms": 0.15,
+    "peak": 0.704,
+    "sha256": "0cf0a2515661f648df34b0ffceb13253d027925b8066bea36bd322d6d337d07b"
+  },
+  "creature-frog-attack2": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/479816-r01-44-frogs-croaking-wav/479816-r01-44-frogs-croaking-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479816-r01-44-frogs-croaking-wav/479816-r01-44-frogs-croaking-wav.mp3",
+        "start": 10.07,
+        "length": 0.7,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479816/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-attack2.wav",
+    "duration": 0.7,
+    "rms": 0.15,
+    "peak": 0.6993,
+    "sha256": "3c8bcbb81e6fd505b79a5b57ed28cbaa672b7e7e4ae96bfe9f19dcd5d5d50663"
+  },
+  "creature-frog-attack3": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/188195-green-frog-croaking-wav/188195-green-frog-croaking-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/188195-green-frog-croaking-wav/188195-green-frog-croaking-wav.mp3",
+        "start": 6.86,
+        "length": 0.46,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SpliceSound (Freesound)",
+    "source_url": "https://freesound.org/people/SpliceSound/sounds/188195/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-attack3.wav",
+    "duration": 0.433,
+    "rms": 0.1334,
+    "peak": 0.92,
+    "sha256": "667c8b4fc024045bd8229c9f5f63e87fe5af714f38ab19ac35812739f6421ac0"
+  },
+  "creature-frog-hurt1": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/536759-frog-ogg/536759-frog-ogg.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/536759-frog-ogg/536759-frog-ogg.mp3",
+        "start": 0.09,
+        "length": 0.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / egomassive (Freesound)",
+    "source_url": "https://freesound.org/people/egomassive/sounds/536759/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-hurt1.wav",
+    "duration": 0.363,
+    "rms": 0.15,
+    "peak": 0.6291,
+    "sha256": "844a3c214a3ababb80b6751b0c33737647c84dcedab77e1ced8671630cdb2440"
+  },
+  "creature-frog-hurt2": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/462863-common-toad-bufo-bufo/462863-common-toad-bufo-bufo.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/462863-common-toad-bufo-bufo/462863-common-toad-bufo-bufo.mp3",
+        "start": 10.36,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/462863/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-hurt2.wav",
+    "duration": 0.3,
+    "rms": 0.15,
+    "peak": 0.6851,
+    "sha256": "19f92bfe0e4f2ed29155d1e715f6e17538cf0b1761c873f2d99f4fd579fc6ec2"
+  },
+  "creature-frog-hurt3": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/462863-common-toad-bufo-bufo/462863-common-toad-bufo-bufo.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/462863-common-toad-bufo-bufo/462863-common-toad-bufo-bufo.mp3",
+        "start": 5.64,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Breviceps (Freesound)",
+    "source_url": "https://freesound.org/people/Breviceps/sounds/462863/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-hurt3.wav",
+    "duration": 0.349,
+    "rms": 0.15,
+    "peak": 0.6203,
+    "sha256": "34ea1f77cf76eb26912a57783d00bc4fd11302f060f438752fbe0c1be6cb7e0b"
+  },
+  "creature-frog-cast": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/479816-r01-44-frogs-croaking-wav/479816-r01-44-frogs-croaking-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479816-r01-44-frogs-croaking-wav/479816-r01-44-frogs-croaking-wav.mp3",
+        "start": 1.85,
+        "length": 1.04,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479816/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-cast.wav",
+    "duration": 1.04,
+    "rms": 0.1452,
+    "peak": 0.92,
+    "sha256": "8aff23404ac74638da81d7cf75abbf1065f40a8a0a7177c1f18ffce8b2cd80ac"
+  },
+  "creature-frog-release": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/502531-croak-sound-effect/502531-croak-sound-effect.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/502531-croak-sound-effect/502531-croak-sound-effect.mp3",
+        "start": 0.19,
+        "length": 1.3,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / mdfrenchij (Freesound)",
+    "source_url": "https://freesound.org/people/mdfrenchij/sounds/502531/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-release.wav",
+    "duration": 1.278,
+    "rms": 0.0925,
+    "peak": 0.92,
+    "sha256": "98ed54953a639d6b3a7d4bd2d87e88233b977b24af5d3f23bc8cfe4d0094a8fb"
+  },
+  "creature-frog-death": {
+    "category": "creature-recording",
+    "voice": "frog",
+    "sources": [
+      "sources/freesound/479816-r01-44-frogs-croaking-wav/479816-r01-44-frogs-croaking-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/479816-r01-44-frogs-croaking-wav/479816-r01-44-frogs-croaking-wav.mp3",
+        "start": 12.04,
+        "length": 1.58,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/479816/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-frog-death.wav",
+    "duration": 1.58,
+    "rms": 0.15,
+    "peak": 0.8513,
+    "sha256": "5e57356830183af25b6f9d92abf3c371465a609b47674b654bbdc841c93fe983"
+  },
+  "creature-serpent-attack1": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3",
+        "start": 20.13,
+        "length": 0.78,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / florianreichelt (Freesound)",
+    "source_url": "https://freesound.org/people/florianreichelt/sounds/423454/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-attack1.wav",
+    "duration": 0.78,
+    "rms": 0.1425,
+    "peak": 0.92,
+    "sha256": "c2c77caada079e052977b324add7dcaa2f129759c24f4f0e83348b930ec1fc5c"
+  },
+  "creature-serpent-attack2": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/268580-rattle-snake-wav/268580-rattle-snake-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/268580-rattle-snake-wav/268580-rattle-snake-wav.mp3",
+        "start": 15.16,
+        "length": 0.46,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / 7h3_lark (Freesound)",
+    "source_url": "https://freesound.org/people/7h3_lark/sounds/268580/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-attack2.wav",
+    "duration": 0.46,
+    "rms": 0.1463,
+    "peak": 0.92,
+    "sha256": "bcf8178398c813cb3b17496ae899a3183dc02619d9e339bcbdeeed66cb59b206"
+  },
+  "creature-serpent-attack3": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3",
+        "start": 19.34,
+        "length": 0.48,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / florianreichelt (Freesound)",
+    "source_url": "https://freesound.org/people/florianreichelt/sounds/423454/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-attack3.wav",
+    "duration": 0.48,
+    "rms": 0.15,
+    "peak": 0.8725,
+    "sha256": "443da9b828559da5e06d345aa917e9e4430a2c00ad520dc239011f3d7a187f5b"
+  },
+  "creature-serpent-hurt1": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/540162-snake-hissing-mp3/540162-snake-hissing-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/540162-snake-hissing-mp3/540162-snake-hissing-mp3.mp3",
+        "start": 0.15,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / schreibsel (Freesound)",
+    "source_url": "https://freesound.org/people/schreibsel/sounds/540162/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-hurt1.wav",
+    "duration": 0.35,
+    "rms": 0.15,
+    "peak": 0.7218,
+    "sha256": "c70d109759716036dfc8a0c0f9d5eade3681875e5cbbb68e8d23cfb01711fbc5"
+  },
+  "creature-serpent-hurt2": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3",
+        "start": 6.16,
+        "length": 0.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / florianreichelt (Freesound)",
+    "source_url": "https://freesound.org/people/florianreichelt/sounds/423454/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-hurt2.wav",
+    "duration": 0.39,
+    "rms": 0.15,
+    "peak": 0.8935,
+    "sha256": "c8123eecfd3bae4d4f802419c3c271b707b4b483fc56a13213b96b8edb44827d"
+  },
+  "creature-serpent-hurt3": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3",
+        "start": 14.96,
+        "length": 0.36,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / florianreichelt (Freesound)",
+    "source_url": "https://freesound.org/people/florianreichelt/sounds/423454/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-hurt3.wav",
+    "duration": 0.36,
+    "rms": 0.15,
+    "peak": 0.7698,
+    "sha256": "093b87b39ed382fd849ee3fdf65a6a17da77cbe2e0e0c40ccb4ae66918545d47"
+  },
+  "creature-serpent-cast": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/268580-rattle-snake-wav/268580-rattle-snake-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/268580-rattle-snake-wav/268580-rattle-snake-wav.mp3",
+        "start": 11.75,
+        "length": 1.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / 7h3_lark (Freesound)",
+    "source_url": "https://freesound.org/people/7h3_lark/sounds/268580/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-cast.wav",
+    "duration": 1.387,
+    "rms": 0.137,
+    "peak": 0.92,
+    "sha256": "522d7f8196506324c71f702d769399d7287d1f486de0fa4cfcd3ed502c33f246"
+  },
+  "creature-serpent-release": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/423454-snarling-snake/423454-snarling-snake.mp3",
+        "start": 1.05,
+        "length": 1.26,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / florianreichelt (Freesound)",
+    "source_url": "https://freesound.org/people/florianreichelt/sounds/423454/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-release.wav",
+    "duration": 1.26,
+    "rms": 0.1147,
+    "peak": 0.92,
+    "sha256": "bc636d8ab833b04609aec529c3a91f923af888e88331d3ce6e92f2942b847f78"
+  },
+  "creature-serpent-death": {
+    "category": "creature-recording",
+    "voice": "serpent",
+    "sources": [
+      "sources/freesound/540162-snake-hissing-mp3/540162-snake-hissing-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/540162-snake-hissing-mp3/540162-snake-hissing-mp3.mp3",
+        "start": 0.91,
+        "length": 1.51,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / schreibsel (Freesound)",
+    "source_url": "https://freesound.org/people/schreibsel/sounds/540162/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-serpent-death.wav",
+    "duration": 1.51,
+    "rms": 0.1373,
+    "peak": 0.92,
+    "sha256": "61297c580d9836777e5879e7638194b5814172cf6a363c077ff76622770dd2da"
+  },
+  "creature-crab-attack1": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/761559-crab-walking/761559-crab-walking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/761559-crab-walking/761559-crab-walking.mp3",
+        "start": 2.24,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / stuniverso (Freesound)",
+    "source_url": "https://freesound.org/people/stuniverso/sounds/761559/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-attack1.wav",
+    "duration": 0.402,
+    "rms": 0.0604,
+    "peak": 0.92,
+    "sha256": "daf67872bc61ba96f7b68629a9413722c0c1422a8f478e7fd457cd5ce8301ae8"
+  },
+  "creature-crab-attack2": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/770031-crab-legs/770031-crab-legs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770031-crab-legs/770031-crab-legs.mp3",
+        "start": 2.59,
+        "length": 0.6,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770031/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-attack2.wav",
+    "duration": 0.6,
+    "rms": 0.0965,
+    "peak": 0.92,
+    "sha256": "0ce4ac4c0dd2dc7fea022560a7e0669cc6be5a82758ea259fbd9a092a927f7ae"
+  },
+  "creature-crab-attack3": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/761559-crab-walking/761559-crab-walking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/761559-crab-walking/761559-crab-walking.mp3",
+        "start": 1.53,
+        "length": 0.46,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / stuniverso (Freesound)",
+    "source_url": "https://freesound.org/people/stuniverso/sounds/761559/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-attack3.wav",
+    "duration": 0.447,
+    "rms": 0.0785,
+    "peak": 0.92,
+    "sha256": "581428c9134de93a5f24827577dadf31ea957a8fc5eab6997029c8de55f0e60e"
+  },
+  "creature-crab-hurt1": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/761559-crab-walking/761559-crab-walking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/761559-crab-walking/761559-crab-walking.mp3",
+        "start": 1.04,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / stuniverso (Freesound)",
+    "source_url": "https://freesound.org/people/stuniverso/sounds/761559/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-hurt1.wav",
+    "duration": 0.3,
+    "rms": 0.0818,
+    "peak": 0.92,
+    "sha256": "01dbdae36009e63d488cd33c708926a1cc0e9d28a556cd4381da43ba998bb355"
+  },
+  "creature-crab-hurt2": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/567727-200612-lobsters-breathing-clicking-water/567727-200612-lobsters-breathing-clicking-water.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/567727-200612-lobsters-breathing-clicking-water/567727-200612-lobsters-breathing-clicking-water.mp3",
+        "start": 32.48,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TRP (Freesound)",
+    "source_url": "https://freesound.org/people/TRP/sounds/567727/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-hurt2.wav",
+    "duration": 0.35,
+    "rms": 0.0782,
+    "peak": 0.92,
+    "sha256": "7703b5e1e91430a914d7864f0790b5d4ca41f43c643920620c2bb912b239d6ce"
+  },
+  "creature-crab-hurt3": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/567727-200612-lobsters-breathing-clicking-water/567727-200612-lobsters-breathing-clicking-water.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/567727-200612-lobsters-breathing-clicking-water/567727-200612-lobsters-breathing-clicking-water.mp3",
+        "start": 44.14,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TRP (Freesound)",
+    "source_url": "https://freesound.org/people/TRP/sounds/567727/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-hurt3.wav",
+    "duration": 0.35,
+    "rms": 0.082,
+    "peak": 0.92,
+    "sha256": "ba02783393c1c15892baa8d5e1c11db3815d23ca9047a3b19f708ad94ad2c628"
+  },
+  "creature-crab-cast": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/770031-crab-legs/770031-crab-legs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770031-crab-legs/770031-crab-legs.mp3",
+        "start": 3.42,
+        "length": 0.81,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770031/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-cast.wav",
+    "duration": 0.759,
+    "rms": 0.0811,
+    "peak": 0.92,
+    "sha256": "675b22b525a496e8044e6dab041709d82b5ca3407966130a935996bf46de8dec"
+  },
+  "creature-crab-release": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/761559-crab-walking/761559-crab-walking.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/761559-crab-walking/761559-crab-walking.mp3",
+        "start": 0.14,
+        "length": 0.88,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / stuniverso (Freesound)",
+    "source_url": "https://freesound.org/people/stuniverso/sounds/761559/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-release.wav",
+    "duration": 0.8,
+    "rms": 0.0773,
+    "peak": 0.92,
+    "sha256": "b83615b766a32cb958b6c7ee719227d03475274976f0412404d54cf77dfadbeb"
+  },
+  "creature-crab-death": {
+    "category": "creature-recording",
+    "voice": "crab",
+    "sources": [
+      "sources/freesound/770031-crab-legs/770031-crab-legs.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/770031-crab-legs/770031-crab-legs.mp3",
+        "start": 0.48,
+        "length": 1.99,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/770031/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-crab-death.wav",
+    "duration": 1.919,
+    "rms": 0.0857,
+    "peak": 0.92,
+    "sha256": "6e3207b1547cc4b124993c6f9a375f16481b694c27362cbe423ec6c46eec1e9c"
+  },
+  "creature-aquatic-attack1": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/411761-water-bubbles-and-gurgles/411761-water-bubbles-and-gurgles.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/411761-water-bubbles-and-gurgles/411761-water-bubbles-and-gurgles.mp3",
+        "start": 7.45,
+        "length": 0.72,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jamsponge (Freesound)",
+    "source_url": "https://freesound.org/people/Jamsponge/sounds/411761/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-attack1.wav",
+    "duration": 0.713,
+    "rms": 0.1435,
+    "peak": 0.92,
+    "sha256": "0de6057845f04da4deb86ffe3adf45c435d8f516cbf5c56698b6ac119d11f6b9"
+  },
+  "creature-aquatic-attack2": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/807392-fish-asmr-blup-blup/807392-fish-asmr-blup-blup.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/807392-fish-asmr-blup-blup/807392-fish-asmr-blup-blup.mp3",
+        "start": 10.0,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/807392/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-attack2.wav",
+    "duration": 0.3,
+    "rms": 0.1022,
+    "peak": 0.92,
+    "sha256": "eb0603db8e46209f4403a8db88672dd708320c20db86377d6e7e5a10ed9f9568"
+  },
+  "creature-aquatic-attack3": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/411761-water-bubbles-and-gurgles/411761-water-bubbles-and-gurgles.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/411761-water-bubbles-and-gurgles/411761-water-bubbles-and-gurgles.mp3",
+        "start": 6.3,
+        "length": 0.41,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jamsponge (Freesound)",
+    "source_url": "https://freesound.org/people/Jamsponge/sounds/411761/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-attack3.wav",
+    "duration": 0.41,
+    "rms": 0.15,
+    "peak": 0.7129,
+    "sha256": "ed81d5abe46c5b79a0f423de89fa0676935916bfffb0ea77a5354afe6e1f142d"
+  },
+  "creature-aquatic-hurt1": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3",
+        "start": 35.7,
+        "length": 0.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / breiti (Freesound)",
+    "source_url": "https://freesound.org/people/breiti/sounds/585259/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-hurt1.wav",
+    "duration": 0.69,
+    "rms": 0.1334,
+    "peak": 0.92,
+    "sha256": "57012b948a7c73bef91c034acba9b938fe3a40628fcda1577d6075c15b4d854f"
+  },
+  "creature-aquatic-hurt2": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/807392-fish-asmr-blup-blup/807392-fish-asmr-blup-blup.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/807392-fish-asmr-blup-blup/807392-fish-asmr-blup-blup.mp3",
+        "start": 13.04,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Vrymaa (Freesound)",
+    "source_url": "https://freesound.org/people/Vrymaa/sounds/807392/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-hurt2.wav",
+    "duration": 0.3,
+    "rms": 0.0802,
+    "peak": 0.92,
+    "sha256": "a22fc2fb3c1d4b5f16d1a72b96655b2daca6ca1dbbd8e1eb0a6a55529d16977e"
+  },
+  "creature-aquatic-hurt3": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3",
+        "start": 40.11,
+        "length": 0.7,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / breiti (Freesound)",
+    "source_url": "https://freesound.org/people/breiti/sounds/585259/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-hurt3.wav",
+    "duration": 0.7,
+    "rms": 0.15,
+    "peak": 0.9074,
+    "sha256": "711d1ceb51a9d0eeefed813f878494c9be5e3a47862c17b196c61389f110176b"
+  },
+  "creature-aquatic-cast": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/411761-water-bubbles-and-gurgles/411761-water-bubbles-and-gurgles.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/411761-water-bubbles-and-gurgles/411761-water-bubbles-and-gurgles.mp3",
+        "start": 13.14,
+        "length": 1.21,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Jamsponge (Freesound)",
+    "source_url": "https://freesound.org/people/Jamsponge/sounds/411761/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-cast.wav",
+    "duration": 1.2,
+    "rms": 0.1398,
+    "peak": 0.92,
+    "sha256": "835e0f54fe7242930f9670b6ab41286fe0e1350b070a15793a71f47f3202da6e"
+  },
+  "creature-aquatic-release": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3",
+        "start": 9.77,
+        "length": 0.83,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / breiti (Freesound)",
+    "source_url": "https://freesound.org/people/breiti/sounds/585259/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-release.wav",
+    "duration": 0.83,
+    "rms": 0.15,
+    "peak": 0.7575,
+    "sha256": "f82952ed8bed8692256c86c7c087dd092557048ea7d0abc5a0689db2b8c076a1"
+  },
+  "creature-aquatic-death": {
+    "category": "creature-recording",
+    "voice": "aquatic",
+    "sources": [
+      "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/585259-air-bubbles-underwater-recorded-from-sur/585259-air-bubbles-underwater-recorded-from-sur.mp3",
+        "start": 1.49,
+        "length": 1.73,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / breiti (Freesound)",
+    "source_url": "https://freesound.org/people/breiti/sounds/585259/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-aquatic-death.wav",
+    "duration": 1.73,
+    "rms": 0.1445,
+    "peak": 0.92,
+    "sha256": "e0547576c8c12e729b6f0de5bdcbbaa7d580ca599445845ee886d0129c1dbeae"
+  },
+  "creature-beetle-attack1": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3",
+        "start": 1.95,
+        "length": 0.58,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TheKingOfGeeks360 (Freesound)",
+    "source_url": "https://freesound.org/people/TheKingOfGeeks360/sounds/811205/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-attack1.wav",
+    "duration": 0.58,
+    "rms": 0.1349,
+    "peak": 0.92,
+    "sha256": "1882a85cb0bd8b1b0343e6306227eff5ba3474b80aadeca198feebc3ede858c5"
+  },
+  "creature-beetle-attack2": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3",
+        "start": 32.08,
+        "length": 0.57,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / nicotep (Freesound)",
+    "source_url": "https://freesound.org/people/nicotep/sounds/547898/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-attack2.wav",
+    "duration": 0.558,
+    "rms": 0.15,
+    "peak": 0.8491,
+    "sha256": "a73ff6bec7f600a581d50f7595d4a0ae145f7711fcf4790d871a7b96da99eb2b"
+  },
+  "creature-beetle-attack3": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3",
+        "start": 1.16,
+        "length": 0.57,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TheKingOfGeeks360 (Freesound)",
+    "source_url": "https://freesound.org/people/TheKingOfGeeks360/sounds/811205/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-attack3.wav",
+    "duration": 0.538,
+    "rms": 0.15,
+    "peak": 0.7665,
+    "sha256": "7731525ea7e1d4fa3ad2cd61d94302369d3f8a4f9e9d3307b30fdef6649986c3"
+  },
+  "creature-beetle-hurt1": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/502211-beetle-squark5-wav/502211-beetle-squark5-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/502211-beetle-squark5-wav/502211-beetle-squark5-wav.mp3",
+        "start": 0.0,
+        "length": 0.48,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / warrenXG (Freesound)",
+    "source_url": "https://freesound.org/people/warrenXG/sounds/502211/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-hurt1.wav",
+    "duration": 0.48,
+    "rms": 0.15,
+    "peak": 0.8942,
+    "sha256": "9362bbd7b428736e5e9c740f8246af1350b23e17453971cfb4d688360607b999"
+  },
+  "creature-beetle-hurt2": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3",
+        "start": 36.72,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / nicotep (Freesound)",
+    "source_url": "https://freesound.org/people/nicotep/sounds/547898/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-hurt2.wav",
+    "duration": 0.415,
+    "rms": 0.15,
+    "peak": 0.6843,
+    "sha256": "71cd36000375047e9aa8d379972d9c816464b4a1c3861115663f2604fbac30b0"
+  },
+  "creature-beetle-hurt3": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3",
+        "start": 61.68,
+        "length": 0.42,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / nicotep (Freesound)",
+    "source_url": "https://freesound.org/people/nicotep/sounds/547898/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-hurt3.wav",
+    "duration": 0.402,
+    "rms": 0.15,
+    "peak": 0.9186,
+    "sha256": "b5db6cf05f677dc2816c800d4f0fe8e3f540f2c71ae770d75e6cd031d8c67349"
+  },
+  "creature-beetle-cast": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3",
+        "start": 8.25,
+        "length": 0.84,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TheKingOfGeeks360 (Freesound)",
+    "source_url": "https://freesound.org/people/TheKingOfGeeks360/sounds/811205/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-cast.wav",
+    "duration": 0.824,
+    "rms": 0.15,
+    "peak": 0.8913,
+    "sha256": "6a738ab2c1bc153b331b8e6f94bd7e6e0127d20440ca871f20163b5cfb3fdf6c"
+  },
+  "creature-beetle-release": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/811205-insects-madagascar-hissing-cockroach-sev/811205-insects-madagascar-hissing-cockroach-sev.mp3",
+        "start": 4.71,
+        "length": 0.61,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / TheKingOfGeeks360 (Freesound)",
+    "source_url": "https://freesound.org/people/TheKingOfGeeks360/sounds/811205/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-release.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.7128,
+    "sha256": "c0c49f01d8594bba97c9e1da4bd06486b711de9d470f04e055cc811b664eeeb2"
+  },
+  "creature-beetle-death": {
+    "category": "creature-recording",
+    "voice": "beetle",
+    "sources": [
+      "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/547898-gromphadorhina-portentosa-hissing-aif/547898-gromphadorhina-portentosa-hissing-aif.mp3",
+        "start": 1.13,
+        "length": 1.42,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / nicotep (Freesound)",
+    "source_url": "https://freesound.org/people/nicotep/sounds/547898/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-beetle-death.wav",
+    "duration": 1.405,
+    "rms": 0.1456,
+    "peak": 0.92,
+    "sha256": "63fa7389bdde83f5f91a46ee8c66b5b1626dff9fb2f5a19b13acfb29e6ccbe55"
+  },
+  "creature-skitter-attack1": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3",
+        "start": 43.37,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/701180/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-attack1.wav",
+    "duration": 0.3,
+    "rms": 0.1154,
+    "peak": 0.92,
+    "sha256": "4d3cab737680f277404ae3d9ae45dac0c48590cb1416bbb2a313cd794a1a97c3"
+  },
+  "creature-skitter-attack2": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/829810-crickets-katydids-cicadas-insect-sound-a/829810-crickets-katydids-cicadas-insect-sound-a.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/829810-crickets-katydids-cicadas-insect-sound-a/829810-crickets-katydids-cicadas-insect-sound-a.mp3",
+        "start": 4.72,
+        "length": 0.48,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Attia.phonatics (Freesound)",
+    "source_url": "https://freesound.org/people/Attia.phonatics/sounds/829810/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-attack2.wav",
+    "duration": 0.48,
+    "rms": 0.0987,
+    "peak": 0.92,
+    "sha256": "c0aeda3abd9d1629c5b4be54b6ec135dce97f74cc80e998d91fdaaf079f4f0ef"
+  },
+  "creature-skitter-attack3": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3",
+        "start": 30.64,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/701180/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-attack3.wav",
+    "duration": 0.3,
+    "rms": 0.1262,
+    "peak": 0.92,
+    "sha256": "09091379cbf767eb2912732de373acff73245ec3717a099a308e0384ee5ef7de"
+  },
+  "creature-skitter-hurt1": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/829810-crickets-katydids-cicadas-insect-sound-a/829810-crickets-katydids-cicadas-insect-sound-a.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/829810-crickets-katydids-cicadas-insect-sound-a/829810-crickets-katydids-cicadas-insect-sound-a.mp3",
+        "start": 2.9,
+        "length": 0.57,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Attia.phonatics (Freesound)",
+    "source_url": "https://freesound.org/people/Attia.phonatics/sounds/829810/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-hurt1.wav",
+    "duration": 0.563,
+    "rms": 0.1023,
+    "peak": 0.92,
+    "sha256": "1481e5c0a3b43ff1b7cdfdcec78eed3d163b3774ab04afb9c861870586cf5ff9"
+  },
+  "creature-skitter-hurt2": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/637065-katydid-rattle-insect-chorus-wav/637065-katydid-rattle-insect-chorus-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/637065-katydid-rattle-insect-chorus-wav/637065-katydid-rattle-insect-chorus-wav.mp3",
+        "start": 4.21,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / lukewarm_sound (Freesound)",
+    "source_url": "https://freesound.org/people/lukewarm_sound/sounds/637065/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-hurt2.wav",
+    "duration": 0.35,
+    "rms": 0.1343,
+    "peak": 0.92,
+    "sha256": "9efc076240b5a7d4ffb9252fda371c16cfa2b8be4db6d2e4b5248726f0499a83"
+  },
+  "creature-skitter-hurt3": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/829810-crickets-katydids-cicadas-insect-sound-a/829810-crickets-katydids-cicadas-insect-sound-a.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/829810-crickets-katydids-cicadas-insect-sound-a/829810-crickets-katydids-cicadas-insect-sound-a.mp3",
+        "start": 1.52,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Attia.phonatics (Freesound)",
+    "source_url": "https://freesound.org/people/Attia.phonatics/sounds/829810/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-hurt3.wav",
+    "duration": 0.3,
+    "rms": 0.1162,
+    "peak": 0.92,
+    "sha256": "726cd5d411907918563f215e16b8015792692783f660095e09a0af7b974cae42"
+  },
+  "creature-skitter-cast": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3",
+        "start": 35.62,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/701180/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-cast.wav",
+    "duration": 0.6,
+    "rms": 0.1122,
+    "peak": 0.92,
+    "sha256": "de2c93b6455dd6565b9c4f94bfaa0412e9c8dfc860a56c8cfa85c6e36124a0e1"
+  },
+  "creature-skitter-release": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/637065-katydid-rattle-insect-chorus-wav/637065-katydid-rattle-insect-chorus-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/637065-katydid-rattle-insect-chorus-wav/637065-katydid-rattle-insect-chorus-wav.mp3",
+        "start": 2.07,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / lukewarm_sound (Freesound)",
+    "source_url": "https://freesound.org/people/lukewarm_sound/sounds/637065/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-release.wav",
+    "duration": 0.65,
+    "rms": 0.1312,
+    "peak": 0.92,
+    "sha256": "b3331699cfa191cbf56ac3a1a62fb0f6132adcffba5594d794de85aee6d699f6"
+  },
+  "creature-skitter-death": {
+    "category": "creature-recording",
+    "voice": "skitter",
+    "sources": [
+      "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/701180-cricket-recorded-very-close-in-the-deser/701180-cricket-recorded-very-close-in-the-deser.mp3",
+        "start": 15.51,
+        "length": 0.85,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / felix.blume (Freesound)",
+    "source_url": "https://freesound.org/people/felix.blume/sounds/701180/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-skitter-death.wav",
+    "duration": 0.8,
+    "rms": 0.1072,
+    "peak": 0.92,
+    "sha256": "30c937ece7a5af3c96de2d98b873d464d138d52f9bb963e5117472ed68ad38be"
+  },
+  "creature-moth-attack1": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3",
+        "start": 6.09,
+        "length": 0.67,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / juan9826 (Freesound)",
+    "source_url": "https://freesound.org/people/juan9826/sounds/429899/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-attack1.wav",
+    "duration": 0.67,
+    "rms": 0.1437,
+    "peak": 0.92,
+    "sha256": "827f98bc25ef0ba82e125da34717d66b98abc6a79accb867c2ffa8ed057eb244"
+  },
+  "creature-moth-attack2": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/131340-flying-moth-2-wav/131340-flying-moth-2-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/131340-flying-moth-2-wav/131340-flying-moth-2-wav.mp3",
+        "start": 1.87,
+        "length": 0.3,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / nahmandub (Freesound)",
+    "source_url": "https://freesound.org/people/nahmandub/sounds/131340/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-attack2.wav",
+    "duration": 0.3,
+    "rms": 0.1224,
+    "peak": 0.92,
+    "sha256": "2d3db305f91e7dbb43450a2dfc56cc1cf640cd5448bfb900dbee90394943dbc5"
+  },
+  "creature-moth-attack3": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3",
+        "start": 3.02,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / juan9826 (Freesound)",
+    "source_url": "https://freesound.org/people/juan9826/sounds/429899/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-attack3.wav",
+    "duration": 0.439,
+    "rms": 0.1244,
+    "peak": 0.92,
+    "sha256": "bf2474c7e654a5d968ea6b62b119afb240d17195bde3e741e53a10f0836d697d"
+  },
+  "creature-moth-hurt1": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3",
+        "start": 0.77,
+        "length": 0.45,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / juan9826 (Freesound)",
+    "source_url": "https://freesound.org/people/juan9826/sounds/429899/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-hurt1.wav",
+    "duration": 0.449,
+    "rms": 0.1449,
+    "peak": 0.92,
+    "sha256": "3b0b742bd145796af74e96bcb3a204065ce1609ebf80fe6ebc81f2f850777d94"
+  },
+  "creature-moth-hurt2": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3",
+        "start": 2.03,
+        "length": 0.53,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / juan9826 (Freesound)",
+    "source_url": "https://freesound.org/people/juan9826/sounds/429899/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-hurt2.wav",
+    "duration": 0.53,
+    "rms": 0.145,
+    "peak": 0.92,
+    "sha256": "8d870c876a4317b403ea79e5e59be53357bc1ae091ff8010208efad73bc884f7"
+  },
+  "creature-moth-hurt3": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/429899-02-zumbidopolilla-wav/429899-02-zumbidopolilla-wav.mp3",
+        "start": 6.79,
+        "length": 0.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / juan9826 (Freesound)",
+    "source_url": "https://freesound.org/people/juan9826/sounds/429899/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-hurt3.wav",
+    "duration": 0.689,
+    "rms": 0.15,
+    "peak": 0.9128,
+    "sha256": "a433d294fe46d377f6c9d729f291ebeacfd0559a675c11e3f070e49188765839"
+  },
+  "creature-moth-cast": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/693457-moth1-wav/693457-moth1-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/693457-moth1-wav/693457-moth1-wav.mp3",
+        "start": 28.1,
+        "length": 1.09,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / HYPERBLOODHELL (Freesound)",
+    "source_url": "https://freesound.org/people/HYPERBLOODHELL/sounds/693457/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-cast.wav",
+    "duration": 1.073,
+    "rms": 0.0981,
+    "peak": 0.92,
+    "sha256": "3720996f96c66563130282238e733ca32f4c4504507218fa1eb9f9079eeb9edd"
+  },
+  "creature-moth-release": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/693457-moth1-wav/693457-moth1-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/693457-moth1-wav/693457-moth1-wav.mp3",
+        "start": 23.58,
+        "length": 0.65,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / HYPERBLOODHELL (Freesound)",
+    "source_url": "https://freesound.org/people/HYPERBLOODHELL/sounds/693457/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-release.wav",
+    "duration": 0.65,
+    "rms": 0.1007,
+    "peak": 0.92,
+    "sha256": "36bbe97957f300ff9080c255979584239f65fab2f74412d084b0c6c7689f256d"
+  },
+  "creature-moth-death": {
+    "category": "creature-recording",
+    "voice": "moth",
+    "sources": [
+      "sources/freesound/693457-moth1-wav/693457-moth1-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/693457-moth1-wav/693457-moth1-wav.mp3",
+        "start": 16.71,
+        "length": 1.67,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / HYPERBLOODHELL (Freesound)",
+    "source_url": "https://freesound.org/people/HYPERBLOODHELL/sounds/693457/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-moth-death.wav",
+    "duration": 1.658,
+    "rms": 0.0915,
+    "peak": 0.92,
+    "sha256": "d47a5fe9a62e9a50abb3a3d0e3f070c66f5d764974c5d2d55d1b9b57bee664ea"
+  },
+  "creature-plant-attack1": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/254871-swish-whip-wav/254871-swish-whip-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/254871-swish-whip-wav/254871-swish-whip-wav.mp3",
+        "start": 2.58,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / blukotek (Freesound)",
+    "source_url": "https://freesound.org/people/blukotek/sounds/254871/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-attack1.wav",
+    "duration": 0.3,
+    "rms": 0.1169,
+    "peak": 0.92,
+    "sha256": "6fe05f2c4fd999997336f866f024973746071567529670fac0bbbcb2b50c82e2"
+  },
+  "creature-plant-attack2": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/254871-swish-whip-wav/254871-swish-whip-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/254871-swish-whip-wav/254871-swish-whip-wav.mp3",
+        "start": 4.25,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / blukotek (Freesound)",
+    "source_url": "https://freesound.org/people/blukotek/sounds/254871/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-attack2.wav",
+    "duration": 0.3,
+    "rms": 0.1049,
+    "peak": 0.92,
+    "sha256": "da7827bc104d9703b2f522152087de42090cf0afc9ebe79d65a88f56bdec5816"
+  },
+  "creature-plant-attack3": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/254871-swish-whip-wav/254871-swish-whip-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/254871-swish-whip-wav/254871-swish-whip-wav.mp3",
+        "start": 1.0,
+        "length": 0.3,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / blukotek (Freesound)",
+    "source_url": "https://freesound.org/people/blukotek/sounds/254871/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-attack3.wav",
+    "duration": 0.3,
+    "rms": 0.1185,
+    "peak": 0.92,
+    "sha256": "473ed1823e302f835cc975c3dab6a66e304d4d0b3a1f66534cb76b1a5e48ad85"
+  },
+  "creature-plant-hurt1": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/552006-twig-being-snapped-multiple-takes/552006-twig-being-snapped-multiple-takes.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/552006-twig-being-snapped-multiple-takes/552006-twig-being-snapped-multiple-takes.mp3",
+        "start": 6.04,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / ZoshP (Freesound)",
+    "source_url": "https://freesound.org/people/ZoshP/sounds/552006/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-hurt1.wav",
+    "duration": 0.3,
+    "rms": 0.0599,
+    "peak": 0.92,
+    "sha256": "c97cfe0ac8b48a0bb8be50b1399f88d189b612097cb1fb2365cfb7927fa3d75a"
+  },
+  "creature-plant-hurt2": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/552006-twig-being-snapped-multiple-takes/552006-twig-being-snapped-multiple-takes.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/552006-twig-being-snapped-multiple-takes/552006-twig-being-snapped-multiple-takes.mp3",
+        "start": 0.37,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / ZoshP (Freesound)",
+    "source_url": "https://freesound.org/people/ZoshP/sounds/552006/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-hurt2.wav",
+    "duration": 0.3,
+    "rms": 0.0581,
+    "peak": 0.92,
+    "sha256": "4a3366d863efa803f4062b95a3c16ca5936fcaf5e3411cdabf74ffcaf3d08959"
+  },
+  "creature-plant-hurt3": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/552006-twig-being-snapped-multiple-takes/552006-twig-being-snapped-multiple-takes.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/552006-twig-being-snapped-multiple-takes/552006-twig-being-snapped-multiple-takes.mp3",
+        "start": 1.9,
+        "length": 0.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / ZoshP (Freesound)",
+    "source_url": "https://freesound.org/people/ZoshP/sounds/552006/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-hurt3.wav",
+    "duration": 0.3,
+    "rms": 0.0558,
+    "peak": 0.92,
+    "sha256": "6262662344f0f4e4bbb95c49b13f3aebb26aef8924c4bfd049adadd2d31b4658"
+  },
+  "creature-plant-cast": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/59315-looking-in-bushes-wav/59315-looking-in-bushes-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/59315-looking-in-bushes-wav/59315-looking-in-bushes-wav.mp3",
+        "start": 1.02,
+        "length": 1.32,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / vibe_crc (Freesound)",
+    "source_url": "https://freesound.org/people/vibe_crc/sounds/59315/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-cast.wav",
+    "duration": 1.317,
+    "rms": 0.1336,
+    "peak": 0.92,
+    "sha256": "801a4ac097ad55cf2642ab66a45c4fe9cce6eec1544c33b9160c13c8d61236d9"
+  },
+  "creature-plant-release": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/672909-making-noises-with-leaves-and-plant-part/672909-making-noises-with-leaves-and-plant-part.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/672909-making-noises-with-leaves-and-plant-part/672909-making-noises-with-leaves-and-plant-part.mp3",
+        "start": 6.4,
+        "length": 1.1,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / rubberduck9999 (Freesound)",
+    "source_url": "https://freesound.org/people/rubberduck9999/sounds/672909/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-release.wav",
+    "duration": 1.057,
+    "rms": 0.0887,
+    "peak": 0.92,
+    "sha256": "9ddb795089e1ddcf6578178463672d56116161f760adf8c1fb82241b8c952773"
+  },
+  "creature-plant-death": {
+    "category": "creature-recording",
+    "voice": "plant",
+    "sources": [
+      "sources/freesound/672909-making-noises-with-leaves-and-plant-part/672909-making-noises-with-leaves-and-plant-part.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/672909-making-noises-with-leaves-and-plant-part/672909-making-noises-with-leaves-and-plant-part.mp3",
+        "start": 2.1,
+        "length": 2.0,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / rubberduck9999 (Freesound)",
+    "source_url": "https://freesound.org/people/rubberduck9999/sounds/672909/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-plant-death.wav",
+    "duration": 2.0,
+    "rms": 0.1019,
+    "peak": 0.92,
+    "sha256": "740084d3dd353bd1719a4485d15e5b9328ebcca0e5806eb7336ce3b8f17bcaca"
+  },
+  "creature-rock-attack1": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/513694-impact-stone-heavy-wav/513694-impact-stone-heavy-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/513694-impact-stone-heavy-wav/513694-impact-stone-heavy-wav.mp3",
+        "start": 0.07,
+        "length": 0.64,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / kasparsj (Freesound)",
+    "source_url": "https://freesound.org/people/kasparsj/sounds/513694/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-attack1.wav",
+    "duration": 0.635,
+    "rms": 0.0719,
+    "peak": 0.92,
+    "sha256": "a5586cdfa2e452d8faace8b7a04ae6c4ece9af5aaee2cc4305366ab92a0b9eab"
+  },
+  "creature-rock-attack2": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/354094-stone-scratching-over-rock-close-up-h6-w/354094-stone-scratching-over-rock-close-up-h6-w.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/354094-stone-scratching-over-rock-close-up-h6-w/354094-stone-scratching-over-rock-close-up-h6-w.mp3",
+        "start": 9.49,
+        "length": 0.75,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Bini_trns (Freesound)",
+    "source_url": "https://freesound.org/people/Bini_trns/sounds/354094/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-attack2.wav",
+    "duration": 0.75,
+    "rms": 0.14,
+    "peak": 0.92,
+    "sha256": "693bb9f92eaf093eff5e9fc69a16984195bdb017e5e15d3f5ce4e5dc706405c9"
+  },
+  "creature-rock-attack3": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/354094-stone-scratching-over-rock-close-up-h6-w/354094-stone-scratching-over-rock-close-up-h6-w.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/354094-stone-scratching-over-rock-close-up-h6-w/354094-stone-scratching-over-rock-close-up-h6-w.mp3",
+        "start": 7.09,
+        "length": 0.74,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Bini_trns (Freesound)",
+    "source_url": "https://freesound.org/people/Bini_trns/sounds/354094/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-attack3.wav",
+    "duration": 0.74,
+    "rms": 0.1409,
+    "peak": 0.92,
+    "sha256": "d4a9b5cacfc7738f08cac40f036dc08e68bbfe9c6261431c145a8534dc0f3739"
+  },
+  "creature-rock-hurt1": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/855116-ice-break-crack-squeak-close-up-small-sh/855116-ice-break-crack-squeak-close-up-small-sh.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/855116-ice-break-crack-squeak-close-up-small-sh/855116-ice-break-crack-squeak-close-up-small-sh.mp3",
+        "start": 11.93,
+        "length": 0.37,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Oldome (Freesound)",
+    "source_url": "https://freesound.org/people/Oldome/sounds/855116/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-hurt1.wav",
+    "duration": 0.334,
+    "rms": 0.0723,
+    "peak": 0.92,
+    "sha256": "79365b88b98d333b5b4ffafce6fa52ea6373d4670f3811bddbec57c5894e4489"
+  },
+  "creature-rock-hurt2": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/354094-stone-scratching-over-rock-close-up-h6-w/354094-stone-scratching-over-rock-close-up-h6-w.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/354094-stone-scratching-over-rock-close-up-h6-w/354094-stone-scratching-over-rock-close-up-h6-w.mp3",
+        "start": 15.8,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Bini_trns (Freesound)",
+    "source_url": "https://freesound.org/people/Bini_trns/sounds/354094/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-hurt2.wav",
+    "duration": 0.439,
+    "rms": 0.1471,
+    "peak": 0.92,
+    "sha256": "ae71a82789040ec0e498d1ad9643521fe4eef8808067abd746b51d6504308790"
+  },
+  "creature-rock-hurt3": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/855116-ice-break-crack-squeak-close-up-small-sh/855116-ice-break-crack-squeak-close-up-small-sh.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/855116-ice-break-crack-squeak-close-up-small-sh/855116-ice-break-crack-squeak-close-up-small-sh.mp3",
+        "start": 10.76,
+        "length": 0.54,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Oldome (Freesound)",
+    "source_url": "https://freesound.org/people/Oldome/sounds/855116/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-hurt3.wav",
+    "duration": 0.53,
+    "rms": 0.0506,
+    "peak": 0.92,
+    "sha256": "1d294cf961101524a6b1f90eb519fbeeb8cd5474e53fc1ac2f4cbe094c9f48b3"
+  },
+  "creature-rock-cast": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/222521-cracking-earthquake-cracking-soil-cracki/222521-cracking-earthquake-cracking-soil-cracki.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/222521-cracking-earthquake-cracking-soil-cracki/222521-cracking-earthquake-cracking-soil-cracki.mp3",
+        "start": 0.18,
+        "length": 1.2,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / uagadugu (Freesound)",
+    "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-cast.wav",
+    "duration": 1.2,
+    "rms": 0.15,
+    "peak": 0.593,
+    "sha256": "39d96cab0376009fb7d9dc97608334ef87cb679830c12742ef2ab501943f916d"
+  },
+  "creature-rock-release": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/336023-rocks-wav/336023-rocks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/336023-rocks-wav/336023-rocks-wav.mp3",
+        "start": 5.03,
+        "length": 0.86,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / adamgryu (Freesound)",
+    "source_url": "https://freesound.org/people/adamgryu/sounds/336023/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-release.wav",
+    "duration": 0.86,
+    "rms": 0.1427,
+    "peak": 0.92,
+    "sha256": "47814358654207da2300a86c1ed6243cc80e4aa12d73df4e542692e10919fbde"
+  },
+  "creature-rock-death": {
+    "category": "creature-recording",
+    "voice": "rock",
+    "sources": [
+      "sources/freesound/336023-rocks-wav/336023-rocks-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/336023-rocks-wav/336023-rocks-wav.mp3",
+        "start": 0.0,
+        "length": 1.98,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / adamgryu (Freesound)",
+    "source_url": "https://freesound.org/people/adamgryu/sounds/336023/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-rock-death.wav",
+    "duration": 1.98,
+    "rms": 0.1307,
+    "peak": 0.92,
+    "sha256": "5183e4447ede473abfec0ea9e4acddbbc69619b428ed755b230d672aea40f73f"
+  },
+  "creature-imp-attack1": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3",
+        "start": 6.26,
+        "length": 0.63,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Sadiquecat (Freesound)",
+    "source_url": "https://freesound.org/people/Sadiquecat/sounds/750495/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-attack1.wav",
+    "duration": 0.63,
+    "rms": 0.1332,
+    "peak": 0.92,
+    "sha256": "17fd9c9da4674c927e709979b40048ae1474f95ea1e46cac15abf0ffd7093c78"
+  },
+  "creature-imp-attack2": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/675401-s30-13-vicious-alley-cat-fight-wav/675401-s30-13-vicious-alley-cat-fight-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/675401-s30-13-vicious-alley-cat-fight-wav/675401-s30-13-vicious-alley-cat-fight-wav.mp3",
+        "start": 4.74,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/675401/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-attack2.wav",
+    "duration": 0.44,
+    "rms": 0.15,
+    "peak": 0.6137,
+    "sha256": "cf88b5b785c508721087757c70d180e7f95f9aee9c683a721e2841e351349e8c"
+  },
+  "creature-imp-attack3": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3",
+        "start": 8.13,
+        "length": 0.77,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Sadiquecat (Freesound)",
+    "source_url": "https://freesound.org/people/Sadiquecat/sounds/750495/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-attack3.wav",
+    "duration": 0.77,
+    "rms": 0.15,
+    "peak": 0.7561,
+    "sha256": "9496dc1403d3e7a748ed74be861e743f31ec03872198921ff5a4525fa98e37b6"
+  },
+  "creature-imp-hurt1": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3",
+        "start": 1.94,
+        "length": 0.7,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Sadiquecat (Freesound)",
+    "source_url": "https://freesound.org/people/Sadiquecat/sounds/750495/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-hurt1.wav",
+    "duration": 0.7,
+    "rms": 0.1015,
+    "peak": 0.92,
+    "sha256": "1984f74701b01393ebb4a6c1d24c52afa9baa614382e288095d060370dea119a"
+  },
+  "creature-imp-hurt2": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3",
+        "start": 32.42,
+        "length": 0.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Sadiquecat (Freesound)",
+    "source_url": "https://freesound.org/people/Sadiquecat/sounds/750495/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-hurt2.wav",
+    "duration": 0.69,
+    "rms": 0.1393,
+    "peak": 0.92,
+    "sha256": "7c928ca95b152fe4789c19282c7bcc05f4cb7e9c0d17155e2799a137f7daa3df"
+  },
+  "creature-imp-hurt3": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/750495-angry-cat-perran/750495-angry-cat-perran.mp3",
+        "start": 25.62,
+        "length": 0.4,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Sadiquecat (Freesound)",
+    "source_url": "https://freesound.org/people/Sadiquecat/sounds/750495/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-hurt3.wav",
+    "duration": 0.4,
+    "rms": 0.15,
+    "peak": 0.6906,
+    "sha256": "6bf25ef813797a9bef0ba4074e6499cc6615758ffb82906fe57d78a1a1d69f53"
+  },
+  "creature-imp-cast": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/679954-cat-growling-and-hissing/679954-cat-growling-and-hissing.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/679954-cat-growling-and-hissing/679954-cat-growling-and-hissing.mp3",
+        "start": 0.05,
+        "length": 1.21,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / dinoroki (Freesound)",
+    "source_url": "https://freesound.org/people/dinoroki/sounds/679954/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-cast.wav",
+    "duration": 1.202,
+    "rms": 0.15,
+    "peak": 0.3033,
+    "sha256": "a30893d27c9c87914640b9d72b0c7325d94d4be2befa79d4eb6466d0285b3716"
+  },
+  "creature-imp-release": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/675401-s30-13-vicious-alley-cat-fight-wav/675401-s30-13-vicious-alley-cat-fight-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/675401-s30-13-vicious-alley-cat-fight-wav/675401-s30-13-vicious-alley-cat-fight-wav.mp3",
+        "start": 15.98,
+        "length": 1.19,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/675401/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-release.wav",
+    "duration": 1.184,
+    "rms": 0.15,
+    "peak": 0.594,
+    "sha256": "7d29e8445fa8ba763a76ff70dc58654f176fa03311496a90d4b937423ab0caca"
+  },
+  "creature-imp-death": {
+    "category": "creature-recording",
+    "voice": "imp",
+    "sources": [
+      "sources/freesound/675401-s30-13-vicious-alley-cat-fight-wav/675401-s30-13-vicious-alley-cat-fight-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/675401-s30-13-vicious-alley-cat-fight-wav/675401-s30-13-vicious-alley-cat-fight-wav.mp3",
+        "start": 11.51,
+        "length": 1.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / craigsmith (Freesound)",
+    "source_url": "https://freesound.org/people/craigsmith/sounds/675401/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-imp-death.wav",
+    "duration": 1.69,
+    "rms": 0.15,
+    "peak": 0.5548,
+    "sha256": "43f3ad107bfb07b701af55da1cc5dc7e289f366db3ecbc8699fcc759eb3cbcd0"
+  },
+  "creature-ghost-attack1": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 4.03,
+        "length": 0.44,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-attack1.wav",
+    "duration": 0.44,
+    "rms": 0.15,
+    "peak": 0.4766,
+    "sha256": "93614e8b602742f5c14c463b0d0f47849c2f13400bbff5147d90f65caceaab17"
+  },
+  "creature-ghost-attack2": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 12.33,
+        "length": 0.74,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-attack2.wav",
+    "duration": 0.727,
+    "rms": 0.15,
+    "peak": 0.5404,
+    "sha256": "744a7e736e87adc30e4e8fac84c7b868687060b30af985da8a63a22447d6ef11"
+  },
+  "creature-ghost-attack3": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 16.54,
+        "length": 0.73,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-attack3.wav",
+    "duration": 0.73,
+    "rms": 0.15,
+    "peak": 0.513,
+    "sha256": "32926f8ee56efcc207bf4b2f486997ca800af9e1d3d37ea2409c00d3ddfc44d9"
+  },
+  "creature-ghost-hurt1": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 4.73,
+        "length": 0.6,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-hurt1.wav",
+    "duration": 0.6,
+    "rms": 0.15,
+    "peak": 0.5409,
+    "sha256": "7c87dc41d90d71ab48d054665286ab269f7a4c51bdf3cd674908d0b48e9b7697"
+  },
+  "creature-ghost-hurt2": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 7.65,
+        "length": 0.48,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-hurt2.wav",
+    "duration": 0.475,
+    "rms": 0.15,
+    "peak": 0.8412,
+    "sha256": "d4555cc6adb3d869e21ba275211082b98d6599344444db3354b0e26424c65cd1"
+  },
+  "creature-ghost-hurt3": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 1.91,
+        "length": 0.69,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-hurt3.wav",
+    "duration": 0.69,
+    "rms": 0.1473,
+    "peak": 0.92,
+    "sha256": "4787e4dd7c5f2def9df72c48ffc5d6bf0ecfa7600183d4d32e9bbbe169bad606"
+  },
+  "creature-ghost-cast": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/329519-ghost-moan-1-wav/329519-ghost-moan-1-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/329519-ghost-moan-1-wav/329519-ghost-moan-1-wav.mp3",
+        "start": 0.0,
+        "length": 0.89,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SirBedlam (Freesound)",
+    "source_url": "https://freesound.org/people/SirBedlam/sounds/329519/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-cast.wav",
+    "duration": 0.89,
+    "rms": 0.15,
+    "peak": 0.4927,
+    "sha256": "26833a68c1d91259eab81e83836e02800656af6ab9cef1a16cc848d4ec647a10"
+  },
+  "creature-ghost-release": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/609783-comic-ghost-voice-mp3/609783-comic-ghost-voice-mp3.mp3",
+        "start": 0.51,
+        "length": 1.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / Volvion (Freesound)",
+    "source_url": "https://freesound.org/people/Volvion/sounds/609783/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-release.wav",
+    "duration": 1.39,
+    "rms": 0.15,
+    "peak": 0.7769,
+    "sha256": "f514449a8f9dbb9c2a70a13c2f3f9d1de74c72096f01b2b8d6f32e4bd08779e5"
+  },
+  "creature-ghost-death": {
+    "category": "creature-recording",
+    "voice": "ghost",
+    "sources": [
+      "sources/freesound/643741-ghostly-moan-mp3/643741-ghostly-moan-mp3.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/643741-ghostly-moan-mp3/643741-ghostly-moan-mp3.mp3",
+        "start": 0.0,
+        "length": 1.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / SnowFightStudios (Freesound)",
+    "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643741/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-ghost-death.wav",
+    "duration": 1.39,
+    "rms": 0.1489,
+    "peak": 0.92,
+    "sha256": "a1826e90c8edc5a29d4bf7eb0c79faf5c2e43147712e731394d2d266207af984"
+  },
+  "creature-mech-attack1": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/376195-toy-ratchet-wav/376195-toy-ratchet-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/376195-toy-ratchet-wav/376195-toy-ratchet-wav.mp3",
+        "start": 10.17,
+        "length": 0.52,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / monotraum (Freesound)",
+    "source_url": "https://freesound.org/people/monotraum/sounds/376195/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-attack1.wav",
+    "duration": 0.452,
+    "rms": 0.0578,
+    "peak": 0.92,
+    "sha256": "3cf9d6f7cb54c3c648ff250ee14985737466cfe0ad32d8d8b534569faa6023fa"
+  },
+  "creature-mech-attack2": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/118816-wind-up-toy-wav/118816-wind-up-toy-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/118816-wind-up-toy-wav/118816-wind-up-toy-wav.mp3",
+        "start": 3.86,
+        "length": 0.31,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / lmbubec (Freesound)",
+    "source_url": "https://freesound.org/people/lmbubec/sounds/118816/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-attack2.wav",
+    "duration": 0.307,
+    "rms": 0.0854,
+    "peak": 0.92,
+    "sha256": "490fd8a5c0db959b89cd325df00d9a565726fc3b3b4f7a810f14d40226984f18"
+  },
+  "creature-mech-attack3": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/376195-toy-ratchet-wav/376195-toy-ratchet-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/376195-toy-ratchet-wav/376195-toy-ratchet-wav.mp3",
+        "start": 14.3,
+        "length": 0.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / monotraum (Freesound)",
+    "source_url": "https://freesound.org/people/monotraum/sounds/376195/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-attack3.wav",
+    "duration": 0.306,
+    "rms": 0.0485,
+    "peak": 0.92,
+    "sha256": "703dfc7dabe0ae95be9b412a576dd74a214d27dd3e6e38861ee0c9c1cd6c2cdc"
+  },
+  "creature-mech-hurt1": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/824121-servomotor-wav/824121-servomotor-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/824121-servomotor-wav/824121-servomotor-wav.mp3",
+        "start": 8.95,
+        "length": 0.36,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / derjuli (Freesound)",
+    "source_url": "https://freesound.org/people/derjuli/sounds/824121/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-hurt1.wav",
+    "duration": 0.343,
+    "rms": 0.15,
+    "peak": 0.5743,
+    "sha256": "58237b15bfda9a2b898a2f7efe98c95986b53065ef378b50ed5f7529e779c295"
+  },
+  "creature-mech-hurt2": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/824121-servomotor-wav/824121-servomotor-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/824121-servomotor-wav/824121-servomotor-wav.mp3",
+        "start": 14.33,
+        "length": 0.36,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / derjuli (Freesound)",
+    "source_url": "https://freesound.org/people/derjuli/sounds/824121/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-hurt2.wav",
+    "duration": 0.352,
+    "rms": 0.15,
+    "peak": 0.6559,
+    "sha256": "7c32c2c23c6970d3f8b8e2d878c4743e56eeff3ab9653fb100d4a6079e176a19"
+  },
+  "creature-mech-hurt3": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/824121-servomotor-wav/824121-servomotor-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/824121-servomotor-wav/824121-servomotor-wav.mp3",
+        "start": 12.84,
+        "length": 0.31,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / derjuli (Freesound)",
+    "source_url": "https://freesound.org/people/derjuli/sounds/824121/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-hurt3.wav",
+    "duration": 0.31,
+    "rms": 0.15,
+    "peak": 0.8633,
+    "sha256": "0d3a0ab82feb7e952c62159814675dc86f092bf1f91d3f71fe0dfbd09e365add"
+  },
+  "creature-mech-cast": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/118816-wind-up-toy-wav/118816-wind-up-toy-wav.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/118816-wind-up-toy-wav/118816-wind-up-toy-wav.mp3",
+        "start": 0.22,
+        "length": 1.35,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / lmbubec (Freesound)",
+    "source_url": "https://freesound.org/people/lmbubec/sounds/118816/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-cast.wav",
+    "duration": 1.334,
+    "rms": 0.0717,
+    "peak": 0.92,
+    "sha256": "88362fc6448abb89643e7c50e130604e85b6e982824b3e25d98d3647680a2447"
+  },
+  "creature-mech-release": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/457294-air-or-steam-pressure-release/457294-air-or-steam-pressure-release.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/457294-air-or-steam-pressure-release/457294-air-or-steam-pressure-release.mp3",
+        "start": 0.0,
+        "length": 1.39,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / brunoboselli (Freesound)",
+    "source_url": "https://freesound.org/people/brunoboselli/sounds/457294/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-release.wav",
+    "duration": 1.382,
+    "rms": 0.15,
+    "peak": 0.8492,
+    "sha256": "f9656c218d32e2373c85bc468b2a7956b723c314382ef69c7b56b9ff9c13a8fe"
+  },
+  "creature-mech-death": {
+    "category": "creature-recording",
+    "voice": "mech",
+    "sources": [
+      "sources/freesound/723999-servo-motor-working/723999-servo-motor-working.mp3"
+    ],
+    "segments": [
+      {
+        "source": "sources/freesound/723999-servo-motor-working/723999-servo-motor-working.mp3",
+        "start": 11.59,
+        "length": 0.85,
+        "pitch": 1.0,
+        "tempo": 1.0
+      }
+    ],
+    "license": "CC0-1.0 / D31V228 (Freesound)",
+    "source_url": "https://freesound.org/people/D31V228/sounds/723999/",
+    "pitch": 1.0,
+    "tempo": 1.0,
+    "file": "creatures/creature-mech-death.wav",
+    "duration": 0.8,
+    "rms": 0.1482,
+    "peak": 0.92,
+    "sha256": "759479664ba24d67da4220c6be2673f13f4744b05f48999b46f845f4bc68adb5"
   }
 }

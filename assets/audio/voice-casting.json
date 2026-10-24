@@ -1,25 +1,25 @@
 {
-  "note": "Combat voice casting. family = clip prefix in boss-voice-manifest.json (<family>-attack1..3, hurt1..3, cast, release, death). The four original bosses (earth/fire/ice/lightning) use named families so the elemental fallback boss-<element>-* stays unchanged. Elite variants: a = lighter/agile, b = heavy/deep.",
+  "note": "Combat voice casting. family = clip prefix in boss-voice-manifest.json (<family>-attack1..3, hurt1..3, cast, release, death). The four original bosses (earth/fire/ice/lightning) use named families so the elemental fallback boss-<element>-* stays unchanged. Elite variants: a = lighter/agile, b = heavy/deep. creatures: common foe id -> species family creature-<group> built from real recordings by scripts/prepare_creature_sfx.py; a foe not listed falls back to creature-<element>.",
   "bosses": {
     "earth": {
       "voice": "treant-golem",
       "family": "boss-grovewarden",
-      "note": "Thạch Mộc Cự Vệ: moss-and-stone tree golem, no human face. Real grizzly-bear roars pitched down with creaking wood and grinding stone."
+      "note": "Thạch Mộc Cự Vệ: moss-and-stone tree golem, no human face. Real bear roars (craigsmith R19-13), grizzly and angry-bear growls, 10 % slower for size. No layers."
     },
     "fire": {
       "voice": "dragon",
       "family": "boss-ashdragon",
-      "note": "Hỏa Long Tro Tàn: red winged dragon. Real lion roars (slowed) over an alligator growl, ember breath."
+      "note": "Hỏa Long Tro Tàn: red winged dragon. Designed dragon-roar SFX by sound designers (Dreeme: built from real lion, dog, horse, elephant and flamethrower; JoelAudio; AMWD/Stijn Loyen), used as published."
     },
     "ice": {
       "voice": "frost-beast",
       "family": "boss-moonfrost",
-      "note": "Băng Nguyệt Linh Hồ: the art is a white feathered fox/owl-like beast, not a human queen. Real red-fox screams, slowed, with a frosty snake-hiss breath."
+      "note": "Băng Nguyệt Linh Hồ: white feathered fox/owl-like beast. Real red-fox screams (Soundburst), 10 % slower. No hiss layer."
     },
     "lightning": {
       "voice": "storm-lion",
       "family": "boss-thunderking",
-      "note": "Lôi Sư Thiên Đỉnh: purple maned feline beast. Real tiger snarls and roar with a lion layer and electric crackle."
+      "note": "Lôi Sư Thiên Đỉnh: purple maned feline beast. Real lion roars (Bidone, craigsmith G12-47), angry tiger and a single tiger roar, unpitched."
     },
     "mire": {
       "voice": "female",
@@ -29,32 +29,32 @@
     "scarab": {
       "voice": "insect-beetle",
       "family": "boss-scarab",
-      "note": "Bọ Vương Hoàng Kim: giant golden beetle. Real Madagascar hissing-cockroach hisses, slowed, with cicada chitter and a low body."
+      "note": "Bọ Vương Hoàng Kim: giant golden beetle. Real Madagascar hissing-cockroach hisses (Spoxe; nicotep close-up, a different part than the common beetles), 13 % slower for size."
     },
     "leviathan": {
       "voice": "sea-serpent",
       "family": "boss-leviathan",
-      "note": "Hải Long San Hô: teal coral sea serpent. Real crocodile screams (slowed) and alligator growls over a low humpback-whale bed."
+      "note": "Hải Long San Hô: teal coral sea serpent. Real alligator growls (craigsmith, D.jones) and crocodile screams (felix.blume), 8 % slower."
     },
     "colossus": {
       "voice": "steam-golem",
       "family": "boss-colossus",
-      "note": "Cự Tượng Bánh Răng: brass gear golem, a machine. Distorted real elephant trumpet slowed into a mechanical bellow, steam hiss, stressed metal."
+      "note": "Cự Tượng Bánh Răng: brass gear golem, a machine. Real steam-train chuffs, heavy metal doors, creaking metal, steam hiss and a steam whistle; no animal voice."
     },
     "prism": {
       "voice": "insect-queen",
       "family": "boss-prism",
-      "note": "Bọ Ngựa Lăng Tinh: crowned crystal mantis/wasp queen with an insect head (compound eyes, mandibles), not a human face. Real wasp buzz and cicada with scraping glass."
+      "note": "Bọ Ngựa Lăng Tinh: crowned crystal mantis/wasp queen. Real wasp and yellow-jacket buzzing, cicada song for the charge."
     },
     "reaper": {
       "voice": "undead-wraith",
       "family": "boss-reaper",
-      "note": "Tử Thần Nguyệt Ảnh: hooded reaper with no visible face, gender not shown. Performed shrieking wraith voice (CC0), ghost breath and moan."
+      "note": "Tử Thần Nguyệt Ảnh: hooded reaper, no face, gender not shown. Performed CC0 wraith shrieks (Voices_Of_Marz), creepy moan (titsher), moaning wraith death (gateroadmusic); no pitch or layers."
     },
     "roc": {
       "voice": "giant-bird",
       "family": "boss-roc",
-      "note": "Đại Bàng Thiên Phong: giant eagle. Real red-tailed hawk screeches, slowed for size."
+      "note": "Đại Bàng Thiên Phong: giant eagle. Real red-tailed hawk screams (1888software, craigsmith), 10 % slower for size."
     },
     "briar": {
       "voice": "female",
@@ -69,17 +69,17 @@
     "eclipse": {
       "voice": "void-dragon",
       "family": "boss-eclipse",
-      "note": "Long Đế Hư Không: starry void dragon. CC0 composite roars built from real lion, elephant, crocodile and alligator recordings, slowed and darkened."
+      "note": "Long Đế Hư Không: starry void dragon. Designed dragon roars, growls and snarls by Breviceps (two uploads), used as published."
     },
     "elderbloom": {
       "voice": "antlered-treant",
       "family": "boss-elderbloom",
-      "note": "Thụ Vương Bạch Hoa: antlered treant. Real moose/elk bellows with tree-trunk creaks."
+      "note": "Thụ Vương Bạch Hoa: antlered treant. Real moose/elk bellows (gleith), 8 % slower. No wood layers."
     },
     "cinderheart": {
       "voice": "magma-golem",
       "family": "boss-cinderheart",
-      "note": "Bạo Chúa Tâm Nham: lava rock golem. Real gorilla roar and black-bear growl, slowed, on a lion growl rumble with grinding stone and embers."
+      "note": "Bạo Chúa Tâm Nham: lava rock golem. Real lion growls and roars (GJ55GB) and an alpha-gorilla roar (J0ck0), 10 % slower."
     },
     "frostregent": {
       "voice": "female",
@@ -89,22 +89,22 @@
     "tempestwing": {
       "voice": "thunderbird",
       "family": "boss-tempestwing",
-      "note": "Sư Ưng Lôi Hoàng: armored storm eagle. Real eagle squawks and calls with electric crackle; a different species and recordist from the roc."
+      "note": "Sư Ưng Lôi Hoàng: armored storm eagle. Real eagle squawks, calls and cries (craigsmith S28-16, G12-35a), unpitched; different recordings from the roc."
     },
     "souljailer": {
       "voice": "undead-jailer",
       "family": "boss-souljailer",
-      "note": "Cai Ngục Vong Đăng: hooded lantern wraith, gender not shown. Low performed ghost/demon groans (CC0) with a moaning-wraith layer."
+      "note": "Cai Ngục Vong Đăng: hooded lantern wraith, gender not shown. Performed CC0 demon/ghost groans (Osiruswaltz), unpitched."
     },
     "sporefather": {
       "voice": "fungal-giant",
       "family": "boss-sporefather",
-      "note": "Lão Vương Bào Tử: mushroom-covered giant with no human face. Real camel groans (gurgling) slowed, with creaking wood. Borderline: humanoid silhouette and \"father\" in the name."
+      "note": "Lão Vương Bào Tử: mushroom-covered giant with no human face. Real camel grunts and groans and complaining dromedaries, 8 % slower. Borderline: humanoid silhouette and \"father\" in the name."
     },
     "prismback": {
       "voice": "crystal-tortoise",
       "family": "boss-prismback",
-      "note": "Huyền Quy Tinh Thành: giant tortoise carrying a crystal citadel. Real elephant trumpet and rumble slowed, with stone and glass grind."
+      "note": "Huyền Quy Tinh Thành: giant tortoise carrying a crystal citadel. Real hippo grunts (toadie, Zambia) and elephant rumble/growl, 10 % slower."
     },
     "sandchronarch": {
       "voice": "male",
@@ -114,12 +114,12 @@
     "coraltide": {
       "voice": "sea-dragon",
       "family": "boss-coraltide",
-      "note": "Long Vương Châu Triều: coral sea dragon. Real sea-lion roars (slowed) over a humpback-whale bed; mammalian, unlike the reptilian leviathan."
+      "note": "Long Vương Châu Triều: coral sea dragon. Designed dragon roar (999999990) for charge, death and one attack; real sea-lion roars and growls (felix.blume, Diim_1) for the rest, 8-10 % slower."
     },
     "moonfang": {
       "voice": "wolf",
       "family": "boss-moonfang",
-      "note": "Lang Vương Tử Nguyệt: wolf-headed armored werewolf. Real wolf growls, dog snarls and a solitary wolf howl for cast/death. Borderline: humanoid body, but the head is fully a wolf."
+      "note": "Lang Vương Tử Nguyệt: wolf-headed armored werewolf. Real dog snarls and growls (qubodup), 8 % slower, and a solitary wild wolf howl (betchkal) for cast/death. Borderline: humanoid body, but the head is fully a wolf."
     }
   },
   "elites": {
@@ -346,6 +346,316 @@
       "voice": "male",
       "family": "elite-male-b",
       "note": "wolf-headed knight"
+    }
+  },
+  "creatures": {
+    "abyss-a": {
+      "voice": "crab",
+      "family": "creature-crab"
+    },
+    "abyss-b": {
+      "voice": "aquatic",
+      "family": "creature-aquatic"
+    },
+    "acorn": {
+      "voice": "plant",
+      "family": "creature-plant"
+    },
+    "astral-a": {
+      "voice": "reptile",
+      "family": "creature-reptile"
+    },
+    "astral-b": {
+      "voice": "mech",
+      "family": "creature-mech"
+    },
+    "bamboo-a": {
+      "voice": "reptile",
+      "family": "creature-reptile"
+    },
+    "bamboo-b": {
+      "voice": "aquatic",
+      "family": "creature-aquatic"
+    },
+    "bat": {
+      "voice": "bat",
+      "family": "creature-bat"
+    },
+    "caldera-ashhound": {
+      "voice": "wolf",
+      "family": "creature-wolf"
+    },
+    "caldera-emberimp": {
+      "voice": "imp",
+      "family": "creature-imp"
+    },
+    "caldera-slagbeetle": {
+      "voice": "beetle",
+      "family": "creature-beetle"
+    },
+    "celestial-a": {
+      "voice": "moth",
+      "family": "creature-moth"
+    },
+    "celestial-b": {
+      "voice": "bigcat",
+      "family": "creature-bigcat"
+    },
+    "coast-a": {
+      "voice": "crab",
+      "family": "creature-crab"
+    },
+    "coast-b": {
+      "voice": "gull",
+      "family": "creature-gull"
+    },
+    "coralreef-foamjelly": {
+      "voice": "aquatic",
+      "family": "creature-aquatic"
+    },
+    "coralreef-pearleel": {
+      "voice": "serpent",
+      "family": "creature-serpent"
+    },
+    "coralreef-reefcrab": {
+      "voice": "crab",
+      "family": "creature-crab"
+    },
+    "crystal-a": {
+      "voice": "skitter",
+      "family": "creature-skitter"
+    },
+    "crystal-b": {
+      "voice": "slime",
+      "family": "creature-slime"
+    },
+    "desert-a": {
+      "voice": "fox",
+      "family": "creature-fox"
+    },
+    "desert-b": {
+      "voice": "skitter",
+      "family": "creature-skitter"
+    },
+    "dream-a": {
+      "voice": "moth",
+      "family": "creature-moth"
+    },
+    "dream-b": {
+      "voice": "ghost",
+      "family": "creature-ghost"
+    },
+    "eldergrove-barkmoth": {
+      "voice": "moth",
+      "family": "creature-moth"
+    },
+    "eldergrove-sproutling": {
+      "voice": "plant",
+      "family": "creature-plant"
+    },
+    "eldergrove-thornstag": {
+      "voice": "plant",
+      "family": "creature-plant"
+    },
+    "eldergrove-vineboar": {
+      "voice": "boar",
+      "family": "creature-boar"
+    },
+    "foundry-a": {
+      "voice": "mech",
+      "family": "creature-mech"
+    },
+    "foundry-b": {
+      "voice": "mech",
+      "family": "creature-mech"
+    },
+    "geode-crystalbat": {
+      "voice": "bat",
+      "family": "creature-bat"
+    },
+    "geode-shardmite": {
+      "voice": "skitter",
+      "family": "creature-skitter"
+    },
+    "geode-stonepup": {
+      "voice": "wolf",
+      "family": "creature-wolf"
+    },
+    "glacier-blizzardowl": {
+      "voice": "owl",
+      "family": "creature-owl"
+    },
+    "glacier-frostmoth": {
+      "voice": "moth",
+      "family": "creature-moth"
+    },
+    "glacier-iceling": {
+      "voice": "rock",
+      "family": "creature-rock"
+    },
+    "glacier-snowhare": {
+      "voice": "rabbit",
+      "family": "creature-rabbit"
+    },
+    "haunted-a": {
+      "voice": "ghost",
+      "family": "creature-ghost"
+    },
+    "haunted-b": {
+      "voice": "crow",
+      "family": "creature-crow"
+    },
+    "hourglass-clockmote": {
+      "voice": "mech",
+      "family": "creature-mech"
+    },
+    "hourglass-dustscarab": {
+      "voice": "beetle",
+      "family": "creature-beetle"
+    },
+    "hourglass-sandcobra": {
+      "voice": "serpent",
+      "family": "creature-serpent"
+    },
+    "ice-a": {
+      "voice": "rabbit",
+      "family": "creature-rabbit"
+    },
+    "ice-b": {
+      "voice": "wolf",
+      "family": "creature-wolf"
+    },
+    "marsh-a": {
+      "voice": "slime",
+      "family": "creature-slime"
+    },
+    "marsh-b": {
+      "voice": "frog",
+      "family": "creature-frog"
+    },
+    "moonkeep-duskfang": {
+      "voice": "wolf",
+      "family": "creature-wolf"
+    },
+    "moonkeep-eclipsestalker": {
+      "voice": "bigcat",
+      "family": "creature-bigcat"
+    },
+    "moonkeep-moonmoth": {
+      "voice": "moth",
+      "family": "creature-moth"
+    },
+    "moonkeep-shadowraven": {
+      "voice": "crow",
+      "family": "creature-crow"
+    },
+    "mycelium-rottick": {
+      "voice": "skitter",
+      "family": "creature-skitter"
+    },
+    "mycelium-sludgesnail": {
+      "voice": "slime",
+      "family": "creature-slime"
+    },
+    "mycelium-sporecap": {
+      "voice": "plant",
+      "family": "creature-plant"
+    },
+    "mycelium-sporetoad": {
+      "voice": "frog",
+      "family": "creature-frog"
+    },
+    "obsidian-a": {
+      "voice": "wolf",
+      "family": "creature-wolf"
+    },
+    "obsidian-b": {
+      "voice": "beetle",
+      "family": "creature-beetle"
+    },
+    "pine-a": {
+      "voice": "boar",
+      "family": "creature-boar"
+    },
+    "pine-b": {
+      "voice": "owl",
+      "family": "creature-owl"
+    },
+    "sky-a": {
+      "voice": "fox",
+      "family": "creature-fox"
+    },
+    "sky-b": {
+      "voice": "owl",
+      "family": "creature-owl"
+    },
+    "slime": {
+      "voice": "slime",
+      "family": "creature-slime"
+    },
+    "soulcrypt-bonecrow": {
+      "voice": "crow",
+      "family": "creature-crow"
+    },
+    "soulcrypt-chainrat": {
+      "voice": "rodent",
+      "family": "creature-rodent"
+    },
+    "soulcrypt-wisp": {
+      "voice": "ghost",
+      "family": "creature-ghost"
+    },
+    "stormspire-cloudjelly": {
+      "voice": "aquatic",
+      "family": "creature-aquatic"
+    },
+    "stormspire-gustfox": {
+      "voice": "fox",
+      "family": "creature-fox"
+    },
+    "stormspire-sparkfinch": {
+      "voice": "songbird",
+      "family": "creature-songbird"
+    },
+    "stormspire-stormtotem": {
+      "voice": "mech",
+      "family": "creature-mech"
+    },
+    "stormspire-voltgryphon": {
+      "voice": "raptor",
+      "family": "creature-raptor"
+    },
+    "thorns-a": {
+      "voice": "boar",
+      "family": "creature-boar"
+    },
+    "thorns-b": {
+      "voice": "plant",
+      "family": "creature-plant"
+    },
+    "thunder-a": {
+      "voice": "slime",
+      "family": "creature-slime"
+    },
+    "thunder-b": {
+      "voice": "raptor",
+      "family": "creature-raptor"
+    },
+    "void-a": {
+      "voice": "ghost",
+      "family": "creature-ghost"
+    },
+    "void-b": {
+      "voice": "wolf",
+      "family": "creature-wolf"
+    },
+    "volcano-a": {
+      "voice": "imp",
+      "family": "creature-imp"
+    },
+    "volcano-b": {
+      "voice": "rock",
+      "family": "creature-rock"
     }
   }
 }

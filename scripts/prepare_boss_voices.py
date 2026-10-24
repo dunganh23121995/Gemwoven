@@ -3,14 +3,17 @@
     python scripts/prepare_boss_voices.py
 
 Sources live in assets/audio/sources/freesound/<id>-<slug>/ (one folder per
-download, each with source.json: title, author, URL, CC0 licence, sha256).
+download, each with source.json: title, author, URL, licence, sha256).
 A missing source file is fetched again from its recorded URL and verified.
 
-Monsters use real animal recordings (lion, tiger, bear, fox, hawk, eagle, wolf,
-dog, alligator, crocodile, sea lion, whale, camel, moose, elephant, gorilla,
-hissing cockroach, wasp, cicada) or performed creature voices for undead, with
-real material layers (wood, stone, steam, metal, glass). Human-looking bosses
-and elites use CC0 male/female voice actors who are not used by any hero.
+Monster bosses (MONSTERS) speak with real recordings of what they resemble (bear,
+lion, tiger, fox, hawk, eagle, wolf/dog, alligator, crocodile, sea lion, hippo,
+camel, moose, gorilla, hissing cockroach, wasp, steam engine and metal) or with
+designed dragon roars and performed wraith voices from game-audio uploads. They are
+built by the shared engine in scripts/prepare_creature_sfx.py with minimal
+processing: one excerpt of one recording per clip, at most -13 % speed for size,
+high-pass, trim, fades and loudness. Human-looking bosses and elites (FAMILIES) use
+CC0 male/female voice actors who are not used by any hero.
 
 Output: assets/audio/bosses/<family>-<kind>.wav (44.1 kHz mono 16-bit) and
 assets/audio/boss-voice-manifest.json. The existing elemental fallback entries
@@ -30,6 +33,8 @@ import urllib.request
 import numpy as np
 from scipy.io import wavfile
 from scipy.signal import butter, find_peaks, istft, sosfilt, stft
+
+import prepare_creature_sfx as engine
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'assets/audio'
@@ -162,47 +167,62 @@ def P(*items):
         out.append((sid, speed, mode, region))
     return out
 
+# ---- monsters: real recordings, minimal processing ------------------------------
+# Built with the creature engine (scripts/prepare_creature_sfx.py): one excerpt of one
+# recording per clip, speed change at most -13 % for size, high-pass, trim, fades and
+# loudness only. No layering, saturation, denoise or added textures.
+# pools: kind or 'all' -> [Src(freesound id, speed, region=(s, e), at=(start, length), gap)]
+S = engine.Src
+MONSTERS = {
+    'boss-grovewarden': dict(boss='earth', voice='treant-golem', hp=35, pools={  # bear roars and grizzly growls
+        'attack': [S(479825, .9), S(519599, .9), S(763026, .9)], 'hurt': [S(519599, .9), S(479825, .9)],
+        'cast': [S(519599, .9)], 'release': [S(479825, .9, at=(0.28, 1.25))], 'death': [S(479825, .9)]}),
+    'boss-ashdragon': dict(boss='fire', voice='dragon', hp=35, pools={  # designed dragon roars (real lion/dog/horse/elephant based)
+        'attack': [S(546391), S(85568)], 'hurt': [S(546391), S(651817)],
+        'cast': [S(546391)], 'release': [S(85568)], 'death': [S(651817)]}),
+    'boss-moonfrost': dict(boss='ice', voice='frost-beast', hp=80, pools={  # red fox screams, slightly larger
+        'all': [S(634005, .9)]}),
+    'boss-thunderking': dict(boss='lightning', voice='storm-lion', hp=35, pools={  # lion roars, tiger snarls
+        'attack': [S(69570), S(437980)], 'hurt': [S(69572), S(439280)], 'cast': [S(263115)],
+        'release': [S(69572)], 'death': [S(69570)]}),
+    'boss-scarab': dict(boss='scarab', voice='insect-beetle', hp=60, pools={  # hissing cockroaches, larger
+        'all': [S(459476, .87), S(547898, .87, region=(100, 370))]}),
+    'boss-leviathan': dict(boss='leviathan', voice='sea-serpent', hp=35, pools={  # alligator growls, crocodile scream
+        'attack': [S(437933, .92), S(527844, .92)], 'hurt': [S(403373, .92)], 'all': [S(437933, .92)]}),
+    'boss-colossus': dict(boss='colossus', voice='steam-golem', hp=35, pools={  # steam engine, metal, steam whistle
+        'attack': [S(125211), S(741284)], 'hurt': [S(814976), S(741284), S(172411)],
+        'cast': [S(438641)], 'release': [S(71778)], 'death': [S(172411)]}),
+    'boss-prism': dict(boss='prism', voice='insect-queen', hp=100, pools={  # wasp and yellow-jacket buzz, cicada
+        'attack': [S(392458), S(610866)], 'hurt': [S(155968), S(392458)], 'cast': [S(397607)],
+        'all': [S(610866)]}),
+    'boss-reaper': dict(boss='reaper', voice='undead-wraith', hp=80, pools={  # performed wraith shrieks and moans
+        'all': [S(433735)], 'cast': [S(204966)], 'death': [S(400855)]}),
+    'boss-roc': dict(boss='roc', voice='giant-bird', hp=120, pools={  # red-tailed hawk screams, larger
+        'all': [S(575524, .9), S(479610, .9)]}),
+    'boss-eclipse': dict(boss='eclipse', voice='void-dragon', hp=35, pools={  # designed dragon roars, growls and snarls
+        'all': [S(479380)], 'release': [S(466830)]}),
+    'boss-elderbloom': dict(boss='elderbloom', voice='antlered-treant', hp=35, pools={  # moose/elk bellows
+        'all': [S(486554, .92)]}),
+    'boss-cinderheart': dict(boss='cinderheart', voice='magma-golem', hp=35, pools={  # lion growls, gorilla roar
+        'all': [S(488348, .9)], 'release': [S(397054, .9)]}),
+    'boss-tempestwing': dict(boss='tempestwing', voice='thunderbird', hp=150, pools={  # eagle squawks and cries
+        'attack': [S(675962)], 'hurt': [S(675962), S(437968)], 'all': [S(675962), S(437968)]}),
+    'boss-souljailer': dict(boss='souljailer', voice='undead-jailer', hp=40, pools={  # performed demon/ghost groans (Osiruswaltz)
+        'all': [S(362678)]}),
+    'boss-sporefather': dict(boss='sporefather', voice='fungal-giant', hp=35, pools={  # camel grunts and groans
+        'attack': [S(437937, .92), S(385912, .92)], 'hurt': [S(693564, .92), S(437937, .92)],
+        'all': [S(437937, .92)]}),
+    'boss-prismback': dict(boss='prismback', voice='crystal-tortoise', hp=35, pools={  # hippo grunts, elephant growl
+        'attack': [S(194870, .9)], 'hurt': [S(194870, .9)], 'release': [S(194870, .9)],
+        'all': [S(819668, .9), S(527845, .9)]}),
+    'boss-coraltide': dict(boss='coraltide', voice='sea-dragon', hp=40, pools={  # designed dragon roar, sea lions
+        'attack': [S(320345, .92), S(499564, .9)], 'hurt': [S(499564, .9), S(849186, .9)],
+        'cast': [S(320345, .92)], 'release': [S(849186, .9)], 'death': [S(320345, .92)]}),
+    'boss-moonfang': dict(boss='moonfang', voice='wolf', hp=45, pools={  # dog snarls, solitary wolf howl
+        'all': [S(122183, .92)], 'cast': [S(500646)], 'death': [S(500646)]}),
+}
+
 FAMILIES = {
-    # ---- monsters (real animal recordings) -------------------------------------
-    'boss-grovewarden': dict(boss='earth', voice='treant-golem', pools={'all': P((519599, .78))},
-        layers=[(346140, .8, .35, 120, 5000), (354094, .9, .22, 200, 6000)], low_cut=.4, presence=.5, band=(35, 5200), drive=1.2, texture=('rumble', .05)),
-    'boss-ashdragon': dict(boss='fire', voice='dragon', pools={'all': P((69570, .8, (10.5, 34.0))), 'death': P((69570, .74, (10.5, 27.0)))},
-        layers=[(437933, .85, .40, 40, 2500)], low_cut=.4, presence=.8, band=(40, 7000), drive=1.35, texture=('ember', .06)),
-    'boss-moonfrost': dict(boss='ice', voice='frost-beast', pools={'all': P((634005, .82))},
-        layers=[(540162, 1.0, .18, 3000, 12000)], band=(110, 10000), drive=1.1, texture=('frost', .05)),
-    'boss-thunderking': dict(boss='lightning', voice='storm-lion', pools={'all': P((439280, .92), (263115, .9))},
-        layers=[(69572, .95, .30, 60, 4000)], presence=.4, band=(55, 8500), drive=1.3, texture=('crackle', .07)),
-    'boss-scarab': dict(boss='scarab', voice='insect-beetle', pools={'all': P((459476, .55), (811205, .55))},
-        layers=[(397607, .8, .25, 1500, 9000), (488348, .7, .45, 40, 700)], band=(70, 9500), drive=1.2),
-    'boss-leviathan': dict(boss='leviathan', voice='sea-serpent',
-        pools={'all': P((403373, .5, (0, 40.0))), 'cast': P((527844, .82)), 'release': P((527844, .82)), 'death': P((437933, .78, (8.0, 37.0)))},
-        layers=[(527844, .85, .35, 40, 3000), (82325, .8, .22, 60, 1200)], presence=.8, band=(40, 6500), drive=1.2),
-    'boss-colossus': dict(boss='colossus', voice='steam-golem', pools={'all': P((479814, .62)), 'death': P((172411, .75))},
-        layers=[(438641, 1.0, .30, 1500, 9000), (172411, .9, .35, 150, 5000)], band=(40, 7500), drive=1.4),
-    'boss-prism': dict(boss='prism', voice='insect-queen', pools={'all': P((392458, .62, (0, 90.0))), 'cast': P((397607, .9)), 'death': P((397607, .8))},
-        layers=[(802601, 1.0, .32, 1500, 12000), (397607, 1.15, .20, 2000, 10000)], band=(90, 11000), drive=1.25),
-    'boss-reaper': dict(boss='reaper', voice='undead-wraith', pools={'all': P((433735, .85)), 'cast': P((204966, .9)), 'death': P((400855, .8))},
-        layers=[(204963, 1.0, .40, 300, 9000)], band=(90, 9500), drive=1.2, texture=('void', .05)),
-    'boss-roc': dict(boss='roc', voice='giant-bird', pools={'all': P((479610, .8, (2.0, 14.7)), (575524, .8))},
-        layers=[], band=(180, 11000), drive=1.15),
-    'boss-eclipse': dict(boss='eclipse', voice='void-dragon', pools={'all': P((412940, .8)), 'cast': P((529462, .85)), 'death': P((529462, .8))},
-        layers=[(529462, .72, .30, 35, 1800)], presence=.5, band=(35, 7500), drive=1.4, texture=('void', .06)),
-    'boss-elderbloom': dict(boss='elderbloom', voice='antlered-treant', pools={'all': P((486554, .78, (0, 14.2)))},
-        layers=[(848983, .9, .18, 150, 5000), (848984, .85, .12, 150, 5000)], band=(40, 6500), drive=1.2),
-    'boss-cinderheart': dict(boss='cinderheart', voice='magma-golem', pools={'all': P((397054, .72), (763026, .75)), 'cast': P((488348, .82)), 'death': P((488348, .78))},
-        layers=[(354094, .8, .30, 150, 5000), (488348, .8, .35, 30, 1200)], presence=.35, band=(35, 6500), drive=1.45, texture=('ember', .05)),
-    'boss-tempestwing': dict(boss='tempestwing', voice='thunderbird', pools={'all': P((675962, .9))},
-        layers=[], band=(220, 11500), drive=1.15, texture=('crackle', .06)),
-    'boss-souljailer': dict(boss='souljailer', voice='undead-jailer', pools={'all': P((362678, .85))},
-        layers=[(400855, .7, .28, 80, 5000)], low_cut=.4, presence=.7, band=(40, 7500), drive=1.25, texture=('void', .04)),
-    'boss-sporefather': dict(boss='sporefather', voice='fungal-giant', pools={'all': P((437937, .72))},
-        layers=[(346140, .7, .25, 120, 4000)], presence=.5, band=(40, 6000), drive=1.25),
-    'boss-prismback': dict(boss='prismback', voice='crystal-tortoise', pools={'all': P((819668, .62), (527845, .62))},
-        layers=[(802601, .8, .28, 1200, 11000), (354094, .7, .30, 100, 4000)], band=(35, 8000), drive=1.3),
-    'boss-coraltide': dict(boss='coraltide', voice='sea-dragon', pools={'all': P((499564, .8, (0, 5.5)), (499564, .8, (7.2, 8.3)), (499564, .8, (26.4, 29.6)), (499564, .8, (55.6, 57.2)), (499564, .8, (60.0, 61.8)), (499564, .8, (66.8, 68.1)), (849186, .8))},
-        layers=[(82325, .9, .28, 60, 1200)], low_cut=.4, presence=.6, band=(50, 8000), drive=1.2),
-    'boss-moonfang': dict(boss='moonfang', voice='wolf', pools={'all': P((122183, .8)), 'cast': P((500646, .92)), 'death': P((500646, .86))},
-        layers=[(472401, .85, .35, 50, 5000)], presence=.6, band=(50, 8500), drive=1.2),
     # ---- human-looking bosses (villain voice actors, none used by heroes) --------
     'boss-mire': dict(boss='mire', voice='female', human=True, pools={'all': P((347346, .92, 'pitch')), 'death': P((218193, .92, 'pitch'))},
         double=(.75, .16), body=.10, presence=.10, band=(110, 9500), drive=1.25),
@@ -441,10 +461,12 @@ def build():
                 'peak': round(float(np.abs(x).max()), 4),
                 'sha256': hashlib.sha256(out.read_bytes()).hexdigest(),
             }
+    for family, spec in MONSTERS.items():
+        manifest.update(engine.build_family(family, spec, OUT, 'boss-performance'))
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding='utf-8')
     new = [v for k, v in manifest.items() if v['file'].startswith('bosses/')]
     size = sum((BASE / v['file']).stat().st_size for v in new)
-    print(f'{len(FAMILIES)} families, {len(new)} clips, {size / 1e6:.2f} MB, {sum(v["duration"] for v in new):.1f} s')
+    print(f'{len(FAMILIES) + len(MONSTERS)} families, {len(new)} clips, {size / 1e6:.2f} MB, {sum(v["duration"] for v in new):.1f} s')
 
 if __name__ == '__main__':
     build()

@@ -77,82 +77,206 @@ textures; cast-sfx-manifest.json (20 clips), no third-party samples.
 Build: python scripts/prepare_cast_audio.py; python build.py.
 The approved Noct voice and katana/wind banks are unchanged.
 
-Boss and elite voices (2026-10-24): one voice set per boss, plus elite
-male/female variants. Casting: voice-casting.json. Clips: bosses/*.wav,
-exact source windows, pitch and checksums in boss-voice-manifest.json.
-Build: python scripts/prepare_boss_voices.py (run after prepare_cast_audio.py,
-which rewrites the manifest with the elemental fallback entries only).
-All sources below are Freesound uploads licensed CC0 1.0 (public domain,
-https://creativecommons.org/publicdomain/zero/1.0/; no attribution required,
-credited here anyway). Each download is kept in its own folder under
-sources/freesound/<id>-<title>/ with source.json (title, author, URL, licence,
-SHA-256). Downloaded as Freesound public HQ MP3 previews. Monsters use real
-animal recordings; the undead use performed creature voices; eclipse uses two
-CC0 composites built by their authors from real lion, elephant, crocodile and
-alligator recordings. Human-looking bosses and elites use CC0 voice actors who
-are not used by any hero (heroes keep Cici Fyre and YouFulca). Processing:
-excerpts, resampling/pitch, light spectral denoise, EQ, layering, soft
-saturation, loudness normalisation (rms 0.15). No TTS, cloning or AI audio.
-  #69570 "Lion loud.mp3" by Bidone, https://freesound.org/people/Bidone/sounds/69570/
-  #69572 "Lion roaring.mp3" by Bidone, https://freesound.org/people/Bidone/sounds/69572/
-  #82325 "Diving with whales.wav" by KEVOY, https://freesound.org/people/KEVOY/sounds/82325/
-  #122183 "Dog Growling Snarling Grumbling" by qubodup, https://freesound.org/people/qubodup/sounds/122183/
-  #172411 "Creaking Metal - Slow" by EagleStealthTeam, https://freesound.org/people/EagleStealthTeam/sounds/172411/
-  #204963 "Scary_Breath.wav" by titsher, https://freesound.org/people/titsher/sounds/204963/
-  #204966 "creepy moan.wav" by titsher, https://freesound.org/people/titsher/sounds/204966/
-  #218193 "Witch Death" by mvVoiceActing, https://freesound.org/people/mvVoiceActing/sounds/218193/
-  #218895 "human grunts 3" by Halgrimm, https://freesound.org/people/Halgrimm/sounds/218895/
-  #218908 "female grunts breaths" by martian, https://freesound.org/people/martian/sounds/218908/
-  #257358 "Male Aggressive Growls" by Kodack, https://freesound.org/people/Kodack/sounds/257358/
-  #263115 "Tiger Roar" by lauramellis, https://freesound.org/people/lauramellis/sounds/263115/
-  #346140 "Wood Creak.wav" by claretcanelon, https://freesound.org/people/claretcanelon/sounds/346140/
-  #347346 "rpg - wicked witch battle sounds.wav" by mvVoiceActing, https://freesound.org/people/mvVoiceActing/sounds/347346/
-  #354094 "Stone scratching over rock (close up), H6.wav" by Bini_trns, https://freesound.org/people/Bini_trns/sounds/354094/
-  #362678 "Demon_Ghost Groaning 1.wav" by Osiruswaltz, https://freesound.org/people/Osiruswaltz/sounds/362678/
-  #392458 "wasp_buzzing_around.wav" by KevinHilt, https://freesound.org/people/KevinHilt/sounds/392458/
-  #397054 "Gorillaschrei.wav" by J0ck0, https://freesound.org/people/J0ck0/sounds/397054/
-  #397607 "cicada" by swordofkings128, https://freesound.org/people/swordofkings128/sounds/397607/
-  #400855 "Moaning Wraith.wav" by gateroadmusic, https://freesound.org/people/gateroadmusic/sounds/400855/
-  #403373 "Crocodile scream (Amazonian Rainforest)" by felix.blume, https://freesound.org/people/felix.blume/sounds/403373/
-  #412940 "Dinosaur Roars and Growls.mp3" by GojiS.O.S., https://freesound.org/people/GojiS.O.S./sounds/412940/
-  #433735 "Shrieker_Screeching_Screaming_Nazgul_Demon_Voice_byTiffanyMarz.wav" by Voices_Of_Marz, https://freesound.org/people/Voices_Of_Marz/sounds/433735/
-  #437933 "G12-01-Alligator Growl.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437933/
-  #437937 "G12-05-Camel Grunt.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437937/
-  #438641 "G39-24-Steam Hiss.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/438641/
-  #439280 "Angry tiger.wav" by schots, https://freesound.org/people/schots/sounds/439280/
-  #439515 "Female Battle Cries v1 wav.wav" by Volonda, https://freesound.org/people/Volonda/sounds/439515/
-  #459476 "Hissing Cockroach" by Spoxe, https://freesound.org/people/Spoxe/sounds/459476/
-  #467121 "Evil Guy Grunts.wav" by CalGre, https://freesound.org/people/CalGre/sounds/467121/
-  #472401 "21_Lobo_gru�endo.wav" by JoseAgudelo, https://freesound.org/people/JoseAgudelo/sounds/472401/
-  #479610 "R30-34-Red Tailed Hawk.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479610/
-  #479814 "R01-34-Elephant trumpet.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479814/
-  #482814 "R21-15-Female Fighting Grunts.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/482814/
-  #486554 "Moose_Elk.mp3" by gleith, https://freesound.org/people/gleith/sounds/486554/
-  #488348 "Lion.wav" by GJ55GB, https://freesound.org/people/GJ55GB/sounds/488348/
-  #499564 "Sea Lion screaming in Caleta Portales (Chile)" by felix.blume, https://freesound.org/people/felix.blume/sounds/499564/
-  #500646 "Cooper Creek 20160313_014852 solitary wolf howl very clear.wav" by betchkal, https://freesound.org/people/betchkal/sounds/500646/
-  #511023 "Male Fight Grunts" by ale-batec, https://freesound.org/people/ale-batec/sounds/511023/
-  #519599 "Grizzly Bear growl eating" by Nivatius, https://freesound.org/people/Nivatius/sounds/519599/
-  #527844 "Alligator Growls 02.wav" by D.jones, https://freesound.org/people/D.jones/sounds/527844/
-  #527845 "Elephant Trumpets Growls.flac" by D.jones, https://freesound.org/people/D.jones/sounds/527845/
-  #529462 "T-Rex Calls" by CaveboyTup, https://freesound.org/people/CaveboyTup/sounds/529462/
-  #540162 "Snake hissing.mp3" by schreibsel, https://freesound.org/people/schreibsel/sounds/540162/
-  #556976 "Male Screams [1]" by marc3122, https://freesound.org/people/marc3122/sounds/556976/
-  #573096 "A female voice in agony" by pseudonymian, https://freesound.org/people/pseudonymian/sounds/573096/
-  #575524 "red-tailed-hawk.wav" by 1888software, https://freesound.org/people/1888software/sounds/575524/
-  #610998 "Medium Male Pain Grunts" by unfa, https://freesound.org/people/unfa/sounds/610998/
-  #621352 "Male Yelling out a War Cry 3 - WITH reverb.wav" by WelvynZPorterSamples, https://freesound.org/people/WelvynZPorterSamples/sounds/621352/
-  #634005 "Fox Screams" by Soundburst, https://freesound.org/people/Soundburst/sounds/634005/
-  #671353 "Sampli_Ha.wav" by BrivaMagda, https://freesound.org/people/BrivaMagda/sounds/671353/
-  #671354 "Sampli_Eu.wav" by BrivaMagda, https://freesound.org/people/BrivaMagda/sounds/671354/
-  #675962 "S28-16 Eagle squawks & calls.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/675962/
-  #763026 "Bear Angry Growl" by celldroid, https://freesound.org/people/celldroid/sounds/763026/
-  #770124 "Big Character Grunts" by IENBA, https://freesound.org/people/IENBA/sounds/770124/
-  #802601 "Glass Shards - Scratching Ice" by JelloApocalypse, https://freesound.org/people/JelloApocalypse/sounds/802601/
-  #811205 "Insects - Madagascar Hissing Cockroach, Several Hisses" by TheKingOfGeeks360, https://freesound.org/people/TheKingOfGeeks360/sounds/811205/
-  #819668 "Elephant sound" by ikbenraar, https://freesound.org/people/ikbenraar/sounds/819668/
-  #845164 "Woman Screaming" by DanJFilms, https://freesound.org/people/DanJFilms/sounds/845164/
-  #848983 "trees_creaking_loudl" by Sprust, https://freesound.org/people/Sprust/sounds/848983/
-  #848984 "trees_creaking_loudl2" by Sprust, https://freesound.org/people/Sprust/sounds/848984/
-  #849186 "Lobo Marino Grunendo - Growling Sea Lion" by Diim_1, https://freesound.org/people/Diim_1/sounds/849186/
-  #850699 "Female Scream" by IENBA, https://freesound.org/people/IENBA/sounds/850699/
+Creature and boss voices from real recordings (2026-10-24; replaces the earlier
+processed boss creature voices). Every common foe speaks with the voice of what
+it is, one family per species group (creature-<group>-attack1..3, hurt1..3, cast,
+release, death): slime, bat, rodent, songbird, gull, owl, raptor, crow, rabbit,
+fox, wolf, bigcat, boar, reptile, frog, serpent, crab, aquatic, beetle, skitter,
+moth, plant, rock, imp, ghost, mech. Casting: voice-casting.json ("creatures";
+the old creature-<element> banks stay as fallback). Monster bosses use the same
+method (boss-<name>-*). Each clip is one excerpt of one recording, never a mix
+of animals. Processing: excerpt, speed change of at most -13 % (bosses only, for
+size), high-pass 35-200 Hz, silence trim, short fades, loudness normalisation
+(rms ~0.15, peaks < 0.95 through a gentle peak limiter). No layering, saturation,
+denoise, synthesis, TTS, voice cloning or AI audio.
+Dragons use designed dragon-roar sound effects as published by their sound
+designers (Dreeme: built from real lion, dog, horse, elephant and flamethrower
+recordings; JoelAudio; AMWD/Stijn Loyen; 999999990; Breviceps). Undead bosses
+and ghosts use performed CC0 creature voices.
+Clips: creatures/creature-<group>-*.wav, bosses/boss-<name>-*.wav. Exact source
+windows, speed and checksums: creature-manifest.json, boss-voice-manifest.json.
+Build: python scripts/prepare_creature_sfx.py (after prepare_creature_voices.py);
+python scripts/prepare_boss_voices.py (after prepare_cast_audio.py, which
+rewrites the manifest with the elemental fallback entries only).
+Sources: Freesound uploads, each kept in sources/freesound/<id>-<title>/ with
+source.json (title, author, URL, licence, SHA-256), downloaded as Freesound public
+HQ MP3 previews. All are CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/;
+no attribution required, credited here anyway).
+
+Common foes (creature families):
+  #59315 "looking_in_bushes.wav" by vibe_crc, https://freesound.org/people/vibe_crc/sounds/59315/ (CC0)
+  #101344 "BarnOwl.wav" by raoul_slayer, https://freesound.org/people/raoul_slayer/sounds/101344/ (CC0)
+  #118816 "Wind Up Toy.wav" by lmbubec, https://freesound.org/people/lmbubec/sounds/118816/ (CC0)
+  #131340 "Flying moth 2.wav" by nahmandub, https://freesound.org/people/nahmandub/sounds/131340/ (CC0)
+  #143125 "ratSqueak.wav" by Zabuhailo, https://freesound.org/people/Zabuhailo/sounds/143125/ (CC0)
+  #158746 "A pig grunting, grumbling and falling asleep (France, Limousin)" by felix.blume, https://freesound.org/people/felix.blume/sounds/158746/ (CC0)
+  #158780 "wolves.wav" by Paresh, https://freesound.org/people/Paresh/sounds/158780/ (CC0)
+  #181134 "Church_Barn_Owl.aif" by ikbenraar, https://freesound.org/people/ikbenraar/sounds/181134/ (CC0)
+  #188195 "Green frog, croaking.wav" by SpliceSound, https://freesound.org/people/SpliceSound/sounds/188195/ (CC0)
+  #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0)
+  #223978 "Lion lament" by roman_cgr, https://freesound.org/people/roman_cgr/sounds/223978/ (CC0)
+  #254871 "swish whip.wav" by blukotek, https://freesound.org/people/blukotek/sounds/254871/ (CC0)
+  #263786 "Seagull single call" by steaq, https://freesound.org/people/steaq/sounds/263786/ (CC0)
+  #268580 "Rattle_Snake.wav" by 7h3_lark, https://freesound.org/people/7h3_lark/sounds/268580/ (CC0)
+  #329519 "Ghost Moan 1.wav" by SirBedlam, https://freesound.org/people/SirBedlam/sounds/329519/ (CC0)
+  #336023 "Rocks.wav" by adamgryu, https://freesound.org/people/adamgryu/sounds/336023/ (CC0)
+  #351301 "gekko.mp3" by mopedmetzger, https://freesound.org/people/mopedmetzger/sounds/351301/ (CC0)
+  #352698 "Angry Pig Oinking" by Jofae, https://freesound.org/people/Jofae/sounds/352698/ (CC0)
+  #354094 "Stone scratching over rock (close up), H6.wav" by Bini_trns, https://freesound.org/people/Bini_trns/sounds/354094/ (CC0)
+  #361470 "Crow Caw" by Jofae, https://freesound.org/people/Jofae/sounds/361470/ (CC0)
+  #376195 "toy ratchet.wav" by monotraum, https://freesound.org/people/monotraum/sounds/376195/ (CC0)
+  #381200 "Eagle Cry.wav" by kaydinhamby, https://freesound.org/people/kaydinhamby/sounds/381200/ (CC0)
+  #397568 "Frog Croak Ambient" by Sojan, https://freesound.org/people/Sojan/sounds/397568/ (CC0)
+  #400573 "ThằngLằng.wav" by SieuAmThanh, https://freesound.org/people/SieuAmThanh/sounds/400573/ (CC0)
+  #411761 "Water Bubbles and Gurgles" by Jamsponge, https://freesound.org/people/Jamsponge/sounds/411761/ (CC0)
+  #420447 "Barking 4.wav" by Mrthenoronha, https://freesound.org/people/Mrthenoronha/sounds/420447/ (CC0)
+  #420449 "Barking 2.wav" by Mrthenoronha, https://freesound.org/people/Mrthenoronha/sounds/420449/ (CC0)
+  #420452 "Barking 5.wav" by Mrthenoronha, https://freesound.org/people/Mrthenoronha/sounds/420452/ (CC0)
+  #423454 "snarling Snake" by florianreichelt, https://freesound.org/people/florianreichelt/sounds/423454/ (CC0)
+  #429899 "02-ZumbidoPolilla.wav" by juan9826, https://freesound.org/people/juan9826/sounds/429899/ (CC0)
+  #437967 "G12-35-Bats Chirping.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437967/ (CC0)
+  #437978 "G12-45-Tiger Hiss and Growl.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437978/ (CC0)
+  #439535 "Angry Dog" by CmdRobot, https://freesound.org/people/CmdRobot/sounds/439535/ (CC0)
+  #442772 "Slime Squish" by qubodup, https://freesound.org/people/qubodup/sounds/442772/ (CC0)
+  #455593 "Bat chirp (close-up)" by coelhoigor, https://freesound.org/people/coelhoigor/sounds/455593/ (CC0)
+  #457294 "Air (or steam) pressure release" by brunoboselli, https://freesound.org/people/brunoboselli/sounds/457294/ (CC0)
+  #462863 "Common toad (Bufo bufo)" by Breviceps, https://freesound.org/people/Breviceps/sounds/462863/ (CC0)
+  #463789 "Mouse Squeaks.wav" by shyguy014, https://freesound.org/people/shyguy014/sounds/463789/ (CC0)
+  #479588 "R01-27-Great Horned Owl Hoot.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479588/ (CC0)
+  #479607 "R28-21-Close Hungry Guinea Pig.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479607/ (CC0)
+  #479633 "R01-63-Dog Snarling and Attacking.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479633/ (CC0)
+  #479816 "R01-44-Frogs Croaking.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479816/ (CC0)
+  #502211 "Beetle Squark5.wav" by warrenXG, https://freesound.org/people/warrenXG/sounds/502211/ (CC0)
+  #502531 "Croak Sound Effect" by mdfrenchij, https://freesound.org/people/mdfrenchij/sounds/502531/ (CC0)
+  #507380 "Seagulls in Kiel.wav" by svenne2000, https://freesound.org/people/svenne2000/sounds/507380/ (CC0)
+  #510917 "Seagulls_short.wav" by Lydmakeren, https://freesound.org/people/Lydmakeren/sounds/510917/ (CC0)
+  #513694 "impact-stone-heavy.wav" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/ (CC0)
+  #536759 "Frog.ogg" by egomassive, https://freesound.org/people/egomassive/sounds/536759/ (CC0)
+  #540162 "Snake hissing.mp3" by schreibsel, https://freesound.org/people/schreibsel/sounds/540162/ (CC0)
+  #546873 "Tắc Kè 4" by SieuAmThanh, https://freesound.org/people/SieuAmThanh/sounds/546873/ (CC0)
+  #547898 "Gromphadorhina_portentosa_hissing.aif" by nicotep, https://freesound.org/people/nicotep/sounds/547898/ (CC0)
+  #552006 "Twig being snapped (multiple takes)" by ZoshP, https://freesound.org/people/ZoshP/sounds/552006/ (CC0)
+  #567727 "200612 Lobsters, breathing, clicking, watery, almost electrical 5pm.flac" by TRP, https://freesound.org/people/TRP/sounds/567727/ (CC0)
+  #573771 "screech_owl.wav" by mael46, https://freesound.org/people/mael46/sounds/573771/ (CC0)
+  #583078 "Squeaking Guinea Pigs" by Breviceps, https://freesound.org/people/Breviceps/sounds/583078/ (CC0)
+  #585259 "Air bubbles underwater, recorded from surface, gurgle, released from a hollow pot.wav" by breiti, https://freesound.org/people/breiti/sounds/585259/ (CC0)
+  #609783 "Comic Ghost Voice.mp3" by Volvion, https://freesound.org/people/Volvion/sounds/609783/ (CC0)
+  #637065 "Katydid_rattle_insect_chorus.wav" by lukewarm_sound, https://freesound.org/people/lukewarm_sound/sounds/637065/ (CC0)
+  #643741 "Ghostly Moan.mp3" by SnowFightStudios, https://freesound.org/people/SnowFightStudios/sounds/643741/ (CC0)
+  #667579 "Bat Screech" by Yoyodaman234, https://freesound.org/people/Yoyodaman234/sounds/667579/ (CC0)
+  #672909 "Making noises with leaves and plant parts" by rubberduck9999, https://freesound.org/people/rubberduck9999/sounds/672909/ (CC0)
+  #675401 "S30-13 Vicious alley cat fight.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/675401/ (CC0)
+  #677430 "Tắc Kè - Một" by SieuAmThanh, https://freesound.org/people/SieuAmThanh/sounds/677430/ (CC0)
+  #679954 "Cat Growling and Hissing" by dinoroki, https://freesound.org/people/dinoroki/sounds/679954/ (CC0)
+  #680447 "slime - squishing sounds" by rubberduck9999, https://freesound.org/people/rubberduck9999/sounds/680447/ (CC0)
+  #686626 "Tookgeh Gecko" by Organuz, https://freesound.org/people/Organuz/sounds/686626/ (CC0)
+  #693457 "moth1.wav" by HYPERBLOODHELL, https://freesound.org/people/HYPERBLOODHELL/sounds/693457/ (CC0)
+  #701180 "Cricket recorded very close in the desert, cricket on microphone and slight insects buzzing" by felix.blume, https://freesound.org/people/felix.blume/sounds/701180/ (CC0)
+  #723999 "Servo motor working" by D31V228, https://freesound.org/people/D31V228/sounds/723999/ (CC0)
+  #741366 "Hooded Crow: Cawing" by Mish7913, https://freesound.org/people/Mish7913/sounds/741366/ (CC0)
+  #750495 "Angry Cat (Perran)" by Sadiquecat, https://freesound.org/people/Sadiquecat/sounds/750495/ (CC0)
+  #751338 "Slime Attack 1" by qubodup, https://freesound.org/people/qubodup/sounds/751338/ (CC0)
+  #751339 "Slime Attack 2" by qubodup, https://freesound.org/people/qubodup/sounds/751339/ (CC0)
+  #751340 "Slime Death" by qubodup, https://freesound.org/people/qubodup/sounds/751340/ (CC0)
+  #751341 "Slime Jump 1" by qubodup, https://freesound.org/people/qubodup/sounds/751341/ (CC0)
+  #751342 "Slime Jump 2" by qubodup, https://freesound.org/people/qubodup/sounds/751342/ (CC0)
+  #761559 "crab walking" by stuniverso, https://freesound.org/people/stuniverso/sounds/761559/ (CC0)
+  #770031 "Crab - Legs" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/770031/ (CC0)
+  #770032 "Bird - Red-shouldered hawk" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/770032/ (CC0)
+  #807392 "Fish - ASMR Blup Blup" by Vrymaa, https://freesound.org/people/Vrymaa/sounds/807392/ (CC0)
+  #811205 "Insects - Madagascar Hissing Cockroach, Several Hisses" by TheKingOfGeeks360, https://freesound.org/people/TheKingOfGeeks360/sounds/811205/ (CC0)
+  #811790 "Tiger roar female" by eZZin, https://freesound.org/people/eZZin/sounds/811790/ (CC0)
+  #812008 "Upset Bird" by qubodup, https://freesound.org/people/qubodup/sounds/812008/ (CC0)
+  #812024 "Bird Asking for Food" by qubodup, https://freesound.org/people/qubodup/sounds/812024/ (CC0)
+  #812025 "Bird Chatting Smack" by qubodup, https://freesound.org/people/qubodup/sounds/812025/ (CC0)
+  #812026 "Bird Freaking Out" by qubodup, https://freesound.org/people/qubodup/sounds/812026/ (CC0)
+  #812027 "Bird Giggle" by qubodup, https://freesound.org/people/qubodup/sounds/812027/ (CC0)
+  #812031 "Disappointed Bird Chirp" by qubodup, https://freesound.org/people/qubodup/sounds/812031/ (CC0)
+  #812033 "Excited Bird Chirp" by qubodup, https://freesound.org/people/qubodup/sounds/812033/ (CC0)
+  #812034 "Irritated Bird Chirp" by qubodup, https://freesound.org/people/qubodup/sounds/812034/ (CC0)
+  #812036 "Upset Bird Chirp" by qubodup, https://freesound.org/people/qubodup/sounds/812036/ (CC0)
+  #813115 "Crow Caw" by qubodup, https://freesound.org/people/qubodup/sounds/813115/ (CC0)
+  #824121 "ServoMotor.wav" by derjuli, https://freesound.org/people/derjuli/sounds/824121/ (CC0)
+  #829810 "crickets katydids cicadas insect sound at night" by Attia.phonatics, https://freesound.org/people/Attia.phonatics/sounds/829810/ (CC0)
+  #832436 "Fox screaming during the night" by felix.blume, https://freesound.org/people/felix.blume/sounds/832436/ (CC0)
+  #842313 "Swine - Pig; Dinosaur-like Grunt" by TheKingOfGeeks360, https://freesound.org/people/TheKingOfGeeks360/sounds/842313/ (CC0)
+  #855095 "Unusual Crow Caw Call 1" by qubodup, https://freesound.org/people/qubodup/sounds/855095/ (CC0)
+  #855096 "Unusual Crow Caw Call 2" by qubodup, https://freesound.org/people/qubodup/sounds/855096/ (CC0)
+  #855116 "Ice, break, crack, squeak, close-up, small, sheet" by Oldome, https://freesound.org/people/Oldome/sounds/855116/ (CC0)
+
+Monster bosses:
+  #69570 "Lion loud.mp3" by Bidone, https://freesound.org/people/Bidone/sounds/69570/ (CC0)
+  #69572 "Lion roaring.mp3" by Bidone, https://freesound.org/people/Bidone/sounds/69572/ (CC0)
+  #71778 "Steam Whistle.mp3" by Bidone, https://freesound.org/people/Bidone/sounds/71778/ (CC0)
+  #85568 "DRAGON_ROAR.wav" by JoelAudio, https://freesound.org/people/JoelAudio/sounds/85568/ (CC0)
+  #122183 "Dog Growling Snarling Grumbling" by qubodup, https://freesound.org/people/qubodup/sounds/122183/ (CC0)
+  #125211 "steam-train-leaving-moor-st-station.wav" by keithpeter, https://freesound.org/people/keithpeter/sounds/125211/ (CC0)
+  #155968 "yellow-jacket-buzz.aiff" by alienistcog, https://freesound.org/people/alienistcog/sounds/155968/ (CC0)
+  #172411 "Creaking Metal - Slow" by EagleStealthTeam, https://freesound.org/people/EagleStealthTeam/sounds/172411/ (CC0)
+  #194870 "hippos.mp3" by toadie, https://freesound.org/people/toadie/sounds/194870/ (CC0)
+  #204966 "creepy moan.wav" by titsher, https://freesound.org/people/titsher/sounds/204966/ (CC0)
+  #263115 "Tiger Roar" by lauramellis, https://freesound.org/people/lauramellis/sounds/263115/ (CC0)
+  #320345 "Dino Hiss Dragon Roar" by 999999990, https://freesound.org/people/999999990/sounds/320345/ (CC0)
+  #362678 "Demon_Ghost Groaning 1.wav" by Osiruswaltz, https://freesound.org/people/Osiruswaltz/sounds/362678/ (CC0)
+  #385912 "S035_Camels_Mono.wav" by Pól, https://freesound.org/people/Pól/sounds/385912/ (CC0)
+  #392458 "wasp_buzzing_around.wav" by KevinHilt, https://freesound.org/people/KevinHilt/sounds/392458/ (CC0)
+  #397054 "Gorillaschrei.wav" by J0ck0, https://freesound.org/people/J0ck0/sounds/397054/ (CC0)
+  #397607 "cicada" by swordofkings128, https://freesound.org/people/swordofkings128/sounds/397607/ (CC0)
+  #400855 "Moaning Wraith.wav" by gateroadmusic, https://freesound.org/people/gateroadmusic/sounds/400855/ (CC0)
+  #403373 "Crocodile scream (Amazonian Rainforest)" by felix.blume, https://freesound.org/people/felix.blume/sounds/403373/ (CC0)
+  #433735 "Shrieker_Screeching_Screaming_Nazgul_Demon_Voice_byTiffanyMarz.wav" by Voices_Of_Marz, https://freesound.org/people/Voices_Of_Marz/sounds/433735/ (CC0)
+  #437933 "G12-01-Alligator Growl.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437933/ (CC0)
+  #437937 "G12-05-Camel Grunt.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437937/ (CC0)
+  #437968 "G12-35a-Eagle Cries.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437968/ (CC0)
+  #437980 "G12-47-Lions Roaring.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/437980/ (CC0)
+  #438641 "G39-24-Steam Hiss.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/438641/ (CC0)
+  #439280 "Angry tiger.wav" by schots, https://freesound.org/people/schots/sounds/439280/ (CC0)
+  #459476 "Hissing Cockroach" by Spoxe, https://freesound.org/people/Spoxe/sounds/459476/ (CC0)
+  #466830 "Dragon: Snarl, Roar + Attack" by Breviceps, https://freesound.org/people/Breviceps/sounds/466830/ (CC0)
+  #479380 "Dragon: Several roars, growls and snarls" by Breviceps, https://freesound.org/people/Breviceps/sounds/479380/ (CC0)
+  #479610 "R30-34-Red Tailed Hawk.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479610/ (CC0)
+  #479825 "R19-13-Bear Roaring.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479825/ (CC0)
+  #486554 "Moose_Elk.mp3" by gleith, https://freesound.org/people/gleith/sounds/486554/ (CC0)
+  #488348 "Lion.wav" by GJ55GB, https://freesound.org/people/GJ55GB/sounds/488348/ (CC0)
+  #499564 "Sea Lion screaming in Caleta Portales (Chile)" by felix.blume, https://freesound.org/people/felix.blume/sounds/499564/ (CC0)
+  #500646 "Cooper Creek 20160313_014852 solitary wolf howl very clear.wav" by betchkal, https://freesound.org/people/betchkal/sounds/500646/ (CC0)
+  #519599 "Grizzly Bear growl eating" by Nivatius, https://freesound.org/people/Nivatius/sounds/519599/ (CC0)
+  #527844 "Alligator Growls 02.wav" by D.jones, https://freesound.org/people/D.jones/sounds/527844/ (CC0)
+  #527845 "Elephant Trumpets Growls.flac" by D.jones, https://freesound.org/people/D.jones/sounds/527845/ (CC0)
+  #546391 "Dragon Roar.wav" by Dreeme, https://freesound.org/people/Dreeme/sounds/546391/ (CC0)
+  #547898 "Gromphadorhina_portentosa_hissing.aif" by nicotep, https://freesound.org/people/nicotep/sounds/547898/ (CC0)
+  #575524 "red-tailed-hawk.wav" by 1888software, https://freesound.org/people/1888software/sounds/575524/ (CC0)
+  #610866 "ANMLInsc_Wespen-Nah 01_IOKA_NONE_Hofefeld.wav" by JakobGille, https://freesound.org/people/JakobGille/sounds/610866/ (CC0)
+  #634005 "Fox Screams" by Soundburst, https://freesound.org/people/Soundburst/sounds/634005/ (CC0)
+  #651817 "Dragon roar 1.wav" by AMWD_Mortsel-Edegem-Kontich, https://freesound.org/people/AMWD_Mortsel-Edegem-Kontich/sounds/651817/ (CC0)
+  #675962 "S28-16 Eagle squawks & calls.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/675962/ (CC0)
+  #693564 "Dromedaries mooing" by schots, https://freesound.org/people/schots/sounds/693564/ (CC0)
+  #741284 "Metal door (and a gun?)" by xkeril, https://freesound.org/people/xkeril/sounds/741284/ (CC0)
+  #763026 "Bear Angry Growl" by celldroid, https://freesound.org/people/celldroid/sounds/763026/ (CC0)
+  #814976 "Closing large metal door-001" by AudioPapkin, https://freesound.org/people/AudioPapkin/sounds/814976/ (CC0)
+  #819668 "Elephant sound" by ikbenraar, https://freesound.org/people/ikbenraar/sounds/819668/ (CC0)
+  #849186 "Lobo Marino Grunendo - Growling Sea Lion" by Diim_1, https://freesound.org/people/Diim_1/sounds/849186/ (CC0)
+
+Human-looking bosses and elites (CC0 male/female villain voice actors, none used
+by a hero; unchanged: pitch-preserving tempo, EQ, light double, small room tail):
+  #218193 "Witch Death" by mvVoiceActing, https://freesound.org/people/mvVoiceActing/sounds/218193/ (CC0)
+  #218895 "human grunts 3" by Halgrimm, https://freesound.org/people/Halgrimm/sounds/218895/ (CC0)
+  #218908 "female grunts breaths" by martian, https://freesound.org/people/martian/sounds/218908/ (CC0)
+  #257358 "Male Aggressive Growls" by Kodack, https://freesound.org/people/Kodack/sounds/257358/ (CC0)
+  #347346 "rpg - wicked witch battle sounds.wav" by mvVoiceActing, https://freesound.org/people/mvVoiceActing/sounds/347346/ (CC0)
+  #439515 "Female Battle Cries v1 wav.wav" by Volonda, https://freesound.org/people/Volonda/sounds/439515/ (CC0)
+  #467121 "Evil Guy Grunts.wav" by CalGre, https://freesound.org/people/CalGre/sounds/467121/ (CC0)
+  #482814 "R21-15-Female Fighting Grunts.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/482814/ (CC0)
+  #511023 "Male Fight Grunts" by ale-batec, https://freesound.org/people/ale-batec/sounds/511023/ (CC0)
+  #556976 "Male Screams [1]" by marc3122, https://freesound.org/people/marc3122/sounds/556976/ (CC0)
+  #573096 "A female voice in agony" by pseudonymian, https://freesound.org/people/pseudonymian/sounds/573096/ (CC0)
+  #610998 "Medium Male Pain Grunts" by unfa, https://freesound.org/people/unfa/sounds/610998/ (CC0)
+  #621352 "Male Yelling out a War Cry 3 - WITH reverb.wav" by WelvynZPorterSamples, https://freesound.org/people/WelvynZPorterSamples/sounds/621352/ (CC0)
+  #671353 "Sampli_Ha.wav" by BrivaMagda, https://freesound.org/people/BrivaMagda/sounds/671353/ (CC0)
+  #671354 "Sampli_Eu.wav" by BrivaMagda, https://freesound.org/people/BrivaMagda/sounds/671354/ (CC0)
+  #770124 "Big Character Grunts" by IENBA, https://freesound.org/people/IENBA/sounds/770124/ (CC0)
+  #845164 "Woman Screaming" by DanJFilms, https://freesound.org/people/DanJFilms/sounds/845164/ (CC0)
+  #850699 "Female Scream" by IENBA, https://freesound.org/people/IENBA/sounds/850699/ (CC0)
+
+Older downloads kept under sources/freesound but no longer used by any clip:
+#82325, #204963, #346140, #412940, #472401, #479814, #529462, #802601, #848983, #848984

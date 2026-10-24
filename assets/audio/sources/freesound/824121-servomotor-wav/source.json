@@ -1,0 +1,21 @@
+{
+  "file": "824121-servomotor-wav.mp3",
+  "title": "ServoMotor.wav",
+  "author": "derjuli",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_url": "https://freesound.org/people/derjuli/sounds/824121/",
+  "download_url": "https://cdn.freesound.org/previews/824/824121_2573247-hq.mp3",
+  "source_format": "Freesound public HQ MP3 preview",
+  "description": "Whirring and movement sounds of a servo motor in operation. Recorded as 16-bit 48 kHz WAV with a Zoom H1 recorder.",
+  "tags": [
+    "gear",
+    "machine",
+    "mechanical",
+    "motor",
+    "movement",
+    "servo",
+    "whirring"
+  ],
+  "sha256": "ba613edcdbed179c8782e34a9bb52217eb2387d50d8008faa3376272c0ef0ec5"
+}
