@@ -134,7 +134,7 @@ async function noriJadeUltimate(){
     }
     // The jade sapling bursts at the foe's feet and binds it.
     await at(900+70*steps+60);root.dataset.ragePhase='bind';setSpriteFrame('hero','attack',4);
-    playCastSound('earth','sprout',{volume:.65,pan:.3});
+    playCastSound('earth','sprout',{volume:.5,pan:.3});
     // the jade ring as the sapling opens on the bound foe (strip frame 4), the shatter as it cracks (frame 5)
     noriCue(pending,'jade',270,.4);noriCue(pending,'shatter',710,.55);
     const foeNow=noriFoeBody(),width=Math.max(110,Math.min(foeNow.width*1.45,scene.width*.6));
@@ -192,7 +192,7 @@ async function noriFormUltimate(form){
     playCastSound('earth','slam',{volume:.9,pan:.15});combatV3Camera(1,true,state.boss,pending);
     // the roots crack up and lock (cage frames 0-4), the trunk creaks up (tree frames 0-4), the crown sheds its
     // leaves (tree frame 5 on), the cage snaps and crumbles (cage frame 5 on)
-    noriCue(pending,'roots',70,.55);noriCue(pending,'grow',60,.9);noriCue(pending,'leaves',810,.5);noriCue(pending,'roots-break',1020,.6);
+    noriCue(pending,'roots',70,.55);noriCue(pending,'grow',60,.62);noriCue(pending,'leaves',810,.5);noriCue(pending,'roots-break',1020,.6);
     const hammerX=cell.left-scene.left+travel+cell.width*(six?.84:.88),ground=cell.top-scene.top+cell.height*.93;
     const quake=noriStrip('quake',{x:hammerX,feet:ground,width:Math.min(110,cell.width*.75),className:'form-'+form});
     if(quake)pending.push(quake.play(NORI_SEQUENCE.quake,120));
