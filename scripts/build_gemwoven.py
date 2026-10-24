@@ -70,10 +70,11 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
     first.save(show_dir/'poster.png')
     alpha=first.getchannel('A').point(lambda a:255 if a>=128 else 0);box=alpha.getbbox()
     feet_x=boots_centre(alpha,box)
+    band=alpha.crop((0,box[3]-max(4,(box[3]-box[1])//8),first.width,box[3])).getbbox()   # the old anchor: where the form aura was tuned
     book=json.loads((show_dir/'fidgets.json').read_text(encoding='utf-8'))['fidgets'] if (show_dir/'fidgets.json').exists() else []
     rel=lambda f:(show_dir/f).relative_to(ROOT).as_posix()
     merged[f'show-{hero}-{form}']={'file':rel('poster.png'),'width':first.width,'height':first.height,'footBounds':list(box),
-        'bodyAnchor':{'x':feet_x/first.width,'crown':box[1]/first.height,'foot':box[3]/first.height},
+        'bodyAnchor':{'x':feet_x/first.width,'bodyX':(band[0]+band[2])/2/first.width,'crown':box[1]/first.height,'foot':box[3]/first.height},
         'sheets':{'idle':rel('idle.webp'),'fidgets':[rel(f['file']) for f in book if f['name'] not in ('emerge','rift')],
                   **{name:rel(name+'.webp') for name in ['emerge','rift','vortex'] if (show_dir/(name+'.webp')).exists()}}}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}

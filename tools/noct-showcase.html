@@ -47,7 +47,7 @@ for(const [form,name] of forms){
     // Like the hub's fitBody: every form drawn at one visible height, boots centred on the spot.
     const a=show.bodyAnchor,h=.56/(a.foot-a.crown);
     img.style.cssText=`position:absolute;width:${h*100}%;height:${h*100}%;left:${(.5-a.x*h)*100}%;top:${(.84-a.foot*h)*100}%`;host.append(img);
-    if(form===3&&window.GemwovenFormEffects){const fx=document.createElement('span');fx.className='hero-form-effects';fx.style.cssText=`bottom:16%;--hero-visible-height:${host.clientHeight*.56}px`;fx.setAttribute('aria-hidden','true');fx.innerHTML=GemwovenFormEffects.markup('shadow',3,A['form-aura-shadow']);host.append(fx);}
+    if(form===3&&window.GemwovenFormEffects){const fx=document.createElement('span');fx.className='hero-form-effects';fx.style.cssText=`bottom:16%;--hero-visible-height:${host.clientHeight*.56}px;--aura-body-shift:${(a.bodyX-a.x)*h*host.clientWidth}px`;fx.setAttribute('aria-hidden','true');fx.innerHTML=GemwovenFormEffects.markup('shadow',3,A['form-aura-shadow']);host.append(fx);}
     current=GemwovenHeroShow.attach(host,'shadow',form);
   }
   mount();

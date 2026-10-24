@@ -33,6 +33,7 @@
     const height=target/Math.max(.1,a.foot-a.crown),width=height*asset.width/asset.height;
     Object.assign(image.style,{position:'absolute',inset:'auto',width:width+'px',height:height+'px',maxWidth:'none',left:`calc(50% - ${width*a.x}px)`,bottom:-(height*(1-a.foot))+'px',translate:'none',padding:'0',objectFit:'contain'});
     el.style.setProperty('--hero-visible-height',target+'px');el.classList.add('hero-body-normalized');
+    el.style.setProperty('--aura-body-shift',a.bodyX!=null?((a.bodyX-a.x)*width)+'px':'0px');
   }
   window.GEMWOVEN_FORMS={decorateBody,fitBody};
   const decorate=G.decorate;
