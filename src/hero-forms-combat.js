@@ -11,7 +11,7 @@ const formBaseSkills=Object.fromEntries(Object.entries(HEROES).map(([key,hero])=
 for(const key of Object.keys(progressionRules.HERO_FORMS))HEROES[key].skill=progressionRules.HERO_FORMS[key][combatHeroForm(key)-1].skill;
 const formOriginalRender=renderActors;
 renderActors=function(){
-  const key=state.key,form=combatHeroForm(key);
+  const key=state.key,form=combatHeroForm(key);heroKitPreload(key);
   HEROES[key].skill=progressionRules.HERO_FORMS[key]?.[form-1].skill||formBaseSkills[key];
   formOriginalRender();
   const root=actor('hero');root.dataset.heroForm=form;root.dataset.heroElement=key;
