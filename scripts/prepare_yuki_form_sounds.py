@@ -62,27 +62,22 @@ def clip(name, ref, start, end, beat, highpass=80, fade_in=.006, fade_out=.25, t
 
 for old in OUT.glob('*.wav'):
     old.unlink()
-# Every visible segment is scored for its whole length: continuous effects get a continuous recording (bed)
-# cut to the segment, each visible crack/burst its own synced hit (one clip may play once per hit), big
-# moments get weight and their natural tail. Times are the beats in forms-yuki.js, checked in the studio.
-# Shared hits (played on several beats):
+# Form 1's style (round 4): few, long, rich clips that keep their natural attack and decay; the hits stay synced
+# to their motions, and each ultimate ends on a long natural tail from the damage hit (form 1's deep boom
+# with its full sustain under a long glass/ice collapse). Sources were checked for clipping, hiss and
+# noise floor; gain never exceeds a 0.82 peak and there is no limiting or saturation.
+# Shared (played in both forms):
 clip('crack', 'yuki/ice-crack.mp3', .56, .95, "one sharp ice crack, at +0.06 s (prison locks, ice cracks, crescent cut); form 1's ice-crack recording", highpass=120, fade_in=.004, fade_out=.15)
-clip('boom', 'yuki/deep-boom.mp3', .44, 1.60, "deep boom under the shatter/burst, peaks at +0.12 s; form 1's deep-boom recording", highpass=35, fade_in=.03, fade_out=.45)
+clip('boom', 'yuki/deep-boom.mp3', .10, 3.19, "form 1's deep boom with its full natural sustain under the damage hit (3.1 s)", highpass=30, fade_in=.03, fade_out=.6)
 # ---- Four-star: Nguyệt Sương Băng Giáng ------------------------------------------------------------
-clip('f2-wind', '700233', 2.00, 3.40, 'bed: icy wind while she chants and the armour spiral wraps her, 0-1.4 s', highpass=150, fade_in=.2, fade_out=.35)
-clip('f2-moonrise', '145578', .50, 1.16, 'moon rises behind her: 0.56-1.25 s (until she points the staff)', highpass=300, fade_in=.04, fade_out=.25)
-clip('f2-beam', '683096', .75, 1.00, 'moonbeam falls 1.25 s and lands 1.42 s; whoosh peaks at the landing', highpass=150, fade_in=.02, fade_out=.06)
-clip('f2-beamhum', '447799', 1.60, 2.30, 'bed: the frozen moonbeam rings while it stands on the foe, 1.32-2.02 s', highpass=200, fade_in=.08, fade_out=.3)
-clip('f2-freeze', '452645', .40, 1.22, 'bed: frost spikes grow and the prison holds, crackling, 1.42-2.24 s', highpass=120, fade_in=.02, fade_out=.12)
-clip('f2-shatter', '329744', 6.50, 7.40, 'the ice prison shatters (damage) at 2.24 s, natural debris tail', highpass=60, fade_in=.003, fade_out=.35)
-clip('f2-tinkle', '789213', .55, 1.35, 'shards rain down and the moon fades, 2.40-3.2 s', highpass=500, fade_in=.05, fade_out=.35)
+clip('f2-gather', '145578', .30, 2.30, 'chant and moonrise: a bell-tree shimmer that blooms and decays naturally, 0-2.0 s', highpass=250, fade_in=.05, fade_out=.5)
+clip('f2-beam', '683096', .75, 1.72, 'the moonbeam falls; the whoosh peaks as it lands (1.42 s) and dies away naturally', highpass=150, fade_in=.02, fade_out=.35)
+clip('f2-freeze', '452645', .40, 1.40, 'bed: frost spikes grow and the prison holds, crackling, 1.42-2.4 s', highpass=120, fade_in=.02, fade_out=.3)
+clip('f2-shatter', '789213', .20, 4.60, 'the ice prison shatters (damage, 2.24 s) and the shards ring down for 4.4 s', highpass=80, fade_in=.004, fade_out=1.0)
 # ---- Six-star: Thiên Nguyệt Tuyết Liên -------------------------------------------------------------
-clip('f3-chimes', '667173', .75, 3.35, 'bed: the crystal aegis turns round her for the whole ultimate, 0-2.6 s', highpass=250, fade_in=.15, fade_out=.4)
-clip('f3-aegis', '437323', .15, .77, 'ice armour plates clink as the aegis spirals up: 0-0.64 s', highpass=200, fade_in=.01, fade_out=.15)
-clip('f3-fanopen', '805399', 0, .60, 'the frost fan snaps open beside her face: 0.30-0.90 s', highpass=200, fade_in=.004, fade_out=.1)
-clip('f3-fan', '569109', .95, 1.59, 'frost fan sweep and snowy gust to the foe: 0.64-1.28 s', highpass=120, fade_in=.03, fade_out=.2)
-clip('f3-lotus', '452645', 2.00, 3.40, 'bed: the ice lotus blooms, stands open and closes, creaking: 0.84-2.24 s', highpass=120, fade_in=.05, fade_out=.15)
-clip('f3-halberd', '507466', .14, .50, 'moon halberd swing: 1.36-1.72 s, swish peaks on the cut at 1.50 s', highpass=150, fade_in=.01, fade_out=.12)
-clip('f3-close', '452645', 5.50, 5.85, 'the petals grind shut: 1.60-1.95 s (crunches at 1.64 and 1.78 s)', highpass=120, fade_in=.005, fade_out=.1)
-clip('f3-burst', '789213', .20, 1.30, 'the lotus bursts into glassy shards and snow petals (damage) at 2.24 s, natural tinkling tail', highpass=80, fade_in=.004, fade_out=.4)
+clip('f3-aegis', '437323', .15, 1.30, 'ice armour plates clink as the aegis spirals up, natural ring-out, 0-1.15 s', highpass=200, fade_in=.01, fade_out=.4)
+clip('f3-fan', '569109', .95, 2.20, 'frost fan sweep and snowy gust to the foe, natural rise and fall, 0.64-1.9 s', highpass=120, fade_in=.03, fade_out=.5)
+clip('f3-lotus', '452645', 2.00, 3.40, 'bed: the ice lotus blooms, stands open and closes, creaking, 0.84-2.24 s', highpass=120, fade_in=.05, fade_out=.25)
+clip('f3-halberd', '507466', .14, .90, 'moon halberd swing, swish peaks on the cut (1.50 s), natural decay', highpass=150, fade_in=.01, fade_out=.3)
+clip('f3-burst', '487137', 4.35, 7.18, 'the lotus bursts into glass-like shards and snow petals (damage, 2.24 s), 2.8 s of falling glass', highpass=80, fade_in=.004, fade_out=.8)
 (AUDIO / 'hero-forms/ice-manifest.json').write_text(json.dumps(MANIFEST, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')

@@ -80,6 +80,8 @@ function yukiPrepareSounds(names){
   const context=combatV3AudioContext();if(!context)return;
   for(const name of names)decodeCastSound(context,'ice-'+name).catch(()=>{});
 }
+// Damage-hit volumes, balanced against the deep boom ringing under them (simulated mix peak <= 0.8).
+const YUKI_HIT_VOLUME={'f2-shatter':.72,'f3-burst':.52};
 function yukiScore(at,pending,hit,cues){
   yukiPrepareSounds([...new Set([hit,...cues.map(c=>c[1])])]);
   if(reduced)return;
@@ -103,7 +105,7 @@ function yukiUltimateHit(kit,pending,sound){
   // Third form: the foe also loses energy.
   if(kit.enemyDrain&&state.enemyHp>0){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.enemyDrain);popActorSkill('enemy','−'+kit.enemyDrain+' NĂNG LƯỢNG',false,pending);}
   update();
-  combatVoice('enemy','hurt');yukiSound(sound,{volume:.78,pan:.24,hit:true});setSpriteAction('enemy','hurt',350);
+  combatVoice('enemy','hurt');yukiSound(sound,{volume:YUKI_HIT_VOLUME[sound]??.7,pan:.24,hit:true});setSpriteAction('enemy','hurt',350);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',0,pending);
   if(state.enemyHp>0)pending.push(wait(kit.enemyDrain?420:0).then(()=>popActorSkill('enemy','CHOÁNG',false,pending)));
   hitAccents('hero',result,false,pending);
@@ -132,15 +134,12 @@ async function yukiMoonfrostUltimate(){
   let result={amount:0,blocked:0},moon=null,beam=null,seal=null;
   // Score: a bed under every continuous effect, a synced hit on every crack and burst (ms from the start).
   yukiScore(at,pending,'f2-shatter',[
-    [0,'f2-wind',.3,-.2],        // chant + armour spiral (bed, 0-1.4 s)
-    [560,'f2-moonrise',.42,-.25],// moon rises behind her (0.56-1.22 s)
-    [1250,'f2-beam',.5,.25],     // moonbeam falls; whoosh peaks as it lands at 1.42 s
-    [1320,'f2-beamhum',.3,.3],   // the beam rings while it stands on the foe (bed, 1.32-2.02 s)
-    [1420,'f2-freeze',.32,.3],    // spikes grow, prison holds (bed, 1.42-2.24 s)
+    [0,'f2-gather',.4,-.25],     // chant and moonrise: bell-tree shimmer blooming and decaying (0-2.0 s)
+    [1250,'f2-beam',.5,.25],     // the moonbeam falls; whoosh peaks as it lands (1.42 s), natural decay
+    [1420,'f2-freeze',.3,.3],    // spikes grow, prison holds (crackling bed, 1.42-2.42 s)
     [1640,'crack',.42,.3],       // the prison locks (1.70 s)
     [2090,'crack',.4,.3],        // white cracks run through the spikes (2.15 s)
-    [2200,'boom',.5,.2],         // weight under the shatter (peaks 2.32 s); the shatter itself plays on the hit
-    [2400,'f2-tinkle',.3,.3]]);  // shards rain down, moon fades (2.40-3.2 s)
+    [2200,'boom',.4,.15]]);     // form 1's deep boom, full 3.1 s sustain under the shatter (2.24 s, 4.4 s glass tail)  // shards rain down, moon fades (2.40-3.2 s)
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
@@ -197,16 +196,13 @@ async function yukiSnowLotusUltimate(){
   const kit=progressionKit('ice'),foe=yukiFoeBody(),hero=yukiHeroBody();
   let result={amount:0,blocked:0},aegis=null,gust=null,lotus=null,cut=null;
   yukiScore(at,pending,'f3-burst',[
-    [0,'f3-chimes',.18,-.25],     // the crystal aegis turns round her (bed, 0-2.6 s)
-    [0,'f3-aegis',.38,-.25],     // plates clink as it spirals up (0-0.62 s)
-    [300,'f3-fanopen',.36,-.15], // the frost fan snaps open (0.30 s)
-    [640,'f3-fan',.5,-.05],      // fan sweep, snowy gust to the foe (0.64-1.28 s)
-    [840,'f3-lotus',.28,.3],     // the lotus blooms, stands open, closes (bed, 0.84-2.24 s)
-    [1360,'f3-halberd',.5,.1],  // halberd swing, swish peaks on the cut (1.50 s)
-    [1440,'crack',.4,.3],       // the crescent cuts the foe (1.50 s)
-    [1600,'f3-close',.36,.3],     // petals grind shut (crunches 1.64 / 1.78 s)
+    [0,'f3-aegis',.38,-.25],     // plates clink as the aegis spirals up, natural ring-out (0-1.15 s)
+    [640,'f3-fan',.5,-.05],      // fan sweep and snowy gust, natural rise and fall (0.64-1.9 s)
+    [840,'f3-lotus',.28,.3],     // the lotus blooms, stands open, closes (creaking bed, 0.84-2.24 s)
+    [1360,'f3-halberd',.5,.1],   // halberd swing, swish peaks on the cut (1.50 s)
+    [1440,'crack',.4,.3],        // the crescent cuts the foe (1.50 s)
     [2020,'crack',.4,.3],        // the bud cracks (2.08 s)
-    [2200,'boom',.26,.2]]);      // weight under the burst; the burst itself plays on the hit (2.24 s)
+    [2200,'boom',.4,.15]]);     // form 1's deep boom, full 3.1 s sustain under the burst (2.24 s, 2.8 s of falling glass)      // weight under the burst; the burst itself plays on the hit (2.24 s)
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
