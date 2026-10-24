@@ -19,6 +19,8 @@ renderActors=function(){
   root.style.setProperty('--hero-art-scale',Math.max(1,(form===3?.82:.75)/(body.bodyHeight||.75)));
   root.style.setProperty('--hero-visible-height',`calc(var(--actor-size) * ${body.bodyHeight||.75})`);
   root.style.setProperty('--form-color',key==='shadow'?'#8d8d94':combatV3Palette[key].light);
+  // The aura's floor cloud stands between the boots, which need not be the cell's centre.
+  root.style.setProperty('--aura-floor-shift',`calc(var(--actor-size) * ${((body.feetX??.5)-.5).toFixed(4)})`);
   // Evolution pieces stay visible on every form; CSS re-anchors them per form body.
   if(form<3)return;
   const aura=document.createElement('span');aura.className='hero-form-effects combat-form-aura';aura.setAttribute('aria-hidden','true');

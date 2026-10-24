@@ -82,3 +82,5 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .hero-form-aura .form-aura-floorpart{-webkit-mask-image:linear-gradient(to top,#000 0 36%,transparent 40%);mask-image:linear-gradient(to top,#000 0 36%,transparent 40%)}
 .hero-form-aura .form-aura-upper{-webkit-mask-image:linear-gradient(to top,transparent 0 36%,#000 40%);mask-image:linear-gradient(to top,transparent 0 36%,#000 40%);margin-left:var(--aura-body-shift,0px)}
 .form-aura-foreground.form-aura-front .form-aura-upper{-webkit-mask-image:none;mask-image:none}
+/* Noct's strip draws its floor cloud 3.3% of the strip left of centre: put it on the boots. */
+[data-hero-element="shadow"] .hero-form-aura .form-aura-floorpart,[data-hero-element="shadow"] .form-aura-foreground:not(.form-aura-front) .form-aura-band{margin-left:calc(var(--aura-floor-shift,0px) + var(--hero-visible-height,120px) * 1.67 * .033)}

@@ -7,6 +7,7 @@ import io
 import hashlib
 import subprocess
 from PIL import Image
+import numpy as np
 
 root = Path(__file__).resolve().parent
 draft = '--draft' in sys.argv
@@ -231,6 +232,12 @@ def register_feet(sheet):
         cx=(band[0]+band[2])/2 if band else frame.width/2
         sheet['crown']=[round(cx*256/frame.width),round(bounds[1]*256/frame.height)]
         sheet['bodyX']=round((bounds[0]+bounds[2])/2*256/frame.width)
+        # Centre between the boots (solid runs >= 8px in the lowest 7% of the body), ignoring a
+        # scythe tip or blade point on the ground: the form aura's floor cloud sits there.
+        a=np.asarray(frame.getchannel('A'))>=128;low=a[bounds[3]-1-int((bounds[3]-bounds[1])*.07):bounds[3]]
+        cols=low.sum(0);hit=np.where(cols>=max(3,cols.max()*.45))[0]
+        runs=[r for r in np.split(hit,np.where(np.diff(hit)>2)[0]+1) if len(r)>=8]
+        sheet['feetX']=round((runs[0].min()+runs[-1].max())/2/frame.width,4) if runs else .5
 
 # Horizontal reach of every frame of a sheet (fractions of the frame), so combat
 # can keep wind-ups, recoils and wide weapons inside the arena edges.
