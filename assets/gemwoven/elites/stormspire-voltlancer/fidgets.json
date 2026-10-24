@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "lancetap",
+      "label": "Gõ thương, sấm chớp lóe",
+      "file": "lancetap.webp",
+      "whole": false
+    },
+    {
+      "name": "wings",
+      "label": "Xòe cánh sư điểu",
+      "file": "wings.webp",
+      "whole": false
+    }
+  ]
+}

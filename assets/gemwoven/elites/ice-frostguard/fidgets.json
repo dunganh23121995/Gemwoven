@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "halberdtap",
+      "label": "Gõ kích băng",
+      "file": "halberdtap.webp",
+      "whole": false
+    },
+    {
+      "name": "salute",
+      "label": "Đặt tay lên ngực chào",
+      "file": "salute.webp",
+      "whole": true
+    }
+  ]
+}

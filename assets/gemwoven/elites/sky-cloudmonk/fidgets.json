@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "prayer",
+      "label": "Chắp tay niệm",
+      "file": "prayer.webp",
+      "whole": true
+    },
+    {
+      "name": "cloudpuff",
+      "label": "Mây dưới chân cuộn lên",
+      "file": "cloudpuff.webp",
+      "whole": false
+    }
+  ]
+}

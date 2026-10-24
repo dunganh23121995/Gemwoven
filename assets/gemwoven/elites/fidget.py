@@ -58,18 +58,25 @@ def run(*cmd):
     return r.stdout
 
 
-def gen(cid, name, model, effort, what, action, loop=False):
+def gen(cid, name, model, effort, what, action, loop=False, green=False):
+    """green: draw on #00FF00 for characters whose own colours are close to magenta (pink/violet)."""
     d = WORK / cid / name; d.mkdir(parents=True, exist_ok=True)
+    (d / "green").unlink(missing_ok=True)
+    if green:
+        (d / "green").write_text("", encoding="utf-8")
     m = Image.open(master_of(cid)).convert("RGBA")
-    canvas = Image.new("RGBA", m.size, (255, 0, 255, 255)); canvas.alpha_composite(m); canvas.convert("RGB").save(d / "identity.png")
+    canvas = Image.new("RGBA", m.size, (0, 255, 0, 255) if green else (255, 0, 255, 255)); canvas.alpha_composite(m); canvas.convert("RGB").save(d / "identity.png")
     run(ANCHOR, "--input", d / "identity.png", "--rows", "4", "--cols", "2", "--cell-width", "512", "--cell-height", "512",
         "--subject-height-ratio", "0.8", "--feet-ratio", "0.94", "--output", d / "anchor.png")
-    (d / "prompt.txt").write_text((LOOP if loop else PROMPT).format(what=what, action=action) + "\n", encoding="utf-8")
+    text = (LOOP if loop else PROMPT).format(what=what, action=action)
+    if green:
+        text = text.replace("#FF00FF magenta", "#00FF00 green")
+    (d / "prompt.txt").write_text(text + "\n", encoding="utf-8")
     run(GEN, "--prompt-file", d / "prompt.txt", "--out", d / "raw.png", "--ref", d / "identity.png", "--ref", d / "anchor.png",
         "--model", model, "--effort", effort, "--timeout", "900")
 
 
-def key_cells(raw, out_dir, cell=256):
+def key_cells(raw, out_dir, cell=256, green=False):
     """Cut the 2x4 sheet on its grid and key out the magenta, keeping every pose exactly where
     Codex drew it in its cell (the shared processor re-centres each frame on its own bbox, which
     moves the whole body whenever an arm or a weapon goes up)."""
@@ -79,11 +86,14 @@ def key_cells(raw, out_dir, cell=256):
     for i in range(8):
         c = sheet[(i // 2) * h:(i // 2 + 1) * h, (i % 2) * w:(i % 2 + 1) * w].copy()
         r, g, b = c[..., 0], c[..., 1], c[..., 2]
-        key = np.minimum(r, b) - g                      # how magenta a pixel is
+        key = g - np.maximum(r, b) if green else np.minimum(r, b) - g   # how much a pixel looks like the key colour
         alpha = np.clip(1 - (key - 60) / 90, 0, 1)
         spill = np.clip(key / 255, 0, 1)                # pull the pink fringe back toward neutral
-        c[..., 0] = np.where(key > 0, np.minimum(r, g + (r - g) * (1 - spill)), r)
-        c[..., 2] = np.where(key > 0, np.minimum(b, g + (b - g) * (1 - spill)), b)
+        if green:
+            c[..., 1] = np.where(key > 0, np.maximum(r, b) + (g - np.maximum(r, b)) * (1 - spill), g)
+        else:
+            c[..., 0] = np.where(key > 0, np.minimum(r, g + (r - g) * (1 - spill)), r)
+            c[..., 2] = np.where(key > 0, np.minimum(b, g + (b - g) * (1 - spill)), b)
         img = Image.fromarray(np.concatenate([c, alpha[..., None] * 255], -1).clip(0, 255).astype("uint8"), "RGBA")
         # A pose Codex let run over its cell edge is cut off; it is replaced by the previous good
         # frame (these spill-overs happen at the held peak of an action, so a held frame reads right).
@@ -101,13 +111,14 @@ def proc(cid, name, core=9999, whole=False):
     d = WORK / cid / name
     for sub in ["proc", "aligned", "stable", "cells"]:
         shutil.rmtree(d / sub, ignore_errors=True)
-    key_cells(d / "raw.png", d / "cells")
+    key_cells(d / "raw.png", d / "cells", green=(d / "green").exists())
     # Codex draws all 8 frames at one scale on the template, so every frame is placed exactly like
     # the resting first frame (feet refined on the legs); a per-frame fit would be pulled off the
     # body by spread wings or a raised arm. Only what really moves is taken from the drawing.
     master = master_of(cid)
-    extra = ["--whole"] if whole else []
-    out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, *extra)
+    # A common foe's resting loop is Codex's drawing in every frame (no master frame at the seam).
+    extra = ["--whole-loop"] if name == "idle" else ["--whole"] if whole else []
+    out = run(HERE / "stabilize_idle.py", master, d / "stable", *[d / f"cells/idle-{i}.png" for i in range(1, 9)], "--core", core, "--same-transform", "--grow", 3, "--open", 1, "--min-area", 20, *extra)
     # A frame whose legs still do not match the master after placement (Codex moved the whole body)
     # is replaced like a clipped one: by the previous good frame, or by the rest pose near the end.
     meta = json.loads((d / "stable/stabilize-meta.json").read_text())
@@ -149,7 +160,7 @@ if __name__ == "__main__":
     cmd, cid, name, *rest = sys.argv[1:]
     flags = [r for r in rest if r.startswith("--")]; args = [r for r in rest if not r.startswith("--")]
     if cmd == "gen":
-        gen(cid, name, *args, loop="--loop" in flags)
+        gen(cid, name, *args, loop="--loop" in flags, green="--green" in flags)
     elif cmd == "proc":
         proc(cid, name, whole="--whole" in flags)
     else:

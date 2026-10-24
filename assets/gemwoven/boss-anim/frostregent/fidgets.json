@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "staff",
+      "label": "Gõ trượng, pha lê lóe sáng",
+      "file": "staff.webp",
+      "whole": false
+    },
+    {
+      "name": "palm",
+      "label": "Hoa băng nở trên tay",
+      "file": "palm.webp",
+      "whole": false
+    }
+  ]
+}

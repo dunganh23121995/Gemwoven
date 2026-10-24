@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "pearlglow",
+      "label": "Ngọc trai đinh ba tỏa sáng",
+      "file": "pearlglow.webp",
+      "whole": false
+    },
+    {
+      "name": "waterorb",
+      "label": "Cầu nước trong lòng bàn tay",
+      "file": "waterorb.webp",
+      "whole": false
+    }
+  ]
+}

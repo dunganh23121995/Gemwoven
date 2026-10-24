@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "tail",
+      "label": "Quất đuôi, lửa tím bùng",
+      "file": "tail.webp",
+      "whole": false
+    },
+    {
+      "name": "roar",
+      "label": "Gầm, bờm dựng điện",
+      "file": "roar.webp",
+      "whole": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "daggerspin",
+      "label": "Xoay dao trăng khuyết",
+      "file": "daggerspin.webp",
+      "whole": false
+    },
+    {
+      "name": "moonmark",
+      "label": "Ấn trăng khuyết lóe sáng",
+      "file": "moonmark.webp",
+      "whole": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "corespin",
+      "label": "Lõi bánh răng nạp năng lượng",
+      "file": "corespin.webp",
+      "whole": false
+    },
+    {
+      "name": "flex",
+      "label": "Giơ nắm đấm cơ khí",
+      "file": "flex.webp",
+      "whole": false
+    }
+  ]
+}

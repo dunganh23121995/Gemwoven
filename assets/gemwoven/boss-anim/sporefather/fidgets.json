@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "stafftap",
+      "label": "Giơ gậy, bào tử bật ra",
+      "file": "stafftap.webp",
+      "whole": true
+    },
+    {
+      "name": "capglow",
+      "label": "Nấm nhỏ sáng rực",
+      "file": "capglow.webp",
+      "whole": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "elytra",
+      "label": "Hé vỏ, vỗ cánh",
+      "file": "elytra.webp",
+      "whole": false
+    },
+    {
+      "name": "suncrest",
+      "label": "Mào mặt trời rực sáng",
+      "file": "suncrest.webp",
+      "whole": false
+    }
+  ]
+}

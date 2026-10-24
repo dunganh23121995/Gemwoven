@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "tridenttap",
+      "label": "Gõ đinh ba, ngọc trai sáng",
+      "file": "tridenttap.webp",
+      "whole": false
+    },
+    {
+      "name": "finflare",
+      "label": "Dựng vây đầu rồng",
+      "file": "finflare.webp",
+      "whole": false
+    }
+  ]
+}

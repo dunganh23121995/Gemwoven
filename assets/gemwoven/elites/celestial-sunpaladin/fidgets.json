@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "salute",
+      "label": "Giơ kiếm chào",
+      "file": "salute.webp",
+      "whole": false
+    },
+    {
+      "name": "shieldsun",
+      "label": "Dựng khiên, mặt trời rực sáng",
+      "file": "shieldsun.webp",
+      "whole": false
+    }
+  ]
+}

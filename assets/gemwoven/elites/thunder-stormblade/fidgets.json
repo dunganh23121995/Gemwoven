@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "crossblades",
+      "label": "Bắt chéo song kiếm",
+      "file": "crossblades.webp",
+      "whole": true
+    },
+    {
+      "name": "charge",
+      "label": "Song kiếm tụ sét",
+      "file": "charge.webp",
+      "whole": false
+    }
+  ]
+}

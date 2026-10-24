@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "beard",
+      "label": "Vuốt râu",
+      "file": "beard.webp",
+      "whole": false
+    },
+    {
+      "name": "seedglow",
+      "label": "Hạt ngọc trên gậy rực sáng",
+      "file": "seedglow.webp",
+      "whole": false
+    }
+  ]
+}

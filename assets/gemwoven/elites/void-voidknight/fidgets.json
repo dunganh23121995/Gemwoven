@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "voideye",
+      "label": "Mắt hư không rực sáng",
+      "file": "voideye.webp",
+      "whole": false
+    },
+    {
+      "name": "cape",
+      "label": "Áo choàng tinh tú bay",
+      "file": "cape.webp",
+      "whole": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "orb",
+      "label": "Nâng quả cầu sao",
+      "file": "orb.webp",
+      "whole": false
+    },
+    {
+      "name": "stafftap",
+      "label": "Gõ gậy, nhật thực lóe sáng",
+      "file": "stafftap.webp",
+      "whole": false
+    }
+  ]
+}

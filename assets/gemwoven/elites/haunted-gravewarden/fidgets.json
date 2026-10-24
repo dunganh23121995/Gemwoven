@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "lantern",
+      "label": "Lắc đèn hồn ma",
+      "file": "lantern.webp",
+      "whole": true
+    },
+    {
+      "name": "shovel",
+      "label": "Dậm xẻng thử đất",
+      "file": "shovel.webp",
+      "whole": false
+    }
+  ]
+}

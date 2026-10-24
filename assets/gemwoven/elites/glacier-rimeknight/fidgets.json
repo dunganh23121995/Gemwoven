@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "frostblade",
+      "label": "Băng kết dọc lưỡi kiếm",
+      "file": "frostblade.webp",
+      "whole": false
+    },
+    {
+      "name": "mantle",
+      "label": "Phủi tuyết trên vai",
+      "file": "mantle.webp",
+      "whole": false
+    }
+  ]
+}

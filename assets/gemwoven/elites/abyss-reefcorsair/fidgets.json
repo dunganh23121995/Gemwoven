@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "shoulder",
+      "label": "Vác đao lên vai",
+      "file": "shoulder.webp",
+      "whole": true
+    },
+    {
+      "name": "coralglow",
+      "label": "San hô phát sáng",
+      "file": "coralglow.webp",
+      "whole": false
+    }
+  ]
+}

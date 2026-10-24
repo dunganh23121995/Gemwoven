@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "staffshake",
+      "label": "Lắc gậy, bào tử bật ra",
+      "file": "staffshake.webp",
+      "whole": false
+    },
+    {
+      "name": "amulet",
+      "label": "Xoa ngọc bùa tím",
+      "file": "amulet.webp",
+      "whole": false
+    }
+  ]
+}

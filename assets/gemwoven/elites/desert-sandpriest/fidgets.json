@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "ankhglow",
+      "label": "Giơ trượng Ankh tỏa sáng",
+      "file": "ankhglow.webp",
+      "whole": false
+    },
+    {
+      "name": "sandpalm",
+      "label": "Xoáy cát trong lòng bàn tay",
+      "file": "sandpalm.webp",
+      "whole": false
+    }
+  ]
+}

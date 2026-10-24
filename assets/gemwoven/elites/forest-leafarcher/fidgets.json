@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "testdraw",
+      "label": "Thử dây cung",
+      "file": "testdraw.webp",
+      "whole": true
+    },
+    {
+      "name": "quiver",
+      "label": "Kiểm tra ống tên",
+      "file": "quiver.webp",
+      "whole": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "stafftap",
+      "label": "Gõ trượng, tia sét nảy",
+      "file": "stafftap.webp",
+      "whole": false
+    },
+    {
+      "name": "crackle",
+      "label": "Tĩnh điện lóe khắp người",
+      "file": "crackle.webp",
+      "whole": false
+    }
+  ]
+}

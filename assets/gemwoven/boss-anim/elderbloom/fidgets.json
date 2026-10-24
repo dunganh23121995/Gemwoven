@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "heart",
+      "label": "Tim ngọc đập, hoa nở",
+      "file": "heart.webp",
+      "whole": false
+    },
+    {
+      "name": "fist",
+      "label": "Xòe tay, hoa nở trên lòng bàn tay",
+      "file": "fist.webp",
+      "whole": true
+    }
+  ]
+}

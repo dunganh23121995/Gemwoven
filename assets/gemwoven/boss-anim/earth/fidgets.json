@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "fists",
+      "label": "Đập hai nắm đá",
+      "file": "fists.webp",
+      "whole": false
+    },
+    {
+      "name": "crystal",
+      "label": "Ngọc ngực bừng sáng, cây xào xạc",
+      "file": "crystal.webp",
+      "whole": false
+    }
+  ]
+}

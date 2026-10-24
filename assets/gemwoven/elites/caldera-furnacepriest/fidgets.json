@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "ember",
+      "label": "Nhóm cầu lửa trên tay",
+      "file": "ember.webp",
+      "whole": false
+    },
+    {
+      "name": "stafftap",
+      "label": "Gõ gậy, đèn lò bùng sáng",
+      "file": "stafftap.webp",
+      "whole": false
+    }
+  ]
+}

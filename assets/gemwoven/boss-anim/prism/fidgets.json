@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "wings",
+      "label": "Xòe cánh pha lê",
+      "file": "wings.webp",
+      "whole": true
+    },
+    {
+      "name": "claws",
+      "label": "Mài lưỡi vuốt pha lê",
+      "file": "claws.webp",
+      "whole": false
+    }
+  ]
+}

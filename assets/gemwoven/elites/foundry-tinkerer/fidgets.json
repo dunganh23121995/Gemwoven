@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "drone",
+      "label": "Drone đồng hồ ngó xuống",
+      "file": "drone.webp",
+      "whole": false
+    },
+    {
+      "name": "wrenchtap",
+      "label": "Gõ cờ lê vào lòng bàn tay",
+      "file": "wrenchtap.webp",
+      "whole": true
+    }
+  ]
+}

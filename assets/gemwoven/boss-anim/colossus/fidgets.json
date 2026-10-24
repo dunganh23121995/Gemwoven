@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "core",
+      "label": "Lõi bánh răng quay, bừng sáng",
+      "file": "core.webp",
+      "whole": false
+    },
+    {
+      "name": "grip",
+      "label": "Giơ nắm đấm, siết tay",
+      "file": "grip.webp",
+      "whole": false
+    }
+  ]
+}

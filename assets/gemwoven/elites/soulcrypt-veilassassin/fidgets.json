@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "twirl",
+      "label": "Xoay dao găm",
+      "file": "twirl.webp",
+      "whole": false
+    },
+    {
+      "name": "backflip",
+      "label": "Tung dao, bắt lại",
+      "file": "backflip.webp",
+      "whole": false
+    }
+  ]
+}

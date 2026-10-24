@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "roses",
+      "label": "Hoa hồng nở rực",
+      "file": "roses.webp",
+      "whole": false
+    },
+    {
+      "name": "beckon",
+      "label": "Vẫy tay gọi",
+      "file": "beckon.webp",
+      "whole": true
+    }
+  ]
+}

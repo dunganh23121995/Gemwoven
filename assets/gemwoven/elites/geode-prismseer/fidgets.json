@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "staffshine",
+      "label": "Pha lê trên gậy lóe sáng",
+      "file": "staffshine.webp",
+      "whole": true
+    },
+    {
+      "name": "shard",
+      "label": "Mọc mảnh pha lê trên tay",
+      "file": "shard.webp",
+      "whole": true
+    }
+  ]
+}

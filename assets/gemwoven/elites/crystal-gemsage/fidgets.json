@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "orbspin",
+      "label": "Ngọc xoay quanh quả cầu",
+      "file": "orbspin.webp",
+      "whole": false
+    },
+    {
+      "name": "scepter",
+      "label": "Giơ quyền trượng pha lê",
+      "file": "scepter.webp",
+      "whole": false
+    }
+  ]
+}

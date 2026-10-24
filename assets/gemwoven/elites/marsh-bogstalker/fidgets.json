@@ -1,0 +1,10 @@
+{
+  "fidgets": [
+    {
+      "name": "mushrooms",
+      "label": "Nấm vai phun bào tử",
+      "file": "mushrooms.webp",
+      "whole": false
+    }
+  ]
+}

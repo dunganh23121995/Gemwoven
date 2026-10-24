@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "fistbump",
+      "label": "Đập hai nắm đấm",
+      "file": "fistbump.webp",
+      "whole": false
+    },
+    {
+      "name": "coreflare",
+      "label": "Lõi dung nham bùng sáng",
+      "file": "coreflare.webp",
+      "whole": false
+    }
+  ]
+}

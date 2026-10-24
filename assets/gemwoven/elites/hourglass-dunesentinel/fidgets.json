@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "bladeup",
+      "label": "Giơ kiếm khopesh",
+      "file": "bladeup.webp",
+      "whole": true
+    },
+    {
+      "name": "gemglow",
+      "label": "Ngọc lam bừng sáng",
+      "file": "gemglow.webp",
+      "whole": false
+    }
+  ]
+}

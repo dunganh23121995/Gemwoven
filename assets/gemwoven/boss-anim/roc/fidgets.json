@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "wings",
+      "label": "Xòe cánh",
+      "file": "wings.webp",
+      "whole": true
+    },
+    {
+      "name": "ruffle",
+      "label": "Xù lông ngực",
+      "file": "ruffle.webp",
+      "whole": false
+    }
+  ]
+}

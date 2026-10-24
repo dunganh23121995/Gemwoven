@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "orb",
+      "label": "Quả cầu bão tuyết cuộn xoáy",
+      "file": "orb.webp",
+      "whole": false
+    },
+    {
+      "name": "snowflake",
+      "label": "Kết bông tuyết trên tay",
+      "file": "snowflake.webp",
+      "whole": false
+    }
+  ]
+}

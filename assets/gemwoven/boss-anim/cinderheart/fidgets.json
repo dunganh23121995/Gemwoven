@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "core",
+      "label": "Lõi lửa bừng cháy",
+      "file": "core.webp",
+      "whole": false
+    },
+    {
+      "name": "chestpound",
+      "label": "Đấm ngực, dung nham lóe",
+      "file": "chestpound.webp",
+      "whole": true
+    }
+  ]
+}

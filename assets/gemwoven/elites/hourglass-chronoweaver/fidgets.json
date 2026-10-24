@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "flip",
+      "label": "Cát thời gian chảy ngược",
+      "file": "flip.webp",
+      "whole": false
+    },
+    {
+      "name": "clockrune",
+      "label": "Vẽ vòng đồng hồ phép",
+      "file": "clockrune.webp",
+      "whole": true
+    }
+  ]
+}

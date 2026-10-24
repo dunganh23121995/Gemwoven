@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "pearlglow",
+      "label": "Ngọc trai trên gậy tỏa sáng",
+      "file": "pearlglow.webp",
+      "whole": false
+    },
+    {
+      "name": "hairflip",
+      "label": "Hất mái tóc",
+      "file": "hairflip.webp",
+      "whole": false
+    }
+  ]
+}

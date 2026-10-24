@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "fistshield",
+      "label": "Đấm gõ vào khiên",
+      "file": "fistshield.webp",
+      "whole": false
+    },
+    {
+      "name": "heartbloom",
+      "label": "Tim ngọc lục bảo rực sáng",
+      "file": "heartbloom.webp",
+      "whole": false
+    }
+  ]
+}

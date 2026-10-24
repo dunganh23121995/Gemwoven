@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "core",
+      "label": "Lõi hồn rực sáng",
+      "file": "core.webp",
+      "whole": false
+    },
+    {
+      "name": "soulflame",
+      "label": "Hồn bị bắt lập lòe trên vuốt",
+      "file": "soulflame.webp",
+      "whole": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "keytap",
+      "label": "Xoay chìa khóa ngục",
+      "file": "keytap.webp",
+      "whole": false
+    },
+    {
+      "name": "chains",
+      "label": "Giật xích",
+      "file": "chains.webp",
+      "whole": false
+    }
+  ]
+}

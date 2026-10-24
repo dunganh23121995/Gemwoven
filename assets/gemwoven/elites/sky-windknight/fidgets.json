@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "helmwings",
+      "label": "Lông vũ xù lên trong gió",
+      "file": "helmwings.webp",
+      "whole": false
+    },
+    {
+      "name": "windpalm",
+      "label": "Gió xoáy trong lòng bàn tay",
+      "file": "windpalm.webp",
+      "whole": false
+    }
+  ]
+}

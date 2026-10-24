@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "halo",
+      "label": "Hào quang và kiếm rực sáng",
+      "file": "halo.webp",
+      "whole": false
+    },
+    {
+      "name": "wings",
+      "label": "Nâng cánh thiên thần",
+      "file": "wings.webp",
+      "whole": true
+    }
+  ]
+}

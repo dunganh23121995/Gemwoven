@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "finflare",
+      "label": "Xòe vây, sừng san hô sáng",
+      "file": "finflare.webp",
+      "whole": false
+    },
+    {
+      "name": "tailflick",
+      "label": "Vẫy vây đuôi",
+      "file": "tailflick.webp",
+      "whole": false
+    }
+  ]
+}

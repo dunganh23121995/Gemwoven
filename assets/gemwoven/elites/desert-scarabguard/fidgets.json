@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "sunshield",
+      "label": "Khiên mặt trời lóe sáng",
+      "file": "sunshield.webp",
+      "whole": true
+    },
+    {
+      "name": "khopesh",
+      "label": "Đặt kiếm khopesh chào",
+      "file": "khopesh.webp",
+      "whole": true
+    }
+  ]
+}
