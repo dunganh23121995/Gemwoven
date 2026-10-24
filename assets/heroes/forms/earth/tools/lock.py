@@ -26,6 +26,11 @@ w[y0:y1, x0:x1] = 1
 for k in range(feather):   # soft lower edge only: the shoulders below breathe
     yy = y1 - feather + k
     w[yy, x0:x1] = 1 - (k + 1) / (feather + 1)
+if "--shape" in flags:   # only the master's own silhouette inside the box (something may pass behind the head)
+    from scipy import ndimage
+    sil = ndimage.binary_erosion(m[..., 3] > .5, iterations=1).astype(np.float32)
+    sil = np.asarray(Image.fromarray((sil * 255).astype("uint8")).filter(__import__("PIL.ImageFilter", fromlist=["x"]).GaussianBlur(1.2)), np.float32) / 255
+    w = w * sil
 w = w[..., None]
 shutil.copy2(sheet_p, str(sheet_p) + ".bak")
 arr = np.asarray(sheet, dtype=np.float32) / 255

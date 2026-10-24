@@ -36,7 +36,9 @@ def cost(F, dx, dy, s):
     return np.abs(pm(m) - pm(R))[mask].mean() + np.abs(m[..., 3] - R[..., 3])[mask].mean()
 for i in range(1, 9):
     F = load(i)
-    best = min((cost(F, dx, dy, 1.0), dx, dy, 1.0) for dy in range(-48, 49, 4) for dx in range(-24, 25, 4))
+    fy = np.where(F[..., 3].max(1) > .5)[0].max(); ry = np.where(R[..., 3].max(1) > .5)[0].max()
+    g0 = int(ry - fy)   # first guess: soles on the reference's soles
+    best = min(min((cost(F, dx, dy, 1.0), dx, dy, 1.0) for dy in range(c - 24, c + 25, 4) for dx in range(-24, 25, 4)) for c in (g0, 0))
     for step in (2, 1):
         best = min((cost(F, dx, dy, s), dx, dy, s) for s in [best[3] + k * .01 * step for k in (-2, -1, 0, 1, 2)]
                    for dy in range(best[2] - 2 * step, best[2] + 2 * step + 1, step) for dx in range(best[1] - 2 * step, best[1] + 2 * step + 1, step))
