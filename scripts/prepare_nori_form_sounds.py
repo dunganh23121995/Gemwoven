@@ -26,17 +26,25 @@ TARGET_RMS, MAX_PEAK = .12, .85
 # name: (source, excerpt start, end (s), high-pass Hz, fade in, fade out, beat on screen)
 # the excerpt length is the beat's length (ms in the beat text, measured from the ultimate's start)
 CLIPS = {
+    # shared by both forms
+    'heal-bed': ('fs:368453', 3.9, 5.15, 150, .25, .3, 'the healing spiral around him (bed), 0-1100 / 0-1250 ms'),
+    'swing': ('fs:475135', .05, .30, 60, .01, .06, 'the hammer swings down into the blow, 770-920 / 1500-1640 ms'),
+    'slam': ('fs:513694', .04, 1.10, 35, .002, .3, 'the hammer hits the ground; its weight rings on under the quake, 920 / 1640 ms on'),
+    'pebble': ('fs:336023', 1.94, 2.12, 80, .002, .06, 'one burst of the running jade crack, played once per burst'),
     # Ngọc Thụ Hộ Thể (four stars)
     'f2-gather': ('form1:earth-charge', .36, 1.10, 0, .02, .2, 'hammer raised in the healing spiral, 0-760 ms'),
-    'f2-slam': ('fs:513694', .04, .30, 35, .002, .1, 'hammer into the ground (and the jade crack running), 920-1190 ms'),
-    'sprout': ('fs:479160', 0, .44, 120, .02, .12, 'jade vines burst at the foe\'s feet and tighten, 1190-1630 ms'),
-    'jade': ('fs:419146', .06, .72, 300, .004, .3, 'the bound jade sapling gleams, then shatters, 1630-2300 ms'),
+    'crack-run': ('fs:222521', 1.0, 1.52, 80, .03, .12, 'the jade crack running along the ground, 990-1510 ms'),
+    'sprout': ('fs:479160', 0, .72, 120, .02, .15, "jade vines burst at the foe's feet and hold it bound, 1180-1900 ms"),
+    'jade': ('fs:419146', .3, .76, 300, .03, .15, 'the bound jade sapling opens and gleams, 1450-1900 ms'),
+    'shatter': ('fs:221528', .28, .95, 150, .002, .2, 'the vines and sapling shatter into jade shards, 1900-2400 ms'),
     # Vạn Mộc Thiên Thành (six stars)
     'f3-gather': ('form1:earth-charge', .17, 1.10, 0, .02, .2, 'hammer raised in the healing spiral, 0-950 ms'),
-    'f3-bash': ('form1:shield-bash', .08, .25, 45, .002, .07, 'shield bash, 1260-1420 ms (the hammer wind-up starts at 1420)'),
-    'f3-slam': ('fs:513694', .04, .22, 35, .002, .07, 'hammer slam, 1630-1810 ms'),
-    'grow': ('fs:848983', 1.25, 1.87, 50, .05, .15, 'the world-tree shoots up from the foe\'s feet, 1810-2440 ms'),
-    'leaves': ('fs:368453', 5.6, 6.15, 150, .08, .2, 'its crown sheds its leaves and fades, 2440-3000 ms'),
+    'rush': ('form1:earth-launch', 0, .29, 0, .005, .08, 'the shield charge, 970-1260 ms'),
+    'f3-bash': ('form1:shield-bash', .08, .33, 45, .002, .1, 'shield bash, 1260-1400 ms'),
+    'roots': ('fs:222521', 2.0, 2.72, 80, .03, .15, "the roots crack up through the soil and lock the cage, 1710-2430 ms"),
+    'roots-break': ('fs:552006', 4.36, 4.86, 100, .002, .2, 'the root cage snaps and crumbles, 2660-3150 ms'),
+    'grow': ('fs:848983', 1.15, 1.9, 50, .05, .15, "the world-tree shoots up from the foe's feet, 1700-2450 ms"),
+    'leaves': ('fs:368453', 5.6, 6.3, 150, .08, .25, 'its blazing crown sheds its leaves and fades, 2450-3150 ms'),
 }
 
 
