@@ -1,1 +1,31 @@
-/* lumi form kits */
+/* Lumi's star forms (forms-lumi.js): generated strips stepped by script, resting star orbits. */
+.lumi-fx{position:absolute;pointer-events:none;z-index:7;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;background-position:0% 0}
+.lumi-fx-star,.lumi-fx-orbitbolt{z-index:8;filter:drop-shadow(0 0 5px #ffe7a0aa)}
+.lumi-fx-starpop,.lumi-fx-ringburst{z-index:8;filter:drop-shadow(0 0 6px #fff1b8aa)}
+.lumi-fx-groundstrike{z-index:8;filter:drop-shadow(0 0 6px #d9c2ffaa)}
+.lumi-fx.lumi-bolt{z-index:8;filter:drop-shadow(0 0 6px #c9a6ff) drop-shadow(0 0 2px #fff)}
+.lumi-fx.lumi-bolt.big{filter:drop-shadow(0 0 10px #d6b8ff) drop-shadow(0 0 3px #fff)}
+.lumi-fx.lumi-sky{z-index:6;filter:drop-shadow(0 0 8px #ffdf8a99)}
+.lumi-fx-galaxy.lumi-sky{opacity:.92;filter:drop-shadow(0 0 10px #b78bff99) brightness(1.1)}
+.lumi-fx.lumi-mote{z-index:8;filter:drop-shadow(0 0 4px #ffe58a)}
+.lumi-fx.lumi-finale{z-index:9}
+/* Resting stars: <i> swings up/down (and flips in front of/behind her body), <u> swings left/right a
+ * quarter period later, <b> is the twinkling star. Hidden while she acts, rides her spear or is down. */
+.lumi-idle-stars{position:absolute;inset:0;pointer-events:none;transition:opacity .25s ease-out}
+.lumi-idle-stars i,.lumi-idle-stars u{position:absolute;inset:0;display:block}
+.lumi-idle-stars i{animation:lumi-star-y var(--dur) ease-in-out var(--delay) infinite alternate}
+.lumi-idle-stars u{animation:lumi-star-x var(--dur) ease-in-out calc(var(--delay) - var(--dur) / 2) infinite alternate}
+.lumi-idle-stars b{position:absolute;left:50%;top:var(--y);width:var(--s);aspect-ratio:1;translate:-50% -50%;background:var(--star-src) 0 0/400% 100% no-repeat;filter:drop-shadow(0 0 3px #ffe9a0);
+  animation:lumi-star-twinkle var(--star-ms) steps(4,jump-none) infinite,lumi-star-depth var(--dur) ease-in-out var(--delay) infinite alternate}
+@keyframes lumi-star-y{0%{translate:0 calc(var(--ry) * -1%);z-index:0}49.9%{z-index:0}50%{z-index:3}100%{translate:0 calc(var(--ry) * 1%);z-index:3}}
+@keyframes lumi-star-x{from{translate:calc(var(--rx) * -1%) 0}to{translate:calc(var(--rx) * 1%) 0}}
+@keyframes lumi-star-twinkle{from{background-position:0% 0}to{background-position:100% 0}}
+@keyframes lumi-star-depth{from{scale:.68;opacity:.8}to{scale:1.12;opacity:1}}
+.scene .hero-actor:is(.combat-v3-acting,[data-riding],[data-floating="false"]) .lumi-idle-stars{opacity:0}
+body.reduced-motion .lumi-idle-stars,body.ambience-paused .lumi-idle-stars *{animation-play-state:paused}
+body.reduced-motion .lumi-idle-stars{display:none}
+/* Riding her spear: the comet streams from the spear's butt end, behind her. */
+.scene .hero-actor[data-riding] .depart-comet{left:-80%;top:25%;rotate:-7deg;transform-origin:95% 50%}
+/* While her sky sign (seal or galaxy) hangs over the foe, the foe's head bar fades back behind it. */
+.scene:has(#heroActor[data-lumi-sky]) :is(#enemyHeadHud,#heroHeadHud){opacity:.28!important;transition:opacity .2s}
+.lumi-warm{position:absolute;left:50%;top:50%;width:2px;height:2px;opacity:.01;pointer-events:none;background-size:100% 100%;background-repeat:no-repeat}

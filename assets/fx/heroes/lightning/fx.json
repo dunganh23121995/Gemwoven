@@ -1,0 +1,47 @@
+{
+  "star": {
+    "file": "assets/fx/heroes/lightning/star.webp",
+    "count": 4,
+    "frameDuration": 70
+  },
+  "starpop": {
+    "file": "assets/fx/heroes/lightning/starpop.webp",
+    "count": 6,
+    "frameDuration": 55
+  },
+  "groundstrike": {
+    "file": "assets/fx/heroes/lightning/groundstrike.webp",
+    "count": 6,
+    "frameDuration": 60
+  },
+  "pentagram": {
+    "file": "assets/fx/heroes/lightning/pentagram.webp",
+    "count": 6,
+    "frameDuration": 90
+  },
+  "starbolt": {
+    "file": "assets/fx/heroes/lightning/starbolt.webp",
+    "count": 4,
+    "frameDuration": 55
+  },
+  "galaxy": {
+    "file": "assets/fx/heroes/lightning/galaxy.webp",
+    "count": 4,
+    "frameDuration": 120
+  },
+  "orbitbolt": {
+    "file": "assets/fx/heroes/lightning/orbitbolt.webp",
+    "count": 4,
+    "frameDuration": 70
+  },
+  "ringburst": {
+    "file": "assets/fx/heroes/lightning/ringburst.webp",
+    "count": 6,
+    "frameDuration": 55
+  },
+  "idlestar": {
+    "file": "assets/fx/heroes/lightning/idlestar.webp",
+    "count": 4,
+    "frameDuration": 160
+  }
+}

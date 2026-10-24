@@ -149,6 +149,110 @@
           ],
           "footY": 0.94,
           "frameDuration": 100
+        },
+        "hover": {
+          "file": "assets/heroes/forms/lightning/form-3/hover.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 110
+        },
+        "skill": {
+          "file": "assets/heroes/forms/lightning/form-3/skill.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100,
+          "scale": 1.375
+        },
+        "ride": {
+          "file": "assets/heroes/forms/lightning/form-3/ride.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 110,
+          "scale": 1.375
         }
       }
     },
@@ -300,6 +404,75 @@
           ],
           "footY": 0.94,
           "frameDuration": 100
+        },
+        "hover": {
+          "file": "assets/heroes/forms/lightning/form-2/hover.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 110
+        },
+        "skill": {
+          "file": "assets/heroes/forms/lightning/form-2/skill.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ],
+            [
+              141,
+              49
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100,
+          "scale": 1.375
         }
       }
     }

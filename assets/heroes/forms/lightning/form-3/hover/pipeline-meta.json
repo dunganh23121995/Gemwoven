@@ -1,0 +1,95 @@
+{
+ "raw": "assets/heroes/forms/lightning/form-3/hover/raw-sheet.png",
+ "scale": 0.4849,
+ "cell": 256,
+ "idle_height": 193,
+ "frame1_height": 398,
+ "frames": [
+  {
+   "bbox": [
+    28,
+    49,
+    220,
+    241
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    27.5,
+    47.6
+   ]
+  },
+  {
+   "bbox": [
+    20,
+    48,
+    219,
+    241
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    20.5,
+    47.6
+   ]
+  },
+  {
+   "bbox": [
+    14,
+    49,
+    219,
+    241
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    13.5,
+    47.6
+   ]
+  },
+  {
+   "bbox": [
+    22,
+    48,
+    214,
+    241
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    22.5,
+    47.6
+   ]
+  },
+  {
+   "bbox": [
+    20,
+    48,
+    214,
+    241
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    20.0,
+    47.6
+   ]
+  },
+  {
+   "bbox": [
+    26,
+    48,
+    220,
+    241
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    25.5,
+    47.6
+   ]
+  }
+ ],
+ "model": "gpt-6-astra high",
+ "processor": "tools/process_combat_sheet.py <raw> 2 3 <out> --form N --cell 256|352: green key, whole-sheet components, one uniform scale, boots/feet translation"
+}

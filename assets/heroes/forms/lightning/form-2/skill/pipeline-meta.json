@@ -1,0 +1,95 @@
+{
+ "raw": "assets/heroes/forms/lightning/form-2/skill/raw-sheet.png",
+ "scale": 0.4792,
+ "cell": 352,
+ "idle_height": 184,
+ "frame1_height": 384,
+ "frames": [
+  {
+   "bbox": [
+    107,
+    148,
+    247,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    105.5,
+    147.9
+   ]
+  },
+  {
+   "bbox": [
+    108,
+    134,
+    233,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    108.0,
+    133.9
+   ]
+  },
+  {
+   "bbox": [
+    101,
+    105,
+    238,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    101.0,
+    104.9
+   ]
+  },
+  {
+   "bbox": [
+    87,
+    132,
+    278,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    87.0,
+    131.9
+   ]
+  },
+  {
+   "bbox": [
+    92,
+    147,
+    306,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    92.0,
+    146.9
+   ]
+  },
+  {
+   "bbox": [
+    106,
+    148,
+    246,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    105.0,
+    147.9
+   ]
+  }
+ ],
+ "model": "gpt-6-astra high",
+ "processor": "tools/process_combat_sheet.py <raw> 2 3 <out> --form N --cell 256|352: green key, whole-sheet components, one uniform scale, boots/feet translation"
+}
