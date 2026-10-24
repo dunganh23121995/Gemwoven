@@ -1,0 +1,10 @@
+/* Departure companions and trails (hero-departures.js). Each strip plays its frames in a loop. */
+.depart-fx,.depart-mark{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;aspect-ratio:1}
+.depart-fx{z-index:1;animation:depart-frames var(--fx-ms) steps(var(--fx-count),jump-none) infinite}
+.depart-fox{width:46%;left:-30%;bottom:-2%;filter:drop-shadow(0 0 6px #ff9a3caa)}
+.depart-rabbit{width:36%;left:-22%;bottom:3%;filter:drop-shadow(0 0 4px #cfeeffaa)}
+.depart-comet{width:92%;left:-66%;top:22%;filter:drop-shadow(0 0 5px #ffe58aaa)}
+.depart-mark{z-index:2;width:var(--mark-size);translate:-50% -77%;animation:depart-frames-once var(--fx-ms) steps(var(--fx-count),jump-none) forwards}
+@keyframes depart-frames{from{background-position:0% 0}to{background-position:100% 0}}
+@keyframes depart-frames-once{from{background-position:0% 0}to{background-position:100% 0}}
+body.reduced-motion .depart-fx,body.reduced-motion .depart-mark{display:none}

@@ -1,0 +1,27 @@
+{
+  "fox": {
+    "file": "assets/fx/depart/fox.webp",
+    "count": 6,
+    "frameDuration": 80
+  },
+  "rabbit": {
+    "file": "assets/fx/depart/rabbit.webp",
+    "count": 6,
+    "frameDuration": 95
+  },
+  "comet": {
+    "file": "assets/fx/depart/comet.webp",
+    "count": 6,
+    "frameDuration": 90
+  },
+  "sprout": {
+    "file": "assets/fx/depart/sprout.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "dust": {
+    "file": "assets/fx/depart/dust.webp",
+    "count": 6,
+    "frameDuration": 85
+  }
+}

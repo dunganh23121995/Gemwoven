@@ -310,19 +310,20 @@ requestAnimationFrame(updateLumiLevitation);
 async function departLumiHero(){
   const root=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children];
   root.dataset.departing='true';
+  let fx=null;
   try{
-    setSpriteFrame('hero','hover',0);
+    setSpriteFrame('hero','hover',0);fx=departFx('lightning');
     const start=performance.now(),duration=reduced?1:2400;
     await new Promise(resolve=>{
       function tick(now){
         const p=Math.min(1,(now-start)/duration),camera=width*.95*p;
         root.style.transform=`translateX(${width*1.65*p-camera}px)`;
         root.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
-        setSpriteFrame('hero','hover',Math.floor((now-start)/160)%6);
+        setSpriteFrame('hero','hover',Math.floor((now-start)/160)%6);fx?.tick(now,camera);
         layers.forEach(layer=>layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`);
         if(p<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);
     });
     await animate(root,[{opacity:1},{opacity:0}],{duration:180});root.style.opacity='0';
-  }finally{delete root.dataset.departing;delete root.dataset.worldX;root.style.transform='';setSpriteAction('hero','idle');}
+  }finally{fx?.remove();delete root.dataset.departing;delete root.dataset.worldX;root.style.transform='';setSpriteAction('hero','idle');}
 }

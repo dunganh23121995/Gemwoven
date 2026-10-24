@@ -60,8 +60,9 @@ async function departVictoriousHero(){
   // anticipation poses before their four repeating strides.
   const fullLoop=state.key==='novice',run=spriteDefinition('hero',state.key,'run').sheet;
   hero.dataset.departing='true';
+  let fx=null;
   try{
-    setSpriteFrame('hero','run',0);
+    setSpriteFrame('hero','run',0);fx=departFx(state.key);
     if(!fullLoop){
       await wait(reduced?0:200);
       setSpriteFrame('hero','run',1);await wait(reduced?0:220);
@@ -73,13 +74,13 @@ async function departVictoriousHero(){
         hero.style.transform=`translateX(${width*1.65*p-camera}px)`;
         hero.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
         const elapsed=Math.max(0,now-start);
-        setSpriteFrame('hero','run',fullLoop?Math.floor(elapsed/(run.frameDuration||100))%run.count:2+Math.floor(elapsed/100)%4);
+        setSpriteFrame('hero','run',fullLoop?Math.floor(elapsed/(run.frameDuration||100))%run.count:2+Math.floor(elapsed/100)%4);fx?.tick(now,camera);
         layers.forEach(layer=>{layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`;});
         if(p<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);
     });
     await animate(hero,[{opacity:1},{opacity:0}],{duration:180});hero.style.opacity='0';
-  }finally{delete hero.dataset.departing;delete hero.dataset.worldX;hero.style.transform='';setSpriteAction('hero','idle');}
+  }finally{fx?.remove();delete hero.dataset.departing;delete hero.dataset.worldX;hero.style.transform='';setSpriteAction('hero','idle');}
 }
 async function previewNextEncounter(initial=false){
   startStage();locked=true;ended=true;updateTurn();actor('hero').style.opacity='0';$('heroHeadHud').style.visibility='hidden';
