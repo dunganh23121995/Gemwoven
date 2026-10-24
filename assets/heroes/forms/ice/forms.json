@@ -149,6 +149,40 @@
           ],
           "footY": 0.94,
           "frameDuration": 100
+        },
+        "skill": {
+          "file": "assets/heroes/forms/ice/form-2/skill.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              144,
+              46
+            ],
+            [
+              144,
+              50
+            ],
+            [
+              144,
+              48
+            ],
+            [
+              144,
+              48
+            ],
+            [
+              144,
+              64
+            ],
+            [
+              144,
+              46
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
         }
       }
     },
@@ -296,6 +330,40 @@
             [
               144,
               58
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100
+        },
+        "skill": {
+          "file": "assets/heroes/forms/ice/form-3/skill.webp",
+          "cols": 3,
+          "rows": 2,
+          "count": 6,
+          "heads": [
+            [
+              144,
+              48
+            ],
+            [
+              144,
+              48
+            ],
+            [
+              144,
+              48
+            ],
+            [
+              144,
+              50
+            ],
+            [
+              144,
+              80
+            ],
+            [
+              144,
+              48
             ]
           ],
           "footY": 0.94,

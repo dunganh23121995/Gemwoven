@@ -1,1 +1,14 @@
-/* yuki form kits */
+/* Yuki's star forms (src/forms-yuki.js): authored strips from assets/fx/heroes/ice. */
+.yuki-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;transform-origin:50% 50%}
+/* The moon and the aegis live inside her actor: the moon behind her body, the aegis over it. */
+.actor .yuki-moon{z-index:-1;filter:drop-shadow(0 0 6px #bdf3ffcc)}
+.actor .yuki-aegis{filter:drop-shadow(0 0 5px #9fe6ffb0)}
+.yuki-fx-beam{z-index:3;opacity:.94;filter:drop-shadow(0 0 10px #c9f6ffd0)}
+.yuki-fx-seal,.yuki-fx-lotus{z-index:4;filter:drop-shadow(0 0 5px #a8ecffaa)}
+.yuki-fx-crescent{z-index:5;filter:drop-shadow(0 0 8px #d8fbffd0)}
+.yuki-fx-fan,.yuki-fx-bolt{z-index:5;filter:drop-shadow(0 0 5px #c4f4ffb0)}
+.yuki-snap{opacity:.95}
+.actor .yuki-fx.yuki-under{z-index:-1}
+/* Held in the ice prison or the closed lotus, the foe turns to frost. */
+.scene .actor.yuki-frozen>.sprite-body{filter:grayscale(.55) sepia(.35) hue-rotate(160deg) saturate(1.7) brightness(1.18)!important;transition:filter .18s}
+.yuki-lotus-flash{position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(ellipse at 72% 62%,#f2fdffcc,#bfefff55 38%,transparent 70%)}

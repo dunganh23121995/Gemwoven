@@ -1,0 +1,15 @@
+{
+  "generator": "Codex built-in image_gen (codex_image_gen.py)",
+  "created": "2026-10-24",
+  "artAgentModel": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "refs": [
+    "form identity frame (source/action-identity.png or the first cell of source/action-anchor.png)",
+    "source/action-anchor.png"
+  ],
+  "files": {
+    "raw-sheet.png": "untouched generation",
+    "raw-sheet-recovered.png": "poses that spilled over a cell border translated whole (no resampling) back into their own cells",
+    "skill.webp": "processed with the form character-scale-profile.json (preserve, feet), then visible-bottom alignment to y=240 like the idle"
+  }
+}

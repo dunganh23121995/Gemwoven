@@ -1,0 +1,13 @@
+Image 1 is only a palette and art-style reference (the ice heroine Yuki): match its clean HD hand-painted anime game art and its silver, pale-blue, ice-cyan and white palette. Do NOT draw the character.
+
+Create an 8-frame spell VFX sprite sheet, one continuous sequence: FROST SPIKES BLOOM FROM THE GROUND AND SEAL A FOE IN ICE, then shatter. Side view, slight 3/4 from above. The effect is a ring of jagged crystal ice spikes rising around an EMPTY centre where an enemy stands (do not draw any creature; the middle stays open so the enemy stays visible between the spikes). All frames share one ground line at 92% of the cell height and one centre.
+Frame 1: a flat oval of frost cracks and tiny crystals spreads on the ground, about 70% of the cell width.
+Frame 2: short sharp ice spikes burst up all around the oval rim.
+Frame 3: the spikes grow taller and lean slightly inward, the tallest on the left and right sides.
+Frame 4: full ice prison: tall jagged pale-blue crystal spikes on the left and right reaching about 75% of the cell height, shorter spikes along the front rim, clear open space in the middle.
+Frame 5: the same prison held, frost glints on the facets.
+Frame 6: bright white cracks run through every spike.
+Frame 7: the spikes shatter outward into many sharp ice shards and chunks flying left, right and up.
+Frame 8: only scattered small shards, snow flakes and a fading frost ring remain on the ground.
+Painted as OPAQUE solid ice with crisp faceted edges and white highlights: no soft glow halo, no haze, no semi-transparent mist bleeding into the background. Colours only white, silver, pale blue, ice cyan and a little deep blue in the shadows; no pink, no purple, no magenta tint in the ice.
+Exactly 8 frames in a 4 columns x 2 rows grid of equal cells, each 384 pixels wide and 512 pixels tall, total image 1536x1024, read left-to-right then next row. Every frame fits fully inside its cell with a magenta margin of at least 6% on all sides; nothing crosses a cell edge. Background 100% solid flat #FF00FF magenta in every cell, no gradient, no floor tile, no text, no labels, no borders, no gridlines. Clean HD smooth painted, NOT pixel art.

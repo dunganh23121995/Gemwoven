@@ -1,0 +1,8 @@
+{
+  "generator": "Codex built-in image_gen (codex_image_gen.py)",
+  "created": "2026-10-24",
+  "artAgentModel": "gpt-6.1-sol",
+  "reasoningEffort": "high",
+  "refs": "form-2 identity (moon, beam, seal, bolt) / form-3 identity (lotus, crescent, fan, aegis), palette only",
+  "packing": "export_fx.py"
+}

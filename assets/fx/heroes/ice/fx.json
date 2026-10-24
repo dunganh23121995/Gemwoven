@@ -1,0 +1,53 @@
+{
+  "moon": {
+    "file": "assets/fx/heroes/ice/moon.webp",
+    "count": 4,
+    "frameDuration": 120,
+    "aspect": 0.9727
+  },
+  "beam": {
+    "file": "assets/fx/heroes/ice/beam.webp",
+    "count": 4,
+    "frameDuration": 70,
+    "aspect": 0.3633,
+    "foot": 0.9806
+  },
+  "seal": {
+    "file": "assets/fx/heroes/ice/seal.webp",
+    "count": 8,
+    "frameDuration": 80,
+    "aspect": 0.9323,
+    "foot": 0.9392
+  },
+  "bolt": {
+    "file": "assets/fx/heroes/ice/bolt.webp",
+    "count": 4,
+    "frameDuration": 60,
+    "aspect": 2.0187
+  },
+  "crescent": {
+    "file": "assets/fx/heroes/ice/crescent.webp",
+    "count": 6,
+    "frameDuration": 55,
+    "aspect": 1.0938
+  },
+  "lotus": {
+    "file": "assets/fx/heroes/ice/lotus.webp",
+    "count": 8,
+    "frameDuration": 90,
+    "aspect": 0.8281,
+    "foot": 0.9806
+  },
+  "fan": {
+    "file": "assets/fx/heroes/ice/fan.webp",
+    "count": 6,
+    "frameDuration": 60,
+    "aspect": 1.1719
+  },
+  "aegis": {
+    "file": "assets/fx/heroes/ice/aegis.webp",
+    "count": 6,
+    "frameDuration": 110,
+    "aspect": 0.7266
+  }
+}

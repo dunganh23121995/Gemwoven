@@ -1,0 +1,11 @@
+Image 1 is only a palette and art-style reference (the ice empress Yuki with her frost fan): match its clean HD hand-painted anime game art and its silver, pale-blue, ice-cyan and white palette. Do NOT draw the character or the fan itself.
+
+Create a 6-frame spell VFX sprite sheet, one continuous sequence: a FROST FAN GUST, the sweep of an imperial frost fan sending a wide crescent wave of freezing wind to the RIGHT. A broad curved fan-shaped arc of white and pale-blue wind ribbons carrying many snowflakes, tiny ice crystals and a few snow-lotus petals, sweeping from lower left to upper right.
+Frame 1: a thin bright curved streak appears at the left.
+Frame 2: the arc widens into a fan-shaped sweep of layered wind ribbons with snowflakes.
+Frame 3: full wide gust arc moving right, densest snowflakes and petals.
+Frame 4: the gust pushes further right, ribbons stretching and thinning at the back.
+Frame 5: the ribbons break up into loose snowflakes and petals drifting right.
+Frame 6: only a few snowflakes and petals remain, small and sparse.
+Painted as OPAQUE solid shapes with crisp edges: no soft glow halo, no haze, no semi-transparent fog bleeding into the background. Colours only white, silver, pale blue and ice cyan; no pink, no purple, no magenta tint anywhere.
+Exactly 6 frames in a 3 columns x 2 rows grid of equal square 512x512 cells, total image 1536x1024, read left-to-right then next row. Each frame is centred in its cell with a magenta margin of at least 8% on all sides; nothing crosses a cell edge. Background 100% solid flat #FF00FF magenta in every cell, no gradient, no text, no labels, no borders, no gridlines. Clean HD smooth painted, NOT pixel art.

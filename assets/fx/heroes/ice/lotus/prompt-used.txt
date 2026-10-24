@@ -1,0 +1,13 @@
+Image 1 is only a palette and art-style reference (the ice empress Yuki): match its clean HD hand-painted anime game art and its silver, pale-blue, ice-cyan and white palette. Do NOT draw the character.
+
+Create an 8-frame spell VFX sprite sheet, one continuous sequence: "Heavenly Moon Snow Lotus", a GIANT ICE LOTUS that blooms on the ground under a foe, closes around it and shatters into snow petals. Side view, slight 3/4 from above. Do not draw any creature. All frames share one ground line (the base of the lotus) at 92% of the cell height and one horizontal centre.
+Frame 1: a flat round frost mandala with a snowflake pattern glows on the ground, about 80% of the cell width, seen as a flat ellipse.
+Frame 2: broad pointed petals of translucent-looking (but painted opaque) pale-blue ice rise from the mandala rim, lying open and flat like a lotus opening on water.
+Frame 3: the lotus fully open: two rings of wide ice petals spread flat around an EMPTY centre, about 90% of the cell width, low on the ground.
+Frame 4: the petals lift upward and curve inward, the lotus starting to close, centre still open.
+Frame 5: the petals are closed into one tall pointed ice lotus bud, about 85% of the cell height and 70% of the cell width, layered petals with white rims and frost veins.
+Frame 6: the closed bud with bright white cracks running across every petal.
+Frame 7: the bud bursts outward: ice petal fragments and snow-lotus petals fly out left, right and up from the centre.
+Frame 8: only drifting white snow petals, snowflakes and small ice shards remain, sparse, falling.
+Painted as OPAQUE solid ice with crisp edges, white rims and pale-blue facets: no soft glow halo, no haze, no semi-transparent mist bleeding into the background. Colours only white, silver, pale blue, ice cyan and a little deep blue in the shadows; no pink, no purple, no magenta tint in the lotus.
+Exactly 8 frames in a 4 columns x 2 rows grid of equal cells, each 384 pixels wide and 512 pixels tall, total image 1536x1024, read left-to-right then next row. Every frame fits fully inside its cell with a magenta margin of at least 5% on all sides; nothing crosses a cell edge. Background 100% solid flat #FF00FF magenta in every cell, no gradient, no water, no floor, no text, no labels, no borders, no gridlines. Clean HD smooth painted, NOT pixel art.
