@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "hatpush",
+      "label": "Đẩy vành mũ cười tinh nghịch",
+      "file": "hatpush.webp",
+      "whole": true
+    },
+    {
+      "name": "entrance",
+      "label": "Sao băng sét đánh hiện thân",
+      "file": "entrance.webp",
+      "whole": false
+    },
+    {
+      "name": "staffspin",
+      "label": "Vung trượng tóe điện",
+      "file": "staffspin.webp",
+      "whole": false
+    }
+  ]
+}

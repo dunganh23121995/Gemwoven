@@ -1,0 +1,22 @@
+{
+  "fidgets": [
+    {
+      "name": "startoss",
+      "label": "Tung sao bắt lại",
+      "file": "startoss.webp",
+      "whole": false
+    },
+    {
+      "name": "zigzag",
+      "label": "Tia sét nhảy giữa ngón tay",
+      "file": "zigzag.webp",
+      "whole": false
+    },
+    {
+      "name": "entrance",
+      "label": "Chòm sao nối sét hiện thân",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}

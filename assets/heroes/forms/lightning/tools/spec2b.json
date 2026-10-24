@@ -1,0 +1,27 @@
+{
+ "dir": "assets/heroes/forms/lightning/form-2/showcase",
+ "identity": "assets/heroes/forms/lightning/form-2/master.png",
+ "what": "Lumi, a cheerful chibi witch girl (she/her): long wavy golden-blonde hair with two braids tied by small dark ribbons, big violet eyes, small pointed ears, an open-mouthed happy smile; a huge dark purple witch hat with a gold rim, gold star prints on the brim, a large gold crescent-moon emblem with a gem on the band and a long floppy bent tip ending in a dangling cyan-and-gold star charm; a dark purple high-collared cloak with gold trim and gold star prints, white ruffled cuffs, black top and black shorts, brown leather belts with a gold-bound spellbook at her hip, black boots with gold and cyan gems; a gold staff topped by a glowing purple orb in a spiky gold cage, held upright in her hand on the image's right side; she floats lightly just above the ground, facing right in a 3/4 view",
+ "pose": "She hovers gracefully a little above the ground, one knee raised, holding her staff out diagonally in her hand on the image's right side with its purple orb crackling with a thin opaque gold lightning arc, and her other hand held up open at shoulder height with a small bright gold five-pointed star floating just above her palm. A bright, mischievous smile, cloak swept back.",
+ "idle": "a slow, gentle floating hover. Face, eyes, body, arms, legs, the staff and the hat brim stay exactly as in Image 1 in every frame. Only these move, each a SMALL step from the previous frame: the long floppy tip of her witch hat swings softly like a slow pendulum (frame 1 rest, frames 2-3 the tip lifts a little, frame 4 highest, frames 5-6 it sinks back past rest, frame 7 lowest, frame 8 halfway back to rest) with its dangling star following and twinkling; the loose ends of her golden hair and the cloak hem drift in the same slow wave; the small gold star above her palm bobs a tiny bit and twinkles and the purple orb glows brighter around frame 4 and dimmer around frame 8. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+ "fidgets": [
+  [
+   "startoss",
+   "Tung sao bắt lại",
+   "her open hand flicks up and tosses the small gold star into the air: it rises spinning to about the height of her hat brim (frames 3-4), then falls back and she catches it in the same palm with a happy little squeeze of her eyes (frames 5-6), then it floats above her palm again. Only her free arm and the star move. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   false
+  ],
+  [
+   "zigzag",
+   "Tia sét nhảy giữa ngón tay",
+   "frame 2 the small gold star above her open palm sinks into her hand; frames 3-6 she spreads her fingers wide and a BIG bright crisp gold-and-white zigzag lightning bolt, about as long as her forearm, dances between her fingertips and over her palm, jumping to a different zigzag shape each frame (opaque, sharp, clearly visible, no glow haze), and she grins mischievously; frame 7 the lightning fades and the small gold star pops back above her palm. Only her free hand and the lightning change; body, face, hat, staff and cloak stay exactly as in Image 1. Her hair stays pure golden yellow with clean solid locks: no green tint, no translucent wisps.",
+   false
+  ]
+ ],
+ "entrance": "Frame 1: no girl yet, only five small bright gold stars hanging in the air in a big star-shaped constellation where she will be. Frame 2: thin crisp gold-and-cyan zigzag lightning lines link the five stars to each other, still no girl. Frame 3: the lightning lines bend into a glowing pale-gold outline of her figure with hat and staff. Frame 4: the outline flashes and fills into a bright pale-gold solid silhouette of her pose. Frame 5: the silhouette turns into the girl in full colour, cloak and hair blown outward, the five stars shrinking around her. Frame 6: she hovers with a cheerful grin, the star over her palm lighting up. Frame 7: cloak and hair fall back, the last stars vanish. Frame 8: exactly the resting showcase pose, nothing extra.",
+ "entrance_label": "Chòm sao nối sét hiện thân",
+ "green": true,
+ "only": [
+  "zigzag"
+ ]
+}

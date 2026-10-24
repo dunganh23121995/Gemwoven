@@ -18,19 +18,7 @@
             ],
             [
               128,
-              47
-            ],
-            [
-              128,
-              45
-            ],
-            [
-              128,
-              46
-            ],
-            [
-              128,
-              45
+              44
             ],
             [
               128,
@@ -38,15 +26,27 @@
             ],
             [
               128,
-              47
+              44
             ],
             [
               128,
-              47
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
+            ],
+            [
+              128,
+              44
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "cast": {
           "file": "assets/heroes/forms/lightning/form-3/cast.webp",
@@ -173,31 +173,31 @@
             ],
             [
               141,
-              43
+              49
             ],
             [
               141,
-              47
+              49
             ],
             [
               141,
-              46
+              49
             ],
             [
               141,
-              46
+              49
             ],
             [
               141,
-              45
+              49
             ],
             [
               141,
-              44
+              49
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 120
+          "frameDuration": 150
         },
         "attack": {
           "file": "assets/heroes/forms/lightning/form-2/attack.webp",
