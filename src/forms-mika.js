@@ -112,7 +112,8 @@ function mikaFlash(pending,kind){
 }
 
 // ---- Sound: one clip per beat (assets/audio/hero-forms/fire, scripts/prepare_mika_form_sounds.py) ----
-const MIKA_SOUNDS={2:['f2-raise','f2-blaze','f2-cleave','f2-impact','f2-floorcut','f2-recover'],3:['f3-flare','f3-draw','f3-sweep','f3-crescent','f3-sun','f3-spirits','f3-burn']};
+// A few well-spaced cues, each one natural recording (never more than two sounding at once).
+const MIKA_SOUNDS={2:['f2-raise','f2-blaze','f2-cleave','f2-impact'],3:['f3-flare','f3-draw','f3-sweep','f3-sun','f3-burn']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -131,7 +132,7 @@ async function mikaLongCleave(raw,onRelease){
   let result={amount:0,blocked:0},blade=null,frameId=0,arc=null;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='raise';root.dataset.state='cast';
   try{
-    combatVoice('hero','cast');mikaSound('f2-raise',.42,-.25);popActorSkill('hero',HEROES.fire.skill,true,pending);
+    combatVoice('hero','cast');mikaSound('f2-raise',.34,-.25);popActorSkill('hero',HEROES.fire.skill,true,pending);
     setSpriteFrame('hero','skill',0);
     // The blade must reach past the foe's far side once it lies level across the stage.
     const foe=mikaFoeBody(),reach=Math.max(140,foe.right+8-mikaGrip(2,3).x);
@@ -166,7 +167,7 @@ async function mikaLongCleave(raw,onRelease){
       frameId=requestAnimationFrame(track);
     };
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
-    await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';mikaSound('f2-blaze',.4,-.2);
+    await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';mikaSound('f2-blaze',.38,-.2);
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');mikaSound('f2-cleave',.48,.05);
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
     if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
@@ -177,12 +178,11 @@ async function mikaLongCleave(raw,onRelease){
     // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
     // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
     const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));
-    pending.push(wait(reduced?0:80).then(()=>mikaSound('f2-floorcut',.36,.3)));
     pending.push(wait(reduced?0:80).then(()=>mikaBurst('impact2',{x:foe.x-foe.width*.1,y:foe.bottom-cut*.03},cut,pending,{hold:1.15,className:'mika-floor-cut'})));
     mikaShake(pending,1);mikaFlash(pending,'cleave');combatV3Camera(1,true,state.boss,pending);
     if(arc){const node=arc.node;pending.push((async()=>{await wait(90);mikaFxFrame(node,'arc2',2);await wait(110);mikaFxFrame(node,'arc2',3);await animate(node,[{opacity:1},{opacity:0}],{duration:220,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+110);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='follow';
-    await at(1850);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';mikaSound('f2-recover',.3,-.25);
+    await at(1850);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
     await at(2300);await Promise.all(pending);return result;
   }finally{
     await Promise.allSettled(pending);cancelAnimationFrame(frameId);blade?.remove();arc?.node?.remove();root.style.zIndex=oldZ;
@@ -223,7 +223,7 @@ async function mikaNineSunSweep(raw,onRelease){
   let result={amount:0,blocked:0},back=null,front=null,ring=null,flare=null,frameId=0;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='flare';root.dataset.state='cast';root.dataset.mikaFlare='true';
   try{
-    combatVoice('hero','cast');mikaSound('f3-flare',.42,-.25);popActorSkill('hero',HEROES.fire.skill,true,pending);
+    combatVoice('hero','cast');mikaSound('f3-flare',.38,-.25);popActorSkill('hero',HEROES.fire.skill,true,pending);
     setSpriteFrame('hero','skill',0);flare=mikaTailFlare(root,pending);
     const foe=mikaFoeBody(),hero=combatV3Point('hero'),reach=Math.max(150,foe.right+10-mikaGrip(3,3).x);
     // Drawn back, the glaive reaches off the stage behind her; swung round, past the foe.
@@ -246,22 +246,22 @@ async function mikaNineSunSweep(raw,onRelease){
       frameId=requestAnimationFrame(track);
     };
     if(back&&front){back.node.style.opacity='0';front.node.style.opacity='0';frameId=requestAnimationFrame(track);}
-    await at(WIND);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='draw';mikaSound('f3-draw',.42,-.3);
+    await at(WIND);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='draw';mikaSound('f3-draw',.36,-.3);
     if(flare){const node=flare;mikaFxFrame(node,'impact3',3);pending.push(animate(node,[{opacity:.9,rotate:'14deg'},{opacity:0,rotate:'30deg',scale:'1.15'}],{duration:320,fill:'forwards'}).finally(()=>node.remove()));}
-    await at(SWEEP);setSpriteFrame('hero','skill',2);root.dataset.ragePhase='sweep';combatVoice('hero','release');mikaSound('f3-sweep',.44,0);
+    await at(SWEEP);setSpriteFrame('hero','skill',2);root.dataset.ragePhase='sweep';combatVoice('hero','release');mikaSound('f3-sweep',.48,0);
     // The flat ring of the spin, centred on the grip, as wide as the sweep.
     if(!reduced&&mikaSheet('ring3')){ring=mikaFxNode('ring3','mika-ring');const width=reach*2/.94;ring.style.cssText+=`;width:${width}px;height:${width*mikaSheet('ring3').height/mikaSheet('ring3').width}px`;mikaFxFrame(ring,'ring3',0);}
-    await at(SWEEP+100);setSpriteFrame('hero','skill',3);if(ring)mikaFxFrame(ring,'ring3',1);mikaSound('f3-crescent',.44,.2);
+    await at(SWEEP+100);setSpriteFrame('hero','skill',3);if(ring)mikaFxFrame(ring,'ring3',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';delete root.dataset.mikaFlare;
     result=mikaContact(raw,onRelease,pending);mikaSound('f3-sun',.52,.3);
     mikaBurst('impact3',{x:foe.x,y:foe.y},Math.min($('scene').clientWidth*.85,Math.max(foe.width,foe.height)*1.9),pending,{hold:1.25,fade:240});
     mikaShake(pending,1.25);mikaFlash(pending,'sun');combatV3Camera(1,true,state.boss,pending);
     if(ring){const node=ring;pending.push((async()=>{await wait(110);mikaFxFrame(node,'ring3',2);await wait(170);mikaFxFrame(node,'ring3',3);await animate(node,[{opacity:1},{opacity:0}],{duration:260,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+130);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='spirits';
-    mikaFoxSpirits({x:mikaGrip(3,4).x,foot:hero.foot},foe,pending);mikaSound('f3-spirits',.38,.15);
+    mikaFoxSpirits({x:mikaGrip(3,4).x,foot:hero.foot},foe,pending);
     await at(2350);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
     // The burn takes hold as the foe is left smouldering (its label follows when the ultimate ends).
-    if(progressionKit('fire').burn&&state.enemyHp>0&&state.hp>0)mikaSound('f3-burn',.34,.35);
+    if(progressionKit('fire').burn&&state.enemyHp>0&&state.hp>0)mikaSound('f3-burn',.32,.35);
     await at(2850);await Promise.all(pending);return result;
   }finally{
     await Promise.allSettled(pending);cancelAnimationFrame(frameId);back?.remove();front?.remove();ring?.remove();flare?.remove();root.style.zIndex=oldZ;

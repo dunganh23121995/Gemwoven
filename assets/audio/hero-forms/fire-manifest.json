@@ -1,174 +1,173 @@
 {
   "fire-f2-raise": {
     "file": "hero-forms/fire/f2-raise.wav",
-    "duration": 1.1,
-    "beat": "the sword raised upright and set alight (skill frame 0)",
+    "duration": 0.3,
+    "beat": "sword raised upright (0-300 ms)",
+    "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
     "sources": [
-      "#786713 \"Shing!\" by TheAcidRomance, https://freesound.org/people/TheAcidRomance/sounds/786713/",
-      "#186374 \"Bonfire Being Lit\" by samararaine, https://freesound.org/people/samararaine/sounds/186374/"
+      {
+        "title": "extracting_a_sword1.mp3",
+        "author": "Taira Komori (TK'S FREE SOUND FX)",
+        "source_url": "https://taira-komori.net/jidaigeki01en.html",
+        "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
+        "sha256": "12f14b66c15a52b50ef3b8ad8dc6b7d59b81a6d77a7e974b9e720c3efb305640"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.492,
-    "rms": 0.064,
-    "sha256": "0602970abf2aa078db92ce8e1922101172633c51bf3bb37c30804ca8de4fb9a3"
+    "processing": "excerpt 0.00-0.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.611,
+    "rms": 0.11,
+    "sha256": "5f28f683eb6a30af7abd089c6bcde83e40ec590b2838e739aced4fdc8503f4ca"
   },
   "fire-f2-blaze": {
     "file": "hero-forms/fire/f2-blaze.wav",
-    "duration": 0.85,
-    "beat": "the blade blazes up into a fox-fire sword taller than the sky (300-950 ms)",
+    "duration": 0.65,
+    "beat": "blade blazes up into fox-fire (300-950 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#186932 \"fire_explosion.wav\" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/",
-      "#483316 \"R09-74-Fire Torch.wav\" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/"
+      {
+        "title": "fire-whoosh.mp3",
+        "author": "hnhnh",
+        "source_url": "https://freesound.org/people/hnhnh/sounds/244926/",
+        "license": "CC0-1.0",
+        "sha256": "f7c5e6618b15c4f07502d3ceb9ce52a9146401ce0f5b8acbf8c41c51e8030bfa"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.428,
-    "rms": 0.106,
-    "sha256": "6829537d14e882bfd6b9940383b54b9a6b21e1d133368e771f77ddb96ef8188f"
+    "processing": "excerpt 0.12-0.77 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.404,
+    "rms": 0.11,
+    "sha256": "0d0ca43c0c6c805b517014dbf89f0e579f14ba2cbc79c1675e1d83b742bd2782"
   },
   "fire-f2-cleave": {
     "file": "hero-forms/fire/f2-cleave.wav",
-    "duration": 0.55,
-    "beat": "the giant blade swung down through the stage (950-1170 ms, peak at the hit)",
+    "duration": 0.22,
+    "beat": "giant blade swung down (950-1170 ms)",
+    "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
     "sources": [
-      "#244926 \"fire-whoosh.wav\" by hnhnh, https://freesound.org/people/hnhnh/sounds/244926/",
-      "#352719 \"Woosh (stick swung in the air)\" by Dalesome, https://freesound.org/people/Dalesome/sounds/352719/"
+      {
+        "title": "sword_attack1.mp3",
+        "author": "Taira Komori (TK'S FREE SOUND FX)",
+        "source_url": "https://taira-komori.net/jidaigeki01en.html",
+        "license": "TK'S FREE SOUND FX terms (free use and processing in games, credit), https://taira-komori.net/freesounden.html",
+        "sha256": "9a4241f1b0e48876f0d0d99d6b5a59fefaf2d276f4877d1734ba9cdc2cdb0ade"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.404,
-    "rms": 0.111,
-    "sha256": "572ab321c4ef9c61b772f792394e5b20145378dec5b63395a2bfd734ecfb6766"
+    "processing": "excerpt 0.00-0.22 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.086,
+    "sha256": "a12bb30fc848d161c40069934b479dd0431b7779eaaa7229bbe11993c9802821"
   },
   "fire-f2-impact": {
     "file": "hero-forms/fire/f2-impact.wav",
-    "duration": 1.0,
-    "beat": "the cleave slams through the foe (hit at 1170 ms)",
+    "duration": 0.68,
+    "beat": "slam through the foe, cut burning on the floor (1170-1850 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#431174 \"Fireball Explosion.wav\" by Blankened, https://freesound.org/people/Blankened/sounds/431174/",
-      "#513694 \"impact-stone-heavy.wav\" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/"
+      {
+        "title": "Fire Erupted",
+        "author": "Saladsounds",
+        "source_url": "https://freesound.org/people/Saladsounds/sounds/828433/",
+        "license": "CC0-1.0",
+        "sha256": "0ef1745d67416bcd5e0ebc68a85df28da344b15b0dc5a767cd0844228b568513"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.447,
-    "rms": 0.107,
-    "sha256": "0ff80077713405314c43d22d302086d93355f316715126bd31187aa50f290951"
-  },
-  "fire-f2-floorcut": {
-    "file": "hero-forms/fire/f2-floorcut.wav",
-    "duration": 1.4,
-    "beat": "the scorched cut burns along the floor through the foe (from 1250 ms, ~1.1 s)",
-    "sources": [
-      "#828433 \"Fire Erupted\" by Saladsounds, https://freesound.org/people/Saladsounds/sounds/828433/",
-      "#181563 \"Fire Crackling 01.wav\" by kingsrow, https://freesound.org/people/kingsrow/sounds/181563/"
-    ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.492,
-    "rms": 0.092,
-    "sha256": "0b4df795b800ae004332ae38bfb5831e6f18c4964a013bc2ca7bacf7ce71f571"
-  },
-  "fire-f2-recover": {
-    "file": "hero-forms/fire/f2-recover.wav",
-    "duration": 0.9,
-    "beat": "the sword settles back to guard, embers fizzing out (skill frame 5)",
-    "sources": [
-      "#107589 \"unsheath_sword.wav\" by Qat, https://freesound.org/people/Qat/sounds/107589/",
-      "#137262 \"Water sizzle 1.wav\" by xenognosis, https://freesound.org/people/xenognosis/sounds/137262/"
-    ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.484,
-    "rms": 0.081,
-    "sha256": "fae079b93db4a01983da76e7468926fa6c1f6246c9282274b2a4f486a5ddf2b5"
+    "processing": "excerpt 0.93-1.61 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.721,
+    "rms": 0.11,
+    "sha256": "8bc149629985fca2ca745e99ce5750460a15402ba589c37457c5e16294548d1c"
   },
   "fire-f3-flare": {
     "file": "hero-forms/fire/f3-flare.wav",
-    "duration": 1.3,
-    "beat": "the nine tails flare into a sun of fox-fire (0-650 ms)",
+    "duration": 0.65,
+    "beat": "nine tails flare into a sun (0-650 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#761330 \"Magic Fire Spell Movement\" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/",
-      "#632344 \"Shimmer\" by adh.dreaming, https://freesound.org/people/adh.dreaming/sounds/632344/",
-      "#832436 \"Fox screaming during the night\" by felix.blume, https://freesound.org/people/felix.blume/sounds/832436/"
+      {
+        "title": "Magic Fire Spell Movement",
+        "author": "TheLittleCrow",
+        "source_url": "https://freesound.org/people/TheLittleCrow/sounds/761330/",
+        "license": "CC0-1.0",
+        "sha256": "4de65b8c7c3a311c86e9c4c25ebe6fd11201e8d07c58eee4c3ea7ac1721690ea"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.485,
-    "rms": 0.105,
-    "sha256": "776f355f4490dbb3d7d4def759d1b395709285d9ab5e7f848f757e3b7d7d3d64"
+    "processing": "excerpt 0.50-1.15 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.777,
+    "rms": 0.11,
+    "sha256": "083217b30a0bd8affaba6eb23facd1ab4d42b23fd840993aff9085466d8d2c09"
   },
   "fire-f3-draw": {
     "file": "hero-forms/fire/f3-draw.wav",
-    "duration": 0.7,
-    "beat": "the glaive drawn back, growing off-stage behind her (650-1250 ms)",
+    "duration": 0.6,
+    "beat": "glaive drawn back and growing (650-1250 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#186932 \"fire_explosion.wav\" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/",
-      "#483316 \"R09-74-Fire Torch.wav\" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/"
+      {
+        "title": "fire_explosion.wav",
+        "author": "ReadeOnly",
+        "source_url": "https://freesound.org/people/ReadeOnly/sounds/186932/",
+        "license": "CC0-1.0",
+        "sha256": "bba0795c63de133c0e578c52e3cfd5c39a4b25aba8abdccbb9ee6f9bea294355"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.404,
-    "rms": 0.103,
-    "sha256": "a1e0fa6f8d6f15045e1ea8dcf48496a0dabdef7dcf3e69eb12a42dc3f4383be3"
+    "processing": "excerpt 1.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.682,
+    "rms": 0.11,
+    "sha256": "a67a4b3aa83b20abf248240cb4c0cd746b8d7f104d7f6fab7bcbb69d870a5cd8"
   },
   "fire-f3-sweep": {
     "file": "hero-forms/fire/f3-sweep.wav",
-    "duration": 0.4,
-    "beat": "the glaive spun flat round her, a ring of fire sweeping the stage (1250-1420 ms)",
+    "duration": 0.17,
+    "beat": "spinning sweep and crescent cut (1250-1420 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#719638 \"Lasso rope being spun, spinning through air then throw\" by zapsplat.com, https://freesound.org/people/zapsplat.com/sounds/719638/",
-      "#260555 \"Basic Fire Whoosh 2\" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/"
+      {
+        "title": "Basic Fire Whoosh 2",
+        "author": "LookIMadeAThing",
+        "source_url": "https://freesound.org/people/LookIMadeAThing/sounds/260555/",
+        "license": "CC0-1.0",
+        "sha256": "1e5d6abef9718b55d1015d590d25d18d552dd74e4077b6228a72667964ad427d"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.36,
-    "rms": 0.111,
-    "sha256": "4f35167f059e9426e9156ba70b7a6b887fed0a2602e2fffc985671e39264bbee"
-  },
-  "fire-f3-crescent": {
-    "file": "hero-forms/fire/f3-crescent.wav",
-    "duration": 0.6,
-    "beat": "the colossal crescent of fox-fire cuts through the foe (1350 ms)",
-    "sources": [
-      "#507466 \"Clean fast Swoosh.aiff\" by Danjocross, https://freesound.org/people/Danjocross/sounds/507466/",
-      "#786713 \"Shing!\" by TheAcidRomance, https://freesound.org/people/TheAcidRomance/sounds/786713/"
-    ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.478,
-    "rms": 0.103,
-    "sha256": "3c38cc598b851c889bb535bf0f3978504b52e7641bd1b6c97011d123b9d2765e"
+    "processing": "excerpt 0.18-0.35 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.371,
+    "rms": 0.11,
+    "sha256": "cd129ba9fa3a5bcc1978f38bfb609f4cebe97dc735ed1ae790b0a97f5c632426"
   },
   "fire-f3-sun": {
     "file": "hero-forms/fire/f3-sun.wav",
-    "duration": 1.6,
-    "beat": "the nine-tailed sun bursts on the foe (hit at 1420 ms)",
+    "duration": 0.93,
+    "beat": "nine-tailed sun bursts on the foe (1420-2350 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#855898 \"Fire Explosion\" by qubodup, https://freesound.org/people/qubodup/sounds/855898/",
-      "#186932 \"fire_explosion.wav\" by ReadeOnly, https://freesound.org/people/ReadeOnly/sounds/186932/",
-      "#513694 \"impact-stone-heavy.wav\" by kasparsj, https://freesound.org/people/kasparsj/sounds/513694/"
+      {
+        "title": "Fire Explosion",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/855898/",
+        "license": "CC0-1.0",
+        "sha256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.438,
-    "rms": 0.11,
-    "sha256": "c2a995ce0da3b1907055296bdae077f2240f9fff1d6a16d3bd66ce6307ad317a"
-  },
-  "fire-f3-spirits": {
-    "file": "hero-forms/fire/f3-spirits.wav",
-    "duration": 1.25,
-    "beat": "nine fox-fire spirits run in and burst one by one (1550-2050 ms)",
-    "sources": [
-      "#827320 \"Dog Running Past\" by qubodup, https://freesound.org/people/qubodup/sounds/827320/",
-      "#463766 \"up swish x2 HZA 07-03-2019.wav\" by hz37, https://freesound.org/people/hz37/sounds/463766/",
-      "#431174 \"Fireball Explosion.wav\" by Blankened, https://freesound.org/people/Blankened/sounds/431174/"
-    ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.49,
-    "rms": 0.101,
-    "sha256": "1c3416ae4affc2a2b94bbd46b3edcda5785f5900fdc08effc3afe91dfda7c6cd"
+    "processing": "excerpt 0.00-0.93 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.092,
+    "sha256": "0f89cdce262f08afec2130420ca718b84772154492064b40610e59ce4e9fda59"
   },
   "fire-f3-burn": {
     "file": "hero-forms/fire/f3-burn.wav",
-    "duration": 1.0,
-    "beat": "the burn takes hold on the foe (recover, before THIÊU ĐỐT)",
+    "duration": 0.5,
+    "beat": "the burn takes hold (2350-2850 ms)",
+    "license": "CC0-1.0",
     "sources": [
-      "#137262 \"Water sizzle 1.wav\" by xenognosis, https://freesound.org/people/xenognosis/sounds/137262/",
-      "#181563 \"Fire Crackling 01.wav\" by kingsrow, https://freesound.org/people/kingsrow/sounds/181563/"
+      {
+        "title": "Water sizzle 1.wav",
+        "author": "xenognosis",
+        "source_url": "https://freesound.org/people/xenognosis/sounds/137262/",
+        "license": "CC0-1.0",
+        "sha256": "881b9441acd53aaa64b7af326c854d895c2b0ae8d88492e0a54b11c272e7dadb"
+      }
     ],
-    "license": "CC0-1.0 source recordings (excerpted, filtered, resampled, layered)",
-    "peak": 0.492,
+    "processing": "excerpt 0.25-0.75 s of one recording, 300 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
     "rms": 0.037,
-    "sha256": "63aef5450b7b628f6fd17dab5def7bb45e823fdf7a0d9791e7b10a84b25061db"
+    "sha256": "772336e63846005d63fdc1e2e4ec18f0551a0ced1b53484fc57132da271324c3"
   }
 }
