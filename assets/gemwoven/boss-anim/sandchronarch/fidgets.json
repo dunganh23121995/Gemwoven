@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "hourglass",
+      "label": "Đồng hồ cát hiện trên tay",
+      "file": "hourglass.webp",
+      "whole": true
+    },
+    {
+      "name": "emblem",
+      "label": "Ấn đồng hồ cát rực sáng",
+      "file": "emblem.webp",
+      "whole": false
+    }
+  ]
+}

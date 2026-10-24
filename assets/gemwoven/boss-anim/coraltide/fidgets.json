@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "antlers",
+      "label": "Sừng san hô rực sáng, xòe vây",
+      "file": "antlers.webp",
+      "whole": false
+    },
+    {
+      "name": "whiskers",
+      "label": "Râu rồng uốn lượn, chớp mắt",
+      "file": "whiskers.webp",
+      "whole": false
+    }
+  ]
+}

@@ -5,6 +5,12 @@
       "label": "Tháp pha lê bừng sáng",
       "file": "crystals.webp",
       "whole": false
+    },
+    {
+      "name": "yawn",
+      "label": "Ngáp dài",
+      "file": "yawn.webp",
+      "whole": false
     }
   ]
 }

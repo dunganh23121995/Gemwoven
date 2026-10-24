@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "sword",
+      "label": "Cắm kiếm, lưỡi lóe nguyệt quang",
+      "file": "sword.webp",
+      "whole": false
+    },
+    {
+      "name": "growl",
+      "label": "Nhe nanh gầm gừ, vẫy đuôi",
+      "file": "growl.webp",
+      "whole": false
+    }
+  ]
+}
