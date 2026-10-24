@@ -76,6 +76,7 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
     merged[f'show-{hero}-{form}']={'file':rel('poster.png'),'width':first.width,'height':first.height,'footBounds':list(box),
         'bodyAnchor':{'x':feet_x/first.width,'bodyX':(band[0]+band[2])/2/first.width,'crown':box[1]/first.height,'foot':box[3]/first.height},
         'sheets':{'idle':rel('idle.webp'),'fidgets':[rel(f['file']) for f in book if f['name'] not in ('emerge','rift')],
+                  'labels':[f['label'] for f in book if f['name'] not in ('emerge','rift')],
                   'timing':{rel(f['file']):f['frameMs'] for f in book if f.get('frameMs')},
                   **{name:rel(name+'.webp') for name in ['emerge','rift','vortex'] if (show_dir/(name+'.webp')).exists()}}}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}

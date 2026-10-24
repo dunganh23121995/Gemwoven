@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero Gallery</title>
+<!-- Every state a hero has, in one place: outside combat (showcase, occasional actions, summoning
+     entrance) and in combat (Game.html?qa in a frame: idle, attack, ultimate, departure, hits),
+     plus its sprite sheets. Pick a hero and a form; heroes added later appear automatically.
+     Serve the repository root (python tools/dev_server.py) and open /tools/hero-gallery.html. -->
+<base href="../">
+<link rel="stylesheet" href="src/gemwoven/hero-forms.css">
+<style>
+:root{color-scheme:dark;--bg:#16130f;--panel:#221d17;--line:#3a3127;--ink:#efe4cf;--dim:#b9a98a;--gold:#e8c26a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif;padding:16px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:12px}
+h1{font-size:18px;margin:0}h2{font-size:14px;margin:0 0 8px;color:var(--gold)}
+.layout{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.game{flex:none;width:390px;height:844px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000}
+.game iframe{width:390px;height:844px;border:0;display:block}
+.side{flex:1;min-width:320px;display:flex;flex-direction:column;gap:12px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+button,select{background:#2f281f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font:inherit;cursor:pointer}
+button:hover{border-color:var(--gold)}button.on{background:var(--gold);color:#1a1409;border-color:var(--gold);font-weight:600}
+label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
+.status{color:var(--dim);font-size:13px}
+.note{color:var(--dim);font-size:13px;margin:6px 0 0}
+.shows{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.show h3{font-size:13px;margin:0 0 6px;color:var(--ink)}
+.show.cur h3{color:var(--gold)}
+.stage{position:relative;width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;background:linear-gradient(#5f7d8f,#9fb59b 70%,#6d7d5e 70%)}
+.hero{position:absolute;inset:0}
+.hero>img.plain{position:absolute;left:10%;top:6%;width:80%;height:80%;object-fit:contain}
+.viewer{display:flex;gap:12px;flex-wrap:wrap}
+canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-conic-gradient(#2a241d 0 25%,#221d17 0 50%) 0 0/16px 16px}
+.sheet{position:relative;max-width:100%;overflow:auto;border-radius:8px;background:repeating-conic-gradient(#2a241d 0 25%,#221d17 0 50%) 0 0/16px 16px}
+.sheet img{display:block;max-width:none}
+.sheet .cell{position:absolute;border:1px solid #e8c26a55;color:#e8c26a;font:11px monospace;padding:1px 3px;cursor:pointer}
+.sheet .cell.cur{border-color:var(--gold);background:#e8c26a22}
+.meta{font:12px monospace;color:var(--dim)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Bộ sưu tập tướng</h1>
+  <label>Tướng <select id="hero"></select></label>
+  <div class="row" id="forms"></div>
+  <span class="status" id="status">Đang tải game…</span>
+  <button id="reload" title="Tải lại sau khi build lại Game.html">Tải lại game</button>
+</header>
+<div class="layout">
+  <div class="game"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
+  <div class="side">
+    <section>
+      <h2>Ngoài trận · Home, Tướng, Kỹ Năng (mọi hình thái để so sánh)</h2>
+      <div class="shows" id="shows"></div>
+    </section>
+    <section>
+      <h2>Trong trận · hình thái đang chọn</h2>
+      <div class="row">
+        <button data-do="idle">Nghỉ</button>
+        <button data-do="attack">Đánh thường</button>
+        <button data-do="ultimate">Tuyệt kỹ</button>
+        <button data-do="depart">Rời sân</button>
+        <button data-do="hit">Bị đánh</button>
+      </div>
+      <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button></div>
+      <div class="row" style="margin-top:8px">
+        <label>Đối thủ <select id="enemy"></select></label>
+        <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
+        <label><input type="checkbox" id="armor"> Địch có 500 giáp</label>
+      </div>
+      <p class="note" id="kit"></p>
+    </section>
+    <section>
+      <h2>Sprite sheet trong trận</h2>
+      <div class="row" id="actions"></div>
+      <div class="row" style="margin:8px 0">
+        <button id="playpause">Tạm dừng</button><button id="prev">◀ Khung trước</button><button id="next">Khung sau ▶</button>
+        <label>ms/khung <input type="range" id="ms" min="40" max="600" value="150"><span id="msv">150</span></label>
+        <label><input type="checkbox" id="blend" checked> Hoà khung</label>
+        <label><input type="checkbox" id="onion"> Bóng khung trước</label>
+      </div>
+      <div class="viewer"><canvas class="play" id="play" width="512" height="512"></canvas><div><div class="meta" id="meta"></div><div class="sheet" id="sheet"></div></div></div>
+    </section>
+  </div>
+</div>
+<script src="src/gemwoven/motion-setting.js"></script>
+<script src="src/gemwoven/assets.js"></script>
+<script src="src/gemwoven/boss-chapters.js"></script>
+<script src="src/gemwoven/world.js"></script>
+<script src="src/gemwoven/progression.js"></script>
+<script src="src/gemwoven/form-effects.js"></script>
+<script src="src/gemwoven/hero-show.js"></script>
+<script>
+const $=id=>document.getElementById(id),frame=$('game'),A=window.GEMWOVEN_ASSETS,M=window.GemwovenProgression;
+let hero=new URLSearchParams(location.search).get('hero')||'shadow',form=3,sheets={},action='idle',img=null,cur=0,playing=true,last=0,acc=0;
+const gq=()=>frame.contentWindow?.gameQA,say=t=>$('status').textContent=t;
+const formsOf=key=>M.HERO_FORMS[key]?M.HERO_FORMS[key].map((f,i)=>[i+1,f.name]):[[1,M.HEROES[key].title||M.HEROES[key].name]];
+
+// ---- Hero and form pickers -----------------------------------------------------------------
+$('hero').replaceChildren(...Object.entries(M.HEROES).map(([key,h])=>{const o=document.createElement('option');o.value=key;o.textContent=`${h.name} · ${h.title}`;return o;}));
+$('hero').value=hero;
+function fillForms(){
+  const list=formsOf(hero);if(!list.some(([n])=>n===form))form=list[list.length-1][0];
+  $('forms').replaceChildren(...list.map(([n,name])=>{const b=document.createElement('button');b.textContent=`${n} · ${name}`;b.className=n===form?'on':'';b.onclick=()=>{form=n;fillForms();showcases();configure();};return b;}));
+}
+$('hero').onchange=()=>{hero=$('hero').value;history.replaceState(null,'','?hero='+hero);fillForms();showcases();configure();};
+
+// ---- Outside combat: every form side by side ---------------------------------------------------
+const shows=[];
+function showcases(){
+  shows.forEach(s=>s?.stop());shows.length=0;
+  $('shows').replaceChildren(...formsOf(hero).map(([n,name])=>{
+    const card=document.createElement('div');card.className='show'+(n===form?' cur':'');
+    card.innerHTML=`<h3>${n} · ${name}</h3><div class="stage"><div class="hero"></div></div><div class="row" style="margin-top:6px"></div>`;
+    const host=card.querySelector('.hero'),row=card.querySelector('.row'),show=A[`show-${hero}-${n}`];
+    host.dataset.heroElement=hero;
+    if(!show?.sheets){
+      // No showcase yet: the hub's resting body for that form.
+      const asset=A[`form-idle-${hero}-${n}`]||A[`home-idle-${hero}`]||A[`hero-${hero}`];
+      if(asset){const im=document.createElement('img');im.className='plain';im.src=asset.file;host.append(im);}
+      row.innerHTML='<span class="note">Chưa có trạng thái trình diễn</span>';return card;
+    }
+    let current=null;
+    const mount=()=>{
+      current?.stop();host.innerHTML='';
+      // Like the hub's fitBody: one visible height for every form, boots centred on the spot.
+      const a=show.bodyAnchor,h=.56/(a.foot-a.crown),im=document.createElement('img');im.className='art';im.src=show.file;
+      im.style.cssText=`position:absolute;width:${h*100}%;height:${h*100}%;left:${(.5-a.x*h)*100}%;top:${(.84-a.foot*h)*100}%`;host.append(im);
+      const aura=A[`form-aura-${hero}`];
+      if(n===3&&aura&&window.GemwovenFormEffects){const fx=document.createElement('span');fx.className='hero-form-effects';fx.setAttribute('aria-hidden','true');
+        fx.style.cssText=`bottom:16%;--hero-visible-height:${host.clientHeight*.56}px;--aura-body-shift:${((a.bodyX??a.x)-a.x)*h*host.clientWidth}px`;
+        fx.innerHTML=GemwovenFormEffects.markup(hero,3,aura);host.append(fx);}
+      current=GemwovenHeroShow.attach(host,hero,n);shows[n]=current;
+    };
+    requestAnimationFrame(()=>{mount();setTimeout(()=>current?.summon(),200+n*350);});
+    const b=document.createElement('button');b.textContent='Triệu hồi';b.onclick=()=>{mount();current.summon();};row.append(b);
+    (show.sheets.labels||[]).forEach((label,i)=>{const x=document.createElement('button');x.textContent=label;x.onclick=()=>current?.act(i);row.append(x);});
+    return card;
+  }));
+}
+
+// ---- In combat: Game.html?qa ---------------------------------------------------------------------
+let originalMob=null;
+function enemy(){
+  const id=$('enemy').value,art=gq().art;
+  originalMob??={art:art.enemies.fire,name:gq().monsters.fire.name,bosses:{...art.bosses}};
+  if(id.startsWith('boss:')){
+    const [,chapter]=id.split(':'),ch=gq().chapters.find(c=>c.id===chapter),key=ch.element,world=art.worldBosses?.[ch.boss];
+    art.bosses[key]=world||originalMob.bosses[key];gq().monsters[key].boss=gq().bossDefs[ch.boss]?.name||ch.boss;
+    return {stage:5,enemyKey:key,qaElite:false,qaBossArt:world?ch.boss:'base',qaFoeFx:{boss:ch.boss,tier:'boss'}};
+  }
+  art.enemies.fire=originalMob.art;
+  const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire=c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
+  const home=gq().chapters.find(c=>(c.elites||[]).includes(key)||(c.ordinary||c.creatures||[]).includes(key));
+  return {stage:4,enemyKey:'fire',qaElite:tier==='elite',qaBossArt:'',qaFoeFx:{boss:home?.boss,tier,creature:key}};
+}
+function fillEnemies(){
+  if($('enemy').options.length)return;
+  const art=gq().art.campaignCreatures,groups={normal:'Quái thường',elite:'Quái tinh anh'};
+  const bosses=document.createElement('optgroup');bosses.label='Boss (màn 50 của mỗi chương)';
+  for(const ch of gq().chapters){const o=document.createElement('option');o.value='boss:'+ch.id;o.textContent=`Boss · Ch.${ch.index} ${ch.name} · ${gq().bossDefs[ch.boss]?.name||ch.boss}`;bosses.append(o);}
+  $('enemy').append(bosses);
+  for(const [tier,label] of Object.entries(groups)){
+    const g=document.createElement('optgroup');g.label=label;
+    for(const ch of gq().chapters)for(const key of tier==='elite'?(ch.elites||[]):(ch.ordinary||[])){if(!art[key])continue;
+      const o=document.createElement('option');o.value=tier+':'+key;o.textContent=`${label} · ${ch.name} · ${gq().creatureNames?.[ch.id]?.[key]||key}`;g.append(o);}
+    $('enemy').append(g);
+  }
+  $('enemy').value='normal:slime';
+}
+function configure(){
+  const q=gq();if(!q?.art)return;
+  q.configure({key:hero,form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
+  q.setReduced(!$('fx').checked);loadSheets();fillFoeSkills();
+  const f=M.HERO_FORMS[hero]?.[form-1];
+  $('kit').textContent=f?`${f.name} · vũ khí: ${f.weapon} · tuyệt kỹ: ${f.skill}${f.signature?' · '+f.signature:''}`:`${M.HEROES[hero].name} · tuyệt kỹ: ${M.HEROES[hero].skills?.[0]||''}`;
+}
+async function boot(){
+  say('Đang tải game…');
+  const d=frame.contentDocument;
+  await new Promise(r=>{const t=setInterval(()=>{if(d.querySelector('[data-class]')){clearInterval(t);r();}},150);});
+  (d.querySelector(`[data-class="${hero}"]`)||d.querySelector('[data-class]')).click();
+  const list=d.getElementById('heroList');if(list&&list.offsetParent)d.querySelector('.gem-choice.chosen')?.click();
+  d.getElementById('startBtn').click();
+  await new Promise(r=>setTimeout(r,300));fillEnemies();configure();say('Sẵn sàng');
+}
+frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
+$('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src='Game.html?qa&t='+Date.now();};
+for(const id of ['enemy','fx','armor'])$(id).onchange=configure;
+document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
+  const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);
+  try{
+    if(b.dataset.do!=='hit')configure();
+    if(b.dataset.do==='attack')await q.attack('hero',100,{attackChain:1});
+    if(b.dataset.do==='ultimate')await q.heroUltimate();
+    if(b.dataset.do==='depart')await q.departVictoriousHero();
+    if(b.dataset.do==='hit'){const hp=q.state.hp;await q.attack('enemy',100);say(`Bị đánh: mất ${hp-q.state.hp} HP`);return;}
+    say('Xong: '+b.textContent);
+  }catch(e){say('Lỗi: '+e.message);}
+});
+function fillFoeSkills(){const q=gq();if(!q)return;$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.move||'vồ')+(s.status?' · '+s.status.id:'');return o;}));}
+$('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').selectedOptions[0],index=+$('foeSkill').value,label=o?.textContent||'';say('Đang chạy: '+label);
+  try{configure();$('foeSkill').value=index;await q.foeCast(index);say('Xong: '+label);}catch(e){say('Lỗi: '+e.message);}};
+
+// ---- Sprite sheets ---------------------------------------------------------------------------------
+function loadSheets(){
+  const art=gq().art;
+  sheets=(form>1&&art.heroForms?.[hero]?.[String(form)])||art.heroes[hero]||{};
+  $('actions').replaceChildren(...Object.keys(sheets).filter(k=>!['buff'].includes(k)).map(k=>{const b=document.createElement('button');b.textContent=k;b.className=k===action?'on':'';b.onclick=()=>pick(k);return b;}));
+  pick(sheets[action]?action:'idle');
+}
+function pick(name){
+  if(!sheets[name])return;
+  action=name;for(const b of $('actions').children)b.classList.toggle('on',b.textContent===name);
+  const s=sheets[name];img=new Image();img.onload=drawSheet;img.src=s.src;cur=0;
+  if(s.frameDuration){$('ms').value=s.frameDuration;$('msv').textContent=s.frameDuration;}
+}
+function drawSheet(){
+  const s=sheets[action],box=$('sheet'),scale=Math.min(1,560/img.naturalWidth);
+  box.replaceChildren();const im=img.cloneNode();im.style.width=img.naturalWidth*scale+'px';box.append(im);
+  const cw=img.naturalWidth/s.cols*scale,ch=img.naturalHeight/s.rows*scale;
+  for(let i=0;i<s.count;i++){const c=document.createElement('div');c.className='cell';c.textContent=i;Object.assign(c.style,{left:(i%s.cols)*cw+'px',top:Math.floor(i/s.cols)*ch+'px',width:cw+'px',height:ch+'px'});c.onclick=()=>{cur=i;playing=false;$('playpause').textContent='Phát';};box.append(c);}
+  $('meta').textContent=`${action}: ${s.count} khung · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
+}
+function cell(i){const s=sheets[action],w=img.naturalWidth/s.cols,h=img.naturalHeight/s.rows;return [(i%s.cols)*w,Math.floor(i/s.cols)*h,w,h];}
+function render(now){
+  requestAnimationFrame(render);const s=sheets[action];if(!img?.complete||!s)return;
+  const ms=+$('ms').value;if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=(cur+1)%s.count;}}last=now;
+  const g=$('play').getContext('2d'),k=playing&&$('blend').checked?acc/ms:0,m=k*k*(3-2*k);
+  g.clearRect(0,0,512,512);
+  if($('onion').checked){g.globalAlpha=.3;g.drawImage(img,...cell((cur+s.count-1)%s.count),0,0,512,512);}
+  g.globalAlpha=1;g.drawImage(img,...cell(cur),0,0,512,512);
+  if(m>0){g.globalAlpha=m;g.drawImage(img,...cell((cur+1)%s.count),0,0,512,512);}
+  g.globalAlpha=1;
+  for(const c of $('sheet').querySelectorAll('.cell'))c.classList.toggle('cur',+c.textContent===cur);
+}
+requestAnimationFrame(render);
+$('ms').oninput=()=>$('msv').textContent=$('ms').value;
+$('playpause').onclick=()=>{playing=!playing;$('playpause').textContent=playing?'Tạm dừng':'Phát';};
+$('prev').onclick=()=>{playing=false;$('playpause').textContent='Phát';cur=(cur+sheets[action].count-1)%sheets[action].count;};
+$('next').onclick=()=>{playing=false;$('playpause').textContent='Phát';cur=(cur+1)%sheets[action].count;};
+
+fillForms();showcases();
+</script>
+</body>
+</html>

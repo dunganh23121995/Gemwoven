@@ -11314,6 +11314,10 @@
         "assets/heroes/forms/shadow/form-3/showcase/scythespin.webp",
         "assets/heroes/forms/shadow/form-3/showcase/darkpalm.webp"
       ],
+      "labels": [
+        "Xoay lưỡi hái",
+        "Lửa đen trong lòng bàn tay"
+      ],
       "timing": {},
       "emerge": "assets/heroes/forms/shadow/form-3/showcase/emerge.webp",
       "rift": "assets/heroes/forms/shadow/form-3/showcase/rift.webp"
@@ -11340,6 +11344,10 @@
       "fidgets": [
         "assets/heroes/forms/shadow/form-1/showcase/drawsword.webp",
         "assets/heroes/forms/shadow/form-1/showcase/eyeflash.webp"
+      ],
+      "labels": [
+        "Rút kiếm cầm hai tay",
+        "Mắt lóe sáng"
       ],
       "timing": {
         "assets/heroes/forms/shadow/form-1/showcase/drawsword.webp": [
@@ -11377,6 +11385,10 @@
       "fidgets": [
         "assets/heroes/forms/shadow/form-2/showcase/moonglint.webp",
         "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp"
+      ],
+      "labels": [
+        "Ánh trăng chạy dọc lưỡi kiếm",
+        "Mắt lóe, khói đen cuộn"
       ],
       "timing": {},
       "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
