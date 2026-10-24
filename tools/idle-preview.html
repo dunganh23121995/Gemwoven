@@ -18,8 +18,8 @@
 </style>
 </head>
 <body>
-<h1>Dáng nghỉ: vải bay (cũ) và nhún cả người (mới)</h1>
-<p>Bản mới giữ nguyên nét vẽ gốc, chỉ dáng người nhún: chân khuỵu nhẹ, thân hạ rồi bật lên, đầu theo sau một nhịp.</p>
+<h1>Dáng nghỉ: vải bay (cũ) và động tác riêng từng nhân vật (mới)</h1>
+<p>Bản mới là 8 khung vẽ thật, mỗi nhân vật một động tác nghỉ riêng: hiệp sĩ dồn trọng tâm và nhấc chùy, rồng thở, hạ đầu khịt mũi, khép mở cánh, Mẫu Nấm đung đưa tựa gậy và vẫy tay.</p>
 <label>Tốc độ (ms/khung) <input id="ms" type="range" min="80" max="300" value="150"> <span id="msv">150</span></label>
 <div class="grid" id="grid"></div>
 <script>
@@ -31,7 +31,7 @@ const items=[
 const grid=document.getElementById('grid'),sprites=[];
 for(const [id,name,old] of items){
   const card=document.createElement('section');card.className='card';
-  card.innerHTML=`<h2>${name}</h2><div class="pair"><figure><div class="sprite" style="background-image:url('${old}')"></div><figcaption>Cũ · vải bay</figcaption></figure><figure><div class="sprite" style="background-image:url('../.build-cache/bounce/${id}/rig/idle.webp')"></div><figcaption><b>Mới · nhún</b></figcaption></figure></div>`;
+  card.innerHTML=`<h2>${name}</h2><div class="pair"><figure><div class="sprite" style="background-image:url('${old}')"></div><figcaption>Cũ · vải bay</figcaption></figure><figure><div class="sprite" style="background-image:url('../.build-cache/action-idle/${id}/idle.webp')"></div><figcaption><b>Mới · động tác riêng</b></figcaption></figure></div>`;
   grid.append(card);sprites.push(...card.querySelectorAll('.sprite'));
 }
 let ms=150,frame=0,last=0;
