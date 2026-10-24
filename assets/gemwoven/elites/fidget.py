@@ -179,7 +179,9 @@ def accept(cid, name, label, whole=False):
         return print("accepted", cid, "idle ->", dst / "idle.webp")
     book = dst / "fidgets.json"
     data = json.loads(book.read_text(encoding="utf-8")) if book.exists() else {"fidgets": []}
-    data["fidgets"] = [f for f in data["fidgets"] if f["name"] != name] + [{"name": name, "label": label, "file": f"{name}.webp", "whole": whole}]
+    old = next((f for f in data["fidgets"] if f["name"] == name), {})
+    entry = {"name": name, "label": label, "file": f"{name}.webp", "whole": whole, **({"frameMs": old["frameMs"]} if "frameMs" in old else {})}
+    data["fidgets"] = [f for f in data["fidgets"] if f["name"] != name] + [entry]   # a re-accepted action keeps its hold timings
     book.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("accepted", cid, name, "->", dst)
 
