@@ -7,3 +7,4 @@
 - Keep unreleased features clearly marked Coming soon. Local PvP and practice are not online PvP; local records are not global leaderboards. The event studio is a local configuration prototype, not an authenticated production admin.
 - Keep generated hub HTML, ZIPs, QA images, dependency folders, and temporary reports out of Git. `Game.html` is an existing tracked entry point; preserve its current repository convention. Commit useful source art, runtime assets, source, tests, and dependency locks.
 - Rebuild combat with `python build.py`; rebuild the hub with `python scripts/build_gemwoven.py`. Run `npm test` in `qa/gemwoven/runtime` after mechanics changes.
+- New heroes, and new items for every hero, follow `docs/HERO_PIPELINE.md`; the checklist `docs/hero-checklist.json` (run `python scripts/hero_checklist.py`) feeds the hero studio's "Hạng mục tướng" grid.

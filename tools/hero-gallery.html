@@ -49,6 +49,14 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
   .shows{grid-template-columns:1fr 1fr}
   .viewer canvas.play{width:100%;height:auto;max-width:256px}
 }
+.checklist{overflow:auto}
+.checklist table{border-collapse:collapse;font-size:12px;min-width:100%}
+.checklist th,.checklist td{border:1px solid var(--line);padding:3px 6px;text-align:center;white-space:nowrap}
+.checklist td.label{text-align:left;white-space:normal;min-width:180px}
+.checklist tr.group td{background:#2f281f;color:var(--gold);text-align:left;font-weight:600}
+.checklist th.cur{background:#3a3020;color:var(--gold)}
+.checklist .ok{color:#7ed67e}.checklist .no{color:#ff7a6a;font-weight:700}.checklist .opt{color:var(--dim)}
+.checklist td.cell{cursor:pointer;letter-spacing:2px}
 .shows{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
 .show h3{font-size:13px;margin:0 0 6px;color:var(--ink)}
 .show.cur h3{color:var(--gold)}
@@ -86,6 +94,12 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
     <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
   </div>
   <div class="side">
+    <section>
+      <h2>Hạng mục tướng · việc đã có và còn thiếu (docs/HERO_PIPELINE.md)</h2>
+      <p class="note">Sinh bằng <code>python scripts/hero_checklist.py</code> từ <code>docs/hero-checklist.json</code>. ✓ đã có · ✗ còn thiếu · ○ tuỳ chọn chưa có · — không áp dụng. Bấm ô để xem file được kiểm tra.</p>
+      <div class="checklist" id="checklist"></div>
+      <p class="note" id="checkDetail"></p>
+    </section>
     <section>
       <h2>Ngoài trận · Home, Tướng, Kỹ Năng (mọi hình thái để so sánh)</h2>
       <div class="shows" id="shows"></div>
@@ -133,7 +147,26 @@ function fillForms(){
   const list=formsOf(hero);if(!list.some(([n])=>n===form))form=list[list.length-1][0];
   $('forms').replaceChildren(...list.map(([n,name])=>{const b=document.createElement('button');b.textContent=`${n} · ${name}`;b.className=n===form?'on':'';b.onclick=()=>{form=n;fillForms();showcases();configure();};return b;}));
 }
-$('hero').onchange=()=>{hero=$('hero').value;history.replaceState(null,'','?hero='+hero);fillForms();showcases();configure();};
+$('hero').onchange=()=>{hero=$('hero').value;history.replaceState(null,'','?hero='+hero);fillForms();showcases();configure();checklist();};
+
+// ---- Hero checklist: every item each hero must have (docs/hero-checklist.json) -----------------
+let checkStatus=null;
+async function checklist(){
+  if(!checkStatus){try{checkStatus=await (await fetch('assets/heroes/hero-checklist-status.json',{cache:'no-store'})).json();}catch{$('checklist').textContent='Chưa có dữ liệu: chạy python scripts/hero_checklist.py';return;}}
+  const keys=Object.keys(checkStatus.heroes),mark=(c,opt)=>c.done?'<span class="ok">✓</span>':opt?'<span class="opt">○</span>':'<span class="no">✗</span>';
+  let html='<table><tr><th>Hạng mục</th>'+keys.map(k=>`<th class="${k===hero?'cur':''}">${M.HEROES[k]?.name||k}${checkStatus.heroes[k].locked?' 🔒':''}</th>`).join('')+'</tr>',group='';
+  for(const row of checkStatus.items){
+    if(row.group!==group){group=row.group;html+=`<tr class="group"><td colspan="${keys.length+1}">${group}</td></tr>`;}
+    html+=`<tr><td class="label">${row.label}</td>`+keys.map(k=>{const cells=row.cells[k]||{},forms=Object.keys(cells);
+      return forms.length?`<td class="cell" data-item="${row.id}" data-hero="${k}">${forms.map(f=>mark(cells[f],row.optional)).join('')}</td>`:'<td class="opt">—</td>';}).join('')+'</tr>';
+  }
+  $('checklist').innerHTML=html+'</table>';
+  $('checklist').querySelectorAll('td.cell').forEach(td=>td.onclick=()=>{
+    const row=checkStatus.items.find(r=>r.id===td.dataset.item),cells=row.cells[td.dataset.hero];
+    $('checkDetail').textContent=`${M.HEROES[td.dataset.hero]?.name} · ${row.label}: `+Object.entries(cells).map(([f,c])=>`dạng ${f} ${c.done?'✓':'✗'} ${c.detail}`).join(' · ');
+  });
+}
+checklist();
 
 // ---- Outside combat: every form side by side ---------------------------------------------------
 const shows=[];

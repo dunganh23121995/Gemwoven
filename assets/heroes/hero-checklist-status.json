@@ -1,0 +1,1355 @@
+{
+ "items": [
+  {
+   "id": "data",
+   "group": "1. Thiết kế",
+   "label": "Dữ liệu tướng và các dạng (tên, vũ khí, tuyệt kỹ)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "src/gemwoven/progression.js"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "src/gemwoven/progression.js"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "src/gemwoven/progression.js"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "src/gemwoven/progression.js"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "src/gemwoven/progression.js"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "src/gemwoven/progression.js"
+     }
+    }
+   }
+  },
+  {
+   "id": "master",
+   "group": "2. Hình chiến đấu",
+   "label": "Ảnh gốc (master) của dạng",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/novice/references/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/master.png"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/masters/fire-transparent.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/master.png"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/masters/ice-transparent.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/master.png"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/masters/earth-transparent.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/master.png"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/masters/lightning-transparent.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/master.png"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/novice/references/master.png"
+     }
+    }
+   }
+  },
+  {
+   "id": "idle",
+   "group": "2. Hình chiến đấu",
+   "label": "Nghỉ trong trận: vòng 8 khung ổn định",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/idle-cloth/form-1/frame-07.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/idle-cloth/form-2/frame-07.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/idle-cloth/form-3/frame-07.png"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/combat-idle/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/combat-idle/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/combat-idle/idle.webp"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/combat-idle/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/combat-idle/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/combat-idle/idle.webp"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/combat-idle/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/combat-idle/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/combat-idle/idle.webp"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/combat-idle/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/combat-idle/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/combat-idle/idle.webp"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/combat-idle/idle.webp"
+     }
+    }
+   }
+  },
+  {
+   "id": "attack",
+   "group": "2. Hình chiến đấu",
+   "label": "Sheet đánh thường",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/shadow/attack.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/attack.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/attack.webp"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/fire/attack.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/attack.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/attack.webp"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/ice/attack.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/attack.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/attack.webp"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/earth/attack.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/attack.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/attack.webp"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/lightning/attack.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/attack.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/attack.webp"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/novice/attack.webp"
+     }
+    }
+   }
+  },
+  {
+   "id": "cast",
+   "group": "2. Hình chiến đấu",
+   "label": "Sheet thi triển",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/shadow/cast.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/cast.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/cast.webp"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/fire/cast.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/cast.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/cast.webp"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/ice/cast.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/cast.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/cast.webp"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/earth/cast.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/cast.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/cast.webp"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/lightning/cast.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/cast.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/cast.webp"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/novice/cast.webp"
+     }
+    }
+   }
+  },
+  {
+   "id": "move",
+   "group": "2. Hình chiến đấu",
+   "label": "Sheet di chuyển (chạy, hoặc bay với tướng bay)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/shadow/hover.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/run.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/run.webp"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/fire/run.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/run.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/run.webp"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/ice/run.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/run.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/run.webp"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/earth/run.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/run.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/run.webp"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/reimagined/heroes/lightning/run.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/run.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/run.webp"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/novice/run.webp"
+     }
+    }
+   }
+  },
+  {
+   "id": "skill",
+   "group": "2. Hình chiến đấu",
+   "label": "Tư thế tuyệt kỹ riêng của dạng (skill/press/slash...)",
+   "optional": true,
+   "cells": {
+    "shadow": {
+     "2": {
+      "done": false,
+      "detail": "assets/heroes/forms/shadow/form-2/skill.webp | assets/heroes/forms/shadow/form-2/press.webp | assets/heroes/forms/shadow/form-2/slash.webp"
+     },
+     "3": {
+      "done": false,
+      "detail": "assets/heroes/forms/shadow/form-3/skill.webp | assets/heroes/forms/shadow/form-3/press.webp | assets/heroes/forms/shadow/form-3/slash.webp"
+     }
+    },
+    "fire": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/skill.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/skill.webp"
+     }
+    },
+    "ice": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/skill.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/skill.webp"
+     }
+    },
+    "earth": {
+     "2": {
+      "done": false,
+      "detail": "assets/heroes/forms/earth/form-2/skill.webp | assets/heroes/forms/earth/form-2/press.webp | assets/heroes/forms/earth/form-2/slash.webp"
+     },
+     "3": {
+      "done": false,
+      "detail": "assets/heroes/forms/earth/form-3/skill.webp | assets/heroes/forms/earth/form-3/press.webp | assets/heroes/forms/earth/form-3/slash.webp"
+     }
+    },
+    "lightning": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/skill.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/skill.webp"
+     }
+    },
+    "novice": {}
+   }
+  },
+  {
+   "id": "showcase-master",
+   "group": "3. Trình diễn ngoài trận",
+   "label": "Tư thế trình diễn",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-1/showcase/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/showcase/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/showcase/master.png"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/showcase/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/showcase/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/showcase/master.png"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/showcase/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/showcase/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/showcase/master.png"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/showcase/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/showcase/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/showcase/master.png"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/showcase/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/showcase/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/showcase/master.png"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/showcase/master.png"
+     }
+    }
+   }
+  },
+  {
+   "id": "showcase-idle",
+   "group": "3. Trình diễn ngoài trận",
+   "label": "Vòng nghỉ trình diễn",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-1/showcase/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/showcase/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/showcase/idle.webp"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/showcase/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/showcase/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/showcase/idle.webp"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/showcase/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/showcase/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/showcase/idle.webp"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/showcase/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/showcase/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/showcase/idle.webp"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/showcase/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/showcase/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/showcase/idle.webp"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/showcase/idle.webp"
+     }
+    }
+   }
+  },
+  {
+   "id": "showcase-fidgets",
+   "group": "3. Trình diễn ngoài trận",
+   "label": "2 hành động thỉnh thoảng",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "drawsword, eyeflash"
+     },
+     "2": {
+      "done": true,
+      "detail": "eyeflare, optC"
+     },
+     "3": {
+      "done": true,
+      "detail": "scythespin, darkpalm"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "flameblade, foxgrin"
+     },
+     "2": {
+      "done": true,
+      "detail": "shouldersword, kitsunebi"
+     },
+     "3": {
+      "done": true,
+      "detail": "tailfan, glaivespin"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "snowflake, earflick"
+     },
+     "2": {
+      "done": true,
+      "detail": "moonglow, brushfrost"
+     },
+     "3": {
+      "done": true,
+      "detail": "fanwave, twirl"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "shieldslam, neckroll"
+     },
+     "2": {
+      "done": true,
+      "detail": "leafsprout, shieldtap"
+     },
+     "3": {
+      "done": true,
+      "detail": "bloom, rootcreep"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "hatpush, staffspin"
+     },
+     "2": {
+      "done": true,
+      "detail": "zigzag, startoss"
+     },
+     "3": {
+      "done": true,
+      "detail": "orbitspin, wingtwirl"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "swing, scratch"
+     }
+    }
+   }
+  },
+  {
+   "id": "entrance",
+   "group": "3. Trình diễn ngoài trận",
+   "label": "Màn xuất hiện riêng (triệu hồi)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-1/showcase/rift.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/showcase/rift.webp"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/showcase/entrance.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/showcase/entrance.webp"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/showcase/entrance.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/showcase/entrance.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/showcase/entrance.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/showcase/entrance.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/showcase/entrance.webp"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/showcase/entrance.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/showcase/entrance.webp"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/showcase/entrance.webp"
+     }
+    }
+   }
+  },
+  {
+   "id": "aura",
+   "group": "4. Chiến đấu",
+   "label": "Hào quang dạng 3",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/aura.json"
+     }
+    },
+    "fire": {
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/aura.json"
+     }
+    },
+    "ice": {
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/aura.json"
+     }
+    },
+    "earth": {
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/aura.json"
+     }
+    },
+    "lightning": {
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/aura.json"
+     }
+    },
+    "novice": {}
+   }
+  },
+  {
+   "id": "kit",
+   "group": "4. Chiến đấu",
+   "label": "Bộ chiêu riêng của dạng (tuyệt kỹ, đánh thường, rời sân)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "2": {
+      "done": true,
+      "detail": "src/shadow-combat.js"
+     },
+     "3": {
+      "done": true,
+      "detail": "src/shadow-combat.js"
+     }
+    },
+    "fire": {
+     "2": {
+      "done": true,
+      "detail": "src/forms-mika.js"
+     },
+     "3": {
+      "done": true,
+      "detail": "src/forms-mika.js"
+     }
+    },
+    "ice": {
+     "2": {
+      "done": true,
+      "detail": "src/forms-yuki.js"
+     },
+     "3": {
+      "done": true,
+      "detail": "src/forms-yuki.js"
+     }
+    },
+    "earth": {
+     "2": {
+      "done": true,
+      "detail": "src/forms-nori.js"
+     },
+     "3": {
+      "done": true,
+      "detail": "src/forms-nori.js"
+     }
+    },
+    "lightning": {
+     "2": {
+      "done": true,
+      "detail": "src/forms-lumi.js"
+     },
+     "3": {
+      "done": true,
+      "detail": "src/forms-lumi.js"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "src/forms-tan.js"
+     }
+    }
+   }
+  },
+  {
+   "id": "fx",
+   "group": "4. Chiến đấu",
+   "label": "Hiệu ứng tuyệt kỹ riêng (FX)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "2": {
+      "done": true,
+      "detail": "assets/fx/noct/fx.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/fx/noct/fx.json"
+     }
+    },
+    "fire": {
+     "2": {
+      "done": true,
+      "detail": "assets/fx/heroes/fire/fx.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/fx/heroes/fire/fx.json"
+     }
+    },
+    "ice": {
+     "2": {
+      "done": true,
+      "detail": "assets/fx/heroes/ice/fx.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/fx/heroes/ice/fx.json"
+     }
+    },
+    "earth": {
+     "2": {
+      "done": true,
+      "detail": "assets/fx/heroes/earth/fx.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/fx/heroes/earth/fx.json"
+     }
+    },
+    "lightning": {
+     "2": {
+      "done": true,
+      "detail": "assets/fx/heroes/lightning/fx.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/fx/heroes/lightning/fx.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/fx/heroes/novice/fx.json"
+     }
+    }
+   }
+  },
+  {
+   "id": "depart",
+   "group": "4. Chiến đấu",
+   "label": "Rời sân có dấu ấn riêng",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "3": {
+      "done": true,
+      "detail": "src/shadow-combat.js"
+     }
+    },
+    "fire": {
+     "3": {
+      "done": true,
+      "detail": "src/hero-departures.js"
+     }
+    },
+    "ice": {
+     "3": {
+      "done": true,
+      "detail": "src/hero-departures.js"
+     }
+    },
+    "earth": {
+     "3": {
+      "done": true,
+      "detail": "src/hero-departures.js"
+     }
+    },
+    "lightning": {
+     "3": {
+      "done": true,
+      "detail": "src/hero-departures.js"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "src/hero-departures.js"
+     }
+    }
+   }
+  },
+  {
+   "id": "voice",
+   "group": "5. Âm thanh",
+   "label": "Giọng nhân vật (hô, bị đánh)",
+   "optional": true,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/audio/noct-manifest.json"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/audio/cast-voice-manifest.json"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/audio/cast-voice-manifest.json"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/audio/cast-voice-manifest.json"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/audio/cast-voice-manifest.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": false,
+      "detail": "assets/audio/cast-voice-manifest.json ~ \"hiro-"
+     }
+    }
+   }
+  },
+  {
+   "id": "sounds",
+   "group": "5. Âm thanh",
+   "label": "Âm thanh tuyệt kỹ riêng (bản thu thật)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "2": {
+      "done": true,
+      "detail": "assets/audio/noct-sfx-manifest.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/audio/noct-sfx-manifest.json"
+     }
+    },
+    "fire": {
+     "2": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/fire-manifest.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/fire-manifest.json"
+     }
+    },
+    "ice": {
+     "2": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/ice-manifest.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/ice-manifest.json"
+     }
+    },
+    "earth": {
+     "2": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/earth-manifest.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/earth-manifest.json"
+     }
+    },
+    "lightning": {
+     "2": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/lightning-manifest.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/lightning-manifest.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/novice-manifest.json"
+     }
+    }
+   }
+  },
+  {
+   "id": "portrait",
+   "group": "6. Hub và triệu hồi",
+   "label": "Chân dung",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/portrait.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/portrait.png"
+     }
+    },
+    "fire": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/portrait.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/portrait.png"
+     }
+    },
+    "ice": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/portrait.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/portrait.png"
+     }
+    },
+    "earth": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/portrait.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/portrait.png"
+     }
+    },
+    "lightning": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/portrait.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/portrait.png"
+     }
+    },
+    "novice": {}
+   }
+  },
+  {
+   "id": "fragment",
+   "group": "6. Hub và triệu hồi",
+   "label": "Mảnh tướng (mảnh ghép tranh)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/gemwoven/manifest.json"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/gemwoven/manifest.json"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/gemwoven/manifest.json"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/gemwoven/manifest.json"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/gemwoven/manifest.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/gemwoven/manifest.json"
+     }
+    }
+   }
+  },
+  {
+   "id": "locked",
+   "group": "7. Duyệt",
+   "label": "Người chơi đã duyệt và khóa",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/LOCKED.txt"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/LOCKED.txt"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/LOCKED.txt"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/LOCKED.txt"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/LOCKED.txt"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/LOCKED.txt"
+     }
+    }
+   }
+  }
+ ],
+ "heroes": {
+  "shadow": {
+   "forms": 3,
+   "locked": true
+  },
+  "fire": {
+   "forms": 3,
+   "locked": true
+  },
+  "ice": {
+   "forms": 3,
+   "locked": true
+  },
+  "earth": {
+   "forms": 3,
+   "locked": true
+  },
+  "lightning": {
+   "forms": 3,
+   "locked": true
+  },
+  "novice": {
+   "forms": 1,
+   "locked": true
+  }
+ }
+}
