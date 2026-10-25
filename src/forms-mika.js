@@ -117,7 +117,7 @@ function mikaFlash(pending,kind){
 // One real recording per cue, each the literal sound of its motion (scripts/prepare_mika_form_sounds.py);
 // the damage hit is the loudest clip and a long natural tail rings out after it. Form 3 is built on form 1's
 // own recordings (her fire whoosh gathers and, in full, rings out from the hit; her katana draws and cuts).
-const MIKA_SOUNDS={2:['f2-rise','f3-sun','flame-whoosh','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
+const MIKA_SOUNDS={2:['f2-rise','f3-sun','f2-collapse','flame-whoosh','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -172,15 +172,15 @@ async function mikaLongCleave(raw,onRelease){
     };
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
     await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
-    await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');
+    await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');mikaSound('f3-sun',.5,.1);// uỳnh: the blade comes down
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
     if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
       arc={node:mikaFxNode('arc2','mika-arc')};arc.node.style.cssText+=`;left:${c.x}px;top:${c.y}px;width:${size}px;height:${size}px`;mikaFxFrame(arc.node,'arc2',0);}}
     await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';setSpriteFrame('hero','skill',3);
-    // The hit bursts with form 3's main-ball sound and form 2 ends on form 3's closing tail (form 1's
-    // flame whoosh), both exactly as form 3 plays them.
-    result=mikaContact(raw,onRelease,pending);mikaSound('f3-sun',.56,.3);mikaSound('flame-whoosh',.48,.12);
+    // The hit lands with a building crashing down (rầm, the loudest moment); form 1's flame whoosh rings
+    // out after it, as at the end of form 3.
+    result=mikaContact(raw,onRelease,pending);mikaSound('f2-collapse',.62,.3);mikaSound('flame-whoosh',.4,.12);
     // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
     // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
     const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));

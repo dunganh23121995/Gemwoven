@@ -94,6 +94,25 @@
     "rms": 0.1,
     "sha256": "e19db71ebf7a54b3d26c8b904e04a54a75e755944a256f9a80ce89e3e0f2cc6f"
   },
+  "fire-f2-collapse": {
+    "file": "hero-forms/fire/f2-collapse.wav",
+    "duration": 1.5,
+    "beat": "the hit: a burning wall crashes down and settles (1180 ms, 1.5 s)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "S30-08 Wall falls down from fire damage.wav by craigsmith",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/675899/",
+        "license": "CC0-1.0",
+        "sha256": "11b03ac16b3b5fccbdb6cafbe7f2a1b95ca3455d21101d3d1156fa28e3b6e58b"
+      }
+    ],
+    "processing": "excerpt 3.43-4.93 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.137,
+    "sha256": "14db5e644be72c127356510fb067d857a919101084e56ecbeb6b743f30b19034"
+  },
   "fire-f2-floor": {
     "file": "hero-forms/fire/f2-floor.wav",
     "duration": 1.5,

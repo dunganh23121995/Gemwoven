@@ -349,7 +349,7 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25, round 10): one clean real recording per cue, each the literal
+Mika four- and six-star ultimates (2026-10-25, round 11): one clean real recording per cue, each the literal
 sound of its motion, every excerpt checked free of voices or speech; minimally edited (excerpt with its natural
 attack and decay, gentle high-pass, gain with peak <= 0.82, short fades; no layering, pitch or time change,
 limiting or synthesis). Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json.
@@ -361,10 +361,11 @@ Build: python scripts/prepare_mika_form_sounds.py.
   glaive drawn, cutting_with_a_katana1 = the crescent cut).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
   #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 3 the foe engulfed in fire after the last wave)
+  #675899 "S30-08 Wall falls down from fire damage.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/675899/ (form 2 hit: the building crashing down)
   #456806 "Hot Bubbling Mud" by Breviceps, https://freesound.org/people/Breviceps/sounds/456806/ (form 2 lava boiling along the floor cut)
   #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring)
   #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst and form 2's hit; the closing spirit waves use it pitched down 4 semitones and low-passed, at the player's request)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst and form 2's cleave "uỳnh"; the closing spirit waves use it pitched down 4 semitones and low-passed, at the player's request)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length

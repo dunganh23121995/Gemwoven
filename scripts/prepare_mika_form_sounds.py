@@ -103,8 +103,11 @@ wavfile.write(OUT / 'f2-rise.wav', RATE, np.round(rise).astype(np.int16))
 USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; form 1's flame-charge rising gain curve (0.1 -> 1, power 1.6)",
     peak=round(float(np.abs(rise).max()) / 32767, 3), rms=round(float(np.sqrt(np.mean((rise / 32767) ** 2))), 3),
     sha256=hashlib.sha256((OUT / 'f2-rise.wav').read_bytes()).hexdigest())
-# The hit and the ending reuse form 3's clips, played by the kit: the sun burst (f3-sun) on the hit and
-# form 1's own flame whoosh (fire-flame-whoosh) ringing out after it, exactly as form 3 plays them.
+# The cleave's "uỳnh" reuses form 3's sun burst (f3-sun) as the blade comes down, and form 2 ends on form
+# 1's own flame whoosh (fire-flame-whoosh), both played by the kit.
+# 1180 ms, the hit ("rầm"): a wall crashing down in a fire, timber and masonry falling and the debris
+# settling, cut to land on the hit and settle within 1.5 s; the loudest moment of the skill.
+clip('f2-collapse', ('freesound', '675899'), 3.43, 4.93, 'the hit: a burning wall crashes down and settles (1180 ms, 1.5 s)', fade_in=.003, fade_out=.45, highpass=30, rms=.14)
 # 1280-2780 ms, the cut on the floor: molten mud boiling and gulping, fading out within ~1.5 s.
 clip('f2-floor', ('freesound', '456806'), 6.5, 8.0, 'lava boils and gulps along the cut on the floor, fading (1280-2780 ms)', fade_in=.04, fade_out=.6)
 
