@@ -15,28 +15,21 @@
     128,
     244
   ],
-  "frameFiles": [
-    "cast/frame-00.png",
-    "cast/frame-01.png",
-    "cast/frame-02.png",
-    "cast/frame-03.png",
-    "cast/frame-04.png",
-    "cast/frame-05.png"
-  ],
+  "frameFiles": [],
   "uniqueFrames": 6,
   "framePixelHashes": [
-    "5fcc80227e7f9b36f3dff6311750d387a3ea040b8fd227abdc02c0455c594d19",
-    "96b5561bb8ec1b40cdb1adc8f93b7580fbaa9db2148f085247b45e0320be6546",
-    "d02d6a3b9701d2ea8654d7dee76aed3eb55f4fdb0ff81b549bf5f844be51e917",
-    "6eba3eb56b0c69276f168ba3b1bf6a3e3b388a5c80e01570b82d09bb743cb0f1",
-    "06fb4bf15015768fe8214dfa0bd9f067b7a730d7a4c8229a9e7c7dabc82d0e31",
-    "dd60b722e59b81e54450fec9b8836a80b3e256d926049ab770ae4d6bb1fde9d4"
+    "e3564aa4ec006eae708afefe1de7d438dbfe2c602562dc8de41d940f2da63b1c",
+    "77996c7fcffdf9b4106922ea0c05f5ba65e0a28a3e3f1fd59b0494168d02cb4b",
+    "7390b133c66606450afe017f2798a8f82069f5b1a8bbe268d7dc61918f5c7174",
+    "a86a7a8903dd06af8a607a2987b58f189f582f93f9d22986ed3de8d8b3870563",
+    "fabeb1551b5065e434013e65e918f403ddaa7407ab7f8a686dd71026dd5b9993",
+    "049ba1811a9d041fbc0bb4d401e2c2b3c97e02893838a795921e09ec40ea04a2"
   ],
   "sharedScaleProfile": "character-scale-profile.json",
   "anchorEstimator": "median of lower 15% across full silhouette; 98th percentile Y",
   "reviewedFootRootFrames": [],
-  "source": "assets/raw/reimagined/heroes/ice-cast.png",
-  "sourceSha256": "733ffec8b2dd8b980393020d45df64da897c3ee00abcecd84bda1c4eb8757d73",
+  "source": "assets/reimagined/heroes/ice/cast/raw-sheet.png",
+  "sourceSha256": "485f3cef8f8dd3c9e4ffff337e9ee6f1986ae113083101047a3c70170e0a9a26",
   "qc": {
     "frame_count": 6,
     "valid_frame_count": 6,
@@ -83,5 +76,6 @@
   "presentationTranslation": [
     0,
     21
-  ]
+  ],
+  "redraw": "2026-10-25 defect review: redrawn with gpt-6-astra high (prompt-used.txt); the first sheet (raw-sheet-v1.png) showed three hands in frame 4. Processed with the profile contract at fit 0.80 (same 170 px body as the idle), bottoms on y=252. Frame 5 redrawn alone (raw-frame5.png, prompt-frame5.txt, gpt-6-astra high, refs: frames 6/4 and the faulty frame) so the front hand visibly grips the staff; keyed, scaled uniformly to the 172 px body of frames 4/6 and placed on their sole line and feet centre."
 }

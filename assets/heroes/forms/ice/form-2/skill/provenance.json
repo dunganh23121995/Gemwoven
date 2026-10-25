@@ -11,5 +11,6 @@
     "raw-sheet.png": "untouched generation",
     "raw-sheet-recovered.png": "poses that spilled over a cell border translated whole (no resampling) back into their own cells",
     "skill.webp": "processed with the form character-scale-profile.json (preserve, feet), then visible-bottom alignment to y=240 like the idle"
-  }
+  },
+  "redrawn": "2026-10-25 defect review: gpt-6-astra high, two hands and a full-length staff in every frame (the first sheet had a third hand and a shortened staff in frames 3 and 5)"
 }

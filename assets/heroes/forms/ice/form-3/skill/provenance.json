@@ -11,5 +11,6 @@
     "raw-sheet.png": "untouched generation",
     "raw-sheet-recovered.png": "poses that spilled over a cell border translated whole (no resampling) back into their own cells",
     "skill.webp": "processed with the form character-scale-profile.json (preserve, feet), then visible-bottom alignment to y=240 like the idle"
-  }
+  },
+  "redrawn": "2026-10-25 defect review: gpt-6-astra high, two hands in every frame, the halberd always held, the fan tucked in her sash for the two-handed cut (the first sheet had a floating halberd in frame 3 and a third hand in frame 5)"
 }

@@ -1,6 +1,12 @@
 {
   "fidgets": [
     {
+      "name": "earflick",
+      "label": "Tai thỏ giật giật",
+      "file": "earflick.webp",
+      "whole": false
+    },
+    {
       "name": "snowflake",
       "label": "Gõ trượng kết bông tuyết",
       "file": "snowflake.webp",
@@ -15,12 +21,6 @@
         150,
         130
       ]
-    },
-    {
-      "name": "earflick",
-      "label": "Tai thỏ giật giật",
-      "file": "earflick.webp",
-      "whole": false
     },
     {
       "name": "entrance",
