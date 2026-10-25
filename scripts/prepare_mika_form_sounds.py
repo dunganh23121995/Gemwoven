@@ -105,9 +105,9 @@ USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; f
     sha256=hashlib.sha256((OUT / 'f2-rise.wav').read_bytes()).hexdigest())
 # The cleave's "uỳnh" reuses form 3's sun burst (f3-sun) as the blade comes down, and form 2 ends on form
 # 1's own flame whoosh (fire-flame-whoosh), both played by the kit.
-# 1180 ms, the hit ("rầm"): a wall crashing down in a fire, timber and masonry falling and the debris
-# settling, cut to land on the hit and settle within 1.5 s; the loudest moment of the skill.
-clip('f2-collapse', ('freesound', '675899'), 3.43, 4.93, 'the hit: a burning wall crashes down and settles (1180 ms, 1.5 s)', fade_in=.003, fade_out=.45, highpass=30, rms=.14)
+# The fast chop's hit ("rầm"): a mountain collapsing, a big rock crash and the rockslide tumbling after
+# it, cut to land on the hit and settle within 1.5 s; the loudest moment of the skill.
+clip('f2-collapse', ('freesound', '675737'), 19.22, 20.72, 'the hit: a mountain collapses, rocks crash and tumble (1.5 s)', fade_in=.003, fade_out=.45, highpass=30, rms=.14)
 # 1280-2780 ms, the cut on the floor: molten mud boiling and gulping, fading out within ~1.5 s.
 clip('f2-floor', ('freesound', '456806'), 6.5, 8.0, 'lava boils and gulps along the cut on the floor, fading (1280-2780 ms)', fade_in=.04, fade_out=.6)
 

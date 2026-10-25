@@ -1,0 +1,47 @@
+{
+  "cell": 512,
+  "scale": 1.8457,
+  "footY": 0.94,
+  "k": 0.5727069351230425,
+  "ref_frame": 0,
+  "idle_h": 189,
+  "ref_h": 357,
+  "frames": [
+    {
+      "bbox": [
+        155,
+        157,
+        341,
+        481
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        151,
+        217,
+        391,
+        481
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        152,
+        259,
+        417,
+        481
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        155,
+        275,
+        440,
+        481
+      ],
+      "edge_touch": false
+    }
+  ]
+}

@@ -97,21 +97,21 @@
   "fire-f2-collapse": {
     "file": "hero-forms/fire/f2-collapse.wav",
     "duration": 1.5,
-    "beat": "the hit: a burning wall crashes down and settles (1180 ms, 1.5 s)",
+    "beat": "the hit: a mountain collapses, rocks crash and tumble (1.5 s)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "S30-08 Wall falls down from fire damage.wav by craigsmith",
+        "title": "S24-19 rocks falling.wav by craigsmith",
         "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/675899/",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/675737/",
         "license": "CC0-1.0",
-        "sha256": "11b03ac16b3b5fccbdb6cafbe7f2a1b95ca3455d21101d3d1156fa28e3b6e58b"
+        "sha256": "72f484f37a1c5d1503a8cd9458655f3e8e1e6ee9824953b8625d245ece349f3c"
       }
     ],
-    "processing": "excerpt 3.43-4.93 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 19.22-20.72 s of one recording, 30 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.137,
-    "sha256": "14db5e644be72c127356510fb067d857a919101084e56ecbeb6b743f30b19034"
+    "rms": 0.087,
+    "sha256": "9c24cddeac5a303583faf86898f2c61902d6aee2745faa13ec521a1169b54a9c"
   },
   "fire-f2-floor": {
     "file": "hero-forms/fire/f2-floor.wav",
