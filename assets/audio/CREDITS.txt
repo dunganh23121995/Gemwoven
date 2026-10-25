@@ -349,24 +349,29 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25, round 7): one clean real recording per cue, each the literal
+Mika four- and six-star ultimates (2026-10-25, round 8): one clean real recording per cue, each the literal
 sound of its motion, minimally edited (excerpt with its natural attack and decay, gentle high-pass, gain with
 peak <= 0.82, short fades; no layering, pitch or time change, limiting or synthesis). Clips:
 hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json. Build: python scripts/prepare_mika_form_sounds.py.
   Form 3 is built on Mika's own form-1 recordings: "fire-whoosh.wav" by hnhnh,
-  https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and, in full, the 3.8 s
-  finale) and Taira Komori's katana recordings (TK'S FREE SOUND FX, see the katana terms above:
-  extracting_a_sword1 = the glaive drawn, cutting_with_a_katana1 = the crescent cut).
+  https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and the 2 s finale) and
+  Taira Komori's katana recordings (TK'S FREE SOUND FX, see the katana terms above: extracting_a_sword1 = the
+  glaive drawn, cutting_with_a_katana1 = the crescent cut).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
-  #483316 "R09-74-Fire Torch.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/ (form 2 sword igniting, blade flaring up)
-  #507470 "Several low fast swooshes.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507470/ (form 2 overhead cleave)
-  #843247 "Explosion 1 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843247/ (form 2 impact; edit of a CC0 recording by Ñado)
-  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 cut burning on the floor)
-  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring)
-  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst, the damage hit)
-  #343451 "Boom 1" and #343452 "Boom 2" by D.S.G., https://freesound.org/people/D.S.G./sounds/343451/ and /343452/ (form 3 first and second spirit-wave booms)
-  #758072 "Cannon boom" by Quassorr, https://freesound.org/people/Quassorr/sounds/758072/ (form 3 third spirit-wave boom)
+  Form 2 (booms, lava and fire bursts):
+  #683179 "Fireball" by NearTheAtmoshphere, https://freesound.org/people/NearTheAtmoshphere/sounds/683179/ (sword bursting alight)
+  #483316 "R09-74-Fire Torch.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/ (blade flaring up and roaring)
+  #618013 "Bubbling lava flowing1.wav" by Jim-Bretherick, https://freesound.org/people/Jim-Bretherick/sounds/618013/ (lava heaving under the blade)
+  #522705 "Fireball, Woosh, Pass, fast" by julianmateo_, https://freesound.org/people/julianmateo_/sounds/522705/ (overhead cleave)
+  #438530 "G33-24-Atomic Bomb.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/438530/ (impact, the damage hit)
+  #737664 "SFX_TV_BOILING_METAL_LAVA" by tiagusilva37, https://freesound.org/people/tiagusilva37/sounds/737664/ (lava boiling along the floor cut)
+  Form 3:
+  #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (tails flaring)
+  #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (spinning sweep)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (sun burst, the damage hit)
+  #251759 "BOOMING PUNCHY EXPLOSION - close, big SCHOEPS MK41.wav" by misosound, https://freesound.org/people/misosound/sounds/251759/ (first spirit-wave explosion)
+  #609587 "Grenade Explosion SFX (medium-sized, meaty, realistic)" by unfa, https://freesound.org/people/unfa/sounds/609587/ (second spirit-wave explosion)
+  #528258 "Missile Blast 1" by magnuswaker, https://freesound.org/people/magnuswaker/sounds/528258/ (third spirit-wave explosion)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length
