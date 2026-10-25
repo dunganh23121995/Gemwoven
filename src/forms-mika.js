@@ -117,7 +117,7 @@ function mikaFlash(pending,kind){
 // One real recording per cue, each the literal sound of its motion (scripts/prepare_mika_form_sounds.py);
 // the damage hit is the loudest clip and a long natural tail rings out after it. Form 3 is built on form 1's
 // own recordings (her fire whoosh gathers and, in full, rings out from the hit; her katana draws and cuts).
-const MIKA_SOUNDS={2:['f2-ignite','f2-roar','f2-cleave','f2-impact','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-burst']};
+const MIKA_SOUNDS={2:['f2-blaze','f2-cleave','f2-impact','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-boom1','f3-boom2','f3-boom3']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -136,7 +136,7 @@ async function mikaLongCleave(raw,onRelease){
   let result={amount:0,blocked:0},blade=null,frameId=0,arc=null;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='raise';root.dataset.state='cast';
   try{
-    combatVoice('hero','cast');mikaSound('f2-ignite',.4,-.2);popActorSkill('hero',HEROES.fire.skill,true,pending);
+    combatVoice('hero','cast');mikaSound('f2-blaze',.42,-.15);popActorSkill('hero',HEROES.fire.skill,true,pending);
     setSpriteFrame('hero','skill',0);
     // The blade must reach past the foe's far side once it lies level across the stage.
     const foe=mikaFoeBody(),reach=Math.max(140,foe.right+8-mikaGrip(2,3).x);
@@ -171,7 +171,7 @@ async function mikaLongCleave(raw,onRelease){
       frameId=requestAnimationFrame(track);
     };
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
-    await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';mikaSound('f2-roar',.4,-.15);
+    await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');mikaSound('f2-cleave',.36,.05);
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
     if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
@@ -182,7 +182,7 @@ async function mikaLongCleave(raw,onRelease){
     // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
     // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
     const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));
-    pending.push(wait(reduced?0:80).then(()=>mikaSound('f2-floor',.28,.25)));
+    pending.push(wait(reduced?0:80).then(()=>mikaSound('f2-floor',.4,.25)));
     pending.push(wait(reduced?0:80).then(()=>mikaBurst('impact2',{x:foe.x-foe.width*.1,y:foe.bottom-cut*.03},cut,pending,{hold:1.15,className:'mika-floor-cut'})));
     mikaShake(pending,1);mikaFlash(pending,'cleave');combatV3Camera(1,true,state.boss,pending);
     if(arc){const node=arc.node;pending.push((async()=>{await wait(90);mikaFxFrame(node,'arc2',2);await wait(110);mikaFxFrame(node,'arc2',3);await animate(node,[{opacity:1},{opacity:0}],{duration:220,fill:'forwards'});})().finally(()=>node.remove()));}
@@ -197,7 +197,7 @@ async function mikaLongCleave(raw,onRelease){
 
 // ---- Six-star: Cửu Dương Hồ Diễm ------------------------------------------------------------------
 // Nine fox-fire spirits (the departure fox, assets/fx/depart) race from Mika to the foe and burst.
-const MIKA_SPIRIT_WAVE=240;
+const MIKA_SPIRIT_WAVE=300;// the waves' booms land 300 ms apart: thùng, thùng, thùng
 function mikaFoxSpirits(from,foe,pending){
   const sheet=ART.departFx?.fox;if(!sheet||reduced)return;
   const ground=Math.max(from.foot,foe.bottom);
@@ -210,7 +210,7 @@ function mikaFoxSpirits(from,foe,pending){
     // Three waves of three (one lane each), so each wave's bursts land together with one fireball sound.
     const delay=Math.floor(i/3)*MIKA_SPIRIT_WAVE+i%3*20;
     pending.push(animate(node,[{opacity:0,transform:'translate(-50%,-50%) scale(.5)'},{opacity:1,transform:`translate(calc(-50% + ${dx*.25}px),-50%) scale(1)`,offset:.25},{opacity:1,transform:`translate(calc(-50% + ${dx}px),calc(-50% - ${6+i%3*5}px)) scale(1)`,offset:.86},{opacity:0,transform:`translate(calc(-50% + ${dx+12}px),calc(-50% - 14px)) scale(1.35)`}],{duration:520,delay,easing:'cubic-bezier(.35,.1,.55,1)',fill:'backwards'}).finally(()=>node.remove()));
-    pending.push(wait(delay+450).then(()=>{if(!reduced){if(i%3===0)mikaSound('f3-burst',.44,.3);mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
+    pending.push(wait(delay+450).then(()=>{if(!reduced){if(i%3===0)mikaSound('f3-boom'+(i/3+1),[.5,.62,.5][i/3],.3);mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
   }
 }
 // The nine tails flare: a nine-tailed sun of fox-fire (impact3) opens behind her back.

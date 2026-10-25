@@ -89,18 +89,16 @@ clip('draw', ('katana', 'extracting_a_sword1.mp3'), 0, .5, 'a steel blade drawn 
 # A blade cutting through (form 3's crescent).
 clip('cut', ('katana', 'cutting_with_a_katana1.mp3'), .1, .72, 'a blade cutting through the foe', fade_in=.003, fade_out=.15)
 
-# ---- Four-star: Hồ Diễm Long Trảm (rebuilt again, fresh choices) ----------------------------------
-# 0 ms, the sword igniting: a gas torch lighting with a pop and catching into a hissing flame.
-clip('f2-ignite', ('freesound', '479302'), .85, 1.5, 'the sword igniting (0-300 ms)', fade_in=.003, fade_out=.15)
-# 300-1170 ms, the fox-fire blade towering and roaring: a large building fire's steady roar.
-clip('f2-roar', ('freesound', '483308'), .45, 1.35, 'the fox-fire blade towers and roars (300-1170 ms)', fade_in=.06, fade_out=.2)
-# 950-1170 ms, the huge overhead cleave: a heavy low swoosh peaking as it comes down.
-clip('f2-cleave', ('freesound', '475135'), .02, .62, 'the huge overhead cleave (950-1170 ms, peak at the hit)', fade_in=.003, fade_out=.2)
-# 1170 ms, the impact through the foe (damage hit): a punchy fire explosion.
-clip('f2-impact', ('freesound', '843249'), 0, .61, 'the blade blasts through the foe (damage hit, 1170 ms)', fade_in=.002, fade_out=.1)
-# From 1280 ms, the flames racing along the floor and dying away: a napalm fireball roaring out over the
-# ground with its whole natural decay (5.6 s).
-clip('f2-floor', ('freesound', '674902'), .35, 5.95, 'flames race along the floor and die away (from 1280 ms, 5.6 s)', fade_in=.01, fade_out=.3)
+# ---- Four-star: Hồ Diễm Long Trảm (redesigned: tight, nothing rings on after the floor fire) -------
+# 0-1170 ms, the sword igniting and the fox-fire blade flaring up and roaring: a fire torch flaring.
+clip('f2-blaze', ('freesound', '483316'), .4, 1.6, 'sword ignites, the fox-fire blade flares up and roars (0-1170 ms)', fade_in=.01, fade_out=.25)
+# 950-1170 ms, the huge overhead cleave: one low fast swoosh peaking as it lands.
+clip('f2-cleave', ('freesound', '507470'), .85, 1.35, 'the huge overhead cleave (950-1170 ms)', fade_in=.005, fade_out=.15)
+# 1170 ms, the impact through the foe (damage hit): a short fiery explosion.
+clip('f2-impact', ('freesound', '843247'), 0, .74, 'the blade blasts through the foe (damage hit, 1170 ms)', fade_in=.002, fade_out=.12)
+# 1280-2700 ms, the cut burning along the floor (visible 1280-1800), then fading out within a second:
+# a large fire's steady roar, faded, no reverberant tail.
+clip('f2-floor', ('freesound', '483308'), .5, 1.9, 'the cut burns along the floor and fades (1280-2700 ms)', fade_in=.04, fade_out=.7)
 
 # ---- Six-star: Cửu Dương Hồ Diễm --------------------------------------------------------------------
 # The nine tails flare into a sun: a fire blooming open.
@@ -109,7 +107,10 @@ clip('f3-flare', ('freesound', '761330'), .5, 1.45, 'the nine tails flare into a
 clip('f3-sweep', ('freesound', '260555'), .18, .7, 'the glaive spun flat, a ring of fire', fade_in=.003, fade_out=.15)
 # The nine-tailed sun bursts on the foe (damage hit): a fire explosion.
 clip('f3-sun', ('freesound', '855898'), 0, 1.23, 'the nine-tailed sun bursts on the foe (damage hit)', fade_in=.002, fade_out=.2)
-# Each wave of fox-fire spirits bursting on the foe: a punchy fiery explosion.
-clip('f3-burst', ('freesound', '843248'), 0, .56, 'a wave of fox-fire spirits explodes on the foe', fade_in=.002, fade_out=.1)
+# The three waves of fox-fire spirits bursting on the foe: three distinct deep booms ("thùng, thùng,
+# thùng"), each cut short so the next one reads.
+clip('f3-boom1', ('freesound', '343451'), 0, .3, 'first spirit wave explodes (deep boom)', fade_in=.002, fade_out=.12)
+clip('f3-boom2', ('freesound', '343452'), 0, .3, 'second spirit wave explodes (deep boom)', fade_in=.002, fade_out=.12)
+clip('f3-boom3', ('freesound', '758072'), .18, .55, 'third spirit wave explodes (cannon boom)', fade_in=.002, fade_out=.15)
 
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')

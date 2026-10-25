@@ -75,29 +75,67 @@
     "rms": 0.11,
     "sha256": "55d7a11eacc1f1f949ce953d2c977b867bd66d90cb1668522e0d805ef67eddfa"
   },
-  "fire-f2-ignite": {
-    "file": "hero-forms/fire/f2-ignite.wav",
-    "duration": 0.65,
-    "beat": "the sword igniting (0-300 ms)",
+  "fire-f2-blaze": {
+    "file": "hero-forms/fire/f2-blaze.wav",
+    "duration": 1.2,
+    "beat": "sword ignites, the fox-fire blade flares up and roars (0-1170 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "R30-15-Gas Torch Lights and Burns.wav",
+        "title": "R09-74-Fire Torch.wav",
         "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/479302/",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/483316/",
         "license": "CC0-1.0",
-        "sha256": "88661b2c338f2107e5b35bfb0bdff783626d4aac1f4322424fabf1e5a981deb5"
+        "sha256": "f5091b19d1986d33688671026a8aef8efedaf1f475bb211af58e94bbd005bf7a"
       }
     ],
-    "processing": "excerpt 0.85-1.50 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.055,
-    "sha256": "beb79ea7272910751882e5e63929f38abdf37462018b6672d968644419d425ac"
+    "processing": "excerpt 0.40-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.405,
+    "rms": 0.11,
+    "sha256": "3c887d7050617b319dd765ec9ec40756ed801b4f0b3ad137e056b8e99236e1f9"
   },
-  "fire-f2-roar": {
-    "file": "hero-forms/fire/f2-roar.wav",
-    "duration": 0.9,
-    "beat": "the fox-fire blade towers and roars (300-1170 ms)",
+  "fire-f2-cleave": {
+    "file": "hero-forms/fire/f2-cleave.wav",
+    "duration": 0.5,
+    "beat": "the huge overhead cleave (950-1170 ms)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Several low fast swooshes.aiff",
+        "author": "Danjocross",
+        "source_url": "https://freesound.org/people/Danjocross/sounds/507470/",
+        "license": "CC0-1.0",
+        "sha256": "529fcd149a182235e94ff35d9f752a5385ce1b6529b84db2b423edb239a77bc8"
+      }
+    ],
+    "processing": "excerpt 0.85-1.35 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.094,
+    "sha256": "7c50b5e5b169baa80cea1ea5145b99217185516d0b0c4f70eda4981404cbcdb6"
+  },
+  "fire-f2-impact": {
+    "file": "hero-forms/fire/f2-impact.wav",
+    "duration": 0.738,
+    "beat": "the blade blasts through the foe (damage hit, 1170 ms)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Explosion 1 (Burning Car rec by Ñado)",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/843247/",
+        "license": "CC0-1.0",
+        "sha256": "39f808229291c75ff48650301bcb4c82282b6a632a4fcaedce3ea3f77e71f5cb"
+      }
+    ],
+    "processing": "excerpt 0.00-0.74 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.1,
+    "sha256": "2f8cf0810cd3a601bc7462533275b0274e72f979a8a860c3ad2176021d27bf1c"
+  },
+  "fire-f2-floor": {
+    "file": "hero-forms/fire/f2-floor.wav",
+    "duration": 1.4,
+    "beat": "the cut burns along the floor and fades (1280-2700 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -108,67 +146,10 @@
         "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
       }
     ],
-    "processing": "excerpt 0.45-1.35 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.526,
+    "processing": "excerpt 0.50-1.90 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.587,
     "rms": 0.11,
-    "sha256": "fc11ad53c712f5c7ab07c2ca70275dad2602d81ec94734393b2ca30a022caca3"
-  },
-  "fire-f2-cleave": {
-    "file": "hero-forms/fire/f2-cleave.wav",
-    "duration": 0.6,
-    "beat": "the huge overhead cleave (950-1170 ms, peak at the hit)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "FX - Swoosh - Low Pitch",
-        "author": "bolkmar",
-        "source_url": "https://freesound.org/people/bolkmar/sounds/475135/",
-        "license": "CC0-1.0",
-        "sha256": "f618f47f61005225e6442e2b0e385fd0b3950b307fd932fee4497bb663885278"
-      }
-    ],
-    "processing": "excerpt 0.02-0.62 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.69,
-    "rms": 0.11,
-    "sha256": "f3d5be2d38bea4231189b0278a096dd972cfcb28321d4116fd196e0d5a7fd03c"
-  },
-  "fire-f2-impact": {
-    "file": "hero-forms/fire/f2-impact.wav",
-    "duration": 0.609,
-    "beat": "the blade blasts through the foe (damage hit, 1170 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Explosion 3 (Burning Car rec by Ñado)",
-        "author": "qubodup",
-        "source_url": "https://freesound.org/people/qubodup/sounds/843249/",
-        "license": "CC0-1.0",
-        "sha256": "21000c6dea61f5f276ae2ffec44d8ad15644a418150ca5e8bbf8c6f175e2a57c"
-      }
-    ],
-    "processing": "excerpt 0.00-0.61 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.066,
-    "sha256": "1e3d996bc23970f1c81f1e9ed3b72d698de5f70ffde519010cdb9e81d47b7e7f"
-  },
-  "fire-f2-floor": {
-    "file": "hero-forms/fire/f2-floor.wav",
-    "duration": 5.6,
-    "beat": "flames race along the floor and die away (from 1280 ms, 5.6 s)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "S30-36 Napalm bomb explosion.wav",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/674902/",
-        "license": "CC0-1.0",
-        "sha256": "1fafd2de132216d2bac6f770be067b005faad329cbd5e49d61f0f8ad241cdcc4"
-      }
-    ],
-    "processing": "excerpt 0.35-5.95 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.105,
-    "sha256": "19e41d5f2a7934b7607a2a26d351232d180ad11094f544fab465d26f484af024"
+    "sha256": "ff2bf0c23568715d7b7afa94d2f18c53084e3f29616bb9e30ff66e4d5f84dd52"
   },
   "fire-f3-flare": {
     "file": "hero-forms/fire/f3-flare.wav",
@@ -227,23 +208,61 @@
     "rms": 0.08,
     "sha256": "f62c2a9374851e39e2283af160ff22c6a9733cc682d0ac815145e003278e74c7"
   },
-  "fire-f3-burst": {
-    "file": "hero-forms/fire/f3-burst.wav",
-    "duration": 0.56,
-    "beat": "a wave of fox-fire spirits explodes on the foe",
+  "fire-f3-boom1": {
+    "file": "hero-forms/fire/f3-boom1.wav",
+    "duration": 0.3,
+    "beat": "first spirit wave explodes (deep boom)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Explosion 2 (Burning Car rec by Ñado)",
-        "author": "qubodup",
-        "source_url": "https://freesound.org/people/qubodup/sounds/843248/",
+        "title": "Boom 1",
+        "author": "D.S.G.",
+        "source_url": "https://freesound.org/people/D.S.G./sounds/343451/",
         "license": "CC0-1.0",
-        "sha256": "2a36ea63e45a51829758b570e407595f250fabb5bddba0da3b98d3617d4fd64a"
+        "sha256": "814dc3d9c4788754879d2e3b4a1642e13dda63fb520faef3aefa41702f9d1dd7"
       }
     ],
-    "processing": "excerpt 0.00-0.56 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.651,
+    "processing": "excerpt 0.00-0.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.545,
     "rms": 0.11,
-    "sha256": "b3691dc82efff131ec94830fe0021e2d9317a15c1f0d0916faabde2e7f52edb5"
+    "sha256": "e697880b4e21ed58cb184c5412292533153bda80a8a5c7ef44befe602d343a32"
+  },
+  "fire-f3-boom2": {
+    "file": "hero-forms/fire/f3-boom2.wav",
+    "duration": 0.3,
+    "beat": "second spirit wave explodes (deep boom)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Boom 2",
+        "author": "D.S.G.",
+        "source_url": "https://freesound.org/people/D.S.G./sounds/343452/",
+        "license": "CC0-1.0",
+        "sha256": "24f395e240ef1b5fee777d7a7f94a9096282ee4f66fa2cd9254c7f1884cbd6e1"
+      }
+    ],
+    "processing": "excerpt 0.00-0.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.378,
+    "rms": 0.11,
+    "sha256": "fe350bd5fe8dedd80e42ad3a86fe4c51a71fc6ebf5298e7d709ac872bff56852"
+  },
+  "fire-f3-boom3": {
+    "file": "hero-forms/fire/f3-boom3.wav",
+    "duration": 0.37,
+    "beat": "third spirit wave explodes (cannon boom)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Cannon boom",
+        "author": "Quassorr",
+        "source_url": "https://freesound.org/people/Quassorr/sounds/758072/",
+        "license": "CC0-1.0",
+        "sha256": "7f53295e7641686ef86a89376aadc42215d726abeebdb38fc31f057175bf65b3"
+      }
+    ],
+    "processing": "excerpt 0.18-0.55 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.099,
+    "sha256": "c228040084614c5c35f9da30f58c20853556ca09f1ca502475c274294b25f50a"
   }
 }
