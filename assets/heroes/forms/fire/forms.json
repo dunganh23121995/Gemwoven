@@ -211,6 +211,33 @@
           "footY": 0.94,
           "frameDuration": 100,
           "scale": 1.8457
+        },
+        "back": {
+          "file": "assets/heroes/forms/fire/form-2/back.webp",
+          "cols": 2,
+          "rows": 2,
+          "count": 4,
+          "heads": [
+            [
+              139,
+              49
+            ],
+            [
+              139,
+              49
+            ],
+            [
+              139,
+              49
+            ],
+            [
+              139,
+              49
+            ]
+          ],
+          "footY": 0.94,
+          "frameDuration": 100,
+          "scale": 1.8457
         }
       }
     },

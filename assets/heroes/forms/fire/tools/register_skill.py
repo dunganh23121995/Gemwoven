@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-SHEETS = [(2, "skill", 100, 3, 2), (3, "skill", 100, 3, 2), (3, "dash", 90, 3, 2), (3, "slash", 100, 3, 2), (2, "press", 100, 2, 2)]
+SHEETS = [(2, "skill", 100, 3, 2), (3, "skill", 100, 3, 2), (3, "dash", 90, 3, 2), (3, "slash", 100, 3, 2), (2, "press", 100, 2, 2), (2, "back", 100, 2, 2)]
 p = ROOT / "forms.json"
 d = json.loads(p.read_text(encoding="utf-8"))
 for form, action, ms, cols, rows in SHEETS:

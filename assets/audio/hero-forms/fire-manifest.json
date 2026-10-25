@@ -94,24 +94,43 @@
     "rms": 0.1,
     "sha256": "e19db71ebf7a54b3d26c8b904e04a54a75e755944a256f9a80ce89e3e0f2cc6f"
   },
-  "fire-f2-collapse": {
-    "file": "hero-forms/fire/f2-collapse.wav",
-    "duration": 1.5,
-    "beat": "the hit: a mountain collapses, rocks crash and tumble (1.5 s)",
+  "fire-f2-flyby": {
+    "file": "hero-forms/fire/f2-flyby.wav",
+    "duration": 1.05,
+    "beat": "the backswing and the strong chop: a starship roaring past (1270-2300 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "S24-19 rocks falling.wav by craigsmith",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/675737/",
+        "title": "Powerful Starship Rocket Flyby",
+        "author": "Jace",
+        "source_url": "https://freesound.org/people/Jace/sounds/638499/",
         "license": "CC0-1.0",
-        "sha256": "72f484f37a1c5d1503a8cd9458655f3e8e1e6ee9824953b8625d245ece349f3c"
+        "sha256": "6a4a0d581fb58f874fecf56f3622e6a462417b74e472a9a608ad6ab677ad69e5"
       }
     ],
-    "processing": "excerpt 19.22-20.72 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 1.25-2.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.397,
+    "rms": 0.11,
+    "sha256": "4ffefa7100853d5c9195948f35c2dc5c8c0a57981e8faa43fb0bd34ebdb3edd4"
+  },
+  "fire-f2-planet": {
+    "file": "hero-forms/fire/f2-planet.wav",
+    "duration": 2.03,
+    "beat": "the hit: a planet exploding, colossal deep blast and rumble (2.0 s)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Explosion005 with decay.wav",
+        "author": "klangfabrik",
+        "source_url": "https://freesound.org/people/klangfabrik/sounds/232961/",
+        "license": "CC0-1.0",
+        "sha256": "67cbca6170164f633ded2ab33d7dbad39b58fbe369284fd2248b4e996fbf7e68"
+      }
+    ],
+    "processing": "excerpt 0.27-2.30 s of one recording, 25 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.087,
-    "sha256": "9c24cddeac5a303583faf86898f2c61902d6aee2745faa13ec521a1169b54a9c"
+    "rms": 0.136,
+    "sha256": "ca362b0b052b9ebd72e44b08b5d1e6bd9970bcb734117738d8a2a03018e4647e"
   },
   "fire-f2-floor": {
     "file": "hero-forms/fire/f2-floor.wav",

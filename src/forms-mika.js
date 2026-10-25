@@ -117,7 +117,7 @@ function mikaFlash(pending,kind){
 // One real recording per cue, each the literal sound of its motion (scripts/prepare_mika_form_sounds.py);
 // the damage hit is the loudest clip and a long natural tail rings out after it. Form 3 is built on form 1's
 // own recordings (her fire whoosh gathers and, in full, rings out from the hit; her katana draws and cuts).
-const MIKA_SOUNDS={2:['f2-rise','f3-sun','f2-collapse','flame-whoosh','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
+const MIKA_SOUNDS={2:['f2-rise','f3-sun','f2-flyby','f2-planet','flame-whoosh','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -129,19 +129,32 @@ function mikaSound(name,volume,pan=0){
 }
 
 // ---- Four-star: Hồ Diễm Long Trảm -----------------------------------------------------------------
-// The slow pressing stroke's poses ("press" sheet): grip (x, y in the 512px cell) and sword angle.
-const MIKA_PRESS_GRIPS=[[257,246,-78],[326,297,-43],[346,322,-30],[363,336,-25]];
-function mikaPressGrip(frame){
+// Extra poses for the cleave (forms.json "press" and "back" sheets): grip (x, y in the 512px cell) and
+// the drawn sword's angle (degrees, 0 = right, -90 = up, -180 = straight back).
+const MIKA_POSE_GRIPS={press:[[257,246,-78],[326,297,-43],[346,322,-30],[363,336,-25]],
+  back:[[253,279,-113],[243,307,-138],[303,298,-157],[269,302,-185]]};
+function mikaPoseGrip(action,frame){
+  if(action!=='press'&&action!=='back')return mikaGrip(2,frame);
   const body=actor('hero').querySelector('.sprite-body').getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
-  const [x,y,angle]=MIKA_PRESS_GRIPS[frame];
+  const [x,y,angle]=MIKA_POSE_GRIPS[action][frame];
   return {x:body.left-scene.left+x/512*body.width,y:body.top-scene.top+y/512*body.height,angle};
 }
-// Hồ Diễm Long Trảm: she raises the sword and its fox-fire blade towers; then drives the giant blade down
-// slowly with all her strength (a strained, pressing stroke) as the fire rumbles ("uỳnh uỳnh"); then
-// heaves it back up and brings it down in one fast chop through the foe, which lands like a mountain
-// collapsing. Damage: one damage() at the fast chop, as before.
+// The drawn pose whose sword is nearest a blade angle, from straight back (-185) to level (0).
+const MIKA_SWING_POSES=[['back',3,-185],['back',2,-157],['back',1,-138],['back',0,-113],['skill',1,-93],['skill',2,-48],['skill',3,0]];
+function mikaSwingPose(angle){return MIKA_SWING_POSES.reduce((best,p)=>Math.abs(p[2]-angle)<Math.abs(best[2]-angle)?p:best);}
+// Hồ Diễm Long Trảm: she raises the sword and its fox-fire blade towers; one short heavy dip of the blade
+// ("uỳnh"); she swings it back behind her (the blade roaring past like a starship) and brings it down hard
+// in one fast chop through the foe, which bursts like a planet exploding. Damage: one damage() at the chop.
+// The cleave's extra sheets are shown only for a few hundred ms: they are kept decoded (held here) so
+// their first frame is never blank while the browser decodes it.
+const mikaHeldSheets=[];
+async function mikaHoldSheets(names){
+  const sheets=names.map(n=>ART.heroForms?.fire?.['2']?.[n]).filter(Boolean);
+  const jobs=sheets.map(sheet=>{const img=new Image();img.src=sheet.src;mikaHeldSheets.push(img);return img.decode?.().catch(()=>{});});
+  await Promise.race([Promise.all(jobs),wait(250)]);
+}
 async function mikaLongCleave(raw,onRelease){
-  mikaWarmSounds(2);
+  mikaWarmSounds(2);if(!mikaHeldSheets.length)await mikaHoldSheets(['press','back','skill']);
   const root=actor('hero'),oldZ=root.style.zIndex,oldTransform=root.style.transform,pending=[],start=performance.now();
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   let result={amount:0,blocked:0},blade=null,frameId=0,arc=null;
@@ -152,41 +165,32 @@ async function mikaLongCleave(raw,onRelease){
     // The blade must reach past the foe's far side once it lies level across the stage.
     const foe=mikaFoeBody(),reach=Math.max(140,foe.right+8-mikaGrip(2,3).x);
     blade=mikaWeapon('blade2',reach);
-    const RAISE=300,PRESS=950,LIFT=1620,CHOP=1740,HIT=1960,PRESS_TO=-27;
+    const RAISE=300,DIP=950,BACK=1270,HOLD=1600,CHOP=1660,HIT=1880,DIP_TO=-74;
     const track=now=>{
       if(!blade?.node.isConnected)return;
-      const t=now-start,sprite=root.querySelector('.sprite-body'),frame=Number(sprite?.dataset.frame)||0,pressing=sprite?.dataset.action==='press';
-      let grip=pressing?mikaPressGrip(frame):mikaGrip(2,frame),angle=grip.angle,scale=1,strip=3,opacity=1;
+      const t=now-start,sprite=root.querySelector('.sprite-body'),frame=Number(sprite?.dataset.frame)||0,action=sprite?.dataset.action||'skill';
+      let grip=mikaPoseGrip(action,frame),angle=grip.angle,scale=1,strip=3,opacity=1;
+      const pose=([act,fr])=>{if(action!==act||frame!==fr)setSpriteFrame('hero',act,fr);return mikaPoseGrip(act,fr);};
       if(t<RAISE){scale=mikaLerp(.2,.36,t/RAISE);strip=0;opacity=mikaLerp(0,1,t/140);}
-      else if(t<PRESS){scale=mikaLerp(.36,1,mikaEase((t-RAISE)/420));strip=t<RAISE+200?0:1+Math.floor(t/90)%2;}
-      else if(t<LIFT){
-        // The slow stroke: the giant blade is forced down against resistance, slowing as it goes; the
-        // drawn pressing pose is picked from the blade's angle and the body trembles with the strain.
-        const u=Math.min(1,(t-PRESS)/(LIFT-PRESS-120)),p=1-Math.pow(1-u,1.7);
-        angle=mikaLerp(-93,PRESS_TO,p);
-        const pose=angle<-60?0:angle<-36?1:angle<-28?2:3;
-        if(!pressing||pose!==frame)setSpriteFrame('hero','press',pose);
-        grip=mikaPressGrip(pose);strip=1+Math.floor(t/70)%2;
-        root.style.transform=`translate(${Math.sin(t/23)*1.6}px,${Math.cos(t/31)*.8}px)`;
+      else if(t<DIP){scale=mikaLerp(.36,1,mikaEase((t-RAISE)/420));strip=t<RAISE+200?0:1+Math.floor(t/90)%2;}
+      else if(t<BACK){
+        // One short heavy dip: the blade forced down a little from upright, held with strain.
+        const u=Math.min(1,(t-DIP)/220);angle=mikaLerp(-93,DIP_TO,mikaEase(u));
+        grip=pose(['press',0]);strip=1+Math.floor(t/70)%2;
+        root.style.transform=`translate(${Math.sin(t/23)*1.4}px,${Math.cos(t/31)*.7}px)`;
       }else if(t<CHOP){
-        // Heaved straight back up for the real blow.
+        // The backswing: up past vertical and on back behind her, the blade following her hands.
         root.style.transform=oldTransform;
-        const u=Math.min(1,(t-LIFT)/(CHOP-LIFT));angle=mikaLerp(PRESS_TO,-93,mikaEase(u));
-        if(pressing||frame!==1)setSpriteFrame('hero','skill',1);
-        grip=mikaGrip(2,1);strip=1+Math.floor(t/60)%2;
+        const u=Math.min(1,(t-BACK)/(HOLD-BACK));angle=mikaLerp(DIP_TO,-185,u*u*(3-2*u));
+        grip=pose(mikaSwingPose(angle));strip=1+Math.floor(t/60)%2;
       }else if(t<HIT){
-        // The fast chop: the blade turns with the hilt from straight up to level, and the drawn body
-        // pose is picked from the blade's angle, so sword and giant blade always point the same way.
-        const u=Math.min(1,(t-CHOP)/(HIT-CHOP)),p=u*u*(3-2*u),a=mikaGrip(2,1),b=mikaGrip(2,2),c=mikaGrip(2,3);
-        angle=mikaLerp(-93,0,p);
-        const pose=angle<-69?1:angle<-22?2:3;
-        if(pressing||pose!==frame)setSpriteFrame('hero','skill',pose);
-        grip=[a,a,b,c][pose];
-        strip=1+Math.floor(t/60)%2;
+        // The strong chop: from straight back over her head and down to level through the foe, fast.
+        const u=Math.min(1,(t-CHOP)/(HIT-CHOP));angle=mikaLerp(-185,0,u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2);
+        grip=pose(mikaSwingPose(angle));strip=1+Math.floor(t/50)%2;
       }else{
         // Follow-through: the giant blade rides the sword on down into the ground beyond the foe.
-        const p=(t-HIT-110)/140,c=mikaGrip(2,3),d=mikaGrip(2,4);strip=1+Math.floor(t/80)%2;
-        grip=frame>=4?{x:mikaLerp(c.x,d.x,p),y:mikaLerp(c.y,d.y,p)}:c;angle=frame>=4?mikaLerp(0,29,mikaEase(p)):0;
+        const p=(t-HIT-110)/140,c=mikaGrip(2,3),d=mikaGrip(2,4),follow=frame>=4&&action==='skill';strip=1+Math.floor(t/80)%2;
+        grip=follow?{x:mikaLerp(c.x,d.x,p),y:mikaLerp(c.y,d.y,p)}:c;angle=follow?mikaLerp(0,29,mikaEase(p)):0;
         opacity=t<HIT+260?1:Math.max(0,1-(t-HIT-260)/240);
       }
       blade.frame(strip);blade.place(grip.x,grip.y,angle,scale);blade.node.style.opacity=String(opacity);
@@ -195,19 +199,19 @@ async function mikaLongCleave(raw,onRelease){
     };
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
     await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
-    // Uỳnh uỳnh: the fire rumbles twice as the slow stroke bears down.
-    await at(PRESS);root.dataset.ragePhase='press';setSpriteFrame('hero','press',0);mikaSound('f3-sun',.46,.05);mikaShake(pending,.35);
-    await at(PRESS+330);mikaSound('f3-sun',.5,.1);mikaShake(pending,.45);
-    await at(LIFT);root.dataset.ragePhase='lift';
+    // Uỳnh: one short heavy dip of the blade.
+    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaSound('f3-sun',.48,.05);mikaShake(pending,.4);
+    // The backswing and the chop: the blade roars past like a starship flying by (peaking on the chop).
+    await at(BACK);root.dataset.ragePhase='backswing';mikaSound('f2-flyby',.7,-.1);
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
     if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
       arc={node:mikaFxNode('arc2','mika-arc')};arc.node.style.cssText+=`;left:${c.x}px;top:${c.y}px;width:${size}px;height:${size}px`;mikaFxFrame(arc.node,'arc2',0);}}
     await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';setSpriteFrame('hero','skill',3);
-    // Rầm: the hit lands like a mountain collapsing (the loudest moment); form 1's flame whoosh rings out
-    // after it, as at the end of form 3.
-    result=mikaContact(raw,onRelease,pending);mikaSound('f2-collapse',.62,.3);mikaSound('flame-whoosh',.4,.12);
+    // The hit bursts like a planet exploding (the loudest moment); form 1's flame whoosh rings out after
+    // it, as at the end of form 3.
+    result=mikaContact(raw,onRelease,pending);mikaSound('f2-planet',.62,.3);mikaSound('flame-whoosh',.4,.12);
     // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
     // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
     const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));
