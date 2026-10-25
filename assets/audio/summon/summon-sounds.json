@@ -1,0 +1,212 @@
+{
+  "star-1": {
+    "file": "assets/audio/summon/star-1.ogg",
+    "duration": 1.25,
+    "what": "chime-ball shake, star 1",
+    "source": {
+      "id": "874643",
+      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
+      "author": "loganzsound",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
+      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+    },
+    "excerpt": [
+      0.2,
+      1.45
+    ],
+    "peak": 0.32,
+    "rms": 0.047
+  },
+  "star-2": {
+    "file": "assets/audio/summon/star-2.ogg",
+    "duration": 1.25,
+    "what": "chime-ball shake, star 2",
+    "source": {
+      "id": "874643",
+      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
+      "author": "loganzsound",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
+      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+    },
+    "excerpt": [
+      7.55,
+      8.8
+    ],
+    "peak": 0.32,
+    "rms": 0.03
+  },
+  "star-3": {
+    "file": "assets/audio/summon/star-3.ogg",
+    "duration": 1.2,
+    "what": "chime-ball shake, star 3",
+    "source": {
+      "id": "874643",
+      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
+      "author": "loganzsound",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
+      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+    },
+    "excerpt": [
+      10.9,
+      12.1
+    ],
+    "peak": 0.32,
+    "rms": 0.023
+  },
+  "star-4": {
+    "file": "assets/audio/summon/star-4.ogg",
+    "duration": 1.2,
+    "what": "chime-ball shake, star 4",
+    "source": {
+      "id": "874643",
+      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
+      "author": "loganzsound",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
+      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+    },
+    "excerpt": [
+      15.8,
+      17.0
+    ],
+    "peak": 0.297,
+    "rms": 0.07
+  },
+  "splash": {
+    "file": "assets/audio/summon/splash.ogg",
+    "duration": 1.6,
+    "what": "small water splash",
+    "source": {
+      "id": "398039",
+      "title": "water splash 2",
+      "author": "swordofkings128",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/swordofkings128/sounds/398039/",
+      "sha256": "6e71f4954416fe3e15f1feb7c4858194585056c180145bb8977dc12cd206a1ba"
+    },
+    "excerpt": [
+      0.0,
+      1.6
+    ],
+    "peak": 0.5,
+    "rms": 0.018
+  },
+  "pop": {
+    "file": "assets/audio/summon/pop.ogg",
+    "duration": 0.406,
+    "what": "soft bubble pop",
+    "source": {
+      "id": "776443",
+      "title": "pop out, bubble, soft bursting",
+      "author": "chaferwitt",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/chaferwitt/sounds/776443/",
+      "sha256": "354601298fdda29520a0da7c8e008b1e146fda69bac91854c6223be2215ebffa"
+    },
+    "excerpt": [
+      0.0,
+      0.41
+    ],
+    "peak": 0.35,
+    "rms": 0.026
+  },
+  "flip": {
+    "file": "assets/audio/summon/flip.ogg",
+    "duration": 0.8,
+    "what": "card flip",
+    "source": {
+      "id": "84322",
+      "title": "flipCard.wav",
+      "author": "Splashdust",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/Splashdust/sounds/84322/",
+      "sha256": "dc9c08e4b172d404ce2f1ba8380d552fdd1d302419e2872f067f0d761147df90"
+    },
+    "excerpt": [
+      0.0,
+      0.8
+    ],
+    "peak": 0.45,
+    "rms": 0.021
+  },
+  "gold": {
+    "file": "assets/audio/summon/gold.ogg",
+    "duration": 2.8,
+    "what": "glass windchime cluster",
+    "source": {
+      "id": "397988",
+      "title": "various Glassy Stone Windchime sounds",
+      "author": "reconsider59",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/reconsider59/sounds/397988/",
+      "sha256": "d0f3d8965dbba9bb858399a9d27a3117528d5e6aa7a8d048030e9678cc50960c"
+    },
+    "excerpt": [
+      56.2,
+      59.0
+    ],
+    "peak": 0.45,
+    "rms": 0.019
+  },
+  "swell": {
+    "file": "assets/audio/summon/swell.ogg",
+    "duration": 4.2,
+    "what": "belltree glissando",
+    "source": {
+      "id": "145578",
+      "title": "Belltree.aif",
+      "author": "acmkyne",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/acmkyne/sounds/145578/",
+      "sha256": "2514f41ba3fe71c1ed45c491deaf12030b4e3a31e20b188325133af66dee4f7b"
+    },
+    "excerpt": [
+      0.3,
+      4.5
+    ],
+    "peak": 0.48,
+    "rms": 0.056
+  },
+  "bell": {
+    "file": "assets/audio/summon/bell.ogg",
+    "duration": 4.5,
+    "what": "tingsha strike and ring",
+    "source": {
+      "id": "435074",
+      "title": "Tingsha Cymbal",
+      "author": "steffcaffrey",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/steffcaffrey/sounds/435074/",
+      "sha256": "c21f4d8a2031203ac8ac9b380fe68558093d7e752f463ff04ab2d97936002ab6"
+    },
+    "excerpt": [
+      0.0,
+      4.5
+    ],
+    "peak": 0.5,
+    "rms": 0.031
+  },
+  "ambience": {
+    "file": "assets/audio/summon/ambience.ogg",
+    "duration": 26.0,
+    "what": "night lake: crickets, frogs, water",
+    "loop": true,
+    "source": {
+      "id": "445095",
+      "title": "Nature at the Lake.wav",
+      "author": "StoneyWaters",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/StoneyWaters/sounds/445095/",
+      "sha256": "9e4f3713d0286a047e1e08bf2347b15f231063e1ac1f5e1cc14fdb30a572ff35"
+    },
+    "excerpt": [
+      198.5,
+      226.0
+    ],
+    "peak": 0.25,
+    "rms": 0.013
+  }
+}

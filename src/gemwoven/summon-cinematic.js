@@ -1,9 +1,11 @@
 /* The reward transaction completes before this presentation starts: nothing here rolls, spends
- * or grants. Cards are dealt in reveal order (common cards first, premium cards last, the whole
- * hero at the very end): each card grows out of a star above the lake, drops into the water with
- * a splash and bounces up into its slot on the board. Premium cards (whole heroes, hero fragments
- * and weapons) shimmer; opening a whole-hero card plays that hero's own summoning entrance.
- * All art is generated (assets/gemwoven/summon); code only moves, scales and fades it. */
+ * or grants. Cards are dealt in reveal order (bronze first, gold next, diamond last, the whole
+ * hero at the very end): each card is a star that falls from the sky along its own curving,
+ * twisting path, splashes into the lake and only then bounces up into its slot as a card.
+ * Gold and diamond cards shimmer; opening a whole-hero card plays that hero's own entrance.
+ * All art is generated (assets/gemwoven/summon); code only moves, scales and fades it. Sounds are
+ * single real CC0 recordings (scripts/prepare_summon_sounds.py) played at the hub's effects
+ * volume, silent when the hub is muted. */
 (() => {
   const A=window.GEMWOVEN_ASSETS,M=window.GemwovenProgression;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -22,6 +24,31 @@
   const order=r=>({bronze:0,gold:10,diamond:20})[cardType(r)]+(r.kind==='hero'?9:r.kind==='fragments'?8:RANK[r.rarity]||0);
   const rewardArt=r=>r.kind==='hero'?'hero-'+r.hero:r.kind==='fragments'?(A['fragment-'+r.hero]?'fragment-'+r.hero:'portrait-'+r.hero)
     :r.kind==='gear'?M.SLOT_ART[r.gear.slot]:M.RESOURCES[r.resource]?.[1]||'summon-crystal';
+  // ---- sound: the hub's effects volume and mute (journey-ui.js) apply to every cue ----
+  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['star-1','star-2','star-3','star-4','splash','pop','flip','gold','swell','bell','ambience']
+    .map(k=>[k,`assets/audio/summon/${k}.ogg`]));
+  const Sound={ctx:null,buffers:{},bed:null,wantBed:false,
+    level(){const H=window.GemwovenHubAudio;if(H?.muted?.())return 0;const v=H?.levels?.().effects;return Number.isFinite(v)?v/100:1;},
+    init(){
+      if(this.ctx||!this.level())return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC||!window.fetch)return;
+      try{this.ctx=new AC();}catch{return;}
+      for(const [k,u] of Object.entries(SOUND_FILES))fetch(new URL(u,document.baseURI).href).then(r=>r.arrayBuffer()).then(b=>this.ctx.decodeAudioData(b))
+        .then(buf=>{this.buffers[k]=buf;if(k==='ambience'&&this.wantBed)this.ambience(true);}).catch(()=>{});
+    },
+    play(name,{volume=1,pan=0,delay=0,loop=false}={}){
+      const v=this.level()*volume,buf=this.buffers[name];if(!this.ctx||!v||!buf)return null;
+      if(this.ctx.state==='suspended')this.ctx.resume().catch(()=>{});
+      const src=this.ctx.createBufferSource(),gain=this.ctx.createGain();src.buffer=buf;src.loop=loop;gain.gain.value=v;src.connect(gain);
+      let out=gain;if(this.ctx.createStereoPanner){const p=this.ctx.createStereoPanner();p.pan.value=Math.max(-.8,Math.min(.8,pan));gain.connect(p);out=p;}
+      out.connect(this.ctx.destination);src.start(this.ctx.currentTime+delay/1000);return {src,gain};
+    },
+    // The night-lake bed fades in under the reveal and out when it closes.
+    ambience(on){
+      this.wantBed=on;
+      if(on&&!this.bed){const b=this.play('ambience',{volume:.55,loop:true});if(!b)return;const g=b.gain.gain,t=this.ctx.currentTime;g.setValueAtTime(0,t);g.linearRampToValueAtTime(.55*this.level(),t+1.8);this.bed=b;}
+      if(!on&&this.bed){const {src,gain}=this.bed,t=this.ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(0,t+.8);src.stop(t+.85);this.bed=null;}
+    }
+  };
   const sparkles=n=>Array.from({length:n},(_,i)=>sprite('summon-sparkle','sm-twinkle',`--x:${[8,92,14,86,50][i%5]}%;--y:${[6,12,94,88,-3][i%5]}%;--s:${[26,20,22,18,24][i%5]}px;--d:${-(i*.73).toFixed(2)}s;--wait:${(2.4+i*.6).toFixed(1)}s`)).join('');
 
   // The living lake: drifting light, aurora, twinkling stars, moonlight glinting on the water.
@@ -45,26 +72,26 @@
     modal.style.setProperty('--lake',`url("${url('summon-lake')}")`);
     modal.setAttribute('aria-label','Hồ Tinh Tú · Triệu hồi');
     modal.innerHTML=`${sky()}
-      <header><small>GIAO ƯỚC DƯỚI NGÂN HÀ</small><h2>Hồ Tinh Tú</h2><p class="celestial-status" role="status">Tinh tú đang đáp lời…</p></header>
+      <p class="celestial-status" role="status">Tinh tú đang đáp lời…</p>
       <button type="button" class="celestial-close" aria-label="Đóng kết quả">×</button>
       <div class="celestial-deck" hidden></div><div class="celestial-fx" aria-hidden="true"></div>
       <button type="button" class="celestial-skip">Bỏ qua ›</button>
-      <footer><button type="button" class="celestial-open-all gw-btn" disabled>Mở tất cả</button><p>Phần thưởng đã được lưu vào túi đồ</p></footer>`;
+      <footer><button type="button" class="celestial-open-all gw-btn" disabled>Mở tất cả</button></footer>`;
     document.body.append(modal);
     const deck=modal.querySelector('.celestial-deck'),fx=modal.querySelector('.celestial-fx'),status=modal.querySelector('.celestial-status'),
       all=modal.querySelector('.celestial-open-all'),skipButton=modal.querySelector('.celestial-skip');
     const reduced=()=>document.documentElement.classList.contains('reduced-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let opened=0,dealt=false,closed=false,heroStage=null;const timers=[],flights=[];
+    let opened=0,dealt=false,closed=false,heroStage=null;const timers=[],flights=[],stars=new Set();
     const play=(el,frames,opts)=>el.animate?el.animate(frames,opts):null;
     const later=(ms,fn)=>timers.push(setTimeout(()=>{if(!closed)fn();},ms));
     function layout(){
       // Card size follows the free board area: 5 across on wide frames, 3 across on phones.
       const box=deck.getBoundingClientRect(),n=results.length,cols=n<=1?1:modal.clientWidth<480?3:5,rows=Math.ceil(n/cols),gap=n>1?9:0;
-      const width=Math.min(n<=1?200:150,(box.width-gap*(cols-1))/cols,(box.height-gap*(rows-1))/rows*.66);
+      const width=Math.min(n<=1?190:150,(box.width-gap*(cols-1))/cols,(box.height-gap*(rows-1))/rows*.52);
       deck.style.setProperty('--cols',cols);deck.style.setProperty('--cw',Math.max(40,Math.floor(width))+'px');
     }
     function finish(){
-      if(closed)return;closed=true;timers.forEach(clearTimeout);observer.disconnect();heroStage?.stop();modal.remove();resolve();
+      if(closed)return;closed=true;timers.forEach(clearTimeout);stars.forEach(st=>st.stop());observer.disconnect();heroStage?.stop();Sound.ambience(false);modal.remove();resolve();
     }
     modal.addEventListener('close',finish,{once:true});
     modal.querySelector('.celestial-close').onclick=()=>modal.close();
@@ -74,12 +101,12 @@
       card.dataset.tier=top?'premium':'common';card.dataset.card=art;card.style.setProperty('--rarity',R.color);
       const win=A['summon-front-'+art]?.window||[.14,.18,.86,.72];
       card.style.setProperty('--win',`${win[1]*100}% ${(1-win[2])*100}% ${(1-win[3])*100}% ${win[0]*100}%`);
+      const plaque=A["summon-front-"+art]?.plaque;if(plaque){card.style.setProperty("--plaque-top",plaque[0]*100+"%");card.style.setProperty("--plaque-h",plaque[1]*100+"%");}
       card.setAttribute('aria-label',`Thẻ ${i+1} · ${({bronze:'Thẻ đồng',gold:'Thẻ vàng',diamond:'Thẻ kim cương'})[art]} · Chưa mở`);card.setAttribute('aria-pressed','false');
       const shine=top?`<span class="card-shine" aria-hidden="true">${img('summon-streak')}</span>`:'';
       card.innerHTML=`${top?img('summon-halo','card-halo'):''}<span class="celestial-card-turn">
-        <span class="celestial-back">${img('summon-back-'+art,'card-art')}${shine}<small>Chạm để mở</small></span>
-        <span class="celestial-front" aria-hidden="true"><span class="card-window">${img('summon-back-'+art,'card-panel')}${img(rewardArt(r),'card-reward')}</span>${img('summon-front-'+art,'card-art')}${shine}
-          <small>${esc(r.kind==='fragments'?'Mảnh ghép tướng':R.name)}</small><strong>${esc(r.name)}</strong></span></span>${top?`<span class="card-sparkles" aria-hidden="true">${sparkles(4)}</span>`:''}`;
+        <span class="celestial-back">${img('summon-back-'+art,'card-art')}${shine}</span>
+        <span class="celestial-front" aria-hidden="true"><span class="card-window">${img('summon-back-'+art,'card-panel')}${img(rewardArt(r),'card-reward')}</span>${img('summon-front-'+art,'card-art')}${shine}<strong>${esc(r.name)}</strong></span></span>${top?`<span class="card-sparkles" aria-hidden="true">${sparkles(4)}</span>`:''}`;
       card.onclick=()=>open(card,r,0);deck.append(card);return card;
     });
     function open(card,r,delay){
@@ -88,12 +115,21 @@
       card.setAttribute('aria-label',r.name+' · '+M.RARITIES[r.rarity].name);
       card.querySelector('.celestial-front').setAttribute('aria-hidden','false');card.querySelector('.celestial-back').setAttribute('aria-hidden','true');
       opened++;status.textContent=`Đã mở ${opened} / ${results.length} thẻ`;
+      // Bronze: a plain card flip; gold: flip and a shimmering chime; diamond: a rising belltree
+      // swell, then a bell (for a whole hero the bell rings as the hero steps out).
+      const kind=card.dataset.card,pan=panOf(card),soft=delay>0&&kind==='bronze';
+      later(delay,()=>{
+        Sound.play('flip',{volume:kind==='bronze'?(soft?.5:.8):.55,pan});
+        if(kind==='gold')Sound.play('gold',{volume:.85,pan,delay:220});
+        if(kind==='diamond'){Sound.play('swell',{volume:.9,pan,delay:120});if(r.kind!=='hero')Sound.play('bell',{volume:.85,pan,delay:900});}
+      });
       if(card.dataset.tier==='premium'&&!reduced())later(delay+380,()=>burst(card,6));
       if(r.kind==='hero'&&cardType(r)==='diamond')later(delay+(reduced()?0:850),()=>showHero(r));
       if(opened===results.length){all.disabled=true;status.textContent='Tinh tú đã tìm được chủ nhân';modal.dataset.phase='complete';}
     }
     // Opening everything turns the common cards first and the premium ones last.
-    all.onclick=()=>{let wait=0;cards.forEach((card,i)=>{if(card.classList.contains('is-open'))return;open(card,results[i],wait);wait+=card.dataset.tier==='premium'?420:70;});};
+    all.onclick=()=>{let wait=0;cards.forEach((card,i)=>{if(card.classList.contains('is-open'))return;open(card,results[i],wait);wait+=card.dataset.card==='diamond'?900:card.dataset.tier==='premium'?520:110;});};
+    const panOf=el=>{const m=modal.getBoundingClientRect(),c=el.getBoundingClientRect();return m.width?((c.left+c.width/2-m.left)/m.width-.5)*1.2:0;};
 
     // ---- one-shot effects, placed in the modal's own coordinates ----
     function fxAt(html,x,y,ms){
@@ -109,37 +145,64 @@
       fxAt(img('summon-halo','sm-flash')+Array.from({length:n},(_,i)=>sprite('summon-sparkle','sm-fly',`--a:${i*360/n+15}deg;--r:${c.width*.75}px;--s:${18+i%3*6}px`)).join(''),
         c.left-m.left+c.width/2,c.top-m.top+c.height/2,1100);
     }
-    // ---- dealing ----
-    function fly(card,index){
-      const top=card.dataset.tier==='premium',m=modal.getBoundingClientRect(),c=card.getBoundingClientRect();
-      const cx=c.left-m.left+c.width/2,cy=c.top-m.top+c.height/2;
-      const sx=m.width*.5,sy=spawnY(c.height),ix=cx+(m.width*.5-cx)*.3,iy=m.height*.885;
-      const spawn=`translate(${sx-cx}px,${sy-cy}px)`,impact=`translate(${ix-cx}px,${iy-cy}px)`,under=`translate(${ix-cx}px,${iy-cy+16}px)`;
-      const diamond=card.dataset.card==='diamond',tilt=(index%2?1:-1)*(top?4:9),dur=diamond?2800:top?2400:1500,glow=diamond?1.7:top?1.5:1.35;
+    // ---- dealing: a star falls from the sky on its own curved, twisting path ----
+    const seeded=seed=>()=>{seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296;};
+    function fall(card,index){
+      const kind=card.dataset.card,top=card.dataset.tier==='premium',m=modal.getBoundingClientRect(),c=card.getBoundingClientRect();
+      const W=m.width,H=m.height,cx=c.left-m.left+c.width/2,cy=c.top-m.top+c.height/2,rnd=seeded(index*7919+results.length*31+1);
+      // Start above the top edge and end on the lake below the board; the curve swings out and
+      // back (alternating sides, so paths cross) and a loop that opens and closes twists around it.
+      const dir=(index%2?1:-1)*(rnd()<.25?-1:1);
+      const S=[Math.min(W*.92,Math.max(W*.08,cx+dir*W*(.15+rnd()*.3))),-H*.06];
+      const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.08,H*(.875+(rnd()-.5)*.03)];
+      const P1=[S[0]-dir*W*(.35+rnd()*.3),H*(.12+rnd()*.15)],P2=[I[0]+dir*W*(.3+rnd()*.25),H*(.45+rnd()*.15)];
+      const turns=1+rnd()*1.3,phase=rnd()*Math.PI*2,loop=W*(.05+rnd()*.05)*(top?1.25:1);
+      const dur=kind==='diamond'?2200:top?1800:1350,size=kind==='diamond'?62:top?50:38;
+      const star=document.createElement('span');star.className=`sm-falling star-${kind}`;star.setAttribute('aria-hidden','true');
+      star.innerHTML=img('summon-halo','sm-falling-halo')+sprite('summon-sparkle','sm-falling-core');
+      star.style.setProperty('--s',size+'px');fx.append(star);
+      Sound.play('star-'+(index%4+1),{volume:kind==='diamond'?.9:top?.7:.42,pan:(S[0]/W-.5)*1.2});
+      const t0=performance.now();let raf=0,lastTrail=0,done=false;
+      const point=u=>{
+        const t=Math.pow(u,1.3),k=1-t,b=i=>k*k*k*S[i]+3*k*k*t*P1[i]+3*k*t*t*P2[i]+t*t*t*I[i];
+        const th=phase+turns*Math.PI*2*t,r=loop*Math.sin(Math.PI*Math.min(1,t*1.15));
+        return [b(0)+r*Math.cos(th),b(1)+r*Math.sin(th)*.6];
+      };
+      const handle={stop(){if(done)return;done=true;cancelAnimationFrame(raf);star.remove();stars.delete(handle);}};stars.add(handle);
+      function frame(now){
+        if(closed||dealt){handle.stop();return;}
+        const u=Math.min(1,(now-t0)/dur),[x,y]=point(u),grow=.55+.45*u;
+        star.style.transform=`translate(${x}px,${y}px) scale(${grow})`;
+        if(now-lastTrail>(top?26:34)&&u<.97){lastTrail=now;trail(x,y,size*grow*(top?.85:.75),kind);}
+        if(u<1){raf=requestAnimationFrame(frame);return;}
+        handle.stop();splash(I[0],I[1],Math.max(80,c.width*(kind==='diamond'?2.3:top?1.9:1.5)),kind==='diamond'?7:top?4:0);
+        Sound.play('splash',{volume:kind==='diamond'?1:top?.8:.55,pan:(I[0]/W-.5)*1.2});
+        rise(card,I[0]-cx,I[1]-cy,kind);
+      }
+      raf=requestAnimationFrame(frame);
+    }
+    function trail(x,y,size,kind){
+      const s=A['summon-sparkle'];if(!s)return;const t=document.createElement('i');t.className=`sm-sprite sm-trail star-${kind}`;
+      t.style.cssText=`--sheet:url('${url('summon-sparkle').replace(/'/g,'%27')}');--count:${s.count};left:${x}px;top:${y}px;--s:${Math.max(8,size)}px`;
+      fx.append(t);setTimeout(()=>t.remove(),950);
+    }
+    // From the splash the card bounces up out of the water into its slot.
+    function rise(card,dx,dy,kind){
+      const top=kind!=='bronze',dur=kind==='diamond'?950:top?850:720;
       card.classList.remove('is-waiting');card.classList.add('is-flying');
       const anim=play(card,[
-        {transform:`${spawn} scale(.04)`,opacity:0,filter:`brightness(3)`},
-        {transform:`${spawn} scale(1)`,opacity:1,filter:`brightness(${glow})`,offset:top?.3:.22,easing:'ease-in-out'},
-        {transform:`${spawn} translateY(-8px) scale(1)`,opacity:1,filter:'brightness(1.2)',offset:top?.4:.3,easing:'cubic-bezier(.5,0,.9,.6)'},
-        {transform:`${impact} rotate(${tilt}deg) scale(.7)`,opacity:1,filter:'brightness(1)',offset:.6},
-        {transform:`${under} rotate(${tilt}deg) scale(.5)`,opacity:0,filter:'brightness(1)',offset:.65},
-        {transform:`${under} scale(.5)`,opacity:0,filter:'brightness(1.6)',offset:.7,easing:'cubic-bezier(.2,.8,.3,1.1)'},
-        {transform:'translateY(-22px) scale(1.06)',opacity:1,filter:`brightness(${glow*.8})`,offset:.87,easing:'ease-in-out'},
-        {transform:'translateY(5px) scale(.98)',opacity:1,filter:'brightness(1)',offset:.94},
+        {transform:`translate(${dx}px,${dy}px) scale(.3)`,opacity:0,filter:'brightness(2.2)'},
+        {transform:`translate(${dx*.5}px,${dy*.45}px) scale(.8)`,opacity:1,filter:'brightness(1.6)',offset:.35,easing:'cubic-bezier(.2,.7,.3,1)'},
+        {transform:'translateY(-24px) scale(1.07)',opacity:1,filter:'brightness(1.3)',offset:.7,easing:'ease-in-out'},
+        {transform:'translateY(6px) scale(.97)',opacity:1,filter:'brightness(1)',offset:.86},
         {transform:'none',opacity:1,filter:'none'}],{duration:dur,fill:'backwards'});
       if(anim)flights.push(anim);
-      fxAt(sprite('summon-sparkle','sm-spawn',`--s:${diamond?130:top?96:60}px`)+(top?img('summon-halo','sm-flash'):''),sx,sy,900);
-      later(dur*.6,()=>splash(ix,iy,Math.max(90,c.width*(diamond?2.5:top?2:1.5)),diamond?7:top?4:0));
-      const land=()=>{if(card.classList.contains('is-landed'))return;card.classList.remove('is-flying');card.classList.add('is-landed');if(top&&!closed&&!dealt)burst(card,diamond?8:5);};
+      later(dur*.82,()=>Sound.play('pop',{volume:top?.6:.45,pan:panOf(card)}));
+      const land=()=>{if(card.classList.contains('is-landed'))return;card.classList.remove('is-flying');card.classList.add('is-landed');if(top&&!closed&&!dealt)burst(card,kind==='diamond'?8:5);};
       if(anim)anim.onfinish=land;else later(dur,land);
     }
-    // The star gate sits just below the title so a growing card never covers the header text.
-    function spawnY(cardHeight){
-      const m=modal.getBoundingClientRect(),head=status.getBoundingClientRect().bottom-m.top;
-      return Math.max(m.height*.3,head+10+cardHeight/2);
-    }
     function deal(){
-      if(dealt||closed)return;dealt=true;timers.forEach(clearTimeout);timers.length=0;
+      if(dealt||closed)return;dealt=true;timers.forEach(clearTimeout);timers.length=0;stars.forEach(st=>st.stop());
       flights.forEach(a=>a.playState!=='finished'&&a.finish());fx.replaceChildren();
       cards.forEach(card=>{card.classList.remove('is-waiting','is-flying');card.classList.add('is-landed');});
       modal.classList.remove('is-suspense');skipButton.hidden=true;all.disabled=!results.length;
@@ -147,22 +210,22 @@
     }
     function start(){
       deck.hidden=false;layout();modal.dataset.phase='falling';
-      if(cards[0])modal.style.setProperty('--gate-y',spawnY(cards[0].getBoundingClientRect().height)+'px');
       if(reduced()){
         // Reduced motion: no fall, no splash; the cards simply fade in place.
         cards.forEach((card,i)=>{card.classList.remove('is-waiting');play(card,[{opacity:0},{opacity:1}],{duration:260,delay:i*40,fill:'backwards'});});
         deal();return;
       }
       status.textContent='Những lá bài rơi xuống mặt hồ…';
-      // Common cards come quickly; then a pause of suspense; then each premium card on its own.
-      let t=350,end=0;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium');
+      // Bronze stars come quickly; then a pause of suspense; then each gold and diamond star alone.
+      let t=250,end=0;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium');
       const suspense=()=>{modal.classList.add('is-suspense');status.textContent='Mặt hồ rung động… ánh sáng lạ đang tụ lại!';};
       cards.forEach((card,i)=>{
         const top=card.dataset.tier==='premium';
         if(i===firstTop){if(i){later(t+200,suspense);t+=1300;}else{later(t,suspense);t+=700;}}
         if(top&&i===cards.length-1&&i>firstTop)t+=350;   // one more breath before the very best card
-        later(t,()=>fly(card,i));end=Math.max(end,t+(card.dataset.card==='diamond'?2800:top?2400:1500));
-        t+=top?700:220;
+        const kind=card.dataset.card;
+        later(t,()=>fall(card,i));end=Math.max(end,t+(kind==='diamond'?2200+950:top?1800+850:1350+720));
+        t+=kind==='diamond'?1100:top?800:260;
       });
       later(end+80,deal);
     }
@@ -177,8 +240,7 @@
       stage.innerHTML=`<div class="summon-hero-light" aria-hidden="true">${img('summon-halo','sh-halo')}${img('summon-halo','sh-halo back')}${img('summon-orb','sh-orb')}</div>
         <div class="summon-hero-body"><img class="art" src="${esc(url(show?.sheets?`show-${r.hero}-${form}`:'hero-'+r.hero))}" alt=""></div>
         <div class="summon-hero-sparkles" aria-hidden="true">${Array.from({length:10},(_,i)=>sprite('summon-sparkle','sh-spark',`--x:${[12,86,24,74,50,8,92,34,64,46][i]}%;--y:${[30,26,58,62,14,78,74,84,86,40][i]}%;--s:${[30,26,22,34,28,20,24,18,22,16][i]}px;--d:${-(i*.41).toFixed(2)}s`)).join('')}</div>
-        <div class="summon-hero-name"><small>${esc(M.RARITIES[r.rarity].name)} · Tướng mới</small><strong>${esc(H.name)}</strong><span>${esc(H.title)}</span></div>
-        <p class="summon-hero-hint">Chạm để tiếp tục</p>`;
+        <div class="summon-hero-name"><strong>${esc(H.name)}</strong></div>`;
       modal.append(stage);
       const body=stage.querySelector('.summon-hero-body');
       const asset=show?.sheets?show:A['hero-'+r.hero];
@@ -189,6 +251,7 @@
         if(form===3&&window.GemwovenFormEffects&&A['form-aura-'+r.hero]){const aura=document.createElement('span');aura.className='hero-form-effects';aura.setAttribute('aria-hidden','true');aura.innerHTML=window.GemwovenFormEffects.markup(r.hero,form,A['form-aura-'+r.hero]);body.append(aura);}
       }
       if(!reduced())play(stage,[{opacity:0},{opacity:1}],{duration:420,fill:'backwards'});
+      Sound.play('bell',{volume:1,delay:reduced()?0:450});
       if(handle)setTimeout(()=>{if(stage.isConnected)handle.summon();},reduced()?0:450);
       else if(!reduced())play(body,[{transform:'scale(.6)',opacity:0,filter:'brightness(3)'},{transform:'scale(1)',opacity:1,filter:'none'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1)'});
       const close=()=>{if(!stage.isConnected)return;handle?.stop();stage.remove();heroStage=null;all.focus?.({preventScroll:true});};
@@ -199,6 +262,8 @@
 
     const observer=new ResizeObserver(()=>{if(!closed&&!deck.hidden)layout();});observer.observe(modal);
     modal.showModal();
+    // The reveal opens from the player's own tap, so audio may start now.
+    Sound.init();Sound.ambience(true);
     // Preload the premium art and any hero entrance so nothing pops in mid-reveal.
     for(const r of results)if(r.kind==='hero'){const G=window.GEMWOVEN_GAME,f=M.heroForm(r.hero,G?.engine?.read?.().heroes?.[r.hero]),s=A[`show-${r.hero}-${f}`]?.sheets;
       for(const src of [s?.entrance,s?.rift,s?.idle])if(src){const im=new Image();im.src=new URL(src,document.baseURI).href;}}

@@ -11884,50 +11884,62 @@
   },
   "summon-back-bronze": {
     "file": "assets/gemwoven/summon/runtime/back-bronze.webp",
-    "width": 278,
-    "height": 420
+    "width": 255,
+    "height": 520
   },
   "summon-back-gold": {
     "file": "assets/gemwoven/summon/runtime/back-gold.webp",
-    "width": 290,
-    "height": 420
+    "width": 269,
+    "height": 520
   },
   "summon-back-diamond": {
     "file": "assets/gemwoven/summon/runtime/back-diamond.webp",
-    "width": 294,
-    "height": 420
+    "width": 267,
+    "height": 520
   },
   "summon-front-bronze": {
     "file": "assets/gemwoven/summon/runtime/front-bronze.webp",
-    "width": 312,
-    "height": 420,
+    "width": 275,
+    "height": 520,
     "window": [
-      0.125,
-      0.15,
-      0.875,
-      0.731
+      0.1273,
+      0.1212,
+      0.8764,
+      0.775
+    ],
+    "plaque": [
+      0.805,
+      0.1
     ]
   },
   "summon-front-gold": {
     "file": "assets/gemwoven/summon/runtime/front-gold.webp",
-    "width": 320,
-    "height": 420,
+    "width": 279,
+    "height": 520,
     "window": [
-      0.1562,
-      0.2214,
-      0.8438,
-      0.7238
+      0.1577,
+      0.175,
+      0.8459,
+      0.7673
+    ],
+    "plaque": [
+      0.7973,
+      0.1
     ]
   },
   "summon-front-diamond": {
     "file": "assets/gemwoven/summon/runtime/front-diamond.webp",
-    "width": 321,
-    "height": 420,
+    "width": 284,
+    "height": 520,
     "window": [
-      0.1558,
-      0.2143,
-      0.8442,
-      0.7238
+      0.1725,
+      0.1654,
+      0.831,
+      0.7654
+    ],
+    "plaque": [
+      0.7954,
+      0.1
     ]
   },
   "summon-sparkle": {

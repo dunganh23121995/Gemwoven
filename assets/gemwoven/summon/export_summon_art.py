@@ -14,9 +14,9 @@ from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "runtime"
-# The raw card sheets hold six designs; the player kept three: the first (bronze) and the last
-# two (gold, diamond). Processor frame number for each card type:
-CARDS = {"bronze": 1, "gold": 5, "diamond": 6}
+# Three card types (bronze, gold, diamond), drawn tall (about 1:2) in one row per sheet:
+# card-backs-tall/ and card-fronts-tall/ (redrawn from the first and last two of the original six).
+CARDS = {"bronze": 1, "gold": 2, "diamond": 3}
 
 
 def unmix(img):
@@ -109,13 +109,15 @@ def raw(name):
 
 OUT.mkdir(exist_ok=True)
 meta = {}
-for kind, folder in [("back", "card-backs"), ("front", "card-fronts")]:
+for kind, folder in [("back", "card-backs-tall"), ("front", "card-fronts-tall")]:
     for name, frame in CARDS.items():
-        card = trim(key_outside(cells(raw(folder), 2, 3)[frame - 1], inside=kind == "front"))
-        card = fit(card, 420)
+        card = trim(key_outside(cells(raw(folder), 1, 3)[frame - 1], inside=kind == "front"))
+        card = fit(card, 520)
         meta[f"summon-{kind}-{name}"] = save(card, f"{kind}-{name}")
         if kind == "front":
-            meta[f"summon-{kind}-{name}"]["window"] = window(card)
+            win = window(card)
+            # The name plaque sits under the picture window, above the bottom gem.
+            meta[f"summon-{kind}-{name}"].update(window=win, plaque=[round(win[3] + .03, 4), .1])
 meta["summon-sparkle"] = {**strip([fit(unmix(c), 128) for c in cells(raw("sparkle"), 2, 4)], "sparkle"), "frameDuration": 85}
 meta["summon-splash"] = {**strip([fit(unmix(c), 256) for c in cells(raw("splash"), 2, 4)], "splash"), "frameDuration": 75, "waterline": .78}
 # Water glints: keep only the horizontal band each cell paints (same band in all four frames).

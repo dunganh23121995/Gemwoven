@@ -200,6 +200,8 @@
   const AUDIO_KEY='mam-phep-audio-v1',MUTE_KEY='gemwoven.audio-muted.v1',CHAT_KEY='gemwoven.chat.v1',audioDefaults={music:10,effects:100,voices:29};
   function readStorage(key,fallback){try{return JSON.parse(localStorage.getItem(key)||'null')??fallback;}catch{return fallback;}}
   function audioLevels(){const stored=readStorage(AUDIO_KEY,{});return Object.fromEntries(Object.entries(audioDefaults).map(([key,value])=>[key,Number.isFinite(stored[key])?Math.round(Math.max(0,Math.min(100,stored[key]))):value]));}
+  // Other hub screens (the summon reveal) read the same effects volume and mute switch.
+  window.GemwovenHubAudio={levels:audioLevels,muted:()=>!!readStorage(MUTE_KEY,false)};
   let homeMusic=null;
   function playHomeMusic(state){
     if(!(window.AudioContext||window.webkitAudioContext))return;

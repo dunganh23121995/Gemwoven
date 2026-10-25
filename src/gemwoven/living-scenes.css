@@ -25,8 +25,7 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-reveal>header{position:absolute;inset:6% 25px auto;text-align:center;z-index:3;pointer-events:none;text-shadow:0 2px 9px #000}
 .celestial-reveal>header>small{font:10px/1.5 system-ui;letter-spacing:3px;color:#c9dcff}
 #summon-reveal.celestial-reveal h2{font:700 clamp(25px,5vw,38px)/1.3 Cambria,serif;color:#fff0bf;margin:7px 0}
-.celestial-status{font:14px/1.4 Cambria,serif;color:#dde8ff;margin:8px 0;transition:color .4s}
-.is-suspense .celestial-status{color:#ffe7a8}
+.celestial-status{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .celestial-reveal .celestial-close{position:absolute;right:12px;top:10px;z-index:12;width:36px;height:36px;padding:0;border:1px solid #d1ddff66;border-radius:50%;background:#111d3a99;color:#fff0d1;font:26px/1 system-ui;cursor:pointer}
 .celestial-reveal>footer{position:absolute;bottom:4%;left:5%;right:5%;z-index:5;text-align:center;transition:opacity .5s}
 .celestial-reveal:is([data-phase="sky"],[data-phase="falling"])>footer{opacity:0;pointer-events:none}
@@ -41,23 +40,23 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-sky img,.celestial-sky i{position:absolute;display:block;pointer-events:none;max-width:none}
 .celestial-lake{position:absolute;inset:-3%;background:#08142e var(--lake) center/cover no-repeat;transform-origin:50% 40%;animation:sm-lake 26s ease-in-out infinite alternate;transition:filter 1s}
 .is-suspense .celestial-lake{filter:brightness(.72) saturate(1.25)}
-.sm-moon{left:66%;top:10%;width:32%;translate:-50% -50%;opacity:.3;mix-blend-mode:screen;animation:sm-spin 70s linear infinite,sm-breathe 5s ease-in-out infinite alternate}
+.sm-moon{left:66%;top:10%;width:26%;translate:-50% -50%;opacity:.22;mix-blend-mode:screen;animation:sm-spin 70s linear infinite,sm-breathe 5s ease-in-out infinite alternate}
 .sm-aurora{left:-22%;top:12%;width:144%;opacity:.3;mix-blend-mode:screen;animation:sm-aurora 28s ease-in-out infinite alternate}
 .sm-aurora.second{top:24%;width:124%;left:-8%;scale:-1 1;animation-duration:37s;animation-delay:-11s}
 .sm-star{width:var(--s);aspect-ratio:1;translate:-50% -50%;opacity:0;animation:sm-twinkle var(--wait) linear var(--d) infinite}
 .sm-glint{aspect-ratio:48/23;translate:-50% -50%;opacity:var(--o);mix-blend-mode:screen;animation:sm-frames 1.04s steps(4,jump-none) var(--d) infinite,sm-glint 9s ease-in-out var(--d) infinite alternate}
 .sm-orb{width:var(--s);height:auto;opacity:0;mix-blend-mode:screen;animation:sm-orb var(--t) linear var(--d) infinite}
-.sm-gate{left:50%;top:var(--gate-y,30%);width:40%;translate:-50% -50%;opacity:0;scale:.4;mix-blend-mode:screen;transition:opacity .9s,scale .9s;animation:sm-spin 16s linear infinite}
-.celestial-reveal[data-phase="falling"] .sm-gate{opacity:.4;scale:.75}
-.celestial-reveal.is-suspense .sm-gate{opacity:.85;scale:1.05}
+.sm-gate{left:50%;top:5%;width:28%;translate:-50% -50%;opacity:0;scale:.4;mix-blend-mode:screen;transition:opacity .9s,scale .9s;animation:sm-spin 16s linear infinite}
+.celestial-reveal[data-phase="falling"] .sm-gate{opacity:0}
+.celestial-reveal.is-suspense .sm-gate{opacity:.7;scale:1}
 .sm-sprite{display:block;position:absolute;pointer-events:none;background:var(--sheet) 0 0/calc(var(--count) * 100%) 100% no-repeat}
 
 /* The board. Card size comes from summon-cinematic.js (--cw), so ten cards always fit. */
-.celestial-deck{position:absolute;inset:21% 14px 15%;z-index:4;display:grid;grid-template-columns:repeat(var(--cols,5),var(--cw,90px));justify-content:center;align-content:center;gap:9px}
+.celestial-deck{position:absolute;inset:8% 14px 14%;z-index:4;display:grid;grid-template-columns:repeat(var(--cols,5),var(--cw,90px));justify-content:center;align-content:center;gap:9px}
 .celestial-deck[hidden]{display:none!important}
 .celestial-deck[style*="--cols: 3"] .celestial-card:last-child:nth-child(3n+1){grid-column:2}
 /* No stacking context on the card itself, so every halo (z-index:-1) sits behind all cards. */
-.celestial-card{position:relative;width:var(--cw,90px);aspect-ratio:.66;min-width:0;padding:0;border:0;background:transparent;color:#fff;cursor:pointer;font-size:clamp(8px,calc(var(--cw,90px) * .095),14px)}
+.celestial-card{position:relative;width:var(--cw,90px);aspect-ratio:.52;min-width:0;padding:0;border:0;background:transparent;color:#fff;cursor:pointer;font-size:clamp(8.5px,calc(var(--cw,90px) * .105),15px)}
 /* The shared .rarity-* glow is a rectangle; the painted frames carry their own light here. */
 .celestial-reveal .celestial-card{box-shadow:none}
 .celestial-card.is-waiting{opacity:0;pointer-events:none}
@@ -72,9 +71,7 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-card .card-panel{z-index:0;filter:brightness(.5) blur(1px)}
 .celestial-card .card-window{position:absolute;inset:var(--win);z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;clip-path:inset(0)}
 .celestial-card .card-reward{position:relative;max-width:94%;max-height:90%;object-fit:contain;filter:drop-shadow(0 3px 5px #000a)}
-.celestial-back small{position:absolute;left:0;right:0;bottom:15%;z-index:3;font:600 .9em/1.1 Cambria,serif;color:#e8efff;text-shadow:0 1px 3px #000,0 0 6px #000}
-.celestial-front small{position:absolute;left:8%;right:8%;bottom:28.5%;z-index:3;font:700 .85em/1.1 Cambria,serif;color:var(--rarity);text-shadow:0 1px 2px #000,0 0 5px #000}
-.celestial-front strong{position:absolute;left:13%;right:13%;top:74.5%;height:13%;z-index:3;display:flex;align-items:center;justify-content:center;text-align:center;font:700 1em/1.05 Cambria,serif;color:#fff6dc;text-shadow:0 1px 2px #000;overflow:hidden}
+.celestial-front strong{position:absolute;left:13%;right:13%;top:var(--plaque-top,80%);height:var(--plaque-h,11%);z-index:3;display:flex;align-items:center;justify-content:center;text-align:center;font:700 1em/1.05 Cambria,serif;color:#fff6dc;text-shadow:0 1px 2px #000;overflow:hidden}
 /* Bronze cards sit quietly; gold cards glow and shimmer; diamond cards shimmer the most. */
 .celestial-card.card-gold{--glow:#ffcf6b}
 .celestial-card.card-diamond .celestial-front strong{color:#2b1550;text-shadow:0 1px 0 #ffffffb0,0 0 6px #ffffff90}
@@ -91,6 +88,18 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-card .card-sparkles{position:absolute;inset:0;z-index:4;pointer-events:none}
 .sm-twinkle{left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;translate:-50% -50%;opacity:0;animation:sm-twinkle var(--wait,2.6s) linear var(--d) infinite}
 .celestial-card:not(.is-landed) .card-sparkles{display:none}
+
+/* Falling stars (summon-cinematic.js moves them along their paths) and their sparkle trails. */
+.sm-falling{position:absolute;left:0;top:0;width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);pointer-events:none;will-change:transform}
+.sm-falling-halo{position:absolute;left:50%;top:50%;width:200%;max-width:none;translate:-50% -50%;mix-blend-mode:screen;opacity:.7;animation:sm-spin 2.6s linear infinite}
+.sm-falling .sm-falling-core{inset:-35%;background-position-x:42.857%;animation:sm-pulse .42s ease-in-out infinite alternate}
+.sm-trail{width:var(--s);aspect-ratio:1;translate:-50% -50%;animation:sm-frames .9s steps(8,jump-none) 1 forwards,sm-trailfade .9s ease-in forwards}
+.star-bronze .sm-falling-halo{opacity:.45}
+.star-gold .sm-falling-core,.sm-trail.star-gold{filter:sepia(.7) saturate(2.6) hue-rotate(-12deg) brightness(1.12)}
+.star-gold .sm-falling-halo{filter:sepia(.5) saturate(1.8)}
+.star-diamond .sm-falling-core,.sm-trail.star-diamond,.star-diamond .sm-falling-halo{animation-name:sm-pulse,sm-prism;animation-duration:.42s,1.6s;animation-timing-function:ease-in-out,linear;animation-iteration-count:infinite;animation-direction:alternate,normal}
+.sm-trail.star-diamond{animation:sm-frames .9s steps(8,jump-none) 1 forwards,sm-trailfade .9s ease-in forwards,sm-prism 1.6s linear infinite}
+.star-diamond .sm-falling-halo{animation:sm-spin 2.6s linear infinite,sm-prism 1.6s linear infinite}
 
 /* One-shot effects. */
 .celestial-fx{position:absolute;inset:0;z-index:7;pointer-events:none;overflow:hidden}
@@ -118,6 +127,9 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .summon-hero-name span{display:block;font:16px/1.4 Cambria,serif;color:#dfe8ff}
 .summon-hero-hint{position:absolute;left:0;right:0;bottom:6%;z-index:4;margin:0;text-align:center;font:13px Cambria,serif;color:#c9d6f5;animation:sm-breathe 1.6s ease-in-out infinite alternate}
 
+@keyframes sm-pulse{from{scale:.82;rotate:-8deg}to{scale:1.14;rotate:8deg}}
+@keyframes sm-prism{from{filter:hue-rotate(0deg) saturate(1.5) brightness(1.1)}to{filter:hue-rotate(360deg) saturate(1.5) brightness(1.1)}}
+@keyframes sm-trailfade{from{opacity:.95}to{opacity:0;transform:translateY(10px)}}
 @keyframes sm-frames{from{background-position-x:0%}to{background-position-x:100%}}
 @keyframes sm-twinkle{0%{opacity:1;background-position-x:0%;animation-timing-function:steps(7,jump-end)}26%{opacity:1;background-position-x:100%}27%,100%{opacity:0;background-position-x:100%}}
 @keyframes sm-lake{from{transform:scale(1.01)}to{transform:scale(1.06) translate(-1%,-.7%)}}

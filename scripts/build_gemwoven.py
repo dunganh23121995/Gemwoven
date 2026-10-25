@@ -130,6 +130,10 @@ for name in ['motion-setting','assets','screens','expansion','copy','boss-chapte
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
     if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
     if name=='journey-ui':code='window.GEMWOVEN_HOME_MUSIC='+json.dumps(data_uri('assets/audio/music/earth.ogg'))+';\n'+code
+    if name=='summon-cinematic':
+        # Summon reveal sounds (scripts/prepare_summon_sounds.py), embedded for the offline hub.
+        sounds=json.loads((ROOT/'assets/audio/summon/summon-sounds.json').read_text(encoding='utf-8'))
+        code='window.GEMWOVEN_SUMMON_SOUNDS='+json.dumps({k:data_uri(v['file']) for k,v in sounds.items()})+';\n'+code
     html=html.replace(f'<script src="src/gemwoven/{name}.js"></script>','<script>'+code.replace('</script','<\\/script')+'</script>')
 (ROOT/'Gemwoven_6_Man.html').write_text(html,encoding='utf-8')
 # Kit has editable source, separated PNGs and the standalone preview.
@@ -144,6 +148,7 @@ paths+=list((ROOT/'assets/gemwoven/backgrounds').rglob('*.webp'))
 paths+=list((ROOT/'assets/gemwoven/encounters').rglob('*.webp'))
 paths+=[ROOT/f'assets/gemwoven/{name}.json' for name in ['boss-expansion-a','boss-expansion-b'] if (ROOT/f'assets/gemwoven/{name}.json').exists()]
 paths+=[ROOT/'assets/audio/music/earth.ogg']
+paths+=list((ROOT/'assets/audio/summon').glob('*'))+[ROOT/'scripts/prepare_summon_sounds.py']
 paths+=[ROOT/'assets/gemwoven/manifest.json',ROOT/'assets/gemwoven/prompts.json',Path(__file__)]
 paths+=[ROOT/'assets/gemwoven/painted-backgrounds.json']
 paths+=sorted({ROOT/p for entry in merged.values() for p in entry.get('promptFiles',[])})
