@@ -46,7 +46,7 @@ const capped=fixture();capped.edit(p=>{p.daily.seals=1599;});const token=capped.
 const s=fixture();s.edit(p=>{p.wallet.tickets=100;p.summon.dry=299;});roll=.9;const pity=s.engine.summon(1);assert.equal(pity[0].kind,'hero');assert.notEqual(pity[0].hero,'novice');assert.equal(s.engine.read().summon.dry,0);
 s.edit(p=>{p.summon.fragmentDry=29;});const fragment=s.engine.summon(1);assert.equal(fragment[0].kind,'fragments');assert.ok(fragment[0].count>=2&&fragment[0].count<=5);
 roll=.999;const trash=s.engine.summon(1);assert.equal(trash[0].kind,'material');assert.equal(s.engine.read().wallet.gems,0);
-roll=.025;const starter=s.engine.summon(1);assert.equal(starter[0].hero,'novice');
+roll=.025;const starter=s.engine.summon(1);assert.notEqual(starter[0].hero,'novice','Tân is not in the summon pool');assert.ok(!M.SUMMON_TABLE.some(([k])=>k==='novice'));
 const configured=e.saveEvent({...M.EVENT_TEMPLATE,id:'harvest',enabled:true,title:'Lễ hội <img onerror=alert(1)>'});assert.equal(configured.status,'coming-soon');assert.equal(e.read().events.length,1);assert.throws(()=>e.saveEvent({...M.EVENT_TEMPLATE,id:'bad',status:'live'}));assert.throws(()=>e.saveEvent({...M.EVENT_TEMPLATE,id:'bad',startsAt:'2027-02-02',endsAt:'2027-01-01'}));
 const boss=fixture();let firstBoss,lastBoss;
 for(let i=1;i<=25;i++){const b=boss.engine.begin('boss',1);const r=boss.engine.settle(b.token,true,200);if(i===1)firstBoss=r;if(i===25)lastBoss=r;}
