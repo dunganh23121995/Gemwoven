@@ -194,7 +194,6 @@ async function mikaLongCleave(raw,onRelease){
         opacity=t<HIT+260?1:Math.max(0,1-(t-HIT-260)/240);
       }
       blade.frame(strip);blade.place(grip.x,grip.y,angle,scale);blade.node.style.opacity=String(opacity);
-      if(arc?.node?.isConnected){const c=mikaGrip(2,3);arc.node.style.left=c.x+'px';arc.node.style.top=c.y+'px';}
       frameId=requestAnimationFrame(track);
     };
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
@@ -207,9 +206,14 @@ async function mikaLongCleave(raw,onRelease){
     await at(HOLD);mikaSound('f2-dipbody',.48,.05);
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
-    if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
-      arc={node:mikaFxNode('arc2','mika-arc')};arc.node.style.cssText+=`;left:${c.x}px;top:${c.y}px;width:${size}px;height:${size}px`;mikaFxFrame(arc.node,'arc2',0);}}
-    await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2',1);
+    // The swing's half-circle of fire (arc2s): the blade's path from straight back, over her head, down to
+    // level through the foe, centred between her hands' positions along the swing, tracing the blade's
+    // outer part. The art's pivot is the bottom centre of its cell (92% down), radius 45% of its width.
+    if(!reduced){const sheet=mikaSheet('arc2s');if(sheet){
+      const g=[mikaPoseGrip('back',3),mikaGrip(2,1),mikaGrip(2,3)],px=(g[0].x+g[1].x+g[2].x)/3,py=(g[0].y+g[1].y+g[2].y)/3;
+      const w=reach*.62/.45,h=w*sheet.height/sheet.width;
+      arc={node:mikaFxNode('arc2s','mika-arc')};arc.node.style.cssText+=`;left:${px-w/2}px;top:${py-h*.92}px;width:${w}px;height:${h}px`;mikaFxFrame(arc.node,'arc2s',0);}}
+    await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2s',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';setSpriteFrame('hero','skill',3);
     // The hit: one deep round "uỳnh" (the loudest moment) that rings out with its own long rumble.
     result=mikaContact(raw,onRelease,pending);mikaSound('f2-dip',.48,.3);mikaSound('f2-boom',.62,.3);
@@ -219,7 +223,7 @@ async function mikaLongCleave(raw,onRelease){
     pending.push(wait(reduced?0:80).then(()=>mikaSound('f2-floor',.28,.25)));
     pending.push(wait(reduced?0:80).then(()=>mikaBurst('impact2',{x:foe.x-foe.width*.1,y:foe.bottom-cut*.03},cut,pending,{hold:1.15,className:'mika-floor-cut'})));
     mikaShake(pending,1);mikaFlash(pending,'cleave');combatV3Camera(1,true,state.boss,pending);
-    if(arc){const node=arc.node;pending.push((async()=>{await wait(90);mikaFxFrame(node,'arc2',2);await wait(110);mikaFxFrame(node,'arc2',3);await animate(node,[{opacity:1},{opacity:0}],{duration:220,fill:'forwards'});})().finally(()=>node.remove()));}
+    if(arc){const node=arc.node;pending.push((async()=>{await wait(90);mikaFxFrame(node,'arc2s',2);await wait(110);mikaFxFrame(node,'arc2s',3);await animate(node,[{opacity:1},{opacity:0}],{duration:220,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+110);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='follow';
     await at(HIT+680);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
     await at(HIT+1130);await Promise.all(pending);return result;

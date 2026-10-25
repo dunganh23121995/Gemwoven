@@ -69,5 +69,12 @@
     "frameDuration": 110,
     "width": 384,
     "height": 384
+  },
+  "arc2s": {
+    "file": "assets/fx/heroes/fire/arc2s.webp",
+    "count": 4,
+    "frameDuration": 60,
+    "width": 576,
+    "height": 384
   }
 }

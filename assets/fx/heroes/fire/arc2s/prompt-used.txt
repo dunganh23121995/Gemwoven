@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika, fox-girl swordswoman; her fox-fire is golden-orange, crimson and cream-white).
+Subject: the trail of a colossal overhead sword swing made of fox-fire: a thick HALF-CIRCLE arc (a semicircle, 180 degrees) of flame. The pivot of the swing is the BOTTOM-CENTER of each cell (at 50% width, 92% height). The arc sweeps clockwise from pointing straight LEFT (9 o'clock), up over the top (12 o'clock), and down to pointing straight RIGHT (3 o'clock), as a broad curved band hugging a circle of radius about 45% of the cell width around that pivot. The band is thickest and brightest at its leading end on the RIGHT (where the sword comes down), with a white-gold molten leading edge, a golden-orange body, crimson flame tongues and cream-tipped fox-fire wisps trailing off its outer rim, thinning toward its LEFT end.
+Layout: EXACTLY 2 columns x 2 rows, four equal cells, landscape 1536x1024 (each cell 768 wide x 512 tall). Read left-to-right, then the next row. The arc has the same pivot, radius and position in every cell.
+Frame 1: the swing in progress, only the LEFT part of the semicircle up to just past the top (from 9 o'clock to about 1 o'clock) is blazing, with a bright leading tip at its right end.
+Frame 2: the full semicircle blazing from 9 o'clock over the top to 3 o'clock, brightest at its right end.
+Frame 3: the semicircle thinning and breaking up into separate flame tongues.
+Frame 4: only drifting embers and small fox-fire wisps along the arc's path, nearly gone.
+Opaque painted flames with crisp shapes, no soft haze, no glow halo spreading into the background, no smoke. Keep a thin magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No sword, no hand, no character.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

@@ -1,7 +1,7 @@
 /* Mika's star-form staging (forms-mika.js): her own fox-fire weapon, trails and bursts. */
 .mika-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-position:0 0;will-change:transform,opacity}
 .mika-giant{z-index:3;filter:drop-shadow(0 0 7px #ff8a2acc) drop-shadow(0 0 16px #ff5a1a88)}
-.mika-arc{z-index:2;opacity:.85;transform:translate(0,-100%);transform-origin:0 100%;filter:drop-shadow(0 0 8px #ff7a2aaa)}
+.mika-arc{z-index:2;opacity:.85;filter:drop-shadow(0 0 8px #ff7a2aaa)}
 .mika-ring{z-index:2;transform:translate(-50%,-50%);filter:drop-shadow(0 0 6px #ff8a2aaa)}
 .mika-impact2,.mika-impact3{z-index:4;filter:drop-shadow(0 0 10px #ffb24acc)}
 .mika-engulf{z-index:4;filter:drop-shadow(0 0 8px #ff9a3caa)}
