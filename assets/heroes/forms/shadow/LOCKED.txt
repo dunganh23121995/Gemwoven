@@ -5,3 +5,4 @@ LOCKED (approved by the user, 2026-10-24): every state of Noct is final.
 - Outside combat: showcase of forms 1-3 (form-*/showcase: resting loop, occasional actions, rift
   entrance through a soft-smoke whirlwind).
 Do not regenerate, re-process or retime these without the user's request.
+Re-locked after the defect review and head-scale fixes: 2026-10-26.
