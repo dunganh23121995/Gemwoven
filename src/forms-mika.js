@@ -200,9 +200,11 @@ async function mikaLongCleave(raw,onRelease){
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
     await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
     // Uỳnh: one short heavy dip of the blade.
-    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaSound('f2-dipbody',.48,.05);mikaShake(pending,.4);
+    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaShake(pending,.4);
     // The backswing and the chop: the blade roars past like a starship flying by (peaking on the chop).
     await at(BACK);root.dataset.ragePhase='backswing';mikaSound('f2-flyby',.7,-.1);
+    // The blade's fiery roar comes when it lies fully back, ready to be brought down.
+    await at(HOLD);mikaSound('f2-dipbody',.48,.05);
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
     if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
