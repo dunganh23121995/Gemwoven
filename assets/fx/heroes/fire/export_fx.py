@@ -28,6 +28,7 @@ FX = {
     "impact3": (2, 2, 384, 384, 85, "fx"),
     "slash2": (2, 2, 320, 320, 45, "fx"),
     "slash3": (2, 2, 320, 320, 45, "fx"),
+    "engulf3": (3, 2, 384, 384, 110, "fire"),
 }
 
 
@@ -44,6 +45,14 @@ def key_out(img):
     alpha *= 1 - np.clip((spill - 40) / 60, 0, 1)
     alpha[alpha < .04] = 0
     return Image.fromarray(np.dstack([colour, alpha * 255]).astype("uint8"), "RGBA")
+
+
+def fire_only(img):
+    """A fire is never greener than it is red: a pink haze the key un-mixed into grey-green is dropped."""
+    a = np.asarray(img, dtype=np.float32).copy()
+    r, g = a[..., 0], a[..., 1]
+    a[..., 3] *= np.clip(1 - (g - r) / 25, 0, 1)   # white-hot cores (r == g) stay
+    return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
 
 
 def base_point(frame):
@@ -82,7 +91,8 @@ def main():
         for i in range(cols * rows) if kind != "weapon" else []:
             c, r = i % cols, i // cols
             cell = raw.crop((round(c * cw), round(r * ch), round((c + 1) * cw), round((r + 1) * ch)))
-            frames.append(cell.resize((ow, oh), Image.Resampling.LANCZOS))
+            cell = cell.resize((ow, oh), Image.Resampling.LANCZOS)
+            frames.append(fire_only(cell) if kind == "fire" else cell)
         entry = {"file": f"assets/fx/heroes/fire/{name}.webp", "count": len(frames), "frameDuration": ms,
                  "width": ow, "height": oh}
         if kind == "weapon":

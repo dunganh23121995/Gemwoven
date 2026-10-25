@@ -20,7 +20,7 @@ import subprocess
 import imageio_ffmpeg
 import numpy as np
 from scipy.io import wavfile
-from scipy.signal import butter, sosfilt
+from scipy.signal import butter, resample, sosfilt
 
 AUDIO = Path(__file__).resolve().parents[1] / 'assets/audio'
 OUT = AUDIO / 'hero-forms/fire'
@@ -103,12 +103,8 @@ wavfile.write(OUT / 'f2-rise.wav', RATE, np.round(rise).astype(np.int16))
 USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; form 1's flame-charge rising gain curve (0.1 -> 1, power 1.6)",
     peak=round(float(np.abs(rise).max()) / 32767, 3), rms=round(float(np.sqrt(np.mean((rise / 32767) ** 2))), 3),
     sha256=hashlib.sha256((OUT / 'f2-rise.wav').read_bytes()).hexdigest())
-# 950-1170 ms, the advancing cleave: "UỲNH", the huge deep whoomph of an enormous fire flaring (low body),
-# peaking just before the hit.
-clip('f2-cleave', ('freesound', '483308'), .08, .32, 'the advancing cleave: a huge deep fire whoomph (950-1170 ms)', fade_in=.01, fade_out=.06, highpass=25)
-# 1170 ms, the impact through the foe (damage hit, the loudest): an atomic-bomb blast, its deep rolling
-# low end cut short so it does not echo on.
-clip('f2-impact', ('freesound', '438530'), 3.17, 4.5, 'massive deep blast through the foe (damage hit, 1170 ms)', fade_in=.002, fade_out=.55, highpass=25, rms=.16)
+# The hit and the ending reuse form 3's clips, played by the kit: the sun burst (f3-sun) on the hit and
+# form 1's own flame whoosh (fire-flame-whoosh) ringing out after it, exactly as form 3 plays them.
 # 1280-2780 ms, the cut on the floor: molten mud boiling and gulping, fading out within ~1.5 s.
 clip('f2-floor', ('freesound', '456806'), 6.5, 8.0, 'lava boils and gulps along the cut on the floor, fading (1280-2780 ms)', fade_in=.04, fade_out=.6)
 
@@ -119,17 +115,26 @@ clip('f3-flare', ('freesound', '761330'), .5, 1.45, 'the nine tails flare into a
 clip('f3-sweep', ('freesound', '260555'), .18, .7, 'the glaive spun flat, a ring of fire', fade_in=.003, fade_out=.15)
 # The nine-tailed sun bursts on the foe (damage hit): a fire explosion.
 clip('f3-sun', ('freesound', '855898'), 0, 1.23, 'the nine-tailed sun bursts on the foe (damage hit)', fade_in=.002, fade_out=.2)
-# The three waves of fox-fire spirits bursting on the foe: the main sun-burst sound itself (f3-sun), only
-# its first 0.42 s with a quick fade so the three hits ~300 ms apart stay separate. Same gain as f3-sun.
-# The closing tail after the last hit is form 1's own flame whoosh (fire-flame-whoosh), played by the kit.
-_, sun = wavfile.read(OUT / 'f3-sun.wav')
-wave = sun[:round(.42 * RATE)].astype(float)
-wave[-round(.12 * RATE):] *= np.linspace(1, 0, round(.12 * RATE))[:, None]
-wavfile.write(OUT / 'f3-wave.wav', RATE, np.round(wave).astype(np.int16))
-USED['fire-f3-wave'] = {**USED['fire-f3-sun'], 'file': 'hero-forms/fire/f3-wave.wav', 'duration': .42,
-    'beat': 'each spirit wave explodes: the sun-burst sound, first 0.42 s (same clip three times)',
-    'processing': USED['fire-f3-sun']['processing'] + '; first 0.42 s, 120 ms fade',
-    'peak': round(float(np.abs(wave).max()) / 32767, 3), 'rms': round(float(np.sqrt(np.mean((wave / 32767) ** 2))), 3),
+# The three waves of fox-fire spirits bursting on the foe: the main sun-burst recording made deeper and
+# rounder at the player's request ("bị chói không trầm"): pitched down 4 semitones (resampled), a 2.2 kHz
+# low-pass, its first 0.45 s with a quick fade so the three hits ~300 ms apart stay separate. One clip.
+path, meta = source(('freesound', '855898'))
+x = read(path)[:round(.36 * RATE)]
+x = resample(x, round(len(x) * 2 ** (4 / 12)), axis=0)
+x = sosfilt(butter(2, 2200, btype='lowpass', fs=RATE, output='sos'), x, axis=0)
+x = sosfilt(butter(2, 30, btype='highpass', fs=RATE, output='sos'), x, axis=0)
+x[:round(.002 * RATE)] *= np.linspace(0, 1, round(.002 * RATE))[:, None]
+x[-round(.15 * RATE):] *= np.linspace(1, 0, round(.15 * RATE))[:, None]
+x *= min(.82 / np.abs(x).max(), .13 / np.sqrt(np.mean(x * x)))
+wavfile.write(OUT / 'f3-wave.wav', RATE, np.round(x * 32767).astype(np.int16))
+USED['fire-f3-wave'] = {'file': 'hero-forms/fire/f3-wave.wav', 'duration': round(len(x) / RATE, 3),
+    'beat': 'each closing spirit wave explodes: the sun-burst recording, deeper (one clip, three times)',
+    'license': meta['license'], 'sources': [meta],
+    'processing': 'excerpt 0-0.36 s, pitched down 4 semitones by resampling (player request), 2.2 kHz low-pass, 30 Hz high-pass, 150 ms fade, gain',
+    'peak': round(float(np.abs(x).max()), 3), 'rms': round(float(np.sqrt(np.mean(x * x))), 3),
     'sha256': hashlib.sha256((OUT / 'f3-wave.wav').read_bytes()).hexdigest()}
+print('[ok] f3-wave', USED['fire-f3-wave']['duration'], 'peak', USED['fire-f3-wave']['peak'])
+# Under the foe engulfed in flames after the last wave: a soft, steady burning that dies out (1.4 s).
+clip('f3-engulf', ('freesound', '483308'), 2.6, 4.0, 'the foe engulfed in fox-fire, burning down (after the last wave, 1.4 s)', fade_in=.12, fade_out=.6, highpass=60, rms=.09)
 
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')

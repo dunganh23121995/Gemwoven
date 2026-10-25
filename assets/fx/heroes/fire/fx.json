@@ -62,5 +62,12 @@
     "frameDuration": 45,
     "width": 320,
     "height": 320
+  },
+  "engulf3": {
+    "file": "assets/fx/heroes/fire/engulf3.webp",
+    "count": 6,
+    "frameDuration": 110,
+    "width": 384,
+    "height": 384
   }
 }

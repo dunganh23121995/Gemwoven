@@ -4,6 +4,7 @@
 .mika-arc{z-index:2;opacity:.85;transform:translate(0,-100%);transform-origin:0 100%;filter:drop-shadow(0 0 8px #ff7a2aaa)}
 .mika-ring{z-index:2;transform:translate(-50%,-50%);filter:drop-shadow(0 0 6px #ff8a2aaa)}
 .mika-impact2,.mika-impact3{z-index:4;filter:drop-shadow(0 0 10px #ffb24acc)}
+.mika-engulf{z-index:4;filter:drop-shadow(0 0 8px #ff9a3caa)}
 .mika-slash{z-index:4;filter:drop-shadow(0 0 5px #ffb24aaa)}
 .mika-fox-spirit{position:absolute;z-index:3;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;animation:depart-frames var(--fx-ms) steps(var(--fx-count),jump-none) infinite;filter:drop-shadow(0 0 6px #ff9a3caa)}
 .mika-flash{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen}

@@ -1,0 +1,11 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika in her nine-tailed form, whose fox-fire is golden-orange, crimson and cream-white).
+Subject: a pillar of fox-fire ENGULFING an enemy that stands in the middle of each cell: flames bursting up out of the ground all around a body-sized area, swelling up to wrap it completely, then burning down to embers and going out. The enemy itself is NOT drawn: the middle of the fire is where the enemy will stand (the flames surround and cover that space; the lower middle may be filled with dense flames). Fire only.
+Layout: EXACTLY 3 columns x 2 rows, six equal square cells, landscape 1536x1024. Read left-to-right, then the next row. In every cell the fire stands on the SAME ground line at 88% of the cell height, centered horizontally, and is at most 80% of the cell wide; it never touches the cell edges.
+Frame 1: a ring of short flame tongues bursting up out of the ground around the base, a bright ground flash.
+Frame 2: tall flames shooting up all around, half height, curling inward like fox tails.
+Frame 3: full blaze: a tall roaring column of fox-fire wrapping the whole body area, flames up to 85% of the cell height, white-hot core, cream-tipped fox-tail-shaped flame tongues.
+Frame 4: still a full blaze, flames flickered differently, starting to thin at the top.
+Frame 5: the fire burning down: lower ragged flames and many glowing embers rising.
+Frame 6: only a few small dying flames at the ground line and drifting embers, almost out.
+Opaque painted flames with crisp shapes on the solid background, no soft haze, no glow halo spreading into the background, no smoke clouds, no ground, no floor, no shadows, no character, no creature.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines.

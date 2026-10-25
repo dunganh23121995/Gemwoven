@@ -94,44 +94,6 @@
     "rms": 0.1,
     "sha256": "e19db71ebf7a54b3d26c8b904e04a54a75e755944a256f9a80ce89e3e0f2cc6f"
   },
-  "fire-f2-cleave": {
-    "file": "hero-forms/fire/f2-cleave.wav",
-    "duration": 0.24,
-    "beat": "the advancing cleave: a huge deep fire whoomph (950-1170 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "R09-63-Large Building Fire.wav",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/483308/",
-        "license": "CC0-1.0",
-        "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
-      }
-    ],
-    "processing": "excerpt 0.08-0.32 s of one recording, 25 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.066,
-    "sha256": "71e51945f1f0a4a81abfaec18ccefa2a4647adfe5979f7f5c1acb425619b5275"
-  },
-  "fire-f2-impact": {
-    "file": "hero-forms/fire/f2-impact.wav",
-    "duration": 1.33,
-    "beat": "massive deep blast through the foe (damage hit, 1170 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "G33-24-Atomic Bomb.wav",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/438530/",
-        "license": "CC0-1.0",
-        "sha256": "814ea44fb63c3413a134b8d6640c62a4baf0c66b7f7a3e145e14747d9344e47c"
-      }
-    ],
-    "processing": "excerpt 3.17-4.50 s of one recording, 25 Hz high-pass, edge fades, gain",
-    "peak": 0.473,
-    "rms": 0.16,
-    "sha256": "ada5d010bed9e67dcc8b8b9b4de04121ef5b5be89c38bd5584e93a2fe3e5d610"
-  },
   "fire-f2-floor": {
     "file": "hero-forms/fire/f2-floor.wav",
     "duration": 1.5,
@@ -210,8 +172,8 @@
   },
   "fire-f3-wave": {
     "file": "hero-forms/fire/f3-wave.wav",
-    "duration": 0.42,
-    "beat": "each spirit wave explodes: the sun-burst sound, first 0.42 s (same clip three times)",
+    "duration": 0.454,
+    "beat": "each closing spirit wave explodes: the sun-burst recording, deeper (one clip, three times)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -222,9 +184,28 @@
         "sha256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259"
       }
     ],
-    "processing": "excerpt 0.00-1.23 s of one recording, 45 Hz high-pass, edge fades, gain; first 0.42 s, 120 ms fade",
-    "peak": 0.82,
-    "rms": 0.134,
-    "sha256": "45e28921ffa900614018db2cfb357d8ba961284fffdee1f8c9f7d1d171b12c65"
+    "processing": "excerpt 0-0.36 s, pitched down 4 semitones by resampling (player request), 2.2 kHz low-pass, 30 Hz high-pass, 150 ms fade, gain",
+    "peak": 0.676,
+    "rms": 0.13,
+    "sha256": "61e12dd5876dbc659290a1f2b7972e3acb02ed3ce3f1774850cad103a62dc991"
+  },
+  "fire-f3-engulf": {
+    "file": "hero-forms/fire/f3-engulf.wav",
+    "duration": 1.4,
+    "beat": "the foe engulfed in fox-fire, burning down (after the last wave, 1.4 s)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "R09-63-Large Building Fire.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/483308/",
+        "license": "CC0-1.0",
+        "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
+      }
+    ],
+    "processing": "excerpt 2.60-4.00 s of one recording, 60 Hz high-pass, edge fades, gain",
+    "peak": 0.41,
+    "rms": 0.09,
+    "sha256": "e185a3936e639d467e4a5d176ee0e31a633409443f42a22298e660c0679a789d"
   }
 }
