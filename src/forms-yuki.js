@@ -232,7 +232,7 @@ async function yukiSnowLotusUltimate(){
     await at(1800);yukiFreezeFoe(true);cut?.remove();cut=null;
     await at(1960);root.dataset.ragePhase='bloom-hold';setSpriteFrame('hero','skill',5);
     await at(2080);lotus?.set(5);
-    await at(2240);root.dataset.ragePhase='bloom-burst';yukiFreezeFoe(false);
+    await at(2240);root.dataset.ragePhase='bloom-burst';  // the foe stays frozen blue as the lotus shatters off it
     lotus?.play(6,7,110);
     result=yukiUltimateHit(kit,pending,'f3-burst');
     yukiMeteorShake(true,pending);
@@ -241,6 +241,7 @@ async function yukiSnowLotusUltimate(){
     pending.push(animate(target,[{transform:oldTarget||'none'},{transform:'translate(4px,6px) rotate(2deg)',offset:.25},{transform:oldTarget||'none'}],{duration:350,easing:'ease-out'}));
     await at(2460);lotus?.fade(420,pending,{translate:'0 14px'});lotus=null;
     await at(2550);root.dataset.ragePhase='recover';
+    await at(2900);yukiFreezeFoe(false);
     if(aegis){aegis.stop();aegis.fade(380,pending);aegis=null;}
     await at(3000);await Promise.all(pending);return result;
   }finally{
