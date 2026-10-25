@@ -59,15 +59,15 @@ async function tanSpiritSword(){
   root.classList.add('combat-v3-acting','tan-spirit');root.style.zIndex='4';root.dataset.ragePhase='plant';
   try{
     combatVoice('hero','cast');tanSpiritSound();popActorSkill('hero',HEROES.novice.skill,true,pending);
-    // The charge (scripts/prepare_hiro_form_sounds.py): his battle cry builds on the wind-up and is at full
-    // voice as he launches (860 ms); his boots drive him over the dirt on the dash.
-    if(!reduced){setTimeout(()=>playCastSound('novice','charge-cry',{volume:.5,pan:-.2}),580);setTimeout(()=>playCastSound('novice','dash-steps',{volume:.55,pan:0}),850);}
+    // The charge (scripts/prepare_hiro_form_sounds.py): his battle cry bursts out as he launches (860 ms)
+    // and his boots drive him over the dirt on the dash; the rush of his jacket is played with the dash below.
+    if(!reduced){setTimeout(()=>playCastSound('novice','charge-cry',{volume:.5,pan:-.2}),830);setTimeout(()=>playCastSound('novice','dash-steps',{volume:.55,pan:0}),850);}
     setSpriteFrame('hero',act,0);aura=tanSpiritAura();
     if(aura)pending.push(animate(aura,[{opacity:0,scale:'.6 .4'},{opacity:1,scale:'1 1'}],{duration:320,easing:'cubic-bezier(.2,.9,.3,1.2)',fill:'forwards'}));
     await at(460);root.dataset.ragePhase='wind-up';setSpriteFrame('hero',act,1);await move(-7,0,220,'ease-out');
     await at(860);root.dataset.ragePhase='dash';setSpriteFrame('hero',act,2);
     if(aura){const a=aura;aura=null;pending.push(animate(a,[{opacity:1},{opacity:0}],{duration:200,fill:'forwards'}).finally(()=>a.remove()));}
-    combatV3Whoosh('novice',true,200);
+    if(!reduced)playCastSound('novice','dash-rush',{volume:.5,pan:.1});
     for(let i=0;i<3;i++)tanEcho(pending,i*60);
     await move(near,0,210,'cubic-bezier(.5,0,.7,1)');
     root.dataset.ragePhase='rise';setSpriteFrame('hero',act,3);await move(near,-9,150,'ease-out');

@@ -1,10 +1,11 @@
 """Hiro's (key 'novice') charge sounds for Kiếm Nhiệt Huyết (src/forms-tan.js): the rookie's battle cry
-as he launches himself at the foe, and his boots driving him over the dirt on the dash.
+as he launches himself at the foe, his boots driving him over the dirt and the rush of his jacket on the dash.
 
 Like the approved form sounds, each clip is ONE real recording, minimally edited: an excerpt with its
 natural attack and decay, a gentle high-pass, gain and short edge fades. No layering, pitch shifting,
 time-stretching, limiting or synthesis. Hiro has no voice bank of his own (combatVoice has no family for
-'novice'), so the cry comes from one professional warrior attack-cry recording.
+'novice'), so the cry is one shout from unfa's CC0 session of a young man's excited shouts (sung at about
+420 Hz, his own natural pitch; nothing is pitch-shifted).
 Output: assets/audio/hero-forms/novice/*.wav and assets/audio/hero-forms/novice-manifest.json
 (merged by build.py into ART.castSounds as novice-<name>).
 Sources are kept in assets/audio/sources/freesound/<id>-<slug>/ (source.json); fetched once if missing.
@@ -25,16 +26,21 @@ AUDIO = Path(__file__).resolve().parents[1] / 'assets/audio'
 OUT = AUDIO / 'hero-forms/novice'
 RATE = 32000
 SOURCES = {
-    695376: {'slug': 'male-attack-cry-1-wav', 'title': 'Male Attack Cry 1.wav', 'author': 'F.M.Audio',
-             'source_url': 'https://freesound.org/people/F.M.Audio/sounds/695376/',
-             'download_url': 'https://cdn.freesound.org/previews/695/695376_7805242-hq.mp3',
-             'license': 'CC-BY-4.0', 'license_url': 'https://creativecommons.org/licenses/by/4.0/',
-             'description': 'Attack cry, which can be used as a male warrior attacks an opponent with a melee weapon.'},
+    270301: {'slug': 'excited-young-male-screams', 'title': 'Excited Young Male Screams', 'author': 'unfa',
+             'source_url': 'https://freesound.org/people/unfa/sounds/270301/',
+             'download_url': 'https://cdn.freesound.org/previews/270/270301_1038806-hq.mp3',
+             'license': 'CC0-1.0', 'license_url': 'https://creativecommons.org/publicdomain/zero/1.0/',
+             'description': 'Approximately 40 short vocal shouts here in a long stride. Captured with Zoom H2 @ 96kHz / 24-bit.'},
     816792: {'slug': 'running-on-dirt-2-edit', 'title': 'running on dirt 2 edit', 'author': 'Luisa_Sanchez',
              'source_url': 'https://freesound.org/people/Luisa_Sanchez/sounds/816792/',
              'download_url': 'https://cdn.freesound.org/previews/816/816792_17552599-hq.mp3',
              'license': 'CC0-1.0', 'license_url': 'https://creativecommons.org/publicdomain/zero/1.0/',
              'description': 'Sound of running on dirt Surfaces'},
+    495390: {'slug': 'foley-whoosh-clothes-wav', 'title': 'Foley_Whoosh_Clothes.wav', 'author': 'Nox_Sound',
+             'source_url': 'https://freesound.org/people/Nox_Sound/sounds/495390/',
+             'download_url': 'https://cdn.freesound.org/previews/495/495390_9250976-hq.mp3',
+             'license': 'CC0-1.0', 'license_url': 'https://creativecommons.org/publicdomain/zero/1.0/',
+             'description': 'Light whoosh sounds (x6) of a jacket. Zoom H5, 48 kHz, 24 bit.'},
 }
 
 
@@ -86,19 +92,26 @@ def clip(name, sound_id, start, end, beat, plays_at, fade_in=.006, fade_out=.1, 
     return x
 
 
-# 580 ms (wind-up): the cry's breath-in build (0.14-0.42 s of the take) under the wind-up, so its full-voiced
-# body (0.42-0.84 s) lands at 860 ms as he launches into the dash and dies away with its own decay just as
-# the sword comes down (1270 ms).
-cry = clip('charge-cry', 695376, .14, .96, 'battle cry: builds on the wind-up, full voice from the dash launch (860 ms) to the chop', 580,
-           fade_in=.03, fade_out=.08, highpass=90, peak=.6)
-# 850 ms (dash): two running strides on dirt, a light push-off then the planted front foot as he arrives
-# and rises (about 1150 ms), with the grit settling after it.
-steps = clip('dash-steps', 816792, .40, .98, 'running strides on dirt: push-off at the dash, the planted front foot as he arrives', 850,
-             fade_out=.12, highpass=50, peak=.42)
-# The two overlap (cry 580-1400 ms, steps 850-1430 ms): keep their sum, as played at full volume, under 0.8.
-offset = round((850 - 580) / 1000 * RATE)
-mix = cry.copy()
-mix[offset:offset + len(steps)] += steps[:max(0, len(mix) - offset)]
-print('overlap peak', round(float(np.abs(mix).max()), 3))
+# Played (ms from the cast) as in src/forms-tan.js; the dash launches at 860 and he arrives at about 1070.
+PLAYS = {'charge-cry': (830, .5), 'dash-steps': (850, .55), 'dash-rush': (860, .5)}
+# 830 ms: the battle cry, one shout of the take (8.86-9.80 s): an instant attack as he launches, a held
+# "yaaah" through the dash and the rise, and its own falling decay through the chop.
+cry = clip('charge-cry', 270301, 8.86, 9.80, 'battle cry: from the dash launch (860 ms) through the rise into the chop', PLAYS['charge-cry'][0],
+           fade_in=.01, fade_out=.1, highpass=90, peak=.56)
+# 850 ms: two running strides on dirt, a light push-off then the planted front foot as he arrives and rises
+# (about 1170 ms), ending before the overhead chop (1270 ms) so that no more than three sounds overlap.
+steps = clip('dash-steps', 816792, .40, .80, 'running strides on dirt: push-off at the dash, the planted front foot as he arrives', PLAYS['dash-steps'][0],
+             fade_out=.08, highpass=50, peak=.4)
+# 860 ms (replaces the generic synthesized whoosh): one fast swing of a jacket, the rush of his clothes over
+# the 210 ms dash, with its natural tail.
+rush = clip('dash-rush', 495390, .06, .46, 'the rush of his jacket and the air over the 210 ms dash', PLAYS['dash-rush'][0],
+            fade_in=.004, fade_out=.08, highpass=80, peak=.45)
+# At most three of them overlap (830-1250 ms): keep their sum under 0.8, at unity and as played.
+start = min(at for at, _ in PLAYS.values())
+mix = np.zeros((round(1.2 * RATE), 2)); played = mix.copy()
+for name, x in [('charge-cry', cry), ('dash-steps', steps), ('dash-rush', rush)]:
+    at, volume = PLAYS[name]; o = round((at - start) / 1000 * RATE)
+    mix[o:o + len(x)] += x; played[o:o + len(x)] += x * volume
+print('overlap peak', round(float(np.abs(mix).max()), 3), 'as played', round(float(np.abs(played).max()), 3))
 assert np.abs(mix).max() <= .8
-(AUDIO / 'hero-forms/novice-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + '\n', encoding='utf-8', newline='\n')
+(AUDIO / 'hero-forms/novice-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8', newline=chr(10))
