@@ -242,7 +242,7 @@ function mikaEngulf(foe,pending){
   const sheet=mikaSheet('engulf3');if(!sheet||reduced)return;
   const size=Math.max(foe.width*1.35,foe.height*1.05),node=mikaFxNode('engulf3','mika-engulf');
   node.style.cssText+=`;left:${foe.x}px;top:${foe.bottom-size*.91}px;width:${size}px;height:${size}px;transform:translateX(-50%)`;
-  mikaSound('f3-engulf',.32,.3);(window.mikaFxLog||=[]).push({name:'engulf3',from:Math.round(performance.now())});
+  mikaSound('f3-engulf',.32,.3);mikaShake(pending,.35);(window.mikaFxLog||=[]).push({name:'engulf3',from:Math.round(performance.now())});
   pending.push((async()=>{
     for(let i=0;i<sheet.count;i++){mikaFxFrame(node,'engulf3',i);await wait(sheet.frameDuration);}
     await animate(node,[{opacity:1},{opacity:0}],{duration:200,fill:'forwards'});
@@ -263,7 +263,7 @@ function mikaFoxSpirits(from,foe,pending){
     pending.push(animate(node,[{opacity:0,transform:'translate(-50%,-50%) scale(.5)'},{opacity:1,transform:`translate(calc(-50% + ${dx*.25}px),-50%) scale(1)`,offset:.25},{opacity:1,transform:`translate(calc(-50% + ${dx}px),calc(-50% - ${6+i%3*5}px)) scale(1)`,offset:.86},{opacity:0,transform:`translate(calc(-50% + ${dx+12}px),calc(-50% - 14px)) scale(1.35)`}],{duration:520,delay,easing:'cubic-bezier(.35,.1,.55,1)',fill:'backwards'}).finally(()=>node.remove()));
     pending.push(wait(delay+450).then(()=>{if(!reduced){// Each wave bursts with the main sun burst's own sound; after the last, form 1's flame whoosh rings out
     // exactly as form 1 plays it (mika-ultimate.js: 'flame-whoosh', volume .48, pan .12).
-    if(i%3===0){mikaSound('f3-wave',.56,.3);if(i===6){mikaSound('flame-whoosh',.48,.12);pending.push(wait(140).then(()=>mikaEngulf(foe,pending)));}}mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
+    if(i%3===0){mikaSound('f3-wave',.56,.3);mikaShake(pending,.6);if(i===6){mikaSound('flame-whoosh',.48,.12);pending.push(wait(140).then(()=>mikaEngulf(foe,pending)));}}mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
   }
 }
 // The nine tails flare: a nine-tailed sun of fox-fire (impact3) opens behind her back.
@@ -316,7 +316,7 @@ async function mikaNineSunSweep(raw,onRelease){
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';delete root.dataset.mikaFlare;
     result=mikaContact(raw,onRelease,pending);mikaSound('f3-sun',.56,.3);mikaSound('finale',.4,.25);
     mikaBurst('impact3',{x:foe.x,y:foe.y},Math.min($('scene').clientWidth*.85,Math.max(foe.width,foe.height)*1.9),pending,{hold:1.25,fade:240});
-    mikaShake(pending,1.25);mikaFlash(pending,'sun');combatV3Camera(1,true,state.boss,pending);
+    mikaShake(pending,1.6);mikaFlash(pending,'sun');combatV3Camera(1,true,state.boss,pending);
     if(ring){const node=ring;pending.push((async()=>{await wait(110);mikaFxFrame(node,'ring3',2);await wait(170);mikaFxFrame(node,'ring3',3);await animate(node,[{opacity:1},{opacity:0}],{duration:260,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+130);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='spirits';
     mikaFoxSpirits({x:mikaGrip(3,4).x,foot:hero.foot},foe,pending);
