@@ -1,7 +1,8 @@
 /* The reward transaction completes before this presentation starts: nothing here rolls, spends
  * or grants. Cards are dealt in reveal order (bronze first, gold next, diamond last, the whole
- * hero at the very end): each card is a star that falls from the sky along its own curving,
- * twisting path, splashes into the lake and only then bounces up into its slot as a card.
+ * hero at the very end): each card is a star that spirals down a whirlwind from the sky (round
+ * and round a funnel that narrows as it falls, far side small, dim and behind, near side big,
+ * bright and in front), splashes into the lake and only then bounces up into its slot as a card.
  * Gold and diamond cards shimmer; opening a whole-hero card plays that hero's own entrance.
  * All art is generated (assets/gemwoven/summon); code only moves, scales and fades it. Sounds are
  * single real CC0 recordings (scripts/prepare_summon_sounds.py) played at the hub's effects
@@ -25,7 +26,7 @@
   const rewardArt=r=>r.kind==='hero'?'hero-'+r.hero:r.kind==='fragments'?(A['fragment-'+r.hero]?'fragment-'+r.hero:'portrait-'+r.hero)
     :r.kind==='gear'?M.SLOT_ART[r.gear.slot]:M.RESOURCES[r.resource]?.[1]||'summon-crystal';
   // ---- sound: the hub's effects volume and mute (journey-ui.js) apply to every cue ----
-  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['star-1','star-2','star-3','star-4','splash','pop','flip','gold','swell','bell','ambience']
+  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['star-1','star-2','star-3','star-4','splash','pop','choir','flip','gold','swell','bell','hero','ambience','drone']
     .map(k=>[k,`assets/audio/summon/${k}.ogg`]));
   const Sound={ctx:null,buffers:{},bed:null,wantBed:false,
     level(){const H=window.GemwovenHubAudio;if(H?.muted?.())return 0;const v=H?.levels?.().effects;return Number.isFinite(v)?v/100:1;},
@@ -33,7 +34,7 @@
       if(this.ctx||!this.level())return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC||!window.fetch)return;
       try{this.ctx=new AC();}catch{return;}
       for(const [k,u] of Object.entries(SOUND_FILES))fetch(new URL(u,document.baseURI).href).then(r=>r.arrayBuffer()).then(b=>this.ctx.decodeAudioData(b))
-        .then(buf=>{this.buffers[k]=buf;if(k==='ambience'&&this.wantBed)this.ambience(true);}).catch(()=>{});
+        .then(buf=>{this.buffers[k]=buf;if((k==='ambience'||k==='drone')&&this.wantBed)this.ambience(true);}).catch(()=>{});
     },
     play(name,{volume=1,pan=0,delay=0,loop=false}={}){
       const v=this.level()*volume,buf=this.buffers[name];if(!this.ctx||!v||!buf)return null;
@@ -42,11 +43,16 @@
       let out=gain;if(this.ctx.createStereoPanner){const p=this.ctx.createStereoPanner();p.pan.value=Math.max(-.8,Math.min(.8,pan));gain.connect(p);out=p;}
       out.connect(this.ctx.destination);src.start(this.ctx.currentTime+delay/1000);return {src,gain};
     },
-    // The night-lake bed fades in under the reveal and out when it closes.
+    // Beds under the reveal: a sustained singing bowl and, quieter, the night lake. They fade in
+    // with the screen and out when it closes.
+    beds:{},
     ambience(on){
       this.wantBed=on;
-      if(on&&!this.bed){const b=this.play('ambience',{volume:.55,loop:true});if(!b)return;const g=b.gain.gain,t=this.ctx.currentTime;g.setValueAtTime(0,t);g.linearRampToValueAtTime(.55*this.level(),t+1.8);this.bed=b;}
-      if(!on&&this.bed){const {src,gain}=this.bed,t=this.ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(0,t+.8);src.stop(t+.85);this.bed=null;}
+      for(const [name,vol] of [['drone',.5],['ambience',.4]]){
+        const bed=this.beds[name];
+        if(on&&!bed){const b=this.play(name,{volume:vol,loop:true});if(!b)continue;const g=b.gain.gain,t=this.ctx.currentTime;g.setValueAtTime(0,t);g.linearRampToValueAtTime(vol*this.level(),t+2.2);this.beds[name]=b;}
+        if(!on&&bed){const {src,gain}=bed,t=this.ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(0,t+.9);src.stop(t+.95);delete this.beds[name];}
+      }
     }
   };
   const sparkles=n=>Array.from({length:n},(_,i)=>sprite('summon-sparkle','sm-twinkle',`--x:${[8,92,14,86,50][i%5]}%;--y:${[6,12,94,88,-3][i%5]}%;--s:${[26,20,22,18,24][i%5]}px;--d:${-(i*.73).toFixed(2)}s;--wait:${(2.4+i*.6).toFixed(1)}s`)).join('');
@@ -74,14 +80,14 @@
     modal.innerHTML=`${sky()}
       <p class="celestial-status" role="status">Tinh tú đang đáp lời…</p>
       <button type="button" class="celestial-close" aria-label="Đóng kết quả">×</button>
-      <div class="celestial-deck" hidden></div><div class="celestial-fx" aria-hidden="true"></div>
+      <div class="celestial-fx back" aria-hidden="true"></div><div class="celestial-deck" hidden></div><div class="celestial-fx" aria-hidden="true"></div>
       <button type="button" class="celestial-skip">Bỏ qua ›</button>
-      <footer><button type="button" class="celestial-open-all gw-btn" disabled>Mở tất cả</button></footer>`;
+      <footer><button type="button" class="celestial-open-all gw-btn" disabled>Mở tất cả</button><div class="celestial-again" hidden></div></footer>`;
     document.body.append(modal);
-    const deck=modal.querySelector('.celestial-deck'),fx=modal.querySelector('.celestial-fx'),status=modal.querySelector('.celestial-status'),
+    const deck=modal.querySelector('.celestial-deck'),fx=modal.querySelector('.celestial-fx:not(.back)'),fxBack=modal.querySelector('.celestial-fx.back'),againBox=modal.querySelector('.celestial-again'),status=modal.querySelector('.celestial-status'),
       all=modal.querySelector('.celestial-open-all'),skipButton=modal.querySelector('.celestial-skip');
     const reduced=()=>document.documentElement.classList.contains('reduced-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let opened=0,dealt=false,closed=false,heroStage=null;const timers=[],flights=[],stars=new Set();
+    let opened=0,dealt=false,closed=false,heroStage=null,again=0;const timers=[],flights=[],stars=new Set();
     const play=(el,frames,opts)=>el.animate?el.animate(frames,opts):null;
     const later=(ms,fn)=>timers.push(setTimeout(()=>{if(!closed)fn();},ms));
     function layout(){
@@ -91,7 +97,7 @@
       deck.style.setProperty('--cols',cols);deck.style.setProperty('--cw',Math.max(40,Math.floor(width))+'px');
     }
     function finish(){
-      if(closed)return;closed=true;timers.forEach(clearTimeout);stars.forEach(st=>st.stop());observer.disconnect();heroStage?.stop();Sound.ambience(false);modal.remove();resolve();
+      if(closed)return;closed=true;timers.forEach(clearTimeout);stars.forEach(st=>st.stop());observer.disconnect();heroStage?.stop();Sound.ambience(false);modal.remove();resolve(again);
     }
     modal.addEventListener('close',finish,{once:true});
     modal.querySelector('.celestial-close').onclick=()=>modal.close();
@@ -120,15 +126,28 @@
       const kind=card.dataset.card,pan=panOf(card),soft=delay>0&&kind==='bronze';
       later(delay,()=>{
         Sound.play('flip',{volume:kind==='bronze'?(soft?.5:.8):.55,pan});
-        if(kind==='gold')Sound.play('gold',{volume:.85,pan,delay:220});
-        if(kind==='diamond'){Sound.play('swell',{volume:.9,pan,delay:120});if(r.kind!=='hero')Sound.play('bell',{volume:.85,pan,delay:900});}
+        if(kind==='gold')Sound.play('gold',{volume:.9,pan,delay:200});
+        if(kind==='diamond'){Sound.play('swell',{volume:.8,pan});if(r.kind!=='hero')Sound.play('bell',{volume:1,pan,delay:900});}
       });
       if(card.dataset.tier==='premium'&&!reduced())later(delay+380,()=>burst(card,6));
       if(r.kind==='hero'&&cardType(r)==='diamond')later(delay+(reduced()?0:850),()=>showHero(r));
-      if(opened===results.length){all.disabled=true;status.textContent='Tinh tú đã tìm được chủ nhân';modal.dataset.phase='complete';}
+      if(opened===results.length){all.disabled=true;status.textContent='Tinh tú đã tìm được chủ nhân';modal.dataset.phase='complete';later(delay+600,offerAgain);}
     }
     // Opening everything turns the common cards first and the premium ones last.
     all.onclick=()=>{let wait=0;cards.forEach((card,i)=>{if(card.classList.contains('is-open'))return;open(card,results[i],wait);wait+=card.dataset.card==='diamond'?900:card.dataset.tier==='premium'?520:110;});};
+    // Everything is open: summon again (x1 / x10) with the cost the main buttons would charge; the
+    // reveal closes and the normal confirmation runs (progression-ui.js), so nothing is spent here.
+    function offerAgain(){
+      const G=window.GEMWOVEN_GAME;if(!G?.engine?.summonQuote)return;
+      againBox.replaceChildren(...[1,10].map(count=>{
+        let q;try{q=G.engine.summonQuote(count);}catch{return document.createTextNode('');}
+        const b=document.createElement('button');b.type='button';b.className='gw-btn celestial-again-btn';b.disabled=!q.enough;b.dataset.count=count;
+        const cost=q.enough?q.cost:count;b.innerHTML=`<span>Triệu hồi tiếp ×${count}</span><small>${img(q.payment==='gems'?'mana':'ticket','again-cost')}${cost}</small>`;
+        b.setAttribute('aria-label',`Triệu hồi tiếp ${count} lần, ${q.enough?cost+(q.payment==='gems'?' Đá Ngọc':' vé'):'chưa đủ tài nguyên'}`);
+        b.onclick=()=>{again=count;modal.close();};return b;
+      }));
+      againBox.hidden=false;
+    }
     const panOf=el=>{const m=modal.getBoundingClientRect(),c=el.getBoundingClientRect();return m.width?((c.left+c.width/2-m.left)/m.width-.5)*1.2:0;};
 
     // ---- one-shot effects, placed in the modal's own coordinates ----
@@ -150,30 +169,32 @@
     function fall(card,index){
       const kind=card.dataset.card,top=card.dataset.tier==='premium',m=modal.getBoundingClientRect(),c=card.getBoundingClientRect();
       const W=m.width,H=m.height,cx=c.left-m.left+c.width/2,cy=c.top-m.top+c.height/2,rnd=seeded(index*7919+results.length*31+1);
-      // Start above the top edge and end on the lake below the board; the curve swings out and
-      // back (alternating sides, so paths cross) and a loop that opens and closes twists around it.
-      const dir=(index%2?1:-1)*(rnd()<.25?-1:1);
-      const S=[Math.min(W*.92,Math.max(W*.08,cx+dir*W*(.15+rnd()*.3))),-H*.06];
-      const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.08,H*(.875+(rnd()-.5)*.03)];
-      const P1=[S[0]-dir*W*(.35+rnd()*.3),H*(.12+rnd()*.15)],P2=[I[0]+dir*W*(.3+rnd()*.25),H*(.45+rnd()*.15)];
-      const turns=1+rnd()*1.3,phase=rnd()*Math.PI*2,loop=W*(.05+rnd()*.05)*(top?1.25:1);
-      const dur=kind==='diamond'?2200:top?1800:1350,size=kind==='diamond'?62:top?50:38;
+      // A whirlwind: the star circles a vertical axis while it falls; the funnel is wide in the sky
+      // and narrows to the splash point on the lake (the axis drifts there too). sin(angle) is depth:
+      // near (+1) is lower, bigger, brighter and in front; far (-1) is higher, smaller, dimmer,
+      // blurred and behind the board.
+      const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.06,H*(.875+(rnd()-.5)*.03)],top0=-H*.08;
+      const axis0=W*(.5+(rnd()-.5)*.12),R0=W*(.3+rnd()*.08),R1=W*.035,turns=2.2+rnd()*.9,phase=rnd()*Math.PI*2,spin=index%3===1?-1:1;
+      const dur=kind==='diamond'?2700:top?2300:1900,size=kind==='diamond'?60:top?50:40;
       const star=document.createElement('span');star.className=`sm-falling star-${kind}`;star.setAttribute('aria-hidden','true');
       star.innerHTML=img('summon-halo','sm-falling-halo')+sprite('summon-sparkle','sm-falling-core');
       star.style.setProperty('--s',size+'px');fx.append(star);
-      Sound.play('star-'+(index%4+1),{volume:kind==='diamond'?.9:top?.7:.42,pan:(S[0]/W-.5)*1.2});
-      const t0=performance.now();let raf=0,lastTrail=0,done=false;
-      const point=u=>{
-        const t=Math.pow(u,1.3),k=1-t,b=i=>k*k*k*S[i]+3*k*k*t*P1[i]+3*k*t*t*P2[i]+t*t*t*I[i];
-        const th=phase+turns*Math.PI*2*t,r=loop*Math.sin(Math.PI*Math.min(1,t*1.15));
-        return [b(0)+r*Math.cos(th),b(1)+r*Math.sin(th)*.6];
+      Sound.play('star-'+(index%4+1),{volume:kind==='diamond'?.9:top?.7:.42,pan:(axis0/W-.5)*.8});
+      const t0=performance.now();let raf=0,lastTrail=0,done=false,behind=false;
+      const at=u=>{
+        const fallT=Math.pow(u,1.25),funnel=Math.pow(u,.8),r=R0*(1-funnel)+R1*funnel;
+        const th=phase+spin*turns*Math.PI*2*u,depth=Math.sin(th),ax=axis0+(I[0]-axis0)*Math.pow(u,1.6);
+        return {x:ax+r*Math.cos(th),y:top0+(I[1]-top0)*fallT+r*.28*depth,depth,u};
       };
       const handle={stop(){if(done)return;done=true;cancelAnimationFrame(raf);star.remove();stars.delete(handle);}};stars.add(handle);
       function frame(now){
         if(closed||dealt){handle.stop();return;}
-        const u=Math.min(1,(now-t0)/dur),[x,y]=point(u),grow=.55+.45*u;
-        star.style.transform=`translate(${x}px,${y}px) scale(${grow})`;
-        if(now-lastTrail>(top?26:34)&&u<.97){lastTrail=now;trail(x,y,size*grow*(top?.85:.75),kind);}
+        const u=Math.min(1,(now-t0)/dur),{x,y,depth}=at(u),near=(depth+1)/2,grow=(.5+.5*u)*(.62+.6*near);
+        // The far half of each loop passes behind the board; the near half in front of it.
+        const back=depth<-.15&&u<.9;if(back!==behind){behind=back;(back?fxBack:fx).append(star);}
+        star.style.transform=`translate(${x}px,${y}px) scale(${grow.toFixed(3)})`;
+        star.style.opacity=(.45+.55*near).toFixed(2);star.style.filter=near<.4?`blur(${((.4-near)*3).toFixed(1)}px)`:'';star.style.zIndex=Math.round(near*100);
+        if(now-lastTrail>(top?26:34)&&u<.97){lastTrail=now;trail(x,y,size*grow*(top?.8:.7),kind,near,back);}
         if(u<1){raf=requestAnimationFrame(frame);return;}
         handle.stop();splash(I[0],I[1],Math.max(80,c.width*(kind==='diamond'?2.3:top?1.9:1.5)),kind==='diamond'?7:top?4:0);
         Sound.play('splash',{volume:kind==='diamond'?1:top?.8:.55,pan:(I[0]/W-.5)*1.2});
@@ -181,10 +202,10 @@
       }
       raf=requestAnimationFrame(frame);
     }
-    function trail(x,y,size,kind){
+    function trail(x,y,size,kind,near=1,back=false){
       const s=A['summon-sparkle'];if(!s)return;const t=document.createElement('i');t.className=`sm-sprite sm-trail star-${kind}`;
-      t.style.cssText=`--sheet:url('${url('summon-sparkle').replace(/'/g,'%27')}');--count:${s.count};left:${x}px;top:${y}px;--s:${Math.max(8,size)}px`;
-      fx.append(t);setTimeout(()=>t.remove(),950);
+      t.style.cssText=`--sheet:url('${url('summon-sparkle').replace(/'/g,'%27')}');--count:${s.count};left:${x}px;top:${y}px;--s:${Math.max(8,size)}px;--o:${(.35+.65*near).toFixed(2)}`;
+      (back?fxBack:fx).append(t);setTimeout(()=>t.remove(),950);
     }
     // From the splash the card bounces up out of the water into its slot.
     function rise(card,dx,dy,kind){
@@ -218,13 +239,13 @@
       status.textContent='Những lá bài rơi xuống mặt hồ…';
       // Bronze stars come quickly; then a pause of suspense; then each gold and diamond star alone.
       let t=250,end=0;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium');
-      const suspense=()=>{modal.classList.add('is-suspense');status.textContent='Mặt hồ rung động… ánh sáng lạ đang tụ lại!';};
+      const suspense=()=>{modal.classList.add('is-suspense');status.textContent='Mặt hồ rung động… ánh sáng lạ đang tụ lại!';Sound.play('choir',{volume:.85});};
       cards.forEach((card,i)=>{
         const top=card.dataset.tier==='premium';
         if(i===firstTop){if(i){later(t+200,suspense);t+=1300;}else{later(t,suspense);t+=700;}}
         if(top&&i===cards.length-1&&i>firstTop)t+=350;   // one more breath before the very best card
         const kind=card.dataset.card;
-        later(t,()=>fall(card,i));end=Math.max(end,t+(kind==='diamond'?2200+950:top?1800+850:1350+720));
+        later(t,()=>fall(card,i));end=Math.max(end,t+(kind==='diamond'?2700+950:top?2300+850:1900+720));
         t+=kind==='diamond'?1100:top?800:260;
       });
       later(end+80,deal);
@@ -251,7 +272,7 @@
         if(form===3&&window.GemwovenFormEffects&&A['form-aura-'+r.hero]){const aura=document.createElement('span');aura.className='hero-form-effects';aura.setAttribute('aria-hidden','true');aura.innerHTML=window.GemwovenFormEffects.markup(r.hero,form,A['form-aura-'+r.hero]);body.append(aura);}
       }
       if(!reduced())play(stage,[{opacity:0},{opacity:1}],{duration:420,fill:'backwards'});
-      Sound.play('bell',{volume:1,delay:reduced()?0:450});
+      Sound.play('hero',{volume:1,delay:reduced()?0:450});
       if(handle)setTimeout(()=>{if(stage.isConnected)handle.summon();},reduced()?0:450);
       else if(!reduced())play(body,[{transform:'scale(.6)',opacity:0,filter:'brightness(3)'},{transform:'scale(1)',opacity:1,filter:'none'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1)'});
       const close=()=>{if(!stage.isConnected)return;handle?.stop();stage.remove();heroStage=null;all.focus?.({preventScroll:true});};

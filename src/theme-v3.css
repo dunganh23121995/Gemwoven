@@ -141,9 +141,6 @@ h1 { color: #e8e9dc; font-size: 22px; font-weight: 600; letter-spacing: -.4px; }
 .scene-location { color: #b3cab2; font-size: 9px; bottom: 9px; text-shadow: 0 2px 5px #000; }
 .scene-motes { z-index: 1; }
 .scene-motes i { width: 3px; height: 3px; background: #deffb0; box-shadow: 0 0 9px #b5ff98; opacity: .7; animation-duration: 8s; }
-.combat-number { color: #ffe8b0; text-shadow: 0 3px 0 #3d1b28, 2px 0 #3d1b28, -2px 0 #3d1b28, 0 0 15px #0008; }
-.combat-number.good { color: #a2ffd2; text-shadow: 0 3px #124534, 2px 0 #124534, -2px 0 #124534; }
-.combat-number.armor { color: #d9c7ff; text-shadow: 0 3px #322950, 2px 0 #322950, -2px 0 #322950; }
 .enemy-intent { background: linear-gradient(110deg, #293544, #182d35); border-color: #7f849c45; padding: 11px 12px; }
 .intent-icon { color: #dbc8ff; background: #4e49654d; border: 1px solid #c6a6fa30; }
 .enemy-intent small { color: #b3bfca; font-size: 8px; letter-spacing: 1px; }

@@ -16,5 +16,4 @@
 .scene[data-preview] #heroHeadHud{visibility:hidden!important}
 #boardEffects{filter:brightness(1.5) saturate(1.2);isolation:isolate}
 #boardEffects>[data-board-phase="beam"],#boardEffects>[data-board-phase="burst"]{mix-blend-mode:screen}
-.actor-skill-pop.attack-chain{font-size:16px;color:#fff6c8;text-shadow:0 0 7px #ffcb62,0 0 17px #ff943d,0 2px 3px #20100b}
 body.reduced-motion .boss-gloom i{animation:none}

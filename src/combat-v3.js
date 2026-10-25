@@ -164,12 +164,10 @@ function combatV3Camera(direction,strong,boss,pending){
   ],{duration:210,easing:'ease-out'}));
 }
 function combatV3Number(side,value,kind,index,pending){
-  // Resting-body anchor: numbers stay beside the target, clear of its HP bar.
-  const p=combatNumberPoint(side,index),node=document.createElement('span');
-  node.className='combat-v3-number '+kind;node.textContent=value;
-  node.style.left=p.x+'px';node.style.top=p.y+'px';
-  $('combatEffects').append(node);
-  combatV3Fx(node,[{opacity:0,transform:'translate(-50%,8px) scale(.7)'},{opacity:1,transform:'translate(-50%,-8px) scale(1.1)',offset:.18},{opacity:1,transform:'translate(-50%,-17px) scale(1)',offset:.66},{opacity:0,transform:'translate(-50%,-43px) scale(.95)'}],{duration:790},pending);
+  // Numbers live in the actor's popup column (combat-stage.js): readable hold, stacked, never
+  // covering each other. Pacing waits only for the beat the old 790 ms (scaled) number had.
+  const blocked=kind==='armor'&&/^CHẶN/.test(value),miss=kind==='armor'&&value==='NÉ';
+  combatPopup(side,value,{kind:blocked?'blocked':miss?'miss':kind,index,beat:combatV3Duration(790),pending});
 }
 function combatV3AudioContext(){
   if(!sound)return null;

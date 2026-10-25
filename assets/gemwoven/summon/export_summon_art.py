@@ -129,9 +129,12 @@ meta["summon-glints"] = {**strip(glints, "glints"), "frameDuration": 260}
 for i, name in enumerate(["halo", "streak", "orb", "ripple"]):
     meta[f"summon-{name}"] = save(fit(unmix(cells(raw("fx-pack"), 2, 2)[i]), 384), name)
 meta["summon-aurora"] = save(fit(trim(unmix(raw("aurora")), 12), 1400), "aurora")
-# Hero fragments as toy bricks, one per hero, in sheet order.
+# Hero fragments as jigsaw puzzle pieces cut from a picture of each hero (fragment-puzzle/), plus
+# the generic hero-fragment icon in the same style.
 for i, hero in enumerate(["fire", "ice", "earth", "lightning", "shadow", "novice"]):
-    brick = fit(trim(key_outside(cells(raw("fragment-bricks"), 2, 3)[i]), 4), 256)
-    meta[f"fragment-{hero}"] = {**save(brick, f"fragment-{hero}"), "brick": True, "transparent": True}
+    piece = fit(trim(key_outside(cells(raw("fragment-puzzle"), 2, 3)[i]), 4), 256)
+    meta[f"fragment-{hero}"] = {**save(piece, f"fragment-{hero}"), "fragmentArt": True, "transparent": True}
+generic = Image.open(ROOT / "fragment-puzzle" / "raw-generic.png")
+meta["hero-fragment"] = {**save(fit(trim(key_outside(generic), 4), 256), "hero-fragment"), "fragmentArt": True, "transparent": True}
 (ROOT / "summon.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 print("packed", len(meta))

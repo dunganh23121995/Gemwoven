@@ -1,79 +1,79 @@
 {
   "star-1": {
     "file": "assets/audio/summon/star-1.ogg",
-    "duration": 1.25,
-    "what": "chime-ball shake, star 1",
+    "duration": 1.0,
+    "what": "temple handbells, star 1",
     "source": {
-      "id": "874643",
-      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
-      "author": "loganzsound",
+      "id": "271627",
+      "title": "2HinduTemplesBells2.wav",
+      "author": "LoopUdu",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
-      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
+      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
     },
     "excerpt": [
-      0.2,
-      1.45
+      0.6,
+      1.6
     ],
-    "peak": 0.32,
-    "rms": 0.047
+    "peak": 0.3,
+    "rms": 0.049
   },
   "star-2": {
     "file": "assets/audio/summon/star-2.ogg",
-    "duration": 1.25,
-    "what": "chime-ball shake, star 2",
+    "duration": 0.95,
+    "what": "temple handbells, star 2",
     "source": {
-      "id": "874643",
-      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
-      "author": "loganzsound",
+      "id": "271627",
+      "title": "2HinduTemplesBells2.wav",
+      "author": "LoopUdu",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
-      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
+      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
     },
     "excerpt": [
-      7.55,
-      8.8
+      2.95,
+      3.9
     ],
-    "peak": 0.32,
-    "rms": 0.03
+    "peak": 0.3,
+    "rms": 0.048
   },
   "star-3": {
     "file": "assets/audio/summon/star-3.ogg",
-    "duration": 1.2,
-    "what": "chime-ball shake, star 3",
+    "duration": 0.95,
+    "what": "temple handbells, star 3",
     "source": {
-      "id": "874643",
-      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
-      "author": "loganzsound",
+      "id": "271627",
+      "title": "2HinduTemplesBells2.wav",
+      "author": "LoopUdu",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
-      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
+      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
     },
     "excerpt": [
-      10.9,
-      12.1
+      5.05,
+      6.0
     ],
-    "peak": 0.32,
-    "rms": 0.023
+    "peak": 0.3,
+    "rms": 0.041
   },
   "star-4": {
     "file": "assets/audio/summon/star-4.ogg",
-    "duration": 1.2,
-    "what": "chime-ball shake, star 4",
+    "duration": 1.0,
+    "what": "temple handbells, star 4",
     "source": {
-      "id": "874643",
-      "title": "Chime Ball Pendant Sparkle Shakes Long 02",
-      "author": "loganzsound",
+      "id": "271627",
+      "title": "2HinduTemplesBells2.wav",
+      "author": "LoopUdu",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/loganzsound/sounds/874643/",
-      "sha256": "ff1a04f9036d59caeca332f8f7ea954c397de422f5757a9168ed7166169b6dea"
+      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
+      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
     },
     "excerpt": [
-      15.8,
-      17.0
+      5.95,
+      6.95
     ],
-    "peak": 0.297,
-    "rms": 0.07
+    "peak": 0.3,
+    "rms": 0.042
   },
   "splash": {
     "file": "assets/audio/summon/splash.ogg",
@@ -113,6 +113,25 @@
     "peak": 0.35,
     "rms": 0.026
   },
+  "choir": {
+    "file": "assets/audio/summon/choir.ogg",
+    "duration": 7.2,
+    "what": "crowd humming one chord (wordless)",
+    "source": {
+      "id": "763890",
+      "title": "CRWDSing_Mmm Hummed Near F_ShaneVincent_GSC24_XY-AKG214-96k.wav",
+      "author": "ShangusBurger",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/ShangusBurger/sounds/763890/",
+      "sha256": "4a5382c94ce2d8ce4fa4feda46158596ef4b74bda4c972f5cc1e02dea9534e81"
+    },
+    "excerpt": [
+      0.0,
+      7.2
+    ],
+    "peak": 0.42,
+    "rms": 0.095
+  },
   "flip": {
     "file": "assets/audio/summon/flip.ogg",
     "duration": 0.8,
@@ -134,60 +153,79 @@
   },
   "gold": {
     "file": "assets/audio/summon/gold.ogg",
-    "duration": 2.8,
-    "what": "glass windchime cluster",
+    "duration": 6.0,
+    "what": "struck singing bowl",
     "source": {
-      "id": "397988",
-      "title": "various Glassy Stone Windchime sounds",
-      "author": "reconsider59",
+      "id": "59159",
+      "title": "singingbowlstruck2.wav",
+      "author": "Coleco",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/reconsider59/sounds/397988/",
-      "sha256": "d0f3d8965dbba9bb858399a9d27a3117528d5e6aa7a8d048030e9678cc50960c"
-    },
-    "excerpt": [
-      56.2,
-      59.0
-    ],
-    "peak": 0.45,
-    "rms": 0.019
-  },
-  "swell": {
-    "file": "assets/audio/summon/swell.ogg",
-    "duration": 4.2,
-    "what": "belltree glissando",
-    "source": {
-      "id": "145578",
-      "title": "Belltree.aif",
-      "author": "acmkyne",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/acmkyne/sounds/145578/",
-      "sha256": "2514f41ba3fe71c1ed45c491deaf12030b4e3a31e20b188325133af66dee4f7b"
-    },
-    "excerpt": [
-      0.3,
-      4.5
-    ],
-    "peak": 0.48,
-    "rms": 0.056
-  },
-  "bell": {
-    "file": "assets/audio/summon/bell.ogg",
-    "duration": 4.5,
-    "what": "tingsha strike and ring",
-    "source": {
-      "id": "435074",
-      "title": "Tingsha Cymbal",
-      "author": "steffcaffrey",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/steffcaffrey/sounds/435074/",
-      "sha256": "c21f4d8a2031203ac8ac9b380fe68558093d7e752f463ff04ab2d97936002ab6"
+      "url": "https://freesound.org/people/Coleco/sounds/59159/",
+      "sha256": "ecf75b3934e1f58ba01fc92dfd07cf03343d4f8df2e109984fe6a8337d2a9776"
     },
     "excerpt": [
       0.0,
-      4.5
+      6.0
+    ],
+    "peak": 0.48,
+    "rms": 0.032
+  },
+  "swell": {
+    "file": "assets/audio/summon/swell.ogg",
+    "duration": 5.1,
+    "what": "singing bowl rim rub, rising",
+    "source": {
+      "id": "417115",
+      "title": "Tibetan bowl_rubbing rim.wav",
+      "author": "dersinnsspace",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/dersinnsspace/sounds/417115/",
+      "sha256": "89cfee45329d08332a2957f1932929ebdff493bc7cfe188c584b95d37153568e"
+    },
+    "excerpt": [
+      14.2,
+      19.3
+    ],
+    "peak": 0.427,
+    "rms": 0.11
+  },
+  "bell": {
+    "file": "assets/audio/summon/bell.ogg",
+    "duration": 6.5,
+    "what": "deep temple bell, Daitokuji",
+    "source": {
+      "id": "131348",
+      "title": "Bell at Daitokuji temple,kyoto.wav",
+      "author": "nahmandub",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/nahmandub/sounds/131348/",
+      "sha256": "c111ac138f867e07ea2a62ce0b75e9bf27ed9cd17fcaa6cfe0803f8252418bf2"
+    },
+    "excerpt": [
+      0.0,
+      6.5
     ],
     "peak": 0.5,
-    "rms": 0.031
+    "rms": 0.024
+  },
+  "hero": {
+    "file": "assets/audio/summon/hero.ogg",
+    "duration": 7.5,
+    "what": "temple bell",
+    "source": {
+      "id": "668647",
+      "title": "temple_bell_002.wav",
+      "author": "tec_studio",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/tec_studio/sounds/668647/",
+      "sha256": "0e392073380356e730443539fa562a78793a5ff361c3b7467cd542321572c57d"
+    },
+    "excerpt": [
+      0.0,
+      7.5
+    ],
+    "peak": 0.468,
+    "rms": 0.13
   },
   "ambience": {
     "file": "assets/audio/summon/ambience.ogg",
@@ -206,7 +244,27 @@
       198.5,
       226.0
     ],
-    "peak": 0.25,
-    "rms": 0.013
+    "peak": 0.2,
+    "rms": 0.011
+  },
+  "drone": {
+    "file": "assets/audio/summon/drone.ogg",
+    "duration": 24.0,
+    "what": "sustained rubbed singing bowl",
+    "loop": true,
+    "source": {
+      "id": "573805",
+      "title": "Singing Bowl, long without reverb",
+      "author": "hollandm",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/hollandm/sounds/573805/",
+      "sha256": "8c20131e8d13dba8fc28442d165d24464dfb4625f8a7b35c2fa843245b23f5d7"
+    },
+    "excerpt": [
+      71.5,
+      97.0
+    ],
+    "peak": 0.191,
+    "rms": 0.05
   }
 }

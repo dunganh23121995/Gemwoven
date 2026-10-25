@@ -273,7 +273,8 @@ async function ensurePlayable(){
   await Promise.all(tiles.map(t=>moveTile(t,origins.get(t).r,origins.get(t).c)));
 }
 function actor(side){return $(side==='hero'?'heroActor':'enemyActor');}
-async function floating(side,text,kind=''){const e=document.createElement('span');e.className='combat-number '+kind;e.textContent=text;const at=combatNumberPoint(side,0,-8);e.style.left=at.x+'px';e.style.top=at.y+'px';e.style.transformOrigin='0 0';e.style.translate='-50% 0';$('combatEffects').append(e);await animate(e,[{opacity:0,transform:'translateY(8px) scale(.75)'},{opacity:1,transform:'translateY(-5px) scale(1.05)',offset:.2},{opacity:1,offset:.65},{opacity:0,transform:'translateY(-40px) scale(.95)'}],{duration:690});e.remove();}
+// Status texts (burns, curses, misses, interrupts) share the combat popup column and its readable hold.
+async function floating(side,text,kind=''){await combatPopup(side,text,{kind:'status',tone:kind==='good'?'good':kind==='armor'?'ward':'',beat:690}).ready;}
 async function combatParticles(side,key,count=8){if(reduced)return;const rect=$('scene').getBoundingClientRect(),x=rect.width*(side==='hero'?.24:.76),y=rect.height*.48;await Promise.all(Array.from({length:count},(_,i)=>{const e=document.createElement('i');e.className='combat-particle';e.style.left=x+'px';e.style.top=y+'px';e.style.setProperty('--element',ELEMENTS[key].color);e.innerHTML=icon(i%3?'spark':ELEMENTS[key].icon);$('combatEffects').append(e);const angle=i*Math.PI*2/count;return animate(e,[{opacity:1,transform:'translate(0,0) scale(.6)'},{opacity:0,transform:`translate(${Math.cos(angle)*65}px,${Math.sin(angle)*50}px) scale(1)`}],{duration:520}).finally(()=>e.remove());}));}
 function damage(side,raw,ledger=null){
   const target=side==='hero'?'enemy':'hero',attackerKey=side==='hero'?state.key:state.enemyKey,defenderKey=side==='hero'?state.enemyKey:state.key;

@@ -52,17 +52,15 @@ function createLiveCombat(){
     else queue.push({side,kind,value,wave,chain:attackChains[side]||1});
     start();
   }
+  // Board receipts (+HP, +GIÁP, +NL) join the actor's popup column; while one is still on screen
+  // further gains of that kind add to it. finish() waits only for each receipt's short beat.
   function receipt(side,kind,value){
     if(reduced||!value)return;
     const id=side+kind,existing=feedback.get(id);
-    if(existing){existing.value+=value;existing.node.textContent=label(kind,existing.value);return;}
-    const point=combatNumberPoint(side,0,kind==='heal'?0:kind==='armor'?22:42),node=document.createElement('span');
-    node.className='combat-v3-number live-loot '+(kind==='heal'?'heal':kind==='armor'?'armor':'energy');
-    node.dataset.lootSide=side;node.dataset.lootKind=kind;
-    node.style.left=point.x+'px';node.style.top=point.y+'px';
-    node.textContent=label(kind,value);$('combatEffects').append(node);
-    const item={node,value,job:null};feedback.set(id,item);
-    item.job=animate(node,[{opacity:0,transform:'translate(-50%,8px) scale(.8)'},{opacity:1,transform:'translate(-50%,0) scale(1.05)',offset:.2},{opacity:1,offset:.72},{opacity:0,transform:'translate(-50%,-20px) scale(1)'}],{duration:440,easing:'ease-out'}).finally(()=>{node.remove();feedback.delete(id);});
+    if(existing){existing.value+=value;if(existing.popup.update(label(kind,existing.value)))return;}
+    const popup=combatPopup(side,label(kind,value),{kind:kind==='heal'?'heal':kind==='armor'?'armor':'energy',beat:440});
+    const item={popup,value,job:popup.ready};feedback.set(id,item);
+    popup.done.then(()=>{if(feedback.get(id)===item)feedback.delete(id);});
   }
   function label(kind,value){return '+'+Math.round(value)+(kind==='heal'?' HP':kind==='armor'?' GIÁP':' NL');}
   return {

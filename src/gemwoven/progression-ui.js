@@ -108,7 +108,7 @@
     if(key==='summon'){
       const pay=state.summonPayment||'tickets';return heading('Triệu Hồi Ánh Ngọc')+`<div class="summon-balances"><span>${img('ticket')}<b>${fmt(p.wallet.tickets)}</b> vé</span><span>${img('mana')}<b>${fmt(p.wallet.gems)}</b> Đá Ngọc</span></div><div class="live-tabs">${button('Dùng vé','do:summon-payment',{payment:'tickets'},false,pay==='tickets'?'active':'')}${button('Dùng Đá Ngọc','do:summon-payment',{payment:'gems'},false,pay==='gems'?'active':'')}</div>${button('Triệu Hồi','do:summon',{count:1,payment:pay},p.wallet[pay]<(pay==='gems'?120:1),'summon-call')}${button('Triệu Hồi ×10','do:summon',{count:10,payment:pay},p.wallet[pay]<(pay==='gems'?1200:10),'summon-call')}<p>${pay==='gems'?'Đá Ngọc: 120/lần; 1.200/10 lần.':'Vé triệu hồi lấy từ nhiệm vụ ngày và mốc cấp tướng.'} Mốc bảo đảm tướng hiếm: ${p.summon.dry}/300.</p><div class="live-tabs">${button('Tỷ lệ & ghép mảnh','do:rates')}${button('Xem kết quả gần nhất','do:last-summon',{},!p.summon.last.length)}</div>`;
     }
-    if(key==='inventory')return heading('Túi Đồ','Tài nguyên hiện có và mảnh tướng.')+`<div class="resource-grid">${Object.entries(M.RESOURCES).map(([id,[name,asset]])=>`<article>${img(asset)}<b>${esc(name)}</b><span>${fmt(remaining(p,id))}</span></article>`).join('')}</div><h3>Mảnh Tướng · Ghép 80 mảnh cùng loại</h3><div class="fragment-grid">${Object.entries(M.HEROES).map(([id,h])=>`<article>${img(A['fragment-'+id]?.brick?'fragment-'+id:'portrait-'+id)}<b>${h.name}</b><p>${p.fragments[id]||0}/80</p>${button('Ghép','do:fuse',{hero:id},(p.fragments[id]||0)<80)}</article>`).join('')}</div>`+route('Xem trang bị','equipment');
+    if(key==='inventory')return heading('Túi Đồ','Tài nguyên hiện có và mảnh tướng.')+`<div class="resource-grid">${Object.entries(M.RESOURCES).map(([id,[name,asset]])=>`<article>${img(asset)}<b>${esc(name)}</b><span>${fmt(remaining(p,id))}</span></article>`).join('')}</div><h3>Mảnh Tướng · Ghép 80 mảnh cùng loại</h3><div class="fragment-grid">${Object.entries(M.HEROES).map(([id,h])=>`<article>${img(A['fragment-'+id]?.fragmentArt?'fragment-'+id:'portrait-'+id)}<b>${h.name}</b><p>${p.fragments[id]||0}/80</p>${button('Ghép','do:fuse',{hero:id},(p.fragments[id]||0)<80)}</article>`).join('')}</div>`+route('Xem trang bị','equipment');
     if(key==='equipment'){
       const owned=p.equipment.filter(g=>!state.gearFilter||g.slot===state.gearFilter);
       return heading('Trang Bị',`Đang có ${p.equipment.length}/500 · Chọn tướng nhận trang bị`)+heroTabs(p,selected)+`<div class="live-tabs">${button('Tất cả','do:gear-filter',{slot:''})}${Object.entries(M.SLOTS).map(([id,label])=>button(label,'do:gear-filter',{slot:id})).join('')}</div>${!owned.length?'<p>Chưa có trang bị trong mục này. Rèn sau ải 20 hoặc tìm trong triệu hồi.</p>':''}<div class="equipment-grid">${owned.map(g=>{const owner=Object.keys(p.heroes).find(k=>Object.values(p.heroes[k].gear).includes(g.id));return `<article class="equipment-card" style="--rarity:${M.RARITIES[g.rarity].color}">${img(g.slot==='weapon'?'fire-sword':g.slot==='armor'?'stat-shield':'boots')}<h3>${M.SLOTS[g.slot]} +${g.level}</h3><p>${M.RARITIES[g.rarity].name}</p>${g.affix?`<p>${M.AFFIXES[g.affix].name}: ${M.AFFIXES[g.affix].desc}</p>`:''}<p>${owner?'Đang dùng: '+M.HEROES[owner].name:'Chưa trang bị'}</p>${button('Trang bị','do:equip',{id:g.id,hero:selected},!h||owner===selected)}${button('Cường hóa','do:strengthen',{id:g.id},g.level>=20)}${button(owner?'Tháo ra':'Phân rã','do:'+ (owner?'unequip':'salvage'),{id:g.id,hero:owner||selected,slot:g.slot})}</article>`;}).join('')}</div><p class="hint">Cường hóa tối đa +20, luôn thành công; tăng 8% chỉ số trang bị mỗi cấp. Vàng cần = (cấp+1)×900; quặng = (cấp+1)×2.</p>`+route('Lò rèn','forge');
@@ -159,11 +159,16 @@
     return p;
   }
   const cooldown={summoning:false};
+  // TEMPORARY summon test mode for the player: http://<localhost or LAN>/...?summonTest=1 makes every
+  // summon include a whole hero, hero fragments, an epic and a divine gear (a one-pull: the hero; progression.js summon,
+  // test=true). Never on in a normal build or from another host. Remove when testing is done.
+  const SUMMON_TEST=/[?&]summonTest=1(?:&|$)/.test(location.search)&&/^(localhost|127\.\d+\.\d+\.\d+|\[::1\]|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+)$/.test(location.hostname);
+  if(SUMMON_TEST){const badge=document.createElement('div');badge.className='summon-test-badge';badge.textContent='Chế độ thử triệu hồi';badge.setAttribute('aria-live','polite');(document.body?document.body.append(badge):addEventListener('DOMContentLoaded',()=>document.body.append(badge)));}
   // Rates read the shared summon table (out of 1,000,000) so the popup never drifts from the engine.
   function ratesContent(p){
     const table=M.SUMMON_TABLE||[['hero',1500],['fragments',13500],['commonGear',285000],['rareGear',20000],['epicGear',1500],['legendaryGear',200],['divineGear',10],['material',678290]];
     const R=M.RARITIES||{},gear=(rarity,fallback)=>'Trang bị '+(R[rarity]?.name||fallback);
-    const label={hero:['Tướng hiếm','portrait-fire','top'],fragments:['Mảnh tướng (2–5)',A['fragment-'+M.SUMMON_BANNER?.hero]?.brick?'fragment-'+M.SUMMON_BANNER.hero:'hero-fragment',''],
+    const label={hero:['Tướng hiếm','portrait-fire','top'],fragments:['Mảnh tướng (2–5)',A['fragment-'+M.SUMMON_BANNER?.hero]?.fragmentArt?'fragment-'+M.SUMMON_BANNER.hero:'hero-fragment',''],
       commonGear:[gear('common','Thường'),'helmet',''],rareGear:[gear('rare','Hiếm'),'helmet',''],epicGear:[gear('epic','Sử Thi'),'fire-sword','rare'],
       legendaryGear:[gear('legendary','Huyền Thoại'),'fire-sword','top'],divineGear:[gear('divine','Thần'),'fire-sword','top'],material:['Nguyên liệu','ore','']};
     const pct=n=>(n/10000).toLocaleString('vi-VN',{maximumFractionDigits:3})+'%';
@@ -209,8 +214,12 @@
       else if(command==='summon-payment')state.summonPayment=d.payment;
       else if(command==='summon'){
         if(cooldown.summoning)return;cooldown.summoning=true;
-        try{const results=engine.summon(Number(d.count||1),d.payment||state.summonPayment||'tickets');ctx.render();await resultsDialog(results);}finally{cooldown.summoning=false;}return;
-      }else if(command==='last-summon'){await resultsDialog(p.summon.last);return;}
+        let again=0;
+        try{const results=engine.summon(Number(d.count||1),d.payment||state.summonPayment||'tickets',SUMMON_TEST);ctx.render();again=await resultsDialog(results);}finally{cooldown.summoning=false;}
+        // "Triệu hồi tiếp" in the reveal: the same confirmation and cost rules as the main buttons.
+        if(again===1||again===10)window.GEMWOVEN_GAME.handle('do:summon',{dataset:{count:String(again)}},ctx,state);
+        return;
+      }else if(command==='last-summon'){const again=await resultsDialog(p.summon.last);if(again===1||again===10)window.GEMWOVEN_GAME.handle('do:summon',{dataset:{count:String(again)}},ctx,state);return;}
       else if(command==='rates'){ctx.showModal('Tỷ lệ triệu hồi',[],'',[],{kind:'rates',content:ratesContent(p)});return;}
       else if(command==='soon'){ctx.showModal(d.feature+' · Coming soon',[],'Tính năng sẽ được phát hành riêng khi hệ thống máy chủ sẵn sàng.');return;}
       else if(command==='export-events'){download('gemwoven-events.json',{version:1,events:p.events});return;}

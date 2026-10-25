@@ -626,16 +626,16 @@
     "textless": true
   },
   "hero-fragment": {
-    "file": "assets/gemwoven/items/hero-fragment.png",
-    "width": 184,
-    "height": 212,
-    "source": "assets/reimagined/heroes/fire/idle/raw-sheet-clean.png",
-    "textless": true,
+    "file": "assets/gemwoven/summon/runtime/hero-fragment.webp",
+    "width": 256,
+    "height": 226,
+    "fragmentArt": true,
+    "transparent": true,
     "footBounds": [
-      6,
-      6,
-      178,
-      206
+      1,
+      1,
+      255,
+      225
     ]
   },
   "ticket": {
@@ -11991,44 +11991,44 @@
   },
   "fragment-fire": {
     "file": "assets/gemwoven/summon/runtime/fragment-fire.webp",
-    "width": 222,
-    "height": 256,
-    "brick": true,
+    "width": 256,
+    "height": 254,
+    "fragmentArt": true,
     "transparent": true
   },
   "fragment-ice": {
     "file": "assets/gemwoven/summon/runtime/fragment-ice.webp",
-    "width": 223,
-    "height": 256,
-    "brick": true,
+    "width": 256,
+    "height": 255,
+    "fragmentArt": true,
     "transparent": true
   },
   "fragment-earth": {
     "file": "assets/gemwoven/summon/runtime/fragment-earth.webp",
-    "width": 222,
+    "width": 254,
     "height": 256,
-    "brick": true,
+    "fragmentArt": true,
     "transparent": true
   },
   "fragment-lightning": {
     "file": "assets/gemwoven/summon/runtime/fragment-lightning.webp",
-    "width": 235,
+    "width": 253,
     "height": 256,
-    "brick": true,
+    "fragmentArt": true,
     "transparent": true
   },
   "fragment-shadow": {
     "file": "assets/gemwoven/summon/runtime/fragment-shadow.webp",
-    "width": 234,
+    "width": 253,
     "height": 256,
-    "brick": true,
+    "fragmentArt": true,
     "transparent": true
   },
   "fragment-novice": {
     "file": "assets/gemwoven/summon/runtime/fragment-novice.webp",
-    "width": 234,
+    "width": 251,
     "height": 256,
-    "brick": true,
+    "fragmentArt": true,
     "transparent": true
   },
   "creature-abyss-reefcorsair": {

@@ -563,3 +563,19 @@ Sources (CC0 1.0, Freesound public HQ previews; source.json with SHA-256 under s
   swell                      #145578 "Belltree.aif" by acmkyne, https://freesound.org/people/acmkyne/sounds/145578/
   bell                       #435074 "Tingsha Cymbal" by steffcaffrey, https://freesound.org/people/steffcaffrey/sounds/435074/
   ambience                   #445095 "Nature at the Lake.wav" by StoneyWaters, https://freesound.org/people/StoneyWaters/sounds/445095/
+
+Summon reveal sounds, round 3 (2026-10-25): the reveal now sounds sacred. Same rules (one real recording
+per cue, light processing only; scripts/prepare_summon_sounds.py, assets/audio/summon/summon-sounds.json).
+The chime-ball star cues (#874643), the belltree swell and the tingsha bell of round 2 are no longer used.
+Sources now (CC0 1.0, Freesound; source.json with SHA-256 under sources/freesound/<id>-*/):
+  star-1, star-2, star-3, star-4 #271627 "2HinduTemplesBells2.wav" by LoopUdu, https://freesound.org/people/LoopUdu/sounds/271627/
+  splash                     #398039 "water splash 2" by swordofkings128, https://freesound.org/people/swordofkings128/sounds/398039/
+  pop                        #776443 "pop out, bubble, soft bursting" by chaferwitt, https://freesound.org/people/chaferwitt/sounds/776443/
+  choir                      #763890 "CRWDSing_Mmm Hummed Near F_ShaneVincent_GSC24_XY-AKG214-96k.wav" by ShangusBurger, https://freesound.org/people/ShangusBurger/sounds/763890/
+  flip                       #84322 "flipCard.wav" by Splashdust, https://freesound.org/people/Splashdust/sounds/84322/
+  gold                       #59159 "singingbowlstruck2.wav" by Coleco, https://freesound.org/people/Coleco/sounds/59159/
+  swell                      #417115 "Tibetan bowl_rubbing rim.wav" by dersinnsspace, https://freesound.org/people/dersinnsspace/sounds/417115/
+  bell                       #131348 "Bell at Daitokuji temple,kyoto.wav" by nahmandub, https://freesound.org/people/nahmandub/sounds/131348/
+  hero                       #668647 "temple_bell_002.wav" by tec_studio, https://freesound.org/people/tec_studio/sounds/668647/
+  ambience                   #445095 "Nature at the Lake.wav" by StoneyWaters, https://freesound.org/people/StoneyWaters/sounds/445095/
+  drone                      #573805 "Singing Bowl, long without reverb" by hollandm, https://freesound.org/people/hollandm/sounds/573805/

@@ -19,7 +19,7 @@ for catalog in sorted((ROOT/'assets/gemwoven/beanstalk/themes').glob('art-catalo
         file=value['file']
         merged[key]={**value,'file':file if file.startswith('assets/') else 'assets/gemwoven/'+file}
 merged['summon-lake']={'file':'assets/gemwoven/summon-lake/scene.webp','width':941,'height':1672}
-# Summon reveal art (cards, splash, sparkles, lake light) and the brick-style hero fragments,
+# Summon reveal art (cards, splash, sparkles, lake light) and the jigsaw-piece hero fragments,
 # packed by assets/gemwoven/summon/export_summon_art.py.
 merged.update(json.loads((ROOT/'assets/gemwoven/summon/summon.json').read_text(encoding='utf-8')))
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):

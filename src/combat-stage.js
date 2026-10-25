@@ -109,22 +109,121 @@ function followCombatHeads(){
     hud.style.visibility='visible';
     hud.style.opacity=actor(side).style.opacity==='0'?'0':state[side==='hero'?'hp':'enemyHp']>0?'1':'.35';
   }
-  for(const popup of $('scene').querySelectorAll('[data-follow-actor]'))placeCombatPopup(popup,points[popup.dataset.followActor]);
+  for(const side of ['hero','enemy'])placeCombatPopupColumn(side,points[side]);
 }
-function placeCombatPopup(node,p){
-  if(!p)return;
-  const W=$('scene').clientWidth||375,w=node.offsetWidth||80,shift=Number(node.dataset.shift||0);
-  node.style.left=Math.max(w/2+4,Math.min(W-w/2-4,p.x+shift*p.width))+'px';node.style.top=Math.max(8,p.y+Number(node.dataset.headOffset||18))+'px';
+// ---- Combat popups: damage, crits, heals, armour, energy, statuses and callouts -------------------
+// One column per actor, beside the body on its outer side. Every popup pops in, holds long enough to
+// read (about 1.3 s, crits 1.65 s) and fades; a newer popup pushes the older ones up instead of
+// covering them, and only the newest few stay. Turn pacing never waits for that whole life: callers'
+// `pending` lists (and the returned promise) get only the short beat each popup always had.
+const COMBAT_POPUP_LIFE={damage:1300,crit:1650,blocked:1250,heal:1350,armor:1350,energy:1250,stored:1350,miss:1200,status:1500,callout:1400,ultimate:1700};
+const COMBAT_POPUP_KEEP=4,COMBAT_POPUP_GAP=2;
+const combatPopupColumns={hero:[],enemy:[]};
+// Warm the crit art so the first critical hit shows its burst on the very frame it lands.
+if(typeof ART!=='undefined'&&ART.uiFx)for(const src of Object.values(ART.uiFx)){const img=new Image();img.decoding='async';img.src=src;}
+// The column's foot sits low on the body (a quarter of the way up from the boots), on the outer
+// side, so a fresh number or crit stays clear of the head HUD; older ones rise above it and fade.
+function combatPopupAnchor(side,p=combatIdleHead(side)){
+  const root=actor(side),s=root?.querySelector('.sprite-body'),H=$('scene').clientHeight||300,out=side==='hero'?-1:1;
+  const footY=s?spriteDefinition(s.dataset.family,s.dataset.key,'idle').sheet.footY||.94:.94;
+  const feet=root?.offsetHeight?root.offsetTop+footY*root.offsetHeight:p.y+p.height*.6,body=Math.max(40,feet-p.y);
+  return {x:p.x+out*Math.min(40,p.width*.14),y:Math.max(70,Math.min(H-16,feet-body*.25))};
 }
-// `away` moves a callout to the far side of the target, off the incoming attacker.
+function placeCombatPopupColumn(side,p){
+  const column=combatPopupColumns[side];if(!column.length||!p)return;
+  const W=$('scene').clientWidth||375,a=combatPopupAnchor(side,p);
+  for(const pop of column){
+    if(!pop.node.isConnected)continue;
+    const w=pop.node.offsetWidth||80;
+    pop.node.style.left=Math.max(w/2+6,Math.min(W-w/2-6,a.x+pop.dx))+'px';pop.node.style.top=a.y+'px';
+  }
+}
+function combatPopupMarkup(kind,text){
+  const body=document.createElement('span');body.className='combat-pop-body';
+  if(kind==='crit'&&ART.uiFx){
+    // Critical hits: the generated starburst/slash behind a bigger number, under a 'CHÍ MẠNG' ribbon.
+    body.innerHTML=`<img class="crit-burst" src="${ART.uiFx.critBurst}" alt=""><span class="crit-ribbon"><img src="${ART.uiFx.critRibbon}" alt=""><b>CHÍ MẠNG</b></span><strong></strong>`;
+  }else body.innerHTML='<strong></strong>';
+  body.querySelector('strong').textContent=text;
+  return body;
+}
+function combatPopupLife(pop,frames,duration){
+  const generation=++pop.generation;
+  for(const a of pop.body.getAnimations?.()||[])a.cancel();
+  animate(pop.body,frames,{duration,easing:'linear',fill:'both'}).then(()=>{if(generation===pop.generation)retireCombatPopup(pop,true);});
+}
+// Newest at the bottom: each popup rises by the heights of the ones that came after it. Only the
+// newest few stay; older ones fade out early.
+function restackCombatPopups(side){
+  const column=combatPopupColumns[side]=combatPopupColumns[side].filter(pop=>pop.node.isConnected&&!pop.retired);
+  while(column.length>COMBAT_POPUP_KEEP)retireCombatPopup(column[0]);
+  let shift=0;
+  for(let i=column.length-1;i>=0;i--){column[i].node.style.translate=`0 ${-shift}px`;shift+=(column[i].node.offsetHeight||28)+COMBAT_POPUP_GAP;}
+}
+function retireCombatPopup(pop,now=false){
+  if(pop.retired)return;pop.retired=true;pop.generation++;
+  const column=combatPopupColumns[pop.side],i=column.indexOf(pop);if(i>=0)column.splice(i,1);
+  const end=()=>{pop.node.remove();pop.resolve();};
+  if(now||reduced)return end();
+  pop.node.classList.add('is-retiring');setTimeout(end,200);
+}
+// kind: damage | crit | blocked | heal | armor | energy | stored | miss | status | callout | ultimate.
+// tone (optional): a colour family for statuses and callouts (good, ward, energy, control, advantage).
+function combatPopup(side,text,{kind='damage',tone='',index=0,beat=360,pending,life}={}){
+  const ready=wait(beat);if(pending)pending.push(ready);
+  const root=$('combatEffects');
+  if(reduced||!root)return {ready,done:ready,update(){}};
+  // The same callout again while it is still up (KHẮC HỆ on each of nine bolts, a repeated stun)
+  // refreshes that one instead of stacking copies.
+  if(!['damage','crit','blocked','heal','armor','energy','stored'].includes(kind)){
+    const twin=combatPopupColumns[side].find(other=>!other.retired&&other.kind===kind&&other.text===text&&other.node.isConnected);
+    if(twin){
+      const column=combatPopupColumns[side];column.splice(column.indexOf(twin),1);column.push(twin);
+      restackCombatPopups(side);twin.update(text);return {ready,done:twin.done,node:twin.node,update:twin.update};
+    }
+  }
+  const node=document.createElement('span');node.className='combat-pop is-'+kind+(tone?' tone-'+tone:'');node.setAttribute('aria-hidden','true');
+  node.dataset.popSide=side;node.dataset.popKind=kind;
+  node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
+  const body=combatPopupMarkup(kind,text);node.append(body);root.append(node);
+  const pop={side,node,body,kind,text,generation:0,dx:index?((index%2?1:-1)*Math.min(14,4+index*3)):0,retired:false};
+  pop.done=new Promise(resolve=>pop.resolve=resolve);
+  // The new popup takes the bottom slot; the column above it rises by its height.
+  combatPopupColumns[side].push(pop);
+  restackCombatPopups(side);
+  placeCombatPopupColumn(side,combatIdleHead(side));
+  const total=life||COMBAT_POPUP_LIFE[kind]||1300,pop_in=kind==='crit'?.13:.11;
+  combatPopupLife(pop,kind==='crit'?[
+    {opacity:0,transform:'translateY(6px) scale(.35) rotate(-8deg)'},
+    {opacity:1,transform:'translateY(-4px) scale(1.28) rotate(3deg)',offset:.07},
+    {opacity:1,transform:'translateY(0) scale(.96) rotate(0deg)',offset:pop_in},
+    {opacity:1,transform:'translateY(-2px) scale(1)',offset:.2},
+    {opacity:1,transform:'translateY(-8px) scale(1)',offset:.8},
+    {opacity:0,transform:'translateY(-20px) scale(.97)'}
+  ]:[
+    {opacity:0,transform:'translateY(8px) scale(.6)'},
+    {opacity:1,transform:'translateY(-3px) scale(1.14)',offset:pop_in*.6},
+    {opacity:1,transform:'translateY(0) scale(1)',offset:pop_in},
+    {opacity:1,transform:'translateY(-7px) scale(1)',offset:.78},
+    {opacity:0,transform:'translateY(-18px) scale(.98)'}
+  ],total);
+  // Board receipts merge into one popup while it is on screen: new total, small bump, fresh hold.
+  pop.update=value=>{
+    if(pop.retired)return false;
+    pop.text=value;body.querySelector('strong').textContent=value;
+    combatPopupLife(pop,[{opacity:1,transform:'scale(1.16)'},{opacity:1,transform:'scale(1)',offset:.1},{opacity:1,transform:'translateY(-5px) scale(1)',offset:.75},{opacity:0,transform:'translateY(-16px) scale(.98)'}],total*.85);
+    return true;
+  };
+  return {ready,done:pop.done,node,update:pop.update};
+}
+// Colour families for statuses and callouts, read from their text (hero kits pass only the words).
+function combatPopupTone(text){
+  return /NĂNG LƯỢNG/i.test(text)?'energy':/GIÁP|MIỄN|TRƯỢT|^NÉ$/i.test(text)?'ward':/CHOÁNG|Choáng|ĐÓNG BĂNG|Đóng băng|PHONG ẤN|mất lượt/.test(text)?'control':/HỒI PHỤC|Hồi phục/.test(text)?'good':/KHẮC HỆ/.test(text)?'advantage':'';
+}
+// `away` used to move a callout off the attacker's lunge; callouts now live in the actor's column.
 function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
-  const node=document.createElement('div');node.className='actor-skill-pop'+(ultimate?' is-ultimate':'');
-  node.dataset.followActor=side;node.dataset.headOffset=away?'4':ultimate?'36':'24';node.textContent=title;
-  if(away)node.dataset.shift=String(side==='hero'?-.3:.3);
-  node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey].main);
-  $('combatEffects').append(node);placeCombatPopup(node,combatIdleHead(side));
-  const job=animate(node,[{opacity:0,transform:'translate(-50%,10px) scale(.7)'},{opacity:1,transform:'translate(-50%,0) scale(1.08)',offset:.2},{opacity:1,transform:'translate(-50%,-5px) scale(1)',offset:.72},{opacity:0,transform:'translate(-50%,-17px) scale(.98)'}],{duration:ultimate?850:540,easing:'ease-out'}).finally(()=>node.remove());
-  if(pending)pending.push(job);return job;
+  const pop=combatPopup(side,title,{kind:ultimate?'ultimate':'callout',tone:ultimate?'':combatPopupTone(title),beat:ultimate?850:540,pending});
+  return pop.ready;
 }
 async function ultimateAura(side){
   const root=actor(side),key=side==='hero'?state.key:state.enemyKey;

@@ -10,7 +10,6 @@
 @keyframes nori-shield-breathe{from{opacity:.5}to{opacity:.95}}
 @keyframes nori-shield-spark{0%{opacity:0;translate:0 0}25%{opacity:.85}100%{opacity:0;translate:1px -55px}}
 .nori-shield-aura[hidden],body.reduced-motion .nori-shield-aura{display:none}
-.combat-v3-number.stored{font-size:21px;letter-spacing:0;color:#beffd8;text-shadow:0 2px 2px #153a25,0 0 9px #49ea9a}
 .nori-damage-seal{position:absolute;inset:42% 15% 4%;z-index:3;pointer-events:none}
 .nori-damage-seal i{position:absolute;inset:0;border-radius:48%;background:radial-gradient(ellipse,transparent 38%,#6effbd38 55%,transparent 72%);filter:drop-shadow(0 0 8px #80ffb8);opacity:calc(.4 + var(--seal-power)*.6);animation:nori-seal-pulse 1.5s ease-in-out infinite alternate}
 .nori-damage-seal b{position:absolute;left:50%;top:0;transform:translate(-50%,-100%);white-space:nowrap;font:700 10px Cambria,Georgia,serif;color:#d6ffe1;text-shadow:0 1px 3px #092a18,0 0 5px #2bfa93;letter-spacing:.5px}

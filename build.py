@@ -52,6 +52,8 @@ def atlas(path, cols, rows, count, fallback):
 
 art = {'heroes': {}, 'enemies': {}, 'items': {}, 'landscape': image('assets/landscape.webp')}
 art['skillFx'] = {'yukiBoulder': image('assets/fx/yuki/boulder.webp'), 'mikaBlade': image('assets/fx/mika/blade.webp'), 'mikaWave': image('assets/fx/mika/wave.webp'), 'mikaExplosion': image('assets/fx/mika/explosion.webp')}
+# Combat popup art (assets/fx/ui/export_ui.py): the critical-hit starburst and its 'CHÍ MẠNG' ribbon.
+art['uiFx'] = {'critBurst': image('assets/fx/ui/crit-burst.webp'), 'critRibbon': image('assets/fx/ui/crit-ribbon.webp')}
 art['scenes'] = {key: image(f'assets/scenes/{key}.webp') for key in keys}
 art['parallax'] = {key: [image(f'assets/scenes/painted/{key}-{layer}.webp') for layer in ['far', 'mid', 'near']] for key in keys}
 voice_manifest=json.loads((root/'assets/audio/manifest.json').read_text(encoding='utf-8'))

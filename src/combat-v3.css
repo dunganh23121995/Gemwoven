@@ -19,12 +19,6 @@
 .combat-v3-breath{filter:drop-shadow(0 0 7px #ff8539aa);z-index:3}
 .combat-v3-breath svg{width:100%;height:100%}
 .combat-v3-buff-shield{filter:drop-shadow(0 0 6px var(--combat-main));z-index:3}
-.combat-v3-number{position:absolute;z-index:10;white-space:nowrap;color:#fff9de;font-size:clamp(25px,2.8vw,34px);font-weight:950;line-height:1;letter-spacing:-1px;text-shadow:0 2px 0 #65372a,2px 0 0 #65372a,-2px 0 0 #65372a,0 -2px 0 #65372a,0 4px 8px #38242150;pointer-events:none;font-variant-numeric:tabular-nums}
-.combat-v3-number.damage{color:#ff5058;text-shadow:0 2px 0 #450d18,2px 0 0 #450d18,-2px 0 0 #450d18,0 -2px 0 #450d18,0 0 8px #ff263b66}
-.combat-v3-number.heal{font-size:24px;color:#dbffd6;text-shadow:0 2px 0 #286452,2px 0 0 #286452,-2px 0 0 #286452,0 -2px 0 #286452,0 4px 8px #184b4450}
-.combat-v3-number.armor{font-size:21px;color:#e1f7ff;text-shadow:0 2px 0 #3b527c,2px 0 0 #3b527c,-2px 0 0 #3b527c,0 -2px 0 #3b527c,0 4px 8px #26335450}
-.combat-v3-number.live-loot[data-loot-kind]{font-size:16px;letter-spacing:.2px;text-shadow:0 1px 2px #102121,0 0 7px currentColor}
-.combat-v3-number.live-loot.energy{font-size:13px;color:#e2c5ff}
 .combat-v3-cue{position:absolute;left:50%;top:9px;z-index:9;width:max-content;max-width:92%;padding:7px 19px 8px;text-align:center;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#203043dc 19%,#203043ed 81%,transparent);color:#fff7e1;pointer-events:none;border-top:1px solid color-mix(in srgb,var(--combat-main) 55%,transparent);border-bottom:1px solid color-mix(in srgb,var(--combat-main) 55%,transparent)}
 .combat-v3-cue small{display:block;margin-bottom:3px;color:var(--combat-main);font-size:6px;font-weight:900;letter-spacing:2.1px}
 .combat-v3-cue strong{display:block;font-size:11px;letter-spacing:.3px;font-weight:800;line-height:1.2}
@@ -34,4 +28,4 @@
 .combat-v3-acting{will-change:transform}
 .reduced-motion .combat-v3-effect{filter:none!important;box-shadow:none!important}
 .reduced-motion .combat-v3-acting{will-change:auto}
-@media(max-width:520px){.combat-v3-cue{top:4px;padding:5px 17px 6px}.combat-v3-cue small{font-size:5px;margin-bottom:2px}.combat-v3-cue strong{font-size:9px}.combat-v3-cue.is-ultimate{padding:6px 20px 7px}.combat-v3-cue.is-ultimate strong{font-size:12px}.combat-v3-hit-count{bottom:9px;font-size:8px;padding:3px 7px}.combat-v3-number{font-size:27px}.combat-v3-number.heal,.combat-v3-number.armor{font-size:21px}}
+@media(max-width:520px){.combat-v3-cue{top:4px;padding:5px 17px 6px}.combat-v3-cue small{font-size:5px;margin-bottom:2px}.combat-v3-cue strong{font-size:9px}.combat-v3-cue.is-ultimate{padding:6px 20px 7px}.combat-v3-cue.is-ultimate strong{font-size:12px}.combat-v3-hit-count{bottom:9px;font-size:8px;padding:3px 7px}}

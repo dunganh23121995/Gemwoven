@@ -20,8 +20,6 @@
 .actor-hud .status-row{justify-content:center;min-height:0;gap:4px;padding:3px 0 0}
 .actor-hud .status-pill{display:inline-flex;align-items:center;gap:2px;font-size:8px;line-height:11px;padding:0 3px;background:#10212ccb;border:1px solid #9bc4d755;border-radius:3px}.actor-hud .status-pill svg{width:9px;height:9px}
 .battle-message{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.actor-skill-pop{position:absolute;z-index:12;pointer-events:none;white-space:nowrap;font:800 13px Cambria,Georgia,serif;color:#fff5d2;text-align:center;text-shadow:0 2px 3px #041115,0 0 9px var(--skill-color);transform:translateX(-50%)}
-.actor-skill-pop.is-ultimate{font-size:18px;font-style:italic;color:#fff8d9;-webkit-text-stroke:.25px #ffe5a7;text-shadow:0 2px 2px #362015,0 0 12px var(--skill-color),0 0 23px var(--skill-color)}
 .ultimate-aura{position:absolute;inset:27% 10% 1%;z-index:-1;pointer-events:none;transform-origin:50% 80%}
 .aura-halo{position:absolute;inset:-15% -15% 0;border-radius:50%;background:radial-gradient(ellipse,#fff8d62e 0%,color-mix(in srgb,var(--aura-color) 55%,transparent) 35%,transparent 70%);filter:blur(7px)}
 .aura-ring{position:absolute;inset:9% 15% 0;border:2px solid var(--aura-color);border-radius:50%;box-shadow:0 0 20px var(--aura-color),inset 0 0 18px var(--aura-color);transform:rotate(-20deg)}
@@ -29,4 +27,42 @@
 .ultimate-aura b{position:absolute;left:50%;top:48%;width:5px;height:5px;background:#fff8ce;box-shadow:0 0 9px var(--aura-color);border-radius:50%;transform:rotate(var(--ray)) translateY(-70px)}
 .actor.charging-ultimate .sprite-body{filter:drop-shadow(0 0 9px #fff1bc) drop-shadow(0 0 17px var(--element,#ffc079))}
 body.reduced-motion .ultimate-aura{display:none}
-@media(max-width:370px){.actor-hud{width:94px}.actor-hud .vital-name strong{font-size:11px}.actor-skill-pop.is-ultimate{font-size:16px}}
+@media(max-width:370px){.actor-hud{width:94px}.actor-hud .vital-name strong{font-size:11px}}
+/* ---- Combat popups (combatPopup in combat-stage.js) -------------------------------------------
+   One column per actor; the newest popup sits at the bottom and pushes older ones up (translate),
+   the body carries the pop / hold / fade animation. Outlines are 8-way text shadows so every
+   number stays readable on bright skies, snow and dark caves alike. */
+.combat-pop{position:absolute;z-index:12;pointer-events:none;white-space:nowrap;text-align:center;line-height:1;transform:translate(-50%,-100%);translate:0 0;transition:translate .2s cubic-bezier(.2,.8,.3,1),opacity .2s ease-out;--pop-fill:#fff7e4;--pop-edge:#2a0c10;--pop-glow:transparent}
+.combat-pop.is-retiring{opacity:0}
+.combat-pop-body{position:relative;display:block;transform-origin:50% 75%;will-change:transform,opacity}
+.combat-pop strong{position:relative;display:block;color:var(--pop-fill);font:900 25px/1 var(--font);letter-spacing:-.3px;font-variant-numeric:tabular-nums;text-shadow:0 2px 0 var(--pop-edge),0 -2px 0 var(--pop-edge),2px 0 0 var(--pop-edge),-2px 0 0 var(--pop-edge),1.5px 1.5px 0 var(--pop-edge),-1.5px 1.5px 0 var(--pop-edge),1.5px -1.5px 0 var(--pop-edge),-1.5px -1.5px 0 var(--pop-edge),0 4px 5px #000a,0 0 13px var(--pop-glow)}
+.combat-pop.is-damage{--pop-fill:#ff5a4f;--pop-edge:#3a050c;--pop-glow:#ff2a2a88}
+.combat-pop.is-blocked{--pop-fill:#d7ecff;--pop-edge:#1b2f55;--pop-glow:#6fb5ff66}.combat-pop.is-blocked strong{font-size:18px;letter-spacing:.2px}
+.combat-pop.is-miss{--pop-fill:#f3eeff;--pop-edge:#2c2547;--pop-glow:#b7a6ff66}.combat-pop.is-miss strong{font-size:20px;font-style:italic;letter-spacing:1px}
+.combat-pop.is-heal{--pop-fill:#b9ffb0;--pop-edge:#0f3f27;--pop-glow:#4dff8a77}.combat-pop.is-heal strong{font-size:22px}
+.combat-pop.is-armor{--pop-fill:#d4f2ff;--pop-edge:#173966;--pop-glow:#5cc8ff77}.combat-pop.is-armor strong{font-size:21px}
+.combat-pop.is-energy{--pop-fill:#f1dcff;--pop-edge:#3a1663;--pop-glow:#c27dff88}.combat-pop.is-energy strong{font-size:18px}
+.combat-pop.is-stored{--pop-fill:#c8ffe0;--pop-edge:#12402a;--pop-glow:#49ea9a88}.combat-pop.is-stored strong{font-size:20px}
+/* Critical hit: generated starburst + slash behind a bigger number, a 'CHÍ MẠNG' ribbon on top. */
+.combat-pop.is-crit{z-index:13;--pop-fill:#ff3127;--pop-edge:#2b0005;--pop-glow:#fff2a0}
+.combat-pop.is-crit .combat-pop-body{min-width:150px;padding:22px 26px 12px}
+.combat-pop.is-crit strong{font-size:36px;letter-spacing:-1px;text-shadow:0 3px 0 var(--pop-edge),0 -2.5px 0 var(--pop-edge),2.5px 0 0 var(--pop-edge),-2.5px 0 0 var(--pop-edge),2px 2px 0 var(--pop-edge),-2px 2px 0 var(--pop-edge),2px -2px 0 var(--pop-edge),-2px -2px 0 var(--pop-edge),0 5px 6px #000b,0 0 16px #fff3b0}
+.combat-pop .crit-burst{position:absolute;left:50%;top:60%;width:142px;height:auto;transform:translate(-50%,-50%);animation:combat-crit-burst 1.65s cubic-bezier(.2,.8,.3,1) both}
+.combat-pop .crit-ribbon{position:absolute;left:50%;top:0;width:104px;transform:translateX(-50%);animation:combat-crit-ribbon 1.65s ease-out both}
+.combat-pop .crit-ribbon img{display:block;width:100%;height:auto}
+.combat-pop .crit-ribbon b{position:absolute;inset:0 0 14%;display:flex;align-items:center;justify-content:center;font:900 12px/1 var(--font);letter-spacing:1.2px;color:#fff8e2;text-shadow:0 1px 0 #4a0008,0 0 4px #4a0008}
+@keyframes combat-crit-burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(-25deg)}9%{opacity:1;transform:translate(-50%,-50%) scale(1.18) rotate(4deg)}18%{transform:translate(-50%,-50%) scale(1) rotate(0deg)}80%{opacity:1;transform:translate(-50%,-50%) scale(1.04) rotate(2deg)}100%{opacity:.7;transform:translate(-50%,-50%) scale(1.06) rotate(3deg)}}
+@keyframes combat-crit-ribbon{0%,6%{opacity:0;transform:translate(-50%,8px) scaleX(.4)}16%{opacity:1;transform:translate(-50%,0) scaleX(1.06)}24%,100%{opacity:1;transform:translate(-50%,0) scaleX(1)}}
+/* Statuses (burns, curses, misses, interrupts) and callouts (combo, KHẮC HỆ, stuns, skill names)
+   sit on a soft dark plate so short words stay legible over busy art. */
+.combat-pop.is-status,.combat-pop.is-callout,.combat-pop.is-ultimate{--pop-fill:#fff1d2;--pop-edge:#1d120c;--pop-glow:var(--skill-color)}
+.combat-pop.is-status .combat-pop-body,.combat-pop.is-callout .combat-pop-body,.combat-pop.is-ultimate .combat-pop-body{padding:4px 15px 5px;background:linear-gradient(90deg,transparent,#0d1720d9 16%,#0d1720d9 84%,transparent);border-top:1px solid color-mix(in srgb,var(--pop-glow) 60%,transparent);border-bottom:1px solid color-mix(in srgb,var(--pop-glow) 60%,transparent)}
+.combat-pop.is-status strong,.combat-pop.is-callout strong{font:800 14px/1.05 Cambria,Georgia,serif;letter-spacing:.3px;text-shadow:0 1px 0 var(--pop-edge),0 -1px 0 var(--pop-edge),1px 0 0 var(--pop-edge),-1px 0 0 var(--pop-edge),0 2px 3px #000c,0 0 9px var(--pop-glow)}
+.combat-pop.is-status{--pop-fill:#ffd9b0;--pop-glow:#ff7a45}
+.combat-pop.is-ultimate strong{font:italic 800 18px/1.05 Cambria,Georgia,serif;color:#fff8de;text-shadow:0 1px 0 #362015,0 -1px 0 #362015,1px 0 0 #362015,-1px 0 0 #362015,0 2px 3px #000c,0 0 12px var(--pop-glow),0 0 22px var(--pop-glow)}
+.combat-pop.tone-good{--pop-fill:#c4ffcf;--pop-glow:#4fe38a}
+.combat-pop.tone-ward{--pop-fill:#dcf1ff;--pop-glow:#62c3ff}
+.combat-pop.tone-energy{--pop-fill:#f0dcff;--pop-glow:#b46bff}
+.combat-pop.tone-control{--pop-fill:#d9fbff;--pop-glow:#5fe2ff}
+.combat-pop.tone-advantage{--pop-fill:#ffe9a6;--pop-glow:#ffb43c}
+@media(max-width:520px){.combat-pop strong{font-size:23px}.combat-pop.is-crit strong{font-size:32px}.combat-pop .crit-burst{width:128px}.combat-pop .crit-ribbon{width:96px}.combat-pop.is-ultimate strong{font-size:16px}.combat-pop.is-status strong,.combat-pop.is-callout strong{font-size:13px}}

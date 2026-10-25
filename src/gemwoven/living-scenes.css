@@ -32,6 +32,16 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-reveal>footer>p{font:11px system-ui;color:#c5d6ec;margin:10px 0 0;text-shadow:0 1px 4px #040d24}
 .celestial-open-all{width:200px;max-width:75%;padding:13px 20px;border:1px solid #f5d897;border-radius:7px;background:linear-gradient(#917346,#3b2b1d);box-shadow:0 0 24px #d5b96630,inset 0 0 0 3px #352515;color:#fff1c8;font:700 18px Cambria,serif;cursor:pointer}
 .celestial-open-all:disabled{opacity:.35;cursor:default}
+.celestial-reveal[data-phase="complete"] .celestial-open-all{display:none}
+/* Summon again: same painted buttons; each shows its cost. */
+.celestial-again{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.celestial-again[hidden]{display:none}
+.celestial-again .celestial-again-btn{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:136px;padding:7px 16px;line-height:1.1}
+.celestial-again-btn small{display:flex;align-items:center;gap:4px;font-size:13px}
+.celestial-again-btn .again-cost{width:20px;height:20px;object-fit:contain}
+.celestial-again-btn:disabled{opacity:.45;filter:grayscale(.6);cursor:default}
+/* TEMPORARY summon test mode badge (progression-ui.js, ?summonTest=1 on localhost/LAN). */
+.summon-test-badge{position:fixed;left:8px;bottom:8px;z-index:50;padding:3px 9px;border-radius:10px;background:#8a1f1fd9;color:#fff;font:600 11px/1.4 system-ui;pointer-events:none}
 .celestial-skip{position:absolute;right:16px;bottom:3.5%;z-index:8;padding:6px 12px;border:1px solid #d1ddff55;border-radius:16px;background:#0b1630aa;color:#dbe6ff;font:13px Cambria,serif;cursor:pointer}
 .celestial-reveal:not([data-phase="falling"]) .celestial-skip{display:none}
 
@@ -103,6 +113,8 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 
 /* One-shot effects. */
 .celestial-fx{position:absolute;inset:0;z-index:7;pointer-events:none;overflow:hidden}
+/* The far side of the whirlwind passes behind the board. */
+.celestial-fx.back{z-index:3}
 .sm-at{position:absolute;width:0;height:0}
 .sm-at>img,.sm-at>i{position:absolute;left:0;top:0;max-width:none}
 .sm-splash{width:var(--s);aspect-ratio:1;translate:-50% -78%;animation:sm-frames .6s steps(8,jump-none) 1 forwards,sm-fade 1.2s ease-in forwards}
@@ -129,7 +141,7 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 
 @keyframes sm-pulse{from{scale:.82;rotate:-8deg}to{scale:1.14;rotate:8deg}}
 @keyframes sm-prism{from{filter:hue-rotate(0deg) saturate(1.5) brightness(1.1)}to{filter:hue-rotate(360deg) saturate(1.5) brightness(1.1)}}
-@keyframes sm-trailfade{from{opacity:.95}to{opacity:0;transform:translateY(10px)}}
+@keyframes sm-trailfade{from{opacity:var(--o,.95)}to{opacity:0;transform:translateY(10px)}}
 @keyframes sm-frames{from{background-position-x:0%}to{background-position-x:100%}}
 @keyframes sm-twinkle{0%{opacity:1;background-position-x:0%;animation-timing-function:steps(7,jump-end)}26%{opacity:1;background-position-x:100%}27%,100%{opacity:0;background-position-x:100%}}
 @keyframes sm-lake{from{transform:scale(1.01)}to{transform:scale(1.06) translate(-1%,-.7%)}}

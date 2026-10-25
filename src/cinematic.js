@@ -5,17 +5,20 @@ function combatLootReceive(side,type){
   const id=side+':'+type;if(receivingLoot.has(id))return receivingLoot.get(id);
   const node=document.createElement('span'),color=boardV3Color({type});node.className='loot-reception loot-'+itemNames[type];node.dataset.lootType=type;
   node.style.setProperty('--loot-color',color);
-  node.innerHTML=`<i class="loot-seal"></i><img class="loot-token" src="${itemImage(type)}" alt="">`+Array.from({length:8},(_,i)=>`<b style="--angle:${i*45}deg;--distance:${30+i%3*9}px"></b>`).join('');
+  // Only the effect reaches the actor (seal + motes in the item's colour): the item icon itself
+  // stays on the board, where its tile bursts.
+  node.innerHTML=`<i class="loot-seal"></i>`+Array.from({length:8},(_,i)=>`<b style="--angle:${i*45}deg;--distance:${30+i%3*9}px"></b>`).join('');
   actor(side).append(node);
-  const jobs=[animate(node.querySelector('.loot-token'),[{opacity:0,transform:'translate(-50%,65px) scale(.55)'},{opacity:1,transform:'translate(-50%,10px) scale(1.1)',offset:.35},{opacity:.8,transform:'translate(-50%,-8px) scale(.75)',offset:.65},{opacity:0,transform:'translate(-50%,-20px) scale(.15)'}],{duration:580,easing:'ease-out'})];
+  const jobs=[];
   jobs.push(animate(node.querySelector('.loot-seal'),[{opacity:0,transform:'scale(.25) rotate(-30deg)'},{opacity:.85,transform:'scale(1) rotate(0deg)',offset:.35},{opacity:0,transform:'scale(1.4) rotate(25deg)'}],{duration:680}));
   for(const [i,mote]of [...node.querySelectorAll('b')].entries())jobs.push(animate(mote,[{opacity:0,transform:`rotate(${i*45}deg) translateY(12px) scale(.3)`},{opacity:1,transform:`rotate(${i*45+25}deg) translateY(38px) scale(1)`,offset:.35},{opacity:0,transform:`rotate(${i*45+65}deg) translateY(58px) scale(.2)`}],{duration:640,easing:'ease-out'}));
   const job=Promise.all(jobs).finally(()=>{node.remove();receivingLoot.delete(id);});receivingLoot.set(id,job);return job;
 }
 function hitAccents(side,result,critical,pending){
   const target=side==='hero'?'enemy':'hero',attacker=side==='hero'?state.key:state.enemyKey,defender=side==='hero'?state.enemyKey:state.key;
-  // Callouts go to the far side of the target, away from the attacker's lunge.
-  if(critical)popActorSkill(target,'CHÍ MẠNG!',true,pending,{away:true});
+  // A critical hit that lands shows on its own number (crit burst + 'CHÍ MẠNG' ribbon, see
+  // combatPopup); a fully blocked or stored one still gets the callout.
+  if(critical&&!result.amount)popActorSkill(target,'CHÍ MẠNG!',true,pending,{away:true});
   else if(mult(attacker,defender)>1)popActorSkill(target,'KHẮC HỆ ×1,5',false,pending,{away:true});
 }
 function boardItemRecoil(center,strength=2){
