@@ -1,11 +1,10 @@
 """Lumi's four- and six-star ultimate sounds (src/forms-lumi.js), made the way Yuki's approved set is made.
 
-Every star bolt is a real recording of lightning striking the ground at close range: one sharp, dry close crack per
-bolt (cognito perceptu #721072), and the last bolt is a bigger close crack-crash (TRP #717907) whose own short
-reverberant decay ends the ultimate. No rolling thunder rumble anywhere (player: "Tiếng sấm rền thì bỏ").
+The star bolts are not made here: they play form 1's own storm clips exactly as form 1 does (lightning-thunder-rumble,
+-open, -crack, -tail; see lumiFormThunder in src/forms-lumi.js), as the player asked.
 Every other cue is the literal sound of its motion: a mark tree as the stars form (form 2) and stream along the
 galaxy (form 3), a tingsha ring as the pentagram locks, a real slinky-laser foley as the orbit rings spin off the
-spear, a stick whoosh as a star is thrown.
+spear, a stick whoosh as a star is thrown (its hit is form 1's own lightning-impact).
 ONE clean real recording per clip (checked: no clipping, low noise), minimally processed: an excerpt, a gentle
 high-pass, gain and edge fades, so each keeps its natural attack and decay. No layering, pitch or time change,
 synthesis, saturation or limiting.
@@ -60,11 +59,6 @@ def clip(name, ref, start, end, beat, highpass=80, fade_in=.006, fade_out=.25, t
 OUT.mkdir(parents=True, exist_ok=True)
 for old in OUT.glob('*.wav'):
     old.unlink()
-# The bolts: real close lightning strikes on the ground, crack and short reverberant snap, no rumble.
-clip('crack', 721072, .78, 1.23, 'every star bolt (and the four-star basic hit): one sharp, dry close lightning crack with its short snap, synced to its strike',
-     highpass=60, fade_in=.004, fade_out=.18, target_rms=1)
-clip('strike', 717907, .55, 1.75, 'the last bolt (damage finale): a big close crack-crash whose own reverberant decay ends the ultimate (1.2 s, no roll)',
-     highpass=40, fade_in=.004, fade_out=.45, target_rms=1)
 # Four-star Tinh Lôi Ngũ Phạt
 clip('stars', 796546, .0, 1.7, 'four-star: the five stars leave the orb and form in the sky, mark-tree run with its natural decay (0.46-2.2 s)',
      highpass=200, fade_out=.5)

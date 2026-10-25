@@ -349,25 +349,24 @@ Sources in sources/freesound/<id>-<title>/ (source.json), all CC0 1.0, plus the 
   #222521 "Cracking Earthquake (cracking soil, cracking stone)" by uagadugu, https://freesound.org/people/uagadugu/sounds/222521/ (CC0, reused)
   "Shield Bash Impact" by Hybrid_V, https://freesound.org/people/Hybrid_V/sounds/319590/ (CC BY 4.0, reused from sources/mika-nori)
 
-Mika four- and six-star ultimates (2026-10-25, round 6): one clean real recording per cue, each the literal
+Mika four- and six-star ultimates (2026-10-25, round 7): one clean real recording per cue, each the literal
 sound of its motion, minimally edited (excerpt with its natural attack and decay, gentle high-pass, gain with
-peak <= 0.82, short fades; no layering, pitch or time change, limiting or synthesis). The damage hit is the
-loudest clip and a long natural tail rings out after it. Clips: hero-forms/fire/*.wav, manifest
-hero-forms/fire-manifest.json. Build: python scripts/prepare_mika_form_sounds.py.
+peak <= 0.82, short fades; no layering, pitch or time change, limiting or synthesis). Clips:
+hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json. Build: python scripts/prepare_mika_form_sounds.py.
   Form 3 is built on Mika's own form-1 recordings: "fire-whoosh.wav" by hnhnh,
   https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and, in full, the 3.8 s
   finale) and Taira Komori's katana recordings (TK'S FREE SOUND FX, see the katana terms above:
   extracting_a_sword1 = the glaive drawn, cutting_with_a_katana1 = the crescent cut).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
-  #479302 "R30-15-Gas Torch Lights and Burns.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/479302/ (form 2 sword igniting)
-  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 fox-fire blade roaring)
-  #475135 "FX - Swoosh - Low Pitch" by bolkmar, https://freesound.org/people/bolkmar/sounds/475135/ (form 2 overhead cleave)
-  #843249 "Explosion 3 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843249/ (form 2 impact; edit of a CC0 recording by Ñado)
-  #674902 "S30-36 Napalm bomb explosion.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/674902/ (form 2 flames along the floor and the ending)
+  #483316 "R09-74-Fire Torch.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483316/ (form 2 sword igniting, blade flaring up)
+  #507470 "Several low fast swooshes.aiff" by Danjocross, https://freesound.org/people/Danjocross/sounds/507470/ (form 2 overhead cleave)
+  #843247 "Explosion 1 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843247/ (form 2 impact; edit of a CC0 recording by Ñado)
+  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 cut burning on the floor)
   #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring)
   #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
   #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst, the damage hit)
-  #843248 "Explosion 2 (Burning Car rec by Ñado)" by qubodup, https://freesound.org/people/qubodup/sounds/843248/ (form 3 each spirit wave exploding; edit of a CC0 recording by Ñado)
+  #343451 "Boom 1" and #343452 "Boom 2" by D.S.G., https://freesound.org/people/D.S.G./sounds/343451/ and /343452/ (form 3 first and second spirit-wave booms)
+  #758072 "Cannon boom" by Quassorr, https://freesound.org/people/Quassorr/sounds/758072/ (form 3 third spirit-wave boom)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length
@@ -538,3 +537,8 @@ layering, pitch/time change or limiting). The form-2 shatter of round 5 (#524999
   vines bursting    #862083 "260710- Breaking cucumber - snap and crack 1" by Valerie-Vivegnis, https://freesound.org/people/Valerie-Vivegnis/sounds/862083/
   jade clink        #634154 "Large Ceramic Plate Hit" by Erbsland-Music, https://freesound.org/people/Erbsland-Music/sounds/634154/
   jade shatter      #675897 "S10-21 Pottery fall and breaks; several takes.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/675897/
+
+Lumi four- and six-star kit, round 7 (2026-10-25): at the player's request the star bolts of forms 2-3 play form 1's own
+storm exactly as form 1 does (lumi-thunder-manifest.json: the rumble cut on the first bolt, thunder-open, -crack per
+middle bolt, -tail on the last, same volumes and pans). The close-strike clips of round 6 (#721072, #717907) are no
+longer used and were removed. Stars, seal, laser and stream cues are unchanged.

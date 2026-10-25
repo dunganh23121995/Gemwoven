@@ -94,7 +94,7 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
       lumiFx(burst,to,Math.min(190,Math.max(110,body.height*1.15)));
       const result=damage('hero',raw/hits,damageLedger);amount+=result.amount;blocked+=result.blocked;stored+=result.stored||0;
       combatVoice('enemy','hurt');hitAccents('hero',result,critical,pending);
-      combatV3Action('enemy','hurt',critical?560:410);lumiSound(form===3?'ring':'crack',{volume:form===3?(critical?.45:.38):(critical?.48:.4),pan:.25},true);
+      combatV3Action('enemy','hurt',critical?560:410);if(form===3)lumiSound('ring',{volume:critical?.45:.38,pan:.25},true);else combatV3HitSound('lightning',critical);// form 1's own hit
       combatV3Number('enemy',result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
       lumiHitCount(i,hits,pending);combatV3Camera(1,critical,false,pending);lumiRecoil(target,oldTarget,critical,pending);
       await wait(170);setSpriteFrame('hero','attack',5);await wait(i<hits-1?90:200);
@@ -113,10 +113,7 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
 function lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending){
   const result=damage('hero',raw/count,ledger),last=i===count-1;
   combatVoice('enemy','hurt');
-  // Each bolt is a real close lightning strike hitting the ground (one crack per bolt, synced); the last is a
-  // bigger close crack-crash whose own short reverberant decay ends the ultimate. No rolling thunder.
-  // Volumes keep the mix peak <= .8.
-  lumiSound(last?'strike':'crack',{volume:last?LUMI_STRIKE_VOLUME[form]:LUMI_CRACK_VOLUME[form],pan:.22+(i%2?.08:-.08)},i===0||last);
+  lumiFormThunder(i,count);
   combatV3Camera(1,true,false,pending);
   combatV3Number('enemy',result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.amount?'damage':'armor',i,pending);hitAccents('hero',result,false,pending);
   setSpriteAction('enemy','hurt',230);lumiRecoil(target,oldTarget,last,pending);
@@ -203,8 +200,24 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   }
 }
 // Her kit's own sounds (assets/audio/hero-forms/lightning, scripts/prepare_lumi_form_sounds.py).
-const LUMI_SOUNDS={2:['stars','seal','crack','strike','throw'],3:['laser','stream','crack','strike','shot','ring']};
-const LUMI_CRACK_VOLUME={2:.65,3:.55},LUMI_STRIKE_VOLUME={2:.95,3:1};
+const LUMI_THUNDER=['thunder-open','thunder-crack','thunder-tail'];// form 1's per-bolt strikes (decoded only: no opening rumble)
+const LUMI_SOUNDS={2:['stars','seal','throw',...LUMI_THUNDER],3:['laser','stream','shot','ring',...LUMI_THUNDER]};
+/* The bolts sound exactly like form 1's storm (cast-redesign.js lumiThunderStrike, its own clips and volumes): the
+ * first bolt opens with 'thunder-open', the middle bolts 'thunder-crack', the last 'thunder-tail'. Forms 2-3 do NOT
+ * play form 1's opening rumble (player's request): their own stars/seal/laser/stream lead in instead.
+ * Five bolts (four-star) are form 1's exact calls. Nine bolts (six-star) keep the pattern; as the 4.8 s clips pile up, the oldest middle crack is stopped to make room, so the
+ * game's 8-sound cap never cuts the opening strike or the tail. */
+function lumiFormThunder(index,count){
+  if(count===5)return lumiThunderStrike(index);
+  if(reduced&&index>0&&index<count-1)return;
+  const last=index===count-1,kind=index===0?'open':last?'tail':'crack';
+  if(index===0)for(const entry of castSoundSources)if(entry.id==='lightning-thunder-rumble'){try{entry.source.stop();}catch{}castSoundSources.delete(entry);}
+  while(castSoundSources.size>=8){
+    const oldest=[...castSoundSources].find(entry=>entry.id==='lightning-thunder-crack');if(!oldest)break;
+    try{oldest.source.stop();}catch{}castSoundSources.delete(oldest);
+  }
+  return playCastSound('lightning','thunder-'+kind,{volume:index===0?.62:last?.68:.30,pan:.22+(index%2?.08:-.08)});
+}
 function warmLumiSounds(form){
   const context=combatV3AudioContext();if(!context)return;
   for(const name of LUMI_SOUNDS[form]||[])if(ART.castSounds['lightning-'+name])decodeCastSound(context,'lightning-'+name).catch(()=>{});
