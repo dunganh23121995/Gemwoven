@@ -200,7 +200,7 @@ async function mikaLongCleave(raw,onRelease){
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
     await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
     // Uỳnh: one short heavy dip of the blade.
-    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaSound('f2-dip',.48,.05);mikaShake(pending,.4);
+    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaShake(pending,.4);
     // The backswing and the chop: the blade roars past like a starship flying by (peaking on the chop).
     await at(BACK);root.dataset.ragePhase='backswing';mikaSound('f2-flyby',.7,-.1);
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');
@@ -210,7 +210,7 @@ async function mikaLongCleave(raw,onRelease){
     await at(CHOP+110);if(arc)mikaFxFrame(arc.node,'arc2',1);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';setSpriteFrame('hero','skill',3);
     // The hit: one deep round "uỳnh" (the loudest moment) that rings out with its own long rumble.
-    result=mikaContact(raw,onRelease,pending);mikaSound('f2-boom',.62,.3);
+    result=mikaContact(raw,onRelease,pending);mikaSound('f2-dip',.48,.3);mikaSound('f2-boom',.62,.3);
     // The cleave scorches the floor: a burning cut along the ground through the foe's feet, as the
     // follow-through drives the blade down (the cut's line is drawn at 53% of its cell's height).
     const cut=Math.min($('scene').clientWidth*.9,Math.max(foe.width*2.4,150));
