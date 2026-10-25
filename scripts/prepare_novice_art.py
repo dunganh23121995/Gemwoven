@@ -72,7 +72,7 @@ def main():
             shutil.copyfile(source / 'pipeline-meta.json', folder / 'pipeline-meta.json')
         write_json(folder / 'runtime-meta.json', meta)
         actions[action] = meta
-    write_json(BASE / 'meta.json', dict(hero='novice', name='Tân', cellSize=256, actions=actions))
+    write_json(BASE / 'meta.json', dict(hero='novice', name='Hiro', cellSize=256, actions=actions))
     contact.save(BASE / 'contact-sheet.jpg', quality=95)
 
     master = despill_boundary(Image.open(BASE / 'references/master.png').convert('RGBA'))

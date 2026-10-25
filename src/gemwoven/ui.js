@@ -9,7 +9,7 @@
   const $=id=>document.getElementById(id),scene=$('scene'),stage=$('stage'),dialog=$('preview-dialog');
   const iconFor={home:'nav-home',inventory:'nav-bag',skills:'nav-skills',arena:'nav-arena',summon:'nav-summon',shop:'icon-shop',forge:'icon-forge',upgrade:'nav-heroes',tavern:'icon-tavern'};
   if(game)for(const [key,entry]of Object.entries(game.extra))iconFor[key]=entry[1];
-  const heroNames={novice:'Tân',fire:'Mika',ice:'Yuki',earth:'Nori',lightning:'Lumi',shadow:'Noct'};
+  const heroNames={novice:'Hiro',fire:'Mika',ice:'Yuki',earth:'Nori',lightning:'Lumi',shadow:'Noct'};
   const idleMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')||{matches:false};
   idleMotion.addEventListener?.('change',()=>{if(state.screen==='home')render();});
   document.addEventListener('visibilitychange',()=>document.body.classList.toggle('page-hidden',document.hidden));

@@ -1,6 +1,6 @@
 /* A fully evolved hero leaves a cleared stage with something of its own, as six-star Noct hauls
  * a harvested soul: Mika's fox-fire spirit gallops at her heels, Yuki's snow rabbit hops beside
- * her, flowers sprout in Nori's footsteps, a comet trail of stars streams behind Lumi, and Tân,
+ * her, flowers sprout in Nori's footsteps, a comet trail of stars streams behind Lumi, and Hiro,
  * a rookie on the road, kicks up dust as he runs. Art: assets/fx/depart (ART.departFx). */
 const DEPART_FX={
   fire:{name:'fox',kind:'companion',form:3},

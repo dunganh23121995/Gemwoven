@@ -1,4 +1,4 @@
-"""Reprocess ImageGen Tân run art and align its horizontal body root.
+"""Reprocess ImageGen Hiro run art and align its horizontal body root.
 
 Only chroma cleanup and translation are applied; no art is drawn or resized
 per frame. The shared idle profile controls one fixed output scale.

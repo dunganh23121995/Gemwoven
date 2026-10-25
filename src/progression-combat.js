@@ -246,7 +246,7 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
 
 if(progressionIsDuel()){
   // Both players use the novice with identical normalized stats and tile yields.
-  ART.enemies.fire=ART.heroes.novice;MONSTERS.fire={...MONSTERS.fire,name:'Người chơi 2 · Tân',skill:'Kiếm Nhiệt Huyết',attack:'Kiếm gỗ'};MONSTERS.novice=MONSTERS.fire;ELEMENTS.fire={...ELEMENTS.novice};
+  ART.enemies.fire=ART.heroes.novice;MONSTERS.fire={...MONSTERS.fire,name:'Người chơi 2 · Hiro',skill:'Kiếm Nhiệt Huyết',attack:'Kiếm gỗ'};MONSTERS.novice=MONSTERS.fire;ELEMENTS.fire={...ELEMENTS.novice};
   const aiMove=chooseEnemyMove;
   chooseEnemyMove=async function(){
     if(!progressionIsDuel())return aiMove();

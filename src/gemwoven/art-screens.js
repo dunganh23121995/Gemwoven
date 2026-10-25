@@ -48,7 +48,7 @@
     const p=G.engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;
     const descriptions={gold:'Vàng từ nhiệm vụ, vượt ải, boss và tích lũy offline.',gems:'Đá Ngọc chỉ nhận qua nạp tiền. Tính năng nạp sắp ra mắt.',tickets:'Vé nhận từ nhiệm vụ ngày và các mốc cấp tướng.',exp:'Sách kinh nghiệm dùng tăng cấp tướng.',seals:'Ấn tu luyện dùng tăng cấp tướng, tối đa 1.600 ấn mỗi ngày.',skillBooks:'Bí kíp dùng học và tăng cấp kỹ năng.',essence:'Tinh hoa dùng tăng sao, tiến hóa, kỹ năng Biến Dị/Chân Thân và bảo bối.',ore:'Quặng dùng rèn, cường hóa trang bị, tiến hóa tướng và bảo bối.',wood:'Gỗ dùng rèn trang bị.',cloth:'Vải dùng rèn trang bị.',divineOre:'Rèn trang bị Thần (50 mảnh, sau ải 300) và tiến hóa bảo bối.'};
     const rows=Object.entries(M.RESOURCES).map(([id,[name,asset]])=>{resourceFor[asset]=id;return [asset,name,fmt(owned(p,id)),['exp','skillBooks'].includes(id)?'book':['ore','wood','cloth','essence','divineOre','seals'].includes(id)?'material':id==='tickets'?'other':'item',descriptions[id]];});
-    for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Tân. Tân là tướng khởi đầu: không rơi mảnh và không có trong triệu hồi.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
+    for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro. Hiro là tướng khởi đầu: không rơi mảnh và không có trong triệu hồi.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
     refreshSkillCopy(p);
     for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'1','gear',M.RARITIES[gear.rarity].name+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')]);}
     for(const d of M.WORLD.EXPANSION.definitions){const c=M.counterProgress(p,d.chapter);if(c.shards)rows.push([d.counterKey,d.counter,c.shards+'/12','other',d.counterText+' Tự dùng đúng chủ đề; bậc '+c.rank+'/4.']);}
@@ -194,7 +194,7 @@
     if(gain)nodes.push(text('upgrade','gain-preview',gain,[70,1422,800,70],31,'gold',{className:'text-backing upgrade-gain'}));
     if(side)nodes.push(side);
     label(nodes,'exp-label','CẤP');find(nodes,'exp-crystal').asset='exp-book';
-    nodes.push(button('upgrade','choose-novice','Tân',[660,711,61,66],'do:hero',{hero:'novice'},{asset:'avatar-ring',icon:'portrait-novice',iconRect:[12,8,37,48],labelHidden:true,selected:hero==='novice'}));
+    nodes.push(button('upgrade','choose-novice','Hiro',[660,711,61,66],'do:hero',{hero:'novice'},{asset:'avatar-ring',icon:'portrait-novice',iconRect:[12,8,37,48],labelHidden:true,selected:hero==='novice'}));
     return nodes;
   }
   function shop(nodes,p,state){
@@ -209,7 +209,7 @@
   }
   function arena(nodes,p,state){
     const mode=state.arenaMode||'duel';
-    find(nodes,'fighter-fire').asset='hero-novice';find(nodes,'fighter-ice').asset='hero-novice';label(nodes,'fighter-fire','Người chơi 1 · Tân');label(nodes,'fighter-ice','Người chơi 2 · Tân');
+    find(nodes,'fighter-fire').asset='hero-novice';find(nodes,'fighter-ice').asset='hero-novice';label(nodes,'fighter-fire','Người chơi 1 · Hiro');label(nodes,'fighter-ice','Người chơi 2 · Hiro');
     action(nodes,'mode-solo','art:arena-mode',{mode:'duel'});action(nodes,'mode-team','art:arena-mode',{mode:'team'});find(nodes,'mode-solo').selected=mode==='duel';find(nodes,'mode-team').selected=mode==='team';
     action(nodes,'battle',mode==='duel'?'do:battle':'do:soon',mode==='duel'?{mode:'duel',index:1}:{feature:'Đội 3vs3'});label(nodes,'battle',mode==='duel'?'Chiến Đấu':'Coming Soon');
     // Two finger-sized secondary modes side by side under "Chiến Đấu".

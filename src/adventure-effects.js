@@ -57,7 +57,7 @@ async function departVictoriousHero(){
   if(state.key==='shadow')return departShadowHero();
   if(state.key==='lightning')return departLumiHero();
   const hero=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children];
-  // Tân has a complete run loop; the older heroes' sheets start with two
+  // Hiro has a complete run loop; the older heroes' sheets start with two
   // anticipation poses before their four repeating strides.
   const fullLoop=state.key==='novice',run=spriteDefinition('hero',state.key,'run').sheet;
   hero.dataset.departing='true';

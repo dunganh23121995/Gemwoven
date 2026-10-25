@@ -1,4 +1,4 @@
-/* Tân (novice, one form): his own ultimate, Kiếm Nhiệt Huyết. The eager rookie plants his feet in
+/* Hiro (novice, one form): his own ultimate, Kiếm Nhiệt Huyết. The eager rookie plants his feet in
  * a flare of golden fighting spirit, winds up, dashes in with a trail of warm afterimages, rises and
  * brings the wooden sword down in one big earnest overhead chop: a golden crescent sweeps across
  * the foe and a burst of spirit lands on its body. Art: the `skill` sheet beside his other actions

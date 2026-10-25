@@ -1,4 +1,4 @@
-/* Tân's Kiếm Nhiệt Huyết (forms-tan.js). */
+/* Hiro's Kiếm Nhiệt Huyết (forms-tan.js). */
 /* While he burns with fighting spirit his whole drawing carries a warm golden rim. */
 .scene .hero-actor[data-hero-element="novice"]>.sprite-body{transition:filter .3s ease-out}
 .scene .hero-actor.tan-spirit>.sprite-body{filter:drop-shadow(0 0 2px #ffe08a) drop-shadow(0 0 7px #ff9f3acc) brightness(1.06)}

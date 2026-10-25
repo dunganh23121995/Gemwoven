@@ -1297,7 +1297,7 @@ body.reduced-motion .lumi-idle-stars{display:none}
 .scene:has(#heroActor[data-lumi-sky]) :is(#enemyHeadHud,#heroHeadHud){opacity:.28!important;transition:opacity .2s}
 .lumi-warm{position:absolute;left:50%;top:50%;width:2px;height:2px;opacity:.01;pointer-events:none;background-size:100% 100%;background-repeat:no-repeat}
 
-/* Tân's Kiếm Nhiệt Huyết (forms-tan.js). */
+/* Hiro's Kiếm Nhiệt Huyết (forms-tan.js). */
 /* While he burns with fighting spirit his whole drawing carries a warm golden rim. */
 .scene .hero-actor[data-hero-element="novice"]>.sprite-body{transition:filter .3s ease-out}
 .scene .hero-actor.tan-spirit>.sprite-body{filter:drop-shadow(0 0 2px #ffe08a) drop-shadow(0 0 7px #ff9f3acc) brightness(1.06)}
@@ -1402,7 +1402,7 @@ const ELEMENTS = {
   novice:{label:'Thường',color:'#b6a081',light:'#f1e6ce',beats:null,icon:'sword'}
 };
 const HEROES = {
-  novice:{name:'Tân',title:'Lữ Khách Tập Sự',hp:145,skill:'Kiếm Nhiệt Huyết',desc:'Một nhát kiếm gỗ · 45 sát thương cơ bản',trait:'Tướng khởi đầu; kỹ năng và chỉ số ở mức cơ bản',color:'#b59b78',dark:'#735b43',hair:'#6e4935'},
+  novice:{name:'Hiro',title:'Lữ Khách Tập Sự',hp:145,skill:'Kiếm Nhiệt Huyết',desc:'Một nhát kiếm gỗ · 45 sát thương cơ bản',trait:'Tướng khởi đầu; kỹ năng và chỉ số ở mức cơ bản',color:'#b59b78',dark:'#735b43',hair:'#6e4935'},
   fire:{name:'Mika',title:'Viêm Kiếm Sĩ',hp:170,skill:'Viêm Long Trảm',desc:'Tụ lửa kéo dài kiếm · phóng kiếm khí phát nổ · 135 sát thương cơ bản',trait:'Kiếm gây thêm 60% sát thương',color:'#df9d82',dark:'#a66b64',hair:'#8f5c55'},
   earth:{name:'Nori',title:'Thiết Giáp Vệ',hp:320,skill:'Mộc Linh Hộ Thể',desc:'Choáng 2 lượt · tích sát thương rồi nổ ×3 · hồi 40 HP/lượt ×3',trait:'Sát thương đánh thường giảm 25% (chỉ còn 75% sát thương gốc) · Đại khiên tích lực',color:'#a1b28b',dark:'#708567',hair:'#777363'},
   ice:{name:'Yuki',title:'Băng Tâm Vệ',hp:200,skill:'Thiên Băng Giáng',desc:'+25 giáp · triệu hồi băng gây 60 sát thương · choáng 1 lượt',trait:'Khiên +8 giáp · giảm 20% sát thương',color:'#9cc6d0',dark:'#7399b2',hair:'#adbbd9'},
@@ -2241,7 +2241,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   const WORLD=typeof module==='object'&&module.exports?require('./world.js'):globalThis.GemwovenWorld;
   const VERSION=1,KEY='gemwoven.progression.v1',MAX_LEVEL=500,DAILY_SEAL_CAP=1600,CLOCK_TOLERANCE=10*60000;
   const HEROES={
-    novice:{name:'Tân',title:'Lữ Khách Tập Sự',element:'Thường',hp:145,attack:.85,rarity:'common',skills:['Kiếm Nhiệt Huyết','Giữ Thế','Bước Tiến','Ý Chí Lữ Khách']},
+    novice:{name:'Hiro',title:'Lữ Khách Tập Sự',element:'Thường',hp:145,attack:.85,rarity:'common',skills:['Kiếm Nhiệt Huyết','Giữ Thế','Bước Tiến','Ý Chí Lữ Khách']},
     fire:{name:'Mika',title:'Viêm Kiếm Sĩ',element:'Hỏa',hp:170,attack:1,rarity:'legendary',skills:['Viêm Long Trảm','Liệt Hỏa Kiếm Tâm','Hỏa Luân','Cửu Vĩ Viêm Hồn']},
     ice:{name:'Yuki',title:'Băng Tâm Vệ',element:'Băng',hp:200,attack:1,rarity:'legendary',skills:['Thiên Băng Giáng','Băng Tâm Hộ Thuẫn','Tuyết Liên Kết Giới','Nguyệt Thố Băng Linh']},
     earth:{name:'Nori',title:'Thiết Giáp Vệ',element:'Mộc',hp:320,attack:1,rarity:'legendary',skills:['Mộc Linh Hộ Thể','Đại Khiên Tích Lực','Căn Mạch Trói Buộc','Cổ Thụ Thần Vệ']},
@@ -2280,7 +2280,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   function relicLevelCost(r){check(r.level<100,'Bảo bối đã đạt cấp 100.');return {gold:Math.ceil(1800*r.level**1.45),essence:Math.ceil(r.level/5),ore:Math.ceil(r.level/3)};}
   function relicEvolveCost(r){check(r.evolution<5,'Bảo bối đã đạt dạng cuối.');return {gold:50000*r.evolution**2,essence:40*r.evolution,divineOre:5*r.evolution};}
   const RESOURCES={gold:['Đồng vàng','coins'],gems:['Đá Ngọc','mana'],tickets:['Vé triệu hồi','ticket'],exp:['Sách kinh nghiệm','exp-book'],seals:['Ấn tu luyện','crest'],skillBooks:['Bí kíp kỹ năng','skill-book'],essence:['Tinh hoa tiến hóa','fire-essence'],ore:['Quặng sắt','ore'],wood:['Gỗ mềm','wood'],cloth:['Vải thô','cloth'],divineOre:['Mảnh thần thạch','lightning-essence']};
-  // Summons give the banner hero whole or as fragments, gear and materials. Tân is the starter
+  // Summons give the banner hero whole or as fragments, gear and materials. Hiro is the starter
   // hero every account begins with and is not in the pool (his old share went to materials).
   const SUMMON_TABLE=[['hero',1500],['fragments',13500],['commonGear',285000],['rareGear',20000],['epicGear',1500],['legendaryGear',200],['divineGear',10],['material',678290]];
   // One released featured hero per banner. Other unreleased heroes stay out of
@@ -2444,7 +2444,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     if(normalized){hp=data.hp*2;attack=data.attack*1.8;defense=0;}
     return {hp:Math.round(hp),attack:Number(attack.toFixed(4)),defense:Math.min(.5,defense),active:kit.activePower,mutation:kit.mutation,awakened:kit.awakened,skills:normalized?kit.ranks.slice():h.skills.slice(),evolution:h.evolution,form:heroForm(key,h),stars:h.stars,affixes:normalized?[]:affixes,power:Math.round(hp*attack*(1+defense)),kit};
   }
-  // Release state: Tân is always available and only the current banner hero drops.
+  // Release state: Hiro is always available and only the current banner hero drops.
   function heroAvailable(key){return key==='novice'||key===SUMMON_BANNER.hero;}
   function levelCostRange(level,count=1){check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const total={gold:0,exp:0,seals:0};let steps=0;for(let l=level;l<MAX_LEVEL&&steps<count;l++,steps++)for(const [id,n]of Object.entries(levelCost(l)))total[id]+=n;return steps?{cost:total,levels:steps}:null;}
   const CRAFT_RARITIES=['uncommon','rare','epic','legendary','divine'];
@@ -4574,7 +4574,7 @@ async function departVictoriousHero(){
   if(state.key==='shadow')return departShadowHero();
   if(state.key==='lightning')return departLumiHero();
   const hero=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children];
-  // Tân has a complete run loop; the older heroes' sheets start with two
+  // Hiro has a complete run loop; the older heroes' sheets start with two
   // anticipation poses before their four repeating strides.
   const fullLoop=state.key==='novice',run=spriteDefinition('hero',state.key,'run').sheet;
   hero.dataset.departing='true';
@@ -5267,7 +5267,7 @@ rageSkyfall=function(side,key,pending){
 
 /* A fully evolved hero leaves a cleared stage with something of its own, as six-star Noct hauls
  * a harvested soul: Mika's fox-fire spirit gallops at her heels, Yuki's snow rabbit hops beside
- * her, flowers sprout in Nori's footsteps, a comet trail of stars streams behind Lumi, and Tân,
+ * her, flowers sprout in Nori's footsteps, a comet trail of stars streams behind Lumi, and Hiro,
  * a rookie on the road, kicks up dust as he runs. Art: assets/fx/depart (ART.departFx). */
 const DEPART_FX={
   fire:{name:'fox',kind:'companion',form:3},
@@ -5538,7 +5538,7 @@ combatV3Impact=function(target,key,direction,strong,pending){
     const petals=Array.from({length:6},(_,i)=>`<path transform="rotate(${i*60} 110 110)" d="m110 110-24-48 24-43 24 43Z" fill="var(--combat-main)" opacity=".65"/><path transform="rotate(${i*60} 110 110)" d="M110 110V27m0 43-17-17m17 17 17-17" stroke="var(--combat-light)" stroke-width="2"/>`).join('');
     castFx(key,'snow-bloom',p,strong?170:100,combatV3Svg(petals),530,pending);
   }else if(key==='novice'){
-    // Tân has no element: a plain steel spark where the blade lands.
+    // Hiro has no element: a plain steel spark where the blade lands.
     castFx(key,'steel-spark',p,strong?130:90,combatV3Svg('<path d="m110 22 13 68 70 20-70 20-13 68-13-68-70-20 70-20Z" fill="#fff4d6"/><path d="m110 60 6 44 40 6-40 6-6 44-6-44-40-6 40-6Z" fill="#ffd27a"/>'),320,pending);
   }else if(target==='enemy'){
     const node=castFx(key,'electric-impact',p,strong?175:115,'',430,pending);
@@ -6627,7 +6627,7 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
 
 if(progressionIsDuel()){
   // Both players use the novice with identical normalized stats and tile yields.
-  ART.enemies.fire=ART.heroes.novice;MONSTERS.fire={...MONSTERS.fire,name:'Người chơi 2 · Tân',skill:'Kiếm Nhiệt Huyết',attack:'Kiếm gỗ'};MONSTERS.novice=MONSTERS.fire;ELEMENTS.fire={...ELEMENTS.novice};
+  ART.enemies.fire=ART.heroes.novice;MONSTERS.fire={...MONSTERS.fire,name:'Người chơi 2 · Hiro',skill:'Kiếm Nhiệt Huyết',attack:'Kiếm gỗ'};MONSTERS.novice=MONSTERS.fire;ELEMENTS.fire={...ELEMENTS.novice};
   const aiMove=chooseEnemyMove;
   chooseEnemyMove=async function(){
     if(!progressionIsDuel())return aiMove();
@@ -8098,7 +8098,7 @@ function warmLumiArt(){
 const lumiFormRender=renderActors;
 renderActors=function(){lumiFormRender();mountLumiIdleStars();if(state.key==='lightning'){warmLumiArt();if(sound)warmLumiSounds(combatHeroForm('lightning'));}};
 
-/* Tân (novice, one form): his own ultimate, Kiếm Nhiệt Huyết. The eager rookie plants his feet in
+/* Hiro (novice, one form): his own ultimate, Kiếm Nhiệt Huyết. The eager rookie plants his feet in
  * a flare of golden fighting spirit, winds up, dashes in with a trail of warm afterimages, rises and
  * brings the wooden sword down in one big earnest overhead chop: a golden crescent sweeps across
  * the foe and a burst of spirit lands on its body. Art: the `skill` sheet beside his other actions

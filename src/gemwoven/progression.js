@@ -7,7 +7,7 @@
   const WORLD=typeof module==='object'&&module.exports?require('./world.js'):globalThis.GemwovenWorld;
   const VERSION=1,KEY='gemwoven.progression.v1',MAX_LEVEL=500,DAILY_SEAL_CAP=1600,CLOCK_TOLERANCE=10*60000;
   const HEROES={
-    novice:{name:'Tân',title:'Lữ Khách Tập Sự',element:'Thường',hp:145,attack:.85,rarity:'common',skills:['Kiếm Nhiệt Huyết','Giữ Thế','Bước Tiến','Ý Chí Lữ Khách']},
+    novice:{name:'Hiro',title:'Lữ Khách Tập Sự',element:'Thường',hp:145,attack:.85,rarity:'common',skills:['Kiếm Nhiệt Huyết','Giữ Thế','Bước Tiến','Ý Chí Lữ Khách']},
     fire:{name:'Mika',title:'Viêm Kiếm Sĩ',element:'Hỏa',hp:170,attack:1,rarity:'legendary',skills:['Viêm Long Trảm','Liệt Hỏa Kiếm Tâm','Hỏa Luân','Cửu Vĩ Viêm Hồn']},
     ice:{name:'Yuki',title:'Băng Tâm Vệ',element:'Băng',hp:200,attack:1,rarity:'legendary',skills:['Thiên Băng Giáng','Băng Tâm Hộ Thuẫn','Tuyết Liên Kết Giới','Nguyệt Thố Băng Linh']},
     earth:{name:'Nori',title:'Thiết Giáp Vệ',element:'Mộc',hp:320,attack:1,rarity:'legendary',skills:['Mộc Linh Hộ Thể','Đại Khiên Tích Lực','Căn Mạch Trói Buộc','Cổ Thụ Thần Vệ']},
@@ -46,7 +46,7 @@
   function relicLevelCost(r){check(r.level<100,'Bảo bối đã đạt cấp 100.');return {gold:Math.ceil(1800*r.level**1.45),essence:Math.ceil(r.level/5),ore:Math.ceil(r.level/3)};}
   function relicEvolveCost(r){check(r.evolution<5,'Bảo bối đã đạt dạng cuối.');return {gold:50000*r.evolution**2,essence:40*r.evolution,divineOre:5*r.evolution};}
   const RESOURCES={gold:['Đồng vàng','coins'],gems:['Đá Ngọc','mana'],tickets:['Vé triệu hồi','ticket'],exp:['Sách kinh nghiệm','exp-book'],seals:['Ấn tu luyện','crest'],skillBooks:['Bí kíp kỹ năng','skill-book'],essence:['Tinh hoa tiến hóa','fire-essence'],ore:['Quặng sắt','ore'],wood:['Gỗ mềm','wood'],cloth:['Vải thô','cloth'],divineOre:['Mảnh thần thạch','lightning-essence']};
-  // Summons give the banner hero whole or as fragments, gear and materials. Tân is the starter
+  // Summons give the banner hero whole or as fragments, gear and materials. Hiro is the starter
   // hero every account begins with and is not in the pool (his old share went to materials).
   const SUMMON_TABLE=[['hero',1500],['fragments',13500],['commonGear',285000],['rareGear',20000],['epicGear',1500],['legendaryGear',200],['divineGear',10],['material',678290]];
   // One released featured hero per banner. Other unreleased heroes stay out of
@@ -210,7 +210,7 @@
     if(normalized){hp=data.hp*2;attack=data.attack*1.8;defense=0;}
     return {hp:Math.round(hp),attack:Number(attack.toFixed(4)),defense:Math.min(.5,defense),active:kit.activePower,mutation:kit.mutation,awakened:kit.awakened,skills:normalized?kit.ranks.slice():h.skills.slice(),evolution:h.evolution,form:heroForm(key,h),stars:h.stars,affixes:normalized?[]:affixes,power:Math.round(hp*attack*(1+defense)),kit};
   }
-  // Release state: Tân is always available and only the current banner hero drops.
+  // Release state: Hiro is always available and only the current banner hero drops.
   function heroAvailable(key){return key==='novice'||key===SUMMON_BANNER.hero;}
   function levelCostRange(level,count=1){check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const total={gold:0,exp:0,seals:0};let steps=0;for(let l=level;l<MAX_LEVEL&&steps<count;l++,steps++)for(const [id,n]of Object.entries(levelCost(l)))total[id]+=n;return steps?{cost:total,levels:steps}:null;}
   const CRAFT_RARITIES=['uncommon','rare','epic','legendary','divine'];

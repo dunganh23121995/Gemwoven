@@ -232,7 +232,7 @@ combatV3Impact=function(target,key,direction,strong,pending){
     const petals=Array.from({length:6},(_,i)=>`<path transform="rotate(${i*60} 110 110)" d="m110 110-24-48 24-43 24 43Z" fill="var(--combat-main)" opacity=".65"/><path transform="rotate(${i*60} 110 110)" d="M110 110V27m0 43-17-17m17 17 17-17" stroke="var(--combat-light)" stroke-width="2"/>`).join('');
     castFx(key,'snow-bloom',p,strong?170:100,combatV3Svg(petals),530,pending);
   }else if(key==='novice'){
-    // Tân has no element: a plain steel spark where the blade lands.
+    // Hiro has no element: a plain steel spark where the blade lands.
     castFx(key,'steel-spark',p,strong?130:90,combatV3Svg('<path d="m110 22 13 68 70 20-70 20-13 68-13-68-70-20 70-20Z" fill="#fff4d6"/><path d="m110 60 6 44 40 6-40 6-6 44-6-44-40-6 40-6Z" fill="#ffd27a"/>'),320,pending);
   }else if(target==='enemy'){
     const node=castFx(key,'electric-impact',p,strong?175:115,'',430,pending);
