@@ -201,8 +201,7 @@ async function yukiSnowLotusUltimate(){
     [840,'f3-lotus',.28,.3],     // the lotus blooms, stands open, closes (creaking bed, 0.84-2.24 s)
     [1360,'f3-halberd',.5,.1],   // halberd swing, swish peaks on the cut (1.50 s)
     [1440,'crack',.4,.3],        // the crescent cuts the foe (1.50 s)
-    [2020,'crack',.4,.3],        // the bud cracks (2.08 s)
-    [2200,'boom',.4,.15]]);     // form 1's deep boom, full 3.1 s sustain under the burst (2.24 s, 2.8 s of falling glass)      // weight under the burst; the burst itself plays on the hit (2.24 s)
+    [2020,'crack',.4,.3]]);      // the bud cracks (2.08 s); the burst itself plays on the hit (2.24 s) with no boom ringing under it
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);
