@@ -189,9 +189,9 @@ async function noriFormUltimate(form){
     await at(1390);root.dataset.ragePhase='hammer';setSpriteFrame('hero','attack',1);
     await at(1500);setSpriteFrame('hero','attack',2);playCastSound('earth','swing',{volume:.5,pan:.1});
     await at(1620);root.dataset.ragePhase='slam';setSpriteFrame('hero','attack',3);
-    // the slam with the deep boom ringing out under it; the roots splinter up and lock (cage frames 0-4), the tree
+    // the slam with the deep boom under it (faded within ~1 s: no long ring-out); the roots splinter up and lock (cage frames 0-4), the tree
     // creaks up (tree frames 0-4), the crown sheds its leaves (tree frame 5 on)
-    playCastSound('earth','slam',{volume:.9,pan:.15});playCastSound('earth','boom',{volume:.55,pan:.1});combatV3Camera(1,true,state.boss,pending);
+    playCastSound('earth','slam',{volume:.9,pan:.15});playCastSound('earth','boom',{volume:.8,pan:.1});combatV3Camera(1,true,state.boss,pending);
     noriCue(pending,'roots',70,.75);noriCue(pending,'tree',60,.5);noriCue(pending,'leaves',810,.5);
     const hammerX=cell.left-scene.left+travel+cell.width*(six?.84:.88),ground=cell.top-scene.top+cell.height*.93;
     const quake=noriStrip('quake',{x:hammerX,feet:ground,width:Math.min(110,cell.width*.75),className:'form-'+form});

@@ -5,7 +5,7 @@ Hybrid_V); earth-charge, earth-launch and earth-finish are synthesized textures 
 plays for the six-star bash as in form 1. Every other cue is the literal sound of its motion, one clean real
 recording each (Freesound CC0 HQ previews in sources/freesound/<id>-<slug>/ with source.json): leaves and wind
 swirling up, a heavy whoosh, a heavy body falling on the ground for the hammer, a deep stomp boom with its long
-natural decay under it (the loudest moment, ringing out ~4 s), splintering wood for vines and roots tearing the
+natural decay under it (the loudest moment; six stars: faded within ~1 s, no long ring-out), splintering wood for vines and roots tearing the
 soil, a ceramic shatter for the jade, a stressed wooden hull creaking for the growing tree, falling leaves, armoured
 footsteps for the charge. Processing: excerpt, gentle high-pass, gain to ~0.12 RMS with a peak ceiling (never
 pushed into distortion), short edge fades; natural attack and tail kept; no layering, pitch/time change,
@@ -69,7 +69,7 @@ for old in OUT.glob('*.wav'):
 clip('gather', '569786', 2.0, 4.0, 'chant: leaves and wind swirl up around him as the healing spiral rises and he lifts the hammer, 0-2.0 s', highpass=120, fade_in=.25, fade_out=.5)
 clip('swing', '427979', .22, .75, 'the hammer swings down; the whoosh peaks on the blow', highpass=80, fade_in=.01, fade_out=.2)
 clip('slam', '734629', .46, 1.36, 'the hammer hits the earth: a heavy weight thudding into the ground, natural settle', highpass=35, fade_in=.003, fade_out=.3)
-clip('boom', '512483', 0, 4.2, 'deep stomp boom under the slam, ringing out with its natural decay (~4 s), the end of the ultimate', highpass=30, fade_in=.01, fade_out=.9)
+clip('boom', '512483', 0, 1.05, 'deep stomp boom under the six-star slam for its weight, faded out within ~1 s so the ending finishes cleanly (no long ring-out)', highpass=30, fade_in=.01, fade_out=.5)
 clip('roots', '869103', 3.36, 4.36, 'wood splintering: vines/roots tear up through the soil and lock the foe, natural crackle', highpass=100, fade_in=.02, fade_out=.3)
 # Four-star: Ngọc Thụ Hộ Thể (rebuilt again on its own; the six-star set above/below is approved and unchanged)
 clip('f2-swirl', '397988', 5.3, 7.3, 'chant: the healing spiral, glassy stone wind chimes shimmering (jade), 0-2.0 s', highpass=200, fade_in=.15, fade_out=.6)

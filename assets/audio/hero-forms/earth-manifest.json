@@ -58,8 +58,8 @@
   },
   "earth-boom": {
     "file": "hero-forms/earth/boom.wav",
-    "duration": 4.2,
-    "beat": "deep stomp boom under the slam, ringing out with its natural decay (~4 s), the end of the ultimate",
+    "duration": 1.05,
+    "beat": "deep stomp boom under the six-star slam for its weight, faded out within ~1 s so the ending finishes cleanly (no long ring-out)",
     "sources": [
       {
         "title": "Hard Stomp Sound",
@@ -70,10 +70,10 @@
       }
     ],
     "license": "CC0-1.0",
-    "processing": "excerpt 0.00-4.20 s, 30 Hz high-pass, gain, 10 ms / 900 ms edge fades; natural attack and tail",
-    "peak": 0.82,
-    "rms": 0.096,
-    "sha256": "0a81beb939b8401c9e72601b1fb4404d4ab2677c210d428a81be6cd1865c4b0a"
+    "processing": "excerpt 0.00-1.05 s, 30 Hz high-pass, gain, 10 ms / 500 ms edge fades; natural attack and tail",
+    "peak": 0.561,
+    "rms": 0.12,
+    "sha256": "5fa26baf54502e773df99ff4f38a391f6b785ad7c11d96700db53a2ab7abcc25"
   },
   "earth-roots": {
     "file": "hero-forms/earth/roots.wav",
