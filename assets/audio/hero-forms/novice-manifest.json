@@ -1,0 +1,42 @@
+{
+  "novice-charge-cry": {
+    "file": "hero-forms/novice/charge-cry.wav",
+    "duration": 0.82,
+    "beat": "battle cry: builds on the wind-up, full voice from the dash launch (860 ms) to the chop",
+    "playsAt": 580,
+    "license": "CC-BY-4.0",
+    "sources": [
+      {
+        "title": "Male Attack Cry 1.wav",
+        "author": "F.M.Audio",
+        "source_url": "https://freesound.org/people/F.M.Audio/sounds/695376/",
+        "license": "CC-BY-4.0",
+        "sha256": "ceef7805e3bbfe0cc00b8587baec01a65d0e47ba52a22cf7b597929f28e6b027"
+      }
+    ],
+    "processing": "excerpt 0.14-0.96 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.105,
+    "sha256": "78f17b863b10a1f494f0b9ef9283bba8ac2321a03be146059d9ac032c1fc63e2"
+  },
+  "novice-dash-steps": {
+    "file": "hero-forms/novice/dash-steps.wav",
+    "duration": 0.58,
+    "beat": "running strides on dirt: push-off at the dash, the planted front foot as he arrives",
+    "playsAt": 850,
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "running on dirt 2 edit",
+        "author": "Luisa_Sanchez",
+        "source_url": "https://freesound.org/people/Luisa_Sanchez/sounds/816792/",
+        "license": "CC0-1.0",
+        "sha256": "c40ec2fabf7db91150565bfb4ee19d0ec3c7fa441c52131701314a26aee3206b"
+      }
+    ],
+    "processing": "excerpt 0.40-0.98 s of one recording, 50 Hz high-pass, edge fades, gain",
+    "peak": 0.42,
+    "rms": 0.037,
+    "sha256": "bea1e797f46154291f5f5298b760fb316307e17360c02ea0f0fd0a09ebe71fc9"
+  }
+}
