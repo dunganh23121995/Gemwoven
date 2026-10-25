@@ -1,0 +1,2 @@
+Mika is approved and locked (2026-10-25): combat idles, showcase sets, form 1-3 combat staging and sounds
+(src/forms-mika.js, assets/fx/heroes/fire, assets/audio/hero-forms/fire). Don't change without the player asking.

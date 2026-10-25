@@ -1,2 +1,2 @@
-Lumi is approved and locked (2026-10-25): combat idles, showcase sets, form 2-3 combat staging and sounds
+Lumi is approved and locked (2026-10-25): combat idles, showcase sets, form 2-3 combat staging and sounds Final lock of every form: 2026-10-25.
 (src/forms-lumi.js, assets/audio/hero-forms/lightning). Don't change without the player asking.

@@ -1,0 +1,2 @@
+Hiro (key 'novice', formerly Tân) is approved and locked (2026-10-25): combat idle, showcase set, Kiếm Nhiệt Huyết
+(src/forms-tan.js) and its sounds (assets/audio/hero-forms/novice). Don't change without the player asking.
