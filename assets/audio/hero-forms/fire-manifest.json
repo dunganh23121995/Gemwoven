@@ -246,42 +246,23 @@
     "rms": 0.08,
     "sha256": "f62c2a9374851e39e2283af160ff22c6a9733cc682d0ac815145e003278e74c7"
   },
-  "fire-f3-boom": {
-    "file": "hero-forms/fire/f3-boom.wav",
-    "duration": 0.53,
-    "beat": "each spirit wave explodes (the same deep blast, three times)",
+  "fire-f3-wave": {
+    "file": "hero-forms/fire/f3-wave.wav",
+    "duration": 0.42,
+    "beat": "each spirit wave explodes: the sun-burst sound, first 0.42 s (same clip three times)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "G33-24-Atomic Bomb.wav",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/438530/",
+        "title": "Fire Explosion",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/855898/",
         "license": "CC0-1.0",
-        "sha256": "814ea44fb63c3413a134b8d6640c62a4baf0c66b7f7a3e145e14747d9344e47c"
+        "sha256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259"
       }
     ],
-    "processing": "excerpt 3.17-3.70 s of one recording, 25 Hz high-pass, edge fades, gain",
-    "peak": 0.477,
-    "rms": 0.16,
-    "sha256": "f0714d784f16c55fb4af0748de2048b6b8c491a10d1011bd78c19ba2daae3950"
-  },
-  "fire-f3-burn": {
-    "file": "hero-forms/fire/f3-burn.wav",
-    "duration": 2.2,
-    "beat": "the fire burns on after the last wave and rings out (2.2 s)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "R09-63-Large Building Fire.wav",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/483308/",
-        "license": "CC0-1.0",
-        "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
-      }
-    ],
-    "processing": "excerpt 2.60-4.80 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.518,
-    "rms": 0.11,
-    "sha256": "6a42eb62ab79acd65ef1bc996be16daa3222ba82dd0c3101c023f8511178eb94"
+    "processing": "excerpt 0.00-1.23 s of one recording, 45 Hz high-pass, edge fades, gain; first 0.42 s, 120 ms fade",
+    "peak": 0.82,
+    "rms": 0.134,
+    "sha256": "45e28921ffa900614018db2cfb357d8ba961284fffdee1f8c9f7d1d171b12c65"
   }
 }

@@ -112,10 +112,17 @@ clip('f3-flare', ('freesound', '761330'), .5, 1.45, 'the nine tails flare into a
 clip('f3-sweep', ('freesound', '260555'), .18, .7, 'the glaive spun flat, a ring of fire', fade_in=.003, fade_out=.15)
 # The nine-tailed sun bursts on the foe (damage hit): a fire explosion.
 clip('f3-sun', ('freesound', '855898'), 0, 1.23, 'the nine-tailed sun bursts on the foe (damage hit)', fade_in=.002, fade_out=.2)
-# The three waves of fox-fire spirits bursting on the foe: form 2's atomic blast, shortened with a quick
-# fade so each hit stays separate, the SAME clip each time (thùng, thùng, thùng).
-clip('f3-boom', ('freesound', '438530'), 3.17, 3.7, 'each spirit wave explodes (the same deep blast, three times)', fade_in=.002, fade_out=.2, highpass=25, rms=.16)
-# After the last wave, the fire burns on and rings out: an enormous building fire roaring, fading over 1 s.
-clip('f3-burn', ('freesound', '483308'), 2.6, 4.8, 'the fire burns on after the last wave and rings out (2.2 s)', fade_in=.15, fade_out=1.0)
+# The three waves of fox-fire spirits bursting on the foe: the main sun-burst sound itself (f3-sun), only
+# its first 0.42 s with a quick fade so the three hits ~300 ms apart stay separate. Same gain as f3-sun.
+# The closing tail after the last hit is form 1's own flame whoosh (fire-flame-whoosh), played by the kit.
+_, sun = wavfile.read(OUT / 'f3-sun.wav')
+wave = sun[:round(.42 * RATE)].astype(float)
+wave[-round(.12 * RATE):] *= np.linspace(1, 0, round(.12 * RATE))[:, None]
+wavfile.write(OUT / 'f3-wave.wav', RATE, np.round(wave).astype(np.int16))
+USED['fire-f3-wave'] = {**USED['fire-f3-sun'], 'file': 'hero-forms/fire/f3-wave.wav', 'duration': .42,
+    'beat': 'each spirit wave explodes: the sun-burst sound, first 0.42 s (same clip three times)',
+    'processing': USED['fire-f3-sun']['processing'] + '; first 0.42 s, 120 ms fade',
+    'peak': round(float(np.abs(wave).max()) / 32767, 3), 'rms': round(float(np.sqrt(np.mean((wave / 32767) ** 2))), 3),
+    'sha256': hashlib.sha256((OUT / 'f3-wave.wav').read_bytes()).hexdigest()}
 
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')

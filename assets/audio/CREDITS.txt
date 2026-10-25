@@ -360,7 +360,7 @@ Build: python scripts/prepare_mika_form_sounds.py.
   glaive drawn, cutting_with_a_katana1 = the crescent cut).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
   #637533 "flame burst ignite bbq barbecue.flac" by kyles, https://freesound.org/people/kyles/sounds/637533/ (form 2 sword bursting alight)
-  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 blade roaring; form 3 fire burning on after the last wave)
+  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 blade roaring)
   #456806 "Hot Bubbling Mud" by Breviceps, https://freesound.org/people/Breviceps/sounds/456806/ (form 2 lava heaving under the blade and boiling along the floor cut)
   #522705 "Fireball, Woosh, Pass, fast" by julianmateo_, https://freesound.org/people/julianmateo_/sounds/522705/ (form 2 overhead cleave)
   #438530 "G33-24-Atomic Bomb.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/438530/ (form 2 impact; form 3 each spirit-wave explosion)
