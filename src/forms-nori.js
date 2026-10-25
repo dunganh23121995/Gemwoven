@@ -102,6 +102,45 @@ function noriWarmSounds(names){const audio=combatV3AudioContext();if(audio)for(c
 function noriCue(pending,name,delay,volume,pan=.3){pending.push(wait(reduced?0:delay).then(()=>playCastSound('earth',name,{volume,pan})));}
 
 // ---- Ngọc Thụ Hộ Thể (four stars) -----------------------------------------------------------------
+// The squeezed foe trembles inside the closing jade cage, then jolts as it shatters and settles (whole-element
+// motion on the CSS `translate` property, which composes with the transforms other effects set).
+function noriSqueeze(target,ms){
+  const frames=[];
+  for(let i=0;i<=16;i++){const k=i/16,amp=1+1.8*k;frames.push({translate:i===16?'0px 0px':`${(i%2?1:-1)*amp}px ${((i%3)-1)*.7}px`,offset:k});}
+  return animate(target,frames,{duration:ms,easing:'linear'}).catch(()=>{});
+}
+function noriJolt(target){
+  return animate(target,[{translate:'0px 0px'},{translate:'6px -3px',offset:.1},{translate:'-5px 1px',offset:.26},{translate:'3px -1px',offset:.44},{translate:'-1.5px 0px',offset:.66},{translate:'0px 0px'}],{duration:460,easing:'ease-out'}).catch(()=>{});
+}
+// Jade shards (ART.heroFx.earth.shards: eight drawn pieces) burst out of the shattering cage, fall scattering
+// round the foe's feet, bounce, settle on its ground line and fade with the shatter sound's settle.
+// Cosmetic scatter uses a fixed per-shard hash, never the board's random stream.
+function noriShards(foe,cage){
+  const sheet=ART.heroFx?.earth?.shards;if(!sheet||reduced)return;
+  const cx=(foe.left+foe.right)/2,ground=foe.feet,half=cage*.28,body=(foe.right-foe.left)/2,height=cage*.7,count=14;
+  for(let i=0;i<count;i++){
+    const h=k=>{const s=Math.sin((i+1)*12.9898+k*78.233)*43758.5453;return s-Math.floor(s);};
+    const side=i%2?1:-1,size=Math.max(12,cage*(.06+.05*h(2))),a=h(1);
+    // from the cage outline (its sides, or the dome near the top), out to either side of the foe's feet
+    const sx=cx+side*half*(a>.8?.35:.8+.25*h(3)),sy=ground-height*(.15+.8*a);
+    const lx=cx+side*(body*(.35+.75*h(4))+size*.5),ly=ground+cage*.03*(h(5)-.5)-size*.35;// on the ground round its feet
+    const node=document.createElement('span');node.className='nori-shard';node.setAttribute('aria-hidden','true');
+    node.style.cssText=`left:${sx-size/2}px;top:${sy-size/2}px;width:${size}px;height:${size}px;background-image:url('${sheet.src}');background-size:${sheet.count*100}% 100%;background-position:${(i%sheet.count)/(sheet.count-1)*100}% 0`;
+    $('combatEffects').append(node);
+    const dx=lx-sx,dy=ly-sy,up=-cage*(.06+.1*h(6)),r0=h(7)*360,spin=side*(200+340*h(8));
+    const at=(p,y,turn)=>`translate(${dx*p}px,${y}px) rotate(${r0+spin*turn}deg)`;
+    animate(node,[
+      {transform:at(0,0,0),opacity:1,easing:'ease-out'},
+      {transform:at(.45,up,.45),offset:.2,easing:'ease-in'},   // thrown out and up
+      {transform:at(.88,dy,.85),offset:.4,easing:'ease-out'},  // lands on the ground line
+      {transform:at(.95,dy-cage*.03,.95),offset:.47,easing:'ease-in'},// one small bounce
+      {transform:at(1,dy,1),offset:.54},                        // settles
+      {transform:at(1,dy,1),opacity:1,offset:.84},
+      {transform:at(1,dy,1),opacity:0}
+    ],{duration:2200+300*h(9),delay:i*12,fill:'backwards'}).finally(()=>node.remove());
+  }
+}
+
 // Nori stays in his place: he raises the hammer in the healing spiral and drives it into the ground;
 // a jade fissure runs along the ground to the foe, and a jade tree grows up from the foe's feet, twisting
 // round it into a cage that encases it (the stun), then cracks and shatters. Quicker and lighter than the six-
@@ -109,6 +148,7 @@ function noriCue(pending,name,delay,volume,pan=.3){pending.push(wait(reduced?0:d
 async function noriJadeUltimate(){
   if(state.hp<=0)return;
   noriWarmSheets(2);noriWarmSounds(['f2-swirl','f2-swing','f2-strike','f2-rubble','f2-vines','f2-clink','f2-shatter']);
+  if(ART.heroFx?.earth?.shards){const shards=new Image();shards.src=ART.heroFx.earth.shards.src;shards.decode?.().catch(()=>{});}
   const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),oldTarget=target.style.transform,oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   root.dataset.ragePhase='chant';root.dataset.noriUltimate='2';root.classList.add('combat-v3-acting');root.style.zIndex='4';
@@ -147,6 +187,10 @@ async function noriJadeUltimate(){
     const foeNow=noriFoeBody(),cage=Math.max(110,foeNow.width/.56,foeNow.height/.70)*1.04;
     const tree=noriStrip('jadetree',{x:(foeNow.left+foeNow.right)/2,feet:foeNow.feet,width:cage,className:'form-2'});
     if(tree)pending.push(tree.play(NORI_SEQUENCE.jadetree,200));
+    // squeezed from the lock (the clink, +270 ms) to the shatter (+710 ms), a jolt as it shatters; the shards
+    // scatter on the shatter and settle with its sound (they run on after the ultimate returns)
+    if(!reduced&&state.enemyHp>0){pending.push(wait(270).then(()=>noriSqueeze(target,440)));pending.push(wait(710).then(()=>noriJolt(target)));}
+    wait(reduced?0:710).then(()=>noriShards(foeNow,cage));
     if(state.enemyHp>0){
       state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
       popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);

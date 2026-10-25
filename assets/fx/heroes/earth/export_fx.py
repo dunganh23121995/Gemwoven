@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent
 PROC = 'C:/Users/dungc/.codex/skills/generate2dsprite/scripts/generate2dsprite.py'
 CELL = 320
 # name: (frame ms, ground anchor kind)
-FX = {'tree': (95, 'trunk'), 'roots': (80, 'fixed'), 'quake': (60, 'fixed'), 'jadetree': (80, 'fixed')}
+FX = {'tree': (95, 'trunk'), 'roots': (80, 'fixed'), 'quake': (60, 'fixed'), 'jadetree': (80, 'fixed'), 'shards': (0, 'fixed')}
 
 
 def keyed(name):
@@ -42,7 +42,7 @@ GROUND_JADETREE = (.903, .5)  # the jade tree's ground line, measured on the raw
 for name, (ms, kind) in FX.items():
     if not (ROOT / name / 'raw-sheet.png').exists(): continue
     # the jade tree wraps foes of every size (shown up to ~3x a common foe): keep the raw cell's resolution
-    CELL = 440 if name == 'jadetree' else 320
+    CELL = {'jadetree': 440, 'shards': 160}.get(name, 320)  # shards: separate pieces, one per cell
     sheet = keyed(name); W, H = sheet.width / 2, sheet.height / 4
     cells = [np.asarray(sheet.crop((round(c * W), round(r * H), round((c + 1) * W), round((r + 1) * H))).resize((CELL, CELL), Image.LANCZOS), dtype=np.float32) for r in range(4) for c in range(2)]
     # ground point per frame: the trunk's base (lowest solid run in the central columns) or the prompt's fixed point
@@ -60,7 +60,7 @@ for name, (ms, kind) in FX.items():
         shifts = [(0, 0)] * 8
         # ground lines measured on the raws: the root ring's front edge (where the front roots leave the soil,
         # so the cage stands on the foe's ground line), the quake's flash, the jade sapling's crack line
-        foot, ax = {'roots': (.84, .5), 'quake': (.775, .515), 'jadetree': GROUND_JADETREE}[name]
+        foot, ax = {'roots': (.84, .5), 'quake': (.775, .515), 'jadetree': GROUND_JADETREE, 'shards': (.5, .5)}[name]
     strip = Image.new('RGBA', (CELL * 8, CELL))
     for i, (a, (dx, dy)) in enumerate(zip(cells, shifts)):
         im = Image.fromarray(despill(a.copy()).clip(0, 255).astype('uint8'), 'RGBA')

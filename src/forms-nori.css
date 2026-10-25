@@ -13,3 +13,5 @@
 .scene .hero-actor[data-hero-element="earth"] .combat-form-aura .form-aura-band{translate:-50% 14.5%}
 .nori-fx-jadetree{filter:drop-shadow(0 0 6px #7dffc488)}
 .nori-fx-quake.fissure{filter:drop-shadow(0 0 4px #7dffc4aa) hue-rotate(-12deg)}
+/* four-star jade shards scattering from the shattered cage (forms-nori.js noriShards) */
+.nori-shard{position:absolute;pointer-events:none;z-index:7;background-repeat:no-repeat;filter:drop-shadow(0 1px 1px #0006)}

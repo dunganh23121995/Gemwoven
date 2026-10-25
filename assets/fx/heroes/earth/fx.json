@@ -30,5 +30,13 @@
     "aspect": 1,
     "foot": 0.903,
     "anchorX": 0.5
+  },
+  "shards": {
+    "file": "assets/fx/heroes/earth/shards.webp",
+    "count": 8,
+    "frameDuration": 0,
+    "aspect": 1,
+    "foot": 0.5,
+    "anchorX": 0.5
   }
 }
