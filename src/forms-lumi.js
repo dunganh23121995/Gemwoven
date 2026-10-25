@@ -139,7 +139,7 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   try{
     combatVoice('hero','cast');warmLumiSounds(form);popActorSkill('hero',HEROES.lightning.skill,true,pending);
     setSpriteFrame('hero','skill',0);await at(200);setSpriteFrame('hero','skill',1);await at(460);setSpriteFrame('hero','skill',2);
-    root.dataset.ragePhase='summon';root.dataset.lumiSky='true';lumiSound(form===3?'laser':'stars',{volume:form===3?.42:.4,pan:.1},true);
+    root.dataset.ragePhase='summon';root.dataset.lumiSky='true';if(form===2)lumiSound('stars',{volume:.4,pan:.1},true);
     const tip=lumiTip(form,'skill',2);
     // Five stars on the seal's circle (its drawn radius is .36 of the cell), top first, clockwise.
     const stars=Array.from({length:5},(_,k)=>{const a=-Math.PI/2+k*2*Math.PI/5;return {x:sky.x+Math.cos(a)*sign*.36,y:sky.y+Math.sin(a)*sign*.36};});
@@ -163,6 +163,9 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       // The rings around her spear's star spin off it and open into a galaxy over the foe (a real
       // slinky-laser foley), stars stream along its arms (mark tree) as it glides into place.
       galaxy=lumiFx('galaxy',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:5,cls:'lumi-sky'});
+      // The laser's attack (90 ms into the clip) lands as the sphere is born: the galaxy disc's first frame (strip
+      // frame 2) shows 4 x 140 ms after the rings start spinning at the spear head (measured in the studio).
+      pending.push(at(performance.now()-start+560-90).then(()=>lumiSound('laser',{volume:.42,pan:.1},true)));
       if(galaxy){
         galaxy.style.scale='.6';
         spin=galaxy.animate([{rotate:'0deg'},{rotate:'-360deg'}],{duration:4200,iterations:Infinity});
