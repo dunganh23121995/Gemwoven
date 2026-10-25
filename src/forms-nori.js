@@ -115,15 +115,15 @@ function noriJolt(target){
 // Jade shards (ART.heroFx.earth.shards: eight drawn pieces) burst out of the shattering cage, fall scattering
 // round the foe's feet, bounce, settle on its ground line and fade with the shatter sound's settle.
 // Cosmetic scatter uses a fixed per-shard hash, never the board's random stream.
-function noriShards(foe,cage){
+function noriShards(foe,cage,cx,minX=-Infinity){
   const sheet=ART.heroFx?.earth?.shards;if(!sheet||reduced)return;
-  const cx=(foe.left+foe.right)/2,ground=foe.feet,half=cage*.28,body=(foe.right-foe.left)/2,height=cage*.7,count=14;
+  const ground=foe.feet,half=cage*.28,body=(foe.right-foe.left)/2,height=cage*.7,count=14;
   for(let i=0;i<count;i++){
     const h=k=>{const s=Math.sin((i+1)*12.9898+k*78.233)*43758.5453;return s-Math.floor(s);};
     const side=i%2?1:-1,size=Math.max(12,cage*(.06+.05*h(2))),a=h(1);
     // from the cage outline (its sides, or the dome near the top), out to either side of the foe's feet
     const sx=cx+side*half*(a>.8?.35:.8+.25*h(3)),sy=ground-height*(.15+.8*a);
-    const lx=cx+side*(body*(.35+.75*h(4))+size*.5),ly=ground+cage*.03*(h(5)-.5)-size*.35;// on the ground round its feet
+    const lx=Math.max(minX+size*.5,cx+side*(body*(.35+.75*h(4))+size*.5)),ly=ground+cage*.03*(h(5)-.5)-size*.35;// on the ground round its feet
     const node=document.createElement('span');node.className='nori-shard';node.setAttribute('aria-hidden','true');
     node.style.cssText=`left:${sx-size/2}px;top:${sy-size/2}px;width:${size}px;height:${size}px;background-image:url('${sheet.src}');background-size:${sheet.count*100}% 100%;background-position:${(i%sheet.count)/(sheet.count-1)*100}% 0`;
     $('combatEffects').append(node);
@@ -182,15 +182,22 @@ async function noriJadeUltimate(){
     // the roots snap up (strip frame 0), the cage locks with a jade clink (frame 3), it shatters (frame 6)
     playCastSound('earth','f2-vines',{volume:.9,pan:.3});noriCue(pending,'f2-clink',270,.7);noriCue(pending,'f2-shatter',710,.65);
     // Sized from the foe's drawn body: the closed cage covers the strip's middle 56% of width (inside its
-    // trunks) and 70% of height (ground line to the inside of the dome), so the whole body fits, however
-    // large; no arena cap, a boss's cage may spill past the arena's edges.
-    const foeNow=noriFoeBody(),cage=Math.max(110,foeNow.width/.56,foeNow.height/.70)*1.04;
-    const tree=noriStrip('jadetree',{x:(foeNow.left+foeNow.right)/2,feet:foeNow.feet,width:cage,className:'form-2'});
+    // trunks) and 70% of height (ground line to the inside of the dome), so the whole body fits. A huge boss
+    // gets the largest cage that still fits the arena: the drawn art (4%-96% of the strip wide, 1% from its
+    // top) never covers Nori's drawn body (idle or the hammer-down pose he holds), nor runs off the arena's
+    // top or right edge; it is centred on the foe's body as far as that allows, so it wraps the main body (a
+    // wing or tail tip may show). The roots sink 2% of the strip below the foe's feet line to cover its toes.
+    const foeNow=noriFoeBody(),art=ART.heroFx?.earth?.jadetree,foot=art?.foot??.903,sink=.02;
+    const heroReach=Math.max(...['idle','attack'].map(a=>spriteDefinition('hero','earth',a).sheet.span?.[1]??.85));
+    const left=sprite.left-scene.left+sprite.width*heroReach+4,right=scene.width-2,top=2;
+    const cage=Math.max(60,Math.min(Math.max(110,foeNow.width/.56,foeNow.height/.70)*1.04,(right-left)/.95,(foeNow.feet-top)/(foot-.01-sink)));
+    const cageX=Math.max(left+cage*.475,Math.min(right-cage*.475,(foeNow.left+foeNow.right)/2));
+    const tree=noriStrip('jadetree',{x:cageX,feet:foeNow.feet+cage*sink,width:cage,className:'form-2'});
     if(tree)pending.push(tree.play(NORI_SEQUENCE.jadetree,200));
     // squeezed from the lock (the clink, +270 ms) to the shatter (+710 ms), a jolt as it shatters; the shards
     // scatter on the shatter and settle with its sound (they run on after the ultimate returns)
     if(!reduced&&state.enemyHp>0){pending.push(wait(270).then(()=>noriSqueeze(target,440)));pending.push(wait(710).then(()=>noriJolt(target)));}
-    wait(reduced?0:710).then(()=>noriShards(foeNow,cage));
+    wait(reduced?0:710).then(()=>noriShards(foeNow,cage,cageX,left));
     if(state.enemyHp>0){
       state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
       popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);
