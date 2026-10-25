@@ -91,14 +91,21 @@ clip('draw', ('katana', 'extracting_a_sword1.mp3'), 0, .5, 'a steel blade drawn 
 clip('cut', ('katana', 'cutting_with_a_katana1.mp3'), .1, .72, 'a blade cutting through the foe', fade_in=.003, fade_out=.15)
 
 # ---- Four-star: Hồ Diễm Long Trảm (booms, lava and fire bursts; every excerpt checked free of voices) --
-# 0 ms, the sword igniting: a real barbecue flame bursting alight (whoomph).
-clip('f2-ignite', ('freesound', '637533'), 0, .95, 'the sword bursts alight (fire whoomph, 0 ms)', fade_in=.003, fade_out=.25)
-# 300-1250 ms, the fox-fire blade towering: an enormous building fire roaring...
-clip('f2-flare', ('freesound', '483308'), .45, 1.4, 'the fox-fire blade towers and roars (300-1250 ms)', fade_in=.05, fade_out=.25)
-# ...with molten mud heaving and gulping under it (a hot bubbling mud pool).
-clip('f2-lava', ('freesound', '456806'), 1.6, 2.55, 'lava heaving and gulping under the towering blade (300-1250 ms)', fade_in=.08, fade_out=.25)
-# 950-1170 ms, the overhead cleave: a heavy fireball rushing past, peaking as it lands.
-clip('f2-cleave', ('freesound', '522705'), .72, 1.2, 'the overhead cleave rushes down (950-1170 ms, peak at the hit)', fade_in=.01, fade_out=.2)
+# 0-950 ms, raising the sword: ONE fire growing from a flicker into a fierce blaze. Form 1's own recording
+# and recipe (her flame charge, scripts/prepare_mika_nori_audio.py): hnhnh's fire whoosh with the same
+# rising gain curve, fitted to the raise (form 1's charge is 1.7 s).
+clip('f2-rise', WHOOSH, .03, .98, 'raising the sword: the fire grows into a fierce blaze (0-950 ms)', fade_in=.01, fade_out=.06, rms=.1)
+_, rise = wavfile.read(OUT / 'f2-rise.wav'); rise = rise.astype(float)
+t = np.arange(len(rise)) / RATE
+rise *= (.1 + .9 * (t / t[-1]) ** 1.6)[:, None]
+rise *= min(.82 / np.abs(rise / 32767).max(), .1 / np.sqrt(np.mean((rise / 32767) ** 2)))
+wavfile.write(OUT / 'f2-rise.wav', RATE, np.round(rise).astype(np.int16))
+USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; form 1's flame-charge rising gain curve (0.1 -> 1, power 1.6)",
+    peak=round(float(np.abs(rise).max()) / 32767, 3), rms=round(float(np.sqrt(np.mean((rise / 32767) ** 2))), 3),
+    sha256=hashlib.sha256((OUT / 'f2-rise.wav').read_bytes()).hexdigest())
+# 950-1170 ms, the advancing cleave: "UỲNH", the huge deep whoomph of an enormous fire flaring (low body),
+# peaking just before the hit.
+clip('f2-cleave', ('freesound', '483308'), .08, .32, 'the advancing cleave: a huge deep fire whoomph (950-1170 ms)', fade_in=.01, fade_out=.06, highpass=25)
 # 1170 ms, the impact through the foe (damage hit, the loudest): an atomic-bomb blast, its deep rolling
 # low end cut short so it does not echo on.
 clip('f2-impact', ('freesound', '438530'), 3.17, 4.5, 'massive deep blast through the foe (damage hit, 1170 ms)', fade_in=.002, fade_out=.55, highpass=25, rms=.16)

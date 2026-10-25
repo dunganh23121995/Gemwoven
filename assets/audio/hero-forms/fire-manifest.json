@@ -75,29 +75,29 @@
     "rms": 0.11,
     "sha256": "55d7a11eacc1f1f949ce953d2c977b867bd66d90cb1668522e0d805ef67eddfa"
   },
-  "fire-f2-ignite": {
-    "file": "hero-forms/fire/f2-ignite.wav",
+  "fire-f2-rise": {
+    "file": "hero-forms/fire/f2-rise.wav",
     "duration": 0.95,
-    "beat": "the sword bursts alight (fire whoomph, 0 ms)",
+    "beat": "raising the sword: the fire grows into a fierce blaze (0-950 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "flame burst ignite bbq barbecue.flac",
-        "author": "kyles",
-        "source_url": "https://freesound.org/people/kyles/sounds/637533/",
+        "title": "fire-whoosh.mp3",
+        "author": "hnhnh",
+        "source_url": "https://freesound.org/people/hnhnh/sounds/244926/",
         "license": "CC0-1.0",
-        "sha256": "7d0ac55c43955b3533e4e894f446842ce08725722cd3e4428cf1d048def61b02"
+        "sha256": "f7c5e6618b15c4f07502d3ceb9ce52a9146401ce0f5b8acbf8c41c51e8030bfa"
       }
     ],
-    "processing": "excerpt 0.00-0.95 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.099,
-    "sha256": "57465004550b1f293bb881072d80b76a6eb439229f62ffbe67673c66f2ad73c1"
+    "processing": "excerpt 0.03-0.98 s of one recording, 45 Hz high-pass, edge fades, gain; form 1's flame-charge rising gain curve (0.1 -> 1, power 1.6)",
+    "peak": 0.683,
+    "rms": 0.1,
+    "sha256": "e19db71ebf7a54b3d26c8b904e04a54a75e755944a256f9a80ce89e3e0f2cc6f"
   },
-  "fire-f2-flare": {
-    "file": "hero-forms/fire/f2-flare.wav",
-    "duration": 0.95,
-    "beat": "the fox-fire blade towers and roars (300-1250 ms)",
+  "fire-f2-cleave": {
+    "file": "hero-forms/fire/f2-cleave.wav",
+    "duration": 0.24,
+    "beat": "the advancing cleave: a huge deep fire whoomph (950-1170 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -108,48 +108,10 @@
         "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
       }
     ],
-    "processing": "excerpt 0.45-1.40 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.535,
-    "rms": 0.11,
-    "sha256": "f0c2b73622906678a7a8647bf3cf940a0546e9fa1816b0a8e559dcb61fdf0e5f"
-  },
-  "fire-f2-lava": {
-    "file": "hero-forms/fire/f2-lava.wav",
-    "duration": 0.95,
-    "beat": "lava heaving and gulping under the towering blade (300-1250 ms)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Hot Bubbling Mud",
-        "author": "Breviceps",
-        "source_url": "https://freesound.org/people/Breviceps/sounds/456806/",
-        "license": "CC0-1.0",
-        "sha256": "03db59990594fa6a12ffa03593c2081f4b941975c25416f0f831c28893ac6c53"
-      }
-    ],
-    "processing": "excerpt 1.60-2.55 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.08-0.32 s of one recording, 25 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.096,
-    "sha256": "6f9fcca357859d454466f8e6c902fe01f5953f5c6f730d6cf1bc8d29b44bb848"
-  },
-  "fire-f2-cleave": {
-    "file": "hero-forms/fire/f2-cleave.wav",
-    "duration": 0.48,
-    "beat": "the overhead cleave rushes down (950-1170 ms, peak at the hit)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Fireball, Woosh, Pass, fast",
-        "author": "julianmateo_",
-        "source_url": "https://freesound.org/people/julianmateo_/sounds/522705/",
-        "license": "CC0-1.0",
-        "sha256": "8fc9549e7422dd0c9fa1e89993b6e093ac42991540ed2492e986a5c7ba2f6ebc"
-      }
-    ],
-    "processing": "excerpt 0.72-1.20 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.491,
-    "rms": 0.11,
-    "sha256": "9e97674553e24df854c8640839cc269df6cdd6957c912a95e3c4342f54bea790"
+    "rms": 0.066,
+    "sha256": "71e51945f1f0a4a81abfaec18ccefa2a4647adfe5979f7f5c1acb425619b5275"
   },
   "fire-f2-impact": {
     "file": "hero-forms/fire/f2-impact.wav",

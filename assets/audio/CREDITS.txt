@@ -355,18 +355,17 @@ attack and decay, gentle high-pass, gain with peak <= 0.82, short fades; no laye
 limiting or synthesis). Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-manifest.json.
 Build: python scripts/prepare_mika_form_sounds.py.
   Form 3 is built on Mika's own form-1 recordings: "fire-whoosh.wav" by hnhnh,
-  https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and the 2 s finale) and
+  https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and the 2 s finale; form 3 ends
+  on form 1's own fire-flame-whoosh; form 2's sword raise is this recording with form 1's flame-charge swell) and
   Taira Komori's katana recordings (TK'S FREE SOUND FX, see the katana terms above: extracting_a_sword1 = the
   glaive drawn, cutting_with_a_katana1 = the crescent cut).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
-  #637533 "flame burst ignite bbq barbecue.flac" by kyles, https://freesound.org/people/kyles/sounds/637533/ (form 2 sword bursting alight)
-  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 blade roaring)
-  #456806 "Hot Bubbling Mud" by Breviceps, https://freesound.org/people/Breviceps/sounds/456806/ (form 2 lava heaving under the blade and boiling along the floor cut)
-  #522705 "Fireball, Woosh, Pass, fast" by julianmateo_, https://freesound.org/people/julianmateo_/sounds/522705/ (form 2 overhead cleave)
-  #438530 "G33-24-Atomic Bomb.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/438530/ (form 2 impact; form 3 each spirit-wave explosion)
+  #483308 "R09-63-Large Building Fire.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/483308/ (form 2 the advancing cleave's huge fire whoomph)
+  #456806 "Hot Bubbling Mud" by Breviceps, https://freesound.org/people/Breviceps/sounds/456806/ (form 2 lava boiling along the floor cut)
+  #438530 "G33-24-Atomic Bomb.wav" by craigsmith, https://freesound.org/people/craigsmith/sounds/438530/ (form 2 impact)
   #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring)
   #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst, the damage hit)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst, the damage hit, and each closing spirit wave)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length

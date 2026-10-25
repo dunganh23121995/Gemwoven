@@ -117,7 +117,7 @@ function mikaFlash(pending,kind){
 // One real recording per cue, each the literal sound of its motion (scripts/prepare_mika_form_sounds.py);
 // the damage hit is the loudest clip and a long natural tail rings out after it. Form 3 is built on form 1's
 // own recordings (her fire whoosh gathers and, in full, rings out from the hit; her katana draws and cuts).
-const MIKA_SOUNDS={2:['f2-ignite','f2-flare','f2-lava','f2-cleave','f2-impact','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh']};
+const MIKA_SOUNDS={2:['f2-rise','f2-cleave','f2-impact','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -136,7 +136,7 @@ async function mikaLongCleave(raw,onRelease){
   let result={amount:0,blocked:0},blade=null,frameId=0,arc=null;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='raise';root.dataset.state='cast';
   try{
-    combatVoice('hero','cast');mikaSound('f2-ignite',.42,-.2);popActorSkill('hero',HEROES.fire.skill,true,pending);
+    combatVoice('hero','cast');mikaSound('f2-rise',.46,-.15);popActorSkill('hero',HEROES.fire.skill,true,pending);
     setSpriteFrame('hero','skill',0);
     // The blade must reach past the foe's far side once it lies level across the stage.
     const foe=mikaFoeBody(),reach=Math.max(140,foe.right+8-mikaGrip(2,3).x);
@@ -171,8 +171,8 @@ async function mikaLongCleave(raw,onRelease){
       frameId=requestAnimationFrame(track);
     };
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
-    await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';mikaSound('f2-flare',.4,-.15);mikaSound('f2-lava',.3,-.1);
-    await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');mikaSound('f2-cleave',.5,.05);
+    await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
+    await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');mikaSound('f2-cleave',.85,.05);
     // The swing's quarter-circle of fire, pivoting on the grip, tracing the blade's outer half.
     if(!reduced){const sheet=mikaSheet('arc2');if(sheet){const c=mikaGrip(2,3),size=reach*.6/.86;
       arc={node:mikaFxNode('arc2','mika-arc')};arc.node.style.cssText+=`;left:${c.x}px;top:${c.y}px;width:${size}px;height:${size}px`;mikaFxFrame(arc.node,'arc2',0);}}
