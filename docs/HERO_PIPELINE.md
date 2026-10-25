@@ -3,7 +3,7 @@
 Đúc kết từ lúc làm Noct, Mika, Yuki, Nori, Lumi và Hiro. Tướng mới làm theo đúng thứ tự này.
 Hạng mục mới cho mọi tướng thì thêm vào bảng kiểm (mục 9), không cần sửa tài liệu này.
 
-**Xem trực quan:** Studio tướng `tools/hero-gallery.html` (LAN: `http://<máy dev>:8080/tools/noct-studio.html`), phần **Hạng mục tướng**. Bảng có một hàng cho mỗi hạng mục, một cột cho mỗi tướng và một ô cho mỗi dạng: ✓ đã có, ✗ còn thiếu, ○ tuỳ chọn, — không áp dụng. Bảng sinh từ `docs/hero-checklist.json` bằng `python scripts/hero_checklist.py`.
+**Xem trực quan:** Gemwoven Studio `tools/studio.html` (trang studio chung), tab Tướng `tools/hero-gallery.html` (LAN: `http://<máy dev>:8080/tools/studio.html`, tab **Tướng**), phần **Hạng mục tướng**. Bảng có một hàng cho mỗi hạng mục, một cột cho mỗi tướng và một ô cho mỗi dạng: ✓ đã có, ✗ còn thiếu, ○ tuỳ chọn, — không áp dụng. Bảng sinh từ `docs/hero-checklist.json` bằng `python scripts/hero_checklist.py`.
 
 ---
 
