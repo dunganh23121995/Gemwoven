@@ -117,8 +117,9 @@
 .celestial-reveal>header>small{font:600 12px/1.5 var(--gw-font);letter-spacing:2px}
 .celestial-reveal>footer>p{font:13px/1.4 var(--gw-font)}
 .celestial-reveal .celestial-open-all{--h:46px;width:auto;max-width:none;border:0;border-radius:0;box-shadow:none;padding:calc(6*var(--u)) calc(58*var(--u));font:700 17px/1.1 var(--gw-font)}
-.celestial-back small{font-size:12px}.celestial-front small{font-size:12px}
-.celestial-front strong{font-size:clamp(12px,1.8vw,13px)}
+/* Card labels scale with the card (summon-cinematic.js sets --cw); only the typeface is shared. */
+.celestial-back small,.celestial-front small,.celestial-front strong{font-family:var(--gw-font)}
+.celestial-reveal .celestial-skip{font-family:var(--gw-font)}
 @media(min-width:701px){#summon-reveal.celestial-reveal{inset:auto;margin:0;left:var(--frame-cx,50%);top:50%;translate:-50% -50%;width:min(580px,calc(var(--frame-w,580px) + 80px))}}
 /* Settings: the cog medallion already crowns the frame; the form fills the parchment. */
 .settings-panel .sound-emblem{display:none}

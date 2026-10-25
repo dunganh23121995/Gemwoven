@@ -1,0 +1,8 @@
+Use case: mobile fantasy RPG FX element pack for a summon reveal. Style: clean HD hand-painted 2D game FX, luminous, elegant, crisp. Do not make pixel art.
+
+Create exactly 4 separate FX elements arranged in an exact 2 x 2 grid of equal square cells on a 100% solid flat magenta #FF00FF background. Each element is centered in its cell and fits fully inside it with magenta margin on all four sides; nothing crosses a cell edge. No borders or separators between cells.
+1 (top-left) Radiant halo: a circular burst of about 16 slender tapered light rays radiating from a bright center, alternating long and short, warm white-gold rays with faint prismatic rainbow edges, a soft round bright core. Diameter about 86% of the cell.
+2 (top-right) Shine streak: a single diagonal glossy light band, tilted 30 degrees from vertical, bright white along its center line and softly fading toward both long edges, with tiny sparkles along it. A straight band about 18% of the cell wide and about 90% of the cell long, centered.
+3 (bottom-left) Bokeh orb: a single soft glowing round light orb, pale cyan-white center fading to a lavender rim, with a faint thin brighter ring at its edge. Diameter about 60% of the cell.
+4 (bottom-right) Magic ripple ring: one flat thin elliptical glowing ring seen in perspective on water (width about 88% of the cell, height about 26% of the cell), luminous cyan-white with tiny star sparkles along it.
+All elements are painted with solid opaque colors. Their soft fades fade into the element's own darker tone, not into a gradient haze on the background. No text, no labels, no UI. Background is 100% solid flat magenta #FF00FF.

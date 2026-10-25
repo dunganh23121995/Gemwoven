@@ -1,0 +1,13 @@
+Use case: mobile fantasy RPG summon card backs, prop pack. Image 1 (a bronze card frame) and Image 2 (a glowing summon crystal) are the visual style references from the same game: clean HD hand-painted 2D game UI art, crisp beveled metal, smooth painted surfaces, soft controlled highlights, rich but clean. Do not make pixel art.
+
+Create exactly 6 sealed summon CARD BACKS arranged in an exact 3 columns x 2 rows grid of equal tall cells on a 100% solid flat magenta #FF00FF background. Every card is an upright portrait rectangle with aspect ratio about 2:3 (width:height), the same size, same shape, same camera (perfectly front-facing, no tilt, no perspective), centered in its cell, filling about 78% of the cell height, with generous magenta margin on all four sides. Nothing crosses a cell edge. No borders, lines or separators between cells.
+
+All six share one design family: an ornate rounded-corner frame with a small gem at the top center and bottom center, an inner panel with a symmetric celestial emblem in the middle (an eight-point star over a crescent moon above a calm lake ripple), fine filigree corners. Each card is a rarity tier, rising in richness from left to right, top row then bottom row:
+1 (top-left) Common: weathered bronze-brown frame, dark slate-blue inner panel, simple pale grey star emblem, matte, modest.
+2 (top-middle) Uncommon: bronze frame with jade green accents and a green gem, deep teal panel, soft green emblem.
+3 (top-right) Rare: polished silver frame with sapphire blue gems, deep blue velvet panel with tiny stars, glowing blue emblem.
+4 (bottom-left) Epic: silver and violet-lacquered frame with amethyst gems, purple starry panel, glowing violet emblem, small crystal shards in the corners.
+5 (bottom-middle) Legendary: radiant polished gold frame with ornate wings flanking the top gem, warm amber-ruby gems, deep midnight panel with a golden sunburst behind the emblem, gleaming highlights, luxurious.
+6 (bottom-right) Divine: the most splendid: iridescent pearl-white and opal frame shimmering with rainbow holographic sheen (pink, cyan, lavender, gold), prismatic diamond gems, panel of a swirling opalescent galaxy, radiant prismatic emblem, delicate sparkles painted on the card surface.
+
+The cards are fully opaque and solid (no transparency inside the cards). No glow halo spilling onto the magenta background, no drop shadows, no sparkles outside the cards. No text, no letters, no numbers, no labels, no UI, no watermark. Background is 100% solid flat magenta #FF00FF with no gradient.

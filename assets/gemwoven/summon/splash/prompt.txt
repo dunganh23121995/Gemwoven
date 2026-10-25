@@ -1,0 +1,13 @@
+Use case: mobile fantasy RPG FX animation sheet, side view at a slight downward angle (about 20 degrees from horizontal). Style: clean HD hand-painted 2D game FX matching a moonlit magical blue lake: luminous cyan, white and soft lavender water, crisp readable shapes, glowing highlights. Do not make pixel art.
+
+Create exactly 8 frames of ONE magical water splash animation, arranged in an exact 2 rows x 4 columns grid of equal square cells, read left to right then the second row, on a 100% solid flat magenta #FF00FF background. Something small has just dropped vertically into calm water at the same point in every frame.
+All frames share one fixed water-surface contact point: horizontally centered, at 72% of the cell height. The splash grows up from that point; keep the same scale and camera in every frame.
+1 contact: a small bright white-cyan impact flash and the first tiny ring on the water surface.
+2 a narrow column of water starts rising, crown edge forming, first droplets.
+3 a tall crown splash with a central water column, droplets flying up, a flat elliptical ripple ring on the surface.
+4 peak: the tallest crown with sparkling luminous droplets, the column at its highest (top of the splash at about 15% of the cell height), wider ripple ring.
+5 the column collapses, droplets falling, crown spreading wider and lower, two concentric ellipse ripples.
+6 low spreading splash, falling glittering droplets, ripples wider.
+7 mostly flat: two wide thin elliptical ripple rings, a few last glowing droplets and foam.
+8 fade: a faint thin ripple ring and a few tiny sparkles only.
+The ripple rings are flat ellipses (perspective view of the water surface), never wider than 90% of the cell. Every part of the splash stays fully inside its cell with magenta margin on all sides; no droplet crosses a cell edge. Water is luminous but painted with solid opaque colors (no transparency blending into the magenta). No lake, no ground plate, no background scenery, no text, no labels, no borders between cells. Background is 100% solid flat magenta #FF00FF.

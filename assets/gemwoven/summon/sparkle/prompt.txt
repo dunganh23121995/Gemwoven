@@ -1,0 +1,13 @@
+Use case: mobile fantasy RPG FX animation sheet, a single twinkling sparkle. Style: clean HD hand-painted 2D game FX, luminous, crisp. Do not make pixel art.
+
+Create exactly 8 frames of ONE twinkling star sparkle animation loop, arranged in an exact 2 rows x 4 columns grid of equal square cells, read left to right then the second row, on a 100% solid flat magenta #FF00FF background. The sparkle is centered exactly at the center of every cell.
+The sparkle is a four-pointed star glint (long vertical and horizontal rays, short thin diagonal rays) with a bright white core, warm pale gold inner glow, and a delicate prismatic rainbow tint along the ray edges (pink, cyan, lavender).
+1 a tiny white dot.
+2 a small four-point star.
+3 a medium star, rays lengthening.
+4 full bloom: longest rays (reaching about 40% of the cell from the center), brightest core, faint diagonal rays.
+5 slightly rotated by about 10 degrees, still large and bright.
+6 shrinking, rays shortening.
+7 a small star.
+8 a tiny fading dot.
+The longest rays never exceed 42% of the cell from the center; nothing crosses a cell edge. Painted with solid opaque colors; the glow stays compact and must not spill a gradient haze onto the background. No text, no labels, no borders between cells. Background is 100% solid flat magenta #FF00FF.

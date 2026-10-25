@@ -1,0 +1,4 @@
+Use case: mobile fantasy RPG background FX overlay: a single drifting celestial aurora veil for a moonlit starry sky above a magical lake. Style: clean HD hand-painted 2D game FX matching a blue-violet starry night painting with luminous cyan and lavender highlights and subtle warm gold stars. Do not make pixel art.
+
+One wide horizontal flowing aurora ribbon: soft luminous curtains of cyan, teal, lavender and rose light with fine vertical light streaks and a few small twinkling stars caught in it, gently waving across the image from left to right, centered vertically, filling about 92% of the image width and about 45% of the image height. Wide landscape composition, about 3:1. The ribbon edges dissolve into thin wisps of its own color, not into a background haze.
+Place it on a 100% solid flat magenta #FF00FF background with magenta margin on all four sides; nothing touches the image edges. No moon, no landscape, no water, no text, no labels, no UI.

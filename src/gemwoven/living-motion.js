@@ -19,6 +19,11 @@
     summon:{
       flow:[[226,670,64,135],[458,742,46,115],[564,510,46,150],[724,208,62,115],[893,652,44,135]],
       portal:[[470,948,330,.34]],
+      // Summon light (assets/gemwoven/summon): turning rays on the crowning gem and the portal,
+      // sparkles on gems and crystals, motes of light rising from the portal.
+      rays:[[470,150,250,.55],[470,930,300,.4],[765,722,110,.5]],
+      twinkles:[[470,118,87],[438,170,57],[503,182,49],[810,888,76],[858,915,57],[838,858,46],[765,712,65],[325,1128,53],[615,1128,53],[470,1062,57],[155,650,57],[592,370,42],[396,1000,49],[548,1004,46],[120,470,42],[700,90,46]],
+      motes:[[430,950],[470,940],[510,955],[450,965],[495,935],[470,975]],
       birds:[[180,18,-3,.75,1]],
       butterflies:[[90,1140,60],[860,1220,55]],
       leaves:[[120,90],[820,120]]
@@ -61,6 +66,10 @@
     for(const [x,y,size] of spec.fire||[])out.push(sprite('forge','lm-fire',`left:${x-size/2}px;top:${y-size*.82}px;width:${size}px;height:${size}px`));
     for(const [x,y,size,squash] of spec.portal||[])out.push(sprite('portal','lm-portal',`left:${x-size/2}px;top:${y-size/2}px;width:${size}px;height:${size}px;--squash:${squash}`));
     for(const [x,y] of spec.sparks||[])out.push(`<i class="lm-sparks" style="left:${x}px;top:${y}px">${Array.from({length:9},(_,i)=>`<b style="--a:${-160+i*17}deg;--d:${26+(i*13)%22}px;--t:${(i%3)*.04}s"></b>`).join('')}</i>`);
+    const light=key=>A[key]?new URL(A[key].file,document.baseURI).href.replace(/'/g,'%27'):'';
+    for(const [x,y,size,o] of spec.rays||[])if(A['summon-halo'])out.push(`<i class="lm-rays" style="left:${x-size/2}px;top:${y-size/2}px;width:${size}px;height:${size}px;--o:${o};background-image:url('${light('summon-halo')}');--delay:${-((x+y)%13)}s"></i>`);
+    spec.twinkles?.forEach(([x,y,size],i)=>{const s=A['summon-sparkle'];if(s)out.push(`<i class="lm-twinkle" style="left:${x}px;top:${y}px;width:${size}px;height:${size}px;--sheet:url('${light('summon-sparkle')}');--count:${s.count};--wait:${(1.8+(i*7)%5*.45).toFixed(1)}s;--delay:${-(i*.83).toFixed(2)}s"></i>`);});
+    spec.motes?.forEach(([x,y],i)=>{if(A['summon-orb'])out.push(`<i class="lm-mote" style="left:${x}px;top:${y}px;background-image:url('${light('summon-orb')}');--size:${14+(i*5)%16}px;--delay:${-(i*1.3).toFixed(1)}s;--drift:${(i%2?-1:1)*(10+i*4)}px"></i>`);});
     for(const [y,duration,delay,scale,direction] of spec.birds||[])
       out.push(`<i class="lm-lane" style="top:${y}px;--dur:${duration}s;--delay:${delay}s;--dir:${direction}">${sprite('bird','lm-bird',`--scale:${scale}`)}</i>`);
     for(const [x,y,range] of spec.butterflies||[])out.push(`<i class="lm-wander" style="left:${x}px;top:${y}px;--range:${range}px;--delay:${-((x*3+y)%9)}s">${sprite('butterfly','lm-butterfly','')}</i>`);

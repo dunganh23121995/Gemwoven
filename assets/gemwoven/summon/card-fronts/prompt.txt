@@ -1,0 +1,14 @@
+Use case: mobile fantasy RPG summon result CARD FRONT FRAMES, prop pack. Image 1 (a bronze card frame) and Image 2 (a glowing summon crystal) are the visual style references from the same game: clean HD hand-painted 2D game UI art, crisp beveled metal, smooth painted surfaces, soft controlled highlights. Do not make pixel art.
+
+Create exactly 6 empty card FRONT frames arranged in an exact 3 columns x 2 rows grid of equal tall cells on a 100% solid flat magenta #FF00FF background. Every frame is an upright portrait rectangle with aspect ratio about 2:3 (width:height), the same size, same outline, same camera (perfectly front-facing, no tilt, no perspective), centered in its cell, filling about 78% of the cell height, with generous magenta margin on all four sides. Nothing crosses a cell edge. No lines or separators between cells.
+
+Each frame is an ornate rounded-corner border about 7% of the card width thick, with a small gem at the top center. Inside the border there is one large open window for the reward picture: the whole window interior is EMPTY and filled with the same 100% flat magenta #FF00FF (it will become transparent). Across the lower part of the card, overlapping the bottom of the window, sits a blank horizontal name ribbon plaque (empty, no text) spanning about 86% of the card width and about 16% of the card height, with a small gem at its center bottom. The plaque is opaque and painted in the tier colors.
+Tiers, rising in richness from left to right, top row then bottom row:
+1 Common: weathered bronze-brown frame, slate grey-blue plaque, modest.
+2 Uncommon: bronze frame with jade green accents, deep teal plaque, green gem.
+3 Rare: polished silver frame with sapphire gems, deep blue plaque.
+4 Epic: silver and violet-lacquered frame with amethyst gems, purple plaque, small crystal shards at the corners.
+5 Legendary: radiant polished gold frame with small ornate wings flanking the top gem, amber-ruby gems, deep crimson-midnight plaque with gold trim, luxurious.
+6 Divine: most splendid iridescent pearl-white and opal frame shimmering with rainbow holographic sheen (pink, cyan, lavender, gold), prismatic diamond gems, opalescent plaque.
+
+The window interiors and everything outside the cards must be exactly flat magenta #FF00FF. No glow spilling onto magenta, no shadows, no sparkles outside the frames. No text, no letters, no numbers, no labels, no UI, no watermark.

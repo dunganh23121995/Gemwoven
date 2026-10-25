@@ -1,0 +1,139 @@
+{
+  "summon-back-bronze": {
+    "file": "assets/gemwoven/summon/runtime/back-bronze.webp",
+    "width": 278,
+    "height": 420
+  },
+  "summon-back-gold": {
+    "file": "assets/gemwoven/summon/runtime/back-gold.webp",
+    "width": 290,
+    "height": 420
+  },
+  "summon-back-diamond": {
+    "file": "assets/gemwoven/summon/runtime/back-diamond.webp",
+    "width": 294,
+    "height": 420
+  },
+  "summon-front-bronze": {
+    "file": "assets/gemwoven/summon/runtime/front-bronze.webp",
+    "width": 312,
+    "height": 420,
+    "window": [
+      0.125,
+      0.15,
+      0.875,
+      0.731
+    ]
+  },
+  "summon-front-gold": {
+    "file": "assets/gemwoven/summon/runtime/front-gold.webp",
+    "width": 320,
+    "height": 420,
+    "window": [
+      0.1562,
+      0.2214,
+      0.8438,
+      0.7238
+    ]
+  },
+  "summon-front-diamond": {
+    "file": "assets/gemwoven/summon/runtime/front-diamond.webp",
+    "width": 321,
+    "height": 420,
+    "window": [
+      0.1558,
+      0.2143,
+      0.8442,
+      0.7238
+    ]
+  },
+  "summon-sparkle": {
+    "file": "assets/gemwoven/summon/runtime/sparkle.webp",
+    "width": 1024,
+    "height": 128,
+    "count": 8,
+    "frameDuration": 85
+  },
+  "summon-splash": {
+    "file": "assets/gemwoven/summon/runtime/splash.webp",
+    "width": 2048,
+    "height": 256,
+    "count": 8,
+    "frameDuration": 75,
+    "waterline": 0.78
+  },
+  "summon-glints": {
+    "file": "assets/gemwoven/summon/runtime/glints.webp",
+    "width": 1920,
+    "height": 230,
+    "count": 4,
+    "frameDuration": 260
+  },
+  "summon-halo": {
+    "file": "assets/gemwoven/summon/runtime/halo.webp",
+    "width": 384,
+    "height": 384
+  },
+  "summon-streak": {
+    "file": "assets/gemwoven/summon/runtime/streak.webp",
+    "width": 384,
+    "height": 384
+  },
+  "summon-orb": {
+    "file": "assets/gemwoven/summon/runtime/orb.webp",
+    "width": 384,
+    "height": 384
+  },
+  "summon-ripple": {
+    "file": "assets/gemwoven/summon/runtime/ripple.webp",
+    "width": 384,
+    "height": 384
+  },
+  "summon-aurora": {
+    "file": "assets/gemwoven/summon/runtime/aurora.webp",
+    "width": 1400,
+    "height": 321
+  },
+  "fragment-fire": {
+    "file": "assets/gemwoven/summon/runtime/fragment-fire.webp",
+    "width": 222,
+    "height": 256,
+    "brick": true,
+    "transparent": true
+  },
+  "fragment-ice": {
+    "file": "assets/gemwoven/summon/runtime/fragment-ice.webp",
+    "width": 223,
+    "height": 256,
+    "brick": true,
+    "transparent": true
+  },
+  "fragment-earth": {
+    "file": "assets/gemwoven/summon/runtime/fragment-earth.webp",
+    "width": 222,
+    "height": 256,
+    "brick": true,
+    "transparent": true
+  },
+  "fragment-lightning": {
+    "file": "assets/gemwoven/summon/runtime/fragment-lightning.webp",
+    "width": 235,
+    "height": 256,
+    "brick": true,
+    "transparent": true
+  },
+  "fragment-shadow": {
+    "file": "assets/gemwoven/summon/runtime/fragment-shadow.webp",
+    "width": 234,
+    "height": 256,
+    "brick": true,
+    "transparent": true
+  },
+  "fragment-novice": {
+    "file": "assets/gemwoven/summon/runtime/fragment-novice.webp",
+    "width": 234,
+    "height": 256,
+    "brick": true,
+    "transparent": true
+  }
+}

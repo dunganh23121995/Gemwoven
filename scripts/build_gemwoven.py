@@ -19,6 +19,9 @@ for catalog in sorted((ROOT/'assets/gemwoven/beanstalk/themes').glob('art-catalo
         file=value['file']
         merged[key]={**value,'file':file if file.startswith('assets/') else 'assets/gemwoven/'+file}
 merged['summon-lake']={'file':'assets/gemwoven/summon-lake/scene.webp','width':941,'height':1672}
+# Summon reveal art (cards, splash, sparkles, lake light) and the brick-style hero fragments,
+# packed by assets/gemwoven/summon/export_summon_art.py.
+merged.update(json.loads((ROOT/'assets/gemwoven/summon/summon.json').read_text(encoding='utf-8')))
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
     for form,entry in data['forms'].items():
@@ -158,6 +161,7 @@ paths += list((ROOT/'assets/gemwoven/hud-connections').glob('*.prompt.txt'))
 paths += [ROOT/'assets/gemwoven/hud-connections/art-metadata.json']
 paths += [ROOT/'assets/gemwoven/beanstalk/manifest.json']
 paths += list((ROOT/'assets/gemwoven/summon-lake').glob('*.txt'))
+paths += list((ROOT/'assets/gemwoven/summon').rglob('prompt.txt'))+[ROOT/'assets/gemwoven/summon/summon.json',ROOT/'assets/gemwoven/summon/export_summon_art.py']
 paths += list((ROOT/'assets/heroes/forms').rglob('forms.json'))
 paths += list((ROOT/'assets/heroes/forms').rglob('aura.json'))
 paths += list((ROOT/'assets/heroes/forms').rglob('*.webp'))
