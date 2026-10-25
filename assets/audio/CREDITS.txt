@@ -356,7 +356,7 @@ limiting or synthesis). Clips: hero-forms/fire/*.wav, manifest hero-forms/fire-m
 Build: python scripts/prepare_mika_form_sounds.py.
   Form 3 is built on Mika's own form-1 recordings: "fire-whoosh.wav" by hnhnh,
   https://freesound.org/people/hnhnh/sounds/244926/ (CC0, sources/mika-nori: the gather and the 2 s finale; forms 2 and 3
-  end on form 1's own fire-flame-whoosh; form 2's sword raise is this recording with form 1's flame-charge swell) and
+  end on form 1's own fire-flame-whoosh; form 2's burning-blade bed is this recording with form 1's flame-charge swell, burning on until the sword is withdrawn) and
   Taira Komori's katana recordings (TK'S FREE SOUND FX, see the katana terms above: extracting_a_sword1 = the
   glaive drawn, cutting_with_a_katana1 = the crescent cut).
   Freesound, all CC0 1.0 (sources/freesound/<id>-<title>/source.json with URL, licence, SHA-256):
@@ -366,7 +366,7 @@ Build: python scripts/prepare_mika_form_sounds.py.
   #456806 "Hot Bubbling Mud" by Breviceps, https://freesound.org/people/Breviceps/sounds/456806/ (form 2 lava boiling along the floor cut)
   #761330 "Magic Fire Spell Movement" by TheLittleCrow, https://freesound.org/people/TheLittleCrow/sounds/761330/ (form 3 tails flaring)
   #260555 "Basic Fire Whoosh 2" by LookIMadeAThing, https://freesound.org/people/LookIMadeAThing/sounds/260555/ (form 3 spinning sweep)
-  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst; form 2's short "uỳnh" as the blade dips is its first 0.3 s; the closing spirit waves use it pitched down 4 semitones and low-passed, at the player's request)
+  #855898 "Fire Explosion" by qubodup, https://freesound.org/people/qubodup/sounds/855898/ (form 3 sun burst; in form 2 its first 0.3 s lands on the hit, and the dip plays its fiery body without the impact; the closing spirit waves use it pitched down 4 semitones and low-passed, at the player's request)
 
 Nori four- and six-star ultimates, redo (2026-10-25): the layered clips above are replaced by ONE natural recording
 per clip (excerpt, gentle high-pass, gain, edge fades; no layering, pitch change or limiting), each cut to the length

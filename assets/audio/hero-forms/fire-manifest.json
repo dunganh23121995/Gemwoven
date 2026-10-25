@@ -77,8 +77,8 @@
   },
   "fire-f2-rise": {
     "file": "hero-forms/fire/f2-rise.wav",
-    "duration": 0.95,
-    "beat": "raising the sword: the fire grows into a fierce blaze (0-950 ms)",
+    "duration": 2.65,
+    "beat": "the burning blade: grows into a blaze on the raise and burns on until the sword is withdrawn (0-2650 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
@@ -89,10 +89,10 @@
         "sha256": "f7c5e6618b15c4f07502d3ceb9ce52a9146401ce0f5b8acbf8c41c51e8030bfa"
       }
     ],
-    "processing": "excerpt 0.03-0.98 s of one recording, 45 Hz high-pass, edge fades, gain; form 1's flame-charge rising gain curve (0.1 -> 1, power 1.6)",
-    "peak": 0.683,
-    "rms": 0.1,
-    "sha256": "e19db71ebf7a54b3d26c8b904e04a54a75e755944a256f9a80ce89e3e0f2cc6f"
+    "processing": "excerpt 0.03-2.68 s of one recording, 45 Hz high-pass, edge fades, gain; form 1's flame-charge rising gain curve over the first 0.95 s, then steady",
+    "peak": 0.409,
+    "rms": 0.082,
+    "sha256": "8c7ff1ec36f7eaee1f934775e1bddeeec43fe2f0cca7ecd2cb06648622e9b6b6"
   },
   "fire-f2-flyby": {
     "file": "hero-forms/fire/f2-flyby.wav",
@@ -264,5 +264,24 @@
     "peak": 0.82,
     "rms": 0.149,
     "sha256": "11e353e727ec3749a58b0aa404c302a25f2f9c9884112786d06e794b9ea34d4d"
+  },
+  "fire-f2-dipbody": {
+    "file": "hero-forms/fire/f2-dipbody.wav",
+    "duration": 0.33,
+    "beat": "the dip (950 ms): the sun burst's fiery body without its impact transient",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Fire Explosion",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/855898/",
+        "license": "CC0-1.0",
+        "sha256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259"
+      }
+    ],
+    "processing": "excerpt 0.00-1.23 s of one recording, 45 Hz high-pass, edge fades, gain; 0.12-0.45 s (impact transient left out), 200 Hz high-pass, 60 ms fade-in, 100 ms fade-out",
+    "peak": 0.268,
+    "rms": 0.053,
+    "sha256": "f521dc1dd0a03449f7889af9ec28699bb635a0d3617aa4a177b8283f8fe3961d"
   }
 }

@@ -94,13 +94,18 @@ clip('cut', ('katana', 'cutting_with_a_katana1.mp3'), .1, .72, 'a blade cutting 
 # 0-950 ms, raising the sword: ONE fire growing from a flicker into a fierce blaze. Form 1's own recording
 # and recipe (her flame charge, scripts/prepare_mika_nori_audio.py): hnhnh's fire whoosh with the same
 # rising gain curve, fitted to the raise (form 1's charge is 1.7 s).
-clip('f2-rise', WHOOSH, .03, .98, 'raising the sword: the fire grows into a fierce blaze (0-950 ms)', fade_in=.01, fade_out=.06, rms=.1)
+# 0-2650 ms, ONE continuous burning-blade bed for as long as the fox-fire blade burns: form 1's fire whoosh
+# (its own unbroken 2.65 s stretch) growing from a flicker into a blaze over the 950 ms raise with form 1's
+# flame-charge gain curve, then burning steadily through the dip, backswing, chop and hit, fading out over
+# the last 0.45 s as the blade goes away and she withdraws the sword.
+clip('f2-rise', WHOOSH, .03, 2.68, 'the burning blade: grows into a blaze on the raise and burns on until the sword is withdrawn (0-2650 ms)', fade_in=.01, fade_out=.45, rms=.1)
 _, rise = wavfile.read(OUT / 'f2-rise.wav'); rise = rise.astype(float)
 t = np.arange(len(rise)) / RATE
-rise *= (.1 + .9 * (t / t[-1]) ** 1.6)[:, None]
-rise *= min(.82 / np.abs(rise / 32767).max(), .1 / np.sqrt(np.mean((rise / 32767) ** 2)))
+rise *= np.where(t < .95, .1 + .9 * (np.minimum(t, .95) / .95) ** 1.6, 1)[:, None]
+steady = rise[round(1.0 * RATE):round(2.0 * RATE)] / 32767
+rise *= min(.82 / np.abs(rise / 32767).max(), .1 / np.sqrt(np.mean(steady ** 2)))
 wavfile.write(OUT / 'f2-rise.wav', RATE, np.round(rise).astype(np.int16))
-USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; form 1's flame-charge rising gain curve (0.1 -> 1, power 1.6)",
+USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; form 1's flame-charge rising gain curve over the first 0.95 s, then steady",
     peak=round(float(np.abs(rise).max()) / 32767, 3), rms=round(float(np.sqrt(np.mean((rise / 32767) ** 2))), 3),
     sha256=hashlib.sha256((OUT / 'f2-rise.wav').read_bytes()).hexdigest())
 # The cleave's "uỳnh" reuses form 3's sun burst (f3-sun) as the blade comes down, and form 2 ends on form
@@ -154,4 +159,17 @@ USED['fire-f2-dip'] = {**USED['fire-f3-sun'], 'file': 'hero-forms/fire/f2-dip.wa
     'processing': USED['fire-f3-sun']['processing'] + '; first 0.3 s, 100 ms fade',
     'peak': round(float(np.abs(dip).max()) / 32767, 3), 'rms': round(float(np.sqrt(np.mean((dip / 32767) ** 2))), 3),
     'sha256': hashlib.sha256((OUT / 'f2-dip.wav').read_bytes()).hexdigest()}
+# The dip's sound without its collision: the same sun-burst clip from 0.12 s (after the impact transient),
+# its thump high-passed away (200 Hz), a soft 60 ms fade-in, so only the fiery roar/crackle body plays at
+# the dip; f2-dip (with its impact) stays on the hit.
+_, sun = wavfile.read(OUT / 'f3-sun.wav')
+body = sosfilt(butter(2, 200, btype='highpass', fs=RATE, output='sos'), sun[round(.12 * RATE):round(.45 * RATE)].astype(float), axis=0)
+body[:round(.06 * RATE)] *= np.linspace(0, 1, round(.06 * RATE))[:, None]
+body[-round(.1 * RATE):] *= np.linspace(1, 0, round(.1 * RATE))[:, None]
+wavfile.write(OUT / 'f2-dipbody.wav', RATE, np.round(body).astype(np.int16))
+USED['fire-f2-dipbody'] = {**USED['fire-f3-sun'], 'file': 'hero-forms/fire/f2-dipbody.wav', 'duration': .33,
+    'beat': "the dip (950 ms): the sun burst's fiery body without its impact transient",
+    'processing': USED['fire-f3-sun']['processing'] + '; 0.12-0.45 s (impact transient left out), 200 Hz high-pass, 60 ms fade-in, 100 ms fade-out',
+    'peak': round(float(np.abs(body).max()) / 32767, 3), 'rms': round(float(np.sqrt(np.mean((body / 32767) ** 2))), 3),
+    'sha256': hashlib.sha256((OUT / 'f2-dipbody.wav').read_bytes()).hexdigest()}
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')

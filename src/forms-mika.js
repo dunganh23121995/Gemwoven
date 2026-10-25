@@ -117,7 +117,7 @@ function mikaFlash(pending,kind){
 // One real recording per cue, each the literal sound of its motion (scripts/prepare_mika_form_sounds.py);
 // the damage hit is the loudest clip and a long natural tail rings out after it. Form 3 is built on form 1's
 // own recordings (her fire whoosh gathers and, in full, rings out from the hit; her katana draws and cuts).
-const MIKA_SOUNDS={2:['f2-rise','f2-dip','f2-flyby','f2-boom','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
+const MIKA_SOUNDS={2:['f2-rise','f2-dipbody','f2-dip','f2-flyby','f2-boom','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
 function mikaWarmSounds(form){
   const audio=combatV3AudioContext();if(audio)for(const name of MIKA_SOUNDS[form])decodeCastSound(audio,'fire-'+name).catch(()=>{});
 }
@@ -200,7 +200,7 @@ async function mikaLongCleave(raw,onRelease){
     if(blade){blade.place(0,0,-90,.18);frameId=requestAnimationFrame(track);}
     await at(RAISE);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='blaze';
     // Uỳnh: one short heavy dip of the blade.
-    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaShake(pending,.4);
+    await at(DIP);root.dataset.ragePhase='dip';setSpriteFrame('hero','press',0);mikaSound('f2-dipbody',.48,.05);mikaShake(pending,.4);
     // The backswing and the chop: the blade roars past like a starship flying by (peaking on the chop).
     await at(BACK);root.dataset.ragePhase='backswing';mikaSound('f2-flyby',.7,-.1);
     await at(CHOP);root.dataset.ragePhase='cleave';combatVoice('hero','release');
