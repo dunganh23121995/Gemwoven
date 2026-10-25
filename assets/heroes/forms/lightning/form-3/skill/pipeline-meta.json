@@ -1,83 +1,13 @@
 {
  "raw": "assets/heroes/forms/lightning/form-3/skill/raw-sheet.png",
- "scale": 0.4923,
+ "scale": 0.4911,
  "cell": 352,
  "idle_height": 193,
- "frame1_height": 392,
+ "frame1_height": 393,
  "frames": [
   {
    "bbox": [
-    95,
-    140,
-    265,
-    331
-   ],
-   "edge_touch": false,
-   "lost_px": 0,
-   "offset": [
-    95.0,
-    138.9
-   ]
-  },
-  {
-   "bbox": [
-    94,
-    102,
-    263,
-    331
-   ],
-   "edge_touch": false,
-   "lost_px": 0,
-   "offset": [
-    93.5,
-    101.9
-   ]
-  },
-  {
-   "bbox": [
-    88,
-    87,
-    251,
-    331
-   ],
-   "edge_touch": false,
-   "lost_px": 0,
-   "offset": [
-    88.0,
-    85.9
-   ]
-  },
-  {
-   "bbox": [
-    86,
-    103,
-    296,
-    331
-   ],
-   "edge_touch": false,
-   "lost_px": 0,
-   "offset": [
-    86.5,
-    102.9
-   ]
-  },
-  {
-   "bbox": [
-    78,
-    144,
-    346,
-    331
-   ],
-   "edge_touch": false,
-   "lost_px": 0,
-   "offset": [
-    78.5,
-    142.9
-   ]
-  },
-  {
-   "bbox": [
-    90,
+    92,
     139,
     259,
     331
@@ -85,11 +15,82 @@
    "edge_touch": false,
    "lost_px": 0,
    "offset": [
-    90.0,
-    137.9
+    92.0,
+    138.9
+   ]
+  },
+  {
+   "bbox": [
+    96,
+    146,
+    248,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    95.0,
+    144.9
+   ]
+  },
+  {
+   "bbox": [
+    93,
+    85,
+    245,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    93.0,
+    83.9
+   ]
+  },
+  {
+   "bbox": [
+    93,
+    91,
+    247,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    93.0,
+    89.9
+   ]
+  },
+  {
+   "bbox": [
+    92,
+    146,
+    327,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    92.5,
+    144.9
+   ]
+  },
+  {
+   "bbox": [
+    92,
+    139,
+    259,
+    331
+   ],
+   "edge_touch": false,
+   "lost_px": 0,
+   "offset": [
+    92.0,
+    138.9
    ]
   }
  ],
  "model": "gpt-6-astra high",
- "processor": "tools/process_combat_sheet.py <raw> 2 3 <out> --form N --cell 256|352: green key, whole-sheet components, one uniform scale, boots/feet translation"
+ "processor": "tools/process_combat_sheet.py <raw> 2 3 <out> --form 3 --cell 352, then tools/defringe.py <sheet> 3 2 --bleed",
+ "redo": "2026-10-25 defect review: the previous sheet had a third hand / missing or broken spear shaft in several frames"
 }

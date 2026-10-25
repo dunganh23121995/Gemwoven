@@ -56,31 +56,32 @@
           "heads": [
             [
               128,
-              63
+              44
             ],
             [
               128,
-              63
+              44
             ],
             [
               128,
-              65
+              44
             ],
             [
               128,
-              59
+              44
             ],
             [
               128,
-              64
+              44
             ],
             [
               128,
-              64
+              44
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.375
         },
         "attack": {
           "file": "assets/heroes/forms/lightning/form-3/attack.webp",
@@ -90,31 +91,32 @@
           "heads": [
             [
               128,
-              67
+              44
             ],
             [
               128,
-              76
+              44
             ],
             [
               128,
-              81
+              44
             ],
             [
               128,
-              61
+              44
             ],
             [
               128,
-              66
+              44
             ],
             [
               128,
-              67
+              44
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.375
         },
         "run": {
           "file": "assets/heroes/forms/lightning/form-3/run.webp",

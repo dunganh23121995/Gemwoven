@@ -72,8 +72,9 @@ for k in range(a.rows * a.cols):
     frames.append(Image.fromarray(img).crop(box))
 # despill edges (tools/despill.py)
 def despill(im):
+    """Clamp green to max(red, blue) on the outline band (3 px in, or not fully opaque): no green key fringe."""
     x = np.asarray(im).astype(np.int32); R, G, B, A = x[..., 0], x[..., 1], x[..., 2], x[..., 3]
-    edge = (ndimage.distance_transform_edt(A > 128) <= 2.5) | (A < 250); cap = np.maximum(R, B)
+    edge = (ndimage.distance_transform_edt(A > 128) <= 3.5) | (A < 250); cap = np.maximum(R, B)
     x[..., 1] = np.where(edge & (A > 0) & (G > cap), cap, G)
     return Image.fromarray(x.clip(0, 255).astype("uint8"), "RGBA")
 frames = [despill(f) for f in frames]
@@ -85,7 +86,9 @@ meta = {"raw": str(a.raw), "scale": round(scale, 4), "cell": cell, "idle_height"
 sheet = Image.new("RGBA", (cell * a.cols, cell * a.rows), (0, 0, 0, 0))
 first = None
 for k, f in enumerate(frames):
-    f = f.resize((max(1, round(f.width * scale)), max(1, round(f.height * scale))), Image.Resampling.LANCZOS)
+    # Resample premultiplied ('RGBa'): the key colour still sitting under fully transparent pixels must not
+    # bleed into the outline as a green fringe. Then despill the resampled edge once more.
+    f = despill(f.convert('RGBa').resize((max(1, round(f.width * scale)), max(1, round(f.height * scale))), Image.Resampling.LANCZOS).convert('RGBA'))
     fa = np.asarray(f)[..., 3]; bx, by = boots(fa)
     if a.anchor in ("boots", "bottom"):
         dx = tx - (bx if a.anchor == "boots" else fa.shape[1] / 2); dy = ty - by

@@ -11,7 +11,7 @@
 // Orb / star-head of her weapon in a frame, as a share of the drawn cell (measured on the sheets).
 const LUMI_TIP={
   2:{attack:{1:[.33,.26],3:[.81,.39],4:[.76,.79]},skill:{2:[.41,.35],3:[.75,.41],4:[.81,.61]}},
-  3:{attack:{1:[.70,.32],2:[.78,.33],3:[.72,.31]},skill:{2:[.55,.34],3:[.6,.36],4:[.85,.6]}}
+  3:{attack:{1:[.27,.37],2:[.82,.44],3:[.83,.44]},skill:{2:[.38,.34],3:[.40,.36],4:[.81,.61]}}
 };
 function lumiTip(form,action,frame){
   const sprite=actor('hero').querySelector('.sprite-body'),r=sprite.getBoundingClientRect(),s=$('scene').getBoundingClientRect();
