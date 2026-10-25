@@ -11603,15 +11603,15 @@
     "height": 384,
     "footBounds": [
       108,
-      122,
+      119,
       275,
-      328
+      330
     ],
     "bodyAnchor": {
-      "x": 0.5481770833333334,
-      "bodyX": 0.5208333333333334,
-      "crown": 0.3177083333333333,
-      "foot": 0.8541666666666666
+      "x": 0.5494791666666666,
+      "bodyX": 0.5182291666666666,
+      "crown": 0.3098958333333333,
+      "foot": 0.859375
     },
     "sheets": {
       "idle": "assets/heroes/forms/ice/form-1/showcase/idle.webp",
@@ -11681,7 +11681,7 @@
       "entrance": "assets/heroes/forms/ice/form-2/showcase/entrance.webp"
     },
     "headPx": 13.09,
-    "headFit": 1.1346
+    "headFit": 1.1077
   },
   "show-ice-3": {
     "file": "assets/heroes/forms/ice/form-3/showcase/poster.png",
@@ -11724,7 +11724,7 @@
       "entrance": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
     },
     "headPx": 12.31,
-    "headFit": 1.2065
+    "headFit": 1.1779
   },
   "show-lightning-1": {
     "file": "assets/heroes/forms/lightning/form-1/showcase/poster.png",

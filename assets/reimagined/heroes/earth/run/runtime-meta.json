@@ -24,19 +24,12 @@
     "run/frame-05.png"
   ],
   "uniqueFrames": 6,
-  "framePixelHashes": [
-    "1517b1d46855f4447600e2879656eae543eb883087858a175fd65adb7a9356cd",
-    "e45d459be1c9e31a4b7de9d6df6d1fc37194ade9214a1eae2f36fb728e6053c8",
-    "e80b0212585773f2b414f5f371e523f7a169fcfbe050849e5d2b9cf2dcfa879e",
-    "79af47ccf0207641966553acd587c9491e78232db5ee5a2743a67d1b4ab01041",
-    "f432a511ff23d452246badcf2211337801629f0f018d1ee3ae981b785338736c",
-    "79f6fe29ff65b393dd29a6036659f55c1f3a08d25b9c69b4adb393cc0113133f"
-  ],
+  "framePixelHashes": [],
   "sharedScaleProfile": "character-scale-profile.json",
   "anchorEstimator": "median of lower silhouette; bottommost toe Y",
   "reviewedFootRootFrames": [],
-  "source": "assets/raw/reimagined/heroes/earth-run.png",
-  "sourceSha256": "11387ea23164db815e3a9e0a4a946e7d3930bad47df4a54830d5e3301183ec60",
+  "source": "assets/reimagined/heroes/earth/run/raw-sheet.png",
+  "sourceSha256": "09ab13ff2d87c90b4e0b496520a8fd72a9687044e6678284706016f4248efe7b",
   "qc": {
     "frame_count": 6,
     "valid_frame_count": 6,
@@ -55,33 +48,43 @@
   "recoveredGridCrossings": [],
   "headAnchors": [
     [
-      120,
-      105
-    ],
-    [
-      139,
+      108,
       106
     ],
     [
-      124,
+      110,
       107
     ],
     [
-      137,
+      108,
       106
     ],
     [
-      130,
-      105
+      108,
+      106
     ],
     [
-      130,
-      107
+      108,
+      106
+    ],
+    [
+      108,
+      106
     ]
   ],
   "floorAligned": true,
   "presentationTranslation": [
     0,
     21
-  ]
+  ],
+  "redraw": {
+    "date": "2026-10-25",
+    "why": "the old run carried neither hammer nor shield",
+    "model": "gpt-6-astra high via codex_image_gen.py",
+    "refs": [
+      "form-1 combat idle frame 1 (identity)",
+      "make_anchor_layout 2x3 from form-1 combat-idle master"
+    ],
+    "placement": "assets/heroes/forms/earth/tools/place_action.py, spec same/sole, k=1 (idle size)"
+  }
 }
