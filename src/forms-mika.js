@@ -39,7 +39,7 @@ HERO_KITS.fire={forms:{
 // weapon points (degrees, 0 = right, -90 = up). The giant fox-fire weapon grows out of that grip.
 const MIKA_GRIPS={
   2:[[305,345,-90],[252,268,-93],[328,290,-45],[355,370,0],[331,412,10],[276,378,-38]],
-  3:[[270,390,0],[298,383,180],[336,400,180],[300,382,0],[288,380,0],[300,380,-60]]
+  3:[[270,390,0],[215,380,180],[269,397,180],[300,382,0],[249,377,0],[300,380,-60]]
 };
 function mikaGrip(form,frame){
   const body=actor('hero').querySelector('.sprite-body').getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
@@ -132,7 +132,7 @@ function mikaSound(name,volume,pan=0){
 // Extra poses for the cleave (forms.json "press" and "back" sheets): grip (x, y in the 512px cell) and
 // the drawn sword's angle (degrees, 0 = right, -90 = up, -180 = straight back).
 const MIKA_POSE_GRIPS={press:[[257,246,-78],[326,297,-43],[346,322,-30],[363,336,-25]],
-  back:[[253,279,-113],[243,307,-138],[303,298,-157],[269,302,-185]]};
+  back:[[253,279,-113],[243,307,-138],[244,298,-157],[210,302,-185]]};
 function mikaPoseGrip(action,frame){
   if(action!=='press'&&action!=='back')return mikaGrip(2,frame);
   const body=actor('hero').querySelector('.sprite-body').getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
