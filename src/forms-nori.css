@@ -11,5 +11,5 @@
 /* Six-star aura: its painted grass patch (rows 222-230 of the 256px strip) is the ground he stands on,
    so the band sits higher than the shared 18% drop: the patch's top edge lands on his soles. */
 .scene .hero-actor[data-hero-element="earth"] .combat-form-aura .form-aura-band{translate:-50% 14.5%}
-.nori-fx-jade{filter:drop-shadow(0 0 6px #7dffc488)}
+.nori-fx-jadetree{filter:drop-shadow(0 0 6px #7dffc488)}
 .nori-fx-quake.fissure{filter:drop-shadow(0 0 4px #7dffc4aa) hue-rotate(-12deg)}

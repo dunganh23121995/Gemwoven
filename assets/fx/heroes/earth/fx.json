@@ -23,12 +23,12 @@
     "foot": 0.775,
     "anchorX": 0.515
   },
-  "jade": {
-    "file": "assets/fx/heroes/earth/jade.webp",
+  "jadetree": {
+    "file": "assets/fx/heroes/earth/jadetree.webp",
     "count": 8,
     "frameDuration": 80,
     "aspect": 1,
-    "foot": 0.82,
+    "foot": 0.903,
     "anchorX": 0.5
   }
 }

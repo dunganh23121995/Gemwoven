@@ -3,7 +3,8 @@
  * he raises the hammer to the sky (the healing spiral), charges in behind the shield, bashes the foe,
  * then brings the hammer down on the ground and roots burst up from the foe's own feet and lock it in
  * a cage (the stun) while the world-tree rises behind it (six stars). Four stars (noriJadeUltimate) is its
- * own, lighter jade skill: one blow on the spot, a jade fissure and a jade sapling binding the foe.
+ * own, lighter jade skill: one blow on the spot, a jade fissure and a jade tree growing up around the foe,
+ * encasing it (the stun) and shattering.
  * He steps back in guard as the renewal starts. The rules are noriRenewalUltimate's, unchanged: the same stun, damage seal and
  * renewal turns from progressionKit('earth'), no direct damage; Biến Dị's armour still comes from the
  * progression wrapper, which these forms run inside (as Yuki's do).
@@ -77,7 +78,9 @@ const NORI_SEQUENCE={
   quake:[[0,50],[1,50],[2,55],[3,65],[4,65],[5,65],[6,60],[7,60]],
   fissure:[[1,45],[2,45],[3,55],[5,55],[6,50],[7,45]],
   // burst, bind and hold (vines tight, sapling open), shatter
-  jade:[[0,50],[1,60],[2,70],[3,90],[4,170],[3,90],[4,190],[5,110],[6,100],[7,90]]
+  // roots burst (vines snap, 0), trunks climb, the cage closes (jade clink, 270), holds and glows, cracks,
+  // shatters (pottery shatter, 710), the shards fall: frame times follow the four-star sound cues
+  jadetree:[[0,90],[1,90],[2,90],[3,160],[4,180],[5,100],[6,160],[7,180]]
 };
 
 // The basic attack's ground crater (combat-v3 calls it at the hammer's contact) becomes the jade quake
@@ -100,8 +103,8 @@ function noriCue(pending,name,delay,volume,pan=.3){pending.push(wait(reduced?0:d
 
 // ---- Ngọc Thụ Hộ Thể (four stars) -----------------------------------------------------------------
 // Nori stays in his place: he raises the hammer in the healing spiral and drives it into the ground;
-// a jade fissure runs along the ground to the foe, and a jade sapling bursts at the foe's feet, its
-// glossy jade vines binding it (the stun) among jade crystal shards. Quicker and lighter than the six-
+// a jade fissure runs along the ground to the foe, and a jade tree grows up from the foe's feet, twisting
+// round it into a cage that encases it (the stun), then cracks and shatters. Quicker and lighter than the six-
 // star world-tree: no shield rush, one blow, the bind and the renewal. Same rules as noriFormUltimate.
 async function noriJadeUltimate(){
   if(state.hp<=0)return;
@@ -134,13 +137,16 @@ async function noriJadeUltimate(){
       const x=hammerX+reach*i/(steps+.4),y=ground+(foe.feet-ground)*i/(steps+.4);
       pending.push(wait(reduced?0:70*i).then(()=>{const shard=noriStrip('quake',{x,feet:y,width:Math.min(70,sprite.width*.5),className:'form-2 fissure'});return shard?.play(NORI_SEQUENCE.fissure,90);}));
     }
-    // The jade sapling bursts at the foe's feet and binds it.
+    // The jade tree grows up from the foe's feet and encases it.
     await at(900+70*steps+60);root.dataset.ragePhase='bind';setSpriteFrame('hero','attack',4);
-    // the vines snap up, lock with a jade clink as the sapling opens (strip frame 4), then shatter and settle (frame 5)
+    // the roots snap up (strip frame 0), the cage locks with a jade clink (frame 3), it shatters (frame 6)
     playCastSound('earth','f2-vines',{volume:.9,pan:.3});noriCue(pending,'f2-clink',270,.7);noriCue(pending,'f2-shatter',710,.65);
-    const foeNow=noriFoeBody(),width=Math.max(110,Math.min(foeNow.width*1.45,scene.width*.6));
-    const jade=noriStrip('jade',{x:foeNow.x,feet:foeNow.feet,width,className:'form-2'});
-    if(jade)pending.push(jade.play(NORI_SEQUENCE.jade,200));
+    // Sized from the foe's drawn body: the closed cage covers the strip's middle 56% of width (inside its
+    // trunks) and 70% of height (ground line to the inside of the dome), so the whole body fits, however
+    // large; no arena cap, a boss's cage may spill past the arena's edges.
+    const foeNow=noriFoeBody(),cage=Math.max(110,foeNow.width/.56,foeNow.height/.70)*1.04;
+    const tree=noriStrip('jadetree',{x:(foeNow.left+foeNow.right)/2,feet:foeNow.feet,width:cage,className:'form-2'});
+    if(tree)pending.push(tree.play(NORI_SEQUENCE.jadetree,200));
     if(state.enemyHp>0){
       state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
       popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);
