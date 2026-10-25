@@ -90,20 +90,20 @@ clip('draw', ('katana', 'extracting_a_sword1.mp3'), 0, .5, 'a steel blade drawn 
 # A blade cutting through (form 3's crescent).
 clip('cut', ('katana', 'cutting_with_a_katana1.mp3'), .1, .72, 'a blade cutting through the foe', fade_in=.003, fade_out=.15)
 
-# ---- Four-star: Hồ Diễm Long Trảm (redesigned around big booms, lava and fire bursts) --------------
-# 0 ms, the sword igniting: a fireball bursting alight (whoomph) and its short decay.
-clip('f2-ignite', ('freesound', '683179'), 0, .9, 'the sword bursts alight (fire whoomph, 0 ms)', fade_in=.002, fade_out=.25)
-# 300-1250 ms, the fox-fire blade towering: a fire torch flaring up and roaring...
-clip('f2-flare', ('freesound', '483316'), .6, 1.55, 'the fox-fire blade flares up and roars (300-1250 ms)', fade_in=.03, fade_out=.25)
-# ...with molten lava heaving low under it.
-clip('f2-lava', ('freesound', '618013'), 1.0, 1.95, 'lava heaving low under the towering blade (300-1250 ms)', fade_in=.12, fade_out=.3)
+# ---- Four-star: Hồ Diễm Long Trảm (booms, lava and fire bursts; every excerpt checked free of voices) --
+# 0 ms, the sword igniting: a real barbecue flame bursting alight (whoomph).
+clip('f2-ignite', ('freesound', '637533'), 0, .95, 'the sword bursts alight (fire whoomph, 0 ms)', fade_in=.003, fade_out=.25)
+# 300-1250 ms, the fox-fire blade towering: an enormous building fire roaring...
+clip('f2-flare', ('freesound', '483308'), .45, 1.4, 'the fox-fire blade towers and roars (300-1250 ms)', fade_in=.05, fade_out=.25)
+# ...with molten mud heaving and gulping under it (a hot bubbling mud pool).
+clip('f2-lava', ('freesound', '456806'), 1.6, 2.55, 'lava heaving and gulping under the towering blade (300-1250 ms)', fade_in=.08, fade_out=.25)
 # 950-1170 ms, the overhead cleave: a heavy fireball rushing past, peaking as it lands.
 clip('f2-cleave', ('freesound', '522705'), .72, 1.2, 'the overhead cleave rushes down (950-1170 ms, peak at the hit)', fade_in=.01, fade_out=.2)
 # 1170 ms, the impact through the foe (damage hit, the loudest): an atomic-bomb blast, its deep rolling
 # low end cut short so it does not echo on.
 clip('f2-impact', ('freesound', '438530'), 3.17, 4.5, 'massive deep blast through the foe (damage hit, 1170 ms)', fade_in=.002, fade_out=.55, highpass=25, rms=.16)
-# 1280-2800 ms, the cut on the floor: molten lava boiling and spitting, fading out within ~1.5 s.
-clip('f2-floor', ('freesound', '737664'), .4, 1.9, 'lava boils and spits along the cut on the floor, fading (1280-2800 ms)', fade_in=.04, fade_out=.6)
+# 1280-2780 ms, the cut on the floor: molten mud boiling and gulping, fading out within ~1.5 s.
+clip('f2-floor', ('freesound', '456806'), 6.5, 8.0, 'lava boils and gulps along the cut on the floor, fading (1280-2780 ms)', fade_in=.04, fade_out=.6)
 
 # ---- Six-star: Cửu Dương Hồ Diễm --------------------------------------------------------------------
 # The nine tails flare into a sun: a fire blooming open.
@@ -112,10 +112,10 @@ clip('f3-flare', ('freesound', '761330'), .5, 1.45, 'the nine tails flare into a
 clip('f3-sweep', ('freesound', '260555'), .18, .7, 'the glaive spun flat, a ring of fire', fade_in=.003, fade_out=.15)
 # The nine-tailed sun bursts on the foe (damage hit): a fire explosion.
 clip('f3-sun', ('freesound', '855898'), 0, 1.23, 'the nine-tailed sun bursts on the foe (damage hit)', fade_in=.002, fade_out=.2)
-# The three waves of fox-fire spirits bursting on the foe: three distinct BIG real explosions (a sharp
-# blast with a deep body), each cut short so the next one reads ~300 ms later.
-clip('f3-boom1', ('freesound', '251759'), .06, .46, 'first spirit wave explodes (big close explosion)', fade_in=.002, fade_out=.15, highpass=30)
-clip('f3-boom2', ('freesound', '609587'), 0, .4, 'second spirit wave explodes (grenade blast)', fade_in=.002, fade_out=.15, highpass=30)
-clip('f3-boom3', ('freesound', '528258'), .01, .45, 'third spirit wave explodes (missile blast)', fade_in=.002, fade_out=.18, highpass=30)
+# The three waves of fox-fire spirits bursting on the foe: form 2's atomic blast, shortened with a quick
+# fade so each hit stays separate, the SAME clip each time (thùng, thùng, thùng).
+clip('f3-boom', ('freesound', '438530'), 3.17, 3.7, 'each spirit wave explodes (the same deep blast, three times)', fade_in=.002, fade_out=.2, highpass=25, rms=.16)
+# After the last wave, the fire burns on and rings out: an enormous building fire roaring, fading over 1 s.
+clip('f3-burn', ('freesound', '483308'), 2.6, 4.8, 'the fire burns on after the last wave and rings out (2.2 s)', fade_in=.15, fade_out=1.0)
 
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')

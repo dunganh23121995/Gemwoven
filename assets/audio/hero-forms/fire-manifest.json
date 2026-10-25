@@ -77,60 +77,60 @@
   },
   "fire-f2-ignite": {
     "file": "hero-forms/fire/f2-ignite.wav",
-    "duration": 0.9,
+    "duration": 0.95,
     "beat": "the sword bursts alight (fire whoomph, 0 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Fireball",
-        "author": "NearTheAtmoshphere",
-        "source_url": "https://freesound.org/people/NearTheAtmoshphere/sounds/683179/",
+        "title": "flame burst ignite bbq barbecue.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/637533/",
         "license": "CC0-1.0",
-        "sha256": "5b0004f82c5936d92b450419d39f6b5ea9d23975a3c336f9c5560803e99f9193"
+        "sha256": "7d0ac55c43955b3533e4e894f446842ce08725722cd3e4428cf1d048def61b02"
       }
     ],
-    "processing": "excerpt 0.00-0.90 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.707,
-    "rms": 0.11,
-    "sha256": "7e75a0a733ea8d9af7364bbfcf3da7fb9ae97152aaf0d3cd933128b823e3de9e"
+    "processing": "excerpt 0.00-0.95 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.099,
+    "sha256": "57465004550b1f293bb881072d80b76a6eb439229f62ffbe67673c66f2ad73c1"
   },
   "fire-f2-flare": {
     "file": "hero-forms/fire/f2-flare.wav",
     "duration": 0.95,
-    "beat": "the fox-fire blade flares up and roars (300-1250 ms)",
+    "beat": "the fox-fire blade towers and roars (300-1250 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "R09-74-Fire Torch.wav",
+        "title": "R09-63-Large Building Fire.wav",
         "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/483316/",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/483308/",
         "license": "CC0-1.0",
-        "sha256": "f5091b19d1986d33688671026a8aef8efedaf1f475bb211af58e94bbd005bf7a"
+        "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
       }
     ],
-    "processing": "excerpt 0.60-1.55 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.367,
+    "processing": "excerpt 0.45-1.40 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.535,
     "rms": 0.11,
-    "sha256": "e139098e1c531b2f471302246c4f1739ecdd9ff2d99dce542c00abfa4616a2bd"
+    "sha256": "f0c2b73622906678a7a8647bf3cf940a0546e9fa1816b0a8e559dcb61fdf0e5f"
   },
   "fire-f2-lava": {
     "file": "hero-forms/fire/f2-lava.wav",
     "duration": 0.95,
-    "beat": "lava heaving low under the towering blade (300-1250 ms)",
+    "beat": "lava heaving and gulping under the towering blade (300-1250 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Bubbling lava flowing1.wav",
-        "author": "Jim-Bretherick",
-        "source_url": "https://freesound.org/people/Jim-Bretherick/sounds/618013/",
+        "title": "Hot Bubbling Mud",
+        "author": "Breviceps",
+        "source_url": "https://freesound.org/people/Breviceps/sounds/456806/",
         "license": "CC0-1.0",
-        "sha256": "647782e1c55131f1cb31d865763f826fc88d34b6d0a44b326147f7d5663dca5d"
+        "sha256": "03db59990594fa6a12ffa03593c2081f4b941975c25416f0f831c28893ac6c53"
       }
     ],
-    "processing": "excerpt 1.00-1.95 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.471,
-    "rms": 0.11,
-    "sha256": "d8e64fec2c27747b47c887bd52799f7edae2122687e6bcc2c3797646ea264161"
+    "processing": "excerpt 1.60-2.55 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.096,
+    "sha256": "6f9fcca357859d454466f8e6c902fe01f5953f5c6f730d6cf1bc8d29b44bb848"
   },
   "fire-f2-cleave": {
     "file": "hero-forms/fire/f2-cleave.wav",
@@ -173,21 +173,21 @@
   "fire-f2-floor": {
     "file": "hero-forms/fire/f2-floor.wav",
     "duration": 1.5,
-    "beat": "lava boils and spits along the cut on the floor, fading (1280-2800 ms)",
+    "beat": "lava boils and gulps along the cut on the floor, fading (1280-2780 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "SFX_TV_BOILING_METAL_LAVA",
-        "author": "tiagusilva37",
-        "source_url": "https://freesound.org/people/tiagusilva37/sounds/737664/",
+        "title": "Hot Bubbling Mud",
+        "author": "Breviceps",
+        "source_url": "https://freesound.org/people/Breviceps/sounds/456806/",
         "license": "CC0-1.0",
-        "sha256": "ca2d656a8295c1e251868084879601878d79bda4e0173fee1263d7ded4d4033d"
+        "sha256": "03db59990594fa6a12ffa03593c2081f4b941975c25416f0f831c28893ac6c53"
       }
     ],
-    "processing": "excerpt 0.40-1.90 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.569,
-    "rms": 0.11,
-    "sha256": "2bfd0bdfabbd6c92b60cb4f473fcab362c6f7a13230caf9765da1d4d9b86d358"
+    "processing": "excerpt 6.50-8.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.086,
+    "sha256": "0467a0e5a6f6d2cab82a35d5aa54b8d9f0c625979dacd992bcba4d90b8500583"
   },
   "fire-f3-flare": {
     "file": "hero-forms/fire/f3-flare.wav",
@@ -246,61 +246,42 @@
     "rms": 0.08,
     "sha256": "f62c2a9374851e39e2283af160ff22c6a9733cc682d0ac815145e003278e74c7"
   },
-  "fire-f3-boom1": {
-    "file": "hero-forms/fire/f3-boom1.wav",
-    "duration": 0.4,
-    "beat": "first spirit wave explodes (big close explosion)",
+  "fire-f3-boom": {
+    "file": "hero-forms/fire/f3-boom.wav",
+    "duration": 0.53,
+    "beat": "each spirit wave explodes (the same deep blast, three times)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "BOOMING PUNCHY EXPLOSION - close, big SCHOEPS MK41.wav",
-        "author": "misosound",
-        "source_url": "https://freesound.org/people/misosound/sounds/251759/",
+        "title": "G33-24-Atomic Bomb.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/438530/",
         "license": "CC0-1.0",
-        "sha256": "3ce9606a53fba36a37ab04716253f932260b2f23523ad3356326cbbac41614d0"
+        "sha256": "814ea44fb63c3413a134b8d6640c62a4baf0c66b7f7a3e145e14747d9344e47c"
       }
     ],
-    "processing": "excerpt 0.06-0.46 s of one recording, 30 Hz high-pass, edge fades, gain",
-    "peak": 0.615,
-    "rms": 0.11,
-    "sha256": "32bd6a03ed30507fb3afa31444eefb84bfe47b46216defcc6aa714feb52a0cc5"
+    "processing": "excerpt 3.17-3.70 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.477,
+    "rms": 0.16,
+    "sha256": "f0714d784f16c55fb4af0748de2048b6b8c491a10d1011bd78c19ba2daae3950"
   },
-  "fire-f3-boom2": {
-    "file": "hero-forms/fire/f3-boom2.wav",
-    "duration": 0.4,
-    "beat": "second spirit wave explodes (grenade blast)",
+  "fire-f3-burn": {
+    "file": "hero-forms/fire/f3-burn.wav",
+    "duration": 2.2,
+    "beat": "the fire burns on after the last wave and rings out (2.2 s)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Grenade Explosion SFX (medium-sized, meaty, realistic)",
-        "author": "unfa",
-        "source_url": "https://freesound.org/people/unfa/sounds/609587/",
+        "title": "R09-63-Large Building Fire.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/483308/",
         "license": "CC0-1.0",
-        "sha256": "e2968702f0d97e09f0725a5fe418bccec2525b7f71da7e0384a3dfffba5bb9c2"
+        "sha256": "474ebd76e86ec31d7b44e163ad14dbb064baf469bc25cd9777344d7d107e22d4"
       }
     ],
-    "processing": "excerpt 0.00-0.40 s of one recording, 30 Hz high-pass, edge fades, gain",
-    "peak": 0.609,
+    "processing": "excerpt 2.60-4.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.518,
     "rms": 0.11,
-    "sha256": "dcd90ae85c82816fc2f66386add8122a50df3d00732ccca52b02c10f1ce1a8bd"
-  },
-  "fire-f3-boom3": {
-    "file": "hero-forms/fire/f3-boom3.wav",
-    "duration": 0.44,
-    "beat": "third spirit wave explodes (missile blast)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Missile Blast 1",
-        "author": "magnuswaker",
-        "source_url": "https://freesound.org/people/magnuswaker/sounds/528258/",
-        "license": "CC0-1.0",
-        "sha256": "3aaa07ac425005518d31f6f959a57750d17e7265c71436dcad5c77b3f125f22d"
-      }
-    ],
-    "processing": "excerpt 0.01-0.45 s of one recording, 30 Hz high-pass, edge fades, gain",
-    "peak": 0.531,
-    "rms": 0.11,
-    "sha256": "b54880079e2e9669820492bef6602e93d8d3752b3b7dc7627c76f8fb1581812d"
+    "sha256": "6a42eb62ab79acd65ef1bc996be16daa3222ba82dd0c3101c023f8511178eb94"
   }
 }
