@@ -1,2 +1,0 @@
-Nori form 3 ultimate sounds are approved (2026-10-25): the form-3 cues in src/forms-nori.js and their clips
-(gather, rush, bash, swing, slam, boom, tree, roots, leaves). Only form 2 is still being reworked.
