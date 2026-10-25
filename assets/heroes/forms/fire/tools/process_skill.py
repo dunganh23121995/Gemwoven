@@ -75,6 +75,8 @@ def main():
     p.add_argument("--ref-h", type=float, default=0, help="reference silhouette height in raw pixels (default: measured on --ref-frame)")
     p.add_argument("--align", choices=["feet", "row", "none"], default="feet", help="per-frame: put each frame's boots on the idle's boots")
     p.add_argument("--shift-x", type=float, default=0, help="extra horizontal offset in output pixels (centre a run's body, not its boots)")
+    p.add_argument("--k256", type=float, default=0, help="raw px -> px of a 256px actor cell (sets the body size directly)")
+    p.add_argument("--scale", type=float, default=0, help="with --k256: the sheet's runtime scale (drawing box growth)")
     p.add_argument("--body-frac", type=float, default=0.40, help="share of the cell height the reference silhouette fills")
     a = p.parse_args()
 
@@ -118,6 +120,9 @@ def main():
     # (body_frac of the cell) must show as tall as the idle's (idle_h of a 256px cell).
     runtime_scale = idle_h / (IDLE_CELL * a.body_frac)
     body_out = a.body_frac * a.cell
+    if a.k256:
+        runtime_scale = a.scale or 1.0
+        body_out = a.k256 * a.cell / (IDLE_CELL * runtime_scale) * ref_h
     k = body_out / ref_h
     # Each frame's boots land where the idle's stand (centre x, sole on footY): the model may
     # draw rows a little higher or lower in their cells, the stance must not jump.

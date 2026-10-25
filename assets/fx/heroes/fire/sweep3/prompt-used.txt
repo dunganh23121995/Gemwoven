@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika in her nine-tailed form with a long moon glaive whose blade is a large golden-orange crescent).
+Subject: the trail of one powerful sweeping cut of the moon glaive: a broad, sharp CRESCENT-MOON shaped slash trail of fox-fire, sweeping in a wide arc from the upper LEFT, over and down to the lower RIGHT of the cell (like a large crescent moon lying diagonally), its sharp convex leading edge on the outside. White-gold moon-bright leading edge, a band of golden-orange fox-fire behind it, crimson flame tongues and a few cream-tipped fox-tail-shaped wisps peeling off its inner edge. The trail is thickest and brightest at its lower-right end (where the blade strikes) and tapers to a thin point at its upper-left start.
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024. Read left-to-right, then the next row. The crescent keeps the same position and size in every cell, filling about 85% of the cell.
+Frame 1: the cut in progress: only the upper-left two thirds of the crescent formed, with a bright leading tip.
+Frame 2: the full crescent blazing, brightest.
+Frame 3: the crescent thinning, wisps and flame tongues peeling away.
+Frame 4: only a faint thin trace and drifting embers left.
+Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No glaive, no hand, no character.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

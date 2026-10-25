@@ -253,142 +253,145 @@
           "count": 8,
           "heads": [
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ]
           ],
           "footY": 0.94,
           "frameDuration": 150
         },
         "attack": {
-          "file": "assets/heroes/forms/fire/form-3/attack.webp",
+          "file": "assets/heroes/forms/fire/form-3/strike.webp",
           "cols": 3,
           "rows": 2,
           "count": 6,
           "heads": [
             [
-              142,
-              80
+              134,
+              70
             ],
             [
-              166,
-              85
+              134,
+              70
             ],
             [
-              148,
-              89
+              134,
+              70
             ],
             [
-              162,
-              99
+              134,
+              70
             ],
             [
-              178,
-              83
+              134,
+              70
             ],
             [
-              142,
-              82
+              134,
+              70
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 2.186
         },
         "cast": {
-          "file": "assets/heroes/forms/fire/form-3/cast.webp",
+          "file": "assets/heroes/forms/fire/form-3/cast2.webp",
           "cols": 3,
           "rows": 2,
           "count": 6,
           "heads": [
             [
-              136,
-              80
+              134,
+              70
             ],
             [
-              136,
-              80
+              134,
+              70
             ],
             [
-              135,
-              80
+              134,
+              70
             ],
             [
-              141,
-              79
+              134,
+              70
             ],
             [
-              140,
-              78
+              134,
+              70
             ],
             [
-              136,
-              79
+              134,
+              70
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 1.4
         },
         "run": {
-          "file": "assets/heroes/forms/fire/form-3/run.webp",
+          "file": "assets/heroes/forms/fire/form-3/dash.webp",
           "cols": 3,
           "rows": 2,
           "count": 6,
           "heads": [
             [
-              152,
-              81
+              134,
+              70
             ],
             [
-              144,
-              82
+              134,
+              70
             ],
             [
-              152,
-              87
+              134,
+              70
             ],
             [
-              150,
-              83
+              134,
+              70
             ],
             [
-              144,
-              83
+              134,
+              70
             ],
             [
-              154,
-              91
+              134,
+              70
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 90,
+          "scale": 1.6957
         },
         "skill": {
           "file": "assets/heroes/forms/fire/form-3/skill.webp",
@@ -397,28 +400,28 @@
           "count": 6,
           "heads": [
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ]
           ],
           "footY": 0.94,
@@ -432,28 +435,28 @@
           "count": 6,
           "heads": [
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ]
           ],
           "footY": 0.94,
@@ -461,34 +464,34 @@
           "scale": 1.6957
         },
         "slash": {
-          "file": "assets/heroes/forms/fire/form-3/slash.webp",
+          "file": "assets/heroes/forms/fire/form-3/strike.webp",
           "cols": 3,
           "rows": 2,
           "count": 6,
           "heads": [
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ],
             [
-              136,
-              72
+              134,
+              70
             ]
           ],
           "footY": 0.94,

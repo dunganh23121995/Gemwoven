@@ -333,13 +333,15 @@ async function mikaNineSunSweep(raw,onRelease){
 // heavy fox-fire broadsword arc (form 2) or a moon-glaive crescent (form 3), peaking at contact.
 const mikaBaseSlash=combatV3Slash;
 combatV3Slash=function(point,key,index,ultimate,direction,pending){
-  const form=mikaSlashForm,name='slash'+form,sheet=mikaSheet(name);
+  // Six-star: the long glaive's own crescent sweep (sweep3), drawn from upper left down to the strike.
+  const form=mikaSlashForm,name=form===3?'sweep3':'slash'+form,sheet=mikaSheet(name);
   if(!form||key!=='fire'||!sheet||reduced)return mikaBaseSlash(point,key,index,ultimate,direction,pending);
-  const foe=mikaFoeBody(),size=Math.min(foe.height*1.25,point.width*1.15,220);
+  const foe=mikaFoeBody(),size=form===3?Math.min(Math.max(foe.height*1.3,foe.width*1.1),point.width*1.3,230):Math.min(foe.height*1.25,point.width*1.15,220);
   // Three cuts in a chain: a falling diagonal, a rising one, an overhead (form 2) / level (form 3).
-  const pose=form===2?[[0,1],[0,-1],[28,1]][index%3]:[[-14,1],[14,-1],[90,1]][index%3];
+  const pose=form===2?[[0,1],[0,-1],[28,1]][index%3]:[[0,1],[-12,1],[12,1]][index%3];
   const node=mikaFxNode(name,'mika-slash');
-  node.style.cssText+=`;left:${foe.x-direction*6}px;top:${foe.y}px;width:${size}px;height:${size}px`;
+  const at=form===3?Math.min(foe.x,foe.left+Math.min(foe.width*.35,70)):foe.x-direction*6;
+  node.style.cssText+=`;left:${at}px;top:${foe.y}px;width:${size}px;height:${size}px`;
   const frames=[0,1,1,2,3],contact=COMBAT_V3_STRIKES.fire.contact;
   pending.push((async()=>{
     for(const [i,f] of frames.entries()){
@@ -370,11 +372,13 @@ combatV3Action=function(side,action,duration){
 };
 // The glaive reaches far: the lunge stops short, so the crescent (not her body) meets the foe.
 function mikaGlaiveShortening(){
-  const sheet=mikaSheet('slash3')&&ART.heroForms?.fire?.['3']?.slash;if(!sheet)return 0;
+  const sheet=mikaSheet('sweep3')&&ART.heroForms?.fire?.['3']?.slash;if(!sheet)return 0;
   const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,Math.abs(to.x-from.x)-from.width*.43);
-  // Contact pose: the crescent's middle sits 0.40 of the drawn cell right of its centre.
-  const reach=from.width*(sheet.scale||1)*.40,foe=mikaFoeBody();
-  return Math.max(0,Math.min(travel,travel-(foe.x-from.x-reach)));
+  // Contact pose ("strike" frame 3): the crescent's middle sits 0.34 of the drawn cell right of its centre.
+  const reach=from.width*(sheet.scale||1)*.34,foe=mikaFoeBody();
+  // The crescent lands on the foe's near side (a big foe's middle can be far beyond its front).
+  const aim=Math.min(foe.x,foe.left+Math.min(foe.width*.35,70));
+  return Math.max(0,Math.min(travel,travel-(aim-from.x-reach)));
 }
 combatV3Pose=function(node,transform,...rest){
   if(mikaSlashShorten&&node===actor('hero')){

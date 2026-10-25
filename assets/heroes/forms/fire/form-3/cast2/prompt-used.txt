@@ -1,0 +1,14 @@
+Create clean HD painterly chibi RPG animation sheet, NOT pixel art, matching the attached character exactly.
+Image 1 is the exact character identity and art reference: Mika in her final nine-tailed form, fox-girl empress, long flowing red-orange hair with gold ornaments, fox ears, white-and-gold ornate armor with red cloth panels and gold diamond gems, NINE large fluffy orange-red-and-cream fox tails fanned behind her, and her MOON GLAIVE exactly as drawn in Image 1.
+THE GLAIVE (identical in every frame, never shortened): a long polearm whose total length from the butt spike to the tip of the crescent is about 1.3 times her full standing height (boot soles to ear tips); a dark red-brown shaft with gold rings and gold diamond fittings set with red gems, an ornate gold collar with red gems under the blade, and a LARGE golden-orange crescent moon blade at the top, about one third of her height tall, its sharp outer edge facing forward.
+Image 2 is a scale-and-root template made from the same character. Preserve Image 2's cell locations, fixed camera distance, standing-equivalent anatomical scale, body root position, grounded foot-contact line and padding. Never zoom or resize a pose to fill its cell.
+EXACT 3 columns x 2 rows, six equal square cells, landscape 1536x1024. Read left-to-right, then the next row. 3/4 view, facing RIGHT. Feet planted on the same foot line in every frame.
+A 6-frame CAST / power-up: she plants the glaive and raises her free hand to summon her fox-fire.
+Frame 1: guard stance, the glaive held in her right hand slanting diagonally across in front of her, butt spike near the ground behind her left foot, the crescent high above her right shoulder; left hand on her hip.
+Frame 2: she plants the glaive upright beside her right side, the shaft vertical, butt on the ground, the crescent high above her head; she lifts her left hand.
+Frame 3: holding the planted upright glaive, her left palm raised forward and up, gathering power, the nine tails beginning to fan out.
+Frame 4: left arm thrust high, palm up, head lifted, the nine tails fully fanned out; the glaive still upright in her right hand.
+Frame 5: releasing, left arm sweeping forward toward the right, tails still fanned; glaive upright.
+Frame 6: settling back to the guard stance of frame 1, the glaive diagonal again.
+The entire character, the whole glaive and all nine tails must fit fully inside each cell with magenta margin on all four sides; nothing may cross a cell edge. Same scale in all six cells.
+Body and held glaive only: no flames, no glow, no sparks, no magic circles, no smoke, no dust, no shadows, no floor, no detached effects. Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no grid lines, no borders between cells.
