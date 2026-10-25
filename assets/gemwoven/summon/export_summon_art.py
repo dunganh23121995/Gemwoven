@@ -136,5 +136,9 @@ for i, hero in enumerate(["fire", "ice", "earth", "lightning", "shadow", "novice
     meta[f"fragment-{hero}"] = {**save(piece, f"fragment-{hero}"), "fragmentArt": True, "transparent": True}
 generic = Image.open(ROOT / "fragment-puzzle" / "raw-generic.png")
 meta["hero-fragment"] = {**save(fit(trim(key_outside(generic), 4), 256), "hero-fragment"), "fragmentArt": True, "transparent": True}
+# The holy light beam of the hero spotlight; "pool" is where its light pool sits (fraction of height).
+beam = fit(trim(unmix(raw("holy-beam")), 6), 900)
+a = np.asarray(beam.getchannel("A"), dtype=np.float32); rows = a.sum(1); pool = int(np.argmax(rows[len(rows) // 2:])) + len(rows) // 2
+meta["summon-beam"] = {**save(beam, "beam"), "pool": round(pool / beam.height, 4)}
 (ROOT / "summon.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 print("packed", len(meta))

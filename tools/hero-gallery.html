@@ -186,12 +186,13 @@ function showcases(){
     let current=null;
     const mount=()=>{
       current?.stop();host.innerHTML='';
-      // Like the hub's fitBody: one visible height for every form, boots centred on the spot.
-      const a=show.bodyAnchor,h=.56/(a.foot-a.crown),im=document.createElement('img');im.className='art';im.src=show.file;
+      // Like the hub's fitBody: form 1's visible height, every other form scaled by its headFit so the
+      // body keeps one size (assets/heroes/head-scale.json); boots centred on the spot.
+      const a=show.bodyAnchor,k=show.headFit||1,h=.56*k/(a.foot-a.crown),im=document.createElement('img');im.className='art';im.src=show.file;
       im.style.cssText=`position:absolute;width:${h*100}%;height:${h*100}%;left:${(.5-a.x*h)*100}%;top:${(.84-a.foot*h)*100}%`;host.append(im);
       const aura=A[`form-aura-${hero}`];
       if(n===3&&aura&&window.GemwovenFormEffects){const fx=document.createElement('span');fx.className='hero-form-effects';fx.setAttribute('aria-hidden','true');
-        fx.style.cssText=`bottom:16%;--hero-visible-height:${host.clientHeight*.56}px;--aura-body-shift:${((a.bodyX??a.x)-a.x)*h*host.clientWidth}px`;
+        fx.style.cssText=`bottom:16%;--hero-visible-height:${host.clientHeight*.56*k}px;--aura-body-shift:${((a.bodyX??a.x)-a.x)*h*host.clientWidth}px`;
         fx.innerHTML=GemwovenFormEffects.markup(hero,3,aura);host.append(fx);}
       current=GemwovenHeroShow.attach(host,hero,n);shows[n]=current;
     };

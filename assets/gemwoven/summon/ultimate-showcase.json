@@ -1,0 +1,28 @@
+{
+  "_about": "Ultimate showcase on the summon spotlight (summon-cinematic.js): after a whole hero's entrance it performs its ultimate once with its real combat art (pose sheet + skill FX), then returns to its showcase loop. frames: [frame, ms]; blade sockets are the combat ones from src/mika-ultimate.js (256px cell, angle from vertical). Built into the hub manifest by scripts/build_gemwoven.py.",
+  "fire": {
+    "1": {
+      "sheet": "assets/reimagined/heroes/fire/smash.webp", "cols": 3, "rows": 2,
+      "frames": [[0, 0], [1, 300], [2, 700], [3, 1810], [4, 1920], [5, 2550]], "end": 3150,
+      "blade": {"file": "assets/fx/mika/blade.webp", "cols": 2, "rows": 2, "cell": 256, "from": 180, "fade": 1920,
+                "sockets": [[117, 113, -40], [120, 113, -40], [121, 112, -40], [167, 112, -66], [190, 199, 115], [176, 197, 117]]},
+      "wave": {"file": "assets/fx/mika/wave.webp", "cols": 2, "rows": 2, "at": 1920, "ms": 420, "size": 0.75},
+      "impact": {"file": "assets/fx/mika/explosion.webp", "cols": 3, "rows": 2, "at": 2340, "ms": 630, "size": 1.25},
+      "sounds": [["ult-charge", 0], ["ult-whoosh", 1700]]
+    },
+    "2": {
+      "sheet": "assets/heroes/forms/fire/form-2/skill.webp", "cols": 3, "rows": 2,
+      "frames": [[0, 0], [1, 450], [2, 900], [3, 1900], [4, 2010], [5, 2700]], "end": 3250,
+      "wave": {"file": "assets/fx/heroes/fire/arc2s.webp", "cols": 4, "rows": 1, "at": 2010, "ms": 420, "size": 0.9},
+      "impact": {"file": "assets/fx/heroes/fire/impact2.webp", "cols": 4, "rows": 1, "at": 2430, "ms": 560, "size": 1.25},
+      "sounds": [["ult-charge", 0], ["ult-whoosh", 1800]]
+    },
+    "3": {
+      "sheet": "assets/heroes/forms/fire/form-3/skill.webp", "cols": 3, "rows": 2,
+      "frames": [[0, 0], [1, 450], [2, 900], [3, 1900], [4, 2010], [5, 2700]], "end": 3250,
+      "wave": {"file": "assets/fx/heroes/fire/sweep3.webp", "cols": 4, "rows": 1, "at": 2010, "ms": 420, "size": 0.9},
+      "impact": {"file": "assets/fx/heroes/fire/impact3.webp", "cols": 4, "rows": 1, "at": 2430, "ms": 600, "size": 1.3},
+      "sounds": [["ult-charge", 0], ["ult-whoosh", 1800]]
+    }
+  }
+}

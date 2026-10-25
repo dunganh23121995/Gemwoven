@@ -524,6 +524,90 @@
    }
   },
   {
+   "id": "head-scale",
+   "group": "2. Hình chiến đấu",
+   "label": "Đã đo đầu (thân cùng cỡ ở mọi dạng, trận và trình diễn)",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     }
+    }
+   }
+  },
+  {
    "id": "showcase-master",
    "group": "3. Trình diễn ngoài trận",
    "label": "Tư thế trình diễn",
@@ -728,7 +812,7 @@
     "ice": {
      "1": {
       "done": true,
-      "detail": "snowflake, earflick"
+      "detail": "earflick, snowflake"
      },
      "2": {
       "done": true,

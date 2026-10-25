@@ -66,17 +66,12 @@ const server=http.createServer((req,res)=>{
     for(const count of [1,10]){
       await page.locator(`[data-action="do:summon"][data-count="${count}"]`).first().click();
       await page.locator('#confirm-summon').click();
-      await page.waitForFunction(()=>document.querySelector('#summon-reveal')?.dataset.phase==='cards',null,{timeout:15000});
+      // Cards fall, land and open by themselves; a whole hero's spotlight waits for a tap.
       assert.equal(await page.locator('.celestial-card').count(),count);
-      assert.equal(await page.locator('.celestial-card.is-open').count(),0);
-      assert.equal(await page.locator('.celestial-front[aria-hidden="true"]').count(),count);
       const committed=await page.evaluate(()=>GEMWOVEN_GAME.engine.exportSave());
-      await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,`detail-summon-${count}-sealed.png`)});
-      await page.locator('.celestial-card').first().click();
-      assert.equal(await page.locator('.celestial-card.is-open').count(),1);
-      if(count>1)await page.locator('.celestial-open-all').click();
-      await page.waitForTimeout(900);
-      assert.equal(await page.locator('.celestial-card.is-open').count(),count);assert.ok(await page.locator('.celestial-open-all').isDisabled(),'Open all ends once every card is revealed');
+      await page.waitForFunction(()=>{const s=document.querySelector('.summon-hero-stage');if(s)s.click();return document.querySelector('#summon-reveal')?.dataset.phase==='complete';},null,{timeout:60000,polling:500});
+      assert.equal(await page.locator('.celestial-card.is-open').count(),count,'Every card opens by itself');
+      assert.equal(await page.locator('.celestial-again-btn').count(),2,'Summon again is offered at the end');
       assert.equal(await page.evaluate(()=>GEMWOVEN_GAME.engine.exportSave()),committed,'Revealing never rolls or spends again');
       await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,`detail-summon-${count}-open.png`)});
       await page.locator('.celestial-close').click();await page.waitForFunction(()=>!document.querySelector('#summon-reveal'));
@@ -122,11 +117,11 @@ const server=http.createServer((req,res)=>{
     await page.evaluate(()=>{const p=GEMWOVEN_GAME.engine.read();p.wallet.tickets=10;localStorage.setItem(GemwovenProgression.KEY,JSON.stringify(p));});
     await route('summon');
     await page.locator('[data-action="do:summon"][data-count="10"]').first().click();await page.locator('#confirm-summon').click();
-    await page.waitForFunction(()=>document.querySelector('#summon-reveal')?.dataset.phase==='cards',null,{timeout:15000});
-    await page.locator('.celestial-card').first().focus();await page.keyboard.press('Enter');
-    assert.equal(await page.locator('.celestial-card.is-open').count(),1,'Keyboard opens a card with reduced motion');
+    // Reduced motion: no fall; the cards appear opened (a hero still waits for its tap).
+    await page.waitForFunction(()=>{const s=document.querySelector('.summon-hero-stage');if(s)s.click();return document.querySelector('#summon-reveal')?.dataset.phase==='complete';},null,{timeout:15000,polling:200});
+    assert.equal(await page.locator('.celestial-card.is-open').count(),10,'Reduced motion shows every card opened');
     await page.locator('#summon-reveal').screenshot({path:path.join(__dirname,'detail-mobile-summon.png')});
-    await page.locator('.celestial-open-all').click();await page.locator('.celestial-close').click();await page.waitForFunction(()=>!document.querySelector('#summon-reveal'));
+    await page.locator('.celestial-close').click();await page.waitForFunction(()=>!document.querySelector('#summon-reveal'));
     // Real phone emulation: overflow must never widen the layout viewport, and dialogs fit the screen.
     const phone=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});
     const mobile=await phone.newPage();mobile.on('pageerror',e=>errors.push(e.message));

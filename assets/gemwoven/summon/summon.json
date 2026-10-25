@@ -154,5 +154,11 @@
     "height": 226,
     "fragmentArt": true,
     "transparent": true
+  },
+  "summon-beam": {
+    "file": "assets/gemwoven/summon/runtime/beam.webp",
+    "width": 376,
+    "height": 900,
+    "pool": 0.94
   }
 }

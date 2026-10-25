@@ -117,7 +117,6 @@
 .celestial-reveal>header>small{font:600 12px/1.5 var(--gw-font);letter-spacing:2px}
 .celestial-reveal>footer>p{font:13px/1.4 var(--gw-font)}
 .celestial-reveal .celestial-again-btn{--h:54px;width:auto;max-width:none;border:0;border-radius:0;box-shadow:none;padding:6px 12px;font:700 14px/1.1 var(--gw-font);white-space:nowrap}
-.celestial-reveal .celestial-open-all{--h:46px;width:auto;max-width:none;border:0;border-radius:0;box-shadow:none;padding:calc(6*var(--u)) calc(58*var(--u));font:700 17px/1.1 var(--gw-font)}
 /* Card labels scale with the card (summon-cinematic.js sets --cw); only the typeface is shared. */
 .celestial-back small,.celestial-front small,.celestial-front strong{font-family:var(--gw-font)}
 .celestial-reveal .celestial-skip{font-family:var(--gw-font)}

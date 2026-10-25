@@ -1,0 +1,29 @@
+{
+  "_about": "Head size of every hero form, so the body shows at one size in all forms (assets/heroes/forms/head_scale.py explains the fields and how they were measured). Read by build.py (combat) and scripts/build_gemwoven.py (hub).",
+  "heroes": {
+    "shadow": {"measure": "eyeSpan", "faceBox": {"combat": [125, 112, 163, 141], "showcase": [212, 150, 263, 186]}},
+    "fire": {"measure": "eyeChin", "faceBox": {"combat": [128, 120, 161, 144], "showcase": [198, 165, 238, 195]}},
+    "ice": {"measure": "eyeChin", "faceBox": {"combat": [137, 128, 163, 152], "showcase": [196, 172, 236, 202]}},
+    "earth": {"measure": "eyeChin", "faceBox": {"combat": [95, 138, 121, 160], "showcase": [186, 160, 226, 190]}},
+    "lightning": {"measure": "eyeChin", "faceBox": {"combat": [113, 117, 148, 143], "showcase": [180, 168, 222, 200]}},
+    "novice": {"measure": "eyeChin", "faceBox": {"combat": [110, 108, 140, 132], "showcase": [195, 158, 228, 186]}}
+  },
+  "forms": {
+    "shadow-1": {"combat": {"eyes": [148, 128], "eyeSpan": 13.7, "ratio": 1.0, "headPx": 13.7, "cellPx": 256, "bodyPx": 161}, "showcase": {"eyes": [240, 173], "eyeSpan": 20.6, "ratio": 1.0, "headPx": 20.6, "cellPx": 384, "bodyPx": 211}},
+    "shadow-2": {"combat": {"eyes": [182, 109], "eyeSpan": 15.2, "template": [1.17, 1.19], "ratio": 1.17, "headPx": 16.03, "cellPx": 256, "bodyPx": 188}, "showcase": {"eyes": [259, 171], "eyeSpan": 18.7, "template": [0.98, 1.02], "ratio": 0.98, "headPx": 20.19, "cellPx": 384, "bodyPx": 211}},
+    "shadow-3": {"combat": {"eyes": [148, 128], "eyeSpan": 13.5, "template": [1.12, 1.1], "ratio": 1.1, "headPx": 15.07, "cellPx": 256, "bodyPx": 203}, "showcase": {"eyes": [167, 114], "eyeSpan": 11.3, "template": [0.7, 0.75], "ratio": 0.7, "headPx": 14.42, "cellPx": 256, "bodyPx": 205}},
+    "fire-1": {"combat": {"eyes": [144.5, 128], "eyeChin": 11, "eyeSpan": 13, "ratio": 1.0, "headPx": 11.0, "cellPx": 256, "bodyPx": 163}, "showcase": {"eyes": [224, 173.5], "eyeChin": 16.5, "eyeSpan": 18.5, "ratio": 1.0, "headPx": 16.5, "cellPx": 384, "bodyPx": 211}},
+    "fire-2": {"combat": {"eyes": [146.5, 107], "eyeChin": 14.5, "eyeSpan": 19, "template": [1.5, 1.52], "ratio": 1.481, "headPx": 16.29, "cellPx": 256, "bodyPx": 190}, "showcase": {"eyes": [220, 168], "eyeChin": 18, "eyeSpan": 18, "template": [0.82, 1.06], "ratio": 1.016, "headPx": 16.76, "cellPx": 384, "bodyPx": 211}},
+    "fire-3": {"combat": {"eyes": [145, 108.5], "eyeChin": 11.5, "eyeSpan": 17.5, "template": [1.17, 1.16], "ratio": 1.165, "headPx": 12.82, "cellPx": 256, "bodyPx": 223}, "showcase": {"eyes": [211, 203.5], "eyeChin": 12.5, "eyeSpan": 12, "template": [0.58, 0.73], "ratio": 0.689, "headPx": 11.37, "cellPx": 384, "bodyPx": 211}},
+    "ice-1": {"combat": {"eyes": [150, 137], "eyeChin": 11.75, "eyeSpan": 15, "ratio": 1.0, "headPx": 11.75, "cellPx": 256, "bodyPx": 171}, "showcase": {"eyes": [218.5, 182.5], "eyeChin": 14.5, "eyeSpan": 16, "ratio": 1.0, "headPx": 14.5, "cellPx": 384, "bodyPx": 209}},
+    "ice-2": {"combat": {"eyes": [151.5, 105], "eyeChin": 13.75, "eyeSpan": 16, "template": [1.18, 1.18], "ratio": 1.175, "headPx": 13.81, "cellPx": 256, "bodyPx": 197}, "showcase": {"eyes": [220, 180], "eyeChin": 13.5, "eyeSpan": 14.5, "template": [0.9, 0.9], "ratio": 0.903, "headPx": 13.09, "cellPx": 384, "bodyPx": 212}},
+    "ice-3": {"combat": {"eyes": [149, 116], "eyeChin": 11.75, "eyeSpan": 12.5, "template": [1.05, 1.06], "ratio": 1.025, "headPx": 12.04, "cellPx": 256, "bodyPx": 192}, "showcase": {"eyes": [209, 182.5], "eyeChin": 12, "eyeSpan": 11, "template": [0.87, 0.88], "ratio": 0.849, "headPx": 12.31, "cellPx": 384, "bodyPx": 211}},
+    "earth-1": {"combat": {"eyes": [115, 145], "eyeChin": 10, "ratio": 1.0, "headPx": 10.0, "cellPx": 256, "bodyPx": 142}, "showcase": {"eyes": [217, 170.5], "eyeChin": 17, "ratio": 1.0, "headPx": 17.0, "cellPx": 384, "bodyPx": 211}},
+    "earth-2": {"combat": {"eyes": [143, 107], "eyeChin": 13.75, "eyeSpan": 17.5, "template": [1.51, 1.59], "ratio": 1.51, "headPx": 15.1, "cellPx": 256, "bodyPx": 189}, "showcase": {"eyes": [218, 180], "eyeChin": 17, "template": [1.09, 1.1], "ratio": 1.09, "headPx": 18.53, "cellPx": 384, "bodyPx": 211}},
+    "earth-3": {"combat": {"eyes": [138, 102], "eyeChin": 14.5, "eyeSpan": 17.5, "template": [1.39, 1.41], "ratio": 1.41, "headPx": 14.1, "cellPx": 256, "bodyPx": 191}, "showcase": {"eyes": [205, 173.5], "eyeChin": 16, "template": [0.92, 0.95], "ratio": 0.941, "headPx": 16.0, "cellPx": 384, "bodyPx": 211}},
+    "lightning-1": {"combat": {"eyes": [137.5, 127], "eyeChin": 12, "eyeSpan": 14, "ratio": 1.0, "headPx": 12.0, "cellPx": 256, "bodyPx": 166}, "showcase": {"eyes": [201.5, 178], "eyeChin": 17, "eyeSpan": 15, "ratio": 1.0, "headPx": 17.0, "cellPx": 384, "bodyPx": 209}},
+    "lightning-2": {"combat": {"eyes": [140, 102], "eyeChin": 13, "eyeSpan": 13.5, "template": [1.12, 1.12], "ratio": 1.102, "headPx": 13.22, "cellPx": 256, "bodyPx": 185}, "showcase": {"eyes": [201, 175], "eyeChin": 14.75, "eyeSpan": 13.5, "template": [0.91, 0.92], "ratio": 0.905, "headPx": 15.38, "cellPx": 384, "bodyPx": 211}},
+    "lightning-3": {"combat": {"eyes": [128, 106.5], "eyeChin": 15, "eyeSpan": 15, "template": [1.12, 1.14], "ratio": 1.13, "headPx": 13.56, "cellPx": 256, "bodyPx": 194}, "showcase": {"eyes": [192, 204], "eyeChin": 15, "eyeSpan": 14.5, "template": [0.74, 0.74], "ratio": 0.811, "headPx": 13.79, "cellPx": 384, "bodyPx": 206}},
+    "novice-1": {"combat": {"eyes": [125, 115], "eyeChin": 13.5, "ratio": 1.0, "headPx": 13.5, "cellPx": 256, "bodyPx": 177}, "showcase": {"eyes": [210, 165.5], "eyeChin": 16.5, "ratio": 1.0, "headPx": 16.5, "cellPx": 384, "bodyPx": 211}}
+  }
+}

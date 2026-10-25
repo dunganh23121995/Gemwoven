@@ -287,6 +287,14 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
         actions['buff']=actions['cast'];actions.setdefault('hover',actions['run'])
         register_feet(actions['idle']);forms[form]=actions
     art['heroForms'][data['hero']]=forms
+# One body size in every form, measured by the head (assets/heroes/head-scale.json, head_scale.py):
+# the head's share of the combat idle cell per form; combat scales each form's actor by form 1's / its own.
+head_scale=json.loads((root/'assets/heroes/head-scale.json').read_text(encoding='utf-8'))['forms']
+art['heroHead']={}
+for name,entry in head_scale.items():
+    hero,form=name.rsplit('-',1);combat=entry['combat']
+    if hero=='shadow':continue  # Noct is locked as approved: he keeps his own form sizes
+    art['heroHead'].setdefault(hero,{})[form]=round(combat['headPx']/combat['cellPx'],5)
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
 for retired in [k for k in art['campaignCreatures'] if k not in campaign_foes['foes']]:del art['campaignCreatures'][retired]

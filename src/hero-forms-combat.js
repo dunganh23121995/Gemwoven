@@ -16,7 +16,11 @@ renderActors=function(){
   formOriginalRender();
   const root=actor('hero');root.dataset.heroForm=form;root.dataset.heroElement=key;
   const body=spriteDefinition('hero',key,'idle').sheet;
-  root.style.setProperty('--hero-art-scale',Math.max(1,(form===3?.82:.75)/(body.bodyHeight||.75)));
+  // One body size in every form, measured by the head (assets/heroes/head-scale.json): form 1 keeps
+  // its size and every other form is scaled so its head matches form 1's; tails, auras and weapons
+  // reach wherever they go. A form not measured yet keeps the old whole-silhouette fit.
+  const head=ART.heroHead?.[key],first=Math.max(1,.75/(ART.heroes[key]?.idle?.bodyHeight||.75));
+  root.style.setProperty('--hero-art-scale',head?.[1]&&head?.[form]?first*head[1]/head[form]:Math.max(1,(form===3?.82:.75)/(body.bodyHeight||.75)));
   root.style.setProperty('--hero-visible-height',`calc(var(--actor-size) * ${body.bodyHeight||.75})`);
   root.style.setProperty('--form-color',key==='shadow'?'#8d8d94':combatV3Palette[key].light);
   // The aura's floor cloud stands between the boots, which need not be the cell's centre.

@@ -11047,7 +11047,7 @@
     "height": 256,
     "footBounds": [
       32,
-      47,
+      48,
       219,
       239
     ],
@@ -11132,10 +11132,10 @@
     "width": 256,
     "height": 256,
     "footBounds": [
-      29,
-      51,
-      226,
-      243
+      23,
+      15,
+      231,
+      238
     ],
     "bodyAnchor": {
       "x": 0.51171875,
@@ -11422,7 +11422,9 @@
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-1/showcase/entrance.webp"
-    }
+    },
+    "headPx": 17.0,
+    "headFit": 1.0
   },
   "show-earth-3": {
     "file": "assets/heroes/forms/earth/form-3/showcase/poster.png",
@@ -11452,16 +11454,18 @@
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-3/showcase/entrance.webp"
-    }
+    },
+    "headPx": 16.0,
+    "headFit": 1.0625
   },
   "show-fire-1": {
     "file": "assets/heroes/forms/fire/form-1/showcase/poster.png",
     "width": 384,
     "height": 384,
     "footBounds": [
-      106,
+      105,
       119,
-      278,
+      281,
       330
     ],
     "bodyAnchor": {
@@ -11493,7 +11497,9 @@
         ]
       },
       "entrance": "assets/heroes/forms/fire/form-1/showcase/entrance.webp"
-    }
+    },
+    "headPx": 16.5,
+    "headFit": 1.0
   },
   "show-fire-2": {
     "file": "assets/heroes/forms/fire/form-2/showcase/poster.png",
@@ -11544,14 +11550,16 @@
         ]
       },
       "entrance": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
-    }
+    },
+    "headPx": 16.76,
+    "headFit": 0.9845
   },
   "show-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/showcase/poster.png",
     "width": 384,
     "height": 384,
     "footBounds": [
-      93,
+      98,
       119,
       285,
       330
@@ -11585,33 +11593,35 @@
         ]
       },
       "entrance": "assets/heroes/forms/fire/form-3/showcase/entrance.webp"
-    }
+    },
+    "headPx": 11.37,
+    "headFit": 1.4512
   },
   "show-ice-1": {
     "file": "assets/heroes/forms/ice/form-1/showcase/poster.png",
     "width": 384,
     "height": 384,
     "footBounds": [
-      98,
-      121,
-      273,
-      330
+      108,
+      122,
+      275,
+      328
     ],
     "bodyAnchor": {
-      "x": 0.53125,
-      "bodyX": 0.5026041666666666,
-      "crown": 0.3151041666666667,
-      "foot": 0.859375
+      "x": 0.5481770833333334,
+      "bodyX": 0.5208333333333334,
+      "crown": 0.3177083333333333,
+      "foot": 0.8541666666666666
     },
     "sheets": {
       "idle": "assets/heroes/forms/ice/form-1/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/ice/form-1/showcase/snowflake.webp",
-        "assets/heroes/forms/ice/form-1/showcase/earflick.webp"
+        "assets/heroes/forms/ice/form-1/showcase/earflick.webp",
+        "assets/heroes/forms/ice/form-1/showcase/snowflake.webp"
       ],
       "labels": [
-        "Gõ trượng kết bông tuyết",
-        "Tai thỏ giật giật"
+        "Tai thỏ giật giật",
+        "Gõ trượng kết bông tuyết"
       ],
       "timing": {
         "assets/heroes/forms/ice/form-1/showcase/snowflake.webp": [
@@ -11626,22 +11636,24 @@
         ]
       },
       "entrance": "assets/heroes/forms/ice/form-1/showcase/entrance.webp"
-    }
+    },
+    "headPx": 14.5,
+    "headFit": 1.0
   },
   "show-ice-2": {
     "file": "assets/heroes/forms/ice/form-2/showcase/poster.png",
     "width": 384,
     "height": 384,
     "footBounds": [
-      105,
-      118,
-      279,
+      102,
+      119,
+      281,
       330
     ],
     "bodyAnchor": {
       "x": 0.5234375,
-      "bodyX": 0.48828125,
-      "crown": 0.3072916666666667,
+      "bodyX": 0.484375,
+      "crown": 0.3098958333333333,
       "foot": 0.859375
     },
     "sheets": {
@@ -11667,7 +11679,9 @@
         ]
       },
       "entrance": "assets/heroes/forms/ice/form-2/showcase/entrance.webp"
-    }
+    },
+    "headPx": 13.09,
+    "headFit": 1.1346
   },
   "show-ice-3": {
     "file": "assets/heroes/forms/ice/form-3/showcase/poster.png",
@@ -11708,7 +11722,9 @@
         ]
       },
       "entrance": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
-    }
+    },
+    "headPx": 12.31,
+    "headFit": 1.2065
   },
   "show-lightning-1": {
     "file": "assets/heroes/forms/lightning/form-1/showcase/poster.png",
@@ -11738,7 +11754,9 @@
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/lightning/form-1/showcase/entrance.webp"
-    }
+    },
+    "headPx": 17.0,
+    "headFit": 1.0
   },
   "show-lightning-2": {
     "file": "assets/heroes/forms/lightning/form-2/showcase/poster.png",
@@ -11779,7 +11797,9 @@
         ]
       },
       "entrance": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
-    }
+    },
+    "headPx": 15.38,
+    "headFit": 1.1159
   },
   "show-lightning-3": {
     "file": "assets/heroes/forms/lightning/form-3/showcase/poster.png",
@@ -11809,7 +11829,9 @@
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/lightning/form-3/showcase/entrance.webp"
-    }
+    },
+    "headPx": 13.79,
+    "headFit": 1.2151
   },
   "show-novice-1": {
     "file": "assets/heroes/forms/novice/form-1/showcase/poster.png",
@@ -11850,7 +11872,9 @@
         ]
       },
       "entrance": "assets/heroes/forms/novice/form-1/showcase/entrance.webp"
-    }
+    },
+    "headPx": 16.5,
+    "headFit": 1.0
   },
   "show-earth-2": {
     "file": "assets/heroes/forms/earth/form-2/showcase/poster.png",
@@ -11880,7 +11904,9 @@
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-2/showcase/entrance.webp"
-    }
+    },
+    "headPx": 18.53,
+    "headFit": 0.9174
   },
   "summon-back-bronze": {
     "file": "assets/gemwoven/summon/runtime/back-bronze.webp",
@@ -12030,6 +12056,307 @@
     "height": 256,
     "fragmentArt": true,
     "transparent": true
+  },
+  "summon-beam": {
+    "file": "assets/gemwoven/summon/runtime/beam.webp",
+    "width": 376,
+    "height": 900,
+    "pool": 0.94
+  },
+  "ulti-fire-1-blade": {
+    "file": "assets/fx/mika/blade.webp",
+    "width": 512,
+    "height": 512
+  },
+  "ulti-fire-1-wave": {
+    "file": "assets/fx/mika/wave.webp",
+    "width": 512,
+    "height": 512
+  },
+  "ulti-fire-1-impact": {
+    "file": "assets/fx/mika/explosion.webp",
+    "width": 768,
+    "height": 512
+  },
+  "ulti-fire-1": {
+    "sheet": "assets/reimagined/heroes/fire/smash.webp",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        300
+      ],
+      [
+        2,
+        700
+      ],
+      [
+        3,
+        1810
+      ],
+      [
+        4,
+        1920
+      ],
+      [
+        5,
+        2550
+      ]
+    ],
+    "end": 3150,
+    "blade": {
+      "file": "assets/fx/mika/blade.webp",
+      "cols": 2,
+      "rows": 2,
+      "cell": 256,
+      "from": 180,
+      "fade": 1920,
+      "sockets": [
+        [
+          117,
+          113,
+          -40
+        ],
+        [
+          120,
+          113,
+          -40
+        ],
+        [
+          121,
+          112,
+          -40
+        ],
+        [
+          167,
+          112,
+          -66
+        ],
+        [
+          190,
+          199,
+          115
+        ],
+        [
+          176,
+          197,
+          117
+        ]
+      ],
+      "key": "ulti-fire-1-blade"
+    },
+    "wave": {
+      "file": "assets/fx/mika/wave.webp",
+      "cols": 2,
+      "rows": 2,
+      "at": 1920,
+      "ms": 420,
+      "size": 0.75,
+      "key": "ulti-fire-1-wave"
+    },
+    "impact": {
+      "file": "assets/fx/mika/explosion.webp",
+      "cols": 3,
+      "rows": 2,
+      "at": 2340,
+      "ms": 630,
+      "size": 1.25,
+      "key": "ulti-fire-1-impact"
+    },
+    "sounds": [
+      [
+        "ult-charge",
+        0
+      ],
+      [
+        "ult-whoosh",
+        1700
+      ]
+    ],
+    "file": "assets/reimagined/heroes/fire/smash.webp",
+    "width": 768,
+    "height": 512,
+    "cell": [
+      256,
+      256
+    ],
+    "body": {
+      "crown": 0.2890625,
+      "foot": 0.97265625,
+      "x": 0.53125
+    },
+    "headPx": 11.0
+  },
+  "ulti-fire-2-wave": {
+    "file": "assets/fx/heroes/fire/arc2s.webp",
+    "width": 2304,
+    "height": 384
+  },
+  "ulti-fire-2-impact": {
+    "file": "assets/fx/heroes/fire/impact2.webp",
+    "width": 1536,
+    "height": 384
+  },
+  "ulti-fire-2": {
+    "sheet": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        450
+      ],
+      [
+        2,
+        900
+      ],
+      [
+        3,
+        1900
+      ],
+      [
+        4,
+        2010
+      ],
+      [
+        5,
+        2700
+      ]
+    ],
+    "end": 3250,
+    "wave": {
+      "file": "assets/fx/heroes/fire/arc2s.webp",
+      "cols": 4,
+      "rows": 1,
+      "at": 2010,
+      "ms": 420,
+      "size": 0.9,
+      "key": "ulti-fire-2-wave"
+    },
+    "impact": {
+      "file": "assets/fx/heroes/fire/impact2.webp",
+      "cols": 4,
+      "rows": 1,
+      "at": 2430,
+      "ms": 560,
+      "size": 1.25,
+      "key": "ulti-fire-2-impact"
+    },
+    "sounds": [
+      [
+        "ult-charge",
+        0
+      ],
+      [
+        "ult-whoosh",
+        1800
+      ]
+    ],
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "width": 1536,
+    "height": 1024,
+    "cell": [
+      512,
+      512
+    ],
+    "body": {
+      "crown": 0.42578125,
+      "foot": 0.939453125,
+      "x": 0.521484375
+    },
+    "headPx": 17.652
+  },
+  "ulti-fire-3-wave": {
+    "file": "assets/fx/heroes/fire/sweep3.webp",
+    "width": 1536,
+    "height": 384
+  },
+  "ulti-fire-3-impact": {
+    "file": "assets/fx/heroes/fire/impact3.webp",
+    "width": 1536,
+    "height": 384
+  },
+  "ulti-fire-3": {
+    "sheet": "assets/heroes/forms/fire/form-3/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "frames": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        450
+      ],
+      [
+        2,
+        900
+      ],
+      [
+        3,
+        1900
+      ],
+      [
+        4,
+        2010
+      ],
+      [
+        5,
+        2700
+      ]
+    ],
+    "end": 3250,
+    "wave": {
+      "file": "assets/fx/heroes/fire/sweep3.webp",
+      "cols": 4,
+      "rows": 1,
+      "at": 2010,
+      "ms": 420,
+      "size": 0.9,
+      "key": "ulti-fire-3-wave"
+    },
+    "impact": {
+      "file": "assets/fx/heroes/fire/impact3.webp",
+      "cols": 4,
+      "rows": 1,
+      "at": 2430,
+      "ms": 600,
+      "size": 1.3,
+      "key": "ulti-fire-3-impact"
+    },
+    "sounds": [
+      [
+        "ult-charge",
+        0
+      ],
+      [
+        "ult-whoosh",
+        1800
+      ]
+    ],
+    "file": "assets/heroes/forms/fire/form-3/skill.webp",
+    "width": 1536,
+    "height": 1024,
+    "cell": [
+      512,
+      512
+    ],
+    "body": {
+      "crown": 0.41015625,
+      "foot": 0.93359375,
+      "x": 0.5068359375
+    },
+    "headPx": 15.399
   },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",

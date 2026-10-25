@@ -22,6 +22,24 @@ merged['summon-lake']={'file':'assets/gemwoven/summon-lake/scene.webp','width':9
 # Summon reveal art (cards, splash, sparkles, lake light) and the jigsaw-piece hero fragments,
 # packed by assets/gemwoven/summon/export_summon_art.py.
 merged.update(json.loads((ROOT/'assets/gemwoven/summon/summon.json').read_text(encoding='utf-8')))
+# Ultimate showcase on the summon spotlight: each hero form's real ultimate pose sheet and skill FX
+# (assets/gemwoven/summon/ultimate-showcase.json). The body bounds of the first pose let the
+# spotlight stand the pose sheet exactly where the showcase body stands.
+for hero,forms in json.loads((ROOT/'assets/gemwoven/summon/ultimate-showcase.json').read_text(encoding='utf-8')).items():
+    if hero.startswith('_'):continue
+    for form,spec in forms.items():
+        key=f'ulti-{hero}-{form}'
+        with Image.open(ROOT/spec['sheet']) as sheet:
+            cw,ch=sheet.width//spec['cols'],sheet.height//spec['rows']
+            box=sheet.crop((0,0,cw,ch)).convert('RGBA').getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
+            band=sheet.crop((0,0,cw,ch)).convert('RGBA').getchannel('A').point(lambda a:255 if a>=128 else 0).crop((0,box[3]-max(4,(box[3]-box[1])//8),cw,box[3])).getbbox()
+            entry={**spec,'file':spec['sheet'],'width':sheet.width,'height':sheet.height,'cell':[cw,ch],
+                   'body':{'crown':box[1]/ch,'foot':box[3]/ch,'x':((band[0]+band[2])/2)/cw}}
+        for part in ['blade','wave','impact']:
+            if part in spec:
+                with Image.open(ROOT/spec[part]['file']) as im:merged[f'{key}-{part}']={'file':spec[part]['file'],'width':im.width,'height':im.height}
+                entry[part]={**spec[part],'key':f'{key}-{part}'}
+        merged[key]=entry
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
     for form,entry in data['forms'].items():
@@ -82,6 +100,28 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
                   'labels':[f['label'] for f in book if f['name'] not in ('emerge','rift','entrance')],
                   'timing':{rel(f['file']):f['frameMs'] for f in book if f.get('frameMs')},
                   **{name:rel(name+'.webp') for name in ['emerge','rift','vortex','entrance'] if (show_dir/(name+'.webp')).exists()}}}
+# One body size in every form, measured by the head (assets/heroes/head-scale.json, head_scale.py).
+# fitBody fits a form's crown-to-foot to one height; headFit then grows or shrinks that form so its
+# head matches form 1's head at that height (tails, auras and weapons reach wherever they go).
+head_scale=json.loads((ROOT/'assets/heroes/head-scale.json').read_text(encoding='utf-8'))['forms']
+def head_share(asset,head):
+    box=asset['footBounds'];return head/(box[3]-box[1])
+for key,asset in list(merged.items()):
+    if not key.startswith('show-'):continue
+    _,hero,form=key.split('-');first,own=head_scale.get(f'{hero}-1'),head_scale.get(f'{hero}-{form}')
+    if hero=='shadow' or not (first and own and f'show-{hero}-1' in merged):continue  # Noct is locked as approved
+    asset['headPx']=own['showcase']['headPx']
+    asset['headFit']=round(head_share(merged[f'show-{hero}-1'],first['showcase']['headPx'])/head_share(asset,asset['headPx']),4)
+# The ultimate pose sheets on the summon spotlight stand at the showcase head size too: the head in a
+# combat action sheet is the combat idle head divided by that sheet's scale (forms.json).
+for key,entry in list(merged.items()):
+    if not key.startswith('ulti-') or key.count('-')!=2:continue
+    _,hero,form=key.split('-');own=head_scale.get(f'{hero}-{form}')
+    if not own:continue
+    forms_json=ROOT/f'assets/heroes/forms/{hero}/forms.json'
+    actions=json.loads(forms_json.read_text(encoding='utf-8'))['forms'].get(form,{}).get('actions',{}) if forms_json.exists() else {}
+    scale=next((a.get('scale',1) for a in actions.values() if a.get('file')==entry['file']),1)
+    entry['headPx']=round(own['combat']['headPx']*entry['cell'][1]/own['combat']['cellPx']/scale,3)
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
@@ -106,7 +146,7 @@ for key,asset in merged.items():
 (ROOT/'src/gemwoven/assets.js').write_text('window.GEMWOVEN_ASSETS = '+json.dumps(merged,ensure_ascii=False)+';\n',encoding='utf-8')
 def data_uri(rel):
     p=ROOT/rel
-    mime={'.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.ogg':'audio/ogg'}[p.suffix]
+    mime={'.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.ogg':'audio/ogg','.wav':'audio/wav'}[p.suffix]
     return f'data:{mime};base64,'+base64.b64encode(p.read_bytes()).decode()
 
 # JSON is the canonical editable copy; regenerate its browser script.
@@ -166,7 +206,7 @@ paths += list((ROOT/'assets/gemwoven/hud-connections').glob('*.prompt.txt'))
 paths += [ROOT/'assets/gemwoven/hud-connections/art-metadata.json']
 paths += [ROOT/'assets/gemwoven/beanstalk/manifest.json']
 paths += list((ROOT/'assets/gemwoven/summon-lake').glob('*.txt'))
-paths += list((ROOT/'assets/gemwoven/summon').rglob('prompt.txt'))+[ROOT/'assets/gemwoven/summon/summon.json',ROOT/'assets/gemwoven/summon/export_summon_art.py']
+paths += list((ROOT/'assets/gemwoven/summon').rglob('prompt.txt'))+[ROOT/'assets/gemwoven/summon/ultimate-showcase.json']+[ROOT/'assets/gemwoven/summon/summon.json',ROOT/'assets/gemwoven/summon/export_summon_art.py']
 paths += list((ROOT/'assets/heroes/forms').rglob('forms.json'))
 paths += list((ROOT/'assets/heroes/forms').rglob('aura.json'))
 paths += list((ROOT/'assets/heroes/forms').rglob('*.webp'))

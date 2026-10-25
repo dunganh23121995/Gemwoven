@@ -27,13 +27,17 @@
     el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
     el.style.setProperty('--form-color',palette[key]);if(form===3)el.append(aura(key,form));
   }
+  // target: the visible height (crown to foot) of the hero's form 1. Another form is scaled by its
+  // headFit (assets/heroes/head-scale.json) so its body keeps form 1's size, measured by the head;
+  // tails, auras and weapons reach past the target. Returns the drawn image size.
   function fitBody(el,asset,target){
-    const image=el.querySelector('.art,img');if(!image||!asset)return;
+    const image=el.querySelector('.art,img');if(!image||!asset)return null;
     const b=asset.footBounds||[0,0,asset.width,asset.height],a=asset.bodyAnchor||{x:(b[0]+b[2])/2/asset.width,crown:b[1]/asset.height,foot:b[3]/asset.height};
-    const height=target/Math.max(.1,a.foot-a.crown),width=height*asset.width/asset.height;
+    const visible=target*(asset.headFit||1),height=visible/Math.max(.1,a.foot-a.crown),width=height*asset.width/asset.height;
     Object.assign(image.style,{position:'absolute',inset:'auto',width:width+'px',height:height+'px',maxWidth:'none',left:`calc(50% - ${width*a.x}px)`,bottom:-(height*(1-a.foot))+'px',translate:'none',padding:'0',objectFit:'contain'});
-    el.style.setProperty('--hero-visible-height',target+'px');el.classList.add('hero-body-normalized');
+    el.style.setProperty('--hero-visible-height',visible+'px');el.classList.add('hero-body-normalized');
     el.style.setProperty('--aura-body-shift',a.bodyX!=null?((a.bodyX-a.x)*width)+'px':'0px');
+    return {width,height,visible};
   }
   window.GEMWOVEN_FORMS={decorateBody,fitBody};
   const decorate=G.decorate;
@@ -80,7 +84,7 @@
     const list=document.createElement('div');list.className='hero-form-gallery-list';modal.body.append(intro,tabs,list);
     const cards=M.HERO_FORMS[key].map((info,i)=>{
       const form=i+1,card=document.createElement('article'),body=document.createElement('div');body.className='form-preview-body';
-      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,asset=i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key];image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,form===3?128:122);decorateBody(body,key,form);
+      const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,locked=key==='shadow',asset=(!locked&&A[`show-${key}-${form}`])||(i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key]);image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,locked&&form===3?128:122);  // Noct is locked as approved: his cards stay as they weredecorateBody(body,key,form);
       card.dataset.current=String(form===current&&!!p.heroes[key]);card.dataset.form=form;
       const title=document.createElement('h3');title.textContent=info.name;
       const note=document.createElement('p');note.className='form-state';note.textContent=`${[1,4,6][i]} sao · ${form===current&&p.heroes[key]?'Đang sử dụng':form<=current&&p.heroes[key]?'Đã mở':'Chưa mở'}`;

@@ -20,6 +20,8 @@
     {"id": "move", "group": "2. Hình chiến đấu", "label": "Sheet di chuyển (chạy, hoặc bay với tướng bay)", "forms": "all", "paths": ["{formdir}/run.webp", "{formdir}/hover.webp"]},
     {"id": "skill", "group": "2. Hình chiến đấu", "label": "Tư thế tuyệt kỹ riêng của dạng (skill/press/slash...)", "forms": "2-3", "optional": true,
      "paths": ["{formdir}/skill.webp", "{formdir}/press.webp", "{formdir}/slash.webp"]},
+    {"id": "head-scale", "group": "2. Hình chiến đấu", "label": "Đã đo đầu (thân cùng cỡ ở mọi dạng, trận và trình diễn)", "forms": "all",
+     "grep": ["assets/heroes/head-scale.json", "\"{key}-{form}\": \\{\"combat\": \\{[^\\n]*\"headPx\": [0-9.]+[^\\n]*\"showcase\": \\{[^\\n]*\"headPx\": [0-9.]+"]},
     {"id": "showcase-master", "group": "3. Trình diễn ngoài trận", "label": "Tư thế trình diễn", "forms": "all", "paths": ["assets/heroes/forms/{key}/form-{form}/showcase/master.png"]},
     {"id": "showcase-idle", "group": "3. Trình diễn ngoài trận", "label": "Vòng nghỉ trình diễn", "forms": "all", "paths": ["assets/heroes/forms/{key}/form-{form}/showcase/idle.webp"]},
     {"id": "showcase-fidgets", "group": "3. Trình diễn ngoài trận", "label": "2 hành động thỉnh thoảng", "forms": "all", "fidgets": 2},

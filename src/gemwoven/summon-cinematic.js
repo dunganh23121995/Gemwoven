@@ -3,7 +3,9 @@
  * hero at the very end): each card is a star that spirals down a whirlwind from the sky (round
  * and round a funnel that narrows as it falls, far side small, dim and behind, near side big,
  * bright and in front), splashes into the lake and only then bounces up into its slot as a card.
- * Gold and diamond cards shimmer; opening a whole-hero card plays that hero's own entrance.
+ * Cards open by themselves as they land; a whole hero pauses the reveal: the screen darkens, a
+ * beam of holy light comes down and the hero steps out (its own entrance, then its showcase loop)
+ * until the player taps to go on. Gold and diamond cards shimmer.
  * All art is generated (assets/gemwoven/summon); code only moves, scales and fades it. Sounds are
  * single real CC0 recordings (scripts/prepare_summon_sounds.py) played at the hub's effects
  * volume, silent when the hub is muted. */
@@ -26,7 +28,7 @@
   const rewardArt=r=>r.kind==='hero'?'hero-'+r.hero:r.kind==='fragments'?(A['fragment-'+r.hero]?'fragment-'+r.hero:'portrait-'+r.hero)
     :r.kind==='gear'?M.SLOT_ART[r.gear.slot]:M.RESOURCES[r.resource]?.[1]||'summon-crystal';
   // ---- sound: the hub's effects volume and mute (journey-ui.js) apply to every cue ----
-  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['star-1','star-2','star-3','star-4','splash','pop','choir','flip','gold','swell','bell','hero','ambience','drone']
+  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['touch','gold','bell','hero','ult-charge','ult-whoosh','ambience','drone']
     .map(k=>[k,`assets/audio/summon/${k}.ogg`]));
   const Sound={ctx:null,buffers:{},bed:null,wantBed:false,
     level(){const H=window.GemwovenHubAudio;if(H?.muted?.())return 0;const v=H?.levels?.().effects;return Number.isFinite(v)?v/100:1;},
@@ -43,12 +45,12 @@
       let out=gain;if(this.ctx.createStereoPanner){const p=this.ctx.createStereoPanner();p.pan.value=Math.max(-.8,Math.min(.8,pan));gain.connect(p);out=p;}
       out.connect(this.ctx.destination);src.start(this.ctx.currentTime+delay/1000);return {src,gain};
     },
-    // Beds under the reveal: a sustained singing bowl and, quieter, the night lake. They fade in
+    // Beds under the reveal: a calm harmonium drone and, quieter, the night lake. They fade in
     // with the screen and out when it closes.
     beds:{},
     ambience(on){
       this.wantBed=on;
-      for(const [name,vol] of [['drone',.5],['ambience',.4]]){
+      for(const [name,vol] of [['drone',.45],['ambience',.3]]){
         const bed=this.beds[name];
         if(on&&!bed){const b=this.play(name,{volume:vol,loop:true});if(!b)continue;const g=b.gain.gain,t=this.ctx.currentTime;g.setValueAtTime(0,t);g.linearRampToValueAtTime(vol*this.level(),t+2.2);this.beds[name]=b;}
         if(!on&&bed){const {src,gain}=bed,t=this.ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(0,t+.9);src.stop(t+.95);delete this.beds[name];}
@@ -82,19 +84,24 @@
       <button type="button" class="celestial-close" aria-label="Đóng kết quả">×</button>
       <div class="celestial-fx back" aria-hidden="true"></div><div class="celestial-deck" hidden></div><div class="celestial-fx" aria-hidden="true"></div>
       <button type="button" class="celestial-skip">Bỏ qua ›</button>
-      <footer><button type="button" class="celestial-open-all gw-btn" disabled>Mở tất cả</button><div class="celestial-again" hidden></div></footer>`;
+      <footer><div class="celestial-again" hidden></div></footer>`;
     document.body.append(modal);
     const deck=modal.querySelector('.celestial-deck'),fx=modal.querySelector('.celestial-fx:not(.back)'),fxBack=modal.querySelector('.celestial-fx.back'),againBox=modal.querySelector('.celestial-again'),status=modal.querySelector('.celestial-status'),
-      all=modal.querySelector('.celestial-open-all'),skipButton=modal.querySelector('.celestial-skip');
+      skipButton=modal.querySelector('.celestial-skip');
     const reduced=()=>document.documentElement.classList.contains('reduced-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let opened=0,dealt=false,closed=false,heroStage=null,again=0;const timers=[],flights=[],stars=new Set();
+    let opened=0,dealt=false,closed=false,completed=false,heroStage=null,again=0;const timers=[],flights=[],stars=new Set();
     const play=(el,frames,opts)=>el.animate?el.animate(frames,opts):null;
     const later=(ms,fn)=>timers.push(setTimeout(()=>{if(!closed)fn();},ms));
     function layout(){
-      // Card size follows the free board area: 5 across on wide frames, 3 across on phones.
-      const box=deck.getBoundingClientRect(),n=results.length,cols=n<=1?1:modal.clientWidth<480?3:5,rows=Math.ceil(n/cols),gap=n>1?9:0;
-      const width=Math.min(n<=1?190:150,(box.width-gap*(cols-1))/cols,(box.height-gap*(rows-1))/rows*.52);
-      deck.style.setProperty('--cols',cols);deck.style.setProperty('--cw',Math.max(40,Math.floor(width))+'px');
+      // Card size follows the free board area: 5 across on wide frames, 4 across on phones. When a
+      // card is too narrow for a readable name on its plaque (under 12px), names sit under the cards.
+      const box=deck.getBoundingClientRect(),n=results.length,cols=n<=1?1:modal.clientWidth<480?Math.min(4,n):Math.min(5,n),rows=Math.ceil(n/cols),gap=n>1?9:0;
+      const fit=label=>Math.min(n<=1?190:150,(box.width-gap*(cols-1))/cols,(box.height-gap*(rows-1)-rows*label)/rows*.52);
+      let width=fit(0),below=n>1&&width*.105<12;if(below)width=fit(34);
+      deck.style.setProperty('--cols',cols);deck.style.setProperty('--cw',Math.max(40,Math.floor(width))+'px');deck.dataset.names=below?'below':'plaque';
+      deck.style.rowGap=(below?34+gap:gap)+'px';
+      // Centre a short last row.
+      const last=n%cols;cards.forEach((c,i)=>{c.style.gridColumnStart=last&&i===n-last?String(Math.floor((cols-last)/2)+1):'';});
     }
     function finish(){
       if(closed)return;closed=true;timers.forEach(clearTimeout);stars.forEach(st=>st.stop());observer.disconnect();heroStage?.stop();Sound.ambience(false);modal.remove();resolve(again);
@@ -113,28 +120,19 @@
       card.innerHTML=`${top?img('summon-halo','card-halo'):''}<span class="celestial-card-turn">
         <span class="celestial-back">${img('summon-back-'+art,'card-art')}${shine}</span>
         <span class="celestial-front" aria-hidden="true"><span class="card-window">${img('summon-back-'+art,'card-panel')}${img(rewardArt(r),'card-reward')}</span>${img('summon-front-'+art,'card-art')}${shine}<strong>${esc(r.name)}</strong></span></span>${top?`<span class="card-sparkles" aria-hidden="true">${sparkles(4)}</span>`:''}`;
-      card.onclick=()=>open(card,r,0);deck.append(card);return card;
+      card.onclick=()=>{if(completed&&isHero(r))spotlight(r);};deck.append(card);return card;
     });
-    function open(card,r,delay){
-      if(!dealt||card.classList.contains('is-open'))return;
-      card.style.setProperty('--flip-delay',delay+'ms');card.classList.add('is-open');card.setAttribute('aria-pressed','true');
+    // Cards open on their own as they land: bronze at once, gold and diamond with their shimmer
+    // and a soft bowl or bell. A whole hero opens into its spotlight (see run()).
+    function open(card,r,{quiet=false}={}){
+      if(card.classList.contains('is-open'))return;
+      card.classList.add('is-open');card.setAttribute('aria-pressed','true');
       card.setAttribute('aria-label',r.name+' · '+M.RARITIES[r.rarity].name);
       card.querySelector('.celestial-front').setAttribute('aria-hidden','false');card.querySelector('.celestial-back').setAttribute('aria-hidden','true');
       opened++;status.textContent=`Đã mở ${opened} / ${results.length} thẻ`;
-      // Bronze: a plain card flip; gold: flip and a shimmering chime; diamond: a rising belltree
-      // swell, then a bell (for a whole hero the bell rings as the hero steps out).
-      const kind=card.dataset.card,pan=panOf(card),soft=delay>0&&kind==='bronze';
-      later(delay,()=>{
-        Sound.play('flip',{volume:kind==='bronze'?(soft?.5:.8):.55,pan});
-        if(kind==='gold')Sound.play('gold',{volume:.9,pan,delay:200});
-        if(kind==='diamond'){Sound.play('swell',{volume:.8,pan});if(r.kind!=='hero')Sound.play('bell',{volume:1,pan,delay:900});}
-      });
-      if(card.dataset.tier==='premium'&&!reduced())later(delay+380,()=>burst(card,6));
-      if(r.kind==='hero'&&cardType(r)==='diamond')later(delay+(reduced()?0:850),()=>showHero(r));
-      if(opened===results.length){all.disabled=true;status.textContent='Tinh tú đã tìm được chủ nhân';modal.dataset.phase='complete';later(delay+600,offerAgain);}
+      const kind=card.dataset.card;
+      if(!quiet&&kind!=='bronze'){Sound.play(kind==='diamond'?'bell':'gold',{volume:1,pan:panOf(card)*.6});if(!reduced())later(380,()=>burst(card,kind==='diamond'?8:6));}
     }
-    // Opening everything turns the common cards first and the premium ones last.
-    all.onclick=()=>{let wait=0;cards.forEach((card,i)=>{if(card.classList.contains('is-open'))return;open(card,results[i],wait);wait+=card.dataset.card==='diamond'?900:card.dataset.tier==='premium'?520:110;});};
     // Everything is open: summon again (x1 / x10) with the cost the main buttons would charge; the
     // reveal closes and the normal confirmation runs (progression-ui.js), so nothing is spent here.
     function offerAgain(){
@@ -166,7 +164,7 @@
     }
     // ---- dealing: a star falls from the sky on its own curved, twisting path ----
     const seeded=seed=>()=>{seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296;};
-    function fall(card,index){
+    function fall(card,index){return new Promise(resolve=>{
       const kind=card.dataset.card,top=card.dataset.tier==='premium',m=modal.getBoundingClientRect(),c=card.getBoundingClientRect();
       const W=m.width,H=m.height,cx=c.left-m.left+c.width/2,cy=c.top-m.top+c.height/2,rnd=seeded(index*7919+results.length*31+1);
       // A whirlwind: the star circles a vertical axis while it falls; the funnel is wide in the sky
@@ -175,11 +173,11 @@
       // blurred and behind the board.
       const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.06,H*(.875+(rnd()-.5)*.03)],top0=-H*.03;
       const axis0=W*(.5+(rnd()-.5)*.12),R0=W*(.29+rnd()*.06),R1=W*.035,turns=4+rnd()*.8,phase=rnd()*Math.PI*2,spin=index%3===1?-1:1;
-      const dur=kind==='diamond'?3100:top?2800:2400,size=kind==='diamond'?74:top?62:52;
+      // Slow and gentle: a bronze star takes over four seconds to come down.
+      const dur=kind==='diamond'?4600:top?4500:4300,size=kind==='diamond'?74:top?62:54;
       const star=document.createElement('span');star.className=`sm-falling star-${kind}`;star.setAttribute('aria-hidden','true');
       star.innerHTML=img('summon-halo','sm-falling-halo')+sprite('summon-sparkle','sm-falling-core');
       star.style.setProperty('--s',size+'px');fx.append(star);
-      Sound.play('star-'+(index%4+1),{volume:kind==='diamond'?.9:top?.7:.42,pan:(axis0/W-.5)*.8});
       const t0=performance.now();let raf=0,last=null,done=false,behind=false;
       const at=u=>{
         const fallT=Math.pow(u,1.1),r=R1+(R0-R1)*Math.pow(1-u,1.15);
@@ -188,30 +186,31 @@
       };
       const handle={stop(){if(done)return;done=true;cancelAnimationFrame(raf);star.remove();stars.delete(handle);}};stars.add(handle);
       function frame(now){
-        if(closed||dealt){handle.stop();return;}
-        const u=Math.min(1,(now-t0)/dur),{x,y,depth}=at(u),near=(depth+1)/2,grow=(.5+.5*u)*(.62+.6*near);
+        if(closed||dealt){handle.stop();resolve();return;}
+        const u=Math.min(1,(now-t0)/dur),{x,y,depth}=at(u),near=(depth+1)/2,grow=(.5+.5*u)*(.7+.5*near);
         // The far half of each loop passes behind the board; the near half in front of it.
         const back=depth<-.15&&u<.9;if(back!==behind){behind=back;(back?fxBack:fx).append(star);}
         star.style.transform=`translate(${x}px,${y}px) scale(${grow.toFixed(3)})`;
-        star.style.opacity=(.45+.55*near).toFixed(2);star.style.filter=near<.4?`blur(${((.4-near)*3).toFixed(1)}px)`:'';star.style.zIndex=Math.round(near*100);
+        // Far side: smaller, dimmer and a touch soft, but always clearly visible.
+        star.style.opacity=(.68+.32*near).toFixed(2);star.style.filter=near<.35?`blur(${((.35-near)*2).toFixed(1)}px)`:'';star.style.zIndex=Math.round(near*100);
         // Sparkles every few pixels of travel, so the trail draws the spiral as a continuous line.
-        if(u<.97){const gap=top?8:10;if(!last)last=[x,y];let dx=x-last[0],dy=y-last[1],dist=Math.hypot(dx,dy);
+        if(u<.97){const gap=top?9:11;if(!last)last=[x,y];let dx=x-last[0],dy=y-last[1],dist=Math.hypot(dx,dy);
           for(let k=gap;k<=dist;k+=gap)trail(last[0]+dx*k/dist,last[1]+dy*k/dist,size*grow*(top?.5:.42),kind,near,back);if(dist>=gap)last=[x,y];}
         if(u<1){raf=requestAnimationFrame(frame);return;}
         handle.stop();splash(I[0],I[1],Math.max(80,c.width*(kind==='diamond'?2.3:top?1.9:1.5)),kind==='diamond'?7:top?4:0);
-        Sound.play('splash',{volume:kind==='diamond'?1:top?.8:.55,pan:(I[0]/W-.5)*1.2});
-        rise(card,I[0]-cx,I[1]-cy,kind);
+        Sound.play('touch',{volume:top?1:.7,pan:(I[0]/W-.5)*.8});
+        rise(card,I[0]-cx,I[1]-cy,kind).then(resolve);
       }
       raf=requestAnimationFrame(frame);
-    }
+    });}
     function trail(x,y,size,kind,near=1,back=false){
       const s=A['summon-sparkle'];if(!s)return;const t=document.createElement('i');t.className=`sm-sprite sm-trail star-${kind}`;
-      t.style.cssText=`--sheet:url('${url('summon-sparkle').replace(/'/g,'%27')}');--count:${s.count};left:${x}px;top:${y}px;--s:${Math.max(8,size)}px;--o:${(.35+.65*near).toFixed(2)}`;
-      (back?fxBack:fx).append(t);setTimeout(()=>t.remove(),2000);
+      t.style.cssText=`--sheet:url('${url('summon-sparkle').replace(/'/g,'%27')}');--count:${s.count};left:${x}px;top:${y}px;--s:${Math.max(9,size)}px;--o:${(.6+.4*near).toFixed(2)}`;
+      (back?fxBack:fx).append(t);setTimeout(()=>t.remove(),2600);
     }
     // From the splash the card bounces up out of the water into its slot.
-    function rise(card,dx,dy,kind){
-      const top=kind!=='bronze',dur=kind==='diamond'?950:top?850:720;
+    function rise(card,dx,dy,kind){return new Promise(resolve=>{
+      const top=kind!=='bronze',dur=kind==='diamond'?1150:top?1050:950;
       card.classList.remove('is-waiting');card.classList.add('is-flying');
       const anim=play(card,[
         {transform:`translate(${dx}px,${dy}px) scale(.3)`,opacity:0,filter:'brightness(2.2)'},
@@ -220,76 +219,155 @@
         {transform:'translateY(6px) scale(.97)',opacity:1,filter:'brightness(1)',offset:.86},
         {transform:'none',opacity:1,filter:'none'}],{duration:dur,fill:'backwards'});
       if(anim)flights.push(anim);
-      later(dur*.82,()=>Sound.play('pop',{volume:top?.6:.45,pan:panOf(card)}));
-      const land=()=>{if(card.classList.contains('is-landed'))return;card.classList.remove('is-flying');card.classList.add('is-landed');if(top&&!closed&&!dealt)burst(card,kind==='diamond'?8:5);};
+      const land=()=>{if(card.classList.contains('is-landed'))return;card.classList.remove('is-flying');card.classList.add('is-landed');resolve();};
       if(anim)anim.onfinish=land;else later(dur,land);
+    });}
+    const isHero=r=>r.kind==='hero'&&cardType(r)==='diamond';
+    const wait=ms=>new Promise(res=>later(ms,res));
+    const suspense=()=>{modal.classList.add('is-suspense');status.textContent='Mặt hồ rung động… ánh sáng lạ đang tụ lại!';};
+    function complete(){
+      if(completed||closed)return;completed=true;dealt=true;
+      modal.classList.remove('is-suspense');skipButton.hidden=true;modal.dataset.phase='complete';
+      status.textContent='Tinh tú đã tìm được chủ nhân';offerAgain();
     }
-    function deal(){
-      if(dealt||closed)return;dealt=true;timers.forEach(clearTimeout);timers.length=0;stars.forEach(st=>st.stop());
-      flights.forEach(a=>a.playState!=='finished'&&a.finish());fx.replaceChildren();
-      cards.forEach(card=>{card.classList.remove('is-waiting','is-flying');card.classList.add('is-landed');});
-      modal.classList.remove('is-suspense');skipButton.hidden=true;all.disabled=!results.length;
-      modal.dataset.phase='cards';status.textContent='Chạm từng thẻ để khám phá';cards[0]?.focus({preventScroll:true});
+    // "Bỏ qua": everything opens at once and the board shows; a hero can be tapped to see it again.
+    function skip(){
+      if(completed||closed)return;dealt=true;timers.forEach(clearTimeout);timers.length=0;stars.forEach(st=>st.stop());
+      flights.forEach(a=>a.playState!=='finished'&&a.finish());fx.replaceChildren();fxBack.replaceChildren();heroStage?.stop();heroStage=null;
+      cards.forEach((card,i)=>{card.classList.remove('is-waiting','is-flying');card.classList.add('is-landed');open(card,results[i],{quiet:true});});
+      complete();
     }
-    function start(){
+    // The reveal plays by itself: bronze stars first, a pause of suspense, gold and diamond stars
+    // one by one, each card opening as it lands. A whole hero comes last, alone, and its
+    // spotlight waits for the player's tap before the reveal goes on.
+    async function run(){
       deck.hidden=false;layout();modal.dataset.phase='falling';
+      const heroes=cards.map((c,i)=>i).filter(i=>isHero(results[i])),rest=cards.map((c,i)=>i).filter(i=>!heroes.includes(i));
       if(reduced()){
-        // Reduced motion: no fall, no splash; the cards simply fade in place.
-        cards.forEach((card,i)=>{card.classList.remove('is-waiting');play(card,[{opacity:0},{opacity:1}],{duration:260,delay:i*40,fill:'backwards'});});
-        deal();return;
+        // Reduced motion: no fall or splash; cards appear opened, a hero still gets its spotlight.
+        cards.forEach(c=>{c.classList.remove('is-waiting');c.classList.add('is-landed');});
+        rest.forEach(i=>open(cards[i],results[i],{quiet:true}));
+        for(const i of heroes){open(cards[i],results[i],{quiet:true});await spotlight(results[i]);}
+        complete();return;
       }
       status.textContent='Những lá bài rơi xuống mặt hồ…';
-      // Bronze stars come quickly; then a pause of suspense; then each gold and diamond star alone.
-      let t=250,end=0;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium');
-      const suspense=()=>{modal.classList.add('is-suspense');status.textContent='Mặt hồ rung động… ánh sáng lạ đang tụ lại!';Sound.play('choir',{volume:.85});};
+      // Each star still falls slowly, but they overlap: bronze about every 0.6 s, a short beat of
+      // suspense, then gold and diamond about every 0.9 s; a ten-pull reaches the hero in ~13 s.
+      let t=300;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium'),others=[],heroLandings=[];
       cards.forEach((card,i)=>{
-        const top=card.dataset.tier==='premium';
-        if(i===firstTop){if(i){later(t+200,suspense);t+=1300;}else{later(t,suspense);t+=700;}}
-        if(top&&i===cards.length-1&&i>firstTop)t+=350;   // one more breath before the very best card
-        const kind=card.dataset.card;
-        later(t,()=>fall(card,i));end=Math.max(end,t+(kind==='diamond'?3100+950:top?2800+850:2400+720));
-        t+=kind==='diamond'?1100:top?800:260;
+        const top=card.dataset.tier==='premium',hero=heroes.includes(i);
+        if(i===firstTop){later(Math.max(0,t-500),suspense);t+=i?800:400;}
+        const landed=new Promise(res=>later(t,()=>fall(card,i).then(res)));
+        if(hero)heroLandings.push([i,landed]);
+        else others.push(landed.then(()=>{if(dealt)return;if(!top)open(card,results[i]);else later(250,()=>open(card,results[i]));}));
+        t+=top?900:600;
       });
-      later(end+80,deal);
+      await Promise.all(others);
+      for(const [i,landed] of heroLandings){
+        await landed;if(dealt)return;
+        open(cards[i],results[i],{quiet:true});
+        await spotlight(results[i]);if(dealt)return;
+      }
+      await wait(heroes.length?150:500);complete();
     }
-    skipButton.onclick=e=>{e.stopPropagation();deal();};
-    modal.addEventListener('click',e=>{if(!dealt&&modal.dataset.phase==='falling'&&!e.target.closest('.celestial-close'))deal();});
+    skipButton.onclick=e=>{e.stopPropagation();skip();};
 
-    // ---- the whole hero steps out: its own showcase entrance plus a shimmer of light ----
-    function showHero(r){
-      if(closed)return;heroStage?.stop();
+    // ---- the whole hero steps out: the screen darkens, a beam of holy light comes down, and the
+    // hero plays its own summoning entrance and then its showcase loop until the player taps ----
+    function spotlight(r){return new Promise(resolve=>{
+      if(closed){resolve();return;}heroStage?.stop();
       const G=window.GEMWOVEN_GAME,form=M.heroForm(r.hero,G?.engine?.read?.().heroes?.[r.hero]),show=A[`show-${r.hero}-${form}`],H=M.HEROES[r.hero];
       const stage=document.createElement('div');stage.className='summon-hero-stage';stage.setAttribute('role','dialog');stage.setAttribute('aria-label',`${H.name} · ${H.title}`);
-      stage.innerHTML=`<div class="summon-hero-light" aria-hidden="true">${img('summon-halo','sh-halo')}${img('summon-halo','sh-halo back')}${img('summon-orb','sh-orb')}</div>
+      const pool=A['summon-beam']?.pool||.93;stage.style.setProperty('--pool',pool);
+      stage.innerHTML=`<div class="summon-hero-dim" aria-hidden="true"></div>${img('summon-beam','sh-beam')}
+        <div class="summon-hero-light" aria-hidden="true">${img('summon-halo','sh-halo back')}${img('summon-orb','sh-orb')}</div>
         <div class="summon-hero-body"><img class="art" src="${esc(url(show?.sheets?`show-${r.hero}-${form}`:'hero-'+r.hero))}" alt=""></div>
-        <div class="summon-hero-sparkles" aria-hidden="true">${Array.from({length:10},(_,i)=>sprite('summon-sparkle','sh-spark',`--x:${[12,86,24,74,50,8,92,34,64,46][i]}%;--y:${[30,26,58,62,14,78,74,84,86,40][i]}%;--s:${[30,26,22,34,28,20,24,18,22,16][i]}px;--d:${-(i*.41).toFixed(2)}s`)).join('')}</div>
+        <div class="summon-hero-sparkles" aria-hidden="true">${Array.from({length:10},(_,i)=>sprite('summon-sparkle','sh-spark',`--x:${[22,78,30,70,50,16,84,36,62,46][i]}%;--y:${[30,26,48,52,14,58,62,40,36,20][i]}%;--s:${[30,26,22,34,28,20,24,18,22,16][i]}px;--d:${-(i*.41).toFixed(2)}s`)).join('')}</div>
         <div class="summon-hero-name"><strong>${esc(H.name)}</strong></div>`;
       modal.append(stage);
       const body=stage.querySelector('.summon-hero-body');
-      const asset=show?.sheets?show:A['hero-'+r.hero];
-      window.GEMWOVEN_FORMS?.fitBody?.(body,asset,body.clientHeight*.86);
+      const asset=show?.sheets?show:A['hero-'+r.hero],ult=A[`ulti-${r.hero}-${form}`];
+      // Never larger than the drawings themselves: the body is shown at most at the native size of
+      // its showcase sheet and of its ultimate pose sheet, so the painted art stays crisp.
+      // One body size in every form (assets/heroes/head-scale.json): the height is form 1's, and
+      // fitBody grows or shrinks this form (headFit) so its head matches form 1's head.
+      const first=show?.sheets&&A[`show-${r.hero}-1`]||asset;
+      const native=[first?.bodyAnchor&&first.height*(first.bodyAnchor.foot-first.bodyAnchor.crown),!asset?.headFit&&ult&&ult.cell[1]*(ult.body.foot-ult.body.crown)].filter(Boolean);
+      const bodyHeight=Math.min(body.clientHeight*.86,...native);
+      const fit=window.GEMWOVEN_FORMS?.fitBody?.(body,asset,bodyHeight);
+      // The ultimate pose sheet stands at the same head size as the showcase body.
+      const poseScale=fit&&asset?.headPx&&ult?.headPx?asset.headPx/asset.height*fit.height/ult.headPx:0;
+      {const sh=stage.clientHeight||1,feet=body.offsetTop+body.offsetHeight,beamTop=feet-.7*sh*pool,toBeam=y=>((y-beamTop)/(.7*sh)*100).toFixed(1)+'%';
+        stage.style.setProperty('--beam-head',toBeam(feet-bodyHeight*1.08));stage.style.setProperty('--beam-feet',toBeam(feet-bodyHeight*.12));}
       const handle=show?.sheets?window.GemwovenHeroShow?.attach(body,r.hero,form):null;
       if(handle&&form>1&&r.hero!=='novice'){
         body.classList.add('has-hero-form');body.dataset.heroElement=r.hero;body.dataset.heroForm=form;
         if(form===3&&window.GemwovenFormEffects&&A['form-aura-'+r.hero]){const aura=document.createElement('span');aura.className='hero-form-effects';aura.setAttribute('aria-hidden','true');aura.innerHTML=window.GemwovenFormEffects.markup(r.hero,form,A['form-aura-'+r.hero]);body.append(aura);}
       }
-      if(!reduced())play(stage,[{opacity:0},{opacity:1}],{duration:420,fill:'backwards'});
-      Sound.play('hero',{volume:1,delay:reduced()?0:450});
-      if(handle)setTimeout(()=>{if(stage.isConnected)handle.summon();},reduced()?0:450);
-      else if(!reduced())play(body,[{transform:'scale(.6)',opacity:0,filter:'brightness(3)'},{transform:'scale(1)',opacity:1,filter:'none'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1)'});
-      const close=()=>{if(!stage.isConnected)return;handle?.stop();stage.remove();heroStage=null;all.focus?.({preventScroll:true});};
-      heroStage={stop(){handle?.stop();stage.remove();}};
-      stage.addEventListener('click',close);
-      stage.tabIndex=-1;stage.focus({preventScroll:true});stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();close();}});
+      const calm=reduced(),stepIn=calm?0:1300;
+      if(!calm)body.style.opacity='0';
+      Sound.play('hero',{volume:1});Sound.play('bell',{volume:.55,delay:stepIn});
+      const timersHere=[];
+      // The beam lands first; then the hero steps out of it and keeps performing (idle, actions).
+      timersHere.push(setTimeout(()=>{if(!stage.isConnected)return;body.style.opacity='';if(handle)handle.summon();
+        else if(!calm)play(body,[{transform:'scale(.6)',opacity:0,filter:'brightness(3)'},{transform:'scale(1)',opacity:1,filter:'none'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1)'});},stepIn));
+      // After the entrance it performs its ultimate once, then rests in its showcase loop.
+      if(ult&&!calm)timersHere.push(setTimeout(()=>{if(stage.isConnected)ultimate(stage,body,ult,bodyHeight,timersHere,poseScale);},stepIn+(show?.sheets?.rift?3000:1900)));
+      else if(handle?.fidgets)timersHere.push(setTimeout(()=>{if(stage.isConnected)handle.act(0);},stepIn+2400));
+      let ready=false;timersHere.push(setTimeout(()=>{ready=true;},calm?0:stepIn+700));
+      const done=()=>{timersHere.forEach(clearTimeout);handle?.stop();stage.remove();if(heroStage?.stage===stage)heroStage=null;resolve();};
+      heroStage={stage,stop:done};
+      const go=()=>{if(!ready||!stage.isConnected)return;if(calm){done();return;}
+        const fade=play(stage,[{opacity:1},{opacity:0}],{duration:350,fill:'forwards'});if(fade)fade.onfinish=done;else done();};
+      stage.addEventListener('click',go);
+      stage.tabIndex=-1;stage.focus({preventScroll:true});stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+    });}
+
+    // The hero's ultimate, performed with its real combat art (ultimate-showcase.json): the pose
+    // sheet replaces the showcase body for a few seconds (same feet, same body height), with the
+    // weapon flame, the flying wave and the impact burst, and the hero's own sounds kept soft.
+    function ultimate(stage,body,ult,bodyHeight,timersHere,poseScale){
+      const showEl=body.querySelector('.hero-show,.art'),scale=poseScale||bodyHeight/(ult.cell[1]*(ult.body.foot-ult.body.crown)),cw=ult.cell[0]*scale,ch=ult.cell[1]*scale;
+      const pose=document.createElement('span');pose.className='sh-ult';pose.setAttribute('aria-hidden','true');
+      pose.style.cssText=`width:${cw}px;height:${ch}px;left:calc(50% - ${cw*ult.body.x}px);bottom:${-ch*(1-ult.body.foot)}px;background-size:${ult.cols*100}% ${ult.rows*100}%`;
+      pose.style.backgroundImage=`url('${new URL(ult.file,document.baseURI).href}')`;
+      const frameAt=i=>`${(i%ult.cols)/(ult.cols-1||1)*100}% ${Math.floor(i/ult.cols)/(ult.rows-1||1)*100}%`;
+      pose.style.backgroundPosition=frameAt(0);body.append(pose);
+      const hidden=[...body.querySelectorAll('.hero-show,.art')];hidden.forEach(el=>el.style.visibility='hidden');
+      const t0=performance.now(),at=(ms,fn)=>timersHere.push(setTimeout(()=>{if(stage.isConnected)fn();},ms));
+      for(const [f,ms] of ult.frames)at(ms,()=>{pose.style.backgroundPosition=frameAt(f);pose.dataset.frame=f;});
+      for(const [name,ms] of ult.sounds||[])at(ms,()=>Sound.play(name,{volume:.8}));
+      // The weapon's flame, following the blade from pose to pose (combat sockets, 256px cell).
+      let raf=0;if(ult.blade&&A[ult.blade.key]){
+        const b=ult.blade,pivot=document.createElement('span'),flame=document.createElement('span');pivot.className='sh-blade-pivot';flame.className='sh-blade';
+        flame.style.backgroundImage=`url('${url(b.key)}')`;pivot.append(flame);pose.append(pivot);
+        const tick=now=>{if(!pivot.isConnected)return;const e=now-t0,f=Number(pose.dataset.frame)||0,[x,y,ang]=b.sockets[Math.min(f,b.sockets.length-1)];
+          const charge=Math.max(0,Math.min(1,(e-300)/1250)),fade=e>b.fade?Math.max(0,1-(e-b.fade)/260):1,size=cw*.34;
+          pivot.style.left=x/b.cell*100+'%';pivot.style.top=y/b.cell*100+'%';pivot.style.transform=`rotate(${ang}deg)`;
+          flame.style.width=flame.style.height=size+'px';flame.style.transform=`translate(-50%,-95.3125%) scale(${1+charge*1.2},${.9+charge*1.05})`;
+          flame.style.opacity=String(Math.min(1,Math.max(0,(e-b.from)/400))*fade);const k=Math.floor(e/80)%4;flame.style.backgroundPosition=`${k%2*100}% ${Math.floor(k/2)*100}%`;
+          if(fade>0)raf=requestAnimationFrame(tick);else pivot.remove();};raf=requestAnimationFrame(tick);
+      }
+      // The wave flies out to the right and bursts a little way off.
+      const sheet=(part,el,frame)=>{const c=part.cols,rr=part.rows;el.style.backgroundPosition=`${(frame%c)/(c-1||1)*100}% ${Math.floor(frame/c)/(rr-1||1)*100}%`;};
+      const place=(cls,part,x,y,size)=>{const el=document.createElement('span');el.className=cls;el.setAttribute('aria-hidden','true');
+        el.style.cssText=`left:${x}px;top:${y}px;width:${size}px;height:${size*(A[part.key].height/part.rows)/(A[part.key].width/part.cols)}px;background-image:url('${url(part.key)}');background-size:${part.cols*100}% ${part.rows*100}%`;stage.append(el);return el;};
+      const sb=stage.getBoundingClientRect(),bb=body.getBoundingClientRect(),footX=bb.left-sb.left+bb.width/2,footY=bb.bottom-sb.top;
+      const reach=Math.min(sb.width*.32,bodyHeight*1.2),hitX=Math.min(sb.width-bodyHeight*.5,footX+reach),hitY=footY-bodyHeight*.42;
+      if(ult.wave&&A[ult.wave.key])at(ult.wave.at,()=>{const w=ult.wave,size=bodyHeight*w.size,el=place('sh-fx sh-wave',w,footX+bodyHeight*.15,hitY,size),start=performance.now(),n=w.cols*w.rows;
+        const tick=now=>{if(!el.isConnected)return;const k=(now-start)/w.ms;sheet(w,el,Math.min(n-1,Math.floor(k*n*1.5)%n));el.style.transform=`translate(-50%,-50%) translateX(${Math.min(1,k)*(hitX-footX-bodyHeight*.15)}px)`;el.style.opacity=k<.85?1:Math.max(0,(1-k)/.15);if(k<1)requestAnimationFrame(tick);else el.remove();};requestAnimationFrame(tick);});
+      if(ult.impact&&A[ult.impact.key])at(ult.impact.at,()=>{const m=ult.impact,size=bodyHeight*m.size,el=place('sh-fx sh-impact',m,hitX,hitY,size),start=performance.now(),n=m.count||m.cols*m.rows;
+        const tick=now=>{if(!el.isConnected)return;const k=(now-start)/m.ms;sheet(m,el,Math.min(n-1,Math.floor(k*n)));el.style.opacity=k<.7?1:Math.max(0,(1-k)/.3);if(k<1)requestAnimationFrame(tick);else el.remove();};requestAnimationFrame(tick);});
+      at(ult.end,()=>{cancelAnimationFrame(raf);pose.remove();hidden.forEach(el=>el.style.visibility='');});
     }
 
-    const observer=new ResizeObserver(()=>{if(!closed&&!deck.hidden)layout();});observer.observe(modal);
+    const observer=new ResizeObserver(()=>{if(!closed&&!deck.hidden&&(completed||modal.dataset.phase==='sky'))layout();});observer.observe(modal);
     modal.showModal();
     // The reveal opens from the player's own tap, so audio may start now.
     Sound.init();Sound.ambience(true);
     // Preload the premium art and any hero entrance so nothing pops in mid-reveal.
     for(const r of results)if(r.kind==='hero'){const G=window.GEMWOVEN_GAME,f=M.heroForm(r.hero,G?.engine?.read?.().heroes?.[r.hero]),s=A[`show-${r.hero}-${f}`]?.sheets;
       for(const src of [s?.entrance,s?.rift,s?.idle])if(src){const im=new Image();im.src=new URL(src,document.baseURI).href;}}
-    if(reduced())start();else later(700,start);
+    if(reduced())run();else later(400,run);
   });
 })();

@@ -30,9 +30,6 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-reveal>footer{position:absolute;bottom:4%;left:5%;right:5%;z-index:5;text-align:center;transition:opacity .5s}
 .celestial-reveal:is([data-phase="sky"],[data-phase="falling"])>footer{opacity:0;pointer-events:none}
 .celestial-reveal>footer>p{font:11px system-ui;color:#c5d6ec;margin:10px 0 0;text-shadow:0 1px 4px #040d24}
-.celestial-open-all{width:200px;max-width:75%;padding:13px 20px;border:1px solid #f5d897;border-radius:7px;background:linear-gradient(#917346,#3b2b1d);box-shadow:0 0 24px #d5b96630,inset 0 0 0 3px #352515;color:#fff1c8;font:700 18px Cambria,serif;cursor:pointer}
-.celestial-open-all:disabled{opacity:.35;cursor:default}
-.celestial-reveal[data-phase="complete"] .celestial-open-all{display:none}
 /* Summon again: same painted buttons; each shows its cost. */
 .celestial-again{display:flex;gap:8px;justify-content:center;flex-wrap:nowrap}
 .celestial-again[hidden]{display:none}
@@ -86,6 +83,10 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 /* Bronze cards sit quietly; gold cards glow and shimmer; diamond cards shimmer the most. */
 .celestial-card.card-gold{--glow:#ffcf6b}
 .celestial-card.card-diamond .celestial-front strong{color:#2b1550;text-shadow:0 1px 0 #ffffffb0,0 0 6px #ffffff90}
+/* Narrow cards (phones, ten cards): the name sits under the card at a readable 12px+. */
+.celestial-deck[data-names="below"] .celestial-front strong{top:calc(100% + 4px);left:-4px;right:-4px;height:auto;max-height:30px;font:700 12px/1.2 Cambria,serif;color:#fff3d6;text-shadow:0 1px 2px #000,0 0 6px #000}
+.celestial-deck[data-names="below"] .celestial-card.card-diamond .celestial-front strong{color:#f3e6ff}
+.celestial-deck[data-names="below"] .celestial-front{overflow:visible}
 .celestial-card.card-diamond{--glow:#f0dcff}
 .card-gold.is-landed .card-art{animation:sm-glow 2.4s ease-in-out infinite alternate}
 .card-diamond.is-landed .card-art{animation:sm-iris 3s ease-in-out infinite alternate}
@@ -107,8 +108,9 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 /* Long-lived trail sparkles draw the whirlwind's spiral behind each star. */
 .sm-trail{width:var(--s);aspect-ratio:1;translate:-50% -50%;background-position-x:42.857%;animation:sm-trailfade 1.9s ease-in forwards}
 .star-bronze .sm-falling-halo{opacity:.45}
-.star-gold .sm-falling-core,.sm-trail.star-gold{filter:sepia(.7) saturate(2.6) hue-rotate(-12deg) brightness(1.12)}
-.star-gold .sm-falling-halo{filter:sepia(.5) saturate(1.8)}
+/* Gold stars read as bright gold (a plain sepia tint made them dull and easy to miss). */
+.star-gold .sm-falling-core,.sm-trail.star-gold{filter:sepia(.55) saturate(2.2) hue-rotate(-8deg) brightness(1.45)}
+.star-gold .sm-falling-halo{filter:sepia(.45) saturate(1.7) brightness(1.25)}
 .star-diamond .sm-falling-core,.sm-trail.star-diamond,.star-diamond .sm-falling-halo{animation-name:sm-pulse,sm-prism;animation-duration:.42s,1.6s;animation-timing-function:ease-in-out,linear;animation-iteration-count:infinite;animation-direction:alternate,normal}
 .sm-trail.star-diamond{animation:sm-trailfade 1.9s ease-in forwards,sm-prism 1.6s linear infinite}
 .star-diamond .sm-falling-halo{animation:sm-spin 2.6s linear infinite,sm-prism 1.6s linear infinite}
@@ -126,20 +128,32 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .sm-flash{width:240px;translate:-50% -50%;opacity:0;mix-blend-mode:screen;animation:sm-flash .9s ease-out forwards}
 
 /* A whole hero steps out: its showcase entrance, framed by turning light and sparkles. */
-.summon-hero-stage{position:absolute;inset:0;z-index:10;overflow:hidden;background:#030a1cd9;cursor:pointer;outline:none}
-.summon-hero-light{position:absolute;left:50%;top:42%;width:min(125%,700px);aspect-ratio:1;translate:-50% -50%;pointer-events:none}
+/* The hero spotlight: the lake darkens, a beam of holy light comes down from the top of the
+   screen onto the spot, and the hero (at most at its drawings' own size) steps out of it. */
+.summon-hero-stage{position:absolute;inset:0;z-index:10;overflow:hidden;cursor:pointer;outline:none;--pool:.94}
+.summon-hero-dim{position:absolute;inset:0;background:#02060fe6;animation:sh-dim .8s ease-out both}
+/* The beam stays behind the hero and fades out across the body (a faint rim only), so the hero
+   keeps the colours of its art; it is bright above the head and in the pool at the feet. */
+.summon-hero-stage .sh-beam{--fade:linear-gradient(to bottom,#000 0,#000 calc(var(--beam-head,55%) - 14%),#0002 var(--beam-head,55%),#0002 var(--beam-feet,88%),#000 calc(var(--beam-feet,88%) + 4%));-webkit-mask-image:var(--fade);mask-image:var(--fade);position:absolute;left:50%;height:70%;width:auto;max-width:none;top:calc(62% - 70% * var(--pool));translate:-50% 0;z-index:1;mix-blend-mode:screen;pointer-events:none;animation:sh-beam-down 1.2s cubic-bezier(.3,.7,.3,1) .15s both,sh-beam-breathe 3.2s ease-in-out 1.5s infinite alternate}
+.summon-hero-light{position:absolute;left:50%;top:50%;width:min(80%,420px);aspect-ratio:1;translate:-50% -50%;pointer-events:none;z-index:1;animation:sh-fade-in 1s ease-out 1s both}
 .summon-hero-light img{position:absolute;max-width:none;mix-blend-mode:screen}
-.summon-hero-light .sh-halo{inset:0;width:100%;opacity:.85;animation:sm-spin 22s linear infinite}
-.summon-hero-light .sh-halo.back{scale:.62;opacity:.7;animation-direction:reverse;animation-duration:15s}
-.summon-hero-light .sh-orb{left:50%;top:50%;width:52%;translate:-50% -50%;opacity:.5;animation:sm-breathe 2.6s ease-in-out infinite alternate}
+.summon-hero-light .sh-halo{inset:0;width:100%;opacity:.5;animation:sm-spin 26s linear infinite}
+.summon-hero-light .sh-halo.back{scale:.75;opacity:.45;animation-direction:reverse;animation-duration:18s}
+.summon-hero-light .sh-orb{left:50%;top:50%;width:46%;translate:-50% -50%;opacity:.12;animation:sm-breathe 2.6s ease-in-out infinite alternate}
 .summon-hero-body{position:absolute;left:50%;top:15%;width:min(84%,360px);height:47%;translate:-50% 0;z-index:2}
-.summon-hero-sparkles{position:absolute;inset:6% 4% 20%;z-index:3;pointer-events:none}
+.summon-hero-sparkles{position:absolute;inset:10% 10% 30%;z-index:3;pointer-events:none;animation:sh-fade-in 1s ease-out 1.2s both}
 .summon-hero-sparkles .sh-spark{left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;translate:-50% -50%;opacity:0;animation:sm-twinkle 2.3s linear var(--d) infinite}
-.summon-hero-name{position:absolute;left:16px;right:16px;top:66%;z-index:4;text-align:center;text-shadow:0 2px 8px #000,0 0 18px #000;animation:sm-rise .9s cubic-bezier(.2,.9,.3,1) .5s backwards}
-.summon-hero-name small{display:block;font:700 13px/1.4 Cambria,serif;letter-spacing:2px;color:#ffd77a;text-transform:uppercase}
-.summon-hero-name strong{display:block;font:700 clamp(34px,8vw,48px)/1.15 Cambria,serif;color:#fff3c9}
-.summon-hero-name span{display:block;font:16px/1.4 Cambria,serif;color:#dfe8ff}
-.summon-hero-hint{position:absolute;left:0;right:0;bottom:6%;z-index:4;margin:0;text-align:center;font:13px Cambria,serif;color:#c9d6f5;animation:sm-breathe 1.6s ease-in-out infinite alternate}
+.summon-hero-name{position:absolute;left:16px;right:16px;top:65%;z-index:4;text-align:center;text-shadow:0 2px 8px #000,0 0 18px #000;animation:sm-rise .9s cubic-bezier(.2,.9,.3,1) 1.6s backwards}
+.summon-hero-name strong{display:block;font:700 clamp(30px,7vw,42px)/1.15 Cambria,serif;color:#fff3c9}
+/* The ultimate showcase: the combat pose sheet stands exactly where the showcase body stands. */
+.sh-ult{position:absolute;display:block;background-repeat:no-repeat;pointer-events:none;z-index:2}
+.sh-blade-pivot{position:absolute;width:0;height:0;pointer-events:none}
+.sh-blade{position:absolute;left:0;top:0;transform-origin:50% 95.3125%;background-size:200% 200%;background-repeat:no-repeat;mix-blend-mode:screen}
+.sh-fx{position:absolute;display:block;translate:0 0;transform:translate(-50%,-50%);background-repeat:no-repeat;pointer-events:none;z-index:3}
+@keyframes sh-dim{from{opacity:0}}
+@keyframes sh-beam-down{from{clip-path:inset(0 0 100% 0);opacity:.2}to{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes sh-beam-breathe{from{filter:brightness(.92)}to{filter:brightness(1.12)}}
+@keyframes sh-fade-in{from{opacity:0}}
 
 @keyframes sm-pulse{from{scale:.82;rotate:-8deg}to{scale:1.14;rotate:8deg}}
 @keyframes sm-prism{from{filter:hue-rotate(0deg) saturate(1.5) brightness(1.1)}to{filter:hue-rotate(360deg) saturate(1.5) brightness(1.1)}}

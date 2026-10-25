@@ -50,6 +50,12 @@ Hạng mục mới cho mọi tướng thì thêm vào bảng kiểm (mục 9), k
 
 Duyệt bằng `python tools/sheet_strip.py <sheet.webp> <out.png>` (dải khung kèm vạch chân) và xem ở cỡ trong game.
 
+**Cỡ thân đồng nhất qua 3 dạng (đo bằng đầu).** Thân của tướng phải to bằng nhau ở dạng 1, 2 và 3, ở mọi nơi hiển thị (trong trận, Home, Tướng, Kỹ Năng, thẻ 3 hình thái, triệu hồi). Lấy **đầu** làm chuẩn: đuôi, cánh, hào quang và vũ khí vươn tới đâu cũng được, không được làm thân nhỏ đi.
+- Đo đầu khung đầu tiên của vòng nghỉ trong trận và của vòng nghỉ trình diễn, ghi vào `assets/heroes/head-scale.json` (mỗi dạng một dòng `"<key>-<N>"`): `eyes` (giữa hai mắt), `eyeChin` (đường mắt tới cằm; Noct che mặt nên dùng `eyeSpan`, khoảng cách hai mắt).
+- `python assets/heroes/forms/head_scale.py crops <key>` tạo ảnh phóng to có lưới 1 px để đọc mắt và cằm; `match <key>` so khuôn mặt với dạng 1 ở nhiều tỉ lệ; `solve` lấy trung vị các ước lượng thành `ratio` và `headPx`; `review <key>` xếp đầu và thân 3 dạng cạnh nhau ở cùng cỡ (ảnh ở `qa/head-scale/`).
+- Hiển thị chỉ phóng to/thu nhỏ đều cả hình theo `headPx`, không vẽ lại, không kéo giãn: trận đấu nhân `--hero-art-scale` của dạng 1 với đầu dạng 1 / đầu dạng N (`ART.heroHead`); hub dùng `headFit` của `show-<key>-<N>` trong `fitBody`. Dạng 1 giữ nguyên cỡ.
+- Vẽ lại vòng nghỉ (trận hoặc trình diễn) thì đo lại dạng đó rồi build lại.
+
 ## 3. Trình diễn ngoài trận (Home, Tướng, Kỹ Năng)
 
 Viết spec rồi chạy `python assets/heroes/forms/make_showcase.py <spec.json> [model] [effort]` cho từng dạng:
@@ -58,7 +64,7 @@ Viết spec rồi chạy `python assets/heroes/forms/make_showcase.py <spec.json
 - 2 hành động thỉnh thoảng (`fidgets`), mỗi hành động có nhãn tiếng Việt;
 - `entrance`: màn xuất hiện riêng theo nguyên tố, không dùng kiểu rạch không gian của Noct.
 
-Kết quả nằm ở `assets/heroes/forms/<key>/form-N/showcase/`. Muốn giữ một khung lâu hơn thì thêm `frameMs` vào `fidgets.json`. Tướng có màu tím hoặc hồng thì dùng nền xanh (`"green": true`).
+Kết quả nằm ở `assets/heroes/forms/<key>/form-N/showcase/`. Vòng nghỉ trình diễn mới phải được đo đầu (mục 2, *Cỡ thân đồng nhất*) để thân to bằng các dạng khác. Muốn giữ một khung lâu hơn thì thêm `frameMs` vào `fidgets.json`. Tướng có màu tím hoặc hồng thì dùng nền xanh (`"green": true`).
 
 ## 4. Chiến đấu riêng của từng dạng (giống Noct)
 

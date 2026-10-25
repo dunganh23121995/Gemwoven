@@ -1,5 +1,6 @@
 """Summon reveal sounds (src/gemwoven/summon-cinematic.js), meant to feel sacred: one clean real
-CC0 recording per cue (temple bells, singing bowls, a wordless humming choir, natural water),
+CC0 recording per cue (a harmonium drone, a soft singing bowl, a deep temple bell, a wordless held
+choir "ah", a softened water touch), kept gentle: few cues, low levels, low-passed,
 minimally processed (excerpt, gentle high-pass, gain, edge fades; the natural attack and decay are
 kept; no layering, pitch/time change, synthesis or limiting).
 
@@ -17,32 +18,25 @@ SRC = ROOT / "assets/audio/sources/freesound"
 OUT = ROOT / "assets/audio/summon"
 RATE = 44100
 
-# The reveal should feel sacred: temple handbells, singing bowls, a wordless humming choir and deep
-# temple bells; the water stays natural.
-# cue: (source id, start s, end s, high-pass Hz, fade-in ms, fade-out ms, target rms, peak cap, what it is)
+# Gentle and sacred (the round-3 set was too busy and bright): few, soft cues, all low-passed so
+# nothing is harsh, under a calm harmonium drone. A card landing is only a soft touch of water.
+# cue: (source id, start s, end s, high-pass Hz, low-pass Hz, fade-in ms, fade-out ms, target rms, peak cap, what it is)
 CUES = {
-    # Each falling star: a short ring of small temple handbells; four different moments of the recording.
-    "star-1": ("271627", 0.60, 1.60, 200, 8, 380, .07, .3, "temple handbells, star 1"),
-    "star-2": ("271627", 2.95, 3.90, 200, 8, 380, .07, .3, "temple handbells, star 2"),
-    "star-3": ("271627", 5.05, 6.00, 200, 8, 380, .07, .3, "temple handbells, star 3"),
-    "star-4": ("271627", 5.95, 6.95, 200, 8, 380, .07, .3, "temple handbells, star 4"),
-    # The card hits the lake; it settles into its slot.
-    "splash": ("398039", 0.00, 1.60, 80, 2, 300, .12, .5, "small water splash"),
-    "pop": ("776443", 0.00, 0.41, 120, 2, 80, .08, .35, "soft bubble pop"),
-    # Before the gold and diamond stars: a wordless choir hums a held chord.
-    "choir": ("763890", 0.00, 7.20, 90, 60, 1800, .1, .42, "crowd humming one chord (wordless)"),
-    # Opening: bronze a plain card flip; gold a struck singing bowl; diamond a rubbed bowl rising
-    # into a deep temple bell; the whole hero steps out on a temple bell.
-    "flip": ("84322", 0.00, 0.80, 120, 2, 150, .10, .45, "card flip"),
-    "gold": ("59159", 0.00, 6.00, 70, 2, 2200, .11, .48, "struck singing bowl"),
-    "swell": ("417115", 14.20, 19.30, 90, 900, 600, .11, .45, "singing bowl rim rub, rising"),
-    "bell": ("131348", 0.00, 6.50, 40, 2, 2500, .13, .5, "deep temple bell, Daitokuji"),
-    "hero": ("668647", 0.00, 7.50, 40, 2, 2800, .13, .5, "temple bell"),
+    "touch": ("398039", 0.00, 1.40, 120, 3200, 4, 450, .05, .2, "small water splash, softened"),
+    "gold": ("170672", 0.00, 4.00, 80, 2600, 60, 1600, .06, .22, "low singing bowl, softly struck"),
+    "bell": ("131348", 0.00, 6.50, 50, 2400, 20, 2600, .06, .24, "deep temple bell, Daitokuji"),
+    "hero": ("763910", 0.20, 8.10, 120, 3600, 700, 2200, .07, .24, "crowd singing a held 'ah' (wordless)"),
 }
-# Beds that loop under the screen: a sustained singing bowl (harmonic) and the night lake.
+# The hero's own ultimate sounds for the spotlight's ultimate showcase: Mika's combat fire swell and
+# whoosh (assets/audio/reimagined, credited with her combat set), only softened here.
+OWN = {
+    "ult-charge": ("assets/audio/reimagined/mika-flame-charge.wav", 3200, 30, 500, .06, .22, "Mika's fire swell (combat)"),
+    "ult-whoosh": ("assets/audio/reimagined/mika-flame-whoosh.wav", 3200, 10, 1400, .07, .26, "Mika's flame whoosh (combat)"),
+}
+# Beds that loop under the screen: a calm harmonium drone and, quieter, the night lake.
 BEDS = {
-    "ambience": ("445095", 26.0, 150, .03, .2, "night lake: crickets, frogs, water"),
-    "drone": ("573805", 24.0, 80, .05, .25, "sustained rubbed singing bowl"),
+    "drone": ("264442", 30.0, 60, 2200, .04, .16, "harmonium drone"),
+    "ambience": ("445095", 26.0, 150, 3500, .02, .12, "night lake: crickets, frogs, water"),
 }
 
 
@@ -64,14 +58,17 @@ def highpass(x, hz):
     w = 2 * np.pi * hz / RATE; alpha = np.sin(w) / (2 * .7071); c = np.cos(w)
     b = np.array([(1 + c) / 2, -(1 + c), (1 + c) / 2]); a = np.array([1 + alpha, -2 * c, 1 - alpha])
     b, a = b / a[0], a / a[0]
-    y = np.zeros_like(x)
-    for ch in range(x.shape[1]):
-        x1 = x2 = y1 = y2 = 0.0
-        col = x[:, ch]; out = y[:, ch]
-        for i, v in enumerate(col):
-            o = b[0] * v + b[1] * x1 + b[2] * x2 - a[1] * y1 - a[2] * y2
-            x2, x1, y2, y1 = x1, v, y1, o; out[i] = o
-    return y
+    from scipy.signal import lfilter
+    return np.stack([lfilter(b, a, x[:, ch]) for ch in range(x.shape[1])], axis=1)
+
+
+def lowpass(x, hz):
+    """Gentle 2nd-order low-pass (RBJ biquad) to take the edge off bright recordings."""
+    w = 2 * np.pi * hz / RATE; alpha = np.sin(w) / (2 * .7071); c = np.cos(w)
+    b = np.array([(1 - c) / 2, 1 - c, (1 - c) / 2]); a = np.array([1 + alpha, -2 * c, 1 - alpha])
+    b, a = b / a[0], a / a[0]
+    from scipy.signal import lfilter
+    return np.stack([lfilter(b, a, x[:, ch]) for ch in range(x.shape[1])], axis=1)
 
 
 def fades(x, fin, fout):
@@ -102,20 +99,25 @@ def steadiest(x, seconds):
 
 OUT.mkdir(parents=True, exist_ok=True)
 manifest = {}
-for name, (sid, start, end, hp, fin, fout, rms, peak, what) in CUES.items():
+for name, (sid, start, end, hp, lp, fin, fout, rms, peak, what) in CUES.items():
     path, meta = source(sid)
     x = decode(path)[int(start * RATE):int(end * RATE)]
-    x = level(fades(highpass(x, hp), fin, fout), rms, peak)
+    x = level(fades(lowpass(highpass(x, hp), lp), fin, fout), rms, peak)
     out = write(x, name)
     manifest[name] = {"file": out.relative_to(ROOT).as_posix(), "duration": round(len(x) / RATE, 3), "what": what,
                       "source": {"id": sid, "title": meta["title"], "author": meta["author"], "license": meta["license"], "url": meta["source_url"], "sha256": meta["sha256"]},
                       "excerpt": [start, end], "peak": round(float(np.abs(x).max()), 3), "rms": round(float(np.sqrt((x ** 2).mean())), 3)}
 
+for name, (file, lp, fin, fout, rms, peak, what) in OWN.items():
+    x = level(fades(lowpass(decode(ROOT / file), lp), fin, fout), rms, peak)
+    out = write(x, name)
+    manifest[name] = {"file": out.relative_to(ROOT).as_posix(), "duration": round(len(x) / RATE, 3), "what": what, "source": {"file": file, "credits": "assets/audio/mika-nori-manifest.json"},
+                      "peak": round(float(np.abs(x).max()), 3), "rms": round(float(np.sqrt((x ** 2).mean())), 3)}
 # Beds: a calm stretch of each recording, made loopable by a 1.5 s crossfade of its own ends.
-for name, (sid, length, hp, rms, peak, what) in BEDS.items():
+for name, (sid, length, hp, lp, rms, peak, what) in BEDS.items():
     path, meta = source(sid)
     x = decode(path, 2); start = steadiest(x, length + 1.5)
-    x = highpass(x[start:start + int((length + 1.5) * RATE)], hp)
+    x = lowpass(highpass(x[start:start + int((length + 1.5) * RATE)], hp), lp)
     xf = int(1.5 * RATE); ramp = np.linspace(0, 1, xf)[:, None]
     loop = x[:-xf].copy(); loop[:xf] = x[:xf] * ramp + x[-xf:] * (1 - ramp)
     loop = level(loop, rms, peak)
@@ -125,4 +127,4 @@ for name, (sid, length, hp, rms, peak, what) in BEDS.items():
                       "excerpt": [round(start / RATE, 2), round(start / RATE + length + 1.5, 2)], "peak": round(float(np.abs(loop).max()), 3), "rms": round(float(np.sqrt((loop ** 2).mean())), 3)}
 (OUT / "summon-sounds.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 for k, v in manifest.items():
-    print(f"{k:9} {v['duration']:6.2f}s peak {v['peak']:.2f} rms {v['rms']:.3f}  #{v['source']['id']} {v['what']}")
+    print(f"{k:9} {v['duration']:6.2f}s peak {v['peak']:.2f} rms {v['rms']:.3f}  #{v['source'].get('id', v['source'].get('file'))} {v['what']}")

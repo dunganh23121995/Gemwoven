@@ -362,13 +362,14 @@
       fuse:key=>tx(p=>{check(HEROES[key],'Tướng không hợp lệ.');check((p.fragments[key]||0)>=80,'Cần 80 mảnh cùng tướng.');p.fragments[key]-=80;addHero(p,key);note(p,'Ghép tướng '+HEROES[key].name);}),
       // TEMPORARY (player testing): with test=true (only ?summonTest=1 on localhost/LAN, see
       // progression-ui.js) a ten-pull's first four results are a whole hero, hero fragments, an epic
-      // gear and a divine gear (both weapons, so they show as gold and diamond cards), and a one-pull is the whole hero. Costs, the wallet and
+      // gear and a divine gear (both weapons: gold and diamond cards) and the other six are plain (bronze) common gear or
+      // materials, so a ten-pull is always 2 gold + 2 diamond + 6 bronze; a one-pull is the whole hero. Costs, the wallet and
       // SUMMON_TABLE are unchanged; normal play never passes test. Remove when testing is done.
       summon:(count=1,payment='tickets',test=false)=>tx(p=>{
         check(count===1||count===10,'Chọn triệu hồi 1 hoặc 10 lần.');check(payment==='tickets'||payment==='gems','Nguồn thanh toán không hợp lệ.');check(p.equipment.length+count<=500,'Cần thêm chỗ trống trong túi trang bị.');spend(p,{[payment]:count*(payment==='gems'?120:1)});const results=[];
         for(let i=0;i<count;i++){
           let roll=Math.floor(random()*1000000),kind='material';for(const [k,weight]of SUMMON_TABLE){if(roll<weight){kind=k;break;}roll-=weight;}
-          const forced=test===true?(count>=4?['hero','fragments','epicGear','divineGear'][i]:'hero'):null;
+          const forced=test===true?(count>=4?(['hero','fragments','epicGear','divineGear'][i]||(i%2?'commonGear':'material')):'hero'):null;
           p.summon.total++;p.summon.dry++;p.summon.fragmentDry++;
           if(p.summon.dry>=300)kind='hero';else if(p.summon.fragmentDry>=30&&!['hero','fragments'].includes(kind))kind='fragments';
           if(forced)kind=forced;

@@ -1,84 +1,8 @@
 {
-  "star-1": {
-    "file": "assets/audio/summon/star-1.ogg",
-    "duration": 1.0,
-    "what": "temple handbells, star 1",
-    "source": {
-      "id": "271627",
-      "title": "2HinduTemplesBells2.wav",
-      "author": "LoopUdu",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
-      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
-    },
-    "excerpt": [
-      0.6,
-      1.6
-    ],
-    "peak": 0.3,
-    "rms": 0.049
-  },
-  "star-2": {
-    "file": "assets/audio/summon/star-2.ogg",
-    "duration": 0.95,
-    "what": "temple handbells, star 2",
-    "source": {
-      "id": "271627",
-      "title": "2HinduTemplesBells2.wav",
-      "author": "LoopUdu",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
-      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
-    },
-    "excerpt": [
-      2.95,
-      3.9
-    ],
-    "peak": 0.3,
-    "rms": 0.048
-  },
-  "star-3": {
-    "file": "assets/audio/summon/star-3.ogg",
-    "duration": 0.95,
-    "what": "temple handbells, star 3",
-    "source": {
-      "id": "271627",
-      "title": "2HinduTemplesBells2.wav",
-      "author": "LoopUdu",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
-      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
-    },
-    "excerpt": [
-      5.05,
-      6.0
-    ],
-    "peak": 0.3,
-    "rms": 0.041
-  },
-  "star-4": {
-    "file": "assets/audio/summon/star-4.ogg",
-    "duration": 1.0,
-    "what": "temple handbells, star 4",
-    "source": {
-      "id": "271627",
-      "title": "2HinduTemplesBells2.wav",
-      "author": "LoopUdu",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/LoopUdu/sounds/271627/",
-      "sha256": "d4bc0bf9b053c416093264f7a794e760b8c6423a36123273dd46b3c058e24dc5"
-    },
-    "excerpt": [
-      5.95,
-      6.95
-    ],
-    "peak": 0.3,
-    "rms": 0.042
-  },
-  "splash": {
-    "file": "assets/audio/summon/splash.ogg",
-    "duration": 1.6,
-    "what": "small water splash",
+  "touch": {
+    "file": "assets/audio/summon/touch.ogg",
+    "duration": 1.4,
+    "what": "small water splash, softened",
     "source": {
       "id": "398039",
       "title": "water splash 2",
@@ -89,105 +13,29 @@
     },
     "excerpt": [
       0.0,
-      1.6
+      1.4
     ],
-    "peak": 0.5,
-    "rms": 0.018
-  },
-  "pop": {
-    "file": "assets/audio/summon/pop.ogg",
-    "duration": 0.406,
-    "what": "soft bubble pop",
-    "source": {
-      "id": "776443",
-      "title": "pop out, bubble, soft bursting",
-      "author": "chaferwitt",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/chaferwitt/sounds/776443/",
-      "sha256": "354601298fdda29520a0da7c8e008b1e146fda69bac91854c6223be2215ebffa"
-    },
-    "excerpt": [
-      0.0,
-      0.41
-    ],
-    "peak": 0.35,
-    "rms": 0.026
-  },
-  "choir": {
-    "file": "assets/audio/summon/choir.ogg",
-    "duration": 7.2,
-    "what": "crowd humming one chord (wordless)",
-    "source": {
-      "id": "763890",
-      "title": "CRWDSing_Mmm Hummed Near F_ShaneVincent_GSC24_XY-AKG214-96k.wav",
-      "author": "ShangusBurger",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/ShangusBurger/sounds/763890/",
-      "sha256": "4a5382c94ce2d8ce4fa4feda46158596ef4b74bda4c972f5cc1e02dea9534e81"
-    },
-    "excerpt": [
-      0.0,
-      7.2
-    ],
-    "peak": 0.42,
-    "rms": 0.095
-  },
-  "flip": {
-    "file": "assets/audio/summon/flip.ogg",
-    "duration": 0.8,
-    "what": "card flip",
-    "source": {
-      "id": "84322",
-      "title": "flipCard.wav",
-      "author": "Splashdust",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/Splashdust/sounds/84322/",
-      "sha256": "dc9c08e4b172d404ce2f1ba8380d552fdd1d302419e2872f067f0d761147df90"
-    },
-    "excerpt": [
-      0.0,
-      0.8
-    ],
-    "peak": 0.45,
-    "rms": 0.021
+    "peak": 0.2,
+    "rms": 0.008
   },
   "gold": {
     "file": "assets/audio/summon/gold.ogg",
-    "duration": 6.0,
-    "what": "struck singing bowl",
+    "duration": 4.0,
+    "what": "low singing bowl, softly struck",
     "source": {
-      "id": "59159",
-      "title": "singingbowlstruck2.wav",
-      "author": "Coleco",
+      "id": "170672",
+      "title": "Singing bowl, low and quiet",
+      "author": "eliasheuninck",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/Coleco/sounds/59159/",
-      "sha256": "ecf75b3934e1f58ba01fc92dfd07cf03343d4f8df2e109984fe6a8337d2a9776"
+      "url": "https://freesound.org/people/eliasheuninck/sounds/170672/",
+      "sha256": "89e9ad3a9127d7d914f95280ff64e16b05232c4458750476883a237581a47fcc"
     },
     "excerpt": [
       0.0,
-      6.0
+      4.0
     ],
-    "peak": 0.48,
-    "rms": 0.032
-  },
-  "swell": {
-    "file": "assets/audio/summon/swell.ogg",
-    "duration": 5.1,
-    "what": "singing bowl rim rub, rising",
-    "source": {
-      "id": "417115",
-      "title": "Tibetan bowl_rubbing rim.wav",
-      "author": "dersinnsspace",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/dersinnsspace/sounds/417115/",
-      "sha256": "89cfee45329d08332a2957f1932929ebdff493bc7cfe188c584b95d37153568e"
-    },
-    "excerpt": [
-      14.2,
-      19.3
-    ],
-    "peak": 0.427,
-    "rms": 0.11
+    "peak": 0.217,
+    "rms": 0.06
   },
   "bell": {
     "file": "assets/audio/summon/bell.ogg",
@@ -205,27 +53,69 @@
       0.0,
       6.5
     ],
-    "peak": 0.5,
-    "rms": 0.024
+    "peak": 0.24,
+    "rms": 0.017
   },
   "hero": {
     "file": "assets/audio/summon/hero.ogg",
-    "duration": 7.5,
-    "what": "temple bell",
+    "duration": 7.9,
+    "what": "crowd singing a held 'ah' (wordless)",
     "source": {
-      "id": "668647",
-      "title": "temple_bell_002.wav",
-      "author": "tec_studio",
+      "id": "763910",
+      "title": "CRWDSing_Ahh Vowel Sung Near F 02_ShaneVincent_GSC24_XY-AKG214-96k.wav",
+      "author": "ShangusBurger",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/tec_studio/sounds/668647/",
-      "sha256": "0e392073380356e730443539fa562a78793a5ff361c3b7467cd542321572c57d"
+      "url": "https://freesound.org/people/ShangusBurger/sounds/763910/",
+      "sha256": "81e6ea8f87a5c81ac0914c91e733a52249552313d4631e84efd2d0deed6c7621"
     },
     "excerpt": [
-      0.0,
-      7.5
+      0.2,
+      8.1
     ],
-    "peak": 0.468,
-    "rms": 0.13
+    "peak": 0.24,
+    "rms": 0.042
+  },
+  "ult-charge": {
+    "file": "assets/audio/summon/ult-charge.ogg",
+    "duration": 1.7,
+    "what": "Mika's fire swell (combat)",
+    "source": {
+      "file": "assets/audio/reimagined/mika-flame-charge.wav",
+      "credits": "assets/audio/mika-nori-manifest.json"
+    },
+    "peak": 0.22,
+    "rms": 0.052
+  },
+  "ult-whoosh": {
+    "file": "assets/audio/summon/ult-whoosh.ogg",
+    "duration": 3.857,
+    "what": "Mika's flame whoosh (combat)",
+    "source": {
+      "file": "assets/audio/reimagined/mika-flame-whoosh.wav",
+      "credits": "assets/audio/mika-nori-manifest.json"
+    },
+    "peak": 0.26,
+    "rms": 0.05
+  },
+  "drone": {
+    "file": "assets/audio/summon/drone.ogg",
+    "duration": 30.0,
+    "what": "harmonium drone",
+    "loop": true,
+    "source": {
+      "id": "264442",
+      "title": "Harmonium Drone2",
+      "author": "easy_thunder",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/easy_thunder/sounds/264442/",
+      "sha256": "c0810f82b91405fbc13912e4915233b983ddc4ac27143182efdf7b1afc72fb50"
+    },
+    "excerpt": [
+      46.0,
+      77.5
+    ],
+    "peak": 0.136,
+    "rms": 0.04
   },
   "ambience": {
     "file": "assets/audio/summon/ambience.ogg",
@@ -244,27 +134,7 @@
       198.5,
       226.0
     ],
-    "peak": 0.2,
-    "rms": 0.011
-  },
-  "drone": {
-    "file": "assets/audio/summon/drone.ogg",
-    "duration": 24.0,
-    "what": "sustained rubbed singing bowl",
-    "loop": true,
-    "source": {
-      "id": "573805",
-      "title": "Singing Bowl, long without reverb",
-      "author": "hollandm",
-      "license": "CC0-1.0",
-      "url": "https://freesound.org/people/hollandm/sounds/573805/",
-      "sha256": "8c20131e8d13dba8fc28442d165d24464dfb4625f8a7b35c2fa843245b23f5d7"
-    },
-    "excerpt": [
-      71.5,
-      97.0
-    ],
-    "peak": 0.191,
-    "rms": 0.05
+    "peak": 0.12,
+    "rms": 0.006
   }
 }

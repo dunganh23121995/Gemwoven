@@ -543,12 +543,13 @@ storm exactly as form 1 does (lumi-thunder-manifest.json: the rumble cut on the 
 middle bolt, -tail on the last, same volumes and pans). The close-strike clips of round 6 (#721072, #717907) are no
 longer used and were removed. Stars, seal, laser and stream cues are unchanged.
 
-Hiro (starter hero) Kiếm Nhiệt Huyết charge (2026-10-25): his battle cry as he launches into the dash and his
-running strides on the dirt. Each clip is one real recording: an excerpt with its natural attack and decay,
+Hiro (starter hero) Kiếm Nhiệt Huyết charge (2026-10-25): his battle cry as he launches into the dash, his
+running strides on the dirt and the rush of his jacket on the dash. Each clip is one real recording: an excerpt with its natural attack and decay,
 a gentle high-pass, gain and short fades; no layering, pitch/time change or synthesis.
 Clips: hero-forms/novice/*.wav, manifest hero-forms/novice-manifest.json (sources, checksums).
 Build: python scripts/prepare_hiro_form_sounds.py. Sources in sources/freesound/<id>-<title>/ (source.json):
-  #695376 "Male Attack Cry 1.wav" by F.M.Audio, https://freesound.org/people/F.M.Audio/sounds/695376/ (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/)
+  #270301 "Excited Young Male Screams" by unfa, https://freesound.org/people/unfa/sounds/270301/ (CC0)
+  #495390 "Foley_Whoosh_Clothes.wav" by Nox_Sound, https://freesound.org/people/Nox_Sound/sounds/495390/ (CC0)
   #816792 "running on dirt 2 edit" by Luisa_Sanchez, https://freesound.org/people/Luisa_Sanchez/sounds/816792/ (CC0)
 
 Summon reveal sounds (2026-10-25): assets/audio/summon/*.ogg, built by scripts/prepare_summon_sounds.py.
@@ -579,3 +580,15 @@ Sources now (CC0 1.0, Freesound; source.json with SHA-256 under sources/freesoun
   hero                       #668647 "temple_bell_002.wav" by tec_studio, https://freesound.org/people/tec_studio/sounds/668647/
   ambience                   #445095 "Nature at the Lake.wav" by StoneyWaters, https://freesound.org/people/StoneyWaters/sounds/445095/
   drone                      #573805 "Singing Bowl, long without reverb" by hollandm, https://freesound.org/people/hollandm/sounds/573805/
+
+Summon reveal sounds, round 4 (2026-10-25): the round-3 set was too busy and bright, so the reveal now has few, soft,
+low-passed cues under a calm harmonium drone (scripts/prepare_summon_sounds.py; one real recording per cue, light processing).
+The handbells, humming chord, struck and rubbed bowls, the temple bell #668647, card flip and bubble pop of round 3 are no
+longer used and were removed. Sources now (CC0 1.0, Freesound; source.json with SHA-256 under sources/freesound/<id>-*/):
+  touch                      #398039 "water splash 2" by swordofkings128, https://freesound.org/people/swordofkings128/sounds/398039/
+  gold                       #170672 "Singing bowl, low and quiet" by eliasheuninck, https://freesound.org/people/eliasheuninck/sounds/170672/
+  bell                       #131348 "Bell at Daitokuji temple,kyoto.wav" by nahmandub, https://freesound.org/people/nahmandub/sounds/131348/
+  hero                       #763910 "CRWDSing_Ahh Vowel Sung Near F 02_ShaneVincent_GSC24_XY-AKG214-96k.wav" by ShangusBurger, https://freesound.org/people/ShangusBurger/sounds/763910/
+  drone                      #264442 "Harmonium Drone2" by easy_thunder, https://freesound.org/people/easy_thunder/sounds/264442/
+  ambience                   #445095 "Nature at the Lake.wav" by StoneyWaters, https://freesound.org/people/StoneyWaters/sounds/445095/
+  ult-charge, ult-whoosh     Mika's own combat fire swell and whoosh (assets/audio/reimagined, credited in her combat set above), softened.
