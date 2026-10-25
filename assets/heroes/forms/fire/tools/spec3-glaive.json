@@ -1,0 +1,29 @@
+{
+ "dir": "assets/heroes/forms/fire/form-3/showcase",
+ "identity": "assets/heroes/forms/fire/form-3/master.png",
+ "what": "Mika in her Nine-Tailed Flame Empress form, a chibi fox-girl heroine: big red-orange fox ears, very long flowing red hair with gold hair ornaments, amber eyes, ornate white and gold armour with red trim and red gem accents, a layered red and white battle dress, white and gold boots, NINE big fluffy fox tails fanned out behind her in a wide half circle like a halo, each tail cream-white at the base turning orange-red with a flame-shaped red tip, a LONG polearm crescent moon glaive whose total length from the end of its haft to the tip of its crescent is about 1.3 times her full height (boot soles to ear tips), with a huge curved orange-gold flame crescent blade that rises well above her head; the glaive keeps exactly this length and shape in every frame, never shortened",
+ "pose": "She stands regal and tall like an empress, holding the crescent moon glaive upright in her right hand beside her with the end of its haft resting on the ground and the huge flame crescent blade high above her shoulder, her left hand resting lightly on her hip, a serene confident smile, all NINE fluffy fox tails fanned out wide behind her like a blazing halo.",
+ "idle": "a regal idle: her body, face, hands, glaive and boots stay still; the NINE tails keep exactly their fan arrangement, sizes and shapes and only their flame tips ripple, one tail after another, like a slow wave travelling along the fan from the lowest tail on the left, over the top, to the lowest tail on the right, each tip settling back once the wave passes; no tail ever jumps, vanishes or swaps places; her fox ears twitch once (frames 3-4).",
+ "fidgets": [
+  [
+   "tailfan",
+   "Xòe chín đuôi",
+   "all nine tails spread out a little wider and rise a little higher like a peacock's fan (only about one fifth bigger than in Image 1, the outermost tail tips staying well inside the cell with a wide margin), their flame tips flaring brighter (frames 2-4), held proudly at full spread (frame 5), folding halfway back (frame 6), then back to their exact resting places (frame 7). Each tail keeps its place in the fan order. Her body, face, hands, glaive and boots stay exactly in place. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks.",
+   false
+  ],
+  [
+   "glaivespin",
+   "Xoay nguyệt đao",
+   "one smooth full spin of the crescent glaive in her right hand. Only her right arm and the glaive move; the glaive turns like a wheel around her right hand, which stays at the same spot beside her, in EVEN steps of about 60 degrees per frame, always the same length and shape: frame 2 she lifts it slightly and the blade tilts forward (crescent at upper right), frame 3 the glaive lies horizontal with the crescent pointing right, frame 4 the crescent points down-right, frame 5 the crescent points straight down with the haft end up, frame 6 the crescent sweeps round to the left and up, frame 7 the glaive is back upright exactly as in Image 1 and its haft end taps the ground, a small flat ring of flame flaring at its base. A thin curved arc of orange fire trails behind the crescent blade tip in frames 3-6, following the circle. Her body, face, left hand on her hip, the nine fanned tails and her boots stay exactly as in Image 1 in every frame; the glaive passes in front of her tails. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Keep the whole glaive inside the cell with margin.",
+   true
+  ]
+ ],
+ "entrance": "her nine-tailed fox-fire summoning. Frame 1: no character yet, only nine small round fox-fire flames floating in a wide arc just above the ground where she will stand. Frame 2: the nine flames streak down to one point on the ground and shoot up as nine long tails of fire unfurling upward in a wide fan. Frame 3: the nine fire tails sweep inward and close around the centre into a tall blazing flame bud. Frame 4: the flame bud starts to open like a nine-petal flower of fire. Frame 5: the petals open wide and she is revealed standing in the centre holding her glaive, her nine tails still made of pure fire. Frame 6: her nine tails turn from fire into her real fluffy tails fanned out behind her, flame tips burning. Frame 7: the last petals of fire curl away at her feet. Frame 8: exactly the resting pose of Image 1, no extra flames. All flames are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Keep every part inside its cell with margin.",
+ "entrance_label": "Cửu vĩ hồ hỏa giáng thế",
+ "only": [
+  "idle",
+  "tailfan",
+  "glaivespin",
+  "entrance"
+ ]
+}

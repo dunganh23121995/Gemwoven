@@ -1,12 +1,6 @@
 {
   "fidgets": [
     {
-      "name": "entrance",
-      "label": "Cửu vĩ hồ hỏa giáng thế",
-      "file": "entrance.webp",
-      "whole": false
-    },
-    {
       "name": "tailfan",
       "label": "Xòe chín đuôi",
       "file": "tailfan.webp",
@@ -27,6 +21,12 @@
       "label": "Xoay nguyệt đao",
       "file": "glaivespin.webp",
       "whole": true
+    },
+    {
+      "name": "entrance",
+      "label": "Cửu vĩ hồ hỏa giáng thế",
+      "file": "entrance.webp",
+      "whole": false
     }
   ]
 }

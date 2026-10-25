@@ -11,7 +11,7 @@
 .mika-flash.cleave{background:linear-gradient(90deg,#ff7a2a00 0%,#ffb35a55 45%,#fff0c066 70%,#ff7a2a00 100%)}
 .mika-flash.sun{background:radial-gradient(circle at 76% 58%,#fff3c8aa 0%,#ffb04a66 22%,#ff5a1a00 55%)}
 /* Six-star gather: the nine tails' aura flares instead of dimming like other heroes' while acting. */
-.scene .hero-actor[data-mika-flare] .combat-form-aura{opacity:1;filter:brightness(1.45) saturate(1.25);transition:opacity .2s,filter .2s}
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"][data-mika-flare].combat-v3-acting .combat-form-aura,.scene .hero-actor[data-mika-flare] .combat-form-aura{opacity:1;filter:brightness(1.45) saturate(1.25);transition:opacity .2s,filter .2s}
 /* Behind her back (first child of the actor, under the sprite), at body height. */
 .scene .hero-actor .mika-tail-flare{position:absolute;left:44%;top:52%;width:128%;aspect-ratio:1;translate:-50% -50%;z-index:0;pointer-events:none;background-repeat:no-repeat;filter:drop-shadow(0 0 10px #ff9a3caa)}
 /* The departure fox runs clear of the dash's streaming tails, a stride behind and in front of them. */
@@ -19,3 +19,11 @@
 /* Six-star dash: the standing aura's flame wisps would float in front of her face as she runs. */
 .scene .hero-actor[data-hero-element="fire"][data-hero-form="3"][data-departing] .combat-form-aura{opacity:0!important;transition:opacity .15s}
 body.reduced-motion .mika-tail-flare,body.reduced-motion .mika-fx,body.reduced-motion .mika-fox-spirit{display:none}
+/* Six-star Mika in combat reads in her own colours: the shared form-3 glow (a 9px drop-shadow in the
+   element colour plus a brightness lift) and her full aura washed her cream tails and armour out. She keeps
+   a tight warm rim light and a softened aura. Other heroes keep the shared rule. */
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 3px 2px #0006) drop-shadow(0 0 3px #ff7a2a88)}
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"] .combat-form-aura{opacity:.55}
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"].combat-v3-acting .combat-form-aura{opacity:.18}
+/* Her pale halo disc sat right behind the cream tails and paled them further; the flame band stays. */
+.scene .hero-actor[data-hero-element="fire"][data-hero-form="3"] .combat-form-aura .form-halo{display:none}

@@ -1,9 +1,0 @@
-Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached character (Mika in her nine-tailed form with a crescent moon glaive).
-Subject: the slash of one sweeping cut of her moon glaive, for a basic attack: a wide, elegant crescent-moon shaped slash, like a thin new moon lying on its side, opening to the LEFT, its convex sharp edge bulging to the RIGHT, spanning from near the top to near the bottom of the cell. White-gold radiant moon-bright edge, a band of golden-orange fox-fire behind it, a few cream-tipped fox-fire wisps curling off it like small fox tails.
-Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square image 1024x1024. Read left-to-right, then the next row. The crescent keeps the same position and size in every cell, about 80% of the cell height.
-Frame 1: the crescent forming, only the upper half drawn with a bright leading tip.
-Frame 2: the full crescent blazing, brightest.
-Frame 3: the crescent thinning, fox-fire wisps peeling away.
-Frame 4: only a faint thin silver-gold trace and embers left.
-Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke clouds. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No glaive, no hand, no character.
-Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

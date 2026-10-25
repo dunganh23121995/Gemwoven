@@ -77,6 +77,7 @@ def main():
     p.add_argument("--shift-x", type=float, default=0, help="extra horizontal offset in output pixels (centre a run's body, not its boots)")
     p.add_argument("--k256", type=float, default=0, help="raw px -> px of a 256px actor cell (sets the body size directly)")
     p.add_argument("--scale", type=float, default=0, help="with --k256: the sheet's runtime scale (drawing box growth)")
+    p.add_argument("--out", default="", help="sheet file name (default: the action)")
     p.add_argument("--body-frac", type=float, default=0.40, help="share of the cell height the reference silhouette fills")
     a = p.parse_args()
 
@@ -150,7 +151,7 @@ def main():
     sheet = Image.new("RGBA", (a.cols * a.cell, a.rows * a.cell), (0, 0, 0, 0))
     for i, f in enumerate(frames):
         sheet.alpha_composite(f, ((i % a.cols) * a.cell, (i // a.cols) * a.cell))
-    sheet.save(base / f"{a.action}.webp", lossless=True, method=6)
+    sheet.save(base / f"{a.out or a.action}.webp", lossless=True, method=6)
     info = {"cell": a.cell, "scale": round(runtime_scale, 4), "footY": foot_y, "k": k, "ref_frame": a.ref_frame,
             "idle_h": int(idle_h), "ref_h": int(ref_h), "frames": meta}
     (work / "process-meta.json").write_text(json.dumps(info, indent=2), encoding="utf-8")

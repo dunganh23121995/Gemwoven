@@ -49,13 +49,6 @@
     "width": 320,
     "height": 320
   },
-  "slash3": {
-    "file": "assets/fx/heroes/fire/slash3.webp",
-    "count": 4,
-    "frameDuration": 45,
-    "width": 320,
-    "height": 320
-  },
   "engulf3": {
     "file": "assets/fx/heroes/fire/engulf3.webp",
     "count": 6,
