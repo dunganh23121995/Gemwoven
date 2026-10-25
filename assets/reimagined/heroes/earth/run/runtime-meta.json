@@ -29,7 +29,7 @@
   "anchorEstimator": "median of lower silhouette; bottommost toe Y",
   "reviewedFootRootFrames": [],
   "source": "assets/reimagined/heroes/earth/run/raw-sheet.png",
-  "sourceSha256": "09ab13ff2d87c90b4e0b496520a8fd72a9687044e6678284706016f4248efe7b",
+  "sourceSha256": "2c3e0f8bf42226dbf744ee8f10311f747517c8f7392b61b256724a8c36cd142d",
   "qc": {
     "frame_count": 6,
     "valid_frame_count": 6,
@@ -48,28 +48,28 @@
   "recoveredGridCrossings": [],
   "headAnchors": [
     [
-      108,
-      106
+      106,
+      99
     ],
     [
-      110,
-      107
-    ],
-    [
-      108,
-      106
+      106,
+      98
     ],
     [
       108,
-      106
+      98
+    ],
+    [
+      106,
+      94
+    ],
+    [
+      106,
+      93
     ],
     [
       108,
-      106
-    ],
-    [
-      108,
-      106
+      93
     ]
   ],
   "floorAligned": true,
@@ -78,13 +78,9 @@
     21
   ],
   "redraw": {
-    "date": "2026-10-25",
-    "why": "the old run carried neither hammer nor shield",
-    "model": "gpt-6-astra high via codex_image_gen.py",
-    "refs": [
-      "form-1 combat idle frame 1 (identity)",
-      "make_anchor_layout 2x3 from form-1 combat-idle master"
-    ],
-    "placement": "assets/heroes/forms/earth/tools/place_action.py, spec same/sole, k=1 (idle size)"
+    "date": "2026-10-26",
+    "why": "a real alternating jog cycle: frames 4-6 mirror the legs of frames 1-3 (near/far leg swap, far leg shaded)",
+    "model": "gpt-6-astra high",
+    "placement": "one transform for the sheet from the anchor template, head-size matched to the idle; contact frames on the feet line, flight frames keep their lift"
   }
 }

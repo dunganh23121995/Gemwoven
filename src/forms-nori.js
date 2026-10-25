@@ -31,9 +31,32 @@ async function noriHammerAttack(raw,options){
 const noriStarUltimate=()=>formOriginalUltimate();
 const noriFormRender=renderActors;
 renderActors=function(){noriFormRender();if(state.key==='earth'&&combatHeroForm('earth')>=2)noriWarmSheets(combatHeroForm('earth'));};
+// Nori's run sheets (all forms) are one full 6-frame jog cycle whose second half mirrors the legs of the first,
+// not the older 2 set-off poses + 4 strides: the walk off a cleared stage plays all six in a loop. Otherwise the
+// shared departure (same travel, camera, ground marks).
+async function noriDepart(){
+  const hero=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children],run=spriteDefinition('hero','earth','run').sheet;
+  hero.dataset.departing='true';let fx=null;
+  try{
+    setSpriteFrame('hero','run',0);fx=departFx('earth');
+    const start=performance.now(),duration=reduced?1:2400;
+    await new Promise(resolve=>{
+      function tick(now){
+        const p=Math.min(1,(now-start)/duration),camera=width*.95*p;
+        hero.style.transform=`translateX(${width*1.65*p-camera}px)`;
+        hero.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
+        setSpriteFrame('hero','run',Math.floor(Math.max(0,now-start)/(run.frameDuration||100))%run.count);fx?.tick(now,camera);
+        layers.forEach(layer=>{layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`;});
+        if(p<1)requestAnimationFrame(tick);else resolve();
+      }requestAnimationFrame(tick);
+    });
+    await animate(hero,[{opacity:1},{opacity:0}],{duration:180});hero.style.opacity='0';
+  }finally{fx?.remove();delete hero.dataset.departing;delete hero.dataset.worldX;hero.style.transform='';setSpriteAction('hero','idle');}
+}
 HERO_KITS.earth={forms:{
-  2:{ultimate:noriStarUltimate,attack:noriHammerAttack},
-  3:{ultimate:noriStarUltimate,attack:noriHammerAttack}
+  1:{depart:noriDepart},
+  2:{ultimate:noriStarUltimate,attack:noriHammerAttack,depart:noriDepart},
+  3:{ultimate:noriStarUltimate,attack:noriHammerAttack,depart:noriDepart}
 }};
 
 // ---- Placement ------------------------------------------------------------------------------------
