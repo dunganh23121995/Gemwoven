@@ -11423,7 +11423,7 @@
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-1/showcase/entrance.webp"
     },
-    "headPx": 17.0,
+    "headPx": 16.27,
     "headFit": 1.0
   },
   "show-earth-3": {
@@ -11455,8 +11455,8 @@
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-3/showcase/entrance.webp"
     },
-    "headPx": 16.0,
-    "headFit": 1.0625
+    "headPx": 15.13,
+    "headFit": 1.0753
   },
   "show-fire-1": {
     "file": "assets/heroes/forms/fire/form-1/showcase/poster.png",
@@ -11498,7 +11498,7 @@
       },
       "entrance": "assets/heroes/forms/fire/form-1/showcase/entrance.webp"
     },
-    "headPx": 16.5,
+    "headPx": 13.68,
     "headFit": 1.0
   },
   "show-fire-2": {
@@ -11551,8 +11551,8 @@
       },
       "entrance": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
     },
-    "headPx": 16.76,
-    "headFit": 0.9845
+    "headPx": 14.06,
+    "headFit": 0.973
   },
   "show-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/showcase/poster.png",
@@ -11594,8 +11594,8 @@
       },
       "entrance": "assets/heroes/forms/fire/form-3/showcase/entrance.webp"
     },
-    "headPx": 11.37,
-    "headFit": 1.4512
+    "headPx": 10.64,
+    "headFit": 1.2857
   },
   "show-ice-1": {
     "file": "assets/heroes/forms/ice/form-1/showcase/poster.png",
@@ -11637,7 +11637,7 @@
       },
       "entrance": "assets/heroes/forms/ice/form-1/showcase/entrance.webp"
     },
-    "headPx": 14.5,
+    "headPx": 11.83,
     "headFit": 1.0
   },
   "show-ice-2": {
@@ -11680,8 +11680,8 @@
       },
       "entrance": "assets/heroes/forms/ice/form-2/showcase/entrance.webp"
     },
-    "headPx": 13.09,
-    "headFit": 1.1077
+    "headPx": 11.1,
+    "headFit": 1.0658
   },
   "show-ice-3": {
     "file": "assets/heroes/forms/ice/form-3/showcase/poster.png",
@@ -11723,8 +11723,8 @@
       },
       "entrance": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
     },
-    "headPx": 12.31,
-    "headFit": 1.1779
+    "headPx": 11.5,
+    "headFit": 1.0287
   },
   "show-lightning-1": {
     "file": "assets/heroes/forms/lightning/form-1/showcase/poster.png",
@@ -11755,7 +11755,7 @@
       "timing": {},
       "entrance": "assets/heroes/forms/lightning/form-1/showcase/entrance.webp"
     },
-    "headPx": 17.0,
+    "headPx": 13.16,
     "headFit": 1.0
   },
   "show-lightning-2": {
@@ -11798,8 +11798,8 @@
       },
       "entrance": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
     },
-    "headPx": 15.38,
-    "headFit": 1.1159
+    "headPx": 13.36,
+    "headFit": 0.9945
   },
   "show-lightning-3": {
     "file": "assets/heroes/forms/lightning/form-3/showcase/poster.png",
@@ -11830,8 +11830,8 @@
       "timing": {},
       "entrance": "assets/heroes/forms/lightning/form-3/showcase/entrance.webp"
     },
-    "headPx": 13.79,
-    "headFit": 1.2151
+    "headPx": 11.84,
+    "headFit": 1.0955
   },
   "show-novice-1": {
     "file": "assets/heroes/forms/novice/form-1/showcase/poster.png",
@@ -11905,8 +11905,8 @@
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-2/showcase/entrance.webp"
     },
-    "headPx": 18.53,
-    "headFit": 0.9174
+    "headPx": 16.16,
+    "headFit": 1.0068
   },
   "summon-back-bronze": {
     "file": "assets/gemwoven/summon/runtime/back-bronze.webp",
@@ -12190,7 +12190,7 @@
       "foot": 0.97265625,
       "x": 0.53125
     },
-    "headPx": 11.0
+    "headPx": 12.06
   },
   "ulti-fire-2-wave": {
     "file": "assets/fx/heroes/fire/arc2s.webp",
@@ -12273,7 +12273,7 @@
       "foot": 0.939453125,
       "x": 0.521484375
     },
-    "headPx": 17.652
+    "headPx": 16.882
   },
   "ulti-fire-3-wave": {
     "file": "assets/fx/heroes/fire/sweep3.webp",
@@ -12356,7 +12356,7 @@
       "foot": 0.93359375,
       "x": 0.5068359375
     },
-    "headPx": 15.399
+    "headPx": 13.85
   },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",

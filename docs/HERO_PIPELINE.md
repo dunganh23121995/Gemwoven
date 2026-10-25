@@ -51,10 +51,10 @@ Hạng mục mới cho mọi tướng thì thêm vào bảng kiểm (mục 9), k
 Duyệt bằng `python tools/sheet_strip.py <sheet.webp> <out.png>` (dải khung kèm vạch chân) và xem ở cỡ trong game.
 
 **Cỡ thân đồng nhất qua 3 dạng (đo bằng đầu).** Thân của tướng phải to bằng nhau ở dạng 1, 2 và 3, ở mọi nơi hiển thị (trong trận, Home, Tướng, Kỹ Năng, thẻ 3 hình thái, triệu hồi). Lấy **đầu** làm chuẩn: đuôi, cánh, hào quang và vũ khí vươn tới đâu cũng được, không được làm thân nhỏ đi.
-- Đo đầu khung đầu tiên của vòng nghỉ trong trận và của vòng nghỉ trình diễn, ghi vào `assets/heroes/head-scale.json` (mỗi dạng một dòng `"<key>-<N>"`): `eyes` (giữa hai mắt), `eyeChin` (đường mắt tới cằm; Noct che mặt nên dùng `eyeSpan`, khoảng cách hai mắt).
-- `python assets/heroes/forms/head_scale.py crops <key>` tạo ảnh phóng to có lưới 1 px để đọc mắt và cằm; `match <key>` so khuôn mặt với dạng 1 ở nhiều tỉ lệ; `solve` lấy trung vị các ước lượng thành `ratio` và `headPx`; `review <key>` xếp đầu và thân 3 dạng cạnh nhau ở cùng cỡ (ảnh ở `qa/head-scale/`).
+- Đo đầu ở khung đầu tiên của vòng nghỉ trong trận và của vòng nghỉ trình diễn, ghi vào `assets/heroes/head-scale.json` (mỗi dạng một dòng `"<key>-<N>"`): `irisBoxes` (khung của hai mống mắt, đọc trên lưới 1 px) và `chinY` (hàng đầu tiên dưới cằm không còn là da). Từ đó tính hai số độc lập: `eyeSpan` (khoảng cách tâm hai mống mắt) và `eyeChin` (đường mắt tới cằm). Tỉ lệ của một dạng so với dạng 1 là trung bình hai tỉ lệ; nếu hai số lệch nhau quá 5% thì soi bằng mắt (`review`) trước khi nhận. Mắt xa bị che ở dạng 1 (khiên của Nori) thì đặt `"spanUsable": false` và chỉ dùng `eyeChin`. Noct đã khóa: build bỏ qua.
+- `python assets/heroes/forms/head_scale.py crops <key>` tạo ảnh lưới 1 px để đọc mống mắt và cằm; `measure` tính tâm mống mắt, `eyeSpan`, `eyeChin`; `solve` ra `ratio` và `headPx` (báo dạng nào hai số lệch nhau); `review <key>` xếp 3 khuôn mặt ở cùng cỡ đầu (đường mắt và cằm thẳng hàng) và thân 3 dạng (ảnh ở `qa/head-scale/`).
 - Hiển thị chỉ phóng to/thu nhỏ đều cả hình theo `headPx`, không vẽ lại, không kéo giãn: trận đấu nhân `--hero-art-scale` của dạng 1 với đầu dạng 1 / đầu dạng N (`ART.heroHead`); hub dùng `headFit` của `show-<key>-<N>` trong `fitBody`. Dạng 1 giữ nguyên cỡ.
-- Vẽ lại vòng nghỉ (trận hoặc trình diễn) thì đo lại dạng đó rồi build lại.
+- Vẽ lại vòng nghỉ (trận hoặc trình diễn) thì đo lại dạng đó rồi build lại. Kiểm lại trên màn hình (Studio, DPR 3): khoảng cách hai mắt và mắt–cằm của 3 dạng phải lệch nhau không quá khoảng 3%.
 
 ## 3. Trình diễn ngoài trận (Home, Tướng, Kỹ Năng)
 

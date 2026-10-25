@@ -7,30 +7,40 @@ on screen as form 1's head (form 1 keeps today's size). Nothing is redrawn or st
 Data: assets/heroes/head-scale.json, one line per hero form ("fire-3"), for two drawings:
   combat   - first frame of the combat idle sheet (256px cell)
   showcase - first frame of the hub showcase idle (form-N/showcase/idle.webp, the hub poster)
-Each entry keeps the raw readings and the result:
-  eyes      [x, y] centre between the eyes, in sheet pixels of that frame
-  eyeChin   eye line to chin, px (read on zoomed crops; the hero's head measure)
-  eyeSpan   centre of one eye to the other, px (Noct's face is hidden: his glowing eyes)
-  template  [forward, reverse] face scale against form 1 by multi-scale template matching
-  ratio     head size against form 1 = median of every estimate above (eyeChin ratio, eyeSpan
-            ratio, template forward, template reverse); form 1 is 1
-  headPx    form 1's measure x ratio: the head size in that drawing's pixels
-  cellPx    frame size; bodyPx: opaque height of the frame (crown to foot, extras included)
+
+How a head is measured (all in that frame's sheet pixels):
+  irisBoxes [[x0,y0,x1,y1], [x0,y0,x1,y1]]  the two irises, read on 1-px grid crops (`crops`);
+            x1/y1 exclusive. Their centres are the darkness-weighted centroids inside each box.
+  chinY     the first row under the chin that is no longer skin, at the middle of the chin.
+  eyes      midpoint of the two iris centres; irisL / irisR the centres themselves
+  eyeSpan   distance between the iris centres
+  eyeChin   eye line (mean iris y) to chinY
+Two independent measures, because each has a weakness: the eye spacing shrinks when a face is
+turned further into 3/4 view, and the chin can hide behind a scarf or an open mouth. A form's
+size against form 1 (ratio) is the mean of the two ratios (eyeSpan/eyeSpan1, eyeChin/eyeChin1).
+When they disagree by more than 5% the pair was inspected by eye (`review`: the three faces
+normalised by each candidate, eye lines aligned) and with a Codex second opinion; in every such
+case the mean gave the most even faces. A hero whose form-1 far eye is partly hidden (Nori's
+shield) sets "spanUsable": false and uses eyeChin alone. Noct (shadow) is locked as approved:
+his entries are kept for reference and the builds skip him.
+  ratio   head size against form 1 (form 1 is 1)
+  headPx  form 1's eyeChin x ratio: the head size in that drawing's pixels
+  cellPx  frame size; bodyPx: opaque height of the frame (crown to foot, extras included)
 
 The builds read headPx: build.py -> ART.heroHead (combat --hero-art-scale), and
-scripts/build_gemwoven.py -> headFit on every show-<hero>-<form> asset (hub fitBody).
+scripts/build_gemwoven.py -> headFit on every show-<hero>-<form> asset (hub fitBody, summon).
 
 Usage (QA images go to qa/head-scale/, which Git ignores):
-  python assets/heroes/forms/head_scale.py crops  [hero]   zoomed 1px-grid crops of each head to read eyes/chin
-  python assets/heroes/forms/head_scale.py match  [hero]   template scales of forms 2-3 against form 1 (writes template)
-  python assets/heroes/forms/head_scale.py solve           ratio, headPx, cellPx, bodyPx from the readings
-  python assets/heroes/forms/head_scale.py review [hero]   heads side by side at display scale, guide lines at eyes
-A new hero or form: add its entry (eyes, eyeChin or eyeSpan), run match, solve, review; then rebuild.
+  python assets/heroes/forms/head_scale.py crops   [hero]  1-px grid crops of each face (read irisBoxes, chinY)
+  python assets/heroes/forms/head_scale.py measure         iris centres, eyeSpan, eyeChin from the readings
+  python assets/heroes/forms/head_scale.py solve           ratio, headPx, cellPx, bodyPx
+  python assets/heroes/forms/head_scale.py review  [hero]  the faces at equal head size (eyes aligned, chin
+                                                           line), iris markers, and the whole bodies
+A new hero or form, or a redrawn idle: enter irisBoxes and chinY, run measure, solve, review; rebuild.
 """
 import json
 import sys
 from pathlib import Path
-from statistics import median
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -38,6 +48,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "assets/heroes/head-scale.json"
 OUT = ROOT / "qa/head-scale"
+AGREE = .05
 
 
 def sheet_of(hero, form, kind):
@@ -59,8 +70,8 @@ def frame(hero, form, kind):
         return im.crop((0, 0, im.width // cols, im.height // rows))
 
 
-def flat(im):
-    bg = Image.new("RGBA", im.size, (128, 128, 128, 255))
+def flat(im, grey=(70, 70, 80)):
+    bg = Image.new("RGBA", im.size, (*grey, 255))
     bg.alpha_composite(im)
     return bg.convert("RGB")
 
@@ -79,34 +90,32 @@ def save(data):
     DATA.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def entries(data, only=None):
+def entries(data, only=None, measured=True):
     for name, entry in data["forms"].items():
         hero, form = name.rsplit("-", 1)
-        if only in (None, hero):
-            yield hero, int(form), entry
+        if only not in (None, hero) or (measured and data["heroes"][hero].get("locked")):
+            continue
+        yield hero, int(form), entry
 
 
 def grid(im, box, zoom, out):
-    """A zoomed crop with a tick every pixel row and labels every 2px, to read eye line and chin."""
+    """A zoomed crop with every pixel outlined and coordinates every 2px (x printed mod 100)."""
     x0, y0, x1, y1 = box
     crop = flat(im.crop(box)).resize(((x1 - x0) * zoom, (y1 - y0) * zoom), Image.NEAREST)
-    pad = 30
+    pad = 26
     can = Image.new("RGB", (crop.width + pad, crop.height + pad), (255, 255, 255))
     can.paste(crop, (pad, pad))
     d, font = ImageDraw.Draw(can), ImageFont.load_default()
     for y in range(y0, y1 + 1):
         yy = pad + (y - y0) * zoom
+        d.line([(pad, yy), (can.width, yy)], fill=(0, 255, 0) if y % 10 == 0 else (40, 40, 40))
         if y % 2 == 0:
-            d.text((0, yy - 5), str(y), fill=(0, 0, 0), font=font)
-            for xx in range(pad, can.width, 8):
-                d.point((xx, yy), fill=(255, 255, 0))
-        if y % 10 == 0:
-            d.line([(pad, yy), (can.width, yy)], fill=(0, 255, 0))
+            d.text((0, yy + zoom // 2 - 5), str(y), fill=(0, 0, 0), font=font)
     for x in range(x0, x1 + 1):
-        if x % 10 == 0:
-            xx = pad + (x - x0) * zoom
-            d.line([(xx, pad), (xx, can.height)], fill=(0, 200, 255))
-            d.text((xx - 6, 2), str(x), fill=(0, 0, 0), font=font)
+        xx = pad + (x - x0) * zoom
+        d.line([(xx, pad), (xx, can.height)], fill=(0, 200, 255) if x % 10 == 0 else (40, 40, 40))
+        if x % 2 == 0:
+            d.text((xx + 1, 8 if x % 4 == 0 else 15), str(x % 100), fill=(0, 0, 0), font=font)
     can.save(out)
 
 
@@ -115,110 +124,92 @@ def crops(only=None):
     OUT.mkdir(parents=True, exist_ok=True)
     for hero, form, entry in entries(data, only):
         for kind in ("combat", "showcase"):
-            e = entry[kind]
-            x, y = e["eyes"]
-            r = round((22 if kind == "showcase" else 17) * e.get("ratio", 1))
-            zoom = max(6, round(440 / (2 * r)))
-            grid(frame(hero, form, kind), (round(x - r), round(y - r * .7), round(x + r), round(y + r * 1.3)), zoom, OUT / f"crop-{hero}-{form}-{kind}.png")
+            x, y = entry[kind]["eyes"]
+            rx, up, down, zoom = (20, 12, 22, 13) if kind == "showcase" else (15, 10, 18, 16)
+            grid(frame(hero, form, kind), (round(x - rx), round(y - up), round(x + rx), round(y + down)), zoom, OUT / f"crop-{hero}-{form}-{kind}.png")
     print("crops in", OUT)
 
 
-def ncc_search(template, image, centre, scales, reach=26):
-    """Best (score, scale) of a template in an image resized by 1/scale, near centre."""
-    t = np.asarray(template, np.float32) / 255
-    t = t - t.mean()
-    tn = np.sqrt((t * t).sum())
-    h, w = t.shape[:2]
-    best = (-2.0, 1.0)
-    for s in scales:
-        im = image.resize((round(image.width / s), round(image.height / s)), Image.LANCZOS)
-        cx, cy = centre[0] / s, centre[1] / s
-        box = (int(max(0, cx - w / 2 - reach)), int(max(0, cy - h / 2 - reach)), int(min(im.width, cx + w / 2 + reach)), int(min(im.height, cy + h / 2 + reach)))
-        a = np.asarray(im.crop(box), np.float32) / 255
-        if a.shape[0] < h or a.shape[1] < w:
-            continue
-        v = np.lib.stride_tricks.sliding_window_view(a, (h, w), axis=(0, 1))   # (H', W', c, h, w)
-        v = np.moveaxis(v, 2, -1)
-        v = v - v.mean(axis=(2, 3, 4), keepdims=True)
-        score = (v * t).sum(axis=(2, 3, 4)) / (np.sqrt((v * v).sum(axis=(2, 3, 4))) * tn + 1e-9)
-        if score.max() > best[0]:
-            best = (float(score.max()), float(s))
-    return best
+def iris_centre(lum, box):
+    """Darkness-weighted centroid inside an iris box: the iris and pupil weigh, skin and sclera do not."""
+    x0, y0, x1, y1 = box
+    a = lum[y0:y1, x0:x1]
+    w = np.clip(np.percentile(a, 90) - a, 0, None)
+    ys, xs = np.mgrid[y0:y1, x0:x1]
+    return float((w * xs).sum() / w.sum() + .5), float((w * ys).sum() / w.sum() + .5)
 
 
-def match(only=None):
-    """Template scale of each form's face against form 1's (and back), on the same kind of drawing."""
+def measure():
     data = load()
-    for hero, form, entry in entries(data, only):
-        if form == 1:
-            continue
+    for hero, form, entry in entries(data):
         for kind in ("combat", "showcase"):
-            box = data["heroes"][hero]["faceBox"][kind]
-            ref, ref_eyes = flat(frame(hero, 1, kind)), data["forms"][f"{hero}-1"][kind]["eyes"]
-            tgt, eyes = flat(frame(hero, form, kind)), entry[kind]["eyes"]
-            off = ((box[0] + box[2]) / 2 - ref_eyes[0], (box[1] + box[3]) / 2 - ref_eyes[1])
-            guess = entry[kind].get("ratio", 1)
-            centre = (eyes[0] + off[0] * guess, eyes[1] + off[1] * guess)
-            _, fwd = ncc_search(ref.crop(box), tgt, centre, np.arange(.45, 1.9, .01))
-            w, h = box[2] - box[0], box[3] - box[1]
-            back = (round(centre[0] - w * fwd / 2), round(centre[1] - h * fwd / 2), round(centre[0] + w * fwd / 2), round(centre[1] + h * fwd / 2))
-            _, rev = ncc_search(tgt.crop(back), ref, ((box[0] + box[2]) / 2, (box[1] + box[3]) / 2), np.arange(.45, 1.9, .01))
-            entry[kind]["template"] = [round(fwd, 2), round(1 / rev, 2)]
-            print(hero, form, kind, entry[kind]["template"])
+            e = entry[kind]
+            if "irisBoxes" not in e:
+                continue
+            lum = np.asarray(flat(frame(hero, form, kind)), np.float32) @ [.299, .587, .114] / 255
+            (lx, ly), (rx, ry) = (iris_centre(lum, b) for b in e["irisBoxes"])
+            e.update(irisL=[round(lx, 2), round(ly, 2)], irisR=[round(rx, 2), round(ry, 2)], eyes=[round((lx + rx) / 2, 2), round((ly + ry) / 2, 2)],
+                     eyeSpan=round(float(np.hypot(rx - lx, ry - ly)), 2), eyeChin=round(e["chinY"] - (ly + ry) / 2, 2))
     save(data)
 
 
 def solve():
     data = load()
     for hero, form, entry in entries(data):
-        measure = data["heroes"][hero]["measure"]
+        span_ok = data["heroes"][hero].get("spanUsable", True)
         for kind in ("combat", "showcase"):
             e, base = entry[kind], data["forms"][f"{hero}-1"][kind]
-            if form == 1:
-                ratio = 1.0
-            else:
-                est = [e[k] / base[k] for k in ("eyeChin", "eyeSpan") if e.get(k) and base.get(k)] + list(e.get("template") or [])
-                ratio = round(median(est), 3)
+            chin = e["eyeChin"] / base["eyeChin"]
+            span = e["eyeSpan"] / base["eyeSpan"] if span_ok and form > 1 else chin
+            ratio = 1.0 if form == 1 else round((span + chin) / 2, 3)
             im = frame(hero, form, kind)
             box = im.getchannel("A").point(lambda a: 255 if a >= 128 else 0).getbbox()
-            e.update(ratio=ratio, headPx=round(base[measure] * ratio, 2), cellPx=im.height, bodyPx=box[3] - box[1])
+            e.update(ratio=ratio, headPx=round(base["eyeChin"] * ratio, 2), cellPx=im.height, bodyPx=box[3] - box[1])
+            flag = "" if abs(span / chin - 1) <= AGREE else "  <- measures disagree: check with review"
+            print(f"{hero}-{form} {kind:8} span {span:.3f} chin {chin:.3f} -> {ratio:.3f}{flag}")
     save(data)
-    for hero, form, entry in entries(data):
-        print(f"{hero}-{form}", {k: (v["ratio"], v["headPx"], v["cellPx"]) for k, v in entry.items()})
 
 
 def review(only=None):
-    """Each hero's heads at one display scale (form 1's), eyes on one green line, a line every
-    quarter head; and the three whole bodies on one ground line at that scale."""
+    """Per hero and drawing: the three faces scaled to one head size (ratio), eye line (cyan) and
+    form 1's chin (magenta) across; then the same faces at their raw sheet scale; then the whole
+    bodies at one head size on one ground line."""
     data = load()
     OUT.mkdir(parents=True, exist_ok=True)
-    heroes = sorted({h for h, _, _ in entries(data, only)})
-    for hero in heroes:
+    for hero in sorted({h for h, _, _ in entries(data, only)}):
         forms = [(f, e) for h, f, e in entries(data, hero)]
         for kind in ("combat", "showcase"):
-            h1 = data["forms"][f"{hero}-1"][kind]["headPx"]
-            R, Z = 2.6 * h1, 4
-            tiles, bodies = [], []
-            for form, e in forms:
-                k = e[kind]["headPx"] / h1   # this drawing's pixels per form-1 pixel
-                im = frame(hero, form, kind)
-                x, y = e[kind]["eyes"]
-                tiles.append(flat(im.crop((x - R * k, y - R * k, x + R * k, y + 1.6 * R * k))).resize((round(2 * R * Z), round(2.6 * R * Z)), Image.LANCZOS))
-                box = im.getchannel("A").getbbox()
-                body = im.crop(box)
-                bodies.append(body.resize((max(1, round(body.width / k * 2)), max(1, round(body.height / k * 2))), Image.LANCZOS))
-            can = Image.new("RGB", (sum(t.width + 10 for t in tiles), tiles[0].height), (0, 0, 0))
-            x = 0
-            for t in tiles:
-                can.paste(t, (x, 0))
-                x += t.width + 10
-            d = ImageDraw.Draw(can)
-            eye = round(R * Z)
-            for i in range(-8, 12):
-                yy = eye + round(i * h1 / 4 * Z)
-                if 0 <= yy < can.height:
-                    d.line([(0, yy), (can.width, yy)], fill=(0, 255, 0) if i == 0 else (0, 160, 255) if i == 4 else (90, 90, 0))
+            base = data["forms"][f"{hero}-1"][kind]
+            rows = []
+            for scaled in (True, False):
+                tiles = []
+                for form, e in forms:
+                    k = e[kind]["ratio"] if scaled else 1
+                    R = base["eyeChin"] * 2.4 * k
+                    x, y = e[kind]["eyes"]
+                    t = flat(frame(hero, form, kind)).crop((round(x - R), round(y - R * 1.1), round(x + R), round(y + R * .9))).resize((300, 300), Image.LANCZOS)
+                    d = ImageDraw.Draw(t)
+                    eye = 300 * 1.1 / 2
+                    d.line([(0, eye), (300, eye)], fill=(0, 255, 255))
+                    d.line([(0, eye + base["eyeChin"] * 300 / (2 * base["eyeChin"] * 2.4)), (300, eye + base["eyeChin"] * 300 / (2 * base["eyeChin"] * 2.4))], fill=(255, 0, 255))
+                    for ix, iy in (e[kind].get("irisL"), e[kind].get("irisR")) if "irisL" in e[kind] else ():
+                        px, py = (ix - (x - R)) * 300 / (2 * R), (iy - (y - R * 1.1)) * 300 / (2 * R)
+                        d.line([(px - 6, py), (px + 6, py)], fill=(0, 255, 0))
+                        d.line([(px, py - 6), (px, py + 6)], fill=(0, 255, 0))
+                    d.text((4, 4), f"form {form} x{k:.3f}", fill=(255, 255, 255))
+                    tiles.append(t)
+                rows.append(tiles)
+            can = Image.new("RGB", (len(forms) * 306, 612), (0, 0, 0))
+            for r, tiles in enumerate(rows):
+                for i, t in enumerate(tiles):
+                    can.paste(t, (i * 306, r * 312))
             can.save(OUT / f"heads-{hero}-{kind}.png")
+            bodies = []
+            for form, e in forms:
+                im = frame(hero, form, kind)
+                body = im.crop(im.getchannel("A").getbbox())
+                k = e[kind]["ratio"]
+                bodies.append(body.resize((max(1, round(body.width / k * 2)), max(1, round(body.height / k * 2))), Image.LANCZOS))
             H = max(b.height for b in bodies) + 20
             can = Image.new("RGBA", (sum(b.width + 10 for b in bodies) + 10, H), (70, 70, 80, 255))
             x = 10
@@ -231,4 +222,4 @@ def review(only=None):
 
 if __name__ == "__main__":
     cmd, *rest = sys.argv[1:] or ["solve"]
-    {"crops": crops, "match": match, "solve": solve, "review": review}[cmd](*rest)
+    {"crops": crops, "measure": measure, "solve": solve, "review": review}[cmd](*rest)
