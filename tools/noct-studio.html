@@ -1,6 +1,6 @@
 <!doctype html>
-<!-- Noct Studio grew into the studio for every hero (hero-gallery.html); old links land there. -->
+<!-- Old links (Noct Studio) open the Gemwoven Studio on its hero tab. -->
 <meta charset="utf-8">
-<title>Studio tướng</title>
-<script>location.replace('hero-gallery.html'+(location.search||'?hero=shadow')+location.hash);</script>
-<a href="hero-gallery.html">Mở Studio tướng</a>
+<title>Gemwoven Studio</title>
+<script>const q=new URLSearchParams(location.search);if(!q.has('tab'))q.set('tab','heroes');location.replace('studio.html?'+q+location.hash);</script>
+<a href="studio.html">Mở Gemwoven Studio</a>

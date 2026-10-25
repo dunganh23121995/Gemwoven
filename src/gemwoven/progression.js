@@ -362,7 +362,7 @@
       fuse:key=>tx(p=>{check(HEROES[key],'Tướng không hợp lệ.');check((p.fragments[key]||0)>=80,'Cần 80 mảnh cùng tướng.');p.fragments[key]-=80;addHero(p,key);note(p,'Ghép tướng '+HEROES[key].name);}),
       // TEMPORARY (player testing): with test=true (only ?summonTest=1 on localhost/LAN, see
       // progression-ui.js) a ten-pull's first four results are a whole hero, hero fragments, an epic
-      // gear and a divine gear, and a one-pull is the whole hero. Costs, the wallet and
+      // gear and a divine gear (both weapons, so they show as gold and diamond cards), and a one-pull is the whole hero. Costs, the wallet and
       // SUMMON_TABLE are unchanged; normal play never passes test. Remove when testing is done.
       summon:(count=1,payment='tickets',test=false)=>tx(p=>{
         check(count===1||count===10,'Chọn triệu hồi 1 hoặc 10 lần.');check(payment==='tickets'||payment==='gems','Nguồn thanh toán không hợp lệ.');check(p.equipment.length+count<=500,'Cần thêm chỗ trống trong túi trang bị.');spend(p,{[payment]:count*(payment==='gems'?120:1)});const results=[];
@@ -375,7 +375,7 @@
           const key=SUMMON_BANNER.hero;let result;
           if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
           else if(kind==='fragments'){const count=2+Math.floor(random()*4);p.fragments[key]=(p.fragments[key]||0)+count;p.summon.fragmentDry=0;result={kind,hero:key,count,rarity:'rare',name:`${count} mảnh ${HEROES[key].name}`};}
-          else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=gear(p,rarity);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name};}
+          else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=gear(p,rarity,forced?'weapon':undefined);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name};}
           else{const resource=['exp','ore','wood','cloth'][Math.floor(random()*4)],count=resource==='exp'?5:8;grant(p,{[resource]:count});result={kind:'material',resource,count,rarity:'common',name:`${RESOURCES[resource][0]} ×${count}`};}
           results.push(result);
         }

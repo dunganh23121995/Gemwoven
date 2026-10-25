@@ -34,9 +34,10 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-open-all:disabled{opacity:.35;cursor:default}
 .celestial-reveal[data-phase="complete"] .celestial-open-all{display:none}
 /* Summon again: same painted buttons; each shows its cost. */
-.celestial-again{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.celestial-again{display:flex;gap:8px;justify-content:center;flex-wrap:nowrap}
 .celestial-again[hidden]{display:none}
-.celestial-again .celestial-again-btn{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:136px;padding:7px 16px;line-height:1.1}
+.celestial-again .celestial-again-btn{display:flex;flex-direction:column;align-items:center;gap:1px;flex:0 1 160px;min-width:0;line-height:1.1}
+.celestial-reveal[data-phase="complete"] .celestial-deck{bottom:17%}
 .celestial-again-btn small{display:flex;align-items:center;gap:4px;font-size:13px}
 .celestial-again-btn .again-cost{width:20px;height:20px;object-fit:contain}
 .celestial-again-btn:disabled{opacity:.45;filter:grayscale(.6);cursor:default}
@@ -103,12 +104,13 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .sm-falling{position:absolute;left:0;top:0;width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);pointer-events:none;will-change:transform}
 .sm-falling-halo{position:absolute;left:50%;top:50%;width:200%;max-width:none;translate:-50% -50%;mix-blend-mode:screen;opacity:.7;animation:sm-spin 2.6s linear infinite}
 .sm-falling .sm-falling-core{inset:-35%;background-position-x:42.857%;animation:sm-pulse .42s ease-in-out infinite alternate}
-.sm-trail{width:var(--s);aspect-ratio:1;translate:-50% -50%;animation:sm-frames .9s steps(8,jump-none) 1 forwards,sm-trailfade .9s ease-in forwards}
+/* Long-lived trail sparkles draw the whirlwind's spiral behind each star. */
+.sm-trail{width:var(--s);aspect-ratio:1;translate:-50% -50%;background-position-x:42.857%;animation:sm-trailfade 1.9s ease-in forwards}
 .star-bronze .sm-falling-halo{opacity:.45}
 .star-gold .sm-falling-core,.sm-trail.star-gold{filter:sepia(.7) saturate(2.6) hue-rotate(-12deg) brightness(1.12)}
 .star-gold .sm-falling-halo{filter:sepia(.5) saturate(1.8)}
 .star-diamond .sm-falling-core,.sm-trail.star-diamond,.star-diamond .sm-falling-halo{animation-name:sm-pulse,sm-prism;animation-duration:.42s,1.6s;animation-timing-function:ease-in-out,linear;animation-iteration-count:infinite;animation-direction:alternate,normal}
-.sm-trail.star-diamond{animation:sm-frames .9s steps(8,jump-none) 1 forwards,sm-trailfade .9s ease-in forwards,sm-prism 1.6s linear infinite}
+.sm-trail.star-diamond{animation:sm-trailfade 1.9s ease-in forwards,sm-prism 1.6s linear infinite}
 .star-diamond .sm-falling-halo{animation:sm-spin 2.6s linear infinite,sm-prism 1.6s linear infinite}
 
 /* One-shot effects. */
@@ -141,7 +143,7 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 
 @keyframes sm-pulse{from{scale:.82;rotate:-8deg}to{scale:1.14;rotate:8deg}}
 @keyframes sm-prism{from{filter:hue-rotate(0deg) saturate(1.5) brightness(1.1)}to{filter:hue-rotate(360deg) saturate(1.5) brightness(1.1)}}
-@keyframes sm-trailfade{from{opacity:var(--o,.95)}to{opacity:0;transform:translateY(10px)}}
+@keyframes sm-trailfade{from{opacity:var(--o,.95);scale:1}to{opacity:0;scale:.25;transform:translateY(8px)}}
 @keyframes sm-frames{from{background-position-x:0%}to{background-position-x:100%}}
 @keyframes sm-twinkle{0%{opacity:1;background-position-x:0%;animation-timing-function:steps(7,jump-end)}26%{opacity:1;background-position-x:100%}27%,100%{opacity:0;background-position-x:100%}}
 @keyframes sm-lake{from{transform:scale(1.01)}to{transform:scale(1.06) translate(-1%,-.7%)}}

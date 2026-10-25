@@ -173,18 +173,18 @@
       // and narrows to the splash point on the lake (the axis drifts there too). sin(angle) is depth:
       // near (+1) is lower, bigger, brighter and in front; far (-1) is higher, smaller, dimmer,
       // blurred and behind the board.
-      const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.06,H*(.875+(rnd()-.5)*.03)],top0=-H*.08;
-      const axis0=W*(.5+(rnd()-.5)*.12),R0=W*(.3+rnd()*.08),R1=W*.035,turns=2.2+rnd()*.9,phase=rnd()*Math.PI*2,spin=index%3===1?-1:1;
-      const dur=kind==='diamond'?2700:top?2300:1900,size=kind==='diamond'?60:top?50:40;
+      const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.06,H*(.875+(rnd()-.5)*.03)],top0=-H*.03;
+      const axis0=W*(.5+(rnd()-.5)*.12),R0=W*(.29+rnd()*.06),R1=W*.035,turns=4+rnd()*.8,phase=rnd()*Math.PI*2,spin=index%3===1?-1:1;
+      const dur=kind==='diamond'?3100:top?2800:2400,size=kind==='diamond'?74:top?62:52;
       const star=document.createElement('span');star.className=`sm-falling star-${kind}`;star.setAttribute('aria-hidden','true');
       star.innerHTML=img('summon-halo','sm-falling-halo')+sprite('summon-sparkle','sm-falling-core');
       star.style.setProperty('--s',size+'px');fx.append(star);
       Sound.play('star-'+(index%4+1),{volume:kind==='diamond'?.9:top?.7:.42,pan:(axis0/W-.5)*.8});
-      const t0=performance.now();let raf=0,lastTrail=0,done=false,behind=false;
+      const t0=performance.now();let raf=0,last=null,done=false,behind=false;
       const at=u=>{
-        const fallT=Math.pow(u,1.25),funnel=Math.pow(u,.8),r=R0*(1-funnel)+R1*funnel;
+        const fallT=Math.pow(u,1.1),r=R1+(R0-R1)*Math.pow(1-u,1.15);
         const th=phase+spin*turns*Math.PI*2*u,depth=Math.sin(th),ax=axis0+(I[0]-axis0)*Math.pow(u,1.6);
-        return {x:ax+r*Math.cos(th),y:top0+(I[1]-top0)*fallT+r*.28*depth,depth,u};
+        return {x:ax+r*Math.cos(th),y:top0+(I[1]-top0)*fallT+r*.5*depth,depth,u};
       };
       const handle={stop(){if(done)return;done=true;cancelAnimationFrame(raf);star.remove();stars.delete(handle);}};stars.add(handle);
       function frame(now){
@@ -194,7 +194,9 @@
         const back=depth<-.15&&u<.9;if(back!==behind){behind=back;(back?fxBack:fx).append(star);}
         star.style.transform=`translate(${x}px,${y}px) scale(${grow.toFixed(3)})`;
         star.style.opacity=(.45+.55*near).toFixed(2);star.style.filter=near<.4?`blur(${((.4-near)*3).toFixed(1)}px)`:'';star.style.zIndex=Math.round(near*100);
-        if(now-lastTrail>(top?26:34)&&u<.97){lastTrail=now;trail(x,y,size*grow*(top?.8:.7),kind,near,back);}
+        // Sparkles every few pixels of travel, so the trail draws the spiral as a continuous line.
+        if(u<.97){const gap=top?8:10;if(!last)last=[x,y];let dx=x-last[0],dy=y-last[1],dist=Math.hypot(dx,dy);
+          for(let k=gap;k<=dist;k+=gap)trail(last[0]+dx*k/dist,last[1]+dy*k/dist,size*grow*(top?.5:.42),kind,near,back);if(dist>=gap)last=[x,y];}
         if(u<1){raf=requestAnimationFrame(frame);return;}
         handle.stop();splash(I[0],I[1],Math.max(80,c.width*(kind==='diamond'?2.3:top?1.9:1.5)),kind==='diamond'?7:top?4:0);
         Sound.play('splash',{volume:kind==='diamond'?1:top?.8:.55,pan:(I[0]/W-.5)*1.2});
@@ -205,7 +207,7 @@
     function trail(x,y,size,kind,near=1,back=false){
       const s=A['summon-sparkle'];if(!s)return;const t=document.createElement('i');t.className=`sm-sprite sm-trail star-${kind}`;
       t.style.cssText=`--sheet:url('${url('summon-sparkle').replace(/'/g,'%27')}');--count:${s.count};left:${x}px;top:${y}px;--s:${Math.max(8,size)}px;--o:${(.35+.65*near).toFixed(2)}`;
-      (back?fxBack:fx).append(t);setTimeout(()=>t.remove(),950);
+      (back?fxBack:fx).append(t);setTimeout(()=>t.remove(),2000);
     }
     // From the splash the card bounces up out of the water into its slot.
     function rise(card,dx,dy,kind){
@@ -245,7 +247,7 @@
         if(i===firstTop){if(i){later(t+200,suspense);t+=1300;}else{later(t,suspense);t+=700;}}
         if(top&&i===cards.length-1&&i>firstTop)t+=350;   // one more breath before the very best card
         const kind=card.dataset.card;
-        later(t,()=>fall(card,i));end=Math.max(end,t+(kind==='diamond'?2700+950:top?2300+850:1900+720));
+        later(t,()=>fall(card,i));end=Math.max(end,t+(kind==='diamond'?3100+950:top?2800+850:2400+720));
         t+=kind==='diamond'?1100:top?800:260;
       });
       later(end+80,deal);
