@@ -113,24 +113,24 @@
     "rms": 0.11,
     "sha256": "4ffefa7100853d5c9195948f35c2dc5c8c0a57981e8faa43fb0bd34ebdb3edd4"
   },
-  "fire-f2-planet": {
-    "file": "hero-forms/fire/f2-planet.wav",
-    "duration": 2.03,
-    "beat": "the hit: a planet exploding, colossal deep blast and rumble (2.0 s)",
+  "fire-f2-boom": {
+    "file": "hero-forms/fire/f2-boom.wav",
+    "duration": 3.18,
+    "beat": "the hit: one deep round boom ringing out with its own rumble (3.2 s)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Explosion005 with decay.wav",
-        "author": "klangfabrik",
-        "source_url": "https://freesound.org/people/klangfabrik/sounds/232961/",
+        "title": "Deep Boom",
+        "author": "Za-Games",
+        "source_url": "https://freesound.org/people/Za-Games/sounds/539968/",
         "license": "CC0-1.0",
-        "sha256": "67cbca6170164f633ded2ab33d7dbad39b58fbe369284fd2248b4e996fbf7e68"
+        "sha256": "4fac9ac15770cb443432bf440ffb66db599e4f0b9935d34fe3e0460e2bbf5daa"
       }
     ],
-    "processing": "excerpt 0.27-2.30 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-3.18 s of one recording, 25 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.136,
-    "sha256": "ca362b0b052b9ebd72e44b08b5d1e6bd9970bcb734117738d8a2a03018e4647e"
+    "rms": 0.131,
+    "sha256": "1ba9bd4ed2c3b2a479482e0666d339f6acc15b407e893440d1b8323801fe3eea"
   },
   "fire-f2-floor": {
     "file": "hero-forms/fire/f2-floor.wav",
@@ -245,5 +245,24 @@
     "peak": 0.41,
     "rms": 0.09,
     "sha256": "e185a3936e639d467e4a5d176ee0e31a633409443f42a22298e660c0679a789d"
+  },
+  "fire-f2-dip": {
+    "file": "hero-forms/fire/f2-dip.wav",
+    "duration": 0.3,
+    "beat": "the dip's short uỳnh (950 ms): the sun burst, first 0.3 s",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Fire Explosion",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/855898/",
+        "license": "CC0-1.0",
+        "sha256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259"
+      }
+    ],
+    "processing": "excerpt 0.00-1.23 s of one recording, 45 Hz high-pass, edge fades, gain; first 0.3 s, 100 ms fade",
+    "peak": 0.82,
+    "rms": 0.149,
+    "sha256": "11e353e727ec3749a58b0aa404c302a25f2f9c9884112786d06e794b9ea34d4d"
   }
 }

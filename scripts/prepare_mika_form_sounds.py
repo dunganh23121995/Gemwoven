@@ -38,9 +38,9 @@ def source(ref):
         return folder / meta['file'], {'title': meta['title'], 'author': meta['author'], 'source_url': meta['source_url'],
                                        'license': meta['license'], 'sha256': meta['sha256']}
     path = AUDIO / 'sources' / kind / key
-    if kind == 'mika-nori':
+    if kind in ('mika-nori', 'yuki'):
         meta = next(s for s in json.loads((path.parent / 'sources.json').read_text(encoding='utf-8')) if s['file'] == key)
-        return path, {'title': key, 'author': meta['author'], 'source_url': meta['source_url'], 'license': meta['license'], 'sha256': meta['sha256']}
+        return path, {'title': meta.get('title', key), 'author': meta['author'], 'source_url': meta['source_url'], 'license': meta['license'], 'sha256': meta['sha256']}
     return path, {'title': key, **KATANA, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
 
 
@@ -108,9 +108,9 @@ USED['fire-f2-rise'].update(processing=USED['fire-f2-rise']['processing'] + "; f
 # The backswing and the strong chop: the giant blade roaring past like a starship flying by, rising to its
 # peak on the chop (from 1270 ms, peak ~1800 ms, faded by ~2300 ms).
 clip('f2-flyby', ('freesound', '638499'), 1.25, 2.3, 'the backswing and the strong chop: a starship roaring past (1270-2300 ms)', fade_in=.08, fade_out=.3)
-# The hit: a planet exploding, a colossal blast with a long deep rumble, settling with a fade (2.0 s);
-# the loudest moment of the skill.
-clip('f2-planet', ('freesound', '232961'), .27, 2.3, 'the hit: a planet exploding, colossal deep blast and rumble (2.0 s)', fade_in=.003, fade_out=.6, highpass=25, rms=.14)
+# The hit: ONE deep, round "uỳnh", a big low boom with its own long natural rumble as the ending
+# (3.2 s; no separate tail on top). The deep boom form 1's Yuki also uses (sources/yuki/deep-boom.mp3).
+clip('f2-boom', ('yuki', 'deep-boom.mp3'), 0, 3.18, 'the hit: one deep round boom ringing out with its own rumble (3.2 s)', fade_in=.003, fade_out=.5, highpass=25, rms=.14)
 # 1280-2780 ms, the cut on the floor: molten mud boiling and gulping, fading out within ~1.5 s.
 clip('f2-floor', ('freesound', '456806'), 6.5, 8.0, 'lava boils and gulps along the cut on the floor, fading (1280-2780 ms)', fade_in=.04, fade_out=.6)
 
@@ -143,4 +143,15 @@ print('[ok] f3-wave', USED['fire-f3-wave']['duration'], 'peak', USED['fire-f3-wa
 # Under the foe engulfed in flames after the last wave: a soft, steady burning that dies out (1.4 s).
 clip('f3-engulf', ('freesound', '483308'), 2.6, 4.0, 'the foe engulfed in fox-fire, burning down (after the last wave, 1.4 s)', fade_in=.12, fade_out=.6, highpass=60, rms=.09)
 
+# The dip's short "uỳnh": the sun burst's first 0.3 s with a quick fade, over before the backswing starts
+# (its full 1.2 s tail had kept crackling under the starship flyby).
+_, sun = wavfile.read(OUT / 'f3-sun.wav')
+dip = sun[:round(.3 * RATE)].astype(float)
+dip[-round(.1 * RATE):] *= np.linspace(1, 0, round(.1 * RATE))[:, None]
+wavfile.write(OUT / 'f2-dip.wav', RATE, np.round(dip).astype(np.int16))
+USED['fire-f2-dip'] = {**USED['fire-f3-sun'], 'file': 'hero-forms/fire/f2-dip.wav', 'duration': .3,
+    'beat': "the dip's short uỳnh (950 ms): the sun burst, first 0.3 s",
+    'processing': USED['fire-f3-sun']['processing'] + '; first 0.3 s, 100 ms fade',
+    'peak': round(float(np.abs(dip).max()) / 32767, 3), 'rms': round(float(np.sqrt(np.mean((dip / 32767) ** 2))), 3),
+    'sha256': hashlib.sha256((OUT / 'f2-dip.wav').read_bytes()).hexdigest()}
 (AUDIO / 'hero-forms/fire-manifest.json').write_text(json.dumps(USED, indent=2, ensure_ascii=False) + chr(10), encoding='utf-8')
