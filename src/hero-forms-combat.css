@@ -23,3 +23,24 @@ body.reduced-motion .hero-form-aura *{animation:none!important}
 .form-skill-flash.ice{background:radial-gradient(circle at 72% 55%,#ffffff,#a6e8ff66 40%,transparent 75%)}
 .form-skill-flash.earth{background:radial-gradient(circle at 72% 55%,#fff4c4,#9fd86a66 40%,transparent 75%)}
 .form-skill-flash.lightning{background:radial-gradient(circle at 72% 45%,#fffbe8,#c9a2ff66 40%,transparent 75%)}
+
+/* Element motes around a resting hero (mountHeroMotes). They show only while the hero rests. */
+.scene .hero-actor .hero-idle-motes{position:absolute;inset:4% 2% calc((1 - var(--foot-y,.94)) * 100%);pointer-events:none;z-index:3;opacity:0;transition:opacity .45s;container-type:size}
+.scene .hero-actor[data-state="idle"]:not([data-departing]) .hero-idle-motes{opacity:1}
+.hero-idle-motes>b{position:absolute;left:var(--x);top:var(--y);width:var(--size);aspect-ratio:1;background:var(--img) center/contain no-repeat;opacity:0;animation:mote-rise var(--dur) ease-in-out var(--delay) infinite;will-change:transform,opacity}
+.hero-actor[data-hero="fire"] .hero-idle-motes>b{top:auto;bottom:4%;filter:drop-shadow(0 0 4px #ff9a3c);animation-name:mote-ember}
+.hero-actor[data-hero="ice"] .hero-idle-motes>b{top:-6%;filter:drop-shadow(0 0 3px #bfefff);animation-name:mote-snow;animation-timing-function:linear}
+.hero-actor[data-hero="earth"] .hero-idle-motes>b{top:auto;bottom:2%;animation-name:mote-leaf-rise}
+.hero-actor[data-hero="lightning"] .hero-idle-motes>b{filter:drop-shadow(0 0 4px #ffe9a0);animation-name:mote-twinkle}
+.hero-actor[data-hero="shadow"] .hero-idle-motes>b{top:auto;bottom:6%;filter:drop-shadow(0 0 4px #b48cff);animation-name:mote-soul;animation-duration:calc(var(--dur) * 1.4)}
+.hero-actor[data-hero="novice"] .hero-idle-motes>b{left:auto;right:-8%;animation-name:mote-gust;animation-timing-function:linear}
+@keyframes mote-ember{0%{opacity:0;transform:translate(0,0) scale(.55)}18%{opacity:.95}55%{opacity:.8;transform:translate(var(--drift),-34cqh) scale(.8)}100%{opacity:0;transform:translate(calc(var(--drift) * -.5),-60cqh) scale(.35)}}
+@keyframes mote-snow{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:.9}50%{transform:translate(var(--drift),45cqh) rotate(calc(var(--spin) * .5))}85%{opacity:.75}100%{opacity:0;transform:translate(calc(var(--drift) * -.4),90cqh) rotate(var(--spin))}}
+@keyframes mote-leaf-rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.7)}20%{opacity:.9}50%{transform:translate(var(--drift),-30cqh) rotate(calc(var(--spin) * .5)) scale(.85)}100%{opacity:0;transform:translate(calc(var(--drift) * -1),-58cqh) rotate(var(--spin)) scale(.6)}}
+@keyframes mote-twinkle{0%,100%{opacity:0;transform:translateY(0) scale(.2) rotate(0)}35%{opacity:1;transform:translateY(-4px) scale(.85) rotate(25deg)}50%{opacity:.9;transform:translateY(-6px) scale(1) rotate(45deg)}70%{opacity:0;transform:translateY(-9px) scale(.3) rotate(80deg)}}
+@keyframes mote-soul{0%{opacity:0;transform:translate(0,0) scale(.6)}25%{opacity:.85}60%{opacity:.6;transform:translate(var(--drift),-28cqh) scale(.8)}100%{opacity:0;transform:translate(calc(var(--drift) * -.6),-52cqh) scale(.5)}}
+@keyframes mote-gust{0%{opacity:0;transform:translate(0,0) rotate(0)}12%{opacity:.9}50%{transform:translate(-60cqw,var(--drift)) rotate(calc(var(--spin) * .5))}88%{opacity:.8}100%{opacity:0;transform:translate(-118cqw,calc(var(--drift) * -1)) rotate(var(--spin))}}
+body.ambience-paused .hero-idle-motes>b{animation-play-state:paused}
+body.reduced-motion .hero-idle-motes,.reduced-motion .hero-idle-motes{display:none}
+/* Like the reference idles, a resting hero keeps one size: no whole-sprite pulse (wind_idle.py moves only cloth and hair). */
+.scene .hero-actor[data-state="idle"]>.sprite-body{animation:none!important}

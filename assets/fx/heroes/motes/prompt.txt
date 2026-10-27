@@ -1,0 +1,8 @@
+A sprite sheet of tiny ambient particle sprites for a chibi fantasy mobile RPG battle (the soft glowing motes that drift around a hero while they wait), clean HD smooth painted game art, NOT pixel art, matching the painted style and palette of the attached hero art.
+Layout: 4 columns x 5 rows on a 1024x1280 canvas, one sprite centred in each 256x256 cell, each sprite about 120-170 px across, nothing touching the cell edges.
+Row 1 (fire, Mika the fox girl): four small glowing embers / fox-fire flame wisps, orange-gold with a bright yellow-white core, teardrop flame shapes, slightly different shapes.
+Row 2 (ice, Yuki the moon rabbit): four delicate six-pointed snowflakes and ice crystal flakes, pale icy blue and white with a soft sparkle, slightly different designs.
+Row 3 (earth, Nori the forest guardian): four small fresh green leaves (one with a tiny gold glint, one jade-green, one light spring green, one with a curled tip), each a single leaf with a stem.
+Row 4 (lightning/star, Lumi the star witch): four little gold four-pointed star sparkles and tiny star charms, warm gold with a cyan-white glint, slightly different shapes.
+Row 5 (wind, Hiro the young traveller): four small wind-blown leaves, warm autumn olive-green and amber-brown, each a single leaf with a stem, slightly different shapes.
+Each sprite is a single crisp opaque shape with its own painted glow drawn as part of the shape; no loose specks, no smoke, no haze outside the shape. Background 100% solid flat #FF00FF magenta, no gradient, no text, no labels, no borders, no grid lines.

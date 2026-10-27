@@ -46,7 +46,7 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 150
+          "frameDuration": 200
         },
         "attack": {
           "file": "assets/heroes/forms/fire/form-2/attack.webp",
@@ -286,7 +286,7 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 150
+          "frameDuration": 200
         },
         "attack": {
           "file": "assets/heroes/forms/fire/form-3/attack.webp",

@@ -1,0 +1,38 @@
+{
+  "fire": [
+    "assets/fx/heroes/motes/fire-1.png",
+    "assets/fx/heroes/motes/fire-2.png",
+    "assets/fx/heroes/motes/fire-3.png",
+    "assets/fx/heroes/motes/fire-4.png"
+  ],
+  "ice": [
+    "assets/fx/heroes/motes/ice-1.png",
+    "assets/fx/heroes/motes/ice-2.png",
+    "assets/fx/heroes/motes/ice-3.png",
+    "assets/fx/heroes/motes/ice-4.png"
+  ],
+  "earth": [
+    "assets/fx/heroes/motes/earth-1.png",
+    "assets/fx/heroes/motes/earth-2.png",
+    "assets/fx/heroes/motes/earth-3.png",
+    "assets/fx/heroes/motes/earth-4.png"
+  ],
+  "lightning": [
+    "assets/fx/heroes/motes/lightning-1.png",
+    "assets/fx/heroes/motes/lightning-2.png",
+    "assets/fx/heroes/motes/lightning-3.png",
+    "assets/fx/heroes/motes/lightning-4.png"
+  ],
+  "novice": [
+    "assets/fx/heroes/motes/novice-1.png",
+    "assets/fx/heroes/motes/novice-2.png",
+    "assets/fx/heroes/motes/novice-3.png",
+    "assets/fx/heroes/motes/novice-4.png"
+  ],
+  "shadow": [
+    "assets/fx/heroes/motes/shadow-1.png",
+    "assets/fx/heroes/motes/shadow-2.png",
+    "assets/fx/heroes/motes/shadow-3.png",
+    "assets/fx/heroes/motes/shadow-4.png"
+  ]
+}

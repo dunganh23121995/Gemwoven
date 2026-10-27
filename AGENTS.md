@@ -1,6 +1,6 @@
 # Gemwoven development
 
-- Image generation tasks must use `gpt-6-astra` with reasoning effort `high`, as explicitly requested by the user. Delegate only the art work to that model; keep mechanics, feature design, integration, and ordinary coding on the current model.
+- Hand image generation, and any deep image processing, to Codex. Climb the model ladder only when the result fails review: `gpt-6.1-sol` low -> medium -> high -> `gpt-6-astra` medium -> high (the ceiling). Keep mechanics, feature design, integration, and ordinary coding on the current model.
 - Read the imagegen and applicable sprite skills before generating. Use built-in ImageGen; keep final assets and prompts in this repository. Preserve original raw sheets for reproducibility.
 - Start a new account with Hiro only. Premium Đá Ngọc must never be awarded from gameplay, daily quests, offline accumulation, summons, or the event editor. Payment processing is a future server feature.
 - Progression rules are shared by the hub and combat through `src/gemwoven/progression.js`. Avoid duplicating economy calculations in UI code.

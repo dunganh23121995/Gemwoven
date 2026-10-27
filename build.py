@@ -111,7 +111,7 @@ shadow_heads = {
 art['heroes']['shadow'] = {}
 for action, heads in shadow_heads.items():
     art['heroes']['shadow'][action] = {'src':image(f'assets/heroes/shadow/{"idle-cloth" if action=="idle" else action}.webp'),
-        'cols':2 if action=='idle' else 3,'rows':4 if action=='idle' else 2,'count':len(heads),'heads':heads,**({'frameDuration':150} if action=='idle' else {})}
+        'cols':2 if action=='idle' else 3,'rows':4 if action=='idle' else 2,'count':len(heads),'heads':heads,**({'frameDuration':200} if action=='idle' else {})}
 art['heroes']['earth']['smash'] = atlas('assets/heroes/earth/smash.webp',3,2,6,'assets/masters/earth-transparent.png')
 art['heroes']['earth']['smash']['heads'] = [[144,84],[132,79],[119,86],[140,89],[126,94],[127,87]]
 # Reimagined main cast: every action must have passed the shared-scale pipeline.
@@ -269,6 +269,8 @@ reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8')
 art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
 # Each hero's own skill art for its forms (src/forms-<hero>.js): assets/fx/heroes/<key>/fx.json.
 art['heroFx']={path.parent.name:{name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in json.loads(path.read_text(encoding='utf-8')).items()} for path in sorted((root/'assets/fx/heroes').glob('*/fx.json'))}
+# Motes that drift around a hero at rest (embers, snowflakes, leaves, stars): assets/fx/heroes/motes.
+art['heroMotes']={hero:[compact_image(f) for f in files] for hero,files in json.loads((root/'assets/fx/heroes/motes/motes.json').read_text(encoding='utf-8')).items()}
 # Alternative drawings of a hero for the studio to compare (assets/heroes/<key>/variants/<name>/meta.json).
 art['heroVariants']={}
 for path in sorted((root/'assets/heroes').glob('*/variants/*/meta.json')):

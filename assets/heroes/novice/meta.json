@@ -17,7 +17,7 @@
       "cols": 2,
       "frameOrder": "row-major",
       "loop": true,
-      "frameDuration": 150,
+      "frameDuration": 200,
       "origin": [
         128,
         244

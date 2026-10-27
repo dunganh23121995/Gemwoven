@@ -45,7 +45,7 @@ Hạng mục mới cho mọi tướng thì thêm vào bảng kiểm (mục 9), k
 | Ảnh gốc (master) | dạng 1: `assets/masters/<key>-transparent.png`; dạng 2–3: `assets/heroes/forms/<key>/form-N/master.png` | Mọi sheet khác lấy master làm tham chiếu (`--ref`) |
 | Đánh, thi triển, di chuyển | dạng 1: `assets/reimagined/heroes/<key>/`; dạng 2–3: `form-N/{attack,cast,run\|hover}.webp` và khai báo trong `assets/heroes/forms/<key>/forms.json` | Cùng tỉ lệ, cùng đường chân (footY). Thân không được giật vai hay chân giữa các khung; đo độ lệch trước khi nhận |
 | Tư thế tuyệt kỹ riêng (tuỳ chọn) | `form-N/<tên>.webp` (`skill`, `press`, `slash`, `back`, `dash`, `ride`…) và thêm vào `forms.json` | Mỗi dạng có vũ khí riêng thì phải có tư thế riêng, không mượn của dạng 1 |
-| Nghỉ trong trận, vòng 8 khung | `python assets/heroes/forms/combat_idle.py prep <key> <N>`, rồi `fidget.py gen/proc --as-is --core=N/accept`, rồi `combat_idle.py package <key> <N>` | Mặt, giáp và vũ khí đứng yên; chỉ phần đặc trưng chuyển động. Khung 8 nối mượt về khung 1 |
+| Nghỉ trong trận, vòng 8 khung | `python assets/heroes/forms/combat_idle.py prep <key> <N>`, rồi `wind_idle.py gen <key> <N> "<chuyển động>"`, `wind_idle.py parts <key> <N>` (bản đồ bộ phận lỏng), `wind_idle.py proc <key> <N>`, `wind_idle.py accept <key> <N>` | Như hoạt ảnh xương (Spine): thân một kích thước, không co giãn, không nhịp thở; mặt và chân giữ nguyên; tóc, vải, đuôi bay theo gió, vạt áo và tua trên thân đung đưa. Khung 8 nối mượt về khung 1 |
 | Hào quang dạng 3 | `assets/heroes/forms/<key>/aura.json` | Mây dưới chân đứng yên giữa hai chân; các vòng trên chuyển động lệch nhịp nhau |
 
 Duyệt bằng `python tools/sheet_strip.py <sheet.webp> <out.png>` (dải khung kèm vạch chân) và xem ở cỡ trong game.

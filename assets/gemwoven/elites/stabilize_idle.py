@@ -96,6 +96,8 @@ def main():
     ap.add_argument("--no-refine", action="store_true", help="with --same-transform: place every frame exactly like the last one (cells drawn on one template)")
     ap.add_argument("--lock-legs", action="store_true", help="fit every frame (shift and scale) on the master's lower body, so the hero stands still while arms and weapons move")
     ap.add_argument("--free", default="", help="x0,y0,x1,y1 (cell fractions): a part that moves away (a fist leaving the chest) is taken from the drawing there even inside the rigid core")
+    ap.add_argument("--rigid", default="", help="mask PNG (cell size, white = keep the master there in every frame: a face, legs that must not be redrawn)")
+    ap.add_argument("--scale", type=float, default=0, help="one fixed scale for every frame (only the shift is searched, on the rigid body), so nothing grows or shrinks between frames")
     ap.add_argument("--grow", type=int, default=0, help="widen the taken motion by N px so no sliver of the master's old pose remains")
     args = ap.parse_args()
     out = Path(args.out_dir)
@@ -108,6 +110,7 @@ def main():
         x0, y0, x1, y1 = (float(v) for v in args.free.split(","))
         core[int(y0 * args.cell):int(y1 * args.cell), int(x0 * args.cell):int(x1 * args.cell)] = False
     pm = lambda a: np.concatenate([a[..., :3] * a[..., 3:], a[..., 3:]], -1)
+    rigid = np.asarray(Image.open(args.rigid).convert("L").resize((args.cell, args.cell)), dtype=np.float32) > 127 if args.rigid else None
     frames, report, fixed = [], [], None
     if args.same_transform:
         # The placement comes from the LAST frame, which every action ends on in the resting pose
@@ -116,7 +119,13 @@ def main():
         fixed = register(last, master, anchor)
     for index, path in enumerate(args.frames):
         frame = rgba(Image.open(path).resize((args.cell, args.cell), Image.Resampling.LANCZOS))
-        if args.lock_legs:
+        if args.scale:
+            s = args.scale
+            fc = ndimage.center_of_mass(warp(frame, 0, 0, s, anchor)[..., 3] > .5); mc = ndimage.center_of_mass(master[..., 3] > .5)
+            gx, gy = round(mc[1] - fc[1]), round(mc[0] - fc[0])
+            err, dx, dy = min((score(warp(frame, x, y, s, anchor), master, core), x, y) for y in range(gy - 12, gy + 13, 2) for x in range(gx - 12, gx + 13, 2))
+            err, dx, dy = min((score(warp(frame, x, y, s, anchor), master, core), x, y) for y in range(dy - 1, dy + 2) for x in range(dx - 1, dx + 2))
+        elif args.lock_legs:
             err, dx, dy, s = register(frame, master, anchor, legs=True)
         elif args.same_transform and fixed and args.no_refine:
             dx, dy, s = fixed[1:]; err = score(warp(frame, dx, dy, s, anchor), master, ndimage.binary_dilation(master[..., 3] > .5, iterations=3))
@@ -158,8 +167,13 @@ def main():
             vs = ndimage.sum(vacated, vl, range(1, vn + 1)); vacated = np.isin(vl, [i + 1 for i, n in enumerate(vs) if n >= 25])
         vacated = ndimage.binary_dilation(vacated, iterations=2)
         take = take | vacated
+        if args.rigid:
+            take = take & ~rigid
         weight = np.asarray(Image.fromarray((take * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(2.2)), dtype=np.float32)[..., None] / 255
         weight = np.maximum(weight, vacated[..., None].astype(np.float32))
+        if args.rigid:
+            soft = np.asarray(Image.fromarray((~rigid * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(1.5)), dtype=np.float32)[..., None] / 255
+            weight = weight * soft
         if args.whole_loop or (args.whole and 0 < index < len(args.frames) - 1):
             weight = np.ones_like(weight)
         mixed = pm(master) * (1 - weight) + pm(moved) * weight

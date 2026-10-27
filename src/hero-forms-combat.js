@@ -26,11 +26,26 @@ renderActors=function(){
   // The aura's floor cloud stands between the boots, which need not be the cell's centre.
   root.style.setProperty('--aura-floor-shift',`calc(var(--actor-size) * ${((body.feetX??.5)-.5).toFixed(4)})`);
   // Evolution pieces stay visible on every form; CSS re-anchors them per form body.
+  mountHeroMotes(root,key,form);
   if(form<3)return;
   const aura=document.createElement('span');aura.className='hero-form-effects combat-form-aura';aura.setAttribute('aria-hidden','true');
   aura.innerHTML=window.GemwovenFormEffects.markup(key,form,ART.formAuras?.[key]);
   root.append(aura);
 };
+// At rest, the hero's own element drifts around them (like the ambient spirits of mobile RPG
+// battle idles): Mika's embers rise, Yuki's snowflakes fall, Nori's leaves spiral up, Lumi's stars
+// twinkle, Hiro's leaves blow past on the wind, Noct's soul wisps rise. More of them as the hero gains forms.
+function mountHeroMotes(root,key,form){
+  const art=ART.heroMotes?.[key];if(!art)return;
+  const layer=document.createElement('span');layer.className='hero-idle-motes';layer.setAttribute('aria-hidden','true');
+  // A few, not a swarm: form 3 already wears its own aura.
+  const count=key==='novice'?4:key==='lightning'||key==='shadow'?2+form:3+form;
+  layer.innerHTML=Array.from({length:count},(_,i)=>{
+    const r=k=>((Math.sin((i+1)*12.9898+k*78.233)*43758.5453)%1+1)%1;// stable per mote
+    return `<b style="--img:url('${art[i%art.length]}');--x:${(8+r(1)*84).toFixed(1)}%;--y:${(12+r(2)*62).toFixed(1)}%;--size:${(9+r(3)*6+form).toFixed(1)}%;--dur:${(3.2+r(4)*2.6).toFixed(2)}s;--delay:${(-r(5)*6).toFixed(2)}s;--drift:${((r(6)-.5)*30).toFixed(1)}px;--spin:${((r(7)-.5)*400).toFixed(0)}deg"></b>`;
+  }).join('');
+  root.append(layer);
+}
 function heroFormMotif(key,form){
   const strong=form===3,n=strong?9:5;
   if(key==='fire')return Array.from({length:n},(_,i)=>`<path d="M110 175 Q${15+i*22} 100 ${25+i*20} 25 Q${95+i*6} 80 110 175" fill="var(--combat-main)" opacity=".5"/><path d="M110 175 Q${25+i*21} 98 ${25+i*20} 25" stroke="var(--combat-light)" stroke-width="2"/>`).join('');

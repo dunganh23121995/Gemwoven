@@ -10,6 +10,7 @@
       -> form 1: assets/reimagined/heroes/<hero>/idle.webp + its runtime-meta.json
          forms 2-3: form-N/idle.webp + the idle entry in forms.json
          Tân (novice, one form): assets/heroes/novice/idle.webp + its meta.json entry
+         Noct form 1: assets/heroes/shadow/idle-cloth.webp (build.py holds its heads and pace)
 The previous sheet stays in Git history; its raw source stays in its own folder.
 """
 import json
@@ -26,6 +27,7 @@ def paths(hero, form):
     forms = ROOT / "assets/heroes/forms" / hero
     work = forms / f"form-{form}/combat-idle"
     sheet = (ROOT / "assets/heroes/novice/idle.webp" if hero == "novice" else
+             ROOT / "assets/heroes/shadow/idle-cloth.webp" if hero == "shadow" and form == "1" else
              ROOT / f"assets/reimagined/heroes/{hero}/idle.webp" if form == "1" else forms / f"form-{form}/idle.webp")
     return forms, work, sheet
 
@@ -42,7 +44,9 @@ def package(hero, form):
     loop = Image.open(work / "idle.webp").convert("RGBA")
     assert loop.size == (512, 1024), loop.size
     loop.save(sheet, lossless=True, method=6)
-    if hero == "novice":
+    if hero == "shadow" and form == "1":
+        pass  # build.py reads Noct's form-1 idle sheet as it is (heads and pace are set there)
+    elif hero == "novice":
         meta_path = ROOT / "assets/heroes/novice/meta.json"
         book = json.loads(meta_path.read_text(encoding="utf-8"))
         idle = book["actions"]["idle"]
