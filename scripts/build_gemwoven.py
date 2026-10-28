@@ -104,14 +104,15 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
 # fitBody fits a form's crown-to-foot to one height; headFit then grows or shrinks that form so its
 # head matches form 1's head at that height (tails, auras and weapons reach wherever they go).
 head_scale=json.loads((ROOT/'assets/heroes/head-scale.json').read_text(encoding='utf-8'))['forms']
-def head_share(asset,head):
-    box=asset['footBounds'];return head/(box[3]-box[1])
+def head_share(asset,head,cell):
+    # head-scale.json measures the head in a showcase cell of cellPx; the sheet may be cut sharper (larger cells).
+    box=asset['footBounds'];return head*asset['width']/cell/(box[3]-box[1])
 for key,asset in list(merged.items()):
     if not key.startswith('show-'):continue
     _,hero,form=key.split('-');first,own=head_scale.get(f'{hero}-1'),head_scale.get(f'{hero}-{form}')
     if hero=='shadow' or not (first and own and f'show-{hero}-1' in merged):continue  # Noct is locked as approved
     asset['headPx']=own['showcase']['headPx']
-    fit=head_share(merged[f'show-{hero}-1'],first['showcase']['headPx'])/head_share(asset,asset['headPx'])
+    fit=head_share(merged[f'show-{hero}-1'],first['showcase']['headPx'],first['showcase'].get('cellPx',384))/head_share(asset,asset['headPx'],own['showcase'].get('cellPx',384))
     # Never shorter than form 1, crown to soles (a fit of 1 is form 1's visible height).
     fit=max(fit,1)
     asset['headFit']=round(fit,4)
