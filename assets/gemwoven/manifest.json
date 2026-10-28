@@ -10794,7 +10794,7 @@
       241
     ],
     "bodyAnchor": {
-      "x": 0.484375,
+      "x": 0.4853515625,
       "crown": 0.22265625,
       "foot": 0.94140625
     }
@@ -10812,18 +10812,18 @@
   },
   "form-idle-ice-3": {
     "file": "assets/heroes/forms/ice/form-3/hub-idle.webp",
-    "width": 256,
-    "height": 256,
+    "width": 512,
+    "height": 512,
     "bodyAnchor": {
-      "x": 0.484375,
+      "x": 0.4853515625,
       "crown": 0.22265625,
       "foot": 0.94140625
     },
     "footBounds": [
-      53,
-      50,
-      206,
-      241
+      106,
+      99,
+      412,
+      482
     ]
   },
   "form-lightning-3": {
@@ -11556,8 +11556,8 @@
       },
       "entrance": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
     },
-    "headPx": 15.24,
-    "headFit": 1
+    "headPx": 12.33,
+    "headFit": 1.1095
   },
   "show-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/showcase/poster.png",
@@ -11690,19 +11690,19 @@
   },
   "show-ice-3": {
     "file": "assets/heroes/forms/ice/form-3/showcase/poster.png",
-    "width": 384,
-    "height": 384,
+    "width": 768,
+    "height": 768,
     "footBounds": [
-      106,
-      119,
-      278,
-      330
+      213,
+      239,
+      556,
+      659
     ],
     "bodyAnchor": {
-      "x": 0.5104166666666666,
+      "x": 0.5286458333333334,
       "bodyX": 0.4973958333333333,
-      "crown": 0.3098958333333333,
-      "foot": 0.859375
+      "crown": 0.3111979166666667,
+      "foot": 0.8580729166666666
     },
     "sheets": {
       "idle": "assets/heroes/forms/ice/form-3/showcase/idle.webp",
@@ -11729,7 +11729,7 @@
       "entrance": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
     },
     "headPx": 11.5,
-    "headFit": 1.0287
+    "headFit": 1.0238
   },
   "show-lightning-1": {
     "file": "assets/heroes/forms/lightning/form-1/showcase/poster.png",
@@ -11808,17 +11808,17 @@
   },
   "show-lightning-3": {
     "file": "assets/heroes/forms/lightning/form-3/showcase/poster.png",
-    "width": 384,
-    "height": 384,
+    "width": 768,
+    "height": 768,
     "footBounds": [
-      94,
-      124,
-      289,
-      330
+      188,
+      248,
+      578,
+      660
     ],
     "bodyAnchor": {
-      "x": 0.4739583333333333,
-      "bodyX": 0.4049479166666667,
+      "x": 0.474609375,
+      "bodyX": 0.404296875,
       "crown": 0.3229166666666667,
       "foot": 0.859375
     },
