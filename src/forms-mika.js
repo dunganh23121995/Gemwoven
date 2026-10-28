@@ -43,10 +43,14 @@ const MIKA_GRIPS={
   2:[[317,286,-97],[254,181,-106],[274,201,-75],[223,197,-116],[229,209,-144],[227,211,-150],[210,248,-174],[326,239,-46],[312,305,0],[325,351,43],[303,320,-57]],
   3:[[270,390,0],[215,380,180],[269,397,180],[300,382,0],[249,377,0],[300,380,-60]]
 };
+// The drawing box is read without its lean (offsets), then the grip turns with the lean about her feet
+// (the cleave leans her back on the backswing and forward on the chop: sprite.dataset.lean, degrees).
 function mikaGrip(form,frame){
-  const body=actor('hero').querySelector('.sprite-body').getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
-  const [x,y,angle]=MIKA_GRIPS[form][frame];
-  return {x:body.left-scene.left+x/512*body.width,y:body.top-scene.top+y/512*body.height,angle};
+  const el=actor('hero').querySelector('.sprite-body'),parent=el.offsetParent.getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
+  const left=parent.left+el.offsetLeft-scene.left,top=parent.top+el.offsetTop-scene.top,w=el.offsetWidth,h=el.offsetHeight;
+  const [x,y,angle]=MIKA_GRIPS[form][frame],lean=Number(el.dataset.lean)||0;
+  const px=left+w/2,py=top+h*.94,dx=left+x/512*w-px,dy=top+y/512*h-py,r=lean*Math.PI/180;
+  return {x:px+dx*Math.cos(r)-dy*Math.sin(r),y:py+dx*Math.sin(r)+dy*Math.cos(r),angle:angle+lean};
 }
 // The foe's drawn body (sheet span/footY/bodyHeight), as Noct's fog measures it.
 function mikaFoeBody(){
@@ -158,10 +162,15 @@ async function mikaLongCleave(raw,onRelease){
     // The blade must reach past the foe's far side once it lies level across the stage.
     const foe=mikaFoeBody(),reach=Math.max(140,foe.right+8-mikaGrip(2,8).x);
     blade=mikaWeapon('blade2',reach);
-    const RAISE=300,DIP=950,BACK=1270,HOLD=1600,CHOP=1660,HIT=1880,DIP_TO=-74;
+    const RAISE=300,DIP=950,BACK=1270,HOLD=1600,CHOP=1660,HIT=1880,DIP_TO=-74,LEAN_BACK=5,LEAN_FORWARD=8;
     const track=now=>{
       if(!blade?.node.isConnected)return;
       const t=now-start,sprite=root.querySelector('.sprite-body'),frame=Number(sprite?.dataset.frame)||0;
+      // Her lean about her feet: back a little as the blade swings behind her, forward into the chop,
+      // held through the contact and the follow-through, upright again as she recovers.
+      const lean=t<BACK?0:t<HOLD?mikaLerp(0,-LEAN_BACK,mikaEase((t-BACK)/(HOLD-BACK))):t<CHOP?-LEAN_BACK:
+        t<HIT?mikaLerp(-LEAN_BACK,LEAN_FORWARD,mikaEase((t-CHOP)/(HIT-CHOP))):t<HIT+680?LEAN_FORWARD:mikaLerp(LEAN_FORWARD,0,mikaEase(Math.min(1,(t-HIT-680)/320)));
+      if(sprite){sprite.style.transformOrigin='50% 94%';sprite.style.rotate=`${lean}deg`;sprite.dataset.lean=String(lean);}
       let grip=mikaGrip(2,frame),angle=grip.angle,scale=1,strip=3,opacity=1;
       const pose=fr=>{if(frame!==fr)setSpriteFrame('hero','skill',fr);return mikaGrip(2,fr);};
       if(t<RAISE){scale=mikaLerp(.2,.36,t/RAISE);strip=0;opacity=mikaLerp(0,1,t/140);}
@@ -175,15 +184,15 @@ async function mikaLongCleave(raw,onRelease){
         // The backswing: up past vertical and on back behind her, the blade following her hands.
         root.style.transform=oldTransform;
         const u=Math.min(1,(t-BACK)/(HOLD-BACK));angle=mikaLerp(DIP_TO,-185,u*u*(3-2*u));
-        grip=pose(mikaSwingPose(angle,true));strip=1+Math.floor(t/60)%2;
+        grip=pose(mikaSwingPose(angle-lean,true));strip=1+Math.floor(t/60)%2;
       }else if(t<HIT){
         // The strong chop: from straight back over her head and down to level through the foe, fast.
-        const u=Math.min(1,(t-CHOP)/(HIT-CHOP));angle=mikaLerp(-185,0,u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2);
-        grip=pose(mikaSwingPose(angle));strip=1+Math.floor(t/50)%2;
+        const u=Math.min(1,(t-CHOP)/(HIT-CHOP));angle=mikaLerp(-185,LEAN_FORWARD,u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2);
+        grip=pose(mikaSwingPose(angle-lean));strip=1+Math.floor(t/50)%2;
       }else{
         // Follow-through: the giant blade rides the sword on down into the ground beyond the foe.
         const p=(t-HIT-110)/140,c=mikaGrip(2,8),d=mikaGrip(2,9),follow=frame>=9;strip=1+Math.floor(t/80)%2;
-        grip=follow?{x:mikaLerp(c.x,d.x,p),y:mikaLerp(c.y,d.y,p)}:c;angle=follow?mikaLerp(0,32,mikaEase(p)):0;
+        grip=follow?{x:mikaLerp(c.x,d.x,p),y:mikaLerp(c.y,d.y,p)}:c;angle=(follow?mikaLerp(0,32,mikaEase(p)):0)+lean;
         opacity=t<HIT+260?1:Math.max(0,1-(t-HIT-260)/240);
       }
       blade.frame(strip);blade.place(grip.x,grip.y,angle,scale);blade.node.style.opacity=String(opacity);
@@ -222,6 +231,7 @@ async function mikaLongCleave(raw,onRelease){
     await at(HIT+1130);await Promise.all(pending);return result;
   }finally{
     await Promise.allSettled(pending);cancelAnimationFrame(frameId);blade?.remove();arc?.node?.remove();root.style.zIndex=oldZ;root.style.transform=oldTransform;
+    const sprite=root.querySelector('.sprite-body');if(sprite){sprite.style.rotate='';sprite.style.transformOrigin='';delete sprite.dataset.lean;}
     delete root.dataset.ragePhase;delete root.dataset.rageHit;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }
 }
