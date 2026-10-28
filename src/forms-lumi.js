@@ -274,7 +274,9 @@ function mountLumiIdleStars(){
   if(!sheet||state.key!=='lightning')return;
   const box=document.createElement('span');box.className='lumi-idle-stars';box.setAttribute('aria-hidden','true');
   box.style.cssText=`--star-src:url('${sheet.src}');--star-ms:${sheet.count*sheet.frameDuration}ms`;
-  box.innerHTML=LUMI_IDLE_STARS.map(([size,dur,delay,rx,ry,y])=>`<i style="--dur:${dur}s;--delay:${-delay}s;--ry:${ry}"><u style="--rx:${rx}"><b style="--s:${size}%;--y:${y}%"></b></u></i>`).join('');
+  // Fewer before her six-star form: two, then three, then all six (the player found forms 1-2 too busy).
+  const count=[2,3,6][combatHeroForm('lightning')-1]||6;
+  box.innerHTML=LUMI_IDLE_STARS.slice(0,count).map(([size,dur,delay,rx,ry,y])=>`<i style="--dur:${dur}s;--delay:${-delay}s;--ry:${ry}"><u style="--rx:${rx}"><b style="--s:${size}%;--y:${y}%"></b></u></i>`).join('');
   root.append(box);
 }
 // Her form sheets and skill strips are decoded up front and kept painted (a 2px, nearly transparent
