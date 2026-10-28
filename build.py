@@ -61,6 +61,7 @@ voice_manifest.update(json.loads((root/'assets/audio/creature-manifest.json').re
 voice_manifest.update(json.loads((root/'assets/audio/noct-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/cast-voice-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/boss-voice-manifest.json').read_text(encoding='utf-8')))
+voice_manifest.update(json.loads((root/'assets/audio/hiro-voice-manifest.json').read_text(encoding='utf-8')))
 art['voices']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in voice_manifest.items()}
 # Which voice each boss and elite speaks with (assets/audio/voice-casting.json): humans with a
 # clear gender get male/female voices, monsters get their own creature recordings.
@@ -281,12 +282,15 @@ art['departFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,shee
 art['formAuras']={}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
-    art['formAuras'][catalog.parent.name]={**data,'src':compact_image(data['file']),**({'frontSrc':compact_image(data['front'])} if data.get('front') else {})}
+    art['formAuras'][catalog.parent.name]={**data,'src':compact_image(data['file']),**({'frontSrc':compact_image(data['front'])} if data.get('front') else {}),**({'leafSrcs':[compact_image(f) for f in data['leaves']]} if data.get('leaves') else {})}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'));forms={}
     for form,entry in data['forms'].items():
         actions={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in entry['actions'].items()}
-        actions['buff']=actions['cast'];actions.setdefault('hover',actions['run'])
+        # Forms have no buff sheet of their own (cast stands in) and only Lumi floats (others run):
+        # marked so the studio can tell a borrowed sheet from the hero's own.
+        actions['buff']={**actions['cast'],'aliasOf':'cast'}
+        if 'hover' not in actions:actions['hover']={**actions['run'],'aliasOf':'run'}
         register_feet(actions['idle']);forms[form]=actions
     art['heroForms'][data['hero']]=forms
 # One body size in every form, measured by the head (assets/heroes/head-scale.json, head_scale.py):
@@ -296,7 +300,9 @@ art['heroHead']={}
 for name,entry in head_scale.items():
     hero,form=name.rsplit('-',1);combat=entry['combat']
     if hero=='shadow':continue  # Noct is locked as approved: he keeps his own form sizes
-    art['heroHead'].setdefault(hero,{})[form]=round(combat['headPx']/combat['cellPx'],5)
+    # combatFit: a form drawn standing straighter than form 1 (same head, longer legs) would tower over
+    # it; it shows that much smaller in combat (Mika form 2 upright: .9, still a little taller than form 1).
+    art['heroHead'].setdefault(hero,{})[form]=round(combat['headPx']/combat['cellPx']/entry.get('combatFit',1),5)
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
 for retired in [k for k in art['campaignCreatures'] if k not in campaign_foes['foes']]:del art['campaignCreatures'][retired]

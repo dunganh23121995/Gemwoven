@@ -14,7 +14,8 @@
 :root{color-scheme:dark;--bg:#16130f;--panel:#221d17;--line:#3a3127;--ink:#efe4cf;--dim:#b9a98a;--gold:#e8c26a}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif;padding:16px}
-header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:12px}
+/* The hero and form pickers stay pinned at the top so switching is one tap from anywhere. */
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;position:sticky;top:0;z-index:10;background:var(--bg);margin:-16px -16px 12px;padding:10px 16px;border-bottom:1px solid var(--line)}
 h1{font-size:18px;margin:0}h2{font-size:14px;margin:0 0 8px;color:var(--gold)}
 .layout{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
 .game{flex:none;width:390px;height:844px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000}
@@ -24,26 +25,28 @@ section{background:var(--panel);border:1px solid var(--line);border-radius:12px;
 .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 button,select{background:#2f281f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font:inherit;cursor:pointer}
 button:hover{border-color:var(--gold)}button.on{background:var(--gold);color:#1a1409;border-color:var(--gold);font-weight:600}
+button.absent{opacity:.5;border-style:dashed}button.absent.on{background:transparent;color:inherit;border-color:var(--gold)}
 label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .status{color:var(--dim);font-size:13px}
 .note{color:var(--dim);font-size:13px;margin:6px 0 0}
 .combat{flex:none;display:flex;flex-direction:column;gap:8px;width:390px;max-width:100%}
-.combat-bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0;gap:6px}
+.combat-bar{position:sticky;top:var(--head,0px);z-index:5;background:var(--bg);padding:6px 0;gap:6px}
 .combat-bar button{flex:1 1 auto;padding:10px 8px;font-weight:600}
 .combat-bar button.hot{border-color:var(--gold);color:var(--gold)}
 .combat-bar button.busy{background:var(--gold);color:#1a1409}
 [hidden]{display:none!important}
 @media (max-width:760px){
   body{padding:8px}
-  header{gap:8px;margin-bottom:6px}
-  h1{font-size:16px;width:100%}
-  header label,header select{flex:1 1 auto}
+  header{gap:8px;margin:-8px -8px 6px;padding:8px}
+  /* Pinned header on a phone: hero picker and reload on one line, forms on one scrolling line. */
+  h1,.status{display:none}
+  header label{flex:1 1 0;min-width:0}header select{min-width:0;width:100%}
+  #forms{order:2;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}#forms button{flex:none}
   #forms button{padding:8px 10px}
   .layout{flex-direction:column;gap:10px}
   /* The fight and its buttons stay pinned at the top while the rest scrolls underneath. */
-  .combat{width:100%;position:sticky;top:0;z-index:6;background:var(--bg);padding-bottom:6px}
+  .combat{width:100%;position:sticky;top:var(--head,0px);z-index:6;background:var(--bg);padding-bottom:6px}
   .combat-bar{position:static}
-  header label{flex:1 1 40%}
   .combat-bar button{font-size:15px;padding:12px 6px;min-width:30%}
   .side{min-width:0;width:100%}
   .shows{grid-template-columns:1fr 1fr}
@@ -56,7 +59,7 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .checklist tr.group td{background:#2f281f;color:var(--gold);text-align:left;font-weight:600}
 .checklist th.cur{background:#3a3020;color:var(--gold)}
 .checklist .ok{color:#7ed67e}.checklist .no{color:#ff7a6a;font-weight:700}.checklist .opt{color:var(--dim)}
-.checklist td.cell{cursor:pointer;letter-spacing:2px}
+.checklist td.cell{letter-spacing:2px}
 .shows{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
 .show h3{font-size:13px;margin:0 0 6px;color:var(--ink)}
 .show.cur h3{color:var(--gold)}
@@ -95,17 +98,11 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
   </div>
   <div class="side">
     <section>
-      <h2>Hạng mục tướng · việc đã có và còn thiếu (docs/HERO_PIPELINE.md)</h2>
-      <p class="note">Sinh bằng <code>python scripts/hero_checklist.py</code> từ <code>docs/hero-checklist.json</code>. ✓ đã có · ✗ còn thiếu · ○ tuỳ chọn chưa có · — không áp dụng. Bấm ô để xem file được kiểm tra.</p>
-      <div class="checklist" id="checklist"></div>
-      <p class="note" id="checkDetail"></p>
-    </section>
-    <section>
-      <h2>Ngoài trận · Home, Tướng, Kỹ Năng (mọi hình thái để so sánh)</h2>
+      <h2>Ngoài trận</h2>
       <div class="shows" id="shows"></div>
     </section>
     <section>
-      <h2>Trong trận · hình thái đang chọn</h2>
+      <h2>Trong trận</h2>
       <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button></div>
       <div class="row" style="margin-top:8px">
         <label>Đối thủ <select id="enemy"></select></label>
@@ -124,6 +121,11 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
         <label><input type="checkbox" id="onion"> Bóng khung trước</label>
       </div>
       <div class="viewer"><canvas class="play" id="play" width="512" height="512"></canvas><div><div class="meta" id="meta"></div><div class="sheet" id="sheet"></div></div></div>
+    </section>
+    <section>
+      <h2>Hạng mục tướng · đã có và còn thiếu</h2>
+      <p class="note">✓ đã có · ✗ còn thiếu · ○ tuỳ chọn chưa có · — không áp dụng</p>
+      <div class="checklist" id="checklist"></div>
     </section>
   </div>
 </div>
@@ -152,19 +154,15 @@ $('hero').onchange=()=>{hero=$('hero').value;history.replaceState(null,'','?hero
 // ---- Hero checklist: every item each hero must have (docs/hero-checklist.json) -----------------
 let checkStatus=null;
 async function checklist(){
-  if(!checkStatus){try{checkStatus=await (await fetch('assets/heroes/hero-checklist-status.json',{cache:'no-store'})).json();}catch{$('checklist').textContent='Chưa có dữ liệu: chạy python scripts/hero_checklist.py';return;}}
+  if(!checkStatus){try{checkStatus=await (await fetch('assets/heroes/hero-checklist-status.json',{cache:'no-store'})).json();}catch{$('checklist').textContent='Chưa có dữ liệu';return;}}
   const keys=Object.keys(checkStatus.heroes),mark=(c,opt)=>c.done?'<span class="ok">✓</span>':opt?'<span class="opt">○</span>':'<span class="no">✗</span>';
   let html='<table><tr><th>Hạng mục</th>'+keys.map(k=>`<th class="${k===hero?'cur':''}">${M.HEROES[k]?.name||k}${checkStatus.heroes[k].locked?' 🔒':''}</th>`).join('')+'</tr>',group='';
   for(const row of checkStatus.items){
     if(row.group!==group){group=row.group;html+=`<tr class="group"><td colspan="${keys.length+1}">${group}</td></tr>`;}
     html+=`<tr><td class="label">${row.label}</td>`+keys.map(k=>{const cells=row.cells[k]||{},forms=Object.keys(cells);
-      return forms.length?`<td class="cell" data-item="${row.id}" data-hero="${k}">${forms.map(f=>mark(cells[f],row.optional)).join('')}</td>`:'<td class="opt">—</td>';}).join('')+'</tr>';
+      return forms.length?`<td class="cell">${forms.map(f=>mark(cells[f],row.optional)).join('')}</td>`:'<td class="opt">—</td>';}).join('')+'</tr>';
   }
   $('checklist').innerHTML=html+'</table>';
-  $('checklist').querySelectorAll('td.cell').forEach(td=>td.onclick=()=>{
-    const row=checkStatus.items.find(r=>r.id===td.dataset.item),cells=row.cells[td.dataset.hero];
-    $('checkDetail').textContent=`${M.HEROES[td.dataset.hero]?.name} · ${row.label}: `+Object.entries(cells).map(([f,c])=>`dạng ${f} ${c.done?'✓':'✗'} ${c.detail}`).join(' · ');
-  });
 }
 checklist();
 
@@ -266,6 +264,8 @@ function fitGame(){
   frame.style.transform=`translateY(${phone?-SCENE.top*k:0}px) scale(${k})`;
 }
 addEventListener('resize',fitGame);fitGame();
+// The pinned header's height, so the sticky fight (and its buttons) sit right under it.
+new ResizeObserver(()=>document.documentElement.style.setProperty('--head',document.querySelector('header').offsetHeight+'px')).observe(document.querySelector('header'));
 frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
 $('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src='Game.html?qa&t='+Date.now();};
 for(const id of ['enemy','fx','armor','variant'])$(id).onchange=configure;
@@ -285,16 +285,30 @@ $('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').s
   try{configure();$('foeSkill').value=index;await q.foeCast(index);say('Xong: '+label);}catch(e){say('Lỗi: '+e.message);}};
 
 // ---- Sprite sheets ---------------------------------------------------------------------------------
+// Every hero shows the same combat states; one the hero has no sheet of its own for says so (and
+// which sheet the game borrows in its place: sprite-runtime.js spriteDefinition).
+const SHEET_STATES=[['idle','Nghỉ'],['attack','Đánh thường'],['cast','Gồng chiêu'],['buff','Nhận máu / giáp'],['hurt','Bị đánh'],
+  ['run','Vào / rời sân'],['hover','Bay lơ lửng'],['skill','Tuyệt kỹ']];
+const SHEET_EXTRA={smash:'Tuyệt kỹ (smash)',slash:'Chém thương (slash)',dash:'Lướt (dash)'};
+const SHEET_BORROW={buff:'cast',hurt:'attack'};
+function ownSheet(name){return sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;}
 function loadSheets(){
   const art=gq().art;
   sheets=(form>1&&art.heroForms?.[hero]?.[String(form)])||art.heroes[hero]||{};
-  $('actions').replaceChildren(...Object.keys(sheets).filter(k=>!['buff'].includes(k)).map(k=>{const b=document.createElement('button');b.textContent=k;b.className=k===action?'on':'';b.onclick=()=>pick(k);return b;}));
-  pick(sheets[action]?action:'idle');
+  const states=[...SHEET_STATES,...Object.keys(sheets).filter(k=>!SHEET_STATES.some(([s])=>s===k)).map(k=>[k,SHEET_EXTRA[k]||k])];
+  $('actions').replaceChildren(...states.map(([k,label])=>{const b=document.createElement('button');b.dataset.state=k;b.textContent=label;
+    b.title=k;b.className=(k===action?'on ':'')+(ownSheet(k)?'':'absent');b.onclick=()=>pick(k);return b;}));
+  pick(states.some(([k])=>k===action)?action:'idle');
 }
 function pick(name){
-  if(!sheets[name])return;
-  action=name;for(const b of $('actions').children)b.classList.toggle('on',b.textContent===name);
-  const s=sheets[name];img=new Image();img.onload=drawSheet;img.src=s.src;cur=0;
+  action=name;for(const b of $('actions').children)b.classList.toggle('on',b.dataset.state===name);
+  const s=ownSheet(name);
+  if(!s){
+    img=null;$('play').getContext('2d').clearRect(0,0,512,512);$('sheet').replaceChildren();
+    const borrow=sheets[name]?.aliasOf||(SHEET_BORROW[name]&&sheets[SHEET_BORROW[name]]?SHEET_BORROW[name]:'');
+    $('meta').textContent='Không có trạng thái này'+(borrow?` · trong trận dùng sheet «${borrow}»`:'');return;
+  }
+  img=new Image();img.onload=drawSheet;img.src=s.src;cur=0;
   if(s.frameDuration){$('ms').value=s.frameDuration;$('msv').textContent=s.frameDuration;}
 }
 function drawSheet(){
@@ -306,7 +320,7 @@ function drawSheet(){
 }
 function cell(i){const s=sheets[action],w=img.naturalWidth/s.cols,h=img.naturalHeight/s.rows;return [(i%s.cols)*w,Math.floor(i/s.cols)*h,w,h];}
 function render(now){
-  requestAnimationFrame(render);const s=sheets[action];if(!img?.complete||!s)return;
+  requestAnimationFrame(render);const s=ownSheet(action);if(!img?.complete||!s)return;
   const ms=+$('ms').value;if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=(cur+1)%s.count;}}last=now;
   const g=$('play').getContext('2d'),k=playing&&$('blend').checked?acc/ms:0,m=k*k*(3-2*k);
   g.clearRect(0,0,512,512);
@@ -319,8 +333,8 @@ function render(now){
 requestAnimationFrame(render);
 $('ms').oninput=()=>$('msv').textContent=$('ms').value;
 $('playpause').onclick=()=>{playing=!playing;$('playpause').textContent=playing?'Tạm dừng':'Phát';};
-$('prev').onclick=()=>{playing=false;$('playpause').textContent='Phát';cur=(cur+sheets[action].count-1)%sheets[action].count;};
-$('next').onclick=()=>{playing=false;$('playpause').textContent='Phát';cur=(cur+1)%sheets[action].count;};
+$('prev').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+sheets[action].count-1)%sheets[action].count;};
+$('next').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+1)%sheets[action].count;};
 
 fillForms();showcases();
 </script>
