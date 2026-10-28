@@ -10837,7 +10837,7 @@
       241
     ],
     "bodyAnchor": {
-      "x": 0.423828125,
+      "x": 0.431640625,
       "crown": 0.171875,
       "foot": 0.94140625
     }
@@ -10855,18 +10855,18 @@
   },
   "form-idle-lightning-3": {
     "file": "assets/heroes/forms/lightning/form-3/hub-idle.webp",
-    "width": 256,
-    "height": 256,
+    "width": 512,
+    "height": 512,
     "bodyAnchor": {
-      "x": 0.423828125,
+      "x": 0.431640625,
       "crown": 0.171875,
       "foot": 0.94140625
     },
     "footBounds": [
-      42,
-      46,
-      215,
-      241
+      89,
+      91,
+      429,
+      482
     ]
   },
   "form-lightning-2": {
@@ -11089,14 +11089,14 @@
     "width": 256,
     "height": 256,
     "footBounds": [
-      46,
-      50,
-      226,
+      33,
+      44,
+      222,
       240
     ],
     "bodyAnchor": {
-      "x": 0.521484375,
-      "crown": 0.19140625,
+      "x": 0.51171875,
+      "crown": 0.19921875,
       "foot": 0.9375
     }
   },
@@ -11106,25 +11106,25 @@
     "height": 256,
     "footBounds": [
       0,
-      16,
+      26,
       256,
       256
     ]
   },
   "form-idle-fire-2": {
     "file": "assets/heroes/forms/fire/form-2/hub-idle.webp",
-    "width": 256,
-    "height": 256,
+    "width": 512,
+    "height": 512,
     "bodyAnchor": {
-      "x": 0.521484375,
-      "crown": 0.19140625,
+      "x": 0.51171875,
+      "crown": 0.19921875,
       "foot": 0.9375
     },
     "footBounds": [
-      45,
-      50,
-      225,
-      240
+      64,
+      85,
+      446,
+      480
     ]
   },
   "form-fire-3": {
@@ -11138,9 +11138,9 @@
       238
     ],
     "bodyAnchor": {
-      "x": 0.517578125,
+      "x": 0.515625,
       "crown": 0.2734375,
-      "foot": 0.9296875
+      "foot": 0.931640625
     }
   },
   "form-portrait-fire-3": {
@@ -11156,18 +11156,18 @@
   },
   "form-idle-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/hub-idle.webp",
-    "width": 256,
-    "height": 256,
+    "width": 512,
+    "height": 512,
     "bodyAnchor": {
-      "x": 0.517578125,
+      "x": 0.515625,
       "crown": 0.2734375,
-      "foot": 0.9296875
+      "foot": 0.931640625
     },
     "footBounds": [
-      24,
-      17,
-      236,
-      238
+      46,
+      32,
+      476,
+      477
     ]
   },
   "form-aura-earth": {
@@ -11177,7 +11177,12 @@
     "rows": 1,
     "frameDuration": 160,
     "prompt": "assets/heroes/forms/earth/aura/prompt-used.txt",
-    "front": "assets/heroes/forms/earth/aura/front/front.webp",
+    "leaves": [
+      "assets/fx/heroes/motes/earth-1.png",
+      "assets/fx/heroes/motes/earth-2.png",
+      "assets/fx/heroes/motes/earth-3.png",
+      "assets/fx/heroes/motes/earth-4.png"
+    ],
     "width": 256,
     "height": 256
   },
@@ -11446,11 +11451,11 @@
       "idle": "assets/heroes/forms/earth/form-3/showcase/idle.webp",
       "fidgets": [
         "assets/heroes/forms/earth/form-3/showcase/bloom.webp",
-        "assets/heroes/forms/earth/form-3/showcase/rootcreep.webp"
+        "assets/heroes/forms/earth/form-3/showcase/shieldbloom.webp"
       ],
       "labels": [
         "Hoa nở trên gạc và vai",
-        "Cắm chùy, rễ lan ra"
+        "Khiên cây thần nở hoa"
       ],
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-3/showcase/entrance.webp"
@@ -11460,18 +11465,18 @@
   },
   "show-fire-1": {
     "file": "assets/heroes/forms/fire/form-1/showcase/poster.png",
-    "width": 384,
-    "height": 384,
+    "width": 640,
+    "height": 640,
     "footBounds": [
-      105,
-      119,
-      281,
-      330
+      175,
+      198,
+      470,
+      550
     ],
     "bodyAnchor": {
-      "x": 0.5455729166666666,
-      "bodyX": 0.5481770833333334,
-      "crown": 0.3098958333333333,
+      "x": 0.546875,
+      "bodyX": 0.5484375,
+      "crown": 0.309375,
       "foot": 0.859375
     },
     "sheets": {
@@ -11503,18 +11508,18 @@
   },
   "show-fire-2": {
     "file": "assets/heroes/forms/fire/form-2/showcase/poster.png",
-    "width": 384,
-    "height": 384,
+    "width": 640,
+    "height": 640,
     "footBounds": [
-      112,
-      119,
-      271,
-      330
+      151,
+      198,
+      491,
+      550
     ],
     "bodyAnchor": {
-      "x": 0.5338541666666666,
-      "bodyX": 0.5390625,
-      "crown": 0.3098958333333333,
+      "x": 0.509375,
+      "bodyX": 0.5109375,
+      "crown": 0.309375,
       "foot": 0.859375
     },
     "sheets": {
@@ -11551,23 +11556,23 @@
       },
       "entrance": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
     },
-    "headPx": 14.06,
-    "headFit": 0.973
+    "headPx": 15.24,
+    "headFit": 1
   },
   "show-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/showcase/poster.png",
-    "width": 384,
-    "height": 384,
+    "width": 640,
+    "height": 640,
     "footBounds": [
-      98,
-      119,
-      285,
-      330
+      164,
+      198,
+      476,
+      550
     ],
     "bodyAnchor": {
-      "x": 0.5442708333333334,
-      "bodyX": 0.5104166666666666,
-      "crown": 0.3098958333333333,
+      "x": 0.546875,
+      "bodyX": 0.5109375,
+      "crown": 0.309375,
       "foot": 0.859375
     },
     "sheets": {
@@ -11799,7 +11804,7 @@
       "entrance": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
     },
     "headPx": 13.36,
-    "headFit": 0.9945
+    "headFit": 1
   },
   "show-lightning-3": {
     "file": "assets/heroes/forms/lightning/form-3/showcase/poster.png",
@@ -12262,18 +12267,18 @@
       ]
     ],
     "file": "assets/heroes/forms/fire/form-2/skill.webp",
-    "width": 1536,
-    "height": 1024,
+    "width": 3680,
+    "height": 2760,
     "cell": [
-      512,
-      512
+      1226,
+      1380
     ],
     "body": {
-      "crown": 0.42578125,
-      "foot": 0.939453125,
-      "x": 0.521484375
+      "crown": 0.13333333333333333,
+      "foot": 1.0,
+      "x": 0.6117455138662317
     },
-    "headPx": 16.882
+    "headPx": 49.645
   },
   "ulti-fire-3-wave": {
     "file": "assets/fx/heroes/fire/sweep3.webp",
@@ -12356,7 +12361,7 @@
       "foot": 0.93359375,
       "x": 0.5068359375
     },
-    "headPx": 13.85
+    "headPx": 13.826
   },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",

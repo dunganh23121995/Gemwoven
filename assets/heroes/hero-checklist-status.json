@@ -137,15 +137,15 @@
     "shadow": {
      "1": {
       "done": true,
-      "detail": "assets/heroes/forms/shadow/idle-cloth/form-1/frame-07.png"
+      "detail": "assets/heroes/forms/shadow/form-1/combat-idle/idle.webp"
      },
      "2": {
       "done": true,
-      "detail": "assets/heroes/forms/shadow/idle-cloth/form-2/frame-07.png"
+      "detail": "assets/heroes/forms/shadow/form-2/combat-idle/idle.webp"
      },
      "3": {
       "done": true,
-      "detail": "assets/heroes/forms/shadow/idle-cloth/form-3/frame-07.png"
+      "detail": "assets/heroes/forms/shadow/form-3/combat-idle/idle.webp"
      }
     },
     "fire": {
@@ -834,7 +834,7 @@
      },
      "3": {
       "done": true,
-      "detail": "bloom, rootcreep"
+      "detail": "bloom, shieldbloom"
      }
     },
     "lightning": {

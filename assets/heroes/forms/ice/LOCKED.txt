@@ -3,3 +3,4 @@ form 2-3 ultimate sounds (src/forms-yuki.js, assets/audio/hero-forms/ice). Don't
 Final lock of every form: 2026-10-25.
 Re-locked after the defect review and head-scale fixes: 2026-10-26.
 Lock confirmed by the player on the current state (commit 571c3b2): 2026-10-27.
+Lock confirmed by the player on the current state: 2026-10-28.
