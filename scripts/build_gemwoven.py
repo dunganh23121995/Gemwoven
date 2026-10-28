@@ -111,7 +111,10 @@ for key,asset in list(merged.items()):
     _,hero,form=key.split('-');first,own=head_scale.get(f'{hero}-1'),head_scale.get(f'{hero}-{form}')
     if hero=='shadow' or not (first and own and f'show-{hero}-1' in merged):continue  # Noct is locked as approved
     asset['headPx']=own['showcase']['headPx']
-    asset['headFit']=round(head_share(merged[f'show-{hero}-1'],first['showcase']['headPx'])/head_share(asset,asset['headPx']),4)
+    fit=head_share(merged[f'show-{hero}-1'],first['showcase']['headPx'])/head_share(asset,asset['headPx'])
+    # Never shorter than form 1, crown to soles (a fit of 1 is form 1's visible height).
+    fit=max(fit,1)
+    asset['headFit']=round(fit,4)
 # The ultimate pose sheets on the summon spotlight stand at the showcase head size too: the head in a
 # combat action sheet is the combat idle head divided by that sheet's scale (forms.json).
 for key,entry in list(merged.items()):

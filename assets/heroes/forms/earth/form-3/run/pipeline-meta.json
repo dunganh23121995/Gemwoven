@@ -1,12 +1,13 @@
 {
  "generator": {
-  "model": "gpt-6-astra",
-  "effort": "high",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
   "refs": [
    "form combat idle frame (identity)",
    "make_anchor_layout 2x3 template"
   ]
  },
- "placement": "run/place.py (scratch): one transform for the sheet from the anchor template, head-size matched to the idle, drawn at K=0.85",
- "date": "2026-10-26"
+ "placement": "assets/heroes/forms/earth/tools/place_run.py, K=0.85 (both rows on the idle feet line)",
+ "date": "2026-10-28",
+ "reason": "grounded heavy jog: the earlier cycle hopped (both feet off the ground) and its second row stood higher"
 }

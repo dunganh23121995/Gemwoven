@@ -1,7 +1,6 @@
 """Cut the hero mote sheets into transparent sprites (96 px) and write motes.json.
 
 raw.png: 4 columns x 5 rows on #FF00FF, rows fire, ice, earth, lightning, novice.
-raw-shadow.png: 4 columns x 1 row on #00FF00 (Noct's violet wisps would lose their colour on magenta).
 """
 import json
 from pathlib import Path
@@ -11,8 +10,7 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 SIZE = 96
-SHEETS = [("raw.png", ["fire", "ice", "earth", "lightning", "novice"], (255, 0, 255)),
-          ("raw-shadow.png", ["shadow"], (0, 255, 0))]
+SHEETS = [("raw.png", ["fire", "ice", "earth", "lightning", "novice"], (255, 0, 255))]
 
 
 def cut(cell, key):

@@ -138,8 +138,7 @@ async function yukiMoonfrostUltimate(){
     [1250,'f2-beam',.5,.25],     // the moonbeam falls; whoosh peaks as it lands (1.42 s), natural decay
     [1420,'f2-freeze',.3,.3],    // spikes grow, prison holds (crackling bed, 1.42-2.42 s)
     [1640,'crack',.42,.3],       // the prison locks (1.70 s)
-    [2090,'crack',.4,.3],        // white cracks run through the spikes (2.15 s)
-    [2200,'f2-boom',.35,.15]]);  // form 1's deep boom, cut to 2 s, under the shatter (2.24 s, 1.8 s glass tail)  // shards rain down, moon fades (2.40-3.2 s)
+    [2090,'crack',.4,.3]]);      // white cracks run through the spikes (2.15 s); the shatter (2.24 s) ends on glass alone, no deep boom
   root.dataset.ragePhase='chant';root.classList.add('combat-v3-acting');
   try{
     yukiUltimateOpening(kit,pending);

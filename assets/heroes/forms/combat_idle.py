@@ -42,7 +42,7 @@ def prep(hero, form):
 def package(hero, form):
     forms, work, sheet = paths(hero, form)
     loop = Image.open(work / "idle.webp").convert("RGBA")
-    assert loop.size == (512, 1024), loop.size
+    assert loop.size in [(512, 1024), (1024, 2048)], loop.size   # 256 or 512 px cells (sharper on dense screens)
     loop.save(sheet, lossless=True, method=6)
     if hero == "shadow" and form == "1":
         pass  # build.py reads Noct's form-1 idle sheet as it is (heads and pace are set there)

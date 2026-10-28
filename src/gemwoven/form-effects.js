@@ -33,7 +33,13 @@
       // The strip's floor cloud is centred on the boots; the clouds and chain above it (and the
       // front sash) follow the body, which can stand off the boots' centre (--aura-body-shift).
       const split=band?band.replace('class="form-aura-band"','class="form-aura-band form-aura-floorpart"')+band.replace('class="form-aura-band"','class="form-aura-band form-aura-upper"'):'';
-      return `<span class="hero-form-aura"><i class="form-halo"></i><i class="form-floor"></i>${split}</span>`+
+      // Leaves and golden spores that drift up from the floor all the time (Nori's grove): drawn
+      // frames would only fade in place, so these move on their own paths.
+      const leaves=(asset?.leafSrcs||asset?.leaves||[]).map(f=>new URL(f,document.baseURI).href);
+      const motes=leaves.length?`<span class="aura-motes">${Array.from({length:10},(_,i)=>{
+        const side=i%2?1:-1,leaf=i<4,x=50+side*(15+((i*37)%13)),dur=(leaf?5.2:3.8)+((i*53)%17)/10;
+        return `<i class="${leaf?'aura-leaf':'aura-spore'}" style="--x:${x}%;--dur:${dur.toFixed(1)}s;--delay:${(-(i*1.37)%dur).toFixed(2)}s;--sway:${side*(3+i%3*2)}cqw;--spin:${side*(120+i*25)}deg${leaf?`;background-image:url('${leaves[i%leaves.length].replace(/'/g,'%27')}')`:''}"></i>`;}).join('')}</span>`:'';
+      return `<span class="hero-form-aura"><i class="form-halo"></i><i class="form-floor"></i>${split}</span>${motes}`+
         (band?`<span class="hero-form-aura form-aura-foreground">${band}</span>`:'')+front;
     }
   };

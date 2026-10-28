@@ -15,21 +15,14 @@
     128,
     244
   ],
-  "frameFiles": [
-    "run/frame-00.png",
-    "run/frame-01.png",
-    "run/frame-02.png",
-    "run/frame-03.png",
-    "run/frame-04.png",
-    "run/frame-05.png"
-  ],
+  "frameFiles": [],
   "uniqueFrames": 6,
   "framePixelHashes": [],
   "sharedScaleProfile": "character-scale-profile.json",
   "anchorEstimator": "median of lower silhouette; bottommost toe Y",
   "reviewedFootRootFrames": [],
   "source": "assets/reimagined/heroes/earth/run/raw-sheet.png",
-  "sourceSha256": "2c3e0f8bf42226dbf744ee8f10311f747517c8f7392b61b256724a8c36cd142d",
+  "sourceSha256": "b2ec26142d1916e6d71e6c192a7f35739e3d49c3d72bbee91a40692e80bd7394",
   "qc": {
     "frame_count": 6,
     "valid_frame_count": 6,
@@ -49,27 +42,27 @@
   "headAnchors": [
     [
       106,
-      99
+      103
     ],
     [
-      106,
-      98
+      104,
+      103
     ],
     [
-      108,
-      98
+      104,
+      103
     ],
     [
-      106,
-      94
+      104,
+      103
     ],
     [
-      106,
-      93
+      104,
+      103
     ],
     [
-      108,
-      93
+      104,
+      103
     ]
   ],
   "floorAligned": true,

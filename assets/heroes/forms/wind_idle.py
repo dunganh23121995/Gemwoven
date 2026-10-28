@@ -85,7 +85,7 @@ def rigid_mask(hero, form, out):
     mask.save(out)
 
 
-def cut_cells(raw, out, green=False, cell=256):
+def cut_cells(raw, out, green=False, cell=256, single=False):
     """Key the sheet and cut one cell around each of the eight drawn figures. Codex does not keep to
     its grid (rows drift closer, a pose crosses into the next row), so the figures are found on
     the sheet and every frame gets a window of the same size, centred on its figure."""
@@ -103,10 +103,10 @@ def cut_cells(raw, out, green=False, cell=256):
     rgba = np.concatenate([sheet, alpha[..., None] * 255], -1).clip(0, 255).astype("uint8")
     labels, count = ndimage.label(ndimage.binary_dilation(alpha > .5, iterations=8))
     sizes = ndimage.sum(np.ones_like(labels), labels, range(1, count + 1))
-    figures = [ndimage.find_objects(labels)[i] for i in np.argsort(sizes)[::-1][:8]]
+    figures = [ndimage.find_objects(labels)[i] for i in np.argsort(sizes)[::-1][:1 if single else 8]]
     rows = sorted(figures, key=lambda s: (s[0].start + s[0].stop) / 2)
-    order = [f for pair in (sorted(rows[i:i + 2], key=lambda s: s[1].start) for i in range(0, 8, 2)) for f in pair]
-    w, h = sheet.shape[1] // 2, sheet.shape[0] // 4
+    order = figures if single else [f for pair in (sorted(rows[i:i + 2], key=lambda s: s[1].start) for i in range(0, 8, 2)) for f in pair]
+    w, h = (sheet.shape[1], sheet.shape[0]) if single else (sheet.shape[1] // 2, sheet.shape[0] // 4)
     padded = np.zeros((sheet.shape[0] + 2 * h, sheet.shape[1] + 2 * w, 4), dtype="uint8")
     padded[h:h + sheet.shape[0], w:w + sheet.shape[1]] = rgba
     for i, f in enumerate(order):
@@ -165,7 +165,7 @@ def sway(frames, mask, rigid, facing=1):
                 continue
             here = (labels == k + 1).astype(np.float32)
             reach = np.clip((yy - y0) / size, 0, 1) ** 1.3                    # pinned at the top, free at the tip
-            amp = min(4.0, max(1.5, .2 * size))
+            amp = min(4.0, max(1.5, .2 * size * 256 / w)) * w / 256
             wave = (1 - np.cos(2 * np.pi * i / len(frames) - 2.2 * reach - k * .9)) / 2
             dx += here * -facing * amp * reach * wave
             dy += here * -.3 * amp * reach * wave
@@ -178,11 +178,18 @@ def sway(frames, mask, rigid, facing=1):
     return out
 
 
+def master_path(hero, form):
+    """The resting frame the loop is built on: its 512 px repaint when there is one."""
+    hi = ROOT / cid(hero, form) / "master-512.png"
+    return hi if hi.exists() else ROOT / cid(hero, form) / "master.png"
+
+
 def proc(hero, form, core):
     work = work_dir(hero, form)
-    cut_cells(work / "raw.png", work / "cells", green=(work / "green").exists())
+    cell = Image.open(master_path(hero, form)).width
+    cut_cells(work / "raw.png", work / "cells", green=(work / "green").exists(), cell=cell)
     rigid_mask(hero, form, work / "rigid.png")
-    stabilize = lambda out, *extra: fidget.run(STABILIZE, ROOT / cid(hero, form) / "master.png", work / out,
+    stabilize = lambda out, *extra: fidget.run(STABILIZE, master_path(hero, form), work / out, "--cell", cell,
                                                *[work / f"cells/idle-{i}.png" for i in range(1, 9)],
                                                "--core", core, "--as-is", "--grow", 3, "--open", 1, "--min-area", 20, "--rigid", work / "rigid.png", *extra)
     # Codex draws all eight frames at one scale but not always in the same spot of its cell (a row
@@ -192,8 +199,8 @@ def proc(hero, form, core):
     scales = [f["scale"] for f in json.loads((work / "stable/stabilize-meta.json").read_text())["frames"]]
     scale = str(round(statistics.median(scales), 4))
     print(stabilize("stable", "--scale", scale).strip())
-    master = np.asarray(Image.open(ROOT / cid(hero, form) / "master.png").convert("RGBA"), dtype=np.float32) / 255
-    rigid = np.asarray(Image.open(work / "rigid.png").convert("L"), dtype=np.float32) > 127
+    master = np.asarray(Image.open(master_path(hero, form)).convert("RGBA"), dtype=np.float32) / 255
+    rigid = np.asarray(Image.open(work / "rigid.png").convert("L").resize((cell, cell)), dtype=np.float32) > 127
     frames = cells_of(work / "stable/idle.webp")
     if (work / "parts-raw.png").exists():
         mask, fit = parts_mask(work, master)
@@ -207,7 +214,7 @@ def proc(hero, form, core):
     sheet = Image.new("RGBA", (c * 2, c * 4))
     for i, f in enumerate(frames):
         sheet.paste(Image.fromarray((f.clip(0, 1) * 255 + .5).astype("uint8"), "RGBA"), ((i % 2) * c, (i // 2) * c))
-    sheet = feather(sheet)
+    sheet = feather(sheet, cell, px=5 * cell // 256)
     sheet.save(work / "idle.webp", lossless=True, method=6)
     c = sheet.width // 2
     strip = Image.new("RGB", (c * 8, c), (58, 84, 62))
@@ -241,10 +248,61 @@ def parts_gen(hero, form, model=MODEL, effort=EFFORT):
                "--model", model, "--effort", effort, "--timeout", "900")
 
 
+HIRES = """Image 1 is a small, slightly soft game sprite of a chibi character ({what}). Repaint it as a crisp HIGH-RESOLUTION version of EXACTLY the same picture: the identical pose, proportions, silhouette, colours and every detail in the same place, with the same framing on the canvas (the character sits on the canvas exactly where and as large as in Image 1). Only sharpen it: clean crisp painted lines, clear eyes and fine ornaments. Do not change the design, do not add or remove anything.
+Background 100% solid flat #FF00FF magenta, no shadow, no ground, no text, no borders."""
+
+
+def hires_gen(hero, form, model=MODEL, effort=EFFORT):
+    """Codex repaints the 256 px resting frame at 1024 px (a deep image job, so it goes to Codex)."""
+    work = work_dir(hero, form); work.mkdir(parents=True, exist_ok=True)
+    master = Image.open(ROOT / cid(hero, form) / "master.png").convert("RGBA")
+    canvas = Image.new("RGBA", master.size, (255, 0, 255, 255)); canvas.alpha_composite(master)
+    canvas.convert("RGB").resize((1024, 1024), Image.Resampling.LANCZOS).save(work / "hires-ref.png")
+    (work / "hires-prompt.txt").write_text(HIRES.format(what=what(hero, form)) + "\n", encoding="utf-8")
+    fidget.run(fidget.GEN, "--prompt-file", work / "hires-prompt.txt", "--out", work / "hires-raw.png", "--ref", work / "hires-ref.png",
+               "--model", model, "--effort", effort, "--timeout", "900")
+
+
+def hires_fit(hero, form):
+    """Key the repaint and lay it exactly over the 256 px resting frame at twice its size, so the
+    512 px loop keeps the same pose, size and feet. Reports how closely it matches."""
+    work = work_dir(hero, form)
+    cut_cells(work / "hires-raw.png", work / "hires-cell", cell=1024, single=True)
+    hi = np.asarray(Image.open(work / "hires-cell/idle-1.png").convert("RGBA"), dtype=np.float32) / 255
+    lo = np.asarray(Image.open(ROOT / cid(hero, form) / "master.png").convert("RGBA").resize((512, 512), Image.Resampling.LANCZOS), dtype=np.float32) / 255
+    box = lambda a: (lambda ys, xs: (ys.min(), ys.max(), xs.min(), xs.max()))(*np.where(a[..., 3] > .5))
+    t0, b0, l0, r0 = box(lo); t1, b1, l1, r1 = box(hi)
+    best = None
+    for k in np.linspace(.97, 1.03, 13):
+        s = (b0 - t0) / (b1 - t1) * k
+        im = Image.fromarray((hi * 255).astype("uint8"), "RGBA")
+        im = im.resize((round(im.width * s), round(im.height * s)), Image.Resampling.LANCZOS)
+        a = np.asarray(im, dtype=np.float32) / 255
+        t2, b2, l2, r2 = box(a)
+        for dy in range(-4, 5):
+            for dx in range(-4, 5):
+                oy, ox = b0 - b2 + dy, round((l0 + r0) / 2 - (l2 + r2) / 2) + dx
+                canvas = np.zeros_like(lo)
+                ys, xs = max(0, oy), max(0, ox)
+                src = a[ys - oy:ys - oy + 512 - ys, xs - ox:xs - ox + 512 - xs]
+                canvas[ys:ys + src.shape[0], xs:xs + src.shape[1]] = src
+                err = np.abs(canvas[..., 3] - lo[..., 3]).mean() + np.abs(canvas[..., :3] * canvas[..., 3:] - lo[..., :3] * lo[..., 3:]).mean()
+                if best is None or err < best[0]:
+                    best = (err, canvas)
+    out = Image.fromarray((best[1].clip(0, 1) * 255 + .5).astype("uint8"), "RGBA")
+    out.save(ROOT / cid(hero, form) / "master-512.png")
+    iou = ((best[1][..., 3] > .5) & (lo[..., 3] > .5)).sum() / ((best[1][..., 3] > .5) | (lo[..., 3] > .5)).sum()
+    print(f"master-512: silhouette match {iou:.3f}, error {best[0]:.4f}")
+
+
 if __name__ == "__main__":
     cmd, hero, form, *rest = sys.argv[1:]
     if cmd == "gen":
         gen(hero, form, *rest[:3])
+    elif cmd == "hires":
+        hires_gen(hero, form, *rest[:2])
+    elif cmd == "hires-fit":
+        hires_fit(hero, form)
     elif cmd == "parts":
         parts_gen(hero, form, *rest[:2])
     elif cmd == "proc":

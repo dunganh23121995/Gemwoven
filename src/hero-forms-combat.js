@@ -20,7 +20,11 @@ renderActors=function(){
   // its size and every other form is scaled so its head matches form 1's; tails, auras and weapons
   // reach wherever they go. A form not measured yet keeps the old whole-silhouette fit.
   const head=ART.heroHead?.[key],first=Math.max(1,.75/(ART.heroes[key]?.idle?.bodyHeight||.75));
-  root.style.setProperty('--hero-art-scale',head?.[1]&&head?.[form]?first*head[1]/head[form]:Math.max(1,(form===3?.82:.75)/(body.bodyHeight||.75)));
+  // A form whose head is drawn larger than form 1's would come out shorter: it grows until it stands
+  // as tall as form 1, crown to soles (a higher form never looks smaller, nor zoomed in).
+  const rest=ART.heroes[key]?.idle;
+  const tall=form>1&&rest?.bodyHeight&&body.bodyHeight?first*rest.bodyHeight/body.bodyHeight:0;
+  root.style.setProperty('--hero-art-scale',head?.[1]&&head?.[form]?Math.max(first*head[1]/head[form],tall):Math.max(1,(form===3?.82:.75)/(body.bodyHeight||.75)));
   root.style.setProperty('--hero-visible-height',`calc(var(--actor-size) * ${body.bodyHeight||.75})`);
   root.style.setProperty('--form-color',key==='shadow'?'#8d8d94':combatV3Palette[key].light);
   // The aura's floor cloud stands between the boots, which need not be the cell's centre.
@@ -33,16 +37,17 @@ renderActors=function(){
   root.append(aura);
 };
 // At rest, the hero's own element drifts around them (like the ambient spirits of mobile RPG
-// battle idles): Mika's embers rise, Yuki's snowflakes fall, Nori's leaves spiral up, Lumi's stars
-// twinkle, Hiro's leaves blow past on the wind, Noct's soul wisps rise. More of them as the hero gains forms.
+// battle idles): Mika's embers circle her waist, Yuki's snowflakes fall, Nori's leaves spiral up, Lumi's stars
+// twinkle, Hiro's leaves blow past on the wind. More of them as the hero gains forms.
 function mountHeroMotes(root,key,form){
   const art=ART.heroMotes?.[key];if(!art)return;
   const layer=document.createElement('span');layer.className='hero-idle-motes';layer.setAttribute('aria-hidden','true');
-  // A few, not a swarm: form 3 already wears its own aura.
-  const count=key==='novice'?4:key==='lightning'||key==='shadow'?2+form:3+form;
+  // A few, not a swarm: form 3 already wears its own aura (Nori's six-star grove sends up its own leaves).
+  // Mika's embers grow with her forms (a couple at first, a blaze at form 3).
+  const count=key==='novice'?4:key==='fire'?[2,3,6][form-1]:key==='lightning'?2+form:key==='earth'&&form===3?2:3+form;
   layer.innerHTML=Array.from({length:count},(_,i)=>{
     const r=k=>((Math.sin((i+1)*12.9898+k*78.233)*43758.5453)%1+1)%1;// stable per mote
-    return `<b style="--img:url('${art[i%art.length]}');--x:${(8+r(1)*84).toFixed(1)}%;--y:${(12+r(2)*62).toFixed(1)}%;--size:${(9+r(3)*6+form).toFixed(1)}%;--dur:${(3.2+r(4)*2.6).toFixed(2)}s;--delay:${(-r(5)*6).toFixed(2)}s;--drift:${((r(6)-.5)*30).toFixed(1)}px;--spin:${((r(7)-.5)*400).toFixed(0)}deg"></b>`;
+    return `<b style="--img:url('${art[i%art.length]}');--x:${(8+r(1)*84).toFixed(1)}%;--y:${(12+r(2)*62).toFixed(1)}%;--size:${(9+r(3)*6+form).toFixed(1)}%;--dur:${(3.2+r(4)*2.6).toFixed(2)}s;--delay:${(-r(5)*6).toFixed(2)}s;--drift:${((r(6)-.5)*30).toFixed(1)}px;--spin:${((r(7)-.5)*400).toFixed(0)}deg;--phase:${(i/count).toFixed(3)}"></b>`;
   }).join('');
   root.append(layer);
 }

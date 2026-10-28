@@ -13,6 +13,8 @@
 .form-aura-foreground .form-aura-band{-webkit-mask-image:linear-gradient(to top,#000 0 10%,transparent 15%);mask-image:linear-gradient(to top,#000 0 10%,transparent 15%)}
 /* Noct's sparse ink clouds: the scarf rides behind the shoulders and the boots rest on the cushion (top 78%). */
 [data-hero-element="shadow"] .form-aura-band{width:calc(var(--hero-visible-height,120px) * 1.67);translate:-50% 22%}
+/* Nori's moss and lotus patch is drawn for a slim figure; his six-star form is broad (shield and maul), so it opens wider round him. */
+[data-hero-element="earth"] .form-aura-band{width:calc(var(--hero-visible-height,120px) * 2.3)}
 .form-aura-front{z-index:3}
 .form-aura-foreground.form-aura-front .form-aura-band{-webkit-mask-image:none;mask-image:none}
 [data-hero-element="shadow"] .form-aura-foreground:not(.form-aura-front) .form-aura-band{-webkit-mask-image:linear-gradient(to top,#000 0 12%,transparent 18%);mask-image:linear-gradient(to top,#000 0 12%,transparent 18%)}
@@ -84,3 +86,14 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .form-aura-foreground.form-aura-front .form-aura-upper{-webkit-mask-image:none;mask-image:none}
 /* Noct's strip draws its floor cloud 3.3% of the strip left of centre: put it on the boots. */
 [data-hero-element="shadow"] .hero-form-aura .form-aura-floorpart,[data-hero-element="shadow"] .form-aura-foreground:not(.form-aura-front) .form-aura-band{margin-left:calc(var(--aura-floor-shift,0px) + var(--hero-visible-height,120px) * 1.67 * .033)}
+/* Nori's grove: the moss and lotus patch stays put; leaves and spores rise from it on their own
+   paths (form-effects.js .aura-motes), steadily, never as frames fading in place. */
+[data-hero-element="earth"] .form-aura-band{animation:none!important}
+/* The same box as Nori's band (2.3 x his height, soles at 82%), so hub and combat match. */
+.aura-motes{position:absolute;left:50%;bottom:0;width:calc(var(--hero-visible-height,120px) * 2.3);aspect-ratio:1;translate:-50% 18%;pointer-events:none;z-index:2;container-type:size}
+.aura-motes i{position:absolute;left:var(--x);bottom:20%;opacity:0;animation:aura-mote-rise var(--dur) linear var(--delay) infinite}
+.aura-leaf{width:7.5%;aspect-ratio:1;margin-left:-3.75%;background:center/contain no-repeat;filter:drop-shadow(0 0 3px #b8ffb088)}
+.aura-spore{width:1.8%;aspect-ratio:1;margin-left:-.9%;border-radius:50%;background:radial-gradient(circle,#fff8d0 0 30%,#ffd86a 45%,#ffc84000 72%);filter:drop-shadow(0 0 4px #ffe08a)}
+@keyframes aura-mote-rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.6)}12%{opacity:.95}50%{transform:translate(var(--sway),-20cqh) rotate(calc(var(--spin) * .5)) scale(.9)}85%{opacity:.7}100%{opacity:0;transform:translate(calc(var(--sway) * -.4),-40cqh) rotate(var(--spin)) scale(.6)}}
+body.reduced-motion .aura-motes,.reduced-motion .aura-motes{display:none}
+body.ambience-paused .aura-motes i{animation-play-state:paused}

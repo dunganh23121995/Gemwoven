@@ -1,6 +1,7 @@
 .scene .hero-actor{--actor-size:calc(min(clamp(115px,30vw,138px),48cqh) * var(--hero-art-scale,1))}
 .scene .hero-actor[data-hero-form="2"]>.sprite-body{filter:drop-shadow(0 3px 2px #0007)}
-.scene .hero-actor[data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 9px var(--element)) brightness(1.06)}
+/* A tight glow: a wide one and a brightness lift soften the painted outlines. */
+.scene .hero-actor[data-hero-form="3"]>.sprite-body{filter:drop-shadow(0 0 4px var(--element))}
 .scene .hero-actor .combat-form-aura{inset:12% 5% calc((1 - var(--foot-y,.94)) * 100%);z-index:auto;pointer-events:none}
 .cast-star-form-2,.cast-star-form-3{mix-blend-mode:screen;filter:drop-shadow(0 0 6px var(--combat-main))}
 .cast-star-form-3{filter:drop-shadow(0 0 10px var(--combat-main))}
@@ -28,18 +29,19 @@ body.reduced-motion .hero-form-aura *{animation:none!important}
 .scene .hero-actor .hero-idle-motes{position:absolute;inset:4% 2% calc((1 - var(--foot-y,.94)) * 100%);pointer-events:none;z-index:3;opacity:0;transition:opacity .45s;container-type:size}
 .scene .hero-actor[data-state="idle"]:not([data-departing]) .hero-idle-motes{opacity:1}
 .hero-idle-motes>b{position:absolute;left:var(--x);top:var(--y);width:var(--size);aspect-ratio:1;background:var(--img) center/contain no-repeat;opacity:0;animation:mote-rise var(--dur) ease-in-out var(--delay) infinite;will-change:transform,opacity}
-.hero-actor[data-hero="fire"] .hero-idle-motes>b{top:auto;bottom:4%;filter:drop-shadow(0 0 4px #ff9a3c);animation-name:mote-ember}
+.hero-actor[data-hero="fire"] .hero-idle-motes>b{filter:drop-shadow(0 0 4px #ff9a3c)}
 .hero-actor[data-hero="ice"] .hero-idle-motes>b{top:-6%;filter:drop-shadow(0 0 3px #bfefff);animation-name:mote-snow;animation-timing-function:linear}
 .hero-actor[data-hero="earth"] .hero-idle-motes>b{top:auto;bottom:2%;animation-name:mote-leaf-rise}
 .hero-actor[data-hero="lightning"] .hero-idle-motes>b{filter:drop-shadow(0 0 4px #ffe9a0);animation-name:mote-twinkle}
-.hero-actor[data-hero="shadow"] .hero-idle-motes>b{top:auto;bottom:6%;filter:drop-shadow(0 0 4px #b48cff);animation-name:mote-soul;animation-duration:calc(var(--dur) * 1.4)}
 .hero-actor[data-hero="novice"] .hero-idle-motes>b{left:auto;right:-8%;animation-name:mote-gust;animation-timing-function:linear}
-@keyframes mote-ember{0%{opacity:0;transform:translate(0,0) scale(.55)}18%{opacity:.95}55%{opacity:.8;transform:translate(var(--drift),-34cqh) scale(.8)}100%{opacity:0;transform:translate(calc(var(--drift) * -.5),-60cqh) scale(.35)}}
 @keyframes mote-snow{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:.9}50%{transform:translate(var(--drift),45cqh) rotate(calc(var(--spin) * .5))}85%{opacity:.75}100%{opacity:0;transform:translate(calc(var(--drift) * -.4),90cqh) rotate(var(--spin))}}
 @keyframes mote-leaf-rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.7)}20%{opacity:.9}50%{transform:translate(var(--drift),-30cqh) rotate(calc(var(--spin) * .5)) scale(.85)}100%{opacity:0;transform:translate(calc(var(--drift) * -1),-58cqh) rotate(var(--spin)) scale(.6)}}
 @keyframes mote-twinkle{0%,100%{opacity:0;transform:translateY(0) scale(.2) rotate(0)}35%{opacity:1;transform:translateY(-4px) scale(.85) rotate(25deg)}50%{opacity:.9;transform:translateY(-6px) scale(1) rotate(45deg)}70%{opacity:0;transform:translateY(-9px) scale(.3) rotate(80deg)}}
-@keyframes mote-soul{0%{opacity:0;transform:translate(0,0) scale(.6)}25%{opacity:.85}60%{opacity:.6;transform:translate(var(--drift),-28cqh) scale(.8)}100%{opacity:0;transform:translate(calc(var(--drift) * -.6),-52cqh) scale(.5)}}
 @keyframes mote-gust{0%{opacity:0;transform:translate(0,0) rotate(0)}12%{opacity:.9}50%{transform:translate(-60cqw,var(--drift)) rotate(calc(var(--spin) * .5))}88%{opacity:.8}100%{opacity:0;transform:translate(-118cqw,calc(var(--drift) * -1)) rotate(var(--spin))}}
+/* Mika's embers circle her waist on one tilted orbit: smaller and dimmer behind her, bright in front.
+   Each ember takes its own place on the path (--phase). */
+.hero-actor[data-hero="fire"] .hero-idle-motes>b{left:calc(50% - var(--size) / 2);top:58%;bottom:auto;animation:mote-ember-orbit 3.6s linear calc(var(--phase) * -3.6s) infinite}
+@keyframes mote-ember-orbit{0.00%{transform:translate(0.0cqw,-7.0cqh) scale(0.45);opacity:0.22}6.25%{transform:translate(16.8cqw,-6.5cqh) scale(0.47);opacity:0.25}12.50%{transform:translate(31.1cqw,-4.9cqh) scale(0.53);opacity:0.33}18.75%{transform:translate(40.7cqw,-2.7cqh) scale(0.62);opacity:0.45}25.00%{transform:translate(44.0cqw,-0.0cqh) scale(0.72);opacity:0.58}31.25%{transform:translate(40.7cqw,2.7cqh) scale(0.83);opacity:0.72}37.50%{transform:translate(31.1cqw,4.9cqh) scale(0.92);opacity:0.84}43.75%{transform:translate(16.8cqw,6.5cqh) scale(0.98);opacity:0.92}50.00%{transform:translate(0.0cqw,7.0cqh) scale(1.00);opacity:0.95}56.25%{transform:translate(-16.8cqw,6.5cqh) scale(0.98);opacity:0.92}62.50%{transform:translate(-31.1cqw,4.9cqh) scale(0.92);opacity:0.84}68.75%{transform:translate(-40.7cqw,2.7cqh) scale(0.83);opacity:0.72}75.00%{transform:translate(-44.0cqw,0.0cqh) scale(0.73);opacity:0.59}81.25%{transform:translate(-40.7cqw,-2.7cqh) scale(0.62);opacity:0.45}87.50%{transform:translate(-31.1cqw,-4.9cqh) scale(0.53);opacity:0.33}93.75%{transform:translate(-16.8cqw,-6.5cqh) scale(0.47);opacity:0.25}100.00%{transform:translate(-0.0cqw,-7.0cqh) scale(0.45);opacity:0.22}}
 body.ambience-paused .hero-idle-motes>b{animation-play-state:paused}
 body.reduced-motion .hero-idle-motes,.reduced-motion .hero-idle-motes{display:none}
 /* Like the reference idles, a resting hero keeps one size: no whole-sprite pulse (wind_idle.py moves only cloth and hair). */

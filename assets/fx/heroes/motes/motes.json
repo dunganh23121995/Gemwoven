@@ -28,11 +28,5 @@
     "assets/fx/heroes/motes/novice-2.png",
     "assets/fx/heroes/motes/novice-3.png",
     "assets/fx/heroes/motes/novice-4.png"
-  ],
-  "shadow": [
-    "assets/fx/heroes/motes/shadow-1.png",
-    "assets/fx/heroes/motes/shadow-2.png",
-    "assets/fx/heroes/motes/shadow-3.png",
-    "assets/fx/heroes/motes/shadow-4.png"
   ]
 }

@@ -1,4 +1,0 @@
-A sprite sheet of tiny ambient particle sprites for a chibi fantasy mobile RPG battle (the soft motes that drift around a hero while he waits), clean HD smooth painted game art, NOT pixel art, matching the painted style and palette of the attached hero art (Noct, a hooded shadow reaper with violet eyes).
-Layout: 4 columns x 1 row on a 1024x256 canvas, one sprite centred in each 256x256 cell, each sprite about 110-160 px across, nothing touching the cell edges.
-Four small shadow soul wisps: dark smoky violet-black teardrop flames with a pale lavender-violet glowing core and a curling tail, each a slightly different shape (one rounder, one with a long curled tail, one leaning, one small and bright).
-Each sprite is a single crisp opaque shape with its own painted glow drawn as part of the shape; no loose specks, no haze outside the shape. Background 100% solid flat #00FF00 green, no gradient, no text, no labels, no borders, no grid lines.

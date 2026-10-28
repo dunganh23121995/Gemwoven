@@ -40,7 +40,7 @@ corr = 1 / float(np.median(ratios)); s *= corr; print('head ratios', [round(r, 2
 lows = []
 for c in cells:
     a = np.asarray(c)[..., 3] > 127; lows.append(np.where(a.any(1))[0].max())
-rowshift = {0: 0, 1: lows[0] - lows[3]}
+rowshift = {0: 0, 1: lows[3] - lows[0]}   # row 2's own contact frame stands on the feet line too
 sheet = Image.new('RGBA', (n * 3, n * 2)); heads = []
 for i in range(6):
     c = cells[i]

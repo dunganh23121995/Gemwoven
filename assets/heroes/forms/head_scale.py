@@ -67,7 +67,9 @@ def frame(hero, form, kind):
     path, cols, rows = sheet_of(hero, form, kind)
     with Image.open(path) as im:
         im = im.convert("RGBA")
-        return im.crop((0, 0, im.width // cols, im.height // rows))
+        cell = im.crop((0, 0, im.width // cols, im.height // rows))
+    # Combat heads are read in 256 px cells; a 512 px loop (sharper on dense screens) is read at that size.
+    return cell.resize((256, 256), Image.Resampling.LANCZOS) if kind == "combat" and cell.width == 512 else cell
 
 
 def flat(im, grey=(70, 70, 80)):
