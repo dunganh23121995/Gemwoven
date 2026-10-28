@@ -592,3 +592,9 @@ longer used and were removed. Sources now (CC0 1.0, Freesound; source.json with 
   drone                      #264442 "Harmonium Drone2" by easy_thunder, https://freesound.org/people/easy_thunder/sounds/264442/
   ambience                   #445095 "Nature at the Lake.wav" by StoneyWaters, https://freesound.org/people/StoneyWaters/sounds/445095/
   ult-charge, ult-whoosh     Mika's own combat fire swell and whoosh (assets/audio/reimagined, credited in her combat set above), softened.
+
+Hiro ultimate battle cry (replaces #270301 in his charge, at the player's request)
+  charge-cry                 #759458 "A single scream of a young male" by akridiy, https://freesound.org/people/akridiy/sounds/759458/ (CC0)
+
+Hiro basic attack voice (combat voice bank, family hiro)
+  hiro-attack1..3            #643670 "Grunts_Various Male.mp3" by SnowFightStudios, https://freesound.org/people/SnowFightStudios/sounds/643670/ (CC0)

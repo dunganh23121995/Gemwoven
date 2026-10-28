@@ -40,11 +40,12 @@ async function combatVoice(side,kind='attack'){
   }else if(side==='enemy'&&state.enemyHp<=0)return false;
   const context=combatV3AudioContext();if(!context||activeVoices.has(side))return false;
   const key=side==='hero'?state.key:state.enemyKey,monster=side==='enemy';
-  const family=monster?foeVoiceFamily(key):{fire:'mika',earth:'nori',ice:'yuki',lightning:'lumi',shadow:'noct'}[key];
+  const family=monster?foeVoiceFamily(key):{fire:'mika',earth:'nori',ice:'yuki',lightning:'lumi',shadow:'noct',novice:'hiro'}[key];
   const variantKey=family+kind,index=voiceVariants.get(variantKey)||0;
   const id=family+'-'+kind+(['attack','hurt'].includes(kind)?index%3+1:'');
   const entry={epoch:voiceEpoch,id,source:null};activeVoices.set(side,entry);
   try{
+    if(!ART.voices[id]){activeVoices.delete(side);return false;}// Hiro has attack takes only
     const buffer=await decodeCombatVoice(context,id);
     if(!sound||entry.epoch!==voiceEpoch||activeVoices.get(side)!==entry)return false;
     voiceVariants.set(variantKey,index+1);

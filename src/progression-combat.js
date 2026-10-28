@@ -61,7 +61,8 @@ function progressionSwordFactor(key){return progressionKit(key).sword;}
 if(progressionBattle)HEROES[progressionBattle.hero].hp=progressionBattle.stats.hp;
 
 const progressionOriginalVoices=combatVoice;
-combatVoice=function(side,...args){if(progressionIsDuel()||side==='hero'&&state.key==='novice')return Promise.resolve(false);return progressionOriginalVoices(side,...args);};
+// Hiro speaks only his attack takes (the 'hiro' family has no hurt, cast or release voices).
+combatVoice=function(side,...args){if(progressionIsDuel())return Promise.resolve(false);return progressionOriginalVoices(side,...args);};
 const progressionOriginalStart=startStage;
 startStage=function(){
   if(progressionError){$('startBtn').disabled=true;message(progressionError);return;}

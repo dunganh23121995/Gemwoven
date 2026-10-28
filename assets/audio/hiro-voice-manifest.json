@@ -1,0 +1,62 @@
+{
+  "hiro-attack1": {
+    "file": "voices/hiro-attack1.wav",
+    "duration": 0.42,
+    "beat": "basic attack effort as he swings",
+    "playsAt": 0,
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Grunts_Various Male.mp3",
+        "author": "SnowFightStudios",
+        "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643670/",
+        "license": "CC0-1.0",
+        "sha256": "fe28e5c2a7fb40f23d18eeb52a20284055f21688c8a35b695489d11701b46b82"
+      }
+    ],
+    "processing": "excerpt 1.14-1.56 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.131,
+    "sha256": "1f1a02484e5b8fb35212beb89fb98259f29742045c4076098b6424aa306600ff"
+  },
+  "hiro-attack2": {
+    "file": "voices/hiro-attack2.wav",
+    "duration": 0.61,
+    "beat": "basic attack effort as he swings",
+    "playsAt": 0,
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Grunts_Various Male.mp3",
+        "author": "SnowFightStudios",
+        "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643670/",
+        "license": "CC0-1.0",
+        "sha256": "fe28e5c2a7fb40f23d18eeb52a20284055f21688c8a35b695489d11701b46b82"
+      }
+    ],
+    "processing": "excerpt 3.18-3.79 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.144,
+    "sha256": "1d2d349a5bacf126bde295342097f0cf94a3d6d5d9d7a2664f05b68182ea0e7a"
+  },
+  "hiro-attack3": {
+    "file": "voices/hiro-attack3.wav",
+    "duration": 0.52,
+    "beat": "basic attack effort as he swings",
+    "playsAt": 0,
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Grunts_Various Male.mp3",
+        "author": "SnowFightStudios",
+        "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643670/",
+        "license": "CC0-1.0",
+        "sha256": "fe28e5c2a7fb40f23d18eeb52a20284055f21688c8a35b695489d11701b46b82"
+      }
+    ],
+    "processing": "excerpt 5.41-5.93 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.113,
+    "sha256": "62fdc5e53c78a6ba056de960fccd662cf8b1483bc295317117184bf0485a37b4"
+  }
+}

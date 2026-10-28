@@ -59,9 +59,9 @@ async function tanSpiritSword(){
   root.classList.add('combat-v3-acting','tan-spirit');root.style.zIndex='4';root.dataset.ragePhase='plant';
   try{
     combatVoice('hero','cast');tanSpiritSound();popActorSkill('hero',HEROES.novice.skill,true,pending);
-    // The charge (scripts/prepare_hiro_form_sounds.py): his battle cry bursts out as he launches (860 ms)
+    // The charge (scripts/prepare_hiro_form_sounds.py): his battle cry bursts out as he plants his feet (60 ms)
     // and his boots drive him over the dirt on the dash; the rush of his jacket is played with the dash below.
-    if(!reduced){setTimeout(()=>playCastSound('novice','charge-cry',{volume:.5,pan:-.2}),830);setTimeout(()=>playCastSound('novice','dash-steps',{volume:.55,pan:0}),850);}
+    if(!reduced){setTimeout(()=>playCastSound('novice','charge-cry',{volume:.55,pan:-.2}),60);setTimeout(()=>playCastSound('novice','dash-steps',{volume:.55,pan:0}),850);}
     setSpriteFrame('hero',act,0);aura=tanSpiritAura();
     if(aura)pending.push(animate(aura,[{opacity:0,scale:'.6 .4'},{opacity:1,scale:'1 1'}],{duration:320,easing:'cubic-bezier(.2,.9,.3,1.2)',fill:'forwards'}));
     await at(460);root.dataset.ragePhase='wind-up';setSpriteFrame('hero',act,1);await move(-7,0,220,'ease-out');
