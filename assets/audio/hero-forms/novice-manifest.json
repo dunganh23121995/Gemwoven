@@ -1,23 +1,23 @@
 {
   "novice-charge-cry": {
     "file": "hero-forms/novice/charge-cry.wav",
-    "duration": 2.04,
-    "beat": "battle cry: from the plant (60 ms) through the wind-up and dash into the rise",
+    "duration": 0.741,
+    "beat": "battle cry as he plants his feet (60 ms), from the game voice pack",
     "playsAt": 60,
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "A single scream of a young male",
-        "author": "akridiy",
-        "source_url": "https://freesound.org/people/akridiy/sounds/759458/",
+        "title": "Voice Clip Pack - Male Adventurer RPG: attackbig2.wav",
+        "author": "Brandon Song",
+        "source_url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
         "license": "CC0-1.0",
-        "sha256": "8839f06daa99cdd26a748e713976cc5daed4f7480cc5b5b6f02b6d059ff5daf0"
+        "sha256": "7fb7582565945efd5c8722bc6a7ed858086850c0fb93c58e9ca2836a08b52930"
       }
     ],
-    "processing": "excerpt 0.01-2.05 s of one recording, 80 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-10.00 s of one recording, 80 Hz high-pass, edge fades, gain",
     "peak": 0.58,
-    "rms": 0.098,
-    "sha256": "acc779e9d2dc42113f378657eb481b96bfa48ee70e531eaf95cde661904301aa"
+    "rms": 0.075,
+    "sha256": "549cc4b00359ab8365457c2f25e0c46b7cf93125bdda9e036fd9ba7dea4550e8"
   },
   "novice-dash-steps": {
     "file": "hero-forms/novice/dash-steps.wav",

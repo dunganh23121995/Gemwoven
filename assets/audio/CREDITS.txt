@@ -594,7 +594,7 @@ longer used and were removed. Sources now (CC0 1.0, Freesound; source.json with 
   ult-charge, ult-whoosh     Mika's own combat fire swell and whoosh (assets/audio/reimagined, credited in her combat set above), softened.
 
 Hiro ultimate battle cry (replaces #270301 in his charge, at the player's request)
-  charge-cry                 #759458 "A single scream of a young male" by akridiy, https://freesound.org/people/akridiy/sounds/759458/ (CC0)
+  charge-cry                 "attackbig2.wav" from "Voice Clip Pack - Male Adventurer RPG" by Brandon Song, https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg (CC0)
 
 Hiro basic attack voice (combat voice bank, family hiro)
-  hiro-attack1..3            #643670 "Grunts_Various Male.mp3" by SnowFightStudios, https://freesound.org/people/SnowFightStudios/sounds/643670/ (CC0)
+  hiro-attack1..3            "jump0.wav", "attack8.wav", "jump1.wav" from "Voice Clip Pack - Male Adventurer RPG" by Brandon Song, https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg (CC0)

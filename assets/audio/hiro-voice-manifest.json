@@ -1,62 +1,62 @@
 {
   "hiro-attack1": {
     "file": "voices/hiro-attack1.wav",
-    "duration": 0.42,
-    "beat": "basic attack effort as he swings",
+    "duration": 0.299,
+    "beat": "basic attack effort as he swings, from the game voice pack",
     "playsAt": 0,
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Grunts_Various Male.mp3",
-        "author": "SnowFightStudios",
-        "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643670/",
+        "title": "Voice Clip Pack - Male Adventurer RPG: jump0.wav",
+        "author": "Brandon Song",
+        "source_url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
         "license": "CC0-1.0",
-        "sha256": "fe28e5c2a7fb40f23d18eeb52a20284055f21688c8a35b695489d11701b46b82"
+        "sha256": "e94fb7ded133d30b6757dcc09305394a6833d3febecde2c5fcb306adb5607588"
       }
     ],
-    "processing": "excerpt 1.14-1.56 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-10.00 s of one recording, 90 Hz high-pass, edge fades, gain",
     "peak": 0.6,
-    "rms": 0.131,
-    "sha256": "1f1a02484e5b8fb35212beb89fb98259f29742045c4076098b6424aa306600ff"
+    "rms": 0.076,
+    "sha256": "bffa68f1717a524422d65cf08513784620680c7ffeea83e3d7199629dc31d186"
   },
   "hiro-attack2": {
     "file": "voices/hiro-attack2.wav",
-    "duration": 0.61,
-    "beat": "basic attack effort as he swings",
+    "duration": 0.352,
+    "beat": "basic attack effort as he swings, from the game voice pack",
     "playsAt": 0,
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Grunts_Various Male.mp3",
-        "author": "SnowFightStudios",
-        "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643670/",
+        "title": "Voice Clip Pack - Male Adventurer RPG: attack8.wav",
+        "author": "Brandon Song",
+        "source_url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
         "license": "CC0-1.0",
-        "sha256": "fe28e5c2a7fb40f23d18eeb52a20284055f21688c8a35b695489d11701b46b82"
+        "sha256": "e73f668a5b9c4bfa1ea97cbbd5342bd47d503c96c92a20119694b3f27d60f1a7"
       }
     ],
-    "processing": "excerpt 3.18-3.79 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-10.00 s of one recording, 90 Hz high-pass, edge fades, gain",
     "peak": 0.6,
-    "rms": 0.144,
-    "sha256": "1d2d349a5bacf126bde295342097f0cf94a3d6d5d9d7a2664f05b68182ea0e7a"
+    "rms": 0.136,
+    "sha256": "00c9a990fbab50341c7715eef98d9b40a3d83e219027bd87d286ba7df02b6b8d"
   },
   "hiro-attack3": {
     "file": "voices/hiro-attack3.wav",
-    "duration": 0.52,
-    "beat": "basic attack effort as he swings",
+    "duration": 0.264,
+    "beat": "basic attack effort as he swings, from the game voice pack",
     "playsAt": 0,
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Grunts_Various Male.mp3",
-        "author": "SnowFightStudios",
-        "source_url": "https://freesound.org/people/SnowFightStudios/sounds/643670/",
+        "title": "Voice Clip Pack - Male Adventurer RPG: jump1.wav",
+        "author": "Brandon Song",
+        "source_url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
         "license": "CC0-1.0",
-        "sha256": "fe28e5c2a7fb40f23d18eeb52a20284055f21688c8a35b695489d11701b46b82"
+        "sha256": "60be516f61c39dbe577d78352da3a0b8a221ba911b69856c13379d1a58cc960f"
       }
     ],
-    "processing": "excerpt 5.41-5.93 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-10.00 s of one recording, 90 Hz high-pass, edge fades, gain",
     "peak": 0.6,
-    "rms": 0.113,
-    "sha256": "62fdc5e53c78a6ba056de960fccd662cf8b1483bc295317117184bf0485a37b4"
+    "rms": 0.138,
+    "sha256": "bff3c4f63962dc380229180a5d265b66b7c4d74d102c6ef93633f9fbdc816d80"
   }
 }

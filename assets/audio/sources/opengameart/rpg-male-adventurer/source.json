@@ -1,0 +1,15 @@
+{
+  "title": "Voice Clip Pack - Male Adventurer RPG",
+  "author": "Brandon Song",
+  "source_url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+  "download_url": "https://opengameart.org/sites/default/files/RPG%20Male%20Adventurer.zip",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "description": "Game voice clips of a male RPG adventurer (attack, big attack, jump, hurt, victory). Only the files used are kept here.",
+  "files": {
+    "attack8.wav": "e73f668a5b9c4bfa1ea97cbbd5342bd47d503c96c92a20119694b3f27d60f1a7",
+    "attackbig2.wav": "7fb7582565945efd5c8722bc6a7ed858086850c0fb93c58e9ca2836a08b52930",
+    "jump0.wav": "e94fb7ded133d30b6757dcc09305394a6833d3febecde2c5fcb306adb5607588",
+    "jump1.wav": "60be516f61c39dbe577d78352da3a0b8a221ba911b69856c13379d1a58cc960f"
+  }
+}
