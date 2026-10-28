@@ -56,7 +56,7 @@ def main(spec_path, model="gpt-6.1-sol", effort="low"):
     for name, label, action, flag, loop in jobs:
         run(FIDGET, "gen", rel, name, model, effort, what, action, *(["--loop"] if loop else []), *(["--green"] if spec.get("green") else []))
         lock = ["--lock-legs", "--keep"] if name in ("rift", "entrance") or flag == "--whole" else []
-        run(FIDGET, "proc", rel, name, *([flag] if flag else []), *lock, "--cell=384", "--fill=.55")   # roomy cells: wide moves are never cut
+        run(FIDGET, "proc", rel, name, *([flag] if flag else []), *lock, "--cell=640", "--fill=.55")   # roomy cells: wide moves are never cut; 640 keeps Codex's detail
         run(FIDGET, "accept", rel, name, label, *(["--whole"] if flag == "--whole" else []))
         if name == "rift":
             run(ROOT / "assets/heroes/forms/gloom_rift.py", d)

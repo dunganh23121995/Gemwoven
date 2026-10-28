@@ -3,8 +3,8 @@ import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 # (form, action in forms.json, ms per frame, cols, rows, processed source folder, sheet file)
-SHEETS = [(2, "skill", 100, 3, 2, "skill", "skill"), (2, "press", 100, 2, 2, "press", "press"), (2, "back", 100, 2, 2, "back", "back"),
-          (3, "skill", 100, 3, 2, "skill", "skill"),
+# Form 2's ultimate is one merged sheet (merge_ult2.py), sized by hand in forms.json; it is not rewritten here.
+SHEETS = [(3, "skill", 100, 3, 2, "skill", "skill"),
           # Six-star's long glaive, one size in every pose. The fox-like dash is her run; the polearm sweep
           # (source "strike") is the basic attack ("attack", read through the kit as "slash") and the hurt
           # fallback; the planted-glaive cast comes from "cast2". The old short-glaive sheets are gone.

@@ -1,0 +1,65 @@
+{
+  "cell": 920,
+  "scale": 1.797,
+  "footY": 0.94,
+  "k": 1.483896772398442,
+  "ref_frame": 1,
+  "idle_h": 197,
+  "ref_h": 502,
+  "frames": [
+    {
+      "bbox": [
+        174,
+        118,
+        701,
+        865
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        166,
+        120,
+        698,
+        865
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        151,
+        175,
+        673,
+        865
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        146,
+        213,
+        688,
+        865
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        93,
+        360,
+        657,
+        865
+      ],
+      "edge_touch": false
+    },
+    {
+      "bbox": [
+        93,
+        360,
+        657,
+        865
+      ],
+      "edge_touch": false
+    }
+  ]
+}

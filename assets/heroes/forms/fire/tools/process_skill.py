@@ -108,7 +108,9 @@ def main():
         masks.append(mask)
 
     # The form's idle: its silhouette height and feet line in the 256px runtime cell.
-    idle = Image.open(base / "idle.webp").convert("RGBA").crop((0, 0, IDLE_CELL, IDLE_CELL))
+    idle = Image.open(base / "idle.webp").convert("RGBA")
+    c = idle.width // 2   # 256 or 512 px cells: measured in the 256 px actor cell either way
+    idle = idle.crop((0, 0, c, c)).resize((IDLE_CELL, IDLE_CELL), Image.Resampling.LANCZOS)
     ix0, iy0, ix1, iy1 = bbox(np.asarray(idle.getchannel("A")) > 24)
     idle_h = iy1 - iy0
     idle_feet = feet(np.asarray(idle.getchannel("A")) > 24, idle_h * .07)
