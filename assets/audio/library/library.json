@@ -1,0 +1,1423 @@
+{
+ "note": "Reference voices found while casting Hiro: real CC0 recordings (Freesound) cut into single cries and attack efforts, and a whole CC0 game voice pack. Not played in the game unless a manifest uses them; tools/sound-library.html lists them.",
+ "voices": [
+  {
+   "id": "fs759458-00005",
+   "file": "library/voices/fs759458-00005.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 2.04,
+   "excerpt": [
+    0.05,
+    1.9
+   ],
+   "source": {
+    "title": "A single scream of a young male",
+    "author": "akridiy",
+    "url": "https://freesound.org/s/759458/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "4be06fcbb2c319b81427dca6e7323ee441bd6ed3e5e1e6cff6756fd245afe5a6"
+  },
+  {
+   "id": "fs270301-00890",
+   "file": "library/voices/fs270301-00890.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.04,
+   "excerpt": [
+    8.9,
+    9.75
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "d854b4fe52e45275ad300ad6251d23932c76a75047997f102ef959b5b9270453"
+  },
+  {
+   "id": "fs270301-03059",
+   "file": "library/voices/fs270301-03059.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.11,
+   "excerpt": [
+    30.59,
+    31.51
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "18a2dd92b412117861340bf5bf0c974d46b27b7dcdf612f2060a9dd98e4bbf59"
+  },
+  {
+   "id": "fs270301-06638",
+   "file": "library/voices/fs270301-06638.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.41,
+   "excerpt": [
+    66.38,
+    67.6
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "5b1984809926661b48fa01ed1cc024185b678f41f5bee18f216fcfc97122ac1b"
+  },
+  {
+   "id": "fs270301-08423",
+   "file": "library/voices/fs270301-08423.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 0.74,
+   "excerpt": [
+    84.23,
+    84.78
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "439d700e29a13496ff5bf9e4cea5af7c4815c0eb869a8c96d3075f0270954838"
+  },
+  {
+   "id": "fs270301-08992",
+   "file": "library/voices/fs270301-08992.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.5,
+   "excerpt": [
+    89.92,
+    91.23
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "be275196ae44968424aa35ce7db245a91258aae4115137db367b221f54ad33ea"
+  },
+  {
+   "id": "fs270301-12244",
+   "file": "library/voices/fs270301-12244.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.02,
+   "excerpt": [
+    122.44,
+    123.27
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "04b16d57f14a7103becd68f777b36d540111419c8eab59c44b622edb6a89a372"
+  },
+  {
+   "id": "fs270301-13507",
+   "file": "library/voices/fs270301-13507.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.13,
+   "excerpt": [
+    135.07,
+    136.01
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "e4042b1b8c81125430a081b73d673ebbfb17de8cee408da60bd7ea23e2068f72"
+  },
+  {
+   "id": "fs220336-00142",
+   "file": "library/voices/fs220336-00142.wav",
+   "kind": "cry",
+   "voice": "thiếu niên",
+   "duration": 1.97,
+   "excerpt": [
+    1.42,
+    3.2
+   ],
+   "source": {
+    "title": "boyscreaming.wav",
+    "author": "Ellenskellington",
+    "url": "https://freesound.org/s/220336/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "c355b7d00f910b07e20d6849c05d660f9d60c0c7f21e567fc084262ccfe21457"
+  },
+  {
+   "id": "fs220337-00043",
+   "file": "library/voices/fs220337-00043.wav",
+   "kind": "cry",
+   "voice": "thiếu niên",
+   "duration": 1.0,
+   "excerpt": [
+    0.43,
+    1.24
+   ],
+   "source": {
+    "title": "boyshout.wav",
+    "author": "Ellenskellington",
+    "url": "https://freesound.org/s/220337/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "f92114a6d405f072bc0ea52b3991f81420a6d28607d711709cbc8bef3a30e9d8"
+  },
+  {
+   "id": "fs220338-00096",
+   "file": "library/voices/fs220338-00096.wav",
+   "kind": "cry",
+   "voice": "thiếu niên",
+   "duration": 1.56,
+   "excerpt": [
+    0.96,
+    2.33
+   ],
+   "source": {
+    "title": "boyshout2.wav",
+    "author": "Ellenskellington",
+    "url": "https://freesound.org/s/220338/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "d30c6af9e00e66f6d1d821512eee6f48a6d28465cfe209e9ec0fee1f01db7acd"
+  },
+  {
+   "id": "fs859347-00000",
+   "file": "library/voices/fs859347-00000.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 1.55,
+   "excerpt": [
+    0,
+    1.4
+   ],
+   "source": {
+    "title": "Yelling Eyoh in Empty Parking Garage",
+    "author": "qubodup",
+    "url": "https://freesound.org/s/859347/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "ad6015a39a73043d0909332536a03a049a052deccab7d83cd9ce43e763042cab"
+  },
+  {
+   "id": "fs219815-00002",
+   "file": "library/voices/fs219815-00002.wav",
+   "kind": "cry",
+   "voice": "trẻ",
+   "duration": 1.99,
+   "excerpt": [
+    0.02,
+    1.95
+   ],
+   "source": {
+    "title": "effort scream.wav",
+    "author": "saraonsins",
+    "url": "https://freesound.org/s/219815/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "7fb4ce14d90082fbb4db637f674e050693fd7d6939759aa1618979ddcc965071"
+  },
+  {
+   "id": "fs803168-01344",
+   "file": "library/voices/fs803168-01344.wav",
+   "kind": "cry",
+   "voice": "nam trẻ",
+   "duration": 0.75,
+   "excerpt": [
+    13.44,
+    14.0
+   ],
+   "source": {
+    "title": "Soft Male Vocal, Short Pained/Exhertion Groans - Vocal Efforts",
+    "author": "salemaudio",
+    "url": "https://freesound.org/s/803168/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "c667766be83d6749b0aab61ed2fea1a4d64eada0be33d6e81a158419bf4b8dde"
+  },
+  {
+   "id": "fs443760-00209",
+   "file": "library/voices/fs443760-00209.wav",
+   "kind": "cry",
+   "voice": "trẻ con",
+   "duration": 0.94,
+   "excerpt": [
+    2.09,
+    2.84
+   ],
+   "source": {
+    "title": "33. Chico grita kid shouting.wav",
+    "author": "cabusta9",
+    "url": "https://freesound.org/s/443760/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "80ccc2c1d75d3ce814f8dd5389402cb685c34898d1b5444bda6e52b500512e10"
+  },
+  {
+   "id": "fs222588-00001",
+   "file": "library/voices/fs222588-00001.wav",
+   "kind": "cry",
+   "voice": "trẻ con",
+   "duration": 2.15,
+   "excerpt": [
+    0.01,
+    2.0
+   ],
+   "source": {
+    "title": "KID SCREAM",
+    "author": "queen_westeros",
+    "url": "https://freesound.org/s/222588/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "23c0e436ad5f9acd9540f561831010c0ff37ffc06c4eb99cbf354031d144ece0"
+  },
+  {
+   "id": "fs511320-00025",
+   "file": "library/voices/fs511320-00025.wav",
+   "kind": "cry",
+   "voice": "trẻ con",
+   "duration": 2.14,
+   "excerpt": [
+    0.25,
+    2.2
+   ],
+   "source": {
+    "title": "Child Scream",
+    "author": "onehugeeye",
+    "url": "https://freesound.org/s/511320/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "81b54d7951e4c702651c869ffe6f0400650c01fd8a0f9c47950dea280c9bc851"
+  },
+  {
+   "id": "fs156092-00010",
+   "file": "library/voices/fs156092-00010.wav",
+   "kind": "cry",
+   "voice": "trẻ con",
+   "duration": 1.369,
+   "excerpt": [
+    0.1,
+    1.36
+   ],
+   "source": {
+    "title": "Child shout in the middle of the street.wav",
+    "author": "marcolo91",
+    "url": "https://freesound.org/s/156092/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "4b7e3a001446428f2cc3fd7b19583f0cba4f96af397ae9f5ae913b8b6daa0cf5"
+  },
+  {
+   "id": "fs219685-00025",
+   "file": "library/voices/fs219685-00025.wav",
+   "kind": "cry",
+   "voice": "trẻ con",
+   "duration": 1.72,
+   "excerpt": [
+    0.25,
+    1.78
+   ],
+   "source": {
+    "title": "10-year-old-boy-screaming.wav",
+    "author": "mariateresa_garcia",
+    "url": "https://freesound.org/s/219685/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "1899be79954f800108876516281082ab554a5068fac7a5ba71241569907cd8ef"
+  },
+  {
+   "id": "fs165898-00060",
+   "file": "library/voices/fs165898-00060.wav",
+   "kind": "cry",
+   "voice": "trẻ con",
+   "duration": 0.92,
+   "excerpt": [
+    0.6,
+    1.33
+   ],
+   "source": {
+    "title": "Indian Kid Shouts",
+    "author": "andr4s",
+    "url": "https://freesound.org/s/165898/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "3e7c093a2f6fa980837e99fb62b3c897df16c829580142babc0c220d48dabb3e"
+  },
+  {
+   "id": "fs643670-00118",
+   "file": "library/voices/fs643670-00118.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.42,
+   "excerpt": [
+    1.18,
+    1.41
+   ],
+   "source": {
+    "title": "Grunts_Various Male.mp3",
+    "author": "SnowFightStudios",
+    "url": "https://freesound.org/s/643670/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "a8393b637cb50aeaa9f1520168f3e9dab0d4d9cf0c85869be614b32116209f2a"
+  },
+  {
+   "id": "fs643670-00322",
+   "file": "library/voices/fs643670-00322.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.61,
+   "excerpt": [
+    3.22,
+    3.64
+   ],
+   "source": {
+    "title": "Grunts_Various Male.mp3",
+    "author": "SnowFightStudios",
+    "url": "https://freesound.org/s/643670/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "3c97747c0d8b3faa602b64d27faba640a9a900a7ccfcab3aaab529b38875a277"
+  },
+  {
+   "id": "fs643670-00545",
+   "file": "library/voices/fs643670-00545.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.52,
+   "excerpt": [
+    5.45,
+    5.78
+   ],
+   "source": {
+    "title": "Grunts_Various Male.mp3",
+    "author": "SnowFightStudios",
+    "url": "https://freesound.org/s/643670/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "99521842dac207a8b774a3e0909935922d567d173334396d68ddcbe1b9e7b454"
+  },
+  {
+   "id": "fs712116-00043",
+   "file": "library/voices/fs712116-00043.wav",
+   "kind": "attack",
+   "voice": "nam trẻ (hoạt hình)",
+   "duration": 0.32,
+   "excerpt": [
+    0.43,
+    0.56
+   ],
+   "source": {
+    "title": "Cartoon-like male attack effort vocal sfx",
+    "author": "A_kn",
+    "url": "https://freesound.org/s/712116/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "f71882cac56c3493a55f7f87f126a85232082ac32cb06f5122313dc6f9da54f2"
+  },
+  {
+   "id": "fs712116-00333",
+   "file": "library/voices/fs712116-00333.wav",
+   "kind": "attack",
+   "voice": "nam trẻ (hoạt hình)",
+   "duration": 0.47,
+   "excerpt": [
+    3.33,
+    3.61
+   ],
+   "source": {
+    "title": "Cartoon-like male attack effort vocal sfx",
+    "author": "A_kn",
+    "url": "https://freesound.org/s/712116/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "53aff056f0ddc5b797528f5b79c9ad70461fbebfb8de1f67e59c01148ee7e791"
+  },
+  {
+   "id": "fs712116-00923",
+   "file": "library/voices/fs712116-00923.wav",
+   "kind": "attack",
+   "voice": "nam trẻ (hoạt hình)",
+   "duration": 0.33,
+   "excerpt": [
+    9.23,
+    9.37
+   ],
+   "source": {
+    "title": "Cartoon-like male attack effort vocal sfx",
+    "author": "A_kn",
+    "url": "https://freesound.org/s/712116/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "e5745ce48a34213505471e743a0c569ef424a9d3af8a760a4bb5221ff2093cd1"
+  },
+  {
+   "id": "fs270301-00679",
+   "file": "library/voices/fs270301-00679.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.38,
+   "excerpt": [
+    6.79,
+    6.98
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "aa1d2659e142c60acdeb5cb2ceebbe9d7bc5be1bb98f0190fe99e5665aa6f1cc"
+  },
+  {
+   "id": "fs270301-02120",
+   "file": "library/voices/fs270301-02120.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.41,
+   "excerpt": [
+    21.2,
+    21.42
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "24b279dac9b14d49df40fe4e5892d0ede45ebe01f9e2d947f35d50b861abb0b0"
+  },
+  {
+   "id": "fs270301-11045",
+   "file": "library/voices/fs270301-11045.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.36,
+   "excerpt": [
+    110.45,
+    110.62
+   ],
+   "source": {
+    "title": "Excited Young Male Screams",
+    "author": "unfa",
+    "url": "https://freesound.org/s/270301/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "0309c1c5640afddff3308fb4b7abf6d289fedc0a3b41b8be984bcc3a07d3dfbf"
+  },
+  {
+   "id": "fs319104-00284",
+   "file": "library/voices/fs319104-00284.wav",
+   "kind": "attack",
+   "voice": "rất trẻ",
+   "duration": 0.52,
+   "excerpt": [
+    2.84,
+    3.17
+   ],
+   "source": {
+    "title": "Grunts.wav",
+    "author": "AbuNijmeh",
+    "url": "https://freesound.org/s/319104/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "ed4defc920ba71b290fc477908ac652f0dda338b9ca99dbe2182fdc2fd40af84"
+  },
+  {
+   "id": "fs319104-00390",
+   "file": "library/voices/fs319104-00390.wav",
+   "kind": "attack",
+   "voice": "rất trẻ",
+   "duration": 0.38,
+   "excerpt": [
+    3.9,
+    4.09
+   ],
+   "source": {
+    "title": "Grunts.wav",
+    "author": "AbuNijmeh",
+    "url": "https://freesound.org/s/319104/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "8ff46bfc31d9d5b5b6b222b06772ff6ea88242d176b69f9e94faca5856917474"
+  },
+  {
+   "id": "fs319104-00615",
+   "file": "library/voices/fs319104-00615.wav",
+   "kind": "attack",
+   "voice": "rất trẻ",
+   "duration": 0.46,
+   "excerpt": [
+    6.15,
+    6.42
+   ],
+   "source": {
+    "title": "Grunts.wav",
+    "author": "AbuNijmeh",
+    "url": "https://freesound.org/s/319104/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "448376eaaad685154d6195042e5eeeb022882e0dca22732faee418ba3fe2b67a"
+  },
+  {
+   "id": "fs256603-00030",
+   "file": "library/voices/fs256603-00030.wav",
+   "kind": "attack",
+   "voice": "nam",
+   "duration": 0.75,
+   "excerpt": [
+    0.3,
+    0.86
+   ],
+   "source": {
+    "title": "Male Grunts",
+    "author": "Kodack",
+    "url": "https://freesound.org/s/256603/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "c0797bc7831e0103f359d61bb9008f1a56db28bac76c23a61dc399126b5172b3"
+  },
+  {
+   "id": "fs256603-00366",
+   "file": "library/voices/fs256603-00366.wav",
+   "kind": "attack",
+   "voice": "nam",
+   "duration": 0.65,
+   "excerpt": [
+    3.66,
+    4.12
+   ],
+   "source": {
+    "title": "Male Grunts",
+    "author": "Kodack",
+    "url": "https://freesound.org/s/256603/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "51af15d88d020cdb8ec8c1154444e49cfa2191d3838f7a212a1e8e920dcb5b7c"
+  },
+  {
+   "id": "fs256603-00700",
+   "file": "library/voices/fs256603-00700.wav",
+   "kind": "attack",
+   "voice": "nam",
+   "duration": 0.69,
+   "excerpt": [
+    7.0,
+    7.5
+   ],
+   "source": {
+    "title": "Male Grunts",
+    "author": "Kodack",
+    "url": "https://freesound.org/s/256603/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "26e15981349a7ba6b3481b767f555e9dd54c6f3deb60e2bc5a509237b1957bd6"
+  },
+  {
+   "id": "fs260188-00063",
+   "file": "library/voices/fs260188-00063.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.36,
+   "excerpt": [
+    0.63,
+    0.8
+   ],
+   "source": {
+    "title": "Young boy, grunts for body impact.wav",
+    "author": "SpliceSound",
+    "url": "https://freesound.org/s/260188/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "1358c06bcef5803ee97ee70e9712168d9ecbe2cfe609f76f6be0092e4ae7dc91"
+  },
+  {
+   "id": "fs260188-00354",
+   "file": "library/voices/fs260188-00354.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.43,
+   "excerpt": [
+    3.54,
+    3.78
+   ],
+   "source": {
+    "title": "Young boy, grunts for body impact.wav",
+    "author": "SpliceSound",
+    "url": "https://freesound.org/s/260188/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "d75511e3611f4e5b61ab1c14185e6b9c8e52d27faedf3584a73d34eac27f4655"
+  },
+  {
+   "id": "fs260188-00662",
+   "file": "library/voices/fs260188-00662.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.36,
+   "excerpt": [
+    6.62,
+    6.79
+   ],
+   "source": {
+    "title": "Young boy, grunts for body impact.wav",
+    "author": "SpliceSound",
+    "url": "https://freesound.org/s/260188/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "0ef0b79f2e19c5b042d71575e88573ebfe4b292663c997c0bfb494ef11a03e97"
+  },
+  {
+   "id": "fs803168-00428",
+   "file": "library/voices/fs803168-00428.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.35,
+   "excerpt": [
+    4.28,
+    4.44
+   ],
+   "source": {
+    "title": "Soft Male Vocal, Short Pained/Exhertion Groans - Vocal Efforts",
+    "author": "salemaudio",
+    "url": "https://freesound.org/s/803168/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "6716f527857e47e7e713444adb5f837d94b52e6fac5e6ce5a065ab3f0bf07a4d"
+  },
+  {
+   "id": "fs803168-00738",
+   "file": "library/voices/fs803168-00738.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.41,
+   "excerpt": [
+    7.38,
+    7.6
+   ],
+   "source": {
+    "title": "Soft Male Vocal, Short Pained/Exhertion Groans - Vocal Efforts",
+    "author": "salemaudio",
+    "url": "https://freesound.org/s/803168/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "27d6b35771c28041b06f7c97db3e3018c7ee69f29b7502697f31689d56b6f213"
+  },
+  {
+   "id": "fs803168-01011",
+   "file": "library/voices/fs803168-01011.wav",
+   "kind": "attack",
+   "voice": "nam trẻ",
+   "duration": 0.44,
+   "excerpt": [
+    10.12,
+    10.37
+   ],
+   "source": {
+    "title": "Soft Male Vocal, Short Pained/Exhertion Groans - Vocal Efforts",
+    "author": "salemaudio",
+    "url": "https://freesound.org/s/803168/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "ce7bc608a82d4117b1f875c85270a4cf89fafa4b401844c01b66adfbbc05e12c"
+  },
+  {
+   "id": "fs464680-00000",
+   "file": "library/voices/fs464680-00000.wav",
+   "kind": "attack",
+   "voice": "nam",
+   "duration": 0.635,
+   "excerpt": [
+    0,
+    0.55
+   ],
+   "source": {
+    "title": "MaleGrunt2.wav",
+    "author": "BranndyBottle",
+    "url": "https://freesound.org/s/464680/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "4bda7b695f795053a8255a9e432ff1bf8b89ac5a8d078fd874ffe21d5b9a84b4"
+  },
+  {
+   "id": "fs464681-00000",
+   "file": "library/voices/fs464681-00000.wav",
+   "kind": "attack",
+   "voice": "nam",
+   "duration": 0.555,
+   "excerpt": [
+    0,
+    0.55
+   ],
+   "source": {
+    "title": "MaleGrunt1.wav",
+    "author": "BranndyBottle",
+    "url": "https://freesound.org/s/464681/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "6006f94beb9c11893feb2ee39365f0e3875ec295109e317d6e4c34f3c20b11d6"
+  },
+  {
+   "id": "fs464685-00000",
+   "file": "library/voices/fs464685-00000.wav",
+   "kind": "attack",
+   "voice": "nam",
+   "duration": 0.555,
+   "excerpt": [
+    0,
+    0.55
+   ],
+   "source": {
+    "title": "MaleGrunt3.wav",
+    "author": "BranndyBottle",
+    "url": "https://freesound.org/s/464685/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "f385b4ec2010869cadf097f24a5c307c597e921be0137d2d5e07a604c96e0e00"
+  },
+  {
+   "id": "fs587906-00022",
+   "file": "library/voices/fs587906-00022.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.32,
+   "excerpt": [
+    0.22,
+    0.35
+   ],
+   "source": {
+    "title": "AY.mp3",
+    "author": "inferion7",
+    "url": "https://freesound.org/s/587906/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "6ab0e2349417b020416154e3de3bdb9d256b2473880fe69218c3146f035d56e4"
+  },
+  {
+   "id": "fs587906-00134",
+   "file": "library/voices/fs587906-00134.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.39,
+   "excerpt": [
+    1.34,
+    1.54
+   ],
+   "source": {
+    "title": "AY.mp3",
+    "author": "inferion7",
+    "url": "https://freesound.org/s/587906/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "3bccfeeb2efe76e3b01fc2659a0faffbb42f6e25de97fa25b6ecf0ceb0d33eea"
+  },
+  {
+   "id": "fs587906-00385",
+   "file": "library/voices/fs587906-00385.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.453,
+   "excerpt": [
+    3.85,
+    4.18
+   ],
+   "source": {
+    "title": "AY.mp3",
+    "author": "inferion7",
+    "url": "https://freesound.org/s/587906/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "7b19908d699d18ecb0109bf440765d5aae610c82224387cb9426e181464caca4"
+  },
+  {
+   "id": "fs193599-00133",
+   "file": "library/voices/fs193599-00133.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.51,
+   "excerpt": [
+    1.33,
+    1.65
+   ],
+   "source": {
+    "title": "Painful Grunts (Boy)",
+    "author": "kuzyaburst",
+    "url": "https://freesound.org/s/193599/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "6103186c7981a7deb27c01decaf26a805683e58d0bd30bee7dba84c2ce4f9b72"
+  },
+  {
+   "id": "fs193599-00331",
+   "file": "library/voices/fs193599-00331.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.51,
+   "excerpt": [
+    3.31,
+    3.63
+   ],
+   "source": {
+    "title": "Painful Grunts (Boy)",
+    "author": "kuzyaburst",
+    "url": "https://freesound.org/s/193599/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "c5f5a5ce1f92aee1a969ef78f4e00fee54ecaefcca1cd7da49ace847f3e5b131"
+  },
+  {
+   "id": "fs193599-00649",
+   "file": "library/voices/fs193599-00649.wav",
+   "kind": "attack",
+   "voice": "cậu bé",
+   "duration": 0.64,
+   "excerpt": [
+    6.49,
+    6.94
+   ],
+   "source": {
+    "title": "Painful Grunts (Boy)",
+    "author": "kuzyaburst",
+    "url": "https://freesound.org/s/193599/",
+    "license": "CC0-1.0"
+   },
+   "sha256": "aefd69198208e1fe583fa5d19dc90957f3a256c3da2df2e7131617bb99242cd8"
+  },
+  {
+   "id": "rpgadv-attack0",
+   "file": "library/voices/rpgadv-attack0.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.378,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "bfa80181d558038dbf778e0e549456b786f1bd139f8e31ce709d69966e71114f"
+  },
+  {
+   "id": "rpgadv-attack1",
+   "file": "library/voices/rpgadv-attack1.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.658,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "0df7bb46f5c0db3138f0320ae2894ce93c40b39652c5dd9ce6276ce3da571faa"
+  },
+  {
+   "id": "rpgadv-attack2",
+   "file": "library/voices/rpgadv-attack2.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.278,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack2.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "ad00aa19ea680c5b7e1317068c360bad02ecdfc25b0fcb55184e175463ec09f1"
+  },
+  {
+   "id": "rpgadv-attack3",
+   "file": "library/voices/rpgadv-attack3.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.717,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack3.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "b5f21eb78218031e0c5be26122d7481f259942a1db5ffd63644bdcf933641536"
+  },
+  {
+   "id": "rpgadv-attack4",
+   "file": "library/voices/rpgadv-attack4.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.318,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack4.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "0af33e0daf12af818cd378ef7c1cd889f874b31ccf10f0afcbcfde2b7ac8b811"
+  },
+  {
+   "id": "rpgadv-attack5",
+   "file": "library/voices/rpgadv-attack5.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.567,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack5.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "6ba7e4d155266d79ed17ef3d9d0770214427b17c1b73537861f21e07033a6f09"
+  },
+  {
+   "id": "rpgadv-attack6",
+   "file": "library/voices/rpgadv-attack6.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.76,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack6.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "d75f2e678c18f6b9e6e654f22c155a0f8828783b9110ce9ff0106f8f2a433bbd"
+  },
+  {
+   "id": "rpgadv-attack7",
+   "file": "library/voices/rpgadv-attack7.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.842,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack7.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "263986c461c382da0146a100c80a00088719f4cb3a8b6e3630f046800f6990f8"
+  },
+  {
+   "id": "rpgadv-attack8",
+   "file": "library/voices/rpgadv-attack8.wav",
+   "kind": "game:attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.352,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attack8.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "fde24e96fea409a990fa4c607abf16fa5fbd759e3efb1f4fa30853a69f8254e8"
+  },
+  {
+   "id": "rpgadv-attackbig0",
+   "file": "library/voices/rpgadv-attackbig0.wav",
+   "kind": "game:big attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 1.509,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attackbig0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "434b76679626118eeb43d574c761a26c13743ca7c39eb67c383a892d967724c9"
+  },
+  {
+   "id": "rpgadv-attackbig1",
+   "file": "library/voices/rpgadv-attackbig1.wav",
+   "kind": "game:big attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 1.055,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attackbig1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "99dd09d1fa576e35dacea1da88ece8365eec2440372bb8858b3828796e114d11"
+  },
+  {
+   "id": "rpgadv-attackbig2",
+   "file": "library/voices/rpgadv-attackbig2.wav",
+   "kind": "game:big attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.741,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attackbig2.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "f45ad7f152cb12c8917b41881bff6a3e44272acb5db0daa95e82c86b4c3e77ca"
+  },
+  {
+   "id": "rpgadv-attackbig3",
+   "file": "library/voices/rpgadv-attackbig3.wav",
+   "kind": "game:big attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.528,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attackbig3.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "2b9b9a904e2d119f322d08f102846e28285faaf9964c9c6cf1626502bb8d1175"
+  },
+  {
+   "id": "rpgadv-attackbig4",
+   "file": "library/voices/rpgadv-attackbig4.wav",
+   "kind": "game:big attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.639,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attackbig4.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "d16dfd263cc3b02a37e1101559bdf843b96446846c984f9f170def71ad5337f2"
+  },
+  {
+   "id": "rpgadv-attackbig5",
+   "file": "library/voices/rpgadv-attackbig5.wav",
+   "kind": "game:big attack",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 1.312,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: attackbig5.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "5137f99cfa58cef9aab6a09ca362f65e3d17ee901052973294db2534ff6cd922"
+  },
+  {
+   "id": "rpgadv-death0",
+   "file": "library/voices/rpgadv-death0.wav",
+   "kind": "game:death",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 2.878,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: death0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "ff7393bfcfce7374e79de15a3e0b2b74b2f2036ea0961612d65c6ebc6cdbea2b"
+  },
+  {
+   "id": "rpgadv-death1",
+   "file": "library/voices/rpgadv-death1.wav",
+   "kind": "game:death",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 1.704,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: death1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "637ecfaf93eff0a7998a8f41a719e711dfae8c7779eddd91add23581ce219870"
+  },
+  {
+   "id": "rpgadv-gameover0",
+   "file": "library/voices/rpgadv-gameover0.wav",
+   "kind": "game:game over",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.813,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: gameover0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "f115343a1e3037cad14a3a835492cb257c616a2e327a3003d34f44e355f7c6b8"
+  },
+  {
+   "id": "rpgadv-greet0",
+   "file": "library/voices/rpgadv-greet0.wav",
+   "kind": "game:greet",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.565,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: greet0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "d8d3e672915263739247554ffcb38f2317a2a4e4e5ac4df5f455c6974dcbb70a"
+  },
+  {
+   "id": "rpgadv-hurt0",
+   "file": "library/voices/rpgadv-hurt0.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.554,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "a2adb281c634bcf6d126c4d40667691eccc9b7aaaa303a968585216e238b81c4"
+  },
+  {
+   "id": "rpgadv-hurt1",
+   "file": "library/voices/rpgadv-hurt1.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.969,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "bdc8604a5aacc548a837fd9fbcced0861f3c26ea3609d9cdb83eff22c519fe00"
+  },
+  {
+   "id": "rpgadv-hurt2",
+   "file": "library/voices/rpgadv-hurt2.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.843,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt2.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "e39b285e24c8984c01d189c9a6704ec2cf22acca00aef6062a9a69e0f3d28502"
+  },
+  {
+   "id": "rpgadv-hurt3",
+   "file": "library/voices/rpgadv-hurt3.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.321,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt3.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "b4bb8d867744016fbe67157aad91f38554cb03c174aeac3a17bcdd5d24147098"
+  },
+  {
+   "id": "rpgadv-hurt4",
+   "file": "library/voices/rpgadv-hurt4.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.501,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt4.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "77ab14ff977d2177fc59d55c6ce22a5b2b4ef5be55a61cc0d627f35cdb2ff2fc"
+  },
+  {
+   "id": "rpgadv-hurt5",
+   "file": "library/voices/rpgadv-hurt5.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 1.147,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt5.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "1e351dc2c0033a0825894c786d1e8e2c2667469691f722523799baf66c87e339"
+  },
+  {
+   "id": "rpgadv-hurt6",
+   "file": "library/voices/rpgadv-hurt6.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.354,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt6.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "1e50b21389b4f06ec011a3a62cf9e51912f54bfce1a7ccd56285db2807665da8"
+  },
+  {
+   "id": "rpgadv-hurt7",
+   "file": "library/voices/rpgadv-hurt7.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.633,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt7.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "c956aad9675e8931285fd9101f642093561d3195249ac13af035d4e9dd6550e2"
+  },
+  {
+   "id": "rpgadv-hurt8",
+   "file": "library/voices/rpgadv-hurt8.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.326,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt8.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "a39175e85584f68cb6b75e68b9f9ea5b29fe1b59c1270d909cf033667d57077f"
+  },
+  {
+   "id": "rpgadv-hurt9",
+   "file": "library/voices/rpgadv-hurt9.wav",
+   "kind": "game:hurt",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.476,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: hurt9.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "240d259c3294553b4865e16c16b65adf34f1be42bf12161999f3785cbecfcb74"
+  },
+  {
+   "id": "rpgadv-jump0",
+   "file": "library/voices/rpgadv-jump0.wav",
+   "kind": "game:jump",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.299,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: jump0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "8f28a8b59cc9fe3cae2e2c1cd59f8b4cfa09349a069092584428f51c587ad5a6"
+  },
+  {
+   "id": "rpgadv-jump1",
+   "file": "library/voices/rpgadv-jump1.wav",
+   "kind": "game:jump",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.264,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: jump1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "e9ca4afc5ce497fbac86368e0ce8a2dfd46cbf7a2a00607cf8bec02e62993e98"
+  },
+  {
+   "id": "rpgadv-no0",
+   "file": "library/voices/rpgadv-no0.wav",
+   "kind": "game:no",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.574,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: no0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "3381e3ce57d381474535c82b5dc6c7970bea491bb50643b3eef5bc7c27132357"
+  },
+  {
+   "id": "rpgadv-no1",
+   "file": "library/voices/rpgadv-no1.wav",
+   "kind": "game:no",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.514,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: no1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "17d3334b08704c03b4bba1c290afd01d2ad69400323eeaf5005e6901d01d716a"
+  },
+  {
+   "id": "rpgadv-victory0",
+   "file": "library/voices/rpgadv-victory0.wav",
+   "kind": "game:victory",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 1.31,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: victory0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "c512b8a20c8a17f9626f544b3d3f25f744ce976f8b6e7749ab7a42508100088c"
+  },
+  {
+   "id": "rpgadv-victory1",
+   "file": "library/voices/rpgadv-victory1.wav",
+   "kind": "game:victory",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.976,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: victory1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "4b93b21a7f2553c6d8d262cea8748dedf9f8fbf182bb1cb501bfd8ba227a0e2b"
+  },
+  {
+   "id": "rpgadv-yes0",
+   "file": "library/voices/rpgadv-yes0.wav",
+   "kind": "game:yes",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.702,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: yes0.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "be0498bd67f0045d0965982fb511d4b25585fc92c33b70b5a41f552a010bdc1c"
+  },
+  {
+   "id": "rpgadv-yes1",
+   "file": "library/voices/rpgadv-yes1.wav",
+   "kind": "game:yes",
+   "voice": "nam trẻ (diễn viên game)",
+   "duration": 0.514,
+   "source": {
+    "title": "Voice Clip Pack - Male Adventurer RPG: yes1.wav",
+    "author": "Brandon Song",
+    "url": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+    "license": "CC0-1.0"
+   },
+   "sha256": "ed0c6af17da33ebd4b62cbbcbc540b9e24a90c09cff1bdc6b8e1bca7c7db34b3"
+  }
+ ]
+}

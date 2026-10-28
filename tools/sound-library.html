@@ -1,0 +1,100 @@
+<!doctype html>
+<!-- Gemwoven Studio: the sound library. Every sound the game plays (grouped as the builds load them)
+     and the reference voices in assets/audio/library. Data: tools/sound-library.json, written by
+     scripts/build_sound_library.py (build.py runs it). -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thư viện âm thanh</title>
+<style>
+:root{--bg:#1b1712;--panel:#241f18;--line:#3d3427;--text:#efe6d6;--muted:#a99c86;--gold:#e8bf6a;--green:#8fd18a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,sans-serif;padding:16px}
+main{max-width:1100px;margin:0 auto}
+h1{font-size:20px;margin:0 0 4px;color:var(--gold)}
+.lead{color:var(--muted);margin:0 0 14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:2}
+input[type=search]{flex:1;min-width:200px;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px 10px;font:inherit}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit}
+.chip.on{background:var(--gold);color:#1a1409;border-color:var(--gold);font-weight:600}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+summary{cursor:pointer;padding:10px 14px;font-weight:600;display:flex;gap:10px;align-items:baseline}
+summary small{color:var(--muted);font-weight:400}
+.count{color:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td{border-top:1px solid var(--line);padding:6px 8px;vertical-align:top}
+td.play{width:44px}
+td.key{font-family:ui-monospace,monospace;white-space:nowrap}
+td.dur{color:var(--muted);white-space:nowrap;width:56px}
+td.who{white-space:nowrap;width:90px}
+.credit,.credit a{color:var(--muted)}
+.credit a:hover{color:var(--gold)}
+button.p{width:30px;height:30px;border-radius:50%;border:0;background:var(--gold);color:#1a1409;cursor:pointer;font-size:12px}
+button.p.on{background:var(--green)}
+.badge{display:inline-block;background:#3d5a36;color:var(--green);border-radius:6px;padding:1px 7px;font-size:12px;margin-left:6px}
+.empty{color:var(--muted);padding:10px 14px}
+</style>
+</head>
+<body>
+<main>
+<h1>Thư viện âm thanh</h1>
+<p class="lead" id="lead">Đang tải…</p>
+<div class="bar">
+  <input type="search" id="q" placeholder="Tìm theo tên, tướng, mô tả, tác giả…">
+  <span id="heroes"></span>
+</div>
+<div id="lists"></div>
+</main>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+const KIND={cry:'Hét dài (gồng chiêu)',attack:'Ra đòn','game:attack':'Gói game: ra đòn','game:big attack':'Gói game: đòn mạnh','game:jump':'Gói game: nhảy',
+  'game:hurt':'Gói game: bị đánh','game:death':'Gói game: gục ngã','game:victory':'Gói game: chiến thắng','game:yes':'Gói game: đồng ý','game:no':'Gói game: từ chối',
+  'game:greet':'Gói game: chào','game:game over':'Gói game: thua cuộc'};
+let data,hero='',playing=null;
+function play(btn,file){
+  if(playing){playing.audio.pause();playing.btn.classList.remove('on');if(playing.btn===btn){playing=null;return;}}
+  const audio=new Audio('../'+file);btn.classList.add('on');audio.onended=()=>{btn.classList.remove('on');playing=null;};audio.play();playing={audio,btn};
+}
+const credit=c=>c.map(x=>x.url?`<a href="${esc(x.url)}" target="_blank">${esc(x.text)}</a>`:esc(x.text)).join('<br>');
+function row(cells){return `<tr>${cells.join('')}</tr>`;}
+function matches(text){const q=$('q').value.trim().toLowerCase();return !q||text.toLowerCase().includes(q);}
+function render(){
+  const out=[];
+  // Reference voices first: grouped by what they are.
+  const lib=data.library.voices.filter(v=>!hero||hero==='Hiro'&&v.inUse);
+  const kinds=[...new Set(lib.map(v=>v.kind))];
+  out.push(`<h2 style="font-size:16px;color:var(--gold);margin:18px 0 8px">Kho giọng tham khảo <small style="color:var(--muted);font-weight:400">giọng thật CC0 đã tìm (chưa dùng trong game, trừ dòng có nhãn)</small></h2>`);
+  for(const k of kinds){
+    const items=lib.filter(v=>v.kind===k&&matches([v.id,v.voice,v.source.title,v.source.author].join(' ')));
+    if(!items.length)continue;
+    const label=KIND[k]||('Gói game: '+k.replace('game:',''));
+    out.push(`<details open><summary>${esc(label)} <span class="count">${items.length}</span></summary><table>`+items.map(v=>row([
+      `<td class="play"><button class="p" data-f="${esc(v.file)}">▶</button></td>`,
+      `<td class="key">${esc(v.id)}${v.inUse?'<span class="badge">Đang dùng</span>':''}</td>`,
+      `<td class="dur">${v.duration.toFixed(2)} s</td>`,`<td class="who">${esc(v.voice)}</td>`,
+      `<td class="credit"><a href="${esc(v.source.url)}" target="_blank">${esc(v.source.title)}</a><br>${esc(v.source.author)} · ${esc(v.source.license)}</td>`])).join('')+`</table></details>`);
+  }
+  out.push(`<h2 style="font-size:16px;color:var(--gold);margin:22px 0 8px">Âm thanh đang dùng trong game</h2>`);
+  for(const g of data.groups){
+    const items=g.items.filter(i=>(!hero||i.hero===hero)&&matches([i.key,i.hero,i.what,i.file,...i.credit.map(c=>c.text)].join(' ')));
+    if(!items.length)continue;
+    out.push(`<details${hero||$('q').value?' open':''}><summary>${esc(g.title)} <span class="count">${items.length}</span><small>${esc(g.note)}</small></summary><table>`+items.map(i=>row([
+      `<td class="play"><button class="p" data-f="${esc(i.file)}">▶</button></td>`,
+      `<td class="key">${esc(i.key)}</td>`,`<td class="dur">${i.duration?i.duration.toFixed(2)+' s':''}</td>`,`<td class="who">${esc(i.hero)}</td>`,
+      `<td>${esc(i.what)}<div class="credit">${credit(i.credit)}</div></td>`])).join('')+`</table></details>`);
+  }
+  $('lists').innerHTML=out.join('')||'<p class="empty">Không có âm thanh nào khớp.</p>';
+  for(const b of $('lists').querySelectorAll('button.p'))b.onclick=()=>play(b,b.dataset.f);
+}
+fetch('sound-library.json').then(r=>r.json()).then(d=>{
+  data=d;const used=d.groups.reduce((n,g)=>n+g.items.length,0);
+  $('lead').textContent=`${used} âm thanh đang dùng trong game, ${d.library.voices.length} giọng tham khảo. Âm thanh tổng hợp bằng code (tiếng chém, tiếng va chạm cơ bản) không có file nên không nằm ở đây.`;
+  const heroes=['','Mika','Nori','Yuki','Lumi','Noct','Hiro'];
+  $('heroes').innerHTML=heroes.map(h=>`<button class="chip${h===hero?' on':''}" data-h="${h}">${h||'Tất cả'}</button>`).join('');
+  for(const b of $('heroes').children)b.onclick=()=>{hero=b.dataset.h;for(const x of $('heroes').children)x.classList.toggle('on',x===b);render();};
+  $('q').oninput=render;render();
+});
+</script>
+</body>
+</html>

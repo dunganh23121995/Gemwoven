@@ -362,3 +362,5 @@ html = html.replace('/* GAME_CSS */', css).replace('/* GAME_JS */', js)
 # Written whole and swapped in, so a page loading while another build runs never reads half a file.
 (root / 'Game.html.tmp').write_text(html, encoding='utf-8'); os.replace(root / 'Game.html.tmp', root / 'Game.html')
 print(f'Built Game.html ({len(html.encode("utf-8")):,} bytes).')
+# The studio's sound library (tools/sound-library.html) lists every sound loaded above.
+subprocess.run([sys.executable, str(root / 'scripts/build_sound_library.py')], check=True)
