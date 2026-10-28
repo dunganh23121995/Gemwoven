@@ -79,7 +79,7 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 /* The form's cloud ring shares the hero's box, so it can spin and scale about the body. */
 .hero-form-effects{position:absolute;inset:0;pointer-events:none}
 .hero-show-whirl{position:absolute;inset:0;pointer-events:none;z-index:2}
-.hero-show-whirl i{position:absolute;aspect-ratio:1;background-size:400% 100%;background-position:calc(var(--cell) * 33.333%) 0;background-repeat:no-repeat;filter:brightness(.42) saturate(.2)}
+.hero-show-whirl i{position:absolute;aspect-ratio:1;background-size:400% 100%;background-position:calc(var(--cell) * 33.333%) 0;background-repeat:no-repeat;filter:brightness(.42) saturate(.2) blur(1.5px);will-change:transform,opacity}
 /* Floor cloud on the boots, upper clouds and sash on the body (form-effects.js). */
 .hero-form-aura .form-aura-floorpart{-webkit-mask-image:linear-gradient(to top,#000 0 36%,transparent 40%);mask-image:linear-gradient(to top,#000 0 36%,transparent 40%)}
 .hero-form-aura .form-aura-upper{-webkit-mask-image:linear-gradient(to top,transparent 0 36%,#000 40%);mask-image:linear-gradient(to top,transparent 0 36%,#000 40%);margin-left:var(--aura-body-shift,0px)}

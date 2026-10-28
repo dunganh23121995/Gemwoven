@@ -20,31 +20,38 @@
     }
     host.append(cloud);setTimeout(()=>cloud.remove(),1600);
   }
-  // A whirlwind of Noct's soft smoke (the puffs of his reaper fog): puffs orbit a funnel that is
-  // narrow at the ground and wide at the top, spinning up, then tightening into a thin column.
-  // done() fires when the column is tightest (the moment space is cut open).
+  // A whirlwind of Noct's soft smoke (the puffs of his reaper fog): many small, faint, softened puffs
+  // orbit a funnel that is narrow at the ground and wide at the top, spin up and tighten into a thin
+  // column (done() fires there, the moment space is cut open); then, as he steps out, the whirl slows,
+  // widens and rises and its smoke thins away around him. Every change is eased and paced by the real
+  // frame time, so the swirl never steps.
   function whirlwind(host,stage,done){
     const puffs=A['noct-puffs'];if(!puffs){done();return;}
     // Layout units of the hero's own drawing box (the hub scales the whole scene with a transform).
     const W=stage.offsetWidth,H=stage.offsetHeight,cx=stage.offsetLeft+W/2,ground=stage.offsetTop+H*.94,tall=H*.82;
     const wind=document.createElement('span');wind.className='hero-show-whirl';wind.setAttribute('aria-hidden','true');host.append(wind);
-    const parts=Array.from({length:34},(_,i)=>{
+    const smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);},N=56;
+    const parts=Array.from({length:N},(_,i)=>{
       const el=document.createElement('i');el.style.backgroundImage=`url('${url(puffs.file)}')`;el.style.setProperty('--cell',i%4);wind.append(el);
-      return {el,t:i/33,a:Math.random()*Math.PI*2,size:(.3+.24*(i/33))*W*(.8+Math.random()*.4),spin:(Math.random()-.5)*2};
+      return {el,t:i/(N-1),a:Math.random()*Math.PI*2,size:(.24+.2*(i/(N-1)))*W*(.85+Math.random()*.3),spin:(Math.random()-.5)*2,
+        alpha:.14+Math.random()*.14,out:.8+Math.random()*.5,lift:.6+Math.random()*.8};
     });
-    const start=performance.now(),T=1900,cut=.72;let fired=false;
+    const start=performance.now(),T=1800,D=1600;let fired=false,last=start;
     function frame(now){
-      const k=Math.min(1,(now-start)/T);
-      const open=k<.55?k/.55:1,squeeze=k<.55?1:1-(k-.55)/.45*.85;    // spin up, then tighten
-      const speed=5+11*k,fade=k<.12?k/.12:k>.86?(1-k)/.14:1;
+      const e=now-start,dt=Math.min(50,now-last)/1000;last=now;
+      const k=Math.min(1,e/T),u=smooth((e-T)/D);                         // gather, then disperse
+      const open=smooth(k/.5),squeeze=1-.82*smooth((k-.5)/.5);         // spin up, then tighten
+      const speed=(4+9*smooth(k))*(1-.75*u),fade=smooth(k/.15)*Math.pow(1-u,1.6);
       for(const p of parts){
-        p.a+=speed*.016*(1.4-p.t*.6);
-        const r=(.05+.33*p.t)*W*open*squeeze,depth=Math.sin(p.a);
-        const x=cx+Math.cos(p.a)*r,y=ground-p.t*tall*(.35+.65*open)+depth*r*.18,sc=.75+.25*(depth+1)/2;
-        p.el.style.cssText=`background-image:${p.el.style.backgroundImage};--cell:${p.el.style.getPropertyValue('--cell')};left:${x}px;top:${y}px;width:${p.size}px;opacity:${(.5+.4*(depth+1)/2)*fade};transform:translate(-50%,-50%) scale(${sc}) rotate(${p.a*40+p.spin*90}deg);z-index:${depth>0?2:1}`;
+        p.a+=speed*dt*(1.4-p.t*.6);
+        const column=(.05+.33*p.t)*W*open*squeeze,spread=(.3+.5*p.t)*W*p.out*u;
+        const r=column+spread,depth=Math.sin(p.a);
+        const x=cx+Math.cos(p.a)*r,y=ground-p.t*tall*(.35+.65*open)-u*H*.18*p.lift+depth*r*.18;
+        const sc=(.75+.25*(depth+1)/2)*(1+.7*u);
+        p.el.style.cssText=`background-image:${p.el.style.backgroundImage};--cell:${p.el.style.getPropertyValue('--cell')};left:${x}px;top:${y}px;width:${p.size}px;opacity:${(p.alpha+.18*(depth+1)/2)*fade};transform:translate(-50%,-50%) scale(${sc}) rotate(${p.a*40+p.spin*90}deg);z-index:${depth>0?2:1}`;
       }
-      if(!fired&&k>=cut){fired=true;done();}
-      if(k<1&&wind.isConnected)requestAnimationFrame(frame);else wind.remove();
+      if(!fired&&k>=1){fired=true;done();}
+      if(e<T+D&&wind.isConnected)requestAnimationFrame(frame);else wind.remove();
     }
     requestAnimationFrame(frame);
   }
