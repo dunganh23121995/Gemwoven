@@ -104,28 +104,50 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
 # fitBody fits a form's crown-to-foot to one height; headFit then grows or shrinks that form so its
 # head matches form 1's head at that height (tails, auras and weapons reach wherever they go).
 head_scale=json.loads((ROOT/'assets/heroes/head-scale.json').read_text(encoding='utf-8'))['forms']
-def head_share(asset,head,cell):
-    # head-scale.json measures the head in a showcase cell of cellPx; the sheet may be cut sharper (larger cells).
-    box=asset['footBounds'];return head*asset['width']/cell/(box[3]-box[1])
+def head_px(asset,measured):
+    # head-scale.json measures the head in a showcase cell of cellPx; the sheet may be cut sharper
+    # (larger cells), so the head is given in this sheet's own pixels.
+    return measured['headPx']*asset['width']/measured.get('cellPx',384)
+def head_share(asset,head):
+    box=asset['footBounds'];return head/(box[3]-box[1])
 for key,asset in list(merged.items()):
     if not key.startswith('show-'):continue
     _,hero,form=key.split('-');first,own=head_scale.get(f'{hero}-1'),head_scale.get(f'{hero}-{form}')
+    # The figure's own height (crown to soles) in this sheet's pixels: the summon spotlight shows every
+    # hero and form at one body height, and its combat sheets (cmove-, bodyPx) at the same height.
+    if own and own.get('showcase',{}).get('bodyPx'):asset['bodyPx']=round(own['showcase']['bodyPx']*asset['height']/own['showcase'].get('cellPx',384),2)
     if hero=='shadow' or not (first and own and f'show-{hero}-1' in merged):continue  # Noct is locked as approved
-    asset['headPx']=own['showcase']['headPx']
-    fit=head_share(merged[f'show-{hero}-1'],first['showcase']['headPx'],first['showcase'].get('cellPx',384))/head_share(asset,asset['headPx'],own['showcase'].get('cellPx',384))
+    asset['headPx']=round(head_px(asset,own['showcase']),3)
+    fit=head_share(merged[f'show-{hero}-1'],head_px(merged[f'show-{hero}-1'],first['showcase']))/head_share(asset,asset['headPx'])
     # Never shorter than form 1, crown to soles (a fit of 1 is form 1's visible height).
     fit=max(fit,1)
     asset['headFit']=round(fit,4)
-# The ultimate pose sheets on the summon spotlight stand at the showcase head size too: the head in a
-# combat action sheet is the combat idle head divided by that sheet's scale (forms.json).
-for key,entry in list(merged.items()):
-    if not key.startswith('ulti-') or key.count('-')!=2:continue
-    _,hero,form=key.split('-');own=head_scale.get(f'{hero}-{form}')
-    if not own:continue
-    forms_json=ROOT/f'assets/heroes/forms/{hero}/forms.json'
-    actions=json.loads(forms_json.read_text(encoding='utf-8'))['forms'].get(form,{}).get('actions',{}) if forms_json.exists() else {}
-    scale=next((a.get('scale',1) for a in actions.values() if a.get('file')==entry['file']),1)
-    entry['headPx']=round(own['combat']['headPx']*entry['cell'][1]/own['combat']['cellPx']/scale,3)
+# Combat move sheets for the summon spotlight: after its entrance each hero moves aside in its own way
+# (run, or hover for the floating heroes) to perform its combat ultimate on a slime. cmove-<hero>-<form>:
+# the sheet, its grid, its scale and foot line in the 256 px combat actor cell.
+def combat_sheet(hero,form,action):
+    if form>1 or hero!='novice':
+        book=ROOT/f'assets/heroes/forms/{hero}/forms.json'
+        acts=json.loads(book.read_text(encoding='utf-8'))['forms'].get(str(form),{}).get('actions',{}) if book.exists() else {}
+        if form>1 and action in acts:
+            a=acts[action];return {'file':a['file'],'cols':a['cols'],'rows':a['rows'],'count':a['count'],'scale':a.get('scale',1),'footY':a.get('footY',.94),'ms':a.get('frameDuration',100)}
+        if form>1:return None
+    if hero=='novice':
+        m=json.loads((ROOT/'assets/heroes/novice/meta.json').read_text(encoding='utf-8'))['actions'].get(action)
+        return m and {'file':f'assets/heroes/novice/{action}.webp','cols':m['columns'],'rows':m['rows'],'count':m['frames'],'scale':1,'footY':.94,'ms':m.get('frameDuration',100)}
+    if hero=='shadow':
+        f=ROOT/f'assets/heroes/shadow/{action}.webp'
+        return f.exists() and {'file':f.relative_to(ROOT).as_posix(),'cols':3,'rows':2,'count':6,'scale':1,'footY':.94,'ms':100}
+    meta=ROOT/f'assets/reimagined/heroes/{hero}/{action}/runtime-meta.json'
+    if not meta.exists():return None
+    m=json.loads(meta.read_text(encoding='utf-8'))
+    return {'file':f'assets/reimagined/heroes/{hero}/{action}.webp','cols':m['columns'],'rows':m['rows'],'count':m['frames'],'scale':1,'footY':.94,'ms':m.get('frameDuration',100)}
+for hero in ['novice','fire','ice','earth','lightning','shadow']:
+    for form in ([1] if hero=='novice' else [1,2,3]):
+        floats=hero in ('lightning','shadow')
+        move=(floats and combat_sheet(hero,form,'hover')) or combat_sheet(hero,form,'run')
+        combat=head_scale.get(f'{hero}-{form}',{}).get('combat',{})
+        if move:merged[f'cmove-{hero}-{form}']={**move,'headPx':combat.get('headPx'),'cellPx':combat.get('cellPx',256),'bodyPx':combat.get('bodyPx')}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))

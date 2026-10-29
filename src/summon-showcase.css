@@ -1,0 +1,13 @@
+/* Summon showcase (Game.html?qa&showcase, summon-showcase.js): only the actors and the effects of the
+   battle scene, filling a transparent page. */
+html.showcase{color-scheme:light}
+html.showcase,html.showcase body{background:transparent!important;overflow:hidden}
+html.showcase:not(.acting) #heroActor,html.showcase:not(.acting) #heroActor *{visibility:hidden!important}
+html.showcase body *{visibility:hidden}
+html.showcase #scene,html.showcase #scene *{visibility:visible}
+html.showcase .battle-card .scene{position:fixed;inset:0;height:auto;margin:0;border-radius:0;background:none;box-shadow:none}
+html.showcase .scene:after,html.showcase .scene:before,html.showcase #landscape,html.showcase #sceneAtmosphere,html.showcase .scene-motes,html.showcase .arena-stage,html.showcase .actor-hud{display:none!important}
+html.showcase .battle-card,html.showcase .app,html.showcase .game-layout,html.showcase .adventure-column{background:none!important;border:0!important;box-shadow:none!important;transform:none!important;filter:none!important}
+/* The hero and the slime at the two sides, sized by the hub (--showcase-k) to match its spotlight hero. */
+html.showcase .scene .hero-actor{--actor-size:calc(40vw * var(--showcase-k,1) * var(--hero-art-scale,1));left:calc(24% - var(--actor-size)/2)}
+html.showcase .scene .enemy-actor{--actor-size:calc(34vw * var(--showcase-k,1));right:calc(21% - var(--actor-size)/2)}

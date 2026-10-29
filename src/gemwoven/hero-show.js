@@ -99,22 +99,24 @@
     timer=requestAnimationFrame(tick);
     // A hero's own drawn entrance (its element gathers and it takes shape); the form aura, if
     // any, bursts out once the hero stands.
-    function entrance(){
-      if(reduced())return;
+    // done() fires once the entrance and its aura burst have finished.
+    function entrance(done){
+      if(reduced()){done?.();return;}
       const ring=host.querySelector('.hero-form-effects');if(ring)ring.style.opacity='0';
       preload(show.sheets.entrance).then(()=>play(show.sheets.entrance,140,()=>{
-        if(!ring||!stage.isConnected)return;
+        if(!ring||!stage.isConnected){setTimeout(()=>done?.(),200);return;}
         ring.style.opacity='';ring.style.transformOrigin='50% 66%';
         ring.animate([{transform:'scale(.3)',opacity:0},{transform:'scale(1.25)',opacity:1,offset:.45},{transform:'scale(1)',opacity:1}],{duration:650,easing:'cubic-bezier(.2,.9,.3,1)'});
+        setTimeout(()=>done?.(),700);
       }));
     }
     return {
       // The summoning entrance: Noct's soft smoke whirls up into a gloomy whirlwind and tightens
       // into a column; in it a cut opens in space and he steps out of the rift; only then does his
-      // cloud ring burst out around him.
-      summon(){
-        if(show.sheets.entrance&&!show.sheets.rift)return entrance();
-        if(!show.sheets.rift||reduced())return;
+      // cloud ring burst out around him. done() fires once the whole entrance has played out.
+      summon(done){
+        if(show.sheets.entrance&&!show.sheets.rift)return entrance(done);
+        if(!show.sheets.rift||reduced()){done?.();return;}
         stage.style.opacity='0';
         setTimeout(()=>{
           if(!stage.isConnected)return;
@@ -123,7 +125,8 @@
             if(!stage.isConnected)return;
             stage.style.opacity='';
             play(show.sheets.rift,150,()=>{
-              if(!ring||!stage.isConnected)return;
+              if(!ring||!stage.isConnected){setTimeout(()=>done?.(),200);return;}
+              setTimeout(()=>done?.(),900);   // the ring burst and the whirl's last smoke
               ring.style.opacity='';wisps(host);
               ring.style.transformOrigin='50% 66%';
               ring.animate([{transform:'scale(.3)',opacity:0},{transform:'scale(1.3)',opacity:1,offset:.45},{transform:'scale(1)',opacity:1}],{duration:700,easing:'cubic-bezier(.2,.9,.3,1)'});

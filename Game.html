@@ -1050,6 +1050,20 @@ body.reduced-motion .mika-blade-pivot,body.reduced-motion .mika-impact,body.redu
 .foe-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;translate:-50% -50%}
 body.reduced-motion .foe-fx{display:none}
 
+/* Summon showcase (Game.html?qa&showcase, summon-showcase.js): only the actors and the effects of the
+   battle scene, filling a transparent page. */
+html.showcase{color-scheme:light}
+html.showcase,html.showcase body{background:transparent!important;overflow:hidden}
+html.showcase:not(.acting) #heroActor,html.showcase:not(.acting) #heroActor *{visibility:hidden!important}
+html.showcase body *{visibility:hidden}
+html.showcase #scene,html.showcase #scene *{visibility:visible}
+html.showcase .battle-card .scene{position:fixed;inset:0;height:auto;margin:0;border-radius:0;background:none;box-shadow:none}
+html.showcase .scene:after,html.showcase .scene:before,html.showcase #landscape,html.showcase #sceneAtmosphere,html.showcase .scene-motes,html.showcase .arena-stage,html.showcase .actor-hud{display:none!important}
+html.showcase .battle-card,html.showcase .app,html.showcase .game-layout,html.showcase .adventure-column{background:none!important;border:0!important;box-shadow:none!important;transform:none!important;filter:none!important}
+/* The hero and the slime at the two sides, sized by the hub (--showcase-k) to match its spotlight hero. */
+html.showcase .scene .hero-actor{--actor-size:calc(40vw * var(--showcase-k,1) * var(--hero-art-scale,1));left:calc(24% - var(--actor-size)/2)}
+html.showcase .scene .enemy-actor{--actor-size:calc(34vw * var(--showcase-k,1));right:calc(21% - var(--actor-size)/2)}
+
 /* Evolution light (no pasted armour): --evo-top/--evo-h/--evo-x are the resting body's top, height and centre as fractions of the actor box. */
 .combat-evo-glow{position:absolute;inset:0;pointer-events:none;z-index:0;--t:var(--evo-top,.19);--h:var(--evo-h,.75);--x:var(--evo-x,.5);--p:calc(var(--tier,1) / 6)}
 .combat-evo-glow .evo-halo{position:absolute;left:calc((var(--x) - var(--h) * .4) * 100%);width:calc(var(--h) * 80%);top:calc((var(--t) + var(--h) * .1) * 100%);height:calc(var(--h) * 86%);border-radius:50%;background:radial-gradient(ellipse at 50% 58%,#ffe6a88a 0,#f3b65a4a 40%,transparent 70%);opacity:calc(.35 + var(--p) * .65);filter:blur(5px);animation:evoBreathe 3.8s ease-in-out infinite}
@@ -2662,20 +2676,22 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
       train:(key,index)=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');spend(p,skillCost(h,index));h.skills[index]++;note(p,'Nâng '+HEROES[key].skills[index]);}),
       fuse:key=>tx(p=>{check(HEROES[key],'Tướng không hợp lệ.');check((p.fragments[key]||0)>=80,'Cần 80 mảnh cùng tướng.');p.fragments[key]-=80;addHero(p,key);note(p,'Ghép tướng '+HEROES[key].name);}),
       // TEMPORARY (player testing): with test=true (only ?summonTest=1 on localhost/LAN, see
-      // progression-ui.js) a ten-pull's first four results are a whole hero, hero fragments, an epic
-      // gear and a divine gear (both weapons: gold and diamond cards) and the other six are plain (bronze) common gear or
-      // materials, so a ten-pull is always 2 gold + 2 diamond + 6 bronze; a one-pull is the whole hero. Costs, the wallet and
-      // SUMMON_TABLE are unchanged; normal play never passes test. Remove when testing is done.
+      // progression-ui.js) every card is a whole hero, walking through every hero and every form in
+      // turn (each pull goes on where the last stopped), so each summoning entrance and ultimate can be
+      // checked. Test heroes are shown only, never granted. Costs, the wallet and SUMMON_TABLE are
+      // unchanged; normal play never passes test. Remove when testing is done.
       summon:(count=1,payment='tickets',test=false)=>tx(p=>{
         check(count===1||count===10,'Chọn triệu hồi 1 hoặc 10 lần.');check(payment==='tickets'||payment==='gems','Nguồn thanh toán không hợp lệ.');check(p.equipment.length+count<=500,'Cần thêm chỗ trống trong túi trang bị.');spend(p,{[payment]:count*(payment==='gems'?120:1)});const results=[];
         for(let i=0;i<count;i++){
           let roll=Math.floor(random()*1000000),kind='material';for(const [k,weight]of SUMMON_TABLE){if(roll<weight){kind=k;break;}roll-=weight;}
-          const forced=test===true?(count>=4?(['hero','fragments','epicGear','divineGear'][i]||(i%2?'commonGear':'material')):'hero'):null;
+          const forced=test===true?'hero':null;
           p.summon.total++;p.summon.dry++;p.summon.fragmentDry++;
           if(p.summon.dry>=300)kind='hero';else if(p.summon.fragmentDry>=30&&!['hero','fragments'].includes(kind))kind='fragments';
           if(forced)kind=forced;
           const key=SUMMON_BANNER.hero;let result;
-          if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
+          if(kind==='hero'&&test===true){const all=Object.keys(HEROES).flatMap(h=>(h==='novice'?[1]:[1,2,3]).map(form=>[h,form])),[hero,form]=all[(p.summon.total-1)%all.length];
+            p.summon.dry=0;result={kind,hero,form,rarity:'legendary',name:HERO_FORMS[hero]?.[form-1]?.name||HEROES[hero].name,test:true};}
+          else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
           else if(kind==='fragments'){const count=2+Math.floor(random()*4);p.fragments[key]=(p.fragments[key]||0)+count;p.summon.fragmentDry=0;result={kind,hero:key,count,rarity:'rare',name:`${count} mảnh ${HEROES[key].name}`};}
           else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=gear(p,rarity,forced?'weapon':undefined);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name};}
           else{const resource=['exp','ore','wood','cloth'][Math.floor(random()*4)],count=resource==='exp'?5:8;grant(p,{[resource]:count});result={kind:'material',resource,count,rarity:'common',name:`${RESOURCES[resource][0]} ×${count}`};}
@@ -6550,6 +6566,30 @@ async function castFoeSkill(skill,base,{charge=1,announce=true}={}){
   if(skill.status&&!selfFirst)await applyFoeStatus(skill.status,base,pending);
   await Promise.allSettled(pending);update();
   return result;
+}
+
+// Summon showcase (Game.html?qa&showcase): only the battle scene, on a transparent page, so the hub's
+// summon cinematic can lay this page over its spotlight and play a newly summoned hero's own combat
+// ultimate (every effect and sound of the fight) on the default foe, a slime. The hub drives it
+// through window.gemwovenShowcase; the page shows no board, HUD, landscape or music.
+if(new URLSearchParams(location.search).has('showcase')){
+  document.documentElement.classList.add('showcase');
+  window.gemwovenShowcase={
+    ready:new Promise(done=>{const t=setInterval(()=>{if(window.gameQA?.art&&document.querySelector('[data-class]')){clearInterval(t);done();}},50);}),
+    // Puts the hero (and form) in front of the slime; returns the hero's sprite box in page pixels.
+    stage(hero,form){
+      const q=window.gameQA,c=q.art.campaignCreatures.slime;
+      q.art.enemies.fire=c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};
+      q.configure({key:hero,form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:0,energy:0,enemyEnergy:0,stage:4,enemyKey:'fire',qaElite:false,qaBossArt:'',qaFoeFx:{tier:'normal',creature:'slime'}});
+      return this.box();
+    },
+    // Scales the hero and the slime together (1: the hero box is 40% of the page width).
+    size(k){document.documentElement.style.setProperty('--showcase-k',k);return this.box();},
+    box(){const r=document.querySelector('#heroActor .sprite-body').getBoundingClientRect();return {left:r.left,top:r.top,width:r.width,height:r.height};},
+    // The hub keeps its own hero on screen until this one takes over for the ultimate.
+    act(on){document.documentElement.classList.toggle('acting',on);},
+    play(){return window.gameQA.heroUltimate();}
+  };
 }
 
 /* Connect the authored combat choreography to persistent progression. */

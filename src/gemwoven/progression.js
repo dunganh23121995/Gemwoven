@@ -361,20 +361,22 @@
       train:(key,index)=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');spend(p,skillCost(h,index));h.skills[index]++;note(p,'Nâng '+HEROES[key].skills[index]);}),
       fuse:key=>tx(p=>{check(HEROES[key],'Tướng không hợp lệ.');check((p.fragments[key]||0)>=80,'Cần 80 mảnh cùng tướng.');p.fragments[key]-=80;addHero(p,key);note(p,'Ghép tướng '+HEROES[key].name);}),
       // TEMPORARY (player testing): with test=true (only ?summonTest=1 on localhost/LAN, see
-      // progression-ui.js) a ten-pull's first four results are a whole hero, hero fragments, an epic
-      // gear and a divine gear (both weapons: gold and diamond cards) and the other six are plain (bronze) common gear or
-      // materials, so a ten-pull is always 2 gold + 2 diamond + 6 bronze; a one-pull is the whole hero. Costs, the wallet and
-      // SUMMON_TABLE are unchanged; normal play never passes test. Remove when testing is done.
+      // progression-ui.js) every card is a whole hero, walking through every hero and every form in
+      // turn (each pull goes on where the last stopped), so each summoning entrance and ultimate can be
+      // checked. Test heroes are shown only, never granted. Costs, the wallet and SUMMON_TABLE are
+      // unchanged; normal play never passes test. Remove when testing is done.
       summon:(count=1,payment='tickets',test=false)=>tx(p=>{
         check(count===1||count===10,'Chọn triệu hồi 1 hoặc 10 lần.');check(payment==='tickets'||payment==='gems','Nguồn thanh toán không hợp lệ.');check(p.equipment.length+count<=500,'Cần thêm chỗ trống trong túi trang bị.');spend(p,{[payment]:count*(payment==='gems'?120:1)});const results=[];
         for(let i=0;i<count;i++){
           let roll=Math.floor(random()*1000000),kind='material';for(const [k,weight]of SUMMON_TABLE){if(roll<weight){kind=k;break;}roll-=weight;}
-          const forced=test===true?(count>=4?(['hero','fragments','epicGear','divineGear'][i]||(i%2?'commonGear':'material')):'hero'):null;
+          const forced=test===true?'hero':null;
           p.summon.total++;p.summon.dry++;p.summon.fragmentDry++;
           if(p.summon.dry>=300)kind='hero';else if(p.summon.fragmentDry>=30&&!['hero','fragments'].includes(kind))kind='fragments';
           if(forced)kind=forced;
           const key=SUMMON_BANNER.hero;let result;
-          if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
+          if(kind==='hero'&&test===true){const all=Object.keys(HEROES).flatMap(h=>(h==='novice'?[1]:[1,2,3]).map(form=>[h,form])),[hero,form]=all[(p.summon.total-1)%all.length];
+            p.summon.dry=0;result={kind,hero,form,rarity:'legendary',name:HERO_FORMS[hero]?.[form-1]?.name||HEROES[hero].name,test:true};}
+          else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
           else if(kind==='fragments'){const count=2+Math.floor(random()*4);p.fragments[key]=(p.fragments[key]||0)+count;p.summon.fragmentDry=0;result={kind,hero:key,count,rarity:'rare',name:`${count} mảnh ${HEROES[key].name}`};}
           else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=gear(p,rarity,forced?'weapon':undefined);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name};}
           else{const resource=['exp','ore','wood','cloth'][Math.floor(random()*4)],count=resource==='exp'?5:8;grant(p,{[resource]:count});result={kind:'material',resource,count,rarity:'common',name:`${RESOURCES[resource][0]} ×${count}`};}

@@ -328,7 +328,7 @@ for family in ['bosses','worldBosses']:
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
-                for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'hero-departures.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css', 'foe-skills.css'])
+                for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'hero-departures.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css', 'foe-skills.css', 'summon-showcase.css'])
 css += '\n'+(root/'src/progression-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/expedition-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/gemwoven/hero-forms.css').read_text(encoding='utf-8')
@@ -348,7 +348,7 @@ shared_art=share_blobs(art)
 resolve_blobs="(function resolve(node){for(const k in node){const v=node[k];if(typeof v==='string'&&v.startsWith('@blob:'))node[k]=ART_BLOBS[+v.slice(6)];else if(v&&typeof v==='object')resolve(v);}})(ART);\n"
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
-                        for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js'])
+                        for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js', 'summon-showcase.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/gemwoven/form-effects.js').read_text(encoding='utf-8')

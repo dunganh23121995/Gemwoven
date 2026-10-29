@@ -166,21 +166,26 @@
   function paragraph(modal,value,cls=''){const p=document.createElement('p');p.textContent=value;if(cls)p.className=cls;modal.body.append(p);return p;}
   const delegate=G.handle;
   function confirmSummon(count,ctx,state){
-    const quote=G.engine.summonQuote(count),modal=makeDialog('summon-confirm',`Triệu Hồi ×${count}`),currency=quote.payment==='tickets'?'Vé Triệu Hồi':'Đá Ngọc';
+    const quote=G.engine.summonQuote(count),modal=makeDialog('summon-confirm',`Triệu Hồi ×${count}`);
     const gems=G.engine.read().wallet.gems,gemCost=count*120,art=document.createElement('div');art.className='confirm-cost';
     // Each case states one fact: what will be spent, or exactly what is missing.
     if(quote.enough){
-      art.innerHTML=`<span class="cost-chip">${img(quote.payment==='tickets'?'ticket':'mana')}<strong>${fmt(quote.cost)} ${currency}</strong></span>`;modal.body.append(art);
-      paragraph(modal,quote.payment==='tickets'?`Dùng ${fmt(quote.cost)} trong ${fmt(quote.tickets)} vé đang có.`:`Bạn có ${fmt(quote.tickets)} vé, chưa đủ cho lượt ×${count}. Lượt này dùng ${fmt(quote.cost)} trong ${fmt(gems)} Đá Ngọc đang có.`);
+      // One large figure (what this pull costs), then the balance before and after it.
+      const tickets=quote.payment==='tickets',have=tickets?quote.tickets:gems;
+      art.innerHTML=`<span class="cost-chip">${img(tickets?'ticket':'mana')}<strong>${fmt(quote.cost)}</strong><small>${tickets?'Vé Triệu Hồi':'Đá Ngọc'}</small></span>`;modal.body.append(art);
+      paragraph(modal,`Đang có ${fmt(have)} · còn ${fmt(have-quote.cost)} sau lượt này`,'confirm-balance');
+      if(!tickets)paragraph(modal,`Chưa đủ vé cho lượt ×${count} (đang có ${fmt(quote.tickets)}), nên lượt này dùng Đá Ngọc.`,'confirm-note');
     }else{
       art.classList.add('short');art.innerHTML=`<span class="cost-chip">${img('ticket')}<span class="cost-text"><strong>${fmt(count)} vé</strong><small>Đang có ${fmt(quote.tickets)}</small></span></span><b>hoặc</b><span class="cost-chip">${img('mana')}<span class="cost-text"><strong>${fmt(gemCost)} Đá Ngọc</strong><small>Đang có ${fmt(gems)}</small></span></span>`;modal.body.append(art);
       paragraph(modal,'Chưa đủ vé hoặc Đá Ngọc cho lượt này. Bạn chưa bị trừ vật phẩm. Vé nhận thêm từ nhiệm vụ ngày và mốc cấp tướng.');
     }
-    const confirm=modalButton(modal,quote.enough?'Xác Nhận Dùng '+currency:'Chưa Đủ Tài Nguyên',()=>{
+    // Later on the left, the pull itself on the right: two equal buttons on one row.
+    modalButton(modal,'Để Sau',()=>modal.close(),false,true);
+    const confirm=modalButton(modal,quote.enough?'Triệu Hồi':'Chưa Đủ',()=>{
       const fresh=G.engine.summonQuote(count);
       if(fresh.payment!==quote.payment||fresh.enough!==quote.enough){modal.close();confirmSummon(count,ctx,state);return;}
       confirm.disabled=true;modal.close();delegate('do:summon',{dataset:{count:String(count),payment:quote.payment}},ctx,state);
-    },!quote.enough);confirm.id='confirm-summon';if(quote.enough)confirm.setAttribute('autofocus','');modalButton(modal,'Để Sau',()=>modal.close(),false,true);modal.present();
+    },!quote.enough);confirm.id='confirm-summon';if(quote.enough)confirm.setAttribute('autofocus','');modal.present();
   }
   function stagePreview(el,p,index,state){
     const e=M.encounter('campaign',index),open=index<=p.campaign.cleared+1,quote=M.campaignRewardPreview(p,index,1),best=p.campaign.stars[index]||0;

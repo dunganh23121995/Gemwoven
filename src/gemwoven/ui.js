@@ -232,6 +232,8 @@
     // Dialogs centre on the game frame, not on the window behind the review sidebar.
     const frame=viewport.getBoundingClientRect();
     root.style.setProperty('--frame-cx',`${frame.left+frame.width/2}px`);root.style.setProperty('--frame-w',`${frame.width||941*scale}px`);
+    // The summon screen: a phone-sized frame (390 x 844) filling a phone, scaled up on tablets and computers.
+    root.style.setProperty('--summon-scale',String(Math.min((mobile?width:width-24)/390,(mobile?height:height-24)/844)));
   }
   function nodeBy(id){return scene.querySelector(`[data-node="${state.screen}.${id}"]`);}
   function changeText(id,value){const el=scene.querySelector(`[data-copy="${state.screen}.${id}"]`);if(el)el.textContent=value;}

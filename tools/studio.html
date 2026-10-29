@@ -54,7 +54,7 @@ const $=id=>document.getElementById(id),params=new URLSearchParams(location.sear
 function md(text){
   const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const inline=s=>esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
-  const lines=text.split('\n'),out=[];let i=0;
+  const lines=text.split(/\r?\n/),out=[];let i=0;   // Windows (CRLF) files too
   while(i<lines.length){
     const l=lines[i];
     if(/^```/.test(l)){const code=[];i++;while(i<lines.length&&!/^```/.test(lines[i]))code.push(lines[i++]);i++;out.push('<pre><code>'+esc(code.join('\n'))+'</code></pre>');continue;}
@@ -64,7 +64,8 @@ function md(text){
     if(/^---+$/.test(l)){out.push('<hr>');i++;continue;}
     if(/^\s*([-*]|\d+\.) /.test(l)){const ordered=/^\s*\d+\./.test(l),items=[];while(i<lines.length&&/^\s*([-*]|\d+\.) |^\s{2,}\S/.test(lines[i])){if(/^\s*([-*]|\d+\.) /.test(lines[i]))items.push(lines[i].replace(/^\s*([-*]|\d+\.) /,''));else items[items.length-1]+=' '+lines[i].trim();i++;}
       out.push(`<${ordered?'ol':'ul'}>`+items.map(t=>'<li>'+inline(t)+'</li>').join('')+`</${ordered?'ol':'ul'}>`);continue;}
-    if(l.trim()){const para=[];while(i<lines.length&&lines[i].trim()&&!/^(#|\||```|---|\s*([-*]|\d+\.) )/.test(lines[i]))para.push(lines[i++]);out.push('<p>'+inline(para.join(' '))+'</p>');continue;}
+    // A paragraph always takes its first line, so no line can stall the loop.
+    if(l.trim()){const para=[lines[i++]];while(i<lines.length&&lines[i].trim()&&!/^(#|\||```|---|\s*([-*]|\d+\.) )/.test(lines[i]))para.push(lines[i++]);out.push('<p>'+inline(para.join(' '))+'</p>');continue;}
     i++;
   }
   return out.join('\n');

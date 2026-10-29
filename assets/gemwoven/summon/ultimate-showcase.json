@@ -11,8 +11,8 @@
       "sounds": [["ult-charge", 0], ["ult-whoosh", 1700]]
     },
     "2": {
-      "sheet": "assets/heroes/forms/fire/form-2/skill.webp", "cols": 3, "rows": 2,
-      "frames": [[0, 0], [1, 450], [2, 900], [3, 1900], [4, 2010], [5, 2700]], "end": 3250,
+      "sheet": "assets/heroes/forms/fire/form-2/skill.webp", "cols": 4, "rows": 3,
+      "frames": [[0, 0], [1, 450], [2, 900], [1, 1180], [3, 1260], [4, 1340], [5, 1420], [6, 1500], [7, 1880], [8, 1940], [9, 2060], [10, 2700]], "end": 3250,
       "wave": {"file": "assets/fx/heroes/fire/arc2s.webp", "cols": 4, "rows": 1, "at": 2010, "ms": 420, "size": 0.9},
       "impact": {"file": "assets/fx/heroes/fire/impact2.webp", "cols": 4, "rows": 1, "at": 2430, "ms": 560, "size": 1.25},
       "sounds": [["ult-charge", 0], ["ult-whoosh", 1800]]

@@ -11326,7 +11326,8 @@
       "timing": {},
       "emerge": "assets/heroes/forms/shadow/form-3/showcase/emerge.webp",
       "rift": "assets/heroes/forms/shadow/form-3/showcase/rift.webp"
-    }
+    },
+    "bodyPx": 205.0
   },
   "show-shadow-1": {
     "file": "assets/heroes/forms/shadow/form-1/showcase/poster.png",
@@ -11367,7 +11368,8 @@
         ]
       },
       "rift": "assets/heroes/forms/shadow/form-1/showcase/rift.webp"
-    }
+    },
+    "bodyPx": 211.0
   },
   "show-shadow-2": {
     "file": "assets/heroes/forms/shadow/form-2/showcase/poster.png",
@@ -11397,7 +11399,8 @@
       ],
       "timing": {},
       "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
-    }
+    },
+    "bodyPx": 211.0
   },
   "show-earth-1": {
     "file": "assets/heroes/forms/earth/form-1/showcase/poster.png",
@@ -11428,6 +11431,7 @@
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-1/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 16.27,
     "headFit": 1.0
   },
@@ -11460,6 +11464,7 @@
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-3/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 15.13,
     "headFit": 1.0753
   },
@@ -11503,7 +11508,8 @@
       },
       "entrance": "assets/heroes/forms/fire/form-1/showcase/entrance.webp"
     },
-    "headPx": 13.68,
+    "bodyPx": 351.67,
+    "headPx": 22.8,
     "headFit": 1.0
   },
   "show-fire-2": {
@@ -11556,7 +11562,8 @@
       },
       "entrance": "assets/heroes/forms/fire/form-2/showcase/entrance.webp"
     },
-    "headPx": 12.33,
+    "bodyPx": 346.67,
+    "headPx": 20.55,
     "headFit": 1.1095
   },
   "show-fire-3": {
@@ -11599,7 +11606,8 @@
       },
       "entrance": "assets/heroes/forms/fire/form-3/showcase/entrance.webp"
     },
-    "headPx": 10.64,
+    "bodyPx": 351.67,
+    "headPx": 17.733,
     "headFit": 1.2857
   },
   "show-ice-1": {
@@ -11642,6 +11650,7 @@
       },
       "entrance": "assets/heroes/forms/ice/form-1/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 11.83,
     "headFit": 1.0
   },
@@ -11685,6 +11694,7 @@
       },
       "entrance": "assets/heroes/forms/ice/form-2/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 11.1,
     "headFit": 1.0658
   },
@@ -11728,7 +11738,8 @@
       },
       "entrance": "assets/heroes/forms/ice/form-3/showcase/entrance.webp"
     },
-    "headPx": 11.5,
+    "bodyPx": 422.0,
+    "headPx": 23.0,
     "headFit": 1.0238
   },
   "show-lightning-1": {
@@ -11760,6 +11771,7 @@
       "timing": {},
       "entrance": "assets/heroes/forms/lightning/form-1/showcase/entrance.webp"
     },
+    "bodyPx": 209.0,
     "headPx": 13.16,
     "headFit": 1.0
   },
@@ -11803,6 +11815,7 @@
       },
       "entrance": "assets/heroes/forms/lightning/form-2/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 13.36,
     "headFit": 1
   },
@@ -11835,7 +11848,8 @@
       "timing": {},
       "entrance": "assets/heroes/forms/lightning/form-3/showcase/entrance.webp"
     },
-    "headPx": 11.84,
+    "bodyPx": 412.0,
+    "headPx": 23.68,
     "headFit": 1.0955
   },
   "show-novice-1": {
@@ -11878,6 +11892,7 @@
       },
       "entrance": "assets/heroes/forms/novice/form-1/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 16.5,
     "headFit": 1.0
   },
@@ -11910,6 +11925,7 @@
       "timing": {},
       "entrance": "assets/heroes/forms/earth/form-2/showcase/entrance.webp"
     },
+    "bodyPx": 211.0,
     "headPx": 16.16,
     "headFit": 1.0068
   },
@@ -12194,8 +12210,7 @@
       "crown": 0.2890625,
       "foot": 0.97265625,
       "x": 0.53125
-    },
-    "headPx": 12.06
+    }
   },
   "ulti-fire-2-wave": {
     "file": "assets/fx/heroes/fire/arc2s.webp",
@@ -12209,8 +12224,8 @@
   },
   "ulti-fire-2": {
     "sheet": "assets/heroes/forms/fire/form-2/skill.webp",
-    "cols": 3,
-    "rows": 2,
+    "cols": 4,
+    "rows": 3,
     "frames": [
       [
         0,
@@ -12225,15 +12240,39 @@
         900
       ],
       [
+        1,
+        1180
+      ],
+      [
         3,
-        1900
+        1260
       ],
       [
         4,
-        2010
+        1340
       ],
       [
         5,
+        1420
+      ],
+      [
+        6,
+        1500
+      ],
+      [
+        7,
+        1880
+      ],
+      [
+        8,
+        1940
+      ],
+      [
+        9,
+        2060
+      ],
+      [
+        10,
         2700
       ]
     ],
@@ -12270,15 +12309,14 @@
     "width": 3680,
     "height": 2760,
     "cell": [
-      1226,
-      1380
+      920,
+      920
     ],
     "body": {
-      "crown": 0.13333333333333333,
-      "foot": 1.0,
-      "x": 0.6117455138662317
-    },
-    "headPx": 49.645
+      "crown": 0.2,
+      "foot": 0.941304347826087,
+      "x": 0.5114130434782609
+    }
   },
   "ulti-fire-3-wave": {
     "file": "assets/fx/heroes/fire/sweep3.webp",
@@ -12360,8 +12398,391 @@
       "crown": 0.41015625,
       "foot": 0.93359375,
       "x": 0.5068359375
-    },
-    "headPx": 13.826
+    }
+  },
+  "cmove-novice-1": {
+    "file": "assets/heroes/novice/run.webp",
+    "cols": 2,
+    "rows": 2,
+    "count": 4,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.5,
+    "cellPx": 256,
+    "bodyPx": 177
+  },
+  "cpose-novice-1": {
+    "file": "assets/heroes/novice/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 120,
+    "headPx": 13.5,
+    "cellPx": 256,
+    "bodyPx": 177
+  },
+  "cmove-fire-1": {
+    "file": "assets/reimagined/heroes/fire/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 12.06,
+    "cellPx": 256,
+    "bodyPx": 163
+  },
+  "cpose-fire-1": {
+    "file": "assets/reimagined/heroes/fire/smash.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 12.06,
+    "cellPx": 256,
+    "bodyPx": 163
+  },
+  "cmove-fire-2": {
+    "file": "assets/heroes/forms/fire/form-2/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.6172,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 12.08,
+    "cellPx": 256,
+    "bodyPx": 196
+  },
+  "cpose-fire-2": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cols": 4,
+    "rows": 3,
+    "count": 11,
+    "scale": 1.3117,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 12.08,
+    "cellPx": 256,
+    "bodyPx": 196
+  },
+  "cmove-fire-3": {
+    "file": "assets/heroes/forms/fire/form-3/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.6957,
+    "footY": 0.94,
+    "ms": 90,
+    "headPx": 11.51,
+    "cellPx": 256,
+    "bodyPx": 223
+  },
+  "cpose-fire-3": {
+    "file": "assets/heroes/forms/fire/form-3/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.665,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 11.51,
+    "cellPx": 256,
+    "bodyPx": 223
+  },
+  "cmove-ice-1": {
+    "file": "assets/reimagined/heroes/ice/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 12.08,
+    "cellPx": 256,
+    "bodyPx": 171
+  },
+  "cpose-ice-1": {
+    "file": "assets/reimagined/heroes/ice/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 12.08,
+    "cellPx": 256,
+    "bodyPx": 171
+  },
+  "cmove-ice-2": {
+    "file": "assets/heroes/forms/ice/form-2/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.78,
+    "cellPx": 256,
+    "bodyPx": 197
+  },
+  "cpose-ice-2": {
+    "file": "assets/heroes/forms/ice/form-2/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.78,
+    "cellPx": 256,
+    "bodyPx": 197
+  },
+  "cmove-ice-3": {
+    "file": "assets/heroes/forms/ice/form-3/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 12.24,
+    "cellPx": 256,
+    "bodyPx": 191
+  },
+  "cpose-ice-3": {
+    "file": "assets/heroes/forms/ice/form-3/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 12.24,
+    "cellPx": 256,
+    "bodyPx": 191
+  },
+  "cmove-earth-1": {
+    "file": "assets/reimagined/heroes/earth/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 9.8,
+    "cellPx": 256,
+    "bodyPx": 143
+  },
+  "cpose-earth-1": {
+    "file": "assets/reimagined/heroes/earth/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 9.8,
+    "cellPx": 256,
+    "bodyPx": 143
+  },
+  "cmove-earth-2": {
+    "file": "assets/heroes/forms/earth/form-2/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.1765,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 15.6,
+    "cellPx": 256,
+    "bodyPx": 189
+  },
+  "cpose-earth-2": {
+    "file": "assets/heroes/forms/earth/form-2/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.1765,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 15.6,
+    "cellPx": 256,
+    "bodyPx": 189
+  },
+  "cmove-earth-3": {
+    "file": "assets/heroes/forms/earth/form-3/run.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.1765,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.87,
+    "cellPx": 256,
+    "bodyPx": 191
+  },
+  "cpose-earth-3": {
+    "file": "assets/heroes/forms/earth/form-3/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.1765,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.87,
+    "cellPx": 256,
+    "bodyPx": 191
+  },
+  "cmove-lightning-1": {
+    "file": "assets/reimagined/heroes/lightning/hover.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 11.1,
+    "cellPx": 256,
+    "bodyPx": 169
+  },
+  "cpose-lightning-1": {
+    "file": "assets/reimagined/heroes/lightning/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 150,
+    "headPx": 11.1,
+    "cellPx": 256,
+    "bodyPx": 169
+  },
+  "cmove-lightning-2": {
+    "file": "assets/heroes/forms/lightning/form-2/hover.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 110,
+    "headPx": 11.99,
+    "cellPx": 256,
+    "bodyPx": 189
+  },
+  "cpose-lightning-2": {
+    "file": "assets/heroes/forms/lightning/form-2/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.375,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 11.99,
+    "cellPx": 256,
+    "bodyPx": 189
+  },
+  "cmove-lightning-3": {
+    "file": "assets/heroes/forms/lightning/form-3/hover.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 110,
+    "headPx": 13.34,
+    "cellPx": 256,
+    "bodyPx": 195
+  },
+  "cpose-lightning-3": {
+    "file": "assets/heroes/forms/lightning/form-3/skill.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.375,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.34,
+    "cellPx": 256,
+    "bodyPx": 195
+  },
+  "cmove-shadow-1": {
+    "file": "assets/heroes/shadow/hover.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.7,
+    "cellPx": 256,
+    "bodyPx": 161
+  },
+  "cpose-shadow-1": {
+    "file": "assets/heroes/shadow/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 13.7,
+    "cellPx": 256,
+    "bodyPx": 161
+  },
+  "cmove-shadow-2": {
+    "file": "assets/heroes/forms/shadow/form-2/hover.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 16.03,
+    "cellPx": 256,
+    "bodyPx": 188
+  },
+  "cpose-shadow-2": {
+    "file": "assets/heroes/forms/shadow/form-2/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 16.03,
+    "cellPx": 256,
+    "bodyPx": 188
+  },
+  "cmove-shadow-3": {
+    "file": "assets/heroes/forms/shadow/form-3/hover.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.087,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 15.07,
+    "cellPx": 256,
+    "bodyPx": 203
+  },
+  "cpose-shadow-3": {
+    "file": "assets/heroes/forms/shadow/form-3/cast.webp",
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "scale": 1.053,
+    "footY": 0.94,
+    "ms": 100,
+    "headPx": 15.07,
+    "cellPx": 256,
+    "bodyPx": 203
   },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",
