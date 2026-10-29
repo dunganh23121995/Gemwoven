@@ -1,60 +1,98 @@
 {
   "touch": {
     "file": "assets/audio/summon/touch.ogg",
-    "duration": 1.4,
-    "what": "small water splash, softened",
+    "duration": 1.7,
+    "what": "one soft wind-chime pipe (wooden hammer)",
     "source": {
-      "id": "398039",
-      "title": "water splash 2",
-      "author": "swordofkings128",
+      "id": "222893",
+      "title": "Wind Chimes 02.wav",
+      "author": "Adelantemos",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/swordofkings128/sounds/398039/",
-      "sha256": "6e71f4954416fe3e15f1feb7c4858194585056c180145bb8977dc12cd206a1ba"
+      "url": "https://freesound.org/people/Adelantemos/sounds/222893/",
+      "sha256": "3fd2f6e204e6cfd9d2b5c9a5debd7951f035554e8672ae9e8288f3e20539c5d8"
     },
     "excerpt": [
-      0.0,
-      1.4
+      53.25,
+      54.95
     ],
-    "peak": 0.2,
-    "rms": 0.008
+    "peak": 0.105,
+    "rms": 0.03
   },
   "gold": {
     "file": "assets/audio/summon/gold.ogg",
-    "duration": 4.0,
-    "what": "low singing bowl, softly struck",
+    "duration": 2.8,
+    "what": "tingsha, softly rung",
     "source": {
-      "id": "170672",
-      "title": "Singing bowl, low and quiet",
-      "author": "eliasheuninck",
+      "id": "435074",
+      "title": "Tingsha Cymbal",
+      "author": "steffcaffrey",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/eliasheuninck/sounds/170672/",
-      "sha256": "89e9ad3a9127d7d914f95280ff64e16b05232c4458750476883a237581a47fcc"
+      "url": "https://freesound.org/people/steffcaffrey/sounds/435074/",
+      "sha256": "c21f4d8a2031203ac8ac9b380fe68558093d7e752f463ff04ab2d97936002ab6"
     },
     "excerpt": [
       0.0,
-      4.0
+      2.8
     ],
-    "peak": 0.217,
-    "rms": 0.06
+    "peak": 0.16,
+    "rms": 0.02
   },
   "bell": {
     "file": "assets/audio/summon/bell.ogg",
-    "duration": 6.5,
-    "what": "deep temple bell, Daitokuji",
+    "duration": 1.48,
+    "what": "small crystal bell",
     "source": {
-      "id": "131348",
-      "title": "Bell at Daitokuji temple,kyoto.wav",
-      "author": "nahmandub",
+      "id": "614832",
+      "title": "2022-01-14-crystal-bell-08.flac",
+      "author": "arseniiv",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/nahmandub/sounds/131348/",
-      "sha256": "c111ac138f867e07ea2a62ce0b75e9bf27ed9cd17fcaa6cfe0803f8252418bf2"
+      "url": "https://freesound.org/people/arseniiv/sounds/614832/",
+      "sha256": "6c1fc1d0d685aefd5a01f4a287c9237859935e497c7ece78f298b7ff3240fb05"
     },
     "excerpt": [
       0.0,
-      6.5
+      1.48
     ],
-    "peak": 0.24,
-    "rms": 0.017
+    "peak": 0.2,
+    "rms": 0.012
+  },
+  "rise": {
+    "file": "assets/audio/summon/rise.ogg",
+    "duration": 2.25,
+    "what": "suspended cymbal roll with yarn mallets, swelling",
+    "source": {
+      "id": "711620",
+      "title": "Cymbal roll",
+      "author": "josh.stovall",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/josh.stovall/sounds/711620/",
+      "sha256": "06876ac34604f8f3ab70a65e47a41841ff7c0a5e4341ad0b5de6f56b6250e9f5"
+    },
+    "excerpt": [
+      2.5,
+      4.75
+    ],
+    "peak": 0.28,
+    "rms": 0.034
+  },
+  "strike": {
+    "file": "assets/audio/summon/strike.ogg",
+    "duration": 9.0,
+    "what": "large tam-tam struck, long decay",
+    "source": {
+      "id": "316642",
+      "title": "gong.aiff",
+      "author": "bevibeldesign",
+      "license": "CC0-1.0",
+      "url": "https://freesound.org/people/bevibeldesign/sounds/316642/",
+      "sha256": "a3173ed935cd251ad6bbf864e1e909e04f996ac2398a0aaeec11e9cf73f01b86"
+    },
+    "excerpt": [
+      0.0,
+      9.0
+    ],
+    "peak": 0.42,
+    "rms": 0.058
   },
   "hero": {
     "file": "assets/audio/summon/hero.ogg",
@@ -72,50 +110,83 @@
       0.2,
       8.1
     ],
-    "peak": 0.24,
-    "rms": 0.042
-  },
-  "ult-charge": {
-    "file": "assets/audio/summon/ult-charge.ogg",
-    "duration": 1.7,
-    "what": "Mika's fire swell (combat)",
-    "source": {
-      "file": "assets/audio/reimagined/mika-flame-charge.wav",
-      "credits": "assets/audio/mika-nori-manifest.json"
-    },
     "peak": 0.22,
-    "rms": 0.052
+    "rms": 0.038
   },
-  "ult-whoosh": {
-    "file": "assets/audio/summon/ult-whoosh.ogg",
-    "duration": 3.857,
-    "what": "Mika's flame whoosh (combat)",
+  "sting-fire": {
+    "file": "assets/audio/summon/sting-fire.ogg",
+    "duration": 1.4,
+    "what": "Mika: flames engulf (form 3 combat)",
     "source": {
-      "file": "assets/audio/reimagined/mika-flame-whoosh.wav",
-      "credits": "assets/audio/mika-nori-manifest.json"
+      "file": "assets/audio/hero-forms/fire/f3-engulf.wav",
+      "credits": "the hero's combat sound manifest"
     },
-    "peak": 0.26,
-    "rms": 0.05
+    "peak": 0.3,
+    "rms": 0.065
+  },
+  "sting-ice": {
+    "file": "assets/audio/summon/sting-ice.ogg",
+    "duration": 1.0,
+    "what": "Yuki: ice freezes (form 2 combat)",
+    "source": {
+      "file": "assets/audio/hero-forms/ice/f2-freeze.wav",
+      "credits": "the hero's combat sound manifest"
+    },
+    "peak": 0.3,
+    "rms": 0.01
+  },
+  "sting-earth": {
+    "file": "assets/audio/summon/sting-earth.ogg",
+    "duration": 2.45,
+    "what": "Nori: leaves rustle (combat)",
+    "source": {
+      "file": "assets/audio/hero-forms/earth/leaves.wav",
+      "credits": "the hero's combat sound manifest"
+    },
+    "peak": 0.28,
+    "rms": 0.011
+  },
+  "sting-lightning": {
+    "file": "assets/audio/summon/sting-lightning.ogg",
+    "duration": 1.75,
+    "what": "Lumi: thunder clap (combat)",
+    "source": {
+      "file": "assets/audio/reimagined/lumi-thunder-rumble.wav",
+      "credits": "the hero's combat sound manifest"
+    },
+    "peak": 0.32,
+    "rms": 0.044
+  },
+  "sting-shadow": {
+    "file": "assets/audio/summon/sting-shadow.ogg",
+    "duration": 1.05,
+    "what": "Noct: shadow mist (combat)",
+    "source": {
+      "file": "assets/audio/noct-sfx/mist.wav",
+      "credits": "the hero's combat sound manifest"
+    },
+    "peak": 0.28,
+    "rms": 0.053
   },
   "drone": {
     "file": "assets/audio/summon/drone.ogg",
     "duration": 30.0,
-    "what": "harmonium drone",
+    "what": "30-inch chau gong drone in a church",
     "loop": true,
     "source": {
-      "id": "264442",
-      "title": "Harmonium Drone2",
-      "author": "easy_thunder",
+      "id": "647596",
+      "title": "Gong in Church (Drone)",
+      "author": "bone666138",
       "license": "CC0-1.0",
-      "url": "https://freesound.org/people/easy_thunder/sounds/264442/",
-      "sha256": "c0810f82b91405fbc13912e4915233b983ddc4ac27143182efdf7b1afc72fb50"
+      "url": "https://freesound.org/people/bone666138/sounds/647596/",
+      "sha256": "41e6fb441eb4e9b18c49b4c2f1e197951fe70a8300c2e581cf23e18688f2ad2e"
     },
     "excerpt": [
-      46.0,
-      77.5
+      781.5,
+      813.0
     ],
-    "peak": 0.136,
-    "rms": 0.04
+    "peak": 0.086,
+    "rms": 0.03
   },
   "ambience": {
     "file": "assets/audio/summon/ambience.ogg",

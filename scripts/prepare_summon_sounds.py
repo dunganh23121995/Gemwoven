@@ -1,8 +1,12 @@
-"""Summon reveal sounds (src/gemwoven/summon-cinematic.js), meant to feel sacred: one clean real
-CC0 recording per cue (a harmonium drone, a soft singing bowl, a deep temple bell, a wordless held
-choir "ah", a softened water touch), kept gentle: few cues, low levels, low-passed,
-minimally processed (excerpt, gentle high-pass, gain, edge fades; the natural attack and decay are
-kept; no layering, pitch/time change, synthesis or limiting).
+"""Summon reveal sounds (src/gemwoven/summon-cinematic.js). The dealing stays calm and quiet; a whole
+hero arrives in grandeur. One clean real CC0 recording per cue, minimally processed (excerpt, gentle
+high/low-pass, gain, edge fades; the natural attack and decay are kept; no layering, pitch/time change,
+synthesis or limiting):
+- calm: a soft wind-chime touch as a card lands, a tingsha for silver, a small crystal bell for gold,
+  over a deep church gong drone and, quieter, the night lake;
+- a whole hero: a suspended-cymbal roll swells in the dark, a large tam-tam strikes as its realm
+  appears, a held choir "ah" rises under it, and the hero's own element answers (its sting, taken from
+  its combat set and credited there).
 
 Sources live in assets/audio/sources/freesound/<id>-<slug>/ (source.json: title, author, licence,
 URL, SHA-256). Output: assets/audio/summon/*.ogg and assets/audio/summon/summon-sounds.json, which
@@ -18,24 +22,26 @@ SRC = ROOT / "assets/audio/sources/freesound"
 OUT = ROOT / "assets/audio/summon"
 RATE = 44100
 
-# Gentle and sacred (the round-3 set was too busy and bright): few, soft cues, all low-passed so
-# nothing is harsh, under a calm harmonium drone. A card landing is only a soft touch of water.
 # cue: (source id, start s, end s, high-pass Hz, low-pass Hz, fade-in ms, fade-out ms, target rms, peak cap, what it is)
 CUES = {
-    "touch": ("398039", 0.00, 1.40, 120, 3200, 4, 450, .05, .2, "small water splash, softened"),
-    "gold": ("170672", 0.00, 4.00, 80, 2600, 60, 1600, .06, .22, "low singing bowl, softly struck"),
-    "bell": ("131348", 0.00, 6.50, 50, 2400, 20, 2600, .06, .24, "deep temple bell, Daitokuji"),
-    "hero": ("763910", 0.20, 8.10, 120, 3600, 700, 2200, .07, .24, "crowd singing a held 'ah' (wordless)"),
+    "touch": ("222893", 53.25, 54.95, 150, 6500, 4, 700, .03, .14, "one soft wind-chime pipe (wooden hammer)"),
+    "gold": ("435074", 0.00, 2.80, 220, 7000, 2, 1200, .035, .16, "tingsha, softly rung"),
+    "bell": ("614832", 0.00, 1.48, 150, 8000, 2, 500, .04, .2, "small crystal bell"),
+    "rise": ("711620", 2.50, 4.75, 50, 9000, 400, 180, .06, .28, "suspended cymbal roll with yarn mallets, swelling"),
+    "strike": ("316642", 0.00, 9.00, 35, 5000, 3, 3800, .09, .42, "large tam-tam struck, long decay"),
+    "hero": ("763910", 0.20, 8.10, 120, 3600, 700, 2200, .06, .22, "crowd singing a held 'ah' (wordless)"),
 }
-# The hero's own ultimate sounds for the spotlight's ultimate showcase: Mika's combat fire swell and
-# whoosh (assets/audio/reimagined, credited with her combat set), only softened here.
+# A whole hero's own element answers the strike: one cue of its combat set (credited with that set).
 OWN = {
-    "ult-charge": ("assets/audio/reimagined/mika-flame-charge.wav", 3200, 30, 500, .06, .22, "Mika's fire swell (combat)"),
-    "ult-whoosh": ("assets/audio/reimagined/mika-flame-whoosh.wav", 3200, 10, 1400, .07, .26, "Mika's flame whoosh (combat)"),
+    "sting-fire": ("assets/audio/hero-forms/fire/f3-engulf.wav", 9000, 5, 400, .07, .3, "Mika: flames engulf (form 3 combat)"),
+    "sting-ice": ("assets/audio/hero-forms/ice/f2-freeze.wav", 9000, 5, 300, .07, .3, "Yuki: ice freezes (form 2 combat)"),
+    "sting-earth": ("assets/audio/hero-forms/earth/leaves.wav", 9000, 20, 700, .06, .28, "Nori: leaves rustle (combat)"),
+    "sting-lightning": ("assets/audio/reimagined/lumi-thunder-rumble.wav", 9000, 5, 300, .07, .32, "Lumi: thunder clap (combat)"),
+    "sting-shadow": ("assets/audio/noct-sfx/mist.wav", 9000, 5, 300, .06, .28, "Noct: shadow mist (combat)"),
 }
-# Beds that loop under the screen: a calm harmonium drone and, quieter, the night lake.
+# Beds that loop under the screen: a deep church gong drone and, quieter, the night lake.
 BEDS = {
-    "drone": ("264442", 30.0, 60, 2200, .04, .16, "harmonium drone"),
+    "drone": ("647596", 30.0, 40, 2400, .03, .13, "30-inch chau gong drone in a church"),
     "ambience": ("445095", 26.0, 150, 3500, .02, .12, "night lake: crickets, frogs, water"),
 }
 
@@ -111,7 +117,7 @@ for name, (sid, start, end, hp, lp, fin, fout, rms, peak, what) in CUES.items():
 for name, (file, lp, fin, fout, rms, peak, what) in OWN.items():
     x = level(fades(lowpass(decode(ROOT / file), lp), fin, fout), rms, peak)
     out = write(x, name)
-    manifest[name] = {"file": out.relative_to(ROOT).as_posix(), "duration": round(len(x) / RATE, 3), "what": what, "source": {"file": file, "credits": "assets/audio/mika-nori-manifest.json"},
+    manifest[name] = {"file": out.relative_to(ROOT).as_posix(), "duration": round(len(x) / RATE, 3), "what": what, "source": {"file": file, "credits": "the hero's combat sound manifest"},
                       "peak": round(float(np.abs(x).max()), 3), "rms": round(float(np.sqrt((x ** 2).mean())), 3)}
 # Beds: a calm stretch of each recording, made loopable by a 1.5 s crossfade of its own ends.
 for name, (sid, length, hp, lp, rms, peak, what) in BEDS.items():

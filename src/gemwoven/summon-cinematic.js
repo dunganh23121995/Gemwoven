@@ -1,11 +1,12 @@
 /* The reward transaction completes before this presentation starts: nothing here rolls, spends
- * or grants. Cards are dealt in reveal order (bronze first, gold next, diamond last, the whole
+ * or grants. Cards are dealt in reveal order (bronze first, silver next, gold last, the whole
  * hero at the very end): each card is a star that spirals down a whirlwind from the sky (round
  * and round a funnel that narrows as it falls, far side small, dim and behind, near side big,
  * bright and in front), splashes into the lake and only then bounces up into its slot as a card.
- * Cards open by themselves as they land; a whole hero pauses the reveal: the screen darkens, a
- * beam of holy light comes down and the hero steps out (its own entrance, then its showcase loop)
- * until the player taps to go on. Gold and diamond cards shimmer.
+ * The dealing stays calm. Cards open by themselves as they land; a whole hero pauses the reveal in
+ * grandeur: the screen darkens while a cymbal roll swells, and on a tam-tam strike
+ * its own realm opens (a detailed painted scene) and the hero steps out (its own
+ * entrance, its ultimate on a slime, then its showcase loop) until the player taps to go on.
  * All art is generated (assets/gemwoven/summon); code only moves, scales and fades it. Sounds are
  * single real CC0 recordings (scripts/prepare_summon_sounds.py) played at the hub's effects
  * volume, silent when the hub is muted. */
@@ -21,12 +22,17 @@
   // and rare/epic weapons. Bronze: everything else (materials, other gear, plain weapons).
   const weapon=r=>r.kind==='gear'&&r.gear?.slot==='weapon';
   // The hero's height on its spotlight, as a share of what the stage allows.
-  const SPOT_SIZE=.31;
-  const cardType=r=>r.kind==='hero'||(weapon(r)&&RANK[r.rarity]>=4)?'diamond':r.kind==='fragments'||(weapon(r)&&RANK[r.rarity]>=2)?'gold':'bronze';
+  const SPOT_SIZE=.4;
+  // Each hero's own realm on its spotlight: a detailed painted scene (summon-scene-<hero>) that lives
+  // like the hub's scenes (living-motion.js realm()), and its element's light.
+  const REALM={fire:{rgb:'255,128,60'},ice:{rgb:'150,225,255'},earth:{rgb:'170,230,120'},
+    lightning:{rgb:'170,185,255'},shadow:{rgb:'190,140,255'}};
+  const cardType=r=>r.kind==='hero'||(weapon(r)&&RANK[r.rarity]>=4)?'gold':r.kind==='fragments'||(weapon(r)&&RANK[r.rarity]>=2)?'silver':'bronze';
   const premium=r=>cardType(r)!=='bronze';
-  // Reveal order: bronze by rarity, then gold (weapons, then fragments), then diamond with the
+  const isHero=r=>r.kind==='hero'&&cardType(r)==='gold';
+  // Reveal order: bronze by rarity, then silver (weapons, then fragments), then gold with the
   // whole hero at the very end.
-  const order=r=>({bronze:0,gold:10,diamond:20})[cardType(r)]+(r.kind==='hero'?9:r.kind==='fragments'?8:RANK[r.rarity]||0);
+  const order=r=>({bronze:0,silver:10,gold:20})[cardType(r)]+(r.kind==='hero'?9:r.kind==='fragments'?8:RANK[r.rarity]||0);
   const rewardArt=r=>r.kind==='hero'?'hero-'+r.hero:r.kind==='fragments'?(A['fragment-'+r.hero]?'fragment-'+r.hero:'portrait-'+r.hero)
     :r.kind==='gear'?M.SLOT_ART[r.gear.slot]:M.RESOURCES[r.resource]?.[1]||'summon-crystal';
   // A whole hero on its card: the first resting frame of the summoned form's showcase, cropped to its
@@ -36,10 +42,10 @@
     const G=window.GEMWOVEN_GAME,form=r.form||M.heroForm(r.hero,G?.engine?.read?.().heroes?.[r.hero]),show=A[`show-${r.hero}-${form}`];
     const b=show?.sheets&&show.footBounds,src=b&&new URL(show.sheets.idle,document.baseURI).href;if(!src)return '';
     const w=b[2]-b[0],h=b[3]-b[1],cw=show.width,ch=show.height;
-    return `<span class="card-reward card-hero" aria-hidden="true" style="aspect-ratio:${w}/${h};background-image:url('${src.replace(/'/g,'%27')}');background-size:${200*cw/w}% ${400*ch/h}%;background-position:${b[0]/(2*cw-w)*100}% ${b[1]/(4*ch-h)*100}%"></span>`;
+    return `<span class="card-reward card-hero" aria-hidden="true" style="aspect-ratio:${w}/${h};--fit-w:${(86*w/h).toFixed(2)}cqh;background-image:url('${src.replace(/'/g,'%27')}');background-size:${200*cw/w}% ${400*ch/h}%;background-position:${b[0]/(2*cw-w)*100}% ${b[1]/(4*ch-h)*100}%"></span>`;
   };
   // ---- sound: the hub's effects volume and mute (journey-ui.js) apply to every cue ----
-  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['touch','gold','bell','hero','ult-charge','ult-whoosh','ambience','drone']
+  const SOUND_FILES=window.GEMWOVEN_SUMMON_SOUNDS||Object.fromEntries(['touch','gold','bell','rise','strike','hero','ambience','drone',...Object.keys(REALM).map(k=>'sting-'+k)]
     .map(k=>[k,`assets/audio/summon/${k}.ogg`]));
   const Sound={ctx:null,buffers:{},bed:null,wantBed:false,
     level(){const H=window.GemwovenHubAudio;if(H?.muted?.())return 0;const v=H?.levels?.().effects;return Number.isFinite(v)?v/100:1;},
@@ -66,6 +72,11 @@
         if(on&&!bed){const b=this.play(name,{volume:vol,loop:true});if(!b)continue;const g=b.gain.gain,t=this.ctx.currentTime;g.setValueAtTime(0,t);g.linearRampToValueAtTime(vol*this.level(),t+2.2);this.beds[name]=b;}
         if(!on&&bed){const {src,gain}=bed,t=this.ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(0,t+.9);src.stop(t+.95);delete this.beds[name];}
       }
+    },
+    // While a hero stands in its own realm the lake's beds fall to a whisper.
+    duck(on){
+      for(const [name,vol] of [['drone',.45],['ambience',.3]]){const bed=this.beds[name];if(!bed)continue;
+        const g=bed.gain.gain,t=this.ctx.currentTime;g.cancelScheduledValues(t);g.setValueAtTime(g.value,t);g.linearRampToValueAtTime(vol*this.level()*(on?.15:1),t+(on?.6:1.6));}
     }
   };
   const sparkles=n=>Array.from({length:n},(_,i)=>sprite('summon-sparkle','sm-twinkle',`--x:${[8,92,14,86,50][i%5]}%;--y:${[6,12,94,88,-3][i%5]}%;--s:${[26,20,22,18,24][i%5]}px;--d:${-(i*.73).toFixed(2)}s;--wait:${(2.4+i*.6).toFixed(1)}s`)).join('');
@@ -95,12 +106,12 @@
       <button type="button" class="celestial-close" aria-label="Đóng kết quả">×</button>
       <div class="celestial-fx back" aria-hidden="true"></div><div class="celestial-deck" hidden></div><div class="celestial-fx" aria-hidden="true"></div>
       <button type="button" class="celestial-skip">Bỏ qua ›</button>
-      <footer><div class="celestial-again" hidden></div></footer>`;
+      <footer><button type="button" class="gw-btn celestial-again-btn celestial-open-all" hidden>Mở tất cả</button><div class="celestial-again" hidden></div></footer>`;
     document.body.append(modal);
     const deck=modal.querySelector('.celestial-deck'),fx=modal.querySelector('.celestial-fx:not(.back)'),fxBack=modal.querySelector('.celestial-fx.back'),againBox=modal.querySelector('.celestial-again'),status=modal.querySelector('.celestial-status'),
-      skipButton=modal.querySelector('.celestial-skip');
+      skipButton=modal.querySelector('.celestial-skip'),openAllButton=modal.querySelector('.celestial-open-all');
     const reduced=()=>document.documentElement.classList.contains('reduced-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let opened=0,dealt=false,closed=false,completed=false,heroStage=null,again=0;const timers=[],flights=[],stars=new Set();
+    let opened=0,dealt=false,closed=false,completed=false,picking=false,busy=false,heroStage=null,again=0;const timers=[],flights=[],stars=new Set();
     const play=(el,frames,opts)=>el.animate?el.animate(frames,opts):null;
     const later=(ms,fn)=>timers.push(setTimeout(()=>{if(!closed)fn();},ms));
     function layout(){
@@ -122,19 +133,35 @@
     const cards=results.map((r,i)=>{
       const card=document.createElement('button'),art=cardType(r),top=premium(r),R=M.RARITIES[r.rarity];
       card.type='button';card.className=`celestial-card rarity-${r.rarity} card-${art} tier-${top?'premium':'common'} is-waiting`;
-      card.dataset.tier=top?'premium':'common';card.dataset.card=art;card.style.setProperty('--rarity',R.color);
+      card.dataset.tier=top?'premium':'common';card.dataset.card=art;if(isHero(r)&&REALM[r.hero])card.dataset.realm=r.hero;card.style.setProperty('--rarity',R.color);
       const win=A['summon-front-'+art]?.window||[.14,.18,.86,.72];
       card.style.setProperty('--win',`${win[1]*100}% ${(1-win[2])*100}% ${(1-win[3])*100}% ${win[0]*100}%`);
       const plaque=A["summon-front-"+art]?.plaque;if(plaque){card.style.setProperty("--plaque-top",plaque[0]*100+"%");card.style.setProperty("--plaque-h",plaque[1]*100+"%");}
-      card.setAttribute('aria-label',`Thẻ ${i+1} · ${({bronze:'Thẻ đồng',gold:'Thẻ vàng',diamond:'Thẻ kim cương'})[art]} · Chưa mở`);card.setAttribute('aria-pressed','false');
+      card.setAttribute('aria-label',`Thẻ ${i+1} · ${({bronze:'Thẻ đồng',silver:'Thẻ bạc',gold:'Thẻ vàng'})[art]} · Chưa mở`);card.setAttribute('aria-pressed','false');
       const shine=top?`<span class="card-shine" aria-hidden="true">${img('summon-streak')}</span>`:'';
-      card.innerHTML=`${top?img('summon-halo','card-halo'):''}<span class="celestial-card-turn">
+      card.innerHTML=`<span class="celestial-card-turn">
         <span class="celestial-back">${img('summon-back-'+art,'card-art')}${shine}</span>
         <span class="celestial-front" aria-hidden="true"><span class="card-window">${img('summon-back-'+art,'card-panel')}${heroCard(r)||img(rewardArt(r),'card-reward')}</span>${img('summon-front-'+art,'card-art')}${shine}<strong>${esc(r.name)}</strong></span></span>${top?`<span class="card-sparkles" aria-hidden="true">${sparkles(4)}</span>`:''}`;
-      card.onclick=()=>{if(completed&&isHero(r))spotlight(r);};deck.append(card);return card;
+      card.onclick=()=>tap(card,r);deck.append(card);return card;
     });
-    // Cards open on their own as they land: bronze at once, gold and diamond with their shimmer
-    // and a soft bowl or bell. A whole hero opens into its spotlight (see run()).
+    // Cards land face down; the player taps each one to open it (bronze at once, silver and gold with
+    // their shimmer and a soft bowl or bell, a whole hero into its spotlight). An opened hero can be
+    // tapped again to see it again. A hero's card stays face down through its spotlight and turns over
+    // only once the summoning has played out.
+    async function tap(card,r){
+      if(!picking||busy||closed)return;
+      if(card.classList.contains('is-open')){if(isHero(r))spotlight(r);return;}
+      if(isHero(r)){busy=true;await spotlight(r);if(!closed)open(card,r,{quiet:true});busy=false;}else open(card,r);
+      if(opened>=results.length)complete();
+    }
+    // "Mở tất cả": every card still face down opens in turn, the heroes last, each in its spotlight.
+    async function openAll(){
+      if(!picking||busy||closed)return;busy=true;openAllButton.hidden=true;
+      const shut=cards.map((c,i)=>i).filter(i=>!cards[i].classList.contains('is-open'));
+      for(const i of shut.filter(i=>!isHero(results[i]))){open(cards[i],results[i],{quiet:cards[i].dataset.card==='bronze'});if(!reduced())await wait(140);}
+      for(const i of shut.filter(i=>isHero(results[i]))){if(closed)return;await spotlight(results[i]);if(!closed)open(cards[i],results[i],{quiet:true});}
+      busy=false;complete();
+    }
     function open(card,r,{quiet=false}={}){
       if(card.classList.contains('is-open'))return;
       card.classList.add('is-open');card.setAttribute('aria-pressed','true');
@@ -142,7 +169,7 @@
       card.querySelector('.celestial-front').setAttribute('aria-hidden','false');card.querySelector('.celestial-back').setAttribute('aria-hidden','true');
       opened++;status.textContent=`Đã mở ${opened} / ${results.length} thẻ`;
       const kind=card.dataset.card;
-      if(!quiet&&kind!=='bronze'){Sound.play(kind==='diamond'?'bell':'gold',{volume:1,pan:panOf(card)*.6});if(!reduced())later(380,()=>burst(card,kind==='diamond'?8:6));}
+      if(!quiet&&kind!=='bronze'){Sound.play(kind==='gold'?'bell':'gold',{volume:1,pan:panOf(card)*.6});if(!reduced())later(380,()=>burst(card,kind==='gold'?8:6));}
     }
     // Everything is open: summon again (x1 / x10) with the cost the main buttons would charge; the
     // reveal closes and the normal confirmation runs (progression-ui.js), so nothing is spent here.
@@ -179,7 +206,7 @@
     // ---- dealing: a star falls from the sky on its own curved, twisting path ----
     const seeded=seed=>()=>{seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296;};
     function fall(card,index){return new Promise(resolve=>{
-      const kind=card.dataset.card,top=card.dataset.tier==='premium',c=inModal(card);
+      const kind=card.dataset.card,top=card.dataset.tier==='premium',c=inModal(card),tint=REALM[card.dataset.realm]?.rgb;
       const W=c.W,H=c.H,cx=c.x+c.w/2,cy=c.y+c.h/2,rnd=seeded(index*7919+results.length*31+1);
       // A whirlwind: the star circles a vertical axis while it falls (half a wide loop to one loop); the funnel is wide in the sky
       // and narrows to the splash point on the lake (the axis drifts there too). sin(angle) is depth:
@@ -188,7 +215,7 @@
       const I=[cx+(W*.5-cx)*.2+(rnd()-.5)*W*.06,H*(.875+(rnd()-.5)*.03)],top0=-H*.03;
       const axis0=W*(.5+(rnd()-.5)*.12),R0=W*(.4+rnd()*.06),R1=W*.05,turns=.5+rnd()*.5,phase=rnd()*Math.PI*2,spin=index%3===1?-1:1;
       // Slow and gentle: a bronze star takes over four seconds to come down.
-      const dur=kind==='diamond'?4600:top?4500:4300,size=kind==='diamond'?58:top?50:44;
+      const dur=kind==='gold'?4600:top?4500:4300,size=kind==='gold'?58:top?50:44;
       const star=document.createElement('span');star.className=`sm-falling star-${kind}`;star.setAttribute('aria-hidden','true');
       star.innerHTML=img('summon-halo','sm-falling-halo')+sprite('summon-sparkle','sm-falling-core');
       star.style.setProperty('--s',size+'px');fx.append(star);
@@ -208,9 +235,9 @@
         // Far side: smaller, dimmer and a touch soft, but always clearly visible.
         star.style.opacity=(.68+.32*near).toFixed(2);star.style.filter=near<.35?`blur(${((.35-near)*2).toFixed(1)}px)`:'';star.style.zIndex=Math.round(near*100);
         // A soft streak behind the star draws the whirlwind's spiral and fades away.
-        if(u<.97){if(last)trail(last,[x,y],size*grow*(top?.5:.42),kind,near,back);last=[x,y];}
+        if(u<.97){if(last)trail(last,[x,y],size*grow*(top?.5:.42),kind,near,back,tint);last=[x,y];}
         if(u<1){raf=requestAnimationFrame(frame);return;}
-        handle.stop();splash(I[0],I[1],Math.max(80,c.w*(kind==='diamond'?2.3:top?1.9:1.5)),kind==='diamond'?7:top?4:0);
+        handle.stop();splash(I[0],I[1],Math.max(80,c.w*(kind==='gold'?2.3:top?1.9:1.5)),kind==='gold'?7:top?4:0);
         Sound.play('touch',{volume:top?1:.7,pan:(I[0]/W-.5)*.8});
         rise(card,I[0]-cx,I[1]-cy,kind).then(resolve);
       }
@@ -234,10 +261,11 @@
         ctx.fillStyle=`rgba(0,0,0,${1-keep})`;ctx.fillRect(0,0,cv.width,cv.height);ctx.restore();}
       trailRaf=now<trailUntil&&!closed?requestAnimationFrame(t=>fadeTrails(t,now)):0;
     }
-    function trail(from,to,size,kind,near=1,back=false){
+    function trail(from,to,size,kind,near=1,back=false,tint=null){
       const {ctx}=trailCanvas(back?fxBack:fx),o=.6+.4*near;
-      // Diamond trails run through the rainbow, like the star's own prism.
-      const glow=a=>TRAIL[kind]?`rgba(${TRAIL[kind]},${a})`:`hsla(${Math.round(performance.now()/5%360)},95%,78%,${a})`;
+      // Diamond trails run through the rainbow, like the star's own prism; a whole hero's star
+      // glows in its element's colour.
+      const glow=a=>tint?`rgba(${tint},${a})`:TRAIL[kind]?`rgba(${TRAIL[kind]},${a})`:`hsla(${Math.round(performance.now()/5%360)},95%,78%,${a})`;
       ctx.save();ctx.globalCompositeOperation='lighter';
       // A wide soft glow, then a thinner bright core.
       ctx.filter=`blur(${Math.max(2,size*.12).toFixed(1)}px)`;ctx.strokeStyle=glow((.42*o).toFixed(2));ctx.lineWidth=Math.max(6,size*.55);
@@ -248,7 +276,7 @@
     }
     // From the splash the card bounces up out of the water into its slot.
     function rise(card,dx,dy,kind){return new Promise(resolve=>{
-      const top=kind!=='bronze',dur=kind==='diamond'?1150:top?1050:950;
+      const top=kind!=='bronze',dur=kind==='gold'?1150:top?1050:950;
       card.classList.remove('is-waiting');card.classList.add('is-flying');
       const anim=play(card,[
         {transform:`translate(${dx}px,${dy}px) scale(.3)`,opacity:0,filter:'brightness(2.2)'},
@@ -260,101 +288,99 @@
       const land=()=>{if(card.classList.contains('is-landed'))return;card.classList.remove('is-flying');card.classList.add('is-landed');resolve();};
       if(anim)anim.onfinish=land;else later(dur,land);
     });}
-    const isHero=r=>r.kind==='hero'&&cardType(r)==='diamond';
     const wait=ms=>new Promise(res=>later(ms,res));
     const suspense=()=>{modal.classList.add('is-suspense');status.textContent='Mặt hồ rung động… ánh sáng lạ đang tụ lại!';};
     function complete(){
-      if(completed||closed)return;completed=true;dealt=true;
-      modal.classList.remove('is-suspense');skipButton.hidden=true;modal.dataset.phase='complete';
+      if(completed||closed)return;completed=true;openAllButton.hidden=true;modal.dataset.phase='complete';
       status.textContent='Tinh tú đã tìm được chủ nhân';offerAgain();
     }
-    // "Bỏ qua": everything opens at once and the board shows; a hero can be tapped to see it again.
-    function skip(){
-      if(completed||closed)return;dealt=true;timers.forEach(clearTimeout);timers.length=0;stars.forEach(st=>st.stop());
-      flights.forEach(a=>a.playState!=='finished'&&a.finish());fx.replaceChildren();fxBack.replaceChildren();heroStage?.stop();heroStage=null;
-      cards.forEach((card,i)=>{card.classList.remove('is-waiting','is-flying');card.classList.add('is-landed');open(card,results[i],{quiet:true});});
-      complete();
+    // Every card lies face down on the board: the player opens them (tap, or "Mở tất cả").
+    function pick(){
+      if(picking||closed)return;picking=true;dealt=true;
+      modal.classList.remove('is-suspense');skipButton.hidden=true;modal.dataset.phase='pick';
+      openAllButton.hidden=results.length<2;status.textContent='Chạm vào thẻ để mở';
     }
-    // The reveal plays by itself: bronze stars first, a pause of suspense, gold and diamond stars
-    // one by one, each card opening as it lands. A whole hero comes last, alone, and its
-    // spotlight waits for the player's tap before the reveal goes on.
+    // "Bỏ qua": every card lands at once, still face down.
+    function skip(){
+      if(picking||closed)return;dealt=true;timers.forEach(clearTimeout);timers.length=0;stars.forEach(st=>st.stop());
+      flights.forEach(a=>a.playState!=='finished'&&a.finish());fx.replaceChildren();fxBack.replaceChildren();
+      cards.forEach(card=>{card.classList.remove('is-waiting','is-flying');card.classList.add('is-landed');});
+      pick();
+    }
+    // The cards fall by themselves: bronze stars first, a pause of suspense, then silver and gold
+    // stars one by one; each lands face down and waits for the player.
     async function run(){
       deck.hidden=false;layout();modal.dataset.phase='falling';
-      const heroes=cards.map((c,i)=>i).filter(i=>isHero(results[i])),rest=cards.map((c,i)=>i).filter(i=>!heroes.includes(i));
       if(reduced()){
-        // Reduced motion: no fall or splash; cards appear opened, a hero still gets its spotlight.
-        cards.forEach(c=>{c.classList.remove('is-waiting');c.classList.add('is-landed');});
-        rest.forEach(i=>open(cards[i],results[i],{quiet:true}));
-        for(const i of heroes){open(cards[i],results[i],{quiet:true});await spotlight(results[i]);}
-        complete();return;
+        // Reduced motion: no fall or splash; the cards appear face down.
+        cards.forEach(c=>{c.classList.remove('is-waiting');c.classList.add('is-landed');});pick();return;
       }
       status.textContent='Những lá bài rơi xuống mặt hồ…';
       // Each star still falls slowly, but they overlap: bronze about every 0.6 s, a short beat of
-      // suspense, then gold and diamond about every 0.9 s; a ten-pull reaches the hero in ~13 s.
-      let t=300;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium'),others=[],heroLandings=[];
+      // suspense, then silver and gold about every 0.9 s.
+      let t=300;const firstTop=cards.findIndex(c=>c.dataset.tier==='premium'),landings=[];
       cards.forEach((card,i)=>{
-        const top=card.dataset.tier==='premium',hero=heroes.includes(i);
+        const top=card.dataset.tier==='premium';
         if(i===firstTop){later(Math.max(0,t-500),suspense);t+=i?800:400;}
-        const landed=new Promise(res=>later(t,()=>fall(card,i).then(res)));
-        if(hero)heroLandings.push([i,landed]);
-        else others.push(landed.then(()=>{if(dealt)return;if(!top)open(card,results[i]);else later(250,()=>open(card,results[i]));}));
+        landings.push(new Promise(res=>later(t,()=>fall(card,i).then(res))));
         t+=top?900:600;
       });
-      await Promise.all(others);
-      for(const [i,landed] of heroLandings){
-        await landed;if(dealt)return;
-        open(cards[i],results[i],{quiet:true});
-        await spotlight(results[i]);if(dealt)return;
-      }
-      await wait(heroes.length?150:500);complete();
+      await Promise.all(landings);if(dealt)return;
+      await wait(300);pick();
     }
+    openAllButton.onclick=e=>{e.stopPropagation();openAll();};
     skipButton.onclick=e=>{e.stopPropagation();skip();};
 
-    // ---- the whole hero steps out: the screen darkens, a beam of holy light comes down, and the
-    // hero plays its own summoning entrance and then its showcase loop until the player taps ----
+    // ---- a whole hero arrives in grandeur: the lake goes dark while a cymbal roll swells; on the tam-tam strike a flash opens onto the hero's own
+    // realm (its living painted scene; no halo or rays behind the hero), the hero steps out with
+    // its name, title and rarity, and its showcase plays until the player taps ----
+    const STRIKE=2000;   // the cymbal roll peaks here
     function spotlight(r){return new Promise(resolve=>{
       if(closed){resolve();return;}heroStage?.stop();
       const G=window.GEMWOVEN_GAME,form=r.form||M.heroForm(r.hero,G?.engine?.read?.().heroes?.[r.hero]),show=A[`show-${r.hero}-${form}`],H=M.HEROES[r.hero];
-      const stage=document.createElement('div');stage.className='summon-hero-stage';stage.setAttribute('role','dialog');stage.setAttribute('aria-label',`${H.name} · ${H.title}`);
-      const pool=A['summon-beam']?.pool||.93;stage.style.setProperty('--pool',pool);
-      stage.innerHTML=`<div class="summon-hero-dim" aria-hidden="true"></div>${img('summon-beam','sh-beam')}
-        <div class="summon-hero-light" aria-hidden="true">${img('summon-halo','sh-halo back')}${img('summon-orb','sh-orb')}</div>
+      const realm=REALM[r.hero]?r.hero:'',R=REALM[realm]||{rgb:'255,230,170'},scene=A['summon-scene-'+realm];
+      const stage=document.createElement('div');stage.className='summon-hero-stage';stage.dataset.realm=realm;stage.style.setProperty('--realm',R.rgb);
+      stage.setAttribute('role','dialog');stage.setAttribute('aria-label',`${H.name} · ${H.title}`);
+      stage.innerHTML=`<div class="summon-hero-dim" aria-hidden="true"></div>
+        ${scene?`<div class="sh-realm" aria-hidden="true" style="--scene:url('${url('summon-scene-'+realm).replace(/'/g,'%27')}')"></div>`:''}
         <div class="summon-hero-body"><img class="art" src="${esc(url(show?.sheets?`show-${r.hero}-${form}`:'hero-'+r.hero))}" alt=""></div>
-        <div class="summon-hero-sparkles" aria-hidden="true">${Array.from({length:10},(_,i)=>sprite('summon-sparkle','sh-spark',`--x:${[22,78,30,70,50,16,84,36,62,46][i]}%;--y:${[30,26,48,52,14,58,62,40,36,20][i]}%;--s:${[30,26,22,34,28,20,24,18,22,16][i]}px;--d:${-(i*.41).toFixed(2)}s`)).join('')}</div>
-        <div class="summon-hero-name"><strong>${esc(H.name)}</strong></div>`;
+        <div class="sh-flash" aria-hidden="true"></div>
+        <div class="summon-hero-name"><small>Hệ ${esc(H.element)} · ${esc(H.title)}</small><strong>${esc(H.name)}</strong><span class="sh-rank">${esc(M.RARITIES[r.rarity]?.name||'')}</span></div>`;
       modal.append(stage);
+      // The realm lives like the hub's scenes: water flows, lights flicker, birds and butterflies pass.
+      const realmLayer=stage.querySelector('.sh-realm');if(realmLayer)window.GemwovenLivingMotion?.realm(realmLayer,realm,url('summon-scene-'+realm));
       const body=stage.querySelector('.summon-hero-body');
       const asset=show?.sheets?show:A['hero-'+r.hero];
       // Never larger than the drawing itself, so the painted art stays crisp.
       const native=[asset?.bodyPx].filter(Boolean);
-      // Shown a size smaller than the stage allows, so the hero stands inside the beam with room around it.
+      // Shown a size smaller than the stage allows, so the hero stands in its realm with room around it.
       const bodyHeight=Math.min(body.clientHeight*.86*SPOT_SIZE,...native);
       // Every hero and form stands at this one height, measured on the figure itself (crown to soles,
       // head-scale.json bodyPx), not on its drawing's box nor on the head (no headFit here): the
       // combat sheets of the duel below are sized the same way, so the hero never jumps in size.
       const figure=asset?.bodyPx&&asset.bodyAnchor?asset.bodyPx/(asset.height*(asset.bodyAnchor.foot-asset.bodyAnchor.crown)):1;
       window.GEMWOVEN_FORMS?.fitBody?.(body,asset,bodyHeight/figure/(asset?.headFit||1));
-      {const sh=stage.clientHeight||1,feet=body.offsetTop+body.offsetHeight,beamTop=feet-.7*sh*pool,toBeam=y=>((y-beamTop)/(.7*sh)*100).toFixed(1)+'%';
-        stage.style.setProperty('--beam-head',toBeam(feet-bodyHeight*1.08));stage.style.setProperty('--beam-feet',toBeam(feet-bodyHeight*.12));}
       const handle=show?.sheets?window.GemwovenHeroShow?.attach(body,r.hero,form):null;
       if(handle&&form>1&&r.hero!=='novice'){
         body.classList.add('has-hero-form');body.dataset.heroElement=r.hero;body.dataset.heroForm=form;
         if(form===3&&window.GemwovenFormEffects&&A['form-aura-'+r.hero]){const aura=document.createElement('span');aura.className='hero-form-effects';aura.setAttribute('aria-hidden','true');aura.innerHTML=window.GemwovenFormEffects.markup(r.hero,form,A['form-aura-'+r.hero]);body.append(aura);}
       }
-      const calm=reduced(),stepIn=calm?0:1300;
-      if(!calm)body.style.opacity='0';
-      Sound.play('hero',{volume:1});Sound.play('bell',{volume:.55,delay:stepIn});
-      const timersHere=[];
-      // Once the summoning entrance has fully played out, it performs its ultimate once (or, without
-      // one, one of its showcase actions), then rests in its showcase loop.
+      const calm=reduced(),strike=calm?0:STRIKE,timersHere=[];
+      if(!calm){body.style.opacity='0';Sound.play('rise',{volume:.9});}
+      Sound.duck(true);
+      // The tam-tam swells a moment before it peaks, so it is struck just ahead of the flash.
+      timersHere.push(setTimeout(()=>{if(!stage.isConnected)return;Sound.play('strike');Sound.play('hero',{volume:.8,delay:250});
+        if(realm)Sound.play('sting-'+realm,{volume:.9,delay:120});},Math.max(0,strike-180)));
+      // Once the summoning entrance has fully played out, it performs its ultimate on a slime.
       const afterEntrance=()=>timersHere.push(setTimeout(()=>{if(!stage.isConnected||calm)return;
         duel(stage,body,{hero:r.hero,form,bodyHeight},timersHere);},300));
-      // The beam lands first; then the hero steps out of it.
-      timersHere.push(setTimeout(()=>{if(!stage.isConnected)return;body.style.opacity='';if(handle){handle.summon(afterEntrance);return;}
+      timersHere.push(setTimeout(()=>{if(!stage.isConnected)return;
+        stage.classList.add('struck');
+        body.style.opacity='';if(handle){handle.summon(afterEntrance);return;}
         if(!calm)play(body,[{transform:'scale(.6)',opacity:0,filter:'brightness(3)'},{transform:'scale(1)',opacity:1,filter:'none'}],{duration:900,easing:'cubic-bezier(.2,.9,.3,1)'});
-        timersHere.push(setTimeout(afterEntrance,calm?0:900));},stepIn));
-      let ready=false;timersHere.push(setTimeout(()=>{ready=true;},calm?0:stepIn+700));
-      const done=()=>{timersHere.forEach(clearTimeout);handle?.stop();fight?.frame.getAnimations().forEach(a=>a.cancel());stage.remove();if(heroStage?.stage===stage)heroStage=null;resolve();};
+        timersHere.push(setTimeout(afterEntrance,calm?0:900));},strike));
+      let ready=false;timersHere.push(setTimeout(()=>{ready=true;},calm?0:strike+700));
+      const done=()=>{timersHere.forEach(clearTimeout);handle?.stop();fight?.frame.getAnimations().forEach(a=>a.cancel());Sound.duck(false);stage.remove();if(heroStage?.stage===stage)heroStage=null;resolve();};
       heroStage={stage,stop:done};
       const go=()=>{if(!ready||!stage.isConnected)return;if(calm){done();return;}
         const fade=play(stage,[{opacity:1},{opacity:0}],{duration:350,fill:'forwards'});if(fade)fade.onfinish=done;else done();};
@@ -430,7 +456,7 @@
       });
     }
 
-    const observer=new ResizeObserver(()=>{if(!closed&&!deck.hidden&&(completed||modal.dataset.phase==='sky'))layout();});observer.observe(modal);
+    const observer=new ResizeObserver(()=>{if(!closed&&!deck.hidden&&(picking||modal.dataset.phase==='sky'))layout();});observer.observe(modal);
     modal.showModal();
     // The reveal opens from the player's own tap, so audio may start now.
     Sound.init();Sound.ambience(true);

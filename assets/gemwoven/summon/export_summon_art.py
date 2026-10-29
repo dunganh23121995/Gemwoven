@@ -14,9 +14,10 @@ from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "runtime"
-# Three card types (bronze, gold, diamond), drawn tall (about 1:2) in one row per sheet:
-# card-backs-tall/ and card-fronts-tall/ (redrawn from the first and last two of the original six).
-CARDS = {"bronze": 1, "gold": 2, "diamond": 3}
+# Three card types (bronze, silver, gold), drawn tall (about 1:2) in one row per sheet: bronze from
+# card-backs-calm/ and card-fronts-calm/ (the tall set, card-*-tall/, redrawn in a calm palette),
+# silver and gold from card-backs-metal/ and card-fronts-metal/. (sheet suffix, columns, column)
+CARDS = {"bronze": ("calm", 3, 1), "silver": ("metal", 2, 1), "gold": ("metal", 2, 2)}
 
 
 def unmix(img):
@@ -109,9 +110,9 @@ def raw(name):
 
 OUT.mkdir(exist_ok=True)
 meta = {}
-for kind, folder in [("back", "card-backs-tall"), ("front", "card-fronts-tall")]:
-    for name, frame in CARDS.items():
-        card = trim(key_outside(cells(raw(folder), 1, 3)[frame - 1], inside=kind == "front"))
+for kind, folder in [("back", "card-backs"), ("front", "card-fronts")]:
+    for name, (sheet, cols, frame) in CARDS.items():
+        card = trim(key_outside(cells(raw(f"{folder}-{sheet}"), 1, cols)[frame - 1], inside=kind == "front"))
         card = fit(card, 520)
         meta[f"summon-{kind}-{name}"] = save(card, f"{kind}-{name}")
         if kind == "front":
@@ -136,9 +137,8 @@ for i, hero in enumerate(["fire", "ice", "earth", "lightning", "shadow", "novice
     meta[f"fragment-{hero}"] = {**save(piece, f"fragment-{hero}"), "fragmentArt": True, "transparent": True}
 generic = Image.open(ROOT / "fragment-puzzle" / "raw-generic.png")
 meta["hero-fragment"] = {**save(fit(trim(key_outside(generic), 4), 256), "hero-fragment"), "fragmentArt": True, "transparent": True}
-# The holy light beam of the hero spotlight; "pool" is where its light pool sits (fraction of height).
-beam = fit(trim(unmix(raw("holy-beam")), 6), 900)
-a = np.asarray(beam.getchannel("A"), dtype=np.float32); rows = a.sum(1); pool = int(np.argmax(rows[len(rows) // 2:])) + len(rows) // 2
-meta["summon-beam"] = {**save(beam, "beam"), "pool": round(pool / beam.height, 4)}
-(ROOT / "summon.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+# Entries made elsewhere (realm scenes and masks, export_realm_fx.py) are kept.
+old = json.loads((ROOT / "summon.json").read_text(encoding="utf-8")) if (ROOT / "summon.json").exists() else {}
+old = {k: v for k, v in old.items() if not k.startswith(("summon-back-", "summon-front-"))}
+(ROOT / "summon.json").write_text(json.dumps({**old, **meta}, indent=2) + "\n", encoding="utf-8")
 print("packed", len(meta))

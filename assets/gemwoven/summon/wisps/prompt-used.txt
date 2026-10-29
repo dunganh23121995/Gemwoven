@@ -1,0 +1,8 @@
+Use case: mobile fantasy RPG background effect sprites: drifting smoke and cloud wisps that the game slides slowly across painted scenes (tinted per scene: lava smoke, storm clouds, shadow mist, snow mist). Style: soft hand-painted 2D game atmosphere matching a crisp painted fantasy illustration (not photoreal, not pixel art).
+
+Draw exactly 4 different soft wisps in one row in 4 equal wide cells (each cell about 2:1 landscape), in pure WHITE and light grey only, on a 100% solid pure black #000000 background (brightness becomes opacity, so black is fully transparent):
+1. a long thin horizontal mist band, wispy at both ends,
+2. a puffy soft cloud bank with a few rounded lobes and wispy edges,
+3. a curling rising smoke plume, thicker at the bottom and thinning and curling at the top,
+4. a loose broken drift of several small torn cloud scraps.
+Painted with soft volume (gently brighter tops, softer grey undersides) and soft edges that fade smoothly to pure black; no hard outlines. Each wisp centred in its cell with black margin on all sides, never touching a cell edge. No colour, no sky, no ground, no stars, no sparkles, no text, no separators between cells. Background 100% pure black.

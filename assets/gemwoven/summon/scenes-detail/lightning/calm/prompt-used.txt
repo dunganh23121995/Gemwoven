@@ -1,0 +1,4 @@
+Use case: precise edit of a portrait mobile fantasy RPG backdrop (941x1672).
+Input image 1 is the exact edit target. Remove EVERY painted lightning bolt and electric crackle from the sky and clouds (the forked yellow-white bolts at the upper left, the upper right and the middle right, and any small electric branches), and repaint those areas as the same swirling violet-indigo storm clouds and starry sky that surround them, seamlessly. The game animates its own lightning strikes on top, so the sky must be calm: no bolts, no electric arcs, no bright crackle lines anywhere.
+
+Keep everything else exactly the same: camera, framing, aspect ratio, the storm vortex and its glowing centre, every cliff, tower, bridge, stair, crystal, rune circle, waterfall, cloud sea and the summit plateau, at the same position, scale, colour and lighting, in the same crisp clean hand-painted 2D game illustration style. No new objects, no characters, no text, no UI, no frame.

@@ -11,3 +11,6 @@ html.showcase .battle-card,html.showcase .app,html.showcase .game-layout,html.sh
 /* The hero and the slime at the two sides, sized by the hub (--showcase-k) to match its spotlight hero. */
 html.showcase .scene .hero-actor{--actor-size:calc(40vw * var(--showcase-k,1) * var(--hero-art-scale,1));left:calc(24% - var(--actor-size)/2)}
 html.showcase .scene .enemy-actor{--actor-size:calc(34vw * var(--showcase-k,1));right:calc(21% - var(--actor-size)/2)}
+/* An ultimate's screen shake moves .app (translate), which makes it the containing block of the fixed
+   scene: .app covers the page too, so the scene keeps its size and only shakes. */
+html.showcase .app{position:fixed;inset:0;max-width:none;margin:0;padding:0}

@@ -232,8 +232,10 @@
     // Dialogs centre on the game frame, not on the window behind the review sidebar.
     const frame=viewport.getBoundingClientRect();
     root.style.setProperty('--frame-cx',`${frame.left+frame.width/2}px`);root.style.setProperty('--frame-w',`${frame.width||941*scale}px`);
-    // The summon screen: a phone-sized frame (390 x 844) filling a phone, scaled up on tablets and computers.
-    root.style.setProperty('--summon-scale',String(Math.min((mobile?width:width-24)/390,(mobile?height:height-24)/844)));
+    root.style.setProperty('--frame-cy',`${frame.top+frame.height/2}px`);
+    // The summon screen is laid out at half the stage (470.5 x 836) and scaled onto the game frame, so it
+    // has the same size and shape as every other screen.
+    root.style.setProperty('--summon-scale',String(scale*2));
   }
   function nodeBy(id){return scene.querySelector(`[data-node="${state.screen}.${id}"]`);}
   function changeText(id,value){const el=scene.querySelector(`[data-copy="${state.screen}.${id}"]`);if(el)el.textContent=value;}

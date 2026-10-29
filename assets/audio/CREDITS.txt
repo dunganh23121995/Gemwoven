@@ -593,6 +593,20 @@ longer used and were removed. Sources now (CC0 1.0, Freesound; source.json with 
   ambience                   #445095 "Nature at the Lake.wav" by StoneyWaters, https://freesound.org/people/StoneyWaters/sounds/445095/
   ult-charge, ult-whoosh     Mika's own combat fire swell and whoosh (assets/audio/reimagined, credited in her combat set above), softened.
 
+Summon reveal sounds, round 5 (2026-10-29): calm while the cards are dealt, grand when a whole hero arrives.
+The water splash, low singing bowl, Daitokuji bell, harmonium drone and Mika's ult swell/whoosh are no longer used.
+Sources now (CC0 1.0, Freesound; source.json with SHA-256 under sources/freesound/<id>-*/):
+  touch                      #222893 "Wind Chimes 02.wav" by Adelantemos, https://freesound.org/people/Adelantemos/sounds/222893/
+  gold                       #435074 "Tingsha Cymbal" (credited with Lumi's form sounds above)
+  bell                       #614832 "2022-01-14 Crystal Bell 08" (credited above)
+  rise                       #711620 "Cymbal roll" by josh.stovall, https://freesound.org/people/josh.stovall/sounds/711620/
+  strike                     #316642 "gong.aiff" by bevibeldesign, https://freesound.org/people/bevibeldesign/sounds/316642/
+  hero                       #763910 (as in round 4)
+  drone                      #647596 "Gong in Church (Drone)" by bone666138, https://freesound.org/people/bone666138/sounds/647596/
+  ambience                   #445095 (as in round 4)
+  sting-<hero>               one cue of each hero's own combat set (credited with that set above): Mika f3-engulf, Yuki
+                             f2-freeze, Nori leaves, Lumi thunder rumble (#458015), Noct mist.
+
 Hiro ultimate battle cry (replaces #270301 in his charge, at the player's request)
   charge-cry                 "attackbig2.wav" from "Voice Clip Pack - Male Adventurer RPG" by Brandon Song, https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg (CC0)
 

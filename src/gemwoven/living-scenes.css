@@ -20,9 +20,9 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 /* Summon reveal (summon-cinematic.js): a living lake; cards grow from a star, drop into the
  * water and bounce up onto the board. Only generated art (assets/gemwoven/summon) is shown; CSS
  * moves, scales, fades and lights it. */
-/* The summon screen is laid out at a standard phone size (390 x 844) and scaled to the screen as a
-   whole (--summon-scale, ui.js fit): it fills a phone and grows on tablets and computers. */
-#summon-reveal.celestial-reveal{box-sizing:border-box;position:fixed;inset:auto;margin:0;left:var(--frame-cx,50%);top:50%;translate:-50% -50%;scale:var(--summon-scale,1);width:390px;height:844px;max-width:none;max-height:none;padding:0;border:1px solid #aebce18a;border-radius:20px;overflow:hidden;background:#08142e;color:#f8edce;box-shadow:0 0 70px #3064bc50;isolation:isolate}
+/* The summon screen is laid out at half the stage size (470.5 x 836) and scaled onto the game frame
+   as a whole (--summon-scale, ui.js fit), so it matches every other screen's size and shape. */
+#summon-reveal.celestial-reveal{box-sizing:border-box;position:fixed;inset:auto;margin:0;left:var(--frame-cx,50%);top:var(--frame-cy,50%);translate:-50% -50%;scale:var(--summon-scale,1);width:470.5px;height:836px;max-width:none;max-height:none;padding:0;border:1px solid #aebce18a;border-radius:20px;overflow:hidden;background:#08142e;color:#f8edce;box-shadow:0 0 70px #3064bc50;isolation:isolate}
 .celestial-reveal::backdrop{background:#030916e8;backdrop-filter:blur(7px)}
 .celestial-reveal>header{position:absolute;inset:6% 25px auto;text-align:center;z-index:3;pointer-events:none;text-shadow:0 2px 9px #000}
 .celestial-reveal>header>small{font:10px/1.5 system-ui;letter-spacing:3px;color:#c9dcff}
@@ -35,8 +35,13 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 /* Summon again: same painted buttons; each shows its cost. */
 .celestial-again{display:flex;gap:8px;justify-content:center;flex-wrap:nowrap}
 .celestial-again[hidden]{display:none}
+/* Cards wait face down until the player taps them; "Mở tất cả" opens the rest. */
+.celestial-reveal[data-phase="pick"] .celestial-card.is-landed:not(.is-open) .celestial-card-turn{animation:sm-await 2.6s ease-in-out infinite alternate}
+.celestial-reveal[data-phase="pick"] .celestial-card.is-landed:not(.is-open):hover .celestial-card-turn{translate:0 -4px;filter:brightness(1.12)}
+.celestial-reveal .celestial-open-all{display:block;margin:0 auto;min-width:164px}
+.celestial-reveal .celestial-open-all[hidden]{display:none}
 .celestial-again .celestial-again-btn{display:flex;flex-direction:column;align-items:center;gap:1px;flex:0 0 164px;min-width:0;line-height:1.1}
-.celestial-reveal[data-phase="complete"] .celestial-deck{bottom:17%}
+.celestial-reveal:is([data-phase="pick"],[data-phase="complete"]) .celestial-deck{bottom:17%}
 .celestial-again-btn small{display:flex;align-items:center;gap:4px;font-size:12px}
 .celestial-again-btn .again-cost{width:16px;height:16px;object-fit:contain}
 .celestial-again-btn:disabled{opacity:.45;filter:grayscale(.6);cursor:default}
@@ -48,19 +53,19 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 /* The living lake. The painting is never stretched (cover); whole layers only drift and glow. */
 .celestial-sky{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .celestial-sky img,.celestial-sky i{position:absolute;display:block;pointer-events:none;max-width:none}
-.celestial-lake{position:absolute;inset:-3%;background:#08142e var(--lake) center/cover no-repeat;transform-origin:50% 40%;animation:sm-lake 26s ease-in-out infinite alternate;transition:filter 1s}
-.is-suspense .celestial-lake{filter:brightness(.72) saturate(1.25)}
-.celestial-reveal[data-phase="complete"] .celestial-lake{filter:brightness(.45) saturate(.75)}
-.celestial-reveal[data-phase="complete"] :is(.sm-aurora,.sm-orb,.sm-glint,.sm-moon){opacity:0!important;transition:opacity 1s}
+.celestial-lake{position:absolute;inset:-3%;background:#08142e var(--lake) center/cover no-repeat;transform-origin:50% 40%;animation:sm-lake 26s ease-in-out infinite alternate;transition:filter 1s;filter:brightness(.86) saturate(.78)}
+.is-suspense .celestial-lake{filter:brightness(.66) saturate(.85)}
+.celestial-reveal:is([data-phase="pick"],[data-phase="complete"]) .celestial-lake{filter:brightness(.45) saturate(.75)}
+.celestial-reveal:is([data-phase="pick"],[data-phase="complete"]) :is(.sm-aurora,.sm-orb,.sm-glint,.sm-moon){opacity:0!important;transition:opacity 1s}
 .sm-moon{left:66%;top:10%;width:26%;translate:-50% -50%;opacity:.22;mix-blend-mode:screen;animation:sm-spin 70s linear infinite,sm-breathe 5s ease-in-out infinite alternate}
-.sm-aurora{left:-22%;top:12%;width:144%;opacity:.3;mix-blend-mode:screen;animation:sm-aurora 28s ease-in-out infinite alternate}
+.sm-aurora{left:-22%;top:12%;width:144%;opacity:.16;mix-blend-mode:screen;animation:sm-aurora 28s ease-in-out infinite alternate}
 .sm-aurora.second{top:24%;width:124%;left:-8%;scale:-1 1;animation-duration:37s;animation-delay:-11s}
 .sm-star{width:var(--s);aspect-ratio:1;translate:-50% -50%;opacity:0;animation:sm-twinkle var(--wait) linear var(--d) infinite}
 .sm-glint{aspect-ratio:48/23;translate:-50% -50%;opacity:var(--o);mix-blend-mode:screen;animation:sm-frames 1.04s steps(4,jump-none) var(--d) infinite,sm-glint 9s ease-in-out var(--d) infinite alternate}
 .sm-orb{width:var(--s);height:auto;opacity:0;mix-blend-mode:screen;animation:sm-orb var(--t) linear var(--d) infinite}
 .sm-gate{left:50%;top:5%;width:28%;translate:-50% -50%;opacity:0;scale:.4;mix-blend-mode:screen;transition:opacity .9s,scale .9s;animation:sm-spin 16s linear infinite}
 .celestial-reveal[data-phase="falling"] .sm-gate{opacity:0}
-.celestial-reveal.is-suspense .sm-gate{opacity:.7;scale:1}
+.celestial-reveal.is-suspense .sm-gate{opacity:.4;scale:1}
 .sm-sprite{display:block;position:absolute;pointer-events:none;background:var(--sheet) 0 0/calc(var(--count) * 100%) 100% no-repeat}
 
 /* The board. Card size comes from summon-cinematic.js (--cw), so ten cards always fit. */
@@ -80,26 +85,25 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .celestial-card .card-art,.celestial-card .card-panel{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
 .celestial-card .card-panel{object-fit:cover}
 .celestial-card .card-art{z-index:2;filter:drop-shadow(0 4px 6px #020817b0)}
+/* Bronze reads as a darker, redder metal than gold. */
+.celestial-card.card-bronze .card-art{filter:drop-shadow(0 4px 6px #020817b0) sepia(.25) hue-rotate(-14deg) saturate(.9) brightness(.78)}
 .celestial-card .card-panel{z-index:0;filter:brightness(.5) blur(1px)}
-.celestial-card .card-window{position:absolute;inset:var(--win);z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;clip-path:inset(0)}
+.celestial-card .card-window{position:absolute;inset:var(--win);z-index:1;container-type:size;display:flex;align-items:center;justify-content:center;overflow:hidden;clip-path:inset(0)}
 .celestial-card .card-reward{position:relative;max-width:94%;max-height:90%;object-fit:contain;filter:drop-shadow(0 3px 5px #000a)}
-.celestial-card .card-hero{display:block;height:86%;width:auto;background-repeat:no-repeat}
+/* The hero keeps its drawing's proportions: as large as fits 94% x 86% of the window (summon-cinematic.js). */
+.celestial-card .card-hero{display:block;width:min(94cqw,var(--fit-w));height:auto;max-width:none;max-height:none;background-repeat:no-repeat}
 .celestial-front strong{position:absolute;left:13%;right:13%;top:var(--plaque-top,80%);height:var(--plaque-h,11%);z-index:3;display:flex;align-items:center;justify-content:center;text-align:center;font:700 1em/1.05 Cambria,serif;color:#fff6dc;text-shadow:0 1px 2px #000;overflow:hidden}
-/* Bronze cards sit quietly; gold cards glow and shimmer; diamond cards shimmer the most. */
-.celestial-card.card-gold{--glow:#ffcf6b}
-.celestial-card.card-diamond .celestial-front strong{color:#2b1550;text-shadow:0 1px 0 #ffffffb0,0 0 6px #ffffff90}
+/* Bronze cards sit quietly; silver cards glow softly around their edges; gold cards glow warmer and
+   wider. No rays behind any card. */
+.celestial-card.card-silver{--glow:#d6e0ee}
 /* Narrow cards (phones, ten cards): the name sits under the card at a readable 12px+. */
 .celestial-deck[data-names="below"] .celestial-front strong{top:calc(100% + 4px);left:-4px;right:-4px;height:auto;max-height:30px;font:700 12px/1.2 Cambria,serif;color:#fff3d6;text-shadow:0 1px 2px #000,0 0 6px #000}
-.celestial-deck[data-names="below"] .celestial-card.card-diamond .celestial-front strong{color:#f3e6ff}
-.celestial-deck[data-names="below"] .celestial-front{overflow:visible}
-.celestial-card.card-diamond{--glow:#f0dcff}
-.card-gold.is-landed .card-art{animation:sm-glow 2.4s ease-in-out infinite alternate}
-.card-diamond.is-landed .card-art{animation:sm-iris 3s ease-in-out infinite alternate}
-.celestial-card .card-halo{position:absolute;left:50%;top:50%;width:170%;max-width:none;translate:-50% -50%;z-index:-1;opacity:0;mix-blend-mode:screen;pointer-events:none;transition:opacity .8s;animation:sm-spin 14s linear infinite}
-.celestial-card.is-landed .card-halo{opacity:.5}
-.celestial-card.card-diamond.is-landed .card-halo{opacity:.75;width:185%}
-.celestial-card .celestial-front .card-shine{opacity:.45}
-.celestial-card.card-diamond .card-shine img{animation-duration:2.4s}
+.celestial-deck[data-names="below"] .celestial-deck[data-names="below"] .celestial-front{overflow:visible}
+.celestial-card.card-gold{--glow:#f2cf7a}
+.card-silver.is-landed .card-art{animation:sm-glow 2.4s ease-in-out infinite alternate}
+.card-gold.is-landed .card-art{animation:sm-glow-gold 3s ease-in-out infinite alternate}
+.celestial-card .celestial-front .card-shine{opacity:.25}
+.celestial-card.card-gold .card-shine img{animation-duration:2.4s}
 .celestial-card .card-shine{position:absolute;inset:5% 7%;z-index:3;overflow:hidden;pointer-events:none;border-radius:6%;mix-blend-mode:screen}
 .celestial-card .card-shine img{position:absolute;top:-15%;left:-20%;height:130%;width:auto;max-width:none;opacity:.85;translate:-110% 0;animation:sm-shine 3.4s ease-in-out infinite}
 .celestial-card .card-sparkles{position:absolute;inset:0;z-index:4;pointer-events:none}
@@ -113,11 +117,11 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 /* The soft streaks of the stars' trails (a canvas per layer, summon-cinematic.js trail). */
 .sm-streaks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .star-bronze .sm-falling-halo{opacity:.25}
+.star-silver .sm-falling-core{filter:saturate(.3) brightness(1.3)}
+.star-silver .sm-falling-halo{filter:saturate(.3) brightness(1.15)}
 /* Gold stars read as bright gold (a plain sepia tint made them dull and easy to miss). */
 .star-gold .sm-falling-core{filter:sepia(.55) saturate(2.2) hue-rotate(-8deg) brightness(1.45)}
-.star-gold .sm-falling-halo{filter:sepia(.45) saturate(1.7) brightness(1.25)}
-.star-diamond .sm-falling-core,.star-diamond .sm-falling-halo{animation-name:sm-pulse,sm-prism;animation-duration:.42s,1.6s;animation-timing-function:ease-in-out,linear;animation-iteration-count:infinite;animation-direction:alternate,normal}
-.star-diamond .sm-falling-halo{animation:sm-spin 2.6s linear infinite,sm-prism 1.6s linear infinite}
+.star-gold .sm-falling-halo{filter:sepia(.45) saturate(1.7) brightness(1.25);opacity:.7}
 
 /* One-shot effects. */
 .celestial-fx{position:absolute;inset:0;z-index:7;pointer-events:none;overflow:hidden}
@@ -131,47 +135,59 @@ body.page-hidden .scene-life *,body.page-hidden .node.is-living-object>.art,body
 .sm-fly{width:var(--s);aspect-ratio:1;translate:-50% -50%;animation:sm-frames .68s steps(8,jump-none) 1 forwards,sm-fly .95s cubic-bezier(.2,.8,.3,1) forwards}
 .sm-flash{width:240px;translate:-50% -50%;opacity:0;mix-blend-mode:screen;animation:sm-flash .9s ease-out forwards}
 
-/* A whole hero steps out: its showcase entrance, framed by turning light and sparkles. */
-/* The hero spotlight: the lake darkens, a beam of holy light comes down from the top of the
-   screen onto the spot, and the hero (at most at its drawings' own size) steps out of it. */
-.summon-hero-stage{position:absolute;inset:0;z-index:10;overflow:hidden;cursor:pointer;outline:none;--pool:.94}
+/* A whole hero arrives in grandeur (summon-cinematic.js spotlight): the lake goes dark (no light comes
+   down from above); on the strike, in the hero's element colour (--realm, --hue), a flash opens onto the hero's
+   own realm, its painted scene (summon-scene-<hero>) settling in from a bright zoom (no halo or rays
+   behind the hero); the hero (at most at its drawings' own size) steps out. */
+.summon-hero-stage{position:absolute;inset:0;z-index:10;overflow:hidden;cursor:pointer;outline:none;--pool:.94;--hue:0deg}
+.summon-hero-stage[data-realm="fire"]{--hue:-28deg}.summon-hero-stage[data-realm="ice"]{--hue:160deg}.summon-hero-stage[data-realm="earth"]{--hue:52deg}
+.summon-hero-stage[data-realm="lightning"]{--hue:195deg}.summon-hero-stage[data-realm="shadow"]{--hue:235deg}
 .summon-hero-dim{position:absolute;inset:0;background:#02060ff5;animation:sh-dim .8s ease-out both}
-/* The beam stays behind the hero and fades out across the body (a faint rim only), so the hero
-   keeps the colours of its art; it is bright above the head and in the pool at the feet. */
-.summon-hero-stage .sh-beam{--fade:linear-gradient(to bottom,#000 0,#000 calc(var(--beam-head,55%) - 14%),#0002 var(--beam-head,55%),#0002 var(--beam-feet,88%),#000 calc(var(--beam-feet,88%) + 4%));-webkit-mask-image:var(--fade);mask-image:var(--fade);position:absolute;left:50%;height:70%;width:auto;max-width:none;top:calc(62% - 70% * var(--pool));translate:-50% 0;scale:.62 1;z-index:1;mix-blend-mode:screen;pointer-events:none;animation:sh-beam-down 1.2s cubic-bezier(.3,.7,.3,1) .15s both,sh-beam-breathe 3.2s ease-in-out 1.5s infinite alternate}
-.summon-hero-light{position:absolute;left:50%;top:50%;width:min(80%,420px);aspect-ratio:1;translate:-50% -50%;pointer-events:none;z-index:1;animation:sh-fade-in 1s ease-out 1s both}
-.summon-hero-light img{position:absolute;max-width:none;mix-blend-mode:screen}
-.summon-hero-light .sh-halo{inset:15%;width:70%;opacity:.14;animation:sm-spin 26s linear infinite}
-.summon-hero-light .sh-halo.back{display:none}
-.summon-hero-light .sh-orb{display:none}
-.summon-hero-body{position:absolute;left:50%;top:15%;width:min(84%,360px);height:47%;translate:-50% 0;z-index:2}
-.summon-hero-sparkles{position:absolute;inset:10% 10% 30%;z-index:3;pointer-events:none;opacity:.55;animation:sh-fade-in 1s ease-out 1.2s both}
-.summon-hero-sparkles .sh-spark{left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;translate:-50% -50%;opacity:0;animation:sm-twinkle 2.3s linear var(--d) infinite}
-.summon-hero-name{position:absolute;left:16px;right:16px;top:65%;z-index:4;text-align:center;text-shadow:0 2px 8px #000,0 0 18px #000;animation:sm-rise .9s cubic-bezier(.2,.9,.3,1) 1.6s backwards}
-.summon-hero-name strong{display:block;font:700 32px/1.15 Cambria,serif;color:#fff3c9}
+.sh-realm{position:absolute;inset:0;background:#02060f var(--scene) center 40%/cover no-repeat;opacity:0;pointer-events:none}
+/* A soft vignette keeps the eye on the hero; the scene sits a little darker than the hero's art. */
+.sh-realm::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 52%,transparent 40%,#02060fb0 100%),linear-gradient(to bottom,transparent 72%,#02060fd0)}
+.struck .sh-realm{opacity:1;animation:sh-realm-in 3.4s cubic-bezier(.16,.8,.3,1) both}
+.summon-hero-body{position:absolute;left:50%;top:13%;width:min(84%,360px);height:49%;translate:-50% 0;z-index:2}
+.sh-flash{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 50%,#fff 0,rgba(var(--realm),.9) 45%,rgba(var(--realm),.35) 100%)}
+.struck .sh-flash{animation:sh-flash .9s ease-out both}
+.summon-hero-name{position:absolute;left:16px;right:16px;top:66%;z-index:4;text-align:center;opacity:0;text-shadow:0 2px 8px #000,0 0 18px #000}
+/* The detailed realm paintings are busy behind the name: a soft shade keeps it readable. */
+.summon-hero-name::before{content:"";position:absolute;left:8%;right:8%;top:-14px;bottom:-14px;z-index:-1;border-radius:50%;background:radial-gradient(ellipse closest-side,#02060fc8,#02060f80 60%,transparent);pointer-events:none}
+.struck .summon-hero-name{opacity:1;animation:sm-rise .9s cubic-bezier(.2,.9,.3,1) .5s backwards}
+.summon-hero-name small{display:block;font:600 13px/1.4 system-ui;letter-spacing:.5px;color:rgb(var(--realm));text-shadow:0 1px 2px #000,0 0 8px #000,0 0 14px #000}
+.summon-hero-name strong{display:block;font:700 36px/1.15 Cambria,serif;color:#fff3c9;text-shadow:0 2px 8px #000,0 0 22px rgba(var(--realm),.85)}
+.summon-hero-name .sh-rank{display:inline-block;margin-top:6px;padding:2px 14px;border:1px solid #ffd77a99;border-radius:12px;background:#1a1206b0;font:700 12px/1.6 system-ui;letter-spacing:2px;text-transform:uppercase;color:#ffd77a}
 /* After the entrance: the hero's combat move sheet, and the fight page (Game.html?qa&showcase) laid
    over the spotlight for its combat ultimate on a slime. */
 .sh-combat{position:absolute;display:block;background-repeat:no-repeat;pointer-events:none;z-index:2}
-.summon-hero-light,.summon-hero-sparkles{transition:opacity .6s}
-.summon-hero-stage.dueling .summon-hero-light,.summon-hero-stage.dueling .summon-hero-sparkles{opacity:.12}
+.summon-hero-name{transition:opacity .6s}
+.summon-hero-stage.dueling .summon-hero-name{opacity:.35}
 .summon-fight{position:absolute;left:0;top:0;border:0;padding:0;background:transparent;color-scheme:light;transform-origin:0 0;pointer-events:none;opacity:0;z-index:11}
 @keyframes sh-dim{from{opacity:0}}
-@keyframes sh-beam-down{from{clip-path:inset(0 0 100% 0);opacity:.1}to{clip-path:inset(0 0 0 0);opacity:.5}}
-@keyframes sh-beam-breathe{from{filter:brightness(.92)}to{filter:brightness(1.12)}}
 @keyframes sh-fade-in{from{opacity:0}}
+@keyframes sh-realm-in{from{scale:1.2;filter:brightness(2.4) saturate(.5)}to{scale:1;filter:brightness(.86) saturate(.95)}}
+@keyframes sh-flash{0%{opacity:0}12%{opacity:.95}100%{opacity:0}}
+/* Noct's realm comes out of darkness, never out of light: the strike is an eclipse
+   (a black-violet pulse) and the scene rises from black. */
+.summon-hero-stage[data-realm="shadow"] .sh-flash{background:radial-gradient(circle at 50% 55%,#000 0,#0d0418 55%,#24093d 100%)}
+.struck[data-realm="shadow"] .sh-flash{animation:sh-eclipse 1.5s ease-out both}
+.struck[data-realm="shadow"] .sh-realm{animation:sh-realm-dark 3.6s cubic-bezier(.3,.6,.3,1) both}
+.summon-hero-stage[data-realm="shadow"] .summon-hero-name strong{text-shadow:0 2px 8px #000,0 0 22px #5a1f9a}
+@keyframes sh-eclipse{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
+@keyframes sh-realm-dark{from{scale:1.08;filter:brightness(0) saturate(.4)}to{scale:1;filter:brightness(.8) saturate(.95)}}
 
 @keyframes sm-pulse{from{scale:.82;rotate:-8deg}to{scale:1.14;rotate:8deg}}
-@keyframes sm-prism{from{filter:hue-rotate(0deg) saturate(1.5) brightness(1.1)}to{filter:hue-rotate(360deg) saturate(1.5) brightness(1.1)}}
 @keyframes sm-frames{from{background-position-x:0%}to{background-position-x:100%}}
 @keyframes sm-twinkle{0%{opacity:1;background-position-x:0%;animation-timing-function:steps(7,jump-end)}26%{opacity:1;background-position-x:100%}27%,100%{opacity:0;background-position-x:100%}}
 @keyframes sm-lake{from{transform:scale(1.01)}to{transform:scale(1.06) translate(-1%,-.7%)}}
 @keyframes sm-spin{to{rotate:360deg}}
 @keyframes sm-breathe{from{opacity:.25;scale:.92}to{opacity:.55;scale:1.06}}
-@keyframes sm-aurora{0%{translate:-5% 0;opacity:.16}50%{opacity:.4}100%{translate:5% 2%;opacity:.22}}
+@keyframes sm-aurora{0%{translate:-5% 0;opacity:.08}50%{opacity:.2}100%{translate:5% 2%;opacity:.11}}
 @keyframes sm-glint{from{transform:translateX(calc(var(--drift) * -2.5%))}to{transform:translateX(calc(var(--drift) * 2.5%))}}
 @keyframes sm-orb{0%{opacity:0;transform:translate(0,0)}20%{opacity:.55}75%{opacity:.3}100%{opacity:0;transform:translate(16px,-170px)}}
-@keyframes sm-glow{from{filter:drop-shadow(0 0 3px var(--glow)) drop-shadow(0 4px 6px #020817b0)}to{filter:drop-shadow(0 0 13px var(--glow)) brightness(1.14)}}
-@keyframes sm-iris{from{filter:drop-shadow(0 0 2px #f0dcffa0) drop-shadow(0 4px 6px #020817b0) hue-rotate(-30deg)}to{filter:drop-shadow(0 0 6px #9feaff90) drop-shadow(0 4px 6px #020817b0) hue-rotate(30deg) brightness(1.05)}}
+@keyframes sm-await{from{filter:brightness(.92)}to{filter:brightness(1.08)}}
+@keyframes sm-glow-gold{from{filter:drop-shadow(0 0 4px var(--glow)) drop-shadow(0 4px 6px #020817b0)}to{filter:drop-shadow(0 0 11px var(--glow)) drop-shadow(0 0 3px var(--glow)) drop-shadow(0 4px 6px #020817b0)}}
+@keyframes sm-glow{from{filter:drop-shadow(0 0 2px var(--glow)) drop-shadow(0 4px 6px #020817b0)}to{filter:drop-shadow(0 0 7px var(--glow)) drop-shadow(0 4px 6px #020817b0)}}
 @keyframes sm-shine{0%,50%{translate:-120% 0}82%,100%{translate:120% 0}}
 @keyframes sm-fade{0%,55%{opacity:1}100%{opacity:0}}
 @keyframes sm-ripple{from{opacity:.95;scale:.3}to{opacity:0;scale:1.35}}
@@ -250,6 +266,36 @@ body.reduced-motion .lh-rig,body.reduced-motion .lh-call>.art{animation:none}
 .lm-leaf{width:30px;height:30px;animation-duration:var(--cycle),2.2s;animation-name:lm-frames,lm-sway;animation-timing-function:steps(var(--count),jump-none),ease-in-out;animation-iteration-count:infinite}
 @keyframes lm-fall{0%{opacity:0;translate:0 0}8%{opacity:1}85%{opacity:1}100%{opacity:0;translate:var(--drift) 620px}}
 @keyframes lm-sway{50%{translate:22px 0;rotate:calc(var(--spin,1) * 40deg)}}
+/* The heroes' realms on the summon spotlight (living-motion.js realm()): lanterns and runes
+   flicker, crows are birds in silhouette, lava, aurora and sunlight breathe, smoke and clouds drift,
+   the storm turns and strikes. */
+.lm-glow{translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(var(--c),.55) 0,rgba(var(--c),.22) 35%,transparent 68%);mix-blend-mode:screen;animation:lh-flicker 3.2s var(--delay) ease-in-out infinite}
+.lm-crow{filter:brightness(.12) saturate(0)}
+.lm-pulse,.lm-aurora{left:0;top:0;width:941px;height:1672px;background-size:941px 1672px;background-repeat:no-repeat;-webkit-mask-size:941px 1672px;mask-size:941px 1672px}
+.lm-pulse{filter:brightness(1.55) saturate(1.15);mix-blend-mode:screen;opacity:0;animation:lm-pulse 4.2s var(--delay) ease-in-out infinite alternate}
+/* Lava seams go dim and bright (the copy covers the painting, darker or lighter). */
+.lm-deep{mix-blend-mode:normal;opacity:1;animation:lm-deep 3.6s var(--delay) ease-in-out infinite alternate}
+/* The painted aurora waves like a curtain and its light comes and goes. */
+.lm-aurora{transform-origin:50% 0;filter:brightness(1.5) saturate(1.2);mix-blend-mode:screen;opacity:.5;animation:lm-wave 9s var(--delay) ease-in-out infinite alternate}
+.lm-ribbon{position:absolute;display:block;max-width:none;mix-blend-mode:screen;opacity:var(--o);animation:sm-aurora 26s var(--delay) ease-in-out infinite alternate}
+.lm-vortex{border-radius:50%;background-size:941px 1672px;background-repeat:no-repeat;-webkit-mask-image:radial-gradient(circle closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(circle closest-side,#000 55%,transparent 100%);animation:lm-turn var(--turn) linear infinite reverse}
+.lm-wisp,.lm-rise{background:rgb(var(--c));-webkit-mask-size:400% 100%;mask-size:400% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;opacity:min(1,calc(var(--o) * 1.8))}
+.lm-wisp{animation:lm-drift var(--dur) var(--delay) ease-in-out infinite alternate}
+.lm-pass{animation:lm-pass var(--dur) var(--delay) linear infinite}
+.lm-rise{opacity:0;animation:lm-smoke 7.5s var(--delay) ease-out infinite}
+.lm-bolt{background-size:400% 100%;background-repeat:no-repeat;mix-blend-mode:screen;filter:brightness(1.35) drop-shadow(0 0 6px #b9a8ff);opacity:0;animation:lm-strike var(--period) var(--delay) linear infinite}
+.lm-flash{border-radius:50%;background:radial-gradient(circle closest-side,#e4deff8c,#9d8cff3a 45%,transparent);mix-blend-mode:screen;opacity:0;animation:lm-strike var(--period) var(--delay) linear infinite}
+.lm-flame{mix-blend-mode:screen;opacity:.95}
+@keyframes lm-deep{from{filter:brightness(.6)}to{filter:brightness(1.25) hue-rotate(-10deg)}}
+/* Lava falls glow near white, so a brighter copy cannot show: darker bands stream down them. */
+.living-motion[data-theme="realm-fire"] .lm-flow{filter:brightness(.45) saturate(1.3);animation-duration:.9s}
+@keyframes lm-wave{0%{transform:skewX(0) scaleY(1) translateX(0);opacity:.25}50%{transform:skewX(5deg) scaleY(1.07) translateX(14px);opacity:.7}100%{transform:skewX(-4deg) scaleY(.95) translateX(-12px);opacity:.35}}
+@keyframes lm-turn{to{rotate:360deg}}
+@keyframes lm-pass{0%{translate:calc(var(--dx) * -.5) 0;opacity:0}18%,82%{opacity:min(1,calc(var(--o) * 1.8))}100%{translate:calc(var(--dx) * .5) 0;opacity:0}}
+@keyframes lm-drift{from{translate:calc(var(--dx) * -.5) 0}to{translate:calc(var(--dx) * .5) 0}}
+@keyframes lm-smoke{0%{opacity:0;transform:translate(0,30px) scale(.6)}25%{opacity:min(1,calc(var(--o) * 1.8))}100%{opacity:0;transform:translate(var(--dx),-150px) scale(1.35)}}
+@keyframes lm-strike{0%,100%{opacity:0}1%{opacity:1}2%{opacity:.15}3.2%{opacity:.95}6%{opacity:0}}
+@keyframes lm-pulse{from{opacity:0}to{opacity:.55}}
 body.page-hidden .living-motion *{animation-play-state:paused!important}
 /* Summon screen light: generated rays, sparkles and light motes (living-motion.js). */
 .lm-rays{background:center/contain no-repeat;mix-blend-mode:screen;opacity:var(--o);animation:sm-spin 24s linear var(--delay) infinite,lm-rays 4.5s ease-in-out var(--delay) infinite alternate}
