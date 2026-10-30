@@ -30,14 +30,35 @@ quickBladeCut=function(point,key,index,direction,pending){
   return quickBladeCutBase(point,key,index,direction,pending);
 };
 // A shadow of Noct: his own sprite in a pose, darkened to a silhouette with a violet rim.
-function noctShadowClone(at,frame,facing,action='attack'){
+// depth places him round the foe on the ground: below 0 he stands behind the foe (under it, a
+// little smaller), above 0 in front of it (a little larger).
+function noctShadowClone(at,frame,facing,action='attack',depth=0){
   const root=actor('hero'),body=root.querySelector('.sprite-body'),rect=root.getBoundingClientRect();
   const keep=[body.dataset.action,+body.dataset.frame];setSpriteFrame('hero',action,frame);
   const sprite=body.cloneNode(true);setSpriteFrame('hero',keep[0]||'idle',keep[1]||0);
   sprite.removeAttribute('role');sprite.removeAttribute('aria-label');sprite.style.scale=facing+' 1';
   const node=document.createElement('span');node.className='noct-shadow-clone';node.setAttribute('aria-hidden','true');
-  node.style.cssText=`left:${at.x-rect.width/2}px;top:${at.y-rect.height*.62}px;width:${rect.width}px;height:${rect.height}px`;
-  node.append(sprite);$('combatEffects').append(node);return node;
+  node.style.cssText=`left:${at.x-rect.width/2}px;top:${at.y-rect.height*.62}px;width:${rect.width}px;height:${rect.height}px;transform-origin:50% 94%;scale:${1+depth*.08}`;
+  if(depth<-.3)node.classList.add('behind');
+  node.append(sprite);(depth<-.3?$('scene'):$('combatEffects')).append(node);return node;
+}
+// The path a shadow takes from one strike to the next: a run of fading afterimages of him
+// dashing along it and a thin blade streak (a cut line) drawn from a to b as he goes, which
+// then pulls in behind him toward b (the cut drawing as a mask, violet fading back to a white head). Starts `delay` ms from now and lasts `duration` ms.
+function noctShadowTransit(a,b,pending,delay=0,duration=130){
+  const sheet=ART.heroFx?.shadow?.lines;if(reduced)return;
+  const dir=b.x>=a.x?1:-1,dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy);if(len<8)return;
+  for(let i=1;i<=4;i++){
+    const t=i/5,clone=noctShadowClone({x:a.x+dx*t,y:a.y+dy*t},(i+1)%6,dir,'run');
+    clone.classList.add('trail');clone.style.opacity='0';
+    pending.push(animate(clone,[{opacity:0},{opacity:.6,offset:.12},{opacity:0}],{duration:320,delay:delay+t*duration,easing:'ease-out',fill:'both'}).finally(()=>clone.remove()));
+  }
+  if(!sheet)return;
+  const rect=actor('hero').getBoundingClientRect(),y=-rect.height*.06,variant=len%sheet.count|0;
+  const node=document.createElement('span');node.className='noct-trail';node.setAttribute('aria-hidden','true');
+  node.style.cssText=`left:${(a.x+b.x)/2}px;top:${(a.y+b.y)/2+y}px;width:${len}px;height:${Math.max(16,Math.min(26,len*sheet.height/sheet.count/sheet.width))}px;--trail-mask:url('${sheet.src}');--trail-size:100% ${sheet.count*100}%;--trail-at:0 ${variant/(sheet.count-1)*100}%;transform:translate(-50%,-50%) rotate(${Math.atan2(dy,dx)*180/Math.PI}deg)`;
+  $('combatEffects').append(node);
+  pending.push(animate(node,[{opacity:.9,clipPath:'inset(0 100% 0 0)'},{opacity:.9,clipPath:'inset(0 0 0 0)',offset:.4},{opacity:0,clipPath:'inset(0 0 0 100%)'}],{duration:duration/.4+60,delay,easing:'linear',fill:'both'}).finally(()=>node.remove()));
 }
 // The foe's drawn body on the stage (its sheet's span, feet line and height), not its cell.
 function noctFoeBody(){
@@ -80,13 +101,23 @@ async function noctMoonRage(raw,{hits=5,onRelease=()=>{}}={}){
     await at(720);root.classList.remove('charging-ultimate');root.dataset.ragePhase='vanish';
     // 720: he is gone in a blur of shadow.
     playNoctSound('dash',{volume:.2,pan:.2});shadowEcho(null,null,pending,1);
+    // Five shadows strike from five sides of the foe; one shadow dashes from each strike to the
+    // next (his afterimages and a blade streak link them), from where he vanished to where he reappears.
+    // The shadows close round the foe in a tilted ring sized to its body: the upper ones leap at it
+    // from behind (drawn behind it, at its head), the lower ones strike in front of it (at its legs),
+    // none straight behind (where the foe would hide him). They strike in a star (every second
+    // point), so each dash runs through the foe to its other side.
+    const step=count>=5&&count%2?2:1,stageWidth=$('scene').clientWidth,ringX=Math.max(from.width*.42,body.width/2+from.width*.14),ringY=Math.max(from.height*.18,body.height*.36),ringAt=body.top+body.height*.56;
+    const spots=Array.from({length:count},(_,k)=>{const a=-Math.PI/2+Math.PI/count+(k*step%count)*2*Math.PI/count,depth=Math.sin(a);
+      return {x:Math.min(stageWidth-from.width*.28,Math.max(from.width*.28,body.x+Math.cos(a)*ringX)),y:Math.max(from.height*.5,ringAt+depth*ringY),side:Math.cos(a)>=.05?-1:1,depth};});
+    noctShadowTransit(from,spots[0],pending,40,140);
     root.style.opacity='0';await animate(root,[{opacity:1,filter:'blur(0)'},{opacity:0,filter:'blur(3px)'}],{duration:140});
     root.style.transform=`translateX(${behind}px)`;
-    // 900-1800: five shadows strike from five sides of the foe, a straight cut hanging after each.
-    const spots=Array.from({length:count},(_,k)=>{const a=-Math.PI/2+k*2*Math.PI/count;return {x:body.x+Math.cos(a)*Math.max(52,body.width*.8),y:body.top+body.height*.62+Math.sin(a)*Math.max(26,body.height*.32),side:Math.cos(a)>=0?-1:1};});
+    // 900-1800: a straight cut hangs after each strike.
     for(let k=0;k<count;k++){
       await at(900+k*190);root.dataset.ragePhase='shadow-cut';root.dataset.rageHit=String(k+1);
-      const spot=spots[k],clone=reduced?null:k===0?noctShadowClone(spot,0,spot.side,'skill'):noctShadowClone(spot,k%2?3:2,spot.side);   // the first waits in the iai stance, about to draw
+      noctShadowTransit(spots[k],k<count-1?spots[k+1]:{x:from.x+behind,y:from.y},pending,k<count-1?60:110,130);
+      const spot=spots[k],clone=reduced?null:k===0?noctShadowClone(spot,0,spot.side,'skill',spot.depth):noctShadowClone(spot,k%2?3:2,spot.side,'attack',spot.depth);   // the first waits in the iai stance, about to draw
       // Each shadow stays where it struck until the ultimate is over.
       if(clone){clones.push(clone);clone.style.opacity='.85';pending.push(animate(clone,[{opacity:0,translate:`${-spot.side*14}px 0`},{opacity:.95,translate:'0 0',offset:.4},{opacity:.85,translate:'0 0'}],{duration:240,easing:'ease-out'}));}
       playNoctSound('slash'+(k%3+1),{volume:.2,pan:spot.side*-.3});
