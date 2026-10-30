@@ -1419,6 +1419,8 @@ body.reduced-motion .tan-spirit-aura,body.reduced-motion .tan-echo{display:none}
 .actor.noct-shadowed>.sprite-body{filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #a58bff) drop-shadow(0 0 8px #6a4fd0aa)!important}
 /* The blood moon is solid, so it is laid over the sky as it is (the silver moon glows additively). */
 .noct-moon.blood{mix-blend-mode:normal}
+/* The summon showcase (summon-showcase.js) plays the ultimate over the hub's own realm: no night or moon there. */
+html.showcase .noct-night,html.showcase .noct-moon{display:none}
 </style>
 </head>
 <body>
