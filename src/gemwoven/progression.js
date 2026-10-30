@@ -35,7 +35,7 @@
       {name:'Tinh Lôi Sứ Giả',weapon:'Tinh điện trượng khắc sao',skill:'Tinh Lôi Ngũ Phạt',power:1.1},
       {name:'Thiên Tinh Lôi Chủ',weapon:'Thương quỹ đạo thiên hà',skill:'Cửu Thiên Tinh Phạt',power:1.25,signature:'Giáng 9 tia sét thay vì 5.'}],
     shadow:[{name:'Ảnh Kiếm Sĩ',weapon:'Kiếm vô diện',skill:'Ngũ Ảnh Trảm',power:1},
-      {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Nguyệt đao đen',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
+      {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Bạt kiếm Nguyệt Ảnh',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
       {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Tuyệt kỹ xuyên giáp, +50% khi địch dưới 30% HP; sau đó hóa mờ, né mọi đòn và hiệu ứng bất lợi 1 lượt.'}]
   };
   function heroForm(key,h){return key==='novice'?1:h?.stars>=6?3:h?.stars>=4?2:1;}

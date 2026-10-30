@@ -5,7 +5,7 @@ hood, face, weapon, legs and boots are the accepted master drawing in every fram
 cloak moves. This writes, for 150 ms per frame (the runtime cross-fades between frames):
   form 1: assets/heroes/shadow/idle-cloth.webp (read by build.py) and the hub's
           assets/gemwoven/items/home-idle-shadow.webp (same crop as before, tweened)
-  forms 2 and 3: form-N/idle.webp and their idle entries in forms.json
+  form 3: form-3/idle.webp and its idle entry in forms.json (form 2 rests on form-2/combat-idle)
 Run after export-assets.py (which calls this at its end).
 """
 import json
@@ -35,7 +35,8 @@ def tweened(items, steps=3):
 
 catalog_path = ROOT / "forms.json"
 catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
-for form in ("2", "3"):
+# Form 2's moon ronin rests on its own wind idle (wind_idle.py, form-2/combat-idle).
+for form in ("3",):
     sheet(frames(form), ROOT / f"form-{form}/idle.webp")
     idle = catalog["forms"][form]["actions"]["idle"]
     idle.update(file=f"assets/heroes/forms/shadow/form-{form}/idle.webp", cols=2, rows=4, count=8,

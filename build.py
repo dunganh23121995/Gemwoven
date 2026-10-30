@@ -354,7 +354,7 @@ extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/gemwoven/form-effects.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/hero-forms-combat.js').read_text(encoding='utf-8')
 # Each hero's own form staging (hero-kits.js), after the shared form wrappers it builds on.
-hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan']
+hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan','forms-noct']
 extensions += '\n'+'\n'.join((root/f'src/{name}.js').read_text(encoding='utf-8') for name in hero_kit_files)
 css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for name in hero_kit_files)
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)

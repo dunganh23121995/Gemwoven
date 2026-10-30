@@ -10,3 +10,6 @@ Re-locked after the defect review and head-scale fixes: 2026-10-26.
 Lock confirmed by the player on the current state (commit 571c3b2): 2026-10-27.
 Lock confirmed by the player on the current state: 2026-10-28.
 Lock confirmed by the player on the current state: 2026-10-29.
+Form 2 redrawn on the player's request (2026-10-30): the moon ronin "Dạ Ảnh Kiếm Sĩ" (form-2/redesign,
+form-2/build_form2.py), his own ultimate Dạ Ảnh Ngũ Trảm (src/forms-noct.js, assets/fx/heroes/shadow) and
+showcase. Awaiting the player's approval; forms 1 and 3 stay locked as before.

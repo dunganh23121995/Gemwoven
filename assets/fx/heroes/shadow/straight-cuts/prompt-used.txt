@@ -1,0 +1,7 @@
+Use case: mobile fantasy RPG battle effect sprites: the clean straight sword cuts of a samurai's iai strike, left in the air across an enemy. Style: crisp clean HD 2D anime game FX (like a samurai anime's sword slash lines), not pixel art, not photoreal.
+Draw exactly 4 different STRAIGHT slash lines, each lying perfectly HORIZONTAL across the full width of its own cell, in 4 equal wide cells stacked vertically (4 rows x 1 column, each cell 2048x256, total image 2048x1024):
+1. a long razor-thin straight cut: a brilliant pure-white core line, very thin, tapering to needle points at both ends, with a narrow pale silver-violet glow hugging it;
+2. a slightly thicker straight cut, its middle third the widest (a long thin spindle shape), white core, pale violet edges and a soft violet glow;
+3. a straight cut with a crisp white core and a thin parallel faint afterline just below it, both tapering to points;
+4. a very long hairline cut with a short bright flash at its centre (a small sharp four-point glint), tapering to points.
+Each line is perfectly straight (no curve, no arc), centred vertically in its cell, spanning about 90% of the cell width. No sparks, no particles, no blood, no motion blur smears, no text, no separators between cells. Background 100% solid pure black #000000 (blended additively, black becomes transparent).

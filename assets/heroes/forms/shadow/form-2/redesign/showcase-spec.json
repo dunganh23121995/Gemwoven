@@ -1,0 +1,26 @@
+{
+ "dir": "assets/heroes/forms/shadow/form-2/showcase",
+ "identity": "assets/heroes/forms/shadow/form-2/redesign/concept-d/identity.png",
+ "what": "Noct in his four-star form, a compact chibi hooded moon ronin (he/him): a soft pointed black hood drawn low over a completely black hidden face with two narrow glowing silver-violet eyes, a long black kimono-style coat with clean silver-trimmed hems worn open over dark lacquered chest armour, a large silver crescent-moon crest on the coat tail and small crescents on the sleeves, wide black hakama trousers, a silver-grey obi sash with violet silk cords and tassels, armoured shin guards and dark boots, a katana sheathed in a black lacquered scabbard at his left hip with a crescent-moon guard and a violet-corded hilt",
+ "pose": "He stands tall and calm, upright, feet a little apart, NOT crouching: his LEFT hand rests on the sheathed katana's scabbard at his left hip with the thumb on the crescent guard, his RIGHT arm hangs relaxed at his side, his hooded head slightly lowered so only the two glowing eyes show, the long coat tails with the silver crescent crest sweeping behind him in the wind.",
+ "green": true,
+ "idle": "a calm, perfectly still standing pose exactly as in Image 1: his body, hood, glowing eyes, both hands, the sheathed sword, legs and boots stay exactly still in every frame; only the long black coat tails with the silver crescent crest and the coat hems ripple slowly in a cold night wind as a travelling wave, the hakama hems sway gently and the violet silk cords and tassels at his sash swing; frame 8 flows smoothly back into frame 1.",
+ "fidgets": [
+  [
+   "eyeflare",
+   "Mắt lóe, khói đen cuộn",
+   "his two glowing eyes flare bright cold white under the hood while dark black wisps of shadow curl up around his hands and around his boots (frames 2-5), then the glow settles and the dark wisps thin away and vanish (frames 6-7). The wisps are clean opaque painted black curls with a faint violet rim, never a haze. Only the eyes and the wisps change; his body, hands, sword, coat, legs and boots stay exactly as in Image 1.",
+   false
+  ],
+  [
+   "slashtear",
+   "Bạt kiếm rạch không gian",
+   "frame 1 is exactly the standing pose of Image 1. Frame 2: he changes stance: he sinks into a deep low iai crouch, right foot forward, knees bent, body leaning forward, his right hand gripping the hilt and his left hand holding the scabbard at his hip, the sword still sheathed. Frame 3: from the crouch he draws in one lightning-fast motion: right arm fully extended forward to the right, the katana held out level at shoulder height, right foot stepped forward, and a thin bright silver straight cut line hangs in the air in front of the blade. Frame 4: still in the lunge, he holds the pose while the line cracks open into a narrow jagged tear of black void with cold grey glowing edges in front of him. Frame 5: he flicks the blade down beside his right leg, the tear still open. Frame 6: he slides the blade back into the scabbard, the tear narrowing to a thin line. Frame 7: the tear is gone; he rises from the crouch. Frame 8: exactly the standing pose of Image 1. Keep the whole body, the blade and the tear inside the cell with margin; same size and ground line in every frame.",
+   true
+  ]
+ ],
+ "rift": "his entrance through a tear in space. Frame 1: empty space with only a thin bright silver straight vertical slash line hanging in the air where he will stand (no character yet). Frame 2: the tip of his katana cuts through the line from inside, the line splits wider. Frame 3: the slash tears open into a tall jagged rift of pitch-black void with cold grey glowing ragged edges, his katana blade poking out. Frames 4-5: he steps out through the rift, first the katana and hood, then his body and long coat, the rift behind him. Frame 6: he is fully out in front of the rift, sliding the katana back into its scabbard, the rift starts closing. Frame 7: the rift has shrunk to a thin line behind him, the sword sheathed. Frame 8: the rift is gone and he stands exactly in the pose of Image 1.",
+ "only": [
+  "slashtear"
+ ]
+}

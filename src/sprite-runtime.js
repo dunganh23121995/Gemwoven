@@ -43,15 +43,22 @@ function spriteApply(el,action,index){
   const grow=(sheet.scale||1)-1,foot=sheet.footY||.94;
   for(const [k,v] of Object.entries(grow?{left:-grow*50+'%',top:-grow*foot*100+'%',width:(1+grow)*100+'%',height:(1+grow)*100+'%'}:{left:'',top:'',width:'',height:''}))el.style.setProperty(k,v,grow?'important':'');
   if(action!=='idle')el.style.setProperty('--tween','0');
+  // The idle's own cross-fade is always drawn at the idle's size (a resized fading pose is an action's).
+  else for(const k of ['--tw-l','--tw-t','--tw-w'])el.style.removeProperty(k);
   el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);el.style.setProperty('--cell-pos',el.style.backgroundPosition);
   // Noct moves like black mist: outside idle, each pose change leaves the previous pose
   // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
   if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){
     el.style.setProperty('--tween-img',previous.image);el.style.setProperty('--tween-size',previous.size);el.style.setProperty('--tween-pos',previous.position);
+    // The fading pose keeps its own size: a sheet drawn in larger cells (a scale) grows its box about
+    // the feet, so the previous pose is drawn in a box of its own scale over the new one (Noct form 2;
+    // six-star Noct is locked as approved and keeps the box as it was).
+    const was=+(el.dataset.scale||1),now=sheet.scale||1,r=was/now,tune=r!==1&&combatHeroForm('shadow')!==3;
+    for(const [k,v] of Object.entries({'--tw-l':(1-r)*50+'%','--tw-t':(1-r)*foot*100+'%','--tw-w':r*100+'%'}))tune?el.style.setProperty(k,v):el.style.removeProperty(k);
     el.getAnimations({subtree:true}).filter(a=>a.id==='mist-dissolve').forEach(a=>a.cancel());
     const fade=el.animate([{opacity:.9,filter:'blur(0px)'},{opacity:0,filter:'blur(2.5px)'}],{duration:240,easing:'ease-out',pseudoElement:'::after'});fade.id='mist-dissolve';
   }
-  el.dataset.action=action;el.dataset.frame=frame;
+  el.dataset.action=action;el.dataset.frame=frame;el.dataset.scale=String(sheet.scale||1);
   updateActorHead(el,action,frame);
   if(el.dataset.family==='hero'&&el.dataset.key==='earth')updateNoriShieldAura(el);
 }

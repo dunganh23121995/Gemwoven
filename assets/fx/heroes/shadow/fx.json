@@ -1,0 +1,21 @@
+{
+  "moon": {
+    "file": "assets/fx/heroes/shadow/moon.webp",
+    "count": 1,
+    "width": 640,
+    "height": 640
+  },
+  "lines": {
+    "file": "assets/fx/heroes/shadow/lines.webp",
+    "count": 4,
+    "rows": 4,
+    "width": 1024,
+    "height": 512
+  },
+  "blood": {
+    "file": "assets/fx/heroes/shadow/blood.webp",
+    "count": 1,
+    "width": 640,
+    "height": 640
+  }
+}

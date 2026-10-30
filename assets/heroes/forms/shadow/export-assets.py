@@ -160,8 +160,9 @@ def ensure_frames(folder, action):
 ACTION_SCALE = {"3": {"attack": 1.111, "cast": 1.053, "run": 1.075, "hover": 1.087}}
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--form", choices=("2", "3"), action="append")
-selected = parser.parse_args().form or list(NAMES)
+parser.add_argument("--form", choices=("3",), action="append")
+# Form 2 was redrawn as the moon ronin (2026-10-30) and is packaged by form-2/build_form2.py.
+selected = parser.parse_args().form or ["3"]
 manifest_path = ROOT / "forms.json"
 manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {"hero": "shadow", "forms": {}}
 for form, name in NAMES.items():

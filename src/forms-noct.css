@@ -1,0 +1,10 @@
+/* Noct four-star (forms-noct.js): night and moon behind the fighters, shadow clones, straight cuts. */
+.noct-night{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 70% at 70% 35%,#1a1440b0,#05030fe0 70%)}
+.noct-moon{position:absolute;z-index:1;pointer-events:none;opacity:0;filter:blur(1.5px);background:center/contain no-repeat;mix-blend-mode:screen;transform:translate(-50%,-50%)}
+.noct-shadow-clone{position:absolute;pointer-events:none;opacity:0;filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #a58bff) drop-shadow(0 0 8px #6a4fd0aa)}
+.noct-shadow-clone .sprite-body{position:absolute;inset:0}
+.noct-cut{position:absolute;pointer-events:none;opacity:0;background-repeat:no-repeat;mix-blend-mode:screen;transform:translate(-50%,-50%)}
+.noct-cut.bright{filter:drop-shadow(0 0 5px #e4dcff)}
+.actor.noct-shadowed>.sprite-body{filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #a58bff) drop-shadow(0 0 8px #6a4fd0aa)!important}
+/* The blood moon is solid, so it is laid over the sky as it is (the silver moon glows additively). */
+.noct-moon.blood{mix-blend-mode:normal}

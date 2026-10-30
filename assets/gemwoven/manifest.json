@@ -10917,14 +10917,14 @@
     "width": 256,
     "height": 256,
     "footBounds": [
-      26,
-      61,
-      223,
+      34,
+      62,
+      198,
       249
     ],
     "bodyAnchor": {
-      "x": 0.486328125,
-      "crown": 0.234375,
+      "x": 0.544921875,
+      "crown": 0.2421875,
       "foot": 0.97265625
     }
   },
@@ -10934,8 +10934,8 @@
     "height": 256,
     "footBounds": [
       0,
-      24,
-      215,
+      31,
+      189,
       256
     ]
   },
@@ -10944,14 +10944,14 @@
     "width": 256,
     "height": 256,
     "bodyAnchor": {
-      "x": 0.486328125,
-      "crown": 0.234375,
+      "x": 0.544921875,
+      "crown": 0.2421875,
       "foot": 0.97265625
     },
     "footBounds": [
-      16,
-      61,
-      229,
+      32,
+      62,
+      198,
       249
     ]
   },
@@ -11373,34 +11373,45 @@
   },
   "show-shadow-2": {
     "file": "assets/heroes/forms/shadow/form-2/showcase/poster.png",
-    "width": 384,
-    "height": 384,
+    "width": 640,
+    "height": 640,
     "footBounds": [
-      73,
-      119,
-      310,
-      330
+      135,
+      198,
+      501,
+      551
     ],
     "bodyAnchor": {
-      "x": 0.6315104166666666,
-      "bodyX": 0.4921875,
-      "crown": 0.3098958333333333,
-      "foot": 0.859375
+      "x": 0.590625,
+      "bodyX": 0.553125,
+      "crown": 0.309375,
+      "foot": 0.8609375
     },
     "sheets": {
       "idle": "assets/heroes/forms/shadow/form-2/showcase/idle.webp",
       "fidgets": [
-        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp",
-        "assets/heroes/forms/shadow/form-2/showcase/optC.webp"
+        "assets/heroes/forms/shadow/form-2/showcase/slashtear.webp",
+        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp"
       ],
       "labels": [
-        "Mắt lóe, khói đen cuộn",
-        "Hai ngón xé không gian"
+        "Bạt kiếm rạch không gian",
+        "Mắt lóe, tan vào bóng tối"
       ],
-      "timing": {},
+      "timing": {
+        "assets/heroes/forms/shadow/form-2/showcase/eyeflare.webp": [
+          200,
+          220,
+          180,
+          160,
+          260,
+          160,
+          180,
+          220
+        ]
+      },
       "rift": "assets/heroes/forms/shadow/form-2/showcase/rift.webp"
     },
-    "bodyPx": 211.0
+    "bodyPx": 351.67
   },
   "show-earth-1": {
     "file": "assets/heroes/forms/earth/form-1/showcase/poster.png",
@@ -12711,16 +12722,16 @@
     "bodyPx": 161
   },
   "cmove-shadow-2": {
-    "file": "assets/heroes/forms/shadow/form-2/hover.webp",
+    "file": "assets/heroes/forms/shadow/form-2/run.webp",
     "cols": 3,
     "rows": 2,
     "count": 6,
     "scale": 1,
     "footY": 0.94,
     "ms": 100,
-    "headPx": 16.03,
+    "headPx": 14.3,
     "cellPx": 256,
-    "bodyPx": 188
+    "bodyPx": 187
   },
   "cpose-shadow-2": {
     "file": "assets/heroes/forms/shadow/form-2/cast.webp",

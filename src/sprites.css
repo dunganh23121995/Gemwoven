@@ -19,7 +19,7 @@
 @media(max-width:370px){.character-preview>.sprite-body{height:185px;width:185px}.special-tier{font-size:7px;line-height:9px}.boss-sigil{top:9%}}
 
 /* Idle in-betweens: the next idle pose cross-fades over the current one, so breathing loops glide. */
-.actor>.sprite-body::after{content:'';position:absolute;inset:0;background-image:var(--tween-img,none);background-size:var(--tween-size,auto);background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
+.actor>.sprite-body::after{content:'';position:absolute;left:var(--tw-l,0);top:var(--tw-t,0);width:var(--tw-w,100%);height:var(--tw-w,100%);background-image:var(--tween-img,none);background-size:var(--tween-size,auto);background-repeat:no-repeat;background-position:var(--tween-pos,0 0);opacity:var(--tween,0);pointer-events:none}
 body.reduced-motion .actor>.sprite-body::after{display:none}
 
 /* Six-star Noct at rest: every few seconds a band of cold light runs along the scythe blade

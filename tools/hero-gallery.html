@@ -93,6 +93,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
       <button data-do="ultimate" class="hot">Tuyệt kỹ</button>
       <button data-do="depart">Rời sân</button>
       <button data-do="hit">Bị đánh</button>
+      <button id="swapSide" title="Đổi tướng sang bên kia sân (chỉ để thử, trong game tướng luôn đứng bên trái)">⇄ Đổi bên</button>
     </div>
     <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
   </div>
@@ -108,6 +109,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
         <label>Đối thủ <select id="enemy"></select></label>
         <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
         <label><input type="checkbox" id="armor"> Địch có 500 giáp</label>
+        <label>Tướng đứng <select id="side"><option value="left">bên trái</option><option value="right">bên phải</option></select></label>
       </div>
       <p class="note" id="kit"></p>
     </section>
@@ -240,6 +242,7 @@ function configure(){
   $('variant').value=variants.includes(pick)?pick:'';
   for(const other of Object.keys(q.art.heroVariants||{}))if(other!==hero)q.heroVariant(other,null);
   if(variants.length)q.heroVariant(hero,$('variant').value||null);
+  q.setHeroSide?.($('side').value);
   q.setReduced(!$('fx').checked);loadSheets();fillFoeSkills();
   const f=M.HERO_FORMS[hero]?.[form-1];
   $('kit').textContent=f?`${f.name} · vũ khí: ${f.weapon} · tuyệt kỹ: ${f.skill}${f.signature?' · '+f.signature:''}`:`${M.HEROES[hero].name} · tuyệt kỹ: ${M.HEROES[hero].skills?.[0]||''}`;
@@ -268,7 +271,9 @@ addEventListener('resize',fitGame);fitGame();
 new ResizeObserver(()=>document.documentElement.style.setProperty('--head',document.querySelector('header').offsetHeight+'px')).observe(document.querySelector('header'));
 frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
 $('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src='Game.html?qa&t='+Date.now();};
-for(const id of ['enemy','fx','armor','variant'])$(id).onchange=configure;
+for(const id of ['enemy','fx','armor','variant','side'])$(id).onchange=configure;
+// The swap button by the battle view flips the hero to the other side of the stage (the same as the select below).
+$('swapSide').onclick=()=>{$('side').value=$('side').value==='right'?'left':'right';$('swapSide').classList.toggle('on',$('side').value==='right');configure();};
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
   const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);b.classList.add('busy');
   try{

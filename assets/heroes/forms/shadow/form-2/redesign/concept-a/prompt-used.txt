@@ -1,0 +1,10 @@
+Image 1 is Noct form 1 (the hooded shadow swordsman, chibi fantasy RPG hero). Image 2 is Noct form 3 (the faceless reaper with a scythe). Both are the exact art style, chibi proportions, head size and rendering to match.
+
+Design and draw Noct FORM 2, "Dạ Ảnh Kiếm Sĩ" (the Night-Shadow Moon Swordsman): the middle step between the two, clearly the same small hooded hero with the hood shadowing his face so only two glowing eyes show, but with his OWN distinct silhouette that looks like neither image:
+- Eyes: pale moonlight silver-lavender glow (between form 1's cyan and form 3's violet).
+- Outfit: a sleek fitted dark armour of black lacquered plates with thin moon-silver trim and small crescent-moon emblems on the shoulder and chest; a high collar; fitted gauntlets and armoured boots. NO tattered cloak: instead one very long dark indigo scarf wrapped at the neck whose two long tails stream behind him, with a subtle silver crescent pattern near the scarf ends. A short split coat skirt at the hips.
+- Weapon: a long elegant black-steel nodachi (single-edged curved sword) whose edge glows faintly moon-silver, with a round crescent-moon guard; its black lacquered scabbard with silver fittings hangs at his left hip.
+- Palette: black, gunmetal grey, deep midnight indigo, moon silver, a few small pale violet accents. No purple flames, no ragged edges.
+Pose: full-body iconic showcase stance, facing RIGHT in a confident 3/4 view, the drawn nodachi held low and to the side with the tip toward the ground, the other hand resting on the scabbard, scarf tails flowing behind.
+
+Clean HD smooth hand-painted chibi game art matching Images 1 and 2, NOT pixel art. Whole body, scarf and sword inside the image with margin, feet on the ground. Everything opaque: no smoke, mist, glow halos or loose particles. No ground, no shadow, no text. Background 100% solid flat #FF00FF magenta, no gradient.

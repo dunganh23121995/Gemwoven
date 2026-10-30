@@ -555,6 +555,20 @@ if(typeof finishArtSetup==='function')finishArtSetup();
 if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   beginBoardCombo,boardComboStart,finishBoardCombo,resetBoardCombo,
   warmCombatVoices,stopCombatVoices,restorationEffect,heroUltimate,enemySkill,rageChoreography,combatVoice,combatLootReceive,boardItemRecoil,specialStarNova,departVictoriousHero,damage,
+  // Studio test: the whole stage mirrored, so the hero stands on the right facing left (texts read normally).
+  // Positions inside the mirrored stage are read back unmirrored, so every move and effect lands as on the left.
+  setHeroSide(side){
+    document.documentElement.dataset.heroSide=side==='right'?'right':'left';
+    if(!Element.prototype.qaRect){
+      const rect=Element.prototype.qaRect=Element.prototype.getBoundingClientRect;
+      Element.prototype.getBoundingClientRect=function(){
+        const r=rect.call(this),scene=$('scene');
+        if(document.documentElement.dataset.heroSide!=='right'||this===scene||!scene?.contains(this))return r;
+        const s=rect.call(scene);return new DOMRect(s.left+s.right-r.right,r.top,r.width,r.height);
+      };
+    }
+    renderActors();
+  },
   warmNoctSounds,playNoctSound,stopNoctSounds,get noctSounds(){return [...noctSoundSources].map(({id,pan})=>({id,pan}));},
   playCastSound,stopCastSounds,get castSounds(){return [...castSoundSources].map(({id})=>id);},
   spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads};},

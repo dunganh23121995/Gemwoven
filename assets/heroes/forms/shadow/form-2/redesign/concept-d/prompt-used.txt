@@ -1,0 +1,8 @@
+Image 1 is Noct form 1 (the hooded shadow swordsman, chibi fantasy RPG hero). Image 2 is Noct form 3 (the faceless reaper with a scythe). Both are the exact art style, chibi proportions, head size and rendering to match.
+
+Design and draw Noct FORM 2, "Dạ Ảnh Kiếm Sĩ" (Night-Shadow Swordsman), the middle step between the two: clearly the same small hooded hero whose face is hidden in shadow so only two glowing eyes show, but with his OWN distinct silhouette that looks like neither image:
+- An elegant MOON RONIN (iai master): a long black kimono-style coat with clean straight hems (not tattered) worn open over dark lacquered chest armour, wide black hakama trousers, a silver-grey obi sash, a large pale silver crescent-moon crest embroidered on the back of the coat and small ones on the sleeves, the hood drawn low.
+- Weapon: a long katana kept in its black lacquered scabbard at the left hip, with a crescent-moon tsuba and a violet silk cord on the hilt.
+- Eyes: cold silver-violet. Palette: black, charcoal, moon silver, a little deep violet.
+Pose: full-body iai stance facing RIGHT in a 3/4 view, knees bent low, the left hand holding the scabbard, the right hand on the hilt ready to draw, coat hems swinging.
+Clean HD smooth hand-painted chibi game art matching Images 1 and 2, NOT pixel art. Whole body and weapon inside the image with margin, feet on the ground. Everything opaque: no smoke, mist, glow halos or loose particles. No ground, no shadow, no text. Background 100% solid flat #FF00FF magenta, no gradient.
