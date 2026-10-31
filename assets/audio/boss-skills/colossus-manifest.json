@@ -1,0 +1,192 @@
+{
+  "bossfx-colossus-steamburst-hit": {
+    "file": "boss-skills/colossus/steamburst-hit.wav",
+    "duration": 1.62,
+    "beat": "steamburst hit: Steam.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Steam.wav",
+        "author": "SukritSen",
+        "source_url": "https://freesound.org/people/SukritSen/sounds/398077/",
+        "license": "CC0-1.0",
+        "sha256": "29fbe8960ac06a4d5b058e812e1c3a0c6a1f36b06c28d31d83058de4c92eb674"
+      }
+    ],
+    "processing": "excerpt 1.34-2.96 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.096,
+    "sha256": "905a358c96f5690b615d77916b0e31c4419f5aa8b2af914d7c521785e2add04e"
+  },
+  "bossfx-colossus-hammer-start": {
+    "file": "boss-skills/colossus/hammer-start.wav",
+    "duration": 1.12,
+    "beat": "hammer start: Piston spray.WAV",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Piston spray.WAV",
+        "author": "13GPanska_David_Koci",
+        "source_url": "https://freesound.org/people/13GPanska_David_Koci/sounds/377855/",
+        "license": "CC0-1.0",
+        "sha256": "3d984c2c7bfc7b3d0e60804742cfd09e009b22491b1592a40b5255dfa0484041"
+      }
+    ],
+    "processing": "excerpt 12.18-13.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.06,
+    "sha256": "dad50fa2fe7698e905ea97b7fb1591da412e18440b4625cb6611900179f8716a"
+  },
+  "bossfx-colossus-hammer-hit": {
+    "file": "boss-skills/colossus/hammer-hit.wav",
+    "duration": 0.48,
+    "beat": "hammer hit: Anvil Strikes_5.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Anvil Strikes_5.wav",
+        "author": "alan3809",
+        "source_url": "https://freesound.org/people/alan3809/sounds/103071/",
+        "license": "CC0-1.0",
+        "sha256": "5cf1de3a8ab2391d97f0ab05fc00beefae64cd078bf50ff6e6eb1200e0b5f1a4"
+      }
+    ],
+    "processing": "excerpt 9.28-9.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.061,
+    "sha256": "1b0d8f745a57984c74afedffad56559a7d6d1f6e8bbd49a430f3b52f4568f191"
+  },
+  "bossfx-colossus-ironwall-start": {
+    "file": "boss-skills/colossus/ironwall-start.wav",
+    "duration": 1.62,
+    "beat": "ironwall start: penny machine",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "penny machine",
+        "author": "JimHurt",
+        "source_url": "https://freesound.org/people/JimHurt/sounds/875790/",
+        "license": "CC0-1.0",
+        "sha256": "daaf94c92e956197021b0b45173a1753fea05073aa91f6a93e9e6c821a0723d1"
+      }
+    ],
+    "processing": "excerpt 8.64-10.26 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.018,
+    "sha256": "83ebc051ae8dd5c9a9d12c0818e1c46a182de26cf25a3974e599ae9c928596ca"
+  },
+  "bossfx-colossus-ironwall-lock": {
+    "file": "boss-skills/colossus/ironwall-lock.wav",
+    "duration": 1.02,
+    "beat": "ironwall lock: door metal big heavy close kinda slam thud echo offmic.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "door metal big heavy close kinda slam thud echo offmic.wav",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/406197/",
+        "license": "CC0-1.0",
+        "sha256": "7d47db3055687043178bbfa73f930ff99eb5a04ea70c2d29feacda520ebcbad4"
+      }
+    ],
+    "processing": "excerpt 0.28-1.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.584,
+    "rms": 0.11,
+    "sha256": "2b986914ca006a7e23bded87bd6f6c6e62d2b0d99fbf2d7dc7ca3555b0cae921"
+  },
+  "bossfx-colossus-smash-land": {
+    "file": "boss-skills/colossus/smash-land.wav",
+    "duration": 0.74,
+    "beat": "smash land: metal crash.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "metal crash.wav",
+        "author": "AuDRoger",
+        "source_url": "https://freesound.org/people/AuDRoger/sounds/471190/",
+        "license": "CC0-1.0",
+        "sha256": "a854ab08455d3d4f4d75d87da3329957cea93b94bcafa91700818af9e2fb7946"
+      }
+    ],
+    "processing": "excerpt 0.12-0.86 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.044,
+    "sha256": "805f4f351789ef8f9876d7737a6f79ed3a7e6216df21011c9af505c009f6e566"
+  },
+  "bossfx-colossus-coreheat-channel": {
+    "file": "boss-skills/colossus/coreheat-channel.wav",
+    "duration": 1.32,
+    "beat": "coreheat channel: Steam/hiss",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Steam/hiss",
+        "author": "wubitog",
+        "source_url": "https://freesound.org/people/wubitog/sounds/234782/",
+        "license": "CC0-1.0",
+        "sha256": "3931e43d3e7738abb9a1507bf9c55da170d92940c43ad7151b01b4380bb9d931"
+      }
+    ],
+    "processing": "excerpt 0.12-1.44 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.512,
+    "rms": 0.08,
+    "sha256": "316416bbb9cfdb5fb3dd573329e0152f836e60ef99bc25548708695cb3420495"
+  },
+  "bossfx-colossus-steamburst-start": {
+    "file": "boss-skills/colossus/steamburst-start.wav",
+    "duration": 1.62,
+    "beat": "steamburst start: steam_safety_valve.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "steam_safety_valve.wav",
+        "author": "Engineer_815",
+        "source_url": "https://freesound.org/people/Engineer_815/sounds/493558/",
+        "license": "CC0-1.0",
+        "sha256": "d0a33655567700c6439a50a7da0681b8c852f5486e33ed7889c02d000b124915"
+      }
+    ],
+    "processing": "excerpt 0.84-2.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.661,
+    "rms": 0.11,
+    "sha256": "560a7eca878b00796770472879f9a9d59d61113605c625d3fd2aa1cc3315aab6"
+  },
+  "bossfx-colossus-smash-start": {
+    "file": "boss-skills/colossus/smash-start.wav",
+    "duration": 1.6,
+    "beat": "smash start: Heavy Mechancial Door Open",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy Mechancial Door Open",
+        "author": "lowpolygon",
+        "source_url": "https://freesound.org/people/lowpolygon/sounds/421722/",
+        "license": "CC0-1.0",
+        "sha256": "512d8bed8f1238c27da3c4246bf54151f3d442892f236cf57b8bd0728b145223"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.646,
+    "rms": 0.11,
+    "sha256": "c67aa440fe5dd8be7d71b0a687f1d94048cf21a77dc5be8c60390d25a7c88226"
+  },
+  "bossfx-colossus-smash-boom": {
+    "file": "boss-skills/colossus/smash-boom.wav",
+    "duration": 2.41,
+    "beat": "smash boom: Metal Door Slam Heavy Reverb 1",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Metal Door Slam Heavy Reverb 1",
+        "author": "Sheyvan",
+        "source_url": "https://freesound.org/people/Sheyvan/sounds/570004/",
+        "license": "CC0-1.0",
+        "sha256": "e9d25e61aa598db1871219481352e1717bf47e112497e0a276777bc03190dc81"
+      }
+    ],
+    "processing": "excerpt 0.06-2.47 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.067,
+    "sha256": "a3e0a1cb9ff699e1d0854a7be8b1528c1fc173fde55f14913a5b7903830205cb"
+  }
+}

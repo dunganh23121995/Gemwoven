@@ -22,6 +22,7 @@ GROUPS = [
      'playCastSound: tuyệt kỹ và chiêu theo từng dạng'),
     ('Hiệu ứng Noct', ['noct-sfx-manifest.json'], 'playNoctSound'),
     ('Giọng boss và tinh anh', ['boss-voice-manifest.json'], 'combatVoice phía địch (voice-casting.json chọn giọng)'),
+    ('Hiệu ứng kỹ năng boss', sorted(f'boss-skills/{p.name}' for p in (AUDIO / 'boss-skills').glob('*-manifest.json')), 'playCastSound bossfx-<boss>: từng chiêu của boss'),
     ('Tiếng quái', ['creature-manifest.json'], 'combatVoice quái thường'),
     ('Nhạc', ['music-manifest.json', 'boss-music-manifest.json'], 'nhạc nền trận và boss'),
     ('Triệu hồi', ['summon/summon-sounds.json'], 'màn triệu hồi ở hub'),

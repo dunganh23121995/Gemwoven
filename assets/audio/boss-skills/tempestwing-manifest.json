@@ -1,0 +1,211 @@
+{
+  "bossfx-tempestwing-windcircle-grow": {
+    "file": "boss-skills/tempestwing/windcircle-grow.wav",
+    "duration": 1.32,
+    "beat": "windcircle grow: Wind Whirl (Small Air Blow)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind Whirl (Small Air Blow)",
+        "author": "DARTEKZ_GAMEZ",
+        "source_url": "https://freesound.org/people/DARTEKZ_GAMEZ/sounds/719560/",
+        "license": "CC0-1.0",
+        "sha256": "5b41e14eaa752d4715ee7c706b99581f3adf5b02630c1d6c565b445a4e725c75"
+      }
+    ],
+    "processing": "excerpt 0.06-1.38 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.078,
+    "sha256": "2cc7bb139d453b85bf5dd4c10600991b76b2268d8a2a0389c696c90eedd04403"
+  },
+  "bossfx-tempestwing-plasmaball-start": {
+    "file": "boss-skills/tempestwing/plasmaball-start.wav",
+    "duration": 1.6,
+    "beat": "plasmaball start: Tesla Back up",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Tesla Back up",
+        "author": "itinerantmonk108",
+        "source_url": "https://freesound.org/people/itinerantmonk108/sounds/745146/",
+        "license": "CC0-1.0",
+        "sha256": "c726377acea942f6ba8c7ff3882c0a056a517591f04dace1a7f459947a6ca2de"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.746,
+    "rms": 0.11,
+    "sha256": "34cd67593a0542edaa01a1dd06de5639cb5d2d3e05920b3ea786e0d99c2dc2fd"
+  },
+  "bossfx-tempestwing-stormeye-start": {
+    "file": "boss-skills/tempestwing/stormeye-start.wav",
+    "duration": 1.62,
+    "beat": "stormeye start: Wind Storm",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind Storm",
+        "author": "barrygusey",
+        "source_url": "https://freesound.org/people/barrygusey/sounds/134908/",
+        "license": "CC0-1.0",
+        "sha256": "616c0d74b4161933b5ad60326d945acdd8b8428f8cca3b98d8043c22d406a953"
+      }
+    ],
+    "processing": "excerpt 7.72-9.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.649,
+    "rms": 0.11,
+    "sha256": "0f225fa03e85c307c66174adbb28076c42b5a6bfcd72e7d8be35fcfaa42598b7"
+  },
+  "bossfx-tempestwing-stormeye-hit": {
+    "file": "boss-skills/tempestwing/stormeye-hit.wav",
+    "duration": 1.62,
+    "beat": "stormeye hit: zap (zap7.wav)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "zap (zap7.wav)",
+        "author": "sgossner",
+        "source_url": "https://freesound.org/people/sgossner/sounds/375168/",
+        "license": "CC0-1.0",
+        "sha256": "7568873600727ffd65494edb6db735cfe5c699354079cdde85a5ced04f8e22ab"
+      }
+    ],
+    "processing": "excerpt 0.00-1.62 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.021,
+    "sha256": "1745ee27e0a0531bd516a1e47c9a110475ebd85fd013e690d005a991b813eb80"
+  },
+  "bossfx-tempestwing-judgement-hit": {
+    "file": "boss-skills/tempestwing/judgement-hit.wav",
+    "duration": 1.62,
+    "beat": "judgement hit: 06/10/2014 close lightning strike",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "06/10/2014 close lightning strike",
+        "author": "supercell10",
+        "source_url": "https://freesound.org/people/supercell10/sounds/336314/",
+        "license": "CC0-1.0",
+        "sha256": "d61f20336a73bcb7fa311bd55a26d5d9fe727c8b090574ba23fa740b96155eea"
+      }
+    ],
+    "processing": "excerpt 2.86-4.48 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.08,
+    "sha256": "ce5ee46d1e88b941648599d71883be3e9383af41c433166e89207cc8e482cc70"
+  },
+  "bossfx-tempestwing-judgement-start": {
+    "file": "boss-skills/tempestwing/judgement-start.wav",
+    "duration": 1.62,
+    "beat": "judgement start: Distant Thunder Clap_Gentle.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Distant Thunder Clap_Gentle.wav",
+        "author": "mikala_oidua",
+        "source_url": "https://freesound.org/people/mikala_oidua/sounds/347562/",
+        "license": "CC0-1.0",
+        "sha256": "4812353aae8d844e6b72a721acac7839d0c754e24db0765d31f18458efe60902"
+      }
+    ],
+    "processing": "excerpt 3.18-4.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.077,
+    "sha256": "26d274caf1a499f07ae4f22a1add13025ef2670031b8fcc177da6337632ffd3a"
+  },
+  "bossfx-tempestwing-plasmaclaw-start": {
+    "file": "boss-skills/tempestwing/plasmaclaw-start.wav",
+    "duration": 1.62,
+    "beat": "plasmaclaw start: Welding Electricity Sparks",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Welding Electricity Sparks",
+        "author": "Wakerone",
+        "source_url": "https://freesound.org/people/Wakerone/sounds/393820/",
+        "license": "CC0-1.0",
+        "sha256": "13cac61d3cedc6d3d30ea15996fde8b6dac12b74c40ce349cb6854ef52fb07e4"
+      }
+    ],
+    "processing": "excerpt 5.60-7.22 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.038,
+    "sha256": "6ffe498a39555b6cb470f15c13cf28068ffbf3f67333538bf367b4cb346696e1"
+  },
+  "bossfx-tempestwing-stormfeathers-start": {
+    "file": "boss-skills/tempestwing/stormfeathers-start.wav",
+    "duration": 1.62,
+    "beat": "stormfeathers start: Electricity static .wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Electricity static .wav",
+        "author": "sophiehall3535",
+        "source_url": "https://freesound.org/people/sophiehall3535/sounds/245942/",
+        "license": "CC0-1.0",
+        "sha256": "407860d7aeaee13d3bb6f59d44c8dfdd5c5c6ad74ccf903464db321614f46d08"
+      }
+    ],
+    "processing": "excerpt 9.18-10.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.034,
+    "sha256": "d831d7f2855de70b51eb45b71ea2308e0562215eaa6183f955de381bf4ac8aaf"
+  },
+  "bossfx-tempestwing-plasmaball-hit": {
+    "file": "boss-skills/tempestwing/plasmaball-hit.wav",
+    "duration": 0.3,
+    "beat": "plasmaball hit: OBJElctrc-INT_Electric Volt_Khensani_OwSFX",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "OBJElctrc-INT_Electric Volt_Khensani_OwSFX",
+        "author": "Khensi",
+        "source_url": "https://freesound.org/people/Khensi/sounds/708648/",
+        "license": "CC0-1.0",
+        "sha256": "bc48dadd10b8d08551367f4270522ff862bdc4bcea00a1988ae5bb393f6677ad"
+      }
+    ],
+    "processing": "excerpt 1.34-1.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.021,
+    "sha256": "32ff9f0072f26e75dbfb54dec999915cc1dab5c6afa74771c9ba2179929cfd03"
+  },
+  "bossfx-tempestwing-plasmaclaw-hit": {
+    "file": "boss-skills/tempestwing/plasmaclaw-hit.wav",
+    "duration": 0.96,
+    "beat": "plasmaclaw hit: Electrical Interference",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Electrical Interference",
+        "author": "Sanderboah",
+        "source_url": "https://freesound.org/people/Sanderboah/sounds/799295/",
+        "license": "CC0-1.0",
+        "sha256": "15137c959f0936240c287067ff0d6984382f3942928197aac394a17425a52a29"
+      }
+    ],
+    "processing": "excerpt 21.72-22.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.065,
+    "sha256": "8e63bcec5a2fa351aad1f54a6ebc13d8cd7c5a0e1f9a4c1c0607fe83888c0c58"
+  },
+  "bossfx-tempestwing-stormfeathers-lock": {
+    "file": "boss-skills/tempestwing/stormfeathers-lock.wav",
+    "duration": 1.02,
+    "beat": "stormfeathers lock: Heavy Birds (HRTF Binaural): Headphones Required.",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy Birds (HRTF Binaural): Headphones Required.",
+        "author": "lonemonk",
+        "source_url": "https://freesound.org/people/lonemonk/sounds/758974/",
+        "license": "CC0-1.0",
+        "sha256": "3da1779e0a6d63481d6c54ca2ce40b634814aa3aab3f441116bab8923bb2ecd3"
+      }
+    ],
+    "processing": "excerpt 2.62-3.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.565,
+    "rms": 0.11,
+    "sha256": "d99366ba16292006167203ffd43de529fa58d41d54aeefa4c9f8e5841e98e701"
+  }
+}

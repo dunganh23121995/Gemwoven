@@ -127,7 +127,11 @@
  "tempestwing": {
   "desc": "a blue and gold storm griffin with raised blue feathered wings, golden armour plates and glowing blue gems",
   "fixed": "legs, talons, beak, armour, wing bones",
-  "motion": "the wing and neck feathers ruffle, the blue gems flicker with tiny sparks"
+  "motion": "the wing and neck feathers ruffle, the blue gems flicker with tiny sparks",
+  "kind": "storm-calling",
+  "windup": "it rears up and spreads its great blue wings wide and high, lightning crackling along the feather tips, eyes glowing (no orb, no sparkles)",
+  "strike": "it beats its wings forward and thrusts its head and one taloned foreleg forward, calling the storm",
+  "kind2": "storm call"
  },
  "souljailer": {
   "desc": "a hooded purple wraith jailer with a large scythe, a hanging soul lantern, a glowing violet core in its chest and tattered purple wisps",

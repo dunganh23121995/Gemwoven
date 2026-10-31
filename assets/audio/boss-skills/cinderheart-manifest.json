@@ -1,0 +1,287 @@
+{
+  "bossfx-cinderheart-fistwave-start": {
+    "file": "boss-skills/cinderheart/fistwave-start.wav",
+    "duration": 1.62,
+    "beat": "fistwave start: Punch in the air",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Punch in the air",
+        "author": "marcusgar",
+        "source_url": "https://freesound.org/people/marcusgar/sounds/360947/",
+        "license": "CC0-1.0",
+        "sha256": "76d68e48d7b0a328b551326546719286ec3f4c59a513dc92ff72cdc862bde4ea"
+      }
+    ],
+    "processing": "excerpt 5.80-7.42 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.1,
+    "sha256": "bb56c197092e837824e892bc7bdfd7af5074d72fdd068387f8f2b21a3b57614e"
+  },
+  "bossfx-cinderheart-fistwave-hit": {
+    "file": "boss-skills/cinderheart/fistwave-hit.wav",
+    "duration": 0.62,
+    "beat": "fistwave hit: Dropping Rock 1",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Dropping Rock 1",
+        "author": "OutbreakProtocol",
+        "source_url": "https://freesound.org/people/OutbreakProtocol/sounds/746473/",
+        "license": "CC0-1.0",
+        "sha256": "b3f1ad6e4c089b9ffd6197848084ef1685e2e224fc3fb8b02429bd36ea76f555"
+      }
+    ],
+    "processing": "excerpt 0.04-0.66 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.058,
+    "sha256": "e9c4d7963d8af01b703be681ad51b1df8c4681812a2ee4187902386cb60f22a5"
+  },
+  "bossfx-cinderheart-columns-start": {
+    "file": "boss-skills/cinderheart/columns-start.wav",
+    "duration": 1.44,
+    "beat": "columns start: Stone Scrape 2",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Stone Scrape 2",
+        "author": "alegemaate",
+        "source_url": "https://freesound.org/people/alegemaate/sounds/667283/",
+        "license": "CC0-1.0",
+        "sha256": "e541451a90cfa3f489789b2f5872833ad5721232716296de3d3129857dadfdb8"
+      }
+    ],
+    "processing": "excerpt 0.06-1.50 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.029,
+    "sha256": "4a72cd3450f3521ac0102290e863baa4d512dc4727071221e03dda6c9ff74af7"
+  },
+  "bossfx-cinderheart-vent-grow": {
+    "file": "boss-skills/cinderheart/vent-grow.wav",
+    "duration": 2.62,
+    "beat": "vent grow: S35-11 Volcano explosion with debris; lava. rumble; 2 versions.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "S35-11 Volcano explosion with debris; lava. rumble; 2 versions.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/675740/",
+        "license": "CC0-1.0",
+        "sha256": "cb315000bf1ac7639bb00b64f6b73b091d396bd218348aa8d9ad39337635d397"
+      }
+    ],
+    "processing": "excerpt 8.24-10.86 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.4,
+    "rms": 0.09,
+    "sha256": "d11f4134bd0269dc1c9c54e6b7b96fa7f06312f912e101edc0cc604dccdb7eb5"
+  },
+  "bossfx-cinderheart-spikeline-start": {
+    "file": "boss-skills/cinderheart/spikeline-start.wav",
+    "duration": 1.62,
+    "beat": "spikeline start: rocks hitting against each other OWI.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "rocks hitting against each other OWI.wav",
+        "author": "1skyland",
+        "source_url": "https://freesound.org/people/1skyland/sounds/543172/",
+        "license": "CC0-1.0",
+        "sha256": "eeb4a8d563d4de127b5e3d2b1cb262c06a39ea7987008a0adc4d17d49e2cbb77"
+      }
+    ],
+    "processing": "excerpt 7.78-9.40 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.02,
+    "sha256": "687c2d89de1d8eac8e1b4715753eb67f78c103c4f1eb6d7132b4eb20ead7c0b4"
+  },
+  "bossfx-cinderheart-geyser-hit": {
+    "file": "boss-skills/cinderheart/geyser-hit.wav",
+    "duration": 0.3,
+    "beat": "geyser hit: Explosion 5 (Burning Car rec by Ñado)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Explosion 5 (Burning Car rec by Ñado)",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/843251/",
+        "license": "CC0-1.0",
+        "sha256": "a0fe6378d79a60fd5207c0553d45168632e687fb58031ed2f322caeace73cfb3"
+      }
+    ],
+    "processing": "excerpt 0.00-0.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.764,
+    "rms": 0.11,
+    "sha256": "5c9fdf74ad4f09ee07e4ef2f49bc58c436487893489a5287df4778429a57ef92"
+  },
+  "bossfx-cinderheart-pumice-hit": {
+    "file": "boss-skills/cinderheart/pumice-hit.wav",
+    "duration": 1.36,
+    "beat": "pumice hit: rocks.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "rocks.wav",
+        "author": "isalopez",
+        "source_url": "https://freesound.org/people/isalopez/sounds/250199/",
+        "license": "CC0-1.0",
+        "sha256": "5061cbd51a7f61baf29096498334d8980c8d3450605bcdc7f107951278afdf45"
+      }
+    ],
+    "processing": "excerpt 1.74-3.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.021,
+    "sha256": "15f61b1ad3a68c1c71f72c2719948fe1fc4e1c74a4cd66351f1fa71a00fbe313"
+  },
+  "bossfx-cinderheart-corefire-channel": {
+    "file": "boss-skills/cinderheart/corefire-channel.wav",
+    "duration": 1.42,
+    "beat": "corefire channel: LavaSound",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "LavaSound",
+        "author": "Rickplayer",
+        "source_url": "https://freesound.org/people/Rickplayer/sounds/531699/",
+        "license": "CC0-1.0",
+        "sha256": "f5a662b66fb80d42f03c8b0fd313f20085c1acb5367438baec2aff6be7a927f1"
+      }
+    ],
+    "processing": "excerpt 7.02-8.44 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.49,
+    "rms": 0.08,
+    "sha256": "0c1cb89a114d851ea3f3338ec06fd7f58a32dd71fb8e4228a8c06588eb565f50"
+  },
+  "bossfx-cinderheart-columns-lock": {
+    "file": "boss-skills/cinderheart/columns-lock.wav",
+    "duration": 1.02,
+    "beat": "columns lock: hawaii_kilauea_iki_trail_stones.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "hawaii_kilauea_iki_trail_stones.wav",
+        "author": "e__",
+        "source_url": "https://freesound.org/people/e__/sounds/172932/",
+        "license": "CC0-1.0",
+        "sha256": "6a9f157d7e6978808e49449f99b12cd45cb8b944d68fdbd9d0150f3f0c546b4a"
+      }
+    ],
+    "processing": "excerpt 11.44-12.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.024,
+    "sha256": "c2f4ffb8569a3ea22932b94ba2b12db53b3dbd4e7c7a9edfaaad537f384eacbb"
+  },
+  "bossfx-cinderheart-vent-channel": {
+    "file": "boss-skills/cinderheart/vent-channel.wav",
+    "duration": 1.42,
+    "beat": "vent channel: Gas burner 01.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Gas burner 01.wav",
+        "author": "PegasusCZ",
+        "source_url": "https://freesound.org/people/PegasusCZ/sounds/569332/",
+        "license": "CC0-1.0",
+        "sha256": "5c82834587a0f73fc7d6b33a0f5c06c0421c3a51c427871c2981b417548f4c5a"
+      }
+    ],
+    "processing": "excerpt 2.04-3.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.035,
+    "sha256": "c6e886da69a642dc4b72c9836c42801047c0bec0f2580ae625588abdd80f5e13"
+  },
+  "bossfx-cinderheart-spikeline-land": {
+    "file": "boss-skills/cinderheart/spikeline-land.wav",
+    "duration": 1.3,
+    "beat": "spikeline land: Concrete and Glass breaking in dumpster",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Concrete and Glass breaking in dumpster",
+        "author": "OverlookHotelRecords",
+        "source_url": "https://freesound.org/people/OverlookHotelRecords/sounds/321143/",
+        "license": "CC0-1.0",
+        "sha256": "ab6a1fc6dc5c9590b41f57af9f38094bfd8df49938fff2fbcee688de021db697"
+      }
+    ],
+    "processing": "excerpt 0.00-1.30 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.082,
+    "sha256": "21cf6b84cc45000628a8f27a6f64149ce6a4e3f37d854e15525dec14942b9610"
+  },
+  "bossfx-cinderheart-spikeline-channel": {
+    "file": "boss-skills/cinderheart/spikeline-channel.wav",
+    "duration": 1.24,
+    "beat": "spikeline channel: Rocks Sliding",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Rocks Sliding",
+        "author": "yatoimtop",
+        "source_url": "https://freesound.org/people/yatoimtop/sounds/400858/",
+        "license": "CC0-1.0",
+        "sha256": "4a1b03a35018b0c04a75b362c5bf6c86acf28f4952fb157051d6dabb0ad5553e"
+      }
+    ],
+    "processing": "excerpt 3.86-5.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.076,
+    "sha256": "e8b6e33574a2f1437a98391ed60ac87a0fa20bbfd55f90a333556ffa676b9b1f"
+  },
+  "bossfx-cinderheart-pumice-start": {
+    "file": "boss-skills/cinderheart/pumice-start.wav",
+    "duration": 0.84,
+    "beat": "pumice start: R24-10-Whip Cracks.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "R24-10-Whip Cracks.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/479926/",
+        "license": "CC0-1.0",
+        "sha256": "ec9810e8a582b14ee04262ad759971aceb83ddd167597cc01d416fe60ed2765b"
+      }
+    ],
+    "processing": "excerpt 11.58-12.42 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.589,
+    "rms": 0.11,
+    "sha256": "0be52f4641f52f8a586b99e36a32dec06a45d476a19593dfae3a20c61c95d154"
+  },
+  "bossfx-cinderheart-geyser-start": {
+    "file": "boss-skills/cinderheart/geyser-start.wav",
+    "duration": 1.62,
+    "beat": "geyser start: S41-18 Large burst of steam.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "S41-18 Large burst of steam.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/675574/",
+        "license": "CC0-1.0",
+        "sha256": "a167c7009b866fb68378d211a08dcc0dc887356088f54d9f3d8c66f75fc050c6"
+      }
+    ],
+    "processing": "excerpt 1.64-3.26 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.324,
+    "rms": 0.11,
+    "sha256": "9b75a08e8fc06531a9b94f92e02ba40bd8fd13b7fe90649c3f2e78ec9f9fc0e1"
+  },
+  "bossfx-cinderheart-geyser-channel": {
+    "file": "boss-skills/cinderheart/geyser-channel.wav",
+    "duration": 1.42,
+    "beat": "geyser channel: Water Poured onto a Burning Fireplace – Hissing Steam and Sizzling Embers",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Water Poured onto a Burning Fireplace – Hissing Steam and Sizzling Embers",
+        "author": "bassimat",
+        "source_url": "https://freesound.org/people/bassimat/sounds/870180/",
+        "license": "CC0-1.0",
+        "sha256": "f7ef06a26f44cbe199d9551ef708bb6297baf9f079394c02583f2edc8d6dd88d"
+      }
+    ],
+    "processing": "excerpt 1.14-2.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.06,
+    "sha256": "ac20f737dfe06ac81133ca0d5217d2b661213fab6dc349504e29897861d35ee0"
+  }
+}

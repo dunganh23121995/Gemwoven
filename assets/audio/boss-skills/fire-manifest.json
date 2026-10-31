@@ -1,0 +1,154 @@
+{
+  "bossfx-fire-scales-start": {
+    "file": "boss-skills/fire/scales-start.wav",
+    "duration": 1.62,
+    "beat": "scales start: boiling or bubbling.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "boiling or bubbling.mp3",
+        "author": "drdock",
+        "source_url": "https://freesound.org/people/drdock/sounds/583256/",
+        "license": "CC0-1.0",
+        "sha256": "257c33303de245f4ae34f60bec72b16915756b1bec50f8bdcf9608c7fb4ff4d2"
+      }
+    ],
+    "processing": "excerpt 11.58-13.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.04,
+    "sha256": "a6cf4005c9f8b66c529729c31d0cb697ef97448c76b91e5af38cbf700ad795b0"
+  },
+  "bossfx-fire-tail-start": {
+    "file": "boss-skills/fire/tail-start.wav",
+    "duration": 1.62,
+    "beat": "tail start: whoosh dark.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "whoosh dark.wav",
+        "author": "sfx4animation",
+        "source_url": "https://freesound.org/people/sfx4animation/sounds/431976/",
+        "license": "CC0-1.0",
+        "sha256": "f6b1d2a15fd6a5695fb2a37886609efe05a1cf744cbd593c57a0bb3bf19cd1d6"
+      }
+    ],
+    "processing": "excerpt 0.42-2.04 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.435,
+    "rms": 0.11,
+    "sha256": "952d9eae623cf3b2c6599653cfef46854fd012b3f69c39bbbdb67b53157fc38a"
+  },
+  "bossfx-fire-tail-hit": {
+    "file": "boss-skills/fire/tail-hit.wav",
+    "duration": 0.68,
+    "beat": "tail hit: whip and crack sound",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "whip and crack sound",
+        "author": "JayRom01",
+        "source_url": "https://freesound.org/people/JayRom01/sounds/615761/",
+        "license": "CC0-1.0",
+        "sha256": "1888de0558eab5d789127de7ce29a97c4d591fb691b28e2ee55d60cf41e5218b"
+      }
+    ],
+    "processing": "excerpt 0.02-0.70 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.099,
+    "sha256": "a0ad1a96f2a7109db139b6e9c3ff8ec4ab8bd9746ff70d9766ad3be276263166"
+  },
+  "bossfx-fire-jaws-hit": {
+    "file": "boss-skills/fire/jaws-hit.wav",
+    "duration": 0.94,
+    "beat": "jaws hit: TELV 152 Bone Crunch.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "TELV 152 Bone Crunch.mp3",
+        "author": "mf_gloom",
+        "source_url": "https://freesound.org/people/mf_gloom/sounds/517850/",
+        "license": "CC0-1.0",
+        "sha256": "d95a7d02b6a7c8a32081f00f4a3ee790370c124826bcdaa9f64072c442558027"
+      }
+    ],
+    "processing": "excerpt 5.32-6.26 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.042,
+    "sha256": "08df3a13be9cf52f6f0c77bdf888958c768f6114d38cebaafc0070182a0b3b12"
+  },
+  "bossfx-fire-flight-start": {
+    "file": "boss-skills/fire/flight-start.wav",
+    "duration": 0.54,
+    "beat": "flight start: Wing Flap (Flag Flapping) 5a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wing Flap (Flag Flapping) 5a",
+        "author": "ani_music",
+        "source_url": "https://freesound.org/people/ani_music/sounds/244982/",
+        "license": "CC0-1.0",
+        "sha256": "56d3a77c35be6f2c85ade0a3fab8b4d2bcd16a427ac8ed6c35869ae48fa8ccfe"
+      }
+    ],
+    "processing": "excerpt 0.02-0.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.083,
+    "sha256": "f7d57ed82824345379911f67058bc2f18774f6969fae52eaf08dc488cf713df5"
+  },
+  "bossfx-fire-flight-hit": {
+    "file": "boss-skills/fire/flight-hit.wav",
+    "duration": 1.62,
+    "beat": "flight hit: Blast + Flamethrower cooldown",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Blast + Flamethrower cooldown",
+        "author": "Breviceps",
+        "source_url": "https://freesound.org/people/Breviceps/sounds/447941/",
+        "license": "CC0-1.0",
+        "sha256": "d685972a1a8985588d2dc2d5108407071c9a4fc6dc51d5a7f28985cf551495a0"
+      }
+    ],
+    "processing": "excerpt 0.22-1.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.633,
+    "rms": 0.11,
+    "sha256": "46ef390f6fcab4626866ff2c99803143ceac40d8cc47fbabf456be063a5cac65"
+  },
+  "bossfx-fire-scales-lock": {
+    "file": "boss-skills/fire/scales-lock.wav",
+    "duration": 0.64,
+    "beat": "scales lock: Stone slab.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Stone slab.wav",
+        "author": "Scottrex05",
+        "source_url": "https://freesound.org/people/Scottrex05/sounds/593489/",
+        "license": "CC0-1.0",
+        "sha256": "6466aee3f078ceb6e1c5de44a3b66bb59d42f5d09bdd67b6b5a2e545902f37f8"
+      }
+    ],
+    "processing": "excerpt 0.76-1.40 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.057,
+    "sha256": "a5bcf8359d3b789be30063f3c097eff6b722e82b6ef6ddbd9c3fe4b8df246004"
+  },
+  "bossfx-fire-jaws-start": {
+    "file": "boss-skills/fire/jaws-start.wav",
+    "duration": 1.6,
+    "beat": "jaws start: Gas furnace - Ignition happy",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Gas furnace - Ignition happy",
+        "author": "ldezem",
+        "source_url": "https://freesound.org/people/ldezem/sounds/386166/",
+        "license": "CC0-1.0",
+        "sha256": "0c6065c98ff8d57bd93192107b1408bd7723ef47b13f2fd9dcc315ca96e6f2c5"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.061,
+    "sha256": "c3164361c0229fccca90fc125ec4bd133e6d19ed636516bec50a88ff140c95d6"
+  }
+}

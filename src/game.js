@@ -571,7 +571,7 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   },
   warmNoctSounds,playNoctSound,stopNoctSounds,get noctSounds(){return [...noctSoundSources].map(({id,pan})=>({id,pan}));},
   playCastSound,stopCastSounds,get castSounds(){return [...castSoundSources].map(({id})=>id);},
-  spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads};},
+  spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads,span:sheet.span,footY:sheet.footY,scale:sheet.scale,bodyHeight:sheet.bodyHeight};},
   get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,
   get progressionTurns(){return progressionTurn;},
   get expedition(){return typeof expeditionState==='undefined'?null:expeditionState;},expeditionCollect,
@@ -582,6 +582,8 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
   setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get creatureNames(){return progressionRules.WORLD.CREATURE_NAMES;},get foeStatuses(){return foeStatuses;},get foeHaste(){return foeHaste;},resetFoeStatuses(){foeStatusReset();},tickFoeStatuses(){return tickFoeStatuses();},applyFoeStatus(s,base){return applyFoeStatus(s,base);},castReadyUltimates(){return castReadyUltimates();},foeSkills(){const o=state.qaFoeFx;if(!o)return [];const W=progressionRules.WORLD;return (o.tier==='boss'?W.BOSSES[o.boss]?.skills:o.tier==='elite'?W.ELITE_SKILLS[o.creature]:[W.COMMON_SKILL])||[];},
   foeCast(index,base=30){const s=this.foeSkills()[index];if(!s)return;const hit=s.effects?.find(e=>e.type==='hit'||e.type==='burst'),ward=s.effects?.find(e=>e.type==='ward'),heal=s.effects?.find(e=>e.type==='heal');
-    const skill=s.effects?{name:s.name,move:s.move,ult:s.ult,kind:s.kind,power:hit?.power||0,hits:hit?.hits||1,shield:ward?.pct,heal:heal?.pct,status:s.effects.find(e=>e.type==='status')}:s;return castFoeSkill(skill,base);},get chapters(){return progressionRules.WORLD.CHAPTERS;},get bossDefs(){return progressionRules.WORLD.BOSSES;}
+    const skill=s.effects?{name:s.name,move:s.move,ult:s.ult,kind:s.kind,power:hit?.power||0,hits:hit?.hits||1,shield:ward?.pct,heal:heal?.pct,status:s.effects.find(e=>e.type==='status')}:s;return castFoeSkill(skill,base);},
+  // Summoned guards on the stage (each {hp,max}) and their attack, for visual checks.
+  guards(list){return foeGuardsRender(list);},skillRule(s){return s.phase?'Giai đoạn '+s.phase+' (máu boss '+['>70%','35–70%','≤35%'][s.phase-1]+')':window.GemwovenBossTactics.skillRule(s);},guardsAttack(raw=40){return foeGuardsAttack(raw);},get chapters(){return progressionRules.WORLD.CHAPTERS;},get bossDefs(){return progressionRules.WORLD.BOSSES;}
 };
 })();

@@ -1,0 +1,16 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\fx\\bosses\\ice\\skills\\moonshatter\\raw-sheet.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a190e8-4c44-7b21-ae77-62ac1663a728\\exec-0d4d61cc-8f7b-48a8-82f0-23eb3ec67276.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a190e8-4c3b-7521-989b-a66784929315\\exec-a004c46a-2c38-43b1-9dc9-abfdd82175ea.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a190e8-4cfb-7280-8041-8ad4599ebd27\\exec-4f2d4cba-9fa4-498d-8fc3-203e0d1e2926.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a190e8-4e39-79f0-9b5d-c70e2841a6ad\\exec-4e2d8aae-e8f4-408d-9e7f-7ea53efe2605.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a190e8-4cc3-7333-b9d9-96985720b6cf\\exec-fbd9c2c0-c599-437a-855d-9ab10a094c5f.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 36.6
+}
+
+

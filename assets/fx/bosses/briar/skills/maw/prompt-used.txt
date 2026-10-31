@@ -1,0 +1,13 @@
+Image 1 (the first image) is only the identity reference for the boss "Nữ Hoàng Gai, the Thorn Queen" (a dryad queen woven from dark green thorny vines crowned with red roses). DO NOT draw the boss, its face, or any creature or character body.
+Image 2 is a layout guide: use it only to understand the 3x2 grid of equal 512x512 frame slots, their centres and the safe area (the inner box). Do not reproduce the guide: no visible boxes, no safe-area rectangles, no centre marks, no lines, no borders, no guide background. Every frame, including its sparks and fragments, must stay inside the inner safe box of its own slot.
+
+Create an animated VFX sprite sheet for ONE skill of this boss. Exactly six frames in a 3 COLUMNS x 2 ROWS grid of equal square cells, landscape 1536x1024 canvas, read left-to-right then next row.
+
+THE BOSS'S OWN VFX IDENTITY (every skill of this boss shares it): BLACK THORN AND VENOM: withered black brambles and long black thorns, acid yellow-green venom drops and glow, torn blood-red petals (never whole roses). It must look clearly different from this boss's ordinary signature magic, which is a burst of red roses and green vines: do not draw that.
+
+SKILL "Hoa Ăn Linh": a carnivorous flower bud of black petals snapping open on an acid yellow-green glowing maw with thorn teeth, torn red petals flying.
+LAYOUT: one effect centred on the cell, about 70% of the cell across at its peak.
+TIMING: frame 1 a small bright spark or seed of the effect at the centre; frame 2 it bursts outward to about half size; frame 3 it grows almost to full size; frame 4 the PEAK, largest and brightest, most detail and fragments; frame 5 it breaks apart, fragments flying outward; frame 6 only a few small fading fragments. Centred in the same place in every frame.
+
+STYLE: OPAQUE solid painted shapes with crisp edges and cel-shaded highlights, clean HD painterly anime game VFX for a mobile fantasy RPG, NOT pixel art. No translucent haze, no soft smoke, no mist, no blurry glow halos, no semi-transparent gradients fading into the background; any glow, smoke or cloud is painted as a solid opaque colour shape. No character, no creature body, no boss, no hands, no fists, no faces, no text, no letters, no numbers, no runes that look like writing, no labels, no borders, no grid lines, no ground plate, no cast shadow.
+Everything stays fully inside its own cell with at least 15% magenta padding on all four sides; nothing crosses a cell edge or enters a neighbouring cell. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or hot pink anywhere in the effect, and no purple or violet.

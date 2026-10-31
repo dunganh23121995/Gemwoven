@@ -1,0 +1,230 @@
+{
+  "bossfx-briar-maw-start": {
+    "file": "boss-skills/briar/maw-start.wav",
+    "duration": 0.92,
+    "beat": "maw start: Snap in a small room3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Snap in a small room3",
+        "author": "locky_Y",
+        "source_url": "https://freesound.org/people/locky_Y/sounds/733174/",
+        "license": "CC0-1.0",
+        "sha256": "526396caf87f2f325145fe522f3af7ed4c446d8a8bb5eafb8cf1753db2f22044"
+      }
+    ],
+    "processing": "excerpt 0.00-0.92 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.009,
+    "sha256": "52fe5031b2ffc2ab6a1cb603c0a7c00365e894d297cbe45e5616adf4fabb7486"
+  },
+  "bossfx-briar-maw-hit": {
+    "file": "boss-skills/briar/maw-hit.wav",
+    "duration": 0.36,
+    "beat": "maw hit: Splat/Squish 4",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Splat/Squish 4",
+        "author": "mrickey13",
+        "source_url": "https://freesound.org/people/mrickey13/sounds/515621/",
+        "license": "CC0-1.0",
+        "sha256": "09a38ccf223e3570d653719fd24af00741c1156de0e23a7f47c63b6f8b85f362"
+      }
+    ],
+    "processing": "excerpt 0.00-0.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.076,
+    "sha256": "bc673c4efe0ab898a3a473599afea86bc6fe8583f58e8743f358f82fbfb86edd"
+  },
+  "bossfx-briar-brambles-start": {
+    "file": "boss-skills/briar/brambles-start.wav",
+    "duration": 0.72,
+    "beat": "brambles start: Forest Branches Small Cracking Leaves",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Forest Branches Small Cracking Leaves",
+        "author": "Sheyvan",
+        "source_url": "https://freesound.org/people/Sheyvan/sounds/830873/",
+        "license": "CC0-1.0",
+        "sha256": "6542ff74b989a587bfda3c1514edc352f320dc10d8ebb40dc948f196362e7e13"
+      }
+    ],
+    "processing": "excerpt 5.28-6.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.022,
+    "sha256": "f4477250294dcf2b146444a511c1d1b2f0e7226429d228a4de90bdec9a4b0096"
+  },
+  "bossfx-briar-thorncrown-channel": {
+    "file": "boss-skills/briar/thorncrown-channel.wav",
+    "duration": 0.8,
+    "beat": "thorncrown channel: Creaking02",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Creaking02",
+        "author": "LudPos",
+        "source_url": "https://freesound.org/people/LudPos/sounds/726921/",
+        "license": "CC0-1.0",
+        "sha256": "25db33d2acf16caf02786c6a2dbd90e62bb576d505f9fc755bac911b06d87c5f"
+      }
+    ],
+    "processing": "excerpt 7.18-7.98 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.023,
+    "sha256": "d4f0bb05b0aee84614c45998a7555b9483377b27fde744a18af858d7877dc17f"
+  },
+  "bossfx-briar-rosebloom-channel": {
+    "file": "boss-skills/briar/rosebloom-channel.wav",
+    "duration": 1.42,
+    "beat": "rosebloom channel: Rustling of dry leaves",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Rustling of dry leaves",
+        "author": "SpinOpel",
+        "source_url": "https://freesound.org/people/SpinOpel/sounds/771130/",
+        "license": "CC0-1.0",
+        "sha256": "4183872fd0b302a0e401e1652481d2c27139381048b3a83739b0a6749887a7c2"
+      }
+    ],
+    "processing": "excerpt 3.26-4.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.067,
+    "sha256": "13e169d1aa9af080e746b0b36a1deb9208fd8c5e96a1ed3b7ca8445e8b65b747"
+  },
+  "bossfx-briar-vinewhip-start": {
+    "file": "boss-skills/briar/vinewhip-start.wav",
+    "duration": 0.76,
+    "beat": "vinewhip start: Swing.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Swing.mp3",
+        "author": "XxChr0nosxX",
+        "source_url": "https://freesound.org/people/XxChr0nosxX/sounds/268227/",
+        "license": "CC0-1.0",
+        "sha256": "180faece0dca8ab1164d4e3c0e943d378040dc2b6e62cb6585a802a2755f429c"
+      }
+    ],
+    "processing": "excerpt 0.32-1.08 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.078,
+    "sha256": "b66217b073856710c387873ca486640885e86ee3f6d3ca7741f9b6007499278f"
+  },
+  "bossfx-briar-maw-channel": {
+    "file": "boss-skills/briar/maw-channel.wav",
+    "duration": 1.1,
+    "beat": "maw channel: PRO_Green Corn Plant",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "PRO_Green Corn Plant",
+        "author": "Sami_Zadoud",
+        "source_url": "https://freesound.org/people/Sami_Zadoud/sounds/755839/",
+        "license": "CC0-1.0",
+        "sha256": "279cae3ebcb993c652c1c9ee41da5fde9f4f4cef401a1da9677a0ef647c6aab4"
+      }
+    ],
+    "processing": "excerpt 13.98-15.08 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.567,
+    "rms": 0.08,
+    "sha256": "a45cb825a669379ac205ce0a98b727960601804bac0e4a247e5b29fdf20db9c0"
+  },
+  "bossfx-briar-thorncrown-start": {
+    "file": "boss-skills/briar/thorncrown-start.wav",
+    "duration": 1.62,
+    "beat": "thorncrown start: Dry Grass Rustle.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Dry Grass Rustle.wav",
+        "author": "TheSupremeMuffinPooter",
+        "source_url": "https://freesound.org/people/TheSupremeMuffinPooter/sounds/525268/",
+        "license": "CC0-1.0",
+        "sha256": "fa6089575b6f98df5f16ee68f6c79320516c0ba61f6cfe07db88a644c40159c6"
+      }
+    ],
+    "processing": "excerpt 4.40-6.02 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.024,
+    "sha256": "ea32da923ba6288992b87db9e253f03ee003348e8997c78db4bf05768059b795"
+  },
+  "bossfx-briar-thorncrown-hit": {
+    "file": "boss-skills/briar/thorncrown-hit.wav",
+    "duration": 0.58,
+    "beat": "thorncrown hit: SFX_wood_cracking.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "SFX_wood_cracking.wav",
+        "author": "EricsSoundschmiede",
+        "source_url": "https://freesound.org/people/EricsSoundschmiede/sounds/669457/",
+        "license": "CC0-1.0",
+        "sha256": "cab3b4d62f9530734987733e59550453d3add4c51ceb0b61017ef618a890da81"
+      }
+    ],
+    "processing": "excerpt 1.78-2.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.038,
+    "sha256": "5af6f5fcbe87e3cc05e204ee08edb7916b553a281345d34893719a441c590054"
+  },
+  "bossfx-briar-brambles-lock": {
+    "file": "boss-skills/briar/brambles-lock.wav",
+    "duration": 1.02,
+    "beat": "brambles lock: WOODBrk_Layered Cracking Thin Plywood Board Splinters x 7",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "WOODBrk_Layered Cracking Thin Plywood Board Splinters x 7",
+        "author": "harrisonlace",
+        "source_url": "https://freesound.org/people/harrisonlace/sounds/873248/",
+        "license": "CC0-1.0",
+        "sha256": "20031603231c2cc6a93258cb7547c8d8077230442b3ff406ed1486b5b9590184"
+      }
+    ],
+    "processing": "excerpt 6.92-7.94 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.053,
+    "sha256": "ee3cd650b00195bbde7633bdd0991c353427ee3790e8020aa0cc732a106d99ad"
+  },
+  "bossfx-briar-brambles-channel": {
+    "file": "boss-skills/briar/brambles-channel.wav",
+    "duration": 1.18,
+    "beat": "brambles channel: crush dry leaves sound effect",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "crush dry leaves sound effect",
+        "author": "Garuda1982",
+        "source_url": "https://freesound.org/people/Garuda1982/sounds/528853/",
+        "license": "CC0-1.0",
+        "sha256": "4bdb2f48d4dca1cc62b0b356dafc46dfae80a25909a65fcae812bb0f14064523"
+      }
+    ],
+    "processing": "excerpt 0.38-1.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.038,
+    "sha256": "8b3ad9e73047b9fa09e3c52ce070a9952750a42218396166279bdecfd869111b"
+  },
+  "bossfx-briar-vinewhip-hit": {
+    "file": "boss-skills/briar/vinewhip-hit.wav",
+    "duration": 0.96,
+    "beat": "vinewhip hit: Crack of whip",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Crack of whip",
+        "author": "DigPro120",
+        "source_url": "https://freesound.org/people/DigPro120/sounds/531240/",
+        "license": "CC0-1.0",
+        "sha256": "5574ab8776a060741700aaab370fdc919907ed1c88753d33747ae2c0ad8c4419"
+      }
+    ],
+    "processing": "excerpt 3.98-4.94 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.809,
+    "rms": 0.11,
+    "sha256": "9c213a927251fd9ce039a185b0c4504456d3fc1f92b7998bdb63c50a7f2c6681"
+  }
+}

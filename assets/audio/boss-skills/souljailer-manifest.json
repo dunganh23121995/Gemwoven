@@ -1,0 +1,268 @@
+{
+  "bossfx-souljailer-cage-start": {
+    "file": "boss-skills/souljailer/cage-start.wav",
+    "duration": 1.62,
+    "beat": "cage start: iron gate 1.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "iron gate 1.mp3",
+        "author": "ibrizie",
+        "source_url": "https://freesound.org/people/ibrizie/sounds/621169/",
+        "license": "CC0-1.0",
+        "sha256": "3fc3f07a821e4be1a28218fe4e1b684ef1791e01112b413b8dafeee159c17db3"
+      }
+    ],
+    "processing": "excerpt 1.14-2.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.749,
+    "rms": 0.11,
+    "sha256": "5091eb7c5e45ec01b9fc32852a9532baf6536bb57fbb669aa719d4acda3e322b"
+  },
+  "bossfx-souljailer-chaincircle-grow": {
+    "file": "boss-skills/souljailer/chaincircle-grow.wav",
+    "duration": 0.68,
+    "beat": "chaincircle grow: chains_whipAndTighten",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "chains_whipAndTighten",
+        "author": "C_Sander",
+        "source_url": "https://freesound.org/people/C_Sander/sounds/733608/",
+        "license": "CC0-1.0",
+        "sha256": "3c19029968e83711ad6dfb12aa1175d6d4beae2ec31a24e0c417d0cbe664acb8"
+      }
+    ],
+    "processing": "excerpt 6.82-7.50 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.044,
+    "sha256": "cd94101c343757692fc9c463a392bb2e2dcab61cf582c1c2edb0e8a71c2d24c9"
+  },
+  "bossfx-souljailer-chainknot-start": {
+    "file": "boss-skills/souljailer/chainknot-start.wav",
+    "duration": 1.3,
+    "beat": "chainknot start: Steel Chain Dragged, Hard Reverb",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Steel Chain Dragged, Hard Reverb",
+        "author": "ani_music",
+        "source_url": "https://freesound.org/people/ani_music/sounds/167912/",
+        "license": "CC0-1.0",
+        "sha256": "bc971bdbd5a7526216f075664a9ca9d98e2ff61c7e7a2189aa771e2b4918bc1c"
+      }
+    ],
+    "processing": "excerpt 0.24-1.54 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.092,
+    "sha256": "789cebecd275b7e17a055d1094ab6dc2fcf500166bcb5eb4c80c5ab251997eb3"
+  },
+  "bossfx-souljailer-ghostpillars-hit": {
+    "file": "boss-skills/souljailer/ghostpillars-hit.wav",
+    "duration": 0.84,
+    "beat": "ghostpillars hit: flame burst ignite bbq barbecue.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "flame burst ignite bbq barbecue.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/637533/",
+        "license": "CC0-1.0",
+        "sha256": "7d0ac55c43955b3533e4e894f446842ce08725722cd3e4428cf1d048def61b02"
+      }
+    ],
+    "processing": "excerpt 0.00-0.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.106,
+    "sha256": "af49f8558390fa5968d50830eaf84b675f0197d23347019c250bc37d93114b49"
+  },
+  "bossfx-souljailer-cageslam-start": {
+    "file": "boss-skills/souljailer/cageslam-start.wav",
+    "duration": 1.62,
+    "beat": "cageslam start: door metal big creaky open outside heard from inside in empty concrete room construction site with bg noise.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "door metal big creaky open outside heard from inside in empty concrete room construction site with bg noise.wav",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/406193/",
+        "license": "CC0-1.0",
+        "sha256": "28866529fda9ed713eb85ba01d6f2cca1a28e0edb4311e8a6f61b635112cf396"
+      }
+    ],
+    "processing": "excerpt 2.16-3.78 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.086,
+    "sha256": "9d5be15cd62e88627ffe8f679c420d1fa85b0e406d694a0e882d74d8d0d9f5e8"
+  },
+  "bossfx-souljailer-ghostpillars-start": {
+    "file": "boss-skills/souljailer/ghostpillars-start.wav",
+    "duration": 1.62,
+    "beat": "ghostpillars start: spooky ghost wind 01.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "spooky ghost wind 01.mp3",
+        "author": "TitanKaempfer",
+        "source_url": "https://freesound.org/people/TitanKaempfer/sounds/582300/",
+        "license": "CC0-1.0",
+        "sha256": "cf922028375a59321b44828faabdf1a20eae2b4930d385a0f4c7db8e59b6d539"
+      }
+    ],
+    "processing": "excerpt 3.58-5.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.572,
+    "rms": 0.11,
+    "sha256": "119071191f36266cdb7d1de3c678bcc775728c11a65e1a1aea3df3271ff1ad3d"
+  },
+  "bossfx-souljailer-lanternglow-channel": {
+    "file": "boss-skills/souljailer/lanternglow-channel.wav",
+    "duration": 1.42,
+    "beat": "lanternglow channel: wind pot chain",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "wind pot chain",
+        "author": "MYSSYF",
+        "source_url": "https://freesound.org/people/MYSSYF/sounds/533081/",
+        "license": "CC0-1.0",
+        "sha256": "a97d7da2f5db1bf10bfa9316d8130acf75e72014da22554d88e2119004e767a7"
+      }
+    ],
+    "processing": "excerpt 0.36-1.78 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.063,
+    "sha256": "cb2f61852be8dc5da0266eaf333a8af7ce561ab93860b07d9e92f5e8a0aa1902"
+  },
+  "bossfx-souljailer-ghostscythe-hit": {
+    "file": "boss-skills/souljailer/ghostscythe-hit.wav",
+    "duration": 1.62,
+    "beat": "ghostscythe hit: Knife Sword Metal Hit Scrape Twang Pack.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Knife Sword Metal Hit Scrape Twang Pack.wav",
+        "author": "ralph.whitehead",
+        "source_url": "https://freesound.org/people/ralph.whitehead/sounds/565729/",
+        "license": "CC0-1.0",
+        "sha256": "96d56c2eb0974c33fbfddf010173bada1ecf0763b0c1b6baba6d42b225197267"
+      }
+    ],
+    "processing": "excerpt 14.96-16.58 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.062,
+    "sha256": "4bea0bb7a622d3bd8be7e82c16fcd0bd2c5a872f43cf5f493e6d465edc913e1f"
+  },
+  "bossfx-souljailer-cage-lock": {
+    "file": "boss-skills/souljailer/cage-lock.wav",
+    "duration": 0.62,
+    "beat": "cage lock: School door with metal latch.aif",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "School door with metal latch.aif",
+        "author": "timonunderwater",
+        "source_url": "https://freesound.org/people/timonunderwater/sounds/532787/",
+        "license": "CC0-1.0",
+        "sha256": "d0f1f338da24243fd7e5055084d77bf3f69b773d500622d0fc073c69a2feae28"
+      }
+    ],
+    "processing": "excerpt 9.10-9.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.056,
+    "sha256": "21f568f6d0dc92c4894e968d6f5e8342c63127bd2a22ccdd04f55494dbbc29f4"
+  },
+  "bossfx-souljailer-chaincircle-channel": {
+    "file": "boss-skills/souljailer/chaincircle-channel.wav",
+    "duration": 1.42,
+    "beat": "chaincircle channel: metal heavy drag gritty long.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "metal heavy drag gritty long.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/453334/",
+        "license": "CC0-1.0",
+        "sha256": "e6ebd0c08b5bcc5b8e6d3eaf51cd256e829cfd9328879f44ddddd488a512d921"
+      }
+    ],
+    "processing": "excerpt 0.76-2.18 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.049,
+    "sha256": "70e335f7d4f5e16d7f90a4c4c8931fe83b6693d454d5724160bbc53e6e8ed7bd"
+  },
+  "bossfx-souljailer-cageslam-hit": {
+    "file": "boss-skills/souljailer/cageslam-hit.wav",
+    "duration": 1.62,
+    "beat": "cageslam hit: swinging metal gate closed.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "swinging metal gate closed.mp3",
+        "author": "FartMuffin",
+        "source_url": "https://freesound.org/people/FartMuffin/sounds/571419/",
+        "license": "CC0-1.0",
+        "sha256": "31e1bea689bc85b62085b09915f9b1588c76ed78d84bb00e60ee564a14d462b6"
+      }
+    ],
+    "processing": "excerpt 1.24-2.86 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.06,
+    "sha256": "b306b8fff7c80168a3d4bece9e3bda0bd6c27520f2c8ef2a1a0dea2bfccb7b30"
+  },
+  "bossfx-souljailer-cageslam-channel": {
+    "file": "boss-skills/souljailer/cageslam-channel.wav",
+    "duration": 1.42,
+    "beat": "cageslam channel: Metallic Groan",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Metallic Groan",
+        "author": "hinchinbrook",
+        "source_url": "https://freesound.org/people/hinchinbrook/sounds/496836/",
+        "license": "CC0-1.0",
+        "sha256": "6338c39f45ae7407ae4a388822a011e8849816549df4d74dbcd77662816a4f8c"
+      }
+    ],
+    "processing": "excerpt 3.92-5.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.31,
+    "rms": 0.08,
+    "sha256": "62eec9f55bf4484f7d75c6c8e4c4be6246bc18fa6adb0b73ef56496046f72061"
+  },
+  "bossfx-souljailer-chainknot-hit": {
+    "file": "boss-skills/souljailer/chainknot-hit.wav",
+    "duration": 1.04,
+    "beat": "chainknot hit: chain thick drop on floor high pitch rattle various.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "chain thick drop on floor high pitch rattle various.wav",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/452574/",
+        "license": "CC0-1.0",
+        "sha256": "bac6229d1ac2e490596ee5a2f33c5a530373dcbd456c6b270078cc516d050312"
+      }
+    ],
+    "processing": "excerpt 38.70-39.74 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.471,
+    "rms": 0.11,
+    "sha256": "121a6d64576432e6c364a34d5be0251bce695f4c3cc22eb9cac9c9592552db3c"
+  },
+  "bossfx-souljailer-ghostpillars-channel": {
+    "file": "boss-skills/souljailer/ghostpillars-channel.wav",
+    "duration": 1.42,
+    "beat": "ghostpillars channel: Chains",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Chains",
+        "author": "L.i.Z.e.L.l.E_+",
+        "source_url": "https://freesound.org/people/L.i.Z.e.L.l.E_+/sounds/707860/",
+        "license": "CC0-1.0",
+        "sha256": "62b4ca99407aa30f7404009b7ed98f290c063f119e676a18d339db4f1ac58f7b"
+      }
+    ],
+    "processing": "excerpt 8.66-10.08 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.042,
+    "sha256": "20670dcb41f8b1f4395a4df3ce66f6e7576d130853d77892a37974c85d6e2aa0"
+  }
+}

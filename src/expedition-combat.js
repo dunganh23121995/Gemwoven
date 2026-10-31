@@ -41,9 +41,16 @@ async function expeditionEnemyTurn(){
       message(progressionBattle.enemyName+' · '+e.name);popActorSkill('enemy',e.name,true,[]);setSpriteAction('enemy','cast',760);
       casting=skills.find(s=>s.name===e.name)||null;
       if(casting?.ult)popActorSkill('enemy','TUYỆT CHIÊU',true,[]);
-      if(casting?.effects?.some(x=>x.type==='ward'||x.type==='heal'))await foeSkillAura();
+      // A boss skill with its own look draws it once: with its hits, or here when it lands none.
+      if(casting&&bossSkillLook(casting)){
+        const shield=casting.effects?.some(x=>x.type==='ward'),heal=casting.effects?.some(x=>x.type==='heal');
+        if(!casting.effects?.some(x=>x.type==='hit'||x.type==='burst'))await foeSkillStrike({name:casting.name,move:casting.move,shield,heal},0,0);
+        // The shell it raised circles it as its own armour plates while the shell holds.
+        if(shield)foeGuardAura(bossSkillLook(casting),()=>expeditionState?.ward>0||state.enemyArmor>0);
+      }
+      else if(casting?.effects?.some(x=>x.type==='ward'||x.type==='heal'))await foeSkillAura();
     }
-    if(e.type==='windup'){message('Đang niệm '+e.name+'! Phá niệm trong lượt kế tiếp.');await floating('enemy','NIỆM CHIÊU','armor');}
+    if(e.type==='windup'){message('Đang niệm '+e.name+'! Phá niệm trong lượt kế tiếp.');const look=bossSkillLook(skills.find(s=>s.name===e.name));if(look?.channel)await foeChannel(look);await floating('enemy','NIỆM CHIÊU','armor');}
     if(e.type==='interrupt'){message('Đã phá '+e.name+' · Lộ điểm yếu!');await floating('enemy','PHÁ NIỆM','good');}
     if(e.type==='hazard'){
       // Persistent theme damage bypasses armor, but retains the saved defense.
@@ -51,10 +58,11 @@ async function expeditionEnemyTurn(){
       await floating('hero',expeditionDef.status+' −'+result.amount);
     }
     if(e.type==='hit'||e.type==='burst'){
-      if(casting&&!e.addAttack&&expeditionState.tier!=='normal')await foeSkillStrike({kind:casting.kind,move:casting.move},base*e.power,e.hits||1);
+      if(casting&&!e.addAttack&&expeditionState.tier!=='normal')await foeSkillStrike({name:casting.name,kind:casting.kind,move:casting.move},base*e.power,e.hits||1);
+      else if(e.addAttack)await foeGuardsAttack(base*e.power);
       else await attack('enemy',base*e.power,{hits:e.hits||1});
     }
-    if(e.type==='heal')await buff('enemy','heal',Math.round(state.enemyMax*e.pct));
+    if(e.type==='heal')await buff('enemy','heal',Math.round(state.enemyMax*e.pct),{plain:!!(casting&&bossSkillLook(casting))});
     if(e.type==='status')await applyFoeStatus(e,base);
     if(e.type==='drain')state.energy=Math.max(0,state.energy-e.amount);
     if(e.type==='shatter')state.armor=Math.max(0,Math.round(state.armor*(1-e.fraction)));
@@ -72,7 +80,9 @@ function expeditionHud(){
   panel.innerHTML=`<div class="expedition-phase"><b>${d.phaseNames[t.phase-1]} · ${t.turn} lượt</b><span>${d.status} <strong>${t.stacks}/5</strong></span></div><div class="expedition-gauge"><label>${d.gauge} ${Math.round(t.gauge)}%</label><meter min="0" max="100" value="${t.gauge}"></meter></div><div class="expedition-counter">${relic?`<img src="${relic}" alt="">`:''}<span>${d.counter} · ${stars}/12 mảnh<br><b>${t.rank?'Giảm '+Math.round(expeditionRules.resist(t)*100)+'% cơ chế chủ đề':'Chưa có khắc chế · Có thể quay lại tinh anh'}</b></span></div><div class="expedition-pools"><span>Vỏ bảo hộ ${Math.ceil(t.ward)}</span><span>Hộ vệ ${Math.ceil(t.addHp)}/${Math.ceil(t.addMax)}</span></div><p class="expedition-forecast ${f.channel?'channeling':''}"><b>${f.name}</b> · ${f.description}</p>`;
   let minions=$('expeditionMinions');if(!minions){minions=document.createElement('div');minions.id='expeditionMinions';minions.className='expedition-minions';$('scene').append(minions);}
   minions.replaceChildren();
-  if(t.addHp>0)for(const [id,name]of d.elites){const art=ART.campaignCreatures?.[d.theme+'-'+id],src=art?.portrait||art?.src;if(!src)continue;const image=document.createElement('img');image.src=src;image.alt=name;minions.append(image);}
+  // The boss's own guards stand on the stage (foe-skills.js); the elites' portraits are the fallback.
+  if(ART.bossFx?.[foeSkillOwner()?.boss+'/minion'])foeGuardsRender(t.addHp>0?t.adds:[]);
+  else if(t.addHp>0)for(const [id,name]of d.elites){const art=ART.campaignCreatures?.[d.theme+'-'+id],src=art?.portrait||art?.src;if(!src)continue;const image=document.createElement('img');image.src=src;image.alt=name;minions.append(image);}
 }
 const expeditionUpdate=update;
 update=function(){expeditionUpdate();expeditionHud();};

@@ -1,0 +1,154 @@
+{
+  "bossfx-roc-featherblade-start": {
+    "file": "boss-skills/roc/featherblade-start.wav",
+    "duration": 1.14,
+    "beat": "featherblade start: Wing Flap Heavy (prototype).mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wing Flap Heavy (prototype).mp3",
+        "author": "GearArcanaNo37",
+        "source_url": "https://freesound.org/people/GearArcanaNo37/sounds/561364/",
+        "license": "CC0-1.0",
+        "sha256": "b281f98cbb0fc7c0c5029a92216edefb040773324fe5b04849758e58fcd4fe1a"
+      }
+    ],
+    "processing": "excerpt 0.12-1.26 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.756,
+    "rms": 0.11,
+    "sha256": "39e0e3e3fab220ddb73f338b09e42cd5d99edd8ffb8adb2dafb6b69073c5de3e"
+  },
+  "bossfx-roc-featherwall-start": {
+    "file": "boss-skills/roc/featherwall-start.wav",
+    "duration": 0.54,
+    "beat": "featherwall start: Gust of wind",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Gust of wind",
+        "author": "Rae_chuuu",
+        "source_url": "https://freesound.org/people/Rae_chuuu/sounds/792292/",
+        "license": "CC0-1.0",
+        "sha256": "20dd118cdf63d46095d04db116b3b379aded460249c143fd0252e7fd2042a555"
+      }
+    ],
+    "processing": "excerpt 16.34-16.88 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.074,
+    "sha256": "6400465a7fd2b59aad280adcf43c1976ddbb241d3f6113a815c8b9febe0f8bd9"
+  },
+  "bossfx-roc-dive-start": {
+    "file": "boss-skills/roc/dive-start.wav",
+    "duration": 0.56,
+    "beat": "dive start: Flyby",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Flyby",
+        "author": "qubodup",
+        "source_url": "https://freesound.org/people/qubodup/sounds/442955/",
+        "license": "CC0-1.0",
+        "sha256": "c0ccf2f1fbcc82736a00ab8a4b9b7591594bd4b2a325cf760e9c5b6f6917abff"
+      }
+    ],
+    "processing": "excerpt 0.02-0.58 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.69,
+    "rms": 0.11,
+    "sha256": "07ad5ae2064f17bc1485360923afc65925839425c75825d1d0bd043411badb57"
+  },
+  "bossfx-roc-dive-hit": {
+    "file": "boss-skills/roc/dive-hit.wav",
+    "duration": 1.62,
+    "beat": "dive hit: Body falls into debris",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Body falls into debris",
+        "author": "leonelmail",
+        "source_url": "https://freesound.org/people/leonelmail/sounds/461697/",
+        "license": "CC0-1.0",
+        "sha256": "ea0020efd5ff10a460b66017ca48927680fd4cacf8ab918f1d4f7da6bac838f1"
+      }
+    ],
+    "processing": "excerpt 0.20-1.82 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.045,
+    "sha256": "589f6f26090c63160a1547c146af6d949fdceedd300719dcf7202394ab336812"
+  },
+  "bossfx-roc-cyclone-start": {
+    "file": "boss-skills/roc/cyclone-start.wav",
+    "duration": 1.4,
+    "beat": "cyclone start: Wind5.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind5.mp3",
+        "author": "vandale",
+        "source_url": "https://freesound.org/people/vandale/sounds/379472/",
+        "license": "CC0-1.0",
+        "sha256": "a82ceff578fc4105639422be651ec7ae0cecb42233ef6691d453faea86ef7e59"
+      }
+    ],
+    "processing": "excerpt 1.92-3.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.627,
+    "rms": 0.11,
+    "sha256": "ce8ae1e43da92a33f99fc0c18602fe41abed99b85eeb980d7dd3657226b25971"
+  },
+  "bossfx-roc-featherblade-hit": {
+    "file": "boss-skills/roc/featherblade-hit.wav",
+    "duration": 0.28,
+    "beat": "featherblade hit: Arrow_Hit_1",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Arrow_Hit_1",
+        "author": "Mythmazter",
+        "source_url": "https://freesound.org/people/Mythmazter/sounds/708223/",
+        "license": "CC0-1.0",
+        "sha256": "33b436a74988fe5ad589aa424dee45d59b734151d8ddb02ffe32dde04bb64103"
+      }
+    ],
+    "processing": "excerpt 0.40-0.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.036,
+    "sha256": "f77a551516aa7fc978aa642c0f79d7254f6062f4d16bc196cde714f73bcce917"
+  },
+  "bossfx-roc-featherwall-lock": {
+    "file": "boss-skills/roc/featherwall-lock.wav",
+    "duration": 0.44,
+    "beat": "featherwall lock: R21-42-Heavy Fabric Rustling.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "R21-42-Heavy Fabric Rustling.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/481877/",
+        "license": "CC0-1.0",
+        "sha256": "f849378ea39b311276a6952bf7ce6fd11926bf42a0ff05310bf0f9404430abd7"
+      }
+    ],
+    "processing": "excerpt 6.90-7.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.244,
+    "rms": 0.11,
+    "sha256": "4ef626fc3623e9a3736dbe36469c33fa17bbf13df01bcde0d2d4ee7f672c18ed"
+  },
+  "bossfx-roc-cyclone-hit": {
+    "file": "boss-skills/roc/cyclone-hit.wav",
+    "duration": 0.5,
+    "beat": "cyclone hit: Hard Swing 1",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Hard Swing 1",
+        "author": "magnuswaker",
+        "source_url": "https://freesound.org/people/magnuswaker/sounds/523230/",
+        "license": "CC0-1.0",
+        "sha256": "903b53df0acb05459909409694d5285d77aec46536017e0fdd360c234ceb3300"
+      }
+    ],
+    "processing": "excerpt 0.02-0.52 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.093,
+    "sha256": "caeb784393c2af0fe75768ee98fde7331611ac228907018a84913d93bcf5c604"
+  }
+}

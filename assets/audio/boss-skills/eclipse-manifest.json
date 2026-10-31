@@ -1,0 +1,173 @@
+{
+  "bossfx-eclipse-nebulafire-start": {
+    "file": "boss-skills/eclipse/nebulafire-start.wav",
+    "duration": 1.62,
+    "beat": "nebulafire start: gas_burner_ignition.WAV",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "gas_burner_ignition.WAV",
+        "author": "jbrushwood",
+        "source_url": "https://freesound.org/people/jbrushwood/sounds/169449/",
+        "license": "CC0-1.0",
+        "sha256": "96fce1fea9a38a5b65b21faafbe2a5cba5dd58704197a57caddcf1de91b8ece9"
+      }
+    ],
+    "processing": "excerpt 1.34-2.96 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.046,
+    "sha256": "ad39db27d90f69c452d178af1450cd7068428839f1e27ada3db8f5f2d53b55a8"
+  },
+  "bossfx-eclipse-nebulafire-hit": {
+    "file": "boss-skills/eclipse/nebulafire-hit.wav",
+    "duration": 1.62,
+    "beat": "nebulafire hit: Explosion 2.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Explosion 2.wav",
+        "author": "Deganoth",
+        "source_url": "https://freesound.org/people/Deganoth/sounds/165910/",
+        "license": "CC0-1.0",
+        "sha256": "c5d7cc0255d31fd491eda6cf91af49b6406514cee6d560736a33becfc2ecf1b8"
+      }
+    ],
+    "processing": "excerpt 0.82-2.44 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.106,
+    "sha256": "37a12295a3fddd7ecde424ccbbbc0b4a6a66265f6c71c6bd24e251acd991bd10"
+  },
+  "bossfx-eclipse-voidseam-start": {
+    "file": "boss-skills/eclipse/voidseam-start.wav",
+    "duration": 1.42,
+    "beat": "voidseam start: Sfx Whoosh Deep Vent 1 7",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sfx Whoosh Deep Vent 1 7",
+        "author": "Sheyvan",
+        "source_url": "https://freesound.org/people/Sheyvan/sounds/569427/",
+        "license": "CC0-1.0",
+        "sha256": "a258d489f8c2554bc57f8359e8a00417339cfcc50be9802630919f3c3c8f4124"
+      }
+    ],
+    "processing": "excerpt 1.76-3.18 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.686,
+    "rms": 0.11,
+    "sha256": "36af948349caaaa3a5428735e7fe687350a29e790be00eedad3818acdf8fe270"
+  },
+  "bossfx-eclipse-voidorb-channel": {
+    "file": "boss-skills/eclipse/voidorb-channel.wav",
+    "duration": 1.42,
+    "beat": "voidorb channel: rain thunder rumbling",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "rain thunder rumbling",
+        "author": "jyka1rock",
+        "source_url": "https://freesound.org/people/jyka1rock/sounds/578235/",
+        "license": "CC0-1.0",
+        "sha256": "d265cc7cdd78a7e19ef81fd7721095926c724fba3b9b172b118f1e2273b74eb2"
+      }
+    ],
+    "processing": "excerpt 8.62-10.04 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.55,
+    "rms": 0.08,
+    "sha256": "0d6c938e96a28e64e04ef2346568f375403021add5df1ada109c2febf06ea78c"
+  },
+  "bossfx-eclipse-voidseam-hit": {
+    "file": "boss-skills/eclipse/voidseam-hit.wav",
+    "duration": 0.78,
+    "beat": "voidseam hit: Hard Candy / Bone Crunch",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Hard Candy / Bone Crunch",
+        "author": "clif_creates",
+        "source_url": "https://freesound.org/people/clif_creates/sounds/392883/",
+        "license": "CC0-1.0",
+        "sha256": "310e75c293ecc20c02c2fb7d596bd23aa77d44f387da49a1f5fbd254555960f1"
+      }
+    ],
+    "processing": "excerpt 0.12-0.90 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.039,
+    "sha256": "455dbf5271d0fb67c2c45b7da1e170f530eac2ae9b98040d7d945161ad455a9b"
+  },
+  "bossfx-eclipse-galaxy-start": {
+    "file": "boss-skills/eclipse/galaxy-start.wav",
+    "duration": 0.7,
+    "beat": "galaxy start: Power hammer - Billeter Klunz 50kg - Suction vent end long",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Power hammer - Billeter Klunz 50kg - Suction vent end long",
+        "author": "ldezem",
+        "source_url": "https://freesound.org/people/ldezem/sounds/386371/",
+        "license": "CC0-1.0",
+        "sha256": "5c92300ec9bf81189e98ac76dcea3459d7b23c8cd686ad95ed8860856e97ceb0"
+      }
+    ],
+    "processing": "excerpt 0.00-0.70 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.813,
+    "rms": 0.11,
+    "sha256": "36a911c991515e1bc4b96bb67329b02e2efa17c5b7409a5d4a074ec1aac5aa00"
+  },
+  "bossfx-eclipse-starshards-start": {
+    "file": "boss-skills/eclipse/starshards-start.wav",
+    "duration": 1.62,
+    "beat": "starshards start: prasknutí skla.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "prasknutí skla.wav",
+        "author": "13GPanska_Cihala_Vilem",
+        "source_url": "https://freesound.org/people/13GPanska_Cihala_Vilem/sounds/377823/",
+        "license": "CC0-1.0",
+        "sha256": "7b13510f42de2f582f14e20016a3bcea0d1af3fc495d94127d21cbadaf229b15"
+      }
+    ],
+    "processing": "excerpt 1.22-2.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.59,
+    "rms": 0.11,
+    "sha256": "2c8ad886f4e4acbeeb684125350648972ea99ccf543db0e009f95d7563b85dce"
+  },
+  "bossfx-eclipse-galaxy-hit": {
+    "file": "boss-skills/eclipse/galaxy-hit.wav",
+    "duration": 1.62,
+    "beat": "galaxy hit: Heavy Whoosh",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy Whoosh",
+        "author": "SoundBiterSFX",
+        "source_url": "https://freesound.org/people/SoundBiterSFX/sounds/730959/",
+        "license": "CC0-1.0",
+        "sha256": "4fcd399e968a623ad49ca0e0ad4a09401aef3363c71e97e76f3281effe41ca33"
+      }
+    ],
+    "processing": "excerpt 17.84-19.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.781,
+    "rms": 0.11,
+    "sha256": "3bbf79ee9da44683d21ebcedc92cac99918daa0ceb5d5d3b4502f0d62407f6da"
+  },
+  "bossfx-eclipse-starshards-hit": {
+    "file": "boss-skills/eclipse/starshards-hit.wav",
+    "duration": 1.3,
+    "beat": "starshards hit: neon tube smash explode shatter glass debris.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "neon tube smash explode shatter glass debris.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/453499/",
+        "license": "CC0-1.0",
+        "sha256": "fd806a44acc9a60acb0621bdb2b8fb52f12cd96b4fc5cbdf75376db04db26d6c"
+      }
+    ],
+    "processing": "excerpt 1.04-2.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.106,
+    "sha256": "2ac7a7647161bff9e34b07cbd7d9392b57e01d4bd875af6e5b6f184cec8a4bb9"
+  }
+}

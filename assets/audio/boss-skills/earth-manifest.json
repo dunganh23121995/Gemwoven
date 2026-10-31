@@ -1,0 +1,154 @@
+{
+  "bossfx-earth-claw-swing": {
+    "file": "boss-skills/earth/claw-swing.wav",
+    "duration": 0.8,
+    "beat": "Nanh Vuốt: the huge talon swung through the air, a big swoosh",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Big Swoosh",
+        "author": "Electroviolence",
+        "source_url": "https://freesound.org/people/Electroviolence/sounds/234547/",
+        "license": "CC0-1.0",
+        "sha256": "6f883a905fd9e377a27c97ad4db26d811e170f21eb9b6cce09cde15bab9b8404"
+      }
+    ],
+    "processing": "excerpt 0.15-0.95 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.655,
+    "rms": 0.11,
+    "sha256": "fa320fe4f4d2254e3e742f3b153c126d1dbbb568a1f478e64cdeb885ca67e955"
+  },
+  "bossfx-earth-claw-hit": {
+    "file": "boss-skills/earth/claw-hit.wav",
+    "duration": 1.05,
+    "beat": "Nanh Vuốt: the talon rakes the hero, wood splitting with a crack",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wood Crack 2",
+        "author": "utsuru",
+        "source_url": "https://freesound.org/people/utsuru/sounds/183452/",
+        "license": "CC0-1.0",
+        "sha256": "1f0822b3598584b16d5baaab5eb75a1d14d8e9633b7f265e27250bfd086cd1e9"
+      }
+    ],
+    "processing": "excerpt 1.25-2.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.086,
+    "sha256": "7f48725b941323bde9cbc99d32e68f0346334cd3d86993cd4eabf6b63d51cac0"
+  },
+  "bossfx-earth-guard-grow": {
+    "file": "boss-skills/earth/guard-grow.wav",
+    "duration": 2.9,
+    "beat": "Giáp Cổ Thụ: the trunks twist up round the boss, old trees creaking",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Trees rubbing in wind.wav",
+        "author": "itinerantmonk108",
+        "source_url": "https://freesound.org/people/itinerantmonk108/sounds/683956/",
+        "license": "CC0-1.0",
+        "sha256": "c7653c7158c6b866277f7fad25c81357967d058758eba7b106a3bce10fe2828f"
+      }
+    ],
+    "processing": "excerpt 0.90-3.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.1,
+    "sha256": "c352fcc3cd240cde932571e732ca3c593f0315be04d003b76518d4e2eb88ff1a"
+  },
+  "bossfx-earth-guard-lock": {
+    "file": "boss-skills/earth/guard-lock.wav",
+    "duration": 0.65,
+    "beat": "Giáp Cổ Thụ: the trunks lock shut, a heavy log thudding down",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Throwing logs",
+        "author": "zeteny_zpx",
+        "source_url": "https://freesound.org/people/zeteny_zpx/sounds/575904/",
+        "license": "CC0-1.0",
+        "sha256": "72e143507488adf01e315526176cfeb585d942bfda6eca026a40d5fd24f7113f"
+      }
+    ],
+    "processing": "excerpt 2.35-3.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.073,
+    "sha256": "392172fab6c15a47b078f007125237b6c689addad09cd761e4e491721ca1d3cc"
+  },
+  "bossfx-earth-snare-roots": {
+    "file": "boss-skills/earth/snare-roots.wav",
+    "duration": 1.5,
+    "beat": "Hút Linh Lực: roots tear up through the grass and soil",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Tear Foliage Grass",
+        "author": "alegemaate",
+        "source_url": "https://freesound.org/people/alegemaate/sounds/364697/",
+        "license": "CC0-1.0",
+        "sha256": "4dcd5ad6747120493cda8937b720b7ea9a7ca26c294b7e77dc514f56ad469b96"
+      }
+    ],
+    "processing": "excerpt 0.90-2.40 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.027,
+    "sha256": "54af3e6cb1b84fa8faeb9006547f180df5fc77bc923a6d678636279d425839de"
+  },
+  "bossfx-earth-snare-drain": {
+    "file": "boss-skills/earth/snare-drain.wav",
+    "duration": 2.2,
+    "beat": "Hút Linh Lực: the roots drink the hero's spirit, a long sucking draw",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Packaging Paper Tube Air Suck.wav",
+        "author": "afleetingspeck",
+        "source_url": "https://freesound.org/people/afleetingspeck/sounds/140700/",
+        "license": "CC0-1.0",
+        "sha256": "53d2390a0865cf8dbd31f71b915e0785e569dc12ed5fbee6a056cf75f6cafc9a"
+      }
+    ],
+    "processing": "excerpt 0.10-2.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.085,
+    "sha256": "74499db0089d49f118e14aeedb2cfc637e6b5dad549f2b1c06381b0b5ede4806"
+  },
+  "bossfx-earth-ult-slam": {
+    "file": "boss-skills/earth/ult-slam.wav",
+    "duration": 4.24,
+    "beat": "Thần Mộc Bất Tử: the golem crashes down, one deep hollow boom (\"uỳnh\") with its long natural tail",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Asoada impact low tube.wav",
+        "author": "CawawaC",
+        "source_url": "https://freesound.org/people/CawawaC/sounds/378558/",
+        "license": "CC0-1.0",
+        "sha256": "d821aff68fb85fd10505c9f8ff844d9515451a14dd39882c5e0fb870dba85078"
+      }
+    ],
+    "processing": "excerpt 0.20-4.44 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.103,
+    "sha256": "e4c3035610184edd98fce5a21f47d9bea8c6545baddc726e80ee85e6969099df"
+  },
+  "bossfx-earth-ult-bless": {
+    "file": "boss-skills/earth/ult-bless.wav",
+    "duration": 2.6,
+    "beat": "Thần Mộc Bất Tử: the spirit tree unfurls, a rush of forest leaves",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Rustling Foliage in Forest",
+        "author": "sillygrizzlies",
+        "source_url": "https://freesound.org/people/sillygrizzlies/sounds/635053/",
+        "license": "CC0-1.0",
+        "sha256": "ba00a7b59f088110d1ea8edcd7c71103466312e3553c80f2584b30fe22e72ca9"
+      }
+    ],
+    "processing": "excerpt 2.30-4.90 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.04,
+    "sha256": "f73eff5d1741e8f87f08c03b8b86ac34f3a7d48d9bab3ba0aff5033f78216909"
+  }
+}

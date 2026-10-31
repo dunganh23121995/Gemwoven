@@ -1,0 +1,154 @@
+{
+  "bossfx-lightning-strike-start": {
+    "file": "boss-skills/lightning/strike-start.wav",
+    "duration": 1.62,
+    "beat": "strike start: thunder.rumble.ogg",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "thunder.rumble.ogg",
+        "author": "xUMR",
+        "source_url": "https://freesound.org/people/xUMR/sounds/486557/",
+        "license": "CC0-1.0",
+        "sha256": "9277685b1ed6f0c79d1bbc950e2202d0231a941e212e3db177bea17ec2d055f5"
+      }
+    ],
+    "processing": "excerpt 6.08-7.70 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.461,
+    "rms": 0.11,
+    "sha256": "5866b247568809b4e7aaa4300cf35f82594699660c832cf27067c637a98f8e9e"
+  },
+  "bossfx-lightning-strike-hit": {
+    "file": "boss-skills/lightning/strike-hit.wav",
+    "duration": 1.62,
+    "beat": "strike hit: thunder.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "thunder.wav",
+        "author": "hifijohn",
+        "source_url": "https://freesound.org/people/hifijohn/sounds/242586/",
+        "license": "CC0-1.0",
+        "sha256": "c6e0608e3e51823b7b0c0eb88196af0d569158c7f11e4f5b440dff262e1124e0"
+      }
+    ],
+    "processing": "excerpt 3.44-5.06 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.081,
+    "sha256": "bfb400507fa649378bb0037bb6babac83f594a57597bbf019b8bfe9786352c55"
+  },
+  "bossfx-lightning-field-start": {
+    "file": "boss-skills/lightning/field-start.wav",
+    "duration": 1.62,
+    "beat": "field start: ELECMisc-INT_NOISES-Electrical Hums And Crackles Of A Light Fixture With A Loose Light Bulb_YMLT_NONE_08982261",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "ELECMisc-INT_NOISES-Electrical Hums And Crackles Of A Light Fixture With A Loose Light Bulb_YMLT_NONE_08982261",
+        "author": "YouMightLikeThis",
+        "source_url": "https://freesound.org/people/YouMightLikeThis/sounds/814061/",
+        "license": "CC0-1.0",
+        "sha256": "e5f7dfb298cfa36b4fce0572db3ccbef7233c7c761f88f36981027d95dcfb89f"
+      }
+    ],
+    "processing": "excerpt 1.26-2.88 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.421,
+    "rms": 0.11,
+    "sha256": "37e7201b5de1955adff771173012e23ac7c8fcf0437e3cc2343544637ef39436"
+  },
+  "bossfx-lightning-field-hit": {
+    "file": "boss-skills/lightning/field-hit.wav",
+    "duration": 1.6,
+    "beat": "field hit: Electrical Shock (Zap).wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Electrical Shock (Zap).wav",
+        "author": "BigKahuna360",
+        "source_url": "https://freesound.org/people/BigKahuna360/sounds/160421/",
+        "license": "CC0-1.0",
+        "sha256": "eb78444af31528ad7421b7a7b5d7f75ebc80882aa3525417d60d391e75baabc7"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.583,
+    "rms": 0.11,
+    "sha256": "13c1335bbc3e3276ba1dc6da6428a28819fc874cdfddc051b27752961ce0134a"
+  },
+  "bossfx-lightning-thunderclaw-hit": {
+    "file": "boss-skills/lightning/thunderclaw-hit.wav",
+    "duration": 0.62,
+    "beat": "thunderclaw hit: Welding_Electric Sparks.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Welding_Electric Sparks.wav",
+        "author": "weaveofkev",
+        "source_url": "https://freesound.org/people/weaveofkev/sounds/396240/",
+        "license": "CC0-1.0",
+        "sha256": "ffd8e3cc4eebf2ea6676ac694755f697899f6386eb3ef74dcef2bd4dc947dd3e"
+      }
+    ],
+    "processing": "excerpt 0.72-1.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.026,
+    "sha256": "7646b6b4a1dd1260824ee24b84ea284e058247a36464afc15e50ccdab4633731"
+  },
+  "bossfx-lightning-cannon-start": {
+    "file": "boss-skills/lightning/cannon-start.wav",
+    "duration": 1.62,
+    "beat": "cannon start: Charge up",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Charge up",
+        "author": "BrickDeveloper171",
+        "source_url": "https://freesound.org/people/BrickDeveloper171/sounds/610361/",
+        "license": "CC0-1.0",
+        "sha256": "48f14a084653e7ca6e95bd89fedd0d9d0047e81046b8c002d704c63be7b688e5"
+      }
+    ],
+    "processing": "excerpt 0.02-1.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.284,
+    "rms": 0.11,
+    "sha256": "297082cb2a409ca472a3e7a4192bd483914db6d482c11950a0c27978b2127524"
+  },
+  "bossfx-lightning-thunderclaw-start": {
+    "file": "boss-skills/lightning/thunderclaw-start.wav",
+    "duration": 0.74,
+    "beat": "thunderclaw start: Whoosh stereo light (transition)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Whoosh stereo light (transition)",
+        "author": "xkeril",
+        "source_url": "https://freesound.org/people/xkeril/sounds/701104/",
+        "license": "CC0-1.0",
+        "sha256": "791bf392615c81ef7b0fd1a92fa39b847241ae0f995669f22573763edbaef07b"
+      }
+    ],
+    "processing": "excerpt 0.28-1.02 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.087,
+    "sha256": "9f73d960e97e30db9a486d062673d6083220c9a36d1a4800858346eb582e45db"
+  },
+  "bossfx-lightning-cannon-hit": {
+    "file": "boss-skills/lightning/cannon-hit.wav",
+    "duration": 1.24,
+    "beat": "cannon hit: Jacob's ladder 2.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Jacob's ladder 2.wav",
+        "author": "jensfelger",
+        "source_url": "https://freesound.org/people/jensfelger/sounds/367455/",
+        "license": "CC0-1.0",
+        "sha256": "753097e49f7f524832f87128fdd761a53a8724b500e182b7491ba80ce6f33dde"
+      }
+    ],
+    "processing": "excerpt 15.64-16.88 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.037,
+    "sha256": "8ecb0068274ebe90583da1daec823de6a7eddbf18826fefcbf5680cc890b6363"
+  }
+}

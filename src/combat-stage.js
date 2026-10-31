@@ -69,28 +69,56 @@ function placeCombatHuds(points){
     // While the other actor attacks, its body passes in front of this HUD (unless the attacker
     // keeps the foe's HUD over its effects, like Noct vanishing into his smoke).
     const other=actor(side==='hero'?'enemy':'hero');
-    box.hud.style.zIndex=other.classList.contains('combat-v3-acting')&&!other.dataset.foeHudOver?'3':'';
+    // A boss in its own action is drawn over its HUD too, so a sword or wing raised overhead is never hidden by it.
+    const self=actor(side),selfActs=side==='enemy'&&state.boss&&self.classList.contains('combat-v3-acting');
+    box.hud.style.zIndex=(other.classList.contains('combat-v3-acting')&&!other.dataset.foeHudOver)||selfActs?'3':'';
   }
 }
 // Free space between the arena's outer edge and the widest opaque pose of an
 // actor (all action frames, from build.py spans), measured at its resting box.
-function combatEdgeRoom(side){
+// rest: the resting pose alone (the body as it stands).
+function combatEdgeRoom(side,rest=false){
   const root=actor(side),s=root?.querySelector('.sprite-body'),W=$('scene').clientWidth;
   if(!s||!root.offsetWidth||!W)return 99;
   let lo=1,hi=0;
-  for(const action of ['idle','attack','cast','hurt']){const span=spriteDefinition(s.dataset.family,s.dataset.key,action).sheet.span;if(span){lo=Math.min(lo,span[0]);hi=Math.max(hi,span[1]);}}
+  // A boss also has action sheets of its own (bites, breaths, flight...); a sheet drawn with a scale
+  // grows its box about the feet (spriteBox), so its span reaches that much further out.
+  const set=s.dataset.family==='enemy'&&state.boss&&ART.bosses?.[s.dataset.key],names=rest?['idle']:set?Object.keys(set):['idle','attack','cast','hurt'];
+  for(const action of names){const sheet=set?set[action]:spriteDefinition(s.dataset.family,s.dataset.key,action).sheet,span=sheet?.span;if(span){const b=spriteBox(s.dataset.family,s.dataset.key,sheet);lo=Math.min(lo,b.left+span[0]*b.width);hi=Math.max(hi,b.left+span[1]*b.width);}}
   if(hi<=lo)return 99;
   if(root.dataset.facing==='-1'||root.classList.contains('duel-facing-left'))[lo,hi]=[1-hi,1-lo];
   return side==='hero'?root.offsetLeft+lo*root.offsetWidth:W-(root.offsetLeft+hi*root.offsetWidth);
 }
 // Resting actors keep every pose at least 8px inside the arena (wide hammers,
 // enlarged star forms); attack motions then spend only the remaining room.
-const COMBAT_EDGE_MARGIN=8;
+const COMBAT_EDGE_MARGIN=8,COMBAT_BOSS_EDGE=.04;
+// The resting body's left and right (px in the stage, at the actor's layout box).
+function combatRestBody(side){
+  const root=actor(side),s=root?.querySelector('.sprite-body');if(!s||!root.offsetWidth)return null;
+  const sheet=s.dataset.family==='enemy'&&state.boss&&ART.bosses?.[s.dataset.key]?.idle||spriteDefinition(s.dataset.family,s.dataset.key,'idle').sheet,span=sheet.span||[.15,.85],b=spriteBox(s.dataset.family,s.dataset.key,sheet);
+  return {left:root.offsetLeft+(b.left+span[0]*b.width)*root.offsetWidth,right:root.offsetLeft+(b.left+span[1]*b.width)*root.offsetWidth};
+}
+// A chapter boss leaves clear ground between itself and the hero (16% of the stage, at least 48px): on
+// a narrow stage it is drawn smaller (down to 80%) rather than crowding the hero.
+function combatBossFit(){
+  const root=actor('enemy'),W=$('scene').clientWidth;if(!root?.offsetWidth||!W)return;
+  const stage=W+':'+state.enemyKey+':'+state.key;
+  if(root.dataset.fitStage!==stage){root.style.width=root.style.height='';root.dataset.fitStage=stage;root.dataset.fitSize=root.offsetWidth;}
+  const size=+root.dataset.fitSize,boss=combatRestBody('enemy'),hero=combatRestBody('hero');if(!boss||!hero||!size)return;
+  const body=(boss.right-boss.left)/root.offsetWidth,room=W*(1-COMBAT_BOSS_EDGE)-hero.right-Math.max(48,W*.16);
+  const want=Math.round(size*Math.max(.8,Math.min(1,room/Math.max(1e-3,body*size))));
+  if(want!==root.offsetWidth)root.style.width=root.style.height=want===size?'':want+'px';
+}
 function combatKeepInside(){
+  if(state.boss&&!actor('enemy')?.classList.contains('combat-v3-acting'))combatBossFit();
   for(const side of ['hero','enemy']){
     const root=actor(side);if(!root||root.classList.contains('combat-v3-acting')||(root.dataset.state&&root.dataset.state!=='idle'))continue;
     const prop=side==='hero'?'marginLeft':'marginRight',current=parseFloat(root.style[prop])||0;
-    const base=combatEdgeRoom(side)-current,nudge=Math.min(48,Math.max(0,Math.ceil(COMBAT_EDGE_MARGIN-base)));
+    // A chapter boss stands by its resting body close to the outer edge (4% of the stage, as the first
+    // chapter's golem stands), however far its wider poses reach: wings spread or a tail lashing may pass
+    // the edge for a moment, and its blows still travel to the hero from there.
+    const boss=side==='enemy'&&state.boss,base=combatEdgeRoom(side,boss)-current;
+    const nudge=boss?Math.round(Math.max(-160,Math.min(160,$('scene').clientWidth*COMBAT_BOSS_EDGE-base))):Math.min(48,Math.max(0,Math.ceil(COMBAT_EDGE_MARGIN-base)));
     if(nudge!==current)root.style[prop]=nudge?nudge+'px':'';
   }
 }

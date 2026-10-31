@@ -1,0 +1,394 @@
+{
+ "note": "Combat action sheets for the chapter bosses' own skills (docs/BOSS_SKILLS.md, src/foe-skills.js). Each is a 3x2 sheet drawn over the boss's identity and anchor (pipeline.py action <boss> <action>). frames: the six poses in order; loop: the six frames cycle (a hover). The body stays at the same spot and scale; combat moves the whole sprite (lunges, leaps, flight).",
+ "fire": {
+  "bite": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the dragon crouches and pulls its head and neck back over its shoulders, jaws beginning to open; 3 the WHOLE body lunges forward toward the LEFT, front legs stepping out, head thrust forward with the jaws gaping as wide as possible, every fang showing (neck short and thick, not stretched); 4 the jaws slam shut hard, head low and forward to the left, the whole body leaning into the bite; 5 it pulls back, jaws closed, a little ember at the teeth; 6 back to the ready pose"
+  },
+  "tail": {
+   "loop": false,
+   "frames": "1 ready pose; 2 anticipation: the dragon turns its shoulders slightly away to the RIGHT and crouches, the long spiked tail lifting up behind it; 3 full wind-up, the weight loaded: the tail is raised HIGH and curled up over its back like a drawn whip, hind legs bent, chest low, head turned toward the LEFT target; 4 the swing: the hips twist toward the LEFT and the tail sweeps down and forward in a wide low arc in front of the body; 5 impact: the tail fully extended across the left at knee height, spikes leading, the whole body twisted into the blow; 6 follow-through: the tail has swept on past and curls back round in front of the legs, body still twisted, slowly settling"
+  },
+  "fly": {
+   "loop": true,
+   "frames": "a hovering flight loop: the dragon is airborne with its legs tucked up under the body, head lowered and aimed down toward the LEFT with the jaws open (breathing fire), long tail hanging; the big wings beat through one full cycle: 1 wings fully raised, 2 wings sweeping down, 3 wings fully down, 4 wings rising, 5 wings half raised, 6 wings almost fully raised (flows back into 1). The body bobs very slightly with the beat",
+   "scaleAs": "bite",
+   "mouth": [
+    [
+     0.195,
+     0.586
+    ],
+    [
+     0.25,
+     0.518
+    ],
+    [
+     0.172,
+     0.469
+    ],
+    [
+     0.186,
+     0.553
+    ],
+    [
+     0.1875,
+     0.553
+    ],
+    [
+     0.207,
+     0.5625
+    ]
+   ]
+  },
+  "armor": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the molten cracks on its chest, neck and legs glow brighter and it raises its head; 3 thick molten scale plates swell out of the cracks over its chest, shoulders and forelegs; 4 the plates cool and harden into heavy black obsidian scale armour with glowing lava seams over the chest, shoulders, forelegs, the back of the neck and a crested plate on the head; 5 fully armoured, it rears its head and chest in a roar; 6 fully armoured ready pose, the same stance as frame 1 but wearing the obsidian lava scale armour"
+  },
+  "tail_armored": {
+   "loop": false,
+   "frames": "1 ready pose; 2 anticipation: the dragon turns its shoulders slightly away to the RIGHT and crouches, the long spiked tail lifting up behind it; 3 full wind-up, the weight loaded: the tail is raised HIGH and curled up over its back like a drawn whip, hind legs bent, chest low, head turned toward the LEFT target; 4 the swing: the hips twist toward the LEFT and the tail sweeps down and forward in a wide low arc in front of the body; 5 impact: the tail fully extended across the left at knee height, spikes leading, the whole body twisted into the blow; 6 follow-through: the tail has swept on past and curls back round in front of the legs, body still twisted, slowly settling",
+   "armored": true
+  },
+  "bite_armored": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the dragon crouches and pulls its head and neck back over its shoulders, jaws beginning to open; 3 the WHOLE body lunges forward toward the LEFT, front legs stepping out, head thrust forward with the jaws gaping as wide as possible, every fang showing (neck short and thick, not stretched); 4 the jaws slam shut hard, head low and forward to the left, the whole body leaning into the bite; 5 it pulls back, jaws closed, a little ember at the teeth; 6 back to the ready pose",
+   "armored": true
+  },
+  "fly_armored": {
+   "loop": true,
+   "frames": "a hovering flight loop: the dragon is airborne with its legs tucked up under the body, head lowered and aimed down toward the LEFT with the jaws open (breathing fire), long tail hanging; the big wings beat through one full cycle: 1 wings fully raised, 2 wings sweeping down, 3 wings fully down, 4 wings rising, 5 wings half raised, 6 wings almost fully raised (flows back into 1). The body bobs very slightly with the beat",
+   "scaleAs": "bite_armored",
+   "armored": true,
+   "mouth": [
+    [
+     0.16,
+     0.542
+    ],
+    [
+     0.152,
+     0.483
+    ],
+    [
+     0.144,
+     0.44
+    ],
+    [
+     0.156,
+     0.536
+    ],
+    [
+     0.156,
+     0.544
+    ],
+    [
+     0.148,
+     0.546
+    ]
+   ]
+  },
+  "attack_armored": {
+   "loop": false,
+   "frames": "1 ready pose like Image 1, mouth closed; 2 it rears its head up and back a little, jaws starting to open; 3 the head and chest thrust forward toward the LEFT with the jaws open in a snarl; 4 jaws gaping wide in a roaring snap toward the LEFT, head low and forward, front legs braced; 5 still snarling, head pulling back slightly; 6 back to the ready pose, mouth closed",
+   "armored": true
+  },
+  "hurt_armored": {
+   "loop": false,
+   "frames": "1 ready pose like Image 1; 2 it flinches back to the RIGHT, head jerked up and away, eyes squeezed; 3 recoiling, head turned down and away, shoulders hunched; 4 still recoiling, wings drawn in; 5 recovering, head lifting; 6 back to the ready pose",
+   "armored": true
+  }
+ },
+ "ice": {
+  "howl": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lifts its chest and rears up on its hind legs, crest feathers flaring; 3 it throws its head forward toward the LEFT with the mouth open, blowing; 4 peak: chest out, neck stretched forward and low to the left, mouth wide, feathers and fur blown back; 5 settling down onto all fours; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises its head to the sky, the crescent-moon crest starting to glow; 3 head high, crest glowing bright, front paw lifted; 4 peak: the crest blazing silver, wings and plumes spread; 5 it lowers its head and aims toward the LEFT; 6 back to the ready pose"
+  }
+ },
+ "lightning": {
+  "pounce": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it crouches low and coils back, haunches bunched, head down; 3 it leaps forward toward the LEFT, body stretched, both forelegs reaching far forward with claws spread; 4 contact: in mid-lunge it rakes one huge foreleg down and forward through the target at chest height, claws fully extended to the left; 5 it lands, forepaws planted far forward; 6 back to the ready pose"
+  },
+  "charge": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it braces its forelegs wide and lowers its head; 3 its mane and horn-blades bristle, small sparks on the horns, jaws opening; 4 peak: jaws wide open aimed at the LEFT, mane fully raised, tail orb glowing; 5 holding the open-jawed brace; 6 back to the ready pose"
+  },
+  "cannon": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it plants its forelegs wide and lowers its head, mane bristling with static; 3 it draws its head back and opens its jaws wide, sparks gathering in its mouth; 4 firing: head thrust forward and level toward the LEFT, jaws gaping as wide as possible, body braced and pushed back by recoil; 5 the same firing pose held, jaws wide open; 6 jaws closing, settling back to the ready pose",
+   "mouth": [
+    [
+     0.279,
+     0.632
+    ],
+    [
+     0.13,
+     0.776
+    ],
+    [
+     0.208,
+     0.565
+    ],
+    [
+     0.189,
+     0.663
+    ],
+    [
+     0.204,
+     0.659
+    ],
+    [
+     0.271,
+     0.647
+    ]
+   ]
+  }
+ },
+ "scarab": {
+  "gore": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lowers its head so the great forehead horn points forward and down, rear legs bunched and loaded; 3 it charges forward toward the LEFT, the forehead horn leading low, mandibles closed tight; 4 peak: the horn thrust fully forward and slightly upward at chest height toward the left, body stretched behind it; 5 pulling back, head rising; 6 back to the ready pose"
+  },
+  "snap": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the two huge golden mandibles swing WIDE open to the sides, head pushed forward toward the LEFT; 3 the mandibles slam shut, crossing tightly in front of its head toward the left; 4 mandibles wide open again; 5 mandibles slammed shut again, head lunging forward to the left; 6 back to the ready pose"
+  }
+ },
+ "leviathan": {
+  "snap": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the serpent draws its head back into an S curve, jaws opening; 3 the head strikes forward and low toward the LEFT, jaws gaping, the coiled body staying compact behind it; 4 the jaws snap shut, the head reaching left while the tail stays coiled tightly near the centre of the cell (nothing past the right edge); 5 the head draws back; 6 back to the ready pose"
+  },
+  "breathe": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the serpent draws its head and neck back into a tight S curve, chest swelling as it inhales, coral antlers glowing; 3 it holds the inhale, head pulled back and slightly raised, jaws starting to part; 4 the head thrusts forward and a little down toward the LEFT with the jaws opened wide, exhaling (the mouth wide open, nothing coming out yet); 5 the same exhale held, jaws wide open, neck stretched toward the left, the coiled body braced behind it; 6 the jaws close and the head draws back toward the ready pose",
+   "mouth": [
+    [
+     0.232,
+     0.6
+    ],
+    [
+     0.236,
+     0.76
+    ],
+    [
+     0.247,
+     0.729
+    ],
+    [
+     0.056,
+     0.655
+    ],
+    [
+     0.056,
+     0.616
+    ],
+    [
+     0.232,
+     0.6
+    ]
+   ]
+  }
+ },
+ "colossus": {
+  "punch": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it draws its right gear-fist back, shoulder piston compressing; 3 the fist drives forward toward the LEFT, piston extending; 4 peak: the arm fully extended to the left, fist forward; 5 the fist pulling back; 6 back to the ready pose"
+  },
+  "slam": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises both gear-fists high above its head; 3 both fists at the top, body arched back, core glowing; 4 both fists slammed down in front of it toward the LEFT, bent forward; 5 rising from the slam; 6 back to the ready pose"
+  },
+  "charge": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it braces, both arms pulled in to its sides, pistons compressing; 3 the chest core glows bright red-hot, steam valves on its shoulders hissing (small attached puffs); 4 it hunches forward, both fists drawn back, core blazing; 5 it thrusts both open palms forward toward the LEFT, venting from the wrists; 6 back to the ready pose"
+  }
+ },
+ "prism": {
+  "slash": {
+   "loop": false,
+   "frames": "1 ready pose, both crystal scythe arms raised; 2 the left scythe arm cuts down diagonally toward the LEFT; 3 the right scythe arm cuts across horizontally toward the LEFT while the left pulls back; 4 the left scythe cuts upward diagonally; 5 the right scythe cuts down; 6 back to the ready pose with both scythes raised"
+  },
+  "cross": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it spreads both scythe arms wide; 3 it brings both scythes together in front of its body toward the LEFT; 4 peak: the two scythes crossed in an X in front of it, wings spread; 5 holding the crossed scythes; 6 back to the ready pose"
+  }
+ },
+ "reaper": {
+  "reap": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lifts the crescent scythe high behind its shoulder, robe flaring; 3 the scythe sweeps down and forward in a huge arc toward the LEFT; 4 peak: the scythe blade fully swung low across the left; 5 the robe settles as it draws the scythe back; 6 back to the ready pose"
+  }
+ },
+ "roc": {
+  "beat": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises both great wings high; 3 the wings sweep forward hard toward the LEFT; 4 peak: wings fully forward, feathers spread, talons gripping; 5 wings opening back out; 6 back to the ready pose"
+  },
+  "dive": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it crouches and spreads its wings for takeoff; 3 airborne, wings beating down hard, rising; 4 banking in the air, wings folding half in, head aimed down to the LEFT; 5 stooping dive: wings folded back, body diagonal pointing down-left, talons thrust forward; 6 impact: talons fully extended forward to the left, wings flared wide to brake",
+   "scaleAs": "beat"
+  }
+ },
+ "briar": {
+  "lash": {
+   "loop": false,
+   "frames": "1 ready pose; 2 she draws her rose-topped thorn staff back behind her; 3 she lashes it forward toward the LEFT, a thorny vine uncoiling from the staff tip; 4 peak: the thorny vine whip fully extended to the left; 5 the vine recoils back into the staff; 6 back to the ready pose"
+  }
+ },
+ "seraph": {
+  "thrust": {
+   "loop": false,
+   "frames": "1 ready pose holding the sword; 2 it sinks into a deep lunge stance, front knee bent low, sword drawn back beside its hip, point aimed forward and DOWN; 3 it lunges far forward toward the LEFT, body low, the sword thrust out straight at the height of its own knees; 4 peak: front leg far forward in a deep low lunge, arm and sword fully extended toward the left LOW, at knee height; 5 rising and pulling back; 6 back to the ready pose"
+  }
+ },
+ "eclipse": {
+  "bite": {
+   "loop": false,
+   "frames": "1 ready pose; 2 the dragon rears its head back, jaws opening; 3 the head lunges forward and low toward the LEFT, jaws gaping; 4 the jaws snap shut fully extended to the left; 5 the head pulls back; 6 back to the ready pose"
+  },
+  "buffet": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lifts its starry wings high and wide; 3 the wings sweep forward hard toward the LEFT; 4 peak: wings fully forward, cupped, body braced; 5 wings opening back out; 6 back to the ready pose"
+  }
+ },
+ "elderbloom": {
+  "backhand": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it draws its great root-fist back across its body; 3 it swings the fist forward in a wide backhand toward the LEFT; 4 peak: the arm fully swung across to the left; 5 recovering; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it spreads its branch-antlers and arms, the green heart starting to glow; 3 blossoms open along its arms and antlers; 4 peak: arms raised, heart glowing bright, blossoms fully open; 5 lowering its arms; 6 back to the ready pose"
+  },
+  "palm": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it twists its trunk away and draws its great root arm far back behind its shoulder, palm open; 3 it lunges forward and down, driving the open root palm forward LOW toward the LEFT at waist height; 4 peak: the arm fully extended low to the left, open palm forward, roots trailing from the fingers; 5 pulling the arm back; 6 back to the ready pose"
+  }
+ },
+ "cinderheart": {
+  "punch": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it twists its torso and draws its NEAR fist (the arm closest to the viewer) far back past its hip; 3 the NEAR fist punches straight forward toward the LEFT, arm fully extended, the far fist pulled back at its chest; 4 it twists the other way, the near arm pulling back while the FAR fist (the arm behind its body) cocks high beside its head; 5 the FAR fist hammers forward and down toward the LEFT across in front of its body, fully extended, the near arm now drawn back at its side; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it spreads its arms and arches back, the magma core swelling; 3 lava seams brighten all over its body; 4 peak: arms wide, chest thrust out, the core blazing; 5 hunching forward; 6 back to the ready pose"
+  }
+ },
+ "frostregent": {
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 she raises the snowflake sceptre, her free hand opening; 3 the sceptre held high, its crystal starting to glow, gown swirling; 4 peak: she points the glowing sceptre toward the LEFT; 5 holding the point; 6 back to the ready pose"
+  }
+ },
+ "tempestwing": {
+  "claw": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it rears up and pulls its right talon far back, wings half raised; 3 it lunges forward toward the LEFT, the right talon raking down through the space in front of it at chest height, fully extended; 4 it pulls the left talon back; 5 the left talon rakes across forward to the left, body lunging low; 6 back to the ready pose"
+  },
+  "fly": {
+   "loop": true,
+   "frames": "a hovering flight loop: the griffin is airborne high, hind legs and talons hanging, head aimed down toward the LEFT; the big blue wings beat through one full cycle: 1 wings fully raised, 2 sweeping down, 3 fully down, 4 rising, 5 half raised, 6 almost fully raised (flows back into 1)",
+   "scaleAs": "claw"
+  }
+ },
+ "souljailer": {
+  "swing": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises the chained scythe high behind its shoulder; 3 the scythe sweeps down and forward toward the LEFT in a wide low arc; 4 peak: the scythe blade swung fully across in front of it at waist height, toward the left; 5 the follow-through, scythe continuing up behind; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lifts the hanging soul lantern on its chained staff; 3 the lantern held high, its cage opening, the violet core brightening; 4 peak: the lantern thrust toward the LEFT, glowing; 5 lowering it; 6 back to the ready pose"
+  }
+ },
+ "sporefather": {
+  "smash": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lifts the gnarled lantern staff overhead with both hands; 3 the staff at the top, body arched; 4 peak: it smashes the staff down in front of it toward the LEFT; 5 lifting the staff; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises the staff, the golden spore bulb on top starting to glow; 3 the shelf mushrooms on its body open their gills; 4 peak: the staff thrust forward toward the LEFT, bulb blazing; 5 lowering it; 6 back to the ready pose"
+  }
+ },
+ "prismback": {
+  "stomp": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it rears its front half up, lifting its left foreleg HIGH off the ground, weight back on the hind legs; 3 the foreleg held at the top, body tilted back; 4 it slams the foreleg down hard toward the LEFT, the whole shell jolting forward and down; 5 settling, foot planted; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises its head and plants its feet; 3 the blue crystals on its shell begin to glow; 4 peak: the crystals and tower windows blaze, head thrust toward the LEFT; 5 dimming; 6 back to the ready pose"
+  },
+  "cannon": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it plants all four feet wide and lowers its long neck, the crystals on its shell glowing; 3 it draws its head back and opens its jaws wide, light gathering in its mouth; 4 firing: neck stretched forward and level toward the LEFT, jaws gaping wide open, body braced; 5 the same firing pose held, jaws wide open; 6 jaws closing, settling back to the ready pose",
+   "mouth": [
+    [
+     0.253,
+     0.683
+    ],
+    [
+     0.179,
+     0.808
+    ],
+    [
+     0.191,
+     0.648
+    ],
+    [
+     0.124,
+     0.663
+    ],
+    [
+     0.128,
+     0.663
+    ],
+    [
+     0.249,
+     0.683
+    ]
+   ]
+  }
+ },
+ "sandchronarch": {
+  "sweep": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it draws its right hand back, sand scarves streaming; 3 it sweeps the open hand forward toward the LEFT in a cutting gesture; 4 peak: arm fully extended to the left, palm edge forward; 5 drawing back; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises both hands, sand rising from its palms; 3 the hands cupped together in front of its chest; 4 peak: arms spread wide, its masked helm and jewels glowing; 5 lowering its hands; 6 back to the ready pose"
+  }
+ },
+ "coraltide": {
+  "rake": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it coils its upper body back to the RIGHT, one clawed forelimb drawn far back behind its head; 3 it surges forward toward the LEFT, that claw raking down across in front of it, fully extended; 4 it pulls the second forelimb back high; 5 the second claw rakes down and across to the left, the body leaning far forward; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it lifts its head, the coral antlers starting to glow; 3 a pearl light gathers between the antlers; 4 peak: head high, antlers and pearls glowing bright; 5 lowering its head toward the LEFT; 6 back to the ready pose"
+  }
+ },
+ "moonfang": {
+  "cut": {
+   "loop": false,
+   "frames": "1 ready pose with the long sword; 2 it steps forward and raises the sword high over its right shoulder; 3 a heavy diagonal downward cut forward to the LEFT, the blade ending low in front of it at waist height; 4 a horizontal cut back across at waist height toward the left, arms fully extended forward; 5 a rising cut from low to high forward to the left; 6 back to the ready pose"
+  },
+  "draw": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it drops into a low crouch, the sword held low behind it; 3 a low fast draw-cut sweeping forward toward the LEFT; 4 peak: crouched low, the sword fully extended across the left; 5 rising; 6 back to the ready pose"
+  },
+  "cast": {
+   "loop": false,
+   "frames": "1 ready pose; 2 it raises the sword point to the sky; 3 the blade starts glowing with crimson moonlight; 4 peak: the sword held high, the crescent emblem blazing, cape flaring; 5 lowering the blade toward the LEFT; 6 back to the ready pose"
+  }
+ }
+}

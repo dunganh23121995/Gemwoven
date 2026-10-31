@@ -76,6 +76,8 @@ cast_sfx.update(json.loads((root/'assets/audio/mika-nori-manifest.json').read_te
 cast_sfx.update(json.loads((root/'assets/audio/form-skill-manifest.json').read_text(encoding='utf-8')))
 # Each hero's own form-kit sounds (src/forms-<hero>.js): assets/audio/hero-forms/<hero>-manifest.json.
 for manifest in sorted((root/'assets/audio/hero-forms').glob('*-manifest.json')):cast_sfx.update(json.loads(manifest.read_text(encoding='utf-8')))
+# Each boss skill's own recordings (src/foe-skills.js BOSS_SKILL_LOOKS): assets/audio/boss-skills/<boss>-manifest.json.
+for manifest in sorted((root/'assets/audio/boss-skills').glob('*-manifest.json')):cast_sfx.update(json.loads(manifest.read_text(encoding='utf-8')))
 art['castSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
@@ -218,11 +220,42 @@ for folder in sorted((root/'assets/gemwoven/boss-anim').glob('*/idle.webp')):
     actions['idle']=idle
     hurt=folder.with_name('hurt.webp')
     if hurt.exists():actions['hurt']={'src':image(hurt),'cols':2,'rows':4,'count':8,'heads':[[128,48]]*8}
+    # The same idle loop wearing armour the boss grows itself (src/sprite-runtime.js rests in it while
+    # the boss's armour holds).
+    armored=folder.with_name('armoridle.webp')
+    if armored.exists():
+        actions['armoridle']={'src':image(armored),'cols':2,'rows':4,'count':8,'frameDuration':160,'heads':[[128,48]]*8}
+        actions['armoridle']['scale']=round(body_height(idle)/max(1e-6,body_height(actions['armoridle'])),4)
     cast=folder.with_name('cast.webp')
     if family=='worldBosses' and cast.exists():
         sheet={'src':image(cast),'cols':3,'rows':2,'count':6,'heads':[[128,48]]*6}
         sheet['scale']=round(body_height(idle)/max(1e-6,body_height(sheet)),4)
         actions['cast']=sheet;actions['attack']=sheet
+# Each chapter boss's combat actions for its own skills (assets/gemwoven/boss-anim/actions.json: bites,
+# tail lashes, flight, scythe cuts...), 3x2 sheets sized to the boss's idle by its body height (a hover
+# loop keeps the idle's scale too); src/foe-skills.js plays them by name (look.pose).
+boss_actions=json.loads((root/'assets/gemwoven/boss-anim/actions.json').read_text(encoding='utf-8'))
+for key,poses in boss_actions.items():
+    if key=='note':continue
+    family='bosses' if key in art['bosses'] else 'worldBosses'
+    if key not in art.get(family,{}):continue
+    idle=art[family][key]['idle']
+    for name,spec in poses.items():
+        path=root/'assets/gemwoven/boss-anim'/key/f'{name}.webp'
+        if not path.exists():continue
+        sheet={'src':image(path),'cols':3,'rows':2,'count':6,'heads':[[128,48]]*6,'frameDuration':110}
+        sheet['scale']=round(body_height(idle)/max(1e-6,body_height(sheet)),4)
+        # A pose whose height is not the body's (wings spread over the head, a tail hanging in flight)
+        # takes the scale of a grounded action drawn at the same size (scaleAs).
+        if spec.get('scaleAs'):sheet['scaleAs']=spec['scaleAs']
+        # Where the mouth is in each cell (fractions), for breath and streams from that pose.
+        if spec.get('mouth'):sheet['mouth']=spec['mouth']
+        # A flying loop: the boss is airborne, so it is never shrunk to fit a raised pose under the HUD.
+        if spec.get('loop'):sheet['airborne']=True
+        art[family][key][name]=sheet
+    for name,spec in poses.items():
+        sheet=art[family][key].get(name)
+        if sheet and sheet.get('scaleAs') in art[family][key]:sheet['scale']=art[family][key][sheet.pop('scaleAs')]['scale']
 # Use each idle sheet's opaque feet, rather than the bottom of its transparent canvas.
 def register_feet(sheet):
     im=load_pil(sheet['src']).convert('RGBA')
@@ -324,7 +357,55 @@ for looks in art['heroVariants'].values():
 for family in ['bosses','worldBosses']:
     for character in art[family].values():
         for sheet in character.values():
-            if sheet.get('scale') and 'footY' not in sheet:register_feet(sheet)
+            # Every pose's feet (src/sprite-runtime.js spriteBox stands each pose on the idle's feet).
+            if sheet.get('cols') and 'footY' not in sheet:register_feet(sheet)
+# Where each boss pose stands against the resting pose: its first frame (the ready pose) is slid sideways,
+# at its own scale and on the idle's feet line, until its silhouette covers the idle's best, and feetX
+# becomes the point of the pose that lands on the idle's feet. A feet search alone is fooled by a tail
+# lying over the hind feet; the silhouette is not. Airborne loops keep their own framing.
+_anchor_cache={}
+def frame_alpha(sheet,size):
+    im=load_pil(sheet['src']).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows']
+    return np.asarray(im.crop((0,0,fw,fh)).getchannel('A').resize((size,size)))>=128
+def register_anchor(sheet,idle):
+    key=(sheet['src'][-64:],len(sheet['src']),idle['src'][-64:],sheet.get('scale',1))
+    if key not in _anchor_cache:
+        N=128;k=sheet.get('scale') or 1;M=max(8,round(N*k));base=frame_alpha(idle,N);pose=frame_alpha(sheet,M)
+        top=round(((idle.get('footY') or .94)-(sheet.get('footY') or .94)*k)*N)
+        rows=[(y,y-top) for y in range(N) if 0<=y-top<M];best,at=-1,0
+        if rows:
+            a=base[[y for y,_ in rows]];b=pose[[v for _,v in rows]];total=a.sum()+b.sum()
+            for x in range(-M+8,N-8):
+                lo,hi=max(0,x),min(N,x+M);inter=(a[:,lo:hi]&b[:,lo-x:hi-x]).sum()
+                score=inter/max(1,total-inter)
+                if score>best:best,at=score,x
+        _anchor_cache[key]=round(((idle.get('feetX') or .5)-at/N)/k,4)
+    sheet['feetX']=_anchor_cache[key]
+for family in ['bosses','worldBosses']:
+    for character in art[family].values():
+        for name,sheet in character.items():
+            if name!='idle' and sheet.get('cols') and not sheet.get('airborne') and sheet is not character['idle']:register_anchor(sheet,character['idle'])
+# Each boss pose's front point per frame (fractions of the cell): the leftmost opaque point above the
+# legs, where a staff tip, sword tip, claw or open mouth reaches toward the hero. Spells leave from it
+# (src/foe-skills.js foeAnchorNow); sheets with drawn mouth anchors (actions.json) keep those.
+_front_cache={}
+def register_front(sheet):
+    key=sheet['src'][-64:]+str(len(sheet['src']))+str(sheet['cols'])+str(sheet['rows'])
+    if key not in _front_cache:
+        im=load_pil(sheet['src']).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows'];out=[];peak=1
+        for i in range(min(sheet.get('count',1),sheet['cols']*sheet['rows'])):
+            c,r=i%sheet['cols'],i//sheet['cols'];a=np.asarray(im.crop((c*fw,r*fh,(c+1)*fw,(r+1)*fh)).getchannel('A'))>=128
+            ys,xs=np.where(a)
+            if not len(xs):out.append([.5,.5]);continue
+            top,bottom=ys.min(),ys.max();keep=ys<=top+(bottom-top)*.85;xs2,ys2=xs[keep],ys[keep];x0=xs2.min()
+            out.append([round((x0+2)/fw,4),round(float(np.median(ys2[xs2<=x0+4]))/fh,4)])
+            peak=min(peak,top/fh) if out[:-1] else top/fh
+        _front_cache[key]=(out,round(peak,4))
+    sheet['front'],sheet['peak']=_front_cache[key]
+for family in ['bosses','worldBosses']:
+    for character in art[family].values():
+        for sheet in character.values():
+            if sheet.get('cols') and sheet.get('src'):register_front(sheet)
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')

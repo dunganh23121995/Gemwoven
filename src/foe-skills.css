@@ -1,3 +1,51 @@
 /* Foe skill effects (foe-skills.js): one horizontal strip per chapter boss. */
 .foe-fx{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;translate:-50% -50%}
 body.reduced-motion .foe-fx{display:none}
+/* A diving boss's shadow growing on the ground under the hero (foe-skills.js dive). */
+.foe-dive-shadow{position:absolute;height:22px;translate:-50% -50%;border-radius:50%;background:#000a;pointer-events:none;opacity:0;z-index:5}
+/* An ultimate's set piece: the stage darkens, a warning ring marks the hero's ground, the climax flashes. */
+.foe-dim{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,#0000 0,#000a 70%);pointer-events:none;opacity:0;z-index:4}
+.foe-warn{position:absolute;height:34px;translate:-50% -50%;border-radius:50%;pointer-events:none;opacity:0;z-index:5;border:3px solid var(--warn,#ff5a2a);box-shadow:0 0 14px var(--warn,#ff5a2a),inset 0 0 14px var(--warn,#ff5a2a);background:radial-gradient(ellipse,#0000 40%,color-mix(in srgb,var(--warn,#ff5a2a) 35%,#0000))}
+.foe-flash{position:absolute;inset:0;background:#fff;pointer-events:none;opacity:0;z-index:9;mix-blend-mode:screen}
+body.reduced-motion .foe-dim,body.reduced-motion .foe-warn,body.reduced-motion .foe-flash{display:none}
+/* A boss's armour on its own body: a glaze masked to the sprite (foeGuardAura), a light band sweeping across. */
+.foe-glaze{position:absolute;inset:0;pointer-events:none;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;mix-blend-mode:screen;opacity:.55;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--glaze) 22%,#0000) 0 47%,color-mix(in srgb,var(--glaze) 60%,#0000) 50%,color-mix(in srgb,var(--glaze) 22%,#0000) 53% 100%);
+  background-size:300% 100%;animation:foe-glaze 2.2s ease-in-out infinite}
+@keyframes foe-glaze{0%{background-position:100% 0}60%,100%{background-position:0 0}}
+body.reduced-motion .foe-glaze{animation:none}
+/* A drained mote of life flying to the boss: a bright core with a soft glow trail. */
+.foe-mote{position:absolute;width:14px;height:14px;translate:-50% -50%;border-radius:50%;pointer-events:none;z-index:8;background:radial-gradient(circle,#fff 0 30%,var(--mote) 55%,#0000 72%);box-shadow:0 0 10px 4px var(--mote),8px 0 14px 2px color-mix(in srgb,var(--mote) 50%,#0000)}
+body.reduced-motion .foe-mote{display:none}
+/* The hot flare at a breathing boss's jaws (foeBreathStream). */
+.foe-flare{position:absolute;width:34px;height:34px;translate:-50% -50%;border-radius:50%;pointer-events:none;z-index:8;mix-blend-mode:screen;background:radial-gradient(circle,#fff 0 18%,var(--flare) 45%,#0000 70%)}
+body.reduced-motion .foe-flare{display:none}
+/* Summoned guards standing in front of the boss, each with its own health bar. */
+.foe-guards{position:absolute;inset:0;pointer-events:none;z-index:3}
+.foe-guard{position:absolute;translate:-50% -94%;transition:left .4s,top .4s}
+.foe-guard>i{position:absolute;inset:0;background:no-repeat center bottom/contain;filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 3px 3px #000a)}
+.foe-guard>b{position:absolute;left:22%;right:22%;top:-4px;height:5px;border-radius:3px;background:#2a1414;box-shadow:0 0 0 1px #0009}
+.foe-guard>b>em{display:block;height:100%;border-radius:3px;background:linear-gradient(#ff8a6a,#d6382a);transition:width .3s}
+.foe-guard.rising{animation:foe-guard-rise .65s ease-out both}
+.foe-guard.falling{animation:foe-guard-fall .5s ease-in forwards}
+@keyframes foe-guard-rise{from{opacity:0;translate:-50% -60%;filter:brightness(2)}to{opacity:1;translate:-50% -94%}}
+@keyframes foe-guard-fall{to{opacity:0;translate:-50% -80%;filter:brightness(2) blur(2px)}}
+/* The boss's own states on its body (syncFoeSelfStates). */
+.foe-state{position:absolute;inset:8% 4% 0;pointer-events:none;z-index:0}
+.foe-state>i{position:absolute;bottom:8%;width:9px;height:9px;border-radius:50%;opacity:0}
+.foe-state>i:nth-child(1){left:22%;animation-delay:0s}.foe-state>i:nth-child(2){left:40%;animation-delay:.5s}.foe-state>i:nth-child(3){left:58%;animation-delay:1s}.foe-state>i:nth-child(4){left:74%;animation-delay:1.5s}.foe-state>i:nth-child(5){left:32%;animation-delay:2s}
+@keyframes foe-state-rise{0%{opacity:0;translate:0 0;scale:.6}25%{opacity:1}100%{opacity:0;translate:0 -150px;scale:1.2}}
+@keyframes foe-state-pulse{0%,100%{opacity:.55;scale:1}50%{opacity:.95;scale:1.06}}
+/* Frenzy: a red blaze behind it, a red outline on its body, red embers rising. */
+.actor[data-foe-frenzy] .foe-state::before{content:'';position:absolute;inset:6% 6% 0;border-radius:50% 50% 40% 40%;background:radial-gradient(ellipse at 50% 70%,#ff2a1fb0,#a0000c55 45%,#0000 70%);animation:foe-state-pulse .9s ease-in-out infinite}
+.actor[data-foe-frenzy]>.sprite-body{filter:drop-shadow(0 0 2px #ff3a2a) drop-shadow(0 0 9px #c8000c) saturate(1.25) brightness(1.06)}
+.actor[data-foe-frenzy] .foe-state>i{background:radial-gradient(circle,#fff6c0,#ff5a1a 55%,#0000 72%);box-shadow:0 0 8px #ff3a1a;animation:foe-state-rise 1.6s ease-out infinite}
+/* Stealth: a dim, shimmering shade. */
+.actor[data-foe-stealth]>.sprite-body{opacity:.38;filter:saturate(.4) brightness(.7) drop-shadow(0 0 6px #b9a8ff);animation:foe-stealth 2.4s ease-in-out infinite}
+@keyframes foe-stealth{0%,100%{opacity:.38;translate:0 0}50%{opacity:.22;translate:2px 0}}
+/* Invulnerable / undying: a shell closed round it. */
+.actor[data-foe-invulnerable] .foe-state::after,.actor[data-foe-undying] .foe-state::after{content:'';position:absolute;inset:0 2% 2%;border-radius:48% 48% 42% 42%;border:2px solid #ffe7a0;box-shadow:0 0 14px #ffd36a,inset 0 0 22px #ffd36a88;background:radial-gradient(ellipse at 40% 30%,#fff5d544,#0000 60%);animation:foe-state-pulse 1.6s ease-in-out infinite}
+.actor[data-foe-undying] .foe-state::after{border-color:#d9b8ff;box-shadow:0 0 14px #9a5cff,inset 0 0 22px #9a5cff88;background:radial-gradient(ellipse at 40% 30%,#e8d8ff33,#0000 60%)}
+/* Regeneration: green motes rise from it. */
+.actor[data-foe-regen]:not([data-foe-frenzy]) .foe-state>i{background:radial-gradient(circle,#f0fff0,#5cff9a 55%,#0000 72%);box-shadow:0 0 8px #3cff8a;animation:foe-state-rise 2s ease-out infinite}
+body.reduced-motion .foe-state>i,body.reduced-motion .foe-state::before,body.reduced-motion .foe-state::after{animation:none}

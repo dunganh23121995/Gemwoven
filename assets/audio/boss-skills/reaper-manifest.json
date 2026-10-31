@@ -1,0 +1,192 @@
+{
+  "bossfx-reaper-soulknot-hit": {
+    "file": "boss-skills/reaper/soulknot-hit.wav",
+    "duration": 1.62,
+    "beat": "soulknot hit: Chains Rattling.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Chains Rattling.wav",
+        "author": "mffm",
+        "source_url": "https://freesound.org/people/mffm/sounds/235960/",
+        "license": "CC0-1.0",
+        "sha256": "a71113ab22e7589aa31ccc545569160f5e6c12537590a1a6f1377f296ec6962e"
+      }
+    ],
+    "processing": "excerpt 0.78-2.40 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.075,
+    "sha256": "18db55ec19ea7f837cb78c529f5186ebb3c9dc5f97ce92d8017114cea34b540c"
+  },
+  "bossfx-reaper-tatters-start": {
+    "file": "boss-skills/reaper/tatters-start.wav",
+    "duration": 0.62,
+    "beat": "tatters start: cloth flap",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "cloth flap",
+        "author": "ssierra1202",
+        "source_url": "https://freesound.org/people/ssierra1202/sounds/391945/",
+        "license": "CC0-1.0",
+        "sha256": "738e7f5938bdb0c040e869d2517af4a5e428c908828d0976a1798883e02d7ac0"
+      }
+    ],
+    "processing": "excerpt 0.10-0.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.085,
+    "sha256": "009fb4b7adba7eb1e1aa54292d2a4a0609a721e3cdab4451ece5e2f44e854f71"
+  },
+  "bossfx-reaper-hookcut-hit": {
+    "file": "boss-skills/reaper/hookcut-hit.wav",
+    "duration": 0.8,
+    "beat": "hookcut hit: Cloth Tearing.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Cloth Tearing.mp3",
+        "author": "Yin_Yang_Jake007",
+        "source_url": "https://freesound.org/people/Yin_Yang_Jake007/sounds/415202/",
+        "license": "CC0-1.0",
+        "sha256": "ebf9431077b61f31e1b706bcd039a2159a95680ef2c9cd0bdbdb8accb2f35e9b"
+      }
+    ],
+    "processing": "excerpt 1.08-1.88 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.057,
+    "sha256": "de38920233a4b3b719674e498c05d9582f02fca057c3c71171468a8a3f18fa19"
+  },
+  "bossfx-reaper-hookcut-start": {
+    "file": "boss-skills/reaper/hookcut-start.wav",
+    "duration": 1.2,
+    "beat": "hookcut start: Swish2.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Swish2.mp3",
+        "author": "Tairblenn",
+        "source_url": "https://freesound.org/people/Tairblenn/sounds/545263/",
+        "license": "CC0-1.0",
+        "sha256": "e841b322ad831f092c6bbfe4f52ef4019e63e4e4ae08658addbe6ea0688b167e"
+      }
+    ],
+    "processing": "excerpt 0.50-1.70 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.73,
+    "rms": 0.11,
+    "sha256": "51b4b8419bd3ff5d0de950b4e36e2a72b7307e7c01a3ded6fd4de30e5afaf769"
+  },
+  "bossfx-reaper-scythe-start": {
+    "file": "boss-skills/reaper/scythe-start.wav",
+    "duration": 0.52,
+    "beat": "scythe start: Whip woosh",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Whip woosh",
+        "author": "ErikCruzDev",
+        "source_url": "https://freesound.org/people/ErikCruzDev/sounds/735907/",
+        "license": "CC0-1.0",
+        "sha256": "af39f40d21830c6ed853c27fd11b175e6a589af4841fa8cbd5ae32eed4f49c96"
+      }
+    ],
+    "processing": "excerpt 0.00-0.52 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.091,
+    "sha256": "d12395074c3d4be948b4123e6c49fd42017a31c69409a64d842036a16e289022"
+  },
+  "bossfx-reaper-scythe-hit": {
+    "file": "boss-skills/reaper/scythe-hit.wav",
+    "duration": 0.72,
+    "beat": "scythe hit: Wet Impact (2)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wet Impact (2)",
+        "author": "Kastenfrosch",
+        "source_url": "https://freesound.org/people/Kastenfrosch/sounds/521958/",
+        "license": "CC0-1.0",
+        "sha256": "8e21229a80258eaf0b0a1d564d51701610d8fb7eba412a421244fec36d595a18"
+      }
+    ],
+    "processing": "excerpt 0.58-1.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.044,
+    "sha256": "eed0169082855107d139e2f280948534dfd4164e988d022f37f52d92928e7613"
+  },
+  "bossfx-reaper-soulknot-start": {
+    "file": "boss-skills/reaper/soulknot-start.wav",
+    "duration": 1.6,
+    "beat": "soulknot start: cool hollow wind cavern effect chimney fireplace air suck.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "cool hollow wind cavern effect chimney fireplace air suck.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/453850/",
+        "license": "CC0-1.0",
+        "sha256": "b2ed1f8160068332e7e2b529f041540921dce08cbd822d2c0b146d9ab2253977"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.514,
+    "rms": 0.11,
+    "sha256": "2feb29c4368ecd5c93245d77199016cb65d4b2fecf65edcf7f2faa4db3b62666"
+  },
+  "bossfx-reaper-soulknot-channel": {
+    "file": "boss-skills/reaper/soulknot-channel.wav",
+    "duration": 1.32,
+    "beat": "soulknot channel: WIND LOW.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "WIND LOW.mp3",
+        "author": "chiu29",
+        "source_url": "https://freesound.org/people/chiu29/sounds/384979/",
+        "license": "CC0-1.0",
+        "sha256": "2e16ed24054711710cebcfa0398897ea51703e9024fbdb95254b3d5c1d33314e"
+      }
+    ],
+    "processing": "excerpt 3.04-4.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.458,
+    "rms": 0.08,
+    "sha256": "e6ff925ab87e0a49aa57ffee6c17d6e5a3150b3befbed2d0591fe22f5ecd8c5d"
+  },
+  "bossfx-reaper-tatters-hit": {
+    "file": "boss-skills/reaper/tatters-hit.wav",
+    "duration": 1.62,
+    "beat": "tatters hit: G39-19-Parachute Swish Snap.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "G39-19-Parachute Swish Snap.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/438636/",
+        "license": "CC0-1.0",
+        "sha256": "fc6f453ed8fbe73fb14b7eb790628e1e4ae864a40c5221640a34b005ff1180b8"
+      }
+    ],
+    "processing": "excerpt 14.92-16.54 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.075,
+    "sha256": "ea1c198925fcfe303e4a19b918b39a5f7a422292abc42d3f080b1331e716a130"
+  },
+  "bossfx-reaper-tatters-channel": {
+    "file": "boss-skills/reaper/tatters-channel.wav",
+    "duration": 1.42,
+    "beat": "tatters channel: Fabric Flapping",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Fabric Flapping",
+        "author": "IENBA",
+        "source_url": "https://freesound.org/people/IENBA/sounds/701647/",
+        "license": "CC0-1.0",
+        "sha256": "6c23355114c3d12d4c785acbfb10f7e5c854ddeb3bd28527a49289da6907a543"
+      }
+    ],
+    "processing": "excerpt 9.86-11.28 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.051,
+    "sha256": "ba67c54c8220d1cdddd8eabd4dbd331a560e6365ff567eedc457f3f2b4e1b4bb"
+  }
+}

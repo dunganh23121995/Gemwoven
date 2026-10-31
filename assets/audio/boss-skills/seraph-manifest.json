@@ -1,0 +1,173 @@
+{
+  "bossfx-seraph-thrust-hit": {
+    "file": "boss-skills/seraph/thrust-hit.wav",
+    "duration": 0.48,
+    "beat": "thrust hit: 34. Clavada de espada Sword soft stab.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "34. Clavada de espada Sword soft stab.wav",
+        "author": "cabusta9",
+        "source_url": "https://freesound.org/people/cabusta9/sounds/443762/",
+        "license": "CC0-1.0",
+        "sha256": "29133ad165d7f889ae3e60006a65c8bddf1b7fe937e8f6babf4256754f7f6c32"
+      }
+    ],
+    "processing": "excerpt 0.00-0.48 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.066,
+    "sha256": "3c279397c5cc7e6f5e27a71205117725b0ef1e5ae9c1116f98b08b310f6141e1"
+  },
+  "bossfx-seraph-swordlight-channel": {
+    "file": "boss-skills/seraph/swordlight-channel.wav",
+    "duration": 1.42,
+    "beat": "swordlight channel: sword drawn.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "sword drawn.wav",
+        "author": "C-V",
+        "source_url": "https://freesound.org/people/C-V/sounds/592023/",
+        "license": "CC0-1.0",
+        "sha256": "3ee96979148ecb411be745b12e031b8cbc74dd39706e70fb091c7c086a57bd50"
+      }
+    ],
+    "processing": "excerpt 2.68-4.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.06,
+    "sha256": "ef1e9ef36a3c6cae5c34febaab80d0abd83091c31704df866a67d489faae1058"
+  },
+  "bossfx-seraph-thrust-start": {
+    "file": "boss-skills/seraph/thrust-start.wav",
+    "duration": 0.52,
+    "beat": "thrust start: Sword Draw - Fast",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sword Draw - Fast",
+        "author": "Foxfire-",
+        "source_url": "https://freesound.org/people/Foxfire-/sounds/844256/",
+        "license": "CC0-1.0",
+        "sha256": "35fa5076d395afe4577f600540f907d0ec243453d36e470be104f536c2544c54"
+      }
+    ],
+    "processing": "excerpt 0.04-0.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.077,
+    "sha256": "aa7f66bf374a3e0943bd66158ae8fbd64d98b19a1421ed050f577a91c04220c3"
+  },
+  "bossfx-seraph-lightspear-start": {
+    "file": "boss-skills/seraph/lightspear-start.wav",
+    "duration": 1.62,
+    "beat": "lightspear start: RavenWhoosh1a.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "RavenWhoosh1a.wav",
+        "author": "AlanCat",
+        "source_url": "https://freesound.org/people/AlanCat/sounds/392404/",
+        "license": "CC0-1.0",
+        "sha256": "4c9e19e192b267631b3572a924c4cb73d42fda280741203b8c0b4f805b3eb5ee"
+      }
+    ],
+    "processing": "excerpt 9.14-10.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.813,
+    "rms": 0.11,
+    "sha256": "1edf6e4db8a5909f31d2e8ec58119c43320c8e1eeca74048997cd3cdc767672f"
+  },
+  "bossfx-seraph-sealbeam-channel": {
+    "file": "boss-skills/seraph/sealbeam-channel.wav",
+    "duration": 1.42,
+    "beat": "sealbeam channel: 765 kilo-volt transmission lines buzzing and crackling",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "765 kilo-volt transmission lines buzzing and crackling",
+        "author": "johnaudiotech",
+        "source_url": "https://freesound.org/people/johnaudiotech/sounds/347046/",
+        "license": "CC0-1.0",
+        "sha256": "0c90ae69e98d7d10c0265c82a2f3260fab408f171d986470ca2225e247c8bb9d"
+      }
+    ],
+    "processing": "excerpt 18.64-20.06 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.762,
+    "rms": 0.08,
+    "sha256": "b7b9a87e71340414816dfe81717c6653af767fbd2718e1bf7153c3ae1a704f69"
+  },
+  "bossfx-seraph-lightspear-hit": {
+    "file": "boss-skills/seraph/lightspear-hit.wav",
+    "duration": 1.62,
+    "beat": "lightspear hit: Thunder Clap And Rumble #9",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Thunder Clap And Rumble #9",
+        "author": "Kinoton",
+        "source_url": "https://freesound.org/people/Kinoton/sounds/760216/",
+        "license": "CC0-1.0",
+        "sha256": "d36e3146e769626958152e28784b1c31e5439f250f534de797f483402719934a"
+      }
+    ],
+    "processing": "excerpt 2.10-3.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.106,
+    "sha256": "d4d21e55189908480036a22a8f5e47fdecf9e68bef7c2684e6891338466e4d54"
+  },
+  "bossfx-seraph-sealbeam-start": {
+    "file": "boss-skills/seraph/sealbeam-start.wav",
+    "duration": 1.62,
+    "beat": "sealbeam start: G32-10-Massive Electrical Discharges.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "G32-10-Massive Electrical Discharges.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/438494/",
+        "license": "CC0-1.0",
+        "sha256": "10d96e98307d9b3a84042ed19aec6e0cb26ce0c062b2153c5f75873697c76130"
+      }
+    ],
+    "processing": "excerpt 16.72-18.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.373,
+    "rms": 0.11,
+    "sha256": "c3e4f138732876c0d091b52f8fe9861594e95700238987c1202a8d5dc71f6ce8"
+  },
+  "bossfx-seraph-sealbeam-hit": {
+    "file": "boss-skills/seraph/sealbeam-hit.wav",
+    "duration": 1.62,
+    "beat": "sealbeam hit: Heavy Machine Transformation Impact 1_8",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy Machine Transformation Impact 1_8",
+        "author": "CAT-FOX_ALEX",
+        "source_url": "https://freesound.org/people/CAT-FOX_ALEX/sounds/876428/",
+        "license": "CC0-1.0",
+        "sha256": "dea9edfb730ebfb2f631369d840f5290ac09e5a54a5c8b0f4b7053759cc700f0"
+      }
+    ],
+    "processing": "excerpt 3.04-4.66 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.08,
+    "sha256": "784c580a41963dda6ebca0578c47062f07af7e339d22ba249b6ad4a54eb3dfdb"
+  },
+  "bossfx-seraph-halo-grow": {
+    "file": "boss-skills/seraph/halo-grow.wav",
+    "duration": 2.24,
+    "beat": "halo grow: 000101_0580S3 075-094 000-083 092-100.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "000101_0580S3 075-094 000-083 092-100.wav",
+        "author": "Gerent",
+        "source_url": "https://freesound.org/people/Gerent/sounds/669153/",
+        "license": "CC0-1.0",
+        "sha256": "890ae0a5e9adf12bf175209cbe7be4825f742adf0dbc8c0725630ed7ea0991bb"
+      }
+    ],
+    "processing": "excerpt 15.32-17.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.029,
+    "sha256": "a8fb70d6d4857f7abf98dfcf57125653e65b76255a83049417ab6934bba7852a"
+  }
+}

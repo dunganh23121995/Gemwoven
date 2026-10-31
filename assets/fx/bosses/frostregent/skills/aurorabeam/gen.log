@@ -1,0 +1,16 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\fx\\bosses\\frostregent\\skills\\aurorabeam\\raw-sheet.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a18d6f-bbda-7b40-a6f2-8e689828bd41\\exec-af83d758-aabe-47b1-9b38-c5fd100df3aa.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18d6f-992e-7241-a0d2-735ba00ecbc5\\exec-6eb6713e-9113-4805-80b1-43afdc81e900.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18d6f-9e57-7ac1-9b8c-9c0ebc6d6c24\\exec-eadfe03a-4e28-4c75-a192-3706a5c343c3.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18d6f-a2e9-7583-9643-e68422ce5eb7\\exec-4caceeff-7f67-481a-b7cc-a4a5cf00fe34.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18d6f-8ad3-7341-b84a-7d78382edc10\\exec-ecd8deed-a248-42c4-a40e-531351097c7c.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 32.9
+}
+
+

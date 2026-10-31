@@ -242,7 +242,10 @@
   // recommended level with typical stars/evolution, so the share of HP an enemy
   // hit removes stays steady from stage 50 to 1500 (combat skill bases are flat).
   // Stage 1 stays gentle; endless floors past the level cap grow logarithmically.
-  const ENEMY_SKILL_BASE={normal:18,elite:18,boss:30},ENDLESS_LEVEL_FLOOR=Math.ceil(MAX_LEVEL/1.8);
+  // A chapter boss's skills hit harder each chapter (6% per chapter: x2.38 by chapter 24), so later
+  // campaign bosses stay a threat to heroes upgraded far past them (endless floors keep their own curve);
+  // skill texts give power as % of this base.
+  const ENEMY_SKILL_BASE={normal:18,elite:18,boss:30},CHAPTER_POWER=chapter=>1+(chapter-1)*.06,ENDLESS_LEVEL_FLOOR=Math.ceil(MAX_LEVEL/1.8);
   function enemyAttackFor(mode,index,tier,recommended){
     const level=Math.min(MAX_LEVEL,recommended),reference=(1+.045*(level-1))*(1+level/MAX_LEVEL),ramp=.65+.55*Math.min(1,(level-1)/80);
     const beyond=mode==='boss'?1.1*(1+.6*Math.log2(1+Math.max(0,index-ENDLESS_LEVEL_FLOOR)/ENDLESS_LEVEL_FLOOR)):1+Math.max(0,index-1000)*.0006;
@@ -268,7 +271,7 @@
     const lateBoss=mode==='campaign'&&tier==='boss'&&!!bossDef.tactical,growth=mode==='campaign'&&index>200?1.6+(index-200)*.0013:1+index*.003;
     const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-700)/500:2.25):tier==='elite'?1.5:1):(120+depth*18)*(boss?1.7:1);
     return {mode,index,recommended,boss,tier,chapter:chapter.index,theme:chapter.id,bossId:chapter.boss,music:boss?chapter.music:chapter.element,creature:creature?.id||null,enemyName:boss?bossDef.name:creature?.name||'Vệ Binh Tinh Anh',turnLimit:tier==='boss'?(lateBoss?35:20):tier==='elite'?16:12,
-      enemyKey:mode==='pvp'||mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth),enemyAttack:enemyAttackFor(mode,index,tier,recommended),enemySkillBase:ENEMY_SKILL_BASE[tier],
+      enemyKey:mode==='pvp'||mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth),enemyAttack:enemyAttackFor(mode,index,tier,recommended),enemySkillBase:Math.round(ENEMY_SKILL_BASE[tier]*(tier==='boss'&&mode==='campaign'?CHAPTER_POWER(chapter.index):1)),
       skills:skillSet.length?skillSet.map(s=>s.name):['Đánh Thường'],
       skillSet,tactical:!!bossDef.tactical,variant,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='pvp'?'Đấu tập 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
   }

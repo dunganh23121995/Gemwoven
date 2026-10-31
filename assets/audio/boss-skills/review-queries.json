@@ -1,0 +1,334 @@
+{
+ "fire": {
+  "scales": {
+   "lock": "heavy stone plates clunk together | heavy stone plates | stone plates clunk | plates clunk together | clunk together | heavy stone"
+  },
+  "jaws": {
+   "start": "furnace ignition | gas burner | bellows blast | blowtorch ignition"
+  }
+ },
+ "ice": {
+  "moonspear": {
+   "channel": "ice cracking | glass rubbing | freezer creaking | snow crunch"
+  },
+  "moonwind": {
+   "hit": "violent wind blast buffeting fabric | violent wind blast | wind blast buffeting | blast buffeting fabric | buffeting fabric | violent wind"
+  },
+  "moonseal": {
+   "channel": "ice creaking | frozen lake | ice stress | ice groan"
+  }
+ },
+ "lightning": {
+  "thunderclaw": {
+   "start": "fast claw swipe air whoosh | fast claw swipe | claw swipe air | swipe air whoosh | air whoosh | fast claw"
+  },
+  "cannon": {
+   "hit": "sustained high voltage electrical arc discharge | sustained high voltage | high voltage electrical | voltage electrical arc | electrical arc discharge | arc discharge | sustained high"
+  }
+ },
+ "mire": {
+  "toadstools": {
+   "start": "mud suction roots pulling squelch | mud suction roots | suction roots pulling | roots pulling squelch | pulling squelch | mud suction"
+  },
+  "bigcap": {
+   "grow": "wet vegetation tearing soil squelch | wet vegetation tearing | vegetation tearing soil | tearing soil squelch | soil squelch | wet vegetation",
+   "channel": "rubber stretching | balloon inflating | fabric stretching | soil shifting"
+  },
+  "mycelium": {
+   "hit": "mud slap | roots ripping | wet cloth slap | sponge squish",
+   "channel": "fibrous stalk stretching creak | fibrous stalk stretching | stalk stretching creak | stretching creak | fibrous stalk"
+  },
+  "dizzy": {
+   "channel": "bellows pumping | rubber stretching | mud bubbling | leaves rustling"
+  }
+ },
+ "scarab": {
+  "wingshield": {
+   "lock": "heavy stone door closing clunk | heavy stone door | stone door closing | door closing clunk | closing clunk | heavy stone"
+  },
+  "hornstrike": {
+   "hit": "heavy puncture wet crunch foley | heavy puncture wet | puncture wet crunch | wet crunch foley | crunch foley | heavy puncture"
+  }
+ },
+ "leviathan": {
+  "rainstorm": {
+   "channel": "wind rising before heavy rain | wind rising before | rising before heavy | before heavy rain | heavy rain | wind rising"
+  },
+  "frostbreath": {
+   "channel": "cold wind | ice cracking | freezing wind | frost"
+  },
+  "thunderstorm": {
+   "channel": "deep water churning turbulent surge | deep water churning | water churning turbulent | churning turbulent surge | turbulent surge | deep water"
+  }
+ },
+ "colossus": {
+  "steamburst": {
+   "start": "industrial steam pressure valve opening | industrial steam pressure | steam pressure valve | pressure valve opening | valve opening | industrial steam"
+  },
+  "smash": {
+   "start": "heavy mechanical winch winding under load | heavy mechanical winch | mechanical winch winding | winch winding under | winding under load | under load | heavy mechanical"
+  }
+ },
+ "prism": {
+  "scythecut": {
+   "hit": "sharp blade slashes cutting leather | sharp blade slashes | blade slashes cutting | slashes cutting leather | cutting leather | sharp blade"
+  },
+  "mirrors": {
+   "start": "thick glass blocks grinding | thick glass blocks | glass blocks grinding | blocks grinding | thick glass",
+   "lock": "glass clunk | glass clink | stone scrape | ceramic knock"
+  },
+  "spectrum": {
+   "start": "air hose | glass scrape | steam release | glass breaking"
+  }
+ },
+ "reaper": {
+  "scythe": {
+   "start": "heavy scythe swing whoosh | heavy scythe swing | scythe swing whoosh | swing whoosh | heavy scythe",
+   "hit": "single blade chop wet impact | single blade chop | blade chop wet | chop wet impact | wet impact | single blade"
+  },
+  "soulknot": {
+   "start": "hollow air suction through pipe | hollow air suction | air suction through | suction through pipe | through pipe | hollow air",
+   "channel": "low wind suction building | low wind suction | wind suction building | suction building | low wind"
+  },
+  "tatters": {
+   "hit": "heavy fabric whip snap impact | heavy fabric whip | fabric whip snap | whip snap impact | snap impact | heavy fabric",
+   "channel": "fabric flapping | cloth tearing | flag fluttering | wings flapping"
+  }
+ },
+ "roc": {
+  "featherblade": {
+   "hit": "arrow hitting leather target | arrow hitting leather | hitting leather target | leather target | arrow hitting"
+  },
+  "featherwall": {
+   "lock": "heavy fabric wing folding thump | heavy fabric wing | fabric wing folding | wing folding thump | folding thump | heavy fabric"
+  },
+  "cyclone": {
+   "hit": "violent air blast buffeting canvas | violent air blast | air blast buffeting | blast buffeting canvas | buffeting canvas | violent air"
+  }
+ },
+ "briar": {
+  "vinewhip": {
+   "hit": "whip crack | stick snap | rope whip | wet slap"
+  },
+  "maw": {
+   "channel": "green stalk bending creaking | green stalk bending | stalk bending creaking | bending creaking | green stalk"
+  },
+  "brambles": {
+   "lock": "vine rope tightening creak snap | vine rope tightening | rope tightening creak | tightening creak snap | creak snap | vine rope",
+   "channel": "branches creaking | rope twisting | dry leaves | wood bending"
+  }
+ },
+ "seraph": {
+  "thrust": {
+   "start": "fast sword thrust whoosh | fast sword thrust | sword thrust whoosh | thrust whoosh | fast sword"
+  },
+  "halo": {
+   "grow": "steam building | wind rising | waterfall roar | electrical hum"
+  },
+  "lightspear": {
+   "start": "multiple fast arrow flight whooshes | multiple fast arrow | fast arrow flight | arrow flight whooshes | flight whooshes | multiple fast",
+   "hit": "lightning strike | electrical arc | metal impact | fire burst",
+   "channel": "electrical buzzing | power line hum | steam hissing | wind whistling"
+  },
+  "sealbeam": {
+   "start": "electrical discharge | air blast | steam jet | power switch",
+   "hit": "transformer explosion | metal door slam | heavy gate | electrical short",
+   "channel": "transformer hum | electric motor | power line crackle | pressure building"
+  }
+ },
+ "eclipse": {
+  "starshards": {
+   "start": "glass snapping | ice cracking | light bulb breaking | window shatter",
+   "hit": "glass shatter | ice smash | glass crunch | ceramic smash"
+  },
+  "galaxy": {
+   "start": "powerful air suction through wide pipe | powerful air suction | air suction through | suction through wide | through wide pipe | wide pipe | powerful air",
+   "hit": "vacuum suction | drain suction | air rush | large fan"
+  }
+ },
+ "elderbloom": {
+  "rootspears": {
+   "hit": "thick branch stabbing wet soil crunch | thick branch stabbing | branch stabbing wet | stabbing wet soil | wet soil crunch | soil crunch | thick branch"
+  },
+  "birchbark": {
+   "lock": "bark cracking | branches snapping | wooden latch | wood clunk"
+  },
+  "rootcircle": {
+   "channel": "roots pulling through damp soil | roots pulling through | pulling through damp | through damp soil | damp soil | roots pulling"
+  },
+  "pollenbloom": {
+   "channel": "dry flower seed head rattling | dry flower seed | flower seed head | seed head rattling | head rattling | dry flower"
+  },
+  "springtree": {
+   "channel": "leafy branches bending under tension | leafy branches bending | branches bending under | bending under tension | under tension | leafy branches"
+  },
+  "rootquake": {
+   "channel": "heavy tree trunk straining splitting | heavy tree trunk | tree trunk straining | trunk straining splitting | straining splitting | heavy tree"
+  }
+ },
+ "cinderheart": {
+  "columns": {
+   "lock": "large stone slabs clamping clunk | large stone slabs | stone slabs clamping | slabs clamping clunk | clamping clunk | large stone"
+  },
+  "vent": {
+   "channel": "gas burner pressure hiss buildup | gas burner pressure | burner pressure hiss | pressure hiss buildup | hiss buildup | gas burner"
+  },
+  "spikeline": {
+   "land": "sharp rocks punching breaking concrete | sharp rocks punching | rocks punching breaking | punching breaking concrete | breaking concrete | sharp rocks",
+   "channel": "rocks grinding under pressure | rocks grinding under | grinding under pressure | under pressure | rocks grinding"
+  },
+  "pumice": {
+   "start": "stones whipping through air | stones whipping through | whipping through air | through air | stones whipping"
+  },
+  "geyser": {
+   "start": "steam burst | pressure release | gas ignition | water eruption",
+   "channel": "boiler rumble | water boiling | steam hissing | mud bubbling"
+  }
+ },
+ "frostregent": {
+  "icemirror": {
+   "lock": "thick ice slabs knocking together | thick ice slabs | ice slabs knocking | slabs knocking together | knocking together | thick ice",
+   "channel": "thin ice sheet flexing creaking | thin ice sheet | ice sheet flexing | sheet flexing creaking | flexing creaking | thin ice"
+  },
+  "icepillars": {
+   "grow": "frozen lake pressure cracking upward | frozen lake pressure | lake pressure cracking | pressure cracking upward | cracking upward | frozen lake",
+   "channel": "thick ice groaning under pressure | thick ice groaning | ice groaning under | groaning under pressure | under pressure | thick ice"
+  },
+  "aurorabeam": {
+   "start": "compressed air jet short blast | compressed air jet | air jet short | jet short blast | short blast | compressed air",
+   "channel": "wind whistling | ice creaking | power line hum | glass rubbing"
+  },
+  "hail": {
+   "hit": "heavy hail striking leather surface | heavy hail striking | hail striking leather | striking leather surface | leather surface | heavy hail",
+   "channel": "ice rattling | hail roof | freezer creaking | ice shifting"
+  },
+  "glacierspire": {
+   "hit": "large ice mass collapse crash | large ice mass | ice mass collapse | mass collapse crash | collapse crash | large ice",
+   "channel": "frozen lake booming deep groan | frozen lake booming | lake booming deep | booming deep groan | deep groan | frozen lake"
+  }
+ },
+ "tempestwing": {
+  "plasmaclaw": {
+   "hit": "close electrical arc snapping sharply | close electrical arc | electrical arc snapping | arc snapping sharply | snapping sharply | close electrical"
+  },
+  "stormfeathers": {
+   "lock": "heavy feathered wing folding fabric thump | heavy feathered wing | feathered wing folding | wing folding fabric | folding fabric thump | fabric thump | heavy feathered"
+  }
+ },
+ "souljailer": {
+  "ghostscythe": {
+   "start": "heavy scythe blade swing whoosh | heavy scythe blade | scythe blade swing | blade swing whoosh | swing whoosh | heavy scythe",
+   "hit": "blade chopping thick leather impact | blade chopping thick | chopping thick leather | thick leather impact | leather impact | blade chopping"
+  },
+  "cage": {
+   "lock": "iron cell gate latch slam | iron cell gate | cell gate latch | gate latch slam | latch slam | iron cell"
+  },
+  "chaincircle": {
+   "channel": "long heavy chain slowly drawn taut | long heavy chain | heavy chain slowly | chain slowly drawn | slowly drawn taut | drawn taut | long heavy"
+  },
+  "chainknot": {
+   "hit": "chain impact | chain drop | padlock clank | metal shackle"
+  },
+  "ghostpillars": {
+   "channel": "chains dragging | furnace rumble | chain rattling | gas hissing"
+  },
+  "cageslam": {
+   "hit": "heavy iron barred gate slam | heavy iron barred | iron barred gate | barred gate slam | gate slam | heavy iron",
+   "channel": "heavy iron frame bending creaking | heavy iron frame | iron frame bending | frame bending creaking | bending creaking | heavy iron"
+  }
+ },
+ "sporefather": {
+  "rotslam": {
+   "land": "log impact | wood crash | tree falling | wood breaking"
+  },
+  "shelves": {
+   "lock": "wood creak | bark snapping | cork pop | wooden latch"
+  },
+  "sprouts": {
+   "grow": "soil shifting | wet sponge squeezing | celery bending | leaves unfolding",
+   "channel": "soil crumbling | roots tearing | leaves rustling | wet sponge"
+  },
+  "sporepod": {
+   "channel": "balloon stretching | air leaking | plastic crinkling | seed pod rattle"
+  },
+  "threads": {
+   "channel": "wet rope twisting | sponge squeezing | wood splintering | roots tearing"
+  },
+  "bloomrot": {
+   "channel": "mud bubbling | soil shifting | wood creaking | rubber stretching"
+  }
+ },
+ "prismback": {
+  "towers": {
+   "channel": "stone dragging | rocks grinding | gravel rumble | concrete scraping"
+  },
+  "cannonblast": {
+   "channel": "glass rod grinding against stone | glass rod grinding | rod grinding against | grinding against stone | against stone | glass rod"
+  },
+  "quakering": {
+   "hit": "large stone slab impact debris | large stone slab | stone slab impact | slab impact debris | impact debris | large stone"
+  },
+  "collapse": {
+   "hit": "large masonry wall collapse crash | large masonry wall | masonry wall collapse | wall collapse crash | collapse crash | large masonry",
+   "channel": "building creaking | stones grinding | gravel shifting | wood straining"
+  }
+ },
+ "sandchronarch": {
+  "sandblade": {
+   "hit": "sand blast | gravel impact | sandpaper scrape | dirt splash"
+  },
+  "sandring": {
+   "lock": "sand pouring | gravel scraping | metal latch | stone lid"
+  },
+  "sandpillar": {
+   "channel": "dry sand scraping rough stone | dry sand scraping | sand scraping rough | scraping rough stone | rough stone | dry sand"
+  },
+  "reverse": {
+   "channel": "hand dragging through fine sand | hand dragging through | dragging through fine | through fine sand | fine sand | hand dragging"
+  },
+  "clockripple": {
+   "hit": "clock mechanism spring snapping ratchet | clock mechanism spring | mechanism spring snapping | spring snapping ratchet | snapping ratchet | clock mechanism",
+   "channel": "clockwork mechanism winding under tension | clockwork mechanism winding | mechanism winding under | winding under tension | under tension | clockwork mechanism"
+  },
+  "sandbeam": {
+   "hit": "large sand gravel avalanche impact | large sand gravel | sand gravel avalanche | gravel avalanche impact | avalanche impact | large sand",
+   "channel": "heavy sand pouring roaring chute | heavy sand pouring | sand pouring roaring | pouring roaring chute | roaring chute | heavy sand"
+  }
+ },
+ "coraltide": {
+  "pearlwall": {
+   "lock": "stone lid | ceramic clunk | heavy door | shell clack"
+  },
+  "coralgrow": {
+   "channel": "stones grinding | water swirling | shells rattling | gravel shifting"
+  },
+  "inkwhirl": {
+   "hit": "water suction | drain gurgle | water splash | mud suction",
+   "channel": "deep water suction gurgle | deep water suction | water suction gurgle | suction gurgle | deep water"
+  },
+  "pearlspring": {
+   "channel": "water bubbling up spring vent | water bubbling up | bubbling up spring | up spring vent | spring vent | water bubbling"
+  },
+  "inkwave": {
+   "channel": "distant surf building against rocks | distant surf building | surf building against | building against rocks | against rocks | distant surf"
+  }
+ },
+ "moonfang": {
+  "steelward": {
+   "start": "armor plates sliding scraping together | armor plates sliding | plates sliding scraping | sliding scraping together | scraping together | armor plates",
+   "lock": "armor clank | metal plate | sword sheath | armour impact"
+  },
+  "twinflames": {
+   "grow": "large flame flare whoosh | large flame flare | flame flare whoosh | flare whoosh | large flame",
+   "channel": "fire crackling building low roar | fire crackling building | crackling building low | building low roar | low roar | fire crackling"
+  },
+  "fangs": {
+   "start": "sword swing | knife swish | shears snapping | whip swoosh",
+   "hit": "single wet bite flesh crunch | single wet bite | wet bite flesh | bite flesh crunch | flesh crunch | single wet"
+  },
+  "moonblade": {
+   "start": "heavy sword swing accelerating whoosh | heavy sword swing | sword swing accelerating | swing accelerating whoosh | accelerating whoosh | heavy sword",
+   "channel": "metal scraping | steel cable | metal bending | blade sharpening"
+  }
+ }
+}

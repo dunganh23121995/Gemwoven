@@ -1,0 +1,287 @@
+{
+  "bossfx-sandchronarch-sandblade-start": {
+    "file": "boss-skills/sandchronarch/sandblade-start.wav",
+    "duration": 0.72,
+    "beat": "sandblade start: Swishes_4_strong_fast.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Swishes_4_strong_fast.wav",
+        "author": "videofueralle",
+        "source_url": "https://freesound.org/people/videofueralle/sounds/614170/",
+        "license": "CC0-1.0",
+        "sha256": "3afbcc6381929bf4fc971b789a6c123b8cc8740a38f0e253093006f7638444f4"
+      }
+    ],
+    "processing": "excerpt 0.48-1.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.065,
+    "sha256": "a441dfea3299bb1b3d12098e803aa2bc2f3c9ca0ad1142535243c7c8eacf1f07"
+  },
+  "bossfx-sandchronarch-sandring-start": {
+    "file": "boss-skills/sandchronarch/sandring-start.wav",
+    "duration": 0.66,
+    "beat": "sandring start: HourglassSample.m4a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "HourglassSample.m4a",
+        "author": "trolandsound",
+        "source_url": "https://freesound.org/people/trolandsound/sounds/706231/",
+        "license": "CC0-1.0",
+        "sha256": "36387ed94f316dde3b4ee2600802686a0b436388c3ffe21c09df3ceb18ac55c6"
+      }
+    ],
+    "processing": "excerpt 2.10-2.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.048,
+    "sha256": "ad207885cef7c80bc6c29fd8046036ffa0fced7c45db9c38a6be72cc3fd9c9ee"
+  },
+  "bossfx-sandchronarch-reverse-grow": {
+    "file": "boss-skills/sandchronarch/reverse-grow.wav",
+    "duration": 2.62,
+    "beat": "reverse grow: Pouring sugar into coffee_02.WAV",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Pouring sugar into coffee_02.WAV",
+        "author": "Leandri140029",
+        "source_url": "https://freesound.org/people/Leandri140029/sounds/437567/",
+        "license": "CC0-1.0",
+        "sha256": "5a5771649ee25696e84e3655ca025db282d8491432032466c1746583d1608baf"
+      }
+    ],
+    "processing": "excerpt 3.42-6.04 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.011,
+    "sha256": "0aed2afacf91c63bd8d3c6af7b830369605c622d0817bb7cb61c2513fb4adc7a"
+  },
+  "bossfx-sandchronarch-clockripple-start": {
+    "file": "boss-skills/sandchronarch/clockripple-start.wav",
+    "duration": 0.64,
+    "beat": "clockripple start: ticking clock.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "ticking clock.mp3",
+        "author": "Fiepjepiepje",
+        "source_url": "https://freesound.org/people/Fiepjepiepje/sounds/704582/",
+        "license": "CC0-1.0",
+        "sha256": "9c91d497d2858f61fbfc9ace2ed840c7c0eeb736e912310552fd374caf7c436d"
+      }
+    ],
+    "processing": "excerpt 1.48-2.12 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.048,
+    "sha256": "cc519d9c727f0397c7635ab2a0bbd9d3b417f1991ff9e2257a8de4d55b420923"
+  },
+  "bossfx-sandchronarch-sandpillar-grow": {
+    "file": "boss-skills/sandchronarch/sandpillar-grow.wav",
+    "duration": 0.64,
+    "beat": "sandpillar grow: Falling into sand with knees 48000",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Falling into sand with knees 48000",
+        "author": "Dreadman247",
+        "source_url": "https://freesound.org/people/Dreadman247/sounds/841852/",
+        "license": "CC0-1.0",
+        "sha256": "5b48991af2a8c5aa5a1cf47098ebbab73e6e38f5232922f27abc4c5ebb8ec2a3"
+      }
+    ],
+    "processing": "excerpt 0.20-0.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.059,
+    "sha256": "e15881e12f08cc06664ad119152beed920d44faae1155748a33a0f9967ac83f8"
+  },
+  "bossfx-sandchronarch-sandbeam-start": {
+    "file": "boss-skills/sandchronarch/sandbeam-start.wav",
+    "duration": 1.62,
+    "beat": "sandbeam start: Wind Gust",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind Gust",
+        "author": "crashoverride6",
+        "source_url": "https://freesound.org/people/crashoverride6/sounds/146932/",
+        "license": "CC0-1.0",
+        "sha256": "012dcc168ce1bb237e2c64bf14c2ba824d5a517c2b17efad16579b21b2ca6e1d"
+      }
+    ],
+    "processing": "excerpt 1.44-3.06 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.501,
+    "rms": 0.11,
+    "sha256": "6991508b80b82e2e416520eea79584dab8c088b2565de27b09ac65415a3bda4a"
+  },
+  "bossfx-sandchronarch-sandglass-channel": {
+    "file": "boss-skills/sandchronarch/sandglass-channel.wav",
+    "duration": 1.1,
+    "beat": "sandglass channel: 15GGalasovaK_sandbox.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "15GGalasovaK_sandbox.wav",
+        "author": "KaterinaGalasova",
+        "source_url": "https://freesound.org/people/KaterinaGalasova/sounds/461940/",
+        "license": "CC0-1.0",
+        "sha256": "28f1519587554789d7afba089d380d876e2d45f31ff9d8be0cdcc6a4445f7726"
+      }
+    ],
+    "processing": "excerpt 6.86-7.96 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.047,
+    "sha256": "b34446005bcabfac734cabaf2934a8a8cbfd7b3a87412bed8323572c70b95a57"
+  },
+  "bossfx-sandchronarch-sandpillar-channel": {
+    "file": "boss-skills/sandchronarch/sandpillar-channel.wav",
+    "duration": 1.42,
+    "beat": "sandpillar channel: scraping-sandy.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "scraping-sandy.mp3",
+        "author": "Ntar10",
+        "source_url": "https://freesound.org/people/Ntar10/sounds/565796/",
+        "license": "CC0-1.0",
+        "sha256": "e271b94426a28566a48b4b51ca8f9becd9a8dbde734434dc199484e2812c54ea"
+      }
+    ],
+    "processing": "excerpt 13.90-15.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.045,
+    "sha256": "4fb926a6dd9212ca8caf946bd1f343070265613ee24e5aeddf13afecc9a77b76"
+  },
+  "bossfx-sandchronarch-reverse-channel": {
+    "file": "boss-skills/sandchronarch/reverse-channel.wav",
+    "duration": 0.62,
+    "beat": "reverse channel: Steps_Fine_Snow_Or_Sand_Strong_29",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Steps_Fine_Snow_Or_Sand_Strong_29",
+        "author": "BlondPanda",
+        "source_url": "https://freesound.org/people/BlondPanda/sounds/778568/",
+        "license": "CC0-1.0",
+        "sha256": "4494b8ebbe9f8e0411289755da75d6ce46786d23b5be940cb445b5cbe58c6c15"
+      }
+    ],
+    "processing": "excerpt 0.00-0.62 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.077,
+    "sha256": "3692de239262f43603ec5864a14c97e766d765191f2cff6dffaf1c1562ec1b64"
+  },
+  "bossfx-sandchronarch-clockripple-hit": {
+    "file": "boss-skills/sandchronarch/clockripple-hit.wav",
+    "duration": 0.28,
+    "beat": "clockripple hit: windingOldAlarmClock.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "windingOldAlarmClock.wav",
+        "author": "tenkism",
+        "source_url": "https://freesound.org/people/tenkism/sounds/414260/",
+        "license": "CC0-1.0",
+        "sha256": "ccbe83792f8b0711cb62eb61144f605726964b5d2dfd4564cbde53bfb97f1836"
+      }
+    ],
+    "processing": "excerpt 0.72-1.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.043,
+    "sha256": "4b4dd280c7c1a7c1949a2faa618d279660158edfdb541a382cd823527026632b"
+  },
+  "bossfx-sandchronarch-clockripple-channel": {
+    "file": "boss-skills/sandchronarch/clockripple-channel.wav",
+    "duration": 0.56,
+    "beat": "clockripple channel: Clockwork Timer 01",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Clockwork Timer 01",
+        "author": "apintofmild",
+        "source_url": "https://freesound.org/people/apintofmild/sounds/641577/",
+        "license": "CC0-1.0",
+        "sha256": "da5c6eb32ff32a8edb1ea35f59fc238994cd69bfdc2956ca82554bb3b3232ad3"
+      }
+    ],
+    "processing": "excerpt 48.08-48.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.16,
+    "rms": 0.08,
+    "sha256": "294c4fd9ccc0022e9926f29aad2f6ac6999853dd3b94b84a136f2a9b4837f6f1"
+  },
+  "bossfx-sandchronarch-sandbeam-hit": {
+    "file": "boss-skills/sandchronarch/sandbeam-hit.wav",
+    "duration": 1.62,
+    "beat": "sandbeam hit: Grainy Movement - Large",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Grainy Movement - Large",
+        "author": "emilyws",
+        "source_url": "https://freesound.org/people/emilyws/sounds/414535/",
+        "license": "CC0-1.0",
+        "sha256": "1b8fe71708ed4eeb45d70ee04fe45cb287b48c8aa067bbf85f5d98deb7c1b725"
+      }
+    ],
+    "processing": "excerpt 13.62-15.24 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.029,
+    "sha256": "9245e3663cd917c2a91491eb93a1dad5e7ea1f33af1e42bfb18363da2558cc7d"
+  },
+  "bossfx-sandchronarch-sandbeam-channel": {
+    "file": "boss-skills/sandchronarch/sandbeam-channel.wav",
+    "duration": 1.16,
+    "beat": "sandbeam channel: Heavy sand impacts.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy sand impacts.wav",
+        "author": "200221-WeanBekker",
+        "source_url": "https://freesound.org/people/200221-WeanBekker/sounds/543699/",
+        "license": "CC0-1.0",
+        "sha256": "c94079a28e2024c76faabc2a710b61f98cb0f7b61f65f8c18f483c235fc9f25f"
+      }
+    ],
+    "processing": "excerpt 6.04-7.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.024,
+    "sha256": "815818ae9bd9d94a2736cf646092406fa9bab9503d46a7651648a8fbc8a9e0f9"
+  },
+  "bossfx-sandchronarch-sandblade-hit": {
+    "file": "boss-skills/sandchronarch/sandblade-hit.wav",
+    "duration": 0.58,
+    "beat": "sandblade hit: Hard Impact on Gravel",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Hard Impact on Gravel",
+        "author": "Elements-Library",
+        "source_url": "https://freesound.org/people/Elements-Library/sounds/683787/",
+        "license": "CC0-1.0",
+        "sha256": "be899bfcc1853f4242de652a3f6d0981fcf4a8acb918d26875000659f1b49932"
+      }
+    ],
+    "processing": "excerpt 11.98-12.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.03,
+    "sha256": "166be479210a334aec13c394d119f44e1dab4eb85a81473c5cc57b7222ec3024"
+  },
+  "bossfx-sandchronarch-sandring-lock": {
+    "file": "boss-skills/sandchronarch/sandring-lock.wav",
+    "duration": 0.98,
+    "beat": "sandring lock: Sand bucket",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sand bucket",
+        "author": "icviro",
+        "source_url": "https://freesound.org/people/icviro/sounds/734302/",
+        "license": "CC0-1.0",
+        "sha256": "00600b47d452947163f71c6f877c32c9fd905c287ad17a76e70b527ee362b787"
+      }
+    ],
+    "processing": "excerpt 46.36-47.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.06,
+    "sha256": "d2d43ce214dd8264b27309b44505d0582afd0c0c650279d31bbbe9ee5fb84613"
+  }
+}

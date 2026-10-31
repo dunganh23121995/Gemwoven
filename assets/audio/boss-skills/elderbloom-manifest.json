@@ -1,0 +1,268 @@
+{
+  "bossfx-elderbloom-rootspears-start": {
+    "file": "boss-skills/elderbloom/rootspears-start.wav",
+    "duration": 1.6,
+    "beat": "rootspears start: Creaking in Room 8.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Creaking in Room 8.wav",
+        "author": "Greg_Surr",
+        "source_url": "https://freesound.org/people/Greg_Surr/sounds/590171/",
+        "license": "CC0-1.0",
+        "sha256": "fc553641b9c0b58ae76937fb3e2c8ff07890edd7a5e0b2fa3f12e5d81b8305cb"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.067,
+    "sha256": "a8cda9012326227f82ac28bae0cbf835a527b19314e08a56f8b8e22f23e6a60b"
+  },
+  "bossfx-elderbloom-birchbark-start": {
+    "file": "boss-skills/elderbloom/birchbark-start.wav",
+    "duration": 1.18,
+    "beat": "birchbark start: Foley_Wood_Medium_Friction_Short_Sequence_Stereo.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Foley_Wood_Medium_Friction_Short_Sequence_Stereo.wav",
+        "author": "Nox_Sound",
+        "source_url": "https://freesound.org/people/Nox_Sound/sounds/699644/",
+        "license": "CC0-1.0",
+        "sha256": "c4e645928a36738e1314035f1d0b4f6a9158bfa5e2d11ffc7a29d6815d2a47fa"
+      }
+    ],
+    "processing": "excerpt 0.16-1.34 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.079,
+    "sha256": "54fb04982ea6f21bf838d6144b9b28ddbeb286930f3e7c3a328aa784f19bafe3"
+  },
+  "bossfx-elderbloom-rootcircle-grow": {
+    "file": "boss-skills/elderbloom/rootcircle-grow.wav",
+    "duration": 1.1,
+    "beat": "rootcircle grow: one plant grows with lettuce.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "one plant grows with lettuce.wav",
+        "author": "squidge316",
+        "source_url": "https://freesound.org/people/squidge316/sounds/677814/",
+        "license": "CC0-1.0",
+        "sha256": "9ce68a06ea74977d808867320e6a321dc97faac3294217b02a768ec879d995bb"
+      }
+    ],
+    "processing": "excerpt 0.66-1.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.027,
+    "sha256": "1d69f944db7b85b13e7b5d025b1b03e75f553fff98f7d4f569159fda0a5d0c48"
+  },
+  "bossfx-elderbloom-pollenbloom-start": {
+    "file": "boss-skills/elderbloom/pollenbloom-start.wav",
+    "duration": 1.62,
+    "beat": "pollenbloom start: Paper Petals ASMR 02.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Paper Petals ASMR 02.wav",
+        "author": "vero.marengere",
+        "source_url": "https://freesound.org/people/vero.marengere/sounds/513405/",
+        "license": "CC0-1.0",
+        "sha256": "5d4520fa693f659ecbb43a492fa91c1d55857f0fff382bd2cc2f7b36c309ff1d"
+      }
+    ],
+    "processing": "excerpt 7.92-9.54 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.044,
+    "sha256": "4c7aa68ae9635866d2440f812cfae0f4379f31234fe7e1ee86441b06a21ce13c"
+  },
+  "bossfx-elderbloom-pollenbloom-hit": {
+    "file": "boss-skills/elderbloom/pollenbloom-hit.wav",
+    "duration": 0.3,
+    "beat": "pollenbloom hit: Pop sound",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Pop sound",
+        "author": "deraj",
+        "source_url": "https://freesound.org/people/deraj/sounds/202230/",
+        "license": "CC0-1.0",
+        "sha256": "f710da77f4fcafb1dafb16b677b108469ee4127f03198738c3c0d3f39608aec7"
+      }
+    ],
+    "processing": "excerpt 0.16-0.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.684,
+    "rms": 0.11,
+    "sha256": "69c19d3c7ac900b64b78378f2402d8d0512a1fd64882b0c086b40e3f14a79cf1"
+  },
+  "bossfx-elderbloom-springtree-grow": {
+    "file": "boss-skills/elderbloom/springtree-grow.wav",
+    "duration": 2.62,
+    "beat": "springtree grow: Leaves Rustling",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Leaves Rustling",
+        "author": "SoundDesigner0101",
+        "source_url": "https://freesound.org/people/SoundDesigner0101/sounds/765965/",
+        "license": "CC0-1.0",
+        "sha256": "fed55827e52a76b168981c1b7dd597e3adae642c43874259f8d4ab6c9074eed5"
+      }
+    ],
+    "processing": "excerpt 13.66-16.28 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.013,
+    "sha256": "c03733dd50fd7e5f5e598d65cc8f0a88da8c6c93ccaad63a1751d6ce41a18afa"
+  },
+  "bossfx-elderbloom-rootquake-start": {
+    "file": "boss-skills/elderbloom/rootquake-start.wav",
+    "duration": 1.62,
+    "beat": "rootquake start: Earthquake rumble",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Earthquake rumble",
+        "author": "betostado99",
+        "source_url": "https://freesound.org/people/betostado99/sounds/719551/",
+        "license": "CC0-1.0",
+        "sha256": "ad7e3d1405e00e1059fdb02a0f06aa82c82debca2328aa11ac89575268bdce71"
+      }
+    ],
+    "processing": "excerpt 9.74-11.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.599,
+    "rms": 0.11,
+    "sha256": "20371cdf878b6733a22347ebfa5c92923f6d7fe264f2e8811229a35c06e32022"
+  },
+  "bossfx-elderbloom-rootquake-land": {
+    "file": "boss-skills/elderbloom/rootquake-land.wav",
+    "duration": 1.38,
+    "beat": "rootquake land: 38.Crack.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "38.Crack.wav",
+        "author": "miguelab1998",
+        "source_url": "https://freesound.org/people/miguelab1998/sounds/408610/",
+        "license": "CC0-1.0",
+        "sha256": "972da6762580fc9f02bc466d48be490ec5223812fb0b48a5f7f0f331f63d4835"
+      }
+    ],
+    "processing": "excerpt 10.90-12.28 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.031,
+    "sha256": "0988bd3d7c9003fa67806cfaa098bd6dcc0b5ce8ef1978a3b194ec7341f7a94e"
+  },
+  "bossfx-elderbloom-sapglow-channel": {
+    "file": "boss-skills/elderbloom/sapglow-channel.wav",
+    "duration": 0.78,
+    "beat": "sapglow channel: Wood Creak Single V10",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wood Creak Single V10",
+        "author": "Rudmer_Rotteveel",
+        "source_url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/506665/",
+        "license": "CC0-1.0",
+        "sha256": "11975c80e5dcf3937eded1a4b31927061fb632d925e8118af4de3f6e96d51306"
+      }
+    ],
+    "processing": "excerpt 0.02-0.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.7,
+    "rms": 0.08,
+    "sha256": "8d496e32c465afc6a6bfa86f40361c6e70e9275b34fc706948321bc4a1ab62a2"
+  },
+  "bossfx-elderbloom-rootcircle-channel": {
+    "file": "boss-skills/elderbloom/rootcircle-channel.wav",
+    "duration": 1.26,
+    "beat": "rootcircle channel: Pulling roots.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Pulling roots.wav",
+        "author": "Elandre01",
+        "source_url": "https://freesound.org/people/Elandre01/sounds/594401/",
+        "license": "CC0-1.0",
+        "sha256": "817e9a75ceea117227f75421660b70eb422f40d99d9d3c3051b136b4df7d78bf"
+      }
+    ],
+    "processing": "excerpt 0.94-2.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.046,
+    "sha256": "bee29c0dff46a94fb0636dd3b54c9e6c08460e0917015cab61f681dc401e23e2"
+  },
+  "bossfx-elderbloom-pollenbloom-channel": {
+    "file": "boss-skills/elderbloom/pollenbloom-channel.wav",
+    "duration": 1.42,
+    "beat": "pollenbloom channel: raschelnde Blumen.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "raschelnde Blumen.mp3",
+        "author": "ost-soundwerkstatt",
+        "source_url": "https://freesound.org/people/ost-soundwerkstatt/sounds/571154/",
+        "license": "CC0-1.0",
+        "sha256": "f4bbefa2bae31f1c37743c55a8bfd0a3a4774a0bd1f472241a2ab561d0f06afe"
+      }
+    ],
+    "processing": "excerpt 3.90-5.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.436,
+    "rms": 0.08,
+    "sha256": "564b5f6b4d2c0029ff53177d32dd16f7a6570806c90455169d53f0a2b06d9802"
+  },
+  "bossfx-elderbloom-rootspears-hit": {
+    "file": "boss-skills/elderbloom/rootspears-hit.wav",
+    "duration": 0.4,
+    "beat": "rootspears hit: Plants or ferns - Manipulation & Hit",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Plants or ferns - Manipulation & Hit",
+        "author": "Vrymaa",
+        "source_url": "https://freesound.org/people/Vrymaa/sounds/770112/",
+        "license": "CC0-1.0",
+        "sha256": "16d4783709d59fad0615834db0f74876f330a60e1c445060ac4267768cff97e8"
+      }
+    ],
+    "processing": "excerpt 11.98-12.38 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.063,
+    "sha256": "1c24687b1ac69903c9766ce1606cd8dfa7c4d9ce2400bcc22ea1711d178c9077"
+  },
+  "bossfx-elderbloom-springtree-channel": {
+    "file": "boss-skills/elderbloom/springtree-channel.wav",
+    "duration": 1.42,
+    "beat": "springtree channel: wind strong medium trees leafy branch snaps night slight echo covered acoustic around tent in backyard under trees +distant seagull near end.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "wind strong medium trees leafy branch snaps night slight echo covered acoustic around tent in backyard under trees +distant seagull near end.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/450372/",
+        "license": "CC0-1.0",
+        "sha256": "495b5c3dff4c00759e840912407fb92cf2405a9e2de4faa75fcf963f79958414"
+      }
+    ],
+    "processing": "excerpt 23.36-24.78 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.472,
+    "rms": 0.08,
+    "sha256": "01e920d710a49b0b7bf18867734acb4a6f010204af6c7a2b17fd41e280f1400f"
+  },
+  "bossfx-elderbloom-birchbark-lock": {
+    "file": "boss-skills/elderbloom/birchbark-lock.wav",
+    "duration": 1.02,
+    "beat": "birchbark lock: Tree bark crackle and snap gore.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Tree bark crackle and snap gore.wav",
+        "author": "jedg",
+        "source_url": "https://freesound.org/people/jedg/sounds/505967/",
+        "license": "CC0-1.0",
+        "sha256": "f76772ac8576c69999e8d7ff15c7b32c2a79552d81df410d90a8236bdb55cf75"
+      }
+    ],
+    "processing": "excerpt 8.54-9.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.041,
+    "sha256": "93da5b9c5207971960813e9af794db86dff8a79ae843f85e0ea6bd14cebe6f45"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\fx\\bosses\\leviathan\\skills\\frostbreath\\raw-sheet.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a18dfc-23dd-7d61-bd82-d78d7d60393e\\exec-e2242c6f-3826-414a-9d3c-62fc38a0d579.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18dfc-23d7-7990-8cee-d9e7aea09b5e\\exec-1e9e8600-dcf4-4151-958b-47b2ca4bfaad.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18dfc-23cd-7fa3-a579-6a0d4fef09f4\\exec-5eb2b3be-10c5-4410-8014-96a2c0ba1e45.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18dfc-23d4-70d3-a24d-51a606d331ba\\exec-f34a339d-d491-4b97-88bb-c823664e3107.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a18dfc-2370-72a0-8131-3a02bd55c648\\exec-9bfdac64-45ef-4f5d-8f83-c131e73972a5.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "seconds": 40.8
+}
+
+

@@ -1,0 +1,268 @@
+{
+  "bossfx-sporefather-shelves-start": {
+    "file": "boss-skills/sporefather/shelves-start.wav",
+    "duration": 1.62,
+    "beat": "shelves start: Feet Squelch",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Feet Squelch",
+        "author": "eqavox",
+        "source_url": "https://freesound.org/people/eqavox/sounds/683520/",
+        "license": "CC0-1.0",
+        "sha256": "c08b1ca1b6d4735682e404e82228e3a87ac75e07598658aa12e4f8a26405596c"
+      }
+    ],
+    "processing": "excerpt 2.40-4.02 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.035,
+    "sha256": "1e59e67da3c5243be6acfdbf0c8b32a05b46ea453790b6e389c8a8f9b7e51314"
+  },
+  "bossfx-sporefather-sporepod-start": {
+    "file": "boss-skills/sporefather/sporepod-start.wav",
+    "duration": 0.72,
+    "beat": "sporepod start: puff.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "puff.wav",
+        "author": "Melilaura",
+        "source_url": "https://freesound.org/people/Melilaura/sounds/531522/",
+        "license": "CC0-1.0",
+        "sha256": "5a7e1f42f903c3925efac7cd4c73b2c5109583faf5262b59fd7005a183e17140"
+      }
+    ],
+    "processing": "excerpt 3.06-3.78 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.084,
+    "sha256": "ac6ddb362514889135fd0a24ce1eb7b8f07e1f7bd1a07cf24d1bad30b5ed2985"
+  },
+  "bossfx-sporefather-sporepod-hit": {
+    "file": "boss-skills/sporefather/sporepod-hit.wav",
+    "duration": 0.36,
+    "beat": "sporepod hit: Splat",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Splat",
+        "author": "JustInvoke",
+        "source_url": "https://freesound.org/people/JustInvoke/sounds/147017/",
+        "license": "CC0-1.0",
+        "sha256": "71555a1d549a51c968e244729dfe049ec79f91adc081d006e4d4202a037d009d"
+      }
+    ],
+    "processing": "excerpt 0.00-0.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.057,
+    "sha256": "e12a84ca75512729625c4a283bc09bf35a640498add5cce4b6aeb355453984af"
+  },
+  "bossfx-sporefather-threads-start": {
+    "file": "boss-skills/sporefather/threads-start.wav",
+    "duration": 1.62,
+    "beat": "threads start: Eye goo",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Eye goo",
+        "author": "giddster",
+        "source_url": "https://freesound.org/people/giddster/sounds/394930/",
+        "license": "CC0-1.0",
+        "sha256": "5a134a31548e54c7c6b66cb86adb2968567437ec4b5a1f9a48fb4cd107bb1bfd"
+      }
+    ],
+    "processing": "excerpt 9.42-11.04 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.029,
+    "sha256": "6e82a1cfcfa8f9060c2549a0628073c7f6699f362d9806a3fed0040ec49d8e31"
+  },
+  "bossfx-sporefather-threads-hit": {
+    "file": "boss-skills/sporefather/threads-hit.wav",
+    "duration": 1.6,
+    "beat": "threads hit: Bottle Squeeze 3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Bottle Squeeze 3",
+        "author": "NicJonesAudio",
+        "source_url": "https://freesound.org/people/NicJonesAudio/sounds/863866/",
+        "license": "CC0-1.0",
+        "sha256": "c6f81869d1cd69e35a18b6083e2d24399c7bc5ceca9e89bf46bff816aff4ea46"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.104,
+    "sha256": "e99bf0ed158955c8e1e585eefa639ea4562093389448f9211eb6f1717ffca1ed"
+  },
+  "bossfx-sporefather-bloomrot-start": {
+    "file": "boss-skills/sporefather/bloomrot-start.wav",
+    "duration": 0.74,
+    "beat": "bloomrot start: Bubbles 001.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Bubbles 001.wav",
+        "author": "ristooooo1",
+        "source_url": "https://freesound.org/people/ristooooo1/sounds/539823/",
+        "license": "CC0-1.0",
+        "sha256": "c83007f52922d9cd8d7c07fb1c95f62bb5cdede07190634f431c0ec306387030"
+      }
+    ],
+    "processing": "excerpt 3.06-3.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.106,
+    "sha256": "bb8c44eafc27f40d7cec7c8f26efe3b8c1127297935bb865db6ce1e37ecc6885"
+  },
+  "bossfx-sporefather-bloomrot-hit": {
+    "file": "boss-skills/sporefather/bloomrot-hit.wav",
+    "duration": 0.62,
+    "beat": "bloomrot hit: Gas Release",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Gas Release",
+        "author": "adgawrhbshbffsfgvsrf",
+        "source_url": "https://freesound.org/people/adgawrhbshbffsfgvsrf/sounds/494044/",
+        "license": "CC0-1.0",
+        "sha256": "fefcaee570feb8a84fda5763149f87bfc629c96a8818a5fead3d28be912c2af0"
+      }
+    ],
+    "processing": "excerpt 0.48-1.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.64,
+    "rms": 0.11,
+    "sha256": "76f5dccd2f4edcf7bc32bb3de254807738b14237247937daca5a74b7c390dd82"
+  },
+  "bossfx-sporefather-rotslam-start": {
+    "file": "boss-skills/sporefather/rotslam-start.wav",
+    "duration": 0.6,
+    "beat": "rotslam start: Door creak 2.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Door creak 2.wav",
+        "author": "Ryding",
+        "source_url": "https://freesound.org/people/Ryding/sounds/125956/",
+        "license": "CC0-1.0",
+        "sha256": "e3e436431bda72998baaedfcb12f3ab434a3f51e90045eb24a4f39076357a90d"
+      }
+    ],
+    "processing": "excerpt 7.42-8.02 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.04,
+    "sha256": "9c8d7add790061c7a817ee1e87fddc798c723e3485a0828c560d6c36b31581fd"
+  },
+  "bossfx-sporefather-gillglow-channel": {
+    "file": "boss-skills/sporefather/gillglow-channel.wav",
+    "duration": 0.64,
+    "beat": "gillglow channel: Dry Puff.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Dry Puff.wav",
+        "author": "valeofhearts",
+        "source_url": "https://freesound.org/people/valeofhearts/sounds/532234/",
+        "license": "CC0-1.0",
+        "sha256": "28c93e03a37a7733cad97242f742f7bc2d22d52ba4b8991ffb448b5cd692042f"
+      }
+    ],
+    "processing": "excerpt 0.04-0.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.53,
+    "rms": 0.08,
+    "sha256": "a47acddae13fb355c816755b6585838efbeb6f30f028a48aa584522c7bcb28df"
+  },
+  "bossfx-sporefather-rotslam-land": {
+    "file": "boss-skills/sporefather/rotslam-land.wav",
+    "duration": 1.8,
+    "beat": "rotslam land: Wood Crash.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wood Crash.mp3",
+        "author": "benjaminpotter",
+        "source_url": "https://freesound.org/people/benjaminpotter/sounds/343164/",
+        "license": "CC0-1.0",
+        "sha256": "6cbfc571533aa6861ea1e12feb398e85fd349361d099f50e3816364ad05d33aa"
+      }
+    ],
+    "processing": "excerpt 1.18-2.98 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.402,
+    "rms": 0.14,
+    "sha256": "21f029fb62f34cdd0c2bbff18019b9c37acc497f6af2dd1d11f995735fcefc69"
+  },
+  "bossfx-sporefather-sporepod-channel": {
+    "file": "boss-skills/sporefather/sporepod-channel.wav",
+    "duration": 1.42,
+    "beat": "sporepod channel: Campfire deer camp - hot air leaking from wet wood - part 3.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Campfire deer camp - hot air leaking from wet wood - part 3.wav",
+        "author": "Ambient-X",
+        "source_url": "https://freesound.org/people/Ambient-X/sounds/660297/",
+        "license": "CC0-1.0",
+        "sha256": "e779e3029aafb9efdfebc87fa5d23a4575d5e7abd855b1372b047a489c397727"
+      }
+    ],
+    "processing": "excerpt 29.10-30.52 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.541,
+    "rms": 0.08,
+    "sha256": "992d38121761067e0edade812166a878c6a318deb1f82a4e5f68e82827f97e42"
+  },
+  "bossfx-sporefather-threads-channel": {
+    "file": "boss-skills/sporefather/threads-channel.wav",
+    "duration": 0.64,
+    "beat": "threads channel: wood crackling-31.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "wood crackling-31.wav",
+        "author": "wavecal22",
+        "source_url": "https://freesound.org/people/wavecal22/sounds/537459/",
+        "license": "CC0-1.0",
+        "sha256": "8b71eb32e4edade2c23812bbacd8c07b0e0eee1568abf125499bc22c0fb08a0b"
+      }
+    ],
+    "processing": "excerpt 1.34-1.98 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.048,
+    "sha256": "be94955b48dfcee511c8a48eefdfebf551450ff16155c39545337a970b6ff98c"
+  },
+  "bossfx-sporefather-sprouts-grow": {
+    "file": "boss-skills/sporefather/sprouts-grow.wav",
+    "duration": 2.6,
+    "beat": "sprouts grow: Rice grains poured into a cup recorded with contact microphone",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Rice grains poured into a cup recorded with contact microphone",
+        "author": "bassimat",
+        "source_url": "https://freesound.org/people/bassimat/sounds/823855/",
+        "license": "CC0-1.0",
+        "sha256": "55b59c91d34f867524be5fdfb632bdde4a04614abe85612c7a901050c1451290"
+      }
+    ],
+    "processing": "excerpt 0.00-2.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.046,
+    "sha256": "7e42d3abe2b2f776a3dde1cbc89d9d5c1e0cb565073c76d0e59ba28199464ffe"
+  },
+  "bossfx-sporefather-shelves-lock": {
+    "file": "boss-skills/sporefather/shelves-lock.wav",
+    "duration": 1.02,
+    "beat": "shelves lock: 2022-02-06 wood creak 2.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "2022-02-06 wood creak 2.wav",
+        "author": "sit_walk",
+        "source_url": "https://freesound.org/people/sit_walk/sounds/618084/",
+        "license": "CC0-1.0",
+        "sha256": "18f6be25a8eb9e4b0874193c631bf96fd085835e8b3ee2278fb13bed1b96aca9"
+      }
+    ],
+    "processing": "excerpt 0.82-1.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.042,
+    "sha256": "fe75c8b55590f7b31c0a763a003b8831b9a99daffe41eb4e5c730728d2524755"
+  }
+}

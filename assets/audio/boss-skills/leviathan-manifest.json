@@ -1,0 +1,211 @@
+{
+  "bossfx-leviathan-coralglow-channel": {
+    "file": "boss-skills/leviathan/coralglow-channel.wav",
+    "duration": 0.88,
+    "beat": "coralglow channel: Bubbles",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Bubbles",
+        "author": "hotpin7",
+        "source_url": "https://freesound.org/people/hotpin7/sounds/840042/",
+        "license": "CC0-1.0",
+        "sha256": "b7d90d9e7c573ff4d0d4d127eb946ea75cc13465ee23387efa407e5ac8c88bf1"
+      }
+    ],
+    "processing": "excerpt 0.02-0.90 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.481,
+    "rms": 0.08,
+    "sha256": "6e0f38971d37befe133df2e66f91e9e5b279a7142ab1da2854d18882a67c9a90"
+  },
+  "bossfx-leviathan-jet-start": {
+    "file": "boss-skills/leviathan/jet-start.wav",
+    "duration": 1.62,
+    "beat": "jet start: CO2 Water Jet",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "CO2 Water Jet",
+        "author": "unfa",
+        "source_url": "https://freesound.org/people/unfa/sounds/532492/",
+        "license": "CC0-1.0",
+        "sha256": "ce9d83b1414df9032052ccb604ec3d32131aa76e5b65b941e804c82367ad4ec0"
+      }
+    ],
+    "processing": "excerpt 0.54-2.16 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.079,
+    "sha256": "93da39751d293fc56f234ad2d48b36383f01dd062d3ed0984389f18a6a95fdad"
+  },
+  "bossfx-leviathan-jet-hit": {
+    "file": "boss-skills/leviathan/jet-hit.wav",
+    "duration": 0.8,
+    "beat": "jet hit: Water Splash in Lake 05.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Water Splash in Lake 05.wav",
+        "author": "vero.marengere",
+        "source_url": "https://freesound.org/people/vero.marengere/sounds/524524/",
+        "license": "CC0-1.0",
+        "sha256": "6bc8b7ec7f0a81c151842fe807ab32da44a2c40d96b1b5397952ac9d90261a67"
+      }
+    ],
+    "processing": "excerpt 10.34-11.14 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.04,
+    "sha256": "6d0d201433041f6e70881617f64f36ef0abebace8b1d8661a2a5f122b2a6984f"
+  },
+  "bossfx-leviathan-rainstorm-grow": {
+    "file": "boss-skills/leviathan/rainstorm-grow.wav",
+    "duration": 2.62,
+    "beat": "rainstorm grow: Heavy Rain and gutter.WAV",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy Rain and gutter.WAV",
+        "author": "barkenov",
+        "source_url": "https://freesound.org/people/barkenov/sounds/640651/",
+        "license": "CC0-1.0",
+        "sha256": "c93e3fa41be4f856806cab5f75dbbdb1bcbf8fba69a32360f44cae818ff41cac"
+      }
+    ],
+    "processing": "excerpt 29.44-32.06 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.017,
+    "sha256": "da65136b5ed8b29a76572e45694cb239f4905ab7f3d712904c825e0766e88fef"
+  },
+  "bossfx-leviathan-frostbreath-start": {
+    "file": "boss-skills/leviathan/frostbreath-start.wav",
+    "duration": 1.62,
+    "beat": "frostbreath start: Wind_Arctic_Storm_Breeze-021.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind_Arctic_Storm_Breeze-021.wav",
+        "author": "EricsSoundschmiede",
+        "source_url": "https://freesound.org/people/EricsSoundschmiede/sounds/407029/",
+        "license": "CC0-1.0",
+        "sha256": "78fde891ef500819df33ce53c5fd06a7d7bbf188d496e33f5b750d510c0fbdcd"
+      }
+    ],
+    "processing": "excerpt 4.82-6.44 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.417,
+    "rms": 0.11,
+    "sha256": "9ae4b9db4b093008d5c1e39c92980e263869f846670a6f922f48f4856d33575a"
+  },
+  "bossfx-leviathan-frostbreath-hit": {
+    "file": "boss-skills/leviathan/frostbreath-hit.wav",
+    "duration": 0.44,
+    "beat": "frostbreath hit: ice cracking",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "ice cracking",
+        "author": "getwecked",
+        "source_url": "https://freesound.org/people/getwecked/sounds/764657/",
+        "license": "CC0-1.0",
+        "sha256": "3d7e8948c1a4d550d9c178f68f6d3755648b599670c409c439822db4517b9cb0"
+      }
+    ],
+    "processing": "excerpt 0.72-1.16 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.036,
+    "sha256": "53b4701690e4e8303858418066ff3dd77693be4af77e9a241139d95e292b3166"
+  },
+  "bossfx-leviathan-thunderstorm-start": {
+    "file": "boss-skills/leviathan/thunderstorm-start.wav",
+    "duration": 1.62,
+    "beat": "thunderstorm start: thunder rumble 1.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "thunder rumble 1.wav",
+        "author": "FenrirFangs",
+        "source_url": "https://freesound.org/people/FenrirFangs/sounds/234736/",
+        "license": "CC0-1.0",
+        "sha256": "ea6d10969af443b6e3555f3efbf6eb6c6368331030c7f316a41028243556eaec"
+      }
+    ],
+    "processing": "excerpt 3.06-4.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.66,
+    "rms": 0.11,
+    "sha256": "d289af2de3ded2b3a76d12abed9608879a7bec3edd7571a87f20d0e0feb3c165"
+  },
+  "bossfx-leviathan-thunderstorm-hit": {
+    "file": "boss-skills/leviathan/thunderstorm-hit.wav",
+    "duration": 1.62,
+    "beat": "thunderstorm hit: Thunderclap",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Thunderclap",
+        "author": "Fission9",
+        "source_url": "https://freesound.org/people/Fission9/sounds/534023/",
+        "license": "CC0-1.0",
+        "sha256": "09c8a88b55593476c5ffeb84df0810b5cfc2f6eafe14166c388801aef208cf3f"
+      }
+    ],
+    "processing": "excerpt 1.10-2.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.042,
+    "sha256": "e9593033792ecf30e0f2e1a8f4c18880bd18be311253aaf941e3f996e2c039d2"
+  },
+  "bossfx-leviathan-rainstorm-channel": {
+    "file": "boss-skills/leviathan/rainstorm-channel.wav",
+    "duration": 1.42,
+    "beat": "rainstorm channel: gust of wind + thunder",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "gust of wind + thunder",
+        "author": "Johnmode",
+        "source_url": "https://freesound.org/people/Johnmode/sounds/861131/",
+        "license": "CC0-1.0",
+        "sha256": "c824f205a16203decd2266e36990802b68ec31da759300050ef28863d8e20b72"
+      }
+    ],
+    "processing": "excerpt 19.14-20.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.444,
+    "rms": 0.08,
+    "sha256": "11d88688875512d90f11debb4402b6ce232e3d7ce9934d4df53213211e6ad3ec"
+  },
+  "bossfx-leviathan-thunderstorm-channel": {
+    "file": "boss-skills/leviathan/thunderstorm-channel.wav",
+    "duration": 1.42,
+    "beat": "thunderstorm channel: Deep Waves with Reverb",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Deep Waves with Reverb",
+        "author": "Sheyvan",
+        "source_url": "https://freesound.org/people/Sheyvan/sounds/521009/",
+        "license": "CC0-1.0",
+        "sha256": "c8fa1ed78a62baec16eff57d5fa710bb794641550f00d40743f2720dfab3ee7b"
+      }
+    ],
+    "processing": "excerpt 34.12-35.54 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.73,
+    "rms": 0.08,
+    "sha256": "58e45ab60fb8f0d3fb48e28dae1f820631e3b5f07c1cee8d9c8c3e4e66e2153b"
+  },
+  "bossfx-leviathan-frostbreath-channel": {
+    "file": "boss-skills/leviathan/frostbreath-channel.wav",
+    "duration": 1.42,
+    "beat": "frostbreath channel: Viento helado.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Viento helado.wav",
+        "author": "Gamba_04",
+        "source_url": "https://freesound.org/people/Gamba_04/sounds/447280/",
+        "license": "CC0-1.0",
+        "sha256": "b12917c10e8d75daa6886562a19a0f501b2d88efcb466413240cef311b724080"
+      }
+    ],
+    "processing": "excerpt 4.42-5.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.512,
+    "rms": 0.08,
+    "sha256": "0971ec4a0c95756468b8f5f645311c12adeedfaac5134651d7494c5e372f7148"
+  }
+}

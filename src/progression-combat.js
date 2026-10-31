@@ -54,6 +54,13 @@ function progressionShowGain(side,kind,amount){
   // Heal and armour gains landing together stack instead of overlapping.
   const node=$('combatEffects').lastElementChild;if(node&&kind!=='heal')node.style.top=(parseFloat(node.style.top)+26)+'px';
 }
+// What a chapter boss weighs when its rage fills: its own health and armour, the hero's health, rage,
+// armour and the burn or poison it already carries, and the skills it has cast so far.
+const progressionBossHistory=[];
+function progressionBossPick(skills){
+  const heroMax=HEROES[state.key].hp;
+  return window.GemwovenBossTactics.chooseSkill(skills,{hpRatio:state.enemyHp/state.enemyMax,armor:state.enemyArmor,heroHpRatio:state.hp/heroMax,heroEnergy:state.energy,heroArmorRatio:state.armor/heroMax,heroDot:!!progressionEnemyDot,history:progressionBossHistory});
+}
 function progressionIsDuel(){return progressionBattle?.mode==='duel';}
 function progressionRecordTurn(){if(progressionBattle?.mode==='campaign')progressionTurn++;}
 function progressionEnergyMultiplier(key){return progressionKit(key).energy*(typeof foeHas==='function'&&foeHas('chill')?1-foeStatuses.chill.value:1);}
@@ -232,8 +239,10 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
     if(!progressionBattle||!['campaign','boss'].includes(progressionBattle.mode))return campaignSkill({reserved});
     if(!reserved)state.enemyEnergy=0;
     const phase=progressionBossCast++%battle.skills.length;
-    // Flat skill base: level scaling lives only in enemyAttack (progression.js).
-    const skill=battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
+    // Flat skill base: level scaling lives only in enemyAttack (progression.js). A chapter boss picks the
+    // skill that fits the fight (boss-tactics.js chooseSkill); elites keep their rotation.
+    const skill=Number.isInteger(state.qaBossSkill)?battle.skillSet?.[state.qaBossSkill]:battle.boss&&battle.skillSet?.length?progressionBossPick(battle.skillSet):battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
+    if(skill&&battle.boss)progressionBossHistory.push(skill.name);
     if(!skill){const name=battle.skills[phase];message(battle.enemyName+' dùng '+name);popActorSkill('enemy',name,true,[]);await attack('enemy',base);}
     else{
       const charge=progressionEnemyCharge;progressionEnemyCharge=1;
@@ -241,7 +250,7 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
       if(skill.kind==='burn'||skill.kind==='poison')progressionEnemyDot={name:skill.kind==='burn'?'Thiêu đốt':'Độc',turns:skill.turns,raw:base*skill.dot};
       if(skill.charge)progressionEnemyCharge=skill.charge;
     }
-    MONSTERS[key].skill=battle.skills[progressionBossCast%battle.skills.length];update();
+    MONSTERS[key].skill=battle.boss&&battle.skillSet?.length?progressionBossPick(battle.skillSet).name:battle.skills[progressionBossCast%battle.skills.length];update();
   };
 }
 

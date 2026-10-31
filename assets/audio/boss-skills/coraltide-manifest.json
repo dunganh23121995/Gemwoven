@@ -1,0 +1,287 @@
+{
+  "bossfx-coraltide-pearlwall-start": {
+    "file": "boss-skills/coraltide/pearlwall-start.wav",
+    "duration": 1.62,
+    "beat": "pearlwall start: Bubbles2_Zoom.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Bubbles2_Zoom.wav",
+        "author": "Greener_Sounds",
+        "source_url": "https://freesound.org/people/Greener_Sounds/sounds/672392/",
+        "license": "CC0-1.0",
+        "sha256": "bab5426fa2454b0318a19b45c61081abfd1920b47a8f7a40af2e2a2d544058d6"
+      }
+    ],
+    "processing": "excerpt 1.36-2.98 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.049,
+    "sha256": "e1ec3749ce14b2aecb107d2cc0aba765d1583f9b1ad6d514b5fb4beb4ba7699c"
+  },
+  "bossfx-coraltide-pearlspring-grow": {
+    "file": "boss-skills/coraltide/pearlspring-grow.wav",
+    "duration": 2.6,
+    "beat": "pearlspring grow: Spring Fed Creek Further Down.WAV",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Spring Fed Creek Further Down.WAV",
+        "author": "EarlRobot",
+        "source_url": "https://freesound.org/people/EarlRobot/sounds/470055/",
+        "license": "CC0-1.0",
+        "sha256": "ae7f863db36d2956f967df39296c9a06f7c4bae720c069244866cc65a84ebc54"
+      }
+    ],
+    "processing": "excerpt 0.00-2.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.693,
+    "rms": 0.09,
+    "sha256": "6e41207aaa9eb751e208b4f727b10b9291b4ec18c9676526dd5a5285042fb1a2"
+  },
+  "bossfx-coraltide-inkwave-start": {
+    "file": "boss-skills/coraltide/inkwave-start.wav",
+    "duration": 1.08,
+    "beat": "inkwave start: water splashes big hand slaps spray and wave.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "water splashes big hand slaps spray and wave.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/637974/",
+        "license": "CC0-1.0",
+        "sha256": "f18da89454cb45270bfd98f24256208b390260e2a039466c6bcbab8cc726b3ba"
+      }
+    ],
+    "processing": "excerpt 0.48-1.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.019,
+    "sha256": "52d0c8e3533dd1f58dbc7517d7f9ce32db9678370815ae6b2421afb9a3cbc889"
+  },
+  "bossfx-coraltide-inkclaws-start": {
+    "file": "boss-skills/coraltide/inkclaws-start.wav",
+    "duration": 0.62,
+    "beat": "inkclaws start: Water 6.aif",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Water 6.aif",
+        "author": "timgormly",
+        "source_url": "https://freesound.org/people/timgormly/sounds/151287/",
+        "license": "CC0-1.0",
+        "sha256": "7b5c8f35f33f081bab5a49a0f2e520d234991f3dd030e2eac68d6fa81403e9d3"
+      }
+    ],
+    "processing": "excerpt 0.02-0.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.082,
+    "sha256": "f1c6ecb53c3baae0495e9d7ae2bec10564ab76a44c6e8f395d0ebea89bdc9674"
+  },
+  "bossfx-coraltide-inkclaws-hit": {
+    "file": "boss-skills/coraltide/inkclaws-hit.wav",
+    "duration": 0.94,
+    "beat": "inkclaws hit: Water Splatter 3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Water Splatter 3",
+        "author": "TDaddy22",
+        "source_url": "https://freesound.org/people/TDaddy22/sounds/869973/",
+        "license": "CC0-1.0",
+        "sha256": "9c5888c8b71d3d3e5b5536c15a004b70f94ee9799f7af9816ca253548bf3d94a"
+      }
+    ],
+    "processing": "excerpt 9.68-10.62 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.061,
+    "sha256": "61a94eda0406309e9148c8b7abd2ba78352c16f37f6bf1ba95f9ae9abc6daf51"
+  },
+  "bossfx-coraltide-coralgrow-grow": {
+    "file": "boss-skills/coraltide/coralgrow-grow.wav",
+    "duration": 1.6,
+    "beat": "coralgrow grow: Bubbles In Water",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Bubbles In Water",
+        "author": "calebrankin",
+        "source_url": "https://freesound.org/people/calebrankin/sounds/529383/",
+        "license": "CC0-1.0",
+        "sha256": "2a5c98ae2cc7f6be07f7a2c1cfd4e4d96000e6436fe351d5450b4be8dbc209f6"
+      }
+    ],
+    "processing": "excerpt 5.64-7.24 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.647,
+    "rms": 0.09,
+    "sha256": "14bbd227ac140d5bdf59a9b78678986699295abc50374120bcfa1e5b3ceda32b"
+  },
+  "bossfx-coraltide-inkwhirl-start": {
+    "file": "boss-skills/coraltide/inkwhirl-start.wav",
+    "duration": 1.52,
+    "beat": "inkwhirl start: Gurgling_Water_In_Siphon_01",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Gurgling_Water_In_Siphon_01",
+        "author": "blueskysounds888",
+        "source_url": "https://freesound.org/people/blueskysounds888/sounds/726516/",
+        "license": "CC0-1.0",
+        "sha256": "4eb3d15bb6cda5e2e75ed1587735415b21d57e2ade7ef1609532071a5c7732c5"
+      }
+    ],
+    "processing": "excerpt 0.00-1.52 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.097,
+    "sha256": "482cccdb2ca8137d8324978165dc26cb7cef1fbb9e7350431055be016b2496cf"
+  },
+  "bossfx-coraltide-inkwave-hit": {
+    "file": "boss-skills/coraltide/inkwave-hit.wav",
+    "duration": 1.62,
+    "beat": "inkwave hit: Wave Sound Traveling Through the cave",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wave Sound Traveling Through the cave",
+        "author": "squteart",
+        "source_url": "https://freesound.org/people/squteart/sounds/791291/",
+        "license": "CC0-1.0",
+        "sha256": "be8b7b9f113f7e13f24606ecca7859077f5e28f69aa19bb16fa9701b32b2f9be"
+      }
+    ],
+    "processing": "excerpt 5.80-7.42 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.713,
+    "rms": 0.11,
+    "sha256": "054fcaefcb981bd3febc1656776938a303eae72feb9295198d5ff18eef20d73b"
+  },
+  "bossfx-coraltide-pearlglow-channel": {
+    "file": "boss-skills/coraltide/pearlglow-channel.wav",
+    "duration": 1.42,
+    "beat": "pearlglow channel: drops in a cave.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "drops in a cave.mp3",
+        "author": "METKIR",
+        "source_url": "https://freesound.org/people/METKIR/sounds/663021/",
+        "license": "CC0-1.0",
+        "sha256": "b0200d044cbed752eeebc4ec9fb6d0c8f297154c4ecd99d777d3eeff06aca561"
+      }
+    ],
+    "processing": "excerpt 0.00-1.42 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.522,
+    "rms": 0.08,
+    "sha256": "7bbd2c6093abb6f385136bd164414da48ef2775f55cf890ea4e2dda2ca523bd3"
+  },
+  "bossfx-coraltide-pearlspring-channel": {
+    "file": "boss-skills/coraltide/pearlspring-channel.wav",
+    "duration": 1.42,
+    "beat": "pearlspring channel: 2017-02-11 Dumaguete Mtn 0700am.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "2017-02-11 Dumaguete Mtn 0700am.mp3",
+        "author": "LXX.70",
+        "source_url": "https://freesound.org/people/LXX.70/sounds/646426/",
+        "license": "CC0-1.0",
+        "sha256": "dd3a9f138e2eebf0f9029e7a5838fb4c719052059f349adefb6dce56cbd90706"
+      }
+    ],
+    "processing": "excerpt 19.78-21.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.074,
+    "sha256": "2c4b6f27de7dbb3e8b1d2924eb1a164f8b8d8a5d0b65bda6f6f7de43ae1bc5d0"
+  },
+  "bossfx-coraltide-inkwave-channel": {
+    "file": "boss-skills/coraltide/inkwave-channel.wav",
+    "duration": 1.42,
+    "beat": "inkwave channel: Waves on rocks",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Waves on rocks",
+        "author": "jhumbucker",
+        "source_url": "https://freesound.org/people/jhumbucker/sounds/193787/",
+        "license": "CC0-1.0",
+        "sha256": "a4fadf73e80d065784484c8637b9a5ca47b32bbd39881ae540e3332d44af3a00"
+      }
+    ],
+    "processing": "excerpt 28.88-30.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.397,
+    "rms": 0.08,
+    "sha256": "50bd16f42c31fa526a214bf05b41e82c92d02d7a84d28ab2966adfa5f9c633d7"
+  },
+  "bossfx-coraltide-inkwhirl-channel": {
+    "file": "boss-skills/coraltide/inkwhirl-channel.wav",
+    "duration": 1.42,
+    "beat": "inkwhirl channel: water movements big deep arm sweeps through water waves splashes.flac",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "water movements big deep arm sweeps through water waves splashes.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/637951/",
+        "license": "CC0-1.0",
+        "sha256": "e848e8f20ddbe5df5d53c06ef790226ebc54cb09f756000e2801613e71941b14"
+      }
+    ],
+    "processing": "excerpt 3.56-4.98 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.05,
+    "sha256": "b0c619c97505e235237237cd84c59ea37d47ed252dd984aa99ddcb65e54f9ae7"
+  },
+  "bossfx-coraltide-coralgrow-channel": {
+    "file": "boss-skills/coraltide/coralgrow-channel.wav",
+    "duration": 1.42,
+    "beat": "coralgrow channel: 09_Swirling_Water.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "09_Swirling_Water.wav",
+        "author": "15GPanskaSupsakPatrik",
+        "source_url": "https://freesound.org/people/15GPanskaSupsakPatrik/sounds/461219/",
+        "license": "CC0-1.0",
+        "sha256": "7e68287a144625ff3989c205bd4cf212e52f15a06955f19a83d0f34d2b62929e"
+      }
+    ],
+    "processing": "excerpt 20.38-21.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.041,
+    "sha256": "7b2a89f31becfacd7cdced18f794b41f75c8b26fe9d79bd4b6f78fa05f94736f"
+  },
+  "bossfx-coraltide-inkwhirl-hit": {
+    "file": "boss-skills/coraltide/inkwhirl-hit.wav",
+    "duration": 1.0,
+    "beat": "inkwhirl hit: WaterSplash",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "WaterSplash",
+        "author": "Ryanz-Official",
+        "source_url": "https://freesound.org/people/Ryanz-Official/sounds/646568/",
+        "license": "CC0-1.0",
+        "sha256": "56775d4d5cfd3f92d480e5e93637aecaeaae8fae553ef90c8d8d181364d177b7"
+      }
+    ],
+    "processing": "excerpt 0.24-1.24 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.037,
+    "sha256": "c5dd86c101d302fa3c8c66b8db3d7d60ede817b486258564193f211b9f9bf3d6"
+  },
+  "bossfx-coraltide-pearlwall-lock": {
+    "file": "boss-skills/coraltide/pearlwall-lock.wav",
+    "duration": 0.7,
+    "beat": "pearlwall lock: Heavy Stone Push",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Heavy Stone Push",
+        "author": "msavioti",
+        "source_url": "https://freesound.org/people/msavioti/sounds/558254/",
+        "license": "CC0-1.0",
+        "sha256": "caf9a7179383b96bdcf4045527d819c3bdd80822a792058e27d3b5ff6a5ed68b"
+      }
+    ],
+    "processing": "excerpt 0.40-1.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.478,
+    "rms": 0.11,
+    "sha256": "ae6d574faf810e7eabc2e867893bf760b05616db2ae474f87991a0895d016a39"
+  }
+}

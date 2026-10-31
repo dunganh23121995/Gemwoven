@@ -5,6 +5,10 @@ let spriteFrameClock=0;
 function spriteDefinition(family,key,action){
   const set=family==='hero'?(ART.heroForms?.[key]?.[combatHeroForm(key)]||ART.heroes[key]):state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
   const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt?'hurt':'attack'):action;
+  // A boss that grows armour of its own (the fire dragon's lava scales) rests in it while the armour holds.
+  if(mapped==='idle'&&family!=='hero'&&set.armoridle&&state.enemyArmor>0)return {sheet:set.armoridle,action:'armoridle'};
+  // Its actions too: each has an armoured drawing (<action>_armored) it fights in while the armour holds.
+  if(family!=='hero'&&state.enemyArmor>0&&set[mapped+'_armored'])return {sheet:set[mapped+'_armored'],action:mapped+'_armored'};
   return {sheet:set[mapped]||set.attack||set.idle,action:set[mapped]?mapped:mapped==='idle'?'idle':'attack'};
 }
 function spriteMarkup(family,key,action='idle'){
@@ -15,11 +19,26 @@ function spriteMarkup(family,key,action='idle'){
 }
 // Foes at rest now and then play one of their own short actions ("fidgets": an 8-frame sheet that
 // starts and ends in the resting pose), then go back to the idle loop. Returns true while one plays.
+// A sheet is shown only once its image has been decoded: switching to a sheet still decoding blanks
+// the body for a frame or two (a foe vanishing mid-fidget, its shadow left behind).
+const spriteDecoded=new Set();
+function spriteReady(src){
+  if(spriteDecoded.has(src))return true;
+  if(spriteDecoded.has('pending:'+src))return false;
+  spriteDecoded.add('pending:'+src);
+  const img=typeof Image==='function'?new Image():null;if(img)img.src=src;
+  // Without a decoder (a headless test page) the sheet counts as ready.
+  if(typeof img?.decode!=='function'){spriteDecoded.add(src);return true;}
+  img.decode().then(()=>spriteDecoded.add(src),()=>spriteDecoded.add(src));
+  return false;
+}
 function spriteFidget(el,def,playback,now){
   playback.fidgetAt??=now+3000+Math.random()*4000;
   if(!playback.fidget){
     if(now<playback.fidgetAt)return false;
-    playback.fidget={sheet:def.fidgets[Math.floor(Math.random()*def.fidgets.length)],start:now};
+    const sheet=def.fidgets[Math.floor(Math.random()*def.fidgets.length)];
+    if(!spriteReady(sheet.src)){playback.fidgetAt=now+400;return false;}
+    playback.fidget={sheet,start:now};
   }
   const f=playback.fidget,frame=Math.floor((now-f.start)/(f.sheet.frameDuration||130));
   if(frame>=f.sheet.count){playback.fidget=null;playback.fidgetAt=now+4000+Math.random()*4000;el.dataset.sheet='';return false;}
@@ -31,8 +50,44 @@ function spriteCellPosition(sheet,frame){
   const col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   return `${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
 }
+// Every sheet of a character (actions, fidgets) starts decoding the first time it is drawn, so later
+// switches find them ready.
+const spriteWarmed=new WeakSet();
+function spriteWarm(family,key){
+  const set=family==='hero'?(ART.heroForms?.[key]?.[combatHeroForm(key)]||ART.heroes[key]):state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
+  if(!set||spriteWarmed.has(set))return;spriteWarmed.add(set);
+  // Painted (nearly invisibly) in a 2px layer so the browser keeps every sheet of the characters on the
+  // stage decoded: a sheet it dropped would blank the character for a frame when switched back to.
+  if(typeof document!=='undefined'&&!reduced){
+    let keep=document.getElementById('spriteKeep');
+    if(!keep){keep=document.createElement('div');keep.id='spriteKeep';keep.setAttribute('aria-hidden','true');keep.style.cssText='position:fixed;left:0;bottom:0;width:2px;height:2px;opacity:.01;pointer-events:none;z-index:-1;background-size:2px 2px;background-repeat:no-repeat';document.body.append(keep);}
+    const srcs=[...Object.values(set).flatMap(s=>[s?.src,...(s?.fidgets||[]).map(f=>f.src)])].filter(Boolean);
+    // One set per side: the hero on the stage and the foe it faces.
+    (keep.__sets??={})[family]=srcs;
+    keep.style.backgroundImage=[...new Set(Object.values(keep.__sets).flat())].map(s=>`url('${s}')`).join(',');
+  }
+  for(const sheet of Object.values(set||{})){if(sheet?.src)spriteReady(sheet.src);for(const f of sheet?.fidgets||[])spriteReady(f.src);}
+}
+// Where a sheet is drawn in its actor's cell (fractions of the cell). A sheet drawn smaller than the idle
+// (its scale) grows about its feet; a chapter boss's poses stand on the resting pose's feet (build.py
+// feetX, footY of each sheet's first frame), so switching to a skill's pose never shifts the body
+// sideways or up. Airborne loops keep their own framing.
+function spriteBox(family,key,sheet,grow=(sheet.scale||1)-1){
+  const width=1+grow,foot=sheet.footY||.94,idle=family==='enemy'&&state.boss&&!sheet.airborne&&sheet.feetX!=null?ART.bosses?.[key]?.idle:null;
+  if(!idle?.feetX)return {left:-grow*.5,top:-grow*foot,width};
+  return {left:idle.feetX-sheet.feetX*width,top:(idle.footY||.94)-foot*width,width};
+}
+// A chapter boss stands near the edge by its resting body (combat-stage.js combatKeepInside); a wider pose
+// of its own (fists raised, wings spread) that would leave the stage there steps in just enough to stay on
+// it. Returns that inward shift (px) for a sheet drawn in box.
+function spriteInset(el,sheet,box){
+  const root=el?.closest('.actor');if(!root?.offsetWidth||el.dataset.family!=='enemy'||!state.boss||sheet.airborne||!sheet.span)return 0;
+  const W=root.offsetParent?.clientWidth||0,right=root.offsetLeft+(box.left+sheet.span[1]*box.width)*root.offsetWidth;
+  return W?Math.max(0,Math.round(right-(W-4))):0;
+}
 function spriteApply(el,action,index){
   if(!el)return;
+  spriteWarm(el.dataset.family,el.dataset.key);
   const {sheet,action:mapped}=spriteDefinition(el.dataset.family,el.dataset.key,action);
   const frame=Math.max(0,Math.min(sheet.count-1,Number.isFinite(index)?index:0)),col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   const previous={image:el.style.backgroundImage,size:el.style.backgroundSize,position:el.style.backgroundPosition,frame:el.dataset.frame,action:el.dataset.action};
@@ -40,8 +95,21 @@ function spriteApply(el,action,index){
   el.style.backgroundPosition=spriteCellPosition(sheet,frame);
   // Sheets drawn smaller than the idle carry a scale: grow the drawing box about the feet so the
   // character keeps one size across actions (the cell always fills the box).
-  const grow=(sheet.scale||1)-1,foot=sheet.footY||.94;
-  for(const [k,v] of Object.entries(grow?{left:-grow*50+'%',top:-grow*foot*100+'%',width:(1+grow)*100+'%',height:(1+grow)*100+'%'}:{left:'',top:'',width:'',height:''}))el.style.setProperty(k,v,grow?'important':'');
+  let grow=(sheet.scale||1)-1;const foot=sheet.footY||.94;
+  // A boss pose reaching higher than the stage allows (a sword or scythe raised overhead, wings spread)
+  // is drawn just small enough, about its feet, that its highest point (build.py peak) stays under the
+  // boss's HUD; the whole pose keeps one size.
+  const root=el.closest('.actor');
+  if(root&&el.dataset.family==='enemy'&&state.boss&&sheet.peak!=null&&!sheet.airborne&&root.offsetHeight){
+    const H=root.offsetHeight,fit=(root.offsetTop+H*foot-8)/(H*Math.max(.05,foot-sheet.peak));
+    if(fit<1+grow)grow=Math.max(fit,(1+grow)*.6)-1;
+  }
+  const box=spriteBox(el.dataset.family,el.dataset.key,sheet,grow),moved=grow||box.left||box.top;
+  for(const [k,v] of Object.entries(moved?{left:box.left*100+'%',top:box.top*100+'%',width:box.width*100+'%',height:box.width*100+'%'}:{left:'',top:'',width:'',height:''}))el.style.setProperty(k,v,moved?'important':'');
+  el.dataset.box=box.left+','+box.width;
+  // The step in (and back out at rest) is a short slide, never a jump.
+  const inset=spriteInset(el,sheet,box),was=+(el.dataset.inset||0);
+  if(inset!==was){el.dataset.inset=inset;el.style.translate=inset?`${-inset}px 0`:'';if(!reduced&&el.isConnected)el.animate([{translate:`${-was}px 0`},{translate:`${-inset}px 0`}],{duration:220,easing:'ease-out'});}
   if(action!=='idle')el.style.setProperty('--tween','0');
   // The idle's own cross-fade is always drawn at the idle's size (a resized fading pose is an action's).
   else for(const k of ['--tw-l','--tw-t','--tw-w'])el.style.removeProperty(k);

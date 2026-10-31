@@ -1,0 +1,192 @@
+{
+  "bossfx-scarab-wingshield-start": {
+    "file": "boss-skills/scarab/wingshield-start.wav",
+    "duration": 1.62,
+    "beat": "wingshield start: sandfall5.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "sandfall5.wav",
+        "author": "Wagna",
+        "source_url": "https://freesound.org/people/Wagna/sounds/326304/",
+        "license": "CC0-1.0",
+        "sha256": "5e554753dc7c50dd2d4d5aa6f500465123ca3ca87d90731c5430024e1b3e251b"
+      }
+    ],
+    "processing": "excerpt 0.26-1.88 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.715,
+    "rms": 0.11,
+    "sha256": "251234be7499a8f1da70980cdc91f13f75277da22503c27a7f6a68084f27095b"
+  },
+  "bossfx-scarab-obelisks-land": {
+    "file": "boss-skills/scarab/obelisks-land.wav",
+    "duration": 2.1,
+    "beat": "obelisks land: crash 11.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "crash 11.wav",
+        "author": "Logicogonist",
+        "source_url": "https://freesound.org/people/Logicogonist/sounds/209866/",
+        "license": "CC0-1.0",
+        "sha256": "97cfea58f045c93a07305f6f83a4082291a5fd41a018a2c4a6a59026f2c985d9"
+      }
+    ],
+    "processing": "excerpt 0.00-2.10 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.065,
+    "sha256": "7b7fc7c5488912d6db12485bff72eaf1ff11fbddc679fbf379873d8a5cb9f263"
+  },
+  "bossfx-scarab-obelisks-start": {
+    "file": "boss-skills/scarab/obelisks-start.wav",
+    "duration": 1.62,
+    "beat": "obelisks start: moving stone platform.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "moving stone platform.wav",
+        "author": "patchytherat",
+        "source_url": "https://freesound.org/people/patchytherat/sounds/530988/",
+        "license": "CC0-1.0",
+        "sha256": "64fe9f57d68d959661da18c333b7a4b2ebd469921e01626379916ce770a66e68"
+      }
+    ],
+    "processing": "excerpt 0.02-1.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.039,
+    "sha256": "eeaf87d5e9823f1d7dc3e1b60bdbcc1685fbcd73dbd98a6a543aee48a695b645"
+  },
+  "bossfx-scarab-hornstrike-start": {
+    "file": "boss-skills/scarab/hornstrike-start.wav",
+    "duration": 1.62,
+    "beat": "hornstrike start: dogskitter.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "dogskitter.wav",
+        "author": "luckylittleraven",
+        "source_url": "https://freesound.org/people/luckylittleraven/sounds/208654/",
+        "license": "CC0-1.0",
+        "sha256": "3198bf01570dfc66de0716d3af6667ac31e13bbc918175fe5247b7b9ff7045df"
+      }
+    ],
+    "processing": "excerpt 0.14-1.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.059,
+    "sha256": "4a1a44d8a8664d70024f47728ebb4d242babbe418b533044e63482f2d34b924d"
+  },
+  "bossfx-scarab-mandible-hit": {
+    "file": "boss-skills/scarab/mandible-hit.wav",
+    "duration": 0.32,
+    "beat": "mandible hit: 22-PIG-NUT-CRUNCH",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "22-PIG-NUT-CRUNCH",
+        "author": "The_Sample_Workshop",
+        "source_url": "https://freesound.org/people/The_Sample_Workshop/sounds/732982/",
+        "license": "CC0-1.0",
+        "sha256": "5fb123ce9661816c9589b2c61f33634d8edae3772186f2a7cf55b72ef2dcd7f1"
+      }
+    ],
+    "processing": "excerpt 0.00-0.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.049,
+    "sha256": "dfff13bb63ad4212a9607c6b54c341cd29ebb279ca910d59b5e6de7aa91cb5d8"
+  },
+  "bossfx-scarab-suncrest-channel": {
+    "file": "boss-skills/scarab/suncrest-channel.wav",
+    "duration": 1.42,
+    "beat": "suncrest channel: Stone Scrape – Rock on Rock Rubbing",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Stone Scrape – Rock on Rock Rubbing",
+        "author": "NikoletB",
+        "source_url": "https://freesound.org/people/NikoletB/sounds/846425/",
+        "license": "CC0-1.0",
+        "sha256": "e6887fd65429d5787f812667e200a763f0c3b4639955b03f022cedeb9d8d710f"
+      }
+    ],
+    "processing": "excerpt 0.88-2.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.068,
+    "sha256": "18ffa296166b24ad0295696c2ec64d0224eb3246da389025844037a7364d19d3"
+  },
+  "bossfx-scarab-mandible-start": {
+    "file": "boss-skills/scarab/mandible-start.wav",
+    "duration": 1.02,
+    "beat": "mandible start: Weird Clicking",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Weird Clicking",
+        "author": "dotY21",
+        "source_url": "https://freesound.org/people/dotY21/sounds/337621/",
+        "license": "CC0-1.0",
+        "sha256": "ad897668974e590dd1d572f0271ea8305b53fa71836ffa431c70026a4569bc58"
+      }
+    ],
+    "processing": "excerpt 5.80-6.82 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.673,
+    "rms": 0.11,
+    "sha256": "d55cfe8e98af5c80acd21924098ef3c2e7f29e666f07c439ce47e3ae5de51bda"
+  },
+  "bossfx-scarab-wingshield-lock": {
+    "file": "boss-skills/scarab/wingshield-lock.wav",
+    "duration": 1.0,
+    "beat": "wingshield lock: stone door close.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "stone door close.wav",
+        "author": "patchytherat",
+        "source_url": "https://freesound.org/people/patchytherat/sounds/530987/",
+        "license": "CC0-1.0",
+        "sha256": "a5b7c40490e2aa944aa62b4f7239623b435834ae4382f0782deb17ba8ca188f8"
+      }
+    ],
+    "processing": "excerpt 0.00-1.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.04,
+    "sha256": "bb442eb79818f1fe33505c7127bc9f787a669cbcd9d202b677c55f63b63be55d"
+  },
+  "bossfx-scarab-hornstrike-hit": {
+    "file": "boss-skills/scarab/hornstrike-hit.wav",
+    "duration": 0.44,
+    "beat": "hornstrike hit: Glass_Shards_Crunching_10",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Glass_Shards_Crunching_10",
+        "author": "BlondPanda",
+        "source_url": "https://freesound.org/people/BlondPanda/sounds/778603/",
+        "license": "CC0-1.0",
+        "sha256": "e2ced2e005e64816e2b12ba38362aa122c7c1c6bf7aa9fe54bc9eea28db546e6"
+      }
+    ],
+    "processing": "excerpt 0.30-0.74 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.028,
+    "sha256": "d3207f0d9eb2b074b4ce6c914bb5ce466a0da4f921ed2fde5c13029ccbc48dea"
+  },
+  "bossfx-scarab-obelisks-boom": {
+    "file": "boss-skills/scarab/obelisks-boom.wav",
+    "duration": 1.74,
+    "beat": "obelisks boom: Huge Explosion",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Huge Explosion",
+        "author": "florianreichelt",
+        "source_url": "https://freesound.org/people/florianreichelt/sounds/459973/",
+        "license": "CC0-1.0",
+        "sha256": "fb9355d4b73e84d2921642735f311a4e928a445b903c55c218f283396e563c89"
+      }
+    ],
+    "processing": "excerpt 8.21-9.95 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.093,
+    "sha256": "cbd3e0a69ef9a59d0d060806e5ed3c5c2c27e4ffe647c08351dfbd442255a83f"
+  }
+}

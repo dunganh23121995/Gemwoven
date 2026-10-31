@@ -1,0 +1,173 @@
+{
+  "bossfx-prism-spectrum-hit": {
+    "file": "boss-skills/prism/spectrum-hit.wav",
+    "duration": 0.56,
+    "beat": "spectrum hit: glass - baby food jar - smashed on concrete.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "glass - baby food jar - smashed on concrete.wav",
+        "author": "Anthousai",
+        "source_url": "https://freesound.org/people/Anthousai/sounds/447699/",
+        "license": "CC0-1.0",
+        "sha256": "ed35e991ea0ce0e585632f37fedc7fe03470c61cb6089750713487a5dc78aefe"
+      }
+    ],
+    "processing": "excerpt 0.00-0.56 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.034,
+    "sha256": "9b5bc966eced1cd574aa738d0a67d9073b8bc4942556fd24679259e9711e3585"
+  },
+  "bossfx-prism-scythecut-start": {
+    "file": "boss-skills/prism/scythecut-start.wav",
+    "duration": 0.54,
+    "beat": "scythecut start: Whip_sword slice.m4a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Whip_sword slice.m4a",
+        "author": "ME_Studios_Official",
+        "source_url": "https://freesound.org/people/ME_Studios_Official/sounds/614177/",
+        "license": "CC0-1.0",
+        "sha256": "6cd8111074479eb94b0ab0a69f0d876e546e5e70f0f33fc844cbd67562c4ab16"
+      }
+    ],
+    "processing": "excerpt 8.14-8.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.076,
+    "sha256": "40e01b128c756b0b3749e90352acc2bf45b7617b175c3cc65d94b91086fae959"
+  },
+  "bossfx-prism-scythetrail-start": {
+    "file": "boss-skills/prism/scythetrail-start.wav",
+    "duration": 1.26,
+    "beat": "scythetrail start: Whoosh For Whip Zoom",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Whoosh For Whip Zoom",
+        "author": "BennettFilmTeacher",
+        "source_url": "https://freesound.org/people/BennettFilmTeacher/sounds/486234/",
+        "license": "CC0-1.0",
+        "sha256": "19f3896c4c1c7a00b1dff4dbac7954845863645c321ac8c93a17125cdff47823"
+      }
+    ],
+    "processing": "excerpt 0.84-2.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.723,
+    "rms": 0.11,
+    "sha256": "c40e3259fcdc5cb800f206b7abd501cc5b727f808478d200168b2fdebe14e5e5"
+  },
+  "bossfx-prism-crossglint-channel": {
+    "file": "boss-skills/prism/crossglint-channel.wav",
+    "duration": 0.98,
+    "beat": "crossglint channel: blade scrape_knife.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "blade scrape_knife.wav",
+        "author": "bajko",
+        "source_url": "https://freesound.org/people/bajko/sounds/244258/",
+        "license": "CC0-1.0",
+        "sha256": "00ead022834367888e418494fc5f93d5a226353031cdca4bd692e63fa895fc0f"
+      }
+    ],
+    "processing": "excerpt 0.50-1.48 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.079,
+    "sha256": "eb5054249df31e93800a456911155e9bef532fbe484af1ac4aa14443cc294edf"
+  },
+  "bossfx-prism-scythetrail-hit": {
+    "file": "boss-skills/prism/scythetrail-hit.wav",
+    "duration": 0.7,
+    "beat": "scythetrail hit: Sword Impact",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sword Impact",
+        "author": "TheBuilder15",
+        "source_url": "https://freesound.org/people/TheBuilder15/sounds/434896/",
+        "license": "CC0-1.0",
+        "sha256": "2f42a6819f2d4d2f14ae5e0f885ddbb6ec30db14cd4f2700023b8805e68c8679"
+      }
+    ],
+    "processing": "excerpt 0.00-0.70 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.634,
+    "rms": 0.11,
+    "sha256": "098d68cda6e8392fc8319ee9682f303569f3ce02d0414d846d75f5ec354a860a"
+  },
+  "bossfx-prism-mirrors-start": {
+    "file": "boss-skills/prism/mirrors-start.wav",
+    "duration": 1.62,
+    "beat": "mirrors start: BANGING ON THICK GLASS.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "BANGING ON THICK GLASS.wav",
+        "author": "trexlasso",
+        "source_url": "https://freesound.org/people/trexlasso/sounds/629994/",
+        "license": "CC0-1.0",
+        "sha256": "0bdc6584777e90c67cd7c802d6d00ed890adf3381d409488f8775b198d94b657"
+      }
+    ],
+    "processing": "excerpt 1.00-2.62 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.018,
+    "sha256": "c00ce9adaf68131ec1d02805159af2c270da32d5592bb38931444ad4de641be4"
+  },
+  "bossfx-prism-scythecut-hit": {
+    "file": "boss-skills/prism/scythecut-hit.wav",
+    "duration": 0.82,
+    "beat": "scythecut hit: Skates on Ice.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Skates on Ice.wav",
+        "author": "Rehanjo",
+        "source_url": "https://freesound.org/people/Rehanjo/sounds/593623/",
+        "license": "CC0-1.0",
+        "sha256": "0cfd67db2adb3ea91dcaf75778a30895c5008b1ed76a1e045505885e7112ab6b"
+      }
+    ],
+    "processing": "excerpt 2.12-2.94 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.096,
+    "sha256": "7adf92e4ad0a535ff356dc023bfea96d73d9a98bf3d68b4c3f2083603e83e923"
+  },
+  "bossfx-prism-spectrum-start": {
+    "file": "boss-skills/prism/spectrum-start.wav",
+    "duration": 1.62,
+    "beat": "spectrum start: Glass scraping - misc",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Glass scraping - misc",
+        "author": "jhumbucker",
+        "source_url": "https://freesound.org/people/jhumbucker/sounds/250544/",
+        "license": "CC0-1.0",
+        "sha256": "d6e5e6e071add483d7429d62bdb6b5c1c5304d336d4c2f98ddea82881b0eb6bd"
+      }
+    ],
+    "processing": "excerpt 29.96-31.58 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.02,
+    "sha256": "e30f3fe13332d741d91397812a0df15b4607e20337a148b51114bca693ad776e"
+  },
+  "bossfx-prism-mirrors-lock": {
+    "file": "boss-skills/prism/mirrors-lock.wav",
+    "duration": 0.36,
+    "beat": "mirrors lock: stone_slab3.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "stone_slab3.wav",
+        "author": "NistuGgner",
+        "source_url": "https://freesound.org/people/NistuGgner/sounds/700537/",
+        "license": "CC0-1.0",
+        "sha256": "cd41032125a59cc0ddab31ae8302b9bdf38471c14ed4665aac51744b90fdb4d6"
+      }
+    ],
+    "processing": "excerpt 0.50-0.86 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.109,
+    "sha256": "d20cd2731b3709b7830f48853ce12365b0b1b71f99313721c89e6aa932a9781c"
+  }
+}

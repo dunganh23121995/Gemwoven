@@ -105,6 +105,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
     <section>
       <h2>Trong trận</h2>
       <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button></div>
+      <div id="foeRule" style="margin-top:4px;font-size:12px;opacity:.8"></div>
       <div class="row" style="margin-top:8px">
         <label>Đối thủ <select id="enemy"></select></label>
         <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
@@ -285,9 +286,19 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     say('Xong: '+b.textContent);
   }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');}
 });
-function fillFoeSkills(){const q=gq();if(!q)return;$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.move||'vồ')+(s.status?' · '+s.status.id:'');return o;}));}
+const showFoeRule=()=>{$('foeRule').textContent=$('foeSkill').selectedOptions[0]?.title||'';};
+function fillFoeSkills(){const q=gq();if(!q)return;queueMicrotask(showFoeRule);$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.move||'vồ')+(s.status?' · '+s.status.id:'');o.title='Khi nào dùng: '+(q.skillRule?.(s)||'');return o;}));}
+// Skills of one boss play one after another in the same fight, as in the game: the armour, plates, statuses
+// and summoned guards a skill leaves stay on while the next one plays (only a new setup restages the fight).
+let foeStage='';
+const foeStageKey=()=>JSON.stringify([hero,form,enemy(),$('fx').checked,$('side').value,$('armor').checked,$('variant').value]);
+$('foeSkill').onchange=showFoeRule;
 $('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').selectedOptions[0],index=+$('foeSkill').value,label=o?.textContent||'';say('Đang chạy: '+label);
-  try{configure();$('foeSkill').value=index;await q.foeCast(index);say('Xong: '+label);}catch(e){say('Lỗi: '+e.message);}};
+  try{
+    if(foeStageKey()!==foeStage||q.ended||q.state.hp<=0||q.state.enemyHp<=0){configure();foeStage=foeStageKey();$('foeSkill').value=index;}
+    else Object.assign(q.state,{hp:10000,enemyHp:Math.max(q.state.enemyHp,5000)});
+    await q.foeCast(index);say('Xong: '+label);
+  }catch(e){say('Lỗi: '+e.message);}};
 
 // ---- Sprite sheets ---------------------------------------------------------------------------------
 // Every hero shows the same combat states; one the hero has no sheet of its own for says so (and

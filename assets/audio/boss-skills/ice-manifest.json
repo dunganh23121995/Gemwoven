@@ -1,0 +1,173 @@
+{
+  "bossfx-ice-moonspear-start": {
+    "file": "boss-skills/ice/moonspear-start.wav",
+    "duration": 1.62,
+    "beat": "moonspear start: Wind whistle 3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind whistle 3",
+        "author": "Sadiquecat",
+        "source_url": "https://freesound.org/people/Sadiquecat/sounds/770282/",
+        "license": "CC0-1.0",
+        "sha256": "b9f95371d4721006c664c3059d3671ec5b429caf3d1d6c7ecff8c90d8a5e2e59"
+      }
+    ],
+    "processing": "excerpt 0.58-2.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.686,
+    "rms": 0.11,
+    "sha256": "cad8341ac07d7d035d7fa88ec4b3fc54e72e664efea371556d8d7eeb0cba7628"
+  },
+  "bossfx-ice-moonspear-hit": {
+    "file": "boss-skills/ice/moonspear-hit.wav",
+    "duration": 1.62,
+    "beat": "moonspear hit: ice-breaking.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "ice-breaking.wav",
+        "author": "ondrosik",
+        "source_url": "https://freesound.org/people/ondrosik/sounds/173481/",
+        "license": "CC0-1.0",
+        "sha256": "d6e8f4dda0ec5babbc56f23f5d88f29617afd3ba5595eadefcdba3efa23ad0f4"
+      }
+    ],
+    "processing": "excerpt 7.40-9.02 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.07,
+    "sha256": "cf8442857cf3dc2352641f39e05fa313d3849db1ab8b97dfbcd8295158435188"
+  },
+  "bossfx-ice-moonward-start": {
+    "file": "boss-skills/ice/moonward-start.wav",
+    "duration": 1.14,
+    "beat": "moonward start: cracking_ice.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "cracking_ice.mp3",
+        "author": "sunflora",
+        "source_url": "https://freesound.org/people/sunflora/sounds/665084/",
+        "license": "CC0-1.0",
+        "sha256": "1d1f5921b0749372a14b2996eb75d1b602eeb76b83e4d21eb416ed67b0879329"
+      }
+    ],
+    "processing": "excerpt 1.24-2.38 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.031,
+    "sha256": "1e67370ed77c324fbc4c569dfd1dd5f500d6d71ca2d58ada21c8d477883cb49f"
+  },
+  "bossfx-ice-moonward-lock": {
+    "file": "boss-skills/ice/moonward-lock.wav",
+    "duration": 0.42,
+    "beat": "moonward lock: ICEImpt_ImpactBreak01_InMotionAudio_FREESampleSunday",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "ICEImpt_ImpactBreak01_InMotionAudio_FREESampleSunday",
+        "author": "InMotionAudio",
+        "source_url": "https://freesound.org/people/InMotionAudio/sounds/719169/",
+        "license": "CC0-1.0",
+        "sha256": "d4b0dfe005b5f1b7cb433454c561f78f8a6f3f0ddc53ef1c589b00984e852395"
+      }
+    ],
+    "processing": "excerpt 0.04-0.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.025,
+    "sha256": "724a994ee41bd75e675d68b5daff74d37f42bc497a66c73f332ae6f64cdfcdbb"
+  },
+  "bossfx-ice-moonwind-start": {
+    "file": "boss-skills/ice/moonwind-start.wav",
+    "duration": 1.62,
+    "beat": "moonwind start: Wind Howling and whistling and banging louder.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind Howling and whistling and banging louder.wav",
+        "author": "markdmurray",
+        "source_url": "https://freesound.org/people/markdmurray/sounds/468209/",
+        "license": "CC0-1.0",
+        "sha256": "091f5bc20d673a537682429fe2e04dab478a1d7217a142472184b8e1eb716632"
+      }
+    ],
+    "processing": "excerpt 6.24-7.86 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.056,
+    "sha256": "eae1d20fc7352e6534e8566bfeb981757f353c0347a9916002b415f08db2322a"
+  },
+  "bossfx-ice-moonseal-hit": {
+    "file": "boss-skills/ice/moonseal-hit.wav",
+    "duration": 1.62,
+    "beat": "moonseal hit: Freeze",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Freeze",
+        "author": "lori.mortimer",
+        "source_url": "https://freesound.org/people/lori.mortimer/sounds/723875/",
+        "license": "CC0-1.0",
+        "sha256": "1f9c3f9363829b44faeb161e9b30b8bd6d562668a8ae33ecef7378c390ad8912"
+      }
+    ],
+    "processing": "excerpt 2.06-3.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.494,
+    "rms": 0.11,
+    "sha256": "85eaad13834272eee6600c8452e8039adb04bdda1bf8cd021aff7cda2e2513cd"
+  },
+  "bossfx-ice-moonseal-start": {
+    "file": "boss-skills/ice/moonseal-start.wav",
+    "duration": 0.52,
+    "beat": "moonseal start: Whoosh.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Whoosh.wav",
+        "author": "gbnelso",
+        "source_url": "https://freesound.org/people/gbnelso/sounds/684459/",
+        "license": "CC0-1.0",
+        "sha256": "4df368b97df25e92358e7d0a80be7dc6a516cdd585b2c7dff59ab2fcc5bb5f1d"
+      }
+    ],
+    "processing": "excerpt 0.72-1.24 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.068,
+    "sha256": "1970909c2a07740dc9c3a022498d01c934315b2ef5ea1e3a1bff485ea6ae8ba4"
+  },
+  "bossfx-ice-moonspear-channel": {
+    "file": "boss-skills/ice/moonspear-channel.wav",
+    "duration": 0.62,
+    "beat": "moonspear channel: Ice cracking_northern87",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Ice cracking_northern87",
+        "author": "northern87",
+        "source_url": "https://freesound.org/people/northern87/sounds/369982/",
+        "license": "CC0-1.0",
+        "sha256": "09c18972003f501748501894c7acc48c375472ac92bf370d0c1ffe4c6267eac3"
+      }
+    ],
+    "processing": "excerpt 57.48-58.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.715,
+    "rms": 0.08,
+    "sha256": "19123ae03f737faaff879440f04c636a7249ad9516850bf9f23570749b86ac36"
+  },
+  "bossfx-ice-moonseal-channel": {
+    "file": "boss-skills/ice/moonseal-channel.wav",
+    "duration": 1.42,
+    "beat": "moonseal channel: frozen lake",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "frozen lake",
+        "author": "mentos987",
+        "source_url": "https://freesound.org/people/mentos987/sounds/818918/",
+        "license": "CC0-1.0",
+        "sha256": "535ab716c393e6422640ae6066ec756749c8301760428fff7f5cf9d66f28f5ad"
+      }
+    ],
+    "processing": "excerpt 38.36-39.78 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.546,
+    "rms": 0.08,
+    "sha256": "214fbce6fcc4156a3b6e02143fe4b228cb6c7125c3fae2a8cdb287e37e4ab837"
+  }
+}

@@ -2,6 +2,9 @@
 
 Input: <boss>/fx-1..6.png (256px frames from generate2dsprite.py process).
 Output: <boss>.webp horizontal strips and fx.json read by the build.
+Each boss skill can also have its own sheet: <boss>/skills/<skill>/raw-sheet.png (a 3x2 grid of
+512px cells on magenta, kept as drawn: no re-centring, so grounded effects keep their ground line),
+packed into <boss>/skills/<skill>.webp under the key "<boss>/<skill>" (src/foe-skills.js BOSS_SKILL_LOOKS).
 Usage: python export_fx.py            rebuild every boss that has frames
        python export_fx.py --preview  also write <boss>-preview.png (dark backdrop) into PREVIEW_DIR for review
 """
@@ -41,6 +44,23 @@ def clean(frame, boss):
     return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
 
 
+def build_skill(boss, raw_path):
+    sys.path.insert(0, str(Path.home() / ".codex/skills/generate2dsprite/scripts"))
+    from generate2dsprite import remove_bg_magenta
+    raw = Image.open(raw_path).convert("RGBA")
+    if raw.size != (1536, 1024):
+        raw = raw.resize((1536, 1024), Image.Resampling.LANCZOS)
+    keyed = remove_bg_magenta(raw, 100, 150)
+    strip = Image.new("RGBA", (CELL * COUNT, CELL), (0, 0, 0, 0))
+    for index in range(COUNT):
+        col, row = index % 3, index // 3
+        cell = keyed.crop((col * 512, row * 512, (col + 1) * 512, (row + 1) * 512)).resize((CELL, CELL), Image.Resampling.LANCZOS)
+        strip.alpha_composite(clean(cell, boss), (CELL * index, 0))
+    out = raw_path.parent.with_suffix(".webp")
+    strip.save(out, "WEBP", lossless=True, method=6, exact=True)
+    return out, strip
+
+
 def build(boss):
     strip = Image.new("RGBA", (CELL * COUNT, CELL), (0, 0, 0, 0))
     for index in range(COUNT):
@@ -62,4 +82,13 @@ if __name__ == "__main__":
             board.alpha_composite(strip)
             board.convert("RGB").save(Path(preview) / f"{boss}-preview.png")
         print("[ok]", boss)
+    for boss in ORDER:
+        for raw_path in sorted((ROOT / boss / "skills").glob("*/raw-sheet.png")):
+            out, strip = build_skill(boss, raw_path)
+            meta[f"{boss}/{raw_path.parent.name}"] = {"file": out.relative_to(ROOT.parents[2]).as_posix(), "count": COUNT, "frameDuration": FRAME_MS}
+            if preview:
+                board = Image.new("RGBA", strip.size, (34, 38, 48, 255))
+                board.alpha_composite(strip)
+                board.convert("RGB").save(Path(preview) / f"{boss}-{raw_path.parent.name}-preview.png")
+            print("[ok]", boss, raw_path.parent.name)
     (ROOT / "fx.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")

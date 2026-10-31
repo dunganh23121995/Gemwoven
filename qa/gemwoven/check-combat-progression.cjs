@@ -52,14 +52,14 @@ async function run(hero,mode='campaign',index=1){
   if(hero==='fire'&&mode!=='pvp')assert.equal(qa.state.stunned,true,'Divine weapon stun proc reaches combat');
   w.Math.random=originalRandom;
   if(encounter.creature)assert.equal(qa.spriteInfo('enemy',encounter.enemyKey,'idle').count,qa.art.campaignCreatures[encounter.creature]?.idle?8:1,'Campaign foes are rendered in combat (elites with their 8-frame idle): '+encounter.creature);
-  if(encounter.boss&&index===50){qa.state.hp=10000;qa.state.energy=50;qa.state.enemyArmor=0;for(let i=0;i<3;i++)await qa.enemySkill({reserved:true});assert.ok(qa.state.enemyArmor>0,'Boss uses its armor skill');assert.equal(qa.state.energy,30,'Boss uses its energy-drain skill');assert.ok(qa.state.hp<10000,'Boss also uses a damaging skill');qa.state.hp=encounter.stats.hp;qa.state.enemyArmor=0;}
+  if(encounter.boss&&index===50){qa.state.hp=10000;qa.state.energy=50;qa.state.enemyArmor=0;for(let i=0;i<3;i++){qa.state.qaBossSkill=i;await qa.enemySkill({reserved:true});}delete qa.state.qaBossSkill;assert.ok(qa.state.enemyArmor>0,'Boss uses its armor skill');assert.equal(qa.state.energy,30,'Boss uses its energy-drain skill');assert.ok(qa.state.hp<10000,'Boss also uses a damaging skill');qa.state.hp=encounter.stats.hp;qa.state.enemyArmor=0;}
   if(mode==='boss'&&!encounter.tactical){
-    assert.ok(encounter.skillSet.length===4&&encounter.skillSet[3].ult,'Three skills and a signature ultimate');for(const skill of encounter.skillSet){qa.resetFoeStatuses();qa.state.hp=10000;qa.state.enemyHp=5000;qa.state.enemyMax=10000;qa.state.energy=100;qa.state.armor=0;qa.state.enemyArmor=0;await qa.enemySkill({reserved:true});
+    assert.ok(encounter.skillSet.length===4&&encounter.skillSet[3].ult,'Three skills and a signature ultimate');for(const [skillIndex,skill] of encounter.skillSet.entries()){qa.state.qaBossSkill=skillIndex;qa.resetFoeStatuses();qa.state.hp=10000;qa.state.enemyHp=5000;qa.state.enemyMax=10000;qa.state.energy=100;qa.state.armor=0;qa.state.enemyArmor=0;await qa.enemySkill({reserved:true});
       if(skill.kind==='guard')assert.ok(qa.state.enemyArmor>0,'Guard creates real armor');
       else if(skill.kind==='heal')assert.ok(qa.state.enemyHp>5000,'Healing restores actual HP');
       else {assert.ok(qa.state.hp<10000,'Boss attack reaches saved HP');if(skill.drain)assert.equal(qa.state.energy,100-skill.drain);if(skill.leech)assert.ok(qa.state.enemyHp>5000);if(skill.dot)assert.ok(qa.progressionEnemyEffects.dot?.turns>0);if(skill.charge)assert.ok(qa.progressionEnemyEffects.charge>1);}
       if(skill.status){const s=skill.status;if(s.id==='stun')assert.equal(qa.state.playerFrozen,true,'Stun costs the hero a turn');else if(s.id==='haste')assert.ok(qa.foeHaste>0);else assert.ok(qa.foeStatuses[s.id]?.turns===s.turns,`${skill.name} lays ${s.id}`);qa.state.playerFrozen=false;}
-    }qa.resetFoeStatuses();qa.state.hp=encounter.stats.hp;qa.state.enemyHp=10000;qa.state.enemyMax=10000;qa.state.armor=0;qa.state.enemyArmor=0;
+    }delete qa.state.qaBossSkill;qa.resetFoeStatuses();qa.state.hp=encounter.stats.hp;qa.state.enemyHp=10000;qa.state.enemyMax=10000;qa.state.armor=0;qa.state.enemyArmor=0;
   }
   if(encounter.tactical&&encounter.boss){
     assert.equal(qa.spriteInfo('enemy',encounter.enemyKey,'idle').count,4,'New boss uses authored animation instead of the legacy boss');

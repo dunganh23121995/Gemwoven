@@ -1,0 +1,325 @@
+{
+  "bossfx-prismback-wall-start": {
+    "file": "boss-skills/prismback/wall-start.wav",
+    "duration": 1.62,
+    "beat": "wall start: Stone Slab Door Grinding - Heavy Rock Scrape (Mono)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Stone Slab Door Grinding - Heavy Rock Scrape (Mono)",
+        "author": "NahuelMartinez",
+        "source_url": "https://freesound.org/people/NahuelMartinez/sounds/844329/",
+        "license": "CC0-1.0",
+        "sha256": "371780a604be0516de64e987dce2eefd58fb1bc6725e518cbea2084aba497237"
+      }
+    ],
+    "processing": "excerpt 5.48-7.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.762,
+    "rms": 0.11,
+    "sha256": "be3fd16b7daefb53d2e638da50cd849af2f0b1eef800159568435f413871b311"
+  },
+  "bossfx-prismback-wall-lock": {
+    "file": "boss-skills/prismback/wall-lock.wav",
+    "duration": 0.38,
+    "beat": "wall lock: Hits Concrete 10.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Hits Concrete 10.wav",
+        "author": "Department64",
+        "source_url": "https://freesound.org/people/Department64/sounds/544395/",
+        "license": "CC0-1.0",
+        "sha256": "791c207bda80c37d4892335764dee7bbd6be6eb36608e71672be7eca703bf52b"
+      }
+    ],
+    "processing": "excerpt 0.00-0.38 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.074,
+    "sha256": "d7862da108b50df285d88f81acce21c3c8607af1824ee72a6039454f05574266"
+  },
+  "bossfx-prismback-towers-grow": {
+    "file": "boss-skills/prismback/towers-grow.wav",
+    "duration": 2.62,
+    "beat": "towers grow: Granulated rocks",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Granulated rocks",
+        "author": "Ballybally",
+        "source_url": "https://freesound.org/people/Ballybally/sounds/697085/",
+        "license": "CC0-1.0",
+        "sha256": "c72636466fc6796b9f1b02a94e9e057c84d493de0252bffe317db9e2398806cd"
+      }
+    ],
+    "processing": "excerpt 5.96-8.58 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.039,
+    "sha256": "15a6aefb3ae0508bb4598479ea279b5a4b4149d0abe79c3dfccf98b7eb908e33"
+  },
+  "bossfx-prismback-cannonblast-start": {
+    "file": "boss-skills/prismback/cannonblast-start.wav",
+    "duration": 1.62,
+    "beat": "cannonblast start: sparkler_fuse_nm.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "sparkler_fuse_nm.wav",
+        "author": "Alex_hears_things",
+        "source_url": "https://freesound.org/people/Alex_hears_things/sounds/316682/",
+        "license": "CC0-1.0",
+        "sha256": "e772728606ab5787e37007075acdabe3e14ca64f63898b7764a6d537909ea30c"
+      }
+    ],
+    "processing": "excerpt 0.66-2.28 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.013,
+    "sha256": "9ac2b3464815c3398f3372056f7265630fb0fc170611e78150d6c15798a9cb23"
+  },
+  "bossfx-prismback-cannonblast-hit": {
+    "file": "boss-skills/prismback/cannonblast-hit.wav",
+    "duration": 1.62,
+    "beat": "cannonblast hit: Cannon Fires, Take 3, Quarter Speed, Debris",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Cannon Fires, Take 3, Quarter Speed, Debris",
+        "author": "CHallSmith",
+        "source_url": "https://freesound.org/people/CHallSmith/sounds/870746/",
+        "license": "CC0-1.0",
+        "sha256": "5d21b78a1312fa098b49c511fe513aeb7d6c79e425ec28393f4fb9d4f51b1d6e"
+      }
+    ],
+    "processing": "excerpt 0.14-1.76 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.498,
+    "rms": 0.11,
+    "sha256": "2017b06c5e52d74bc3b3aca49b4f2e244763b8a2a35655f913a857967ef3029a"
+  },
+  "bossfx-prismback-quakering-start": {
+    "file": "boss-skills/prismback/quakering-start.wav",
+    "duration": 1.62,
+    "beat": "quakering start: Low Rumbling Sound.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Low Rumbling Sound.wav",
+        "author": "MTJohnson",
+        "source_url": "https://freesound.org/people/MTJohnson/sounds/444422/",
+        "license": "CC0-1.0",
+        "sha256": "4732672aa891f68cb4833e5916a27c676463cbce6759309f5cd063edd4c11847"
+      }
+    ],
+    "processing": "excerpt 0.70-2.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.218,
+    "rms": 0.11,
+    "sha256": "bb89bd7efaa3503f7c88411bd646910c5d7c99da26fa806d7518c9351e41c7a4"
+  },
+  "bossfx-prismback-collapse-start": {
+    "file": "boss-skills/prismback/collapse-start.wav",
+    "duration": 0.74,
+    "beat": "collapse start: Stone Crumble 2",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Stone Crumble 2",
+        "author": "Kastenfrosch",
+        "source_url": "https://freesound.org/people/Kastenfrosch/sounds/521956/",
+        "license": "CC0-1.0",
+        "sha256": "f1a65068679cdba7a8bfc49b2cfdd602108946a51f8502e72002ebab4bf9ac93"
+      }
+    ],
+    "processing": "excerpt 1.68-2.42 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.063,
+    "sha256": "19cfa12532d9e8e0a5f6b9b7ae3c51f6962f4617b113bf92c57787f06c002fc8"
+  },
+  "bossfx-prismback-bricks-start": {
+    "file": "boss-skills/prismback/bricks-start.wav",
+    "duration": 1.62,
+    "beat": "bricks start: Rumble 1",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Rumble 1",
+        "author": "_--Q--_",
+        "source_url": "https://freesound.org/people/_--Q--_/sounds/719865/",
+        "license": "CC0-1.0",
+        "sha256": "2737142139976dad205f91077fabc92f7e8409a01497891407cfff8dbdb6db15"
+      }
+    ],
+    "processing": "excerpt 0.70-2.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.659,
+    "rms": 0.11,
+    "sha256": "6b254cb55537118159ed2fb25421a8f8e37bb165115e5cdd45002336ebdcfca8"
+  },
+  "bossfx-prismback-bricks-land": {
+    "file": "boss-skills/prismback/bricks-land.wav",
+    "duration": 0.78,
+    "beat": "bricks land: bricks",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "bricks",
+        "author": "profoundsounds",
+        "source_url": "https://freesound.org/people/profoundsounds/sounds/733235/",
+        "license": "CC0-1.0",
+        "sha256": "b0646bc3f83762eed94b1a012c471a19aba2e9a80f1c1cf261316b28fc5454de"
+      }
+    ],
+    "processing": "excerpt 0.00-0.78 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.045,
+    "sha256": "faf3c3feb6d79ab8274c71e6470667c36c870c20f044b79f868fbdc67c3032f8"
+  },
+  "bossfx-prismback-crystalglow-channel": {
+    "file": "boss-skills/prismback/crystalglow-channel.wav",
+    "duration": 1.2,
+    "beat": "crystalglow channel: Stone Scrape",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Stone Scrape",
+        "author": "alegemaate",
+        "source_url": "https://freesound.org/people/alegemaate/sounds/667284/",
+        "license": "CC0-1.0",
+        "sha256": "765728cc54a723a64eaf9a3f7465d051930e0a0053fae602ea10645a51f87cce"
+      }
+    ],
+    "processing": "excerpt 0.00-1.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.08,
+    "sha256": "9a98e5714835a124cefaa6084b0431c84c03ee81279b2c9d71b05c21a20df10e"
+  },
+  "bossfx-prismback-cannonblast-channel": {
+    "file": "boss-skills/prismback/cannonblast-channel.wav",
+    "duration": 1.42,
+    "beat": "cannonblast channel: Low Stone Rubbing – Deep Rock Scrape",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Low Stone Rubbing – Deep Rock Scrape",
+        "author": "NikoletB",
+        "source_url": "https://freesound.org/people/NikoletB/sounds/846434/",
+        "license": "CC0-1.0",
+        "sha256": "571af210c6a3468873c46029e5be70a2c8f0c759e059acd98eaa73aa39610a88"
+      }
+    ],
+    "processing": "excerpt 1.38-2.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.506,
+    "rms": 0.08,
+    "sha256": "3690345f8397bb66ab065ae3f2eb25fd6a8def6050041881590b1d318489582f"
+  },
+  "bossfx-prismback-quakering-hit": {
+    "file": "boss-skills/prismback/quakering-hit.wav",
+    "duration": 1.62,
+    "beat": "quakering hit: Foley_Impact_Stones_Strong_Debris_Stereo_DS.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Foley_Impact_Stones_Strong_Debris_Stereo_DS.wav",
+        "author": "Nox_Sound",
+        "source_url": "https://freesound.org/people/Nox_Sound/sounds/554148/",
+        "license": "CC0-1.0",
+        "sha256": "53f0356a8376daf69ffbf939cf0d87e8feb0f75c1e44fb1175bc96c349d9ae00"
+      }
+    ],
+    "processing": "excerpt 0.00-1.62 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.042,
+    "sha256": "38e75b8484aa7249cefe9d87f4e49bdb43525cdbee38f41e253cb8c76d8f5dd4"
+  },
+  "bossfx-prismback-collapse-hit": {
+    "file": "boss-skills/prismback/collapse-hit.wav",
+    "duration": 1.62,
+    "beat": "collapse hit: Building Collapse",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Building Collapse",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/845932/",
+        "license": "CC0-1.0",
+        "sha256": "ba634c4f17fcf0ea73dcb665bf4bc2c8be7e965e3193ed3e98de608984d91494"
+      }
+    ],
+    "processing": "excerpt 0.30-1.92 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.565,
+    "rms": 0.11,
+    "sha256": "a3b15082a8f71559fe329d49bb9787dbe1d332423f859c4d4968a5ebc587bc2f"
+  },
+  "bossfx-prismback-collapse-channel": {
+    "file": "boss-skills/prismback/collapse-channel.wav",
+    "duration": 1.42,
+    "beat": "collapse channel: Gentle step on gravel",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Gentle step on gravel",
+        "author": "ThabzMalik",
+        "source_url": "https://freesound.org/people/ThabzMalik/sounds/767057/",
+        "license": "CC0-1.0",
+        "sha256": "629f02b8c59af48509545e447ef2a36f58e136208d86b67fa6c0c06b558c969d"
+      }
+    ],
+    "processing": "excerpt 12.46-13.88 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.554,
+    "rms": 0.08,
+    "sha256": "30cd8a42221d32b4c113329d39a9b71d72adf013b7eda9da32b1fe3e47072245"
+  },
+  "bossfx-prismback-towers-channel": {
+    "file": "boss-skills/prismback/towers-channel.wav",
+    "duration": 1.42,
+    "beat": "towers channel: stone_on_stone_ST.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "stone_on_stone_ST.wav",
+        "author": "wilhelmsqueek",
+        "source_url": "https://freesound.org/people/wilhelmsqueek/sounds/347391/",
+        "license": "CC0-1.0",
+        "sha256": "8d1f993b0198c7dc26ee9e6bdf7aa2f95479b30a3c4d9b5d10dae490ca94fb16"
+      }
+    ],
+    "processing": "excerpt 3.86-5.28 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.421,
+    "rms": 0.08,
+    "sha256": "53be20f9afeb13d3abb8a8a22947aa11b034d4bbb21aaa0f247097230fff8c6f"
+  },
+  "bossfx-prismback-bricks-boom": {
+    "file": "boss-skills/prismback/bricks-boom.wav",
+    "duration": 1.25,
+    "beat": "bricks boom: halldoor.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "halldoor.wav",
+        "author": "j1987",
+        "source_url": "https://freesound.org/people/j1987/sounds/106128/",
+        "license": "CC0-1.0",
+        "sha256": "df6300252fc70e51764b139feac79eb3142dc94a5de178453a3fce259ababf0d"
+      }
+    ],
+    "processing": "excerpt 0.42-1.67 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.052,
+    "sha256": "ef2430a2a0de786c54393fe0dd7529d6e89b08233ceba8d2f12775a06df2a2b0"
+  },
+  "bossfx-prismback-quakering-boom": {
+    "file": "boss-skills/prismback/quakering-boom.wav",
+    "duration": 1.14,
+    "beat": "quakering boom: Low thump - Long trail",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Low thump - Long trail",
+        "author": "Sadiquecat",
+        "source_url": "https://freesound.org/people/Sadiquecat/sounds/719022/",
+        "license": "CC0-1.0",
+        "sha256": "4361a27067ee0bef26b7ea0564c4feb17f3a20bc1b7e9b94dab1e459663f452a"
+      }
+    ],
+    "processing": "excerpt 0.00-1.14 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.138,
+    "sha256": "31af08a0f37fe8d6e189ae3082ddf8b68e08c7ee1a4d498c3f46c234cfcd39d7"
+  }
+}

@@ -1,0 +1,2672 @@
+{
+ "fire/scales/start": {
+  "id": "583256",
+  "author": "drdock",
+  "title": "boiling or bubbling.mp3",
+  "preview": "12812223",
+  "duration": 18.634,
+  "query": "lava bubbling",
+  "start": 11.58,
+  "end": 13.2
+ },
+ "ice/moonspear/start": {
+  "id": "770282",
+  "author": "Sadiquecat",
+  "title": "Wind whistle 3",
+  "preview": "5287430",
+  "duration": 3.2111,
+  "query": "wind whistle",
+  "start": 0.58,
+  "end": 2.2
+ },
+ "ice/moonspear/hit": {
+  "id": "173481",
+  "author": "ondrosik",
+  "title": "ice-breaking.wav",
+  "preview": "2140699",
+  "duration": 14.5283,
+  "query": "ice break",
+  "start": 7.4,
+  "end": 9.02
+ },
+ "ice/moonward/start": {
+  "id": "665084",
+  "author": "sunflora",
+  "title": "cracking_ice.mp3",
+  "preview": "10262644",
+  "duration": 2.40295,
+  "query": "ice cracking",
+  "start": 1.24,
+  "end": 2.38
+ },
+ "ice/moonward/lock": {
+  "id": "719169",
+  "author": "InMotionAudio",
+  "title": "ICEImpt_ImpactBreak01_InMotionAudio_FREESampleSunday",
+  "preview": "14083205",
+  "duration": 1.90334,
+  "query": "ice impact",
+  "start": 0.04,
+  "end": 0.46
+ },
+ "ice/moonwind/start": {
+  "id": "468209",
+  "author": "markdmurray",
+  "title": "Wind Howling and whistling and banging louder.wav",
+  "preview": "9931663",
+  "duration": 16.3949,
+  "query": "cold wind howl",
+  "start": 6.24,
+  "end": 7.86
+ },
+ "ice/moonseal/hit": {
+  "id": "723875",
+  "author": "lori.mortimer",
+  "title": "Freeze",
+  "preview": "9190375",
+  "duration": 6.90603,
+  "query": "ice freezing crack",
+  "start": 2.06,
+  "end": 3.68
+ },
+ "lightning/strike/start": {
+  "id": "486557",
+  "author": "xUMR",
+  "title": "thunder.rumble.ogg",
+  "preview": "5953161",
+  "duration": 20.0,
+  "query": "thunder rumble distant",
+  "start": 6.08,
+  "end": 7.7
+ },
+ "lightning/strike/hit": {
+  "id": "242586",
+  "author": "hifijohn",
+  "title": "thunder.wav",
+  "preview": "1897685",
+  "duration": 16.2906,
+  "query": "thunderclap",
+  "start": 3.44,
+  "end": 5.06
+ },
+ "lightning/field/start": {
+  "id": "814061",
+  "author": "YouMightLikeThis",
+  "title": "ELECMisc-INT_NOISES-Electrical Hums And Crackles Of A Light Fixture With A Loose Light Bulb_YMLT_NONE_08982261",
+  "preview": "16787921",
+  "duration": 10.6029,
+  "query": "electric hum",
+  "start": 1.26,
+  "end": 2.88
+ },
+ "lightning/field/hit": {
+  "id": "160421",
+  "author": "BigKahuna360",
+  "title": "Electrical Shock (Zap).wav",
+  "preview": "2643065",
+  "duration": 3.64119,
+  "query": "electric zap",
+  "start": 0,
+  "end": 1.6
+ },
+ "lightning/thunderclaw/hit": {
+  "id": "396240",
+  "author": "weaveofkev",
+  "title": "Welding_Electric Sparks.wav",
+  "preview": "453602",
+  "duration": 4.5,
+  "query": "electric shock",
+  "start": 0.72,
+  "end": 1.34
+ },
+ "mire/toadstools/hit": {
+  "id": "817695",
+  "author": "waymonds",
+  "title": "Air Puff",
+  "preview": "2981397",
+  "duration": 0.8,
+  "query": "puff air",
+  "start": 0.06,
+  "end": 0.64
+ },
+ "mire/mycelium/start": {
+  "id": "516643",
+  "author": "LucasDuff",
+  "title": "Squelch.mp3",
+  "preview": "8272463",
+  "duration": 7.17558,
+  "query": "squelch mud",
+  "start": 0.64,
+  "end": 1.96
+ },
+ "mire/dizzy/start": {
+  "id": "796093",
+  "author": "SecureSubset",
+  "title": "Bubbles Blowing and Popping",
+  "preview": "16752880",
+  "duration": 8.19215,
+  "query": "bubbles pop",
+  "start": 4.58,
+  "end": 5.38
+ },
+ "mire/dizzy/hit": {
+  "id": "464428",
+  "author": "michael_grinnell",
+  "title": "Spray_Can_Hiss_2.wav",
+  "preview": "7372230",
+  "duration": 1.0,
+  "query": "spray hiss",
+  "start": 0.16,
+  "end": 0.86
+ },
+ "scarab/wingshield/start": {
+  "id": "326304",
+  "author": "Wagna",
+  "title": "sandfall5.wav",
+  "preview": "3271346",
+  "duration": 4.45823,
+  "query": "sand pouring",
+  "start": 0.26,
+  "end": 1.88
+ },
+ "scarab/obelisks/land": {
+  "id": "209866",
+  "author": "Logicogonist",
+  "title": "crash 11.wav",
+  "preview": "3797507",
+  "duration": 3.45807,
+  "query": "rock crash",
+  "start": 0,
+  "end": 2.1
+ },
+ "colossus/steamburst/hit": {
+  "id": "398077",
+  "author": "SukritSen",
+  "title": "Steam.wav",
+  "preview": "6996854",
+  "duration": 4.04,
+  "query": "steam release",
+  "start": 1.34,
+  "end": 2.96
+ },
+ "colossus/hammer/start": {
+  "id": "377855",
+  "author": "13GPanska_David_Koci",
+  "title": "Piston spray.WAV",
+  "preview": "7007538",
+  "duration": 16.9981,
+  "query": "piston",
+  "start": 12.18,
+  "end": 13.3
+ },
+ "colossus/hammer/hit": {
+  "id": "103071",
+  "author": "alan3809",
+  "title": "Anvil Strikes_5.wav",
+  "preview": "1703470",
+  "duration": 19.0418,
+  "query": "anvil",
+  "start": 9.28,
+  "end": 9.76
+ },
+ "colossus/ironwall/start": {
+  "id": "875790",
+  "author": "JimHurt",
+  "title": "penny machine",
+  "preview": "270501",
+  "duration": 11.4824,
+  "query": "machine gears",
+  "start": 8.64,
+  "end": 10.26
+ },
+ "colossus/ironwall/lock": {
+  "id": "406197",
+  "author": "kyles",
+  "title": "door metal big heavy close kinda slam thud echo offmic.wav",
+  "preview": "612689",
+  "duration": 2.96129,
+  "query": "metal slam",
+  "start": 0.28,
+  "end": 1.3
+ },
+ "colossus/smash/land": {
+  "id": "471190",
+  "author": "AuDRoger",
+  "title": "metal crash.wav",
+  "preview": "9938764",
+  "duration": 0.895714,
+  "query": "metal crash",
+  "start": 0.12,
+  "end": 0.86
+ },
+ "prism/spectrum/hit": {
+  "id": "447699",
+  "author": "Anthousai",
+  "title": "glass - baby food jar - smashed on concrete.wav",
+  "preview": "5923045",
+  "duration": 1.76063,
+  "query": "glass smash",
+  "start": 0,
+  "end": 0.56
+ },
+ "reaper/soulknot/hit": {
+  "id": "235960",
+  "author": "mffm",
+  "title": "Chains Rattling.wav",
+  "preview": "3840145",
+  "duration": 3.54975,
+  "query": "chains rattle",
+  "start": 0.78,
+  "end": 2.4
+ },
+ "reaper/tatters/start": {
+  "id": "391945",
+  "author": "ssierra1202",
+  "title": "cloth flap",
+  "preview": "6450069",
+  "duration": 0.747347,
+  "query": "cloth flap",
+  "start": 0.1,
+  "end": 0.72
+ },
+ "roc/featherblade/start": {
+  "id": "561364",
+  "author": "GearArcanaNo37",
+  "title": "Wing Flap Heavy (prototype).mp3",
+  "preview": "4582672",
+  "duration": 1.67184,
+  "query": "wing flap",
+  "start": 0.12,
+  "end": 1.26
+ },
+ "roc/featherwall/start": {
+  "id": "792292",
+  "author": "Rae_chuuu",
+  "title": "Gust of wind",
+  "preview": "12873269",
+  "duration": 19.8773,
+  "query": "wind gust",
+  "start": 16.34,
+  "end": 16.88
+ },
+ "roc/dive/start": {
+  "id": "442955",
+  "author": "qubodup",
+  "title": "Flyby",
+  "preview": "71257",
+  "duration": 0.604172,
+  "query": "fly by",
+  "start": 0.02,
+  "end": 0.58
+ },
+ "roc/dive/hit": {
+  "id": "461697",
+  "author": "leonelmail",
+  "title": "Body falls into debris",
+  "preview": "4437257",
+  "duration": 4.8729,
+  "query": "body fall",
+  "start": 0.2,
+  "end": 1.82
+ },
+ "briar/maw/start": {
+  "id": "733174",
+  "author": "locky_Y",
+  "title": "Snap in a small room3",
+  "preview": "13889437",
+  "duration": 1.03525,
+  "query": "snap",
+  "start": 0,
+  "end": 0.92
+ },
+ "briar/maw/hit": {
+  "id": "515621",
+  "author": "mrickey13",
+  "title": "Splat/Squish 4",
+  "preview": "6769489",
+  "duration": 0.462902,
+  "query": "squish",
+  "start": 0,
+  "end": 0.36
+ },
+ "briar/brambles/start": {
+  "id": "830873",
+  "author": "Sheyvan",
+  "title": "Forest Branches Small Cracking Leaves",
+  "preview": "3248005",
+  "duration": 6.33346,
+  "query": "branches cracking",
+  "start": 5.28,
+  "end": 6.0
+ },
+ "seraph/thrust/hit": {
+  "id": "443762",
+  "author": "cabusta9",
+  "title": "34. Clavada de espada Sword soft stab.wav",
+  "preview": "7262854",
+  "duration": 0.51932,
+  "query": "sword stab",
+  "start": 0,
+  "end": 0.48
+ },
+ "eclipse/nebulafire/start": {
+  "id": "169449",
+  "author": "jbrushwood",
+  "title": "gas_burner_ignition.WAV",
+  "preview": "3125572",
+  "duration": 9.14195,
+  "query": "gas burner",
+  "start": 1.34,
+  "end": 2.96
+ },
+ "eclipse/nebulafire/hit": {
+  "id": "165910",
+  "author": "Deganoth",
+  "title": "Explosion 2.wav",
+  "preview": "1445941",
+  "duration": 7.82694,
+  "query": "explosion",
+  "start": 0.82,
+  "end": 2.44
+ },
+ "elderbloom/rootspears/start": {
+  "id": "590171",
+  "author": "Greg_Surr",
+  "title": "Creaking in Room 8.wav",
+  "preview": "8198141",
+  "duration": 2.96549,
+  "query": "wood creak",
+  "start": 0,
+  "end": 1.6
+ },
+ "elderbloom/birchbark/start": {
+  "id": "699644",
+  "author": "Nox_Sound",
+  "title": "Foley_Wood_Medium_Friction_Short_Sequence_Stereo.wav",
+  "preview": "9250976",
+  "duration": 13.8474,
+  "query": "wood rubbing",
+  "start": 0.16,
+  "end": 1.34
+ },
+ "elderbloom/rootcircle/grow": {
+  "id": "677814",
+  "author": "squidge316",
+  "title": "one plant grows with lettuce.wav",
+  "preview": "1079491",
+  "duration": 1.79636,
+  "query": "plant growing",
+  "start": 0.66,
+  "end": 1.76
+ },
+ "elderbloom/pollenbloom/start": {
+  "id": "513405",
+  "author": "vero.marengere",
+  "title": "Paper Petals ASMR 02.wav",
+  "preview": "6605732",
+  "duration": 12.0,
+  "query": "petals",
+  "start": 7.92,
+  "end": 9.54
+ },
+ "elderbloom/pollenbloom/hit": {
+  "id": "202230",
+  "author": "deraj",
+  "title": "Pop sound",
+  "preview": "3725006",
+  "duration": 0.650159,
+  "query": "pop",
+  "start": 0.16,
+  "end": 0.46
+ },
+ "elderbloom/springtree/grow": {
+  "id": "765965",
+  "author": "SoundDesigner0101",
+  "title": "Leaves Rustling",
+  "preview": "15695818",
+  "duration": 30.9501,
+  "query": "leaves rustle",
+  "start": 13.66,
+  "end": 16.28
+ },
+ "elderbloom/rootquake/start": {
+  "id": "719551",
+  "author": "betostado99",
+  "title": "Earthquake rumble",
+  "preview": "13751957",
+  "duration": 14.5856,
+  "query": "earth rumble",
+  "start": 9.74,
+  "end": 11.36
+ },
+ "elderbloom/rootquake/land": {
+  "id": "408610",
+  "author": "miguelab1998",
+  "title": "38.Crack.wav",
+  "preview": "7673623",
+  "duration": 22.8897,
+  "query": "ground crack",
+  "start": 10.9,
+  "end": 12.28
+ },
+ "cinderheart/fistwave/start": {
+  "id": "360947",
+  "author": "marcusgar",
+  "title": "Punch in the air",
+  "preview": "2958634",
+  "duration": 8.39054,
+  "query": "punch whoosh",
+  "start": 5.8,
+  "end": 7.42
+ },
+ "cinderheart/fistwave/hit": {
+  "id": "746473",
+  "author": "OutbreakProtocol",
+  "title": "Dropping Rock 1",
+  "preview": "15607324",
+  "duration": 0.746304,
+  "query": "rock smash",
+  "start": 0.04,
+  "end": 0.66
+ },
+ "cinderheart/columns/start": {
+  "id": "667283",
+  "author": "alegemaate",
+  "title": "Stone Scrape 2",
+  "preview": "2531187",
+  "duration": 1.5227,
+  "query": "stone grind",
+  "start": 0.06,
+  "end": 1.5
+ },
+ "cinderheart/vent/grow": {
+  "id": "675740",
+  "author": "craigsmith",
+  "title": "S35-11 Volcano explosion with debris; lava. rumble; 2 versions.wav",
+  "preview": "2524442",
+  "duration": 16.215,
+  "query": "volcano",
+  "start": 8.24,
+  "end": 10.86
+ },
+ "cinderheart/spikeline/start": {
+  "id": "543172",
+  "author": "1skyland",
+  "title": "rocks hitting against each other OWI.wav",
+  "preview": "9915489",
+  "duration": 9.61236,
+  "query": "rock cracking",
+  "start": 7.78,
+  "end": 9.4
+ },
+ "frostregent/icicle/start": {
+  "id": "488508",
+  "author": "03Thib",
+  "title": "slide.wav",
+  "preview": "9195864",
+  "duration": 1.10187,
+  "query": "ice slide",
+  "start": 0,
+  "end": 1.02
+ },
+ "frostregent/icicle/hit": {
+  "id": "264420",
+  "author": "RMSound",
+  "title": "ICICLES breaking series.wav",
+  "preview": "4582664",
+  "duration": 13.7333,
+  "query": "icicle break",
+  "start": 11.12,
+  "end": 12.74
+ },
+ "frostregent/icemirror/start": {
+  "id": "682877",
+  "author": "drewsimko",
+  "title": "Granola_Bar_Crack.wav",
+  "preview": "14795335",
+  "duration": 2.66667,
+  "query": "ice crack",
+  "start": 1.14,
+  "end": 1.8
+ },
+ "frostregent/hail/start": {
+  "id": "502468",
+  "author": "12124673",
+  "title": "slight hail.mp3",
+  "preview": "9897864",
+  "duration": 14.4695,
+  "query": "hail",
+  "start": 9.82,
+  "end": 11.44
+ },
+ "frostregent/glacierspire/start": {
+  "id": "316603",
+  "author": "IJerry2595I",
+  "title": "Cracking",
+  "preview": "4147767",
+  "duration": 10.6522,
+  "query": "ice cracking",
+  "start": 3.7,
+  "end": 5.32
+ },
+ "tempestwing/windcircle/grow": {
+  "id": "719560",
+  "author": "DARTEKZ_GAMEZ",
+  "title": "Wind Whirl (Small Air Blow)",
+  "preview": "6951042",
+  "duration": 1.43964,
+  "query": "wind whirl",
+  "start": 0.06,
+  "end": 1.38
+ },
+ "tempestwing/plasmaball/start": {
+  "id": "745146",
+  "author": "itinerantmonk108",
+  "title": "Tesla Back up",
+  "preview": "2397507",
+  "duration": 3.77544,
+  "query": "tesla",
+  "start": 0,
+  "end": 1.6
+ },
+ "tempestwing/stormeye/start": {
+  "id": "134908",
+  "author": "barrygusey",
+  "title": "Wind Storm",
+  "preview": "2464429",
+  "duration": 9.62715,
+  "query": "storm wind",
+  "start": 7.72,
+  "end": 9.34
+ },
+ "tempestwing/stormeye/hit": {
+  "id": "375168",
+  "author": "sgossner",
+  "title": "zap (zap7.wav)",
+  "preview": "2475994",
+  "duration": 2.13746,
+  "query": "zap",
+  "start": 0,
+  "end": 1.62
+ },
+ "tempestwing/judgement/hit": {
+  "id": "336314",
+  "author": "supercell10",
+  "title": "06/10/2014 close lightning strike",
+  "preview": "2660518",
+  "duration": 14.1329,
+  "query": "lightning close",
+  "start": 2.86,
+  "end": 4.48
+ },
+ "souljailer/cage/start": {
+  "id": "621169",
+  "author": "ibrizie",
+  "title": "iron gate 1.mp3",
+  "preview": "11270292",
+  "duration": 8.10098,
+  "query": "iron gate",
+  "start": 1.14,
+  "end": 2.76
+ },
+ "souljailer/chaincircle/grow": {
+  "id": "733608",
+  "author": "C_Sander",
+  "title": "chains_whipAndTighten",
+  "preview": "2853872",
+  "duration": 17.9026,
+  "query": "chains",
+  "start": 6.82,
+  "end": 7.5
+ },
+ "souljailer/chainknot/start": {
+  "id": "167912",
+  "author": "ani_music",
+  "title": "Steel Chain Dragged, Hard Reverb",
+  "preview": "3008343",
+  "duration": 1.8427,
+  "query": "chain drag",
+  "start": 0.24,
+  "end": 1.54
+ },
+ "souljailer/ghostpillars/hit": {
+  "id": "637533",
+  "author": "kyles",
+  "title": "flame burst ignite bbq barbecue.flac",
+  "preview": "612689",
+  "duration": 1.0254,
+  "query": "flame burst",
+  "start": 0,
+  "end": 0.84
+ },
+ "souljailer/cageslam/start": {
+  "id": "406193",
+  "author": "kyles",
+  "title": "door metal big creaky open outside heard from inside in empty concrete room construction site with bg noise.wav",
+  "preview": "612689",
+  "duration": 10.3854,
+  "query": "creaky metal",
+  "start": 2.16,
+  "end": 3.78
+ },
+ "sporefather/shelves/start": {
+  "id": "683520",
+  "author": "eqavox",
+  "title": "Feet Squelch",
+  "preview": "6217756",
+  "duration": 16.1296,
+  "query": "squelch wet",
+  "start": 2.4,
+  "end": 4.02
+ },
+ "sporefather/sporepod/start": {
+  "id": "531522",
+  "author": "Melilaura",
+  "title": "puff.wav",
+  "preview": "11781645",
+  "duration": 7.0,
+  "query": "puff",
+  "start": 3.06,
+  "end": 3.78
+ },
+ "sporefather/sporepod/hit": {
+  "id": "147017",
+  "author": "JustInvoke",
+  "title": "Splat",
+  "preview": "758593",
+  "duration": 0.394739,
+  "query": "splat",
+  "start": 0,
+  "end": 0.36
+ },
+ "sporefather/threads/start": {
+  "id": "394930",
+  "author": "giddster",
+  "title": "Eye goo",
+  "preview": "1738686",
+  "duration": 12.1343,
+  "query": "goo",
+  "start": 9.42,
+  "end": 11.04
+ },
+ "sporefather/threads/hit": {
+  "id": "863866",
+  "author": "NicJonesAudio",
+  "title": "Bottle Squeeze 3",
+  "preview": "3511792",
+  "duration": 5.62571,
+  "query": "squeeze",
+  "start": 0,
+  "end": 1.6
+ },
+ "sporefather/bloomrot/start": {
+  "id": "539823",
+  "author": "ristooooo1",
+  "title": "Bubbles 001.wav",
+  "preview": "6205597",
+  "duration": 4.80004,
+  "query": "bubbling",
+  "start": 3.06,
+  "end": 3.8
+ },
+ "sporefather/bloomrot/hit": {
+  "id": "494044",
+  "author": "adgawrhbshbffsfgvsrf",
+  "title": "Gas Release",
+  "preview": "10632984",
+  "duration": 1.2771,
+  "query": "gas release",
+  "start": 0.48,
+  "end": 1.1
+ },
+ "prismback/wall/start": {
+  "id": "844329",
+  "author": "NahuelMartinez",
+  "title": "Stone Slab Door Grinding - Heavy Rock Scrape (Mono)",
+  "preview": "17689204",
+  "duration": 16.8529,
+  "query": "stone grinding",
+  "start": 5.48,
+  "end": 7.1
+ },
+ "prismback/wall/lock": {
+  "id": "544395",
+  "author": "Department64",
+  "title": "Hits Concrete 10.wav",
+  "preview": "861714",
+  "duration": 0.4539,
+  "query": "concrete block",
+  "start": 0,
+  "end": 0.38
+ },
+ "prismback/towers/grow": {
+  "id": "697085",
+  "author": "Ballybally",
+  "title": "Granulated rocks",
+  "preview": "13777746",
+  "duration": 32.0907,
+  "query": "rocks rumble",
+  "start": 5.96,
+  "end": 8.58
+ },
+ "prismback/cannonblast/start": {
+  "id": "316682",
+  "author": "Alex_hears_things",
+  "title": "sparkler_fuse_nm.wav",
+  "preview": "2309965",
+  "duration": 19.319,
+  "query": "fuse burning",
+  "start": 0.66,
+  "end": 2.28
+ },
+ "prismback/cannonblast/hit": {
+  "id": "870746",
+  "author": "CHallSmith",
+  "title": "Cannon Fires, Take 3, Quarter Speed, Debris",
+  "preview": "18412227",
+  "duration": 6.91862,
+  "query": "cannon shot",
+  "start": 0.14,
+  "end": 1.76
+ },
+ "prismback/quakering/start": {
+  "id": "444422",
+  "author": "MTJohnson",
+  "title": "Low Rumbling Sound.wav",
+  "preview": "8522109",
+  "duration": 8.14933,
+  "query": "low rumble",
+  "start": 0.7,
+  "end": 2.32
+ },
+ "prismback/collapse/start": {
+  "id": "521956",
+  "author": "Kastenfrosch",
+  "title": "Stone Crumble 2",
+  "preview": "311243",
+  "duration": 4.01703,
+  "query": "stone crumble",
+  "start": 1.68,
+  "end": 2.42
+ },
+ "sandchronarch/sandblade/start": {
+  "id": "614170",
+  "author": "videofueralle",
+  "title": "Swishes_4_strong_fast.wav",
+  "preview": "1130120",
+  "duration": 1.22644,
+  "query": "swish",
+  "start": 0.48,
+  "end": 1.2
+ },
+ "sandchronarch/sandring/start": {
+  "id": "706231",
+  "author": "trolandsound",
+  "title": "HourglassSample.m4a",
+  "preview": "15146562",
+  "duration": 12.0802,
+  "query": "hourglass",
+  "start": 2.1,
+  "end": 2.76
+ },
+ "sandchronarch/reverse/grow": {
+  "id": "437567",
+  "author": "Leandri140029",
+  "title": "Pouring sugar into coffee_02.WAV",
+  "preview": "4433322",
+  "duration": 9.21835,
+  "query": "sand pour",
+  "start": 3.42,
+  "end": 6.04
+ },
+ "sandchronarch/clockripple/start": {
+  "id": "704582",
+  "author": "Fiepjepiepje",
+  "title": "ticking clock.mp3",
+  "preview": "15273634",
+  "duration": 9.7756,
+  "query": "clock ticking",
+  "start": 1.48,
+  "end": 2.12
+ },
+ "coraltide/pearlwall/start": {
+  "id": "672392",
+  "author": "Greener_Sounds",
+  "title": "Bubbles2_Zoom.wav",
+  "preview": "12088949",
+  "duration": 10.2981,
+  "query": "bubbles",
+  "start": 1.36,
+  "end": 2.98
+ },
+ "coraltide/pearlspring/grow": {
+  "id": "470055",
+  "author": "EarlRobot",
+  "title": "Spring Fed Creek Further Down.WAV",
+  "preview": "8227308",
+  "duration": 34.3423,
+  "query": "spring water",
+  "start": 0,
+  "end": 2.6
+ },
+ "coraltide/inkwave/start": {
+  "id": "637974",
+  "author": "kyles",
+  "title": "water splashes big hand slaps spray and wave.flac",
+  "preview": "612689",
+  "duration": 13.7804,
+  "query": "big wave",
+  "start": 0.48,
+  "end": 1.56
+ },
+ "moonfang/tricut/hit": {
+  "id": "326868",
+  "author": "JohnBuhr",
+  "title": "Sword_Clash (7).wav",
+  "preview": "4077311",
+  "duration": 1.17007,
+  "query": "sword clash",
+  "start": 0,
+  "end": 0.36
+ },
+ "moonfang/shadowx/hit": {
+  "id": "588278",
+  "author": "marchelonia",
+  "title": "heavy sword against sword or shield",
+  "preview": "6461270",
+  "duration": 19.1858,
+  "query": "sword slash metal",
+  "start": 6.48,
+  "end": 6.88
+ },
+ "moonfang/moonblade/hit": {
+  "id": "397596",
+  "author": "Nightflame",
+  "title": "Heavy Impacts",
+  "preview": "3302499",
+  "duration": 10.99,
+  "query": "heavy impact",
+  "start": 9.58,
+  "end": 10.24
+ },
+ "ice/moonseal/start": {
+  "id": "684459",
+  "author": "gbnelso",
+  "title": "Whoosh.wav",
+  "preview": "12716775",
+  "duration": 1.33467,
+  "query": "throw whoosh",
+  "start": 0.72,
+  "end": 1.24
+ },
+ "scarab/obelisks/start": {
+  "id": "530988",
+  "author": "patchytherat",
+  "title": "moving stone platform.wav",
+  "preview": "5911297",
+  "duration": 3.16383,
+  "query": "rocks moving",
+  "start": 0.02,
+  "end": 1.64
+ },
+ "roc/cyclone/start": {
+  "id": "379472",
+  "author": "vandale",
+  "title": "Wind5.mp3",
+  "preview": "1934086",
+  "duration": 4.08526,
+  "query": "gust wind",
+  "start": 1.92,
+  "end": 3.32
+ },
+ "cinderheart/geyser/hit": {
+  "id": "843251",
+  "author": "qubodup",
+  "title": "Explosion 5 (Burning Car rec by Ñado)",
+  "preview": "71257",
+  "duration": 0.338313,
+  "query": "explosion fire",
+  "start": 0,
+  "end": 0.3
+ },
+ "frostregent/aurorabeam/hit": {
+  "id": "406220",
+  "author": "Anthousai",
+  "title": "water - ice - a sphere made of ice smashing on concrete.wav",
+  "preview": "5923045",
+  "duration": 1.10954,
+  "query": "ice smash",
+  "start": 0,
+  "end": 0.26
+ },
+ "tempestwing/judgement/start": {
+  "id": "347562",
+  "author": "mikala_oidua",
+  "title": "Distant Thunder Clap_Gentle.wav",
+  "preview": "5481182",
+  "duration": 18.4774,
+  "query": "thunder distant",
+  "start": 3.18,
+  "end": 4.8
+ },
+ "moonfang/shadowx/start": {
+  "id": "449996",
+  "author": "DJT4NN3R",
+  "title": "whoosh_short_mid.wav",
+  "preview": "3217484",
+  "duration": 2.67857,
+  "query": "whoosh fast",
+  "start": 0.06,
+  "end": 1.4
+ },
+ "lightning/cannon/start": {
+  "id": "610361",
+  "author": "BrickDeveloper171",
+  "title": "Charge up",
+  "preview": "11351035",
+  "duration": 6.3485,
+  "query": "charging energy",
+  "start": 0.02,
+  "end": 1.64
+ },
+ "cinderheart/pumice/hit": {
+  "id": "250199",
+  "author": "isalopez",
+  "title": "rocks.wav",
+  "preview": "4556811",
+  "duration": 3.24204,
+  "query": "rock impact",
+  "start": 1.74,
+  "end": 3.1
+ },
+ "souljailer/ghostpillars/start": {
+  "id": "582300",
+  "author": "TitanKaempfer",
+  "title": "spooky ghost wind 01.mp3",
+  "preview": "9713112",
+  "duration": 10.4954,
+  "query": "ghostly wind",
+  "start": 3.58,
+  "end": 5.2
+ },
+ "sporefather/rotslam/start": {
+  "id": "125956",
+  "author": "Ryding",
+  "title": "Door creak 2.wav",
+  "preview": "981397",
+  "duration": 8.04513,
+  "query": "tree creak",
+  "start": 7.42,
+  "end": 8.02
+ },
+ "prismback/bricks/start": {
+  "id": "719865",
+  "author": "_--Q--_",
+  "title": "Rumble 1",
+  "preview": "14597127",
+  "duration": 4.81448,
+  "query": "rumble earthquake",
+  "start": 0.7,
+  "end": 2.32
+ },
+ "prismback/bricks/land": {
+  "id": "733235",
+  "author": "profoundsounds",
+  "title": "bricks",
+  "preview": "14947773",
+  "duration": 0.804979,
+  "query": "bricks falling",
+  "start": 0,
+  "end": 0.78
+ },
+ "coraltide/inkclaws/start": {
+  "id": "151287",
+  "author": "timgormly",
+  "title": "Water 6.aif",
+  "preview": "2578041",
+  "duration": 0.670317,
+  "query": "water swish",
+  "start": 0.02,
+  "end": 0.64
+ },
+ "coraltide/inkclaws/hit": {
+  "id": "869973",
+  "author": "TDaddy22",
+  "title": "Water Splatter 3",
+  "preview": "18338865",
+  "duration": 14.4987,
+  "query": "water splash",
+  "start": 9.68,
+  "end": 10.62
+ },
+ "coraltide/coralgrow/grow": {
+  "id": "529383",
+  "author": "calebrankin",
+  "title": "Bubbles In Water",
+  "preview": "5072671",
+  "duration": 39.5103,
+  "query": "underwater bubbles",
+  "start": 5.64,
+  "end": 7.24
+ },
+ "moonfang/tricut/start": {
+  "id": "522701",
+  "author": "julianmateo_",
+  "title": "Weapon, Sword, Metal sword, Swing, fast, impact",
+  "preview": "11584853",
+  "duration": 1.5829,
+  "query": "sword swing",
+  "start": 0.32,
+  "end": 1.16
+ },
+ "tempestwing/plasmaclaw/start": {
+  "id": "393820",
+  "author": "Wakerone",
+  "title": "Welding Electricity Sparks",
+  "preview": "7399650",
+  "duration": 14.3477,
+  "query": "welding sparks",
+  "start": 5.6,
+  "end": 7.22
+ },
+ "tempestwing/stormfeathers/start": {
+  "id": "245942",
+  "author": "sophiehall3535",
+  "title": "Electricity static .wav",
+  "preview": "4361022",
+  "duration": 13.9408,
+  "query": "static electricity",
+  "start": 9.18,
+  "end": 10.8
+ },
+ "sandchronarch/sandpillar/grow": {
+  "id": "841852",
+  "author": "Dreadman247",
+  "title": "Falling into sand with knees 48000",
+  "preview": "15615970",
+  "duration": 0.871188,
+  "query": "sand falling",
+  "start": 0.2,
+  "end": 0.84
+ },
+ "sandchronarch/sandbeam/start": {
+  "id": "146932",
+  "author": "crashoverride6",
+  "title": "Wind Gust",
+  "preview": "1274078",
+  "duration": 7.70133,
+  "query": "wind gust",
+  "start": 1.44,
+  "end": 3.06
+ },
+ "coraltide/inkwhirl/start": {
+  "id": "726516",
+  "author": "blueskysounds888",
+  "title": "Gurgling_Water_In_Siphon_01",
+  "preview": "9414164",
+  "duration": 1.64937,
+  "query": "water gurgle",
+  "start": 0,
+  "end": 1.52
+ },
+ "coraltide/inkwave/hit": {
+  "id": "791291",
+  "author": "squteart",
+  "title": "Wave Sound Traveling Through the cave",
+  "preview": "16881278",
+  "duration": 12.0566,
+  "query": "wave hits",
+  "start": 5.8,
+  "end": 7.42
+ },
+ "tempestwing/plasmaball/hit": {
+  "id": "708648",
+  "author": "Khensi",
+  "title": "OBJElctrc-INT_Electric Volt_Khensani_OwSFX",
+  "preview": "14710328",
+  "duration": 13.0,
+  "query": "electricity",
+  "start": 1.34,
+  "end": 1.64
+ },
+ "fire/tail/start": {
+  "id": "431976",
+  "author": "sfx4animation",
+  "title": "whoosh dark.wav",
+  "preview": "5102575",
+  "duration": 8.80058,
+  "query": "heavy whoosh",
+  "start": 0.42,
+  "end": 2.04
+ },
+ "fire/tail/hit": {
+  "id": "615761",
+  "author": "JayRom01",
+  "title": "whip and crack sound",
+  "preview": "13658484",
+  "duration": 0.798821,
+  "query": "whip crack",
+  "start": 0.02,
+  "end": 0.7
+ },
+ "fire/jaws/hit": {
+  "id": "517850",
+  "author": "mf_gloom",
+  "title": "TELV 152 Bone Crunch.mp3",
+  "preview": "11074083",
+  "duration": 10.8027,
+  "query": "bone crunch",
+  "start": 5.32,
+  "end": 6.26
+ },
+ "fire/flight/start": {
+  "id": "244982",
+  "author": "ani_music",
+  "title": "Wing Flap (Flag Flapping) 5a",
+  "preview": "3008343",
+  "duration": 0.882902,
+  "query": "wings flapping",
+  "start": 0.02,
+  "end": 0.56
+ },
+ "fire/flight/hit": {
+  "id": "447941",
+  "author": "Breviceps",
+  "title": "Blast + Flamethrower cooldown",
+  "preview": "9159316",
+  "duration": 1.9234,
+  "query": "flamethrower",
+  "start": 0.22,
+  "end": 1.84
+ },
+ "scarab/hornstrike/start": {
+  "id": "208654",
+  "author": "luckylittleraven",
+  "title": "dogskitter.wav",
+  "preview": "2112203",
+  "duration": 3.77955,
+  "query": "skitter",
+  "start": 0.14,
+  "end": 1.76
+ },
+ "scarab/mandible/hit": {
+  "id": "732982",
+  "author": "The_Sample_Workshop",
+  "title": "22-PIG-NUT-CRUNCH",
+  "preview": "151878",
+  "duration": 0.345351,
+  "query": "crunch",
+  "start": 0,
+  "end": 0.32
+ },
+ "scarab/suncrest/channel": {
+  "id": "846425",
+  "author": "NikoletB",
+  "title": "Stone Scrape – Rock on Rock Rubbing",
+  "preview": "1856262",
+  "duration": 6.77821,
+  "query": "stone rub",
+  "start": 0.88,
+  "end": 2.3
+ },
+ "leviathan/coralglow/channel": {
+  "id": "840042",
+  "author": "hotpin7",
+  "title": "Bubbles",
+  "preview": "17707799",
+  "duration": 1.18985,
+  "query": "underwater bubbles",
+  "start": 0.02,
+  "end": 0.9
+ },
+ "prism/scythecut/start": {
+  "id": "614177",
+  "author": "ME_Studios_Official",
+  "title": "Whip_sword slice.m4a",
+  "preview": "9454816",
+  "duration": 18.0651,
+  "query": "sword swish",
+  "start": 8.14,
+  "end": 8.68
+ },
+ "prism/scythetrail/start": {
+  "id": "486234",
+  "author": "BennettFilmTeacher",
+  "title": "Whoosh For Whip Zoom",
+  "preview": "7254895",
+  "duration": 2.13065,
+  "query": "whoosh",
+  "start": 0.84,
+  "end": 2.1
+ },
+ "prism/crossglint/channel": {
+  "id": "244258",
+  "author": "bajko",
+  "title": "blade scrape_knife.wav",
+  "preview": "2341984",
+  "duration": 2.70333,
+  "query": "blade scrape",
+  "start": 0.5,
+  "end": 1.48
+ },
+ "reaper/hookcut/hit": {
+  "id": "415202",
+  "author": "Yin_Yang_Jake007",
+  "title": "Cloth Tearing.mp3",
+  "preview": "7919598",
+  "duration": 4.33846,
+  "query": "cloth tear",
+  "start": 1.08,
+  "end": 1.88
+ },
+ "briar/thorncrown/channel": {
+  "id": "726921",
+  "author": "LudPos",
+  "title": "Creaking02",
+  "preview": "2627079",
+  "duration": 8.01272,
+  "query": "branches creak",
+  "start": 7.18,
+  "end": 7.98
+ },
+ "briar/rosebloom/channel": {
+  "id": "771130",
+  "author": "SpinOpel",
+  "title": "Rustling of dry leaves",
+  "preview": "16303686",
+  "duration": 15.133,
+  "query": "leaves rustle",
+  "start": 3.26,
+  "end": 4.68
+ },
+ "seraph/swordlight/channel": {
+  "id": "592023",
+  "author": "C-V",
+  "title": "sword drawn.wav",
+  "preview": "8956746",
+  "duration": 4.95833,
+  "query": "sword ring",
+  "start": 2.68,
+  "end": 4.1
+ },
+ "eclipse/voidseam/start": {
+  "id": "569427",
+  "author": "Sheyvan",
+  "title": "Sfx Whoosh Deep Vent 1 7",
+  "preview": "3248005",
+  "duration": 3.20702,
+  "query": "deep whoosh",
+  "start": 1.76,
+  "end": 3.18
+ },
+ "eclipse/voidorb/channel": {
+  "id": "578235",
+  "author": "jyka1rock",
+  "title": "rain thunder rumbling",
+  "preview": "10573267",
+  "duration": 19.5474,
+  "query": "rumbling",
+  "start": 8.62,
+  "end": 10.04
+ },
+ "elderbloom/sapglow/channel": {
+  "id": "506665",
+  "author": "Rudmer_Rotteveel",
+  "title": "Wood Creak Single V10",
+  "preview": "4921277",
+  "duration": 1.19147,
+  "query": "wood creak",
+  "start": 0.02,
+  "end": 0.8
+ },
+ "cinderheart/corefire/channel": {
+  "id": "531699",
+  "author": "Rickplayer",
+  "title": "LavaSound",
+  "preview": "2532248",
+  "duration": 8.96498,
+  "query": "lava bubbling",
+  "start": 7.02,
+  "end": 8.44
+ },
+ "frostregent/sceptrefrost/channel": {
+  "id": "838106",
+  "author": "Wigglesworth",
+  "title": "Ice crackles under pressure",
+  "preview": "6775466",
+  "duration": 2.35993,
+  "query": "ice crackle",
+  "start": 1.72,
+  "end": 2.32
+ },
+ "prismback/crystalglow/channel": {
+  "id": "667284",
+  "author": "alegemaate",
+  "title": "Stone Scrape",
+  "preview": "2531187",
+  "duration": 1.2319,
+  "query": "stone scrape",
+  "start": 0,
+  "end": 1.2
+ },
+ "sandchronarch/sandglass/channel": {
+  "id": "461940",
+  "author": "KaterinaGalasova",
+  "title": "15GGalasovaK_sandbox.wav",
+  "preview": "9682076",
+  "duration": 10.1097,
+  "query": "sand falling",
+  "start": 6.86,
+  "end": 7.96
+ },
+ "moonfang/bloodmoon/channel": {
+  "id": "241805",
+  "author": "Mikaaku_Hoshine",
+  "title": "Blade sharpen",
+  "preview": "4404394",
+  "duration": 1.01458,
+  "query": "blade sharpen",
+  "start": 0.04,
+  "end": 0.98
+ },
+ "mire/gillspores/channel": {
+  "id": "610143",
+  "author": "Michel1980",
+  "title": "mg_SeedPods.wav",
+  "preview": "8578826",
+  "duration": 9.75981,
+  "query": "seed pods",
+  "start": 8.66,
+  "end": 9.72
+ },
+ "scarab/mandible/start": {
+  "id": "337621",
+  "author": "dotY21",
+  "title": "Weird Clicking",
+  "preview": "5048136",
+  "duration": 10.4025,
+  "query": "insect clicking",
+  "start": 5.8,
+  "end": 6.82
+ },
+ "colossus/coreheat/channel": {
+  "id": "234782",
+  "author": "wubitog",
+  "title": "Steam/hiss",
+  "preview": "3501487",
+  "duration": 1.47447,
+  "query": "steam hiss",
+  "start": 0.12,
+  "end": 1.44
+ },
+ "prism/scythetrail/hit": {
+  "id": "434896",
+  "author": "TheBuilder15",
+  "title": "Sword Impact",
+  "preview": "6090639",
+  "duration": 0.733688,
+  "query": "sword stab",
+  "start": 0,
+  "end": 0.7
+ },
+ "briar/vinewhip/start": {
+  "id": "268227",
+  "author": "XxChr0nosxX",
+  "title": "Swing.mp3",
+  "preview": "5078136",
+  "duration": 1.10324,
+  "query": "stick swing",
+  "start": 0.32,
+  "end": 1.08
+ },
+ "eclipse/voidseam/hit": {
+  "id": "392883",
+  "author": "clif_creates",
+  "title": "Hard Candy / Bone Crunch",
+  "preview": "3530854",
+  "duration": 1.10377,
+  "query": "bone crunch",
+  "start": 0.12,
+  "end": 0.9
+ },
+ "sporefather/gillglow/channel": {
+  "id": "532234",
+  "author": "valeofhearts",
+  "title": "Dry Puff.wav",
+  "preview": "5285794",
+  "duration": 0.828844,
+  "query": "puff air",
+  "start": 0.04,
+  "end": 0.68
+ },
+ "coraltide/pearlglow/channel": {
+  "id": "663021",
+  "author": "METKIR",
+  "title": "drops in a cave.mp3",
+  "preview": "13721128",
+  "duration": 17.1766,
+  "query": "water drops cave",
+  "start": 0,
+  "end": 1.42
+ },
+ "reaper/hookcut/start": {
+  "id": "545263",
+  "author": "Tairblenn",
+  "title": "Swish2.mp3",
+  "preview": "11663790",
+  "duration": 2.24905,
+  "query": "swish",
+  "start": 0.5,
+  "end": 1.7
+ },
+ "souljailer/lanternglow/channel": {
+  "id": "533081",
+  "author": "MYSSYF",
+  "title": "wind pot chain",
+  "preview": "11781705",
+  "duration": 3.21399,
+  "query": "chain swinging",
+  "start": 0.36,
+  "end": 1.78
+ },
+ "leviathan/jet/start": {
+  "id": "532492",
+  "author": "unfa",
+  "title": "CO2 Water Jet",
+  "preview": "1038806",
+  "duration": 9.37682,
+  "query": "water jet",
+  "start": 0.54,
+  "end": 2.16
+ },
+ "leviathan/jet/hit": {
+  "id": "524524",
+  "author": "vero.marengere",
+  "title": "Water Splash in Lake 05.wav",
+  "preview": "6605732",
+  "duration": 15.375,
+  "query": "water splash",
+  "start": 10.34,
+  "end": 11.14
+ },
+ "leviathan/rainstorm/grow": {
+  "id": "640651",
+  "author": "barkenov",
+  "title": "Heavy Rain and gutter.WAV",
+  "preview": "2414299",
+  "duration": 39.75,
+  "query": "heavy rain",
+  "start": 29.44,
+  "end": 32.06
+ },
+ "leviathan/frostbreath/start": {
+  "id": "407029",
+  "author": "EricsSoundschmiede",
+  "title": "Wind_Arctic_Storm_Breeze-021.wav",
+  "preview": "1106446",
+  "duration": 9.45007,
+  "query": "cold wind",
+  "start": 4.82,
+  "end": 6.44
+ },
+ "leviathan/frostbreath/hit": {
+  "id": "764657",
+  "author": "getwecked",
+  "title": "ice cracking",
+  "preview": "16538157",
+  "duration": 1.5,
+  "query": "ice crackle",
+  "start": 0.72,
+  "end": 1.16
+ },
+ "leviathan/thunderstorm/start": {
+  "id": "234736",
+  "author": "FenrirFangs",
+  "title": "thunder rumble 1.wav",
+  "preview": "3635427",
+  "duration": 10.0,
+  "query": "thunder rumble storm",
+  "start": 3.06,
+  "end": 4.68
+ },
+ "leviathan/thunderstorm/hit": {
+  "id": "534023",
+  "author": "Fission9",
+  "title": "Thunderclap",
+  "preview": "9395330",
+  "duration": 13.4658,
+  "query": "thunder crack close",
+  "start": 1.1,
+  "end": 2.72
+ },
+ "fire/scales/lock": {
+  "id": "593489",
+  "author": "Scottrex05",
+  "title": "Stone slab.wav",
+  "preview": "12595642",
+  "duration": 10.0,
+  "query": "heavy stone",
+  "start": 0.76,
+  "end": 1.4
+ },
+ "lightning/thunderclaw/start": {
+  "id": "701104",
+  "author": "xkeril",
+  "title": "Whoosh stereo light (transition)",
+  "preview": "13504080",
+  "duration": 2.31663,
+  "query": "air whoosh",
+  "start": 0.28,
+  "end": 1.02
+ },
+ "lightning/cannon/hit": {
+  "id": "367455",
+  "author": "jensfelger",
+  "title": "Jacob's ladder 2.wav",
+  "preview": "6750383",
+  "duration": 18.4587,
+  "query": "high voltage electrical",
+  "start": 15.64,
+  "end": 16.88
+ },
+ "mire/mycelium/channel": {
+  "id": "505932",
+  "author": "pfranzen",
+  "title": "Shapeshifter shifting shapes",
+  "preview": "3482490",
+  "duration": 7.84952,
+  "query": "stretching creak",
+  "start": 1.78,
+  "end": 3.2
+ },
+ "scarab/wingshield/lock": {
+  "id": "530987",
+  "author": "patchytherat",
+  "title": "stone door close.wav",
+  "preview": "5911297",
+  "duration": 2.5514,
+  "query": "stone door closing",
+  "start": 0,
+  "end": 1.0
+ },
+ "scarab/hornstrike/hit": {
+  "id": "778603",
+  "author": "BlondPanda",
+  "title": "Glass_Shards_Crunching_10",
+  "preview": "8927049",
+  "duration": 0.760333,
+  "query": "crunch foley",
+  "start": 0.3,
+  "end": 0.74
+ },
+ "leviathan/rainstorm/channel": {
+  "id": "861131",
+  "author": "Johnmode",
+  "title": "gust of wind + thunder",
+  "preview": "17591071",
+  "duration": 49.7143,
+  "query": "wind rising before",
+  "start": 19.14,
+  "end": 20.56
+ },
+ "leviathan/thunderstorm/channel": {
+  "id": "521009",
+  "author": "Sheyvan",
+  "title": "Deep Waves with Reverb",
+  "preview": "3248005",
+  "duration": 52.7411,
+  "query": "deep water",
+  "start": 34.12,
+  "end": 35.54
+ },
+ "colossus/steamburst/start": {
+  "id": "493558",
+  "author": "Engineer_815",
+  "title": "steam_safety_valve.wav",
+  "preview": "10345385",
+  "duration": 7.03,
+  "query": "industrial steam pressure valve opening",
+  "start": 0.84,
+  "end": 2.46
+ },
+ "colossus/smash/start": {
+  "id": "421722",
+  "author": "lowpolygon",
+  "title": "Heavy Mechancial Door Open",
+  "preview": "3475745",
+  "duration": 2.60265,
+  "query": "heavy mechanical",
+  "start": 0,
+  "end": 1.6
+ },
+ "prism/mirrors/start": {
+  "id": "629994",
+  "author": "trexlasso",
+  "title": "BANGING ON THICK GLASS.wav",
+  "preview": "13805381",
+  "duration": 3.07129,
+  "query": "thick glass",
+  "start": 1.0,
+  "end": 2.62
+ },
+ "prism/scythecut/hit": {
+  "id": "593623",
+  "author": "Rehanjo",
+  "title": "Skates on Ice.wav",
+  "preview": "12589944",
+  "duration": 6.6439,
+  "query": "sharp blade slashes",
+  "start": 2.12,
+  "end": 2.94
+ },
+ "reaper/scythe/start": {
+  "id": "735907",
+  "author": "ErikCruzDev",
+  "title": "Whip woosh",
+  "preview": "15173542",
+  "duration": 1.54,
+  "query": "swing whoosh",
+  "start": 0,
+  "end": 0.52
+ },
+ "reaper/scythe/hit": {
+  "id": "521958",
+  "author": "Kastenfrosch",
+  "title": "Wet Impact (2)",
+  "preview": "311243",
+  "duration": 1.32687,
+  "query": "wet impact",
+  "start": 0.58,
+  "end": 1.3
+ },
+ "reaper/soulknot/start": {
+  "id": "453850",
+  "author": "kyles",
+  "title": "cool hollow wind cavern effect chimney fireplace air suck.flac",
+  "preview": "612689",
+  "duration": 4.79646,
+  "query": "hollow air",
+  "start": 0,
+  "end": 1.6
+ },
+ "reaper/soulknot/channel": {
+  "id": "384979",
+  "author": "chiu29",
+  "title": "WIND LOW.mp3",
+  "preview": "7004598",
+  "duration": 19.5773,
+  "query": "low wind",
+  "start": 3.04,
+  "end": 4.36
+ },
+ "reaper/tatters/hit": {
+  "id": "438636",
+  "author": "craigsmith",
+  "title": "G39-19-Parachute Swish Snap.wav",
+  "preview": "2524442",
+  "duration": 16.7165,
+  "query": "fabric whip snap",
+  "start": 14.92,
+  "end": 16.54
+ },
+ "roc/featherblade/hit": {
+  "id": "708223",
+  "author": "Mythmazter",
+  "title": "Arrow_Hit_1",
+  "preview": "14777969",
+  "duration": 1.8159,
+  "query": "arrow hitting",
+  "start": 0.4,
+  "end": 0.68
+ },
+ "roc/featherwall/lock": {
+  "id": "481877",
+  "author": "craigsmith",
+  "title": "R21-42-Heavy Fabric Rustling.wav",
+  "preview": "2524442",
+  "duration": 19.7937,
+  "query": "heavy fabric",
+  "start": 6.9,
+  "end": 7.34
+ },
+ "briar/maw/channel": {
+  "id": "755839",
+  "author": "Sami_Zadoud",
+  "title": "PRO_Green Corn Plant",
+  "preview": "16303724",
+  "duration": 16.0,
+  "query": "green stalk",
+  "start": 13.98,
+  "end": 15.08
+ },
+ "briar/thorncrown/start": {
+  "id": "525268",
+  "author": "TheSupremeMuffinPooter",
+  "title": "Dry Grass Rustle.wav",
+  "preview": "2456299",
+  "duration": 10.375,
+  "query": "plant rustle",
+  "start": 4.4,
+  "end": 6.02
+ },
+ "briar/thorncrown/hit": {
+  "id": "669457",
+  "author": "EricsSoundschmiede",
+  "title": "SFX_wood_cracking.wav",
+  "preview": "1106446",
+  "duration": 3.352,
+  "query": "wood break",
+  "start": 1.78,
+  "end": 2.36
+ },
+ "seraph/thrust/start": {
+  "id": "844256",
+  "author": "Foxfire-",
+  "title": "Sword Draw - Fast",
+  "preview": "12873144",
+  "duration": 1.00002,
+  "query": "fast sword",
+  "start": 0.04,
+  "end": 0.56
+ },
+ "seraph/lightspear/start": {
+  "id": "392404",
+  "author": "AlanCat",
+  "title": "RavenWhoosh1a.wav",
+  "preview": "5486695",
+  "duration": 11.7064,
+  "query": "flight whooshes",
+  "start": 9.14,
+  "end": 10.76
+ },
+ "eclipse/galaxy/start": {
+  "id": "386371",
+  "author": "ldezem",
+  "title": "Power hammer - Billeter Klunz 50kg - Suction vent end long",
+  "preview": "1655965",
+  "duration": 0.75,
+  "query": "powerful air suction",
+  "start": 0,
+  "end": 0.7
+ },
+ "elderbloom/rootcircle/channel": {
+  "id": "594401",
+  "author": "Elandre01",
+  "title": "Pulling roots.wav",
+  "preview": "13391684",
+  "duration": 2.23,
+  "query": "roots pulling",
+  "start": 0.94,
+  "end": 2.2
+ },
+ "elderbloom/pollenbloom/channel": {
+  "id": "571154",
+  "author": "ost-soundwerkstatt",
+  "title": "raschelnde Blumen.mp3",
+  "preview": "11171056",
+  "duration": 17.677,
+  "query": "dry flower",
+  "start": 3.9,
+  "end": 5.32
+ },
+ "cinderheart/columns/lock": {
+  "id": "172932",
+  "author": "e__",
+  "title": "hawaii_kilauea_iki_trail_stones.wav",
+  "preview": "101216",
+  "duration": 21.0585,
+  "query": "large stone",
+  "start": 11.44,
+  "end": 12.46
+ },
+ "cinderheart/vent/channel": {
+  "id": "569332",
+  "author": "PegasusCZ",
+  "title": "Gas burner 01.wav",
+  "preview": "10334886",
+  "duration": 17.3863,
+  "query": "gas burner",
+  "start": 2.04,
+  "end": 3.46
+ },
+ "cinderheart/spikeline/land": {
+  "id": "321143",
+  "author": "OverlookHotelRecords",
+  "title": "Concrete and Glass breaking in dumpster",
+  "preview": "4709749",
+  "duration": 4.87533,
+  "query": "breaking concrete",
+  "start": 0,
+  "end": 1.3
+ },
+ "cinderheart/spikeline/channel": {
+  "id": "400858",
+  "author": "yatoimtop",
+  "title": "Rocks Sliding",
+  "preview": "2816123",
+  "duration": 8.25798,
+  "query": "rocks grinding",
+  "start": 3.86,
+  "end": 5.1
+ },
+ "cinderheart/pumice/start": {
+  "id": "479926",
+  "author": "craigsmith",
+  "title": "R24-10-Whip Cracks.wav",
+  "preview": "2524442",
+  "duration": 15.714,
+  "query": "whipping through air",
+  "start": 11.58,
+  "end": 12.42
+ },
+ "frostregent/icemirror/lock": {
+  "id": "544266",
+  "author": "sadlyshoe",
+  "title": "knocking-boxes.wav",
+  "preview": "6073184",
+  "duration": 15.352,
+  "query": "knocking together",
+  "start": 0.64,
+  "end": 1.04
+ },
+ "frostregent/icemirror/channel": {
+  "id": "452261",
+  "author": "kyles",
+  "title": "ice cracks thin brittle.flac",
+  "preview": "612689",
+  "duration": 12.2801,
+  "query": "thin ice",
+  "start": 8.96,
+  "end": 10.38
+ },
+ "frostregent/icepillars/grow": {
+  "id": "779044",
+  "author": "Anilan",
+  "title": "FROZEN LAKE - 2",
+  "preview": "10900574",
+  "duration": 18.5,
+  "query": "frozen lake",
+  "start": 17.34,
+  "end": 18.1
+ },
+ "frostregent/aurorabeam/start": {
+  "id": "401609",
+  "author": "1histori",
+  "title": "Air Explosion.wav",
+  "preview": "3767503",
+  "duration": 2.05227,
+  "query": "compressed air",
+  "start": 0,
+  "end": 0.88
+ },
+ "frostregent/hail/hit": {
+  "id": "503281",
+  "author": "khenshom",
+  "title": "Hard hail falling during a storm",
+  "preview": "6652872",
+  "duration": 55.666,
+  "query": "heavy hail",
+  "start": 29.82,
+  "end": 31.44
+ },
+ "frostregent/glacierspire/hit": {
+  "id": "675856",
+  "author": "craigsmith",
+  "title": "S10-16 Dropping large piece of ice onto cement; dull.wav",
+  "preview": "2524442",
+  "duration": 3.0251,
+  "query": "large ice",
+  "start": 0.94,
+  "end": 2.52
+ },
+ "frostregent/glacierspire/channel": {
+  "id": "737896",
+  "author": "Vrymaa",
+  "title": "Ice - Lake fractures",
+  "preview": "13973196",
+  "duration": 58.1428,
+  "query": "frozen lake",
+  "start": 9.18,
+  "end": 10.6
+ },
+ "tempestwing/plasmaclaw/hit": {
+  "id": "799295",
+  "author": "Sanderboah",
+  "title": "Electrical Interference",
+  "preview": "13017680",
+  "duration": 29.9,
+  "query": "close electrical arc",
+  "start": 21.72,
+  "end": 22.68
+ },
+ "tempestwing/stormfeathers/lock": {
+  "id": "758974",
+  "author": "lonemonk",
+  "title": "Heavy Birds (HRTF Binaural): Headphones Required.",
+  "preview": "230160",
+  "duration": 47.12,
+  "query": "heavy feathered",
+  "start": 2.62,
+  "end": 3.64
+ },
+ "souljailer/ghostscythe/hit": {
+  "id": "565729",
+  "author": "ralph.whitehead",
+  "title": "Knife Sword Metal Hit Scrape Twang Pack.wav",
+  "preview": "1971023",
+  "duration": 31.0,
+  "query": "blade chopping",
+  "start": 14.96,
+  "end": 16.58
+ },
+ "souljailer/cage/lock": {
+  "id": "532787",
+  "author": "timonunderwater",
+  "title": "School door with metal latch.aif",
+  "preview": "4682347",
+  "duration": 9.8463,
+  "query": "latch slam",
+  "start": 9.1,
+  "end": 9.72
+ },
+ "souljailer/chaincircle/channel": {
+  "id": "453334",
+  "author": "kyles",
+  "title": "metal heavy drag gritty long.flac",
+  "preview": "612689",
+  "duration": 10.0808,
+  "query": "long heavy",
+  "start": 0.76,
+  "end": 2.18
+ },
+ "souljailer/cageslam/hit": {
+  "id": "571419",
+  "author": "FartMuffin",
+  "title": "swinging metal gate closed.mp3",
+  "preview": "10643288",
+  "duration": 2.98898,
+  "query": "gate slam",
+  "start": 1.24,
+  "end": 2.86
+ },
+ "souljailer/cageslam/channel": {
+  "id": "496836",
+  "author": "hinchinbrook",
+  "title": "Metallic Groan",
+  "preview": "9847211",
+  "duration": 9.36338,
+  "query": "heavy iron",
+  "start": 3.92,
+  "end": 5.34
+ },
+ "prismback/cannonblast/channel": {
+  "id": "846434",
+  "author": "NikoletB",
+  "title": "Low Stone Rubbing – Deep Rock Scrape",
+  "preview": "1856262",
+  "duration": 9.67989,
+  "query": "against stone",
+  "start": 1.38,
+  "end": 2.8
+ },
+ "prismback/quakering/hit": {
+  "id": "554148",
+  "author": "Nox_Sound",
+  "title": "Foley_Impact_Stones_Strong_Debris_Stereo_DS.wav",
+  "preview": "9250976",
+  "duration": 12.0,
+  "query": "impact debris",
+  "start": 0,
+  "end": 1.62
+ },
+ "prismback/collapse/hit": {
+  "id": "845932",
+  "author": "craigsmith",
+  "title": "Building Collapse",
+  "preview": "2524442",
+  "duration": 7.88533,
+  "query": "collapse crash",
+  "start": 0.3,
+  "end": 1.92
+ },
+ "sandchronarch/sandpillar/channel": {
+  "id": "565796",
+  "author": "Ntar10",
+  "title": "scraping-sandy.mp3",
+  "preview": "11547868",
+  "duration": 27.1967,
+  "query": "sand scraping rough",
+  "start": 13.9,
+  "end": 15.32
+ },
+ "sandchronarch/reverse/channel": {
+  "id": "778568",
+  "author": "BlondPanda",
+  "title": "Steps_Fine_Snow_Or_Sand_Strong_29",
+  "preview": "8927049",
+  "duration": 0.659375,
+  "query": "through fine sand",
+  "start": 0,
+  "end": 0.62
+ },
+ "sandchronarch/clockripple/hit": {
+  "id": "414260",
+  "author": "tenkism",
+  "title": "windingOldAlarmClock.wav",
+  "preview": "2422703",
+  "duration": 4.7285,
+  "query": "clock mechanism",
+  "start": 0.72,
+  "end": 1.0
+ },
+ "sandchronarch/clockripple/channel": {
+  "id": "641577",
+  "author": "apintofmild",
+  "title": "Clockwork Timer 01",
+  "preview": "9813501",
+  "duration": 48.672,
+  "query": "clockwork mechanism",
+  "start": 48.08,
+  "end": 48.64
+ },
+ "sandchronarch/sandbeam/hit": {
+  "id": "414535",
+  "author": "emilyws",
+  "title": "Grainy Movement - Large",
+  "preview": "6694545",
+  "duration": 24.6187,
+  "query": "large sand",
+  "start": 13.62,
+  "end": 15.24
+ },
+ "sandchronarch/sandbeam/channel": {
+  "id": "543699",
+  "author": "200221-WeanBekker",
+  "title": "Heavy sand impacts.wav",
+  "preview": "11072224",
+  "duration": 28.0,
+  "query": "heavy sand",
+  "start": 6.04,
+  "end": 7.2
+ },
+ "coraltide/pearlspring/channel": {
+  "id": "646426",
+  "author": "LXX.70",
+  "title": "2017-02-11 Dumaguete Mtn 0700am.mp3",
+  "preview": "1402427",
+  "duration": 50.989,
+  "query": "bubbling up spring",
+  "start": 19.78,
+  "end": 21.2
+ },
+ "coraltide/inkwave/channel": {
+  "id": "193787",
+  "author": "jhumbucker",
+  "title": "Waves on rocks",
+  "preview": "208303",
+  "duration": 46.1948,
+  "query": "against rocks",
+  "start": 28.88,
+  "end": 30.3
+ },
+ "moonfang/steelward/start": {
+  "id": "729589",
+  "author": "Planish",
+  "title": "sliding metal",
+  "preview": "8788432",
+  "duration": 22.8949,
+  "query": "plates sliding scraping",
+  "start": 3.86,
+  "end": 5.48
+ },
+ "moonfang/twinflames/grow": {
+  "id": "675772",
+  "author": "craigsmith",
+  "title": "S31-09 Flare whoosh.wav",
+  "preview": "2524442",
+  "duration": 2.91352,
+  "query": "flare whoosh",
+  "start": 0.22,
+  "end": 1.08
+ },
+ "moonfang/twinflames/channel": {
+  "id": "181563",
+  "author": "kingsrow",
+  "title": "Fire Crackling 01.wav",
+  "preview": "1857065",
+  "duration": 34.2108,
+  "query": "fire crackling",
+  "start": 29.7,
+  "end": 31.12
+ },
+ "moonfang/fangs/hit": {
+  "id": "862077",
+  "author": "Valerie-Vivegnis",
+  "title": "260710- Squishing Fresh Celery - Moist Crunch 1",
+  "preview": "15375955",
+  "duration": 15.164,
+  "query": "flesh crunch",
+  "start": 0.9,
+  "end": 1.4
+ },
+ "moonfang/moonblade/start": {
+  "id": "770072",
+  "author": "Vrymaa",
+  "title": "Footsteps Knight - Fight, courtyard",
+  "preview": "13973196",
+  "duration": 33.512,
+  "query": "heavy sword",
+  "start": 28.36,
+  "end": 29.98
+ },
+ "coraltide/inkwhirl/channel": {
+  "id": "637951",
+  "author": "kyles",
+  "title": "water movements big deep arm sweeps through water waves splashes.flac",
+  "preview": "612689",
+  "duration": 23.5902,
+  "query": "deep water",
+  "start": 3.56,
+  "end": 4.98
+ },
+ "elderbloom/rootspears/hit": {
+  "id": "770112",
+  "author": "Vrymaa",
+  "title": "Plants or ferns - Manipulation & Hit",
+  "preview": "13973196",
+  "duration": 24.7351,
+  "query": "soil crunch",
+  "start": 11.98,
+  "end": 12.38
+ },
+ "mire/toadstools/start": {
+  "id": "646047",
+  "author": "HowardV",
+  "title": "stitching flesh in the Frankenstein's Lab - extra squelchy version.wav",
+  "preview": "1654262",
+  "duration": 28.4,
+  "query": "pulling squelch",
+  "start": 22.1,
+  "end": 23.72
+ },
+ "roc/cyclone/hit": {
+  "id": "523230",
+  "author": "magnuswaker",
+  "title": "Hard Swing 1",
+  "preview": "11537497",
+  "duration": 0.92275,
+  "query": "violent air",
+  "start": 0.02,
+  "end": 0.52
+ },
+ "briar/brambles/lock": {
+  "id": "873248",
+  "author": "harrisonlace",
+  "title": "WOODBrk_Layered Cracking Thin Plywood Board Splinters x 7",
+  "preview": "9839964",
+  "duration": 17.5195,
+  "query": "creak snap",
+  "start": 6.92,
+  "end": 7.94
+ },
+ "elderbloom/springtree/channel": {
+  "id": "450372",
+  "author": "kyles",
+  "title": "wind strong medium trees leafy branch snaps night slight echo covered acoustic around tent in backyard under trees +distant seagull near end.flac",
+  "preview": "612689",
+  "duration": 33.033,
+  "query": "leafy branches",
+  "start": 23.36,
+  "end": 24.78
+ },
+ "mire/bigcap/grow": {
+  "id": "737308",
+  "author": "Canakinsound",
+  "title": "Lettuce wet juicy gore creature flesh",
+  "preview": "8329993",
+  "duration": 55.0,
+  "query": "wet vegetation",
+  "start": 6.54,
+  "end": 9.16
+ },
+ "briar/brambles/channel": {
+  "id": "528853",
+  "author": "Garuda1982",
+  "title": "crush dry leaves sound effect",
+  "preview": "2061858",
+  "duration": 34.422,
+  "query": "dry leaves",
+  "start": 0.38,
+  "end": 1.56
+ },
+ "cinderheart/geyser/start": {
+  "id": "675574",
+  "author": "craigsmith",
+  "title": "S41-18 Large burst of steam.wav",
+  "preview": "2524442",
+  "duration": 14.6244,
+  "query": "steam burst",
+  "start": 1.64,
+  "end": 3.26
+ },
+ "eclipse/starshards/start": {
+  "id": "377823",
+  "author": "13GPanska_Cihala_Vilem",
+  "title": "prasknutí skla.wav",
+  "preview": "6990694",
+  "duration": 5.0,
+  "query": "glass snapping",
+  "start": 1.22,
+  "end": 2.84
+ },
+ "frostregent/aurorabeam/channel": {
+  "id": "787541",
+  "author": "vazdaz",
+  "title": "Whistling And Fluttering Wind Between Buildings",
+  "preview": "13591591",
+  "duration": 9.30002,
+  "query": "wind whistling",
+  "start": 7.2,
+  "end": 8.62
+ },
+ "ice/moonspear/channel": {
+  "id": "369982",
+  "author": "northern87",
+  "title": "Ice cracking_northern87",
+  "preview": "1196518",
+  "duration": 59.0494,
+  "query": "ice cracking",
+  "start": 57.48,
+  "end": 58.1
+ },
+ "moonfang/moonblade/channel": {
+  "id": "556714",
+  "author": "NachtmahrTV",
+  "title": "Bending Metal",
+  "preview": "5620304",
+  "duration": 5.85073,
+  "query": "metal bending",
+  "start": 0.32,
+  "end": 1.74
+ },
+ "prism/spectrum/start": {
+  "id": "250544",
+  "author": "jhumbucker",
+  "title": "Glass scraping - misc",
+  "preview": "208303",
+  "duration": 40.8689,
+  "query": "glass scrape",
+  "start": 29.96,
+  "end": 31.58
+ },
+ "reaper/tatters/channel": {
+  "id": "701647",
+  "author": "IENBA",
+  "title": "Fabric Flapping",
+  "preview": "9616576",
+  "duration": 13.75,
+  "query": "fabric flapping",
+  "start": 9.86,
+  "end": 11.28
+ },
+ "seraph/sealbeam/channel": {
+  "id": "347046",
+  "author": "johnaudiotech",
+  "title": "765 kilo-volt transmission lines buzzing and crackling",
+  "preview": "6120286",
+  "duration": 23.21,
+  "query": "power line crackle",
+  "start": 18.64,
+  "end": 20.06
+ },
+ "souljailer/chainknot/hit": {
+  "id": "452574",
+  "author": "kyles",
+  "title": "chain thick drop on floor high pitch rattle various.wav",
+  "preview": "612689",
+  "duration": 44.2657,
+  "query": "chain drop",
+  "start": 38.7,
+  "end": 39.74
+ },
+ "sporefather/rotslam/land": {
+  "id": "343164",
+  "author": "benjaminpotter",
+  "title": "Wood Crash.mp3",
+  "preview": "6001460",
+  "duration": 3.70898,
+  "query": "wood crash",
+  "start": 1.18,
+  "end": 2.98
+ },
+ "briar/vinewhip/hit": {
+  "id": "531240",
+  "author": "DigPro120",
+  "title": "Crack of whip",
+  "preview": "7414526",
+  "duration": 14.9039,
+  "query": "whip crack",
+  "start": 3.98,
+  "end": 4.94
+ },
+ "coraltide/coralgrow/channel": {
+  "id": "461219",
+  "author": "15GPanskaSupsakPatrik",
+  "title": "09_Swirling_Water.wav",
+  "preview": "9672278",
+  "duration": 24.125,
+  "query": "water swirling",
+  "start": 20.38,
+  "end": 21.8
+ },
+ "eclipse/galaxy/hit": {
+  "id": "730959",
+  "author": "SoundBiterSFX",
+  "title": "Heavy Whoosh",
+  "preview": "15857333",
+  "duration": 26.5823,
+  "query": "air rush",
+  "start": 17.84,
+  "end": 19.46
+ },
+ "elderbloom/birchbark/lock": {
+  "id": "505967",
+  "author": "jedg",
+  "title": "Tree bark crackle and snap gore.wav",
+  "preview": "4024739",
+  "duration": 19.0,
+  "query": "bark cracking",
+  "start": 8.54,
+  "end": 9.56
+ },
+ "frostregent/hail/channel": {
+  "id": "452644",
+  "author": "kyles",
+  "title": "ice cubes hit smack thud rattle or footsteps rocks stones pebbles.wav",
+  "preview": "612689",
+  "duration": 19.7352,
+  "query": "ice rattling",
+  "start": 18.5,
+  "end": 19.3
+ },
+ "leviathan/frostbreath/channel": {
+  "id": "447280",
+  "author": "Gamba_04",
+  "title": "Viento helado.wav",
+  "preview": "9261095",
+  "duration": 7.7096,
+  "query": "freezing wind",
+  "start": 4.42,
+  "end": 5.84
+ },
+ "moonfang/steelward/lock": {
+  "id": "675817",
+  "author": "craigsmith",
+  "title": "S09-02 metal armor helmet open & close; hinges and clanks.wav",
+  "preview": "2524442",
+  "duration": 40.6286,
+  "query": "armor clank",
+  "start": 13.52,
+  "end": 14.0
+ },
+ "prismback/collapse/channel": {
+  "id": "767057",
+  "author": "ThabzMalik",
+  "title": "Gentle step on gravel",
+  "preview": "15764451",
+  "duration": 14.0269,
+  "query": "gravel shifting",
+  "start": 12.46,
+  "end": 13.88
+ },
+ "sandchronarch/sandblade/hit": {
+  "id": "683787",
+  "author": "Elements-Library",
+  "title": "Hard Impact on Gravel",
+  "preview": "14876768",
+  "duration": 23.8966,
+  "query": "gravel impact",
+  "start": 11.98,
+  "end": 12.56
+ },
+ "souljailer/ghostpillars/channel": {
+  "id": "707860",
+  "author": "L.i.Z.e.L.l.E_+",
+  "title": "Chains",
+  "preview": "14714586",
+  "duration": 16.0,
+  "query": "chains dragging",
+  "start": 8.66,
+  "end": 10.08
+ },
+ "cinderheart/geyser/channel": {
+  "id": "870180",
+  "author": "bassimat",
+  "title": "Water Poured onto a Burning Fireplace – Hissing Steam and Sizzling Embers",
+  "preview": "15636277",
+  "duration": 15.4011,
+  "query": "steam hissing",
+  "start": 1.14,
+  "end": 2.56
+ },
+ "coraltide/inkwhirl/hit": {
+  "id": "646568",
+  "author": "Ryanz-Official",
+  "title": "WaterSplash",
+  "preview": "12993943",
+  "duration": 1.27131,
+  "query": "water splash",
+  "start": 0.24,
+  "end": 1.24
+ },
+ "eclipse/starshards/hit": {
+  "id": "453499",
+  "author": "kyles",
+  "title": "neon tube smash explode shatter glass debris.flac",
+  "preview": "612689",
+  "duration": 4.864,
+  "query": "glass shatter",
+  "start": 1.04,
+  "end": 2.34
+ },
+ "fire/jaws/start": {
+  "id": "386166",
+  "author": "ldezem",
+  "title": "Gas furnace - Ignition happy",
+  "preview": "1655965",
+  "duration": 2.95806,
+  "query": "furnace ignition",
+  "start": 0,
+  "end": 1.6
+ },
+ "ice/moonseal/channel": {
+  "id": "818918",
+  "author": "mentos987",
+  "title": "frozen lake",
+  "preview": "15684938",
+  "duration": 57.2561,
+  "query": "frozen lake",
+  "start": 38.36,
+  "end": 39.78
+ },
+ "moonfang/fangs/start": {
+  "id": "547041",
+  "author": "CogFireStudios",
+  "title": "Hit Swing Sword Small 3",
+  "preview": "7614679",
+  "duration": 1.31204,
+  "query": "sword swing",
+  "start": 0,
+  "end": 0.58
+ },
+ "prism/mirrors/lock": {
+  "id": "700537",
+  "author": "NistuGgner",
+  "title": "stone_slab3.wav",
+  "preview": "13373037",
+  "duration": 1.87356,
+  "query": "stone scrape",
+  "start": 0.5,
+  "end": 0.86
+ },
+ "prismback/towers/channel": {
+  "id": "347391",
+  "author": "wilhelmsqueek",
+  "title": "stone_on_stone_ST.wav",
+  "preview": "6222517",
+  "duration": 11.2238,
+  "query": "stone dragging",
+  "start": 3.86,
+  "end": 5.28
+ },
+ "sandchronarch/sandring/lock": {
+  "id": "734302",
+  "author": "icviro",
+  "title": "Sand bucket",
+  "preview": "12268621",
+  "duration": 48.3979,
+  "query": "sand pouring",
+  "start": 46.36,
+  "end": 47.34
+ },
+ "seraph/lightspear/hit": {
+  "id": "760216",
+  "author": "Kinoton",
+  "title": "Thunder Clap And Rumble #9",
+  "preview": "2247456",
+  "duration": 17.8123,
+  "query": "lightning strike",
+  "start": 2.1,
+  "end": 3.72
+ },
+ "seraph/sealbeam/start": {
+  "id": "438494",
+  "author": "craigsmith",
+  "title": "G32-10-Massive Electrical Discharges.wav",
+  "preview": "2524442",
+  "duration": 25.6642,
+  "query": "electrical discharge",
+  "start": 16.72,
+  "end": 18.34
+ },
+ "sporefather/sporepod/channel": {
+  "id": "660297",
+  "author": "Ambient-X",
+  "title": "Campfire deer camp - hot air leaking from wet wood - part 3.wav",
+  "preview": "13721094",
+  "duration": 37.8,
+  "query": "air leaking",
+  "start": 29.1,
+  "end": 30.52
+ },
+ "sporefather/threads/channel": {
+  "id": "537459",
+  "author": "wavecal22",
+  "title": "wood crackling-31.wav",
+  "preview": "1068206",
+  "duration": 2.18906,
+  "query": "wood splintering",
+  "start": 1.34,
+  "end": 1.98
+ },
+ "seraph/sealbeam/hit": {
+  "id": "876428",
+  "author": "CAT-FOX_ALEX",
+  "title": "Heavy Machine Transformation Impact 1_8",
+  "preview": "17675683",
+  "duration": 26.0937,
+  "query": "transformer explosion",
+  "start": 3.04,
+  "end": 4.66
+ },
+ "seraph/halo/grow": {
+  "id": "669153",
+  "author": "Gerent",
+  "title": "000101_0580S3 075-094 000-083 092-100.wav",
+  "preview": "556505",
+  "duration": 17.598,
+  "query": "wind rising",
+  "start": 15.32,
+  "end": 17.56
+ },
+ "mire/mycelium/hit": {
+  "id": "547446",
+  "author": "tiddles451",
+  "title": "squelching.mp3",
+  "preview": "9912277",
+  "duration": 10.0709,
+  "query": "sponge squish",
+  "start": 3.52,
+  "end": 3.8
+ },
+ "sporefather/sprouts/grow": {
+  "id": "823855",
+  "author": "bassimat",
+  "title": "Rice grains poured into a cup recorded with contact microphone",
+  "preview": "15636277",
+  "duration": 7.3915,
+  "query": "soil shifting",
+  "start": 0,
+  "end": 2.6
+ },
+ "coraltide/pearlwall/lock": {
+  "id": "558254",
+  "author": "msavioti",
+  "title": "Heavy Stone Push",
+  "preview": "10531612",
+  "duration": 1.13385,
+  "query": "stone lid",
+  "start": 0.4,
+  "end": 1.1
+ },
+ "sporefather/shelves/lock": {
+  "id": "618084",
+  "author": "sit_walk",
+  "title": "2022-02-06 wood creak 2.wav",
+  "preview": "11204664",
+  "duration": 2.10306,
+  "query": "wood creak",
+  "start": 0.82,
+  "end": 1.84
+ },
+ "colossus/smash/boom": {
+  "id": "570004",
+  "author": "Sheyvan",
+  "title": "Metal Door Slam Heavy Reverb 1",
+  "preview": "3248005",
+  "duration": 6.93648,
+  "query": "heavy door slam",
+  "start": 0.06,
+  "end": 2.47
+ },
+ "scarab/obelisks/boom": {
+  "id": "459973",
+  "author": "florianreichelt",
+  "title": "Huge Explosion",
+  "preview": "6253486",
+  "duration": 20.886,
+  "query": "boom impact",
+  "start": 8.21,
+  "end": 9.95
+ },
+ "prismback/bricks/boom": {
+  "id": "106128",
+  "author": "j1987",
+  "title": "halldoor.wav",
+  "preview": "367313",
+  "duration": 1.90628,
+  "query": "impact reverb hall",
+  "start": 0.42,
+  "end": 1.67
+ },
+ "prismback/quakering/boom": {
+  "id": "719022",
+  "author": "Sadiquecat",
+  "title": "Low thump - Long trail",
+  "preview": "5287430",
+  "duration": 1.77093,
+  "query": "big thump",
+  "start": 0.0,
+  "end": 1.14
+ }
+}

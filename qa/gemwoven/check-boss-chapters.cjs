@@ -67,5 +67,22 @@ for(const d of D.definitions){
   const normal=M.encounter('campaign',start+1),normal2=M.encounter('campaign',start+11),normal3=M.encounter('campaign',start+21);assert.equal(new Set([normal.creature,normal2.creature,normal3.creature]).size,3);
   const small=T.create(d,{tier:'normal',variant:0});let smallHazard=false;for(let i=0;i<15;i++){smallHazard=T.advance(small,d,1).some(e=>e.type==='hazard')||smallHazard;assert.ok(small.stacks<=2);}assert.ok(smallHazard,'Ordinary monsters teach a weakened version of the actual environment hazard');
 }
+// Chapter bosses 1-14 pick the skill that fits the fight, and a whole fight shows every skill of the kit.
+{
+  const W=require('../../src/gemwoven/world.js');
+  for(const [id,b] of Object.entries(W.BOSSES)){
+    if(b.tactical||b.skills.some(s=>s.effects))continue;
+    const ult=b.skills.find(s=>s.ult),guard=b.skills.find(s=>s.kind==='guard'),heal=b.skills.find(s=>s.kind==='heal'&&!s.power),drain=b.skills.find(s=>s.kind==='drain'&&!s.ult);
+    const fresh={hpRatio:1,armor:0,heroHpRatio:1,heroEnergy:0,heroArmorRatio:0,history:[]};
+    assert.ok(!T.chooseSkill(b.skills,fresh).ult,id+': no ultimate on the first cast');
+    assert.equal(T.chooseSkill(b.skills,{...fresh,hpRatio:.5,history:[b.skills[0].name,b.skills[1].name]}).name,ult.name,id+': ultimate once hurt, from the third cast');
+    if(guard)assert.notEqual(T.chooseSkill(b.skills,{...fresh,armor:50,hpRatio:.8,history:['x']}).name,guard.name,id+': no guard while armoured');
+    if(heal)assert.equal(T.chooseSkill(b.skills,{...fresh,hpRatio:.45,history:[ult.name]}).name,heal.name,id+': heals when low');
+    if(drain)assert.equal(T.chooseSkill(b.skills,{...fresh,heroEnergy:90,history:[b.skills[0].name===drain.name?'x':b.skills[0].name]}).name,drain.name,id+': drains a hero about to unleash');
+    const history=[];for(let i=0;i<8;i++){const hp=1-i*.1;history.push(T.chooseSkill(b.skills,{...fresh,hpRatio:hp,heroEnergy:i*15%100,heroDot:i%3===1,history}).name);}
+    assert.equal(new Set(history).size,b.skills.length,id+': every skill used in a fight '+history.join(', '));
+    for(let i=1;i<history.length;i++)assert.notEqual(history[i],history[i-1],id+': no skill twice in a row');
+  }
+}
 assert.equal(engine.read().wallet.gems,0);assert.throws(()=>M.encounter('campaign',1501));
 console.log(JSON.stringify({passed:true,bosses:D.definitions.length,checks:'24 chapters, one boss each; unique boss skills, own weaker elite skills, one shared common-foe skill; elites every 5 stages; big gem-free chapter-clear reward; 24 bosses; elite 3-star-only fragments; no replay farming; persistent nonconsumable counters; snapshot rank; phases; telegraph interruption; real minion HP; 80% typed resistance; no gameplay gems'},null,2));

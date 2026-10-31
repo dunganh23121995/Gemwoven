@@ -1,0 +1,173 @@
+{
+  "bossfx-mire-toadstools-hit": {
+    "file": "boss-skills/mire/toadstools-hit.wav",
+    "duration": 0.58,
+    "beat": "toadstools hit: Air Puff",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Air Puff",
+        "author": "waymonds",
+        "source_url": "https://freesound.org/people/waymonds/sounds/817695/",
+        "license": "CC0-1.0",
+        "sha256": "90bc9d1af1483c5cfdf24120e0efaa80f56695dec91f0d22886c58adcbe34224"
+      }
+    ],
+    "processing": "excerpt 0.06-0.64 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.813,
+    "rms": 0.11,
+    "sha256": "f2a537b3ba54038aae5c1b89a6b0c2774a2b61e3fb756a7e3ea5e73fe1a98a99"
+  },
+  "bossfx-mire-mycelium-start": {
+    "file": "boss-skills/mire/mycelium-start.wav",
+    "duration": 1.32,
+    "beat": "mycelium start: Squelch.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Squelch.mp3",
+        "author": "LucasDuff",
+        "source_url": "https://freesound.org/people/LucasDuff/sounds/516643/",
+        "license": "CC0-1.0",
+        "sha256": "ba9d8d0de0a5ddec5ebf9e8a8db0bb09c667d02b6624636d78829fd22164f1c4"
+      }
+    ],
+    "processing": "excerpt 0.64-1.96 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.086,
+    "sha256": "0f9a626a048ff6d3484b19db7f59158206d2151c5ebedb5d650e232e14e1bef0"
+  },
+  "bossfx-mire-dizzy-start": {
+    "file": "boss-skills/mire/dizzy-start.wav",
+    "duration": 0.8,
+    "beat": "dizzy start: Bubbles Blowing and Popping",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Bubbles Blowing and Popping",
+        "author": "SecureSubset",
+        "source_url": "https://freesound.org/people/SecureSubset/sounds/796093/",
+        "license": "CC0-1.0",
+        "sha256": "1ad0c467e110bd8adedfed989fa9e3a8b24de9b55d91dfed6d1b7c8d66c67c5f"
+      }
+    ],
+    "processing": "excerpt 4.58-5.38 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.817,
+    "rms": 0.11,
+    "sha256": "40e67b6eab6b6b1ad7a3daafa6715d69f4475aa1134cc7690c81860954b1ace2"
+  },
+  "bossfx-mire-dizzy-hit": {
+    "file": "boss-skills/mire/dizzy-hit.wav",
+    "duration": 0.7,
+    "beat": "dizzy hit: Spray_Can_Hiss_2.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Spray_Can_Hiss_2.wav",
+        "author": "michael_grinnell",
+        "source_url": "https://freesound.org/people/michael_grinnell/sounds/464428/",
+        "license": "CC0-1.0",
+        "sha256": "b483c12d434a775da4b05cfb5f4da7b10406f4f064fe54602ffd88907aed03d6"
+      }
+    ],
+    "processing": "excerpt 0.16-0.86 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.097,
+    "sha256": "d3be8018f676712ca0d4511c5534e410ee193549acd12da95ef83d8c3344501d"
+  },
+  "bossfx-mire-gillspores-channel": {
+    "file": "boss-skills/mire/gillspores-channel.wav",
+    "duration": 1.06,
+    "beat": "gillspores channel: mg_SeedPods.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "mg_SeedPods.wav",
+        "author": "Michel1980",
+        "source_url": "https://freesound.org/people/Michel1980/sounds/610143/",
+        "license": "CC0-1.0",
+        "sha256": "52b1814a7ae8d2bc8aafccc537bfc4d7792f4cabef9019bf9b72bdd0ffd32630"
+      }
+    ],
+    "processing": "excerpt 8.66-9.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.027,
+    "sha256": "fbe27a38b9c09ae76b931bf29cf0d9d5750a5e6287b61d02b19b9ad02cf2768d"
+  },
+  "bossfx-mire-mycelium-channel": {
+    "file": "boss-skills/mire/mycelium-channel.wav",
+    "duration": 1.42,
+    "beat": "mycelium channel: Shapeshifter shifting shapes",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Shapeshifter shifting shapes",
+        "author": "pfranzen",
+        "source_url": "https://freesound.org/people/pfranzen/sounds/505932/",
+        "license": "CC0-1.0",
+        "sha256": "222a3673154a9724a3e53a9abbb6a563c118a070fddb961e990736677793b08f"
+      }
+    ],
+    "processing": "excerpt 1.78-3.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.02,
+    "sha256": "13141a91c522a4054fefdb998dc831c749aa3135dcc30dd06fcdac0152247ef3"
+  },
+  "bossfx-mire-toadstools-start": {
+    "file": "boss-skills/mire/toadstools-start.wav",
+    "duration": 1.62,
+    "beat": "toadstools start: stitching flesh in the Frankenstein's Lab - extra squelchy version.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "stitching flesh in the Frankenstein's Lab - extra squelchy version.wav",
+        "author": "HowardV",
+        "source_url": "https://freesound.org/people/HowardV/sounds/646047/",
+        "license": "CC0-1.0",
+        "sha256": "f10f79ba1d9e63acea022be7fb14820df6db676a7a0ed1d8155728af62b8910d"
+      }
+    ],
+    "processing": "excerpt 22.10-23.72 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.023,
+    "sha256": "4339d27239cb813d816af578b5bff8deabce1e493f3d6b0756ed05e44c65f6e3"
+  },
+  "bossfx-mire-bigcap-grow": {
+    "file": "boss-skills/mire/bigcap-grow.wav",
+    "duration": 2.62,
+    "beat": "bigcap grow: Lettuce wet juicy gore creature flesh",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Lettuce wet juicy gore creature flesh",
+        "author": "Canakinsound",
+        "source_url": "https://freesound.org/people/Canakinsound/sounds/737308/",
+        "license": "CC0-1.0",
+        "sha256": "4ec79d572470d10df4ad6dc7a3291b6ce5a68397fca1a2ab8d73ae10f5cc9b78"
+      }
+    ],
+    "processing": "excerpt 6.54-9.16 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.021,
+    "sha256": "441f48d7a69c988be9d5f93734dbeda20fe563ea2d970a329ae224cbb55d7ff1"
+  },
+  "bossfx-mire-mycelium-hit": {
+    "file": "boss-skills/mire/mycelium-hit.wav",
+    "duration": 0.28,
+    "beat": "mycelium hit: squelching.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "squelching.mp3",
+        "author": "tiddles451",
+        "source_url": "https://freesound.org/people/tiddles451/sounds/547446/",
+        "license": "CC0-1.0",
+        "sha256": "ee7404008e86ba7986f483adb05a7e784e8fa8ee9494f57e918f816d248e51f6"
+      }
+    ],
+    "processing": "excerpt 3.52-3.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.084,
+    "sha256": "4423fb0abba1f9ce8cc2af19ec2fcedfdd63e46fa9bfb9381f51520b2959e872"
+  }
+}

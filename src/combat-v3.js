@@ -349,26 +349,27 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
     combatV3Action(side,'idle');combatV3Action(targetSide,'idle');
   }
 };
-buff=async function(side,kind,value,{alreadyApplied=false}={}){
+// plain: the gain only (pose and number), for a boss skill that has drawn its own effect (foe-skills.js).
+buff=async function(side,kind,value,{alreadyApplied=false,plain=false}={}){
   const isHero=side==='hero',hpKey=isHero?'hp':'enemyHp',armorKey=isHero?'armor':'enemyArmor',maximum=isHero?HEROES[state.key].hp:state.enemyMax;
   const gained=alreadyApplied?value:Math.min(value,kind==='heal'?maximum-state[hpKey]:combatArmorCap(side)-state[armorKey]);if(gained<=0)return 0;
   const f=actor(side),transform=f.style.transform,pending=[],key=side==='hero'?state.key:state.enemyKey;
   const color=kind==='heal'?{main:'#79e3a9',light:'#ecffce',deep:'#388e77'}:combatV3Palette[key];
   const handSeal=isHero&&key==='shadow';
-  combatV3Action(side,'buff',1300);
-  combatV3Frame(side,'buff',0);
+  // A boss skill's own staging already showed the gesture; the plain gain does not replay a pose.
+  if(!plain){combatV3Action(side,'buff',1300);combatV3Frame(side,'buff',0);}
   try{
-    if(!isHero)combatV3Charge(side,key,true,pending);
-    await combatV3Pose(f,handSeal?'translate(0px,0px)':'translate(0px,-3px) rotate(0deg)',170);combatV3Frame(side,'buff',1);
-    await combatV3Pose(f,handSeal?'translate(0px,0px)':'translate(0px,-6px) rotate(0deg)',170);combatV3Frame(side,'buff',2);await combatV3Wait(70);
-    const p=combatV3Point(side);pending.push(restorationEffect(side,kind));
+    if(!isHero&&!plain)combatV3Charge(side,key,true,pending);
+    await combatV3Pose(f,handSeal?'translate(0px,0px)':'translate(0px,-3px) rotate(0deg)',170);if(!plain)combatV3Frame(side,'buff',1);
+    await combatV3Pose(f,handSeal?'translate(0px,0px)':'translate(0px,-6px) rotate(0deg)',170);if(!plain)combatV3Frame(side,'buff',2);await combatV3Wait(70);
+    const p=combatV3Point(side);if(!plain)pending.push(restorationEffect(side,kind));
     if(!alreadyApplied){if(kind==='heal')state[hpKey]+=gained;else state[armorKey]+=gained;}
-    combatV3Frame(side,'buff',3);
-    update();combatV3BuffSound(kind);if(!alreadyApplied)combatV3Number(side,'+'+gained+(kind==='heal'?' HP':' GIÁP'),kind==='heal'?'heal':'armor',0,pending);
-    if(!reduced&&!isHero)for(let i=0;i<7;i++){
+    if(!plain)combatV3Frame(side,'buff',3);
+    update();if(!plain)combatV3BuffSound(kind);if(!alreadyApplied)combatV3Number(side,'+'+gained+(kind==='heal'?' HP':' GIÁP'),kind==='heal'?'heal':'armor',0,pending);
+    if(!reduced&&!isHero&&!plain)for(let i=0;i<7;i++){
       const mote=combatV3Element('combat-v3-heal-mote',{x:p.x+(i-3)*15,y:p.foot},5+i%2*3,'',color);
       combatV3Fx(mote,[{opacity:0,transform:'translate(-50%,0)'},{opacity:.9,offset:.2},{opacity:0,transform:`translate(calc(-50% + ${Math.sin(i)*13}px),${-80-i%3*20}px)`}],{duration:850,delay:i*45},pending);
     }
-    await combatV3Wait(250);combatV3Frame(side,'buff',4);await combatV3Pose(f,'translate(0px,0px) rotate(0deg)',400);combatV3Frame(side,'buff',5);await Promise.all(pending);return gained;
+    await combatV3Wait(250);if(!plain)combatV3Frame(side,'buff',4);await combatV3Pose(f,'translate(0px,0px) rotate(0deg)',400);if(!plain)combatV3Frame(side,'buff',5);await Promise.all(pending);return gained;
   }finally{await Promise.allSettled(pending);f.style.transform=transform;combatV3Action(side,'idle');}
 };

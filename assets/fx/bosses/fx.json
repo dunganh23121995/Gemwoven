@@ -118,5 +118,1095 @@
     "file": "assets/fx/bosses/moonfang.webp",
     "count": 6,
     "frameDuration": 70
+  },
+  "earth/bless": {
+    "file": "assets/fx/bosses/earth/skills/bless.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "earth/claw": {
+    "file": "assets/fx/bosses/earth/skills/claw.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "earth/guard": {
+    "file": "assets/fx/bosses/earth/skills/guard.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "earth/quake": {
+    "file": "assets/fx/bosses/earth/skills/quake.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "earth/snare": {
+    "file": "assets/fx/bosses/earth/skills/snare.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/firesea": {
+    "file": "assets/fx/bosses/fire/skills/firesea.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/flamestream": {
+    "file": "assets/fx/bosses/fire/skills/flamestream.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/jaws": {
+    "file": "assets/fx/bosses/fire/skills/jaws.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/lavaspit": {
+    "file": "assets/fx/bosses/fire/skills/lavaspit.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/scale": {
+    "file": "assets/fx/bosses/fire/skills/scale.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/tail": {
+    "file": "assets/fx/bosses/fire/skills/tail.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/bigmoon": {
+    "file": "assets/fx/bosses/ice/skills/bigmoon.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/gust": {
+    "file": "assets/fx/bosses/ice/skills/gust.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/lunarlock": {
+    "file": "assets/fx/bosses/ice/skills/lunarlock.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/moonchannel": {
+    "file": "assets/fx/bosses/ice/skills/moonchannel.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/moondome": {
+    "file": "assets/fx/bosses/ice/skills/moondome.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/moonspear": {
+    "file": "assets/fx/bosses/ice/skills/moonspear.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/cannon": {
+    "file": "assets/fx/bosses/lightning/skills/cannon.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/field": {
+    "file": "assets/fx/bosses/lightning/skills/field.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/strike": {
+    "file": "assets/fx/bosses/lightning/skills/strike.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/thunderclaw": {
+    "file": "assets/fx/bosses/lightning/skills/thunderclaw.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/bigcap": {
+    "file": "assets/fx/bosses/mire/skills/bigcap.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/creep": {
+    "file": "assets/fx/bosses/mire/skills/creep.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/gillspores": {
+    "file": "assets/fx/bosses/mire/skills/gillspores.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/puffball": {
+    "file": "assets/fx/bosses/mire/skills/puffball.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/toadstools": {
+    "file": "assets/fx/bosses/mire/skills/toadstools.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/clampspark": {
+    "file": "assets/fx/bosses/scarab/skills/clampspark.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/elytron": {
+    "file": "assets/fx/bosses/scarab/skills/elytron.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/hornstrike": {
+    "file": "assets/fx/bosses/scarab/skills/hornstrike.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/mandible": {
+    "file": "assets/fx/bosses/scarab/skills/mandible.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/obelisks": {
+    "file": "assets/fx/bosses/scarab/skills/obelisks.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/suncrest": {
+    "file": "assets/fx/bosses/scarab/skills/suncrest.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/coralglow": {
+    "file": "assets/fx/bosses/leviathan/skills/coralglow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/frostbreath": {
+    "file": "assets/fx/bosses/leviathan/skills/frostbreath.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/jetsplash": {
+    "file": "assets/fx/bosses/leviathan/skills/jetsplash.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/raincloud": {
+    "file": "assets/fx/bosses/leviathan/skills/raincloud.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/seabolt": {
+    "file": "assets/fx/bosses/leviathan/skills/seabolt.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/waterjet": {
+    "file": "assets/fx/bosses/leviathan/skills/waterjet.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus/coreheat": {
+    "file": "assets/fx/bosses/colossus/skills/coreheat.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus/gearshield": {
+    "file": "assets/fx/bosses/colossus/skills/gearshield.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus/hammer": {
+    "file": "assets/fx/bosses/colossus/skills/hammer.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus/smash": {
+    "file": "assets/fx/bosses/colossus/skills/smash.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus/steamburst": {
+    "file": "assets/fx/bosses/colossus/skills/steamburst.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/crossglint": {
+    "file": "assets/fx/bosses/prism/skills/crossglint.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/prismpillar": {
+    "file": "assets/fx/bosses/prism/skills/prismpillar.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/scythecut": {
+    "file": "assets/fx/bosses/prism/skills/scythecut.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/scythetrail": {
+    "file": "assets/fx/bosses/prism/skills/scythetrail.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/scythex": {
+    "file": "assets/fx/bosses/prism/skills/scythex.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/spectrum": {
+    "file": "assets/fx/bosses/prism/skills/spectrum.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/hookcut": {
+    "file": "assets/fx/bosses/reaper/skills/hookcut.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/moonblade": {
+    "file": "assets/fx/bosses/reaper/skills/moonblade.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/scythe": {
+    "file": "assets/fx/bosses/reaper/skills/scythe.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/soulknot": {
+    "file": "assets/fx/bosses/reaper/skills/soulknot.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/tatters": {
+    "file": "assets/fx/bosses/reaper/skills/tatters.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "roc/cyclone": {
+    "file": "assets/fx/bosses/roc/skills/cyclone.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "roc/dive": {
+    "file": "assets/fx/bosses/roc/skills/dive.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "roc/featherdart": {
+    "file": "assets/fx/bosses/roc/skills/featherdart.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "roc/wings": {
+    "file": "assets/fx/bosses/roc/skills/wings.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/maw": {
+    "file": "assets/fx/bosses/briar/skills/maw.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/rosebloom": {
+    "file": "assets/fx/bosses/briar/skills/rosebloom.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/thorncrown": {
+    "file": "assets/fx/bosses/briar/skills/thorncrown.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/thornspike": {
+    "file": "assets/fx/bosses/briar/skills/thornspike.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/thornwrap": {
+    "file": "assets/fx/bosses/briar/skills/thornwrap.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/vinewhip": {
+    "file": "assets/fx/bosses/briar/skills/vinewhip.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/heavenlight": {
+    "file": "assets/fx/bosses/seraph/skills/heavenlight.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/holyseal": {
+    "file": "assets/fx/bosses/seraph/skills/holyseal.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/lightspear": {
+    "file": "assets/fx/bosses/seraph/skills/lightspear.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/sealbeam": {
+    "file": "assets/fx/bosses/seraph/skills/sealbeam.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/sunlance": {
+    "file": "assets/fx/bosses/seraph/skills/sunlance.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/swordlight": {
+    "file": "assets/fx/bosses/seraph/skills/swordlight.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/galaxy": {
+    "file": "assets/fx/bosses/eclipse/skills/galaxy.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/nebulafire": {
+    "file": "assets/fx/bosses/eclipse/skills/nebulafire.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/starshards": {
+    "file": "assets/fx/bosses/eclipse/skills/starshards.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/voidorb": {
+    "file": "assets/fx/bosses/eclipse/skills/voidorb.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/voidseam": {
+    "file": "assets/fx/bosses/eclipse/skills/voidseam.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/blossomsigil": {
+    "file": "assets/fx/bosses/elderbloom/skills/blossomsigil.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/pollenbloom": {
+    "file": "assets/fx/bosses/elderbloom/skills/pollenbloom.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/rootguard": {
+    "file": "assets/fx/bosses/elderbloom/skills/rootguard.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/rootquake": {
+    "file": "assets/fx/bosses/elderbloom/skills/rootquake.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/rootstab": {
+    "file": "assets/fx/bosses/elderbloom/skills/rootstab.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/sapglow": {
+    "file": "assets/fx/bosses/elderbloom/skills/sapglow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/springtree": {
+    "file": "assets/fx/bosses/elderbloom/skills/springtree.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/corefire": {
+    "file": "assets/fx/bosses/cinderheart/skills/corefire.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/fistwave": {
+    "file": "assets/fx/bosses/cinderheart/skills/fistwave.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/geyser": {
+    "file": "assets/fx/bosses/cinderheart/skills/geyser.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/lavajet": {
+    "file": "assets/fx/bosses/cinderheart/skills/lavajet.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/obsidianshell": {
+    "file": "assets/fx/bosses/cinderheart/skills/obsidianshell.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/pumice": {
+    "file": "assets/fx/bosses/cinderheart/skills/pumice.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/spikeline": {
+    "file": "assets/fx/bosses/cinderheart/skills/spikeline.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/aurorabeam": {
+    "file": "assets/fx/bosses/frostregent/skills/aurorabeam.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/glacierdrop": {
+    "file": "assets/fx/bosses/frostregent/skills/glacierdrop.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/hail": {
+    "file": "assets/fx/bosses/frostregent/skills/hail.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/icemirror": {
+    "file": "assets/fx/bosses/frostregent/skills/icemirror.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/icepillar": {
+    "file": "assets/fx/bosses/frostregent/skills/icepillar.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/icicle": {
+    "file": "assets/fx/bosses/frostregent/skills/icicle.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/sceptrefrost": {
+    "file": "assets/fx/bosses/frostregent/skills/sceptrefrost.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/judgement": {
+    "file": "assets/fx/bosses/tempestwing/skills/judgement.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/plasmaball": {
+    "file": "assets/fx/bosses/tempestwing/skills/plasmaball.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/plasmaclaw": {
+    "file": "assets/fx/bosses/tempestwing/skills/plasmaclaw.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/stormcrown": {
+    "file": "assets/fx/bosses/tempestwing/skills/stormcrown.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/stormeye": {
+    "file": "assets/fx/bosses/tempestwing/skills/stormeye.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/windcircle": {
+    "file": "assets/fx/bosses/tempestwing/skills/windcircle.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/cagedrop": {
+    "file": "assets/fx/bosses/souljailer/skills/cagedrop.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/cageslam": {
+    "file": "assets/fx/bosses/souljailer/skills/cageslam.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/chaincircle": {
+    "file": "assets/fx/bosses/souljailer/skills/chaincircle.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/chainknot": {
+    "file": "assets/fx/bosses/souljailer/skills/chainknot.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/ghostpillars": {
+    "file": "assets/fx/bosses/souljailer/skills/ghostpillars.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/lanternglow": {
+    "file": "assets/fx/bosses/souljailer/skills/lanternglow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/scythewheel": {
+    "file": "assets/fx/bosses/souljailer/skills/scythewheel.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/bloomrot": {
+    "file": "assets/fx/bosses/sporefather/skills/bloomrot.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/fungus": {
+    "file": "assets/fx/bosses/sporefather/skills/fungus.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/gillglow": {
+    "file": "assets/fx/bosses/sporefather/skills/gillglow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/rotslam": {
+    "file": "assets/fx/bosses/sporefather/skills/rotslam.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/sporepod": {
+    "file": "assets/fx/bosses/sporefather/skills/sporepod.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/sprouts": {
+    "file": "assets/fx/bosses/sporefather/skills/sprouts.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/threads": {
+    "file": "assets/fx/bosses/sporefather/skills/threads.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/bricks": {
+    "file": "assets/fx/bosses/prismback/skills/bricks.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/cannonblast": {
+    "file": "assets/fx/bosses/prismback/skills/cannonblast.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/crystalglow": {
+    "file": "assets/fx/bosses/prismback/skills/crystalglow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/quakering": {
+    "file": "assets/fx/bosses/prismback/skills/quakering.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/rampart": {
+    "file": "assets/fx/bosses/prismback/skills/rampart.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/towerfall": {
+    "file": "assets/fx/bosses/prismback/skills/towerfall.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/towers": {
+    "file": "assets/fx/bosses/prismback/skills/towers.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/clockripple": {
+    "file": "assets/fx/bosses/sandchronarch/skills/clockripple.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/reverse": {
+    "file": "assets/fx/bosses/sandchronarch/skills/reverse.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/sandblade": {
+    "file": "assets/fx/bosses/sandchronarch/skills/sandblade.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/sandfall": {
+    "file": "assets/fx/bosses/sandchronarch/skills/sandfall.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/sandglass": {
+    "file": "assets/fx/bosses/sandchronarch/skills/sandglass.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/sandguard": {
+    "file": "assets/fx/bosses/sandchronarch/skills/sandguard.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/sandsaturn": {
+    "file": "assets/fx/bosses/sandchronarch/skills/sandsaturn.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/timewheel": {
+    "file": "assets/fx/bosses/sandchronarch/skills/timewheel.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/clam": {
+    "file": "assets/fx/bosses/coraltide/skills/clam.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/coralgrow": {
+    "file": "assets/fx/bosses/coraltide/skills/coralgrow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/inkclaws": {
+    "file": "assets/fx/bosses/coraltide/skills/inkclaws.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/inkwave": {
+    "file": "assets/fx/bosses/coraltide/skills/inkwave.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/inkwhirl": {
+    "file": "assets/fx/bosses/coraltide/skills/inkwhirl.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/pearlglow": {
+    "file": "assets/fx/bosses/coraltide/skills/pearlglow.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/pearlspring": {
+    "file": "assets/fx/bosses/coraltide/skills/pearlspring.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/bloodmoon": {
+    "file": "assets/fx/bosses/moonfang/skills/bloodmoon.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/crescentguard": {
+    "file": "assets/fx/bosses/moonfang/skills/crescentguard.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/fangs": {
+    "file": "assets/fx/bosses/moonfang/skills/fangs.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/moonblade": {
+    "file": "assets/fx/bosses/moonfang/skills/moonblade.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/shadowx": {
+    "file": "assets/fx/bosses/moonfang/skills/shadowx.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/starcut": {
+    "file": "assets/fx/bosses/moonfang/skills/starcut.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/twinflames": {
+    "file": "assets/fx/bosses/moonfang/skills/twinflames.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/breathcone": {
+    "file": "assets/fx/bosses/fire/skills/breathcone.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/jetcone": {
+    "file": "assets/fx/bosses/leviathan/skills/jetcone.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/moonprison": {
+    "file": "assets/fx/bosses/ice/skills/moonprison.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/groundfield": {
+    "file": "assets/fx/bosses/lightning/skills/groundfield.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/thundercone": {
+    "file": "assets/fx/bosses/lightning/skills/thundercone.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/cannonhit": {
+    "file": "assets/fx/bosses/lightning/skills/cannonhit.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/hypnospore": {
+    "file": "assets/fx/bosses/mire/skills/hypnospore.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/lancehit": {
+    "file": "assets/fx/bosses/frostregent/skills/lancehit.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/icelance": {
+    "file": "assets/fx/bosses/frostregent/skills/icelance.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/iceprison": {
+    "file": "assets/fx/bosses/frostregent/skills/iceprison.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/cinderhit": {
+    "file": "assets/fx/bosses/cinderheart/skills/cinderhit.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/cinderdrop": {
+    "file": "assets/fx/bosses/cinderheart/skills/cinderdrop.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/parasite": {
+    "file": "assets/fx/bosses/elderbloom/skills/parasite.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/mooncrescent": {
+    "file": "assets/fx/bosses/reaper/skills/mooncrescent.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/boltcone": {
+    "file": "assets/fx/bosses/tempestwing/skills/boltcone.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/prismcone": {
+    "file": "assets/fx/bosses/prismback/skills/prismcone.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/pearlmote": {
+    "file": "assets/fx/bosses/coraltide/skills/pearlmote.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/eclipseorb": {
+    "file": "assets/fx/bosses/eclipse/skills/eclipseorb.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/eclipseburst": {
+    "file": "assets/fx/bosses/eclipse/skills/eclipseburst.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/minion": {
+    "file": "assets/fx/bosses/elderbloom/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "cinderheart/minion": {
+    "file": "assets/fx/bosses/cinderheart/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "frostregent/minion": {
+    "file": "assets/fx/bosses/frostregent/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "tempestwing/minion": {
+    "file": "assets/fx/bosses/tempestwing/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "souljailer/minion": {
+    "file": "assets/fx/bosses/souljailer/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "sporefather/minion": {
+    "file": "assets/fx/bosses/sporefather/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "prismback/minion": {
+    "file": "assets/fx/bosses/prismback/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "sandchronarch/minion": {
+    "file": "assets/fx/bosses/sandchronarch/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "coraltide/minion": {
+    "file": "assets/fx/bosses/coraltide/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "ice/moonlance": {
+    "file": "assets/fx/bosses/ice/skills/moonlance.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/fieldring": {
+    "file": "assets/fx/bosses/lightning/skills/fieldring.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/rootcreep": {
+    "file": "assets/fx/bosses/mire/skills/rootcreep.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "fire/climax": {
+    "file": "assets/fx/bosses/fire/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/climax": {
+    "file": "assets/fx/bosses/ice/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/climax": {
+    "file": "assets/fx/bosses/lightning/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/climax": {
+    "file": "assets/fx/bosses/mire/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/climax": {
+    "file": "assets/fx/bosses/scarab/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/climax": {
+    "file": "assets/fx/bosses/eclipse/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/climax": {
+    "file": "assets/fx/bosses/elderbloom/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/climax": {
+    "file": "assets/fx/bosses/cinderheart/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/climax": {
+    "file": "assets/fx/bosses/tempestwing/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/climax": {
+    "file": "assets/fx/bosses/souljailer/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/climax": {
+    "file": "assets/fx/bosses/sporefather/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/climax": {
+    "file": "assets/fx/bosses/prismback/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/climax": {
+    "file": "assets/fx/bosses/coraltide/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/climax": {
+    "file": "assets/fx/bosses/moonfang/skills/climax.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/frostmist": {
+    "file": "assets/fx/bosses/leviathan/skills/frostmist.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/moonshatter": {
+    "file": "assets/fx/bosses/ice/skills/moonshatter.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "ice/plate": {
+    "file": "assets/fx/bosses/ice/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "lightning/plate": {
+    "file": "assets/fx/bosses/lightning/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "mire/plate": {
+    "file": "assets/fx/bosses/mire/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "scarab/plate": {
+    "file": "assets/fx/bosses/scarab/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/plate": {
+    "file": "assets/fx/bosses/leviathan/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "colossus/plate": {
+    "file": "assets/fx/bosses/colossus/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prism/plate": {
+    "file": "assets/fx/bosses/prism/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "reaper/plate": {
+    "file": "assets/fx/bosses/reaper/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "roc/plate": {
+    "file": "assets/fx/bosses/roc/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "briar/plate": {
+    "file": "assets/fx/bosses/briar/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "seraph/plate": {
+    "file": "assets/fx/bosses/seraph/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "eclipse/plate": {
+    "file": "assets/fx/bosses/eclipse/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "elderbloom/plate": {
+    "file": "assets/fx/bosses/elderbloom/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "cinderheart/plate": {
+    "file": "assets/fx/bosses/cinderheart/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "frostregent/plate": {
+    "file": "assets/fx/bosses/frostregent/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "tempestwing/plate": {
+    "file": "assets/fx/bosses/tempestwing/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "souljailer/plate": {
+    "file": "assets/fx/bosses/souljailer/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sporefather/plate": {
+    "file": "assets/fx/bosses/sporefather/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "prismback/plate": {
+    "file": "assets/fx/bosses/prismback/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/plate": {
+    "file": "assets/fx/bosses/sandchronarch/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "coraltide/plate": {
+    "file": "assets/fx/bosses/coraltide/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/plate": {
+    "file": "assets/fx/bosses/moonfang/skills/plate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "moonfang/minion": {
+    "file": "assets/fx/bosses/moonfang/skills/minion.webp",
+    "count": 1,
+    "frameDuration": 100
+  },
+  "elderbloom/blossomplate": {
+    "file": "assets/fx/bosses/elderbloom/skills/blossomplate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "sandchronarch/clockplate": {
+    "file": "assets/fx/bosses/sandchronarch/skills/clockplate.webp",
+    "count": 6,
+    "frameDuration": 70
+  },
+  "leviathan/frostcone": {
+    "file": "assets/fx/bosses/leviathan/skills/frostcone.webp",
+    "count": 6,
+    "frameDuration": 70
   }
 }
