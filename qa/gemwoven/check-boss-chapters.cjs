@@ -79,6 +79,16 @@ for(const d of D.definitions){
   const normal=M.encounter('campaign',start+1),normal2=M.encounter('campaign',start+11),normal3=M.encounter('campaign',start+21);assert.equal(new Set([normal.creature,normal2.creature,normal3.creature]).size,3);
   const small=T.create(d,{tier:'normal',variant:0});let smallHazard=false;for(let i=0;i<15;i++){smallHazard=T.advance(small,d,1).some(e=>e.type==='hazard')||smallHazard;assert.ok(small.stacks<=2);}assert.ok(smallHazard,'Ordinary monsters teach a weakened version of the actual environment hazard');
 }
+// Chapters 15-24: a full rage gauge starts the ultimate in any phase, at least 6 turns after the last one.
+for(const d of D.definitions){
+  const ult=d.skills.find(s=>s.ult),t=T.create(d,{bossMax:100000});
+  for(let i=0;i<3;i++)T.advance(t,d,.95);
+  t.gauge=99;t.channel=null;assert.notEqual(T.forecast(t,d).name,ult.name);
+  const first=T.advance(t,d,.95);assert.ok(first.some(e=>e.type==='hazard'&&e.overload),d.id+': the gauge overflows');
+  assert.ok(first.some(e=>(e.type==='windup'||e.type==='cast')&&e.name===ult.name),d.id+': a full gauge starts the ultimate');
+  T.advance(t,d,.95);t.gauge=99;const soon=T.advance(t,d,.95);
+  assert.ok(!soon.some(e=>(e.type==='windup'||e.type==='cast')&&e.name===ult.name),d.id+': not again within 6 turns');
+}
 // Chapter bosses 1-14 pick the skill that fits the fight, and a whole fight shows every skill of the kit.
 {
   const W=require('../../src/gemwoven/world.js');
@@ -91,6 +101,13 @@ for(const d of D.definitions){
     if(guard)assert.notEqual(T.chooseSkill(b.skills,{...fresh,armor:50,hpRatio:.8,history:['x']}).name,guard.name,id+': no guard while armoured');
     if(heal)assert.equal(T.chooseSkill(b.skills,{...fresh,hpRatio:.45,history:[ult.name]}).name,heal.name,id+': heals when low');
     if(drain)assert.equal(T.chooseSkill(b.skills,{...fresh,heroEnergy:90,history:[b.skills[0].name===drain.name?'x':b.skills[0].name]}).name,drain.name,id+': drains a hero about to unleash');
+    { // The kit goes round: nothing comes back before the others, and the ultimate closes the round by the fourth cast.
+      const plain=b.skills.filter(s=>!s.ult),h=[];let round=new Set(),armor=0;
+      for(let i=0;i<12;i++){const s=T.chooseSkill(b.skills,{...fresh,hpRatio:1-i*.07,armor,history:h});h.push(s.name);armor=s.kind==='guard'?20:0;
+        if(s.ult)continue;assert.ok(!round.has(s.name)||s.kind==='guard'||plain.some(x=>x.kind==='guard'),id+': '+s.name+' came back before the rest of the kit');round.add(s.name);if(round.size===plain.length)round=new Set();}
+      assert.ok(h.slice(0,4).includes(ult.name),id+': ultimate by the fourth cast');
+      for(const s of plain)assert.ok(h.includes(s.name),id+': '+s.name+' is cast in a fight');
+    }
     const history=[];for(let i=0;i<8;i++){const hp=1-i*.1;history.push(T.chooseSkill(b.skills,{...fresh,hpRatio:hp,heroEnergy:i*15%100,heroDot:i%3===1,history}).name);}
     assert.equal(new Set(history).size,b.skills.length,id+': every skill used in a fight '+history.join(', '));
     for(let i=1;i<history.length;i++)assert.notEqual(history[i],history[i-1],id+': no skill twice in a row');

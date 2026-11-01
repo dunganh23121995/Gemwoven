@@ -576,7 +576,7 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,
   get progressionTurns(){return progressionTurn;},
   get expedition(){return typeof expeditionState==='undefined'?null:expeditionState;},expeditionCollect,
-  expeditionTurn(){return expeditionEnemyTurn();},heroStrike(raw){return attack('hero',raw);},foeStrike(raw){return attack('enemy',raw);},
+  expeditionTurn(){return expeditionEnemyTurn();},rageCast(){state.enemyEnergy=100;return castReadyUltimates();},bossHistory(){return progressionBossHistory.slice();},heroStrike(raw){return attack('hero',raw);},foeStrike(raw){return attack('enemy',raw);},
   get progressionEnemyEffects(){return {dot:progressionEnemyDot?{...progressionEnemyDot}:null,charge:progressionEnemyCharge};},
   // Studio: try an alternative drawing of a hero (ART.heroVariants) in place of its current one.
   heroVariant(key,name){const base=ART.heroVariantBase||(ART.heroVariantBase={});base[key]??=ART.heroes[key];ART.heroes[key]=name?ART.heroVariants?.[key]?.[name]||base[key]:base[key];renderActors();update();return Object.keys(ART.heroVariants?.[key]||{});},

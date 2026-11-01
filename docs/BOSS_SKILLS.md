@@ -153,15 +153,16 @@ approved state relies on:
 Chapters 1-14: the boss casts a skill each time its rage fills (gems it matches), choosing the one that fits the
 fight (boss-tactics.js `chooseSkill`, the same rules in the studio's "Kỹ năng địch" line):
 
-- **Ultimate**: from the third cast on, once the boss is at 60% health or less or the hero at 35% or less (or at
-  the fifth cast anyway); at most once in three casts.
+- **Ultimate**: from the third cast on, once the boss is at 60% health or less or the hero at 35% or less, by the
+  fourth cast anyway; at least three casts apart.
 - **Guard** (armour): only with no armour left, preferably once hurt. **Heal**: at 75% health or less, urgently
   at 50%. **Drain** (rage): when the hero is near an ultimate (60 rage or more). **Burn / poison**: when the hero
   carries none of the boss's yet. **Execute**: below its threshold. **Lifesteal**: once hurt (below 70%).
   **Pierce**: when the hero holds armour. **Charge**: never twice in a row; the next blow is the heavy one.
   **Strike**: the default.
-- A skill not cast yet is nudged forward so a fight shows the whole kit; never the same skill twice in a row
-  while another fits.
+- The kit goes round: a skill comes back only once every other one has been cast, unless the ones left cannot be
+  used now (a guard while armoured). The rules above set the order within a round.
 
 Chapters 15-24: by health phase (boss-tactics.js `nextSkill`): above 70% skills 1-3, 70-35% skills 4-5 join,
 35% and below the phase-3 cycle with the ultimate (6); a channelled ultimate warns a turn ahead and can be broken.
+A full rage gauge (the overload) also starts the ultimate, whatever the phase, at least 6 turns after the last one.

@@ -3,7 +3,7 @@
   'use strict';
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   function create(def,{rank=0,heroMax=1000,bossMax=1000,tier='boss',variant=0,skills=null}={}){
-    return {id:def.id,tier,variant,own:tier==='boss'?null:skills,rank:clamp(Math.floor(rank),0,4),heroMax,bossMax,phase:1,turn:0,cast:0,stacks:0,gauge:0,ward:tier==='boss'&&def.mechanic==='shell'?Math.round(bossMax*.12):0,adds:[],addHp:0,addMax:0,addCount:0,addLock:0,channel:null,cleanseTiles:0,vulnerable:0,events:[]};
+    return {id:def.id,tier,variant,own:tier==='boss'?null:skills,rank:clamp(Math.floor(rank),0,4),heroMax,bossMax,phase:1,turn:0,cast:0,stacks:0,gauge:0,enraged:false,ultTurn:-6,ward:tier==='boss'&&def.mechanic==='shell'?Math.round(bossMax*.12):0,adds:[],addHp:0,addMax:0,addCount:0,addLock:0,channel:null,cleanseTiles:0,vulnerable:0,events:[]};
   }
   const resist=t=>[0,.35,.5,.65,.8][t.rank];
   // Summoned guards: each with ADD_HP of the boss's health, each striking for ADD_POWER of a boss blow every
@@ -52,6 +52,8 @@
     if(t.channel)return t.channel.skill;
     if(t.tier==='normal')return atTurn%3===0?(t.own?.[0]||def.skills[[0,1,3][t.variant%3]]):{name:'Đòn đánh thường',effects:[{type:'hit',power:1.4}]};
     if(t.tier==='elite')return t.own?t.own[t.cast%t.own.length]:def.skills[[0,1,3,4][(t.cast+t.variant)%4]];
+    // A full rage gauge is answered with the ultimate, whatever the phase's rotation holds.
+    if(t.enraged)return def.skills.find(x=>x.ult)||def.skills[5];
     const cycle=t.phase===1?[0,1,2,0,1]:t.phase===2?[3,2,4,0,1]:[5,3,4,5,2,3];
     return def.skills[cycle[t.cast%cycle.length]];
   }
@@ -70,12 +72,13 @@
     if(t.rank===4&&t.turn%3===0)t.stacks=Math.max(0,t.stacks-1);
     if(t.stacks&&scale)t.events.push({type:'hazard',amount:Math.ceil(t.heroMax*def.tick*t.stacks*(1-r)*scale)});
     t.gauge=clamp(t.gauge+(8+t.phase*2+t.addCount*3)*(1-r),0,100);
-    if(t.gauge>=100){t.events.push({type:'hazard',amount:Math.ceil(t.heroMax*.05*(1-r)*scale),overload:true});t.gauge=35;t.stacks=Math.min(t.tier==='normal'?2:5,t.stacks+2);}
+    if(t.gauge>=100){t.enraged=t.tier==='boss'&&t.turn-t.ultTurn>=6;t.events.push({type:'hazard',amount:Math.ceil(t.heroMax*.05*(1-r)*scale),overload:true});t.gauge=35;t.stacks=Math.min(t.tier==='normal'?2:5,t.stacks+2);}
     if(['growth','souls','poison','tide'].includes(def.mechanic)&&scale)t.events.push({type:'heal',pct:(t.stacks*.002+t.addCount*.002)*(1-r)*scale});
     if(['frost','time','storm'].includes(def.mechanic)&&t.stacks&&scale)t.events.push({type:'drain',amount:Math.ceil(t.stacks*2*(1-r)*scale)});
     if(t.addHp>0)t.events.push({type:'hit',power:ADD_POWER*t.addCount*(1-r),addAttack:true});
     if(skipAction)return t.events;
     const skill=nextSkill(t,def,t.turn);
+    if(!t.channel){t.enraged=false;if(skill.ult)t.ultTurn=t.turn;}
     if(t.channel){
       const channel=t.channel;t.channel=null;
       if(channel.damage>=t.bossMax*.06||channel.tiles>=6){t.vulnerable=t.rank===4?3:2;t.stacks=Math.max(0,t.stacks-2);t.gauge=Math.max(0,t.gauge-35);if(t.rank===4&&def.mechanic==='tide')t.ward=0;t.events.push({type:'interrupt',name:skill.name});}
@@ -89,15 +92,15 @@
   // Chapter bosses 1-14 (skills with a kind, cast when their rage fills): each cast picks the skill that
   // fits the fight, by its kind. s: {hpRatio, armor (boss), heroHpRatio, heroEnergy, heroArmorRatio,
   // heroDot (a burn or poison of the boss still on the hero), statuses (the boss's own), history (names
-  // cast so far, oldest first)}. A skill never cast yet gets a nudge so every one of the kit shows up;
-  // the same skill twice in a row only when nothing else fits. Ties keep the kit's order.
+  // cast so far, oldest first)}. The kit goes round: a skill is cast again only once every other one has
+  // been (chooseSkill), the order following the fight. Ties keep the kit's order.
   function skillScore(skill,s){
     const k=skill.kind,h=s.history||[],used=h.includes(skill.name),since=used?h.length-1-h.lastIndexOf(skill.name):Infinity,ultSince=(()=>{let n=0;for(let i=h.length-1;i>=0;i--){if(s.ults?.includes(h[i]))break;n++;}return n;})();
     if(skill.ult){
-      // The finisher: from the third cast on, once the boss is hurt (60% HP) or the hero is low, and
-      // at most once in three casts.
+      // The finisher closes each round of the kit: from the third cast on once the boss is hurt (60% HP)
+      // or the hero is low, by the fourth cast anyway, and never within three casts of the last one.
       if(h.length<2||(used&&ultSince<3))return -1;
-      return s.hpRatio<=.6||s.heroHpRatio<=.35?100:h.length>=4?70:-1;
+      return s.hpRatio<=.6||s.heroHpRatio<=.35||h.length>=3?100:-1;
     }
     let score=40;
     if(k==='guard')score=s.armor>0?-1:s.hpRatio<.85?60:25;
@@ -117,13 +120,16 @@
   }
   function chooseSkill(skills,s={}){
     const ctx={...s,ults:skills.filter(x=>x.ult).map(x=>x.name),charges:skills.filter(x=>x.kind==='charge').map(x=>x.name)};
-    let best=null,top=-Infinity;
-    for(const skill of skills){const v=skillScore(skill,ctx);if(v>top){top=v;best=skill;}}
-    return best||skills[0];
+    // The kit's skills already cast this round (a round ends when all of them have been).
+    const plain=skills.filter(x=>!x.ult);let seen=new Set();
+    for(const name of s.history||[]){if(ctx.ults.includes(name))continue;seen.add(name);if(plain.every(x=>seen.has(x.name)))seen=new Set();}
+    const pick=list=>{let best=null,top=-Infinity;for(const skill of list){const v=skillScore(skill,ctx);if(v>top){top=v;best=skill;}}return top>=0?best:null;};
+    // A skill that cannot be used now (a guard while armoured) waits; only then may another one come back.
+    return pick(skills.filter(x=>x.ult||!seen.has(x.name)))||pick(skills)||skills[0];
   }
   // When each kind is cast (studio and docs).
   function skillRule(skill){
-    if(skill.ult)return 'Tuyệt chiêu: từ lần tung thứ 3, khi boss còn ≤60% máu hoặc tướng ≤35% máu; tối đa 1 lần mỗi 3 lần tung';
+    if(skill.ult)return 'Tuyệt chiêu: từ lần tung thứ 3 khi boss còn ≤60% máu hoặc tướng ≤35% máu, chậm nhất lần thứ 4; cách nhau ít nhất 3 lần tung';
     return {guard:'Khi không còn giáp và đã mất máu',heal:'Khi máu boss ≤75% (gấp khi ≤50%)',drain:'Khi tướng sắp đầy nộ (≥60)',burn:'Khi tướng chưa bị thiêu',poison:'Khi tướng chưa trúng độc',
       execute:'Khi máu tướng dưới ngưỡng kết liễu',lifesteal:'Khi boss đã mất máu (<70%)',pierce:'Khi tướng đang có giáp',charge:'Tích lực, lần sau đánh mạnh; không tích hai lần liền',strike:'Đòn chính, dùng khi không có chiêu nào hợp hơn'}[skill.kind]||'Đòn chính';
   }
