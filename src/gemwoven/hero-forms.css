@@ -102,3 +102,7 @@ body.ambience-paused .aura-motes i{animation-play-state:paused}
    drawn over his boots). The chain and clouds above it remain. */
 [data-hero-element="shadow"] .hero-form-aura .form-aura-floorpart{display:none}
 [data-hero-element="shadow"] .form-aura-foreground:not(.form-aura-front){display:none}
+/* A hero's body stands above the town's ambient layers (light wash, soft-light sunbeams, drifting leaves; z 1),
+   which otherwise lie over it and dull and soften it: it used to rise above them only under the pointer (the
+   button hover's z-index 3). Home hero, hero and skill screens, arena fighters. */
+[data-node="home.hero"],[data-node$=".hero-model"],[data-node^="arena.fighter-"]{z-index:3}
