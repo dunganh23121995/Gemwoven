@@ -172,40 +172,59 @@
   },
   "bossfx-tempestwing-plasmaclaw-hit": {
     "file": "boss-skills/tempestwing/plasmaclaw-hit.wav",
-    "duration": 0.96,
-    "beat": "plasmaclaw hit: Electrical Interference",
+    "duration": 0.44,
+    "beat": "plasmaclaw hit: Taser/High Voltage discharge in glass tube",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Electrical Interference",
-        "author": "Sanderboah",
-        "source_url": "https://freesound.org/people/Sanderboah/sounds/799295/",
+        "title": "Taser/High Voltage discharge in glass tube",
+        "author": "The_Chemical_Workshop",
+        "source_url": "https://freesound.org/people/The_Chemical_Workshop/sounds/403253/",
         "license": "CC0-1.0",
-        "sha256": "15137c959f0936240c287067ff0d6984382f3942928197aac394a17425a52a29"
+        "sha256": "d1788e06beed3d22f38415e471fa46ddd8713d99b8bd6d98b966587e8e3e9048"
       }
     ],
-    "processing": "excerpt 21.72-22.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 4.82-5.26 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.065,
-    "sha256": "8e63bcec5a2fa351aad1f54a6ebc13d8cd7c5a0e1f9a4c1c0607fe83888c0c58"
+    "rms": 0.041,
+    "sha256": "87f0ad845e427720dbb6c574b6b5900432b905dd58a3dd65bda43151de973d3c"
   },
   "bossfx-tempestwing-stormfeathers-lock": {
     "file": "boss-skills/tempestwing/stormfeathers-lock.wav",
     "duration": 1.02,
-    "beat": "stormfeathers lock: Heavy Birds (HRTF Binaural): Headphones Required.",
+    "beat": "stormfeathers lock: HighVoltageLine.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Heavy Birds (HRTF Binaural): Headphones Required.",
-        "author": "lonemonk",
-        "source_url": "https://freesound.org/people/lonemonk/sounds/758974/",
+        "title": "HighVoltageLine.wav",
+        "author": "SiriusParsec",
+        "source_url": "https://freesound.org/people/SiriusParsec/sounds/532087/",
         "license": "CC0-1.0",
-        "sha256": "3da1779e0a6d63481d6c54ca2ce40b634814aa3aab3f441116bab8923bb2ecd3"
+        "sha256": "5943a16beb50a63a9088d354140f4b73615c788a3d7bd08526f87cfc8829cd0a"
       }
     ],
-    "processing": "excerpt 2.62-3.64 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.565,
-    "rms": 0.11,
-    "sha256": "d99366ba16292006167203ffd43de529fa58d41d54aeefa4c9f8e5841e98e701"
+    "processing": "excerpt 21.10-22.12 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.108,
+    "sha256": "be02259dda17f66a212a5302b8c923383e02e75565c29f4545e1137be4c1a564"
+  },
+  "bossfx-tempestwing-finale-climax": {
+    "file": "boss-skills/tempestwing/finale-climax.wav",
+    "duration": 2.82,
+    "beat": "finale climax: Thunder2",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Thunder2",
+        "author": "Yoyodaman234",
+        "source_url": "https://freesound.org/people/Yoyodaman234/sounds/267551/",
+        "license": "CC0-1.0",
+        "sha256": "fbe6c67ce375ae9586e393b394ddfbf9221845696a6596692408508087fbcb23"
+      }
+    ],
+    "processing": "excerpt 1.66-4.48 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.063,
+    "sha256": "c8fcaf4c7221e0ff7beaba707c61c37b62a535431de130ebffb353c8ce82d355"
   }
 }

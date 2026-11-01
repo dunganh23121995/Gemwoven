@@ -115,22 +115,22 @@
   },
   "bossfx-prism-scythecut-hit": {
     "file": "boss-skills/prism/scythecut-hit.wav",
-    "duration": 0.82,
-    "beat": "scythecut hit: Skates on Ice.wav",
+    "duration": 0.38,
+    "beat": "scythecut hit: KNIFE - 3",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Skates on Ice.wav",
-        "author": "Rehanjo",
-        "source_url": "https://freesound.org/people/Rehanjo/sounds/593623/",
+        "title": "KNIFE - 3",
+        "author": "SamuelGremaud",
+        "source_url": "https://freesound.org/people/SamuelGremaud/sounds/573298/",
         "license": "CC0-1.0",
-        "sha256": "0cfd67db2adb3ea91dcaf75778a30895c5008b1ed76a1e045505885e7112ab6b"
+        "sha256": "a68b0438776f21b6342a431fbe71a11e07effffa4f3e7192b41da1b4e4a66182"
       }
     ],
-    "processing": "excerpt 2.12-2.94 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 1.08-1.46 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.096,
-    "sha256": "7adf92e4ad0a535ff356dc023bfea96d73d9a98bf3d68b4c3f2083603e83e923"
+    "rms": 0.05,
+    "sha256": "846b31e31f4e948a5b2355e8166c20716abe4f5981f5979d6f08cc408e3f287b"
   },
   "bossfx-prism-spectrum-start": {
     "file": "boss-skills/prism/spectrum-start.wav",

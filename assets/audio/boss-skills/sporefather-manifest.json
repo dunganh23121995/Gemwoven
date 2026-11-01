@@ -77,22 +77,22 @@
   },
   "bossfx-sporefather-threads-hit": {
     "file": "boss-skills/sporefather/threads-hit.wav",
-    "duration": 1.6,
-    "beat": "threads hit: Bottle Squeeze 3",
+    "duration": 0.5,
+    "beat": "threads hit: Slime Collision",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Bottle Squeeze 3",
-        "author": "NicJonesAudio",
-        "source_url": "https://freesound.org/people/NicJonesAudio/sounds/863866/",
+        "title": "Slime Collision",
+        "author": "dinoroki",
+        "source_url": "https://freesound.org/people/dinoroki/sounds/731932/",
         "license": "CC0-1.0",
-        "sha256": "c6f81869d1cd69e35a18b6083e2d24399c7bc5ceca9e89bf46bff816aff4ea46"
+        "sha256": "474d4af5626f53b3d337f4571fd222d3e8b6e583e6c1813be79d51675cb9204f"
       }
     ],
-    "processing": "excerpt 0.00-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 8.82-9.32 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.104,
-    "sha256": "e99bf0ed158955c8e1e585eefa639ea4562093389448f9211eb6f1717ffca1ed"
+    "rms": 0.025,
+    "sha256": "e2a1913528fec1a57fe36928c9a106a93d5bb98d3ff0524047b18994c36b6fc2"
   },
   "bossfx-sporefather-bloomrot-start": {
     "file": "boss-skills/sporefather/bloomrot-start.wav",
@@ -229,22 +229,22 @@
   },
   "bossfx-sporefather-sprouts-grow": {
     "file": "boss-skills/sporefather/sprouts-grow.wav",
-    "duration": 2.6,
-    "beat": "sprouts grow: Rice grains poured into a cup recorded with contact microphone",
+    "duration": 2.62,
+    "beat": "sprouts grow: Wet Sourdough Starter Kneading",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Rice grains poured into a cup recorded with contact microphone",
-        "author": "bassimat",
-        "source_url": "https://freesound.org/people/bassimat/sounds/823855/",
+        "title": "Wet Sourdough Starter Kneading",
+        "author": "marlonnnnnn",
+        "source_url": "https://freesound.org/people/marlonnnnnn/sounds/837964/",
         "license": "CC0-1.0",
-        "sha256": "55b59c91d34f867524be5fdfb632bdde4a04614abe85612c7a901050c1451290"
+        "sha256": "b9c8af66250276e7b0fbd7d40a2fdefd91ee0e0955ae8decfbd6203a9db6ff0a"
       }
     ],
-    "processing": "excerpt 0.00-2.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 27.52-30.14 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.046,
-    "sha256": "7e42d3abe2b2f776a3dde1cbc89d9d5c1e0cb565073c76d0e59ba28199464ffe"
+    "rms": 0.021,
+    "sha256": "22f07f76050256cd95ad23e1cba692351434ed40b6fc681ea36f0a39f99f9e15"
   },
   "bossfx-sporefather-shelves-lock": {
     "file": "boss-skills/sporefather/shelves-lock.wav",
@@ -264,5 +264,24 @@
     "peak": 0.82,
     "rms": 0.042,
     "sha256": "fe75c8b55590f7b31c0a763a003b8831b9a99daffe41eb4e5c730728d2524755"
+  },
+  "bossfx-sporefather-finale-climax": {
+    "file": "boss-skills/sporefather/finale-climax.wav",
+    "duration": 1.96,
+    "beat": "finale climax: Water Explosion",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Water Explosion",
+        "author": "Sheyvan",
+        "source_url": "https://freesound.org/people/Sheyvan/sounds/519008/",
+        "license": "CC0-1.0",
+        "sha256": "f2e4c1ff0ac9336b47d33a4eb8c666697c0558700de30c57fd5fb8cc5d77a6bd"
+      }
+    ],
+    "processing": "excerpt 0.00-1.96 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.102,
+    "sha256": "422b15c99d8ad0d9170040acb8456fa7980d8e4cffa0c9bfd6531758c3942cce"
   }
 }

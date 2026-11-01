@@ -100,8 +100,9 @@ Every chapter boss's kit, staging, art and sounds are approved and locked; chang
 approved state relies on:
 
 - **Place.** A boss stands by its resting body close to the outer edge, 4% of the stage from it, as the first
-  chapter's golem stands (combat-stage.js `combatKeepInside`); wider poses (wings, a tail lash) may pass the edge for
-  a moment. At least 16% of the stage (48px or more) stays clear between hero and boss; on a narrow stage the boss is
+  chapter's golem stands (combat-stage.js `combatKeepInside`); a wider pose (fists raised, a tail coiled out) that
+  would come nearer the edge than that line steps in to it (sprite-runtime.js `spriteInset`; the stage's frame trim
+  hides anything nearer), except airborne sheets. At least 16% of the stage (48px or more) stays clear between hero and boss; on a narrow stage the boss is
   drawn smaller (down to 80%, `combatBossFit`) rather than crowding the hero. Every pose stands on the resting pose's
   feet: build.py slides each sheet's first frame over the idle's silhouette (`feetX`) and sprite-runtime.js
   `spriteBox` draws it there, so a skill's pose never shifts the body. Poses fit under the HUD by their `peak` point,
@@ -111,18 +112,41 @@ approved state relies on:
   stomps (Chấn Địa Tinh Nham, Cộng Hưởng Nghịch Chấn).
 - **Origins.** Ground skills leave from the boss's front feet; sky skills fall from the top of the screen; breath
   leaves the mouth anchors of the pose (actions.json `mouth`, else the build's `front` points).
+- **From the sky.** A pillar or bolt that strikes from above reaches the top of the stage instead of ending mid-air:
+  look.shaft names a band of the sheet under its top that foe-skills.js `foeShaft` stretches up to the stage's top,
+  frame for frame (Phong Ấn Thánh Quang, Ngũ Lôi, Thiên Phạt Cửu Lôi). A band-shaped sheet on a ray (look.alongRay,
+  Quang Phổ Rạn Nứt) gathers and bursts along the ray with its square ends faded.
 - **Armour.** No shell picture pops up: the boss's own plates orbit it without motion blur and a glaze lies on the
   sprite while `enemyArmor` (or an expedition ward) holds. Bosses with armoured sheets (`armoridle`,
-  `<action>_armored`) attack in that armour.
+  `<action>_armored`) attack in that armour: a skill's pose (look.pose) resolves to its armoured drawing, so the
+  armoured fire dragon still lashes with its tail (`tail_armored`), and its hurt plays all of `hurt_armored`.
 - **Board turns stay in the boss's style.** Armour, health or energy a boss gains from gems plays no cast pose,
   hero element emblem or sanctuary; armour puts on its own plates. Its basic pounce uses its body and its own
   recordings, without the heroes' crescent slash, elemental bloom or synthesized sounds (foe-skills.js).
 - **States show on the body.** Frenzy (red blaze), stealth (faded shimmer), invulnerable (gold shell), undying
   (violet shell), regen (green motes), thorn crown (reflect).
-- **Summons are monsters.** Each cast adds two guards with their own health (boss-tactics.js, up to six); they attack
-  on the foe turn, take 40% of each blow aimed at the boss, and stay until killed.
+- **Summons are monsters.** Each cast adds two guards (boss-tactics.js `ADD_HP` 8% of the boss's health each, up to
+  `MAX_ADDS` six) to those still standing; every guard strikes on the foe turn for `ADD_POWER` (25%) of a boss blow.
+  They stand in front of the boss and its shell: every blow lands on the front guard, the rest carries on to the next,
+  and only once all have fallen does it reach the boss. The hero's basic attack runs at the front guard, whose number
+  rises over it (expedition-combat.js, foeGuardStruck).
 - **Ultimates** darken the stage, warn, play the boss's own climax sheet and end with a flash; stage-sized looks
-  (`stage`) may fill half the screen (Vạn Trượng Hải Triều).
+  (`stage`) may fill half the screen (Vạn Trượng Hải Triều; Lôi Thần Quang Pháo's thunderbolt). The climax is heard:
+  `finale-climax`, one recording per boss (a thunderclap, a tidal wave, a collapse...), in foeUltFinale and cataclysm.
+- **Grand.** A boss's skill effects are drawn `FOE_BOSS_FX` (1.3) times their measure (an elite's at .68); an
+  ultimate's lead-in effects at `FOE_ULT_LEAD` (.85). An effect stays centred on its target; at the stage's edge up to
+  15% of its painting (build.py `box`) may run under the frame trim, beyond that it shrinks (to a third at most).
+- **One floor.** Each grounded sheet's contact line (`ground`, where it meets the floor; a ring's middle line) is read
+  off by eye into assets/fx/bosses/ground-line.json (null for an effect in the air; loose debris and spray below the
+  base do not count; a new sheet gets its line there too) and build.py passes it on; every
+  grounded effect of a skill stands that line on the target's feet (c.ground, unless a look sets `ground` by hand for a
+  ring seen in perspective), and every shrink (edge, HUD line, an ultimate's lead-in) keeps it there, so a skill's
+  bursts, its pulses and its climax meet the same floor. A blow's grounded sheet lands with its contact line on the
+  hero's feet (foe-skills.js `foeOn`), an upright prison too (bind), and shrinking keeps it there. Sheets whose grid's second row was drawn higher are lowered
+  onto their ground at export (assets/fx/bosses/export_fx.py, ground.json).
+- **Weapons.** A boss's basic blow is heard with its own first bodily skill; a boss with a weapon swings and cuts
+  with that weapon's skill (BOSS_WEAPON_SKILL: the colossus's hammer; the scythes, swords and blades are their kits'
+  first skills).
 
 ## When each skill is cast
 

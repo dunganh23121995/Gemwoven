@@ -249,21 +249,21 @@
   "bossfx-prismback-collapse-channel": {
     "file": "boss-skills/prismback/collapse-channel.wav",
     "duration": 1.42,
-    "beat": "collapse channel: Gentle step on gravel",
+    "beat": "collapse channel: EarthquakeSFX.aif",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Gentle step on gravel",
-        "author": "ThabzMalik",
-        "source_url": "https://freesound.org/people/ThabzMalik/sounds/767057/",
+        "title": "EarthquakeSFX.aif",
+        "author": "Les%20Blachut",
+        "source_url": "https://freesound.org/people/Les%20Blachut/sounds/523541/",
         "license": "CC0-1.0",
-        "sha256": "629f02b8c59af48509545e447ef2a36f58e136208d86b67fa6c0c06b558c969d"
+        "sha256": "587949b5377157180dfb1612c3272961afcce45fd5bbd5ce88ebaa17ab502759"
       }
     ],
-    "processing": "excerpt 12.46-13.88 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.554,
+    "processing": "excerpt 14.62-16.04 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.347,
     "rms": 0.08,
-    "sha256": "30cd8a42221d32b4c113329d39a9b71d72adf013b7eda9da32b1fe3e47072245"
+    "sha256": "10ebd2c5e03d37bd3d0013d3870d5fd228b4c6e8e3086c661f043050652dc0db"
   },
   "bossfx-prismback-towers-channel": {
     "file": "boss-skills/prismback/towers-channel.wav",
@@ -321,5 +321,24 @@
     "peak": 0.82,
     "rms": 0.138,
     "sha256": "31af08a0f37fe8d6e189ae3082ddf8b68e08c7ee1a4d498c3f46c234cfcd39d7"
+  },
+  "bossfx-prismback-finale-climax": {
+    "file": "boss-skills/prismback/finale-climax.wav",
+    "duration": 1.68,
+    "beat": "finale climax: Break Mirror001.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Break Mirror001.wav",
+        "author": "Tetrisrocker",
+        "source_url": "https://freesound.org/people/Tetrisrocker/sounds/522230/",
+        "license": "CC0-1.0",
+        "sha256": "91ee73f059fac41b44878353ed659e891a32796ad66694d37309c3f35eff0f5a"
+      }
+    ],
+    "processing": "excerpt 0.86-2.54 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.074,
+    "sha256": "d4d470d72e445ae1325c2dbf5290336caafefabed90b3bf0536080797f7d9e77"
   }
 }

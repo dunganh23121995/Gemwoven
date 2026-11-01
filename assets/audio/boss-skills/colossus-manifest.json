@@ -39,22 +39,22 @@
   },
   "bossfx-colossus-hammer-hit": {
     "file": "boss-skills/colossus/hammer-hit.wav",
-    "duration": 0.48,
-    "beat": "hammer hit: Anvil Strikes_5.wav",
+    "duration": 1.62,
+    "beat": "hammer hit: Foley_Impact_Metal_Long_Mono.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Anvil Strikes_5.wav",
-        "author": "alan3809",
-        "source_url": "https://freesound.org/people/alan3809/sounds/103071/",
+        "title": "Foley_Impact_Metal_Long_Mono.wav",
+        "author": "Nox_Sound",
+        "source_url": "https://freesound.org/people/Nox_Sound/sounds/569555/",
         "license": "CC0-1.0",
-        "sha256": "5cf1de3a8ab2391d97f0ab05fc00beefae64cd078bf50ff6e6eb1200e0b5f1a4"
+        "sha256": "cea7f8ce521a0c2b7d78f2f52775ecf64132a92aba7ffa0a339331aa9ce11cb9"
       }
     ],
-    "processing": "excerpt 9.28-9.76 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.061,
-    "sha256": "1b0d8f745a57984c74afedffad56559a7d6d1f6e8bbd49a430f3b52f4568f191"
+    "processing": "excerpt 26.70-28.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.714,
+    "rms": 0.11,
+    "sha256": "29d40e211ad623a0dcc2c055796c6abf0c8020a7795155cf845f0e73eca8cd13"
   },
   "bossfx-colossus-ironwall-start": {
     "file": "boss-skills/colossus/ironwall-start.wav",

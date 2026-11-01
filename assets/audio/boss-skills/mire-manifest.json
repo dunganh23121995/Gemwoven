@@ -39,22 +39,22 @@
   },
   "bossfx-mire-dizzy-start": {
     "file": "boss-skills/mire/dizzy-start.wav",
-    "duration": 0.8,
-    "beat": "dizzy start: Bubbles Blowing and Popping",
+    "duration": 0.94,
+    "beat": "dizzy start: Spraying Noise",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Bubbles Blowing and Popping",
-        "author": "SecureSubset",
-        "source_url": "https://freesound.org/people/SecureSubset/sounds/796093/",
+        "title": "Spraying Noise",
+        "author": "Seth_Makes_Sounds",
+        "source_url": "https://freesound.org/people/Seth_Makes_Sounds/sounds/852533/",
         "license": "CC0-1.0",
-        "sha256": "1ad0c467e110bd8adedfed989fa9e3a8b24de9b55d91dfed6d1b7c8d66c67c5f"
+        "sha256": "a0c6619025e85e7dc5f8b8fe0c02ad0d13f87b53a80ff0062c690f2d2e7ff1ce"
       }
     ],
-    "processing": "excerpt 4.58-5.38 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.817,
-    "rms": 0.11,
-    "sha256": "40e67b6eab6b6b1ad7a3daafa6715d69f4475aa1134cc7690c81860954b1ace2"
+    "processing": "excerpt 5.06-6.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.093,
+    "sha256": "5ab24d5918462a79598b389156c3274dcad2f154cd1eebdee922a1c908d72245"
   },
   "bossfx-mire-dizzy-hit": {
     "file": "boss-skills/mire/dizzy-hit.wav",
@@ -97,21 +97,21 @@
   "bossfx-mire-mycelium-channel": {
     "file": "boss-skills/mire/mycelium-channel.wav",
     "duration": 1.42,
-    "beat": "mycelium channel: Shapeshifter shifting shapes",
+    "beat": "mycelium channel: grince21.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Shapeshifter shifting shapes",
-        "author": "pfranzen",
-        "source_url": "https://freesound.org/people/pfranzen/sounds/505932/",
+        "title": "grince21.wav",
+        "author": "ebanse",
+        "source_url": "https://freesound.org/people/ebanse/sounds/415317/",
         "license": "CC0-1.0",
-        "sha256": "222a3673154a9724a3e53a9abbb6a563c118a070fddb961e990736677793b08f"
+        "sha256": "4a2eaa05a7e53f5bc0d174cbeed35f99dbf3de9258ef47857a6762e01a47bad8"
       }
     ],
-    "processing": "excerpt 1.78-3.20 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.02,
-    "sha256": "13141a91c522a4054fefdb998dc831c749aa3135dcc30dd06fcdac0152247ef3"
+    "processing": "excerpt 1.26-2.68 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.397,
+    "rms": 0.08,
+    "sha256": "b1965fada46b16cc98a396ab5ce01eeb020fbddc8c43c7c17b84a5701f498aea"
   },
   "bossfx-mire-toadstools-start": {
     "file": "boss-skills/mire/toadstools-start.wav",
@@ -153,21 +153,40 @@
   },
   "bossfx-mire-mycelium-hit": {
     "file": "boss-skills/mire/mycelium-hit.wav",
-    "duration": 0.28,
-    "beat": "mycelium hit: squelching.mp3",
+    "duration": 0.85,
+    "beat": "mycelium hit: Mud squelches from child walking along woodland path",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "squelching.mp3",
-        "author": "tiddles451",
-        "source_url": "https://freesound.org/people/tiddles451/sounds/547446/",
+        "title": "Mud squelches from child walking along woodland path",
+        "author": "chris_dagorne",
+        "source_url": "https://freesound.org/people/chris_dagorne/sounds/563155/",
         "license": "CC0-1.0",
-        "sha256": "ee7404008e86ba7986f483adb05a7e784e8fa8ee9494f57e918f816d248e51f6"
+        "sha256": "e988b8b73bfa6c0d3872f0b32cfb22408bfe546b4997390136137a54ddaea116"
       }
     ],
-    "processing": "excerpt 3.52-3.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 32.86-33.71 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.084,
-    "sha256": "4423fb0abba1f9ce8cc2af19ec2fcedfdd63e46fa9bfb9381f51520b2959e872"
+    "rms": 0.086,
+    "sha256": "bfa83d236ef75064e7128aaff5b61264f24058cc4ac0c1ae1b387aedb968febc"
+  },
+  "bossfx-mire-finale-climax": {
+    "file": "boss-skills/mire/finale-climax.wav",
+    "duration": 2.82,
+    "beat": "finale climax: 5 meters dive.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "5 meters dive.wav",
+        "author": "bruno.auzet",
+        "source_url": "https://freesound.org/people/bruno.auzet/sounds/529794/",
+        "license": "CC0-1.0",
+        "sha256": "5df211fc32764bc738569bd2f8c58c05d1e26db93340e686f35d4062e4632c9c"
+      }
+    ],
+    "processing": "excerpt 0.14-2.96 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.077,
+    "sha256": "850cd7e8f2c9f9da9cbfacddedf5b0c0af7957d51cea04c36e78c16090741ce6"
   }
 }

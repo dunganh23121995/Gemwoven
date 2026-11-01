@@ -169,5 +169,24 @@
     "peak": 0.82,
     "rms": 0.106,
     "sha256": "2ac7a7647161bff9e34b07cbd7d9392b57e01d4bd875af6e5b6f184cec8a4bb9"
+  },
+  "bossfx-eclipse-finale-climax": {
+    "file": "boss-skills/eclipse/finale-climax.wav",
+    "duration": 2.82,
+    "beat": "finale climax: BOMB SHELTER BANGS.WAV",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "BOMB SHELTER BANGS.WAV",
+        "author": "metrostock99",
+        "source_url": "https://freesound.org/people/metrostock99/sounds/203260/",
+        "license": "CC0-1.0",
+        "sha256": "e6a85556f2917b086ca18be591d6b55ff62e392915bdbc8425b66a2b3fa5ecd8"
+      }
+    ],
+    "processing": "excerpt 15.80-18.62 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.131,
+    "sha256": "e27af7c9f8053d2331eb1fc70caf9986c62eb0be7e61185e31019d89a15c0383"
   }
 }

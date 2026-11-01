@@ -119,7 +119,11 @@ buff=function(side,kind,value,options){
 function bossOwnStyle(){const o=foeSkillOwner();return o?.tier==='boss'&&state.boss&&!!BOSS_SKILL_LOOKS[o.boss];}
 function bossKit(){const o=foeSkillOwner(),looks=BOSS_SKILL_LOOKS[o?.boss]||{};return (progressionRules.WORLD.BOSSES[o?.boss]?.skills||[]).map(s=>({s,look:looks[s.name]})).filter(k=>k.look);}
 const bossGuardLook=()=>bossKit().find(({s})=>s.shield&&!s.power||s.effects?.some(e=>e.type==='ward')&&!s.effects.some(e=>e.type==='hit'))?.look||null;
-const bossBasicSounds=()=>bossKit().find(({s,look})=>!s.ult&&look.pose&&look.sounds?.hit)?.look.sounds||null;
+// A boss's basic blow is heard with its own first bodily skill; a boss wielding a weapon (BOSS_WEAPON_SKILL) swings
+// and lands it with that weapon's own skill (the colossus's hammer, not its steam).
+const BOSS_WEAPON_SKILL={colossus:'Búa Tạ Cơ Khí'};
+const bossBasicSounds=()=>{const kit=bossKit(),weapon=BOSS_WEAPON_SKILL[foeSkillOwner()?.boss];
+  return (weapon&&kit.find(({s})=>s.name===weapon)||kit.find(({s,look})=>!s.ult&&look.pose&&look.sounds?.hit))?.look.sounds||null;};
 let foeBasicStrike=false;
 const foeBaseAttack=attack;
 attack=async function(side,raw,options={}){
@@ -191,10 +195,10 @@ const BOSS_SKILL_LOOKS={
   },
   // Lôi Sư Thiên Đỉnh: storm cloud and white thunder.
   lightning:{
-    'Ngũ Lôi':{fx:'strike',move:'strikes',pose:'charge',sounds:{start:'strike-start',hit:'strike-hit'}},
+    'Ngũ Lôi':{fx:'strike',move:'strikes',shaft:{band:[.024,.22],cols:[.42,.7]},pose:'charge',sounds:{start:'strike-start',hit:'strike-hit'}},
     'Điện Trường':{fx:'fieldring',move:'snare',pose:'charge',ground:.72,size:1.3,beats:3,hold:true,sounds:{start:'field-start',hit:'field-hit'}},
     'Tụ Điện':{into:-.35,fx:'thunderclaw',move:'pounce',size:1.3,pose:'pounce',sounds:{start:'thunderclaw-start',hit:'thunderclaw-hit'}},
-    'Lôi Thần Quang Pháo':{thick:1.5,ember:'#dff6ff',fx:'cannonhit',move:'jet',pose:'cannon',stream:'thundercone',size:1.3,beats:3,sounds:{start:'cannon-start',hit:'cannon-hit'}}
+    'Lôi Thần Quang Pháo':{full:true,stage:.82,thick:2.1,ember:'#dff6ff',fx:'cannonhit',move:'jet',pose:'cannon',stream:'thundercone',size:1.3,beats:3,sounds:{start:'cannon-start',hit:'cannon-hit'}}
   },
   // Mẫu Nấm Độc: toadstool and bog.
   mire:{
@@ -215,7 +219,7 @@ const BOSS_SKILL_LOOKS={
     'Thủy Long Tức':{ember:'#bff4ff',fx:'jetsplash',move:'jet',pose:'breathe',channel:{fx:'coralglow',at:'head',ms:700,size:0.5,pose:'breathe',hold:2},stream:'jetcone',sounds:{start:'jet-start',hit:'jet-hit',channel:'coralglow-channel'}},
     'Hô Phong Hoán Vũ':{fx:'raincloud',move:'pour',pose:'cast',channel:{fx:'coralglow',at:'head',ms:900,size:0.6},sounds:{start:'rainstorm-grow',channel:'rainstorm-channel'}},
     'Hàn Băng Tức':{fx:'frostmist',move:'jet',pose:'breathe',stream:'frostcone',ember:'#e8fbff',channel:{fx:'coralglow',at:'head',ms:700,size:0.5,pose:'breathe',hold:2},sounds:{start:'frostbreath-start',hit:'frostbreath-hit',channel:'frostbreath-channel'}},
-    'Lôi Vũ Long Thần':{fx:'seabolt',move:'tempest',pose:'cast',channel:{fx:'coralglow',at:'head',ms:1400,size:0.8},cloud:'raincloud',sounds:{start:'thunderstorm-start',hit:'thunderstorm-hit',channel:'thunderstorm-channel'}}
+    'Lôi Vũ Long Thần':{fx:'seabolt',move:'tempest',pose:'cast',channel:{fx:'coralglow',at:'head',ms:1400,size:0.8},cloud:'raincloud',lift:{cloud:{band:[.47,.7],head:true},bolt:{band:[.33,.5],head:true}},sounds:{start:'thunderstorm-start',hit:'thunderstorm-hit',channel:'thunderstorm-channel'}}
   },
   // Cự Tượng Bánh Răng: forge and steam.
   colossus:{
@@ -228,7 +232,7 @@ const BOSS_SKILL_LOOKS={
   prism:{
     'Song Liềm Liên Trảm':{fx:'scythecut',move:'flurry',size:1.3,pose:'slash',sounds:{start:'scythecut-start',hit:'scythecut-hit'}},
     'Vỏ Tinh Thể':{fx:'prismpillar',move:'pillars',sounds:{start:'mirrors-start',lock:'mirrors-lock'}},
-    'Quang Phổ Rạn Nứt':{fx:'spectrum',move:'beam',pose:'cross',channel:{fx:'crossglint',at:'front',ms:800,size:0.5},sounds:{start:'spectrum-start',hit:'spectrum-hit',channel:'crossglint-channel'}},
+    'Quang Phổ Rạn Nứt':{fx:'spectrum',move:'beam',alongRay:true,pose:'cross',channel:{fx:'crossglint',at:'front',ms:800,size:0.5},sounds:{start:'spectrum-start',hit:'spectrum-hit',channel:'crossglint-channel'}},
     'Thiên Liềm Loạn Vũ':{fx:'scythetrail',move:'rush',pose:'slash',finisher:'scythex',sounds:{start:'scythetrail-start',hit:'scythetrail-hit'}}
   },
   // Tử Thần Nguyệt Ảnh: grave and bone.
@@ -257,7 +261,7 @@ const BOSS_SKILL_LOOKS={
     'Nhật Kiếm':{fx:'sunlance',move:'thrust',pose:'thrust',sounds:{start:'thrust-start',hit:'thrust-hit'}},
     'Ánh Dương Tái Sinh':{fx:'heavenlight',move:'pour',sounds:{start:'halo-grow'}},
     'Hào Quang Phán Quyết':{fx:'lightspear',move:'rain',channel:{fx:'swordlight',at:'front',ms:900,size:0.5},sounds:{start:'lightspear-start',hit:'lightspear-hit',channel:'swordlight-channel'}},
-    'Phong Ấn Thánh Quang':{fx:'holyseal',move:'column',channel:{fx:'swordlight',at:'head',ms:1200,size:0.9},size:1.5,beats:3,sounds:{start:'sealbeam-start',hit:'sealbeam-hit',channel:'sealbeam-channel'}}
+    'Phong Ấn Thánh Quang':{fx:'holyseal',move:'column',shaft:{band:[.086,.12],cols:[.297,.6875]},channel:{fx:'swordlight',at:'head',ms:1200,size:0.9},size:1.5,beats:3,sounds:{start:'sealbeam-start',hit:'sealbeam-hit',channel:'sealbeam-channel'}}
   },
   // Long Đế Hư Không: nebula and starfield.
   eclipse:{
@@ -300,11 +304,11 @@ const BOSS_SKILL_LOOKS={
     'Gọi Vệ Phong':{fx:'windcircle',move:'summon',sounds:{start:'windcircle-grow'}},
     'Sấm Xuyên Tầng Mây':{ember:'#cfe8ff',fx:'plasmaball',move:'jet',stream:'boltcone',pose:'claw',sounds:{start:'plasmaball-start',hit:'plasmaball-hit'}},
     'Mắt Bão Cướp Linh':{fx:'stormeye',move:'bind',size:1.3,sounds:{start:'stormeye-start',hit:'stormeye-hit'}},
-    'Thiên Phạt Cửu Lôi':{fx:'judgement',move:'stormcall',pose:'fly',beats:9,sounds:{start:'judgement-start',hit:'judgement-hit'}}
+    'Thiên Phạt Cửu Lôi':{fx:'judgement',move:'stormcall',shaft:{band:[.04,.32],cols:[.36,.64]},pose:'fly',beats:9,sounds:{start:'judgement-start',hit:'judgement-hit'}}
   },
   // Cai Ngục Vong Đăng: rust and ghostfire.
   souljailer:{
-    'Liềm Cắt Hồn':{into:-.2,fx:'scythewheel',move:'lunge',pose:'swing',sounds:{hit:'ghostscythe-hit'}},
+    'Liềm Cắt Hồn':{into:-.2,fx:'scythewheel',move:'lunge',pose:'swing',sounds:{start:'ghostscythe-start',hit:'ghostscythe-hit'}},
     'Lồng Đèn U Minh':{fx:'cagedrop',move:'cage',channel:{fx:'lanternglow',at:'front',ms:700,size:0.5},sounds:{start:'cage-start',lock:'cage-lock',channel:'lanternglow-channel'}},
     'Gọi Hồn Canh Ngục':{fx:'chaincircle',move:'summon',channel:{fx:'lanternglow',at:'front',ms:700,size:0.5},sounds:{start:'chaincircle-grow',channel:'chaincircle-channel'}},
     'Xiềng Xích Hút Sinh':{fx:'chainknot',move:'tether',pose:'swing',sounds:{start:'chainknot-start',hit:'chainknot-hit'}},
@@ -336,7 +340,7 @@ const BOSS_SKILL_LOOKS={
     'Gọi Ảnh Sa Vệ':{fx:'sandguard',move:'summon',channel:{fx:'sandglass',at:'body',ms:700,size:0.5},sounds:{start:'sandpillar-grow',channel:'sandpillar-channel'}},
     'Đảo Chiều Tinh Sa':{plate:'clockplate',glaze:'#9ff0e6',fx:'reverse',move:'bloom',channel:{fx:'sandglass',at:'body',ms:700,size:0.5},sounds:{start:'reverse-grow',channel:'reverse-channel'}},
     'Lãi Suất Thời Gian':{fx:'clockripple',move:'tether',channel:{fx:'sandglass',at:'body',ms:700,size:0.5},sounds:{start:'clockripple-start',hit:'clockripple-hit',channel:'clockripple-channel'}},
-    'Chung Mạt Thời Luân':{fx:'sandfall',move:'tempest',channel:{fx:'sandglass',at:'body',ms:1200,size:0.8},cloud:'timewheel',cloudAt:'around',beats:5,pose:'cast',sounds:{start:'sandbeam-start',hit:'sandbeam-hit',channel:'sandbeam-channel'}}
+    'Chung Mạt Thời Luân':{fx:'sandfall',move:'tempest',lift:{bolt:{band:[.035,.09],cols:[.38,.62]}},channel:{fx:'sandglass',at:'body',ms:1200,size:0.8},cloud:'timewheel',cloudAt:'around',beats:5,pose:'cast',sounds:{start:'sandbeam-start',hit:'sandbeam-hit',channel:'sandbeam-channel'}}
   },
   // Long Vương Châu Triều: ink tide and pearl.
   coraltide:{
@@ -377,14 +381,19 @@ function foeBody(){
 // frame:n holds one frame (a beam stretches it along its length); from:n starts the strip at frame n;
 // flip:'x' or 'y' mirrors it (the other half of a closing pair).
 function foeFx(sheet,point,size,{loop=false,rotate=0,duration=0,z=6,behind=false,squash=1,frame=null,stretch=1,flip='',from=0}={}){
-  // Never past the stage: a sheet that would cross the HUD line at the top keeps its bottom edge and
-  // shrinks; one crossing a side shrinks about its centre (never below half its size).
+  // Never past the stage, by the painting (sheet.box, build.py), not the cell's empty margin. It stays centred on
+  // its target and keeps its ground line (sheet.ground) where it was placed: a painting that would cross the HUD
+  // line at the top, or run more than 15% of its width under the frame trim at a side, shrinks onto that line
+  // (never below a third of its size).
   if(stretch===1&&!rotate&&!foeNoFit&&$('scene')){
-    if(foeUltLesser)size*=.68;
-    const W=$('scene').clientWidth,min=size*.5;let s=size,y=point.y;
-    if(!foeNoFit&&y-s*squash/2<40){const bottom=y+s*squash/2;s=Math.max(min,(bottom-40)/squash);y=bottom-s*squash/2;}
-    const side=Math.min(point.x,W-point.x)*2;if(s>side)s=Math.max(min,side);
-    if(s!==size){point={x:point.x,y};size=s;}
+    let [x0,y0,x1,y1]=sheet.box||[.12,.12,.88,.88];if(flip==='x')[x0,x1]=[1-x1,1-x0];if(flip==='y')[y0,y1]=[1-y1,1-y0];
+    const W=$('scene').clientWidth,min=size*.35,edge=4,g=flip==='y'?y1:sheet.ground??y1,x=point.x,floor=point.y+size*squash*(g-.5);let s=size;
+    if(foeUltLesser)s*=FOE_ULT_LEAD;
+    if(floor-s*squash*(g-y0)<40)s=Math.min(s,Math.max(min,(floor-40)/(squash*(g-y0))));
+    const reach=(x1-x0)*.15;
+    if(x-s*(.5-x0)<edge-s*reach)s=Math.min(s,Math.max(min,(x-edge)/(.5-x0-reach)));
+    if(x+s*(x1-.5)>W-edge+s*reach)s=Math.min(s,Math.max(min,(W-edge-x)/(x1-.5-reach)));
+    if(s!==size){point={x,y:floor-s*squash*(g-.5)};size=s;}
   }
   const node=document.createElement('span');node.className='foe-fx';node.setAttribute('aria-hidden','true');
   node.style.cssText=`left:${point.x}px;top:${point.y}px;width:${size*stretch}px;height:${size*squash}px;z-index:${behind?1:z};--fx-count:${sheet.count};background-image:url('${sheet.src}');rotate:${rotate}deg`;
@@ -396,6 +405,30 @@ function foeFx(sheet,point,size,{loop=false,rotate=0,duration=0,z=6,behind=false
   const run=node.animate([{backgroundPosition:at(from)},{backgroundPosition:'100% 0'}],{duration:duration||(sheet.count-from)*sheet.frameDuration,easing:`steps(${sheet.count-from},jump-none)`,iterations:loop?Infinity:1});
   if(!loop)run.finished.then(()=>node.remove(),()=>node.remove());
   return {node,stop(){run.cancel();node.remove();}};
+}
+// A column sheet reaching the top of the stage: a band of the shaft under its top (band, as fractions of the
+// frame's height, and cols across it) is drawn stretched from the top of the stage down onto the sheet, frame
+// for frame, so the pillar (or bolt, still zigzagging) comes down from the sky instead of ending mid-air. The
+// sheet itself shows only from the band's foot down, so nothing is doubled. head: the rows above the band (a
+// storm cloud) are drawn unstretched at the top of the stage and the band runs from under them. frame: a held
+// frame instead of the sheet's run; from: the run starts at that frame. Returns stop() for the caller to remove what it added.
+function foeShaft(sheet,under,{band:[b0,b1],cols:[x0,x1]=[0,1],head=false},duration,frame=null,from=0){
+  const size=parseFloat(under.style.width),left=parseFloat(under.style.left)-size/2,top=parseFloat(under.style.top)-size/2,bottom=top+b1*size,start=head?b0*size+10:0;
+  if(bottom-start<=8||head&&top<=4)return {nodes:[],stop(){}};
+  const make=(cx,cy,w,h,bgh)=>{const n=document.createElement('span');n.className='foe-fx foe-shaft';n.setAttribute('aria-hidden','true');
+    n.style.cssText=`left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;z-index:${under.style.zIndex};background-image:url('${sheet.src}');background-size:${sheet.count*size}px ${bgh}px`;foeTint(n);return n;};
+  const k=(bottom-start)/((b1-b0)*size),shaft=make(left+(x0+x1)/2*size,(start+bottom)/2,(x1-x0)*size,bottom-start,size*k);
+  const runs=[[shaft,n=>`${-(n*size+x0*size)}px ${-b0*size*k}px`]];
+  // Under a cloud the band starts at once (no fade in from the sky).
+  if(head){const cap=make(left+size/2,(start+10)/2,size,start-10,size);shaft.classList.add('foe-shaft-head');cap.classList.add('foe-shaft-head');runs.push([cap,n=>`${-n*size}px 0`]);}
+  const cut=`linear-gradient(transparent ${b1*100-.5}%,#000 ${b1*100}%)`;under.style.webkitMaskImage=under.style.maskImage=cut;
+  under.after(...runs.map(([n])=>n));
+  const nodes=runs.map(([n])=>n),stop=()=>nodes.forEach(n=>n.remove());
+  for(const [n,at] of runs){
+    if(frame!==null)n.style.backgroundPosition=at(frame);
+    else n.animate([{backgroundPosition:at(from)},{backgroundPosition:at(sheet.count-1)}],{duration,easing:`steps(${sheet.count-from},jump-none)`}).finished.then(()=>n.remove(),()=>n.remove());
+  }
+  return {nodes,stop};
 }
 // One hit of a foe skill landing on the hero: same rules and feedback as a basic attack.
 function foeSkillContact(raw,ledger,index,strong,pending,{knock=1,own=false}={}){
@@ -430,11 +463,17 @@ function foeLayer(fx,p){if(p.blend)fx.node.style.mixBlendMode=p.blend;if(p.opaci
 const BOSS_TINT={tempestwing:'hue-rotate(185deg) saturate(1.15) brightness(1.08)',seraph:'sepia(.55) saturate(2.1) hue-rotate(-12deg) brightness(1.08)'};
 const BOSS_TINT_SKILLS={};
 let foeCurrentSkill='',foeUltLesser=false,foeNoFit=false;
+// A chapter boss's skill effects are drawn larger than the hero's body they are measured by (an elite wields
+// them at .68); an ultimate's lead-in effects stay a little smaller than its finale (FOE_ULT_LEAD).
+const FOE_BOSS_FX=1.3,FOE_ULT_LEAD=.85;
 function foeTint(node){
   const boss=foeSkillOwner()?.boss,tint=BOSS_TINT_SKILLS[boss]?.[foeCurrentSkill]||BOSS_TINT[boss];if(!tint||reduced)return;
   if(tint==='cycle')node.animate([{filter:'hue-rotate(0deg) saturate(1.5)'},{filter:'hue-rotate(360deg) saturate(1.5)'}],{duration:800,iterations:Infinity});
   else node.style.filter=tint;
 }
+// Where a blow's effect lands on the hero: a sheet that stands on the floor (sheet.ground, ground-line.json) has its
+// contact line on the hero's feet, whatever its size; one in the air keeps the point it was given (the body).
+function foeOn(c,sheet,size,point){return sheet?.ground?{x:point.x,y:c.g.target.foot-size*(sheet.ground-.5)}:point;}
 function foeHoldAll(c,placements,hold){
   for(const p of placements){
     const fx=foeLayer(foeFx(c.sheet,p.at,p.size,{...p,frame:c.sheet.count-1}),p),from=p.opacity??1;
@@ -472,8 +511,9 @@ function foeReachX(c,pose,frame,into=.12){
 }
 // The largest a sheet standing on the hero's ground (its ground line at fraction g of the cell) may be
 // drawn so its top stays under the HUD and its sides inside the stage.
+// The sides are left to foeFx, which knows where each sheet's painting lies; here only the height counts.
 function foeFitSize(size,x,foot,g=.8){
-  const W=$('scene').clientWidth;return Math.max(40,Math.min(size,(foot-40)/Math.max(.3,g),2*Math.max(20,x),2*Math.max(20,W-x)));
+  return Math.max(40,Math.min(size,(foot-40)/Math.max(.3,g)));
 }
 // The blow lands: a hard double shake and a short hit-stop so the contact reads.
 async function foeImpact(c,ms=110){combatV3Camera(-1,true,true,c.pending);combatV3Camera(-1,true,true,c.pending);await combatV3Wait(ms);}
@@ -510,7 +550,7 @@ const FOE_MOVES={
     const enemy=actor('enemy');enemy.style.filter='blur(1.2px)';
     for(let k=1;k<=3;k++)foeFx(c.sheet,{x:c.g.source.x-c.g.travel*k/4,y:c.g.target.y+c.g.target.height*.12},c.g.body*.6*c.scale,{squash:.6,duration:420});
     setSpriteFrame('enemy',c.pose('attack'),3);await foePose(`translate(${-c.g.travel-24}px,0)`,150*c.pace,'cubic-bezier(.5,0,.8,.6)');
-    enemy.style.filter='';foeFx(c.sheet,{x:c.g.target.x,y:c.g.target.y},c.g.body*1.25*c.scale);
+    enemy.style.filter='';foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*1.25*c.scale,{x:c.g.target.x,y:c.g.target.y}),c.g.body*1.25*c.scale);
     for(let i=0;i<c.hits;i++)c.contact(i,{knock:1.8});
     await foeImpact(c,160);setSpriteFrame('enemy',c.pose('attack'),4);await combatV3Wait(260);setSpriteFrame('enemy',c.pose('attack'),5);await foePose('translate(0,0)',380);
   },
@@ -548,7 +588,7 @@ const FOE_MOVES={
       const fly=c.extra('bolt')||c.sheet,bolt=foeFx(fly,start,c.g.body*(c.look.bolt?.7:.42)*c.scale,{loop:true,rotate:angle+180,duration:fly.count*fly.frameDuration*.6,z:7});
       combatV3Whoosh(state.enemyKey,false,150);
       await animate(bolt.node,[{left:start.x+'px',top:start.y+'px'},{left:(start.x+spot.x)/2+'px',top:(start.y+spot.y)/2-c.g.target.height*(.25+.1*(i%2))+'px',offset:.5},{left:spot.x+'px',top:spot.y+'px'}],{duration:260*c.pace,easing:'cubic-bezier(.35,.1,.6,1)'});
-      bolt.stop();foeFx(c.sheet,spot,c.g.body*.85*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.7});
+      bolt.stop();foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*.85*c.scale,spot),c.g.body*.85*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.7});
       c.contact(i);if(i<c.hits-1)await combatV3Wait(60*c.pace);
     }
     await combatV3Wait(200);
@@ -556,12 +596,14 @@ const FOE_MOVES={
   // Beam: a charge gathers at the foe, then a long ray of the effect cuts across to the hero.
   async beam(c){
     await c.cast();
-    const muzzle=foeMouthNow()||c.g.mouth,gather=foeFx(c.sheet,muzzle,c.g.body*.5*c.scale,{loop:true,duration:c.sheet.count*c.sheet.frameDuration*.5});
+    const muzzle=foeMouthNow()||c.g.mouth,aim=Math.atan2(c.g.target.y-c.g.target.height*.08-muzzle.y,c.g.target.x-muzzle.x)*180/Math.PI;
+    const gather=foeFx(c.sheet,muzzle,c.g.body*.5*c.scale,{loop:true,duration:c.sheet.count*c.sheet.frameDuration*.5,...(c.look.alongRay?{rotate:aim}:{})});if(c.look.alongRay)gather.node.classList.add('foe-fade-ends');
     await animate(gather.node,[{scale:'.3',opacity:.4},{scale:'1.2',opacity:1}],{duration:420});gather.stop();
     const from=muzzle,to={x:c.g.target.x,y:c.g.target.y-c.g.target.height*.08},dx=to.x-from.x,dy=to.y-from.y,len=Math.hypot(dx,dy),angle=Math.atan2(dy,dx)*180/Math.PI,thick=c.g.body*.42*c.scale*c.size;
     const ray=foeFx(c.sheet,{x:(from.x+to.x)/2,y:(from.y+to.y)/2},thick,{frame:Math.floor(c.sheet.count/2),stretch:len/thick,rotate:angle,z:7});
     c.pending.push(animate(ray.node,[{opacity:0,scale:'1 .2'},{opacity:1,scale:'1 1.15',offset:.15},{opacity:1,scale:'1 .8',offset:.6},{opacity:0,scale:'1 .1'}],{duration:620+Math.max(0,c.hits-1)*110}).finally(()=>ray.stop()));
-    foeFx(c.sheet,to,c.g.body*1.3*c.scale*c.size);combatV3Camera(-1,true,true,c.pending);
+    // look.alongRay: a band-shaped sheet bursts along the ray, its square ends faded, instead of standing level.
+    const burst=foeFx(c.sheet,to,c.g.body*1.3*c.scale*c.size,c.look.alongRay?{rotate:angle}:{});if(c.look.alongRay)burst.node.classList.add('foe-fade-ends');combatV3Camera(-1,true,true,c.pending);
     for(let i=0;i<c.hits;i++){c.contact(i,{knock:1.3});if(i<c.hits-1)await combatV3Wait(90);}
     await combatV3Wait(420);
   },
@@ -570,7 +612,7 @@ const FOE_MOVES={
     await c.cast();await combatV3Wait(220*c.pace);
     for(let i=0;i<c.hits;i++){
       const last=i===c.hits-1,spot={x:c.g.target.x+(Math.random()-.5)*c.g.target.width*.25,y:c.g.target.y-c.g.target.height*(.05+Math.random()*.15)};
-      foeFx(c.sheet,spot,c.g.body*(last?1.35:1.05)*c.scale);
+      foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*(last?1.35:1.05)*c.scale,spot),c.g.body*(last?1.35:1.05)*c.scale);
       await combatV3Wait(c.sheet.frameDuration*2.6*c.pace);c.contact(i);
       if(!last)await combatV3Wait(140*c.pace);
     }
@@ -584,7 +626,7 @@ const FOE_MOVES={
       const fall=c.extra('bolt')||c.sheet,drop=foeFx(fall,sky,c.g.body*(c.look.bolt?.6:.5)*c.scale,{loop:true,rotate:c.look.bolt?-85:200,duration:fall.count*fall.frameDuration*.5,z:7});
       // It shows whole under the HUD, then falls.
       await animate(drop.node,[{left:sky.x+'px',top:sky.y+'px',opacity:0},{opacity:1,offset:.2},{left:spot.x+'px',top:spot.y+'px'}],{duration:240*c.pace,easing:'cubic-bezier(.55,0,1,.45)'});
-      drop.stop();foeFx(c.sheet,spot,c.g.body*.95*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.7});
+      drop.stop();foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*.95*c.scale,spot),c.g.body*.95*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.7});
       c.contact(i);await combatV3Wait(70*c.pace);
     }
     await combatV3Wait(220);
@@ -629,7 +671,7 @@ const FOE_MOVES={
     const cut=foeReachX(c,p,3);enemy.style.transform=`translate(${cut+20}px,0)`;setSpriteFrame('enemy',p,2);
     await animate(enemy,[{opacity:0},{opacity:1}],{duration:110});enemy.style.opacity='';
     await combatV3Wait(160);setSpriteFrame('enemy',p,3);await foePose(`translate(${cut}px,0)`,80,'cubic-bezier(.6,0,.9,.5)');
-    foeFx(c.sheet,{x:c.g.target.x+c.g.target.width*.1,y:c.g.target.y},c.g.body*1.05*c.scale*c.size);
+    foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*1.05*c.scale*c.size,{x:c.g.target.x+c.g.target.width*.1,y:c.g.target.y}),c.g.body*1.05*c.scale*c.size);
     for(let i=0;i<c.hits;i++){c.contact(i,{knock:1.6});if(i<c.hits-1)await combatV3Wait(110);}
     await foeImpact(c,170);setSpriteFrame('enemy',p,4);await combatV3Wait(320);
     await animate(enemy,[{opacity:1},{opacity:0,filter:'blur(3px)'}],{duration:200});
@@ -700,11 +742,13 @@ const FOE_MOVES={
     dim.animate([{opacity:0},{opacity:1}],{duration:400,fill:'forwards'});
     await animate(warn,[{opacity:0,scale:'.3'},{opacity:1,scale:'1'}],{duration:420,easing:'ease-out',fill:'forwards'});
     const pulse=warn.animate([{opacity:1},{opacity:.45},{opacity:1}],{duration:260,iterations:Infinity});
-    const size=c.g.body*1.2*c.scale,spot=k=>({x:t.x+(k%2?1:-1)*t.width*(.06+.04*k),y:t.foot-size*(c.ground-.5)});
+    // Each pulse grows, its ground staying on the hero's floor.
+    const size=c.g.body*1.2*c.scale,grow=k=>size*(.6+.12*k),spot=k=>({x:t.x+(k%2?1:-1)*t.width*(.06+.04*k),y:t.foot-grow(k)*(c.ground-.5)});
     const build=Math.max(2,c.hits-1);
-    for(let i=0;i<build;i++){foeFx(c.sheet,spot(i),size*(.6+.12*i),{duration:c.sheet.count*70,z:7});if(i<c.hits-1)c.contact(i,{knock:.4});combatV3Camera(-1,false,true,c.pending);await combatV3Wait(300*c.pace);}
+    for(let i=0;i<build;i++){foeFx(c.sheet,spot(i),grow(i),{duration:c.sheet.count*70,z:7});if(i<c.hits-1)c.contact(i,{knock:.4});combatV3Camera(-1,false,true,c.pending);await combatV3Wait(300*c.pace);}
     await combatV3Wait(260);pulse.cancel();
-    const climax=foeLookSheet('climax'),g2=climax?.85:c.ground,big=foeFitSize(c.g.body*(climax?2:1.9)*c.scale*c.size,t.x,t.foot,g2),at={x:t.x,y:t.foot-big*(g2-.5)};
+    const climax=foeLookSheet('climax'),g2=climax?climax.ground??.85:c.ground,big=foeFitSize(c.g.body*(climax?2:1.9)*c.scale*c.size,t.x,t.foot,g2),at={x:t.x,y:t.foot-big*(g2-.5)};
+    if(climax)bossSkillSound('finale-climax',{volume:.5});
     foeFx(climax||c.sheet,at,big,{duration:(climax||c.sheet).count*120,z:7});await combatV3Wait(330);
     const flash=document.createElement('span');flash.className='foe-flash';scene.append(flash);
     c.pending.push(animate(flash,[{opacity:.45},{opacity:0}],{duration:280,easing:'ease-out'}).finally(()=>flash.remove()));
@@ -808,7 +852,7 @@ const FOE_MOVES={
     }
     enemy.style.transform=`translate(${-c.g.travel}px,0)`;setSpriteFrame('enemy',p,3);
     await animate(enemy,[{opacity:0},{opacity:1}],{duration:90});enemy.style.opacity='';
-    const fin=c.extra('finisher')||c.sheet;foeFx(fin,{x:t.x,y:t.y-t.height*.05},c.g.body*1.6*c.scale,{duration:fin.count*70,z:7});
+    const fin=c.extra('finisher')||c.sheet;foeFx(fin,foeOn(c,fin,c.g.body*1.6*c.scale,{x:t.x,y:t.y-t.height*.05}),c.g.body*1.6*c.scale,{duration:fin.count*70,z:7});
     await combatV3Wait(140);c.contact(c.hits-1,{knock:2});combatV3Camera(-1,true,true,c.pending);
     await combatV3Wait(320);await animate(enemy,[{opacity:1},{opacity:0}],{duration:150});
     enemy.style.transform='';await animate(enemy,[{opacity:0},{opacity:1}],{duration:220});
@@ -819,7 +863,7 @@ const FOE_MOVES={
     setSpriteFrame('enemy',p,2);
     await animate(enemy,[{transform:'translate(0,0)'},{transform:`translate(${land*.55}px,${-c.g.source.height*.4}px)`,offset:.5},{transform:`translate(${land}px,0)`}],{duration:380*c.pace,easing:'cubic-bezier(.3,.5,.6,1)',fill:'forwards'});
     enemy.style.transform=`translate(${land}px,0)`;setSpriteFrame('enemy',p,3);
-    foeFx(c.sheet,{x:c.g.target.x,y:c.g.target.y-c.g.target.height*.04},c.g.body*1.1*c.scale,{duration:c.sheet.count*60,z:7});
+    foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*1.1*c.scale,{x:c.g.target.x,y:c.g.target.y-c.g.target.height*.04}),c.g.body*1.1*c.scale,{duration:c.sheet.count*60,z:7});
     for(let i=0;i<c.hits;i++){c.contact(i,{knock:1.4});if(i<c.hits-1)await combatV3Wait(90);}
     await foeImpact(c,160);await combatV3Wait(220);setSpriteFrame('enemy',p,4);await combatV3Wait(160);await foePose('translate(0,0)',380);
   },
@@ -829,7 +873,7 @@ const FOE_MOVES={
     const p=c.pose('attack'),enemy=actor('enemy');await foeWindup(c,p,1,{ms:560,at:-6});
     setSpriteFrame('enemy',p,2);enemy.style.filter='blur(1px)';
     await foePose(`translate(${foeReachX(c,p,3,-.1)}px,0)`,190*c.pace,'cubic-bezier(.6,0,.9,.5)');enemy.style.filter='';
-    setSpriteFrame('enemy',p,3);foeFx(c.sheet,{x:c.g.target.x+c.g.target.width*.1,y:c.g.target.y},c.g.body*.8*c.scale*c.size,{duration:c.sheet.count*65,z:7});
+    setSpriteFrame('enemy',p,3);foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*.8*c.scale*c.size,{x:c.g.target.x+c.g.target.width*.1,y:c.g.target.y}),c.g.body*.8*c.scale*c.size,{duration:c.sheet.count*65,z:7});
     for(let i=0;i<c.hits;i++)c.contact(i,{knock:2.2});
     await foeImpact(c,180);await combatV3Wait(200);setSpriteFrame('enemy',p,4);await combatV3Wait(160);await foePose('translate(0,0)',400);
   },
@@ -837,7 +881,7 @@ const FOE_MOVES={
   async punch(c){
     // Each blow is drawn back and held (the frame before it) before it lands.
     const p=c.pose('attack'),near=-foeReachX(c,p,c.hits>1?2:3)-28;setSpriteFrame('enemy',p,0);await foePose(`translate(${-near}px,0)`,260*c.pace,'cubic-bezier(.4,.1,.3,1)');
-    const size=c.g.body*1.15*c.scale*c.size,at=c.look.ground?{x:c.g.target.x,y:c.g.target.foot-size*(c.ground-.5)}:{x:c.g.target.x,y:c.g.target.y-c.g.target.height*.04};
+    const size=c.g.body*1.15*c.scale*c.size,at=c.look.ground?{x:c.g.target.x,y:c.g.target.foot-size*(c.ground-.5)}:foeOn(c,c.sheet,size,{x:c.g.target.x,y:c.g.target.y-c.g.target.height*.04});
     const frames=c.hits>1?[2,4]:[3];
     for(let i=0;i<c.hits;i++){
       await foeWindup(c,p,c.hits>1?frames[i%frames.length]-1:1,{ms:i?260:440,at:near});
@@ -860,7 +904,7 @@ const FOE_MOVES={
     setSpriteFrame('enemy',p,4);const strike=foeReachX(c,p,5,-.1);
     await foePose(`translate(${strike}px,0)`,200*c.pace,'cubic-bezier(.6,0,1,.6)');
     setSpriteFrame('enemy',p,5);shadow.style.opacity='0';
-    foeFx(c.sheet,{x:t.x,y:t.y},c.g.body*1.1*c.scale,{duration:c.sheet.count*70,z:7});
+    foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*1.1*c.scale,{x:t.x,y:t.y}),c.g.body*1.1*c.scale,{duration:c.sheet.count*70,z:7});
     for(let i=0;i<c.hits;i++)c.contact(i,{knock:1.8});
     await foeImpact(c,200);await combatV3Wait(240);setSpriteFrame('enemy',p,1);await foePose('translate(0,0)',440);
   },
@@ -881,8 +925,8 @@ const FOE_MOVES={
     const p=c.pose('attack');await foeWindup(c,p,1,{ms:520});setSpriteFrame('enemy',p,3);
     const size=c.g.body*1.3*c.scale,count=Math.max(1,c.hits),from=c.g.source.x-c.g.source.width*.5,to=c.g.target.x;
     for(let i=0;i<count;i++){
-      const last=i===count-1,x=last?to:to+(i%2?1:-1)*c.g.target.width*(.08+.05*(i%3));
-      foeFx(c.sheet,{x,y:c.g.target.foot-size*(c.ground-.5)},size*(last?1.25:1),{duration:c.sheet.count*65,z:7});
+      const last=i===count-1,x=last?to:to+(i%2?1:-1)*c.g.target.width*(.08+.05*(i%3)),s=size*(last?1.25:1);
+      const bolt=foeFx(c.sheet,{x,y:c.g.target.foot-s*(c.ground-.5)},s,{duration:c.sheet.count*65,z:7});if(c.look.shaft)foeShaft(c.sheet,bolt.node,c.look.shaft,c.sheet.count*65);
       await combatV3Wait(80);c.contact(i,{knock:last?1.6:.4});if(last)await foeImpact(c,140);else{combatV3Camera(-1,false,true,c.pending);await combatV3Wait(280*c.pace);}
     }
     await combatV3Wait(240);setSpriteFrame('enemy',p,5);await combatV3Wait(160);setSpriteAction('enemy','idle');
@@ -890,12 +934,14 @@ const FOE_MOVES={
   // Bind: bands close round the hero one by one, at different angles, the last one locking.
   async bind(c){
     await c.cast();
-    const t=c.g.target,at={x:t.x,y:t.y-t.height*.05},size=c.g.body*1.2*c.scale*c.size,count=Math.max(1,c.hits),per=80;
+    const t=c.g.target,size=c.g.body*1.2*c.scale*c.size,count=Math.max(1,c.hits),per=80;
+    // look.upright: a prison standing round the hero on the floor (its contact line on the hero's feet, kept there
+    // as it closes tighter each time) instead of bands turning round the hero's middle.
+    const stand=c.look.upright&&c.sheet.ground,spot=s=>stand?{x:t.x,y:t.foot-s*(c.sheet.ground-.5)}:{x:t.x,y:t.y-t.height*.05};
     for(let i=0;i<count;i++){
-      // look.upright: a prison standing round the hero closes tighter each time instead of turning.
-      const turn=c.look.upright?0:i*60-60,fx=foeFx(c.sheet,at,size*(1-i*.08),{duration:c.sheet.count*per,rotate:turn,z:7});
+      const turn=c.look.upright?0:i*60-60,s=size*(1-i*.08),fx=foeFx(c.sheet,spot(s),s,{duration:c.sheet.count*per,rotate:turn,z:7});
       await combatV3Wait(per*3);c.contact(i,{knock:.3});
-      if(i===count-1){fx.stop();foeHoldAll(c,[{at,size:size*(1-i*.08),rotate:turn,z:7}],700);}
+      if(i===count-1){fx.stop();foeHoldAll(c,[{at:spot(s),size:s,rotate:turn,z:7}],700);}
     }
     combatV3Camera(-1,true,true,c.pending);await combatV3Wait(400);
   },
@@ -907,10 +953,14 @@ const FOE_MOVES={
     const stream=c.extra('stream'),from=foeMouthNow()||c.g.mouth,to={x:c.g.target.x+c.g.target.width*.1,y:c.g.target.y-c.g.target.height*.08};
     const thick=c.g.body*(c.look.thick||.95)*c.scale,ticks=Math.max(1,c.hits),span=1500*c.pace;
     // The cone is pinned by its tongue to the open jaws (foeConeAim) and grows out of them.
-    const jet=foeBreathStream(c,stream,()=>foeMouthNow()||from,to,thick,{sweep:.2});
-    const hitSheet=c.extra('impact')||c.sheet,splash=foeFx(hitSheet,to,c.g.body*.95*c.scale*c.size,{loop:true,duration:hitSheet.count*70,z:7});
+    // look.full: an ultimate's beam is drawn at its full weight (not the lesser size of an ultimate's lead-in,
+    // not shrunk by the stage's edge behind the hero).
+    const full=!!c.look.full,lesser=foeUltLesser;if(full){foeUltLesser=false;foeNoFit=true;}
+    const jet=foeBreathStream(c,stream,()=>foeMouthNow()||from,to,thick,{sweep:.2});foeNoFit=false;
+    const hitSheet=c.extra('impact')||c.sheet,splash=foeFx(hitSheet,foeOn(c,hitSheet,c.g.body*.95*c.scale*c.size,to),c.g.body*.95*c.scale*c.size,{loop:true,duration:hitSheet.count*70,z:7});
+    if(full)foeUltLesser=lesser;
     for(let i=0;i<ticks;i++){await combatV3Wait(span/ticks);c.contact(i,{knock:.7});}
-    jet.stop();splash.stop();foeFx(hitSheet,to,c.g.body*1.3*c.scale*c.size,{from:2,duration:4*80,z:7});combatV3Camera(-1,true,true,c.pending);
+    jet.stop();splash.stop();foeFx(hitSheet,foeOn(c,hitSheet,c.g.body*1.3*c.scale*c.size,to),c.g.body*1.3*c.scale*c.size,{from:2,duration:4*80,z:7});combatV3Camera(-1,true,true,c.pending);
     await combatV3Wait(200);setSpriteFrame('enemy',p,breathe?5:4);await combatV3Wait(160);setSpriteAction('enemy','idle');
   },
   // Tempest: storm clouds gather over the hero (look.cloud, held while the storm lasts), rain falls,
@@ -918,16 +968,17 @@ const FOE_MOVES={
   async tempest(c){
     await c.cast();
     // look.cloudAt 'around': the held sheet stands centred on the hero (a wheel) instead of over it.
-    const t=c.g.target,cloud=c.extra('cloud'),csize=Math.min(c.g.body*2.1*c.scale,2*Math.max(40,t.x+20)),cat=c.look.cloudAt==='around'?{x:t.x,y:t.y-t.height*.05}:{x:t.x,y:t.foot-csize*(.8-.5)};
-    const sky=cloud&&foeFx(cloud,cat,csize,{duration:cloud.count*120,z:6});
+    const t=c.g.target,cloud=c.extra('cloud'),csize=Math.min(c.g.body*2.1*c.scale,2*Math.max(40,t.x+20)),cat=c.look.cloudAt==='around'?{x:t.x,y:t.y-t.height*.05}:{x:t.x,y:t.foot-csize*((cloud?.ground??.8)-.5)};
+    // look.lift: the storm cloud is lifted to the top of the stage and its rain and bolts run down from it.
+    const lift=c.look.lift,sky=cloud&&foeFx(cloud,cat,csize,{duration:cloud.count*120,z:6}),skyLift=sky&&lift?.cloud&&foeShaft(cloud,sky.node,lift.cloud,cloud.count*120);
     await combatV3Wait(cloud?cloud.count*120*.55:200);
-    const held=cloud&&foeFx(cloud,cat,csize,{frame:cloud.count-1,z:6});sky?.stop();
+    const held=cloud&&foeFx(cloud,cat,csize,{frame:cloud.count-1,z:6}),heldLift=held&&lift?.cloud&&foeShaft(cloud,held.node,lift.cloud,0,cloud.count-1);sky?.stop();skyLift?.stop();
     const size=c.g.body*1.5*c.scale;
     for(let i=0;i<Math.max(1,c.hits);i++){
-      foeFx(c.sheet,{x:t.x+(i%2?-1:1)*t.width*.12*(i%3),y:t.foot-size*(c.ground-.5)},size,{duration:c.sheet.count*55,z:7});
+      const bolt=foeFx(c.sheet,{x:t.x+(i%2?-1:1)*t.width*.12*(i%3),y:t.foot-size*(c.ground-.5)},size,{duration:c.sheet.count*55,z:7});if(lift?.bolt)foeShaft(c.sheet,bolt.node,lift.bolt,c.sheet.count*55);
       await combatV3Wait(110);c.contact(i,{knock:i===c.hits-1?1.6:.5});combatV3Camera(-1,i===c.hits-1,true,c.pending);await combatV3Wait(180*c.pace);
     }
-    if(held)c.pending.push(animate(held.node,[{opacity:1},{opacity:0}],{duration:600,easing:'ease-in'}).finally(()=>held.stop()));
+    if(held)c.pending.push(Promise.all([held.node,...(heldLift?.nodes||[])].map(n=>animate(n,[{opacity:1},{opacity:0}],{duration:600,easing:'ease-in'}))).finally(()=>{held.stop();heldLift?.stop();}));
     await combatV3Wait(250);
   },
   // Stormcall: the boss takes to the air on beating wings and calls bolts down on the hero from every
@@ -942,7 +993,7 @@ const FOE_MOVES={
       for(let i=0;i<count;i++){
         // Bolts come down from the sky round the hero (the sheet's ground line on the hero's feet).
         const last=i===count-1,size=c.g.body*(last?1.9:1.2)*c.scale,dx=last?0:(i%2?-1:1)*t.width*(.15+.25*((i*37)%7)/7);
-        foeFx(c.sheet,{x:t.x+dx,y:t.foot-size*(c.ground-.5)},size,{duration:c.sheet.count*50,z:7});
+        const bolt=foeFx(c.sheet,{x:t.x+dx,y:t.foot-size*(c.ground-.5)},size,{duration:c.sheet.count*50,z:7});if(c.look.shaft)foeShaft(c.sheet,bolt.node,c.look.shaft,c.sheet.count*50);
         await combatV3Wait(60);c.contact(i,{knock:last?1.8:.4});combatV3Camera(-1,last||i%3===0,true,c.pending);await combatV3Wait((last?260:120)*c.pace);
       }
       hover.cancel();await foePose('translate(0,0)',480,'cubic-bezier(.5,0,.6,1)');
@@ -1198,8 +1249,10 @@ const FOE_MOVES={
   // Column: a pillar comes down from the sky onto the hero.
   async column(c){
     await c.cast();await combatV3Wait(220*c.pace);
-    const size=foeFitSize(c.g.body*1.55*c.scale*c.size,c.g.target.x,c.g.target.foot,c.ground),per=100;
-    foeFx(c.sheet,{x:c.g.target.x,y:c.g.target.foot-size*(c.ground-.5)},size,{duration:c.sheet.count*per,z:7});
+    // A pillar from the sky (look.shaft) keeps its full size by the screen's edge: its burst may spill past it.
+    const want=c.g.body*1.55*c.scale*c.size,size=c.look.shaft?Math.min(want*(foeUltLesser?FOE_ULT_LEAD:1),(c.g.target.foot-40)/c.ground):foeFitSize(want,c.g.target.x,c.g.target.foot,c.ground),per=c.look.shaft?120:100;
+    foeNoFit=!!c.look.shaft;const fx=foeFx(c.sheet,{x:c.g.target.x,y:c.g.target.foot-size*(c.ground-.5)},size,{duration:c.sheet.count*per,z:7});foeNoFit=false;
+    if(c.look.shaft)foeShaft(c.sheet,fx.node,c.look.shaft,c.sheet.count*per);
     await combatV3Wait(per*2);combatV3Camera(-1,true,true,c.pending);
     for(let i=0;i<c.hits;i++){c.contact(i);if(i<c.hits-1)await combatV3Wait(100);}
     await combatV3Wait(per*3);
@@ -1220,7 +1273,7 @@ const FOE_MOVES={
     await c.cast();await combatV3Wait(160*c.pace);
     // Its shadow grows on the hero's ground, then the mass falls from the top of the screen onto it.
     const size=c.g.body*1.6*c.scale*c.size,per=100,at={x:c.g.target.x,y:c.g.target.foot-size*(c.ground-.5)},piece=Math.min(size*.75,c.g.target.foot*.55),sky={x:at.x+piece*.1,y:-piece*.6};
-    const fall=foeFx(c.sheet,sky,piece,{frame:0,z:7});
+    foeNoFit=true;const fall=foeFx(c.sheet,sky,piece,{frame:0,z:7});foeNoFit=false;   // it falls through the top on purpose
     const shadow=document.createElement('span');shadow.className='foe-dive-shadow';shadow.style.cssText=`left:${at.x}px;top:${c.g.target.foot}px;width:${c.g.target.width*1.3}px`;$('combatEffects').append(shadow);
     animate(shadow,[{opacity:0,scale:'.4'},{opacity:.6,scale:'1'}],{duration:560,fill:'forwards'});
     await combatV3Wait(420);
@@ -1312,7 +1365,8 @@ function foeSummonFigures(c,body){
 // The boss's own pose for a skill (look.pose, an action sheet of its own) when its art has it, else
 // the fallback action (attack, cast).
 function foeLookPose(look,fallback='attack'){
-  const has=name=>name&&spriteDefinition('enemy',state.enemyKey,name).action===name;
+  // A boss in its own armour fights in the armoured drawing of the same pose (<pose>_armored).
+  const has=name=>{const action=name&&spriteDefinition('enemy',state.enemyKey,name).action;return !!name&&(action===name||action===name+'_armored');};
   return has(look?.pose)?look.pose:has(fallback)?fallback:'attack';
 }
 function foeLookSheet(name){const owner=foeSkillOwner();return name&&!reduced&&ART.bossFx?.[owner?.boss+'/'+name]||null;}
@@ -1357,7 +1411,7 @@ async function foeSkillStrike(skill,raw,hits=1){
   hits=raw>0?Math.max(1,Math.min(9,Math.max(Math.round(hits)||1,look?.beats||0))):0;
   let amount=0,blocked=0;
   const sounds=look?.sounds||{};
-  const c={sheet,hits,pace:elite?.8:1,scale:elite?.68:1,size:look?.size||1,ground:look?.ground??.8,g:foeGeometry(),pending,look:look||{},
+  const c={sheet,hits,pace:elite?.8:1,scale:elite?.68:FOE_BOSS_FX,size:look?.size||1,ground:look?.ground??sheet?.ground??.8,g:foeGeometry(),pending,look:look||{},
     sound(cue,options){bossSkillSound(sounds[cue],options);},
     pose(fallback){return foeLookPose(look,fallback);},
     // The cast pose builds to its peak (frame 4: staff, hand or blade thrust toward the hero) and holds
@@ -1418,8 +1472,17 @@ async function foeUltFinale(c,{dim,warn,pulse}){
   pulse.cancel();warn.remove();
   // The boss's own finishing set piece (assets/fx/bosses/<boss>/skills/climax), its peak at frame 3.
   const climax=c.extra('climax')||foeLookSheet('climax');
-  if(climax){const size=c.look.stage?$('scene').clientHeight*c.look.stage*.95:foeFitSize(c.g.body*2*c.scale,t.x,t.foot,.85);foeNoFit=!!c.look.stage;foeFx(climax,{x:t.x,y:t.foot-size*.35},size,{duration:climax.count*120,z:7});foeNoFit=false;await combatV3Wait(330);}
-  else{foeFx(c.sheet,at,big,{from:1,duration:(c.sheet.count-1)*100,z:7});await combatV3Wait(200);}
+  // look.stage: the climax is sized to the stage's height, stepped in from the edge so its burst stays whole.
+  // Its own sound lands with it (finale-climax, one recording per boss); without a climax sheet the skill's
+  // own blow is heard again, louder.
+  if(climax)bossSkillSound('finale-climax',{volume:.5});else bossSkillSound(c.look.sounds?.hit,{volume:.42});
+  if(climax){const size=c.look.stage?$('scene').clientHeight*c.look.stage*.95:foeFitSize(c.g.body*2*c.scale,t.x,t.foot,climax.ground??.85);foeNoFit=!!c.look.stage;foeFx(climax,{x:c.look.stage?Math.max(t.x,size*.36):t.x,y:t.foot-size*((climax.ground??.85)-.5)},size,{duration:climax.count*120,z:7});foeNoFit=false;await combatV3Wait(330);}
+  else{
+    // A sheet from the sky (look.shaft, look.lift) reaches the top of the stage in the finale too.
+    const reach=c.look.shaft||c.look.lift?.bolt,fx=foeFx(c.sheet,at,big,{from:1,duration:(c.sheet.count-1)*100,z:7});
+    if(reach)foeShaft(c.sheet,fx.node,reach,(c.sheet.count-1)*100,null,1);
+    await combatV3Wait(200);
+  }
   const flash=document.createElement('span');flash.className='foe-flash';$('scene').append(flash);
   c.pending.push(animate(flash,[{opacity:.42},{opacity:0}],{duration:260,easing:'ease-out'}).finally(()=>flash.remove()));
   await foeImpact(c,200);combatV3Camera(-1,true,true,c.pending);
@@ -1480,10 +1543,11 @@ function foeGuardAura(look,alive=()=>state.enemyArmor>0){
     if(!alive()||!state.boss||!actor('enemy')?.isConnected){stop();return;}
     copy();
     if(now-measured>500){body=foeBody();measured=now;for(const n of [shell,near])Object.assign(n.node.style,{left:body.x+'px',top:body.y+body.height*.05+'px'});}
-    const rx=body.width*.62,ry=body.height*.15,cy=body.y-(plate?body.height*.04:-body.height*.15);
+    // The boss stands near the outer edge, so the orbit's far side is pulled in to stay on the stage.
+    const rx=body.width*.62,ry=body.height*.15,cy=body.y-(plate?body.height*.04:-body.height*.15),far=Math.max(body.width*.2,Math.min(rx,$('scene').clientWidth-6-size*.42-body.x));
     for(const n of nodes){
       const a=now/650+n.k*2*Math.PI/count-n.t*.13,front=Math.sin(a)>0;
-      n.fx.node.style.left=body.x+Math.cos(a)*rx+'px';n.fx.node.style.top=cy+Math.sin(a)*ry+'px';n.fx.node.style.scale=String(.8+.2*Math.sin(a));
+      n.fx.node.style.left=body.x+Math.cos(a)*(Math.cos(a)>0?far:rx)+'px';n.fx.node.style.top=cy+Math.sin(a)*ry+'px';n.fx.node.style.scale=String(.8+.2*Math.sin(a));
       if(front!==n.front){n.front=front;(front?$('combatEffects'):$('scene')).append(n.fx.node);n.fx.node.style.zIndex=front?'6':'1';}
     }
     requestAnimationFrame(tick);
@@ -1524,6 +1588,14 @@ function foeGuardsRender(adds){
     const s=slots[k];Object.assign(el.style,{left:s.x+'px',top:s.y+'px',width:s.w+'px',height:s.w+'px',zIndex:s.z});
     el.querySelector('em').style.width=Math.max(0,m.hp/m.max*100)+'%';
   });
+}
+// A blow lands on the front guard: its number rises over it and it flinches (its bar follows on update).
+function foeGuardStruck(el,amount){
+  const scene=$('scene');if(!el||!scene||!el.isConnected)return;
+  const box=el.getBoundingClientRect(),stage=scene.getBoundingClientRect(),n=document.createElement('span');
+  n.className='foe-guard-number';n.textContent='-'+amount;n.style.left=box.left-stage.left+box.width/2+'px';n.style.top=box.top-stage.top+'px';scene.append(n);
+  animate(n,[{opacity:0,translate:'-50% 0',scale:'.7'},{opacity:1,translate:'-50% -14px',scale:'1.1',offset:.2},{opacity:0,translate:'-50% -40px',scale:'1'}],{duration:900,easing:'ease-out'}).finally(()=>n.remove());
+  if(!reduced)el.querySelector('i')?.animate([{transform:'none',filter:'brightness(1)'},{transform:'translateX(6px) rotate(4deg)',filter:'brightness(2.2)',offset:.25},{transform:'none',filter:'brightness(1)'}],{duration:320});
 }
 // Every guard standing lunges at the hero in turn; the damage is split between them.
 async function foeGuardsAttack(raw){

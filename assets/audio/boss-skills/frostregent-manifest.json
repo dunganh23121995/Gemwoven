@@ -39,22 +39,22 @@
   },
   "bossfx-frostregent-icemirror-start": {
     "file": "boss-skills/frostregent/icemirror-start.wav",
-    "duration": 0.66,
-    "beat": "icemirror start: Granola_Bar_Crack.wav",
+    "duration": 1.62,
+    "beat": "icemirror start: Iron Lake Ice Echoes - 45 Sec Clip",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Granola_Bar_Crack.wav",
-        "author": "drewsimko",
-        "source_url": "https://freesound.org/people/drewsimko/sounds/682877/",
+        "title": "Iron Lake Ice Echoes - 45 Sec Clip",
+        "author": "RedHatCreator",
+        "source_url": "https://freesound.org/people/RedHatCreator/sounds/716135/",
         "license": "CC0-1.0",
-        "sha256": "fd99d3b1632acd7abc592709ed3aef09bb8288e2573f1ef0acf3f388eb5f0546"
+        "sha256": "a80cbde5f9550343127a81b62638a075a32a6830acadb276d53a62aa43ea914f"
       }
     ],
-    "processing": "excerpt 1.14-1.80 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.061,
-    "sha256": "0f88d1182c3cdccf6090bc67a842c4ce82fba63c65f0b55a9290d126d703bac4"
+    "processing": "excerpt 4.50-6.12 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.338,
+    "rms": 0.11,
+    "sha256": "2f20849fa9cee03b537bd34b56e206f2aaad8f2d8b4a24f65ad3888ebbf89088"
   },
   "bossfx-frostregent-hail-start": {
     "file": "boss-skills/frostregent/hail-start.wav",
@@ -134,22 +134,22 @@
   },
   "bossfx-frostregent-icemirror-lock": {
     "file": "boss-skills/frostregent/icemirror-lock.wav",
-    "duration": 0.4,
-    "beat": "icemirror lock: knocking-boxes.wav",
+    "duration": 0.5,
+    "beat": "icemirror lock: Break Ice",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "knocking-boxes.wav",
-        "author": "sadlyshoe",
-        "source_url": "https://freesound.org/people/sadlyshoe/sounds/544266/",
+        "title": "Break Ice",
+        "author": "davilca",
+        "source_url": "https://freesound.org/people/davilca/sounds/677230/",
         "license": "CC0-1.0",
-        "sha256": "5ff0668eb21aee04aa45acdb41dfa113ca6ad66748c755757e68bb816b79dbb0"
+        "sha256": "3e60a2f936aee66963f01effb0c9cdb03f18dd640a3750659c93294f1655b3e4"
       }
     ],
-    "processing": "excerpt 0.64-1.04 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 10.96-11.46 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.089,
-    "sha256": "bf46575f12cfe9e6bb8bf62a6fa5dd3c8af19b9d75790acc771e92039664e2a7"
+    "rms": 0.043,
+    "sha256": "db964c191a515ba5be23e5a7c422b117a1fed9da398bce669f5e0d612b637b36"
   },
   "bossfx-frostregent-icemirror-channel": {
     "file": "boss-skills/frostregent/icemirror-channel.wav",
@@ -229,22 +229,22 @@
   },
   "bossfx-frostregent-glacierspire-hit": {
     "file": "boss-skills/frostregent/glacierspire-hit.wav",
-    "duration": 1.58,
-    "beat": "glacierspire hit: S10-16 Dropping large piece of ice onto cement; dull.wav",
+    "duration": 0.78,
+    "beat": "glacierspire hit: Breaking Ice.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "S10-16 Dropping large piece of ice onto cement; dull.wav",
-        "author": "craigsmith",
-        "source_url": "https://freesound.org/people/craigsmith/sounds/675856/",
+        "title": "Breaking Ice.wav",
+        "author": "Mrthenoronha",
+        "source_url": "https://freesound.org/people/Mrthenoronha/sounds/398806/",
         "license": "CC0-1.0",
-        "sha256": "e2c2e6bf35dff27386b659042f3329d37af5fd1892c2c3153c2a904cfde0bdcf"
+        "sha256": "e59566d586229d48a8c280738de07b787383b1b23496b7cd3ffe395fda1d5a9d"
       }
     ],
-    "processing": "excerpt 0.94-2.52 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.679,
-    "rms": 0.11,
-    "sha256": "ddac24f6353dfb450e07e625695c7c3d5586eb05b59f7cb6e606be7986ccc973"
+    "processing": "excerpt 14.68-15.46 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.069,
+    "sha256": "1bfc3f29045333bfc2d4bc1c4bbbc987a78775d369c25401cd6391f533f19496"
   },
   "bossfx-frostregent-glacierspire-channel": {
     "file": "boss-skills/frostregent/glacierspire-channel.wav",

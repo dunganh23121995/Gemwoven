@@ -65,11 +65,12 @@ CUES = {
 # The other bosses' cues, picked by scripts/pick_boss_skill_sounds.py: boss/fx/cue -> one recording and its
 # excerpt, played as bossfx-<boss>-<fx>-<cue>. Each cue kind keeps its own edit: a start or a hit is short
 # and clean, a lock is a dry thud, a land keeps its long rumble, a boom (a giant's body or foot meeting the ground) keeps its deep
-# hit and tail, a grow swells in and fades out slowly.
+# hit and tail, a climax (an ultimate's finale) keeps its weight and tail, a grow swells in and fades out slowly.
 KIND = {'start': {'fade_in': .02, 'fade_out': .2}, 'hit': {'fade_in': .002, 'fade_out': .25},
         'lock': {'fade_in': .002, 'fade_out': .2}, 'land': {'fade_in': .005, 'fade_out': 1.2, 'highpass': 25, 'rms': .14},
         'grow': {'fade_in': .12, 'fade_out': .5, 'rms': .09}, 'channel': {'fade_in': .15, 'fade_out': .35, 'rms': .08},
-        'boom': {'fade_in': .003, 'fade_out': .9, 'highpass': 25, 'rms': .15}}
+        'boom': {'fade_in': .003, 'fade_out': .9, 'highpass': 25, 'rms': .15},
+        'climax': {'fade_in': .003, 'fade_out': .9, 'highpass': 30, 'rms': .15}}
 PICKS = AUDIO / 'boss-skills/picks.json'
 for key, pick in (json.loads(PICKS.read_text(encoding='utf-8')) if PICKS.exists() else {}).items():
     boss, fx, kind = key.split('/')

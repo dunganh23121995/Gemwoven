@@ -46,7 +46,7 @@
   },
   "tail_armored": {
    "loop": false,
-   "frames": "1 ready pose; 2 anticipation: the dragon turns its shoulders slightly away to the RIGHT and crouches, the long spiked tail lifting up behind it; 3 full wind-up, the weight loaded: the tail is raised HIGH and curled up over its back like a drawn whip, hind legs bent, chest low, head turned toward the LEFT target; 4 the swing: the hips twist toward the LEFT and the tail sweeps down and forward in a wide low arc in front of the body; 5 impact: the tail fully extended across the left at knee height, spikes leading, the whole body twisted into the blow; 6 follow-through: the tail has swept on past and curls back round in front of the legs, body still twisted, slowly settling",
+   "frames": "1 ready pose; 2 anticipation: the dragon turns its shoulders slightly away to the RIGHT and crouches, the long spiked tail lifting up behind it; 3 full wind-up, the weight loaded: the tail is raised HIGH and curled up over its back like a drawn whip, hind legs bent, chest low, head turned toward the LEFT target; 4 the swing: the hips twist toward the LEFT and the tail sweeps down and forward in a wide low arc OUT in front of the body, reaching far toward the LEFT past the head and front claws (the tail is NOT wrapped or coiled round the body, the chest stays fully visible); 5 impact: the tail fully extended across the left at knee height, spikes leading, the whole body twisted into the blow; 6 follow-through: the tail has swept on past and curls back round in front of the legs, body still twisted, slowly settling",
    "armored": true
   },
   "bite_armored": {

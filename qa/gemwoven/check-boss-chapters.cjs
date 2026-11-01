@@ -60,7 +60,19 @@ for(const d of D.definitions){
   for(let i=0;i<6;i++)T.collect(t,d,d.tile);let events=T.advance(t,d,.3);assert.ok(events.some(e=>e.type==='interrupt'),'Correct tile collection interrupts the next execution');assert.equal(events.filter(e=>e.type==='burst').length,0);
   const fail=T.create(d,{bossMax:100000});T.advance(fail,d,.3);events=T.advance(fail,d,.3);assert.ok(events.some(e=>e.type==='burst'),'Unanswered telegraph resolves into damage');
   const hit=T.create(d,{bossMax:100000});T.advance(hit,d,.3);T.incoming(hit,d,30000);events=T.advance(hit,d,.3);assert.ok(events.some(e=>e.type==='interrupt'),'Strong damage can break the initial shell and interrupt without the artifact');
-  const minion=T.create(d,{bossMax:100000});minion.cast=2;T.advance(minion,d,1);assert.ok(minion.addHp>0);minion.ward=0;const pool=minion.addHp,result=T.incoming(minion,d,1000);assert.ok(minion.addHp<pool);assert.ok(result.amount<1000,'Minion HP intercepts damage rather than being a decorative icon');
+  const minion=T.create(d,{bossMax:100000});minion.cast=2;T.advance(minion,d,1);assert.ok(minion.addHp>0);minion.ward=0;const pool=minion.addHp,result=T.incoming(minion,d,1000);assert.ok(minion.addHp<pool);assert.equal(result.amount,0,'Summoned guards take every blow while they stand');
+  {
+    // Guards: each ADD_HP of the boss, blows carry on to the next guard and reach the boss only once all fall;
+    // a new summon adds to those still standing (MAX_ADDS), and each guard strikes every turn.
+    const g=T.create(d,{bossMax:100000});g.ward=0;
+    g.adds=[{hp:8000,max:8000},{hp:8000,max:8000}];g.addHp=16000;g.addCount=2;
+    let r=T.incoming(g,d,10000);assert.equal(r.amount,0);assert.equal(g.addCount,1,'The overflow of a blow carries on to the next guard');
+    r=T.incoming(g,d,10000);assert.equal(g.addCount,0);assert.ok(r.amount>0&&r.amount<=10000*1.4,'Once every guard has fallen the rest of the blow reaches the boss');
+    const stack=T.create(d,{bossMax:100000});stack.cast=2;T.advance(stack,d,1);const first=stack.addCount;stack.cast=2;stack.addLock=0;T.advance(stack,d,1);
+    assert.ok(first>=2&&stack.addCount===Math.min(T.MAX_ADDS,first*2),'Guards not killed before the next summon add up');
+    assert.ok(Math.abs(stack.adds[0].max-100000*T.ADD_HP)<1,'Each guard has its share of the boss health');
+    const strike=T.advance(stack,d,1).find(e=>e.addAttack);assert.ok(strike&&Math.abs(strike.power-T.ADD_POWER*stack.addCount)<1e-9,'Every guard standing strikes');
+  }
   const frozen=T.create(d);events=T.advance(frozen,d,1,{skipAction:true});assert.ok(events.some(e=>e.type==='hazard'));assert.ok(!events.some(e=>e.type==='cast'),'Stuns stop the action but not persistent environment');
   if(d.mechanic==='heat'){const cooled=T.create(d,{rank:4});events=T.advance(cooled,d,.6);assert.equal(events.find(e=>e.type==='shatter').fraction,0,'Complete cooling core counters armor melting');}
   if(d.mechanic==='tide'){const anchored=T.create(d,{rank:4,bossMax:100000});anchored.ward=5000;T.advance(anchored,d,.3);for(let i=0;i<6;i++)T.collect(anchored,d,d.tile);T.advance(anchored,d,.3);assert.equal(anchored.ward,0,'Complete tide anchor breaks the pearl barrier on interruption');}

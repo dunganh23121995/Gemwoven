@@ -15,9 +15,39 @@ startStage=function(){
 const expeditionApplyDamage=applyCombatDamage;
 applyCombatDamage=function(target,n){
   if(!expeditionState||target!=='enemy')return expeditionApplyDamage(target,n);
+  // Blows on the summoned guards are shown on the front one (its number, a flinch, its bar), and the first
+  // time the player learns that the guards fall before the boss can be hurt.
+  const guardsBefore=expeditionState.addHp,front=$('foeGuards')?.querySelector('.foe-guard:not(.falling)');
   const intercepted=expeditionRules.incoming(expeditionState,expeditionDef,n),result=expeditionApplyDamage(target,intercepted.amount);
+  const onGuards=Math.round(guardsBefore-expeditionState.addHp);
+  if(onGuards>0){foeGuardStruck(front,onGuards);if(!expeditionState.guardHint){expeditionState.guardHint=true;message('Hộ vệ chắn trước boss · hạ hết hộ vệ mới đánh được boss!');}}
+  expeditionGuardOnly=onGuards>0&&!intercepted.amount&&intercepted.absorbed-onGuards<1;
   if(expeditionState.channel)expeditionState.channel.damage=Math.max(0,expeditionState.channel.damage-result.blocked);
   result.blocked+=intercepted.absorbed;return result;
+};
+// While summoned guards stand, the hero's basic attack runs at the front guard (its point stands in for the
+// boss's) and the boss does not flinch from a blow the guards took.
+let expeditionAiming=null;
+const expeditionPoint=combatV3Point;
+combatV3Point=function(side){
+  if(side!=='enemy'||!expeditionAiming?.isConnected)return expeditionPoint(side);
+  const scene=$('scene').getBoundingClientRect(),r=expeditionAiming.getBoundingClientRect();
+  return {x:r.left-scene.left+r.width*.5,y:r.top-scene.top+r.height*.62,foot:r.bottom-scene.top-r.height*.06,width:r.width,height:r.height};
+};
+const expeditionAction=combatV3Action;
+combatV3Action=function(side,action,...rest){if(side==='enemy'&&action==='hurt'&&expeditionAiming&&expeditionState?.addHp>0)return;return expeditionAction(side,action,...rest);};
+const expeditionAttack=attack;
+attack=async function(side,raw,options={}){
+  const front=side==='hero'&&!options.ultimate&&expeditionState?.addHp>0?$('foeGuards')?.querySelector('.foe-guard:not(.falling)'):null;
+  if(!front)return expeditionAttack(side,raw,options);
+  expeditionAiming=front;try{return await expeditionAttack(side,raw,options);}finally{expeditionAiming=null;}
+};
+// A blow the guards took whole shows its number over the guard (foeGuardStruck), not "CHẶN" on the boss.
+let expeditionGuardOnly=false;
+const expeditionNumber=combatV3Number;
+combatV3Number=function(side,text,...rest){
+  if(side==='enemy'&&expeditionGuardOnly&&/^CHẶN /.test(String(text))){expeditionGuardOnly=false;return;}
+  return expeditionNumber(side,text,...rest);
 };
 const expeditionIntent=intent;
 intent=function(){

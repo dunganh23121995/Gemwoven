@@ -91,7 +91,7 @@ function combatEdgeRoom(side,rest=false){
 }
 // Resting actors keep every pose at least 8px inside the arena (wide hammers,
 // enlarged star forms); attack motions then spend only the remaining room.
-const COMBAT_EDGE_MARGIN=8,COMBAT_BOSS_EDGE=.04;
+const COMBAT_EDGE_MARGIN=8,COMBAT_BOSS_EDGE=.04,COMBAT_HERO_LINE=.28;
 // The resting body's left and right (px in the stage, at the actor's layout box).
 function combatRestBody(side){
   const root=actor(side),s=root?.querySelector('.sprite-body');if(!s||!root.offsetWidth)return null;
@@ -102,10 +102,12 @@ function combatRestBody(side){
 // a narrow stage it is drawn smaller (down to 80%) rather than crowding the hero.
 function combatBossFit(){
   const root=actor('enemy'),W=$('scene').clientWidth;if(!root?.offsetWidth||!W)return;
-  const stage=W+':'+state.enemyKey+':'+state.key;
+  // The boss's size depends on the stage and the boss alone, never on which hero faces it: the room is measured
+  // from a fixed hero line (COMBAT_HERO_LINE of the stage), not the current hero's body.
+  const stage=W+':'+state.enemyKey;
   if(root.dataset.fitStage!==stage){root.style.width=root.style.height='';root.dataset.fitStage=stage;root.dataset.fitSize=root.offsetWidth;}
-  const size=+root.dataset.fitSize,boss=combatRestBody('enemy'),hero=combatRestBody('hero');if(!boss||!hero||!size)return;
-  const body=(boss.right-boss.left)/root.offsetWidth,room=W*(1-COMBAT_BOSS_EDGE)-hero.right-Math.max(48,W*.16);
+  const size=+root.dataset.fitSize,boss=combatRestBody('enemy');if(!boss||!size)return;
+  const body=(boss.right-boss.left)/root.offsetWidth,room=W*(1-COMBAT_BOSS_EDGE)-W*COMBAT_HERO_LINE-Math.max(48,W*.16);
   const want=Math.round(size*Math.max(.8,Math.min(1,room/Math.max(1e-3,body*size))));
   if(want!==root.offsetWidth)root.style.width=root.style.height=want===size?'':want+'px';
 }

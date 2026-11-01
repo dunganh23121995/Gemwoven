@@ -192,20 +192,20 @@
   "bossfx-leviathan-frostbreath-channel": {
     "file": "boss-skills/leviathan/frostbreath-channel.wav",
     "duration": 1.42,
-    "beat": "frostbreath channel: Viento helado.wav",
+    "beat": "frostbreath channel: ATM INT Wind Howl Cold Winter 09 (stereo).wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Viento helado.wav",
-        "author": "Gamba_04",
-        "source_url": "https://freesound.org/people/Gamba_04/sounds/447280/",
+        "title": "ATM INT Wind Howl Cold Winter 09 (stereo).wav",
+        "author": "Takkyi",
+        "source_url": "https://freesound.org/people/Takkyi/sounds/546871/",
         "license": "CC0-1.0",
-        "sha256": "b12917c10e8d75daa6886562a19a0f501b2d88efcb466413240cef311b724080"
+        "sha256": "633fedcd9a6ce780ca4968da249b680ae96a33a6ba3340b55c516ee1c6226575"
       }
     ],
-    "processing": "excerpt 4.42-5.84 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.512,
+    "processing": "excerpt 12.78-14.20 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.232,
     "rms": 0.08,
-    "sha256": "0971ec4a0c95756468b8f5f645311c12adeedfaac5134651d7494c5e372f7148"
+    "sha256": "ef3bf629b87ca4edec858d793558d4312faa0ba0b3d261f7722612c5ab6bf128"
   }
 }

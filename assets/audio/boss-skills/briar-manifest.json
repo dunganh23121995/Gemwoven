@@ -1,41 +1,41 @@
 {
   "bossfx-briar-maw-start": {
     "file": "boss-skills/briar/maw-start.wav",
-    "duration": 0.92,
-    "beat": "maw start: Snap in a small room3",
+    "duration": 0.78,
+    "beat": "maw start: Snapping Plants",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Snap in a small room3",
-        "author": "locky_Y",
-        "source_url": "https://freesound.org/people/locky_Y/sounds/733174/",
+        "title": "Snapping Plants",
+        "author": "RICHERlandTV",
+        "source_url": "https://freesound.org/people/RICHERlandTV/sounds/697264/",
         "license": "CC0-1.0",
-        "sha256": "526396caf87f2f325145fe522f3af7ed4c446d8a8bb5eafb8cf1753db2f22044"
+        "sha256": "cbe143a8a3dd50cdece5f61130a068579bdfd4fa14865f96a8058b2b7febc709"
       }
     ],
-    "processing": "excerpt 0.00-0.92 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 16.56-17.34 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.009,
-    "sha256": "52fe5031b2ffc2ab6a1cb603c0a7c00365e894d297cbe45e5616adf4fabb7486"
+    "rms": 0.058,
+    "sha256": "3974ccaec83d52fff3f38f9e819c470f9c2d6d5e48f24c4e182c0ae9e59096f8"
   },
   "bossfx-briar-maw-hit": {
     "file": "boss-skills/briar/maw-hit.wav",
-    "duration": 0.36,
-    "beat": "maw hit: Splat/Squish 4",
+    "duration": 0.86,
+    "beat": "maw hit: Gore Tear 1",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Splat/Squish 4",
-        "author": "mrickey13",
-        "source_url": "https://freesound.org/people/mrickey13/sounds/515621/",
+        "title": "Gore Tear 1",
+        "author": "MalikArsYasakani",
+        "source_url": "https://freesound.org/people/MalikArsYasakani/sounds/814734/",
         "license": "CC0-1.0",
-        "sha256": "09a38ccf223e3570d653719fd24af00741c1156de0e23a7f47c63b6f8b85f362"
+        "sha256": "88d68e1767b7dd280b0cbe376cabe4e71fdc5a92872a68ddbc06c7bd6105308b"
       }
     ],
-    "processing": "excerpt 0.00-0.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 4.38-5.24 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.076,
-    "sha256": "bc673c4efe0ab898a3a473599afea86bc6fe8583f58e8743f358f82fbfb86edd"
+    "rms": 0.071,
+    "sha256": "4994cc85ccf50fa1c051617f15a53b0e33461ea215b506e689c3b8ef5fa7766e"
   },
   "bossfx-briar-brambles-start": {
     "file": "boss-skills/briar/brambles-start.wav",
@@ -135,40 +135,40 @@
   "bossfx-briar-thorncrown-start": {
     "file": "boss-skills/briar/thorncrown-start.wav",
     "duration": 1.62,
-    "beat": "thorncrown start: Dry Grass Rustle.wav",
+    "beat": "thorncrown start: Breaking A Branch.m4a",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Dry Grass Rustle.wav",
-        "author": "TheSupremeMuffinPooter",
-        "source_url": "https://freesound.org/people/TheSupremeMuffinPooter/sounds/525268/",
+        "title": "Breaking A Branch.m4a",
+        "author": "cfran789",
+        "source_url": "https://freesound.org/people/cfran789/sounds/444007/",
         "license": "CC0-1.0",
-        "sha256": "fa6089575b6f98df5f16ee68f6c79320516c0ba61f6cfe07db88a644c40159c6"
+        "sha256": "5fcd73b09a6a6c10e10b2dd023cc66af5dea8cf1f5acdb340aaf91969a8b0be0"
       }
     ],
-    "processing": "excerpt 4.40-6.02 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 5.66-7.28 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.024,
-    "sha256": "ea32da923ba6288992b87db9e253f03ee003348e8997c78db4bf05768059b795"
+    "rms": 0.049,
+    "sha256": "d777e972fd1e21e99b537687b7f51fa12db03e8c6f933a0fd1fb25d557496926"
   },
   "bossfx-briar-thorncrown-hit": {
     "file": "boss-skills/briar/thorncrown-hit.wav",
-    "duration": 0.58,
-    "beat": "thorncrown hit: SFX_wood_cracking.wav",
+    "duration": 1.58,
+    "beat": "thorncrown hit: wood impact axe chop real int echo.flac",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "SFX_wood_cracking.wav",
-        "author": "EricsSoundschmiede",
-        "source_url": "https://freesound.org/people/EricsSoundschmiede/sounds/669457/",
+        "title": "wood impact axe chop real int echo.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/454381/",
         "license": "CC0-1.0",
-        "sha256": "cab3b4d62f9530734987733e59550453d3add4c51ceb0b61017ef618a890da81"
+        "sha256": "2838bfa12be9ceea5357af46715dacb9cac2e89343ce50aa339c76be2e18e8d7"
       }
     ],
-    "processing": "excerpt 1.78-2.36 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 3.54-5.12 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.038,
-    "sha256": "5af6f5fcbe87e3cc05e204ee08edb7916b553a281345d34893719a441c590054"
+    "rms": 0.069,
+    "sha256": "89d7f7611c77f4b00c39da52665a7687e8b3b4e7451058d5de5ef83a33ad4f41"
   },
   "bossfx-briar-brambles-lock": {
     "file": "boss-skills/briar/brambles-lock.wav",

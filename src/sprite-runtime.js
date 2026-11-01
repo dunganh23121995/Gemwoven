@@ -4,11 +4,12 @@ const spritePlayback=new WeakMap();
 let spriteFrameClock=0;
 function spriteDefinition(family,key,action){
   const set=family==='hero'?(ART.heroForms?.[key]?.[combatHeroForm(key)]||ART.heroes[key]):state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
-  const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt?'hurt':'attack'):action;
+  const armored=family!=='hero'&&state.enemyArmor>0;
+  const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt||armored&&set.hurt_armored?'hurt':'attack'):action;
   // A boss that grows armour of its own (the fire dragon's lava scales) rests in it while the armour holds.
-  if(mapped==='idle'&&family!=='hero'&&set.armoridle&&state.enemyArmor>0)return {sheet:set.armoridle,action:'armoridle'};
+  if(mapped==='idle'&&armored&&set.armoridle)return {sheet:set.armoridle,action:'armoridle'};
   // Its actions too: each has an armoured drawing (<action>_armored) it fights in while the armour holds.
-  if(family!=='hero'&&state.enemyArmor>0&&set[mapped+'_armored'])return {sheet:set[mapped+'_armored'],action:mapped+'_armored'};
+  if(armored&&set[mapped+'_armored'])return {sheet:set[mapped+'_armored'],action:mapped+'_armored'};
   return {sheet:set[mapped]||set.attack||set.idle,action:set[mapped]?mapped:mapped==='idle'?'idle':'attack'};
 }
 function spriteMarkup(family,key,action='idle'){
@@ -78,12 +79,13 @@ function spriteBox(family,key,sheet,grow=(sheet.scale||1)-1){
   return {left:idle.feetX-sheet.feetX*width,top:(idle.footY||.94)-foot*width,width};
 }
 // A chapter boss stands near the edge by its resting body (combat-stage.js combatKeepInside); a wider pose
-// of its own (fists raised, wings spread) that would leave the stage there steps in just enough to stay on
-// it. Returns that inward shift (px) for a sheet drawn in box.
+// of its own (fists raised, wings spread, tail coiled out) that would come closer to the edge than its rest
+// (COMBAT_BOSS_EDGE; the stage's frame trim hides anything nearer) steps in to that line. Returns that inward
+// shift (px) for a sheet drawn in box.
 function spriteInset(el,sheet,box){
   const root=el?.closest('.actor');if(!root?.offsetWidth||el.dataset.family!=='enemy'||!state.boss||sheet.airborne||!sheet.span)return 0;
   const W=root.offsetParent?.clientWidth||0,right=root.offsetLeft+(box.left+sheet.span[1]*box.width)*root.offsetWidth;
-  return W?Math.max(0,Math.round(right-(W-4))):0;
+  return W?Math.max(0,Math.round(right-(W-Math.max(4,W*COMBAT_BOSS_EDGE)))):0;
 }
 function spriteApply(el,action,index){
   if(!el)return;
@@ -130,12 +132,14 @@ function spriteApply(el,action,index){
   updateActorHead(el,action,frame);
   if(el.dataset.family==='hero'&&el.dataset.key==='earth')updateNoriShieldAura(el);
 }
+// Whether the body has a hurt sheet of its own (plain or armoured) rather than the attack sheet's recoil frames.
+function spriteOwnHurt(el){return /^hurt(_armored)?$/.test(spriteDefinition(el.dataset.family,el.dataset.key,'hurt').action);}
 function setSpriteAction(side,action,duration=0){
   const root=actor(side),el=root.querySelector('.sprite-body');if(!el)return;
   root.dataset.state=action;
   const idle=action==='idle';el.dataset.loop=String(idle);
   spritePlayback.set(el,{action,start:performance.now(),duration:duration||1200,manual:false});
-  spriteApply(el,action,action==='hurt'&&spriteDefinition(el.dataset.family,el.dataset.key,action).action!=='hurt'?4:0);
+  spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)?4:0);
 }
 function setSpriteFrame(side,action,index){
   const el=actor(side).querySelector('.sprite-body');if(!el)return;
@@ -165,7 +169,7 @@ function spriteTick(now){
       if(def.count>=8){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
     }else{
       const elapsed=Math.max(0,now-playback.start);
-      const fallbackHurt=playback.action==='hurt'&&spriteDefinition(el.dataset.family,el.dataset.key,'hurt').action!=='hurt';
+      const fallbackHurt=playback.action==='hurt'&&!spriteOwnHurt(el);
       const frame=fallbackHurt?Math.min(def.count-1,4+Math.floor(elapsed/Math.max(1,playback.duration)*2)):Math.min(def.count-1,Math.floor(elapsed/(playback.duration||1000)*def.count));
       if(+el.dataset.frame!==frame)spriteApply(el,playback.action,frame);
     }

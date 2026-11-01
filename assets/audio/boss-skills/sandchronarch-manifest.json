@@ -39,22 +39,22 @@
   },
   "bossfx-sandchronarch-reverse-grow": {
     "file": "boss-skills/sandchronarch/reverse-grow.wav",
-    "duration": 2.62,
-    "beat": "reverse grow: Pouring sugar into coffee_02.WAV",
+    "duration": 2.6,
+    "beat": "reverse grow: Shifting sand",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Pouring sugar into coffee_02.WAV",
-        "author": "Leandri140029",
-        "source_url": "https://freesound.org/people/Leandri140029/sounds/437567/",
+        "title": "Shifting sand",
+        "author": "DigPro120",
+        "source_url": "https://freesound.org/people/DigPro120/sounds/859912/",
         "license": "CC0-1.0",
-        "sha256": "5a5771649ee25696e84e3655ca025db282d8491432032466c1746583d1608baf"
+        "sha256": "2f4dc3678b9acd5d51bcaa791eddac7332b92ec2476ebb414223701521d9ba20"
       }
     ],
-    "processing": "excerpt 3.42-6.04 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.011,
-    "sha256": "0aed2afacf91c63bd8d3c6af7b830369605c622d0817bb7cb61c2513fb4adc7a"
+    "processing": "excerpt 0.00-2.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.767,
+    "rms": 0.09,
+    "sha256": "b6b0771a44228a400364e825faee1bc49ec10a2ca9f60717e7aa69875b126e20"
   },
   "bossfx-sandchronarch-clockripple-start": {
     "file": "boss-skills/sandchronarch/clockripple-start.wav",
@@ -77,22 +77,22 @@
   },
   "bossfx-sandchronarch-sandpillar-grow": {
     "file": "boss-skills/sandchronarch/sandpillar-grow.wav",
-    "duration": 0.64,
-    "beat": "sandpillar grow: Falling into sand with knees 48000",
+    "duration": 2.62,
+    "beat": "sandpillar grow: playing with a sand 4",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Falling into sand with knees 48000",
-        "author": "Dreadman247",
-        "source_url": "https://freesound.org/people/Dreadman247/sounds/841852/",
+        "title": "playing with a sand 4",
+        "author": "voho",
+        "source_url": "https://freesound.org/people/voho/sounds/320489/",
         "license": "CC0-1.0",
-        "sha256": "5b48991af2a8c5aa5a1cf47098ebbab73e6e38f5232922f27abc4c5ebb8ec2a3"
+        "sha256": "83c00b92615a7f79f66115cfbd7160aa2fba95b594238f3ec0309fd618bb130a"
       }
     ],
-    "processing": "excerpt 0.20-0.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.56-3.18 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.059,
-    "sha256": "e15881e12f08cc06664ad119152beed920d44faae1155748a33a0f9967ac83f8"
+    "rms": 0.019,
+    "sha256": "4030009b597bb8e7eea7a035135bd27ea9e8c962ad4f48e73ce7a3c59a379f16"
   },
   "bossfx-sandchronarch-sandbeam-start": {
     "file": "boss-skills/sandchronarch/sandbeam-start.wav",

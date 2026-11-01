@@ -28,8 +28,9 @@ CACHE = REPO / '.build-cache/freesound-previews'
 RATE = 16000
 # Longest excerpt per cue kind (s): a start sets the move off, a hit lands, a lock closes a ward,
 # a land is a quake's crash (it keeps its rumble), a boom is the deep thud of a giant body or foot
-# meeting the ground (picked by hand, pinned in picks.json), a grow plays under a bloom.
-LONGEST = {'start': 1.6, 'hit': 1.6, 'lock': 1.0, 'land': 3.5, 'grow': 2.6, 'channel': 1.4, 'boom': 2.6}
+# meeting the ground (picked by hand, pinned in picks.json), a grow plays under a bloom, a climax lands with an
+# ultimate's finishing set piece (src/foe-skills.js foeUltFinale) and keeps its tail.
+LONGEST = {'start': 1.6, 'hit': 1.6, 'lock': 1.0, 'land': 3.5, 'grow': 2.6, 'channel': 1.4, 'boom': 2.6, 'climax': 2.8}
 
 # boss -> fx -> {cue: 'query | query | ...'}
 QUERIES = {
@@ -188,7 +189,23 @@ NEW['leviathan'] = {'jet': {'start': 'water jet | water spray | pressure washer'
                     'rainstorm': {'grow': 'heavy rain | rainstorm | rain downpour'},
                     'frostbreath': {'start': 'cold wind | icy wind | winter wind gust', 'hit': 'ice crackle | ice forming | freezing crack'},
                     'thunderstorm': {'start': 'thunder rumble storm | storm approaching | thunderstorm rain', 'hit': 'lightning strike close | thunder crack close | thunderclap'}}
-# Cues a sound review found wrong (Codex review 2026-10-31): their own search phrases, each skill with a
+# Each ultimate that ends on its boss's climax sheet (foeUltFinale, cataclysm: a thunderbolt, a tidal wave...) is heard too.
+for boss, query in {
+        'fire': 'fire explosion large | big fire burst | fireball explosion | gas explosion fire',
+        'ice': 'ice break | ice smash | ice shatter | glass break | ice crack',
+        'lightning': 'lightning strike close | thunder crack close | thunderclap loud | thunder strike',
+        'eclipse': 'explosion close | bomb explosion | blast close | firework explosion | explosion',
+        'mire': 'big splash | heavy splash | mud splash | bog splash | rock into water',
+        'elderbloom': 'tree falling | tree crack | large branch break | wood crack loud',
+        'cinderheart': 'volcano eruption | lava explosion | volcano | volcanic',
+        'souljailer': 'iron gate slam | metal gate slam | prison door | metal door slam',
+        'tempestwing': 'thunder close strike | lightning bolt crack | thunder clap close | storm thunder crack',
+        'sporefather': 'slime burst | gooey splat large | wet explosion | squelch big',
+        'prismback': 'glass collapse | glass shatter big | window smash | glass crash | glass break big',
+        'coraltide': 'big wave crash | ocean wave crash rocks | wave impact | surf crash',
+        'moonfang': 'sword strike | sword slash | sword cut | sword hit | katana'}.items():
+    NEW.setdefault(boss, {})['finale'] = {'climax': query}
+# Cues a sound review found wrong (Codex reviews 2026-10-31 and 2026-11-01): their own search phrases, each skill with a
 # channel of its own (assets/audio/boss-skills/review-queries.json).
 for boss, keys in json.loads((AUDIO / 'boss-skills/review-queries.json').read_text(encoding='utf-8')).items():
     for key, cues in keys.items():
@@ -284,7 +301,7 @@ def excerpt(x, kind):
         quiet = quiet + 1 if level[end] < level[peak] - 36 else 0
         if quiet >= 5:
             break
-    if (end - begin) / 50 < (.5 if kind in ('start', 'grow', 'land', 'channel') else .25):
+    if (end - begin) / 50 < (.5 if kind in ('grow', 'land', 'channel') else .35 if kind == 'start' else .25):   # a weapon swing is short
         return None
     return round(max(0, begin / 50 - .02), 2), round(end / 50, 2)
 

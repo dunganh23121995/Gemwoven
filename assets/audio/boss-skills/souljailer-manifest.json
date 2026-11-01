@@ -134,22 +134,22 @@
   },
   "bossfx-souljailer-ghostscythe-hit": {
     "file": "boss-skills/souljailer/ghostscythe-hit.wav",
-    "duration": 1.62,
-    "beat": "ghostscythe hit: Knife Sword Metal Hit Scrape Twang Pack.wav",
+    "duration": 0.44,
+    "beat": "ghostscythe hit: KNIFE - 2",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Knife Sword Metal Hit Scrape Twang Pack.wav",
-        "author": "ralph.whitehead",
-        "source_url": "https://freesound.org/people/ralph.whitehead/sounds/565729/",
+        "title": "KNIFE - 2",
+        "author": "SamuelGremaud",
+        "source_url": "https://freesound.org/people/SamuelGremaud/sounds/573299/",
         "license": "CC0-1.0",
-        "sha256": "96d56c2eb0974c33fbfddf010173bada1ecf0763b0c1b6baba6d42b225197267"
+        "sha256": "952c56e1df5e21aeac38914d2b86537f9e1d4d457826adf0a26a1faf00c56152"
       }
     ],
-    "processing": "excerpt 14.96-16.58 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.28-0.72 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.062,
-    "sha256": "4bea0bb7a622d3bd8be7e82c16fcd0bd2c5a872f43cf5f493e6d465edc913e1f"
+    "rms": 0.107,
+    "sha256": "9b071afd3c3cdab99fe7ca01f139ce79151efb226764355ae412c6f46ce6c46a"
   },
   "bossfx-souljailer-cage-lock": {
     "file": "boss-skills/souljailer/cage-lock.wav",
@@ -264,5 +264,43 @@
     "peak": 0.82,
     "rms": 0.042,
     "sha256": "20670dcb41f8b1f4395a4df3ce66f6e7576d130853d77892a37974c85d6e2aa0"
+  },
+  "bossfx-souljailer-finale-climax": {
+    "file": "boss-skills/souljailer/finale-climax.wav",
+    "duration": 2.8,
+    "beat": "finale climax: Metallic Slam Bang from Closing Gate",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Metallic Slam Bang from Closing Gate",
+        "author": "bassimat",
+        "source_url": "https://freesound.org/people/bassimat/sounds/833566/",
+        "license": "CC0-1.0",
+        "sha256": "474c90b93836173c997bcfb45b2743b4989528c28dee4d626511d2d28571b371"
+      }
+    ],
+    "processing": "excerpt 0.00-2.80 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.057,
+    "sha256": "4bc1f234755a6e7f9006477670523449e5cbb0bbbd3b16c22b1ce29e0293a6b4"
+  },
+  "bossfx-souljailer-ghostscythe-start": {
+    "file": "boss-skills/souljailer/ghostscythe-start.wav",
+    "duration": 0.66,
+    "beat": "ghostscythe start: Woosh 2.mp3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Woosh 2.mp3",
+        "author": "XxChr0nosxX",
+        "source_url": "https://freesound.org/people/XxChr0nosxX/sounds/268226/",
+        "license": "CC0-1.0",
+        "sha256": "b9e83d353358f1a1cbc2e4fc0c5338ac0f0ebc1c022c0f0b6a13724bab9cbbf8"
+      }
+    ],
+    "processing": "excerpt 0.14-0.80 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.089,
+    "sha256": "3da8a49c1add6bfe94553f15da7763d36ea325b925ecfe7705d71e5b700d1868"
   }
 }

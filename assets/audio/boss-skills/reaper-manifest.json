@@ -96,22 +96,22 @@
   },
   "bossfx-reaper-scythe-hit": {
     "file": "boss-skills/reaper/scythe-hit.wav",
-    "duration": 0.72,
-    "beat": "scythe hit: Wet Impact (2)",
+    "duration": 0.5,
+    "beat": "scythe hit: KNIFE - 1",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Wet Impact (2)",
-        "author": "Kastenfrosch",
-        "source_url": "https://freesound.org/people/Kastenfrosch/sounds/521958/",
+        "title": "KNIFE - 1",
+        "author": "SamuelGremaud",
+        "source_url": "https://freesound.org/people/SamuelGremaud/sounds/573300/",
         "license": "CC0-1.0",
-        "sha256": "8e21229a80258eaf0b0a1d564d51701610d8fb7eba412a421244fec36d595a18"
+        "sha256": "16dd4ab00e510828f16cc67b34d147127e029d49d7b6cfe5faba1634d844c3e4"
       }
     ],
-    "processing": "excerpt 0.58-1.30 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.22-0.72 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.044,
-    "sha256": "eed0169082855107d139e2f280948534dfd4164e988d022f37f52d92928e7613"
+    "rms": 0.075,
+    "sha256": "fcf6abc524ec52540e12d979a5404f6b4c5ff3be62e5951f01c1863233959a70"
   },
   "bossfx-reaper-soulknot-start": {
     "file": "boss-skills/reaper/soulknot-start.wav",

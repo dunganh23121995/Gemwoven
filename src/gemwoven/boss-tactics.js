@@ -6,7 +6,9 @@
     return {id:def.id,tier,variant,own:tier==='boss'?null:skills,rank:clamp(Math.floor(rank),0,4),heroMax,bossMax,phase:1,turn:0,cast:0,stacks:0,gauge:0,ward:tier==='boss'&&def.mechanic==='shell'?Math.round(bossMax*.12):0,adds:[],addHp:0,addMax:0,addCount:0,addLock:0,channel:null,cleanseTiles:0,vulnerable:0,events:[]};
   }
   const resist=t=>[0,.35,.5,.65,.8][t.rank];
-  const MAX_ADDS=6;
+  // Summoned guards: each with ADD_HP of the boss's health, each striking for ADD_POWER of a boss blow every
+  // turn; they stand in front of the boss until they fall, and those still standing add up (MAX_ADDS).
+  const MAX_ADDS=6,ADD_HP=.08,ADD_POWER=.25;
   // The pooled view of the guards (addHp, addMax, addCount) that the HUD and older checks read.
   function syncAdds(t){t.addCount=t.adds.length;t.addHp=t.adds.reduce((a,m)=>a+Math.max(0,m.hp),0);t.addMax=t.adds.reduce((a,m)=>a+m.max,0);}
   function collect(t,def,type){
@@ -16,13 +18,14 @@
   }
   function incoming(t,def,amount){
     let left=Math.max(0,amount)*(t.vulnerable>0?1.15+t.rank*.04:1),absorbed=0;
-    if(t.ward>0){const multiplier=def.mechanic==='shell'?1+t.rank*.3:1,used=Math.min(left,t.ward/multiplier);t.ward=Math.max(0,t.ward-used*multiplier);left-=used;absorbed+=used;if(t.ward===0&&def.mechanic==='shell')t.vulnerable=t.rank===4?3:2;}
-    // Summoned guards stand in front of the boss: the front one takes 40% of each blow until it falls.
+    // Summoned guards stand in front of the boss and its shell: every blow lands on the front one, what is left
+    // of it on the next, and only once all have fallen does the rest reach the boss.
     if(t.adds?.length&&t.addHp>0){
-      const front=t.adds[0],redirected=Math.min(front.hp,left*.4);front.hp-=redirected;left-=redirected;absorbed+=redirected;
-      if(front.hp<=.001){t.adds.shift();if(!t.adds.length){if(t.rank===4)t.addLock=3;t.vulnerable=Math.max(t.vulnerable,2);}}
+      while(left>0&&t.adds.length){const front=t.adds[0],taken=Math.min(front.hp,left);front.hp-=taken;left-=taken;absorbed+=taken;if(front.hp<=.001)t.adds.shift();}
+      if(!t.adds.length){if(t.rank===4)t.addLock=3;t.vulnerable=Math.max(t.vulnerable,2);}
       syncAdds(t);
-    }else if(t.addHp>0){const redirected=Math.min(t.addHp,left*.4);t.addHp-=redirected;left-=redirected;absorbed+=redirected;if(t.addHp<=.001){t.addHp=0;t.addCount=0;if(t.rank===4)t.addLock=3;t.vulnerable=Math.max(t.vulnerable,2);}}
+    }else if(t.addHp>0){const taken=Math.min(t.addHp,left);t.addHp-=taken;left-=taken;absorbed+=taken;if(t.addHp<=.001){t.addHp=0;t.addCount=0;if(t.rank===4)t.addLock=3;t.vulnerable=Math.max(t.vulnerable,2);}}
+    if(t.ward>0){const multiplier=def.mechanic==='shell'?1+t.rank*.3:1,used=Math.min(left,t.ward/multiplier);t.ward=Math.max(0,t.ward-used*multiplier);left-=used;absorbed+=used;if(t.ward===0&&def.mechanic==='shell')t.vulnerable=t.rank===4?3:2;}
     if(t.channel)t.channel.damage+=left;
     return {amount:Math.max(0,Math.round(left)),absorbed:Math.round(absorbed)};
   }
@@ -38,7 +41,7 @@
       if(e.type==='status')events.push({...e});
       // Each summon adds its guards to those still standing (at most MAX_ADDS), each with its own health.
       if(e.type==='adds'&&t.tier==='boss'&&t.addLock===0){
-        t.adds=t.adds||[];const each=t.bossMax*.04*(1-r*.25);
+        t.adds=t.adds||[];const each=t.bossMax*ADD_HP*(1-r*.25);
         for(let k=0;k<(e.count||2)&&t.adds.length<MAX_ADDS;k++)t.adds.push({hp:each,max:each});
         syncAdds(t);
       }
@@ -70,7 +73,7 @@
     if(t.gauge>=100){t.events.push({type:'hazard',amount:Math.ceil(t.heroMax*.05*(1-r)*scale),overload:true});t.gauge=35;t.stacks=Math.min(t.tier==='normal'?2:5,t.stacks+2);}
     if(['growth','souls','poison','tide'].includes(def.mechanic)&&scale)t.events.push({type:'heal',pct:(t.stacks*.002+t.addCount*.002)*(1-r)*scale});
     if(['frost','time','storm'].includes(def.mechanic)&&t.stacks&&scale)t.events.push({type:'drain',amount:Math.ceil(t.stacks*2*(1-r)*scale)});
-    if(t.addHp>0)t.events.push({type:'hit',power:.15*t.addCount*(1-r),addAttack:true});
+    if(t.addHp>0)t.events.push({type:'hit',power:ADD_POWER*t.addCount*(1-r),addAttack:true});
     if(skipAction)return t.events;
     const skill=nextSkill(t,def,t.turn);
     if(t.channel){
@@ -124,5 +127,5 @@
     return {guard:'Khi không còn giáp và đã mất máu',heal:'Khi máu boss ≤75% (gấp khi ≤50%)',drain:'Khi tướng sắp đầy nộ (≥60)',burn:'Khi tướng chưa bị thiêu',poison:'Khi tướng chưa trúng độc',
       execute:'Khi máu tướng dưới ngưỡng kết liễu',lifesteal:'Khi boss đã mất máu (<70%)',pierce:'Khi tướng đang có giáp',charge:'Tích lực, lần sau đánh mạnh; không tích hai lần liền',strike:'Đòn chính, dùng khi không có chiêu nào hợp hơn'}[skill.kind]||'Đòn chính';
   }
-  return {create,resist,collect,incoming,advance,forecast,nextSkill,chooseSkill,skillRule};
+  return {create,resist,collect,incoming,advance,forecast,nextSkill,chooseSkill,skillRule,MAX_ADDS,ADD_HP,ADD_POWER};
 });

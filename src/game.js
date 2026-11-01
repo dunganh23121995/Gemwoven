@@ -572,9 +572,11 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   warmNoctSounds,playNoctSound,stopNoctSounds,get noctSounds(){return [...noctSoundSources].map(({id,pan})=>({id,pan}));},
   playCastSound,stopCastSounds,get castSounds(){return [...castSoundSources].map(({id})=>id);},
   spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads,span:sheet.span,footY:sheet.footY,scale:sheet.scale,bodyHeight:sheet.bodyHeight};},
+  spriteAction(side,action,duration){setSpriteAction(side,action,duration);},
   get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,
   get progressionTurns(){return progressionTurn;},
   get expedition(){return typeof expeditionState==='undefined'?null:expeditionState;},expeditionCollect,
+  expeditionTurn(){return expeditionEnemyTurn();},heroStrike(raw){return attack('hero',raw);},foeStrike(raw){return attack('enemy',raw);},
   get progressionEnemyEffects(){return {dot:progressionEnemyDot?{...progressionEnemyDot}:null,charge:progressionEnemyCharge};},
   // Studio: try an alternative drawing of a hero (ART.heroVariants) in place of its current one.
   heroVariant(key,name){const base=ART.heroVariantBase||(ART.heroVariantBase={});base[key]??=ART.heroes[key];ART.heroes[key]=name?ART.heroVariants?.[key]?.[name]||base[key]:base[key];renderActors();update();return Object.keys(ART.heroVariants?.[key]||{});},

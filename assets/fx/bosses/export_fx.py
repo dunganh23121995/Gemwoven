@@ -6,6 +6,7 @@ Each boss skill can also have its own sheet: <boss>/skills/<skill>/raw-sheet.png
 512px cells on magenta, kept as drawn: no re-centring, so grounded effects keep their ground line),
 packed into <boss>/skills/<skill>.webp under the key "<boss>/<skill>" (src/foe-skills.js BOSS_SKILL_LOOKS).
 Usage: python export_fx.py            rebuild every boss that has frames
+       python export_fx.py --ground   only lower the lifted frames of the ground sheets (ground.json) in place
        python export_fx.py --preview  also write <boss>-preview.png (dark backdrop) into PREVIEW_DIR for review
 """
 import json
@@ -44,6 +45,31 @@ def clean(frame, boss):
     return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
 
 
+# Sheets that stand on the ground (ground.json, keys "<boss>/<skill>"): the generator often draws the grid's second row
+# (frames 4-6) with its ground a little higher than the first, so a burst seems to lift off as it settles. Each of
+# those frames whose wide base sits 2.5-18% of the cell above the sheet's ground is lowered onto it. (A sheet whose
+# column is stretched up to the sky, look.shaft or look.lift, keeps its rows as drawn: the stretched band is measured on them.)
+GROUND = set(json.loads((ROOT / "ground.json").read_text(encoding="utf-8"))) if (ROOT / "ground.json").exists() else set()
+
+
+def ground_row(strip):
+    a = np.asarray(strip)
+    alpha = a[..., 3] > 60
+    feet = []
+    for index in range(COUNT):
+        cell = alpha[:, index * CELL:(index + 1) * CELL]
+        rows = np.where(cell.sum(1) > CELL * .06)[0]
+        wide = cell[max(0, rows.max() - int(CELL * .05)):rows.max() + 1].any(0).sum() / CELL if len(rows) else 0
+        feet.append(rows.max() if len(rows) and wide >= .3 else None)
+    ground = max(f for f in feet if f is not None)
+    out = Image.new("RGBA", strip.size, (0, 0, 0, 0))
+    for index in range(COUNT):
+        frame = strip.crop((index * CELL, 0, (index + 1) * CELL, CELL))
+        lift = ground - feet[index] if index >= 3 and feet[index] is not None else 0
+        out.alpha_composite(frame, (index * CELL, lift if CELL * .025 <= lift <= CELL * .18 else 0))
+    return out
+
+
 def build_skill(boss, raw_path):
     sys.path.insert(0, str(Path.home() / ".codex/skills/generate2dsprite/scripts"))
     from generate2dsprite import remove_bg_magenta
@@ -56,6 +82,8 @@ def build_skill(boss, raw_path):
         col, row = index % 3, index // 3
         cell = keyed.crop((col * 512, row * 512, (col + 1) * 512, (row + 1) * 512)).resize((CELL, CELL), Image.Resampling.LANCZOS)
         strip.alpha_composite(clean(cell, boss), (CELL * index, 0))
+    if f"{boss}/{raw_path.parent.name}" in GROUND:
+        strip = ground_row(strip)
     out = raw_path.parent.with_suffix(".webp")
     strip.save(out, "WEBP", lossless=True, method=6, exact=True)
     return out, strip
@@ -70,6 +98,13 @@ def build(boss):
 
 
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["--ground"]:   # lower the lifted frames of the packed strips in ground.json, in place
+        for key in sorted(GROUND):
+            boss, skill = key.split("/")
+            path = ROOT / boss / "skills" / f"{skill}.webp"
+            path.exists() and ground_row(Image.open(path).convert("RGBA")).save(path, "WEBP", lossless=True, method=6, exact=True)
+            print("[ground]", key)
+        sys.exit()
     preview = sys.argv[2] if len(sys.argv) > 2 and sys.argv[1] == "--preview" else None
     meta = {}
     for boss in ORDER:

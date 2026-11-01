@@ -299,6 +299,21 @@ art['scytheGlint']=image('assets/heroes/forms/shadow/form-3/scythe-mask.png')
 # Each chapter boss's signature skill effect (also used, smaller, by that chapter's elites).
 boss_fx_path=root/'assets/fx/bosses/fx.json'
 art['bossFx']={boss:{**sheet,'src':compact_image(sheet['file'])} for boss,sheet in json.loads(boss_fx_path.read_text(encoding='utf-8')).items() if (root/sheet['file']).exists()} if boss_fx_path.exists() else {}
+# Where each effect sheet's painting lies in its cells (fractions, the union over its frames): src/foe-skills.js
+# foeFx keeps the painting, not the cell's empty margin, inside the stage.
+ground_path=root/'assets/fx/bosses/ground-line.json'
+ground_lines=json.loads(ground_path.read_text(encoding='utf-8')) if ground_path.exists() else {}
+for sheet_key,sheet in art['bossFx'].items():
+    im=Image.open(root/sheet['file']).getchannel('A').point(lambda a:255 if a>=48 else 0)
+    n=sheet.get('count',1);fw=im.width//n;fh=im.height;box=None
+    for i in range(n):
+        b=im.crop((i*fw,0,(i+1)*fw,fh)).getbbox()
+        if b:box=b if box is None else (min(box[0],b[0]),min(box[1],b[1]),max(box[2],b[2]),max(box[3],b[3]))
+    sheet['box']=[round(box[0]/fw,3),round(box[1]/fh,3),round(box[2]/fw,3),round(box[3]/fh,3)] if box else [0,0,1,1]
+    # Its contact line, where it meets the floor (fractions of the cell; null for an effect in the air): read off
+    # each grounded sheet by eye (assets/fx/bosses/ground-line.json; loose debris and spray below the base do not
+    # count). src/foe-skills.js stands that line on the target's feet, so every effect of a skill meets one floor.
+    if ground_lines.get(sheet_key) is not None:sheet['ground']=ground_lines[sheet_key]
 reaper_fx=json.loads((root/'assets/fx/noct/fx.json').read_text(encoding='utf-8'))
 art['reaperFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in reaper_fx.items()}
 # Each hero's own skill art for its forms (src/forms-<hero>.js): assets/fx/heroes/<key>/fx.json.

@@ -150,5 +150,24 @@
     "peak": 0.82,
     "rms": 0.061,
     "sha256": "c3164361c0229fccca90fc125ec4bd133e6d19ed636516bec50a88ff140c95d6"
+  },
+  "bossfx-fire-finale-climax": {
+    "file": "boss-skills/fire/finale-climax.wav",
+    "duration": 1.28,
+    "beat": "finale climax: R30-04-Large Guns Fire Shells Explode.wav",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "R30-04-Large Guns Fire Shells Explode.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/486037/",
+        "license": "CC0-1.0",
+        "sha256": "7fef22e79b5886f249f2a05e3cff2c54a7f94a0bc5fc1e974ccf613f3a9b19e3"
+      }
+    ],
+    "processing": "excerpt 7.40-8.68 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.437,
+    "rms": 0.15,
+    "sha256": "a067a3201624f78557c57139f0e8db6b30c5ccd1a10badfa8b1d166c6dac535e"
   }
 }

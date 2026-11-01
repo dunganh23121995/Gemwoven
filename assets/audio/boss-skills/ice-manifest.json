@@ -169,5 +169,24 @@
     "peak": 0.546,
     "rms": 0.08,
     "sha256": "214fbce6fcc4156a3b6e02143fe4b228cb6c7125c3fae2a8cdb287e37e4ab837"
+  },
+  "bossfx-ice-finale-climax": {
+    "file": "boss-skills/ice/finale-climax.wav",
+    "duration": 2.82,
+    "beat": "finale climax: Breaking icicles 4",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Breaking icicles 4",
+        "author": "AugustSandberg",
+        "source_url": "https://freesound.org/people/AugustSandberg/sounds/677718/",
+        "license": "CC0-1.0",
+        "sha256": "f69c37f18b1c894de99bb3ecf514e31c7d4951895ea925f06c726d5d960fc2c4"
+      }
+    ],
+    "processing": "excerpt 7.84-10.66 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.021,
+    "sha256": "5ffbf0afd43a7da8ddf5ff520996e898d074fa81c3cf2fd4512869d3452e2ca2"
   }
 }

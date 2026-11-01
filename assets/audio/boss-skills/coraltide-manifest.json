@@ -20,41 +20,41 @@
   },
   "bossfx-coraltide-pearlspring-grow": {
     "file": "boss-skills/coraltide/pearlspring-grow.wav",
-    "duration": 2.6,
-    "beat": "pearlspring grow: Spring Fed Creek Further Down.WAV",
+    "duration": 0.98,
+    "beat": "pearlspring grow: Water gush; full.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Spring Fed Creek Further Down.WAV",
-        "author": "EarlRobot",
-        "source_url": "https://freesound.org/people/EarlRobot/sounds/470055/",
+        "title": "Water gush; full.wav",
+        "author": "HonorHunter",
+        "source_url": "https://freesound.org/people/HonorHunter/sounds/271668/",
         "license": "CC0-1.0",
-        "sha256": "ae7f863db36d2956f967df39296c9a06f7c4bae720c069244866cc65a84ebc54"
+        "sha256": "e0607dfc464c46d70415694bbb1217e60927c9ff38bc5ff896caaa1c941ef577"
       }
     ],
-    "processing": "excerpt 0.00-2.60 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.693,
+    "processing": "excerpt 0.00-0.98 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.65,
     "rms": 0.09,
-    "sha256": "6e41207aaa9eb751e208b4f727b10b9291b4ec18c9676526dd5a5285042fb1a2"
+    "sha256": "9375b2152bc30f30d762182d61191de8167cf7fe36d1960706151ed3f6aba9e4"
   },
   "bossfx-coraltide-inkwave-start": {
     "file": "boss-skills/coraltide/inkwave-start.wav",
-    "duration": 1.08,
-    "beat": "inkwave start: water splashes big hand slaps spray and wave.flac",
+    "duration": 1.12,
+    "beat": "inkwave start: Beach Waves Crashing and Fizzing",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "water splashes big hand slaps spray and wave.flac",
-        "author": "kyles",
-        "source_url": "https://freesound.org/people/kyles/sounds/637974/",
+        "title": "Beach Waves Crashing and Fizzing",
+        "author": "flumpytripod",
+        "source_url": "https://freesound.org/people/flumpytripod/sounds/845414/",
         "license": "CC0-1.0",
-        "sha256": "f18da89454cb45270bfd98f24256208b390260e2a039466c6bcbab8cc726b3ba"
+        "sha256": "13050f3a8f5c16d8df619f15b4dbfbbf9dd6821cd31eee8575e84f3ba298007a"
       }
     ],
-    "processing": "excerpt 0.48-1.56 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.019,
-    "sha256": "52d0c8e3533dd1f58dbc7517d7f9ce32db9678370815ae6b2421afb9a3cbc889"
+    "processing": "excerpt 50.48-51.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.525,
+    "rms": 0.11,
+    "sha256": "07b2b84cf15f55b011b47560b01f935bd8946e053a46a2924630a0799455f96d"
   },
   "bossfx-coraltide-inkclaws-start": {
     "file": "boss-skills/coraltide/inkclaws-start.wav",
@@ -173,21 +173,21 @@
   "bossfx-coraltide-pearlspring-channel": {
     "file": "boss-skills/coraltide/pearlspring-channel.wav",
     "duration": 1.42,
-    "beat": "pearlspring channel: 2017-02-11 Dumaguete Mtn 0700am.mp3",
+    "beat": "pearlspring channel: water bubbling.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "2017-02-11 Dumaguete Mtn 0700am.mp3",
-        "author": "LXX.70",
-        "source_url": "https://freesound.org/people/LXX.70/sounds/646426/",
+        "title": "water bubbling.wav",
+        "author": "gecop",
+        "source_url": "https://freesound.org/people/gecop/sounds/568863/",
         "license": "CC0-1.0",
-        "sha256": "dd3a9f138e2eebf0f9029e7a5838fb4c719052059f349adefb6dce56cbd90706"
+        "sha256": "80b27fe621bb4025b09a588c12c2a93eca009e1d0b908194323d4a99bf79beef"
       }
     ],
-    "processing": "excerpt 19.78-21.20 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.074,
-    "sha256": "2c4b6f27de7dbb3e8b1d2924eb1a164f8b8d8a5d0b65bda6f6f7de43ae1bc5d0"
+    "processing": "excerpt 3.84-5.26 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.805,
+    "rms": 0.08,
+    "sha256": "70b8f2e49d7d39b99b53ce5413e2a081e0ea644f7adba6372bf2132f3757ebdb"
   },
   "bossfx-coraltide-inkwave-channel": {
     "file": "boss-skills/coraltide/inkwave-channel.wav",
@@ -283,5 +283,24 @@
     "peak": 0.478,
     "rms": 0.11,
     "sha256": "ae6d574faf810e7eabc2e867893bf760b05616db2ae474f87991a0895d016a39"
+  },
+  "bossfx-coraltide-finale-climax": {
+    "file": "boss-skills/coraltide/finale-climax.wav",
+    "duration": 2.82,
+    "beat": "finale climax: Crashing Waves into Rocks 2",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Crashing Waves into Rocks 2",
+        "author": "amholma",
+        "source_url": "https://freesound.org/people/amholma/sounds/376801/",
+        "license": "CC0-1.0",
+        "sha256": "2531e3ee02ece344eeb45ada44921e5c1d20795b194bd322ec2a139c0d46ca7d"
+      }
+    ],
+    "processing": "excerpt 36.78-39.60 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.095,
+    "sha256": "1a3635d9ab195c6f9b5005570df9d8191f3b929fcfdee9ad00d123c12b6a2900"
   }
 }

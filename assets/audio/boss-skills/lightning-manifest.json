@@ -150,5 +150,24 @@
     "peak": 0.82,
     "rms": 0.037,
     "sha256": "8ecb0068274ebe90583da1daec823de6a7eddbf18826fefcbf5680cc890b6363"
+  },
+  "bossfx-lightning-finale-climax": {
+    "file": "boss-skills/lightning/finale-climax.wav",
+    "duration": 2.82,
+    "beat": "finale climax: Huge Thunderclap",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Huge Thunderclap",
+        "author": "Fission9",
+        "source_url": "https://freesound.org/people/Fission9/sounds/576041/",
+        "license": "CC0-1.0",
+        "sha256": "be26caaa8b31c5d87ce9e9ee8e11c68f0d63345229e8f259e0fa3bd746e1eb9c"
+      }
+    ],
+    "processing": "excerpt 2.26-5.08 s of one recording, 30 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.09,
+    "sha256": "9f5d3bab4fbca7eb3b5a2a12848678b15067363a9371dfe80d8208bd76aeaf3e"
   }
 }

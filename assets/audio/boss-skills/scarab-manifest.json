@@ -20,41 +20,41 @@
   },
   "bossfx-scarab-obelisks-land": {
     "file": "boss-skills/scarab/obelisks-land.wav",
-    "duration": 2.1,
-    "beat": "obelisks land: crash 11.wav",
+    "duration": 1.02,
+    "beat": "obelisks land: Stone dropping to ground_northern87",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "crash 11.wav",
-        "author": "Logicogonist",
-        "source_url": "https://freesound.org/people/Logicogonist/sounds/209866/",
+        "title": "Stone dropping to ground_northern87",
+        "author": "northern87",
+        "source_url": "https://freesound.org/people/northern87/sounds/369981/",
         "license": "CC0-1.0",
-        "sha256": "97cfea58f045c93a07305f6f83a4082291a5fd41a018a2c4a6a59026f2c985d9"
+        "sha256": "9b14695665c8e2098086e3aa918a3a082aa7856e32deb4405e0d85da7339d763"
       }
     ],
-    "processing": "excerpt 0.00-2.10 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 4.56-5.58 s of one recording, 25 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.065,
-    "sha256": "7b7fc7c5488912d6db12485bff72eaf1ff11fbddc679fbf379873d8a5cb9f263"
+    "rms": 0.041,
+    "sha256": "18b0259117d2b170197b8edb08e7730c47b7c15d6981ac049069a706d0f60956"
   },
   "bossfx-scarab-obelisks-start": {
     "file": "boss-skills/scarab/obelisks-start.wav",
     "duration": 1.62,
-    "beat": "obelisks start: moving stone platform.wav",
+    "beat": "obelisks start: Heavy stone door opens 2",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "moving stone platform.wav",
-        "author": "patchytherat",
-        "source_url": "https://freesound.org/people/patchytherat/sounds/530988/",
+        "title": "Heavy stone door opens 2",
+        "author": "PostProdDog",
+        "source_url": "https://freesound.org/people/PostProdDog/sounds/578491/",
         "license": "CC0-1.0",
-        "sha256": "64fe9f57d68d959661da18c333b7a4b2ebd469921e01626379916ce770a66e68"
+        "sha256": "916f883a0e05a413d674f5b80c997126047f3d06ff99b77bbff0c9166c867c78"
       }
     ],
-    "processing": "excerpt 0.02-1.64 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.039,
-    "sha256": "eeaf87d5e9823f1d7dc3e1b60bdbcc1685fbcd73dbd98a6a543aee48a695b645"
+    "processing": "excerpt 8.56-10.18 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.611,
+    "rms": 0.11,
+    "sha256": "729176173b8018f4a94d8b681ba4307d217dd0ba889cca5405f60532f87e4a17"
   },
   "bossfx-scarab-hornstrike-start": {
     "file": "boss-skills/scarab/hornstrike-start.wav",
@@ -77,60 +77,60 @@
   },
   "bossfx-scarab-mandible-hit": {
     "file": "boss-skills/scarab/mandible-hit.wav",
-    "duration": 0.32,
-    "beat": "mandible hit: 22-PIG-NUT-CRUNCH",
+    "duration": 0.28,
+    "beat": "mandible hit: Scissor Cut.mp3",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "22-PIG-NUT-CRUNCH",
-        "author": "The_Sample_Workshop",
-        "source_url": "https://freesound.org/people/The_Sample_Workshop/sounds/732982/",
+        "title": "Scissor Cut.mp3",
+        "author": "Jorgemaca",
+        "source_url": "https://freesound.org/people/Jorgemaca/sounds/669297/",
         "license": "CC0-1.0",
-        "sha256": "5fb123ce9661816c9589b2c61f33634d8edae3772186f2a7cf55b72ef2dcd7f1"
+        "sha256": "f37d58cd4f29a536a230840ff3e3b7c9e29bdb056b80c66268f1f7b9841d0c3d"
       }
     ],
-    "processing": "excerpt 0.00-0.32 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.64-0.92 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.049,
-    "sha256": "dfff13bb63ad4212a9607c6b54c341cd29ebb279ca910d59b5e6de7aa91cb5d8"
+    "rms": 0.034,
+    "sha256": "68eb9e1f7fd8fd924d158caff419037ea7f1970d76abb066563922b514468b84"
   },
   "bossfx-scarab-suncrest-channel": {
     "file": "boss-skills/scarab/suncrest-channel.wav",
     "duration": 1.42,
-    "beat": "suncrest channel: Stone Scrape – Rock on Rock Rubbing",
+    "beat": "suncrest channel: Hidden Wall Opening",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Stone Scrape – Rock on Rock Rubbing",
-        "author": "NikoletB",
-        "source_url": "https://freesound.org/people/NikoletB/sounds/846425/",
+        "title": "Hidden Wall Opening",
+        "author": "ertfelda",
+        "source_url": "https://freesound.org/people/ertfelda/sounds/243699/",
         "license": "CC0-1.0",
-        "sha256": "e6887fd65429d5787f812667e200a763f0c3b4639955b03f022cedeb9d8d710f"
+        "sha256": "7eddc83739eb7ec59fa616112a13a8abf671e879fb7de529749ad3738ff5e4cb"
       }
     ],
-    "processing": "excerpt 0.88-2.30 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.068,
-    "sha256": "18ffa296166b24ad0295696c2ec64d0224eb3246da389025844037a7364d19d3"
+    "processing": "excerpt 0.70-2.12 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.561,
+    "rms": 0.08,
+    "sha256": "0fdd98a3f31d6ab0764836019a0a6fcf4229c58f1abbc0d9940713c4eab57fbd"
   },
   "bossfx-scarab-mandible-start": {
     "file": "boss-skills/scarab/mandible-start.wav",
-    "duration": 1.02,
-    "beat": "mandible start: Weird Clicking",
+    "duration": 1.62,
+    "beat": "mandible start: Pruning shears Opening and closing Multi-take",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Weird Clicking",
-        "author": "dotY21",
-        "source_url": "https://freesound.org/people/dotY21/sounds/337621/",
+        "title": "Pruning shears Opening and closing Multi-take",
+        "author": "Sadiquecat",
+        "source_url": "https://freesound.org/people/Sadiquecat/sounds/789033/",
         "license": "CC0-1.0",
-        "sha256": "ad897668974e590dd1d572f0271ea8305b53fa71836ffa431c70026a4569bc58"
+        "sha256": "7c2e4cca0289eee6488ec7a4072ecc88e1a8ab74884dd1bfd629d39d3f42796c"
       }
     ],
-    "processing": "excerpt 5.80-6.82 s of one recording, 45 Hz high-pass, edge fades, gain",
-    "peak": 0.673,
-    "rms": 0.11,
-    "sha256": "d55cfe8e98af5c80acd21924098ef3c2e7f29e666f07c439ce47e3ae5de51bda"
+    "processing": "excerpt 5.98-7.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.029,
+    "sha256": "a93dae8af8cd802f7c29844717a19bdef1531d6cb23c320d0130028bc1773e8d"
   },
   "bossfx-scarab-wingshield-lock": {
     "file": "boss-skills/scarab/wingshield-lock.wav",
@@ -153,40 +153,40 @@
   },
   "bossfx-scarab-hornstrike-hit": {
     "file": "boss-skills/scarab/hornstrike-hit.wav",
-    "duration": 0.44,
-    "beat": "hornstrike hit: Glass_Shards_Crunching_10",
+    "duration": 0.8,
+    "beat": "hornstrike hit: #2 Scrap Stab.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Glass_Shards_Crunching_10",
-        "author": "BlondPanda",
-        "source_url": "https://freesound.org/people/BlondPanda/sounds/778603/",
+        "title": "#2 Scrap Stab.wav",
+        "author": "LittleLuigi",
+        "source_url": "https://freesound.org/people/LittleLuigi/sounds/363458/",
         "license": "CC0-1.0",
-        "sha256": "e2ced2e005e64816e2b12ba38362aa122c7c1c6bf7aa9fe54bc9eea28db546e6"
+        "sha256": "befa23b87c064859c4ba2b3d4d2c328e60cf6f6d69d094c0f17e068009913c1b"
       }
     ],
-    "processing": "excerpt 0.30-0.74 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 1.04-1.84 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.028,
-    "sha256": "d3207f0d9eb2b074b4ce6c914bb5ce466a0da4f921ed2fde5c13029ccbc48dea"
+    "rms": 0.069,
+    "sha256": "7f84897cf241ae97ba27f9fa3f0d5d30497afe37a2e0cc5e780973551d81aa56"
   },
   "bossfx-scarab-obelisks-boom": {
     "file": "boss-skills/scarab/obelisks-boom.wav",
-    "duration": 1.74,
-    "beat": "obelisks boom: Huge Explosion",
+    "duration": 2.62,
+    "beat": "obelisks boom: G43-06-Rocks Fall in Heavy Slide.wav",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Huge Explosion",
-        "author": "florianreichelt",
-        "source_url": "https://freesound.org/people/florianreichelt/sounds/459973/",
+        "title": "G43-06-Rocks Fall in Heavy Slide.wav",
+        "author": "craigsmith",
+        "source_url": "https://freesound.org/people/craigsmith/sounds/438685/",
         "license": "CC0-1.0",
-        "sha256": "fb9355d4b73e84d2921642735f311a4e928a445b903c55c218f283396e563c89"
+        "sha256": "d15dc3fc84ddc31e017c056291201a578b2423d14de012e3219ae2bfdeb25158"
       }
     ],
-    "processing": "excerpt 8.21-9.95 s of one recording, 25 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.093,
-    "sha256": "cbd3e0a69ef9a59d0d060806e5ed3c5c2c27e4ffe647c08351dfbd442255a83f"
+    "processing": "excerpt 35.34-37.96 s of one recording, 25 Hz high-pass, edge fades, gain",
+    "peak": 0.718,
+    "rms": 0.15,
+    "sha256": "3f58e57967450035312864da086a0b6a78724e0e51457669f0d39c8b54d77f6e"
   }
 }
