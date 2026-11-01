@@ -13,3 +13,7 @@ Lock confirmed by the player on the current state: 2026-10-29.
 Form 2 redrawn on the player's request (2026-10-30): the moon ronin "Dạ Ảnh Kiếm Sĩ" (form-2/redesign,
 form-2/build_form2.py), his own ultimate Dạ Ảnh Ngũ Trảm (src/forms-noct.js, assets/fx/heroes/shadow) and
 showcase. Awaiting the player's approval; forms 1 and 3 stay locked as before.
+
+Re-locked 2026-11-01 ("push git vào khóa Noct lại"): form 3's floor cloud is switched off everywhere by two CSS
+rules in src/gemwoven/hero-forms.css (the art stays; ask to bring it back), and in town every hero body
+stands above the ambient layers so it shows sharp and vivid.
