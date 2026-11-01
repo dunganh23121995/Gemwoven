@@ -56,41 +56,34 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
   click('do:rates');assert.equal(d.querySelectorAll('#preview-dialog .gw-table tbody tr').length,w.GemwovenProgression.SUMMON_TABLE.length,'Rates show one row per reward tier');assert.ok(d.getElementById('preview-dialog').classList.contains('gw-dialog'));d.getElementById('close-dialog').click();
   {const gear=d.querySelector('[data-action="journey:featured-gear"]');assert.notEqual(gear.dataset.asset,'inventory-slot','Featured gear keeps its own art key');gear.click();assert.ok(d.querySelector('#dialog-art img').getAttribute('src').endsWith(w.GEMWOVEN_ASSETS[gear.dataset.asset].file),'Featured gear popup shows the gear');d.getElementById('close-dialog').click();}
   assert.equal(d.querySelectorAll('.portrait-gem').length,1);assert.equal(d.querySelectorAll('.featured-equipment').length,3);assert.ok(d.querySelector('[data-node="summon.ticket-balance"]').textContent.includes('Vé Triệu Hồi'),'Summon shows the ticket balance under the summon button');assert.equal(d.querySelector('[data-node="summon.gem-balance"]'),null);
-  await go('home');assert.equal(d.querySelector('[data-node="home.quests"]').dataset.action,'route:quests');assert.equal(d.querySelector('[data-node="home.right-offline"]').dataset.action,'route:offline');assert.equal(d.querySelector('[data-node="home.live"]'),null);assert.ok(d.querySelector('[data-node="home.feature-chat"]'));assert.ok(d.querySelector('[data-node="home.settings"]'));click('route:campaign');await sleep();assert.equal(d.querySelectorAll('.world-pin').length,7);assert.equal(d.querySelectorAll('.world-pin.boss').length,0);assert.equal(d.querySelectorAll('.world-pin.elite').length,1,'Stage 5 is the first elite');assert.equal(d.querySelector('[data-node="campaign.settings"]'),null);assert.ok(d.body.classList.contains('exploration-open'));assert.ok(d.querySelector('.frontier-cloud'));assert.equal(d.querySelector('.exploration-fog'),null);assert.equal(d.querySelector('[data-node="campaign.stage-2"]').disabled,false);assert.ok(d.querySelector('[data-node="campaign.stage-2"]').classList.contains('locked'));
-  d.querySelector('[data-node="campaign.stage-4"]').click();assert.equal(d.querySelector('[data-action="journey:challenge"]').disabled,true);click('journey:close-stage');
-  const sky=d.querySelector('.map-header-cloud'),headerTerrain=d.querySelector('.map-header-terrain');
-  assert.ok(sky&&!sky.hidden,'Clouds cover the entire header above the hidden milestone');
-  assert.equal(sky.previousElementSibling,headerTerrain,'Clouds paint above terrain');
-  const hud=d.querySelector('#scene>.node:not([data-node="campaign.map"])');
-  assert.ok(sky.compareDocumentPosition(hud)&w.Node.DOCUMENT_POSITION_FOLLOWING,'HUD paints after the cloud layer');
-  assert.equal(sky.getAttribute('aria-hidden'),'true');
+  await go('home');assert.equal(d.querySelector('[data-node="home.quests"]').dataset.action,'route:quests');assert.equal(d.querySelector('[data-node="home.right-offline"]').dataset.action,'route:offline');assert.equal(d.querySelector('[data-node="home.live"]'),null);assert.ok(d.querySelector('[data-node="home.feature-chat"]'));assert.ok(d.querySelector('[data-node="home.settings"]'));click('route:campaign');await sleep();assert.ok(d.querySelector('.atlas-world'));d.querySelector('[data-node="campaign.region-1"]').click();await sleep();assert.equal(d.querySelectorAll('.world-pin').length,50);assert.equal(d.querySelectorAll('.world-pin.boss').length,1);assert.equal(d.querySelectorAll('.world-pin.elite').length,9,'Every fifth stage is an elite');assert.equal(d.querySelector('[data-node="campaign.settings"]'),null);assert.ok(d.body.classList.contains('exploration-open'));assert.equal(d.querySelector('.frontier-cloud'),null);assert.equal(d.querySelector('.exploration-fog'),null);assert.equal(d.querySelector('[data-node="campaign.stage-2"]').disabled,false);assert.ok(d.querySelector('[data-node="campaign.stage-2"]').classList.contains('locked'));
+  d.querySelector('[data-node="campaign.stage-4"]').click();assert.equal(d.querySelector('[data-action="journey:challenge"]'),null,'A locked stage cannot be fought');assert.ok(d.querySelector('[data-action="journey:goto-next"]'));click('journey:close-stage');
   const beforePreview=w.GEMWOVEN_GAME.engine.exportSave();
   d.querySelector('[data-node="campaign.stage-1"]').click();
-  assert.ok(d.querySelector('.encounter-sheet'));assert.equal(d.querySelectorAll('.encounter-star-rewards article').length,3);
-  assert.ok(d.querySelector('.encounter-heading').textContent.includes(w.GemwovenProgression.encounter('campaign',1).enemyName));
+  assert.ok(d.querySelector('.encounter-sheet'));assert.equal(d.querySelectorAll('.sc-goals li').length,3,'Three star goals, each with its reward');
+  assert.ok(d.querySelector('.encounter-sheet').textContent.includes(w.GemwovenProgression.encounter('campaign',1).enemyName));assert.ok(d.querySelector('.encounter-heading').textContent.includes('Ải 1'));
   assert.equal(d.querySelector('[data-action="journey:challenge"]').disabled,false);
   assert.equal(w.GEMWOVEN_GAME.engine.exportSave(),beforePreview,'Inspecting a monster does not start battle or change the save');
   click('journey:close-stage');assert.equal(d.querySelector('.encounter-sheet'),null);
-  d.querySelector('[data-node="campaign.stage-2"]').click();assert.equal(d.querySelector('[data-action="journey:challenge"]').disabled,true,'The preview stage is inspectable but cannot be fought');
-  assert.ok(d.querySelector('.encounter-sheet .encounter-monster').src.includes('monster-acorn'));click('journey:close-stage');
+  d.querySelector('[data-node="campaign.stage-2"]').click();assert.equal(d.querySelector('[data-action="journey:challenge"]'),null,'The preview stage is inspectable but cannot be fought');
+  {const foe=d.querySelector('.encounter-sheet .sc-foe');assert.ok((foe.getAttribute('src')||foe.style.backgroundImage).includes('acorn'),'The stage card shows the stage foe');}click('journey:close-stage');
   const heroChoiceSave=JSON.parse(beforePreview);heroChoiceSave.campaign.cleared=1;heroChoiceSave.campaign.stars[1]=2;
   heroChoiceSave.heroes.fire={...JSON.parse(JSON.stringify(heroChoiceSave.heroes.novice)),level:30};heroChoiceSave.selected='novice';
   w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(heroChoiceSave));await go('home');await go('campaign');
   captures.push({...captures.find(page=>page.key==='campaign'),key:'campaign-hero',map:captureMap()});
-  assert.equal(d.querySelector('[data-node="campaign.stage-1"]').dataset.hero,'fire','Strongest owned hero stands on the last completed milestone');
-  assert.equal(d.querySelectorAll('.cleared-hero').length,1);assert.ok(d.querySelector('.journey-hero').src.endsWith('hero-fire.png'));
+  assert.equal(d.querySelector('.map-hero').dataset.hero,'novice','The hero chosen in town stands on the last completed milestone');assert.equal(d.querySelector('.map-hero').dataset.stage,'1');
+  assert.equal(d.querySelectorAll('.cleared-hero').length,1);assert.ok(d.querySelector('.journey-hero'),'It stands in its combat rest');
   d.querySelector('[data-node="campaign.stage-2"]').click();
-  assert.equal(d.querySelectorAll('[data-action="journey:choose-hero"]').length,2);
-  assert.equal(d.querySelector('.encounter-roster .chosen').dataset.hero,'fire');
-  d.querySelector('[data-action="journey:choose-hero"][data-hero="novice"]').click();
-  assert.equal(d.querySelector('.encounter-roster .chosen').dataset.hero,'novice');
-  assert.equal(w.GEMWOVEN_GAME.engine.read().pending,null,'Choosing a hero does not launch combat');
+  assert.equal(d.querySelectorAll('[data-action="journey:choose-hero"]').length,2,'The stage card lists the heroes to choose from');
+  d.querySelector('[data-action="journey:choose-hero"][data-hero="fire"]').click();await sleep();
+  assert.equal(d.querySelector('.sc-roster .chosen').dataset.hero,'fire');assert.ok(d.querySelector('.sc-roster .chosen img').getAttribute('src').endsWith(w.GEMWOVEN_ASSETS['face-fire'].file),'Heroes are listed by their avatars');
+  assert.equal(w.GEMWOVEN_GAME.engine.read().pending,null,'Opening the stage card does not launch combat');
   const navigationErrorCount=errors.length;click('journey:challenge');await sleep();
-  assert.equal(w.GEMWOVEN_GAME.engine.read().pending.hero,'novice','The chosen hero, not the strongest map marker, enters combat');
+  assert.equal(w.GEMWOVEN_GAME.engine.read().pending.hero,'fire','Khiêu Chiến enters combat at once with the hero picked on the card');
   assert.equal(w.GEMWOVEN_GAME.engine.read().pending.index,2);
   assert.ok(errors.splice(navigationErrorCount).every(error=>/Not implemented.*navigation/i.test(error)),'Only jsdom navigation limitation is expected');
   w.localStorage.setItem(w.GemwovenProgression.KEY,beforePreview);await go('home');await go('campaign');
-  const chapterSave=w.GEMWOVEN_GAME.engine.read();chapterSave.campaign.cleared=50;chapterSave.campaign.stars=Object.fromEntries(Array.from({length:50},(_,i)=>[i+1,3]));w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(chapterSave));await go('home');await go('campaign');click('journey:rewards');d.querySelector('[data-action="journey:claim-stars"][data-milestone="50"]').click();assert.equal(w.GEMWOVEN_GAME.engine.read().wallet.gold,chapterSave.wallet.gold+2000);assert.equal(d.querySelector('[data-action="journey:claim-stars"][data-milestone="50"]').disabled,true);d.querySelector('[data-action="journey:chapter"][data-delta="1"]').click();assert.ok(d.querySelector('[data-node="campaign.stage-51"]'));
+  const chapterSave=w.GEMWOVEN_GAME.engine.read();chapterSave.campaign.cleared=50;chapterSave.campaign.stars=Object.fromEntries(Array.from({length:50},(_,i)=>[i+1,3]));w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(chapterSave));await go('home');await go('campaign');click('journey:rewards');d.querySelector('[data-action="journey:claim-stars"][data-milestone="50"]').click();assert.equal(w.GEMWOVEN_GAME.engine.read().wallet.gold,chapterSave.wallet.gold+2000);assert.equal(d.querySelector('[data-action="journey:claim-stars"][data-milestone="50"]').disabled,true);click('journey:atlas');await sleep();d.querySelector('[data-node="campaign.region-2"]').click();await sleep();assert.ok(d.querySelector('[data-node="campaign.stage-51"]'));
   await go('settings');const music=d.getElementById('home-volume-music');music.value='37';music.dispatchEvent(new w.Event('input',{bubbles:true}));assert.equal(JSON.parse(w.localStorage.getItem('mam-phep-audio-v1')).music,37);await go('home');await go('settings');assert.equal(d.getElementById('home-volume-music').value,'37');
   await go('chat');let formChat=d.getElementById('town-chat-form');formChat.elements.namedItem('message').value='<img src=x onerror=alert(1)> Xin chào';formChat.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));assert.ok(d.querySelector('.chat-message p').textContent.includes('<img'));assert.equal(d.querySelector('.chat-message p img'),null);await go('home');await go('chat');assert.equal(d.querySelectorAll('.chat-message').length,1);
   await go('shop');assert.equal(d.querySelector('[data-resource="gems"]'),null);assert.equal(d.querySelector('[data-resource="tickets"]'),null);d.querySelector('[data-action="art:shop-product"][data-product="ore"]').click();d.querySelector('[data-action="art:quantity"][data-delta="1"]').click();const beforeBuy=w.GEMWOVEN_GAME.engine.read();click('art:purchase');await sleep();assert.equal(w.GEMWOVEN_GAME.engine.read().materials.ore,beforeBuy.materials.ore+2);assert.equal(w.GEMWOVEN_GAME.engine.read().wallet.gold,beforeBuy.wallet.gold-160);d.getElementById('close-dialog').click();
@@ -100,10 +93,10 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
   d.querySelector('[data-action="outfit:slot"][data-slot="helmet"]').click();assert.ok(d.querySelector('.outfit-panel'));assert.equal(d.getElementById('preview-dialog').open,false);d.querySelector('[data-action="outfit:item"][data-id="qa-helmet"]').click();click('outfit:equip');assert.equal(w.GEMWOVEN_GAME.engine.read().heroes.novice.gear.helmet,'qa-helmet');click('outfit:strengthen');assert.equal(w.GEMWOVEN_GAME.engine.read().equipment.find(g=>g.id==='qa-helmet').level,1);click('outfit:unequip');assert.equal(w.GEMWOVEN_GAME.engine.read().heroes.novice.gear.helmet,undefined);click('outfit:close');
   d.querySelector('[data-action="outfit:slot"][data-slot="relic"]').click();assert.equal(d.querySelectorAll('.relic-forms>div').length,5);click('outfit:train-relic');assert.equal(w.GEMWOVEN_GAME.engine.read().heroes.novice.relic.level,2);assert.equal(d.querySelector('[data-action="outfit:evolve-relic"]').disabled,true);click('outfit:close');
   const expeditionSave=w.GEMWOVEN_GAME.engine.read();expeditionSave.campaign.cleared=749;expeditionSave.campaign.artifacts={};w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(expeditionSave));await go('home');await go('campaign');
-  for(let i=0;i<30&&!d.querySelector('[data-action="guide:open"]');i++)d.querySelector('[data-action="journey:chapter"][data-delta="1"]').click();
+  click('journey:atlas');await sleep();d.querySelector('[data-node="campaign.region-15"]').click();await sleep();
   assert.ok(d.querySelector('[data-action="guide:open"]'));click('guide:open');assert.ok(d.querySelector('.chapter-field-guide'));assert.equal(d.querySelectorAll('.chapter-elite-milestones>button').length,4);assert.equal(d.querySelectorAll('.chapter-skill').length,6);assert.equal(d.getElementById('preview-dialog').open,false);assert.equal(d.querySelector('[data-action="guide:challenge"]').disabled,false,'Artifact is a soft gate');for(const im of d.querySelectorAll('.chapter-field-guide img'))assert.ok(fs.existsSync(path.join(root,im.getAttribute('src'))),im.src);click('guide:close');
-  click('guide:open');click('guide:challenge');assert.ok(d.querySelector('.encounter-roster'),'Boss guide also requires choosing a hero before combat');assert.equal(w.GEMWOVEN_GAME.engine.read().pending,null);click('journey:close-stage');
-  const counterSave=w.GEMWOVEN_GAME.engine.read();counterSave.campaign.artifacts.eldergrove={claimed:[10]};w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(counterSave));click('guide:open');assert.ok(d.querySelector('.chapter-artifact').textContent.includes('3/12'));click('guide:close');click('route:home');await sleep();click('route:inventory');await sleep();click('bag-category:other');assert.ok(d.querySelector('[data-action="bag-item:artifact-eldergrove"]'),'Earned counter item appears in the bag');
+  click('guide:open');click('guide:challenge');assert.ok(d.querySelector('.encounter-deploy'),'Boss guide opens the stage card before combat');assert.equal(w.GEMWOVEN_GAME.engine.read().pending,null);click('journey:close-stage');
+  const counterSave=w.GEMWOVEN_GAME.engine.read();counterSave.campaign.artifacts.eldergrove={claimed:[10]};w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(counterSave));click('guide:open');assert.ok(d.querySelector('.chapter-artifact').textContent.includes('3/12'));click('guide:close');click('journey:atlas');await sleep();click('route:home');await sleep();click('route:inventory');await sleep();click('bag-category:other');assert.ok(d.querySelector('[data-action="bag-item:artifact-eldergrove"]'),'Earned counter item appears in the bag');
   // Exercise the actual map builder at each reveal boundary, including saved scroll positions.
   const fogSave=w.GEMWOVEN_GAME.engine.read();let visibilityCases=0;
   for(const chapter of [1,15,24])for(const cleared of [0,1,2,3,4,5,6,7,8,9,10,15,16,47,48,49,50]){
@@ -112,61 +105,88 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
     const state={screen:'campaign',chapter,hero:'novice',mapScroll:{[chapter]:0},mapProgress:{[chapter]:save.campaign.cleared}};
     w.GEMWOVEN_GAME.decorate(state);
     const el=d.createElement('div');w.GEMWOVEN_LAYOUT.screens.campaign.nodes.find(n=>n.id==='campaign.map').build(el);
-    const count=Math.min(50,Math.max(7,cleared+1)),pins=[...el.querySelectorAll('.world-pin')];
+    const count=50,pins=[...el.querySelectorAll('.world-pin')];
     assert.deepEqual(pins.map(pin=>Number(pin.dataset.index)),Array.from({length:count},(_,i)=>start+i));
     assert.equal(pins.filter(pin=>!pin.classList.contains('locked')).length,Math.min(50,cleared+1));
-    assert.equal(el.querySelectorAll('.pin-stars').length,cleared,'Unbeaten stages have no earned stars');
-    assert.equal(el.querySelectorAll('.world-pin.boss').length,cleared>=49?1:0,'Only the last stage can reveal a boss');
-    const cloud=el.querySelector('.frontier-cloud');
-    assert.equal(Boolean(cloud),cleared<49,'Fog disappears when the final stage is revealed');
-    assert.equal(el.querySelectorAll('.pin-lock').length,count-Math.min(50,cleared+1),'Only inaccessible stages have lock badges');
-    if(cloud){
-      assert.equal(Number(cloud.dataset.firstHidden),start+count);
-      assert.equal(parseFloat(cloud.style.width),941,'Cloud bank spans the complete map width');
-      assert.equal(parseFloat(cloud.style.height),1492/8,'Fog stays a narrow band over one platform');
-      assert.ok(cloud.querySelectorAll('img').length>=4,'Layered illustrated clouds, not a flat fill');
-      assert.equal(cloud.textContent,'');assert.equal(cloud.querySelector('button'),null);
-    }
-    const world=el.querySelector('.map-world'),origin=Number(world.dataset.origin);
-    const profile=JSON.parse(world.dataset.profile);
+    assert.equal(el.querySelectorAll('.seal-stars').length,cleared,'Unbeaten stages have no earned stars');
+    assert.equal(el.querySelectorAll('.world-pin.boss').length,1,'Every stage of the chapter is shown, the boss included');
+    assert.equal(el.querySelectorAll('.pin-lock').length,0,'Stages not reached are dimmed, without a lock on each');
+    assert.deepEqual(pins.map(pin=>pin.querySelector('.seal-number').textContent),pins.map(pin=>String(Number(pin.dataset.index)-start+1)),'Plaques show the stage number within the chapter');
+    // Elites and the boss have their own rings; a creature stands on the next stage and every elite/boss ahead.
     for(const pin of pins){
-      // Beanstalk map: each stage stands on its own leaf; positions belong to the assembled map.
-      const source=JSON.parse(pin.dataset.sourceAnchor),group=pin.closest('.bean-leaf-group');
-      assert.equal(profile.mode,'beanstalk-objects');assert.ok(group,'Every stage sits on a beanstalk leaf');
-      const localY=(Number(pin.dataset.groundY)+origin)%profile.stride;
-      assert.ok(Math.abs(localY-source[1])<.01,'Actor ground point follows the shared leaf ladder');
-      assert.ok(Math.abs(parseFloat(group.style.top)+parseFloat(pin.style.getPropertyValue('--floor-y'))-Number(pin.dataset.groundY))<.01,'Leaf floor anchor is grounded, not the sprite box center');
-      assert.ok(Math.abs(parseFloat(group.style.left)+parseFloat(pin.style.getPropertyValue('--floor-x'))-Number(pin.dataset.groundX))<.01,'Leaf floor anchor matches the stage x');
-      assert.ok(Math.abs(Number(pin.dataset.groundX)-source[0]*941/profile.sourceSize[0])<.01);
+      const n=Number(pin.dataset.index),e=w.GemwovenProgression.encounter('campaign',n),kind=e.boss?'boss':e.tier==='elite'?'elite':'normal';
+      const art=kind!=='normal'?kind:n<=save.campaign.cleared?'cleared':n===save.campaign.cleared+1?'next':'locked';
+      assert.ok(pin.querySelector('.seal-ring').getAttribute('src').endsWith(w.GEMWOVEN_ASSETS['ring-'+art].file),'The stage ring matches its tier and state');
+      assert.equal(Boolean(pin.querySelector('.pin-creature')),n>save.campaign.cleared&&(n===save.campaign.cleared+1||e.tier!=='normal'));
     }
+    assert.equal(el.querySelector('.frontier-cloud'),null,'No cloud hides any stage');
+    if(chapter===1)assert.ok(el.querySelectorAll('.island-flow.fall.water').length>0&&el.querySelectorAll('.island-flow.stream').length>0,'The painting waterfalls and streams flow');
+    const world=el.querySelector('.map-world'),origin=Number(world.dataset.origin),zoom=Number(world.dataset.zoom),profile=JSON.parse(world.dataset.profile);
+    assert.ok(zoom>1.3,'The chapter map is drawn closer than its painting');
+    assert.equal(profile.mode,'island-tiles');assert.equal(profile.centers.length,10,'Ten landings per painted island');
+    for(const pin of pins){
+      // Each stage's ring lies exactly on its landing of the stacked island paintings (tile 0, stages 1-10, at the
+      // bottom), the painting enlarged by the zoom and centred on the view.
+      const i=Number(pin.dataset.index)-start,k=Math.floor(i/10),[x,y]=profile.centers[i%10];
+      assert.ok(Math.abs(Number(pin.dataset.groundX)-(x*zoom+(941-941*zoom)/2))<1e-6);assert.ok(Math.abs(Number(pin.dataset.groundY)-((profile.tiles-1-k)*profile.pitch+y-origin)*zoom)<1e-6);
+      assert.ok(Number(pin.dataset.groundX)>150&&Number(pin.dataset.groundX)<791,'Every ring stays inside the view');
+    }
+    // The strongest hero stands on the last beaten stage of this chapter.
+    const hero=el.querySelector('.map-hero');assert.ok(hero,'The hero stands on the map');
+    if(cleared>0)assert.equal(Number(hero.dataset.stage),start+cleared-1);
+    if(cleared>0){const own=el.querySelector(`[data-node="campaign.stage-${start+cleared-1}"]`);assert.equal(Number(hero.dataset.groundX),Number(own.dataset.groundX),'The hero stands in the middle of its ring');assert.equal(Number(hero.dataset.groundY),Number(own.dataset.groundY));}
+    if(cleared<50){const next=el.querySelector('.world-pin.next-stage'),nx=Number(next.dataset.groundX)+0,hx=Number(hero.dataset.groundX);
+      assert.equal(hero.classList.contains('facing-left'),nx<hx,'The hero faces the foe on the next stage');}
+    const height=parseFloat(world.style.height),max=Math.max(0,height-1672);
+    assert.ok(Number(el.dataset.scrollTarget)>=0&&Number(el.dataset.scrollTarget)<=max,'Old scroll positions stay in discovered terrain');
     if(chapter===1&&[8,16].includes(cleared))captures.push({...captures.find(page=>page.key==='campaign'),key:'campaign-'+cleared,map:captureMap(el)});
-
-    // The beanstalk keeps 140px of root/soil below the first leaf; the opening view starts above it.
-    const row=1492/8,root=140,slots=count+(cloud?1:0);assert.equal(parseFloat(world.style.height),Math.max(8,slots)*row+root,'Exactly eight rows per viewport; only excess milestones add scrolling');
-    assert.ok(Number(el.dataset.scrollTarget)>=0&&Number(el.dataset.scrollTarget)<=parseFloat(world.style.height)-1492,'Old scroll positions stay in discovered terrain');
-    if(slots<=8)assert.equal(parseFloat(world.style.height),1492+root,'Opening eight slots only add the root strip');
-    if(cloud){const profile=JSON.parse(world.dataset.profile),hiddenY=(Number(world.dataset.islands)-1-Math.floor(count/profile.places.length))*profile.stride+profile.places[count%profile.places.length][1]-origin;assert.ok(parseFloat(cloud.style.top)+parseFloat(cloud.style.height)>=hiddenY+40,'Compact cloud still covers the whole first hidden platform');}
-    const centers=pins.map(pin=>Number(pin.dataset.groundY));
-    if(cloud)centers.push(parseFloat(cloud.style.top)+row/2);
-    assert.equal(centers.filter(y=>y>=0&&y<1492).length,8,'Eight milestones, including the fog slot, fit in the frontier viewport');
-    for(let scroll=0;scroll<=parseFloat(world.style.height)-root-1492;scroll+=row){
-      assert.equal(centers.filter(y=>y>=scroll&&y<scroll+1492).length,8,'Eight milestone centers fit throughout the explored map');
-    }
-    if(cleared>=8)assert.ok(parseFloat(world.style.height)>1492,'Further unlocked stages require scrolling');
-    if(cleared<49)assert.equal(el.querySelector(`[data-node="campaign.stage-${start+49}"]`),null,'Distant boss is absent from the DOM');
-    if(cleared>=49)assert.equal(el.querySelector('.world-pin.boss').classList.contains('locked'),false,'Boss is playable after stage 49');
-    el.scrollTop=-200;el.onscroll();assert.equal(el.scrollTop,0,'Cannot scroll above the cloud boundary');
-    el.scrollTop=1e6;el.onscroll();assert.equal(el.scrollTop,parseFloat(world.style.height)-1492,'Cannot scroll beyond the explored map');
-    el.scrollTop=120;el.onscroll();assert.equal(state.mapScroll[chapter],origin+Math.min(120,parseFloat(world.style.height)-1492));
+    assert.equal(el.querySelector('.world-pin.boss').classList.contains('locked'),cleared<49,'The boss is playable only after stage 49');
+    const min=Number(el.dataset.minScroll);el.scrollTop=-200;el.onscroll();assert.equal(el.scrollTop,min,'Cannot scroll past the next stage');
+    if(cleared<50)assert.ok(Number(el.querySelector('.world-pin.next-stage').dataset.groundY)-min>=180+330,'The next stage stays in view under the HUD at the top of the drag');
+    el.scrollTop=1e6;el.onscroll();assert.equal(el.scrollTop,max,'Cannot scroll beyond the explored map');
+    el.scrollTop=min+120;el.onscroll();assert.ok(Math.abs(state.mapScroll[chapter]-(origin+Math.min(min+120,max)/zoom))<1e-6);
     if([8,16,47].includes(cleared)){
+      // Coming back after a win: the hero walks over from the stage it stood on before.
       const follow={screen:'campaign',chapter,mapScroll:{[chapter]:0},mapProgress:{[chapter]:save.campaign.cleared-1}};
       w.GEMWOVEN_GAME.decorate(follow);const moved=d.createElement('div');w.GEMWOVEN_LAYOUT.screens.campaign.nodes.find(n=>n.id==='campaign.map').build(moved);
-      const hero=moved.querySelector('.cleared-hero'),heroY=Number(hero.dataset.groundY)-Number(moved.dataset.scrollTarget);
-      assert.ok(heroY>=row&&heroY<=row*3,`Camera follows the hero within the revealed terrain: chapter ${chapter}, cleared ${cleared}, y ${heroY}`);
-      assert.equal(moved.querySelectorAll('.world-pin.next-stage').length,1,'Only one next milestone is visible after the opening stretch');
-      assert.equal(moved.querySelectorAll('.world-pin.locked').length,0,'The next playable milestone is not locked');
+      const walker=moved.querySelector('.map-hero');assert.ok(walker.dataset.walkFrom,'The hero walks from its previous stage');
+      const heroY=Number(walker.dataset.groundY)-Number(moved.dataset.scrollTarget);
+      assert.ok(heroY>=0&&heroY<=1492,`Camera follows the hero: chapter ${chapter}, cleared ${cleared}, y ${heroY}`);
+      assert.equal(moved.querySelectorAll('.world-pin.next-stage').length,1,'Only one next milestone');
+      assert.equal(moved.querySelector('.world-pin.next-stage').classList.contains('locked'),false,'The next playable milestone is not locked');
     }
     visibilityCases++;
+  }
+  { // World atlas: one region per chapter, the explored one glowing, locked ones closed; open ones lead to their map.
+    const save=JSON.parse(JSON.stringify(fogSave));save.campaign.cleared=60;w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(save));
+    const state={screen:'campaign',mapView:'atlas'};w.GEMWOVEN_GAME.decorate(state);
+    const el=d.createElement('div');w.GEMWOVEN_LAYOUT.screens.campaign.nodes.find(n=>n.id==='campaign.atlas').build(el);
+    const N=w.GemwovenProgression.WORLD.CHAPTERS.length,regions=[...el.querySelectorAll('.atlas-region[data-action="journey:region"]')];assert.equal(regions.length,N);
+    const soon=el.querySelector('[data-node="campaign.region-soon"]');assert.ok(soon&&soon.disabled&&soon.textContent.includes('Sắp ra mắt'),'One more island waits at the road end for chapters to come');
+    assert.deepEqual(regions.filter(r=>!r.classList.contains('locked')).map(r=>Number(r.dataset.chapter)),[1,2],'Only chapters reached are open');
+    assert.equal(el.querySelector('.atlas-region.current').dataset.chapter,'2','The chapter being explored glows');
+    for(const r of regions){const n=Number(r.dataset.chapter),src=r.querySelector('.atlas-island').getAttribute('src');
+      // Chapters reached show their own island; every one not open is the unexplored island ("?"): the next one
+      // names its chapter, further ones keep it secret.
+      if(n<=2)assert.ok(src.endsWith(w.GEMWOVEN_ASSETS['atlas-'+w.GemwovenProgression.WORLD.CHAPTERS[n-1].id].file),'An open chapter shows its own island');
+      else assert.ok(src.endsWith(w.GEMWOVEN_ASSETS['atlas-unknown'].file),'A chapter not open is the unexplored island');
+      if(n<=3)assert.ok(r.textContent.includes(w.GemwovenProgression.WORLD.CHAPTERS[n-1].name),'Open chapters and the next one are named');
+      else{assert.ok(r.classList.contains('unexplored'));assert.ok(!r.textContent.includes(w.GemwovenProgression.WORLD.CHAPTERS[n-1].name),'An unexplored chapter keeps its name secret');}}
+    { // Three regions to a column, staggered, filling the height (the atlas scrolls only sideways); the road climbs
+      // the first column (1 → 3) and comes down the next (4 → 6).
+      const at=n=>{const r=el.querySelector(`[data-node="campaign.region-${n}"]`);return [parseFloat(r.style.left)+parseFloat(r.style.width)/2,parseFloat(r.style.top)+parseFloat(r.style.height)/2];};
+      assert.ok(at(2)[1]<at(1)[1]&&at(3)[1]<at(2)[1],'Chapters climb their column');assert.ok(at(5)[1]>at(4)[1]&&at(6)[1]>at(5)[1],'The next column comes back down');
+      {const shape=c=>[0,1,2].map(r=>at(c*3+1+r)[0]-at(c*3+1)[0]);const a=shape(0),b=shape(1).reverse().map((v,i,x)=>v-x[0]);
+        assert.ok(Math.max(...a)-Math.min(...a)>100,'Regions in a column are staggered');assert.notDeepEqual(a,b,'Each column is staggered its own way');}assert.ok(at(4)[0]-at(3)[0]>300,'The road turns sideways at the end of a column');
+      assert.equal(parseFloat(el.querySelector('.atlas-world').style.height),1672,'The atlas is one screen tall');
+    }
+    await go('home');click('route:campaign');await sleep();assert.ok(d.querySelector('.atlas-world'),'Khám Phá opens on the world atlas');
+    d.querySelector('[data-node="campaign.region-5"]').click();await sleep();assert.ok(d.querySelector('.atlas-world'),'A locked region stays on the atlas');
+    assert.ok(d.querySelector('[data-node="campaign.region-5"] .atlas-plate').textContent.includes('Vượt hết chương 4'),'A tapped locked chapter says how to open it, on its own label');
+    d.querySelector('[data-node="campaign.region-2"]').click();await sleep();assert.ok(d.querySelector('.island-map'),'An open region opens its stage map');
+    assert.ok(d.querySelector('[data-node="campaign.title"]').textContent.includes('Chương 2'));
+    click('journey:atlas');await sleep();assert.ok(d.querySelector('.atlas-world'),'The map button returns to the atlas');
+    w.localStorage.setItem(w.GemwovenProgression.KEY,JSON.stringify(fogSave));
   }
   fs.writeFileSync(path.join(__dirname,'layout.json'),JSON.stringify(captures));
   { // Mailbox: welcome notice, letter view, studio send (no Đá Ngọc), item info with art, claim reward sheet, delete rules.

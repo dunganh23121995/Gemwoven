@@ -8,7 +8,7 @@ merged=json.loads((ROOT/'assets/gemwoven/manifest.json').read_text(encoding='utf
 merged.update(json.loads((ROOT/'assets/gemwoven/novice-items.json').read_text(encoding='utf-8')))
 # Keep approved scene replacements independent of the regenerated base manifest.
 merged.update(json.loads((ROOT/'assets/gemwoven/painted-backgrounds.json').read_text(encoding='utf-8')))
-for catalog in ['journey-items','chapter-map-items','boss-items','existing-boss-items','theme-creature-items','equipment-art-items','chapter-ecosystem-items','modular-map-items','hud-items']:
+for catalog in ['journey-items','chapter-map-items','boss-items','existing-boss-items','theme-creature-items','equipment-art-items','chapter-ecosystem-items','modular-map-items','hud-items','atlas-items','chapter-flow-items','battle-scene-items']:
     if (ROOT/f'assets/gemwoven/{catalog}.json').exists():
         journey=json.loads((ROOT/f'assets/gemwoven/{catalog}.json').read_text(encoding='utf-8'))
         for key,value in journey['items'].items():
@@ -160,6 +160,11 @@ for name in ['boss-expansion-a','boss-expansion-b']:
 for key in [k for k,v in merged.items() if v['file'].startswith('assets/gemwoven/elites/')]:del merged[key]  # manifest.json is also this script's input
 for master in sorted((ROOT/'assets/gemwoven/elites').glob('*/master.png')):
     with Image.open(master) as im:merged['creature-'+master.parent.name]={'file':master.relative_to(ROOT).as_posix(),'width':im.width,'height':im.height,'transparent':True}
+# Resting loops (2x4 sheets, 256px cells) of the chapter bosses, elites and common foes: the exploration map
+# shows them alive on their stages (idle-boss-<id>, idle-creature-<id>).
+for pattern,prefix in [('boss-anim/*/idle.webp','boss-'),('elites/*/idle.webp','creature-'),('creatures/*/idle.webp','creature-')]:
+    for sheet in sorted((ROOT/'assets/gemwoven').glob(pattern)):
+        merged['idle-'+prefix+sheet.parent.name]={'file':sheet.relative_to(ROOT).as_posix(),'width':512,'height':1024,'cols':2,'rows':4,'count':8}
 # Foot registration uses the visible sprite, excluding transparent canvas padding.
 for key,asset in merged.items():
     if key.startswith(('hero-','home-idle-','creature-','monster-','boss-')) and (ROOT/asset['file']).is_file():

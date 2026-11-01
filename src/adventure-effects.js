@@ -34,7 +34,7 @@ const ENCOUNTER_SCENES={
 function renderEncounterScene(){
   const key=state.enemyKey,land=$('landscape');
   $('scene').dataset.biome=key;
-  land.innerHTML=ART.parallax[key].map((src,i)=>`<img class="encounter-scenery parallax-layer" data-depth="${i}" data-speed="${[.18,1,1.25][i]}" src="${src}" alt="" draggable="false">`).join('');
+  land.innerHTML=ART.parallax[key].map((src,i)=>`<img class="encounter-scenery parallax-layer" data-depth="${i}" data-speed="${(ART.parallaxSpeeds?.[key]||[.18,1,1.25])[i]}" src="${src}" alt="" draggable="false">`).join('');
   if(ART.chapterVista){
     const far=land.firstElementChild,depth=document.createElement('div');
     depth.className='encounter-scenery parallax-layer';depth.dataset.depth='0';depth.dataset.speed='.18';

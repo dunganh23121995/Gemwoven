@@ -1,0 +1,10 @@
+Image 1 is only a STYLE reference (palette, rendering, materials) from this game's chapter map art.
+
+Create a 1x3 prop strip, 1536x512, three equal cells side by side, each one STAGE PEDESTAL for a fantasy RPG level map, seen from a high three-quarter top-down camera (the top is an oval):
+Cell 1 (ordinary stage): a round weathered grey stone pedestal, low and wide, mossy edge, a flat smooth oval stone top, a thin pale gold rim.
+Cell 2 (elite stage): the same round pedestal shape, dark violet stone with glowing purple crystal shards on its rim and a faint violet rune ring carved on its flat top.
+Cell 3 (boss stage): the same shape but larger and grander, deep crimson stone with an ornate gold rim, small gold horns or spikes around it, glowing red runes on its flat top.
+Each pedestal centred in its cell, about 70% of the cell wide, the flat oval top clearly visible and EMPTY (nothing standing on it: no number, no character, no creature), a soft short rock base under it. Same camera and same scale in all three cells.
+Style: premium hand-painted chibi high fantasy mobile game art, clean HD painting like Image 1, NOT pixel art.
+Containment: each pedestal fully inside its own cell with at least 10% magenta margin on every side.
+Background 100% solid flat #FF00FF magenta, no gradient, no ground, no shadow. NO text, NO letters, NO numbers, NO labels, NO UI.

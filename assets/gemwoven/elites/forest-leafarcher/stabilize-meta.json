@@ -1,79 +1,79 @@
 {
-  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\forest-leafarcher\\master.png",
+  "master": "D:/Project/Gemwoven/assets/gemwoven/elites/forest-leafarcher/master.png",
   "frames": [
     {
       "frame": "idle-1.png",
       "dx": 0,
       "dy": 0,
       "scale": 1.0,
-      "error": 0.1692,
-      "moving_share": 0.0146
+      "error": 0.1232,
+      "moving_share": 0.0092
     },
     {
       "frame": "idle-2.png",
       "dx": 0,
       "dy": 0,
-      "scale": 0.9996,
-      "error": 0.1888,
-      "moving_share": 0.022
+      "scale": 0.9951,
+      "error": 0.1519,
+      "moving_share": 0.0204
     },
     {
       "frame": "idle-3.png",
       "dx": 0,
       "dy": 0,
-      "scale": 0.9996,
-      "error": 0.2061,
-      "moving_share": 0.0343
+      "scale": 1.0,
+      "error": 0.1263,
+      "moving_share": 0.0144
     },
     {
       "frame": "idle-4.png",
       "dx": 0,
       "dy": 0,
-      "scale": 0.9996,
-      "error": 0.2027,
-      "moving_share": 0.0387
+      "scale": 1.0,
+      "error": 0.1258,
+      "moving_share": 0.0041
     },
     {
       "frame": "idle-5.png",
-      "dx": -1,
-      "dy": -1,
-      "scale": 0.9947,
-      "error": 0.22,
-      "moving_share": 0.0244
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1377,
+      "moving_share": 0.0149
     },
     {
       "frame": "idle-6.png",
       "dx": 0,
-      "dy": 1,
-      "scale": 1.0049,
-      "error": 0.1774,
-      "moving_share": 0.0194
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1218,
+      "moving_share": 0.009
     },
     {
       "frame": "idle-7.png",
       "dx": 0,
       "dy": 0,
-      "scale": 0.9996,
-      "error": 0.1645,
-      "moving_share": 0.0148
+      "scale": 1.0,
+      "error": 0.128,
+      "moving_share": 0.0169
     },
     {
       "frame": "idle-8.png",
       "dx": 0,
-      "dy": 1,
-      "scale": 1.0049,
-      "error": 0.1713,
-      "moving_share": 0.0156
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.123,
+      "moving_share": 0.0083
     }
   ],
   "jitter": [
+    4.53,
+    4.31,
+    4.07,
+    3.64,
+    3.52,
     3.58,
-    5.48,
-    4.01,
-    6.17,
-    3.94,
-    2.69,
-    0.62,
-    0.55
+    3.96,
+    0.46
   ]
 }

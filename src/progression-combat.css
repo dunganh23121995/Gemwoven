@@ -69,3 +69,42 @@ body.ambience-paused .scene .actor[data-state]>.sprite-body,body.ambience-paused
 body.reduced-motion .scene .actor[data-state="idle"]>.sprite-body,body.reduced-motion .boss-element-aura *{animation:none!important}
 body.reduced-motion .boss-element-aura>b{display:none}
 .reduced-motion .scene .actor[data-state="idle"]>.sprite-body,.reduced-motion .boss-element-aura *{animation:none!important}.reduced-motion .boss-element-aura>b{display:none}
+/* a chapter's own combat scenery (assets/scenes/chapters): far, mid and the stage (layer 2, behind the fighters),
+   in their painted colours, each at its own camera speed (no drift or zoom of its own) */
+body.whole-scene .scene .landscape .parallax-layer{filter:none!important;scale:1!important;animation:none!important}
+body.whole-scene .scene .landscape .parallax-layer[data-depth="2"]{z-index:0!important}
+/* a chapter's own gentle air (scene[data-chapter]): the far sky drifts slowly, and its motes float */
+body.whole-scene .scene .landscape .parallax-layer[data-depth="0"]{animation:chapter-sky-drift 40s ease-in-out infinite alternate!important}
+@keyframes chapter-sky-drift{from{translate:0 0}to{translate:-18px -2px}}
+body.whole-scene.reduced-motion .scene .landscape .parallax-layer[data-depth="0"]{animation:none!important}
+.scene[data-chapter] .ambient-speck:nth-child(n+15){display:block}
+/* leaves and petals tumble down */
+.scene[data-chapter="forest"] .scene-atmosphere,.scene[data-chapter="eldergrove"] .scene-atmosphere{--speck:#9ccf5a}
+.scene[data-chapter="eldergrove"] .scene-atmosphere{--speck:#fff2f6}
+.scene[data-chapter="thorns"] .scene-atmosphere{--speck:#d83a4a}
+.scene[data-chapter="forest"] .ambient-speck,.scene[data-chapter="eldergrove"] .ambient-speck,.scene[data-chapter="thorns"] .ambient-speck{width:calc(var(--size)*3);height:calc(var(--size)*1.6);border-radius:80% 0 80% 0;box-shadow:none;animation-name:chapter-leaf-fall}
+@keyframes chapter-leaf-fall{0%{transform:translate(0,-60px) rotate(0deg);opacity:0}15%,80%{opacity:.75}100%{transform:translate(calc(var(--drift)*3),70px) rotate(300deg);opacity:0}}
+/* embers rise */
+.scene[data-chapter="volcano"] .scene-atmosphere,.scene[data-chapter="caldera"] .scene-atmosphere{--speck:#ffb04a}
+.scene[data-chapter="volcano"] .ambient-speck,.scene[data-chapter="caldera"] .ambient-speck{box-shadow:0 0 6px 2px #ff7a1a99}
+/* snow falls */
+.scene[data-chapter="ice"] .scene-atmosphere,.scene[data-chapter="glacier"] .scene-atmosphere{--speck:#ffffff}
+.scene[data-chapter="ice"] .ambient-speck,.scene[data-chapter="glacier"] .ambient-speck{animation-name:ambient-snow-fall}
+/* bubbles rise */
+.scene[data-chapter="abyss"] .scene-atmosphere,.scene[data-chapter="coralreef"] .scene-atmosphere{--speck:#c8f4ff}
+.scene[data-chapter="abyss"] .ambient-speck,.scene[data-chapter="coralreef"] .ambient-speck{width:calc(var(--size)*2.6);height:calc(var(--size)*2.6);background:radial-gradient(circle at 35% 35%,#fff9,#bdeeff33 60%,#bdeeff66);box-shadow:0 0 0 1px #e6fbff88}
+/* spores drift */
+.scene[data-chapter="marsh"] .scene-atmosphere{--speck:#d6f27a}.scene[data-chapter="mycelium"] .scene-atmosphere{--speck:#a6ff7a}
+/* sand motes blow */
+.scene[data-chapter="desert"] .scene-atmosphere,.scene[data-chapter="hourglass"] .scene-atmosphere{--speck:#f6dc98}
+.scene[data-chapter="desert"] .ambient-speck,.scene[data-chapter="hourglass"] .ambient-speck,.scene[data-chapter="sky"] .ambient-speck{animation-name:ambient-wind-drift}
+.scene[data-chapter="sky"] .scene-atmosphere{--speck:#ffffff}
+/* sparks, glints, wisps and motes of light */
+.scene[data-chapter="thunder"] .scene-atmosphere,.scene[data-chapter="stormspire"] .scene-atmosphere{--speck:#cfe6ff}
+.scene[data-chapter="foundry"] .scene-atmosphere{--speck:#ffd27a}
+.scene[data-chapter="crystal"] .scene-atmosphere,.scene[data-chapter="geode"] .scene-atmosphere{--speck:#e6d4ff}
+.scene[data-chapter="crystal"] .ambient-speck,.scene[data-chapter="geode"] .ambient-speck{border-radius:1px;rotate:45deg;box-shadow:0 0 6px 2px #c9a8ff88}
+.scene[data-chapter="haunted"] .scene-atmosphere,.scene[data-chapter="soulcrypt"] .scene-atmosphere{--speck:#9effd6}
+.scene[data-chapter="moonkeep"] .scene-atmosphere{--speck:#e0b8ff}
+.scene[data-chapter="celestial"] .scene-atmosphere{--speck:#fff4c2}
+.scene[data-chapter="void"] .scene-atmosphere{--speck:#c890ff}

@@ -1,0 +1,3 @@
+Image 1 is the STYLE reference: this game's painted floating-island chapter map with waterfalls (premium hand-painted chibi high-fantasy mobile RPG).
+Draw a TEXTURE, not a scene: a tall rectangle completely filled, edge to edge, with FALLING WATER streaks for a waterfall animation overlay: many thin vertical streaks of white foam and pale cyan highlights of varied length and width, running straight down, soft painted edges, with gaps between them. Nothing else: no rocks, no sky, no frame, no splash at the bottom, no perspective. The streak pattern must be evenly spread so it can repeat vertically.
+Background between the streaks 100% solid flat #FF00FF magenta (the streaks will be keyed out). Clean HD painting like the waterfalls of Image 1, NOT pixel art. NO text.

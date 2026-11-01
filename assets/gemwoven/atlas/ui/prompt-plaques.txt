@@ -1,0 +1,11 @@
+Image 1 is the STYLE reference: this game's painted chapter map and UI (premium hand-painted chibi high-fantasy mobile RPG, warm light, gold and carved wood).
+
+Create a 3 columns x 2 rows sheet, 1536x1024, six equal 512x512 cells, each ONE small upright UI plaque seen straight from the front (it stands at the front of a stage on a level-select map and a number will be printed on it later). Each plaque is a short rounded shield-shaped badge about 56% of the cell wide and 50% tall, with a smooth EMPTY flat centre face (draw no number), a slim ornate metal rim and a small gem at its top.
+Cell 1 NORMAL: dark walnut wood face, slim polished gold rim, small amber gem.
+Cell 2 ELITE: deep violet face, silver-gold rim, small amethyst gem.
+Cell 3 BOSS: deep crimson face, ornate gold rim with two tiny gold horns, red gem.
+Cell 4 CLEARED: dark green face, gold rim with two tiny gold leaves, emerald gem.
+Cell 5 NEXT: bright warm orange-amber face, gold rim, soft golden glow around the plaque.
+Cell 6 LOCKED: grey weathered stone face, plain grey stone rim, no gem.
+Same size and centring in every cell, each fully inside its cell with at least 15% magenta margin.
+Clean HD painting, NOT pixel art, NOT flat vector. Background 100% solid flat #FF00FF magenta, no gradient, no shadow. NO text, NO numbers, NO letters.

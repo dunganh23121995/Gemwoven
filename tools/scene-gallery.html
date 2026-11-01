@@ -1,0 +1,126 @@
+<!doctype html>
+<!-- Scene gallery (Studio tab "Bản đồ & nền"): every chapter's places at a glance. For one chapter: its four combat
+     scenes (assets/scenes/chapters, three layers each) with the camera pan and each layer alone, its stage-map
+     painting and its atlas island; "Tất cả" shows all the combat scenes side by side.
+     Reads assets/scenes/chapters/manifest.json and src/gemwoven/world.js; adds nothing to the game. -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemwoven · Bản đồ &amp; nền</title>
+<base href="../">
+<style>
+:root{color-scheme:dark;--bg:#16130f;--panel:#221d17;--line:#3a3127;--ink:#efe4cf;--dim:#b9a98a;--gold:#e8c26a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif;display:flex;min-height:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#chapters{flex:none;width:236px;overflow-y:auto;border-right:1px solid var(--line);background:var(--panel);padding:8px;display:flex;flex-direction:column;gap:3px}
+#chapters button{flex:none;display:flex;gap:8px;align-items:baseline;min-height:36px;text-align:left;background:none;border:0;border-radius:7px;padding:7px 9px}
+#chapters button:hover{background:#2f281f}
+#chapters button.on{background:var(--gold);color:#1a1409;font-weight:600}
+#chapters small{flex:none;width:18px;text-align:right;opacity:.7}
+main{flex:1;min-width:0;overflow-y:auto;padding:16px 20px 32px}
+h2{margin:0;font-size:20px;color:var(--gold)}
+h3{margin:24px 0 8px;font-size:15px}
+.sub{margin:2px 0 14px;color:var(--dim)}
+.scenes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.scene{padding:0;background:var(--panel);border:2px solid var(--line);border-radius:9px;overflow:hidden;text-align:left}
+.scene.on{border-color:var(--gold)}
+.scene img{display:block;width:100%;aspect-ratio:2;object-fit:cover}
+.scene span{display:block;padding:6px 9px 8px;font-size:13px}
+.scene b{display:block}.scene i{font-style:normal;color:var(--dim);font-size:12px}
+.viewer{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-top:14px}
+#stage{position:relative;flex:none;width:min(100%,430px);aspect-ratio:376/324;overflow:hidden;border-radius:9px;border:1px solid var(--line);background:#000}
+#stage img{position:absolute;left:0;top:0;width:250%;max-width:none;height:100%;object-fit:fill;will-change:transform}
+.controls{flex:1;min-width:240px;display:flex;flex-direction:column;gap:12px}
+.controls label{display:flex;flex-direction:column;gap:4px;color:var(--dim)}
+.controls input[type=range]{width:100%;accent-color:var(--gold)}
+.row{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:36px;background:#2f281f;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+.chip.on{background:var(--gold);color:#1a1409;border-color:var(--gold);font-weight:600}
+.note{margin:0;color:var(--dim);font-size:13px}
+.maps{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.maps figure{margin:0}
+.maps figcaption{color:var(--dim);font-size:13px;margin-bottom:5px}
+.maps img{display:block;max-width:100%;border-radius:9px;border:1px solid var(--line);background:#7fb6dc}
+.maps .painting{width:300px}.maps .island{width:360px}
+.all{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(4,minmax(0,1fr));gap:6px 8px;align-items:center}
+.all>b{font-size:13px;font-weight:600}
+.all>b small{display:block;color:var(--dim);font-weight:400}
+.all .head{position:sticky;top:-16px;z-index:1;background:var(--bg);padding:4px 0}
+.all img{display:block;width:100%;aspect-ratio:2;object-fit:cover;border-radius:6px;cursor:pointer}
+@media(max-width:760px){
+  body{flex-direction:column}
+  #chapters{width:auto;flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}
+  #chapters button{flex:none}
+  main{padding:12px 14px 24px}
+  .scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .all{grid-template-columns:repeat(2,minmax(0,1fr))}.all>b{grid-column:1/-1;margin-top:8px}.all>.head,.all>span:first-child{display:none}
+}
+</style>
+</head>
+<body>
+<nav id="chapters" aria-label="Chương"></nav>
+<main id="main"></main>
+<script src="src/gemwoven/boss-chapters.js"></script>
+<script src="src/gemwoven/world.js"></script>
+<script>
+const W=window.GemwovenWorld,$=id=>document.getElementById(id),esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const ROOT='assets/scenes/chapters/';
+// A chapter's scenes as combat uses them (src/progression-combat.js), and the speed of each layer when the camera pans.
+const VARIANTS=[['','Cảnh gốc','Ải 1, 4, 7…'],['-b','Hoàng hôn','Ải 2, 5, 8…'],['-c','Bình minh','Ải 3, 6, 9…'],['-boss','Hang boss','Ải 50']];
+const LAYERS=[['far','Lớp 3 · xa nhất',.15],['mid','Lớp 2 · tầm trung',.45],['stage','Lớp 1 · sân khấu',1]];
+const bossOf=c=>W.BOSSES[c.boss]?.name||'';
+let manifest={},chapter='all',variant='',shown=new Set(['far','mid','stage']),panning=0;
+
+function nav(){
+  const items=[['all','Tất cả','']].concat(W.CHAPTERS.map(c=>[c.id,c.name,c.index]));
+  $('chapters').innerHTML=items.map(([id,name,n])=>`<button type="button" data-chapter="${id}" class="${id===chapter?'on':''}" aria-current="${id===chapter}"><small>${n}</small>${esc(name)}</button>`).join('');
+  // On a phone the list is one swiped row: the chosen chapter stays in view.
+  $('chapters').querySelector('.on')?.scrollIntoView({block:'nearest',inline:'center'});
+}
+function overview(){
+  const rows=W.CHAPTERS.map(c=>`<b>${c.index} · ${esc(c.name)}<small>${esc(bossOf(c))}</small></b>`+VARIANTS.map(([v,label])=>{const e=manifest[c.id+v];return e?`<img src="${ROOT+e.card}" alt="${esc(c.name)} · ${label}" loading="lazy" data-go="${c.id}" data-variant="${v}">`:'<span></span>';}).join('')).join('');
+  $('main').innerHTML=`<h2>Tất cả các cảnh</h2><p class="sub">${W.CHAPTERS.length} chương · ${Object.keys(manifest).length} cảnh combat. Bấm một cảnh để xem chi tiết.</p><div class="all"><span></span>${VARIANTS.map(([,label,stages])=>`<b class="head">${label}<small>${stages}</small></b>`).join('')}${rows}</div>`;
+}
+function detail(){
+  const c=W.CHAPTERS.find(x=>x.id===chapter),e=manifest[chapter+variant];
+  $('main').innerHTML=`<h2>Chương ${c.index} · ${esc(c.name)}</h2><p class="sub">Boss: ${esc(bossOf(c))}</p>
+    <div class="scenes">${VARIANTS.map(([v,label,stages])=>{const s=manifest[chapter+v];return s?`<button type="button" class="scene ${v===variant?'on':''}" data-variant="${v}" aria-pressed="${v===variant}"><img src="${ROOT+s.card}" alt="" loading="lazy"><span><b>${label}</b><i>${stages}</i></span></button>`:'';}).join('')}</div>
+    <div class="viewer"><div id="stage" aria-label="Xem thử nền combat">${LAYERS.map(([k])=>`<img data-layer="${k}" src="${ROOT+e.layers[k]}" alt="" draggable="false">`).join('')}</div>
+      <div class="controls"><label>Lia camera<input id="pan" type="range" min="0" max="1" step=".005" value="0"></label>
+        <div class="row"><button type="button" class="chip" id="play">▶ Lia thử</button></div>
+        <div class="row" role="group" aria-label="Các lớp">${LAYERS.map(([k,label])=>`<button type="button" class="chip ${shown.has(k)?'on':''}" data-toggle="${k}" aria-pressed="${shown.has(k)}">${label}</button>`).join('')}</div>
+        <p class="note">Tốc độ khi lia: lớp 1 ×1 · lớp 2 ×0,45 · lớp 3 ×0,15. Bấm lớp để bật tắt và xem riêng từng lớp.</p></div></div>
+    <h3>Bản đồ chương và đảo trên bản đồ thế giới</h3>
+    <div class="maps"><figure><figcaption>Tranh bản đồ chương</figcaption><img class="painting" src="assets/gemwoven/backgrounds/chapters/${c.backdrop||c.id}.webp" alt="Tranh bản đồ ${esc(c.name)}" loading="lazy"></figure>
+      <figure><figcaption>Đảo trên bản đồ thế giới</figcaption><img class="island" src="assets/gemwoven/atlas/${c.id}.webp" alt="Đảo ${esc(c.name)}" loading="lazy"></figure></div>`;
+  applyLayers();
+}
+function applyLayers(){for(const img of document.querySelectorAll('#stage img'))img.style.visibility=shown.has(img.dataset.layer)?'visible':'hidden';pan(Number($('pan')?.value||0));}
+// As in combat: each layer is 250% of the stage wide and slides by the camera times its speed.
+function pan(t){const stage=$('stage');if(!stage)return;const camera=t*stage.clientWidth*1.5;for(const img of stage.querySelectorAll('img')){const speed=LAYERS.find(l=>l[0]===img.dataset.layer)[2];img.style.transform=`translateX(${-camera*speed}px)`;}}
+function play(){
+  cancelAnimationFrame(panning);const started=performance.now(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){$('pan').value=.5;pan(.5);return;}
+  const step=now=>{const k=(now-started)/4000;if(k>=1||!$('pan')){if($('pan')){$('pan').value=0;pan(0);}return;}const t=k<.5?k*2:(1-k)*2;$('pan').value=t;pan(t);panning=requestAnimationFrame(step);};
+  panning=requestAnimationFrame(step);
+}
+function render(){cancelAnimationFrame(panning);nav();if(chapter==='all')overview();else detail();$('main').scrollTop=0;}
+function go(id,v=''){chapter=id;variant=v;const url=new URL(location);if(id==='all')url.searchParams.delete('chapter');else url.searchParams.set('chapter',id);history.replaceState(null,'',url);render();}
+$('chapters').addEventListener('click',e=>{const b=e.target.closest('[data-chapter]');if(b)go(b.dataset.chapter);});
+$('main').addEventListener('click',e=>{
+  const all=e.target.closest('[data-go]');if(all)return go(all.dataset.go,all.dataset.variant);
+  const scene=e.target.closest('.scene');if(scene){variant=scene.dataset.variant;return render();}
+  const toggle=e.target.closest('[data-toggle]');if(toggle){const k=toggle.dataset.toggle;shown.has(k)?shown.delete(k):shown.add(k);toggle.classList.toggle('on',shown.has(k));toggle.setAttribute('aria-pressed',shown.has(k));return applyLayers();}
+  if(e.target.closest('#play'))play();
+});
+$('main').addEventListener('input',e=>{if(e.target.id==='pan'){cancelAnimationFrame(panning);pan(Number(e.target.value));}});
+addEventListener('resize',()=>pan(Number($('pan')?.value||0)));
+fetch(ROOT+'manifest.json').then(r=>r.json()).then(m=>{manifest=m.chapters;const wanted=new URLSearchParams(location.search).get('chapter');chapter=W.CHAPTERS.some(c=>c.id===wanted)?wanted:'all';render();})
+  .catch(()=>{$('main').innerHTML='<h2>Không đọc được danh sách cảnh</h2><p class="sub">Mở trang qua máy chủ phát triển: python tools/dev_server.py</p>';});
+</script>
+</body>
+</html>

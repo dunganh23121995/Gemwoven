@@ -10,17 +10,16 @@
 .exploration-open #scene{background-size:var(--journey-art-size)!important;background-position:var(--journey-art-position)!important}
 .close-map .map-island{filter:brightness(.9) saturate(.94)}.close-map .journey-hero{left:-20%;top:-62%;width:140%;height:148%;object-position:center bottom}.cleared-hero .pin-platform{filter:drop-shadow(0 0 11px #78dba6)}.cleared-hero .pin-name{bottom:165%}
 .close-map .world-pin.locked.boss:not(.next-stage) .pin-platform{visibility:hidden}.close-map .world-pin.locked.boss .pin-mist{left:-55%;top:35%;width:210%;height:auto;filter:none}
-.encounter-roster-heading{display:flex;justify-content:space-between;align-items:center;font-size:24px;color:#684523}.encounter-roster-heading span{font-size:21px;color:#8b6537}.encounter-roster{display:flex;gap:10px;overflow-x:auto;overscroll-behavior:contain;padding:8px 3px 11px}.encounter-roster button{position:relative;flex:0 0 112px;height:126px;border:2px solid #ac875b80;border-radius:12px;background:#a57c4425;padding:3px;color:#6c4827;font-size:22px;cursor:pointer}.encounter-roster button.chosen{border-color:#b98122;background:#f3d38c88;box-shadow:0 0 0 2px #f9dc9d}.encounter-roster img{display:block;width:76px;height:78px;object-fit:contain;margin:auto}.encounter-roster button>i{position:absolute;right:6px;top:2px;color:#a26d14;font-size:30px;font-style:normal}
+
 .close-map .world-pin>b{font-size:30px}.close-map .pin-stars{font-size:31px}.close-map .world-pin.locked .pin-creature{filter:saturate(.85) brightness(.85)}.close-map .next-stage .pin-platform{filter:drop-shadow(0 0 12px #ffe29a)}.pin-name{position:absolute;bottom:132%;left:50%;transform:translateX(-50%);min-width:180px;max-width:310px;padding:8px 17px;border:1px solid #dfc28c99;border-radius:24px;background:#253327dd;color:#fff0ca;font-size:26px;line-height:1.1;white-space:nowrap;text-shadow:0 2px #19281d;pointer-events:none}
 .encounter-sheet{color:#573a23;font-size:33px;z-index:20}
-.gw-frame>.gw-head:has(small) small{font-size:calc(27*var(--s));line-height:1.05}.gw-frame>.gw-head:has(small) h2{font-size:calc(30*var(--s));line-height:1}.encounter-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;flex:1;padding-right:7px}.encounter-identity{display:flex;align-items:center;gap:26px;padding:12px 0}.encounter-monster{width:245px;height:242px;object-fit:contain;filter:drop-shadow(0 8px 10px #795c3c44)}.encounter-identity>div{flex:1}.encounter-tier{font-size:23px;color:#945b25}.encounter-identity p{margin:10px 0;font-size:26px}.encounter-identity strong{float:right;color:#57331d}.encounter-record{color:#b27d25!important;letter-spacing:3px}.encounter-record small{font-size:19px;letter-spacing:0;color:#9c7c54}.encounter-skills{padding:12px 18px;background:#b98c5420;border-top:1px solid #ae875c44;border-bottom:1px solid #ae875c44;font-size:24px}.encounter-skills>b{color:#885524}.encounter-skills p{margin:5px 0;line-height:1.4;font-size:25px}.encounter-rewards-heading{display:flex;align-items:center;justify-content:space-between;margin-top:17px}.encounter-rewards-heading h3{font-size:31px;margin:0;color:#573518}.encounter-rewards-heading>span{font-size:21px;color:#997449}.encounter-common{display:flex;align-items:center;flex-wrap:wrap;gap:13px;margin:12px 0;font-size:22px}.encounter-loot{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#65401f;font-size:25px}.encounter-loot img{width:45px;height:46px;object-fit:contain}.encounter-star-rewards{display:flex;flex-direction:column;gap:10px}.encounter-star-rewards article{padding:10px 15px;border:1px solid #aa835a60;border-radius:10px;background:#fff7df55}.encounter-condition{display:flex;align-items:center;gap:15px}.encounter-condition>b{font-size:32px;color:#b78024;min-width:112px;letter-spacing:1px}.encounter-condition>span{font-size:23px;line-height:1.2}.encounter-row-loot{display:flex;align-items:center;gap:21px;margin-top:7px}.encounter-row-loot>small{font-size:20px;margin-left:auto;color:#916b3c}.encounter-counter{display:flex;align-items:center;gap:12px;border-top:1px solid #bb8b4944;padding-top:8px;margin-top:7px;font-size:24px;color:#805023}.encounter-counter>img{width:49px;height:55px;object-fit:contain}.encounter-counter small{display:block;font-size:19px;color:#9a7a54}.encounter-reward-note{font-size:21px!important;color:#937449;line-height:1.35;margin:12px 0}.encounter-guide-link{display:block;background:none;border:0;padding:8px;color:#80521e;text-decoration:underline;font-size:24px;cursor:pointer}.encounter-sheet footer{padding-top:12px;text-align:center}.encounter-sheet .encounter-deploy{--h:112px;display:flex;margin:40px auto 22px;min-width:460px;font-size:44px}.encounter-sheet footer>small{display:block;font-size:21px;color:#8d6c44;margin-top:4px}
+.gw-frame>.gw-head:has(small) small{font-size:calc(27*var(--s));line-height:1.05}.gw-frame>.gw-head:has(small) h2{font-size:calc(30*var(--s));line-height:1}
 .map-world{overflow:hidden}.frontier-cloud{position:absolute;z-index:2;overflow:hidden;pointer-events:none;filter:drop-shadow(0 5px 8px #597f9840)} .frontier-cloud{mask-image:linear-gradient(transparent,#000 40px)}.frontier-cloud>img{position:absolute;display:block;max-width:none;pointer-events:none}.world-pin.locked .pin-mist{filter:none}.world-pin .pin-lock{left:63%;top:50%;width:44%;height:44%;filter:drop-shadow(0 3px 4px #14251eaa)}.world-pin.locked .pin-name{color:#e0dcc4;background:#34413ce8}
 .chapter-field-guide{color:#573d26;font-size:33px}.chapter-field-guide h3{font-size:36px;margin:8px 0;color:#573518}.chapter-field-guide p{font-size:33px;line-height:1.42;margin:10px 0}.chapter-boss-intro{display:flex;align-items:center;gap:24px;margin:8px 0}.chapter-boss-portrait{width:220px;height:230px;object-fit:contain}.chapter-boss-intro>div{flex:1}.chapter-artifact{display:flex;align-items:center;gap:20px;padding:14px 0;border-top:1px solid #98784680;border-bottom:1px solid #98784680}.chapter-artifact>img{width:120px;height:140px;object-fit:contain}.chapter-artifact p{font-size:24px}.chapter-elite-milestones{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}.chapter-elite-milestones>button{background:var(--art-slot) center/100% 100% no-repeat;border:0;border-radius:12px;padding:16px 10px 18px;color:#ffe9bc;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:250px;font:700 33px/1.2 Cambria,serif;text-shadow:0 2px 2px #1b0d05;cursor:pointer}.chapter-elite-milestones img{width:110px;height:104px;object-fit:contain}.chapter-elite-milestones span{font:33px Cambria,'Segoe UI Symbol',serif;color:#ffcb4f}.chapter-elite-milestones small{font-size:31px;font-weight:400;color:#f6e3bd}.chapter-elite-milestones button:disabled{opacity:.6;filter:saturate(.4)}.chapter-counter-note{font-size:31px!important;color:#7a5a3a}.chapter-boss-challenge{padding:12px 0;text-align:center}.chapter-field-guide details{margin-top:18px;border-top:1px solid #a4855b;padding-top:12px}.chapter-field-guide summary{font-size:36px;font-weight:700;cursor:pointer;min-height:96px;display:flex;align-items:center;color:#5a3517}.chapter-skill{padding:12px 0;border-bottom:1px solid #aa8b6655}.chapter-guide-entry{filter:drop-shadow(0 3px 7px #20291dbb)}
 
 .close-map .next-stage.locked .pin-creature{filter:none}.next-stage.locked .pin-name{color:#fff0ca;background:#253327dd}
 .eight-step-map .world-pin>b{font-size:23px}.eight-step-map .pin-stars{font-size:21px;top:102%}.eight-step-map .pin-name{top:8%;bottom:auto;left:110%;transform:none;min-width:0;max-width:190px;font-size:20px;padding:5px 9px}.eight-step-map .world-pin.locked:not(.next-stage) .pin-name{font-size:18px}.eight-step-map .journey-hero{left:-15%;top:-25%;width:130%;height:125%}
 .close-map .registered-terrain,.map-header-terrain .registered-terrain{background:none;mask-image:none;overflow:hidden}.terrain-band{position:absolute;left:0;width:941px;background-image:var(--map-background);background-repeat:no-repeat;pointer-events:none}.map-header-terrain{position:absolute;left:0;top:0;width:941px;height:180px;overflow:hidden;pointer-events:none}.map-header-terrain .map-island{filter:brightness(.9) saturate(.94)}.eight-step-map .journey-hero{top:-40.5%;height:124%}.eight-step-map .label-left .pin-name{left:auto;right:110%}.eight-step-map .pin-name{white-space:normal;width:max-content;max-width:180px;text-align:center}
-
 
 .close-map .registered-terrain,.map-header-terrain .registered-terrain{mask-image:linear-gradient(transparent,#000 32px)}
 .frontier-cloud{mask-image:linear-gradient(#000 calc(100% - 12px),transparent)}.map-header-cloud{position:absolute;left:0;top:0;width:941px;height:180px;overflow:hidden;pointer-events:none}.map-header-cloud>div{position:absolute;inset:0}.map-header-cloud img{position:absolute;max-width:none;pointer-events:none}
@@ -141,18 +140,7 @@
 .crafted-panel .mute-control input:checked{background:linear-gradient(#f2c867,#c48a2b);border-color:#7a5021}
 .crafted-panel .mute-control input:checked::after{content:'✓';position:absolute;inset:0;display:grid;place-items:center;font:700 40px/1 Cambria,'Segoe UI Symbol',serif;color:#3b2410}
 /* Encounter sheet copy at phone-readable stage sizes (>=31 stage px = 13 CSS px on a 390px phone). */
-.encounter-tier{font-size:31px}.encounter-identity p{font-size:33px;margin:8px 0}.encounter-record small{font-size:30px}
-.encounter-monster{width:230px;height:226px}
-.encounter-skills{font-size:31px}.encounter-skills p{font-size:32px}
-.encounter-rewards-heading h3{font-size:38px}.encounter-rewards-heading>span{font-size:30px}
-.encounter-common{font-size:31px}.encounter-loot{font-size:32px}.encounter-loot img{width:50px;height:52px}
-.encounter-condition>b{font-size:36px;min-width:128px}.encounter-condition>span{font-size:31px}
-.encounter-row-loot>small{font-size:30px}.encounter-counter{font-size:31px}.encounter-counter small{font-size:30px}
-.encounter-reward-note{font-size:30px!important}.encounter-guide-link{font-size:32px;min-height:96px}
-.encounter-roster-heading{font-size:33px}.encounter-roster-heading span{font-size:31px}
-.encounter-roster button{flex:0 0 124px;height:138px;font-size:29px}
-.encounter-sheet footer>small{font-size:31px}
-.encounter-body{padding-right:10px}
+
 .chapter-artifact p{font-size:31px}.chapter-artifact>img{width:110px;height:128px}
 .chapter-boss-intro p{font-size:32px}
 /* Framed sheets paint above the ambient light layer (z-index 1) so lamps never glow on parchment. */
@@ -163,7 +151,7 @@
 .chat-panel .chat-tabs .game-btn{--h:100px}
 .chat-panel .chat-composer textarea{height:100px;min-height:100px}
 .chapter-field-guide summary{min-height:106px}
-.encounter-star-rewards article{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}.encounter-star-rewards article>.encounter-condition{flex:1 1 auto}.encounter-star-gain{margin-left:auto;font-size:30px;color:#916b3c;white-space:nowrap}.encounter-star-rewards article>.encounter-counter{flex:1 1 100%}
+
 /* Insufficient summon: one clean row per payment option (icon, cost, balance underneath). */
 .confirm-cost.short{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:2px;margin:0 0 4px}
 .confirm-cost.short .cost-chip{display:grid;grid-template-columns:52px minmax(0,1fr);align-items:center;column-gap:12px;width:100%;min-height:76px;padding:9px 15% 9px 11%;text-align:left}
@@ -181,5 +169,372 @@
 #summon-confirm .confirm-balance{margin:4px 0 2px;text-align:center;font-size:15px;color:#7b5a33}
 #summon-confirm .confirm-note{margin:2px 0;text-align:center;font-size:13px;color:#a23f28}
 #summon-confirm .gw-actions{flex-wrap:nowrap;gap:10px;padding-top:8px}
-#summon-confirm .gw-actions .gw-btn{--h:46px;flex:1 1 0;min-width:0;margin-inline:0;padding-inline:calc(30*var(--u));font-size:16px;white-space:nowrap}
-#summon-confirm .gw-actions .gw-btn:not(.secondary){padding-inline:calc(18*var(--u))}
+#summon-confirm .gw-actions .gw-btn{--h:46px;flex:1 1 0;min-width:0;margin-inline:0;padding-inline:calc(160*var(--u));font-size:16px;white-space:nowrap}
+#summon-confirm .gw-actions .gw-btn:not(.secondary){padding-inline:calc(150*var(--u))}
+/* ---- Khám Phá: world atlas (one floating region island per chapter over a sea of clouds) ---- */
+.atlas-map{background:var(--atlas-sea) center top/941px auto repeat-y!important}
+.atlas-world{position:relative;width:941px}
+.atlas-region{position:absolute;padding:0;border:0;background:none;cursor:pointer;transition:transform .25s ease}
+.atlas-region .atlas-island{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 18px 14px #1d3d5c55)}
+.atlas-region.locked .atlas-island{filter:saturate(.55) brightness(.78) drop-shadow(0 18px 14px #1d3d5c55)}
+.atlas-region.current .atlas-island{filter:drop-shadow(0 0 6px #fff6c8) drop-shadow(0 0 18px #ffd25c) drop-shadow(0 0 34px #ffb02e);animation:atlas-current 2.6s ease-in-out infinite}
+@keyframes atlas-current{50%{filter:drop-shadow(0 0 10px #fffbe0) drop-shadow(0 0 26px #ffd25c) drop-shadow(0 0 48px #ffb02e)}}
+.atlas-region:not(.locked):hover{transform:scale(1.03)}
+.atlas-plate{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;min-width:230px;padding:10px 22px 12px;border-radius:18px;background:linear-gradient(#2a3b26f0,#16231af0);border:2px solid #e3c16f;box-shadow:0 0 0 2px #3c2c14,0 6px 14px #0008;color:#fff3d0;font-family:Cambria,Georgia,serif;text-align:center;pointer-events:none}
+.atlas-region.east .atlas-plate{left:54%}.atlas-region.west .atlas-plate{left:46%}
+.atlas-plate small{font-size:22px;color:#f6d98a;letter-spacing:.5px}.atlas-plate b{font-size:30px;line-height:1.1;white-space:nowrap}.atlas-plate em{font-style:normal;font-size:20px;color:#d9e8c8}
+.atlas-region.current .atlas-plate{background:linear-gradient(#5a3e12f2,#2d1f0af2);border-color:#ffe39a;box-shadow:0 0 0 2px #3c2c14,0 0 18px #ffd25c}
+.atlas-region.locked .atlas-plate{background:linear-gradient(#2c2c38ee,#17171fee);border-color:#a9a3b6;color:#e6e2ee}.atlas-region.locked .atlas-plate em{color:#c9c3d6}
+.atlas-plate .atlas-lock{position:static;width:44px;height:50px;margin-bottom:2px}
+.atlas-note{color:#fff3d0!important;background:#1c2a1ce8;border:2px solid #e3c16f;border-radius:14px;padding:6px 10px}
+.reduced-motion .atlas-region.current .atlas-island{animation:none}
+/* ---- Khám Phá: one chapter, its floating island painting stacked for 50 stages, stone pedestals ---- */
+.island-map{position:relative;width:941px;overflow:hidden}
+.island-map .island-tile{position:absolute;left:0;width:941px;object-fit:cover;pointer-events:none;-webkit-mask-image:linear-gradient(transparent 250px,#000 380px);mask-image:linear-gradient(transparent 250px,#000 380px)}
+.island-map .island-tile.first{mask-image:none}
+.island-map .map-stages{position:absolute;inset:0;z-index:10}
+
+.island-map .pin-creature{object-fit:fill;filter:drop-shadow(1px 0 1px #fff0b8) drop-shadow(-1px 0 1px #fff0b8) drop-shadow(0 5px 4px #000a)}
+
+.island-map .map-hero{position:absolute;width:0;height:0;z-index:11;pointer-events:none}
+.island-map .map-hero .pin-creature{position:absolute;filter:drop-shadow(0 0 6px #fff6c8) drop-shadow(0 5px 4px #000a)}
+
+.island-map .frontier-cloud{position:absolute;z-index:12;overflow:hidden;pointer-events:none;mask-image:linear-gradient(#000 calc(100% - 70px),transparent)}
+.island-map .frontier-cloud>img{position:absolute}
+.island-map .frontier-note{position:absolute;left:50%;bottom:120px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:8px 18px;border-radius:16px;background:#ffffffd9;color:#3e4a5a;font:700 24px Cambria,Georgia,serif;box-shadow:0 4px 10px #3b5a7a55}
+.island-map .frontier-note img{position:static;width:30px;height:36px}
+
+/* ---- Khám Phá: stage card (Ải N · tier) ---- */
+
+/* review round: grander current region, plates clear of the back button, larger card text and monster */
+.atlas-region.current .atlas-island{filter:drop-shadow(0 0 2px #fffbe0) drop-shadow(0 0 3px #ffe08a) drop-shadow(0 0 3px #ffd25c) drop-shadow(0 0 20px #ffb02e)}
+@keyframes atlas-current{50%{filter:drop-shadow(0 0 3px #fffbe0) drop-shadow(0 0 4px #ffe08a) drop-shadow(0 0 4px #ffd25c) drop-shadow(0 0 34px #ffb02e)}}
+.atlas-region.east .atlas-plate{left:40%}.atlas-region.west .atlas-plate{left:50%}
+.atlas-plate b{font-size:32px}.atlas-plate em{font-size:21px}
+
+/* stage numbers carved in gold on the pedestal's front face; stars on a strip just under it */
+
+.island-map .map-hero .pin-creature{filter:drop-shadow(0 0 4px #fff6c8) drop-shadow(0 0 10px #ffd96a) drop-shadow(0 6px 5px #000a)}
+/* the stage number on a round gold-rimmed medallion fixed to the pedestal's front */
+
+.island-map .map-hero-body{position:absolute;left:-150px;bottom:0;width:300px;height:320px;container-type:size}
+.island-map .map-hero-body .art{filter:drop-shadow(0 0 4px #fff6c8) drop-shadow(0 6px 5px #000a)}
+
+/* atlas: a wide world dragged in every direction */
+.atlas-map{overflow:auto!important;touch-action:pan-x pan-y!important;cursor:grab;background:#7fb6dc!important}
+.atlas-map.dragging{cursor:grabbing}.atlas-map.dragging .atlas-region{pointer-events:none}
+.atlas-world{background:var(--atlas-sea) 0 0/941px auto repeat}
+.atlas-plate{left:50%!important}
+/* chapter: the frontier cloud lies under the stages */
+.island-map .frontier-cloud{z-index:5}
+
+.atlas-world{background-size:1500px auto}
+.atlas-note{font-size:24px!important;line-height:1.2}
+.island-map .frontier-note{bottom:auto;top:200px}
+
+.atlas-bridge{position:absolute;z-index:0;object-fit:fill;pointer-events:none;filter:drop-shadow(0 10px 8px #1d3d5c55)}
+.atlas-bridge.locked{filter:saturate(.4) brightness(.8) drop-shadow(0 10px 8px #1d3d5c55);opacity:.8}
+/* stage card, one page */
+
+/* review round 2 */
+.atlas-plate{min-width:200px;padding:8px 18px 10px}.atlas-plate b{font-size:28px}.atlas-plate small{font-size:20px}.atlas-plate em{font-size:19px}
+.atlas-region.locked .atlas-plate{background:linear-gradient(#3b2e22f0,#211912f0);border-color:#9c8a66;color:#e9dcc2}.atlas-region.locked .atlas-plate small{color:#c9b48a}
+.atlas-note,.atlas-hint,.chapter-conquered{display:flex!important;align-items:center;justify-content:center;border-radius:18px;padding:4px 14px}
+.atlas-note{color:#fff3d0!important;background:#3a1c14ee;border:2px solid #e3a46f}
+.atlas-hint{color:#3a2a14!important;background:#fff6dce6;border:2px solid #d9b56a;animation:atlas-hint 2.4s ease-in-out infinite}
+@keyframes atlas-hint{50%{translate:10px 0}}.reduced-motion .atlas-hint{animation:none}
+.chapter-conquered{color:#fff3d0!important;background:linear-gradient(#3f7a32,#24501c);border:2px solid #e8cd86}
+
+@keyframes next-pulse{50%{box-shadow:0 0 22px #ffcf6acc;scale:1.05}}
+.island-map .map-hero::before{content:'';position:absolute;left:-70px;top:-26px;width:140px;height:52px;border-radius:50%;background:radial-gradient(#ffe8a0cc,#ffcf5a55 55%,transparent 72%);animation:hero-ring 2s ease-in-out infinite}
+@keyframes hero-ring{50%{opacity:.55;scale:1.12}}.reduced-motion .island-map .map-hero::before{animation:none}
+.island-map .frontier-note{font-size:28px;padding:10px 22px}
+/* review round 3: larger card text, readable stage stars */
+
+/* stages not reached yet: a dimmed pedestal with a lock (their elite or boss still standing on it) */
+
+/* the join between two stacked island paintings: a bank of painted clouds, a rope bridge across it */
+.island-map .island-join{position:absolute;left:0;width:941px;z-index:6;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
+.island-map .island-join img{position:absolute;filter:drop-shadow(0 6px 10px #5b7a9a44)}
+.island-map .island-bridge{position:absolute;z-index:7;object-fit:fill;pointer-events:none;filter:drop-shadow(0 8px 6px #0006)}
+/* atlas: a chapter's name on a small ribbon under its island */
+.atlas-plate{top:auto!important;bottom:-6px;transform:translateX(-50%)!important;flex-direction:row!important;align-items:center;gap:10px!important;min-width:0!important;padding:6px 16px 6px 8px!important;border-radius:30px!important;white-space:nowrap}
+.atlas-plate b{display:flex;align-items:center;gap:8px;font-size:26px!important}
+.atlas-plate b small{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#e9c46a;color:#3a2608;font:800 24px Cambria,Georgia,serif}
+.atlas-region.locked .atlas-plate b small{background:#a99a7c}
+.atlas-plate em{font-size:21px!important;color:#ffd96a!important}
+.atlas-plate .atlas-lock{width:30px!important;height:34px!important;margin:0!important}
+/* design review: one call to action, readable numbers and stars, locked stages clearly asleep */
+
+.island-map .island-join{opacity:.92}
+.atlas-plate.tapped{background:linear-gradient(#5a2a14f2,#2e130af2)!important;border-color:#ffb07a!important}
+.atlas-plate.tapped em{color:#ffd0a8!important}
+.atlas-region.current .atlas-plate em{color:#ffe08a!important;font-weight:700}
+
+/* stage card: columns never overlap; the hero and Khiêu Chiến on their own rows */
+
+.exploration-map.behind-card .map-world{filter:brightness(.42) saturate(.8)}
+
+.island-map .island-tile{-webkit-mask-image:linear-gradient(transparent 200px,#000 420px);mask-image:linear-gradient(transparent 200px,#000 420px)}
+
+/* ===== Khám Phá, art pass (Codex UI art in assets/gemwoven/atlas/ui) ===== */
+.exploration-map{background:none!important}
+/* stage nodes: carved seals lying on their landings */
+
+@keyframes next-bob{50%{translate:0 -6px}}
+
+/* creatures alive: their 2x4 resting loop */
+.island-map .map-idle{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:200% 400%;animation:map-idle 1.25s steps(1) infinite;filter:drop-shadow(0 4px 3px #000a)}
+@keyframes map-idle{0%{background-position:0 0}12.5%{background-position:100% 0}25%{background-position:0 33.333%}37.5%{background-position:100% 33.333%}50%{background-position:0 66.667%}62.5%{background-position:100% 66.667%}75%{background-position:0 100%}87.5%{background-position:100% 100%}}
+.island-map .map-idle .pin-creature-still{width:100%;height:100%;object-fit:contain}
+.reduced-motion .island-map .map-idle{animation:none}
+/* the world breathes: clouds drift across the chapter map, the regions float on the atlas */
+.island-drift{position:absolute;left:0;width:941px;z-index:9;pointer-events:none;opacity:.55}
+.island-drift img{position:absolute;width:1100px;animation:cloud-drift 70s linear infinite}
+@keyframes cloud-drift{from{translate:-1100px 0}to{translate:1100px 0}}
+.atlas-region{animation:atlas-float 6s ease-in-out infinite;animation-delay:var(--float-delay,0s)}
+@keyframes atlas-float{50%{translate:0 -10px}}
+.reduced-motion .atlas-region,.reduced-motion .island-drift img{animation:none}
+/* atlas name: the crimson ribbon */
+.atlas-plate{bottom:-14px!important;padding:16px 46px 26px!important;min-width:320px!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:var(--ribbon) center/100% 100% no-repeat!important;color:#fff4d6!important;text-shadow:0 2px 2px #3a0a04}
+.atlas-region.locked .atlas-plate{background:var(--ribbon) center/100% 100% no-repeat!important;filter:saturate(.25) brightness(.8)}
+.atlas-plate b{font-size:28px!important}.atlas-plate b small{width:auto;height:auto;background:none!important;color:#ffe08a!important;font-size:26px!important}
+.atlas-plate em{position:absolute;left:50%;top:100%;transform:translateX(-50%);white-space:nowrap;padding:2px 12px;border-radius:12px;background:#2a1a08e6;color:#ffe08a!important;font-size:20px!important}
+.atlas-plate.tapped{filter:none!important}
+.atlas-plate .atlas-lock{width:28px!important;height:32px!important}
+/* stage card dressed in the UI art (vars set on the card: --ui-row, --ui-header, --ui-slot, --ui-slot-on, --ui-socket) */
+
+/* review round 1 (Claude): readable node numbers, bigger names, larger card headers */
+
+.atlas-plate{min-width:400px!important;padding:20px 56px 30px!important}.atlas-plate b{font-size:32px!important}
+.atlas-plate em{font-size:22px!important}
+
+/* review round 1 (Codex): the number always on the seal's front rim, the plate free for who stands there */
+
+.island-map .map-hero::before{left:-80px;top:-30px;width:160px;height:60px;background:radial-gradient(#fff6c8f0,#ffd96acc 45%,#ffb43a55 65%,transparent 72%)}
+.island-map .map-hero .map-hero-body .art{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 6px #fff6c8) drop-shadow(0 6px 5px #000a)!important}
+.island-map .island-tile{filter:saturate(.86) brightness(.96)}
+
+.atlas-plate.tapped em{font-size:26px!important;padding:6px 16px;background:#5a1a0ae8;border:2px solid #ffb07a}
+/* review round 2 (Claude): the card fits without scrolling */
+
+.island-map .island-sky{position:absolute;left:0;width:941px;object-fit:cover;object-position:50% 0;z-index:0;pointer-events:none;filter:saturate(.86) brightness(.96)}
+.island-map .island-tile.first{-webkit-mask-image:linear-gradient(transparent 0,#000 260px)!important;mask-image:linear-gradient(transparent 0,#000 260px)!important}
+/* review round 2 (Claude, second pass) */
+
+/* review round 2 (Codex) */
+.map-hud-shade{position:sticky;top:0;left:0;width:941px;height:300px;margin-bottom:-300px;z-index:30;pointer-events:none;background:linear-gradient(#0d1a14d9,#0d1a1477 40%,transparent)}
+.atlas-region.far .atlas-plate{opacity:0;transition:opacity .25s}
+.atlas-region .atlas-plate{transition:opacity .25s}
+.atlas-region.locked .atlas-island{filter:saturate(.35) brightness(.7) drop-shadow(0 18px 14px #1d3d5c55)!important}
+.atlas-bridge{filter:brightness(1.15) drop-shadow(0 0 6px #fff8) drop-shadow(0 10px 8px #1d3d5c66)!important}
+.atlas-note{font-size:30px!important;color:#fff3d0!important;background:linear-gradient(#5a1a0af2,#2e0c04f2)!important;border:3px solid #ffb07a!important;border-radius:20px!important;box-shadow:0 6px 18px #000a}
+/* card: bigger text, goals as plain lines, rewards with chips, a clear team row */
+
+/* review round 3 (Codex): one grid, nothing overlaps; bigger reading text */
+
+/* map: only the next stage shouts; beaten ones step back */
+
+.atlas-plate b{font-size:34px!important;-webkit-text-stroke:1px #3a0a04}
+
+/* playable card: the team and Khiêu Chiến side by side, so the card body is never cut */
+
+/* one row of heroes, swiped when there are many; the skills line never takes more than two lines */
+
+/* footer: title, one swipeable row of heroes, then Khiêu Chiến on its own row (never over a hero) */
+
+/* final round: card text heavier, numbers on the map never under the HUD */
+
+.map-hud-shade{height:340px;margin-bottom:-340px;background:linear-gradient(#0d1a14f0 0,#0d1a14cc 45%,#0d1a1400 100%)}
+.atlas-region.locked .atlas-plate b{color:#fff4d6!important}
+.island-map .map-hero::after{content:'';position:absolute;left:-46px;top:-10px;width:92px;height:22px;border-radius:50%;background:radial-gradient(#000a,transparent 70%);z-index:-1}
+
+/* ---- Khám Phá chapter map drawn closer (--zoom): flat stage rings lying on the painted landings ---- */
+.island-map .island-tile{-webkit-mask-image:linear-gradient(transparent calc(200px*var(--zoom)),#000 calc(420px*var(--zoom)));mask-image:linear-gradient(transparent calc(200px*var(--zoom)),#000 calc(420px*var(--zoom)))}
+.island-map .island-tile.first{-webkit-mask-image:linear-gradient(transparent 0,#000 calc(260px*var(--zoom)))!important;mask-image:linear-gradient(transparent 0,#000 calc(260px*var(--zoom)))!important}
+.island-map .stage-seal{position:absolute;padding:0;filter:none;border:0;background:none;overflow:visible;cursor:pointer;transition:opacity .25s}
+.island-map .stage-seal.under-hud{opacity:0;pointer-events:none}
+.island-map .stage-seal .seal-ring{opacity:.93;position:absolute;left:calc(var(--gx) - var(--ring)*.5);top:calc(var(--gy) - var(--ring)*var(--flat)*.5);width:var(--ring);height:calc(var(--ring)*var(--flat));object-fit:fill;pointer-events:none;filter:drop-shadow(0 1px 1px #0006)}
+.island-map .stage-seal.seal-locked .seal-ring{filter:brightness(.78) contrast(1.15) drop-shadow(0 2px 2px #000a)}
+.island-map .stage-seal.seal-next .seal-ring{animation:seal-glow 1.8s ease-in-out infinite}
+@keyframes seal-glow{50%{filter:drop-shadow(0 0 10px #ffe48a) brightness(1.18)}}
+.island-map .stage-seal .seal-number{position:absolute;left:var(--gx);top:calc(var(--gy) + var(--ring)*var(--flat)*.4 - 40px);translate:-50% 0;right:auto;bottom:auto;margin:0;border:0;border-radius:0;box-shadow:none;width:94px;height:88px;padding-top:11px;display:grid;place-items:center;
+  background:var(--plaque) center/contain no-repeat;font:800 40px/1 Cambria,Georgia,serif;color:#fff4cf;text-shadow:0 2px 0 #2a1604,0 0 6px #000a;z-index:2;filter:drop-shadow(0 4px 4px #0008)}
+.island-map .stage-seal.boss .seal-number{width:110px;height:102px;font-size:46px}
+.island-map .stage-seal.seal-locked .seal-number{color:#2e2a26;text-shadow:0 1px 0 #e8e2d4,0 0 4px #f4efe4}
+.island-map .stage-seal.seal-next .seal-number{color:#4a2004;text-shadow:0 1px 0 #ffe8a8}
+.island-map .stage-seal .seal-stars{position:absolute;left:var(--gx);top:calc(var(--gy) + var(--ring)*var(--flat)*.4 + 46px);translate:-50% 0;display:inline-flex;gap:2px;white-space:nowrap;z-index:2;font-size:32px;line-height:1}
+.island-map .stage-seal .seal-stars i{font-style:normal;color:#ffd23a;-webkit-text-stroke:1.5px #5a3606;paint-order:stroke fill;text-shadow:0 2px 3px #000b}
+.island-map .stage-seal .seal-stars i.off{color:#3a2c1c;-webkit-text-stroke:1.5px #f0dca0}
+.island-map .stage-seal .seal-go{position:absolute;left:calc(var(--gx) + 52px);top:calc(var(--gy) + var(--ring)*var(--flat)*.4 - 30px);translate:0 0;padding:10px 40px 14px 30px;display:flex;align-items:center;gap:6px;white-space:nowrap;z-index:3;pointer-events:none;
+  background:var(--art-btn) center/100% 100% no-repeat;font:800 34px/1 Cambria,Georgia,serif;color:#4a2004;text-shadow:0 1px 0 #ffe8a8;animation:seal-bob 1.6s ease-in-out infinite}
+@keyframes seal-bob{50%{translate:0 -5px}}.island-map .stage-seal .seal-go.left{left:auto;right:calc(100% - var(--gx) + 52px);animation-name:seal-bob}
+.reduced-motion .island-map .stage-seal .seal-go,.reduced-motion .island-map .stage-seal.seal-next .seal-ring{animation:none}
+.island-map .stage-seal .pin-creature{z-index:1}
+/* ---- stage card: the foe across the card, its goals with their rewards, the heroes, Khiêu Chiến ---- */
+.encounter-sheet>.encounter-body.foe-card{position:relative;z-index:1;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:10px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:0 8px 8px;scrollbar-width:thin}
+.encounter-sheet .foe-card>*{flex:none}
+.encounter-sheet .sc-stage{position:relative;height:500px;margin:0 -14px}.encounter-sheet .sc-stage.boss{height:340px}
+.encounter-sheet .sc-stage::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 30% 42% at 50% 56%,#fff6dcb0,#fff6dc00 72%) center/100% 100% no-repeat,linear-gradient(#ffffff00,#ffffff00),var(--stage-art) 50% 82%/150% auto no-repeat;filter:saturate(.72) contrast(.9) brightness(1.04);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent),linear-gradient(transparent,#000 4%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent),linear-gradient(transparent,#000 4%,#000 90%,transparent);mask-composite:intersect}
+.encounter-sheet .sc-stage::after{content:'';position:absolute;left:50%;bottom:22px;width:300px;height:46px;translate:-50% 0;border-radius:50%;background:radial-gradient(#000b,transparent 70%)}
+.encounter-sheet .sc-foe{position:absolute;left:50%;z-index:1;max-width:none;transform:scale(var(--k,1));transform-origin:50% 94%;filter:drop-shadow(0 6px 6px #000a)}
+.encounter-sheet .sc-foe.map-idle{background-repeat:no-repeat;background-size:200% 400%;animation:map-idle 1.25s steps(1) infinite}
+.reduced-motion .encounter-sheet .sc-foe.map-idle{animation:none}
+.encounter-sheet .foe-card .sc-title{margin:-10px 0 0;text-align:center;font:800 48px/1.1 Cambria,Georgia,serif;color:#4a2606}
+.encounter-sheet .foe-card p{margin:0;text-align:center;font-size:34px;line-height:1.3;color:#5a3a1a}
+.encounter-sheet .foe-card p b{color:#3e2208}
+.encounter-sheet .foe-card .sc-skill{font-size:28px}.encounter-sheet .foe-card .sc-skill b{color:#8a3a10;margin-right:8px}
+.encounter-sheet .sc-guide{align-self:center;background:none;border:0;padding:4px;color:#80521e;text-decoration:underline;font:700 31px Cambria,Georgia,serif;cursor:pointer}
+.encounter-sheet .sc-goals{list-style:none;margin:8px 0 0;padding:0}
+.encounter-sheet .sc-goals li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:6px 4px 10px}
+.encounter-sheet .sc-stars{display:inline-block;width:92px;font-size:30px;line-height:1;letter-spacing:-2px;vertical-align:2px;color:#b89a64;-webkit-text-stroke:1px #6a4a1a;white-space:nowrap}
+.encounter-sheet .sc-goals li.wide{grid-template-columns:1fr;gap:8px}.encounter-sheet li.wide .sc-gain{justify-content:flex-start;max-width:none}
+.encounter-sheet li.done .sc-stars{color:#f5b818;-webkit-text-stroke-color:#7a4a06}
+.encounter-sheet .sc-goal{font:700 32px/1.2 Cambria,Georgia,serif;color:#3e2a14}
+.encounter-sheet .foe-card .sc-goal small{display:block;margin:2px 0 0 92px;white-space:nowrap;font:400 29px/1.2 Cambria,Georgia,serif;color:#8a6a4a}
+.encounter-sheet .foe-card .sc-goal small.sc-got{color:#3d7a2a;font-weight:700}
+.encounter-sheet .sc-gain{display:flex;gap:22px 8px;justify-content:flex-end;flex-wrap:wrap;max-width:384px}
+.encounter-sheet .sc-loot{position:relative;width:90px;height:90px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(#fff8e2,#ecd9aa 72%);box-shadow:inset 0 0 0 2px #c9a35a}
+.encounter-sheet .sc-loot img{width:76px;height:76px;object-fit:contain}
+.encounter-sheet .sc-loot b{position:absolute;bottom:-16px;left:50%;translate:-50% 0;padding:0 8px 1px;border-radius:10px;background:#3a2410ee;color:#fff3c8;font:700 28px/1.15 Cambria,Georgia,serif;white-space:nowrap}
+.encounter-sheet li.done .sc-gain{opacity:.55;filter:saturate(.5)}
+.encounter-sheet .foe-card .sc-lock{color:#8a2a10;font:700 32px Cambria,Georgia,serif}
+.encounter-sheet>footer.sc-foot{position:relative;z-index:1;flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0 0}
+.encounter-sheet .sc-roster{display:flex;gap:16px;max-width:100%;overflow-x:auto;overscroll-behavior:contain;scrollbar-width:none;padding:12px 10px 14px}
+.encounter-sheet .sc-roster button{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;cursor:pointer;color:#5a3616;font:700 31px/1.1 Cambria,Georgia,serif}
+.encounter-sheet .sc-roster img{width:96px;height:96px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #8a6a3a,0 3px 6px #0004;filter:saturate(.6) brightness(.8);transition:transform .15s,filter .15s}
+.encounter-sheet .sc-roster .chosen img{filter:none;transform:scale(1.1);box-shadow:0 0 0 4px #ffd75a,0 0 0 7px #8a5a10,0 0 18px #ffc84a}
+.encounter-sheet .sc-roster .chosen span{color:#9a4a04}
+.encounter-sheet .sc-foot .encounter-deploy{--h:90px;width:540px;font-size:40px;color:#4a2204;text-shadow:0 1px 0 #ffe9ae}
+.encounter-sheet .sc-foot .encounter-goto{--h:96px;width:500px;font-size:35px}
+.island-map .stage-seal .seal-go img{width:40px;height:40px;object-fit:contain;position:static}
+/* a soft contact shadow under whatever stands on a ring */
+.island-map .stage-seal:has(.map-idle)::after{content:'';position:absolute;left:calc(var(--gx) - var(--actor)*.38);top:calc(var(--gy) - var(--actor)*.07);width:calc(var(--actor)*.76);height:calc(var(--actor)*.16);border-radius:50%;background:radial-gradient(#000d,#0006 45%,#0000 70%);pointer-events:none}
+.encounter-sheet .foe-card .sc-skill span{white-space:nowrap}
+.encounter-sheet .foe-card .sc-lock{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px;font-size:34px}
+.encounter-sheet .foe-card .sc-lock img{width:58px;height:58px;object-fit:contain}
+.encounter-sheet .foe-card .sc-lock b{color:#5a1404}
+.encounter-sheet .sc-roster button{position:relative}
+.encounter-sheet .sc-roster .chosen::after{content:'✓';position:absolute;right:-4px;top:-6px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 40% 35%,#ffe48a,#c8860e);box-shadow:0 0 0 2px #6a3a06,0 2px 4px #0006;font:900 22px/1 sans-serif;color:#4a2004;z-index:1}
+.encounter-sheet .sc-foot .encounter-deploy img{width:1.3em;height:1.3em}
+/* while a stage card is open the town HUD dims with the map */
+#scene:has(.encounter-sheet)>.node:not(.encounter-sheet):not(.exploration-map){filter:brightness(.42) saturate(.8)}
+.encounter-sheet .sc-star-gain{display:flex;align-items:center;gap:4px;font:800 34px/1 Cambria,Georgia,serif;color:#7a4a06}
+.encounter-sheet .sc-star-gain img{width:64px;height:60px;object-fit:contain;filter:drop-shadow(0 2px 2px #0005)}
+.encounter-sheet li.done .sc-star-gain{opacity:.55;filter:saturate(.5)}
+.encounter-sheet .sc-goals li.wide .sc-gain{padding-bottom:14px}
+/* elites and bosses not reached yet keep their colours, dimmed */
+.island-map .stage-seal.locked:not(.seal-locked) .seal-number{filter:saturate(.5) brightness(.75) drop-shadow(0 4px 4px #0008)}
+.encounter-sheet .foe-card .sc-goals li.wide .sc-goal small{display:inline;margin:0 0 0 14px}
+.encounter-sheet .sc-roster{padding:8px 10px 8px}
+.encounter-sheet>.encounter-body.foe-card{gap:8px}
+.encounter-sheet .sc-stars img{width:30px;height:29px;object-fit:contain;vertical-align:-3px;filter:grayscale(1) brightness(.85) opacity(.8)}
+.encounter-sheet li.done .sc-stars img{filter:drop-shadow(0 1px 1px #0006)}
+.encounter-sheet .sc-foot .sc-lock{display:flex;align-items:center;gap:10px;margin:0 0 4px;font:700 34px Cambria,Georgia,serif;color:#8a2a10}
+.encounter-sheet .sc-foot .sc-lock img{width:58px;height:58px;object-fit:contain}.encounter-sheet .sc-foot .sc-lock b{color:#5a1404}
+/* the hero on the map: no halo, only its shadow on the ground */
+.island-map .map-hero .map-hero-body .art{filter:drop-shadow(0 6px 5px #000a)!important}
+/* the stage card's content runs to the frame's inner edge (the foe's ground touches it); text keeps a margin */
+.live-panel.gw-frame.encounter-sheet{padding-left:calc(80*var(--s));padding-right:calc(80*var(--s))}
+.encounter-sheet>.encounter-body.foe-card{padding:0 0 8px}
+.encounter-sheet .foe-card>:not(.sc-stage){margin-left:22px;margin-right:22px}
+.island-map .map-hero::before{display:none}
+.island-map .map-hero::after{left:-52px;top:-12px;width:104px;height:26px;background:radial-gradient(#000d,#0006 45%,#0000 70%)}
+.encounter-sheet .sc-goal{white-space:nowrap}
+/* moving water and lava on the chapter paintings (masks: backgrounds/chapters/flow) */
+.island-map .island-flow{position:absolute;overflow:hidden;pointer-events:none;mix-blend-mode:screen;opacity:.75;
+  -webkit-mask-image:var(--mask),linear-gradient(transparent calc(200px*var(--zoom)),#000 calc(420px*var(--zoom)));-webkit-mask-size:100% 100%;-webkit-mask-composite:source-in;
+  mask-image:var(--mask),linear-gradient(transparent calc(200px*var(--zoom)),#000 calc(420px*var(--zoom)));mask-size:100% 100%;mask-composite:intersect}
+.island-map .island-flow.first{-webkit-mask-image:var(--mask);mask-image:var(--mask)}
+.island-map .island-flow.stream{-webkit-mask-image:var(--mask);mask-image:var(--mask);-webkit-mask-size:var(--map-w) var(--map-h);mask-size:var(--map-w) var(--map-h);-webkit-mask-position:var(--mask-x) var(--mask-y);mask-position:var(--mask-x) var(--mask-y);opacity:.6}
+.island-map .island-flow>i{position:absolute;left:0;top:-378px;width:100%;height:calc(100% + 756px);background:var(--tex) 0 0/235px 378px repeat;animation:flow-fall 1.1s linear infinite}
+.island-map .island-flow.stream>i{left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px;rotate:var(--turn);animation:flow-stream 3.2s linear infinite}
+.island-map .island-flow.lava{opacity:.7;filter:sepia(1) saturate(6) hue-rotate(-12deg) brightness(1.05)}
+.island-map .island-flow.lava>i{animation-duration:2.6s}.island-map .island-flow.lava.stream>i{animation-duration:6s}
+@keyframes flow-fall{from{translate:0 0}to{translate:0 378px}}
+@keyframes flow-stream{from{transform:translateY(-189px)}to{transform:translateY(189px)}}
+.reduced-motion .island-map .island-flow>i{animation:none}
+/* atlas names stay crisp: only the island floats (the label stays put), and the locked dimming falls on the ribbon,
+   never on the letters */
+.atlas-region{animation:none!important}
+.atlas-region .atlas-island{animation:atlas-float 6s ease-in-out infinite;animation-delay:var(--float-delay,0s)}
+.atlas-region.current .atlas-island{animation:atlas-float 6s ease-in-out infinite,atlas-current 2.6s ease-in-out infinite;animation-delay:var(--float-delay,0s),0s}
+.reduced-motion .atlas-region .atlas-island{animation:none}
+.atlas-plate{isolation:isolate;background:none!important;filter:none!important}
+.atlas-plate::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ribbon) center/100% 100% no-repeat}
+.atlas-region.locked .atlas-plate::before{filter:saturate(.25) brightness(.72)}
+.atlas-plate b{-webkit-text-stroke:0!important;color:#fffaf0!important;font-weight:700;text-shadow:0 2px 0 #4a0c04,0 0 2px #2a0602,0 0 5px #2a0602!important}
+.atlas-region.locked .atlas-plate b{color:#f4ecdc!important}
+/* each reward kind on its own tint, so the gold coin, the seal and the books never read alike */
+.encounter-sheet .sc-loot.res-gold{background:radial-gradient(#fff6d0,#f1d27a 72%)}
+.encounter-sheet .sc-loot.res-seals{background:radial-gradient(#eef6ff,#a9c8ea 72%)}
+.encounter-sheet .sc-loot.res-exp,.encounter-sheet .sc-loot.res-skillBooks{background:radial-gradient(#f4ecff,#c3abe8 72%)}
+.encounter-sheet .sc-loot.res-essence,.encounter-sheet .sc-loot.res-divineOre{background:radial-gradient(#fff0e6,#f0a98a 72%)}
+.encounter-sheet .sc-loot.res-ore,.encounter-sheet .sc-loot.res-wood,.encounter-sheet .sc-loot.res-cloth{background:radial-gradient(#f6f4ee,#bdb6a6 72%)}
+/* hero avatars cropped closer to the face */
+.encounter-sheet .sc-roster img{object-view-box:inset(4% 12% 20% 12%)}
+/* the button frames a little softer (less glare on the gold) */
+.gw-btn::before,.gw-btn::after,.game-btn::before,.game-btn::after{filter:contrast(.95) saturate(.97)}
+/* review round 5 */
+.atlas-region.locked .atlas-island{filter:saturate(.75) brightness(.86) drop-shadow(0 18px 14px #1d3d5c55)!important}
+.atlas-region.locked .atlas-plate::before{filter:saturate(.8) brightness(.82)}
+.atlas-plate b small{display:grid!important;place-items:center;min-width:46px;height:46px;padding:0 6px;border-radius:23px;background:radial-gradient(circle at 40% 35%,#ffe9a0,#c98a16)!important;box-shadow:0 0 0 2px #5a2a06;color:#3a1a02!important;font:800 28px/1 Cambria,Georgia,serif!important;text-shadow:none!important}
+.atlas-plate .atlas-lock{width:36px!important;height:40px!important}
+.atlas-plate em{font-size:26px!important;padding:4px 14px!important}
+.island-map .island-flow{opacity:.95}.island-map .island-flow.stream{opacity:.8}
+.island-map .island-flow>i{animation-duration:1.5s}
+.island-map .stage-seal .seal-go{animation:seal-pulse 1.6s ease-in-out infinite!important;font-size:38px!important;padding:12px 46px 16px 34px!important}
+.island-map .stage-seal .seal-go img{width:48px!important;height:48px!important}
+@keyframes seal-pulse{50%{filter:drop-shadow(0 0 10px #ffd86a) brightness(1.12)}}
+.island-map .stage-seal .seal-stars{font-size:38px;padding:2px 10px 4px;border-radius:16px;background:#1a1006b8}
+.island-map .stage-seal .seal-ring{filter:drop-shadow(0 0 2px #2a1a06) drop-shadow(0 1px 1px #0006)}
+.encounter-sheet .sc-goals li:first-child{padding-bottom:20px}
+.encounter-sheet .sc-stars img{filter:grayscale(1) brightness(1.05) drop-shadow(0 0 1px #5a4a2a) opacity(.95)}
+.encounter-sheet .sc-loot b{min-width:44px;text-align:center}
+.encounter-sheet .sc-roster .chosen img{box-shadow:0 0 0 5px #ffd75a,0 0 0 8px #7a4a08,0 0 22px #ffc84a}
+.encounter-sheet .sc-roster .chosen::after{width:42px;height:42px;font-size:27px;right:-8px;top:-8px}
+.encounter-sheet .sc-foot .encounter-deploy img{width:1.6em;height:1.6em}
+.encounter-sheet .gw-close{width:124px!important;height:124px!important}
+/* stage card: a lower foe ground, smaller type (owner, 2026-11-01) */
+.encounter-sheet .sc-stage{height:410px}.encounter-sheet .sc-stage.boss{height:340px}
+.encounter-sheet .foe-card .sc-title{font-size:42px}
+.encounter-sheet .foe-card p{font-size:29px}
+.encounter-sheet .foe-card .sc-skill{font-size:26px}
+.encounter-sheet .sc-goal{font-size:29px}
+.encounter-sheet .foe-card .sc-goal small{font-size:25px}
+.encounter-sheet .sc-loot b{font-size:24px}
+.encounter-sheet .sc-star-gain{font-size:30px}
+.encounter-sheet .sc-roster button{font-size:26px}
+.encounter-sheet .sc-goals li{padding-top:10px;padding-bottom:14px}
+/* the atlas scrolls only sideways (three regions to a column fill its height) */
+.atlas-map{overflow-y:hidden!important;touch-action:pan-x!important}
+.atlas-region.unexplored .atlas-island{filter:drop-shadow(0 18px 14px #1d3d5c55)!important}
+.atlas-region.unexplored .atlas-plate::before{filter:saturate(.35) brightness(.7)}
+.atlas-region:disabled{cursor:default}
+/* the stage card shows the chapter's combat scenery: its terrace under the foe's feet */
+.encounter-sheet .sc-stage.battle::before{background:var(--stage-art) 50% 100%/auto 118% no-repeat;filter:none}
+/* the stage card shows the chapter's combat scenery: its terrace under the foe's feet */
+.encounter-sheet .sc-stage.battle::before{background:var(--stage-art) 50% 100%/auto 118% no-repeat;filter:none}
+.exploration-map:has(.island-map){cursor:grab}.exploration-map.dragging{cursor:grabbing;user-select:none}
+.exploration-map.dragging .world-pin{pointer-events:none}
+/* the next stage: its plaque becomes the Khiêu Chiến button, centred where the number stood, above the hero and foes */
+.island-map .stage-seal.next-stage{z-index:12}
+.island-map .stage-seal.next-stage .seal-number{display:none}
+.island-map .stage-seal .seal-go,.island-map .stage-seal .seal-go.left{left:var(--gx)!important;right:auto!important;top:calc(var(--gy) + var(--ring)*var(--flat)*.4 - 34px)!important;translate:-50% 0!important;
+  z-index:4;padding:12px 40px 16px 30px!important;font-size:34px!important;animation:seal-pulse 1.6s ease-in-out infinite!important}
+.island-map .stage-seal .seal-go i{display:block;width:52px;height:52px;margin:-10px 2px -10px 0}
+.island-map .stage-seal .seal-go i img{width:100%!important;height:100%!important;animation:swords-clash 1.4s ease-in-out infinite;transform-origin:50% 55%}
+@keyframes swords-clash{0%,55%,100%{rotate:0deg;scale:1}65%{rotate:-14deg;scale:1.15}75%{rotate:10deg;scale:1.08}85%{rotate:-4deg;scale:1.02}}
+.reduced-motion .island-map .stage-seal .seal-go i img{animation:none}
+/* stage plaques and stars are never hidden behind the hero standing near them */
+.island-map .stage-seal{z-index:12}.island-map .stage-seal.next-stage{z-index:13}
+.island-map .stage-seal .pin-creature{z-index:0}
+/* stacking on the chapter map: rings and the foes on them under the hero, plaques, stars and Khiêu Chiến over it
+   (a stage keeps no stacking context of its own, so its parts layer with the hero) */
+.island-map .stage-seal,.island-map .stage-seal.next-stage{z-index:auto!important}
+.island-map .stage-seal .seal-ring{z-index:1}
+.island-map .stage-seal .pin-creature{z-index:2!important}
+.island-map .map-hero{z-index:11}
+.island-map .stage-seal .seal-number,.island-map .stage-seal .seal-stars{z-index:12}
+.island-map .stage-seal .seal-go{z-index:13!important}

@@ -1,0 +1,5 @@
+Image 1 is only a STYLE reference (palette, rendering, lighting) from this game's chapter map art. Do not copy its layout.
+
+Create a textless PORTRAIT background for a fantasy RPG world atlas map, 1024x1536: a calm high-altitude SEA OF CLOUDS seen from above at a gentle three-quarter angle. Soft white and pale-blue cumulus cloud banks with gaps that show a deep blue-turquoise ocean far below, gentle golden sunlight, a few tiny distant floating rocks and birds near the edges only. The whole picture is even and open (it is the backdrop that floating island regions are placed onto): no big landmark, no island, no land in the middle; evenly spread texture top to bottom. The TOP edge and BOTTOM edge must match so the image tiles seamlessly vertically (same cloud density and colour at top and bottom).
+Style: premium hand-painted chibi high fantasy mobile game art, clean HD painting, soft and bright like Image 1. NOT pixel art.
+NO text, NO letters, NO UI, NO frames, NO characters. Opaque full-bleed image.

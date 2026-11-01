@@ -231,7 +231,17 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
   const backdrop=progressionRules.WORLD.CHAPTERS[battle.chapter-1]?.backdrop||battle.theme;
   // The chapter's vista belongs only to the distant layer. Keep the authored
   // horizontal fighting terrace and foreground instead of a vertical map crop.
-  if(ART.worldScenes?.[backdrop])ART.chapterVista=ART.worldScenes[backdrop];
+  // A chapter with its own combat scenery fights there: the far sky, the mid-distance scenery and the stage the
+  // fighters stand on (with its framing objects), each sliding at its own speed when the camera pans (the nearer,
+  // the faster); the others keep their element's terrace under the chapter vista.
+  // Its stages take its three places in turn (stage 1, 4, 7... the first; 2, 5, 8... the second; 3, 6, 9... the
+  // third); the boss fights in its own lair.
+  const chapterId=progressionRules.WORLD.CHAPTERS[battle.chapter-1]?.id,local=(battle.index-1)%50+1;
+  const chapterScene=ART.chapterParallax?.[chapterId+(battle.boss?'-boss':['','-b','-c'][(local-1)%3])]||ART.chapterParallax?.[chapterId];
+  if(chapterScene){ART.parallax[battle.enemyKey]=chapterScene;(ART.parallaxSpeeds??={})[battle.enemyKey]=[.15,.45,1];document.body.classList.add('whole-scene');
+    // Its own gentle air: the far sky drifts, and the chapter's own motes float (leaves, embers, snow, bubbles...).
+    document.getElementById('scene')?.setAttribute('data-chapter',progressionRules.WORLD.CHAPTERS[battle.chapter-1].id);}
+  else if(ART.worldScenes?.[backdrop])ART.chapterVista=ART.worldScenes[backdrop];
   MONSTERS[key]={...MONSTERS[key],name:battle.enemyName,boss:battle.enemyName,skill:battle.skills[0],support:'Hộ Giáp',heal:'Hồi Sức'};
   const campaignSkill=enemySkill;
   enemySkill=async function({reserved=false}={}){
@@ -281,4 +291,10 @@ if(progressionIsDuel()){
   };
   const duelEnemySkill=enemySkill;
   enemySkill=async function({reserved=false}={}){if(!progressionIsDuel())return duelEnemySkill({reserved});if(!reserved){if(state.enemyEnergy<100)return;state.enemyEnergy-=100;}return attack('enemy',45,{hits:1});};
+}
+// A fight launched from the hub already has its hero (chosen in town, shown on the stage card): it starts at
+// once instead of asking again (the hero picker stays for the free practice sandbox).
+if(progressionBattle&&!progressionError&&!progressionSandbox){
+  const progressionShowSelection=showSelection;
+  showSelection=function(initial){progressionShowSelection(initial);if(initial)$('startBtn').click();};
 }

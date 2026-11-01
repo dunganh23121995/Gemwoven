@@ -10,12 +10,12 @@
   }
   const decorate=G.decorate;
   G.decorate=state=>{
-    const p=decorate(state);if(state.screen!=='campaign')return p;
+    const p=decorate(state);if(state.screen!=='campaign'||state.mapView==='atlas')return p;
     const d=M.WORLD.EXPANSION.definitions.find(d=>d.chapter===state.chapter);if(!d)return p;
     const c=M.counterProgress(p,d.chapter),key='campaign.counter-guide';C[key]=`${d.counter} ${c.shards}/12`;
     if(!state.mapStage)L.screens.campaign.nodes.push({id:key,text:key,kind:'button',rect:[18,1465,183,156],asset:'inventory-slot',icon:d.counterKey,iconRect:[43,8,98,95],labelRect:[3,111,177,38],size:23,tone:'gold',action:'guide:open',className:'chapter-guide-entry'});
     // While the guide is open the chapter arrows step aside instead of covering its frame.
-    if(state.chapterGuide)L.screens.campaign.nodes=L.screens.campaign.nodes.filter(n=>!['campaign.previous','campaign.next','campaign.rewards'].includes(n.id));
+    if(state.chapterGuide)L.screens.campaign.nodes=L.screens.campaign.nodes.filter(n=>!['campaign.rewards'].includes(n.id));
     if(state.chapterGuide)L.screens.campaign.nodes.push({id:'campaign.field-guide',kind:'content',rect:[36,250,869,1225],backgroundAsset:'panel-parchment',className:'chapter-field-guide',build:el=>fieldGuide(el,p,state,d)});
     return p;
   };
@@ -27,7 +27,7 @@
     if(cmd==='open'){state.mapStage=null;state.chapterGuide=true;ctx.render();}
     if(cmd==='close'){state.chapterGuide=false;ctx.render();}
     if(cmd==='challenge'||cmd==='elite')return handle('journey:stage',{dataset:{index:el.dataset.index}},ctx,state);
-    if(cmd==='chapter'){state.chapter=Number(el.dataset.chapter);state.chapterGuide=true;ctx.navigate('campaign');}
+    if(cmd==='chapter'){state.chapter=Number(el.dataset.chapter);state.mapView='chapter';state.chapterGuide=true;ctx.navigate('campaign');}
     return true;
   };
 })();

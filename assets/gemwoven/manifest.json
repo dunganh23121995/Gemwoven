@@ -12901,6 +12901,3038 @@
     "width": 941,
     "height": 1672
   },
+  "atlas-forest": {
+    "file": "assets/gemwoven/atlas/forest.webp",
+    "width": 737,
+    "height": 524,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-volcano": {
+    "file": "assets/gemwoven/atlas/volcano.webp",
+    "width": 737,
+    "height": 504,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-ice": {
+    "file": "assets/gemwoven/atlas/ice.webp",
+    "width": 737,
+    "height": 523,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-thunder": {
+    "file": "assets/gemwoven/atlas/thunder.webp",
+    "width": 737,
+    "height": 514,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-marsh": {
+    "file": "assets/gemwoven/atlas/marsh.webp",
+    "width": 737,
+    "height": 515,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-desert": {
+    "file": "assets/gemwoven/atlas/desert.webp",
+    "width": 737,
+    "height": 493,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-abyss": {
+    "file": "assets/gemwoven/atlas/abyss.webp",
+    "width": 737,
+    "height": 508,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-foundry": {
+    "file": "assets/gemwoven/atlas/foundry.webp",
+    "width": 737,
+    "height": 526,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-crystal": {
+    "file": "assets/gemwoven/atlas/crystal.webp",
+    "width": 737,
+    "height": 532,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-haunted": {
+    "file": "assets/gemwoven/atlas/haunted.webp",
+    "width": 737,
+    "height": 527,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-sky": {
+    "file": "assets/gemwoven/atlas/sky.webp",
+    "width": 737,
+    "height": 525,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-thorns": {
+    "file": "assets/gemwoven/atlas/thorns.webp",
+    "width": 737,
+    "height": 529,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-celestial": {
+    "file": "assets/gemwoven/atlas/celestial.webp",
+    "width": 737,
+    "height": 514,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-void": {
+    "file": "assets/gemwoven/atlas/void.webp",
+    "width": 737,
+    "height": 516,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-eldergrove": {
+    "file": "assets/gemwoven/atlas/eldergrove.webp",
+    "width": 737,
+    "height": 524,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-caldera": {
+    "file": "assets/gemwoven/atlas/caldera.webp",
+    "width": 737,
+    "height": 516,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-glacier": {
+    "file": "assets/gemwoven/atlas/glacier.webp",
+    "width": 737,
+    "height": 532,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-stormspire": {
+    "file": "assets/gemwoven/atlas/stormspire.webp",
+    "width": 737,
+    "height": 524,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-soulcrypt": {
+    "file": "assets/gemwoven/atlas/soulcrypt.webp",
+    "width": 737,
+    "height": 517,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-mycelium": {
+    "file": "assets/gemwoven/atlas/mycelium.webp",
+    "width": 737,
+    "height": 517,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-geode": {
+    "file": "assets/gemwoven/atlas/geode.webp",
+    "width": 737,
+    "height": 505,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-hourglass": {
+    "file": "assets/gemwoven/atlas/hourglass.webp",
+    "width": 737,
+    "height": 528,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-coralreef": {
+    "file": "assets/gemwoven/atlas/coralreef.webp",
+    "width": 737,
+    "height": 516,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-moonkeep": {
+    "file": "assets/gemwoven/atlas/moonkeep.webp",
+    "width": 737,
+    "height": 538,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-sea": {
+    "file": "assets/gemwoven/atlas/sea.webp",
+    "width": 824,
+    "height": 1336,
+    "textless": true,
+    "transparent": false
+  },
+  "pedestal-normal": {
+    "file": "assets/gemwoven/atlas/pedestal-normal.webp",
+    "width": 481,
+    "height": 292,
+    "textless": true,
+    "transparent": true
+  },
+  "pedestal-elite": {
+    "file": "assets/gemwoven/atlas/pedestal-elite.webp",
+    "width": 481,
+    "height": 305,
+    "textless": true,
+    "transparent": true
+  },
+  "pedestal-boss": {
+    "file": "assets/gemwoven/atlas/pedestal-boss.webp",
+    "width": 481,
+    "height": 358,
+    "textless": true,
+    "transparent": true
+  },
+  "atlas-bridge": {
+    "file": "assets/gemwoven/atlas/bridge.webp",
+    "width": 1505,
+    "height": 269,
+    "textless": true,
+    "transparent": true
+  },
+  "node-normal": {
+    "file": "assets/gemwoven/atlas/ui/node-normal.webp",
+    "width": 491,
+    "height": 414,
+    "textless": true,
+    "transparent": true
+  },
+  "node-elite": {
+    "file": "assets/gemwoven/atlas/ui/node-elite.webp",
+    "width": 491,
+    "height": 436,
+    "textless": true,
+    "transparent": true
+  },
+  "node-boss": {
+    "file": "assets/gemwoven/atlas/ui/node-boss.webp",
+    "width": 491,
+    "height": 442,
+    "textless": true,
+    "transparent": true
+  },
+  "node-cleared": {
+    "file": "assets/gemwoven/atlas/ui/node-cleared.webp",
+    "width": 491,
+    "height": 412,
+    "textless": true,
+    "transparent": true
+  },
+  "node-next": {
+    "file": "assets/gemwoven/atlas/ui/node-next.webp",
+    "width": 491,
+    "height": 423,
+    "textless": true,
+    "transparent": true
+  },
+  "node-locked": {
+    "file": "assets/gemwoven/atlas/ui/node-locked.webp",
+    "width": 491,
+    "height": 410,
+    "textless": true,
+    "transparent": true
+  },
+  "ui-ribbon": {
+    "file": "assets/gemwoven/atlas/ui/ui-ribbon.webp",
+    "width": 491,
+    "height": 217,
+    "textless": true,
+    "transparent": true
+  },
+  "ui-header": {
+    "file": "assets/gemwoven/atlas/ui/ui-header.webp",
+    "width": 491,
+    "height": 148,
+    "textless": true,
+    "transparent": true
+  },
+  "ui-slot": {
+    "file": "assets/gemwoven/atlas/ui/ui-slot.webp",
+    "width": 480,
+    "height": 491,
+    "textless": true,
+    "transparent": true
+  },
+  "ui-slot-on": {
+    "file": "assets/gemwoven/atlas/ui/ui-slot-on.webp",
+    "width": 491,
+    "height": 476,
+    "textless": true,
+    "transparent": true
+  },
+  "ui-row": {
+    "file": "assets/gemwoven/atlas/ui/ui-row.webp",
+    "width": 491,
+    "height": 114,
+    "textless": true,
+    "transparent": true
+  },
+  "ui-socket": {
+    "file": "assets/gemwoven/atlas/ui/ui-socket.webp",
+    "width": 491,
+    "height": 478,
+    "textless": true,
+    "transparent": true
+  },
+  "idle-boss-briar": {
+    "file": "assets/gemwoven/boss-anim/briar/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-cinderheart": {
+    "file": "assets/gemwoven/boss-anim/cinderheart/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-colossus": {
+    "file": "assets/gemwoven/boss-anim/colossus/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-coraltide": {
+    "file": "assets/gemwoven/boss-anim/coraltide/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-earth": {
+    "file": "assets/gemwoven/boss-anim/earth/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-eclipse": {
+    "file": "assets/gemwoven/boss-anim/eclipse/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-elderbloom": {
+    "file": "assets/gemwoven/boss-anim/elderbloom/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-fire": {
+    "file": "assets/gemwoven/boss-anim/fire/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-frostregent": {
+    "file": "assets/gemwoven/boss-anim/frostregent/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-ice": {
+    "file": "assets/gemwoven/boss-anim/ice/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-leviathan": {
+    "file": "assets/gemwoven/boss-anim/leviathan/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-lightning": {
+    "file": "assets/gemwoven/boss-anim/lightning/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-mire": {
+    "file": "assets/gemwoven/boss-anim/mire/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-moonfang": {
+    "file": "assets/gemwoven/boss-anim/moonfang/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-prism": {
+    "file": "assets/gemwoven/boss-anim/prism/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-prismback": {
+    "file": "assets/gemwoven/boss-anim/prismback/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-reaper": {
+    "file": "assets/gemwoven/boss-anim/reaper/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-roc": {
+    "file": "assets/gemwoven/boss-anim/roc/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-sandchronarch": {
+    "file": "assets/gemwoven/boss-anim/sandchronarch/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-scarab": {
+    "file": "assets/gemwoven/boss-anim/scarab/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-seraph": {
+    "file": "assets/gemwoven/boss-anim/seraph/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-souljailer": {
+    "file": "assets/gemwoven/boss-anim/souljailer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-sporefather": {
+    "file": "assets/gemwoven/boss-anim/sporefather/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-boss-tempestwing": {
+    "file": "assets/gemwoven/boss-anim/tempestwing/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-abyss-a": {
+    "file": "assets/gemwoven/creatures/abyss-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-abyss-b": {
+    "file": "assets/gemwoven/creatures/abyss-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-acorn": {
+    "file": "assets/gemwoven/creatures/acorn/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-astral-a": {
+    "file": "assets/gemwoven/creatures/astral-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-astral-b": {
+    "file": "assets/gemwoven/creatures/astral-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-bamboo-a": {
+    "file": "assets/gemwoven/creatures/bamboo-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-bamboo-b": {
+    "file": "assets/gemwoven/creatures/bamboo-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-bat": {
+    "file": "assets/gemwoven/creatures/bat/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-caldera-ashhound": {
+    "file": "assets/gemwoven/creatures/caldera-ashhound/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-caldera-emberimp": {
+    "file": "assets/gemwoven/creatures/caldera-emberimp/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-caldera-slagbeetle": {
+    "file": "assets/gemwoven/creatures/caldera-slagbeetle/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-celestial-a": {
+    "file": "assets/gemwoven/creatures/celestial-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-celestial-b": {
+    "file": "assets/gemwoven/creatures/celestial-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coast-a": {
+    "file": "assets/gemwoven/creatures/coast-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coast-b": {
+    "file": "assets/gemwoven/creatures/coast-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coralreef-foamjelly": {
+    "file": "assets/gemwoven/creatures/coralreef-foamjelly/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coralreef-pearleel": {
+    "file": "assets/gemwoven/creatures/coralreef-pearleel/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coralreef-reefcrab": {
+    "file": "assets/gemwoven/creatures/coralreef-reefcrab/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-crystal-a": {
+    "file": "assets/gemwoven/creatures/crystal-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-crystal-b": {
+    "file": "assets/gemwoven/creatures/crystal-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-desert-a": {
+    "file": "assets/gemwoven/creatures/desert-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-desert-b": {
+    "file": "assets/gemwoven/creatures/desert-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-dream-a": {
+    "file": "assets/gemwoven/creatures/dream-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-dream-b": {
+    "file": "assets/gemwoven/creatures/dream-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-eldergrove-barkmoth": {
+    "file": "assets/gemwoven/creatures/eldergrove-barkmoth/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-eldergrove-sproutling": {
+    "file": "assets/gemwoven/creatures/eldergrove-sproutling/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-eldergrove-vineboar": {
+    "file": "assets/gemwoven/creatures/eldergrove-vineboar/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-foundry-a": {
+    "file": "assets/gemwoven/creatures/foundry-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-foundry-b": {
+    "file": "assets/gemwoven/creatures/foundry-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-geode-crystalbat": {
+    "file": "assets/gemwoven/creatures/geode-crystalbat/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-geode-shardmite": {
+    "file": "assets/gemwoven/creatures/geode-shardmite/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-geode-stonepup": {
+    "file": "assets/gemwoven/creatures/geode-stonepup/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-glacier-frostmoth": {
+    "file": "assets/gemwoven/creatures/glacier-frostmoth/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-glacier-iceling": {
+    "file": "assets/gemwoven/creatures/glacier-iceling/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-glacier-snowhare": {
+    "file": "assets/gemwoven/creatures/glacier-snowhare/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-haunted-a": {
+    "file": "assets/gemwoven/creatures/haunted-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-haunted-b": {
+    "file": "assets/gemwoven/creatures/haunted-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-hourglass-clockmote": {
+    "file": "assets/gemwoven/creatures/hourglass-clockmote/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-hourglass-dustscarab": {
+    "file": "assets/gemwoven/creatures/hourglass-dustscarab/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-hourglass-sandcobra": {
+    "file": "assets/gemwoven/creatures/hourglass-sandcobra/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-ice-a": {
+    "file": "assets/gemwoven/creatures/ice-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-ice-b": {
+    "file": "assets/gemwoven/creatures/ice-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-marsh-a": {
+    "file": "assets/gemwoven/creatures/marsh-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-marsh-b": {
+    "file": "assets/gemwoven/creatures/marsh-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-moonkeep-duskfang": {
+    "file": "assets/gemwoven/creatures/moonkeep-duskfang/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-moonkeep-moonmoth": {
+    "file": "assets/gemwoven/creatures/moonkeep-moonmoth/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-moonkeep-shadowraven": {
+    "file": "assets/gemwoven/creatures/moonkeep-shadowraven/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-mycelium-rottick": {
+    "file": "assets/gemwoven/creatures/mycelium-rottick/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-mycelium-sludgesnail": {
+    "file": "assets/gemwoven/creatures/mycelium-sludgesnail/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-mycelium-sporecap": {
+    "file": "assets/gemwoven/creatures/mycelium-sporecap/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-obsidian-a": {
+    "file": "assets/gemwoven/creatures/obsidian-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-obsidian-b": {
+    "file": "assets/gemwoven/creatures/obsidian-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-pine-a": {
+    "file": "assets/gemwoven/creatures/pine-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-pine-b": {
+    "file": "assets/gemwoven/creatures/pine-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-sky-a": {
+    "file": "assets/gemwoven/creatures/sky-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-sky-b": {
+    "file": "assets/gemwoven/creatures/sky-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-slime": {
+    "file": "assets/gemwoven/creatures/slime/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-soulcrypt-bonecrow": {
+    "file": "assets/gemwoven/creatures/soulcrypt-bonecrow/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-soulcrypt-chainrat": {
+    "file": "assets/gemwoven/creatures/soulcrypt-chainrat/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-soulcrypt-wisp": {
+    "file": "assets/gemwoven/creatures/soulcrypt-wisp/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-stormspire-cloudjelly": {
+    "file": "assets/gemwoven/creatures/stormspire-cloudjelly/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-stormspire-gustfox": {
+    "file": "assets/gemwoven/creatures/stormspire-gustfox/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-stormspire-sparkfinch": {
+    "file": "assets/gemwoven/creatures/stormspire-sparkfinch/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thorns-a": {
+    "file": "assets/gemwoven/creatures/thorns-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thorns-b": {
+    "file": "assets/gemwoven/creatures/thorns-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thunder-a": {
+    "file": "assets/gemwoven/creatures/thunder-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thunder-b": {
+    "file": "assets/gemwoven/creatures/thunder-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-void-a": {
+    "file": "assets/gemwoven/creatures/void-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-void-b": {
+    "file": "assets/gemwoven/creatures/void-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-volcano-a": {
+    "file": "assets/gemwoven/creatures/volcano-a/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-volcano-b": {
+    "file": "assets/gemwoven/creatures/volcano-b/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "ring-normal": {
+    "file": "assets/gemwoven/atlas/ui/ring-normal.webp",
+    "width": 512,
+    "height": 512,
+    "textless": true,
+    "transparent": true
+  },
+  "ring-elite": {
+    "file": "assets/gemwoven/atlas/ui/ring-elite.webp",
+    "width": 512,
+    "height": 512,
+    "textless": true,
+    "transparent": true
+  },
+  "ring-boss": {
+    "file": "assets/gemwoven/atlas/ui/ring-boss.webp",
+    "width": 512,
+    "height": 512,
+    "textless": true,
+    "transparent": true
+  },
+  "ring-cleared": {
+    "file": "assets/gemwoven/atlas/ui/ring-cleared.webp",
+    "width": 512,
+    "height": 512,
+    "textless": true,
+    "transparent": true
+  },
+  "ring-next": {
+    "file": "assets/gemwoven/atlas/ui/ring-next.webp",
+    "width": 512,
+    "height": 512,
+    "textless": true,
+    "transparent": true
+  },
+  "ring-locked": {
+    "file": "assets/gemwoven/atlas/ui/ring-locked.webp",
+    "width": 512,
+    "height": 512,
+    "textless": true,
+    "transparent": true
+  },
+  "plaque-normal": {
+    "file": "assets/gemwoven/atlas/ui/plaque-normal.webp",
+    "width": 160,
+    "height": 152,
+    "textless": true,
+    "transparent": true
+  },
+  "plaque-elite": {
+    "file": "assets/gemwoven/atlas/ui/plaque-elite.webp",
+    "width": 160,
+    "height": 151,
+    "textless": true,
+    "transparent": true
+  },
+  "plaque-boss": {
+    "file": "assets/gemwoven/atlas/ui/plaque-boss.webp",
+    "width": 160,
+    "height": 146,
+    "textless": true,
+    "transparent": true
+  },
+  "plaque-cleared": {
+    "file": "assets/gemwoven/atlas/ui/plaque-cleared.webp",
+    "width": 160,
+    "height": 142,
+    "textless": true,
+    "transparent": true
+  },
+  "plaque-next": {
+    "file": "assets/gemwoven/atlas/ui/plaque-next.webp",
+    "width": 160,
+    "height": 146,
+    "textless": true,
+    "transparent": true
+  },
+  "plaque-locked": {
+    "file": "assets/gemwoven/atlas/ui/plaque-locked.webp",
+    "width": 160,
+    "height": 155,
+    "textless": true,
+    "transparent": true
+  },
+  "face-novice": {
+    "file": "assets/gemwoven/atlas/ui/face-novice.webp",
+    "width": 256,
+    "height": 252,
+    "textless": true,
+    "transparent": true
+  },
+  "face-fire": {
+    "file": "assets/gemwoven/atlas/ui/face-fire.webp",
+    "width": 256,
+    "height": 252,
+    "textless": true,
+    "transparent": true
+  },
+  "face-ice": {
+    "file": "assets/gemwoven/atlas/ui/face-ice.webp",
+    "width": 256,
+    "height": 252,
+    "textless": true,
+    "transparent": true
+  },
+  "face-earth": {
+    "file": "assets/gemwoven/atlas/ui/face-earth.webp",
+    "width": 256,
+    "height": 252,
+    "textless": true,
+    "transparent": true
+  },
+  "face-lightning": {
+    "file": "assets/gemwoven/atlas/ui/face-lightning.webp",
+    "width": 256,
+    "height": 251,
+    "textless": true,
+    "transparent": true
+  },
+  "face-shadow": {
+    "file": "assets/gemwoven/atlas/ui/face-shadow.webp",
+    "width": 256,
+    "height": 251,
+    "textless": true,
+    "transparent": true
+  },
+  "btn-primary": {
+    "file": "assets/gemwoven/atlas/ui/btn-primary.webp",
+    "width": 1472,
+    "height": 322,
+    "textless": true,
+    "transparent": true
+  },
+  "btn-secondary": {
+    "file": "assets/gemwoven/atlas/ui/btn-secondary.webp",
+    "width": 1472,
+    "height": 319,
+    "textless": true,
+    "transparent": true
+  },
+  "reward-star": {
+    "file": "assets/gemwoven/atlas/ui/reward-star.webp",
+    "width": 160,
+    "height": 150,
+    "textless": true,
+    "transparent": true
+  },
+  "icon-battle": {
+    "file": "assets/gemwoven/atlas/ui/icon-battle.webp",
+    "width": 128,
+    "height": 118,
+    "textless": true,
+    "transparent": true
+  },
+  "water-flow": {
+    "file": "assets/gemwoven/atlas/ui/water-flow.webp",
+    "width": 470,
+    "height": 755,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-abyss-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/abyss-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-abyss-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/abyss-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          188,
+          549,
+          245,
+          580
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          700,
+          506,
+          750,
+          526
+        ],
+        "dir": 180.0
+      },
+      {
+        "material": "water",
+        "box": [
+          746,
+          735,
+          803,
+          762
+        ],
+        "dir": 170.0
+      },
+      {
+        "material": "water",
+        "box": [
+          748,
+          1218,
+          808,
+          1257
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          507,
+          1372,
+          561,
+          1417
+        ],
+        "dir": 55.0
+      }
+    ]
+  },
+  "flow-astral-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/astral-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-astral-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/astral-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          189,
+          550,
+          248,
+          581
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          700,
+          508,
+          761,
+          535
+        ],
+        "dir": 180.0
+      },
+      {
+        "material": "water",
+        "box": [
+          747,
+          750,
+          812,
+          778
+        ],
+        "dir": 170.0
+      },
+      {
+        "material": "water",
+        "box": [
+          751,
+          1222,
+          813,
+          1260
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          507,
+          1367,
+          568,
+          1415
+        ],
+        "dir": 55.0
+      }
+    ]
+  },
+  "flow-bamboo-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/bamboo-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-bamboo-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/bamboo-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          193,
+          550,
+          246,
+          582
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          703,
+          512,
+          752,
+          535
+        ],
+        "dir": 180.0
+      },
+      {
+        "material": "water",
+        "box": [
+          748,
+          742,
+          810,
+          773
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          749,
+          1230,
+          811,
+          1267
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          507,
+          1377,
+          559,
+          1415
+        ],
+        "dir": 55.0
+      }
+    ]
+  },
+  "flow-celestial-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/celestial-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-coast-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/coast-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-coast-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/coast-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          190,
+          551,
+          249,
+          583
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          698,
+          516,
+          753,
+          540
+        ],
+        "dir": 180.0
+      },
+      {
+        "material": "water",
+        "box": [
+          744,
+          750,
+          809,
+          780
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          744,
+          1224,
+          810,
+          1262
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          509,
+          1381,
+          560,
+          1422
+        ],
+        "dir": 55.0
+      }
+    ]
+  },
+  "flow-crystal-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/crystal-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-crystal-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/crystal-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          491,
+          1375,
+          550,
+          1425
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-desert-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/desert-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-desert-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/desert-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          733,
+          755,
+          783,
+          783
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          484,
+          1363,
+          548,
+          1410
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-dream-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/dream-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-dream-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/dream-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          726,
+          738,
+          779,
+          766
+        ],
+        "dir": 15.0
+      },
+      {
+        "material": "water",
+        "box": [
+          767,
+          1242,
+          808,
+          1280
+        ],
+        "dir": 55.0
+      },
+      {
+        "material": "water",
+        "box": [
+          484,
+          1365,
+          548,
+          1411
+        ],
+        "dir": 35.0
+      }
+    ]
+  },
+  "flow-forest-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/forest-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-forest-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/forest-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          729,
+          737,
+          781,
+          765
+        ],
+        "dir": 15.0
+      },
+      {
+        "material": "water",
+        "box": [
+          773,
+          1228,
+          813,
+          1266
+        ],
+        "dir": 55.0
+      },
+      {
+        "material": "water",
+        "box": [
+          485,
+          1364,
+          552,
+          1416
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-foundry-lava-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/foundry-lava-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-foundry-lava-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/foundry-lava-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "lava",
+        "box": [
+          187,
+          533,
+          230,
+          559
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          734,
+          742,
+          777,
+          773
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          779,
+          1238,
+          821,
+          1274
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          503,
+          1349,
+          570,
+          1408
+        ],
+        "dir": 45.0
+      }
+    ]
+  },
+  "flow-haunted-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/haunted-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-haunted-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/haunted-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          211,
+          582,
+          248,
+          610
+        ],
+        "dir": 115.0
+      },
+      {
+        "material": "water",
+        "box": [
+          719,
+          735,
+          777,
+          767
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "water",
+        "box": [
+          270,
+          868,
+          327,
+          902
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          743,
+          1258,
+          801,
+          1295
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          490,
+          1364,
+          573,
+          1410
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          478,
+          1518,
+          516,
+          1548
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-ice-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/ice-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-ice-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/ice-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          208,
+          578,
+          250,
+          608
+        ],
+        "dir": 110.0
+      },
+      {
+        "material": "water",
+        "box": [
+          724,
+          734,
+          782,
+          766
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "water",
+        "box": [
+          274,
+          868,
+          332,
+          902
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          746,
+          1213,
+          801,
+          1253
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "water",
+        "box": [
+          491,
+          1369,
+          572,
+          1410
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          477,
+          1517,
+          516,
+          1548
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-marsh-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/marsh-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-marsh-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/marsh-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          207,
+          527,
+          264,
+          555
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          722,
+          731,
+          780,
+          765
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "water",
+        "box": [
+          255,
+          871,
+          319,
+          905
+        ],
+        "dir": 20.0
+      },
+      {
+        "material": "water",
+        "box": [
+          748,
+          1254,
+          804,
+          1293
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "water",
+        "box": [
+          489,
+          1365,
+          576,
+          1409
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          477,
+          1523,
+          515,
+          1554
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-obsidian-lava-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/obsidian-lava-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-obsidian-lava-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/obsidian-lava-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "lava",
+        "box": [
+          66,
+          273,
+          135,
+          298
+        ],
+        "dir": 15.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          806,
+          169,
+          908,
+          200
+        ],
+        "dir": 10.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          750,
+          1540,
+          829,
+          1575
+        ],
+        "dir": 155.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          167,
+          563,
+          227,
+          591
+        ],
+        "dir": 10.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          718,
+          732,
+          777,
+          768
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          274,
+          870,
+          326,
+          904
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          747,
+          1256,
+          807,
+          1293
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          486,
+          1364,
+          577,
+          1414
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          396,
+          1476,
+          449,
+          1517
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          477,
+          1522,
+          517,
+          1556
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-pine-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/pine-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-pine-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/pine-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          209,
+          579,
+          250,
+          609
+        ],
+        "dir": 110.0
+      },
+      {
+        "material": "water",
+        "box": [
+          724,
+          730,
+          781,
+          765
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "water",
+        "box": [
+          275,
+          867,
+          331,
+          902
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          746,
+          1255,
+          801,
+          1294
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "water",
+        "box": [
+          491,
+          1366,
+          574,
+          1410
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          477,
+          1519,
+          516,
+          1550
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-sky-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/sky-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-sky-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/sky-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          270,
+          869,
+          345,
+          920
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          700,
+          748,
+          767,
+          779
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          481,
+          1349,
+          552,
+          1400
+        ],
+        "dir": 45.0
+      },
+      {
+        "material": "water",
+        "box": [
+          470,
+          1530,
+          527,
+          1574
+        ],
+        "dir": 35.0
+      }
+    ]
+  },
+  "flow-thorns-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/thorns-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-thorns-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/thorns-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          684,
+          516,
+          718,
+          548
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "water",
+        "box": [
+          729,
+          739,
+          784,
+          768
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          285,
+          869,
+          338,
+          899
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          738,
+          1206,
+          818,
+          1245
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          510,
+          1356,
+          562,
+          1386
+        ],
+        "dir": 35.0
+      },
+      {
+        "material": "water",
+        "box": [
+          483,
+          1521,
+          521,
+          1547
+        ],
+        "dir": 30.0
+      }
+    ]
+  },
+  "flow-thunder-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/thunder-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-thunder-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/thunder-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          692,
+          749,
+          751,
+          782
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          283,
+          890,
+          333,
+          918
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "water",
+        "box": [
+          500,
+          1352,
+          562,
+          1400
+        ],
+        "dir": 40.0
+      }
+    ]
+  },
+  "flow-void-water-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/void-water-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-void-water-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/void-water-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "water",
+        "box": [
+          724,
+          762,
+          775,
+          791
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          286,
+          886,
+          333,
+          914
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          746,
+          1234,
+          808,
+          1266
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "water",
+        "box": [
+          510,
+          1357,
+          554,
+          1393
+        ],
+        "dir": 45.0
+      },
+      {
+        "material": "water",
+        "box": [
+          485,
+          1524,
+          518,
+          1551
+        ],
+        "dir": 35.0
+      }
+    ]
+  },
+  "flow-volcano-lava-fall": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/volcano-lava-fall.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true
+  },
+  "flow-volcano-lava-stream": {
+    "file": "assets/gemwoven/backgrounds/chapters/flow/volcano-lava-stream.webp",
+    "width": 471,
+    "height": 836,
+    "textless": true,
+    "transparent": true,
+    "streams": [
+      {
+        "material": "lava",
+        "box": [
+          33,
+          349,
+          66,
+          369
+        ],
+        "dir": 135.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          830,
+          149,
+          876,
+          170
+        ],
+        "dir": 120.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          670,
+          505,
+          712,
+          536
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          726,
+          740,
+          781,
+          765
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          284,
+          874,
+          333,
+          899
+        ],
+        "dir": 25.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          749,
+          1231,
+          815,
+          1262
+        ],
+        "dir": 30.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          511,
+          1355,
+          557,
+          1389
+        ],
+        "dir": 40.0
+      },
+      {
+        "material": "lava",
+        "box": [
+          481,
+          1529,
+          518,
+          1558
+        ],
+        "dir": 35.0
+      }
+    ]
+  },
+  "atlas-unknown": {
+    "file": "assets/gemwoven/atlas/unknown.webp",
+    "width": 737,
+    "height": 498,
+    "textless": true,
+    "transparent": true
+  },
+  "battle-card-abyss": {
+    "file": "assets/scenes/chapters/abyss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-caldera": {
+    "file": "assets/scenes/chapters/caldera-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-celestial": {
+    "file": "assets/scenes/chapters/celestial-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-coralreef": {
+    "file": "assets/scenes/chapters/coralreef-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-crystal": {
+    "file": "assets/scenes/chapters/crystal-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-desert": {
+    "file": "assets/scenes/chapters/desert-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-eldergrove": {
+    "file": "assets/scenes/chapters/eldergrove-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-forest": {
+    "file": "assets/scenes/chapters/forest-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-foundry": {
+    "file": "assets/scenes/chapters/foundry-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-geode": {
+    "file": "assets/scenes/chapters/geode-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-glacier": {
+    "file": "assets/scenes/chapters/glacier-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-haunted": {
+    "file": "assets/scenes/chapters/haunted-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-hourglass": {
+    "file": "assets/scenes/chapters/hourglass-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-ice": {
+    "file": "assets/scenes/chapters/ice-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-marsh": {
+    "file": "assets/scenes/chapters/marsh-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-moonkeep": {
+    "file": "assets/scenes/chapters/moonkeep-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-mycelium": {
+    "file": "assets/scenes/chapters/mycelium-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-sky": {
+    "file": "assets/scenes/chapters/sky-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-soulcrypt": {
+    "file": "assets/scenes/chapters/soulcrypt-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-stormspire": {
+    "file": "assets/scenes/chapters/stormspire-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thorns": {
+    "file": "assets/scenes/chapters/thorns-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thunder": {
+    "file": "assets/scenes/chapters/thunder-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-void": {
+    "file": "assets/scenes/chapters/void-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-volcano": {
+    "file": "assets/scenes/chapters/volcano-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-abyss-b": {
+    "file": "assets/scenes/chapters/abyss-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-abyss-boss": {
+    "file": "assets/scenes/chapters/abyss-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-abyss-c": {
+    "file": "assets/scenes/chapters/abyss-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-caldera-b": {
+    "file": "assets/scenes/chapters/caldera-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-caldera-boss": {
+    "file": "assets/scenes/chapters/caldera-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-caldera-c": {
+    "file": "assets/scenes/chapters/caldera-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-celestial-b": {
+    "file": "assets/scenes/chapters/celestial-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-celestial-boss": {
+    "file": "assets/scenes/chapters/celestial-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-celestial-c": {
+    "file": "assets/scenes/chapters/celestial-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-coralreef-b": {
+    "file": "assets/scenes/chapters/coralreef-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-coralreef-boss": {
+    "file": "assets/scenes/chapters/coralreef-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-coralreef-c": {
+    "file": "assets/scenes/chapters/coralreef-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-crystal-b": {
+    "file": "assets/scenes/chapters/crystal-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-crystal-boss": {
+    "file": "assets/scenes/chapters/crystal-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-crystal-c": {
+    "file": "assets/scenes/chapters/crystal-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-desert-b": {
+    "file": "assets/scenes/chapters/desert-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-desert-boss": {
+    "file": "assets/scenes/chapters/desert-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-desert-c": {
+    "file": "assets/scenes/chapters/desert-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-eldergrove-b": {
+    "file": "assets/scenes/chapters/eldergrove-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-eldergrove-boss": {
+    "file": "assets/scenes/chapters/eldergrove-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-eldergrove-c": {
+    "file": "assets/scenes/chapters/eldergrove-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-forest-b": {
+    "file": "assets/scenes/chapters/forest-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-forest-boss": {
+    "file": "assets/scenes/chapters/forest-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-forest-c": {
+    "file": "assets/scenes/chapters/forest-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-foundry-b": {
+    "file": "assets/scenes/chapters/foundry-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-foundry-boss": {
+    "file": "assets/scenes/chapters/foundry-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-foundry-c": {
+    "file": "assets/scenes/chapters/foundry-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-geode-b": {
+    "file": "assets/scenes/chapters/geode-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-geode-boss": {
+    "file": "assets/scenes/chapters/geode-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-geode-c": {
+    "file": "assets/scenes/chapters/geode-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-glacier-b": {
+    "file": "assets/scenes/chapters/glacier-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-glacier-boss": {
+    "file": "assets/scenes/chapters/glacier-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-glacier-c": {
+    "file": "assets/scenes/chapters/glacier-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-haunted-b": {
+    "file": "assets/scenes/chapters/haunted-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-haunted-boss": {
+    "file": "assets/scenes/chapters/haunted-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-haunted-c": {
+    "file": "assets/scenes/chapters/haunted-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-hourglass-b": {
+    "file": "assets/scenes/chapters/hourglass-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-hourglass-boss": {
+    "file": "assets/scenes/chapters/hourglass-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-hourglass-c": {
+    "file": "assets/scenes/chapters/hourglass-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-ice-b": {
+    "file": "assets/scenes/chapters/ice-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-ice-boss": {
+    "file": "assets/scenes/chapters/ice-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-ice-c": {
+    "file": "assets/scenes/chapters/ice-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-marsh-b": {
+    "file": "assets/scenes/chapters/marsh-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-marsh-boss": {
+    "file": "assets/scenes/chapters/marsh-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-marsh-c": {
+    "file": "assets/scenes/chapters/marsh-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-moonkeep-b": {
+    "file": "assets/scenes/chapters/moonkeep-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-moonkeep-boss": {
+    "file": "assets/scenes/chapters/moonkeep-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-moonkeep-c": {
+    "file": "assets/scenes/chapters/moonkeep-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-mycelium-b": {
+    "file": "assets/scenes/chapters/mycelium-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-mycelium-boss": {
+    "file": "assets/scenes/chapters/mycelium-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-mycelium-c": {
+    "file": "assets/scenes/chapters/mycelium-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-sky-b": {
+    "file": "assets/scenes/chapters/sky-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-sky-boss": {
+    "file": "assets/scenes/chapters/sky-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-sky-c": {
+    "file": "assets/scenes/chapters/sky-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-soulcrypt-b": {
+    "file": "assets/scenes/chapters/soulcrypt-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-soulcrypt-boss": {
+    "file": "assets/scenes/chapters/soulcrypt-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-soulcrypt-c": {
+    "file": "assets/scenes/chapters/soulcrypt-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-stormspire-b": {
+    "file": "assets/scenes/chapters/stormspire-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-stormspire-boss": {
+    "file": "assets/scenes/chapters/stormspire-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-stormspire-c": {
+    "file": "assets/scenes/chapters/stormspire-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thorns-b": {
+    "file": "assets/scenes/chapters/thorns-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thorns-boss": {
+    "file": "assets/scenes/chapters/thorns-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thorns-c": {
+    "file": "assets/scenes/chapters/thorns-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thunder-b": {
+    "file": "assets/scenes/chapters/thunder-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thunder-boss": {
+    "file": "assets/scenes/chapters/thunder-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-thunder-c": {
+    "file": "assets/scenes/chapters/thunder-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-void-b": {
+    "file": "assets/scenes/chapters/void-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-void-boss": {
+    "file": "assets/scenes/chapters/void-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-void-c": {
+    "file": "assets/scenes/chapters/void-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-volcano-b": {
+    "file": "assets/scenes/chapters/volcano-b-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-volcano-boss": {
+    "file": "assets/scenes/chapters/volcano-boss-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
+  "battle-card-volcano-c": {
+    "file": "assets/scenes/chapters/volcano-c-card.webp",
+    "width": 1536,
+    "height": 768,
+    "textless": true
+  },
   "creature-abyss-reefcorsair": {
     "file": "assets/gemwoven/elites/abyss-reefcorsair/master.png",
     "width": 512,
@@ -13015,9 +16047,9 @@
     "height": 512,
     "transparent": true,
     "footBounds": [
-      56,
-      72,
-      455,
+      71,
+      57,
+      440,
       456
     ]
   },
@@ -13308,5 +16340,389 @@
       419,
       456
     ]
+  },
+  "idle-creature-abyss-reefcorsair": {
+    "file": "assets/gemwoven/elites/abyss-reefcorsair/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-abyss-tidecaller": {
+    "file": "assets/gemwoven/elites/abyss-tidecaller/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-caldera-basaltbrute": {
+    "file": "assets/gemwoven/elites/caldera-basaltbrute/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-caldera-furnacepriest": {
+    "file": "assets/gemwoven/elites/caldera-furnacepriest/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-celestial-dawncleric": {
+    "file": "assets/gemwoven/elites/celestial-dawncleric/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-celestial-sunpaladin": {
+    "file": "assets/gemwoven/elites/celestial-sunpaladin/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coralreef-coraloracle": {
+    "file": "assets/gemwoven/elites/coralreef-coraloracle/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-coralreef-tidemarshal": {
+    "file": "assets/gemwoven/elites/coralreef-tidemarshal/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-crystal-gemsage": {
+    "file": "assets/gemwoven/elites/crystal-gemsage/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-crystal-shardblade": {
+    "file": "assets/gemwoven/elites/crystal-shardblade/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-desert-sandpriest": {
+    "file": "assets/gemwoven/elites/desert-sandpriest/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-desert-scarabguard": {
+    "file": "assets/gemwoven/elites/desert-scarabguard/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-eldergrove-blossomranger": {
+    "file": "assets/gemwoven/elites/eldergrove-blossomranger/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-eldergrove-rootwarden": {
+    "file": "assets/gemwoven/elites/eldergrove-rootwarden/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-forest-leafarcher": {
+    "file": "assets/gemwoven/elites/forest-leafarcher/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-forest-rootknight": {
+    "file": "assets/gemwoven/elites/forest-rootknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-foundry-gearknight": {
+    "file": "assets/gemwoven/elites/foundry-gearknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-foundry-tinkerer": {
+    "file": "assets/gemwoven/elites/foundry-tinkerer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-geode-prismseer": {
+    "file": "assets/gemwoven/elites/geode-prismseer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-geode-rampartgolem": {
+    "file": "assets/gemwoven/elites/geode-rampartgolem/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-glacier-blizzardmage": {
+    "file": "assets/gemwoven/elites/glacier-blizzardmage/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-glacier-rimeknight": {
+    "file": "assets/gemwoven/elites/glacier-rimeknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-haunted-bonepaladin": {
+    "file": "assets/gemwoven/elites/haunted-bonepaladin/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-haunted-gravewarden": {
+    "file": "assets/gemwoven/elites/haunted-gravewarden/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-hourglass-chronoweaver": {
+    "file": "assets/gemwoven/elites/hourglass-chronoweaver/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-hourglass-dunesentinel": {
+    "file": "assets/gemwoven/elites/hourglass-dunesentinel/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-ice-frostguard": {
+    "file": "assets/gemwoven/elites/ice-frostguard/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-ice-snowwitch": {
+    "file": "assets/gemwoven/elites/ice-snowwitch/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-marsh-bogstalker": {
+    "file": "assets/gemwoven/elites/marsh-bogstalker/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-marsh-sporewitch": {
+    "file": "assets/gemwoven/elites/marsh-sporewitch/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-moonkeep-eclipsehuntress": {
+    "file": "assets/gemwoven/elites/moonkeep-eclipsehuntress/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-moonkeep-lunarknight": {
+    "file": "assets/gemwoven/elites/moonkeep-lunarknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-mycelium-mycoknight": {
+    "file": "assets/gemwoven/elites/mycelium-mycoknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-mycelium-plagueherald": {
+    "file": "assets/gemwoven/elites/mycelium-plagueherald/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-sky-cloudmonk": {
+    "file": "assets/gemwoven/elites/sky-cloudmonk/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-sky-windknight": {
+    "file": "assets/gemwoven/elites/sky-windknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-soulcrypt-cagekeeper": {
+    "file": "assets/gemwoven/elites/soulcrypt-cagekeeper/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-soulcrypt-veilassassin": {
+    "file": "assets/gemwoven/elites/soulcrypt-veilassassin/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-stormspire-stormshaman": {
+    "file": "assets/gemwoven/elites/stormspire-stormshaman/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-stormspire-voltlancer": {
+    "file": "assets/gemwoven/elites/stormspire-voltlancer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thorns-briarduelist": {
+    "file": "assets/gemwoven/elites/thorns-briarduelist/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thorns-vinehexer": {
+    "file": "assets/gemwoven/elites/thorns-vinehexer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thunder-sparkmage": {
+    "file": "assets/gemwoven/elites/thunder-sparkmage/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-thunder-stormblade": {
+    "file": "assets/gemwoven/elites/thunder-stormblade/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-void-starseer": {
+    "file": "assets/gemwoven/elites/void-starseer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-void-voidknight": {
+    "file": "assets/gemwoven/elites/void-voidknight/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-volcano-ashcultist": {
+    "file": "assets/gemwoven/elites/volcano-ashcultist/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
+  },
+  "idle-creature-volcano-flamelancer": {
+    "file": "assets/gemwoven/elites/volcano-flamelancer/idle.webp",
+    "width": 512,
+    "height": 1024,
+    "cols": 2,
+    "rows": 4,
+    "count": 8
   }
 }

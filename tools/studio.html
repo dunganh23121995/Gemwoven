@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- Gemwoven Studio: the one page for development and review. Each tab opens a tool of the repo:
      the hero studio (every hero, form, combat action, showcase, the hero checklist), a free combat
-     sandbox, the hub game itself, the boss/chapter guide and the hero pipeline guide.
+     sandbox, the hub game itself, the boss/chapter guide, the scene gallery (every map and combat scene) and the hero pipeline guide.
      Serve the repository root (python tools/dev_server.py) and open /tools/studio.html.
      To add a tool, add one entry to TOOLS below. -->
 <html lang="vi">
@@ -46,6 +46,7 @@ const TOOLS=[
   {id:'hub',label:'Game (Hub)',src:'Gemwoven.html'},
   {id:'summon-test',label:'Triệu hồi (test)',src:'Gemwoven.html?summonTest=1'},
   {id:'bosses',label:'Boss & chương',src:'docs/BOSS_CHAPTERS.html'},
+  {id:'scenes',label:'Bản đồ & nền',src:'tools/scene-gallery.html',param:'chapter'},
   {id:'sounds',label:'Âm thanh',src:'tools/sound-library.html'},
   {id:'pipeline',label:'Quy trình làm tướng',doc:'docs/HERO_PIPELINE.md'}
 ];

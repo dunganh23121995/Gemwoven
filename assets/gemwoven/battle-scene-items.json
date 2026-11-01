@@ -1,0 +1,582 @@
+{
+ "version": 1,
+ "purpose": "Each chapter's combat scenery, for the stage card",
+ "items": {
+  "battle-card-abyss": {
+   "file": "assets/scenes/chapters/abyss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-abyss-b": {
+   "file": "assets/scenes/chapters/abyss-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-abyss-boss": {
+   "file": "assets/scenes/chapters/abyss-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-abyss-c": {
+   "file": "assets/scenes/chapters/abyss-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-caldera": {
+   "file": "assets/scenes/chapters/caldera-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-caldera-b": {
+   "file": "assets/scenes/chapters/caldera-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-caldera-boss": {
+   "file": "assets/scenes/chapters/caldera-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-caldera-c": {
+   "file": "assets/scenes/chapters/caldera-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-celestial": {
+   "file": "assets/scenes/chapters/celestial-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-celestial-b": {
+   "file": "assets/scenes/chapters/celestial-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-celestial-boss": {
+   "file": "assets/scenes/chapters/celestial-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-celestial-c": {
+   "file": "assets/scenes/chapters/celestial-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-coralreef": {
+   "file": "assets/scenes/chapters/coralreef-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-coralreef-b": {
+   "file": "assets/scenes/chapters/coralreef-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-coralreef-boss": {
+   "file": "assets/scenes/chapters/coralreef-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-coralreef-c": {
+   "file": "assets/scenes/chapters/coralreef-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-crystal": {
+   "file": "assets/scenes/chapters/crystal-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-crystal-b": {
+   "file": "assets/scenes/chapters/crystal-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-crystal-boss": {
+   "file": "assets/scenes/chapters/crystal-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-crystal-c": {
+   "file": "assets/scenes/chapters/crystal-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-desert": {
+   "file": "assets/scenes/chapters/desert-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-desert-b": {
+   "file": "assets/scenes/chapters/desert-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-desert-boss": {
+   "file": "assets/scenes/chapters/desert-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-desert-c": {
+   "file": "assets/scenes/chapters/desert-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-eldergrove": {
+   "file": "assets/scenes/chapters/eldergrove-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-eldergrove-b": {
+   "file": "assets/scenes/chapters/eldergrove-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-eldergrove-boss": {
+   "file": "assets/scenes/chapters/eldergrove-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-eldergrove-c": {
+   "file": "assets/scenes/chapters/eldergrove-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-forest": {
+   "file": "assets/scenes/chapters/forest-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-forest-b": {
+   "file": "assets/scenes/chapters/forest-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-forest-boss": {
+   "file": "assets/scenes/chapters/forest-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-forest-c": {
+   "file": "assets/scenes/chapters/forest-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-foundry": {
+   "file": "assets/scenes/chapters/foundry-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-foundry-b": {
+   "file": "assets/scenes/chapters/foundry-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-foundry-boss": {
+   "file": "assets/scenes/chapters/foundry-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-foundry-c": {
+   "file": "assets/scenes/chapters/foundry-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-geode": {
+   "file": "assets/scenes/chapters/geode-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-geode-b": {
+   "file": "assets/scenes/chapters/geode-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-geode-boss": {
+   "file": "assets/scenes/chapters/geode-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-geode-c": {
+   "file": "assets/scenes/chapters/geode-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-glacier": {
+   "file": "assets/scenes/chapters/glacier-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-glacier-b": {
+   "file": "assets/scenes/chapters/glacier-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-glacier-boss": {
+   "file": "assets/scenes/chapters/glacier-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-glacier-c": {
+   "file": "assets/scenes/chapters/glacier-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-haunted": {
+   "file": "assets/scenes/chapters/haunted-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-haunted-b": {
+   "file": "assets/scenes/chapters/haunted-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-haunted-boss": {
+   "file": "assets/scenes/chapters/haunted-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-haunted-c": {
+   "file": "assets/scenes/chapters/haunted-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-hourglass": {
+   "file": "assets/scenes/chapters/hourglass-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-hourglass-b": {
+   "file": "assets/scenes/chapters/hourglass-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-hourglass-boss": {
+   "file": "assets/scenes/chapters/hourglass-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-hourglass-c": {
+   "file": "assets/scenes/chapters/hourglass-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-ice": {
+   "file": "assets/scenes/chapters/ice-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-ice-b": {
+   "file": "assets/scenes/chapters/ice-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-ice-boss": {
+   "file": "assets/scenes/chapters/ice-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-ice-c": {
+   "file": "assets/scenes/chapters/ice-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-marsh": {
+   "file": "assets/scenes/chapters/marsh-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-marsh-b": {
+   "file": "assets/scenes/chapters/marsh-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-marsh-boss": {
+   "file": "assets/scenes/chapters/marsh-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-marsh-c": {
+   "file": "assets/scenes/chapters/marsh-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-moonkeep": {
+   "file": "assets/scenes/chapters/moonkeep-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-moonkeep-b": {
+   "file": "assets/scenes/chapters/moonkeep-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-moonkeep-boss": {
+   "file": "assets/scenes/chapters/moonkeep-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-moonkeep-c": {
+   "file": "assets/scenes/chapters/moonkeep-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-mycelium": {
+   "file": "assets/scenes/chapters/mycelium-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-mycelium-b": {
+   "file": "assets/scenes/chapters/mycelium-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-mycelium-boss": {
+   "file": "assets/scenes/chapters/mycelium-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-mycelium-c": {
+   "file": "assets/scenes/chapters/mycelium-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-sky": {
+   "file": "assets/scenes/chapters/sky-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-sky-b": {
+   "file": "assets/scenes/chapters/sky-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-sky-boss": {
+   "file": "assets/scenes/chapters/sky-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-sky-c": {
+   "file": "assets/scenes/chapters/sky-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-soulcrypt": {
+   "file": "assets/scenes/chapters/soulcrypt-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-soulcrypt-b": {
+   "file": "assets/scenes/chapters/soulcrypt-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-soulcrypt-boss": {
+   "file": "assets/scenes/chapters/soulcrypt-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-soulcrypt-c": {
+   "file": "assets/scenes/chapters/soulcrypt-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-stormspire": {
+   "file": "assets/scenes/chapters/stormspire-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-stormspire-b": {
+   "file": "assets/scenes/chapters/stormspire-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-stormspire-boss": {
+   "file": "assets/scenes/chapters/stormspire-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-stormspire-c": {
+   "file": "assets/scenes/chapters/stormspire-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thorns": {
+   "file": "assets/scenes/chapters/thorns-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thorns-b": {
+   "file": "assets/scenes/chapters/thorns-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thorns-boss": {
+   "file": "assets/scenes/chapters/thorns-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thorns-c": {
+   "file": "assets/scenes/chapters/thorns-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thunder": {
+   "file": "assets/scenes/chapters/thunder-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thunder-b": {
+   "file": "assets/scenes/chapters/thunder-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thunder-boss": {
+   "file": "assets/scenes/chapters/thunder-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-thunder-c": {
+   "file": "assets/scenes/chapters/thunder-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-void": {
+   "file": "assets/scenes/chapters/void-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-void-b": {
+   "file": "assets/scenes/chapters/void-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-void-boss": {
+   "file": "assets/scenes/chapters/void-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-void-c": {
+   "file": "assets/scenes/chapters/void-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-volcano": {
+   "file": "assets/scenes/chapters/volcano-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-volcano-b": {
+   "file": "assets/scenes/chapters/volcano-b-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-volcano-boss": {
+   "file": "assets/scenes/chapters/volcano-boss-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  },
+  "battle-card-volcano-c": {
+   "file": "assets/scenes/chapters/volcano-c-card.webp",
+   "width": 1536,
+   "height": 768,
+   "textless": true
+  }
+ }
+}

@@ -1,15 +1,15 @@
 {
   "fidgets": [
     {
-      "name": "testdraw",
-      "label": "Thử dây cung",
-      "file": "testdraw.webp",
-      "whole": true
+      "name": "drawbow",
+      "label": "Giương cung",
+      "file": "drawbow.webp",
+      "whole": false
     },
     {
-      "name": "quiver",
-      "label": "Kiểm tra ống tên",
-      "file": "quiver.webp",
+      "name": "thornarrow",
+      "label": "Rút tên gai",
+      "file": "thornarrow.webp",
       "whole": false
     }
   ]

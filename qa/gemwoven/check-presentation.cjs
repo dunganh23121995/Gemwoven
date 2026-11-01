@@ -91,7 +91,7 @@ const server=http.createServer((req,res)=>{
     await combat.goto(url+'/Gemwoven.html#campaign');
     const token=await combat.evaluate(()=>GEMWOVEN_GAME.engine.begin('campaign',1).token);
     await combat.goto(url+'/Game.html?qa=1&encounter='+encodeURIComponent(token));
-    await combat.locator('#classGrid button').first().click();await combat.locator('#startBtn').click();
+    await combat.waitForTimeout(300);
     await combat.waitForTimeout(700);
     assert.equal(await combat.locator('#landscape>.parallax-layer').count(),3);
     const grounding=await combat.evaluate(()=>{

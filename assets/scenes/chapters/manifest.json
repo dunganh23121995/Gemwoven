@@ -1,0 +1,1064 @@
+{
+ "size": [
+  1536,
+  768
+ ],
+ "chapters": {
+  "abyss": {
+   "layers": {
+    "far": "abyss-far.webp",
+    "mid": "abyss-mid.webp",
+    "stage": "abyss-stage.webp"
+   },
+   "card": "abyss-card.webp",
+   "floorTop": 562,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "abyss-b": {
+   "layers": {
+    "far": "abyss-b-far.webp",
+    "mid": "abyss-b-mid.webp",
+    "stage": "abyss-b-stage.webp"
+   },
+   "card": "abyss-b-card.webp",
+   "floorTop": 580,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "abyss-boss": {
+   "layers": {
+    "far": "abyss-boss-far.webp",
+    "mid": "abyss-boss-mid.webp",
+    "stage": "abyss-boss-stage.webp"
+   },
+   "card": "abyss-boss-card.webp",
+   "floorTop": 535,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "abyss-c": {
+   "layers": {
+    "far": "abyss-c-far.webp",
+    "mid": "abyss-c-mid.webp",
+    "stage": "abyss-c-stage.webp"
+   },
+   "card": "abyss-c-card.webp",
+   "floorTop": 551,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "caldera": {
+   "layers": {
+    "far": "caldera-far.webp",
+    "mid": "caldera-mid.webp",
+    "stage": "caldera-stage.webp"
+   },
+   "card": "caldera-card.webp",
+   "floorTop": 570,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "caldera-b": {
+   "layers": {
+    "far": "caldera-b-far.webp",
+    "mid": "caldera-b-mid.webp",
+    "stage": "caldera-b-stage.webp"
+   },
+   "card": "caldera-b-card.webp",
+   "floorTop": 584,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "caldera-boss": {
+   "layers": {
+    "far": "caldera-boss-far.webp",
+    "mid": "caldera-boss-mid.webp",
+    "stage": "caldera-boss-stage.webp"
+   },
+   "card": "caldera-boss-card.webp",
+   "floorTop": 565,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "caldera-c": {
+   "layers": {
+    "far": "caldera-c-far.webp",
+    "mid": "caldera-c-mid.webp",
+    "stage": "caldera-c-stage.webp"
+   },
+   "card": "caldera-c-card.webp",
+   "floorTop": 577,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "celestial": {
+   "layers": {
+    "far": "celestial-far.webp",
+    "mid": "celestial-mid.webp",
+    "stage": "celestial-stage.webp"
+   },
+   "card": "celestial-card.webp",
+   "floorTop": 502,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "celestial-b": {
+   "layers": {
+    "far": "celestial-b-far.webp",
+    "mid": "celestial-b-mid.webp",
+    "stage": "celestial-b-stage.webp"
+   },
+   "card": "celestial-b-card.webp",
+   "floorTop": 575,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "celestial-boss": {
+   "layers": {
+    "far": "celestial-boss-far.webp",
+    "mid": "celestial-boss-mid.webp",
+    "stage": "celestial-boss-stage.webp"
+   },
+   "card": "celestial-boss-card.webp",
+   "floorTop": 472,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "celestial-c": {
+   "layers": {
+    "far": "celestial-c-far.webp",
+    "mid": "celestial-c-mid.webp",
+    "stage": "celestial-c-stage.webp"
+   },
+   "card": "celestial-c-card.webp",
+   "floorTop": 542,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "coralreef": {
+   "layers": {
+    "far": "coralreef-far.webp",
+    "mid": "coralreef-mid.webp",
+    "stage": "coralreef-stage.webp"
+   },
+   "card": "coralreef-card.webp",
+   "floorTop": 572,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "coralreef-b": {
+   "layers": {
+    "far": "coralreef-b-far.webp",
+    "mid": "coralreef-b-mid.webp",
+    "stage": "coralreef-b-stage.webp"
+   },
+   "card": "coralreef-b-card.webp",
+   "floorTop": 578,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "coralreef-boss": {
+   "layers": {
+    "far": "coralreef-boss-far.webp",
+    "mid": "coralreef-boss-mid.webp",
+    "stage": "coralreef-boss-stage.webp"
+   },
+   "card": "coralreef-boss-card.webp",
+   "floorTop": 518,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "coralreef-c": {
+   "layers": {
+    "far": "coralreef-c-far.webp",
+    "mid": "coralreef-c-mid.webp",
+    "stage": "coralreef-c-stage.webp"
+   },
+   "card": "coralreef-c-card.webp",
+   "floorTop": 549,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "crystal": {
+   "layers": {
+    "far": "crystal-far.webp",
+    "mid": "crystal-mid.webp",
+    "stage": "crystal-stage.webp"
+   },
+   "card": "crystal-card.webp",
+   "floorTop": 529,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "crystal-b": {
+   "layers": {
+    "far": "crystal-b-far.webp",
+    "mid": "crystal-b-mid.webp",
+    "stage": "crystal-b-stage.webp"
+   },
+   "card": "crystal-b-card.webp",
+   "floorTop": 512,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "crystal-boss": {
+   "layers": {
+    "far": "crystal-boss-far.webp",
+    "mid": "crystal-boss-mid.webp",
+    "stage": "crystal-boss-stage.webp"
+   },
+   "card": "crystal-boss-card.webp",
+   "floorTop": 514,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "crystal-c": {
+   "layers": {
+    "far": "crystal-c-far.webp",
+    "mid": "crystal-c-mid.webp",
+    "stage": "crystal-c-stage.webp"
+   },
+   "card": "crystal-c-card.webp",
+   "floorTop": 553,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "desert": {
+   "layers": {
+    "far": "desert-far.webp",
+    "mid": "desert-mid.webp",
+    "stage": "desert-stage.webp"
+   },
+   "card": "desert-card.webp",
+   "floorTop": 578,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "desert-b": {
+   "layers": {
+    "far": "desert-b-far.webp",
+    "mid": "desert-b-mid.webp",
+    "stage": "desert-b-stage.webp"
+   },
+   "card": "desert-b-card.webp",
+   "floorTop": 586,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "desert-boss": {
+   "layers": {
+    "far": "desert-boss-far.webp",
+    "mid": "desert-boss-mid.webp",
+    "stage": "desert-boss-stage.webp"
+   },
+   "card": "desert-boss-card.webp",
+   "floorTop": 537,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "desert-c": {
+   "layers": {
+    "far": "desert-c-far.webp",
+    "mid": "desert-c-mid.webp",
+    "stage": "desert-c-stage.webp"
+   },
+   "card": "desert-c-card.webp",
+   "floorTop": 585,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "eldergrove": {
+   "layers": {
+    "far": "eldergrove-far.webp",
+    "mid": "eldergrove-mid.webp",
+    "stage": "eldergrove-stage.webp"
+   },
+   "card": "eldergrove-card.webp",
+   "floorTop": 531,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "eldergrove-b": {
+   "layers": {
+    "far": "eldergrove-b-far.webp",
+    "mid": "eldergrove-b-mid.webp",
+    "stage": "eldergrove-b-stage.webp"
+   },
+   "card": "eldergrove-b-card.webp",
+   "floorTop": 546,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "eldergrove-boss": {
+   "layers": {
+    "far": "eldergrove-boss-far.webp",
+    "mid": "eldergrove-boss-mid.webp",
+    "stage": "eldergrove-boss-stage.webp"
+   },
+   "card": "eldergrove-boss-card.webp",
+   "floorTop": 515,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "eldergrove-c": {
+   "layers": {
+    "far": "eldergrove-c-far.webp",
+    "mid": "eldergrove-c-mid.webp",
+    "stage": "eldergrove-c-stage.webp"
+   },
+   "card": "eldergrove-c-card.webp",
+   "floorTop": 544,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "forest": {
+   "layers": {
+    "far": "forest-far.webp",
+    "mid": "forest-mid.webp",
+    "stage": "forest-stage.webp"
+   },
+   "card": "forest-card.webp",
+   "floorTop": 580,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "forest-b": {
+   "layers": {
+    "far": "forest-b-far.webp",
+    "mid": "forest-b-mid.webp",
+    "stage": "forest-b-stage.webp"
+   },
+   "card": "forest-b-card.webp",
+   "floorTop": 576,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "forest-boss": {
+   "layers": {
+    "far": "forest-boss-far.webp",
+    "mid": "forest-boss-mid.webp",
+    "stage": "forest-boss-stage.webp"
+   },
+   "card": "forest-boss-card.webp",
+   "floorTop": 560,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "forest-c": {
+   "layers": {
+    "far": "forest-c-far.webp",
+    "mid": "forest-c-mid.webp",
+    "stage": "forest-c-stage.webp"
+   },
+   "card": "forest-c-card.webp",
+   "floorTop": 593,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "foundry": {
+   "layers": {
+    "far": "foundry-far.webp",
+    "mid": "foundry-mid.webp",
+    "stage": "foundry-stage.webp"
+   },
+   "card": "foundry-card.webp",
+   "floorTop": 552,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "foundry-b": {
+   "layers": {
+    "far": "foundry-b-far.webp",
+    "mid": "foundry-b-mid.webp",
+    "stage": "foundry-b-stage.webp"
+   },
+   "card": "foundry-b-card.webp",
+   "floorTop": 563,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "foundry-boss": {
+   "layers": {
+    "far": "foundry-boss-far.webp",
+    "mid": "foundry-boss-mid.webp",
+    "stage": "foundry-boss-stage.webp"
+   },
+   "card": "foundry-boss-card.webp",
+   "floorTop": 545,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "foundry-c": {
+   "layers": {
+    "far": "foundry-c-far.webp",
+    "mid": "foundry-c-mid.webp",
+    "stage": "foundry-c-stage.webp"
+   },
+   "card": "foundry-c-card.webp",
+   "floorTop": 586,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "geode": {
+   "layers": {
+    "far": "geode-far.webp",
+    "mid": "geode-mid.webp",
+    "stage": "geode-stage.webp"
+   },
+   "card": "geode-card.webp",
+   "floorTop": 539,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "geode-b": {
+   "layers": {
+    "far": "geode-b-far.webp",
+    "mid": "geode-b-mid.webp",
+    "stage": "geode-b-stage.webp"
+   },
+   "card": "geode-b-card.webp",
+   "floorTop": 592,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "geode-boss": {
+   "layers": {
+    "far": "geode-boss-far.webp",
+    "mid": "geode-boss-mid.webp",
+    "stage": "geode-boss-stage.webp"
+   },
+   "card": "geode-boss-card.webp",
+   "floorTop": 543,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "geode-c": {
+   "layers": {
+    "far": "geode-c-far.webp",
+    "mid": "geode-c-mid.webp",
+    "stage": "geode-c-stage.webp"
+   },
+   "card": "geode-c-card.webp",
+   "floorTop": 575,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "glacier": {
+   "layers": {
+    "far": "glacier-far.webp",
+    "mid": "glacier-mid.webp",
+    "stage": "glacier-stage.webp"
+   },
+   "card": "glacier-card.webp",
+   "floorTop": 575,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "glacier-b": {
+   "layers": {
+    "far": "glacier-b-far.webp",
+    "mid": "glacier-b-mid.webp",
+    "stage": "glacier-b-stage.webp"
+   },
+   "card": "glacier-b-card.webp",
+   "floorTop": 580,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "glacier-boss": {
+   "layers": {
+    "far": "glacier-boss-far.webp",
+    "mid": "glacier-boss-mid.webp",
+    "stage": "glacier-boss-stage.webp"
+   },
+   "card": "glacier-boss-card.webp",
+   "floorTop": 560,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "glacier-c": {
+   "layers": {
+    "far": "glacier-c-far.webp",
+    "mid": "glacier-c-mid.webp",
+    "stage": "glacier-c-stage.webp"
+   },
+   "card": "glacier-c-card.webp",
+   "floorTop": 608,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "haunted": {
+   "layers": {
+    "far": "haunted-far.webp",
+    "mid": "haunted-mid.webp",
+    "stage": "haunted-stage.webp"
+   },
+   "card": "haunted-card.webp",
+   "floorTop": 581,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "haunted-b": {
+   "layers": {
+    "far": "haunted-b-far.webp",
+    "mid": "haunted-b-mid.webp",
+    "stage": "haunted-b-stage.webp"
+   },
+   "card": "haunted-b-card.webp",
+   "floorTop": 602,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "haunted-boss": {
+   "layers": {
+    "far": "haunted-boss-far.webp",
+    "mid": "haunted-boss-mid.webp",
+    "stage": "haunted-boss-stage.webp"
+   },
+   "card": "haunted-boss-card.webp",
+   "floorTop": 526,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "haunted-c": {
+   "layers": {
+    "far": "haunted-c-far.webp",
+    "mid": "haunted-c-mid.webp",
+    "stage": "haunted-c-stage.webp"
+   },
+   "card": "haunted-c-card.webp",
+   "floorTop": 583,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "hourglass": {
+   "layers": {
+    "far": "hourglass-far.webp",
+    "mid": "hourglass-mid.webp",
+    "stage": "hourglass-stage.webp"
+   },
+   "card": "hourglass-card.webp",
+   "floorTop": 562,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "hourglass-b": {
+   "layers": {
+    "far": "hourglass-b-far.webp",
+    "mid": "hourglass-b-mid.webp",
+    "stage": "hourglass-b-stage.webp"
+   },
+   "card": "hourglass-b-card.webp",
+   "floorTop": 522,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "hourglass-boss": {
+   "layers": {
+    "far": "hourglass-boss-far.webp",
+    "mid": "hourglass-boss-mid.webp",
+    "stage": "hourglass-boss-stage.webp"
+   },
+   "card": "hourglass-boss-card.webp",
+   "floorTop": 531,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "hourglass-c": {
+   "layers": {
+    "far": "hourglass-c-far.webp",
+    "mid": "hourglass-c-mid.webp",
+    "stage": "hourglass-c-stage.webp"
+   },
+   "card": "hourglass-c-card.webp",
+   "floorTop": 566,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "ice": {
+   "layers": {
+    "far": "ice-far.webp",
+    "mid": "ice-mid.webp",
+    "stage": "ice-stage.webp"
+   },
+   "card": "ice-card.webp",
+   "floorTop": 582,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "ice-b": {
+   "layers": {
+    "far": "ice-b-far.webp",
+    "mid": "ice-b-mid.webp",
+    "stage": "ice-b-stage.webp"
+   },
+   "card": "ice-b-card.webp",
+   "floorTop": 550,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "ice-boss": {
+   "layers": {
+    "far": "ice-boss-far.webp",
+    "mid": "ice-boss-mid.webp",
+    "stage": "ice-boss-stage.webp"
+   },
+   "card": "ice-boss-card.webp",
+   "floorTop": 594,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "ice-c": {
+   "layers": {
+    "far": "ice-c-far.webp",
+    "mid": "ice-c-mid.webp",
+    "stage": "ice-c-stage.webp"
+   },
+   "card": "ice-c-card.webp",
+   "floorTop": 583,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "marsh": {
+   "layers": {
+    "far": "marsh-far.webp",
+    "mid": "marsh-mid.webp",
+    "stage": "marsh-stage.webp"
+   },
+   "card": "marsh-card.webp",
+   "floorTop": 616,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "marsh-b": {
+   "layers": {
+    "far": "marsh-b-far.webp",
+    "mid": "marsh-b-mid.webp",
+    "stage": "marsh-b-stage.webp"
+   },
+   "card": "marsh-b-card.webp",
+   "floorTop": 530,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "marsh-boss": {
+   "layers": {
+    "far": "marsh-boss-far.webp",
+    "mid": "marsh-boss-mid.webp",
+    "stage": "marsh-boss-stage.webp"
+   },
+   "card": "marsh-boss-card.webp",
+   "floorTop": 564,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "marsh-c": {
+   "layers": {
+    "far": "marsh-c-far.webp",
+    "mid": "marsh-c-mid.webp",
+    "stage": "marsh-c-stage.webp"
+   },
+   "card": "marsh-c-card.webp",
+   "floorTop": 577,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "moonkeep": {
+   "layers": {
+    "far": "moonkeep-far.webp",
+    "mid": "moonkeep-mid.webp",
+    "stage": "moonkeep-stage.webp"
+   },
+   "card": "moonkeep-card.webp",
+   "floorTop": 571,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "moonkeep-b": {
+   "layers": {
+    "far": "moonkeep-b-far.webp",
+    "mid": "moonkeep-b-mid.webp",
+    "stage": "moonkeep-b-stage.webp"
+   },
+   "card": "moonkeep-b-card.webp",
+   "floorTop": 547,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "moonkeep-boss": {
+   "layers": {
+    "far": "moonkeep-boss-far.webp",
+    "mid": "moonkeep-boss-mid.webp",
+    "stage": "moonkeep-boss-stage.webp"
+   },
+   "card": "moonkeep-boss-card.webp",
+   "floorTop": 570,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "moonkeep-c": {
+   "layers": {
+    "far": "moonkeep-c-far.webp",
+    "mid": "moonkeep-c-mid.webp",
+    "stage": "moonkeep-c-stage.webp"
+   },
+   "card": "moonkeep-c-card.webp",
+   "floorTop": 545,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "mycelium": {
+   "layers": {
+    "far": "mycelium-far.webp",
+    "mid": "mycelium-mid.webp",
+    "stage": "mycelium-stage.webp"
+   },
+   "card": "mycelium-card.webp",
+   "floorTop": 597,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "mycelium-b": {
+   "layers": {
+    "far": "mycelium-b-far.webp",
+    "mid": "mycelium-b-mid.webp",
+    "stage": "mycelium-b-stage.webp"
+   },
+   "card": "mycelium-b-card.webp",
+   "floorTop": 593,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "mycelium-boss": {
+   "layers": {
+    "far": "mycelium-boss-far.webp",
+    "mid": "mycelium-boss-mid.webp",
+    "stage": "mycelium-boss-stage.webp"
+   },
+   "card": "mycelium-boss-card.webp",
+   "floorTop": 556,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "mycelium-c": {
+   "layers": {
+    "far": "mycelium-c-far.webp",
+    "mid": "mycelium-c-mid.webp",
+    "stage": "mycelium-c-stage.webp"
+   },
+   "card": "mycelium-c-card.webp",
+   "floorTop": 595,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "sky": {
+   "layers": {
+    "far": "sky-far.webp",
+    "mid": "sky-mid.webp",
+    "stage": "sky-stage.webp"
+   },
+   "card": "sky-card.webp",
+   "floorTop": 562,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "sky-b": {
+   "layers": {
+    "far": "sky-b-far.webp",
+    "mid": "sky-b-mid.webp",
+    "stage": "sky-b-stage.webp"
+   },
+   "card": "sky-b-card.webp",
+   "floorTop": 543,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "sky-boss": {
+   "layers": {
+    "far": "sky-boss-far.webp",
+    "mid": "sky-boss-mid.webp",
+    "stage": "sky-boss-stage.webp"
+   },
+   "card": "sky-boss-card.webp",
+   "floorTop": 550,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "sky-c": {
+   "layers": {
+    "far": "sky-c-far.webp",
+    "mid": "sky-c-mid.webp",
+    "stage": "sky-c-stage.webp"
+   },
+   "card": "sky-c-card.webp",
+   "floorTop": 574,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "soulcrypt": {
+   "layers": {
+    "far": "soulcrypt-far.webp",
+    "mid": "soulcrypt-mid.webp",
+    "stage": "soulcrypt-stage.webp"
+   },
+   "card": "soulcrypt-card.webp",
+   "floorTop": 546,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "soulcrypt-b": {
+   "layers": {
+    "far": "soulcrypt-b-far.webp",
+    "mid": "soulcrypt-b-mid.webp",
+    "stage": "soulcrypt-b-stage.webp"
+   },
+   "card": "soulcrypt-b-card.webp",
+   "floorTop": 582,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "soulcrypt-boss": {
+   "layers": {
+    "far": "soulcrypt-boss-far.webp",
+    "mid": "soulcrypt-boss-mid.webp",
+    "stage": "soulcrypt-boss-stage.webp"
+   },
+   "card": "soulcrypt-boss-card.webp",
+   "floorTop": 519,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "soulcrypt-c": {
+   "layers": {
+    "far": "soulcrypt-c-far.webp",
+    "mid": "soulcrypt-c-mid.webp",
+    "stage": "soulcrypt-c-stage.webp"
+   },
+   "card": "soulcrypt-c-card.webp",
+   "floorTop": 606,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "stormspire": {
+   "layers": {
+    "far": "stormspire-far.webp",
+    "mid": "stormspire-mid.webp",
+    "stage": "stormspire-stage.webp"
+   },
+   "card": "stormspire-card.webp",
+   "floorTop": 581,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "stormspire-b": {
+   "layers": {
+    "far": "stormspire-b-far.webp",
+    "mid": "stormspire-b-mid.webp",
+    "stage": "stormspire-b-stage.webp"
+   },
+   "card": "stormspire-b-card.webp",
+   "floorTop": 564,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "stormspire-boss": {
+   "layers": {
+    "far": "stormspire-boss-far.webp",
+    "mid": "stormspire-boss-mid.webp",
+    "stage": "stormspire-boss-stage.webp"
+   },
+   "card": "stormspire-boss-card.webp",
+   "floorTop": 565,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "stormspire-c": {
+   "layers": {
+    "far": "stormspire-c-far.webp",
+    "mid": "stormspire-c-mid.webp",
+    "stage": "stormspire-c-stage.webp"
+   },
+   "card": "stormspire-c-card.webp",
+   "floorTop": 553,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thorns": {
+   "layers": {
+    "far": "thorns-far.webp",
+    "mid": "thorns-mid.webp",
+    "stage": "thorns-stage.webp"
+   },
+   "card": "thorns-card.webp",
+   "floorTop": 546,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thorns-b": {
+   "layers": {
+    "far": "thorns-b-far.webp",
+    "mid": "thorns-b-mid.webp",
+    "stage": "thorns-b-stage.webp"
+   },
+   "card": "thorns-b-card.webp",
+   "floorTop": 561,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thorns-boss": {
+   "layers": {
+    "far": "thorns-boss-far.webp",
+    "mid": "thorns-boss-mid.webp",
+    "stage": "thorns-boss-stage.webp"
+   },
+   "card": "thorns-boss-card.webp",
+   "floorTop": 553,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thorns-c": {
+   "layers": {
+    "far": "thorns-c-far.webp",
+    "mid": "thorns-c-mid.webp",
+    "stage": "thorns-c-stage.webp"
+   },
+   "card": "thorns-c-card.webp",
+   "floorTop": 553,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thunder": {
+   "layers": {
+    "far": "thunder-far.webp",
+    "mid": "thunder-mid.webp",
+    "stage": "thunder-stage.webp"
+   },
+   "card": "thunder-card.webp",
+   "floorTop": 541,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thunder-b": {
+   "layers": {
+    "far": "thunder-b-far.webp",
+    "mid": "thunder-b-mid.webp",
+    "stage": "thunder-b-stage.webp"
+   },
+   "card": "thunder-b-card.webp",
+   "floorTop": 551,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thunder-boss": {
+   "layers": {
+    "far": "thunder-boss-far.webp",
+    "mid": "thunder-boss-mid.webp",
+    "stage": "thunder-boss-stage.webp"
+   },
+   "card": "thunder-boss-card.webp",
+   "floorTop": 530,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "thunder-c": {
+   "layers": {
+    "far": "thunder-c-far.webp",
+    "mid": "thunder-c-mid.webp",
+    "stage": "thunder-c-stage.webp"
+   },
+   "card": "thunder-c-card.webp",
+   "floorTop": 600,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "void": {
+   "layers": {
+    "far": "void-far.webp",
+    "mid": "void-mid.webp",
+    "stage": "void-stage.webp"
+   },
+   "card": "void-card.webp",
+   "floorTop": 557,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "void-b": {
+   "layers": {
+    "far": "void-b-far.webp",
+    "mid": "void-b-mid.webp",
+    "stage": "void-b-stage.webp"
+   },
+   "card": "void-b-card.webp",
+   "floorTop": 581,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "void-boss": {
+   "layers": {
+    "far": "void-boss-far.webp",
+    "mid": "void-boss-mid.webp",
+    "stage": "void-boss-stage.webp"
+   },
+   "card": "void-boss-card.webp",
+   "floorTop": 577,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "void-c": {
+   "layers": {
+    "far": "void-c-far.webp",
+    "mid": "void-c-mid.webp",
+    "stage": "void-c-stage.webp"
+   },
+   "card": "void-c-card.webp",
+   "floorTop": 602,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "volcano": {
+   "layers": {
+    "far": "volcano-far.webp",
+    "mid": "volcano-mid.webp",
+    "stage": "volcano-stage.webp"
+   },
+   "card": "volcano-card.webp",
+   "floorTop": 620,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "volcano-b": {
+   "layers": {
+    "far": "volcano-b-far.webp",
+    "mid": "volcano-b-mid.webp",
+    "stage": "volcano-b-stage.webp"
+   },
+   "card": "volcano-b-card.webp",
+   "floorTop": 548,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "volcano-boss": {
+   "layers": {
+    "far": "volcano-boss-far.webp",
+    "mid": "volcano-boss-mid.webp",
+    "stage": "volcano-boss-stage.webp"
+   },
+   "card": "volcano-boss-card.webp",
+   "floorTop": 553,
+   "floor": 0.68,
+   "groundY": 0.82
+  },
+  "volcano-c": {
+   "layers": {
+    "far": "volcano-c-far.webp",
+    "mid": "volcano-c-mid.webp",
+    "stage": "volcano-c-stage.webp"
+   },
+   "card": "volcano-c-card.webp",
+   "floorTop": 583,
+   "floor": 0.68,
+   "groundY": 0.82
+  }
+ }
+}

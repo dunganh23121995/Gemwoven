@@ -1,0 +1,1247 @@
+{
+ "version": 1,
+ "purpose": "Masks of the moving water and lava on each chapter map painting (flow.py)",
+ "items": {
+  "flow-abyss-water-fall": {
+   "file": "backgrounds/chapters/flow/abyss-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-abyss-water-stream": {
+   "file": "backgrounds/chapters/flow/abyss-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      188,
+      549,
+      245,
+      580
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      700,
+      506,
+      750,
+      526
+     ],
+     "dir": 180.0
+    },
+    {
+     "material": "water",
+     "box": [
+      746,
+      735,
+      803,
+      762
+     ],
+     "dir": 170.0
+    },
+    {
+     "material": "water",
+     "box": [
+      748,
+      1218,
+      808,
+      1257
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      507,
+      1372,
+      561,
+      1417
+     ],
+     "dir": 55.0
+    }
+   ]
+  },
+  "flow-astral-water-fall": {
+   "file": "backgrounds/chapters/flow/astral-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-astral-water-stream": {
+   "file": "backgrounds/chapters/flow/astral-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      189,
+      550,
+      248,
+      581
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      700,
+      508,
+      761,
+      535
+     ],
+     "dir": 180.0
+    },
+    {
+     "material": "water",
+     "box": [
+      747,
+      750,
+      812,
+      778
+     ],
+     "dir": 170.0
+    },
+    {
+     "material": "water",
+     "box": [
+      751,
+      1222,
+      813,
+      1260
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      507,
+      1367,
+      568,
+      1415
+     ],
+     "dir": 55.0
+    }
+   ]
+  },
+  "flow-bamboo-water-fall": {
+   "file": "backgrounds/chapters/flow/bamboo-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-bamboo-water-stream": {
+   "file": "backgrounds/chapters/flow/bamboo-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      193,
+      550,
+      246,
+      582
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      703,
+      512,
+      752,
+      535
+     ],
+     "dir": 180.0
+    },
+    {
+     "material": "water",
+     "box": [
+      748,
+      742,
+      810,
+      773
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      749,
+      1230,
+      811,
+      1267
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      507,
+      1377,
+      559,
+      1415
+     ],
+     "dir": 55.0
+    }
+   ]
+  },
+  "flow-celestial-water-fall": {
+   "file": "backgrounds/chapters/flow/celestial-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-coast-water-fall": {
+   "file": "backgrounds/chapters/flow/coast-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-coast-water-stream": {
+   "file": "backgrounds/chapters/flow/coast-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      190,
+      551,
+      249,
+      583
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      698,
+      516,
+      753,
+      540
+     ],
+     "dir": 180.0
+    },
+    {
+     "material": "water",
+     "box": [
+      744,
+      750,
+      809,
+      780
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      744,
+      1224,
+      810,
+      1262
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      509,
+      1381,
+      560,
+      1422
+     ],
+     "dir": 55.0
+    }
+   ]
+  },
+  "flow-crystal-water-fall": {
+   "file": "backgrounds/chapters/flow/crystal-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-crystal-water-stream": {
+   "file": "backgrounds/chapters/flow/crystal-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      491,
+      1375,
+      550,
+      1425
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-desert-water-fall": {
+   "file": "backgrounds/chapters/flow/desert-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-desert-water-stream": {
+   "file": "backgrounds/chapters/flow/desert-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      733,
+      755,
+      783,
+      783
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      484,
+      1363,
+      548,
+      1410
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-dream-water-fall": {
+   "file": "backgrounds/chapters/flow/dream-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-dream-water-stream": {
+   "file": "backgrounds/chapters/flow/dream-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      726,
+      738,
+      779,
+      766
+     ],
+     "dir": 15.0
+    },
+    {
+     "material": "water",
+     "box": [
+      767,
+      1242,
+      808,
+      1280
+     ],
+     "dir": 55.0
+    },
+    {
+     "material": "water",
+     "box": [
+      484,
+      1365,
+      548,
+      1411
+     ],
+     "dir": 35.0
+    }
+   ]
+  },
+  "flow-forest-water-fall": {
+   "file": "backgrounds/chapters/flow/forest-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-forest-water-stream": {
+   "file": "backgrounds/chapters/flow/forest-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      729,
+      737,
+      781,
+      765
+     ],
+     "dir": 15.0
+    },
+    {
+     "material": "water",
+     "box": [
+      773,
+      1228,
+      813,
+      1266
+     ],
+     "dir": 55.0
+    },
+    {
+     "material": "water",
+     "box": [
+      485,
+      1364,
+      552,
+      1416
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-foundry-lava-fall": {
+   "file": "backgrounds/chapters/flow/foundry-lava-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-foundry-lava-stream": {
+   "file": "backgrounds/chapters/flow/foundry-lava-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "lava",
+     "box": [
+      187,
+      533,
+      230,
+      559
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      734,
+      742,
+      777,
+      773
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      779,
+      1238,
+      821,
+      1274
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      503,
+      1349,
+      570,
+      1408
+     ],
+     "dir": 45.0
+    }
+   ]
+  },
+  "flow-haunted-water-fall": {
+   "file": "backgrounds/chapters/flow/haunted-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-haunted-water-stream": {
+   "file": "backgrounds/chapters/flow/haunted-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      211,
+      582,
+      248,
+      610
+     ],
+     "dir": 115.0
+    },
+    {
+     "material": "water",
+     "box": [
+      719,
+      735,
+      777,
+      767
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "water",
+     "box": [
+      270,
+      868,
+      327,
+      902
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      743,
+      1258,
+      801,
+      1295
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      490,
+      1364,
+      573,
+      1410
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      478,
+      1518,
+      516,
+      1548
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-ice-water-fall": {
+   "file": "backgrounds/chapters/flow/ice-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-ice-water-stream": {
+   "file": "backgrounds/chapters/flow/ice-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      208,
+      578,
+      250,
+      608
+     ],
+     "dir": 110.0
+    },
+    {
+     "material": "water",
+     "box": [
+      724,
+      734,
+      782,
+      766
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "water",
+     "box": [
+      274,
+      868,
+      332,
+      902
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      746,
+      1213,
+      801,
+      1253
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "water",
+     "box": [
+      491,
+      1369,
+      572,
+      1410
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      477,
+      1517,
+      516,
+      1548
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-marsh-water-fall": {
+   "file": "backgrounds/chapters/flow/marsh-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-marsh-water-stream": {
+   "file": "backgrounds/chapters/flow/marsh-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      207,
+      527,
+      264,
+      555
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      722,
+      731,
+      780,
+      765
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "water",
+     "box": [
+      255,
+      871,
+      319,
+      905
+     ],
+     "dir": 20.0
+    },
+    {
+     "material": "water",
+     "box": [
+      748,
+      1254,
+      804,
+      1293
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "water",
+     "box": [
+      489,
+      1365,
+      576,
+      1409
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      477,
+      1523,
+      515,
+      1554
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-obsidian-lava-fall": {
+   "file": "backgrounds/chapters/flow/obsidian-lava-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-obsidian-lava-stream": {
+   "file": "backgrounds/chapters/flow/obsidian-lava-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "lava",
+     "box": [
+      66,
+      273,
+      135,
+      298
+     ],
+     "dir": 15.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      806,
+      169,
+      908,
+      200
+     ],
+     "dir": 10.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      750,
+      1540,
+      829,
+      1575
+     ],
+     "dir": 155.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      167,
+      563,
+      227,
+      591
+     ],
+     "dir": 10.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      718,
+      732,
+      777,
+      768
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      274,
+      870,
+      326,
+      904
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      747,
+      1256,
+      807,
+      1293
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      486,
+      1364,
+      577,
+      1414
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      396,
+      1476,
+      449,
+      1517
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      477,
+      1522,
+      517,
+      1556
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-pine-water-fall": {
+   "file": "backgrounds/chapters/flow/pine-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-pine-water-stream": {
+   "file": "backgrounds/chapters/flow/pine-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      209,
+      579,
+      250,
+      609
+     ],
+     "dir": 110.0
+    },
+    {
+     "material": "water",
+     "box": [
+      724,
+      730,
+      781,
+      765
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "water",
+     "box": [
+      275,
+      867,
+      331,
+      902
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      746,
+      1255,
+      801,
+      1294
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "water",
+     "box": [
+      491,
+      1366,
+      574,
+      1410
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      477,
+      1519,
+      516,
+      1550
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-sky-water-fall": {
+   "file": "backgrounds/chapters/flow/sky-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-sky-water-stream": {
+   "file": "backgrounds/chapters/flow/sky-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      270,
+      869,
+      345,
+      920
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      700,
+      748,
+      767,
+      779
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      481,
+      1349,
+      552,
+      1400
+     ],
+     "dir": 45.0
+    },
+    {
+     "material": "water",
+     "box": [
+      470,
+      1530,
+      527,
+      1574
+     ],
+     "dir": 35.0
+    }
+   ]
+  },
+  "flow-thorns-water-fall": {
+   "file": "backgrounds/chapters/flow/thorns-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-thorns-water-stream": {
+   "file": "backgrounds/chapters/flow/thorns-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      684,
+      516,
+      718,
+      548
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "water",
+     "box": [
+      729,
+      739,
+      784,
+      768
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      285,
+      869,
+      338,
+      899
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      738,
+      1206,
+      818,
+      1245
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      510,
+      1356,
+      562,
+      1386
+     ],
+     "dir": 35.0
+    },
+    {
+     "material": "water",
+     "box": [
+      483,
+      1521,
+      521,
+      1547
+     ],
+     "dir": 30.0
+    }
+   ]
+  },
+  "flow-thunder-water-fall": {
+   "file": "backgrounds/chapters/flow/thunder-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-thunder-water-stream": {
+   "file": "backgrounds/chapters/flow/thunder-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      692,
+      749,
+      751,
+      782
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      283,
+      890,
+      333,
+      918
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "water",
+     "box": [
+      500,
+      1352,
+      562,
+      1400
+     ],
+     "dir": 40.0
+    }
+   ]
+  },
+  "flow-void-water-fall": {
+   "file": "backgrounds/chapters/flow/void-water-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-void-water-stream": {
+   "file": "backgrounds/chapters/flow/void-water-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "water",
+     "box": [
+      724,
+      762,
+      775,
+      791
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      286,
+      886,
+      333,
+      914
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      746,
+      1234,
+      808,
+      1266
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "water",
+     "box": [
+      510,
+      1357,
+      554,
+      1393
+     ],
+     "dir": 45.0
+    },
+    {
+     "material": "water",
+     "box": [
+      485,
+      1524,
+      518,
+      1551
+     ],
+     "dir": 35.0
+    }
+   ]
+  },
+  "flow-volcano-lava-fall": {
+   "file": "backgrounds/chapters/flow/volcano-lava-fall.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true
+  },
+  "flow-volcano-lava-stream": {
+   "file": "backgrounds/chapters/flow/volcano-lava-stream.webp",
+   "width": 471,
+   "height": 836,
+   "textless": true,
+   "transparent": true,
+   "streams": [
+    {
+     "material": "lava",
+     "box": [
+      33,
+      349,
+      66,
+      369
+     ],
+     "dir": 135.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      830,
+      149,
+      876,
+      170
+     ],
+     "dir": 120.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      670,
+      505,
+      712,
+      536
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      726,
+      740,
+      781,
+      765
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      284,
+      874,
+      333,
+      899
+     ],
+     "dir": 25.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      749,
+      1231,
+      815,
+      1262
+     ],
+     "dir": 30.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      511,
+      1355,
+      557,
+      1389
+     ],
+     "dir": 40.0
+    },
+    {
+     "material": "lava",
+     "box": [
+      481,
+      1529,
+      518,
+      1558
+     ],
+     "dir": 35.0
+    }
+   ]
+  }
+ }
+}

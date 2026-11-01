@@ -17,7 +17,7 @@
   function art(key){const img=document.createElement('img');img.src=(assets[key]||assets['icon-hero']).file;img.alt='';img.draggable=false;return img;}
   function box(el,r){['left','top','width','height'].forEach((p,i)=>el.style[p]=`${r[i]}px`);}
   // Painted chrome shared by dialogs, framed panels and buttons (existing assets only).
-  const chrome={frame:'settings-frame',board:'panel-parchment',btn:'button-gold',wood:'tab-wood',close:'skill-frame',plate:'nameplate',slot:'inventory-slot',crest:'crest',card:'card-dark'};
+  const chrome={frame:'settings-frame',board:'panel-parchment',btn:'btn-primary',wood:'btn-secondary',close:'skill-frame',plate:'nameplate',slot:'inventory-slot',crest:'crest',card:'card-dark'};
   for(const [name,key]of Object.entries(chrome))if(assets[key])document.documentElement.style.setProperty('--art-'+name,`url("${new URL(assets[key].file,document.baseURI).href}")`);
   // In-scene sheets use the portrait frame: the title sits on its plank and a crest covers the cog.
   function framePanel(el,node){

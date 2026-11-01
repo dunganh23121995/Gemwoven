@@ -1,0 +1,5 @@
+Image 1 is only a STYLE reference (palette, rendering, materials, lighting) from this game's map art.
+
+Asset: ONE long hanging ROPE BRIDGE prop for a fantasy RPG world map, running straight LEFT to RIGHT across the whole canvas, seen from a high three-quarter top-down camera: weathered golden-brown wooden planks with small gaps, thick twisted ropes along both sides with simple wooden posts at the two ends, the middle sagging only slightly, a few small green vines and tiny lantern-glow accents on the posts. The bridge is about 14% of the canvas tall (including ropes and posts) and spans from 4% to 96% of the canvas width, centred vertically. Nothing else: no islands, no ground, no cliffs, no water, no clouds under it.
+Style: premium hand-painted chibi high fantasy mobile game art, clean HD painting like Image 1, NOT pixel art.
+Canvas 1536x512, background 100% solid flat #FF00FF magenta, no gradient, no shadow. Never use magenta or pink in the bridge. NO text, NO labels, NO UI, NO characters.

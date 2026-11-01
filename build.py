@@ -153,6 +153,9 @@ for name in ['theme-creature-items','boss-items']:
         if key.startswith('creature-'):art['campaignCreatures'][key[9:]]=sheet
         else:art['worldBosses'][key[5:]]={action:sheet for action in ['idle','attack','cast','hurt']}
 art['worldScenes']={p.stem:image(p) for p in (root/'assets/gemwoven/backgrounds/battles').glob('*.webp')}
+# Each chapter's own combat scenery (assets/scenes/chapters, gen_chapters.py + export_chapters.py): three layers
+# drawn apart (far sky, mid-distance scenery, the stage with its framing objects).
+art['chapterParallax']={cid:[image(f'assets/scenes/chapters/{e["layers"][layer]}') for layer in ['far','mid','stage']] for cid,e in json.loads((root/'assets/scenes/chapters/manifest.json').read_text(encoding='utf-8'))['chapters'].items()}
 ecosystem_path=root/'assets/gemwoven/chapter-ecosystem-items.json'
 art['counterItems']={}
 if ecosystem_path.exists():

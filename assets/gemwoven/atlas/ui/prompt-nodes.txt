@@ -1,0 +1,11 @@
+Image 1 is the STYLE reference: this game's painted floating-island chapter map (premium hand-painted chibi high-fantasy mobile RPG, warm light, rich colours). Match its rendering and materials exactly.
+
+Create a 3 columns x 2 rows sheet, 1536x1024, six equal 512x512 cells, each ONE "stage node" emblem for a level-select map, seen from a high three-quarter top-down camera so it lies flat on the ground like a carved round stone seal set into the path. Each is a compact round disc about 62% of the cell wide, its flat top an ornate carved medallion with an EMPTY smooth round centre plate (a number will be printed there later; draw no number).
+Cell 1 NORMAL: warm sand-gold stone disc with a thin polished gold rim and small carved leaf motifs, mossy edge.
+Cell 2 ELITE: amethyst-violet crystal disc with silver-gold rim, small crystal shards and a faint violet glow around its rim.
+Cell 3 BOSS: larger and grander (about 72% of the cell wide), deep crimson stone with an ornate gold rim, small gold horns around it, a faint red-orange glow.
+Cell 4 CLEARED: the same as cell 1 but brighter with a green-gold leaf wreath around the rim (a beaten stage).
+Cell 5 NEXT: the same as cell 1 surrounded by a bright golden glowing ring of light and soft sparkles (the stage to play next).
+Cell 6 LOCKED: the same as cell 1 but grey weathered stone, desaturated, a few cracks, no glow.
+Same camera, same scale and centring in every cell; each fully inside its cell with at least 12% magenta margin on every side.
+Clean HD smooth painting like Image 1, NOT pixel art, NOT flat vector. Background 100% solid flat #FF00FF magenta, no gradient, no ground, no cast shadow. NO text, NO numbers, NO letters, NO characters.

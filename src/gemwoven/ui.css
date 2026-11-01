@@ -165,11 +165,13 @@ body{overflow-x:hidden}
 .gw-note b{display:block;font-size:15px;color:#6d4318;margin-bottom:2px}
 .gw-note p{margin:3px 0;font-size:14px;white-space:normal}
 
-/* Painted buttons: two mirrored halves of the art, clipped at the centre diamond. */
-.gw-btn,.game-btn{--h:48px;--art:var(--art-btn);--u:calc(var(--h) / 120);--t:40;--b:30;--L1:65;--R1:200;--C1:164;--L2:195;--R2:70;--C2:161;
+/* Painted buttons (atlas/ui/btn-*.webp: a slim gold frame, a crest on top, pointed gem caps): two halves of the art,
+   each clipped at the crest's centre, the straight runs between the caps and the crest stretched. Art units: the
+   frame's body is 320px tall (--u), the crest rises 80px above it (--t). */
+.gw-btn,.game-btn{--h:48px;--art:var(--art-btn);--u:calc(var(--h) / 320);--t:80;--b:0;--L1:210;--R1:852;--C1:736;--L2:852;--R2:192;--C2:736;
   position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.35em;vertical-align:middle;
-  min-height:var(--h);min-width:calc(250*var(--u));margin:calc(var(--t)*var(--u)*.85) 4px calc(var(--b)*var(--u)*.85);
-  padding:calc(6*var(--u)) calc(58*var(--u));border:0;border-radius:0;background:none!important;box-shadow:none;
+  min-height:var(--h);min-width:calc(720*var(--u));margin:calc(var(--t)*var(--u)*.85) 4px calc(var(--b)*var(--u)*.85);
+  padding:0 calc(190*var(--u)) calc(62*var(--u));border:0;border-radius:0;background:none!important;box-shadow:none;
   color:#3b2410;font:700 17px/1.12 var(--gw-font);text-shadow:0 1px 0 #ffe9ae;text-decoration:none;text-align:center;
   white-space:normal;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:none}
 .gw-btn::before,.gw-btn::after,.game-btn::before,.game-btn::after{content:'';position:absolute;z-index:-1;pointer-events:none;
@@ -181,8 +183,8 @@ body{overflow-x:hidden}
   border-width:0 calc(var(--R2)*var(--u)) 0 calc(var(--L2)*var(--u));border-image-slice:0 var(--R2) 0 var(--L2) fill;
   clip-path:inset(-2px -2px -2px calc(var(--C2)*var(--u) - .5px))}
 .gw-btn.secondary,.game-btn.secondary,.live-tabs .game-btn:not(.active),.chat-tabs .game-btn:not(.active){
-  --art:var(--art-wood);--u:calc(var(--h) / 84);--t:28;--b:14;--L1:50;--R1:199;--C1:179;--L2:200;--R2:49;--C2:180;
-  min-width:calc(170*var(--u));padding-inline:calc(44*var(--u));color:#ffe6a8;text-shadow:0 1px 2px #1b0d04}
+  --art:var(--art-wood);--u:calc(var(--h) / 316);--t:79;
+  min-width:calc(720*var(--u));padding-inline:calc(190*var(--u));color:#ffe6a8;text-shadow:0 1px 2px #1b0d04}
 .gw-btn:hover:not(:disabled)::before,.gw-btn:hover:not(:disabled)::after,.game-btn:hover:not(:disabled)::before,.game-btn:hover:not(:disabled)::after{filter:brightness(1.1)}
 .gw-btn:active:not(:disabled),.game-btn:active:not(:disabled){transform:scale(.97)}
 .gw-btn:focus-visible,.game-btn:focus-visible{outline:none}

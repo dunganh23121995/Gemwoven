@@ -1,0 +1,461 @@
+{
+ "version": 1,
+ "purpose": "Kh\u00e1m Ph\u00e1 world atlas (one floating region island per chapter) and stage pedestals",
+ "items": {
+  "atlas-forest": {
+   "file": "atlas/forest.webp",
+   "width": 737,
+   "height": 524,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-volcano": {
+   "file": "atlas/volcano.webp",
+   "width": 737,
+   "height": 504,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-ice": {
+   "file": "atlas/ice.webp",
+   "width": 737,
+   "height": 523,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-thunder": {
+   "file": "atlas/thunder.webp",
+   "width": 737,
+   "height": 514,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-marsh": {
+   "file": "atlas/marsh.webp",
+   "width": 737,
+   "height": 515,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-desert": {
+   "file": "atlas/desert.webp",
+   "width": 737,
+   "height": 493,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-abyss": {
+   "file": "atlas/abyss.webp",
+   "width": 737,
+   "height": 508,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-foundry": {
+   "file": "atlas/foundry.webp",
+   "width": 737,
+   "height": 526,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-crystal": {
+   "file": "atlas/crystal.webp",
+   "width": 737,
+   "height": 532,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-haunted": {
+   "file": "atlas/haunted.webp",
+   "width": 737,
+   "height": 527,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-sky": {
+   "file": "atlas/sky.webp",
+   "width": 737,
+   "height": 525,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-thorns": {
+   "file": "atlas/thorns.webp",
+   "width": 737,
+   "height": 529,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-celestial": {
+   "file": "atlas/celestial.webp",
+   "width": 737,
+   "height": 514,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-void": {
+   "file": "atlas/void.webp",
+   "width": 737,
+   "height": 516,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-eldergrove": {
+   "file": "atlas/eldergrove.webp",
+   "width": 737,
+   "height": 524,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-caldera": {
+   "file": "atlas/caldera.webp",
+   "width": 737,
+   "height": 516,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-glacier": {
+   "file": "atlas/glacier.webp",
+   "width": 737,
+   "height": 532,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-stormspire": {
+   "file": "atlas/stormspire.webp",
+   "width": 737,
+   "height": 524,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-soulcrypt": {
+   "file": "atlas/soulcrypt.webp",
+   "width": 737,
+   "height": 517,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-mycelium": {
+   "file": "atlas/mycelium.webp",
+   "width": 737,
+   "height": 517,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-geode": {
+   "file": "atlas/geode.webp",
+   "width": 737,
+   "height": 505,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-hourglass": {
+   "file": "atlas/hourglass.webp",
+   "width": 737,
+   "height": 528,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-coralreef": {
+   "file": "atlas/coralreef.webp",
+   "width": 737,
+   "height": 516,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-moonkeep": {
+   "file": "atlas/moonkeep.webp",
+   "width": 737,
+   "height": 538,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-sea": {
+   "file": "atlas/sea.webp",
+   "width": 824,
+   "height": 1336,
+   "textless": true,
+   "transparent": false
+  },
+  "atlas-unknown": {
+   "file": "atlas/unknown.webp",
+   "width": 737,
+   "height": 498,
+   "textless": true,
+   "transparent": true
+  },
+  "pedestal-normal": {
+   "file": "atlas/pedestal-normal.webp",
+   "width": 481,
+   "height": 292,
+   "textless": true,
+   "transparent": true
+  },
+  "pedestal-elite": {
+   "file": "atlas/pedestal-elite.webp",
+   "width": 481,
+   "height": 305,
+   "textless": true,
+   "transparent": true
+  },
+  "pedestal-boss": {
+   "file": "atlas/pedestal-boss.webp",
+   "width": 481,
+   "height": 358,
+   "textless": true,
+   "transparent": true
+  },
+  "atlas-bridge": {
+   "file": "atlas/bridge.webp",
+   "width": 1505,
+   "height": 269,
+   "textless": true,
+   "transparent": true
+  },
+  "node-normal": {
+   "file": "atlas/ui/node-normal.webp",
+   "width": 491,
+   "height": 414,
+   "textless": true,
+   "transparent": true
+  },
+  "node-elite": {
+   "file": "atlas/ui/node-elite.webp",
+   "width": 491,
+   "height": 436,
+   "textless": true,
+   "transparent": true
+  },
+  "node-boss": {
+   "file": "atlas/ui/node-boss.webp",
+   "width": 491,
+   "height": 442,
+   "textless": true,
+   "transparent": true
+  },
+  "node-cleared": {
+   "file": "atlas/ui/node-cleared.webp",
+   "width": 491,
+   "height": 412,
+   "textless": true,
+   "transparent": true
+  },
+  "node-next": {
+   "file": "atlas/ui/node-next.webp",
+   "width": 491,
+   "height": 423,
+   "textless": true,
+   "transparent": true
+  },
+  "node-locked": {
+   "file": "atlas/ui/node-locked.webp",
+   "width": 491,
+   "height": 410,
+   "textless": true,
+   "transparent": true
+  },
+  "ui-ribbon": {
+   "file": "atlas/ui/ui-ribbon.webp",
+   "width": 491,
+   "height": 217,
+   "textless": true,
+   "transparent": true
+  },
+  "ui-header": {
+   "file": "atlas/ui/ui-header.webp",
+   "width": 491,
+   "height": 148,
+   "textless": true,
+   "transparent": true
+  },
+  "ui-slot": {
+   "file": "atlas/ui/ui-slot.webp",
+   "width": 480,
+   "height": 491,
+   "textless": true,
+   "transparent": true
+  },
+  "ui-slot-on": {
+   "file": "atlas/ui/ui-slot-on.webp",
+   "width": 491,
+   "height": 476,
+   "textless": true,
+   "transparent": true
+  },
+  "ui-row": {
+   "file": "atlas/ui/ui-row.webp",
+   "width": 491,
+   "height": 114,
+   "textless": true,
+   "transparent": true
+  },
+  "ui-socket": {
+   "file": "atlas/ui/ui-socket.webp",
+   "width": 491,
+   "height": 478,
+   "textless": true,
+   "transparent": true
+  },
+  "ring-normal": {
+   "file": "atlas/ui/ring-normal.webp",
+   "width": 512,
+   "height": 512,
+   "textless": true,
+   "transparent": true
+  },
+  "ring-elite": {
+   "file": "atlas/ui/ring-elite.webp",
+   "width": 512,
+   "height": 512,
+   "textless": true,
+   "transparent": true
+  },
+  "ring-boss": {
+   "file": "atlas/ui/ring-boss.webp",
+   "width": 512,
+   "height": 512,
+   "textless": true,
+   "transparent": true
+  },
+  "ring-cleared": {
+   "file": "atlas/ui/ring-cleared.webp",
+   "width": 512,
+   "height": 512,
+   "textless": true,
+   "transparent": true
+  },
+  "ring-next": {
+   "file": "atlas/ui/ring-next.webp",
+   "width": 512,
+   "height": 512,
+   "textless": true,
+   "transparent": true
+  },
+  "ring-locked": {
+   "file": "atlas/ui/ring-locked.webp",
+   "width": 512,
+   "height": 512,
+   "textless": true,
+   "transparent": true
+  },
+  "plaque-normal": {
+   "file": "atlas/ui/plaque-normal.webp",
+   "width": 160,
+   "height": 152,
+   "textless": true,
+   "transparent": true
+  },
+  "plaque-elite": {
+   "file": "atlas/ui/plaque-elite.webp",
+   "width": 160,
+   "height": 151,
+   "textless": true,
+   "transparent": true
+  },
+  "plaque-boss": {
+   "file": "atlas/ui/plaque-boss.webp",
+   "width": 160,
+   "height": 146,
+   "textless": true,
+   "transparent": true
+  },
+  "plaque-cleared": {
+   "file": "atlas/ui/plaque-cleared.webp",
+   "width": 160,
+   "height": 142,
+   "textless": true,
+   "transparent": true
+  },
+  "plaque-next": {
+   "file": "atlas/ui/plaque-next.webp",
+   "width": 160,
+   "height": 146,
+   "textless": true,
+   "transparent": true
+  },
+  "plaque-locked": {
+   "file": "atlas/ui/plaque-locked.webp",
+   "width": 160,
+   "height": 155,
+   "textless": true,
+   "transparent": true
+  },
+  "face-novice": {
+   "file": "atlas/ui/face-novice.webp",
+   "width": 256,
+   "height": 252,
+   "textless": true,
+   "transparent": true
+  },
+  "face-fire": {
+   "file": "atlas/ui/face-fire.webp",
+   "width": 256,
+   "height": 252,
+   "textless": true,
+   "transparent": true
+  },
+  "face-ice": {
+   "file": "atlas/ui/face-ice.webp",
+   "width": 256,
+   "height": 252,
+   "textless": true,
+   "transparent": true
+  },
+  "face-earth": {
+   "file": "atlas/ui/face-earth.webp",
+   "width": 256,
+   "height": 252,
+   "textless": true,
+   "transparent": true
+  },
+  "face-lightning": {
+   "file": "atlas/ui/face-lightning.webp",
+   "width": 256,
+   "height": 251,
+   "textless": true,
+   "transparent": true
+  },
+  "face-shadow": {
+   "file": "atlas/ui/face-shadow.webp",
+   "width": 256,
+   "height": 251,
+   "textless": true,
+   "transparent": true
+  },
+  "btn-primary": {
+   "file": "atlas/ui/btn-primary.webp",
+   "width": 1472,
+   "height": 322,
+   "textless": true,
+   "transparent": true
+  },
+  "btn-secondary": {
+   "file": "atlas/ui/btn-secondary.webp",
+   "width": 1472,
+   "height": 319,
+   "textless": true,
+   "transparent": true
+  },
+  "reward-star": {
+   "file": "atlas/ui/reward-star.webp",
+   "width": 160,
+   "height": 150,
+   "textless": true,
+   "transparent": true
+  },
+  "icon-battle": {
+   "file": "atlas/ui/icon-battle.webp",
+   "width": 128,
+   "height": 118,
+   "textless": true,
+   "transparent": true
+  },
+  "water-flow": {
+   "file": "atlas/ui/water-flow.webp",
+   "width": 470,
+   "height": 755,
+   "textless": true,
+   "transparent": true
+  }
+ }
+}

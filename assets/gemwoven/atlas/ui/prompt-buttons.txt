@@ -1,0 +1,7 @@
+Image 1 is the current primary button and Image 2 the current secondary button of this premium hand-painted chibi high-fantasy mobile RPG. Their INSIDE fills are good and must stay the same look (Image 1: glossy warm orange-amber gem glass; Image 2: dark walnut wood planks). Their BORDERS look crude, thick and blurry: redesign only the border.
+
+Create a 1536x1024 sheet with two wide game buttons, one above the other, each centred in its half (top half 1536x512, bottom half 1536x512), each about 1300 pixels wide and 300 pixels tall, perfectly symmetric left-right.
+Top button PRIMARY: the glossy orange-amber gem fill of Image 1, inside a refined, slim, crisp polished gold frame: a fine double gold line with a thin dark inner edge, elegant pointed ends (a slim arrow-like cap on the left and right ends with a small amber gem each), and one small elegant gold crest with a tiny amber gem centred on the top edge only. Smooth gentle gold highlights, sharp clean detail, the frame thin compared with the button height.
+Bottom button SECONDARY: the dark walnut wood fill of Image 2 inside the same refined slim gold frame (same shape, ends and crest), with tiny blue sapphire gems instead of amber.
+The straight top and bottom edges of each frame between the end caps and the crest are plain and uniform (they will be stretched). Empty face, no text.
+Clean HD smooth painting, NOT pixel art. Background 100% solid flat #FF00FF magenta, no gradient, no shadow. NO text, NO letters, NO icons.

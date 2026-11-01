@@ -42,7 +42,7 @@ async function run(hero,mode='campaign',index=1){
   const qa=w.gameQA;assert.ok(qa);qa.setReduced(true);d.getElementById('soundBtn').click();
   assert.equal(d.getElementById('volume-music').value,'37','Combat uses the same audio settings as Home');assert.equal(d.getElementById('audioSettingsBtn').hidden,true);
   assert.equal(d.querySelectorAll('#classGrid button').length,1,'Only pinned owned hero may fight');
-  d.querySelector('#classGrid button').click();d.getElementById('startBtn').click();
+  assert.equal(d.getElementById('selectDialog').open,false,'A fight from the hub starts at once with its chosen hero');
   assert.equal(qa.state.key,hero);assert.equal(qa.state.hp,encounter.stats.hp);assert.equal(qa.state.enemyMax,mode==='duel'?encounter.stats.hp:mode==='pvp'?Math.round(encounter.stats.hp*1.15):encounter.enemyHp);
   const kit=encounter.stats.kit;assert.ok(kit,'Battle snapshot carries the skill kit');assert.equal(qa.state.energy,kit.startEnergy,'Evolution start energy');
   if(['pvp','duel'].includes(mode)){assert.equal(kit.power,1);assert.equal(kit.mutation,false);assert.equal(kit.awakened,false);assert.deepEqual(encounter.stats.affixes,[]);}

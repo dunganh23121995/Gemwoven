@@ -60,7 +60,7 @@ function mountSceneAmbience(){
     atmosphere=document.createElement('div');atmosphere.id='sceneAtmosphere';atmosphere.className='scene-atmosphere';
     atmosphere.setAttribute('aria-hidden','true');
     atmosphere.innerHTML='<div class="ambient-mist mist-far"></div><div class="ambient-mist mist-near"></div>'+
-      Array.from({length:12},(_,i)=>`<i class="ambient-speck" style="--x:${7+(i*29)%88}%;--y:${12+(i*17)%73}%;--drift:${i%2?18:-13}px;--size:${2+i%3}px;--duration:${9+i%5*2}s;--delay:${-i*2.7}s"></i>`).join('');
+      Array.from({length:18},(_,i)=>`<i class="ambient-speck" style="--x:${7+(i*29)%88}%;--y:${12+(i*17)%73}%;--drift:${i%2?18:-13}px;--size:${2+i%3}px;--duration:${9+i%5*2}s;--delay:${-i*2.7}s"></i>`).join('');
     $('landscape').after(atmosphere);
   }
   syncSceneMusic();

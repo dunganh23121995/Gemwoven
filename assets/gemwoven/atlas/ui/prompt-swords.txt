@@ -1,0 +1,3 @@
+Image 1 is the STYLE reference: icons of this premium hand-painted chibi high-fantasy mobile RPG: thick clean shapes, polished warm gold, soft highlights, dark outline.
+Draw ONE small game icon centred on a 1024x1024 canvas: two crossed short swords (an X), warm polished gold blades with a pale highlight edge, dark brown leather grips, small gold crossguards with a tiny amber gem, a crisp dark brown outline, simple bold silhouette that reads at 40 pixels. About 72% of the canvas, at least 12% margin.
+Clean HD painting like Image 1, NOT pixel art, NOT flat vector, NOT emoji. Background 100% solid flat #FF00FF magenta, no gradient, no shadow. NO text.

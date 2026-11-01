@@ -1,0 +1,8 @@
+Image 1 is only a STYLE reference (palette, rendering, materials, lighting) from this game's chapter map art. Do not copy its layout.
+
+Asset: ONE floating island REGION for a fantasy RPG WORLD ATLAS map, seen from a high three-quarter top-down camera like a small diorama of a country. Region: a time sand palace: a golden sand palace with a giant hourglass tower, floating clock rings, sand falls.
+Shape: one broad, roughly round-to-oval landmass about 86% of the canvas wide and about 62% of the canvas tall, its flat top surface covered with the region's terrain, rivers, small buildings and landmarks drawn small and dense like a map (landmarks never taller than 25% of the canvas), a thick rocky underside with hanging roots and two or three small waterfalls falling off its rim, a few wisps of white cloud hugging its lower rim. The island fills the canvas centrally.
+Style: premium hand-painted chibi high fantasy mobile game art, crisp charming rounded shapes, rich saturated colours, soft warm light, clean HD painting like Image 1. NOT pixel art.
+Containment: everything (island, waterfalls, clouds) stays fully inside the canvas with at least 5% empty margin on every side.
+Background 100% solid flat #FF00FF magenta, no gradient, no sky, no sea, no ground plane, no shadow. Never use magenta or hot pink inside the island.
+NO text, NO letters, NO numbers, NO labels, NO UI, NO frames, NO characters, NO monsters, NO icons.

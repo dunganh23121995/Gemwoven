@@ -1,0 +1,11 @@
+Image 1 is the STYLE reference: this game's painted floating-island chapter map (premium hand-painted chibi high-fantasy mobile RPG, warm light, rich colours). Image 2 shows the six stage-node themes used before (normal, elite, boss, cleared, next, locked); keep their colours and motifs but draw them in the new form below.
+
+Create a 3 columns x 2 rows sheet, 1536x1024, six equal 512x512 cells. Each cell is ONE flat "stage ring" DECAL seen from STRAIGHT ABOVE (orthographic top-down, perfectly circular, no perspective, no side, no thickness, no 3D edge): an ornate thin RING inlaid flat into stone, like a magic circle painted on the ground. The ring is about 80% of the cell wide; its CENTRE IS EMPTY (pure magenta inside the inner edge of the ring, about 62% of the cell wide), because the painted stone platform must show through.
+Cell 1 NORMAL: polished gold ring band with four small diamond studs at north, east, south and west and tiny carved leaf motifs, a thin outer line.
+Cell 2 ELITE: violet amethyst ring band with silver-gold edges, four small violet crystal studs, a faint violet glow on the band.
+Cell 3 BOSS: wider crimson-and-gold ring band, eight small gold spikes pointing outward around it, red gems, a faint red-orange glow on the band.
+Cell 4 CLEARED: the gold ring of cell 1 wrapped in a flat green-gold laurel leaf wreath.
+Cell 5 NEXT: the gold ring of cell 1 glowing bright gold with soft light sparkles on the band.
+Cell 6 LOCKED: the same ring in grey weathered stone, cracked, desaturated, no glow.
+Everything flat on the picture plane, same scale and centring in every cell, each fully inside its cell with at least 8% magenta margin.
+Clean HD smooth painting like Image 1, NOT pixel art. Background and ring centres 100% solid flat #FF00FF magenta, no gradient, no cast shadow. NO text, NO numbers, NO letters.

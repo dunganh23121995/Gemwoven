@@ -39,7 +39,13 @@
     el.style.setProperty('--aura-body-shift',a.bodyX!=null?((a.bodyX-a.x)*width)+'px':'0px');
     return {width,height,visible};
   }
-  window.GEMWOVEN_FORMS={decorateBody,fitBody};
+  // A hero's form effects without its showcase (the exploration map shows its combat rest).
+  function decorateRest(el,key,form){
+    if(key==='novice'||form<2)return;
+    el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
+    el.style.setProperty('--form-color',palette[key]);if(form===3)el.append(aura(key,form));
+  }
+  window.GEMWOVEN_FORMS={decorateBody,fitBody,decorateRest};
   const decorate=G.decorate;
   G.decorate=state=>{
     const snapshot=G.engine.read();
