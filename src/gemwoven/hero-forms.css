@@ -97,3 +97,7 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 @keyframes aura-mote-rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.6)}12%{opacity:.95}50%{transform:translate(var(--sway),-20cqh) rotate(calc(var(--spin) * .5)) scale(.9)}85%{opacity:.7}100%{opacity:0;transform:translate(calc(var(--sway) * -.4),-40cqh) rotate(var(--spin)) scale(.6)}}
 body.reduced-motion .aura-motes,.reduced-motion .aura-motes{display:none}
 body.ambience-paused .aura-motes i{animation-play-state:paused}
+/* Noct's floor cloud (the lower part of his aura strip) is not used for now, in town, on the map and in combat;
+   the art and markup stay, so deleting this rule brings it back. The chain and clouds above it remain. */
+[data-hero-element="shadow"] .hero-form-aura .form-aura-floorpart{display:none}
+[data-hero-element="shadow"] .form-aura-foreground:not(.form-aura-front) .form-aura-band{-webkit-mask-image:linear-gradient(to top,transparent 0 36%,#000 40%);mask-image:linear-gradient(to top,transparent 0 36%,#000 40%)}
