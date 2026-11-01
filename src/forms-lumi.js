@@ -129,10 +129,10 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   const root=actor('hero'),target=actor('enemy'),pending=[],ledger={raw:0,applied:0},old=root.style.transform,oldZ=root.style.zIndex,oldTarget=target.style.transform;
   const start=performance.now(),at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   const count=Math.max(1,hits),body=lumiFoeBody(),scene=$('scene'),W=scene.clientWidth,H=scene.clientHeight;
-  // The sky sign hangs over the foe, clear of its head, inside the stage; over a towering foe
-  // (a boss) there is little sky left, so the sign shrinks rather than hiding its whole body.
-  const sign=Math.max(110,Math.min(form===3?190:200,Math.max(body.width,body.height)*(form===3?1.3:1.25),Math.max(0,body.top)*1.2+40));
-  const sky={x:Math.max(sign*.5+6,Math.min(W-sign*.5-6,body.x)),y:Math.max(sign*.45,Math.min(body.top-sign*.6,H*.3))};
+  // The sky sign (form 2's pentagram, form 3's galaxy) keeps one size whatever it faces (the size it has over an
+  // ordinary foe) and hangs right under the stage's ceiling, above the foe.
+  const sign=110;
+  const sky={x:Math.max(sign*.5+6,Math.min(W-sign*.5-6,body.x)),y:sign*.5+8};
   const strike=Math.max(84,Math.min(150,body.width*.95));
   let amount=0,blocked=0,seal=null,galaxy=null,spin=null;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='chant';root.dataset.foeHudOver='true';
