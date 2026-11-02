@@ -65,8 +65,8 @@
   Object.defineProperty(RESOURCES,'heroFragments',{value:['Mảnh '+HEROES[SUMMON_BANNER.hero].name,'portrait-'+SUMMON_BANNER.hero],enumerable:false});
   Object.defineProperty(RESOURCES,'noviceFragments',{value:['Mảnh Hiro','portrait-novice'],enumerable:false});
   const STAR_MILESTONES=[50,100,150];
-  // Hiro is never summoned, so his copies come from play: chapter star chests and first clears of
-  // every tenth endless floor. 80 fragments fuse into a copy, as for every hero.
+  // Hiro is never summoned, so his copies come from play (newbie week, campaign daily quest, chapter star chests and first clears of
+  // every tenth endless floor). 80 fragments fuse into a copy, as for every hero.
   const HIRO_FRAGMENTS={chest:{50:0,100:10,150:20},endlessEvery:10,endless:10};
   const CREATURES=[{id:'slime',name:'Slime Rêu',skill:'Nảy Mầm'},{id:'acorn',name:'Mầm Hạt Dẻ',skill:'Hạt Nảy'},{id:'bat',name:'Dơi Hang',skill:'Cánh Đêm'}];
   const EVOLUTION=[
@@ -159,7 +159,9 @@
     const kit={key,form,evolution,ranks,levels:[active,passive,mutation,awaken],activePower:round(activePower),formPower,evolutionPower:round(bonus.power),power,startEnergy:bonus.startEnergy,
       base:base.base,hits:base.hits,damage:Math.round(base.base*power),sword:1,attackScale:1,shieldGem:4,energy:1,damageReduction:0,attackBonus:0,hpBonus:0,defenseBonus:0,
       mutation:mutation>0,awakened:awaken>0,awaken:awaken?{attack:round(.12+.01*awaken),hp:round(.1+.005*(awaken-1))}:{attack:0,hp:0}};
-    if(key==='novice'){kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
+    // Hiro's traveller's edge: sword gems +20% (balance-sim: geared Hiro wins about half of chapter bosses at the
+    // recommended level). Normalized play (local PvP, practice) keeps both sides even.
+    if(key==='novice'){if(!normalized)kit.sword=1.2;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
     if(key==='fire'){kit.sword=1.6;kit.attackBonus=round(.025*passive);if(mutation||form===3)kit.burn={base:round(8*(1+.1*mutation),2),turns:(mutation>=10?4:mutation>=5?3:2)+(form===3?1:0)};}
     if(key==='ice'){kit.shieldGem=8;kit.damageReduction=.2;kit.defenseBonus=round(.008*passive);kit.armor=Math.round((base.armor+3*(active-1))*(form===3?1.6:1));kit.enemyDrain=form===3?25:0;kit.mutationArmor=mutation?round(.06+.005*(mutation-1)):0;}
     if(key==='earth'){kit.attackScale=.75;kit.hpBonus=round(.015*passive);kit.heal=Math.round((base.heal+5*(active-1))*formPower*bonus.power);kit.burst=round(base.burst+.1*(active-1)+(form===3?.5:0),2);kit.stun=base.stun;kit.regenTurns=base.regen+(form===3?1:0);kit.mutationArmor=mutation?round(.04+.005*(mutation-1)):0;}
@@ -193,7 +195,7 @@
     }
     if(slot===1){
       const learned=kit.levels[1]>0;
-      return {novice:()=>learned?`Giảm ${pct(kit.defenseBonus)} sát thương nhận vào.`:'Học để giảm sát thương nhận vào.',fire:()=>'Ngọc kiếm gây thêm 60% sát thương.'+(learned?` Công +${pct(kit.attackBonus)}.`:''),ice:()=>'Giảm 20% sát thương nhận vào; ngọc khiên cho 8 giáp.'+(learned?` Phòng thủ +${pct(kit.defenseBonus)}.`:''),
+      return {novice:()=>'Ngọc kiếm gây thêm 20% sát thương.'+(learned?` Giảm ${pct(kit.defenseBonus)} sát thương nhận vào.`:' Học để giảm sát thương nhận vào.'),fire:()=>'Ngọc kiếm gây thêm 60% sát thương.'+(learned?` Công +${pct(kit.attackBonus)}.`:''),ice:()=>'Giảm 20% sát thương nhận vào; ngọc khiên cho 8 giáp.'+(learned?` Phòng thủ +${pct(kit.defenseBonus)}.`:''),
         earth:()=>`Đánh thường còn ${pct(kit.attackScale)} sát thương; đổi lại HP rất cao.`+(learned?` HP +${pct(kit.hpBonus)}.`:''),lightning:()=>`Năng lượng từ ngọc ×${vi(kit.energy,2)}.`,shadow:()=>'Không bị khắc hệ.'+(learned?` Công +${pct(kit.attackBonus)}.`:'')}[k]();
     }
     if(slot===2){

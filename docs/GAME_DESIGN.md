@@ -189,8 +189,9 @@ Số lượt trung bình khi thắng: Hiro 40–50, Mika 1★ 15–25, Mika 4★
    và trước đây không có gì dẫn người chơi tới đó. → Bảng **Lộ trình** và **Chi tiết lực chiến** [Đêm nay].
 2. Có đồ, Hiro ở cấp gợi ý thắng boss ~40–55% — đúng mục tiêu. Hiro 2★ (nhờ mảnh) cải thiện rõ.
 3. Tướng hiếm 1★ có đồ ~80–96% ở cấp gợi ý: **kỹ năng đặc biệt tăng xác suất qua ải**, đúng định hướng.
-4. Vấn đề còn lại: trận Hiro **quá dài** (40–50 lượt). Đề xuất: bị động "Bước Tiến" của Hiro cho kiếm ×1,2
-   (kiểm lại bằng mô phỏng trước khi áp). Chưa hạ HP boss (Codex: chỉ hạ tối đa 10% nếu vẫn hụt mục tiêu).
+4. Trận Hiro dài (40–50 lượt). **Đã áp [Đêm nay]: thiên phú kiếm lữ khách ×1,2** sau khi mô phỏng: boss chương 2
+   ở cấp gợi ý Hiro 1★ có đồ 38% → 46%, Hiro 2★ 53% → 67%; ải thường bớt ~3 lượt. PvP cục bộ/chuẩn hóa giữ ×1 để
+   hai bên bằng nhau. Chưa hạ HP boss (Codex: chỉ hạ tối đa 10% nếu vẫn hụt mục tiêu).
 
 ### 5.3 Mục tiêu cân bằng
 | Trận | Ở cấp gợi ý, có đồ | Thắng |
@@ -425,8 +426,8 @@ nguồn `raw/`, `sources/`):
 
 | Giai đoạn | Nội dung |
 |---|---|
-| **Đêm 03/11 (xong)** | Tài liệu + Codex phản biện; diện mạo hình thái; đường Mảnh Hiro (Tân Thủ, nhiệm vụ, rương, boss); Chi tiết lực chiến; Lộ trình; tướng chưa sở hữu xám; Lực chiến mới; triệu hồi 1%/100; Hiro tuyệt kỹ 70; liveops + trang VIP/Thẻ tháng/Sự Kiện; gói tài nguyên + `packsFor`; mô phỏng cân bằng |
-| Kế tiếp (web) | Nhiệm vụ tuần; Biến Thân (cổng cấp 180 + TH3); Sân Thử Luyện; ngọc khảm; bộ hệ; báu vật; hình thái Hiro (vẽ); kiếm Hiro ×1,2 nếu mô phỏng đạt; nén âm thanh/icon |
+| **Đêm 03/11 (xong)** | Tài liệu + Codex phản biện; diện mạo hình thái; đường Mảnh Hiro (Tân Thủ, nhiệm vụ, rương, boss); Chi tiết lực chiến; Lộ trình; tướng chưa sở hữu xám; Lực chiến mới; triệu hồi 1%/100; Hiro tuyệt kỹ 70 + kiếm ×1,2; liveops + trang VIP/Thẻ tháng/Sự Kiện; gói tài nguyên + `packsFor`; mô phỏng cân bằng |
+| Kế tiếp (web) | Nhiệm vụ tuần; Biến Thân (cổng cấp 180 + TH3); Sân Thử Luyện; ngọc khảm; bộ hệ; báu vật; hình thái Hiro (vẽ); nén âm thanh/icon |
 | Trước máy chủ | Lõi trận xác định + vector kiểm thử; xuất JSON dữ liệu |
 | Máy chủ | Tài khoản, sổ cái, thanh toán, Đấu Hạng, Quảng Trường, sự kiện, BXH |
 | Godot | Client Android + PAD |
@@ -440,7 +441,7 @@ nguồn `raw/`, `sources/`):
 | Chọn hình thái thấp hơn trong trận? | Không. Chọn diện mạo ở thị trấn; trận dùng hình thái cao nhất. |
 | Hình thái Hiro? | Có, ở 4★/6★ như mọi tướng; cần vẽ. |
 | Giá | Thẻ tháng 109k, Sổ 149k, Quỹ 299k, Thẻ trọn đời 499k (chỉnh khi có dữ liệu). |
-| Cân bằng | Hiro tuyệt kỹ 70 (đã áp); dẫn người chơi tới đồ + kỹ năng (đã có Lộ trình); chưa hạ HP boss. |
+| Cân bằng | Hiro tuyệt kỹ 70 và kiếm ×1,2 (đã áp, đo bằng mô phỏng); dẫn người chơi tới đồ + kỹ năng (Lộ trình); chưa hạ HP boss. |
 | Báu vật độc quyền nạp? | Không. PvE đạt được trong 12–16 tuần; nạp chỉ nhanh hơn. |
 
 ---

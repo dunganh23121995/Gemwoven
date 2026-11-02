@@ -94,7 +94,7 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
     }
     // Innate traits hold at rank 0, ranks add on top.
     const base=M.skillKit(key,{level:1,stars:1,evolution:0,skills:[1,0,0,0]});
-    assert.equal(base.sword,key==='fire'?1.6:1);assert.equal(base.damageReduction,key==='ice'?.2:0);assert.equal(base.attackScale,key==='earth'?.75:1);assert.equal(base.energy,key==='lightning'?2:1);
+    assert.equal(base.sword,key==='fire'?1.6:key==='novice'?1.2:1);assert.equal(base.damageReduction,key==='ice'?.2:0);assert.equal(base.attackScale,key==='earth'?.75:1);assert.equal(base.energy,key==='lightning'?2:1);
     assert.equal(base.mutation,false);assert.equal(base.awakened,false);assert.equal(base.power,1);
   }
   // Published table (rank 1/5/10, base form, no evolution).
