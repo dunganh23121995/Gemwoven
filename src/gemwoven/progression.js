@@ -84,7 +84,7 @@
   function skillGateText(index){const g=SKILL_GATES[index];return !g||index===0?'':`Mở ở cấp ${g.level}`+(g.evolution?` · tiến hóa ${g.evolution}`:'')+'.';}
   // Base numbers of each active skill; ranks, forms and evolution scale them in skillKit.
   const SKILL_KIT={novice:{base:70,hits:1},fire:{base:135,hits:1},ice:{base:60,hits:1,armor:25},earth:{base:0,hits:0,heal:40,burst:3,stun:2,regen:3},lightning:{base:140,hits:5},shadow:{base:150,hits:5}};
-  const VIP=[0,100000,300000,600000,1000000,2000000,4000000,7000000,12000000,20000000,35000000,60000000,100000000].map((spend,level)=>({level,spend,dailyGold:level*500,offlineHours:12+Math.floor(level/3),avatar:level>=1,entryEffect:level>=3,chatEffect:level>=5,specialEquipment:level>=8,specialHero:level>=10}));
+  const VIP=[0,100000,300000,600000,1000000,2000000,4000000,7000000,12000000,20000000,35000000,60000000,100000000].map((spend,level)=>({level,spend,dailyGold:level>=2?1000:level?500:0,offlineHours:12+Math.floor(level/3),avatar:level>=1,entryEffect:level>=3,chatEffect:level>=5,equipmentSkin:level>=8,heroSkin:level>=10,combatStats:false}));
   const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Boss Vô Hạn',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
   // Hành Trình Tân Thủ: seven gifts, one per GMT+7 day since the account was made (missed days
   // can be caught up). 80 Mảnh Hiro in the first week = his second star.
@@ -256,7 +256,7 @@
     const sc=h.stars<6?starCost(h.stars):null,formAt=forms?FORM_STARS.findIndex(s=>s>h.stars):-1;
     rows.push({id:'stars',name:'Sao',current:'★'.repeat(h.stars)+` · ${h.copies-1} bản sao dư · ${p.fragments[key]||0}/80 mảnh`,next:sc?`${h.stars+1} sao: ${sc.copies} bản sao, ${sc.gold.toLocaleString('vi-VN')} vàng, ${sc.essence} tinh hoa`:'Đã 6 sao',
       opens:formAt>=0?`Hình thái ${formAt+1} ở ${FORM_STARS[formAt]} sao`:'HP +12%, Công +9% mỗi sao',state:!sc?'max':h.copies-1>=sc.copies&&pay({gold:sc.gold,essence:sc.essence})?'ready':h.copies-1<sc.copies?'locked':'short',
-      need:sc&&h.copies-1<sc.copies?(key==='novice'?'Mảnh Hiro: rương sao chương, Boss Vô Hạn mỗi 10 tầng':'Bản sao: triệu hồi, ghép 80 mảnh'):'',route:'upgrade',tab:'stars'});
+      need:sc&&h.copies-1<sc.copies?(key==='novice'?'Mảnh Hiro: Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương, Boss Vô Hạn mỗi 10 tầng':'Bản sao: triệu hồi, ghép 80 mảnh'):'',route:'upgrade',tab:'stars'});
     if(forms)rows.push({id:'forms',name:'Hình thái',current:`${forms[form-1].name} (${form}/3) · đã mở ${max}`,next:max<3?`${forms[max].name} ở ${FORM_STARS[max]} sao`:'Đã mở cả ba',
       opens:'Diện mạo và tuyệt kỹ; chọn lại hình thái cũ bất cứ lúc nào',state:max>=3?'max':'locked',route:'forms'});
     const e=EVOLUTION[h.evolution];

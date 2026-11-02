@@ -153,7 +153,7 @@
       // It faces the foe on the next stage (its art faces right).
       if(cleared<50&&points[cleared][0]<spot[0]){hero.classList.add('facing-left');hero.style.scale='-1 1';}
       // Its combat rest (the form's idle loop) with the form's own effects, as it stands in a fight.
-      const form=M.heroForm(leader,p.heroes[leader]),rest=A[`form-idle-${leader}-${form}`]||A['hero-'+leader],body=document.createElement('span');
+      const form=M.lookForm(leader,p.heroes[leader]),rest=A[`form-idle-${leader}-${form}`]||A['hero-'+leader],body=document.createElement('span');
       body.className='map-hero-body';body.innerHTML=`<img class="art journey-hero" src="${esc(rest.file)}" alt="" draggable="false">`;hero.append(body);
       window.GEMWOVEN_FORMS?.fitBody(body,rest,180);window.GEMWOVEN_FORMS?.decorateRest(body,leader,form);
       const before=state.mapProgress?.[chapter.index];

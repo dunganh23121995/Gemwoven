@@ -56,3 +56,12 @@ function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setI
   assert.equal(M.skillKit('novice',null).damage,70,'Hiro\'s ultimate base is 70');
 }
 console.log(JSON.stringify({passed:true,checks:'Town looks vs combat form, Hiro fragment path (newbie week, daily, chests, endless, fuse, second star), stat breakdown sums, growth map states, summon 1%/100, Hiro ultimate 70'},null,2));
+{ // Live-ops config: no Đá Ngọc as a reward anywhere, VIP never adds combat stats, PvE-reachable treasures.
+  const O=require('../../src/gemwoven/liveops.js');
+  for(let l=1;l<=O.PASS.levels;l++)for(const track of ['free','gold'])assert.equal(O.PASS[track](l).gems,undefined,'No Đá Ngọc in the pass');
+  for(const l of O.LEAGUES)assert.equal(l.weekly.gems,undefined,'No Đá Ngọc in arena rewards');
+  for(const v of O.VIP)assert.equal(v.combatStats,false);for(const v of M.VIP)assert.equal(v.combatStats,false);
+  assert.deepEqual(O.VIP.map(v=>v.spend),M.VIP.slice(1).map(v=>v.spend),'One VIP ladder');
+  assert.ok(O.TREASURE_FAMILIES.find(f=>f.id==='mountain').pveOnly);assert.ok(O.TITLES.filter(t=>t.paid).length<=1);
+}
+console.log('liveops ok');
