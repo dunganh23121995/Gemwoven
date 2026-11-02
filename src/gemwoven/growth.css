@@ -76,3 +76,4 @@
 .live-panel .trial-card p{margin:6px 0;font-size:21px}
 .live-panel .trial-card.is-open{box-shadow:inset 0 0 0 2px #e0a93e,0 0 12px #ffd77a80}
 .live-panel .trial-card .game-btn{--h:58px;font-size:23px;width:100%}
+.hero-form-gallery .form-wear{white-space:nowrap;font-size:15px;min-height:34px;padding:4px 18px;margin-top:6px}

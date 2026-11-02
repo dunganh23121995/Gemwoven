@@ -98,7 +98,7 @@
       const skill=document.createElement('strong');skill.textContent=info.skill+(info.power?` · Tuyệt kỹ ×${String(info.power).replace('.',',')}`:'');
       card.append(body,title,note,weapon,skill);
       if(info.signature){const sig=document.createElement('p');sig.className='form-signature';sig.textContent=info.signature;card.append(sig);}
-      if(owned&&form<=max&&form!==current){const wear=document.createElement('button');wear.type='button';wear.className='gw-btn form-wear';wear.textContent='Khoác diện mạo này';
+      if(owned&&form<=max&&form!==current){const wear=document.createElement('button');wear.type='button';wear.className='gw-btn form-wear';wear.textContent='Khoác diện mạo';
         wear.onclick=()=>{try{G.engine.chooseLook(key,form);modal.close();ctx.render();}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}};card.append(wear);}
       list.append(card);
       const tab=document.createElement('button');tab.type='button';tab.className='gw-btn secondary';tab.setAttribute('role','tab');tab.textContent=`${[1,4,6][i]} ★`;tab.setAttribute('aria-label',`Hình thái ${form}`);
