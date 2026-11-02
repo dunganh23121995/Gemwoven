@@ -6886,11 +6886,13 @@ buff=function(side,kind,value,options){
 function bossOwnStyle(){const o=foeSkillOwner();return o?.tier==='boss'&&state.boss&&!!BOSS_SKILL_LOOKS[o.boss];}
 function bossKit(){const o=foeSkillOwner(),looks=BOSS_SKILL_LOOKS[o?.boss]||{};return (progressionRules.WORLD.BOSSES[o?.boss]?.skills||[]).map(s=>({s,look:looks[s.name]})).filter(k=>k.look);}
 const bossGuardLook=()=>bossKit().find(({s})=>s.shield&&!s.power||s.effects?.some(e=>e.type==='ward')&&!s.effects.some(e=>e.type==='hit'))?.look||null;
-// A boss's basic blow is heard with its own first bodily skill; a boss wielding a weapon (BOSS_WEAPON_SKILL) swings
-// and lands it with that weapon's own skill (the colossus's hammer, not its steam).
-const BOSS_WEAPON_SKILL={colossus:'Búa Tạ Cơ Khí'};
-const bossBasicSounds=()=>{const kit=bossKit(),weapon=BOSS_WEAPON_SKILL[foeSkillOwner()?.boss];
-  return (weapon&&kit.find(({s})=>s.name===weapon)||kit.find(({s,look})=>!s.ult&&look.pose&&look.sounds?.hit))?.look.sounds||null;};
+// A boss's basic blow is heard with its own first bodily skill. Where that skill is not what the blow's drawing shows,
+// BOSS_BASIC_SKILL names the skill that is: the fire dragon lunges and bites (its jaws, not its tail), the lion pounces
+// claws first (not its lightning rain), the void dragon bites (not its star shards), the colossus swings its hammer
+// (not its steam), the golem lunges with fang and claw.
+const BOSS_BASIC_SKILL={colossus:'Búa Tạ Cơ Khí',fire:'Long Nha Thiêu Đốt',lightning:'Tụ Điện',eclipse:'Hư Không Phán Quyết',earth:'Nanh Vuốt'};
+const bossBasicSounds=()=>{const kit=bossKit(),own=BOSS_BASIC_SKILL[foeSkillOwner()?.boss];
+  return (own&&kit.find(({s})=>s.name===own)||kit.find(({s,look})=>!s.ult&&look.pose&&look.sounds?.hit))?.look.sounds||null;};
 let foeBasicStrike=false;
 const foeBaseAttack=attack;
 attack=async function(side,raw,options={}){
