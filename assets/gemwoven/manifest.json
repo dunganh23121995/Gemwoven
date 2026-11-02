@@ -12313,16 +12313,16 @@
       ]
     ],
     "file": "assets/reimagined/heroes/fire/smash.webp",
-    "width": 768,
-    "height": 512,
+    "width": 1536,
+    "height": 1024,
     "cell": [
-      256,
-      256
+      512,
+      512
     ],
     "body": {
       "crown": 0.2890625,
-      "foot": 0.97265625,
-      "x": 0.53125
+      "foot": 0.9609375,
+      "x": 0.5302734375
     }
   },
   "ulti-fire-2-wave": {

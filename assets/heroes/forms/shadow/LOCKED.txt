@@ -20,3 +20,6 @@ stands above the ambient layers so it shows sharp and vivid.
 
 Changed on request 2026-11-02 ("làm bình thường giống các tướng khác"): the resting loops are baked mesh-rig
 sheets (rig_idle.py) and the body now moves at rest like every other hero's; the art itself is unchanged.
+
+Changed on request 2026-11-02 ("Vẽ nét lại form 1 cho rực rỡ rõ nét"): form 1's resting frames and action sheets are
+redrawn at 512px cells by sharpen_form1.py, the same poses in the same places; raws and prompts in form-1/sharp.

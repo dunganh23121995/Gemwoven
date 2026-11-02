@@ -113,7 +113,9 @@ def rest_frame(hero, form, ctx):
 
 def parts(hero, form, ctx, model=MODEL, effort=EFFORT):
     work = rig_dir(hero, form, ctx); work.mkdir(parents=True, exist_ok=True)
-    rest = rest_frame(hero, form, ctx); rest.save(work / "rest.png")
+    # a resting frame already there may be a sharper redraw (sharpen_form1.py): keep it
+    rest = Image.open(work / "rest.png").convert("RGBA") if (work / "rest.png").exists() else rest_frame(hero, form, ctx)
+    rest.save(work / "rest.png")
     grey = np.asarray(rest)[..., :3].mean() < 28 if hero in FOREIGN else hero == "shadow"
     ground = (205, 205, 205, 255) if grey else (0, 0, 0, 255)   # Noct's black would melt into black
     canvas = Image.new("RGBA", rest.size, ground); canvas.alpha_composite(rest)
