@@ -166,7 +166,7 @@
   if(SUMMON_TEST){const badge=document.createElement('div');badge.className='summon-test-badge';badge.textContent='Chế độ thử triệu hồi';badge.setAttribute('aria-live','polite');(document.body?document.body.append(badge):addEventListener('DOMContentLoaded',()=>document.body.append(badge)));}
   // Rates read the shared summon table (out of 1,000,000) so the popup never drifts from the engine.
   function ratesContent(p){
-    const table=M.SUMMON_TABLE||[['hero',1500],['fragments',13500],['commonGear',285000],['rareGear',20000],['epicGear',1500],['legendaryGear',200],['divineGear',10],['material',678290]];
+    const table=M.SUMMON_TABLE||[['hero',10000],['fragments',13500],['commonGear',285000],['rareGear',20000],['epicGear',1500],['legendaryGear',200],['divineGear',10],['material',678290]];
     const R=M.RARITIES||{},gear=(rarity,fallback)=>'Trang bị '+(R[rarity]?.name||fallback);
     const label={hero:['Tướng hiếm','portrait-fire','top'],fragments:['Mảnh tướng (2–5)',A['fragment-'+M.SUMMON_BANNER?.hero]?.fragmentArt?'fragment-'+M.SUMMON_BANNER.hero:'hero-fragment',''],
       commonGear:[gear('common','Thường'),'helmet',''],rareGear:[gear('rare','Hiếm'),'helmet',''],epicGear:[gear('epic','Sử Thi'),'fire-sword','rare'],
@@ -174,7 +174,7 @@
     const pct=n=>(n/10000).toLocaleString('vi-VN',{maximumFractionDigits:3})+'%';
     const wrap=document.createElement('div');wrap.className='rates-sheet';
     wrap.innerHTML=`<table class="gw-table"><thead><tr><th>Phần thưởng</th><th>Tỷ lệ</th></tr></thead><tbody>${table.map(([id,n])=>{const [name,asset,tone]=label[id]||[id,'crest',''];return `<tr class="${tone}"><td>${img(asset)}${esc(name)}</td><td>${pct(n)}</td></tr>`;}).join('')}</tbody></table>
-      <div class="gw-note"><b>Bảo đảm</b><p>• Tướng hiếm chắc chắn trong 300 lần kể từ tướng hiếm gần nhất · của bạn: ${fmt(p.summon.dry)}/300.</p><p>• Mảnh tướng xuất hiện sau tối đa 30 lần không có mảnh.</p><p>Ghép 80 mảnh cùng loại thành 1 tướng. Mốc bảo đảm thay kết quả thường nên tỷ lệ dài hạn cao hơn bảng.</p></div>`;
+      <div class="gw-note"><b>Bảo đảm</b><p>• Tướng hiếm chắc chắn trong ${M.SUMMON_PITY} lần kể từ tướng hiếm gần nhất · của bạn: ${fmt(p.summon.dry)}/${M.SUMMON_PITY}.</p><p>• Mảnh tướng xuất hiện sau tối đa 30 lần không có mảnh.</p><p>Ghép 80 mảnh cùng loại thành 1 tướng. Mốc bảo đảm thay kết quả thường nên tỷ lệ dài hạn cao hơn bảng.</p></div>`;
     return wrap;
   }
   function resultsDialog(results){return window.GemwovenSummonReveal(results);}

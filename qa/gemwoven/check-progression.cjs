@@ -43,7 +43,7 @@ const lower=fixture();lower.edit(p=>{p.wallet.gold=100000;p.materials.exp=100;p.
 const sum=M.SUMMON_TABLE.reduce((s,[,n])=>s+n,0);assert.equal(sum,1e6);
 let sealTotal=0;for(let i=1;i<500;i++)sealTotal+=M.levelCost(i).seals;assert.equal(sealTotal,589804);assert.equal(Math.ceil(sealTotal/1600),369);
 const capped=fixture();capped.edit(p=>{p.daily.seals=1599;});const token=capped.engine.begin('campaign',1).token;assert.equal(capped.engine.settle(token,true).seals,1);assert.equal(capped.engine.read().daily.seals,1600);
-const s=fixture();s.edit(p=>{p.wallet.tickets=100;p.summon.dry=299;});roll=.9;const pity=s.engine.summon(1);assert.equal(pity[0].kind,'hero');assert.notEqual(pity[0].hero,'novice');assert.equal(s.engine.read().summon.dry,0);
+const s=fixture();s.edit(p=>{p.wallet.tickets=100;p.summon.dry=M.SUMMON_PITY-1;});roll=.9;const pity=s.engine.summon(1);assert.equal(pity[0].kind,'hero');assert.notEqual(pity[0].hero,'novice');assert.equal(s.engine.read().summon.dry,0);
 s.edit(p=>{p.summon.fragmentDry=29;});const fragment=s.engine.summon(1);assert.equal(fragment[0].kind,'fragments');assert.ok(fragment[0].count>=2&&fragment[0].count<=5);
 roll=.999;const trash=s.engine.summon(1);assert.equal(trash[0].kind,'material');assert.equal(s.engine.read().wallet.gems,0);
 roll=.025;const starter=s.engine.summon(1);assert.notEqual(starter[0].hero,'novice','Hiro is not in the summon pool');assert.ok(!M.SUMMON_TABLE.some(([k])=>k==='novice'));
@@ -99,7 +99,7 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   }
   // Published table (rank 1/5/10, base form, no evolution).
   const at=(key,r,slot)=>M.skillKit(key,{level:500,stars:1,evolution:0,skills:[0,1,2,3].map(i=>i===slot?r:1)});
-  assert.deepEqual([1,5,10].map(r=>at('novice',r,0).damage),[45,59,77]);assert.deepEqual([1,5,10].map(r=>at('fire',r,0).damage),[135,178,232]);
+  assert.deepEqual([1,5,10].map(r=>at('novice',r,0).damage),[70,92,120]);assert.deepEqual([1,5,10].map(r=>at('fire',r,0).damage),[135,178,232]);
   assert.deepEqual([1,5,10].map(r=>at('ice',r,0).armor),[25,37,52]);assert.deepEqual([1,5,10].map(r=>at('earth',r,0).heal),[40,60,85]);assert.deepEqual([1,5,10].map(r=>at('earth',r,0).burst),[3,3.4,3.9]);
   assert.deepEqual([1,5,10].map(r=>at('fire',r,2).burn.turns),[2,3,4]);assert.deepEqual([1,5,10].map(r=>at('ice',r,2).mutationArmor),[.06,.08,.105]);assert.deepEqual([1,5,10].map(r=>at('earth',r,2).mutationArmor),[.04,.06,.085]);
   assert.deepEqual([1,5,10].map(r=>at('lightning',r,2).drain),[21,25,30]);assert.deepEqual([1,5,10].map(r=>at('shadow',r,2).echo),[15,27,42]);assert.deepEqual([1,5,10].map(r=>at('novice',r,2).regen),[.01,.014,.019]);
