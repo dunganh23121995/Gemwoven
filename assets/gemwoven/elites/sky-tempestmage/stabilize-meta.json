@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\sky-tempestmage\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 2,
+      "scale": 1.015,
+      "error": 0.3087,
+      "moving_share": 0.0711
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.3325,
+      "moving_share": 0.0957
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.3391,
+      "moving_share": 0.0863
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0052,
+      "error": 0.3224,
+      "moving_share": 0.0836
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 0.9946,
+      "error": 0.3324,
+      "moving_share": 0.0791
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9946,
+      "error": 0.3536,
+      "moving_share": 0.0854
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9912,
+      "error": 0.3235,
+      "moving_share": 0.0732
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9912,
+      "error": 0.3404,
+      "moving_share": 0.0791
+    }
+  ],
+  "jitter": [
+    18.14,
+    16.04,
+    16.9,
+    15.43,
+    7.15,
+    18.38,
+    6.52,
+    15.53
+  ]
+}

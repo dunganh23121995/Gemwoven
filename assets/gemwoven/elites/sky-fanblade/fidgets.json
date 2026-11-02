@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "tapblades",
+      "label": "Gõ lưỡi vào nhau",
+      "file": "tapblades.webp",
+      "whole": true
+    },
+    {
+      "name": "twirl",
+      "label": "Xoay nhẹ lưỡi",
+      "file": "twirl.webp",
+      "whole": true
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\thorns-bramblewarden\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9954,
+      "error": 0.2506,
+      "moving_share": 0.0448
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0008,
+      "error": 0.2633,
+      "moving_share": 0.0544
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0008,
+      "error": 0.2699,
+      "moving_share": 0.0652
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0061,
+      "error": 0.2481,
+      "moving_share": 0.0498
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0006,
+      "error": 0.2587,
+      "moving_share": 0.057
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9954,
+      "error": 0.2307,
+      "moving_share": 0.032
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9954,
+      "error": 0.2578,
+      "moving_share": 0.053
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2557,
+      "moving_share": 0.0526
+    }
+  ],
+  "jitter": [
+    7.66,
+    8.63,
+    8.39,
+    6.44,
+    9.9,
+    7.57,
+    4.12,
+    4.69
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\thorns-shearkeeper\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9999,
+      "error": 0.1512,
+      "moving_share": 0.0099
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9948,
+      "error": 0.1618,
+      "moving_share": 0.0189
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9997,
+      "error": 0.1586,
+      "moving_share": 0.0269
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.1519,
+      "moving_share": 0.0164
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.1357,
+      "moving_share": 0.016
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.995,
+      "error": 0.1328,
+      "moving_share": 0.0126
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9901,
+      "error": 0.1222,
+      "moving_share": 0.0062
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9901,
+      "error": 0.1405,
+      "moving_share": 0.0064
+    }
+  ],
+  "jitter": [
+    1.37,
+    3.2,
+    2.75,
+    1.92,
+    1.26,
+    0.81,
+    0.39,
+    0.92
+  ]
+}

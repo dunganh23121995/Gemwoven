@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\sky-galearcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9947,
+      "error": 0.2232,
+      "moving_share": 0.0386
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2928,
+      "moving_share": 0.0686
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.3245,
+      "moving_share": 0.0856
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.2952,
+      "moving_share": 0.0688
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.24,
+      "moving_share": 0.0457
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.3107,
+      "moving_share": 0.0839
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0157,
+      "error": 0.3675,
+      "moving_share": 0.0942
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0157,
+      "error": 0.308,
+      "moving_share": 0.0583
+    }
+  ],
+  "jitter": [
+    30.01,
+    19.96,
+    29.83,
+    31.18,
+    34.56,
+    28.56,
+    27.34,
+    20.71
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\haunted-banshee\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0102,
+      "error": 0.2225,
+      "moving_share": 0.034
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.2458,
+      "moving_share": 0.0476
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.3066,
+      "moving_share": 0.0725
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.3162,
+      "moving_share": 0.0722
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.99,
+      "error": 0.273,
+      "moving_share": 0.0569
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2846,
+      "moving_share": 0.0665
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.2072,
+      "moving_share": 0.0216
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.2108,
+      "moving_share": 0.0128
+    }
+  ],
+  "jitter": [
+    9.03,
+    15.0,
+    14.84,
+    9.59,
+    9.89,
+    12.57,
+    2.66,
+    5.09
+  ]
+}

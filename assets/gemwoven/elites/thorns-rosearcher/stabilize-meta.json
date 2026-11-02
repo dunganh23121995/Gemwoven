@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\thorns-rosearcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.1758,
+      "moving_share": 0.0129
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1737,
+      "moving_share": 0.0213
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1719,
+      "moving_share": 0.0259
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1705,
+      "moving_share": 0.0199
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1543,
+      "moving_share": 0.0211
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1556,
+      "moving_share": 0.0184
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1574,
+      "moving_share": 0.0193
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1523,
+      "moving_share": 0.0169
+    }
+  ],
+  "jitter": [
+    2.82,
+    4.42,
+    2.68,
+    4.47,
+    2.05,
+    2.61,
+    0.94,
+    2.01
+  ]
+}

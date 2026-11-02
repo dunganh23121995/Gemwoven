@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\sky-fanblade\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0046,
+      "error": 0.1845,
+      "moving_share": 0.0183
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.2201,
+      "moving_share": 0.0457
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0097,
+      "error": 0.2488,
+      "moving_share": 0.0725
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.2017,
+      "moving_share": 0.0298
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9997,
+      "error": 0.263,
+      "moving_share": 0.0681
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.2754,
+      "moving_share": 0.0725
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9999,
+      "error": 0.2437,
+      "moving_share": 0.0648
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.1678,
+      "moving_share": 0.0132
+    }
+  ],
+  "jitter": [
+    12.37,
+    13.54,
+    25.19,
+    22.05,
+    15.77,
+    17.65,
+    18.75,
+    2.16
+  ]
+}

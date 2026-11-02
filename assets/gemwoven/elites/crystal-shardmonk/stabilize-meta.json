@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\crystal-shardmonk\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1598,
+      "moving_share": 0.0285
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1426,
+      "moving_share": 0.0326
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1559,
+      "moving_share": 0.0375
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1546,
+      "moving_share": 0.0273
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0051,
+      "error": 0.157,
+      "moving_share": 0.028
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1612,
+      "moving_share": 0.0305
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.163,
+      "moving_share": 0.0299
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1429,
+      "moving_share": 0.0227
+    }
+  ],
+  "jitter": [
+    3.38,
+    4.68,
+    7.18,
+    4.38,
+    5.08,
+    4.53,
+    3.08,
+    3.06
+  ]
+}

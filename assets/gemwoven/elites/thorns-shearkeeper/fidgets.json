@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "ground",
+      "label": "Gõ vũ khí xuống đất",
+      "file": "ground.webp",
+      "whole": true
+    },
+    {
+      "name": "shoulder",
+      "label": "Nhấc vũ khí",
+      "file": "shoulder.webp",
+      "whole": true
+    }
+  ]
+}

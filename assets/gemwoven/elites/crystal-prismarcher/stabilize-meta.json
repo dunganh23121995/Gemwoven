@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\crystal-prismarcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.1888,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": -1,
+      "dy": -2,
+      "scale": 0.9848,
+      "error": 0.206,
+      "moving_share": 0.0039
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.234,
+      "moving_share": 0.0134
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.2229,
+      "moving_share": 0.0201
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": -1,
+      "dy": -2,
+      "scale": 0.9848,
+      "error": 0.2435,
+      "moving_share": 0.0147
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1809,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1869,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2014,
+      "moving_share": 0.0056
+    }
+  ],
+  "jitter": [
+    1.07,
+    5.05,
+    6.43,
+    6.39,
+    4.87,
+    0.0,
+    1.6,
+    1.6
+  ]
+}

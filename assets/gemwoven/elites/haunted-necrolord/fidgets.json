@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "tapstaff",
+      "label": "Gõ vũ khí xuống đất",
+      "file": "tapstaff.webp",
+      "whole": true
+    },
+    {
+      "name": "flare",
+      "label": "Vuốt ánh sáng",
+      "file": "flare.webp",
+      "whole": true
+    }
+  ]
+}
