@@ -67,6 +67,16 @@
         `<ul>${Object.entries(q.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
         `<button type="button" class="game-btn" data-action="growth:weekly" data-quest="${esc(q.id)}" ${!q.claimed&&q.progress>=q.target?'':'disabled'}>${q.claimed?'Đã nhận':q.progress>=q.target?'Nhận':'Chưa xong'}</button></article>`).join('')}</div></section>`;
   }
+  // Sân Thử Luyện on the Boss Vô Hạn screen: today's tanky boss at the selected hero's level.
+  function trialSection(p){
+    const open=M.trialOpen(Date.now()),runs=p.daily.trialRuns||0,left=Math.max(0,M.TRIAL.rewarded-runs),hero=p.heroes[p.selected];
+    const cards=M.TRIAL.chapters.map((c,i)=>{const e=M.trialEncounter(i+1,hero.level),today=open.includes(i+1),best=p.trial?.best?.[i+1]||0;
+      return `<article class="trial-card${today?' is-open':''}"><b>${esc(e.enemyName)}</b><small>${['Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu'][i]} · hệ ${esc({fire:'Hỏa',ice:'Băng',earth:'Mộc',lightning:'Lôi'}[e.enemyKey]||e.enemyKey)}</small>`+
+        `<p>Kỷ lục: ${best?fmt(best)+` (${(best/e.enemyHp).toLocaleString('vi-VN',{maximumFractionDigits:1})} thanh)`:'chưa có'}</p>`+
+        `<button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${i+1}" ${today?'':'disabled'}>${today?'Thử sức':'Ngày khác'}</button></article>`;}).join('');
+    return `<section class="trial-ground"><h3>Sân Thử Luyện</h3><p class="hint">Boss trâu không bao giờ ngã: hết thanh máu thì đứng dậy với thanh mới. ${M.TRIAL.turns} lượt, tính tổng sát thương. Boss ở đúng cấp tướng đang xuất chiến (${esc(M.HEROES[p.selected].name)} cấp ${hero.level}). `+
+      `Lượt có thưởng hôm nay: <b>${left}/${M.TRIAL.rewarded}</b>, sau đó đánh thoải mái để thử tướng, vẫn ghi kỷ lục. Mốc thưởng: ½, 1, 2, 3, 5 thanh máu.</p><div class="cadence-grid">${cards}</div></section>`;
+  }
   function cadenceSection(){
     if(!O)return '';
     return `<section class="cadence"><h3>Lịch sự kiện dự kiến · Sắp ra mắt</h3><div class="cadence-grid">${O.CADENCE.map(c=>`<article><b>${esc(c.name)}</b><small>Làm mới ${esc(c.reset)} (GMT+7)</small><ul>${c.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></article>`).join('')}</div></section>`;
@@ -111,6 +121,7 @@
     }
     const live=screen.nodes.find(n=>n.id===state.screen+'.live');
     if(live&&state.screen==='events'){const build=live.build;live.build=el=>{build(el);const sub=el.querySelector('.game-heading p'),week=newbieSection();if(sub&&week)sub.textContent='Hành Trình Tân Thủ đang mở · Sự kiện theo mùa sắp ra mắt.';el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',week+weeklySection());el.insertAdjacentHTML('beforeend',cadenceSection());};}
+    if(live&&state.screen==='boss'){const build=live.build;live.build=el=>{build(el);el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',trialSection(G.engine.read()));};}
     if(live&&state.screen==='vip'&&O)live.build=el=>{el.innerHTML=vipPage(G.engine.read());};
     return p;
   };

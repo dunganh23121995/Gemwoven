@@ -65,7 +65,21 @@ function progressionBossPick(skills){
   return window.GemwovenBossTactics.chooseSkill(skills,{hpRatio:state.enemyHp/state.enemyMax,armor:state.enemyArmor,heroHpRatio:state.hp/heroMax,heroEnergy:state.energy,heroArmorRatio:state.armor/heroMax,heroDot:!!progressionEnemyDot,history:progressionBossHistory});
 }
 function progressionIsDuel(){return progressionBattle?.mode==='duel';}
-function progressionRecordTurn(){if(progressionBattle?.mode==='campaign')progressionTurn++;}
+function progressionRecordTurn(){
+  if(progressionBattle?.mode==='campaign')progressionTurn++;
+  if(progressionIsTrial()){progressionTurn++;message(`Thử luyện · lượt ${Math.min(progressionTurn,progressionBattle.turnLimit)}/${progressionBattle.turnLimit} · tổng sát thương ${progressionTrialDamage().toLocaleString('vi-VN')}`);}
+}
+// Sân Thử Luyện: the boss never falls. An emptied health bar refills (counted), the run ends after its
+// round limit, and the score is the total damage: whole bars plus what the current bar has lost.
+let progressionTrialBars=0;
+function progressionIsTrial(){return progressionBattle?.mode==='trial';}
+function progressionTrialDamage(){return progressionTrialBars*state.enemyMax+Math.max(0,state.enemyMax-state.enemyHp);}
+const progressionOriginalApply=applyCombatDamage;
+applyCombatDamage=function(target,n){
+  const result=progressionOriginalApply(target,n);
+  if(progressionIsTrial()&&target==='enemy'&&state.enemyHp<=0&&state.hp>0){progressionTrialBars++;state.enemyHp=state.enemyMax;update();message(`Thanh máu thứ ${progressionTrialBars+1} · boss thử luyện đứng dậy!`);}
+  return result;
+};
 function progressionEnergyMultiplier(key){return progressionKit(key).energy*(typeof foeHas==='function'&&foeHas('chill')?1-foeStatuses.chill.value:1);}
 function progressionSwordFactor(key){return progressionKit(key).sword;}
 if(progressionBattle)HEROES[progressionBattle.hero].hp=progressionBattle.stats.hp;
@@ -78,7 +92,7 @@ startStage=function(){
   if(progressionError){$('startBtn').disabled=true;message(progressionError);return;}
   if(progressionBattle){state.key=progressionBattle.hero;state.enemyKey=progressionBattle.enemyKey;state.stage=Math.max(1,Math.ceil(progressionBattle.recommended/5));HEROES[state.key].hp=progressionBattle.stats.hp;}
   progressionOriginalStart();
-  progressionProcs.clear();progressionTurn=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
+  progressionProcs.clear();progressionTurn=0;progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
 const progressionOriginalRender=renderActors;
@@ -200,33 +214,40 @@ async function progressionEnemyTurn(){
   progressionProcs.clear();update();
 }
 const progressionOriginalFinish=finishBattle;
+let progressionTrialScore=null;
 finishBattle=async function(){
+  // A trial run ends when its rounds are used up (or the hero falls); the boss is laid down only to close the fight.
+  if(progressionIsTrial()&&!progressionReported&&state.hp>0&&state.enemyHp>0&&progressionTurn>=progressionBattle.turnLimit){progressionTrialScore=progressionTrialDamage();state.enemyHp=0;update();}
+  if(progressionIsTrial()&&progressionTrialScore==null&&state.hp<=0)progressionTrialScore=progressionTrialDamage();
   if(progressionBattle&&!progressionReported&&(state.hp<=0||state.enemyHp<=0)){
     progressionReported=true;
-    try{progressionReward=progressionStore.settle(progressionBattle.token,state.hp>0,Math.max(0,state.enemyMax-state.enemyHp),{hpRatio:Math.max(0,Math.min(1,state.hp/HEROES[state.key].hp)),turns:Math.max(1,progressionTurn)});}catch(error){progressionReward={};message(error.message);}
+    try{progressionReward=progressionStore.settle(progressionBattle.token,state.hp>0,progressionIsTrial()?progressionTrialScore:Math.max(0,state.enemyMax-state.enemyHp),{hpRatio:Math.max(0,Math.min(1,state.hp/HEROES[state.key].hp)),turns:Math.max(1,progressionTurn)});}catch(error){progressionReward={};message(error.message);}
   }
   const result=await progressionOriginalFinish();
   if(result&&progressionBattle){
     const text=Object.entries(progressionReward).filter(([,n])=>n>0).map(([id,n])=>`${n.toLocaleString('vi-VN')} ${progressionRules.RESOURCES[id][0]}`).join(' · ');
     $('resultDesc').textContent=state.hp>0?(text||'Hoàn tất trận 1vs1. Không có thưởng tài nguyên.'):'Thua trận; tiến độ đã vượt được giữ lại.';
     if(progressionBattle.mode==='campaign'&&state.hp>0){const turns=Math.max(1,progressionTurn),stars=progressionRules.stageStars(progressionBattle,true,{hpRatio:Math.max(0,Math.min(1,state.hp/HEROES[state.key].hp)),turns});$('resultTitle').textContent='★'.repeat(stars)+'☆'.repeat(3-stars)+' · Chiến Thắng';$('resultDesc').textContent+=' · '+turns+' lượt. Sao tốt nhất được giữ lại; nhận rương sao ở bản đồ chương.';}
+    if(progressionIsTrial()&&progressionReward.trial){const t=progressionReward.trial,text=Object.entries(progressionReward).filter(([,n])=>typeof n==='number'&&n>0).map(([id,n])=>`${n.toLocaleString('vi-VN')} ${progressionRules.RESOURCES[id][0]}`).join(' · ');
+      $('resultEyebrow').textContent='SÂN THỬ LUYỆN';$('resultTitle').textContent=`${t.damage.toLocaleString('vi-VN')} sát thương`;
+      $('resultDesc').textContent=`${(t.damage/t.bar).toLocaleString('vi-VN',{maximumFractionDigits:1})} thanh máu · mốc ${t.tier}/5 · kỷ lục ${t.best.toLocaleString('vi-VN')}. `+(t.rewarded?(text?'Thưởng: '+text:'Chưa đạt mốc thưởng.'):'Đã hết 2 lượt có thưởng hôm nay; kết quả vẫn được ghi kỷ lục.');$('nextBtn').textContent='Đánh lại';}
     if(progressionReward.counterReward){const c=progressionReward.counterReward;$('resultDesc').textContent+=` · +3 mảnh ${c.name} (${c.shards}/12) · Khắc chế bậc ${c.rank}.`;}
     $('resultStage').textContent=String(progressionBattle.index);$('nextBtn').textContent=state.hp>0?'Trận kế tiếp':'Thử lại';
     if(progressionBattle.mode==='campaign'&&state.hp>0&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES)$('nextBtn').textContent='Về bản đồ';
     if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
-    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionBattle.mode);a.textContent='Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
+    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent='Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
   }return result;
 };
 $('nextBtn').addEventListener('click',event=>{
   if(!progressionBattle)return;event.stopImmediatePropagation();
-  const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
+  const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:mode==='trial'?progressionBattle.index:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
   if(mode==='campaign'&&won&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES){location.href='Gemwoven.html#campaign';return;}
   try{const next=progressionStore.begin(mode,index);location.href='Game.html?encounter='+encodeURIComponent(next.token);}catch(error){message(error.message);}
 },true);
-const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
+const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
 if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Trận không hợp lệ · Về thị trấn';document.body.append(progressionBack);}
 
-if(['campaign','boss'].includes(progressionBattle?.mode)){
+if(['campaign','boss','trial'].includes(progressionBattle?.mode)){
   const battle=progressionBattle,key=battle.enemyKey,creature=ART.campaignCreatures?.[battle.creature];
   // Elites carry a looping idle and their own combat body (attack, skill, cast, hurt, defeat); common foes have a
   // looping idle plus a still pose for strikes, or are one painting.
@@ -250,7 +271,7 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
   const campaignSkill=enemySkill;
   enemySkill=async function({reserved=false}={}){
     if(progressionBattle?.tactical)return;
-    if(!progressionBattle||!['campaign','boss'].includes(progressionBattle.mode))return campaignSkill({reserved});
+    if(!progressionBattle||!['campaign','boss','trial'].includes(progressionBattle.mode))return campaignSkill({reserved});
     if(!reserved)state.enemyEnergy=0;
     const phase=progressionBossCast++%battle.skills.length;
     // Flat skill base: level scaling lives only in enemyAttack (progression.js). A chapter boss or an elite picks

@@ -95,3 +95,15 @@ console.log('weekly ok');
   edit(p=>{for(const g of p.equipment)g.level=20;});assert.equal(row().state,'max');
 }
 console.log('gear row ok');
+{ // Sân Thử Luyện: today's boss only (all on weekends), at the hero's level, two rewarded runs a day, best kept.
+  clock=Date.UTC(2026,10,3,6);const {engine:e,edit}=fixture(); // Tuesday: Băng Nguyệt Linh Hồ (index 2)
+  assert.deepEqual(M.trialOpen(clock),[2]);assert.throws(()=>e.begin('trial',1),/boss khác/);
+  edit(p=>{p.heroes.novice.level=60;});const b=e.begin('trial',2);assert.equal(b.recommended,60);assert.equal(b.turnLimit,15);assert.equal(b.boss,true);assert.equal(b.enemyKey,'ice');
+  const r1=e.settle(b.token,false,b.enemyHp*2.5);assert.equal(r1.trial.tier,3);assert.ok(r1.gold>0&&r1.essence===1);assert.equal(r1.gems,undefined);
+  const b2=e.begin('trial',2),r2=e.settle(b2.token,true,b2.enemyHp*.6);assert.equal(r2.trial.tier,1);assert.ok(r2.gold>0&&!r2.essence);
+  const b3=e.begin('trial',2),r3=e.settle(b3.token,true,b3.enemyHp*9);assert.equal(r3.trial.rewarded,false);assert.equal(r3.gold,undefined,'Third run is free practice');
+  assert.equal(e.read().trial.best[2],Math.floor(b3.enemyHp*9));
+  clock=Date.UTC(2026,10,7,6);assert.deepEqual(M.trialOpen(clock),[1,2,3,4,5],'Weekend opens every boss');
+  const reload=e.read();assert.equal(reload.pending,null);
+}
+console.log('trial ok');

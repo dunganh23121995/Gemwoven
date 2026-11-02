@@ -372,12 +372,16 @@ Quảng Trường mùa sau.
 
 1. **Tháp Boss Vô Hạn [Có]:** tầng tăng dần, xoay vòng boss chương; thưởng giảm sau 12 trận/ngày.
    [Đêm nay] mỗi 10 tầng lần đầu: 10 Mảnh Hiro. [Đề xuất] tầng 60+ rơi ngọc khảm.
-2. **Sân Thử Luyện [Đề xuất]** — nơi spam thử tướng:
-   - **Không cần nhiều quái: một đại diện trâu mỗi hệ** (T2 Hỏa Long, T3 Nữ Hoàng Tuyết, T4 Cổ Thụ Đá,
-     T5 Chúa Tể Giông, T6 Ảnh, T7–CN tự chọn), dùng lại art boss có sẵn, mỗi con một cơ chế rõ (giáp, hồi máu,
-     hút năng lượng, phản đòn) để thử đúng điểm mạnh/yếu.
-   - HP vô hạn, 15 lượt, đo tổng sát thương. **2 lượt có thưởng/ngày**, giữ kết quả tốt nhất; đánh thêm thoải
-     mái không thưởng. Thưởng/ngày ≈ 1,5 giờ offline (vàng, EXP, Huy hiệu Thử Luyện). BXH tuần theo hệ (máy chủ).
+2. **Sân Thử Luyện [Đêm nay]** — nơi spam thử tướng (khu trên màn Boss Vô Hạn):
+   - **Không cần nhiều quái: một đại diện trâu mỗi ngày**, dùng lại boss chương có sẵn với bộ chiêu riêng:
+     T2 Hỏa Long Tro Tàn (Hỏa), T3 Băng Nguyệt Linh Hồ (Băng), T4 Thạch Mộc Cự Vệ (Mộc), T5 Lôi Sư Thiên Đỉnh (Lôi),
+     T6 Tử Thần Nguyệt Ảnh; T7–CN chọn bất kỳ.
+   - Boss ở **đúng cấp tướng đang xuất chiến**, **không bao giờ ngã**: hết thanh máu thì đứng dậy với thanh mới (đếm
+     số thanh). **15 lượt**, điểm = tổng sát thương. Tướng gục giữa chừng vẫn tính điểm đã gây.
+   - **2 lượt có thưởng/ngày** theo mốc ½ / 1 / 2 / 3 / 5 thanh máu (vàng + EXP = 0,3–0,75 giờ offline mỗi lượt, mốc
+     3+ thêm 1 tinh hoa); sau đó đánh thoải mái không thưởng; **giữ kỷ lục từng boss**.
+   - Đã kiểm trong combat thật (thanh máu hồi lại, hết 15 lượt, tướng gục) và có test engine.
+   - Sau này: BXH tuần theo boss (máy chủ), Huy hiệu Thử Luyện cho cửa hàng.
 
 ---
 
@@ -448,8 +452,8 @@ nguồn `raw/`, `sources/`):
 
 | Giai đoạn | Nội dung |
 |---|---|
-| **Đêm 03/11 (xong)** | Tài liệu + Codex phản biện; diện mạo hình thái; đường Mảnh Hiro (Tân Thủ, nhiệm vụ, rương, boss); Chi tiết lực chiến; Lộ trình; tướng chưa sở hữu xám; Lực chiến mới; triệu hồi 1%/100; Hiro tuyệt kỹ 70 + kiếm ×1,2; liveops + trang VIP/Thẻ tháng/Sự Kiện; gói tài nguyên + `packsFor`; mô phỏng cân bằng |
-| Kế tiếp (web) | Nhiệm vụ tuần; Biến Thân (cổng cấp 180 + TH3); Sân Thử Luyện; ngọc khảm; bộ hệ; báu vật; hình thái Hiro (vẽ); nén âm thanh/icon |
+| **Đêm 03/11 (xong)** | Tài liệu + Codex phản biện 2 vòng; nhiệm vụ tuần; Sân Thử Luyện; concept hình thái Hiro 2–3; diện mạo hình thái; đường Mảnh Hiro (Tân Thủ, nhiệm vụ, rương, boss); Chi tiết lực chiến; Lộ trình; tướng chưa sở hữu xám; Lực chiến mới; triệu hồi 1%/100; Hiro tuyệt kỹ 70 + kiếm ×1,2; liveops + trang VIP/Thẻ tháng/Sự Kiện; gói tài nguyên + `packsFor`; mô phỏng cân bằng |
+| Kế tiếp (web) | Đối chiếu mô phỏng với combat thật; Biến Thân (cổng cấp 180 + TH3); ngọc khảm; bộ hệ; báu vật; hình thái Hiro (vẽ); nén âm thanh/icon |
 | Trước máy chủ | Lõi trận xác định + vector kiểm thử; xuất JSON dữ liệu |
 | Máy chủ | Tài khoản, sổ cái, thanh toán, Đấu Hạng, Quảng Trường, sự kiện, BXH |
 | Godot | Client Android + PAD |
