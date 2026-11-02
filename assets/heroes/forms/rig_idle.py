@@ -522,7 +522,7 @@ class Surge(Rig):
     lifts on the rush. No pose changes hands, so the combat part map serves and the idle joins it without a jump.
     The feet stay on the ground, so the body never rises above rest here: combat lifts the whole sprite (combat-v3.js
     buff). That sequence lasts about .8 of the 1.3 s sheet, so the motion is over by then. Heroes face right in combat."""
-    FLARE, LEAN, NOD, DIP = .95, 3.2, 3., .016
+    FLARE, LEAN, NOD, DIP = .3, 3.2, 3., .016
     plant_all = True       # the lean is stronger than any idle's: a staff on the ground would stretch with the rows
 
     def __init__(self, hero, form):
@@ -533,6 +533,18 @@ class Surge(Rig):
             if c.attached:
                 tip = float(self.xx[c.reach_full > .8].mean()) if (c.reach_full > .8).any() else c.root[0]
                 c.lift = 1. if (tip - c.root[0] or tip - self.leg_cx) < 0 else -1.
+                # a wide cape pinned along a long seam tears if it swings like a scarf, and nothing may reach the cell's edge
+                c.give = min(1.4, max(.35, (self.n * .22 / math.sqrt(c.area)) ** 1.2))
+                if self.anchor.max() > .5:      # braced on a grounded prop: what hangs from it stirs, it does not fly
+                    c.give *= self.style.get("rests") or .7
+                ys, xs = np.where(c.mask)
+                for _ in range(10):
+                    a = c.reach_full[ys, xs] ** 1.15 * c.lift * self.FLARE * c.give * 1.25
+                    x, y = (xs - c.root[0]) * 1.05, (ys - c.root[1]) * 1.05
+                    x, y = c.root[0] + np.cos(a) * x - np.sin(a) * y, c.root[1] + np.sin(a) * x + np.cos(a) * y
+                    if min(x.min(), y.min()) >= 6 and max(x.max(), y.max()) < self.n - 6:
+                        break
+                    c.give *= .8
 
     def time(self, i):
         return i / (COUNT - 1)
@@ -579,7 +591,7 @@ class Surge(Rig):
         E = self.rush(t - .06 * r)
         A = s["loose"] * min(1.5, max(.75, math.sqrt(n * .25 / max(1., c.length))))
         flick = np.sin(2 * np.pi * 3.2 * t - 2.6 * r - c.phase)
-        ang = r ** 1.15 * E * (c.lift * self.FLARE * A / s["loose"] * .5 + A * .4 * flick)
+        ang = r ** 1.15 * E * (c.lift * self.FLARE * c.give + A * .4 * min(1, c.give) * flick)
         xr0, yr0 = self.xx - c.root[0], self.yy - c.root[1]
         puff = 1 + .05 * r * E
         xr, yr = xr0 * puff, yr0 * puff

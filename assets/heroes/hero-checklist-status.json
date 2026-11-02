@@ -297,6 +297,90 @@
    }
   },
   {
+   "id": "buff-rig",
+   "group": "2. Hình chiến đấu",
+   "label": "Nhận máu, giáp: rig từ tư thế nghỉ",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-1/rig/buff/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/rig/buff/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/rig/buff/rig.json"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/rig/buff/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/rig/buff/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/rig/buff/rig.json"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/rig/buff/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/rig/buff/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/rig/buff/rig.json"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/rig/buff/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/rig/buff/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/rig/buff/rig.json"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/rig/buff/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/rig/buff/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/rig/buff/rig.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/rig/buff/rig.json"
+     }
+    }
+   }
+  },
+  {
    "id": "attack",
    "group": "2. Hình chiến đấu",
    "label": "Sheet đánh thường",
