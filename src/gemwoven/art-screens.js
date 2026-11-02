@@ -105,8 +105,8 @@
     const counterDef=M.WORLD.EXPANSION.definitions.find(d=>d.counterKey===asset);
     if(counterDef){action(nodes,'item-action','guide:chapter',{chapter:counterDef.chapter});label(nodes,'item-action','Đến Chương');label(nodes,'source','Tinh anh 3 sao\nMốc 10 / 20 / 30 / 40');}
     // The item's action and "buy more" sit side by side under the held count.
-    const act=find(nodes,'item-action');Object.assign(act,{rect:product?[548,1378,178,98]:[636,1378,196,98],size:27,labelRect:[22,0,(product?178:196)-44,98]});
-    if(product)nodes.push(button('inventory','purchase','Mua thêm',[736,1378,178,98],'art:shop-product',{product:product.id},{size:27,labelRect:[22,0,134,98]}));
+    const act=find(nodes,'item-action');Object.assign(act,{rect:product?[552,1384,162,86]:[670,1384,196,86],size:27,labelRect:[22,0,(product?162:196)-44,86]});
+    if(product)nodes.push(button('inventory','purchase','Mua thêm',[716,1384,162,86],'art:shop-product',{product:product.id},{size:27,labelRect:[16,0,130,86]}));
     return nodes;
   }
   function summon(nodes,p,state){
@@ -116,12 +116,14 @@
     const featured=find(nodes,'portrait-fire');featured.icon='portrait-'+M.SUMMON_BANNER.hero;featured.action='hero:'+M.SUMMON_BANNER.hero;featured.rect=[350,366,240,285];featured.iconRect=[38,55,164,165];
     // Banner name + one short line on a board sized for two readable lines.
     label(nodes,'subtitle',M.SUMMON_BANNER.title+'\nTướng nổi bật kỳ này');Object.assign(find(nodes,'subtitle'),{rect:[300,276,341,80],size:28});find(nodes,'subtitle-board').rect=[284,268,373,96];
-    Object.assign(find(nodes,'featured-board'),{rect:[50,1178,842,174]});label(nodes,'featured-title','Trang Bị Nổi Bật');Object.assign(find(nodes,'featured-title'),{rect:[84,1194,400,38],size:31});
+    Object.assign(find(nodes,'featured-board'),{rect:[50,1178,842,174]});label(nodes,'featured-title','Phần Thưởng Hiếm');Object.assign(find(nodes,'featured-title'),{rect:[84,1194,400,38],size:31});
     nodes=remove(nodes,/\.featured-note$/);
-    [['fire-sword','Kiếm\nHuyền Thoại','weapon','legendary'],['helmet','Giáp\nThần','armor','divine'],['boots','Ủng\nHuyền Thoại','boots','legendary']].forEach(([asset,name,slot,rarity],i)=>nodes.push(button('summon','featured-gear-'+i,name,[80+i*250,1233,240,98],'journey:featured-gear',{slot,rarity,asset}, {asset:'inventory-slot',icon:asset,iconRect:[13,12,70,72],labelRect:[94,0,146,96],size:25,tone:'gold',align:'left',className:'featured-equipment'})));
+    const star=M.SUMMON_BANNER.hero,name=M.HEROES[star].name;
+    // Only the banner's prizes: its hero, that hero's fragments, and a top-rarity weapon.
+    [['hero',`portrait-${star}`,'Tướng\n'+name,'hero:'+star,{}],['fragment',`fragment-${star}`,'Mảnh\n'+name,'art:fragments',{}],['weapon',M.SLOT_ART.weapon,'Vũ Khí\n'+M.RARITIES.divine.name,'journey:featured-gear',{slot:'weapon',rarity:'divine',asset:M.SLOT_ART.weapon}]].forEach(([id,asset,text,act,data],i)=>nodes.push(button('summon','featured-'+id,text,[80+i*272,1233,256,98],act,data,{asset:'inventory-slot',icon:asset,iconRect:[13,12,70,72],labelRect:[100,0,156,96],size:30,tone:'gold',align:'left',className:'featured-equipment'})));
     label(nodes,'pity-label',`Còn ${300-p.summon.dry} lần tới bảo đảm tướng hiếm`);label(nodes,'pity-value',`${p.summon.dry} / 300`);find(nodes,'pity-meter').value=p.summon.dry/300;
     nodes.push(button('summon','ticket-balance',`${fmt(p.wallet.tickets)} Vé Triệu Hồi`,[290,1121,361,60],'item:ticket',{},
-      {asset:'nameplate',icon:'ticket',iconRect:[22,7,52,46],labelRect:[74,6,266,48],size:28}));
+      {asset:'nameplate',icon:'ticket',iconRect:[22,7,52,46],labelRect:[74,6,266,48],size:28,tone:'ink'}));
     return nodes;
   }
   function quests(nodes,p,state,key){
@@ -193,7 +195,7 @@
     Object.assign(find(nodes,'upgrade-action'),{rect:[311,1320,326,98]});Object.assign(find(nodes,'exp-value'),{rect:[296,1058,350,38],size:31});
     if(gain)nodes.push(text('upgrade','gain-preview',gain,[70,1422,800,70],31,'gold',{className:'text-backing upgrade-gain'}));
     if(side)nodes.push(side);
-    label(nodes,'exp-label','CẤP');find(nodes,'exp-crystal').asset='exp-book';
+    nodes=remove(nodes,/\.exp-label$/);find(nodes,'exp-crystal').asset='exp-book';
     nodes.push(button('upgrade','choose-novice','Hiro',[660,711,61,66],'do:hero',{hero:'novice'},{asset:'avatar-ring',icon:'portrait-novice',iconRect:[12,8,37,48],labelHidden:true,selected:hero==='novice'}));
     return nodes;
   }
@@ -210,10 +212,8 @@
   function arena(nodes,p,state){
     const mode=state.arenaMode||'duel';
     find(nodes,'fighter-fire').asset='hero-novice';find(nodes,'fighter-ice').asset='hero-novice';label(nodes,'fighter-fire','Người chơi 1 · Hiro');label(nodes,'fighter-ice','Người chơi 2 · Hiro');
-    action(nodes,'mode-solo','art:arena-mode',{mode:'duel'});action(nodes,'mode-team','art:arena-mode',{mode:'team'});find(nodes,'mode-solo').selected=mode==='duel';find(nodes,'mode-team').selected=mode==='team';
-    action(nodes,'battle',mode==='duel'?'do:battle':'do:soon',mode==='duel'?{mode:'duel',index:1}:{feature:'Đội 3vs3'});label(nodes,'battle',mode==='duel'?'Chiến Đấu':'Coming Soon');
-    // Two finger-sized secondary modes side by side under "Chiến Đấu".
-    nodes.push(button('arena','boss-mode','Boss Vô Hạn',[150,1352,310,98],'route:boss',{}, {size:31,labelRect:[30,0,250,98]}),button('arena','practice-ai','Đấu tập AI',[482,1352,310,98],'do:battle',{mode:'pvp',index:1},{asset:'tab-wood',tone:'gold',size:31,labelRect:[30,0,250,98]}));
+    action(nodes,'mode-solo','art:arena-mode',{mode:'duel'});action(nodes,'mode-boss','art:arena-mode',{mode:'boss'});find(nodes,'mode-solo').selected=mode==='duel';find(nodes,'mode-boss').selected=mode==='boss';
+    action(nodes,'battle',mode==='duel'?'do:battle':'route:boss',mode==='duel'?{mode:'duel',index:1}:{});
     // Fighters stay clear of the hanging menu on the left.
     find(nodes,'fighter-fire').rect=[166,559,250,215];find(nodes,'fighter-ice').rect=[528,559,250,215];
     find(nodes,'reward-gem').asset='exp-book';action(nodes,'rewards','route:boss');label(nodes,'rewards','Thưởng\nBoss');Object.assign(find(nodes,'rewards'),{labelRect:[6,190,151,66],size:28,iconRect:[38,20,88,86]});find(nodes,'reward-coins').rect=[774,1112,62,62];find(nodes,'reward-gem').rect=[842,1112,48,62];

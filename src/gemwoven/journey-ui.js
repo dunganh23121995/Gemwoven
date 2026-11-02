@@ -11,10 +11,11 @@
   const resourceText=reward=>Object.entries(reward).map(([key,n])=>`${fmt(n)} ${M.RESOURCES[key][0]}`).join(' · ');
   L.names.campaign='Khám Phá';L.screens.campaign.name='Khám Phá';L.names.chat='Trò Chuyện';L.screens.chat.name='Trò Chuyện';
   L.names.settings='Âm Thanh';L.screens.settings.name='Âm Thanh';
-  function home(nodes){
+  function home(nodes,p){
     nodes=nodes.filter(n=>!/^home\.(live|feature-mail|feature-settings)$/.test(n.id));
-    const quest=nodes.find(n=>n.id==='home.quests');quest.action='route:quests';C[quest.text]='Nhiệm Vụ';
-    quest.rect=[713,1146,210,173];quest.iconRect=[82,24,52,60];quest.className='home-quest-board';
+    // Quests live in the tavern; this board reads the power of the hero standing beside it.
+    const power=nodes.find(n=>n.id==='home.power');C[power.text]=`Lực Chiến\n${fmt(M.stats(p,p.selected).power)}`;
+    Object.assign(power,{rect:[713,1146,210,173],iconRect:[85,16,40,44],labelRect:[22,62,166,84]});
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1010,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Trò Chuyện','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
@@ -347,18 +348,18 @@
   }
   function settings(el){
     const levels=audioLevels(),muted=readStorage(MUTE_KEY,false);
-    el.innerHTML=`<header class="crafted-heading"><h2>Âm Thanh</h2><p>Điều chỉnh âm lượng cho cả thị trấn và chiến đấu</p></header><div class="sound-emblem">${img('icon-settings')}</div><form id="home-audio-form"><label class="mute-control"><input type="checkbox" name="muted" ${muted?'checked':''}> Tắt toàn bộ âm thanh</label>${[['music','Nhạc nền','Giai điệu của thị trấn và các vùng đất'],['effects','Hiệu ứng','Ghép ngọc, vũ khí và kỹ năng'],['voices','Lời thoại','Giọng nói của nhân vật trong trận']].map(([key,label,hint])=>`<label class="audio-slider"><span>${label}<output for="home-volume-${key}" id="home-output-${key}">${levels[key]}%</output></span><small>${hint}</small><input id="home-volume-${key}" name="${key}" type="range" min="0" max="100" value="${levels[key]}" aria-label="${label}"></label>`).join('')}<button type="button" class="game-btn secondary" id="home-audio-reset">Mặc Định</button><p class="audio-save-note" role="status">Tự lưu khi điều chỉnh</p></form><button type="button" class="game-btn crafted-return" data-action="route:home">Về Thị Trấn</button>`;
+    el.innerHTML=`<header class="crafted-heading"><h2>Âm Thanh</h2><p>Điều chỉnh âm lượng cho cả thị trấn và chiến đấu</p></header><div class="sound-emblem">${img('icon-settings')}</div><form id="home-audio-form"><label class="mute-control"><input type="checkbox" name="muted" ${muted?'checked':''}> Tắt toàn bộ âm thanh</label>${[['music','Nhạc nền','Giai điệu của thị trấn và các vùng đất'],['effects','Hiệu ứng','Ghép ngọc, vũ khí và kỹ năng'],['voices','Lời thoại','Giọng nói của nhân vật trong trận']].map(([key,label,hint])=>`<label class="audio-slider"><span>${label}<output for="home-volume-${key}" id="home-output-${key}">${levels[key]}%</output></span><small>${hint}</small><input id="home-volume-${key}" name="${key}" type="range" min="0" max="100" value="${levels[key]}" aria-label="${label}"></label>`).join('')}<button type="button" class="game-btn secondary" id="home-audio-reset">Mặc Định</button><p class="audio-save-note" role="status">Tự lưu khi điều chỉnh</p></form>`;
   }
   function chatRows(){const rows=readStorage(CHAT_KEY,[]);return Array.isArray(rows)?rows.filter(r=>typeof r.text==='string'&&r.text.trim()&&r.text.length<=240&&Number.isFinite(r.at)&&Math.abs(r.at)<=8.64e15&&M.HEROES[r.hero]).slice(-80):[];}
   function chat(el,p,state){
     const system=state.chatTab==='system',rows=system?p.log.slice(0,40).reverse().map(r=>({text:r.message,at:r.at,system:true})):chatRows();
-    el.innerHTML=`<header class="crafted-heading"><h2>Trò Chuyện</h2><p>Thị trấn · Trực tuyến Coming soon</p></header><div class="chat-tabs"><button class="game-btn ${system?'':'active'}" data-action="journey:chat-tab" data-tab="town">Thị Trấn</button><button class="game-btn ${system?'active':''}" data-action="journey:chat-tab" data-tab="system">Hệ Thống</button></div><div class="chat-history" role="log" aria-live="polite"><div class="chat-notice">${img('icon-chat')}<p>Góc trò chuyện trên thiết bị của bạn.<br>Tin nhắn trực tuyến sẽ mở khi máy chủ ra mắt.</p></div>${rows.map(row=>`<article class="chat-message ${row.system?'system':''}">${img(row.system?'icon-event':'portrait-'+row.hero,'chat-avatar')}<div><header><b>${row.system?'Hệ Thống':esc(M.HEROES[row.hero].name)+' · Bạn'}</b><time>${new Date(row.at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'})}</time></header><p>${esc(row.text)}</p></div></article>`).join('')}</div>${system?'<p class="chat-system-note">Nhật ký hành trình và phần thưởng gần đây</p>':`<form id="town-chat-form"><div class="chat-composer"><button type="button" id="chat-emoji-toggle" aria-label="Biểu cảm">☺</button><textarea name="message" maxlength="240" rows="2" aria-label="Tin nhắn" placeholder="Nhắn điều gì đó…"></textarea><button type="submit" class="game-btn">Gửi</button></div><div class="emoji-tray" hidden>${['✨','🌿','⚔️','❤️','😊','👍'].map(e=>`<button type="button" data-emoji="${e}" aria-label="${e}">${e}</button>`).join('')}</div><small class="chat-counter">0 / 240</small></form>`}<button type="button" class="game-btn crafted-return" data-action="route:home">Về Thị Trấn</button>`;
+    el.innerHTML=`<header class="crafted-heading"><h2>Trò Chuyện</h2><p>Thị trấn · Trực tuyến Coming soon</p></header><div class="chat-tabs"><button class="game-btn ${system?'':'active'}" data-action="journey:chat-tab" data-tab="town">Thị Trấn</button><button class="game-btn ${system?'active':''}" data-action="journey:chat-tab" data-tab="system">Hệ Thống</button></div><div class="chat-history" role="log" aria-live="polite"><div class="chat-notice">${img('icon-chat')}<p>Góc trò chuyện trên thiết bị của bạn.<br>Tin nhắn trực tuyến sẽ mở khi máy chủ ra mắt.</p></div>${rows.map(row=>`<article class="chat-message ${row.system?'system':''}">${img(row.system?'icon-event':'portrait-'+row.hero,'chat-avatar')}<div><header><b>${row.system?'Hệ Thống':esc(M.HEROES[row.hero].name)+' · Bạn'}</b><time>${new Date(row.at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'})}</time></header><p>${esc(row.text)}</p></div></article>`).join('')}</div>${system?'<p class="chat-system-note">Nhật ký hành trình và phần thưởng gần đây</p>':`<form id="town-chat-form"><div class="chat-composer"><button type="button" id="chat-emoji-toggle" aria-label="Biểu cảm">☺</button><textarea name="message" maxlength="240" rows="2" aria-label="Tin nhắn" placeholder="Nhắn điều gì đó…"></textarea><button type="submit" class="game-btn">Gửi</button></div><div class="emoji-tray" hidden>${['✨','🌿','⚔️','❤️','😊','👍'].map(e=>`<button type="button" data-emoji="${e}" aria-label="${e}">${e}</button>`).join('')}</div><small class="chat-counter">0 / 240</small></form>`}`;
   }
   const decorate=G.decorate;
   G.decorate=state=>{
     const p=decorate(state),key=state.screen;let nodes=L.screens[key].nodes;
     if(key!=='campaign')state.mapStage=null;
-    if(key==='home')nodes=home(nodes);
+    if(key==='home')nodes=home(nodes,p);
     else nodes=nodes.filter(n=>!n.id.endsWith('.settings'));
     nodes=nodes.filter(n=>!n.id.endsWith('.side-mail'));
     for(const n of nodes)if(n.id.endsWith('.side-chat')){n.action='route:chat';C[n.text]='Trò Chuyện';}
@@ -385,7 +386,7 @@
     if(command==='choose-hero'){if(state.mapStage&&G.engine.read().heroes[d.hero]){state.mapHero=d.hero;ctx.render();}}
     if(command==='challenge'){const index=Number(d.index),p=G.engine.read();if(index===state.mapStage&&index<=p.campaign.cleared+1&&p.heroes[state.mapHero]){G.engine.select(state.mapHero);delegate('do:battle',{dataset:{mode:'campaign',index:String(index)}},ctx,state);}}
     if(command==='rewards'){state.mapRewards=!state.mapRewards;ctx.render();}
-    if(command==='featured-gear')ctx.showModal(M.SLOTS[d.slot]+' · '+M.RARITIES[d.rarity].name,[d.asset],d.rarity==='divine'?'Trang bị Thần có một hiệu ứng đặc biệt ngẫu nhiên: kháng mất lượt hoặc tạo lá chắn đầu lượt. Xem bảng tỷ lệ để biết cơ hội ra phẩm chất.':'Trang bị Huyền Thoại có chỉ số cao, có thể cường hóa đến +20. Xem bảng tỷ lệ để biết cơ hội ra phẩm chất.');
+    if(command==='featured-gear')ctx.showModal(M.SLOTS[d.slot]+' · '+M.RARITIES[d.rarity].name,[d.asset],'Vũ khí Thần mang một hiệu ứng ngẫu nhiên: Chấn kích, Hút sinh lực hoặc Xuyên giáp. Xem bảng tỷ lệ để biết cơ hội nhận được.');
     if(command==='atlas'){state.mapStage=null;state.mapRewards=false;state.mapMessage='';state.mapView='atlas';ctx.render();}
     if(command==='region'){const n=Number(d.chapter),p=G.engine.read();
       if(chapterOpen(p,n)){state.mapView='chapter';state.chapter=n;state.atlasLocked=null;ctx.render();}

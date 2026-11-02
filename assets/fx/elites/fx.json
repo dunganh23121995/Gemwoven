@@ -1,0 +1,918 @@
+{
+ "forest-rootknight/roots": {
+  "file": "assets/fx/elites/forest-rootknight/roots.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.863
+ },
+ "forest-leafarcher/leafburst": {
+  "file": "assets/fx/elites/forest-leafarcher/leafburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "forest-leafarcher/leafarrow": {
+  "file": "assets/fx/elites/forest-leafarcher/leafarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "volcano-flamelancer/dragonflame": {
+  "file": "assets/fx/elites/volcano-flamelancer/dragonflame.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "volcano-ashcultist/ashgeyser": {
+  "file": "assets/fx/elites/volcano-ashcultist/ashgeyser.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.887
+ },
+ "volcano-ashcultist/ashember": {
+  "file": "assets/fx/elites/volcano-ashcultist/ashember.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "ice-frostguard/frostwave": {
+  "file": "assets/fx/elites/ice-frostguard/frostwave.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.855
+ },
+ "ice-snowwitch/iceburst": {
+  "file": "assets/fx/elites/ice-snowwitch/iceburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "ice-snowwitch/icelance": {
+  "file": "assets/fx/elites/ice-snowwitch/icelance.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thunder-stormblade/thunderslash": {
+  "file": "assets/fx/elites/thunder-stormblade/thunderslash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thunder-sparkmage/sparkbolt": {
+  "file": "assets/fx/elites/thunder-sparkmage/sparkbolt.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.871
+ },
+ "thunder-sparkmage/sparkorb": {
+  "file": "assets/fx/elites/thunder-sparkmage/sparkorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "marsh-bogstalker/mudtrap": {
+  "file": "assets/fx/elites/marsh-bogstalker/mudtrap.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.855
+ },
+ "marsh-sporewitch/sporeburst": {
+  "file": "assets/fx/elites/marsh-sporewitch/sporeburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "marsh-sporewitch/sporedrop": {
+  "file": "assets/fx/elites/marsh-sporewitch/sporedrop.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "desert-scarabguard/sunbreak": {
+  "file": "assets/fx/elites/desert-scarabguard/sunbreak.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "desert-sandpriest/curseglyph": {
+  "file": "assets/fx/elites/desert-sandpriest/curseglyph.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.832
+ },
+ "desert-sandpriest/sandorb": {
+  "file": "assets/fx/elites/desert-sandpriest/sandorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-reefcorsair/coralslash": {
+  "file": "assets/fx/elites/abyss-reefcorsair/coralslash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-tidecaller/tidebeam": {
+  "file": "assets/fx/elites/abyss-tidecaller/tidebeam.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-tidecaller/waterbolt": {
+  "file": "assets/fx/elites/abyss-tidecaller/waterbolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "foundry-gearknight/pistonsteam": {
+  "file": "assets/fx/elites/foundry-gearknight/pistonsteam.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "foundry-tinkerer/wrenchspin": {
+  "file": "assets/fx/elites/foundry-tinkerer/wrenchspin.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-shardblade/shardcut": {
+  "file": "assets/fx/elites/crystal-shardblade/shardcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-gemsage/prismray": {
+  "file": "assets/fx/elites/crystal-gemsage/prismray.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-gemsage/gemshard": {
+  "file": "assets/fx/elites/crystal-gemsage/gemshard.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "haunted-gravewarden/ghostwisp": {
+  "file": "assets/fx/elites/haunted-gravewarden/ghostwisp.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "haunted-bonepaladin/runecrescent": {
+  "file": "assets/fx/elites/haunted-bonepaladin/runecrescent.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "sky-windknight/galeimpact": {
+  "file": "assets/fx/elites/sky-windknight/galeimpact.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "sky-cloudmonk/cloudgust": {
+  "file": "assets/fx/elites/sky-cloudmonk/cloudgust.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.852
+ },
+ "thorns-briarduelist/thornstreak": {
+  "file": "assets/fx/elites/thorns-briarduelist/thornstreak.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thorns-vinehexer/strangler": {
+  "file": "assets/fx/elites/thorns-vinehexer/strangler.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.867
+ },
+ "thorns-vinehexer/thornseed": {
+  "file": "assets/fx/elites/thorns-vinehexer/thornseed.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "celestial-sunpaladin/sunstreak": {
+  "file": "assets/fx/elites/celestial-sunpaladin/sunstreak.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "celestial-dawncleric/dawnbeam": {
+  "file": "assets/fx/elites/celestial-dawncleric/dawnbeam.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.879
+ },
+ "celestial-dawncleric/dawnmote": {
+  "file": "assets/fx/elites/celestial-dawncleric/dawnmote.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "void-voidknight/voidrift": {
+  "file": "assets/fx/elites/void-voidknight/voidrift.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "void-starseer/starcrush": {
+  "file": "assets/fx/elites/void-starseer/starcrush.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "void-starseer/darkstar": {
+  "file": "assets/fx/elites/void-starseer/darkstar.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "eldergrove-rootwarden/palespears": {
+  "file": "assets/fx/elites/eldergrove-rootwarden/palespears.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.871
+ },
+ "eldergrove-blossomranger/pollenbloom": {
+  "file": "assets/fx/elites/eldergrove-blossomranger/pollenbloom.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.82
+ },
+ "caldera-basaltbrute/lavaspike": {
+  "file": "assets/fx/elites/caldera-basaltbrute/lavaspike.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.836
+ },
+ "caldera-furnacepriest/emberburst": {
+  "file": "assets/fx/elites/caldera-furnacepriest/emberburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "caldera-furnacepriest/ember": {
+  "file": "assets/fx/elites/caldera-furnacepriest/ember.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-rimeknight/rimecage": {
+  "file": "assets/fx/elites/glacier-rimeknight/rimecage.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.84
+ },
+ "glacier-blizzardmage/hailburst": {
+  "file": "assets/fx/elites/glacier-blizzardmage/hailburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-blizzardmage/icedrop": {
+  "file": "assets/fx/elites/glacier-blizzardmage/icedrop.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "stormspire-voltlancer/goldrush": {
+  "file": "assets/fx/elites/stormspire-voltlancer/goldrush.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "stormspire-stormshaman/stormring": {
+  "file": "assets/fx/elites/stormspire-stormshaman/stormring.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "stormspire-stormshaman/voltorb": {
+  "file": "assets/fx/elites/stormspire-stormshaman/voltorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-cagekeeper/chainlink": {
+  "file": "assets/fx/elites/soulcrypt-cagekeeper/chainlink.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-cagekeeper/chainkey": {
+  "file": "assets/fx/elites/soulcrypt-cagekeeper/chainkey.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-veilassassin/veilcut": {
+  "file": "assets/fx/elites/soulcrypt-veilassassin/veilcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-plagueherald/plagueburst": {
+  "file": "assets/fx/elites/mycelium-plagueherald/plagueburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-plagueherald/plaguedrop": {
+  "file": "assets/fx/elites/mycelium-plagueherald/plaguedrop.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-mycoknight/rotcrater": {
+  "file": "assets/fx/elites/mycelium-mycoknight/rotcrater.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.832
+ },
+ "geode-rampartgolem/rockwave": {
+  "file": "assets/fx/elites/geode-rampartgolem/rockwave.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.871
+ },
+ "geode-prismseer/crystalray": {
+  "file": "assets/fx/elites/geode-prismseer/crystalray.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "geode-prismseer/crystalshard": {
+  "file": "assets/fx/elites/geode-prismseer/crystalshard.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-dunesentinel/sandcut": {
+  "file": "assets/fx/elites/hourglass-dunesentinel/sandcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-dunesentinel/sandblade": {
+  "file": "assets/fx/elites/hourglass-dunesentinel/sandblade.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-chronoweaver/timethread": {
+  "file": "assets/fx/elites/hourglass-chronoweaver/timethread.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-chronoweaver/sandmote": {
+  "file": "assets/fx/elites/hourglass-chronoweaver/sandmote.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "coralreef-tidemarshal/tidewave": {
+  "file": "assets/fx/elites/coralreef-tidemarshal/tidewave.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.82
+ },
+ "coralreef-coraloracle/pearlmote": {
+  "file": "assets/fx/elites/coralreef-coraloracle/pearlmote.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "coralreef-coraloracle/pearlbolt": {
+  "file": "assets/fx/elites/coralreef-coraloracle/pearlbolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "moonkeep-lunarknight/moonslash": {
+  "file": "assets/fx/elites/moonkeep-lunarknight/moonslash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "moonkeep-eclipsehuntress/eclipsebite": {
+  "file": "assets/fx/elites/moonkeep-eclipsehuntress/eclipsebite.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "forest-mossdruid/mossknot": {
+  "file": "assets/fx/elites/forest-mossdruid/mossknot.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "forest-mossdruid/mossball": {
+  "file": "assets/fx/elites/forest-mossdruid/mossball.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "forest-stagchief/antlercut": {
+  "file": "assets/fx/elites/forest-stagchief/antlercut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "volcano-slagarcher/slagburst": {
+  "file": "assets/fx/elites/volcano-slagarcher/slagburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "volcano-slagarcher/slagarrow": {
+  "file": "assets/fx/elites/volcano-slagarcher/slagarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "volcano-drakewarlord/lavasweep": {
+  "file": "assets/fx/elites/volcano-drakewarlord/lavasweep.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.773
+ },
+ "ice-foxhuntress/frostshatter": {
+  "file": "assets/fx/elites/ice-foxhuntress/frostshatter.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "ice-foxhuntress/frostarrow": {
+  "file": "assets/fx/elites/ice-foxhuntress/frostarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "ice-moonjarl/moonfrost": {
+  "file": "assets/fx/elites/ice-moonjarl/moonfrost.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.855
+ },
+ "thunder-boltgunner/voltburst": {
+  "file": "assets/fx/elites/thunder-boltgunner/voltburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thunder-boltgunner/voltbolt": {
+  "file": "assets/fx/elites/thunder-boltgunner/voltbolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thunder-stormmaul/thunderring": {
+  "file": "assets/fx/elites/thunder-stormmaul/thunderring.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "marsh-toadshaman/toadtongue": {
+  "file": "assets/fx/elites/marsh-toadshaman/toadtongue.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "marsh-toadshaman/toadglob": {
+  "file": "assets/fx/elites/marsh-toadshaman/toadglob.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "marsh-bogwarlord/blackmire": {
+  "file": "assets/fx/elites/marsh-bogwarlord/blackmire.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.824
+ },
+ "desert-sunarcher/sunspark": {
+  "file": "assets/fx/elites/desert-sunarcher/sunspark.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "desert-sunarcher/sunarrow": {
+  "file": "assets/fx/elites/desert-sunarcher/sunarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "desert-sphinxguard/sphinxstreak": {
+  "file": "assets/fx/elites/desert-sphinxguard/sphinxstreak.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-harpooner/harpoonlink": {
+  "file": "assets/fx/elites/abyss-harpooner/harpoonlink.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-harpooner/harpoon": {
+  "file": "assets/fx/elites/abyss-harpooner/harpoon.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-krakenlord/krakensurge": {
+  "file": "assets/fx/elites/abyss-krakenlord/krakensurge.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.812
+ },
+ "foundry-steamgunner/steamjet": {
+  "file": "assets/fx/elites/foundry-steamgunner/steamjet.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "foundry-steamgunner/steamshell": {
+  "file": "assets/fx/elites/foundry-steamgunner/steamshell.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "foundry-chiefengineer/teslabolt": {
+  "file": "assets/fx/elites/foundry-chiefengineer/teslabolt.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.918
+ },
+ "foundry-chiefengineer/coilspark": {
+  "file": "assets/fx/elites/foundry-chiefengineer/coilspark.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-prismarcher/prismsplash": {
+  "file": "assets/fx/elites/crystal-prismarcher/prismsplash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-prismarcher/prismarrow": {
+  "file": "assets/fx/elites/crystal-prismarcher/prismarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-geodeguard/geodecross": {
+  "file": "assets/fx/elites/crystal-geodeguard/geodecross.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "haunted-banshee/wailmote": {
+  "file": "assets/fx/elites/haunted-banshee/wailmote.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "haunted-banshee/wailorb": {
+  "file": "assets/fx/elites/haunted-banshee/wailorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "haunted-necrolord/bonepillar": {
+  "file": "assets/fx/elites/haunted-necrolord/bonepillar.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.91
+ },
+ "haunted-necrolord/skullflame": {
+  "file": "assets/fx/elites/haunted-necrolord/skullflame.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "sky-galearcher/featherburst": {
+  "file": "assets/fx/elites/sky-galearcher/featherburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "sky-galearcher/featherarrow": {
+  "file": "assets/fx/elites/sky-galearcher/featherarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "sky-tempestmage/twister": {
+  "file": "assets/fx/elites/sky-tempestmage/twister.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.805
+ },
+ "sky-tempestmage/galeorb": {
+  "file": "assets/fx/elites/sky-tempestmage/galeorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thorns-rosearcher/rosepop": {
+  "file": "assets/fx/elites/thorns-rosearcher/rosepop.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thorns-rosearcher/rosearrow": {
+  "file": "assets/fx/elites/thorns-rosearcher/rosearrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thorns-bramblewarden/brambleline": {
+  "file": "assets/fx/elites/thorns-bramblewarden/brambleline.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.805
+ },
+ "celestial-choirmaid/hymnray": {
+  "file": "assets/fx/elites/celestial-choirmaid/hymnray.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "celestial-choirmaid/hymnnote": {
+  "file": "assets/fx/elites/celestial-choirmaid/hymnnote.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "celestial-dawnlegate/dawnbreak": {
+  "file": "assets/fx/elites/celestial-dawnlegate/dawnbreak.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "void-riftstalker/riftcut": {
+  "file": "assets/fx/elites/void-riftstalker/riftcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "void-cometlord/cometburst": {
+  "file": "assets/fx/elites/void-cometlord/cometburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "void-cometlord/cometbolt": {
+  "file": "assets/fx/elites/void-cometlord/cometbolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "eldergrove-petalarcher/petalburst": {
+  "file": "assets/fx/elites/eldergrove-petalarcher/petalburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "eldergrove-petalarcher/petalarrow": {
+  "file": "assets/fx/elites/eldergrove-petalarcher/petalarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "eldergrove-birchelder/birchspikes": {
+  "file": "assets/fx/elites/eldergrove-birchelder/birchspikes.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.859
+ },
+ "eldergrove-birchelder/sapbead": {
+  "file": "assets/fx/elites/eldergrove-birchelder/sapbead.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "caldera-slagslinger/slagpit": {
+  "file": "assets/fx/elites/caldera-slagslinger/slagpit.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.828
+ },
+ "caldera-slagslinger/slagball": {
+  "file": "assets/fx/elites/caldera-slagslinger/slagball.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "caldera-obsidianlord/obsidiancut": {
+  "file": "assets/fx/elites/caldera-obsidianlord/obsidiancut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-frostbolter/glacierchip": {
+  "file": "assets/fx/elites/glacier-frostbolter/glacierchip.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-frostbolter/glacierbolt": {
+  "file": "assets/fx/elites/glacier-frostbolter/glacierbolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-wintergeneral/winterwall": {
+  "file": "assets/fx/elites/glacier-wintergeneral/winterwall.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.812
+ },
+ "stormspire-galeduelist/goldstab": {
+  "file": "assets/fx/elites/stormspire-galeduelist/goldstab.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "stormspire-thunderarchon/judgebolt": {
+  "file": "assets/fx/elites/stormspire-thunderarchon/judgebolt.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.871
+ },
+ "stormspire-thunderarchon/thunderseal": {
+  "file": "assets/fx/elites/stormspire-thunderarchon/thunderseal.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-wailbinder/rosarybead": {
+  "file": "assets/fx/elites/soulcrypt-wailbinder/rosarybead.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-wailbinder/soulbead": {
+  "file": "assets/fx/elites/soulcrypt-wailbinder/soulbead.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-dreadwarden/dreadcleave": {
+  "file": "assets/fx/elites/soulcrypt-dreadwarden/dreadcleave.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-sporearcher/moldburst": {
+  "file": "assets/fx/elites/mycelium-sporearcher/moldburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-sporearcher/moldarrow": {
+  "file": "assets/fx/elites/mycelium-sporearcher/moldarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "forest-boarstalker/tuskrake": {
+  "file": "assets/fx/elites/forest-boarstalker/tuskrake.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "volcano-pyremonk/flamefists": {
+  "file": "assets/fx/elites/volcano-pyremonk/flamefists.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "ice-moonduelist/icestab": {
+  "file": "assets/fx/elites/ice-moonduelist/icestab.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-rotchampion/rotslash": {
+  "file": "assets/fx/elites/mycelium-rotchampion/rotslash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "geode-lodeshooter/oreburst": {
+  "file": "assets/fx/elites/geode-lodeshooter/oreburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "geode-lodeshooter/orebolt": {
+  "file": "assets/fx/elites/geode-lodeshooter/orebolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "geode-minechief/quakeline": {
+  "file": "assets/fx/elites/geode-minechief/quakeline.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.867
+ },
+ "hourglass-sandarcher/sandsplash": {
+  "file": "assets/fx/elites/hourglass-sandarcher/sandsplash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-sandarcher/sandarrow": {
+  "file": "assets/fx/elites/hourglass-sandarcher/sandarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-sandgeneral/dunewave": {
+  "file": "assets/fx/elites/hourglass-sandgeneral/dunewave.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.801
+ },
+ "coralreef-anemonewitch/anemonetrap": {
+  "file": "assets/fx/elites/coralreef-anemonewitch/anemonetrap.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.84
+ },
+ "coralreef-anemonewitch/anemoneorb": {
+  "file": "assets/fx/elites/coralreef-anemonewitch/anemoneorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "coralreef-shellgeneral/shellwave": {
+  "file": "assets/fx/elites/coralreef-shellgeneral/shellwave.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.832
+ },
+ "moonkeep-crescentarcher/moonsplash": {
+  "file": "assets/fx/elites/moonkeep-crescentarcher/moonsplash.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "moonkeep-crescentarcher/crescentarrow": {
+  "file": "assets/fx/elites/moonkeep-crescentarcher/crescentarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thunder-bellpriest/bellbolt": {
+  "file": "assets/fx/elites/thunder-bellpriest/bellbolt.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.871
+ },
+ "thunder-bellpriest/bellspark": {
+  "file": "assets/fx/elites/thunder-bellpriest/bellspark.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "marsh-leechblade/leechcut": {
+  "file": "assets/fx/elites/marsh-leechblade/leechcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "desert-jarmummy/ashbandage": {
+  "file": "assets/fx/elites/desert-jarmummy/ashbandage.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "desert-jarmummy/jarcurse": {
+  "file": "assets/fx/elites/desert-jarmummy/jarcurse.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "abyss-sirenblade/sirenstab": {
+  "file": "assets/fx/elites/abyss-sirenblade/sirenstab.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "foundry-sawbutcher/sawcut": {
+  "file": "assets/fx/elites/foundry-sawbutcher/sawcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "crystal-shardmonk/gemfist": {
+  "file": "assets/fx/elites/crystal-shardmonk/gemfist.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "moonkeep-bloodseer/bloodmote": {
+  "file": "assets/fx/elites/moonkeep-bloodseer/bloodmote.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "moonkeep-bloodseer/bloodorb": {
+  "file": "assets/fx/elites/moonkeep-bloodseer/bloodorb.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "haunted-scarecrow/forkstreak": {
+  "file": "assets/fx/elites/haunted-scarecrow/forkstreak.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "sky-fanblade/fancut": {
+  "file": "assets/fx/elites/sky-fanblade/fancut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "thorns-shearkeeper/shearcut": {
+  "file": "assets/fx/elites/thorns-shearkeeper/shearcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "celestial-judgeknight/verdictwave": {
+  "file": "assets/fx/elites/celestial-judgeknight/verdictwave.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.848
+ },
+ "void-gravitymonk/gravitycrush": {
+  "file": "assets/fx/elites/void-gravitymonk/gravitycrush.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "eldergrove-honeykeeper/nectartrap": {
+  "file": "assets/fx/elites/eldergrove-honeykeeper/nectartrap.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.891
+ },
+ "eldergrove-honeykeeper/nectardrop": {
+  "file": "assets/fx/elites/eldergrove-honeykeeper/nectardrop.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "caldera-lavadancer/lavaribbon": {
+  "file": "assets/fx/elites/caldera-lavadancer/lavaribbon.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-mirrorpriestess/mirrorray": {
+  "file": "assets/fx/elites/glacier-mirrorpriestess/mirrorray.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "glacier-mirrorpriestess/mirrorshard": {
+  "file": "assets/fx/elites/glacier-mirrorpriestess/mirrorshard.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "stormspire-goldarcher/goldspark": {
+  "file": "assets/fx/elites/stormspire-goldarcher/goldspark.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "stormspire-goldarcher/goldarrow": {
+  "file": "assets/fx/elites/stormspire-goldarcher/goldarrow.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-cellbolter/cellburst": {
+  "file": "assets/fx/elites/soulcrypt-cellbolter/cellburst.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "soulcrypt-cellbolter/cellbolt": {
+  "file": "assets/fx/elites/soulcrypt-cellbolter/cellbolt.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "mycelium-sporehag/threadpit": {
+  "file": "assets/fx/elites/mycelium-sporehag/threadpit.webp",
+  "count": 6,
+  "frameDuration": 70,
+  "ground": 0.84
+ },
+ "mycelium-sporehag/sporelamp": {
+  "file": "assets/fx/elites/mycelium-sporehag/sporelamp.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "geode-quartzduelist/quartzstab": {
+  "file": "assets/fx/elites/geode-quartzduelist/quartzstab.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "hourglass-stormassassin/dunecut": {
+  "file": "assets/fx/elites/hourglass-stormassassin/dunecut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "coralreef-sharkhunter/jawcut": {
+  "file": "assets/fx/elites/coralreef-sharkhunter/jawcut.webp",
+  "count": 6,
+  "frameDuration": 70
+ },
+ "moonkeep-wolfslayer/silvercleave": {
+  "file": "assets/fx/elites/moonkeep-wolfslayer/silvercleave.webp",
+  "count": 6,
+  "frameDuration": 70
+ }
+}

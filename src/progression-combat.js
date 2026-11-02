@@ -4,6 +4,9 @@ const progressionSandbox=new URLSearchParams(location.search).has('qa')&&!new UR
 let progressionVeil=0,progressionStore=null,progressionBattle=null,progressionError='',progressionReported=false,progressionReward={},progressionCasting=false,progressionTurn=0,progressionDot=null,progressionBossCast=0;
 const progressionProcs=new Set();
 let progressionEnemyDot=null,progressionEnemyCharge=1;
+// A campaign creature's sheets: an elite has its full combat body, a common foe a looping idle plus a still pose, or one
+// painting.
+function creatureSheets(c){return c.attack?{idle:c.idle,attack:c.attack,cast:c.cast,hurt:c.hurt,skill:c.skill,defeat:c.defeat}:c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};}
 function progressionMusicKey(){const theme=progressionBattle?.music;return theme&&ART.music?.[theme]?theme:state.enemyKey;}
 try{
   progressionStore=progressionRules.makeEngine(window.localStorage);
@@ -76,7 +79,7 @@ startStage=function(){
   if(progressionBattle){state.key=progressionBattle.hero;state.enemyKey=progressionBattle.enemyKey;state.stage=Math.max(1,Math.ceil(progressionBattle.recommended/5));HEROES[state.key].hp=progressionBattle.stats.hp;}
   progressionOriginalStart();
   progressionProcs.clear();progressionTurn=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
-  if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.mode==='pvp'?Math.round(HEROES[state.key].hp*1.15):progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':progressionBattle.mode==='pvp'?'Đấu tập AI; chỉ số chuẩn hóa.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
+  if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
 const progressionOriginalRender=renderActors;
 renderActors=function(){
@@ -108,7 +111,7 @@ showHeroDetail=function(){
   $('heroDetailStats').innerHTML=values.map(([name,value])=>`<div><dt>${name}</dt><dd>${value}</dd></div>`).join('');
   $('heroSkillName').textContent=HEROES[key].skill;$('heroSkillDescription').textContent=progressionRules.skillText(key,save,0).description;
   $('heroDetailTrait').textContent=progressionRules.skillText(key,save,1).description+(key==='lightning'?' Luôn lơ lửng khi còn sống.':'');
-  $('heroStatNote').textContent=progressionBattle.mode==='pvp'||progressionIsDuel()?'Đấu tập dùng chỉ số chuẩn hóa: kỹ năng cấp 1, không trang bị.':'Chỉ số đã tính cấp, sao, tiến hóa, kỹ năng và trang bị của trận này; sát thương còn chịu khắc hệ và liên hoàn.';
+  $('heroStatNote').textContent=progressionIsDuel()?'Trận 1vs1 dùng chỉ số chuẩn hóa: kỹ năng cấp 1, không trang bị.':'Chỉ số đã tính cấp, sao, tiến hóa, kỹ năng và trang bị của trận này; sát thương còn chịu khắc hệ và liên hoàn.';
 };
 const progressionOriginalDamage=damage;
 // Six-star Noct: a veiled hero takes nothing from the enemy, and the ultimate's cuts ignore armour.
@@ -126,7 +129,7 @@ combatV3Number=function(side,text,kind,...rest){
 function progressionDamage(side,raw,ledger=null){
   if(!progressionBattle)return progressionOriginalDamage(side,raw,ledger);
   const s=progressionBattle.stats,kit=progressionKit(progressionBattle.hero);
-  let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.mode==='pvp'?1.8:progressionBattle.enemyAttack;
+  let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.enemyAttack;
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   let bypassed=0;
   if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<.08){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
@@ -205,28 +208,29 @@ finishBattle=async function(){
   const result=await progressionOriginalFinish();
   if(result&&progressionBattle){
     const text=Object.entries(progressionReward).filter(([,n])=>n>0).map(([id,n])=>`${n.toLocaleString('vi-VN')} ${progressionRules.RESOURCES[id][0]}`).join(' · ');
-    $('resultDesc').textContent=state.hp>0?(text||'Hoàn tất trận đấu tập. Không có thưởng tài nguyên.'):'Thua trận; tiến độ đã vượt được giữ lại.';
+    $('resultDesc').textContent=state.hp>0?(text||'Hoàn tất trận 1vs1. Không có thưởng tài nguyên.'):'Thua trận; tiến độ đã vượt được giữ lại.';
     if(progressionBattle.mode==='campaign'&&state.hp>0){const turns=Math.max(1,progressionTurn),stars=progressionRules.stageStars(progressionBattle,true,{hpRatio:Math.max(0,Math.min(1,state.hp/HEROES[state.key].hp)),turns});$('resultTitle').textContent='★'.repeat(stars)+'☆'.repeat(3-stars)+' · Chiến Thắng';$('resultDesc').textContent+=' · '+turns+' lượt. Sao tốt nhất được giữ lại; nhận rương sao ở bản đồ chương.';}
     if(progressionReward.counterReward){const c=progressionReward.counterReward;$('resultDesc').textContent+=` · +3 mảnh ${c.name} (${c.shards}/12) · Khắc chế bậc ${c.rank}.`;}
     $('resultStage').textContent=String(progressionBattle.index);$('nextBtn').textContent=state.hp>0?'Trận kế tiếp':'Thử lại';
     if(progressionBattle.mode==='campaign'&&state.hp>0&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES)$('nextBtn').textContent='Về bản đồ';
     if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
-    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(['pvp','duel'].includes(progressionBattle.mode)?'arena':progressionBattle.mode);a.textContent='Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
+    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionBattle.mode);a.textContent='Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
   }return result;
 };
 $('nextBtn').addEventListener('click',event=>{
   if(!progressionBattle)return;event.stopImmediatePropagation();
-  const mode=progressionBattle.mode,won=state.hp>0,index=['pvp','duel'].includes(mode)?1:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
+  const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
   if(mode==='campaign'&&won&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES){location.href='Gemwoven.html#campaign';return;}
   try{const next=progressionStore.begin(mode,index);location.href='Game.html?encounter='+encodeURIComponent(next.token);}catch(error){message(error.message);}
 },true);
-const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(['pvp','duel'].includes(progressionBattle?.mode)?'arena':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
+const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
 if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Trận không hợp lệ · Về thị trấn';document.body.append(progressionBack);}
 
 if(['campaign','boss'].includes(progressionBattle?.mode)){
   const battle=progressionBattle,key=battle.enemyKey,creature=ART.campaignCreatures?.[battle.creature];
-  // Elites carry a looping idle plus a still pose for strikes; ordinary foes are one painting.
-  if(creature)ART.enemies[key]=creature.idle?{idle:creature.idle,attack:creature.still,cast:creature.still,hurt:creature.still}:{idle:creature,attack:creature,cast:creature,hurt:creature};
+  // Elites carry a looping idle and their own combat body (attack, skill, cast, hurt, defeat); common foes have a
+  // looping idle plus a still pose for strikes, or are one painting.
+  if(creature)ART.enemies[key]=creatureSheets(creature);
   if(battle.boss&&ART.worldBosses?.[battle.bossId])ART.bosses[key]=ART.worldBosses[battle.bossId];
   const backdrop=progressionRules.WORLD.CHAPTERS[battle.chapter-1]?.backdrop||battle.theme;
   // The chapter's vista belongs only to the distant layer. Keep the authored
@@ -249,10 +253,11 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
     if(!progressionBattle||!['campaign','boss'].includes(progressionBattle.mode))return campaignSkill({reserved});
     if(!reserved)state.enemyEnergy=0;
     const phase=progressionBossCast++%battle.skills.length;
-    // Flat skill base: level scaling lives only in enemyAttack (progression.js). A chapter boss picks the
-    // skill that fits the fight (boss-tactics.js chooseSkill); elites keep their rotation.
-    const skill=Number.isInteger(state.qaBossSkill)?battle.skillSet?.[state.qaBossSkill]:battle.boss&&battle.skillSet?.length?progressionBossPick(battle.skillSet):battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
-    if(skill&&battle.boss)progressionBossHistory.push(skill.name);
+    // Flat skill base: level scaling lives only in enemyAttack (progression.js). A chapter boss or an elite picks
+    // the skill that fits the fight (boss-tactics.js chooseSkill).
+    const picks=battle.boss||battle.tier==='elite';
+    const skill=Number.isInteger(state.qaBossSkill)?battle.skillSet?.[state.qaBossSkill]:picks&&battle.skillSet?.length?progressionBossPick(battle.skillSet):battle.skillSet?.[phase],base=battle.enemySkillBase??(battle.boss?30:18);
+    if(skill&&picks)progressionBossHistory.push(skill.name);
     if(!skill){const name=battle.skills[phase];message(battle.enemyName+' dùng '+name);popActorSkill('enemy',name,true,[]);await attack('enemy',base);}
     else{
       const charge=progressionEnemyCharge;progressionEnemyCharge=1;
@@ -260,7 +265,7 @@ if(['campaign','boss'].includes(progressionBattle?.mode)){
       if(skill.kind==='burn'||skill.kind==='poison')progressionEnemyDot={name:skill.kind==='burn'?'Thiêu đốt':'Độc',turns:skill.turns,raw:base*skill.dot};
       if(skill.charge)progressionEnemyCharge=skill.charge;
     }
-    MONSTERS[key].skill=battle.boss&&battle.skillSet?.length?progressionBossPick(battle.skillSet).name:battle.skills[progressionBossCast%battle.skills.length];update();
+    MONSTERS[key].skill=picks&&battle.skillSet?.length?progressionBossPick(battle.skillSet).name:battle.skills[progressionBossCast%battle.skills.length];update();
   };
 }
 

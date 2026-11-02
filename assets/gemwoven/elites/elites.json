@@ -356,6 +356,582 @@
       "boss": "moonfang",
       "status": "existing",
       "master": "assets/gemwoven/items/creature-moonkeep-lunarknight.png"
+    },
+    "forest-mossdruid": {
+      "theme": "forest",
+      "name": "Đạo Sĩ Rêu Đá",
+      "brief": "a stooped old druid with a beard and cloak of thick hanging green moss, a stone-slab mask with two glowing amber eyes, bare root-like arms, flat stones strung across the chest, holding a gnarled staff grown from one root, topped by a glowing green stone",
+      "boss": "earth",
+      "status": "new",
+      "replaces": null
+    },
+    "forest-stagchief": {
+      "theme": "forest",
+      "name": "Thủ Lĩnh Gạc Đá",
+      "brief": "a towering broad-shouldered clan chief with a stag skull helm carrying huge antlers of grey stone wrapped in moss, a bear-fur mantle over bark armour, leather straps with green gems, gripping a great two-handed stone axe",
+      "boss": "earth",
+      "status": "new",
+      "replaces": null
+    },
+    "volcano-slagarcher": {
+      "theme": "volcano",
+      "name": "Cung Thủ Hắc Diệu",
+      "brief": "a lean archer in black obsidian-plate armour with glowing orange seams, a horned half-helm, a short ash-grey cape, a tall bow of black volcanic glass with a string of molten orange, and a quiver of burning arrows on the back",
+      "boss": "fire",
+      "status": "new",
+      "replaces": null
+    },
+    "volcano-drakewarlord": {
+      "theme": "volcano",
+      "name": "Long Tướng Dung Nham",
+      "brief": "a huge dragon-blooded warlord with a horned reptile head, red scales, heavy black and bronze plate with lava-glowing seams, a tattered burning cape and a massive jagged obsidian cleaver held in both hands",
+      "boss": "fire",
+      "status": "new",
+      "replaces": null
+    },
+    "ice-foxhuntress": {
+      "theme": "ice",
+      "name": "Thợ Săn Hồ Tuyết",
+      "brief": "a slim huntress wearing a white fox mask with blue markings, a white fox-fur hood and tail, pale blue leather armour, and a long pale-blue ice bow with a silver string",
+      "boss": "ice",
+      "status": "new",
+      "replaces": null
+    },
+    "ice-moonjarl": {
+      "theme": "ice",
+      "name": "Tướng Quân Bạch Nguyệt",
+      "brief": "a massive general in white and silver plate with a heavy white bear-fur mantle, a closed helm crowned by a crescent moon, a long pale beard of frost, and a great double-bladed moon axe of blue ice held in both hands",
+      "boss": "ice",
+      "status": "new",
+      "replaces": null
+    },
+    "thunder-boltgunner": {
+      "theme": "thunder",
+      "name": "Nỏ Thủ Sấm Sét",
+      "brief": "a nimble crossbowman in dark indigo leather and copper plates, a wide-brimmed storm hat, goggles lit yellow, a short cape, and a heavy copper crossbow crackling with small yellow sparks along its arms",
+      "boss": "lightning",
+      "status": "new",
+      "replaces": null
+    },
+    "thunder-stormmaul": {
+      "theme": "thunder",
+      "name": "Đại Tướng Lôi Chùy",
+      "brief": "a giant warrior in heavy indigo and gold plate with a lion-crested helm, a storm-blue cape, thick gauntlets and a colossal two-handed maul with a yellow glowing core in its head",
+      "boss": "lightning",
+      "status": "new",
+      "replaces": null
+    },
+    "marsh-toadshaman": {
+      "theme": "marsh",
+      "name": "Pháp Sư Cóc Đầm",
+      "brief": "a squat toad-headed shaman with wide yellow eyes, warty olive skin, a cloak of dry reeds and rags, strings of bones and small skulls, holding up a big bubbling gourd rattle in both hands",
+      "boss": "mire",
+      "status": "new",
+      "replaces": null
+    },
+    "marsh-bogwarlord": {
+      "theme": "marsh",
+      "name": "Thủ Lĩnh Bùn Đen",
+      "brief": "a huge hulking ogre-like warlord caked in black mud and dripping moss, a crown of reeds and bone, one tusk, rusted chest plate, swinging an enormous waterlogged tree-trunk club bound with iron bands",
+      "boss": "mire",
+      "status": "new",
+      "replaces": null
+    },
+    "desert-sunarcher": {
+      "theme": "desert",
+      "name": "Cung Thủ Mặt Trời",
+      "brief": "a tall archer in white linen wrappings and gold collar, a falcon-beaked gold mask, a teal sash, and a great curved golden bow shaped like two falcon wings",
+      "boss": "scarab",
+      "status": "new",
+      "replaces": null
+    },
+    "desert-sphinxguard": {
+      "theme": "desert",
+      "name": "Tướng Nhân Sư",
+      "brief": "a powerful lion-headed general with a thick golden mane, a striped blue and gold royal headdress, gold breastplate and greaves, a pleated white kilt and a long golden glaive with a scarab at its blade",
+      "boss": "scarab",
+      "status": "new",
+      "replaces": null
+    },
+    "abyss-harpooner": {
+      "theme": "abyss",
+      "name": "Thợ Săn Lao Móc",
+      "brief": "a wiry sea hunter with grey shark skin, a coral-crusted leather harness, a rope coiled over the shoulder, fins along the arms, aiming a big wooden harpoon crossbow tipped with a barbed bone hook",
+      "boss": "leviathan",
+      "status": "new",
+      "replaces": null
+    },
+    "abyss-krakenlord": {
+      "theme": "abyss",
+      "name": "Thuyền Trưởng Xúc Tu",
+      "brief": "a huge drowned sea captain with a beard of thick teal octopus tentacles, a barnacled tricorn hat, a long rotting navy coat with gold buttons, and a rusted ship's anchor carried as a two-handed weapon on a chain",
+      "boss": "leviathan",
+      "status": "new",
+      "replaces": null
+    },
+    "foundry-steamgunner": {
+      "theme": "foundry",
+      "name": "Pháo Thủ Hơi Nước",
+      "brief": "a stout gunner in a brass diving-style helmet with a round glass visor, a leather apron, thick gloves, brass tanks on the back joined by pipes to a big flared brass steam cannon held at the hip",
+      "boss": "colossus",
+      "status": "new",
+      "replaces": null
+    },
+    "foundry-chiefengineer": {
+      "theme": "foundry",
+      "name": "Kỹ Sư Trưởng Tia Lửa",
+      "brief": "a tall imposing chief engineer in a long brown leather coat with brass plates and a large gear on the back, tall top hat with goggles, a mechanical left arm, and a tall copper coil staff with a glowing orange spark ball at the top",
+      "boss": "colossus",
+      "status": "new",
+      "replaces": null
+    },
+    "crystal-prismarcher": {
+      "theme": "crystal",
+      "name": "Cung Thủ Lăng Kính",
+      "brief": "a graceful archer in sleek blue crystal plates over a dark blue bodysuit, a crest of tall cyan shards on the head, a faceted visor, and a long crystal bow with a thin white string of light",
+      "boss": "prism",
+      "status": "new",
+      "replaces": null
+    },
+    "crystal-geodeguard": {
+      "theme": "crystal",
+      "name": "Tướng Tinh Giáp",
+      "brief": "a giant mantis-like humanoid general in thick dark armour split by geodes of bright cyan crystal, four-horned crest, broad shoulders, holding two long curved crystal sickle blades",
+      "boss": "prism",
+      "status": "new",
+      "replaces": null
+    },
+    "haunted-banshee": {
+      "theme": "haunted",
+      "name": "Nữ Vong Than Khóc",
+      "brief": "a thin floating ghost woman with long white hair streaming upward, a tattered grey burial gown, hollow glowing blue-green eyes, a mouth open in a wail, holding a cracked pale blue spirit lantern-orb in both hands, her hem fading into solid torn cloth strips",
+      "boss": "reaper",
+      "status": "new",
+      "replaces": null
+    },
+    "haunted-necrolord": {
+      "theme": "haunted",
+      "name": "Vu Sư Xương Trắng",
+      "brief": "a tall imposing skeletal necromancer in a high-collared black robe with iron bone-trim, a crown of ribs, cold blue-green fire in its eye sockets, holding a tall staff topped with a horned skull and a blue-green flame",
+      "boss": "reaper",
+      "status": "new",
+      "replaces": null
+    },
+    "sky-galearcher": {
+      "theme": "sky",
+      "name": "Cung Thủ Phong Vân",
+      "brief": "a light agile archer with small white wings on the back, a sky-blue tunic with white feather shoulders, a beaked half-mask, long scarf, and a slender white bow shaped like a bird's spread wing",
+      "boss": "roc",
+      "status": "new",
+      "replaces": null
+    },
+    "sky-tempestmage": {
+      "theme": "sky",
+      "name": "Pháp Sư Bão Cánh",
+      "brief": "a tall stern storm mage in layered sky-blue and white robes with great feathered shoulders, a hood shaped like an eagle's head, a yellow-eyed face, holding a tall staff with a spinning ring of wind vanes at its head",
+      "boss": "roc",
+      "status": "new",
+      "replaces": null
+    },
+    "thorns-rosearcher": {
+      "theme": "thorns",
+      "name": "Cung Thủ Hồng Gai",
+      "brief": "an elegant archer in dark green leaf-and-thorn armour, a wide hat with a big crimson rose, a short petal cape, and a long dark green bow twisted from one thorned stem with a rose bloom at the grip",
+      "boss": "briar",
+      "status": "new",
+      "replaces": null
+    },
+    "thorns-bramblewarden": {
+      "theme": "thorns",
+      "name": "Thống Lĩnh Bụi Gai",
+      "brief": "a massive knight in black iron plate overgrown by thick thorned vines and crimson roses, a helm with a rose-shaped visor, a long thorn cape, and a huge greatsword bound in thorns along its blade",
+      "boss": "briar",
+      "status": "new",
+      "replaces": null
+    },
+    "celestial-choirmaid": {
+      "theme": "celestial",
+      "name": "Nữ Tu Thánh Ca",
+      "brief": "a serene temple singer in white and cream robes with gold trim, a small halo ring over a veil, small cream wings at the shoulders, her eyes closed, holding a large golden harp in both hands, its strings glowing warm white",
+      "boss": "seraph",
+      "status": "new",
+      "replaces": null
+    },
+    "celestial-dawnlegate": {
+      "theme": "celestial",
+      "name": "Thiên Tướng Bình Minh",
+      "brief": "a towering armoured angel general in gold and white plate with four great cream wings, a sun-rayed closed helm, a red plume, and a long golden halberd with a sun-shaped blade held in both hands",
+      "boss": "seraph",
+      "status": "new",
+      "replaces": null
+    },
+    "void-riftstalker": {
+      "theme": "void",
+      "name": "Sát Thủ Khe Nứt",
+      "brief": "a lean masked assassin in skin-tight black-indigo armour scattered with tiny white stars, a pale smooth mask with one glowing deep-blue slit, a torn star-cloak, and two long thin black daggers with blue edges",
+      "boss": "eclipse",
+      "status": "new",
+      "replaces": null
+    },
+    "void-cometlord": {
+      "theme": "void",
+      "name": "Chúa Tể Sao Chổi",
+      "brief": "a tall ancient sorcerer king in a black and deep-blue star-field robe with a broad collar, a jagged crown of meteor rock, a pale blue face with white eyes, holding a huge staff topped by a captured burning comet",
+      "boss": "eclipse",
+      "status": "new",
+      "replaces": null
+    },
+    "eldergrove-petalarcher": {
+      "theme": "eldergrove",
+      "name": "Cung Thủ Hoa Trắng",
+      "brief": "a slender forest ranger in pale birch-bark armour and a cream hooded mantle of white blossoms, a carved pale mask, and a long pale birch bow with small peach-white flowers along it",
+      "boss": "elderbloom",
+      "status": "new",
+      "replaces": null
+    },
+    "eldergrove-birchelder": {
+      "theme": "eldergrove",
+      "name": "Trưởng Lão Bạch Dương",
+      "brief": "a tall old tree elder whose body is pale white birch with black bark marks, a long beard of light green lichen, antler-like branches heavy with white blossoms on its head, holding a long living birch staff with a glowing sap bead",
+      "boss": "elderbloom",
+      "status": "new",
+      "replaces": null
+    },
+    "caldera-slagslinger": {
+      "theme": "caldera",
+      "name": "Thợ Ném Xỉ Nóng",
+      "brief": "a stocky furnace worker with a black iron mask, heavy scorched leather apron and gauntlets, burn-scarred arms, swinging a heavy iron ladle-bucket of glowing molten slag on a long chain",
+      "boss": "cinderheart",
+      "status": "new",
+      "replaces": null
+    },
+    "caldera-obsidianlord": {
+      "theme": "caldera",
+      "name": "Chúa Hắc Diệu",
+      "brief": "an enormous knight of polished black obsidian with orange lava showing through the joints, a horned crown-helm, a ragged charred cape and a giant jagged obsidian greatsword with a molten edge",
+      "boss": "cinderheart",
+      "status": "new",
+      "replaces": null
+    },
+    "glacier-frostbolter": {
+      "theme": "glacier",
+      "name": "Xạ Thủ Hàn Đài",
+      "brief": "a broad watchman in thick white fur coat and steel-blue plate, a full-face steel helm with ice crusting one side, a wool scarf, and a heavy steel-blue winch crossbow loaded with a thick ice bolt",
+      "boss": "frostregent",
+      "status": "new",
+      "replaces": null
+    },
+    "glacier-wintergeneral": {
+      "theme": "glacier",
+      "name": "Thống Soái Đông Giá",
+      "brief": "a colossal ice-armoured marshal, plates of thick blue-white glacier ice over dark steel, a tall crown of icicles on a closed helm, a heavy white fur mantle and a huge glacier-ice greatsword as long as its body",
+      "boss": "frostregent",
+      "status": "new",
+      "replaces": null
+    },
+    "stormspire-galeduelist": {
+      "theme": "stormspire",
+      "name": "Kiếm Khách Phong Lôi",
+      "brief": "a tall dashing duelist in a navy long coat with gold trim and a high collar, a feathered gold half-mask, one eagle wing on the right shoulder, and a thin golden rapier crackling with small gold sparks",
+      "boss": "tempestwing",
+      "status": "new",
+      "replaces": null
+    },
+    "stormspire-thunderarchon": {
+      "theme": "stormspire",
+      "name": "Thiên Lôi Chấp Pháp",
+      "brief": "a towering storm judge in navy and gold ceremonial armour with broad eagle-wing pauldrons, a tall spired helm, a long navy tabard with a gold lightning mark, holding a tall golden sceptre topped by a storm-eagle head",
+      "boss": "tempestwing",
+      "status": "new",
+      "replaces": null
+    },
+    "soulcrypt-wailbinder": {
+      "theme": "soulcrypt",
+      "name": "Nữ Tu Xích Hồn",
+      "brief": "a gaunt prison nun in a black and dark iron habit, the veil held by iron bands, her eyes bound with violet-glowing cloth, long iron rosary chains hanging from her arms, holding a dark iron cage-orb with a violet soul inside in both hands",
+      "boss": "souljailer",
+      "status": "new",
+      "replaces": null
+    },
+    "soulcrypt-dreadwarden": {
+      "theme": "soulcrypt",
+      "name": "Cai Đội Ngục Thần",
+      "brief": "a huge executioner in spiked dark iron plate, a hood of chainmail, a bronze cage helm with violet fire inside, chains and locks hung at the belt, and a colossal two-handed headsman's axe of black iron",
+      "boss": "souljailer",
+      "status": "new",
+      "replaces": null
+    },
+    "mycelium-sporearcher": {
+      "theme": "mycelium",
+      "name": "Cung Thủ Nấm Mục",
+      "brief": "a lean ragged archer with a rust-red spotted mushroom cap as a hat, a pale fungal face with sunken yellow-green eyes, a cloak of rotten leaves and pale threads, and a crooked bow of dead wood strung with white fungal thread",
+      "boss": "sporefather",
+      "status": "new",
+      "replaces": null
+    },
+    "mycelium-rotchampion": {
+      "theme": "mycelium",
+      "name": "Đấu Sĩ Mục Rữa",
+      "brief": "a massive armoured champion whose rusted plate has burst open with shelves of rust-red bracket fungus, a helm split by a mushroom, pale threads binding the joints, and a huge rusted cleaver dripping sick yellow-green rot",
+      "boss": "sporefather",
+      "status": "new",
+      "replaces": null
+    },
+    "geode-lodeshooter": {
+      "theme": "geode",
+      "name": "Thợ Mỏ Nỏ Tinh",
+      "brief": "a short sturdy miner in a dented hard hat with a lantern, a thick stone-dust leather coat with crystal chips, a big mustache, and a heavy stone crossbow firing bolts of bright blue crystal",
+      "boss": "prismback",
+      "status": "new",
+      "replaces": null
+    },
+    "geode-minechief": {
+      "theme": "geode",
+      "name": "Trưởng Mỏ Tinh Thạch",
+      "brief": "a giant stone-skinned foreman in rough tan plate with bright blue crystals growing from the shoulders, a moss beard, a heavy tool belt, swinging a colossal two-handed pickaxe with a crystal head",
+      "boss": "prismback",
+      "status": "new",
+      "replaces": null
+    },
+    "hourglass-sandarcher": {
+      "theme": "hourglass",
+      "name": "Xạ Thủ Cát Chảy",
+      "brief": "a veiled desert archer in cream and teal robes with brass armbands, golden eyes over a veil, a small brass hourglass at the belt, and a long curved bow of brass and teal wood with a string of flowing gold sand",
+      "boss": "sandchronarch",
+      "status": "new",
+      "replaces": null
+    },
+    "hourglass-sandgeneral": {
+      "theme": "hourglass",
+      "name": "Đại Tướng Hoàng Sa",
+      "brief": "a huge armoured general of gold and teal plate with a tall sun-disc helm, broad brass clock rings turning on the back, a cream sash, carrying an enormous two-handed sandstone hammer",
+      "boss": "sandchronarch",
+      "status": "new",
+      "replaces": null
+    },
+    "coralreef-anemonewitch": {
+      "theme": "coralreef",
+      "name": "Phù Thủy Hải Quỳ",
+      "brief": "a sly sea witch with a head of long orange and white sea-anemone tentacles instead of hair, teal skin, a dress of dark kelp and shells, holding a crooked driftwood staff tipped with a glowing sea urchin",
+      "boss": "coraltide",
+      "status": "new",
+      "replaces": null
+    },
+    "coralreef-shellgeneral": {
+      "theme": "coralreef",
+      "name": "Hải Tướng Mai Rùa",
+      "brief": "a massive turtle-warrior general with a great orange-coral shell on the back, a beaked green head under a pearl-crested helm, blue scale armour, and an enormous two-handed coral hammer",
+      "boss": "coraltide",
+      "status": "new",
+      "replaces": null
+    },
+    "moonkeep-crescentarcher": {
+      "theme": "moonkeep",
+      "name": "Cung Thủ Trăng Non",
+      "brief": "a lean wolf-eared huntress-archer in black and silver scale armour with a short dark cape, a silver half-mask, and a tall curved silver bow shaped like a thin crescent moon",
+      "boss": "moonfang",
+      "status": "new",
+      "replaces": null
+    },
+    "moonkeep-bloodseer": {
+      "theme": "moonkeep",
+      "name": "Pháp Sư Huyết Nguyệt",
+      "brief": "a tall gaunt wolf-headed seer in long black and crimson robes with silver moon-phase discs, a high collar, pale fur at the shoulders, holding a tall silver staff ending in a crimson moon orb",
+      "boss": "moonfang",
+      "status": "new",
+      "replaces": null
+    },
+    "forest-boarstalker": {
+      "theme": "forest",
+      "name": "Thợ Săn Nanh Lợn",
+      "brief": "a stocky wild hunter in a boar-hide cloak with the boar's tusked skull as a hood, a bare bark-brown chest with green war paint, leaf bracers, and a short curved stone hatchet in each hand",
+      "boss": "earth",
+      "status": "new",
+      "replaces": null
+    },
+    "volcano-pyremonk": {
+      "theme": "volcano",
+      "name": "Võ Tăng Hỏa Diệm",
+      "brief": "a muscular bald monk with glowing orange tattoos, a charred saffron sash and baggy trousers, black iron prayer beads, and both fists wrapped in burning bandages",
+      "boss": "fire",
+      "status": "new",
+      "replaces": null
+    },
+    "ice-moonduelist": {
+      "theme": "ice",
+      "name": "Kiếm Khách Hàn Nguyệt",
+      "brief": "a slim noble duelist in a pale blue and silver long coat with a white fur collar, a silver half-mask shaped like a crescent, long white hair tied back, and a thin rapier of clear ice",
+      "boss": "ice",
+      "status": "new",
+      "replaces": null
+    },
+    "thunder-bellpriest": {
+      "theme": "thunder",
+      "name": "Giáo Sĩ Chuông Sấm",
+      "brief": "a tall hooded priest in dark indigo robes with white-yellow lightning embroidery, a pale mask, and a heavy bronze bell swung on a long chain, sparks jumping from its rim",
+      "boss": "lightning",
+      "status": "new",
+      "replaces": null
+    },
+    "marsh-leechblade": {
+      "theme": "marsh",
+      "name": "Sát Thủ Đỉa Đầm",
+      "brief": "a thin hunched assassin with glossy dark green skin, a leech-like round mouth mask, a tattered reed cloak, and two long wet bone sickles dripping lime-green toxin",
+      "boss": "mire",
+      "status": "new",
+      "replaces": null
+    },
+    "desert-jarmummy": {
+      "theme": "desert",
+      "name": "Xác Ướp Bình Tro",
+      "brief": "a tall thin mummy in yellowed wrappings with a gold beard piece, a striped teal headcloth, one glowing amber eye, holding a large alabaster canopic jar with a jackal lid in both hands, sand leaking from it",
+      "boss": "scarab",
+      "status": "new",
+      "replaces": null
+    },
+    "abyss-sirenblade": {
+      "theme": "abyss",
+      "name": "Nữ Kiếm Hải Yêu",
+      "brief": "a poised sea siren duelist with long dark teal hair, fins at the ears, a fitted armour of red-orange coral and pale scales, and a long thin coral rapier",
+      "boss": "leviathan",
+      "status": "new",
+      "replaces": null
+    },
+    "foundry-sawbutcher": {
+      "theme": "foundry",
+      "name": "Đao Phủ Lưỡi Cưa",
+      "brief": "a huge masked factory brute in a stained leather apron and riveted brass pauldrons, a welding mask, pipes on the back, swinging a two-handed cleaver with a spinning brass saw blade along its edge",
+      "boss": "colossus",
+      "status": "new",
+      "replaces": null
+    },
+    "crystal-shardmonk": {
+      "theme": "crystal",
+      "name": "Võ Tăng Thạch Anh",
+      "brief": "a broad calm monk whose skin is faceted pale blue crystal, bald with a gem set in the forehead, dark blue trousers and sash, heavy crystal gauntlets on both fists",
+      "boss": "prism",
+      "status": "new",
+      "replaces": null
+    },
+    "haunted-scarecrow": {
+      "theme": "haunted",
+      "name": "Bù Nhìn Nguyền Rủa",
+      "brief": "a tall ragged scarecrow with a stitched sack head, glowing blue-green eyes and a torn pointed hat, straw poking from a rotten patched coat, and a long rusted three-tined pitchfork",
+      "boss": "reaper",
+      "status": "new",
+      "replaces": null
+    },
+    "sky-fanblade": {
+      "theme": "sky",
+      "name": "Vũ Nữ Quạt Phong",
+      "brief": "a graceful dancer-warrior in layered white and sky-blue silks with long floating sleeves, a feather headdress, and two large steel war fans with white feather edges",
+      "boss": "roc",
+      "status": "new",
+      "replaces": null
+    },
+    "thorns-shearkeeper": {
+      "theme": "thorns",
+      "name": "Lão Làm Vườn Nguyền",
+      "brief": "a big stooped gardener in a dark green apron and wide straw hat wrapped in thorns, a pale sunken face, rose vines growing out of the sleeves, working a pair of giant black iron garden shears held in both hands",
+      "boss": "briar",
+      "status": "new",
+      "replaces": null
+    },
+    "celestial-judgeknight": {
+      "theme": "celestial",
+      "name": "Thẩm Phán Thánh Đường",
+      "brief": "a stern broad judge knight in cream robes over gold plate, a tall white and gold mitre helm with a veiled face, a scales emblem on the chest, and a huge golden gavel hammer held in both hands",
+      "boss": "seraph",
+      "status": "new",
+      "replaces": null
+    },
+    "void-gravitymonk": {
+      "theme": "void",
+      "name": "Tu Sĩ Trọng Lực",
+      "brief": "a heavy-set masked monk in black-indigo robes scattered with tiny white stars, thin deep-blue rings around the forearms, dark star-metal gauntlets on both fists",
+      "boss": "eclipse",
+      "status": "new",
+      "replaces": null
+    },
+    "eldergrove-honeykeeper": {
+      "theme": "eldergrove",
+      "name": "Người Giữ Mật Hoa",
+      "brief": "a plump kindly-looking but sinister beekeeper in a cream veiled hat and birch-bark vest, pale green sleeves, swinging a big wooden honey smoker pot on a chain, thick golden nectar dripping from it",
+      "boss": "elderbloom",
+      "status": "new",
+      "replaces": null
+    },
+    "caldera-lavadancer": {
+      "theme": "caldera",
+      "name": "Vũ Công Dung Nham",
+      "brief": "a lean agile dancer in black basalt-scale armour with glowing orange seams, long ribbons of molten orange trailing from the arms, a horned mask, and a curved flame-edged black blade in each hand",
+      "boss": "cinderheart",
+      "status": "new",
+      "replaces": null
+    },
+    "glacier-mirrorpriestess": {
+      "theme": "glacier",
+      "name": "Nữ Tư Tế Gương Băng",
+      "brief": "a tall serene priestess in thick layered blue-white robes with a high collar of ice blocks, a blindfold of white silk, holding a large round mirror of polished glacier ice in both hands",
+      "boss": "frostregent",
+      "status": "new",
+      "replaces": null
+    },
+    "stormspire-goldarcher": {
+      "theme": "stormspire",
+      "name": "Cung Thủ Bão Vàng",
+      "brief": "a tall proud archer in navy feather armour with gold trim, an eagle-crested helm, a short navy cape, and a large golden recurve bow with a bowstring of yellow lightning",
+      "boss": "tempestwing",
+      "status": "new",
+      "replaces": null
+    },
+    "soulcrypt-cellbolter": {
+      "theme": "soulcrypt",
+      "name": "Nỏ Thủ Địa Lao",
+      "brief": "a hooded dungeon guard in dark iron scale and bronze buckles, a bucket-like iron helm with a violet glow in its slit, ring of keys at the belt, carrying a heavy black iron crossbow loaded with a violet soul bolt",
+      "boss": "souljailer",
+      "status": "new",
+      "replaces": null
+    },
+    "mycelium-sporehag": {
+      "theme": "mycelium",
+      "name": "Bà Đồng Bào Tử",
+      "brief": "a bent old hag in layered rotten shawls of rust and cream, pale threads in her long grey hair, small mushrooms on her shoulders, swinging a cracked iron lamp full of sick yellow-green spores on a chain",
+      "boss": "sporefather",
+      "status": "new",
+      "replaces": null
+    },
+    "geode-quartzduelist": {
+      "theme": "geode",
+      "name": "Kiếm Khách Thạch Anh",
+      "brief": "a tall slim duelist in tan stone-plate armour with moss at the shoulders, a tricorn hat of grey slate set with a blue crystal, a short mossy cape, and a thin rapier of long blue crystal",
+      "boss": "prismback",
+      "status": "new",
+      "replaces": null
+    },
+    "hourglass-stormassassin": {
+      "theme": "hourglass",
+      "name": "Sát Thủ Bão Cát",
+      "brief": "a lean masked assassin wrapped in cream and gold-beige cloth with only teal eyes showing, brass bands on the arms, a long tattered sash, and two curved brass daggers shaped like hourglass halves",
+      "boss": "sandchronarch",
+      "status": "new",
+      "replaces": null
+    },
+    "coralreef-sharkhunter": {
+      "theme": "coralreef",
+      "name": "Thợ Săn Cá Mập",
+      "brief": "a muscular shark-headed hunter with blue-grey skin, pale belly, a pearl and coral necklace, a dorsal fin on the back, a kilt of woven kelp and two wide blades made from shark jaws",
+      "boss": "coraltide",
+      "status": "new",
+      "replaces": null
+    },
+    "moonkeep-wolfslayer": {
+      "theme": "moonkeep",
+      "name": "Thợ Săn Ma Sói",
+      "brief": "a big grizzled wolf hunter in a black leather long coat and wide hat, wolf pelts on the shoulders, silver studs, a scarred face with one silver eye, and a huge two-handed silver axe",
+      "boss": "moonfang",
+      "status": "new",
+      "replaces": null
     }
   }
 }

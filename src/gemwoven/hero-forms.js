@@ -49,8 +49,8 @@
   const decorate=G.decorate;
   G.decorate=state=>{
     const snapshot=G.engine.read();
-    for(const key of Object.keys(M.HERO_FORMS)){
-      const form=M.heroForm(key,snapshot.heroes[key]),poster=A[`form-${key}-${form}`],portrait=A[`form-portrait-${key}-${form}`],idle=A[`form-idle-${key}-${form}`];
+    for(const key of Object.keys(M.HEROES)){
+      const form=M.HERO_FORMS[key]?M.heroForm(key,snapshot.heroes[key]):1,poster=A[`form-${key}-${form}`],portrait=A[`form-portrait-${key}-${form}`],idle=A[`form-idle-${key}-${form}`];
       A['hero-'+key]=poster||originals['hero-'+key];A['portrait-'+key]=portrait||originals['portrait-'+key];
       A['home-idle-'+key]=idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
       // A showcase pose replaces the resting body on every screen outside combat.

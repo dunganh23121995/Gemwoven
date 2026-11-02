@@ -1,4 +1,4 @@
-"""Per-boss and elite combat voices from licensed recordings.
+"""Per-boss combat voices from licensed recordings.
 
     python scripts/prepare_boss_voices.py
 
@@ -12,7 +12,7 @@ camel, moose, gorilla, hissing cockroach, wasp, steam engine and metal) or with
 designed dragon roars and performed wraith voices from game-audio uploads. They are
 built by the shared engine in scripts/prepare_creature_sfx.py with minimal
 processing: one excerpt of one recording per clip, at most -13 % speed for size,
-high-pass, trim, fades and loudness. Human-looking bosses and elites (FAMILIES) use
+high-pass, trim, fades and loudness. Human-looking bosses (FAMILIES) use
 CC0 male/female voice actors who are not used by any hero.
 
 Output: assets/audio/bosses/<family>-<kind>.wav (44.1 kHz mono 16-bit) and
@@ -238,18 +238,6 @@ FAMILIES = {
     'boss-sandchronarch': dict(boss='sandchronarch', voice='male', human=True,
         pools={'all': P((257358, .86, 'pitch')), 'death': P((556976, .84, 'pitch', (0.4, 3.2)))},
         double=(.7, .18), body=.16, presence=.06, band=(70, 8500), drive=1.3, texture=('sand', .04)),
-    # ---- elites (two male and two female villain variants) ----------------------
-    'elite-male-a': dict(voice='male', human=True, pools={'all': P((467121, .95, 'pitch')),
-        'cast': P((556976, .95, 'pitch', (7.5, 13.5))), 'release': P((556976, .95, 'pitch', (7.5, 13.5))), 'death': P((556976, .93, 'pitch', (3.8, 6.6)))},
-        body=.08, presence=.10, band=(90, 9000), drive=1.15),
-    'elite-male-b': dict(voice='male', human=True, pools={'all': P((770124, .92, 'pitch'), (218895, .88, 'pitch')),
-        'cast': P((621352, .9, 'pitch')), 'death': P((621352, .86, 'pitch'))},
-        body=.14, presence=.06, band=(70, 8500), drive=1.25),
-    'elite-female-a': dict(voice='female', human=True, pools={'all': P((218908, .97, 'pitch')), 'death': P((845164, .95, 'pitch'))},
-        body=.06, presence=.10, band=(120, 10000), drive=1.15),
-    'elite-female-b': dict(voice='female', human=True, pools={'attack': P((671353, .95, 'pitch')), 'hurt': P((671354, .97, 'pitch')),
-        'all': P((671353, .95, 'pitch'), (671354, .95, 'pitch')), 'death': P((850699, .94, 'pitch', (0, 2.8)))},
-        body=.08, presence=.12, band=(120, 10000), drive=1.15),
 }
 
 # --------------------------------------------------------------------------- build
@@ -444,7 +432,7 @@ def build():
             paths = {sid: source_meta(sid)[1].relative_to(BASE / 'sources').as_posix() for sid in metas}
             authors = ', '.join(dict.fromkeys(m['author'] for m in metas.values()))
             manifest[f'{family}-{name}'] = {
-                'category': 'elite-performance' if family.startswith('elite') else 'boss-performance',
+                'category': 'boss-performance',
                 'voice': spec['voice'],
                 **({'boss': spec['boss']} if 'boss' in spec else {}),
                 'sources': [f'sources/{paths[sid]}' for sid in metas],

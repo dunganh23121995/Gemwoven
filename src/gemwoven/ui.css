@@ -123,7 +123,7 @@ body{overflow-x:hidden}
   border-image:var(--art-frame) 250 125 160 fill stretch}
 .gw-emblem{position:absolute;left:50%;top:calc(58*var(--s));width:calc(68*var(--s));aspect-ratio:1;translate:-50% -50%;
   background:var(--art-crest) center/contain no-repeat;pointer-events:none;z-index:1}
-.gw-head{position:absolute;left:calc(158*var(--s));right:calc(158*var(--s));top:calc(99*var(--s));height:calc(66*var(--s));
+.gw-head{position:absolute;left:calc(158*var(--s));right:calc(158*var(--s));top:calc(105*var(--s));height:calc(66*var(--s));
   display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0;padding:0;border:0;z-index:2;pointer-events:none}
 .gw-head h2,.gw-dialog .gw-head h2{margin:0;max-width:100%;font:700 calc(40*var(--s))/1.05 var(--gw-font);color:#4a2c13;
   text-shadow:0 1px 0 #ffe7ad;white-space:nowrap;overflow:visible;line-height:1.2;letter-spacing:0}
@@ -135,6 +135,8 @@ body{overflow-x:hidden}
 .gw-close:focus-visible{outline:none;filter:drop-shadow(0 0 5px #fff1b8) brightness(1.15)}
 .gw-dialog .gw-body{position:relative;z-index:1;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
   padding:2px 6px 8px;scrollbar-width:thin;scrollbar-color:#a98548 transparent}
+/* Long content fades out over the frame's lower edge instead of being cut through a line. */
+.gw-frame .gw-body{--fade:calc(30*var(--s));padding-bottom:var(--fade);-webkit-mask:linear-gradient(#000 calc(100% - var(--fade)),#0000);mask:linear-gradient(#000 calc(100% - var(--fade)),#0000)}
 .gw-dialog p{margin:8px 0;font-size:16px;line-height:1.45;color:var(--gw-ink);white-space:pre-line}
 .gw-dialog h3{margin:10px 0 4px;font:700 17px/1.25 var(--gw-font);color:#5a3517}
 .gw-actions{position:relative;z-index:1;flex:none;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 10px;padding-top:4px}
@@ -165,17 +167,18 @@ body{overflow-x:hidden}
 .gw-note b{display:block;font-size:15px;color:#6d4318;margin-bottom:2px}
 .gw-note p{margin:3px 0;font-size:14px;white-space:normal}
 
-/* Painted buttons (atlas/ui/btn-*.webp: a slim gold frame, a crest on top, pointed gem caps): two halves of the art,
-   each clipped at the crest's centre, the straight runs between the caps and the crest stretched. Art units: the
-   frame's body is 320px tall (--u), the crest rises 80px above it (--t). */
-.gw-btn,.game-btn{--h:48px;--art:var(--art-btn);--u:calc(var(--h) / 320);--t:80;--b:0;--L1:210;--R1:852;--C1:736;--L2:852;--R2:192;--C2:736;
+[data-node="upgrade.hero-caption"]{z-index:6}
+/* Painted buttons (atlas/ui/btn-*.webp: a slim gold frame with pointed gem caps): two halves of the art, each clipped
+   at the centre, the straight runs between the caps and the centre stretched. Art units: the frame is 322px tall (--u).
+   --hit keeps the tap area taller than the slim art. */
+.gw-btn,.game-btn{--h:34px;--hit:5px;--art:var(--art-btn);--u:calc(var(--h) / 322);--L1:210;--R1:852;--C1:736;--L2:852;--R2:192;--C2:736;
   position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.35em;vertical-align:middle;
-  min-height:var(--h);min-width:calc(720*var(--u));margin:calc(var(--t)*var(--u)*.85) 4px calc(var(--b)*var(--u)*.85);
-  padding:0 calc(190*var(--u)) calc(62*var(--u));border:0;border-radius:0;background:none!important;box-shadow:none;
-  color:#3b2410;font:700 17px/1.12 var(--gw-font);text-shadow:0 1px 0 #ffe9ae;text-decoration:none;text-align:center;
+  min-height:calc(var(--h) + 2*var(--hit));min-width:calc(1000*var(--u));margin:0 4px;
+  padding:0 calc(190*var(--u));border:0;border-radius:0;background:none!important;box-shadow:none;
+  color:#3b2410;font:700 15px/1.12 var(--gw-font);text-shadow:0 1px 0 #ffe9ae;text-decoration:none;text-align:center;
   white-space:normal;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:none}
 .gw-btn::before,.gw-btn::after,.game-btn::before,.game-btn::after{content:'';position:absolute;z-index:-1;pointer-events:none;
-  top:calc(var(--t)*var(--u)*-1);bottom:calc(var(--b)*var(--u)*-1);border:0 solid transparent;border-image-source:var(--art);border-image-repeat:stretch}
+  top:var(--hit);bottom:var(--hit);border:0 solid transparent;border-image-source:var(--art);border-image-repeat:stretch}
 .gw-btn::before,.game-btn::before{left:0;right:calc(50% - var(--C1)*var(--u));
   border-width:0 calc(var(--R1)*var(--u)) 0 calc(var(--L1)*var(--u));border-image-slice:0 var(--R1) 0 var(--L1) fill;
   clip-path:inset(-2px calc(var(--C1)*var(--u) - .5px) -2px -2px)}
@@ -183,8 +186,8 @@ body{overflow-x:hidden}
   border-width:0 calc(var(--R2)*var(--u)) 0 calc(var(--L2)*var(--u));border-image-slice:0 var(--R2) 0 var(--L2) fill;
   clip-path:inset(-2px -2px -2px calc(var(--C2)*var(--u) - .5px))}
 .gw-btn.secondary,.game-btn.secondary,.live-tabs .game-btn:not(.active),.chat-tabs .game-btn:not(.active){
-  --art:var(--art-wood);--u:calc(var(--h) / 316);--t:79;
-  min-width:calc(720*var(--u));padding-inline:calc(190*var(--u));color:#ffe6a8;text-shadow:0 1px 2px #1b0d04}
+  --art:var(--art-wood);--u:calc(var(--h) / 319);
+  color:#ffe6a8;text-shadow:0 1px 2px #1b0d04}
 .gw-btn:hover:not(:disabled)::before,.gw-btn:hover:not(:disabled)::after,.game-btn:hover:not(:disabled)::before,.game-btn:hover:not(:disabled)::after{filter:brightness(1.1)}
 .gw-btn:active:not(:disabled),.game-btn:active:not(:disabled){transform:scale(.97)}
 .gw-btn:focus-visible,.game-btn:focus-visible{outline:none}

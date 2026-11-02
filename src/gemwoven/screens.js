@@ -67,7 +67,7 @@
   button('rank-three','rank-bronze',[550,855,130,121],'3','preview:ranking',{size:43,labelRect:[25,34,80,54]});
   button('ranking','title-wood',[354,946,239,98],'Xếp Hạng','preview:ranking',{size:32,labelRect:[20,32,199,45],fit:'fill'});
   button('mode-solo','flag-blue',[265,1031,174,193],'1v1','mode:solo',{icon:'icon-arena',iconRect:[48,28,82,79],labelRect:[32,113,110,43],size:39,group:'arena-mode',selected:true});
-  button('mode-team','flag-red',[529,1031,174,193],'3v3','mode:team',{icon:'icon-friends',iconRect:[45,28,84,78],labelRect:[32,113,110,43],size:39,group:'arena-mode'});
+  button('mode-boss','flag-red',[529,1031,174,193],'Boss\nVô Hạn','mode:boss',{icon:'icon-crown',iconRect:[50,26,76,72],labelRect:[27,98,120,72],size:29,group:'arena-mode'});
   button('rewards','panel-parchment',[757,992,163,279],'Phần thưởng','preview:rewards',{icon:'chest',iconRect:[33,32,95,94],labelRect:[16,203,132,42],size:24,tone:'ink',fit:'fill'});
   image('reward-coins','coins',[774,1130,65,65]);image('reward-gem','mana',[842,1130,48,65]);
   button('battle','button-gold',[322,1203,303,134],'Chiến Đấu','battle',{size:40});
@@ -101,8 +101,8 @@
 
   begin('shop',3);sides();
   title('Cửa Hàng',[320,258,404,176],true);
-  image('shop-story-flag','flag-gold',[131,155,112,310],{fit:'fill'});
-  text('shop-story','Vạn Vật\nNgọc Kết\nSức Mạnh\nĐồng Hành\nCùng Bạn!',[145,187,84,218],23,{tone:'ink'});
+  image('shop-story-flag','flag-gold',[166,155,104,300],{fit:'fill'});
+  text('shop-story','Vạn\nVật\nĐồng\nHành\nCùng\nBạn',[176,184,84,222],27,{tone:'ink'});
   add('speech-bubble','surface',[487,589,163,76],{style:'speech'});
   text('shopkeeper-line','Có thứ gì\ncần không nè?',[500,598,135,58],22,{tone:'ink'});
   ['Vật Phẩm','Nguyên Liệu','Trang Bị'].forEach((label,i)=>button(`shop-tab-${i}`,'tab-wood',[112+i*247,758,243,82],label,`shop-tab:${i}`,{size:31,selected:i===0,group:'shop-tab'}));
@@ -178,7 +178,7 @@
   text('tavern-subtitle','Bạn tốt\nNhững hành trình vĩ đại hơn!',[74,390,229,51],22);
   [['Tin Đồn','icon-event','flag-gold'],['Nhiệm Vụ','icon-quest','flag-gold'],['Tình Thân','stat-heart','flag-red'],['Chiêu Mộ','hero-fragment','flag-blue']].forEach(([label,icon,flag],i)=>button(`tavern-tab-${i}`,flag,[479+i*109,214,108,297],label,`tavern-tab:${i}`,{icon,iconRect:[21,79,66,84],labelRect:[5,188,98,44],size:25,fit:'fill',selected:i===0,group:'tavern-tab'}));
   image('left-chalkboard','card-dark',[-8,640,157,249],{fit:'fill'});
-  text('tavern-menu','Hôm nay có:\n• Bia Ngọc\n• Thịt Nướng\n• Kể Chuyện\n• Kết Bạn\n• Và nhiều hơn thế!',[13,665,118,186],23,{align:'left'});
+  text('tavern-menu','Hôm nay có\nBia Ngọc\nThịt Nướng\nKể Chuyện\nKết Bạn',[11,680,124,150],21,{align:'left'});
   image('right-chalkboard','card-dark',[799,560,137,198],{fit:'fill'});
   text('friendship-note','Những người\nbạn tốt\nSẽ cùng ta\nđi xa hơn',[817,589,100,136],22);
   panel('quest-panel',[23,1151,895,280]);

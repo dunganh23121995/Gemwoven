@@ -63,7 +63,7 @@ voice_manifest.update(json.loads((root/'assets/audio/cast-voice-manifest.json').
 voice_manifest.update(json.loads((root/'assets/audio/boss-voice-manifest.json').read_text(encoding='utf-8')))
 voice_manifest.update(json.loads((root/'assets/audio/hiro-voice-manifest.json').read_text(encoding='utf-8')))
 art['voices']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in voice_manifest.items()}
-# Which voice each boss and elite speaks with (assets/audio/voice-casting.json): humans with a
+# Which voice each boss and creature speaks with (assets/audio/voice-casting.json): humans with a
 # clear gender get male/female voices, monsters get their own creature recordings.
 casting=json.loads((root/'assets/audio/voice-casting.json').read_text(encoding='utf-8'))
 art['voiceCasting']={group:{key:entry['family'] for key,entry in casting[group].items()} for group in ['bosses','elites','creatures'] if group in casting}
@@ -78,6 +78,9 @@ cast_sfx.update(json.loads((root/'assets/audio/form-skill-manifest.json').read_t
 for manifest in sorted((root/'assets/audio/hero-forms').glob('*-manifest.json')):cast_sfx.update(json.loads(manifest.read_text(encoding='utf-8')))
 # Each boss skill's own recordings (src/foe-skills.js BOSS_SKILL_LOOKS): assets/audio/boss-skills/<boss>-manifest.json.
 for manifest in sorted((root/'assets/audio/boss-skills').glob('*-manifest.json')):cast_sfx.update(json.loads(manifest.read_text(encoding='utf-8')))
+# The elites' bank (src/foe-skills.js ELITE_LOOKS, scripts/prepare_elite_sounds.py).
+elite_sfx=root/'assets/audio/elite-skills/manifest.json'
+if elite_sfx.exists():cast_sfx.update(json.loads(elite_sfx.read_text(encoding='utf-8')))
 art['castSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))
@@ -182,6 +185,10 @@ for folder in sorted((root/'assets/gemwoven/creatures').glob('*/idle.webp')):
     if folder.parent.name not in campaign_foes['foes']:continue
     idle={'src':image(folder),'cols':2,'rows':4,'count':8,'frameDuration':120,'heads':[[128,48]]*8}
     art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':{**idle,'count':1,'heads':[[128,48]]},'portrait':''}
+def body_height(sheet,frame=0):
+    im=load_pil(sheet['src']).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows']
+    b=im.crop(((frame%sheet['cols'])*fw,(frame//sheet['cols'])*fh,(frame%sheet['cols']+1)*fw,(frame//sheet['cols']+1)*fh)).getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
+    return (b[3]-b[1])/fh if b else 0
 # Humanoid elites (assets/gemwoven/elites/<id>/): a stabilized 8-frame idle (2x4, 256px cells);
 # their strikes hold the first idle pose, since combat supplies the lunge and recoil.
 for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
@@ -192,7 +199,16 @@ for folder in sorted((root/'assets/gemwoven/elites').glob('*/idle.webp')):
     if not master.exists():master=root/f'assets/gemwoven/items/creature-{folder.parent.name}.png'
     guard=folder.parent.name.split('-')[0] in campaign_foes['guards']
     idle['fidgets']=fidget_sheets(folder.parent)
-    art['campaignCreatures'][folder.parent.name]={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if guard and master.exists() else ''}
+    entry={'idle':idle,'still':still,'portrait':compact_image(master.relative_to(root).as_posix()) if guard and master.exists() else ''}
+    # Its own combat body (assets/gemwoven/elites/anim.py): five 3x2 sheets drawn at one size, sized to the idle by the
+    # height of the attack's ready frame and stood on its feet like a chapter boss's poses.
+    for action in ['attack','skill','cast','hurt','defeat']:
+        sheet_path=folder.with_name(action+'.webp')
+        if sheet_path.exists():
+            sheet={'src':image(sheet_path),'cols':3,'rows':2,'count':6,'heads':[[128,48]]*6,'frameDuration':110}
+            sheet['scale']=entry['attack']['scale'] if 'attack' in entry else round(body_height(idle)/max(1e-6,body_height(sheet)),4)
+            entry[action]=sheet
+    art['campaignCreatures'][folder.parent.name]=entry
 # A new elite whose idle is not drawn yet stands as its master painting.
 for master in sorted((root/'assets/gemwoven/elites').glob('*/master.png')):
     if not master.with_name('idle.webp').exists():
@@ -200,10 +216,6 @@ for master in sorted((root/'assets/gemwoven/elites').glob('*/master.png')):
 # Chapter bosses (assets/gemwoven/boss-anim/<id>/): an 8-frame idle for all 24 and a 3x2 cast
 # sheet for the bosses that had only one painting. The new idle is framed on its own, so every
 # other action sheet grows about the feet by the ratio of the body heights (one size per boss).
-def body_height(sheet,frame=0):
-    im=load_pil(sheet['src']).convert('RGBA');fw,fh=im.width//sheet['cols'],im.height//sheet['rows']
-    b=im.crop(((frame%sheet['cols'])*fw,(frame//sheet['cols'])*fh,(frame%sheet['cols']+1)*fw,(frame//sheet['cols']+1)*fh)).getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
-    return (b[3]-b[1])/fh if b else 0
 for folder in sorted((root/'assets/gemwoven/boss-anim').glob('*/idle.webp')):
     key=folder.parent.name;family='bosses' if key in art['bosses'] else 'worldBosses'
     if key not in art[family]:continue
@@ -295,6 +307,18 @@ def register_span(sheet):
             if b:lo=min(lo,b[0]/fw);hi=max(hi,b[2]/fw)
         _span_cache[key]=[round(lo,4),round(hi,4)] if hi>lo else [0.0,1.0]
     sheet['span']=_span_cache[key]
+def rig_idle(sheet,hero,form):
+    # A form with a baked mesh-rig loop (assets/heroes/forms/rig_idle.py) rests in it; frame 1 is the old sheet's frame 1.
+    path=root/f'assets/heroes/forms/{hero}/form-{form}/rig/combat'
+    if not (path/'rig.json').exists():return
+    rig=json.loads((path/'rig.json').read_text(encoding='utf-8'))
+    sheet.update(src=image(path/'idle.webp'),cols=rig['cols'],rows=rig['rows'],count=rig['count'],frameDuration=rig['frameDuration'],heads=sheet['heads'][:1]*rig['count'])
+def rig_buff(character,hero,form):
+    # A baked one-shot buff (rig_idle.py surge) starts and ends on the resting frame, so it shares the idle's framing.
+    path=root/f'assets/heroes/forms/{hero}/form-{form}/rig/buff'
+    if not (path/'rig.json').exists():return
+    rig=json.loads((path/'rig.json').read_text(encoding='utf-8')),character['idle']
+    character['buff']={**rig[1],'src':image(path/'buff.webp'),'cols':rig[0]['cols'],'rows':rig[0]['rows'],'count':rig[0]['count'],'frameDuration':rig[0]['frameDuration'],'heads':rig[1]['heads'][:1]*rig[0]['count'],'baked':True}
 art['heroForms']={}
 form_skill_fx=json.loads((root/'assets/fx/forms/fx.json').read_text(encoding='utf-8'))
 art['formSkillFx']={hero:{form:{**sheet,'src':compact_image(sheet['file'])} for form,sheet in forms.items()} for hero,forms in form_skill_fx.items()}
@@ -304,6 +328,10 @@ boss_fx_path=root/'assets/fx/bosses/fx.json'
 art['bossFx']={boss:{**sheet,'src':compact_image(sheet['file'])} for boss,sheet in json.loads(boss_fx_path.read_text(encoding='utf-8')).items() if (root/sheet['file']).exists()} if boss_fx_path.exists() else {}
 # Where each effect sheet's painting lies in its cells (fractions, the union over its frames): src/foe-skills.js
 # foeFx keeps the painting, not the cell's empty margin, inside the stage.
+# Each elite's own skill sheets (assets/fx/elites/skill_prompts.py), under "<elite id>/<fx>", with the ground line
+# measured at export.
+elite_fx_path=root/'assets/fx/elites/fx.json'
+if elite_fx_path.exists():art['bossFx'].update({key:{**sheet,'src':compact_image(sheet['file'])} for key,sheet in json.loads(elite_fx_path.read_text(encoding='utf-8')).items() if (root/sheet['file']).exists()})
 ground_path=root/'assets/fx/bosses/ground-line.json'
 ground_lines=json.loads(ground_path.read_text(encoding='utf-8')) if ground_path.exists() else {}
 for sheet_key,sheet in art['bossFx'].items():
@@ -342,7 +370,7 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
         # marked so the studio can tell a borrowed sheet from the hero's own.
         actions['buff']={**actions['cast'],'aliasOf':'cast'}
         if 'hover' not in actions:actions['hover']={**actions['run'],'aliasOf':'run'}
-        register_feet(actions['idle']);forms[form]=actions
+        rig_idle(actions['idle'],data['hero'],form);register_feet(actions['idle']);rig_buff(actions,data['hero'],form);forms[form]=actions
     art['heroForms'][data['hero']]=forms
 # One body size in every form, measured by the head (assets/heroes/head-scale.json, head_scale.py):
 # the head's share of the combat idle cell per form; combat scales each form's actor by form 1's / its own.
@@ -354,11 +382,14 @@ for name,entry in head_scale.items():
     # combatFit: a form drawn standing straighter than form 1 (same head, longer legs) would tower over
     # it; it shows that much smaller in combat (Mika form 2 upright: .9, still a little taller than form 1).
     art['heroHead'].setdefault(hero,{})[form]=round(combat['headPx']/combat['cellPx']/entry.get('combatFit',1),5)
+for hero,character in art['heroes'].items():rig_idle(character['idle'],hero,'1')
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
+for hero,character in art['heroes'].items():rig_buff(character,hero,'1')
 for retired in [k for k in art['campaignCreatures'] if k not in campaign_foes['foes']]:del art['campaignCreatures'][retired]
+ELITE_POSES=['attack','skill','cast','hurt','defeat']
 def creature_sheets():
-    for entry in art['campaignCreatures'].values():yield from ([entry['idle'],entry['still']] if 'idle' in entry else [entry])
+    for entry in art['campaignCreatures'].values():yield from ([entry['idle'],entry['still'],*[entry[p] for p in ELITE_POSES if p in entry]] if 'idle' in entry else [entry])
 for sheet in creature_sheets():register_feet(sheet)
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():
@@ -403,6 +434,11 @@ for family in ['bosses','worldBosses']:
     for character in art[family].values():
         for name,sheet in character.items():
             if name!='idle' and sheet.get('cols') and not sheet.get('airborne') and sheet is not character['idle']:register_anchor(sheet,character['idle'])
+for entry in art['campaignCreatures'].values():
+    for pose in ELITE_POSES:
+        if pose in entry:register_anchor(entry[pose],entry['idle'])
+    # A fall starts in no resting pose to compare: it stands where the others stand.
+    if 'defeat' in entry and 'attack' in entry:entry['defeat']['feetX']=entry['attack']['feetX']
 # Each boss pose's front point per frame (fractions of the cell): the leftmost opaque point above the
 # legs, where a staff tip, sword tip, claw or open mouth reaches toward the hero. Spells leave from it
 # (src/foe-skills.js foeAnchorNow); sheets with drawn mouth anchors (actions.json) keep those.
@@ -424,6 +460,9 @@ for family in ['bosses','worldBosses']:
     for character in art[family].values():
         for sheet in character.values():
             if sheet.get('cols') and sheet.get('src'):register_front(sheet)
+for entry in art['campaignCreatures'].values():
+    for pose in ELITE_POSES:
+        if pose in entry:register_front(entry[pose])
 
 html = (root / 'src/template.html').read_text(encoding='utf-8')
 css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')

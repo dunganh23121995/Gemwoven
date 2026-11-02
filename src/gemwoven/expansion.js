@@ -70,7 +70,7 @@
     sites.forEach(([key,x,y,w,h,label,ly])=>button('place-'+key,'home-'+key,[x,y,w,h],label,'route:'+key,{size:28,tone:'ink',labelRect:[w*.27,h*ly,w*.48,38],className:'home-place',fit:'fill'}));
     [['fire',284,265,51,62],['ice',288,176,43,54],['earth',242,306,37,47],['lightning',242,232,36,46],['shadow',354,233,38,49]].forEach(([key,x,y,w,h])=>button('soul-'+key,'portrait-'+key,[x,y,w,h],heroes[key].name,'hero:'+key,{labelHidden:true,className:'home-soul'}));
     button('hero','hero-fire',[391,1065,184,285],'Mika · Kỹ năng','hero:fire',{labelHidden:true});
-    button('quests','title-parchment',[716,1132,196,203],'Nhiệm Vụ','route:tavern',{icon:'icon-quest',iconRect:[58,20,85,92],labelRect:[15,120,166,42],size:29,tone:'ink',fit:'fill'});
+    button('power','title-parchment',[716,1132,196,203],'Lực Chiến','route:upgrade',{icon:'stat-attack',iconRect:[58,20,85,92],labelRect:[15,120,166,42],size:29,tone:'ink',fit:'fill'});
     [['upgrade','Tướng','helmet'],['inventory','Túi Đồ','nav-bag'],['skills','Kỹ Năng','nav-skills'],['forge','Rèn Đồ','icon-forge']].forEach(([route,label,icon],i)=>button('shortcut-'+route,'side-pennant',[10,155+i*111,98,118],label,'route:'+route,{icon,iconRect:[23,27,54,59],labelHidden:true}));
     [['quest','icon-quest'],['event','icon-event'],['gift','icon-gift'],['friends','icon-friends']].forEach(([id,icon],i)=>button('right-'+id,'title-parchment',[843,158+i*112,91,108],id==='quest'?'Nhiệm Vụ':id==='gift'?'Quà Tặng':id==='event'?'Sự Kiện':'Bạn Bè',id==='quest'?'route:tavern':'preview:'+id,{icon,iconRect:[20,20,52,58],labelHidden:true}));
     footer();
@@ -126,11 +126,6 @@
     // Tab banners and all nodes own their independent raster art.
     // Two-line banner labels stay readable on a phone (31 stage px ~ 13 CSS px).
     branches.forEach((label,i)=>button('branch-'+i,'skill-banner',[517+i*100,247,100,139],label.replace(' ','\n'),'skill:'+i,{icon:`skill-${hero}-${i}`,iconRect:[32,6,36,36],labelRect:[0,42,100,70],size:29,selected:selected===i,className:'skill-branch'}));
-    const equipment=[h.weapon,'helmet','stat-shield','crest','mana','boots'];
-    equipment.forEach((asset,i)=>{
-      const x=i<3?22:390,y=407+(i%3)*125;
-      button('equipment-'+i,'inventory-slot',[x,y,110,116],['Vũ khí','Mũ','Giáp','Ấn','Ngọc','Ủng'][i],'item:'+asset,{icon:asset,iconRect:[23,8,64,64],labelRect:[0,74,110,38],size:29,fit:'fill',className:'gear-slot-label'});
-    });
     button('hero-model','hero-'+hero,[133,405,258,407],h.name,'hero:'+hero,{labelHidden:true,className:'hero-standing'});
     image('hero-name-board','nameplate',[108,800,319,108],{fit:'fill'});
     text('hero-name-'+hero,`Lv.32 · ${h.name}`,[140,827,255,34],28,{tone:'ink'});

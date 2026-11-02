@@ -248,7 +248,7 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   const reach=foeSpan?Math.max(0,sourceOrigin.x-sourceOrigin.width*(.5-foeSpan[0])-(targetOrigin.x+targetOrigin.width*.3)):Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43);
   // Foes pounce on the hero for a basic attack; only one that stands too far away (more than
   // half the arena to cover) strikes from range with its element instead.
-  const foe=side==='enemy'&&!progressionIsDuel(),pounce=foe&&reach<=$('scene').clientWidth*.5;
+  const foe=side==='enemy'&&!progressionIsDuel(),pounce=foe&&reach<=$('scene').clientWidth*.5&&!foeShoots();
   const melee=foe?pounce:key==='earth'||(['fire','novice'].includes(key)&&side==='hero');
   const travel=melee?reach:0;
   const sourceTransform=source.style.transform,targetTransform=target.style.transform,sourceZ=source.style.zIndex,targetFilter=target.style.filter;

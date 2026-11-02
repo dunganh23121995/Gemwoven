@@ -3,7 +3,8 @@
 //    stun, silence, weaken, stealth, undying...). They tick down at the start of every foe turn.
 //  * Moves: how a skill is staged. Every boss skill names a move that suits its body (a beast
 //    lunges and slams, a dragon breathes, a mage casts volleys and beams) and plays it with that
-//    boss's own effect sheet (ART.bossFx). Elites use their chapter boss's effect, smaller.
+//    boss's own effect sheet (ART.bossFx). Elites fight the same way with their own body sheets and
+//    art (ELITE_LOOKS), smaller; their lesser skills use their chapter boss's signature effect.
 //  * castFoeSkill: one skill from announcement to damage, shields, heals and statuses, shared by
 //    classic chapters (progression-combat.js) and phase fights (expedition-combat.js).
 // Common foes have no skill effect of their own: their one skill is a pounce (attack()).
@@ -127,6 +128,13 @@ const bossBasicSounds=()=>{const kit=bossKit(),weapon=BOSS_WEAPON_SKILL[foeSkill
 let foeBasicStrike=false;
 const foeBaseAttack=attack;
 attack=async function(side,raw,options={}){
+  // An elite's basic blow is its own: an archer or caster shoots from where it stands, the others run in with their
+  // weapon (ELITE_LOOKS; the board's chain bonus counts as for any attack).
+  if(side==='enemy'&&!options.ultimate&&!reduced&&foeEliteBasicLook()){
+    const chain=Math.max(1,Math.floor(options.attackChain||1)),critical=chain>=3&&chain%3===0;
+    popActorSkill('enemy',chain>1?'ĐÒN ×'+chain+' · +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%':foeEliteStyle()?.name||'',false,[]);
+    return foeSkillStrike({name:'basic'},raw*attackChainMultiplier(chain)*(critical?1.5:1),options.hits||1,options.damageLedger||null);
+  }
   if(side!=='enemy'||options.ultimate||!bossOwnStyle())return foeBaseAttack(side,raw,options);
   foeBasicStrike=true;try{return await foeBaseAttack(side,raw,options);}finally{foeBasicStrike=false;}
 };
@@ -150,12 +158,27 @@ const foeSilenced=()=>typeof foeHas==='function'&&foeHas('silence');
 // Whose effect a foe wields: the campaign battle's chapter boss (or a test build's override).
 function foeSkillOwner(){
   if(state.qaFoeFx)return state.qaFoeFx;
-  return progressionBattle?{boss:progressionBattle.bossId,tier:progressionBattle.tier}:null;
+  return progressionBattle?{boss:progressionBattle.bossId,tier:progressionBattle.tier,creature:progressionBattle.creature}:null;
+}
+// A chapter's last elite owns its boss's ultimate (docs/ELITE_SKILLS.md), played with the boss's own art and sounds.
+function foeEliteUlt(o=foeSkillOwner()){const W=progressionRules.WORLD,chapter=W.CHAPTERS.find(c=>c.elites.includes(o?.creature));return chapter?.elites.at(-1)===o.creature?W.BOSSES[chapter.boss].skills.find(s=>s.ult):null;}
+function foeBorrowsUlt(name=foeCurrentSkill){const o=foeSkillOwner();return o?.tier==='elite'&&!!name&&foeEliteUlt(o)?.name===name;}
+// Whose sheets a look names: the elite's own (assets/fx/elites, ART.bossFx['<elite>/<fx>']) or the boss's.
+function foeFxOwner(){const o=foeSkillOwner();return o?.tier==='elite'&&o.creature&&!foeBorrowsUlt()?o.creature:o?.boss;}
+// How an elite fights (world.js ELITE_BASIC); null for bosses, common foes and test builds without one.
+function foeEliteStyle(){const o=foeSkillOwner();return o?.tier==='elite'?progressionRules.WORLD.ELITE_BASIC?.[o.creature]||null:null;}
+function foeShoots(){return !!foeEliteStyle()?.reach;}
+function foeEliteBasicLook(){const o=foeSkillOwner();return o?.tier==='elite'&&spriteDefinition('enemy',state.enemyKey,'attack').sheet.peak!=null?ELITE_LOOKS[o.creature]?.basic||null:null;}
+// An elite struck down plays its own fall (its defeat sheet), then lies there as it fades (game.js finishBattle).
+async function foeFall(){
+  if(reduced||spriteDefinition('enemy',state.enemyKey,'defeat').action!=='defeat')return;
+  setSpriteAction('enemy','defeat',1100);await wait(1100);
+  setSpriteFrame('enemy','defeat',5);await wait(240);
 }
 function foeSkillSheet(look=null){
   const owner=foeSkillOwner();if(!owner||owner.tier==='normal'||reduced)return null;
   // A boss skill with its own look never falls back to the signature sheet (that one is the elites').
-  if(look?.fx)return ART.bossFx?.[owner.boss+'/'+look.fx]||null;
+  if(look?.fx)return ART.bossFx?.[foeFxOwner()+'/'+look.fx]||null;
   return ART.bossFx?.[owner.boss]||null;
 }
 // Each boss skill's own look and sound, so no two skills of a kit (or two bosses) look or sound alike, and
@@ -167,7 +190,7 @@ function foeSkillSheet(look=null){
 // "uỳnh") the moment a giant's body or foot meets the ground (a quake's landing, a stomp). Such a
 // skill drops the shared hit star, synthesized hit and buff glow. bless plays a sheet behind the boss with
 // its sound after the strike (an ultimate's heal or blessing).
-// Keyed by the chapter boss and the skill's name: elites fight with skills of their own names.
+// Keyed by the chapter boss and the skill's name: elites fight with skills and sheets of their own (ELITE_LOOKS).
 const BOSS_SKILL_LOOKS={
   // Thạch Mộc Cự Vệ: basalt, moss, fern and glowing amber sap (no gold or gems, the elites' signature):
   // a talon rake, a wall of twisted trunks, a sap-root snare, a quake and the spirit tree.
@@ -361,13 +384,170 @@ const BOSS_SKILL_LOOKS={
     'Tử Nguyệt Chung Kiếm':{fx:'moonblade',move:'charge',pose:'draw',channel:{fx:'bloodmoon',at:'head',ms:1200,size:0.8},sounds:{start:'moonblade-start',hit:'moonblade-hit',channel:'moonblade-channel'}}
   }
 };
+// How each elite fights (docs/ELITE_SKILLS.md). shot: it stands and shoots this bolt (assets/fx/elites/<id>/<bolt>.webp;
+// release: the frame it lets go, a bow later than a staff), and bowed tells a bow from magic. sig: its first
+// skill, staged like the boss skill it echoes (world.js echo), in its own skill pose (pose 'skill') with its own sheet.
+// Its second skill keeps its chapter's signature burst in the staging world.js names, with its cast or attack pose.
+// Elites share three sets of sounds (scripts/prepare_elite_sounds.py): start is a blow's or a skill's wind-up, swing a
+// weapon at the moment it cuts, loose a bow letting go, charge the long wind-up of the first skill (foeGather), hit every
+// blow that lands, heavy its first skill's blows if heavier.
+const ELITE_SOUNDS={bow:{start:'bow-draw',loose:'bow-loose',charge:'bow-charge',hit:'bow-hit'},melee:{swing:'melee-swing',charge:'melee-charge',hit:'melee-hit',heavy:'melee-heavy'},magic:{start:'magic-cast',charge:'magic-charge',hit:'magic-hit'}};
+const foeEliteTake={};
+const ELITE_BODIES={
+  'forest-rootknight':{sig:{fx:'roots'}},
+  'forest-leafarcher':{shot:'leafarrow',release:4,bowed:true,sig:{fx:'leafburst',bolt:'leafarrow'}},
+  'volcano-flamelancer':{sig:{fx:'dragonflame'}},
+  'volcano-ashcultist':{shot:'ashember',sig:{fx:'ashgeyser',size:1.15}},
+  'ice-frostguard':{sig:{fx:'frostwave'}},
+  'ice-snowwitch':{shot:'icelance',sig:{fx:'iceburst',bolt:'icelance'}},
+  'thunder-stormblade':{sig:{fx:'thunderslash'}},
+  'thunder-sparkmage':{shot:'sparkorb',sig:{fx:'sparkbolt',shaft:{band:[.12,.3],cols:[.3,.7]}}},
+  'marsh-bogstalker':{sig:{fx:'mudtrap'}},
+  'marsh-sporewitch':{shot:'sporedrop',sig:{fx:'sporeburst',bolt:'sporedrop'}},
+  'desert-scarabguard':{sig:{fx:'sunbreak'}},
+  'desert-sandpriest':{shot:'sandorb',sig:{fx:'curseglyph',size:1.15}},
+  'abyss-reefcorsair':{sig:{fx:'coralslash',size:1.15,drain:'#7fe8d8'}},
+  'abyss-tidecaller':{shot:'waterbolt',sig:{fx:'tidebeam'}},
+  'foundry-gearknight':{sig:{fx:'pistonsteam',windup:2,release:3}},
+  'foundry-tinkerer':{sig:{fx:'wrenchspin'}},
+  'crystal-shardblade':{sig:{fx:'shardcut',size:1.2}},
+  'crystal-gemsage':{shot:'gemshard',sig:{fx:'prismray'}},
+  'haunted-gravewarden':{sig:{fx:'ghostwisp',drain:'#9ff0dc'}},
+  'haunted-bonepaladin':{sig:{fx:'runecrescent'}},
+  'sky-windknight':{sig:{fx:'galeimpact'}},
+  'sky-cloudmonk':{sig:{fx:'cloudgust',drain:'#d8f4ff'}},
+  'thorns-briarduelist':{sig:{fx:'thornstreak',drain:'#e8405a'}},
+  'thorns-vinehexer':{shot:'thornseed',sig:{fx:'strangler',size:1.15}},
+  'celestial-sunpaladin':{sig:{fx:'sunstreak'}},
+  'celestial-dawncleric':{shot:'dawnmote',sig:{fx:'dawnbeam',shaft:{band:[.12,.3],cols:[.3,.7]}}},
+  'void-voidknight':{sig:{fx:'voidrift',size:1.25}},
+  'void-starseer':{shot:'darkstar',sig:{fx:'starcrush',bolt:'darkstar',drain:'#9fb8ff'}},
+  'eldergrove-rootwarden':{sig:{fx:'palespears'}},
+  'eldergrove-blossomranger':{sig:{fx:'pollenbloom'}},
+  'caldera-basaltbrute':{sig:{fx:'lavaspike',trail:true}},
+  'caldera-furnacepriest':{shot:'ember',sig:{fx:'emberburst',bolt:'ember'}},
+  'glacier-rimeknight':{sig:{fx:'rimecage',upright:true}},
+  'glacier-blizzardmage':{shot:'icedrop',sig:{fx:'hailburst',bolt:'icedrop'}},
+  'stormspire-voltlancer':{sig:{fx:'goldrush'}},
+  'stormspire-stormshaman':{shot:'voltorb',sig:{fx:'stormring'}},
+  'soulcrypt-cagekeeper':{shot:'chainkey',sig:{fx:'chainlink'}},
+  'soulcrypt-veilassassin':{sig:{fx:'veilcut',size:1.2}},
+  'mycelium-plagueherald':{shot:'plaguedrop',sig:{fx:'plagueburst',bolt:'plaguedrop'}},
+  'mycelium-mycoknight':{sig:{fx:'rotcrater',ground:.85}},
+  'geode-rampartgolem':{sig:{fx:'rockwave'}},
+  'geode-prismseer':{shot:'crystalshard',sig:{fx:'crystalray'}},
+  'hourglass-dunesentinel':{sig:{fx:'sandcut',bolt:'sandblade'}},
+  'hourglass-chronoweaver':{shot:'sandmote',sig:{fx:'timethread'}},
+  'coralreef-tidemarshal':{sig:{fx:'tidewave'}},
+  'coralreef-coraloracle':{shot:'pearlbolt',sig:{fx:'pearlmote',drain:'#d8fff4'}},
+  'moonkeep-lunarknight':{sig:{fx:'moonslash',size:1.2}},
+  'moonkeep-eclipsehuntress':{sig:{fx:'eclipsebite',drain:'#c8a8ff'}},
+  'forest-mossdruid':{shot:'mossball',sig:{fx:'mossknot'}},
+  'forest-stagchief':{sig:{fx:'antlercut'}},
+  'volcano-slagarcher':{shot:'slagarrow',release:4,bowed:true,sig:{fx:'slagburst',bolt:'slagarrow'}},
+  'volcano-drakewarlord':{sig:{fx:'lavasweep'}},
+  'ice-foxhuntress':{shot:'frostarrow',release:4,bowed:true,sig:{fx:'frostshatter',bolt:'frostarrow'}},
+  'ice-moonjarl':{sig:{fx:'moonfrost'}},
+  'thunder-boltgunner':{shot:'voltbolt',release:4,bowed:true,sig:{fx:'voltburst',bolt:'voltbolt'}},
+  'thunder-stormmaul':{sig:{fx:'thunderring',windup:2,release:3}},
+  'marsh-toadshaman':{shot:'toadglob',sig:{fx:'toadtongue'}},
+  'marsh-bogwarlord':{sig:{fx:'blackmire'}},
+  'desert-sunarcher':{shot:'sunarrow',release:4,bowed:true,sig:{fx:'sunspark',bolt:'sunarrow'}},
+  'desert-sphinxguard':{sig:{fx:'sphinxstreak'}},
+  'abyss-harpooner':{shot:'harpoon',release:4,bowed:true,sig:{fx:'harpoonlink'}},
+  'abyss-krakenlord':{sig:{fx:'krakensurge'}},
+  'foundry-steamgunner':{shot:'steamshell',sig:{fx:'steamjet'}},
+  'foundry-chiefengineer':{shot:'coilspark',sig:{fx:'teslabolt',shaft:{band:[.12,.3],cols:[.3,.7]}}},
+  'crystal-prismarcher':{shot:'prismarrow',release:4,bowed:true,sig:{fx:'prismsplash',bolt:'prismarrow'}},
+  'crystal-geodeguard':{sig:{fx:'geodecross'}},
+  'haunted-banshee':{shot:'wailorb',sig:{fx:'wailmote'}},
+  'haunted-necrolord':{shot:'skullflame',sig:{fx:'bonepillar',shaft:{band:[.12,.3],cols:[.3,.7]}}},
+  'sky-galearcher':{shot:'featherarrow',release:4,bowed:true,sig:{fx:'featherburst',bolt:'featherarrow'}},
+  'sky-tempestmage':{shot:'galeorb',sig:{fx:'twister'}},
+  'thorns-rosearcher':{shot:'rosearrow',release:4,bowed:true,sig:{fx:'rosepop',bolt:'rosearrow'}},
+  'thorns-bramblewarden':{sig:{fx:'brambleline'}},
+  'celestial-choirmaid':{shot:'hymnnote',sig:{fx:'hymnray'}},
+  'celestial-dawnlegate':{sig:{fx:'dawnbreak'}},
+  'void-riftstalker':{sig:{fx:'riftcut'}},
+  'void-cometlord':{shot:'cometbolt',sig:{fx:'cometburst',bolt:'cometbolt'}},
+  'eldergrove-petalarcher':{shot:'petalarrow',release:4,bowed:true,sig:{fx:'petalburst',bolt:'petalarrow'}},
+  'eldergrove-birchelder':{shot:'sapbead',sig:{fx:'birchspikes'}},
+  'caldera-slagslinger':{shot:'slagball',sig:{fx:'slagpit'}},
+  'caldera-obsidianlord':{sig:{fx:'obsidiancut'}},
+  'glacier-frostbolter':{shot:'glacierbolt',release:4,bowed:true,sig:{fx:'glacierchip',bolt:'glacierbolt'}},
+  'glacier-wintergeneral':{sig:{fx:'winterwall'}},
+  'stormspire-galeduelist':{sig:{fx:'goldstab'}},
+  'stormspire-thunderarchon':{shot:'thunderseal',sig:{fx:'judgebolt',shaft:{band:[.12,.3],cols:[.3,.7]}}},
+  'soulcrypt-wailbinder':{shot:'soulbead',sig:{fx:'rosarybead'}},
+  'soulcrypt-dreadwarden':{sig:{fx:'dreadcleave'}},
+  'mycelium-sporearcher':{shot:'moldarrow',release:4,bowed:true,sig:{fx:'moldburst',bolt:'moldarrow'}},
+  'forest-boarstalker':{sig:{fx:'tuskrake'}},
+  'volcano-pyremonk':{sig:{fx:'flamefists'}},
+  'ice-moonduelist':{sig:{fx:'icestab'}},
+  'mycelium-rotchampion':{sig:{fx:'rotslash'}},
+  'geode-lodeshooter':{shot:'orebolt',release:4,bowed:true,sig:{fx:'oreburst',bolt:'orebolt'}},
+  'geode-minechief':{sig:{fx:'quakeline'}},
+  'hourglass-sandarcher':{shot:'sandarrow',release:4,bowed:true,sig:{fx:'sandsplash',bolt:'sandarrow'}},
+  'hourglass-sandgeneral':{sig:{fx:'dunewave'}},
+  'coralreef-anemonewitch':{shot:'anemoneorb',sig:{fx:'anemonetrap'}},
+  'coralreef-shellgeneral':{sig:{fx:'shellwave'}},
+  'moonkeep-crescentarcher':{shot:'crescentarrow',release:4,bowed:true,sig:{fx:'moonsplash',bolt:'crescentarrow'}},
+  'thunder-bellpriest':{shot:'bellspark',sig:{fx:'bellbolt',shaft:{band:[.12,.3],cols:[.3,.7]}}},
+  'marsh-leechblade':{sig:{fx:'leechcut'}},
+  'desert-jarmummy':{shot:'jarcurse',sig:{fx:'ashbandage'}},
+  'abyss-sirenblade':{sig:{fx:'sirenstab'}},
+  'foundry-sawbutcher':{sig:{fx:'sawcut'}},
+  'crystal-shardmonk':{sig:{fx:'gemfist'}},
+  'moonkeep-bloodseer':{shot:'bloodorb',sig:{fx:'bloodmote'}},
+  'haunted-scarecrow':{sig:{fx:'forkstreak'}},
+  'sky-fanblade':{sig:{fx:'fancut'}},
+  'thorns-shearkeeper':{sig:{fx:'shearcut'}},
+  'celestial-judgeknight':{sig:{fx:'verdictwave'}},
+  'void-gravitymonk':{sig:{fx:'gravitycrush'}},
+  'eldergrove-honeykeeper':{shot:'nectardrop',sig:{fx:'nectartrap'}},
+  'caldera-lavadancer':{sig:{fx:'lavaribbon'}},
+  'glacier-mirrorpriestess':{shot:'mirrorshard',sig:{fx:'mirrorray'}},
+  'stormspire-goldarcher':{shot:'goldarrow',release:4,bowed:true,sig:{fx:'goldspark',bolt:'goldarrow'}},
+  'soulcrypt-cellbolter':{shot:'cellbolt',release:4,bowed:true,sig:{fx:'cellburst',bolt:'cellbolt'}},
+  'mycelium-sporehag':{shot:'sporelamp',sig:{fx:'threadpit'}},
+  'geode-quartzduelist':{sig:{fx:'quartzstab'}},
+  'hourglass-stormassassin':{sig:{fx:'dunecut'}},
+  'coralreef-sharkhunter':{sig:{fx:'jawcut'}},
+  'moonkeep-wolfslayer':{sig:{fx:'silvercleave'}}
+};
+// Every elite of world.js fights its own way: one not yet listed above still has its blow, skills and sounds, with its
+// chapter's signature effect in place of art of its own.
+const ELITE_LOOKS=Object.fromEntries(Object.entries(window.GemwovenWorld?.ELITE_BASIC||{}).map(([id,basic])=>{
+  const b=ELITE_BODIES[id]||{shot:basic.reach?'bolt':undefined,sig:{}};
+  const [first,second]=window.GemwovenWorld?.ELITE_SKILLS?.[id]||[],set=ELITE_SOUNDS[b.bowed?'bow':b.shot?'magic':'melee'],plain={start:set.start,swing:set.swing,loose:set.loose,hit:set.hit};
+  const look={basic:b.shot?{move:'shot',bolt:b.shot,release:b.release,sounds:plain}:{move:'lunge',sounds:plain}};
+  const blow=window.GemwovenWorld?.ELITE_BASIC?.[id]?.name;if(blow)look[blow]=look.basic;
+  if(first)look[first.name]={...b.sig,pose:'skill',sounds:{charge:set.charge,loose:set.loose,hit:set.heavy||set.hit}};
+  if(second)look[second.name]=second.shield?{sounds:{lock:'guard-lock'}}:second.heal?{sounds:{start:'heal-grow'}}:second.charge?{sounds:{start:set.charge,hit:set.hit}}:second.move==='shot'?{bolt:b.shot,release:b.release,sounds:plain}:{bolt:second.move==='rain'?b.shot:undefined,sounds:plain};
+  return [id,look];
+}));
+// A boss's ultimate on an elite: the art and sounds are the boss's, the body is the elite's. It stands where it is in its
+// own skill pose and calls the effect down on the hero: what only the boss's body can do (wings, jaws, a giant's leap, a
+// vanishing cut) falls back to the cataclysm, the staging with no body in it.
+const FOE_BOSS_BODY=new Set(['flight','jet','quake','rush','vanish','dive','stormcall','charge']);
+function foeBorrowedLook(look){
+  if(!look)return null;
+  const channel=look.channel&&{...look.channel,pose:'skill',at:look.channel.at==='mouth'?'head':look.channel.at};
+  if(!FOE_BOSS_BODY.has(look.move))return {...look,pose:'skill',channel};
+  return {...look,pose:'skill',channel,move:'cataclysm',fx:look.finisher||look.fx,stream:undefined,sounds:{...look.sounds,hit:look.sounds.hit||look.sounds.land}};
+}
 function bossSkillLook(skill){
-  const owner=foeSkillOwner();if(!owner||owner.tier!=='boss'||!skill?.name)return null;
+  const owner=foeSkillOwner();if(!owner||!skill?.name)return null;
+  if(owner.tier==='elite')return ELITE_LOOKS[owner.creature]?.[skill.name]||(foeBorrowsUlt(skill.name)?foeBorrowedLook(BOSS_SKILL_LOOKS[owner.boss]?.[skill.name]):null);
+  if(owner.tier!=='boss')return null;
   return BOSS_SKILL_LOOKS[owner.boss]?.[skill.name]||null;
 }
 function bossSkillSound(cue,options={}){
   const owner=foeSkillOwner();if(!cue||!owner)return;
-  playCastSound('bossfx-'+owner.boss,cue,{volume:.3,pan:.25,...options});
+  // The elites share a bank of their own (scripts/prepare_elite_sounds.py), its takes in turn; a borrowed ultimate keeps the boss's.
+  const shared=owner.tier==='elite'&&!foeBorrowsUlt();let takes=0;
+  if(shared){while(ART.castSounds[`elitefx-${cue}-${takes+1}`])takes++;if(takes){const turn=foeEliteTake[cue]||0;foeEliteTake[cue]=turn+1;cue+='-'+(turn%takes+1);}}
+  playCastSound(shared?'elitefx':'bossfx-'+owner.boss,cue,{volume:.3,pan:.25,...options});
 }
 // The foe's drawn body on the stage (its sheet's span, feet line and height), not its cell.
 function foeBody(){
@@ -398,7 +578,7 @@ function foeFx(sheet,point,size,{loop=false,rotate=0,duration=0,z=6,behind=false
   const node=document.createElement('span');node.className='foe-fx';node.setAttribute('aria-hidden','true');
   node.style.cssText=`left:${point.x}px;top:${point.y}px;width:${size*stretch}px;height:${size*squash}px;z-index:${behind?1:z};--fx-count:${sheet.count};background-image:url('${sheet.src}');rotate:${rotate}deg`;
   if(flip)node.style.scale=flip==='x'?'-1 1':'1 -1';
-  foeTint(node);
+  foeTint(node,sheet);
   (behind?$('scene'):$('combatEffects')).append(node);
   const at=n=>`${n/(sheet.count-1)*100}% 0`;
   if(frame!==null){node.style.backgroundPosition=at(frame);return {node,stop(){node.remove();}};}
@@ -416,7 +596,7 @@ function foeShaft(sheet,under,{band:[b0,b1],cols:[x0,x1]=[0,1],head=false},durat
   const size=parseFloat(under.style.width),left=parseFloat(under.style.left)-size/2,top=parseFloat(under.style.top)-size/2,bottom=top+b1*size,start=head?b0*size+10:0;
   if(bottom-start<=8||head&&top<=4)return {nodes:[],stop(){}};
   const make=(cx,cy,w,h,bgh)=>{const n=document.createElement('span');n.className='foe-fx foe-shaft';n.setAttribute('aria-hidden','true');
-    n.style.cssText=`left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;z-index:${under.style.zIndex};background-image:url('${sheet.src}');background-size:${sheet.count*size}px ${bgh}px`;foeTint(n);return n;};
+    n.style.cssText=`left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;z-index:${under.style.zIndex};background-image:url('${sheet.src}');background-size:${sheet.count*size}px ${bgh}px`;foeTint(n,sheet);return n;};
   const k=(bottom-start)/((b1-b0)*size),shaft=make(left+(x0+x1)/2*size,(start+bottom)/2,(x1-x0)*size,bottom-start,size*k);
   const runs=[[shaft,n=>`${-(n*size+x0*size)}px ${-b0*size*k}px`]];
   // Under a cloud the band starts at once (no fade in from the sky).
@@ -465,9 +645,10 @@ const BOSS_TINT_SKILLS={};
 let foeCurrentSkill='',foeUltLesser=false,foeNoFit=false;
 // A chapter boss's skill effects are drawn larger than the hero's body they are measured by (an elite wields
 // them at .68); an ultimate's lead-in effects stay a little smaller than its finale (FOE_ULT_LEAD).
-const FOE_BOSS_FX=1.3,FOE_ULT_LEAD=.85;
-function foeTint(node){
-  const boss=foeSkillOwner()?.boss,tint=BOSS_TINT_SKILLS[boss]?.[foeCurrentSkill]||BOSS_TINT[boss];if(!tint||reduced)return;
+const FOE_BOSS_FX=1.3,FOE_ELITE_FX=.68,FOE_ULT_LEAD=.85;
+function foeTint(node,sheet){
+  // An elite's own sheets were painted in their own light.
+  const boss=foeSkillOwner()?.boss,tint=BOSS_TINT_SKILLS[boss]?.[foeCurrentSkill]||BOSS_TINT[boss];if(!tint||reduced||sheet?.src?.includes('fx/elites/'))return;
   if(tint==='cycle')node.animate([{filter:'hue-rotate(0deg) saturate(1.5)'},{filter:'hue-rotate(360deg) saturate(1.5)'}],{duration:800,iterations:Infinity});
   else node.style.filter=tint;
 }
@@ -537,7 +718,7 @@ const FOE_MOVES={
     for(let i=0;i<c.hits;i++){
       if(!i||c.hits<3)await foeWindup(c,p,1,{ms:i?240:440,at:near});
       const hit=c.look.cuts?.[i%c.look.cuts.length]??(c.hits>2?2+i%3:3),reach=foeReachX(c,p,hit,c.look.into??.12);
-      setSpriteFrame('enemy',p,hit);await foePose(`translate(${reach}px,-2px)`,130*c.pace,'cubic-bezier(.6,0,.9,.5)');
+      c.sound('swing');setSpriteFrame('enemy',p,hit);await foePose(`translate(${reach}px,-2px)`,130*c.pace,'cubic-bezier(.6,0,.9,.5)');
       await combatV3Wait(90);
       foeFx(c.sheet,{x:c.g.target.x+c.g.target.width*.12,y:c.g.target.y-c.g.target.height*(.05+.08*(i%2))},c.g.body*.85*c.size*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.7,rotate:i%2?20:-15});
       c.contact(i,{knock:i===c.hits-1?1.5:1});await foeImpact(c,i===c.hits-1?200:150);
@@ -549,7 +730,7 @@ const FOE_MOVES={
     await foeWindup(c,c.pose('attack'),1,{ms:520,at:-10});
     const enemy=actor('enemy');enemy.style.filter='blur(1.2px)';
     for(let k=1;k<=3;k++)foeFx(c.sheet,{x:c.g.source.x-c.g.travel*k/4,y:c.g.target.y+c.g.target.height*.12},c.g.body*.6*c.scale,{squash:.6,duration:420});
-    setSpriteFrame('enemy',c.pose('attack'),3);await foePose(`translate(${-c.g.travel-24}px,0)`,150*c.pace,'cubic-bezier(.5,0,.8,.6)');
+    c.sound('swing');setSpriteFrame('enemy',c.pose('attack'),3);await foePose(`translate(${-c.g.travel-24}px,0)`,150*c.pace,'cubic-bezier(.5,0,.8,.6)');
     enemy.style.filter='';foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*1.25*c.scale,{x:c.g.target.x,y:c.g.target.y}),c.g.body*1.25*c.scale);
     for(let i=0;i<c.hits;i++)c.contact(i,{knock:1.8});
     await foeImpact(c,160);setSpriteFrame('enemy',c.pose('attack'),4);await combatV3Wait(260);setSpriteFrame('enemy',c.pose('attack'),5);await foePose('translate(0,0)',380);
@@ -586,12 +767,28 @@ const FOE_MOVES={
       const spot={x:c.g.target.x+(Math.random()-.5)*c.g.target.width*.25,y:c.g.target.y-c.g.target.height*(.05+Math.random()*.15)};
       const start=foeMouthNow()||{x:c.g.source.x-c.g.source.width*.25,y:c.g.source.y-c.g.source.height*.12},angle=Math.atan2(spot.y-start.y,spot.x-start.x)*180/Math.PI;
       const fly=c.extra('bolt')||c.sheet,bolt=foeFx(fly,start,c.g.body*(c.look.bolt?.7:.42)*c.scale,{loop:true,rotate:angle+180,duration:fly.count*fly.frameDuration*.6,z:7});
-      combatV3Whoosh(state.enemyKey,false,150);
+      if(foeSkillOwner().tier!=='elite')combatV3Whoosh(state.enemyKey,false,150);
       await animate(bolt.node,[{left:start.x+'px',top:start.y+'px'},{left:(start.x+spot.x)/2+'px',top:(start.y+spot.y)/2-c.g.target.height*(.25+.1*(i%2))+'px',offset:.5},{left:spot.x+'px',top:spot.y+'px'}],{duration:260*c.pace,easing:'cubic-bezier(.35,.1,.6,1)'});
       bolt.stop();foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*.85*c.scale,spot),c.g.body*.85*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.7});
       c.contact(i);if(i<c.hits-1)await combatV3Wait(60*c.pace);
     }
     await combatV3Wait(200);
+  },
+  // Shot: an archer or caster stays where it stands: it loads (frame 1), aims (2), lets go at its release frame
+  // (look.release, 3 unless the sheet looses later, as a bow does) and its bolt flies level at the hero, once per hit.
+  async shot(c){
+    const p=c.pose('attack'),release=c.look.release??3,fly=c.extra('bolt')||c.sheet;
+    await foeWindup(c,p,1,{ms:300});setSpriteFrame('enemy',p,2);await combatV3Wait(110*c.pace);
+    for(let i=0;i<Math.max(1,c.hits);i++){
+      setSpriteFrame('enemy',p,3);await combatV3Wait((release>3?260:70)*c.pace);setSpriteFrame('enemy',p,release);c.sound('loose');
+      const start=foeMouthNow()||{x:c.g.source.x-c.g.source.width*.3,y:c.g.source.y-c.g.source.height*.1},spot={x:c.g.target.x+c.g.target.width*.1,y:c.g.target.y-c.g.target.height*(.06+.05*(i%2))};
+      const size=c.g.body*.62*c.scale,bolt=foeFx(fly,start,size,{loop:true,rotate:Math.atan2(spot.y-start.y,spot.x-start.x)*180/Math.PI+180,duration:fly.count*fly.frameDuration,z:7});
+      await animate(bolt.node,[{left:start.x+'px',top:start.y+'px'},{left:spot.x+'px',top:spot.y+'px'}],{duration:Math.max(140,Math.hypot(spot.x-start.x,spot.y-start.y)*.55)*c.pace,easing:'cubic-bezier(.3,.1,.7,1)'});
+      bolt.stop();foeFx(c.sheet,foeOn(c,c.sheet,c.g.body*.72*c.scale,spot),c.g.body*.72*c.scale,{duration:c.sheet.count*c.sheet.frameDuration*.8,z:7});
+      c.contact(i,{knock:.8});await combatV3Wait(i<c.hits-1?90:120);
+      if(i<c.hits-1){c.sound('start');setSpriteFrame('enemy',p,1);await combatV3Wait(140*c.pace);setSpriteFrame('enemy',p,2);await combatV3Wait(80*c.pace);}
+    }
+    if(release<4)setSpriteFrame('enemy',p,4);await combatV3Wait(170);setSpriteFrame('enemy',p,5);await combatV3Wait(170);
   },
   // Beam: a charge gathers at the foe, then a long ray of the effect cuts across to the hero.
   async beam(c){
@@ -831,7 +1028,7 @@ const FOE_MOVES={
     await foeWindup(c,p,0,{ms:420,at:near});
     const size=c.g.body*.62*c.scale,angles=[-28,22,-8,38,-42,12];
     for(let i=0;i<c.hits;i++){
-      setSpriteFrame('enemy',p,1+i%4);await foePose(`translate(${foeReachX(c,p,1+i%4)}px,${i%2?2:-2}px)`,90*c.pace,'cubic-bezier(.6,0,.9,.5)');await combatV3Wait(40);
+      c.sound('swing');setSpriteFrame('enemy',p,1+i%4);await foePose(`translate(${foeReachX(c,p,1+i%4)}px,${i%2?2:-2}px)`,90*c.pace,'cubic-bezier(.6,0,.9,.5)');await combatV3Wait(40);
       foeFx(c.sheet,{x:c.g.target.x+(i%2?8:-8),y:c.g.target.y-c.g.target.height*(.02+.06*(i%3))},size,{duration:c.sheet.count*50,rotate:angles[i%angles.length],flip:i%2?'x':'',z:7});
       c.contact(i,{knock:.7});combatV3Camera(-1,i===c.hits-1,true,c.pending);await combatV3Wait(150*c.pace);
     }
@@ -1297,7 +1494,7 @@ const FOE_MOVES={
   },
   // Aura: the effect bursts around the foe itself (guards, heals, self buffs).
   async aura(c){
-    await c.cast();
+    await c.cast();c.sound('lock');
     foeFx(c.sheet,{x:c.g.source.x,y:c.g.source.y-c.g.source.height*.05},Math.max(c.g.source.width,c.g.source.height)*(c.scale<1?1.25:1.55),{behind:true});
     await combatV3Wait(c.sheet.frameDuration*3);
     for(let i=0;i<c.hits;i++)c.contact(i);
@@ -1369,7 +1566,7 @@ function foeLookPose(look,fallback='attack'){
   const has=name=>{const action=name&&spriteDefinition('enemy',state.enemyKey,name).action;return !!name&&(action===name||action===name+'_armored');};
   return has(look?.pose)?look.pose:has(fallback)?fallback:'attack';
 }
-function foeLookSheet(name){const owner=foeSkillOwner();return name&&!reduced&&ART.bossFx?.[owner?.boss+'/'+name]||null;}
+function foeLookSheet(name){return name&&!reduced&&ART.bossFx?.[foeFxOwner()+'/'+name]||null;}
 // A caster gathers its power first (look.channel: its own sheet at its staff, crown, lantern or mouth,
 // with the channel sound), in its cast pose; an expedition ultimate's wind-up turn plays it too.
 async function foeChannel(look){
@@ -1390,28 +1587,36 @@ async function foeChannel(look){
   const held=foeFx(sheet,at,size,{frame:sheet.count-1,behind});
   await animate(held.node,[{scale:'1',opacity:1},{scale:'1.06',opacity:1,offset:.7},{scale:'1.12',opacity:0}],{duration:ms-build+220}).finally(()=>held.stop());
 }
+// An elite's first skill: it holds its wind-up, quivering, in real time for as long as the charge sounds (a bow drawn hard).
+async function foeGather(c){
+  const ms=Math.min(1500,(ART.castSounds['elitefx-'+c.look.sounds.charge]?.duration||.9)*1000);
+  setSpriteFrame('enemy',c.pose('cast'),1);c.sound('charge',{volume:.36});
+  const quiver=actor('enemy').animate([{translate:'0 0'},{translate:'1.5px -1px'},{translate:'-1.5px 0'},{translate:'0 0'}],{duration:120,iterations:Infinity});
+  await new Promise(done=>setTimeout(done,ms));quiver.cancel();
+}
 // Stagings whose every blow is heard (a flurry of cuts, a tail lashing twice, walking bolts).
 const FOE_EVERY_HIT=new Set(['cataclysm','flurry','rush','tailwhip','strikes','punch','bind','tempest','stormcall','vortex']);
 // Stagings that work on the boss itself (guards, heals): the cast pose gathers (frame 3) instead of
 // thrusting toward the hero.
-const FOE_SELF_MOVES=new Set(['armorcast','ward','bloom','plates','dome','shutters','orbit','pillars','wings','wrap','sigil','shell','mirror','crown','cage','spots','rampart','saturn','backdrop','crescent','pour','rise']);
+const FOE_SELF_MOVES=new Set(['aura','armorcast','ward','bloom','plates','dome','shutters','orbit','pillars','wings','wrap','sigil','shell','mirror','crown','cage','spots','rampart','saturn','backdrop','crescent','pour','rise']);
 // Stagings the foe casts (its cast pose and voice) rather than strikes.
-const FOE_CAST_MOVES=new Set(['aura','armorcast','armorup','cataclysm','ward','snare','bloom','plates','dome','shutters','orbit','pillars','wings','wrap','sigil','shell','mirror','crown','cage','spots','rampart','saturn','backdrop','crescent','bind','tempest','vortex','summon','flank','pour','rise','spiral','column','drop','boomerang']);
-async function foeSkillStrike(skill,raw,hits=1){
+const FOE_CAST_MOVES=new Set(['shot','aura','armorcast','armorup','cataclysm','ward','snare','bloom','plates','dome','shutters','orbit','pillars','wings','wrap','sigil','shell','mirror','crown','cage','spots','rampart','saturn','backdrop','crescent','bind','tempest','vortex','summon','flank','pour','rise','spiral','column','drop','boomerang']);
+// ledger: a board attack's running total (armour taken across its blows), as in attack().
+async function foeSkillStrike(skill,raw,hits=1,boardLedger=null){
+  foeCurrentSkill=skill?.name||'';
   const look=bossSkillLook(skill),sheet=foeSkillSheet(look);
   // A plain armour skill shows no guard image of its own: the boss gathers, then its armour plates circle
   // it (foeGuardAura); the fire dragon still grows its armour on its body (armorup). A skill that also
   // strikes plays its blow (as the tactical bosses' do in the fight), and its armour follows.
   const plated=skill?.shield&&!skill?.heal&&!(raw>0)&&look&&look.move!=='armorup'&&foeLookSheet(look.plate||'plate');
   const wanted=plated?'armorcast':look?.move||skill?.move,move=FOE_MOVES[wanted]?wanted:hits>1?'volley':'eruption';
-  foeCurrentSkill=skill?.name||'';
-  if(!sheet){if(raw>0)return attack('enemy',raw,{hits});return {amount:0,blocked:0};}
-  const elite=foeSkillOwner().tier==='elite',pending=[],ledger={raw:0,applied:0},enemy=actor('enemy');
+  if(!sheet){if(raw>0)return skill?.name==='basic'?foeBaseAttack('enemy',raw,{hits}):attack('enemy',raw,{hits});return {amount:0,blocked:0};}
+  const elite=foeSkillOwner().tier==='elite'&&!foeBorrowsUlt(),pending=[],ledger=boardLedger||{raw:0,applied:0},enemy=actor('enemy');
   // A look's beats stage one burst as several blows (the damage is split, the total unchanged).
   hits=raw>0?Math.max(1,Math.min(9,Math.max(Math.round(hits)||1,look?.beats||0))):0;
   let amount=0,blocked=0;
   const sounds=look?.sounds||{};
-  const c={sheet,hits,pace:elite?.8:1,scale:elite?.68:FOE_BOSS_FX,size:look?.size||1,ground:look?.ground??sheet?.ground??.8,g:foeGeometry(),pending,look:look||{},
+  const c={sheet,hits,pace:elite?.8:1,scale:elite?FOE_ELITE_FX:FOE_BOSS_FX,size:look?.size||1,ground:look?.ground??sheet?.ground??.8,g:foeGeometry(),pending,look:look||{},
     sound(cue,options){bossSkillSound(sounds[cue],options);},
     pose(fallback){return foeLookPose(look,fallback);},
     // The cast pose builds to its peak (frame 4: staff, hand or blade thrust toward the hero) and holds
@@ -1420,12 +1625,13 @@ async function foeSkillStrike(skill,raw,hits=1){
     async cast(){const p=foeLookPose(look,'cast'),self=FOE_SELF_MOVES.has(move),top=self?2:3;if(this.channeled){setSpriteFrame('enemy',p,top);return;}for(let f=0;f<=top;f++){setSpriteFrame('enemy',p,f);await combatV3Wait(f?80:30);}},
     extra(key){return foeLookSheet(look?.[key]);},
     contact(i,options){
-      if(sounds.hit&&(i===0||FOE_EVERY_HIT.has(move)))bossSkillSound(sounds.hit,{volume:i?.22:.3});
+      if(sounds.hit&&(i===0||elite||FOE_EVERY_HIT.has(move)))bossSkillSound(sounds.hit,{volume:i?.22:.3});
       const r=foeSkillContact(raw/hits,ledger,i,i===hits-1&&!elite,pending,{...options,own:!!look});amount+=r.amount;blocked+=r.blocked;update();
     }};
   enemy.classList.add('combat-v3-acting');enemy.style.zIndex='4';
   try{
     if(look?.channel){await foeChannel(look);c.channeled=true;}
+    if(sounds.charge){await foeGather(c);c.sound('loose');}
     combatVoice('enemy',FOE_CAST_MOVES.has(move)?'cast':'attack');if(move!=='flight')c.sound('start');
     // An ultimate (one without a set piece of its own) is framed as one: the stage darkens and a warning
     // ring marks the hero's ground before it, and after it one dominant burst lands with a flash.
@@ -1636,7 +1842,7 @@ async function castFoeSkill(skill,base,{charge=1,announce=true}={}){
   if(skill.leech&&previous>state.hp)await buff('enemy','heal',Math.round((previous-state.hp)*skill.leech),plain);
   if(skill.shield)await buff('enemy','armor',Math.round(state.enemyMax*skill.shield),plain);
   // The boss's armour stays on it while it holds: its guard's pieces circle it (foeGuardAura).
-  if(skill.shield&&look&&!skill.power)foeGuardAura(look);
+  if(skill.shield&&look&&!skill.power&&state.boss)foeGuardAura(look);
   if(skill.heal&&look)await foeHealFlow(look);
   if(skill.heal)await buff('enemy','heal',Math.round(state.enemyMax*skill.heal),plain);
   if(skill.status&&!selfFirst)await applyFoeStatus(skill.status,base,pending);

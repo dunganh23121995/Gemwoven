@@ -10,7 +10,7 @@ for(const chapter of M.WORLD.CHAPTERS){
   assert.equal(stages.filter(stage=>stage.boss).length,1,'One boss encounter per chapter');
   assert.equal(stages[49].bossId,chapter.boss,'The boss is always at stage 50');
   assert.deepEqual(stages.map((stage,i)=>stage.tier==='elite'?i+1:0).filter(Boolean),[5,10,15,20,25,30,35,40,45]);
-  assert.equal(chapter.elites.length,2);assert.deepEqual([...new Set(stages.filter(s=>s.tier==='elite').map(s=>s.creature))].sort(),[...chapter.elites].sort(),'Both chapter elites alternate');
+  assert.equal(chapter.elites.length,5);assert.deepEqual([...new Set(stages.filter(s=>s.tier==='elite').map(s=>s.creature))].sort(),[...chapter.elites].sort(),'Both chapter elites alternate');
   for(const s of stages.filter(s=>!s.boss))assert.ok(s.enemyName&&s.enemyName!=='Vệ Binh Tinh Anh',`Named foe at ${s.index}`);
 }
 { // Bosses never share a skill; elites have their own chapter skills, weaker than their boss; common foes share one.
@@ -25,8 +25,27 @@ for(const chapter of M.WORLD.CHAPTERS){
     }
     const stages=Array.from({length:49},(_,i)=>M.encounter('campaign',(chapter.index-1)*50+i+1));
     for(const e of stages.filter(e=>e.tier==='normal'))assert.deepEqual(e.skills,[W.COMMON_SKILL.name],'Every common foe has the same skill');
-    for(const e of stages.filter(e=>e.tier==='elite'))assert.deepEqual(e.skills,W.ELITE_SKILLS[e.creature].map(s=>s.name));
+    for(const e of stages.filter(e=>e.tier==='elite')){assert.deepEqual(e.skills.slice(0,2),W.ELITE_SKILLS[e.creature].map(s=>s.name));assert.equal(e.skills.length,e.eliteUlt?3:2);}
   }
+}
+{ // Every elite fights as drawn: its range, its blow, a first skill echoing a boss's, its own body and effect sheets.
+  const W=M.WORLD,fs=require('node:fs'),path=require('node:path'),root=path.join(__dirname,'../..');
+  const bossSkills=new Set(Object.values(W.BOSSES).flatMap(b=>b.skills.map(s=>s.name))),foe=fs.readFileSync(path.join(root,'src/foe-skills.js'),'utf8'),fx=JSON.parse(fs.readFileSync(path.join(root,'assets/fx/elites/fx.json'),'utf8'));
+  const stagings=new Set([...foe.matchAll(/^  async (\w+)\(c\)/gm)].map(m=>m[1]));
+  const ranged=['forest-leafarcher','volcano-ashcultist','ice-snowwitch','thunder-sparkmage','marsh-sporewitch','desert-sandpriest','abyss-tidecaller','crystal-gemsage','thorns-vinehexer','celestial-dawncleric','void-starseer','caldera-furnacepriest','glacier-blizzardmage','stormspire-stormshaman','soulcrypt-cagekeeper','mycelium-plagueherald','geode-prismseer','hourglass-chronoweaver','coralreef-coraloracle','forest-mossdruid','volcano-slagarcher','ice-foxhuntress','thunder-boltgunner','marsh-toadshaman','desert-sunarcher','abyss-harpooner','foundry-steamgunner','foundry-chiefengineer','crystal-prismarcher','haunted-banshee','haunted-necrolord','sky-galearcher','sky-tempestmage','thorns-rosearcher','celestial-choirmaid','void-cometlord','eldergrove-petalarcher','eldergrove-birchelder','caldera-slagslinger','glacier-frostbolter','stormspire-thunderarchon','soulcrypt-wailbinder','mycelium-sporearcher','geode-lodeshooter','hourglass-sandarcher','coralreef-anemonewitch','moonkeep-crescentarcher','moonkeep-bloodseer','thunder-bellpriest','desert-jarmummy','eldergrove-honeykeeper','glacier-mirrorpriestess','stormspire-goldarcher','soulcrypt-cellbolter','mycelium-sporehag'];
+  assert.deepEqual(W.CHAPTERS.flatMap(c=>c.elites).filter(id=>W.ELITE_BASIC[id].reach).sort(),[...ranged].sort(),'Archers and casters shoot; the rest run in');
+  for(const id of W.CHAPTERS.flatMap(c=>c.elites)){
+    const [first,second]=W.ELITE_SKILLS[id],body=foe.match(new RegExp(`'${id}':\{[^\n]*`))?.[0];
+    assert.ok(W.ELITE_BASIC[id].name,id);assert.ok(bossSkills.has(first.echo),`${id} echoes a boss skill`);assert.ok(body,`${id} has a body entry`);
+    for(const s of [first,second])assert.ok(stagings.has(s.move),`${id} ${s.name} has a staging`);
+    for(const action of ['attack','skill','cast','hurt','defeat'])assert.ok(fs.existsSync(path.join(root,'assets/gemwoven/elites',id,action+'.webp')),`${id} ${action}`);
+    const own=[...body.matchAll(/(?:fx|shot|bolt):'(\w+)'/g)].map(m=>m[1]);assert.ok(own.length);for(const name of own)assert.ok(fx[id+'/'+name],`${id} sheet ${name}`);
+    assert.equal(!!body.match(/shot:/),!!W.ELITE_BASIC[id].reach,`${id} shoots only if it has a bolt`);
+  }
+  // A phase fight has no board turn: an elite's rotation holds its blow, in turn with its skills.
+  for(const id of ['eldergrove-rootwarden','soulcrypt-cagekeeper']){const r=W.tacticalElite(id),n=W.ELITE_SKILLS[id].map(s=>s.name),b=W.ELITE_BASIC[id].name;assert.deepEqual(r.map(s=>s.name),[b,n[0],b,n[1]]);assert.ok(r[0].effects.some(e=>e.type==='hit'));}
+  // A shield is not raised while one holds; the kit goes round.
+  const pick=T.chooseSkill(W.ELITE_SKILLS['forest-rootknight'],{hpRatio:.6,armor:50,heroHpRatio:.8,heroEnergy:0,history:[]});assert.notEqual(pick.kind,'guard');
 }
 { // The chapter boss's first clear is the chapter's big payout; replays and elites are not.
   const p=engine.read(),boss=M.encounter('campaign',100),elite=M.encounter('campaign',95);p.campaign.cleared=99;p.daily.campaignWins=0;
@@ -36,7 +55,7 @@ for(const chapter of M.WORLD.CHAPTERS){
   assert.equal(boss.tier,'boss');assert.equal(elite.tier,'elite');
 }
 for(const d of D.definitions){
-  assert.equal(d.skills.length,6);assert.equal(d.ordinary.length,3);assert.equal(d.elites.length,2);
+  assert.equal(d.skills.length,6);assert.equal(d.ordinary.length,3);assert.equal(d.elites.length,5);
   const start=(d.chapter-1)*50;edit(p=>{p.campaign.cleared=start;p.campaign.stars={};});
   assert.equal(M.counterProgress(engine.read(),d.chapter).rank,0);
   edit(p=>p.campaign.cleared=start+9);

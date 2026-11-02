@@ -931,3 +931,7 @@ Other chapter bosses (scripts/pick_boss_skill_sounds.py; cue -> recording)
     thunderstorm/channel       #521009 "Deep Waves with Reverb" by Sheyvan, https://freesound.org/people/Sheyvan/sounds/521009/ (CC0)
     thunderstorm/hit           #534023 "Thunderclap" by Fission9, https://freesound.org/people/Fission9/sounds/534023/ (CC0)
     thunderstorm/start         #234736 "thunder rumble 1.wav" by FenrirFangs, https://freesound.org/people/FenrirFangs/sounds/234736/ (CC0)
+
+Elite skill sounds (scripts/prepare_elite_sounds.py):
+    "Fantasy SFX Pack Vol 1" by JC Sounds, https://opengameart.org/content/jc-sounds-fantasy-sfx-pack-vol-1 (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/)
+    Changes: mixed to mono, trimmed, gain and fades.

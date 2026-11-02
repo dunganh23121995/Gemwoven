@@ -5,7 +5,7 @@
 .outfit-panel header{position:sticky;top:-4px;z-index:2;display:flex;align-items:center;justify-content:space-between;min-height:96px;margin:0 0 10px;padding-right:96px;background:linear-gradient(#f3e3c0 75%,#f3e3c000)}
 .outfit-panel h2{font-size:42px;margin:0;color:#53351d}
 .outfit-panel .gw-close{position:absolute;right:-14px;top:-6px;width:104px;height:104px;font-size:58px;padding-bottom:8px}
-.outfit-panel .game-btn{--h:100px;font-size:34px}
+.outfit-panel .game-btn{--h:68px;--hit:12px;font-size:29px}
 .outfit-items{display:flex;gap:16px;overflow-x:auto;overscroll-behavior:contain;min-height:130px;padding:6px 4px 12px;margin-bottom:12px;scrollbar-width:thin}
 .outfit-piece{flex:0 0 118px;height:128px;position:relative;border:0;padding:0;background-size:100% 100%;background-color:transparent;filter:drop-shadow(0 0 3px var(--rarity));cursor:pointer}
 .outfit-piece img{width:88px;height:88px;object-fit:contain}

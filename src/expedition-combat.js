@@ -8,7 +8,7 @@ startStage=function(){
   expeditionState=null;
   expeditionStart();
   if(!expeditionDef||progressionError)return;
-  const own=progressionBattle.tier==='boss'?null:(progressionBattle.skillSet||[]).map(progressionRules.WORLD.tacticalSkill);
+  const own=progressionBattle.tier==='boss'?null:progressionBattle.tier==='elite'&&progressionRules.WORLD.ELITE_BASIC[progressionBattle.creature]?[...progressionRules.WORLD.tacticalElite(progressionBattle.creature),...(progressionBattle.eliteUlt?progressionBattle.skillSet.filter(s=>s.ult):[])]:(progressionBattle.skillSet||[]).map(progressionRules.WORLD.tacticalSkill);
   expeditionState=expeditionRules.create(expeditionDef,{rank:progressionBattle.counter?.rank||0,heroMax:HEROES[state.key].hp,bossMax:state.enemyMax,tier:progressionBattle.tier,variant:progressionBattle.variant,skills:own?.length?own:null});
   document.body.classList.add('expedition-combat');plannedIntent=intent();update();
 };
@@ -112,7 +112,7 @@ function expeditionHud(){
   minions.replaceChildren();
   // The boss's own guards stand on the stage (foe-skills.js); the elites' portraits are the fallback.
   if(ART.bossFx?.[foeSkillOwner()?.boss+'/minion'])foeGuardsRender(t.addHp>0?t.adds:[]);
-  else if(t.addHp>0)for(const [id,name]of d.elites){const art=ART.campaignCreatures?.[d.theme+'-'+id],src=art?.portrait||art?.src;if(!src)continue;const image=document.createElement('img');image.src=src;image.alt=name;minions.append(image);}
+  else if(t.addHp>0)for(const [id,name]of d.elites.slice(0,2)){const art=ART.campaignCreatures?.[d.theme+'-'+id],src=art?.portrait||art?.src;if(!src)continue;const image=document.createElement('img');image.src=src;image.alt=name;minions.append(image);}
 }
 const expeditionUpdate=update;
 update=function(){expeditionUpdate();expeditionHud();};

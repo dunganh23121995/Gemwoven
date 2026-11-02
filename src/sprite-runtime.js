@@ -72,9 +72,10 @@ function spriteWarm(family,key){
 // Where a sheet is drawn in its actor's cell (fractions of the cell). A sheet drawn smaller than the idle
 // (its scale) grows about its feet; a chapter boss's poses stand on the resting pose's feet (build.py
 // feetX, footY of each sheet's first frame), so switching to a skill's pose never shifts the body
-// sideways or up. Airborne loops keep their own framing.
+// sideways or up, and an elite's combat sheets do the same (those carry a peak; common foes never do). Airborne
+// loops keep their own framing.
 function spriteBox(family,key,sheet,grow=(sheet.scale||1)-1){
-  const width=1+grow,foot=sheet.footY||.94,idle=family==='enemy'&&state.boss&&!sheet.airborne&&sheet.feetX!=null?ART.bosses?.[key]?.idle:null;
+  const width=1+grow,foot=sheet.footY||.94,idle=family==='enemy'&&(state.boss||sheet.peak!=null)&&!sheet.airborne&&sheet.feetX!=null?(state.boss?ART.bosses?.[key]:ART.enemies?.[key])?.idle:null;
   if(!idle?.feetX)return {left:-grow*.5,top:-grow*foot,width};
   return {left:idle.feetX-sheet.feetX*width,top:(idle.footY||.94)-foot*width,width};
 }
@@ -83,7 +84,7 @@ function spriteBox(family,key,sheet,grow=(sheet.scale||1)-1){
 // (COMBAT_BOSS_EDGE; the stage's frame trim hides anything nearer) steps in to that line. Returns that inward
 // shift (px) for a sheet drawn in box.
 function spriteInset(el,sheet,box){
-  const root=el?.closest('.actor');if(!root?.offsetWidth||el.dataset.family!=='enemy'||!state.boss||sheet.airborne||!sheet.span)return 0;
+  const root=el?.closest('.actor');if(!root?.offsetWidth||el.dataset.family!=='enemy'||!(state.boss||sheet.peak!=null)||sheet.airborne||!sheet.span)return 0;
   const W=root.offsetParent?.clientWidth||0,right=root.offsetLeft+(box.left+sheet.span[1]*box.width)*root.offsetWidth;
   return W?Math.max(0,Math.round(right-(W-Math.max(4,W*COMBAT_BOSS_EDGE)))):0;
 }
@@ -102,7 +103,7 @@ function spriteApply(el,action,index){
   // is drawn just small enough, about its feet, that its highest point (build.py peak) stays under the
   // boss's HUD; the whole pose keeps one size.
   const root=el.closest('.actor');
-  if(root&&el.dataset.family==='enemy'&&state.boss&&sheet.peak!=null&&!sheet.airborne&&root.offsetHeight){
+  if(root&&el.dataset.family==='enemy'&&sheet.peak!=null&&!sheet.airborne&&root.offsetHeight){
     const H=root.offsetHeight,fit=(root.offsetTop+H*foot-8)/(H*Math.max(.05,foot-sheet.peak));
     if(fit<1+grow)grow=Math.max(fit,(1+grow)*.6)-1;
   }
@@ -143,6 +144,7 @@ function setSpriteAction(side,action,duration=0){
 }
 function setSpriteFrame(side,action,index){
   const el=actor(side).querySelector('.sprite-body');if(!el)return;
+  if(spriteDefinition(el.dataset.family,el.dataset.key,action).sheet.baked)return;   // a baked rig one-shot plays on setSpriteAction's clock
   el.dataset.loop='false';spritePlayback.set(el,{action,manual:true});spriteApply(el,action,index);
 }
 function spriteTick(now){
@@ -186,7 +188,7 @@ renderActors=function(){
   $('heroActor').dataset.hero=state.key;
   $('enemyActor').dataset.element=state.enemyKey;
   const enemy=$('enemyActor'),tier=state.boss?'boss':progressionBattle?.tier==='elite'||state.qaElite?'elite':'normal';// qaElite: test builds (Noct Studio)
-  enemy.dataset.tier=progressionIsDuel()||progressionBattle?.mode==='pvp'?'duel':tier;
+  enemy.dataset.tier=progressionIsDuel()?'duel':tier;
   // Which boss sheet is shown: a world boss id, or "base" for the element's own boss (fire = the dragon king).
   enemy.dataset.bossArt=!state.boss?'':state.qaBossArt||(progressionBattle?.bossId&&ART.worldBosses?.[progressionBattle.bossId]?progressionBattle.bossId:'base');
   enemy.dataset.idleMotion=/bat|roc|wing|wisp|moth/.test(progressionBattle?.creature||progressionBattle?.bossId||'')?'hover':'breathe';

@@ -35,6 +35,23 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .combat-bar button.hot{border-color:var(--gold);color:var(--gold)}
 .combat-bar button.busy{background:var(--gold);color:#1a1409}
 [hidden]{display:none!important}
+.foe-pick{position:relative;display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
+#enemyBtn{min-width:240px;max-width:340px;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+#enemyBtn::after{content:' ▾';color:var(--gold)}
+#enemyTree{position:absolute;z-index:20;top:calc(100% + 4px);left:0;width:min(380px,calc(100vw - 32px));max-height:min(62vh,520px);overflow:auto;background:var(--panel);border:1px solid var(--gold);border-radius:10px;padding:6px;color:var(--ink);box-shadow:0 10px 28px #000a}
+#enemyTree details{border-radius:7px}
+#enemyTree summary{cursor:pointer;padding:8px;border-radius:7px;font-weight:600;list-style:none;display:flex;gap:6px;align-items:baseline}
+#enemyTree summary::before{content:'▸';color:var(--gold);flex:none}
+#enemyTree details[open]>summary::before{content:'▾'}
+#enemyTree summary:hover,#enemyTree button:hover{background:#2f281f}
+#enemyTree summary small{color:var(--dim);font-weight:400}
+#enemyTree .branch{margin:0 0 6px 13px;padding-left:9px;border-left:1px solid var(--line);display:flex;flex-direction:column}
+#enemyTree h5{margin:7px 0 2px;color:var(--dim);font-size:12px;font-weight:600}
+#enemyTree button{display:flex;justify-content:space-between;gap:8px;width:100%;min-height:36px;align-items:center;text-align:left;background:none;border:0;padding:6px 8px;border-radius:6px}
+#enemyTree button small{color:var(--dim);flex:none}
+#enemyTree button.on{background:var(--gold);color:#1a1409;font-weight:600}
+#enemyTree button.on small{color:#1a1409}
+@media (max-width:760px){.foe-pick{display:flex;width:100%}#enemyBtn{flex:1;min-width:0;max-width:none}}
 @media (max-width:760px){
   body{padding:8px}
   header{gap:8px;margin:-8px -8px 6px;padding:8px}
@@ -104,10 +121,10 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
     </section>
     <section>
       <h2>Trong trận</h2>
-      <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button></div>
+      <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button><button id="foeFall" hidden>Địch gục ngã</button></div>
       <div id="foeRule" style="margin-top:4px;font-size:12px;opacity:.8"></div>
       <div class="row" style="margin-top:8px">
-        <label>Đối thủ <select id="enemy"></select></label>
+        <div class="foe-pick">Đối thủ <button id="enemyBtn" aria-haspopup="tree" aria-expanded="false" aria-controls="enemyTree"></button><select id="enemy" hidden></select><div id="enemyTree" role="tree" aria-label="Chọn đối thủ" hidden></div></div>
         <label><input type="checkbox" id="fx" checked> Hiệu ứng</label>
         <label><input type="checkbox" id="armor"> Địch có 500 giáp</label>
         <label>Tướng đứng <select id="side"><option value="left">bên trái</option><option value="right">bên phải</option></select></label>
@@ -215,7 +232,7 @@ function enemy(){
     return {stage:5,enemyKey:key,qaElite:false,qaBossArt:world?ch.boss:'base',qaFoeFx:{boss:ch.boss,tier:'boss'}};
   }
   art.enemies.fire=originalMob.art;
-  const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire=c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};gq().monsters.fire.name=label;
+  const [tier,key]=id.split(':'),c=art.campaignCreatures[key],label=$('enemy').selectedOptions[0].textContent.split(' · ').pop();art.enemies.fire=gq().creatureSheets(c);gq().monsters.fire.name=label;
   const home=gq().chapters.find(c=>(c.elites||[]).includes(key)||(c.ordinary||c.creatures||[]).includes(key));
   return {stage:4,enemyKey:'fire',qaElite:tier==='elite',qaBossArt:'',qaFoeFx:{boss:home?.boss,tier,creature:key}};
 }
@@ -228,11 +245,36 @@ function fillEnemies(){
   for(const [tier,label] of Object.entries(groups)){
     const g=document.createElement('optgroup');g.label=label;
     for(const ch of gq().chapters)for(const key of tier==='elite'?(ch.elites||[]):(ch.ordinary||[])){if(!art[key])continue;
-      const o=document.createElement('option');o.value=tier+':'+key;o.textContent=`${label} · ${ch.name} · ${gq().creatureNames?.[ch.id]?.[key]||key}`;g.append(o);}
+      const o=document.createElement('option');o.value=tier+':'+key;o.textContent=`${label} · ${ch.name} · ${gq().creatureNames?.[ch.id]?.[key]||M.CREATURES.find(x=>x.id===key)?.name||key}`;g.append(o);}
     $('enemy').append(g);
   }
-  $('enemy').value='normal:slime';
+  $('enemy').value='normal:slime';showEnemy();
 }
+// The foe picker: a tree of the chapters, each its boss, then its elites (with the stages they stand on), then its common
+// foes. The hidden select keeps the choice.
+const ELITE_ROUNDS=['ải 5, 10','ải 15, 20','ải 25, 30','ải 35, 40','ải 45 · ulti boss'];
+const showEnemy=()=>{$('enemyBtn').textContent=$('enemy').selectedOptions[0]?.textContent.replace(/^Quái (tinh anh|thường) · /,'')||'Chọn đối thủ';};
+function closeEnemyTree(){$('enemyTree').hidden=true;$('enemyBtn').setAttribute('aria-expanded','false');}
+function enemyLeaf(value,name,note=''){
+  const b=document.createElement('button');b.type='button';b.setAttribute('role','treeitem');b.dataset.foe=value;b.className=value===$('enemy').value?'on':'';b.textContent=name;
+  if(note){const s=document.createElement('small');s.textContent=note;b.append(s);}
+  b.onclick=()=>{$('enemy').value=value;showEnemy();closeEnemyTree();configure();};return b;
+}
+function fillEnemyTree(){
+  const q=gq(),art=q.art.campaignCreatures,picked=$('enemy').value,label=(id)=>[...$('enemy').options].find(o=>o.value===id)?.textContent.split(' · ').pop()||id;
+  $('enemyTree').replaceChildren(...q.chapters.map(ch=>{
+    const node=document.createElement('details'),head=document.createElement('summary'),branch=document.createElement('div'),boss=q.bossDefs[ch.boss]?.name||ch.boss,elites=(ch.elites||[]).filter(k=>art[k]),common=(ch.ordinary||[]).filter(k=>art[k]);
+    head.innerHTML=`<span></span><small></small>`;head.children[0].textContent=`${ch.index} · ${boss}`;head.children[1].textContent=ch.name;branch.className='branch';branch.setAttribute('role','group');
+    const title=t=>{const h=document.createElement('h5');h.textContent=t;return h;};
+    branch.append(enemyLeaf('boss:'+ch.id,boss,'boss · ải 50'));
+    if(elites.length)branch.append(title('Quái tinh anh'),...elites.map((k,i)=>enemyLeaf('elite:'+k,label('elite:'+k),ELITE_ROUNDS[i]||'')));
+    if(common.length)branch.append(title('Quái thường'),...common.map(k=>enemyLeaf('normal:'+k,label('normal:'+k))));
+    node.append(head,branch);node.open=[`boss:${ch.id}`,...elites.map(k=>'elite:'+k),...common.map(k=>'normal:'+k)].includes(picked);return node;
+  }));
+}
+$('enemyBtn').onclick=e=>{e.stopPropagation();const open=$('enemyTree').hidden;if(!open)return closeEnemyTree();if(!gq())return;fillEnemyTree();$('enemyTree').hidden=false;$('enemyBtn').setAttribute('aria-expanded','true');$('enemyTree').querySelector('button.on')?.scrollIntoView({block:'center'});};
+$('enemyTree').onclick=e=>e.stopPropagation();
+addEventListener('click',closeEnemyTree);addEventListener('keydown',e=>{if(e.key==='Escape')closeEnemyTree();});
 function configure(){
   const q=gq();if(!q?.art)return;
   q.configure({key:hero,form,hp:10000,enemyHp:10000,enemyMax:10000,armor:0,enemyArmor:$('armor').checked?500:0,energy:0,enemyEnergy:0,...enemy()});
@@ -244,7 +286,7 @@ function configure(){
   for(const other of Object.keys(q.art.heroVariants||{}))if(other!==hero)q.heroVariant(other,null);
   if(variants.length)q.heroVariant(hero,$('variant').value||null);
   q.setHeroSide?.($('side').value);
-  q.setReduced(!$('fx').checked);loadSheets();fillFoeSkills();
+  q.setReduced(!$('fx').checked);loadSheets();fillFoeSkills();$('foeFall').hidden=!$('enemy').value.startsWith('elite:');
   const f=M.HERO_FORMS[hero]?.[form-1];
   $('kit').textContent=f?`${f.name} · vũ khí: ${f.weapon} · tuyệt kỹ: ${f.skill}${f.signature?' · '+f.signature:''}`:`${M.HEROES[hero].name} · tuyệt kỹ: ${M.HEROES[hero].skills?.[0]||''}`;
 }
@@ -282,17 +324,20 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     if(b.dataset.do==='attack')await q.attack('hero',100,{attackChain:1});
     if(b.dataset.do==='ultimate')await q.heroUltimate();
     if(b.dataset.do==='depart')await q.departVictoriousHero();
-    if(b.dataset.do==='hit'){const hp=q.state.hp;await q.attack('enemy',100);say(`Bị đánh: mất ${hp-q.state.hp} HP`);return;}
+    if(b.dataset.do==='hit'){const hp=q.state.hp,blow=foeBlow();await q.attack('enemy',100);say(`Bị đánh${blow?' ('+blow+')':''}: mất ${hp-q.state.hp} HP`);return;}
     say('Xong: '+b.textContent);
   }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');}
 });
-const showFoeRule=()=>{$('foeRule').textContent=$('foeSkill').selectedOptions[0]?.title||'';};
-function fillFoeSkills(){const q=gq();if(!q)return;queueMicrotask(showFoeRule);$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.move||'vồ')+(s.status?' · '+s.status.id:'');o.title='Khi nào dùng: '+(q.skillRule?.(s)||'');return o;}));}
+// An elite's basic blow, what the "Bị đánh" button plays; the list below holds only what it casts on a full rage gauge.
+const foeBlow=()=>{const [tier,key]=$('enemy').value.split(':');return tier==='elite'?M.WORLD.ELITE_BASIC[key]?.name:'';};
+const showFoeRule=()=>{const blow=foeBlow();$('foeRule').textContent=[$('foeSkill').selectedOptions[0]?.title,blow&&`Đòn thường (nút Bị đánh): ${blow}`].filter(Boolean).join(' · ');};
+function fillFoeSkills(){const q=gq();if(!q)return;queueMicrotask(showFoeRule);$('foeSkill').replaceChildren(...q.foeSkills().map((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(s.ult?'★ ':'')+s.name+' · '+(s.ult&&$('enemy').value.startsWith('elite:')?'ulti boss, đứng tại chỗ':s.move||'vồ')+(s.status?' · '+s.status.id:'');o.title='Khi nào dùng: '+(q.skillRule?.(s)||'');return o;}));}
 // Skills of one boss play one after another in the same fight, as in the game: the armour, plates, statuses
 // and summoned guards a skill leaves stay on while the next one plays (only a new setup restages the fight).
 let foeStage='';
 const foeStageKey=()=>JSON.stringify([hero,form,enemy(),$('fx').checked,$('side').value,$('armor').checked,$('variant').value]);
 $('foeSkill').onchange=showFoeRule;
+$('foeFall').onclick=()=>{const q=gq();if(!q)return;q.spriteAction('enemy','defeat',1100);setTimeout(()=>q.spriteAction('enemy','idle'),2400);};
 $('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').selectedOptions[0],index=+$('foeSkill').value,label=o?.textContent||'';say('Đang chạy: '+label);
   try{
     if(foeStageKey()!==foeStage||q.ended||q.state.hp<=0||q.state.enemyHp<=0){configure();foeStage=foeStageKey();$('foeSkill').value=index;}

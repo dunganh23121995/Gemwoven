@@ -121,7 +121,7 @@
   }
   function mailExpiry(expiresAt,at){if(expiresAt==null)return '';const left=expiresAt-at;if(left<=0)return 'Đã hết hạn';return left<DAY_MS?`Còn ${Math.max(1,Math.ceil(left/3600000))} giờ`:`Còn ${Math.ceil(left/DAY_MS)} ngày`;}
   const heroSave=()=>({level:1,stars:1,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:relicSave(),ticketMilestones:[]});
-  function fresh(now){return {version:VERSION,revision:0,created:now,updated:now,selected:'novice',wallet:{gold:1200,gems:0,tickets:0},materials:{exp:12,seals:0,skillBooks:0,essence:0,ore:5,wood:5,cloth:5,divineOre:0},heroes:{novice:heroSave()},fragments:{},equipment:[],campaign:{cleared:0},boss:{best:0,wins:0,damageBest:0},pvp:{wins:0,losses:0,rating:1000},daily:{date:day(now),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0},offlineAt:now,offlineBank:null,clock:{max:now,behind:false},summon:{total:0,dry:0,fragmentDry:0,last:[]},events:[],mail:[welcomeMail(now)],pending:null,receipts:[],vip:{level:0,paidTotal:0},log:[]};}
+  function fresh(now){return {version:VERSION,revision:0,created:now,updated:now,selected:'novice',wallet:{gold:1200,gems:0,tickets:0},materials:{exp:12,seals:0,skillBooks:0,essence:0,ore:5,wood:5,cloth:5,divineOre:0},heroes:{novice:heroSave()},fragments:{},equipment:[],campaign:{cleared:0},boss:{best:0,wins:0,damageBest:0},daily:{date:day(now),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0},offlineAt:now,offlineBank:null,clock:{max:now,behind:false},summon:{total:0,dry:0,fragmentDry:0,last:[]},events:[],mail:[welcomeMail(now)],pending:null,receipts:[],vip:{level:0,paidTotal:0},log:[]};}
   function levelCost(level){check(int(level,1,499),'Cấp này không thể tăng thêm.');return {gold:Math.ceil(60+level*level*1.9),exp:Math.ceil(2+level*.6),seals:Math.ceil(6+level*.04+level*level*.014)};}
   function starCost(stars){check(int(stars,1,5),'Tướng đã đạt 6 sao.');return {copies:[0,1,2,3,5,8][stars],gold:[0,10000,35000,100000,300000,1000000][stars],essence:[0,10,25,60,140,300][stars]};}
   function skillUnlock(h,index){const g=SKILL_GATES[index];return !!(g&&h&&h.level>=g.level&&(h.evolution||0)>=g.evolution);}
@@ -254,16 +254,20 @@
   // Endless rewards grow linearly to floor 500, then with the square root of
   // further depth: deep floors stay a ranking challenge, not a gold faucet.
   function endlessRewardFloor(index){return index<=500?index:Math.floor(500+10*Math.sqrt(index-500));}
+  // A chapter's nine elite rounds (stages 5, 10, ... 45): which of its five elites stands there and how strong. Each of the
+  // first four fights twice, weaker the first time; the last fights once, the strongest, with its boss's ultimate.
+  const ELITE_ROUNDS=[[0,.9],[0,1],[1,.9],[1,1],[2,.9],[2,1],[3,.9],[3,1],[4,1.1]];
   function encounter(mode,index){
-    check(['campaign','boss','pvp','duel'].includes(mode),'Chế độ chưa phát hành.');check(int(index,1,mode==='campaign'?WORLD.MAX_STAGES:1000000),'Ải không hợp lệ.');
+    check(['campaign','boss','duel'].includes(mode),'Chế độ chưa phát hành.');check(int(index,1,mode==='campaign'?WORLD.MAX_STAGES:1000000),'Ải không hợp lệ.');
     const chapter=mode==='campaign'?WORLD.chapterForStage(index):WORLD.CHAPTERS[(index-1)%WORLD.CHAPTERS.length],bossDef=WORLD.BOSSES[chapter.boss];
     const depth=mode==='campaign'?Math.ceil(index/2):Math.ceil(index*1.8),recommended=Math.min(MAX_LEVEL,depth),boss=mode==='boss'||mode==='campaign'&&index%50===0;
     const every=WORLD.ELITE_EVERY,tier=boss?'boss':mode==='campaign'&&index%every===0?'elite':'normal';
-    const local=(index-1)%50+1,variant=mode!=='campaign'||boss?0:tier==='elite'?(local/every-1)%2:(local-1)%chapter.ordinary.length;
+    const local=(index-1)%50+1,round=tier==='elite'?ELITE_ROUNDS[local/every-1]:null,variant=mode!=='campaign'||boss?0:round?round[0]:(local-1)%chapter.ordinary.length;
     const creatureId=mode==='campaign'&&!boss?(tier==='elite'?chapter.elites:chapter.ordinary)[variant]:null;
     const creature=creatureId?CREATURES.find(c=>c.id===creatureId)||{id:creatureId,name:WORLD.CREATURE_NAMES[chapter.id][creatureId]}:null;
     // Bosses and elites fight with their own skills; every common foe shares one skill.
-    const skillSet=boss?bossDef.skills:tier==='elite'?WORLD.ELITE_SKILLS[creatureId]||[WORLD.COMMON_SKILL]:mode==='campaign'?[WORLD.COMMON_SKILL]:[];
+    const eliteUlt=tier==='elite'&&local===45;
+    const skillSet=boss?bossDef.skills:tier==='elite'?[...(WORLD.ELITE_SKILLS[creatureId]||[WORLD.COMMON_SKILL]),...(eliteUlt?bossDef.skills.filter(s=>s.ult):[])]:mode==='campaign'?[WORLD.COMMON_SKILL]:[];
     // Campaign HP growth halves after stage 200 (stages 1–200 unchanged) so late
     // stages track hero damage; expedition bosses (stages 750+) are longer
     // phase fights (×3 → ×4 HP by stage 1200) with a 35-turn limit. Endless
@@ -271,9 +275,9 @@
     const lateBoss=mode==='campaign'&&tier==='boss'&&!!bossDef.tactical,growth=mode==='campaign'&&index>200?1.6+(index-200)*.0013:1+index*.003;
     const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-700)/500:2.25):tier==='elite'?1.5:1):(120+depth*18)*(boss?1.7:1);
     return {mode,index,recommended,boss,tier,chapter:chapter.index,theme:chapter.id,bossId:chapter.boss,music:boss?chapter.music:chapter.element,creature:creature?.id||null,enemyName:boss?bossDef.name:creature?.name||'Vệ Binh Tinh Anh',turnLimit:tier==='boss'?(lateBoss?35:20):tier==='elite'?16:12,
-      enemyKey:mode==='pvp'||mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth),enemyAttack:enemyAttackFor(mode,index,tier,recommended),enemySkillBase:Math.round(ENEMY_SKILL_BASE[tier]*(tier==='boss'&&mode==='campaign'?CHAPTER_POWER(chapter.index):1)),
+      enemyKey:mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth*(round?.[1]||1)),enemyAttack:Math.round(enemyAttackFor(mode,index,tier,recommended)*(round?.[1]||1)*1e4)/1e4,enemySkillBase:Math.round(ENEMY_SKILL_BASE[tier]*(round?.[1]||1)*(tier==='boss'&&mode==='campaign'?CHAPTER_POWER(chapter.index):1)),
       skills:skillSet.length?skillSet.map(s=>s.name):['Đánh Thường'],
-      skillSet,tactical:!!bossDef.tactical,variant,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='pvp'?'Đấu tập 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
+      skillSet,eliteUlt,tactical:!!bossDef.tactical,variant,name:mode==='duel'?'PvP cục bộ 1vs1':mode==='boss'?`Boss vô hạn · Tầng ${index}`:`Chương ${chapter.index} · Ải ${local}`};
   }
   function stageStars(b,won,performance={}){
     if(!won)return 0;
@@ -387,14 +391,13 @@
         }
         p.summon.last=results;note(p,'Triệu hồi '+count+' lần');return results;
       }),
-      begin:(mode,index)=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(['pvp','duel'].includes(mode))check(index===1,'Trận đấu tập không hợp lệ.');const e=encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,['pvp','duel'].includes(mode))};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
+      begin:(mode,index)=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');const e=encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel')};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
         if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
         if(won&&b.mode==='campaign')p.campaign.stars[b.index]=Math.max(p.campaign.stars[b.index]||0,stageStars(b,won,performance));
         if(won&&b.mode==='campaign'&&b.tier==='elite'&&stageStars(b,true,performance)===3){const counter=counterProgress(p,b.chapter),local=(b.index-1)%50+1;if(counter&&!counter.claimed.includes(local)){p.campaign.artifacts[counter.theme]={claimed:[...counter.claimed,local]};counterReward={...counterProgress(p,b.chapter),earned:3};}}
         if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;}}
-        if(b.mode==='pvp'){p.pvp[won?'wins':'losses']++;p.pvp.rating=Math.max(0,p.pvp.rating+(won?15:-10));}
         // heroFragments is listed with the resources (label in RESOURCES) so the result popup shows it.
         const actual=grant(p,reward);if(heroFragments){actual.heroFragments=heroFragments;actual.fragmentHero=SUMMON_BANNER.hero;}if(counterReward)actual.counterReward=counterReward;note(p,`${b.name}: ${won?'thắng':'thua'}`);return actual;
       }),

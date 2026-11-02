@@ -60,8 +60,7 @@
       'home.place-shop':{path:'M 182 454 Q 263 443 344 454',width:151,size:33},
       'home.place-upgrade':{path:'M 174 437 Q 257 425 340 437',width:154,size:34},
       'home.place-forge':{path:'M 214 194 Q 275 183 336 193',width:112,size:31},
-      'home.place-tavern':{path:'M 218 186 Q 277 177 336 186',width:113,size:30},
-      'home.quests':{path:'M 64 143 Q 149 139 234 143',width:160,size:29}
+      'home.place-tavern':{path:'M 218 186 Q 277 177 336 186',width:113,size:30}
     };
     const painted=paintedSigns[node.id];
     if(painted){
@@ -298,7 +297,9 @@
     if(!dialog.open)dialog.showModal();
     primary.focus?.({preventScroll:true});$('dialog-body').scrollTop=0;fitTitle($('dialog-title'));
   }
-  function showDirectory(){showModal('Khám phá Gemwoven',[],'',(layout.order||Object.keys(layout.screens)).map(key=>({label:layout.names[key],route:key,icon:iconFor[key]})),{kind:'directory'});}
+  // The bottom and top bars are on every screen, so the directory skips them; the event studio is not a player screen.
+  const notInDirectory=['home','upgrade','inventory','skills','summon','arena','mail','admin'];
+  function showDirectory(){showModal('Khám phá Gemwoven',[],'',(layout.order||Object.keys(layout.screens)).filter(key=>!notInDirectory.includes(key)).map(key=>({label:layout.names[key],route:key,icon:iconFor[key]})),{kind:'directory'});}
   function chooseGroup(button){
     if(!button.dataset.group)return;state.groups[button.dataset.group]=button.dataset.node;
     scene.querySelectorAll(`[data-group="${button.dataset.group}"]`).forEach(el=>{const selected=el===button;el.classList.toggle('selected',selected);el.setAttribute('aria-pressed',String(selected));});
@@ -338,7 +339,7 @@
     if(type==='item')return showModal(window.GEMWOVEN_INVENTORY?.find(p=>p[0]===value)?.[1]||itemNames[value]||'Trang bị',[value]);
     if(type==='hero'){state.hero=value;state.skill=0;return navigate('upgrade');}
     if(type==='selected-product')return showModal(itemNames[state.product],[state.product]);
-    if(type==='battle')return showModal(`Đấu trường ${state.mode==='solo'?'1v1':'3v3'}`,['hero-fire','hero-ice'],'',[{label:'Vào trận',href:'Game.html'}]);
+    if(type==='battle')return showModal(state.mode==='solo'?'Đấu trường 1v1':'Boss Vô Hạn',['hero-fire','hero-ice'],'',[{label:'Vào trận',href:'Game.html'}]);
     if(type==='summon')return showModal(value==='ten'?'Triệu Hồi ×10':'Triệu Hồi ×1',['summon-crystal','gem-fire'],'',[{label:'Xem tướng',route:'upgrade'}]);
     if(type==='forge-preview'){const tab=Number((state.groups['forge-tab']||'1').slice(-1));return showModal(['Chế Tạo','Cường Hóa','Khảm Ngọc'][tab],['fire-sword'],tab===1?'+8  →  +9':'Kiếm Hỏa Ngục');}
     if(type==='upgrade-preview'){const tab=Number((state.groups['upgrade-tab']||'0').slice(-1));return showModal(['Tăng Level','Tăng Sao','Tiến Hóa'][tab],[`hero-${state.hero}`],tab===0?'Lv.32  →  Lv.33':heroNames[state.hero]);}
