@@ -39,7 +39,7 @@
   // Event cadence (GMT+7). Each window lists what renews; the server owns the calendar.
   const CADENCE=[
     {id:'daily',name:'Ngày',reset:'00:00',items:['Nhiệm vụ ngày','Sân Thử Luyện theo hệ (2 lượt có thưởng, thử lại thoải mái)','Quà VIP và Thẻ Tháng']},
-    {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần (≈ 40 Mảnh Hiro mỗi tuần qua nhiệm vụ PvE)','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
+    {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
     {id:'banner',name:'Kỳ 2 tuần',reset:'Thứ Hai tuần lẻ',items:['Banner tướng (+ vũ khí bản mệnh)','Boss sự kiện theo tướng banner','Cửa hàng đổi mảnh (tối đa 30 mảnh/kỳ)','Báu vật chủ đề: tích nạp nhanh hơn, PvE vẫn đạt được']},
     {id:'season',name:'Mùa 28 ngày',reset:'Thứ Hai đầu mùa',items:['Sổ Hành Trình mới','Mùa Đấu Hạng (reset mềm)','Lịch đăng nhập 28 ngày','BXH Boss Vô Hạn']},
     {id:'quarter',name:'Quý',reset:'Tuần đầu quý',items:['Thư Hùng Đại Hội','Trang phục mới','Sự kiện kỷ niệm']}

@@ -76,3 +76,15 @@ console.log('liveops ok');
   assert.ok(P.download(e.read(),catalog,['core']).bytes>0);
 }
 console.log('asset packs ok');
+{ // Weekly quests: Monday reset (GMT+7), progress from campaign/boss wins and daily claims, one ticket each.
+  clock=Date.UTC(2026,10,4,6);const {engine:e,edit}=fixture(); // Wednesday
+  const w=e.weekly();assert.equal(w.length,3);assert.equal(w[0].week,'2026-11-02','Week starts Monday');assert.equal(M.WEEKLY.reduce((n,q)=>n+(q.reward.tickets||0),0),3);
+  for(const q of M.WEEKLY)assert.equal(q.reward.gems,undefined);
+  assert.throws(()=>e.claimWeekly('campaign'),/Chưa hoàn thành/);
+  for(let i=0;i<15;i++){const b=e.begin('campaign',1);e.settle(b.token,true,10,{hpRatio:.9,turns:3});}
+  assert.equal(e.weekly()[0].progress,15);const before=e.read().wallet.tickets;e.claimWeekly('campaign');assert.equal(e.read().wallet.tickets,before+1);assert.throws(()=>e.claimWeekly('campaign'),/Đã nhận/);
+  edit(p=>{p.daily.progress.campaign=3;});e.claimDaily('login');e.claimDaily('campaign');assert.equal(e.weekly()[2].progress,2);
+  clock=Date.UTC(2026,10,8,0);assert.equal(e.weekly()[0].week,'2026-11-02','Sunday 07:00 GMT+7 is still the same week');
+  clock=Date.UTC(2026,10,8,17,1);assert.equal(e.weekly()[0].week,'2026-11-09','Monday 00:01 GMT+7 starts a new week');assert.equal(e.weekly()[0].progress,0);
+}
+console.log('weekly ok');

@@ -60,6 +60,13 @@
         `<ul>${Object.entries(d.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
         `<button type="button" class="game-btn" data-action="growth:newbie" data-day="${d.day}" ${d.open&&!d.claimed?'':'disabled'}>${d.claimed?'Đã nhận':d.open?'Nhận':'Chưa mở'}</button></article>`).join('')}</div></section>`;
   }
+  function weeklySection(){
+    const name=id=>M.RESOURCES[id]?.[0]||id,rows=G.engine.weekly();
+    return `<section class="weekly-quests"><h3>Nhiệm Vụ Tuần</h3><p class="hint">Làm mới Thứ Hai 00:00 (GMT+7) · tuần từ ${esc(rows[0]?.week.split('-').reverse().join('/'))}</p>`+
+      `<div class="cadence-grid">${rows.map(q=>`<article class="${q.claimed?'is-claimed':''}"><b>${esc(q.name)}</b><small>Tiến độ ${fmt(q.progress)} / ${fmt(q.target)}</small>`+
+        `<ul>${Object.entries(q.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
+        `<button type="button" class="game-btn" data-action="growth:weekly" data-quest="${esc(q.id)}" ${!q.claimed&&q.progress>=q.target?'':'disabled'}>${q.claimed?'Đã nhận':q.progress>=q.target?'Nhận':'Chưa xong'}</button></article>`).join('')}</div></section>`;
+  }
   function cadenceSection(){
     if(!O)return '';
     return `<section class="cadence"><h3>Lịch sự kiện dự kiến · Sắp ra mắt</h3><div class="cadence-grid">${O.CADENCE.map(c=>`<article><b>${esc(c.name)}</b><small>Làm mới ${esc(c.reset)} (GMT+7)</small><ul>${c.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></article>`).join('')}</div></section>`;
@@ -103,7 +110,7 @@
       if(key&&M.HEROES[key]&&!p.heroes[key]&&!/hero-unowned/.test(n.className||''))n.className=((n.className||'')+' hero-unowned').trim();
     }
     const live=screen.nodes.find(n=>n.id===state.screen+'.live');
-    if(live&&state.screen==='events'){const build=live.build;live.build=el=>{build(el);const sub=el.querySelector('.game-heading p'),week=newbieSection();if(sub&&week)sub.textContent='Hành Trình Tân Thủ đang mở · Sự kiện theo mùa sắp ra mắt.';el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',week);el.insertAdjacentHTML('beforeend',cadenceSection());};}
+    if(live&&state.screen==='events'){const build=live.build;live.build=el=>{build(el);const sub=el.querySelector('.game-heading p'),week=newbieSection();if(sub&&week)sub.textContent='Hành Trình Tân Thủ đang mở · Sự kiện theo mùa sắp ra mắt.';el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',week+weeklySection());el.insertAdjacentHTML('beforeend',cadenceSection());};}
     if(live&&state.screen==='vip'&&O)live.build=el=>{el.innerHTML=vipPage(G.engine.read());};
     return p;
   };
@@ -113,6 +120,7 @@
     if(action==='growth:power'){powerDialog(ctx,state,hero);return true;}
     if(action==='growth:map'){growthDialog(ctx,state,hero);return true;}
     if(action==='growth:newbie'){try{const got=G.engine.claimNewbie(Number(el.dataset.day));ctx.render();G.showRewards(ctx,got,'Quà Tân Thủ');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
+    if(action==='growth:weekly'){try{const got=G.engine.claimWeekly(el.dataset.quest);ctx.render();G.showRewards(ctx,got,'Thưởng nhiệm vụ tuần');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
     if(action==='journey:monthly'&&monthlyCard(ctx))return true;
     return handle(action,el,ctx,state);
   };
