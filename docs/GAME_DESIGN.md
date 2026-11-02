@@ -86,7 +86,17 @@ Nguồn **Mảnh Hiro** (không bán bằng tiền), 80 mảnh = 1 bản sao:
 | Boss Vô Hạn | 10 mỗi tầng chia hết cho 10 (lần đầu) | |
 
 6★ cần 19 bản sao = 1.520 mảnh → khoảng 7–9 tháng chơi đều (80 + ~2.200/năm từ nhiệm vụ + rương + tầng).
-**Hình thái Hiro** (Codex đồng ý): hai hình thái mới ở **4★/6★** như mọi tướng (cần vẽ theo `docs/HERO_PIPELINE.md`).
+**Hình thái Hiro** (Codex đồng ý): hai hình thái mới ở **4★/6★** như mọi tướng. **Concept chờ duyệt** [Đêm nay]
+(Codex vẽ, `gpt-6.1-sol` low, từ ảnh Hiro hình thái 1 đã khóa; chưa đưa vào game):
+
+![Hiro hình thái 1 · 2 · 3](assets/heroes/forms/novice/concepts/lineup.webp)
+
+- **Hình thái 2 · Lữ Khách Kiếm Sĩ (4★):** kiếm thép có ngọc lục ở chuôi, áo choàng nửa vai màu rêu, giáp vai thép
+  bên tay kiếm, khăn dài cài khoen đồng, túi bản đồ. Vẫn gam đất — vẫn là cậu lữ khách, chỉ mạnh hơn.
+- **Hình thái 3 · Anh Hùng Diệu Ngọc (6★):** giáp bạch kim viền vàng, ngực khảm vòng ngọc bốn hệ (hồng, lam, lục,
+  tím), khăn thành áo choàng xanh thêu vàng hoa văn dệt ngọc, trường kiếm lưỡi khảm dải ngọc bốn màu.
+- Duyệt xong mới làm theo `docs/HERO_PIPELINE.md` (sheet trận, showcase, rig, tuyệt kỹ, âm thanh). Gợi ý tuyệt kỹ:
+  H2 "Lữ Kiếm Liên Trảm" (2 nhát), H3 "Diệu Ngọc Tứ Hệ Trảm" (4 nhát, mỗi nhát một hệ, nhát cuối khắc hệ đối thủ).
 
 ---
 
