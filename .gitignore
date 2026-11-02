@@ -52,6 +52,8 @@ assets/**/raw-sheet-clean.png
 assets/**/sheet-transparent.png
 assets/heroes/forms/*/form-*/rig/*/overlay.png
 assets/heroes/forms/*/form-*/rig/*/preview.png
+assets/gemwoven/*/*/rig/*/overlay.png
+assets/gemwoven/*/*/rig/*/preview.png
 
 # Build cache (transcoded audio)
 /.build-cache/

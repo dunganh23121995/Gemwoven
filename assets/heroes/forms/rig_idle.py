@@ -33,7 +33,7 @@ import wind_idle  # noqa: E402
 
 MODEL, EFFORT = "gpt-6.1-sol", "low"   # the first rung; climb only when a map fails review
 COLS, ROWS, COUNT = 6, 4, 24
-CELL = {"combat": 512, "show": 640}    # one frame's pixels; 6 x 640 stays inside a 4096 texture
+CELL = {"combat": 512, "show": 640, "foe": 256}    # one frame's pixels; 6 x 640 stays inside a 4096 texture
 ITER = 9                               # fixed-point steps of the warp inversion: the tips of long pieces need them
 HEROES = ("novice", "fire", "ice", "earth", "lightning", "shadow")
 BG, BODY, HEAD, LEGS, WEAPON, BACK, FRONT = range(7)
@@ -49,7 +49,8 @@ STYLE = {
     "lightning": dict(T=1.6, bob=.022, sway=.005, tilt=1.1, grip=1.5, loose=.2, front=.09, lag=.8, lean=1.0, fly=True, dangle=2.2),  # floats: legs dangle
     "shadow": dict(T=1.8, bob=.012, sway=.004, tilt=.9, grip=1.1, loose=.2, front=.09, lag=1.0, open=.04, lean=.8, planted=True, rests=.7),        # alert assassin: a light ready sway, the cloak trails it; form 3 leans on its grounded scythe
 }
-SHARE = {"combat": .7, "show": 1.4}    # like Hiro: a tight guard in combat, a livelier bounce outside it
+SHARE = {"combat": .7, "show": 1.4, "foe": 1}    # like Hiro: a tight guard in combat, a livelier bounce outside it
+FOREIGN = {}                           # sprites that are not heroes: id -> dir, sheet, what, prompt (assets/gemwoven/rig_foes.py)
 
 HINTS = {
     "novice": "RED: the long end of the green scarf, the springy cowlick tuft and any hair strand sticking out. CYAN: the tunic hem, its laces, the belt end, the loose sleeve edges and the scarf knot. YELLOW: the wooden sword only. GREEN: both legs with the boots.",
@@ -72,14 +73,20 @@ Background solid pure BLACK #000000. Flat colours only: no shading, no outlines,
 
 
 def rig_dir(hero, form, ctx):
+    if hero in FOREIGN:
+        return FOREIGN[hero]["dir"] / "rig" / ctx
     return FORMS / hero / f"form-{form}/rig/{ctx}"
 
 
 def source_sheet(hero, form, ctx):
+    if hero in FOREIGN:
+        return FOREIGN[hero]["sheet"]
     return combat_idle.paths(hero, str(form))[2] if ctx == "combat" else FORMS / hero / f"form-{form}/showcase/idle.webp"
 
 
 def what(hero, form, ctx):
+    if hero in FOREIGN:
+        return FOREIGN[hero]["what"]
     if ctx == "combat":
         return wind_idle.what(hero, str(form))
     path = FORMS / hero / f"form-{form}/showcase/prompt-idle.txt"
@@ -107,10 +114,11 @@ def rest_frame(hero, form, ctx):
 def parts(hero, form, ctx, model=MODEL, effort=EFFORT):
     work = rig_dir(hero, form, ctx); work.mkdir(parents=True, exist_ok=True)
     rest = rest_frame(hero, form, ctx); rest.save(work / "rest.png")
-    ground = (205, 205, 205, 255) if hero == "shadow" else (0, 0, 0, 255)   # Noct's black would melt into black
+    grey = np.asarray(rest)[..., :3].mean() < 28 if hero in FOREIGN else hero == "shadow"
+    ground = (205, 205, 205, 255) if grey else (0, 0, 0, 255)   # Noct's black would melt into black
     canvas = Image.new("RGBA", rest.size, ground); canvas.alpha_composite(rest)
     canvas.convert("RGB").resize((1024, 1024), Image.Resampling.LANCZOS).save(work / "parts-ref.png")
-    (work / "parts-prompt.txt").write_text(PARTS.format(what=what(hero, form, ctx), hint=HINTS[hero]) + "\n", encoding="utf-8")
+    (work / "parts-prompt.txt").write_text(FOREIGN.get(hero, {}).get("prompt", PARTS).format(what=what(hero, form, ctx), hint=HINTS.get(hero, "")) + "\n", encoding="utf-8")
     fidget.run(fidget.GEN, "--prompt-file", work / "parts-prompt.txt", "--out", work / "parts-raw.png", "--ref", work / "parts-ref.png",
                "--model", model, "--effort", effort, "--timeout", "900")
 
@@ -501,7 +509,8 @@ class Rig:
         k = sheet[..., 3:]
         rgba = np.concatenate([np.where(k > 1e-4, sheet[..., :3] / np.maximum(k, 1e-4), 0), k], -1)
         img = Image.fromarray((rgba.clip(0, 1) * 255 + .5).astype("uint8"), "RGBA")
-        img.save(work / self.sheet_name, quality=93, alpha_quality=100, method=6)
+        quality, alpha_quality = self.style.get("webp", (93, 100))
+        img.save(work / self.sheet_name, quality=quality, alpha_quality=alpha_quality, method=6)
         strip = Image.new("RGB", (256 * 8, 256), (58, 84, 62))
         for j, i in enumerate(range(0, COUNT, 3)):
             cell = img.crop(((i % COLS) * n, (i // COLS) * n, (i % COLS + 1) * n, (i // COLS + 1) * n)).resize((256, 256), Image.Resampling.LANCZOS)
@@ -510,6 +519,7 @@ class Rig:
         frames_ms = round(self.T * 1000 / COUNT)
         (work / "rig.json").write_text(json.dumps({"cols": COLS, "rows": ROWS, "count": COUNT, "frameDuration": frames_ms, "cell": n}, indent=1) + "\n", encoding="utf-8")
         print(f"{self.hero}-{self.form} {self.ctx}: {(work / self.sheet_name).stat().st_size // 1024} KB, {frames_ms} ms, {len(self.chains)} chains, {len(self.front)} front, edge alpha {edge:.2f}")
+        return edge
 
 
 def ramp(t, a, b):
@@ -521,12 +531,13 @@ class Surge(Rig):
     """Taking a buff, once, from the resting pose back to it: the weight dips, the chest opens and everything loose
     lifts on the rush. No pose changes hands, so the combat part map serves and the idle joins it without a jump.
     The feet stay on the ground, so the body never rises above rest here: combat lifts the whole sprite (combat-v3.js
-    buff). That sequence lasts about .8 of the 1.3 s sheet, so the motion is over by then. Heroes face right in combat."""
+    buff). That sequence lasts about .8 of the 1.3 s sheet, so the motion is over by then. Heroes face right in combat,
+    foes left (style face=-1)."""
     FLARE, LEAN, NOD, DIP = .3, 3.2, 3., .016
     plant_all = True       # the lean is stronger than any idle's: a staff on the ground would stretch with the rows
 
     def __init__(self, hero, form):
-        super().__init__(hero, form, "combat")
+        super().__init__(hero, form, "foe" if hero in FOREIGN else "combat")
         self.out, self.sheet_name, self.T = self.work.parent / "buff", "buff.webp", 1.3
         self.out.mkdir(exist_ok=True)
         for c in self.chains:
@@ -565,16 +576,17 @@ class Surge(Rig):
         fly = s.get("fly")
         carry = 1 if fly else self.carry
         dy = by * carry; dx = self.knee * by * .35 * w[LEGS] * (0 if fly else 1)
-        lean = bone(-math.radians(self.LEAN) * e * leaning, (self.leg_cx, self.hip), self.xx, self.yy)
+        face = s.get("face", 1)
+        lean = bone(-face * math.radians(self.LEAN) * e * leaning, (self.leg_cx, self.hip), self.xx, self.yy)
         dx = dx + lean[0] * carry; dy = dy + lean[1] * carry
         if fly:                  # no ground to hold them: the legs swing out on the rush
             lx, ly = bone(math.radians(s["dangle"]) * 1.6 * float(self.rush(t - .05)), (self.leg_cx, self.hip), self.xx, self.yy)
             dx += w[LEGS] * lx; dy += w[LEGS] * ly
-        hx, hy = bone(-math.radians(self.NOD) * float(self.rush(t - .05)), self.head_pivot, self.xx, self.yy)
+        hx, hy = bone(-face * math.radians(self.NOD) * float(self.rush(t - .05)), self.head_pivot, self.xx, self.yy)
         dx += w[HEAD] * hx; dy += w[HEAD] * hy
         for mask, grip, k in self.grips:
             soft = cv2.GaussianBlur(mask.astype(np.float32), (0, 0), max(1., self.n * .004)) * w[WEAPON]
-            ax, ay = bone(-math.radians(s["grip"]) * 2 * e, grip, self.xx, self.yy)
+            ax, ay = bone(-face * math.radians(s["grip"]) * 2 * e, grip, self.xx, self.yy)
             dx += soft * ax; dy += soft * ay
         for here, reach, amp, shift in self.front:
             late = self.rush(t - .05 * reach)
@@ -586,14 +598,14 @@ class Surge(Rig):
     def chain_field(self, c, t, core):
         n, s = self.n, self.style
         if not c.attached:
-            return np.zeros((n, n), np.float32), np.full((n, n), -n * .02 * float(self.rush(t)), np.float32)
+            return np.zeros((n, n), np.float32), np.full((n, n), -n * 1.25 * self.DIP * float(self.rush(t)), np.float32)
         r = c.reach_full
         E = self.rush(t - .06 * r)
         A = s["loose"] * min(1.5, max(.75, math.sqrt(n * .25 / max(1., c.length))))
         flick = np.sin(2 * np.pi * 3.2 * t - 2.6 * r - c.phase)
         ang = r ** 1.15 * E * (c.lift * self.FLARE * c.give + A * .4 * min(1, c.give) * flick)
         xr0, yr0 = self.xx - c.root[0], self.yy - c.root[1]
-        puff = 1 + .05 * r * E
+        puff = 1 + .05 * r * E * self.FLARE / .3
         xr, yr = xr0 * puff, yr0 * puff
         ca, sa = np.cos(ang), np.sin(ang)
         rx, ry = int(min(n - 1, max(0, c.root[0]))), int(min(n - 1, max(0, c.root[1])))
