@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\thunder-boltgunner\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9952,
+      "error": 0.2089,
+      "moving_share": 0.0257
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2285,
+      "moving_share": 0.0386
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9948,
+      "error": 0.2291,
+      "moving_share": 0.0452
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9948,
+      "error": 0.2266,
+      "moving_share": 0.047
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2234,
+      "moving_share": 0.041
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.201,
+      "moving_share": 0.0244
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1897,
+      "moving_share": 0.0156
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2044,
+      "moving_share": 0.0216
+    }
+  ],
+  "jitter": [
+    12.13,
+    6.3,
+    6.39,
+    11.58,
+    12.12,
+    4.45,
+    3.91,
+    1.79
+  ]
+}

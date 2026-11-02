@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\forest-boarstalker\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1075,
+      "moving_share": 0.0014
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9848,
+      "error": 0.1479,
+      "moving_share": 0.0164
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.1461,
+      "moving_share": 0.0402
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9858,
+      "error": 0.136,
+      "moving_share": 0.0251
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.1277,
+      "moving_share": 0.0135
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1184,
+      "moving_share": 0.0029
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1118,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1017,
+      "moving_share": 0.0023
+    }
+  ],
+  "jitter": [
+    2.07,
+    5.31,
+    4.92,
+    3.28,
+    1.9,
+    0.25,
+    0.18,
+    0.14
+  ]
+}
