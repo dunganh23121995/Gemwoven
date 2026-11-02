@@ -8,9 +8,14 @@ resting frames go to 512px cells, the showcase actions outside combat to 640px.
   python assets/heroes/forms/sharpen_heroes.py list
 
 The old pixels come from the commit below, so a redraw can be repeated. A 2 x 4 showcase sheet is drawn as two 2 x 2
-halves (Codex's tall canvas holds only ~440px cells). After apply: rig_idle.py fit + bake (+ surge for combat) for
+halves (Codex's tall canvas holds only ~440px cells).
+
+Second pass (PAIRED): a whole 3 x 2 sheet on one canvas leaves each frame small, so even redrawn it stayed softer than
+the resting frame (drawn alone, large). These sheets are drawn two frames at a time on Codex's wide canvas (~880px a
+frame), from the live drawings at PAIR_OLD, with the form's crisp resting frame shown for its rendering. After apply: rig_idle.py fit + bake (+ surge for combat) for
 the resting frames, then the builds.
 """
+import json
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -35,6 +40,17 @@ MAX_FOOT = .02         # the soles' shift, as a share of the cell
 GREEN = ((0, 255, 0), "green #00FF00")
 BACKDROP = {"shadow": GREEN, "ice": GREEN, "lightning": GREEN}
 MAGENTA = ((255, 0, 255), "magenta #FF00FF")
+
+
+PAIR_OLD = "609627ff"
+# The sheets a detail-per-body audit (and a look at each) found softer or paler than their form's resting frame
+PAIRED = """novice-attack novice-cast novice-hurt
+fire-attack fire-hurt fire-smash fire-run fire3-skill fire3-attack fire3-run fire3-cast
+ice-attack ice-cast ice-hurt ice2-attack ice2-skill ice2-run ice2-cast ice3-show-fanwave ice3-show-twirl
+earth-attack earth-cast earth-hurt earth-run earth-smash earth2-attack earth2-cast earth2-run earth3-attack earth3-cast earth3-run
+lightning-attack lightning-hover lightning-run lightning-cast lightning2-skill lightning2-hover
+lightning3-attack lightning3-cast lightning3-skill lightning3-ride lightning3-run lightning3-show-orbitspin lightning3-show-wingtwirl
+shadow-attack shadow-cast shadow2-attack shadow2-attackLeft shadow2-run shadow3-hover shadow3-cast""".split()
 
 
 def form1_sheets():
@@ -90,6 +106,18 @@ def jobs():
         out[f"{hero}{form}-show-{sheet.stem}"] = dict(hero=hero, form=form, name=f"show-{sheet.stem}", path=sheet.relative_to(ROOT).as_posix(), cols=2, rows=4, cell=SHOW, split=2)
     for name, style in STYLE.items():
         out[name]["style"] = style
+    for hero in ("fire", "ice", "earth", "lightning", "shadow"):
+        for form, entry in json.loads((FORMS / hero / "forms.json").read_text(encoding="utf-8"))["forms"].items():
+            for a, sh in entry["actions"].items():
+                out.setdefault(f"{hero}{form}-{a}", dict(hero=hero, form=int(form), name=a, path=sh["file"], cols=sh["cols"], rows=sh["rows"], cell=CELL))
+    for sheet in sorted(FORMS.glob("*/form-*/showcase/*.webp")):
+        hero, form = sheet.parents[2].name, int(sheet.parents[1].name.split("-")[1])
+        out.setdefault(f"{hero}{form}-show-{sheet.stem}", dict(hero=hero, form=form, name=f"show-{sheet.stem}", path=sheet.relative_to(ROOT).as_posix(), cols=2, rows=4, cell=SHOW))
+    for name in PAIRED:
+        job = out[name]
+        job.update(pair=True, old=PAIR_OLD, cell=SHOW if job["name"].startswith("show-") else CELL,
+                   style=(f"assets/heroes/forms/{job['hero']}/form-{job['form']}/rig/combat/rest.png", 1, 1, 0))
+        job.pop("split", None); job.pop("keep", None)
     for name in KEEP_SHEETS:
         out.pop(name, None)
     for name, keep in KEEP_FRAMES.items():
@@ -127,12 +155,16 @@ Image 1 is drawn pale, with thin light outlines and loose pink specks around it.
 {rules(job)}
 The entire character stays inside the canvas with a margin of background."""
     n = job["cols"] * rows
+    if job.get("pair"):
+        return f"""Image 1 shows {n} animation frame{'s' if n > 1 else ''} of a chibi game character side by side ({n} equal square cells in one row), drawn small and soft. Redraw EXACTLY the same frames at full resolution on a wide landscape canvas, {n} equal square cells in one row: in every cell the same pose, the same limb and weapon angles, the same size and the same position inside the cell as Image 1, any drawn effect where it is. No borders between cells. Nothing crosses a cell edge.
+Image 2 is the same character drawn crisply in its resting pose: render the frames the way Image 2 is rendered (its clean dark outlines, solid saturated colours, crisp metal, fur and hair), with no loose specks or dust floating around. Take only the rendering from Image 2, never its pose.
+{rules(job)}"""
     return f"""Image 1 is a {job['cols']} by {rows} animation sheet of a chibi game character ({n} equal cells, read left to right, top to bottom) that was upscaled from small frames and looks blurry. Redraw EXACTLY the same sheet at full resolution with exactly {n} equal cells: in every cell the same pose, the same limb and weapon angles, the same size and the same position inside the cell as Image 1. Same camera distance in all cells. No borders between cells. Nothing crosses a cell edge.
 {rules(job)}"""
 
 
 def old_image(job):
-    data = subprocess.run(["git", "show", f"{OLD}:{job['path']}"], cwd=ROOT, capture_output=True, check=True).stdout
+    data = subprocess.run(["git", "show", f"{job.get('old', OLD)}:{job['path']}"], cwd=ROOT, capture_output=True, check=True).stdout
     return Image.open(BytesIO(data)).convert("RGBA")
 
 
@@ -227,13 +259,25 @@ def check(new, old, job):
 
 
 def parts(job):
-    """A tall showcase sheet is drawn in halves of `split` rows: (sub-job, the old half)."""
+    """(sub-job, its old pixels, tag, the sheet's frame indices it holds). A tall showcase sheet is drawn in halves of
+    `split` rows; a paired sheet two frames at a time, side by side."""
     old = old_image(job)
+    count = job["cols"] * job["rows"]
+    if job.get("pair"):
+        n, olds, out = job["cell"], frames(old, job), []
+        for k in range(0, count, 2):
+            idx = list(range(k, min(k + 2, count)))
+            strip = Image.new("RGBA", (n * len(idx), n))
+            for j, i in enumerate(idx):
+                strip.alpha_composite(olds[i].resize((n, n), Image.Resampling.LANCZOS), (j * n, 0))
+            out.append(({**job, "cols": len(idx), "rows": 1}, strip, f"-p{k // 2}", idx))
+        return out
     split = job.get("split")
     if not split:
-        return [(job, old, "")]
+        return [(job, old, "", list(range(count)))]
     h = old.height // job["rows"]
-    return [({**job, "rows": split}, old.crop((0, k * h, old.width, (k + split) * h)), f"-{k // split}") for k in range(0, job["rows"], split)]
+    return [({**job, "rows": split}, old.crop((0, k * h, old.width, (k + split) * h)), f"-{k // split}",
+             list(range(k * job["cols"], (k + split) * job["cols"]))) for k in range(0, job["rows"], split)]
 
 
 def work_dir(job):
@@ -277,11 +321,14 @@ def draw_part(name, job, old, tag):
 
 
 def save(name, job, results, how):
-    new = Image.new("RGBA", (job["cell"] * job["cols"], job["cell"] * job["rows"]))
-    y = 0
-    for part in results:
-        new.alpha_composite(part, (0, y)); y += part.height
-    old, n = old_image(job), job["cell"]
+    """results: (the part's fitted frames as one image, the sheet frame indices they fill)."""
+    n = job["cell"]
+    new = Image.new("RGBA", (n * job["cols"], n * job["rows"]))
+    for part, idx in results:
+        w = part.width // n
+        for j, i in enumerate(idx):
+            new.alpha_composite(part.crop(((j % w) * n, (j // w) * n, (j % w + 1) * n, (j // w + 1) * n)), ((i % job["cols"]) * n, (i // job["cols"]) * n))
+    old = old_image(job)
     for i in job.get("keep", []):
         x, y = (i % job["cols"]) * n, (i // job["cols"]) * n
         new.paste(frames(old, job)[i].resize((n, n), Image.Resampling.LANCZOS), (x, y))
@@ -292,19 +339,19 @@ def save(name, job, results, how):
 
 def draw(name, job):
     results, how = [], []
-    for sub, old, tag in parts(job):
+    for sub, old, tag, idx in parts(job):
         best = draw_part(name, sub, old, tag)
         if best is None:
             return
-        results.append(best[3]); how.append(best[2])
+        results.append((best[3], idx)); how.append(best[2])
     save(name, job, results, "/".join(how))
 
 
 def refit(name, job):
     results, scales = [], []
-    for sub, old, tag in parts(job):
+    for sub, old, tag, idx in parts(job):
         new, scale = fit_raw(Image.open(work_dir(job) / f"{job['name']}-raw{tag}.png"), old, sub)
-        results.append(new); scales.append(f"{scale:.3f}")
+        results.append((new, idx)); scales.append(f"{scale:.3f}")
     save(name, job, results, "scale " + "/".join(scales))
 
 
