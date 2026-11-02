@@ -66,18 +66,25 @@ body.reduced-motion .ultimate-aura{display:none}
 .combat-pop.tone-control{--pop-fill:#d9fbff;--pop-glow:#5fe2ff}
 .combat-pop.tone-advantage{--pop-fill:#ffe9a6;--pop-glow:#ffb43c}
 @media(max-width:520px){.combat-pop strong{font-size:23px}.combat-pop.is-crit strong{font-size:32px}.combat-pop .crit-burst{width:128px}.combat-pop .crit-ribbon{width:96px}.combat-pop.is-ultimate strong{font-size:16px}.combat-pop.is-status strong,.combat-pop.is-callout strong{font-size:13px}}
-/* Skill names (combatSkillTitle): gold letters, outlined dark and glowing in the caster's colour; once the name has
-   risen over the head a light sweeps across it. */
-.skill-title{position:absolute;z-index:12;pointer-events:none;--title-size:20px}
-.skill-title :is(strong,b){position:absolute;left:0;right:0;top:50%;translate:0 -50%;text-align:center;white-space:nowrap;font:italic 800 var(--title-size)/1.2 Cambria,Georgia,serif;letter-spacing:.6px;color:transparent;-webkit-background-clip:text;background-clip:text}
-.skill-title strong{background-image:linear-gradient(180deg,#fffdf2 0%,#ffefb8 34%,#f6c763 58%,#e9a93a 74%,#fff0c2 100%);filter:drop-shadow(0 1px 0 #2a1406) drop-shadow(0 -1px 0 #2a1406) drop-shadow(1px 0 0 #2a1406) drop-shadow(-1px 0 0 #2a1406) drop-shadow(0 0 5px var(--skill-color)) drop-shadow(0 2px 3px #000b)}
-.skill-title b{background-image:linear-gradient(105deg,transparent 42%,#fffef6 50%,transparent 58%);background-size:300% 100%;background-repeat:no-repeat;mix-blend-mode:screen;animation:skill-title-shine 1.9s ease-in-out both}
-@keyframes skill-title-shine{0%,30%{background-position:100% 0}62%,100%{background-position:0% 0}}
-@media(max-width:520px){.skill-title{--title-size:19px}}
+/* Skill names (combatSkillTitle), set like action gacha ultimate titles: condensed capitals ('Gemwoven Title', Anton,
+   embedded by build.py) in chrome gold split at the middle, a dark edge, a blurred halo in the caster's colour; a flash
+   bursts behind the name as it stamps down, then a light sweeps across it. */
+.skill-title{position:absolute;z-index:12;pointer-events:none;--title-size:30px;display:flex;align-items:center;justify-content:center}
+.skill-title-text{position:relative;display:block;white-space:nowrap;font:400 var(--title-size)/1.15 'Gemwoven Title',Impact,'Arial Narrow',sans-serif;letter-spacing:1.5px;text-transform:uppercase}
+.skill-title-text>*{display:block;font:inherit;letter-spacing:inherit;padding:.32em .1em .08em}/* room for Vietnamese marks over capitals: the gold must reach them */
+.skill-title-text>:not(strong){position:absolute;inset:0}
+.skill-title .glow{color:transparent;-webkit-text-stroke:9px var(--skill-color);filter:blur(3px);opacity:.9}
+.skill-title .edge{color:#1d0b03;-webkit-text-stroke:4px #1d0b03;filter:drop-shadow(0 4px 2px #000c)}
+.skill-title strong{position:relative;font-weight:400;color:transparent;background:linear-gradient(180deg,#fff 0%,#fffbe6 24%,#fff6d0 40%,#ffe08a 59%,#d98b22 61%,#f7b443 80%,#fff1b8 100%);-webkit-background-clip:text;background-clip:text}
+.skill-title .shine{color:transparent;background:linear-gradient(105deg,transparent 40%,#fffef6 50%,transparent 60%) 100% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text;mix-blend-mode:screen;animation:skill-title-shine 1.9s ease-in-out both}
+.skill-title-flash{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:3;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,#fffbe8,color-mix(in srgb,var(--skill-color) 70%,#fff) 30%,color-mix(in srgb,var(--skill-color) 35%,transparent) 55%,transparent);mix-blend-mode:screen;opacity:0;animation:skill-title-flash 1.9s ease-out both}
+@keyframes skill-title-shine{0%,36%{background-position:100% 0}64%,100%{background-position:0% 0}}
+@keyframes skill-title-flash{0%,26%{opacity:0;scale:.3 .5}28%{opacity:.95;scale:.7 .8}46%,100%{opacity:0;scale:1.3 1.1}}
+@media(max-width:520px){.skill-title{--title-size:28px}}
 
 /* Studio test (gameQA.setHeroSide): the stage mirrored, the hero on the right facing left; every text
    and bar is mirrored back so it reads normally. */
 html[data-hero-side="right"] #scene{scale:-1 1}
-html[data-hero-side="right"] #scene :is(.actor-hud,.combat-pop-body,.skill-title :is(strong,b),.combat-v3-hit-count,.arena-stage){scale:-1 1}
+html[data-hero-side="right"] #scene :is(.actor-hud,.combat-pop-body,.skill-title-text,.combat-v3-hit-count,.arena-stage){scale:-1 1}
 /* The HUD is flipped about its untranslated box, so its centring shift runs the other way. */
 html[data-hero-side="right"] #scene .actor-hud{transform:translate(50%,-100%)}

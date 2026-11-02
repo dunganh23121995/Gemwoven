@@ -504,6 +504,8 @@ hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan',
 extensions += '\n'+'\n'.join((root/f'src/{name}.js').read_text(encoding='utf-8') for name in hero_kit_files)
 css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for name in hero_kit_files)
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
+# Skill titles' face (Anton, OFL, subset to Latin and Vietnamese: assets/fonts/anton-vi.woff2)
+css = "@font-face{font-family:'Gemwoven Title';src:url(data:font/woff2;base64,"+base64.b64encode((root/'assets/fonts/anton-vi.woff2').read_bytes()).decode()+") format('woff2');font-display:block}\n"+css
 html = html.replace('/* GAME_CSS */', css).replace('/* GAME_JS */', js)
 # Written whole and swapped in, so a page loading while another build runs never reads half a file.
 (root / 'Game.html.tmp').write_text(html, encoding='utf-8'); os.replace(root / 'Game.html.tmp', root / 'Game.html')

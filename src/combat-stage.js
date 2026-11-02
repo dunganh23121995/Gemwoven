@@ -257,8 +257,11 @@ function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
   const pop=combatPopup(side,title,{kind:'callout',tone:combatPopupTone(title),beat:540,pending});
   return pop.ready;
 }
-// A skill's name shoots up from the caster's body past its head, drops back and settles over its head bar, where a
-// light sweeps across its gold letters; then it drifts up and fades. It never sits on the body or over the effects.
+// A skill's name, set like the ultimate titles of action gacha games (condensed capitals, chrome gold, a dark edge and
+// a glow in the caster's colour), shoots up from the caster's body past its head, rears up big and stamps down over
+// its head bar with a flash; a light sweeps across it, then it drifts up and fades. It never sits on the body.
+// The title face is decoded up front so the first title is measured and drawn in it.
+document.fonts?.load("30px 'Gemwoven Title'",'CỬU THIÊN').catch(()=>{});
 function combatSkillTitle(side,title,pending){
   const ready=wait(850);if(pending)pending.push(ready);
   const root=$('combatEffects'),scene=$('scene');
@@ -266,11 +269,11 @@ function combatSkillTitle(side,title,pending){
   root.querySelector(`.skill-title[data-side="${side}"]`)?.remove();
   const node=document.createElement('span');node.className='skill-title';node.dataset.side=side;node.setAttribute('aria-hidden','true');
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
-  node.innerHTML='<strong></strong><b></b>';
-  node.querySelector('strong').textContent=node.querySelector('b').textContent=title;
+  node.innerHTML='<i class="skill-title-flash"></i><span class="skill-title-text"><b class="glow"></b><b class="edge"></b><strong></strong><b class="shine"></b></span>';
+  for(const layer of node.querySelectorAll('.skill-title-text>*'))layer.textContent=title;
   root.append(node);
   // A long name is set smaller to stay on the stage.
-  const W=scene.clientWidth,width=Math.min(340,W*.92),height=34,text=node.querySelector('strong');
+  const W=scene.clientWidth,width=Math.min(340,W*.92),height=40,text=node.querySelector('strong');
   node.style.width=width+'px';node.style.height=height+'px';
   const range=document.createRange();range.selectNodeContents(text);
   const room=width*.96,wide=range.getBoundingClientRect().width;
@@ -283,11 +286,13 @@ function combatSkillTitle(side,title,pending){
   node.style.left=Math.max(width/2+2,Math.min(W-width/2-2,cx))+'px';node.style.top=top+'px';
   const from=b?Math.max(40,b.top+b.height*.55-s.top-top-height/2):80;
   animate(node,[
-    {opacity:0,translate:`-50% ${from}px`,scale:'.6',filter:'blur(2px)',easing:'cubic-bezier(.2,.7,.35,1)'},
+    {opacity:0,translate:`-50% ${from}px`,scale:'.5',filter:'blur(2px)',easing:'cubic-bezier(.2,.7,.35,1)'},
     {opacity:1,offset:.05},
-    {translate:'-50% -16px',scale:'1.06',filter:'blur(0px)',offset:.15,easing:'cubic-bezier(.4,0,.3,1)'},
-    {translate:'-50% 2px',scale:'.98',offset:.23,easing:'ease-out'},
-    {translate:'-50% 0px',scale:'1',offset:.29},
+    {translate:'-50% -24px',scale:'.82',filter:'blur(0px)',offset:.15,easing:'ease-out'},// past the head
+    {translate:'-50% -10px',scale:'1.6',opacity:.9,offset:.22,easing:'cubic-bezier(.6,0,.9,.4)'},// rears up
+    {translate:'-50% 0px',scale:'.92',opacity:1,offset:.27,easing:'ease-out'},// stamps down
+    {translate:'-50% 0px',scale:'1.04',offset:.31,easing:'ease-in-out'},
+    {translate:'-50% 0px',scale:'1',offset:.35},
     {opacity:1,translate:'-50% -3px',offset:.84},
     {opacity:0,translate:'-50% -14px',scale:'1'}
   ],{duration:1900,fill:'both'}).finally(()=>node.remove());
