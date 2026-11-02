@@ -1,0 +1,8 @@
+Image 1 is a fantasy game towering boss monster on a plain background. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: the whole face, eyes, mouth, jaw, horns, helmet, hood, the main hair or mane mass. The face is never any other colour. A creature with no separate head has its face area blue.
+- pure WHITE #FFFFFF: the body: torso, chest, armour, shoulders, arms, hands, claws on arms, the main mass of a blob or a shell.
+- pure GREEN #00FF00: legs and feet that stand on the ground, with boots and paws.
+- pure YELLOW #FFFF00: anything held or carried rigid: weapon, staff, shield, lantern, without the hand.
+- pure RED #FF0000: long loose pieces that stick out of the body and move freely: wings, tails, tentacles, long fins, capes, cloak tails, long hair, ribbons, vines, chains.
+- pure CYAN #00FFFF: small loose pieces lying on the body: tassels, short cloth, fur tufts, leaves, small fins, ear tips.
+Use only the colours that fit this subject. Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.
