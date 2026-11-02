@@ -2931,7 +2931,10 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
       rows.push({id:'skill-'+i,name:branch,current:open?`Cấp ${rank} / ${SKILL_MAX}`:'Chưa mở',next:!open?skillGateText(i):c?`Cấp ${rank+1}`:'Đã tối đa',opens:skillText(key,h,i).name,
         state:!open?'locked':!c?'max':pay(c)?'ready':'short',route:'skills',skill:i});});
     const worn=Object.keys(h.gear).length;
-    rows.push({id:'gear',name:'Trang bị',current:`${worn} / 6 ô`,next:worn<6?'Mặc đủ 6 ô':'Cường hóa đến +20',opens:'Chỉ số; không đổi hình thái hay kỹ năng',state:worn<6&&p.equipment.some(g=>!Object.values(p.heroes).some(o=>Object.values(o.gear).includes(g.id))&&!h.gear[g.slot])?'ready':'short',route:'upgrade'});
+    const spare=p.equipment.some(g=>!h.gear[g.slot]&&!Object.values(p.heroes).some(o=>Object.values(o.gear).includes(g.id)));
+    const worn6=Object.values(h.gear).map(id=>p.equipment.find(g=>g.id===id)).filter(Boolean),below=worn6.filter(g=>g.level<20);
+    rows.push({id:'gear',name:'Trang bị',current:`${worn} / 6 ô`+(worn?` · thấp nhất +${Math.min(...worn6.map(g=>g.level))}`:''),next:worn<6?'Mặc đủ 6 ô':below.length?'Cường hóa đến +20':'Đã +20 cả 6 món',opens:'Chỉ số; không đổi hình thái hay kỹ năng',
+      state:worn<6?(spare||below.some(g=>pay(strengthenCost(g)))?'ready':'short'):!below.length?'max':below.some(g=>pay(strengthenCost(g)))?'ready':'short',route:'upgrade'});
     const r=h.relic,cap=r.evolution*20;
     rows.push({id:'relic',name:'Bảo bối',current:`${RELICS[key]} · cấp ${r.level} · dạng ${r.evolution}/5`,next:r.level<cap?`Cấp ${r.level+1}`:r.evolution<5?`Dạng ${r.evolution+1} (tướng cấp ${r.evolution*50})`:'Đã tối đa',opens:'+0,25% HP/Công mỗi cấp',
       state:r.level>=100&&r.evolution>=5?'max':r.level<cap?(pay(relicLevelCost(r))?'ready':'short'):h.level<r.evolution*50?'locked':pay(relicEvolveCost(r))?'ready':'short',route:'upgrade'});

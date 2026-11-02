@@ -121,7 +121,7 @@
     const star=M.SUMMON_BANNER.hero,name=M.HEROES[star].name;
     // Only the banner's prizes: its hero, that hero's fragments, and a top-rarity weapon.
     [['hero',`portrait-${star}`,'Tướng\n'+name,'hero:'+star,{}],['fragment',`fragment-${star}`,'Mảnh\n'+name,'art:fragments',{}],['weapon',M.SLOT_ART.weapon,'Vũ Khí\n'+M.RARITIES.divine.name,'journey:featured-gear',{slot:'weapon',rarity:'divine',asset:M.SLOT_ART.weapon}]].forEach(([id,asset,text,act,data],i)=>nodes.push(button('summon','featured-'+id,text,[80+i*272,1233,256,98],act,data,{asset:'inventory-slot',icon:asset,iconRect:[13,12,70,72],labelRect:[100,0,156,96],size:30,tone:'gold',align:'left',className:'featured-equipment'})));
-    label(nodes,'pity-label',`Còn ${300-p.summon.dry} lần tới bảo đảm tướng hiếm`);label(nodes,'pity-value',`${p.summon.dry} / 300`);find(nodes,'pity-meter').value=p.summon.dry/300;
+    label(nodes,'pity-label',`Còn ${Math.max(1,M.SUMMON_PITY-p.summon.dry)} lần tới bảo đảm tướng hiếm`);label(nodes,'pity-value',`${p.summon.dry} / ${M.SUMMON_PITY}`);find(nodes,'pity-meter').value=Math.min(1,p.summon.dry/M.SUMMON_PITY);
     nodes.push(button('summon','ticket-balance',`${fmt(p.wallet.tickets)} Vé Triệu Hồi`,[290,1121,361,60],'item:ticket',{},
       {asset:'nameplate',icon:'ticket',iconRect:[22,7,52,46],labelRect:[74,6,266,48],size:28,tone:'ink'}));
     return nodes;

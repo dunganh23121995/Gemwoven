@@ -28,8 +28,9 @@ Ký hiệu: **[Có]** đã chạy · **[Đêm nay]** thêm ở đợt 03/11 · *
 5. **Máy chủ quyết định mọi thứ có giá trị**: số dư, RNG, bàn ngọc, kết quả trận (kể cả PvE), phần thưởng,
    thứ hạng. Client chỉ hiển thị và gửi ý định.
 6. **Đá Ngọc chỉ đến từ giao dịch nạp đã xác thực.** Thẻ tháng, quỹ trưởng thành giao Đá Ngọc theo ngày/mốc
-   là *giao hàng của giao dịch* (sổ cái máy chủ). Không bao giờ từ ải, nhiệm vụ, offline, triệu hồi,
-   sự kiện, đấu trường, sổ hành trình hay hộp thư. (Vé triệu hồi thì được thưởng từ gameplay.)
+   là *giao hàng của giao dịch* (sổ cái máy chủ, gắn mã giao dịch). Không bao giờ từ ải, nhiệm vụ, offline, triệu hồi,
+   sự kiện, đấu trường, sổ hành trình hay **thư quà của admin**. Phần thẻ tháng chưa nhận có thể hiện trong Hòm Thư
+   ở mục *Giao dịch* (thư hệ thống do máy chủ thanh toán tạo, không phải quà admin). Vé triệu hồi thì được thưởng từ gameplay.
 7. Tính năng chưa phát hành ghi rõ **Sắp ra mắt**. Không giả người chơi, không giả BXH.
 
 ---
@@ -158,6 +159,10 @@ Vật của tài khoản, gắn vào tướng (2 ô, ô 2 mở ở TH3), chuyể
 khoảng 12–16 tuần; nạp chỉ nhanh hơn. Thưởng đua top/mùa là **trang trí**, không phải báu vật mạnh
 (tránh vòng "thắng → mạnh hơn → thắng tiếp").
 
+**Ngân sách PvE (mục tiêu kiểm bằng dữ liệu khi có máy chủ):** mỗi kỳ sự kiện 2 tuần cho ~600 Điểm Báu Vật từ boss
+sự kiện + nhiệm vụ (không nạp). Đổi: Tím 300 · Cam 900 (≈ 3 kỳ) · mảnh Đỏ 150/mảnh, 10 mảnh (≈ 6 kỳ = 12 tuần) · mảnh Thần
+200/mảnh, 12 mảnh (≈ 8 kỳ = 16 tuần). Tích nạp cho thêm điểm và mảnh, không cho vật phẩm khác loại.
+
 Ba họ hiệu ứng (`liveops.js`):
 1. **Phá Sơn** — tuyệt kỹ thêm % HP tối đa của mục tiêu, **tối đa 8× Công**, chỉ PvE.
 2. **Mượn Hồn** — mang tối đa 50% hiệu lực một **bị động** của tướng khác; không mượn tuyệt kỹ.
@@ -185,23 +190,26 @@ chiêu boss. Là bản giản lược (không có hộ vệ, pha boss muộn) n�
 
 | Boss | Cấp | Hiro trần | Hiro 1★ có đồ | Hiro 2★ có đồ | Mika trần | Mika 1★ có đồ | Mika 4★ |
 |---|---|---|---|---|---|---|---|
-| Chương 2 (ải 100, gợi ý 50) | 50 | 1% | 38% | 53% | 57% | 96% | 100% |
-| | 75 | 25% | 97% | 100% | 92% | 100% | 100% |
-| | 100 | 64% | 100% | 100% | 99% | 100% | 100% |
-| Chương 5 (ải 250, gợi ý 125) | 125 | 0% | 10% | 43% | 2% | 80% | 100% |
-| | 188 | 0% | 91% | 99% | 35% | 100% | 100% |
-| | 250 | 10% | 100% | 100% | 82% | 100% | 100% |
+| Chương 2 (ải 100, gợi ý 50) | 50 | 6% | 54% | 70% | 57% | 96% | 100% |
+| | 75 | 36% | 100% | 100% | 92% | 100% | 100% |
+| | 100 | 75% | 100% | 100% | 99% | 100% | 100% |
+| Chương 5 (ải 250, gợi ý 125) | 125 | 0% | 16% | 81% | 2% | 80% | 100% |
+| | 188 | 1% | 92% | 100% | 35% | 100% | 100% |
+| | 250 | 17% | 100% | 100% | 82% | 100% | 100% |
 
-Số lượt trung bình khi thắng: Hiro 40–50, Mika 1★ 15–25, Mika 4★ 9–18.
+Số liệu sau khi áp tuyệt kỹ Hiro 70 và kiếm ×1,2, 200 trận mỗi ô, không giới hạn lượt (vòng 2: Codex phát hiện bản đầu
+xử thua ở lượt 60 trong khi combat thật không có luật đó). Số lượt khi thắng: Hiro 1★ 26–53, Mika 1★ 11–25, Mika 4★ 8–18.
 
 **Kết luận:**
-1. "Hiro cấp 100 khó qua boss chương 2" là **do chỉ lên cấp**: trang bị + kỹ năng quan trọng gần ngang cấp,
-   và trước đây không có gì dẫn người chơi tới đó. → Bảng **Lộ trình** và **Chi tiết lực chiến** [Đêm nay].
-2. Có đồ, Hiro ở cấp gợi ý thắng boss ~40–55% — đúng mục tiêu. Hiro 2★ (nhờ mảnh) cải thiện rõ.
+1. "Hiro cấp 100 khó qua boss chương 2" là **do chỉ lên cấp**: Hiro trần cấp 50 thắng 6%, cấp 100 vẫn chỉ 75% và mất
+   hơn 40 lượt. Trang bị + kỹ năng quan trọng gần ngang cấp, và trước đây không có gì dẫn người chơi tới đó →
+   **Lộ trình** và **Chi tiết lực chiến** [Đêm nay].
+2. Có đồ, Hiro 1★ ở cấp gợi ý thắng boss chương 2 ~54% — đúng mục tiêu ~50%. Chương 5 tụt còn 16%: boss mạnh thêm
+   6%/chương, nên người chơi miễn phí cần **2★ (81%)** hoặc vượt cấp gợi ý ~1,5× — Mảnh Hiro được thiết kế cho đúng chỗ này.
 3. Tướng hiếm 1★ có đồ ~80–96% ở cấp gợi ý: **kỹ năng đặc biệt tăng xác suất qua ải**, đúng định hướng.
-4. Trận Hiro dài (40–50 lượt). **Đã áp [Đêm nay]: thiên phú kiếm lữ khách ×1,2** sau khi mô phỏng: boss chương 2
-   ở cấp gợi ý Hiro 1★ có đồ 38% → 46%, Hiro 2★ 53% → 67%; ải thường bớt ~3 lượt. PvP cục bộ/chuẩn hóa giữ ×1 để
-   hai bên bằng nhau. Chưa hạ HP boss (Codex: chỉ hạ tối đa 10% nếu vẫn hụt mục tiêu).
+4. **Đã áp [Đêm nay]:** tuyệt kỹ Hiro 70 và **kiếm lữ khách ×1,2** (ngoài PvP chuẩn hóa). Chưa hạ HP boss (Codex: chỉ
+   hạ tối đa 10% nếu vẫn hụt mục tiêu). Codex chưa đồng ý *chốt* cân bằng cho tới khi mô phỏng được đối chiếu với combat
+   thật (hộ vệ, pha boss muộn, ngọc đặc biệt) — đó là việc kế tiếp số 1.
 
 ### 5.3 Mục tiêu cân bằng
 | Trận | Ở cấp gợi ý, có đồ | Thắng |
@@ -307,11 +315,15 @@ Số lượt trung bình khi thắng: Hiro 40–50, Mika 1★ 15–25, Mika 4★
 | Chu kỳ | Reset (GMT+7) | Nội dung |
 |---|---|---|
 | Ngày | 00:00 | Nhiệm vụ ngày, Sân Thử Luyện (2 lượt có thưởng), quà VIP/thẻ |
-| Tuần | Thứ Hai 00:00 | Nhiệm vụ tuần (~40 Mảnh Hiro), thưởng hạng Đấu Trường, cửa hàng tuần, cuối tuần ×2 (vàng ải / nguyên liệu boss — **không** ×2 điểm xếp hạng) |
+| Tuần | Thứ Hai 00:00 | **Nhiệm vụ tuần** [Đêm nay] (3 vé + vàng/EXP/tinh hoa/bí kíp), thưởng hạng Đấu Trường, cửa hàng tuần, cuối tuần ×2 (vàng ải / nguyên liệu boss — **không** ×2 điểm xếp hạng) |
 | 2 tuần | Thứ Hai tuần lẻ | Banner tướng + vũ khí, boss sự kiện theo tướng, cửa hàng đổi mảnh (≤ 30/kỳ), báu vật chủ đề |
 | Mùa 28 ngày | Thứ Hai đầu mùa | Sổ Hành Trình, mùa Đấu Hạng (reset mềm), lịch đăng nhập 28 ngày, BXH boss |
 | Quý | Tuần đầu quý | Thư Hùng Đại Hội, trang phục mới, kỷ niệm |
 
+- **Ngày neo:** kỳ 2 tuần và mùa 28 ngày tính từ **Thứ Hai 02/11/2026 00:00 GMT+7** (kỳ 0 / mùa 0), máy chủ giữ lịch.
+- **Ngân sách miễn phí mỗi 28 ngày:** vé = 28 (Ghé thăm) + 12 (nhiệm vụ tuần) + 10 (sổ miễn phí, khi có) + mốc cấp
+  tướng ≈ **50**; tuần đầu thêm 9 từ Tân Thủ. Mảnh Hiro = ~168 (nhiệm vụ vượt ải ngày) + rương sao/tầng boss theo tiến độ.
+  6★ Hiro chỉ bằng nhiệm vụ ngày cần ~240 ngày; rương và tầng boss rút ngắn còn khoảng 6–8 tháng với người chơi đều.
 - **Vòng lấy mảnh tướng cũ:** chạy lại banner (≥ 6 tuần), Cửa hàng Ký Ức (tuần), rương chọn mảnh ở lịch 28 ngày.
 - **Giảm nghĩa vụ đăng nhập** (Codex): nhận bù ngày lỡ ở Tân Thủ; thẻ tháng tự gửi thư; Sân Thử Luyện chỉ 2 lượt
   có thưởng.
@@ -479,3 +491,18 @@ nguồn `raw/`, `sources/`):
 
 Điểm Claude không theo Codex: Codex đề xuất "diện mạo cũ nhưng sức mạnh bộ kỹ năng cao nhất" — Claude giữ đúng tinh
 thần đó nhưng chỉ cho đổi diện mạo **ngoài trận**, vì trong trận hoạt cảnh tuyệt kỹ thuộc về từng hình thái.
+
+### Vòng 2 (Codex soát code + tài liệu bản 2)
+
+| Codex nêu | Xử lý |
+|---|---|
+| Màn triệu hồi vẫn ghi bảo đảm 300 | Sửa, đọc `SUMMON_PITY` |
+| Lộ trình: đủ 6 món thì hàng Trang bị luôn "thiếu" | Xét cường hóa: còn món < +20 trả được phí → "làm được ngay"; cả 6 món +20 → "tối đa"; có test |
+| "Đi tới" để bảng trang bị che tab đích | Đóng bảng trang bị khi đi tới |
+| Mô phỏng xử thua ở lượt 60 | Bỏ; combat không có giới hạn lượt; số liệu 5.2 đo lại |
+| Gói tải lẫn ảnh nguồn, prompt | Bộ quét bỏ trường source/prompt/raw và file raw-, prompt, .txt |
+| Ngân sách vé/mảnh chưa khép | Ghi rõ ở mục 11 (≈ 50 vé/28 ngày; Mảnh Hiro theo nguồn) |
+| Hòm Thư vs Đá Ngọc thẻ tháng mâu thuẫn | Phân biệt thư giao dịch (máy chủ thanh toán) với thư quà admin (0.6) |
+| Thiếu ngày neo, bảng thu–chi báu vật | Ngày neo 02/11/2026; bảng điểm báu vật PvE (mục 4) |
+| Chưa đồng ý chốt cân bằng | Giữ trạng thái "đo, chưa chốt"; việc kế tiếp số 1: đối chiếu mô phỏng với combat thật |
+| Việc tiếp theo nên làm | 1) đối chiếu mô phỏng; 2) khép ngân sách 28/90 ngày; 3) Sân Thử Luyện |

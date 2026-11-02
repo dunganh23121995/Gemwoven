@@ -44,7 +44,7 @@
   function wire(modal,ctx,state,key){
     modal.body.addEventListener('click',e=>{
       const b=e.target.closest('[data-go]');if(!b)return;const row=M.growthMap(G.engine.read(),key).find(r=>r.id===b.dataset.go);if(!row)return;
-      modal.close();state.hero=key;
+      modal.close();state.hero=key;state.outfitSlot=null; // an open gear panel would cover the destination tab
       if(row.route==='forms'){G.handle('forms:gallery',{dataset:{hero:key}},ctx,state);return;}
       if(row.tab)state.upgradeTab=row.tab;if(row.skill!=null){state.skill=row.skill;state.skillFilter=String(row.skill);}
       ctx.navigate(row.route);

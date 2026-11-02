@@ -14,7 +14,9 @@ for(const rel of ['Game.html','Gemwoven.html',...fs.readdirSync(path.join(ROOT,'
   const text=fs.readFileSync(path.join(ROOT,rel),'utf8');for(const m of text.matchAll(FILE))files.add(m[0]);
 }
 const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/gemwoven/manifest.json'),'utf8'));
-const walk=v=>{if(typeof v==='string'&&v.startsWith('assets/'))files.add(v);else if(v&&typeof v==='object')for(const x of Object.values(v))walk(x);};walk(manifest);
+// Only fields the game loads: source art and prompts (source, sources, prompt*, raw*) never ship.
+const SKIP=/^(source|sources|prompt|prompts|promptFile|promptFiles|raw|rawSheet|reference|references)$/;
+const walk=v=>{if(typeof v==='string'){for(const m of v.matchAll(FILE))files.add(m[0]);}else if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')for(const [k,x] of Object.entries(v))if(!SKIP.test(k))walk(x);};walk(manifest);
 // Who owns a path. Bosses share ids with elements (fire, ice...), so the folder before the id decides.
 const chapterOf={},bossChapter={};for(const c of W.CHAPTERS){chapterOf[c.id]=c.index;bossChapter[c.boss]=c.index;for(const id of [...c.ordinary,...c.elites])chapterOf[id]??=c.index;}
 const HEROES=['novice','fire','ice','earth','lightning','shadow'];
@@ -36,7 +38,7 @@ function packOf(file){
 }
 const packs={};let missing=0;
 for(const file of [...files].sort()){
-  if(/\/(raw|sources?)\//.test(file))continue; // reproducibility sources, never shipped
+  if(/\/(raw|sources?)\/|\/raw-[^/]*$|prompt[^/]*$|\.txt$/.test(file))continue; // reproducibility sources, never shipped
   const abs=path.join(ROOT,file);if(!fs.existsSync(abs)){missing++;continue;}
   const id=packOf(file),pack=packs[id]??={id,files:[],bytes:0};pack.files.push(file);pack.bytes+=fs.statSync(abs).size;
 }

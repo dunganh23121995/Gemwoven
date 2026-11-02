@@ -88,3 +88,10 @@ console.log('asset packs ok');
   clock=Date.UTC(2026,10,8,17,1);assert.equal(e.weekly()[0].week,'2026-11-09','Monday 00:01 GMT+7 starts a new week');assert.equal(e.weekly()[0].progress,0);
 }
 console.log('weekly ok');
+{ // Growth map gear row (Codex round 2): six worn items below +20 with gold and ore to spare are "ready".
+  clock=Date.UTC(2026,10,3,6);const {engine:e,edit}=fixture();edit(p=>{p.campaign.cleared=100;p.wallet.gold=5e6;p.materials={...p.materials,ore:10000,wood:500,cloth:500,essence:500};});
+  for(const slot of Object.keys(M.SLOTS))e.equip('novice',e.craft(slot,'uncommon').id);
+  const row=()=>M.growthMap(e.read(),'novice').find(r=>r.id==='gear');assert.equal(row().state,'ready');
+  edit(p=>{for(const g of p.equipment)g.level=20;});assert.equal(row().state,'max');
+}
+console.log('gear row ok');

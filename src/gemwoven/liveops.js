@@ -36,7 +36,9 @@
   const PASS={seasonDays:28,levels:50,pointsPerLevel:100,boughtLevelsMax:10,boughtLevelsLastDays:7,
     free:level=>level%10===0?{tickets:2,essence:20}:level%5===0?{skillBooks:2,ore:20}:{gold:3000+level*200},
     gold:level=>level%10===0?{tickets:5,divineOre:2}:level%5===0?{essence:15,skillBooks:3}:{exp:20+level,ore:10}};
-  // Event cadence (GMT+7). Each window lists what renews; the server owns the calendar.
+  // Event cadence (GMT+7). Each window lists what renews; the server owns the calendar. Two-week banner
+  // periods and 28-day seasons count from the anchor Monday (period 0 / season 0).
+  const CADENCE_ANCHOR='2026-11-02';
   const CADENCE=[
     {id:'daily',name:'Ngày',reset:'00:00',items:['Nhiệm vụ ngày','Sân Thử Luyện theo hệ (2 lượt có thưởng, thử lại thoải mái)','Quà VIP và Thẻ Tháng']},
     {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
@@ -67,5 +69,5 @@
     {id:'season-gold',name:'Kiếm Khách Hoàng Kim',source:'Mùa Đấu Hạng · bậc Vàng',paid:false},
     {id:'champion',name:'Thư Hùng Vô Địch',source:'Vô địch Thư Hùng Đại Hội (tên riêng theo khuôn, qua kiểm duyệt)',paid:false},
     {id:'patron',name:'Đại Phú Hộ',source:'VIP 11',paid:true}];
-  return {STATUS,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

@@ -34,7 +34,8 @@ function fight(hero,enc,seed,{skill=.8}={}){
   const value=(m,side)=>{let v=0;const own=side==='hero';for(const k of m){const t=b[k];v+=t===SWORD?1:t===CRYSTAL?(own?(st.energy>=60?.9:.6):.7):t===HEART?(own?(st.hp<st.max*.5?1:.3):.3):t===SHIELD?.4:.35;}return v;};
   const pick=side=>{const list=moves(b);let best=list[0],bv=-1;for(const mv of list){const v=value(mv[2],side)+rand()*.01;if(v>bv){bv=v;best=mv;}}return rand()<(side==='hero'?skill:.85)?best:list[Math.floor(rand()*list.length)];};
   const enemySkills=enc.skillSet.length?enc.skillSet:[{kind:'strike',power:1}];let skillTurn=0;
-  while(st.hp>0&&st.eHp>0&&st.turn<60){
+  // Combat has no turn limit; 200 rounds only stops a stalemate (counted as a loss, reported apart).
+  while(st.hp>0&&st.eHp>0&&st.turn<200){
     st.turn++;
     // Hero turn (start of turn: burn on foe, regen, earth heal-over-time).
     if(st.burn){hitFoe(st.burn.dmg);if(--st.burn.turns<=0)st.burn=null;}
