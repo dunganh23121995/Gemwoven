@@ -51,7 +51,7 @@ assets/**/animation.gif
 assets/**/raw-sheet-clean.png
 assets/**/sheet-transparent.png
 assets/**/gen.log
-assets/heroes/forms/*/form-1/sharp/*.webp
+assets/heroes/forms/*/form-*/sharp/*.webp
 __MACOSX/
 assets/heroes/forms/*/form-*/rig/*/overlay.png
 assets/heroes/forms/*/form-*/rig/*/preview.png

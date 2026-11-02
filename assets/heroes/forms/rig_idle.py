@@ -113,7 +113,7 @@ def rest_frame(hero, form, ctx):
 
 def parts(hero, form, ctx, model=MODEL, effort=EFFORT):
     work = rig_dir(hero, form, ctx); work.mkdir(parents=True, exist_ok=True)
-    # a resting frame already there may be a sharper redraw (sharpen_form1.py): keep it
+    # a resting frame already there may be a sharper redraw (sharpen_heroes.py): keep it
     rest = Image.open(work / "rest.png").convert("RGBA") if (work / "rest.png").exists() else rest_frame(hero, form, ctx)
     rest.save(work / "rest.png")
     grey = np.asarray(rest)[..., :3].mean() < 28 if hero in FOREIGN else hero == "shadow"

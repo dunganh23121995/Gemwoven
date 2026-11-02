@@ -66,9 +66,11 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
             # a baked mesh-rig loop (rig_idle.py) is dense enough as it is.
             rig=ROOT/f'assets/heroes/forms/{hero}/form-{form}/rig/combat'
             if (rig/'rig.json').exists():
+                # at the rig's own cell (512px), not the drawn sheet's: a 256px drawn idle would blur it on the map
                 book=json.loads((rig/'rig.json').read_text(encoding='utf-8'));atlas=Image.open(rig/'idle.webp').convert('RGBA');c=atlas.width//book['cols']
-                tweened=[atlas.crop(((i%book['cols'])*c,(i//book['cols'])*c,(i%book['cols']+1)*c,(i//book['cols']+1)*c)).resize((cw,ch),Image.Resampling.LANCZOS) for i in range(book['count'])]
+                tweened=[atlas.crop(((i%book['cols'])*c,(i//book['cols'])*c,(i%book['cols']+1)*c,(i//book['cols']+1)*c)) for i in range(book['count'])]
                 tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=book['frameDuration'],loop=0,quality=90,method=4)
+                cw=ch=c;frames=tweened
             else:
                 tweened=[f if not k else Image.blend(f,frames[(i+1)%len(frames)],k/3) for i,f in enumerate(frames) for k in range(3)]
                 tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=round(idle.get('frameDuration',120)/3),loop=0,lossless=True)

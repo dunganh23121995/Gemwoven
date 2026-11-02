@@ -22,4 +22,8 @@ Changed on request 2026-11-02 ("làm bình thường giống các tướng khác
 sheets (rig_idle.py) and the body now moves at rest like every other hero's; the art itself is unchanged.
 
 Changed on request 2026-11-02 ("Vẽ nét lại form 1 cho rực rỡ rõ nét"): form 1's resting frames and action sheets are
-redrawn at 512px cells by sharpen_form1.py, the same poses in the same places; raws and prompts in form-1/sharp.
+redrawn at 512px cells by sharpen_heroes.py, the same poses in the same places; raws and prompts in form-1/sharp.
+
+Changed on request 2026-11-02 ("chỉnh sửa đầy đủ hết các form cho đồng bộ kích thước và sắc nét hơn"): every form's
+soft combat sheets and resting frames (512px cells) and showcase actions (640px cells) are redrawn the same way by
+sharpen_heroes.py (raws and prompts in form-N/sharp); rigs rebaked. Noct form 2's eyeflare keeps its drawn fade.
