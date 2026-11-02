@@ -66,18 +66,14 @@ body.reduced-motion .ultimate-aura{display:none}
 .combat-pop.tone-control{--pop-fill:#d9fbff;--pop-glow:#5fe2ff}
 .combat-pop.tone-advantage{--pop-fill:#ffe9a6;--pop-glow:#ffb43c}
 @media(max-width:520px){.combat-pop strong{font-size:23px}.combat-pop.is-crit strong{font-size:32px}.combat-pop .crit-burst{width:128px}.combat-pop .crit-ribbon{width:96px}.combat-pop.is-ultimate strong{font-size:16px}.combat-pop.is-status strong,.combat-pop.is-callout strong{font-size:13px}}
-/* Skill names (combatSkillTitle): gold letters, outlined dark and glowing in the caster's colour, in a gold filigree
-   frame that opens out from the centre once the name has risen over the head; a light sweeps once across the name. */
-.skill-title{position:absolute;z-index:12;pointer-events:none;--title-size:17px}
-.skill-title::before{content:'';position:absolute;inset:14% 20% 12%;border-radius:50%;background:radial-gradient(closest-side,#0a0612b8,#0a061266 60%,transparent);animation:skill-title-veil 1.9s ease-out both}
-.skill-title-frame{position:absolute;inset:0;background:var(--title-frame) center/100% 100% no-repeat;filter:drop-shadow(0 0 3px color-mix(in srgb,var(--skill-color) 70%,#fff3c4)) drop-shadow(0 2px 2px #000a);animation:skill-title-open 1.9s cubic-bezier(.2,.9,.3,1) both}
-.skill-title :is(strong,b){position:absolute;left:0;right:0;top:46%;translate:0 -50%;text-align:center;white-space:nowrap;font:italic 800 var(--title-size)/1.2 Cambria,Georgia,serif;letter-spacing:.6px;color:transparent;-webkit-background-clip:text;background-clip:text}
+/* Skill names (combatSkillTitle): gold letters, outlined dark and glowing in the caster's colour; once the name has
+   risen over the head a light sweeps across it. */
+.skill-title{position:absolute;z-index:12;pointer-events:none;--title-size:20px}
+.skill-title :is(strong,b){position:absolute;left:0;right:0;top:50%;translate:0 -50%;text-align:center;white-space:nowrap;font:italic 800 var(--title-size)/1.2 Cambria,Georgia,serif;letter-spacing:.6px;color:transparent;-webkit-background-clip:text;background-clip:text}
 .skill-title strong{background-image:linear-gradient(180deg,#fffdf2 0%,#ffefb8 34%,#f6c763 58%,#e9a93a 74%,#fff0c2 100%);filter:drop-shadow(0 1px 0 #2a1406) drop-shadow(0 -1px 0 #2a1406) drop-shadow(1px 0 0 #2a1406) drop-shadow(-1px 0 0 #2a1406) drop-shadow(0 0 5px var(--skill-color)) drop-shadow(0 2px 3px #000b)}
 .skill-title b{background-image:linear-gradient(105deg,transparent 42%,#fffef6 50%,transparent 58%);background-size:300% 100%;background-repeat:no-repeat;mix-blend-mode:screen;animation:skill-title-shine 1.9s ease-in-out both}
-@keyframes skill-title-open{0%,14%{opacity:0;scale:.25 .8}26%{opacity:1;scale:1.04 1}32%,100%{opacity:1;scale:1}}
-@keyframes skill-title-veil{0%,12%{opacity:0}28%,100%{opacity:1}}
 @keyframes skill-title-shine{0%,30%{background-position:100% 0}62%,100%{background-position:0% 0}}
-@media(max-width:520px){.skill-title{--title-size:16px}}
+@media(max-width:520px){.skill-title{--title-size:19px}}
 
 /* Studio test (gameQA.setHeroSide): the stage mirrored, the hero on the right facing left; every text
    and bar is mirrored back so it reads normally. */

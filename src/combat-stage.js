@@ -257,9 +257,8 @@ function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
   const pop=combatPopup(side,title,{kind:'callout',tone:combatPopupTone(title),beat:540,pending});
   return pop.ready;
 }
-// A skill's name shoots up from the caster's body past its head, drops back and settles over its head bar, where
-// a gold filigree frame (assets/fx/ui/skill-title.webp) opens round it and a light sweeps across the gold letters;
-// then it drifts up and fades. It never sits on the body or over the effects.
+// A skill's name shoots up from the caster's body past its head, drops back and settles over its head bar, where a
+// light sweeps across its gold letters; then it drifts up and fades. It never sits on the body or over the effects.
 function combatSkillTitle(side,title,pending){
   const ready=wait(850);if(pending)pending.push(ready);
   const root=$('combatEffects'),scene=$('scene');
@@ -267,21 +266,20 @@ function combatSkillTitle(side,title,pending){
   root.querySelector(`.skill-title[data-side="${side}"]`)?.remove();
   const node=document.createElement('span');node.className='skill-title';node.dataset.side=side;node.setAttribute('aria-hidden','true');
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
-  if(ART.uiFx?.skillTitle)node.style.setProperty('--title-frame',`url('${ART.uiFx.skillTitle}')`);
-  node.innerHTML='<i class="skill-title-frame"></i><strong></strong><b></b>';
+  node.innerHTML='<strong></strong><b></b>';
   node.querySelector('strong').textContent=node.querySelector('b').textContent=title;
   root.append(node);
-  // The frame's open oval holds 46% of its width: a long name is set smaller to stay inside it.
-  const W=scene.clientWidth,width=Math.min(320,W*.86),height=width*176/900,text=node.querySelector('strong');
+  // A long name is set smaller to stay on the stage.
+  const W=scene.clientWidth,width=Math.min(340,W*.92),height=34,text=node.querySelector('strong');
   node.style.width=width+'px';node.style.height=height+'px';
   const range=document.createRange();range.selectNodeContents(text);
-  const room=width*.46,wide=range.getBoundingClientRect().width;
+  const room=width*.96,wide=range.getBoundingClientRect().width;
   if(wide>room)node.style.setProperty('--title-size',(parseFloat(getComputedStyle(text).fontSize)*room/wide).toFixed(1)+'px');
   // Over the head bar (or the head), centred on the caster, kept on the stage.
   const s=scene.getBoundingClientRect(),hud=$(side==='hero'?'heroHeadHud':'enemyHeadHud'),body=actor(side)?.querySelector('.sprite-body');
   const head=hud?.offsetParent?hud.getBoundingClientRect():null,b=body?.getBoundingClientRect();
   const cx=head?head.left+head.width/2-s.left:b?b.left+b.width/2-s.left:W/2;
-  const top=Math.max(2,(head?head.top-s.top:b?b.top-s.top:40)-height*.8);
+  const top=Math.max(2,(head?head.top-s.top:b?b.top-s.top:40)-height-2);
   node.style.left=Math.max(width/2+2,Math.min(W-width/2-2,cx))+'px';node.style.top=top+'px';
   const from=b?Math.max(40,b.top+b.height*.55-s.top-top-height/2):80;
   animate(node,[
