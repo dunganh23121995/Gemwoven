@@ -257,11 +257,12 @@ function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
   const pop=combatPopup(side,title,{kind:'callout',tone:combatPopupTone(title),beat:540,pending});
   return pop.ready;
 }
-// A skill's name, set like the ultimate titles of action gacha games (condensed capitals, chrome gold, a dark edge and
-// a glow in the caster's colour), shoots up from the caster's body past its head, rears up big and stamps down over
-// its head bar with a flash; a light sweeps across it, then it drifts up and fades. It never sits on the body.
+// A skill's name, set like the ultimate titles of action gacha games: slanted condensed capitals in chrome gold with a
+// gold rim inside a dark edge and a glow in the caster's colour. It shoots up from the caster's body to just over its
+// head, then a big copy slams down onto it like a seal (shock ring, flash, a jolt, glints); a light sweeps across it,
+// then it drifts up and fades. It never sits on the body.
 // The title face is decoded up front so the first title is measured and drawn in it.
-document.fonts?.load("30px 'Gemwoven Title'",'CỬU THIÊN').catch(()=>{});
+document.fonts?.load("20px 'Gemwoven Title'",'CỬU THIÊN').catch(()=>{});
 function combatSkillTitle(side,title,pending){
   const ready=wait(850);if(pending)pending.push(ready);
   const root=$('combatEffects'),scene=$('scene');
@@ -269,32 +270,33 @@ function combatSkillTitle(side,title,pending){
   root.querySelector(`.skill-title[data-side="${side}"]`)?.remove();
   const node=document.createElement('span');node.className='skill-title';node.dataset.side=side;node.setAttribute('aria-hidden','true');
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
-  node.innerHTML='<i class="skill-title-flash"></i><span class="skill-title-text"><b class="glow"></b><b class="edge"></b><strong></strong><b class="shine"></b></span>';
+  node.innerHTML='<i class="skill-title-flash"></i><i class="skill-title-ring"></i><span class="skill-title-text"><b class="glow"></b><b class="edge"></b><b class="rim"></b><strong></strong><b class="shine"></b></span><i class="skill-title-spark"></i><i class="skill-title-spark late"></i>';
   for(const layer of node.querySelectorAll('.skill-title-text>*'))layer.textContent=title;
   root.append(node);
   // A long name is set smaller to stay on the stage.
-  const W=scene.clientWidth,width=Math.min(340,W*.92),height=40,text=node.querySelector('strong');
-  node.style.width=width+'px';node.style.height=height+'px';
+  const W=scene.clientWidth,max=Math.min(260,W*.7),height=34,text=node.querySelector('strong');
   const range=document.createRange();range.selectNodeContents(text);
-  const room=width*.96,wide=range.getBoundingClientRect().width;
-  if(wide>room)node.style.setProperty('--title-size',(parseFloat(getComputedStyle(text).fontSize)*room/wide).toFixed(1)+'px');
-  // Over the head bar (or the head), centred on the caster, kept on the stage.
+  const wide=range.getBoundingClientRect().width+12;
+  if(wide>max)node.style.setProperty('--title-size',(parseFloat(getComputedStyle(text).fontSize)*max/wide).toFixed(1)+'px');
+  // The box is as wide as the name, so it can stand right over a caster near the stage edge.
+  const width=Math.min(max,wide);node.style.width=width+'px';node.style.height=height+'px';
+  // Centred on the caster's head, just over its head bar (or its head), kept on the stage.
   const s=scene.getBoundingClientRect(),hud=$(side==='hero'?'heroHeadHud':'enemyHeadHud'),body=actor(side)?.querySelector('.sprite-body');
-  const head=hud?.offsetParent?hud.getBoundingClientRect():null,b=body?.getBoundingClientRect();
-  const cx=head?head.left+head.width/2-s.left:b?b.left+b.width/2-s.left:W/2;
-  const top=Math.max(2,(head?head.top-s.top:b?b.top-s.top:40)-height-2);
+  const bar=hud?.offsetParent?hud.getBoundingClientRect():null,b=body?.getBoundingClientRect(),anchor=actor(side)?.querySelector('.actor-head-anchor')?.getBoundingClientRect();
+  const cx=(anchor&&anchor.left?anchor.left:bar?bar.left+bar.width/2:b?b.left+b.width/2:W/2)-s.left;
+  const top=Math.max(2,(bar?bar.top-s.top:b?b.top-s.top:40)-height-2);
   node.style.left=Math.max(width/2+2,Math.min(W-width/2-2,cx))+'px';node.style.top=top+'px';
   const from=b?Math.max(40,b.top+b.height*.55-s.top-top-height/2):80;
   animate(node,[
-    {opacity:0,translate:`-50% ${from}px`,scale:'.5',filter:'blur(2px)',easing:'cubic-bezier(.2,.7,.35,1)'},
-    {opacity:1,offset:.05},
-    {translate:'-50% -24px',scale:'.82',filter:'blur(0px)',offset:.15,easing:'ease-out'},// past the head
-    {translate:'-50% -10px',scale:'1.6',opacity:.9,offset:.22,easing:'cubic-bezier(.6,0,.9,.4)'},// rears up
-    {translate:'-50% 0px',scale:'.92',opacity:1,offset:.27,easing:'ease-out'},// stamps down
-    {translate:'-50% 0px',scale:'1.04',offset:.31,easing:'ease-in-out'},
-    {translate:'-50% 0px',scale:'1',offset:.35},
-    {opacity:1,translate:'-50% -3px',offset:.84},
-    {opacity:0,translate:'-50% -14px',scale:'1'}
+    {opacity:0,translate:`-50% ${from}px`,scale:'.6',easing:'cubic-bezier(.2,.75,.3,1)'},
+    {opacity:1,offset:.04},
+    {translate:'-50% -10px',scale:'.75',opacity:.85,offset:.13,easing:'ease-out'},// shoots past the head
+    {translate:'-50% -6px',scale:'2.8',opacity:0,offset:.16,easing:'cubic-bezier(.7,0,1,.6)'},// the seal lifts
+    {translate:'-50% 0px',scale:'.86',opacity:1,offset:.22,easing:'ease-out'},// and slams down
+    {translate:'-50% 0px',scale:'1.07',offset:.26,easing:'ease-in-out'},
+    {translate:'-50% 0px',scale:'1',offset:.3},
+    {opacity:1,translate:'-50% -2px',offset:.84},
+    {opacity:0,translate:'-50% -12px',scale:'1'}
   ],{duration:1900,fill:'both'}).finally(()=>node.remove());
   return ready;
 }

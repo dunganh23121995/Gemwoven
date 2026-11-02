@@ -726,21 +726,28 @@ body.reduced-motion .ultimate-aura{display:none}
 .combat-pop.tone-control{--pop-fill:#d9fbff;--pop-glow:#5fe2ff}
 .combat-pop.tone-advantage{--pop-fill:#ffe9a6;--pop-glow:#ffb43c}
 @media(max-width:520px){.combat-pop strong{font-size:23px}.combat-pop.is-crit strong{font-size:32px}.combat-pop .crit-burst{width:128px}.combat-pop .crit-ribbon{width:96px}.combat-pop.is-ultimate strong{font-size:16px}.combat-pop.is-status strong,.combat-pop.is-callout strong{font-size:13px}}
-/* Skill names (combatSkillTitle), set like action gacha ultimate titles: condensed capitals ('Gemwoven Title', Anton,
-   embedded by build.py) in chrome gold split at the middle, a dark edge, a blurred halo in the caster's colour; a flash
-   bursts behind the name as it stamps down, then a light sweeps across it. */
-.skill-title{position:absolute;z-index:12;pointer-events:none;--title-size:30px;display:flex;align-items:center;justify-content:center}
-.skill-title-text{position:relative;display:block;white-space:nowrap;font:400 var(--title-size)/1.15 'Gemwoven Title',Impact,'Arial Narrow',sans-serif;letter-spacing:1.5px;text-transform:uppercase}
-.skill-title-text>*{display:block;font:inherit;letter-spacing:inherit;padding:.32em .1em .08em}/* room for Vietnamese marks over capitals: the gold must reach them */
+/* Skill names (combatSkillTitle), set like action gacha ultimate titles: slanted condensed capitals ('Gemwoven Title',
+   Anton, embedded by build.py) in chrome gold, a thin dark edge, a halo in the caster's colour. As the
+   seal slams down (22% of 1.9 s): a flash, a shock ring, the letters jolt, two glints; then a light sweeps across. */
+.skill-title{position:absolute;z-index:12;pointer-events:none;--title-size:23px;display:flex;align-items:center;justify-content:center}
+.skill-title-text{position:relative;display:block;white-space:nowrap;font:400 var(--title-size)/1.15 'Gemwoven Title',Impact,'Arial Narrow',sans-serif;letter-spacing:2px;text-transform:uppercase;transform:skewX(-6deg);animation:skill-title-jolt 1.9s linear both}
+.skill-title-text>*{display:block;font:inherit;letter-spacing:inherit;padding:.32em .12em .08em}/* room for Vietnamese marks over capitals: the gold must reach them */
 .skill-title-text>:not(strong){position:absolute;inset:0}
-.skill-title .glow{color:transparent;-webkit-text-stroke:9px var(--skill-color);filter:blur(3px);opacity:.9}
-.skill-title .edge{color:#1d0b03;-webkit-text-stroke:4px #1d0b03;filter:drop-shadow(0 4px 2px #000c)}
-.skill-title strong{position:relative;font-weight:400;color:transparent;background:linear-gradient(180deg,#fff 0%,#fffbe6 24%,#fff6d0 40%,#ffe08a 59%,#d98b22 61%,#f7b443 80%,#fff1b8 100%);-webkit-background-clip:text;background-clip:text}
+.skill-title .glow{color:transparent;-webkit-text-stroke:5px var(--skill-color);filter:blur(2.5px);opacity:.9}
+.skill-title .edge{color:#1d0b03;-webkit-text-stroke:2.4px #1d0b03;filter:drop-shadow(0 2px 1px #000d)}
+.skill-title .rim{display:none}/* a stroke inside the dark edge closed the narrow counters of the capitals */
+.skill-title strong{position:relative;font-weight:400;color:transparent;background:linear-gradient(180deg,#fff 0%,#fffbe6 30%,#ffeeb0 52%,#c8761c 54%,#e99a2e 70%,#ffd36d 88%,#fff1c0 100%);-webkit-background-clip:text;background-clip:text}
 .skill-title .shine{color:transparent;background:linear-gradient(105deg,transparent 40%,#fffef6 50%,transparent 60%) 100% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text;mix-blend-mode:screen;animation:skill-title-shine 1.9s ease-in-out both}
-.skill-title-flash{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:3;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,#fffbe8,color-mix(in srgb,var(--skill-color) 70%,#fff) 30%,color-mix(in srgb,var(--skill-color) 35%,transparent) 55%,transparent);mix-blend-mode:screen;opacity:0;animation:skill-title-flash 1.9s ease-out both}
-@keyframes skill-title-shine{0%,36%{background-position:100% 0}64%,100%{background-position:0% 0}}
-@keyframes skill-title-flash{0%,26%{opacity:0;scale:.3 .5}28%{opacity:.95;scale:.7 .8}46%,100%{opacity:0;scale:1.3 1.1}}
-@media(max-width:520px){.skill-title{--title-size:28px}}
+.skill-title-flash{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:2.6;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,#fffdf2,color-mix(in srgb,var(--skill-color) 65%,#fff) 28%,color-mix(in srgb,var(--skill-color) 35%,transparent) 55%,transparent);mix-blend-mode:screen;opacity:0;animation:skill-title-flash 1.9s ease-out both}
+.skill-title-ring{position:absolute;left:50%;top:50%;width:100%;aspect-ratio:3.4;translate:-50% -50%;border-radius:50%;border:2px solid #fff4cc;box-shadow:0 0 8px var(--skill-color),inset 0 0 6px var(--skill-color);opacity:0;animation:skill-title-ring 1.9s cubic-bezier(.1,.7,.3,1) both}
+.skill-title-spark{position:absolute;left:12%;top:4%;width:16px;aspect-ratio:1;background:#fffef2;clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);filter:drop-shadow(0 0 4px var(--skill-color));opacity:0;animation:skill-title-spark 1.9s ease-out both}
+.skill-title-spark.late{left:auto;right:16%;top:auto;bottom:6%;width:12px;animation-delay:.22s}
+@keyframes skill-title-jolt{0%,21.5%{translate:0 0}23%{translate:-3px 2px}24.5%{translate:3px -1px}26%{translate:-2px 1px}27.5%,100%{translate:0 0}}
+@keyframes skill-title-shine{0%,32%{background-position:100% 0}58%,100%{background-position:0% 0}}
+@keyframes skill-title-flash{0%,21%{opacity:0;scale:.3 .5}23%{opacity:1;scale:.75 .85}42%,100%{opacity:0;scale:1.35 1.15}}
+@keyframes skill-title-ring{0%,21.5%{opacity:0;scale:.6}23%{opacity:1;scale:.85}38%,100%{opacity:0;scale:1.35}}
+@keyframes skill-title-spark{0%,27%{opacity:0;scale:0;rotate:0deg}33%{opacity:1;scale:1.2;rotate:45deg}46%,100%{opacity:0;scale:.2;rotate:90deg}}
+@media(max-width:520px){.skill-title{--title-size:22px}}
 
 /* Studio test (gameQA.setHeroSide): the stage mirrored, the hero on the right facing left; every text
    and bar is mirrored back so it reads normally. */
@@ -5114,11 +5121,12 @@ function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
   const pop=combatPopup(side,title,{kind:'callout',tone:combatPopupTone(title),beat:540,pending});
   return pop.ready;
 }
-// A skill's name, set like the ultimate titles of action gacha games (condensed capitals, chrome gold, a dark edge and
-// a glow in the caster's colour), shoots up from the caster's body past its head, rears up big and stamps down over
-// its head bar with a flash; a light sweeps across it, then it drifts up and fades. It never sits on the body.
+// A skill's name, set like the ultimate titles of action gacha games: slanted condensed capitals in chrome gold with a
+// gold rim inside a dark edge and a glow in the caster's colour. It shoots up from the caster's body to just over its
+// head, then a big copy slams down onto it like a seal (shock ring, flash, a jolt, glints); a light sweeps across it,
+// then it drifts up and fades. It never sits on the body.
 // The title face is decoded up front so the first title is measured and drawn in it.
-document.fonts?.load("30px 'Gemwoven Title'",'CỬU THIÊN').catch(()=>{});
+document.fonts?.load("20px 'Gemwoven Title'",'CỬU THIÊN').catch(()=>{});
 function combatSkillTitle(side,title,pending){
   const ready=wait(850);if(pending)pending.push(ready);
   const root=$('combatEffects'),scene=$('scene');
@@ -5126,32 +5134,33 @@ function combatSkillTitle(side,title,pending){
   root.querySelector(`.skill-title[data-side="${side}"]`)?.remove();
   const node=document.createElement('span');node.className='skill-title';node.dataset.side=side;node.setAttribute('aria-hidden','true');
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
-  node.innerHTML='<i class="skill-title-flash"></i><span class="skill-title-text"><b class="glow"></b><b class="edge"></b><strong></strong><b class="shine"></b></span>';
+  node.innerHTML='<i class="skill-title-flash"></i><i class="skill-title-ring"></i><span class="skill-title-text"><b class="glow"></b><b class="edge"></b><b class="rim"></b><strong></strong><b class="shine"></b></span><i class="skill-title-spark"></i><i class="skill-title-spark late"></i>';
   for(const layer of node.querySelectorAll('.skill-title-text>*'))layer.textContent=title;
   root.append(node);
   // A long name is set smaller to stay on the stage.
-  const W=scene.clientWidth,width=Math.min(340,W*.92),height=40,text=node.querySelector('strong');
-  node.style.width=width+'px';node.style.height=height+'px';
+  const W=scene.clientWidth,max=Math.min(260,W*.7),height=34,text=node.querySelector('strong');
   const range=document.createRange();range.selectNodeContents(text);
-  const room=width*.96,wide=range.getBoundingClientRect().width;
-  if(wide>room)node.style.setProperty('--title-size',(parseFloat(getComputedStyle(text).fontSize)*room/wide).toFixed(1)+'px');
-  // Over the head bar (or the head), centred on the caster, kept on the stage.
+  const wide=range.getBoundingClientRect().width+12;
+  if(wide>max)node.style.setProperty('--title-size',(parseFloat(getComputedStyle(text).fontSize)*max/wide).toFixed(1)+'px');
+  // The box is as wide as the name, so it can stand right over a caster near the stage edge.
+  const width=Math.min(max,wide);node.style.width=width+'px';node.style.height=height+'px';
+  // Centred on the caster's head, just over its head bar (or its head), kept on the stage.
   const s=scene.getBoundingClientRect(),hud=$(side==='hero'?'heroHeadHud':'enemyHeadHud'),body=actor(side)?.querySelector('.sprite-body');
-  const head=hud?.offsetParent?hud.getBoundingClientRect():null,b=body?.getBoundingClientRect();
-  const cx=head?head.left+head.width/2-s.left:b?b.left+b.width/2-s.left:W/2;
-  const top=Math.max(2,(head?head.top-s.top:b?b.top-s.top:40)-height-2);
+  const bar=hud?.offsetParent?hud.getBoundingClientRect():null,b=body?.getBoundingClientRect(),anchor=actor(side)?.querySelector('.actor-head-anchor')?.getBoundingClientRect();
+  const cx=(anchor&&anchor.left?anchor.left:bar?bar.left+bar.width/2:b?b.left+b.width/2:W/2)-s.left;
+  const top=Math.max(2,(bar?bar.top-s.top:b?b.top-s.top:40)-height-2);
   node.style.left=Math.max(width/2+2,Math.min(W-width/2-2,cx))+'px';node.style.top=top+'px';
   const from=b?Math.max(40,b.top+b.height*.55-s.top-top-height/2):80;
   animate(node,[
-    {opacity:0,translate:`-50% ${from}px`,scale:'.5',filter:'blur(2px)',easing:'cubic-bezier(.2,.7,.35,1)'},
-    {opacity:1,offset:.05},
-    {translate:'-50% -24px',scale:'.82',filter:'blur(0px)',offset:.15,easing:'ease-out'},// past the head
-    {translate:'-50% -10px',scale:'1.6',opacity:.9,offset:.22,easing:'cubic-bezier(.6,0,.9,.4)'},// rears up
-    {translate:'-50% 0px',scale:'.92',opacity:1,offset:.27,easing:'ease-out'},// stamps down
-    {translate:'-50% 0px',scale:'1.04',offset:.31,easing:'ease-in-out'},
-    {translate:'-50% 0px',scale:'1',offset:.35},
-    {opacity:1,translate:'-50% -3px',offset:.84},
-    {opacity:0,translate:'-50% -14px',scale:'1'}
+    {opacity:0,translate:`-50% ${from}px`,scale:'.6',easing:'cubic-bezier(.2,.75,.3,1)'},
+    {opacity:1,offset:.04},
+    {translate:'-50% -10px',scale:'.75',opacity:.85,offset:.13,easing:'ease-out'},// shoots past the head
+    {translate:'-50% -6px',scale:'2.8',opacity:0,offset:.16,easing:'cubic-bezier(.7,0,1,.6)'},// the seal lifts
+    {translate:'-50% 0px',scale:'.86',opacity:1,offset:.22,easing:'ease-out'},// and slams down
+    {translate:'-50% 0px',scale:'1.07',offset:.26,easing:'ease-in-out'},
+    {translate:'-50% 0px',scale:'1',offset:.3},
+    {opacity:1,translate:'-50% -2px',offset:.84},
+    {opacity:0,translate:'-50% -12px',scale:'1'}
   ],{duration:1900,fill:'both'}).finally(()=>node.remove());
   return ready;
 }
