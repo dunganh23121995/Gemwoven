@@ -24,10 +24,15 @@
     "count": 4,
     "frameDuration": 55
   },
-  "galaxy": {
-    "file": "assets/fx/heroes/lightning/galaxy.webp",
+  "stormorb": {
+    "file": "assets/fx/heroes/lightning/stormorb.webp",
     "count": 4,
-    "frameDuration": 120
+    "frameDuration": 140
+  },
+  "stormarc": {
+    "file": "assets/fx/heroes/lightning/stormarc.webp",
+    "count": 4,
+    "frameDuration": 55
   },
   "orbitbolt": {
     "file": "assets/fx/heroes/lightning/orbitbolt.webp",

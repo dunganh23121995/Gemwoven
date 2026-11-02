@@ -161,7 +161,8 @@ for hero in ['novice','fire','ice','earth','lightning','shadow']:
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
-    merged['form-aura-'+catalog.parent.name]={**data,'width':256,'height':256}
+    cell=Image.open(ROOT/data['file']).height
+    merged['form-aura-'+catalog.parent.name]={**data,'width':cell,'height':cell}
 for name in ['boss-expansion-a','boss-expansion-b']:
     path=ROOT/f'assets/gemwoven/{name}.json'
     if path.exists():

@@ -56,7 +56,10 @@ FORM_SHEETS = {
     ("shadow", 2): "attack attackLeft cast run skill", ("shadow", 3): "attack cast run hover",
     ("fire", 3): "cast",
 }
-SOFT_RESTS = (("earth", 2), ("earth", 3), ("ice", 2), ("ice", 3), ("lightning", 2), ("shadow", 2), ("shadow", 3))
+SOFT_RESTS = (("earth", 2), ("earth", 3), ("ice", 2), ("ice", 3), ("lightning", 2), ("lightning", 3), ("shadow", 2), ("shadow", 3))
+# Rests drawn pale, with thin light outlines and loose specks (sharp by the measure, unclear in the game): Codex also
+# sees a frame of the same form drawn cleanly, (sheet, cols, rows, frame), and takes its rendering
+STYLE = {"lightning3-rest": ("assets/heroes/forms/lightning/form-3/hover.webp", 3, 2, 0)}
 SHOWCASE_SKIP = {"idle"}     # the showcase rests in its mesh rig; idle.webp gives only the poster
 # Noct form 2 fades into his shadow and out again on purpose: the redraw drew the fade sharp, the old sheet stays
 KEEP_SHEETS = {"shadow2-show-eyeflare"}
@@ -85,10 +88,13 @@ def jobs():
         if sheet.stem in SHOWCASE_SKIP or Image.open(sheet).width // 2 >= SHOW and detail(sheet) > 8:
             continue
         out[f"{hero}{form}-show-{sheet.stem}"] = dict(hero=hero, form=form, name=f"show-{sheet.stem}", path=sheet.relative_to(ROOT).as_posix(), cols=2, rows=4, cell=SHOW, split=2)
+    for name, style in STYLE.items():
+        out[name]["style"] = style
     for name in KEEP_SHEETS:
         out.pop(name, None)
     for name, keep in KEEP_FRAMES.items():
-        out[name]["keep"] = keep
+        if name in out:       # a sheet redrawn already is sharp and leaves the list
+            out[name]["keep"] = keep
     return out
 
 
@@ -115,7 +121,9 @@ Background 100% solid flat {BACKDROP.get(job['hero'], MAGENTA)[1]}. No gradients
 
 def prompt(job, rows):
     if job["cols"] == 1:
-        return f"""Image 1 is a chibi game character sprite that was upscaled from a tiny image and looks blurry. Redraw EXACTLY the same picture at full resolution on a square canvas: the same pose, the same limb and weapon angles, the same size and the same position on the canvas, every outline where it is in Image 1.
+        style = """
+Image 1 is drawn pale, with thin light outlines and loose pink specks around it. Image 2 is the same character drawn cleanly in another pose: render Image 1's pose the way Image 2 is rendered (its dark outlines, solid saturated colours, crisp metal and hair), with no specks, dust or sparkles floating around her. Take only the rendering from Image 2, never its pose.""" if job.get("style") else ""
+        return f"""Image 1 is a chibi game character sprite that was upscaled from a tiny image and looks blurry. Redraw EXACTLY the same picture at full resolution on a square canvas: the same pose, the same limb and weapon angles, the same size and the same position on the canvas, every outline where it is in Image 1.{style}
 {rules(job)}
 The entire character stays inside the canvas with a margin of background."""
     n = job["cols"] * rows
@@ -240,9 +248,16 @@ def draw_part(name, job, old, tag):
     ref.convert("RGB").resize(target if job["cols"] > 1 else (1024, 1024), Image.Resampling.LANCZOS).save(tmp)
     pf = work / f"{job['name']}{tag}-prompt.txt"; pf.write_text(prompt(job, job["rows"]) + "\n", encoding="utf-8")
     raw = work / f"{job['name']}-raw{tag}.png"
+    refs = ["--ref", str(tmp)]
+    if job.get("style"):
+        path, cols, rows, i = job["style"]
+        cell = frames(Image.open(ROOT / path).convert("RGBA"), dict(cols=cols, rows=rows))[i]
+        sty = work / f"{job['name']}{tag}-style.png"
+        flat = Image.new("RGBA", cell.size, BACKDROP.get(job["hero"], MAGENTA)[0] + (255,)); flat.alpha_composite(cell)
+        flat.convert("RGB").resize((1024, 1024), Image.Resampling.LANCZOS).save(sty); refs += ["--ref", str(sty)]
     best = None
     for model, effort in LADDER:
-        r = subprocess.run([sys.executable, str(GEN), "--prompt-file", str(pf), "--out", str(raw), "--ref", str(tmp), "--model", model, "--effort", effort,
+        r = subprocess.run([sys.executable, str(GEN), "--prompt-file", str(pf), "--out", str(raw), *refs, "--model", model, "--effort", effort,
                             "--timeout", "900"], capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=0x08000000)
         if r.returncode or not raw.exists():
             print(name + tag, effort, "gen failed", r.stderr[-200:].replace("\n", " "), flush=True); continue
@@ -253,6 +268,8 @@ def draw_part(name, job, old, tag):
         if iou >= MIN_IOU and foot <= MAX_FOOT:
             break
     tmp.unlink(missing_ok=True)
+    if job.get("style"):
+        sty.unlink(missing_ok=True)
     if best is None:
         print(name + tag, "FAIL no image", flush=True); return None
     raw.write_bytes(best[4])

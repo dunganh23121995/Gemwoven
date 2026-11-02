@@ -6,7 +6,8 @@
 .lumi-fx.lumi-bolt{z-index:8;filter:drop-shadow(0 0 6px #c9a6ff) drop-shadow(0 0 2px #fff)}
 .lumi-fx.lumi-bolt.big{filter:drop-shadow(0 0 10px #d6b8ff) drop-shadow(0 0 3px #fff)}
 .lumi-fx.lumi-sky{z-index:6;filter:drop-shadow(0 0 8px #ffdf8a99)}
-.lumi-fx-galaxy.lumi-sky{opacity:.92;filter:drop-shadow(0 0 10px #b78bff99) brightness(1.1)}
+.lumi-fx-stormorb.lumi-sky{filter:drop-shadow(0 0 8px #9b5cffcc) drop-shadow(0 0 2px #e6d4ff)}
+.lumi-fx.lumi-sky-arcs{z-index:7;filter:drop-shadow(0 0 4px #c9a6ff) drop-shadow(0 0 1px #fff)}
 .lumi-fx.lumi-mote{z-index:8;filter:drop-shadow(0 0 4px #ffe58a)}
 .lumi-fx.lumi-finale{z-index:9}
 /* Resting stars: <i> swings up/down (and flips in front of/behind her body), <u> swings left/right a
@@ -26,6 +27,6 @@ body.reduced-motion .lumi-idle-stars,body.ambience-paused .lumi-idle-stars *{ani
 body.reduced-motion .lumi-idle-stars{display:none}
 /* Riding her spear: the comet streams from the spear's butt end, behind her. */
 .scene .hero-actor[data-riding] .depart-comet{left:-80%;top:25%;rotate:-7deg;transform-origin:95% 50%}
-/* While her sky sign (seal or galaxy) hangs over the foe, the foe's head bar fades back behind it. */
+/* While her sky sign (seal or storm orb) hangs over the foe, the foe's head bar fades back behind it. */
 .scene:has(#heroActor[data-lumi-sky]) :is(#enemyHeadHud,#heroHeadHud){opacity:.28!important;transition:opacity .2s}
 .lumi-warm{position:absolute;left:50%;top:50%;width:2px;height:2px;opacity:.01;pointer-events:none;background-size:100% 100%;background-repeat:no-repeat}

@@ -96,6 +96,16 @@ body.page-hidden .hero-form-aura *{animation-play-state:paused}
 .aura-spore{width:1.8%;aspect-ratio:1;margin-left:-.9%;border-radius:50%;background:radial-gradient(circle,#fff8d0 0 30%,#ffd86a 45%,#ffc84000 72%);filter:drop-shadow(0 0 4px #ffe08a)}
 @keyframes aura-mote-rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.6)}12%{opacity:.95}50%{transform:translate(var(--sway),-20cqh) rotate(calc(var(--spin) * .5)) scale(.9)}85%{opacity:.7}100%{opacity:0;transform:translate(calc(var(--sway) * -.4),-40cqh) rotate(var(--spin)) scale(.6)}}
 body.reduced-motion .aura-motes,.reduced-motion .aura-motes{display:none}
+/* Lumi's comets (form-effects.js .aura-orbit): the band's box; <u> tilts the orbit round its centre (chest height) and
+   keeps only its far half (behind her) or near half (in front); <b> flattens the drawn circle into the orbit's
+   ellipse; <i> spins the drawn ring of comets, so the heads glide round it smoothly. */
+.aura-orbit{position:absolute;left:50%;bottom:0;width:calc(var(--hero-visible-height,120px) * 1.85);aspect-ratio:1;translate:-50% 18%;pointer-events:none}
+.aura-orbit u{position:absolute;left:9%;top:5%;width:82%;aspect-ratio:1;rotate:-13deg}
+.aura-orbit-back u{-webkit-mask-image:linear-gradient(#000 50%,transparent 50%);mask-image:linear-gradient(#000 50%,transparent 50%)}
+.aura-orbit-front u{-webkit-mask-image:linear-gradient(transparent 50%,#000 50%);mask-image:linear-gradient(transparent 50%,#000 50%)}
+.aura-orbit b{position:absolute;inset:0;scale:1 .34}
+.aura-orbit i{position:absolute;inset:0;background:center/100% 100% no-repeat;animation:aura-comet-spin 5.6s linear infinite}
+@keyframes aura-comet-spin{to{rotate:360deg}}
 body.ambience-paused .aura-motes i{animation-play-state:paused}
 /* Noct's floor cloud (the lower part of his aura strip) is not used for now, in town, on the map and in combat;
    the art and markup stay, so deleting these two rules brings it back (the second hides the cloud's front edge,

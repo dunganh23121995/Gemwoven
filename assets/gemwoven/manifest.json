@@ -10864,9 +10864,9 @@
     },
     "footBounds": [
       89,
-      91,
-      429,
-      482
+      88,
+      425,
+      483
     ]
   },
   "form-lightning-2": {
@@ -11214,10 +11214,10 @@
     "cols": 8,
     "rows": 1,
     "frameDuration": 160,
-    "prompt": "assets/heroes/forms/lightning/aura/prompt-used.txt",
-    "front": "assets/heroes/forms/lightning/aura/front/front.webp",
-    "width": 256,
-    "height": 256
+    "prompt": "assets/heroes/forms/lightning/aura/sharp/prompt-used.txt",
+    "comet": "assets/heroes/forms/lightning/aura/comet/comet.webp",
+    "width": 512,
+    "height": 512
   },
   "form-aura-shadow": {
     "file": "assets/heroes/forms/shadow/aura/aura.webp",

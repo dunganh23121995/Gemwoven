@@ -5,3 +5,9 @@ Re-locked after the defect review and head-scale fixes: 2026-10-26.
 Lock confirmed by the player on the current state (commit 571c3b2): 2026-10-27.
 Lock confirmed by the player on the current state: 2026-10-28.
 Lock confirmed by the player on the current state: 2026-10-29.
+
+Changed on request 2026-11-02 ("Vẽ lại lumi form 3 ... làm lại quả cầu khi ulti"): form 3's combat rest was pale and
+speckled; it is redrawn crisp by sharpen_heroes.py (rendering taken from her hover sheet) and the idle and buff are
+rebaked. Her six-star aura is redrawn at 512px without its comets (aura/export_aura.py); the two comets are one drawn
+ring that CSS spins round a tilted orbit, behind her and in front (.aura-orbit). Cửu Thiên Tinh Phạt's galaxy is
+replaced by a storm orb (assets/fx/heroes/lightning/stormorb) with lightning crackling round its rim (stormarc).

@@ -362,7 +362,7 @@ art['departFx']={name:{**sheet,'src':compact_image(sheet['file'])} for name,shee
 art['formAuras']={}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
-    art['formAuras'][catalog.parent.name]={**data,'src':compact_image(data['file']),**({'frontSrc':compact_image(data['front'])} if data.get('front') else {}),**({'leafSrcs':[compact_image(f) for f in data['leaves']]} if data.get('leaves') else {})}
+    art['formAuras'][catalog.parent.name]={**data,'src':compact_image(data['file']),**({'frontSrc':compact_image(data['front'])} if data.get('front') else {}),**({'cometSrc':compact_image(data['comet'])} if data.get('comet') else {}),**({'leafSrcs':[compact_image(f) for f in data['leaves']]} if data.get('leaves') else {})}
 for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'));forms={}
     for form,entry in data['forms'].items():

@@ -1,8 +1,8 @@
 /* Lumi's star forms (HERO_KITS.lightning, see hero-kits.js).
  * Four-star "Tinh Lôi Sứ Giả" flings crackling stars from her staff and, for Tinh Lôi Ngũ Phạt, calls
  * five stars into a pentagram over the foe that each fire a star bolt. Six-star "Thiên Tinh Lôi Chủ"
- * fires orbit-ring bolts from her spear and, for Cửu Thiên Tinh Phạt, spins its rings out into a galaxy
- * that rains nine star bolts; she leaves a cleared stage sitting on her spear like a witch's broom.
+ * fires orbit-ring bolts from her spear and, for Cửu Thiên Tinh Phạt, spins its rings out into a storm orb
+ * (a galaxy caged in lightning) that rains nine star bolts; she leaves a cleared stage sitting on her spear like a witch's broom.
  * In every form small gold stars circle her while she rests.
  * Art: ART.heroFx.lightning (assets/fx/heroes/lightning) and her form sheets hover/skill/ride
  * (assets/heroes/forms/lightning/form-N). Damage keeps the existing maths: the basic attack is
@@ -129,12 +129,12 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
   const root=actor('hero'),target=actor('enemy'),pending=[],ledger={raw:0,applied:0},old=root.style.transform,oldZ=root.style.zIndex,oldTarget=target.style.transform;
   const start=performance.now(),at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   const count=Math.max(1,hits),body=lumiFoeBody(),scene=$('scene'),W=scene.clientWidth,H=scene.clientHeight;
-  // The sky sign (form 2's pentagram, form 3's galaxy) keeps one size whatever it faces (the size it has over an
+  // The sky sign (form 2's pentagram, form 3's storm orb) keeps one size whatever it faces (the size it has over an
   // ordinary foe) and hangs right under the stage's ceiling, above the foe.
   const sign=110;
   const sky={x:Math.max(sign*.5+6,Math.min(W-sign*.5-6,body.x)),y:sign*.5+8};
   const strike=Math.max(84,Math.min(150,body.width*.95));
-  let amount=0,blocked=0,seal=null,galaxy=null,spin=null;
+  let amount=0,blocked=0,seal=null,orb=null,spin=null,arcs=null;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.ragePhase='chant';root.dataset.foeHudOver='true';
   try{
     combatVoice('hero','cast');warmLumiSounds(form);popActorSkill('hero',HEROES.lightning.skill,true,pending);
@@ -160,22 +160,27 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       lumiSound('seal',{volume:.4,pan:.2},true);// the pentagram locks with a ring
       await at(1500);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }else{
-      // The rings around her spear's star spin off it and open into a galaxy over the foe (a real
-      // slinky-laser foley), stars stream along its arms (mark tree) as it glides into place.
-      galaxy=lumiFx('galaxy',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:5,cls:'lumi-sky'});
-      // The laser's attack (90 ms into the clip) lands as the sphere is born: the galaxy disc's first frame (strip
+      // The rings around her spear's star spin off it and swell into a storm orb over the foe (a real slinky-laser
+      // foley), stars stream along its arms (mark tree) as it glides into place. Once whole, its two drawn states
+      // alternate so its lightning veins crawl, while the whole orb turns slowly and lightning crackles round its rim.
+      orb=lumiFx('stormorb',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:4,cls:'lumi-sky'});
+      // The laser's attack (90 ms into the clip) lands as the sphere is born: the orb's first whole frame (strip
       // frame 2) shows 4 x 140 ms after the rings start spinning at the spear head (measured in the studio).
       pending.push(at(performance.now()-start+560-90).then(()=>lumiSound('laser',{volume:.42,pan:.1},true)));
-      if(galaxy){
-        galaxy.style.scale='.6';
-        spin=galaxy.animate([{rotate:'0deg'},{rotate:'-360deg'}],{duration:4200,iterations:Infinity});
-        pending.push(animate(galaxy,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:640,delay:480,easing:'cubic-bezier(.45,.05,.3,1)',fill:'both'}).then(()=>{galaxy.style.left=sky.x+'px';galaxy.style.top=sky.y+'px';galaxy.style.scale='1';}));
+      if(orb){
+        orb.style.scale='.6';
+        spin=orb.animate([{rotate:'0deg'},{rotate:'-360deg'}],{duration:6400,iterations:Infinity});
+        pending.push(animate(orb,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:640,delay:480,easing:'cubic-bezier(.45,.05,.3,1)',fill:'both'}).then(()=>{
+          orb.style.left=sky.x+'px';orb.style.top=sky.y+'px';orb.style.scale='1';
+          // In place over the foe, lightning leaps round its rim (out of order, so it never reads as a turning wheel).
+          if(orb.isConnected&&root.dataset.ragePhase!=='recover')arcs=lumiFx('stormarc',sky,sign,{frames:[0,2,1,3,0,3,2,1],frameMs:60,loop:true,cls:'lumi-sky-arcs'});
+        }));
       }
       pending.push(at(1000).then(()=>lumiSound('stream',{volume:.34,pan:.15})));// stars stream along its arms
       await at(1080);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
       await at(1340);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }
-    // Bolts: the seal's stars fire in its drawing order; the galaxy rains from all over its disc,
+    // Bolts: the seal's stars fire in its drawing order; the storm orb rains from all over its disc,
     // the last bolt the biggest, straight from its heart. They land along the foe's feet.
     const first=form===2?1620:1450,step=form===2?Math.min(130,600/count):Math.min(150,880/count),order=[0,2,4,1,3];
     root.dataset.ragePhase='skyfall';
@@ -194,10 +199,11 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
     }
     await at(2450);root.dataset.ragePhase='recover';delete root.dataset.lumiSky;setSpriteFrame('hero','skill',5);
     lumiFade(seal,pending,380,{scale:'1.08'});
-    if(galaxy){pending.push(animate(galaxy,[{opacity:1,scale:'1'},{opacity:0,scale:'.2'}],{duration:420,easing:'ease-in',fill:'forwards'}).finally(()=>{spin?.cancel();galaxy.remove();}));}
+    if(orb){pending.push(animate(orb,[{opacity:1,scale:'1'},{opacity:0,scale:'.2'}],{duration:420,easing:'ease-in',fill:'forwards'}).finally(()=>{spin?.cancel();orb.remove();}));}
+    lumiFade(arcs,pending,200);
     await at(3000);await Promise.all(pending);return {amount,blocked};
   }finally{
-    await Promise.allSettled(pending);seal?.remove();spin?.cancel();galaxy?.remove();
+    await Promise.allSettled(pending);seal?.remove();spin?.cancel();orb?.remove();arcs?.remove();
     root.style.transform=old;root.style.zIndex=oldZ;target.style.transform=oldTarget;target.style.filter='';
     delete root.dataset.ragePhase;delete root.dataset.foeHudOver;delete root.dataset.lumiSky;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }

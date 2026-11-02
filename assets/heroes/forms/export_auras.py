@@ -19,12 +19,13 @@ from pathlib import Path
 from PIL import Image
 
 FORMS = Path(__file__).resolve().parent
-HEROES = ("fire", "earth", "ice", "lightning", "shadow")
+# Lumi (lightning) has her own exporter since her comets left the strip: lightning/aura/export_aura.py
+HEROES = ("fire", "earth", "ice", "shadow")
 COUNT = 8
 CELL = 256
 FRAME_DURATION = {"shadow": 190}
 # Auras with no legitimate violet: magenta key spill in their glows is removed.
-DESPILL = {"fire", "ice", "earth", "shadow"}  # lightning keeps its violet
+DESPILL = {"fire", "ice", "earth", "shadow"}
 
 
 def despill(frame: Image.Image) -> Image.Image:
@@ -49,11 +50,10 @@ FRONT = {
     "fire": {"width": 74, "bottom": 202},       # flame tail across the shins
     "ice": {"width": 84, "bottom": 190},        # frost mist across the knees
     "earth": {"width": 82, "bottom": 166},      # leafy vine across the waist
-    "lightning": {"width": 104, "bottom": 166},  # front of the comet trail at the waist
 }
 # These sheets were drawn on a fixed imaginary-hero layout (feet at 82% of the cell), so
 # each raw cell is resized whole instead of fitted to its content.
-RAW_CELL = {"fire", "ice", "earth", "lightning"}
+RAW_CELL = {"fire", "ice", "earth"}
 
 
 PROCESSOR = Path.home() / ".codex/skills/generate2dsprite/scripts/generate2dsprite.py"
