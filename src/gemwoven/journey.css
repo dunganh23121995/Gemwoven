@@ -377,6 +377,11 @@
 .encounter-sheet .sc-foe{position:absolute;left:50%;z-index:1;max-width:none;transform:scale(var(--k,1));transform-origin:50% 94%;filter:drop-shadow(0 6px 6px #000a)}
 .encounter-sheet .sc-foe.map-idle{background-repeat:no-repeat;background-size:200% 400%;animation:map-idle 1.25s steps(1) infinite}
 .reduced-motion .encounter-sheet .sc-foe.map-idle{animation:none}
+/* A baked rig loop: 6x4, walked across the columns and down the rows by two stepped animations. */
+.island-map .map-idle[data-rig],.encounter-sheet .sc-foe.map-idle[data-rig]{background-size:600% 400%;animation:map-rig-x calc(var(--rig-ms)/4) steps(6) infinite,map-rig-y var(--rig-ms) steps(4) infinite}
+@keyframes map-rig-x{from{background-position-x:0}to{background-position-x:120%}}
+@keyframes map-rig-y{from{background-position-y:0}to{background-position-y:133.333%}}
+.reduced-motion .island-map .map-idle[data-rig],.reduced-motion .encounter-sheet .sc-foe.map-idle[data-rig]{animation:none}
 .encounter-sheet .foe-card .sc-title{margin:-10px 0 0;text-align:center;font:800 48px/1.1 Cambria,Georgia,serif;color:#4a2606}
 .encounter-sheet .foe-card p{margin:0;text-align:center;font-size:34px;line-height:1.3;color:#5a3a1a}
 .encounter-sheet .foe-card p b{color:#3e2208}

@@ -61,11 +61,13 @@
   // A stage is a flat ring decal (atlas/ui/ring-*, drawn from straight above) laid on the painted landing: squashed
   // to the landings' perspective (FLAT), it lies in their plane. Its number stands on a small plaque at its front.
   const RING={normal:300,elite:300,boss:370},FLAT=.4;
+  // A baked rig loop has its own 6x4 grid (journey.css .map-idle[data-rig]); its length comes from the sheet.
+  function rigLoop(el,sheet){if(sheet.cols===6){el.dataset.rig='';el.style.setProperty('--rig-ms',sheet.ms+'ms');}return el;}
   // A resting loop (2x4 sheet, 256px cells, feet at 94% of a cell) standing with its feet on a point.
   function idleActor(sheetKey,fallback,height,x,y){
     const sheet=A[sheetKey],cell=height/.78,el=document.createElement('span');el.className='pin-creature map-idle';
     el.style.cssText=`left:${x-cell/2}px;top:${y-cell*.94}px;width:${cell}px;height:${cell}px`;
-    if(sheet){el.style.backgroundImage=`url("${new URL(sheet.file,document.baseURI).href}")`;el.dataset.frames=sheet.count;el.style.animationDelay=`${-(x*7+y)%1200}ms`;}
+    if(sheet){el.style.backgroundImage=`url("${new URL(sheet.file,document.baseURI).href}")`;el.dataset.frames=sheet.count;el.style.animationDelay=`${-(x*7+y)%1200}ms`;rigLoop(el,sheet);}
     else el.innerHTML=img(fallback,'pin-creature-still');
     return el;
   }
@@ -308,7 +310,7 @@
     // The foe across the card's whole width on its chapter's combat ground (the scenery it is fought in), alive (its
     // resting loop) when it has one; its drawn body (footBounds) otherwise.
     const tall=e.boss?290:e.tier==='elite'?300:270;let foe;
-    if(idle){const cell=tall/.78;foe=`<span class="sc-foe map-idle" style="width:${cell}px;height:${cell}px;margin-left:${-cell/2}px;bottom:${44-cell*.06}px;background-image:url('${url('idle-'+(e.boss?'boss-'+e.bossId:'creature-'+e.creature))}')"></span>`;}
+    if(idle){const cell=tall/.78,rig=A['idle-'+(e.boss?'boss-'+e.bossId:'creature-'+e.creature)];foe=`<span class="sc-foe map-idle"${rig?.cols===6?' data-rig':''} style="width:${cell}px;height:${cell}px;margin-left:${-cell/2}px;bottom:${44-cell*.06}px;--rig-ms:${rig?.ms||0}ms;background-image:url('${url('idle-'+(e.boss?'boss-'+e.bossId:'creature-'+e.creature))}')"></span>`;}
     else{const art=A[asset]||A['icon-hero'],fb=art.footBounds||[0,0,art.width,art.height],k=tall/Math.max(1,fb[3]-fb[1]);
       foe=`<img class="sc-foe" src="${esc(art.file)}" alt="" draggable="false" style="width:${art.width*k}px;height:${art.height*k}px;margin-left:${-(fb[0]+fb[2])/2*k}px;bottom:${44-(art.height-fb[3])*k}px">`;}
     // Each star: its goal on the left, what reaching it brings on the right (four to a row). The first star is the win itself (the

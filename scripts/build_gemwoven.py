@@ -169,10 +169,18 @@ for key in [k for k,v in merged.items() if v['file'].startswith('assets/gemwoven
 for master in sorted((ROOT/'assets/gemwoven/elites').glob('*/master.png')):
     with Image.open(master) as im:merged['creature-'+master.parent.name]={'file':master.relative_to(ROOT).as_posix(),'width':im.width,'height':im.height,'transparent':True}
 # Resting loops (2x4 sheets, 256px cells) of the chapter bosses, elites and common foes: the exploration map
-# shows them alive on their stages (idle-boss-<id>, idle-creature-<id>).
+# shows them alive on their stages (idle-boss-<id>, idle-creature-<id>). A baked rig loop (rig_foes.py) is shown from a
+# 192px copy: a chapter shows a dozen at once, and that keeps the map about as light as the drawn sheets.
+HUB_RIG_CELL=192
 for pattern,prefix in [('boss-anim/*/idle.webp','boss-'),('elites/*/idle.webp','creature-'),('creatures/*/idle.webp','creature-')]:
     for sheet in sorted((ROOT/'assets/gemwoven').glob(pattern)):
-        merged['idle-'+prefix+sheet.parent.name]={'file':sheet.relative_to(ROOT).as_posix(),'width':512,'height':1024,'cols':2,'rows':4,'count':8}
+        rig=sheet.with_name('rig')/'foe'
+        if (rig/'rig.json').exists():
+            book=json.loads((rig/'rig.json').read_text(encoding='utf-8'));target=rig/'hub.webp'
+            if not target.exists() or target.stat().st_mtime<(rig/'idle.webp').stat().st_mtime:
+                with Image.open(rig/'idle.webp') as atlas:atlas.convert('RGBA').resize((HUB_RIG_CELL*book['cols'],HUB_RIG_CELL*book['rows']),Image.Resampling.LANCZOS).save(target,quality=76,alpha_quality=80,method=6)
+            merged['idle-'+prefix+sheet.parent.name]={'file':target.relative_to(ROOT).as_posix(),'width':HUB_RIG_CELL*book['cols'],'height':HUB_RIG_CELL*book['rows'],'cols':book['cols'],'rows':book['rows'],'count':book['count'],'ms':book['frameDuration']*book['count']}
+        else:merged['idle-'+prefix+sheet.parent.name]={'file':sheet.relative_to(ROOT).as_posix(),'width':512,'height':1024,'cols':2,'rows':4,'count':8}
 # Foot registration uses the visible sprite, excluding transparent canvas padding.
 for key,asset in merged.items():
     if key.startswith(('hero-','home-idle-','creature-','monster-','boss-')) and (ROOT/asset['file']).is_file():

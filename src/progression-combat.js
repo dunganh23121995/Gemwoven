@@ -6,7 +6,7 @@ const progressionProcs=new Set();
 let progressionEnemyDot=null,progressionEnemyCharge=1;
 // A campaign creature's sheets: an elite has its full combat body, a common foe a looping idle plus a still pose, or one
 // painting.
-function creatureSheets(c){return c.attack?{idle:c.idle,attack:c.attack,cast:c.cast,hurt:c.hurt,skill:c.skill,defeat:c.defeat}:c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still}:{idle:c,attack:c,cast:c,hurt:c};}
+function creatureSheets(c){return c.attack?{idle:c.idle,attack:c.attack,cast:c.cast,hurt:c.hurt,skill:c.skill,defeat:c.defeat,buff:c.buff}:c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still,buff:c.buff}:{idle:c,attack:c,cast:c,hurt:c};}
 function progressionMusicKey(){const theme=progressionBattle?.music;return theme&&ART.music?.[theme]?theme:state.enemyKey;}
 try{
   progressionStore=progressionRules.makeEngine(window.localStorage);

@@ -307,15 +307,16 @@ def register_span(sheet):
             if b:lo=min(lo,b[0]/fw);hi=max(hi,b[2]/fw)
         _span_cache[key]=[round(lo,4),round(hi,4)] if hi>lo else [0.0,1.0]
     sheet['span']=_span_cache[key]
-def rig_idle(sheet,hero,form):
-    # A form with a baked mesh-rig loop (assets/heroes/forms/rig_idle.py) rests in it; frame 1 is the old sheet's frame 1.
-    path=root/f'assets/heroes/forms/{hero}/form-{form}/rig/combat'
+def rig_idle(sheet,hero=None,form=None,path=None):
+    # A form or foe with a baked mesh-rig loop (assets/heroes/forms/rig_idle.py, assets/gemwoven/rig_foes.py) rests in it;
+    # frame 1 is the old sheet's frame 1.
+    path=path or root/f'assets/heroes/forms/{hero}/form-{form}/rig/combat'
     if not (path/'rig.json').exists():return
     rig=json.loads((path/'rig.json').read_text(encoding='utf-8'))
     sheet.update(src=image(path/'idle.webp'),cols=rig['cols'],rows=rig['rows'],count=rig['count'],frameDuration=rig['frameDuration'],heads=sheet['heads'][:1]*rig['count'])
-def rig_buff(character,hero,form):
+def rig_buff(character,hero=None,form=None,path=None):
     # A baked one-shot buff (rig_idle.py surge) starts and ends on the resting frame, so it shares the idle's framing.
-    path=root/f'assets/heroes/forms/{hero}/form-{form}/rig/buff'
+    path=path or root/f'assets/heroes/forms/{hero}/form-{form}/rig/buff'
     if not (path/'rig.json').exists():return
     rig=json.loads((path/'rig.json').read_text(encoding='utf-8')),character['idle']
     character['buff']={**rig[1],'src':image(path/'buff.webp'),'cols':rig[0]['cols'],'rows':rig[0]['rows'],'count':rig[0]['count'],'frameDuration':rig[0]['frameDuration'],'heads':rig[1]['heads'][:1]*rig[0]['count'],'baked':True}
@@ -383,9 +384,16 @@ for name,entry in head_scale.items():
     # it; it shows that much smaller in combat (Mika form 2 upright: .9, still a little taller than form 1).
     art['heroHead'].setdefault(hero,{})[form]=round(combat['headPx']/combat['cellPx']/entry.get('combatFit',1),5)
 for hero,character in art['heroes'].items():rig_idle(character['idle'],hero,'1')
+# Every foe's rig folder beside its idle sheet (assets/gemwoven/rig_foes.py).
+def foes_with_rigs():
+    for family,folder in [('campaignCreatures','creatures'),('campaignCreatures','elites'),('bosses','boss-anim'),('worldBosses','boss-anim')]:
+        for key,entry in art[family].items():
+            if isinstance(entry,dict) and 'idle' in entry and (root/'assets/gemwoven'/folder/key/'rig').exists():yield entry,root/'assets/gemwoven'/folder/key/'rig'
+for entry,path in foes_with_rigs():rig_idle(entry['idle'],path=path/'foe')
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
 for hero,character in art['heroes'].items():rig_buff(character,hero,'1')
+for entry,path in foes_with_rigs():rig_buff(entry,path=path/'buff')
 for retired in [k for k in art['campaignCreatures'] if k not in campaign_foes['foes']]:del art['campaignCreatures'][retired]
 ELITE_POSES=['attack','skill','cast','hurt','defeat']
 def creature_sheets():

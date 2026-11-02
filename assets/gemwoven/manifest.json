@@ -13317,764 +13317,859 @@
     "transparent": true
   },
   "idle-boss-briar": {
-    "file": "assets/gemwoven/boss-anim/briar/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/briar/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-cinderheart": {
-    "file": "assets/gemwoven/boss-anim/cinderheart/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/cinderheart/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-colossus": {
-    "file": "assets/gemwoven/boss-anim/colossus/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/colossus/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-coraltide": {
-    "file": "assets/gemwoven/boss-anim/coraltide/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/coraltide/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-earth": {
-    "file": "assets/gemwoven/boss-anim/earth/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/earth/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-eclipse": {
-    "file": "assets/gemwoven/boss-anim/eclipse/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/eclipse/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-elderbloom": {
-    "file": "assets/gemwoven/boss-anim/elderbloom/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/elderbloom/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-fire": {
-    "file": "assets/gemwoven/boss-anim/fire/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/fire/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-frostregent": {
-    "file": "assets/gemwoven/boss-anim/frostregent/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/frostregent/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-ice": {
-    "file": "assets/gemwoven/boss-anim/ice/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/ice/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-leviathan": {
-    "file": "assets/gemwoven/boss-anim/leviathan/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/leviathan/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-lightning": {
-    "file": "assets/gemwoven/boss-anim/lightning/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/lightning/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-mire": {
-    "file": "assets/gemwoven/boss-anim/mire/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/mire/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-moonfang": {
-    "file": "assets/gemwoven/boss-anim/moonfang/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/moonfang/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-prism": {
-    "file": "assets/gemwoven/boss-anim/prism/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/prism/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-prismback": {
-    "file": "assets/gemwoven/boss-anim/prismback/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/prismback/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-reaper": {
-    "file": "assets/gemwoven/boss-anim/reaper/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/reaper/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-roc": {
-    "file": "assets/gemwoven/boss-anim/roc/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/roc/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-sandchronarch": {
-    "file": "assets/gemwoven/boss-anim/sandchronarch/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/sandchronarch/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-scarab": {
-    "file": "assets/gemwoven/boss-anim/scarab/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/scarab/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-seraph": {
-    "file": "assets/gemwoven/boss-anim/seraph/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/seraph/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-souljailer": {
-    "file": "assets/gemwoven/boss-anim/souljailer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/souljailer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-sporefather": {
-    "file": "assets/gemwoven/boss-anim/sporefather/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/sporefather/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-boss-tempestwing": {
-    "file": "assets/gemwoven/boss-anim/tempestwing/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/boss-anim/tempestwing/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 2208
   },
   "idle-creature-abyss-a": {
-    "file": "assets/gemwoven/creatures/abyss-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/abyss-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-abyss-b": {
-    "file": "assets/gemwoven/creatures/abyss-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/abyss-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-acorn": {
-    "file": "assets/gemwoven/creatures/acorn/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/acorn/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-astral-a": {
-    "file": "assets/gemwoven/creatures/astral-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/astral-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-astral-b": {
-    "file": "assets/gemwoven/creatures/astral-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/astral-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-bamboo-a": {
-    "file": "assets/gemwoven/creatures/bamboo-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/bamboo-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-bamboo-b": {
-    "file": "assets/gemwoven/creatures/bamboo-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/bamboo-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-bat": {
-    "file": "assets/gemwoven/creatures/bat/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/bat/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-caldera-ashhound": {
-    "file": "assets/gemwoven/creatures/caldera-ashhound/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/caldera-ashhound/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-caldera-emberimp": {
-    "file": "assets/gemwoven/creatures/caldera-emberimp/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/caldera-emberimp/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-caldera-slagbeetle": {
-    "file": "assets/gemwoven/creatures/caldera-slagbeetle/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/caldera-slagbeetle/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-celestial-a": {
-    "file": "assets/gemwoven/creatures/celestial-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/celestial-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-celestial-b": {
-    "file": "assets/gemwoven/creatures/celestial-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/celestial-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-coast-a": {
-    "file": "assets/gemwoven/creatures/coast-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/coast-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-coast-b": {
-    "file": "assets/gemwoven/creatures/coast-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/coast-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-coralreef-foamjelly": {
-    "file": "assets/gemwoven/creatures/coralreef-foamjelly/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/coralreef-foamjelly/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-coralreef-pearleel": {
-    "file": "assets/gemwoven/creatures/coralreef-pearleel/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/coralreef-pearleel/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-coralreef-reefcrab": {
-    "file": "assets/gemwoven/creatures/coralreef-reefcrab/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/coralreef-reefcrab/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-crystal-a": {
-    "file": "assets/gemwoven/creatures/crystal-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/crystal-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-crystal-b": {
-    "file": "assets/gemwoven/creatures/crystal-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/crystal-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-desert-a": {
-    "file": "assets/gemwoven/creatures/desert-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/desert-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-desert-b": {
-    "file": "assets/gemwoven/creatures/desert-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/desert-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-dream-a": {
-    "file": "assets/gemwoven/creatures/dream-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/dream-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-dream-b": {
-    "file": "assets/gemwoven/creatures/dream-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/dream-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-eldergrove-barkmoth": {
-    "file": "assets/gemwoven/creatures/eldergrove-barkmoth/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/eldergrove-barkmoth/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-eldergrove-sproutling": {
-    "file": "assets/gemwoven/creatures/eldergrove-sproutling/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/eldergrove-sproutling/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-eldergrove-vineboar": {
-    "file": "assets/gemwoven/creatures/eldergrove-vineboar/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/eldergrove-vineboar/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-foundry-a": {
-    "file": "assets/gemwoven/creatures/foundry-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/foundry-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-foundry-b": {
-    "file": "assets/gemwoven/creatures/foundry-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/foundry-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-geode-crystalbat": {
-    "file": "assets/gemwoven/creatures/geode-crystalbat/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/geode-crystalbat/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-geode-shardmite": {
-    "file": "assets/gemwoven/creatures/geode-shardmite/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/geode-shardmite/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-geode-stonepup": {
-    "file": "assets/gemwoven/creatures/geode-stonepup/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/geode-stonepup/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-glacier-frostmoth": {
-    "file": "assets/gemwoven/creatures/glacier-frostmoth/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/glacier-frostmoth/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-glacier-iceling": {
-    "file": "assets/gemwoven/creatures/glacier-iceling/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/glacier-iceling/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-glacier-snowhare": {
-    "file": "assets/gemwoven/creatures/glacier-snowhare/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/glacier-snowhare/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-haunted-a": {
-    "file": "assets/gemwoven/creatures/haunted-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/haunted-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-haunted-b": {
-    "file": "assets/gemwoven/creatures/haunted-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/haunted-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-hourglass-clockmote": {
-    "file": "assets/gemwoven/creatures/hourglass-clockmote/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/hourglass-clockmote/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-hourglass-dustscarab": {
-    "file": "assets/gemwoven/creatures/hourglass-dustscarab/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/hourglass-dustscarab/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-hourglass-sandcobra": {
-    "file": "assets/gemwoven/creatures/hourglass-sandcobra/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/hourglass-sandcobra/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-ice-a": {
-    "file": "assets/gemwoven/creatures/ice-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/ice-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-ice-b": {
-    "file": "assets/gemwoven/creatures/ice-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/ice-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-marsh-a": {
-    "file": "assets/gemwoven/creatures/marsh-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/marsh-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-marsh-b": {
-    "file": "assets/gemwoven/creatures/marsh-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/marsh-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-moonkeep-duskfang": {
-    "file": "assets/gemwoven/creatures/moonkeep-duskfang/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/moonkeep-duskfang/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-moonkeep-moonmoth": {
-    "file": "assets/gemwoven/creatures/moonkeep-moonmoth/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/moonkeep-moonmoth/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-moonkeep-shadowraven": {
-    "file": "assets/gemwoven/creatures/moonkeep-shadowraven/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/moonkeep-shadowraven/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-mycelium-rottick": {
-    "file": "assets/gemwoven/creatures/mycelium-rottick/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/mycelium-rottick/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-mycelium-sludgesnail": {
-    "file": "assets/gemwoven/creatures/mycelium-sludgesnail/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/mycelium-sludgesnail/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-mycelium-sporecap": {
-    "file": "assets/gemwoven/creatures/mycelium-sporecap/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/mycelium-sporecap/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-obsidian-a": {
-    "file": "assets/gemwoven/creatures/obsidian-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/obsidian-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-obsidian-b": {
-    "file": "assets/gemwoven/creatures/obsidian-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/obsidian-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-pine-a": {
-    "file": "assets/gemwoven/creatures/pine-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/pine-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-pine-b": {
-    "file": "assets/gemwoven/creatures/pine-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/pine-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-sky-a": {
-    "file": "assets/gemwoven/creatures/sky-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/sky-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-sky-b": {
-    "file": "assets/gemwoven/creatures/sky-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/sky-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-slime": {
-    "file": "assets/gemwoven/creatures/slime/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/slime/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-soulcrypt-bonecrow": {
-    "file": "assets/gemwoven/creatures/soulcrypt-bonecrow/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/soulcrypt-bonecrow/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-soulcrypt-chainrat": {
-    "file": "assets/gemwoven/creatures/soulcrypt-chainrat/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/soulcrypt-chainrat/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-soulcrypt-wisp": {
-    "file": "assets/gemwoven/creatures/soulcrypt-wisp/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/soulcrypt-wisp/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-stormspire-cloudjelly": {
-    "file": "assets/gemwoven/creatures/stormspire-cloudjelly/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/stormspire-cloudjelly/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-stormspire-gustfox": {
-    "file": "assets/gemwoven/creatures/stormspire-gustfox/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/stormspire-gustfox/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-stormspire-sparkfinch": {
-    "file": "assets/gemwoven/creatures/stormspire-sparkfinch/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/stormspire-sparkfinch/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-thorns-a": {
-    "file": "assets/gemwoven/creatures/thorns-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/thorns-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-thorns-b": {
-    "file": "assets/gemwoven/creatures/thorns-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/thorns-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-thunder-a": {
-    "file": "assets/gemwoven/creatures/thunder-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/thunder-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-thunder-b": {
-    "file": "assets/gemwoven/creatures/thunder-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/thunder-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-void-a": {
-    "file": "assets/gemwoven/creatures/void-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/void-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-void-b": {
-    "file": "assets/gemwoven/creatures/void-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/void-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-volcano-a": {
-    "file": "assets/gemwoven/creatures/volcano-a/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/volcano-a/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "idle-creature-volcano-b": {
-    "file": "assets/gemwoven/creatures/volcano-b/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/creatures/volcano-b/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1608
   },
   "ring-normal": {
     "file": "assets/gemwoven/atlas/ui/ring-normal.webp",
@@ -17334,963 +17429,1083 @@
     ]
   },
   "idle-creature-abyss-harpooner": {
-    "file": "assets/gemwoven/elites/abyss-harpooner/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/abyss-harpooner/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-abyss-krakenlord": {
-    "file": "assets/gemwoven/elites/abyss-krakenlord/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/abyss-krakenlord/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-abyss-reefcorsair": {
-    "file": "assets/gemwoven/elites/abyss-reefcorsair/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/abyss-reefcorsair/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-abyss-sirenblade": {
-    "file": "assets/gemwoven/elites/abyss-sirenblade/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/abyss-sirenblade/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-abyss-tidecaller": {
-    "file": "assets/gemwoven/elites/abyss-tidecaller/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/abyss-tidecaller/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-caldera-basaltbrute": {
-    "file": "assets/gemwoven/elites/caldera-basaltbrute/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/caldera-basaltbrute/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-caldera-furnacepriest": {
-    "file": "assets/gemwoven/elites/caldera-furnacepriest/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/caldera-furnacepriest/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-caldera-lavadancer": {
-    "file": "assets/gemwoven/elites/caldera-lavadancer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/caldera-lavadancer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-caldera-obsidianlord": {
-    "file": "assets/gemwoven/elites/caldera-obsidianlord/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/caldera-obsidianlord/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-caldera-slagslinger": {
-    "file": "assets/gemwoven/elites/caldera-slagslinger/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/caldera-slagslinger/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-celestial-choirmaid": {
-    "file": "assets/gemwoven/elites/celestial-choirmaid/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/celestial-choirmaid/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-celestial-dawncleric": {
-    "file": "assets/gemwoven/elites/celestial-dawncleric/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/celestial-dawncleric/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-celestial-dawnlegate": {
-    "file": "assets/gemwoven/elites/celestial-dawnlegate/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/celestial-dawnlegate/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-celestial-judgeknight": {
-    "file": "assets/gemwoven/elites/celestial-judgeknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/celestial-judgeknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-celestial-sunpaladin": {
-    "file": "assets/gemwoven/elites/celestial-sunpaladin/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/celestial-sunpaladin/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-coralreef-anemonewitch": {
-    "file": "assets/gemwoven/elites/coralreef-anemonewitch/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/coralreef-anemonewitch/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-coralreef-coraloracle": {
-    "file": "assets/gemwoven/elites/coralreef-coraloracle/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/coralreef-coraloracle/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-coralreef-sharkhunter": {
-    "file": "assets/gemwoven/elites/coralreef-sharkhunter/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/coralreef-sharkhunter/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-coralreef-shellgeneral": {
-    "file": "assets/gemwoven/elites/coralreef-shellgeneral/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/coralreef-shellgeneral/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-coralreef-tidemarshal": {
-    "file": "assets/gemwoven/elites/coralreef-tidemarshal/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/coralreef-tidemarshal/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-crystal-gemsage": {
-    "file": "assets/gemwoven/elites/crystal-gemsage/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/crystal-gemsage/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-crystal-geodeguard": {
-    "file": "assets/gemwoven/elites/crystal-geodeguard/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/crystal-geodeguard/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-crystal-prismarcher": {
-    "file": "assets/gemwoven/elites/crystal-prismarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/crystal-prismarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-crystal-shardblade": {
-    "file": "assets/gemwoven/elites/crystal-shardblade/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/crystal-shardblade/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-crystal-shardmonk": {
-    "file": "assets/gemwoven/elites/crystal-shardmonk/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/crystal-shardmonk/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-desert-jarmummy": {
-    "file": "assets/gemwoven/elites/desert-jarmummy/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/desert-jarmummy/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-desert-sandpriest": {
-    "file": "assets/gemwoven/elites/desert-sandpriest/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/desert-sandpriest/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-desert-scarabguard": {
-    "file": "assets/gemwoven/elites/desert-scarabguard/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/desert-scarabguard/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-desert-sphinxguard": {
-    "file": "assets/gemwoven/elites/desert-sphinxguard/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/desert-sphinxguard/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-desert-sunarcher": {
-    "file": "assets/gemwoven/elites/desert-sunarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/desert-sunarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-eldergrove-birchelder": {
-    "file": "assets/gemwoven/elites/eldergrove-birchelder/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/eldergrove-birchelder/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-eldergrove-blossomranger": {
-    "file": "assets/gemwoven/elites/eldergrove-blossomranger/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/eldergrove-blossomranger/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-eldergrove-honeykeeper": {
-    "file": "assets/gemwoven/elites/eldergrove-honeykeeper/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/eldergrove-honeykeeper/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-eldergrove-petalarcher": {
-    "file": "assets/gemwoven/elites/eldergrove-petalarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/eldergrove-petalarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-eldergrove-rootwarden": {
-    "file": "assets/gemwoven/elites/eldergrove-rootwarden/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/eldergrove-rootwarden/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-forest-boarstalker": {
-    "file": "assets/gemwoven/elites/forest-boarstalker/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/forest-boarstalker/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-forest-leafarcher": {
-    "file": "assets/gemwoven/elites/forest-leafarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/forest-leafarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-forest-mossdruid": {
-    "file": "assets/gemwoven/elites/forest-mossdruid/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/forest-mossdruid/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-forest-rootknight": {
-    "file": "assets/gemwoven/elites/forest-rootknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/forest-rootknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-forest-stagchief": {
-    "file": "assets/gemwoven/elites/forest-stagchief/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/forest-stagchief/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-foundry-chiefengineer": {
-    "file": "assets/gemwoven/elites/foundry-chiefengineer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/foundry-chiefengineer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-foundry-gearknight": {
-    "file": "assets/gemwoven/elites/foundry-gearknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/foundry-gearknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-foundry-sawbutcher": {
-    "file": "assets/gemwoven/elites/foundry-sawbutcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/foundry-sawbutcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-foundry-steamgunner": {
-    "file": "assets/gemwoven/elites/foundry-steamgunner/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/foundry-steamgunner/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-foundry-tinkerer": {
-    "file": "assets/gemwoven/elites/foundry-tinkerer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/foundry-tinkerer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-geode-lodeshooter": {
-    "file": "assets/gemwoven/elites/geode-lodeshooter/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/geode-lodeshooter/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-geode-minechief": {
-    "file": "assets/gemwoven/elites/geode-minechief/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/geode-minechief/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-geode-prismseer": {
-    "file": "assets/gemwoven/elites/geode-prismseer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/geode-prismseer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-geode-quartzduelist": {
-    "file": "assets/gemwoven/elites/geode-quartzduelist/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/geode-quartzduelist/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-geode-rampartgolem": {
-    "file": "assets/gemwoven/elites/geode-rampartgolem/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/geode-rampartgolem/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-glacier-blizzardmage": {
-    "file": "assets/gemwoven/elites/glacier-blizzardmage/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/glacier-blizzardmage/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-glacier-frostbolter": {
-    "file": "assets/gemwoven/elites/glacier-frostbolter/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/glacier-frostbolter/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-glacier-mirrorpriestess": {
-    "file": "assets/gemwoven/elites/glacier-mirrorpriestess/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/glacier-mirrorpriestess/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-glacier-rimeknight": {
-    "file": "assets/gemwoven/elites/glacier-rimeknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/glacier-rimeknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-glacier-wintergeneral": {
-    "file": "assets/gemwoven/elites/glacier-wintergeneral/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/glacier-wintergeneral/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-haunted-banshee": {
-    "file": "assets/gemwoven/elites/haunted-banshee/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/haunted-banshee/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-haunted-bonepaladin": {
-    "file": "assets/gemwoven/elites/haunted-bonepaladin/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/haunted-bonepaladin/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-haunted-gravewarden": {
-    "file": "assets/gemwoven/elites/haunted-gravewarden/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/haunted-gravewarden/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-haunted-necrolord": {
-    "file": "assets/gemwoven/elites/haunted-necrolord/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/haunted-necrolord/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-haunted-scarecrow": {
-    "file": "assets/gemwoven/elites/haunted-scarecrow/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/haunted-scarecrow/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-hourglass-chronoweaver": {
-    "file": "assets/gemwoven/elites/hourglass-chronoweaver/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/hourglass-chronoweaver/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-hourglass-dunesentinel": {
-    "file": "assets/gemwoven/elites/hourglass-dunesentinel/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/hourglass-dunesentinel/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-hourglass-sandarcher": {
-    "file": "assets/gemwoven/elites/hourglass-sandarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/hourglass-sandarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-hourglass-sandgeneral": {
-    "file": "assets/gemwoven/elites/hourglass-sandgeneral/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/hourglass-sandgeneral/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-hourglass-stormassassin": {
-    "file": "assets/gemwoven/elites/hourglass-stormassassin/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/hourglass-stormassassin/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-ice-foxhuntress": {
-    "file": "assets/gemwoven/elites/ice-foxhuntress/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/ice-foxhuntress/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-ice-frostguard": {
-    "file": "assets/gemwoven/elites/ice-frostguard/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/ice-frostguard/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-ice-moonduelist": {
-    "file": "assets/gemwoven/elites/ice-moonduelist/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/ice-moonduelist/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-ice-moonjarl": {
-    "file": "assets/gemwoven/elites/ice-moonjarl/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/ice-moonjarl/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-ice-snowwitch": {
-    "file": "assets/gemwoven/elites/ice-snowwitch/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/ice-snowwitch/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-marsh-bogstalker": {
-    "file": "assets/gemwoven/elites/marsh-bogstalker/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/marsh-bogstalker/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-marsh-bogwarlord": {
-    "file": "assets/gemwoven/elites/marsh-bogwarlord/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/marsh-bogwarlord/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-marsh-leechblade": {
-    "file": "assets/gemwoven/elites/marsh-leechblade/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/marsh-leechblade/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-marsh-sporewitch": {
-    "file": "assets/gemwoven/elites/marsh-sporewitch/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/marsh-sporewitch/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-marsh-toadshaman": {
-    "file": "assets/gemwoven/elites/marsh-toadshaman/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/marsh-toadshaman/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-moonkeep-bloodseer": {
-    "file": "assets/gemwoven/elites/moonkeep-bloodseer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/moonkeep-bloodseer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-moonkeep-crescentarcher": {
-    "file": "assets/gemwoven/elites/moonkeep-crescentarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/moonkeep-crescentarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-moonkeep-eclipsehuntress": {
-    "file": "assets/gemwoven/elites/moonkeep-eclipsehuntress/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/moonkeep-eclipsehuntress/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-moonkeep-lunarknight": {
-    "file": "assets/gemwoven/elites/moonkeep-lunarknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/moonkeep-lunarknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-moonkeep-wolfslayer": {
-    "file": "assets/gemwoven/elites/moonkeep-wolfslayer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/moonkeep-wolfslayer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-mycelium-mycoknight": {
-    "file": "assets/gemwoven/elites/mycelium-mycoknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/mycelium-mycoknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-mycelium-plagueherald": {
-    "file": "assets/gemwoven/elites/mycelium-plagueherald/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/mycelium-plagueherald/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-mycelium-rotchampion": {
-    "file": "assets/gemwoven/elites/mycelium-rotchampion/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/mycelium-rotchampion/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-mycelium-sporearcher": {
-    "file": "assets/gemwoven/elites/mycelium-sporearcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/mycelium-sporearcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-mycelium-sporehag": {
-    "file": "assets/gemwoven/elites/mycelium-sporehag/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/mycelium-sporehag/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-sky-cloudmonk": {
-    "file": "assets/gemwoven/elites/sky-cloudmonk/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/sky-cloudmonk/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-sky-fanblade": {
-    "file": "assets/gemwoven/elites/sky-fanblade/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/sky-fanblade/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-sky-galearcher": {
-    "file": "assets/gemwoven/elites/sky-galearcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/sky-galearcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-sky-tempestmage": {
-    "file": "assets/gemwoven/elites/sky-tempestmage/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/sky-tempestmage/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-sky-windknight": {
-    "file": "assets/gemwoven/elites/sky-windknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/sky-windknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-soulcrypt-cagekeeper": {
-    "file": "assets/gemwoven/elites/soulcrypt-cagekeeper/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/soulcrypt-cagekeeper/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-soulcrypt-cellbolter": {
-    "file": "assets/gemwoven/elites/soulcrypt-cellbolter/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/soulcrypt-cellbolter/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-soulcrypt-dreadwarden": {
-    "file": "assets/gemwoven/elites/soulcrypt-dreadwarden/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/soulcrypt-dreadwarden/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-soulcrypt-veilassassin": {
-    "file": "assets/gemwoven/elites/soulcrypt-veilassassin/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/soulcrypt-veilassassin/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-soulcrypt-wailbinder": {
-    "file": "assets/gemwoven/elites/soulcrypt-wailbinder/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/soulcrypt-wailbinder/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-stormspire-galeduelist": {
-    "file": "assets/gemwoven/elites/stormspire-galeduelist/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/stormspire-galeduelist/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-stormspire-goldarcher": {
-    "file": "assets/gemwoven/elites/stormspire-goldarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/stormspire-goldarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-stormspire-stormshaman": {
-    "file": "assets/gemwoven/elites/stormspire-stormshaman/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/stormspire-stormshaman/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-stormspire-thunderarchon": {
-    "file": "assets/gemwoven/elites/stormspire-thunderarchon/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/stormspire-thunderarchon/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-stormspire-voltlancer": {
-    "file": "assets/gemwoven/elites/stormspire-voltlancer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/stormspire-voltlancer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thorns-bramblewarden": {
-    "file": "assets/gemwoven/elites/thorns-bramblewarden/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thorns-bramblewarden/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thorns-briarduelist": {
-    "file": "assets/gemwoven/elites/thorns-briarduelist/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thorns-briarduelist/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thorns-rosearcher": {
-    "file": "assets/gemwoven/elites/thorns-rosearcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thorns-rosearcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thorns-shearkeeper": {
-    "file": "assets/gemwoven/elites/thorns-shearkeeper/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thorns-shearkeeper/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thorns-vinehexer": {
-    "file": "assets/gemwoven/elites/thorns-vinehexer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thorns-vinehexer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thunder-bellpriest": {
-    "file": "assets/gemwoven/elites/thunder-bellpriest/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thunder-bellpriest/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thunder-boltgunner": {
-    "file": "assets/gemwoven/elites/thunder-boltgunner/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thunder-boltgunner/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thunder-sparkmage": {
-    "file": "assets/gemwoven/elites/thunder-sparkmage/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thunder-sparkmage/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thunder-stormblade": {
-    "file": "assets/gemwoven/elites/thunder-stormblade/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thunder-stormblade/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-thunder-stormmaul": {
-    "file": "assets/gemwoven/elites/thunder-stormmaul/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/thunder-stormmaul/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-void-cometlord": {
-    "file": "assets/gemwoven/elites/void-cometlord/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/void-cometlord/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-void-gravitymonk": {
-    "file": "assets/gemwoven/elites/void-gravitymonk/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/void-gravitymonk/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-void-riftstalker": {
-    "file": "assets/gemwoven/elites/void-riftstalker/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/void-riftstalker/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-void-starseer": {
-    "file": "assets/gemwoven/elites/void-starseer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/void-starseer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-void-voidknight": {
-    "file": "assets/gemwoven/elites/void-voidknight/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/void-voidknight/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-volcano-ashcultist": {
-    "file": "assets/gemwoven/elites/volcano-ashcultist/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/volcano-ashcultist/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-volcano-drakewarlord": {
-    "file": "assets/gemwoven/elites/volcano-drakewarlord/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/volcano-drakewarlord/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-volcano-flamelancer": {
-    "file": "assets/gemwoven/elites/volcano-flamelancer/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/volcano-flamelancer/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-volcano-pyremonk": {
-    "file": "assets/gemwoven/elites/volcano-pyremonk/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/volcano-pyremonk/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   },
   "idle-creature-volcano-slagarcher": {
-    "file": "assets/gemwoven/elites/volcano-slagarcher/idle.webp",
-    "width": 512,
-    "height": 1024,
-    "cols": 2,
+    "file": "assets/gemwoven/elites/volcano-slagarcher/rig/foe/hub.webp",
+    "width": 1152,
+    "height": 768,
+    "cols": 6,
     "rows": 4,
-    "count": 8
+    "count": 24,
+    "ms": 1800
   }
 }
