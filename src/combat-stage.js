@@ -148,7 +148,10 @@ function followCombatHeads(){
 // `pending` lists (and the returned promise) get only the short beat each popup always had.
 const COMBAT_POPUP_LIFE={damage:1300,crit:1650,blocked:1250,heal:1350,armor:1350,energy:1250,stored:1350,miss:1200,status:1500,callout:1400,ultimate:1700};
 const COMBAT_POPUP_KEEP=4,COMBAT_POPUP_GAP=2;
-const combatPopupColumns={hero:[],enemy:[]};
+// Worded popups (statuses, callouts, a miss, CHÍ MẠNG!) keep a column of their own over the head: they appear at the
+// waist and run quickly up to the crown, so they never sit across the body.
+const COMBAT_POPUP_WORDS=new Set(['miss','status','callout','ultimate']);
+const combatPopupColumns={hero:[],enemy:[],heroWords:[],enemyWords:[]};
 // Warm the crit art so the first critical hit shows its burst on the very frame it lands.
 if(typeof ART!=='undefined'&&ART.uiFx)for(const src of Object.values(ART.uiFx)){const img=new Image();img.decoding='async';img.src=src;}
 // The column's foot sits low on the body (a quarter of the way up from the boots), on the outer
@@ -160,13 +163,25 @@ function combatPopupAnchor(side,p=combatIdleHead(side)){
   return {x:p.x+out*Math.min(40,p.width*.14),y:Math.max(70,Math.min(H-16,feet-body*.25))};
 }
 function placeCombatPopupColumn(side,p){
-  const column=combatPopupColumns[side];if(!column.length||!p)return;
-  const W=$('scene').clientWidth||375,a=combatPopupAnchor(side,p);
-  for(const pop of column){
-    if(!pop.node.isConnected)continue;
-    const w=pop.node.offsetWidth||80;
-    pop.node.style.left=Math.max(w/2+6,Math.min(W-w/2-6,a.x+pop.dx))+'px';pop.node.style.top=a.y+'px';
+  if(!p)return;
+  const W=$('scene').clientWidth||375;
+  for(const [column,a] of [[combatPopupColumns[side],combatPopupAnchor(side,p)],[combatPopupColumns[side+'Words'],combatPopupCrown(side,p)]]){
+    for(const pop of column){
+      if(!pop.node.isConnected)continue;
+      const w=pop.node.offsetWidth||80;
+      pop.node.style.left=Math.max(w/2+6,Math.min(W-w/2-6,a.x+pop.dx))+'px';pop.node.style.top=a.y+'px';
+    }
   }
+}
+// Worded popups end over the head, just above the head bar (name, health, energy) so they never cover it.
+function combatPopupCrown(side,p=combatIdleHead(side)){
+  const hud=$(side==='hero'?'heroHeadHud':'enemyHeadHud');
+  if(!hud?.offsetParent||hud.style.visibility==='hidden')return {x:p.x,y:p.y};
+  return {x:p.x,y:hud.getBoundingClientRect().top-$('scene').getBoundingClientRect().top-2};
+}
+// How far below that the waist lies, where a worded popup starts its run up.
+function combatPopupRise(side,p=combatIdleHead(side)){
+  return Math.max(24,combatPopupAnchor(side,p).y-combatPopupCrown(side,p).y-10);
 }
 function combatPopupMarkup(kind,text){
   const body=document.createElement('span');body.className='combat-pop-body';
@@ -184,15 +199,15 @@ function combatPopupLife(pop,frames,duration){
 }
 // Newest at the bottom: each popup rises by the heights of the ones that came after it. Only the
 // newest few stay; older ones fade out early.
-function restackCombatPopups(side){
-  const column=combatPopupColumns[side]=combatPopupColumns[side].filter(pop=>pop.node.isConnected&&!pop.retired);
+function restackCombatPopups(key){
+  const column=combatPopupColumns[key]=combatPopupColumns[key].filter(pop=>pop.node.isConnected&&!pop.retired);
   while(column.length>COMBAT_POPUP_KEEP)retireCombatPopup(column[0]);
   let shift=0;
   for(let i=column.length-1;i>=0;i--){column[i].node.style.translate=`0 ${-shift}px`;shift+=(column[i].node.offsetHeight||28)+COMBAT_POPUP_GAP;}
 }
 function retireCombatPopup(pop,now=false){
   if(pop.retired)return;pop.retired=true;pop.generation++;
-  const column=combatPopupColumns[pop.side],i=column.indexOf(pop);if(i>=0)column.splice(i,1);
+  const column=combatPopupColumns[pop.column],i=column.indexOf(pop);if(i>=0)column.splice(i,1);
   const end=()=>{pop.node.remove();pop.resolve();};
   if(now||reduced)return end();
   pop.node.classList.add('is-retiring');setTimeout(end,200);
@@ -205,25 +220,33 @@ function combatPopup(side,text,{kind='damage',tone='',index=0,beat=360,pending,l
   if(reduced||!root)return {ready,done:ready,update(){}};
   // The same callout again while it is still up (KHẮC HỆ on each of nine bolts, a repeated stun)
   // refreshes that one instead of stacking copies.
-  if(!['damage','crit','blocked','heal','armor','energy','stored'].includes(kind)){
-    const twin=combatPopupColumns[side].find(other=>!other.retired&&other.kind===kind&&other.text===text&&other.node.isConnected);
+  const words=COMBAT_POPUP_WORDS.has(kind),key=words?side+'Words':side;
+  if(words){
+    const twin=combatPopupColumns[key].find(other=>!other.retired&&other.kind===kind&&other.text===text&&other.node.isConnected);
     if(twin){
-      const column=combatPopupColumns[side];column.splice(column.indexOf(twin),1);column.push(twin);
-      restackCombatPopups(side);twin.update(text);return {ready,done:twin.done,node:twin.node,update:twin.update};
+      const column=combatPopupColumns[key];column.splice(column.indexOf(twin),1);column.push(twin);
+      restackCombatPopups(key);twin.update(text);return {ready,done:twin.done,node:twin.node,update:twin.update};
     }
   }
   const node=document.createElement('span');node.className='combat-pop is-'+kind+(tone?' tone-'+tone:'');node.setAttribute('aria-hidden','true');
   node.dataset.popSide=side;node.dataset.popKind=kind;
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
   const body=combatPopupMarkup(kind,text);node.append(body);root.append(node);
-  const pop={side,node,body,kind,text,generation:0,dx:index?((index%2?1:-1)*Math.min(14,4+index*3)):0,retired:false};
+  const pop={side,column:key,node,body,kind,text,generation:0,dx:index?((index%2?1:-1)*Math.min(14,4+index*3)):0,retired:false};
   pop.done=new Promise(resolve=>pop.resolve=resolve);
   // The new popup takes the bottom slot; the column above it rises by its height.
-  combatPopupColumns[side].push(pop);
-  restackCombatPopups(side);
-  placeCombatPopupColumn(side,combatIdleHead(side));
-  const total=life||COMBAT_POPUP_LIFE[kind]||1300,pop_in=kind==='crit'?.13:.11;
-  combatPopupLife(pop,kind==='crit'?[
+  combatPopupColumns[key].push(pop);
+  restackCombatPopups(key);
+  const head=combatIdleHead(side);placeCombatPopupColumn(side,head);
+  const total=life||COMBAT_POPUP_LIFE[kind]||1300,pop_in=kind==='crit'?.13:.11,rise=words?combatPopupRise(side,head):0;
+  combatPopupLife(pop,words?[
+    {opacity:0,transform:`translateY(${rise}px) scale(.85)`,easing:'cubic-bezier(.15,.8,.3,1)'},
+    {opacity:1,offset:.05},
+    {transform:'translateY(-3px) scale(1.04)',offset:.17,easing:'ease-out'},
+    {opacity:1,transform:'translateY(0) scale(1)',offset:.23},
+    {opacity:1,transform:'translateY(-5px) scale(1)',offset:.8},
+    {opacity:0,transform:'translateY(-14px) scale(.98)'}
+  ]:kind==='crit'?[
     {opacity:0,transform:'translateY(6px) scale(.35) rotate(-8deg)'},
     {opacity:1,transform:'translateY(-4px) scale(1.28) rotate(3deg)',offset:.07},
     {opacity:1,transform:'translateY(0) scale(.96) rotate(0deg)',offset:pop_in},

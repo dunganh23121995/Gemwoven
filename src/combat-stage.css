@@ -56,16 +56,16 @@ body.reduced-motion .ultimate-aura{display:none}
 /* Statuses (burns, curses, misses, interrupts) and callouts (combo, KHẮC HỆ, stuns, skill names)
    sit on a soft dark plate so short words stay legible over busy art. */
 .combat-pop.is-status,.combat-pop.is-callout,.combat-pop.is-ultimate{--pop-fill:#fff1d2;--pop-edge:#1d120c;--pop-glow:var(--skill-color)}
-.combat-pop.is-status .combat-pop-body,.combat-pop.is-callout .combat-pop-body,.combat-pop.is-ultimate .combat-pop-body{padding:4px 15px 5px;background:linear-gradient(90deg,transparent,#0d1720d9 16%,#0d1720d9 84%,transparent);border-top:1px solid color-mix(in srgb,var(--pop-glow) 60%,transparent);border-bottom:1px solid color-mix(in srgb,var(--pop-glow) 60%,transparent)}
+.combat-pop.is-status .combat-pop-body,.combat-pop.is-callout .combat-pop-body,.combat-pop.is-ultimate .combat-pop-body{padding:4px 15px 5px;background:linear-gradient(90deg,transparent,#0d17208c 20%,#0d17208c 80%,transparent)}/* worded popups stay quiet: a soft dark wash, no rules */
 .combat-pop.is-status strong,.combat-pop.is-callout strong{font:800 14px/1.05 Cambria,Georgia,serif;letter-spacing:.3px;text-shadow:0 1px 0 var(--pop-edge),0 -1px 0 var(--pop-edge),1px 0 0 var(--pop-edge),-1px 0 0 var(--pop-edge),0 2px 3px #000c,0 0 9px var(--pop-glow)}
 .combat-pop.is-status{--pop-fill:#ffd9b0;--pop-glow:#ff7a45}
-.combat-pop.is-ultimate strong{font:italic 800 18px/1.05 Cambria,Georgia,serif;color:#fff8de;text-shadow:0 1px 0 #362015,0 -1px 0 #362015,1px 0 0 #362015,-1px 0 0 #362015,0 2px 3px #000c,0 0 12px var(--pop-glow),0 0 22px var(--pop-glow)}
+.combat-pop.is-ultimate strong{font:italic 800 15px/1.05 Cambria,Georgia,serif;color:#fff8de;text-shadow:0 1px 0 #362015,0 -1px 0 #362015,1px 0 0 #362015,-1px 0 0 #362015,0 2px 3px #000c,0 0 12px var(--pop-glow),0 0 22px var(--pop-glow)}
 .combat-pop.tone-good{--pop-fill:#c4ffcf;--pop-glow:#4fe38a}
 .combat-pop.tone-ward{--pop-fill:#dcf1ff;--pop-glow:#62c3ff}
 .combat-pop.tone-energy{--pop-fill:#f0dcff;--pop-glow:#b46bff}
 .combat-pop.tone-control{--pop-fill:#d9fbff;--pop-glow:#5fe2ff}
 .combat-pop.tone-advantage{--pop-fill:#ffe9a6;--pop-glow:#ffb43c}
-@media(max-width:520px){.combat-pop strong{font-size:23px}.combat-pop.is-crit strong{font-size:32px}.combat-pop .crit-burst{width:128px}.combat-pop .crit-ribbon{width:96px}.combat-pop.is-ultimate strong{font-size:16px}.combat-pop.is-status strong,.combat-pop.is-callout strong{font-size:13px}}
+@media(max-width:520px){.combat-pop strong{font-size:23px}.combat-pop.is-crit strong{font-size:32px}.combat-pop .crit-burst{width:128px}.combat-pop .crit-ribbon{width:96px}.combat-pop.is-ultimate strong{font-size:14px}.combat-pop.is-status strong,.combat-pop.is-callout strong{font-size:13px}}
 /* Skill names (combatSkillTitle), set like action gacha ultimate titles: slanted condensed capitals ('Gemwoven Title',
    Anton, embedded by build.py) in chrome gold, a thin dark edge, a halo in the caster's colour. As the
    seal slams down (22% of 1.9 s): a flash, a shock ring, the letters jolt, two glints; then a light sweeps across. */
