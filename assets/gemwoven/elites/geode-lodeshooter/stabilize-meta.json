@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\geode-lodeshooter\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9948,
+      "error": 0.1372,
+      "moving_share": 0.0093
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1529,
+      "moving_share": 0.0242
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9948,
+      "error": 0.1688,
+      "moving_share": 0.034
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1296,
+      "moving_share": 0.0033
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0048,
+      "error": 0.1346,
+      "moving_share": 0.0145
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1383,
+      "moving_share": 0.0171
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1466,
+      "moving_share": 0.0278
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1213,
+      "moving_share": 0.007
+    }
+  ],
+  "jitter": [
+    4.05,
+    3.67,
+    7.06,
+    2.32,
+    3.21,
+    4.99,
+    5.01,
+    1.2
+  ]
+}

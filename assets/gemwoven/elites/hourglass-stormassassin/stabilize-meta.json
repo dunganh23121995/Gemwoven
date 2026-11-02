@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\hourglass-stormassassin\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0,
+      "error": 0.2386,
+      "moving_share": 0.0709
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.2578,
+      "moving_share": 0.0967
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9917,
+      "error": 0.2912,
+      "moving_share": 0.1065
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.2515,
+      "moving_share": 0.0893
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2813,
+      "moving_share": 0.0927
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2893,
+      "moving_share": 0.1063
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2525,
+      "moving_share": 0.1002
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2301,
+      "moving_share": 0.0649
+    }
+  ],
+  "jitter": [
+    26.49,
+    23.47,
+    29.62,
+    25.33,
+    24.14,
+    38.44,
+    28.5,
+    3.82
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\coralreef-sharkhunter\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1454,
+      "moving_share": 0.0013
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1351,
+      "moving_share": 0.0029
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1541,
+      "moving_share": 0.0071
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1393,
+      "moving_share": 0.0058
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1495,
+      "moving_share": 0.0063
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1499,
+      "moving_share": 0.0044
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1451,
+      "moving_share": 0.0047
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1369,
+      "moving_share": 0.0029
+    }
+  ],
+  "jitter": [
+    0.16,
+    0.93,
+    1.39,
+    1.28,
+    1.2,
+    0.97,
+    0.38,
+    0.38
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\moonkeep-wolfslayer\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1482,
+      "moving_share": 0.0119
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1695,
+      "moving_share": 0.0341
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2043,
+      "moving_share": 0.0614
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1888,
+      "moving_share": 0.0549
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1395,
+      "moving_share": 0.0084
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1969,
+      "moving_share": 0.0546
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.99,
+      "error": 0.1778,
+      "moving_share": 0.0365
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.1563,
+      "moving_share": 0.0152
+    }
+  ],
+  "jitter": [
+    3.36,
+    7.11,
+    6.88,
+    7.51,
+    7.4,
+    5.74,
+    2.71,
+    0.65
+  ]
+}

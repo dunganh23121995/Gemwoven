@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\geode-quartzduelist\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1619,
+      "moving_share": 0.0076
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1675,
+      "moving_share": 0.0199
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.174,
+      "moving_share": 0.0261
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1794,
+      "moving_share": 0.0285
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0043,
+      "error": 0.1812,
+      "moving_share": 0.0134
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1762,
+      "moving_share": 0.0054
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.152,
+      "moving_share": 0.0077
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.01,
+      "error": 0.1687,
+      "moving_share": 0.009
+    }
+  ],
+  "jitter": [
+    5.95,
+    4.11,
+    4.68,
+    8.38,
+    3.83,
+    1.91,
+    0.42,
+    0.56
+  ]
+}

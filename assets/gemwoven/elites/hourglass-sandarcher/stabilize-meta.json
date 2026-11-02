@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\hourglass-sandarcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.243,
+      "moving_share": 0.0496
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.269,
+      "moving_share": 0.0777
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9855,
+      "error": 0.2871,
+      "moving_share": 0.0699
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9906,
+      "error": 0.2583,
+      "moving_share": 0.0638
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": -1,
+      "dy": -2,
+      "scale": 0.9848,
+      "error": 0.25,
+      "moving_share": 0.0571
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2375,
+      "moving_share": 0.0483
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2572,
+      "moving_share": 0.0619
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.22,
+      "moving_share": 0.0412
+    }
+  ],
+  "jitter": [
+    25.2,
+    34.74,
+    28.76,
+    25.71,
+    18.7,
+    9.55,
+    18.03,
+    6.45
+  ]
+}

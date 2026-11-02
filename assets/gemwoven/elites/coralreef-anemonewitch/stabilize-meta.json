@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\coralreef-anemonewitch\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0004,
+      "error": 0.2669,
+      "moving_share": 0.0714
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0098,
+      "error": 0.3107,
+      "moving_share": 0.1072
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": -2,
+      "dy": -1,
+      "scale": 0.9846,
+      "error": 0.3765,
+      "moving_share": 0.123
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0009,
+      "error": 0.2695,
+      "moving_share": 0.0585
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2805,
+      "moving_share": 0.0657
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0009,
+      "error": 0.2701,
+      "moving_share": 0.0811
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.989,
+      "error": 0.3101,
+      "moving_share": 0.1077
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0004,
+      "error": 0.2647,
+      "moving_share": 0.0636
+    }
+  ],
+  "jitter": [
+    23.95,
+    27.07,
+    28.91,
+    16.5,
+    20.35,
+    26.84,
+    24.76,
+    8.66
+  ]
+}
