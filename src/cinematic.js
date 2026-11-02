@@ -18,7 +18,7 @@ function hitAccents(side,result,critical,pending){
   const target=side==='hero'?'enemy':'hero',attacker=side==='hero'?state.key:state.enemyKey,defender=side==='hero'?state.enemyKey:state.key;
   // A critical hit that lands shows on its own number (crit burst + 'CHÍ MẠNG' ribbon, see
   // combatPopup); a fully blocked or stored one still gets the callout.
-  if(critical&&!result.amount)popActorSkill(target,'CHÍ MẠNG!',true,pending,{away:true});
+  if(critical&&!result.amount)combatPopup(target,'CHÍ MẠNG!',{kind:'ultimate',beat:850,pending});
   else if(mult(attacker,defender)>1)popActorSkill(target,'KHẮC HỆ ×1,5',false,pending,{away:true});
 }
 function boardItemRecoil(center,strength=2){

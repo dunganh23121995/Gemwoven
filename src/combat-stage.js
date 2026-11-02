@@ -251,9 +251,26 @@ function combatPopupTone(text){
   return /NĂNG LƯỢNG/i.test(text)?'energy':/GIÁP|MIỄN|TRƯỢT|^NÉ$/i.test(text)?'ward':/CHOÁNG|Choáng|ĐÓNG BĂNG|Đóng băng|PHONG ẤN|mất lượt/.test(text)?'control':/HỒI PHỤC|Hồi phục/.test(text)?'good':/KHẮC HỆ/.test(text)?'advantage':'';
 }
 // `away` used to move a callout off the attacker's lunge; callouts now live in the actor's column.
+// Skill names (ultimate) are a cut-in under the fight instead (combatSkillCutIn).
 function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
-  const pop=combatPopup(side,title,{kind:ultimate?'ultimate':'callout',tone:ultimate?'':combatPopupTone(title),beat:ultimate?850:540,pending});
+  if(ultimate)return combatSkillCutIn(side,title,pending);
+  const pop=combatPopup(side,title,{kind:'callout',tone:combatPopupTone(title),beat:540,pending});
   return pop.ready;
+}
+// A skill's name slides in along the bottom of the stage from the caster's edge, under the feet, so it never
+// covers the body or the effects (it used to sit across the caster's waist); it holds, drifts on and fades.
+function combatSkillCutIn(side,title,pending){
+  const ready=wait(850);if(pending)pending.push(ready);
+  const root=$('combatEffects');
+  if(reduced||!root)return ready;
+  root.querySelector(`.skill-cutin[data-side="${side}"]`)?.remove();
+  const node=document.createElement('span');node.className='skill-cutin';node.dataset.side=side;node.setAttribute('aria-hidden','true');
+  node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
+  node.innerHTML='<span class="skill-cutin-body"><strong></strong></span>';node.querySelector('strong').textContent=title;
+  root.append(node);
+  const from=side==='hero'?-1:1;
+  animate(node,[{opacity:0,translate:`${from*48}px 0`},{opacity:1,translate:'0 0',offset:.12},{opacity:1,translate:`${-from*8}px 0`,offset:.82},{opacity:0,translate:`${-from*18}px 0`}],{duration:1700,easing:'cubic-bezier(.2,.8,.3,1)'}).finally(()=>node.remove());
+  return ready;
 }
 async function ultimateAura(side){
   const root=actor(side),key=side==='hero'?state.key:state.enemyKey;
