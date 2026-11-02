@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\void-cometlord\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1727,
+      "moving_share": 0.037
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9999,
+      "error": 0.2128,
+      "moving_share": 0.0587
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.207,
+      "moving_share": 0.0386
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2032,
+      "moving_share": 0.05
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.005,
+      "error": 0.1848,
+      "moving_share": 0.0361
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1784,
+      "moving_share": 0.035
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9941,
+      "error": 0.1769,
+      "moving_share": 0.0435
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9941,
+      "error": 0.1846,
+      "moving_share": 0.043
+    }
+  ],
+  "jitter": [
+    7.98,
+    9.75,
+    8.88,
+    8.27,
+    5.2,
+    5.52,
+    6.62,
+    4.09
+  ]
+}

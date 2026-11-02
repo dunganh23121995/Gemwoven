@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\eldergrove-petalarcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1405,
+      "moving_share": 0.0107
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.182,
+      "moving_share": 0.0473
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9898,
+      "error": 0.2429,
+      "moving_share": 0.0629
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.2792,
+      "moving_share": 0.0728
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.2149,
+      "moving_share": 0.0489
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1878,
+      "moving_share": 0.0357
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1455,
+      "moving_share": 0.0127
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1156,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    13.13,
+    14.48,
+    17.35,
+    20.83,
+    8.39,
+    11.14,
+    3.2,
+    2.61
+  ]
+}

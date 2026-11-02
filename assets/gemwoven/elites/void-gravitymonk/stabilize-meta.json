@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\void-gravitymonk\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1237,
+      "moving_share": 0.0012
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.1998,
+      "moving_share": 0.0528
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1892,
+      "moving_share": 0.0469
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.2065,
+      "moving_share": 0.0454
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1564,
+      "moving_share": 0.0177
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0,
+      "error": 0.1537,
+      "moving_share": 0.0234
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1601,
+      "moving_share": 0.026
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1244,
+      "moving_share": 0.0031
+    }
+  ],
+  "jitter": [
+    7.44,
+    5.91,
+    5.0,
+    5.96,
+    4.32,
+    3.29,
+    2.98,
+    0.52
+  ]
+}

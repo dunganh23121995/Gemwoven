@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\caldera-obsidianlord\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9955,
+      "error": 0.1322,
+      "moving_share": 0.0116
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1302,
+      "moving_share": 0.0152
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0056,
+      "error": 0.1489,
+      "moving_share": 0.0324
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0011,
+      "error": 0.1483,
+      "moving_share": 0.034
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9955,
+      "error": 0.1362,
+      "moving_share": 0.0074
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1313,
+      "moving_share": 0.0105
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0112,
+      "error": 0.1456,
+      "moving_share": 0.0161
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0056,
+      "error": 0.1317,
+      "moving_share": 0.0185
+    }
+  ],
+  "jitter": [
+    3.08,
+    5.5,
+    3.06,
+    5.74,
+    1.67,
+    1.89,
+    0.88,
+    1.41
+  ]
+}
