@@ -10345,8 +10345,9 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       await at(1500);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }else{
       // The rings around her spear's star spin off it and swell into a storm orb over the foe (a real slinky-laser
-      // foley), stars stream along its arms (mark tree) as it glides into place. Once whole, its two drawn states
-      // alternate so its lightning veins crawl, while the whole orb turns slowly and lightning crackles round its rim.
+      // foley), stars stream along its arms (mark tree) as it shoots up into place. Once whole, its two drawn states
+      // alternate so its lightning veins crawl, while the whole orb turns slowly and lightning crackles round its rim;
+      // it hangs there a short beat, charged, before the first bolt falls (player's request: up quicker, then a pause).
       orb=lumiFx('stormorb',tip,sign,{frames:[0,1,0,1,2,3],frameMs:140,loop:4,cls:'lumi-sky'});
       // The laser's attack (90 ms into the clip) lands as the sphere is born: the orb's first whole frame (strip
       // frame 2) shows 4 x 140 ms after the rings start spinning at the spear head (measured in the studio).
@@ -10354,19 +10355,20 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       if(orb){
         orb.style.scale='.6';
         spin=orb.animate([{rotate:'0deg'},{rotate:'-360deg'}],{duration:6400,iterations:Infinity});
-        pending.push(animate(orb,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:640,delay:480,easing:'cubic-bezier(.45,.05,.3,1)',fill:'both'}).then(()=>{
+        pending.push(animate(orb,[{translate:'-50% -50%',scale:'.6'},{translate:`calc(-50% + ${sky.x-tip.x}px) calc(-50% + ${sky.y-tip.y}px)`,scale:'1'}],{duration:460,delay:260,easing:'cubic-bezier(.35,0,.25,1)',fill:'both'}).then(()=>{
           orb.style.left=sky.x+'px';orb.style.top=sky.y+'px';orb.style.scale='1';
           // In place over the foe, lightning leaps round its rim (out of order, so it never reads as a turning wheel).
           if(orb.isConnected&&root.dataset.ragePhase!=='recover')arcs=lumiFx('stormarc',sky,sign,{frames:[0,2,1,3,0,3,2,1],frameMs:60,loop:true,cls:'lumi-sky-arcs'});
         }));
       }
-      pending.push(at(1000).then(()=>lumiSound('stream',{volume:.34,pan:.15})));// stars stream along its arms
-      await at(1080);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
-      await at(1340);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
+      pending.push(at(800).then(()=>lumiSound('stream',{volume:.34,pan:.15})));// stars stream along its arms
+      // It reaches the sky about 1180 ms in (made at 460, 260 + 460 ms of flight) and holds there till 1560.
+      await at(1180);root.dataset.ragePhase='channel';setSpriteFrame('hero','skill',3);
+      await at(1480);setSpriteFrame('hero','skill',4);combatVoice('hero','release');
     }
     // Bolts: the seal's stars fire in its drawing order; the storm orb rains from all over its disc,
     // the last bolt the biggest, straight from its heart. They land along the foe's feet.
-    const first=form===2?1620:1450,step=form===2?Math.min(130,600/count):Math.min(150,880/count),order=[0,2,4,1,3];
+    const first=form===2?1620:1560,step=form===2?Math.min(130,600/count):Math.min(150,880/count),order=[0,2,4,1,3];
     root.dataset.ragePhase='skyfall';
     for(let i=0;i<count;i++){
       await at(first+i*step);
