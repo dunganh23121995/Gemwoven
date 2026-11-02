@@ -1989,6 +1989,10 @@ function intent(){
   return {kind:'board',name:'Kết nối ngọc phép',icon:'crystal',detail:'Ghép ngọc để tấn công và tích nộ'};
 }
 async function enemySkill({reserved=false}={}){
+  // A chapter boss or elite staged by the studio (gameQA.configure with qaFoeFx) fights with its own kit, as in the
+  // campaign: at full rage it casts its ultimate, never the stand-in foe's old rage (the fire dragon's Viêm Long Tức).
+  const kit=state.qaFoeFx&&window.gameQA?.foeSkills?.()||[];
+  if(kit.length){if(!reserved)state.enemyEnergy=0;const ult=kit.findIndex(s=>s.ult);return window.gameQA.foeCast(ult>=0?ult:0);}
   const key=state.enemyKey,m=MONSTERS[key],base=state.boss?60+state.stage*5:14+state.stage*4;
   if(!reserved)state.enemyEnergy=0;message((state.boss?'Boss':'Quái')+' tung '+m.skill+'!');update();
   await rageChoreography('enemy',base*(key==='earth'?1.1:key==='ice'?.75:1),{
