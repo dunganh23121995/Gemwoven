@@ -16,7 +16,8 @@ Không tạo người chơi giả trong BXH.
 Mọi người nhận Tân cấp 1, 1 sao; 1.200 vàng, 12 sách EXP, 5 quặng/gỗ/vải.
 Đá Ngọc và vé triệu hồi khởi đầu bằng 0. Nhiệm vụ ghé thăm cho vé đầu tiên.
 Tân: tướng Thường, 145 HP gốc, hệ số tấn công 0,85; kiếm gỗ, quần áo giản dị.
-Nhát Kiếm Cơ Bản gây 45 sát thương trước hệ số cấp/trang bị.
+Kiếm Nhiệt Huyết gây 70 sát thương trước hệ số cấp/trang bị.
+Thiết kế chiều sâu (hình thái, Mảnh Hiro, lực chiến, kiếm tiền, đấu trường): docs/GAME_DESIGN.md.
 Đá Ngọc: chỉ từ nạp tiền được máy chủ xác nhận trong phiên bản thanh toán sau.
 Không có nguồn Đá Ngọc từ nhiệm vụ, ải, boss, offline, triệu hồi hay admin.
 Vàng: nguồn chơi chính. Không bán Đá Ngọc hoặc vé bằng vàng.
@@ -138,16 +139,16 @@ thì đề xuất toàn bộ lượt bằng Đá Ngọc. Hủy popup không tr�
 nguồn thì nút xác nhận bị khóa. Một vé hoặc 120 Đá Ngọc cho mỗi lần.
 Triệu hồi ×10 tiêu hao 10 vé hoặc 1.200 Đá Ngọc, không dùng lẫn hai nguồn.
 Tỷ lệ cơ bản, trước các mốc bảo đảm:
-- Tướng hiếm: 0,15%, chỉ tướng của banner đang phát hành; kỳ đầu là Mika.
+- Tướng hiếm: 1%, chỉ tướng của banner đang phát hành; kỳ đầu là Mika.
 - Mảnh tướng: 1,35%, mỗi lần 2–5 mảnh của tướng thuộc banner hiện tại.
-- Tân: 6%.
 - Trang bị thường: 28,5%; Hiếm: 2%; Sử thi: 0,15%; Huyền thoại: 0,02%.
 - Trang bị Thần: 0,001%.
-- Nguyên liệu thông dụng: 61,829%.
+- Nguyên liệu thông dụng: 66,979%.
+Hiro không có trong triệu hồi; Mảnh Hiro đến từ gameplay (docs/GAME_DESIGN.md 1.2).
 Tổng 100%. Ghép 80 mảnh cùng tướng ra một tướng/bản sao.
 Mỗi kỳ chỉ giới thiệu một tướng; ba ô nổi bật là trang bị phẩm cao.
 Đổi kỳ bằng cấu hình SUMMON_BANNER; các tướng chưa phát hành không ở pool.
-Bảo đảm một tướng hiếm muộn nhất lần 300 không ra tướng hiếm; một gói mảnh
+Bảo đảm một tướng hiếm muộn nhất lần 100 không ra tướng hiếm; một gói mảnh
 muộn nhất sau 30 lần không ra mảnh. Bảo đảm thay kết quả thường nên tỷ lệ
 dài hạn cao hơn tỷ lệ cơ bản. Không có bảo đảm trang bị Thần.
 Trừ tài nguyên và lưu kết quả trước, sau đó hoạt ảnh hội tụ ~2,7 giây mới mở.

@@ -65,3 +65,14 @@ console.log(JSON.stringify({passed:true,checks:'Town looks vs combat form, Hiro 
   assert.ok(O.TREASURE_FAMILIES.find(f=>f.id==='mountain').pveOnly);assert.ok(O.TITLES.filter(t=>t.paid).length<=1);
 }
 console.log('liveops ok');
+{ // Asset packs: a new account needs core, chapter 1 and Hiro only; ownership and progress add packs.
+  const P=require('../../src/gemwoven/asset-packs.js'),catalog=require('../../assets/packs.json');
+  const {engine:e,edit}=fixture();const fresh=P.packsFor(e.read());
+  assert.deepEqual(fresh.need.sort(),['chapter-1','core','hero-novice-f1','summon']);assert.ok(fresh.prefetch.includes('chapter-2'));assert.ok(fresh.prefetch.includes('hero-fire-f1'));
+  edit(p=>{p.campaign.cleared=120;p.heroes.shadow={level:1,stars:6,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[]};});
+  const later=P.packsFor(e.read());for(const id of ['chapter-2','chapter-3','hero-shadow-f1','hero-shadow-f2','hero-shadow-f3'])assert.ok(later.need.includes(id),id);
+  assert.ok(!later.need.includes('chapter-4')&&later.prefetch.includes('chapter-4'));assert.ok(!later.need.includes('hero-ice-f1'),'Unowned heroes are not downloaded');
+  const ids=new Set(catalog.packs.map(p=>p.id));for(const id of [...later.need,...later.prefetch])assert.ok(ids.has(id),'Pack exists in packs.json: '+id);
+  assert.ok(P.download(e.read(),catalog,['core']).bytes>0);
+}
+console.log('asset packs ok');

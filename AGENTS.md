@@ -10,3 +10,5 @@
 - Rebuild combat with `python build.py`; rebuild the hub with `python scripts/build_gemwoven.py`. Run `npm test` in `qa/gemwoven/runtime` after mechanics changes.
 - Foes rest and take buffs in baked mesh rigs too: a new creature, elite or boss needs `python assets/gemwoven/rig_foes.py parts <id>` then `make <id>`; without a rig folder it falls back to its drawn sheets.
 - New heroes, and new items for every hero, follow `docs/HERO_PIPELINE.md`; the checklist `docs/hero-checklist.json` (run `python scripts/hero_checklist.py`) feeds the hero studio's "Hạng mục tướng" grid.
+- Growth, economy, live-ops and arena design lives in `docs/GAME_DESIGN.md` (Studio tab "Thiết kế hệ thống"); live-ops numbers in `src/gemwoven/liveops.js`. Measure balance changes with `node qa/gemwoven/balance-sim.cjs` before and after.
+- After adding runtime art or sound, refresh the download packs with `node scripts/build_asset_packs.cjs` (`assets/packs.json`; `src/gemwoven/asset-packs.js` picks packs per account).

@@ -1,0 +1,108 @@
+/* Balance simulator (docs/GAME_DESIGN.md §5): plays whole fights on a seeded 8×8 board with the
+ * shared rules (progression.js stats, kits, encounters) and a simplified copy of the combat loop:
+ * cascades, sword chains (+15% per chained wave, every third a ×1.5 crit), hearts, shields, energy,
+ * freeze, the hero's ultimate and the foe's skills. It estimates win rates; it is not the combat
+ * code itself, so treat results as relative (hero A vs hero B, before vs after a tuning change).
+ *   node qa/gemwoven/balance-sim.cjs [fights=300] [--json out.json]   prints a table (and keeps a JSON copy)
+ */
+const M=require('../../src/gemwoven/progression.js');
+const SIZE=8,TYPES=5,SWORD=0,HEART=1,CRYSTAL=2,SNOW=3,SHIELD=4;
+const BEATS={fire:'ice',earth:'lightning',ice:'earth',lightning:'fire'};
+function rng(seed){return ()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
+// ---- Board ----
+function matches(b){const hit=new Set();
+  for(let r=0;r<SIZE;r++)for(let c=0;c<SIZE-2;c++){const t=b[r*SIZE+c];if(t>=0&&t===b[r*SIZE+c+1]&&t===b[r*SIZE+c+2]){hit.add(r*SIZE+c);hit.add(r*SIZE+c+1);hit.add(r*SIZE+c+2);}}
+  for(let c=0;c<SIZE;c++)for(let r=0;r<SIZE-2;r++){const t=b[r*SIZE+c];if(t>=0&&t===b[(r+1)*SIZE+c]&&t===b[(r+2)*SIZE+c]){hit.add(r*SIZE+c);hit.add((r+1)*SIZE+c);hit.add((r+2)*SIZE+c);}}
+  return hit;}
+function fill(b,rand){for(let c=0;c<SIZE;c++){let w=SIZE-1;for(let r=SIZE-1;r>=0;r--){const t=b[r*SIZE+c];if(t>=0){b[w*SIZE+c]=t;w--;}}for(;w>=0;w--)b[w*SIZE+c]=Math.floor(rand()*TYPES);}}
+function board(rand){const b=new Array(SIZE*SIZE);do{for(let i=0;i<b.length;i++)b[i]=Math.floor(rand()*TYPES);let m;while((m=matches(b)).size){for(const i of m)b[i]=-1;fill(b,rand);}}while(!moves(b).length);return b;}
+function swap(b,i,j){const t=b[i];b[i]=b[j];b[j]=t;}
+function moves(b){const out=[];for(let i=0;i<b.length;i++)for(const j of [i%SIZE<SIZE-1?i+1:-1,i+SIZE<b.length?i+SIZE:-1]){if(j<0)continue;swap(b,i,j);const m=matches(b);swap(b,i,j);if(m.size)out.push([i,j,m]);}return out;}
+// Resolve one move: waves of matched tiles (cascades refill at random).
+function resolve(b,[i,j],rand){swap(b,i,j);const waves=[];let m;while((m=matches(b)).size){const counts=[0,0,0,0,0];for(const k of m){counts[b[k]]++;b[k]=-1;}waves.push(counts);fill(b,rand);}
+  if(!moves(b).length){const fresh=board(rand);for(let k=0;k<b.length;k++)b[k]=fresh[k];}return waves;}
+// ---- Fight ----
+function fight(hero,enc,seed,{skill=.8}={}){
+  const rand=rng(seed),b=board(rand),kit=hero.kit,s=hero.stats;
+  const st={hp:s.hp,max:s.hp,armor:0,energy:kit.startEnergy||0,eHp:enc.enemyHp,eMax:enc.enemyHp,eArmor:0,eEnergy:0,stun:0,frozen:false,burn:null,regen:0,stored:0,enraged:false,turn:0};
+  const heroCap=Math.max(999,Math.round(st.max*.5)),foeCap=Math.max(999,Math.round(st.eMax*.08));
+  const heroMult=(hero.key!=='novice'&&hero.key!=='shadow'&&BEATS[hero.key]===enc.enemyKey)?1.5:1;
+  const foeMult=(hero.key!=='shadow'&&BEATS[enc.enemyKey]===hero.key)?1.5:1;
+  const takeHero=n=>{n=Math.round(n*foeMult*(st.enraged?1.25:1)*(1-kit.damageReduction)*Math.max(.5,1-s.defense));const blocked=Math.min(st.armor,n);st.armor-=blocked;st.hp-=n-blocked;};
+  const hitFoe=n=>{n=Math.round(n*heroMult);if(st.stun&&hero.key==='earth'){st.stored+=n;return;}const blocked=Math.min(st.eArmor,n);st.eArmor-=blocked;st.eHp-=n-blocked;if(!st.enraged&&enc.boss&&st.eHp<=st.eMax*.4)st.enraged=true;};
+  const heal=n=>{st.hp=Math.min(st.max,st.hp+n);};
+  const value=(m,side)=>{let v=0;const own=side==='hero';for(const k of m){const t=b[k];v+=t===SWORD?1:t===CRYSTAL?(own?(st.energy>=60?.9:.6):.7):t===HEART?(own?(st.hp<st.max*.5?1:.3):.3):t===SHIELD?.4:.35;}return v;};
+  const pick=side=>{const list=moves(b);let best=list[0],bv=-1;for(const mv of list){const v=value(mv[2],side)+rand()*.01;if(v>bv){bv=v;best=mv;}}return rand()<(side==='hero'?skill:.85)?best:list[Math.floor(rand()*list.length)];};
+  const enemySkills=enc.skillSet.length?enc.skillSet:[{kind:'strike',power:1}];let skillTurn=0;
+  while(st.hp>0&&st.eHp>0&&st.turn<60){
+    st.turn++;
+    // Hero turn (start of turn: burn on foe, regen, earth heal-over-time).
+    if(st.burn){hitFoe(st.burn.dmg);if(--st.burn.turns<=0)st.burn=null;}
+    if(kit.regen)heal(Math.round(st.max*kit.regen));if(st.regen>0){heal(kit.heal*s.attack**.5|0);st.regen--;}
+    let waves=resolve(b,pick('hero'),rand),chain=0;
+    for(const w of waves){
+      chain=w[SWORD]?chain+1:0;
+      if(w[SWORD]){const crit=chain>=3&&chain%3===0?1.5:1;hitFoe(w[SWORD]*8*kit.sword*kit.attackScale*s.attack*(1+Math.min(6,chain-1)*.15)*crit);}
+      if(w[HEART])heal(w[HEART]*Math.max(Math.round(6*Math.max(1,Math.sqrt(s.attack))),Math.round(st.max*.012)));
+      if(w[SHIELD])st.armor=Math.min(heroCap,st.armor+w[SHIELD]*Math.max(kit.shieldGem,Math.round(st.max*.015*kit.shieldGem/4)));
+      st.energy=Math.min(199,st.energy+(w[SWORD]*7+w[HEART]*2+w[CRYSTAL]*5+w[SNOW]*2+w[SHIELD]*2)*kit.energy);
+      if(w[SNOW]>=3)st.frozen=true;
+    }
+    if(st.eHp<=0)break;
+    while(st.energy>=100&&st.eHp>0){st.energy-=100;const exec=kit.execute&&st.eHp<st.eMax*kit.execute.threshold?kit.execute.bonus:1;
+      if(hero.key==='earth'){st.stun=Math.max(st.stun,kit.stun);st.regen=kit.regenTurns;}
+      else hitFoe(kit.base*kit.power*s.attack*exec);
+      if(hero.key==='ice'){st.armor=Math.min(heroCap,st.armor+kit.armor);st.stun=Math.max(st.stun,1);if(kit.mutationArmor)st.armor=Math.min(heroCap,st.armor+Math.round(st.max*kit.mutationArmor));}
+      if(kit.burn)st.burn={dmg:kit.burn.base*s.attack,turns:kit.burn.turns};
+      if(kit.drain)st.eEnergy=Math.max(0,st.eEnergy-kit.drain);if(kit.echo)hitFoe(kit.echo*s.attack);if(kit.enemyDrain)st.eEnergy=Math.max(0,st.eEnergy-kit.enemyDrain);
+      if(hero.key==='earth'&&kit.mutationArmor)st.armor=Math.min(heroCap,st.armor+Math.round(st.max*kit.mutationArmor));
+    }
+    if(st.eHp<=0)break;
+    // Foe turn.
+    if(st.frozen){st.frozen=false;continue;}
+    if(st.stun>0){st.stun--;if(!st.stun&&st.stored){const burst=st.stored*kit.burst;st.stored=0;hitFoe(burst);}continue;}
+    waves=resolve(b,pick('enemy'),rand);chain=0;let firstCrystal=true,firstSnow=true;
+    for(const w of waves){
+      chain=w[SWORD]?chain+1:0;
+      if(w[SWORD]){const crit=chain>=3&&chain%3===0?1.5:1;takeHero(w[SWORD]*8*(enc.boss?1.15:.55)*enc.enemyAttack*(1+Math.min(6,chain-1)*.15)*crit);}
+      if(w[HEART])st.eHp=Math.min(st.eMax,st.eHp+w[HEART]*Math.max(6,Math.round(st.eMax*.002)));
+      if(w[SHIELD])st.eArmor=Math.min(foeCap,st.eArmor+w[SHIELD]*Math.max(5,Math.round(st.eMax*.003)));
+      const tiles=w.reduce((a,n)=>a+n,0);st.eEnergy=Math.min(100,st.eEnergy+3*tiles+(w[CRYSTAL]&&firstCrystal?25:0));if(w[CRYSTAL])firstCrystal=false;
+      if(w[SNOW]&&firstSnow){st.energy=Math.max(0,st.energy-20);firstSnow=false;}
+    }
+    if(st.hp<=0)break;
+    // Bosses cast at 80 energy; elites and common foes follow the four-turn cycle (guard, skill, heal).
+    const cycle=st.turn%4,cast=enc.boss?st.eEnergy>=80:cycle===2||st.eEnergy>=100;
+    if(!enc.boss&&cycle===1)st.eArmor=Math.min(foeCap,st.eArmor+Math.round(st.eMax*.03));
+    if(!enc.boss&&cycle===3&&st.eHp<st.eMax*.65)st.eHp=Math.min(st.eMax,st.eHp+Math.round(st.eMax*.04));
+    if(cast){st.eEnergy=0;const sk=enemySkills[skillTurn++%enemySkills.length];
+      if(sk.kind==='guard')st.eArmor=Math.min(foeCap,st.eArmor+Math.round(st.eMax*(sk.shield||.04)));
+      else{takeHero(enc.enemySkillBase*(sk.power||1)*enc.enemyAttack);if(sk.kind==='drain')st.energy=Math.max(0,st.energy-(sk.drain||15));}}
+  }
+  return {won:st.eHp<=0&&st.hp>0,turns:st.turn,hpLeft:Math.max(0,st.hp)/st.max};
+}
+// ---- Scenarios ----
+function heroAt(key,level,stars,evolution,{gear=null,gearLevel=0,skills,relic=true}={}){
+  const p={heroes:{[key]:{level,stars,evolution,copies:1,skills:skills||[Math.min(10,1+Math.floor(level/20)),level>=10?Math.min(10,Math.floor(level/20)):0,evolution>=2?Math.min(10,Math.floor(level/40)):0,evolution>=5?1:0],gear:{},relic:relic?{level:Math.min(100,Math.max(1,Math.floor(level/5))),evolution:Math.min(5,1+Math.floor(level/50))}:{level:1,evolution:1},ticketMilestones:[]}},equipment:[]};
+  if(gear)for(const slot of Object.keys(M.SLOTS)){const id='g-'+slot;p.equipment.push({id,slot,rarity:gear,level:gearLevel,affix:null});p.heroes[key].gear[slot]=id;}
+  return {key,stats:M.stats(p,key),kit:M.skillKit(key,p.heroes[key])};
+}
+// Typical progress at a recommended level: evolution the stars allow, gear tier of the forge gates.
+// What a player who only levels up has: evolution the stars allow, no gear, first skill rank only.
+function bare(key,level,stars){const evo=M.EVOLUTION.filter(e=>level>=e.level&&stars>=e.stars).length;return heroAt(key,level,stars,evo,{skills:[1,level>=10?1:0,evo>=2?1:0,0],relic:false});}
+function typical(key,level,stars){const evo=M.EVOLUTION.filter(e=>level>=e.level&&stars>=e.stars).length;const gear=level>=60?'epic':level>=30?'rare':level>=10?'uncommon':null;return heroAt(key,level,stars,evo,{gear,gearLevel:Math.min(20,Math.floor(level/8))});}
+function rate(hero,mode,index,n){let won=0,turns=0;for(let i=0;i<n;i++){const r=fight(hero,M.encounter(mode,index),1000+i*7919);if(r.won){won++;turns+=r.turns;}}return {win:won/n,turns:won?turns/won:null};}
+if(require.main===module){
+  const n=Number(process.argv[2])||300,rows=[];
+  const cases=[
+    ['Ch1 ải 10 (tinh anh)',10],['Ch1 ải 50 (boss)',50],['Ch2 ải 75',75],['Ch2 ải 100 (boss)',100],['Ch3 ải 150 (boss)',150],['Ch5 ải 250 (boss)',250]];
+  const heroes=[['Hiro trần','novice',1,bare],['Hiro 1★','novice',1],['Hiro 2★','novice',2],['Mika trần','fire',1,bare],['Mika 1★','fire',1],['Mika 4★','fire',4],['Noct 6★','shadow',6]];
+  for(const [label,index] of cases){const rec=M.encounter('campaign',index).recommended;
+    for(const mult of [1,1.5,2])for(const [name,key,stars,make=typical] of heroes){const level=Math.min(500,Math.round(rec*mult)),h=make(key,level,stars),r=rate(h,'campaign',index,n);
+      rows.push({stage:label,rec,level,hero:name,power:h.stats.power,win:Math.round(r.win*100),turns:r.turns&&Math.round(r.turns)});}}
+  // Reports stay out of Git: pass --json <path> to keep one.
+  const at=process.argv.indexOf('--json');if(at>0&&process.argv[at+1])require('node:fs').writeFileSync(process.argv[at+1],JSON.stringify({fights:n,rows},null,1));
+  console.log('stage'.padEnd(22),'rec lvl hero      power  win% turns');
+  for(const r of rows)console.log(r.stage.padEnd(22),String(r.rec).padStart(3),String(r.level).padStart(3),r.hero.padEnd(9),String(r.power).padStart(7),String(r.win).padStart(4)+'%',String(r.turns??'-').padStart(4));
+}
+module.exports={fight,heroAt,typical,bare,rate};
