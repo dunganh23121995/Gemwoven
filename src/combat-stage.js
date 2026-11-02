@@ -251,25 +251,48 @@ function combatPopupTone(text){
   return /NĂNG LƯỢNG/i.test(text)?'energy':/GIÁP|MIỄN|TRƯỢT|^NÉ$/i.test(text)?'ward':/CHOÁNG|Choáng|ĐÓNG BĂNG|Đóng băng|PHONG ẤN|mất lượt/.test(text)?'control':/HỒI PHỤC|Hồi phục/.test(text)?'good':/KHẮC HỆ/.test(text)?'advantage':'';
 }
 // `away` used to move a callout off the attacker's lunge; callouts now live in the actor's column.
-// Skill names (ultimate) are a cut-in under the fight instead (combatSkillCutIn).
+// Skill names (ultimate) rise to a title over the caster's head instead (combatSkillTitle).
 function popActorSkill(side,title,ultimate=false,pending,{away=false}={}){
-  if(ultimate)return combatSkillCutIn(side,title,pending);
+  if(ultimate)return combatSkillTitle(side,title,pending);
   const pop=combatPopup(side,title,{kind:'callout',tone:combatPopupTone(title),beat:540,pending});
   return pop.ready;
 }
-// A skill's name slides in along the bottom of the stage from the caster's edge, under the feet, so it never
-// covers the body or the effects (it used to sit across the caster's waist); it holds, drifts on and fades.
-function combatSkillCutIn(side,title,pending){
+// A skill's name shoots up from the caster's body past its head, drops back and settles over its head bar, where
+// a gold filigree frame (assets/fx/ui/skill-title.webp) opens round it and a light sweeps across the gold letters;
+// then it drifts up and fades. It never sits on the body or over the effects.
+function combatSkillTitle(side,title,pending){
   const ready=wait(850);if(pending)pending.push(ready);
-  const root=$('combatEffects');
-  if(reduced||!root)return ready;
-  root.querySelector(`.skill-cutin[data-side="${side}"]`)?.remove();
-  const node=document.createElement('span');node.className='skill-cutin';node.dataset.side=side;node.setAttribute('aria-hidden','true');
+  const root=$('combatEffects'),scene=$('scene');
+  if(reduced||!root||!scene)return ready;
+  root.querySelector(`.skill-title[data-side="${side}"]`)?.remove();
+  const node=document.createElement('span');node.className='skill-title';node.dataset.side=side;node.setAttribute('aria-hidden','true');
   node.style.setProperty('--skill-color',combatV3Palette[side==='hero'?state.key:state.enemyKey]?.main||'#ffd36b');
-  node.innerHTML='<span class="skill-cutin-body"><strong></strong></span>';node.querySelector('strong').textContent=title;
+  if(ART.uiFx?.skillTitle)node.style.setProperty('--title-frame',`url('${ART.uiFx.skillTitle}')`);
+  node.innerHTML='<i class="skill-title-frame"></i><strong></strong><b></b>';
+  node.querySelector('strong').textContent=node.querySelector('b').textContent=title;
   root.append(node);
-  const from=side==='hero'?-1:1;
-  animate(node,[{opacity:0,translate:`${from*48}px 0`},{opacity:1,translate:'0 0',offset:.12},{opacity:1,translate:`${-from*8}px 0`,offset:.82},{opacity:0,translate:`${-from*18}px 0`}],{duration:1700,easing:'cubic-bezier(.2,.8,.3,1)'}).finally(()=>node.remove());
+  // The frame's open oval holds 46% of its width: a long name is set smaller to stay inside it.
+  const W=scene.clientWidth,width=Math.min(320,W*.86),height=width*176/900,text=node.querySelector('strong');
+  node.style.width=width+'px';node.style.height=height+'px';
+  const range=document.createRange();range.selectNodeContents(text);
+  const room=width*.46,wide=range.getBoundingClientRect().width;
+  if(wide>room)node.style.setProperty('--title-size',(parseFloat(getComputedStyle(text).fontSize)*room/wide).toFixed(1)+'px');
+  // Over the head bar (or the head), centred on the caster, kept on the stage.
+  const s=scene.getBoundingClientRect(),hud=$(side==='hero'?'heroHeadHud':'enemyHeadHud'),body=actor(side)?.querySelector('.sprite-body');
+  const head=hud?.offsetParent?hud.getBoundingClientRect():null,b=body?.getBoundingClientRect();
+  const cx=head?head.left+head.width/2-s.left:b?b.left+b.width/2-s.left:W/2;
+  const top=Math.max(2,(head?head.top-s.top:b?b.top-s.top:40)-height*.8);
+  node.style.left=Math.max(width/2+2,Math.min(W-width/2-2,cx))+'px';node.style.top=top+'px';
+  const from=b?Math.max(40,b.top+b.height*.55-s.top-top-height/2):80;
+  animate(node,[
+    {opacity:0,translate:`-50% ${from}px`,scale:'.6',filter:'blur(2px)',easing:'cubic-bezier(.2,.7,.35,1)'},
+    {opacity:1,offset:.05},
+    {translate:'-50% -16px',scale:'1.06',filter:'blur(0px)',offset:.15,easing:'cubic-bezier(.4,0,.3,1)'},
+    {translate:'-50% 2px',scale:'.98',offset:.23,easing:'ease-out'},
+    {translate:'-50% 0px',scale:'1',offset:.29},
+    {opacity:1,translate:'-50% -3px',offset:.84},
+    {opacity:0,translate:'-50% -14px',scale:'1'}
+  ],{duration:1900,fill:'both'}).finally(()=>node.remove());
   return ready;
 }
 async function ultimateAura(side){
