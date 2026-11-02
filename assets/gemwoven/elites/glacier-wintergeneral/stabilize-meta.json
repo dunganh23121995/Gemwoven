@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\glacier-wintergeneral\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 1.01,
+      "error": 0.2352,
+      "moving_share": 0.0351
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 2,
+      "dy": -1,
+      "scale": 1.015,
+      "error": 0.2348,
+      "moving_share": 0.0429
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 1.0048,
+      "error": 0.2387,
+      "moving_share": 0.0538
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9997,
+      "error": 0.2424,
+      "moving_share": 0.058
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9947,
+      "error": 0.2444,
+      "moving_share": 0.0472
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 1.0047,
+      "error": 0.2367,
+      "moving_share": 0.0445
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9997,
+      "error": 0.2149,
+      "moving_share": 0.0211
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": -2,
+      "scale": 0.9997,
+      "error": 0.1965,
+      "moving_share": 0.0192
+    }
+  ],
+  "jitter": [
+    8.92,
+    7.48,
+    9.85,
+    13.83,
+    4.59,
+    10.12,
+    3.35,
+    4.83
+  ]
+}

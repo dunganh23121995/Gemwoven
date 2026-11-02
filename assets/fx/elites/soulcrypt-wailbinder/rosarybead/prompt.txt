@@ -1,0 +1,12 @@
+Image 1 (the first image) is only the identity reference for the fighter "Nữ Tu Xích Hồn". DO NOT draw the fighter, its face, or any creature or character body.
+Image 2 is a layout guide: use it only to understand the 3x2 grid of equal 512x512 frame slots, their centres and the safe area (the inner box). Do not reproduce the guide: no visible boxes, no safe-area rectangles, no centre marks, no lines, no borders, no guide colours.
+
+Create an animated VFX sprite sheet for ONE skill of this fighter. Exactly six frames in a 3 COLUMNS x 2 ROWS grid of equal square cells, landscape 1536x1024 canvas, read left-to-right then next row.
+
+ITS VFX IDENTITY: SOUL IRON: dark iron chain, deep violet soul fire.
+THE EFFECT: one dark iron prayer bead on a chain link with a small deep-violet soul flame round it.
+LAYOUT: one small single piece centred on the cell, about 45% of the cell across.
+TIMING: a looping flicker: all six frames show the same piece at the same place and size; only its small flame or glints change from frame to frame, and frame 6 flows into frame 1.
+STYLE: OPAQUE solid painted shapes with crisp edges and cel-shaded highlights, clean HD painterly anime game VFX for a mobile fantasy RPG, NOT pixel art. No translucent haze, no soft smoke, no mist, no blurry glow halos, no semi-transparent gradients fading into the background. No text, no labels.
+Everything stays fully inside its own cell with at least 12% green padding on all four sides; nothing crosses a cell edge or enters a neighbouring cell. Background 100% solid flat #00FF00 green, no gradient. Never use green anywhere in the effect.
+

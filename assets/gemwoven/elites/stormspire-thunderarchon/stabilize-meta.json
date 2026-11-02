@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\stormspire-thunderarchon\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.179,
+      "moving_share": 0.0157
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9849,
+      "error": 0.213,
+      "moving_share": 0.0236
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.217,
+      "moving_share": 0.0305
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2073,
+      "moving_share": 0.0274
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.164,
+      "moving_share": 0.0085
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": -1,
+      "dy": -2,
+      "scale": 0.9898,
+      "error": 0.1852,
+      "moving_share": 0.0099
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2133,
+      "moving_share": 0.0204
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9849,
+      "error": 0.2016,
+      "moving_share": 0.0172
+    }
+  ],
+  "jitter": [
+    4.72,
+    8.23,
+    6.51,
+    11.15,
+    4.89,
+    5.79,
+    3.82,
+    1.32
+  ]
+}

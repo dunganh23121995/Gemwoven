@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\soulcrypt-cellbolter\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1916,
+      "moving_share": 0.0313
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2022,
+      "moving_share": 0.06
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1807,
+      "moving_share": 0.0282
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": -2,
+      "scale": 0.9848,
+      "error": 0.2212,
+      "moving_share": 0.0483
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.2218,
+      "moving_share": 0.065
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1818,
+      "moving_share": 0.0392
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.185,
+      "moving_share": 0.0259
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.1691,
+      "moving_share": 0.0274
+    }
+  ],
+  "jitter": [
+    7.6,
+    7.21,
+    5.46,
+    6.95,
+    7.64,
+    4.64,
+    2.72,
+    1.76
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\soulcrypt-wailbinder\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0201,
+      "error": 0.1778,
+      "moving_share": 0.0301
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0253,
+      "error": 0.1976,
+      "moving_share": 0.0386
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2439,
+      "moving_share": 0.0561
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.2025,
+      "moving_share": 0.0355
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0001,
+      "error": 0.1989,
+      "moving_share": 0.0319
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.2038,
+      "moving_share": 0.0379
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2401,
+      "moving_share": 0.054
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": 1,
+      "scale": 1.005,
+      "error": 0.2019,
+      "moving_share": 0.0294
+    }
+  ],
+  "jitter": [
+    3.83,
+    8.02,
+    7.08,
+    3.49,
+    3.31,
+    7.48,
+    7.43,
+    1.46
+  ]
+}

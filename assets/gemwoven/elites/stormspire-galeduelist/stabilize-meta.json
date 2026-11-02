@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\stormspire-galeduelist\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9999,
+      "error": 0.2503,
+      "moving_share": 0.0191
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.01,
+      "error": 0.2927,
+      "moving_share": 0.046
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.01,
+      "error": 0.251,
+      "moving_share": 0.0206
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0046,
+      "error": 0.2995,
+      "moving_share": 0.0408
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9947,
+      "error": 0.3181,
+      "moving_share": 0.0522
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.2465,
+      "moving_share": 0.0173
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.2573,
+      "moving_share": 0.0181
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.2231,
+      "moving_share": 0.0068
+    }
+  ],
+  "jitter": [
+    12.69,
+    14.76,
+    15.65,
+    13.26,
+    13.13,
+    5.53,
+    3.47,
+    5.08
+  ]
+}

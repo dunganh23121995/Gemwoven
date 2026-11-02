@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\mycelium-sporehag\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1195,
+      "moving_share": 0.0067
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1617,
+      "moving_share": 0.0193
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.9998,
+      "error": 0.1378,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1763,
+      "moving_share": 0.0232
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.1334,
+      "moving_share": 0.0087
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1652,
+      "moving_share": 0.0226
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1538,
+      "moving_share": 0.0024
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9998,
+      "error": 0.1462,
+      "moving_share": 0.0016
+    }
+  ],
+  "jitter": [
+    3.33,
+    3.45,
+    3.72,
+    3.25,
+    3.88,
+    4.08,
+    0.17,
+    0.98
+  ]
+}

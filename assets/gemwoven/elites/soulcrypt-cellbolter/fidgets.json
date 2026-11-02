@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "crank",
+      "label": "Lên dây nỏ",
+      "file": "crank.webp",
+      "whole": true
+    },
+    {
+      "name": "sight",
+      "label": "Ngắm thử",
+      "file": "sight.webp",
+      "whole": true
+    }
+  ]
+}

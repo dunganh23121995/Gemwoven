@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\mycelium-rotchampion\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 1.0048,
+      "error": 0.1713,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.9946,
+      "error": 0.2227,
+      "moving_share": 0.0219
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0046,
+      "error": 0.1969,
+      "moving_share": 0.01
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": 1,
+      "scale": 1.0149,
+      "error": 0.2167,
+      "moving_share": 0.0285
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9996,
+      "error": 0.1976,
+      "moving_share": 0.0183
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9998,
+      "error": 0.1984,
+      "moving_share": 0.0151
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1459,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1479,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    4.01,
+    4.77,
+    5.77,
+    7.12,
+    3.87,
+    2.35,
+    0.0,
+    0.0
+  ]
+}

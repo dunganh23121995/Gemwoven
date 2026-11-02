@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\glacier-mirrorpriestess\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.1793,
+      "moving_share": 0.015
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.306,
+      "moving_share": 0.065
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.3286,
+      "moving_share": 0.0746
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": -1,
+      "dy": 0,
+      "scale": 0.9947,
+      "error": 0.3542,
+      "moving_share": 0.0859
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.189,
+      "moving_share": 0.0085
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.99,
+      "error": 0.1721,
+      "moving_share": 0.0105
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9898,
+      "error": 0.1738,
+      "moving_share": 0.003
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9898,
+      "error": 0.1943,
+      "moving_share": 0.0124
+    }
+  ],
+  "jitter": [
+    21.29,
+    26.49,
+    27.21,
+    29.45,
+    1.63,
+    1.88,
+    2.27,
+    1.63
+  ]
+}

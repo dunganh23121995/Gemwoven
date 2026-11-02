@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "flare",
+      "label": "Lửa bùng lên",
+      "file": "flare.webp",
+      "whole": true
+    },
+    {
+      "name": "swing",
+      "label": "Lắc nhẹ xích",
+      "file": "swing.webp",
+      "whole": true
+    }
+  ]
+}
