@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\foundry-chiefengineer\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.0951,
+      "moving_share": 0.0
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1142,
+      "moving_share": 0.0118
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1082,
+      "moving_share": 0.0099
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1001,
+      "moving_share": 0.0092
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.1227,
+      "moving_share": 0.0144
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9951,
+      "error": 0.0958,
+      "moving_share": 0.0036
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1034,
+      "moving_share": 0.0092
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.0954,
+      "moving_share": 0.0
+    }
+  ],
+  "jitter": [
+    2.3,
+    1.23,
+    1.47,
+    2.27,
+    2.18,
+    1.11,
+    1.53,
+    0.0
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\desert-sunarcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.1668,
+      "moving_share": 0.0102
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1666,
+      "moving_share": 0.0312
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1522,
+      "moving_share": 0.0151
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1849,
+      "moving_share": 0.039
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.146,
+      "moving_share": 0.0202
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1766,
+      "moving_share": 0.0405
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1602,
+      "moving_share": 0.0186
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0049,
+      "error": 0.1424,
+      "moving_share": 0.0094
+    }
+  ],
+  "jitter": [
+    9.42,
+    10.38,
+    13.25,
+    12.28,
+    13.7,
+    13.23,
+    4.08,
+    1.0
+  ]
+}

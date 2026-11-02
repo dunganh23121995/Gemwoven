@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\desert-sphinxguard\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1405,
+      "moving_share": 0.0165
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0049,
+      "error": 0.1276,
+      "moving_share": 0.0159
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1243,
+      "moving_share": 0.0094
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.13,
+      "moving_share": 0.0128
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.1309,
+      "moving_share": 0.0132
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 0.9949,
+      "error": 0.1292,
+      "moving_share": 0.0082
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0,
+      "error": 0.1223,
+      "moving_share": 0.0087
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": -1,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.129,
+      "moving_share": 0.0141
+    }
+  ],
+  "jitter": [
+    2.69,
+    5.58,
+    4.25,
+    2.52,
+    3.5,
+    1.14,
+    7.09,
+    3.6
+  ]
+}

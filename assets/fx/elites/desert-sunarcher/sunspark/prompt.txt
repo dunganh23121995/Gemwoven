@@ -1,0 +1,12 @@
+Image 1 (the first image) is only the identity reference for the fighter "Cung Thủ Mặt Trời". DO NOT draw the fighter, its face, or any creature or character body.
+Image 2 is a layout guide: use it only to understand the 3x2 grid of equal 512x512 frame slots, their centres and the safe area (the inner box). Do not reproduce the guide: no visible boxes, no safe-area rectangles, no centre marks, no lines, no borders, no guide colours.
+
+Create an animated VFX sprite sheet for ONE skill of this fighter. Exactly six frames in a 3 COLUMNS x 2 ROWS grid of equal square cells, landscape 1536x1024 canvas, read left-to-right then next row.
+
+ITS VFX IDENTITY: SUN AND SAND: warm amber sand, white-hot sun flares, teal scarab-shell glints.
+THE EFFECT: a golden arrow's impact: white-hot sun rays and amber sand thrown straight outward.
+LAYOUT: one effect centred on the cell, about 70% of the cell across at its peak.
+TIMING: frame 1 a small bright seed of the effect at the centre; frame 2 it bursts outward to half size; frame 3 almost full size; frame 4 its full size, strongest; frame 5 breaking apart, pieces flying outward; frame 6 only a few small pieces left.
+STYLE: OPAQUE solid painted shapes with crisp edges and cel-shaded highlights, clean HD painterly anime game VFX for a mobile fantasy RPG, NOT pixel art. No translucent haze, no soft smoke, no mist, no blurry glow halos, no semi-transparent gradients fading into the background. No text, no labels.
+Everything stays fully inside its own cell with at least 12% magenta padding on all four sides; nothing crosses a cell edge or enters a neighbouring cell. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or hot pink anywhere in the effect, and no purple or violet.
+

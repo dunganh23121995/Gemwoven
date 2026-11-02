@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\marsh-bogwarlord\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0001,
+      "error": 0.1627,
+      "moving_share": 0.0121
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 1,
+      "dy": 0,
+      "scale": 1.005,
+      "error": 0.1765,
+      "moving_share": 0.013
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9903,
+      "error": 0.1679,
+      "moving_share": 0.0198
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 1,
+      "dy": -2,
+      "scale": 0.9813,
+      "error": 0.1614,
+      "moving_share": 0.0168
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 1,
+      "dy": -2,
+      "scale": 0.9903,
+      "error": 0.153,
+      "moving_share": 0.0104
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9953,
+      "error": 0.1599,
+      "moving_share": 0.0043
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1642,
+      "moving_share": 0.0113
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 1,
+      "dy": -1,
+      "scale": 0.9951,
+      "error": 0.1555,
+      "moving_share": 0.014
+    }
+  ],
+  "jitter": [
+    2.19,
+    2.54,
+    1.7,
+    1.5,
+    1.06,
+    0.94,
+    1.28,
+    1.37
+  ]
+}

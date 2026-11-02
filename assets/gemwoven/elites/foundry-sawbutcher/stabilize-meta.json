@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\foundry-sawbutcher\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1078,
+      "moving_share": 0.0013
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 1,
+      "scale": 1.0,
+      "error": 0.122,
+      "moving_share": 0.0061
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.115,
+      "moving_share": 0.0029
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1289,
+      "moving_share": 0.0105
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1191,
+      "moving_share": 0.0061
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1136,
+      "moving_share": 0.0014
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1174,
+      "moving_share": 0.0126
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.1093,
+      "moving_share": 0.0019
+    }
+  ],
+  "jitter": [
+    0.89,
+    0.89,
+    2.03,
+    1.32,
+    0.75,
+    2.0,
+    2.04,
+    0.06
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "master": "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\abyss-sirenblade\\master.png",
+  "frames": [
+    {
+      "frame": "idle-1.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.2729,
+      "moving_share": 0.0408
+    },
+    {
+      "frame": "idle-2.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2805,
+      "moving_share": 0.0603
+    },
+    {
+      "frame": "idle-3.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9947,
+      "error": 0.2895,
+      "moving_share": 0.0798
+    },
+    {
+      "frame": "idle-4.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2744,
+      "moving_share": 0.0491
+    },
+    {
+      "frame": "idle-5.png",
+      "dx": 0,
+      "dy": 0,
+      "scale": 1.0,
+      "error": 0.2818,
+      "moving_share": 0.0561
+    },
+    {
+      "frame": "idle-6.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9898,
+      "error": 0.2851,
+      "moving_share": 0.0408
+    },
+    {
+      "frame": "idle-7.png",
+      "dx": 0,
+      "dy": -1,
+      "scale": 0.9949,
+      "error": 0.2584,
+      "moving_share": 0.0369
+    },
+    {
+      "frame": "idle-8.png",
+      "dx": 0,
+      "dy": -2,
+      "scale": 0.9848,
+      "error": 0.2894,
+      "moving_share": 0.0424
+    }
+  ],
+  "jitter": [
+    16.65,
+    19.07,
+    20.68,
+    14.73,
+    17.62,
+    7.52,
+    6.92,
+    7.83
+  ]
+}

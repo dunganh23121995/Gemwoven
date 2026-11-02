@@ -1,0 +1,16 @@
+{
+  "fidgets": [
+    {
+      "name": "flick",
+      "label": "Xoay cổ tay",
+      "file": "flick.webp",
+      "whole": true
+    },
+    {
+      "name": "salute",
+      "label": "Nghiêng kiếm",
+      "file": "salute.webp",
+      "whole": true
+    }
+  ]
+}
