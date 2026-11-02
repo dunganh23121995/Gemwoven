@@ -1,0 +1,9 @@
+Image 1 is a chibi game character on a black background (Noct in his four-star form, a compact chibi hooded moon ronin (he/him): a soft pointed black hood drawn low over a completely black hidden face with two narrow glowing silver-violet eyes, a long black kimono-style coat with clean silver-trimmed hems worn open over dark lacquered chest armour, a large silver crescent-moon crest on the coat tail and small crescents on the sleeves, wide black hakama trousers, a silver-grey obi sash with violet silk cords and tassels, armoured shin guards and dark boots, a katana sheathed in a black lacquered scabbard at his left hip with a crescent-moon guard and a violet-corded hilt, standing in the showcase pose facing right). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: face, main hair mass, hood, hat brim and crown, helmet.
+- pure WHITE #FFFFFF: torso, chest armour, shoulders, arms and hands.
+- pure GREEN #00FF00: both legs from the hip down, with the boots.
+- pure YELLOW #FFFF00: the held weapon or staff or shield, without the hand.
+- pure RED #FF0000: long loose pieces that lie behind the body or stick out of it and move freely.
+- pure CYAN #00FFFF: small loose pieces lying on top of the body.
+For this character: RED: the whole torn cloak or coat tail behind him and every ragged strip reaching outside the body. CYAN: scarf ends, hanging belts, tassels, hanging cloth strips on the front of the body. YELLOW: the dagger, katana or scythe. BLUE: the hood and head.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.

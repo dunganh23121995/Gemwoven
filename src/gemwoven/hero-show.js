@@ -9,6 +9,8 @@
   const url=file=>new URL(file,document.baseURI).href;
   const reduced=()=>document.documentElement.classList.contains('reduced-motion');
   const cell=(i)=>`${(i%2)*100}% ${Math.floor(i/2)/3*100}%`;
+  // A baked mesh-rig resting loop (rig_idle.py) has its own grid; actions keep the drawn 2x4 sheets.
+  const rigCell=(rig,i)=>`${(i%rig.cols)/(rig.cols-1)*100}% ${Math.floor(i/rig.cols)/(rig.rows-1)*100}%`;
   // A few faint wisps of smoke thrown out when the cloud ring bursts.
   function wisps(host){
     const puffs=A['noct-puffs'];if(!puffs)return;
@@ -67,17 +69,19 @@
   function attach(host,hero,form){
     const show=A[`show-${hero}-${form}`];if(!show?.sheets)return null;
     const image=host.querySelector('.art,img');if(!image)return null;
-    for(const src of [show.sheets.idle,...(show.sheets.fidgets||[]),show.sheets.rift])preload(src);
+    const rig=show.sheets.rig,idleSrc=rig?.src||show.sheets.idle,idleMs=rig?.frameDuration||150,idleCount=rig?.count||8;
+    const idleCell=i=>rig?rigCell(rig,i):cell(i),idleSize=rig?`${rig.cols*100}% ${rig.rows*100}%`:'200% 400%';
+    for(const src of [idleSrc,...(show.sheets.fidgets||[]),show.sheets.rift])preload(src);
     host.querySelector('.hero-show')?.remove();
     const stage=document.createElement('span');stage.className='hero-show';stage.setAttribute('aria-hidden','true');
     // The essentials are inline so a stale cached stylesheet can never show both bodies at once.
     stage.style.cssText=image.style.cssText;
-    Object.assign(stage.style,{display:'block',position:'absolute',pointerEvents:'none',zIndex:'1',backgroundRepeat:'no-repeat',backgroundSize:'200% 400%',backgroundPosition:cell(0),backgroundImage:`url('${url(show.sheets.idle)}')`});
+    Object.assign(stage.style,{display:'block',position:'absolute',pointerEvents:'none',zIndex:'1',backgroundRepeat:'no-repeat',backgroundSize:idleSize,backgroundPosition:idleCell(0),backgroundImage:`url('${url(idleSrc)}')`});
     image.after(stage);image.classList.add('hero-show-under');image.style.opacity='0';host.classList.add('has-hero-show');
     host.querySelector('.scythe-glint')?.remove();
     let timer=0,playing=null,frame=0,next=performance.now()+4000+Math.random()*3000,stopped=false;
     const sheet=src=>{stage.style.backgroundImage=`url('${url(src)}')`;};
-    function play(src,ms,done,from=0){playing={src,ms,frame:from,last:0,done};sheet(src);stage.style.backgroundPosition=cell(from);}
+    function play(src,ms,done,from=0){playing={src,ms,frame:from,last:0,done};sheet(src);stage.style.backgroundSize='200% 400%';stage.style.backgroundPosition=cell(from);}
     function tick(now){
       if(stopped)return;timer=requestAnimationFrame(tick);
       if(stage.isConnected)tick.seen=true;else if(tick.seen){stopped=true;return;}   // the screen was re-rendered
@@ -85,15 +89,15 @@
         // An action may hold some frames longer (show.sheets.timing: ms per frame).
         const p=playing,hold=show.sheets.timing?.[p.src]?.[Math.max(0,p.frame-1)]??p.ms;if(p.frame&&now-p.last<hold)return;p.last=now;stage.style.backgroundPosition=cell(p.frame);
         // Actions start and end on the resting pose, so the loop picks up again from its first frame.
-        if(++p.frame>=8){playing=null;frame=0;tick.last=now;sheet(show.sheets.idle);stage.style.backgroundPosition=cell(0);next=now+5000+Math.random()*4000;p.done?.();}
+        if(++p.frame>=8){playing=null;frame=0;tick.last=now;sheet(idleSrc);stage.style.backgroundSize=idleSize;stage.style.backgroundPosition=idleCell(0);next=now+5000+Math.random()*4000;p.done?.();}
         return;
       }
       if(reduced())return;
-      if(now-(tick.last||0)>=150){tick.last=now;frame=(frame+1)%8;stage.style.backgroundPosition=cell(frame);}
+      if(now-(tick.last||0)>=idleMs){tick.last=now-(now-(tick.last||0))%idleMs;frame=(frame+1)%idleCount;stage.style.backgroundPosition=idleCell(frame);}
       const fidgets=show.sheets.fidgets||[];
       if(fidgets.length&&now>next&&frame===0){   // only from the resting pose: a bouncing loop never jumps
         const pick=fidgets[Math.floor(Math.random()*fidgets.length)];
-        if(isReady(pick)&&isReady(show.sheets.idle))play(pick,130);else next=now+1000;
+        if(isReady(pick)&&isReady(idleSrc))play(pick,130);else next=now+1000;
       }
     }
     timer=requestAnimationFrame(tick);

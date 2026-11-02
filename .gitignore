@@ -50,6 +50,8 @@ Thumbs.db
 assets/**/animation.gif
 assets/**/raw-sheet-clean.png
 assets/**/sheet-transparent.png
+assets/heroes/forms/*/form-*/rig/*/overlay.png
+assets/heroes/forms/*/form-*/rig/*/preview.png
 
 # Build cache (transcoded audio)
 /.build-cache/

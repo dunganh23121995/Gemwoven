@@ -213,6 +213,90 @@
    }
   },
   {
+   "id": "idle-rig",
+   "group": "2. Hình chiến đấu",
+   "label": "Nghỉ trong trận: vòng rig 24 khung",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-1/rig/combat/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/rig/combat/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/rig/combat/rig.json"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/rig/combat/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/rig/combat/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/rig/combat/rig.json"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/rig/combat/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/rig/combat/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/rig/combat/rig.json"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/rig/combat/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/rig/combat/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/rig/combat/rig.json"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/rig/combat/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/rig/combat/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/rig/combat/rig.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/rig/combat/rig.json"
+     }
+    }
+   }
+  },
+  {
    "id": "attack",
    "group": "2. Hình chiến đấu",
    "label": "Sheet đánh thường",
@@ -472,8 +556,8 @@
    "cells": {
     "shadow": {
      "2": {
-      "done": false,
-      "detail": "assets/heroes/forms/shadow/form-2/skill.webp | assets/heroes/forms/shadow/form-2/press.webp | assets/heroes/forms/shadow/form-2/slash.webp"
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/skill.webp"
      },
      "3": {
       "done": false,
@@ -776,6 +860,90 @@
    }
   },
   {
+   "id": "showcase-rig",
+   "group": "3. Trình diễn ngoài trận",
+   "label": "Vòng nghỉ rig 24 khung",
+   "optional": false,
+   "cells": {
+    "shadow": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-1/rig/show/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-2/rig/show/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/shadow/form-3/rig/show/rig.json"
+     }
+    },
+    "fire": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-1/rig/show/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-2/rig/show/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/fire/form-3/rig/show/rig.json"
+     }
+    },
+    "ice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-1/rig/show/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-2/rig/show/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/ice/form-3/rig/show/rig.json"
+     }
+    },
+    "earth": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-1/rig/show/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-2/rig/show/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/earth/form-3/rig/show/rig.json"
+     }
+    },
+    "lightning": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-1/rig/show/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-2/rig/show/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/lightning/form-3/rig/show/rig.json"
+     }
+    },
+    "novice": {
+     "1": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-1/rig/show/rig.json"
+     }
+    }
+   }
+  },
+  {
    "id": "showcase-fidgets",
    "group": "3. Trình diễn ngoài trận",
    "label": "2 hành động thỉnh thoảng",
@@ -788,7 +956,7 @@
      },
      "2": {
       "done": true,
-      "detail": "eyeflare, optC"
+      "detail": "slashtear, eyeflare"
      },
      "3": {
       "done": true,

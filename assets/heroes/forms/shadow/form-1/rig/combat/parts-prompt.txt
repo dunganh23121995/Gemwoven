@@ -1,0 +1,9 @@
+Image 1 is a chibi game character on a black background (Noct, a compact chibi hooded shadow swordsman (he/him): a soft pointed black hood over a completely black hidden face with two small glowing cyan eyes, a dark scarf, dark gunmetal leather armour with belts and a small silver cross ornament, a ragged dark grey cloak with violet-lined tattered edges spreading behind him, dark boots, a short dagger held up behind his shoulder; facing right in 3/4 view). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: face, main hair mass, hood, hat brim and crown, helmet.
+- pure WHITE #FFFFFF: torso, chest armour, shoulders, arms and hands.
+- pure GREEN #00FF00: both legs from the hip down, with the boots.
+- pure YELLOW #FFFF00: the held weapon or staff or shield, without the hand.
+- pure RED #FF0000: long loose pieces that lie behind the body or stick out of it and move freely.
+- pure CYAN #00FFFF: small loose pieces lying on top of the body.
+For this character: RED: the whole torn cloak or coat tail behind him and every ragged strip reaching outside the body. CYAN: scarf ends, hanging belts, tassels, hanging cloth strips on the front of the body. YELLOW: the dagger, katana or scythe. BLUE: the hood and head.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.

@@ -17,3 +17,6 @@ showcase. Awaiting the player's approval; forms 1 and 3 stay locked as before.
 Re-locked 2026-11-01 ("push git vào khóa Noct lại"): form 3's floor cloud is switched off everywhere by two CSS
 rules in src/gemwoven/hero-forms.css (the art stays; ask to bring it back), and in town every hero body
 stands above the ambient layers so it shows sharp and vivid.
+
+Changed on request 2026-11-02 ("làm bình thường giống các tướng khác"): the resting loops are baked mesh-rig
+sheets (rig_idle.py) and the body now moves at rest like every other hero's; the art itself is unchanged.

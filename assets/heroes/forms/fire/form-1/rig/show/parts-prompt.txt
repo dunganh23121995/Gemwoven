@@ -1,0 +1,9 @@
+Image 1 is a chibi game character on a black background (Mika the fox-girl flame swordswoman, a chibi fantasy RPG heroine: pointed orange fox ears with cream inner fur, long red-orange hair with a long braid swept back behind her, a red ribbon and a small gold flower ornament in her hair, amber eyes, a cream-white scarf whose ends blow back behind her, a ragged red shawl with ember-orange edges trailing behind her shoulders, black and red lacquered samurai light armour with gold trim and a gold shoulder guard, a red tabard with a gold crest, black armoured greaves with gold knee plates, ONE big fluffy orange fox tail with a cream-white tip behind her on the LEFT side of the image, a slim silver katana with a gold guard, standing in the showcase pose facing right). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: face, main hair mass, hood, hat brim and crown, helmet.
+- pure WHITE #FFFFFF: torso, chest armour, shoulders, arms and hands.
+- pure GREEN #00FF00: both legs from the hip down, with the boots.
+- pure YELLOW #FFFF00: the held weapon or staff or shield, without the hand.
+- pure RED #FF0000: long loose pieces that lie behind the body or stick out of it and move freely.
+- pure CYAN #00FFFF: small loose pieces lying on top of the body.
+For this character: RED: the fox tail or all the fox tails, the long scarf ends, long ribbons and streaming hair locks, the fox ear tips, long banner cloth hanging from the waist. CYAN: tassels, charms, short skirt panels, hair strands over the face, sleeves' loose edges. YELLOW: the sword or glaive only.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.

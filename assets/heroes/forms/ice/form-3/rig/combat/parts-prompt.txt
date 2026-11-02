@@ -1,0 +1,9 @@
+Image 1 is a chibi game character on a black background (Yuki the Snow Moon Empress, a chibi fantasy RPG heroine (she/her): a small graceful girl with two long upright white rabbit ears with pink insides, a crown of pale blue ice crystals and blue snowflake flowers on her head between the ears, long silver-white hair with bangs and one very long thick braid hanging behind her on the left, big calm blue eyes, a fluffy white fur collar, an elegant white and silver gown with pale blue ice-crystal armour plates on the chest and skirt, a long cape of white and icy blue crystal panels with dangling blue crystal charms, white armoured boots, a large folding fan of blue ice-crystal blades held at her chest in her near hand, and in her forward hand a tall dark moon halberd topped by a big blue crystal crescent-moon blade with a silver axe head and hanging ice charms, facing right). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: face, main hair mass, hood, hat brim and crown, helmet.
+- pure WHITE #FFFFFF: torso, chest armour, shoulders, arms and hands.
+- pure GREEN #00FF00: both legs from the hip down, with the boots.
+- pure YELLOW #FFFF00: the held weapon or staff or shield, without the hand.
+- pure RED #FF0000: long loose pieces that lie behind the body or stick out of it and move freely.
+- pure CYAN #00FFFF: small loose pieces lying on top of the body.
+For this character: RED: the rabbit ears, the long braid and long hair, the outer cape or robe tails and their hanging crystal drops. CYAN: sleeve edges, skirt hem, hanging ribbons, fur trim tips, hair strands on the chest. YELLOW: the crescent staff and any fan.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.

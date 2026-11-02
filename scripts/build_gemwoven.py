@@ -62,9 +62,16 @@ for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/forms.json')):
             cw,ch=sheet.width//idle['cols'],sheet.height//idle['rows']
             frames=[sheet.crop(((i%idle['cols'])*cw,(i//idle['cols'])*ch,(i%idle['cols']+1)*cw,(i//idle['cols']+1)*ch)).convert('RGBA') for i in range(idle['count'])]
             target=(ROOT/entry['poster']).with_name('hub-idle.webp')
-            # Two cross-faded in-betweens per pose pair so the resting loop glides instead of stepping.
-            tweened=[f if not k else Image.blend(f,frames[(i+1)%len(frames)],k/3) for i,f in enumerate(frames) for k in range(3)]
-            tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=round(idle.get('frameDuration',120)/3),loop=0,lossless=True)
+            # Two cross-faded in-betweens per pose pair so the resting loop glides instead of stepping;
+            # a baked mesh-rig loop (rig_idle.py) is dense enough as it is.
+            rig=ROOT/f'assets/heroes/forms/{hero}/form-{form}/rig/combat'
+            if (rig/'rig.json').exists():
+                book=json.loads((rig/'rig.json').read_text(encoding='utf-8'));atlas=Image.open(rig/'idle.webp').convert('RGBA');c=atlas.width//book['cols']
+                tweened=[atlas.crop(((i%book['cols'])*c,(i//book['cols'])*c,(i%book['cols']+1)*c,(i//book['cols']+1)*c)).resize((cw,ch),Image.Resampling.LANCZOS) for i in range(book['count'])]
+                tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=book['frameDuration'],loop=0,quality=90,method=4)
+            else:
+                tweened=[f if not k else Image.blend(f,frames[(i+1)%len(frames)],k/3) for i,f in enumerate(frames) for k in range(3)]
+                tweened[0].save(target,save_all=True,append_images=tweened[1:],duration=round(idle.get('frameDuration',120)/3),loop=0,lossless=True)
             bounds=frames[0].getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
             merged[f'form-idle-{hero}-{form}']={'file':target.relative_to(ROOT).as_posix(),'width':cw,'height':ch,'bodyAnchor':anchor,'footBounds':list(bounds)}
 for name,sheet in json.loads((ROOT/'assets/gemwoven/ambient/ambient.json').read_text(encoding='utf-8')).items():
@@ -99,6 +106,7 @@ for show_dir in sorted((ROOT/'assets/heroes/forms').glob('*/form-*/showcase')):
         'sheets':{'idle':rel('idle.webp'),'fidgets':[rel(f['file']) for f in book if f['name'] not in ('emerge','rift','entrance')],
                   'labels':[f['label'] for f in book if f['name'] not in ('emerge','rift','entrance')],
                   'timing':{rel(f['file']):f['frameMs'] for f in book if f.get('frameMs')},
+                  **({'rig':{**json.loads((show_dir.parent/'rig/show/rig.json').read_text(encoding='utf-8')),'src':(show_dir.parent/'rig/show/idle.webp').relative_to(ROOT).as_posix()}} if (show_dir.parent/'rig/show/rig.json').exists() else {}),
                   **{name:rel(name+'.webp') for name in ['emerge','rift','vortex','entrance'] if (show_dir/(name+'.webp')).exists()}}}
 # One body size in every form, measured by the head (assets/heroes/head-scale.json, head_scale.py).
 # fitBody fits a form's crown-to-foot to one height; headFit then grows or shrinks that form so its
