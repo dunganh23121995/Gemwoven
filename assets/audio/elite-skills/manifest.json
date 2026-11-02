@@ -1,0 +1,102 @@
+{
+ "elitefx-bow-draw": {
+  "file": "elite-skills/bow-draw.wav",
+  "duration": 0.933
+ },
+ "elitefx-bow-charge": {
+  "file": "elite-skills/bow-charge.wav",
+  "duration": 1.0
+ },
+ "elitefx-bow-loose-1": {
+  "file": "elite-skills/bow-loose-1.wav",
+  "duration": 0.293
+ },
+ "elitefx-bow-loose-2": {
+  "file": "elite-skills/bow-loose-2.wav",
+  "duration": 0.291
+ },
+ "elitefx-bow-hit-1": {
+  "file": "elite-skills/bow-hit-1.wav",
+  "duration": 0.136
+ },
+ "elitefx-bow-hit-2": {
+  "file": "elite-skills/bow-hit-2.wav",
+  "duration": 0.367
+ },
+ "elitefx-melee-swing-1": {
+  "file": "elite-skills/melee-swing-1.wav",
+  "duration": 0.429
+ },
+ "elitefx-melee-swing-2": {
+  "file": "elite-skills/melee-swing-2.wav",
+  "duration": 0.425
+ },
+ "elitefx-melee-swing-3": {
+  "file": "elite-skills/melee-swing-3.wav",
+  "duration": 0.427
+ },
+ "elitefx-melee-charge": {
+  "file": "elite-skills/melee-charge.wav",
+  "duration": 1.375
+ },
+ "elitefx-melee-hit-1": {
+  "file": "elite-skills/melee-hit-1.wav",
+  "duration": 0.233
+ },
+ "elitefx-melee-hit-2": {
+  "file": "elite-skills/melee-hit-2.wav",
+  "duration": 0.233
+ },
+ "elitefx-melee-hit-3": {
+  "file": "elite-skills/melee-hit-3.wav",
+  "duration": 0.233
+ },
+ "elitefx-melee-heavy-1": {
+  "file": "elite-skills/melee-heavy-1.wav",
+  "duration": 0.667
+ },
+ "elitefx-melee-heavy-2": {
+  "file": "elite-skills/melee-heavy-2.wav",
+  "duration": 0.7
+ },
+ "elitefx-melee-heavy-3": {
+  "file": "elite-skills/melee-heavy-3.wav",
+  "duration": 0.7
+ },
+ "elitefx-magic-cast-1": {
+  "file": "elite-skills/magic-cast-1.wav",
+  "duration": 1.48
+ },
+ "elitefx-magic-cast-2": {
+  "file": "elite-skills/magic-cast-2.wav",
+  "duration": 1.481
+ },
+ "elitefx-magic-cast-3": {
+  "file": "elite-skills/magic-cast-3.wav",
+  "duration": 1.475
+ },
+ "elitefx-magic-charge": {
+  "file": "elite-skills/magic-charge.wav",
+  "duration": 0.933
+ },
+ "elitefx-magic-hit-1": {
+  "file": "elite-skills/magic-hit-1.wav",
+  "duration": 1.1
+ },
+ "elitefx-magic-hit-2": {
+  "file": "elite-skills/magic-hit-2.wav",
+  "duration": 1.1
+ },
+ "elitefx-magic-hit-3": {
+  "file": "elite-skills/magic-hit-3.wav",
+  "duration": 1.1
+ },
+ "elitefx-guard-lock": {
+  "file": "elite-skills/guard-lock.wav",
+  "duration": 1.7
+ },
+ "elitefx-heal-grow": {
+  "file": "elite-skills/heal-grow.wav",
+  "duration": 2.6
+ }
+}
