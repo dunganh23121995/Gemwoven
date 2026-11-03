@@ -88,7 +88,8 @@ function createLiveCombat(){
       receipt(side,'energy',state[energyKey]-before);
       if(hero&&own[3]>=3)state.frozen=true;
       if(!hero&&type===3&&own[3]>=3&&progressionIsDuel())state.playerFrozen=true;
-      if(!hero&&type===3&&own[3]===1&&!progressionIsDuel())state.energy=Math.max(0,state.energy-20);
+      // An enemy snow match drains 20 energy, unless Ngọc Kháng resists it (each time).
+      if(!hero&&type===3&&own[3]===1&&!progressionIsDuel()&&!(Math.random()<(progressionBattle?.stats?.resist||0)))state.energy=Math.max(0,state.energy-20);
       if(type===0){
         const raw=8*(hero?progressionSwordFactor(key):1)*(progressionIsDuel()?1:hero?1:state.boss?1.15:.55);
         enqueue(side,'attack',raw);

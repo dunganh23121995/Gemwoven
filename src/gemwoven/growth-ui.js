@@ -80,8 +80,8 @@
       `<div class="trial-go"><span class="trial-left ${left?'':'is-out'}">${left?`Còn <b>${left}/${M.TRIAL.rewarded}</b> lượt có thưởng`:'Hết lượt thưởng · vẫn ghi kỷ lục'}</span><button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${b.i}">Thử sức</button></div></article>`;
     const others=bosses.filter(b=>!b.today);
     return `<section class="trial-ground"><h3>Sân Thử Luyện</h3>${bosses.filter(b=>b.today).map(card).join('')}`+
-      (others.length?`<ul class="trial-week">${others.map(b=>`<li><b>${esc(b.day)}</b><span>${esc(b.e.enemyName)}</span><small>${b.best?'Kỷ lục '+fmt(b.best):'Chưa đánh'}</small></li>`).join('')}</ul>`:'')+
-      `<details class="trial-rules"><summary>Cách chơi</summary><p>Boss trâu không bao giờ ngã: hết thanh máu thì đứng dậy với thanh mới. ${M.TRIAL.turns} lượt, tính tổng sát thương. Boss ở đúng cấp tướng đang xuất chiến (${esc(M.HEROES[p.selected].name)} cấp ${hero.level}). ${M.TRIAL.rewarded} lượt có thưởng mỗi ngày theo mốc ½, 1, 2, 3, 5 thanh máu; sau đó đánh thoải mái để thử tướng, vẫn ghi kỷ lục. Cuối tuần mở cả 5 boss.</p></details></section>`;
+      (others.length?`<ul class="trial-week">${others.map(b=>`<li class="${b.best?'done':''}" title="${esc(b.e.enemyName)}">${A['boss-'+b.e.bossId]?img('boss-'+b.e.bossId,'trial-boss'):''}<b>${esc(b.day.replace('Thứ ','T'))}</b>${b.best?'<i>✓</i>':''}</li>`).join('')}</ul>`:'')+
+      `<details class="trial-rules"><summary aria-label="Cách chơi">ⓘ Cách chơi</summary><p>Boss trâu không bao giờ ngã: hết thanh máu thì đứng dậy với thanh mới. ${M.TRIAL.turns} lượt, tính tổng sát thương. Boss ở đúng cấp tướng đang xuất chiến (${esc(M.HEROES[p.selected].name)} cấp ${hero.level}). ${M.TRIAL.rewarded} lượt có thưởng mỗi ngày theo mốc ½, 1, 2, 3, 5 thanh máu; sau đó đánh thoải mái để thử tướng, vẫn ghi kỷ lục. Cuối tuần mở cả 5 boss.</p></details></section>`;
   }
   function cadenceSection(){
     if(!O)return '';
@@ -132,11 +132,11 @@
   function arenaDialog(){
     if(!O)return;const modal=window.GemwovenUI.makeDialog('arena-info','Đấu Hạng · Sắp ra mắt','growth-dialog arena-dialog');
     const tiers=[...new Map(O.LEAGUES.map(l=>[l.tier,l])).values()];
-    modal.body.innerHTML=`<p class="growth-lead">Đấu hạng thời gian thực mở cùng máy chủ trận đấu: máy chủ giữ bàn ngọc, xúc xắc và kết quả. Hiện có: 1v1 cùng máy và Giao hữu bản sao ở Gặp Gỡ.</p>`+
-      `<h3 class="growth-sub">Hai hàng đấu</h3><ul class="growth-tips">${O.ARENA_RULES.queues.map(q=>`<li><span><b>${esc(q.name)}</b> · ${esc(q.desc)}</span></li>`).join('')}<li><span>Lượt ${O.ARENA_RULES.turnSeconds} giây; ${O.ARENA_RULES.timeoutsToLose} lần hết giờ là thua; mất kết nối ${O.ARENA_RULES.reconnectSeconds} giây thì máy tạm đánh rồi xử thua.</span></li></ul>`+
-      `<h3 class="growth-sub">Bậc và thưởng tuần (không Đá Ngọc)</h3><table class="gw-table"><thead><tr><th>Bậc</th><th>Vàng</th><th>Huy hiệu</th><th>Bí kíp</th></tr></thead><tbody>${tiers.map(l=>`<tr><td>${esc(l.name.replace(/ (III|II|I)$/,''))}${l.top?` · top ${l.top}`:''}</td><td>${fmt(l.weekly.gold)}</td><td>${fmt(l.weekly.arenaMedals)}</td><td>${fmt(l.weekly.skillBooks)}</td></tr>`).join('')}</tbody></table>`+
-      `<p class="growth-note">Mùa 28 ngày, cuối mùa hạ mềm bậc. ${esc(O.ARENA_RULES.seasonRewards)}</p>`+
-      `<h3 class="growth-sub">Thư Hùng Đại Hội · mỗi quý</h3><ul class="growth-tips"><li><span>Đăng ký 1 tuần → vòng Thụy Sĩ 7 vòng → top 64 loại trực tiếp, xem trực tiếp (trễ 10 giây).</span></li><li><span>Hai hạng: Chuẩn Hóa và Tự Do.</span></li><li><span>Thưởng: danh hiệu Thư Hùng Vô Địch (tên riêng theo khuôn, có kiểm duyệt), trang phục vô địch, tượng ở Quảng Trường mùa sau. Không sức mạnh độc quyền.</span></li></ul>`;
+    modal.body.innerHTML=`<div class="arena-cards">${O.ARENA_RULES.queues.map((q,i)=>`<details class="arena-card"><summary>${img(i?'icon-crown':'icon-arena')}<b>${esc(q.name)}</b></summary><p>${esc(q.desc)}</p></details>`).join('')}</div>`+
+      `<details class="arena-more"><summary>⏱ Luật trận</summary><p>Lượt ${O.ARENA_RULES.turnSeconds} giây · ${O.ARENA_RULES.timeoutsToLose} lần hết giờ là thua · mất kết nối ${O.ARENA_RULES.reconnectSeconds} giây thì máy tạm đánh rồi xử thua. Máy chủ giữ bàn ngọc, xúc xắc và kết quả.</p></details>`+
+      `<details class="arena-more"><summary>🏅 Bậc và thưởng tuần</summary><table class="gw-table"><thead><tr><th>Bậc</th><th>Vàng</th><th>Huy hiệu</th><th>Bí kíp</th></tr></thead><tbody>${tiers.map(l=>`<tr><td>${esc(l.name.replace(/ (III|II|I)$/,''))}${l.top?` · top ${l.top}`:''}</td><td>${fmt(l.weekly.gold)}</td><td>${fmt(l.weekly.arenaMedals)}</td><td>${fmt(l.weekly.skillBooks)}</td></tr>`).join('')}</tbody></table>`+
+      `<p class="growth-note">Mùa 28 ngày, cuối mùa hạ mềm bậc. ${esc(O.ARENA_RULES.seasonRewards)} Không Đá Ngọc.</p></details>`+
+      `<details class="arena-more"><summary>🏆 Thư Hùng Đại Hội</summary><ul class="growth-tips"><li><span>Đăng ký 1 tuần → vòng Thụy Sĩ 7 vòng → top 64 loại trực tiếp, xem trực tiếp (trễ 10 giây).</span></li><li><span>Hai hạng: Chuẩn Hóa và Tự Do.</span></li><li><span>Thưởng: danh hiệu Thư Hùng Vô Địch (tên riêng theo khuôn, có kiểm duyệt), trang phục vô địch, tượng ở Quảng Trường mùa sau. Không sức mạnh độc quyền.</span></li></ul></details>`;
     modal.present();
   }
   function monthlyCard(ctx){

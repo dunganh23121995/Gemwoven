@@ -1,0 +1,11 @@
+Use the attached image only as the STYLE reference (Gemwoven painted fantasy item icons: glossy gems, warm gold metal, soft painterly shading, clean dark outline). Draw a NEW icon sheet.
+
+Subject: socketable gems ("Dệt Ngọc"), a 5x5 grid of equal square cells. Each ROW is one gem type, each COLUMN is its level 1 to 5 (left to right the same gem grows more precious: level 1 a small rough-cut stone, level 2 a clean cut gem, level 3 a faceted gem with a thin gold rim, level 4 a larger gem in an ornate gold setting with small sparkles, level 5 a radiant gem in a crowned gold setting with a soft glow).
+Rows (top to bottom):
+1. Attack gem: ruby red, a tiny sword-shaped glint inside.
+2. Vitality gem: emerald green, a tiny leaf-shaped glint inside.
+3. Guard gem: sapphire blue with silver, a tiny shield-shaped glint inside.
+4. Resistance gem: pearl white with soft lilac sheen, a tiny circle-ward glint inside.
+5. Precision gem: golden topaz, a tiny star/eye-shaped glint inside.
+
+Rules: one gem per cell, centered, inside the central 70% of the cell, nothing crossing cell edges, all cells the same scale progression per column. No text, no numbers, no letters. Background: solid flat #FF00FF magenta in every cell, no grid lines, no shadows on the background.

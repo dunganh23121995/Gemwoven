@@ -26,7 +26,7 @@ FRAME_MS = 150
 def paths(hero, form):
     forms = ROOT / "assets/heroes/forms" / hero
     work = forms / f"form-{form}/combat-idle"
-    sheet = (ROOT / "assets/heroes/novice/idle.webp" if hero == "novice" else
+    sheet = (ROOT / "assets/heroes/novice/idle.webp" if hero == "novice" and form == "1" else
              ROOT / "assets/heroes/shadow/idle-cloth.webp" if hero == "shadow" and form == "1" else
              ROOT / f"assets/reimagined/heroes/{hero}/idle.webp" if form == "1" else forms / f"form-{form}/idle.webp")
     return forms, work, sheet
@@ -46,7 +46,7 @@ def package(hero, form):
     loop.save(sheet, lossless=True, method=6)
     if hero == "shadow" and form == "1":
         pass  # build.py reads Noct's form-1 idle sheet as it is (heads and pace are set there)
-    elif hero == "novice":
+    elif hero == "novice" and form == "1":
         meta_path = ROOT / "assets/heroes/novice/meta.json"
         book = json.loads(meta_path.read_text(encoding="utf-8"))
         idle = book["actions"]["idle"]

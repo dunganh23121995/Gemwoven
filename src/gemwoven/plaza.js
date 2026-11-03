@@ -393,7 +393,7 @@
         <button type="button" data-open="friends"><img src="${esc(asset('icon-friends'))}" alt=""><span>Bạn bè</span><b class="pz-badge" hidden></b></button>
         <button type="button" data-open="guild"><img src="${esc(asset('icon-crown'))}" alt=""><span>Bang hội</span><b class="pz-badge" hidden></b></button>
         <button type="button" data-open="emotes"><span class="pz-emoji">😄</span><span>Biểu cảm</span></button>
-        <button type="button" data-open="more"><span class="pz-emoji">⋯</span><span>Thêm</span></button></nav>
+        <button type="button" data-open="more"><img src="${esc(asset('icon-grid'))}" alt=""><span>Thêm</span></button></nav>
       <button type="button" class="pz-context" hidden></button>
       <div class="pz-stick ${stickSide} ${prefs.stick==='fixed'?'fixed':''}" aria-hidden="true"><i></i></div>
       <button type="button" class="pz-ticker" data-open="log" aria-label="Mở nhật ký trò chuyện"></button>

@@ -1264,9 +1264,9 @@ body.whole-scene.reduced-motion .scene .landscape .parallax-layer[data-depth="0"
 .scene[data-chapter="void"] .scene-atmosphere{--speck:#c890ff}
 
 /* Danh Hiệu over the hero's head (progressionTitlePlate): the rarity plate with the name, never mirrored. */
-.combat-title{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:170px;height:44px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:5}
+.combat-title{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:128px;height:34px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:5}
 .combat-title img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.combat-title b{position:relative;font:900 13px/1 Cambria,serif;white-space:nowrap;padding:0 26px;background:linear-gradient(180deg,#fff 0%,var(--t1,#fff3c4) 55%,var(--t2,#ffc94a) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(40,18,6,.9)) drop-shadow(0 0 3px rgba(40,18,6,.7))}
+.combat-title b{position:relative;font:900 11px/1 Cambria,serif;white-space:nowrap;padding:0 20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;background:linear-gradient(180deg,#fff 0%,var(--t1,#fff3c4) 55%,var(--t2,#ffc94a) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(40,18,6,.9)) drop-shadow(0 0 3px rgba(40,18,6,.7))}
 .combat-title.tier-1{--t1:#e8ffd8;--t2:#9fd889}.combat-title.tier-2{--t1:#e2f2ff;--t2:#8cc4ff}.combat-title.tier-3{--t1:#f4e6ff;--t2:#c79bff}.combat-title.tier-4{--t1:#fff4c8;--t2:#ffc94a}.combat-title.tier-5{--t1:#ffe6d0;--t2:#ff7a52}
 /* Biến Thân: the button near the hero, the golden glow while it lasts, a faint afterglow later. */
 .transform-btn{position:absolute;left:8px;bottom:10px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:1px;min-width:118px;min-height:52px;padding:6px 12px;border-radius:16px;border:2px solid #ffe7a6;background:linear-gradient(#f6b24a,#c4561c);color:#fff;font:900 15px/1.05 Cambria,serif;text-shadow:0 1px 2px #5a2a08;box-shadow:0 0 0 0 rgba(255,200,90,.8),0 4px 12px rgba(0,0,0,.45);cursor:pointer;animation:transform-call 1.6s ease-in-out infinite}
@@ -1281,6 +1281,14 @@ body.whole-scene.reduced-motion .scene .landscape .parallax-layer[data-depth="0"
 #heroActor.is-transformed::before{content:"";position:absolute;left:50%;bottom:4%;width:120%;height:90%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at 50% 70%,rgba(255,220,120,.55),rgba(255,170,60,.25) 45%,rgba(255,170,60,0) 70%);pointer-events:none;z-index:0;animation:transform-aura 1.6s ease-in-out infinite}
 @keyframes transform-aura{50%{opacity:.6;transform:translateX(-50%) scale(1.06)}}
 .reduced-motion #heroActor.is-transformed::before{animation:none}
+
+/* Biến Thân states: ready = glowing label; active = round badge with the turns left; after = small +10% badge. */
+.transform-btn .tf-count{display:none}
+.transform-btn.is-active,.transform-btn.is-after{min-width:0;width:60px;height:60px;border-radius:50%;padding:0;justify-content:center;animation:none}
+.transform-btn.is-active .tf-label,.transform-btn.is-after .tf-label,.transform-btn.is-active small,.transform-btn.is-after small{display:none}
+.transform-btn.is-active .tf-count,.transform-btn.is-after .tf-count{display:block;font:900 26px/1 Cambria,serif}
+.transform-btn.is-active{box-shadow:0 0 0 4px rgba(255,214,110,.9),0 0 16px 4px rgba(255,170,60,.7)}
+.transform-btn.is-after{width:52px;height:52px;background:linear-gradient(#b98a4a,#7a5226);opacity:.9}.transform-btn.is-after .tf-count{font-size:14px}
 
 .expedition-hud{padding:10px 13px;background:linear-gradient(115deg,#28251d,#1a302b);color:#efdfb9;border-top:1px solid #9a8048;font:12px/1.4 system-ui}.expedition-phase,.expedition-pools{display:flex;justify-content:space-between;gap:10px}.expedition-phase>b{color:#f3c778}.expedition-phase strong{color:#ffbb83}.expedition-gauge{display:flex;gap:12px;align-items:center;margin:6px 0}.expedition-gauge label{min-width:135px}.expedition-gauge meter{height:9px;flex:1;accent-color:#d5a34d}.expedition-counter{display:flex;align-items:center;gap:8px;margin:4px 0 7px}.expedition-counter>img{width:39px;height:39px;object-fit:contain}.expedition-counter b{font-size:11px;color:#a3cfb5}.expedition-pools{color:#c0c7bc;font-size:11px}.expedition-forecast{font-size:12px;margin:6px 0 0;color:#decfae}.expedition-forecast.channeling{color:#ffd294;background:#70411b55;padding:6px 8px;border-left:3px solid #e6b568}.expedition-minions{position:absolute;left:58%;top:64%;width:35%;height:25%;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;z-index:2}.expedition-minions img{width:48%;height:95%;object-fit:contain;filter:drop-shadow(0 2px 5px #1a1212)}.actor[data-boss-phase="3"]>.sprite-body{filter:drop-shadow(0 0 12px #df7b93)}
 
@@ -2773,7 +2781,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     return NEWBIE.map((reward,i)=>({day:i+1,reward,claimed:claimed.includes(i+1),open:i+1<=days}));}
   // Weekly quests (reset Monday 00:00 GMT+7): one ticket each, so play gives about 40 tickets per 28 days
   // (one a day from the visit quest plus three a week here).
-  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Boss Vô Hạn',target:8,reward:{tickets:1,essence:15,ore:20}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000}}];
+  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Boss Vô Hạn',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000}}];
   const week=ms=>{const d=new Date(ms+7*3600000),back=(d.getUTCDay()+6)%7;return new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()-back)).toISOString().slice(0,10);};
   const EVENT_TEMPLATE={id:'new-event',title:'Sự kiện sắp ra mắt',description:'Cuộc phiêu lưu mới đang được chuẩn bị.',enabled:false,status:'coming-soon',startsAt:'',endsAt:'',banner:'icon-event',order:0};
   const clone=v=>JSON.parse(JSON.stringify(v));
@@ -2917,6 +2925,8 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     step('stars',`${h.stars} sao`,()=>{attack*=1+.09*(h.stars-1);hp*=1+.12*(h.stars-1);});
     step('evolution',`Tiến hóa ${h.evolution}`,()=>{attack*=1+.07*h.evolution;hp*=1+.1*h.evolution;});
     step('gear',`Trang bị (${Object.keys(h.gear).length}/6)`,()=>{for(const id of Object.values(h.gear)){const g=p.equipment.find(x=>x.id===id);if(!g)continue;const f=RARITIES[g.rarity].factor*(1+g.level*.08);if(g.slot==='weapon')attack+=f*.035;else if(g.slot==='armor')hp+=f*25;else if(g.slot==='helmet')hp+=f*15;else if(g.slot==='pants')hp+=f*10,defense+=f*.004;else if(g.slot==='glasses')attack+=f*.02;else defense+=f*.012;if(g.affix)affixes.push(g.affix);}});
+    const gems=normalized?null:gemTotals(p,key);
+    if(gems&&(gems.atk||gems.hp||gems.def))step('gems','Ngọc khảm',()=>{attack*=1+gems.atk;hp*=1+gems.hp;defense+=gems.def;});
     step('relic',`${RELICS[key]} · cấp ${h.relic.level}`,()=>{const relic=relicBonus(h.relic);attack*=1+relic;hp*=1+relic;});
     const kit=skillKit(key,h,normalized);
     step('skills','Kỹ năng (Bị động, Chân Thân)',()=>{attack*=(1+kit.attackBonus)*(1+kit.awaken.attack);hp*=(1+kit.hpBonus)*(1+kit.awaken.hp);defense+=kit.defenseBonus;});
@@ -2926,7 +2936,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     const h=p.heroes[key],parts=statParts(p,key,normalized),data=HEROES[key],kit=parts.kit,affixes=parts.affixes;let {hp,attack,defense}=parts;
     // Practice is normalized: base HP/Công, rank-1 active, innate traits only, no gear.
     if(normalized){hp=data.hp*2;attack=data.attack*1.8;defense=0;}
-    return {hp:Math.round(hp),attack:Number(attack.toFixed(4)),defense:Math.min(.5,defense),active:kit.activePower,mutation:kit.mutation,awakened:kit.awakened,skills:normalized?kit.ranks.slice():h.skills.slice(),evolution:h.evolution,form:heroForm(key,h),stars:h.stars,affixes:normalized?[]:affixes,power:Math.round(hp*attack/(1-Math.min(.5,defense))),kit};
+    return {hp:Math.round(hp),attack:Number(attack.toFixed(4)),defense:Math.min(.5,defense),active:kit.activePower,mutation:kit.mutation,awakened:kit.awakened,skills:normalized?kit.ranks.slice():h.skills.slice(),evolution:h.evolution,form:heroForm(key,h),stars:h.stars,affixes:normalized?[]:affixes,resist:normalized?0:gemTotals(p,key).resist,precision:normalized?0:gemTotals(p,key).precision,power:Math.round(hp*attack/(1-Math.min(.5,defense))),kit};
   }
   // The hub's "Chi tiết lực chiến": rows per source (HP, Công, Thủ added by it) and what power is.
   function statBreakdown(p,key){
@@ -2995,6 +3005,18 @@ function bestGear(p,key,goal='attack'){const h=p.heroes[key];check(h,'Chưa sở
     for(const g of pool)if(!best||gearScore(g,goal)>gearScore(best,goal)+1e-9)best=g;
     if(best&&best.id!==own?.id)out[slot]={from:own?.id||null,to:best.id};}
   return out;}
+// Dệt Ngọc (docs/GAME_DESIGN.md §3, Codex round 6): sockets by gear rarity, five gem types × five levels. Công%/HP%
+// add up across gems and multiply once after gear (caps 36% / 54%); Thủ adds points (cap 12% from gems, total still
+// ≤ 50%); resistance (cap 40%) and precision (cap 30%) change effect chances: final = min(1, p×(1+precision))×(1−resist).
+// Three gems of a type and level fuse into one of the next level for 2.000 gold × level. Off in normalized play.
+const GEMS={atk:{name:'Ngọc Công',stat:'Công',values:[.02,.04,.06,.09,.12],cap:.36},hp:{name:'Ngọc Sinh Lực',stat:'HP',values:[.03,.06,.09,.13,.18],cap:.54},
+  def:{name:'Ngọc Hộ Thể',stat:'Thủ',values:[.01,.02,.03,.04,.05],cap:.12},resist:{name:'Ngọc Kháng',stat:'Kháng hiệu ứng',values:[.05,.1,.15,.2,.25],cap:.4},
+  precision:{name:'Ngọc Chuẩn',stat:'Chính xác hiệu ứng',values:[.03,.06,.09,.12,.15],cap:.3}};
+const SOCKETS={common:0,uncommon:0,rare:1,epic:2,legendary:3,divine:4};
+const gemKey=(type,level)=>`${type}-${level}`,gemParse=k=>{const [type,l]=String(k).split('-');return GEMS[type]&&+l>=1&&+l<=5?{type,level:+l}:null;};
+function gemTotals(p,key){const h=p.heroes[key],t={atk:0,hp:0,def:0,resist:0,precision:0};if(!h)return t;
+  for(const id of Object.values(h.gear)){const g=p.equipment.find(x=>x.id===id);for(const k of g?.sockets||[]){const gem=k&&gemParse(k);if(gem)t[gem.type]+=GEMS[gem.type].values[gem.level-1];}}
+  for(const type of Object.keys(t))t[type]=Math.min(GEMS[type].cap,Math.round(t[type]*1e4)/1e4);return t;}
 // Titles (docs/GAME_DESIGN.md §15): cosmetic only, never a stat. Earned from play on this save; arena, season
 // and tournament titles come from the server later and show as locked with their source.
 const TITLE_RULES=[
@@ -3080,6 +3102,8 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       enemyKey:['fire','ice','earth','lightning'].includes(hero)?hero:'fire',enemyHp:Math.round(data.hp*2),enemyAttack:Math.round(data.attack*1.8*1e4)/1e4,enemySkillBase:45,
       skills:[data.ultimate||'Tuyệt kỹ'],skillSet:[],eliteUlt:false,tactical:false,variant:0,name:SPAR_LABEL,opponent:{hero,name,look:Math.max(1,Math.min(3,Math.round(Number(opponent?.look)||1)))}};
   }
+  // Ordinary foes' HP share (Codex round 6: test −20% if fights run past 8–12 moves; measured with the real-fight bot).
+  const NORMAL_HP=1;
   function encounter(mode,index){
     if(mode==='trial')return trialEncounter(index);
     check(['campaign','boss','duel'].includes(mode),'Chế độ chưa phát hành.');check(int(index,1,mode==='campaign'?WORLD.MAX_STAGES:1000000),'Ải không hợp lệ.');
@@ -3097,7 +3121,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     // phase fights (×3 → ×4 HP by stage 1200) with a 35-turn limit. Endless
     // keeps its steeper ranking curve.
     const lateBoss=mode==='campaign'&&tier==='boss'&&!!bossDef.tactical,growth=mode==='campaign'&&index>200?1.6+(index-200)*.0013:1+index*.003;
-    const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-700)/500:2.25):tier==='elite'?1.5:1):(120+depth*18)*(boss?1.7:1);
+    const hp=mode==='campaign'?(88+recommended*15)*(tier==='boss'?(lateBoss?3+Math.max(0,index-700)/500:2.25):tier==='elite'?1.5:NORMAL_HP):(120+depth*18)*(boss?1.7:1);
     return {mode,index,recommended,boss,tier,chapter:chapter.index,theme:chapter.id,bossId:chapter.boss,music:boss?chapter.music:chapter.element,creature:creature?.id||null,enemyName:boss?bossDef.name:creature?.name||'Vệ Binh Tinh Anh',turnLimit:tier==='boss'?(lateBoss?35:20):tier==='elite'?16:12,
       enemyKey:mode==='duel'?'fire':chapter.element,enemyHp:Math.round(hp*growth*(round?.[1]||1)),enemyAttack:Math.round(enemyAttackFor(mode,index,tier,recommended)*(round?.[1]||1)*1e4)/1e4,enemySkillBase:Math.round(ENEMY_SKILL_BASE[tier]*(round?.[1]||1)*(tier==='boss'&&mode==='campaign'?CHAPTER_POWER(chapter.index):1)),
       skills:skillSet.length?skillSet.map(s=>s.name):['Đánh Thường'],
@@ -3179,7 +3203,8 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function spend(p,cost){for(const [id,n] of Object.entries(cost)){check(Number.isSafeInteger(n)&&n>=0,'Chi phí không hợp lệ.');check(amount(p,id)>=n,`Thiếu ${RESOURCES[id]?.[0]||id}: cần ${n.toLocaleString('vi-VN')}.`);}for(const [id,n]of Object.entries(cost)){if(id in p.wallet)p.wallet[id]-=n;else p.materials[id]-=n;}p.daily.progress.spend+=cost.gold||0;}
     function grant(p,reward){const actual={};for(const [id,requested]of Object.entries(reward)){check(id!=='gems','Đá Ngọc chỉ nhận từ giao dịch nạp được máy chủ xác nhận.');check(Object.keys(RESOURCES).includes(id)&&Number.isSafeInteger(requested)&&requested>=0,'Phần thưởng không hợp lệ.');const n=id==='seals'?Math.min(requested,Math.max(0,DAILY_SEAL_CAP-p.daily.seals)):requested;if(id==='seals')p.daily.seals+=n;if(id in p.wallet)p.wallet[id]+=n;else p.materials[id]=(p.materials[id]||0)+n;actual[id]=n;}return actual;}
     // grant() plus Mảnh Hiro, which are fragments, not a wallet resource.
-    function grantAll(p,reward){const {noviceFragments=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}return actual;}
+    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}return actual;}
+    function returnGems(p,list){for(const g of list)for(const k of g.sockets||[])if(k){p.gems??={};p.gems[k]=(p.gems[k]||0)+1;}}
     function note(p,message){p.log.unshift({at:now(),message});p.log=p.log.slice(0,60);}
     function id(){return `${now().toString(36)}-${load().revision.toString(36)}-${(++sequence).toString(36)}-${Math.floor(random()*1e12).toString(36)}`;}
     function addHero(p,key){if(p.heroes[key])p.heroes[key].copies++;else p.heroes[key]=heroSave();}
@@ -3236,12 +3261,13 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
         if(won&&b.mode==='campaign')p.campaign.stars[b.index]=Math.max(p.campaign.stars[b.index]||0,stageStars(b,won,performance));
         if(won&&b.mode==='campaign'&&b.tier==='elite'&&stageStars(b,true,performance)===3){const counter=counterProgress(p,b.chapter),local=(b.index-1)%50+1;if(counter&&!counter.claimed.includes(local)){p.campaign.artifacts[counter.theme]={claimed:[...counter.claimed,local]};counterReward={...counterProgress(p,b.chapter),earned:3};}}
-        let hiroFragments=0,trial=null;
+        let hiroFragments=0,trial=null,gemDrop=null;
         if(b.mode==='spar'){note(p,`${b.name}: ${won?'thắng':'thua'} bản sao ${b.opponent.name}`);return {spar:{won,opponent:b.opponent}};}
-        if(b.mode==='trial'){const dmg=Math.floor(damage),t=trialReward(p,b,dmg);p.daily.trialRuns=(p.daily.trialRuns||0)+1;p.trial??={best:{}};p.trial.best[b.index]=Math.max(p.trial.best[b.index]||0,dmg);reward=t.reward;trial={damage:dmg,bar:b.enemyHp,tier:t.tier,rewarded:t.rewarded,best:p.trial.best[b.index]};}
-        if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){if(b.index>p.boss.best&&b.index%HIRO_FRAGMENTS.endlessEvery===0){hiroFragments=HIRO_FRAGMENTS.endless;p.fragments.novice=(p.fragments.novice||0)+hiroFragments;}p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.weekly.progress.boss++;p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;}}
+        if(b.mode==='trial'){const dmg=Math.floor(damage),t=trialReward(p,b,dmg);p.daily.trialRuns=(p.daily.trialRuns||0)+1;p.trial??={best:{}};p.trial.best[b.index]=Math.max(p.trial.best[b.index]||0,dmg);reward=t.reward;trial={damage:dmg,bar:b.enemyHp,tier:t.tier,rewarded:t.rewarded,best:p.trial.best[b.index]};if(t.rewarded&&t.tier>=3){const type=Object.keys(GEMS)[Math.floor(random()*5)],k=gemKey(type,1);p.gems??={};p.gems[k]=(p.gems[k]||0)+1;gemDrop=k;}}
+        if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){if(b.index>p.boss.best&&b.index%HIRO_FRAGMENTS.endlessEvery===0){hiroFragments=HIRO_FRAGMENTS.endless;p.fragments.novice=(p.fragments.novice||0)+hiroFragments;}p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.weekly.progress.boss++;p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;
+          if(b.index>=20&&p.daily.bossWins<=12){const r=random(),level=b.index>=80&&r<.05?2:r<(b.index>=80?.2:.15)?1:0;if(level){const type=Object.keys(GEMS)[Math.floor(random()*5)],k=gemKey(type,level);p.gems??={};p.gems[k]=(p.gems[k]||0)+1;gemDrop=k;}}}}
         // heroFragments is listed with the resources (label in RESOURCES) so the result popup shows it.
-        const actual=grant(p,reward);if(heroFragments){actual.heroFragments=heroFragments;actual.fragmentHero=SUMMON_BANNER.hero;}if(hiroFragments)actual.noviceFragments=hiroFragments;if(trial)actual.trial=trial;if(counterReward)actual.counterReward=counterReward;note(p,`${b.name}: ${won?'thắng':'thua'}`);return actual;
+        const actual=grant(p,reward);if(heroFragments){actual.heroFragments=heroFragments;actual.fragmentHero=SUMMON_BANNER.hero;}if(hiroFragments)actual.noviceFragments=hiroFragments;if(trial)actual.trial=trial;if(gemDrop)actual.gem=gemDrop;if(counterReward)actual.counterReward=counterReward;note(p,`${b.name}: ${won?'thắng':'thua'}`);return actual;
       }),
       buy:(resource,count=1)=>tx(p=>{const prices={exp:120,ore:80,wood:55,cloth:55,skillBooks:1800};check(resource in prices&&int(count,1,20),'Mặt hàng không bán bằng vàng.');spend(p,{gold:prices[resource]*count});return grant(p,{[resource]:count});}),
       purchase:(productId,count=1)=>tx(p=>{const product=WORLD.SHOP.find(item=>item.id===productId);check(product&&int(count,1,product.kind==='gear'?1:20),'Vật phẩm hoặc số lượng mua không hợp lệ.');if(product.kind==='gear')check(p.equipment.length<500,'Túi trang bị đã đầy.');spend(p,{[product.currency]:product.price*count});let item;if(product.kind==='resource')grant(p,{[product.target]:count});else item=gear(p,product.rarity,product.target);note(p,`Mua ${product.name} ×${count}`);return {product:product.id,count,currency:product.currency,price:product.price*count,gear:item};}),
@@ -3251,13 +3277,21 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       trainRelic:key=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const r=h.relic;check(r.level<r.evolution*20,'Tiến hóa bảo bối để mở giới hạn cấp mới.');spend(p,relicLevelCost(r));r.level++;note(p,`${RELICS[key]} đạt cấp ${r.level}`);}),
       evolveRelic:key=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const r=h.relic,c=relicEvolveCost(r);check(r.level>=r.evolution*20,'Cần đạt giới hạn cấp của dạng hiện tại.');check(h.level>=r.evolution*50,`Cần tướng cấp ${r.evolution*50}.`);spend(p,c);r.evolution++;note(p,`${RELICS[key]} tiến hóa dạng ${r.evolution}`);}),
       salvage:gearId=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');check(!wornBy(p,gearId),'Tháo trang bị trước khi phân rã.');check(!g.locked,'Trang bị đang khóa.');check(!g.signature,'Vũ khí bản mệnh không phân rã được.');
-        const v=salvageValue(g);p.equipment=p.equipment.filter(x=>x.id!==gearId);(p.salvageLog??=[]).unshift({at:now(),count:1,...v});p.salvageLog=p.salvageLog.slice(0,30);return grant(p,v);}),
+        const v=salvageValue(g);returnGems(p,[g]);p.equipment=p.equipment.filter(x=>x.id!==gearId);(p.salvageLog??=[]).unshift({at:now(),count:1,...v});p.salvageLog=p.salvageLog.slice(0,30);return grant(p,v);}),
       // All or nothing: every piece must still be salvageable; ids are removed in the same transaction, so a repeat cannot pay twice.
       salvageMany:ids=>tx(p=>{check(Array.isArray(ids)&&ids.length>=1&&ids.length<=BAG.cap,'Danh sách trang bị không hợp lệ.');const set=new Set(ids),list=p.equipment.filter(g=>set.has(g.id));
         check(list.length===set.size,'Có trang bị không còn trong túi.');for(const g of list)check(salvageable(p,g),'Có trang bị đang mặc, đang khóa hoặc là vũ khí bản mệnh.');
         const total=list.reduce((t,g)=>{const v=salvageValue(g);t.ore+=v.ore;t.gold+=v.gold;return t;},{ore:0,gold:0});
-        p.equipment=p.equipment.filter(g=>!set.has(g.id));(p.salvageLog??=[]).unshift({at:now(),count:list.length,...total});p.salvageLog=p.salvageLog.slice(0,30);note(p,`Phân rã ${list.length} trang bị`);return grant(p,total);}),
+        returnGems(p,list);p.equipment=p.equipment.filter(g=>!set.has(g.id));(p.salvageLog??=[]).unshift({at:now(),count:list.length,...total});p.salvageLog=p.salvageLog.slice(0,30);note(p,`Phân rã ${list.length} trang bị`);return grant(p,total);}),
       salvagePreview:filter=>salvagePreview(read(),filter),
+      // Dệt Ngọc: socket, unsocket (free), fuse 3 → 1, a weekly choice token.
+      socketGem:(gearId,index,key)=>tx(p=>{const g=p.equipment.find(x=>x.id===gearId);check(g,'Trang bị không tồn tại.');const n=SOCKETS[g.rarity]||0;check(int(index,0,n-1),'Trang bị này không có lỗ đó.');
+        check(gemParse(key)&&(p.gems?.[key]||0)>0,'Bạn không có viên ngọc này.');g.sockets=Array.from({length:n},(_,i)=>g.sockets?.[i]||null);
+        if(g.sockets[index])p.gems[g.sockets[index]]=(p.gems[g.sockets[index]]||0)+1;p.gems[key]--;if(!p.gems[key])delete p.gems[key];g.sockets[index]=key;return {sockets:g.sockets.slice()};}),
+      unsocketGem:(gearId,index)=>tx(p=>{const g=p.equipment.find(x=>x.id===gearId);check(g&&g.sockets?.[index],'Lỗ này đang trống.');p.gems??={};const k=g.sockets[index];p.gems[k]=(p.gems[k]||0)+1;g.sockets[index]=null;return {sockets:g.sockets.slice()};}),
+      fuseGems:key=>tx(p=>{const gem=gemParse(key);check(gem&&gem.level<5,'Ngọc đã ở cấp tối đa.');check((p.gems?.[key]||0)>=3,'Cần 3 viên cùng loại cùng cấp.');spend(p,{gold:2000*gem.level});
+        p.gems[key]-=3;if(!p.gems[key])delete p.gems[key];const next=gemKey(gem.type,gem.level+1);p.gems[next]=(p.gems[next]||0)+1;note(p,`Ghép ${GEMS[gem.type].name} cấp ${gem.level+1}`);return {gem:next};}),
+      pickGem:type=>tx(p=>{check(GEMS[type],'Loại ngọc không hợp lệ.');check((p.gemChoices||0)>0,'Không có phiếu chọn ngọc.');p.gemChoices--;p.gems??={};const k=gemKey(type,1);p.gems[k]=(p.gems[k]||0)+1;return {gem:k};}),
       titles:()=>titleList(read()),
       wearTitle:id=>tx(p=>{if(id==null||id===''){delete p.title;return {title:null};}const t=titleList(p).find(x=>x.id===id);check(t,'Danh hiệu không tồn tại.');check(t.unlocked,'Chưa đạt danh hiệu này.');p.title=id;note(p,'Đeo danh hiệu '+t.name);return {title:id};}),
       lockGear:(gearId,on=true)=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');if(on)g.locked=true;else delete g.locked;return {locked:!!g.locked};}),
@@ -3317,7 +3351,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });
 
 const ART_BLOBS=[];
@@ -5008,7 +5042,8 @@ function createLiveCombat(){
       receipt(side,'energy',state[energyKey]-before);
       if(hero&&own[3]>=3)state.frozen=true;
       if(!hero&&type===3&&own[3]>=3&&progressionIsDuel())state.playerFrozen=true;
-      if(!hero&&type===3&&own[3]===1&&!progressionIsDuel())state.energy=Math.max(0,state.energy-20);
+      // An enemy snow match drains 20 energy, unless Ngọc Kháng resists it (each time).
+      if(!hero&&type===3&&own[3]===1&&!progressionIsDuel()&&!(Math.random()<(progressionBattle?.stats?.resist||0)))state.energy=Math.max(0,state.energy-20);
       if(type===0){
         const raw=8*(hero?progressionSwordFactor(key):1)*(progressionIsDuel()?1:hero?1:state.boss?1.15:.55);
         enqueue(side,'attack',raw);
@@ -8959,6 +8994,8 @@ function progressionTitlePlate(){
   const hud=$('heroHeadHud'),t=progressionBattle?.title;if(!hud||!t||hud.querySelector(':scope > .combat-title'))return;
   const plate=document.createElement('span');plate.className=`combat-title tier-${t.tier}`;plate.setAttribute('aria-label','Danh hiệu: '+t.name);
   const img=document.createElement('img');img.src=`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
+  // Keep it inside the stage when the hero stands near its edge.
+  requestAnimationFrame(()=>{const s=$('scene').getBoundingClientRect(),r=plate.getBoundingClientRect();const shift=r.left<s.left+4?s.left+4-r.left:r.right>s.right-4?s.right-4-r.right:0;if(shift)plate.style.marginLeft=shift+'px';});
 }
 const progressionOriginalRender=renderActors;
 renderActors=function(){
@@ -9013,14 +9050,14 @@ function progressionDamage(side,raw,ledger=null){
   if(side==='enemy'&&progressionTransform?.left>0)factor*=1-(progressionTransformKit()?.reduce||0);
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   let bypassed=0;
-  if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<.08){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
+  if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<Math.min(1,.08*(1+(s.precision||0)))){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
   const iceReduction=side==='enemy'?1-progressionKit().damageReduction:1;
   const defenseMultiplier=Math.max(.5,(1-s.defense)*iceReduction)/iceReduction;
   const result=progressionOriginalDamage(side,raw*factor*(side==='enemy'?defenseMultiplier:1),ledger);
   if(bypassed)state.enemyArmor+=bypassed;
   if(side==='hero'&&result.amount>0){
     if(s.affixes.includes('lifesteal')&&state.hp>0){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.floor(result.amount*.06));state.hp+=gained;progressionShowGain('hero','heal',gained);}
-    if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<.12&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
+    if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<Math.min(1,.12*(1+(s.precision||0)))&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
   }
   update();return result;
 }
@@ -9078,6 +9115,8 @@ async function progressionEnemyTurn(){
   if(!progressionBattle)return;
   const s=progressionBattle.stats;
   if(state.playerFrozen&&s.affixes.includes('steadfast')&&Math.random()<.25){state.playerFrozen=false;message('Bất động · Kháng mất lượt.');}
+  // Ngọc Kháng (Dệt Ngọc): a new stun or freeze is shrugged off with this chance.
+  if(state.playerFrozen&&s.resist>0&&Math.random()<s.resist){state.playerFrozen=false;popActorSkill('hero','KHÁNG',false);message('Ngọc Kháng · không mất lượt.');}
   if(state.hp>0&&state.enemyHp>0){
     if(s.affixes.includes('ward')){const before=state.armor;state.armor=Math.min(combatArmorCap('hero'),state.armor+Math.round(HEROES[state.key].hp*.03));progressionShowGain('hero','armor',state.armor-before);}
     const kit=progressionKit();if(kit.regen){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.max(1,Math.round(HEROES[state.key].hp*kit.regen)));state.hp+=gained;progressionShowGain('hero','heal',gained);}
@@ -9096,9 +9135,10 @@ function progressionTransformBonus(){const t=progressionTransformKit();return t&
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}
-  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span>BIẾN THÂN</span><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
+  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span class="tf-label">BIẾN THÂN</span><b class="tf-count"></b><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
   const ready=progressionTransformReady();b.hidden=!ready&&!progressionTransform;b.disabled=!ready;
-  b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);
+  b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);b.classList.toggle('is-after',!!progressionTransform&&progressionTransform.left===0);
+  b.querySelector('.tf-count').textContent=progressionTransform?(progressionTransform.left>0?String(progressionTransform.left):`+${Math.round(t.after*100)}%`):'';
   b.querySelector('small').textContent=progressionTransform?(progressionTransform.left>0?`Còn ${progressionTransform.left} lượt`:`Dư âm Công +${Math.round(t.after*100)}%`):`${t.turns} lượt · Công +${Math.round(t.attack*100)}%`;
   b.setAttribute('aria-label',ready?`Biến Thân: ${t.turns} lượt, Công +${Math.round(t.attack*100)}%, giảm 15% sát thương nhận`:b.querySelector('small').textContent);
 }

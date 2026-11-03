@@ -77,7 +77,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 
 | # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
 |---|---|---|---|---|
-| G1 | Gắn ngọc | Ngọc khảm "Dệt Ngọc": lỗ theo phẩm đồ, 5 loại, 5 cấp, ghép 3→1, tháo miễn phí. | 🔨 | Tướng → trang bị |
+| G1 | Gắn ngọc | **Dệt Ngọc** (Codex vòng 6): lỗ theo phẩm đồ (Hiếm 1 → Thần 4), 5 loại ngọc × 5 cấp do Codex vẽ (Công, Sinh Lực, Hộ Thể, Kháng, Chuẩn), cộng có trần (36% / 54% / 12% / 40% / 30%), ghép 3→1, tháo miễn phí, phân rã đồ trả ngọc; rơi ở Boss Vô Hạn tầng 20+, Sân Thử Luyện mốc 3, phiếu chọn từ nhiệm vụ tuần; Kháng chống choáng/đóng băng/hút năng lượng, Chuẩn tăng hiệu ứng Thần; tắt ở Chuẩn Hóa/giao hữu/1vs1. Giao diện bằng hình: hàng lỗ khảm, lưới ngọc, ghép 3→1. | ✅ | Tướng → ô đồ → lỗ khảm · Túi Đồ → Khác |
 | G2 | Báu vật % chỉ số, từ sự kiện nạp và đua top; hiệu ứng % máu boss, mượn kỹ năng | 5 phẩm, 3 họ (Phá Sơn %HP boss chỉ PvE, Mượn Hồn 50% bị động, Khắc Chế). Không độc quyền cho người nạp. | 🤝 lịch thu chi · 🔨 ô báu vật | §4 |
 
 ## H. Kỹ thuật, phát hành

@@ -55,7 +55,7 @@ def sheet_of(hero, form, kind):
     """(path, cols, rows) of the drawing measured."""
     if kind == "showcase":
         return ROOT / f"assets/heroes/forms/{hero}/form-{form}/showcase/idle.webp", 2, 4
-    if hero == "novice":
+    if hero == "novice" and form == 1:
         return ROOT / "assets/heroes/novice/idle.webp", 2, 4
     if form == 1:
         return (ROOT / "assets/heroes/shadow/idle-cloth.webp" if hero == "shadow" else ROOT / f"assets/reimagined/heroes/{hero}/idle.webp"), 2, 4

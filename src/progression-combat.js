@@ -106,6 +106,8 @@ function progressionTitlePlate(){
   const hud=$('heroHeadHud'),t=progressionBattle?.title;if(!hud||!t||hud.querySelector(':scope > .combat-title'))return;
   const plate=document.createElement('span');plate.className=`combat-title tier-${t.tier}`;plate.setAttribute('aria-label','Danh hiệu: '+t.name);
   const img=document.createElement('img');img.src=`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
+  // Keep it inside the stage when the hero stands near its edge.
+  requestAnimationFrame(()=>{const s=$('scene').getBoundingClientRect(),r=plate.getBoundingClientRect();const shift=r.left<s.left+4?s.left+4-r.left:r.right>s.right-4?s.right-4-r.right:0;if(shift)plate.style.marginLeft=shift+'px';});
 }
 const progressionOriginalRender=renderActors;
 renderActors=function(){
@@ -160,14 +162,14 @@ function progressionDamage(side,raw,ledger=null){
   if(side==='enemy'&&progressionTransform?.left>0)factor*=1-(progressionTransformKit()?.reduce||0);
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   let bypassed=0;
-  if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<.08){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
+  if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<Math.min(1,.08*(1+(s.precision||0)))){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
   const iceReduction=side==='enemy'?1-progressionKit().damageReduction:1;
   const defenseMultiplier=Math.max(.5,(1-s.defense)*iceReduction)/iceReduction;
   const result=progressionOriginalDamage(side,raw*factor*(side==='enemy'?defenseMultiplier:1),ledger);
   if(bypassed)state.enemyArmor+=bypassed;
   if(side==='hero'&&result.amount>0){
     if(s.affixes.includes('lifesteal')&&state.hp>0){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.floor(result.amount*.06));state.hp+=gained;progressionShowGain('hero','heal',gained);}
-    if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<.12&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
+    if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<Math.min(1,.12*(1+(s.precision||0)))&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
   }
   update();return result;
 }
@@ -225,6 +227,8 @@ async function progressionEnemyTurn(){
   if(!progressionBattle)return;
   const s=progressionBattle.stats;
   if(state.playerFrozen&&s.affixes.includes('steadfast')&&Math.random()<.25){state.playerFrozen=false;message('Bất động · Kháng mất lượt.');}
+  // Ngọc Kháng (Dệt Ngọc): a new stun or freeze is shrugged off with this chance.
+  if(state.playerFrozen&&s.resist>0&&Math.random()<s.resist){state.playerFrozen=false;popActorSkill('hero','KHÁNG',false);message('Ngọc Kháng · không mất lượt.');}
   if(state.hp>0&&state.enemyHp>0){
     if(s.affixes.includes('ward')){const before=state.armor;state.armor=Math.min(combatArmorCap('hero'),state.armor+Math.round(HEROES[state.key].hp*.03));progressionShowGain('hero','armor',state.armor-before);}
     const kit=progressionKit();if(kit.regen){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.max(1,Math.round(HEROES[state.key].hp*kit.regen)));state.hp+=gained;progressionShowGain('hero','heal',gained);}
@@ -243,9 +247,10 @@ function progressionTransformBonus(){const t=progressionTransformKit();return t&
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}
-  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span>BIẾN THÂN</span><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
+  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span class="tf-label">BIẾN THÂN</span><b class="tf-count"></b><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
   const ready=progressionTransformReady();b.hidden=!ready&&!progressionTransform;b.disabled=!ready;
-  b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);
+  b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);b.classList.toggle('is-after',!!progressionTransform&&progressionTransform.left===0);
+  b.querySelector('.tf-count').textContent=progressionTransform?(progressionTransform.left>0?String(progressionTransform.left):`+${Math.round(t.after*100)}%`):'';
   b.querySelector('small').textContent=progressionTransform?(progressionTransform.left>0?`Còn ${progressionTransform.left} lượt`:`Dư âm Công +${Math.round(t.after*100)}%`):`${t.turns} lượt · Công +${Math.round(t.attack*100)}%`;
   b.setAttribute('aria-label',ready?`Biến Thân: ${t.turns} lượt, Công +${Math.round(t.attack*100)}%, giảm 15% sát thương nhận`:b.querySelector('small').textContent);
 }

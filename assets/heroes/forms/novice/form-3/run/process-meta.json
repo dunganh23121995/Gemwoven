@@ -1,0 +1,132 @@
+{
+ "source": "run/raw-original.png",
+ "prompt": "run/prompt-used.txt",
+ "cols": 3,
+ "rows": 2,
+ "cell": 512,
+ "sole": 481,
+ "uniformScale": 1.0,
+ "masterHeight": 353,
+ "frames": [
+  {
+   "frame": 1,
+   "raw_bbox": [
+    64,
+    118,
+    397,
+    474
+   ],
+   "height": 344,
+   "width": 322,
+   "bbox": [
+    18,
+    138,
+    340,
+    482
+   ],
+   "anchor": "head",
+   "edge": false
+  },
+  {
+   "frame": 2,
+   "raw_bbox": [
+    574,
+    118,
+    887,
+    479
+   ],
+   "height": 349,
+   "width": 302,
+   "bbox": [
+    18,
+    133,
+    320,
+    482
+   ],
+   "anchor": "head",
+   "edge": false
+  },
+  {
+   "frame": 3,
+   "raw_bbox": [
+    1083,
+    118,
+    1397,
+    475
+   ],
+   "height": 345,
+   "width": 303,
+   "bbox": [
+    16,
+    137,
+    319,
+    482
+   ],
+   "anchor": "head",
+   "edge": false
+  },
+  {
+   "frame": 4,
+   "raw_bbox": [
+    64,
+    631,
+    397,
+    987
+   ],
+   "height": 344,
+   "width": 322,
+   "bbox": [
+    18,
+    138,
+    340,
+    482
+   ],
+   "anchor": "head",
+   "edge": false
+  },
+  {
+   "frame": 5,
+   "raw_bbox": [
+    573,
+    631,
+    888,
+    992
+   ],
+   "height": 349,
+   "width": 303,
+   "bbox": [
+    16,
+    133,
+    319,
+    482
+   ],
+   "anchor": "head",
+   "edge": false
+  },
+  {
+   "frame": 6,
+   "raw_bbox": [
+    1083,
+    631,
+    1397,
+    988
+   ],
+   "height": 345,
+   "width": 303,
+   "bbox": [
+    16,
+    137,
+    319,
+    482
+   ],
+   "anchor": "head",
+   "edge": false
+  }
+ ],
+ "edgeFrames": [],
+ "heightRange": [
+  344,
+  349
+ ],
+ "processing": "hiro_forms.py sheet: magenta keyed outside the silhouette only (rim soft key + despill), largest figures found on the sheet, one uniform scale for the whole sheet, soles on y=481, boots midpoint (or head when a stride lifts a boot) at the master's place"
+}

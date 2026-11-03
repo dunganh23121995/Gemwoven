@@ -51,6 +51,9 @@
     for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;if(!A[asset]?.fragmentArt)A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro để tăng sao. Hiro không có trong triệu hồi: mảnh đến từ Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương và mỗi 10 tầng Boss Vô Hạn.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
     refreshSkillCopy(p);
     for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;const sv=M.salvageValue(gear);rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'+'+gear.level,'gear',M.RARITIES[gear.rarity].name+(gear.locked?' · đang khóa':'')+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')+` · phân rã ${fmt(sv.ore)} quặng, ${fmt(sv.gold)} vàng`]);}
+    // Dệt Ngọc: each gem as its picture with a count (Khác); the weekly choice token.
+    for(const [k,n] of Object.entries(p.gems||{}).filter(([,n])=>n>0).sort(([a],[b])=>a.localeCompare(b))){const g=M.gemParse(k);if(!g)continue;const asset='gem-'+k;A[asset]={file:`assets/gemwoven/gems/gem-${k}.webp`,width:160,height:160};rows.push([asset,`${M.GEMS[g.type].name} ${g.level}`,fmt(n),'other',`${M.GEMS[g.type].stat} +${Math.round(M.GEMS[g.type].values[g.level-1]*100)}%`]);}
+    if(p.gemChoices>0){A['gem-choice']={file:'assets/gemwoven/gems/gem-precision-1.webp',width:160,height:160};rows.push(['gem-choice','Phiếu chọn ngọc',fmt(p.gemChoices),'other','Đổi lấy một viên ngọc cấp 1 tự chọn.']);}
     for(const d of M.WORLD.EXPANSION.definitions){const c=M.counterProgress(p,d.chapter);if(c.shards)rows.push([d.counterKey,d.counter,c.shards+'/12','other',d.counterText+' Tự dùng đúng chủ đề; bậc '+c.rank+'/4.']);}
     inventory.splice(0,inventory.length,...rows);
     if(state.screen==='inventory'){
@@ -103,6 +106,8 @@
     if(item[3]==='fragment'){const hero=asset.slice(9);action(nodes,'item-action','do:fuse',{hero},(p.fragments[hero]||0)<80);label(nodes,'item-action','Ghép Tướng');}
     else{const route=item[3]==='gear'?'equipment':item[3]==='book'?(asset==='exp-book'?'upgrade':'skills'):asset==='ticket'?'summon':asset==='mana'?'vip':'campaign';action(nodes,'item-action','route:'+route);label(nodes,'item-action',item[3]==='gear'?'Trang Bị':item[3]==='book'?'Sử Dụng':asset==='mana'?'Coming Soon':'Đi Tới');}
     const product=M.WORLD.SHOP.find(row=>row.kind==='resource'&&row.target===resourceFor[asset]);
+    if(asset.startsWith('gem-')&&asset!=='gem-choice'){action(nodes,'item-action','gem:detail',{gem:asset.slice(4)});label(nodes,'item-action','Ghép');label(nodes,'source','Boss Vô Hạn 20+\nThử Luyện · Tuần');}
+    if(asset==='gem-choice'){action(nodes,'item-action','gem:choice');label(nodes,'item-action','Chọn');}
     const counterDef=M.WORLD.EXPANSION.definitions.find(d=>d.counterKey===asset);
     if(counterDef){action(nodes,'item-action','guide:chapter',{chapter:counterDef.chapter});label(nodes,'item-action','Đến Chương');label(nodes,'source','Tinh anh 3 sao\nMốc 10 / 20 / 30 / 40');}
     // The item's action and "buy more" sit side by side under the held count.

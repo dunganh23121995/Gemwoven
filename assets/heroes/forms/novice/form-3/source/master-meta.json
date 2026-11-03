@@ -1,0 +1,12 @@
+{
+ "source": "source/raw-master.png",
+ "prompt": "source/prompt-master.txt",
+ "scale": 0.4446,
+ "bbox": [
+  118,
+  129,
+  349,
+  482
+ ],
+ "bootsX": 238.0
+}

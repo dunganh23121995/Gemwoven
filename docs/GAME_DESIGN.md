@@ -647,3 +647,35 @@ tốc độ, thời gian, thưởng, nút có lý do, công thức thu gọn; S�
 vòng 3, Claude đồng ý), thư chưa đọc màu xanh dương, chấm chỉ trên nút điều hướng; VIP nhãn tĩnh "Ưu đãi nạp".
 **Còn lại** (mức trung/thấp): chú giải trạng thái ải trên bản đồ, gọn Lò Rèn/Cửa Hàng/Quán Bia, tách thanh cấp và EXP ở
 màn Tướng, hướng nhìn cho trình đọc màn hình.
+
+### Vòng 6 (ngọc khảm, báu vật thử nghiệm, độ dài trận quái thường, thứ tự làm)
+
+| Mục | Codex | Claude | Chốt chung |
+|---|---|---|---|
+| A. Dệt Ngọc | Đồng ý nếu sửa cộng dồn và nghiệm thu | Đồng ý | Lỗ: Hiếm 1 · Sử Thi 2 · Huyền Thoại 3 · Thần 4; tháo miễn phí, phân rã/đổi đồ trả ngọc; Công%/HP% cộng giữa các viên rồi nhân **một lần** sau Trang bị (trần 36% / 54%); Thủ cộng điểm (trần 12% từ ngọc, tổng vẫn ≤ 50%); **kháng ≤ 40%, chính xác ≤ 30%**: xác suất cuối = min(100%, p×(1+chính xác))×(1−kháng), chính xác chỉ cho hiệu ứng Thần có xác suất; Boss Vô Hạn tầng 20–79: 15% cấp 1, tầng 80+: 15% cấp 1 + 5% cấp 2 (tối đa 1 viên/trận, 12 trận đầu/ngày); Sân Thử Luyện mốc ≥3 thanh: 1 viên cấp 1; nhiệm vụ tuần chọn loại; ~3,9 viên/ngày → 1 viên cấp 5 ≈ 81 viên ≈ 100 ngày; tắt ở Chuẩn Hóa/giao hữu/1vs1; nghiệm thu lại cân bằng chương 1–2 |
+| B. Báu vật thử nghiệm | Đồng ý nếu sửa nguồn điểm | Đồng ý | Làm **sau** ngọc và Hiro; nguồn chia lại cho đúng **600/kỳ có lịch** (không phải 25 điểm × 12 trận × 14 ngày = 4.200); 16 tuần cho một món Thần; lưu riêng bản thử, không chuyển sang phát hành; đổi điểm nguyên khối, chống nhận trùng; chốt cộng hai ô, % Thủ, Khắc Chế hai ô; Phá Sơn trần trên tổng tuyệt kỹ; Mượn Hồn không mượn bộ chiêu boss; tắt ở Chuẩn Hóa |
+| C. Quái thường | Đồng ý mục tiêu 8–12 lượt, đo chưa có ngọc, không chờ ngọc | Đồng ý | Nghiệm thu: trung vị **8–12 nước**, P90 ≤ 16, thắng ≥ 95% ở cấp và đồ gợi ý; nếu vượt, thử giảm **20% HP nhóm quái thường** (giữ boss/tinh anh), đo bằng bot 80 trận/ô sàng lọc, ~400 trận/ô nghiệm thu |
+| D. Thứ tự | Đồng ý nếu đổi | Đồng ý | Đo/chốt C → trang Đấu Hạng [Có] → ngọc thử → đo hồi quy → Hiro 2/3 → báu vật thử |
+
+### Vòng 7 — soát giao diện (ít chữ, dùng hình, bấm xem chi tiết)
+
+Chủ dự án yêu cầu (03/11): hạn chế chữ, dùng hình; thông tin quan trọng để dạng bấm xem; mọi giao diện và hình đều qua
+Codex. Codex soát ảnh ngọc khảm, Danh Hiệu, Biến Thân, Đấu Hạng, Gặp Gỡ, Home, Boss; Claude đồng ý và đã sửa: lưới ngọc
+3 cột có dấu cấp I–V, chạm ngọc hiện tác dụng rồi mới "Khảm"; ghép ngọc vẽ "I I I → II"; chỉ số trang bị thành biểu tượng
+tim/kiếm/khiên kèm mũi tên; lỗ khảm và nút ≥ 44 px; biển danh hiệu trong trận nhỏ lại, giữ trong khung; Biến Thân: sẵn sàng
+= nhãn sáng, đang hiệu lực = huy hiệu tròn đếm lượt, dư âm = huy hiệu nhỏ; Đấu Hạng = 2 thẻ hình + 3 mục bấm mở; lịch Sân Thử
+Luyện = ảnh boss có dấu ✓; Gặp Gỡ "Thêm" dùng biểu tượng lưới. Hình Codex vẽ: không cần vẽ lại.
+
+### Đo quái thường (vòng 6, mục C) — bot trận thật, 40 trận/ô, chưa có ngọc
+
+| Ải (cấp) | Hiro 1★ 100% HP: trung vị/P90/thắng | Hiro 1★ 80% HP | Mika 1★ 100% HP | Mika 1★ 80% HP |
+|---|---|---|---|---|
+| 12 (6) | 9 / 16 / 100% | 8 / 18 / 100% | 4 / 9 / 100% | 5 / 9 / 100% |
+| 37 (19) | 12 / 21 / 100% | 10 / 18 / 100% | 6 / 10 / 100% | 6 / 10 / 100% |
+| 63 (32) | 12 / 23 / 100% | 11 / 18 / 100% | 7 / 10 / 100% | 7 / 12 / 100% |
+| 88 (44) | 11 / 22 / 93% | 11 / 20 / 98% | 8 / 16 / 100% | 6 / 11 / 100% |
+| 126 (63) | 14 / 22 / 95% | 13 / 20 / 100% | 6 / 10 / 100% | 6 / 10 / 100% |
+| 163 (82) | 15 / 26 / 93% | 13 / 20 / 95% | 8 / 13 / 93% | 8 / 14 / 90% |
+
+Giảm 20% đồng loạt chưa đủ cho Hiro (P90 vẫn 18–20) và làm Mika dưới 8 nước. **Chưa áp** — chờ Claude và Codex chốt
+(vòng 8). `NORMAL_HP` trong `progression.js` vẫn là 1.

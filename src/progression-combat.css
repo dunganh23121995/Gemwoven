@@ -110,9 +110,9 @@ body.whole-scene.reduced-motion .scene .landscape .parallax-layer[data-depth="0"
 .scene[data-chapter="void"] .scene-atmosphere{--speck:#c890ff}
 
 /* Danh Hiệu over the hero's head (progressionTitlePlate): the rarity plate with the name, never mirrored. */
-.combat-title{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:170px;height:44px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:5}
+.combat-title{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:128px;height:34px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:5}
 .combat-title img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.combat-title b{position:relative;font:900 13px/1 Cambria,serif;white-space:nowrap;padding:0 26px;background:linear-gradient(180deg,#fff 0%,var(--t1,#fff3c4) 55%,var(--t2,#ffc94a) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(40,18,6,.9)) drop-shadow(0 0 3px rgba(40,18,6,.7))}
+.combat-title b{position:relative;font:900 11px/1 Cambria,serif;white-space:nowrap;padding:0 20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;background:linear-gradient(180deg,#fff 0%,var(--t1,#fff3c4) 55%,var(--t2,#ffc94a) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(40,18,6,.9)) drop-shadow(0 0 3px rgba(40,18,6,.7))}
 .combat-title.tier-1{--t1:#e8ffd8;--t2:#9fd889}.combat-title.tier-2{--t1:#e2f2ff;--t2:#8cc4ff}.combat-title.tier-3{--t1:#f4e6ff;--t2:#c79bff}.combat-title.tier-4{--t1:#fff4c8;--t2:#ffc94a}.combat-title.tier-5{--t1:#ffe6d0;--t2:#ff7a52}
 /* Biến Thân: the button near the hero, the golden glow while it lasts, a faint afterglow later. */
 .transform-btn{position:absolute;left:8px;bottom:10px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:1px;min-width:118px;min-height:52px;padding:6px 12px;border-radius:16px;border:2px solid #ffe7a6;background:linear-gradient(#f6b24a,#c4561c);color:#fff;font:900 15px/1.05 Cambria,serif;text-shadow:0 1px 2px #5a2a08;box-shadow:0 0 0 0 rgba(255,200,90,.8),0 4px 12px rgba(0,0,0,.45);cursor:pointer;animation:transform-call 1.6s ease-in-out infinite}
@@ -127,3 +127,11 @@ body.whole-scene.reduced-motion .scene .landscape .parallax-layer[data-depth="0"
 #heroActor.is-transformed::before{content:"";position:absolute;left:50%;bottom:4%;width:120%;height:90%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at 50% 70%,rgba(255,220,120,.55),rgba(255,170,60,.25) 45%,rgba(255,170,60,0) 70%);pointer-events:none;z-index:0;animation:transform-aura 1.6s ease-in-out infinite}
 @keyframes transform-aura{50%{opacity:.6;transform:translateX(-50%) scale(1.06)}}
 .reduced-motion #heroActor.is-transformed::before{animation:none}
+
+/* Biến Thân states: ready = glowing label; active = round badge with the turns left; after = small +10% badge. */
+.transform-btn .tf-count{display:none}
+.transform-btn.is-active,.transform-btn.is-after{min-width:0;width:60px;height:60px;border-radius:50%;padding:0;justify-content:center;animation:none}
+.transform-btn.is-active .tf-label,.transform-btn.is-after .tf-label,.transform-btn.is-active small,.transform-btn.is-after small{display:none}
+.transform-btn.is-active .tf-count,.transform-btn.is-after .tf-count{display:block;font:900 26px/1 Cambria,serif}
+.transform-btn.is-active{box-shadow:0 0 0 4px rgba(255,214,110,.9),0 0 16px 4px rgba(255,170,60,.7)}
+.transform-btn.is-after{width:52px;height:52px;background:linear-gradient(#b98a4a,#7a5226);opacity:.9}.transform-btn.is-after .tf-count{font-size:14px}

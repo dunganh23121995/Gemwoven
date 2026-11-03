@@ -24,7 +24,8 @@ function heroSave(key,level,stars,{bare=false}={}){
 const CASES=[
   ['Hiro trần','novice',1,{bare:true}],['Hiro 1★','novice',1],['Hiro 2★','novice',2],
   ['Mika trần','fire',1,{bare:true}],['Mika 1★','fire',1]];
-const STAGES=[['Ch1 ải 50 (boss)',50],['Ch2 ải 100 (boss)',100],['Ch2 ải 75',75]].filter(([,i])=>!arg('--stage',null)||String(i)===arg('--stage',null));
+// --stages 12,37,63 picks any stages (ordinary ones included); --stage keeps one of the defaults.
+const STAGES=(arg('--stages',null)?arg('--stages').split(',').map(n=>[`Ải ${n}`,Number(n)]):[['Ch1 ải 50 (boss)',50],['Ch2 ải 100 (boss)',100],['Ch2 ải 75',75]]).filter(([,i])=>!arg('--stage',null)||String(i)===arg('--stage',null));
 const MULTS=(arg('--mult','1,1.5')).split(',').map(Number);
 async function oneFight(page,save,index){
   await page.goto(BASE+'Game.html?qa',{waitUntil:'load'});
@@ -57,7 +58,7 @@ async function oneFight(page,save,index){
       const ok=await q.trySwap(m.a,m.b);if(ok!==false)moves++;
     }
     for(let i=0;i<200&&!document.getElementById('resultDialog').open;i++)await sleep(25);
-    return {won:q.state.hp>0&&q.state.enemyHp<=0,moves,turns:q.progressionTurns,ults,hpLeft:Math.max(0,q.state.hp),enemyLeft:Math.max(0,q.state.enemyHp)/q.state.enemyMax,seconds:Math.round((performance.now()-t0)/1000)};
+    return {won:q.state.hp>0&&q.state.enemyHp<=0,timedOut:!q.ended&&!document.getElementById('resultDialog').open,moves,turns:q.progressionTurns,ults,hpLeft:Math.max(0,q.state.hp),enemyLeft:Math.max(0,q.state.enemyHp)/q.state.enemyMax,seconds:Math.round((performance.now()-t0)/1000)};
   });
 }
 (async()=>{
@@ -88,10 +89,12 @@ async function oneFight(page,save,index){
     await context.close();
   }));
   await browser.close();
-  const groups={};for(const r of results){const g=groups[r.stage+'|'+r.label+'|'+r.level]??={stage:r.stage,hero:r.label,level:r.level,n:0,won:0,turns:0,errors:0};
-    if(r.error){g.errors++;continue;}g.n++;if(r.won){g.won++;g.turns+=r.turns||r.moves;}}
-  const rows=Object.values(groups).map(g=>({...g,win:g.n?Math.round(g.won/g.n*100):null,turns:g.won?Math.round(g.turns/g.won):null}));
+  // Wins, losses and time-outs apart (Codex round 6); fight length is the player's moves: median and P90 over wins.
+  const groups={};for(const r of results){const g=groups[r.stage+'|'+r.label+'|'+r.level]??={stage:r.stage,hero:r.label,level:r.level,n:0,won:0,timeouts:0,moves:[],errors:0};
+    if(r.error){g.errors++;continue;}if(r.timedOut){g.timeouts++;continue;}g.n++;if(r.won){g.won++;g.moves.push(r.moves);}}
+  const q=(a,f)=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.min(s.length-1,Math.floor(f*s.length))];};
+  const rows=Object.values(groups).map(g=>({stage:g.stage,hero:g.hero,level:g.level,n:g.n,won:g.won,timeouts:g.timeouts,errors:g.errors,win:g.n?Math.round(g.won/g.n*100):null,median:q(g.moves,.5),p90:q(g.moves,.9)}));
   const out=arg('--json',null);if(out)fs.writeFileSync(out,JSON.stringify({fights:FIGHTS,rows,results},null,1));
-  console.log('stage'.padEnd(20),'hero'.padEnd(10),'lvl  n  win% turns err');
-  for(const r of rows)console.log(r.stage.padEnd(20),r.hero.padEnd(10),String(r.level).padStart(3),String(r.n).padStart(3),String(r.win).padStart(4)+'%',String(r.turns??'-').padStart(5),String(r.errors).padStart(3));
+  console.log('stage'.padEnd(20),'hero'.padEnd(10),'lvl   n  win%  med  p90  t/o err');
+  for(const r of rows)console.log(r.stage.padEnd(20),r.hero.padEnd(10),String(r.level).padStart(3),String(r.n).padStart(4),String(r.win).padStart(4)+'%',String(r.median??'-').padStart(4),String(r.p90??'-').padStart(4),String(r.timeouts).padStart(4),String(r.errors).padStart(3));
 })();

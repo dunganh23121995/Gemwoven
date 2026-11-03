@@ -169,3 +169,17 @@ console.log('badges ok');
   assert.ok(e.titles().filter(t=>t.server).every(t=>!t.unlocked));assert.throws(()=>e.wearTitle('patron'),/Chưa đạt/);
 }
 console.log('titles ok');
+{ // Dệt Ngọc (Codex round 6): sockets by rarity, caps, fuse 3→1, return on salvage, off in normalized play, drops.
+  const {engine:e,edit}=fixture();
+  edit(p=>{p.equipment.push({id:'w',slot:'weapon',rarity:'divine',level:0,affix:null},{id:'r',slot:'armor',rarity:'rare',level:0,affix:null},{id:'c',slot:'helmet',rarity:'common',level:0,affix:null});p.heroes.novice.gear.weapon='w';p.gems={'atk-5':4,'hp-1':3,'resist-5':4};p.wallet.gold=1e5;});
+  const base=e.stats('novice');for(let i=0;i<4;i++)e.socketGem('w',i,'atk-5');
+  assert.equal(M.gemTotals(e.read(),'novice').atk,.36,'Công% capped at 36%');assert.ok(Math.abs(e.stats('novice').attack/base.attack-1.36)<.01,'multiplied once');
+  assert.throws(()=>e.socketGem('c',0,'hp-1'),/lỗ/);assert.throws(()=>e.socketGem('r',1,'hp-1'),/lỗ/);
+  e.unsocketGem('w',3);e.unsocketGem('w',2);e.socketGem('w',2,'resist-5');e.socketGem('w',3,'resist-5');assert.equal(e.stats('novice').resist,.4,'resistance capped at 40%');
+  assert.equal(e.stats('novice',true).resist,0,'off in normalized play');assert.equal(e.stats('novice',true).attack,M.HEROES.novice.attack*1.8);
+  e.fuseGems('hp-1');assert.equal(e.read().gems['hp-2'],1);assert.throws(()=>e.fuseGems('hp-2'),/3 viên/);
+  edit(p=>{delete p.heroes.novice.gear.weapon;});const before={...e.read().gems};e.salvage('w');const after=e.read().gems;
+  assert.equal((after['atk-5']||0)-(before['atk-5']||0),2);assert.equal((after['resist-5']||0)-(before['resist-5']||0),2,'socketed gems come back');
+  e.claimWeekly&&0;edit(p=>{p.gemChoices=1;});e.pickGem('def');assert.equal(e.read().gems['def-1'],1);assert.throws(()=>e.pickGem('def'),/phiếu/);
+}
+console.log('gems ok');

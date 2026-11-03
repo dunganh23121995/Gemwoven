@@ -52,8 +52,45 @@
     paint();modal.present();
   }
 
+  // ----- Dệt Ngọc (icons first; numbers only in the tapped detail) -----
+  const ROMAN=['','I','II','III','IV','V'];
+  const gemImg=(k,cls='')=>`<span class="gem-pic ${cls}"><img src="assets/gemwoven/gems/gem-${k}.webp" alt=""><em>${ROMAN[M.gemParse(k)?.level||1]}</em></span>`;
+  const gemLabel=k=>{const g=M.gemParse(k),t=M.GEMS[g.type],v=t.values[g.level-1];return `${t.stat} +${Math.round(v*100)}%`;};
+  function socketDialog(ctx,gearId,index){
+    const p=G.engine.read(),g=p.equipment.find(x=>x.id===gearId),cur=g?.sockets?.[index];if(!g)return;
+    const modal=window.GemwovenUI.makeDialog('gem-socket',cur?M.GEMS[M.gemParse(cur).type].name:'Khảm ngọc','growth-dialog gem-dialog');
+    const owned=Object.entries(p.gems||{}).filter(([,n])=>n>0).sort(([a],[b])=>a.localeCompare(b));
+    modal.body.innerHTML=(cur?`<div class="gem-hero">${gemImg(cur)}<b>${esc(gemLabel(cur))}</b></div>`:'')+
+      (owned.length?`<div class="gem-grid">${owned.map(([k,n])=>`<button type="button" data-gem="${k}" aria-label="${esc(gemLabel(k))}">${gemImg(k)}<span>${n}</span></button>`).join('')}</div>`:`<p class="growth-lead">Chưa có ngọc. Ngọc rơi ở Boss Vô Hạn (từ tầng 20), Sân Thử Luyện mốc 3 và nhiệm vụ tuần.</p>`);
+    // First tap shows what the gem gives; the button sockets it.
+    const pick=document.createElement('p');pick.className='gem-pick';modal.body.append(pick);let chosen=null;
+    const go=document.createElement('button');go.type='button';go.className='gw-btn';go.textContent='Khảm';go.disabled=true;
+    go.onclick=()=>{if(!chosen)return;try{G.engine.socketGem(gearId,index,chosen);modal.close();ctx.render();}catch(e){fail(ctx,e);}};
+    modal.body.querySelectorAll('[data-gem]').forEach(b=>b.onclick=()=>{chosen=b.dataset.gem;modal.body.querySelectorAll('[data-gem]').forEach(x=>x.classList.toggle('on',x===b));pick.textContent=`${M.GEMS[M.gemParse(chosen).type].name} ${ROMAN[M.gemParse(chosen).level]} · ${gemLabel(chosen)}`;go.disabled=false;});
+    if(owned.length)modal.actions.append(go);
+    if(cur){const out=document.createElement('button');out.type='button';out.className='gw-btn secondary';out.textContent='Tháo ngọc';out.onclick=()=>{try{G.engine.unsocketGem(gearId,index);modal.close();ctx.render();}catch(e){fail(ctx,e);}};modal.actions.append(out);}
+    modal.present();
+  }
+  function gemDialog(ctx,key){
+    const p=G.engine.read(),n=p.gems?.[key]||0,g=M.gemParse(key);if(!g)return;const next=g.level<5?M.gemKey(g.type,g.level+1):null;
+    const modal=window.GemwovenUI.makeDialog('gem-detail',M.GEMS[g.type].name+' · cấp '+g.level,'growth-dialog gem-dialog');
+    modal.body.innerHTML=`<div class="gem-hero">${gemImg(key)}<b>${esc(gemLabel(key))}</b><small>Có ${n}</small></div>`+
+      (next?`<div class="gem-fuse" aria-label="Ghép 3 viên thành 1 viên cấp ${g.level+1}">${gemImg(key)}${gemImg(key)}${gemImg(key)}<i>→</i>${gemImg(next)}</div><p class="gem-cost">${fmt(2000*g.level)} vàng · ${esc(gemLabel(next))}</p>`:'')+
+      `<details class="gem-rules"><summary aria-label="Cách dùng">ⓘ</summary><p>Khảm vào trang bị Hiếm (1 lỗ), Sử Thi (2), Huyền Thoại (3), Thần (4); tháo miễn phí. Công% và HP% cộng dồn tối đa 36% / 54%, Thủ tối đa 12%, Kháng 40%, Chuẩn 30%. Không dùng ở Chuẩn Hóa, giao hữu, 1vs1.</p></details>`;
+    if(next){const b=document.createElement('button');b.type='button';b.className='gw-btn';b.textContent='Ghép';b.disabled=n<3||p.wallet.gold<2000*g.level;b.onclick=()=>{try{G.engine.fuseGems(key);modal.close();ctx.render();gemDialog(ctx,next);}catch(e){fail(ctx,e);}};modal.actions.append(b);}
+    modal.present();
+  }
+  function choiceDialog(ctx){
+    const modal=window.GemwovenUI.makeDialog('gem-choice','Phiếu chọn ngọc','growth-dialog gem-dialog');
+    modal.body.innerHTML=`<div class="gem-grid five">${Object.keys(M.GEMS).map(t=>`<button type="button" data-type="${t}" aria-label="${esc(M.GEMS[t].name)}">${gemImg(t+'-1')}<span>${esc(M.GEMS[t].stat)}</span></button>`).join('')}</div>`;
+    modal.body.querySelectorAll('[data-type]').forEach(b=>b.onclick=()=>{try{G.engine.pickGem(b.dataset.type);modal.close();ctx.render();}catch(e){fail(ctx,e);}});
+    modal.present();
+  }
   const handle=G.handle;
   G.handle=(action,el,ctx,state)=>{
+    if(action==='gem:socket'){socketDialog(ctx,el.dataset.gear,Number(el.dataset.index));return true;}
+    if(action==='gem:detail'){gemDialog(ctx,el.dataset.gem);return true;}
+    if(action==='gem:choice'){choiceDialog(ctx);return true;}
     if(action==='gear:lock'){try{G.engine.lockGear(el.dataset.id,el.dataset.on==='1');ctx.render();}catch(e){fail(ctx,e);}return true;}
     if(action==='gear:best'){bestDialog(ctx,el.dataset.hero||G.engine.read().selected);return true;}
     if(action==='gear:bulk'){bulkDialog(ctx);return true;}

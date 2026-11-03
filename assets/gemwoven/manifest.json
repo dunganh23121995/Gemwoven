@@ -16156,6 +16156,92 @@
     "height": 768,
     "textless": true
   },
+  "form-novice-2": {
+    "file": "assets/heroes/forms/novice/form-2/master.png",
+    "width": 512,
+    "height": 512,
+    "footBounds": [
+      108,
+      129,
+      316,
+      482
+    ],
+    "bodyAnchor": {
+      "x": 0.466796875,
+      "crown": 0.2734375,
+      "foot": 0.94140625
+    }
+  },
+  "form-portrait-novice-2": {
+    "file": "assets/heroes/forms/novice/form-2/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      10,
+      209,
+      256
+    ]
+  },
+  "form-idle-novice-2": {
+    "file": "assets/heroes/forms/novice/form-2/hub-idle.webp",
+    "width": 512,
+    "height": 512,
+    "bodyAnchor": {
+      "x": 0.466796875,
+      "crown": 0.2734375,
+      "foot": 0.94140625
+    },
+    "footBounds": [
+      108,
+      129,
+      316,
+      482
+    ]
+  },
+  "form-novice-3": {
+    "file": "assets/heroes/forms/novice/form-3/master.png",
+    "width": 512,
+    "height": 512,
+    "footBounds": [
+      118,
+      129,
+      349,
+      482
+    ],
+    "bodyAnchor": {
+      "x": 0.50390625,
+      "crown": 0.2734375,
+      "foot": 0.94140625
+    }
+  },
+  "form-portrait-novice-3": {
+    "file": "assets/heroes/forms/novice/form-3/portrait.png",
+    "width": 256,
+    "height": 256,
+    "footBounds": [
+      0,
+      10,
+      209,
+      256
+    ]
+  },
+  "form-idle-novice-3": {
+    "file": "assets/heroes/forms/novice/form-3/hub-idle.webp",
+    "width": 512,
+    "height": 512,
+    "bodyAnchor": {
+      "x": 0.50390625,
+      "crown": 0.2734375,
+      "foot": 0.94140625
+    },
+    "footBounds": [
+      118,
+      129,
+      349,
+      482
+    ]
+  },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",
     "width": 512,

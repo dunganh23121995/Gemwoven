@@ -140,3 +140,30 @@
 .trial-left{font-size:26px;color:#3f6a1f}.trial-left.is-out{color:#8a6a40}
 .trial-week{list-style:none;padding:0;margin:0 0 10px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.trial-week li{display:flex;flex-direction:column;padding:10px 12px;border-radius:14px;background:#f3ead6;font-size:22px}.trial-week li b{color:#8a5a20}.trial-week small{font-size:20px;color:#7a6448}
 .trial-rules summary{cursor:pointer;font-weight:700;font-size:26px;color:#8a5a20;min-height:56px;display:flex;align-items:center}.trial-rules p{font-size:24px}
+/* Dệt Ngọc: socket row (gear detail) and gem dialogs — pictures first. */
+.gem-sockets{display:flex;gap:16px;margin:10px 0 6px}
+.gem-socket{width:96px;height:96px;border-radius:50%;border:4px solid #b48a4a;background:radial-gradient(#3a2a1c,#1e150d);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:6px;box-shadow:inset 0 3px 8px rgba(0,0,0,.6)}
+.gem-socket img{width:100%;height:100%;object-fit:contain}.gem-socket i{font-style:normal;font-size:44px;color:#c9a46a}
+.gem-socket.is-full{border-color:#f0c45a;box-shadow:0 0 12px rgba(255,210,110,.5),inset 0 3px 8px rgba(0,0,0,.5)}
+.gem-dialog .gem-hero{display:flex;flex-direction:column;align-items:center;gap:4px;margin:6px 0 10px}.gem-dialog .gem-hero img{width:110px;height:110px;object-fit:contain}.gem-dialog .gem-hero b{font-size:22px}.gem-dialog .gem-hero small{color:#7a6448}
+.gem-dialog .gem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.gem-dialog .gem-grid.five{grid-template-columns:repeat(3,1fr)}
+.gem-dialog .gem-grid button{position:relative;border:2px solid #d9b46e;background:#fff7e4;border-radius:16px;padding:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:88px;width:auto}
+.gem-dialog .gem-grid img{width:58px;height:58px;object-fit:contain}.gem-dialog .gem-grid span{font-weight:800;font-size:16px;color:#5a3a18}
+.gem-dialog .gem-fuse{display:flex;align-items:center;justify-content:center;gap:4px;margin:8px 0}.gem-dialog .gem-fuse img{width:52px;height:52px;object-fit:contain}.gem-dialog .gem-fuse img:last-child{width:72px;height:72px;filter:drop-shadow(0 0 8px rgba(255,210,110,.8))}.gem-dialog .gem-fuse i{font-style:normal;font-size:28px;color:#b5651d;margin:0 6px}
+.gem-dialog .gem-cost{text-align:center;font-weight:700;color:#7a5a30;margin:0 0 6px}
+.gem-dialog .gem-rules summary{cursor:pointer;font-weight:700;color:#8a5a20;min-height:44px;display:flex;align-items:center}
+.gem-dialog .gem-grid{grid-template-columns:repeat(3,1fr)}
+.outfit-panel,.live-panel.outfit-panel{overflow-y:auto;overscroll-behavior:contain}
+
+/* Codex UI review 7 */
+.gem-pic{position:relative;display:inline-block}.gem-pic em{position:absolute;right:-2px;bottom:-2px;font:900 12px/1 Cambria,serif;font-style:normal;color:#fff;background:#6a3a12;border:2px solid #f0c45a;border-radius:8px;padding:1px 4px}
+.gem-dialog .gem-grid button.on{border-color:#e08a2c;box-shadow:0 0 0 3px #f0b64e}.gem-dialog .gem-pick{min-height:24px;text-align:center;font-weight:700;color:#5a3a18}
+.gem-dialog .gw-btn,.growth-dialog .gw-btn{min-height:48px}
+.gem-dialog .gem-hero .gem-pic img{width:110px;height:110px}.gem-dialog .gem-fuse .gem-pic img{width:52px;height:52px}.gem-dialog .gem-fuse .gem-pic:last-child img{width:72px;height:72px}
+.gem-socket{width:112px;height:112px}
+.stat-chips{display:flex;flex-wrap:wrap;gap:8px 14px;margin:6px 0}.stat-chips span{display:inline-flex;align-items:center;gap:4px;font-weight:700;font-size:24px}.stat-chips img{width:34px;height:34px}.stat-chips i{font-style:normal;color:#8a6a40;margin:0 2px}.stat-chips .up{color:#2f8a3a}.stat-chips .down{color:#b53a1f}
+.outfit-piece small{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);white-space:nowrap;font-size:16px;background:#6a3a12;color:#fff;border-radius:8px;padding:1px 6px}
+.title-grid{gap:22px 10px}.title-cell{min-height:120px}.title-cell.is-locked .title-plate{filter:grayscale(.8) brightness(.9);opacity:.8}.title-cell i{font-size:32px}
+.arena-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.arena-card{border:2px solid #d9b46e;border-radius:16px;background:#fff7e4;padding:8px}.arena-card summary{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;list-style:none;min-height:96px;justify-content:center}.arena-card summary img{width:56px;height:56px}.arena-card p{font-size:14px;margin:6px 0 0}
+.arena-more{border-top:1px solid #e2cfa4;padding:6px 0}.arena-more summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center;color:#6a3a12}
+.trial-week{grid-template-columns:repeat(4,1fr)}.trial-week li{align-items:center;position:relative;padding:8px 4px}.trial-week .trial-boss{width:84px;height:84px;object-fit:contain}.trial-week li.done{background:#e6f2d8}.trial-week li i{position:absolute;right:6px;top:4px;font-style:normal;color:#2f8a3a;font-size:28px}
