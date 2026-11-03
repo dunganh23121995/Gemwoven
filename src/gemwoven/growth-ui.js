@@ -100,6 +100,14 @@
     return `<table class="gw-table pass-table"><thead><tr><th>Cấp</th>${O.PASS.tracks.map(t=>`<th>${esc(t.name)}${t.product?`<small>${vnd(O.PRODUCTS.find(x=>x.id===t.product).price)}</small>`:'<small>Miễn phí</small>'}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`+
       `<p class="hint">Diệu Ngọc: +${O.PASS.jewelBonusLevels} cấp ngay khi mua (tính vào giới hạn ${O.PASS.boughtLevelsMax} cấp mua), danh hiệu mùa "${esc(O.PASS.seasonTitle)}". Mảnh tướng tự chọn chỉ cho tướng đã sở hữu, trừ Hiro. Rương Sử Thi/Huyền Thoại nhận khi đã qua ải ${O.PASS.gearGates.epicGearChoice}/${O.PASS.gearGates.legendaryGearChoice}.</p>`;
   }
+  // Danh Hiệu: the collection with progress; wear one (shown over your head in Quảng Trường). Cosmetic only.
+  function titlesSection(p){
+    const list=M.titleList(p),got=list.filter(t=>t.unlocked).length;
+    return `<section class="titles"><h3>Danh Hiệu <small>${got}/${list.length}</small></h3><p class="hint">Danh hiệu chỉ để trang trí và khoe ở Quảng Trường, không cộng chỉ số. Đeo một danh hiệu; danh hiệu đấu trường, mùa và Thư Hùng do máy chủ trao.</p>`+
+      `<div class="title-grid">${list.map(t=>`<article class="title-card tier-${t.tier} ${t.unlocked?'is-open':''} ${t.worn?'is-worn':''}"><b class="title-name">${esc(t.name)}</b><small>${esc(t.source)}</small>`+
+        (t.server?'<em>Máy chủ · Sắp ra mắt</em>':`<div class="title-bar"><i style="width:${Math.round(t.progress[0]/t.progress[1]*100)}%"></i><span>${fmt(t.progress[0])}/${fmt(t.progress[1])}</span></div>`)+
+        (t.unlocked?`<button type="button" class="game-btn" data-action="growth:title" data-id="${t.worn?'':t.id}">${t.worn?'Bỏ đeo':'Đeo'}</button>`:'')+`</article>`).join('')}</div></section>`;
+  }
   function monthlyCard(ctx){
     const x=O?.PRODUCTS.find(x=>x.id==='monthly-card');if(!x)return false;
     const modal=window.GemwovenUI.makeDialog('monthly-card','Thẻ Tháng · Sắp ra mắt','growth-dialog');
@@ -130,6 +138,7 @@
     if(live&&state.screen==='events'){const build=live.build;live.build=el=>{build(el);const sub=el.querySelector('.game-heading p'),week=newbieSection();if(sub&&week)sub.textContent='Hành Trình Tân Thủ đang mở · Sự kiện theo mùa sắp ra mắt.';el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',week+weeklySection());el.insertAdjacentHTML('beforeend',cadenceSection());};}
     if(live&&state.screen==='boss'){const build=live.build;live.build=el=>{build(el);el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',trialSection(G.engine.read()));};}
     if(live&&state.screen==='vip'&&O)live.build=el=>{el.innerHTML=vipPage(G.engine.read());};
+    if(live&&state.screen==='rankings'){const build=live.build;live.build=el=>{build(el);el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',titlesSection(G.engine.read()));};}
     return p;
   };
   const handle=G.handle;
@@ -138,6 +147,7 @@
     if(action==='growth:power'){powerDialog(ctx,state,hero);return true;}
     if(action==='growth:map'){growthDialog(ctx,state,hero);return true;}
     if(action==='growth:newbie'){try{const got=G.engine.claimNewbie(Number(el.dataset.day));ctx.render();G.showRewards(ctx,got,'Quà Tân Thủ');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
+    if(action==='growth:title'){try{G.engine.wearTitle(el.dataset.id||null);ctx.render();}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
     if(action==='growth:weekly'){try{const got=G.engine.claimWeekly(el.dataset.quest);ctx.render();G.showRewards(ctx,got,'Thưởng nhiệm vụ tuần');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
     if(action==='journey:monthly'&&monthlyCard(ctx))return true;
     return handle(action,el,ctx,state);

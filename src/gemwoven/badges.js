@@ -37,7 +37,7 @@
     }
     // Cài Đặt: the switch for green hints.
     if(state.screen==='settings'){const form=document.getElementById('home-audio-form');if(form&&!form.querySelector('[data-hints]')){const l=document.createElement('label');l.className='mute-control';
-      l.innerHTML=`<input type="checkbox" data-hints ${prefs.hints!==false?'checked':''}> Gợi ý nâng cấp (chấm xanh)`;l.querySelector('input').onchange=e=>{const v=read();v.hints=e.target.checked;write(v);};form.append(l);}}
+      l.innerHTML=`<input type="checkbox" data-hints ${prefs.hints!==false?'checked':''}> Gợi ý nâng cấp (chấm xanh)`;l.querySelector('input').onchange=e=>{const v=read();v.hints=e.target.checked;write(v);};const mute=form.querySelector('.mute-control');if(mute)mute.after(l);else form.prepend(l);}}
     // Top-up event ring on the VIP entry.
     const ev=topupEvent();
     for(const el of document.querySelectorAll('#scene [data-node$=".feature-vip"]')){

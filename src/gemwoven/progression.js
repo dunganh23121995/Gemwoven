@@ -310,6 +310,22 @@ function bestGear(p,key,goal='attack'){const h=p.heroes[key];check(h,'Chưa sở
     for(const g of pool)if(!best||gearScore(g,goal)>gearScore(best,goal)+1e-9)best=g;
     if(best&&best.id!==own?.id)out[slot]={from:own?.id||null,to:best.id};}
   return out;}
+// Titles (docs/GAME_DESIGN.md §15): cosmetic only, never a stat. Earned from play on this save; arena, season
+// and tournament titles come from the server later and show as locked with their source.
+const TITLE_RULES=[
+  {id:'newcomer',name:'Lữ Khách Tân Thủ',tier:1,source:'Nhận đủ 7 ngày Hành Trình Tân Thủ',at:p=>[(p.newbie?.claimed||[]).length,7]},
+  {id:'ember',name:'Kẻ Vượt Núi Lửa',tier:1,source:'Vượt ải 100 (boss chương 2)',at:p=>[Math.min(p.campaign.cleared,100),100]},
+  {id:'hunter-1',name:'Thợ Săn Tập Sự',tier:1,source:'Hạ 50 boss vô hạn',at:p=>[Math.min(p.boss.wins,50),50]},
+  {id:'trial',name:'Người Thử Mọi Boss',tier:2,source:'Có kỷ lục ở cả 5 boss Sân Thử Luyện',at:p=>[Object.keys(p.trial?.best||{}).length,5]},
+  {id:'smith',name:'Bậc Thầy Cường Hóa',tier:2,source:'Cường hóa một trang bị lên +20',at:p=>[Math.max(0,...p.equipment.map(g=>g.level)),20]},
+  {id:'hiro-star',name:'Ngôi Sao Lữ Khách',tier:3,source:'Hiro đạt 6 sao',at:p=>[p.heroes.novice?.stars||1,6]},
+  {id:'collector',name:'Nhà Sưu Tầm',tier:3,source:'Mở 9 hình thái tướng',at:p=>[Object.entries(p.heroes).reduce((n,[k,h])=>n+(k==='novice'?0:formMax(k,h)),0),9]},
+  {id:'pathfinder',name:'Người Mở Lối',tier:3,source:'Vượt chương 10 (ải 500)',at:p=>[Math.min(p.campaign.cleared,500),500]},
+  {id:'boss-hunter',name:'Thợ Săn Boss',tier:4,source:'Hạ 1.000 boss vô hạn',at:p=>[Math.min(p.boss.wins,1000),1000]},
+  {id:'season-gold',name:'Kiếm Khách Hoàng Kim',tier:4,source:'Mùa Đấu Hạng · bậc Vàng (máy chủ)',server:true},
+  {id:'champion',name:'Thư Hùng Vô Địch',tier:5,source:'Vô địch Thư Hùng Đại Hội (máy chủ)',server:true},
+  {id:'patron',name:'Đại Phú Hộ',tier:4,source:'VIP 11 (trang trí, không chỉ số)',server:true,paid:true}];
+function titleList(p){return TITLE_RULES.map(t=>{const [cur,target]=t.at?t.at(p):[0,1];return {id:t.id,name:t.name,tier:t.tier,source:t.source,server:!!t.server,paid:!!t.paid,progress:[Math.min(cur,target),target],unlocked:!t.server&&cur>=target,worn:p.title===t.id};});}
 function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc không tồn tại.');return {gold:(g.level+1)*900,ore:(g.level+1)*2};}
   // What one upgrade step gives, for the hub preview. Never mutates the save.
   function upgradePreview(p,key,kind,count=1){
@@ -556,6 +572,8 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         const total=list.reduce((t,g)=>{const v=salvageValue(g);t.ore+=v.ore;t.gold+=v.gold;return t;},{ore:0,gold:0});
         p.equipment=p.equipment.filter(g=>!set.has(g.id));(p.salvageLog??=[]).unshift({at:now(),count:list.length,...total});p.salvageLog=p.salvageLog.slice(0,30);note(p,`Phân rã ${list.length} trang bị`);return grant(p,total);}),
       salvagePreview:filter=>salvagePreview(read(),filter),
+      titles:()=>titleList(read()),
+      wearTitle:id=>tx(p=>{if(id==null||id===''){delete p.title;return {title:null};}const t=titleList(p).find(x=>x.id===id);check(t,'Danh hiệu không tồn tại.');check(t.unlocked,'Chưa đạt danh hiệu này.');p.title=id;note(p,'Đeo danh hiệu '+t.name);return {title:id};}),
       lockGear:(gearId,on=true)=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');if(on)g.locked=true;else delete g.locked;return {locked:!!g.locked};}),
       setAutoSalvage:(rarity,on)=>tx(p=>{check(['common','uncommon'].includes(rarity),'Chỉ tự phân giải đồ Thường hoặc Tốt.');p.settings??={};p.settings.autoSalvage??={};p.settings.autoSalvage[rarity]=!!on;return {...p.settings.autoSalvage};}),
       bestGear:(key,goal='attack')=>bestGear(read(),key,goal),
@@ -613,5 +631,5 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });

@@ -162,3 +162,10 @@ console.log('gear overflow ok');
   assert.ok(!('gems' in n.claim)&&!('vip' in n.claim),'never a red dot for paying');
 }
 console.log('badges ok');
+{ // Titles: cosmetic, earned from play; only an unlocked one can be worn; server titles stay locked here.
+  const {engine:e,edit}=fixture();assert.throws(()=>e.wearTitle('ember'),/Chưa đạt/);
+  edit(p=>{p.campaign.cleared=100;});assert.ok(e.titles().find(t=>t.id==='ember').unlocked);e.wearTitle('ember');assert.equal(e.read().title,'ember');
+  const before=e.stats('novice');e.wearTitle(null);assert.equal(e.read().title,undefined);assert.deepEqual(e.stats('novice'),before,'no stat from titles');
+  assert.ok(e.titles().filter(t=>t.server).every(t=>!t.unlocked));assert.throws(()=>e.wearTitle('patron'),/Chưa đạt/);
+}
+console.log('titles ok');

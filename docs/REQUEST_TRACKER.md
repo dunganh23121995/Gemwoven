@@ -71,7 +71,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | F3 | Kết bạn khi đứng gần nhau, bấm vào nhân vật của nhau | Máy chủ kiểm tra khoảng cách. Thẻ hồ sơ: Kết bạn / Nhắn riêng, Giao hữu, Mời vào bang; Thêm: Tặng tim, Chặn, Báo cáo. Danh sách bạn: trực tuyến, kênh, Đến chỗ, Nhắn, Tặng tim. | ✅ | Quảng Trường → Bạn bè |
 | F4 | Giao lưu rồi vào trận đấu với nhau | Mời từ thẻ hồ sơ hoặc Sàn Giao Hữu (hai người cùng Sẵn sàng). Trước khi có máy chủ trận: đấu bản sao tướng của người kia do AI điều khiển, chỉ số chuẩn hóa, "Không thưởng", không công bố kết quả. | ✅ | Quảng Trường |
 | F5 | Bang hội (guild) | Lập/tìm/xin vào/duyệt/rời/mời ra, Bang Chủ · 1 Phó · 2 Trưởng Lão, thông báo, chế độ nhận người, điểm danh, cống hiến tuần/tổng, cấp bang 1–10, kế vị khi Bang Chủ vắng 14 ngày, nhật ký, kênh chat bang, thẻ [TAG] trên đầu. Hoạt động thật: **Dệt Đèn Bang**. Boss Bang, Viễn Chinh, Chiến Trường, Cửa Hàng Bang: Sắp ra mắt. | ✅ | Quảng Trường → Bang hội / Sảnh Bang |
-| F6 | Danh hiệu: sưu tập, thiết kế | Bộ sưu tập theo thành tích, đeo một danh hiệu hiện trên đầu ở Quảng Trường; trang trí, không chỉ số. | 🔨 | Danh Hiệu |
+| F6 | Danh hiệu: sưu tập, thiết kế | 12 danh hiệu theo thành tích (tân thủ, chương 2/10, boss vô hạn 50/1.000, Sân Thử Luyện, +20, Hiro 6★, 9 hình thái) với thanh tiến độ, 5 bậc màu; đeo một danh hiệu, hiện trên đầu ở Quảng Trường; trang trí, không chỉ số. Danh hiệu mùa/Thư Hùng/VIP do máy chủ trao (hiện khóa). Thiết kế danh hiệu tự do: chỉ nhà vô địch Thư Hùng, theo khuôn, có kiểm duyệt. | ✅ | Thành Tựu (Xếp Hạng) → Danh Hiệu |
 
 ## G. Báu vật, ngọc khảm
 

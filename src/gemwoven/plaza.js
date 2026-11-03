@@ -39,7 +39,8 @@
 
   function myProfile(){
     const p=G.engine.read(),key=p.selected,h=p.heroes[key];
-    return {hero:key,look:M.lookForm?M.lookForm(key,h):1,level:h?.level||1,stars:h?.stars||1,power:M.stats(p,key).power,title:'',frame:''};
+    const title=p.title&&M.titleList?M.titleList(p).find(t=>t.id===p.title&&t.unlocked)?.name||'':'';
+    return {hero:key,look:M.lookForm?M.lookForm(key,h):1,level:h?.level||1,stars:h?.stars||1,power:M.stats(p,key).power,title,frame:''};
   }
 
   // ---------- Network ----------
@@ -119,7 +120,7 @@
     if(P.me&&keep){P.me.name=name;setLook(P.me,prof.hero,prof.look);refreshMyTag();return;}
     if(P.me)removeActor('me');P.me=makeActor('me',{name,hero:prof.hero,look:prof.look,x:pos[0],y:pos[1]});refreshMyTag();
   }
-  function refreshMyTag(){if(!P.me)return;P.me.name=P.you?.name||'Bạn';P.me.tag=P.guild?.tag||'';setPlate(P.me);for(const a of P.actors.values())if(!a.npc&&a!==P.me)setPlate(a);}
+  function refreshMyTag(){if(!P.me)return;P.me.name=P.you?.name||'Bạn';P.me.tag=P.guild?.tag||'';P.me.title=myProfile().title;setPlate(P.me);for(const a of P.actors.values())if(!a.npc&&a!==P.me)setPlate(a);}
   function upsert(p){
     if(p.id===P.you?.id)return;let a=P.actors.get(p.id);
     if(!a)a=makeActor(p.id,{name:p.name,hero:p.p?.hero,look:p.p?.look,tag:p.tag,title:p.p?.title,x:p.x,y:p.y});
