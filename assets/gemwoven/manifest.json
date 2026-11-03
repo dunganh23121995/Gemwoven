@@ -17511,7 +17511,7 @@
   "vip-pass-tree-crown": {
     "file": "assets/gemwoven/vip-pass/tree-crown.webp",
     "width": 470,
-    "height": 196,
+    "height": 191,
     "textless": true,
     "source": "assets/gemwoven/raw/vip-pass/",
     "promptFiles": [
@@ -17523,7 +17523,7 @@
   "vip-pass-tree-row": {
     "file": "assets/gemwoven/vip-pass/tree-row.webp",
     "width": 478,
-    "height": 126,
+    "height": 116,
     "textless": true,
     "source": "assets/gemwoven/raw/vip-pass/",
     "promptFiles": [
