@@ -56,7 +56,8 @@
     inventory:{glows:[[437,362,120,'255,200,110']]},
     tavern:{glows:[[358,292,190,'255,196,120']],wisps:[[700,400,220,1,'255,255,255',.4,70,46]]},
     // Distant clouds sail through the sky left of the tree, above the hero (owner 03/11).
-    skills:{wisps:[[230,165,300,1,'255,255,255',.45,360,70],[250,300,260,3,'255,252,245',.4,-330,82],[200,420,230,0,'250,250,255',.32,280,64]],birds:[[150,26,-8,.55,1]]}
+    // clouds: [cloud 1-4, y, width, from x, to x, seconds, delay s, opacity] drawn clouds sailing across the sky (fade at both ends).
+    skills:{clouds:[[1,150,300,-320,460,46,0,.95],[4,300,250,-280,430,58,-20,.9],[3,430,200,-240,380,40,-30,.85],[2,210,190,-260,420,70,-48,.8]],birds:[[150,26,-8,.55,1]]}
   };
   // The heroes' realms on the summon spotlight (assets/gemwoven/summon/scenes-detail; water and
   // glow masks from export_scene_masks.py).
@@ -123,6 +124,7 @@
     const wisp=(cls,x,y,w,v,rgb,o,style)=>{const s=A['summon-wisps'];if(!s)return;const h=w*s.height/(s.width/s.count);
       out.push(`<i class="${cls}" style="left:${x-w/2}px;top:${y-h/2}px;width:${w}px;height:${h}px;--c:${rgb};--o:${o};-webkit-mask-image:url('${light('summon-wisps')}');mask-image:url('${light('summon-wisps')}');-webkit-mask-position:${v/(s.count-1)*100}% 0;mask-position:${v/(s.count-1)*100}% 0;${style}"></i>`);};
     // A long drift (250 px or more) passes across and fades at both ends; a short one sways to and fro.
+    spec.clouds?.forEach(([n,y,w,from,to,dur,delay,o])=>{if(A['ambient-cloud-'+n])out.push(`<img class="lm-cloud" src="${light('ambient-cloud-'+n)}" alt="" style="top:${y}px;left:0;width:${w}px;--from:${from}px;--to:${to}px;--dur:${dur}s;--delay:${delay}s;--o:${o}">`);});
     spec.wisps?.forEach(([x,y,w,v,rgb,o,dx,dur],i)=>wisp(Math.abs(dx)>=250?'lm-wisp lm-pass':'lm-wisp',x,y,w,v,rgb,o,`--dx:${dx}px;--dur:${dur}s;--delay:${-((i*7.3)%dur).toFixed(1)}s`));
     spec.bolts?.forEach(([x,y,h,v,period,delay])=>{const s=A['summon-bolts'];if(!s)return;const w=h*s.width/s.count/s.height,t=`--period:${period}s;--delay:${delay}s`;
       out.push(`<i class="lm-flash" style="left:${x-h}px;top:${y+h/2-h}px;width:${2*h}px;height:${2*h}px;${t}"></i>`);

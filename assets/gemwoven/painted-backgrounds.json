@@ -242,5 +242,49 @@
       "assets/gemwoven/npc/bunny/rig/show/parts-prompt.txt"
     ],
     "purpose": "The shop rabbit moves at rest (owner 03/11): Codex drew it alone, the rig only moves that picture."
+  },
+  "ambient-cloud-1": {
+    "file": "assets/gemwoven/ambient/clouds/cloud-1.webp",
+    "width": 534,
+    "height": 137,
+    "textless": true,
+    "source": "assets/gemwoven/ambient/clouds/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/ambient/clouds/prompt.txt"
+    ],
+    "purpose": "Clouds that sail across the painted skies (living-motion.js clouds)."
+  },
+  "ambient-cloud-2": {
+    "file": "assets/gemwoven/ambient/clouds/cloud-2.webp",
+    "width": 446,
+    "height": 272,
+    "textless": true,
+    "source": "assets/gemwoven/ambient/clouds/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/ambient/clouds/prompt.txt"
+    ],
+    "purpose": "Clouds that sail across the painted skies (living-motion.js clouds)."
+  },
+  "ambient-cloud-3": {
+    "file": "assets/gemwoven/ambient/clouds/cloud-3.webp",
+    "width": 343,
+    "height": 110,
+    "textless": true,
+    "source": "assets/gemwoven/ambient/clouds/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/ambient/clouds/prompt.txt"
+    ],
+    "purpose": "Clouds that sail across the painted skies (living-motion.js clouds)."
+  },
+  "ambient-cloud-4": {
+    "file": "assets/gemwoven/ambient/clouds/cloud-4.webp",
+    "width": 485,
+    "height": 202,
+    "textless": true,
+    "source": "assets/gemwoven/ambient/clouds/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/ambient/clouds/prompt.txt"
+    ],
+    "purpose": "Clouds that sail across the painted skies (living-motion.js clouds)."
   }
 }

@@ -303,3 +303,7 @@ body.page-hidden .living-motion *{animation-play-state:paused!important}
 .lm-mote{width:var(--size);height:var(--size);background:center/contain no-repeat;mix-blend-mode:screen;opacity:0;animation:lm-mote 7s ease-out var(--delay) infinite}
 @keyframes lm-rays{from{scale:.88;filter:brightness(.85)}to{scale:1.08;filter:brightness(1.25)}}
 @keyframes lm-mote{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:.75}70%{opacity:.45}100%{opacity:0;transform:translate(var(--drift),-420px) scale(1.1)}}
+
+.lm-cloud{position:absolute;opacity:0;animation:lm-cloud var(--dur) var(--delay) linear infinite;will-change:translate}
+@keyframes lm-cloud{0%{translate:var(--from) 0;opacity:0}12%,80%{opacity:var(--o)}100%{translate:var(--to) 0;opacity:0}}
+.reduced-motion .lm-cloud{animation:none;opacity:var(--o);translate:calc((var(--from) + var(--to))/2) 0}

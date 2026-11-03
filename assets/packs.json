@@ -4024,6 +4024,11 @@
     "assets/fx/yuki/boulder.webp",
     "assets/gemwoven/ambient/bird.webp",
     "assets/gemwoven/ambient/butterfly.webp",
+    "assets/gemwoven/ambient/clouds/cloud-1.webp",
+    "assets/gemwoven/ambient/clouds/cloud-2.webp",
+    "assets/gemwoven/ambient/clouds/cloud-3.webp",
+    "assets/gemwoven/ambient/clouds/cloud-4.webp",
+    "assets/gemwoven/ambient/clouds/raw.png",
     "assets/gemwoven/ambient/foam.webp",
     "assets/gemwoven/ambient/forge.webp",
     "assets/gemwoven/ambient/leaf.webp",
@@ -4121,6 +4126,7 @@
     "assets/gemwoven/beanstalk/branch-segment.png",
     "assets/gemwoven/beanstalk/double-stem.png",
     "assets/gemwoven/beanstalk/leaf-platform.png",
+    "assets/gemwoven/gems/gem-atk-2.webp",
     "assets/gemwoven/gems/gem-precision-1.webp",
     "assets/gemwoven/hall/banner-earth.webp",
     "assets/gemwoven/hall/banner-fire.webp",
@@ -4518,7 +4524,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 140586778
+   "bytes": 141851881
   },
   {
    "id": "hero-earth-f1",

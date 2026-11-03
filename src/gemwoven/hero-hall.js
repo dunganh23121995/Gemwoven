@@ -65,9 +65,17 @@
   const BANNERS=[['fire',196],['ice',327],['earth',468],['lightning',610],['shadow',751]];
   function waiting(p,state){return order(p).filter(k=>p.heroes[k]&&k!==state.hero).slice(0,2);}
 
+  // Kỹ Năng (owner 03/11): the tree moves up into the room the branch tabs left, so it never meets the roster,
+  // and the roster becomes the same sideways strip as the hall's, on its own row under the hero.
+  function skills(p,state){
+    let nodes=L.screens.skills.nodes.filter(n=>!/^skills\.roster-/.test(n.id));
+    for(const n of nodes)if(/^skills\.(node-\d|node-level-\d|link-\d|locked-\d)$/.test(n.id)&&!n.hallShift){n.rect=[n.rect[0],n.rect[1]-110,...n.rect.slice(2)];n.hallShift=true;}
+    nodes.push({id:'skills.roster',kind:'content',rect:[24,906,893,98],className:'exploration-map hall-roster skills-roster',build:el=>strip(el,p,state)});
+    L.screens.skills.nodes=nodes;
+  }
   const decorate=G.decorate;
   G.decorate=state=>{
-    const p=decorate(state);if(state.screen!=='upgrade')return p;
+    const p=decorate(state);if(state.screen==='skills')skills(p,state);if(state.screen!=='upgrade')return p;
     // The stat line moved into the profile (ⓘ): the roster takes its row.
     let nodes=L.screens.upgrade.nodes.filter(n=>!/^upgrade\.(choose-|gear-stats$)/.test(n.id));
     nodes.unshift({id:'upgrade.hall-decor',kind:'content',rect:[0,0,941,1672],className:'exploration-map hall-decor',build:el=>{
