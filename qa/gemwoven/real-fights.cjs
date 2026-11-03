@@ -48,6 +48,8 @@ async function oneFight(page,save,index){
     while(!q.ended&&performance.now()-t0<5*60000){
       if(document.getElementById('resultDialog').open)break;
       if(q.locked||document.getElementById('selectDialog').open){await sleep(15);continue;}
+      // Biến Thân as soon as it is offered (a player would).
+      const tf=document.querySelector('#transformBtn:not([hidden]):not(:disabled)');if(tf){tf.click();await sleep(30);}
       if(q.state.energy>=100){const before=q.state.energy;await q.activateSkill();if(q.state.energy<before)ults++;continue;}
       const list=q.legalMoves(true);if(!list.length){await sleep(30);continue;}
       let best=list[0];for(const m of list)if(m.score+Math.random()*.01>best.score)best=m;

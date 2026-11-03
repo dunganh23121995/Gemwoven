@@ -103,7 +103,10 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   assert.deepEqual([1,5,10].map(r=>at('ice',r,0).armor),[25,37,52]);assert.deepEqual([1,5,10].map(r=>at('earth',r,0).heal),[40,60,85]);assert.deepEqual([1,5,10].map(r=>at('earth',r,0).burst),[3,3.4,3.9]);
   assert.deepEqual([1,5,10].map(r=>at('fire',r,2).burn.turns),[2,3,4]);assert.deepEqual([1,5,10].map(r=>at('ice',r,2).mutationArmor),[.06,.08,.105]);assert.deepEqual([1,5,10].map(r=>at('earth',r,2).mutationArmor),[.04,.06,.085]);
   assert.deepEqual([1,5,10].map(r=>at('lightning',r,2).drain),[21,25,30]);assert.deepEqual([1,5,10].map(r=>at('shadow',r,2).echo),[15,27,42]);assert.deepEqual([1,5,10].map(r=>at('novice',r,2).regen),[.01,.014,.019]);
-  assert.deepEqual([1,5,10].map(r=>at('fire',r,3).awaken),[{attack:.13,hp:.1},{attack:.17,hp:.12},{attack:.22,hp:.145}]);
+  // Biến Thân (Codex round 4): Công +25% → +40%, 3 turns (4 at level 400 + evolution 5), +10% (+15%) afterwards; no whole-battle bonus.
+  assert.deepEqual([1,5,10].map(r=>at('fire',r,3).transform.attack),[.25,.3167,.4]);assert.deepEqual(at('fire',1,3).awaken,{attack:0,hp:0});
+  assert.deepEqual(M.skillKit('fire',{level:200,stars:4,evolution:3,skills:[1,1,1,1]}).transform,{turns:3,attack:.25,reduce:.15,after:.1});
+  assert.equal(M.skillKit('fire',{level:500,stars:6,evolution:6,skills:[1,1,1,1]},true).transform,null,'not in normalized play');assert.deepEqual(M.SKILL_GATES[3],{level:180,evolution:3});
   // Forms and evolution perks.
   for(const forms of Object.values(M.HERO_FORMS)){assert.deepEqual(forms.map(f=>f.power),[1,1.1,1.25]);assert.equal(new Set(forms.map(f=>f.skill)).size,3,'Each form has its own skill name');assert.ok(forms[2].signature);}
   const f3=key=>M.skillKit(key,{level:500,stars:6,evolution:0,skills:[1,1,0,0]});
@@ -113,8 +116,8 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   assert.equal(M.skillKit('ice',{level:500,stars:4,evolution:4,skills:[1,1,3,0]}).levels[2],4,'Evolution 4 adds one Biến Dị rank');assert.equal(M.skillKit('ice',{level:500,stars:4,evolution:4,skills:[1,1,0,0]}).mutation,false,'The bonus never unlocks Biến Dị by itself');
   assert.ok(M.EVOLUTION.every(e=>typeof e.perk==='string'&&e.perk));
   // Gates are one table for rules and text.
-  assert.deepEqual(M.SKILL_GATES.map(g=>g.level),[1,10,100,400]);
-  for(const [h,expected]of [[{level:9,evolution:6},[true,false,false,false]],[{level:10,evolution:0},[true,true,false,false]],[{level:100,evolution:1},[true,true,false,false]],[{level:100,evolution:2},[true,true,true,false]],[{level:400,evolution:4},[true,true,true,false]],[{level:400,evolution:5},[true,true,true,true]]])assert.deepEqual([0,1,2,3].map(i=>M.skillUnlock(h,i)),expected);
+  assert.deepEqual(M.SKILL_GATES.map(g=>g.level),[1,10,100,180]);
+  for(const [h,expected]of [[{level:9,evolution:6},[true,false,false,false]],[{level:10,evolution:0},[true,true,false,false]],[{level:100,evolution:1},[true,true,false,false]],[{level:100,evolution:2},[true,true,true,false]],[{level:179,evolution:6},[true,true,true,false]],[{level:400,evolution:2},[true,true,true,false]],[{level:180,evolution:3},[true,true,true,true]]])assert.deepEqual([0,1,2,3].map(i=>M.skillUnlock(h,i)),expected);
   assert.equal(M.skillGateText(2),'Mở ở cấp 100 · tiến hóa 2.');assert.equal(M.skillText('fire',{level:1,stars:1,evolution:0,skills:[1,0,0,0]},1).next,'Mở ở cấp 10.');
   assert.equal(M.skillText('fire',null,0).next,'Cần sở hữu tướng.');
   // Practice is normalized: rank-1 active, innate traits only, no gear, no Biến Dị/Chân Thân/forms.

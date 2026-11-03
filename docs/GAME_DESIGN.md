@@ -54,7 +54,7 @@ Ký hiệu: **[Có]** đã chạy · **[Đêm nay]** thêm ở đợt 03/11 · *
 
 ```
 Cấp ──────────────┐
-                  ├──► Tiến hóa 1..6 ──► Bị động (cấp 10) · Biến Dị (cấp 100 + TH2) · Chân Thân (cấp 400 + TH5)
+                  ├──► Tiến hóa 1..6 ──► Bị động (cấp 10) · Biến Dị (cấp 100 + TH2) · Chân Thân/Biến Thân (cấp 180 + TH3)
 Sao (bản sao) ────┤                     · năng lượng đầu trận (TH3: 20, TH6: 40)
                   └──► Hình thái: 4★ → H2 · 6★ → H3
 Trang bị / Bảo bối / Ngọc / Báu vật ──► chỉ số; KHÔNG đổi hình thái, KHÔNG mở kỹ năng
@@ -111,7 +111,7 @@ ngắn–dài. Mỗi nhánh phải đổi *cách chơi*, không chỉ cộng s�
 | **Chủ động** (Tuyệt kỹ) | Chiêu khi đầy năng lượng; tên, hình, số đòn theo hình thái | Ngay | Ngũ Ảnh Trảm → Hắc Liêm Đoạt Hồn |
 | **Bị động** (Thiên phú) | Luôn bật, định hình cách xếp ngọc | Cấp 10 | Lumi năng lượng ×2; Yuki giảm 20% sát thương |
 | **Biến Dị** | Hiệu ứng nguyên tố sau mỗi tuyệt kỹ | Cấp 100 + TH2 | Mika thiêu đốt; Lumi hút năng lượng |
-| **Chân Thân** | Hiện: +Công/HP cả trận. Đề xuất: **Biến Thân** | Cấp 400 + TH5 | xem 2.4 |
+| **Chân Thân** | **Biến Thân** một lần mỗi trận [Có] | Cấp 180 + TH3 (cấp 400 + TH5 mạnh hơn) | xem 2.4 |
 
 ### 2.1 Hiển thị
 Bảng **Lộ trình phát triển** [Đêm nay] cho thấy từng nhánh: đã mở chưa, cần cấp/tiến hóa nào, nút "Đi tới".
@@ -120,13 +120,13 @@ Bảng **Lộ trình phát triển** [Đêm nay] cho thấy từng nhánh: đã 
 Vẫn hiện trong danh sách (đó là mồi sưu tầm), làm **xám + biểu tượng khóa**. Bấm vào xem được kỹ năng, hình
 thái, số mảnh và cách có tướng.
 
-### 2.4 Biến Thân (đề xuất cho nhánh Chân Thân)
+### 2.4 Biến Thân (nhánh Chân Thân) [Có · Codex vòng 4]
 - Một lần mỗi trận: thanh năng lượng có vạch **Biến Thân**; kích hoạt khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai.
 - 3 lượt: hào quang hình thái cao nhất bật lên (art đã có), Công +25..40% theo cấp kỹ năng, giảm 15% sát
   thương nhận vào, miễn choáng; hết 3 lượt giữ một nửa thưởng Công đến cuối trận.
 - **Cổng mới khi làm Biến Thân: cấp 180 + TH3** (Codex: cấp 400 cần tối thiểu 190 ngày theo trần Ấn —
   khoảnh khắc hay nhất không được đến muộn vậy). Cấp 400 + TH5 nâng hiệu quả Biến Thân.
-- Tắt trong hàng PvP Chuẩn Hóa. Cần làm phía combat, ước 1–2 ngày công.
+- Tắt trong hàng PvP Chuẩn Hóa, 1vs1 cùng máy và giao hữu. **Đã làm:** nút "BIẾN THÂN" cạnh tướng hiện khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai; bấm không tốn lượt; đếm theo lượt của tướng; miễn choáng/đóng băng mới; hào quang vàng; dư âm sau đó; bỏ thưởng Công/HP Chân Thân cũ. Bot trận thật tự bấm Biến Thân.
 
 ---
 

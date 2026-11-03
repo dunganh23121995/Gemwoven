@@ -12,16 +12,16 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
 |---|---|---|---|---|
 | A1 | Cấp, sao, tiến hóa, bộ kỹ năng liên hệ thế nào? | Cấp và Sao là hai đường riêng. Tiến hóa cần cả hai. Tiến hóa mở các nhánh kỹ năng. Sao mở hình thái. | ✅ | Tướng → cờ trái **Lộ trình phát triển**; GAME_DESIGN §1 |
-| A2 | Khi nào nhân vật biến hình? | Hình thái 2 ở 4★, hình thái 3 ở 6★ (thuộc Sao). Biến Thân trong trận là nhánh Chân Thân. | ✅ hình thái · 🤝 Biến Thân | Tướng → nút Hình thái; §2.4 |
+| A2 | Khi nào nhân vật biến hình? | Hình thái 2 ở 4★, hình thái 3 ở 6★ (thuộc Sao). Biến Thân trong trận là nhánh Chân Thân. | ✅ hình thái · ✅ Biến Thân (cấp 180 + TH3, nút trong trận) | Tướng → nút Hình thái; trận → nút BIẾN THÂN; §2.4 |
 | A3 | Trang bị có ảnh hưởng hình thái? Form 2 mang vũ khí thần thoại? Form 3 không vũ khí? | Trang bị chỉ cộng chỉ số, không đổi hay khóa hình thái. Form 2 mang đồ Thần được. Form 3 không vũ khí vẫn biến thân, chỉ thiếu Công. Vũ khí bản mệnh thêm hiệu ứng khi đúng chủ. | ✅ luật · 📐 vũ khí bản mệnh | §1.1, §3 |
 | A4 | Ràng buộc chặt hay độc lập? | Hai đường độc lập (Cấp, Sao) gặp nhau ở cổng Tiến hóa. Trang bị, báu vật, ngọc độc lập với hình thái. | ✅ | §0, §1.1 |
 | A5 | Có cần chia Chủ động / Bị động / Biến Dị / Chân Thân? | Có. Bốn nhánh mở ở bốn thời điểm và mỗi nhánh đổi cách chơi. | ✅ | Kỹ Năng; §2 |
-| A6 | Form cũ còn dùng được sau khi nâng? Có chế độ biến hình? | Còn, miễn phí: chọn diện mạo ở thị trấn. Trận luôn dùng hình thái cao nhất. Biến Thân 3 lượt trong trận. | ✅ diện mạo · 🤝 Biến Thân | Hình thái → "Khoác diện mạo" |
+| A6 | Form cũ còn dùng được sau khi nâng? Có chế độ biến hình? | Còn, miễn phí: chọn diện mạo ở thị trấn. Trận luôn dùng hình thái cao nhất. Biến Thân 3 lượt trong trận. | ✅ diện mạo · ✅ Biến Thân | Hình thái → "Khoác diện mạo"; trận → BIẾN THÂN |
 | A7 | Tướng chưa sở hữu có hiện trong danh sách? | Có, xám kèm khóa; bấm vào xem được cách có tướng. | ✅ | Tướng, Kỹ Năng |
 | A8 | Xem chỉ số tướng đang sở hữu ở đâu? | Bảng chi tiết HP/Công/Thủ theo từng nguồn. | ✅ | Tướng → cờ phải; Lực Chiến |
 | A9 | Bấm tổng Lực chiến đi đâu? | Mở bảng Lực chiến: công thức, từng nguồn, gợi ý nâng tiếp. | ✅ | Home → Lực Chiến |
 | A10 | Hình thái Hiro | Concept H2 Lữ Khách Kiếm Sĩ và H3 Anh Hùng Diệu Ngọc **đã duyệt (03/11)**. Làm theo HERO_PIPELINE. | 🎨🔨 | assets/heroes/forms/novice |
-| A11 | Tướng mặc định rất khó qua boss chương 2 cấp 100 | Nguyên nhân là chỉ lên cấp, không đồ, không kỹ năng. Đã tăng tuyệt kỹ Hiro (70), kiếm ×1,2, thêm đường Mảnh Hiro, Lộ trình. Đang đối chiếu mô phỏng với trận thật bằng bot. | ✅ · 🤝 chốt cân bằng | §5; `qa/gemwoven/real-fights.cjs` |
+| A11 | Tướng mặc định rất khó qua boss chương 2 cấp 100 | Nguyên nhân là chỉ lên cấp, không đồ, không kỹ năng. Đã tăng tuyệt kỹ Hiro (70), kiếm ×1,2, thêm đường Mảnh Hiro, Lộ trình. Đang đối chiếu mô phỏng với trận thật bằng bot. | ✅ · ✅ "cân bằng v1" chương 1–2 (Codex vòng 4; còn mở: số lượt quái thường) | §5, §20; `qa/gemwoven/real-fights.cjs` |
 | A12 | Cơ chế tính sát thương | Công thức đầy đủ, hệ số, khắc hệ, chí mạng chuỗi, giáp, thủ. | ✅ | §5.1 |
 
 ## B. Túi đồ, trang bị, cửa hàng, triệu hồi

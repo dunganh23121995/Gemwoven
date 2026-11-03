@@ -72,15 +72,17 @@
   const EVOLUTION=[
     {level:50,stars:1,gold:12000,essence:15,ore:20,piece:'weapon',name:'Vũ khí thức tỉnh',perk:'Tuyệt kỹ +5% sức mạnh'},
     {level:100,stars:2,gold:40000,essence:40,ore:50,piece:'shoulders',name:'Giáp vai linh lực',perk:'Mở kỹ năng Biến Dị'},
-    {level:180,stars:3,gold:120000,essence:90,ore:100,piece:'gloves',name:'Găng tay cộng hưởng',perk:'Vào trận với 20 năng lượng'},
+    {level:180,stars:3,gold:120000,essence:90,ore:100,piece:'gloves',name:'Găng tay cộng hưởng',perk:'Vào trận với 20 năng lượng; mở kỹ năng Chân Thân (Biến Thân)'},
     {level:280,stars:4,gold:350000,essence:180,ore:180,piece:'boots',name:'Giáp chân chuyển hóa',perk:'Biến Dị mạnh thêm 1 cấp'},
-    {level:400,stars:5,gold:900000,essence:360,ore:300,piece:'crest',name:'Dấu ấn chân thân',perk:'Mở kỹ năng Chân Thân'},
+    {level:400,stars:5,gold:900000,essence:360,ore:300,piece:'crest',name:'Dấu ấn chân thân',perk:'Biến Thân 4 lượt, dư âm Công +15%'},
     {level:500,stars:6,gold:2200000,essence:800,ore:500,piece:'aura',name:'Lột xác toàn thân',perk:'Tuyệt kỹ thêm +10%; vào trận với 40 năng lượng'}
   ];
   // Mechanical value of the evolution perks above; combat reads it through skillKit.
   function evolutionBonus(evolution){const e=evolution|0;return {power:Number((1+(e>=1?.05:0)+(e>=6?.1:0)).toFixed(4)),startEnergy:e>=6?40:e>=3?20:0,mutationRank:e>=4?1:0};}
   const SKILL_MAX=10,SKILL_BRANCHES=['Chủ Động','Bị Động','Biến Dị','Chân Thân'];
-  const SKILL_GATES=[{level:1,evolution:0},{level:10,evolution:0},{level:100,evolution:2},{level:400,evolution:5}];
+  // The fourth branch (Chân Thân → Biến Thân) opens at level 180 + evolution 3 (Codex round 1 and 4: the best moment
+  // must not wait 190+ days); level 400 + evolution 5 strengthens it.
+  const SKILL_GATES=[{level:1,evolution:0},{level:10,evolution:0},{level:100,evolution:2},{level:180,evolution:3}];
   function skillGateText(index){const g=SKILL_GATES[index];return !g||index===0?'':`Mở ở cấp ${g.level}`+(g.evolution?` · tiến hóa ${g.evolution}`:'')+'.';}
   // Base numbers of each active skill; ranks, forms and evolution scale them in skillKit.
   const SKILL_KIT={novice:{base:70,hits:1},fire:{base:135,hits:1},ice:{base:60,hits:1,armor:25},earth:{base:0,hits:0,heal:40,burst:3,stun:2,regen:3},lightning:{base:140,hits:5},shadow:{base:150,hits:5}};
@@ -162,7 +164,12 @@
     const activePower=1+.08*(active-1),power=round(activePower*formPower*bonus.power);
     const kit={key,form,evolution,ranks,levels:[active,passive,mutation,awaken],activePower:round(activePower),formPower,evolutionPower:round(bonus.power),power,startEnergy:bonus.startEnergy,
       base:base.base,hits:base.hits,damage:Math.round(base.base*power),sword:1,attackScale:1,shieldGem:4,energy:1,damageReduction:0,attackBonus:0,hpBonus:0,defenseBonus:0,
-      mutation:mutation>0,awakened:awaken>0,awaken:awaken?{attack:round(.12+.01*awaken),hp:round(.1+.005*(awaken-1))}:{attack:0,hp:0}};
+      mutation:mutation>0,awakened:awaken>0,awaken:{attack:0,hp:0},
+      // Biến Thân (docs/GAME_DESIGN.md §2.4, Codex round 4): once a battle, pressed by the player when HP ≤ 50% or after
+      // the second ultimate; for its owner's next turns Công +25% (rank 1) → +40% (rank 10) and 15% less damage taken,
+      // immune to new stun/freeze; afterwards +10% Công to the end (it replaces the bonus, never adds). Level 400 +
+      // evolution 5: 4 turns and +15% afterwards. Not in normalized play (Chuẩn Hóa, local duel, friendly fights).
+      transform:awaken&&!normalized?{turns:save.level>=400&&evolution>=5?4:3,attack:round(.25+(awaken-1)*.15/9),reduce:.15,after:save.level>=400&&evolution>=5?.15:.1}:null};
     // Hiro's traveller's edge: sword gems +20% (balance-sim: geared Hiro wins about half of chapter bosses at the
     // recommended level). Normalized play (local PvP, practice) keeps both sides even.
     if(key==='novice'){if(!normalized)kit.sword=1.2;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
@@ -188,7 +195,7 @@
       if(!kit.mutation)return [];
       return {novice:()=>[['Hồi',pct(kit.regen),' HP/lượt']],fire:()=>[['Thiêu đốt',vi(kit.burn.base),'/lượt'],['Thời gian',String(kit.burn.turns),' lượt']],ice:()=>[['Giáp',pct(kit.mutationArmor),' HP']],earth:()=>[['Giáp',pct(kit.mutationArmor),' HP']],lightning:()=>[['Hút',String(kit.drain),' năng lượng']],shadow:()=>[['Tàn ảnh',String(kit.echo),' sát thương']]}[k]();
     }
-    return kit.awakened?[['Công','+'+pct(kit.awaken.attack),''],['HP','+'+pct(kit.awaken.hp),'']]:[];
+    return kit.transform?[['Công','+'+pct(kit.transform.attack),''],['Lượt',String(kit.transform.turns),''],['Dư âm','+'+pct(kit.transform.after),' Công']]:[];
   }
   function skillDescription(kit,slot){
     const k=kit.key;
@@ -207,7 +214,7 @@
       return {novice:()=>`Mỗi lượt hồi ${pct(kit.regen)} HP tối đa.`,fire:()=>`Sau tuyệt kỹ, thiêu đốt địch ${kit.burn.turns} lượt, mỗi lượt ${vi(kit.burn.base)} sát thương cơ bản.`,ice:()=>`Sau tuyệt kỹ, nhận thêm giáp bằng ${pct(kit.mutationArmor)} HP tối đa.`,
         earth:()=>`Rễ cây hóa giáp: sau tuyệt kỹ nhận giáp bằng ${pct(kit.mutationArmor)} HP tối đa.`,lightning:()=>`Sau tuyệt kỹ, hút ${kit.drain} năng lượng của địch và hồi ${kit.energyReturn} năng lượng.`,shadow:()=>`Sau tuyệt kỹ, tàn ảnh chém thêm ${kit.echo} sát thương cơ bản.`}[k]();
     }
-    return kit.awakened?`Thức tỉnh chân thân: Công +${pct(kit.awaken.attack)}, HP +${pct(kit.awaken.hp)} toàn trận.`:'Thức tỉnh chân thân, tăng Công và HP toàn trận.';
+    return kit.transform?`Biến Thân một lần mỗi trận (bấm khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai, không tốn lượt): ${kit.transform.turns} lượt Công +${pct(kit.transform.attack)}, giảm 15% sát thương nhận, miễn choáng và đóng băng mới; sau đó giữ Công +${pct(kit.transform.after)} tới hết trận. Cấp 400 + tiến hóa 5: 4 lượt, dư âm +15%.`:'Biến Thân một lần mỗi trận: Công tăng mạnh, giảm sát thương nhận và miễn choáng trong vài lượt, sau đó giữ một phần Công tới hết trận.';
   }
   function skillText(key,h,slot){
     check(HEROES[key]&&int(slot,0,3),'Kỹ năng không hợp lệ.');
