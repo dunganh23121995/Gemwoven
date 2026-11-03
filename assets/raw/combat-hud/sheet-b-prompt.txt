@@ -1,0 +1,7 @@
+Create a 2-column by 3-row sheet of six separate UI sprites. Match the attached Forge and UI-kit: hand-painted warm wood, aged brass rivets, brown stitched leather, soft upper-left lighting, front orthographic view.
+
+Reading order: top-left frame corner, top-right corner, bottom-left corner, bottom-right corner, a square leather board backing with a narrow brass rim, one square recessed dark-teal gem cell with softly rounded corners. Corners must connect cleanly to straight wooden rails. The backing needs a quiet stretchable center. The cell must remain dark enough for existing colorful gems.
+
+No gems, text, characters or scenery. Flat #FF00FF background and empty cutouts; generous gutters and padding, no clipped edges.
+
+Reference images: image 1 is the approved Forge screen (style), image 2 is the shared UI kit sheet (materials).

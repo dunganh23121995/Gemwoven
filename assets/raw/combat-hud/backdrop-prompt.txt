@@ -1,0 +1,3 @@
+Create a wide 16:9 background painting for the area around Gemwoven's desktop combat screen, matching the attached approved Forge screen: warm hand-painted fantasy game art.
+
+Subject: the inside wall of a cosy wooden tavern war-room seen straight on: dark weathered horizontal wooden planks with a few brass nails and iron straps, soft warm lantern light pooling near the top centre, deep shadowed vignette toward all edges and corners. Calm, low contrast and dark overall (it sits behind wooden UI panels, so it must stay quiet and never compete). No characters, no furniture, no windows, no text, no symbols, no UI.

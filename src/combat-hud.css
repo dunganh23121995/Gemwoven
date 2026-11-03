@@ -1,0 +1,244 @@
+/* Combat HUD (src/combat-hud.js, assets/raw/combat-hud: Codex mockups, review and sheets). Drawn wood, leather,
+   brass and parchment pieces from assets/combat-hud and the shared UI kit (assets/gemwoven/ui-kit); words and
+   numbers stay HTML on top. Layout and light only: no rule, timing or sound depends on anything here. */
+html.chud{--hud-ink:#3b2412;--hud-cream:#fff1cf;--fc:52px;--ft:12px}
+html.chud body{background:#14110d}
+.chud-backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,transparent 35%,#0b0705d9 100%),#1d130b url(assets/combat-hud/backdrop.webp) center top/cover no-repeat}
+html.chud .app{max-width:520px;padding:6px 6px max(8px,env(safe-area-inset-bottom));margin:0 auto;border:0;border-radius:0;background:none;box-shadow:none}
+html.chud .app-header{display:block;height:50px;max-width:none;margin:0 0 6px;padding:0;border:0}
+html.chud .app-header>.brand,html.chud .app-header>.antique-flourish,html.chud .header-tools,html.chud .antique-corner,
+html.chud .board-heading,html.chud .tile-legend,html.chud .board-footer{display:none!important}
+
+/* ---- Top bar: wooden rail with the back plate, stage tag, journey medal and settings medallion ---------------- */
+.chud-bar{position:relative;display:flex;align-items:center;gap:6px;height:100%;padding:0 10px 2px 8px;
+  border-image:url(assets/combat-hud/rail.webp) 0 150 fill/0 60px stretch;filter:drop-shadow(0 3px 4px #0009)}
+.chud-bar>*{flex:none}
+.chud-back{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:82px;height:38px;padding:0 6px 2px 4px;border:0;
+  background:url(assets/gemwoven/ui-kit/btn-gold.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:800 16px/1 Cambria,Georgia,serif;text-decoration:none;text-shadow:0 1px #fff3c6}
+.chud-back:active{background-image:url(assets/gemwoven/ui-kit/btn-gold-down.webp)}
+.chud-back-arrow{width:21px;height:17px;background:url(assets/combat-hud/arrow.webp) center/contain no-repeat;filter:brightness(.55) sepia(.6) drop-shadow(0 1px #fff3c6)}
+.chud-stage{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;min-width:84px;max-width:132px;height:34px;padding:1px 14px 0;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:800 15px/1 Cambria,Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chud-stage:empty{display:none}
+.chud-score{display:inline-flex;align-items:center;gap:0;height:40px;padding:0;border:0;background:none;cursor:pointer;color:var(--hud-cream)}
+.chud-medal{position:relative;z-index:1;width:40px;height:35px;background:url(assets/gemwoven/ui-kit/medal.webp) center/contain no-repeat;filter:drop-shadow(0 2px 2px #0008)}
+.chud-medal::after{content:"";position:absolute;left:31%;top:17%;width:38%;height:40%;background:url(assets/combat-hud/star.webp) center/contain no-repeat}
+html.chud .chud-score .score{display:flex;align-items:center;justify-content:center;min-width:52px;height:26px;margin-left:-8px;padding:0 9px 0 12px;
+  background:url(assets/gemwoven/ui-kit/badge-leather.webp) center/100% 100% no-repeat}
+html.chud .chud-score .score span{display:none}
+html.chud .chud-score .score strong{margin:0;font:800 14px/1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000}
+.chud-gear{width:44px;height:44px;margin-left:auto;padding:0;border:0;border-radius:50%;background:url(assets/gemwoven/ui-kit/icon-emblem-gear.webp) center/contain no-repeat;cursor:pointer;filter:drop-shadow(0 2px 3px #0009)}
+.chud-gear[aria-expanded="true"],.chud-gear:active{filter:drop-shadow(0 0 6px #ffd677) brightness(1.08)}
+.chud-bar :focus-visible,.chud-strip :focus-visible{outline:none;box-shadow:none;filter:drop-shadow(0 0 5px #ffd36b) drop-shadow(0 0 2px #fff0b8)}
+html.chud .hint-button:focus,html.chud .chud-ult:focus{outline:none;box-shadow:none}
+
+/* ---- Settings sheet and short notes: parchment with a plank title ---------------------------------------------- */
+.chud-sheet,.chud-note{position:absolute;z-index:80;border:18px solid transparent;border-image:url(assets/gemwoven/ui-kit/parchment.webp) 44 fill/18px stretch;color:var(--hud-ink);filter:drop-shadow(0 8px 18px #000b)}
+.chud-sheet[hidden],.chud-note[hidden]{display:none}
+.chud-sheet{width:min(334px,calc(100vw - 24px));padding:22px 2px 2px;display:grid;gap:7px}
+.chud-sheet-title{position:absolute;left:50%;top:-30px;translate:-50% 0;display:flex;align-items:center;justify-content:center;width:132px;height:38px;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;font:800 16px/1 Cambria,Georgia,serif;color:var(--hud-ink)}
+.chud-row{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:8px;min-height:50px;padding:0 12px 0 10px;
+  background:url(assets/gemwoven/ui-kit/setrow.webp) center/100% 100% no-repeat;cursor:pointer}
+.chud-row[hidden]{display:none}
+.chud-row-label{font:700 16px/1.1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000}
+.chud-row-icon{width:28px;height:28px;background:center/contain no-repeat}
+.chud-row-speaker .chud-row-icon{background-image:url(assets/gemwoven/ui-kit/icon-speaker.webp)}
+.chud-row-sparkle .chud-row-icon{background-image:url(assets/gemwoven/ui-kit/icon-sparkle.webp)}
+.chud-row-music .chud-row-icon{background-image:url(assets/gemwoven/ui-kit/icon-music.webp)}
+.chud-row-help .chud-row-icon{background-image:url(assets/gemwoven/plaza/ui/i-help.webp)}
+html.chud .chud-row .icon-button{position:relative;width:62px;height:30px;min-width:0;padding:0;border:0;border-radius:15px;box-shadow:none;color:transparent;font-size:0;
+  background:url(assets/gemwoven/ui-kit/toggle-off.webp) center/100% 100% no-repeat}
+html.chud .chud-row .icon-button>*{display:none!important}
+html.chud .chud-row #soundBtn[aria-pressed="true"],html.chud .chud-row #motionBtn[aria-pressed="false"]{background-image:url(assets/gemwoven/ui-kit/toggle-on.webp)}
+html.chud .chud-row #helpBtn,html.chud .chud-row #audioSettingsBtn{width:36px;height:36px;border-radius:50%;background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat}
+html.chud .chud-row #helpBtn::after,html.chud .chud-row #audioSettingsBtn::after{content:"";position:absolute;inset:10px 9px 10px 12px;background:url(assets/gemwoven/plaza/ui/arrow.webp) center/contain no-repeat}
+.chud-note{width:236px;padding:2px 4px;display:grid;gap:4px;text-align:center}
+.chud-note b{font:800 15px/1.2 Cambria,Georgia,serif}
+.chud-note span{font:600 14px/1.35 Cambria,Georgia,serif;color:#4a3420}
+
+/* ---- Battlefield in a wooden frame with brass corners ------------------------------------------------------- */
+html.chud .battle-card{position:relative;isolation:isolate;padding:calc(var(--ft) - 1px);border:0;border-radius:6px;background:#2b1d10;box-shadow:0 6px 16px #000a}
+html.chud .battle-card::before,html.chud .battle-card::after{display:none}
+html.chud .battle-card .scene{border-radius:3px;height:var(--scene-h,320px);min-height:200px}
+.chud-frame{position:absolute;inset:0;z-index:8;pointer-events:none}
+.chud-frame i{position:absolute;background:center/100% 100% no-repeat}
+.chud-c{width:var(--fc);height:calc(var(--fc) * .91);z-index:1;filter:drop-shadow(0 1px 1px #0007)}
+.chud-c{--fade:linear-gradient(var(--fx),#000 74%,transparent 98%),linear-gradient(var(--fy),#000 74%,transparent 98%);-webkit-mask:var(--fade);-webkit-mask-composite:source-in;mask:var(--fade);mask-composite:intersect}
+.chud-c.tl{--fx:to right;--fy:to bottom;left:0;top:0;background-image:url(assets/combat-hud/corner-tl.webp)}
+.chud-c.tr{--fx:to left;--fy:to bottom;right:0;top:0;background-image:url(assets/combat-hud/corner-tr.webp)}
+.chud-c.bl{--fx:to right;--fy:to top;left:0;bottom:0;height:calc(var(--fc) * .8675);background-image:url(assets/combat-hud/corner-bl.webp)}
+.chud-c.br{--fx:to left;--fy:to top;right:0;bottom:0;height:calc(var(--fc) * .87);background-image:url(assets/combat-hud/corner-br.webp)}
+.chud-e.t,.chud-e.b{left:calc(var(--fc) * .6);right:calc(var(--fc) * .6)}
+.chud-e.l,.chud-e.r{top:calc(var(--fc) * .55);bottom:calc(var(--fc) * .55)}
+.chud-e.t{top:calc(var(--fc) * .005);height:calc(var(--fc) * .228);background-image:url(assets/combat-hud/edge-top.webp)}
+.chud-e.b{bottom:calc(var(--fc) * .008);height:calc(var(--fc) * .21);background-image:url(assets/combat-hud/edge-bottom.webp)}
+.chud-e.l{left:calc(var(--fc) * .017);width:calc(var(--fc) * .222);background-image:url(assets/combat-hud/edge-left.webp)}
+.chud-e.r{right:calc(var(--fc) * .022);width:calc(var(--fc) * .222);background-image:url(assets/combat-hud/edge-right.webp)}
+html.chud .arena-stage{display:none}
+
+/* ---- Fighters' labels: leather name tag, heart and spark gauges in brass troughs ------------------------------ */
+html.chud .actor-hud{display:grid;justify-items:center;width:124px;filter:drop-shadow(0 2px 2px #000a)}
+html.chud .actor-hud .vital-name{grid-row:1;display:flex;align-items:center;justify-content:center;max-width:116px;height:23px;margin:0 0 2px;padding:0 13px 1px;
+  border:0;background:url(assets/gemwoven/ui-kit/badge-leather.webp) center/100% 100% no-repeat}
+html.chud .actor-hud .vital-name strong{font:800 12.5px/1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000;max-width:94px;overflow:hidden;text-overflow:ellipsis}
+html.chud .actor-hud .health-label{grid-row:2;grid-column:1;position:relative;z-index:2;width:calc(100% - 14px);margin:0 0 0 14px;justify-content:center;
+  font:800 12px/15px Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
+html.chud .actor-hud .shield-label{position:absolute;left:100%;margin-left:3px;padding:1px 4px;border-radius:7px;background:#173048e0;box-shadow:0 0 0 1px #9fd3f088;font-size:9px}
+html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{position:relative;display:grid;overflow:visible;width:calc(100% - 14px);margin:0 0 0 14px;border:0;border-radius:0;box-shadow:none;
+  background:url(assets/gemwoven/ui-kit/progress.webp) center/100% 100% no-repeat}
+html.chud .actor-hud .health-track{grid-row:2;grid-column:1;height:16px;padding:3.5px 8px 3.5px 6px}
+html.chud .actor-hud .head-rage-track{grid-row:3;height:14px;margin-top:3px;padding:3px 8px 3px 6px}
+html.chud .actor-hud .health-track>i,html.chud .actor-hud .head-rage-track>i:not(.chud-rage-num){grid-area:1/1;position:static;display:block;height:100%;min-width:0;max-width:100%;border-radius:2px;box-shadow:none}
+html.chud .actor-hud .health-track>i:not(.health-trail){background:#20a64b url(assets/gemwoven/ui-kit/progress-fill.webp) left center/100% 100% no-repeat}
+html.chud .actor-hud .health-track>i.health-trail{background:#e9c978}
+html.chud .actor-hud .head-rage-track>i:not(.chud-rage-num){background:#f4b52c url(assets/combat-hud/fill-amber.webp) left center/100% 100% no-repeat}
+html.chud .actor-hud .health-track::before,html.chud .actor-hud .head-rage-track::before{content:"";position:absolute;z-index:3;left:-16px;top:50%;translate:0 -50%;width:26px;height:22px;background:center/contain no-repeat}
+html.chud .actor-hud .health-track::before{background-image:url(assets/combat-hud/cap-heart.webp)}
+html.chud .actor-hud .head-rage-track::before{width:22px;height:19px;left:-14px;background-image:url(assets/combat-hud/cap-spark.webp)}
+html.chud .actor-hud .chud-rage-num{grid-area:1/1;z-index:2;align-self:center;justify-self:center;font:800 10px/1 Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
+html.chud .actor-hud.is-rage-full .head-rage-track>i:not(.chud-rage-num){box-shadow:0 0 6px #ffc14d,0 0 2px #fff4c4}
+html.chud .actor-hud .status-row{grid-row:4}
+
+/* ---- Action strip: stitched leather plank with the turn ribbon, the ultimate medallion and the hint ---------- */
+html.chud .puzzle-card{overflow:visible;display:flex;flex-direction:column;align-items:center;gap:0;padding:0;border:0;background:none;box-shadow:none}
+html.chud .puzzle-card::before,html.chud .puzzle-card::after{display:none}
+html.chud .board-toolbar.chud-strip{position:relative;z-index:9;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;width:100%;height:64px;min-height:0;margin:5px 0 4px;padding:0 14px 2px 12px;gap:6px;
+  border-image:url(assets/combat-hud/strip.webp) 0 150 fill/0 50px stretch;filter:drop-shadow(0 3px 5px #0009)}
+html.chud .turn-chip{justify-self:start;display:flex;align-items:center;justify-content:center;gap:5px;width:132px;height:36px;padding:0 18px 2px;border:0;border-radius:0;box-shadow:none;
+  background:url(assets/gemwoven/ui-kit/ribbon-info.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:800 14.5px/1 Cambria,Georgia,serif;white-space:nowrap}
+html.chud .turn-chip i{display:block;flex:none;width:16px;height:16px;margin:0;border-radius:0;background:url(assets/gemwoven/ui-kit/icon-swords.webp) center/contain no-repeat;box-shadow:none;animation:none}
+html.chud .turn-chip.busy{background-image:url(assets/gemwoven/ui-kit/ribbon-done.webp)}
+html.chud .turn-chip.enemy{background-image:url(assets/gemwoven/ui-kit/ribbon-warn.webp);color:#5a1d12}
+html.chud .turn-chip.enemy i{background-image:url(assets/gemwoven/ui-kit/icon-skull.webp)}
+html.chud #comboLabel{position:absolute;left:24px;bottom:1px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 10.5px/12px Cambria,Georgia,serif;color:#ffe2a0;text-shadow:0 1px 2px #000;pointer-events:none}
+html.chud #comboLabel.is-idle{visibility:hidden}
+html.chud .hint-button{justify-self:end;position:relative;width:46px;height:46px;min-height:0;padding:0;border:0;border-radius:50%;font-size:0;color:transparent;
+  background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat;filter:drop-shadow(0 2px 2px #0008);cursor:pointer}
+html.chud .hint-button>*{display:none}
+html.chud .hint-button::after{content:"";position:absolute;inset:8px 13px 9px;background:url(assets/combat-hud/bulb.webp) center/contain no-repeat}
+html.chud .hint-button:disabled{filter:grayscale(.7) brightness(.75);cursor:default}
+html.chud .hint-button:not(:disabled):active{scale:.94}
+
+/* The ultimate medallion: a gauge, not a button to cast. Its ring fills with nộ; at 100 it blazes, and the
+   skill fires by itself (tapping it explains that). */
+.chud-ult{position:relative;justify-self:center;display:grid;justify-items:center;width:84px;height:76px;margin-top:-14px;padding:0;border:0;background:none;cursor:pointer;color:var(--hud-ink);--energy:0}
+.chud-ult-art{position:relative;width:62px;height:62px}
+.chud-ult-art i{position:absolute;inset:0;background:center/contain no-repeat;pointer-events:none}
+.chud-ult-art .chud-ult-disc{inset:3px!important;background-image:url(assets/combat-hud/ult-disc.webp)}
+.chud-ult-art .chud-ult-emblem{inset:14px!important;filter:saturate(.55) brightness(.78) drop-shadow(0 1px 1px #000a);transition:filter .3s}
+.chud-ult-art .chud-ult-frame{background-image:url(assets/combat-hud/ult-frame.webp);filter:drop-shadow(0 2px 2px #0009)}
+.chud-ult-art .chud-ult-ring{inset:-2px!important;background-image:url(assets/combat-hud/ult-ring.webp);
+  -webkit-mask:conic-gradient(#000 calc(var(--energy) * 1%),transparent 0);mask:conic-gradient(#000 calc(var(--energy) * 1%),transparent 0);transition:opacity .2s}
+.chud-ult-art .chud-ult-halo{inset:-9px!important;background-image:url(assets/combat-hud/ult-halo.webp);opacity:0;transition:opacity .25s}
+.chud-ult[data-element="fire"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-fire.webp)}
+.chud-ult[data-element="ice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-ice.webp)}
+.chud-ult[data-element="earth"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-earth.webp)}
+.chud-ult[data-element="lightning"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-lightning.webp)}
+.chud-ult[data-element="shadow"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-shadow.webp)}
+.chud-ult[data-element="novice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-novice.webp)}
+.chud-ult-label{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:84px;height:25px;margin-top:-11px;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;font:800 13.5px/1 Cambria,Georgia,serif;white-space:nowrap}
+.chud-ult-auto{position:absolute;z-index:3;left:50%;top:-8px;translate:-50% 0;padding:1px 7px;border-radius:8px;background:#4a2410e8;box-shadow:0 0 0 1px #c99a50;color:#f3dcab;font:700 12px/14px Cambria,Georgia,serif;white-space:nowrap;opacity:.92;transition:color .2s,box-shadow .2s}
+.chud-ult.is-full .chud-ult-art .chud-ult-emblem{filter:saturate(1.1) brightness(1.08) drop-shadow(0 0 5px #ffd36b)}
+.chud-ult.is-full .chud-ult-art .chud-ult-halo{opacity:1;animation:chud-ult-blaze 1.3s ease-in-out infinite alternate}
+.chud-ult.is-full .chud-ult-auto{opacity:1;color:#fff0b8;background:#7a3410f0;box-shadow:0 0 0 1px #ffd36b,0 0 8px #ffb84a}
+.chud-ult.is-full .chud-ult-label{filter:drop-shadow(0 0 4px #ffd36b)}
+@keyframes chud-ult-blaze{from{opacity:.65;scale:.96}to{opacity:1;scale:1.05}}
+body.reduced-motion .chud-ult-art .chud-ult-halo{animation:none!important}
+.chud-ult:focus-visible{outline:none}.chud-ult:focus-visible .chud-ult-art{outline:2px solid #ffe7a0;outline-offset:3px;border-radius:50%}
+
+/* ---- Board: the same wooden frame over stitched leather, with painted recessed cells (gems stay as drawn) ----- */
+html.chud .board-frame{position:relative;width:var(--bf,378px);max-width:100%;padding:13px;border:0;border-radius:6px;
+  background:url(assets/combat-hud/board-back.webp) center/100% 100% no-repeat,#3a2414;box-shadow:0 6px 16px #000a}
+html.chud .board-frame::before{display:none}
+html.chud .board-frame.enemy-turn{box-shadow:0 6px 16px #000a,0 0 0 2px #c0583f88,0 0 18px #c0583f55}
+html.chud .board-frame[data-combo-chain]{box-shadow:0 6px 16px #000a,0 0 16px color-mix(in srgb,var(--combo-color) 45%,transparent)}
+html.chud .board{border-radius:3px;background:#0d2a2e url(assets/combat-hud/cell-in.webp) 0 0/12.5% 12.5%;box-shadow:inset 0 2px 8px #000a,0 0 0 1px #2a170a}
+html.chud .board-frame .board-effects{inset:13px;width:calc(100% - 26px);height:calc(100% - 26px)}
+html.chud .gem{background:none;box-shadow:none}
+html.chud .gem::after{display:none}
+html.chud .special .gem{background:radial-gradient(ellipse,#eace7930,transparent 70%)}
+html.chud .board-frame .chud-frame{z-index:6}
+
+/* ---- Biến Thân: a gold plate inside the battlefield, clear of the frame -------------------------------------- */
+html.chud .transform-btn{left:10px;bottom:7px;min-width:118px;min-height:44px;padding:4px 13px 6px;border:0;border-radius:0;
+  background:url(assets/gemwoven/ui-kit/btn-gold.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:900 15px/1.05 Cambria,Georgia,serif;text-shadow:0 1px #fff3c6;
+  box-shadow:none;filter:drop-shadow(0 3px 4px #000a);animation:chud-transform-call 1.6s ease-in-out infinite}
+html.chud .transform-btn small{font:700 10.5px/1.1 Cambria,Georgia,serif;color:#5a3a1c}
+html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:50px;height:50px;min-width:0;min-height:0;padding:0;border-radius:50%;
+  background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat;box-shadow:none;filter:drop-shadow(0 0 7px #ffc46a)}
+html.chud .transform-btn.is-active .tf-count,html.chud .transform-btn.is-after .tf-count{font:900 20px/1 Cambria,Georgia,serif;color:var(--hud-ink)}
+html.chud .transform-btn.is-after .tf-count{font-size:13px}
+html.chud .transform-btn:disabled{animation:none}
+@keyframes chud-transform-call{50%{filter:drop-shadow(0 3px 4px #000a) drop-shadow(0 0 10px #ffcf6a)}}
+body.reduced-motion .transform-btn{animation:none!important}
+
+/* ---- Phone portrait sizes: the board takes the width, the battlefield the rest ------------------------------- */
+html.chud .app{--bf:min(calc(100vw - 12px),calc(100svh - 50px - 6px - 73px - 210px - 22px),470px);
+  --scene-h:clamp(200px,calc(100svh - 50px - 6px - 73px - var(--bf) - 2 * var(--ft) - 20px),420px)}
+html.chud .game-layout{gap:0}
+@media (max-width:370px){
+  html.chud{--fc:46px;--ft:11px}
+  .chud-back{width:70px}.chud-stage{min-width:72px;padding:1px 10px 0;font-size:14px}
+  html.chud .chud-score .score{min-width:44px}
+  html.chud .turn-chip{width:118px;font-size:13.5px}
+}
+
+/* ---- Landscape screens: battle left, board right, on the plank wall ---------------------------------------- */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud{--fc:70px;--ft:16px}
+  html.chud .app{display:flex;flex-direction:column;width:100%;max-width:2200px;height:100vh;height:100dvh;padding:10px 24px 16px;
+    --bf:min(calc(100dvh - 62px - 10px - 26px - 84px),46vw,880px)}
+  html.chud .app-header{flex:none;height:62px;margin:0 0 10px}
+  .chud-bar{gap:12px;padding:0 18px 3px 14px}
+  .chud-back{width:112px;height:48px;font-size:20px}
+  .chud-back-arrow{width:25px;height:20px}
+  .chud-stage{min-width:136px;max-width:300px;height:48px;font-size:23px}
+  .chud-medal{width:50px;height:44px}
+  html.chud .chud-score .score{min-width:64px;height:32px}
+  html.chud .chud-score .score strong{font-size:18px}
+  .chud-gear{width:54px;height:54px}
+  .chud-bar{border-image-width:0 76px}
+  html.chud .game-layout{flex:1;min-height:0;display:flex;flex-direction:row;align-items:stretch;justify-content:center;max-width:none;gap:20px}
+  html.chud .adventure-column{flex:1 1 auto;min-width:0;max-width:calc(var(--bf) * 1.9);display:flex;flex-direction:column}
+  html.chud .battle-card{flex:1;min-height:0;display:flex;flex-direction:column}
+  html.chud .battle-card .scene{flex:1;height:auto;min-height:0}
+  html.chud .puzzle-card{flex:none;width:var(--bf);justify-content:center}
+  html.chud .board-toolbar.chud-strip{height:100px;margin:0 0 8px;padding:0 22px 2px 20px;border-image-width:0 70px}
+  html.chud .turn-chip{width:212px;height:56px;padding:0 26px 3px;font-size:22px;gap:8px}
+  html.chud .turn-chip i{width:26px;height:26px}
+  html.chud #comboLabel{left:30px;bottom:2px;font-size:12.5px;max-width:220px}
+  html.chud .hint-button{width:68px;height:68px}
+  html.chud .hint-button::after{inset:12px 19px 13px}
+  /* Landscape: the medallion and its plaque side by side, as in the mockup. */
+  .chud-ult{display:flex;align-items:center;width:auto;height:94px;margin:0}
+  .chud-ult-art{z-index:1;width:94px;height:94px}
+  .chud-ult-art .chud-ult-emblem{inset:21px!important}
+  .chud-ult-art .chud-ult-halo{inset:-10px!important}
+  .chud-ult-label{width:150px;height:46px;margin:0 0 0 -16px;padding-left:12px;font-size:22px}
+  .chud-ult-auto{left:auto;right:8px;top:-2px;translate:none;font-size:14px;line-height:17px}
+  html.chud .board-frame{padding:17px}
+  html.chud .board-frame .board-effects{inset:17px;width:calc(100% - 34px);height:calc(100% - 34px)}
+  /* The fighters grow with the stage (their phone sizes, measured against its height). */
+  html.chud .scene .hero-actor{--actor-size:min(45cqh,39cqw)}
+  html.chud .scene .enemy-actor{--actor-size:min(41cqh,36cqw)}
+  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(53cqh,47cqw)}
+  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(45cqh,39cqw)}
+  html.chud .scene .actor.boss{--actor-size:min(70cqh,62cqw)}
+  html.chud .actor-hud{width:262px}
+  html.chud .actor-hud .vital-name{max-width:262px;height:44px;padding:0 26px 1px;margin-bottom:4px}
+  html.chud .actor-hud .vital-name strong{font-size:23px;max-width:210px}
+  html.chud .actor-hud .health-label{font-size:16px;line-height:24px;width:calc(100% - 30px);margin-left:30px}
+  html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{width:calc(100% - 30px);margin-left:30px}
+  html.chud .actor-hud .health-track{height:27px;padding:6px 14px 6px 10px}
+  html.chud .actor-hud .head-rage-track{height:22px;margin-top:5px;padding:5px 14px 5px 10px}
+  html.chud .actor-hud .chud-rage-num{font-size:14px}
+  html.chud .actor-hud .health-track::before{width:44px;height:37px;left:-30px}
+  html.chud .actor-hud .head-rage-track::before{width:38px;height:32px;left:-27px}
+  html.chud .actor-hud .shield-label{font-size:14px}
+  html.chud .transform-btn{left:22px;bottom:14px;min-width:160px;min-height:60px;font-size:18px}
+  html.chud .transform-btn small{font-size:12.5px}
+  html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:66px;height:66px;min-width:0;min-height:0}
+  .chud-sheet{width:340px}
+}

@@ -1,0 +1,17 @@
+Create one polished portrait combat UI mockup for Gemwoven, designed for a 390×844 phone viewport, rendered at 1170×2532.
+
+Use the supplied combat screenshot for content and the approved Forge mockup and UI kit for art direction. Preserve Mika’s existing fiery fox-warrior design, the blue-white snow owl enemy, the snowy floating-island battlefield, and the five existing gem designs. Preserve the exact 8×8 board structure: 64 distinct cells, eight rows and eight columns.
+
+Match the Forge’s warm hand-painted wood, stitched leather, aged brass and parchment, with tactile edges, restrained highlights and readable silhouettes. Replace the thin gold filigree, smooth rounded panels and generic controls with illustrated components.
+
+Layout: compact top controls, battlefield above, a slim action strip, then a large square gem board. Keep every row and all controls visible without scrolling. Retain generous character visibility. Use a thin wooden battlefield frame with brass corner fittings and a dark teal leather board with subtly painted recessed cells. Keep decoration away from gem silhouettes.
+
+Top controls: an illustrated brass back button labeled “Về”, a parchment stage tag labeled “Ải 1”, and one brass settings medallion. Omit the large “Mầm Phép” heading. Settings contain sound, effects and help; do not display these extra labels in the main view.
+
+Show compact illustrated health and energy gauges with distinct heart and spark symbols. Hide numeric health details from the main view. Use a small parchment ribbon labeled “Lượt bạn” and an icon-only hint medallion. Move gem explanations, tutorials and journey-score details behind one-tap controls; omit their persistent text rows.
+
+Depict Mika at FULL ENERGY. Include a dedicated, clearly tappable ultimate medallion with original fiery fox-and-blade artwork, a complete glowing amber energy ring and the short Vietnamese label “Tuyệt kỹ”. Give it a fixed position in the action strip, clear of the battlefield and board; do not cover any gem cells.
+
+Use only essential, correctly accented Vietnamese labels. Main labels must remain readable at actual phone size; touch controls approximately 44×44 logical pixels. No English text, no “NO FX”, no tiny uppercase paragraphs, no generic flat CSS-looking boxes. Deliver one cohesive finished game screen.
+
+Reference images: image 1 is the current combat screen (content to keep: Mika, the snow owl, the snowy battlefield, the 8x8 board and its five gems: sword, heart, purple crystal, snowflake, winged shield). Image 2 is the approved Forge screen (art direction). Image 3 is the shared UI kit sheet (reuse its brass round buttons, parchment ribbons, leather plaques, progress trough and fill, medal shapes).

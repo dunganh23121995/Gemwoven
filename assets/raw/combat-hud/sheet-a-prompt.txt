@@ -1,0 +1,7 @@
+Create a production sprite sheet for Gemwoven's combat HUD. Match the attached approved Forge and UI-kit references: polished hand-painted fantasy game art, warm carved wood, aged brass, stitched brown leather, soft upper-left highlights. Front view, orthographic, no perspective.
+
+Use four separate horizontal rows: a plain wooden header rail; a horizontal wooden frame rail; a vertical wooden frame rail lying vertically in its own row; a wide stitched leather action panel with a thin wooden rim. Keep straight stretchable middle sections and undecorated text areas. No text, symbols, characters, scenery or foliage.
+
+Solid uniform #FF00FF background, including all empty areas. Separate every sprite with generous magenta gutters; nothing touching or cropped.
+
+Reference images: image 1 is the approved Forge screen (style), image 2 is the shared UI kit sheet (materials).

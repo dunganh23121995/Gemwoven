@@ -37,7 +37,7 @@ async function run(hero,mode='campaign',index=1){
   w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
   w.HTMLElement.prototype.animate=function(){return {finished:Promise.resolve(),cancel(){},finish(){},effect:{target:this}};};
   const files=['audio-settings','hero-kits','sprite-runtime','combo-v4','opponent-ai','opponent-turn','board-sequence','combat-v3','live-combat','antique-trim','combat-stage','adventure-effects','noct-audio','recorded-voices','restoration','cinematic','scene-ambience','shadow-combat','hero-departures','cast-redesign','self-buffs','yuki-ultimate','mika-ultimate','foe-skills'];
-  const extensions=read('src/gemwoven/boss-chapters.js')+'\n'+read('src/gemwoven/boss-tactics.js')+'\n'+read('src/gemwoven/world.js')+'\n'+read('src/gemwoven/progression.js')+'\nconst ART='+JSON.stringify(art())+';\n'+files.map(f=>read('src/'+f+'.js')).join('\n')+'\n'+read('src/progression-combat.js')+'\n'+read('src/expedition-combat.js');
+  const extensions=read('src/gemwoven/boss-chapters.js')+'\n'+read('src/gemwoven/boss-tactics.js')+'\n'+read('src/gemwoven/world.js')+'\n'+read('src/gemwoven/progression.js')+'\nconst ART='+JSON.stringify(art())+';\n'+files.map(f=>read('src/'+f+'.js')).join('\n')+'\n'+read('src/progression-combat.js')+'\n'+read('src/expedition-combat.js')+'\n'+read('src/combat-hud.js');
   w.eval(read('src/game.js').replace('/* GAME_EXTENSIONS */',extensions));
   const qa=w.gameQA;assert.ok(qa);qa.setReduced(true);d.getElementById('soundBtn').click();
   assert.equal(d.getElementById('volume-music').value,'37','Combat uses the same audio settings as Home');assert.equal(d.getElementById('audioSettingsBtn').hidden,true);

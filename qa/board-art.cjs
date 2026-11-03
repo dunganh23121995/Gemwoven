@@ -12,19 +12,21 @@ const {chromium}=require(path.join(require('node:os').tmpdir(),'minipuzzle-qa/no
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.goto(pathToFileURL(path.resolve(__dirname,'../Game.html')).href+'?qa');
     if(await page.locator('#heroList').isVisible())await page.locator('.gem-choice.chosen').click();await page.locator('#startBtn').click();
-    assert.equal(await page.locator('#motionBtn').innerText(),'NO FX');
+    // The effects switch lives in the settings sheet behind the gear (src/combat-hud.js).
+    await page.locator('#hudSettingsBtn').click();
+    assert.equal(await page.locator('#motionBtn').getAttribute('aria-label'),'Hiệu ứng');
     assert.equal(await page.locator('#motionBtn').getAttribute('aria-pressed'),'false');
     assert.equal(await page.locator('body').evaluate(e=>e.classList.contains('reduced-motion')),false);
     await page.locator('#motionBtn').click();
-    assert.equal(await page.locator('#motionBtn').innerText(),'NO FX');
     assert.equal(await page.locator('#motionBtn').getAttribute('aria-pressed'),'true');
-    assert.equal(await page.locator('#motionBtn').getAttribute('aria-label'),'NO FX');
+    assert.equal(await page.locator('#motionBtn').getAttribute('aria-label'),'Hiệu ứng');
     assert.equal(await page.locator('#combatEffects').evaluate(e=>getComputedStyle(e).display),'none');
     assert.equal(await page.locator('#boardEffects').evaluate(e=>getComputedStyle(e).display),'none');
     await page.locator('#motionBtn').click();
     assert.equal(await page.locator('#motionBtn').getAttribute('aria-pressed'),'false');
     assert.notEqual(await page.locator('#boardEffects').evaluate(e=>getComputedStyle(e).display),'none');
-    checks.push('Fast full FX is the startup default even with reduced-motion media; NO FX hides both effect layers and toggles back');
+    await page.keyboard.press('Escape');
+    checks.push('Fast full FX is the startup default even with reduced-motion media; the Hiệu ứng switch hides both effect layers and toggles back');
     await page.locator('#boardFrame').scrollIntoViewIfNeeded();
     for(let type=0;type<5;type++){
       await page.evaluate(type=>{

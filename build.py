@@ -513,6 +513,9 @@ extensions += '\n'+(root/'src/hero-forms-combat.js').read_text(encoding='utf-8')
 hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan','forms-hiro','forms-noct']
 extensions += '\n'+'\n'.join((root/f'src/{name}.js').read_text(encoding='utf-8') for name in hero_kit_files)
 css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for name in hero_kit_files)
+# The combat HUD's drawn layer (src/combat-hud.js): last, so it wraps every other update and restyles the shared controls.
+extensions += '\n'+(root/'src/combat-hud.js').read_text(encoding='utf-8')
+css += '\n'+(root/'src/combat-hud.css').read_text(encoding='utf-8')
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
 # Skill titles' face (Anton, OFL, subset to Latin and Vietnamese: assets/fonts/anton-vi.woff2)
 css = "@font-face{font-family:'Gemwoven Title';src:url(data:font/woff2;base64,"+base64.b64encode((root/'assets/fonts/anton-vi.woff2').read_bytes()).decode()+") format('woff2');font-display:block}\n"+css

@@ -1617,13 +1617,258 @@ body.reduced-motion .hiro-echo,body.reduced-motion .hiro-fx{display:none}
 .noct-moon.blood{mix-blend-mode:normal}
 /* The summon showcase (summon-showcase.js) plays the ultimate over the hub's own realm: no night or moon there. */
 html.showcase .noct-night,html.showcase .noct-moon{display:none}
+
+/* Combat HUD (src/combat-hud.js, assets/raw/combat-hud: Codex mockups, review and sheets). Drawn wood, leather,
+   brass and parchment pieces from assets/combat-hud and the shared UI kit (assets/gemwoven/ui-kit); words and
+   numbers stay HTML on top. Layout and light only: no rule, timing or sound depends on anything here. */
+html.chud{--hud-ink:#3b2412;--hud-cream:#fff1cf;--fc:52px;--ft:12px}
+html.chud body{background:#14110d}
+.chud-backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,transparent 35%,#0b0705d9 100%),#1d130b url(assets/combat-hud/backdrop.webp) center top/cover no-repeat}
+html.chud .app{max-width:520px;padding:6px 6px max(8px,env(safe-area-inset-bottom));margin:0 auto;border:0;border-radius:0;background:none;box-shadow:none}
+html.chud .app-header{display:block;height:50px;max-width:none;margin:0 0 6px;padding:0;border:0}
+html.chud .app-header>.brand,html.chud .app-header>.antique-flourish,html.chud .header-tools,html.chud .antique-corner,
+html.chud .board-heading,html.chud .tile-legend,html.chud .board-footer{display:none!important}
+
+/* ---- Top bar: wooden rail with the back plate, stage tag, journey medal and settings medallion ---------------- */
+.chud-bar{position:relative;display:flex;align-items:center;gap:6px;height:100%;padding:0 10px 2px 8px;
+  border-image:url(assets/combat-hud/rail.webp) 0 150 fill/0 60px stretch;filter:drop-shadow(0 3px 4px #0009)}
+.chud-bar>*{flex:none}
+.chud-back{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:82px;height:38px;padding:0 6px 2px 4px;border:0;
+  background:url(assets/gemwoven/ui-kit/btn-gold.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:800 16px/1 Cambria,Georgia,serif;text-decoration:none;text-shadow:0 1px #fff3c6}
+.chud-back:active{background-image:url(assets/gemwoven/ui-kit/btn-gold-down.webp)}
+.chud-back-arrow{width:21px;height:17px;background:url(assets/combat-hud/arrow.webp) center/contain no-repeat;filter:brightness(.55) sepia(.6) drop-shadow(0 1px #fff3c6)}
+.chud-stage{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;min-width:84px;max-width:132px;height:34px;padding:1px 14px 0;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:800 15px/1 Cambria,Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chud-stage:empty{display:none}
+.chud-score{display:inline-flex;align-items:center;gap:0;height:40px;padding:0;border:0;background:none;cursor:pointer;color:var(--hud-cream)}
+.chud-medal{position:relative;z-index:1;width:40px;height:35px;background:url(assets/gemwoven/ui-kit/medal.webp) center/contain no-repeat;filter:drop-shadow(0 2px 2px #0008)}
+.chud-medal::after{content:"";position:absolute;left:31%;top:17%;width:38%;height:40%;background:url(assets/combat-hud/star.webp) center/contain no-repeat}
+html.chud .chud-score .score{display:flex;align-items:center;justify-content:center;min-width:52px;height:26px;margin-left:-8px;padding:0 9px 0 12px;
+  background:url(assets/gemwoven/ui-kit/badge-leather.webp) center/100% 100% no-repeat}
+html.chud .chud-score .score span{display:none}
+html.chud .chud-score .score strong{margin:0;font:800 14px/1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000}
+.chud-gear{width:44px;height:44px;margin-left:auto;padding:0;border:0;border-radius:50%;background:url(assets/gemwoven/ui-kit/icon-emblem-gear.webp) center/contain no-repeat;cursor:pointer;filter:drop-shadow(0 2px 3px #0009)}
+.chud-gear[aria-expanded="true"],.chud-gear:active{filter:drop-shadow(0 0 6px #ffd677) brightness(1.08)}
+.chud-bar :focus-visible,.chud-strip :focus-visible{outline:none;box-shadow:none;filter:drop-shadow(0 0 5px #ffd36b) drop-shadow(0 0 2px #fff0b8)}
+html.chud .hint-button:focus,html.chud .chud-ult:focus{outline:none;box-shadow:none}
+
+/* ---- Settings sheet and short notes: parchment with a plank title ---------------------------------------------- */
+.chud-sheet,.chud-note{position:absolute;z-index:80;border:18px solid transparent;border-image:url(assets/gemwoven/ui-kit/parchment.webp) 44 fill/18px stretch;color:var(--hud-ink);filter:drop-shadow(0 8px 18px #000b)}
+.chud-sheet[hidden],.chud-note[hidden]{display:none}
+.chud-sheet{width:min(334px,calc(100vw - 24px));padding:22px 2px 2px;display:grid;gap:7px}
+.chud-sheet-title{position:absolute;left:50%;top:-30px;translate:-50% 0;display:flex;align-items:center;justify-content:center;width:132px;height:38px;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;font:800 16px/1 Cambria,Georgia,serif;color:var(--hud-ink)}
+.chud-row{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:8px;min-height:50px;padding:0 12px 0 10px;
+  background:url(assets/gemwoven/ui-kit/setrow.webp) center/100% 100% no-repeat;cursor:pointer}
+.chud-row[hidden]{display:none}
+.chud-row-label{font:700 16px/1.1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000}
+.chud-row-icon{width:28px;height:28px;background:center/contain no-repeat}
+.chud-row-speaker .chud-row-icon{background-image:url(assets/gemwoven/ui-kit/icon-speaker.webp)}
+.chud-row-sparkle .chud-row-icon{background-image:url(assets/gemwoven/ui-kit/icon-sparkle.webp)}
+.chud-row-music .chud-row-icon{background-image:url(assets/gemwoven/ui-kit/icon-music.webp)}
+.chud-row-help .chud-row-icon{background-image:url(assets/gemwoven/plaza/ui/i-help.webp)}
+html.chud .chud-row .icon-button{position:relative;width:62px;height:30px;min-width:0;padding:0;border:0;border-radius:15px;box-shadow:none;color:transparent;font-size:0;
+  background:url(assets/gemwoven/ui-kit/toggle-off.webp) center/100% 100% no-repeat}
+html.chud .chud-row .icon-button>*{display:none!important}
+html.chud .chud-row #soundBtn[aria-pressed="true"],html.chud .chud-row #motionBtn[aria-pressed="false"]{background-image:url(assets/gemwoven/ui-kit/toggle-on.webp)}
+html.chud .chud-row #helpBtn,html.chud .chud-row #audioSettingsBtn{width:36px;height:36px;border-radius:50%;background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat}
+html.chud .chud-row #helpBtn::after,html.chud .chud-row #audioSettingsBtn::after{content:"";position:absolute;inset:10px 9px 10px 12px;background:url(assets/gemwoven/plaza/ui/arrow.webp) center/contain no-repeat}
+.chud-note{width:236px;padding:2px 4px;display:grid;gap:4px;text-align:center}
+.chud-note b{font:800 15px/1.2 Cambria,Georgia,serif}
+.chud-note span{font:600 14px/1.35 Cambria,Georgia,serif;color:#4a3420}
+
+/* ---- Battlefield in a wooden frame with brass corners ------------------------------------------------------- */
+html.chud .battle-card{position:relative;isolation:isolate;padding:calc(var(--ft) - 1px);border:0;border-radius:6px;background:#2b1d10;box-shadow:0 6px 16px #000a}
+html.chud .battle-card::before,html.chud .battle-card::after{display:none}
+html.chud .battle-card .scene{border-radius:3px;height:var(--scene-h,320px);min-height:200px}
+.chud-frame{position:absolute;inset:0;z-index:8;pointer-events:none}
+.chud-frame i{position:absolute;background:center/100% 100% no-repeat}
+.chud-c{width:var(--fc);height:calc(var(--fc) * .91);z-index:1;filter:drop-shadow(0 1px 1px #0007)}
+.chud-c{--fade:linear-gradient(var(--fx),#000 74%,transparent 98%),linear-gradient(var(--fy),#000 74%,transparent 98%);-webkit-mask:var(--fade);-webkit-mask-composite:source-in;mask:var(--fade);mask-composite:intersect}
+.chud-c.tl{--fx:to right;--fy:to bottom;left:0;top:0;background-image:url(assets/combat-hud/corner-tl.webp)}
+.chud-c.tr{--fx:to left;--fy:to bottom;right:0;top:0;background-image:url(assets/combat-hud/corner-tr.webp)}
+.chud-c.bl{--fx:to right;--fy:to top;left:0;bottom:0;height:calc(var(--fc) * .8675);background-image:url(assets/combat-hud/corner-bl.webp)}
+.chud-c.br{--fx:to left;--fy:to top;right:0;bottom:0;height:calc(var(--fc) * .87);background-image:url(assets/combat-hud/corner-br.webp)}
+.chud-e.t,.chud-e.b{left:calc(var(--fc) * .6);right:calc(var(--fc) * .6)}
+.chud-e.l,.chud-e.r{top:calc(var(--fc) * .55);bottom:calc(var(--fc) * .55)}
+.chud-e.t{top:calc(var(--fc) * .005);height:calc(var(--fc) * .228);background-image:url(assets/combat-hud/edge-top.webp)}
+.chud-e.b{bottom:calc(var(--fc) * .008);height:calc(var(--fc) * .21);background-image:url(assets/combat-hud/edge-bottom.webp)}
+.chud-e.l{left:calc(var(--fc) * .017);width:calc(var(--fc) * .222);background-image:url(assets/combat-hud/edge-left.webp)}
+.chud-e.r{right:calc(var(--fc) * .022);width:calc(var(--fc) * .222);background-image:url(assets/combat-hud/edge-right.webp)}
+html.chud .arena-stage{display:none}
+
+/* ---- Fighters' labels: leather name tag, heart and spark gauges in brass troughs ------------------------------ */
+html.chud .actor-hud{display:grid;justify-items:center;width:124px;filter:drop-shadow(0 2px 2px #000a)}
+html.chud .actor-hud .vital-name{grid-row:1;display:flex;align-items:center;justify-content:center;max-width:116px;height:23px;margin:0 0 2px;padding:0 13px 1px;
+  border:0;background:url(assets/gemwoven/ui-kit/badge-leather.webp) center/100% 100% no-repeat}
+html.chud .actor-hud .vital-name strong{font:800 12.5px/1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000;max-width:94px;overflow:hidden;text-overflow:ellipsis}
+html.chud .actor-hud .health-label{grid-row:2;grid-column:1;position:relative;z-index:2;width:calc(100% - 14px);margin:0 0 0 14px;justify-content:center;
+  font:800 12px/15px Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
+html.chud .actor-hud .shield-label{position:absolute;left:100%;margin-left:3px;padding:1px 4px;border-radius:7px;background:#173048e0;box-shadow:0 0 0 1px #9fd3f088;font-size:9px}
+html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{position:relative;display:grid;overflow:visible;width:calc(100% - 14px);margin:0 0 0 14px;border:0;border-radius:0;box-shadow:none;
+  background:url(assets/gemwoven/ui-kit/progress.webp) center/100% 100% no-repeat}
+html.chud .actor-hud .health-track{grid-row:2;grid-column:1;height:16px;padding:3.5px 8px 3.5px 6px}
+html.chud .actor-hud .head-rage-track{grid-row:3;height:14px;margin-top:3px;padding:3px 8px 3px 6px}
+html.chud .actor-hud .health-track>i,html.chud .actor-hud .head-rage-track>i:not(.chud-rage-num){grid-area:1/1;position:static;display:block;height:100%;min-width:0;max-width:100%;border-radius:2px;box-shadow:none}
+html.chud .actor-hud .health-track>i:not(.health-trail){background:#20a64b url(assets/gemwoven/ui-kit/progress-fill.webp) left center/100% 100% no-repeat}
+html.chud .actor-hud .health-track>i.health-trail{background:#e9c978}
+html.chud .actor-hud .head-rage-track>i:not(.chud-rage-num){background:#f4b52c url(assets/combat-hud/fill-amber.webp) left center/100% 100% no-repeat}
+html.chud .actor-hud .health-track::before,html.chud .actor-hud .head-rage-track::before{content:"";position:absolute;z-index:3;left:-16px;top:50%;translate:0 -50%;width:26px;height:22px;background:center/contain no-repeat}
+html.chud .actor-hud .health-track::before{background-image:url(assets/combat-hud/cap-heart.webp)}
+html.chud .actor-hud .head-rage-track::before{width:22px;height:19px;left:-14px;background-image:url(assets/combat-hud/cap-spark.webp)}
+html.chud .actor-hud .chud-rage-num{grid-area:1/1;z-index:2;align-self:center;justify-self:center;font:800 10px/1 Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
+html.chud .actor-hud.is-rage-full .head-rage-track>i:not(.chud-rage-num){box-shadow:0 0 6px #ffc14d,0 0 2px #fff4c4}
+html.chud .actor-hud .status-row{grid-row:4}
+
+/* ---- Action strip: stitched leather plank with the turn ribbon, the ultimate medallion and the hint ---------- */
+html.chud .puzzle-card{overflow:visible;display:flex;flex-direction:column;align-items:center;gap:0;padding:0;border:0;background:none;box-shadow:none}
+html.chud .puzzle-card::before,html.chud .puzzle-card::after{display:none}
+html.chud .board-toolbar.chud-strip{position:relative;z-index:9;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;width:100%;height:64px;min-height:0;margin:5px 0 4px;padding:0 14px 2px 12px;gap:6px;
+  border-image:url(assets/combat-hud/strip.webp) 0 150 fill/0 50px stretch;filter:drop-shadow(0 3px 5px #0009)}
+html.chud .turn-chip{justify-self:start;display:flex;align-items:center;justify-content:center;gap:5px;width:132px;height:36px;padding:0 18px 2px;border:0;border-radius:0;box-shadow:none;
+  background:url(assets/gemwoven/ui-kit/ribbon-info.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:800 14.5px/1 Cambria,Georgia,serif;white-space:nowrap}
+html.chud .turn-chip i{display:block;flex:none;width:16px;height:16px;margin:0;border-radius:0;background:url(assets/gemwoven/ui-kit/icon-swords.webp) center/contain no-repeat;box-shadow:none;animation:none}
+html.chud .turn-chip.busy{background-image:url(assets/gemwoven/ui-kit/ribbon-done.webp)}
+html.chud .turn-chip.enemy{background-image:url(assets/gemwoven/ui-kit/ribbon-warn.webp);color:#5a1d12}
+html.chud .turn-chip.enemy i{background-image:url(assets/gemwoven/ui-kit/icon-skull.webp)}
+html.chud #comboLabel{position:absolute;left:24px;bottom:1px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 10.5px/12px Cambria,Georgia,serif;color:#ffe2a0;text-shadow:0 1px 2px #000;pointer-events:none}
+html.chud #comboLabel.is-idle{visibility:hidden}
+html.chud .hint-button{justify-self:end;position:relative;width:46px;height:46px;min-height:0;padding:0;border:0;border-radius:50%;font-size:0;color:transparent;
+  background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat;filter:drop-shadow(0 2px 2px #0008);cursor:pointer}
+html.chud .hint-button>*{display:none}
+html.chud .hint-button::after{content:"";position:absolute;inset:8px 13px 9px;background:url(assets/combat-hud/bulb.webp) center/contain no-repeat}
+html.chud .hint-button:disabled{filter:grayscale(.7) brightness(.75);cursor:default}
+html.chud .hint-button:not(:disabled):active{scale:.94}
+
+/* The ultimate medallion: a gauge, not a button to cast. Its ring fills with nộ; at 100 it blazes, and the
+   skill fires by itself (tapping it explains that). */
+.chud-ult{position:relative;justify-self:center;display:grid;justify-items:center;width:84px;height:76px;margin-top:-14px;padding:0;border:0;background:none;cursor:pointer;color:var(--hud-ink);--energy:0}
+.chud-ult-art{position:relative;width:62px;height:62px}
+.chud-ult-art i{position:absolute;inset:0;background:center/contain no-repeat;pointer-events:none}
+.chud-ult-art .chud-ult-disc{inset:3px!important;background-image:url(assets/combat-hud/ult-disc.webp)}
+.chud-ult-art .chud-ult-emblem{inset:14px!important;filter:saturate(.55) brightness(.78) drop-shadow(0 1px 1px #000a);transition:filter .3s}
+.chud-ult-art .chud-ult-frame{background-image:url(assets/combat-hud/ult-frame.webp);filter:drop-shadow(0 2px 2px #0009)}
+.chud-ult-art .chud-ult-ring{inset:-2px!important;background-image:url(assets/combat-hud/ult-ring.webp);
+  -webkit-mask:conic-gradient(#000 calc(var(--energy) * 1%),transparent 0);mask:conic-gradient(#000 calc(var(--energy) * 1%),transparent 0);transition:opacity .2s}
+.chud-ult-art .chud-ult-halo{inset:-9px!important;background-image:url(assets/combat-hud/ult-halo.webp);opacity:0;transition:opacity .25s}
+.chud-ult[data-element="fire"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-fire.webp)}
+.chud-ult[data-element="ice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-ice.webp)}
+.chud-ult[data-element="earth"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-earth.webp)}
+.chud-ult[data-element="lightning"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-lightning.webp)}
+.chud-ult[data-element="shadow"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-shadow.webp)}
+.chud-ult[data-element="novice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-novice.webp)}
+.chud-ult-label{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:84px;height:25px;margin-top:-11px;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;font:800 13.5px/1 Cambria,Georgia,serif;white-space:nowrap}
+.chud-ult-auto{position:absolute;z-index:3;left:50%;top:-8px;translate:-50% 0;padding:1px 7px;border-radius:8px;background:#4a2410e8;box-shadow:0 0 0 1px #c99a50;color:#f3dcab;font:700 12px/14px Cambria,Georgia,serif;white-space:nowrap;opacity:.92;transition:color .2s,box-shadow .2s}
+.chud-ult.is-full .chud-ult-art .chud-ult-emblem{filter:saturate(1.1) brightness(1.08) drop-shadow(0 0 5px #ffd36b)}
+.chud-ult.is-full .chud-ult-art .chud-ult-halo{opacity:1;animation:chud-ult-blaze 1.3s ease-in-out infinite alternate}
+.chud-ult.is-full .chud-ult-auto{opacity:1;color:#fff0b8;background:#7a3410f0;box-shadow:0 0 0 1px #ffd36b,0 0 8px #ffb84a}
+.chud-ult.is-full .chud-ult-label{filter:drop-shadow(0 0 4px #ffd36b)}
+@keyframes chud-ult-blaze{from{opacity:.65;scale:.96}to{opacity:1;scale:1.05}}
+body.reduced-motion .chud-ult-art .chud-ult-halo{animation:none!important}
+.chud-ult:focus-visible{outline:none}.chud-ult:focus-visible .chud-ult-art{outline:2px solid #ffe7a0;outline-offset:3px;border-radius:50%}
+
+/* ---- Board: the same wooden frame over stitched leather, with painted recessed cells (gems stay as drawn) ----- */
+html.chud .board-frame{position:relative;width:var(--bf,378px);max-width:100%;padding:13px;border:0;border-radius:6px;
+  background:url(assets/combat-hud/board-back.webp) center/100% 100% no-repeat,#3a2414;box-shadow:0 6px 16px #000a}
+html.chud .board-frame::before{display:none}
+html.chud .board-frame.enemy-turn{box-shadow:0 6px 16px #000a,0 0 0 2px #c0583f88,0 0 18px #c0583f55}
+html.chud .board-frame[data-combo-chain]{box-shadow:0 6px 16px #000a,0 0 16px color-mix(in srgb,var(--combo-color) 45%,transparent)}
+html.chud .board{border-radius:3px;background:#0d2a2e url(assets/combat-hud/cell-in.webp) 0 0/12.5% 12.5%;box-shadow:inset 0 2px 8px #000a,0 0 0 1px #2a170a}
+html.chud .board-frame .board-effects{inset:13px;width:calc(100% - 26px);height:calc(100% - 26px)}
+html.chud .gem{background:none;box-shadow:none}
+html.chud .gem::after{display:none}
+html.chud .special .gem{background:radial-gradient(ellipse,#eace7930,transparent 70%)}
+html.chud .board-frame .chud-frame{z-index:6}
+
+/* ---- Biến Thân: a gold plate inside the battlefield, clear of the frame -------------------------------------- */
+html.chud .transform-btn{left:10px;bottom:7px;min-width:118px;min-height:44px;padding:4px 13px 6px;border:0;border-radius:0;
+  background:url(assets/gemwoven/ui-kit/btn-gold.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:900 15px/1.05 Cambria,Georgia,serif;text-shadow:0 1px #fff3c6;
+  box-shadow:none;filter:drop-shadow(0 3px 4px #000a);animation:chud-transform-call 1.6s ease-in-out infinite}
+html.chud .transform-btn small{font:700 10.5px/1.1 Cambria,Georgia,serif;color:#5a3a1c}
+html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:50px;height:50px;min-width:0;min-height:0;padding:0;border-radius:50%;
+  background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat;box-shadow:none;filter:drop-shadow(0 0 7px #ffc46a)}
+html.chud .transform-btn.is-active .tf-count,html.chud .transform-btn.is-after .tf-count{font:900 20px/1 Cambria,Georgia,serif;color:var(--hud-ink)}
+html.chud .transform-btn.is-after .tf-count{font-size:13px}
+html.chud .transform-btn:disabled{animation:none}
+@keyframes chud-transform-call{50%{filter:drop-shadow(0 3px 4px #000a) drop-shadow(0 0 10px #ffcf6a)}}
+body.reduced-motion .transform-btn{animation:none!important}
+
+/* ---- Phone portrait sizes: the board takes the width, the battlefield the rest ------------------------------- */
+html.chud .app{--bf:min(calc(100vw - 12px),calc(100svh - 50px - 6px - 73px - 210px - 22px),470px);
+  --scene-h:clamp(200px,calc(100svh - 50px - 6px - 73px - var(--bf) - 2 * var(--ft) - 20px),420px)}
+html.chud .game-layout{gap:0}
+@media (max-width:370px){
+  html.chud{--fc:46px;--ft:11px}
+  .chud-back{width:70px}.chud-stage{min-width:72px;padding:1px 10px 0;font-size:14px}
+  html.chud .chud-score .score{min-width:44px}
+  html.chud .turn-chip{width:118px;font-size:13.5px}
+}
+
+/* ---- Landscape screens: battle left, board right, on the plank wall ---------------------------------------- */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud{--fc:70px;--ft:16px}
+  html.chud .app{display:flex;flex-direction:column;width:100%;max-width:2200px;height:100vh;height:100dvh;padding:10px 24px 16px;
+    --bf:min(calc(100dvh - 62px - 10px - 26px - 84px),46vw,880px)}
+  html.chud .app-header{flex:none;height:62px;margin:0 0 10px}
+  .chud-bar{gap:12px;padding:0 18px 3px 14px}
+  .chud-back{width:112px;height:48px;font-size:20px}
+  .chud-back-arrow{width:25px;height:20px}
+  .chud-stage{min-width:136px;max-width:300px;height:48px;font-size:23px}
+  .chud-medal{width:50px;height:44px}
+  html.chud .chud-score .score{min-width:64px;height:32px}
+  html.chud .chud-score .score strong{font-size:18px}
+  .chud-gear{width:54px;height:54px}
+  .chud-bar{border-image-width:0 76px}
+  html.chud .game-layout{flex:1;min-height:0;display:flex;flex-direction:row;align-items:stretch;justify-content:center;max-width:none;gap:20px}
+  html.chud .adventure-column{flex:1 1 auto;min-width:0;max-width:calc(var(--bf) * 1.9);display:flex;flex-direction:column}
+  html.chud .battle-card{flex:1;min-height:0;display:flex;flex-direction:column}
+  html.chud .battle-card .scene{flex:1;height:auto;min-height:0}
+  html.chud .puzzle-card{flex:none;width:var(--bf);justify-content:center}
+  html.chud .board-toolbar.chud-strip{height:100px;margin:0 0 8px;padding:0 22px 2px 20px;border-image-width:0 70px}
+  html.chud .turn-chip{width:212px;height:56px;padding:0 26px 3px;font-size:22px;gap:8px}
+  html.chud .turn-chip i{width:26px;height:26px}
+  html.chud #comboLabel{left:30px;bottom:2px;font-size:12.5px;max-width:220px}
+  html.chud .hint-button{width:68px;height:68px}
+  html.chud .hint-button::after{inset:12px 19px 13px}
+  /* Landscape: the medallion and its plaque side by side, as in the mockup. */
+  .chud-ult{display:flex;align-items:center;width:auto;height:94px;margin:0}
+  .chud-ult-art{z-index:1;width:94px;height:94px}
+  .chud-ult-art .chud-ult-emblem{inset:21px!important}
+  .chud-ult-art .chud-ult-halo{inset:-10px!important}
+  .chud-ult-label{width:150px;height:46px;margin:0 0 0 -16px;padding-left:12px;font-size:22px}
+  .chud-ult-auto{left:auto;right:8px;top:-2px;translate:none;font-size:14px;line-height:17px}
+  html.chud .board-frame{padding:17px}
+  html.chud .board-frame .board-effects{inset:17px;width:calc(100% - 34px);height:calc(100% - 34px)}
+  /* The fighters grow with the stage (their phone sizes, measured against its height). */
+  html.chud .scene .hero-actor{--actor-size:min(45cqh,39cqw)}
+  html.chud .scene .enemy-actor{--actor-size:min(41cqh,36cqw)}
+  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(53cqh,47cqw)}
+  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(45cqh,39cqw)}
+  html.chud .scene .actor.boss{--actor-size:min(70cqh,62cqw)}
+  html.chud .actor-hud{width:262px}
+  html.chud .actor-hud .vital-name{max-width:262px;height:44px;padding:0 26px 1px;margin-bottom:4px}
+  html.chud .actor-hud .vital-name strong{font-size:23px;max-width:210px}
+  html.chud .actor-hud .health-label{font-size:16px;line-height:24px;width:calc(100% - 30px);margin-left:30px}
+  html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{width:calc(100% - 30px);margin-left:30px}
+  html.chud .actor-hud .health-track{height:27px;padding:6px 14px 6px 10px}
+  html.chud .actor-hud .head-rage-track{height:22px;margin-top:5px;padding:5px 14px 5px 10px}
+  html.chud .actor-hud .chud-rage-num{font-size:14px}
+  html.chud .actor-hud .health-track::before{width:44px;height:37px;left:-30px}
+  html.chud .actor-hud .head-rage-track::before{width:38px;height:32px;left:-27px}
+  html.chud .actor-hud .shield-label{font-size:14px}
+  html.chud .transform-btn{left:22px;bottom:14px;min-width:160px;min-height:60px;font-size:18px}
+  html.chud .transform-btn small{font-size:12.5px}
+  html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:66px;height:66px;min-width:0;min-height:0}
+  .chud-sheet{width:340px}
+}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="app-header">
     <a class="brand" href="#" aria-label="Mầm Phép"><span class="brand-mark" data-icon="leaf"></span><span><b>Mầm Phép<span class="brand-dot">.</span></b><small>MỘT CHUYẾN PHIÊU LƯU NHỎ</small></span></a>
-    <div class="header-tools"><button class="icon-button" id="soundBtn" aria-label="Bật âm thanh" aria-pressed="false" title="Âm thanh"></button><button class="icon-button" id="motionBtn" aria-label="NO FX" aria-pressed="false" title="NO FX: đang tắt · bấm để tắt hiệu ứng"></button><button class="icon-button" id="audioSettingsBtn" aria-label="Cài đặt âm thanh" title="Cài đặt âm thanh" aria-haspopup="dialog" aria-controls="audioSettingsDialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 3v18M12 3v18M20 3v18"/><path d="M1 8h6M9 16h6M17 8h6" stroke-width="4"/></svg></button><button class="icon-button" id="helpBtn" aria-label="Cách chơi" title="Cách chơi"></button></div>
+    <div class="header-tools"><button class="icon-button" id="soundBtn" aria-label="Bật âm thanh" aria-pressed="false" title="Âm thanh"></button><button class="icon-button" id="motionBtn" aria-label="Hiệu ứng" aria-pressed="false" title="Hiệu ứng đang bật · bấm để tắt"></button><button class="icon-button" id="audioSettingsBtn" aria-label="Cài đặt âm thanh" title="Cài đặt âm thanh" aria-haspopup="dialog" aria-controls="audioSettingsDialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 3v18M12 3v18M20 3v18"/><path d="M1 8h6M9 16h6M17 8h6" stroke-width="4"/></svg></button><button class="icon-button" id="helpBtn" aria-label="Cách chơi" title="Cách chơi"></button></div>
   </header>
   <section class="journey"><div><span class="eyebrow">CHƯƠNG 01 · KHU RỪNG THỨC GIẤC</span><h1>Mỗi kết nối, một phép màu.</h1></div><div class="journey-track" id="journeyTrack" aria-label="Tiến trình hành trình"></div></section>
   <main class="game-layout">
@@ -1690,7 +1935,7 @@ html.showcase .noct-night,html.showcase .noct-moon{display:none}
   <div class="audio-level"><div class="audio-level-heading"><label for="volume-voices">Giọng nhân vật</label><output id="volume-voices-value" for="volume-voices">29%</output></div><input type="range" id="volume-voices" min="0" max="100" step="1" value="29" aria-describedby="volume-voices-hint"><small id="volume-voices-hint">Tiếng tướng và quái khi ra chiêu, trúng đòn</small></div>
   <div class="audio-settings-actions"><button class="audio-reset" id="audioResetBtn">Mặc định</button><button class="primary-button" data-close="audioSettingsDialog">Xong</button></div>
 </dialog>
-<dialog id="helpDialog" class="help-dialog" aria-labelledby="helpTitle"><button class="dialog-close" data-close="helpDialog" aria-label="Đóng hướng dẫn">×</button><div class="modal-eyebrow">CẨM NANG NHỎ</div><h2 id="helpTitle">Phép thuật bắt đầu từ 3.</h2><p>Đổi chỗ hai ngọc liền kề để ghép từ 3 ngọc cùng loại. Nước đi không tạo bộ sẽ được trả lại và không mất lượt.</p><div class="help-legend" id="helpLegend"></div><h3>Kết nối đặc biệt</h3><p><b>4 ngọc → Sao băng:</b> nổ vùng 5 × 5 quanh tâm.<br><b>5 ngọc → Bom:</b> tia điện lan tới tất cả ngọc cùng loại.<br><b>6+ ngọc → Cầu vồng:</b> đổi với ngọc kề để xóa loại đó; chạm trực tiếp để chọn một loại ngẫu nhiên. <br><b>Hai Cầu vồng:</b> kéo đổi chỗ hai ngọc kề nhau để nổ toàn bàn N lần. N là số ngọc đặc biệt trên bàn lúc đổi chỗ (tính cả hai Cầu vồng). Mỗi lần nổ xong sẽ rơi đầy ngọc mới rồi mới nổ tiếp; số lần không tăng thêm. Các ngọc đặc biệt có thể kích hoạt lẫn nhau.</p><h3>Đọc ý định, chọn nước đi</h3><p>Cả hai bên luân phiên ghép trên cùng bàn. Đối thủ đánh dấu hai ngọc trước khi đổi chỗ, rồi có thể tăng giáp, hồi máu hoặc tung kỹ năng nguyên tố. Ghép Băng để chặn lượt quái. Đủ 100 nộ sẽ tự động tung tuyệt kỹ. Nhân vật phát hào quang trước khi ra chiêu; tên, máu và nộ di chuyển theo đầu nhân vật.</p><div class="element-cycle">Lửa → Băng → Đất → Sét → Lửa</div><p>Đánh vào hệ bị khắc chế gây thêm 50% sát thương. Máu, giáp và năng lượng được giữ khi qua màn; đổi nhân vật sẽ giới hạn máu theo nhân vật mới.</p><h3>Mỗi 5 màn, một boss</h3><p>Boss có tạo hình lớn hơn, tự ghép ngọc trên bàn và tích nộ để tung tuyệt kỹ. Từ màn 5, đối thủ chọn nước theo tình thế; từ màn 10 biết xét nước đáp trả; từ màn 20 tính thêm nước tiếp theo. Dưới 40% máu, boss nổi giận và đánh mạnh hơn. Xem boss tiếp theo trước khi chọn lại nhân vật. Nếu boss kích hoạt ngọc đặc biệt của bạn, phần ngọc đó vẫn mang lợi ích cho bạn.</p><h3>Bàn phím & tùy chọn</h3><p>Dùng phím mũi tên để di chuyển trên bàn; Enter hoặc Space để chọn. Escape đóng hướng dẫn. Mặc định chơi ở tốc độ nhanh với đầy đủ hiệu ứng. Bấm NO FX để tắt hiệu ứng; nút sáng khi NO FX bật, bấm lại để khôi phục hiệu ứng. Âm thanh bật khi bắt đầu chơi; nút loa dùng để tắt hoặc bật lại.</p></dialog>
+<dialog id="helpDialog" class="help-dialog" aria-labelledby="helpTitle"><button class="dialog-close" data-close="helpDialog" aria-label="Đóng hướng dẫn">×</button><div class="modal-eyebrow">CẨM NANG NHỎ</div><h2 id="helpTitle">Phép thuật bắt đầu từ 3.</h2><p>Đổi chỗ hai ngọc liền kề để ghép từ 3 ngọc cùng loại. Nước đi không tạo bộ sẽ được trả lại và không mất lượt.</p><div class="help-legend" id="helpLegend"></div><h3>Kết nối đặc biệt</h3><p><b>4 ngọc → Sao băng:</b> nổ vùng 5 × 5 quanh tâm.<br><b>5 ngọc → Bom:</b> tia điện lan tới tất cả ngọc cùng loại.<br><b>6+ ngọc → Cầu vồng:</b> đổi với ngọc kề để xóa loại đó; chạm trực tiếp để chọn một loại ngẫu nhiên. <br><b>Hai Cầu vồng:</b> kéo đổi chỗ hai ngọc kề nhau để nổ toàn bàn N lần. N là số ngọc đặc biệt trên bàn lúc đổi chỗ (tính cả hai Cầu vồng). Mỗi lần nổ xong sẽ rơi đầy ngọc mới rồi mới nổ tiếp; số lần không tăng thêm. Các ngọc đặc biệt có thể kích hoạt lẫn nhau.</p><h3>Đọc ý định, chọn nước đi</h3><p>Cả hai bên luân phiên ghép trên cùng bàn. Đối thủ đánh dấu hai ngọc trước khi đổi chỗ, rồi có thể tăng giáp, hồi máu hoặc tung kỹ năng nguyên tố. Ghép Băng để chặn lượt quái. Đủ 100 nộ sẽ tự động tung tuyệt kỹ. Nhân vật phát hào quang trước khi ra chiêu; tên, máu và nộ di chuyển theo đầu nhân vật.</p><div class="element-cycle">Lửa → Băng → Đất → Sét → Lửa</div><p>Đánh vào hệ bị khắc chế gây thêm 50% sát thương. Máu, giáp và năng lượng được giữ khi qua màn; đổi nhân vật sẽ giới hạn máu theo nhân vật mới.</p><h3>Mỗi 5 màn, một boss</h3><p>Boss có tạo hình lớn hơn, tự ghép ngọc trên bàn và tích nộ để tung tuyệt kỹ. Từ màn 5, đối thủ chọn nước theo tình thế; từ màn 10 biết xét nước đáp trả; từ màn 20 tính thêm nước tiếp theo. Dưới 40% máu, boss nổi giận và đánh mạnh hơn. Xem boss tiếp theo trước khi chọn lại nhân vật. Nếu boss kích hoạt ngọc đặc biệt của bạn, phần ngọc đó vẫn mang lợi ích cho bạn.</p><h3>Bàn phím & tùy chọn</h3><p>Dùng phím mũi tên để di chuyển trên bàn; Enter hoặc Space để chọn. Escape đóng hướng dẫn. Mặc định chơi ở tốc độ nhanh với đầy đủ hiệu ứng. Chạm bánh răng Cài đặt để bật hoặc tắt Âm thanh và Hiệu ứng.</p></dialog>
 <dialog id="resultDialog" class="result-dialog" aria-labelledby="resultTitle"><div class="result-art" id="resultArt"></div><div class="modal-eyebrow" id="resultEyebrow">MỘT CHIẾN THẮNG NHỎ</div><h2 id="resultTitle">Khu rừng mỉm cười!</h2><p id="resultDesc"></p><div class="result-stats"><div><small>MÀN ĐẠT ĐƯỢC</small><strong id="resultStage">01</strong></div><div><small>ĐIỂM HÀNH TRÌNH</small><strong id="resultScore">0</strong></div></div><button class="primary-button" id="nextBtn">Đi tiếp <span>→</span></button></dialog>
 <script>(() => {
 'use strict';
@@ -2695,7 +2940,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   }
   const chapterForStage=n=>CHAPTERS[Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((n-1)/50)))];
   const SHOP=[
-    ['exp','Sách kinh nghiệm','resource','exp','common','gold',120,'exp-book','Kinh nghiệm để tăng cấp tướng.'],
+    ['exp','Sách kinh nghiệm','resource','exp','common','gold',120,'exp-book','Dùng để tăng cấp tướng.'],
     ['ore','Quặng Sắt','resource','ore','common','gold',80,'ore','Dùng rèn và cường hóa trang bị.'],
     ['wood','Gỗ Mềm','resource','wood','common','gold',55,'wood','Nguyên liệu rèn thông dụng.'],
     ['cloth','Vải Thô','resource','cloth','common','gold',55,'cloth','Nguyên liệu may giáp thông dụng.'],
@@ -2788,6 +3033,8 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   // resources. Non-enumerable: never a wallet/material and never accepted by grant().
   Object.defineProperty(RESOURCES,'heroFragments',{value:['Mảnh '+HEROES[SUMMON_BANNER.hero].name,'portrait-'+SUMMON_BANNER.hero],enumerable:false});
   Object.defineProperty(RESOURCES,'noviceFragments',{value:['Mảnh Hiro','portrait-novice'],enumerable:false});
+  // Bụi Ký Ức (D3, liveops.js MEMORY): kept in p.memory, not the wallet. Non-enumerable, so grant(), the shop and mail never take it.
+  Object.defineProperty(RESOURCES,'memoryDust',{value:['Bụi Ký Ức','memory-dust'],enumerable:false});
   const STAR_MILESTONES=[50,100,150];
   // Hiro is never summoned, so his copies come from play (newbie week, campaign daily quest, chapter star chests and first clears of
   // every tenth endless floor). 80 fragments fuse into a copy, as for every hero.
@@ -2811,6 +3058,13 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   // Base numbers of each active skill; ranks, forms and evolution scale them in skillKit.
   const SKILL_KIT={novice:{base:70,hits:1},fire:{base:135,hits:1},ice:{base:60,hits:1,armor:25},earth:{base:0,hits:0,heal:40,burst:3,stun:2,regen:3},lightning:{base:140,hits:5},shadow:{base:150,hits:5}};
   const VIP=[0,100000,300000,600000,1000000,2000000,4000000,7000000,12000000,20000000,35000000,60000000,100000000].map((spend,level)=>({level,spend,dailyGold:level>=2?1000:level?500:0,offlineHours:12+Math.floor(level/3),avatar:level>=1,entryEffect:level>=3,chatEffect:level>=5,equipmentSkin:level>=8,heroSkin:level>=10,combatStats:false}));
+  // Live-ops tables (liveops.js) are read lazily: in the browser that file loads after this one.
+  const OPS=()=>typeof module==='object'&&module.exports?require('./liveops.js'):globalThis.GemwovenLiveOps;
+  // VIP progress bar (owner 2026-11-04): 1 VIP point per 1.000 ₫ of verified top-ups, one cumulative scale; the level
+  // comes from the server ledger total, spending Đá Ngọc never adds to it.
+  function vipProgress(paidTotal){const paid=Math.max(0,Math.floor(paidTotal||0)),points=Math.floor(paid/1000);let level=0;for(const v of VIP)if(paid>=v.spend)level=v.level;
+    const next=VIP[level+1]||null,from=VIP[level].spend/1000,to=next?next.spend/1000:from;
+    return {level,points,from,next:next?{level:next.level,points:to}:null,need:next?to-points:0,ratio:next?Math.min(1,(points-from)/(to-from)):1,max:!next};}
   const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Trùm Vô Tận',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
   // Hành Trình Tân Thủ: seven gifts, one per GMT+7 day since the account was made (missed days
   // can be caught up). 80 Mảnh Hiro in the first week = his second star.
@@ -2819,7 +3073,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     return NEWBIE.map((reward,i)=>({day:i+1,reward,claimed:claimed.includes(i+1),open:i+1<=days}));}
   // Weekly quests (reset Monday 00:00 GMT+7): one ticket each, so play gives about 40 tickets per 28 days
   // (one a day from the visit quest plus three a week here).
-  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Trùm Vô Tận',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000}}];
+  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Trùm Vô Tận',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000,memoryDust:40}}];
   const week=ms=>{const d=new Date(ms+7*3600000),back=(d.getUTCDay()+6)%7;return new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()-back)).toISOString().slice(0,10);};
   const EVENT_TEMPLATE={id:'new-event',title:'Sự kiện sắp ra mắt',description:'Cuộc phiêu lưu mới đang được chuẩn bị.',enabled:false,status:'coming-soon',startsAt:'',endsAt:'',banner:'icon-event',order:0};
   const clone=v=>JSON.parse(JSON.stringify(v));
@@ -3019,8 +3273,38 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
       state:r.level>=100&&r.evolution>=5?'max':r.level<cap?(pay(relicLevelCost(r))?'ready':'short'):h.level<r.evolution*50?'locked':pay(relicEvolveCost(r))?'ready':'short',route:'upgrade'});
     return rows;
   }
-  // Release state: Hiro is always available and only the current banner hero drops.
-  function heroAvailable(key){return key==='novice'||key===SUMMON_BANNER.hero;}
+  // Release state: Hiro is always available; a rare hero is released from the start of its first banner (GMT+7 date).
+  // Only the current banner hero drops from summons.
+  const RELEASES={fire:'2026-11-02'};
+  function heroAvailable(key){return key==='novice'||key in RELEASES;}
+  // ----- Kỳ banner and Cửa Hàng Ký Ức (D3; numbers in liveops.js BANNER / MEMORY) -----
+  const gmt7=date=>Date.parse(date+'T00:00:00+07:00'),WEEK_MS=7*DAY_MS;
+  function bannerPeriod(at){const B=OPS().BANNER,start0=gmt7(B.anchor),len=B.periodDays*DAY_MS,index=Math.max(0,Math.floor((at-start0)/len)),start=start0+index*len;return {index,start,end:start+len};}
+  // An announced schedule is valid when every hero is a released rare hero and its runs are 3+ periods apart.
+  function bannerCheck(schedule,releases=RELEASES){const B=OPS().BANNER,errors=[],last={};
+    for(const s of [...schedule].sort((a,b)=>a.period-b.period)){
+      if(!(s.hero in releases)||s.hero==='novice')errors.push(`Kỳ ${s.period}: ${s.hero} chưa phát hành`);
+      if(s.hero in last&&s.period-last[s.hero]<B.rerunGap)errors.push(`Kỳ ${s.period}: ${s.hero} chạy lại sau ${s.period-last[s.hero]} kỳ (cần ≥ ${B.rerunGap})`);
+      last[s.hero]=s.period;}
+    return errors;}
+  function bannerPlan(at,{releases=RELEASES,schedule=OPS().BANNER.schedule}={}){
+    const B=OPS().BANNER,P=bannerPeriod(at),rare=Object.keys(releases).filter(k=>k!=='novice');
+    const rotating=rare.length>=B.minRareForRotation&&!bannerCheck(schedule,releases).length;
+    if(!rotating)return {rotating:false,period:P.index,start:P.start,end:P.end,hero:SUMMON_BANNER.hero,next:null};
+    const cur=schedule.find(s=>s.period===P.index),nxt=schedule.find(s=>s.period===P.index+1);
+    return {rotating:true,period:P.index,start:P.start,end:P.end,hero:cur?.hero||SUMMON_BANNER.hero,next:nxt?{hero:nxt.hero,start:P.end}:null};}
+  // First banner start of a hero: its release date or an earlier announced period, whichever comes first.
+  function bannerFirstStart(hero,{releases=RELEASES,schedule=OPS().BANNER.schedule}={}){
+    const B=OPS().BANNER,len=B.periodDays*DAY_MS,runs=schedule.filter(s=>s.hero===hero).map(s=>gmt7(B.anchor)+s.period*len);
+    if(hero in releases)runs.push(gmt7(releases[hero]));return runs.length?Math.min(...runs):Infinity;}
+  // The week's shelf, fixed at Monday 00:00 GMT+7: eligible heroes in release order, two a week in turn, so each one comes round.
+  function memoryOffer(at,opts={}){
+    const X=OPS().MEMORY,releases=opts.releases||RELEASES,schedule=opts.schedule||OPS().BANNER.schedule,key=week(at),start=gmt7(key);
+    const plan=bannerPlan(start,{releases,schedule}),first=k=>bannerFirstStart(k,{releases,schedule});
+    const eligible=Object.keys(releases).filter(k=>HEROES[k]&&!X.exclude.includes(k)&&k!==plan.hero&&start-first(k)>=X.minDaysSinceFirstBanner*DAY_MS).sort((a,b)=>first(a)-first(b)||a.localeCompare(b));
+    const index=Math.max(0,Math.round((start-gmt7(OPS().CADENCE_ANCHOR))/WEEK_MS)),n=Math.min(X.heroesPerWeek,eligible.length);
+    const heroes=Array.from({length:n},(_,i)=>eligible[(index*X.heroesPerWeek+i)%eligible.length]);
+    return {week:key,start,end:start+WEEK_MS,heroes,banner:plan.hero};}
   function levelCostRange(level,count=1){check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const total={gold:0,exp:0,seals:0};let steps=0;for(let l=level;l<MAX_LEVEL&&steps<count;l++,steps++)for(const [id,n]of Object.entries(levelCost(l)))total[id]+=n;return steps?{cost:total,levels:steps}:null;}
   const CRAFT_RARITIES=['uncommon','rare','epic','legendary','divine'];
   function craftGate(rarity){const rank=CRAFT_RARITIES.indexOf(rarity)+1;check(rank>0,'Công thức không hợp lệ.');return rarity==='divine'?300:rank*20;}
@@ -3351,21 +3635,70 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function clockNow(p,write){const raw=now();p.clock??={max:Math.max(p.updated||0,p.offlineAt||0)};p.clock.behind=raw<p.clock.max-CLOCK_TOLERANCE;current=Math.max(p.clock.max,raw);if(write)p.clock.max=current;return current;}
     const onTime=p=>check(!p.clock.behind,'Giờ thiết bị đang sớm hơn lần chơi trước. Hãy chỉnh lại ngày giờ để nhận thưởng theo thời gian.');
     function weekly(p){if(!p.weekly||week(current)>p.weekly.week)p.weekly={week:week(current),progress:{campaign:0,boss:0,daily:0},claimed:[]};}
-    function daily(p){weekly(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
+    function daily(p){weekly(p);passSync(p);memorySync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
     function bankOffline(p){const r=offlineRaw(p,current);p.offlineBank={hours:r.hours,gold:r.gold,exp:r.exp,seals:r.seals};p.offlineAt=Math.max(current,p.offlineAt);}
     // Expired mail (and any unclaimed gift in it) leaves the box at the next transaction.
-    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);save(p);return value;}
+    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);memorySync(p);save(p);return value;}
     function findMail(p,mailId){const m=p.mail.find(m=>m.id===mailId&&mailLive(m,current));check(m,'Thư không tồn tại hoặc đã hết hạn.');return m;}
     function read(){const p=load();clockNow(p,false);daily(p);return clone(p);}
     function amount(p,id){return id in p.wallet?p.wallet[id]:p.materials[id]||0;}
     function spend(p,cost){for(const [id,n] of Object.entries(cost)){check(Number.isSafeInteger(n)&&n>=0,'Chi phí không hợp lệ.');check(amount(p,id)>=n,`Thiếu ${RESOURCES[id]?.[0]||id}: cần ${n.toLocaleString('vi-VN')}.`);}for(const [id,n]of Object.entries(cost)){if(id in p.wallet)p.wallet[id]-=n;else p.materials[id]-=n;}p.daily.progress.spend+=cost.gold||0;}
     function grant(p,reward){const actual={};for(const [id,requested]of Object.entries(reward)){check(id!=='gems','Đá Ngọc chỉ nhận từ giao dịch nạp được máy chủ xác nhận.');check(Object.keys(RESOURCES).includes(id)&&Number.isSafeInteger(requested)&&requested>=0,'Phần thưởng không hợp lệ.');const n=id==='seals'?Math.min(requested,Math.max(0,DAILY_SEAL_CAP-p.daily.seals)):requested;if(id==='seals')p.daily.seals+=n;if(id in p.wallet)p.wallet[id]+=n;else p.materials[id]=(p.materials[id]||0)+n;actual[id]=n;}return actual;}
     // grant() plus Mảnh Hiro, which are fragments, not a wallet resource.
-    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}return actual;}
+    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,memoryDust=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}
+      if(memoryDust){check(Number.isSafeInteger(memoryDust)&&memoryDust>0,'Phần thưởng không hợp lệ.');memoryState(p).dust+=memoryDust;actual.memoryDust=memoryDust;}return actual;}
+    // ----- Bụi Ký Ức (D3) -----
+    // Test heroes from the local preview grants never feed the real economy.
+    const PREVIEW_HEROES={shadow:'noct-preview-2026-10',fire:'mika-preview-2026-10'};
+    const previewHero=(p,key)=>!!(PREVIEW_HEROES[key]&&p.previewGrants?.includes(PREVIEW_HEROES[key]));
+    function memoryState(p){const m=p.memory??={dust:0,week:'',bought:{},season:-1,chest:false,vouchers:0,log:[]};m.bought??={};m.log??=[];m.vouchers|=0;m.dust|=0;return m;}
+    // Spare copies and fragments of a 6★ hero (not Hiro, not a preview hero) become dust; the main copy stays. The source is
+    // emptied in the same step, so nothing converts twice. The week's shelf counts and the season chest roll here too.
+    function memorySync(p){const O=OPS();if(!O?.MEMORY)return;const X=O.MEMORY,m=memoryState(p),wk=week(current),season=O.passSeason(current).index;
+      if(m.week!==wk){m.week=wk;m.bought={};}
+      if(m.season!==season){if(m.season>=0&&m.season<season&&!m.chest){m.vouchers++;note(p,`Lịch 28 ngày mùa ${m.season+1}: cất phiếu 20 mảnh chưa nhận`);}m.season=season;m.chest=false;}
+      for(const [key,h] of Object.entries(p.heroes)){if(X.exclude.includes(key)||h.stars<6||previewHero(p,key))continue;
+        const copies=Math.max(0,(h.copies|0)-1),fragments=Math.max(0,p.fragments[key]|0),dust=copies*X.copyDust+fragments*X.fragmentDust;if(!dust)continue;
+        h.copies=1;p.fragments[key]=0;m.dust+=dust;m.log.unshift({at:current,hero:key,copies,fragments,dust});m.log=m.log.slice(0,20);
+        note(p,`${HEROES[key].name} 6★: ${copies} bản, ${fragments} mảnh dư → ${dust} Bụi Ký Ức`);}}
+    function memoryChestOpen(at){const O=OPS(),s=O.passSeason(at);return at>=s.start+(O.MEMORY.chest.day-1)*DAY_MS;}
+    const memoryChoices=p=>Object.keys(p.heroes).filter(k=>!OPS().MEMORY.exclude.includes(k)&&p.heroes[k].stars<6);
+    function memoryChestGive(p,hero){check(memoryChoices(p).includes(hero),'Chọn tướng đã sở hữu, chưa 6★ (không phải Hiro).');const n=OPS().MEMORY.chest.fragments;p.fragments[hero]=(p.fragments[hero]||0)+n;return {hero,fragments:n};}
+    function memoryView(p){const O=OPS(),X=O.MEMORY,m=memoryState(p),offer=memoryOffer(current),s=O.passSeason(current),open=memoryChestOpen(current),choices=memoryChoices(p);
+      const heroes=offer.heroes.map(key=>{const bought=m.bought[key]||0,h=p.heroes[key];
+        return {hero:key,name:HEROES[key].name,bought,left:Math.max(0,X.capPerHeroWeek-bought),owned:!!h,stars:h?.stars||0,fragments:p.fragments[key]||0,maxed:(h?.stars||0)>=6,
+          canBuy:(h?.stars||0)<6&&X.capPerHeroWeek-bought>=X.bundle&&m.dust>=X.price*X.bundle};});
+      return {dust:m.dust,price:X.price,bundle:X.bundle,bundlePrice:X.price*X.bundle,cap:X.capPerHeroWeek,week:offer.week,weekEnd:offer.end,banner:offer.banner,heroes,
+        empty:!heroes.length,log:m.log.slice(0,5),vouchers:m.vouchers,
+        chest:{season:s.index,start:s.start,end:s.end,day:Math.min(O.PASS.seasonDays,Math.floor((current-s.start)/DAY_MS)+1),openDay:X.chest.day,open,claimed:m.chest,fragments:X.chest.fragments,
+          ready:open&&!m.chest,choices,opensAt:s.start+(X.chest.day-1)*DAY_MS}};}
     function returnGems(p,list){for(const g of list)for(const k of g.sockets||[])if(k){p.gems??={};p.gems[k]=(p.gems[k]||0)+1;}}
     const shopKey=product=>product.limit.per==='day'?day(current):'w'+week(current);
     function shopLeft(p,product){if(!product.limit)return Infinity;const was=p.shopBoughtBy?.[product.id];return Math.max(0,product.limit.n-(was?.key===shopKey(product)?was.n:0));}
     // Báu vật points: once per day / week per kind, only in the trial save (round 9).
+    // Sổ Hành Trình (owner 2026-11-04, Codex round 1). Levels come from quest points (plus levels a verified purchase
+    // adds, set by the server only); free rewards open as levels are reached, the gold and jewel tracks only once the
+    // server records the season's purchase (this client has no way to set it). Jewel gear chests wait for their stage.
+    // Choice items become vouchers. A new season keeps nothing but grants what was left to take on the old one.
+    const PASS_TRACKS=['free','gold','jewel'];
+    function passSync(p){const O=OPS();if(!O)return null;const s=O.passSeason(current).index;
+      if(p.pass&&p.pass.season>=s){p.pass.owned??={};p.pass.claimed??={};for(const t of PASS_TRACKS)p.pass.claimed[t]??=[];p.pass.points|=0;return p.pass;}
+      if(p.pass){const left=passRows(p).flatMap(r=>PASS_TRACKS.filter(t=>r[t].state==='ready').map(t=>[r.level,t]));const got={};for(const [l,t] of left)for(const [k,n] of Object.entries(passGrant(p,O.PASS[t](l))))got[k]=(got[k]||0)+n;
+        p.passLast={season:p.pass.season,granted:got,count:left.length};if(left.length)note(p,`Sổ Hành Trình mùa ${p.pass.season+1}: cất ${left.length} phần quà chưa nhận`);}
+      p.pass={season:s,points:0,bought:0,claimed:{free:[],gold:[],jewel:[]},owned:{gold:false,jewel:false}};return p.pass;}
+    function passLevel(p){const O=OPS();return Math.min(O.PASS.levels,Math.floor(p.pass.points/O.PASS.pointsPerLevel)+(p.pass.bought|0));}
+    const passOwns=(p,t)=>t==='free'||(t==='gold'?!!(p.pass.owned.gold||p.pass.owned.jewel):!!p.pass.owned.jewel);
+    function passRows(p){const O=OPS(),level=passLevel(p),gates=O.PASS.gearGates;
+      return Array.from({length:O.PASS.levels},(_,i)=>{const l=i+1,row={level:l,reached:l<=level};
+        for(const t of PASS_TRACKS){const reward=O.PASS[t](l),gate=Math.max(0,...Object.keys(reward).map(k=>gates[k]||0));
+          row[t]={reward,gate,state:p.pass.claimed[t].includes(l)?'claimed':!row.reached?'level':!passOwns(p,t)?'track':p.campaign.cleared<gate?'stage':'ready'};}
+        return row;});}
+    function passGrant(p,reward){const res={},other={};for(const [k,n] of Object.entries(reward))(k in RESOURCES?res:other)[k]=n;const actual=grant(p,res);
+      for(const [k,n] of Object.entries(other)){p.vouchers??={};p.vouchers[k]=(p.vouchers[k]||0)+n;actual[k]=n;}return actual;}
+    function passPoints(p,n){if(passSync(p))p.pass.points+=n;}
+    function passClaim(p,level,track){const row=passRows(p)[level-1];check(row&&PASS_TRACKS.includes(track),'Mốc không hợp lệ.');const c=row[track];
+      check(c.state!=='claimed','Đã nhận mốc này.');check(c.state!=='level',`Cần cấp sổ ${level}.`);check(c.state!=='track','Nhánh này cần kích hoạt Sổ Hành Trình (thanh toán sắp ra mắt).');
+      check(c.state!=='stage',`Qua ải ${c.gate} để nhận rương này.`);const actual=passGrant(p,c.reward);p.pass.claimed[track].push(level);return actual;}
     function treasurePoint(p,kind,period,ok){if(!p.trialMode||!ok)return;p.treasure??={points:0,shards:0,items:[],slots:{},claims:{}};const k=kind+':'+period;if(p.treasure.claims[k])return;p.treasure.claims[k]=true;p.treasure.points+=TREASURE.points[kind];}
     // Cúp Đấu Trường (local prototype): month rollover into the history, daily matches (5, banked to 10).
     function cupRefresh(p){const s=cupSeason(current);
@@ -3409,9 +3742,9 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       summonQuote:count=>summonQuote(read(),count),
       claimChapter:(chapter,milestone)=>tx(p=>{const progress=chapterProgress(p,chapter),reward=chapterReward(chapter,milestone);check(progress.total>=milestone,'Chưa đủ sao của chương này.');const key=`world2:${chapter}:${milestone}`;check(!p.campaign.claimedStars.includes(key),'Mốc sao này đã nhận.');const actual=grant(p,reward);p.campaign.claimedStars.push(key);const hiro=HIRO_FRAGMENTS.chest[milestone]||0;if(hiro){p.fragments.novice=(p.fragments.novice||0)+hiro;actual.noviceFragments=hiro;}note(p,`Nhận thưởng chương ${chapter} · ${milestone} sao`);return actual;}),
       claimOffline:()=>tx(p=>{onTime(p);const pending=offline(p,current);check(pending.hours>=1/60,'Cần ít nhất một phút để nhận thưởng.');const actual=grant(p,{gold:pending.gold,exp:pending.exp,seals:pending.seals});p.offlineAt=Math.max(current,p.offlineAt);p.offlineBank=null;note(p,'Nhận thưởng offline');return actual;}),
-      claimDaily:quest=>tx(p=>{onTime(p);const q=DAILY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.daily.claimed.includes(quest),'Bạn đã nhận thưởng hôm nay.');check(p.daily.progress[quest]>=q.target,'Chưa hoàn thành nhiệm vụ.');const actual=grantAll(p,q.reward);p.daily.claimed.push(quest);p.weekly.progress.daily++;treasurePoint(p,'daily',day(current),p.daily.claimed.length>=3);note(p,'Nhiệm vụ: '+q.name);return actual;}),
+      claimDaily:quest=>tx(p=>{onTime(p);const q=DAILY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.daily.claimed.includes(quest),'Bạn đã nhận thưởng hôm nay.');check(p.daily.progress[quest]>=q.target,'Chưa hoàn thành nhiệm vụ.');const actual=grantAll(p,q.reward);p.daily.claimed.push(quest);p.weekly.progress.daily++;passPoints(p,OPS()?.PASS.points.daily||0);treasurePoint(p,'daily',day(current),p.daily.claimed.length>=3);note(p,'Nhiệm vụ: '+q.name);return actual;}),
       weekly:()=>{const p=read();return WEEKLY.map(q=>({...q,progress:Math.min(q.target,p.weekly.progress[q.id]||0),claimed:p.weekly.claimed.includes(q.id),week:p.weekly.week}));},
-      claimWeekly:quest=>tx(p=>{onTime(p);const q=WEEKLY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.weekly.claimed.includes(quest),'Đã nhận thưởng tuần này.');check((p.weekly.progress[quest]||0)>=q.target,'Chưa hoàn thành nhiệm vụ tuần.');const actual=grantAll(p,q.reward);p.weekly.claimed.push(quest);note(p,'Nhiệm vụ tuần: '+q.name);return actual;}),
+      claimWeekly:quest=>tx(p=>{onTime(p);const q=WEEKLY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.weekly.claimed.includes(quest),'Đã nhận thưởng tuần này.');check((p.weekly.progress[quest]||0)>=q.target,'Chưa hoàn thành nhiệm vụ tuần.');const actual=grantAll(p,q.reward);p.weekly.claimed.push(quest);passPoints(p,OPS()?.PASS.points.weekly||0);note(p,'Nhiệm vụ tuần: '+q.name);return actual;}),
       newbie:()=>{const p=read();return newbieState(p,current);},
       claimNewbie:dayIndex=>tx(p=>{const row=newbieState(p,current).find(r=>r.day===dayIndex);check(row,'Ngày quà không hợp lệ.');check(row.open,'Chưa đến ngày nhận quà này.');check(!row.claimed,'Đã nhận quà ngày này.');const actual=grantAll(p,row.reward);(p.newbie??={claimed:[]}).claimed.push(dayIndex);note(p,`Hành Trình Tân Thủ · ngày ${dayIndex}`);return actual;}),
       levelUp:(key,count=1)=>tx(p=>{check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');bankOffline(p);const rewards={tickets:0};for(let i=0;i<count;i++){check(h.level<500,'Đã đạt cấp tối đa 500.');spend(p,levelCost(h.level));h.level++;if((h.level===10||h.level===25||h.level%50===0)&&!h.ticketMilestones.includes(h.level)){h.ticketMilestones.push(h.level);grant(p,{tickets:1});rewards.tickets++;}}note(p,`${HEROES[key].name} đạt cấp ${h.level}`);return rewards;}),
@@ -3434,7 +3767,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
           p.summon.total++;p.summon.dry++;p.summon.fragmentDry++;
           if(p.summon.dry>=SUMMON_PITY)kind='hero';else if(p.summon.fragmentDry>=30&&!['hero','fragments'].includes(kind))kind='fragments';
           if(forced)kind=forced;
-          const key=SUMMON_BANNER.hero;let result;
+          const key=OPS()?.BANNER?bannerPlan(current).hero:SUMMON_BANNER.hero;let result;
           if(kind==='hero'&&test===true){const all=Object.keys(HEROES).filter(h=>h!=='novice').flatMap(h=>[1,2,3].map(form=>[h,form])),[hero,form]=all[(p.summon.total-1)%all.length];
             p.summon.dry=0;result={kind,hero,form,rarity:'legendary',name:HERO_FORMS[hero]?.[form-1]?.name||HEROES[hero].name,test:true};}
           else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
@@ -3491,6 +3824,17 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       fuseGems:key=>tx(p=>{const gem=gemParse(key);check(gem&&gem.level<5,'Ngọc đã ở cấp tối đa.');check((p.gems?.[key]||0)>=3,'Cần 3 viên cùng loại cùng cấp.');spend(p,{gold:2000*gem.level});
         p.gems[key]-=3;if(!p.gems[key])delete p.gems[key];const next=gemKey(gem.type,gem.level+1);p.gems[next]=(p.gems[next]||0)+1;note(p,`Ghép ${GEMS[gem.type].name} cấp ${gem.level+1}`);return {gem:next};}),
       pickGem:type=>tx(p=>{check(GEMS[type],'Loại ngọc không hợp lệ.');check((p.gemChoices||0)>0,'Không có phiếu chọn ngọc.');p.gemChoices--;p.gems??={};const k=gemKey(type,1);p.gems[k]=(p.gems[k]||0)+1;return {gem:k};}),
+      // Cửa Hàng Ký Ức and the day-28 chest (D3). Bụi Ký Ức is never bought with money or Đá Ngọc.
+      memory:()=>memoryView(read()),
+      buyMemory:hero=>tx(p=>{onTime(p);const X=OPS().MEMORY,m=memoryState(p),offer=memoryOffer(current);check(offer.heroes.includes(hero),'Tướng này không có trên kệ Ký Ức tuần này.');
+        check((p.heroes[hero]?.stars||0)<6,'Tướng đã 6★: mảnh sẽ thành Bụi Ký Ức.');const bought=m.bought[hero]||0;check(bought+X.bundle<=X.capPerHeroWeek,`Đã mua đủ ${X.capPerHeroWeek} mảnh tướng này tuần này.`);
+        const cost=X.price*X.bundle;check(m.dust>=cost,`Cần ${cost} Bụi Ký Ức.`);m.dust-=cost;m.bought[hero]=bought+X.bundle;p.fragments[hero]=(p.fragments[hero]||0)+X.bundle;
+        note(p,`Cửa Hàng Ký Ức: ${X.bundle} mảnh ${HEROES[hero].name}`);return {hero,fragments:X.bundle,dust:cost,left:X.capPerHeroWeek-m.bought[hero]};}),
+      // Day 28 of the season: 20 fragments of an owned hero (not Hiro, not 6★); with no such hero, a voucher that never expires.
+      claimMemoryChest:hero=>tx(p=>{onTime(p);const m=memoryState(p);check(memoryChestOpen(current),`Rương mở ngày ${OPS().MEMORY.chest.day} của mùa.`);check(!m.chest,'Đã nhận rương mùa này.');
+        let got;if(hero==null){check(!memoryChoices(p).length,'Hãy chọn một tướng để nhận mảnh.');m.vouchers++;got={voucher:1};}else got=memoryChestGive(p,hero);
+        m.chest=true;note(p,'Lịch 28 ngày: '+(got.voucher?'cất phiếu 20 mảnh':`20 mảnh ${HEROES[hero].name}`));return got;}),
+      useMemoryVoucher:hero=>tx(p=>{const m=memoryState(p);check(m.vouchers>0,'Không có phiếu 20 mảnh.');const got=memoryChestGive(p,hero);m.vouchers--;note(p,`Phiếu 20 mảnh: ${HEROES[hero].name}`);return got;}),
       shopLeft:productId=>{const product=WORLD.SHOP.find(x=>x.id===productId);return product?shopLeft(read(),product):0;},
       // ----- Báu vật trial -----
       treasure:()=>{const p=read();return {trial:!!p.trialMode,points:p.treasure?.points||0,shards:p.treasure?.shards||0,items:(p.treasure?.items||[]).map(t=>({...t,stats:treasureStats(t)})),slots:p.treasure?.slots||{},claims:p.treasure?.claims||{}};},
@@ -3520,12 +3864,24 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       // Mailbox, newest first. Claims are atomic: one failed grant leaves every mail unchanged.
       // Badges (docs/GAME_DESIGN.md §20 round 3): `claim` counts rewards to take now for free (red); `hint` lists
       // what can be raised now (green, the UI hides those already seen until they change); `count` is unread mail (blue).
+      pass:()=>{const p=read(),O=OPS();if(!p.pass)return null;const s=O.passSeason(current),level=passLevel(p),per=O.PASS.pointsPerLevel,rows=passRows(p);
+        return {season:s.index,start:s.start,end:s.end,daysLeft:Math.max(0,Math.ceil((s.end-current)/86400000)),points:p.pass.points,level,max:O.PASS.levels,per,
+          into:level>=O.PASS.levels?per:p.pass.points%per,owned:{gold:passOwns(p,'gold'),jewel:passOwns(p,'jewel')},rows,ready:rows.reduce((n,r)=>n+PASS_TRACKS.filter(t=>r[t].state==='ready').length,0),last:p.passLast||null,vouchers:{...(p.vouchers||{})}};},
+      claimPass:(level,track)=>tx(p=>{onTime(p);const actual=passClaim(p,Number(level),track);note(p,`Sổ Hành Trình: nhận cấp ${level}`);return actual;}),
+      claimPassAll:()=>tx(p=>{onTime(p);const total={};let count=0;for(const r of passRows(p))for(const t of PASS_TRACKS)if(r[t].state==='ready'){for(const [k,n] of Object.entries(passClaim(p,r.level,t)))total[k]=(total[k]||0)+n;count++;}
+        check(count,'Chưa có mốc nào để nhận.');note(p,`Sổ Hành Trình: nhận ${count} mốc`);return total;}),
+      // Thẻ Tháng: the server records the paid days; the client only reads them.
+      monthlyCard:()=>{const p=read(),until=p.cards?.monthly?.until||0;return {active:until>current,daysLeft:Math.max(0,Math.ceil((until-current)/86400000))};},
+      vip:()=>vipProgress(read().vip?.paidTotal),
       notices:()=>{const p=read();daily(p);const at=current,claim={},hint={};
         claim.quests=DAILY.filter(q=>!p.daily.claimed.includes(q.id)&&(p.daily.progress[q.id]||0)>=q.target).length;
         claim.events=newbieState(p,at).filter(r=>r.open&&!r.claimed).length+WEEKLY.filter(q=>!p.weekly.claimed.includes(q.id)&&(p.weekly.progress[q.id]||0)>=q.target).length;
+        if(OPS()?.MEMORY){const mv=memoryView(p);claim.events+=(mv.chest.ready?1:0)+(mv.vouchers&&mv.chest.choices.length?1:0);}
         claim.offline=offline(p,at).hours>=1?1:0;
         let chests=0;for(let c=1;c<=Math.min(WORLD.CHAPTERS.length,Math.floor(p.campaign.cleared/50)+1);c++){const pr=chapterProgress(p,c);chests+=STAR_MILESTONES.filter(m=>pr.total>=m&&!pr.claimed.includes(m)).length;}claim.campaign=chests;
         const live=p.mail.filter(m=>mailLive(m,at));claim.mail=live.filter(m=>mailPending(m)).length;
+        // Sổ Hành Trình rewards to take now (never the locked paid tracks, never "you could pay").
+        if(p.pass)claim.vip=passRows(p).reduce((n,r)=>n+PASS_TRACKS.filter(t=>r[t].state==='ready').length,0);
         hint.upgrade=[];hint.skills=[];for(const key of Object.keys(p.heroes)){for(const r of growthMap(p,key))if(r.state==='ready'){const sig=`${key}:${r.id}:${r.current}`;(r.id.startsWith('skill')?hint.skills:hint.upgrade).push(sig);}}
         hint.inventory=Object.entries(p.fragments).filter(([k,n])=>n>=80&&HEROES[k]).map(([k,n])=>`fuse:${k}:${Math.floor(n/80)}`);
         return {claim,hint,count:{mail:live.filter(m=>!m.read).length}};},
@@ -3567,7 +3923,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {RELEASES,bannerPeriod,bannerCheck,bannerPlan,bannerFirstStart,memoryOffer,CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });
 
 const ART_BLOBS=[];
@@ -11842,6 +12198,120 @@ async function noctRoninDepart(){
 }
 // Form 2's ultimate stages itself (no shared sigil or burst from hero-forms-combat.js).
 HERO_KITS.shadow={forms:{2:{ultimate:()=>formOriginalUltimate(),depart:()=>noctRoninDepart()}}};
+
+// Combat HUD (docs/REQUEST_TRACKER.md I12, assets/raw/combat-hud: Codex mockups and review). Visual layer only:
+// it moves the existing controls into drawn wood, leather, brass and parchment pieces (assets/combat-hud,
+// assets/gemwoven/ui-kit) and never changes a rule, number, timing or sound. Every id the game and tests use stays
+// on its element; the elements are restyled, wrapped or moved, never replaced.
+//   top bar:      Về (hub link) · Ải tag (mirrors #stageLabel) · journey medal (#score) · settings medallion
+//   settings:     #soundBtn, #motionBtn ("Hiệu ứng"), #helpBtn (with the gem guide) behind one gear
+//   action strip: #turnChip ribbon · ultimate medallion (fills with nộ, blazes at 100; it fires by itself) · #hintBtn
+// Phone portrait stacks battle, strip and board; landscape screens put the battle left and the board right.
+(function combatHud(){
+  if(new URLSearchParams(location.search).has('showcase'))return;
+  const root=document.documentElement,app=document.querySelector('.app'),header=document.querySelector('.app-header');
+  if(!app||!header||root.classList.contains('chud'))return;
+  root.classList.add('chud');
+  const make=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;};
+
+  // ---- Top bar ------------------------------------------------------------------------------------------------
+  const bar=make('div','chud-bar');header.append(bar);
+  const back=header.querySelector('.progression-back');
+  if(back){back.textContent='Về';back.classList.add('chud-back');back.setAttribute('aria-label','Về thị trấn');back.prepend(make('i','chud-back-arrow'));bar.append(back);}
+  const stage=make('span','chud-stage');stage.id='hudStage';stage.setAttribute('aria-hidden','true');bar.append(stage);
+  // "MÀN 07" (sandbox) and "Chương 1 · Ải 7" (hub) both read as the short tag "Ải 7"; a named fight keeps its name.
+  const shortStage=t=>{t=(t||'').trim();const m=t.match(/(?:Ải|MÀN|Màn)\s*0*(\d+)/);if(m)return 'Ải '+m[1];const b=t.match(/^BOSS\s*0*(\d+)/);return b?'Trùm · Ải '+b[1]:t;};
+  const syncStage=()=>{const t=$('stageLabel').textContent;stage.textContent=shortStage(t);stage.title=t;};
+  new MutationObserver(syncStage).observe($('stageLabel'),{childList:true,characterData:true,subtree:true});
+  const scoreBox=document.querySelector('.board-heading .score');
+  const medal=make('button','chud-score');medal.type='button';medal.id='hudScoreBtn';medal.setAttribute('aria-label','Điểm hành trình');
+  medal.append(make('i','chud-medal'));if(scoreBox)medal.append(scoreBox);bar.append(medal);
+  const gear=make('button','chud-gear');gear.type='button';gear.id='hudSettingsBtn';gear.setAttribute('aria-label','Cài đặt');gear.setAttribute('aria-haspopup','dialog');gear.setAttribute('aria-expanded','false');bar.append(gear);
+
+  // ---- Settings sheet: the original buttons, each on a labelled row ------------------------------------------
+  const sheet=make('div','chud-sheet');sheet.id='hudSettings';sheet.hidden=true;sheet.setAttribute('role','dialog');sheet.setAttribute('aria-label','Cài đặt');
+  sheet.append(make('div','chud-sheet-title','Cài đặt'));
+  const rows=[['soundBtn','Âm thanh','speaker'],['motionBtn','Hiệu ứng','sparkle'],['audioSettingsBtn','Âm lượng','music'],['helpBtn','Cách chơi','help']];
+  for(const [id,label,iconName] of rows){
+    const button=$(id);if(!button)continue;
+    const row=make('div','chud-row chud-row-'+iconName);row.append(make('i','chud-row-icon'),make('span','chud-row-label',label),button);
+    row.addEventListener('click',e=>{if(!button.contains(e.target)&&!button.hidden&&!button.disabled)button.click();});
+    sheet.append(row);
+  }
+  document.body.append(sheet);
+  const tools=header.querySelector('.header-tools');if(tools)tools.hidden=true;
+  // Only the settings that exist here show a row (the volume dialog is the hub's).
+  const syncRows=()=>sheet.querySelectorAll('.chud-row').forEach(r=>{r.hidden=!!r.querySelector('button')?.hidden;});
+
+  // ---- Short notes behind a tap (journey points, the ultimate) --------------------------------------------------
+  const note=make('div','chud-note');note.id='hudNote';note.hidden=true;note.setAttribute('role','status');document.body.append(note);
+  let noteFor=null;
+  function place(panel,anchor,centre=false){
+    panel.style.left=panel.style.top='0px';
+    const a=anchor.getBoundingClientRect(),w=panel.offsetWidth,h=panel.offsetHeight,vw=innerWidth,vh=innerHeight;
+    let x=centre?(vw-w)/2:a.left+a.width/2-w/2,y=a.bottom+(centre?26:8);if(y+h>vh-8)y=Math.max(8,a.top-h-8);
+    panel.style.left=Math.round(Math.max(8,Math.min(vw-w-8,x))+scrollX)+'px';panel.style.top=Math.round(y+scrollY)+'px';
+  }
+  function closeAll(){
+    if(!sheet.hidden){sheet.hidden=true;gear.setAttribute('aria-expanded','false');}
+    note.hidden=true;noteFor=null;
+  }
+  function showNote(anchor,title,text){
+    if(noteFor===anchor&&!note.hidden){closeAll();return;}
+    closeAll();note.replaceChildren(make('b','',title),make('span','',text));note.hidden=false;noteFor=anchor;place(note,anchor);
+  }
+  gear.addEventListener('click',e=>{
+    e.stopPropagation();const open=sheet.hidden;closeAll();if(!open)return;
+    syncRows();sheet.hidden=false;gear.setAttribute('aria-expanded','true');place(sheet,gear,innerWidth<600);sheet.querySelector('button:not([hidden])')?.focus({preventScroll:true});
+  });
+  medal.addEventListener('click',e=>{e.stopPropagation();showNote(medal,'Điểm hành trình','Cộng khi ghép ngọc và hạ đối thủ.');});
+  document.addEventListener('click',e=>{if(!sheet.contains(e.target)&&!note.contains(e.target))closeAll();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&(!sheet.hidden||!note.hidden)){closeAll();gear.focus({preventScroll:true});}});
+  $('helpBtn').addEventListener('click',()=>closeAll());
+  addEventListener('resize',()=>closeAll());
+
+  // ---- Action strip: turn ribbon, ultimate medallion, hint medallion ------------------------------------------
+  const strip=document.querySelector('.board-toolbar');
+  const ult=make('button','chud-ult');ult.type='button';ult.id='hudUltimate';
+  ult.innerHTML='<span class="chud-ult-art" aria-hidden="true"><i class="chud-ult-halo"></i><i class="chud-ult-disc"></i><i class="chud-ult-emblem"></i><i class="chud-ult-ring"></i><i class="chud-ult-frame"></i></span><span class="chud-ult-label">Tuyệt kỹ</span><small class="chud-ult-auto">Tự động</small>';
+  if(strip){strip.classList.add('chud-strip');strip.insertBefore(ult,$('hintBtn'));}
+  ult.addEventListener('click',e=>{e.stopPropagation();const n=Math.round(state.energy);showNote(ult,'Tuyệt kỹ · '+Math.min(100,n)+'/100 nộ','Tự thi triển khi đủ 100 nộ.');});
+  // The idle sentence moves into the guide; combo counts and the foe's choice still show while they happen.
+  const combo=$('comboLabel');
+  const syncCombo=()=>{combo.classList.toggle('is-idle',/^Ghép 3/.test(combo.textContent));};
+  new MutationObserver(syncCombo).observe(combo,{childList:true,characterData:true,subtree:true});syncCombo();
+  $('hintBtn').title='Gợi ý';
+
+  // ---- Wooden frames around the battlefield and the board ----------------------------------------------------
+  const frame=()=>make('span','chud-frame','<i class="chud-c tl"></i><i class="chud-c tr"></i><i class="chud-c bl"></i><i class="chud-c br"></i><i class="chud-e t"></i><i class="chud-e b"></i><i class="chud-e l"></i><i class="chud-e r"></i>');
+  const card=$('battleCard');if(card){const f=frame();f.setAttribute('aria-hidden','true');card.append(f);}
+  const boardFrame=$('boardFrame');if(boardFrame){const f=frame();f.setAttribute('aria-hidden','true');boardFrame.append(f);}
+
+  // ---- Backdrop around the columns: a painted plank wall (assets/combat-hud/backdrop.webp) ------------------
+  const backdrop=make('div','chud-backdrop');backdrop.setAttribute('aria-hidden','true');document.body.prepend(backdrop);
+
+  // Each fighter's nộ as a number on its spark gauge (inside the meter, so the meter keeps its own value).
+  const rageNum={};for(const side of ['hero','enemy']){const r=$(side+'Rage');if(r){rageNum[side]=make('i','chud-rage-num');rageNum[side].setAttribute('aria-hidden','true');r.append(rageNum[side]);}}
+
+  // ---- Live values: energy ring, element emblem, Vietnamese effects label ------------------------------------
+  const hudUpdate=update;
+  update=function(){
+    hudUpdate();
+    const energy=Math.max(0,Math.min(100,state.energy||0)),full=energy>=100;
+    ult.style.setProperty('--energy',String(energy));ult.dataset.element=ELEMENTS[state.key]?state.key:'novice';
+    ult.classList.toggle('is-full',full);
+    ult.setAttribute('aria-label',`Tuyệt kỹ: ${Math.round(energy)}/100 nộ${full?', sẵn sàng tự thi triển':''}`);
+    for(const side of ['hero','enemy']){const r=$(side+'Rage');if(!r)continue;const n=Math.max(0,Math.min(100,Math.round(+r.getAttribute('aria-valuenow')||0)));r.closest('.actor-hud')?.classList.toggle('is-rage-full',n>=100);if(rageNum[side])rageNum[side].textContent=n+'/100';}
+    syncStage();
+  };
+  const hudSettings=updateSettings;
+  updateSettings=function(){
+    hudSettings();
+    const motion=$('motionBtn'),status=motion.querySelector('.motion-status');if(status)status.textContent='Hiệu ứng';
+    motion.setAttribute('aria-label','Hiệu ứng');motion.title=reduced?'Hiệu ứng đang tắt · bấm để bật':'Hiệu ứng đang bật · bấm để tắt';
+    $('soundBtn').title=sound?'Âm thanh đang bật · bấm để tắt':'Âm thanh đang tắt · bấm để bật';
+  };
+})();
 
 document.querySelectorAll('[data-icon]').forEach(e=>e.innerHTML=icon(e.dataset.icon));$('helpBtn').innerHTML=icon('help');$('motionBtn').innerHTML=icon('spark');$('landscape').innerHTML=landscapeArt();
 $('tileLegend').innerHTML=TYPES.map(t=>'<div class="legend-item"><span class="legend-icon">'+icon(t.icon,t.color)+'</span><span>'+t.name+'</span><small>'+t.effect+'</small></div>').join('');

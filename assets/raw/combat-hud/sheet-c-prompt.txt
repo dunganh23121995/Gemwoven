@@ -1,0 +1,7 @@
+Create a 2-column by 3-row sheet matching the attached Forge/UI-kit's hand-painted fantasy materials and soft upper-left lighting.
+
+Reading order: a brass left arrow; a red enamel heart in a small brass gauge end-cap; an amber lightning spark in a matching gauge end-cap; a brass lightbulb icon; a long horizontal amber energy fill matching the attached UI-kit green progress fill's proportions; leave the sixth slot empty. Icons and end-caps are separate sprites, not attached to buttons or bars. Keep the amber fill free of a frame.
+
+Front orthographic view, crisp readable silhouettes at small sizes. No text or numerals. Uniform #FF00FF background, generous gutters, no cropped edges or magenta-colored details.
+
+Reference images: image 1 is the approved Forge screen (style), image 2 is the shared UI kit sheet (materials).

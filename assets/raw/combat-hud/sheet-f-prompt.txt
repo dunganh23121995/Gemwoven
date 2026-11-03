@@ -1,0 +1,5 @@
+Create one production sprite for Gemwoven's combat HUD, matching the attached approved Forge screen and UI-kit: polished hand-painted fantasy game art, aged gold and brass, soft upper-left highlight, front orthographic view.
+
+The sprite: a single bold five-point star in polished gold with a thin darker brass rim and one soft highlight, readable at 20 pixels, centred, about 60% of the canvas. No text, no frame, no glow beyond the rim.
+
+Solid uniform #FF00FF background everywhere else, generous padding, nothing cropped, no magenta in the artwork.

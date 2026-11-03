@@ -1,0 +1,7 @@
+Create a 2x2 sheet of four separate, concentric UI layers for an AUTOMATIC ultimate energy indicator. Match the attached Forge/UI-kit's hand-painted aged brass and soft upper-left lighting.
+
+Reading order: an open-center brass circular frame; a dark leather circular inset; a thin complete luminous gold energy ring; an isolated full-charge golden halo with restrained sparks. All layers share the exact same center and nominal outer diameter. The energy ring must be uniform and suitable for runtime radial clipping. Keep the frame visually readable without glow.
+
+No portrait, weapon, element icon, text, numerals or play-button symbols. Solid #FF00FF background and empty centers. Keep all glow and sparks contained within each cell, with generous padding.
+
+Reference images: image 1 is the approved Forge screen (style), image 2 is the shared UI kit sheet (materials).

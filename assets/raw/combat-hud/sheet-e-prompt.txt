@@ -1,0 +1,7 @@
+Create a 2-column by 3-row sheet of six standalone elemental emblems for Gemwoven's ultimate indicator. Match the attached Forge/UI-kit's polished hand-painted enamel and brass style, front orthographic view, soft upper-left highlights.
+
+Reading order: orange-red flame; cyan ice crystal; green-and-ochre rock; amber lightning bolt; deep indigo shadow crescent with a dark core; ivory neutral four-point star. Use equally bold silhouettes and identical visual scale, readable at 32 pixels. These are generic elemental symbols shared by all heroes.
+
+No characters, faces, weapons, circular frames, text or numbers. Uniform solid #FF00FF background; avoid magenta in the artwork. Each emblem centered with generous padding, no overlap or cropped edges.
+
+Reference images: image 1 is the approved Forge screen (style), image 2 is the shared UI kit sheet (materials).
