@@ -49,64 +49,75 @@
   // ----- Tabs -----
   const TABS=[['pass','Sổ Hành Trình','journey-book'],['monthly','Thẻ Tháng','calendar'],['fund','Quỹ','fund-pouch']];
   const tabs=state=>TABS.map(([id,name,icon],i)=>{const on=state.vipTab===id,x=[46,378,670][i],w=[322,284,228][i];
-    return `<button type="button" class="pv-tab ${on?'on':''}" data-action="pass:tab" data-tab="${id}" style="${box(x,404,w,80)}" aria-pressed="${on}"><img class="pv-art" src="${art(on?'tab-selected':'tab-idle')}" alt=""><img class="pv-tabicon" src="${art(icon)}" alt=""><b>${name}</b></button>`;}).join('');
+    return `<button type="button" class="pv-tab ${on?'on':''}" data-action="pass:tab" data-tab="${id}" style="${box(x,390,w,76)}" aria-pressed="${on}"><img class="pv-art" src="${art(on?'tab-selected':'tab-idle')}" alt=""><img class="pv-tabicon" src="${art(icon)}" alt=""><b>${name}</b></button>`;}).join('');
 
   // ----- Timeline tree (shared by the three tabs) -----
-  // A lane holds one reward socket per row; the drawn row's trunk sits at x 329 of its 840-wide box, the sockets at 132 / 494 / 712.
-  const ROW=158,VX=40,TREE_X=12,STAGE_X=VX+TREE_X,TRUNK=329,LANE_X=[128,494,712],SOCKET=[214,124];
+  // Second pass (Codex review: rows, level marks and three tracks fought for room; locked tracks sank): a slender
+  // trunk in the left gutter carries the level medals, three light trays sit side by side, and one lock strip with a
+  // pale backing covers the tracks not bought yet (mockup assets/gemwoven/raw/vip-pass/v2/mockup-1.png).
+  // Boxes inside the viewport are viewport units; the viewport sits at stage (VX, VY).
+  const VX=22,VY=754,VW=897,VH=580,ROW=150,TRUNK=50,CELL=[244,136],LANE_L=[106,360,614],HEAD_Y=566,BAND_Y=697;
+  const laneX=i=>VX+LANE_L[i];
+  const tray=frame=>`<span class="pv-tray" style="border-image-source:url('${art(frame)}')"></span>`;
   function socket(cell,lane,row){
-    const [w,h]=SOCKET,x=LANE_X[lane]-w/2,items=Object.entries(cell.reward||{}).filter(([,n])=>n>0).slice(0,2);
+    const [w,h]=CELL,items=Object.entries(cell.reward||{}).filter(([,n])=>n>0).slice(0,2);
     const state=cell.state,ready=state==='ready';
     const label=cell.picture?`${row.title} · ${cell.picture.cap}`:`${row.title} · ${items.map(([k,n])=>rname(k)+' ×'+fmt(n)).join(', ')}`;
-    return `<button type="button" class="pv-socket lane-${lane} is-${state}" data-action="${ready?cell.claim:'pass:detail'}" ${cell.data} style="${box(x,ROW/2-h/2-4,w,h)}" aria-label="${esc(label)}">`+
-      `<img class="pv-art" src="${art(cell.frame)}" alt="">`+
+    return `<button type="button" class="pv-socket lane-${lane} is-${state}" data-action="${ready?cell.claim:'pass:detail'}" ${cell.data} style="${box(LANE_L[lane],(ROW-h)/2,w,h)}" aria-label="${esc(label)}">`+
+      tray(cell.frame)+
       (cell.picture?`<span class="pv-items n1"><span><img class="${cell.picture.cls||''}" src="${cell.picture.src}" alt=""><b>${esc(cell.picture.cap)}</b></span></span>`:
         `<span class="pv-items n${items.length}">${items.map(([k,n])=>`<span><img src="${rpic(k)}" alt=""><b>${short(n)}</b></span>`).join('')}</span>`)+
       (state==='claimed'?`<img class="pv-mark" src="${art('claimed-check')}" alt="Đã nhận">`:'')+
-      (state==='track'?`<img class="pv-mark" src="${art('ownership-lock')}" alt="Cần kích hoạt">`:'')+
-      (state==='stage'?`<em class="pv-gate">Ải ${cell.gate}</em>`:'')+
+      (state==='stage'?`<span class="pv-gate"><img src="${art('gate-tag')}" alt=""><b>Ải ${cell.gate}</b></span>`:'')+
       (ready?`<span class="pv-claim"><img src="${art('claim-button')}" alt=""><b>Nhận</b></span>`:'')+`</button>`;
   }
   function tree(rows,current){
-    return `<div class="pv-rows" style="height:${rows.length*ROW+24}px">${rows.map((r,i)=>`<div class="pv-row ${r.reached?'is-reached':''}" style="${box(TREE_X,i*ROW,840,ROW)}">`+
-      `<img class="pv-trunk ${i%2?'flip':''}" src="${art('tree-row')}" alt="" style="${box(0,0,840,ROW)}">`+
-      `<span class="pv-medal ${r.level===current?'is-current':''}" style="${box(TRUNK-(r.level===current?56:52),ROW/2-(r.level===current?50:44),r.level===current?112:104,r.level===current?100:88)}"><img src="${art(r.level===current?'medal-current':'medal')}" alt=""><b>${esc(r.badge)}</b></span>`+
-      r.cells.map(c=>c&&socket(c,c.lane,r)).join('')+`</div>`).join('')}</div>`;
+    return `<div class="pv-rows" style="height:${rows.length*ROW+16}px;background-image:url('${art('trunk-tile')}')">${rows.map((r,i)=>{const cur=r.level===current;
+      return `<div class="pv-row ${r.reached?'is-reached':''}" style="${box(0,i*ROW,VW,ROW)}">`+
+        `<span class="pv-medal ${cur?'is-current':''}" style="${box(TRUNK-(cur?50:48),ROW/2-(cur?42:32),cur?100:96,cur?84:64)}"><img src="${art(cur?'medal-current':'medal')}" alt=""><b>${esc(r.badge)}</b></span>`+
+        r.cells.map(c=>c&&socket(c,c.lane,r)).join('')+`</div>`;}).join('')}</div>`;
   }
   // The scroll box keeps its place across renders; the first visit lands on the earliest node to take, or the level.
   function scroller(id,rows,current,state){
     const first=rows.findIndex(r=>r.cells.some(c=>c?.state==='ready')),at=first>=0?first:Math.max(0,rows.findIndex(r=>r.level===current));
-    const key='vipScroll-'+id,top=state[key]??Math.max(0,at*ROW-12);
-    return {html:`<div class="pv-scroll" data-scroll="${key}" data-top="${top}" style="${box(0,0,872,556)}">${tree(rows,current)}</div>`+
-      `<span class="pv-rail" style="${box(848,6,16,544)}"><img class="pv-railbar" src="${art('scroll-rail')}" alt=""><img class="pv-up" src="${art('scroll-arrow')}" alt=""><img class="pv-down" src="${art('scroll-arrow')}" alt=""><img class="pv-thumb" src="${art('scroll-thumb')}" alt=""></span>`};
+    const key='vipScroll-'+id,top=state[key]??at*ROW;
+    return `<div class="pv-viewport" style="${box(VX,VY,VW,VH)}"><div class="pv-scroll" data-scroll="${key}" data-top="${top}" style="${box(0,0,VW,VH)}">${tree(rows,current)}</div>`+
+      `<span class="pv-rail" style="${box(868,6,14,VH-12)}"><img class="pv-railbar" src="${art('scroll-rail')}" alt=""><img class="pv-up" src="${art('scroll-arrow')}" alt=""><img class="pv-down" src="${art('scroll-arrow')}" alt=""><img class="pv-thumb" src="${art('scroll-thumb')}" alt=""></span></div>`;
+  }
+  // The trunk's leafy top stands above the list, beside the free header; it sits under the viewport so the
+  // scrolling trunk runs on from it.
+  const sprout=()=>`<img class="pv-sprout" src="${art('trunk-top')}" alt="" style="${box(VX+TRUNK-52,VY-104,108,126)}">`;
+  // Column heads: name on the plaque, a second word or the price in the paid plaques' parchment slot.
+  function head(i,frame,name,sub,action,product,label){
+    const paid=frame!=='free',tag=action?'button':'span';
+    return `<${tag} ${action?`type="button" data-action="${action}" data-product="${product||''}" aria-label="${esc(label||name)}"`:''} class="pv-head2 head-${frame} ${name.length>7?'long':''}" style="${box(laneX(i),paid?HEAD_Y:HEAD_Y+4,CELL[0],paid?125:118)}">`+
+      `<img class="pv-art" src="${art('head2-'+frame)}" alt=""><b>${esc(name)}</b>${paid?`<small class="${sub==='Đã mở'?'own':''}">${esc(sub)}</small>`:''}</${tag}>`;
+  }
+  // One lock strip and a pale backing over the lanes still to be bought (from lane a to lane 2).
+  function lockLayer(a,product){
+    const x=laneX(a),w=laneX(2)+CELL[0]-x;
+    return `<img class="pv-backing" src="${art('paid-backing')}" alt="" style="${box(x-10,BAND_Y-6,w+20,VY+VH-BAND_Y+10)}">`+
+      `<button type="button" class="pv-band ${a===2?'one':''}" data-action="pass:buy" data-product="${product}" style="${box(x,BAND_Y,w,52)};border-image-source:url('${art('lock-band')}')" aria-label="Kích hoạt · sắp ra mắt"><b>Sắp ra mắt</b></button>`;
   }
 
   // ----- Sổ Hành Trình -----
   function passRows(v){
     return v.rows.map(r=>({level:r.level,badge:String(r.level),reached:r.reached,title:`Cấp ${r.level}`,
-      cells:['free','gold','jewel'].map((t,lane)=>({...r[t],lane,frame:'reward-'+t,claim:'pass:claim',data:`data-level="${r.level}" data-track="${t}"`}))}));
+      cells:['free','gold','jewel'].map((t,lane)=>({...r[t],lane,frame:'cell-'+t,claim:'pass:claim',data:`data-level="${r.level}" data-track="${t}"`}))}));
   }
-  // The crown's trunk (x 0.317 of its art, 0.085 of its width) is scaled to the rows' trunk and laps over the top of
-  // the scroll box, so the tree reads as one piece while the rows scroll under it.
-  const crown=()=>`<img class="pv-crown" src="${art('tree-crown')}" alt="" style="${box(STAGE_X+TRUNK-249,540,787,252)}">`;
-  // Headers over the first two lanes on the card tabs: what is reached, what it delivers.
-  const laneHeads=list=>list.map(([name,sub,frame],i)=>`<span class="pv-head head-${frame}" style="${box(STAGE_X+LANE_X[i]-112,610,224,110)}"><img class="pv-art" src="${art('header-'+frame)}" alt=""><b>${esc(name)}</b>${sub?`<small>${esc(sub)}</small>`:''}</span>`).join('');
   function passTab(state){
     const v=G.engine.pass();if(!v)return '';
-    const head=(t,i)=>{const x=STAGE_X+LANE_X[i]-112,own=t.id==='free'||v.owned[t.id],price=t.product&&product(t.product)?.price;
-      return `<button type="button" class="pv-head head-${t.id}" data-action="${t.product?'pass:buy':'pass:detail-track'}" data-product="${t.product||''}" style="${box(x,610,224,110)}" aria-label="Nhánh ${esc(t.name)}${own?'':' · cần kích hoạt'}">`+
-        `<img class="pv-art" src="${art('header-'+t.id)}" alt=""><b>${esc(t.name)}</b>${t.product&&!own?'<small>Chưa kích hoạt</small>':''}</button>`+
-        (t.product&&!own?`<button type="button" class="pv-soon" data-action="pass:buy" data-product="${t.product}" style="${box(x+8,708,208,48)}" aria-label="Kích hoạt · ${vnd(price)} · sắp ra mắt"><img class="pv-art" src="${art('status-plaque')}" alt=""><b>${vnd(price)}</b></button>`:'')+
-        (t.product&&own?`<em class="pv-owned" style="${box(x+40,712,144,36)}">Đã mở</em>`:'');};
-    const s=scroller('pass',passRows(v),v.level,state);
-    return `<div class="pv-viewport" style="${box(40,768,872,556)}">${s.html}</div>`+crown()+`<button type="button" class="pv-season" data-action="pass:season" style="${box(54,500,840,90)}" aria-label="Mùa ${v.season+1} · cấp ${v.level}/${v.max} · cách kiếm điểm">`+
-        `<img class="pv-art" src="${art('season-strip')}" alt=""><b class="pv-mua" style="${box(48,14,150,56)}">Mùa ${v.season+1}</b>`+
-        `<b class="pv-lvl" style="${box(236,16,180,56)}">Cấp ${v.level} / ${v.max}</b>`+
-        `<span class="pv-trough green" style="${box(420,24,300,40)}"><img src="${art('activity-trough')}" alt=""><em style="width:${(v.level>=v.max?100:v.into/v.per*100).toFixed(1)}%"><img src="${art('activity-fill')}" alt=""></em><b>${v.level>=v.max?'Tối đa':`${v.into} / ${v.per}`}</b></span>`+
-        `<img class="pv-hourglass" src="${art('hourglass')}" alt="" style="${box(736,6,60,76)}"><small class="pv-days" style="${box(712,56,108,30)}"><img src="${art('quantity-pill')}" alt="">${v.daysLeft} ngày</small></button>`+
-      O.PASS.tracks.map(head).join('')+
-      `<button type="button" class="pv-action secondary" data-action="route:quests" style="${box(70,1350,300,96)}"><img class="pv-art" src="${art('action-secondary')}" alt=""><img class="pv-actionicon" src="${art('journey-book')}" alt=""><b>Nhiệm vụ</b></button>`+
-      `<button type="button" class="pv-action primary" data-action="pass:claim-all" ${v.ready?'':'disabled'} style="${box(414,1346,456,104)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art('gift')}" alt=""><b>${v.ready?`Nhận tất cả · ${v.ready}`:'Chưa có quà'}</b></button>`;
+    const heads=O.PASS.tracks.map((t,i)=>{const own=t.id==='free'||v.owned[t.id],price=t.product&&product(t.product)?.price;
+      return head(i,t.id,t.name,own?'Đã mở':vnd(price),t.product?'pass:buy':'pass:detail-track',t.product,`Nhánh ${t.name}${own?'':' · '+vnd(price)+' · sắp ra mắt'}`);}).join('');
+    const lockFrom=!v.owned.gold&&!v.owned.jewel?1:!v.owned.jewel?2:0;
+    return (lockFrom?lockLayer(lockFrom,O.PASS.tracks[lockFrom].product):'')+sprout()+scroller('pass',passRows(v),v.level,state)+heads+
+      `<button type="button" class="pv-season" data-action="pass:season" style="${box(44,474,852,84)}" aria-label="Mùa ${v.season+1} · cấp ${v.level}/${v.max} · cách kiếm điểm">`+
+        `<img class="pv-art" src="${art('season-strip')}" alt=""><b class="pv-mua" style="${box(46,12,150,58)}">Mùa ${v.season+1}</b>`+
+        `<b class="pv-lvl" style="${box(248,14,156,56)}">Cấp ${v.level} / ${v.max}</b>`+
+        `<span class="pv-trough green" style="${box(404,22,246,40)}"><img src="${art('activity-trough')}" alt=""><em style="width:${(v.level>=v.max?100:v.into/v.per*100).toFixed(1)}%"><img src="${art('activity-fill')}" alt=""></em><b>${v.level>=v.max?'Tối đa':`${v.into} / ${v.per}`}</b></span>`+
+        `<img class="pv-hourglass" src="${art('hourglass')}" alt="" style="${box(654,12,38,60)}"><b class="pv-days" style="${box(694,14,96,56)}">${v.daysLeft} ngày</b></button>`+
+      `<button type="button" class="pv-action secondary" data-action="route:quests" style="${box(52,1350,300,104)}"><img class="pv-art" src="${art('action-secondary')}" alt=""><img class="pv-actionicon" src="${art('journey-book')}" alt=""><b>Nhiệm vụ</b></button>`+
+      `<button type="button" class="pv-action primary" data-action="pass:claim-all" ${v.ready?'':'disabled'} style="${box(372,1346,524,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art('gift')}" alt=""><b>${v.ready?`Nhận tất cả · ${v.ready}`:'Chưa có quà'}</b></button>`;
   }
   function seasonDialog(){
     const v=G.engine.pass(),modal=window.GemwovenUI.makeDialog('pass-season',`Sổ Hành Trình · Mùa ${v.season+1}`,'growth-dialog pv-dialog');
@@ -143,42 +154,41 @@
     const gift={src:art('gift'),cap:'Khi mua'},cal=n=>({src:art('calendar'),cap:'Ngày '+n});
     const boss={src:file('nav-arena'),cap:'+1 Trùm'},perksNow={src:file('chest'),cap:'+2h · 3★'};
     const lock=own?'claimed':'track';
-    const rows=[{level:0,badge:'✦',title:'Khi mua',reached:own,cells:[{picture:gift,state:'info',lane:0,frame:'reward-free',claim:'pass:detail',data:`data-title="Thẻ Tháng" data-why="Ngay khi thẻ được kích hoạt."`},{reward:{gems:x.gemsNow},state:own?'claimed':'track',lane:1,frame:'reward-gold',claim:'pass:detail',data:`data-title="Thẻ Tháng · khi mua" data-reward='${JSON.stringify({gems:x.gemsNow})}' data-why="${own?'Đã giao.':'Giao ngay khi mua thẻ · thanh toán sắp ra mắt.'}"`},
-        {picture:perksNow,state:lock,lane:2,frame:'reward-jewel',claim:'pass:detail',data:`data-title="Thẻ Tháng · đặc quyền" data-why="Tích lũy +2 giờ và quét ải 3★ không cần vé suốt thời hạn thẻ."`}]}]
+    const rows=[{level:0,badge:'✦',title:'Khi mua',reached:own,cells:[{picture:gift,state:'info',lane:0,frame:'cell-free',claim:'pass:detail',data:`data-title="Thẻ Tháng" data-why="Ngay khi thẻ được kích hoạt."`},{reward:{gems:x.gemsNow},state:own?'claimed':'track',lane:1,frame:'cell-gold',claim:'pass:detail',data:`data-title="Thẻ Tháng · khi mua" data-reward='${JSON.stringify({gems:x.gemsNow})}' data-why="${own?'Đã giao.':'Giao ngay khi mua thẻ · thanh toán sắp ra mắt.'}"`},
+        {picture:perksNow,state:lock,lane:2,frame:'cell-jewel',claim:'pass:detail',data:`data-title="Thẻ Tháng · đặc quyền" data-why="Tích lũy +2 giờ và quét ải 3★ không cần vé suốt thời hạn thẻ."`}]}]
       .concat(Array.from({length:x.days},(_,i)=>({level:i+1,badge:String(i+1),title:`Ngày ${i+1}`,reached:own&&i+1<=day,
-        cells:[{picture:cal(i+1),state:'info',lane:0,frame:'reward-free',claim:'pass:detail',data:`data-title="Thẻ Tháng · ngày ${i+1}" data-why="Mỗi ngày thẻ còn hạn, Đá Ngọc tự vào Hòm Thư nếu quên đăng nhập."`},{reward:{gems:x.gemsDaily},state:own?(i+1<day?'claimed':'level'):'track',lane:1,frame:'reward-gold',claim:'pass:detail',data:`data-title="Thẻ Tháng · ngày ${i+1}" data-reward='${JSON.stringify({gems:x.gemsDaily})}' data-why="Giao qua Hòm Thư mỗi ngày khi thẻ còn hạn · thanh toán sắp ra mắt."`},
-          {picture:boss,state:own?(i+1<day?'claimed':'level'):'track',lane:2,frame:'reward-jewel',claim:'pass:detail',data:`data-title="Thẻ Tháng · ngày ${i+1}" data-why="+1 lượt Trùm Vô Tận có thưởng trong ngày khi thẻ còn hạn."`}]})));
-    const s=scroller('monthly',rows,own?day:-1,state),perks=[['chest','+2h','Tích lũy +2 giờ'],['nav-arena','+1','+1 lượt Trùm Vô Tận có thưởng mỗi ngày'],['icon-quest','3★','Quét ải 3★ không cần vé quét']];
-    return `<div class="pv-viewport" style="${box(40,768,872,556)}">${s.html}</div>`+crown()+productStrip('monthly-card',own?`Còn ${card.daysLeft} ngày`:`${x.days} ngày`,[],own)+
-      laneHeads([['Mỗi ngày',`${x.days} ngày`,'free'],['Đá Ngọc','Giao dịch','gold'],['Đặc quyền','','jewel']])+
+        cells:[{picture:cal(i+1),state:'info',lane:0,frame:'cell-free',claim:'pass:detail',data:`data-title="Thẻ Tháng · ngày ${i+1}" data-why="Mỗi ngày thẻ còn hạn, Đá Ngọc tự vào Hòm Thư nếu quên đăng nhập."`},{reward:{gems:x.gemsDaily},state:own?(i+1<day?'claimed':'level'):'track',lane:1,frame:'cell-gold',claim:'pass:detail',data:`data-title="Thẻ Tháng · ngày ${i+1}" data-reward='${JSON.stringify({gems:x.gemsDaily})}' data-why="Giao qua Hòm Thư mỗi ngày khi thẻ còn hạn · thanh toán sắp ra mắt."`},
+          {picture:boss,state:own?(i+1<day?'claimed':'level'):'track',lane:2,frame:'cell-jewel',claim:'pass:detail',data:`data-title="Thẻ Tháng · ngày ${i+1}" data-why="+1 lượt Trùm Vô Tận có thưởng trong ngày khi thẻ còn hạn."`}]})));
+    return (own?'':lockLayer(1,'monthly-card'))+sprout()+scroller('monthly',rows,own?day:-1,state)+productStrip('monthly-card',own?`Còn ${card.daysLeft} ngày`:`${x.days} ngày`,own)+
+      head(0,'free','Mỗi ngày')+head(1,'gold','Đá Ngọc',own?'Đã mở':'Σ '+fmt(x.gemsNow+x.days*x.gemsDaily),'pass:buy','monthly-card')+head(2,'jewel','Đặc quyền','Cả tháng','pass:buy','monthly-card')+
       buyButton('monthly-card','calendar',own?'Gia hạn':'Kích hoạt');
   }
   function fundTab(state){
     const x=product('growth-fund'),p=G.engine.read(),own=!!p.cards?.fund,[best,{level:top}]=Object.entries(p.heroes).sort((a,b)=>b[1].level-a[1].level)[0];
     let sum=0;const rows=O.GROWTH_FUND.map(f=>(sum+=f.gems,{level:f.level,badge:String(f.level),title:`Cấp tướng ${f.level}`,reached:top>=f.level,
-      cells:[{picture:{src:file('face-'+best)||file('portrait-'+best),cap:'Cấp '+f.level,cls:'face'},state:top>=f.level?'claimed':'info',lane:0,frame:'reward-free',claim:'pass:detail',data:`data-title="Cấp tướng ${f.level}" data-reward='{}' data-why="${top>=f.level?'Đã đạt mốc.':`Tướng cao nhất cần cấp ${f.level} (đang ${top}).`}"`,level:f.level},
-        {reward:{gems:f.gems},state:own?(top>=f.level?'ready':'level'):'track',lane:1,frame:'reward-gold',claim:'pass:detail',data:`data-title="Quỹ · cấp ${f.level}" data-reward='${JSON.stringify({gems:f.gems})}' data-why="Giao khi tướng cao nhất đạt cấp ${f.level}, sau khi mua quỹ · thanh toán sắp ra mắt."`},
-        {picture:{src:art('fund-pouch'),cap:'Σ '+fmt(sum)},state:'info',lane:2,frame:'reward-jewel',claim:'pass:detail',data:`data-title="Quỹ · tới cấp ${f.level}" data-reward='${JSON.stringify({gems:sum})}' data-why="Tổng Đá Ngọc của quỹ tính tới mốc này."`}]}));
-    const s=scroller('fund',rows,null,state),total=O.GROWTH_FUND.reduce((n,f)=>n+f.gems,0);
-    return `<div class="pv-viewport" style="${box(40,768,872,556)}">${s.html}</div>`+crown()+productStrip('growth-fund',`${fmt(total)} Đá Ngọc`,[],own)+
-      laneHeads([['Cấp tướng','Cao nhất','free'],['Đá Ngọc','Giao dịch','gold'],['Tích lũy','','jewel']])+buyButton('growth-fund','fund-pouch','Kích hoạt');
+      cells:[{picture:{src:file('face-'+best)||file('portrait-'+best),cap:'Cấp '+f.level,cls:'face'},state:top>=f.level?'claimed':'info',lane:0,frame:'cell-free',claim:'pass:detail',data:`data-title="Cấp tướng ${f.level}" data-reward='{}' data-why="${top>=f.level?'Đã đạt mốc.':`Tướng cao nhất cần cấp ${f.level} (đang ${top}).`}"`,level:f.level},
+        {reward:{gems:f.gems},state:own?(top>=f.level?'ready':'level'):'track',lane:1,frame:'cell-gold',claim:'pass:detail',data:`data-title="Quỹ · cấp ${f.level}" data-reward='${JSON.stringify({gems:f.gems})}' data-why="Giao khi tướng cao nhất đạt cấp ${f.level}, sau khi mua quỹ · thanh toán sắp ra mắt."`},
+        {picture:{src:art('fund-pouch'),cap:'Σ '+fmt(sum)},state:'info',lane:2,frame:'cell-jewel',claim:'pass:detail',data:`data-title="Quỹ · tới cấp ${f.level}" data-reward='${JSON.stringify({gems:sum})}' data-why="Tổng Đá Ngọc của quỹ tính tới mốc này."`}]}));
+    const total=O.GROWTH_FUND.reduce((n,f)=>n+f.gems,0);
+    return (own?'':lockLayer(1,'growth-fund'))+sprout()+scroller('fund',rows,null,state)+productStrip('growth-fund',`${O.GROWTH_FUND.length} mốc`,own)+
+      head(0,'free','Cấp tướng')+head(1,'gold','Đá Ngọc',own?'Đã mở':'Σ '+fmt(total),'pass:buy','growth-fund')+head(2,'jewel','Tích lũy','Tới mốc','pass:buy','growth-fund')+
+      buyButton('growth-fund','fund-pouch','Kích hoạt');
   }
-  const buyButton=(id,icon,text)=>`<button type="button" class="pv-action primary two" data-action="pass:buy" data-product="${id}" style="${box(242,1346,456,104)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art(icon)}" alt=""><span><b>${text} · ${vnd(product(id).price)}</b><small>Sắp ra mắt</small></span></button>`;
-  // The season strip slot on the card tabs: name and price on the left, benefits as pictures, the plaque on the right.
-  function productStrip(id,sub,perks,own){
+  const buyButton=(id,icon,text)=>`<button type="button" class="pv-action primary two" data-action="pass:buy" data-product="${id}" style="${box(206,1346,530,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art(icon)}" alt=""><span><b>${text} · ${vnd(product(id).price)}</b><small>Sắp ra mắt</small></span></button>`;
+  // The season strip slot on the card tabs: the price on the pennant, the name and one short fact beside it.
+  function productStrip(id,sub,own){
     const x=product(id);
-    return `<button type="button" class="pv-season pv-offer" data-action="pass:buy" data-product="${id}" style="${box(54,500,840,90)}" aria-label="${esc(x.name)} · ${vnd(x.price)}">`+
-      `<img class="pv-art" src="${art('season-strip')}" alt=""><b class="pv-mua" style="${box(48,14,150,56)}">${esc(vnd(x.price).replace('.000đ','k'))}</b>`+
-      `<b class="pv-lvl small" style="${box(236,16,560,56)}">${esc(x.name)}<small class="pv-sub">${esc(own?'Đang có hiệu lực':sub)}</small></b>`+
-      perks.map(([icon,cap,t],i)=>`<span class="pv-perk small" style="${box(800-perks.length*86+i*86,4,80,82)}" title="${esc(t)}"><img src="${file(icon)}" alt=""><b>${esc(cap)}</b></span>`).join('')+`</button>`;
+    return `<button type="button" class="pv-season pv-offer" data-action="pass:buy" data-product="${id}" style="${box(44,474,852,84)}" aria-label="${esc(x.name)} · ${vnd(x.price)}">`+
+      `<img class="pv-art" src="${art('season-strip')}" alt=""><b class="pv-mua" style="${box(46,12,150,58)}">${esc(vnd(x.price).replace('.000đ','k'))}</b>`+
+      `<b class="pv-lvl" style="${box(250,14,540,56)}">${esc(x.name)}<small class="pv-sub">${esc(own?'Đang có hiệu lực':sub)}</small></b></button>`;
   }
 
   function build(el,state){
     if(!TABS.some(t=>t[0]===state.vipTab))state.vipTab='pass';
     el.innerHTML=`<img class="pv-sign" src="${art('title-sign')}" alt="" style="${box(262,112,416,122)}"><h2 class="pv-title" style="${box(312,160,316,60)}">VIP</h2>`+
       vipStrip()+tabs(state)+({pass:passTab,monthly:monthlyTab,fund:fundTab}[state.vipTab])(state);
-    requestAnimationFrame(()=>{for(const s of el.querySelectorAll('.pv-scroll')){const thumb=s.parentNode.querySelector('.pv-rail .pv-thumb');
-      const sync=()=>{state[s.dataset.scroll]=s.scrollTop;if(thumb){const room=s.scrollHeight-s.clientHeight;thumb.style.top=(34+(room>0?s.scrollTop/room:0)*(544-68-80))+'px';}};
+    requestAnimationFrame(()=>{for(const s of el.querySelectorAll('.pv-scroll')){const thumb=s.parentNode.querySelector('.pv-rail .pv-thumb'),track=s.clientHeight-12;
+      const sync=()=>{state[s.dataset.scroll]=s.scrollTop;if(thumb){const room=s.scrollHeight-s.clientHeight;thumb.style.top=(34+(room>0?s.scrollTop/room:0)*(track-68-80))+'px';}};
       s.scrollTop=Number(s.dataset.top)||0;sync();s.addEventListener('scroll',sync,{passive:true});}});
   }
 

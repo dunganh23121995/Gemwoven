@@ -1,0 +1,50 @@
+{
+ "head2-free": [
+  437,
+  212
+ ],
+ "head2-gold": [
+  446,
+  229
+ ],
+ "head2-jewel": [
+  447,
+  229
+ ],
+ "cell-free": [
+  438,
+  207
+ ],
+ "cell-gold": [
+  438,
+  207
+ ],
+ "cell-jewel": [
+  438,
+  207
+ ],
+ "lock-band": [
+  469,
+  82
+ ],
+ "paid-backing": [
+  455,
+  199
+ ],
+ "trunk-tile": [
+  142,
+  203
+ ],
+ "trunk-top": [
+  200,
+  233
+ ],
+ "gate-tag": [
+  337,
+  105
+ ],
+ "owned-tag": [
+  376,
+  101
+ ]
+}

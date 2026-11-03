@@ -1,0 +1,66 @@
+Attached references in order: Image 1 = mockup-1.png (approved VIP screen mockup, second pass), Image 2 = ui-kit.png (Gemwoven's approved shared interface kit).
+
+Create one production asset sheet of modular painted interface pieces for Gemwoven's Journey Pass reward list.
+
+REFERENCE ROLES
+Image 1 is the primary reference for silhouettes, colours and materials: the three track header plaques (Thường green with a leaf sprig, Vàng honey gold with a small crown, Diệu Ngọc violet with a lotus), the pale reward trays below them, the shared lock strip, and the slender timeline tree on the left.
+Image 2 is the supporting reference for craftsmanship: light parchment, carved wood, thin aged brass edges, restrained rivets. Match its calm, light surfaces.
+Reconstruct individual assets. Do not reproduce a complete screen, room scenery, text or item icons.
+
+OUTPUT AND GRID
+One opaque landscape 1536 x 1024 pixel image.
+Exactly 4 rows and 3 columns of invisible cells. Each cell is 512 x 256 pixels. Read cells left to right, top to bottom.
+Use a perfectly uniform, flat, solid #FF00FF background everywhere outside the assets, including open holes.
+No visible grid, cell borders, labels, captions or guide marks.
+
+PACKING CONTRACT
+Exactly one connected foreground asset per cell, centred, drawn as large as the cell allows while keeping the aspect ratio of its target size below (logical game units).
+Keep at least 24 pixels of clear magenta between the asset and its cell boundary.
+Every leaf, rivet, emblem and tip must be attached to its own asset. No detached particles or sparkles.
+No drop shadows, glow, haze or colour spill onto the magenta. Keep magenta out of the asset paint.
+
+STYLE
+Clean HD hand-painted fantasy UI, matte carved timber, aged brass, light parchment, a few restrained green leaves, soft painted volume, front-facing, no perspective.
+LIGHT and CALM surfaces with THIN borders: these pieces sit behind item icons and large numbers, so interiors must be flat, quiet and blank. No filigree, no pattern, no inner ornaments.
+No pixel art, glossy 3D or flat web styling. All writing areas blank.
+
+CELL MANIFEST
+
+Row 1, Column 1 — head-free, 252 x 116:
+Dark green painted wooden header plaque with a thin brass rim, a small attached two-leaf sprig emblem centred on the top edge and a few small leaves at the two lower corners. Calm blank green centre for a title word.
+
+Row 1, Column 2 — head-gold, 252 x 128:
+Warm honey-brown wooden header plaque with a thin gold rim and a small attached golden crown emblem centred on top. Its lower third is an attached cream parchment price slot with a thin gold edge, blank. Upper area blank for a title word.
+
+Row 1, Column 3 — head-jewel, 252 x 128:
+The matching violet header plaque with a thin gold rim and a small attached pale lilac lotus emblem centred on top, with the same attached cream parchment price slot below. Blank.
+
+Row 2, Column 1 — cell-free, 252 x 148:
+A shallow flat reward tray of pale sage-green parchment with a thin warm wooden-brass edge and softly rounded corners. Interior flat, light and empty.
+
+Row 2, Column 2 — cell-gold, 252 x 148:
+The same shallow tray in light honey-cream parchment with a thin gold edge. Interior flat, light and empty.
+
+Row 2, Column 3 — cell-jewel, 252 x 148:
+The same shallow tray in pale lilac parchment with a thin gold edge. Interior flat, light and empty.
+
+Row 3, Column 1 — lock-band, 518 x 44:
+A long, low strip of muted grey-brown leather or wood with a thin brass edge, and one clear brass padlock attached at about one quarter of its length from the left. The rest is blank for the words "Sắp ra mắt" (do not write them).
+
+Row 3, Column 2 — paid-backing, 448 x 208:
+A nine-slice backing panel: a very pale, low-contrast warm grey parchment wash with a thin, even, uniform light-wood edge (about 10 units) on all four sides and plain square-ish corners, so it can be stretched tall. No ornaments, no corner decoration, no texture pattern in the middle.
+
+Row 3, Column 3 — trunk-tile, 96 x 160:
+One vertically repeatable segment of the slender timeline tree trunk from Image 1: a straight warm-brown trunk about 26 units wide, centred, with two small attached leaves (one on each side). The trunk has exactly the same width, colour and grain at its top and bottom edges so copies join seamlessly at a 160-unit pitch. No caps, roots, knots or taper at the edges.
+
+Row 4, Column 1 — trunk-top, 140 x 150:
+The top of the same slender trunk: a small leafy sprout crown with a few attached green leaves, ending at the bottom in the straight 26-unit trunk, centred, that continues into the trunk tile.
+
+Row 4, Column 2 — gate-tag, 120 x 44:
+A small cream parchment tag with a thin brass edge and a tiny brass rivet at the left, blank, for a short word like "Ải 12".
+
+Row 4, Column 3 — owned-tag, 160 x 44:
+A small green ribbon plate with a thin gold edge, blank, for the word "Đã mở".
+
+FINAL EXCLUSIONS
+No room background, assembled screen, items, crystals, coins, characters, typography, letters, digits, logos or watermark. Only the twelve isolated assets on pure #FF00FF.

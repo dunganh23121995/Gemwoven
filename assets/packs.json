@@ -4174,6 +4174,7 @@
     "assets/gemwoven/forge/ingot-rare.webp",
     "assets/gemwoven/forge/ingot-uncommon.webp",
     "assets/gemwoven/forge/lock.webp",
+    "assets/gemwoven/forge/pedestal.webp",
     "assets/gemwoven/forge/rack.webp",
     "assets/gemwoven/forge/socket.webp",
     "assets/gemwoven/forge/tab.webp",
@@ -4743,22 +4744,23 @@
     "assets/gemwoven/vip-pass/activity-trough.webp",
     "assets/gemwoven/vip-pass/avatar-frame.webp",
     "assets/gemwoven/vip-pass/calendar.webp",
+    "assets/gemwoven/vip-pass/cell-free.webp",
+    "assets/gemwoven/vip-pass/cell-gold.webp",
+    "assets/gemwoven/vip-pass/cell-jewel.webp",
     "assets/gemwoven/vip-pass/claim-button.webp",
     "assets/gemwoven/vip-pass/claimed-check.webp",
     "assets/gemwoven/vip-pass/fund-pouch.webp",
+    "assets/gemwoven/vip-pass/gate-tag.webp",
     "assets/gemwoven/vip-pass/gift.webp",
-    "assets/gemwoven/vip-pass/header-free.webp",
-    "assets/gemwoven/vip-pass/header-gold.webp",
-    "assets/gemwoven/vip-pass/header-jewel.webp",
+    "assets/gemwoven/vip-pass/head2-free.webp",
+    "assets/gemwoven/vip-pass/head2-gold.webp",
+    "assets/gemwoven/vip-pass/head2-jewel.webp",
     "assets/gemwoven/vip-pass/journey-book.webp",
+    "assets/gemwoven/vip-pass/lock-band.webp",
     "assets/gemwoven/vip-pass/medal-current.webp",
     "assets/gemwoven/vip-pass/medal.webp",
     "assets/gemwoven/vip-pass/next-vip-tag.webp",
-    "assets/gemwoven/vip-pass/ownership-lock.webp",
-    "assets/gemwoven/vip-pass/quantity-pill.webp",
-    "assets/gemwoven/vip-pass/reward-free.webp",
-    "assets/gemwoven/vip-pass/reward-gold.webp",
-    "assets/gemwoven/vip-pass/reward-jewel.webp",
+    "assets/gemwoven/vip-pass/paid-backing.webp",
     "assets/gemwoven/vip-pass/room.webp",
     "assets/gemwoven/vip-pass/scroll-arrow.webp",
     "assets/gemwoven/vip-pass/scroll-rail.webp",
@@ -4768,8 +4770,8 @@
     "assets/gemwoven/vip-pass/tab-idle.webp",
     "assets/gemwoven/vip-pass/tab-selected.webp",
     "assets/gemwoven/vip-pass/title-sign.webp",
-    "assets/gemwoven/vip-pass/tree-crown.webp",
-    "assets/gemwoven/vip-pass/tree-row.webp",
+    "assets/gemwoven/vip-pass/trunk-tile.webp",
+    "assets/gemwoven/vip-pass/trunk-top.webp",
     "assets/gemwoven/vip-pass/vip-crest.webp",
     "assets/gemwoven/vip-pass/vip-strip.webp",
     "assets/gemwoven/vip-pass/vip-trough.webp",
@@ -4826,7 +4828,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 156722188
+   "bytes": 156907461
   },
   {
    "id": "hero-earth-f1",
@@ -5059,7 +5061,7 @@
     "assets/reimagined/heroes/ice/hurt.webp",
     "assets/reimagined/heroes/ice/run.webp"
    ],
-   "bytes": 9500040
+   "bytes": 9499810
   },
   {
    "id": "hero-ice-f2",
@@ -5245,7 +5247,7 @@
     "assets/heroes/novice/run.webp",
     "assets/heroes/novice/skill.webp"
    ],
-   "bytes": 6345759
+   "bytes": 6345382
   },
   {
    "id": "hero-novice-f2",

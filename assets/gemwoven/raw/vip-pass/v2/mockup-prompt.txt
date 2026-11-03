@@ -1,0 +1,101 @@
+Create one polished, production-quality UI mockup for Gemwoven, a Vietnamese portrait match-3 RPG.
+
+OUTPUT AND REFERENCES
+Output one portrait 1200×1800 image, aspect ratio 2:3.
+Center the complete logical 941×1672 game stage in an approximately 1013×1800 area. The remaining approximately 94 pixels on each side only extend the room background. No extra UI in those margins.
+
+Reference order:
+1. phone-vip-pass.png: old VIP screen, for content, game HUD, bottom navigation and existing room only.
+2. phone-shop.png: approved illustration quality, warm lighting, readable text and breathing room.
+3. phone-inventory.png: approved light parchment surfaces and item presentation.
+4. ui-kit.png: approved hand-painted interface parts and materials.
+
+ART DIRECTION
+Keep the existing warm reading room, timber architecture, soft daylight, leafy details and cozy fantasy atmosphere. Make the central background calm, moderately dark, low contrast and low detail.
+Use illustrated parchment, carved wood, restrained gold fittings and shallow item trays. All panels and buttons must look hand-painted. Avoid heavy nested borders and busy decoration behind item icons.
+Use clean Vietnamese typography with correct diacritics, generous spacing and minimal text outlines.
+Treat text and numbers as crisp overlay lettering, visually separate from the painted surfaces.
+Do not reproduce the magenta background from the UI kit.
+
+COORDINATE SYSTEM
+All following coordinates refer to the logical 941×1672 stage before scaling.
+
+Preserve the game's HUD at the top and illustrated bottom navigation at approximately y=1490–1672.
+HUD: Hiro avatar, level 1, gold “1.200”, premium crystal “120.000”, mail badge “2”.
+Bottom navigation: “Trang Chủ”, “Tướng”, “Túi Đồ”, “Kỹ Năng”, “Triệu Hồi”, “Đấu Trường”, “Thêm”.
+Match their approved appearance and proportions.
+
+LAYOUT
+Title sign “VIP”: x300 y122 w341 h70.
+VIP summary panel: x28 y206 w885 h150.
+Show the current VIP shield “VIP 0”, progress “0 / 100 điểm”, next tier “VIP 1”, and a light strip “Nạp: Sắp ra mắt”.
+At the right show two distinct next-tier benefit icons: an avatar frame and a gift with a gold coin and “500”.
+Keep these elements clearly separated.
+
+Tabs at y370 h72:
+x28 w350: “Sổ Hành Trình”, selected light parchment.
+x388 w265: “Thẻ Tháng”.
+x663 w250: “Quỹ”.
+Inactive tabs use quiet dark wood.
+
+Season parchment strip: x28 y454 w885 h76.
+Display “Mùa 1”, “Cấp 3/50”, a progress bar labeled “50/100”, and an hourglass beside “26 ngày”.
+Keep everything aligned within this single strip.
+
+THREE REWARD TRACKS
+Column headers:
+Free: x126 y546 w252 h116.
+Gold: x392 y546 w252 h116.
+Jade: x658 y546 w252 h116.
+
+Free header: leaf emblem and “Thường”.
+Gold header: crown emblem, “Vàng”, price “149.000đ”.
+Jade header: lotus emblem, “Diệu Ngọc”, price “299.000đ”.
+
+One shared locked-status strip spans the two paid columns at x392 y626 w518 h36.
+Show one clearly drawn padlock and the words “Sắp ra mắt”.
+Do not repeat “Chưa kích hoạt”. Do not put individual padlocks on every reward cell.
+The prices are informational; payment is unavailable.
+
+REWARD LIST
+Viewport: x22 y680 w897 h640.
+Visible scrollbar: x921 y680 w12 h640.
+Each reward row is 160 logical units high.
+Each reward cell is 252×148, inset 6 units vertically.
+Cell x positions: 126, 392, 658.
+
+Move the tree timeline to the narrow LEFT gutter.
+Use a slender warm wood trunk, approximately 24 units wide, centered at x69, with a few short branches and sparse leaves.
+Place 76×76 level medallions centered at x69 on each row.
+Preserve a recognizable reward-tree feeling without large branches behind the rewards.
+
+Free reward cells: pale green parchment.
+Gold reward cells: light honey parchment.
+Jade reward cells: pale lilac parchment.
+All three use shallow flat trays, minimal borders and generous interior space.
+Item icons are 64–72 logical units. Quantity numerals are 38 logical units, never smaller than 34.
+
+SCREEN STATE
+Season 1, current pass level 3 of 50.
+Level 1 free reward is already claimed: show its item and a clear checkmark.
+Level 2 free reward: gold coin, “3.400”, bright “Nhận” button.
+Level 3 free reward: gold coin, “3.600”, bright “Nhận” button.
+Level 4 free reward: gold coin, “3.800”, visibly unreached and gently dimmed.
+
+Level 2 Gold rewards: purple experience book “22” and ore “10”.
+Level 3 Gold rewards: purple experience book “23” and ore “10”.
+Level 4 Gold rewards: purple experience book “24” and ore “10”.
+For these Jade rows: red evolution essence “6” and ore “15”.
+
+Both paid tracks are inactive. Apply one consistent, very light neutral veil across their columns and a continuous subtle column boundary connected to the shared lock strip.
+Keep every reward icon and supplied quantity legible.
+Do not invent quantities for unspecified level-1 rewards.
+Distinguish locked tracks from unreached levels through the fixed lock strip; do not make both states equally dark.
+There are no premium crystal rewards in this Journey Pass.
+
+BOTTOM ACTIONS
+Secondary button: x28 y1352 w300 h104, book icon and “Nhiệm vụ”.
+Primary golden button: x348 y1352 w565 h104, gift icon and “Nhận tất cả · 2”.
+Make the primary action immediately readable.
+
+Finish as a convincing screenshot of the approved game, with accurate Vietnamese text, cohesive illustrated materials and clear reward hierarchy. No coordinate labels, annotations, device frame or presentation captions.
