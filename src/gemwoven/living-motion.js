@@ -39,9 +39,9 @@
       leaves:[[120,90],[820,120]]
     },
     // Forge, arena, shop, hero, bag and tavern: placed on the calm redrawn paintings (*-calm.webp, 03/11).
-    forge:{
-      fire:[[750,690,140]],
-      sparks:[[417,742]],
+    forge:{   // the forge painting is raised 90 units (forge.css); the furnace glows behind the smith instead of a flame over him
+      glows:[[742,432,250,'255,150,60'],[812,520,120,'255,180,90']],
+      sparks:[[417,652]],
       birds:[[120,21,-9,.6,-1]],
       butterflies:[[150,1500,50]]
     },

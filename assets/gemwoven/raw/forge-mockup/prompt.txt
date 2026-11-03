@@ -1,0 +1,143 @@
+Create ONE finished art-direction mockup of the redesigned Forge screen for Gemwoven, a portrait mobile match-3 RPG.
+
+OUTPUT
+One portrait 2:3 image, ideally 1200 × 1800, opaque background.
+Show one complete game screen, without a phone device, desktop browser, Studio toolbar, sidebar, presentation captions, or alternative designs.
+
+Preserve the game's logical 941 × 1672 screen proportions: center an approximately 1013 × 1800 playable screen within the output. Extend only the workshop scenery into the narrow side margins. Keep all HUD and navigation elements inside the central playable screen. Do not stretch the interface horizontally.
+
+REFERENCES
+Use the attached studio-forge.png as the existing workshop location reference ONLY, not as the interface layout to reproduce.
+Use the existing clean background assets/gemwoven/backgrounds/forge-calm.webp as the primary environment reference when supplied.
+Use studio-upgrade.png, studio-inventory.png, and studio-shop.png as the strict UI art-style references.
+
+Preserve the recognizable timber workshop, cool gray stone furnace on the right, warm orange fire, silver-haired chibi blacksmith holding a hammer, central anvil, blue banners, and daylight.
+Recompose locally where necessary to make the new interface fit, while retaining this same place and character.
+
+ART DIRECTION
+Warm, welcoming, finely hand-painted chibi fantasy.
+Crisp illustrated silhouettes, softly painted volume, matte wood grain, worn leather, aged brass, forged steel, restrained leafy decoration, parchment used sparingly.
+Match the accepted Gemwoven screens' craftsmanship and material richness.
+The interface should feel constructed from real objects belonging in this workshop.
+Make it readable and purposeful, without adding excessive ornament.
+
+SCREEN STATE
+Show the actual first-account experience:
+Hiro is the only owned hero.
+All six equipment slots are empty.
+The Craft tab is selected.
+All five craft rarities are locked.
+The first rarity, Tốt, is selected for PREVIEW ONLY.
+There must be no visual suggestion that crafting is currently available.
+
+VISUAL HIERARCHY
+The eye should immediately understand:
+Hiro → selected weapon slot → prospective item and benefit → required materials → unlock goal.
+
+Use the following coordinates as a logical layout guide on the 941 × 1672 game canvas:
+
+Y 0–150: TOP HUD
+Match the accepted screens: Hiro portrait with level badge, gold counter, blue premium-currency counter, mail icon.
+Use understated dark counter plates with aged gold rims.
+Illustrative balances: 1.200 gold, 0 premium currency.
+No premium reward, free-currency promotion, or purchase banner.
+
+Y 150–350: TITLE AND RECIPIENT
+A compact, beautifully painted hanging sign reading “Lò Rèn”.
+Below it, a small leather-and-brass recipient badge with Hiro's portrait and the name “Hiro”.
+No previous/next hero arrows in this single-hero state.
+Avoid a large dark web-style pill.
+
+Y 350–470: SIX EQUIPMENT SLOTS
+A single coherent painted equipment rack with six evenly spaced recessed leather-backed sockets.
+Labels: “Vũ khí”, “Áo”, “Mũ”, “Giày”, “Quần”, “Kính”.
+Show subtle engraved silhouettes for empty slots.
+Select the weapon socket with a warm brass clasp and a restrained edge highlight.
+These are equipment sockets, visually distinct from rarity materials and ingredient compartments.
+
+Y 470–710: ANVIL SHOWCASE
+A generously sized prospective beginner sword above the anvil, with a small “Xem trước” tag.
+A simple, appealing forged steel blade with green leather details appropriate to Tốt quality.
+Do not use the existing spectacular red flaming sword for this low-rarity preview.
+Keep the blacksmith's face and raised hammer visible to the right.
+The furnace provides supporting warmth; the selected item remains the focal point.
+
+Y 710–1450: THE WORKBENCH
+One integrated handcrafted wooden workbench with a dark warm leather working surface, modest brass corners, and carefully separated functional areas.
+No giant pale cream spreadsheet panel.
+Do not surround every object with an identical rounded rectangle.
+
+Y 710–810: THREE TABS
+Painted wooden tabs with distinct small illustrated symbols:
+“Chế Tạo”, “Cường Hóa”, “Khảm Ngọc”.
+Chế Tạo is visibly selected using warm material contrast.
+Only show the Craft tab's content on this screen.
+
+Y 810–980: FIVE RARITY INGOTS
+Five individually designed and painted metal ingots on a shallow rack:
+Tốt: muted green details, unlock Ải 20.
+Hiếm: blue details, unlock Ải 40.
+Sử Thi: violet details, unlock Ải 60.
+Huyền Thoại: amber-gold details, unlock Ải 80.
+Thần: coral-red and gold details, unlock Ải 300.
+
+Give each ingot a distinctive stamp, silhouette detail, and material finish.
+Retain their colors despite being locked.
+Use small consistent metal lock badges.
+The first is selected for inspection, clearly still locked.
+Align the labels and unlock captions. Allow “Huyền Thoại” to occupy two intentional lines without colliding with its unlock caption.
+Do not make five copies of one gray ingot with colored CSS-like borders.
+
+Y 980–1130: BEFORE AND AFTER
+Two crafted display recesses connected by a small engraved arrow.
+Left: empty weapon silhouette, “Đang mặc”, “Trống”.
+Right: the prospective green-accented sword, “Nếu mặc”, “Tốt +0”.
+A clean narrow parchment strip below:
+“Công ×0,85 → ×0,91”.
+The increase is a restrained readable green.
+These are Hiro's prospective stats if equipped.
+Do not display unrelated unchanged stats or dense paragraphs.
+
+Y 1130–1280: INGREDIENT TRAY
+A real illustrated shallow tray with five compartments.
+Recognizable icons for gold, ore, wood, cloth, and red evolution essence.
+Small shared caption: “Đang có / Cần”.
+Counts:
+1.200/8.000
+5/25
+5/15
+5/15
+0/10
+Keep icons generous and numbers aligned.
+Use restrained shortage marks and dark rust-colored numbers, not five bright red outlined error boxes.
+The red essence is a crafting material, distinct from blue premium currency.
+
+Y 1280–1450: ACTION AND NEXT STEP
+A substantial hammer-emblem action plate made of forged steel and aged brass.
+It is visibly locked, with the short text “Mở sau ải 20”.
+Keep its silhouette attractive and its lettering legible.
+Include a smaller clearly enabled gold-accented button below reading “Khám Phá”.
+This leads toward unlocking the forge; it is not a purchase action.
+
+Y 1450–1490: CLEAR SEPARATION
+Leave visible breathing room between workbench and navigation.
+No panel edge, ingredient, label, or button may intrude into the bottom navigation.
+
+Y 1490–1672: BOTTOM NAVIGATION
+Faithfully match the illustrated wooden-and-leafy Gemwoven navigation:
+“Trang Chủ”, “Tướng”, “Túi Đồ”, “Kỹ Năng”, “Triệu Hồi”, “Đấu Trường”, “Thêm”.
+Seven recognizable painted icons with short readable Vietnamese labels.
+Use the “Thêm” context for the Forge screen.
+Keep every icon and label fully visible.
+
+TYPOGRAPHY AND FINISH
+Short Vietnamese labels with correct accents wherever possible.
+Warm fantasy serif lettering with a clear hierarchy.
+Painted material frames support the interface; typography and numbers remain crisp.
+Keep the selected item and primary unlock goal visually dominant.
+Use quiet areas between groups, consistent alignment, and controlled saturation.
+
+AVOID
+Modern web forms, Bootstrap cards, repeated cream rounded boxes, neon rainbow outlines, oversized white panels, excessive gold filigree, tiny explanatory text, dense grids, floating unrelated widgets, gray disabled overlays covering the whole screen, cinematic bloom, photorealism, glossy 3D rendering, modal dialogs, result screens, extra heroes, or any overlap with the navigation.
+
+Deliver a cohesive, believable Gemwoven Forge screen that feels ready for art-direction review before implementation.

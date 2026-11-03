@@ -286,5 +286,439 @@
       "assets/gemwoven/ambient/clouds/prompt.txt"
     ],
     "purpose": "Clouds that sail across the painted skies (living-motion.js clouds)."
+  },
+  "gear-uncommon-weapon": {
+    "file": "assets/gemwoven/gear/gear-uncommon-weapon.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/uncommon-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/uncommon-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-uncommon-armor": {
+    "file": "assets/gemwoven/gear/gear-uncommon-armor.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/uncommon-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/uncommon-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-uncommon-helmet": {
+    "file": "assets/gemwoven/gear/gear-uncommon-helmet.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/uncommon-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/uncommon-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-uncommon-boots": {
+    "file": "assets/gemwoven/gear/gear-uncommon-boots.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/uncommon-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/uncommon-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-uncommon-pants": {
+    "file": "assets/gemwoven/gear/gear-uncommon-pants.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/uncommon-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/uncommon-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-uncommon-glasses": {
+    "file": "assets/gemwoven/gear/gear-uncommon-glasses.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/uncommon-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/uncommon-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-rare-weapon": {
+    "file": "assets/gemwoven/gear/gear-rare-weapon.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/rare-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/rare-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-rare-armor": {
+    "file": "assets/gemwoven/gear/gear-rare-armor.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/rare-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/rare-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-rare-helmet": {
+    "file": "assets/gemwoven/gear/gear-rare-helmet.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/rare-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/rare-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-rare-boots": {
+    "file": "assets/gemwoven/gear/gear-rare-boots.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/rare-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/rare-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-rare-pants": {
+    "file": "assets/gemwoven/gear/gear-rare-pants.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/rare-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/rare-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-rare-glasses": {
+    "file": "assets/gemwoven/gear/gear-rare-glasses.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/rare-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/rare-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-epic-weapon": {
+    "file": "assets/gemwoven/gear/gear-epic-weapon.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/epic-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/epic-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-epic-armor": {
+    "file": "assets/gemwoven/gear/gear-epic-armor.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/epic-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/epic-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-epic-helmet": {
+    "file": "assets/gemwoven/gear/gear-epic-helmet.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/epic-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/epic-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-epic-boots": {
+    "file": "assets/gemwoven/gear/gear-epic-boots.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/epic-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/epic-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-epic-pants": {
+    "file": "assets/gemwoven/gear/gear-epic-pants.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/epic-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/epic-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-epic-glasses": {
+    "file": "assets/gemwoven/gear/gear-epic-glasses.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/epic-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/epic-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-legendary-weapon": {
+    "file": "assets/gemwoven/gear/gear-legendary-weapon.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/legendary-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/legendary-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-legendary-armor": {
+    "file": "assets/gemwoven/gear/gear-legendary-armor.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/legendary-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/legendary-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-legendary-helmet": {
+    "file": "assets/gemwoven/gear/gear-legendary-helmet.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/legendary-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/legendary-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-legendary-boots": {
+    "file": "assets/gemwoven/gear/gear-legendary-boots.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/legendary-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/legendary-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-legendary-pants": {
+    "file": "assets/gemwoven/gear/gear-legendary-pants.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/legendary-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/legendary-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-legendary-glasses": {
+    "file": "assets/gemwoven/gear/gear-legendary-glasses.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/legendary-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/legendary-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-divine-weapon": {
+    "file": "assets/gemwoven/gear/gear-divine-weapon.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/divine-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/divine-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-divine-armor": {
+    "file": "assets/gemwoven/gear/gear-divine-armor.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/divine-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/divine-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-divine-helmet": {
+    "file": "assets/gemwoven/gear/gear-divine-helmet.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/divine-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/divine-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-divine-boots": {
+    "file": "assets/gemwoven/gear/gear-divine-boots.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/divine-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/divine-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-divine-pants": {
+    "file": "assets/gemwoven/gear/gear-divine-pants.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/divine-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/divine-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "gear-divine-glasses": {
+    "file": "assets/gemwoven/gear/gear-divine-glasses.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/gear/divine-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/gear/divine-prompt.txt"
+    ],
+    "purpose": "Gear picture by slot and rarity (Codex review 21: a Tốt piece must not look legendary)."
+  },
+  "forge-action-locked": {
+    "file": "assets/gemwoven/forge/action-locked.webp",
+    "width": 729,
+    "height": 187,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-action-ready": {
+    "file": "assets/gemwoven/forge/action-ready.webp",
+    "width": 728,
+    "height": 187,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-bench": {
+    "file": "assets/gemwoven/forge/bench.webp",
+    "width": 1524,
+    "height": 994,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-ingot-divine": {
+    "file": "assets/gemwoven/forge/ingot-divine.webp",
+    "width": 415,
+    "height": 321,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-ingot-epic": {
+    "file": "assets/gemwoven/forge/ingot-epic.webp",
+    "width": 409,
+    "height": 314,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-ingot-legendary": {
+    "file": "assets/gemwoven/forge/ingot-legendary.webp",
+    "width": 413,
+    "height": 318,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-ingot-rare": {
+    "file": "assets/gemwoven/forge/ingot-rare.webp",
+    "width": 410,
+    "height": 313,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-ingot-uncommon": {
+    "file": "assets/gemwoven/forge/ingot-uncommon.webp",
+    "width": 415,
+    "height": 315,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-lock": {
+    "file": "assets/gemwoven/forge/lock.webp",
+    "width": 133,
+    "height": 146,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-rack": {
+    "file": "assets/gemwoven/forge/rack.webp",
+    "width": 2128,
+    "height": 471,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-tab": {
+    "file": "assets/gemwoven/forge/tab.webp",
+    "width": 495,
+    "height": 185,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-tag": {
+    "file": "assets/gemwoven/forge/tag.webp",
+    "width": 385,
+    "height": 114,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "forge-socket": {
+    "file": "assets/gemwoven/forge/socket.webp",
+    "width": 589,
+    "height": 600,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/",
+    "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
   }
 }
