@@ -225,6 +225,8 @@ ${price}`);}
     label(nodes,'product-name',product.name);label(nodes,'product-description',state.shopMessage||product.description);find(nodes,'product-preview').asset=product.asset;
     action(nodes,'product-preview','art:shop-product',{product:product.id});label(nodes,'quantity',quantity);const left=product.limit?G.engine.shopLeft(product.id):null;label(nodes,'purchase-price',fmt(product.price*quantity)+(product.currency==='gold'?' vàng':' Ngọc')+(left!=null?` · còn ${left}`:''));action(nodes,'quantity-minus','art:quantity',{delta:-1},quantity<=1);action(nodes,'quantity-plus','art:quantity',{delta:1},product.kind==='gear'||quantity>=20);action(nodes,'buy','art:purchase',{product:product.id,count:quantity},p.wallet[product.currency]<product.price*quantity||product.kind==='gear'&&p.equipment.length>=500);
     [['gold','Vàng'],['gems','Đá Ngọc'],['equipment','Trang Bị']].forEach(([id,name],i)=>{label(nodes,'shop-tab-'+i,name);action(nodes,'shop-tab-'+i,'art:shop-tab',{tab:id});find(nodes,'shop-tab-'+i).selected=tab===id;});
+    // Codex review 27: larger round −/+ around the count, a wider buy plate.
+    for(const [id,rect] of [['quantity-minus',[634,1240,70,70]],['quantity-plus',[786,1240,70,70]],['quantity',[704,1248,82,52]],['buy',[630,1344,236,90]]]){const n=find(nodes,id);if(n)n.rect=rect;}
     return nodes;
   }
   function arena(nodes,p,state){
