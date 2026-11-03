@@ -119,3 +119,6 @@
 #stage[data-screen="shop"] [data-node="shop.product-description"]{font-size:28px!important;line-height:1.15}
 #stage[data-screen="shop"] [data-node^="shop.shop-tab-"]:not(.selected){filter:brightness(.8) saturate(.75)}
 #stage[data-screen="shop"] [data-node^="shop.shop-tab-"].selected{filter:drop-shadow(0 0 8px #ffcf6a)}
+
+/* Khám Phá (Codex review 27): the stars under each stage on a leather plate. */
+.seal-stars{background:var(--kit-badge-leather) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important}

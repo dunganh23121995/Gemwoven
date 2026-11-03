@@ -8,7 +8,7 @@ merged=json.loads((ROOT/'assets/gemwoven/manifest.json').read_text(encoding='utf
 merged.update(json.loads((ROOT/'assets/gemwoven/novice-items.json').read_text(encoding='utf-8')))
 # Keep approved scene replacements independent of the regenerated base manifest.
 merged.update(json.loads((ROOT/'assets/gemwoven/painted-backgrounds.json').read_text(encoding='utf-8')))
-for catalog in ['journey-items','chapter-map-items','boss-items','existing-boss-items','theme-creature-items','equipment-art-items','chapter-ecosystem-items','modular-map-items','hud-items','atlas-items','chapter-flow-items','battle-scene-items']:
+for catalog in ['journey-items','chapter-map-items','boss-items','existing-boss-items','theme-creature-items','equipment-art-items','chapter-ecosystem-items','modular-map-items','hud-items','atlas-items','chapter-flow-items','battle-scene-items','plaza-ui-items']:
     if (ROOT/f'assets/gemwoven/{catalog}.json').exists():
         journey=json.loads((ROOT/f'assets/gemwoven/{catalog}.json').read_text(encoding='utf-8'))
         for key,value in journey['items'].items():

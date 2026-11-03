@@ -263,7 +263,7 @@
     // Title stays on one line inside the banner's painted label area (safeContentRects.label); long names shrink.
     nodes.push(image(key,'title-board',A['chapter-banner']?'chapter-banner':'title-wood',[150,96,640,160]),{...text(key,'title',`Chương ${chapter} · ${def.name}`,[244,138,453,76],38),className:'single-line'});
     if(p.campaign.cleared>=chapter*50)nodes.push({...text(key,'conquered','✔ Đã vượt 50/50 ải',[640,268,290,64],26,'ink'),className:'chapter-conquered'});
-    nodes.push(button(key,'rewards',`★ ${progress.total}/150`,'button-gold',[300,250,341,100],'journey:rewards',{}, {size:34,icon:A['reward-star']?'reward-star':'chest',iconRect:[36,18,64,64],labelRect:[100,24,220,52],tone:'ink'}));
+    nodes.push(button(key,'rewards',`${progress.total}/150`,'button-gold',[300,250,341,100],'journey:rewards',{}, {size:34,icon:A['reward-star']?'reward-star':'chest',iconRect:[36,18,64,64],labelRect:[100,24,220,52],tone:'ink'}));
     // Back from a chapter goes to the world atlas (chapters are chosen there); the atlas's back goes to town.
     nodes.push(button(key,'back','Bản Đồ Thế Giới',A['map-back']?'map-back':'journey-button',[787,1512,136,134],'journey:atlas',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
     if(state.mapRewards){
