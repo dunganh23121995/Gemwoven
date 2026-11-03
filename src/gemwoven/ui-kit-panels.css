@@ -1,0 +1,333 @@
+/* Drawn UI kit on Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận, the Quán Bia quest board and the shared popups
+ * (ui-kit-panels.js; mockups assets/gemwoven/raw/ui-kit/panels/mockup-A/B/C-raw.png). Panel sizes are stage units
+ * (941 wide ≈ 390 CSS px on a phone); popups are CSS px. Pieces come from assets/gemwoven/ui-kit via --kit-* vars. */
+
+/* ----- Shared pieces on the panels ----- */
+.kp-panel .gw-body{color:#4a2a10}
+.kp-panel .gw-sub{font:700 30px/1.3 Cambria,serif;color:#6b4a22;text-align:center;margin:0 0 10px}
+.kp-panel h3{font:800 34px/1.2 Cambria,serif;color:#4a2a10}
+.kp-panel .kp-plaque{display:block;width:64%;margin:14px auto 12px!important;padding:16px 0 18px;text-align:center;background:var(--kit-plaque) center/100% 100% no-repeat;font:800 34px/1 Cambria,serif!important;color:#f6e2b8!important;-webkit-text-fill-color:#f6e2b8;text-shadow:0 1px 2px #1a0c04}
+.kp-panel .kp-sec{display:flex;align-items:center;flex-wrap:nowrap;white-space:nowrap;gap:10px 14px;margin:16px 0 10px;font:700 28px/1.2 Cambria,serif;color:#5a3a18}
+.kp-panel .kp-sec small{font:700 28px Cambria,serif!important;color:#5a3a18!important}
+.kp-panel .kp-plaque-in{display:inline-block;padding:14px 34px 16px;background:var(--kit-plaque) center/100% 100% no-repeat;font:800 32px/1 Cambria,serif;color:#f6e2b8;text-shadow:0 1px 2px #1a0c04;white-space:nowrap}
+.kp-panel .kp-seal,.kp-pop .kp-seal{display:inline-flex;align-items:center;justify-content:center;min-width:100px;height:68px;padding:0 12px;background:var(--kit-seal) center/100% 100% no-repeat;font:800 26px Cambria,serif;font-style:normal;color:#fff4df;text-shadow:0 1px 2px #5a0c06}
+.kp-panel .kp-ico{width:64px;height:64px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 2px #0005)}
+.kp-panel .kp-lock,.kp-pop .kp-lock{width:auto;height:1.1em;object-fit:contain;vertical-align:-.15em;filter:drop-shadow(0 1px 1px #0006)}
+
+/* Gold, wooden and steel plates for actions (the drawn plate as a 9-slice so wide buttons keep their ends). */
+.kp-panel .game-btn,.kp-panel .kp-gold,.kp-panel .kp-steel,.kp-panel .kp-wood{--h:100px;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:100px;padding:0 34px!important;
+  background:none!important;border:solid transparent!important;border-width:0 34px!important;border-image:var(--kit-btn-gold) 0 40 fill / 0 34px stretch!important;box-shadow:none!important;filter:drop-shadow(0 5px 4px #2a140866);
+  font:900 36px/1 Cambria,serif!important;color:#4a2508!important;text-shadow:0 1px #fff3cf!important;border-radius:0!important;white-space:nowrap}
+.kp-panel .game-btn::before,.kp-panel .game-btn::after{display:none!important}
+.kp-panel .game-btn:active:not(:disabled){border-image-source:var(--kit-btn-gold-down)!important}
+.kp-panel .game-btn:disabled,.kp-panel .kp-steel{border-image-source:var(--kit-btn-steel)!important;color:#efe7da!important;text-shadow:0 1px 2px #1a1008!important;opacity:1!important;filter:drop-shadow(0 4px 3px #2a140855)}
+.kp-panel .kp-wood{border-image-source:var(--kit-tab-dark)!important;border-image-slice:0 30 fill!important;color:#f3dcae!important;text-shadow:0 1px 2px #1a0c04!important}
+.kp-panel .kp-wood:disabled{border-image-source:var(--kit-tab-dark)!important;filter:grayscale(.7) brightness(.85)}
+.kp-panel .game-btn .kp-ico{width:58px;height:58px}
+.kp-panel .kp-row{display:flex;align-items:center;justify-content:center;gap:22px;margin:16px 0}
+.kp-panel .kp-row .game-btn{min-width:46%}
+
+/* ⓘ details: a brass round button with a short label; the text opens below. */
+.kp-panel details.kp-info,.kp-panel details.kp-cadence{margin:8px 0}
+.kp-panel .kp-info>summary,.kp-panel .kp-cadence>summary,.kp-pop .kp-info>summary{list-style:none;display:inline-flex!important;align-items:center;gap:12px;min-height:88px;cursor:pointer;font:700 28px Cambria,serif;color:#6b4a22}
+.kp-panel .kp-info>summary::-webkit-details-marker,.kp-panel .kp-cadence>summary::-webkit-details-marker,.kp-pop .kp-info>summary::-webkit-details-marker{display:none}
+.kp-panel .kp-info>summary>i,.kp-panel .kp-cadence>summary>i,.kp-pop .kp-info>summary>i{display:inline-flex;align-items:center;justify-content:center;flex:none;width:72px;height:72px;background:var(--kit-round) center/contain no-repeat;font:italic 900 38px Cambria,serif;color:#5a3412;text-shadow:0 1px #fff3cf}
+.kp-panel .kp-info[open]>summary>i{background-image:var(--kit-round-down)}
+.kp-panel .kp-info>p,.kp-panel .kp-info>h3{font-size:27px!important;line-height:1.4;color:#5a3a1a;margin:6px 0;padding:14px 22px;border:solid transparent;border-width:14px 22px;border-image:var(--kit-row-read) 22 26 fill / 14px 22px stretch}
+.kp-panel .kp-row>details.kp-info{margin:0}
+
+/* Stat tiles: parchment on wood, an icon, a label and the number. */
+.kp-panel .kp-stats{display:grid;gap:14px;margin:12px 0!important}
+.kp-panel .kp-stats-2{grid-template-columns:1fr 1fr}
+.kp-panel .kp-stats-3{grid-template-columns:repeat(3,1fr)}
+.kp-panel .kp-stat{display:grid!important;grid-template-columns:auto 1fr;grid-template-rows:auto auto;align-items:center;column-gap:12px;margin:0!important;padding:10px 12px!important;min-height:128px;
+  background:none!important;border:solid transparent!important;border-width:20px 22px!important;border-image:var(--kit-stat) 26 28 fill / 20px 22px stretch!important;border-radius:0!important;box-shadow:none!important;font:700 26px/1.15 Cambria,serif!important;color:#6b4a22!important}
+.kp-panel .kp-stat .kp-ico{grid-row:1/3;width:72px;height:72px}
+.kp-panel .kp-stat b{display:block;font:900 38px/1.1 Cambria,serif!important;color:#4a2a10!important;margin:0!important}
+.kp-panel .kp-stats-3 .kp-stat{grid-template-columns:1fr;justify-items:center;text-align:center;padding:8px 4px!important;row-gap:4px;font-size:23px!important}
+.kp-panel .kp-stats-2 .kp-stat{font-size:24px!important}
+.kp-panel .kp-stats-3 .kp-stat .kp-ico{grid-row:auto}
+
+/* Progress: the brass trough with the emerald strip. */
+.kp-panel .kp-bar,.kp-pop .kp-bar{position:relative;display:block;height:38px;margin:10px 0 16px;border-radius:0!important;overflow:visible!important;background:none!important;border:solid transparent;border-width:0 20px;border-image:var(--kit-progress) 0 22 fill / 0 20px stretch}
+.kp-panel .kp-bar>i,.kp-pop .kp-bar>i{position:absolute!important;left:-8px;top:7px;bottom:7px;height:auto!important;max-width:calc(100% + 16px);min-width:0;border-radius:0!important;background:var(--kit-progress-fill) left center/100% 100% no-repeat!important}
+
+/* Reward sockets: leather square, the item, its amount. */
+.kp-panel ul.kp-sockets,.kp-pop ul.kp-sockets{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;margin:6px 0;padding:0}
+.kp-panel .kp-socket{position:relative;display:flex;align-items:center;justify-content:center;width:100px;height:100px;background:var(--kit-socket) center/100% 100% no-repeat}
+.kp-panel .kp-socket img{width:68%;height:68%;object-fit:contain;filter:drop-shadow(0 2px 2px #0007)}
+.kp-panel .kp-socket b{position:absolute;right:6px;bottom:2px;font:900 25px/1 Cambria,serif;color:#fff3cf;text-shadow:0 0 3px #1a0c04,0 2px 2px #1a0c04}
+
+/* ----- Thành Tích ----- */
+.kp-rankings .kp-head{display:flex;align-items:center;gap:14px;margin:0 0 10px!important;font:800 38px Cambria,serif!important}
+.kp-rankings .kp-head small{font:800 32px Cambria,serif!important;color:#8a5a20!important}
+.kp-rankings .kp-medal{display:inline-block;width:96px;height:82px;background:var(--kit-medal) center/contain no-repeat;filter:drop-shadow(0 3px 3px #0005)}
+.kp-rankings .kp-medal.is-locked{background-image:var(--kit-medal-locked)}
+.kp-rankings .title-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px 10px!important}
+.kp-rankings .title-cell{min-height:0!important;padding:4px 0!important;width:100%}
+.kp-rankings .title-plate{width:100%;height:84px}
+.kp-rankings .title-plate b{font-size:24px;padding:0 40px;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.kp-rankings .title-cell .kp-lock{position:absolute;right:14px;top:4px;height:42px}
+.kp-rankings .title-cell.is-locked .title-plate{filter:grayscale(.55) brightness(.92)!important;opacity:.92!important}
+.kp-rankings .kp-title-mark{position:absolute;right:6px;top:-4px;width:54px;height:46px;background:var(--kit-medal) center/contain no-repeat;filter:drop-shadow(0 2px 2px #0006)}
+.kp-rankings .kp-title-mark.is-worn{background-image:var(--kit-medal-worn)}
+.kp-rankings .title-cell em{font:800 22px Cambria,serif!important;color:#9a2c12!important}
+.kp-rankings .gw-body>.kp-gold{display:flex;margin:10px auto 0;width:62%}
+.kp-rankings .gw-body>details.kp-info{text-align:center}
+
+/* ----- Sự Kiện ----- */
+.kp-events .treasure-trial{margin:0 0 6px;padding:0}
+.kp-events .trial-tag{display:inline-block;padding:12px 26px!important;border-radius:0!important;background:var(--kit-badge-leather) center/100% 100% no-repeat!important;font:800 24px Cambria,serif!important;color:#f3dcae!important;text-shadow:0 1px 2px #1a0c04}
+.kp-events .treasure-row{margin:4px 0}
+.kp-events .treasure-teaser{max-width:170px}
+.kp-events .kp-row .game-btn{min-width:52%}
+.kp-events .kp-sec .kp-plaque-in{padding:13px 28px 15px;font-size:30px}
+.kp-events .newbie-week{margin:8px 0 10px}
+.kp-events .newbie-week>details.kp-info{margin:0 0 4px}
+.kp-events .newbie-days{display:flex!important;gap:14px!important;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:4px 4px 14px;scrollbar-width:thin}
+.kp-events .newbie-day{flex:0 0 300px;scroll-snap-align:start;gap:8px!important;padding:8px 6px!important;border-radius:0!important;box-shadow:none!important;background:none!important;border:solid transparent;border-width:20px 22px;border-image:var(--kit-stat) 26 28 fill / 20px 22px stretch;opacity:1!important}
+.kp-events .newbie-day.is-open{border-image-source:var(--kit-stat-on)}
+.kp-events .newbie-day.is-claimed{filter:saturate(.45) brightness(.95)}
+.kp-events .newbie-day>b{font:800 30px Cambria,serif!important;color:#4a2a10}
+.kp-events .newbie-day .newbie-portrait{width:84px!important;height:84px!important;border-radius:50%;background:var(--kit-round) center/contain no-repeat;padding:6px}
+.kp-events .newbie-day .kp-sockets .kp-socket{width:86px;height:86px}
+.kp-events .newbie-day .game-btn{--h:84px;min-height:84px;width:100%;padding:0 6px!important;border-width:0 24px!important;border-image-width:0 24px!important;font-size:27px!important;gap:6px}
+.kp-events .newbie-day .game-btn .kp-ico{width:44px;height:44px}
+.kp-events .weekly-quests .hint{font-size:25px!important;margin:0 0 6px}
+.kp-events .weekly-quests .cadence-grid{display:flex!important;flex-direction:column;gap:12px}
+.kp-events .kp-quest{display:grid!important;grid-template-columns:1fr auto;align-items:center;gap:4px 14px;padding:4px 6px!important;border-radius:0!important;box-shadow:none!important;background:none!important;border:solid transparent;border-width:22px 26px;border-image:var(--kit-row-read) 22 26 fill / 22px 26px stretch}
+.kp-events .kp-quest>b{grid-column:1/3;font:800 30px Cambria,serif;color:#4a2a10}
+.kp-events .kp-quest>small{grid-column:2;grid-row:2;font:800 26px Cambria,serif!important;color:#6b4a22!important}
+.kp-events .kp-quest>.kp-bar{grid-column:1;grid-row:2;margin:4px 0}
+.kp-events .kp-quest>ul{grid-column:1;justify-content:flex-start}
+.kp-events .kp-quest>ul{flex-wrap:nowrap}
+.kp-events .kp-quest .kp-socket{width:74px;height:74px}
+.kp-events .kp-quest .kp-socket b{font-size:22px}
+.kp-events .kp-quest>.game-btn{grid-column:2;min-height:84px;min-width:200px;padding:0 10px!important;font-size:27px!important}
+.kp-events .kp-quest.is-claimed{border-image-source:var(--kit-row-off)}
+.kp-events .kp-ribbon{display:flex!important;align-items:center;justify-content:center;gap:14px;margin:14px auto!important;padding:14px 60px!important;min-height:0!important;background:var(--kit-ribbon-warn) center/100% 100% no-repeat!important;border:0!important;box-shadow:none!important}
+.kp-events .kp-ribbon img{width:56px!important;height:56px!important;margin:0!important}
+.kp-events .kp-ribbon h3{margin:0!important;font:800 28px Cambria,serif!important;color:#5a3a18}
+.kp-events .cadence{margin:4px 0}
+.kp-events .kp-cadence .cadence-grid{display:flex!important;flex-direction:column;gap:10px}
+.kp-events .kp-cadence article{padding:4px 8px!important;border-radius:0!important;box-shadow:none!important;background:none!important;border:solid transparent;border-width:20px 24px;border-image:var(--kit-row-off) 22 26 fill / 20px 24px stretch}
+.kp-events .kp-cadence article b{font:800 28px Cambria,serif}
+.kp-events .kp-cadence article small,.kp-events .kp-cadence article li{font-size:24px!important}
+
+/* ----- Tích Lũy ----- */
+.kp-offline .kp-rate{display:block;width:58%;margin:6px auto 4px!important;padding:16px 0 18px;background:var(--kit-plaque) center/100% 100% no-repeat;font:800 34px/1 Cambria,serif!important;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04}
+.kp-offline .feature-art{width:330px!important;height:290px!important;object-fit:contain;margin:4px auto 0!important;display:block;filter:drop-shadow(0 10px 10px #2a140855)}
+.kp-offline .kp-time{display:flex;align-items:center;justify-content:center;gap:12px;margin:6px 0 0!important;font:800 36px Cambria,serif!important}
+.kp-offline .kp-time .kp-ico{width:56px;height:56px}
+.kp-offline .kp-bar{margin:12px 10px 20px}
+.kp-offline .kp-stats-3{gap:12px}
+.kp-offline .kp-res{min-height:190px}
+.kp-offline .kp-res .kp-ico{width:86px;height:86px}
+.kp-offline .kp-row .game-btn{min-width:60%;min-height:108px;font-size:38px!important}
+
+/* ----- Trùm Vô Tận ----- */
+.kp-boss .trial-ground{margin:0 0 4px}
+.kp-boss .trial-ground>.kp-plaque,.kp-boss .kp-endless{margin-top:4px}
+.kp-boss .trial-today{position:relative;display:grid!important;grid-template-columns:230px 1fr;gap:4px 16px;align-items:center;margin:6px 0 10px!important;padding:6px 8px!important;border-radius:0!important;background:none!important;box-shadow:none!important;border:solid transparent!important;border-width:22px 26px!important;border-image:var(--kit-row-on) 22 26 fill / 22px 26px stretch!important}
+.kp-boss .kp-boss{grid-row:1/3;width:230px;height:220px;object-fit:contain;filter:drop-shadow(0 6px 6px #2a140866)}
+.kp-boss .trial-today b{font:900 34px Cambria,serif!important}
+.kp-boss .trial-today small{font:700 27px Cambria,serif!important}
+.kp-boss .trial-today p{font-size:27px!important;margin:4px 0 0!important}
+.kp-boss .trial-go{grid-column:2;flex-direction:column;align-items:flex-start!important;gap:8px!important}
+.kp-boss .trial-left{font:700 27px Cambria,serif!important}
+.kp-boss .trial-go .game-btn{min-width:250px!important;min-height:92px!important;font-size:34px!important}
+.kp-boss .trial-week{gap:10px!important;margin:0 0 2px!important}
+.kp-boss .trial-week li{background:none!important;border-radius:0!important;border:solid transparent;border-width:16px 18px;border-image:var(--kit-stat) 26 28 fill / 16px 18px stretch;padding:0 0 2px!important;font:800 26px Cambria,serif!important}
+.kp-boss .trial-week li.done{border-image-source:var(--kit-stat-on)}
+.kp-boss .trial-week .trial-boss{width:110px!important;height:96px!important}
+.kp-boss .trial-rules{margin:0!important}
+.kp-boss .kp-floor{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:center}
+.kp-boss .kp-emblem-art{width:170px!important;height:170px!important;margin:0!important;object-fit:contain}
+.kp-boss .kp-floor .kp-stat{min-height:110px;font-size:24px!important;padding:6px 2px!important}
+.kp-boss .kp-floor .kp-stat b{font-size:32px!important}
+.kp-boss .kp-next{text-align:center;margin:10px 0 0!important;font:800 30px Cambria,serif!important;color:#5a3a18}
+.kp-boss .kp-row-2 .game-btn{min-width:0;flex:1;padding:0 8px!important;font-size:30px!important;gap:8px}
+.kp-boss .kp-row-2 .game-btn .kp-ico{width:50px;height:50px}
+.kp-boss .kp-row-2 .kp-lock{height:40px}
+.kp-boss .kp-rank{justify-content:flex-start;gap:18px}
+.kp-boss .kp-rank .game-btn{min-width:46%;font-size:30px!important}
+.kp-boss .kp-rank small{font:700 25px/1.35 Cambria,serif!important;color:#6b4a22!important}
+
+/* ----- Quán Bia: the daily quest board (tavern nodes are stage-positioned; the scene stays as drawn). ----- */
+#scene[data-kp] [data-node="tavern.quest-panel"]{top:1102px!important;height:380px!important}
+#scene[data-kp] [data-node="tavern.quest-heading-board"]{top:1068px!important;left:58px!important;width:360px!important;height:84px!important;content:var(--kit-plaque);object-fit:fill}
+#scene[data-kp] [data-node="tavern.quest-heading"]{top:1082px!important;left:80px!important;width:316px!important;height:56px!important;font-size:30px!important;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04}
+#scene[data-kp] [data-node="tavern.quest-dismiss"]{top:1100px!important;left:836px!important;width:72px!important;height:72px!important;background:var(--kit-round) center/contain no-repeat!important}
+#scene[data-kp] [data-node="tavern.quest-dismiss"] img{display:none}
+#scene[data-kp] [data-node="tavern.quest-dismiss"] .copy-layer{color:#5a3412!important;text-shadow:0 1px #fff3cf!important;font-weight:900}
+#scene[data-kp] [data-node="tavern.quest-art"]{top:1160px!important;left:62px!important;width:220px!important;height:160px!important}
+#scene[data-kp] [data-node="tavern.quest-name"]{top:1166px!important;left:300px!important;width:520px!important;height:50px!important;font-size:38px!important;font-weight:800}
+#scene[data-kp] [data-node="tavern.quest-description"]{top:1220px!important;left:300px!important;width:540px!important;height:40px!important;font-size:29px!important}
+#scene[data-kp] [data-node="tavern.reward-heading"]{display:none!important}
+#scene[data-kp] [data-node^="tavern.quest-rewards-"]{top:1262px!important;width:108px!important;height:108px!important;background:var(--kit-socket) center/100% 100% no-repeat!important}
+#scene[data-kp] [data-node^="tavern.quest-rewards-"]>img.art{display:none}
+#scene[data-kp] [data-node^="tavern.quest-rewards-"] img.icon{position:absolute!important;left:16px!important;top:12px!important;width:76px!important;height:70px!important;object-fit:contain;filter:drop-shadow(0 2px 2px #0007)}
+#scene[data-kp] [data-node^="tavern.quest-rewards-"] .copy-layer{left:auto!important;right:6px!important;top:auto!important;bottom:2px!important;width:auto!important;height:auto!important;font:900 27px/1 Cambria,serif!important;color:#fff3cf!important;text-shadow:0 0 3px #1a0c04,0 2px 2px #1a0c04!important;background:none!important}
+#scene[data-kp] [data-node="tavern.quest-rewards-0"]{left:300px!important}
+#scene[data-kp] [data-node="tavern.quest-rewards-1"]{left:418px!important}
+#scene[data-kp] [data-node="tavern.quest-rewards-2"]{left:536px!important}
+#scene[data-kp] [data-node="tavern.quest-rewards-3"]{left:654px!important}
+#scene[data-kp] [data-node="tavern.quest-rewards-4"]{left:772px!important}
+#scene[data-kp] [data-node="tavern.quest-accept"]{top:1378px!important;left:290px!important;width:380px!important;height:96px!important}
+#scene[data-kp] [data-node="tavern.quest-accept"]>img{content:var(--kit-btn-gold);object-fit:fill}
+#scene[data-kp] [data-node="tavern.quest-accept"] .copy-layer{font:900 36px Cambria,serif!important;color:#4a2508!important;text-shadow:0 1px #fff3cf!important}
+#scene[data-kp] [data-group="tavern-tab"] .kp-check{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;width:86px;height:56px;background:var(--kit-badge-brass) center/100% 100% no-repeat;font:900 34px/1 Cambria,serif;color:#4a2508;text-shadow:0 1px #fff3cf;pointer-events:none;filter:drop-shadow(0 3px 3px #0007)}
+#scene[data-kp] [data-group="tavern-tab"]:not(.selected){filter:brightness(.86) saturate(.85)}
+
+/* ----- Popups (CSS px) ----- */
+.kp-pop .gw-btn{min-height:52px;padding:0 26px!important;background:none!important;border:solid transparent!important;border-width:0 22px!important;border-image:var(--kit-btn-gold) 0 40 fill / 0 22px stretch!important;box-shadow:none!important;filter:drop-shadow(0 3px 3px #2a140866);border-radius:0!important;font:900 18px/1 Cambria,serif!important;color:#4a2508!important;text-shadow:0 1px #fff3cf!important}
+.kp-pop .gw-btn::before,.kp-pop .gw-btn::after{display:none!important}
+.kp-pop .gw-btn.secondary,.kp-pop .gw-btn:disabled{border-image-source:var(--kit-btn-steel)!important;color:#efe7da!important;text-shadow:0 1px 2px #1a1008!important}
+.kp-pop .kp-info>summary{min-height:44px;font-size:15px;gap:8px}
+.kp-pop .kp-info>summary>i{width:34px;height:34px;font-size:19px}
+.kp-pop .kp-bar{height:22px;border-width:0 12px;border-image-width:0 12px}
+.kp-pop .kp-bar>i{top:4px;bottom:4px;left:-5px}
+/* Hồ sơ tướng */
+.kp-pop.hero-profile .hp-tags i{display:inline-block;padding:5px 16px!important;border-radius:0!important;background:var(--kit-badge-brass) center/100% 100% no-repeat!important;color:#4a2508!important;font:800 14px Cambria,serif!important;font-style:normal!important;box-shadow:none!important}
+.kp-pop.hero-profile .stat-chips{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px}
+.kp-pop.hero-profile .stat-chips span{display:flex!important;align-items:center;justify-content:center;gap:4px;padding:4px 2px!important;background:none!important;border:solid transparent!important;border-width:10px 11px!important;border-image:var(--kit-stat) 26 28 fill / 10px 11px stretch!important;border-radius:0!important;box-shadow:none!important;font:900 18px Cambria,serif!important;color:#4a2a10!important}
+.kp-pop.hero-profile .hp-skills{display:flex;flex-direction:column;gap:5px}
+.kp-pop.hero-profile .hp-skills details{border:solid transparent!important;border-width:10px 13px!important;border-image:var(--kit-row-read) 22 26 fill / 10px 13px stretch!important;padding:0 2px!important}
+.kp-pop.hero-profile .hp-skills summary small{display:inline-flex;align-items:center;gap:4px}
+.kp-pop.hero-profile .hp-skills summary.is-locked b{color:#6b5a44}
+.kp-pop.hero-profile .hp-forms{gap:8px!important}
+.kp-pop.hero-profile .hp-forms>span{position:relative;display:flex!important;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:1;padding:6px!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:var(--kit-socket-on) center/100% 100% no-repeat!important;font:900 22px Cambria,serif!important;color:#fff3cf!important;text-shadow:0 1px 2px #1a0c04}
+.kp-pop.hero-profile .hp-forms>span.locked{background-image:var(--kit-socket-claimed)!important;color:#d9ccb4!important}
+.kp-pop.hero-profile .hp-forms>span small{font:700 11px/1.15 Cambria,serif!important;color:inherit!important;text-align:center}
+.kp-pop.hero-profile .hp-forms .kp-lock{height:22px}
+/* Tất cả tướng */
+.kp-pop.hall-dialog .hall-filters button{min-height:44px;padding:0 14px!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:var(--kit-tab-dark) center/100% 100% no-repeat!important;color:#f3dcae!important;text-shadow:0 1px 2px #1a0c04;font:800 16px Cambria,serif!important}
+.kp-pop.hall-dialog .hall-filters button.on{background-image:var(--kit-tab-on)!important;color:#4a2a10!important;text-shadow:0 1px #fff3cf}
+.kp-pop.hall-dialog .hall-filters .hall-sort{background-image:var(--kit-badge-leather)!important}
+/* Chi tiết lực chiến */
+.kp-pop .power-hero{display:flex;align-items:center;gap:12px}
+.kp-pop .power-hero>div{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;min-height:74px;background:var(--kit-stat-on) center/100% 100% no-repeat;padding:4px 0 6px}
+.kp-pop .power-hero b{font:900 32px/1 Cambria,serif!important;color:#4a2a10}
+.kp-pop .power-hero small{font:700 14px Cambria,serif;color:#6b4a22}
+.kp-pop .power-table{border-collapse:separate;border-spacing:0 2px}
+.kp-pop .power-table thead th{background:var(--kit-setrow) center/100% 100% no-repeat;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04;padding:8px 6px!important;border:0!important}
+.kp-pop .power-table tbody td{border:0!important;border-bottom:1px solid #c9a35a55!important}
+.kp-pop .power-table tfoot td{background:var(--kit-row-on) center/100% 100% no-repeat;padding:9px 6px!important;font-weight:900;border:0!important}
+/* Danh hiệu */
+.kp-pop.title-dialog .title-rarity{display:table;margin:4px auto!important;padding:5px 18px;background:var(--kit-badge-brass) center/100% 100% no-repeat;font:800 14px Cambria,serif!important;color:#4a2508!important}
+.kp-pop.title-dialog .title-bar{background:none!important}
+.kp-pop.title-dialog .title-bar span{position:relative;display:block;text-align:center;font:900 13px/14px Cambria,serif;color:#fff;text-shadow:0 1px 2px #000}
+/* Vật phẩm (preview-dialog kind=item) */
+.kp-pop.kp-item .dialog-item{background:var(--kit-socket) center/100% 100% no-repeat!important;border:0!important;box-shadow:none!important}
+.kp-pop.kp-item .dialog-item::before,.kp-pop.kp-item .dialog-item::after{display:none!important}
+.kp-pop.kp-item #dialog-copy{display:flex;flex-direction:column;align-items:center;gap:8px;white-space:normal}
+.kp-pop .kp-have{display:flex;align-items:baseline;gap:8px;padding:8px 26px;background:var(--kit-stat-on) center/100% 100% no-repeat}
+.kp-pop .kp-have b{font:900 24px Cambria,serif;color:#4a2a10}
+.kp-pop .kp-have small,.kp-pop .kp-from small{font:700 13px Cambria,serif;color:#6b4a22}
+.kp-pop .kp-use{display:block;width:100%;box-sizing:border-box;padding:10px 34px;background:var(--kit-ribbon-info) center/100% 100% no-repeat;text-align:center;font:700 15px/1.35 Cambria,serif;color:#4a2a10}
+.kp-pop .kp-from{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px}
+.kp-pop .kp-from i{font:700 14px Cambria,serif;font-style:normal;padding:5px 14px;background:var(--kit-badge-leather) center/100% 100% no-repeat;color:#f3dcae}
+/* Quà nhận được */
+.kp-pop.kp-rewards .reward-slot{background:var(--kit-socket) center/100% 100% no-repeat!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+.kp-pop.kp-rewards .reward-slot::before,.kp-pop.kp-rewards .reward-slot::after{display:none!important}
+.kp-pop.kp-rewards .reward-tile>span:last-child{font:900 20px Cambria,serif!important;color:#2f7a22!important}
+
+/* Round 2 */
+.kp-pop.hero-profile .hp-skills summary img.kp-lock{width:auto!important;height:15px!important;margin:0!important;flex:none}
+.kp-pop.hero-profile .hp-skills summary small{white-space:nowrap}
+.kp-pop.hero-profile .hp-forms>span b{font:900 24px/1 Cambria,serif}
+.kp-pop.hero-profile .hp-forms>span small{font:800 13px Cambria,serif!important;margin-top:4px}
+.kp-pop.hero-profile .hp-forms>span .kp-lock{height:26px}
+.kp-pop .power-table{display:block;width:100%}
+.kp-pop .power-table thead,.kp-pop .power-table tbody,.kp-pop .power-table tfoot{display:block}
+.kp-pop .power-table tr{display:grid;grid-template-columns:1fr 52px 58px 46px;align-items:center}
+.kp-pop .power-table th,.kp-pop .power-table td{background:none!important;border:0!important;padding:6px 4px!important}
+.kp-pop .power-table thead tr{border:solid transparent;border-width:6px 12px;border-image:var(--kit-setrow) 22 26 fill / 6px 12px stretch}
+.kp-pop .power-table tbody tr{border-bottom:1px solid #c9a35a55}
+.kp-pop .power-table tfoot tr{margin-top:4px;border:solid transparent;border-width:6px 12px;border-image:var(--kit-row-on) 22 26 fill / 6px 12px stretch}
+.kp-boss .kp-floor{grid-template-columns:140px 1fr}
+.kp-boss .kp-emblem-art{width:140px!important;height:150px!important}
+.kp-boss .kp-floor .kp-stat b{font-size:29px!important;white-space:nowrap}
+.kp-boss .kp-row-2 .game-btn{font-size:27px!important;padding:0 2px!important;border-width:0 26px!important;border-image-width:0 26px!important;gap:6px}
+.kp-boss .kp-row-2 .game-btn .kp-ico{width:42px;height:42px}
+.kp-pop.hero-profile .hp-skills summary small{font-size:12px!important}
+.kp-pop.hero-profile .hp-skills summary b{font-size:15px!important}
+/* Round 3 (Codex score 1): bigger words and numbers, thinner frames, the boss buttons in the first view. */
+.kp-rankings .title-plate{height:98px}
+.kp-rankings .title-plate b{white-space:normal!important;text-align:center;line-height:1.05;font-size:25px;padding:0 44px;overflow:visible;text-overflow:clip}
+.kp-rankings .kp-stats-2 .kp-stat{font-size:27px!important;min-height:140px}
+.kp-rankings .kp-stats-2 .kp-stat b{font-size:44px!important}
+.kp-rankings .kp-stats-2 .kp-stat .kp-ico{width:80px;height:80px}
+.kp-events .newbie-day{flex-basis:320px;gap:10px!important}
+.kp-events .newbie-day>b{font-size:34px!important}
+.kp-events .kp-socket{background-size:100% 100%}
+.kp-events .newbie-day .kp-sockets{gap:10px}
+.kp-events .newbie-day .kp-sockets .kp-socket{width:96px;height:96px}
+.kp-events .kp-socket img{width:80%;height:80%}
+.kp-events .kp-socket b{font-size:27px}
+.kp-events .newbie-day .game-btn{font-size:30px!important;min-height:90px}
+.kp-events .kp-quest>small{font-size:30px!important}
+.kp-events .kp-quest>.game-btn{font-size:30px!important;min-height:92px;min-width:220px}
+.kp-events .kp-quest .kp-socket{width:82px;height:82px}
+.kp-events .kp-quest .kp-socket b{font-size:24px}
+.kp-panel .kp-headrow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin:2px 0 6px}
+.kp-panel .kp-headrow>h3{grid-column:2;margin:0!important;width:auto;padding:16px 56px 18px}
+.kp-panel .kp-headrow>details{grid-column:3;justify-self:end;margin:0!important}
+.kp-panel .kp-headrow>details>summary{min-height:80px}
+.kp-panel .kp-headrow>details[open]{grid-column:1/-1;grid-row:2;justify-self:stretch}
+.kp-boss .trial-today{grid-template-columns:270px 1fr;border-width:14px 16px!important;border-image-width:14px 16px!important;padding:2px 6px!important;margin:4px 0 8px!important}
+.kp-boss .kp-boss{width:270px;height:250px;transform:scale(1.08);transform-origin:center bottom}
+.kp-boss .trial-week li{border-width:12px 14px;border-image-width:12px 14px}
+.kp-boss .trial-week .trial-boss{width:120px!important;height:92px!important}
+.kp-boss .kp-floor{grid-template-columns:1fr;gap:0}
+.kp-boss .kp-emblem-art{display:none!important}
+.kp-boss .kp-floor .kp-stats-3{gap:12px}
+.kp-boss .kp-floor .kp-stat{min-height:116px;font-size:26px!important;padding:6px 4px!important;white-space:nowrap}
+.kp-boss .kp-floor .kp-stat b{font-size:36px!important}
+.kp-boss .kp-next{margin:6px 0 0!important}
+.kp-boss .kp-row-2{margin:10px 0 8px}
+.kp-boss .kp-row-2 .game-btn{font-size:30px!important;min-height:96px}
+/* Hồ sơ tướng */
+.kp-pop.hero-profile .hp-skills details{border-width:8px 10px!important;border-image-width:8px 10px!important}
+.kp-pop.hero-profile .hp-skills summary{gap:8px!important;min-height:46px}
+.kp-pop.hero-profile .hp-skills summary>img{width:40px!important;height:40px!important}
+.kp-pop.hero-profile .kp-sk{display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex:1;min-width:0}
+.kp-pop.hero-profile .kp-sk b{font-size:17px!important;line-height:1.1}
+.kp-pop.hero-profile .kp-sk small{margin:0!important;font:700 13px Cambria,serif!important;color:#7a5a2a!important}
+.kp-pop.hero-profile .hp-forms .kp-face{width:62%;height:62%;object-fit:cover;border-radius:50%;box-shadow:0 0 0 2px #e0b25a}
+/* Đồng vàng */
+.kp-pop.kp-item .dialog-item{width:118px!important;height:118px!important;padding:16px!important;box-sizing:border-box}
+.kp-pop.kp-item .dialog-item img{width:100%!important;height:100%!important;object-fit:contain}
+.kp-pop .kp-use{font-size:17px}
+.kp-pop .kp-have b{font-size:28px}
+.kp-pop .kp-from{flex-direction:column;gap:6px;width:100%}
+.kp-pop .kp-from small{font-size:15px}
+.kp-pop .kp-from i{display:block;width:72%;box-sizing:border-box;text-align:center;padding:8px 14px;font-size:16px;background-image:var(--kit-row-read);color:#4a2a10}
+/* Lực chiến */
+.kp-pop .power-table tr{grid-template-columns:1fr 56px 62px 50px;min-height:34px}
+.kp-pop .power-table td,.kp-pop .power-table th{font-size:15px!important;line-height:1.15}
+.kp-pop .power-table td:not(:first-child),.kp-pop .power-table th:not(:first-child){text-align:right}
+.kp-pop .power-table tr.is-zero td{opacity:1!important;color:#7a6a52!important}
+.kp-pop .kp-ways{display:flex!important;justify-content:center;gap:10px;margin:6px 0!important}
+.kp-pop .kp-ways span{display:flex;flex-direction:column;align-items:center;gap:3px;font:800 14px Cambria,serif}
+.kp-pop .kp-ways img{width:58px;height:58px;padding:8px;box-sizing:border-box;object-fit:contain;background:var(--kit-socket) center/100% 100% no-repeat}
+.kp-boss .kp-boss{height:214px;transform:none}
+.kp-boss .trial-today{grid-template-columns:250px 1fr}
+.kp-boss .trial-week .trial-boss{height:80px!important}
+.kp-boss .trial-ground>.kp-headrow{margin-top:0}
+.kp-boss .kp-floor .kp-stat{min-height:104px}
+.kp-pop .kp-use{background:none;border:solid transparent;border-width:4px 34px;border-image:var(--kit-ribbon-info) 0 60 fill / 4px 34px stretch;padding:8px 6px}
+.kp-pop.kp-item .gw-body{overflow-y:auto}
+.kp-pop .power-table tr{min-height:29px}
+.kp-pop .power-table td,.kp-pop .power-table th{padding:3px 4px!important}
+.kp-pop .power-hero .power-portrait{width:62px!important;height:62px!important}
+.kp-pop .power-hero>div{min-height:64px}
+#power-detail.kp-pop .growth-sub{margin:4px 0 2px}
+#power-detail.kp-pop .kp-info>summary{min-height:38px}
+.kp-pop .kp-ways{margin:4px 0 14px!important}
+.kp-pop .kp-ways img{width:52px;height:52px}
+/* Frame medallions per screen, as on the Hòm Thư / Cài Đặt frames. */
+.kp-rankings>.gw-emblem{background-image:var(--kit-icon-emblem-trophy)!important;width:calc(96*var(--s,1px))}
+.kp-events>.gw-emblem{background-image:var(--kit-icon-emblem-calendar)!important;width:calc(96*var(--s,1px))}
+.kp-offline>.gw-emblem{background-image:var(--kit-icon-emblem-coins)!important;width:calc(96*var(--s,1px))}
+.kp-boss>.gw-emblem{background-image:var(--kit-icon-emblem-swords)!important;width:calc(96*var(--s,1px))}

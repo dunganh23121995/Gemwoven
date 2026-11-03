@@ -1,0 +1,26 @@
+Use case: ui-mockup.
+Create one landscape approval board with TWO complete portrait Gemwoven screens side by side: “Trùm Vô Tận” and “Quán Bia”. Each is 941:1672; combined composition 1882:1672. No device mockups or external captions.
+
+References: Image 1 is the approved UI finish and shared HUD/navigation. Image 2 supplies the painted components. Image 3 supplies the current boss content and the LOCKED tavern illustration. Match the warm hand-painted wood, brass, parchment, stitched leather, foliage and flowers exactly. All interactive surfaces must be illustrated assets; Vietnamese text is a crisp independent overlay with correct accents.
+
+On BOTH screens preserve the approved top HUD: Hiro portrait, level “1”, gold “1.200”, premium currency “0”, mail badge “2”. Preserve all seven approved bottom navigation icons and labels: “Trang Chủ”, “Tướng”, “Túi Đồ”, “Kỹ Năng”, “Triệu Hồi”, “Đấu Trường”, “Thêm”.
+
+LEFT — TRÙM VÔ TẬN:
+Shared wooden vine frame over the town backdrop. Clearly separate two sections with stitched leather headings.
+
+“Sân Thử Luyện”: a highlighted parchment-on-wood boss panel. Give the existing stone-and-wood guardian artwork visual priority. Exact short copy: “Thạch Mộc Cự Vệ”, “Hôm nay · Mộc · Cấp 1”, “Kỷ lục: chưa có”, “Lượt thưởng 2/2”. Gold “Thử sức”.
+Below, four compact painted portrait sockets containing existing weekly boss art, labeled “T2”, “T3”, “T5”, “T6”. A round “ⓘ” opens the rules.
+
+“Tầng vô tận”: existing crossed-swords emblem at a restrained size. Three illustrated stat tiles: “Kỷ lục — Tầng 0”, “Tổng boss hạ — 0”, “Boss hôm nay — 0”. Short line “Tầng kế tiếp: 1 · Cấp gợi ý 2”.
+Primary gold button “Thách đấu tầng 1”; secondary leather button “Farm tầng 1”. Reward pacing goes behind a round “ⓘ”. Preserve the “Xếp hạng boss” action below, with a short local-records qualifier and “Toàn cầu: Sắp ra mắt”. Allow internal scrolling, never reduce all text to fit.
+
+RIGHT — QUÁN BIA:
+Keep the existing tavern painting, characters, composition and furniture unchanged. Do not cover it with a full-screen parchment frame.
+Retain the four hanging illustrated task flags in their existing positions: “Ghé Thăm”, “Vượt Ải”, “Boss”, “Chi Tiêu”. Make “Ghé Thăm” visibly selected using an existing brass badge with a crisp “✓”; preserve the original cloth artwork.
+Keep the two small scene notes brief and legible on their existing painted boards.
+
+Redesign the bottom quest panel ABOVE navigation, reserving approximately the lower quarter of the screen. Use a real illustrated parchment-on-wood panel and an attached selected tab “Nhiệm Vụ Hằng Ngày”. Include a small round close “×” at its top-right.
+Upper panel area: existing town quest thumbnail, title “Ghé thăm thị trấn”, line “1/1 · Hoàn thành”.
+Lower area: FOUR large readable reward sockets: gold “500”, experience books “10”, training seals “80”, summon ticket “1”. Place a wide gold “Nhận Thưởng” button below the reward row. Keep clear gaps between the tab, title, rewards, button and navigation.
+
+No premium currency rewards. No redrawing the tavern scene, invented bosses, flat CSS cards, generic rectangles, tiny rewards, overlapping controls, or decorative text.

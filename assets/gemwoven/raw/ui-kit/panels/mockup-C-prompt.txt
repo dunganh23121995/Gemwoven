@@ -1,0 +1,37 @@
+Use case: ui-mockup.
+Create one landscape approval board containing THREE complete portrait Gemwoven viewports side by side, each 941:1672, combined 2823:1672. Show one modal per viewport: Hiro profile, power breakdown, received rewards.
+
+References: Image 1 defines the approved materials, finish, HUD and bottom navigation. Image 2 defines the reusable illustrated component kit. Image 3 defines the current popup content and Hiro identity.
+Place each modal over a softly blurred, darkened game screen. Keep the approved HUD and seven-icon bottom navigation visible behind the dim layer. HUD values: Hiro level “1”, gold “1.200”, premium currency “0”, mail badge “2”. Bottom labels: “Trang Chủ”, “Tướng”, “Túi Đồ”, “Kỹ Năng”, “Triệu Hồi”, “Đấu Trường”, “Thêm”.
+
+Use the same carved wood-and-vine modal frame and warm parchment in all three columns. Approximate the existing 400 CSS-pixel modal width at its intended phone display scale; use content-dependent heights, not three equally tall panels. Painted round close “×” in each top-right corner. Preserve the corners when changing panel size, as with nine-slice assets.
+Crisp Vietnamese serif text represents a separate HTML overlay. All buttons, rows and sockets use existing painted artwork.
+
+LEFT — HIRO PROFILE:
+Title “Hiro”. Existing Hiro portrait beside “Lữ Khách Tập Sự”, brass rarity badge “Thường”, one filled star and five outlined stars.
+Three compact illustrated stat tiles with existing heart, sword and shield icons: “145”, “×0,85”, “0%”.
+Four readable parchment-on-wood skill rows using existing skill icons:
+“Kiếm Nhiệt Huyết” — “Chủ động · 1/10”
+“Giữ Thế” — “Bị động” with a small painted lock
+“Bước Tiến” — “Biến Dị” with a lock
+“Ý Chí Lữ Khách” — “Chân Thân” with a lock.
+Below, three actual existing form thumbnails in painted sockets: current form selected, later forms locked. Short labels “Dạng 1”, “Dạng 2”, “Dạng 3”; full names remain available on tap.
+Gold footer button “Kỹ năng”.
+
+CENTER — POWER BREAKDOWN:
+Title “Chi tiết lực chiến”. Hiro portrait next to a prominent parchment stat plaque “123”, caption “Lực chiến”.
+A clear aligned table with painted leather header “Nguồn | HP | Công | Thủ”. Each source row uses a subtle illustrated parchment strip, not a separately heavy frame.
+Rows: “Gốc tướng”, “Cấp 1”, “1 sao”, “Tiến hóa 0”, “Trang bị 0/6”, “La Bàn”, “Kỹ năng”.
+Base values “145 | ×0,85 | 0%”; absent contributions shown as “—”. Highlighted total row “Tổng | 145 | ×0,85 | 0%”. Preserve alignment and numeric readability.
+Round “ⓘ” beside “Cách tính”.
+Short section “Cách tăng tiếp”, with existing material icons and the concise line “Khám Phá · Trùm · Tích Lũy”.
+Wide gold button “Lộ trình phát triển”. Use internal scrolling if needed; keep all source rows available.
+
+RIGHT — RECEIVED REWARDS:
+A shorter, vertically centered modal titled “Quà nhận được”. Three large existing painted item sockets in one row, using actual item artwork:
+“Đồng vàng” with “+2.000”
+“Vé triệu hồi” with “+2”
+“Mảnh Hiro” with “+10”.
+Quantities are prominent; labels are short. Gold “Quay lại” button beneath, with balanced spacing and little unused parchment.
+
+No premium gems among rewards. Preserve Hiro’s identity. No invented skill icons or hero forms, flat CSS pills/cards, emoji art, excessive nested frames, tiny type, or long explanatory paragraphs.

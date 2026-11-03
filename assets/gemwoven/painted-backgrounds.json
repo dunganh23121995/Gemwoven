@@ -2021,5 +2021,137 @@
       "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
     ],
     "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-emblem-trophy": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-trophy.webp",
+    "width": 191,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-emblem-calendar": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-calendar.webp",
+    "width": 188,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-emblem-coins": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-coins.webp",
+    "width": 188,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-emblem-swords": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-swords.webp",
+    "width": 187,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-helm": {
+    "file": "assets/gemwoven/ui-kit/icon-helm.webp",
+    "width": 192,
+    "height": 163,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-swords": {
+    "file": "assets/gemwoven/ui-kit/icon-swords.webp",
+    "width": 192,
+    "height": 183,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-skull": {
+    "file": "assets/gemwoven/ui-kit/icon-skull.webp",
+    "width": 192,
+    "height": 187,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-stairs": {
+    "file": "assets/gemwoven/ui-kit/icon-stairs.webp",
+    "width": 184,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-gift": {
+    "file": "assets/gemwoven/ui-kit/icon-gift.webp",
+    "width": 185,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-trophy": {
+    "file": "assets/gemwoven/ui-kit/icon-trophy.webp",
+    "width": 192,
+    "height": 179,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-farm": {
+    "file": "assets/gemwoven/ui-kit/icon-farm.webp",
+    "width": 184,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-hourglass": {
+    "file": "assets/gemwoven/ui-kit/icon-hourglass.webp",
+    "width": 152,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
   }
 }

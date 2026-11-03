@@ -1,0 +1,20 @@
+Use case: ui-mockup.
+Create one landscape approval board containing THREE adjacent, complete portrait Gemwoven game screens, left to right: “Thành Tích”, “Sự Kiện”, “Tích Lũy”. Each screen has a 941:1672 aspect ratio; combined composition 2823:1672. No device frames, captions, perspective, or cropped HUD/navigation.
+
+References: Image 1 is the approved visual standard; Image 2 is the existing component vocabulary; Image 3 shows current content only. Match Image 1’s polished hand-painted fantasy RPG UI: carved honey-colored wood, brass edges, leafy vines, small white flowers, warm parchment, stitched brown leather. Preserve the existing town backdrop. Every frame, button, row, slot and tab must visibly use painted artwork. Typography represents a separate HTML overlay: crisp dark-brown Vietnamese serif, short labels, correct diacritics, generous spacing.
+
+Repeat the approved HUD on all screens: Hiro portrait, level “1”, gold “1.200”, blue premium currency balance “0”, envelope badge “2”. Repeat the approved seven-icon bottom navigation: “Trang Chủ”, “Tướng”, “Túi Đồ”, “Kỹ Năng”, “Triệu Hồi”, “Đấu Trường”, “Thêm”. Keep premium currency exclusively in the HUD.
+
+LEFT — THÀNH TÍCH:
+Use the shared vine-and-wood frame with parchment. Show “Trên thiết bị này” and “BXH toàn cầu: Sắp ra mắt”, then “Danh Hiệu 0/16”. Use the EXISTING five-tier illustrated title nameplates in two readable columns, with small painted locks. Content scrolls vertically; show a readable upper portion rather than shrinking all sixteen titles. Further down the same scroll are four illustrated parchment stat tiles: “Boss cao nhất — Tầng 0”, “Sát thương cao nhất — 0”, “Tổng boss hạ — 0”, “Ải đã vượt — 32”. Retain a short leaderboard note. Anchor a gold “Boss vô hạn” button above navigation. Show the painted scrollbar; do not compress offscreen content.
+
+CENTER — SỰ KIỆN:
+Show the UPPER scroll position only. Short subtitle “Hành Trình Tân Thủ đang mở”.
+A compact leather section header “Kỳ Báu Vật”, tag “Thử trên thiết bị”, three large existing treasure illustrations, gold “Chơi thử” button and a small round “ⓘ”.
+Next: “Hành Trình Tân Thủ”, “Đã nhận 0/7”, red wax badge “1 quà”.
+Show readable day cards using painted parchment panels: “Ngày 1” selected with a gold edge, Hiro portrait, reward icons with quantities, including “Mảnh Hiro ×10”, and “Nhận”. “Ngày 2” has a lock and “Mở sau 1 ngày”; the next card begins at the scroll edge. Seven day cards, three weekly quests and the future schedule remain below the fold.
+
+RIGHT — TÍCH LŨY:
+Badge “592 vàng/giờ”, a large existing treasure chest, “0 giờ 00 phút / 12 giờ”, an empty painted progress trough. Three equal parchment-on-wood tiles with existing icons: “Vàng”, “Sách KN”, “Ấn tu luyện”, each showing “0”. Large steel disabled button “Đang tích lũy”. Small round “ⓘ” for the calculation details. Calm spacing and a clear chest-to-progress-to-reward hierarchy.
+
+Do not invent extra rewards, title art, heroes or components. No premium gems in any reward. No flat CSS-style cards, pill filters, emoji icons, excessive glow, tiny text, or decorative prose.
