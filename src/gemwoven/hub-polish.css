@@ -21,3 +21,8 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .live-panel details summary{cursor:pointer;font-weight:700;min-height:56px;display:flex;align-items:center;color:#8a5a20}
 .newbie-ready{color:#c0392b}
 .sc-elem{font-style:normal;font-weight:800;padding:1px 8px;border-radius:10px;white-space:nowrap}.sc-elem.bad{background:#c0392b;color:#fff}.sc-elem.good{background:#2f8a3a;color:#fff}
+
+/* Calmer backgrounds (backdrop-focus.js, Codex UI review 16): blurred, darkened copy outside the focus zones. */
+#scene>.bg-focus{position:absolute;inset:0;background:inherit;pointer-events:none;z-index:0}
+#scene>.bg-strong{mask-composite:intersect;-webkit-mask-composite:source-in}
+#scene>.bg-strong::after{content:"";position:absolute;inset:0;background:#17221e;opacity:.15}
