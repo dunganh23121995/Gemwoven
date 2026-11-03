@@ -17011,6 +17011,2043 @@
     ],
     "purpose": "The Bag girl moves at rest (owner 03/11): Codex drew her alone in her lying pose, the rig only moves that picture."
   },
+  "skilltree-frame-learned": {
+    "file": "assets/gemwoven/skill-tree/frame-learned.webp",
+    "width": 320,
+    "height": 327,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-frame-selected": {
+    "file": "assets/gemwoven/skill-tree/frame-selected.webp",
+    "width": 331,
+    "height": 326,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-frame-locked": {
+    "file": "assets/gemwoven/skill-tree/frame-locked.webp",
+    "width": 325,
+    "height": 361,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-pointer": {
+    "file": "assets/gemwoven/skill-tree/pointer.webp",
+    "width": 120,
+    "height": 53,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-sprout": {
+    "file": "assets/gemwoven/skill-tree/sprout.webp",
+    "width": 100,
+    "height": 72,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-rank-plate": {
+    "file": "assets/gemwoven/skill-tree/rank-plate.webp",
+    "width": 360,
+    "height": 105,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-gate-plate": {
+    "file": "assets/gemwoven/skill-tree/gate-plate.webp",
+    "width": 400,
+    "height": 173,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-bud": {
+    "file": "assets/gemwoven/skill-tree/bud.webp",
+    "width": 240,
+    "height": 152,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-ribbon": {
+    "file": "assets/gemwoven/skill-tree/ribbon.webp",
+    "width": 440,
+    "height": 96,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-tray": {
+    "file": "assets/gemwoven/skill-tree/tray.webp",
+    "width": 810,
+    "height": 282,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-next-card": {
+    "file": "assets/gemwoven/skill-tree/next-card.webp",
+    "width": 560,
+    "height": 257,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-header-tag": {
+    "file": "assets/gemwoven/skill-tree/header-tag.webp",
+    "width": 400,
+    "height": 97,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-category-plate": {
+    "file": "assets/gemwoven/skill-tree/category-plate.webp",
+    "width": 400,
+    "height": 72,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-bough": {
+    "file": "assets/gemwoven/skill-tree/bough.webp",
+    "width": 466,
+    "height": 900,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "background-vip": {
+    "file": "assets/gemwoven/vip-pass/room.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/room-raw.png",
+    "reference": "assets/gemwoven/raw/vip-pass/mockup-1.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/room-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp reading room (owner 2026-11-04): quiet centre for the Sổ Hành Trình tree. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+  },
+  "vip-pass-action-primary": {
+    "file": "assets/gemwoven/vip-pass/action-primary.webp",
+    "width": 470,
+    "height": 120,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-action-secondary": {
+    "file": "assets/gemwoven/vip-pass/action-secondary.webp",
+    "width": 392,
+    "height": 119,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-activity-fill": {
+    "file": "assets/gemwoven/vip-pass/activity-fill.webp",
+    "width": 429,
+    "height": 46,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-activity-trough": {
+    "file": "assets/gemwoven/vip-pass/activity-trough.webp",
+    "width": 430,
+    "height": 60,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-avatar-frame": {
+    "file": "assets/gemwoven/vip-pass/avatar-frame.webp",
+    "width": 212,
+    "height": 203,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-calendar": {
+    "file": "assets/gemwoven/vip-pass/calendar.webp",
+    "width": 143,
+    "height": 141,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-claim-button": {
+    "file": "assets/gemwoven/vip-pass/claim-button.webp",
+    "width": 225,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-claimed-check": {
+    "file": "assets/gemwoven/vip-pass/claimed-check.webp",
+    "width": 144,
+    "height": 143,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-fund-pouch": {
+    "file": "assets/gemwoven/vip-pass/fund-pouch.webp",
+    "width": 142,
+    "height": 160,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-gift": {
+    "file": "assets/gemwoven/vip-pass/gift.webp",
+    "width": 184,
+    "height": 189,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-header-free": {
+    "file": "assets/gemwoven/vip-pass/header-free.webp",
+    "width": 241,
+    "height": 140,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-header-gold": {
+    "file": "assets/gemwoven/vip-pass/header-gold.webp",
+    "width": 242,
+    "height": 149,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-header-jewel": {
+    "file": "assets/gemwoven/vip-pass/header-jewel.webp",
+    "width": 247,
+    "height": 149,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-hourglass": {
+    "file": "assets/gemwoven/vip-pass/hourglass.webp",
+    "width": 128,
+    "height": 199,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-journey-book": {
+    "file": "assets/gemwoven/vip-pass/journey-book.webp",
+    "width": 202,
+    "height": 173,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-medal-current": {
+    "file": "assets/gemwoven/vip-pass/medal-current.webp",
+    "width": 199,
+    "height": 169,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-medal": {
+    "file": "assets/gemwoven/vip-pass/medal.webp",
+    "width": 203,
+    "height": 136,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-next-vip-tag": {
+    "file": "assets/gemwoven/vip-pass/next-vip-tag.webp",
+    "width": 180,
+    "height": 88,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-ownership-lock": {
+    "file": "assets/gemwoven/vip-pass/ownership-lock.webp",
+    "width": 120,
+    "height": 142,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-quantity-pill": {
+    "file": "assets/gemwoven/vip-pass/quantity-pill.webp",
+    "width": 206,
+    "height": 70,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-reward-free": {
+    "file": "assets/gemwoven/vip-pass/reward-free.webp",
+    "width": 236,
+    "height": 132,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-reward-gold": {
+    "file": "assets/gemwoven/vip-pass/reward-gold.webp",
+    "width": 216,
+    "height": 130,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-reward-jewel": {
+    "file": "assets/gemwoven/vip-pass/reward-jewel.webp",
+    "width": 216,
+    "height": 129,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-scroll-arrow": {
+    "file": "assets/gemwoven/vip-pass/scroll-arrow.webp",
+    "width": 104,
+    "height": 107,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-scroll-rail": {
+    "file": "assets/gemwoven/vip-pass/scroll-rail.webp",
+    "width": 30,
+    "height": 230,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-scroll-thumb": {
+    "file": "assets/gemwoven/vip-pass/scroll-thumb.webp",
+    "width": 40,
+    "height": 151,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-season-strip": {
+    "file": "assets/gemwoven/vip-pass/season-strip.webp",
+    "width": 480,
+    "height": 79,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-status-plaque": {
+    "file": "assets/gemwoven/vip-pass/status-plaque.webp",
+    "width": 290,
+    "height": 76,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tab-idle": {
+    "file": "assets/gemwoven/vip-pass/tab-idle.webp",
+    "width": 403,
+    "height": 115,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tab-selected": {
+    "file": "assets/gemwoven/vip-pass/tab-selected.webp",
+    "width": 404,
+    "height": 135,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-title-sign": {
+    "file": "assets/gemwoven/vip-pass/title-sign.webp",
+    "width": 444,
+    "height": 182,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tree-crown": {
+    "file": "assets/gemwoven/vip-pass/tree-crown.webp",
+    "width": 470,
+    "height": 196,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tree-row": {
+    "file": "assets/gemwoven/vip-pass/tree-row.webp",
+    "width": 478,
+    "height": 126,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-vip-crest": {
+    "file": "assets/gemwoven/vip-pass/vip-crest.webp",
+    "width": 226,
+    "height": 219,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-vip-strip": {
+    "file": "assets/gemwoven/vip-pass/vip-strip.webp",
+    "width": 473,
+    "height": 106,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-vip-trough": {
+    "file": "assets/gemwoven/vip-pass/vip-trough.webp",
+    "width": 467,
+    "height": 58,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "skilltree-button-ready": {
+    "file": "assets/gemwoven/skill-tree/button-ready.webp",
+    "width": 700,
+    "height": 196,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-button-locked": {
+    "file": "assets/gemwoven/skill-tree/button-locked.webp",
+    "width": 700,
+    "height": 197,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "arena-cup-sign": {
+    "file": "assets/gemwoven/arena/cup-sign.webp",
+    "width": 827,
+    "height": 355,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-frame-bronze": {
+    "file": "assets/gemwoven/arena/frame-bronze.webp",
+    "width": 333,
+    "height": 327,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-frame-gold": {
+    "file": "assets/gemwoven/arena/frame-gold.webp",
+    "width": 337,
+    "height": 335,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-frame-silver": {
+    "file": "assets/gemwoven/arena/frame-silver.webp",
+    "width": 332,
+    "height": 330,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-match": {
+    "file": "assets/gemwoven/arena/match.webp",
+    "width": 900,
+    "height": 344,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-mode-rack": {
+    "file": "assets/gemwoven/arena/mode-rack.webp",
+    "width": 1184,
+    "height": 313,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-ribbon": {
+    "file": "assets/gemwoven/arena/ribbon.webp",
+    "width": 455,
+    "height": 103,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-row": {
+    "file": "assets/gemwoven/arena/row.webp",
+    "width": 1400,
+    "height": 245,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-slot": {
+    "file": "assets/gemwoven/arena/slot.webp",
+    "width": 320,
+    "height": 309,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "plaza-ui-action": {
+    "file": "assets/gemwoven/plaza/ui/action.webp",
+    "width": 1000,
+    "height": 182,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-arrow": {
+    "file": "assets/gemwoven/plaza/ui/arrow.webp",
+    "width": 142,
+    "height": 158,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-back": {
+    "file": "assets/gemwoven/plaza/ui/back.webp",
+    "width": 256,
+    "height": 260,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-bubble": {
+    "file": "assets/gemwoven/plaza/ui/bubble.webp",
+    "width": 578,
+    "height": 203,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-bubble-tail": {
+    "file": "assets/gemwoven/plaza/ui/bubble-tail.webp",
+    "width": 98,
+    "height": 79,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-chan": {
+    "file": "assets/gemwoven/plaza/ui/chan.webp",
+    "width": 318,
+    "height": 168,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-close": {
+    "file": "assets/gemwoven/plaza/ui/close.webp",
+    "width": 238,
+    "height": 238,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-crest": {
+    "file": "assets/gemwoven/plaza/ui/crest.webp",
+    "width": 161,
+    "height": 188,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-e-angry": {
+    "file": "assets/gemwoven/plaza/ui/e-angry.webp",
+    "width": 200,
+    "height": 192,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-cheer": {
+    "file": "assets/gemwoven/plaza/ui/e-cheer.webp",
+    "width": 200,
+    "height": 180,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-cry": {
+    "file": "assets/gemwoven/plaza/ui/e-cry.webp",
+    "width": 200,
+    "height": 173,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-duel": {
+    "file": "assets/gemwoven/plaza/ui/e-duel.webp",
+    "width": 200,
+    "height": 188,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-laugh": {
+    "file": "assets/gemwoven/plaza/ui/e-laugh.webp",
+    "width": 200,
+    "height": 193,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-love": {
+    "file": "assets/gemwoven/plaza/ui/e-love.webp",
+    "width": 200,
+    "height": 186,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-think": {
+    "file": "assets/gemwoven/plaza/ui/e-think.webp",
+    "width": 199,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-wave": {
+    "file": "assets/gemwoven/plaza/ui/e-wave.webp",
+    "width": 200,
+    "height": 193,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-field": {
+    "file": "assets/gemwoven/plaza/ui/field.webp",
+    "width": 775,
+    "height": 168,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-field-form": {
+    "file": "assets/gemwoven/plaza/ui/field-form.webp",
+    "width": 1000,
+    "height": 128,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-fill": {
+    "file": "assets/gemwoven/plaza/ui/fill.webp",
+    "width": 996,
+    "height": 57,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-g-crown": {
+    "file": "assets/gemwoven/plaza/ui/g-crown.webp",
+    "width": 168,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-flame": {
+    "file": "assets/gemwoven/plaza/ui/g-flame.webp",
+    "width": 167,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-fox": {
+    "file": "assets/gemwoven/plaza/ui/g-fox.webp",
+    "width": 171,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-gem": {
+    "file": "assets/gemwoven/plaza/ui/g-gem.webp",
+    "width": 167,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-leaf": {
+    "file": "assets/gemwoven/plaza/ui/g-leaf.webp",
+    "width": 168,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-moon": {
+    "file": "assets/gemwoven/plaza/ui/g-moon.webp",
+    "width": 168,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-owl": {
+    "file": "assets/gemwoven/plaza/ui/g-owl.webp",
+    "width": 170,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-shield": {
+    "file": "assets/gemwoven/plaza/ui/g-shield.webp",
+    "width": 167,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-star": {
+    "file": "assets/gemwoven/plaza/ui/g-star.webp",
+    "width": 170,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-sun": {
+    "file": "assets/gemwoven/plaza/ui/g-sun.webp",
+    "width": 168,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-sword": {
+    "file": "assets/gemwoven/plaza/ui/g-sword.webp",
+    "width": 166,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-wave": {
+    "file": "assets/gemwoven/plaza/ui/g-wave.webp",
+    "width": 170,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-h-chat": {
+    "file": "assets/gemwoven/plaza/ui/h-chat.webp",
+    "width": 200,
+    "height": 165,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-guild": {
+    "file": "assets/gemwoven/plaza/ui/h-guild.webp",
+    "width": 200,
+    "height": 166,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-meet": {
+    "file": "assets/gemwoven/plaza/ui/h-meet.webp",
+    "width": 200,
+    "height": 135,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-spar": {
+    "file": "assets/gemwoven/plaza/ui/h-spar.webp",
+    "width": 200,
+    "height": 147,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-walk": {
+    "file": "assets/gemwoven/plaza/ui/h-walk.webp",
+    "width": 200,
+    "height": 195,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-i-bell": {
+    "file": "assets/gemwoven/plaza/ui/i-bell.webp",
+    "width": 200,
+    "height": 171,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-block": {
+    "file": "assets/gemwoven/plaza/ui/i-block.webp",
+    "width": 200,
+    "height": 187,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-board": {
+    "file": "assets/gemwoven/plaza/ui/i-board.webp",
+    "width": 200,
+    "height": 161,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-checkin": {
+    "file": "assets/gemwoven/plaza/ui/i-checkin.webp",
+    "width": 200,
+    "height": 192,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-emote": {
+    "file": "assets/gemwoven/plaza/ui/i-emote.webp",
+    "width": 200,
+    "height": 168,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-friends": {
+    "file": "assets/gemwoven/plaza/ui/i-friends.webp",
+    "width": 200,
+    "height": 151,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-gate": {
+    "file": "assets/gemwoven/plaza/ui/i-gate.webp",
+    "width": 200,
+    "height": 165,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-goto": {
+    "file": "assets/gemwoven/plaza/ui/i-goto.webp",
+    "width": 200,
+    "height": 181,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-guild": {
+    "file": "assets/gemwoven/plaza/ui/i-guild.webp",
+    "width": 200,
+    "height": 156,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-heart": {
+    "file": "assets/gemwoven/plaza/ui/i-heart.webp",
+    "width": 200,
+    "height": 197,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-help": {
+    "file": "assets/gemwoven/plaza/ui/i-help.webp",
+    "width": 182,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-invite": {
+    "file": "assets/gemwoven/plaza/ui/i-invite.webp",
+    "width": 200,
+    "height": 191,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-lantern": {
+    "file": "assets/gemwoven/plaza/ui/i-lantern.webp",
+    "width": 140,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-letter": {
+    "file": "assets/gemwoven/plaza/ui/i-letter.webp",
+    "width": 200,
+    "height": 139,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-log": {
+    "file": "assets/gemwoven/plaza/ui/i-log.webp",
+    "width": 200,
+    "height": 167,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-map": {
+    "file": "assets/gemwoven/plaza/ui/i-map.webp",
+    "width": 200,
+    "height": 147,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-near": {
+    "file": "assets/gemwoven/plaza/ui/i-near.webp",
+    "width": 200,
+    "height": 139,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-report": {
+    "file": "assets/gemwoven/plaza/ui/i-report.webp",
+    "width": 200,
+    "height": 176,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-swords": {
+    "file": "assets/gemwoven/plaza/ui/i-swords.webp",
+    "width": 200,
+    "height": 181,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-knob": {
+    "file": "assets/gemwoven/plaza/ui/knob.webp",
+    "width": 123,
+    "height": 123,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-knot": {
+    "file": "assets/gemwoven/plaza/ui/knot.webp",
+    "width": 177,
+    "height": 140,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-dark": {
+    "file": "assets/gemwoven/plaza/ui/lamp-dark.webp",
+    "width": 148,
+    "height": 210,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-off": {
+    "file": "assets/gemwoven/plaza/ui/lamp-off.webp",
+    "width": 148,
+    "height": 210,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-on": {
+    "file": "assets/gemwoven/plaza/ui/lamp-on.webp",
+    "width": 148,
+    "height": 210,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-wait": {
+    "file": "assets/gemwoven/plaza/ui/lamp-wait.webp",
+    "width": 149,
+    "height": 210,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-ledge": {
+    "file": "assets/gemwoven/plaza/ui/ledge.webp",
+    "width": 1000,
+    "height": 124,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-notice": {
+    "file": "assets/gemwoven/plaza/ui/notice.webp",
+    "width": 1000,
+    "height": 195,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-npc-tag": {
+    "file": "assets/gemwoven/plaza/ui/npc-tag.webp",
+    "width": 208,
+    "height": 116,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-plaque": {
+    "file": "assets/gemwoven/plaza/ui/plaque.webp",
+    "width": 381,
+    "height": 387,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-plate": {
+    "file": "assets/gemwoven/plaza/ui/plate.webp",
+    "width": 579,
+    "height": 122,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-plate-me": {
+    "file": "assets/gemwoven/plaza/ui/plate-me.webp",
+    "width": 582,
+    "height": 122,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-rail": {
+    "file": "assets/gemwoven/plaza/ui/rail.webp",
+    "width": 1000,
+    "height": 132,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-seal": {
+    "file": "assets/gemwoven/plaza/ui/seal.webp",
+    "width": 177,
+    "height": 178,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-send": {
+    "file": "assets/gemwoven/plaza/ui/send.webp",
+    "width": 307,
+    "height": 169,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-sign": {
+    "file": "assets/gemwoven/plaza/ui/sign.webp",
+    "width": 976,
+    "height": 238,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-socket": {
+    "file": "assets/gemwoven/plaza/ui/socket.webp",
+    "width": 256,
+    "height": 259,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-stick-ring": {
+    "file": "assets/gemwoven/plaza/ui/stick-ring.webp",
+    "width": 288,
+    "height": 293,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-stick-thumb": {
+    "file": "assets/gemwoven/plaza/ui/stick-thumb.webp",
+    "width": 199,
+    "height": 201,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-strip": {
+    "file": "assets/gemwoven/plaza/ui/strip.webp",
+    "width": 982,
+    "height": 150,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-switch": {
+    "file": "assets/gemwoven/plaza/ui/switch.webp",
+    "width": 241,
+    "height": 107,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-t-blue": {
+    "file": "assets/gemwoven/plaza/ui/t-blue.webp",
+    "width": 200,
+    "height": 191,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-t-gold": {
+    "file": "assets/gemwoven/plaza/ui/t-gold.webp",
+    "width": 200,
+    "height": 191,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-t-red": {
+    "file": "assets/gemwoven/plaza/ui/t-red.webp",
+    "width": 200,
+    "height": 191,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-tab": {
+    "file": "assets/gemwoven/plaza/ui/tab.webp",
+    "width": 386,
+    "height": 119,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tab-on": {
+    "file": "assets/gemwoven/plaza/ui/tab-on.webp",
+    "width": 386,
+    "height": 138,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tag": {
+    "file": "assets/gemwoven/plaza/ui/tag.webp",
+    "width": 245,
+    "height": 94,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tile": {
+    "file": "assets/gemwoven/plaza/ui/tile.webp",
+    "width": 260,
+    "height": 250,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tile-on": {
+    "file": "assets/gemwoven/plaza/ui/tile-on.webp",
+    "width": 266,
+    "height": 254,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-trough": {
+    "file": "assets/gemwoven/plaza/ui/trough.webp",
+    "width": 1000,
+    "height": 79,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-x-calendar": {
+    "file": "assets/gemwoven/plaza/ui/x-calendar.webp",
+    "width": 200,
+    "height": 175,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-x-empty": {
+    "file": "assets/gemwoven/plaza/ui/x-empty.webp",
+    "width": 187,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-x-plaza": {
+    "file": "assets/gemwoven/plaza/ui/x-plaza.webp",
+    "width": 200,
+    "height": 162,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-x-recruit": {
+    "file": "assets/gemwoven/plaza/ui/x-recruit.webp",
+    "width": 164,
+    "height": 200,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "kit-parchment": {
+    "file": "assets/gemwoven/ui-kit/parchment.webp",
+    "width": 253,
+    "height": 320,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-tab": {
+    "file": "assets/gemwoven/ui-kit/tab.webp",
+    "width": 231,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-tab-on": {
+    "file": "assets/gemwoven/ui-kit/tab-on.webp",
+    "width": 228,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-tab-dark": {
+    "file": "assets/gemwoven/ui-kit/tab-dark.webp",
+    "width": 228,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-plaque": {
+    "file": "assets/gemwoven/ui-kit/plaque.webp",
+    "width": 354,
+    "height": 105,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-plaque-on": {
+    "file": "assets/gemwoven/ui-kit/plaque-on.webp",
+    "width": 367,
+    "height": 105,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-btn-gold": {
+    "file": "assets/gemwoven/ui-kit/btn-gold.webp",
+    "width": 223,
+    "height": 83,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-btn-gold-down": {
+    "file": "assets/gemwoven/ui-kit/btn-gold-down.webp",
+    "width": 223,
+    "height": 83,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-btn-steel": {
+    "file": "assets/gemwoven/ui-kit/btn-steel.webp",
+    "width": 223,
+    "height": 83,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-lock": {
+    "file": "assets/gemwoven/ui-kit/lock.webp",
+    "width": 63,
+    "height": 81,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-unread": {
+    "file": "assets/gemwoven/ui-kit/row-unread.webp",
+    "width": 437,
+    "height": 67,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-read": {
+    "file": "assets/gemwoven/ui-kit/row-read.webp",
+    "width": 437,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-on": {
+    "file": "assets/gemwoven/ui-kit/row-on.webp",
+    "width": 437,
+    "height": 69,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-off": {
+    "file": "assets/gemwoven/ui-kit/row-off.webp",
+    "width": 437,
+    "height": 65,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-setrow": {
+    "file": "assets/gemwoven/ui-kit/setrow.webp",
+    "width": 439,
+    "height": 86,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-setrow-off": {
+    "file": "assets/gemwoven/ui-kit/setrow-off.webp",
+    "width": 439,
+    "height": 85,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-seal": {
+    "file": "assets/gemwoven/ui-kit/seal.webp",
+    "width": 121,
+    "height": 85,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-badge-brass": {
+    "file": "assets/gemwoven/ui-kit/badge-brass.webp",
+    "width": 141,
+    "height": 73,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-badge-leather": {
+    "file": "assets/gemwoven/ui-kit/badge-leather.webp",
+    "width": 141,
+    "height": 73,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-toggle-off": {
+    "file": "assets/gemwoven/ui-kit/toggle-off.webp",
+    "width": 139,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-toggle-on": {
+    "file": "assets/gemwoven/ui-kit/toggle-on.webp",
+    "width": 139,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-toggle-disabled": {
+    "file": "assets/gemwoven/ui-kit/toggle-disabled.webp",
+    "width": 140,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-slider-track": {
+    "file": "assets/gemwoven/ui-kit/slider-track.webp",
+    "width": 737,
+    "height": 31,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-slider-track-off": {
+    "file": "assets/gemwoven/ui-kit/slider-track-off.webp",
+    "width": 737,
+    "height": 29,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-slider-fill": {
+    "file": "assets/gemwoven/ui-kit/slider-fill.webp",
+    "width": 467,
+    "height": 18,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-knob": {
+    "file": "assets/gemwoven/ui-kit/knob.webp",
+    "width": 57,
+    "height": 58,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-knob-drag": {
+    "file": "assets/gemwoven/ui-kit/knob-drag.webp",
+    "width": 66,
+    "height": 70,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket": {
+    "file": "assets/gemwoven/ui-kit/socket.webp",
+    "width": 118,
+    "height": 115,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket-on": {
+    "file": "assets/gemwoven/ui-kit/socket-on.webp",
+    "width": 117,
+    "height": 125,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket-claimed": {
+    "file": "assets/gemwoven/ui-kit/socket-claimed.webp",
+    "width": 117,
+    "height": 114,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket-locked": {
+    "file": "assets/gemwoven/ui-kit/socket-locked.webp",
+    "width": 117,
+    "height": 114,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-progress": {
+    "file": "assets/gemwoven/ui-kit/progress.webp",
+    "width": 858,
+    "height": 35,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-progress-fill": {
+    "file": "assets/gemwoven/ui-kit/progress-fill.webp",
+    "width": 668,
+    "height": 28,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-stat": {
+    "file": "assets/gemwoven/ui-kit/stat.webp",
+    "width": 216,
+    "height": 112,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-stat-on": {
+    "file": "assets/gemwoven/ui-kit/stat-on.webp",
+    "width": 209,
+    "height": 113,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-medal-locked": {
+    "file": "assets/gemwoven/ui-kit/medal-locked.webp",
+    "width": 160,
+    "height": 136,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-medal": {
+    "file": "assets/gemwoven/ui-kit/medal.webp",
+    "width": 159,
+    "height": 137,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-medal-worn": {
+    "file": "assets/gemwoven/ui-kit/medal-worn.webp",
+    "width": 164,
+    "height": 138,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-round": {
+    "file": "assets/gemwoven/ui-kit/round.webp",
+    "width": 101,
+    "height": 101,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-round-down": {
+    "file": "assets/gemwoven/ui-kit/round-down.webp",
+    "width": 100,
+    "height": 102,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-round-off": {
+    "file": "assets/gemwoven/ui-kit/round-off.webp",
+    "width": 100,
+    "height": 103,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-ribbon-info": {
+    "file": "assets/gemwoven/ui-kit/ribbon-info.webp",
+    "width": 319,
+    "height": 62,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-ribbon-warn": {
+    "file": "assets/gemwoven/ui-kit/ribbon-warn.webp",
+    "width": 368,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-ribbon-done": {
+    "file": "assets/gemwoven/ui-kit/ribbon-done.webp",
+    "width": 386,
+    "height": 66,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-scroll-track": {
+    "file": "assets/gemwoven/ui-kit/scroll-track.webp",
+    "width": 36,
+    "height": 963,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-scroll-thumb": {
+    "file": "assets/gemwoven/ui-kit/scroll-thumb.webp",
+    "width": 33,
+    "height": 93,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-scroll-thumb-drag": {
+    "file": "assets/gemwoven/ui-kit/scroll-thumb-drag.webp",
+    "width": 41,
+    "height": 104,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-icon-speaker": {
+    "file": "assets/gemwoven/ui-kit/icon-speaker.webp",
+    "width": 247,
+    "height": 215,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-music": {
+    "file": "assets/gemwoven/ui-kit/icon-music.webp",
+    "width": 243,
+    "height": 212,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-sparkle": {
+    "file": "assets/gemwoven/ui-kit/icon-sparkle.webp",
+    "width": 218,
+    "height": 216,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-mic": {
+    "file": "assets/gemwoven/ui-kit/icon-mic.webp",
+    "width": 176,
+    "height": 254,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-up": {
+    "file": "assets/gemwoven/ui-kit/icon-up.webp",
+    "width": 213,
+    "height": 232,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-reset": {
+    "file": "assets/gemwoven/ui-kit/icon-reset.webp",
+    "width": 212,
+    "height": 216,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-emblem-mail": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-mail.webp",
+    "width": 237,
+    "height": 244,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-emblem-gear": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-gear.webp",
+    "width": 237,
+    "height": 244,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "plaza-ui-i-goto-off": {
+    "file": "assets/gemwoven/plaza/ui/i-goto-off.webp",
+    "width": 200,
+    "height": 183,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-i-heart-done": {
+    "file": "assets/gemwoven/plaza/ui/i-heart-done.webp",
+    "width": 200,
+    "height": 196,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-knob-off": {
+    "file": "assets/gemwoven/plaza/ui/knob-off.webp",
+    "width": 259,
+    "height": 261,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-switch-off": {
+    "file": "assets/gemwoven/plaza/ui/switch-off.webp",
+    "width": 300,
+    "height": 131,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-switch-on": {
+    "file": "assets/gemwoven/plaza/ui/switch-on.webp",
+    "width": 300,
+    "height": 131,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-tile-off": {
+    "file": "assets/gemwoven/plaza/ui/tile-off.webp",
+    "width": 300,
+    "height": 292,
+    "transparent": true,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",
     "width": 512,

@@ -972,4 +972,608 @@
     ],
     "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
   }
-}
+}  },
+  "kit-parchment": {
+    "file": "assets/gemwoven/ui-kit/parchment.webp",
+    "width": 253,
+    "height": 320,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-tab": {
+    "file": "assets/gemwoven/ui-kit/tab.webp",
+    "width": 231,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-tab-on": {
+    "file": "assets/gemwoven/ui-kit/tab-on.webp",
+    "width": 228,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-tab-dark": {
+    "file": "assets/gemwoven/ui-kit/tab-dark.webp",
+    "width": 228,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-plaque": {
+    "file": "assets/gemwoven/ui-kit/plaque.webp",
+    "width": 354,
+    "height": 105,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-plaque-on": {
+    "file": "assets/gemwoven/ui-kit/plaque-on.webp",
+    "width": 367,
+    "height": 105,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-btn-gold": {
+    "file": "assets/gemwoven/ui-kit/btn-gold.webp",
+    "width": 223,
+    "height": 83,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-btn-gold-down": {
+    "file": "assets/gemwoven/ui-kit/btn-gold-down.webp",
+    "width": 223,
+    "height": 83,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-btn-steel": {
+    "file": "assets/gemwoven/ui-kit/btn-steel.webp",
+    "width": 223,
+    "height": 83,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-lock": {
+    "file": "assets/gemwoven/ui-kit/lock.webp",
+    "width": 63,
+    "height": 81,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-unread": {
+    "file": "assets/gemwoven/ui-kit/row-unread.webp",
+    "width": 437,
+    "height": 67,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-read": {
+    "file": "assets/gemwoven/ui-kit/row-read.webp",
+    "width": 437,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-on": {
+    "file": "assets/gemwoven/ui-kit/row-on.webp",
+    "width": 437,
+    "height": 69,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-row-off": {
+    "file": "assets/gemwoven/ui-kit/row-off.webp",
+    "width": 437,
+    "height": 65,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-setrow": {
+    "file": "assets/gemwoven/ui-kit/setrow.webp",
+    "width": 439,
+    "height": 86,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-setrow-off": {
+    "file": "assets/gemwoven/ui-kit/setrow-off.webp",
+    "width": 439,
+    "height": 85,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-seal": {
+    "file": "assets/gemwoven/ui-kit/seal.webp",
+    "width": 121,
+    "height": 85,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-badge-brass": {
+    "file": "assets/gemwoven/ui-kit/badge-brass.webp",
+    "width": 141,
+    "height": 73,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-badge-leather": {
+    "file": "assets/gemwoven/ui-kit/badge-leather.webp",
+    "width": 141,
+    "height": 73,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-toggle-off": {
+    "file": "assets/gemwoven/ui-kit/toggle-off.webp",
+    "width": 139,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-toggle-on": {
+    "file": "assets/gemwoven/ui-kit/toggle-on.webp",
+    "width": 139,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-toggle-disabled": {
+    "file": "assets/gemwoven/ui-kit/toggle-disabled.webp",
+    "width": 140,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-slider-track": {
+    "file": "assets/gemwoven/ui-kit/slider-track.webp",
+    "width": 737,
+    "height": 31,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-slider-track-off": {
+    "file": "assets/gemwoven/ui-kit/slider-track-off.webp",
+    "width": 737,
+    "height": 29,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-slider-fill": {
+    "file": "assets/gemwoven/ui-kit/slider-fill.webp",
+    "width": 467,
+    "height": 18,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-knob": {
+    "file": "assets/gemwoven/ui-kit/knob.webp",
+    "width": 57,
+    "height": 58,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-knob-drag": {
+    "file": "assets/gemwoven/ui-kit/knob-drag.webp",
+    "width": 66,
+    "height": 70,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket": {
+    "file": "assets/gemwoven/ui-kit/socket.webp",
+    "width": 118,
+    "height": 115,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket-on": {
+    "file": "assets/gemwoven/ui-kit/socket-on.webp",
+    "width": 117,
+    "height": 125,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket-claimed": {
+    "file": "assets/gemwoven/ui-kit/socket-claimed.webp",
+    "width": 117,
+    "height": 114,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-socket-locked": {
+    "file": "assets/gemwoven/ui-kit/socket-locked.webp",
+    "width": 117,
+    "height": 114,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-progress": {
+    "file": "assets/gemwoven/ui-kit/progress.webp",
+    "width": 858,
+    "height": 35,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-progress-fill": {
+    "file": "assets/gemwoven/ui-kit/progress-fill.webp",
+    "width": 668,
+    "height": 28,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-stat": {
+    "file": "assets/gemwoven/ui-kit/stat.webp",
+    "width": 216,
+    "height": 112,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-stat-on": {
+    "file": "assets/gemwoven/ui-kit/stat-on.webp",
+    "width": 209,
+    "height": 113,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-medal-locked": {
+    "file": "assets/gemwoven/ui-kit/medal-locked.webp",
+    "width": 160,
+    "height": 136,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-medal": {
+    "file": "assets/gemwoven/ui-kit/medal.webp",
+    "width": 159,
+    "height": 137,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-medal-worn": {
+    "file": "assets/gemwoven/ui-kit/medal-worn.webp",
+    "width": 164,
+    "height": 138,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-round": {
+    "file": "assets/gemwoven/ui-kit/round.webp",
+    "width": 101,
+    "height": 101,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-round-down": {
+    "file": "assets/gemwoven/ui-kit/round-down.webp",
+    "width": 100,
+    "height": 102,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-round-off": {
+    "file": "assets/gemwoven/ui-kit/round-off.webp",
+    "width": 100,
+    "height": 103,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-ribbon-info": {
+    "file": "assets/gemwoven/ui-kit/ribbon-info.webp",
+    "width": 319,
+    "height": 62,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-ribbon-warn": {
+    "file": "assets/gemwoven/ui-kit/ribbon-warn.webp",
+    "width": 368,
+    "height": 63,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-ribbon-done": {
+    "file": "assets/gemwoven/ui-kit/ribbon-done.webp",
+    "width": 386,
+    "height": 66,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-scroll-track": {
+    "file": "assets/gemwoven/ui-kit/scroll-track.webp",
+    "width": 36,
+    "height": 963,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-scroll-thumb": {
+    "file": "assets/gemwoven/ui-kit/scroll-thumb.webp",
+    "width": 33,
+    "height": 93,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-scroll-thumb-drag": {
+    "file": "assets/gemwoven/ui-kit/scroll-thumb-drag.webp",
+    "width": 41,
+    "height": 104,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/kit-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/kit-prompt.txt"
+    ],
+    "purpose": "Shared drawn UI kit for panel screens (Codex review 26, mockup assets/gemwoven/raw/ui-kit/mockup-raw.png)."
+  },
+  "kit-icon-speaker": {
+    "file": "assets/gemwoven/ui-kit/icon-speaker.webp",
+    "width": 247,
+    "height": 215,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-music": {
+    "file": "assets/gemwoven/ui-kit/icon-music.webp",
+    "width": 243,
+    "height": 212,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-sparkle": {
+    "file": "assets/gemwoven/ui-kit/icon-sparkle.webp",
+    "width": 218,
+    "height": 216,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-mic": {
+    "file": "assets/gemwoven/ui-kit/icon-mic.webp",
+    "width": 176,
+    "height": 254,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-up": {
+    "file": "assets/gemwoven/ui-kit/icon-up.webp",
+    "width": 213,
+    "height": 232,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-reset": {
+    "file": "assets/gemwoven/ui-kit/icon-reset.webp",
+    "width": 212,
+    "height": 216,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-emblem-mail": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-mail.webp",
+    "width": 237,
+    "height": 244,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."
+  },
+  "kit-icon-emblem-gear": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-gear.webp",
+    "width": 237,
+    "height": 244,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/icons-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
+    ],
+    "purpose": "UI kit icons (Codex review 26)."

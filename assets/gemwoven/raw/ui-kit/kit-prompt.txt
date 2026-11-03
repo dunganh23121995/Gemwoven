@@ -1,0 +1,35 @@
+Use case: stylized-concept
+Asset type: production game UI component atlas.
+
+Create ONE high-resolution landscape sheet of isolated, reusable UI pieces for Gemwoven, a portrait mobile fantasy RPG designed at 941×1672.
+
+References: use the supplied approved “Lò Rèn” forge mockup as the primary style reference. Use the seven-screen contact sheet only to understand the functional needs. Match the forge’s lovingly painted chunky wood, stitched brown leather, ivory parchment, aged brass bevels, rivets, soft highlights and tactile depth. Keep foliage restrained and confined to the outer frame.
+
+BACKGROUND AND EXTRACTION:
+Perfectly uniform solid magenta #FF00FF. Every component and every state must be separate, fully visible and surrounded by generous magenta gutters. No touching, overlaps, cropping, shared shadows, background scenery or magenta reflections. Crisp silhouettes; shadows stay within each component’s footprint. Front-facing orthographic UI, no perspective.
+
+CONTENT:
+Arrange related states together in an orderly atlas, without labels. Preserve identical dimensions, silhouettes and anchor positions across states.
+
+Include:
+1. A reusable vine-and-wood popup frame, portrait 3:4, with an open center; a separate ivory parchment insert.
+2. Wooden brass-edged tabs, 2:1: normal, selected, pressed.
+3. Leather section plaques, 4:1: normal and emphasized.
+4. Generic blank action plates, 4:1: ready gold, pressed gold, locked steel. Match the existing forge action plates but omit the hammer.
+5. A separate small brass padlock, 1:1.
+6. Parchment list rows on shallow wooden backing, 5:1: unread, read, selected, disabled. Unread uses an embossed wax-seal accent; selected uses a distinct raised brass edge.
+7. Leather settings rows, 5:1: normal and disabled, with broad quiet label areas.
+8. Blank status badges, 2:1: red wax, warm brass, muted leather.
+9. Wooden-and-brass toggle switches, 2:1: off, on, disabled. Clearly move the physical knob between sides; use a small emerald inlay for on.
+10. Slider parts: wooden troughs, 10:1, normal and disabled; a separate amber fill strip; circular brass knobs, 1:1, normal and actively dragged.
+11. Square leather reward sockets, 1:1: normal, selected, claimed, locked. Leave icon and quantity areas empty; deliver the lock separately.
+12. Progress-bar parts: empty brass trough, 10:1, and separate emerald fill strip.
+13. Parchment stat tiles on wooden backing, 4:3: normal and emphasized.
+14. Brass achievement shields with leather ribbons, 3:2: locked, unlocked, equipped, with empty central icon areas.
+15. Circular utility-button bases, 1:1: normal, pressed, disabled, with blank centers.
+16. Rolled-parchment status ribbons, 6:1: information, warning, complete.
+17. Scrollbar parts: vertical wooden track, 1:10, and separate brass thumb, 1:3, normal and dragged.
+
+Keep interiors calm and readable beneath future HTML text. Distinguish states through relief, material and silhouette details as well as color. Components must remain legible at mobile scale.
+
+ABSOLUTELY NO text, letters, numbers, labels, checkmarks, information glyphs, logos, watermarks, browser controls, flat CSS-style cards or glossy modern app styling.

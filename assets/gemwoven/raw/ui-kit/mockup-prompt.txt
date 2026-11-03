@@ -1,0 +1,45 @@
+Use case: ui-mockup
+Asset type: approval mockup for two Gemwoven mobile screens.
+
+Create ONE landscape image containing TWO complete portrait screens side by side: “Hòm Thư” on the LEFT and “Cài Đặt” on the RIGHT. Each screen has the exact 941:1672 aspect ratio, equal scale and an unobstructed full-height composition. Use a narrow neutral gutter. No phone hardware, perspective, cropped UI or external annotations.
+
+PRIMARY STYLE REFERENCE:
+The supplied approved “Lò Rèn” forge mockup. Match its painted wood, stitched leather, aged brass, warm parchment, substantial bevels and charming fantasy craftsmanship. Use the supplied UI kit consistently across both screens. The seven-screen contact sheet is a functional reference, not the quality target.
+
+Every frame, row, tab, switch, slider, badge and button must visibly be illustrated artwork. No flat web cards, native browser controls or plain CSS rectangles. Keep the ornament around the edges and leave calm space behind text.
+
+SHARED COMPOSITION:
+A softly subdued painted fantasy-town background.
+Top HUD: Hiro’s portrait, level “1”, gold “1.200”, blue premium gem “0”, an envelope with badge “2”.
+A substantial vine-and-wood content frame with a parchment interior and a clear illustrated title plaque.
+Bottom navigation matching the approved forge: “Trang Chủ”, “Tướng”, “Túi Đồ”, “Kỹ Năng”, “Triệu Hồi”, “Đấu Trường”, “Thêm”. Highlight “Thêm”. Keep all seven labels legible.
+
+LEFT — HÒM THƯ:
+Title “Hòm Thư”; subtitle “2 thư chưa đọc”.
+Three large wooden tabs: “Tất cả” selected, “Quà”, “Tin”.
+Three generous parchment-on-wood message rows:
+- “Quà chào mừng”, subtitle “Hệ thống”, red wax badge “Mới”, selected.
+- “Phần thưởng”, subtitle “Hệ thống”, red wax badge “Mới”.
+- “Thông báo”, subtitle “Đã đọc”, visibly quieter.
+Below the rows, show the selected message’s short preview: “Chào mừng đến Gemwoven!”
+Show three large reward sockets containing gold coins, iron ore and timber, with quantities “500”, “10”, “10”. No premium gems among rewards.
+Anchor a large gold “Nhận tất cả” button and a smaller muted “Xóa đã đọc” button at the bottom of the panel.
+
+RIGHT — CÀI ĐẶT:
+Title “Cài Đặt”.
+Leather section plaque “Âm thanh”.
+A large illustrated switch row “Tắt âm thanh”, switch OFF.
+Three spacious slider groups:
+“Nhạc nền” — “10%”
+“Hiệu ứng” — “100%”
+“Lời thoại” — “29%”
+Use carved wooden troughs, amber fills and substantial brass knobs. Knob positions must match the percentages.
+Leather section plaque “Trò chơi”.
+A large illustrated switch row “Gợi ý nâng cấp”, switch ON.
+A parchment note “Tự lưu thay đổi”.
+Anchor a medium gold “Mặc định” button near the panel bottom.
+
+TYPOGRAPHY AND READABILITY:
+Render only the specified short Vietnamese UI labels, with correct diacritics. Treat lettering as a clean overlay on the artwork, representing future HTML text; never engrave body copy into textures. Use a dark warm serif for headings, highly readable body text approximately 28–34 px at the 941 px screen width, and large touch targets. Establish a clear title → section → row → action hierarchy.
+
+Deliver a polished approval image with coherent materials, comfortable spacing and convincing illustrated controls on both screens.

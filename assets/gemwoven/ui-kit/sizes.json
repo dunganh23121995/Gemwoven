@@ -1,0 +1,190 @@
+{
+ "parchment": [
+  253,
+  320
+ ],
+ "tab": [
+  231,
+  75
+ ],
+ "tab-on": [
+  228,
+  75
+ ],
+ "tab-dark": [
+  228,
+  75
+ ],
+ "plaque": [
+  354,
+  105
+ ],
+ "plaque-on": [
+  367,
+  105
+ ],
+ "btn-gold": [
+  223,
+  83
+ ],
+ "btn-gold-down": [
+  223,
+  83
+ ],
+ "btn-steel": [
+  223,
+  83
+ ],
+ "lock": [
+  63,
+  81
+ ],
+ "row-unread": [
+  437,
+  67
+ ],
+ "row-read": [
+  437,
+  63
+ ],
+ "row-on": [
+  437,
+  69
+ ],
+ "row-off": [
+  437,
+  65
+ ],
+ "setrow": [
+  439,
+  86
+ ],
+ "setrow-off": [
+  439,
+  85
+ ],
+ "seal": [
+  121,
+  85
+ ],
+ "badge-brass": [
+  141,
+  73
+ ],
+ "badge-leather": [
+  141,
+  73
+ ],
+ "toggle-off": [
+  139,
+  63
+ ],
+ "toggle-on": [
+  139,
+  63
+ ],
+ "toggle-disabled": [
+  140,
+  63
+ ],
+ "slider-track": [
+  737,
+  31
+ ],
+ "slider-track-off": [
+  737,
+  29
+ ],
+ "slider-fill": [
+  467,
+  18
+ ],
+ "knob": [
+  57,
+  58
+ ],
+ "knob-drag": [
+  66,
+  70
+ ],
+ "socket": [
+  118,
+  115
+ ],
+ "socket-on": [
+  117,
+  125
+ ],
+ "socket-claimed": [
+  117,
+  114
+ ],
+ "socket-locked": [
+  117,
+  114
+ ],
+ "progress": [
+  858,
+  35
+ ],
+ "progress-fill": [
+  668,
+  28
+ ],
+ "stat": [
+  216,
+  112
+ ],
+ "stat-on": [
+  209,
+  113
+ ],
+ "medal-locked": [
+  160,
+  136
+ ],
+ "medal": [
+  159,
+  137
+ ],
+ "medal-worn": [
+  164,
+  138
+ ],
+ "round": [
+  101,
+  101
+ ],
+ "round-down": [
+  100,
+  102
+ ],
+ "round-off": [
+  100,
+  103
+ ],
+ "ribbon-info": [
+  319,
+  62
+ ],
+ "ribbon-warn": [
+  368,
+  63
+ ],
+ "ribbon-done": [
+  386,
+  66
+ ],
+ "scroll-track": [
+  36,
+  963
+ ],
+ "scroll-thumb": [
+  33,
+  93
+ ],
+ "scroll-thumb-drag": [
+  41,
+  104
+ ]
+}

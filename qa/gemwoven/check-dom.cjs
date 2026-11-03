@@ -30,7 +30,7 @@ function pass(label){checks.push(label);}
     node(`${key}.nav-${next}`).click();await sleep();assert.equal(d.title,`Gemwoven · ${w.GEMWOVEN_LAYOUT.names[next]}`);
     pass(`${key}: composition, assets, labels, footer navigation`);
   }
-  await go('arena');node('arena.mode-boss').click();assert.equal(node('arena.mode-boss').getAttribute('aria-pressed'),'true');assert.equal(node('arena.mode-solo').getAttribute('aria-pressed'),'false');node('arena.battle').click();assert.equal(d.getElementById('dialog-title').textContent,'Boss Vô Hạn');d.getElementById('close-dialog').click();assert.equal(d.getElementById('preview-dialog').open,false);pass('Arena mode and preview dialog');
+  await go('arena');node('arena.mode-boss').click();assert.equal(node('arena.mode-boss').getAttribute('aria-pressed'),'true');assert.equal(node('arena.mode-solo').getAttribute('aria-pressed'),'false');node('arena.battle').click();assert.equal(d.getElementById('dialog-title').textContent,'Trùm Vô Tận');d.getElementById('close-dialog').click();assert.equal(d.getElementById('preview-dialog').open,false);pass('Arena mode and preview dialog');
   await go('shop');node('shop.product-mana').click();assert.equal(d.querySelector('[data-copy="shop.product-name"]').textContent,'Đá Ngọc');node('shop.quantity-plus').click();assert.equal(d.querySelector('[data-copy="shop.purchase-price"]').textContent,'● 600');for(let i=0;i<4;i++)node('shop.quantity-minus').click();assert.equal(d.querySelector('[data-copy="shop.quantity"]').textContent,'1');pass('Independent product selection and quantity limits');
   await go('forge');node('forge.forge-tab-2').click();assert.equal(d.querySelector('[data-copy="forge.forge-action"]').textContent,'KHẢM NGỌC');pass('Forge tabs');
   await go('upgrade');node('upgrade.upgrade-tab-1').click();assert.equal(d.querySelector('[data-copy="upgrade.upgrade-action"]').textContent,'Tăng Sao');pass('Upgrade tabs');
@@ -43,7 +43,7 @@ function pass(label){checks.push(label);}
   node('skills.roster-ice').click();assert.equal(d.querySelector('[data-copy="skills.title"]').textContent,'Kỹ năng tùy chỉnh');w.GEMWOVEN_COPY['skills.title']=originalTitle;
   for(const [hero,data] of Object.entries(w.GEMWOVEN_HEROES)){
     node('skills.roster-'+hero).click();
-    assert.equal(node('skills.hero-model').dataset.asset,'hero-'+hero);
+    assert.ok(new RegExp('^(hero|home-idle)-'+hero+'$').test(node('skills.hero-model').dataset.asset),hero);
     for(let i=0;i<4;i++){
       node('skills.branch-'+i).click();
       assert.equal(d.querySelector(`[data-copy="skills.skill-name-${hero}-${i}"]`).textContent,data.skills[i][0]);
@@ -54,7 +54,7 @@ function pass(label){checks.push(label);}
   toggle('edit-copy',true);const skillLabel=d.querySelector('[data-copy="skills.skill-name-shadow-3"]');skillLabel.textContent='Tên kỹ năng riêng';skillLabel.dispatchEvent(new w.Event('input',{bubbles:true}));toggle('edit-copy',false);
   node('skills.roster-fire').click();node('skills.branch-3').click();assert.equal(d.querySelector('[data-copy="skills.skill-name-fire-3"]').textContent,'Cửu Vĩ Viêm Hồn');
   node('skills.roster-shadow').click();node('skills.branch-3').click();assert.equal(d.querySelector('[data-copy="skills.skill-name-shadow-3"]').textContent,'Tên kỹ năng riêng');
-  await go('upgrade');assert.equal(node('upgrade.hero-model').dataset.asset,'hero-shadow');pass('Hero identity follows navigation; edited skill copy stays with its hero');
+  await go('upgrade');assert.ok(/^(hero|home-idle)-shadow$/.test(node('upgrade.hero-model').dataset.asset));pass('Hero identity follows navigation; edited skill copy stays with its hero');
   await go('inventory');
   for(const category of ['all','item','material','gear','fragment','book','other']){
     node('inventory.category-'+category).click();

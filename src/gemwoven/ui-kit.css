@@ -1,0 +1,78 @@
+/* Drawn UI kit on the panel screens (ui-kit.js). Sizes are stage units (941 wide ≈ 390 CSS px on a phone). */
+
+/* Tabs: wooden plates, the chosen one bright. */
+.mail-tabs .game-btn{--h:76px;background:var(--kit-tab-dark) center/100% 100% no-repeat!important;border:0!important;box-shadow:none!important;color:#f3dcae!important;text-shadow:0 1px 2px #1a0c04;font:800 30px Cambria,serif}
+.mail-tabs .game-btn::before,.mail-tabs .game-btn::after{display:none!important}
+.mail-tabs .game-btn.active{background-image:var(--kit-tab-on)!important;color:#4a2a10!important;text-shadow:0 1px #fff3cf}
+
+/* Mail rows: parchment on wood, a wax seal for new letters. */
+.mail-row{border:0!important;background:var(--kit-row-read) center/100% 100% no-repeat!important;box-shadow:0 4px 4px #2a140855!important;padding:14px 26px!important;border-radius:0!important}
+.mail-row.unread{background-image:var(--kit-row-unread)!important;padding-left:74px!important}
+.mail-row.is-claimed{background-image:var(--kit-row-off)!important}
+.mail-row:focus-visible{outline:none;background-image:var(--kit-row-on)!important}
+.mail-new{background:var(--kit-seal) center/contain no-repeat!important;box-shadow:none!important;border-radius:0!important;min-width:96px;padding:14px 16px!important;color:#fff4df!important;text-shadow:0 1px 2px #5a0c06}
+.mail-icon,.mail-thumb{background:var(--kit-socket) center/100% 100% no-repeat!important}
+
+/* Footer: a gold plate for the main action, steel for the secondary one. */
+.mail-footer .game-btn,.mail-back.game-btn{background:var(--kit-btn-gold) center/100% 100% no-repeat!important;border:0!important;box-shadow:0 5px 5px #2a140866!important;color:#4a2508!important;text-shadow:0 1px #fff3cf;font-weight:900}
+.mail-footer .game-btn::before,.mail-footer .game-btn::after,.mail-back.game-btn::before,.mail-back.game-btn::after{display:none!important}
+.mail-footer .game-btn.secondary,.mail-footer .game-btn:disabled{background-image:var(--kit-btn-steel)!important;color:#eee6d8!important;text-shadow:0 1px 2px #1a1008}
+
+/* Cài Đặt: leather rows with a drawn switch, drawn sliders. */
+.settings-panel .kit-switch,.settings-panel .audio-slider{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:10px 0!important;padding:18px 26px!important;background:var(--kit-setrow) center/100% 100% no-repeat;color:#f6e2b8;text-shadow:0 1px 2px #1a0c04;border:0!important;border-radius:0!important;box-shadow:0 4px 4px #2a140855}
+.settings-panel .kit-switch{justify-content:space-between;font:800 30px Cambria,serif;min-height:110px}
+.settings-panel .kit-switch input{appearance:none;-webkit-appearance:none;order:2;margin:0;width:136px;height:62px;flex:none;background:var(--kit-toggle-off) center/contain no-repeat;cursor:pointer}
+.settings-panel .kit-switch input:checked{background-image:var(--kit-toggle-on)}
+.settings-panel .kit-switch input:focus-visible{outline:4px solid #fff1b8;outline-offset:3px}
+.settings-panel .audio-slider>span{flex:1 1 100%;display:flex;justify-content:space-between;font:800 30px Cambria,serif}
+.settings-panel .audio-slider output{color:#ffd77a}
+.settings-panel .audio-slider small{display:none}
+.settings-panel .audio-slider input[type=range]{-webkit-appearance:none;appearance:none;flex:1 1 100%;height:56px;margin:0;background:none;cursor:pointer}
+.settings-panel .audio-slider input[type=range]::-webkit-slider-runnable-track{height:30px;background:var(--kit-slider-fill) 6px 50%/calc(var(--v,50%) - 6px) 16px no-repeat,var(--kit-slider-track) center/100% 100% no-repeat;border:0}
+.settings-panel .audio-slider input[type=range]::-moz-range-track{height:30px;background:var(--kit-slider-fill) 6px 50%/calc(var(--v,50%) - 6px) 16px no-repeat,var(--kit-slider-track) center/100% 100% no-repeat;border:0}
+.settings-panel .audio-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:56px;height:56px;margin-top:-13px;border:0;background:var(--kit-knob) center/contain no-repeat}
+.settings-panel .audio-slider input[type=range]:active::-webkit-slider-thumb{background-image:var(--kit-knob-drag)}
+.settings-panel .audio-slider input[type=range]::-moz-range-thumb{width:56px;height:56px;border:0;background:var(--kit-knob) center/contain no-repeat}
+.settings-panel #home-audio-reset{background:var(--kit-btn-gold) center/100% 100% no-repeat!important;border:0!important;box-shadow:0 5px 5px #2a140866!important;color:#4a2508!important;font-weight:900;text-shadow:0 1px #fff3cf}
+.settings-panel #home-audio-reset::before,.settings-panel #home-audio-reset::after{display:none!important}
+.settings-panel .audio-save-note{font-size:26px}
+
+/* Tall rows: the drawn plates as 9-slices so corners and rivets keep their size (review 26 round 1). */
+.mail-row,.mail-row.unread,.mail-row.is-claimed,.mail-row:focus-visible{background:none!important;border:solid transparent!important;border-width:22px 26px!important;border-image:var(--kit-row-read) 22 26 fill / 22px 26px stretch!important;padding:6px 6px!important}
+.mail-row.unread{border-image-source:var(--kit-row-on)!important}
+.mail-row.is-claimed{border-image-source:var(--kit-row-off)!important}
+.settings-panel .kit-switch,.settings-panel .audio-slider{background:none!important;border:solid transparent!important;border-width:20px 24px!important;border-image:var(--kit-setrow) 22 26 fill / 20px 24px stretch!important;padding:4px 8px!important}
+.settings-panel .kit-switch{flex-wrap:nowrap;min-height:0}
+.settings-panel .kit-switch input{order:2;margin-left:auto}
+.settings-panel .audio-save-note{display:none}
+
+/* Round 2 (review 26): Cài Đặt as in the mockup — two groups on leather plaques, light paper rows with drawn icons. */
+.settings-panel .kit-plaque{display:block;width:62%;margin:14px auto 4px;padding:12px 0;text-align:center;background:var(--kit-plaque) center/100% 100% no-repeat;font:800 32px Cambria,serif;color:#f6e2b8;text-shadow:0 1px 2px #1a0c04}
+.settings-panel .kit-switch,.settings-panel .audio-slider{border-image-source:var(--kit-row-read)!important;color:#4a2a10!important;text-shadow:none!important;box-shadow:0 3px 3px #2a140833!important}
+.settings-panel .kit-switch{font:800 34px Cambria,serif!important;gap:14px!important}
+.settings-panel .kit-switch span{flex:1}
+.settings-panel .audio-slider>span{font:800 34px Cambria,serif!important;align-items:center;gap:12px}
+.settings-panel .audio-slider>span output{margin-left:auto;color:#6b3f12!important}
+.settings-panel .kit-ico{width:54px;height:54px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 2px #0005)}
+.settings-panel .audio-slider input[type=range]::-webkit-slider-thumb{width:66px!important;height:66px!important;margin-top:-18px!important;filter:drop-shadow(0 3px 3px #0008)}
+.settings-panel .audio-save-note{display:block!important;margin:10px 0 6px;text-align:center;font:700 28px Cambria,serif;color:#7a5a2a}
+.settings-panel #home-audio-reset{display:flex;align-items:center;justify-content:center;gap:12px;width:64%;height:104px;margin:0 auto;font-size:36px!important}
+.settings-panel #home-audio-reset .kit-ico{width:50px;height:50px}
+.settings-panel .sound-emblem{display:none}
+/* Hòm Thư: larger words, airy rows and reward sockets, an envelope medallion on the frame. */
+.mail-tabs .game-btn{--h:84px;font-size:34px!important}
+.mail-row{margin-bottom:12px!important}
+.mail-row .mail-title-line b{font-size:36px}
+.mail-thumb{width:104px!important;height:98px!important;padding:16px!important}
+.mail-thumb i{font-size:28px!important;bottom:-4px!important}
+.mail-footer .game-btn{--h:100px;font-size:34px!important}
+.live-panel:has(.mail-list)>.gw-emblem,.live-panel:has(.mail-letter)>.gw-emblem{background-image:var(--kit-icon-emblem-mail)!important;width:calc(96*var(--s,1px));}
+.settings-panel>.gw-emblem{background-image:var(--kit-icon-emblem-gear)!important}
+/* Round 3: everything in Cài Đặt fits the frame; four rewards stay on one line. */
+.settings-panel .kit-plaque{margin:6px auto 2px;padding:8px 0;font-size:30px}
+.settings-panel .kit-switch,.settings-panel .audio-slider{margin:5px 0!important;border-width:14px 22px!important;border-image-width:14px 22px!important}
+.settings-panel .audio-slider input[type=range]{height:46px}
+.settings-panel .audio-save-note{margin:4px 0 2px!important;font-size:26px!important}
+.settings-panel #home-audio-reset{height:92px}
+.mail-thumb{width:96px!important;height:90px!important;padding:14px!important}
+.mail-thumbs{flex-wrap:nowrap!important}
