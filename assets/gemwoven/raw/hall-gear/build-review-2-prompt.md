@@ -1,0 +1,4 @@
+Giám đốc nghệ thuật Gemwoven. Vòng 2 chấm bản dựng nửa trên màn Tướng / Sảnh Anh Hùng (mockup ảnh 1). Vòng 1: Hiro điện thoại 8,6 / Studio 8,5 (đạt); Mika + bản thử điện thoại 8,2–8,3, Studio 8,2–8,3 (chưa đạt) với 3 việc: thu Mika ~20% neo chân, hàng sao to và rõ hơn, Mika sắc hơn.
+Đã sửa: hình thái 2–3 trên màn này thu 18% (cả thân và hào quang, chân giữ trên bệ); hàng sao to hơn ~20%, giãn chữ, viền tối; bỏ quầng sáng rộng quanh thân hình thái 3 (chỉ còn viền sáng mảnh), bỏ lớp phát sáng trắng chồng lên.
+Ảnh: 1 mockup; 2 điện thoại Mika + bản thử; 3 điện thoại Mika + bản thử + 4 món đồ; 4 Studio Mika + bản thử (cắt vùng game); 5 Studio Mika + đồ (cắt); 6 Studio toàn trang; 7 điện thoại Hiro (kiểm tra không lùi).
+Chấm /10: điện thoại Mika (ảnh 2/3), Studio Mika (ảnh 4/5/6), điện thoại Hiro. Đạt khi ≥ 8,5. Nếu chưa đạt, nêu tối đa 3 việc cụ thể. Tiếng Việt, ngắn. Không sửa file.

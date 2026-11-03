@@ -55,7 +55,8 @@
     // Two slots under the hero on the Tướng screen, only in the trial.
     if(active()&&state.screen==='upgrade'&&p.heroes[state.hero]&&!state.outfitSlot){
       const d=G.engine.treasure(),h=p.heroes[state.hero],worn=d.slots[state.hero]||[];
-      screen.nodes.push({id:'upgrade.treasure',kind:'content',rect:[790,530,130,300],className:'exploration-map treasure-slots-host',build:el=>{
+      // Owner 04/11: on the wall above the right pedestal, under the Chỉ số medallion, side by side on drawn kit sockets.
+      screen.nodes.push({id:'upgrade.treasure',kind:'content',rect:[768,312,168,116],className:'exploration-map treasure-slots-host hall-treasure',build:el=>{
         el.innerHTML=`<div class="treasure-slots"><b class="ts-label">Báu vật</b>${[0,1].map(i=>{const t=d.items.find(x=>x.id===worn[i]),locked=i===1&&(h.evolution||0)<3;return `<button type="button" data-action="${locked?'treasure:locked':'treasure:slot'}" data-hero="${state.hero}" data-slot="${i}" class="treasure-slot ${t?'q-'+t.quality:'empty'} ${locked?'locked':''}" aria-label="Ô báu vật ${i+1}${locked?' · mở ở tiến hóa 3':''}">${t?pic(t):`<img class="ghost" src="assets/gemwoven/treasures/treasure-borrow-blue.webp" alt="">${locked?'<i>🔒</i>':''}`}</button>`;}).join('')}</div>`;}});
     }
     return p;
@@ -73,5 +74,8 @@
     return handle(action,el,ctx,state);
   };
   // The trial label never leaves the screen while the trial is on.
-  if(active()){const tag=document.createElement('div');tag.className='trial-banner';tag.textContent='BẢN THỬ · Không lưu tài khoản thật';document.addEventListener('DOMContentLoaded',()=>document.body.append(tag));if(document.body)document.body.append(tag);}
+  // On a wide screen it waits beside the stage, under the game's name, so it never covers the HUD.
+  if(active()){const tag=document.createElement('div');tag.className='trial-banner';tag.textContent='BẢN THỬ · Không lưu tài khoản thật';
+    const place=()=>{const side=document.querySelector('.review h1');if(side&&side.offsetParent&&innerWidth>700&&innerWidth>innerHeight)side.after(tag);else document.body.append(tag);};
+    document.addEventListener('DOMContentLoaded',place);if(document.body)place();addEventListener('resize',place);}
 })();

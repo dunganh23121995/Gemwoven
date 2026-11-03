@@ -1,0 +1,57 @@
+Use case: ui-mockup.
+
+Create ONE polished, full-screen layout approval mockup for Gemwoven, a portrait hand-painted chibi fantasy match-3 RPG: the hero screen "Tướng" (Hall of Heroes).
+
+OUTPUT AND COORDINATES
+Portrait 2:3 canvas. Center the complete game stage at its exact 941:1672 aspect ratio, fitting the canvas height, with equal narrow muted side gutters. Do not crop or stretch the stage.
+All coordinates below are [x,y,width,height] in that inner 941x1672 stage. Do not draw coordinates, guides or annotations.
+
+REFERENCE ROLES
+Image 1: the current screen; primary edit target. Keep its hall, HUD, hero roster, lower upgrade panel and bottom navigation.
+Images 2 and 3: approved Forge and Inventory screens; the craftsmanship reference for wood, leather, brass, parchment, painted buttons and item sockets.
+
+PRESERVE EXACTLY
+- The warm timber-and-stone hall, its skylight, lighting, the five small elemental pennants on the back wall, the weapon rack, armour stand and notice board.
+- The central round dais and the two small round side pedestals that are PAINTED in the hall: they do not move. The waiting heroes keep standing on them: Noct (black hooded reaper with scythe) on the left pedestal group [61,476,140,200], chibi Hiro (brown hair, green scarf) on the right pedestal group [736,476,140,200].
+- HUD at y 0-100, the hero roster row and its round "Tất cả" button at y 820-940, and everything from y 946 to the bottom (level panel, materials, Tăng Cấp button, stat ribbon, bottom navigation) copied unchanged from Image 1.
+
+HERO
+The selected hero is the locked Mika form-3 artwork from Image 1: the same red-haired nine-tailed fire fox girl in a red-and-white dress with a crescent staff. Do not redesign her. Place her complete figure inside [321,396,300,304], feet on the central dais, uniformly scaled.
+Her fire aura stays, but every flame, ember and glow is confined to [300,380,341,330] with a soft feathered edge; outside that zone there is no fire at all. Fire never covers the tabs, name plaque, equipment sockets, buttons or labels.
+
+TOP AREA
+- Wooden title plaque "Tướng" [246,100,449,150].
+- Small round brass profile medallion with an "i" [662,136,84,84], overlapping the plaque's right end.
+- The two large cloth flags are REMOVED; the hall wall shows behind them.
+- In their place, two matching illustrated BUTTONS, each a round aged-brass medallion with a big clear painted icon, and under it a small wooden label plaque with cream lettering:
+  "Lộ trình" group [34,118,156,156]: icon = an unrolled parchment map with a brass compass.
+  "Chỉ số" group [751,118,156,156]: icon = a small leather tablet with a sword and a shield and three short bars.
+  They must clearly read as tappable buttons (raised rim, soft shadow), not decoration.
+- Three painted wooden tabs in one row: "Cấp" [226,254,160,64] selected (bright gold), "Tăng Sao" [390,254,160,64], "Tiến Hóa" [554,254,160,64].
+- Name plaque "Mika · 3/3 ›" [300,320,342,46].
+- Six small gold stars in a row [335,366,272,30].
+
+SIX EQUIPMENT SOCKETS
+Each cell is 128x112: a square painted socket (dark leather hollow, aged-brass frame) with a small wooden footer plaque attached under it carrying the slot name.
+Left column x=176: "Mũ" y=372, "Áo" y=490, "Vũ khí" y=608.
+Right column x=637: "Kính" y=372, "Quần" y=490, "Giày" y=608.
+Inside each cell: item art in the socket hollow, a small leather badge in the socket's upper-right corner for the enhancement level, the slot name on the footer plaque. Never put the level and the name on one line.
+State: Mũ = Rare (blue painted rim, blue-steel helmet, badge "+3"); Áo = Epic (purple rim, violet armour, "+5"); Vũ khí = Legendary (amber-gold rim, ornate golden sword, "+12"); Giày = Good (green rim, simple leather boots, "+0"). Kính and Quần are empty: neutral brass rim, a faint engraved silhouette of glasses / trousers, no badge.
+The rarity shows as a coloured inlay in the painted frame, not as a neon CSS outline.
+The waiting heroes stand BEHIND the sockets where they touch.
+
+TRIAL TREASURE (trial mode is on)
+Above the right pedestal, below the "Chỉ số" button: a small leather label "Báu vật" [772,284,150,30], then two stacked painted round-cornered sockets: [796,316,100,80] holding a small blue talisman charm, and [796,402,100,80] dark with a clear painted brass padlock. They never touch the right equipment column, the "Chỉ số" button, or the waiting hero below.
+
+UNDER THE HERO
+- "Kỹ Năng" button [176,732,212,72]: a painted secondary plate (wood and leather, cream lettering) with a tiny open-book icon.
+- Relic medallion [419,714,104,104]: round brass ring holding a small red gourd, label "Dạng 1/5" on a small plaque at its foot.
+- "Xuất chiến" button [553,732,212,72]: the gold primary plate, dark brown lettering.
+All three separate from each other, from the boots socket and from the roster below.
+
+MATERIALS AND HIERARCHY
+Match the approved Forge and Inventory screens: warm painted wood grain, aged brass, dark leather socket interiors, restrained foliage, readable cream or dark-brown lettering. All frames, buttons, plaques, badges and icons look hand-painted. No flat CSS-style cards, generic rounded rectangles, neon outlines or vector UI.
+Vietnamese labels with correct diacritics. Short labels about 30 units tall; enhancement numbers about 26. Text never overlaps item art.
+Layer every UI frame and label above the hero's fire. Leave visible breathing room around every control.
+
+ONE complete finished screen. No alternatives, no annotations, no device frame, no arrows, no extra controls.

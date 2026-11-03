@@ -1,0 +1,16 @@
+Reference image 1 is the approved mockup of the hero screen of a cozy hand-painted chibi fantasy mobile RPG. Look at its six equipment sockets beside the heroine (Mũ, Áo, Vũ khí, Kính, Quần, Giày).
+
+Draw SIX separate equipment socket frames in exactly that painted style, as game UI pieces, arranged in a 3 x 2 grid with wide empty space between them (no piece touching another or the canvas edge).
+
+Every piece has the SAME shape and size: a square socket about 300 x 260 px: a thick aged-brass frame with small rivets at the corners, a deep dark-brown leather hollow inside (soft inner shadow, empty), and directly attached under the socket a small dark wooden footer plaque about 280 x 70 px with a thin brass edge (the slot name will be written on it later). Front view, flat, no perspective.
+
+The six differ ONLY in the coloured inlay running along the inside of the brass frame and two small cut gems on the frame's top and bottom middle:
+1 (top-left): neutral: no coloured inlay, plain warm brass, the gems are plain brass studs.
+2 (top-middle): GOOD: soft leaf-green enamel inlay, green gems.
+3 (top-right): RARE: sky-blue enamel inlay, blue gems.
+4 (bottom-left): EPIC: violet enamel inlay, purple gems.
+5 (bottom-middle): LEGENDARY: amber-gold enamel inlay with a faint warm glow, amber gems.
+6 (bottom-right): DIVINE: coral-red enamel inlay with tiny gold filigree, red gems.
+
+The leather hollow and the footer plaque must stay completely EMPTY: no items, no icons, no text, no letters, no numbers. Matte painted materials, crisp silhouettes, no neon outlines, no glow halo outside the frame.
+Canvas 1536 x 1024 on a solid flat pure magenta #FF00FF background; the magenta must not appear inside the pieces.

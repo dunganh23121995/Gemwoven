@@ -223,6 +223,105 @@
       "assets/gemwoven/hall/lamp-prompt.txt"
     ]
   },
+  "hall-socket-none": {
+    "file": "assets/gemwoven/hall/socket-none.webp",
+    "width": 378,
+    "height": 425,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/sockets-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/sockets-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-socket-uncommon": {
+    "file": "assets/gemwoven/hall/socket-uncommon.webp",
+    "width": 378,
+    "height": 425,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/sockets-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/sockets-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-socket-rare": {
+    "file": "assets/gemwoven/hall/socket-rare.webp",
+    "width": 378,
+    "height": 425,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/sockets-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/sockets-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-socket-epic": {
+    "file": "assets/gemwoven/hall/socket-epic.webp",
+    "width": 378,
+    "height": 425,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/sockets-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/sockets-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-socket-legendary": {
+    "file": "assets/gemwoven/hall/socket-legendary.webp",
+    "width": 378,
+    "height": 425,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/sockets-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/sockets-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-socket-divine": {
+    "file": "assets/gemwoven/hall/socket-divine.webp",
+    "width": 378,
+    "height": 425,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/sockets-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/sockets-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-medal-route": {
+    "file": "assets/gemwoven/hall/medal-route.webp",
+    "width": 427,
+    "height": 436,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/medallions-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/medallions-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-medal-stats": {
+    "file": "assets/gemwoven/hall/medal-stats.webp",
+    "width": 428,
+    "height": 436,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/medallions-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/medallions-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
+  "hall-label-wood": {
+    "file": "assets/gemwoven/hall/label-wood.webp",
+    "width": 477,
+    "height": 153,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hall-gear/medallions-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hall-gear/medallions-prompt.txt"
+    ],
+    "purpose": "Sảnh Anh Hùng upper hall (owner 04/11, Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png): gear sockets per rarity with a name footer, route and stats medallion buttons, a wooden label plate (hero-hall.js, equipment-ui.js)."
+  },
   "npc-bunny": {
     "file": "assets/gemwoven/npc/bunny/rig/show/idle.webp",
     "width": 3840,

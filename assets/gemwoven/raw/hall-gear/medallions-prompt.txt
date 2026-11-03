@@ -1,0 +1,9 @@
+Reference image 1 is the approved mockup of the hero screen of a cozy hand-painted chibi fantasy mobile RPG. Look at its two round buttons at the top left ("Lộ trình") and top right ("Chỉ số").
+
+Draw THREE separate game UI pieces in exactly that painted style, side by side in one row with wide empty space between them (nothing touching another piece or the canvas edge):
+1 (left): a round button medallion about 380 px wide: a thick raised aged-brass rim with small rivets and a soft drop shadow, a warm cream-parchment face, and on the face a big clear painted icon: an unrolled old parchment map with a dotted path and a small brass compass lying over its corner.
+2 (middle): the SAME round medallion (same rim, same size), with the icon: a small brown leather tablet showing three short horizontal bars of different lengths, with a steel sword and a small red-and-gold shield crossed in front of it.
+3 (right): a small horizontal dark-wood label plaque about 380 x 100 px with a thin brass edge and two tiny rivets, empty (a word will be written on it later).
+
+No text, no letters, no numbers anywhere. Matte painted materials, crisp silhouettes, chunky readable shapes that stay clear at small size.
+Canvas 1536 x 1024 on a solid flat pure magenta #FF00FF background; the magenta must not appear inside the pieces.

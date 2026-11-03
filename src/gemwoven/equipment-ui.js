@@ -32,16 +32,23 @@
     if(state.screen==='equipment'){state.screen='upgrade';state.outfitSlot=state.outfitSlot||'weapon';}
     const p=decorate(state);if(state.screen!=='upgrade')return p;
     const hero=state.hero,h=p.heroes[hero];let nodes=L.screens.upgrade.nodes.filter(n=>!/^upgrade\.(evolution-|locked-label|hero-stars|stat-|select-active)/.test(n.id));
-    const model=nodes.find(n=>n.id==='upgrade.hero-model');model.rect=[309,350,324,346];model.action='outfit:close';
+    const model=nodes.find(n=>n.id==='upgrade.hero-model');model.rect=[321,396,300,304];model.action='outfit:close';
     const heading=nodes.find(n=>n.id==='upgrade.title');if(heading)C[heading.text]='Tướng';
-    const slots=[['helmet',194,354],['armor',194,476],['weapon',194,598],['glasses',638,354],['pants',638,476],['boots',638,598]];
-    for(const [slot,x,y]of slots){const g=p.equipment.find(g=>g.id===h?.gear[slot]);nodes.push(node('gear-'+slot,g?'+'+g.level+' '+M.SLOTS[slot]:M.SLOTS[slot],[x,y,110,112],'outfit:slot',{slot},'inventory-slot',g?M.SLOT_ART[slot]:M.SLOT_ART[slot]));const n=nodes.at(-1);n.disabled=!h;n.className+=(g?' filled':' empty')+(state.outfitSlot===slot?' selected':'');}
-    nodes.push(node('relic',h?'Dạng '+h.relic.evolution+'/5':'Bảo bối',[415,703,110,112],'outfit:slot',{slot:'relic'},'avatar-ring',`relic-${hero}-${h?.relic.evolution||1}`));nodes.at(-1).disabled=!h;
+    // Owner 04/11 (Codex mockup raw/hall-gear): drawn sockets with the rarity inlaid in the frame, the item's own art,
+    // the slot name on the socket's wooden foot and the enhancement on a leather tag in the corner; two columns that
+    // stay clear of every hero form (its aura is confined in hall-gear rules) and of the waiting pedestals.
+    const slots=[['helmet',182,362],['armor',182,484],['weapon',182,606],['glasses',639,362],['pants',639,484],['boots',639,606]];
+    for(const [slot,x,y]of slots){const g=p.equipment.find(g=>g.id===h?.gear[slot]),rim=g&&g.rarity!=='common'?g.rarity:'none',pic=g&&A[`gear-${g.rarity}-${slot}`]?`gear-${g.rarity}-${slot}`:M.SLOT_ART[slot];
+      nodes.push(node('gear-'+slot,M.SLOTS[slot],[x,y,120,118],'outfit:slot',{slot},A['hall-socket-'+rim]?'hall-socket-'+rim:'inventory-slot',pic));const n=nodes.at(-1);
+      Object.assign(n,{iconRect:[24,14,72,68],labelAsset:A['hall-label-wood']?'hall-label-wood':undefined,labelRect:[0,86,120,40],size:29,disabled:!h});n.className+=(g?' filled is-'+g.rarity:' empty')+(state.outfitSlot===slot?' selected':'');
+      if(g){const k='upgrade.gear-level-'+slot;C[k]='+'+g.level;nodes.push({id:k,text:k,kind:'text',rect:[x+70,y-8,56,32],size:24,className:'hall-gear-level'});}}
+    nodes.push(node('relic',h?'Dạng '+h.relic.evolution+'/5':'Bảo bối',[419,720,104,100],'outfit:slot',{slot:'relic'},'avatar-ring',`relic-${hero}-${h?.relic.evolution||1}`));
+    Object.assign(nodes.at(-1),{disabled:!h,iconRect:[22,12,60,60],labelAsset:A['hall-label-wood']?'hall-label-wood':undefined,labelRect:[-12,70,128,34],size:25,className:'hero-gear-slot hall-relic'});
     for(const [i,key]of Object.keys(M.HEROES).entries()){const n=nodes.find(n=>n.id==='upgrade.choose-'+key);if(n){n.rect=[140+i*110,824,105,100];n.iconRect=[17,10,71,76];}}
-    const skillLink=nodes.find(n=>n.action==='route:skills'&&n.role!=='nav');if(skillLink){skillLink.rect=[586,692,194,66];skillLink.labelRect=[12,16,170,34];skillLink.size=27;}
-    nodes.push(node('deploy',p.selected===hero?'Đang xuất chiến':'Xuất chiến',[586,760,194,64],'do:select',{hero},'button-gold'));Object.assign(nodes.at(-1),{icon:undefined,labelRect:[10,15,174,34],size:26,disabled:!h||p.selected===hero});
+    const skillLink=nodes.find(n=>n.action==='route:skills'&&n.role!=='nav');if(skillLink)Object.assign(skillLink,{rect:[182,742,206,66],asset:A['kit-plaque']?'kit-plaque':skillLink.asset,fit:'fill',icon:'skill-book',iconRect:[16,8,50,50],labelRect:[62,12,134,40],size:29,className:((skillLink.className||'')+' hall-skills').trim()});
+    nodes.push(node('deploy',p.selected===hero?'Đang xuất chiến':'Xuất chiến',[553,742,206,66],'do:select',{hero},'button-gold'));Object.assign(nodes.at(-1),{icon:undefined,labelRect:[16,13,174,38],size:p.selected===hero?23:29,disabled:!h||p.selected===hero});
     C['upgrade.hero-caption']=M.HEROES[hero].name+(h?' · Lv.'+h.level:' · Chưa sở hữu');nodes.push({id:'upgrade.hero-caption',text:'upgrade.hero-caption',kind:'text',rect:[328,338,290,37],size:25,tone:'gold',className:'text-backing'});
-    C['upgrade.equipped-stars']=h?'★'.repeat(h.stars)+'☆'.repeat(6-h.stars):'☆☆☆☆☆☆';nodes.push({id:'upgrade.equipped-stars',text:'upgrade.equipped-stars',kind:'text',rect:[184,740,200,38],size:26,tone:'gold'});
+    C['upgrade.equipped-stars']=h?'★'.repeat(h.stars)+'☆'.repeat(6-h.stars):'☆☆☆☆☆☆';nodes.push({id:'upgrade.equipped-stars',text:'upgrade.equipped-stars',kind:'text',rect:[311,362,320,38],size:30,tone:'gold'});
     const st=h?M.stats(p,hero):null;
     C['upgrade.gear-stats']=h?`HP ${fmt(st.hp)}    Công ×${st.attack.toFixed(2).replace('.',',')}    Thủ ${Math.round(st.defense*100)}%`:'Chưa sở hữu tướng';
     nodes.push({id:'upgrade.gear-stats',text:'upgrade.gear-stats',kind:'text',rect:[207,922,535,38],size:25,tone:'gold',className:'text-backing'});

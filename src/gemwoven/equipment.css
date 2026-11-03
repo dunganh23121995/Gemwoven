@@ -32,3 +32,48 @@
 .relic-controls>div{flex:1;text-align:center}
 .relic-controls .outfit-cost{margin:10px 0}
 .relic-controls b{font-size:34px}
+
+/* Sảnh Anh Hùng upper hall (owner 04/11; Codex mockup assets/gemwoven/raw/hall-gear/mockup-1.png). */
+/* Every control above the hero: a form's aura may pass behind a socket or a tab, never over it. */
+#stage[data-screen="upgrade"] :is([data-node^="upgrade.gear-"],[data-node="upgrade.relic"],[data-node="upgrade.deploy"],[data-node="upgrade.skills-link"],[data-node^="upgrade.upgrade-tab-"],[data-node$="-story-flag"],[data-node="upgrade.equipped-stars"],[data-node="upgrade.profile-info"],[data-node="upgrade.treasure"],[data-node="upgrade.title-board"],[data-node="upgrade.title"]){z-index:4}
+#stage[data-screen="upgrade"] [data-node^="upgrade.gear-level-"]{z-index:5}
+/* The form aura (locked art) is confined to the hero's own bay between the two socket columns, under the form plate. */
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"] .hero-form-aura{inset:-6% -7% 2%;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(transparent,#000 9%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(transparent,#000 9%);mask-composite:intersect}
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"] .aura-motes{
+  -webkit-mask-image:linear-gradient(90deg,transparent 25%,#000 30%,#000 70%,transparent 75%),linear-gradient(transparent 33%,#000 40%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 25%,#000 30%,#000 70%,transparent 75%),linear-gradient(transparent 33%,#000 40%);mask-composite:intersect}
+/* Lộ trình / Chỉ số: a raised medallion over a wooden word plate, one button. */
+#stage[data-screen="upgrade"] .hall-medal>.art{inset:0 auto auto 50%;width:128px;height:128px;translate:-50% 0;filter:drop-shadow(0 5px 4px #1a0c04aa)}
+#stage[data-screen="upgrade"] .hall-medal .label-art{filter:drop-shadow(0 3px 3px #1a0c0499)}
+#stage[data-screen="upgrade"] .hall-medal .copy-layer{color:#ffe9bc!important;text-shadow:0 2px 2px #1a0c04,0 0 4px #1a0c04!important;font-weight:900;white-space:nowrap;padding:0!important}
+#stage[data-screen="upgrade"] .hall-medal:hover>.art,#stage[data-screen="upgrade"] .hall-medal:focus-visible>.art{filter:brightness(1.12) drop-shadow(0 0 10px #ffe2a0)}
+/* Gear sockets: the rarity is inlaid in the drawn frame; name on the wooden foot, level on a leather tag. */
+#stage[data-screen="upgrade"] .hero-gear-slot[data-node^="upgrade.gear-"] .copy-layer{white-space:nowrap;overflow-wrap:normal;font-weight:900;color:#ffe9bc!important;text-shadow:0 1px 2px #1a0c04,0 0 3px #1a0c04!important}
+#stage[data-screen="upgrade"] .hero-gear-slot.empty>.icon{opacity:.5!important;filter:grayscale(.55) brightness(1.35) drop-shadow(0 1px 2px #000)!important}
+#stage[data-screen="upgrade"] .hero-gear-slot.empty>.art{filter:none}
+#stage[data-screen="upgrade"] .hero-gear-slot.filled>.icon{filter:drop-shadow(0 2px 2px #000a)}
+#stage[data-screen="upgrade"] .hero-gear-slot.is-legendary{filter:drop-shadow(0 0 7px #ffc55b99) drop-shadow(0 4px 4px #130e09b0)}
+#stage[data-screen="upgrade"] .hero-gear-slot.is-divine{filter:drop-shadow(0 0 7px #ff858599) drop-shadow(0 4px 4px #130e09b0)}
+#stage[data-screen="upgrade"] [data-node^="upgrade.gear-level-"]{background:var(--kit-badge-leather) center/100% 100% no-repeat;color:#ffe9bc!important;font-weight:900;white-space:nowrap;text-shadow:0 1px 2px #1a0c04!important;filter:drop-shadow(0 2px 2px #0008);pointer-events:none}
+#stage[data-screen="upgrade"] [data-node="upgrade.equipped-stars"]{font-size:31px!important;letter-spacing:3px!important;white-space:nowrap;text-shadow:0 2px 1px #3a1a04,0 0 3px #000!important}
+/* Later forms carry more art (staff, tails, aura): a step smaller here, feet kept on the dais. */
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"].has-hero-form{scale:.82;transform-origin:50% 100%}
+/* The form-3 body keeps a thin edge light here, not a wide glow that blurs its outline. */
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"].has-hero-form[data-hero-form="3"]>.art{filter:drop-shadow(0 0 2px var(--form-color)) drop-shadow(0 3px 2px #0006)}
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"].has-hero-form[data-hero-form="3"]{filter:none}
+/* Kỹ Năng on a leather plate with the book, the relic's form on a wooden plate. */
+#stage[data-screen="upgrade"] .hall-skills .copy-layer{color:#ffe9bc!important;text-shadow:0 1px 2px #1a0c04!important;font-weight:900;white-space:nowrap}
+#stage[data-screen="upgrade"] .hall-skills{filter:drop-shadow(0 4px 4px #2a140888)}
+#stage[data-screen="upgrade"] .hall-relic .copy-layer{color:#ffe9bc!important;text-shadow:0 1px 2px #1a0c04!important;font-weight:900;white-space:nowrap;padding:0!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"] .copy-layer{white-space:nowrap}
+/* Báu vật (trial): a leather label and two drawn kit sockets side by side. */
+.hall-treasure .treasure-slots{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:4px 8px;width:168px}
+.hall-treasure .ts-label{flex-basis:100%;margin:0 14px;padding:5px 0 7px;text-align:center;border-radius:0;background:var(--kit-badge-leather) center/100% 100% no-repeat;font:900 24px/1 Cambria,serif;color:#ffe9bc;filter:drop-shadow(0 2px 2px #0008)}
+.hall-treasure .treasure-slot{width:80px;height:80px;padding:13px;border:0;border-radius:0;background:var(--kit-socket) center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+.hall-treasure .treasure-slot.locked{background-image:var(--kit-socket-locked)}
+.hall-treasure .treasure-slot.locked>*{display:none}
+.hall-treasure .treasure-slot.empty .ghost{opacity:.45}
+/* The trial label sits beside the stage on wide screens instead of over the HUD (treasure-ui.js). */
+.review .trial-banner{position:static;transform:none;display:inline-block;margin:0 0 18px;white-space:normal}

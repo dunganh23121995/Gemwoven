@@ -81,8 +81,18 @@
     nodes.unshift({id:'upgrade.hall-decor',kind:'content',rect:[0,0,941,1672],className:'exploration-map hall-decor',build:el=>{
       el.innerHTML=BANNERS.map(([k,x],i)=>A['hall-banner-'+k]?`<img class="hall-banner" src="${file('hall-banner-'+k)}" alt="" style="left:${x-28}px;top:300px;--d:${-(i*1.3).toFixed(1)}s">`:'').join('');}});
     // Owner: the banners match the hall; short labels, the ⓘ badge on the title board.
-    for(const n of nodes){if(/^upgrade\.(left|right)-story-flag$/.test(n.id)){const left=n.id.includes('left');if(A['hall-flag-'+(left?'tall':'short')])n.asset='hall-flag-'+(left?'tall':'short');
-      C[n.id+'-label']=left?'Lộ trình\n›':'Chỉ số\n›';n.className=((n.className||'')+' hall-flag').trim();}}
+    // Owner 04/11: the two cloth flags read as decoration. They become two drawn medallion buttons beside the title
+    // (map and compass: Lộ trình; stat tablet, sword and shield: Chỉ số) with the word on a wooden plate (raw/hall-gear).
+    for(const n of nodes){if(/^upgrade\.(left|right)-story-flag$/.test(n.id)){const left=n.id.includes('left'),medal='hall-medal-'+(left?'route':'stats');
+      if(A[medal])Object.assign(n,{asset:medal,fit:'contain',rect:left?[34,140,160,168]:[747,140,160,168],labelAsset:'hall-label-wood',labelRect:[4,120,152,46],size:30});
+      else if(A['hall-flag-'+(left?'tall':'short')])n.asset='hall-flag-'+(left?'tall':'short');
+      C[n.id+'-label']=A[medal]?(left?'Lộ trình':'Chỉ số'):left?'Lộ trình\n›':'Chỉ số\n›';n.className=((n.className||'')+(A[medal]?' hall-medal':' hall-flag')).trim();}}
+    // An unowned hero has no route or stats to open: no medallions then (they would only be decoration).
+    if(!p.heroes[state.hero])nodes=nodes.filter(n=>!/^upgrade\.((left|right)-story-flag|upgrade-story|potential)$/.test(n.id));
+    // Title, tabs, form plate and stars stacked above the hero, so no form's aura or body reaches them.
+    for(const n of nodes){if(n.id==='upgrade.title-board')n.rect=[246,96,449,160];if(n.id==='upgrade.title')n.rect=[266,164,409,66];
+      const t=/^upgrade\.upgrade-tab-(\d)$/.exec(n.id);if(t){n.rect=[226+t[1]*164,252,160,62];n.size=30;}
+      if(n.id==='upgrade.hero-caption'){n.rect=[306,314,330,48];n.labelRect=[20,7,290,34];n.size=26;}}
     if(!state.outfitSlot){
       nodes.push({id:'upgrade.roster',kind:'content',rect:[60,824,676,116],className:'exploration-map hall-roster',build:el=>strip(el,p,state)});
       nodes.push({id:'upgrade.roster-all',kind:'button',rect:[748,820,124,120],action:'hall:all',text:'upgrade.roster-all',asset:'kit-round',icon:'nav-more',iconRect:[26,14,72,72],labelRect:[0,84,124,36],className:'hall-all',size:24});C['upgrade.roster-all']='Tất cả';
@@ -108,7 +118,7 @@
         if(n.id==='upgrade.upgrade-action'){n.rect=[275,1322,392,112];n.size=44;}
         if(/^upgrade\.(level-step|perk-list)$/.test(n.id))n.rect=[686,1348,128,62];}
     }
-    nodes.push({id:'upgrade.profile-info',kind:'button',rect:[678,146,92,92],action:'hall:info',text:'upgrade.profile-info',className:'hall-info',size:40});C['upgrade.profile-info']='ⓘ';
+    nodes.push({id:'upgrade.profile-info',kind:'button',rect:[632,128,84,84],action:'hall:info',text:'upgrade.profile-info',className:'hall-info',size:40});C['upgrade.profile-info']='ⓘ';
     L.screens.upgrade.nodes=nodes;return p;
   };
   const handle=G.handle;
