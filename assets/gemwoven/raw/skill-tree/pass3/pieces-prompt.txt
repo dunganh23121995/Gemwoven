@@ -1,0 +1,13 @@
+Use case: game UI asset sheet, three separate textless pieces on a flat pure magenta #FF00FF background (no gradient, no shadow cast on the background, no magenta inside the art), for the Gemwoven Skills tree.
+
+Match the reference images exactly in material and painting style: the honey-gold carved wooden bough with brass bands (bough2-view.png), the carved wooden socket and gold frames (approved-refs.png quality: warm hand-painted fantasy RPG UI, beveled brass, soft top-left light).
+
+Canvas 1536 x 1024. Three pieces, well separated by at least 120 px of magenta, each fully inside the canvas:
+
+1. LEFT (centre about x=260, y=420, about 300 x 320 px): an UP scroll cue. A small round carved honey-wood base plate with a thin beveled brass rim, and on it two layered leaf-shaped carved wood-and-brass blades forming an upward-pointing chevron (^). Light from the top left. No text, no glow halo.
+
+2. MIDDLE (centre about x=640, y=420, about 300 x 320 px): the matching DOWN scroll cue: the same base plate and the same two leaf blades forming a downward-pointing chevron (v), painted again with light still from the top left (do not simply flip the first one upside down).
+
+3. RIGHT (centre about x=1150, y=500, about 620 x 620 px): a round, dense cluster of fresh green leaves with two or three small twig tips and a few curled tendrils, shaped to fully cover a round wooden pad about 450 px across. Dense enough to be opaque in the middle; organic, soft leafy edge; no flowers, no lock, no frame, no empty round face, no wood disc visible. It reads as the leafy crown tip of the bough.
+
+Clean crisp edges against the magenta so they can be chroma-keyed. No letters, numbers, labels or watermarks.

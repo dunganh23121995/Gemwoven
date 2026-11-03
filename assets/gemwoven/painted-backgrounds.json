@@ -2559,5 +2559,29 @@
       "assets/gemwoven/raw/summon-ui/pieces-prompt.txt"
     ],
     "purpose": "Triệu Hồi UI pieces drawn by Codex gpt-6.1-sol low from the approved mockup (raw/summon-ui/mockup-1.png), cut by raw/summon-ui/cut.py; used by summon-ui.js."
+  },
+  "skilltree-cue-up": {
+    "file": "assets/gemwoven/skill-tree/cue-up.webp",
+    "width": 197,
+    "height": 200,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass3/pieces-raw.png",
+    "purpose": "Kỹ Năng pass 3 (growing tree): scroll cues and the leafy tip over a free crown pad (skill-tree.js)."
+  },
+  "skilltree-cue-down": {
+    "file": "assets/gemwoven/skill-tree/cue-down.webp",
+    "width": 197,
+    "height": 200,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass3/pieces-raw.png",
+    "purpose": "Kỹ Năng pass 3 (growing tree): scroll cues and the leafy tip over a free crown pad (skill-tree.js)."
+  },
+  "skilltree-crown-leaves": {
+    "file": "assets/gemwoven/skill-tree/crown-leaves.webp",
+    "width": 400,
+    "height": 361,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass3/pieces-raw.png",
+    "purpose": "Kỹ Năng pass 3 (growing tree): scroll cues and the leafy tip over a free crown pad (skill-tree.js)."
   }
 }

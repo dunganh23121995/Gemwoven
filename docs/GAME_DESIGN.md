@@ -120,6 +120,29 @@ Bảng **Lộ trình phát triển** [Đêm nay] cho thấy từng nhánh: đã 
 Vẫn hiện trong danh sách (đó là mồi sưu tầm), làm **xám + biểu tượng khóa**. Bấm vào xem được kỹ năng, hình
 thái, số mảnh và cách có tướng.
 
+### 2.3 Cây kỹ năng khi tướng có thêm kỹ năng [Có · Claude + Codex, 04/11]
+Chủ dự án (04/11): "bỏ phần mô tả yêu cầu và tên ngay cạnh kỹ năng … tướng sau này phát triển thêm kỹ năng thì sao?".
+- **Trên cây chỉ còn hình**: huy hiệu + bảng hạng `4/10` (đã học), `Học` + mầm (mở mà chưa học), khung ổ khóa (chưa
+  mở). Tên, nhánh, điều kiện "Cần … / Hiện tại …" chỉ ở bảng chi tiết bên dưới.
+- **Cây đọc từ danh sách kỹ năng của tướng** (`skill-tree.js` `skillList`), N nút xếp từ gốc lên ngọn theo thứ tự mở.
+  Hôm nay mọi tướng có 4 (Chủ Động → Bị Động → Biến Dị → Chân Thân, cổng ở `SKILL_GATES`); kỹ năng thêm sau này mang
+  điều kiện của riêng nó trong dữ liệu, **không suy điều kiện hay quan hệ học trước từ vị trí trên cành**.
+- **Cành mọc theo chu kỳ hai ổ**: cành `bough2` cắt qua tâm ổ thành gốc (ổ 1, 2), chu kỳ (nửa trên ổ 1 → ổ 2 → nửa dưới
+  ổ 3) và ngọn (nửa trên ổ 3 → ổ 4, nhánh nụ). Số ổ = `2 × ceil(N/2)`, số chu kỳ chèn `k = ceil((N−4)/2)`, mỗi chu kỳ
+  cao 305,44 đơn vị; N = 4 là đúng tranh cũ. Đường cắt luôn nằm dưới ổ gỗ / khung khóa nên không thấy mối nối; mỗi chu
+  kỳ đặt lệch 7,8 đơn vị sang trái (cành hơi nghiêng) thay vì lộ mối nối. **N lẻ**: ổ ngọn dư được che bằng chùm lá
+  (không ổ, không chạm). Nhánh bên để dành cho sau, không dùng cho kỹ năng nối tiếp (dễ đọc thành nhánh lựa chọn).
+- **Một nụ "Sắp ra mắt"** duy nhất, luôn ở nhánh nhỏ của ngọn, đi theo ngọn khi cây dài ra.
+- **Cuộn**: N ≤ 4 không cuộn (vùng cây `[370,230,550,676]`); N > 4 vùng cây `[370,120,571,786]` cuộn dọc (kéo tay,
+  kéo chuột, lăn chuột), mờ dần ở mép trên/dưới chỉ khi phía đó còn cây, hai nút lá chạm (lên / xuống) cuộn đúng một chu
+  kỳ, ẩn khi đã tới đầu. Không có số trang hay chấm. Mở màn: kỹ năng gốc được chọn, cây ở gốc; về lại thì giữ vị trí.
+  **Nút đang chọn luôn trong tầm nhìn**: chọn một nút ở mép thì cây cuộn tới nó; tự cuộn đi xa thì khi dừng, nút gần
+  nhất còn thấy được chọn (bảng dưới đổi theo, không học, không tiêu gì).
+- Đường sáng từ gốc tới nút chọn và sợi sáng xuống bảng giữ nguyên; sợi sáng không cuộn.
+- Kiểm tra bằng tướng QA giả (`window.GEMWOVEN_QA_SKILLS = 8` chỉ trong QA; game không bao giờ đặt), không thêm kỹ
+  năng cho tướng thật, không đổi luật; `node qa/gemwoven/check-skill-tree.cjs` kiểm tra trên trình duyệt (4 kỹ năng thật,
+  QA 8 và QA 7). Codex: phác thảo, mockup và chấm bản dựng ở `assets/gemwoven/raw/skill-tree/pass3`.
+
 ### 2.4 Biến Thân (nhánh Chân Thân) [Có · Codex vòng 4]
 - Một lần mỗi trận: thanh năng lượng có vạch **Biến Thân**; kích hoạt khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai.
 - 3 lượt: hào quang hình thái cao nhất bật lên (art đã có), Công +25..40% theo cấp kỹ năng, giảm 15% sát

@@ -1,0 +1,219 @@
+Use case: ui-mockup.
+
+Create one polished FULL-SCREEN MOCKUP of the Vietnamese portrait
+mobile RPG Gemwoven, showing the expanded “Kỹ Năng” screen.
+
+OUTPUT AND COORDINATE SYSTEM
+Canvas: exactly 1200 × 1800 pixels.
+Place the complete, uncropped 941 × 1672 logical game stage at
+canvas offset (129.5, 64), at 1:1 scale.
+Thus every coordinate below is a stage coordinate; add (129.5,64)
+to locate it on the output canvas.
+Fill only the outside margins with a quiet dark brown surround.
+Do not add a phone frame, browser chrome, captions or annotations.
+
+REFERENCE ROLES
+- bg-skills.png: exact environment and composition reference.
+  Preserve the giant trunk on the right, blue sky and clouds,
+  stone platform on the left, stone steps and foreground roots.
+- phone-sel0.png: preserve Hiro’s identity, pose, costume and scale;
+  preserve the HUD, screen title board, hero roster, bottom navigation,
+  and the illustrated construction of the bottom detail panel.
+- bough2-view.png: reference for the honey-gold carved wooden bough,
+  brass bands, round mounting pads and the crown’s side twig.
+- bough-n8.png: construction reference for an eight-pad extended bough.
+  Its magenta is a production background and must not appear here.
+- approved-refs.png: match the approved hand-painted UI quality.
+
+STYLE
+Warm, detailed hand-painted fantasy game illustration.
+Honey wood, beveled brass, parchment, foliage and soft contact shadows.
+Preserve the existing visual language. All frames, sockets, plaques,
+buttons, scroll cues and branches must look like painted game art.
+No flat rectangular UI substitutes.
+Typography should look like a separate crisp UI overlay.
+No words belong to the reusable artwork itself.
+
+FIXED COMPOSITION
+Keep Hiro on his left-hand platform, approximately within x=100–390.
+Keep his existing name board.
+Keep the “Kỹ Năng” title board at the upper left.
+Keep the HUD in its original position.
+Keep the roster at [24,906,893,98].
+Keep the detail panel at [15,1004,911,484].
+Keep the illustrated bottom navigation from the reference.
+The background, Hiro, HUD, title, roster, detail panel and navigation
+do not scroll.
+
+EXPANDED TREE
+This is a QA-only hero fixture with eight skills.
+It is not a new-account screen or a proposal for new unlock rules.
+Show one continuous carved bough with eight ordered mounting slots,
+ascending in a gentle left-right zigzag.
+Use the same bough material and scale as the approved four-skill tree.
+Extend the bough using its repeating two-pad period.
+Hide all assembly seams beneath the node frames.
+No prerequisite arrows and no connection arrows between skills.
+
+Tree viewport: [370,120,550,786], clipped at y=120 and y=906.
+Show the tree scrolled to a middle position:
+the complete tree content has been translated DOWN by 320 units
+from its root-view position.
+
+Displayed skill centres after this translation:
+1: (629.2,1119.1)
+2: (805,953)
+3: (621.4,813.7)
+4: (805,647.6)
+5: (621.4,508.3)
+6: (805,342.2)
+7: (621.4,202.8)
+8: (808.6,49.2)
+
+Respect these centres and clipping.
+Do not compress the tree to show all eight complete nodes.
+Skill 1 is fully below the viewport.
+Only the upper portion of skill 2 enters the bottom edge.
+Skill 3 and its rank plaque are partly faded/cropped at the bottom.
+Skill 4 is clearly visible below skill 5.
+Skill 7 is partly affected by the upper fade.
+Only a small lower edge of skill 8’s locked frame enters the top edge;
+do not invent a second full locked node inside the viewport.
+
+NODE STATES
+Skills 1–4 are learned, with full-colour skill artwork and wooden sockets.
+Their logical ranks are respectively “4/10”, “2/10”, “1/10”, “1/10”.
+Show rank text only where its plaque actually falls inside the viewport.
+
+Skill 5 is OPEN, LEARNED and SELECTED, rank “3/10”.
+Give it the existing 164-unit wooden socket, a gold selection ring
+194 units across, and a broad soft warm selection halo.
+Its skill icon is a clearly readable silver sword with a small amber
+energy accent on a crimson well.
+Use the same icon in the detail panel.
+
+Skill 6 is OPEN but NOT YET LEARNED.
+Show its blue shield icon, a normal wooden socket, the existing rank
+plaque reading exactly “Học”, and the small green sprout.
+Place the existing suggested-step pointer leaf to the left of skill 6.
+Do not give skill 6 the selected gold halo.
+
+Skills 7 and 8 are LOCKED.
+Use the existing dark metal padlock frame and subdued skill artwork.
+No rank plaque on locked nodes.
+Do not add any second padlock badge.
+
+All medallion faces are 144 units across.
+Normal sockets are 164 units across.
+Rank plaques are 156 × 50, centred at (cx,cy+77).
+No skill name plaques and no requirement plaques anywhere on the tree.
+No “Cần Cấp…”, branch labels or skill names beside nodes.
+
+LIGHT AND SCROLL CLIPPING
+Keep the normal bough visible.
+Overlay a brighter copy of the same assembled bough, lit from the root
+up to selected skill 5; the section above skill 5 remains subdued.
+Do not turn this into a prerequisite diagram.
+
+Top fade: tree art transitions from transparent at y=120
+to fully visible at y=208.
+Bottom fade: fully visible at y=830 to transparent at y=906.
+Apply these fades to tree content only, not to the background.
+
+Add two illustrated scroll cues:
+- upward cue: small carved wood and brass leaf-chevron artwork
+  at [424,148,56,60], within an invisible [398,124,108,108] hit area;
+- downward cue: matching downward-facing artwork
+  at [424,810,56,60], within an invisible [398,786,108,108] hit area.
+These are scroll controls in the left gutter of the tree.
+No text, counters, dots or scrollbar.
+
+The future-branch bud and its parchment ribbon remain attached
+to the crown’s side twig and scroll with the crown.
+At this particular middle scroll they are above the viewport:
+do not relocate them into view and do not add a floating ribbon.
+
+Keep the thin vertical amber-white thread FIXED at approximately
+[647,850,8,156], with its small spark at [635,994,24,24].
+It does not move with the bough and does not connect diagonally to skill 5.
+
+DETAIL PANEL
+Preserve the existing illustrated parchment panel, icon socket,
+branch plaque, material tray, next-level card and orange upgrade button.
+
+Selected icon/socket area: approximately [34,1010,152,152].
+Rank plaque: [40,1152,140,42].
+Skill name: [198,1022,686,50].
+Branch plaque: [198,1072,220,40].
+Description area: [198,1112,692,84].
+Material header: [198,1200,250,46].
+Material tray: [40,1228,566,140].
+Next-card header: [646,1200,230,46].
+Next-level card: [624,1228,274,140].
+Upgrade button: [300,1376,340,100].
+
+Use a gold coin and a red skill book as the two material pictures.
+Use readable dark brown text on parchment, cream text on dark wood,
+green “Cần” values because this QA fixture has enough materials.
+The upgrade button is ready and warmly illuminated.
+Do not add unlock conditions to this open skill’s panel.
+
+EXACT VISIBLE TEXT — NO ADDITIONAL COPY
+HUD:
+“24”
+“5.200.000”
+“120.000”
+“2” on the mail badge
+“+” on the two currency controls
+
+Screen title:
+“Kỹ Năng”
+
+Hiro name board:
+“Lv.24 · Hiro”
+“Lữ Khách Tập Sự”
+
+Roster:
+“24”, “24”, “1”
+Use padlocks rather than text for the three unowned portraits.
+
+Visible tree plaques, subject to the clipping described above:
+“1/10” for skill 3, partly clipped
+“1/10” for skill 4
+“3/10” for selected skill 5
+“Học” for skill 6
+
+Detail panel:
+“Kỹ năng thử 5”
+“Mở rộng”
+“Lv.3/10”
+“Kỹ năng thử để kiểm tra cây mở rộng.”
+“Nguyên liệu”
+“Có 5,2 Tr”
+“Cần 9 N”
+“Có 40”
+“Cần 5”
+“Cấp kế”
+“Sát thương”
+“91 → 97”
+“Tăng Cấp”
+
+Bottom navigation:
+“Trang Chủ”
+“Tướng”
+“Túi Đồ”
+“Kỹ Năng”
+“Triệu Hồi”
+“Đấu Trường”
+“Thêm”
+“3” on the More badge
+
+Keep the existing green upward symbol on the hero navigation item
+as a symbol, without adding explanatory text.
+
+Use Vietnamese diacritics exactly as written.
+Main panel title approximately 44 units; description approximately
+33 units; tree rank text approximately 38 units.
+Wrap the description naturally within two lines if needed.
+Do not paint layout guides, coordinates, hit-area outlines,
+skill numbers, English labels, QA labels or watermarks.
