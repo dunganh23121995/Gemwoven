@@ -1,0 +1,11 @@
+Redesign a background painting for one screen of a cozy fantasy mobile RPG hub (portrait). Reference image 1 is the CURRENT background placed in the middle of a grey 2:3 canvas; reference image 2 is the same screen in the game with the UI on top (shows where buttons, tabs and panels sit).
+
+Keep the exact composition of reference 1: the same camera, horizon, perspective, and the listed ANCHOR objects at the same positions and sizes, because the UI is aligned to them. Extend the scene naturally into the grey side margins (they will be cropped, keep nothing important there).
+
+Goal: a CALMER background so the UI stands out. Remove most small clutter (bottles, books, jars, crystals, candles, small lanterns, flower clusters, ivy tangles, small animals, distant floating islands, castles and waterfalls). Use fewer, larger, simpler shapes and quieter surfaces. Lower contrast and saturation in the far background; keep the middle ground soft; areas that sit under UI panels in reference 2 must be plain, low-detail surfaces (wood, stone, cloth, sky). Keep the warm, sunny, hand-painted anime game style and palette of reference 1, crisp (not blurry), same level of rendering quality, just much less busy.
+
+No text, no letters, no numbers, no UI frames, no buttons, no icons, no logos. Output one full-bleed image, portrait 2:3 (1024x1536).
+
+Screen: Arena (Đấu Trường).
+ANCHORS: the stone arena gate arch at the top centre (title plate sits on it); the central staircase going down the middle; the round podium area in the centre (rank podium 1-2-3 sits on it, about 45-58% height); the lower stairs and path to the bottom.
+Simplify: keep only 2-4 large banners near the gate, no small flags; remove floating islands, distant castles, extra towers and waterfalls; sky with a few big soft clouds; fewer torches (two big braziers at most); plain stone on the sides where the side buttons sit.

@@ -1,0 +1,11 @@
+Redesign a background painting for one screen of a cozy fantasy mobile RPG hub (portrait). Reference image 1 is the CURRENT background placed in the middle of a grey 2:3 canvas; reference image 2 is the same screen in the game with the UI on top (shows where buttons, tabs and panels sit).
+
+Keep the exact composition of reference 1: the same camera, horizon, perspective, and the listed ANCHOR objects at the same positions and sizes, because the UI is aligned to them. Extend the scene naturally into the grey side margins (they will be cropped, keep nothing important there).
+
+Goal: a CALMER background so the UI stands out. Remove most small clutter (bottles, books, jars, crystals, candles, small lanterns, flower clusters, ivy tangles, small animals, distant floating islands, castles and waterfalls). Use fewer, larger, simpler shapes and quieter surfaces. Lower contrast and saturation in the far background; keep the middle ground soft; areas that sit under UI panels in reference 2 must be plain, low-detail surfaces (wood, stone, cloth, sky). Keep the warm, sunny, hand-painted anime game style and palette of reference 1, crisp (not blurry), same level of rendering quality, just much less busy.
+
+No text, no letters, no numbers, no UI frames, no buttons, no icons, no logos. Output one full-bleed image, portrait 2:3 (1024x1536).
+
+Screen: Tavern (Quán Bia).
+ANCHORS: the brown-haired barmaid girl holding beer mugs behind the bar in the middle (same position, size); the party table at the lower right with the five companions (red fox girl, white bunny girl, blonde witch, hooded dark figure, small orange fox) — keep them, same positions and sizes. The upper middle-right area (the game hangs its own UI banners there) is a plain timber wall and ceiling with no banners.
+Simplify: remove most bottles on the shelves, the chandelier candles become one simple warm lamp, fewer barrels and stools, no window view clutter; the lower-left and bottom floor (daily quest panel sits there) is plain wooden floor.

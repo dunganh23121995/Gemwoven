@@ -13,76 +13,82 @@
     "purpose": "Clear overlapping canopy shapes in a calm palette; Home buildings remain independent interactive art."
   },
   "background-inventory": {
-    "file": "assets/gemwoven/backgrounds/inventory-painted.webp",
+    "file": "assets/gemwoven/backgrounds/inventory-calm.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-a/inventory-raw.png",
-    "reference": "assets/gemwoven/backgrounds/inventory.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/inventory-raw.png",
+    "reference": "assets/gemwoven/backgrounds/inventory-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-a/inventory-prompt.txt"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/inventory-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-skills": {
-    "file": "assets/gemwoven/backgrounds/skills-painted.webp",
+    "file": "assets/gemwoven/backgrounds/skills-calm.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-a/skills-raw.png",
-    "reference": "assets/gemwoven/backgrounds/skills.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/skills-raw.png",
+    "reference": "assets/gemwoven/backgrounds/skills-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-a/skills-prompt.txt"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/skills-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-upgrade": {
-    "file": "assets/gemwoven/backgrounds/upgrade-painted.webp",
+    "file": "assets/gemwoven/backgrounds/upgrade-calm.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-a/upgrade-raw.png",
-    "reference": "assets/gemwoven/backgrounds/upgrade.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/upgrade-raw.png",
+    "reference": "assets/gemwoven/backgrounds/upgrade-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-a/upgrade-prompt.txt"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/upgrade-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-shop": {
-    "file": "assets/gemwoven/backgrounds/shop-painted.webp",
+    "file": "assets/gemwoven/backgrounds/shop-calm.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-b/shop-raw.png",
-    "reference": "assets/gemwoven/backgrounds/shop.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/shop-raw.png",
+    "reference": "assets/gemwoven/backgrounds/shop-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-b/prompts.json"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/shop-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-forge": {
-    "file": "assets/gemwoven/backgrounds/forge-painted.webp",
+    "file": "assets/gemwoven/backgrounds/forge-calm.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-b/forge-raw.png",
-    "reference": "assets/gemwoven/backgrounds/forge.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/forge-raw.png",
+    "reference": "assets/gemwoven/backgrounds/forge-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-b/prompts.json"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/forge-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-tavern": {
-    "file": "assets/gemwoven/backgrounds/tavern-painted.webp",
+    "file": "assets/gemwoven/backgrounds/tavern-calm.webp",
     "width": 941,
-    "height": 1671,
+    "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-b/tavern-raw.png",
-    "reference": "assets/gemwoven/backgrounds/tavern.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/tavern-raw.png",
+    "reference": "assets/gemwoven/backgrounds/tavern-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-b/prompts.json"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/tavern-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-summon": {
     "file": "assets/gemwoven/backgrounds/summon-painted.webp",
@@ -98,16 +104,16 @@
     ]
   },
   "background-arena": {
-    "file": "assets/gemwoven/backgrounds/arena-painted.webp",
+    "file": "assets/gemwoven/backgrounds/arena-calm.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/screens-painted-c/arena-painted-focus.generated.png",
-    "reference": "assets/gemwoven/backgrounds/arena.webp",
+    "source": "assets/gemwoven/raw/redraw-2026-11/arena-raw.png",
+    "reference": "assets/gemwoven/backgrounds/arena-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/screens-painted-c/arena-painted.prompt.txt",
-      "assets/gemwoven/raw/screens-painted-c/arena-painted-focus.prompt.txt"
-    ]
+      "assets/gemwoven/raw/redraw-2026-11/arena-prompt.txt"
+    ],
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   }
 }
