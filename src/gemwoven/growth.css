@@ -133,3 +133,10 @@
 .title-cell.is-worn .title-plate{filter:drop-shadow(0 0 10px rgba(255,200,90,.9))}
 .title-dialog .title-hero{display:flex;justify-content:center;margin:6px 0}.title-rarity{text-align:center;font-weight:700;color:#8a6a40;margin:0 0 6px}
 .title-bar{position:relative;height:34px;border-radius:17px;background:#e2d2ae;overflow:hidden;margin:6px 0}.title-bar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#f0b64e,#e07b2c)}.title-bar span{position:relative;display:block;text-align:center;font:700 22px/34px sans-serif;color:#4a3018}
+/* Sân Thử Luyện: today's boss first */
+.trial-today{display:flex;flex-direction:column;gap:12px;padding:18px 20px;border-radius:18px;background:linear-gradient(#fff4dc,#f7e2b6);border:3px solid #e2a84a;margin:8px 0 12px}
+.trial-today b{font-size:32px;color:#6a3a12}.trial-today small{display:block;font-size:24px;color:#7a5a30}.trial-today p{margin:6px 0 0;font-size:26px}
+.trial-go{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.trial-go .game-btn{min-height:96px;min-width:220px;font-size:32px}
+.trial-left{font-size:26px;color:#3f6a1f}.trial-left.is-out{color:#8a6a40}
+.trial-week{list-style:none;padding:0;margin:0 0 10px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.trial-week li{display:flex;flex-direction:column;padding:10px 12px;border-radius:14px;background:#f3ead6;font-size:22px}.trial-week li b{color:#8a5a20}.trial-week small{font-size:20px;color:#7a6448}
+.trial-rules summary{cursor:pointer;font-weight:700;font-size:26px;color:#8a5a20;min-height:56px;display:flex;align-items:center}.trial-rules p{font-size:24px}

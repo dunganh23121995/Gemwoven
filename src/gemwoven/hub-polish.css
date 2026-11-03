@@ -5,4 +5,18 @@
 /* Bottom bar: the other tabs' names. */
 .nav-mini-label{pointer-events:none;text-align:center;font-weight:700;text-shadow:0 2px 3px #000,0 0 6px #000;letter-spacing:-.2px;white-space:nowrap}
 /* The phone's extra height around the frame shows the current screen's art, blurred, instead of empty bars. */
+body{isolation:isolate}
 body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--screen-bg,none) center/cover no-repeat;filter:blur(26px) brightness(.5) saturate(1.1);pointer-events:none}
+/* Readable text in the live panels (Codex UI review): body ≥ 30 units (≈12.5 px on a 390 phone), small print ≥ 26. */
+.live-panel{font-size:30px;line-height:1.42}
+.live-panel h3{font-size:34px}
+.live-panel .hint,.live-panel small,.live-panel .growth-note{font-size:26px}
+.live-panel .gw-table,.live-panel table{font-size:26px}
+.live-panel .product-card li{font-size:24px}
+.live-panel .game-btn,.live-panel .gw-btn{min-height:96px}
+.live-panel .cadence-grid ul,.live-panel .product-card ul{font-size:25px}
+.live-panel .product-card header{font-size:30px}
+.live-panel .product-card details summary{font-size:25px;cursor:pointer;color:#8a5a20;min-height:56px;display:flex;align-items:center}
+.offline-bar{height:28px;border-radius:14px;background:#e2d2ae;overflow:hidden;margin:4px 0 14px}.offline-bar i{display:block;height:100%;background:linear-gradient(90deg,#f0b64e,#e07b2c)}
+.live-panel details summary{cursor:pointer;font-weight:700;min-height:56px;display:flex;align-items:center;color:#8a5a20}
+.newbie-ready{color:#c0392b}

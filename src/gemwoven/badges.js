@@ -28,7 +28,8 @@
       el.querySelector(':scope > .gw-badge')?.remove();
       const act=el.dataset.action,key=act.startsWith('route:')?act.slice(6):act==='journey:monthly'?'monthly':null;
       // The HUD avatar and currency buttons stay clean (the level number and plates sit there).
-      if(!key||key===state.screen||/\.(mail|profile|gold-plus|gems-plus)$/.test(el.dataset.node||''))continue;
+      // Only navigation (bottom bar, town places, side pennants, right icons) carries badges, never in-screen action buttons.
+      if(!key||key===state.screen||!/\.(nav-|place-|feature-|right-|side-|explore$)/.test(el.dataset.node||''))continue;
       const r=red(key),g=!r&&green(key);if(!r&&!g)continue;
       const b=document.createElement('span');b.className='gw-badge '+(r?'is-claim':'is-hint');b.setAttribute('aria-hidden','true');b.textContent=r?(r>99?'99+':String(r)):'↑';el.append(b);
       const label=el.getAttribute('aria-label')||'';if(r&&!/quà nhận/.test(label))el.setAttribute('aria-label',`${label} · ${r} quà nhận được`.trim());
@@ -56,7 +57,8 @@
     clearTimeout(timer);timer=setTimeout(()=>run(current),120);});
   G.mount=(state,ctx)=>{const r=mount(state,ctx);current=state;run(state);
     // Fill the phone's spare height with this screen's art, blurred (hub-polish.css).
-    const bg=document.getElementById('scene')?.style.backgroundImage;if(bg)document.body.style.setProperty('--screen-bg',bg);return r;};
+    // An absolute URL: a relative one inside a custom property resolves against hub-polish.css, not the page.
+    const bg=/url\(["']?([^"')]+)/.exec(document.getElementById('scene')?.style.backgroundImage||'')?.[1];if(bg)document.body.style.setProperty('--screen-bg',`url("${new URL(bg,document.baseURI).href}")`);return r;};
   watch.observe(document.body,{childList:true,subtree:true});
   window.GemwovenBadges={setHints(on){const p=read();p.hints=!!on;write(p);},hints:()=>read().hints!==false,apply:()=>current&&apply(current)};
 })();

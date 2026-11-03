@@ -11,7 +11,8 @@ const {WebSocketServer}=require('ws');
 const S=require('../../src/gemwoven/social-protocol.js');
 const ROOT=path.resolve(__dirname,'../..');
 
-function createServer({port=8091,host='0.0.0.0',dataFile=path.join(__dirname,'data/social.json'),now=()=>Date.now(),tickMs=100}={}){
+// registerPerHour: new accounts per address per hour (SOCIAL_REGISTER_PER_HOUR; 5 in release, raise it for QA).
+function createServer({port=8091,host='0.0.0.0',dataFile=path.join(__dirname,'data/social.json'),now=()=>Date.now(),tickMs=100,registerPerHour=Number(process.env.SOCIAL_REGISTER_PER_HOUR)||5}={}){
   // ---- Storage: accounts and guilds (positions and area chat are never stored) ----
   let db={version:1,accounts:{},guilds:{},reports:[]};
   try{db={...db,...JSON.parse(fs.readFileSync(dataFile,'utf8'))};}catch{}
@@ -228,7 +229,7 @@ function createServer({port=8091,host='0.0.0.0',dataFile=path.join(__dirname,'da
       if(m.t==='register'){
         const c=S.checkName(m.name);if(!c.ok)return err(s,c.error,'register');
         if(Object.values(db.accounts).some(a=>S.fold(a.name)===S.fold(c.name)))return err(s,'Tên đã có người dùng.','register');
-        if(!hourly(ipLimits[s.ip]??={},'register',5))return err(s,'Đã tạo nhiều tài khoản từ địa chỉ này, thử lại sau.','register');
+        if(!hourly(ipLimits[s.ip]??={},'register',registerPerHour))return err(s,'Đã tạo nhiều tài khoản từ địa chỉ này, thử lại sau.','register');
         // The server issues the token (stored hashed, revocable by deleting it); the device keeps it.
         const id=newId(8),token=newId(24);db.accounts[id]={name:c.name,token:hash(token),created:now(),profile:s.profile||S.cleanProfile(m.p),friends:[],incoming:[],outgoing:[],blocks:[],guild:null,contribution:0};save();
         s.id=id;send(s,{t:'registered',id,token});return welcome(s);

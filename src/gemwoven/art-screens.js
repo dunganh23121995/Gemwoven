@@ -68,7 +68,8 @@
       if(/^branch-\d$/.test(id)){const branch=+id.slice(-1);n.action='do:skill-filter';n.data={filter:branch};n.selected=String(filter)===String(branch);}
       if(/^roster-/.test(id)){n.action='do:hero';n.data={hero:id.slice(7)};n.selected=id==='roster-'+hero;}
       if(/^node-\d$/.test(id)){const index=+id.slice(-1);n.action='do:skill-node';n.data={index};n.className+=' skill-live'+(!h||!M.skillUnlock(h,index)?' skill-unavailable':'');}
-      if(/^node-level-/.test(id))C[n.text]=`${h?.skills[+id.slice(-1)]||0}/${M.SKILL_MAX}`;
+      // A locked branch says how it opens (Codex UI review) instead of 0/10.
+      if(/^node-level-/.test(id)){const index=+id.slice(-1),g=M.SKILL_GATES?.[index];C[n.text]=h&&M.skillUnlock(h,index)?`${h.skills[index]||0}/${M.SKILL_MAX}`:g?`Cấp ${g.level}${g.evolution?' · TH'+g.evolution:''}`:'Khóa';}
       // Decorative outer locks are future branches, not part of the current tree.
       if(/^locked-\d$/.test(id)){n.action='art:skill-soon';n.data={};C[n.text]='Nhánh kỹ năng mở rộng · Sắp ra mắt';}
     }

@@ -137,7 +137,7 @@
   // ---------- Speech ----------
   function bubble(a,text){
     const box=a.el.querySelector('.pz-bubbles'),b=document.createElement('p');b.className='pz-bubble';
-    b.textContent=text.length>96?text.slice(0,95)+'…':text;box.append(b);while(box.children.length>2)box.firstChild.remove();
+    b.textContent=text.length>120?text.slice(0,119)+'…':text;box.append(b);while(box.children.length>2)box.firstChild.remove();
     const all=[...P.world.querySelectorAll('.pz-bubble')];if(all.length>4)all.slice(0,all.length-4).forEach(x=>x.remove());
     setTimeout(()=>{b.classList.add('fade');setTimeout(()=>b.remove(),500);},Math.min(6000,4000+text.length*25));
   }
@@ -171,6 +171,10 @@
       if(s){const c=a.frame%s.cols,r=Math.floor(a.frame/s.cols),body=a.el.querySelector('.pz-body');body.style.backgroundPosition=`${s.cols>1?c/(s.cols-1)*100:0}% ${s.rows>1?r/(s.rows-1)*100:0}%`;body.style.transform=a.dir<0?'scaleX(-1)':'';}
       a.el.style.transform=`translate(${a.pos[0].toFixed(1)}px,${a.pos[1].toFixed(1)}px)`;a.el.style.zIndex=String(Math.round(a.pos[1]));
     }
+    // Name plates of people standing close step up so they never overlap (a few times a second).
+    if(now-(P.declutterAt||0)>200){P.declutterAt=now;const list=[...P.actors.values()].filter(a=>!a.npc).sort((a,b)=>b.pos[1]-a.pos[1]);
+      for(let i=0;i<list.length;i++){let lift=0;for(let j=0;j<i;j++)if(Math.abs(list[i].pos[0]-list[j].pos[0])<110&&Math.abs(list[i].pos[1]-list[j].pos[1])<50)lift=Math.max(lift,(list[j].lift||0)+34);
+        if(lift!==(list[i].lift||0)){list[i].lift=lift;for(const sel of ['.pz-plate','.pz-bubbles','.pz-emote'])list[i].el.querySelector(sel).style.translate=`0 ${-lift}px`;}}}
     if(P.me){camera();zone();if(P.pendingTalk){const t=P.pendingTalk;if(performance.now()>t.until||!P.actors.has(t.a.id))P.pendingTalk=null;else if(S.near(P.me.pos,t.a.pos,geo.interact||S.MAP.interact)){P.pendingTalk=null;goTo(P.me.pos);openCard(t.a);}}arrows();}
   }
   function viewH(){return FRAME_H-CHAT_H-(P.typing?520:0);}
@@ -223,9 +227,9 @@
         return `<header class="pz-card-head">${face(a.hero)}<div><h3>${a.tag?`<b>[${esc(a.tag)}]</b> `:''}${esc(a.name)}</h3><p>${esc(M.HEROES[a.hero]?.name||'')} · cấp ${p.level||1} · ${'★'.repeat(p.stars||1)}</p>
           <p>Lực chiến ${fmt(p.power)} <small>(chưa xác thực)</small>${a.guildName?` · Bang ${esc(a.guildName)}`:''}</p></div></header>
           <div class="pz-actions">${friend?`<button class="gw-btn" data-do="whisper" data-id="${a.id}">Nhắn riêng</button>`:`<button class="gw-btn" data-do="friend" data-id="${a.id}" ${pending?'disabled':''}>${pending?'Đã gửi lời mời':'Kết bạn'}</button>`}
-          <button class="gw-btn" data-do="duel" data-id="${a.id}">Giao hữu</button>${inviteGuild?`<button class="gw-btn secondary" data-do="ginvite" data-id="${a.id}">Mời vào bang</button>`:''}</div>
+          <button class="gw-btn" data-do="duel" data-id="${a.id}">Giao hữu · bản sao AI</button>${inviteGuild?`<button class="gw-btn secondary" data-do="ginvite" data-id="${a.id}">Mời vào bang</button>`:''}</div>
           <details class="pz-more"><summary>Thêm</summary><div class="pz-actions small">${friend?`<button class="gw-btn secondary" data-do="heart" data-id="${a.id}">Tặng tim</button>`:''}<button class="gw-btn secondary" data-do="whisper" data-id="${a.id}">Nhắn riêng</button><button class="gw-btn secondary" data-do="block" data-id="${a.id}">Chặn</button><button class="gw-btn secondary" data-do="report" data-id="${a.id}">Báo cáo</button></div></details>
-          <p class="pz-note">Giao hữu: bạn đấu với bản sao tướng của họ do máy điều khiển, chỉ số chuẩn hóa, không thưởng.</p>${needNet}`;}
+          <p class="pz-note">Đấu bản sao tướng của họ do máy điều khiển · chỉ số chuẩn hóa · không thưởng.</p>${needNet}`;}
       case 'friends':{const f=P.friends,t=tab||'list';
         const tabs=`<nav class="pz-tabs">${[['list',`Bạn bè ${f.friends.length}/${S.LIMITS.friends}`],['incoming',`Lời mời${f.incoming.length?` (${f.incoming.length})`:''}`],['blocks','Đã chặn']].map(([k,l])=>`<button data-tab="${k}" class="${t===k?'on':''}">${l}</button>`).join('')}</nav>`;
         const body=t==='incoming'?(f.incoming.map(x=>`<li><b>${esc(x.name)}</b><span><button class="gw-btn" data-do="accept" data-id="${x.id}">Đồng ý</button><button class="gw-btn secondary" data-do="decline" data-id="${x.id}">Từ chối</button></span></li>`).join('')+f.outgoing.map(x=>`<li><b>${esc(x.name)}</b><small>Đã gửi lời mời</small><span><button class="gw-btn secondary" data-do="cancel" data-id="${x.id}">Hủy</button></span></li>`).join('')||'<li class="empty">Chưa có lời mời. Đứng gần ai đó và chạm vào nhân vật của họ để kết bạn.</li>')
@@ -237,6 +241,7 @@
       case 'log':{const t=tab||'all',rows=P.log.filter(r=>t==='all'||r.ch===t).slice(-60);
         return `<h3>Nhật ký trò chuyện</h3><nav class="pz-tabs">${[['all','Tất cả'],['area','Khu vực'],['guild','Bang'],['whisper','Riêng'],['system','Hệ thống']].map(([k,l])=>`<button data-tab="${k}" class="${t===k?'on':''}">${l}</button>`).join('')}</nav>
           <ul class="pz-list pz-log">${rows.map(r=>`<li class="ch-${r.ch}"><time>${new Date(r.at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}</time><p><b>${chLabel(r)}${who(r)}</b> ${esc(r.text)}</p></li>`).join('')||'<li class="empty">Chưa có tin nhắn.</li>'}</ul>`;}
+      case 'more':return `<h3>Thêm</h3><div class="pz-more-grid"><button data-do="open-near"><span>👥</span>Người ở gần</button><button data-do="channels"><span>🗺️</span>Đổi kênh</button><button data-do="open-log"><span>💬</span>Nhật ký chat</button><button data-do="help"><span>?</span>Hướng dẫn</button></div>`;
       case 'emotes':return `<h3>Biểu cảm</h3><div class="pz-emotes">${S.EMOTES.map(([id,name,icon])=>`<button data-do="emote" data-id="${id}"><span>${icon}</span>${esc(name)}</button>`).join('')}</div>`;
       case 'near':{const list=[...P.actors.values()].filter(a=>a!==P.me).map(a=>({a,d:Math.hypot(a.pos[0]-P.me.pos[0],a.pos[1]-P.me.pos[1])})).sort((x,y)=>x.d-y.d).slice(0,20);
         return `<h3>Người ở gần</h3><ul class="pz-list">${list.map(({a,d})=>`<li>${a.npc?'':face(a.hero)}<b>${a.tag?`[${esc(a.tag)}] `:''}${esc(a.name)}${a.npc?' <i>NPC</i>':''}</b><small>${Math.round(d/10)} bước</small><span><button class="gw-btn secondary" data-do="talk" data-id="${a.id}">Đến gặp</button></span></li>`).join('')||'<li class="empty">Chưa có ai ở gần.</li>'}</ul>`;}
@@ -323,6 +328,8 @@
       case 'talk':{const a=P.actors.get(id);closeSheet();if(a)talkTo(a);return;}
       case 'channel':closeSheet();return go({t:'channel',n:Number(id)});
       case 'channels':return openSheet('channels');
+      case 'open-near':return openSheet('near');
+      case 'open-log':return openSheet('log');
       case 'help':return openSheet('help');
       case 'apply':return go({t:'guild',op:'apply',id});
       case 'approve':case 'reject':case 'kick':case 'promote':case 'demote':return go({t:'guild',op:kind,id});
@@ -386,8 +393,7 @@
         <button type="button" data-open="friends"><img src="${esc(asset('icon-friends'))}" alt=""><span>Bạn bè</span><b class="pz-badge" hidden></b></button>
         <button type="button" data-open="guild"><img src="${esc(asset('icon-crown'))}" alt=""><span>Bang hội</span><b class="pz-badge" hidden></b></button>
         <button type="button" data-open="emotes"><span class="pz-emoji">😄</span><span>Biểu cảm</span></button>
-        <button type="button" data-open="near"><img src="${esc(asset('icon-hero'))}" alt=""><span>Người gần</span></button>
-        <button type="button" data-open="help"><img src="${esc(asset('icon-settings'))}" alt=""><span>Hướng dẫn</span></button></nav>
+        <button type="button" data-open="more"><span class="pz-emoji">⋯</span><span>Thêm</span></button></nav>
       <button type="button" class="pz-context" hidden></button>
       <div class="pz-stick ${stickSide} ${prefs.stick==='fixed'?'fixed':''}" aria-hidden="true"><i></i></div>
       <button type="button" class="pz-ticker" data-open="log" aria-label="Mở nhật ký trò chuyện"></button>

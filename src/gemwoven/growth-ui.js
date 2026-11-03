@@ -55,10 +55,11 @@
   function newbieSection(){
     const days=G.engine.newbie();if(days.every(d=>d.claimed))return '';
     const name=id=>M.RESOURCES[id]?.[0]||id;
-    return `<section class="newbie-week"><h3>Hành Trình Tân Thủ · 7 ngày</h3><p class="hint">Mỗi ngày một phần quà; lỡ ngày thì nhận bù. Đủ 80 Mảnh Hiro trong tuần đầu là lên 2 sao.</p>`+
+    const got=days.filter(d=>d.claimed).length,ready=days.filter(d=>d.open&&!d.claimed).length;
+    return `<section class="newbie-week"><h3>Hành Trình Tân Thủ · đã nhận ${got}/7${ready?` · <span class="newbie-ready">${ready} quà chờ nhận</span>`:''}</h3><p class="hint">Mỗi ngày một phần quà; lỡ ngày thì nhận bù. Đủ 80 Mảnh Hiro trong tuần đầu là lên 2 sao.</p>`+
       `<div class="newbie-days">${days.map(d=>`<article class="newbie-day${d.claimed?' is-claimed':d.open?' is-open':''}"><b>Ngày ${d.day}</b>${img('portrait-novice','newbie-portrait')}`+
         `<ul>${Object.entries(d.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
-        `<button type="button" class="game-btn" data-action="growth:newbie" data-day="${d.day}" ${d.open&&!d.claimed?'':'disabled'}>${d.claimed?'Đã nhận':d.open?'Nhận':'Chưa mở'}</button></article>`).join('')}</div></section>`;
+        `<button type="button" class="game-btn" data-action="growth:newbie" data-day="${d.day}" ${d.open&&!d.claimed?'':'disabled'}>${d.claimed?'Đã nhận':d.open?'Nhận':`Mở sau ${d.day-days.filter(x=>x.open).length} ngày`}</button></article>`).join('')}</div></section>`;
   }
   function weeklySection(){
     const name=id=>M.RESOURCES[id]?.[0]||id,rows=G.engine.weekly();
@@ -68,14 +69,19 @@
         `<button type="button" class="game-btn" data-action="growth:weekly" data-quest="${esc(q.id)}" ${!q.claimed&&q.progress>=q.target?'':'disabled'}>${q.claimed?'Đã nhận':q.progress>=q.target?'Nhận':'Chưa xong'}</button></article>`).join('')}</div></section>`;
   }
   // Sân Thử Luyện on the Boss Vô Hạn screen: today's tanky boss at the selected hero's level.
+  // Sân Thử Luyện (Codex UI review): today's boss first, with runs left and the button; the other days in one row
+  // with their day; the rules folded under "Cách chơi".
   function trialSection(p){
     const open=M.trialOpen(Date.now()),runs=p.daily.trialRuns||0,left=Math.max(0,M.TRIAL.rewarded-runs),hero=p.heroes[p.selected];
-    const cards=M.TRIAL.chapters.map((c,i)=>{const e=M.trialEncounter(i+1,hero.level),today=open.includes(i+1),best=p.trial?.best?.[i+1]||0;
-      return `<article class="trial-card${today?' is-open':''}"><b>${esc(e.enemyName)}</b><small>${['Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu'][i]} · hệ ${esc({fire:'Hỏa',ice:'Băng',earth:'Mộc',lightning:'Lôi'}[e.enemyKey]||e.enemyKey)}</small>`+
-        `<p>Kỷ lục: ${best?fmt(best)+` (${(best/e.enemyHp).toLocaleString('vi-VN',{maximumFractionDigits:1})} thanh)`:'chưa có'}</p>`+
-        `<button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${i+1}" ${today?'':'disabled'}>${today?'Thử sức':'Ngày khác'}</button></article>`;}).join('');
-    return `<section class="trial-ground"><h3>Sân Thử Luyện</h3><p class="hint">Boss trâu không bao giờ ngã: hết thanh máu thì đứng dậy với thanh mới. ${M.TRIAL.turns} lượt, tính tổng sát thương. Boss ở đúng cấp tướng đang xuất chiến (${esc(M.HEROES[p.selected].name)} cấp ${hero.level}). `+
-      `Lượt có thưởng hôm nay: <b>${left}/${M.TRIAL.rewarded}</b>, sau đó đánh thoải mái để thử tướng, vẫn ghi kỷ lục. Mốc thưởng: ½, 1, 2, 3, 5 thanh máu.</p><div class="cadence-grid">${cards}</div></section>`;
+    const days=['Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu'],el=k=>({fire:'Hỏa',ice:'Băng',earth:'Mộc',lightning:'Lôi'}[k]||k);
+    const bosses=M.TRIAL.chapters.map((c,i)=>({i:i+1,e:M.trialEncounter(i+1,hero.level),today:open.includes(i+1),best:p.trial?.best?.[i+1]||0,day:days[i]}));
+    const card=b=>`<article class="trial-today"><div><b>${esc(b.e.enemyName)}</b><small>Hôm nay · hệ ${esc(el(b.e.enemyKey))} · cấp ${hero.level}</small>`+
+      `<p>Kỷ lục: <strong>${b.best?fmt(b.best)+` · ${(b.best/b.e.enemyHp).toLocaleString('vi-VN',{maximumFractionDigits:1})} thanh`:'chưa có'}</strong></p></div>`+
+      `<div class="trial-go"><span class="trial-left ${left?'':'is-out'}">${left?`Còn <b>${left}/${M.TRIAL.rewarded}</b> lượt có thưởng`:'Hết lượt thưởng · vẫn ghi kỷ lục'}</span><button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${b.i}">Thử sức</button></div></article>`;
+    const others=bosses.filter(b=>!b.today);
+    return `<section class="trial-ground"><h3>Sân Thử Luyện</h3>${bosses.filter(b=>b.today).map(card).join('')}`+
+      (others.length?`<ul class="trial-week">${others.map(b=>`<li><b>${esc(b.day)}</b><span>${esc(b.e.enemyName)}</span><small>${b.best?'Kỷ lục '+fmt(b.best):'Chưa đánh'}</small></li>`).join('')}</ul>`:'')+
+      `<details class="trial-rules"><summary>Cách chơi</summary><p>Boss trâu không bao giờ ngã: hết thanh máu thì đứng dậy với thanh mới. ${M.TRIAL.turns} lượt, tính tổng sát thương. Boss ở đúng cấp tướng đang xuất chiến (${esc(M.HEROES[p.selected].name)} cấp ${hero.level}). ${M.TRIAL.rewarded} lượt có thưởng mỗi ngày theo mốc ½, 1, 2, 3, 5 thanh máu; sau đó đánh thoải mái để thử tướng, vẫn ghi kỷ lục. Cuối tuần mở cả 5 boss.</p></details></section>`;
   }
   function cadenceSection(){
     if(!O)return '';
@@ -83,7 +89,8 @@
   }
   function vipPage(p){
     const card=id=>O.PRODUCTS.find(x=>x.id===id);
-    const product=x=>`<article class="product-card"><header><b>${esc(x.name)}</b><span>${vnd(x.price)}</span></header><ul>${x.perks.map(k=>`<li>${esc(k)}</li>`).join('')}</ul><em>Sắp ra mắt</em></article>`;
+    // Price and the three main perks up front; the rest folded (Codex UI review).
+    const product=x=>`<article class="product-card"><header><b>${esc(x.name)}</b><span>${vnd(x.price)}</span></header><em>Sắp ra mắt</em><ul>${x.perks.slice(0,3).map(k=>`<li>${esc(k)}</li>`).join('')}</ul>${x.perks.length>3?`<details><summary>Xem đủ ${x.perks.length} quyền lợi</summary><ul>${x.perks.slice(3).map(k=>`<li>${esc(k)}</li>`).join('')}</ul></details>`:''}</article>`;
     return `<header class="game-heading"><h2>VIP & Nạp</h2><p>Sắp ra mắt · Thanh toán và quyền lợi do máy chủ xác nhận. Chưa thu tiền.</p></header>`+
       `<p class="vip-now">VIP hiện tại: <b>${p.vip.level}</b> · Tổng nạp đã xác thực: <b>${vnd(p.vip.paidTotal)}</b></p>`+
       `<div class="product-grid">${['monthly-card','journey-pass','journey-pass-jewel','growth-fund'].map(id=>card(id)).filter(Boolean).map(product).join('')}</div>`+

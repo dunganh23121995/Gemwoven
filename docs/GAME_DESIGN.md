@@ -632,3 +632,18 @@ thần đó nhưng chỉ cho đổi diện mạo **ngoài trận**, vì trong tr
 | B. Báu vật | Đồng ý nếu sửa lịch, giá Thần, quy tắc đổi | Đồng ý | 600 điểm/kỳ PvE (đạt được khi chưa có báu vật, không phụ thuộc xếp hạng); Tím 300, Cam 900, mảnh Đỏ 150×10, **mảnh Thần 175×12 = 2.100**; **nâng phẩm tiêu hao món trước** → tổng 4.800 điểm = 8 kỳ = **16 tuần**; tích nạp tối đa +1.500/kỳ (100k: +300, 500k: tổng +1.000) → ~6 tuần; điểm và mảnh giữ qua kỳ; Phá Sơn trần 8× Công **tổng cho một lần tuyệt kỹ**; **mọi báu vật tắt ở Chuẩn Hóa** |
 | C. Ngân sách miễn phí | Đồng ý nếu sửa phần ổn định và mốc bảo đảm | Đồng ý | Vé nền **50/28 ngày** (28 đăng nhập + 12 tuần + 10 sổ); tháng đầu ~62 (thêm tân thủ, mốc cấp hữu hạn); 100 vé ≈ 56 ngày → bảo đảm **tướng của banner đang quay** mỗi ~2 tháng (không phải tướng chưa sở hữu); Mảnh Hiro chắc chắn: ngày 28: 248 (3★), ngày 90: 620 (đủ 4★), 6★ ≈ **ngày 240** từ tân thủ + nhiệm vụ ngày (nhanh hơn nhờ rương/tầng); cần đủ vàng, tinh hoa |
 | D. Biến Thân | Đồng ý nếu chốt lượt, kích hoạt, thay nội tại cũ | Đồng ý | Cấp 180 + TH3; một lần/trận, người chơi bấm khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai; **không tốn lượt, không cho địch đánh thêm, không hồi máu**; 3 **lượt của chủ sở hữu**: Công +25% (Chân Thân cấp 1) → +40% (cấp 10), giảm 15% sát thương nhận, miễn choáng/đóng băng mới (không giải hiệu ứng đang có); hết hạn giữ +10% Công (thay thế, không cộng dồn); cấp 400 + TH5: 4 lượt, dư âm +15%; **bỏ thưởng Công/HP Chân Thân cũ**; hào quang chỉ của hình thái đã mở; tắt ở Chuẩn Hóa/giao hữu |
+
+### Vòng 5 — soát giao diện (Codex xem ảnh chụp mọi màn điện thoại)
+
+Codex nêu 25 điểm theo màn và 15 sửa đổi ưu tiên; Claude đồng ý. Đã sửa: vùng bấm HUD (+, thư, cài đặt ~44 px);
+tên cho mọi tab thanh đáy; nền mờ của màn phủ phần thừa chiều cao điện thoại; chữ tối thiểu trong các bảng (≈12,5 px);
+nút Triệu Hồi ghi giá (1 vé / 10 vé / Đá Ngọc / "Thiếu 3 vé"); Đấu Trường ghi "Cùng máy", "Kỷ lục thiết bị", "Cục bộ";
+"Bảng Xếp Hạng" đổi thành "Thành Tích" (kỷ lục của bạn); kỹ năng khóa ghi điều kiện mở trên cây ("Cấp 100 · TH2");
+"46/150 sao"; Sân Thử Luyện đưa boss hôm nay lên đầu, lịch các ngày khác, luật thu vào "Cách chơi"; Kho Offline chỉ còn
+tốc độ, thời gian, thưởng, nút có lý do, công thức thu gọn; Sự Kiện ghi "đã nhận x/7" và "Mở sau n ngày"; VIP mỗi gói
+3 quyền lợi chính + "Xem đủ"; Hòm Thư nút ghi lý do; Túi Đồ khóa có chỗ riêng, nút cao hơn; phân giải hàng loạt mặc định
++0, luật nằm trên nút xác nhận; Gặp Gỡ: chữ, bong bóng 3 dòng, ticker nền đặc, cột phải 3 nút + Thêm (hướng dẫn "?"), nút
+"Giao hữu · bản sao AI", bảng tên người đứng gần tự giãn; chấm: xanh "↑" còn hiện khi còn nâng được (Codex đổi ý so với
+vòng 3, Claude đồng ý), thư chưa đọc màu xanh dương, chấm chỉ trên nút điều hướng; VIP nhãn tĩnh "Ưu đãi nạp".
+**Còn lại** (mức trung/thấp): chú giải trạng thái ải trên bản đồ, gọn Lò Rèn/Cửa Hàng/Quán Bia, tách thanh cấp và EXP ở
+màn Tướng, hướng nhìn cho trình đọc màn hình.
