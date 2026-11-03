@@ -134,3 +134,31 @@ console.log('trial ok');
   for(const z of geo.zones.filter(z=>z.id!=='fountain')){let p=[...geo.spawn],side=0;for(let i=0;i<600;i++){const r=S.step(geo,p,[z.x,z.y],.1,side);p=r.pos;side=r.side;if(r.arrived)break;}assert.ok(Math.hypot(p[0]-z.x,p[1]-z.y)<3,'reach '+z.id);}
 }
 console.log('plaza, pass tracks, spar ok');
+{ // Too much gear (Codex round 3): refunds, all-or-nothing bulk salvage, locks, auto-salvage, best gear.
+  assert.deepEqual(M.salvageValue({rarity:'common',level:20}),{ore:3+294,gold:80+132300},'70% of the 189.000 gold / 420 ore +20 cost');
+  assert.deepEqual(M.salvageValue({rarity:'divine',level:0}),{ore:33,gold:880});
+  const {engine:e,edit}=fixture();
+  edit(p=>{for(let i=0;i<8;i++)p.equipment.push({id:'x'+i,slot:i%2?'armor':'weapon',rarity:i<6?'common':'epic',level:i===1?5:0,affix:null});p.equipment[0].locked=true;p.heroes.novice.gear.weapon='x2';});
+  const pv=e.salvagePreview({rarities:['common']});assert.deepEqual(pv.ids.sort(),['x1','x3','x4','x5'],'locked and worn pieces are left out');
+  assert.throws(()=>e.salvageMany(['x1','x0']),/khóa/);assert.equal(e.read().equipment.length,8,'all or nothing');
+  const ore=e.read().materials.ore,got=e.salvageMany(pv.ids);assert.equal(got.ore,pv.ore);assert.equal(e.read().materials.ore,ore+pv.ore);
+  assert.throws(()=>e.salvageMany(pv.ids),/không còn/,'a repeat cannot pay twice');assert.equal(e.read().salvageLog[0].count,4);
+  assert.throws(()=>e.salvage('x0'),/khóa/);e.lockGear('x0',false);e.salvage('x0');
+  // Best gear: the epic weapon replaces the worn common one; another hero's gear is never taken.
+  edit(p=>{p.heroes.fire={...p.heroes.novice,gear:{armor:'x7'}};});
+  const plan=e.bestGear('novice');assert.equal(plan.weapon.to,'x6');assert.equal(plan.armor,undefined,'x7 is worn by Mika');
+  e.equipBest('novice');assert.equal(e.read().heroes.novice.gear.weapon,'x6');assert.throws(()=>e.equipBest('novice'),/tốt nhất/);
+  // Auto-salvage is off until turned on; a drop better than the worn piece is kept.
+  assert.equal(e.read().settings?.autoSalvage?.common,undefined);
+  e.setAutoSalvage('common',true);assert.throws(()=>e.setAutoSalvage('epic',true),/Thường hoặc Tốt/);
+}
+console.log('gear overflow ok');
+{ // Badges: red counts only free rewards to take now; green hints come from the growth map.
+  const {engine:e,edit}=fixture();let n=e.notices();
+  assert.equal(n.claim.quests,1,'the visit quest');assert.equal(n.claim.events,1,'newbie day 1');assert.deepEqual(n.hint.upgrade,[],'a new account cannot pay for anything');
+  e.claimDaily('login');e.claimNewbie(1);n=e.notices();assert.equal(n.claim.quests,0);assert.equal(n.claim.events,0);
+  edit(p=>{p.wallet.gold=1e6;p.materials.exp=1e3;p.materials.seals=1e4;p.fragments.novice=85;});n=e.notices();
+  assert.ok(n.hint.upgrade.some(s=>s.startsWith('novice:level:')));assert.deepEqual(n.hint.inventory,['fuse:novice:1']);
+  assert.ok(!('gems' in n.claim)&&!('vip' in n.claim),'never a red dot for paying');
+}
+console.log('badges ok');

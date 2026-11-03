@@ -29,7 +29,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
 |---|---|---|---|---|
 | B1 | Bấm dùng vật phẩm trong túi thì sao? | Mỗi loại một hành động: rương mở ra (chọn món với rương tự chọn), sách EXP dùng cho tướng đã chọn, mảnh tướng ghép, vé đi triệu hồi, nguyên liệu dẫn tới nơi dùng. | 🔨 | Túi Đồ |
-| B2 | Quá nhiều vũ khí, trang bị cấp thấp thì xử lý thế nào? | Thống nhất với Codex: túi 500 (cảnh báo 450), phân giải hàng loạt có lọc ô/phẩm và xem trước tổng thu hồi, hoàn 70% chi phí cường hóa, khóa món, tự phân giải mặc định tắt, "Mặc tốt nhất"; không dung luyện. | 🔨 | Túi Đồ → Trang Bị |
+| B2 | Quá nhiều vũ khí, trang bị cấp thấp thì xử lý thế nào? | Thống nhất với Codex: túi 500 (cảnh báo 450), phân giải hàng loạt có lọc ô/phẩm và xem trước tổng thu hồi, hoàn 70% chi phí cường hóa, khóa món, tự phân giải mặc định tắt, "Mặc tốt nhất"; không dung luyện. | ✅ | Túi Đồ → Trang Bị (nút Phân giải hàng loạt, Khóa, Phân rã) · Tướng → ô đồ (Mặc tốt nhất) |
 | B3 | Cái gì bán ở cửa hàng, cái gì không? | Bảng đầy đủ. Không bán tướng trực tiếp và Mảnh Hiro; bán nguyên liệu, rương, vé theo giới hạn. | ✅ bảng · 🔨 cửa hàng theo bảng | §8 |
 | B4 | Cái gì cần triệu hồi, mở rộng cho sự kiện | Tướng hiếm qua banner 2 tuần; vũ khí bản mệnh banner riêng; cửa hàng đổi mảnh; mẫu sự kiện cho Studio. | ✅ tỉ lệ 1%/100 · 📐 banner | §9 |
 
@@ -42,8 +42,8 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | C3 | Thẻ tháng có lợi ích gì? | 109k: 300 Ngọc ngay + 100/ngày, offline +2 giờ, +1 lượt boss có thưởng, quét ải. | ✅ | Home → Thẻ Tháng |
 | C4 | Có nên mở speed pass? | Quỹ Trưởng Thành 299k: 7.000 Ngọc theo mốc cấp. | ✅ | VIP & Nạp |
 | C5 | Mua vé tháng, cày đủ mốc nhận thêm? | Sổ Hành Trình 50 cấp. Chủ dự án duyệt giá 03/11; **bỏ Thẻ Trọn Đời**; thêm **nhánh Diệu Ngọc 299k** nhận đồ xịn hơn (mảnh tướng tự chọn, rương Sử Thi/Huyền Thoại, khung mùa, +10 cấp). | ✅ cấu hình + bảng 3 nhánh (Sắp ra mắt); Codex đồng ý có điều kiện, đã áp (không Mảnh Hiro, cổng ải 60/80, +10 cấp tính vào giới hạn) | VIP & Nạp → Sổ Hành Trình |
-| C6 | Sự kiện nạp có thưởng đặc biệt cần hiệu ứng quanh biểu tượng | Thống nhất với Codex: viền sáng 2 nhịp khi vào hub rồi đứng yên, tắt được theo cài đặt giảm hiệu ứng, không chấm đỏ vì "có thể nạp". | 🔨 | Home |
-| C7 | Chấm đỏ cho chỗ nhận quà ngay | Thống nhất với Codex: đỏ = quà nhận ngay, miễn phí; xanh lá = gợi ý nâng được (tắt được); xanh dương = số thư/lời mời; lan lên nút cha, không đếm trùng. | 🔨 | Toàn hub |
+| C6 | Sự kiện nạp có thưởng đặc biệt cần hiệu ứng quanh biểu tượng | Thống nhất với Codex: viền sáng 2 nhịp khi vào hub rồi đứng yên, tắt được theo cài đặt giảm hiệu ứng, không chấm đỏ vì "có thể nạp". Sự kiện mẫu "Nạp Đầu ×2" (Sắp ra mắt). | ✅ | Home → VIP |
+| C7 | Chấm đỏ cho chỗ nhận quà ngay | Thống nhất với Codex: đỏ = quà nhận ngay, miễn phí; xanh lá = gợi ý nâng được (tắt được); xanh dương = số thư/lời mời; lan lên nút cha (Thêm cộng các màn phía sau), gợi ý đã xem thì ẩn tới khi đổi, tắt được ở Cài Đặt. | ✅ | Toàn hub |
 
 ## D. Sự kiện và nhịp chơi
 

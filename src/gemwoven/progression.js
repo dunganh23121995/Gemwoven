@@ -287,7 +287,30 @@
   const CRAFT_RARITIES=['uncommon','rare','epic','legendary','divine'];
   function craftGate(rarity){const rank=CRAFT_RARITIES.indexOf(rarity)+1;check(rank>0,'Công thức không hợp lệ.');return rarity==='divine'?300:rank*20;}
   function craftCost(rarity){const rank=CRAFT_RARITIES.indexOf(rarity)+1;check(rank>0,'Công thức không hợp lệ.');const cost={gold:rank*rank*8000,ore:rank*25,wood:rank*15,cloth:rank*15,essence:rank*10};if(rarity==='divine')cost.divineOre=50;return cost;}
-  function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc không tồn tại.');return {gold:(g.level+1)*900,ore:(g.level+1)*2};}
+  // Too much gear (docs/GAME_DESIGN.md §3, Codex round 3): the bag holds 500 (warning at 450). Salvage gives the
+// rarity's ore and gold back plus 70% of what strengthening actually cost; locked, worn and signature gear is
+// never salvaged. Auto-salvage on drops is off by default and keeps anything better than the selected hero wears.
+const BAG={cap:500,warn:450},SALVAGE_REFUND=.7;
+function strengthenPaid(level){const n=(level|0)*((level|0)+1)/2;return {gold:900*n,ore:2*n};}
+function salvageValue(g){const f=RARITIES[g.rarity].factor,paid=strengthenPaid(g.level);return {ore:Math.ceil(f*3)+Math.floor(paid.ore*SALVAGE_REFUND),gold:Math.ceil(f*80)+Math.floor(paid.gold*SALVAGE_REFUND)};}
+function wornBy(p,gearId){return Object.keys(p.heroes).find(k=>Object.values(p.heroes[k].gear).includes(gearId))||null;}
+function salvageable(p,g){return !!g&&!g.locked&&!g.signature&&!wornBy(p,g.id);}
+function salvagePreview(p,{slots=null,rarities=['common','uncommon'],maxLevel=20}={}){
+  const list=p.equipment.filter(g=>salvageable(p,g)&&(!slots||slots.includes(g.slot))&&rarities.includes(g.rarity)&&g.level<=maxLevel);
+  const total=list.reduce((t,g)=>{const v=salvageValue(g);t.ore+=v.ore;t.gold+=v.gold;return t;},{ore:0,gold:0});
+  return {ids:list.map(g=>g.id),count:list.length,...total};
+}
+// How much a piece adds where it is worn (the same rule as statParts' gear step).
+function gearScore(g,goal='attack'){const f=RARITIES[g.rarity].factor*(1+g.level*.08),attackAffix=['stun','lifesteal','pierce'].includes(g.affix),surviveAffix=['steadfast','ward'].includes(g.affix);
+  return f*(g.affix?(goal==='attack'?(attackAffix?1.25:1.1):(surviveAffix?1.25:1.1)):1);}
+// "Mặc tốt nhất": per slot the best piece among the hero's own and unworn gear (never another hero's).
+function bestGear(p,key,goal='attack'){const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const out={};
+  for(const slot of Object.keys(SLOTS)){const own=h.gear[slot]&&p.equipment.find(g=>g.id===h.gear[slot]);
+    const pool=p.equipment.filter(g=>g.slot===slot&&(g.id===own?.id||!wornBy(p,g.id)));let best=own||null;
+    for(const g of pool)if(!best||gearScore(g,goal)>gearScore(best,goal)+1e-9)best=g;
+    if(best&&best.id!==own?.id)out[slot]={from:own?.id||null,to:best.id};}
+  return out;}
+function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc không tồn tại.');return {gold:(g.level+1)*900,ore:(g.level+1)*2};}
   // What one upgrade step gives, for the hub preview. Never mutates the save.
   function upgradePreview(p,key,kind,count=1){
     const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const next=clone(p),n=next.heroes[key];let unlock='';
@@ -459,7 +482,12 @@
     function note(p,message){p.log.unshift({at:now(),message});p.log=p.log.slice(0,60);}
     function id(){return `${now().toString(36)}-${load().revision.toString(36)}-${(++sequence).toString(36)}-${Math.floor(random()*1e12).toString(36)}`;}
     function addHero(p,key){if(p.heroes[key])p.heroes[key].copies++;else p.heroes[key]=heroSave();}
-    function gear(p,rarity,slot){check(p.equipment.length<500,'Túi trang bị đã đầy (500). Hãy phân rã trước.');const slots=Object.keys(SLOTS);slot=slot||slots[Math.floor(random()*slots.length)];const options=slot==='weapon'?['stun','lifesteal','pierce']:['steadfast','ward'];const g={id:id(),slot,rarity,level:0,affix:rarity==='divine'?options[Math.floor(random()*options.length)]:null};p.equipment.push(g);return g;}
+    // A dropped piece (summon) the player chose to auto-salvage is turned into ore at once, unless it is better
+    // than what the selected hero wears in that slot (or the slot is empty).
+    function dropGear(p,rarity,slot){const g=gear(p,rarity,slot);if(!p.settings?.autoSalvage?.[rarity])return g;
+      const h=p.heroes[p.selected],worn=h?.gear[g.slot]&&p.equipment.find(x=>x.id===h.gear[g.slot]);if(!worn||gearScore(g)>gearScore(worn))return g;
+      const v=salvageValue(g);p.equipment=p.equipment.filter(x=>x!==g);grant(p,v);return {...g,autoSalvaged:v};}
+    function gear(p,rarity,slot){check(p.equipment.length<BAG.cap,'Túi trang bị đã đầy (500). Hãy phân rã trước.');const slots=Object.keys(SLOTS);slot=slot||slots[Math.floor(random()*slots.length)];const options=slot==='weapon'?['stun','lifesteal','pierce']:['steadfast','ward'];const g={id:id(),slot,rarity,level:0,affix:rarity==='divine'?options[Math.floor(random()*options.length)]:null};p.equipment.push(g);return g;}
     const api={read,stats:(key,normal=false)=>stats(read(),key,normal),offline:()=>{const p=read(),r=offline(p,current);return p.clock.behind?{...r,gold:0,exp:0,seals:0,behind:true}:r;},clock:()=>({...read().clock}),dailyReward:quest=>dailyRewardPreview(read(),quest),select:key=>tx(p=>{check(p.heroes[key],'Bạn chưa sở hữu tướng này.');p.selected=key;}),
       summonQuote:count=>summonQuote(read(),count),
       claimChapter:(chapter,milestone)=>tx(p=>{const progress=chapterProgress(p,chapter),reward=chapterReward(chapter,milestone);check(progress.total>=milestone,'Chưa đủ sao của chương này.');const key=`world2:${chapter}:${milestone}`;check(!p.campaign.claimedStars.includes(key),'Mốc sao này đã nhận.');const actual=grant(p,reward);p.campaign.claimedStars.push(key);const hiro=HIRO_FRAGMENTS.chest[milestone]||0;if(hiro){p.fragments.novice=(p.fragments.novice||0)+hiro;actual.noviceFragments=hiro;}note(p,`Nhận thưởng chương ${chapter} · ${milestone} sao`);return actual;}),
@@ -494,7 +522,7 @@
             p.summon.dry=0;result={kind,hero,form,rarity:'legendary',name:HERO_FORMS[hero]?.[form-1]?.name||HEROES[hero].name,test:true};}
           else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
           else if(kind==='fragments'){const count=2+Math.floor(random()*4);p.fragments[key]=(p.fragments[key]||0)+count;p.summon.fragmentDry=0;result={kind,hero:key,count,rarity:'rare',name:`${count} mảnh ${HEROES[key].name}`};}
-          else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=gear(p,rarity,forced?'weapon':undefined);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name};}
+          else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=dropGear(p,rarity,forced?'weapon':undefined);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name+(g.autoSalvaged?` (tự phân giải: +${g.autoSalvaged.ore} quặng)`:'')};}
           else{const resource=['exp','ore','wood','cloth'][Math.floor(random()*4)],count=resource==='exp'?5:8;grant(p,{[resource]:count});result={kind:'material',resource,count,rarity:'common',name:`${RESOURCES[resource][0]} ×${count}`};}
           results.push(result);
         }
@@ -520,11 +548,33 @@
       strengthen:gearId=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);spend(p,strengthenCost(g));g.level++;}),
       trainRelic:key=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const r=h.relic;check(r.level<r.evolution*20,'Tiến hóa bảo bối để mở giới hạn cấp mới.');spend(p,relicLevelCost(r));r.level++;note(p,`${RELICS[key]} đạt cấp ${r.level}`);}),
       evolveRelic:key=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const r=h.relic,c=relicEvolveCost(r);check(r.level>=r.evolution*20,'Cần đạt giới hạn cấp của dạng hiện tại.');check(h.level>=r.evolution*50,`Cần tướng cấp ${r.evolution*50}.`);spend(p,c);r.evolution++;note(p,`${RELICS[key]} tiến hóa dạng ${r.evolution}`);}),
-      salvage:gearId=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');check(!Object.values(p.heroes).some(h=>Object.values(h.gear).includes(gearId)),'Tháo trang bị trước khi phân rã.');p.equipment=p.equipment.filter(g=>g.id!==gearId);return grant(p,{ore:Math.ceil(RARITIES[g.rarity].factor*3),gold:Math.ceil(RARITIES[g.rarity].factor*80)});}),
+      salvage:gearId=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');check(!wornBy(p,gearId),'Tháo trang bị trước khi phân rã.');check(!g.locked,'Trang bị đang khóa.');check(!g.signature,'Vũ khí bản mệnh không phân rã được.');
+        const v=salvageValue(g);p.equipment=p.equipment.filter(x=>x.id!==gearId);(p.salvageLog??=[]).unshift({at:now(),count:1,...v});p.salvageLog=p.salvageLog.slice(0,30);return grant(p,v);}),
+      // All or nothing: every piece must still be salvageable; ids are removed in the same transaction, so a repeat cannot pay twice.
+      salvageMany:ids=>tx(p=>{check(Array.isArray(ids)&&ids.length>=1&&ids.length<=BAG.cap,'Danh sách trang bị không hợp lệ.');const set=new Set(ids),list=p.equipment.filter(g=>set.has(g.id));
+        check(list.length===set.size,'Có trang bị không còn trong túi.');for(const g of list)check(salvageable(p,g),'Có trang bị đang mặc, đang khóa hoặc là vũ khí bản mệnh.');
+        const total=list.reduce((t,g)=>{const v=salvageValue(g);t.ore+=v.ore;t.gold+=v.gold;return t;},{ore:0,gold:0});
+        p.equipment=p.equipment.filter(g=>!set.has(g.id));(p.salvageLog??=[]).unshift({at:now(),count:list.length,...total});p.salvageLog=p.salvageLog.slice(0,30);note(p,`Phân rã ${list.length} trang bị`);return grant(p,total);}),
+      salvagePreview:filter=>salvagePreview(read(),filter),
+      lockGear:(gearId,on=true)=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');if(on)g.locked=true;else delete g.locked;return {locked:!!g.locked};}),
+      setAutoSalvage:(rarity,on)=>tx(p=>{check(['common','uncommon'].includes(rarity),'Chỉ tự phân giải đồ Thường hoặc Tốt.');p.settings??={};p.settings.autoSalvage??={};p.settings.autoSalvage[rarity]=!!on;return {...p.settings.autoSalvage};}),
+      bestGear:(key,goal='attack')=>bestGear(read(),key,goal),
+      equipBest:(key,goal='attack')=>tx(p=>{const plan=bestGear(p,key,goal),h=p.heroes[key];check(Object.keys(plan).length,'Tướng đã mặc đồ tốt nhất có thể.');for(const [slot,{to}] of Object.entries(plan))h.gear[slot]=to;note(p,`${HEROES[key].name} mặc đồ tốt nhất (${Object.keys(plan).length} món)`);return {changed:Object.keys(plan).length};}),
       unequip:(key,slot)=>tx(p=>{check(p.heroes[key]&&slot in SLOTS,'Ô trang bị không hợp lệ.');delete p.heroes[key].gear[slot];}),
       saveEvent:draft=>tx(p=>{const e=normalizeEvent(draft);const i=p.events.findIndex(x=>x.id===e.id);if(i>=0)p.events[i]=e;else{check(p.events.length<100,'Tối đa 100 sự kiện.');p.events.push(e);}return e;}),
       removeEvent:eventId=>tx(p=>{p.events=p.events.filter(e=>e.id!==eventId);}),
       // Mailbox, newest first. Claims are atomic: one failed grant leaves every mail unchanged.
+      // Badges (docs/GAME_DESIGN.md §20 round 3): `claim` counts rewards to take now for free (red); `hint` lists
+      // what can be raised now (green, the UI hides those already seen until they change); `count` is unread mail (blue).
+      notices:()=>{const p=read();daily(p);const at=current,claim={},hint={};
+        claim.quests=DAILY.filter(q=>!p.daily.claimed.includes(q.id)&&(p.daily.progress[q.id]||0)>=q.target).length;
+        claim.events=newbieState(p,at).filter(r=>r.open&&!r.claimed).length+WEEKLY.filter(q=>!p.weekly.claimed.includes(q.id)&&(p.weekly.progress[q.id]||0)>=q.target).length;
+        claim.offline=offline(p,at).hours>=1?1:0;
+        let chests=0;for(let c=1;c<=Math.min(WORLD.CHAPTERS.length,Math.floor(p.campaign.cleared/50)+1);c++){const pr=chapterProgress(p,c);chests+=STAR_MILESTONES.filter(m=>pr.total>=m&&!pr.claimed.includes(m)).length;}claim.campaign=chests;
+        const live=p.mail.filter(m=>mailLive(m,at));claim.mail=live.filter(m=>mailPending(m)).length;
+        hint.upgrade=[];hint.skills=[];for(const key of Object.keys(p.heroes)){for(const r of growthMap(p,key))if(r.state==='ready'){const sig=`${key}:${r.id}:${r.current}`;(r.id.startsWith('skill')?hint.skills:hint.upgrade).push(sig);}}
+        hint.inventory=Object.entries(p.fragments).filter(([k,n])=>n>=80&&HEROES[k]).map(([k,n])=>`fuse:${k}:${Math.floor(n/80)}`);
+        return {claim,hint,count:{mail:live.filter(m=>!m.read).length}};},
       mailbox:()=>{const p=read(),at=current,mails=p.mail.filter(m=>mailLive(m,at)).sort((a,b)=>b.sentAt-a.sentAt||(a.id<b.id?1:-1)).map(m=>({...m,gift:m.attachments.length>0,pending:mailPending(m)}));
         return {now:at,mails,unread:mails.filter(m=>!m.read).length,pending:mails.filter(m=>m.pending).length,deletable:mails.filter(m=>m.read&&!m.pending).length,limit:MAIL_LIMIT};},
       readMail:mailId=>tx(p=>{const m=findMail(p,mailId);m.read=true;return clone(m);}),
@@ -563,5 +613,5 @@
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });

@@ -78,5 +78,9 @@
     {id:'season-gold',name:'Kiếm Khách Hoàng Kim',source:'Mùa Đấu Hạng · bậc Vàng',paid:false},
     {id:'champion',name:'Thư Hùng Vô Địch',source:'Vô địch Thư Hùng Đại Hội (tên riêng theo khuôn, qua kiểm duyệt)',paid:false},
     {id:'patron',name:'Đại Phú Hộ',source:'VIP 11',paid:true}];
-  return {STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  // Top-up events with a special reward: their hub icon rings twice when the hub opens, then stays still (Codex
+  // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
+  const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
+    desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
+  return {TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

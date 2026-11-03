@@ -50,7 +50,7 @@
     const rows=Object.entries(M.RESOURCES).map(([id,[name,asset]])=>{resourceFor[asset]=id;return [asset,name,fmt(owned(p,id)),['exp','skillBooks'].includes(id)?'book':['ore','wood','cloth','essence','divineOre','seals'].includes(id)?'material':id==='tickets'?'other':'item',descriptions[id]];});
     for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;if(!A[asset]?.fragmentArt)A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro để tăng sao. Hiro không có trong triệu hồi: mảnh đến từ Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương và mỗi 10 tầng Boss Vô Hạn.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
     refreshSkillCopy(p);
-    for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'1','gear',M.RARITIES[gear.rarity].name+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')]);}
+    for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;const sv=M.salvageValue(gear);rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'+'+gear.level,'gear',M.RARITIES[gear.rarity].name+(gear.locked?' · đang khóa':'')+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')+` · phân rã ${fmt(sv.ore)} quặng, ${fmt(sv.gold)} vàng`]);}
     for(const d of M.WORLD.EXPANSION.definitions){const c=M.counterProgress(p,d.chapter);if(c.shards)rows.push([d.counterKey,d.counter,c.shards+'/12','other',d.counterText+' Tự dùng đúng chủ đề; bậc '+c.rank+'/4.']);}
     inventory.splice(0,inventory.length,...rows);
     if(state.screen==='inventory'){
@@ -107,6 +107,14 @@
     // The item's action and "buy more" sit side by side under the held count.
     const act=find(nodes,'item-action');Object.assign(act,{rect:product?[552,1384,162,86]:[670,1384,196,86],size:27,labelRect:[22,0,(product?162:196)-44,86]});
     if(product)nodes.push(button('inventory','purchase','Mua thêm',[716,1384,162,86],'art:shop-product',{product:product.id},{size:27,labelRect:[16,0,130,86]}));
+    // A piece of gear: its salvage value beside "Trang Bị", and a lock so it is never salvaged by mistake.
+    if(item[3]==='gear'){const g=gearFor[asset],worn=Object.values(p.heroes).some(h=>Object.values(h.gear).includes(g.id));
+      Object.assign(act,{rect:[552,1384,162,86],labelRect:[16,0,130,86]});
+      nodes.push(button('inventory','salvage',worn?'Đang mặc':g.locked?'Đang khóa':'Phân rã',[716,1384,162,86],'do:salvage',{id:g.id},{size:27,labelRect:[16,0,130,86],disabled:worn||!!g.locked}));
+      nodes.push(button('inventory','lock',g.locked?'🔒 Đã khóa':'🔓 Khóa',[600,1162,150,50],'gear:lock',{id:g.id,on:g.locked?'0':'1'},{size:21,labelRect:[8,0,134,50],asset:'button-blue'}));label(nodes,'held-label','Cường hóa');}
+    // The gear tab: bag fill and bulk salvage.
+    if(state.category==='gear'){const full=p.equipment.length>=M.BAG.warn;
+      nodes.push(button('inventory','bulk-salvage',`Phân giải hàng loạt · ${p.equipment.length}/${M.BAG.cap}`,[232,418,372,74],'gear:bulk',{},{size:24,labelRect:[18,0,336,74],className:full?'bag-full':''}));}
     return nodes;
   }
   function summon(nodes,p,state){
