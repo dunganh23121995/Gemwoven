@@ -112,6 +112,8 @@
     if(asset==='memory-voucher'){action(nodes,'item-action','memory:chest');label(nodes,'item-action','Dùng');label(nodes,'source','Lịch 28 ngày\nSự Kiện');}
     const counterDef=M.WORLD.EXPANSION.definitions.find(d=>d.counterKey===asset);
     if(counterDef){action(nodes,'item-action','guide:chapter',{chapter:counterDef.chapter});label(nodes,'item-action','Đến Chương');label(nodes,'source','Tinh anh 3 sao\nMốc 10 / 20 / 30 / 40');}
+    // Currencies need no explanation (owner 04/11): gold is bought with Đá Ngọc in the shop, Đá Ngọc is topped up.
+    if(asset==='coins'||asset==='mana'){action(nodes,'item-action','topup:more',{resource:asset==='coins'?'gold':'gems'});label(nodes,'item-action',asset==='coins'?'Mua thêm':'Nạp');nodes=remove(nodes,/\.item-description-/);}
     // The item's action and "buy more" sit side by side under the held count.
     const act=find(nodes,'item-action');Object.assign(act,{rect:product?[552,1384,162,86]:[670,1384,196,86],size:27,labelRect:[22,0,(product?162:196)-44,86]});
     if(product)nodes.push(button('inventory','purchase','Mua thêm',[716,1384,162,86],'art:shop-product',{product:product.id},{size:27,labelRect:[16,0,130,86]}));

@@ -121,6 +121,9 @@
     if(cmd==='open'){ctx.navigate('topup');return true;}
     if(cmd==='entry'){state.vipTab=d.tab;ctx.navigate('vip');return true;}
     if(cmd==='vip'){state.vipTab=state.vipTab||'pass';ctx.navigate('vip');return true;}
+    // "Mua thêm" from the bag's detail panel: the same destination as the resource popup's button.
+    if(cmd==='more'){const buy=offer(d.resource);if(!buy)return true;if(buy.topup){ctx.navigate('topup');return true;}
+      state.shopTab=buy.tab;state.shopProduct=buy.product;state.shopPick=buy.product;state.shopBack=true;state.quantity=1;state.shopMessage='';ctx.navigate('shop');return true;}
     if(cmd==='buy')packSheet(d.pack);
     if(cmd==='soon')ctx.showModal('Nạp · Sắp ra mắt',[],'Thanh toán mở cùng máy chủ. Hiện chưa thu tiền, chưa nhận Đá Ngọc, chưa tính VIP; ưu đãi Lần đầu ×2 vẫn còn nguyên.');
     return true;
