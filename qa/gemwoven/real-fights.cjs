@@ -11,6 +11,8 @@ const {chromium}=require(path.join(__dirname,'runtime/node_modules/playwright'))
 const M=require('../../src/gemwoven/progression.js');
 const BASE=process.env.GW_URL||'http://127.0.0.1:8080/';
 const arg=(name,fallback)=>{const i=process.argv.indexOf(name);return i>0?process.argv[i+1]:fallback;};
+// --variants base,p2,p1 runs each job under every variant, interleaved (Codex round 8).
+const VARIANTS={base:{},p2:{hiroSword:1.3},p1:{hiroSword:1.3,normalHp:.9}};
 const FIGHTS=Number(process.argv[2])||20,PAGES=Number(arg('--pages',3)),ONLY=arg('--only',null);
 // Same heroes as balance-sim.cjs (heroAt / typical / bare).
 function heroSave(key,level,stars,{bare=false}={}){
@@ -27,8 +29,9 @@ const CASES=[
 // --stages 12,37,63 picks any stages (ordinary ones included); --stage keeps one of the defaults.
 const STAGES=(arg('--stages',null)?arg('--stages').split(',').map(n=>[`Ải ${n}`,Number(n)]):[['Ch1 ải 50 (boss)',50],['Ch2 ải 100 (boss)',100],['Ch2 ải 75',75]]).filter(([,i])=>!arg('--stage',null)||String(i)===arg('--stage',null));
 const MULTS=(arg('--mult','1,1.5')).split(',').map(Number);
-async function oneFight(page,save,index){
-  await page.goto(BASE+'Game.html?qa',{waitUntil:'load'});
+async function oneFight(page,save,index,variant){
+  const q=variant&&variant!=='base'?'&gwv='+variant:'';
+  await page.goto(BASE+'Game.html?qa'+q,{waitUntil:'load'});
   const token=await page.evaluate(({save,index})=>{
     const M=window.GemwovenProgression,KEY='gemwoven.progression.v1';
     localStorage.removeItem(KEY);const e=M.makeEngine(localStorage);e.read();
@@ -38,7 +41,7 @@ async function oneFight(page,save,index){
     localStorage.setItem(KEY,JSON.stringify(p));
     return M.makeEngine(localStorage).begin('campaign',index).token;
   },{save,index});
-  await page.goto(BASE+'Game.html?qa&encounter='+encodeURIComponent(token),{waitUntil:'load'});
+  await page.goto(BASE+'Game.html?qa'+q+'&encounter='+encodeURIComponent(token),{waitUntil:'load'});
   await page.waitForFunction(()=>window.gameQA&&document.getElementById('startBtn'),null,{timeout:30000});
   await page.evaluate(()=>{window.gameQA.setReduced(true);});
   await page.waitForTimeout(300);
@@ -67,6 +70,7 @@ async function oneFight(page,save,index){
   const browser=await chromium.launch({channel:'msedge'}),jobs=[],cache=new Map();
   async function contextWithCache(){
     const context=await browser.newContext({viewport:{width:1100,height:800}});
+    await context.addInitScript(V=>{const v=new URLSearchParams(location.search).get('gwv');if(v&&V[v])globalThis.GW_VARIANT=V[v];},VARIANTS);
     await context.route(/\/(assets|src)\/|\.(js|css|webp|png|ogg|wav|mp3|json|woff2)(\?|$)/,async route=>{
       const url=route.request().url();
       if(!cache.has(url))cache.set(url,(async()=>{const r=await route.fetch();return {status:r.status(),headers:r.headers(),body:await r.body()};})());
@@ -77,21 +81,22 @@ async function oneFight(page,save,index){
   for(const [stage,index] of STAGES)for(const [label,key,stars,opt] of CASES){
     if(ONLY&&!label.includes(ONLY))continue;
     const rec=M.encounter('campaign',index).recommended;
-    for(const mult of MULTS)for(let i=0;i<FIGHTS;i++)jobs.push({stage,index,label,level:Math.round(rec*mult),save:heroSave(key,Math.round(rec*mult),stars,opt)});
+    for(const mult of MULTS)for(let i=0;i<FIGHTS;i++)for(const variant of (arg('--variants','base')).split(','))jobs.push({stage,index,label,variant,level:Math.round(rec*mult),save:heroSave(key,Math.round(rec*mult),stars,opt)});
   }
   const results=[];let next=0;
   await Promise.all(Array.from({length:PAGES},async()=>{
     const context=await contextWithCache(),page=await context.newPage();
     while(next<jobs.length){const job=jobs[next++];let last=null;
-      for(let attempt=0;attempt<3;attempt++){try{results.push({...job,save:undefined,...await oneFight(page,job.save,job.index)});last=null;break;}catch(e){last=e;await page.waitForTimeout(2000);}}
+      for(let attempt=0;attempt<3;attempt++){try{results.push({...job,save:undefined,...await oneFight(page,job.save,job.index,job.variant)});last=null;break;}catch(e){last=e;await page.waitForTimeout(2000);}}
       if(last)results.push({...job,save:undefined,error:String(last.message).slice(0,120)});
       if(results.length%10===0)console.error(`${results.length}/${jobs.length}`);}
     await context.close();
   }));
   await browser.close();
   // Wins, losses and time-outs apart (Codex round 6); fight length is the player's moves: median and P90 over wins.
-  const groups={};for(const r of results){const g=groups[r.stage+'|'+r.label+'|'+r.level]??={stage:r.stage,hero:r.label,level:r.level,n:0,won:0,timeouts:0,moves:[],errors:0};
-    if(r.error){g.errors++;continue;}if(r.timedOut){g.timeouts++;continue;}g.n++;if(r.won){g.won++;g.moves.push(r.moves);}}
+  const groups={};for(const r of results){const g=groups[r.stage+'|'+r.label+'|'+r.level+'|'+(r.variant||'base')]??={stage:r.stage,hero:r.label+(r.variant&&r.variant!=='base'?' '+r.variant:''),level:r.level,n:0,won:0,timeouts:0,moves:[],errors:0};
+    // Time-outs count as started fights that were not won (Codex round 8); technical errors are rerun apart.
+    if(r.error){g.errors++;continue;}g.n++;if(r.timedOut){g.timeouts++;continue;}if(r.won){g.won++;g.moves.push(r.moves);}}
   const q=(a,f)=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.min(s.length-1,Math.floor(f*s.length))];};
   const rows=Object.values(groups).map(g=>({stage:g.stage,hero:g.hero,level:g.level,n:g.n,won:g.won,timeouts:g.timeouts,errors:g.errors,win:g.n?Math.round(g.won/g.n*100):null,median:q(g.moves,.5),p90:q(g.moves,.9)}));
   const out=arg('--json',null);if(out)fs.writeFileSync(out,JSON.stringify({fights:FIGHTS,rows,results},null,1));

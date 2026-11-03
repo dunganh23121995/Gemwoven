@@ -679,3 +679,12 @@ Luyện = ảnh boss có dấu ✓; Gặp Gỡ "Thêm" dùng biểu tượng lư
 
 Giảm 20% đồng loạt chưa đủ cho Hiro (P90 vẫn 18–20) và làm Mika dưới 8 nước. **Chưa áp** — chờ Claude và Codex chốt
 (vòng 8). `NORMAL_HP` trong `progression.js` vẫn là 1.
+
+### Vòng 8 (độ dài trận quái thường) — đã thống nhất cách đo
+
+Codex chọn đo **P2** (kiếm Hiro ×1,3 chỉ PvE) và **P1** (P2 + quái thường −10% HP) cùng đối chứng, 80 trận/ô xen kẽ; **không**
+nới mục tiêu cho Hiro (P3). Tiêu chí nghiệm thu từng ô (chưa ngọc, cấp/đồ gợi ý): Hiro 1★ quái thường trung vị 8–12, P90 ≤ 16,
+thắng ≥ 95%; Mika 1★ quái thường trung vị ≥ 4 (ải 12) / ≥ 6 (từ ải 37), ≤ 12, P90 ≤ 16, thắng ≥ 95%; Hiro 1★ boss chương 1
+thắng 50–70%, boss chương 2 45–55% (cận trên KTC ≤ 60%); Mika 1★ boss không giảm quá 5 điểm, nước thắng không tăng quá 10%.
+Trận hết giờ tính vào mẫu. Đã làm: kiếm Hiro tách thành `pveSword` (chỉ ải, boss vô hạn, Thử Luyện; 1vs1, giao hữu, PvP luôn ×1);
+bot nhận phương án qua `?gwv=` (chỉ QA).

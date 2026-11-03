@@ -43,7 +43,7 @@ function fight(hero,enc,seed,{skill=.8}={}){
     let waves=resolve(b,pick('hero'),rand),chain=0;
     for(const w of waves){
       chain=w[SWORD]?chain+1:0;
-      if(w[SWORD]){const crit=chain>=3&&chain%3===0?1.5:1;hitFoe(w[SWORD]*8*kit.sword*kit.attackScale*s.attack*(1+Math.min(6,chain-1)*.15)*crit);}
+      if(w[SWORD]){const crit=chain>=3&&chain%3===0?1.5:1;hitFoe(w[SWORD]*8*kit.sword*(kit.pveSword||1)*kit.attackScale*s.attack*(1+Math.min(6,chain-1)*.15)*crit);}
       if(w[HEART])heal(w[HEART]*Math.max(Math.round(6*Math.max(1,Math.sqrt(s.attack))),Math.round(st.max*.012)));
       if(w[SHIELD])st.armor=Math.min(heroCap,st.armor+w[SHIELD]*Math.max(kit.shieldGem,Math.round(st.max*.015*kit.shieldGem/4)));
       st.energy=Math.min(199,st.energy+(w[SWORD]*7+w[HEART]*2+w[CRYSTAL]*5+w[SNOW]*2+w[SHIELD]*2)*kit.energy);

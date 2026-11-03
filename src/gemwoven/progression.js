@@ -172,7 +172,7 @@
       transform:awaken&&!normalized?{turns:save.level>=400&&evolution>=5?4:3,attack:round(.25+(awaken-1)*.15/9),reduce:.15,after:save.level>=400&&evolution>=5?.15:.1}:null};
     // Hiro's traveller's edge: sword gems +20% (balance-sim: geared Hiro wins about half of chapter bosses at the
     // recommended level). Normalized play (local PvP, practice) keeps both sides even.
-    if(key==='novice'){if(!normalized)kit.sword=1.2;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
+    if(key==='novice'){if(!normalized)kit.pveSword=QA_VARIANT.hiroSword||1.2;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
     if(key==='fire'){kit.sword=1.6;kit.attackBonus=round(.025*passive);if(mutation||form===3)kit.burn={base:round(8*(1+.1*mutation),2),turns:(mutation>=10?4:mutation>=5?3:2)+(form===3?1:0)};}
     if(key==='ice'){kit.shieldGem=8;kit.damageReduction=.2;kit.defenseBonus=round(.008*passive);kit.armor=Math.round((base.armor+3*(active-1))*(form===3?1.6:1));kit.enemyDrain=form===3?25:0;kit.mutationArmor=mutation?round(.06+.005*(mutation-1)):0;}
     if(key==='earth'){kit.attackScale=.75;kit.hpBonus=round(.015*passive);kit.heal=Math.round((base.heal+5*(active-1))*formPower*bonus.power);kit.burst=round(base.burst+.1*(active-1)+(form===3?.5:0),2);kit.stun=base.stun;kit.regenTurns=base.regen+(form===3?1:0);kit.mutationArmor=mutation?round(.04+.005*(mutation-1)):0;}
@@ -417,7 +417,8 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       skills:[data.ultimate||'Tuyệt kỹ'],skillSet:[],eliteUlt:false,tactical:false,variant:0,name:SPAR_LABEL,opponent:{hero,name,look:Math.max(1,Math.min(3,Math.round(Number(opponent?.look)||1)))}};
   }
   // Ordinary foes' HP share (Codex round 6: test −20% if fights run past 8–12 moves; measured with the real-fight bot).
-  const NORMAL_HP=1;
+  const QA_VARIANT=(typeof globalThis!=='undefined'&&globalThis.GW_VARIANT)||{};
+  const NORMAL_HP=QA_VARIANT.normalHp||1;
   function encounter(mode,index){
     if(mode==='trial')return trialEncounter(index);
     check(['campaign','boss','duel'].includes(mode),'Chế độ chưa phát hành.');check(int(index,1,mode==='campaign'?WORLD.MAX_STAGES:1000000),'Ải không hợp lệ.');

@@ -86,7 +86,8 @@ applyCombatDamage=function(target,n){
   return result;
 };
 function progressionEnergyMultiplier(key){return progressionKit(key).energy*(typeof foeHas==='function'&&foeHas('chill')?1-foeStatuses.chill.value:1);}
-function progressionSwordFactor(key){return progressionKit(key).sword;}
+// A kit's PvE-only sword edge (Hiro) counts in campaign, endless and trial fights, never in duels, spars or PvP.
+function progressionSwordFactor(key){const kit=progressionKit(key);return kit.sword*(['campaign','boss','trial'].includes(progressionBattle?.mode)&&kit.pveSword?kit.pveSword:1);}
 if(progressionBattle)HEROES[progressionBattle.hero].hp=progressionBattle.stats.hp;
 
 const progressionOriginalVoices=combatVoice;
