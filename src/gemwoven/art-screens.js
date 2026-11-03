@@ -64,8 +64,9 @@
   const rebuild=window.GEMWOVEN_REBUILD;
   window.GEMWOVEN_REBUILD=state=>{prepare(state);rebuild(state);};
   function skills(nodes,p,state){
-    const key='skills',hero=state.hero,h=p.heroes[hero],i=state.skill||0,filter=state.skillFilter??'all',t=M.skillText(hero,h,i);
-    nodes=remove(nodes,/\.skill-materials-/);
+    // The skill map alone (owner 03/11): no branch filters and no 'Cây kỹ năng' button; every node stays on the tree.
+    const key='skills',hero=state.hero,h=p.heroes[hero],i=state.skill||0,filter='all',t=M.skillText(hero,h,i);
+    nodes=remove(nodes,/\.skill-materials-|\.branch-\d$/);
     for(const n of nodes){
       const id=n.id.split('.').slice(1).join('.');
       if(/^branch-\d$/.test(id)){const branch=+id.slice(-1);n.action='do:skill-filter';n.data={filter:branch};n.selected=String(filter)===String(branch);}
@@ -88,8 +89,6 @@
     action(nodes,'upgrade-skill','do:train',{hero,index:i},!c||!affordable(p,c));label(nodes,'upgrade-skill',t.maxed?'Đã Tối Đa':!open?'Chưa Mở':t.rank===0?'Học':'Tăng Cấp');
     const requirement=!h?(unreleased(hero)?'Tướng xuất hiện ở kỳ triệu hồi sau.':'Cần sở hữu tướng.'):`${t.gate}\nHiện tại: cấp ${h.level} · tiến hóa ${h.evolution}.`;
     if(!c&&!t.maxed)nodes.push(text(key,'unlock-requirement',requirement,[70,1285,390,80],24));
-    // Sits under the outer locks, level with the hero roster, so it never covers a lock.
-    nodes.push(button(key,'tree-all','Cây kỹ năng',[664,903,240,98],'do:skill-filter',{filter:'all'},{asset:'nameplate',selected:filter==='all',size:29,labelRect:[24,22,192,50]}));
     return nodes;
   }
   // Where each resource really comes from (progression.js rewards, shop and summon tables).

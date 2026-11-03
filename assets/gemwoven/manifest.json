@@ -8437,12 +8437,13 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/inventory-raw.png",
+    "source": "assets/gemwoven/raw/redraw-2026-11/inventory-v2-raw.png",
     "reference": "assets/gemwoven/backgrounds/inventory-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/redraw-2026-11/inventory-prompt.txt"
+      "assets/gemwoven/raw/redraw-2026-11/inventory-prompt.txt",
+      "assets/gemwoven/raw/redraw-2026-11/inventory-v2-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. v2 (owner): the shelves around the girl carry a few test tubes, flasks, an alembic and finished goods so it reads as a shop storeroom."
   },
   "background-skills": {
     "file": "assets/gemwoven/backgrounds/skills-calm.webp",
@@ -16371,6 +16372,16 @@
     "bodyPx": 351.67,
     "headPx": 27.5,
     "headFit": 1.0009
+  },
+  "form-aura-novice": {
+    "file": "assets/heroes/forms/novice/aura/aura.webp",
+    "count": 8,
+    "cols": 8,
+    "rows": 1,
+    "frameDuration": 160,
+    "prompt": "assets/heroes/forms/novice/aura/prompt-used.txt",
+    "width": 256,
+    "height": 256
   },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",

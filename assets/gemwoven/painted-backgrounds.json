@@ -18,12 +18,13 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/inventory-raw.png",
+    "source": "assets/gemwoven/raw/redraw-2026-11/inventory-v2-raw.png",
     "reference": "assets/gemwoven/backgrounds/inventory-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/redraw-2026-11/inventory-prompt.txt"
+      "assets/gemwoven/raw/redraw-2026-11/inventory-prompt.txt",
+      "assets/gemwoven/raw/redraw-2026-11/inventory-v2-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. v2 (owner): the shelves around the girl carry a few test tubes, flasks, an alembic and finished goods so it reads as a shop storeroom."
   },
   "background-skills": {
     "file": "assets/gemwoven/backgrounds/skills-calm.webp",

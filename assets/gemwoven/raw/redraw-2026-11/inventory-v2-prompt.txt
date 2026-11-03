@@ -1,0 +1,8 @@
+Edit reference image 1 (a calm painted background for the Bag screen of a cozy fantasy mobile RPG). Keep EVERYTHING the same: composition, camera, colours, lighting, the white-haired cat-eared girl reading at the top-left nook (same pose, position, size), the round window, the big plain wooden board in the middle and below, the side margins.
+
+Only change: the wooden shelves of the top nook around and behind the girl (left wall shelves, the shelf under the window, the right wall shelves) are now empty — dress them like a small alchemy-and-craft shop storeroom, with a FEW clear, readable objects, not cluttered:
+- a little rack of glass test tubes with coloured liquids, two or three potion flasks (red, blue, green), a small glass alembic / retort on a stand with a soft glow;
+- a few finished goods on display: a neatly folded cloak, a small shield, a sheathed short sword on wall pegs, a jewelled amulet on a stand, a rolled scroll tied with ribbon, a small wooden chest.
+Keep them grouped in 3-4 tidy clusters on the shelves only, same painted anime style, warm light, soft contrast so they do not compete with the UI; leave the big wooden board and the lower half completely plain and unchanged.
+
+No text, no letters, no UI. Output one full-bleed portrait 2:3 image (1024x1536), same framing as reference 1.

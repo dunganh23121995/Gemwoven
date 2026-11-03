@@ -53,7 +53,9 @@
     shop:{birds:[[140,19,-4,.7,-1]],butterflies:[[160,1360,60],[790,1180,55]],leaves:[[880,300]]},
     upgrade:{birds:[[160,20,-6,.7,1]],butterflies:[[820,1450,55]],leaves:[[90,200]]},
     inventory:{butterflies:[[140,1500,50]],leaves:[[860,160]]},
-    tavern:{butterflies:[[120,1480,50]],leaves:[[900,240]]}
+    tavern:{butterflies:[[120,1480,50]],leaves:[[900,240]]},
+    // Distant clouds sail through the sky left of the tree, above the hero (owner 03/11).
+    skills:{wisps:[[230,165,300,1,'255,255,255',.45,360,70],[250,300,260,3,'255,252,245',.4,-330,82],[200,420,230,0,'250,250,255',.32,280,64]],birds:[[150,26,-8,.55,1]]}
   };
   // The heroes' realms on the summon spotlight (assets/gemwoven/summon/scenes-detail; water and
   // glow masks from export_scene_masks.py).
