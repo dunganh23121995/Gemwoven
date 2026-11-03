@@ -1,0 +1,10 @@
+Use the attached images only as the STYLE reference (Gemwoven painted fantasy item icons, glossy, warm gold metal, clean dark outline). Draw a NEW icon sheet.
+
+Subject: treasures (báu vật) that heroes carry, a 3x5 grid of equal square cells. Each ROW is one family, each COLUMN a quality, left to right: blue, purple, orange, red, divine (rainbow-white with gold). The same object per row, growing more ornate and precious with quality (blue: simple; divine: radiant, crowned, small halo kept tight to the object).
+Rows (top to bottom):
+1. "Phá Sơn" (mountain breaker): a small war-hammer charm with a mountain-peak emblem on its head.
+2. "Mượn Hồn" (borrowed soul): a hand-sized lantern-locket with a glowing spirit wisp inside.
+3. "Khắc Chế" (counter seal): a round talisman seal with a chain and a crossed-rune emblem.
+Colour each item's gem/enamel by its column's quality colour; metal stays gold/silver.
+
+Rules: one object per cell, centered, inside the central 70% of the cell, nothing crossing cell edges, no text, no letters, no numbers. Background: solid flat #FF00FF magenta in every cell, no grid lines, no shadows on the background.

@@ -688,3 +688,21 @@ thắng ≥ 95%; Mika 1★ quái thường trung vị ≥ 4 (ải 12) / ≥ 6 (t
 thắng 50–70%, boss chương 2 45–55% (cận trên KTC ≤ 60%); Mika 1★ boss không giảm quá 5 điểm, nước thắng không tăng quá 10%.
 Trận hết giờ tính vào mẫu. Đã làm: kiếm Hiro tách thành `pveSword` (chỉ ải, boss vô hạn, Thử Luyện; 1vs1, giao hữu, PvP luôn ×1);
 bot nhận phương án qua `?gwv=` (chỉ QA).
+
+### Vòng 9 (báu vật thử nghiệm) — đã thống nhất, làm sau Hiro 2/3
+
+- **Điểm 600/kỳ** (neo 00:00 02/11/2026 GMT+7, tuần từ thứ Hai): mỗi ngày nhận thưởng **ít nhất 3 nhiệm vụ ngày khác nhau** → 30;
+  mỗi tuần thắng 8 Boss Vô Hạn → 60; mỗi tuần có lượt Sân Thử Luyện **≥ 3 thanh** (sát thương ≥ 3× HP một thanh) → 30. Khóa
+  nhận theo ngày/tuần/loại; tuần mới đếm lại; điểm giữ qua kỳ. Phải chứng minh tài khoản chỉ Hiro, chưa báu vật đạt đủ lịch.
+- **Ô:** ô 1 ngay, ô 2 ở TH3 của tướng nhận; chuyển miễn phí, một món một nơi, khóa cấu hình khi vào trận. Công/HP: Lam 4% →
+  Thần 20%; **Thủ +1/+2/+3/+4/+5 điểm**; hai ô cộng rồi nhân một lần sau Ngọc; trần báu vật Công/HP +30%, Thủ +10 điểm; bảng
+  chi tiết hiện cả phần bị trần cắt.
+- **Hiệu ứng** (từ Cam): Phá Sơn 2/3/4% HP tối đa boss, trần 8× Công cho tổng cả lần tuyệt kỹ, Công chốt lúc tung, không tự kích
+  lại; Mượn Hồn 50% **phần tăng thêm** của bị động đã học của tướng khác đang sở hữu (×1,6 → ×1,3), không mượn Chân/Biến Thân, bộ
+  chiêu boss; Khắc Chế trừ năng lượng một lần khi tuyệt kỹ trúng, sàn 0 (chốt có chịu kháng hay không khi làm). Cùng họ lấy món
+  mạnh hơn, khác họ cùng hoạt động. Tắt cả chỉ số lẫn hiệu ứng ở Chuẩn Hóa/giao hữu/1vs1.
+- **Lưu thử** tách riêng `gemwoven.treasure.v1` (bản sao tiến trình thử + báu vật), không chuyển về bản chính; đổi nguyên khối,
+  nâng phẩm tiêu hao món trước, 4.800 điểm ≈ 16 tuần; Lam tặng miễn phí để giới thiệu.
+- **Giao diện:** 15 biểu tượng (họ × phẩm) do Codex vẽ, dấu bậc, nhãn "Bản thử nghiệm cục bộ" luôn thấy, chạm xem chi tiết, Codex soát.
+- **Trần chung** ngọc + báu vật: chưa thêm; đo Công +76,8%, HP +100,2% trước. **Đo trước khi bật:** sim rồi bot thật theo từng họ/phẩm.
+- Sửa kèm: rơi ngọc Sân Thử Luyện dùng đúng mốc ≥ 3 thanh (tier ≥ 4).
