@@ -99,3 +99,33 @@
 .fg2-mat span b{font-size:27px!important}
 .fg2-mat i{font-size:24px!important}
 .fg2-mat span img{width:36px!important;height:36px!important}
+
+/* Readability pass (full review 3, 8.0: the piece not prominent enough, Có / Cần / Thiếu too cramped). */
+.fg2-preview{filter:drop-shadow(0 0 6px #fff6d0) drop-shadow(0 0 18px #ffd87acc) drop-shadow(0 14px 10px #2a140899)}
+.fg2-caption{font-size:24px}
+.fg3-mat{justify-content:flex-end!important;padding:0 0 10px!important;gap:4px!important}
+.fg3-mat span{flex-direction:row!important;gap:6px!important}
+.fg3-mat span img{width:42px!important;height:42px!important}
+.fg3-mat span b{font:900 32px Cambria,serif!important;color:#3f2a12!important;letter-spacing:0!important}
+.fg3-mat i{font:900 26px/1 Cambria,serif!important;color:#2f7a2a!important}
+.fg3-mat.ok i{font-size:32px!important}
+.fg3-mat.short{background:radial-gradient(ellipse 60% 55% at 50% 60%,#ff6a4a40,#ff6a4a14 70%,transparent 100%)}
+.fg3-mat.short i{color:#b02a14!important;text-shadow:0 0 6px #fff3e0}
+.fg3-mat.short span b{color:#8a2412!important}
+.fg2-plate.alone{padding-left:130px!important;font-size:54px}
+.fg2-plate.ready.alone{animation:fg3-ready 2.6s ease-in-out infinite}
+@keyframes fg3-ready{0%,100%{filter:drop-shadow(0 6px 5px #2a140899) drop-shadow(0 0 0 #ffd86a00)}50%{filter:drop-shadow(0 6px 5px #2a140899) drop-shadow(0 0 14px #ffd86acc)}}
+.reduced-motion .fg2-plate.ready.alone{animation:none}
+.fg2-plate.locked.alone{font-size:42px;color:#ffd2c0}
+.fg2-strip{line-height:1;padding-bottom:8px}
+.fg3-mat.ok i{font-size:28px!important}
+.fg2-plate.locked.alone span::before{display:none}
+.fg2-plate.alone{font-size:50px}
+.fg2-recess small{font-size:36px}
+/* A long amount (137,7 N) stacks its icon above the number. */
+.fg3-mat.long{padding-bottom:6px!important;gap:2px!important}
+.fg3-mat.long span{flex-direction:column!important;gap:0!important}
+.fg3-mat.long span img{width:34px!important;height:34px!important}
+.fg3-mat.long span b{font-size:29px!important;line-height:1}
+.fg2-recess.long small{font-size:30px;line-height:1.05}
+.fg2-recess.xlong small{font-size:26px;line-height:1.05}

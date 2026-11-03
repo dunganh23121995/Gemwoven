@@ -49,24 +49,32 @@
     const hero=state.hero,h=p.heroes[hero],sel=state.skill||0,next=suggestion(p,h);
     const open=[0,1,2,3].map(i=>!!h&&M.skillUnlock(h,i));
     const T=([x,y])=>[x-STAGE_TREE[0],y-STAGE_TREE[1]];
-    let html=`<img class="st-bough" src="${art('bough2')}" alt="" style="${box(OX+RAW.x*S-STAGE_TREE[0],OY+RAW.y*S-STAGE_TREE[1],RAW.w*S,RAW.h*S)}">`;
+    // Readability pass (full review 3): the bough lights from the root up to the selected skill, a second copy of
+    // the same picture masked above that pad, so the eye runs root → selected node → the panel below.
+    const bough=box(OX+RAW.x*S-STAGE_TREE[0],OY+RAW.y*S-STAGE_TREE[1],RAW.w*S,RAW.h*S),cut=((PADS[sel][1]-RAW.y-70)/RAW.h*100).toFixed(1);
+    let html=`<img class="st-bough" src="${art('bough2')}" alt="" style="${bough}"><img class="st-bough st-lit" src="${art('bough2')}" alt="" style="${bough};--cut:${cut}%">`;
     const [tx,ty]=T(at(TWIG));
     html+=`<button type="button" class="st-soon" data-action="art:skill-soon" style="${box(tx-104,ty-66,124,128)}" aria-label="Nhánh kỹ năng mở rộng · Sắp ra mắt"><img class="st-bud" src="${art('bud')}" alt=""></button>`+
       `<b class="st-ribbon" style="${box(tx-112,ty+14,176,40)}">Sắp ra mắt</b>`;
     CENTRES.forEach((c,i)=>{
       const [cx,cy]=T(c),t=M.skillText(hero,h,i),rank=h?h.skills[i]||0:0,on=i===sel;
       const kind=!open[i]?'locked':on?'selected':'learned',learnable=open[i]&&rank===0;
-      html+=`<img class="st-socket" src="${art('socket')}" alt="" style="${box(cx-82,cy-82,164,164)}">`;
-      if(on)html+=`<i class="st-halo" style="${box(cx-130,cy-130,260,260)}"></i><img class="st-ring" src="${art('select-ring')}" alt="" style="${box(cx-97,cy-97,194,194)}">`;
+      // A locked medallion keeps only its padlock frame and one gate plate (no socket ring behind it).
+      if(open[i])html+=`<img class="st-socket" src="${art('socket')}" alt="" style="${box(cx-82,cy-82,164,164)}">`;
+      if(on)html+=`${open[i]?`<i class="st-halo" style="${box(cx-130,cy-130,260,260)}"></i>`:''}<img class="st-ring${open[i]?'':' dim'}" src="${art('select-ring')}" alt="" style="${box(cx-97,cy-97,194,194)}">`;
       // The tap target covers the medallion and its plate (≥ 176 units ≈ 73 CSS px on a phone).
-      const tall=open[i]?176+8:176+80;
+      const tall=open[i]?176+16:176+96;
       html+=`<button type="button" class="st-node skill-live ${kind}${on?' on':''}${i===next?' next':''}${open[i]?'':' skill-unavailable'}" data-action="do:skill-node" data-index="${i}" style="${box(cx-88,cy-88,176,tall)}" aria-label="${esc(t.name)} · ${esc(M.SKILL_BRANCHES[i])}${open[i]?` · ${rank}/${M.SKILL_MAX}`:' · '+esc(gateLines(i).filter(Boolean).join(' · '))}"${on?' aria-current="true"':''}>`+
         `<i class="st-well" style="--el:${WELL[i]}"></i><img class="st-icon" src="${skillArt(hero,i)}" alt=""></button>`+frame(kind,[cx,cy]);
       if(i===next)html+=`<img class="st-pointer" src="${art('pointer')}" alt="" style="${box(cx-166,cy-17,76,34)}">`;
       if(learnable)html+=`<img class="st-sprout" src="${art('sprout')}" alt="" style="${box(cx+30,cy-86,46,33)}">`;
-      if(open[i])html+=`<b class="st-rank${learnable?' learn':''}${on?' on':''}" style="${box(cx-66,cy+56,132,40)}">${learnable?'Học':`${rank}/${M.SKILL_MAX}`}</b>`;
-      else{const [a,b]=gateLines(i);html+=`<b class="st-gate${b?'':' one'}" style="${box(cx-98+(cx<(CENTRES[0][0]+CENTRES[1][0])/2-STAGE_TREE[0]?-12:14),cy+90,196,78)}"><span>${esc(a)}</span>${b?`<span>${esc(b)}</span>`:''}</b>`;}
+      if(open[i])html+=`<b class="st-rank${learnable?' learn':''}${on?' on':''}" style="${box(cx-78,cy+52,156,50)}">${learnable?'Học':`${rank}/${M.SKILL_MAX}`}</b>`;
+      // Gate plates sit beside a left-hand medallion and below-right of a right-hand one, clear of the bough.
+      else{const [a,b]=gateLines(i),left=cx<(CENTRES[0][0]+CENTRES[1][0])/2-STAGE_TREE[0];html+=`<b class="st-gate${b?'':' one'}${on?' on':''}" style="${left?box(cx-302,cy-84,240,98):box(cx-108,cy+92,240,98)}"><span>${esc(a)}</span>${b?`<span>${esc(b)}</span>`:''}</b>`;}
     });
+    // A thin thread of the same light runs from the lit root down to the panel, right of the roster, ending in a
+    // spark on the panel's edge: the panel below is this node's card.
+    html+=`<i class="st-thread" style="${box(244,600,6,156)}"></i><i class="st-spark" style="${box(235,744,24,24)}"></i>`;
     for(const k of ['rank-plate','gate-plate2','ribbon'])el.style.setProperty('--st-'+k,cssUrl(k));
     el.innerHTML=html;
   }
@@ -78,11 +86,13 @@
     for(const k of ['rank-plate','category-plate','tray-wide','next-card2','header-tag'])el.style.setProperty('--st-'+k,cssUrl(k));
     const nameKey=`skills.skill-name-${hero}-${i}`;C[nameKey]=t.name;
     const [desc,more]=summary(t.description);
-    let html=`<img class="sd-icon${open?'':' locked'}" src="${skillArt(hero,i)}" alt="" style="${rel(44,1030,132,132)}">`+
+    // The panel repeats the selected medallion (socket, branch colour, gold ring) so it reads as that node's card.
+    let html=`<img class="sd-socket" src="${art(open?'socket':'frame-locked')}" alt="" style="${open?rel(46,1022,128,128):rel(50,1018,120,134)}"><i class="sd-well${open?'':' locked'}" style="${rel(74,1050,72,72)};--el:${WELL[i]}"></i>`+
+      `<img class="sd-icon${open?'':' locked'}" src="${skillArt(hero,i)}" alt="" style="${rel(68,1044,84,84)}">`+(open?`<img class="sd-ring" src="${art('select-ring')}" alt="" style="${rel(34,1010,152,152)}">`:'')+
       `<b class="sd-rank" style="${rel(40,1152,140,42)}">Lv.${t.rank}${t.bonusRank?' (+'+t.bonusRank+')':''}/${t.max}</b>`+
-      `<b class="sd-name" data-copy="${esc(nameKey)}" style="${rel(198,1027,686,44)}">${esc(t.name)}</b>`+
+      `<b class="sd-name" data-copy="${esc(nameKey)}" style="${rel(198,1022,686,50)}">${esc(t.name)}</b>`+
       `<b class="sd-branch" style="${rel(198,1072,220,40)}">${esc(M.SKILL_BRANCHES[i])}</b>`+
-      `<p class="sd-desc" style="${rel(198,1114,690,66)}">${esc(desc)}</p>`+
+      `<p class="sd-desc" style="${rel(198,1112,692,84)}">${esc(desc)}</p>`+
       (more?`<button type="button" class="sd-more" data-action="skilltree:info" data-hero="${esc(hero)}" data-index="${i}" style="${rel(430,1069,140,46)}" aria-label="Xem đầy đủ"><span>Chi tiết</span></button>`:'');
     const left=c?(t.rank===0?'Nguyên liệu học':'Nguyên liệu'):t.maxed?'Hoàn thiện':'Điều kiện';
     const lw=left.length>12?292:250;html+=`<b class="sd-head" style="${rel(323-lw/2,1200,lw,46)}">${left}</b><div class="sd-tray" style="${rel(40,1228,566,140)}">`;
@@ -90,7 +100,7 @@
       html+=`<div class="sd-mats n${list.length}">`+list.map(([id,n])=>{const have=owned(p,id),ok=have>=n;return `<button type="button" class="sd-mat ${ok?'ok':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><span>Có ${tight(have)}</span><b>Cần ${tight(n)}</b></button>`;}).join('')+'</div>';}
     else if(t.maxed)html+=`<p class="sd-note">✓ Cấp tối đa</p>`;
     else if(!h)html+=`<p class="sd-note">${esc(M.heroAvailable&&!M.heroAvailable(hero)?'Tướng xuất hiện ở kỳ triệu hồi sau.':'Cần sở hữu tướng.')}</p>`;
-    else html+=`<p class="sd-note"><span>Cần ${esc(gateLines(i).filter(Boolean).join(' · '))}</span><small>Hiện tại: Cấp ${h.level} · Tiến hóa ${h.evolution||0}</small></p>`;
+    else html+=`<p class="sd-note"><span>Cần: ${esc(gateLines(i).filter(Boolean).join(' · '))}</span><small>Hiện tại: Cấp ${h.level} · Tiến hóa ${h.evolution||0}</small></p>`;
     html+='</div>';
     const right=!open?'Khi mở':t.maxed?'Cấp tối đa':t.rank===0?'Khi học':'Cấp kế';
     const lines=!open||t.rank===0?rows(t.values):t.maxed?rows(t.values):String(t.next||'').split(' · ').filter(Boolean);
@@ -101,8 +111,8 @@
     const room=pic?176:238,size=Math.min(one?36:28,Math.floor(room/(longest*.55))),label=Math.min(one?27:25,Math.floor(room/(Math.max(...parts.map(([a])=>a.length),1)*.5)));
     html+=`<b class="sd-head" style="${rel(646,1200,230,46)}">${right}</b><div class="sd-card${one?' one':' many'}" style="${rel(624,1228,274,140)};--v:${size}px;--l:${label}px">`+
       (pic?`<img src="${skillArt(hero,i)}" alt="">`:'')+`<p>${parts.map(([a,v])=>`<span>${a?`<small>${esc(a)}</small>`:''}<b>${esc(v).replace('→','<i>→</i>')}</b></span>`).join('')}</p></div>`;
-    const ready=!!c&&affordable(p,c),action=t.maxed?'Đã Tối Đa':!open?'Chưa Mở':t.rank===0?'Học':'Tăng Cấp';
-    html+=`<button type="button" class="sd-go ${ready?'ready':'off'}" data-action="do:train" data-hero="${esc(hero)}" data-index="${i}" ${ready?'':'disabled'} style="${rel(300,1376,340,100)}"><img src="${art(ready?'button-ready':'button-locked')}" alt=""><span>${action}</span></button>`;
+    const ready=!!c&&affordable(p,c),action=t.maxed?'Đã Tối Đa':!open?'Chưa Mở':!ready&&c?'Thiếu nguyên liệu':t.rank===0?'Học':'Tăng Cấp';
+    html+=`<button type="button" class="sd-go ${ready?'ready':'off'}" data-action="do:train" data-hero="${esc(hero)}" data-index="${i}" ${ready?'':'disabled'} style="${!ready&&c?rel(250,1376,440,100):rel(300,1376,340,100)}"><img src="${art(ready?'button-ready':'button-locked')}" alt=""><span>${action}</span></button>`;
     el.innerHTML=html;
   }
   const OLD=/^skills\.(node-\d|node-level-\d|link-\d|locked-\d|selected-icon|skill-name-|skill-category|skill-level|skill-description-|materials-title|skill-materials-|next-title|next-effect-|upgrade-skill|unlock-requirement)/;

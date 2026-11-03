@@ -6,6 +6,7 @@
  * Reading order: for whom (hero badge) → which piece (rack) → what it gives (recesses + strip) → what it costs (tray)
  * → do it (hammer plate). Rules stay in progression.js (craft, strengthenTo, strengthenPlan, socketGem, fuseGems).
  * Boxes below are in the 941x1672 stage; the bench art is 1524x994 and its parts are placed by its own pixels.
+ * Readability pass (full review 3): the bench sits 24 units lower so the piece on the pedestal can stand larger.
  */
 (() => {
   'use strict';
@@ -21,7 +22,7 @@
   const pic=(slot,rarity)=>file(`gear-${rarity}-${slot}`)||file(M.SLOT_ART[slot]);
   const box=(x,y,w,h)=>`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
   // The bench: stage box and its parts in bench pixels.
-  const BENCH={x:20,y:742,w:900,src:1524},bx=v=>BENCH.x+v*BENCH.w/BENCH.src,by=v=>BENCH.y+v*BENCH.w/BENCH.src,bs=v=>v*BENCH.w/BENCH.src;
+  const BENCH={x:20,y:766,w:900,src:1524},bx=v=>BENCH.x+v*BENCH.w/BENCH.src,by=v=>BENCH.y+v*BENCH.w/BENCH.src,bs=v=>v*BENCH.w/BENCH.src;
   const part=(x0,y0,x1,y1)=>box(bx(x0),by(y0),bs(x1-x0),bs(y1-y0));
   const SHELF=[150,75,1370,262],LEFT=[250,335,675,530],RIGHT=[850,335,1275,530],STRIP=[360,555,1160,620],TRAY=[175,680,1352,840];
   const RACK={x:164,y:356,w:613,h:126};
@@ -35,11 +36,16 @@
   function tray(p,c,note=''){
     const rows=Object.entries(c||{}).filter(([,n])=>n>0),[x0,y0,x1,y1]=TRAY,w=(x1-x0)/Math.max(5,rows.length);
     const spare=5-rows.length;
-    return `<b class="fg2-caption" style="${box(bx(x0)+bs(x1-x0)/2-100,by(y0)-20,200,34)}">Có / Cần</b>`+(spare>0&&note?`<p class="fg2-traynote" style="${part(x0+rows.length*w,y0,x1,y1)}">${note}</p>`:'')+rows.map(([id,n],i)=>{const have=owned(p,id);
-      return `<button type="button" class="fg2-mat ${have>=n?'':'short'}" data-action="item:${id}" style="${part(x0+i*w,y0,x0+(i+1)*w,y1)}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)}"><span><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${tight(have)}/${tight(n)}</b></span>${have>=n?'<i class="ok">✓ Đủ</i>':`<i>Thiếu ${tight(n-have)}</i>`}</button>`;}).join('');
+    // Readability pass (full review 3): each compartment shows what it needs, icon beside the number, and one
+    // status line under it, ✓ or 'Thiếu N' on a red-lit compartment; what is held is one tap away (item detail).
+    return `<b class="fg2-caption" style="${box(bx(x0)+bs(x1-x0)/2-70,by(y0)-22,140,34)}">Cần</b>`+(spare>0&&note?`<p class="fg2-traynote" style="${part(x0+rows.length*w,y0,x1,y1)}">${note}</p>`:'')+rows.map(([id,n],i)=>{const have=owned(p,id);
+      return `<button type="button" class="fg2-mat fg3-mat ${have>=n?'ok':'short'}${tight(n).length>5?' long':''}" data-action="item:${id}" style="${part(x0+i*w,y0,x0+(i+1)*w,y1)}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><span><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${tight(n)}</b></span>${have>=n?'<i class="ok">✓ Đủ</i>':`<i>Thiếu ${tight(n-have)}</i>`}</button>`;}).join('');
   }
-  const recess=(where,label,img,caption,cls='')=>`<div class="fg2-recess ${cls}" style="${part(...where)}">${img?`<img src="${img}" alt="">`:''}<small>${String(caption).replace(' +','<br>+')}</small></div><b class="fg2-tag" style="${box(bx(where[0])+bs(where[2]-where[0])/2-90,by(where[1])-26,180,44)}">${label}</b>`;
-  const plate=(ready,text,act,data='',enabled=true)=>`<button type="button" class="fg2-plate ${ready?'ready':'locked'}" data-action="${act}" ${data} ${enabled?'':'disabled'} style="${box(96,1330,560,112)}"><span>${text}</span></button>`;
+  const fit=c=>{const n=String(c).split(' +')[0].length;return n>14?' xlong':n>7?' long':'';};
+  const recess=(where,label,img,caption,cls='')=>`<div class="fg2-recess ${cls}${fit(caption)}" style="${part(...where)}">${img?`<img src="${img}" alt="">`:''}<small>${String(caption).replace(' +','<br>+')}</small></div><b class="fg2-tag" style="${box(bx(where[0])+bs(where[2]-where[0])/2-90,by(where[1])-26,180,44)}">${label}</b>`;
+  // The action plate: centred and wider when it stands alone, beside a small button otherwise; short of materials
+  // it says so on the plate itself.
+  const plate=(ready,text,act,data='',enabled=true,alone=false)=>`<button type="button" class="fg2-plate ${ready?'ready':'locked'}${alone?' alone':''}" data-action="${act}" ${data} ${enabled?'':'disabled'} style="${alone?box(130,1340,680,128):box(96,1354,560,112)}"><span>${text}</span></button>`;
   function craftTab(p,state){
     const hero=state.forgeHero,slot=state.forgeSlot,rarity=state.forgeRarity,cur=worn(p,hero,slot),gate=M.craftGate(rarity),open=p.campaign.cleared>=gate,c=M.craftCost(rarity);
     const result=state.forgeResult&&p.equipment.find(g=>g.id===state.forgeResult);
@@ -49,28 +55,28 @@
       html+=recess(LEFT,'Đang dùng',cur&&cur.id!==result.id?pic(slot,cur.rarity):pic(slot,'uncommon'),cur&&cur.id!==result.id?`${esc(M.RARITIES[cur.rarity].name)} +${cur.level}`:'Trống',cur&&cur.id!==result.id?'':'empty')+
         recess(RIGHT,'Vừa rèn',pic(result.slot,result.rarity),`${esc(M.RARITIES[result.rarity].name)} +0${result.affix?' · '+esc(M.AFFIXES[result.affix].name):''}`,'new')+
         `<p class="fg2-strip" style="${part(...STRIP)}">${changes(stats(p,hero,q=>{if(on)delete q.heroes[hero].gear[result.slot];}),stats(p,hero,q=>{q.heroes[hero].gear[result.slot]=result.id;}))}</p>`+tray(p,c)+
-        (on?`<div class="fg2-done" style="${box(96,1330,560,112)}">✓ Đang dùng</div>`:plate(true,'Mặc ngay','forge:wear',`data-id="${result.id}"`))+
-        `<button type="button" class="fg2-small" data-action="forge:again" style="${box(672,1346,190,82)}">Rèn tiếp</button>`;
+        (on?`<div class="fg2-done" style="${box(96,1354,560,112)}">✓ Đang dùng</div>`:plate(true,'Mặc ngay','forge:wear',`data-id="${result.id}"`))+
+        `<button type="button" class="fg2-small" data-action="forge:again" style="${box(672,1370,190,82)}">Rèn tiếp</button>`;
       return html;}
     const next=stats(p,hero,q=>{q.equipment.push({id:'__forge',slot,rarity,level:0,affix:null});q.heroes[hero].gear[slot]='__forge';});
     html+=recess(LEFT,'Đang dùng',cur?pic(slot,cur.rarity):pic(slot,'uncommon'),cur?`${esc(M.RARITIES[cur.rarity].name)} +${cur.level}`:'Trống',cur?'':'empty')+`<i class="fg2-arrow" style="${box(bx(690),by(395),bs(140),bs(80))}">→</i>`+
-      recess(RIGHT,'Nếu dùng',pic(slot,rarity),`${esc(M.RARITIES[rarity].name)} +0${rarity==='divine'?' · ✦':''}`,'new')+
+      recess(RIGHT,'Sau rèn',pic(slot,rarity),`${esc(M.RARITIES[rarity].name)} +0${rarity==='divine'?' · ✦':''}`,'new')+
       `<p class="fg2-strip" style="${part(...STRIP)}">${changes(M.stats(p,hero),next)}</p>`+tray(p,c);
-    if(!open)return html+plate(false,`Mở sau ải ${gate}`,'forge:noop','',true)+`<button type="button" class="fg2-small gold" data-action="route:campaign" style="${box(672,1346,190,82)}">Khám Phá</button>`;
-    return html+plate(affordable(p,c),'Rèn','forge:craft','',affordable(p,c));
+    if(!open)return html+plate(false,`Mở sau ải ${gate}`,'forge:noop','',true)+`<button type="button" class="fg2-small gold" data-action="route:campaign" style="${box(672,1370,190,82)}">Khám Phá</button>`;
+    return html+(affordable(p,c)?plate(true,'Rèn','forge:craft','',true,true):plate(false,'Thiếu nguyên liệu','forge:craft','',false,true));
   }
   function strengthenTab(p,state){
     const hero=state.forgeHero,g=worn(p,hero,state.forgeSlot);
     if(!g)return recess(LEFT,'Đang dùng',pic(state.forgeSlot,'uncommon'),'Trống','empty')+recess(RIGHT,'Cần món đồ',pic(state.forgeSlot,'uncommon'),'Rèn hoặc lấy từ túi','empty')+
-      plate(true,'Chế tạo','forge:tab','data-index="0"')+`<button type="button" class="fg2-small" data-action="route:equipment" style="${box(672,1346,190,82)}">Chọn từ túi</button>`;
+      plate(true,'Chế tạo','forge:tab','data-index="0"')+`<button type="button" class="fg2-small" data-action="route:equipment" style="${box(672,1370,190,82)}">Chọn từ túi</button>`;
     const [x0,y0,x1,y1]=SHELF,mid=(x0+x1)/2,max=!!state.forgeMax;
     let html=[['×1',false],['Tối đa',true]].map(([t,on],i)=>`<button type="button" class="fg2-mode ${max===on?'on':''}" data-action="forge:max" data-on="${on?1:0}" style="${part(i?mid+20:x0+60,y0+40,i?x1-60:mid-20,y1-20)}">${t}</button>`).join('');
-    if(g.level>=20)return html+recess(LEFT,'Đang dùng',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +20`)+recess(RIGHT,'Đã tối đa',pic(g.slot,g.rarity),'+20','new')+`<div class="fg2-done" style="${box(96,1330,560,112)}">✓ Đã tối đa</div>`;
+    if(g.level>=20)return html+recess(LEFT,'Đang dùng',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +20`)+recess(RIGHT,'Đã tối đa',pic(g.slot,g.rarity),'+20','new')+`<div class="fg2-done" style="${box(96,1354,560,112)}">✓ Đã tối đa</div>`;
     const plan=max?G.engine.strengthenPlan(g.id):null,to=plan&&plan.to>g.level?plan.to:g.level+1,c=plan&&plan.to>g.level?plan.cost:M.strengthenCost(g);
     html+=recess(LEFT,'Hiện tại',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +${g.level}`)+`<i class="fg2-arrow" style="${box(bx(690),by(395),bs(140),bs(80))}">→</i>`+
       recess(RIGHT,'Sau khi nâng',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +${to}`,'new')+
       `<p class="fg2-strip" style="${part(...STRIP)}">${changes(M.stats(p,hero),stats(p,hero,q=>{q.equipment.find(x=>x.id===g.id).level=to;}))}</p>`+tray(p,c,`<b>+${g.level} → +${to}</b><small>${to-g.level} cấp · trả một lần</small>`);
-    return html+plate(affordable(p,c),`Nâng +${to}`,'forge:strengthen',`data-id="${g.id}" data-to="${to}"`,affordable(p,c));
+    return html+(affordable(p,c)?plate(true,`Nâng +${to}`,'forge:strengthen',`data-id="${g.id}" data-to="${to}"`,true,true):plate(false,'Thiếu nguyên liệu','forge:strengthen',`data-id="${g.id}" data-to="${to}"`,false,true));
   }
   function gemTab(p,state){
     const g=worn(p,state.forgeHero,state.forgeSlot),n=g?(M.SOCKETS?.[g.rarity]||0):0,[x0,y0,x1,y1]=SHELF;
@@ -95,11 +101,11 @@
     el.innerHTML=`<div class="fg2-who" style="${box(320,298,300,60)}">${list.length>1?'<button type="button" data-action="forge:hero" data-step="-1" aria-label="Tướng trước">‹</button>':''}<img src="${file('face-'+hero)}" alt=""><b>${esc(M.HEROES[hero].name)}</b>${list.length>1?'<button type="button" data-action="forge:hero" data-step="1" aria-label="Tướng sau">›</button>':''}</div>`+
       `<img class="fg2-rack" src="${F}rack.webp" alt="" style="${box(RACK.x,RACK.y,RACK.w,RACK.h)}">`+
       SLOT_ORDER.map((s,i)=>{const w=worn(p,hero,s);return `<button type="button" class="fg2-slot ${w?'':'empty'} ${s===slot?'on':''}" data-action="forge:slot" data-slot="${s}" style="${box(RACK.x+RACK.w*108/2128+i*step,RACK.y+RACK.h*.15,sw,RACK.h*.64)}" aria-label="${esc(M.SLOTS[s])}"><img src="${w?pic(s,w.rarity):pic(s,'uncommon')}" alt="">${w?`<b>+${w.level}</b>`:''}<small>${esc(M.SLOTS[s])}</small></button>`;}).join('')+
-      (preview?`<i class="fg2-glow" style="${box(290,440,360,260)}"></i><img class="fg2-pedestal" src="${F}pedestal.webp" alt="" style="${box(320,626,300,140)}"><img class="fg2-preview" src="${preview}" alt="" style="${box(375,446,190,220)}">${tab===0&&!state.forgeResult?`<b class="fg2-tag small" style="${box(395,700,150,38)}">Xem trước</b>`:''}`:'')+
+      (preview?`<i class="fg2-glow" style="${box(250,420,440,300)}"></i><img class="fg2-pedestal" src="${F}pedestal.webp" alt="" style="${box(300,640,340,158)}"><img class="fg2-preview" src="${preview}" alt="" style="${box(350,480,240,240)}">${tab===0&&!state.forgeResult?`<b class="fg2-tag small" style="${box(395,724,150,38)}">Xem trước</b>`:''}`:'')+
       `<img class="fg2-bench" src="${F}bench.webp" alt="" style="${box(BENCH.x,BENCH.y,BENCH.w,bs(994))}">`+
-      [['Chế Tạo','icon-forge'],['Cường Hóa','hammer'],['Khảm Ngọc','gem']].map(([name,icon],i)=>`<button type="button" class="fg2-tab ${i===tab?'on':''}" data-action="forge:tab" data-index="${i}" style="${box(52+i*284,690,268,76)}"><img src="${icon==='gem'?'assets/gemwoven/gems/gem-atk-2.webp':file(icon)}" alt="">${name}</button>`).join('')+
+      [['Chế Tạo','icon-forge'],['Cường Hóa','hammer'],['Khảm Ngọc','gem']].map(([name,icon],i)=>`<button type="button" class="fg2-tab ${i===tab?'on':''}" data-action="forge:tab" data-index="${i}" style="${box(52+i*284,714,268,76)}"><img src="${icon==='gem'?'assets/gemwoven/gems/gem-atk-2.webp':file(icon)}" alt="">${name}</button>`).join('')+
       [craftTab,strengthenTab,gemTab][tab](p,state)+
-      (state.forgeMessage?`<p class="fg2-msg" style="${box(96,1290,560,40)}">${esc(state.forgeMessage)}</p>`:'');
+      (state.forgeMessage?`<p class="fg2-msg" style="${box(96,1312,560,40)}">${esc(state.forgeMessage)}</p>`:'');
   }
   const decorate=G.decorate;
   G.decorate=state=>{
