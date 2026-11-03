@@ -1,7 +1,7 @@
 /* Live screens built from separated artwork and the shared progression model. */
 (() => {
   const M=window.GemwovenProgression,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
-  let storage;try{storage=window.localStorage;}catch{storage=null;}
+  let storage;try{storage=M.storageFor(window.localStorage);}catch{storage=null;}
   // Preview tickets/gems/sample mail only for a local dev server; a portable HTML opened from disk is a real save.
   // Test servers only: this machine, a phone on the same private network (192.168.x.x / 10.x.x.x),
   // or the temporary Cloudflare quick-tunnel test link (*.trycloudflare.com). The real domain never matches.

@@ -61,7 +61,7 @@ async function oneFight(page,save,index,variant){
       const ok=await q.trySwap(m.a,m.b);if(ok!==false)moves++;
     }
     for(let i=0;i<200&&!document.getElementById('resultDialog').open;i++)await sleep(25);
-    return {won:q.state.hp>0&&q.state.enemyHp<=0,timedOut:!q.ended&&!document.getElementById('resultDialog').open,moves,turns:q.progressionTurns,ults,hpLeft:Math.max(0,q.state.hp),enemyLeft:Math.max(0,q.state.enemyHp)/q.state.enemyMax,seconds:Math.round((performance.now()-t0)/1000)};
+    return {foe:q.state.enemyName||document.querySelector('#enemyName,.enemy-name')?.textContent||'',enemyEnergyEnd:q.state.enemyEnergy,heroFrozen:!!q.state.playerFrozen,won:q.state.hp>0&&q.state.enemyHp<=0,timedOut:!q.ended&&!document.getElementById('resultDialog').open,moves,turns:q.progressionTurns,ults,hpLeft:Math.max(0,q.state.hp),enemyLeft:Math.max(0,q.state.enemyHp)/q.state.enemyMax,seconds:Math.round((performance.now()-t0)/1000)};
   });
 }
 (async()=>{

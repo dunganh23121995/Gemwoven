@@ -20,3 +20,4 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .offline-bar{height:28px;border-radius:14px;background:#e2d2ae;overflow:hidden;margin:4px 0 14px}.offline-bar i{display:block;height:100%;background:linear-gradient(90deg,#f0b64e,#e07b2c)}
 .live-panel details summary{cursor:pointer;font-weight:700;min-height:56px;display:flex;align-items:center;color:#8a5a20}
 .newbie-ready{color:#c0392b}
+.sc-elem{font-style:normal;font-weight:800;padding:1px 8px;border-radius:10px;white-space:nowrap}.sc-elem.bad{background:#c0392b;color:#fff}.sc-elem.good{background:#2f8a3a;color:#fff}

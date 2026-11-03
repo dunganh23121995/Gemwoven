@@ -9,7 +9,9 @@ let progressionEnemyDot=null,progressionEnemyCharge=1;
 function creatureSheets(c){return c.attack?{idle:c.idle,attack:c.attack,cast:c.cast,hurt:c.hurt,skill:c.skill,defeat:c.defeat,buff:c.buff}:c.idle?{idle:c.idle,attack:c.still,cast:c.still,hurt:c.still,buff:c.buff}:{idle:c,attack:c,cast:c,hurt:c};}
 function progressionMusicKey(){const theme=progressionBattle?.music;return theme&&ART.music?.[theme]?theme:state.enemyKey;}
 try{
-  progressionStore=progressionRules.makeEngine(window.localStorage);
+  progressionStore=progressionRules.makeEngine(progressionRules.storageFor(window.localStorage));
+  // The Báu Vật trial plays on a copy of the save; say so on screen the whole time.
+  if(progressionRules.storageFor(window.localStorage)?.trial){const tag=document.createElement('div');tag.textContent='BẢN THỬ BÁU VẬT · không lưu vào tài khoản thật';tag.style.cssText='position:fixed;left:50%;top:2px;transform:translateX(-50%);z-index:9999;background:#7a3fb0;color:#fff;font:800 11px/1.3 sans-serif;padding:2px 10px;border-radius:10px;pointer-events:none';document.body.append(tag);}
   if(!progressionSandbox){
     const token=new URLSearchParams(location.search).get('encounter');
     if(token){progressionBattle=progressionStore.pending();if(!progressionBattle||progressionBattle.token!==token)throw Error('Trận này đã kết thúc hoặc không còn hợp lệ. Hãy về thị trấn để vào trận mới.');}
@@ -85,7 +87,7 @@ applyCombatDamage=function(target,n){
   if(progressionIsTrial()&&target==='enemy'&&state.enemyHp<=0&&state.hp>0){progressionTrialBars++;state.enemyHp=state.enemyMax;update();message(`Thanh máu thứ ${progressionTrialBars+1} · boss thử luyện đứng dậy!`);}
   return result;
 };
-function progressionEnergyMultiplier(key){return progressionKit(key).energy*(typeof foeHas==='function'&&foeHas('chill')?1-foeStatuses.chill.value:1);}
+function progressionEnergyMultiplier(key){const lent=key===progressionBattle?.hero&&!progressionIsDuel()?progressionBattle.stats.treasure?.borrow?.energy||0:0;return progressionKit(key).energy*(1+lent)*(typeof foeHas==='function'&&foeHas('chill')?1-foeStatuses.chill.value:1);}
 // A kit's PvE-only sword edge (Hiro) counts in campaign, endless and trial fights, never in duels, spars or PvP.
 function progressionSwordFactor(key){const kit=progressionKit(key);return kit.sword*(['campaign','boss','trial'].includes(progressionBattle?.mode)&&kit.pveSword?kit.pveSword:1);}
 if(progressionBattle)HEROES[progressionBattle.hero].hp=progressionBattle.stats.hp;
@@ -178,7 +180,7 @@ function progressionDamage(side,raw,ledger=null){
 }
 const progressionOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
-  progressionCasting=true;progressionUlts++;
+  progressionCasting=true;progressionUlts++;const hpBefore=state.enemyHp;
   try{
     const kit=progressionKit();
     if(state.key==='novice'){
@@ -191,6 +193,13 @@ heroUltimate=async function(){
       if(kit.mutation&&(state.key==='ice'||state.key==='earth')){const before=state.armor;state.armor=Math.min(combatArmorCap('hero'),state.armor+Math.round(HEROES[state.key].hp*kit.mutationArmor));progressionShowGain('hero','armor',state.armor-before);}
       if(kit.mutation&&state.key==='lightning'){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.drain);state.energy=Math.min(99,state.energy+kit.energyReturn);}
       if(kit.mutation&&state.key==='shadow')await progressionShowResult('enemy',applyCombatDamage('enemy',Math.round(kit.echo*attackStat)),'TÀN ẢNH',1);
+      update();
+    }
+    // Báu vật (trial): Phá Sơn adds a share of the target's max HP once per ultimate (≤ 8× Công, PvE); Khắc Chế drains energy once.
+    const tre=!progressionIsDuel()&&['campaign','boss','trial'].includes(progressionBattle?.mode)?progressionBattle.stats.treasure:null;
+    if(tre&&state.enemyHp<hpBefore&&state.hp>0){
+      if(tre.mountain&&state.enemyHp>0){const extra=Math.min(Math.round(state.enemyMax*tre.mountain),Math.round(8*(progressionBattle.stats.attack||1)*10));await progressionShowResult('enemy',applyCombatDamage('enemy',extra),'PHÁ SƠN',1);}
+      if(tre.counter){state.enemyEnergy=Math.max(0,state.enemyEnergy-tre.counter);popActorSkill('enemy','KHẮC CHẾ −'+tre.counter,false);}
       update();
     }
     if(kit.veil&&state.hp>0&&state.enemyHp>0){progressionVeil=kit.veil;actor('hero').dataset.veiled='true';popActorSkill('hero','HÓA MỜ',false);playNoctSound('veil',{volume:.3});}

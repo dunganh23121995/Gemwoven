@@ -328,7 +328,7 @@
       <div class="encounter-body foe-card">
         <section class="sc-stage ${e.tier}${scene?' battle':''}" style="--stage-art:url('${new URL((scene||{file:mapProfile(chapter).background}).file,document.baseURI).href}')">${foe}</section>
         <h3 class="sc-title">${esc(e.enemyName)}</h3>
-        <p class="sc-meta">Cấp gợi ý <b>${e.recommended}</b> · Sinh lực <b>${fmt(e.enemyHp)}</b></p>
+        <p class="sc-meta">Cấp gợi ý <b>${e.recommended}</b> · Sinh lực <b>${fmt(e.enemyHp)}</b>${(()=>{const B={fire:'ice',earth:'lightning',ice:'earth',lightning:'fire'};return B[e.enemyKey]===hero?' <em class="sc-elem bad" title="Quái khắc tướng này: nhận ×1,5 sát thương">⚠ Bất lợi hệ</em>':B[hero]===e.enemyKey?' <em class="sc-elem good" title="Tướng này khắc quái: gây ×1,5 sát thương">✦ Khắc hệ</em>':'';})()}</p>
         ${own?`<p class="sc-skill"><b>Kỹ năng riêng</b> ${e.skills.map(k=>`<span>${esc(k)}</span>`).join(' · ')}</p>`:''}
         ${e.tactical&&e.boss?'<button type="button" class="sc-guide" data-action="guide:open">Xem nội tại và cách khắc chế boss ›</button>':''}
         <ol class="sc-goals">${goals}</ol>

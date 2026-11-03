@@ -716,3 +716,15 @@ bot nhận phương án qua `?gwv=` (chỉ QA).
   chốt `run`/`dash` scale 1,6957 → **1,38**; H2 (1,6172) không lỗi.
 - **Hiro H2/H3 (Codex soát ảnh):** đúng concept, tỉ lệ ba hình thái nhất quán (mắt–cằm 13,5/14,3/15,0 trên ô 256), chạy H3 giữ
   scale 0,90, không chạm biên; đã khử vài điểm ám hồng ở khung nghỉ H3. Đạt.
+
+### Vòng 13 (quái thường, không buff Hiro) — đã thống nhất
+
+Dữ liệu 80 trận/ô (bot trận thật, bản gốc): Hiro 1★ quái thường thắng 93–100%, trung vị 8–16, P90 19–26; boss chương 1 76%, chương 2
+44%. Mika 1★ quái thường trung vị 5–8; **ải 163 chỉ thắng 86%**. Chốt: giữ Hiro gốc; mục tiêu là **khoảng mềm** (Mika 1★: thắng
+≥ 95%, P90 ≤ 16, trung vị định hướng 6–10; Hiro 1★: thắng ≥ 93%, trung vị ≤ 16, P90 ≤ 26 — chậm hơn có chủ đích, cách nhanh hơn là
+trang bị/ngọc/Lộ trình); chương 4 **điều tra nguyên nhân** (quái nào, chết vì gì) rồi sửa đúng điểm, chỉ giảm diện rộng khi
+nhiều ải cùng xác nhận; boss chương 1 giữ (ngoại lệ nhập môn); boss chương 2 xét riêng.
+- **Nguyên nhân ải 163 (điều tra vòng 13):** HP và Công quái thường tăng đều qua chương 3→4→5 (Công/cấp gợi ý 0,0773→0,0786, HP/cấp
+  23,5→25,4), không có bước nhảy. Chương 4 là hệ **Lôi**, và Lôi khắc Hỏa (`BEATS.lightning='fire'`) → quái gây ×1,5 lên Mika; Hiro
+  không hệ nên không bị (93%). Đúng thiết kế khắc hệ: người chơi đổi tướng (Nori hệ Mộc khắc Lôi). **Không chỉnh số.** Gợi ý cho
+  giao diện: thẻ ải nên báo "Bất lợi hệ" khi tướng đang chọn bị khắc.

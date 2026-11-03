@@ -78,7 +78,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
 |---|---|---|---|---|
 | G1 | Gắn ngọc | **Dệt Ngọc** (Codex vòng 6): lỗ theo phẩm đồ (Hiếm 1 → Thần 4), 5 loại ngọc × 5 cấp do Codex vẽ (Công, Sinh Lực, Hộ Thể, Kháng, Chuẩn), cộng có trần (36% / 54% / 12% / 40% / 30%), ghép 3→1, tháo miễn phí, phân rã đồ trả ngọc; rơi ở Boss Vô Hạn tầng 20+, Sân Thử Luyện mốc 3, phiếu chọn từ nhiệm vụ tuần; Kháng chống choáng/đóng băng/hút năng lượng, Chuẩn tăng hiệu ứng Thần; tắt ở Chuẩn Hóa/giao hữu/1vs1. Giao diện bằng hình: hàng lỗ khảm, lưới ngọc, ghép 3→1. | ✅ | Tướng → ô đồ → lỗ khảm · Túi Đồ → Khác |
-| G2 | Báu vật % chỉ số, từ sự kiện nạp và đua top; hiệu ứng % máu boss, mượn kỹ năng | 5 phẩm, 3 họ (Phá Sơn %HP boss chỉ PvE, Mượn Hồn 50% bị động, Khắc Chế). Không độc quyền cho người nạp. | 🤝 lịch thu chi · 🔨 ô báu vật | §4 |
+| G2 | Báu vật % chỉ số, từ sự kiện nạp và đua top; hiệu ứng % máu boss, mượn kỹ năng | **Bản thử nghiệm cục bộ** (Codex vòng 9): Sự Kiện → Kỳ Báu Vật → "Vào bản thử" (chơi trên bản sao tài khoản, nhãn luôn hiện, thoát lúc nào cũng được). 3 họ × 5 phẩm do Codex vẽ: Phá Sơn (%HP mục tiêu khi tuyệt kỹ, PvE), Mượn Hồn (nửa phần tăng Bị Động của tướng khác), Khắc Chế (trừ năng lượng địch). Công/HP +4→20%, Thủ +1→5; 2 ô (ô 2 ở TH3), trần +30%/+30%/+10. Điểm 600/kỳ từ nhiệm vụ ngày, Boss Vô Hạn, Thử Luyện; Lam → Thần 4.800 điểm ≈ 16 tuần. Không độc quyền cho người nạp; tích nạp/đua top cần máy chủ. Tắt ở Chuẩn Hóa/giao hữu/1vs1. | ✅ thử nghiệm · 📐 máy chủ | Sự Kiện → Kỳ Báu Vật · Tướng → 2 ô bên phải |
 
 ## H. Kỹ thuật, phát hành
 

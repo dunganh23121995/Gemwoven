@@ -189,3 +189,17 @@ console.log('gems ok');
   e.purchase('legendary-weapon',1);assert.throws(()=>e.purchase('legendary-weapon',1),/tuần này/);
 }
 console.log('shop limits ok');
+{ // Báu vật trial (round 9): only the trial copy earns, shops and wears; caps; the real save stays untouched.
+  const map=new Map(),raw={getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)};
+  let e=M.makeEngine(M.storageFor(raw),{now:()=>clock,random:()=>.7});e.read();const before=raw.getItem(M.KEY);
+  assert.throws(()=>e.treasureGift('mountain'),/thử nghiệm/,'not in the real save');
+  e.trialMode(true);e=M.makeEngine(M.storageFor(raw),{now:()=>clock,random:()=>.7});
+  const a=e.treasureGift('mountain'),b=(()=>{const p=JSON.parse(raw.getItem('gemwoven.treasure.v1'));p.treasure.points=9600;p.treasure.items.push({id:'x2',family:'borrow',quality:'blue'});p.treasure.gifted=true;raw.setItem('gemwoven.treasure.v1',JSON.stringify(p));return 'x2';})();
+  for(let i=0;i<4;i++){e.treasureUpgrade(a.id);e.treasureUpgrade(b);}assert.equal(e.treasure().points,0,'two divine = 9.600 points');
+  e.treasureEquip('novice',0,a.id);assert.throws(()=>e.treasureEquip('novice',1,b),/tiến hóa 3/);
+  const p=JSON.parse(raw.getItem('gemwoven.treasure.v1'));p.heroes.novice.evolution=3;raw.setItem('gemwoven.treasure.v1',JSON.stringify(p));e.treasureEquip('novice',1,b);
+  assert.equal(M.treasureTotals(e.read(),'novice').atk,.3,'Công capped at +30%');assert.equal(M.treasureTotals(e.read(),'novice').def,.1,'Thủ capped at +10');
+  assert.equal(e.stats('novice',true).treasure,null,'off in normalized play');assert.equal(raw.getItem(M.KEY),before,'real save untouched');
+  e.trialMode(false);e=M.makeEngine(M.storageFor(raw));assert.equal(e.treasure().trial,false);
+}
+console.log('treasure trial ok');
