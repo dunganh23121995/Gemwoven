@@ -30,12 +30,22 @@ NPCS = {
                        style=dict(T=2.6, bob=.007, sway=.003, tilt=.7, grip=.6, loose=.16, front=.07, lag=1.1, lean=.5, planted=True, webp=(86, 90)),
                        # where the rest cell stands on the 941x1672 stage, and its size there (place.py)
                        stage=dict(x=295, y=528, size=225.7)),
+    "bunny": dict(what="small fluffy white rabbit with an orange bow, sitting",
+                  prompt="""Image 1 is a {what} on a plain background. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: face, eyes, nose, mouth, cheeks and the top of the head up to where the ears start. The face is never any other colour.
+- pure WHITE #FFFFFF: the round body and chest, the front paws.
+- pure GREEN #00FF00: the hind feet and the bottom of the body sitting on the ground: they never move.
+- pure RED #FF0000: both long ears, each from its base to its tip.
+- pure CYAN #00FFFF: the orange bow, the fluffy tail and small fur tufts.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.""",
+                  style=dict(T=2.2, bob=.008, sway=.003, tilt=.9, grip=0, loose=.2, front=.08, lag=1.0, lean=.4, planted=True, webp=(86, 90)),
+                  stage=dict(x=179.6, y=604.5, size=162.6)),
 }
 
 
 def register(key):
     d = HERE / key
-    R.FOREIGN[key] = dict(dir=d, sheet=d / "rig/show/rest.png", what=NPCS[key]["what"], prompt=PROMPT)
+    R.FOREIGN[key] = dict(dir=d, sheet=d / "rig/show/rest.png", what=NPCS[key]["what"], prompt=NPCS[key].get("prompt", PROMPT))
     R.STYLE[key] = NPCS[key]["style"]
     return d
 

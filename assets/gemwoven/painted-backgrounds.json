@@ -58,13 +58,14 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/npc/shopkeeper/plate-raw.png",
+    "source": "assets/gemwoven/npc/bunny/plate-raw.png",
     "reference": "assets/gemwoven/backgrounds/shop-painted.webp",
     "promptFiles": [
       "assets/gemwoven/raw/redraw-2026-11/shop-prompt.txt",
-      "assets/gemwoven/npc/shopkeeper/plate-prompt.txt"
+      "assets/gemwoven/npc/shopkeeper/plate-prompt.txt",
+      "assets/gemwoven/npc/bunny/plate-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. The shopkeeper is painted out (plate) and stands on it as a baked rig sheet (npc-shopkeeper, assets/gemwoven/npc/npc_rig.py)."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. The shopkeeper is painted out (plate) and stands on it as a baked rig sheet (npc-shopkeeper, assets/gemwoven/npc/npc_rig.py). The rabbit is painted out too and stands as npc-bunny."
   },
   "background-forge": {
     "file": "assets/gemwoven/backgrounds/forge-calm.webp",
@@ -219,5 +220,27 @@
     "promptFiles": [
       "assets/gemwoven/hall/lamp-prompt.txt"
     ]
+  },
+  "npc-bunny": {
+    "file": "assets/gemwoven/npc/bunny/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 92,
+    "stage": {
+      "x": 179.6,
+      "y": 604.5,
+      "size": 162.6
+    },
+    "screen": "shop",
+    "textless": true,
+    "source": "assets/gemwoven/npc/bunny/proc/raw-sheet-clean.png",
+    "promptFiles": [
+      "assets/gemwoven/npc/bunny/bunny-prompt.txt",
+      "assets/gemwoven/npc/bunny/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "The shop rabbit moves at rest (owner 03/11): Codex drew it alone, the rig only moves that picture."
   }
 }

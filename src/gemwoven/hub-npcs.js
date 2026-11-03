@@ -17,9 +17,10 @@
       const el=document.createElement('i');el.className='hub-npc';el.dataset.npc=k.slice(4);el.setAttribute('aria-hidden','true');
       const {x,y,size}=v.stage;Object.assign(el.style,{left:x+'px',top:y+'px',width:size+'px',height:size+'px',backgroundImage:`url("${v.file}")`,backgroundSize:`${v.cols*100}% ${v.rows*100}%`});
       scene.prepend(el);return [el,v];});
-    const show=f=>els.forEach(([el,v])=>{const i=f%v.count;el.style.backgroundPosition=`${(i%v.cols)/(v.cols-1)*100}% ${Math.floor(i/v.cols)/(v.rows-1)*100}%`;});
+    const show=t=>els.forEach(([el,v])=>{const i=Math.floor(t/(v.frameDuration||100))%v.count;el.style.backgroundPosition=`${(i%v.cols)/(v.cols-1)*100}% ${Math.floor(i/v.cols)/(v.rows-1)*100}%`;});
     show(0);
-    if(!reduced()){let f=0;const ms=els[0][1].frameDuration||100;timer=setInterval(()=>{if(!els[0][0].isConnected){clearInterval(timer);return;}show(++f);},ms);}
+    // One clock for all of them; each NPC steps at its own frame duration.
+    if(!reduced()){const start=performance.now();timer=setInterval(()=>{if(!els[0][0].isConnected){clearInterval(timer);return;}show(performance.now()-start);},40);}
     return r;
   };
 })();
