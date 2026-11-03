@@ -706,3 +706,13 @@ bot nhận phương án qua `?gwv=` (chỉ QA).
 - **Giao diện:** 15 biểu tượng (họ × phẩm) do Codex vẽ, dấu bậc, nhãn "Bản thử nghiệm cục bộ" luôn thấy, chạm xem chi tiết, Codex soát.
 - **Trần chung** ngọc + báu vật: chưa thêm; đo Công +76,8%, HP +100,2% trước. **Đo trước khi bật:** sim rồi bot thật theo từng họ/phẩm.
 - Sửa kèm: rơi ngọc Sân Thử Luyện dùng đúng mốc ≥ 3 thanh (tier ≥ 4).
+
+### Vòng 10–12 (Hiro hình thái 2/3, Mika chạy)
+
+- **Đặc tính Hiro H3:** Codex đề nghị thử ×1,5 có đo A/B; chủ dự án (03/11) yêu cầu không buff mạnh tướng miễn phí → chốt nhẹ:
+  tuyệt kỹ +15% (≈ +5% cả trận). Phương án kiếm ×1,3 (vòng 8, P1/P2) bị loại vì cùng lý do; độ dài trận quái thường của Hiro
+  sẽ xử lý ngoài sức Hiro (mở lại với Codex).
+- **Mika H3 chạy:** chủ dự án thấy mặt khi chạy to hơn khi nghỉ; Claude và Codex đo mắt–cằm độc lập (to hơn 20–28%), cùng
+  chốt `run`/`dash` scale 1,6957 → **1,38**; H2 (1,6172) không lỗi.
+- **Hiro H2/H3 (Codex soát ảnh):** đúng concept, tỉ lệ ba hình thái nhất quán (mắt–cằm 13,5/14,3/15,0 trên ô 256), chạy H3 giữ
+  scale 0,90, không chạm biên; đã khử vài điểm ám hồng ở khung nghỉ H3. Đạt.
