@@ -360,8 +360,8 @@
           ],
           "footY": 0.94,
           "frameDuration": 90,
-          "scale": 1.38,
-          "scaleNote": "1.38: face matched to the resting loop by eye-to-chin (owner 2026-11-03, measured by Claude and Codex); was 1.6957"
+          "scale": 1.45,
+          "scaleNote": "1.45: owner asked for a slightly bigger face than 1.38 (2026-11-03); 1.38 was the face matched to the resting loop by eye-to-chin (owner 2026-11-03, measured by Claude and Codex); first 1.6957"
         },
         "skill": {
           "file": "assets/heroes/forms/fire/form-3/skill.webp",
@@ -431,7 +431,7 @@
           ],
           "footY": 0.94,
           "frameDuration": 90,
-          "scale": 1.38
+          "scale": 1.45
         },
         "slash": {
           "file": "assets/heroes/forms/fire/form-3/attack.webp",
