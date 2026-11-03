@@ -13,14 +13,9 @@
       water:[[522,400,24,75],[778,175,16,55],[383,835,30,165],[573,885,26,95],[700,1095,30,75],[150,1400,32,80],[215,1400,28,70]],
       beams:true
     },
-    upgrade:{
-      lamps:[[822,170],[70,897],[912,615]],
-      crystals:[[17,756],[60,755],[909,800],[862,842]],
-      rune:'upgrade.hero-model',beams:true
-    },
-    inventory:{
-      lamps:[[240,138],[527,362],[78,355]],crystals:[[117,410],[826,140]],water:[[568,212,14,52]]
-    }
+    // Hero and bag on the calm redraws (03/11): the rune and light beams stay, the bag's potions twinkle.
+    upgrade:{rune:'upgrade.hero-model',beams:true},
+    inventory:{crystals:[[425,250],[460,250],[762,275]]}
   };
   const motes=(n,cls)=>Array.from({length:n},(_,i)=>`<b class="${cls}" style="--i:${i};--delay:${(-i*0.37).toFixed(2)}s"></b>`).join('');
   function spot(cls,[x,y,w,h],extra=''){
