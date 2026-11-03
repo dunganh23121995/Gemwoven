@@ -2153,5 +2153,17 @@
       "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
     ],
     "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "memory-dust": {
+    "file": "assets/gemwoven/ui-kit/memory-dust.webp",
+    "width": 320,
+    "height": 320,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/memory-shop/dust-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/memory-shop/dust-prompt.txt"
+    ],
+    "purpose": "Bụi Ký Ức icon (D3): Cửa Hàng · Ký Ức balance, price and preview, Túi Đồ row (Codex mockup assets/gemwoven/raw/memory-shop)."
   }
 }

@@ -56,11 +56,26 @@
   function passSeason(at){const index=Math.max(0,Math.floor((at-SEASON_START)/SEASON_MS)),start=SEASON_START+index*SEASON_MS;return {index,start,end:start+SEASON_MS};}
   const CADENCE=[
     {id:'daily',name:'Ngày',reset:'00:00',items:['Nhiệm vụ ngày','Sân Thử Luyện theo hệ (2 lượt có thưởng, thử lại thoải mái)','Quà VIP và Thẻ Tháng']},
-    {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
+    {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé + 40 Bụi Ký Ức (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới; Cửa Hàng Ký Ức bày 2 tướng','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
     {id:'banner',name:'Kỳ 2 tuần',reset:'Thứ Hai tuần lẻ',items:['Banner tướng (+ vũ khí bản mệnh)','Boss sự kiện theo tướng banner','Cửa hàng đổi mảnh (tối đa 30 mảnh/kỳ)','Báu vật chủ đề: tích nạp nhanh hơn, PvE vẫn đạt được']},
-    {id:'season',name:'Mùa 28 ngày',reset:'Thứ Hai đầu mùa',items:['Sổ Hành Trình mới','Mùa Đấu Hạng (reset mềm)','Lịch đăng nhập 28 ngày','BXH Trùm Vô Tận']},
+    {id:'season',name:'Mùa 28 ngày',reset:'Thứ Hai đầu mùa',items:['Sổ Hành Trình mới','Mùa Đấu Hạng (reset mềm)','Lịch 28 ngày: rương ngày 28 = 20 mảnh tự chọn (đang chạy)','BXH Trùm Vô Tận']},
     {id:'quarter',name:'Quý',reset:'Tuần đầu quý',items:['Thư Hùng Đại Hội','Trang phục mới','Sự kiện kỷ niệm']}
   ];
+  // Kỳ banner (D3, Claude + Codex 04/11): 14-day periods from the anchor, the 100-pull pity carries across periods. A hero
+  // runs again only 3+ periods after its last run (two starts at least 42 days apart: A → B → C → A). Rotation is on only
+  // once 3+ rare heroes are released; until then Mika stays permanent. `schedule` is what the server has announced
+  // ({period, hero}); the summon screen shows the next entry or "Chưa công bố", never a guessed countdown.
+  const BANNER={periodDays:14,anchor:CADENCE_ANCHOR,pityCarries:true,rerunGap:3,minRareForRotation:3,schedule:[]};
+  // Bụi Ký Ức (D3): "Vật liệu không bán trực tiếp", never bought with money or Đá Ngọc and never mailed. Sources: each spare
+  // copy of a 6★ hero 80, each spare fragment of a 6★ hero 1 (converted when the hero reaches 6★ and on every later gain;
+  // the main copy stays); the weekly quest milestone 40 a week; Cúp Đấu Trường 30 a month for 10 finished matches, server
+  // only (the local prototype gives 0). Hiro is outside the memory system: no dust from Hiro, no Hiro on the shelf.
+  // Cửa Hàng Ký Ức: weekly (Monday 00:00 GMT+7), at most 2 heroes in turn among those released, off the current banner and
+  // 42+ days past their first banner; 8 dust a fragment, sold 10 at a time, 40 fragments per hero per week; unowned heroes
+  // allowed (80 fragments fuse a hero). The free day-28 chest: 20 fragments of an owned hero (not Hiro, not 6★), otherwise
+  // a voucher that never expires. The jewel pass track is separate and unchanged.
+  const MEMORY={name:'Bụi Ký Ức',desc:'Vật liệu không bán trực tiếp',copyDust:80,fragmentDust:1,weeklyDust:40,cupDust:30,cupServerOnly:true,cupLocalDust:0,
+    price:8,bundle:10,capPerHeroWeek:40,heroesPerWeek:2,minDaysSinceFirstBanner:42,chest:{day:28,fragments:20},exclude:['novice']};
   // Ranked arena leagues; MMR (Glicko-2) is hidden, league points are shown. Rewards hold no Đá Ngọc.
   const LEAGUES=['Đồng','Bạc','Vàng','Bạch Kim','Kim Cương'].flatMap((name,t)=>['III','II','I'].map((d,i)=>({id:`${t}-${i}`,name:`${name} ${d}`,tier:t,points:(t*3+i)*100})))
     .concat([{id:'elite',name:'Tinh Anh',tier:5,points:1500},{id:'master',name:'Cao Thủ',tier:6,top:500},{id:'challenger',name:'Thách Đấu',tier:7,top:50}])
@@ -79,7 +94,7 @@
     {id:'semi',name:'Hạng 3–4',title:'cup-semi',items:['Danh hiệu Tứ Kiệt Tháng','Khung bạc'],frame:'silver'},
     {id:'eight',name:'Hạng 5–8',title:'cup-eight',items:['Danh hiệu Bát Hùng Tháng','Khung đồng'],frame:'bronze'},
     {id:'top10',name:'Top 10%',items:['Huy chương hồ sơ có tháng/năm']},
-    {id:'done',name:'Đủ 10 trận',items:['Dấu tham dự'],reward:{gold:20000,exp:20,essence:5}}];
+    {id:'done',name:'Đủ 10 trận',items:['Dấu tham dự','30 Bụi Ký Ức (máy chủ)'],reward:{gold:20000,exp:20,essence:5},serverReward:{memoryDust:30}}];
   const CUP_SCHEDULE={finalsHour:20,mailAfterHours:48,minField:32,status:STATUS,
     server:['Ghép người thật ±100 điểm, 30 giây mở ±200, 60 giây ±300; 90 giây cho hủy, không mất lượt','Không gặp cùng người quá 2 trận/ngày','Chung kết BO3 20:00; Top 16 dự bị, xác nhận trước 12:00 ngày tứ kết','Cần ít nhất 32 người đủ điều kiện mới trao ngôi vô địch','Lượt 20 giây · 3 lần hết giờ xử thua · 60 giây kết nối lại']};
   // Treasures: account-owned, two slots per hero (the second at evolution 3). Every quality is reachable
@@ -101,5 +116,5 @@
   // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
   const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
     desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
-  return {CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

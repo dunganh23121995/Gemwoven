@@ -4671,6 +4671,7 @@
     "assets/gemwoven/ui-kit/medal-locked.webp",
     "assets/gemwoven/ui-kit/medal-worn.webp",
     "assets/gemwoven/ui-kit/medal.webp",
+    "assets/gemwoven/ui-kit/memory-dust.webp",
     "assets/gemwoven/ui-kit/parchment.webp",
     "assets/gemwoven/ui-kit/plaque-on.webp",
     "assets/gemwoven/ui-kit/plaque.webp",
@@ -4796,7 +4797,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 155947346
+   "bytes": 155977850
   },
   {
    "id": "hero-earth-f1",

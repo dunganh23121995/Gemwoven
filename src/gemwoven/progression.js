@@ -69,6 +69,8 @@
   // resources. Non-enumerable: never a wallet/material and never accepted by grant().
   Object.defineProperty(RESOURCES,'heroFragments',{value:['Mảnh '+HEROES[SUMMON_BANNER.hero].name,'portrait-'+SUMMON_BANNER.hero],enumerable:false});
   Object.defineProperty(RESOURCES,'noviceFragments',{value:['Mảnh Hiro','portrait-novice'],enumerable:false});
+  // Bụi Ký Ức (D3, liveops.js MEMORY): kept in p.memory, not the wallet. Non-enumerable, so grant(), the shop and mail never take it.
+  Object.defineProperty(RESOURCES,'memoryDust',{value:['Bụi Ký Ức','memory-dust'],enumerable:false});
   const STAR_MILESTONES=[50,100,150];
   // Hiro is never summoned, so his copies come from play (newbie week, campaign daily quest, chapter star chests and first clears of
   // every tenth endless floor). 80 fragments fuse into a copy, as for every hero.
@@ -107,7 +109,7 @@
     return NEWBIE.map((reward,i)=>({day:i+1,reward,claimed:claimed.includes(i+1),open:i+1<=days}));}
   // Weekly quests (reset Monday 00:00 GMT+7): one ticket each, so play gives about 40 tickets per 28 days
   // (one a day from the visit quest plus three a week here).
-  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Trùm Vô Tận',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000}}];
+  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Trùm Vô Tận',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000,memoryDust:40}}];
   const week=ms=>{const d=new Date(ms+7*3600000),back=(d.getUTCDay()+6)%7;return new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()-back)).toISOString().slice(0,10);};
   const EVENT_TEMPLATE={id:'new-event',title:'Sự kiện sắp ra mắt',description:'Cuộc phiêu lưu mới đang được chuẩn bị.',enabled:false,status:'coming-soon',startsAt:'',endsAt:'',banner:'icon-event',order:0};
   const clone=v=>JSON.parse(JSON.stringify(v));
@@ -307,8 +309,38 @@
       state:r.level>=100&&r.evolution>=5?'max':r.level<cap?(pay(relicLevelCost(r))?'ready':'short'):h.level<r.evolution*50?'locked':pay(relicEvolveCost(r))?'ready':'short',route:'upgrade'});
     return rows;
   }
-  // Release state: Hiro is always available and only the current banner hero drops.
-  function heroAvailable(key){return key==='novice'||key===SUMMON_BANNER.hero;}
+  // Release state: Hiro is always available; a rare hero is released from the start of its first banner (GMT+7 date).
+  // Only the current banner hero drops from summons.
+  const RELEASES={fire:'2026-11-02'};
+  function heroAvailable(key){return key==='novice'||key in RELEASES;}
+  // ----- Kỳ banner and Cửa Hàng Ký Ức (D3; numbers in liveops.js BANNER / MEMORY) -----
+  const gmt7=date=>Date.parse(date+'T00:00:00+07:00'),WEEK_MS=7*DAY_MS;
+  function bannerPeriod(at){const B=OPS().BANNER,start0=gmt7(B.anchor),len=B.periodDays*DAY_MS,index=Math.max(0,Math.floor((at-start0)/len)),start=start0+index*len;return {index,start,end:start+len};}
+  // An announced schedule is valid when every hero is a released rare hero and its runs are 3+ periods apart.
+  function bannerCheck(schedule,releases=RELEASES){const B=OPS().BANNER,errors=[],last={};
+    for(const s of [...schedule].sort((a,b)=>a.period-b.period)){
+      if(!(s.hero in releases)||s.hero==='novice')errors.push(`Kỳ ${s.period}: ${s.hero} chưa phát hành`);
+      if(s.hero in last&&s.period-last[s.hero]<B.rerunGap)errors.push(`Kỳ ${s.period}: ${s.hero} chạy lại sau ${s.period-last[s.hero]} kỳ (cần ≥ ${B.rerunGap})`);
+      last[s.hero]=s.period;}
+    return errors;}
+  function bannerPlan(at,{releases=RELEASES,schedule=OPS().BANNER.schedule}={}){
+    const B=OPS().BANNER,P=bannerPeriod(at),rare=Object.keys(releases).filter(k=>k!=='novice');
+    const rotating=rare.length>=B.minRareForRotation&&!bannerCheck(schedule,releases).length;
+    if(!rotating)return {rotating:false,period:P.index,start:P.start,end:P.end,hero:SUMMON_BANNER.hero,next:null};
+    const cur=schedule.find(s=>s.period===P.index),nxt=schedule.find(s=>s.period===P.index+1);
+    return {rotating:true,period:P.index,start:P.start,end:P.end,hero:cur?.hero||SUMMON_BANNER.hero,next:nxt?{hero:nxt.hero,start:P.end}:null};}
+  // First banner start of a hero: its release date or an earlier announced period, whichever comes first.
+  function bannerFirstStart(hero,{releases=RELEASES,schedule=OPS().BANNER.schedule}={}){
+    const B=OPS().BANNER,len=B.periodDays*DAY_MS,runs=schedule.filter(s=>s.hero===hero).map(s=>gmt7(B.anchor)+s.period*len);
+    if(hero in releases)runs.push(gmt7(releases[hero]));return runs.length?Math.min(...runs):Infinity;}
+  // The week's shelf, fixed at Monday 00:00 GMT+7: eligible heroes in release order, two a week in turn, so each one comes round.
+  function memoryOffer(at,opts={}){
+    const X=OPS().MEMORY,releases=opts.releases||RELEASES,schedule=opts.schedule||OPS().BANNER.schedule,key=week(at),start=gmt7(key);
+    const plan=bannerPlan(start,{releases,schedule}),first=k=>bannerFirstStart(k,{releases,schedule});
+    const eligible=Object.keys(releases).filter(k=>HEROES[k]&&!X.exclude.includes(k)&&k!==plan.hero&&start-first(k)>=X.minDaysSinceFirstBanner*DAY_MS).sort((a,b)=>first(a)-first(b)||a.localeCompare(b));
+    const index=Math.max(0,Math.round((start-gmt7(OPS().CADENCE_ANCHOR))/WEEK_MS)),n=Math.min(X.heroesPerWeek,eligible.length);
+    const heroes=Array.from({length:n},(_,i)=>eligible[(index*X.heroesPerWeek+i)%eligible.length]);
+    return {week:key,start,end:start+WEEK_MS,heroes,banner:plan.hero};}
   function levelCostRange(level,count=1){check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const total={gold:0,exp:0,seals:0};let steps=0;for(let l=level;l<MAX_LEVEL&&steps<count;l++,steps++)for(const [id,n]of Object.entries(levelCost(l)))total[id]+=n;return steps?{cost:total,levels:steps}:null;}
   const CRAFT_RARITIES=['uncommon','rare','epic','legendary','divine'];
   function craftGate(rarity){const rank=CRAFT_RARITIES.indexOf(rarity)+1;check(rank>0,'Công thức không hợp lệ.');return rarity==='divine'?300:rank*20;}
@@ -639,17 +671,43 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function clockNow(p,write){const raw=now();p.clock??={max:Math.max(p.updated||0,p.offlineAt||0)};p.clock.behind=raw<p.clock.max-CLOCK_TOLERANCE;current=Math.max(p.clock.max,raw);if(write)p.clock.max=current;return current;}
     const onTime=p=>check(!p.clock.behind,'Giờ thiết bị đang sớm hơn lần chơi trước. Hãy chỉnh lại ngày giờ để nhận thưởng theo thời gian.');
     function weekly(p){if(!p.weekly||week(current)>p.weekly.week)p.weekly={week:week(current),progress:{campaign:0,boss:0,daily:0},claimed:[]};}
-    function daily(p){weekly(p);passSync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
+    function daily(p){weekly(p);passSync(p);memorySync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
     function bankOffline(p){const r=offlineRaw(p,current);p.offlineBank={hours:r.hours,gold:r.gold,exp:r.exp,seals:r.seals};p.offlineAt=Math.max(current,p.offlineAt);}
     // Expired mail (and any unclaimed gift in it) leaves the box at the next transaction.
-    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);save(p);return value;}
+    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);memorySync(p);save(p);return value;}
     function findMail(p,mailId){const m=p.mail.find(m=>m.id===mailId&&mailLive(m,current));check(m,'Thư không tồn tại hoặc đã hết hạn.');return m;}
     function read(){const p=load();clockNow(p,false);daily(p);return clone(p);}
     function amount(p,id){return id in p.wallet?p.wallet[id]:p.materials[id]||0;}
     function spend(p,cost){for(const [id,n] of Object.entries(cost)){check(Number.isSafeInteger(n)&&n>=0,'Chi phí không hợp lệ.');check(amount(p,id)>=n,`Thiếu ${RESOURCES[id]?.[0]||id}: cần ${n.toLocaleString('vi-VN')}.`);}for(const [id,n]of Object.entries(cost)){if(id in p.wallet)p.wallet[id]-=n;else p.materials[id]-=n;}p.daily.progress.spend+=cost.gold||0;}
     function grant(p,reward){const actual={};for(const [id,requested]of Object.entries(reward)){check(id!=='gems','Đá Ngọc chỉ nhận từ giao dịch nạp được máy chủ xác nhận.');check(Object.keys(RESOURCES).includes(id)&&Number.isSafeInteger(requested)&&requested>=0,'Phần thưởng không hợp lệ.');const n=id==='seals'?Math.min(requested,Math.max(0,DAILY_SEAL_CAP-p.daily.seals)):requested;if(id==='seals')p.daily.seals+=n;if(id in p.wallet)p.wallet[id]+=n;else p.materials[id]=(p.materials[id]||0)+n;actual[id]=n;}return actual;}
     // grant() plus Mảnh Hiro, which are fragments, not a wallet resource.
-    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}return actual;}
+    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,memoryDust=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}
+      if(memoryDust){check(Number.isSafeInteger(memoryDust)&&memoryDust>0,'Phần thưởng không hợp lệ.');memoryState(p).dust+=memoryDust;actual.memoryDust=memoryDust;}return actual;}
+    // ----- Bụi Ký Ức (D3) -----
+    // Test heroes from the local preview grants never feed the real economy.
+    const PREVIEW_HEROES={shadow:'noct-preview-2026-10',fire:'mika-preview-2026-10'};
+    const previewHero=(p,key)=>!!(PREVIEW_HEROES[key]&&p.previewGrants?.includes(PREVIEW_HEROES[key]));
+    function memoryState(p){const m=p.memory??={dust:0,week:'',bought:{},season:-1,chest:false,vouchers:0,log:[]};m.bought??={};m.log??=[];m.vouchers|=0;m.dust|=0;return m;}
+    // Spare copies and fragments of a 6★ hero (not Hiro, not a preview hero) become dust; the main copy stays. The source is
+    // emptied in the same step, so nothing converts twice. The week's shelf counts and the season chest roll here too.
+    function memorySync(p){const O=OPS();if(!O?.MEMORY)return;const X=O.MEMORY,m=memoryState(p),wk=week(current),season=O.passSeason(current).index;
+      if(m.week!==wk){m.week=wk;m.bought={};}
+      if(m.season!==season){if(m.season>=0&&m.season<season&&!m.chest){m.vouchers++;note(p,`Lịch 28 ngày mùa ${m.season+1}: cất phiếu 20 mảnh chưa nhận`);}m.season=season;m.chest=false;}
+      for(const [key,h] of Object.entries(p.heroes)){if(X.exclude.includes(key)||h.stars<6||previewHero(p,key))continue;
+        const copies=Math.max(0,(h.copies|0)-1),fragments=Math.max(0,p.fragments[key]|0),dust=copies*X.copyDust+fragments*X.fragmentDust;if(!dust)continue;
+        h.copies=1;p.fragments[key]=0;m.dust+=dust;m.log.unshift({at:current,hero:key,copies,fragments,dust});m.log=m.log.slice(0,20);
+        note(p,`${HEROES[key].name} 6★: ${copies} bản, ${fragments} mảnh dư → ${dust} Bụi Ký Ức`);}}
+    function memoryChestOpen(at){const O=OPS(),s=O.passSeason(at);return at>=s.start+(O.MEMORY.chest.day-1)*DAY_MS;}
+    const memoryChoices=p=>Object.keys(p.heroes).filter(k=>!OPS().MEMORY.exclude.includes(k)&&p.heroes[k].stars<6);
+    function memoryChestGive(p,hero){check(memoryChoices(p).includes(hero),'Chọn tướng đã sở hữu, chưa 6★ (không phải Hiro).');const n=OPS().MEMORY.chest.fragments;p.fragments[hero]=(p.fragments[hero]||0)+n;return {hero,fragments:n};}
+    function memoryView(p){const O=OPS(),X=O.MEMORY,m=memoryState(p),offer=memoryOffer(current),s=O.passSeason(current),open=memoryChestOpen(current),choices=memoryChoices(p);
+      const heroes=offer.heroes.map(key=>{const bought=m.bought[key]||0,h=p.heroes[key];
+        return {hero:key,name:HEROES[key].name,bought,left:Math.max(0,X.capPerHeroWeek-bought),owned:!!h,stars:h?.stars||0,fragments:p.fragments[key]||0,maxed:(h?.stars||0)>=6,
+          canBuy:(h?.stars||0)<6&&X.capPerHeroWeek-bought>=X.bundle&&m.dust>=X.price*X.bundle};});
+      return {dust:m.dust,price:X.price,bundle:X.bundle,bundlePrice:X.price*X.bundle,cap:X.capPerHeroWeek,week:offer.week,weekEnd:offer.end,banner:offer.banner,heroes,
+        empty:!heroes.length,log:m.log.slice(0,5),vouchers:m.vouchers,
+        chest:{season:s.index,start:s.start,end:s.end,day:Math.min(O.PASS.seasonDays,Math.floor((current-s.start)/DAY_MS)+1),openDay:X.chest.day,open,claimed:m.chest,fragments:X.chest.fragments,
+          ready:open&&!m.chest,choices,opensAt:s.start+(X.chest.day-1)*DAY_MS}};}
     function returnGems(p,list){for(const g of list)for(const k of g.sockets||[])if(k){p.gems??={};p.gems[k]=(p.gems[k]||0)+1;}}
     const shopKey=product=>product.limit.per==='day'?day(current):'w'+week(current);
     function shopLeft(p,product){if(!product.limit)return Infinity;const was=p.shopBoughtBy?.[product.id];return Math.max(0,product.limit.n-(was?.key===shopKey(product)?was.n:0));}
@@ -745,7 +803,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
           p.summon.total++;p.summon.dry++;p.summon.fragmentDry++;
           if(p.summon.dry>=SUMMON_PITY)kind='hero';else if(p.summon.fragmentDry>=30&&!['hero','fragments'].includes(kind))kind='fragments';
           if(forced)kind=forced;
-          const key=SUMMON_BANNER.hero;let result;
+          const key=OPS()?.BANNER?bannerPlan(current).hero:SUMMON_BANNER.hero;let result;
           if(kind==='hero'&&test===true){const all=Object.keys(HEROES).filter(h=>h!=='novice').flatMap(h=>[1,2,3].map(form=>[h,form])),[hero,form]=all[(p.summon.total-1)%all.length];
             p.summon.dry=0;result={kind,hero,form,rarity:'legendary',name:HERO_FORMS[hero]?.[form-1]?.name||HEROES[hero].name,test:true};}
           else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
@@ -802,6 +860,17 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       fuseGems:key=>tx(p=>{const gem=gemParse(key);check(gem&&gem.level<5,'Ngọc đã ở cấp tối đa.');check((p.gems?.[key]||0)>=3,'Cần 3 viên cùng loại cùng cấp.');spend(p,{gold:2000*gem.level});
         p.gems[key]-=3;if(!p.gems[key])delete p.gems[key];const next=gemKey(gem.type,gem.level+1);p.gems[next]=(p.gems[next]||0)+1;note(p,`Ghép ${GEMS[gem.type].name} cấp ${gem.level+1}`);return {gem:next};}),
       pickGem:type=>tx(p=>{check(GEMS[type],'Loại ngọc không hợp lệ.');check((p.gemChoices||0)>0,'Không có phiếu chọn ngọc.');p.gemChoices--;p.gems??={};const k=gemKey(type,1);p.gems[k]=(p.gems[k]||0)+1;return {gem:k};}),
+      // Cửa Hàng Ký Ức and the day-28 chest (D3). Bụi Ký Ức is never bought with money or Đá Ngọc.
+      memory:()=>memoryView(read()),
+      buyMemory:hero=>tx(p=>{onTime(p);const X=OPS().MEMORY,m=memoryState(p),offer=memoryOffer(current);check(offer.heroes.includes(hero),'Tướng này không có trên kệ Ký Ức tuần này.');
+        check((p.heroes[hero]?.stars||0)<6,'Tướng đã 6★: mảnh sẽ thành Bụi Ký Ức.');const bought=m.bought[hero]||0;check(bought+X.bundle<=X.capPerHeroWeek,`Đã mua đủ ${X.capPerHeroWeek} mảnh tướng này tuần này.`);
+        const cost=X.price*X.bundle;check(m.dust>=cost,`Cần ${cost} Bụi Ký Ức.`);m.dust-=cost;m.bought[hero]=bought+X.bundle;p.fragments[hero]=(p.fragments[hero]||0)+X.bundle;
+        note(p,`Cửa Hàng Ký Ức: ${X.bundle} mảnh ${HEROES[hero].name}`);return {hero,fragments:X.bundle,dust:cost,left:X.capPerHeroWeek-m.bought[hero]};}),
+      // Day 28 of the season: 20 fragments of an owned hero (not Hiro, not 6★); with no such hero, a voucher that never expires.
+      claimMemoryChest:hero=>tx(p=>{onTime(p);const m=memoryState(p);check(memoryChestOpen(current),`Rương mở ngày ${OPS().MEMORY.chest.day} của mùa.`);check(!m.chest,'Đã nhận rương mùa này.');
+        let got;if(hero==null){check(!memoryChoices(p).length,'Hãy chọn một tướng để nhận mảnh.');m.vouchers++;got={voucher:1};}else got=memoryChestGive(p,hero);
+        m.chest=true;note(p,'Lịch 28 ngày: '+(got.voucher?'cất phiếu 20 mảnh':`20 mảnh ${HEROES[hero].name}`));return got;}),
+      useMemoryVoucher:hero=>tx(p=>{const m=memoryState(p);check(m.vouchers>0,'Không có phiếu 20 mảnh.');const got=memoryChestGive(p,hero);m.vouchers--;note(p,`Phiếu 20 mảnh: ${HEROES[hero].name}`);return got;}),
       shopLeft:productId=>{const product=WORLD.SHOP.find(x=>x.id===productId);return product?shopLeft(read(),product):0;},
       // ----- Báu vật trial -----
       treasure:()=>{const p=read();return {trial:!!p.trialMode,points:p.treasure?.points||0,shards:p.treasure?.shards||0,items:(p.treasure?.items||[]).map(t=>({...t,stats:treasureStats(t)})),slots:p.treasure?.slots||{},claims:p.treasure?.claims||{}};},
@@ -843,6 +912,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       notices:()=>{const p=read();daily(p);const at=current,claim={},hint={};
         claim.quests=DAILY.filter(q=>!p.daily.claimed.includes(q.id)&&(p.daily.progress[q.id]||0)>=q.target).length;
         claim.events=newbieState(p,at).filter(r=>r.open&&!r.claimed).length+WEEKLY.filter(q=>!p.weekly.claimed.includes(q.id)&&(p.weekly.progress[q.id]||0)>=q.target).length;
+        if(OPS()?.MEMORY){const mv=memoryView(p);claim.events+=(mv.chest.ready?1:0)+(mv.vouchers&&mv.chest.choices.length?1:0);}
         claim.offline=offline(p,at).hours>=1?1:0;
         let chests=0;for(let c=1;c<=Math.min(WORLD.CHAPTERS.length,Math.floor(p.campaign.cleared/50)+1);c++){const pr=chapterProgress(p,c);chests+=STAR_MILESTONES.filter(m=>pr.total>=m&&!pr.claimed.includes(m)).length;}claim.campaign=chests;
         const live=p.mail.filter(m=>mailLive(m,at));claim.mail=live.filter(m=>mailPending(m)).length;
@@ -889,5 +959,5 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {RELEASES,bannerPeriod,bannerCheck,bannerPlan,bannerFirstStart,memoryOffer,CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });

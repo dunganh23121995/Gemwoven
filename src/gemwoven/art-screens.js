@@ -54,6 +54,9 @@
     // Dệt Ngọc: each gem as its picture with a count (Khác); the weekly choice token.
     for(const [k,n] of Object.entries(p.gems||{}).filter(([,n])=>n>0).sort(([a],[b])=>a.localeCompare(b))){const g=M.gemParse(k);if(!g)continue;const asset='gem-'+k;A[asset]={file:`assets/gemwoven/gems/gem-${k}.webp`,width:160,height:160};rows.push([asset,`${M.GEMS[g.type].name} ${g.level}`,fmt(n),'other',`${M.GEMS[g.type].stat} +${Math.round(M.GEMS[g.type].values[g.level-1]*100)}%`]);}
     if(p.gemChoices>0){A['gem-choice']={file:'assets/gemwoven/gems/gem-precision-1.webp',width:160,height:160};rows.push(['gem-choice','Phiếu chọn ngọc',fmt(p.gemChoices),'other','Đổi lấy một viên ngọc cấp 1 tự chọn.']);}
+    // Bụi Ký Ức and the day-28 voucher (D3), shown once owned.
+    if(p.memory?.dust>0)rows.push(['memory-dust','Bụi Ký Ức',fmt(p.memory.dust),'other','Vật liệu không bán trực tiếp. Đổi mảnh tướng ở Cửa Hàng · Ký Ức.']);
+    if(p.memory?.vouchers>0){A['memory-voucher']=A['ticket'];rows.push(['memory-voucher','Phiếu 20 mảnh',fmt(p.memory.vouchers),'other','Đổi 20 mảnh một tướng đã sở hữu, chưa 6★ (không phải Hiro). Không hết hạn.']);}
     for(const d of M.WORLD.EXPANSION.definitions){const c=M.counterProgress(p,d.chapter);if(c.shards)rows.push([d.counterKey,d.counter,c.shards+'/12','other',d.counterText+' Tự dùng đúng chủ đề; bậc '+c.rank+'/4.']);}
     inventory.splice(0,inventory.length,...rows);
     if(state.screen==='inventory'){
@@ -105,6 +108,8 @@
     const product=M.WORLD.SHOP.find(row=>row.kind==='resource'&&row.target===resourceFor[asset]);
     if(asset.startsWith('gem-')&&asset!=='gem-choice'){action(nodes,'item-action','gem:detail',{gem:asset.slice(4)});label(nodes,'item-action','Ghép');label(nodes,'source','Trùm Vô Tận 20+\nThử Luyện · Tuần');}
     if(asset==='gem-choice'){action(nodes,'item-action','gem:choice');label(nodes,'item-action','Chọn');}
+    if(asset==='memory-dust'){action(nodes,'item-action','art:memory-open');label(nodes,'item-action','Đổi Mảnh');label(nodes,'source','Tướng 6★ dư\nNhiệm vụ tuần');}
+    if(asset==='memory-voucher'){action(nodes,'item-action','memory:chest');label(nodes,'item-action','Dùng');label(nodes,'source','Lịch 28 ngày\nSự Kiện');}
     const counterDef=M.WORLD.EXPANSION.definitions.find(d=>d.counterKey===asset);
     if(counterDef){action(nodes,'item-action','guide:chapter',{chapter:counterDef.chapter});label(nodes,'item-action','Đến Chương');label(nodes,'source','Tinh anh 3 sao\nMốc 10 / 20 / 30 / 40');}
     // The item's action and "buy more" sit side by side under the held count.
@@ -136,6 +141,9 @@ ${price}`);}
     label(nodes,'subtitle',M.SUMMON_BANNER.title+'\nTướng nổi bật kỳ này');Object.assign(find(nodes,'subtitle'),{rect:[300,276,341,80],size:28});find(nodes,'subtitle-board').rect=[284,268,373,96];
     Object.assign(find(nodes,'featured-board'),{rect:[50,1178,842,174]});label(nodes,'featured-title','Phần Thưởng Hiếm');Object.assign(find(nodes,'featured-title'),{rect:[84,1194,400,38],size:31});
     nodes=remove(nodes,/\.featured-note$/);
+    // D3: the only change allowed on the locked summon screen, one small line about the next banner (never a guessed countdown).
+    const plan=window.GemwovenLiveOps?.BANNER?M.bannerPlan(Date.now()):null,next=plan?.next;
+    nodes.push(text('summon','next-banner',next?`Kỳ sau: ${M.HEROES[next.hero].name} · ${new Date(next.start+7*3600000).toISOString().slice(5,10).split('-').reverse().join('/')}`:'Kỳ sau: Chưa công bố',[450,1195,396,40],28,'gold',{align:'right',className:'next-banner'}));
     const star=M.SUMMON_BANNER.hero,name=M.HEROES[star].name;
     // Only the banner's prizes: its hero, that hero's fragments, and a top-rarity weapon.
     [['hero',`portrait-${star}`,'Tướng\n'+name,'hero:'+star,{}],['fragment',`fragment-${star}`,'Mảnh\n'+name,'art:fragments',{}],['weapon',M.SLOT_ART.weapon,'Vũ Khí\n'+M.RARITIES.divine.name,'journey:featured-gear',{slot:'weapon',rarity:'divine',asset:M.SLOT_ART.weapon}]].forEach(([id,asset,text,act,data],i)=>nodes.push(button('summon','featured-'+id,text,[80+i*272,1233,256,98],act,data,{asset:'inventory-slot',icon:asset,iconRect:[13,12,70,72],labelRect:[100,0,156,96],size:30,tone:'gold',align:'left',className:'featured-equipment'})));
@@ -217,15 +225,46 @@ ${price}`);}
     nodes.push(button('upgrade','choose-novice','Hiro',[660,711,61,66],'do:hero',{hero:'novice'},{asset:'avatar-ring',icon:'portrait-novice',iconRect:[12,8,37,48],labelHidden:true,selected:hero==='novice'}));
     return nodes;
   }
+  // Cửa Hàng · Ký Ức (D3, Codex mockup assets/gemwoven/raw/memory-shop): the week's two heroes on the shelf, the dust
+  // balance on a ribbon, 10 fragments for 80 dust (no quantity stepper), the rules behind ⓘ. Rules: progression.js memory().
+  function memoryShop(nodes,p,state){
+    const v=G.engine.memory(),pick=v.heroes.find(h=>h.hero===state.memoryHero)||v.heroes[0],key='shop';state.memoryHero=pick?.hero||null;
+    nodes=remove(nodes,/\.(product-(?!name$|description$|preview$)|price-|quantity(-minus|-plus)?$|purchase-price$)/);
+    nodes.push(button(key,'memory-balance',fmt(v.dust),[354,850,232,74],'art:memory-info',{},{asset:'kit-ribbon-info',fit:'fill',icon:'memory-dust',iconRect:[20,7,60,60],labelRect:[82,0,136,74],size:34,tone:'ink',className:'memory-balance'}));
+    if(!pick){nodes.push(image(key,'memory-empty-row','kit-row-read',[132,950,680,132],{fit:'fill'}),image(key,'memory-empty-icon','kit-icon-hourglass',[164,972,88,88]),
+        text(key,'memory-empty','Chưa có tướng đủ điều kiện\n· kỳ sau',[262,956,530,120],35,'ink',{className:'memory-empty'}));}
+    else v.heroes.forEach((h,i)=>{const x=v.heroes.length>1?224+i*316:380;nodes.push(button(key,'memory-'+h.hero,h.name,[x,906,180,180],'art:memory-pick',{hero:h.hero},{asset:'inventory-slot',icon:'fragment-'+h.hero,iconRect:[18,14,144,144],labelHidden:true,selected:h.hero===pick.hero}),
+        text(key,'memory-name-'+h.hero,h.name,[x-30,1088,240,44],34,'gold',{className:'memory-name'}));});
+    label(nodes,'product-name',pick?pick.name:'Bụi Ký Ức');
+    label(nodes,'product-description',state.shopMessage||(pick?`${v.bundle} mảnh/lần\n${pick.owned?'Đang có '+fmt(pick.fragments):`Có ${fmt(pick.fragments)}/80`}`:'Vật liệu không bán trực tiếp'));
+    const preview=find(nodes,'product-preview');preview.asset=pick?'fragment-'+pick.hero:'memory-dust';preview.rect=[350,1128,264,306];
+    for(const id of ['product-name','product-description']){const n=find(nodes,id);if(n)n.className=((n.className||'')+' memory-copy').trim();}action(nodes,'product-preview','art:memory-info');
+    nodes.push(button(key,'memory-info','i',[298,1222,54,54],'art:memory-info',{},{asset:'kit-round',fit:'fill',size:32,tone:'ink',className:'memory-info'}));
+    if(pick)nodes.push(text(key,'memory-left',`Còn ${pick.left}/${v.cap} mảnh\ntuần này`,[632,1238,232,104],36,'ink',{className:'memory-left'}));
+    const buy=find(nodes,'buy');
+    if(!pick){action(nodes,'buy','art:memory-info',{},true);label(nodes,'buy','Kỳ sau');nodes=remove(nodes,/\.purchase-board$/);}
+    else{action(nodes,'buy','art:memory-buy',{hero:pick.hero},!pick.canBuy);label(nodes,'buy',pick.maxed?'Đã 6★':pick.left<v.bundle?'Hết lượt':'Mua · '+v.bundlePrice);
+      if(!pick.maxed&&pick.left>=v.bundle)Object.assign(buy,{icon:'memory-dust',iconRect:[170,19,52,52],labelRect:[6,0,166,90],className:'memory-buy'});}
+    return nodes;
+  }
   function shop(nodes,p,state){
-    const tab=state.shopTab||'gold',catalog=M.WORLD.SHOP.filter(row=>tab==='equipment'?row.kind==='gear':row.kind==='resource'&&row.currency===(tab==='gold'?'gold':'gems'));
+    const tab=state.shopTab||'gold';
+    if(tab==='memory'&&window.GemwovenLiveOps?.MEMORY){nodes=memoryShop(nodes,p,state);shopTabs(nodes,tab);return shopPlates(nodes);}
+    const catalog=M.WORLD.SHOP.filter(row=>tab==='equipment'?row.kind==='gear':row.kind==='resource'&&row.currency===(tab==='gold'?'gold':'gems'));
     const product=catalog.find(row=>row.id===state.shopProduct)||catalog[0],quantity=product.kind==='gear'?1:state.quantity||1;state.shopProduct=product.id;
     nodes=remove(nodes,/\.(product-(?!name$|description$|preview$)|price-)/);
     catalog.forEach((row,i)=>nodes.push(button('shop','product-'+row.id,row.name,[105+i%6*123,846+Math.floor(i/6)*126,115,120],'art:shop-product',{product:row.id},{asset:'inventory-slot',icon:row.asset,iconRect:[15,7,87,94],labelHidden:true,selected:row.id===product.id})));
     label(nodes,'product-name',product.name);label(nodes,'product-description',state.shopMessage||product.description);find(nodes,'product-preview').asset=product.asset;
     action(nodes,'product-preview','art:shop-product',{product:product.id});label(nodes,'quantity',quantity);const left=product.limit?G.engine.shopLeft(product.id):null;label(nodes,'purchase-price',fmt(product.price*quantity)+(product.currency==='gold'?' vàng':' Ngọc')+(left!=null?` · còn ${left}`:''));action(nodes,'quantity-minus','art:quantity',{delta:-1},quantity<=1);action(nodes,'quantity-plus','art:quantity',{delta:1},product.kind==='gear'||quantity>=20);action(nodes,'buy','art:purchase',{product:product.id,count:quantity},p.wallet[product.currency]<product.price*quantity||product.kind==='gear'&&p.equipment.length>=500);
-    [['gold','Vàng'],['gems','Đá Ngọc'],['equipment','Trang Bị']].forEach(([id,name],i)=>{label(nodes,'shop-tab-'+i,name);action(nodes,'shop-tab-'+i,'art:shop-tab',{tab:id});find(nodes,'shop-tab-'+i).selected=tab===id;});
-    // Codex review 27: larger round −/+ around the count, a wider buy plate.
+    shopTabs(nodes,tab);return shopPlates(nodes);
+  }
+  // Four equal tabs on the wooden strip (Ký Ức joins Vàng / Đá Ngọc / Trang Bị).
+  function shopTabs(nodes,tab){
+    const base=find(nodes,'shop-tab-0');if(base&&!find(nodes,'shop-tab-3'))nodes.splice(nodes.indexOf(base)+3,0,{...base,id:'shop.shop-tab-3',text:'shop.shop-tab-3'});
+    [['gold','Vàng'],['gems','Đá Ngọc'],['equipment','Trang Bị'],['memory','Ký Ức']].forEach(([id,name],i)=>{label(nodes,'shop-tab-'+i,name);action(nodes,'shop-tab-'+i,'art:shop-tab',{tab:id});Object.assign(find(nodes,'shop-tab-'+i),{selected:tab===id,rect:[112+i*186,758,181,82],size:29});});
+  }
+  // Codex review 27: larger round −/+ around the count, a wider buy plate.
+  function shopPlates(nodes){
     for(const [id,rect] of [['quantity-minus',[634,1240,70,70]],['quantity-plus',[786,1240,70,70]],['quantity',[704,1248,82,52]],['buy',[630,1344,236,90]]]){const n=find(nodes,id);if(n)n.rect=rect;}
     return nodes;
   }
@@ -315,6 +354,11 @@ ${price}`);}
     if(command==='quest')state.dailyQuest=+d.index;
     if(command==='fragments'){state.category='fragment';state.bagPage=0;ctx.navigate('inventory');return true;}
     if(command==='shop-resource'){state.shopResource=d.resource;state.quantity=1;}
+    if(command==='memory-open'){state.shopTab='memory';state.shopMessage='';if(state.screen!=='shop'){ctx.navigate('shop');return true;}}
+    if(command==='memory-pick'){state.memoryHero=d.hero;state.shopMessage='';}
+    if(command==='memory-buy'){try{const r=G.engine.buyMemory(d.hero);state.shopMessage=`Đã nhận ${r.fragments} mảnh ${M.HEROES[r.hero].name}.`;}catch(error){state.shopMessage=error.message;}}
+    if(command==='memory-info'){const X=window.GemwovenLiveOps?.MEMORY,v=G.engine.memory();if(!X)return true;
+      ctx.showModal('Bụi Ký Ức',['memory-dust'],`${X.desc} · đang có ${fmt(v.dust)}.\nNguồn: bản dư tướng 6★ ${X.copyDust} · mảnh dư 6★ ${X.fragmentDust} · nhiệm vụ tuần ${X.weeklyDust} · Cúp Đấu Trường ${X.cupDust}/tháng (máy chủ, sắp ra mắt). Hiro không đổi bụi.\nKệ làm mới Thứ Hai 00:00 (GMT+7): tối đa ${X.heroesPerWeek} tướng lần lượt, không Hiro, không tướng đang banner, đã qua ${X.minDaysSinceFirstBanner} ngày từ banner đầu.\n${X.bundle} mảnh = ${X.price*X.bundle} bụi · tối đa ${X.capPerHeroWeek} mảnh/tướng/tuần · 80 mảnh ghép một tướng.`);return true;}
     if(command==='shop-tab'){state.shopTab=d.tab;state.shopProduct=null;state.quantity=1;state.shopMessage='';}
     if(command==='shop-product'){const product=M.WORLD.SHOP.find(row=>row.id===d.product);if(!product)return true;state.shopProduct=product.id;state.shopTab=product.kind==='gear'?'equipment':product.currency;state.quantity=1;state.shopMessage='';if(state.screen!=='shop'){ctx.navigate('shop');return true;}}
     if(command==='purchase'){try{const r=G.engine.purchase(d.product,Number(d.count));state.shopMessage='Đã nhận '+M.WORLD.SHOP.find(row=>row.id===r.product).name+' ×'+r.count+'.';}catch(error){state.shopMessage=error.message;}}

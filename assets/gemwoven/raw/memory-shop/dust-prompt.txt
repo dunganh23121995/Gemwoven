@@ -1,0 +1,14 @@
+Use case: illustration-story.
+Create a production UI asset sheet for Gemwoven containing exactly ONE new asset: the Memory Dust currency icon. All other components will be reused from the existing UI kit.
+
+Background: perfectly uniform solid magenta #FF00FF, opaque, edge to edge. No gradient, texture or background shadow.
+
+Draw one isolated icon centered within a square extraction region, surrounded by generous empty magenta space on every side. No duplicate sizes, alternate states, labels, text, numbers, frame or slot.
+
+Subject: a small round, slightly squat clear-glass vial with a short silver neck and a simple stopper, filled with pale lavender and silver stardust. A few compact silver sparkles near the neck suggest stored memories. Keep all sparkles close to the silhouette and within the extraction region.
+
+Style: match the supplied Gemwoven painted UI kit and item art: warm fantasy craftsmanship, softly modeled volume, crisp contours, restrained metallic highlights, rich but readable detail. The icon must remain recognizable at 40–48 pixels and also work enlarged as the selected-item illustration.
+
+Use a strong silhouette and a concentrated lavender-silver powder mass. Distinguish it clearly from blue faceted premium gems and orange-red flame essence. Avoid prominent gemstone shapes, flame shapes, gold-coin forms, portrait imagery or elaborate ornament.
+
+Use opaque painted highlights and clearly bounded glass surfaces; avoid translucent outer glow, motion blur or magenta reflections that would complicate chroma-key extraction. No detached particles far from the icon, no cast shadow on the magenta background, no watermark.

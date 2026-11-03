@@ -279,3 +279,64 @@ console.log('journey pass ok');
   assert.ok(M.TITLE_RULES.filter(t=>t.id.startsWith('cup-')).every(t=>t.server),'cup titles are server titles');
 }
 console.log('cup ok');
+{ // D3 (Claude + Codex): Bụi Ký Ức, Cửa Hàng Ký Ức, the free day-28 chest and banner rotation rules. No Đá Ngọc anywhere.
+  const O=require('../../src/gemwoven/liveops.js'),X=O.MEMORY,six=(o={})=>({level:1,stars:6,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[],...o});
+  assert.deepEqual([X.copyDust,X.fragmentDust,X.weeklyDust,X.cupDust,X.cupLocalDust,X.price,X.bundle,X.capPerHeroWeek,X.heroesPerWeek,X.minDaysSinceFirstBanner,X.chest.fragments],[80,1,40,30,0,8,10,40,2,42,20]);
+  assert.ok(!Object.keys(M.RESOURCES).includes('memoryDust')&&!M.MAIL_RESOURCES.includes('memoryDust'),'dust is not a wallet resource and cannot be mailed');
+  assert.ok(!M.WORLD.SHOP.some(r=>r.target==='memoryDust'),'dust is never sold');assert.equal(M.WEEKLY.find(q=>q.id==='daily').reward.memoryDust,X.weeklyDust);
+  clock=Date.UTC(2026,10,4,6);let {engine:e,edit}=fixture();
+  // Conversion: spare copies 80 and spare fragments 1 each, once, the main copy kept; Hiro and preview heroes are outside.
+  edit(p=>{p.heroes.novice=six({copies:4});p.fragments.novice=50;p.heroes.fire=six({copies:3});p.fragments.fire=25;});
+  e.claimDaily('login');let p=e.read();assert.equal(p.memory.dust,2*80+25);assert.deepEqual([p.heroes.fire.copies,p.fragments.fire],[1,0],'main copy kept');
+  assert.deepEqual([p.heroes.novice.copies,p.fragments.novice],[4,50],'Hiro gives no dust');
+  e.select('novice');assert.equal(e.read().memory.dust,185,'converted once');
+  edit(p=>{p.fragments.fire=5;p.heroes.fire.copies=2;});e.select('novice');assert.equal(e.read().memory.dust,185+85,'later gains convert too');
+  edit(p=>{p.previewGrants=['noct-preview-2026-10'];p.heroes.shadow=six({copies:5});});e.select('novice');assert.equal(e.read().heroes.shadow.copies,5,'test heroes never feed the economy');
+  // Reaching 6★ converts what is left after the star cost.
+  edit(p=>{p.heroes.earth=six({stars:5,copies:1+8+3});p.wallet.gold=2e6;p.materials.essence=500;});e.starUp('earth');assert.equal(e.read().heroes.earth.copies,1);assert.equal(e.read().memory.dust,270+3*80);
+  // Weekly milestone: 40 dust once a week from the third weekly quest.
+  edit(p=>{p.weekly.progress.daily=12;});assert.equal(e.claimWeekly('daily').memoryDust,40);assert.throws(()=>e.claimWeekly('daily'),/Đã nhận/);assert.equal(e.read().memory.dust,550);
+  // Today only Mika is released and she is on the banner: an empty shelf, dust kept.
+  let v=e.memory();assert.ok(v.empty);assert.equal(v.dust,550);assert.equal(v.banner,'fire');assert.throws(()=>e.buyMemory('fire'),/không có trên kệ/);assert.throws(()=>e.buyMemory('novice'),/không có trên kệ/);
+  assert.equal(e.read().wallet.gems,0,'no Đá Ngọc');
+  // Banner rules: 14-day periods from 02/11/2026, reruns 3+ periods apart, rotation only with 3+ released rare heroes.
+  const rel={fire:'2026-11-02',ice:'2026-11-16',earth:'2026-11-30'};
+  assert.equal(M.bannerPeriod(Date.parse('2026-11-16T00:00:00+07:00')).index,1);assert.equal(M.bannerPeriod(Date.parse('2026-11-15T23:59:00+07:00')).index,0);
+  assert.equal(M.bannerCheck([{period:0,hero:'fire'},{period:1,hero:'ice'},{period:2,hero:'fire'}],rel).length,1,'a rerun after 2 periods is refused');
+  assert.deepEqual(M.bannerCheck([{period:0,hero:'fire'},{period:1,hero:'ice'},{period:2,hero:'earth'},{period:3,hero:'fire'}],rel),[],'A → B → C → A');
+  assert.equal(M.bannerCheck([{period:1,hero:'shadow'}],rel).length,1,'an unreleased hero cannot be scheduled');
+  const sched=[{period:0,hero:'fire'},{period:1,hero:'ice'},{period:2,hero:'earth'},{period:3,hero:'fire'}];
+  assert.equal(M.bannerPlan(clock,{releases:{fire:'2026-11-02',ice:'2026-11-16'},schedule:sched}).rotating,false,'two rare heroes: Mika stays permanent');
+  let plan=M.bannerPlan(Date.parse('2026-11-20T12:00:00+07:00'),{releases:rel,schedule:sched});assert.deepEqual([plan.rotating,plan.hero,plan.next.hero],[true,'ice','earth']);
+  plan=M.bannerPlan(Date.parse('2026-12-20T12:00:00+07:00'),{releases:rel,schedule:sched});assert.equal(plan.next,null,'nothing announced: "Chưa công bố"');
+  assert.equal(M.bannerPlan(clock).next,null);assert.ok(O.BANNER.pityCarries);
+  edit(p=>{p.summon.dry=57;});const keep=clock;clock+=15*DAY;assert.equal(e.read().summon.dry,57,'pity carries into the next period');clock=keep;
+  // Shelf: released, off the banner, 42+ days past the first banner, never Hiro; two a week in turn, fixed at Monday 00:00 GMT+7.
+  assert.deepEqual(M.memoryOffer(Date.parse('2027-01-06T12:00:00+07:00'),{releases:rel,schedule:sched}).heroes,['ice'],'Nori is only 35 days past her first banner');
+  const four={fire:'2026-11-02',ice:'2026-11-02',earth:'2026-11-02',lightning:'2026-11-02',novice:'2026-11-02'},weeks=['2026-12-16','2026-12-23','2026-12-30'].map(d=>M.memoryOffer(Date.parse(d+'T12:00:00+07:00'),{releases:four,schedule:[]}).heroes);
+  assert.deepEqual(weeks,[['earth','ice'],['lightning','earth'],['ice','lightning']],'every eligible hero comes round; Mika on the banner and Hiro never');
+  assert.deepEqual(M.memoryOffer(Date.parse('2026-12-13T23:59:00+07:00'),{releases:four,schedule:[]}).heroes,[],'the week before day 42 is still empty');
+  // Buying (simulated release of Yuki and Nori): 80 dust for 10, 40 a hero a week, unowned allowed, 6★ refused, weekly reset.
+  Object.assign(M.RELEASES,{ice:'2026-09-01',earth:'2026-09-15'});
+  try{({engine:e,edit}=fixture());edit(p=>{p.memory={dust:500,week:'',bought:{},season:-1,chest:false,vouchers:0,log:[]};p.heroes.earth=six();});
+    v=e.memory();assert.deepEqual(v.heroes.map(h=>h.hero),['ice','earth']);assert.ok(v.heroes[0].canBuy&&!v.heroes[1].canBuy);
+    assert.throws(()=>e.buyMemory('earth'),/6★/);for(let i=0;i<4;i++)e.buyMemory('ice');assert.throws(()=>e.buyMemory('ice'),/40 mảnh/);
+    p=e.read();assert.deepEqual([p.memory.dust,p.fragments.ice,p.wallet.gems],[500-320,40,0]);
+    clock=Date.UTC(2026,10,8,17,1);assert.equal(e.memory().heroes[0].left,40,'Monday 00:01 GMT+7: a new week');e.buyMemory('ice');e.buyMemory('ice');
+    edit(p=>{p.memory.dust=300;p.fragments.ice=80;});e.fuse('ice');assert.ok(e.read().heroes.ice,'80 fragments fuse an unowned hero');
+    edit(p=>{p.memory.dust=0;});assert.throws(()=>e.buyMemory('ice'),/Cần 80/);
+  }finally{delete M.RELEASES.ice;delete M.RELEASES.earth;clock=Date.UTC(2026,10,4,6);}
+  // Day-28 chest: 20 fragments of an owned hero (not Hiro, not 6★), otherwise a voucher that never expires.
+  ({engine:e,edit}=fixture());const s0=O.passSeason(clock);assert.throws(()=>e.claimMemoryChest(),/ngày 28/);
+  clock=s0.start+27*DAY+3600000;assert.ok(e.memory().chest.ready);assert.ok(e.notices().claim.events>=1,'the chest lights the Sự Kiện dot');
+  assert.throws(()=>e.claimMemoryChest('novice'),/Hiro/);assert.deepEqual(e.claimMemoryChest(),{voucher:1},'Hiro only: a voucher');assert.throws(()=>e.claimMemoryChest(),/Đã nhận/);
+  edit(p=>{p.heroes.fire=six({stars:3});p.heroes.shadow=six();});assert.deepEqual(e.memory().chest.choices,['fire'],'owned, not Hiro, not 6★');
+  assert.throws(()=>e.useMemoryVoucher('shadow'),/6★/);assert.deepEqual(e.useMemoryVoucher('fire'),{hero:'fire',fragments:20});assert.throws(()=>e.useMemoryVoucher('fire'),/Không có phiếu/);
+  clock=s0.end+3600000;e.select('novice');assert.equal(e.memory().vouchers,0,'claimed season: nothing carried');
+  clock=O.passSeason(clock).end+3600000;e.select('novice');assert.equal(e.memory().vouchers,1,'an unclaimed chest is kept as a voucher');
+  clock=O.passSeason(clock).start+27*DAY+60000;assert.throws(()=>e.claimMemoryChest(),/chọn một tướng/);assert.equal(e.claimMemoryChest('fire').fragments,20);
+  // Cúp Đấu Trường dust is server-only: the local prototype gives none.
+  assert.deepEqual(O.CUP_PRIZES.find(z=>z.id==='done').serverReward,{memoryDust:30});
+  clock=Date.UTC(2026,10,4,6);({engine:e}=fixture());const cb=e.begin('cup',1,{hero:'fire'});e.settle(cb.token,true,0);assert.equal(e.memory().dust,0);
+}
+console.log('memory dust ok');

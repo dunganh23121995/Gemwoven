@@ -17971,14 +17971,6 @@
     "textless": true,
     "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
   },
-  "plaza-ui-i-bell": {
-    "file": "assets/gemwoven/plaza/ui/i-bell.webp",
-    "width": 200,
-    "height": 171,
-    "transparent": true,
-    "textless": true,
-    "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
-  },
   "plaza-ui-i-block": {
     "file": "assets/gemwoven/plaza/ui/i-block.webp",
     "width": 200,
@@ -18375,14 +18367,6 @@
     "file": "assets/gemwoven/plaza/ui/x-empty.webp",
     "width": 187,
     "height": 200,
-    "transparent": true,
-    "textless": true,
-    "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
-  },
-  "plaza-ui-x-plaza": {
-    "file": "assets/gemwoven/plaza/ui/x-plaza.webp",
-    "width": 200,
-    "height": 162,
     "transparent": true,
     "textless": true,
     "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
@@ -19179,6 +19163,18 @@
       "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
     ],
     "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "memory-dust": {
+    "file": "assets/gemwoven/ui-kit/memory-dust.webp",
+    "width": 320,
+    "height": 320,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/memory-shop/dust-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/memory-shop/dust-prompt.txt"
+    ],
+    "purpose": "Bụi Ký Ức icon (D3): Cửa Hàng · Ký Ức balance, price and preview, Túi Đồ row (Codex mockup assets/gemwoven/raw/memory-shop)."
   },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",

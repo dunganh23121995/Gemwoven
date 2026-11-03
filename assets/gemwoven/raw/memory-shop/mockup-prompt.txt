@@ -1,0 +1,45 @@
+Use case: ui-mockup.
+Create ONE landscape approval board with exactly THREE equal portrait game viewports side by side, each preserving the 941:1672 aspect ratio. No phone hardware. High-resolution, readable Vietnamese with correct diacritics.
+
+References: Images 1 and 3 are the approved Shop layout and preservation targets; Image 2 is the Events layout target; Image 4 provides supporting material/rendering style only. Image 5 is a contact sheet of the existing Gemwoven UI-kit pieces to reuse (wooden tab, active tab, info ribbon, reward socket, gold and steel buttons, round button, chest), hero portraits (Yuki, Nori, Mika), a Yuki fragment, and the new Memory Dust vial (last).
+
+Preserve the approved Shop composition in both Shop panels: mushroom house, cat-girl merchant and rabbit, wooden shelves, hanging shop sign, left description parchment, large selected-item illustration in the lower center, purchase panel on the lower right. Preserve the top HUD and bottom navigation from the references. Do not redesign the store or shift its architectural landmarks.
+
+All frames, buttons, panels, slots and icons must look like richly painted game assets: carved wood, aged parchment, leather, brass and foliage. No plain CSS-style cards. Treat all text and numbers as separate overlay typography, not lettering engraved into reusable art.
+
+LEFT — CURRENT EMPTY MEMORY SHOP:
+Four equal tabs on the existing wooden strip:
+“Vàng”, “Đá Ngọc”, “Trang Bị”, “Ký Ức”.
+Select “Ký Ức” with the existing golden active-tab treatment.
+Inside the shelf area, add a small reused ribbon holding a lavender-silver Memory Dust vial icon and the illustrative balance “120”; no plus button.
+Center a small hourglass and this exact two-line message on a reused parchment row:
+“Chưa có tướng đủ điều kiện”
+“· kỳ sau”
+No hero products, locked portraits or fake stock.
+Lower-left description: “Bụi Ký Ức”, “Vật liệu không bán trực tiếp”, with a small information button.
+Lower-center: large Memory Dust icon.
+Lower-right: disabled painted steel button “Kỳ sau”, no purchase price.
+
+CENTER — HYPOTHETICAL FUTURE MEMORY SHOP:
+Same Shop background, HUD, navigation, tab geometry and dust balance.
+Show exactly two products, Yuki and Nori, using supplied existing hero portrait/fragment art. These are future stock examples, not currently released offers.
+Select Yuki using a reused golden slot.
+Keep the lower three-part Shop layout:
+left description “Yuki” and “10 mảnh”;
+center large Yuki fragment illustration;
+right remaining stock “Còn 40/40 mảnh tuần này” above a gold button “Mua · [Memory Dust icon] 80”.
+Fixed bundle of ten fragments; no quantity stepper.
+Put eligibility, reset schedule and conversion rules behind an information button, not in long visible paragraphs.
+
+RIGHT — EVENTS WITH SELECTOR OPEN:
+Preserve the Events environment, top HUD, bottom navigation and existing event sections.
+Add one compact module inside the scrolling content: leather title “Lịch 28 ngày”, an information button, a progress bar, one reused chest in a reward socket, “20 mảnh tự chọn” and “Miễn phí”. No 28-cell calendar.
+The repeating 28-day season is anchored to 2 November 2026. Depict day 28 reached: “Ngày 28/28”.
+Show a centered painted parchment popup over the content, with a subtle dark veil behind it; keep HUD and navigation visible.
+Popup title “Chọn tướng”; subtitle “20 mảnh”.
+For this example account, Mika is already owned and below six stars: show her existing portrait as the eligible selected option. Exclude Hiro.
+Gold confirmation button “Nhận 20 mảnh”; small close control using an existing painted round button.
+Keep part of the compact calendar module visible around the popup.
+
+Memory Dust must be a round little glass vial with a silver neck, filled with pale lavender and silver sparkling powder, clearly distinct from blue premium crystals and fiery essence.
+Keep visible copy sparse, spacing comfortable and controls readable at phone scale. No additional systems, new shop architecture, new HUD currencies or promotional banners.

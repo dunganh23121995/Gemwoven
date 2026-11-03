@@ -51,7 +51,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 |---|---|---|---|---|
 | D1 | Sự kiện đều theo tuần | Nhiệm vụ tuần (thứ Hai 00:00 GMT+7) | ✅ | Sự Kiện |
 | D2 | Thay đổi hoàn toàn theo 2 tuần, 1 tháng | Kỳ banner 2 tuần, mùa 28 ngày, ngày neo 02/11/2026. | ✅ lịch · 📐 nội dung kỳ | Sự Kiện → Lịch |
-| D3 | Chu kỳ lặp để lấy thêm mảnh tướng | Chạy lại banner (≥ 6 tuần), Cửa hàng Ký Ức, rương chọn mảnh, Sổ nhánh Diệu Ngọc. | 📐 · 🔨 sổ | §11 |
+| D3 | Chu kỳ lặp để lấy thêm mảnh tướng | **Bụi Ký Ức** (vật liệu không bán trực tiếp: bản dư tướng 6★ 80, mảnh dư 1, nhiệm vụ tuần 40, Cúp 30/tháng từ máy chủ; Hiro ngoài hệ). **Cửa Hàng · Ký Ức**: 2 tướng/tuần lần lượt (đã qua 42 ngày từ banner đầu, ngoài banner), 10 mảnh = 80 bụi, tối đa 40/tướng/tuần; hiện kệ trống vì Mika đang ở banner. **Rương miễn phí ngày 28**: 20 mảnh tự chọn hoặc phiếu. Banner 14 ngày, chạy lại cách ≥ 42 ngày, xoay khi ≥ 3 tướng hiếm (nay Mika thường trực). Sổ Diệu Ngọc giữ nguyên. | ✅ bụi, Ký Ức, rương · 📐 Cúp, lịch banner (máy chủ) | Cửa Hàng → **Ký Ức**; Sự Kiện → **Lịch 28 ngày**; Triệu Hồi "Kỳ sau"; §9, §20 vòng D3 |
 | D4 | Boss vô hạn: xử lý, thưởng, quái nào, cần nhiều hay đại diện trâu? | Giữ Boss Vô Hạn theo tầng; thêm **Sân Thử Luyện**: một boss trâu không bao giờ ngã, 15 lượt, tính sát thương, 2 lượt có thưởng/ngày, thử tướng thoải mái. | ✅ | Boss Vô Hạn |
 
 ## E. Đấu trường

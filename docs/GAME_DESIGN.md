@@ -263,7 +263,8 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 | Trang bị Huyền thoại/Thần | | ✔ (giới hạn tuần) | ✔ | | | |
 | **Tướng hiếm** | | | ✔ banner | | | bán trực tiếp |
 | Mảnh tướng banner | | | ✔ | ✔ đổi ≤ 30/kỳ | | |
-| Mảnh tướng cũ | | | | Cửa hàng Ký Ức | ✔ (giới hạn tuần) | |
+| Mảnh tướng cũ | | | | Cửa Hàng Ký Ức (Bụi Ký Ức) · rương ngày 28 | ✔ (giới hạn tuần) | |
+| **Bụi Ký Ức** | | | bản/mảnh dư tướng 6★ | ✔ nhiệm vụ tuần | ✔ Cúp (máy chủ) | bán bằng tiền, Đá Ngọc, vàng; gửi thư |
 | Mảnh Hiro | | | | ✔ | ✔ | bán bằng tiền |
 | Vũ khí bản mệnh | | | ✔ banner vũ khí | mảnh | | |
 | Báu vật | | | | PvE + tích nạp | | triệu hồi |
@@ -281,8 +282,28 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
   bình ~63 lượt. Tiến độ bảo đảm **giữ nguyên khi đổi banner**. Không cần thêm "điểm đổi".
 - Ngân sách vé miễn phí mục tiêu ≈ **40 vé/28 ngày** (đang có ~1/ngày + mốc cấp; thiếu phần nhiệm vụ tuần).
 - Banner tướng 2 tuần; banner vũ khí bản mệnh song song; banner thường trực khi có ≥ 3 tướng hiếm.
-- Chạy lại một tướng sau ít nhất 3 kỳ (6 tuần); giữa các lần có **Cửa hàng Ký Ức** (Bụi Ký Ức từ bản trùng
-  sau 6★ và đấu trường).
+- **Kỳ banner [Có · D3, Claude + Codex 04/11]:** kỳ **14 ngày** neo **02/11/2026 00:00 GMT+7**; bảo đảm 100 lượt mang
+  sang kỳ sau. Chạy lại: **kỳ chạy lại − kỳ trước ≥ 3** (hai lần bắt đầu cách ≥ 42 ngày, ví dụ A → B → C → A). Lịch xoay
+  chỉ bật khi có **≥ 3 tướng hiếm đã phát hành**; hiện Mika thường trực. Lịch do máy chủ công bố (`liveops.js` BANNER.schedule,
+  kiểm bằng `bannerCheck`); màn Triệu Hồi giữ nguyên hình, chỉ thêm dòng nhỏ "Kỳ sau: …" hoặc "Kỳ sau: Chưa công bố", không đếm
+  ngược suy đoán. Phát hành = ngày mở banner đầu (`RELEASES` trong `progression.js`).
+- **Bụi Ký Ức [Có · D3]** — "Vật liệu không bán trực tiếp" (người chi tiền vẫn nhận gián tiếp từ bản trùng; không hứa độc lập
+  với chi tiêu). Nguồn: mỗi **bản dư** của tướng đã 6★ = **80**, mỗi **mảnh dư** của tướng 6★ = **1** (đổi tự động khi lên 6★
+  và mỗi lần nhận thêm, luôn giữ bản chính, nguồn bị xóa cùng lúc nên không đổi hai lần); **mốc nhiệm vụ tuần 40/tuần** (nhiệm
+  vụ "Nhận thưởng nhiệm vụ ngày 12 lần", một lần); **Cúp Đấu Trường đủ 10 trận 30/tháng chỉ từ máy chủ** (bản thử cục bộ 0).
+  **Hiro ngoài hẳn hệ Ký Ức**: không đổi bụi từ Hiro, không bán mảnh Hiro. Tướng của quà thử nghiệm không đổi bụi. Không mua
+  bằng tiền/Đá Ngọc, không gửi qua thư, không có trong cửa hàng thường. Bụi và mảnh không hết hạn.
+- **Cửa Hàng · Ký Ức [Có]** (tab thứ 4): làm mới **Thứ Hai 00:00 GMT+7**; tối đa **2 tướng/tuần**, xoay lần lượt theo thứ tự
+  phát hành trong các tướng: đã phát hành, ngoài banner hiện tại, **đã qua ≥ 42 ngày từ lần mở banner đầu**, không Hiro. Thiếu
+  tướng thì bày ít hơn, bụi vẫn tích. **8 bụi/mảnh, mua 10 mảnh = 80 bụi**, tối đa **40 mảnh/tướng/tuần**; mua được tướng chưa sở
+  hữu (80 mảnh ghép một tướng); tướng đã 6★ không mua (mảnh sẽ thành bụi). Hiện Mika đang ở banner nên kệ trống:
+  "Chưa có tướng đủ điều kiện · kỳ sau".
+- **Rương miễn phí ngày 28 [Có]** (Sự Kiện → Lịch 28 ngày): ngày 28 của mỗi mùa 28 ngày, **20 mảnh tự chọn** một tướng đã sở
+  hữu, không Hiro, chưa 6★; không có lựa chọn hợp lệ thì cất **phiếu không hết hạn** (Túi Đồ → Khác); lỡ ngày 28 của một mùa
+  đã chơi thì sang mùa mới tự thành phiếu. Sổ nhánh Diệu Ngọc (80 mảnh/mùa, trả phí) giữ nguyên, là nguồn riêng.
+- **Nhịp bổ sung miễn phí (Codex):** bụi tuần 20 mảnh/28 ngày + rương ngày 28 20 mảnh = **80 mảnh/56 ngày** cho tướng đã có;
+  mở tướng chưa có chỉ bằng bụi tuần ≈ 16 tuần cộng thời gian chờ hàng. Triệu hồi vẫn là đường mở bộ sưu tập. Người mua Diệu
+  Ngọc: 120 so với 40 mảnh/mùa; tỷ lệ 8 bản dư đổi 1 bản đích cần theo dõi khi có số liệu thật.
 - 6★ cần 20 bản (1 chính + 19) ≈ 1.260 lượt trung bình — mục tiêu chi tiêu cao, đúng định hướng
   "kiếm tiền từ tướng có hình thái".
 
@@ -326,7 +347,7 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 - **Ngân sách miễn phí mỗi 28 ngày:** vé = 28 (Ghé thăm) + 12 (nhiệm vụ tuần) + 10 (sổ miễn phí, khi có) + mốc cấp
   tướng ≈ **50**; tuần đầu thêm 9 từ Tân Thủ. Mảnh Hiro = ~168 (nhiệm vụ vượt ải ngày) + rương sao/tầng boss theo tiến độ.
   6★ Hiro chỉ bằng nhiệm vụ ngày cần ~240 ngày; rương và tầng boss rút ngắn còn khoảng 6–8 tháng với người chơi đều.
-- **Vòng lấy mảnh tướng cũ:** chạy lại banner (≥ 6 tuần), Cửa hàng Ký Ức (tuần), rương chọn mảnh ở lịch 28 ngày.
+- **Vòng lấy mảnh tướng cũ [Có · D3]:** chạy lại banner (≥ 42 ngày), Cửa Hàng Ký Ức (tuần), rương 20 mảnh ngày 28 (§9).
 - **Giảm nghĩa vụ đăng nhập** (Codex): nhận bù ngày lỡ ở Tân Thủ; thẻ tháng tự gửi thư; Sân Thử Luyện chỉ 2 lượt
   có thưởng.
 - **Mẫu sự kiện cho Studio** (mở rộng `docs/event.schema.json` khi có máy chủ): Đăng nhập N ngày, Tích nạp, Tiêu
@@ -780,3 +801,19 @@ không chỉnh số**.
 - **Top 8:** thêm điều kiện 30 trận, 5 trong 7 ngày cuối (chống ngồi điểm). **Bản thử:** không trao thưởng, kể cả vàng nhỏ (cả hai cùng ý).
 - **Bản thử khác máy chủ:** không cổng ải 30, không áp ≥ 32 người, trận AI–AI phân định lúc 20:00; tỷ số hòa chưa có (trận cục bộ chỉ thắng/thua).
 
+### Vòng D3 (04/11, chu kỳ lặp lấy thêm mảnh tướng) — đã thống nhất, đã làm
+- **Tỷ lệ bụi:** Claude đề xuất 50 bụi/bản dư, 1/mảnh → Codex: cùng 80 mảnh sẽ có giá trị khác nhau tùy đã ghép hay chưa.
+  Chốt **80/bản, 1/mảnh**. Đồng ý.
+- **Bụi tuần:** Claude đề xuất 10 → Codex: với giá 8/mảnh cần 64 tuần mới đủ 80 mảnh. Chốt **40/tuần** từ một mốc nhiệm vụ tuần. Đồng ý.
+- **Cúp:** 30 bụi/tháng khi đủ 10 trận, không theo thắng/hạng, chỉ máy chủ; bản thử 0. **Hiro** ngoài hẳn hệ Ký Ức (nếu đổi
+  được, mảnh Hiro từ nhiệm vụ ngày thành nguồn nuôi tướng hiếm thường trực). Đồng ý.
+- **Kệ Ký Ức:** cho mua tướng chưa sở hữu nhưng chỉ tướng đã qua ≥ 42 ngày từ banner đầu, ngoài banner hiện tại; 2 tướng/tuần
+  xoay lần lượt (không bốc ngẫu nhiên khiến người chơi chờ vô hạn). Đồng ý.
+- **Chạy lại banner:** viết bằng công thức "kỳ chạy lại − kỳ trước ≥ 3" (câu "không lặp trong ba kỳ trước" đòi tối thiểu 8 tuần).
+  Lịch xoay chỉ khi ≥ 3 tướng hiếm đã phát hành; tướng có dữ liệu chưa phát hành không tự vào lịch. Đồng ý.
+- **Rương ngày 28:** Claude định coi nhánh Diệu Ngọc là thay thế → Codex không đồng ý (Diệu Ngọc là nhánh trả phí, hai nhóm
+  người chơi khác nhau). Chốt rương **miễn phí 20 mảnh** tự chọn, phiếu khi chưa có lựa chọn. Đồng ý.
+- **Giao diện:** Codex phê bình màn Cửa Hàng/Sự Kiện, viết prompt và vẽ mockup (`assets/gemwoven/raw/memory-shop/mockup-raw.png`,
+  8,5/10), vẽ icon Bụi Ký Ức; dựng bằng UI kit có sẵn, rồi Codex chấm bản dựng (điểm ghi ở `docs/REQUEST_TRACKER.md` D3).
+- **Chờ máy chủ:** thưởng Cúp, xác thực thời gian/giao dịch, chống nhận lặp, công bố lịch banner. Tài khoản thử cục bộ không
+  chuyển số dư sang bản phát hành. Kiểm thử: `qa/gemwoven/check-depth.cjs` ("memory dust ok").
