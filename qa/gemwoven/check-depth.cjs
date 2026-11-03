@@ -203,3 +203,14 @@ console.log('shop limits ok');
   e.trialMode(false);e=M.makeEngine(M.storageFor(raw));assert.equal(e.treasure().trial,false);
 }
 console.log('treasure trial ok');
+{ // Lò Rèn (review 19): several strengthen levels are priced and paid in one go, or not at all.
+  const map=new Map(),raw={getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)};
+  const e=M.makeEngine(raw,{now:()=>clock,random:()=>.7});e.read();const p=JSON.parse(raw.getItem(M.KEY));
+  p.campaign.cleared=40;p.wallet.gold=200000;Object.assign(p.materials,{ore:300,wood:60,cloth:60,essence:40});raw.setItem(M.KEY,JSON.stringify(p));
+  const g=e.craft('weapon','rare'),gold=e.read().wallet.gold,plan=e.strengthenPlan(g.id);
+  assert.ok(plan.to>0&&plan.to<=20,'the purse reaches some level');assert.ok(plan.cost.gold<=gold,'never more than the purse');
+  const r=e.strengthenTo(g.id,3);assert.deepEqual([r.from,r.to],[0,3]);assert.equal(e.read().wallet.gold,gold-(900+1800+2700),'three levels at once');
+  const q=JSON.parse(raw.getItem(M.KEY));q.wallet.gold=100;raw.setItem(M.KEY,JSON.stringify(q));
+  assert.throws(()=>e.strengthenTo(g.id,10));assert.equal(e.read().equipment.find(x=>x.id===g.id).level,3,'nothing half done');
+}
+console.log('forge ok');

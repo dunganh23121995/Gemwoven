@@ -1,0 +1,116 @@
+/* Lò Rèn (forge-ui.js, Codex design review 19). */
+.fg-float>.art{animation:fg-bob 3.2s ease-in-out infinite}
+.fg-float.q-uncommon>.art{filter:drop-shadow(0 0 14px #93c487)}
+.fg-float.q-rare>.art{filter:drop-shadow(0 0 16px #74b6f0)}
+.fg-float.q-epic>.art{filter:drop-shadow(0 0 18px #c28aff)}
+.fg-float.q-legendary>.art{filter:drop-shadow(0 0 20px #ffc55b)}
+.fg-float.q-divine>.art{filter:drop-shadow(0 0 22px #ff8585)}
+@keyframes fg-bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.reduced-motion .fg-float>.art{animation:none}
+.live-panel.fg-hero-host{background:none;padding:0;border:0;box-shadow:none;overflow:visible}
+.fg-hero{display:flex;align-items:center;gap:8px;height:96px;padding:0 6px;border-radius:48px;background:rgba(43,26,14,.82);border:3px solid #c9a35a}
+.fg-hero img{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid #c9a35a}
+.fg-hero b{flex:1;font:800 28px Cambria,serif;color:#ffe3a0;white-space:nowrap}
+.fg-hero button{width:44px;height:76px;border:0;background:none;color:#ffe3a0;font:900 44px/1 Cambria,serif;padding:0}
+.fg-hero button:disabled{opacity:.3}
+.fg-panel{padding:20px 34px 24px!important;display:flex;flex-direction:column;gap:12px;color:#3a220e}
+.fg-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fg-tabs button{display:flex;align-items:center;justify-content:center;gap:8px;height:84px;border-radius:16px;border:3px solid #a77b3c;background:linear-gradient(#f3e2bd,#d9bd88);font:800 27px Cambria,serif;color:#4a2a10}
+.fg-tabs button img{width:48px;height:48px;object-fit:contain}
+.fg-tabs button.on{background:linear-gradient(#ffe39a,#e8b24a);border-color:#6b3f12;box-shadow:0 0 0 3px #fff3c4 inset}
+.fg-slots{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.fg-slot{position:relative;height:108px;border-radius:14px;border:4px solid var(--q);background:radial-gradient(circle at 50% 40%,#fff6df,#d8be8c);padding:4px}
+.fg-slot img{width:100%;height:66px;object-fit:contain}
+.fg-slot.empty img{opacity:.3;filter:grayscale(1)}
+.fg-slot>b{position:absolute;top:2px;right:6px;font:900 22px Cambria,serif;color:#6b3f12}
+.fg-slot small{display:block;font:700 19px Cambria,serif;color:#4a2a10}
+.fg-slot.on{box-shadow:0 0 0 4px #fff3c4,0 0 16px #ffb631;transform:translateY(-3px)}
+.fg-body{flex:1;display:flex;flex-direction:column;gap:12px;justify-content:space-between}
+.fg-ingots{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.fg-ingot{height:96px;border-radius:14px;border:3px solid var(--q);background:#fff6df;padding:4px}
+.fg-ingot img{width:62px;height:52px;object-fit:contain;filter:drop-shadow(0 0 7px var(--q))}
+.fg-ingot small{display:block;font:800 18px Cambria,serif;color:#4a2a10;white-space:nowrap}
+.fg-ingot.on{background:color-mix(in srgb,var(--q) 45%,#fff6df);box-shadow:0 0 0 3px #6b3f12}
+.fg-ingot.locked img{filter:grayscale(1);opacity:.45}
+.fg-compare{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.fg-compare>i{font:900 40px Cambria,serif;color:#7a5a2a;font-style:normal}
+.fg-piece{width:130px;text-align:center}
+.fg-piece img{width:110px;height:100px;object-fit:contain;border-radius:14px;border:4px solid var(--q);background:#fff6df}
+.fg-piece small{display:block;font:800 20px Cambria,serif}
+.fg-piece small i{font-style:normal;color:#2f8a3a}
+.fg-compare .stat-chips{flex:1;display:flex;flex-direction:column;gap:6px;margin:0;font:800 24px Cambria,serif}
+.fg-compare .stat-chips span,.fg-result .stat-chips span{display:flex;align-items:center;gap:8px}
+.fg-compare .stat-chips img{width:34px;height:34px}
+.fg-compare .stat-chips .up,.fg-result .stat-chips .up{color:#2f8a3a}
+.fg-compare .stat-chips .down,.fg-result .stat-chips .down{color:#b33a2a}
+.fg-compare .stat-chips i,.fg-result .stat-chips i{font-style:normal;margin:0 4px}
+.fg-cost{display:flex;gap:8px;flex-wrap:wrap}
+.fg-mat{display:flex;align-items:center;gap:6px;height:64px;padding:4px 12px;border-radius:12px;border:2px solid #a77b3c;background:#fff6df;font:800 22px Cambria,serif;color:#2f6a2a}
+.fg-mat img{width:44px;height:44px;object-fit:contain}
+.fg-mat.short{color:#b33a2a;border-color:#b33a2a}
+.fg-go{height:88px;font-size:34px!important}
+.fg-mode{display:flex;gap:10px}
+.fg-mode button{flex:1;height:64px;border-radius:12px;border:3px solid #a77b3c;background:#f3e2bd;font:800 26px Cambria,serif;color:#4a2a10}
+.fg-mode button.on{background:#e8b24a;border-color:#6b3f12}
+.fg-result{display:flex;align-items:center;gap:16px}
+.fg-result>img{width:150px;height:140px;object-fit:contain;border-radius:16px;border:5px solid var(--q);background:#fff6df}
+.fg-result b{font:800 28px Cambria,serif}
+.fg-result .stat-chips{display:flex;flex-direction:column;gap:4px;font:800 22px Cambria,serif}
+.fg-result .stat-chips img{width:30px;height:30px}
+.fg-actions{display:flex;gap:12px}
+.fg-actions .game-btn{flex:1;height:90px;font-size:30px}
+.fg-done{color:#2f8a3a;font:800 28px Cambria,serif;align-self:center;flex:1;text-align:center}
+.fg-empty{display:flex;align-items:center;gap:14px;font:800 26px Cambria,serif;color:#7a5a2a}
+.fg-empty img{width:90px;height:90px;object-fit:contain;opacity:.4;filter:grayscale(1)}
+.fg-empty.small{font-size:20px}
+.fg-sockets{display:flex;align-items:center;gap:14px}
+.fg-sockets>img{width:110px;height:100px;object-fit:contain}
+.fg-sockets .gem-socket{width:88px;height:88px}
+.fg-gembag{display:flex;flex-wrap:wrap;gap:10px;max-height:220px;overflow-y:auto}
+.fg-gembag button{position:relative;width:88px;height:88px;border-radius:14px;border:2px solid #a77b3c;background:#fff6df;padding:4px}
+.fg-gembag img{width:100%;height:100%;object-fit:contain}
+.fg-gembag b{position:absolute;right:4px;bottom:0;font:900 20px Cambria,serif;color:#4a2a10}
+.fg-msg{margin:0;text-align:center;font:800 24px Cambria,serif;color:#6b3f12}
+
+/* Codex review 20: readable on a 390-px phone (the 941 stage shrinks to 0.41), touch targets about 44 CSS px. */
+.fg-hero{height:108px}.fg-hero b{font-size:34px}
+.fg-hero button{width:84px;height:104px;font-size:56px}
+.fg-tabs button{height:96px;font-size:32px}
+.fg-tabs button img{width:54px;height:54px}
+.fg-slot{height:116px}
+.fg-slot img{height:62px}
+.fg-slot>b{font-size:28px}
+.fg-slot small{font-size:27px;line-height:1.1}
+.fg-ingot{height:118px;padding:2px}
+.fg-ingot img{width:52px;height:40px}
+.fg-ingot small{font-size:26px;line-height:1.05;white-space:normal}
+.fg-ingot em{display:block;font:800 22px/1.1 Cambria,serif;color:#8a3a1a;font-style:normal}
+.fg-piece{width:150px}
+.fg-piece img{width:120px;height:96px}
+.fg-piece small{font-size:28px}
+.fg-compare .stat-chips{font-size:32px;gap:2px}
+.fg-compare .stat-chips img{width:40px;height:40px}
+.fg-cost{flex-wrap:nowrap}
+.fg-mat{flex:1;flex-direction:column;justify-content:center;gap:0;height:108px;padding:4px 6px;font-size:28px;min-width:0}
+.fg-mat img{width:48px;height:48px}
+.fg-mat b{white-space:nowrap}
+.fg-mode button{height:104px;font-size:32px}
+.fg-go{height:104px;font-size:40px!important}
+.fg-result>img{width:170px;height:150px}
+.fg-result b{font-size:34px}
+.fg-result .stat-chips{font-size:32px}
+.fg-result .stat-chips img{width:40px;height:40px}
+.fg-actions .game-btn{height:104px;font-size:36px}
+.fg-empty{font-size:32px}.fg-empty.small{font-size:28px}
+.fg-msg{font-size:30px}
+.fg-gems{display:flex;flex-direction:column;gap:10px}
+.fg-sockets .gem-socket{position:relative;width:110px;height:110px}
+.fg-hint{margin:0;font:800 28px Cambria,serif;color:#6b3f12}
+.fg-gembag{max-height:250px}
+.fg-gembag button{width:112px;height:112px}
+.fg-gembag u,.fg-sockets u{position:absolute;left:6px;top:2px;text-decoration:none;font:900 26px Cambria,serif;color:#fff;text-shadow:0 0 3px #000,0 1px 2px #000}
+.fg-gembag b{font-size:28px}
+.fg-panel .stat-chips{font-size:32px!important;line-height:1.15}
+.fg-panel .stat-chips span{font-size:32px!important}
+.fg-panel .stat-chips img{width:40px!important;height:40px!important}
+.fg-piece.empty img{opacity:.35;filter:grayscale(1)}
