@@ -169,6 +169,8 @@ for name in ['boss-expansion-a','boss-expansion-b']:
         for key,boss in json.loads(path.read_text(encoding='utf-8'))['bosses'].items():merged['boss-'+key]={'file':boss['portrait'] if boss['portrait'].startswith('assets/') else 'assets/gemwoven/'+boss['portrait'],'width':512,'height':512,'transparent':True}
 # Humanoid elites designed for their chapter boss (assets/gemwoven/elites/<id>/master.png).
 for key in [k for k,v in merged.items() if v['file'].startswith('assets/gemwoven/elites/')]:del merged[key]  # manifest.json is also this script's input
+# manifest.json is an input too, so an entry whose art was renamed or removed would linger and break the inlining below.
+for key in [k for k,v in merged.items() if not (ROOT/v['file']).exists()]:print('manifest: dropping',key,'(missing',merged[key]['file']+')');del merged[key]
 for master in sorted((ROOT/'assets/gemwoven/elites').glob('*/master.png')):
     with Image.open(master) as im:merged['creature-'+master.parent.name]={'file':master.relative_to(ROOT).as_posix(),'width':im.width,'height':im.height,'transparent':True}
 # Resting loops (2x4 sheets, 256px cells) of the chapter bosses, elites and common foes: the exploration map
