@@ -16,6 +16,7 @@ which a global magenta key would punch holes into; inside the silhouette nothing
                                                          (k: extra uniform scale, default 1)
   python tools/hiro_forms.py portrait <N>               bust crop of the keyed master drawing -> form-N/portrait.png
   python tools/hiro_forms.py despill <sheet> <cols> <rows> [--no-deep] [--no-clear]  clean the key fringe of a finished sheet in place
+  python tools/hiro_forms.py rose <sheet> <cols> <rows>    repaint rose key-tint patches Codex left INSIDE a silhouette (cloak lining)
   python tools/hiro_forms.py refit-entrance <N>         one uniform scale for a showcase entrance drawn larger than its loop
   python tools/hiro_forms.py showcase-master <N>        approved concept pose -> form-N/showcase/master.png (make_showcase.py then
                                                          skips its own master pose and draws the loop, fidgets and entrance on it)
@@ -316,6 +317,27 @@ def despill(path, cols, rows, deep=True, clear=True):
     print("despilled", path, fixed, "px")
 
 
+def rose(path, cols, rows):
+    """Rose patches inside a drawing (a pink-lit cloak lining, the key bleeding into a fold): saturated
+    rose pixels (red far above green, blue at or above green) take the colour of the nearest clean solid
+    pixel at their own brightness. Brown leather and brass keep blue far below green, skin keeps red
+    near green, so neither is touched. Not for a sheet with red or violet gems."""
+    sheet = Image.open(path).convert("RGBA")
+    a = np.asarray(sheet, np.float32)
+    rgb, al = a[..., :3], a[..., 3]
+    r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+    bad = (al > 0) & (r - g > 55) & (b - g > -8) & (r > 120)
+    donor = (al >= 200) & ~((r - g > 40) & (b - g > -20))
+    _, (iy, ix) = ndimage.distance_transform_edt(~donor, return_indices=True)
+    src = rgb[iy, ix]
+    lum = lambda x: x @ np.array([.299, .587, .114], np.float32)
+    k = np.clip(lum(rgb) / np.maximum(lum(src), 1), .5, 1.3)[..., None]
+    rgb = np.where(bad[..., None], np.clip(src * k, 0, 255), rgb)
+    out = Image.fromarray(np.concatenate([rgb, al[..., None]], -1).clip(0, 255).astype("uint8"), "RGBA")
+    out.save(path, lossless=True, method=6) if str(path).endswith(".webp") else out.save(path)
+    print("rose", path, int(bad.sum()), "px")
+
+
 def refit_entrance(n):
     """Codex drew the hero in the last entrance frames a little larger than the resting loop, so the
     loop would shrink him when it takes over. One uniform scale and shift (found by laying the last
@@ -363,6 +385,8 @@ if __name__ == "__main__":
         portrait(n)
     elif cmd == "despill":
         despill(n, int(rest[0]), int(rest[1]), deep="--no-deep" not in rest, clear="--no-clear" not in rest)
+    elif cmd == "rose":
+        rose(n, int(rest[0]), int(rest[1]))
     elif cmd == "refit-entrance":
         refit_entrance(n)
     elif cmd == "showcase-master":

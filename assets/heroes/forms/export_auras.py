@@ -20,20 +20,30 @@ from PIL import Image
 
 FORMS = Path(__file__).resolve().parent
 # Lumi (lightning) has her own exporter since her comets left the strip: lightning/aura/export_aura.py
-HEROES = ("fire", "earth", "ice", "shadow")
+HEROES = ("fire", "earth", "ice", "shadow", "novice")
 COUNT = 8
 CELL = 256
 FRAME_DURATION = {"shadow": 190}
 # Auras with no legitimate violet: magenta key spill in their glows is removed.
 DESPILL = {"fire", "ice", "earth", "shadow"}
+# Hiro's jewel aura holds a real indigo amethyst: only rose spill (red as strong as blue) is removed.
+JEWEL = {"novice"}
 
 
-def despill(frame: Image.Image) -> Image.Image:
-    """Fade pixels whose red and blue both exceed green (chroma-key spill)."""
+def despill(frame: Image.Image, jewel: bool = False) -> Image.Image:
+    """Fade pixels whose red and blue both exceed green (chroma-key spill); `jewel` spares blue-violet gems."""
     import numpy as np
     a = np.asarray(frame, dtype=np.float32)
     r, g, b, alpha = a[..., 0], a[..., 1], a[..., 2], a[..., 3]
     spill = np.minimum(r, b) - g
+    if jewel:
+        # its white-gold light was blended toward the key (pink glow): rose pixels go back to warm cream-gold,
+        # the faintest of them fade; blue-violet gems (red well below blue) are left alone
+        rose = (r > .8 * b) & (spill > 0)
+        a[..., 3] = alpha * np.where(rose, 1 - np.clip((spill - 30) / 90, 0, .8), 1)
+        a[..., 0] = np.where(rose, np.maximum(r, g), r)
+        a[..., 2] = np.where(rose, g * .8, b)
+        return Image.fromarray(a.clip(0, 255).astype("uint8"), "RGBA")
     fade = np.clip((spill - 24) / 70, 0, 1)
     a[..., 3] = alpha * (1 - fade)
     a[..., 0] = np.where(spill > 24, np.minimum(r, g + 24 + (r - g) * .3), r)
@@ -53,7 +63,7 @@ FRONT = {
 }
 # These sheets were drawn on a fixed imaginary-hero layout (feet at 82% of the cell), so
 # each raw cell is resized whole instead of fitted to its content.
-RAW_CELL = {"fire", "ice", "earth"}
+RAW_CELL = {"fire", "ice", "earth", "novice"}
 
 
 PROCESSOR = Path.home() / ".codex/skills/generate2dsprite/scripts/generate2dsprite.py"
@@ -106,8 +116,8 @@ def export(hero: str) -> bool:
     strip = Image.new("RGBA", (CELL * COUNT, CELL), (0, 0, 0, 0))
     for index, path in enumerate(frames):
         frame = path if isinstance(path, Image.Image) else Image.open(path).convert("RGBA")
-        if hero in DESPILL:
-            frame = despill(frame)
+        if hero in DESPILL or hero in JEWEL:
+            frame = despill(frame, jewel=hero in JEWEL)
         if frame.size != (CELL, CELL):
             raise ValueError(f"{hero} frame {index + 1} is {frame.size}, expected {CELL}x{CELL}")
         strip.paste(frame, (index * CELL, 0))

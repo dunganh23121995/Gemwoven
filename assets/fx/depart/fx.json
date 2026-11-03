@@ -23,5 +23,10 @@
     "file": "assets/fx/depart/dust.webp",
     "count": 6,
     "frameDuration": 85
+  },
+  "gleam": {
+    "file": "assets/fx/depart/gleam.webp",
+    "count": 6,
+    "frameDuration": 80
   }
 }

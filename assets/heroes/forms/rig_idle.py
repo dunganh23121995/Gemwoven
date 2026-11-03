@@ -59,6 +59,9 @@ HINTS = {
     "earth": "RED: the green cape or leaf cloak behind him, leaf sprays, hanging vines reaching outside the body. CYAN: the tabard panel hanging in front, belt straps, scarf ends, fur trim tips, hair tufts. YELLOW: the hammer and the shield. BLUE also takes the antlers and leaves on his head.",
     "lightning": "RED: the long blonde hair and ponytail, the coat or cape tails, the witch hat's bent tip, hat ribbons, and any star or spark floating apart from her. CYAN: skirt panels, sleeve edges, belt charms, small pouch straps. YELLOW: the staff and anything fixed to it. GREEN: her dangling legs and boots.",
     "shadow": "RED: the whole torn cloak or coat tail behind him and every ragged strip reaching outside the body. CYAN: scarf ends, hanging belts, tassels, hanging cloth strips on the front of the body. YELLOW: the dagger, katana or scythe. BLUE: the hood and head.",
+    # a form whose costume differs from the hero's first one has its own hint ("<hero>-<form>")
+    "novice-2": "RED: the moss-green half-cloak behind him, the long moss-green scarf end and the springy cowlick tuft. CYAN: the leather strap ends, the pouch, the map case and the loose sleeve edges. YELLOW: the steel sword with its crossguard only. GREEN: both legs with the tall boots.",
+    "novice-3": "RED: the long moss-green cape with its gold border behind him and the springy cowlick tuft. CYAN: the cream tabard panel hanging in front and its green side panels. YELLOW: the jewelled longsword with its crossguard only. GREEN: both armoured legs with the boots.",
 }
 
 PARTS = """Image 1 is a chibi game character on a black background ({what}). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
@@ -120,7 +123,7 @@ def parts(hero, form, ctx, model=MODEL, effort=EFFORT):
     ground = (205, 205, 205, 255) if grey else (0, 0, 0, 255)   # Noct's black would melt into black
     canvas = Image.new("RGBA", rest.size, ground); canvas.alpha_composite(rest)
     canvas.convert("RGB").resize((1024, 1024), Image.Resampling.LANCZOS).save(work / "parts-ref.png")
-    (work / "parts-prompt.txt").write_text(FOREIGN.get(hero, {}).get("prompt", PARTS).format(what=what(hero, form, ctx), hint=HINTS.get(hero, "")) + "\n", encoding="utf-8")
+    (work / "parts-prompt.txt").write_text(FOREIGN.get(hero, {}).get("prompt", PARTS).format(what=what(hero, form, ctx), hint=HINTS.get(f"{hero}-{form}", HINTS.get(hero, ""))) + "\n", encoding="utf-8")
     fidget.run(fidget.GEN, "--prompt-file", work / "parts-prompt.txt", "--out", work / "parts-raw.png", "--ref", work / "parts-ref.png",
                "--model", model, "--effort", effort, "--timeout", "900")
 
@@ -167,6 +170,15 @@ def fit(hero, form, ctx):
     idx = ndimage.distance_transform_edt(~known, return_distances=False, return_indices=True)
     full = warped[tuple(idx)]
     full[rest[..., 3] < 8] = BG
+    # parts-fix.json (optional): boxes on the resting frame [x0, y0, x1, y1] (cell pixels) whose pixels of one part
+    # are handed to another, e.g. the front of a scarf wrapped round the neck lies on the body and must not flare
+    fix = work / "parts-fix.json"
+    if fix.exists():
+        names = {"body": BODY, "head": HEAD, "legs": LEGS, "weapon": WEAPON, "back": BACK, "front": FRONT}
+        for rule in json.loads(fix.read_text(encoding="utf-8"))["recolour"]:
+            x0, y0, x1, y1 = rule["box"]
+            box = full[y0:y1, x0:x1]
+            box[box == names[rule["from"]]] = names[rule["to"]]
     out = np.zeros((n, n, 3), np.uint8)
     for k, c in PALETTE.items():
         out[full == k] = c
