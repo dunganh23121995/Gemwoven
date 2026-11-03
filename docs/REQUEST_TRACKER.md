@@ -93,3 +93,19 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | H7 | Cô bán hàng và con thỏ ở Cửa Hàng cử động nhẹ (03/11) | Codex vẽ riêng từng nhân vật và nền quầy không có họ; khung nghỉ 24 hình bằng lưới biến dạng (`assets/gemwoven/npc/npc_rig.py`), không vẽ lại. | ✅ | Cửa Hàng |
 | H8 | Rèn Đồ không đạt: logic và bố cục; phải review thiết kế cùng Codex (03/11) | Bản dựng đầu (bảng CSS) bị chủ dự án loại. Làm lại theo quy trình mới: Codex chấm thiết kế (3/10), viết prompt và vẽ **mockup** đã duyệt (`assets/gemwoven/raw/forge-mockup/mockup-1.png`), rồi vẽ từng mảnh (bàn rèn, giá 6 ô, 5 phôi, tab gỗ, tấm búa, thẻ da, khóa, ổ khảm) và hình đồ riêng cho 6 ô × 5 phẩm. Dựng xong Codex chấm lại 6,5 → 7,5 → **8/10 Đạt** trên cả điện thoại lẫn Studio. Logic: rèn cho một tướng, so món đang mặc → món mới, cường hóa đúng món đang mặc, ×1/Tối đa một giao dịch, Khảm Ngọc thật. | ✅ | Rèn Đồ |
 | H9 | Nút bên chỉ ở Trang Chủ; cột phải có nền như cột trái (03/11) | Cột phải là thẻ treo có tên (Kho Offline, Boss Vô Hạn, Xếp Hạng); các màn khác không còn cờ bên. | ✅ | Trang Chủ |
+
+## I. Yêu cầu 03–04/11 (đợt rà soát giao diện)
+
+| # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
+|---|---|---|---|---|
+| I1 | Luôn phải review thiết kế cùng Codex | Quy trình: Codex chấm → mockup đã duyệt → hình vẽ thật → chấm lại trên điện thoại và Studio, ≥ 8/10. Ghi trong `AGENTS.md`. | ✅ | `AGENTS.md` |
+| I2 | Viền popup mỏng đi | Khung gỗ dây leo cũ vẽ mỏng hơn (trên 70%, cạnh và đáy 50%); bảng tên, huy hiệu, lề theo khung. | ✅ | mọi popup |
+| I3 | Rà chữ mọi màn: nội dung, kiểu, độ dài | Codex vòng 25 (~50 điểm). Đã sửa: một tên cho mỗi tính năng (**Trùm Vô Tận**, **Tích Lũy**, **Thành Tích**, Sách kinh nghiệm), Cấp thay Level, số thập phân dấu phẩy, câu dài vào ⓘ, nhãn rút gọn. Chưa đổi: viết hoa kiểu câu toàn game (giữ kiểu tiêu đề như hiện tại), số rút gọn "N". | ✅ đợt 1 · 🔨 | mọi màn |
+| I4 | Icon thẻ treo Trang Chủ to lên; chữ hợp lý | Icon chiếm ~2/3 thẻ, chữ 28; bỏ nhãn "Ưu đãi nạp" (giữ viền sáng); bảng Lực chiến số lớn. Codex 8,7/10. | ✅ | Trang Chủ |
+| I5 | Xích cột phải treo thẳng, nằm sau Hòm thư / Cài đặt | Hai cột hai giàn xích riêng; cột phải treo từ mép trên, sau nút HUD. | ✅ | Trang Chủ |
+| I6 | Cô gái Túi Đồ, cô bán hàng, thỏ cử động; Cửa Hàng bỏ băng rôn, thêm đồ phía sau | Codex vẽ riêng từng nhân vật + nền không có họ; khung nghỉ 24 hình. Codex 8,3 / 8,5. | ✅ | Túi Đồ, Cửa Hàng |
+| I7 | Gặp Gỡ: nút và popup còn là hộp CSS | Đang làm lại bằng hình vẽ theo mockup Codex. | 🔨 | Gặp Gỡ |
+| I8 | Đấu Trường sắp xếp lại; giải đấu tháng tìm người mạnh nhất, thưởng xịn | Đang thiết kế cùng Codex: bố cục mới + Giải Đấu Tháng (luật, thưởng không có Đá Ngọc; bản thử cục bộ, phần toàn cầu Sắp ra mắt). | 🔨 | Đấu Trường |
+| I9 | Thanh tiến độ VIP; thẻ dạng cây mốc, mốc cao mở bằng thẻ kích hoạt | Đang làm: thanh VIP thật; Sổ Hành Trình thành cây mốc dọc, mỗi mốc nhận thưởng, nhánh vàng/Diệu Ngọc khóa đến khi kích hoạt thẻ. | 🔨 | VIP, Thẻ |
+| I10 | Dựng lại cây kỹ năng | Đang làm bằng hình vẽ (nhánh trên thân cây, khung nút theo trạng thái, mốc mở). | 🔨 | Kỹ Năng |
+
