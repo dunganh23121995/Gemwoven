@@ -43,7 +43,8 @@
     const ev=topupEvent();
     for(const el of document.querySelectorAll('#scene [data-node$=".feature-vip"]')){
       el.classList.toggle('topup-ring',!!ev);el.querySelector(':scope > .topup-tag')?.remove();if(!ev)continue;
-      const tag=document.createElement('span');tag.className='topup-tag';tag.textContent='Ưu đãi nạp';tag.title=ev.name;el.append(tag);
+      // The ring alone marks a top-up event (Codex review 25: a text tag covered the card); its name is the tooltip.
+      el.title=ev.name;
       if(!sessionStorage.getItem('gw-topup-rung')&&!reduced()){el.classList.add('topup-pulse');try{sessionStorage.setItem('gw-topup-rung','1');}catch{}setTimeout(()=>el.classList.remove('topup-pulse'),2600);}
     }
   }

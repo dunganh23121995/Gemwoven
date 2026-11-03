@@ -82,3 +82,9 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 /* The right column chains run from the top edge behind the mail and settings buttons (owner 04/11). */
 #scene>[data-node$=".mail"],#scene>[data-node$=".settings"]{z-index:2}
 .lh-rig.right{z-index:1}
+
+/* Home hanging cards and Lực chiến board (Codex text review 25). */
+.home-feature-card.hud-hanging-card>.copy-layer,.hud-hanging-card .node-text{white-space:pre-line;font-weight:700;line-height:.98;color:#ffeccb;text-shadow:0 1px 2px #1a0c04,0 0 4px #2a1408}
+.hud-hanging-card>.icon{filter:drop-shadow(0 2px 2px #0009)}
+.home-power .copy-layer,.home-power .node-text{font-weight:900;color:#4a2a10;text-shadow:0 1px #fff3cf}
+.home-power-label{font-weight:800}

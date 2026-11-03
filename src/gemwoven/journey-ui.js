@@ -14,13 +14,14 @@
   function home(nodes,p){
     nodes=nodes.filter(n=>!/^home\.(live|feature-mail|feature-settings)$/.test(n.id));
     // Quests live in the tavern; this board reads the power of the hero standing beside it.
-    const power=nodes.find(n=>n.id==='home.power');C[power.text]=`Lực Chiến\n${fmt(M.stats(p,p.selected).power)}`;
-    Object.assign(power,{rect:[713,1146,210,173],iconRect:[85,16,40,44],labelRect:[22,62,166,84]});
+    const power=nodes.find(n=>n.id==='home.power');C[power.text]=fmt(M.stats(p,p.selected).power);
+    Object.assign(power,{rect:[713,1146,210,173],iconRect:[85,16,40,44],labelRect:[14,92,182,64],size:56,className:((power.className||'')+' home-power').trim()});
+    C['home.power-label']='Lực chiến';nodes.push({id:'home.power-label',kind:'text',text:'home.power-label',rect:[733,1206,170,36],size:28,tone:'ink',className:'home-power-label'});
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1010,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Gặp Gỡ','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
     // The right column hangs the same cards as the left one (owner 03/11: bare icons got lost in the painting).
-    [['offline','Tích Lũy','chest'],['boss','Trùm Vô Tận','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,'hud-side-card',[785,166+i*162,128,164],'route:'+route,{}, {icon:asset,className:'home-feature-card hud-hanging-card home-right-card'})));
+    [['offline','Tích Lũy','chest'],['boss','Trùm Vô Tận','nav-arena'],['rankings','Thành Tích','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,'hud-side-card',[785,166+i*162,128,164],'route:'+route,{}, {icon:asset,className:'home-feature-card hud-hanging-card home-right-card'})));
     nodes.push(button('home','explore','Khám Phá',A['journey-button']?'journey-button':'title-parchment',[215,1338,525,140],'route:campaign',{}, {labelRect:[130,44,265,56],size:43,tone:'ink',className:'explore-entry'}));
     return nodes;
   }
@@ -31,12 +32,14 @@
     const scaleRect=r=>r.map((v,k)=>v*(k%2?height/card.height:width/card.width));
     const cards=nodes.filter(n=>n.kind==='button'&&n.rect[0]<200&&
       (n.id.startsWith('home.feature-')||n.asset==='side-pennant'||n.asset==='hud-side-card'));
-    for(const n of nodes.filter(n=>/^home\.right-(offline|boss|rankings)$/.test(n.id))){n.fit='fill';n.iconRect=scaleRect(card.safeRects.icon);n.labelRect=scaleRect([18,213,220,64]);n.size=23;n.labelHidden=false;}
+    // Codex review 25: the icon takes about two thirds of the card, the name 28 units on at most two lines.
+    // A two-line name lifts the icon a little so both lines stay above the card's point.
+    const BREAK={'Trùm Vô Tận':'Trùm\nVô Tận'};
+    const dress=n=>{const two=n.text&&BREAK[C[n.text]];if(two)C[n.text]=two;n.fit='fill';n.iconRect=two?[29,12,70,70]:[22,16,84,84];n.labelRect=two?[2,82,124,58]:[2,100,124,34];n.size=28;n.labelHidden=false;};
+    for(const n of nodes.filter(n=>/^home\.right-(offline|boss|rankings)$/.test(n.id)))dress(n);
     cards.forEach((n,i)=>{
       n.asset='hud-side-card';n.rect=[center-width/2,166+i*162,width,height];n.fit='fill';
-      n.iconRect=scaleRect(card.safeRects.icon);n.labelRect=scaleRect(card.safeRects.label);
-      // Label spans the plate's full painted width so it can be read on a phone.
-      n.labelRect=scaleRect([18,213,220,64]);n.size=23;n.labelHidden=false;n.className='home-feature-card hud-hanging-card';
+      dress(n);n.className='home-feature-card hud-hanging-card';
       if(n.id.endsWith('.side-book'))n.action='journey:monthly';
     });
   }
