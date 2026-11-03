@@ -857,6 +857,451 @@
     "source": "assets/gemwoven/raw/skill-tree/",
     "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
   },
+  "background-vip": {
+    "file": "assets/gemwoven/vip-pass/room.webp",
+    "width": 941,
+    "height": 1672,
+    "transparent": false,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/room-raw.png",
+    "reference": "assets/gemwoven/raw/vip-pass/mockup-1.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/room-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp reading room (owner 2026-11-04): quiet centre for the Sổ Hành Trình tree. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+  },
+  "vip-pass-action-primary": {
+    "file": "assets/gemwoven/vip-pass/action-primary.webp",
+    "width": 470,
+    "height": 120,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-action-secondary": {
+    "file": "assets/gemwoven/vip-pass/action-secondary.webp",
+    "width": 392,
+    "height": 119,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-activity-fill": {
+    "file": "assets/gemwoven/vip-pass/activity-fill.webp",
+    "width": 429,
+    "height": 46,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-activity-trough": {
+    "file": "assets/gemwoven/vip-pass/activity-trough.webp",
+    "width": 430,
+    "height": 60,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-avatar-frame": {
+    "file": "assets/gemwoven/vip-pass/avatar-frame.webp",
+    "width": 212,
+    "height": 203,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-calendar": {
+    "file": "assets/gemwoven/vip-pass/calendar.webp",
+    "width": 143,
+    "height": 141,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-claim-button": {
+    "file": "assets/gemwoven/vip-pass/claim-button.webp",
+    "width": 225,
+    "height": 75,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-claimed-check": {
+    "file": "assets/gemwoven/vip-pass/claimed-check.webp",
+    "width": 144,
+    "height": 143,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-fund-pouch": {
+    "file": "assets/gemwoven/vip-pass/fund-pouch.webp",
+    "width": 142,
+    "height": 160,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-gift": {
+    "file": "assets/gemwoven/vip-pass/gift.webp",
+    "width": 184,
+    "height": 189,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-header-free": {
+    "file": "assets/gemwoven/vip-pass/header-free.webp",
+    "width": 241,
+    "height": 140,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-header-gold": {
+    "file": "assets/gemwoven/vip-pass/header-gold.webp",
+    "width": 242,
+    "height": 149,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-header-jewel": {
+    "file": "assets/gemwoven/vip-pass/header-jewel.webp",
+    "width": 247,
+    "height": 149,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-hourglass": {
+    "file": "assets/gemwoven/vip-pass/hourglass.webp",
+    "width": 128,
+    "height": 199,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-journey-book": {
+    "file": "assets/gemwoven/vip-pass/journey-book.webp",
+    "width": 202,
+    "height": 173,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-medal-current": {
+    "file": "assets/gemwoven/vip-pass/medal-current.webp",
+    "width": 199,
+    "height": 169,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-medal": {
+    "file": "assets/gemwoven/vip-pass/medal.webp",
+    "width": 203,
+    "height": 136,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-next-vip-tag": {
+    "file": "assets/gemwoven/vip-pass/next-vip-tag.webp",
+    "width": 180,
+    "height": 88,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-ownership-lock": {
+    "file": "assets/gemwoven/vip-pass/ownership-lock.webp",
+    "width": 120,
+    "height": 142,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-quantity-pill": {
+    "file": "assets/gemwoven/vip-pass/quantity-pill.webp",
+    "width": 206,
+    "height": 70,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-reward-free": {
+    "file": "assets/gemwoven/vip-pass/reward-free.webp",
+    "width": 236,
+    "height": 132,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-reward-gold": {
+    "file": "assets/gemwoven/vip-pass/reward-gold.webp",
+    "width": 216,
+    "height": 130,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-reward-jewel": {
+    "file": "assets/gemwoven/vip-pass/reward-jewel.webp",
+    "width": 216,
+    "height": 129,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-scroll-arrow": {
+    "file": "assets/gemwoven/vip-pass/scroll-arrow.webp",
+    "width": 104,
+    "height": 107,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-scroll-rail": {
+    "file": "assets/gemwoven/vip-pass/scroll-rail.webp",
+    "width": 30,
+    "height": 230,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-scroll-thumb": {
+    "file": "assets/gemwoven/vip-pass/scroll-thumb.webp",
+    "width": 40,
+    "height": 151,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-season-strip": {
+    "file": "assets/gemwoven/vip-pass/season-strip.webp",
+    "width": 480,
+    "height": 79,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-status-plaque": {
+    "file": "assets/gemwoven/vip-pass/status-plaque.webp",
+    "width": 290,
+    "height": 76,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tab-idle": {
+    "file": "assets/gemwoven/vip-pass/tab-idle.webp",
+    "width": 403,
+    "height": 115,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tab-selected": {
+    "file": "assets/gemwoven/vip-pass/tab-selected.webp",
+    "width": 404,
+    "height": 135,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-title-sign": {
+    "file": "assets/gemwoven/vip-pass/title-sign.webp",
+    "width": 444,
+    "height": 182,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tree-crown": {
+    "file": "assets/gemwoven/vip-pass/tree-crown.webp",
+    "width": 470,
+    "height": 191,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-tree-row": {
+    "file": "assets/gemwoven/vip-pass/tree-row.webp",
+    "width": 478,
+    "height": 116,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-vip-crest": {
+    "file": "assets/gemwoven/vip-pass/vip-crest.webp",
+    "width": 226,
+    "height": 219,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-vip-strip": {
+    "file": "assets/gemwoven/vip-pass/vip-strip.webp",
+    "width": 473,
+    "height": 106,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
+  "vip-pass-vip-trough": {
+    "file": "assets/gemwoven/vip-pass/vip-trough.webp",
+    "width": 467,
+    "height": 58,
+    "textless": true,
+    "source": "assets/gemwoven/raw/vip-pass/",
+    "promptFiles": [
+      "assets/gemwoven/raw/vip-pass/sheet-a-prompt.txt",
+      "assets/gemwoven/raw/vip-pass/sheet-b-prompt.txt"
+    ],
+    "purpose": "VIP & Nạp pieces drawn by Codex from the approved mockup (pass-ui.js; cut by slice.py)."
+  },
   "skilltree-button-ready": {
     "file": "assets/gemwoven/skill-tree/button-ready.webp",
     "width": 700,
@@ -971,8 +1416,7 @@
       "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
     ],
     "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  }
-}  },
+  },
   "kit-parchment": {
     "file": "assets/gemwoven/ui-kit/parchment.webp",
     "width": 253,
@@ -1577,3 +2021,5 @@
       "assets/gemwoven/raw/ui-kit/icons-prompt.txt"
     ],
     "purpose": "UI kit icons (Codex review 26)."
+  }
+}

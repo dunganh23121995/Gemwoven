@@ -300,8 +300,10 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 | Gói ưu đãi | 49k–499k | đúng nút người chơi đang kẹt; tối đa 1 lần/7 ngày mỗi gói; không popup ép |
 | Trang phục hình thái | 199k | skin, không chỉ số |
 
+**Sổ Hành Trình trong game (04/11, Codex vòng 1):** điểm sổ chỉ từ nhận thưởng nhiệm vụ (ngày +50, tuần +150 ≈ 264/ngày → cấp 50 sau ~20 ngày), 100 điểm/cấp; mùa 28 ngày tính từ 00:00 GMT+7 ngày neo; mỗi mốc đạt nhận nhánh Thường, nhánh Vàng/Diệu Ngọc chỉ khi máy chủ ghi giao dịch của mùa (client không tự mở được); rương chọn chờ ải 60/80, mảnh/rương tự chọn thành phiếu; sang mùa mới tự cất quà còn sót. Chấm đỏ chỉ đếm mốc nhận được ngay. Màn: `pass-ui.js` (cây mốc dọc; Thẻ Tháng và Quỹ cùng dạng cây).
+
 ### 10.1 VIP (theo tổng nạp xác thực)
-12 bậc 100k → 100tr (bảng đầy đủ trong `liveops.js`, hiển thị ở trang VIP [Đêm nay]).
+12 bậc 100k → 100tr (bảng đầy đủ trong `liveops.js`). Thanh tiến độ: 1 điểm VIP = 1.000đ nạp xác thực, một thang cộng dồn (`vipProgress` trong `progression.js`).
 - VIP **không cộng chỉ số chiến đấu**: tiện lợi (quét ải, offline 12→16 giờ, lượt boss có thưởng, hàng đợi
   rèn), quà ngày, cửa hàng VIP, trang trí.
 - "Tướng riêng VIP10" → **trang phục tướng riêng** (tặng tướng cho VIP là trả tiền để thắng).

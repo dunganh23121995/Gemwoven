@@ -92,6 +92,13 @@
   // Base numbers of each active skill; ranks, forms and evolution scale them in skillKit.
   const SKILL_KIT={novice:{base:70,hits:1},fire:{base:135,hits:1},ice:{base:60,hits:1,armor:25},earth:{base:0,hits:0,heal:40,burst:3,stun:2,regen:3},lightning:{base:140,hits:5},shadow:{base:150,hits:5}};
   const VIP=[0,100000,300000,600000,1000000,2000000,4000000,7000000,12000000,20000000,35000000,60000000,100000000].map((spend,level)=>({level,spend,dailyGold:level>=2?1000:level?500:0,offlineHours:12+Math.floor(level/3),avatar:level>=1,entryEffect:level>=3,chatEffect:level>=5,equipmentSkin:level>=8,heroSkin:level>=10,combatStats:false}));
+  // Live-ops tables (liveops.js) are read lazily: in the browser that file loads after this one.
+  const OPS=()=>typeof module==='object'&&module.exports?require('./liveops.js'):globalThis.GemwovenLiveOps;
+  // VIP progress bar (owner 2026-11-04): 1 VIP point per 1.000 ₫ of verified top-ups, one cumulative scale; the level
+  // comes from the server ledger total, spending Đá Ngọc never adds to it.
+  function vipProgress(paidTotal){const paid=Math.max(0,Math.floor(paidTotal||0)),points=Math.floor(paid/1000);let level=0;for(const v of VIP)if(paid>=v.spend)level=v.level;
+    const next=VIP[level+1]||null,from=VIP[level].spend/1000,to=next?next.spend/1000:from;
+    return {level,points,from,next:next?{level:next.level,points:to}:null,need:next?to-points:0,ratio:next?Math.min(1,(points-from)/(to-from)):1,max:!next};}
   const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Trùm Vô Tận',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
   // Hành Trình Tân Thủ: seven gifts, one per GMT+7 day since the account was made (missed days
   // can be caught up). 80 Mảnh Hiro in the first week = his second star.
@@ -632,7 +639,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function clockNow(p,write){const raw=now();p.clock??={max:Math.max(p.updated||0,p.offlineAt||0)};p.clock.behind=raw<p.clock.max-CLOCK_TOLERANCE;current=Math.max(p.clock.max,raw);if(write)p.clock.max=current;return current;}
     const onTime=p=>check(!p.clock.behind,'Giờ thiết bị đang sớm hơn lần chơi trước. Hãy chỉnh lại ngày giờ để nhận thưởng theo thời gian.');
     function weekly(p){if(!p.weekly||week(current)>p.weekly.week)p.weekly={week:week(current),progress:{campaign:0,boss:0,daily:0},claimed:[]};}
-    function daily(p){weekly(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
+    function daily(p){weekly(p);passSync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
     function bankOffline(p){const r=offlineRaw(p,current);p.offlineBank={hours:r.hours,gold:r.gold,exp:r.exp,seals:r.seals};p.offlineAt=Math.max(current,p.offlineAt);}
     // Expired mail (and any unclaimed gift in it) leaves the box at the next transaction.
     function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);save(p);return value;}
@@ -647,6 +654,29 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     const shopKey=product=>product.limit.per==='day'?day(current):'w'+week(current);
     function shopLeft(p,product){if(!product.limit)return Infinity;const was=p.shopBoughtBy?.[product.id];return Math.max(0,product.limit.n-(was?.key===shopKey(product)?was.n:0));}
     // Báu vật points: once per day / week per kind, only in the trial save (round 9).
+    // Sổ Hành Trình (owner 2026-11-04, Codex round 1). Levels come from quest points (plus levels a verified purchase
+    // adds, set by the server only); free rewards open as levels are reached, the gold and jewel tracks only once the
+    // server records the season's purchase (this client has no way to set it). Jewel gear chests wait for their stage.
+    // Choice items become vouchers. A new season keeps nothing but grants what was left to take on the old one.
+    const PASS_TRACKS=['free','gold','jewel'];
+    function passSync(p){const O=OPS();if(!O)return null;const s=O.passSeason(current).index;
+      if(p.pass&&p.pass.season>=s){p.pass.owned??={};p.pass.claimed??={};for(const t of PASS_TRACKS)p.pass.claimed[t]??=[];p.pass.points|=0;return p.pass;}
+      if(p.pass){const left=passRows(p).flatMap(r=>PASS_TRACKS.filter(t=>r[t].state==='ready').map(t=>[r.level,t]));const got={};for(const [l,t] of left)for(const [k,n] of Object.entries(passGrant(p,O.PASS[t](l))))got[k]=(got[k]||0)+n;
+        p.passLast={season:p.pass.season,granted:got,count:left.length};if(left.length)note(p,`Sổ Hành Trình mùa ${p.pass.season+1}: cất ${left.length} phần quà chưa nhận`);}
+      p.pass={season:s,points:0,bought:0,claimed:{free:[],gold:[],jewel:[]},owned:{gold:false,jewel:false}};return p.pass;}
+    function passLevel(p){const O=OPS();return Math.min(O.PASS.levels,Math.floor(p.pass.points/O.PASS.pointsPerLevel)+(p.pass.bought|0));}
+    const passOwns=(p,t)=>t==='free'||(t==='gold'?!!(p.pass.owned.gold||p.pass.owned.jewel):!!p.pass.owned.jewel);
+    function passRows(p){const O=OPS(),level=passLevel(p),gates=O.PASS.gearGates;
+      return Array.from({length:O.PASS.levels},(_,i)=>{const l=i+1,row={level:l,reached:l<=level};
+        for(const t of PASS_TRACKS){const reward=O.PASS[t](l),gate=Math.max(0,...Object.keys(reward).map(k=>gates[k]||0));
+          row[t]={reward,gate,state:p.pass.claimed[t].includes(l)?'claimed':!row.reached?'level':!passOwns(p,t)?'track':p.campaign.cleared<gate?'stage':'ready'};}
+        return row;});}
+    function passGrant(p,reward){const res={},other={};for(const [k,n] of Object.entries(reward))(k in RESOURCES?res:other)[k]=n;const actual=grant(p,res);
+      for(const [k,n] of Object.entries(other)){p.vouchers??={};p.vouchers[k]=(p.vouchers[k]||0)+n;actual[k]=n;}return actual;}
+    function passPoints(p,n){if(passSync(p))p.pass.points+=n;}
+    function passClaim(p,level,track){const row=passRows(p)[level-1];check(row&&PASS_TRACKS.includes(track),'Mốc không hợp lệ.');const c=row[track];
+      check(c.state!=='claimed','Đã nhận mốc này.');check(c.state!=='level',`Cần cấp sổ ${level}.`);check(c.state!=='track','Nhánh này cần kích hoạt Sổ Hành Trình (thanh toán sắp ra mắt).');
+      check(c.state!=='stage',`Qua ải ${c.gate} để nhận rương này.`);const actual=passGrant(p,c.reward);p.pass.claimed[track].push(level);return actual;}
     function treasurePoint(p,kind,period,ok){if(!p.trialMode||!ok)return;p.treasure??={points:0,shards:0,items:[],slots:{},claims:{}};const k=kind+':'+period;if(p.treasure.claims[k])return;p.treasure.claims[k]=true;p.treasure.points+=TREASURE.points[kind];}
     // Cúp Đấu Trường (local prototype): month rollover into the history, daily matches (5, banked to 10).
     function cupRefresh(p){const s=cupSeason(current);
@@ -690,9 +720,9 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       summonQuote:count=>summonQuote(read(),count),
       claimChapter:(chapter,milestone)=>tx(p=>{const progress=chapterProgress(p,chapter),reward=chapterReward(chapter,milestone);check(progress.total>=milestone,'Chưa đủ sao của chương này.');const key=`world2:${chapter}:${milestone}`;check(!p.campaign.claimedStars.includes(key),'Mốc sao này đã nhận.');const actual=grant(p,reward);p.campaign.claimedStars.push(key);const hiro=HIRO_FRAGMENTS.chest[milestone]||0;if(hiro){p.fragments.novice=(p.fragments.novice||0)+hiro;actual.noviceFragments=hiro;}note(p,`Nhận thưởng chương ${chapter} · ${milestone} sao`);return actual;}),
       claimOffline:()=>tx(p=>{onTime(p);const pending=offline(p,current);check(pending.hours>=1/60,'Cần ít nhất một phút để nhận thưởng.');const actual=grant(p,{gold:pending.gold,exp:pending.exp,seals:pending.seals});p.offlineAt=Math.max(current,p.offlineAt);p.offlineBank=null;note(p,'Nhận thưởng offline');return actual;}),
-      claimDaily:quest=>tx(p=>{onTime(p);const q=DAILY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.daily.claimed.includes(quest),'Bạn đã nhận thưởng hôm nay.');check(p.daily.progress[quest]>=q.target,'Chưa hoàn thành nhiệm vụ.');const actual=grantAll(p,q.reward);p.daily.claimed.push(quest);p.weekly.progress.daily++;treasurePoint(p,'daily',day(current),p.daily.claimed.length>=3);note(p,'Nhiệm vụ: '+q.name);return actual;}),
+      claimDaily:quest=>tx(p=>{onTime(p);const q=DAILY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.daily.claimed.includes(quest),'Bạn đã nhận thưởng hôm nay.');check(p.daily.progress[quest]>=q.target,'Chưa hoàn thành nhiệm vụ.');const actual=grantAll(p,q.reward);p.daily.claimed.push(quest);p.weekly.progress.daily++;passPoints(p,OPS()?.PASS.points.daily||0);treasurePoint(p,'daily',day(current),p.daily.claimed.length>=3);note(p,'Nhiệm vụ: '+q.name);return actual;}),
       weekly:()=>{const p=read();return WEEKLY.map(q=>({...q,progress:Math.min(q.target,p.weekly.progress[q.id]||0),claimed:p.weekly.claimed.includes(q.id),week:p.weekly.week}));},
-      claimWeekly:quest=>tx(p=>{onTime(p);const q=WEEKLY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.weekly.claimed.includes(quest),'Đã nhận thưởng tuần này.');check((p.weekly.progress[quest]||0)>=q.target,'Chưa hoàn thành nhiệm vụ tuần.');const actual=grantAll(p,q.reward);p.weekly.claimed.push(quest);note(p,'Nhiệm vụ tuần: '+q.name);return actual;}),
+      claimWeekly:quest=>tx(p=>{onTime(p);const q=WEEKLY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.weekly.claimed.includes(quest),'Đã nhận thưởng tuần này.');check((p.weekly.progress[quest]||0)>=q.target,'Chưa hoàn thành nhiệm vụ tuần.');const actual=grantAll(p,q.reward);p.weekly.claimed.push(quest);passPoints(p,OPS()?.PASS.points.weekly||0);note(p,'Nhiệm vụ tuần: '+q.name);return actual;}),
       newbie:()=>{const p=read();return newbieState(p,current);},
       claimNewbie:dayIndex=>tx(p=>{const row=newbieState(p,current).find(r=>r.day===dayIndex);check(row,'Ngày quà không hợp lệ.');check(row.open,'Chưa đến ngày nhận quà này.');check(!row.claimed,'Đã nhận quà ngày này.');const actual=grantAll(p,row.reward);(p.newbie??={claimed:[]}).claimed.push(dayIndex);note(p,`Hành Trình Tân Thủ · ngày ${dayIndex}`);return actual;}),
       levelUp:(key,count=1)=>tx(p=>{check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');bankOffline(p);const rewards={tickets:0};for(let i=0;i<count;i++){check(h.level<500,'Đã đạt cấp tối đa 500.');spend(p,levelCost(h.level));h.level++;if((h.level===10||h.level===25||h.level%50===0)&&!h.ticketMilestones.includes(h.level)){h.ticketMilestones.push(h.level);grant(p,{tickets:1});rewards.tickets++;}}note(p,`${HEROES[key].name} đạt cấp ${h.level}`);return rewards;}),
@@ -801,12 +831,23 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       // Mailbox, newest first. Claims are atomic: one failed grant leaves every mail unchanged.
       // Badges (docs/GAME_DESIGN.md §20 round 3): `claim` counts rewards to take now for free (red); `hint` lists
       // what can be raised now (green, the UI hides those already seen until they change); `count` is unread mail (blue).
+      pass:()=>{const p=read(),O=OPS();if(!p.pass)return null;const s=O.passSeason(current),level=passLevel(p),per=O.PASS.pointsPerLevel,rows=passRows(p);
+        return {season:s.index,start:s.start,end:s.end,daysLeft:Math.max(0,Math.ceil((s.end-current)/86400000)),points:p.pass.points,level,max:O.PASS.levels,per,
+          into:level>=O.PASS.levels?per:p.pass.points%per,owned:{gold:passOwns(p,'gold'),jewel:passOwns(p,'jewel')},rows,ready:rows.reduce((n,r)=>n+PASS_TRACKS.filter(t=>r[t].state==='ready').length,0),last:p.passLast||null,vouchers:{...(p.vouchers||{})}};},
+      claimPass:(level,track)=>tx(p=>{onTime(p);const actual=passClaim(p,Number(level),track);note(p,`Sổ Hành Trình: nhận cấp ${level}`);return actual;}),
+      claimPassAll:()=>tx(p=>{onTime(p);const total={};let count=0;for(const r of passRows(p))for(const t of PASS_TRACKS)if(r[t].state==='ready'){for(const [k,n] of Object.entries(passClaim(p,r.level,t)))total[k]=(total[k]||0)+n;count++;}
+        check(count,'Chưa có mốc nào để nhận.');note(p,`Sổ Hành Trình: nhận ${count} mốc`);return total;}),
+      // Thẻ Tháng: the server records the paid days; the client only reads them.
+      monthlyCard:()=>{const p=read(),until=p.cards?.monthly?.until||0;return {active:until>current,daysLeft:Math.max(0,Math.ceil((until-current)/86400000))};},
+      vip:()=>vipProgress(read().vip?.paidTotal),
       notices:()=>{const p=read();daily(p);const at=current,claim={},hint={};
         claim.quests=DAILY.filter(q=>!p.daily.claimed.includes(q.id)&&(p.daily.progress[q.id]||0)>=q.target).length;
         claim.events=newbieState(p,at).filter(r=>r.open&&!r.claimed).length+WEEKLY.filter(q=>!p.weekly.claimed.includes(q.id)&&(p.weekly.progress[q.id]||0)>=q.target).length;
         claim.offline=offline(p,at).hours>=1?1:0;
         let chests=0;for(let c=1;c<=Math.min(WORLD.CHAPTERS.length,Math.floor(p.campaign.cleared/50)+1);c++){const pr=chapterProgress(p,c);chests+=STAR_MILESTONES.filter(m=>pr.total>=m&&!pr.claimed.includes(m)).length;}claim.campaign=chests;
         const live=p.mail.filter(m=>mailLive(m,at));claim.mail=live.filter(m=>mailPending(m)).length;
+        // Sổ Hành Trình rewards to take now (never the locked paid tracks, never "you could pay").
+        if(p.pass)claim.vip=passRows(p).reduce((n,r)=>n+PASS_TRACKS.filter(t=>r[t].state==='ready').length,0);
         hint.upgrade=[];hint.skills=[];for(const key of Object.keys(p.heroes)){for(const r of growthMap(p,key))if(r.state==='ready'){const sig=`${key}:${r.id}:${r.current}`;(r.id.startsWith('skill')?hint.skills:hint.upgrade).push(sig);}}
         hint.inventory=Object.entries(p.fragments).filter(([k,n])=>n>=80&&HEROES[k]).map(([k,n])=>`fuse:${k}:${Math.floor(n/80)}`);
         return {claim,hint,count:{mail:live.filter(m=>!m.read).length}};},
@@ -848,5 +889,5 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });

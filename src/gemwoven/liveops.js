@@ -48,6 +48,12 @@
   // Event cadence (GMT+7). Each window lists what renews; the server owns the calendar. Two-week banner
   // periods and 28-day seasons count from the anchor Monday (period 0 / season 0).
   const CADENCE_ANCHOR='2026-11-02';
+  // Pass points come only from claiming quests (owner 2026-11-04, Codex round 1): 4 daily quests a day and 3 weekly
+  // ones a week give about 264 points a day, level 50 in about 19-20 days. Seasons start at 00:00 GMT+7 on the anchor
+  // Monday and last 28 days; dates before the anchor count as season 0.
+  PASS.points={daily:50,weekly:150};
+  const SEASON_START=Date.parse(CADENCE_ANCHOR+'T00:00:00+07:00'),SEASON_MS=PASS.seasonDays*86400000;
+  function passSeason(at){const index=Math.max(0,Math.floor((at-SEASON_START)/SEASON_MS)),start=SEASON_START+index*SEASON_MS;return {index,start,end:start+SEASON_MS};}
   const CADENCE=[
     {id:'daily',name:'Ngày',reset:'00:00',items:['Nhiệm vụ ngày','Sân Thử Luyện theo hệ (2 lượt có thưởng, thử lại thoải mái)','Quà VIP và Thẻ Tháng']},
     {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
@@ -95,5 +101,5 @@
   // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
   const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
     desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
-  return {CUP_PRIZES,CUP_SCHEDULE,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

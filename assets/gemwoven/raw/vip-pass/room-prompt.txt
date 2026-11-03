@@ -1,0 +1,40 @@
+Attached references in order: Image 1 = mockup-1.png, Image 2 = phone-forge.png, Image 3 = phone-upgrade.png.
+
+Create one environment-only background for Gemwoven's Journey Pass screen.
+
+REFERENCE ROLES
+Image 1, mockup-1.png, is the primary reference for the room, camera, architecture, palette, and lighting.
+Images 2 and 3 are supporting references for Gemwoven's approved hand-painted material quality and restrained fantasy style.
+Use the actual attached images as visual references, not merely their filenames.
+
+OUTPUT
+One opaque portrait image, 1024 x 1536 pixels, aspect ratio 2:3.
+Environment only. No interface.
+The central 84.4 percent of the image width will be cropped to a logical 941 x 1672 game stage. Extend the room naturally into the outer side margins. Do not squeeze the room horizontally.
+
+ROOM
+Recreate the welcoming timber reading room and journey archive visible behind the interface in Image 1.
+Keep the large arched upper window, curved wooden roof beams, warm daylight, blue sky visible through the window, peripheral bookshelves, a few unmarked book spines, stone-and-timber walls, and the stone floor near the bottom.
+Preserve the cozy reading-room identity. Do not turn it into a forge, shop counter, throne room, or forest.
+
+COMPOSITION
+Keep the upper window mostly within the top quarter.
+Confine busy shelving, decorative objects, and small architectural details to the left and right edges.
+Reserve a broad, quiet, softly shaded central wall area, approximately the middle 80 percent of the playable width from 25 percent to 82 percent of the image height.
+This quiet center must be continuous background scenery with subdued contrast and low texture detail, ready to receive independently composited interface assets.
+Let the floor occupy roughly the bottom 18 percent.
+Architectural beams may frame the room at the edges and roof, but must not form a rectangular interface border in the center.
+Use soft daylight without a bright streak crossing the central reward area.
+
+STYLE
+Clean HD hand-painted chibi fantasy environment.
+Matte warm timber, aged stone, soft painted volume, crisp architectural silhouettes, restrained foliage only at peripheral architectural edges.
+Match Image 1 while retaining the material restraint of Images 2 and 3.
+No pixel art, photorealism, glossy 3D, cinematic bloom, or noisy microtexture.
+
+STRICT EXCLUSIONS
+No journey tree, tree trunk, branches, canopy, central vine structure, or wooden reward shelves.
+No hanging title sign, plaque, panel, card, frame, ribbon, button, progress bar, badge, medallion, reward socket, scrollbar, HUD, bottom navigation, avatar, currency icon, gift icon, character, or foreground counter.
+Do not leave behind interface-shaped shadows, mounting brackets, or silhouettes where the removed interface used to be.
+No text, letters, numbers, writing on books, symbols resembling writing, logos, or watermark.
+Paint a complete uninterrupted room behind every absent interface element.

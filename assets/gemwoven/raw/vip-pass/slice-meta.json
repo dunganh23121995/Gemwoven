@@ -1,0 +1,146 @@
+{
+ "title-sign": [
+  444,
+  182
+ ],
+ "vip-strip": [
+  473,
+  106
+ ],
+ "season-strip": [
+  480,
+  79
+ ],
+ "tab-selected": [
+  404,
+  135
+ ],
+ "tab-idle": [
+  403,
+  115
+ ],
+ "tree-crown": [
+  470,
+  196
+ ],
+ "tree-row": [
+  478,
+  126
+ ],
+ "action-primary": [
+  470,
+  120
+ ],
+ "action-secondary": [
+  392,
+  119
+ ],
+ "vip-trough": [
+  467,
+  58
+ ],
+ "activity-trough": [
+  430,
+  60
+ ],
+ "activity-fill": [
+  429,
+  46
+ ],
+ "header-free": [
+  241,
+  140
+ ],
+ "header-gold": [
+  242,
+  149
+ ],
+ "header-jewel": [
+  247,
+  149
+ ],
+ "reward-free": [
+  236,
+  132
+ ],
+ "reward-gold": [
+  216,
+  130
+ ],
+ "reward-jewel": [
+  216,
+  129
+ ],
+ "medal": [
+  203,
+  136
+ ],
+ "medal-current": [
+  199,
+  169
+ ],
+ "vip-crest": [
+  226,
+  219
+ ],
+ "next-vip-tag": [
+  180,
+  88
+ ],
+ "claim-button": [
+  225,
+  75
+ ],
+ "status-plaque": [
+  290,
+  76
+ ],
+ "avatar-frame": [
+  212,
+  203
+ ],
+ "gift": [
+  184,
+  189
+ ],
+ "hourglass": [
+  128,
+  199
+ ],
+ "ownership-lock": [
+  120,
+  142
+ ],
+ "claimed-check": [
+  144,
+  143
+ ],
+ "journey-book": [
+  202,
+  173
+ ],
+ "calendar": [
+  143,
+  141
+ ],
+ "fund-pouch": [
+  142,
+  160
+ ],
+ "scroll-rail": [
+  30,
+  230
+ ],
+ "scroll-thumb": [
+  40,
+  151
+ ],
+ "scroll-arrow": [
+  104,
+  107
+ ],
+ "quantity-pill": [
+  206,
+  70
+ ]
+}

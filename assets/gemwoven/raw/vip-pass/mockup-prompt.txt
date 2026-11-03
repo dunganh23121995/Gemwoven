@@ -1,0 +1,157 @@
+Attached references in order: 1 phone-upgrade.png, 2 phone-shop.png, 3 phone-forge.png, 4 phone-inventory.png, 5 forge-mockup.png. (phone-vip.png and studio-vip.png are not attached: the current screen is a big parchment popup with a list of product cards.)
+
+Create ONE finished art-direction mockup of the redesigned VIP & Top-up screen, showing the Journey Pass tab, for Gemwoven, a portrait mobile match-3 RPG.
+
+OUTPUT
+One portrait 2:3 image, ideally 1200 x 1800, opaque background.
+Show one complete game screen without a phone device, desktop browser, Studio toolbar, sidebar, presentation captions, or alternative designs.
+
+Preserve the game's logical 941 x 1672 screen proportions: center an approximately 1013 x 1800 playable screen within the output. Extend only the room scenery into the narrow side margins. Keep every HUD element, control, and navigation element inside the central playable screen. Do not stretch the interface horizontally.
+
+REFERENCES
+Use phone-upgrade.png, phone-shop.png, phone-forge.png, and phone-inventory.png as strict references for Gemwoven's accepted illustrated UI style.
+Use forge-mockup.png as the standard for coherent composition, material craftsmanship, hierarchy, and restraint.
+Use phone-vip.png and studio-vip.png only to understand the screen being replaced. Do not reproduce their large parchment popup, product list, or paragraph-based layout.
+
+ART DIRECTION
+Warm, welcoming, finely hand-painted chibi fantasy.
+Crisp illustrated silhouettes, softly painted volume, matte timber, worn leather, aged brass, restrained leafy decoration, and small parchment labels.
+Every panel, socket, button, badge, progress frame, connector, and icon must look like a deliberately painted game asset.
+Typography and numbers should appear crisp and independently overlaid.
+Do not make pixel art or a modern web dashboard.
+
+ENVIRONMENT
+A quiet timber reading room and journey archive, with a restrained observatory detail, daylight from an upper window, a few books at the edges, and a handcrafted wooden journey tree mounted centrally.
+Keep the middle calm and sufficiently dark behind the reward objects.
+The tree is a functional reward timeline built from warm wood, subtle vines, brass joints, and branching shelves.
+No shop counter, large character, telescope, or decorative object may obstruct the interface.
+
+SCREEN STATE
+An early new-player account that has already earned some activity points.
+Hiro is the only owned hero.
+VIP 0, verified spending zero, VIP progress 0 / 100 points toward VIP 1.
+Illustrative HUD balances: 1.200 gold and 0 premium currency.
+Journey Pass level 3 / 50, with 350 activity points total and 50 / 100 toward the next level.
+Free level 1 has already been claimed.
+Free levels 2 and 3 are ready to claim: exactly TWO claimable reward nodes.
+Gold and Jewel tracks are not owned.
+All their rewards remain locked even at reached pass levels.
+Payments are Coming soon. There is no local purchase, trial purchase, or successful activation.
+
+VISUAL HIERARCHY
+The eye should immediately understand:
+current pass level -> connected reward tree -> two available free rewards -> locked optional higher tracks.
+The tree and rewards are the main subject.
+VIP progress supports the composition without becoming an oversized advertisement.
+
+Use the following coordinates as a logical layout guide on the 941 x 1672 game canvas.
+
+Y 0-150: TOP HUD
+Faithfully match the accepted screens:
+Hiro portrait with level badge, gold counter, blue premium-currency counter, and mail icon.
+Use understated dark plates with aged gold rims.
+Blue premium currency appears only in this HUD, never as a Journey Pass reward.
+
+Y 150-258: TITLE
+A compact painted hanging sign reading "VIP & Nạp".
+Keep it smaller than the reward-tree area.
+
+Y 258-412: VIP STRIP
+One integrated illustrated strip at approximately X 52-889.
+Left: a handsome brass VIP crest with an overlaid "0".
+Center: an empty painted progress trough labelled "0 / 100 điểm", with a small next-rank marker "VIP 1".
+Include the short persistent payment status "Nạp: Sắp ra mắt".
+Right: only the next rank's two benefits, an avatar-frame icon and a gold gift icon labelled "500".
+Do not show combat stats, attack bonuses, or higher-rank boss benefits here.
+
+Y 426-522: THREE TABS
+Three substantial painted tabs:
+"Sổ Hành Trình", "Thẻ Tháng", "Quỹ".
+The Journey Pass tab is selected.
+Approximate widths: 356, 274, and 203, separated by 12.
+Use material contrast and a restrained warm highlight for selection.
+
+Y 534-634: SEASON AND ACTIVITY PROGRESS
+A compact season tag and small hourglass.
+Short labels: "Mùa 1", "Cấp 3 / 50", and "50 / 100".
+Show a half-filled green activity progress trough.
+Make this progress visually distinct from the empty VIP progress above.
+Do not invent a countdown value or show dense explanatory text.
+
+Y 646-786: FIXED TRACK HEADERS
+Three equal-width handcrafted branch headers, approximately 240 wide.
+Their center positions are X 184, 470, and 756.
+Left: "Thường", with an open leaf emblem.
+Middle: "Vàng", "149.000đ", and "Kích hoạt".
+Right: "Diệu Ngọc", "299.000đ", and "Kích hoạt".
+The paid activation controls carry small clock seals consistent with the visible Coming-soon payment status.
+They must not imply that purchasing currently works.
+Use green, amber, and restrained violet material accents respectively.
+Do not use a blue premium-currency crystal to represent the Jewel track.
+
+Y 800-1366: SCROLLABLE REWARD TREE
+Show three equal reward lanes connected to ONE central wooden trunk at X 470.
+A numbered brass level medallion sits on the trunk at the beginning of each row.
+Paint clear horizontal branching arms leading to the three reward clusters.
+This must read as a growing journey tree, not disconnected cards or a spreadsheet.
+
+Each logical row is approximately 176 high.
+Reward-cluster centers: X 184, 470, and 756.
+Each cluster is approximately 224 wide and 116 high, beginning 52 below its row's top.
+Show levels 1, 2, and 3 fully, with a partial continuation toward level 4 at the bottom.
+Keep all three lanes aligned to their fixed headers.
+Add a subtle illustrated scroll rail at the far right.
+
+LEVEL 1
+The level medallion is reached.
+Free: a gold reward labelled "3.200", with a clear claimed check stamp.
+Gold: an EXP book labelled "21" and ore labelled "10", behind a small bronze ownership lock.
+Jewel: red evolution essence labelled "6" and ore labelled "15", behind the same ownership lock.
+
+LEVEL 2
+The level medallion is reached.
+Free: gold labelled "3.400", a restrained warm ready-to-claim highlight, and "Nhận".
+Gold: EXP "22" and ore "10", locked.
+Jewel: evolution essence "6" and ore "15", locked.
+
+LEVEL 3
+The level medallion is reached and subtly marks the current level.
+Free: gold labelled "3.600", the same ready-to-claim treatment, and "Nhận".
+Gold: EXP "23" and ore "10", locked.
+Jewel: evolution essence "6" and ore "15", locked.
+
+Paid reward icons remain recognizable and colored behind their small lock badges.
+Do not turn entire paid columns gray.
+Make each whole reward cluster feel tappable, with generous readable icons and aligned quantities.
+Use compact bundles for two-item rewards.
+Exactly two free clusters are ready to claim.
+Future timeline continuation is quiet and unlit.
+No premium gems appear anywhere in the reward tree.
+
+Y 1376-1484: FIXED ACTIONS
+Leave a clear gap below the clipped timeline.
+Left: a smaller painted button reading "Nhiệm vụ".
+Right: the primary illustrated button reading "Nhận tất cả · 2".
+Use a journey-book or gift emblem, never a forge hammer.
+These buttons remain separate from the scrolling tree.
+
+Y 1490-1672: BOTTOM NAVIGATION
+Faithfully match the illustrated wooden-and-leafy Gemwoven navigation:
+"Trang Chủ", "Tướng", "Túi Đồ", "Kỹ Năng", "Triệu Hồi", "Đấu Trường", "Thêm".
+Keep all seven icons and labels fully visible.
+Select "Thêm".
+Its only claim notification in this fixture is "2", representing the two available free rewards, never the opportunity to buy something.
+
+TYPOGRAPHY AND FINISH
+Short Vietnamese labels with correct accents.
+Warm fantasy serif lettering, clear hierarchy, generous icon silhouettes, and aligned numbers.
+Design for legibility when the playable screen is only 390 pixels wide.
+Use approximately 32-40 logical pixels for functional text.
+Avoid tiny paragraphs.
+Show only the selected Journey Pass content.
+Reward details belong behind a tap and are not expanded in this mockup.
+
+AVOID
+A giant parchment popup, product-list cards, repeated cream rounded rectangles, modern web forms, neon outlines, excessive gold filigree, dense text, fifty compressed levels, narrow unequal reward lanes, unrelated floating widgets, red purchase notifications, premium-gem pass rewards, extra owned heroes, simulated payment success, modal dialogs, photorealism, glossy 3D rendering, cinematic bloom, or any overlap with bottom navigation.
+
+Deliver one cohesive, believable Gemwoven Journey Pass screen ready for art-direction review before implementation.

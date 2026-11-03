@@ -1,0 +1,175 @@
+Attached references in order: Image 1 = mockup-1.png, Image 2 = phone-forge.png, Image 3 = phone-upgrade.png.
+
+Create one production asset sheet of small modular painted interface pieces for Gemwoven's Journey Pass screen.
+
+REFERENCE ROLES
+Image 1, mockup-1.png, is the primary reference for all silhouettes, colors, materials, and icon identities.
+Images 2 and 3 are supporting references for approved Gemwoven hand-painted craftsmanship.
+Extract and reconstruct the visual language of Image 1 as independent reusable parts.
+Do not reproduce the complete screen.
+
+OUTPUT AND GRID
+One opaque landscape 1536 x 1024 pixel image.
+Exactly 4 rows and 6 columns of invisible cells.
+Each cell is 256 x 256 pixels.
+Read cells left to right, top to bottom.
+The entire background outside asset silhouettes and inside open holes must be perfectly flat, solid #FF00FF.
+No visible cell lines, labels, captions, guide marks, or filename text.
+
+PACKING CONTRACT
+Exactly one connected foreground asset per cell.
+Center each asset in its cell, keeping the aspect ratios of the target dimensions listed below (logical game-stage units; draw each as large as its cell allows).
+Keep at least 24 pixels of clear magenta between each asset and its cell boundary.
+Every ornamental part must visibly connect to its own base.
+No detached sparkles, leaves, particles, screws, or secondary objects.
+No overlaps between assets or cells.
+No shadows, glow, haze, reflections, or color spill on the magenta background.
+Keep all material shading inside the asset silhouette.
+Do not use magenta paint within an asset.
+Open frame interiors are magenta holes, not scenery.
+The output must support cutting by foreground connected-component detection.
+
+STYLE
+Clean HD front-facing hand-painted fantasy UI.
+Matte timber, worn leather, aged brass, parchment, restrained foliage, clean silhouettes, and softly painted volume.
+Match Image 1 while reducing glare to the restrained finish of Images 2 and 3.
+No pixel art, glossy 3D, photorealism, modern dashboard styling, or excessive gold ornament.
+All surfaces intended for HTML text and numbers must remain completely blank.
+
+CELL MANIFEST
+
+ROW 1
+
+Column 1 — header-free, 240 x 110:
+The green timber track-header plaque with a small attached leaf emblem at its upper edge.
+Quiet blank center. No label or price.
+
+Column 2 — header-gold, 240 x 110:
+The amber timber track-header plaque with a small attached brass crown emblem.
+Blank areas for the track name and price.
+No activation button, clock plaque, text, or numbers.
+
+Column 3 — header-jewel, 240 x 110:
+The restrained violet timber track-header plaque with a small attached lavender-and-gold floral crest.
+The crest is a stylized blossom, not a blue premium-currency crystal.
+Blank areas for the track name and price.
+No activation button, clock plaque, text, or numbers.
+
+Column 4 — reward-free, 224 x 116:
+An empty reward socket with a muted green interior, aged brass edging, and modest attached leaf corners.
+Neutral base state, without a claim highlight.
+No item, quantity, check, lock, button, or text.
+
+Column 5 — reward-gold, 224 x 116:
+An empty reward socket with a dark warm brown interior and amber brass edging.
+Reserve room for two independently placed item icons and quantities.
+No items, lock, button, or text.
+
+Column 6 — reward-jewel, 224 x 116:
+An empty reward socket with a dark brown-violet interior and restrained violet-gold edging.
+Reserve room for two independently placed item icons and quantities.
+No items, lock, button, or text.
+
+ROW 2
+
+Column 1 — medal, 104 x 88:
+A blank circular brass timeline medallion with short attached side tabs.
+Quiet central face for an HTML level number.
+No number, letter, check, or glow.
+
+Column 2 — medal-current, 112 x 100:
+The matching current-level medallion with a modest attached golden laurel.
+Blank center. No number or external glow.
+
+Column 3 — vip-crest, 152 x 156:
+The handsome red-and-brass VIP shield from Image 1, including attached laurel sides and an attached blank upper ribbon.
+Leave the ribbon blank for the HTML letters VIP and the shield face blank for the HTML rank number.
+No letters or numbers painted into the asset.
+
+Column 4 — next-vip-tag, 100 x 48:
+A small blank parchment-and-brass next-rank tag.
+No letters, rank number, or symbol.
+
+Column 5 — claim-button, 176 x 44:
+A compact amber painted claim button with beveled brass ends and a blank center.
+No text, icon, or external glow.
+
+Column 6 — status-plaque, 350 x 48:
+A slim cream parchment status plaque with restrained brass end fittings.
+Include one small clock seal physically attached near its left edge.
+The clock has hands but no numerals.
+Keep the central parchment texture quiet and horizontally repeatable for nine-slice resizing to widths between 216 and 350 units.
+All borders and the attached clock must remain readable after resizing.
+Blank text area. No words.
+
+ROW 3
+
+Column 1 — avatar-frame-preview, 92 x 92:
+The ornamental golden avatar wreath from the VIP benefit preview in Image 1.
+One connected circular frame with small attached white flowers and red accents.
+Open magenta center. No portrait, badge, rank, number, or text.
+
+Column 2 — gift, 90 x 90:
+The red-and-gold wrapped gift with a large golden bow, matching Image 1.
+One connected gift silhouette.
+No reward quantity, surrounding card, sparkles, or text.
+
+Column 3 — hourglass, 60 x 76:
+The small brass hourglass from the season strip.
+Clear readable pale sand and blue-tinted glass.
+One connected silhouette with its frame.
+No surrounding plaque or text.
+
+Column 4 — ownership-lock, 44 x 48:
+The small closed bronze ownership padlock from the paid reward sockets.
+Solid readable silhouette and a simple keyhole.
+No surrounding card, chain, text, or numeral.
+
+Column 5 — claimed-check, 44 x 44:
+A green circular painted seal with a cream checkmark.
+The checkmark is contained inside and connected visually to the solid seal background.
+No text, numbers, shadow, or glow.
+
+Column 6 — journey-book, 72 x 76:
+The small open journey journal with a red bookmark and modest brass details from Image 1.
+Pages are completely blank, with no handwriting, letters, numbers, lines resembling writing, or loose paper.
+One connected silhouette.
+It will be reused for the Journey Pass tab and the quests button.
+
+ROW 4
+
+Column 1 — calendar, 56 x 60:
+The compact parchment calendar icon with a red upper binding.
+Blank page, no dates, digits, letters, or writing.
+
+Column 2 — fund-pouch, 56 x 64:
+The small tied golden-brown fund pouch from Image 1.
+No currency letter, dollar sign, writing, number, or surrounding plaque.
+
+Column 3 — scroll-rail, 28 x 176:
+A narrow vertical dark wooden scrollbar rail with a restrained aged brass edge.
+Top and bottom profiles match for vertical repetition.
+No end caps, arrows, thumb, text, or horizontal extension.
+Do not terminate the track at either repeat edge.
+
+Column 4 — scroll-thumb, 14 x 80:
+A narrow rounded amber scrollbar thumb with contained painted shading.
+No rail, text, or external glow.
+
+Column 5 — scroll-arrow, 32 x 32:
+A small carved timber-and-brass scrollbar end button with one simple upward arrow relief.
+The arrow is a pictogram, not writing.
+It will be rotated by 180 degrees for the lower end.
+No numeral or label.
+
+Column 6 — quantity-pill, 92 x 28:
+A low-contrast dark brown rounded painted quantity backing.
+Quiet blank center, no rim glare.
+No number, icon, or text.
+
+FINAL EXCLUSIONS
+Do not add gold coins, EXP books, ore piles, red essence clusters, or any other reward-item art; existing game assets will supply them.
+No blue premium-currency crystals anywhere.
+No room, tree, large backing panel, HUD, bottom navigation, character, assembled screen, typography, letters, digits, logos, watermark, or decorative writing.
+Do not write VIP anywhere.
+Only the twenty-four specified isolated assets on pure #FF00FF.

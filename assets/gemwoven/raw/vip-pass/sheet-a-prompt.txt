@@ -1,0 +1,115 @@
+Attached references in order: Image 1 = mockup-1.png, Image 2 = phone-forge.png, Image 3 = phone-upgrade.png.
+
+Create one production asset sheet of large modular painted interface pieces for Gemwoven's Journey Pass screen.
+
+REFERENCE ROLES
+Image 1, mockup-1.png, is the primary reference for the exact asset silhouettes, materials, colors, and ornament vocabulary.
+Images 2 and 3 provide supporting references for approved Gemwoven craftsmanship and restraint.
+Reconstruct individual assets from Image 1. Do not reproduce a complete screen or include room scenery.
+
+OUTPUT AND GRID
+One opaque landscape 1536 x 1024 pixel image.
+Exactly 4 rows and 3 columns of invisible cells.
+Each cell is 512 x 256 pixels.
+Read cells left to right, top to bottom.
+Use a perfectly uniform, flat, solid #FF00FF background everywhere outside the assets, including open holes.
+No visible grid, cell borders, labels, filename captions, or guide marks.
+
+PACKING CONTRACT
+Exactly one connected foreground asset per cell.
+Center each asset in its cell, keeping the aspect ratios of the target dimensions listed below (logical game-stage units; draw each as large as its cell allows).
+Keep at least 24 pixels of clear magenta between the asset and its cell boundary.
+All leaves, rivets, ornaments, chain links, and decorative tips must be visibly attached to their own asset.
+No detached leaves, particles, sparkles, floating hardware, or extra components.
+No asset may touch or cross a cell boundary.
+Do not draw drop shadows, glow, haze, reflections, or color spill onto the magenta background.
+Shading must remain inside the painted silhouette.
+Keep magenta out of the asset paint itself.
+These assets will be separated by foreground connected-component detection and then registered on their declared logical canvases.
+
+STYLE
+Clean HD hand-painted fantasy UI matching Image 1: matte carved timber, aged brass, small parchment inserts, restrained green leaves, clear silhouettes, soft painted volume.
+Use less bloom and glare than Image 1.
+Front-facing interface assets, without camera perspective or scenery.
+No pixel art, glossy 3D, modern flat dashboard styling, or excessive filigree.
+All writing areas must be clean, calm, and blank.
+
+CELL MANIFEST
+
+Row 1, Column 1 — title-sign, 480 x 150:
+The compact hanging wooden title sign from Image 1, including two short attached chains and modest attached leafy end ornaments.
+Dark timber center with ample blank space for an HTML title.
+
+Row 1, Column 2 — vip-strip, 880 x 170:
+The long beveled timber-and-brass VIP backing strip.
+One connected outer frame with a quiet dark wooden interior.
+Do not include the VIP shield, progress trough, next-rank tag, status plaque, benefit frames, gifts, icons, or text; those are separate layers.
+
+Row 1, Column 3 — season-strip, 840 x 90:
+A long cream parchment season-and-progress backing.
+Include the attached blank violet season pennant at the left and restrained attached leaf ornaments at the ends.
+Keep the middle and right areas empty for HTML labels and an independently composited progress bar.
+No hourglass or progress trough.
+
+Row 2, Column 1 — tab-selected, 320 x 80:
+The selected parchment-and-timber tab with a warm amber painted rim.
+Blank interior, no book icon.
+Keep the selection highlight contained within the silhouette.
+
+Row 2, Column 2 — tab-idle, 320 x 80:
+The matching unselected dark timber tab with an aged brass rim.
+Blank interior, no icon.
+Keep its corners and overall construction compatible with the selected tab.
+
+Row 2, Column 3 — tree-crown, 840 x 210:
+One connected top canopy and branching crown for the journey timeline.
+Warm carved wood with a restrained cluster of attached leaves.
+Its upper branches spread behind and slightly above three separately placed track-header plaques.
+In its local 840-unit canvas, the three header centers are x=132, x=448, and x=698.
+The trunk axis is x=282, matching the slightly left-of-center trunk in Image 1.
+Finish the lower edge with a straight continuing trunk connector, 40 units wide, centered at x=282.
+No header plaques, badges, crown emblems, reward sockets, text, or numbers.
+The canopy must remain airy, with open magenta negative space around the connected branches.
+
+Row 3, Column 1 — tree-row, 840 x 176:
+One vertically repeatable journey-tree row segment, not a complete tree.
+Exactly one vertical trunk section, one connected branch extending left, and one connected branch extending right.
+The right branch supports the two paid reward positions; do not add a third independent horizontal branch.
+Use the local coordinate system of an 840 x 176 canvas.
+Trunk axis x=282.
+Top and bottom trunk connectors are both 40 units wide, centered at x=282, with identical silhouette, bark color, grain direction, and edge treatment so copies join vertically at an exact 176-unit pitch.
+No terminating stump caps, roots, taper, knots, or leaf clusters at the joining edges.
+Keep the trunk continuous behind a small blank brass mounting seat centered at x=282, y=88, where a separate numbered medallion will be placed.
+Leave quiet receiving spaces for three separate 224 x 116 reward sockets centered at x=132, x=448, and x=698, with socket centers around y=98.
+Place the attached branch supports predominantly below and behind those receiving spaces.
+No reward sockets, medallion faces, icons, locks, buttons, text, or numbers.
+All artwork must fit inside the exact 840 x 176 logical envelope.
+Do not crop this tile against the outer sheet or its cell boundary.
+
+Row 3, Column 2 — action-primary, 450 x 100:
+The large warm amber-and-brass primary action button from Image 1.
+Blank face, with a calm area at the left for a separately placed gift icon and a broad blank text area to the right.
+No gift, text, or external glow.
+
+Row 3, Column 3 — action-secondary, 310 x 100:
+The smaller parchment-and-brass secondary action button.
+Blank face, with space at the left for a separate journey-book icon.
+No icon or text.
+
+Row 4, Column 1 — vip-trough, 450 x 38:
+A narrow empty VIP progress trough with an aged brass rim and dark interior.
+No fill, rank marker, ticks, text, or numbers.
+
+Row 4, Column 2 — activity-trough, 310 x 38:
+A rounded horizontal activity progress trough, with warm brass edging and a dark brown interior.
+No fill, text, or numbers.
+
+Row 4, Column 3 — activity-fill, 310 x 24:
+A full-length solid green painted progress insert with restrained internal shading and softly rounded ends.
+No brass outer frame, ticks, text, or numbers.
+It will be clipped to half length by HTML at runtime.
+
+FINAL EXCLUSIONS
+No room background, assembled screen, HUD, navigation, characters, reward items, blue premium-currency crystals, typography, letters, digits, logos, watermark, or decorative writing.
+Do not write VIP anywhere.
+Only the twelve specified isolated assets on pure #FF00FF.

@@ -159,7 +159,7 @@ console.log('gear overflow ok');
   e.claimDaily('login');e.claimNewbie(1);n=e.notices();assert.equal(n.claim.quests,0);assert.equal(n.claim.events,0);
   edit(p=>{p.wallet.gold=1e6;p.materials.exp=1e3;p.materials.seals=1e4;p.fragments.novice=85;});n=e.notices();
   assert.ok(n.hint.upgrade.some(s=>s.startsWith('novice:level:')));assert.deepEqual(n.hint.inventory,['fuse:novice:1']);
-  assert.ok(!('gems' in n.claim)&&!('vip' in n.claim),'never a red dot for paying');
+  assert.ok(!('gems' in n.claim)&&!n.claim.vip,'never a red dot for paying (VIP counts only pass rewards to take)');
 }
 console.log('badges ok');
 { // Titles: cosmetic, earned from play; only an unlocked one can be worn; server titles stay locked here.
@@ -214,6 +214,39 @@ console.log('treasure trial ok');
   assert.throws(()=>e.strengthenTo(g.id,10));assert.equal(e.read().equipment.find(x=>x.id===g.id).level,3,'nothing half done');
 }
 console.log('forge ok');
+{ // Sổ Hành Trình timeline (owner 2026-11-04): quest points raise levels, free nodes open as reached, the gold and
+  // jewel tracks only after a server-recorded purchase, jewel gear chests wait for their stage. No Đá Ngọc anywhere.
+  const O=require('../../src/gemwoven/liveops.js');const {engine:e,edit}=fixture();
+  let v=e.pass();assert.equal(v.level,0);assert.equal(v.points,0);assert.equal(v.rows.length,50);assert.equal(v.ready,0);
+  assert.equal(typeof e.setPassOwned,'undefined','the client cannot activate a paid track');
+  e.claimDaily('login');assert.equal(e.pass().points,O.PASS.points.daily,'a daily quest gives pass points');
+  edit(p=>{p.weekly.progress.campaign=15;});e.claimWeekly('campaign');v=e.pass();assert.equal(v.points,50+150);assert.equal(v.level,2);assert.equal(v.into,0);
+  assert.deepEqual(v.rows.slice(0,3).map(r=>r.free.state),['ready','ready','level']);assert.equal(v.rows[0].gold.state,'track');assert.equal(v.rows[0].jewel.state,'track');
+  assert.equal(e.notices().claim.vip,2,'red dot = free nodes to take now, not the locked paid ones');
+  const gold=e.read().wallet.gold;assert.deepEqual(e.claimPass(1,'free'),{gold:3200});assert.equal(e.read().wallet.gold,gold+3200);
+  assert.throws(()=>e.claimPass(1,'free'),/Đã nhận/);assert.throws(()=>e.claimPass(3,'free'),/cấp sổ 3/);assert.throws(()=>e.claimPass(2,'gold'),/kích hoạt/);
+  assert.equal(e.notices().claim.vip,1);
+  // A purchase recorded by the server mid-season opens every reached node of that track.
+  edit(p=>{p.pass.owned.gold=true;p.pass.points=2600;});v=e.pass();assert.equal(v.level,26);assert.ok(v.owned.gold&&!v.owned.jewel);
+  assert.equal(v.rows.filter(r=>r.gold.state==='ready').length,26);assert.equal(v.rows[24].jewel.state,'track');
+  // Jewel includes gold; its level-25 Sử Thi chest waits for stage 60; claim-all skips it and takes the rest.
+  edit(p=>{p.pass.owned={gold:false,jewel:true};p.campaign.cleared=20;});v=e.pass();assert.ok(v.owned.gold&&v.owned.jewel);assert.equal(v.rows[24].jewel.state,'stage');assert.equal(v.rows[24].jewel.gate,60);
+  assert.throws(()=>e.claimPass(25,'jewel'),/ải 60/);
+  const all=e.claimPassAll();assert.equal(all.gems,undefined);assert.equal(all.fragmentChoice,40,'levels 10 and 20 give hero fragment vouchers');
+  v=e.pass();assert.equal(v.ready,0);assert.equal(v.rows[24].jewel.state,'stage');assert.equal(v.vouchers.fragmentChoice,40);assert.throws(()=>e.claimPassAll(),/Chưa có mốc/);
+  edit(p=>{p.campaign.cleared=60;});assert.deepEqual(e.claimPass(25,'jewel'),{epicGearChoice:1,divineOre:2});
+  for(let l=1;l<=O.PASS.levels;l++)for(const t of ['free','gold','jewel'])assert.equal(O.PASS[t](l).gems,undefined);
+  // A new season (00:00 GMT+7, 28 days from the anchor Monday) starts at zero and grants what was left to take.
+  edit(p=>{p.pass.points=2700;});assert.equal(e.pass().ready,3);
+  clock=O.passSeason(clock).end+3600000;v=e.pass();assert.equal(v.season,1);assert.equal(v.level,0);assert.ok(!v.owned.gold&&!v.owned.jewel,'a purchase covers one season');
+  assert.equal(v.last.count,3,'leftover rewards are granted, not lost');
+  // VIP progress: 1 point per 1.000 ₫ verified, one cumulative scale, VIP 12 is the top.
+  assert.deepEqual(M.vipProgress(0),{level:0,points:0,from:0,next:{level:1,points:100},need:100,ratio:0,max:false});
+  const mid=M.vipProgress(450000);assert.equal(mid.level,2);assert.equal(mid.need,150);assert.equal(mid.ratio,.5);
+  assert.ok(M.vipProgress(1e9).max);assert.equal(M.vipProgress(1e9).level,12);assert.equal(e.vip().level,0);
+  assert.equal(e.monthlyCard().active,false,'no local card purchase');
+}
+console.log('journey pass ok');
 { // Cúp Đấu Trường (§12.5, Codex arena rounds 1–2): month calendar, symmetric Elo, daily matches, AI field, knockout, no rewards.
   const O=require('../../src/gemwoven/liveops.js'),H7=7*3600000;
   const s=M.cupSeason(Date.UTC(2026,10,3,20));assert.deepEqual([s.key,s.date,s.raceDays,s.phase],['2026-11',4,27,'race'],'UTC+7 calendar day');

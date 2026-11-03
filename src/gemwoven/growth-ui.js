@@ -1,13 +1,12 @@
 /* Depth pass in the hub (docs/GAME_DESIGN.md): the growth map ("Lộ trình"), the power breakdown
- * behind every Lực Chiến, greyed unowned heroes, the newbie week, and the Coming-soon VIP, card and
- * pass pages read from liveops.js. Rules and numbers come from progression.js; nothing is computed here.
+ * behind every Lực Chiến, greyed unowned heroes, the newbie week and the event cadence read from liveops.js. Rules and numbers come from progression.js; nothing is computed here.
  */
 (() => {
   const G=window.GEMWOVEN_GAME,M=window.GemwovenProgression,O=window.GemwovenLiveOps,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
   if(!G||!M)return;
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN'),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const img=(asset,cls='')=>`<img class="${cls}" src="${esc((A[asset]||A['icon-hero']).file)}" alt="" draggable="false">`;
-  const vnd=n=>fmt(n)+' ₫',pct=x=>(x*100).toLocaleString('vi-VN',{maximumFractionDigits:1})+'%';
+  const pct=x=>(x*100).toLocaleString('vi-VN',{maximumFractionDigits:1})+'%';
   const STATE={ready:'Làm được ngay',short:'Thiếu nguyên liệu',locked:'Chưa đủ điều kiện',max:'Đã tối đa'};
   const signed=(n,f)=>n>0?'+'+f(n):n<0?'−'+f(-n):'—';
 
@@ -87,26 +86,7 @@
     if(!O)return '';
     return `<section class="cadence"><h3>Lịch sự kiện dự kiến · Sắp ra mắt</h3><div class="cadence-grid">${O.CADENCE.map(c=>`<article><b>${esc(c.name)}</b><small>Làm mới ${esc(c.reset)} (GMT+7)</small><ul>${c.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></article>`).join('')}</div></section>`;
   }
-  function vipPage(p){
-    const card=id=>O.PRODUCTS.find(x=>x.id===id);
-    // Price and the three main perks up front; the rest folded (Codex UI review).
-    const product=x=>`<article class="product-card"><header><b>${esc(x.name)}</b><span>${vnd(x.price)}</span></header><em>Sắp ra mắt</em><ul>${x.perks.slice(0,3).map(k=>`<li>${esc(k)}</li>`).join('')}</ul>${x.perks.length>3?`<details><summary>Xem đủ ${x.perks.length} quyền lợi</summary><ul>${x.perks.slice(3).map(k=>`<li>${esc(k)}</li>`).join('')}</ul></details>`:''}</article>`;
-    return `<header class="game-heading"><h2>VIP & Nạp</h2><p>Sắp ra mắt · Thanh toán và quyền lợi do máy chủ xác nhận. Chưa thu tiền.</p></header>`+
-      `<p class="vip-now">VIP hiện tại: <b>${p.vip.level}</b> · Tổng nạp đã xác thực: <b>${vnd(p.vip.paidTotal)}</b></p>`+
-      `<div class="product-grid">${['monthly-card','journey-pass','journey-pass-jewel','growth-fund'].map(id=>card(id)).filter(Boolean).map(product).join('')}</div>`+
-      `<h3 class="growth-sub">Bậc VIP</h3><p class="hint">VIP chỉ thêm tiện lợi, tài nguyên ngày và trang trí, không cộng chỉ số chiến đấu. Giao dịch bị hoàn tiền sẽ bị thu hồi và tính lại VIP.</p>`+
-      `<table class="gw-table vip-table"><thead><tr><th>VIP</th><th>Quyền lợi thêm</th><th>Tổng nạp</th></tr></thead><tbody>${O.VIP.map(v=>`<tr class="${p.vip.level>=v.level?'is-reached':''}"><td>${v.level}</td><td>${v.perks.map(esc).join(' · ')}</td><td>${vnd(v.spend)}</td></tr>`).join('')}</tbody></table>`+
-      `<h3 class="growth-sub">Quỹ Trưởng Thành</h3><p class="hint">Mua một lần; mỗi mốc cấp tướng cao nhất mở một phần Đá Ngọc của gói đã mua.</p>`+
-      `<div class="fund-row">${O.GROWTH_FUND.map(f=>`<span><b>Cấp ${f.level}</b>${fmt(f.gems)}</span>`).join('')}</div>`+
-      `<h3 class="growth-sub">Sổ Hành Trình · 3 nhánh</h3><p class="hint">Mùa ${O.PASS.seasonDays} ngày, ${O.PASS.levels} cấp từ điểm nhiệm vụ (chơi đều đạt cấp 50 sau khoảng 20 ngày). Mua giữa mùa vẫn nhận ngay mọi phần thưởng của các cấp đã đạt. Sổ không chứa Đá Ngọc.</p>`+passTable();
-  }
-  // The three pass tracks at their milestone levels (every fifth level; the others give small materials).
-  function passTable(){
-    const label=r=>Object.entries(r).map(([k,n])=>`${fmt(n)} ${({fragmentChoice:'mảnh tướng tự chọn',epicGearChoice:'rương Sử Thi tự chọn',legendaryGearChoice:'rương Huyền Thoại tự chọn',seasonFrame:'khung mùa'})[k]||M.RESOURCES[k]?.[0]||k}`).join(' · ');
-    const rows=[5,10,15,20,25,30,35,40,45,50].map(l=>`<tr><td>${l}</td>${O.PASS.tracks.map(t=>`<td>${esc(label(O.PASS[t.id](l)))}</td>`).join('')}</tr>`).join('');
-    return `<table class="gw-table pass-table"><thead><tr><th>Cấp</th>${O.PASS.tracks.map(t=>`<th>${esc(t.name)}${t.product?`<small>${vnd(O.PRODUCTS.find(x=>x.id===t.product).price)}</small>`:'<small>Miễn phí</small>'}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`+
-      `<p class="hint">Diệu Ngọc: +${O.PASS.jewelBonusLevels} cấp ngay khi mua (tính vào giới hạn ${O.PASS.boughtLevelsMax} cấp mua), danh hiệu mùa "${esc(O.PASS.seasonTitle)}". Mảnh tướng tự chọn chỉ cho tướng đã sở hữu, trừ Hiro. Rương Sử Thi/Huyền Thoại nhận khi đã qua ải ${O.PASS.gearGates.epicGearChoice}/${O.PASS.gearGates.legendaryGearChoice}.</p>`;
-  }
+  // VIP & Nạp, Sổ Hành Trình, Thẻ Tháng and Quỹ live in pass-ui.js (owner 2026-11-04: timeline tree).
   // Danh Hiệu (owner 2026-11-03): only the name, on a plate drawn per rarity; tap it to see how to earn it and
   // to wear or take it off. The worn one shows over your head in combat and in Gặp Gỡ. Cosmetic only.
   const plate=(t,big=false)=>`<span class="title-plate tier-${t.tier}${big?' big':''}"><img src="assets/gemwoven/titles/plate-${t.tier}.webp" alt=""><b>${esc(t.name)}</b></span>`;
@@ -139,13 +119,6 @@
       `<details class="arena-more"><summary>🏆 Thư Hùng Đại Hội</summary><ul class="growth-tips"><li><span>Đăng ký 1 tuần → vòng Thụy Sĩ 7 vòng → top 64 loại trực tiếp, xem trực tiếp (trễ 10 giây).</span></li><li><span>Hai hạng: Chuẩn Hóa và Tự Do.</span></li><li><span>Thưởng: danh hiệu Thư Hùng Vô Địch (tên riêng theo khuôn, có kiểm duyệt), trang phục vô địch, tượng ở Quảng Trường mùa sau. Không sức mạnh độc quyền.</span></li></ul></details>`;
     modal.present();
   }
-  function monthlyCard(ctx){
-    const x=O?.PRODUCTS.find(x=>x.id==='monthly-card');if(!x)return false;
-    const modal=window.GemwovenUI.makeDialog('monthly-card','Thẻ Tháng · Sắp ra mắt','growth-dialog');
-    modal.body.innerHTML=`<p class="growth-lead">${vnd(x.price)} cho ${x.days} ngày. Mua thêm khi còn hạn sẽ cộng dồn, tối đa ${x.stackMaxDays} ngày.</p><ul class="growth-tips">${x.perks.map(k=>`<li><span>${esc(k)}</span></li>`).join('')}</ul><p class="growth-note">Thanh toán mở cùng máy chủ. Đá Ngọc của thẻ là hàng của giao dịch, được ghi sổ cái máy chủ.</p>`;
-    const more=document.createElement('button');more.type='button';more.className='gw-btn secondary';more.textContent='Xem VIP & gói nạp';more.onclick=()=>{modal.close();ctx.navigate('vip');};
-    modal.actions.append(more);modal.present();return true;
-  }
 
   // ----- Hooks -----
   const decorate=G.decorate;
@@ -168,7 +141,6 @@
     const live=screen.nodes.find(n=>n.id===state.screen+'.live');
     if(live&&state.screen==='events'){const build=live.build;live.build=el=>{build(el);const sub=el.querySelector('.game-heading p'),week=newbieSection();if(sub&&week)sub.textContent='Hành Trình Tân Thủ đang mở · Sự kiện theo mùa sắp ra mắt.';el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',week+weeklySection());el.insertAdjacentHTML('beforeend',cadenceSection());};}
     if(live&&state.screen==='boss'){const build=live.build;live.build=el=>{build(el);el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',trialSection(G.engine.read()));};}
-    if(live&&state.screen==='vip'&&O)live.build=el=>{el.innerHTML=vipPage(G.engine.read());};
     if(live&&state.screen==='rankings'){const build=live.build;live.build=el=>{build(el);el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',titlesSection(G.engine.read()));};}
     return p;
   };
@@ -181,7 +153,6 @@
     if(action==='growth:arena'){arenaDialog();return true;}
     if(action==='growth:title-open'){titleDialog(ctx,el.dataset.id);return true;}
     if(action==='growth:weekly'){try{const got=G.engine.claimWeekly(el.dataset.quest);ctx.render();G.showRewards(ctx,got,'Thưởng nhiệm vụ tuần');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
-    if(action==='journey:monthly'&&monthlyCard(ctx))return true;
     return handle(action,el,ctx,state);
   };
   window.GemwovenGrowthUI={powerDialog,growthDialog};
