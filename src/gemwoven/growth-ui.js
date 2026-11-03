@@ -91,10 +91,24 @@
   // to wear or take it off. The worn one shows over your head in combat and in Gặp Gỡ. Cosmetic only.
   const plate=(t,big=false)=>`<span class="title-plate tier-${t.tier}${big?' big':''}"><img src="assets/gemwoven/titles/plate-${t.tier}.webp" alt=""><b>${esc(t.name)}</b></span>`;
   window.GemwovenTitlePlate=plate;
+  // Full review 4 (Codex: "toàn khóa, thiếu tiến độ"): every title earned on this save shows a short condition and
+  // its progress on the kit trough, the nearest ones first and the closest one marked "Gần đạt"; titles the server
+  // will give sit apart under "Sắp ra mắt". Numbers come from progression.js titleList.
+  const NEED={newcomer:['Tân Thủ',' ngày'],ember:['Vượt ải',''],'hunter-1':['Boss vô hạn',''],trial:['Thử Luyện',' boss'],smith:['Cường hóa','',v=>'+'+v],
+    'hiro-star':['Hiro',' sao'],collector:['Hình thái',''],pathfinder:['Vượt ải',''],'boss-hunter':['Boss vô hạn','']};
+  const SOON={'season-gold':'Đấu Hạng','cup-champion':'Cúp Đấu Trường','cup-final':'Cúp Đấu Trường','cup-semi':'Cúp Đấu Trường','cup-eight':'Cúp Đấu Trường',champion:'Thư Hùng',patron:'VIP 11'};
+  function titleCell(t,near){
+    const [cur,target]=t.progress,[what,unit,f=fmt]=NEED[t.id]||['',''],ratio=target?cur/target:0;
+    const meter=t.server?`<span class="title-need is-soon"><span>${esc(SOON[t.id]||'Máy chủ')}</span><b>Sắp ra mắt</b></span>`:t.unlocked?'':
+      `<span class="title-need"><span>${esc(what)}</span><b>${esc(f(cur))}/${esc(f(target))}${esc(unit)}</b></span><span class="kp-bar title-meter"><i style="width:${Math.max(3,Math.round(ratio*100))}%"></i></span>`;
+    return `<button type="button" class="title-cell ${t.unlocked?'is-open':'is-locked'} ${t.worn?'is-worn':''}${near?' is-near':''}${t.server?' is-soon':''}" data-action="growth:title-open" data-id="${t.id}" aria-label="${esc(t.name)}${t.worn?' · đang đeo':t.unlocked?' · đã đạt':t.server?' · sắp ra mắt':` · ${what} ${f(cur)}/${f(target)}${unit}`}">${plate(t)}${t.worn?'<em>Đang đeo</em>':t.unlocked?'':'<i aria-hidden="true">🔒</i>'}${near?'<strong class="title-near">Gần đạt</strong>':''}${meter}</button>`;
+  }
   function titlesSection(p){
-    const list=M.titleList(p),got=list.filter(t=>t.unlocked).length;
+    const list=M.titleList(p),got=list.filter(t=>t.unlocked).length,r=t=>t.progress[1]?t.progress[0]/t.progress[1]:0;
+    const open=list.filter(t=>t.unlocked).sort((a,b)=>b.worn-a.worn),local=list.filter(t=>!t.unlocked&&!t.server).sort((a,b)=>r(b)-r(a)),soon=list.filter(t=>t.server);
     return `<section class="titles"><h3>Danh Hiệu <small>${got}/${list.length}</small></h3>`+
-      `<div class="title-grid">${list.map(t=>`<button type="button" class="title-cell ${t.unlocked?'is-open':'is-locked'} ${t.worn?'is-worn':''}" data-action="growth:title-open" data-id="${t.id}" aria-label="${esc(t.name)}${t.worn?' · đang đeo':t.unlocked?' · đã đạt':' · chưa đạt'}">${plate(t)}${t.worn?'<em>Đang đeo</em>':t.unlocked?'':'<i aria-hidden="true">🔒</i>'}</button>`).join('')}</div></section>`;
+      `<div class="title-grid">${open.concat(local).map((t,i)=>titleCell(t,!t.unlocked&&t===local[0])).join('')}</div>`+
+      `<h4 class="title-soon-head">Sắp ra mắt · máy chủ trao</h4><div class="title-grid is-soon">${soon.map(t=>titleCell(t,false)).join('')}</div></section>`;
   }
   function titleDialog(ctx,id){
     const t=M.titleList(G.engine.read()).find(x=>x.id===id);if(!t)return;

@@ -55,7 +55,7 @@
     let html=`<img class="st-bough" src="${art('bough2')}" alt="" style="${bough}"><img class="st-bough st-lit" src="${art('bough2')}" alt="" style="${bough};--cut:${cut}%">`;
     const [tx,ty]=T(at(TWIG));
     html+=`<button type="button" class="st-soon" data-action="art:skill-soon" style="${box(tx-104,ty-66,124,128)}" aria-label="Nhánh kỹ năng mở rộng · Sắp ra mắt"><img class="st-bud" src="${art('bud')}" alt=""></button>`+
-      `<b class="st-ribbon" style="${box(tx-112,ty+14,176,40)}">Sắp ra mắt</b>`;
+      `<b class="st-ribbon" style="${box(tx-122,ty-112,196,44)}">Sắp ra mắt</b>`;
     CENTRES.forEach((c,i)=>{
       const [cx,cy]=T(c),t=M.skillText(hero,h,i),rank=h?h.skills[i]||0:0,on=i===sel;
       const kind=!open[i]?'locked':on?'selected':'learned',learnable=open[i]&&rank===0;
@@ -69,8 +69,15 @@
       if(i===next)html+=`<img class="st-pointer" src="${art('pointer')}" alt="" style="${box(cx-166,cy-17,76,34)}">`;
       if(learnable)html+=`<img class="st-sprout" src="${art('sprout')}" alt="" style="${box(cx+30,cy-86,46,33)}">`;
       if(open[i])html+=`<b class="st-rank${learnable?' learn':''}${on?' on':''}" style="${box(cx-78,cy+52,156,50)}">${learnable?'Học':`${rank}/${M.SKILL_MAX}`}</b>`;
-      // Gate plates sit beside a left-hand medallion and below-right of a right-hand one, clear of the bough.
-      else{const [a,b]=gateLines(i),left=cx<(CENTRES[0][0]+CENTRES[1][0])/2-STAGE_TREE[0];html+=`<b class="st-gate${b?'':' one'}${on?' on':''}" style="${left?box(cx-302,cy-84,240,98):box(cx-108,cy+92,240,98)}"><span>${esc(a)}</span>${b?`<span>${esc(b)}</span>`:''}</b>`;}
+      // Full review 4 (Codex: "chưa nói phần thưởng mở khóa là kỹ năng gì"): every medallion carries a plate with its
+      // skill's name; a locked one adds the padlock and the level / evolution it still needs ("Cần …"), so an unmet
+      // condition never reads like the Coming-soon bud. Left-hand plates sit beside the medallion, right-hand ones below.
+      const left=cx<(CENTRES[0][0]+CENTRES[1][0])/2-STAGE_TREE[0],[a,b]=gateLines(i),need=!open[i]&&h?[a,b].filter(Boolean).join(' · '):'';
+      // Left-hand plates stop at the hero's shoulder (stage x ≈ 330); the first one rides above-left of its medallion.
+      const w=left?236:open[i]?228:250,lines=need?(need.length>12?3:2):1,ht=lines===1?62:lines===2?98:128,nameSize=Math.min(30,Math.floor((w-30)/(Math.max(t.name.length,1)*.5)));
+      const pos=left?box(cx-62-w,i===0?cy-146:cy-36,w,ht):open[i]?box(cx-94,cy+104,w,ht):box(cx-118,cy+86,w,ht);
+      html+=`<b class="st-gate${open[i]?' is-open':' is-need'}${on?' on':''}" style="${pos};--n:${nameSize}px"><span class="st-name">${esc(t.name)}</span>`+
+        (need?`<span class="st-need"><img src="${file('kit-lock')}" alt="">Cần ${esc(lines===3?a:need)}</span>${lines===3?`<span class="st-need st-need2">${esc(b)}</span>`:''}`:'')+'</b>';
     });
     // A thin thread of the same light runs from the lit root down to the panel, right of the roster, ending in a
     // spark on the panel's edge: the panel below is this node's card.

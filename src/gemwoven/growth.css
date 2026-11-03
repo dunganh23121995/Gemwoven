@@ -194,3 +194,17 @@
 .live-panel.treasure-slots-host{height:auto}
 .borrow-flow i{white-space:nowrap}.borrow-flow .bf-pass{white-space:nowrap}
 .borrow-flow{flex-wrap:wrap}.borrow-flow .bf-none{flex-basis:100%;text-align:center;order:5;color:#7a3fb0;font-weight:700}.treasure-slot.empty{border-color:#c9a46a}.treasure-slot .ghost{opacity:.4}
+/* Full review 4: the condition and progress under each title still to earn (growth-ui.js titleCell). */
+.title-need{display:flex;justify-content:space-between;align-items:baseline;gap:8px;width:88%;margin-top:2px;font:700 24px/1.1 Cambria,serif;color:#6b4a22}
+.title-need b{font:900 26px/1.1 Cambria,serif;color:#3a2008;white-space:nowrap}
+.title-need.is-soon{justify-content:center;gap:12px}.title-need.is-soon b{color:#8a3a14;font-size:23px}
+.kp-panel .title-cell .title-meter{width:82%;height:32px;margin:6px 0 4px}
+.kp-panel .title-cell .title-meter>i{top:6px;bottom:6px}
+.title-cell .title-near{position:absolute;left:50%;top:-10px;transform:translateX(-50%);padding:6px 16px;font:800 21px/1 Cambria,serif;color:#fff3cf;text-shadow:0 1px 2px #1a0c04;background:var(--kit-badge-leather) center/100% 100% no-repeat;z-index:2}
+.kp-rankings .title-cell.is-near .title-plate{filter:none!important;opacity:1!important}
+.kp-rankings .title-cell.is-near{filter:drop-shadow(0 0 8px rgba(255,200,90,.75))}
+.title-soon-head{margin:22px 0 8px;text-align:center;font:800 28px Cambria,serif;color:#8a5a20}
+.kp-rankings .title-grid.is-soon .title-plate{height:78px}
+.kp-rankings .title-grid.is-soon .title-plate b{font-size:22px}
+.kp-rankings .title-grid.is-soon .title-cell.is-locked .title-plate{filter:grayscale(.85) brightness(.9)!important;opacity:.75!important}
+.kp-rankings .title-grid{row-gap:22px!important}.kp-rankings .title-cell.is-near .title-plate{margin-top:14px}

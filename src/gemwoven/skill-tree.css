@@ -102,3 +102,14 @@
 .st-ring.dim{filter:drop-shadow(0 0 2px #fff0b0a0) brightness(.92)}
 .st-gate.on{filter:none}
 .sd-go.off span{font-size:36px}
+/* Full review 4: name plates on every medallion; an unmet condition carries the padlock and "Cần …". */
+.st-gate{padding:8px 14px 8px!important;white-space:nowrap;gap:2px}
+.st-gate .st-name{font:900 var(--n,28px)/1.08 Cambria,'Times New Roman',serif;color:#ffe3a0!important;text-shadow:0 2px 2px #2a1408,0 0 4px #2a1408}
+.st-gate .st-need{display:flex;align-items:center;gap:6px;font:800 27px/1.1 Cambria,serif;color:#fff1cf!important}
+.st-gate .st-need img{width:22px;height:28px;object-fit:contain;filter:drop-shadow(0 1px 1px #000a)}
+.st-gate .st-need2{padding-left:28px}
+.st-gate.is-open .st-name{color:#fff3cf!important}
+.st-gate.is-open.on .st-name{text-shadow:0 0 6px #ffcc5a,0 2px 2px #2a1408}
+.st-gate{z-index:6!important}
+/* The name plates ride over the hero model where they meet (full review 4). */
+#stage[data-screen="skills"] [data-node="skills.tree"]{z-index:5}

@@ -148,3 +148,25 @@
 #stage[data-screen="upgrade"] .material-tile>.copy-layer{font-size:30px!important}
 #stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]:not(:disabled){filter:drop-shadow(0 0 10px #ffd77a99) drop-shadow(0 5px 5px #2a140888)}
 #stage[data-screen="upgrade"] [data-node="upgrade.gain-preview"]{font-size:33px!important}
+/* Full review 4: the shop shelf as a list (art-screens.js shopShelf). Rows and cards are the kit parchment card
+ * (kit-stat, gold-rimmed kit-stat-on when chosen) drawn with border-image so the wooden rim keeps its thickness. */
+#stage[data-screen="shop"] .shop-row,#stage[data-screen="shop"] .shop-card{border:solid transparent!important;border-image:var(--kit-stat) 26 28 fill / 16px 18px stretch!important;filter:drop-shadow(0 4px 4px #2a140866)}
+#stage[data-screen="shop"] .shop-row.selected,#stage[data-screen="shop"] .shop-card.selected{border-image-source:var(--kit-stat-on)!important;filter:drop-shadow(0 0 9px #ffcf6a) brightness(1.04)}
+#stage[data-screen="shop"] .shop-row>.art{inset:8px auto 8px 8px!important;width:96px!important;height:82px!important;object-fit:fill}
+#stage[data-screen="shop"] .shop-card>.art{inset:6px 12px auto!important;width:auto!important;height:84px!important;object-fit:fill}
+#stage[data-screen="shop"] .shop-row .copy-layer,#stage[data-screen="shop"] .shop-card .copy-layer{display:block!important;color:#5a3814!important;text-shadow:none!important;font:700 26px/1.2 Cambria,serif!important}
+#stage[data-screen="shop"] .shop-row .copy-layer{text-align:left!important;padding:14px 4px 0 6px;white-space:pre-line}
+#stage[data-screen="shop"] .shop-row .copy-layer::first-line{font-size:31px;font-weight:900;color:#3a2008}
+#stage[data-screen="shop"] .shop-card .copy-layer{text-align:center!important;padding:0 18px 0 0;font-size:25px!important;line-height:1.1!important}
+#stage[data-screen="shop"] .shop-card .copy-layer::first-line{font-size:27px;font-weight:900;color:#3a2008}
+#stage[data-screen="shop"] .shop-row.is-out,#stage[data-screen="shop"] .shop-card.is-out{filter:grayscale(.7) brightness(.85)}
+#stage[data-screen="shop"] .shop-row.is-out .copy-layer,#stage[data-screen="shop"] .shop-card.is-out .copy-layer{color:#8a2a12!important}
+#stage[data-screen="shop"] .shop-card.is-out .copy-layer{padding-right:0}
+#stage[data-screen="shop"] [data-node^="shop.price-gem-"]{filter:drop-shadow(0 1px 1px #0006)}
+/* Round 1 (Codex 8.2): Trang Bị tier switch on the left; the price line a little smaller with room at the right. */
+#stage[data-screen="shop"] .shop-tier{border:solid transparent!important;border-image:var(--kit-stat) 26 28 fill / 16px 18px stretch!important}
+#stage[data-screen="shop"] .shop-tier>.art{display:none}
+#stage[data-screen="shop"] .shop-tier.selected{border-image-source:var(--kit-stat-on)!important}
+#stage[data-screen="shop"] .shop-tier:not(.selected){filter:brightness(.82) saturate(.8)}
+#stage[data-screen="shop"] .shop-tier .copy-layer{color:#3a2008!important;text-shadow:none!important;font:900 28px/1.1 Cambria,serif!important}
+#stage[data-screen="shop"] .shop-row .copy-layer{font-size:25px!important;padding-right:10px}
