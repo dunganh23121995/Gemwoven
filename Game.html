@@ -1840,19 +1840,22 @@ html.chud .game-layout{gap:0}
   .chud-ult-auto{left:auto;right:8px;top:-2px;translate:none;font-size:14px;line-height:17px}
   html.chud .board-frame{padding:17px}
   html.chud .board-frame .board-effects{inset:17px;width:calc(100% - 34px);height:calc(100% - 34px)}
-  /* The fighters grow with the stage (their phone sizes, measured against its height). */
-  html.chud .scene .hero-actor{--actor-size:min(45cqh,39cqw)}
-  html.chud .scene .enemy-actor{--actor-size:min(41cqh,36cqw)}
-  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(53cqh,47cqw)}
-  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(45cqh,39cqw)}
-  html.chud .scene .actor.boss{--actor-size:min(70cqh,62cqw)}
-  html.chud .actor-hud{width:262px}
-  html.chud .actor-hud .vital-name{max-width:262px;height:44px;padding:0 26px 1px;margin-bottom:4px}
-  html.chud .actor-hud .vital-name strong{font-size:23px;max-width:210px}
+  /* The fighters grow with the stage (their phone sizes, measured against its height, about 12% larger so they
+     weigh as much as the board) and stand closer to the middle of a wide stage: each centre sits at most 33-34% of the
+     stage height from the middle, never nearer the edge than 22% / 21% on a narrow one. */
+  html.chud .scene .hero-actor{--actor-size:min(50.5cqh,46cqw);left:calc(max(22%,50% - 33cqh) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor{--actor-size:min(46cqh,42.5cqw);right:calc(max(21%,50% - 34cqh) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(59cqh,52.5cqw)}
+  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(50.5cqh,46cqw)}
+  html.chud .scene .actor.boss{--actor-size:min(76cqh,67cqw);right:calc(20% - var(--actor-size)/2)}
+  /* Name and gauges sit a little lower and tighter, close over the head (the HUD keeps following it). */
+  html.chud .actor-hud{width:250px;translate:0 8px}
+  html.chud .actor-hud .vital-name{max-width:250px;height:40px;padding:0 24px 1px;margin-bottom:2px}
+  html.chud .actor-hud .vital-name strong{font-size:22px;max-width:200px}
   html.chud .actor-hud .health-label{font-size:16px;line-height:24px;width:calc(100% - 30px);margin-left:30px}
   html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{width:calc(100% - 30px);margin-left:30px}
-  html.chud .actor-hud .health-track{height:27px;padding:6px 14px 6px 10px}
-  html.chud .actor-hud .head-rage-track{height:22px;margin-top:5px;padding:5px 14px 5px 10px}
+  html.chud .actor-hud .health-track{height:26px;padding:6px 14px 6px 10px}
+  html.chud .actor-hud .head-rage-track{height:21px;margin-top:4px;padding:5px 14px 5px 10px}
   html.chud .actor-hud .chud-rage-num{font-size:14px}
   html.chud .actor-hud .health-track::before{width:44px;height:37px;left:-30px}
   html.chud .actor-hud .head-rage-track::before{width:38px;height:32px;left:-27px}
