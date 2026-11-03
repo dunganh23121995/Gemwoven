@@ -1,0 +1,10 @@
+Create a 941×1672 portrait Gemwoven UI mockup using the supplied ore-popup reference. Preserve its illustrated honey-wood, brass, parchment, leafy frame and close button, adapting the frame to a shorter, calmer centered modal. Dim the existing hub behind it.
+
+Title plank: “Quặng sắt”. Center the ore picture inside its existing leather socket. Below, a compact ownership plate reading exactly “Đang có 400”. Then ONE prominent gold action button: “Mua thêm”.
+
+Below the button, show the expandable row “Cách kiếm ›” in its open state. Reveal three compact source rows, each with a small painted icon, its exact label, and a subtle navigation affordance:
+“Vượt Ải”
+“Trùm Vô Tận”
+“Cửa Hàng”
+
+Use warm dark-brown, phone-readable lettering and generous separation. Keep the source list visually subordinate to the main button. No description sentence, duplicate action, footer button, or additional text.

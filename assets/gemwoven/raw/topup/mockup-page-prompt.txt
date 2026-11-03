@@ -1,0 +1,14 @@
+Create a full-screen 941×1672 portrait UI mockup for Gemwoven. Match the supplied mushroom-shop and VIP references: painted honey wood, parchment, brass, restrained leaves, soft warm light. Reuse their HUD and bottom navigation composition exactly, including labels. Keep everything inside the stage, with phone-safe margins.
+
+Under the HUD, place a back arrow and a compact hanging title sign “Nạp”. Add a slim VIP bar: crest “VIP 0”, “0 / 100 điểm”, “1.000₫ = 1 điểm”. Below, three drawn entry plaques: calendar “Thẻ Tháng”, book “Sổ Hành Trình”, pouch “Quỹ”.
+
+Main section heading “Đá Ngọc”, beside a clearly readable “Sắp ra mắt” status plaque. Show six cards, two columns, three rows, all visible above navigation. Each has blue-cyan mana gems, a prominent base amount, price plate, ribbon “Lần đầu ×2”, and bonus total. Exact card contents:
+
+60 | 22.000₫ | 60 + 60 = 120
+300 | 109.000₫ | 300 + 300 = 600
+980 | 349.000₫ | 980 + 980 = 1.960
+1.980 | 699.000₫ | 1.980 + 1.980 = 3.960
+3.280 | 1.149.000₫ | 3.280 + 3.280 = 6.560
+6.480 | 2.199.000₫ | 6.480 + 6.480 = 12.960
+
+Pictures progress from small pouch to overflowing chest. Quiet parchment, strong number contrast, restrained decoration, inactive price plates. No extra text.

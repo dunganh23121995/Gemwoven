@@ -270,7 +270,8 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 | Báu vật | | | | PvE + tích nạp | | triệu hồi |
 | Ngọc khảm | ✔ cấp 1 | ✔ cấp 2 | | ✔ | ✔ | cấp 4–5 trực tiếp |
 | Trang phục, khung, danh hiệu | | ✔ một số | | ✔ | ✔ | — (không chỉ số) |
-| **Đá Ngọc** | | | | | | thưởng gameplay; bán bằng vàng |
+| **Đá Ngọc** | | | | | | thưởng gameplay; bán bằng vàng (chỉ nạp, trang Nạp) |
+| **Vàng** | | ✔ 3 gói, hạn mức 12R/ngày | | ✔ | ✔ | nhân VIP |
 | **Vé triệu hồi** | | | | ✔ | ✔ | bán bằng vàng |
 
 ---
@@ -313,7 +314,7 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 
 | Sản phẩm | Giá gợi ý | Nhận |
 |---|---|---|
-| Gói Đá Ngọc | 22k–2,2tr | 60–6.480; lần đầu mỗi mốc ×2 |
+| Gói Đá Ngọc | 22k / 109k / 349k / 699k / 1.149k / 2.199k | 60 / 300 / 980 / 1.980 / 3.280 / 6.480; lần đầu mỗi mốc ×2 (ghi "60 + 60 = 120") |
 | **Thẻ Tháng** | 109k / 30 ngày | 300 ngay + 100/ngày (quên đăng nhập thì vào Hòm Thư, không mất), +2 giờ offline, +1 lượt boss có thưởng, quét ải 3★; cộng dồn tối đa 180 ngày |
 | **Sổ Hành Trình · Vàng** | 149k / mùa 28 ngày | nhánh Vàng 50 cấp; **mua giữa mùa nhận ngay mọi phần thưởng đã đạt**; không có Đá Ngọc trong sổ; 7 ngày cuối mua tối đa 10 cấp |
 | **Sổ Hành Trình · Diệu Ngọc** (chủ dự án 03/11) | 299k / mùa (đã có Vàng: bù 150k) | gồm Vàng + nhánh Diệu Ngọc: 80 mảnh tướng tự chọn (tướng đã sở hữu, **trừ Hiro**; tài khoản chỉ có Hiro nhận phiếu chọn không hết hạn), rương Sử Thi (cấp 25, nhận khi qua ải 60) và Huyền Thoại (cấp 50, qua ải 80) tự chọn ô, 20 thần thạch, khung + danh hiệu mùa; +10 cấp khi mua **tính vào** giới hạn 10 cấp mua; không Đá Ngọc; tắt ở Chuẩn Hóa |
@@ -322,6 +323,25 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 | Trang phục hình thái | 199k | skin, không chỉ số |
 
 **Sổ Hành Trình trong game (04/11, Codex vòng 1):** điểm sổ chỉ từ nhận thưởng nhiệm vụ (ngày +50, tuần +150 ≈ 264/ngày → cấp 50 sau ~20 ngày), 100 điểm/cấp; mùa 28 ngày tính từ 00:00 GMT+7 ngày neo; mỗi mốc đạt nhận nhánh Thường, nhánh Vàng/Diệu Ngọc chỉ khi máy chủ ghi giao dịch của mùa (client không tự mở được); rương chọn chờ ải 60/80, mảnh/rương tự chọn thành phiếu; sang mùa mới tự cất quà còn sót. Chấm đỏ chỉ đếm mốc nhận được ngay. Màn: `pass-ui.js` (cây mốc dọc; Thẻ Tháng và Quỹ cùng dạng cây).
+
+**Trang Nạp và vàng đổi bằng ngọc (chủ dự án 04/11, Claude + Codex vòng Nạp) [Có · thanh toán Sắp ra mắt]:**
+- **Một trang Nạp** (`topup-ui.js`, `#topup`), hai lối vào: nút **"+" cạnh Đá Ngọc trên HUD** và nút **Nạp** trong Cửa Hàng.
+  Mục mặc định là 6 gói Đá Ngọc (`liveops.js` GEM_PACKS, giá thử ở bảng trên), mỗi thẻ: ảnh túi/rương lớn dần, lượng ngọc, giá,
+  nhãn **"Lần đầu ×2"** và tổng nhận rõ ràng "60 + 60 = 120". Lần đầu ×2 **một lần mỗi mốc, chỉ gói ngọc**. Trên cùng có thanh
+  VIP gọn (`vipProgress`) và ba lối sang Thẻ Tháng / Sổ Hành Trình / Quỹ (mở đúng tab màn VIP; màn VIP vẫn chuyên xem quyền lợi).
+- **VIP:** 1 điểm = 1.000₫ **thực trả**; ngọc thưởng lần đầu và tiêu ngọc không cộng điểm (`TOPUP.bonusAddsVip=false`).
+- **Thanh toán Sắp ra mắt:** chạm gói mở bảng "Sắp ra mắt · chưa thu tiền": không trừ tiền, không cấp ngọc, không cộng VIP,
+  không đánh dấu đã dùng lần đầu. Client không có hàm nạp; máy chủ thanh toán giao hàng sau.
+- **Vàng đổi bằng Đá Ngọc** (Cửa Hàng → tab Đá Ngọc, cạnh Tinh Hoa và Thần Thạch): 3 gói **20 / 60 / 120 ngọc → 2R / 6R / 12R
+  vàng**, R = `offlineRate(p).gold` (một giờ vàng tích lũy, theo cấp tướng cao nhất và số ải đã qua, không theo tướng đang chọn).
+  **Hạn mức chung 12R/ngày/tài khoản**, gói nhỏ cũng trừ cùng hạn mức, làm mới 00:00 GMT+7. Màn hiện **số vàng thực nhận** và
+  "Hôm nay còn đổi N vàng", không bắt người chơi hiểu công thức. **Không nhân VIP, không khuyến mại vàng.** Chỉ tiêu ngọc, không
+  bao giờ cấp ngọc. Luật chung: `progression.js` GOLD_PACKS / GOLD_DAILY_UNITS / goldShop / buyGold. Tỷ giá là **mức thử**: vàng
+  đổi tiếp thành sách/nguyên liệu nên đây là bán tốc độ trên nhiều hệ thống; đo đầu–giữa–cuối game trước phát hành.
+- **Popup tài nguyên** (chạm bất kỳ tài nguyên): ảnh, tên, số đang có; **bỏ câu công dụng**. Nút chính **"Mua thêm"** mở đúng
+  tab Cửa Hàng và làm nổi đúng món (vàng → gói vàng ở tab Đá Ngọc), có mũi tên quay về màn trước; Đá Ngọc là nút **"Nạp"**.
+  Nguồn miễn phí gập dưới **"Cách kiếm ›"**: tối đa 3 nguồn, biểu tượng + tên ngắn, chạm để đến nơi. Tài nguyên không bán (Ấn tu
+  luyện, Vé, Bụi Ký Ức) chỉ hiện nguồn, không có nút mua. Nguyên liệu bán bằng vàng vẫn mua bằng vàng; không thêm bảng giá ngọc song song.
 
 ### 10.1 VIP (theo tổng nạp xác thực)
 12 bậc 100k → 100tr (bảng đầy đủ trong `liveops.js`). Thanh tiến độ: 1 điểm VIP = 1.000đ nạp xác thực, một thang cộng dồn (`vipProgress` trong `progression.js`).
@@ -817,3 +837,18 @@ không chỉnh số**.
   8,5/10), vẽ icon Bụi Ký Ức; dựng bằng UI kit có sẵn, rồi Codex chấm bản dựng (điểm ghi ở `docs/REQUEST_TRACKER.md` D3).
 - **Chờ máy chủ:** thưởng Cúp, xác thực thời gian/giao dịch, chống nhận lặp, công bố lịch banner. Tài khoản thử cục bộ không
   chuyển số dư sang bản phát hành. Kiểm thử: `qa/gemwoven/check-depth.cjs` ("memory dust ok").
+
+### Vòng Nạp (04/11, đơn vị tiền tệ và nơi bán gói) — đã thống nhất, đã làm
+- **Chủ dự án:** "Đơn vị tiền tệ thì không cần giải thích, cho phép mua thêm trong cửa hàng bằng ngọc. Ngọc thì phải nạp. Còn có
+  nên cho vào cửa hàng hay không thì tôi chưa rõ, cần các bạn thẩm định hoặc tạo trang riêng để bán các gói khác nhau."
+- **Popup:** bỏ câu công dụng; giữ ảnh, tên, số đang có; "Mua thêm" mở đúng món, Đá Ngọc "Nạp"; nguồn miễn phí gập ở "Cách
+  kiếm ›" (≤ 3). Tài nguyên không bán chỉ hiện nguồn. Đồng ý.
+- **Vàng bằng ngọc:** Claude hỏi có nên bán; Codex: được, nhưng theo đơn vị R = vàng tích lũy một giờ để giá trị theo tiến độ,
+  hạn mức chung 12R/ngày, không nhân VIP. Rủi ro là bán tốc độ trên nhiều hệ thống (vàng → sách/nguyên liệu → nâng cấp, rèn):
+  đo trước phát hành, gói phải hữu ích nhưng không thành việc bắt buộc mỗi ngày. Đồng ý; `balance-sim` không mua vàng nên kết
+  quả không đổi (đã chạy trước/sau).
+- **Nơi bán:** một trang Nạp riêng, hai lối vào (HUD "+" và nút Nạp trong Cửa Hàng), giống tiền lệ Genshin (Crystal Top-Up trong
+  Shop, trạng thái thưởng lần đầu trên từng gói). Màn VIP giữ quyền lợi; Thẻ Tháng / Sổ / Quỹ có lối vào từ trang Nạp. Đồng ý.
+- **Giao diện:** Codex phê bình, viết prompt và vẽ mockup trang Nạp và popup (`assets/gemwoven/raw/topup/mockup-page.png`,
+  `mockup-popup.png`, cả hai 8/10 điện thoại, 8,5/10 Studio), vẽ túi/rương ngọc 6 mốc, khung thẻ, ruy băng, bảng giá, 3 chồng
+  vàng; bản dựng 8,4 / 8,5 → **8,7 / 8,6** (điện thoại / Studio). Thanh toán vẫn Sắp ra mắt. Kiểm thử: `check-depth.cjs` ("gold for gems ok").

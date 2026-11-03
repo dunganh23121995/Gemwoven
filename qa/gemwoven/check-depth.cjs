@@ -340,3 +340,27 @@ console.log('cup ok');
   clock=Date.UTC(2026,10,4,6);({engine:e}=fixture());const cb=e.begin('cup',1,{hero:'fire'});e.settle(cb.token,true,0);assert.equal(e.memory().dust,0);
 }
 console.log('memory dust ok');
+{ // Vàng đổi bằng Đá Ngọc (owner 04/11, Claude + Codex topup round): 3 packs of 2R / 6R / 12R gold, R = offlineRate(p).gold,
+  // one shared daily cap of 12 R per account reset 00:00 GMT+7, no VIP multiplier, spends Đá Ngọc and never grants it.
+  const O=require('../../src/gemwoven/liveops.js');
+  clock=Date.UTC(2026,10,4,6);const {engine:e,edit}=fixture();edit(p=>{p.wallet.gems=1000;p.wallet.gold=0;});
+  assert.deepEqual(M.GOLD_PACKS.map(x=>[x.gems,x.units]),[[20,2],[60,6],[120,12]]);assert.equal(M.GOLD_DAILY_UNITS,12);
+  const R=M.offlineRate(e.read()).gold,v=e.goldShop();assert.equal(v.rate,R);assert.deepEqual(v.packs.map(x=>x.gold),[2*R,6*R,12*R],'the shop shows the real gold amount');
+  let r=e.buyGold('gold-pack-1');assert.equal(r.gold,2*R);assert.equal(e.read().wallet.gems,980,'spends Đá Ngọc');assert.equal(e.read().wallet.gold,2*R);
+  e.buyGold('gold-pack-2');assert.equal(e.goldShop().left,4);assert.throws(()=>e.buyGold('gold-pack-2'),/hạn mức/,'the small and medium packs share one cap');
+  e.buyGold('gold-pack-1');e.buyGold('gold-pack-1');assert.equal(e.goldShop().left,0);assert.throws(()=>e.buyGold('gold-pack-1'),/đủ vàng/);
+  assert.equal(e.read().wallet.gold,12*R);assert.equal(e.read().wallet.gems,1000-20*3-60,'no gems ever come back');
+  clock=Date.UTC(2026,10,4,16,59);assert.equal(e.goldShop().left,0,'23:59 GMT+7 is still the same day');
+  clock=Date.UTC(2026,10,4,17,1);assert.equal(e.goldShop().left,12,'00:00 GMT+7 resets the cap');
+  // The rate follows account progress (highest hero level, stages cleared), not the selected hero or VIP.
+  edit(p=>{p.campaign.cleared=200;p.heroes.novice.level=120;p.vip={...p.vip,level:9};});const R2=M.offlineRate(e.read()).gold;
+  assert.equal(R2,80+120*8+200*10);assert.equal(e.buyGold('gold-pack-3').gold,12*R2,'no VIP multiplier');
+  edit(p=>{p.wallet.gems=10;});clock+=DAY;assert.throws(()=>e.buyGold('gold-pack-1'),/Thiếu Đá Ngọc/);assert.equal(e.goldShop().packs[0].canBuy,false);
+  assert.throws(()=>e.buyGold('gems-1'),/không hợp lệ/);
+  // Nạp page packs: config only; payment is Coming soon and nothing in this client grants gems or VIP.
+  assert.deepEqual(O.GEM_PACKS.map(x=>[x.price,x.gems]),[[22000,60],[109000,300],[349000,980],[699000,1980],[1149000,3280],[2199000,6480]]);
+  for(const x of O.GEM_PACKS){assert.equal(x.firstBonus,x.gems,'Lần đầu ×2 per tier');assert.equal(x.status,'coming-soon');assert.ok(O.PRODUCTS.includes(x));}
+  assert.equal(O.TOPUP.vndPerVipPoint,1000);assert.equal(O.TOPUP.bonusAddsVip,false);assert.equal(M.vipProgress(22000).points,22,'VIP counts money paid, not bonus gems');
+  assert.equal(typeof e.topup,'undefined','no client-side top-up');
+}
+console.log('gold for gems ok');

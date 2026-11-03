@@ -4675,6 +4675,19 @@
     "assets/gemwoven/skill-tree/tray-wide.webp",
     "assets/gemwoven/skill-tree/tray.webp",
     "assets/gemwoven/summon-lake/scene.webp",
+    "assets/gemwoven/topup/card-wide.webp",
+    "assets/gemwoven/topup/coins-1.webp",
+    "assets/gemwoven/topup/coins-2.webp",
+    "assets/gemwoven/topup/coins-3.webp",
+    "assets/gemwoven/topup/pack-1.webp",
+    "assets/gemwoven/topup/pack-2.webp",
+    "assets/gemwoven/topup/pack-3.webp",
+    "assets/gemwoven/topup/pack-4.webp",
+    "assets/gemwoven/topup/pack-5.webp",
+    "assets/gemwoven/topup/pack-6.webp",
+    "assets/gemwoven/topup/price-plate.webp",
+    "assets/gemwoven/topup/ribbon.webp",
+    "assets/gemwoven/topup/total-strip.webp",
     "assets/gemwoven/treasures/treasure-borrow-blue.webp",
     "assets/gemwoven/ui-kit/badge-brass.webp",
     "assets/gemwoven/ui-kit/badge-leather.webp",
@@ -4834,7 +4847,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 157037212
+   "bytes": 157285370
   },
   {
    "id": "hero-earth-f1",

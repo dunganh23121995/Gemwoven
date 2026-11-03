@@ -1,0 +1,12 @@
+Create a production UI asset pieces sheet for Gemwoven on a perfectly uniform solid #FF00FF magenta background. Match the supplied shop and VIP references: warm storybook fantasy, painted honey wood, parchment, brass, soft light, restrained leaves. No text, letters, numbers, symbols, watermarks, or mockup screen.
+
+Arrange twelve complete, well-separated pieces with generous magenta gutters:
+
+Six distinct gem-pack pictures in increasing value order: small cloth pouch, bigger pouch, small chest, big chest, ornate chest, overflowing treasure chest. Every pack contains the same faceted blue-cyan mana crystals as the HUD gem. Consistent perspective, lighting, and rendering quality.
+
+One blank portrait gem-pack card frame, parchment and honey wood, with clear interior space for a picture, amount, and price.
+One blank red-and-gold bonus ribbon tag.
+One blank brass-edged parchment price plate.
+Three gold-coin pile tiers: small, medium, large, matching the existing coin icon.
+
+Twelve pieces total. Keep every silhouette isolated; no overlapping pieces or background scenery.

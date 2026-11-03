@@ -19258,6 +19258,175 @@
     ],
     "purpose": "VIP second pass (Codex review: wider reward rows, tracks told apart by header and badge, light trays): drawn by Codex gpt-6.1-sol low, cut by raw/vip-pass/v2/slice.py; used by pass-ui.js."
   },
+  "topup-pack-1": {
+    "file": "assets/gemwoven/topup/pack-1.webp",
+    "width": 202,
+    "height": 196,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-pack-2": {
+    "file": "assets/gemwoven/topup/pack-2.webp",
+    "width": 249,
+    "height": 222,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-pack-3": {
+    "file": "assets/gemwoven/topup/pack-3.webp",
+    "width": 246,
+    "height": 212,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-pack-4": {
+    "file": "assets/gemwoven/topup/pack-4.webp",
+    "width": 307,
+    "height": 240,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-pack-5": {
+    "file": "assets/gemwoven/topup/pack-5.webp",
+    "width": 329,
+    "height": 248,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-pack-6": {
+    "file": "assets/gemwoven/topup/pack-6.webp",
+    "width": 360,
+    "height": 249,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-ribbon": {
+    "file": "assets/gemwoven/topup/ribbon.webp",
+    "width": 429,
+    "height": 127,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-price-plate": {
+    "file": "assets/gemwoven/topup/price-plate.webp",
+    "width": 414,
+    "height": 122,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-card-wide": {
+    "file": "assets/gemwoven/topup/card-wide.webp",
+    "width": 720,
+    "height": 400,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/card-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/card-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-total-strip": {
+    "file": "assets/gemwoven/topup/total-strip.webp",
+    "width": 720,
+    "height": 68,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/card-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/card-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-coins-1": {
+    "file": "assets/gemwoven/topup/coins-1.webp",
+    "width": 160,
+    "height": 98,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-coins-2": {
+    "file": "assets/gemwoven/topup/coins-2.webp",
+    "width": 201,
+    "height": 147,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "topup-coins-3": {
+    "file": "assets/gemwoven/topup/coins-3.webp",
+    "width": 333,
+    "height": 193,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/topup/pieces-raw.png",
+    "reference": "assets/gemwoven/raw/topup/mockup-page.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/topup/pieces-prompt.txt"
+    ],
+    "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",
     "width": 512,

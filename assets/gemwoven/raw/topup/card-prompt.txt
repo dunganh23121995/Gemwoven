@@ -1,0 +1,7 @@
+Create a production UI asset sheet for Gemwoven on a perfectly uniform solid #FF00FF magenta background. Match the supplied mockup exactly in style: warm storybook fantasy, painted honey wood, parchment, brass corner studs, soft light, restrained leaves. No text, letters, numbers, symbols or watermarks anywhere.
+
+Draw two well-separated pieces with wide magenta gutters:
+1. One blank LANDSCAPE gem-pack card frame, about 1.6 : 1 (wide), exactly like the six cards in the mockup but completely empty: a thin honey-wood and brass border with small brass corner studs, a calm warm parchment interior, and along the bottom inside edge a slim recessed parchment strip with two tiny leaf sprigs at its ends (for a total line). No ribbon, no gems, no price plate, no pictures inside.
+2. One blank slim horizontal parchment strip with small leaf sprigs at both ends (the same bottom strip drawn alone, wide, about 7 : 1).
+
+Keep each silhouette isolated and complete; flat even lighting; nothing touches the image edge.

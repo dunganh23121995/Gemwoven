@@ -32,6 +32,14 @@
       perks:['Gồm nhánh Vàng, thêm nhánh Diệu Ngọc (đã mua Vàng thì bù 150.000₫, không mua trùng)','+10 cấp sổ ngay khi mua (tính vào giới hạn 10 cấp mua mỗi mùa)','80 Mảnh tướng tự chọn mỗi mùa: tướng đã sở hữu, trừ Hiro; tài khoản chỉ có Hiro nhận phiếu chọn không hết hạn','Rương trang bị Sử Thi (cấp 25, nhận khi đã qua ải 60) và Huyền Thoại (cấp 50, nhận khi đã qua ải 80) tự chọn ô','Khung avatar và danh hiệu mùa (không chỉ số)','Không có Đá Ngọc; sức mạnh mua tắt ở hàng Chuẩn Hóa']},
     {id:'growth-fund',name:'Quỹ Trưởng Thành',price:299000,perks:['Đá Ngọc và tài nguyên ở các mốc cấp tướng cao nhất','Trả theo tiến độ, không hết hạn']}
   ];
+  // Đá Ngọc packs on the Nạp page (owner 04/11, Claude + Codex topup round; trial prices). "Lần đầu ×2": the first verified
+  // purchase of each tier delivers the same amount again as a bonus, once per tier, gem packs only. VIP counts only the
+  // money actually paid (1 point per 1.000 ₫); bonus gems and spending gems never add VIP. Payment is a future server
+  // feature: until then every pack opens a Coming-soon sheet and nothing is charged, granted or marked as used.
+  const GEM_PACKS=[[22000,60],[109000,300],[349000,980],[699000,1980],[1149000,3280],[2199000,6480]]
+    .map(([price,gems],i)=>({id:'gems-'+(i+1),kind:'gems',tier:i+1,name:gems.toLocaleString('vi-VN')+' Đá Ngọc',price,gems,firstBonus:gems,status:STATUS}));
+  PRODUCTS.push(...GEM_PACKS);
+  const TOPUP={vndPerVipPoint:1000,firstBonus:'once-per-tier',bonusAddsVip:false,status:STATUS};
   // Growth fund ("speed pass"): delivery of a purchase, unlocked by the highest hero level.
   const GROWTH_FUND=[[10,300],[20,300],[30,400],[50,500],[70,500],[100,600],[130,600],[160,700],[200,800],[250,900],[300,1400]].map(([level,gems])=>({level,gems}));
   // Journey pass: 28-day season, 50 levels from daily/weekly activity points (never from payment, apart from
@@ -116,5 +124,5 @@
   // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
   const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
     desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
-  return {BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {GEM_PACKS,TOPUP,BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });
