@@ -22,7 +22,7 @@
       `<div class="treasure-points"><b>${fmt(d.points)}</b><small>điểm</small></div>`+
       (d.items.length?`<div class="treasure-grid">${d.items.map(t=>`<button type="button" data-action="treasure:open" data-id="${t.id}" class="treasure-cell q-${t.quality}" aria-label="${esc(T.families[t.family].name)} ${T.names[qi(t)]}">${pic(t)}<i>${esc(T.families[t.family].name)}</i><b class="q-badge">${T.names[qi(t)]}</b></button>`).join('')}</div>`
         :`<p class="growth-lead">🎁 Chọn quà Lam</p><div class="treasure-grid">${Object.entries(T.families).map(([f,v])=>`<button type="button" data-action="treasure:gift" data-family="${f}" class="treasure-cell q-blue">${pic({family:f,quality:'blue'})}<i>${esc(v.name)}</i></button>`).join('')}</div>`)+
-      `<details class="hint"><summary aria-label="Cách nhận điểm">ⓘ</summary><p>Mỗi ngày nhận thưởng ít nhất 3 nhiệm vụ ngày: +${T.points.daily}. Mỗi tuần thắng 8 Boss Vô Hạn: +${T.points.boss}. Mỗi tuần có lượt Sân Thử Luyện ≥ 3 thanh: +${T.points.trial}. Khoảng 600 điểm mỗi 14 ngày; Lam → Thần cần 4.800 điểm (≈ 16 tuần).</p></details>`+
+      `<details class="hint"><summary aria-label="Cách nhận điểm">ⓘ</summary><p>Mỗi ngày nhận thưởng ít nhất 3 nhiệm vụ ngày: +${T.points.daily}. Mỗi tuần thắng 8 Trùm Vô Tận: +${T.points.boss}. Mỗi tuần có lượt Sân Thử Luyện ≥ 3 thanh: +${T.points.trial}. Khoảng 600 điểm mỗi 14 ngày; Lam → Thần cần 4.800 điểm (≈ 16 tuần).</p></details>`+
       `<button type="button" class="game-btn secondary" data-action="treasure:leave">Thoát bản thử</button></section>`;
   }
   function itemDialog(ctx,id){

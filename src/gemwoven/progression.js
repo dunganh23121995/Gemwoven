@@ -92,7 +92,7 @@
   // Base numbers of each active skill; ranks, forms and evolution scale them in skillKit.
   const SKILL_KIT={novice:{base:70,hits:1},fire:{base:135,hits:1},ice:{base:60,hits:1,armor:25},earth:{base:0,hits:0,heal:40,burst:3,stun:2,regen:3},lightning:{base:140,hits:5},shadow:{base:150,hits:5}};
   const VIP=[0,100000,300000,600000,1000000,2000000,4000000,7000000,12000000,20000000,35000000,60000000,100000000].map((spend,level)=>({level,spend,dailyGold:level>=2?1000:level?500:0,offlineHours:12+Math.floor(level/3),avatar:level>=1,entryEffect:level>=3,chatEffect:level>=5,equipmentSkin:level>=8,heroSkin:level>=10,combatStats:false}));
-  const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Boss Vô Hạn',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
+  const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Trùm Vô Tận',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
   // Hành Trình Tân Thủ: seven gifts, one per GMT+7 day since the account was made (missed days
   // can be caught up). 80 Mảnh Hiro in the first week = his second star.
   const NEWBIE=[{noviceFragments:10,gold:2000,tickets:2},{noviceFragments:10,exp:30},{noviceFragments:10,tickets:2},{noviceFragments:10,essence:10},{noviceFragments:10,skillBooks:3},{noviceFragments:10,ore:30},{noviceFragments:20,tickets:5}];
@@ -100,7 +100,7 @@
     return NEWBIE.map((reward,i)=>({day:i+1,reward,claimed:claimed.includes(i+1),open:i+1<=days}));}
   // Weekly quests (reset Monday 00:00 GMT+7): one ticket each, so play gives about 40 tickets per 28 days
   // (one a day from the visit quest plus three a week here).
-  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Boss Vô Hạn',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000}}];
+  const WEEKLY=[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,reward:{tickets:1,gold:8000,exp:40}},{id:'boss',name:'Thắng 8 trận Trùm Vô Tận',target:8,reward:{tickets:1,essence:15,ore:20,gemChoices:1}},{id:'daily',name:'Nhận thưởng nhiệm vụ ngày 12 lần',target:12,reward:{tickets:1,skillBooks:3,gold:5000}}];
   const week=ms=>{const d=new Date(ms+7*3600000),back=(d.getUTCDay()+6)%7;return new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()-back)).toISOString().slice(0,10);};
   const EVENT_TEMPLATE={id:'new-event',title:'Sự kiện sắp ra mắt',description:'Cuộc phiêu lưu mới đang được chuẩn bị.',enabled:false,status:'coming-soon',startsAt:'',endsAt:'',banner:'icon-event',order:0};
   const clone=v=>JSON.parse(JSON.stringify(v));
@@ -281,7 +281,7 @@
     const sc=h.stars<6?starCost(h.stars):null,formAt=forms?FORM_STARS.findIndex(s=>s>h.stars):-1;
     rows.push({id:'stars',name:'Sao',current:'★'.repeat(h.stars)+` · ${h.copies-1} bản sao dư · ${p.fragments[key]||0}/80 mảnh`,next:sc?`${h.stars+1} sao: ${sc.copies} bản sao, ${sc.gold.toLocaleString('vi-VN')} vàng, ${sc.essence} tinh hoa`:'Đã 6 sao',
       opens:formAt>=0?`Hình thái ${formAt+1} ở ${FORM_STARS[formAt]} sao`:'HP +12%, Công +9% mỗi sao',state:!sc?'max':h.copies-1>=sc.copies&&pay({gold:sc.gold,essence:sc.essence})?'ready':h.copies-1<sc.copies?'locked':'short',
-      need:sc&&h.copies-1<sc.copies?(key==='novice'?'Mảnh Hiro: Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương, Boss Vô Hạn mỗi 10 tầng':'Bản sao: triệu hồi, ghép 80 mảnh'):'',route:'upgrade',tab:'stars'});
+      need:sc&&h.copies-1<sc.copies?(key==='novice'?'Mảnh Hiro: Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương, Trùm Vô Tận mỗi 10 tầng':'Bản sao: triệu hồi, ghép 80 mảnh'):'',route:'upgrade',tab:'stars'});
     if(forms)rows.push({id:'forms',name:'Hình thái',current:`${forms[form-1].name} (${form}/3) · đã mở ${max}`,next:max<3?`${forms[max].name} ở ${FORM_STARS[max]} sao`:'Đã mở cả ba',
       opens:'Diện mạo và tuyệt kỹ; chọn lại hình thái cũ bất cứ lúc nào',state:max>=3?'max':'locked',route:'forms'});
     const e=EVOLUTION[h.evolution];

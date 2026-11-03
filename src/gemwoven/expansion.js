@@ -39,7 +39,7 @@
   const inventory=[
     ['coins','Đồng vàng','125,6 N','item','Tiền vàng dùng tại cửa hàng, lò rèn và trên những chuyến hành trình.'],
     ['mana','Lam ngọc','3.480','item','Tinh thể lưu giữ ánh sáng, dùng để kết nối những người bạn mới.'],
-    ['exp-book','Sách EXP','248','book','Sách ghi chép kinh nghiệm giúp tướng trưởng thành.'],
+    ['exp-book','Sách kinh nghiệm','248','book','Sách ghi chép kinh nghiệm giúp tướng trưởng thành.'],
     ['skill-book','Bí kíp kỹ năng','36','book','Những ghi chép cổ giúp mài giũa các kỹ năng.'],
     ['hero-fragment','Mảnh tướng','42','fragment','Mảnh ký ức của Mika, có thể ghép thành một cuộc gặp gỡ.'],
     ['crest','Chân ấn','18','other','Ấn ký hiếm dùng để đánh thức sức mạnh tiềm ẩn.'],

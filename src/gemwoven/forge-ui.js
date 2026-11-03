@@ -83,7 +83,7 @@
       recess(RIGHT,'Ghép ngọc','assets/gemwoven/gems/gem-atk-3.webp','3 viên → 1','new')+
       `<p class="fg2-strip" style="${part(...STRIP)}"><span>Chạm <b>+</b> để khảm</span></p>`;
     const bag=Object.entries(p.gems||{}).filter(([,c])=>c>0).sort(([a],[b])=>a.localeCompare(b)),[t0,t1,t2,t3]=TRAY;
-    html+=`<b class="fg2-caption" style="${box(bx(t0)+bs(t2-t0)/2-100,by(t1)-20,200,34)}">Túi ngọc</b><div class="fg2-gembag" style="${part(t0+10,t1+8,t2-10,t3-8)}">${bag.length?bag.map(([k,c])=>{const d=M.gemParse(k);return `<button type="button" data-action="gem:detail" data-gem="${k}" aria-label="${esc(M.GEMS[d.type].name)} ${d.level}"><img src="assets/gemwoven/gems/gem-${k}.webp" alt=""><u>${ROMAN[d.level]}</u><b>×${c}</b></button>`;}).join(''):'<p>Chưa có ngọc · Boss Vô Hạn tầng 20+, Sân Thử Luyện</p>'}</div>`;
+    html+=`<b class="fg2-caption" style="${box(bx(t0)+bs(t2-t0)/2-100,by(t1)-20,200,34)}">Túi ngọc</b><div class="fg2-gembag" style="${part(t0+10,t1+8,t2-10,t3-8)}">${bag.length?bag.map(([k,c])=>{const d=M.gemParse(k);return `<button type="button" data-action="gem:detail" data-gem="${k}" aria-label="${esc(M.GEMS[d.type].name)} ${d.level}"><img src="assets/gemwoven/gems/gem-${k}.webp" alt=""><u>${ROMAN[d.level]}</u><b>×${c}</b></button>`;}).join(''):'<p>Chưa có ngọc · Trùm Vô Tận tầng 20+, Sân Thử Luyện</p>'}</div>`;
     return html;
   }
   function build(el,p,state){

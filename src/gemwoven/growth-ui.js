@@ -28,7 +28,7 @@
   }
   function tips(p,key){
     const rows=M.growthMap(p,key).filter(r=>r.state==='ready').slice(0,3);
-    if(!rows.length)return '<p class="growth-note">Chưa có bước nào làm được ngay: cày thêm nguyên liệu ở Khám Phá, Boss Vô Hạn và Kho Offline.</p>';
+    if(!rows.length)return '<p class="growth-note">Chưa có bước nào làm được ngay: cày thêm nguyên liệu ở Khám Phá, Trùm Vô Tận và Tích Lũy.</p>';
     return `<ul class="growth-tips">${rows.map(r=>`<li><span><b>${esc(r.name)}</b> ${esc(r.next)}</span><button type="button" class="gw-btn secondary" data-go="${esc(r.id)}">Đi tới</button></li>`).join('')}</ul>`;
   }
   function growthDialog(ctx,state,key){
@@ -68,7 +68,7 @@
         `<ul>${Object.entries(q.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
         `<button type="button" class="game-btn" data-action="growth:weekly" data-quest="${esc(q.id)}" ${!q.claimed&&q.progress>=q.target?'':'disabled'}>${q.claimed?'Đã nhận':q.progress>=q.target?'Nhận':'Chưa xong'}</button></article>`).join('')}</div></section>`;
   }
-  // Sân Thử Luyện on the Boss Vô Hạn screen: today's tanky boss at the selected hero's level.
+  // Sân Thử Luyện on the Trùm Vô Tận screen: today's tanky boss at the selected hero's level.
   // Sân Thử Luyện (Codex UI review): today's boss first, with runs left and the button; the other days in one row
   // with their day; the rules folded under "Cách chơi".
   function trialSection(p){

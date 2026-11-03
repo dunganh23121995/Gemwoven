@@ -174,7 +174,7 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   // Endless boss: after the 12th win of the day, 0 Tinh hoa and 1 quặng.
   const eb=fx(t0);eb.edit(p=>{p.boss.best=5;});const wins=[];for(let i=0;i<14;i++)wins.push(eb.engine.settle(eb.engine.begin('boss',5).token,true,1));
   assert.deepEqual([wins[11].essence,wins[11].ore],[2,3]);assert.deepEqual([wins[12].essence,wins[12].ore],[0,1]);assert.equal(wins[12].gold,Math.floor((1200+5*130)*.25));
-  assert.equal(M.DAILY.find(q=>q.id==='boss').name,'Thắng 2 trận Boss Vô Hạn');
+  assert.equal(M.DAILY.find(q=>q.id==='boss').name,'Thắng 2 trận Trùm Vô Tận');
   // Quest tiles show what claiming pays now (Ấn limited by today's cap).
   const q=fx(t0),qe=q.engine;assert.deepEqual(qe.dailyReward('login'),{quest:'login',reward:M.DAILY[0].reward,listed:M.DAILY[0].reward,sealCapped:false});
   q.edit(p=>{p.daily.seals=1550;});const capped=qe.dailyReward('login');assert.equal(capped.reward.seals,50);assert.equal(capped.listed.seals,80);assert.equal(capped.sealCapped,true);assert.equal(qe.claimDaily('login').seals,50);

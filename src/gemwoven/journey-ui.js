@@ -20,7 +20,7 @@
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Gặp Gỡ','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
     // The right column hangs the same cards as the left one (owner 03/11: bare icons got lost in the painting).
-    [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,'hud-side-card',[785,166+i*162,128,164],'route:'+route,{}, {icon:asset,className:'home-feature-card hud-hanging-card home-right-card'})));
+    [['offline','Tích Lũy','chest'],['boss','Trùm Vô Tận','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,'hud-side-card',[785,166+i*162,128,164],'route:'+route,{}, {icon:asset,className:'home-feature-card hud-hanging-card home-right-card'})));
     nodes.push(button('home','explore','Khám Phá',A['journey-button']?'journey-button':'title-parchment',[215,1338,525,140],'route:campaign',{}, {labelRect:[130,44,265,56],size:43,tone:'ink',className:'explore-entry'}));
     return nodes;
   }

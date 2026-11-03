@@ -169,7 +169,7 @@
   panel('upgrade-material-panel',[235,1096,487,213]);
   text('upgrade-material-title','Nguyên liệu cần',[273,1127,409,29],26,{tone:'ink'});
   materials('upgrade-materials',[['icon-book','12/5'],['emerald','26/10'],['coins','125,6 N / 1 N']],[274,1155,409,130]);
-  button('upgrade-action','button-gold',[301,1320,346,105],'Tăng Level','upgrade-preview',{size:39});
+  button('upgrade-action','button-gold',[301,1320,346,105],'Tăng Cấp','upgrade-preview',{size:39});
   footer();
 
   begin('tavern',6);

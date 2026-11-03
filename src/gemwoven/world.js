@@ -243,7 +243,7 @@
   }
   const chapterForStage=n=>CHAPTERS[Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((n-1)/50)))];
   const SHOP=[
-    ['exp','Sách EXP','resource','exp','common','gold',120,'exp-book','Kinh nghiệm để tăng cấp tướng.'],
+    ['exp','Sách kinh nghiệm','resource','exp','common','gold',120,'exp-book','Kinh nghiệm để tăng cấp tướng.'],
     ['ore','Quặng Sắt','resource','ore','common','gold',80,'ore','Dùng rèn và cường hóa trang bị.'],
     ['wood','Gỗ Mềm','resource','wood','common','gold',55,'wood','Nguyên liệu rèn thông dụng.'],
     ['cloth','Vải Thô','resource','cloth','common','gold',55,'cloth','Nguyên liệu may giáp thông dụng.'],

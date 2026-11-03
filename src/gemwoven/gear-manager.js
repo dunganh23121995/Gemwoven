@@ -61,7 +61,7 @@
     const modal=window.GemwovenUI.makeDialog('gem-socket',cur?M.GEMS[M.gemParse(cur).type].name:'Khảm ngọc','growth-dialog gem-dialog');
     const owned=Object.entries(p.gems||{}).filter(([,n])=>n>0).sort(([a],[b])=>a.localeCompare(b));
     modal.body.innerHTML=(cur?`<div class="gem-hero">${gemImg(cur)}<b>${esc(gemLabel(cur))}</b></div>`:'')+
-      (owned.length?`<div class="gem-grid">${owned.map(([k,n])=>`<button type="button" data-gem="${k}" aria-label="${esc(gemLabel(k))}">${gemImg(k)}<span>${n}</span></button>`).join('')}</div>`:`<p class="growth-lead">Chưa có ngọc. Ngọc rơi ở Boss Vô Hạn (từ tầng 20), Sân Thử Luyện mốc 3 và nhiệm vụ tuần.</p>`);
+      (owned.length?`<div class="gem-grid">${owned.map(([k,n])=>`<button type="button" data-gem="${k}" aria-label="${esc(gemLabel(k))}">${gemImg(k)}<span>${n}</span></button>`).join('')}</div>`:`<p class="growth-lead">Chưa có ngọc. Ngọc rơi ở Trùm Vô Tận (từ tầng 20), Sân Thử Luyện mốc 3 và nhiệm vụ tuần.</p>`);
     // First tap shows what the gem gives; the button sockets it.
     const pick=document.createElement('p');pick.className='gem-pick';modal.body.append(pick);let chosen=null;
     const go=document.createElement('button');go.type='button';go.className='gw-btn';go.textContent='Khảm';go.disabled=true;

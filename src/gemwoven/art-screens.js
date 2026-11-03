@@ -48,7 +48,7 @@
     const p=G.engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;
     const descriptions={gold:'Vàng từ nhiệm vụ, vượt ải, boss và tích lũy offline.',gems:'Đá Ngọc chỉ nhận qua nạp tiền. Tính năng nạp sắp ra mắt.',tickets:'Vé nhận từ nhiệm vụ ngày và các mốc cấp tướng.',exp:'Sách kinh nghiệm dùng tăng cấp tướng.',seals:'Ấn tu luyện dùng tăng cấp tướng, tối đa 1.600 ấn mỗi ngày.',skillBooks:'Bí kíp dùng học và tăng cấp kỹ năng.',essence:'Tinh hoa dùng tăng sao, tiến hóa, kỹ năng Biến Dị/Chân Thân và bảo bối.',ore:'Quặng dùng rèn, cường hóa trang bị, tiến hóa tướng và bảo bối.',wood:'Gỗ dùng rèn trang bị.',cloth:'Vải dùng rèn trang bị.',divineOre:'Rèn trang bị Thần (50 mảnh, sau ải 300) và tiến hóa bảo bối.'};
     const rows=Object.entries(M.RESOURCES).map(([id,[name,asset]])=>{resourceFor[asset]=id;return [asset,name,fmt(owned(p,id)),['exp','skillBooks'].includes(id)?'book':['ore','wood','cloth','essence','divineOre','seals'].includes(id)?'material':id==='tickets'?'other':'item',descriptions[id]];});
-    for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;if(!A[asset]?.fragmentArt)A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro để tăng sao. Hiro không có trong triệu hồi: mảnh đến từ Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương và mỗi 10 tầng Boss Vô Hạn.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
+    for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;if(!A[asset]?.fragmentArt)A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro để tăng sao. Hiro không có trong triệu hồi: mảnh đến từ Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương và mỗi 10 tầng Trùm Vô Tận.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
     refreshSkillCopy(p);
     for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;const sv=M.salvageValue(gear);rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'+'+gear.level,'gear',M.RARITIES[gear.rarity].name+(gear.locked?' · đang khóa':'')+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')+` · phân rã ${fmt(sv.ore)} quặng, ${fmt(sv.gold)} vàng`]);}
     // Dệt Ngọc: each gem as its picture with a count (Khác); the weekly choice token.
@@ -92,20 +92,20 @@
     return nodes;
   }
   // Where each resource really comes from (progression.js rewards, shop and summon tables).
-  const SOURCES={gold:'Nhiệm vụ · Vượt ải\nBoss · Offline',tickets:'Nhiệm vụ Ghé thăm\nMốc cấp tướng',exp:'Vượt ải · Boss · Offline\nNhiệm vụ · Cửa hàng',seals:'Nhiệm vụ · Vượt ải\nBoss · Offline',
-    skillBooks:'Nhiệm vụ Chi tiêu\nCửa hàng',essence:'Boss Vô Hạn · Boss chương\nRương sao chương',ore:'Vượt ải · Boss · Phân rã\nCửa hàng · Triệu hồi',wood:'Cửa hàng\nTriệu hồi',cloth:'Cửa hàng\nTriệu hồi',divineOre:'Boss Vô Hạn tầng 60+\nCửa hàng Đá Ngọc'};
+  const SOURCES={gold:'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy',tickets:'Nhiệm vụ Ghé thăm\nMốc cấp tướng',exp:'Vượt ải · Trùm · Tích lũy\nNhiệm vụ · Cửa hàng',seals:'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy',
+    skillBooks:'Nhiệm vụ Chi tiêu\nCửa hàng',essence:'Trùm Vô Tận · Trùm chương\nRương sao chương',ore:'Vượt ải · Boss · Phân rã\nCửa hàng · Triệu hồi',wood:'Cửa hàng\nTriệu hồi',cloth:'Cửa hàng\nTriệu hồi',divineOre:'Trùm Vô Tận tầng 60+\nCửa hàng Đá Ngọc'};
   function bag(nodes,p,state){
     for(const n of nodes){if(n.id.startsWith('inventory.category-')){n.rect=[15,n.rect[1],215,85];n.labelRect=[56,14,150,56];n.size=28;n.className='inventory-category';}if(n.action?.startsWith('bag-item:')){n.labelHidden=true;delete n.labelAsset;n.iconRect=[24,12,107,107];}}
     const asset=state.bagItem,item=inventory.find(r=>r[0]===asset);if(!item)return nodes;
     nodes=remove(nodes,/\.(recipe-|held-|source-icon$)/);
     const fragmentHero=item[3]==='fragment'?asset.slice(9):null;
-    label(nodes,'source',resourceFor[asset]==='gems'?'Nạp tiền\nComing soon':fragmentHero==='novice'?'Tân Thủ · Nhiệm vụ\nRương sao · Boss':fragmentHero&&unreleased(fragmentHero)?'Kỳ triệu hồi sau\nComing soon':fragmentHero?'Triệu hồi\nBoss chương':item[3]==='gear'?'Triệu hồi\nLò rèn':SOURCES[resourceFor[asset]]||'Nhiệm vụ · Vượt ải\nBoss · Offline');
+    label(nodes,'source',resourceFor[asset]==='gems'?'Nạp tiền\nComing soon':fragmentHero==='novice'?'Tân Thủ · Nhiệm vụ\nRương sao · Boss':fragmentHero&&unreleased(fragmentHero)?'Kỳ triệu hồi sau\nComing soon':fragmentHero?'Triệu hồi\nTrùm chương':item[3]==='gear'?'Triệu hồi\nLò rèn':SOURCES[resourceFor[asset]]||'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy');
     Object.assign(find(nodes,'source'),{rect:[307,1336,250,108],size:26});Object.assign(find(nodes,'source-title'),{rect:[307,1296,250,36],size:28});
     nodes.push(text('inventory','held-label','Số lượng đang có',[566,1296,340,36],28),text('inventory','held-count',item[2],[566,1332,340,44],34));
     if(item[3]==='fragment'){const hero=asset.slice(9);action(nodes,'item-action','do:fuse',{hero},(p.fragments[hero]||0)<80);label(nodes,'item-action','Ghép Tướng');}
     else{const route=item[3]==='gear'?'equipment':item[3]==='book'?(asset==='exp-book'?'upgrade':'skills'):asset==='ticket'?'summon':asset==='mana'?'vip':'campaign';action(nodes,'item-action','route:'+route);label(nodes,'item-action',item[3]==='gear'?'Trang Bị':item[3]==='book'?'Sử Dụng':asset==='mana'?'Coming Soon':'Đi Tới');}
     const product=M.WORLD.SHOP.find(row=>row.kind==='resource'&&row.target===resourceFor[asset]);
-    if(asset.startsWith('gem-')&&asset!=='gem-choice'){action(nodes,'item-action','gem:detail',{gem:asset.slice(4)});label(nodes,'item-action','Ghép');label(nodes,'source','Boss Vô Hạn 20+\nThử Luyện · Tuần');}
+    if(asset.startsWith('gem-')&&asset!=='gem-choice'){action(nodes,'item-action','gem:detail',{gem:asset.slice(4)});label(nodes,'item-action','Ghép');label(nodes,'source','Trùm Vô Tận 20+\nThử Luyện · Tuần');}
     if(asset==='gem-choice'){action(nodes,'item-action','gem:choice');label(nodes,'item-action','Chọn');}
     const counterDef=M.WORLD.EXPANSION.definitions.find(d=>d.counterKey===asset);
     if(counterDef){action(nodes,'item-action','guide:chapter',{chapter:counterDef.chapter});label(nodes,'item-action','Đến Chương');label(nodes,'source','Tinh anh 3 sao\nMốc 10 / 20 / 30 / 40');}
@@ -144,7 +144,7 @@ ${price}`);}
   }
   function quests(nodes,p,state,key){
     const index=Math.max(0,Math.min(M.DAILY.length-1,state.dailyQuest||0)),q=M.DAILY[index],progress=p.daily.progress[q.id]||0,claimed=p.daily.claimed.includes(q.id);
-    label(nodes,'quest-heading','Nhiệm Vụ Ngày');find(nodes,'quest-heading').size=24;
+    label(nodes,'quest-heading','Nhiệm Vụ Hằng Ngày');find(nodes,'quest-heading').size=24;
     // Reward tiles show what claiming pays now: Ấn is limited by today's remaining cap.
     const preview=M.dailyRewardPreview(p,q.id),capNote=!claimed&&preview.sealCapped?'Đã đạt giới hạn Ấn hôm nay':'Làm mới 00:00 GMT+7';
     label(nodes,'quest-name',q.name);label(nodes,'quest-description',`Tiến độ: ${fmt(Math.min(progress,q.target))} / ${fmt(q.target)} · ${capNote}`);
@@ -178,7 +178,7 @@ ${price}`);}
         label(nodes,'level-preview',max?`Lv.${h.level} · Tối đa`:`Lv.${h.level} → Lv.${h.level+range.levels}`);label(nodes,'upgrade-material-title',max?'Đã đạt cấp tối đa':range.levels>1?`Nguyên liệu tăng ${range.levels} cấp`:'Nguyên liệu tăng cấp');
         disabled=max||!affordable(p,c);
         if(step===10&&range)action(nodes,'upgrade-action','art:level',{hero,count:range.levels},disabled);else action(nodes,'upgrade-action','do:level',{hero},disabled);
-        label(nodes,'upgrade-action',max?'Đã Tối Đa':range.levels>1?`Tăng ${range.levels} Level`:'Tăng Level');
+        label(nodes,'upgrade-action',max?'Đã Tối Đa':range.levels>1?`Tăng ${range.levels} Level`:'Tăng Cấp');
         gain=max?'Đã đạt cấp tối đa 500.':gainText(levelGain);
         if(!max)side=button('upgrade','level-step',step===10?'×10 ✓':'×10',[664,1344,118,58],'art:level-step',{},{asset:'nameplate',size:24,selected:step===10,className:'upgrade-side-toggle'});
       }

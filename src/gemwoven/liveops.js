@@ -11,22 +11,22 @@
   const VIP=[
     {level:1,spend:100000,perks:['Khung avatar VIP','Quà ngày 500 vàng']},
     {level:2,spend:300000,perks:['Quét ải 3★','Quà ngày 1.000 vàng']},
-    {level:3,spend:600000,perks:['Hiệu ứng vào trận','+1 lượt Boss Vô Hạn có thưởng','Offline 13 giờ']},
+    {level:3,spend:600000,perks:['Hiệu ứng vào trận','+1 lượt Trùm Vô Tận có thưởng','Tích lũy 13 giờ']},
     {level:4,spend:1000000,perks:['Cửa hàng VIP 2 ô','Gói Quà VIP 4']},
-    {level:5,spend:2000000,perks:['Bong bóng chat VIP','+1 lượt Boss Vô Hạn có thưởng']},
-    {level:6,spend:4000000,perks:['Hàng đợi rèn thứ hai','Offline 14 giờ']},
-    {level:7,spend:7000000,perks:['+1 lượt Boss Vô Hạn có thưởng','Cửa hàng VIP 4 ô']},
+    {level:5,spend:2000000,perks:['Bong bóng chat VIP','+1 lượt Trùm Vô Tận có thưởng']},
+    {level:6,spend:4000000,perks:['Hàng đợi rèn thứ hai','Tích lũy 14 giờ']},
+    {level:7,spend:7000000,perks:['+1 lượt Trùm Vô Tận có thưởng','Cửa hàng VIP 4 ô']},
     {level:8,spend:12000000,perks:['Trang phục trang bị độc quyền (không chỉ số)']},
-    {level:9,spend:20000000,perks:['+1 lượt Boss Vô Hạn có thưởng','Offline 15 giờ']},
+    {level:9,spend:20000000,perks:['+1 lượt Trùm Vô Tận có thưởng','Tích lũy 15 giờ']},
     {level:10,spend:35000000,perks:['Trang phục tướng độc quyền (không chỉ số)']},
     {level:11,spend:60000000,perks:['Khung và danh hiệu Đại Phú Hộ']},
-    {level:12,spend:100000000,perks:['Chăm sóc khách hàng riêng','Offline 16 giờ']}
+    {level:12,spend:100000000,perks:['Chăm sóc khách hàng riêng','Tích lũy 16 giờ']}
   ].map(v=>({...v,dailyGold:v.level>=2?1000:500,combatStats:false}));
   // Payment products (suggested prices, Codex review: 109k card, 149k pass, 299k fund). No lifetime card
   // (owner, 2026-11-03): the pass has a third, higher track instead.
   const PRODUCTS=[
     {id:'monthly-card',name:'Thẻ Tháng',price:109000,days:30,stackMaxDays:180,gemsNow:300,gemsDaily:100,
-      perks:['300 Đá Ngọc ngay khi mua','100 Đá Ngọc mỗi ngày trong 30 ngày (tự vào Hòm Thư nếu quên đăng nhập)','Trần offline +2 giờ','+1 lượt Boss Vô Hạn có thưởng mỗi ngày','Quét ải 3★ không cần vé quét']},
+      perks:['300 Đá Ngọc ngay khi mua','100 Đá Ngọc mỗi ngày trong 30 ngày (tự vào Hòm Thư nếu quên đăng nhập)','Trần offline +2 giờ','+1 lượt Trùm Vô Tận có thưởng mỗi ngày','Quét ải 3★ không cần vé quét']},
     {id:'journey-pass',name:'Sổ Hành Trình · Nhánh Vàng',price:149000,perks:['Mở nhánh Vàng của mùa hiện tại','Nhận ngay mọi phần thưởng Vàng của các cấp đã đạt','Không có Đá Ngọc trong sổ']},
     {id:'journey-pass-jewel',name:'Sổ Hành Trình · Nhánh Diệu Ngọc',price:299000,upgradeFrom:'journey-pass',upgradePrice:150000,
       perks:['Gồm nhánh Vàng, thêm nhánh Diệu Ngọc (đã mua Vàng thì bù 150.000₫, không mua trùng)','+10 cấp sổ ngay khi mua (tính vào giới hạn 10 cấp mua mỗi mùa)','80 Mảnh tướng tự chọn mỗi mùa: tướng đã sở hữu, trừ Hiro; tài khoản chỉ có Hiro nhận phiếu chọn không hết hạn','Rương trang bị Sử Thi (cấp 25, nhận khi đã qua ải 60) và Huyền Thoại (cấp 50, nhận khi đã qua ải 80) tự chọn ô','Khung avatar và danh hiệu mùa (không chỉ số)','Không có Đá Ngọc; sức mạnh mua tắt ở hàng Chuẩn Hóa']},
@@ -52,7 +52,7 @@
     {id:'daily',name:'Ngày',reset:'00:00',items:['Nhiệm vụ ngày','Sân Thử Luyện theo hệ (2 lượt có thưởng, thử lại thoải mái)','Quà VIP và Thẻ Tháng']},
     {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
     {id:'banner',name:'Kỳ 2 tuần',reset:'Thứ Hai tuần lẻ',items:['Banner tướng (+ vũ khí bản mệnh)','Boss sự kiện theo tướng banner','Cửa hàng đổi mảnh (tối đa 30 mảnh/kỳ)','Báu vật chủ đề: tích nạp nhanh hơn, PvE vẫn đạt được']},
-    {id:'season',name:'Mùa 28 ngày',reset:'Thứ Hai đầu mùa',items:['Sổ Hành Trình mới','Mùa Đấu Hạng (reset mềm)','Lịch đăng nhập 28 ngày','BXH Boss Vô Hạn']},
+    {id:'season',name:'Mùa 28 ngày',reset:'Thứ Hai đầu mùa',items:['Sổ Hành Trình mới','Mùa Đấu Hạng (reset mềm)','Lịch đăng nhập 28 ngày','BXH Trùm Vô Tận']},
     {id:'quarter',name:'Quý',reset:'Tuần đầu quý',items:['Thư Hùng Đại Hội','Trang phục mới','Sự kiện kỷ niệm']}
   ];
   // Ranked arena leagues; MMR (Glicko-2) is hidden, league points are shown. Rewards hold no Đá Ngọc.

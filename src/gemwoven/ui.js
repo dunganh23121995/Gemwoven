@@ -264,7 +264,7 @@
     scene.classList.remove('scene-enter');void scene.offsetWidth;scene.classList.add('scene-enter');
     if(!game){if(state.screen==='shop')refreshProduct();if(state.screen==='tavern'&&state.questHidden)setQuestHidden(true);
     if(state.screen==='forge'&&state.groups['forge-tab'])changeText('forge-action',['CHẾ TẠO','CƯỜNG HÓA','KHẢM NGỌC'][Number(state.groups['forge-tab'].slice(-1))]);
-    if(state.screen==='upgrade'&&state.groups['upgrade-tab'])changeText('upgrade-action',['Tăng Level','Tăng Sao','Tiến Hóa'][Number(state.groups['upgrade-tab'].slice(-1))]);}
+    if(state.screen==='upgrade'&&state.groups['upgrade-tab'])changeText('upgrade-action',['Tăng Cấp','Tăng Sao','Tiến Hóa'][Number(state.groups['upgrade-tab'].slice(-1))]);}
     if(game)game.mount(state,{navigate,render,showModal});
     setEditMode($('edit-copy').checked);fit();requestAnimationFrame(fitCopy);
   }
@@ -343,12 +343,12 @@
     if(type==='item')return showModal(window.GEMWOVEN_INVENTORY?.find(p=>p[0]===value)?.[1]||itemNames[value]||'Trang bị',[value]);
     if(type==='hero'){state.hero=value;state.skill=0;return navigate('upgrade');}
     if(type==='selected-product')return showModal(itemNames[state.product],[state.product]);
-    if(type==='battle')return showModal(state.mode==='solo'?'Đấu trường 1v1':'Boss Vô Hạn',['hero-fire','hero-ice'],'',[{label:'Vào trận',href:'Game.html'}]);
+    if(type==='battle')return showModal(state.mode==='solo'?'Đấu trường 1v1':'Trùm Vô Tận',['hero-fire','hero-ice'],'',[{label:'Vào trận',href:'Game.html'}]);
     if(type==='summon')return showModal(value==='ten'?'Triệu Hồi ×10':'Triệu Hồi ×1',['summon-crystal','gem-fire'],'',[{label:'Xem tướng',route:'upgrade'}]);
     if(type==='forge-preview'){const tab=Number((state.groups['forge-tab']||'1').slice(-1));return showModal(['Chế Tạo','Cường Hóa','Khảm Ngọc'][tab],['fire-sword'],tab===1?'+8  →  +9':'Kiếm Hỏa Ngục');}
-    if(type==='upgrade-preview'){const tab=Number((state.groups['upgrade-tab']||'0').slice(-1));return showModal(['Tăng Level','Tăng Sao','Tiến Hóa'][tab],[`hero-${state.hero}`],tab===0?'Lv.32  →  Lv.33':heroNames[state.hero]);}
+    if(type==='upgrade-preview'){const tab=Number((state.groups['upgrade-tab']||'0').slice(-1));return showModal(['Tăng Cấp','Tăng Sao','Tiến Hóa'][tab],[`hero-${state.hero}`],tab===0?'Lv.32  →  Lv.33':heroNames[state.hero]);}
     if(type==='forge-tab'){changeText('forge-action',['CHẾ TẠO','CƯỜNG HÓA','KHẢM NGỌC'][value]);return;}
-    if(type==='upgrade-tab'){changeText('upgrade-action',['Tăng Level','Tăng Sao','Tiến Hóa'][value]);return;}
+    if(type==='upgrade-tab'){changeText('upgrade-action',['Tăng Cấp','Tăng Sao','Tiến Hóa'][value]);return;}
     if(type==='shop-tab')return;
     if(type==='quest-dismiss')return setQuestHidden(true);
     if(type==='tavern-tab'){setQuestHidden(false);changeText('quest-heading',['Tin Đồn','Nhiệm Vụ','Tình Thân','Chiêu Mộ'][value]);return;}
