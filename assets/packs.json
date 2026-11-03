@@ -4510,8 +4510,9 @@
     "assets/gemwoven/items/wood.png",
     "assets/gemwoven/modular-map/bridge.webp",
     "assets/gemwoven/modular-map/platform-a.webp",
-    "assets/gemwoven/npc/bunny/plate-raw.png",
     "assets/gemwoven/npc/bunny/rig/show/idle.webp",
+    "assets/gemwoven/npc/librarian/plate-raw.png",
+    "assets/gemwoven/npc/librarian/rig/show/idle.webp",
     "assets/gemwoven/npc/shopkeeper/rig/show/idle.webp",
     "assets/gemwoven/plaza/map.webp",
     "assets/gemwoven/plaza/npc-guide.webp",
@@ -4573,7 +4574,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 152095613
+   "bytes": 152869210
   },
   {
    "id": "hero-earth-f1",

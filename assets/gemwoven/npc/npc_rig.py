@@ -40,6 +40,17 @@ NPCS = {
 Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.""",
                   style=dict(T=2.2, bob=.008, sway=.003, tilt=.9, grip=0, loose=.2, front=.08, lag=1.0, lean=.4, planted=True, webp=(86, 90)),
                   stage=dict(x=179.6, y=604.5, size=162.6)),
+    "librarian": dict(what="chibi anime girl with white hair and cat ears lying on her stomach, reading a book",
+                      prompt="""Image 1 is a {what} on a plain background. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: the whole face, eyes, mouth, cat ears, the hair on top of the head and the bangs. The face is never any other colour.
+- pure WHITE #FFFFFF: the upper body propped on the elbows: chest, shoulders, both arms and both hands.
+- pure GREEN #00FF00: everything resting on the floor that never moves: the hips, the skirt, both legs and shoes, and the open book lying flat on the floor.
+- pure YELLOW #FFFF00: the closed golden book held in her hands, without the hands.
+- pure RED #FF0000: the long loose hair locks hanging down beside her face and shoulders.
+- pure CYAN #00FFFF: the flower ornament in her hair and small loose frills at the cuffs.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.""",
+                      style=dict(T=3.0, bob=.006, sway=.002, tilt=.8, grip=.5, loose=.18, front=.08, lag=1.1, lean=.4, planted=True, webp=(86, 90)),
+                      stage=dict(x=-8, y=83, size=440)),
 }
 
 

@@ -18,13 +18,14 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/inventory-v2-raw.png",
+    "source": "assets/gemwoven/npc/librarian/plate-raw.png",
     "reference": "assets/gemwoven/backgrounds/inventory-painted.webp",
     "promptFiles": [
       "assets/gemwoven/raw/redraw-2026-11/inventory-prompt.txt",
-      "assets/gemwoven/raw/redraw-2026-11/inventory-v2-prompt.txt"
+      "assets/gemwoven/raw/redraw-2026-11/inventory-v2-prompt.txt",
+      "assets/gemwoven/npc/librarian/plate-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. v2 (owner): the shelves around the girl carry a few test tubes, flasks, an alembic and finished goods so it reads as a shop storeroom."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. v2 (owner): the shelves around the girl carry a few test tubes, flasks, an alembic and finished goods so it reads as a shop storeroom. The reading girl is painted out and moves at rest as npc-librarian."
   },
   "background-skills": {
     "file": "assets/gemwoven/backgrounds/skills-calm.webp",
@@ -58,14 +59,15 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/npc/bunny/plate-raw.png",
+    "source": "assets/gemwoven/raw/shop-v3/raw.png",
     "reference": "assets/gemwoven/backgrounds/shop-painted.webp",
     "promptFiles": [
       "assets/gemwoven/raw/redraw-2026-11/shop-prompt.txt",
       "assets/gemwoven/npc/shopkeeper/plate-prompt.txt",
-      "assets/gemwoven/npc/bunny/plate-prompt.txt"
+      "assets/gemwoven/npc/bunny/plate-prompt.txt",
+      "assets/gemwoven/raw/shop-v3/prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. The shopkeeper is painted out (plate) and stands on it as a baked rig sheet (npc-shopkeeper, assets/gemwoven/npc/npc_rig.py). The rabbit is painted out too and stands as npc-bunny."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. The shopkeeper is painted out (plate) and stands on it as a baked rig sheet (npc-shopkeeper, assets/gemwoven/npc/npc_rig.py). The rabbit is painted out too and stands as npc-bunny. v3 (owner): the slogan pennant is gone and the back wall carries a few wares."
   },
   "background-forge": {
     "file": "assets/gemwoven/backgrounds/forge-calm.webp",
@@ -720,5 +722,27 @@
     "textless": true,
     "source": "assets/gemwoven/raw/forge-mockup/",
     "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
+  },
+  "npc-librarian": {
+    "file": "assets/gemwoven/npc/librarian/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 125,
+    "stage": {
+      "x": -8,
+      "y": 83,
+      "size": 440
+    },
+    "screen": "inventory",
+    "textless": true,
+    "source": "assets/gemwoven/npc/librarian/proc/raw-sheet-clean.png",
+    "promptFiles": [
+      "assets/gemwoven/npc/librarian/girl-prompt.txt",
+      "assets/gemwoven/npc/librarian/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "The Bag girl moves at rest (owner 03/11): Codex drew her alone in her lying pose, the rig only moves that picture."
   }
 }

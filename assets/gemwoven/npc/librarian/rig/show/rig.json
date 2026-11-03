@@ -1,0 +1,12 @@
+{
+ "cols": 6,
+ "rows": 4,
+ "count": 24,
+ "frameDuration": 125,
+ "cell": 640,
+ "stage": {
+  "x": -8,
+  "y": 83,
+  "size": 440
+ }
+}
