@@ -4036,6 +4036,15 @@
     "assets/gemwoven/ambient/water-arena.webp",
     "assets/gemwoven/ambient/water-home.webp",
     "assets/gemwoven/ambient/water-summon.webp",
+    "assets/gemwoven/arena/cup-sign.webp",
+    "assets/gemwoven/arena/frame-bronze.webp",
+    "assets/gemwoven/arena/frame-gold.webp",
+    "assets/gemwoven/arena/frame-silver.webp",
+    "assets/gemwoven/arena/match.webp",
+    "assets/gemwoven/arena/mode-rack.webp",
+    "assets/gemwoven/arena/ribbon.webp",
+    "assets/gemwoven/arena/row.webp",
+    "assets/gemwoven/arena/slot.webp",
     "assets/gemwoven/atlas/bridge.webp",
     "assets/gemwoven/atlas/pedestal-boss.webp",
     "assets/gemwoven/atlas/pedestal-elite.webp",
@@ -4590,7 +4599,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 153252932
+   "bytes": 153541598
   },
   {
    "id": "hero-earth-f1",

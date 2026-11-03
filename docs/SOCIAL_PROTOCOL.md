@@ -53,6 +53,25 @@ Hồ sơ `p`: `{hero, look 1–3, level 1–500, stars 1–6, power, title, fram
 | `duelStart` | `seed`, `opponent {id,name,hero,look}`, `label` |
 | `toast` / `err` | `text` (`ref` với lỗi đăng ký) |
 
+## Cúp Đấu Trường (thiết kế · máy chủ trận · Sắp ra mắt)
+
+Chưa chạy: chỉ là hợp đồng cho máy chủ trận sau này (`docs/GAME_DESIGN.md` §12.5). Hằng số dùng chung: `progression.js` `CUP`
+(lịch UTC+7, Elo K 40, kẹp ±240, 5 lượt/ngày dồn 10, 10/30 trận, Top 8), `liveops.js` `CUP_PRIZES`, `CUP_SCHEDULE`. Máy chủ tự
+chạy trận (§12.4); client không gửi kết quả.
+
+| `t` | Hướng | Trường | Ý nghĩa |
+|---|---|---|---|
+| `cup.status` | C → S | — | Xin trạng thái tháng: giai đoạn, lượt, điểm, hạng của mình |
+| `cup.state` | S → C | `season`, `phase`, `round`, `phaseEnd`, `tickets`, `you {points,played,late,rank}` | Trả lời / đẩy khi đổi |
+| `cup.table` | C → S / S → C | `from`, `n ≤ 100` / `rows [{rank,id,name,hero,points,played}]` | Top 100 + hàng của mình |
+| `cup.queue` | C → S | `hero` (tướng đã phát hành, khóa trước khi ghép) | Vào hàng chờ, mất lượt khi trận bắt đầu |
+| `cup.cancel` | C → S | — | Hủy chờ (sau 90 giây), không mất lượt |
+| `cup.match` | S → C | `seed`, `opponent {id,name,hero}`, `round`, `game`, `label` | Bắt đầu trận (hero đối thủ lộ sau khi ghép) |
+| `cup.result` | S → C | `won`, `draw`, `delta`, `points`, `series?` | Sau khi máy chủ chạy xong trận |
+| `cup.bracket` | S → C | `seeds`, `rounds [{round,matches [{a,b,wins,replay}]}]` | Nhánh Top 8, xem lại |
+| `cup.confirm` | C → S | — | Top 8 xác nhận tham dự trước 12:00 ngày tứ kết |
+| `cup.history` | S → C | `months [{season,champion {id,name,hero}}]` | Vinh Danh 12 tháng |
+
 ## Tin mẫu (kiểm thử chéo client)
 
 ```json

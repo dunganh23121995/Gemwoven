@@ -63,6 +63,19 @@
     {id:'open',name:'Tự Do',desc:'Chỉ số thật; ghép theo MMR và chênh Lực chiến tối đa 25%.'},
     {id:'normalized',name:'Chuẩn Hóa',desc:'Mọi người chọn trong cùng danh sách tướng đã phát hành, chỉ số chuẩn, kỹ năng cấp 1; không trang bị, báu vật, VIP.'}],
     seasonRewards:'Khung avatar, danh hiệu mùa, trang phục; top mùa nhận đồ trang trí, không nhận sức mạnh độc quyền.'};
+  // Cúp Đấu Trường (monthly cup, docs/GAME_DESIGN.md §12.5; Claude + Codex arena round 1). Rules and the local
+  // prototype live in progression.js (CUP, cupView). Ranking prizes are cosmetic only; everyone with 10 matches gets
+  // the same small pack. One best ranking pack per player plus the completion pack; prizes are mailed 48 hours after
+  // the final once the server has checked the results. No Đá Ngọc, treasure points, socket gems or rank-scaled resources.
+  const CUP_PRIZES=[
+    {id:'champion',name:'Vô địch',title:'cup-champion',items:['Danh hiệu Quán Quân Tháng (ghi tháng/năm)','Khung chân dung động','Cúp lưu niệm trong hồ sơ','Chân dung vinh danh ở Quảng Trường tháng sau'],frame:'gold'},
+    {id:'final',name:'Á quân',title:'cup-final',items:['Danh hiệu Á Quân Tháng','Khung vàng'],frame:'gold'},
+    {id:'semi',name:'Hạng 3–4',title:'cup-semi',items:['Danh hiệu Tứ Kiệt Tháng','Khung bạc'],frame:'silver'},
+    {id:'eight',name:'Hạng 5–8',title:'cup-eight',items:['Danh hiệu Bát Hùng Tháng','Khung đồng'],frame:'bronze'},
+    {id:'top10',name:'Top 10%',items:['Huy chương hồ sơ có tháng/năm']},
+    {id:'done',name:'Đủ 10 trận',items:['Dấu tham dự'],reward:{gold:20000,exp:20,essence:5}}];
+  const CUP_SCHEDULE={finalsHour:20,mailAfterHours:48,minField:32,status:STATUS,
+    server:['Ghép người thật ±100 điểm, 30 giây mở ±200, 60 giây ±300; 90 giây cho hủy, không mất lượt','Không gặp cùng người quá 2 trận/ngày','Chung kết BO3 20:00; Top 16 dự bị, xác nhận trước 12:00 ngày tứ kết','Cần ít nhất 32 người đủ điều kiện mới trao ngôi vô địch','Lượt 20 giây · 3 lần hết giờ xử thua · 60 giây kết nối lại']};
   // Treasures: account-owned, two slots per hero (the second at evolution 3). Every quality is reachable
   // through PvE in 12–16 weeks; top-ups only make it faster. Boss %HP damage is PvE only and capped.
   const TREASURE_QUALITIES=[{id:'blue',name:'Lam',stat:.04,stats:1},{id:'purple',name:'Tím',stat:.08,stats:2},{id:'orange',name:'Cam',stat:.12,stats:2},{id:'red',name:'Đỏ',stat:.16,stats:3},{id:'divine',name:'Thần',stat:.2,stats:3}];
@@ -82,5 +95,5 @@
   // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
   const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
     desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
-  return {TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {CUP_PRIZES,CUP_SCHEDULE,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

@@ -214,3 +214,35 @@ console.log('treasure trial ok');
   assert.throws(()=>e.strengthenTo(g.id,10));assert.equal(e.read().equipment.find(x=>x.id===g.id).level,3,'nothing half done');
 }
 console.log('forge ok');
+{ // Cúp Đấu Trường (§12.5, Codex arena rounds 1–2): month calendar, symmetric Elo, daily matches, AI field, knockout, no rewards.
+  const O=require('../../src/gemwoven/liveops.js'),H7=7*3600000;
+  const s=M.cupSeason(Date.UTC(2026,10,3,20));assert.deepEqual([s.key,s.date,s.raceDays,s.phase],['2026-11',4,27,'race'],'UTC+7 calendar day');
+  assert.deepEqual([M.cupSeason(Date.UTC(2026,10,28)-H7).phase,M.cupSeason(Date.UTC(2026,10,28)-H7).round,M.cupSeason(Date.UTC(2026,10,30,16,59)).round],['finals',1,3],'quarter D−2 … final D');
+  assert.equal(M.cupDelta(1000,1000,1),20);assert.equal(M.cupDelta(1000,1000,0),-20,'symmetric at equal ratings');
+  assert.equal(M.cupDelta(1000,2000,1),M.cupDelta(1000,1240,1),'gap capped at ±240');assert.equal(M.cupDelta(5,1000,0),-5,'nobody drops below 0');
+  const field=M.cupField('2026-11');assert.equal(field.length,31);assert.deepEqual(M.cupField('2026-11'),field,'same field on every device');
+  assert.ok(field.every(f=>M.heroAvailable(f.hero)),'AI copies use released heroes only');
+  const sim=M.cupSimulate('2026-11',27);assert.equal(sim.reduce((n,r)=>n+r.points,0),31*1000,'AI matches only move points between them');
+  assert.ok(sim.every(r=>r.played<=27*5),'an AI plays at most 5 matches a day');
+  const map=new Map(),st={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};let at=Date.UTC(2026,10,4,5);
+  const e=M.makeEngine(st,{now:()=>at,random:()=>.3}),before=JSON.stringify(e.read().wallet);
+  assert.equal(e.cupSync().tickets,5);const b=e.begin('cup',1,{hero:'fire'});assert.equal(b.mode,'cup');assert.equal(b.hero,'fire','any released hero can be borrowed');
+  assert.deepEqual([b.stats.form,b.stats.evolution,b.stats.skills.join(),b.stats.affixes.length,b.stats.treasure],[1,0,'1,0,0,0',0,null],'Chuẩn Hóa: base form, rank-1 skills, no gear/treasure');
+  assert.throws(()=>e.begin('cup',1,{hero:'ice'}),/chưa phát hành/);
+  const r=e.settle(b.token,true,0);assert.ok(r.cup.won&&r.cup.delta>0);assert.equal(JSON.stringify(e.read().wallet),before,'the prototype grants nothing');
+  const q=e.begin('cup',1,{});const lost=e.cup().you.points;e.begin('cup',1,{});assert.equal(e.cup().you.played,3,'leaving a started match keeps it as a loss');assert.ok(lost<1000+r.cup.delta);
+  for(let i=0;i<2;i++)e.settle(e.begin('cup',1,{}).token,false,0);assert.throws(()=>e.begin('cup',1,{}),/Hết lượt/);
+  at+=86400000*3;assert.equal(e.cupSync().tickets,10,'unused matches bank to 10');
+  for(let d=7;d<=27;d++){at=Date.UTC(2026,10,d,5);e.cupSync();for(let i=0;i<5;i++)e.settle(e.begin('cup',1,{}).token,true,0);}
+  const v=e.cup();assert.ok(v.you.ranked&&v.you.eligible,'30+ matches, 5 in the last 7 days');
+  at=Date.UTC(2026,10,28,5);const f=e.cupSync();assert.equal(f.tickets,0);assert.ok(f.match&&f.match.round===1,'your quarter-final today');
+  assert.deepEqual(f.finals.seeds.slice(0,1).map(x=>x.you),[true]);
+  for(let i=0;i<2;i++)e.settle(e.begin('cup',1,{}).token,true,0);assert.equal(e.cup().match,null,'BO3 decided at 2 wins');
+  at=Date.UTC(2026,10,29,14);e.cupSync();for(let i=0;i<2;i++)e.settle(e.begin('cup',1,{}).token,false,0);
+  at=Date.UTC(2026,11,1,5);const next=e.cupSync();assert.equal(next.season.key,'2026-12');assert.equal(next.history[0].finish,'semi');assert.equal(next.history[0].champion.ai,true,'an AI copy won the local final');
+  assert.equal(next.you.points,1000,'a new month starts from 1.000');
+  for(const z of O.CUP_PRIZES){assert.equal(z.reward?.gems,undefined,'No Đá Ngọc in cup prizes');assert.equal(z.reward?.treasurePoints,undefined);}
+  assert.deepEqual(O.CUP_PRIZES.filter(z=>z.reward).map(z=>z.id),['done'],'only the completion pack holds resources');
+  assert.ok(M.TITLE_RULES.filter(t=>t.id.startsWith('cup-')).every(t=>t.server),'cup titles are server titles');
+}
+console.log('cup ok');

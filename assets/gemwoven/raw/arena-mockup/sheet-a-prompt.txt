@@ -1,0 +1,38 @@
+Create a production UI cutout sheet, 2048x1536 pixels.
+Reference Image 1 (mockup-1.png) defines the art style and ornament
+vocabulary only. Do not reproduce the complete screen.
+
+Match its polished hand-painted fantasy game art: warm carved wood,
+restrained beveled gold, rich cloth, sculpted laurel leaves, soft
+daylight, crisp silhouettes. Front-facing UI objects, minimal perspective.
+
+Use a custom three-row layout with exactly SIX separate assets:
+
+TOP ROW, y=0–640:
+Left cell x=0–1280: one 1152x576 tournament sign, including a centered
+golden trophy above the board, attached red drapery, gold edge fittings
+and side laurels. Keep the dark wooden writing area broad and empty,
+with room for three HTML text lines. All ornament stays inside the cell.
+Right cell x=1280–2048: one 640x160 royal-blue horizontal ribbon with
+gold edging and folded ends, centered in the cell, blank face.
+
+MIDDLE ROW, y=640–1152, three equal-width cells:
+Left: one 384x448 gold portrait frame with gold laurels and a red gem.
+Center: one 384x448 silver portrait frame with silver laurels and a blue gem.
+Right: one 384x448 bronze portrait frame with bronze laurels and an amber gem.
+Each frame has the same circular portrait opening and an attached small
+blank red cartouche below it. Openings must be solid magenta for keying.
+No portraits. No rank pedestals.
+
+BOTTOM ROW, y=1152–1536:
+One centered 1536x320 wooden support for three hanging mode banners:
+a quiet plank backing, horizontal hanging rail and two short end posts.
+Leave the banner attachment positions unobstructed.
+No flags, icons, locks or text attached.
+
+Background: perfectly flat opaque #FF00FF, including all cutout openings.
+Keep at least 32 pixels of clear magenta around every asset.
+Assets must remain separated and fully contained, with no overlaps.
+No background gradients, magenta reflections, cast shadows outside
+silhouettes, grid lines, cell borders or labels.
+Absolutely no text, letters, numerals, pseudo-writing, logos or watermarks.

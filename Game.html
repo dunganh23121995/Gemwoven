@@ -2831,7 +2831,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   // its account-wide daily cap would silently shrink a gift.
   const MAIL_LIMIT=50,MAIL_ATTACHMENTS=4,MAIL_COUNT_MAX=999999,MAIL_TITLE_MAX=60,MAIL_BODY_MAX=600,MAIL_FROM_MAX=40,MAIL_EXPIRY_DAYS=[1,30],DAY_MS=86400000;
   const MAIL_RESOURCES=Object.keys(RESOURCES).filter(id=>id!=='gems'&&id!=='seals');
-  const MAIL_ADMIN='Ban Quản Trị Gemwoven';
+  const MAIL_ADMIN='Gemwoven';
   function welcomeMail(at){return {id:'welcome-mailbox',kind:'notice',from:MAIL_ADMIN,title:'Chào mừng đến Hòm Thư',
     body:'Chào mừng lữ khách đến với Gemwoven!\nHòm Thư là nơi Ban Quản Trị gửi thông báo và quà tặng cho bạn. Thư có quà mang biểu tượng hộp quà: mở thư và chọn “Nhận quà” để cất vật phẩm vào Túi Đồ.\nMột số thư có thời hạn và tự biến mất khi hết hạn, hãy nhận quà kịp thời. Thư đã đọc và đã nhận quà có thể xóa bất cứ lúc nào.',
     sentAt:at,expiresAt:null,attachments:[],read:false,claimed:false,source:'system'};}
@@ -3090,6 +3090,11 @@ const TITLE_RULES=[
   {id:'pathfinder',name:'Người Mở Lối',tier:3,source:'Vượt chương 10 (ải 500)',at:p=>[Math.min(p.campaign.cleared,500),500]},
   {id:'boss-hunter',name:'Thợ Săn Boss',tier:4,source:'Hạ 1.000 boss vô hạn',at:p=>[Math.min(p.boss.wins,1000),1000]},
   {id:'season-gold',name:'Kiếm Khách Hoàng Kim',tier:4,source:'Mùa Đấu Hạng · bậc Vàng (máy chủ)',server:true},
+  // Cúp Đấu Trường (monthly, §12.5): server titles for the final eight, the month written beside the name.
+  {id:'cup-champion',name:'Quán Quân Tháng',tier:5,source:'Vô địch Cúp Đấu Trường của một tháng (máy chủ)',server:true},
+  {id:'cup-final',name:'Á Quân Tháng',tier:4,source:'Á quân Cúp Đấu Trường (máy chủ)',server:true},
+  {id:'cup-semi',name:'Tứ Kiệt Tháng',tier:4,source:'Vào bán kết Cúp Đấu Trường (máy chủ)',server:true},
+  {id:'cup-eight',name:'Bát Hùng Tháng',tier:3,source:'Vào tứ kết Cúp Đấu Trường (máy chủ)',server:true},
   {id:'champion',name:'Thư Hùng Vô Địch',tier:5,source:'Vô địch Thư Hùng Đại Hội (máy chủ)',server:true},
   {id:'patron',name:'Đại Phú Hộ',tier:4,source:'VIP 11 (trang trí, không chỉ số)',server:true,paid:true}];
 function titleList(p){return TITLE_RULES.map(t=>{const [cur,target]=t.at?t.at(p):[0,1];return {id:t.id,name:t.name,tier:t.tier,source:t.source,server:!!t.server,paid:!!t.paid,progress:[Math.min(cur,target),target],unlocked:!t.server&&cur>=target,worn:p.title===t.id};});}
@@ -3161,6 +3166,95 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return {mode:'spar',index:1,recommended:1,boss:false,tier:'normal',chapter:1,theme:WORLD.CHAPTERS[0].id,bossId:null,music:'fire',creature:null,enemyName:`Bản sao ${name}`,turnLimit:30,
       enemyKey:['fire','ice','earth','lightning'].includes(hero)?hero:'fire',enemyHp:Math.round(data.hp*2),enemyAttack:Math.round(data.attack*1.8*1e4)/1e4,enemySkillBase:45,
       skills:[data.ultimate||'Tuyệt kỹ'],skillSet:[],eliteUlt:false,tactical:false,variant:0,name:SPAR_LABEL,opponent:{hero,name,look:Math.max(1,Math.min(3,Math.round(Number(opponent?.look)||1)))}};
+  }
+  // ----- Cúp Đấu Trường (docs/GAME_DESIGN.md §12.5; Claude + Codex arena rounds 1–2) -----
+  // A calendar month (UTC+7): points race on days 1..D−3, then a top-8 BO3 knockout (quarter D−2, semi D−1,
+  // final D). Chuẩn Hóa rules: every released hero may be borrowed, base form, rank-1 skills, no gear/treasure/
+  // gems/VIP. Symmetric Elo (K 40, gap capped ±240) from 1.000. 5 rated matches a day, unused ones bank to 10.
+  // Ranked from 10 matches; the final eight need 30 matches, 5 of them in the race's last 7 days. Ranking prizes
+  // are cosmetic only (liveops.js CUP_PRIZES); no Đá Ngọc, treasure points, gems or rank-scaled resources.
+  // Until the match server exists this runs as a LOCAL PROTOTYPE against 31 AI copies whose own matches are
+  // played out by seed with the same formula; it grants nothing and is never a global leaderboard.
+  const CUP={name:'Cúp Đấu Trường',queue:'normalized',stage:30,daily:5,bank:10,start:1000,k:40,gapCap:240,rankedAfter:10,finalsMatches:30,lateMatches:5,lateDays:7,finalists:8,bestOf:3,
+    finalsDays:3,finalsHour:20,turnLimit:30,sameOpponentPerDay:2,window:[100,200,300],minField:32,field:31,keepHistory:12,
+    label:'Bản thử cục bộ · kết quả không lên bảng toàn cầu',server:'Máy chủ · Sắp ra mắt'};
+  const CUP_NAMES=['Kiếm Gió','Lam Tuyết','Hỏa Vân','Mộc Lan','Thạch Sơn','Bạch Hạc','Hắc Ưng','Ngân Hà','Phong Linh','Thanh Long','Tiểu Hổ','Minh Nguyệt','Hoàng Kim','Lục Diệp','Tử Vi','Băng Tâm',
+    'Lôi Đình','Vân Du','Sương Mai','Đông Phong','Bắc Đẩu','Hồng Ngọc','Lam Ngọc','Dạ Lan','Liễu Yên','Mai Hoa','Trúc Lâm','Thiên Ân','Hải Âu','Tinh Vân','Cỏ May','Gió Lửa','Mây Trắng','Sao Băng','Nắng Hạ'];
+  const H7=7*3600000;
+  function cupSeason(at){
+    const d=new Date(at+H7),y=d.getUTCFullYear(),m=d.getUTCMonth(),days=new Date(Date.UTC(y,m+1,0)).getUTCDate(),date=d.getUTCDate(),raceDays=days-CUP.finalsDays;
+    const dayStart=n=>Date.UTC(y,m,n)-H7,phase=date<=raceDays?'race':'finals',round=phase==='finals'?date-raceDays:0;
+    const phaseEnd=phase==='race'?dayStart(raceDays+1):dayStart(date+1);
+    return {key:`${y}-${String(m+1).padStart(2,'0')}`,year:y,month:m+1,days,date,raceDays,phase,round,start:dayStart(1),end:dayStart(days+1),phaseEnd,msLeft:phaseEnd-at,lateFrom:raceDays-CUP.lateDays+1,hourNow:d.getUTCHours()};
+  }
+  const cupPrevKey=key=>{const [y,m]=key.split('-').map(Number);return m===1?`${y-1}-12`:`${y}-${String(m-1).padStart(2,'0')}`;};
+  const cupSeasonOf=key=>{const [y,m]=key.split('-').map(Number);return cupSeason(Date.UTC(y,m-1,1)-H7);};
+  function cupRandom(seed){let a=2166136261;for(const c of String(seed))a=Math.imul(a^c.charCodeAt(0),16777619)>>>0;return ()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
+  // Expected score of a against b and the symmetric change for a (S = 1 win, .5 draw, 0 loss); nobody drops below 0.
+  function cupExpected(a,b){const gap=Math.max(-CUP.gapCap,Math.min(CUP.gapCap,b-a));return 1/(1+10**(gap/400));}
+  function cupDelta(a,b,score){let d=Math.round(CUP.k*(score-cupExpected(a,b)));if(a+d<0)d=-a;if(b-d<0)d=b;return d;}
+  const cupPool=()=>Object.keys(HEROES).filter(heroAvailable);
+  // The 31 AI copies of a month: name, hero from the released pool, a hidden strength. Same for every device.
+  function cupField(key){const r=cupRandom('field:'+key),names=CUP_NAMES.slice(),pool=cupPool();
+    return Array.from({length:CUP.field},(_,i)=>{const name=names.splice(Math.floor(r()*names.length),1)[0];return {id:'ai'+i,name,hero:pool[Math.floor(r()*pool.length)],strength:Math.round(880+r()*360),look:1,ai:true};});}
+  // The AI copies play their race among themselves, day by day, by seed and the same Elo rule.
+  const cupSims=new Map();
+  function cupSimulate(key,upto){
+    const s=cupSeasonOf(key),last=Math.max(0,Math.min(upto,s.raceDays)),id=key+':'+last;if(cupSims.has(id))return cupSims.get(id);
+    const field=cupField(key),rows=field.map(f=>({...f,points:CUP.start,played:0,wins:0,oppSum:0,late:0}));
+    for(let day=1;day<=last;day++){const r=cupRandom(`race:${key}:${day}`);
+      // Like a player, an AI plays at most its 5 daily matches (2–5 a day).
+      const today=new Map(rows.map(x=>[x,0]));
+      for(const a of rows){const games=2+Math.floor(r()*4);
+        while(today.get(a)<games){const near=rows.filter(b=>b!==a&&today.get(b)<CUP.daily).sort((x,y)=>Math.abs(x.points-a.points)-Math.abs(y.points-a.points)||x.id.localeCompare(y.id)).slice(0,6);if(!near.length)break;const b=near[Math.floor(r()*near.length)];today.set(a,today.get(a)+1);today.set(b,today.get(b)+1);
+          const won=r()<cupExpected(a.strength,b.strength)?1:0,d=cupDelta(a.points,b.points,won);
+          for(const [x,y,w] of [[a,b,won],[b,a,1-won]]){x.played++;x.wins+=w;x.oppSum+=y.points;if(day>=s.lateFrom)x.late++;}
+          a.points+=d;b.points-=d;}}}
+    const out=rows.map(r=>({...r}));if(cupSims.size>40)cupSims.clear();cupSims.set(id,out);return out;
+  }
+  const cupState=key=>({season:key,points:CUP.start,played:0,wins:0,oppSum:0,late:0,tickets:CUP.daily,ticketDate:null,vs:{},adjust:{},open:null,games:[],recent:[]});
+  // The table on a given day: AI rows (with what you took from or gave them) and yours. Ties: points, then the
+  // average rating of the opponents you met, then wins.
+  function cupStandings(p,key,day){
+    const c=p.cup?.season===key?p.cup:cupState(key),ai=cupSimulate(key,day).map(r=>({...r,points:r.points+(c.adjust[r.id]||0)}));
+    const you={id:'you',name:'Bạn',hero:p.selected,ai:false,you:true,points:c.points,played:c.played,wins:c.wins,oppSum:c.oppSum,late:c.late};
+    const rows=[...ai,you].map(r=>({...r,oppAvg:r.played?Math.round(r.oppSum/r.played):0,ranked:r.played>=CUP.rankedAfter,eligible:r.played>=CUP.finalsMatches&&r.late>=CUP.lateMatches}));
+    rows.sort((a,b)=>b.ranked-a.ranked||b.points-a.points||b.oppAvg-a.oppAvg||b.wins-a.wins||a.id.localeCompare(b.id));
+    let n=0;for(const r of rows)r.rank=r.ranked?++n:null;return rows;
+  }
+  // Top 8 seeds from the frozen race table; bracket 1–8, 4–5, 2–7, 3–6. AI pairs play BO3 by seed; your games
+  // come from your own matches (an unplayed round day is a no-show loss).
+  function cupBracket(p,key,at){
+    const s=cupSeasonOf(key),now=cupSeason(at),past=now.key>key,date=past?s.days+1:now.key===key?now.date:0;
+    const seeds=cupStandings(p,key,s.raceDays).filter(r=>r.eligible).slice(0,CUP.finalists);if(seeds.length<CUP.finalists||date<=s.raceDays)return {seeds,rounds:[],champion:null,ready:false};
+    const c=p.cup?.season===key?p.cup:null,strength=r=>r.you?(r.points):r.strength,rounds=[];
+    let alive=[[0,7],[3,4],[1,6],[2,5]].map(([a,b])=>[seeds[a],seeds[b]]);
+    for(let round=1;round<=3;round++){const day=s.raceDays+round,matches=[];
+      for(const [a,b] of alive){let wins=[0,0],games=[],decided=false;
+        if(a.you||b.you){const mine=(c?.games||[]).filter(g=>g.round===round).map(g=>g.won),youA=!!a.you;
+          for(const w of mine){games.push(youA?w:1-w);wins[youA?1-w:w]++;}
+          decided=wins[0]>=2||wins[1]>=2;if(!decided&&date>day){while(wins[0]<2&&wins[1]<2){wins[youA?1:0]++;games.push(youA?0:1);}decided=true;}}
+        else{const r=cupRandom(`final:${key}:${round}:${a.id}:${b.id}`),pa=cupExpected(strength(a),strength(b));while(wins[0]<2&&wins[1]<2){const w=r()<pa?1:0;games.push(w);wins[w?0:1]++;}
+          decided=date>day||date===day&&now.hourNow>=CUP.finalsHour;if(!decided){wins=[0,0];games=[];}}
+        matches.push({a,b,wins,games,decided,day,winner:decided?(wins[0]>wins[1]?a:b):null,live:!decided&&date===day});}
+      rounds.push({round,day,matches});if(!matches.every(m=>m.decided))break;
+      alive=[];for(let i=0;i<matches.length;i+=2)if(matches[i+1])alive.push([matches[i].winner,matches[i+1].winner]);if(!alive.length)break;}
+    const fin=rounds[2]?.matches[0];return {seeds,rounds,champion:fin?.decided?fin.winner:null,ready:true};
+  }
+  // Your live knockout match today (round, opponent, games so far), if any.
+  function cupFinalsMatch(p,key,at){const b=cupBracket(p,key,at),now=cupSeason(at);if(!b.ready)return null;
+    for(const r of b.rounds)for(const m of r.matches)if((m.a.you||m.b.you)&&!m.decided&&r.day===now.date)return {round:r.round,opponent:m.a.you?m.b:m.a,wins:m.a.you?m.wins:[m.wins[1],m.wins[0]]};return null;}
+  // Where you finished: champion / final / semi / quarter / null.
+  function cupFinish(b){if(!b.ready)return null;let out=null;for(const r of b.rounds)for(const m of r.matches)if(m.a.you||m.b.you){out=['quarter','semi','final'][r.round-1];if(r.round===3&&m.decided&&m.winner.you)out='champion';}return out;}
+  function cupView(p,at){
+    const s=cupSeason(at),c=p.cup?.season===s.key?p.cup:cupState(s.key),table=cupStandings(p,s.key,s.phase==='race'?s.date:s.raceDays),you=table.find(r=>r.you),bracket=cupBracket(p,s.key,at);
+    const tickets=Math.min(CUP.bank,c.tickets+(c.ticketDate&&c.ticketDate<day(at)?CUP.daily*Math.max(0,Math.round((Date.parse(day(at))-Date.parse(c.ticketDate))/86400000)):0));
+    return {rules:CUP,season:s,pool:cupPool(),table,you,top:table.filter(r=>r.ranked).slice(0,3),tickets:s.phase==='race'?tickets:0,finals:bracket,match:cupFinalsMatch(p,s.key,at),finish:cupFinish(bracket),
+      recent:c.recent.slice(0,5),history:(p.cupHistory||[]).slice(0,CUP.keepHistory),toRanked:Math.max(0,CUP.rankedAfter-c.played),toFinals:Math.max(0,CUP.finalsMatches-c.played),toLate:Math.max(0,CUP.lateMatches-c.late),label:CUP.label};
+  }
+  function cupEncounter(opponent,hero){
+    const e=sparEncounter({hero:opponent.hero,name:opponent.name,look:1});
+    return {...e,mode:'cup',name:CUP.name+' · '+CUP.label,enemyName:`Bản sao ${opponent.name} · AI`,turnLimit:CUP.turnLimit,cup:{opponent:{id:opponent.id,name:opponent.name,hero:opponent.hero},round:opponent.round||0},cupHero:hero};
   }
   // Ordinary foes' HP share (Codex round 6: test −20% if fights run past 8–12 moves; measured with the real-fight bot).
   const QA_VARIANT=(typeof globalThis!=='undefined'&&globalThis.GW_VARIANT)||{};
@@ -3245,7 +3339,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   function storageFor(raw){try{if(raw?.getItem('gemwoven.trialActive')==='1'){const T='gemwoven.treasure.v1',m=k=>k===KEY?T:k;return {getItem:k=>raw.getItem(m(k)),setItem:(k,v)=>raw.setItem(m(k),v),removeItem:k=>raw.removeItem(m(k)),trial:true};}}catch{}return raw;}
   function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
     let memory,sequence=0;
-    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...(p.pending.mode==='spar'?sparEncounter(p.pending.opponent):encounter(p.pending.mode,p.pending.index)),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
+    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...(p.pending.mode==='cup'?{}:p.pending.mode==='spar'?sparEncounter(p.pending.opponent):encounter(p.pending.mode,p.pending.index)),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
     function save(p){p.updated=now();p.revision++;if(storage)storage.setItem(KEY,JSON.stringify(p));else memory=clone(p);return p;}
     // Device-clock guard (stopgap until server time): the save remembers the latest time it
     // has seen. Setting the clock back never re-opens daily resets, Ấn caps or idle income;
@@ -3273,6 +3367,35 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function shopLeft(p,product){if(!product.limit)return Infinity;const was=p.shopBoughtBy?.[product.id];return Math.max(0,product.limit.n-(was?.key===shopKey(product)?was.n:0));}
     // Báu vật points: once per day / week per kind, only in the trial save (round 9).
     function treasurePoint(p,kind,period,ok){if(!p.trialMode||!ok)return;p.treasure??={points:0,shards:0,items:[],slots:{},claims:{}};const k=kind+':'+period;if(p.treasure.claims[k])return;p.treasure.claims[k]=true;p.treasure.points+=TREASURE.points[kind];}
+    // Cúp Đấu Trường (local prototype): month rollover into the history, daily matches (5, banked to 10).
+    function cupRefresh(p){const s=cupSeason(current);
+      if(p.cup&&p.cup.season!==s.key){const old=p.cup,b=cupBracket(p,old.season,current),me=cupStandings(p,old.season,cupSeasonOf(old.season).raceDays).find(r=>r.you),ch=b.champion;
+        if(old.played)p.cupHistory=[{season:old.season,points:old.points,played:old.played,wins:old.wins,rank:me.rank,finish:cupFinish(b),champion:ch?{name:ch.name,hero:ch.hero,ai:!!ch.ai,you:!!ch.you}:null},...(p.cupHistory||[])].slice(0,CUP.keepHistory);
+        p.cup=null;}
+      p.cup??=cupState(s.key);const today=day(current),c=p.cup;
+      if(c.ticketDate!==today){if(c.ticketDate)c.tickets=Math.min(CUP.bank,c.tickets+CUP.daily*Math.max(0,Math.round((Date.parse(today)-Date.parse(c.ticketDate))/86400000)));c.ticketDate=today;c.vs={};}
+      if(c.open&&p.pending?.token!==c.open.token)c.open=null;
+      return s;}
+    function cupBegin(p,hero=p.selected,title=null){
+      const s=cupRefresh(p),c=p.cup;check(cupPool().includes(hero),'Tướng này chưa phát hành nên chưa vào giải.');let opp,round=0;
+      if(s.phase==='race'){check(c.tickets>0,`Hết lượt đấu hôm nay. Mỗi ngày có thêm ${CUP.daily} lượt (dồn tối đa ${CUP.bank}).`);
+        const far=r=>Math.abs(r.points-c.points),rows=cupStandings(p,s.key,s.date).filter(r=>r.ai&&(c.vs[r.id]||0)<CUP.sameOpponentPerDay).sort((a,b)=>far(a)-far(b)||a.id.localeCompare(b.id));
+        let near=[];for(const w of CUP.window){near=rows.filter(r=>far(r)<=w);if(near.length)break;}if(!near.length)near=rows;
+        check(near.length,'Chưa có đối thủ phù hợp.');near=near.slice(0,3);opp=near[Math.floor(random()*near.length)];c.tickets--;c.vs[opp.id]=(c.vs[opp.id]||0)+1;}
+      else{const m=cupFinalsMatch(p,s.key,current);check(m,'Hôm nay bạn không có trận ở vòng loại trực tiếp.');opp=m.opponent;round=m.round;}
+      const token=id(),loss=cupDelta(c.points,opp.points,0),win=cupDelta(c.points,opp.points,1);
+      // Counted as a loss from the start: leaving the match keeps the loss (Codex arena round 1); a win flips it.
+      if(round)c.games.push({round,won:0,token});else{c.points+=loss;c.played++;c.oppSum+=opp.points;if(s.date>=s.lateFrom)c.late++;c.adjust[opp.id]=(c.adjust[opp.id]||0)-loss;}
+      c.open={token,opp:opp.id,name:opp.name,hero:opp.hero,round,loss,win,at:current};
+      const data=HEROES[hero],kit=skillKit(hero,null,true),e=cupEncounter({...opp,round},hero);
+      p.pending={...e,token,hero,started:now(),counter:null,title,stats:{hp:Math.round(data.hp*2),attack:Number((data.attack*1.8).toFixed(4)),defense:0,active:kit.activePower,mutation:false,awakened:false,skills:kit.ranks.slice(),evolution:0,form:1,stars:1,affixes:[],treasure:null,resist:0,precision:0,power:0,kit}};
+      return clone(p.pending);}
+    function cupSettle(p,token,won){
+      const c=p.cup,o=c?.open?.token===token?c.open:null;let delta=0;
+      if(o){if(o.round){if(won){const g=c.games.find(g=>g.token===token);if(g)g.won=1;}}else{delta=won?o.win:o.loss;if(won){c.points+=o.win-o.loss;c.wins++;c.adjust[o.opp]=(c.adjust[o.opp]||0)-(o.win-o.loss);}}
+        c.recent.unshift({won,name:o.name,hero:o.hero,delta,round:o.round,at:current});c.recent=c.recent.slice(0,10);c.open=null;}
+      note(p,`${CUP.name} (bản thử): ${won?'thắng':'thua'} bản sao ${o?.name||'AI'}`);
+      return {cup:{won,delta,points:c?.points??CUP.start,round:o?.round||0,opponent:o?{name:o.name,hero:o.hero}:null}};}
     function note(p,message){p.log.unshift({at:now(),message});p.log=p.log.slice(0,60);}
     function id(){return `${now().toString(36)}-${load().revision.toString(36)}-${(++sequence).toString(36)}-${Math.floor(random()*1e12).toString(36)}`;}
     function addHero(p,key){if(p.heroes[key])p.heroes[key].copies++;else p.heroes[key]=heroSave();}
@@ -3323,14 +3446,14 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         p.summon.last=results;note(p,'Triệu hồi '+count+' lần');return results;
       }),
       begin:(mode,index,opts={})=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');const wornTitle=p.title?titleList(p).find(t=>t.id===p.title&&t.unlocked):null,title=wornTitle?{name:wornTitle.name,tier:wornTitle.tier}:null;
-        if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
+        if(mode==='cup')return cupBegin(p,opts.hero,title);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
         if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
         if(won&&b.mode==='campaign')p.campaign.stars[b.index]=Math.max(p.campaign.stars[b.index]||0,stageStars(b,won,performance));
         if(won&&b.mode==='campaign'&&b.tier==='elite'&&stageStars(b,true,performance)===3){const counter=counterProgress(p,b.chapter),local=(b.index-1)%50+1;if(counter&&!counter.claimed.includes(local)){p.campaign.artifacts[counter.theme]={claimed:[...counter.claimed,local]};counterReward={...counterProgress(p,b.chapter),earned:3};}}
         let hiroFragments=0,trial=null,gemDrop=null;
-        if(b.mode==='spar'){note(p,`${b.name}: ${won?'thắng':'thua'} bản sao ${b.opponent.name}`);return {spar:{won,opponent:b.opponent}};}
+        if(b.mode==='cup')return cupSettle(p,token,won);if(b.mode==='spar'){note(p,`${b.name}: ${won?'thắng':'thua'} bản sao ${b.opponent.name}`);return {spar:{won,opponent:b.opponent}};}
         if(b.mode==='trial'){const dmg=Math.floor(damage),t=trialReward(p,b,dmg);p.daily.trialRuns=(p.daily.trialRuns||0)+1;treasurePoint(p,'trial','w'+week(current),dmg>=3*b.enemyHp);p.trial??={best:{}};p.trial.best[b.index]=Math.max(p.trial.best[b.index]||0,dmg);reward=t.reward;trial={damage:dmg,bar:b.enemyHp,tier:t.tier,rewarded:t.rewarded,best:p.trial.best[b.index]};if(t.rewarded&&t.tier>=4){const type=Object.keys(GEMS)[Math.floor(random()*5)],k=gemKey(type,1);p.gems??={};p.gems[k]=(p.gems[k]||0)+1;gemDrop=k;}}
         if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){if(b.index>p.boss.best&&b.index%HIRO_FRAGMENTS.endlessEvery===0){hiroFragments=HIRO_FRAGMENTS.endless;p.fragments.novice=(p.fragments.novice||0)+hiroFragments;}p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.weekly.progress.boss++;treasurePoint(p,'boss','w'+week(current),p.weekly.progress.boss>=8);p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;
           if(b.index>=20&&p.daily.bossWins<=12){const r=random(),level=b.index>=80&&r<.05?2:r<(b.index>=80?.2:.15)?1:0;if(level){const type=Object.keys(GEMS)[Math.floor(random()*5)],k=gemKey(type,level);p.gems??={};p.gems[k]=(p.gems[k]||0)+1;gemDrop=k;}}}}
@@ -3382,6 +3505,9 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       treasureBorrow:(itemId,source)=>tx(p=>{const it=p.treasure?.items.find(t=>t.id===itemId);check(it&&it.family==='borrow','Chỉ báu vật Mượn Hồn chọn được nguồn.');check(p.heroes[source],'Chưa sở hữu tướng nguồn.');it.borrow=source;return {...it};}),
       trialMode:on=>{check(storage,'Không có bộ nhớ.');const KEY_T='gemwoven.treasure.v1';if(on){const main=read();const copy=clone(main);copy.trialMode=true;copy.pending=null;copy.treasure??={points:0,shards:0,items:[],slots:{},claims:{}};
         storage.setItem(KEY_T,JSON.stringify(copy));try{storage.setItem('gemwoven.trialActive','1');}catch{}}else{try{storage.removeItem('gemwoven.trialActive');}catch{}}return {on:!!on};},
+      // Cúp Đấu Trường (local prototype): the month's view, and a sync that rolls the month and the daily matches.
+      cup:()=>{const p=read();return cupView(p,current);},
+      cupSync:()=>tx(p=>{cupRefresh(p);return cupView(p,current);}),
       titles:()=>titleList(read()),
       wearTitle:id=>tx(p=>{if(id==null||id===''){delete p.title;return {title:null};}const t=titleList(p).find(x=>x.id===id);check(t,'Danh hiệu không tồn tại.');check(t.unlocked,'Chưa đạt danh hiệu này.');p.title=id;note(p,'Đeo danh hiệu '+t.name);return {title:id};}),
       lockGear:(gearId,on=true)=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');if(on)g.locked=true;else delete g.locked;return {locked:!!g.locked};}),
@@ -3441,7 +3567,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });
 
 const ART_BLOBS=[];
@@ -9049,8 +9175,11 @@ function progressionBossPick(skills){
 }
 // A friendly fight from the plaza (spar) plays like the local duel (both sides normalized heroes), but the
 // other side is an AI copy of the other player's hero.
-function progressionIsDuel(){return progressionBattle?.mode==='duel'||progressionBattle?.mode==='spar';}
-function progressionIsSpar(){return progressionBattle?.mode==='spar';}
+// The monthly cup (Cúp Đấu Trường, local prototype) plays the same way against an AI copy from its table.
+function progressionIsDuel(){return ['duel','spar','cup'].includes(progressionBattle?.mode);}
+function progressionIsSpar(){return progressionBattle?.mode==='spar'||progressionBattle?.mode==='cup';}
+function progressionIsCup(){return progressionBattle?.mode==='cup';}
+const progressionHome=()=>progressionIsCup()?'arena':progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home';
 function progressionDuelKey(side){return progressionIsSpar()?(side==='hero'?state.key:progressionBattle.opponent.hero):'novice';}
 function progressionRecordTurn(){
   progressionTransformTurn();
@@ -9281,19 +9410,20 @@ finishBattle=async function(){
     if(progressionReward.counterReward){const c=progressionReward.counterReward;$('resultDesc').textContent+=` · +3 mảnh ${c.name} (${c.shards}/12) · Khắc chế bậc ${c.rank}.`;}
     $('resultStage').textContent=String(progressionBattle.index);$('nextBtn').textContent=state.hp>0?'Trận kế tiếp':'Thử lại';
     if(progressionBattle.mode==='campaign'&&state.hp>0&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES)$('nextBtn').textContent='Về bản đồ';
-    if(progressionIsSpar()){$('resultEyebrow').textContent='GIAO HỮU';$('resultTitle').textContent=state.hp>0?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=`${progressionBattle.name} · Đối thủ: bản sao ${progressionBattle.opponent.name}. Kết quả không được công bố.`;$('nextBtn').textContent='Về Quảng Trường';}
+    if(progressionIsCup()){const c=progressionReward?.cup,won=state.hp>0;$('resultEyebrow').textContent='CÚP ĐẤU TRƯỜNG · BẢN THỬ';$('resultTitle').textContent=won?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=(c?.round?`Vòng loại trực tiếp · ván ${won?'thắng':'thua'}`:`${c?.delta>0?'+':''}${c?.delta??0} điểm · ${c?.points??''} điểm`)+` · Đối thủ: bản sao ${progressionBattle.opponent.name} (AI). Bản thử cục bộ · kết quả không lên bảng toàn cầu.`;$('nextBtn').textContent='Về Đấu Trường';}
+    else if(progressionIsSpar()){$('resultEyebrow').textContent='GIAO HỮU';$('resultTitle').textContent=state.hp>0?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=`${progressionBattle.name} · Đối thủ: bản sao ${progressionBattle.opponent.name}. Kết quả không được công bố.`;$('nextBtn').textContent='Về Quảng Trường';}
     else if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
-    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent=progressionIsSpar()?'Về Quảng Trường':'Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
+    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+progressionHome();a.textContent=progressionIsCup()?'Về Đấu Trường':progressionIsSpar()?'Về Quảng Trường':'Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
   }return result;
 };
 $('nextBtn').addEventListener('click',event=>{
   if(!progressionBattle)return;event.stopImmediatePropagation();
-  if(progressionIsSpar()){location.href='Gemwoven.html#chat';return;}
+  if(progressionIsSpar()){location.href='Gemwoven.html#'+progressionHome();return;}
   const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:mode==='trial'?progressionBattle.index:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
   if(mode==='campaign'&&won&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES){location.href='Gemwoven.html#campaign';return;}
   try{const next=progressionStore.begin(mode,index);location.href='Game.html?encounter='+encodeURIComponent(next.token);}catch(error){message(error.message);}
 },true);
-const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
+const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+progressionHome();progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
 if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Trận không hợp lệ · Về thị trấn';document.body.append(progressionBack);}
 
 if(['campaign','boss','trial'].includes(progressionBattle?.mode)){

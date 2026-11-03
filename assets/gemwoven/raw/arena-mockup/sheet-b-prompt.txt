@@ -1,0 +1,33 @@
+Create a production popup UI cutout sheet, 1536x1024 pixels.
+Use Reference Image 1 (mockup-1.png) for the same polished hand-painted
+fantasy materials, warm palette, carved wood and restrained gold edging.
+These are quiet reusable content frames inside an existing ornate dialog,
+so use thinner borders and less decoration than the main tournament sign.
+Front-facing, crisp silhouettes, soft daylight.
+
+Use exactly THREE separate assets in this custom layout:
+
+TOP CELL, x=0–1536, y=0–320:
+One centered 1408x192 leaderboard row backing.
+Pale parchment interior, slim wooden rim, modest gold corner fittings.
+Broad uninterrupted writing area; no fixed columns, portraits or icons.
+Left and right ends must remain distinct for later nine-slice resizing.
+
+LOWER LEFT CELL, x=0–1024, y=320–1024:
+One centered 896x320 match card.
+Warm wood and gold rim, pale parchment interior, two stacked blank
+participant rows separated by one subtle horizontal rule.
+Leave room at the left for HTML portrait overlays and at the right
+for HTML scores. Do not draw portrait circles, names, scores or connectors.
+
+LOWER RIGHT CELL, x=1024–1536, y=320–1024:
+One centered 320x320 reward slot.
+Pale parchment center, softly beveled wooden rim with restrained gold.
+Empty center for a separate reward icon; no item, chest or badge.
+
+Background: perfectly flat opaque #FF00FF.
+All three pieces must be separate, fully contained, with at least
+48 pixels of clean magenta padding. No overlapping ornaments.
+No gradients on the background, magenta spill, external cast shadows,
+grid lines, cell labels or extra objects.
+Absolutely no text, letters, numerals, pseudo-writing, logos or watermarks.

@@ -19490,5 +19490,104 @@
     "textless": true,
     "source": "assets/gemwoven/raw/skill-tree/",
     "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "arena-cup-sign": {
+    "file": "assets/gemwoven/arena/cup-sign.webp",
+    "width": 827,
+    "height": 355,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-frame-bronze": {
+    "file": "assets/gemwoven/arena/frame-bronze.webp",
+    "width": 333,
+    "height": 327,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-frame-gold": {
+    "file": "assets/gemwoven/arena/frame-gold.webp",
+    "width": 337,
+    "height": 335,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-frame-silver": {
+    "file": "assets/gemwoven/arena/frame-silver.webp",
+    "width": 332,
+    "height": 330,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-match": {
+    "file": "assets/gemwoven/arena/match.webp",
+    "width": 900,
+    "height": 344,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-mode-rack": {
+    "file": "assets/gemwoven/arena/mode-rack.webp",
+    "width": 1184,
+    "height": 313,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-ribbon": {
+    "file": "assets/gemwoven/arena/ribbon.webp",
+    "width": 455,
+    "height": 103,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-row": {
+    "file": "assets/gemwoven/arena/row.webp",
+    "width": 1400,
+    "height": 245,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
+  },
+  "arena-slot": {
+    "file": "assets/gemwoven/arena/slot.webp",
+    "width": 320,
+    "height": 309,
+    "textless": true,
+    "source": "assets/gemwoven/raw/arena-mockup/",
+    "promptFiles": [
+      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
+    ],
+    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
   }
 }

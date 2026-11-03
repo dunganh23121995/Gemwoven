@@ -366,6 +366,38 @@ Quảng Trường mùa sau.
   chung cho máy chủ, web và Godot.
 - Chống bot/thông đồng: giới hạn tốc độ thao tác, phát hiện cặp đấu lặp, đánh dấu tài khoản thắng-thua đổi điểm.
 
+### 12.5 Cúp Đấu Trường (tháng) [Bản thử cục bộ · máy chủ Sắp ra mắt]
+Chủ dự án (04/11): "chưa có chỗ tổ chức thi đấu mỗi tháng xem ai mạnh nhất để nhận thưởng xịn." Claude và Codex thống nhất
+(vòng Đấu Trường 1–2, `assets/gemwoven/raw/arena-mockup/`). Luật và bản thử: `progression.js` (`CUP`, `cupView`,
+`begin('cup')`); thưởng: `liveops.js` `CUP_PRIZES`, `CUP_SCHEDULE`.
+- **Lịch:** tháng dương lịch, UTC+7. Tháng D ngày: **đua điểm** ngày 1 → hết D−3; **tứ kết** D−2, **bán kết** D−1, **chung kết** D
+  (BO3, 20:00, có xem lại). Độc lập với mùa Đấu Hạng 28 ngày và Thư Hùng (quý).
+- **Công bằng:** luật Chuẩn Hóa. **Mượn mọi tướng đã phát hành** (không cần sở hữu, không thêm vào bộ sưu tập), hình thái gốc, kỹ
+  năng cấp 1; không trang bị, báu vật, ngọc, VIP, Biến Thân. Không xoay nhóm tướng; danh sách và bản cân bằng khóa đầu tháng.
+- **Điều kiện:** miễn phí, qua ải 30, tài khoản xác thực (bản thử bỏ cổng ải để thử ngay).
+- **Lượt:** 5 trận tính điểm/ngày, lượt chưa dùng dồn tối đa 10; không bán lượt, không lượt VIP. Người vào giữa tháng bắt đầu như mọi người.
+- **Điểm:** Elo đối xứng từ 1.000, `K = 40`, chênh lệch kẹp ±240: `E = 1/(1+10^(gap/400))`, `Δ = round(40·(S−E))` (ngang sức ±20,
+  khoảng 8–32); hai bên nhận biến động đối nhau; không ai xuống dưới 0. Thoát sau khi trận bắt đầu tính thua.
+- **Bảng:** xếp hạng từ **10 trận**; Top 8 cần **30 trận, 5 trận trong 7 ngày cuối** vòng đua. Phá hòa: điểm → điểm trung bình đối
+  thủ → số thắng. Nhánh **1–8, 4–5, 2–7, 3–6**; không đến = thua.
+- **Thưởng (không Đá Ngọc, không điểm báu vật, không ngọc khảm, không tài nguyên theo hạng):** Vô địch — danh hiệu bậc 5 **Quán Quân
+  Tháng** (ghi tháng/năm), khung chân dung động, cúp lưu niệm, chân dung vinh danh ở Quảng Trường tháng sau; Á quân — **Á Quân Tháng**
+  (bậc 4) + khung vàng; hạng 3–4 — **Tứ Kiệt Tháng** (bậc 4) + khung bạc; hạng 5–8 — **Bát Hùng Tháng** (bậc 3) + khung đồng; top 10% —
+  huy chương tháng; **đủ 10 trận — dấu tham dự + 20.000 vàng, 20 sách kinh nghiệm, 5 tinh hoa** (như nhau cho mọi người). Mỗi người
+  nhận gói cao nhất + gói 10 trận, qua Hòm Thư 48 giờ sau chung kết. "Thưởng xịn" là thứ nhìn thấy được, không phải sức mạnh.
+- **Máy chủ (Sắp ra mắt):** ghép người thật ±100 điểm, 30 giây mở ±200, 60 giây ±300, 90 giây cho hủy không mất lượt; không gặp
+  cùng người quá 2 trận/ngày; Top 16 dự bị, xác nhận trước 12:00 ngày tứ kết; cần ≥ 32 người đủ điều kiện mới trao ngôi; 30 lượt/người,
+  hết lượt so tỷ lệ HP (bằng nhau = hòa, 0,5); lượt 20 giây, 3 lần hết giờ thua, 60 giây kết nối lại; lỗi máy chủ hủy trận, hoàn lượt
+  một lần; theo dõi nhường điểm, bỏ trận bất thường, cụm tài khoản.
+- **Bản thử cục bộ** (ghi "Bản thử cục bộ · kết quả không lên bảng toàn cầu" ở màn, popup và kết quả trận): 31 bản sao AI (tên, tướng,
+  sức mạnh ẩn sinh theo mã tháng, giống nhau trên mọi máy) tự đấu với nhau theo seed bằng cùng công thức (mỗi AI ≤ 5 trận/ngày); bạn
+  đấu bản sao gần điểm nhất (cửa sổ ±100/200/300, tối đa 2 lần/ngày cùng một AI) trong trận thật (AI điều khiển); chung kết BO3 với AI,
+  cặp AI phân định lúc 20:00 theo seed. **Không trao gì** (kể cả vàng); lịch sử 12 tháng lưu trên máy này (Vinh Danh).
+- **Màn Đấu Trường** (Codex 6/10 → mockup 8,5 → bản dựng 8/10): bảng Cúp treo trong cổng (tháng, giai đoạn, đếm ngược tới hết giai
+  đoạn) → bục 2–1–3 chân dung người dẫn đầu (nhãn AI) → dải "Bạn · Hạng n · điểm" (chưa đủ 10 trận: "Chưa xếp hạng · n/10") → chọn
+  tướng + nút "Đấu thử · n lượt" + rương "Xem thưởng" → giá ba cờ: 1v1 Cùng máy (vào trận ngay), Đấu Hạng (khóa, Sắp ra mắt), Trùm Vô
+  Tận. Popup: Đua Điểm · Top 8 · Thưởng · Vinh Danh, hàng của bạn ghim ở đáy, ⓘ luật.
+
 ---
 
 ## 13. Boss Vô Hạn và Sân Thử Luyện
@@ -728,3 +760,14 @@ nhiều ải cùng xác nhận; boss chương 1 giữ (ngoại lệ nhập môn)
   23,5→25,4), không có bước nhảy. Chương 4 là hệ **Lôi**, và Lôi khắc Hỏa (`BEATS.lightning='fire'`) → quái gây ×1,5 lên Mika; Hiro
   không hệ nên không bị (93%). Đúng thiết kế khắc hệ: người chơi đổi tướng (Nori hệ Mộc khắc Lôi). **Không chỉnh số.** Gợi ý cho
   giao diện: thẻ ải nên báo "Bất lợi hệ" khi tướng đang chọn bị khắc.
+
+### Vòng Đấu Trường 1–2 (04/11, Cúp Đấu Trường) — đã thống nhất
+- **Tên:** Codex chọn "Cúp Đấu Trường" (dễ nhận bằng chiếc cúp, khác hẳn tên trang trọng của giải quý). Đồng ý.
+- **Điểm:** Claude đề xuất thắng +20 / thua −10 → Codex phản biện: một thắng một thua trước đối thủ ngang sức vẫn +10, thưởng đánh nhiều.
+  Chốt **Elo đối xứng K 40**. Đồng ý.
+- **Xoay 4 tướng/tháng:** Codex bỏ (mới có 2 tướng; mượn mọi tướng đã phát hành). Đồng ý.
+- **Thưởng:** Claude đề xuất 400 điểm báu vật, 2 ngọc cấp 3, vàng/tinh hoa theo hạng → Codex: tạo vòng thắng-rồi-mạnh-hơn, trái §20 vòng 1
+  ("thưởng top là trang trí"). Chốt: hạng chỉ trang trí (danh hiệu, khung, cúp, vinh danh), gói 10 trận như nhau. Đồng ý.
+- **Top 8:** thêm điều kiện 30 trận, 5 trong 7 ngày cuối (chống ngồi điểm). **Bản thử:** không trao thưởng, kể cả vàng nhỏ (cả hai cùng ý).
+- **Bản thử khác máy chủ:** không cổng ải 30, không áp ≥ 32 người, trận AI–AI phân định lúc 20:00; tỷ số hòa chưa có (trận cục bộ chỉ thắng/thua).
+

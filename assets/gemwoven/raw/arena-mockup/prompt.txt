@@ -1,0 +1,177 @@
+OUTPUT
+
+Create one polished, production-quality UI mockup for Gemwoven, a
+portrait mobile match-3 RPG. Deliver one opaque portrait image with a
+2:3 aspect ratio, ideally 1200 × 1800.
+
+The actual game screen is a precisely centered 941 × 1672 rectangle,
+with its top-left corner at approximately (130, 64) on the output.
+All coordinates below are LOCAL to this inner game screen.
+Fill the outer margins only with a subdued extension of the arena
+background. No extra interface, device bezel, captions, or presentation
+labels outside the game screen. Do not stretch the game layout.
+
+This is a visual approval mockup. Render the specified Vietnamese text
+in this mockup. In production, all text and numbers will be separate
+HTML layers over text-free painted assets.
+
+REFERENCES
+
+Image 1, arena-calm:
+PRIMARY LOCATION REFERENCE. Preserve the recognizable sunlit stone
+archway, curved castle walls, red and blue banners, twin braziers,
+circular arena platform, stairs, foliage, and blue sky.
+
+Image 2, current arena phone screenshot:
+CURRENT ARENA REFERENCE. Reuse the established HUD and bottom navigation
+language and the silver/gold/bronze rank pedestals, but replace the
+current content arrangement.
+
+Images 3–5, approved Hero Hall, Forge and Shop screens:
+PRIMARY ART AND UI REFERENCES. Match their painted wood, warm metal,
+parchment, fabric, foliage accents, illustration detail, and established
+Gemwoven proportions. Use only the game viewport within these images
+as a reference; exclude the surrounding desktop Studio interface.
+
+ART DIRECTION
+
+A shippable, readable illustrated fantasy game interface, not a loose
+concept painting. Cheerful daylight, warm stone, rich blue and red
+fabric, restrained gold highlights. Tangible painted frames and signs
+with believable thickness, mounting, contact shadows, and perspective.
+
+The monthly tournament is the visual focus. The stone arena remains
+clearly visible between interface groups. Use ornament to establish
+hierarchy, with quieter materials behind text.
+
+SCREEN STATE
+
+This is an explicitly labeled, playable LOCAL TOURNAMENT DEMO.
+The real server tournament is not released.
+
+Use a staged demo date of 4 November 2026, noon, UTC+7.
+Tournament name: "Cúp Đấu Trường".
+Month and phase: "Tháng 11 · Vòng Đua Điểm".
+Countdown: "Còn 23 ngày".
+Server status: "Máy chủ · Sắp ra mắt".
+
+The account owns ONLY Hiro. Show Hiro's canonical portrait in the HUD
+and in the player's tournament strip.
+Account level: "1".
+Gold: "1.200".
+Premium currency: "0".
+Do not copy the 120,000 premium-currency balance from the old screenshots.
+
+The player's staged LOCAL demo standing is:
+"Bạn · Hạng 14 · 1.000 điểm".
+There are five available demo attempts.
+
+The three leading contestants are explicitly AI copies.
+Use canonical Hiro portraits for these three demo contestants.
+Each portrait must have a clearly readable "AI" tag.
+These are leaderboard portrait medallions, not three full-body Hiro
+characters. Do not invent unreleased heroes or reinterpret the shop NPC
+as a playable hero.
+
+VISUAL HIERARCHY — LOCAL 941 × 1672 COORDINATES
+
+1. SHARED HUD: x0–941, y0–150.
+Preserve the approved avatar, resource bars, and envelope arrangement.
+Render the account values specified above.
+
+2. COMPACT SCREEN TITLE: x270, y160, width401, height96.
+A small painted hanging sign reading "Đấu Trường".
+A modest crossed-swords emblem may accompany it.
+The screen title must remain subordinate to the tournament.
+
+3. TOURNAMENT SIGN: x125, y270, width691, height238.
+A painted wooden tournament sign suspended naturally inside the arch.
+Include a distinctive gold cup with restrained red and blue fabric.
+Arrange these exact lines with comfortable spacing:
+"Cúp Đấu Trường"
+"Tháng 11 · Vòng Đua Điểm"
+"Còn 23 ngày"
+Use a small, readable secondary ribbon:
+"Máy chủ · Sắp ra mắt"
+
+4. TOP THREE: x164, y535, width613, height310.
+A balanced 2–1–3 podium composition.
+Reuse the existing silver, gold, and bronze rank-pedestal vocabulary.
+Place a large portrait medallion ABOVE each pedestal.
+The gold first-place portrait is highest and slightly larger.
+Show the rank numerals "2", "1", "3" and an "AI" tag for every contestant.
+No empty thrones, no full-body duel scene, no central VS lettering.
+
+5. PLAYER STRIP: x95, y860, width751, height74.
+A quiet painted wood strip with Hiro's portrait and the exact text:
+"Bạn · Hạng 14 · 1.000 điểm"
+
+6. TOURNAMENT ACTION: x265, y950, width411, height104.
+One prominent painted gold button:
+"Đấu thử · 5 lượt"
+
+7. REWARD CHEST: x720, y939, width130, height132.
+Reuse the established purple-and-gold chest with a small painted label:
+"Thưởng"
+It clearly belongs to the monthly tournament.
+No reward-available notification dot.
+
+8. DEMO DISCLOSURE: x70, y1072, width801, height80.
+Two readable lines on a subtle painted backing:
+"Bản thử cục bộ · Không thưởng"
+"Kết quả không lên bảng toàn cầu"
+Keep this disclosure visible and legible.
+
+9. OTHER MODES: x39, y1176, total width863, height304.
+Three equally sized illustrated hanging plaques, each width277,
+with 16-pixel gaps. Each plaque is its own direct action.
+
+LEFT: blue cloth, crossed swords, exact two-line label:
+"1v1"
+"Cùng máy"
+
+CENTER: subdued tournament crest and an explicit lock,
+exact two-line label:
+"Đấu Hạng"
+"Sắp ra mắt"
+
+RIGHT: red cloth, crown, exact two-line label:
+"Trùm"
+"Vô Tận"
+
+Integrate the three plaques into one believable painted wooden support.
+No selected-mode checkmark and no separate shared battle button.
+
+10. BOTTOM NAVIGATION: x0–941, y1510–1672.
+Match the approved illustrated navigation bar.
+Exact labels:
+"Trang Chủ", "Tướng", "Túi Đồ", "Kỹ Năng",
+"Triệu Hồi", "Đấu Trường", "Thêm".
+Show "Đấu Trường" as the active destination.
+
+TYPOGRAPHY
+
+Render Vietnamese accents accurately and use the exact quoted strings.
+Use the established warm fantasy serif style with clear letterforms.
+Main headings: approximately 44–48 local pixels.
+Action labels: approximately 40 local pixels.
+Main information: approximately 36 local pixels.
+Secondary labels: approximately 32 local pixels.
+Keep established bottom-navigation typography consistent with references.
+
+Use dark brown text on light signs and warm ivory on dark wood.
+Reserve luminous gold primarily for the main action and cup.
+Allow generous vertical clearance for Vietnamese diacritics.
+Preserve readability when the inner screen is reduced to 390 pixels wide.
+
+AVOID
+
+Flat CSS-style cream cards, generic dashboard panels, tiny paragraphs,
+accordion lists, excessive gold ornament, oversized crossed swords,
+two large identical Hiro fighters, a detached universal battle button,
+an unrelated Boss Rewards card, unlabeled AI contestants, fake human
+leaderboard claims, premium-currency rewards, unreleased playable heroes,
+stat bonuses on titles, random notification dots, watermarks, desktop
+Studio chrome, device mockups, extra copy, or an open popup.
+
+Keep all information within the specified game-screen bounds.

@@ -68,8 +68,11 @@ function progressionBossPick(skills){
 }
 // A friendly fight from the plaza (spar) plays like the local duel (both sides normalized heroes), but the
 // other side is an AI copy of the other player's hero.
-function progressionIsDuel(){return progressionBattle?.mode==='duel'||progressionBattle?.mode==='spar';}
-function progressionIsSpar(){return progressionBattle?.mode==='spar';}
+// The monthly cup (Cúp Đấu Trường, local prototype) plays the same way against an AI copy from its table.
+function progressionIsDuel(){return ['duel','spar','cup'].includes(progressionBattle?.mode);}
+function progressionIsSpar(){return progressionBattle?.mode==='spar'||progressionBattle?.mode==='cup';}
+function progressionIsCup(){return progressionBattle?.mode==='cup';}
+const progressionHome=()=>progressionIsCup()?'arena':progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home';
 function progressionDuelKey(side){return progressionIsSpar()?(side==='hero'?state.key:progressionBattle.opponent.hero):'novice';}
 function progressionRecordTurn(){
   progressionTransformTurn();
@@ -300,19 +303,20 @@ finishBattle=async function(){
     if(progressionReward.counterReward){const c=progressionReward.counterReward;$('resultDesc').textContent+=` · +3 mảnh ${c.name} (${c.shards}/12) · Khắc chế bậc ${c.rank}.`;}
     $('resultStage').textContent=String(progressionBattle.index);$('nextBtn').textContent=state.hp>0?'Trận kế tiếp':'Thử lại';
     if(progressionBattle.mode==='campaign'&&state.hp>0&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES)$('nextBtn').textContent='Về bản đồ';
-    if(progressionIsSpar()){$('resultEyebrow').textContent='GIAO HỮU';$('resultTitle').textContent=state.hp>0?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=`${progressionBattle.name} · Đối thủ: bản sao ${progressionBattle.opponent.name}. Kết quả không được công bố.`;$('nextBtn').textContent='Về Quảng Trường';}
+    if(progressionIsCup()){const c=progressionReward?.cup,won=state.hp>0;$('resultEyebrow').textContent='CÚP ĐẤU TRƯỜNG · BẢN THỬ';$('resultTitle').textContent=won?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=(c?.round?`Vòng loại trực tiếp · ván ${won?'thắng':'thua'}`:`${c?.delta>0?'+':''}${c?.delta??0} điểm · ${c?.points??''} điểm`)+` · Đối thủ: bản sao ${progressionBattle.opponent.name} (AI). Bản thử cục bộ · kết quả không lên bảng toàn cầu.`;$('nextBtn').textContent='Về Đấu Trường';}
+    else if(progressionIsSpar()){$('resultEyebrow').textContent='GIAO HỮU';$('resultTitle').textContent=state.hp>0?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=`${progressionBattle.name} · Đối thủ: bản sao ${progressionBattle.opponent.name}. Kết quả không được công bố.`;$('nextBtn').textContent='Về Quảng Trường';}
     else if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
-    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent=progressionIsSpar()?'Về Quảng Trường':'Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
+    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+progressionHome();a.textContent=progressionIsCup()?'Về Đấu Trường':progressionIsSpar()?'Về Quảng Trường':'Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
   }return result;
 };
 $('nextBtn').addEventListener('click',event=>{
   if(!progressionBattle)return;event.stopImmediatePropagation();
-  if(progressionIsSpar()){location.href='Gemwoven.html#chat';return;}
+  if(progressionIsSpar()){location.href='Gemwoven.html#'+progressionHome();return;}
   const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:mode==='trial'?progressionBattle.index:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
   if(mode==='campaign'&&won&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES){location.href='Gemwoven.html#campaign';return;}
   try{const next=progressionStore.begin(mode,index);location.href='Game.html?encounter='+encodeURIComponent(next.token);}catch(error){message(error.message);}
 },true);
-const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
+const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+progressionHome();progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
 if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Trận không hợp lệ · Về thị trấn';document.body.append(progressionBack);}
 
 if(['campaign','boss','trial'].includes(progressionBattle?.mode)){

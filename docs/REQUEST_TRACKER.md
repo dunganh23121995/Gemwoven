@@ -61,6 +61,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | E1 | Cơ chế đấu trường, máy chủ tự quyết | Hai hàng Tự Do và Chuẩn Hóa; máy chủ giữ bàn ngọc, RNG, kết quả, kể cả PvE. | 📐 máy chủ trận · ✅ trang giới thiệu (Đấu Trường → bục Đấu Hạng) | §12 |
 | E2 | Thưởng hạng tuần, tháng | Bậc Đồng → Thách Đấu, thưởng tuần (không Ngọc), mùa 28 ngày đồ trang trí. | 📐 · ✅ bảng bậc và thưởng tuần | §12.2 |
 | E3 | Trận Thư Hùng | Thư Hùng Đại Hội theo quý: vòng loại, 64 người, chung kết phát trực tiếp. | 📐 · ✅ thể thức trong trang Đấu Hạng | §12.3 |
+| E4 | Màn Đấu Trường sắp xếp chưa hợp lý; chưa có chỗ thi đấu mỗi tháng xem ai mạnh nhất để nhận thưởng xịn (chủ dự án 04/11) | Màn sắp lại theo thứ bậc (Codex 6/10 → mockup 8,5 → bản dựng **8/10 Đạt** cả điện thoại và Studio): bảng **Cúp Đấu Trường** treo trong cổng → bục 2–1–3 chân dung người dẫn đầu → hàng của bạn → nút Đấu thử → giá ba cờ (1v1 Cùng máy · Đấu Hạng Sắp ra mắt · Trùm Vô Tận). Giải tháng: đua điểm Elo Chuẩn Hóa (mượn mọi tướng đã phát hành) ngày 1 → D−3, Top 8 loại trực tiếp BO3 3 ngày cuối; thưởng xịn là danh hiệu Quán Quân/Á Quân/Tứ Kiệt/Bát Hùng Tháng, khung động, vinh danh ở Quảng Trường; không Đá Ngọc. Bản thử cục bộ đấu 31 bản sao AI, không thưởng, không lên bảng toàn cầu. | ✅ bản thử · 📐 máy chủ (Sắp ra mắt) | Đấu Trường → bảng Cúp; §12.5 |
 
 ## F. Xã hội
 
