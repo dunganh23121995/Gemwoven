@@ -169,7 +169,7 @@
 .trial-week{grid-template-columns:repeat(4,1fr)}.trial-week li{align-items:center;position:relative;padding:8px 4px}.trial-week .trial-boss{width:84px;height:84px;object-fit:contain}.trial-week li.done{background:#e6f2d8}.trial-week li i{position:absolute;right:6px;top:4px;font-style:normal;color:#2f8a3a;font-size:28px}
 /* Báu vật trial (treasure-ui.js) */
 .trial-tag{font-style:normal;font-size:.62em;background:#7a3fb0;color:#fff;border-radius:10px;padding:2px 8px;vertical-align:middle}
-.trial-banner{position:fixed;left:50%;top:4px;transform:translateX(-50%);z-index:9999;background:#7a3fb0;color:#fff;font:800 12px/1.3 sans-serif;padding:3px 12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.4);pointer-events:none;white-space:nowrap}
+.trial-banner{position:fixed;left:50%;top:4px;transform:translateX(-50%);z-index:9999;background:#7a3fb0;color:#fff;font:800 14px/1.3 sans-serif;padding:3px 12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.4);pointer-events:none;white-space:nowrap}
 .treasure-row,.treasure-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 12px}
 .treasure-teaser{width:100%;max-width:150px;justify-self:center;filter:drop-shadow(0 4px 6px rgba(0,0,0,.3))}
 .treasure-cell{position:relative;border:3px solid var(--q,#c9a46a);border-radius:18px;background:#fff7e4;padding:8px;min-height:150px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
@@ -181,3 +181,15 @@
 .treasure-dialog .treasure-borrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.treasure-borrow button{width:64px;height:64px;border-radius:50%;border:3px solid #d9b46e;padding:2px;background:#fff7e4;cursor:pointer}.treasure-borrow button.on{border-color:#7a3fb0;box-shadow:0 0 0 3px #c79bff}.treasure-borrow img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top}
 .live-panel.treasure-slots-host{padding:0;background:none;overflow:visible}
 .treasure-slots{display:flex;flex-direction:column;gap:14px;align-items:center}.treasure-slot{width:100px;height:100px;border-radius:22px;border:4px solid var(--q,#b48a4a);background:radial-gradient(#3a2a1c,#1e150d);color:#c9a46a;font-size:44px;display:flex;align-items:center;justify-content:center;padding:6px;cursor:pointer}.treasure-slot img{width:100%;height:100%;object-fit:contain}.treasure-slot:disabled{opacity:.6}
+
+/* Codex review 14 */
+.treasure-cell{min-height:170px}.treasure-cell .q-badge{position:absolute;left:8px;top:8px;font-size:16px;color:#fff;background:var(--q);border-radius:8px;padding:1px 6px}
+.treasure-cell .tick,.treasure-borrow .tick{position:absolute;right:6px;top:4px;font-style:normal;font-size:26px;color:#2f8a3a;font-weight:900}
+.treasure-borrow button{position:relative;width:96px;height:96px}
+.borrow-flow{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0}.borrow-flow .bf-face{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid #7a3fb0;display:flex;align-items:center;justify-content:center;font-size:30px;background:#f3ead6}
+.borrow-flow .bf-pass{font-weight:800;color:#fff;background:#4f7fd0;border-radius:10px;padding:2px 8px;font-size:15px}.borrow-flow i{font-style:normal;font-weight:800;color:#7a3fb0}.borrow-flow .bf-tre{width:64px;height:64px}
+.bf-title{text-align:center;font-weight:800;margin:6px 0 4px;color:#5a3a18}
+.treasure-slots .ts-label{font:800 22px/1 Cambria,serif;color:#fff3c4;text-shadow:0 2px 3px #000;background:rgba(60,30,10,.65);border-radius:10px;padding:4px 10px}
+.treasure-slot{position:relative;width:112px;height:112px}.treasure-slot .ghost{opacity:.28;filter:grayscale(.6)}.treasure-slot.locked .ghost{opacity:.15}.treasure-slot i{position:absolute;font-style:normal;font-size:36px}
+.live-panel.treasure-slots-host{height:auto}
+.borrow-flow i{white-space:nowrap}.borrow-flow .bf-pass{white-space:nowrap}

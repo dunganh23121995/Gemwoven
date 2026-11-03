@@ -17,22 +17,23 @@
   function section(){
     const on=active(),d=G.engine.treasure();
     if(!on)return `<section class="treasure-trial"><h3>Kỳ Báu Vật <em class="trial-tag">Bản thử nghiệm cục bộ</em></h3><div class="treasure-row">${['mountain','borrow','counter'].map(f=>pic({family:f,quality:'red'},'treasure-teaser')).join('')}</div>`+
-      `<button type="button" class="game-btn" data-action="treasure:enter">Vào bản thử</button><details class="hint"><summary>ⓘ Bản thử là gì</summary><p>Chơi trên một bản sao tài khoản: điểm, báu vật và mọi tiến triển trong bản thử không quay về tài khoản thật. Thoát bất cứ lúc nào. Máy chủ sẽ quyết định khi phát hành.</p></details></section>`;
+      `<button type="button" class="game-btn" data-action="treasure:enter">Vào bản thử</button><details class="hint"><summary aria-label="Bản thử là gì">ⓘ</summary><p>Chơi trên một bản sao tài khoản: điểm, báu vật và mọi tiến triển trong bản thử không quay về tài khoản thật. Thoát bất cứ lúc nào. Máy chủ sẽ quyết định khi phát hành.</p></details></section>`;
     return `<section class="treasure-trial is-on"><h3>Kỳ Báu Vật <em class="trial-tag">Bản thử nghiệm cục bộ</em></h3>`+
       `<div class="treasure-points"><b>${fmt(d.points)}</b><small>điểm</small></div>`+
-      (d.items.length?`<div class="treasure-grid">${d.items.map(t=>`<button type="button" data-action="treasure:open" data-id="${t.id}" class="treasure-cell q-${t.quality}" aria-label="${esc(T.families[t.family].name)} ${T.names[qi(t)]}">${pic(t)}<i>${T.names[qi(t)]}</i></button>`).join('')}</div>`
-        :`<p class="growth-lead">Chọn một báu vật Lam tặng để bắt đầu:</p><div class="treasure-grid">${Object.entries(T.families).map(([f,v])=>`<button type="button" data-action="treasure:gift" data-family="${f}" class="treasure-cell q-blue">${pic({family:f,quality:'blue'})}<i>${esc(v.name)}</i></button>`).join('')}</div>`)+
-      `<details class="hint"><summary>ⓘ Cách nhận điểm</summary><p>Mỗi ngày nhận thưởng ít nhất 3 nhiệm vụ ngày: +${T.points.daily}. Mỗi tuần thắng 8 Boss Vô Hạn: +${T.points.boss}. Mỗi tuần có lượt Sân Thử Luyện ≥ 3 thanh: +${T.points.trial}. Khoảng 600 điểm mỗi 14 ngày; Lam → Thần cần 4.800 điểm (≈ 16 tuần).</p></details>`+
+      (d.items.length?`<div class="treasure-grid">${d.items.map(t=>`<button type="button" data-action="treasure:open" data-id="${t.id}" class="treasure-cell q-${t.quality}" aria-label="${esc(T.families[t.family].name)} ${T.names[qi(t)]}">${pic(t)}<i>${esc(T.families[t.family].name)}</i><b class="q-badge">${T.names[qi(t)]}</b></button>`).join('')}</div>`
+        :`<p class="growth-lead">🎁 Chọn quà Lam</p><div class="treasure-grid">${Object.entries(T.families).map(([f,v])=>`<button type="button" data-action="treasure:gift" data-family="${f}" class="treasure-cell q-blue">${pic({family:f,quality:'blue'})}<i>${esc(v.name)}</i></button>`).join('')}</div>`)+
+      `<details class="hint"><summary aria-label="Cách nhận điểm">ⓘ</summary><p>Mỗi ngày nhận thưởng ít nhất 3 nhiệm vụ ngày: +${T.points.daily}. Mỗi tuần thắng 8 Boss Vô Hạn: +${T.points.boss}. Mỗi tuần có lượt Sân Thử Luyện ≥ 3 thanh: +${T.points.trial}. Khoảng 600 điểm mỗi 14 ngày; Lam → Thần cần 4.800 điểm (≈ 16 tuần).</p></details>`+
       `<button type="button" class="game-btn secondary" data-action="treasure:leave">Thoát bản thử</button></section>`;
   }
   function itemDialog(ctx,id){
     const d=G.engine.treasure(),t=d.items.find(x=>x.id===id);if(!t)return;const q=qi(t),fam=T.families[t.family];
     const modal=window.GemwovenUI.makeDialog('treasure-item',`${fam.name} · ${T.names[q]}`,'growth-dialog treasure-dialog');
-    const effect=q<2?'Hiệu ứng mở từ phẩm Cam.':t.family==='mountain'?`Tuyệt kỹ gây thêm ${pct(fam.hp[q])} HP tối đa của mục tiêu (chỉ PvE).`:t.family==='counter'?`Tuyệt kỹ trúng: địch mất ${fam.drain[q]} năng lượng.`:`Mang một nửa phần tăng của Bị Động một tướng khác${t.borrow?` (đang mượn: ${esc(M.HEROES[t.borrow]?.name)})`:''}.`;
+    const effect=q<2?'Hiệu ứng mở từ phẩm Cam.':t.family==='mountain'?`Tuyệt kỹ gây thêm ${pct(fam.hp[q])} HP tối đa của mục tiêu (chỉ PvE).`:t.family==='counter'?`Tuyệt kỹ trúng: địch mất ${fam.drain[q]} năng lượng.`:`Mượn 50% phần tăng Bị Động${t.borrow?` của ${esc(M.HEROES[t.borrow]?.name)}`:''}.`;
     const next=q<4?(T.shards[q+1]?`${T.shards[q+1]} mảnh · ${fmt(T.shards[q+1]*(q+1===3?150:175))} điểm`:`${fmt(T.price[q+1])} điểm`):null;
     modal.body.innerHTML=`<div class="treasure-hero">${pic(t)}</div><p class="stat-chips">${statLine(t.stats)}</p><p class="growth-lead">${effect}</p>`+
       (next?`<div class="treasure-up">${pic(t)}<i>→</i>${pic({...t,quality:T.qualities[q+1]})}<small>${next}</small></div>`:'')+
-      (t.family==='borrow'&&q>=2?`<div class="treasure-borrow">${Object.keys(G.engine.read().heroes).map(k=>`<button type="button" data-borrow="${k}" class="${t.borrow===k?'on':''}" aria-label="Mượn ${esc(M.HEROES[k].name)}"><img src="${window.GEMWOVEN_ASSETS['face-'+k]?.file||''}" alt=""></button>`).join('')}</div>`:'');
+      (t.family==='borrow'?`<div class="borrow-flow">${t.borrow?`<img class="bf-face" src="${window.GEMWOVEN_ASSETS['face-'+t.borrow]?.file||''}" alt="">`:'<span class="bf-face empty">?</span>'}<span class="bf-pass">Bị Động</span><i>→ 50% →</i>${pic(t,'bf-tre')}</div>`+
+        (q>=2?`<p class="bf-title">Chọn nguồn</p><div class="treasure-borrow">${Object.keys(G.engine.read().heroes).map(k=>`<button type="button" data-borrow="${k}" class="${t.borrow===k?'on':''}" aria-label="Mượn ${esc(M.HEROES[k].name)}"><img src="${window.GEMWOVEN_ASSETS['face-'+k]?.file||''}" alt="">${t.borrow===k?'<em class="tick">✓</em>':''}</button>`).join('')}</div>`:''):'');
     modal.body.querySelectorAll('[data-borrow]').forEach(b=>b.onclick=()=>{try{G.engine.treasureBorrow(t.id,b.dataset.borrow);modal.close();ctx.render();itemDialog(ctx,id);}catch(e){fail(ctx,e);}});
     if(next){const up=document.createElement('button');up.type='button';up.className='gw-btn';up.textContent='Nâng phẩm';up.onclick=()=>{try{G.engine.treasureUpgrade(t.id);modal.close();ctx.render();itemDialog(ctx,id);}catch(e){fail(ctx,e);}};modal.actions.append(up);}
     modal.present();
@@ -40,7 +41,7 @@
   function slotDialog(ctx,hero,slot){
     const d=G.engine.treasure(),cur=(d.slots[hero]||[])[slot];
     const modal=window.GemwovenUI.makeDialog('treasure-slot',`${M.HEROES[hero].name} · ô báu vật ${slot+1}`,'growth-dialog treasure-dialog');
-    modal.body.innerHTML=d.items.length?`<div class="treasure-grid">${d.items.map(t=>`<button type="button" data-pick="${t.id}" class="treasure-cell q-${t.quality} ${t.id===cur?'on':''}">${pic(t)}<i>${T.names[qi(t)]}</i></button>`).join('')}</div>`:'<p class="growth-lead">Chưa có báu vật. Nhận ở Sự Kiện → Kỳ Báu Vật.</p>';
+    modal.body.innerHTML=d.items.length?`<div class="treasure-grid">${d.items.map(t=>`<button type="button" data-pick="${t.id}" class="treasure-cell q-${t.quality} ${t.id===cur?'on':''}">${pic(t)}<i>${esc(T.families[t.family].name)}</i><b class="q-badge">${T.names[qi(t)]}</b>${t.id===cur?'<em class="tick">✓</em>':''}</button>`).join('')}</div>`:'<p class="growth-lead">Chưa có báu vật. Nhận ở Sự Kiện → Kỳ Báu Vật.</p>';
     modal.body.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{try{G.engine.treasureEquip(hero,slot,b.dataset.pick);modal.close();ctx.render();}catch(e){fail(ctx,e);}});
     if(cur){const off=document.createElement('button');off.type='button';off.className='gw-btn secondary';off.textContent='Tháo';off.onclick=()=>{try{G.engine.treasureEquip(hero,slot,null);modal.close();ctx.render();}catch(e){fail(ctx,e);}};modal.actions.append(off);}
     modal.present();
@@ -54,8 +55,8 @@
     // Two slots under the hero on the Tướng screen, only in the trial.
     if(active()&&state.screen==='upgrade'&&p.heroes[state.hero]&&!state.outfitSlot){
       const d=G.engine.treasure(),h=p.heroes[state.hero],worn=d.slots[state.hero]||[];
-      screen.nodes.push({id:'upgrade.treasure',kind:'content',rect:[792,560,124,240],className:'exploration-map treasure-slots-host',build:el=>{
-        el.innerHTML=`<div class="treasure-slots">${[0,1].map(i=>{const t=d.items.find(x=>x.id===worn[i]),locked=i===1&&(h.evolution||0)<3;return `<button type="button" data-action="treasure:slot" data-hero="${state.hero}" data-slot="${i}" ${locked?'disabled':''} class="treasure-slot ${t?'q-'+t.quality:''}" aria-label="Ô báu vật ${i+1}${locked?' · mở ở tiến hóa 3':''}">${t?pic(t):locked?'🔒':'+'}</button>`;}).join('')}</div>`;}});
+      screen.nodes.push({id:'upgrade.treasure',kind:'content',rect:[790,530,130,300],className:'exploration-map treasure-slots-host',build:el=>{
+        el.innerHTML=`<div class="treasure-slots"><b class="ts-label">Báu vật</b>${[0,1].map(i=>{const t=d.items.find(x=>x.id===worn[i]),locked=i===1&&(h.evolution||0)<3;return `<button type="button" data-action="${locked?'treasure:locked':'treasure:slot'}" data-hero="${state.hero}" data-slot="${i}" class="treasure-slot ${t?'q-'+t.quality:'empty'} ${locked?'locked':''}" aria-label="Ô báu vật ${i+1}${locked?' · mở ở tiến hóa 3':''}">${t?pic(t):`<img class="ghost" src="assets/gemwoven/treasures/treasure-borrow-blue.webp" alt="">${locked?'<i>🔒</i>':''}`}</button>`;}).join('')}</div>`;}});
     }
     return p;
   };
@@ -66,10 +67,11 @@
       if(action==='treasure:leave'){if(!confirm('Thoát bản thử Báu Vật? Tài khoản thật vẫn như trước khi vào; bản thử được giữ lại.'))return true;G.engine.trialMode(false);location.reload();return true;}
       if(action==='treasure:gift'){G.engine.treasureGift(el.dataset.family);ctx.render();return true;}
       if(action==='treasure:open'){itemDialog(ctx,el.dataset.id);return true;}
+      if(action==='treasure:locked'){ctx.showModal('Ô báu vật 2',[],'Mở khi tướng đạt tiến hóa 3.');return true;}
       if(action==='treasure:slot'){slotDialog(ctx,el.dataset.hero,Number(el.dataset.slot));return true;}
     }catch(e){fail(ctx,e);return true;}
     return handle(action,el,ctx,state);
   };
   // The trial label never leaves the screen while the trial is on.
-  if(active()){const tag=document.createElement('div');tag.className='trial-banner';tag.textContent='BẢN THỬ BÁU VẬT · không lưu vào tài khoản thật';document.addEventListener('DOMContentLoaded',()=>document.body.append(tag));if(document.body)document.body.append(tag);}
+  if(active()){const tag=document.createElement('div');tag.className='trial-banner';tag.textContent='BẢN THỬ · Không lưu tài khoản thật';document.addEventListener('DOMContentLoaded',()=>document.body.append(tag));if(document.body)document.body.append(tag);}
 })();
