@@ -355,7 +355,9 @@ buff=async function(side,kind,value,{alreadyApplied=false,plain=false}={}){
   const gained=alreadyApplied?value:Math.min(value,kind==='heal'?maximum-state[hpKey]:combatArmorCap(side)-state[armorKey]);if(gained<=0)return 0;
   const f=actor(side),transform=f.style.transform,pending=[],key=side==='hero'?state.key:state.enemyKey;
   const color=kind==='heal'?{main:'#79e3a9',light:'#ecffce',deep:'#388e77'}:combatV3Palette[key];
-  const handSeal=isHero&&key==='shadow';
+  // A baked buff rig (rig_idle.py surge) carries its own motion with the feet on the ground: the actor is not lifted.
+  const body=f.querySelector('[data-family]'),baked=!!(body&&typeof spriteDefinition==='function'&&spriteDefinition(body.dataset.family,body.dataset.key,'buff').sheet?.baked);
+  const handSeal=(isHero&&key==='shadow')||baked;
   // A boss skill's own staging already showed the gesture; the plain gain does not replay a pose.
   if(!plain){combatV3Action(side,'buff',1300);combatV3Frame(side,'buff',0);}
   try{
