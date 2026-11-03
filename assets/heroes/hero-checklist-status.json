@@ -124,6 +124,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/novice/references/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/master.png"
      }
     }
    }
@@ -208,6 +216,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/combat-idle/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/combat-idle/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/combat-idle/idle.webp"
      }
     }
    }
@@ -292,6 +308,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/rig/combat/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/rig/combat/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/rig/combat/rig.json"
      }
     }
    }
@@ -376,6 +400,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/rig/buff/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/rig/buff/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/rig/buff/rig.json"
      }
     }
    }
@@ -460,6 +492,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/novice/attack.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/attack.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/attack.webp"
      }
     }
    }
@@ -544,6 +584,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/novice/cast.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/cast.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/cast.webp"
      }
     }
    }
@@ -628,6 +676,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/novice/run.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/run.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/run.webp"
      }
     }
    }
@@ -688,7 +744,16 @@
       "detail": "assets/heroes/forms/lightning/form-3/skill.webp"
      }
     },
-    "novice": {}
+    "novice": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/skill.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/skill.webp"
+     }
+    }
    }
   },
   {
@@ -769,6 +834,14 @@
     },
     "novice": {
      "1": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/head-scale.json"
+     },
+     "3": {
       "done": true,
       "detail": "assets/heroes/head-scale.json"
      }
@@ -855,6 +928,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/showcase/master.png"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/showcase/master.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/showcase/master.png"
      }
     }
    }
@@ -939,6 +1020,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/showcase/idle.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/showcase/idle.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/showcase/idle.webp"
      }
     }
    }
@@ -1023,6 +1112,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/rig/show/rig.json"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/rig/show/rig.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/rig/show/rig.json"
      }
     }
    }
@@ -1107,6 +1204,14 @@
      "1": {
       "done": true,
       "detail": "swing, scratch"
+     },
+     "2": {
+      "done": true,
+      "detail": "map, twirl"
+     },
+     "3": {
+      "done": true,
+      "detail": "salute, gems"
      }
     }
    }
@@ -1191,6 +1296,14 @@
      "1": {
       "done": true,
       "detail": "assets/heroes/forms/novice/form-1/showcase/entrance.webp"
+     },
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/showcase/entrance.webp"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/showcase/entrance.webp"
      }
     }
    }
@@ -1231,7 +1344,12 @@
       "detail": "assets/heroes/forms/lightning/aura.json"
      }
     },
-    "novice": {}
+    "novice": {
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/aura.json"
+     }
+    }
    }
   },
   {
@@ -1291,9 +1409,13 @@
      }
     },
     "novice": {
-     "1": {
+     "2": {
       "done": true,
-      "detail": "src/forms-tan.js"
+      "detail": "src/forms-hiro.js"
+     },
+     "3": {
+      "done": true,
+      "detail": "src/forms-hiro.js"
      }
     }
    }
@@ -1355,7 +1477,11 @@
      }
     },
     "novice": {
-     "1": {
+     "2": {
+      "done": true,
+      "detail": "assets/fx/heroes/novice/fx.json"
+     },
+     "3": {
       "done": true,
       "detail": "assets/fx/heroes/novice/fx.json"
      }
@@ -1399,7 +1525,7 @@
      }
     },
     "novice": {
-     "1": {
+     "3": {
       "done": true,
       "detail": "src/hero-departures.js"
      }
@@ -1507,9 +1633,13 @@
      }
     },
     "novice": {
-     "1": {
+     "2": {
       "done": true,
-      "detail": "assets/audio/hero-forms/novice-manifest.json"
+      "detail": "assets/audio/hero-forms/novice-stars-manifest.json"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/audio/hero-forms/novice-stars-manifest.json"
      }
     }
    }
@@ -1570,7 +1700,16 @@
       "detail": "assets/heroes/forms/lightning/form-3/portrait.png"
      }
     },
-    "novice": {}
+    "novice": {
+     "2": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-2/portrait.png"
+     },
+     "3": {
+      "done": true,
+      "detail": "assets/heroes/forms/novice/form-3/portrait.png"
+     }
+    }
    }
   },
   {
@@ -1684,7 +1823,7 @@
    "locked": true
   },
   "novice": {
-   "forms": 1,
+   "forms": 3,
    "locked": true
   }
  }

@@ -178,14 +178,18 @@ function progressionDamage(side,raw,ledger=null){
   }
   update();return result;
 }
+// Hiro's ultimate when nothing stages it: one sword cut through attack(). Form 1 never comes here (forms-tan.js runs
+// it outside this wrapper); his star forms restage it in forms-hiro.js with exactly these hits.
+async function progressionNoviceUltimate(kit){
+  const pending=[];popActorSkill('hero',HEROES.novice.skill,true,pending);setSpriteAction('hero','cast',700);await wait(reduced?0:350);await attack('hero',kit.base,{hits:kit.hits});await Promise.all(pending);
+}
 const progressionOriginalUltimate=heroUltimate;
 heroUltimate=async function(){
   progressionCasting=true;progressionUlts++;const hpBefore=state.enemyHp;
   try{
     const kit=progressionKit();
-    if(state.key==='novice'){
-      const pending=[];popActorSkill('hero',HEROES.novice.skill,true,pending);setSpriteAction('hero','cast',700);await wait(reduced?0:350);await attack('hero',kit.base,{hits:kit.hits});await Promise.all(pending);
-    }else await progressionOriginalUltimate();
+    if(state.key==='novice')await progressionNoviceUltimate(kit);
+    else await progressionOriginalUltimate();
     const attackStat=progressionBattle?.stats.attack||1;
     // Mika's burn comes from Biến Dị or her third form; the other effects need Biến Dị.
     if(state.enemyHp>0&&state.hp>0&&(kit.mutation||kit.burn)){

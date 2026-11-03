@@ -6,7 +6,7 @@
     "ice": {"name": "yuki", "kit": "src/forms-yuki.js", "form1dir": "assets/reimagined/heroes/ice"},
     "earth": {"name": "nori", "kit": "src/forms-nori.js", "form1dir": "assets/reimagined/heroes/earth"},
     "lightning": {"name": "lumi", "kit": "src/forms-lumi.js", "form1dir": "assets/reimagined/heroes/lightning"},
-    "novice": {"name": "hiro", "kit": "src/forms-tan.js", "form1dir": "assets/heroes/novice", "forms": 1}
+    "novice": {"name": "hiro", "kit": "src/forms-hiro.js", "form1dir": "assets/heroes/novice"}
   },
   "items": [
     {"id": "data", "group": "1. Thiết kế", "label": "Dữ liệu tướng và các dạng (tên, vũ khí, tuyệt kỹ)", "forms": "1",
@@ -32,15 +32,15 @@
      "paths": ["assets/heroes/forms/{key}/form-{form}/showcase/entrance.webp", "assets/heroes/forms/{key}/form-{form}/showcase/rift.webp"]},
     {"id": "aura", "group": "4. Chiến đấu", "label": "Hào quang dạng 3", "forms": "3", "paths": ["assets/heroes/forms/{key}/aura.json"]},
     {"id": "kit", "group": "4. Chiến đấu", "label": "Bộ chiêu riêng của dạng (tuyệt kỹ, đánh thường, rời sân)", "forms": "2-3",
-     "grep": ["{kit}", "HERO_KITS\\.{key}\\s*="], "byHero": {"shadow": {"grep": ["src/shadow-combat.js", "reaperForm"]}, "novice": {"grep": ["src/forms-tan.js", "HERO_KITS\\.novice\\s*="], "forms": "1"}}},
+     "grep": ["{kit}", "HERO_KITS\\.{key}\\s*="], "byHero": {"shadow": {"grep": ["src/shadow-combat.js", "reaperForm"]}}},
     {"id": "fx", "group": "4. Chiến đấu", "label": "Hiệu ứng tuyệt kỹ riêng (FX)", "forms": "2-3",
-     "paths": ["assets/fx/heroes/{key}/fx.json"], "byHero": {"shadow": {"paths": ["assets/fx/noct/fx.json"]}, "novice": {"paths": ["assets/fx/heroes/novice/fx.json"], "forms": "1"}}},
+     "paths": ["assets/fx/heroes/{key}/fx.json"], "byHero": {"shadow": {"paths": ["assets/fx/noct/fx.json"]}, "novice": {"grep": ["assets/fx/heroes/novice/fx.json", "\"f{form}-"]}}},
     {"id": "depart", "group": "4. Chiến đấu", "label": "Rời sân có dấu ấn riêng", "forms": "3",
-     "grep": ["src/hero-departures.js", "\\b{key}:\\{name:"], "byHero": {"shadow": {"grep": ["src/shadow-combat.js", "noctSoul"]}, "novice": {"grep": ["src/hero-departures.js", "novice:\\{name:"], "forms": "1"}}},
+     "grep": ["src/hero-departures.js", "\\b{key}:\\{name:"], "byHero": {"shadow": {"grep": ["src/shadow-combat.js", "noctSoul"]}, "novice": {"grep": ["src/hero-departures.js", "novice:\\{name:[^\\n]*byForm:\\{{form}:"]}}},
     {"id": "voice", "group": "5. Âm thanh", "label": "Giọng nhân vật (hô, bị đánh)", "forms": "1", "optional": true,
      "grep": ["assets/audio/cast-voice-manifest.json", "\"{name}-"], "byHero": {"shadow": {"paths": ["assets/audio/noct-manifest.json"]}}},
     {"id": "sounds", "group": "5. Âm thanh", "label": "Âm thanh tuyệt kỹ riêng (bản thu thật)", "forms": "2-3",
-     "paths": ["assets/audio/hero-forms/{key}-manifest.json"], "byHero": {"shadow": {"paths": ["assets/audio/noct-sfx-manifest.json"]}, "novice": {"paths": ["assets/audio/hero-forms/novice-manifest.json"], "forms": "1"}}},
+     "paths": ["assets/audio/hero-forms/{key}-manifest.json"], "byHero": {"shadow": {"paths": ["assets/audio/noct-sfx-manifest.json"]}, "novice": {"grep": ["assets/audio/hero-forms/novice-stars-manifest.json", "\"novice-f{form}-"]}}},
     {"id": "portrait", "group": "6. Hub và triệu hồi", "label": "Chân dung", "forms": "2-3", "paths": ["{formdir}/portrait.png"]},
     {"id": "fragment", "group": "6. Hub và triệu hồi", "label": "Mảnh tướng (mảnh ghép tranh)", "forms": "1",
      "grep": ["assets/gemwoven/manifest.json", "\"fragment-{key}\""]},
