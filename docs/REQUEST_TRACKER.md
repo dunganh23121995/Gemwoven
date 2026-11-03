@@ -20,7 +20,7 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | A7 | Tướng chưa sở hữu có hiện trong danh sách? | Có, xám kèm khóa; bấm vào xem được cách có tướng. | ✅ | Tướng, Kỹ Năng |
 | A8 | Xem chỉ số tướng đang sở hữu ở đâu? | Bảng chi tiết HP/Công/Thủ theo từng nguồn. | ✅ | Tướng → cờ phải; Lực Chiến |
 | A9 | Bấm tổng Lực chiến đi đâu? | Mở bảng Lực chiến: công thức, từng nguồn, gợi ý nâng tiếp. | ✅ | Home → Lực Chiến |
-| A10 | Hình thái Hiro | Concept H2 Lữ Khách Kiếm Sĩ và H3 Anh Hùng Diệu Ngọc **đã duyệt (03/11)**. Làm theo HERO_PIPELINE. | 🎨🔨 | assets/heroes/forms/novice |
+| A10 | Hình thái Hiro | H2 Lữ Khách Kiếm Sĩ (4★) và H3 Anh Hùng Diệu Ngọc (6★) đã duyệt và **đã vào game**: sheet trận (nghỉ, đánh, thi triển, chạy), chân dung, trình diễn ở hub (2 hành động + màn xuất hiện), cỡ đầu khớp dạng 1, bảng Hình thái, khoác diện mạo. Tuyệt kỹ ×1,1 / ×1,25 như mọi tướng; đặc tính H3 nhẹ (+15% tuyệt kỹ) vì Hiro là tướng miễn phí (chủ dự án 03/11). Còn lại: rig nghỉ 24 khung, hiệu ứng và âm thanh tuyệt kỹ riêng. | ✅ hình · 🔨 hiệu ứng/âm thanh | Tướng → Hiro (4★/6★) |
 | A11 | Tướng mặc định rất khó qua boss chương 2 cấp 100 | Nguyên nhân là chỉ lên cấp, không đồ, không kỹ năng. Đã tăng tuyệt kỹ Hiro (70), kiếm ×1,2, thêm đường Mảnh Hiro, Lộ trình. Đang đối chiếu mô phỏng với trận thật bằng bot. | ✅ · ✅ "cân bằng v1" chương 1–2 (Codex vòng 4; còn mở: số lượt quái thường) | §5, §20; `qa/gemwoven/real-fights.cjs` |
 | A12 | Cơ chế tính sát thương | Công thức đầy đủ, hệ số, khắc hệ, chí mạng chuỗi, giáp, thủ. | ✅ | §5.1 |
 

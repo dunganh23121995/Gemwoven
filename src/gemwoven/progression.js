@@ -34,6 +34,11 @@
     lightning:[{name:'Lôi Cuồng Sư',weapon:'Tinh điện trượng',skill:'Ngũ Tinh Lôi',power:1},
       {name:'Tinh Lôi Sứ Giả',weapon:'Tinh điện trượng khắc sao',skill:'Tinh Lôi Ngũ Phạt',power:1.1},
       {name:'Thiên Tinh Lôi Chủ',weapon:'Thương quỹ đạo thiên hà',skill:'Cửu Thiên Tinh Phạt',power:1.25,signature:'Giáng 9 tia sét thay vì 5.'}],
+    // Hiro's forms (concepts approved 2026-11-03): same 4★/6★ gates and form power as every hero. Form 3 signature kept
+    // mild (owner: the free starter is not to be made strong): ultimate ×1,15, about +5% over a whole fight.
+    novice:[{name:'Lữ Khách Tập Sự',weapon:'Kiếm gỗ',skill:'Kiếm Nhiệt Huyết',power:1},
+      {name:'Lữ Khách Kiếm Sĩ',weapon:'Kiếm thép ngọc lục',skill:'Lữ Kiếm Liên Trảm',power:1.1},
+      {name:'Anh Hùng Diệu Ngọc',weapon:'Trường kiếm tứ hệ',skill:'Diệu Ngọc Tứ Hệ Trảm',power:1.25,signature:'Tứ Hệ: tuyệt kỹ mạnh thêm 15% (Hiro không có hệ).'}],
     shadow:[{name:'Ảnh Kiếm Sĩ',weapon:'Kiếm vô diện',skill:'Ngũ Ảnh Trảm',power:1},
       {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Bạt kiếm Nguyệt Ảnh',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
       {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Tuyệt kỹ xuyên giáp, +50% khi địch dưới 30% HP; sau đó hóa mờ, né mọi đòn và hiệu ứng bất lợi 1 lượt.'}]
@@ -42,7 +47,7 @@
   // fights in the highest unlocked form (its art and kit belong together); the player may pick
   // any unlocked form as the hero's look in town (h.look), free. Unset means the highest.
   const FORM_STARS=[1,4,6];
-  function formMax(key,h){return key==='novice'||!HERO_FORMS[key]?1:h?.stars>=6?3:h?.stars>=4?2:1;}
+  function formMax(key,h){return !HERO_FORMS[key]?1:h?.stars>=6?3:h?.stars>=4?2:1;}
   const heroForm=formMax;
   function lookForm(key,h){const max=formMax(key,h),chosen=Math.floor(Number(h?.look)||0);return chosen>=1&&chosen<=max?chosen:max;}
   // Relics belong to their hero; five visible forms, twenty training levels per form.
@@ -172,7 +177,7 @@
       transform:awaken&&!normalized?{turns:save.level>=400&&evolution>=5?4:3,attack:round(.25+(awaken-1)*.15/9),reduce:.15,after:save.level>=400&&evolution>=5?.15:.1}:null};
     // Hiro's traveller's edge: sword gems +20% (balance-sim: geared Hiro wins about half of chapter bosses at the
     // recommended level). Normalized play (local PvP, practice) keeps both sides even.
-    if(key==='novice'){if(!normalized)kit.pveSword=QA_VARIANT.hiroSword||1.2;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
+    if(key==='novice'){if(!normalized)kit.pveSword=QA_VARIANT.hiroSword||1.2;if(form===3&&!normalized)kit.tetra=QA_VARIANT.hiroTetra||1.15;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
     if(key==='fire'){kit.sword=1.6;kit.attackBonus=round(.025*passive);if(mutation||form===3)kit.burn={base:round(8*(1+.1*mutation),2),turns:(mutation>=10?4:mutation>=5?3:2)+(form===3?1:0)};}
     if(key==='ice'){kit.shieldGem=8;kit.damageReduction=.2;kit.defenseBonus=round(.008*passive);kit.armor=Math.round((base.armor+3*(active-1))*(form===3?1.6:1));kit.enemyDrain=form===3?25:0;kit.mutationArmor=mutation?round(.06+.005*(mutation-1)):0;}
     if(key==='earth'){kit.attackScale=.75;kit.hpBonus=round(.015*passive);kit.heal=Math.round((base.heal+5*(active-1))*formPower*bonus.power);kit.burst=round(base.burst+.1*(active-1)+(form===3?.5:0),2);kit.stun=base.stun;kit.regenTurns=base.regen+(form===3?1:0);kit.mutationArmor=mutation?round(.04+.005*(mutation-1)):0;}

@@ -3,7 +3,6 @@
 let heroFormCasting=false;
 if(ART.scytheGlint)document.documentElement.style.setProperty('--scythe-mask',`url('${ART.scytheGlint}')`);
 function combatHeroForm(key){
-  if(key==='novice')return 1;
   if(progressionBattle?.hero===key)return progressionBattle.stats.form||progressionRules.heroForm(key,{stars:progressionBattle.stats.stars||1});
   return progressionSandbox&&key===state.key?Math.max(1,Math.min(3,state.form||1)):1;
 }

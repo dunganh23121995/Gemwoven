@@ -1,0 +1,26 @@
+{
+ "dir": "assets/heroes/forms/novice/form-3/showcase",
+ "identity": "assets/heroes/forms/novice/form-3/showcase/master.png",
+ "what": "Hiro in his third form, the Gemwoven Hero: a chibi boy hero with messy chestnut-brown hair and one springy cowlick tuft, big brown eyes, a heroic smile; light plate armour in white-gold and polished steel with gold filigree, a ring of four inlaid gems on the chest (red ruby, blue sapphire, green emerald, violet amethyst), small gem studs on gauntlets and greaves, a cream tabard with gold embroidery and green side panels, olive-brown trousers, steel-and-gold armoured boots, a long sweeping deep moss-green cape bordered with gold woven embroidery and small diamond gems, holding a heroic longsword with a white-steel blade inlaid with a woven strip of red, blue, green and violet gems and a gold leaf-shaped crossguard around a large clear crystal",
+ "pose": "(the approved concept pose is the master: the longsword raised diagonally in front of him with the blade pointing up, his left hand open and forward, feet planted apart, a determined heroic smile, the cape sweeping behind him)",
+ "idle": "a heroic idle: his body, face, hands, longsword and boots stay still; the long green cape with its gold-embroidered gem border billows and ripples behind him like a royal banner in a steady breeze, its lower edge rolling in a slow wave, his messy chestnut hair strands and the cowlick sway softly, the tabard panels sway a little.",
+ "fidgets": [
+  [
+   "gems",
+   "Ngọc tứ hệ tỏa sáng",
+   "he turns his open forward hand palm-up in front of him (frame 2), the four gems in the ring on his chest shine one after another, ruby, sapphire, emerald, amethyst, each with a small solid four-pointed star highlight of its own colour drawn right on the gem (frames 3-5), he closes the open hand into a confident fist with a proud grin (frame 6) and opens it again, stretched forward as in Image 1 (frame 7). His head, face size, body size, cape, the raised longsword, legs and feet stay exactly as in Image 1: same size and place in every frame. The highlights are small opaque painted shapes on the gems, never a glow haze.",
+   true
+  ],
+  [
+   "salute",
+   "Chào kiếm hiệp sĩ",
+   "he brings the longsword upright in front of his face in a knightly salute, the hilt at his chin and the blade pointing straight up (frames 2-3, the blade tip well inside the cell), holds it with a proud look (frame 4), then sweeps the blade down and out to his side in a flourish (frame 5) and raises it back to the diagonal pose of Image 1 (frames 6-7). His legs and feet stay planted.",
+   true
+  ]
+ ],
+ "entrance": "his summoning by the four gems, everything drawn SMALL enough to stay well inside each cell: Frame 1: the character is NOT in this frame at all (no boy, no cape, no sword): only four small gems (red ruby, blue sapphire, green emerald, violet amethyst) floating in a ring just above the ground where he will stand. Frame 2: still no character: the four gems sink down and a ring of crystal shards rises from the ground. Frame 3: still no character visible: a tall clear crystal pillar as tall as he is grows up inside the ring, with the four gem colours in it, no wider than his cape. Frame 4: his silhouette shows inside the crystal pillar. Frame 5: the pillar cracks and splits into large clear crystal shards falling away from him; he stands revealed, longsword raised. Frame 6: he stands in his pose, a few small crystal shards lying at his boots. Frame 7: only two small shards left at his boots. Frame 8: exactly the resting pose of Image 1, no crystals. All effects are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Every frame keeps a clear empty margin of at least one sixth of the cell on the left and right.",
+ "entrance_label": "Trụ pha lê tứ hệ",
+ "only": [
+  "gems"
+ ]
+}

@@ -14,7 +14,11 @@ which a global magenta key would punch holes into; inside the silhouette nothing
   python tools/hiro_forms.py sheet <N> <action> <cols> <rows> [k]   form-N/<action>/raw-original.png ->
                                                          form-N/<action>.webp + frames + process-meta.json
                                                          (k: extra uniform scale, default 1)
-  python tools/hiro_forms.py portrait <N>               bust crop of the keyed concept -> form-N/portrait.png
+  python tools/hiro_forms.py portrait <N>               bust crop of the keyed master drawing -> form-N/portrait.png
+  python tools/hiro_forms.py despill <sheet> <cols> <rows> [--no-deep] [--no-clear]  clean the key fringe of a finished sheet in place
+  python tools/hiro_forms.py refit-entrance <N>         one uniform scale for a showcase entrance drawn larger than its loop
+  python tools/hiro_forms.py showcase-master <N>        approved concept pose -> form-N/showcase/master.png (make_showcase.py then
+                                                         skips its own master pose and draws the loop, fidgets and entrance on it)
 """
 import json
 import subprocess
@@ -240,7 +244,7 @@ def sheet(n, action, cols, rows, extra=1.0):
 
 
 def portrait(n):
-    """Bust crop (head and shoulders) of the approved concept drawing, the crispest picture of the form."""
+    """Bust crop (head to chest) of the full-resolution combat master drawing (source/raw-master.png)."""
     d = NOVICE / f"form-{n}"
     a = key(d / "source/raw-master.png")
     fig = row_major(figures(a, 1), 1)[0][3]
@@ -256,6 +260,97 @@ def portrait(n):
     print("portrait", d / "portrait.png", box)
 
 
+def showcase_master(n):
+    """The approved concept pose (concepts/form-N/raw-master.png) as the showcase master: keyed, fitted like
+    make_showcase.py fits a drawn master (longest side 86% of a 512 cell, soles at y 477, centred)."""
+    d = NOVICE / f"form-{n}/showcase"; d.mkdir(parents=True, exist_ok=True)
+    src = NOVICE / f"concepts/form-{n}"
+    (d / "raw-master.png").write_bytes((src / "raw-master.png").read_bytes())
+    (d / "prompt-master.txt").write_text((src / "prompt-used.txt").read_text(encoding="utf-8"), encoding="utf-8")
+    a = tight(row_major(figures(key(d / "raw-master.png"), 1), 1)[0][3])
+    k = CELL * .86 / max(a.shape[:2])
+    im = to_img(scaled(a, k))
+    cell = Image.new("RGBA", (CELL, CELL))
+    cell.paste(im, ((CELL - im.width) // 2, 478 - im.height))
+    cell.save(d / "master.png")
+    print("showcase master", cell.getbbox())
+
+
+def despill(path, cols, rows, deep=True, clear=True):
+    """Clean the magenta fringe that Codex-drawn moving parts bring into a finished sheet (wind idle,
+    showcase loops), cell by cell, in place: rim pixels tinted toward the key, rose rims and enclosed
+    pink pockets take the colour of the nearest clean solid pixel at their own brightness; translucent
+    leftovers far from any solid pixel are cleared. Violet and red gems are kept off the outermost rim.
+    --no-deep keeps enclosed violet (dull amethysts, lilac crystal); --no-clear keeps translucent
+    interiors (a crystal pillar is see-through by design)."""
+    sheet = Image.open(path).convert("RGBA")
+    c = sheet.width // cols
+    out = Image.new("RGBA", sheet.size)
+    fixed = 0
+    for i in range(cols * rows):
+        box = ((i % cols) * c, (i // cols) * c, (i % cols + 1) * c, (i // cols + 1) * c)
+        a = np.asarray(sheet.crop(box), np.float32)
+        rgb, al = a[..., :3], a[..., 3]
+        solid = al >= 200
+        if clear and solid.any():
+            al[(al < 200) & (ndimage.distance_transform_edt(~solid) > 2.5)] = 0
+        vis = al > 0
+        if vis.any():
+            r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+            dist = ndimage.distance_transform_edt(vis)
+            tint = np.minimum(r, b) - g > 12
+            rose = ((b - g > 8) & (r - g > 8) & (r > 140)) | ((b - g > -25) & (r - g > 40))   # rose, salmon or crimson, never brown/orange (blue far below green)
+            gem = (rgb.max(-1) - rgb.min(-1) >= 110) & ((b > r + 10) | (b - g < .2 * (r - g)))
+            spill = vis & (((dist <= 4) & tint & ~(gem & (dist > 2))) | ((dist <= 3) & rose) | (deep & (dist > 4) & (np.minimum(r, b) - g > 45) & ~gem))
+            donor = solid & ~tint & ~rose
+            if spill.any() and donor.any():
+                _, (iy, ix) = ndimage.distance_transform_edt(~donor, return_indices=True)
+                src = rgb[iy, ix]
+                lum = lambda x: x @ np.array([.299, .587, .114], np.float32)
+                k = np.clip(lum(rgb) / np.maximum(lum(src), 1), .5, 1.3)[..., None]
+                rgb = np.where(spill[..., None], np.clip(src * k, 0, 255), rgb)
+                fixed += int(spill.sum())
+        cell = np.concatenate([rgb, al[..., None]], -1)
+        out.paste(Image.fromarray(cell.clip(0, 255).astype("uint8"), "RGBA"), box[:2])
+    out.save(path, lossless=True, method=6) if str(path).endswith(".webp") else out.save(path)
+    print("despilled", path, fixed, "px")
+
+
+def refit_entrance(n):
+    """Codex drew the hero in the last entrance frames a little larger than the resting loop, so the
+    loop would shrink him when it takes over. One uniform scale and shift (found by laying the last
+    frame's silhouette on the loop's first frame) is applied to every entrance frame alike, crystals
+    included, and the last frame becomes the loop's first frame itself. Nothing is redrawn."""
+    d = NOVICE / f"form-{n}/showcase"
+    sheet = Image.open(d / "entrance.webp").convert("RGBA"); idle = Image.open(d / "idle.webp").convert("RGBA")
+    c = sheet.width // 2
+    cell = lambda im, i: im.crop(((i % 2) * c, (i // 2) * c, (i % 2 + 1) * c, (i // 2 + 1) * c))
+    rest, last = cell(idle, 0), cell(sheet, 7)
+    ra = np.asarray(rest, np.float32)[..., 3] / 255
+    rb, lb = rest.getbbox(), last.getbbox()
+    k0 = (rb[3] - rb[1]) / (lb[3] - lb[1])          # crown to soles: the same resting pose in both
+    best = None
+    for k in np.arange(k0 - .04, k0 + .0801, .005):
+        im = last.resize((round(c * k),) * 2, Image.Resampling.LANCZOS)
+        ib = im.getbbox()
+        bx, by = (rb[0] + rb[2]) / 2 - (ib[0] + ib[2]) / 2, rb[3] - ib[3]
+        for dy in range(-3, 4):
+            for dx in range(-4, 5):
+                ox, oy = round(bx) + dx, round(by) + dy
+                can = Image.new("RGBA", (c, c)); can.paste(im, (ox, oy))
+                err = np.abs(np.asarray(can, np.float32)[..., 3] / 255 - ra).mean()
+                if best is None or err < best[0]:
+                    best = (err, k, ox, oy)
+    err, k, dx, dy = best
+    out = Image.new("RGBA", sheet.size)
+    for i in range(8):
+        im = cell(sheet, i).resize((round(c * k),) * 2, Image.Resampling.LANCZOS)
+        can = Image.new("RGBA", (c, c)); can.paste(im, (dx, dy))
+        out.paste(rest if i == 7 else can, ((i % 2) * c, (i // 2) * c))
+    out.save(d / "entrance.webp", lossless=True, method=6)
+    print(f"entrance refit: scale {k:.3f} shift {dx},{dy} (silhouette error {err:.4f}); frame 8 = loop frame 1")
+
+
 if __name__ == "__main__":
     cmd, n, *rest = sys.argv[1:]
     if cmd == "master":
@@ -266,3 +361,9 @@ if __name__ == "__main__":
         sheet(n, rest[0], int(rest[1]), int(rest[2]), float(rest[3]) if len(rest) > 3 else 1.0)
     elif cmd == "portrait":
         portrait(n)
+    elif cmd == "despill":
+        despill(n, int(rest[0]), int(rest[1]), deep="--no-deep" not in rest, clear="--no-clear" not in rest)
+    elif cmd == "refit-entrance":
+        refit_entrance(n)
+    elif cmd == "showcase-master":
+        showcase_master(n)

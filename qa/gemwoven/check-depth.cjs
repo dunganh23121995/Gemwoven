@@ -7,7 +7,7 @@ function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setI
 { // Forms: stars unlock them, combat keeps the highest, any unlocked one can be worn in town.
   const {engine:e,edit}=fixture();edit(p=>{p.heroes.fire={level:1,stars:4,evolution:0,copies:3,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[]};p.wallet.gold=5e6;p.materials.essence=1000;});
   assert.equal(M.heroForm('fire',e.read().heroes.fire),2);assert.equal(M.lookForm('fire',e.read().heroes.fire),2);
-  assert.throws(()=>e.chooseLook('fire',3),/6 sao/);assert.throws(()=>e.chooseLook('novice',1),/một hình thái/);
+  assert.throws(()=>e.chooseLook('fire',3),/6 sao/);assert.throws(()=>e.chooseLook('novice',2),/4 sao|Chưa mở|chưa mở/);
   assert.equal(e.chooseLook('fire',1),1);const h=e.read().heroes.fire;
   assert.equal(M.lookForm('fire',h),1,'Town look follows the choice');assert.equal(M.heroForm('fire',h),2,'Combat keeps the highest form');
   assert.equal(e.stats('fire').form,2);assert.equal(e.stats('fire').kit.formPower,1.1);
@@ -43,7 +43,7 @@ function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setI
 }
 { // Growth map: one row per axis, honest states, every row routes somewhere.
   const {engine:e,edit}=fixture();const rows=M.growthMap(e.read(),'novice');
-  assert.deepEqual(rows.map(r=>r.id),['level','stars','evolution','skill-0','skill-1','skill-2','skill-3','gear','relic'],'Hiro has no form row');
+  assert.deepEqual(rows.map(r=>r.id),['level','stars','forms','evolution','skill-0','skill-1','skill-2','skill-3','gear','relic'],'Hiro has forms too (2026-11-03)');
   const by=id=>rows.find(r=>r.id===id);
   assert.equal(by('level').state,'short','A new account has no Ấn yet');assert.equal(by('stars').state,'locked');assert.match(by('stars').need,/Mảnh Hiro/);
   assert.equal(by('skill-1').state,'locked');assert.match(by('skill-1').next,/cấp 10/);assert.equal(by('evolution').state,'locked');

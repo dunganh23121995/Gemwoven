@@ -1,0 +1,42 @@
+{
+  "fidgets": [
+    {
+      "name": "map",
+      "label": "Xem bản đồ",
+      "file": "map.webp",
+      "whole": true,
+      "frameMs": [
+        130,
+        150,
+        200,
+        500,
+        500,
+        220,
+        160,
+        130
+      ]
+    },
+    {
+      "name": "twirl",
+      "label": "Xoay kiếm",
+      "file": "twirl.webp",
+      "whole": true,
+      "frameMs": [
+        120,
+        100,
+        100,
+        140,
+        650,
+        160,
+        140,
+        130
+      ]
+    },
+    {
+      "name": "entrance",
+      "label": "Lữ khách theo gió",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}

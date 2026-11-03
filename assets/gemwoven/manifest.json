@@ -12590,7 +12590,7 @@
     "cols": 3,
     "rows": 2,
     "count": 6,
-    "scale": 1.6957,
+    "scale": 1.38,
     "footY": 0.94,
     "ms": 90,
     "headPx": 11.51,
@@ -16193,9 +16193,9 @@
       "foot": 0.94140625
     },
     "footBounds": [
-      108,
-      129,
-      316,
+      98,
+      122,
+      314,
       482
     ]
   },
@@ -16236,11 +16236,119 @@
       "foot": 0.94140625
     },
     "footBounds": [
-      118,
-      129,
+      114,
+      123,
       349,
       482
     ]
+  },
+  "show-novice-2": {
+    "file": "assets/heroes/forms/novice/form-2/showcase/poster.png",
+    "width": 640,
+    "height": 640,
+    "footBounds": [
+      150,
+      198,
+      490,
+      550
+    ],
+    "bodyAnchor": {
+      "x": 0.5546875,
+      "bodyX": 0.55625,
+      "crown": 0.309375,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/novice/form-2/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/novice/form-2/showcase/map.webp",
+        "assets/heroes/forms/novice/form-2/showcase/twirl.webp"
+      ],
+      "labels": [
+        "Xem bản đồ",
+        "Xoay kiếm"
+      ],
+      "timing": {
+        "assets/heroes/forms/novice/form-2/showcase/map.webp": [
+          130,
+          150,
+          200,
+          500,
+          500,
+          220,
+          160,
+          130
+        ],
+        "assets/heroes/forms/novice/form-2/showcase/twirl.webp": [
+          120,
+          100,
+          100,
+          140,
+          650,
+          160,
+          140,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/novice/form-2/showcase/entrance.webp"
+    },
+    "bodyPx": 351.67,
+    "headPx": 27.383,
+    "headFit": 1.0052
+  },
+  "show-novice-3": {
+    "file": "assets/heroes/forms/novice/form-3/showcase/poster.png",
+    "width": 640,
+    "height": 640,
+    "footBounds": [
+      138,
+      198,
+      502,
+      550
+    ],
+    "bodyAnchor": {
+      "x": 0.5453125,
+      "bodyX": 0.54609375,
+      "crown": 0.309375,
+      "foot": 0.859375
+    },
+    "sheets": {
+      "idle": "assets/heroes/forms/novice/form-3/showcase/idle.webp",
+      "fidgets": [
+        "assets/heroes/forms/novice/form-3/showcase/salute.webp",
+        "assets/heroes/forms/novice/form-3/showcase/gems.webp"
+      ],
+      "labels": [
+        "Chào kiếm hiệp sĩ",
+        "Ngọc tứ hệ tỏa sáng"
+      ],
+      "timing": {
+        "assets/heroes/forms/novice/form-3/showcase/salute.webp": [
+          130,
+          150,
+          200,
+          700,
+          170,
+          170,
+          150,
+          130
+        ],
+        "assets/heroes/forms/novice/form-3/showcase/gems.webp": [
+          130,
+          160,
+          220,
+          260,
+          260,
+          300,
+          180,
+          130
+        ]
+      },
+      "entrance": "assets/heroes/forms/novice/form-3/showcase/entrance.webp"
+    },
+    "bodyPx": 351.67,
+    "headPx": 27.5,
+    "headFit": 1.0009
   },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",

@@ -1,0 +1,23 @@
+{
+ "dir": "assets/heroes/forms/novice/form-2/showcase",
+ "identity": "assets/heroes/forms/novice/form-2/showcase/master.png",
+ "what": "Hiro in his second form, the Wandering Swordsman: a chibi boy hero with messy chestnut-brown hair and one springy cowlick tuft, big brown eyes, a confident grin; a short moss-green hooded half-cloak fastened at the neck by a round brass ring clasp, a long moss-green scarf end, a brown leather jerkin with crossed straps and brass buckles over a cream shirt, ONE steel shoulder pauldron on his sword arm, steel-capped leather bracers, a belt with a square brass buckle, a small leather pouch and a rolled parchment map case on his hip, olive-brown trousers and tall brown buckled leather boots, holding a straight steel arming sword with a brass crossguard set with ONE small round green gem",
+ "pose": "(the approved concept pose is the master: the steel sword held forward-low in his right hand, his left hand gripping the edge of the cloak, feet planted apart, determined grin, scarf and cloak lifting in the wind)",
+ "idle": "a confident traveller's idle in the wind: his body, face, hands, sword and boots stay still; the long moss-green scarf end streams and ripples behind him like a flag in a steady breeze, the moss-green cloak billows and its hem rolls in a slow wave, his messy chestnut hair strands and the cowlick sway softly.",
+ "fidgets": [
+  [
+   "map",
+   "Xem bản đồ",
+   "he lets go of the cloak, pulls the rolled parchment map out of the map case on his hip (frame 2), unrolls it in his free hand and glances down at it with a curious look (frames 3-4), looks up again with a sure grin and a small nod (frame 5), rolls it up and slides it back into the case (frame 6) and grips the cloak edge again (frame 7). The sword stays low in his sword hand; his legs and feet stay planted.",
+   true
+  ],
+  [
+   "twirl",
+   "Xoay kiếm",
+   "he flips the steel sword around in his hand in one quick spin (frames 2-3, the blade turning in front of him and staying close to his body), catches it by the grip (frame 4), points it forward at chest height with a bold grin (frame 5, held), then lowers it back to the forward-low guard (frames 6-7). His legs and feet stay planted; the sword never leaves the cell.",
+   true
+  ]
+ ],
+ "entrance": "his wanderer's arrival on the wind, everything drawn SMALL enough to stay well inside each cell: Frame 1: no character yet, only a small whirl of green leaves turning on the ground where he will stand. Frame 2: the leaf whirl rises into a knee-high spinning gust of leaves. Frame 3: the leaf gust grows into a slim whirlwind of green leaves as tall as he is, no wider than his cloak. Frame 4: his silhouette shows through the leaves, cloak and scarf whipping in the gust. Frame 5: the leaves burst outward a little as he steps out of the whirl, sword in hand, scarf flying. Frame 6: he stands in his pose, a few leaves drifting down around his boots. Frame 7: only two or three leaves left near the ground. Frame 8: exactly the resting pose of Image 1, no leaves. All effects are clean opaque painted shapes with crisp edges, never smoke, glow haze or loose sparks. Every frame keeps a clear empty margin of at least one sixth of the cell on the left and right.",
+ "entrance_label": "Lữ khách theo gió"
+}

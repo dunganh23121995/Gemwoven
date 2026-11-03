@@ -162,6 +162,8 @@ function progressionDamage(side,raw,ledger=null){
   let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1)*(1+progressionTransformBonus()):progressionIsDuel()?s.attack:progressionBattle.enemyAttack;
   if(side==='enemy'&&progressionTransform?.left>0)factor*=1-(progressionTransformKit()?.reduce||0);
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
+  // Hiro form 3 (Tứ Hệ): a mild ultimate bonus (×1,15); the free starter is not to be made strong.
+  if(side==='hero'&&progressionCasting&&kit.tetra)factor*=kit.tetra;
   let bypassed=0;
   if(side==='hero'&&s.affixes.includes('pierce')&&!progressionProcs.has('pierce')&&Math.random()<Math.min(1,.08*(1+(s.precision||0)))){progressionProcs.add('pierce');bypassed=Math.floor(state.enemyArmor*.5);state.enemyArmor-=bypassed;}
   const iceReduction=side==='enemy'?1-progressionKit().damageReduction:1;

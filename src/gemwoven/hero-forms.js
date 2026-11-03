@@ -5,7 +5,7 @@
   for(const key of Object.keys(M.HEROES))for(const prefix of ['hero-','portrait-','home-idle-']){
     originals[prefix+key]=A[prefix+key];originals[prefix+key+'-poster']=A[prefix+key+'-poster'];
   }
-  const palette={fire:'#ffb35e',ice:'#a6efff',earth:'#bde88d',lightning:'#d6b7ff',shadow:'#8d8d94'};
+  const palette={novice:'#f0d27a',fire:'#ffb35e',ice:'#a6efff',earth:'#bde88d',lightning:'#d6b7ff',shadow:'#8d8d94'};
   function aura(key,form){
     const el=document.createElement('span');el.className='hero-form-effects';el.setAttribute('aria-hidden','true');
     el.innerHTML=window.GemwovenFormEffects.markup(key,form,A['form-aura-'+key]);
@@ -23,7 +23,7 @@
       // The summoning entrance plays the first time the hero appears on Home in this visit.
       if(show&&el.dataset.node==='home.hero'&&!window.__gemwovenHeroEntered){window.__gemwovenHeroEntered=true;show.summon();}
     }
-    if(key==='novice'||form<2)return;
+    if(form<2)return;
     el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
     el.style.setProperty('--form-color',palette[key]);if(form===3)el.append(aura(key,form));
   }
@@ -41,7 +41,7 @@
   }
   // A hero's form effects without its showcase (the exploration map shows its combat rest).
   function decorateRest(el,key,form){
-    if(key==='novice'||form<2)return;
+    if(form<2)return;
     el.classList.add('has-hero-form');el.dataset.heroElement=key;el.dataset.heroForm=form;
     el.style.setProperty('--form-color',palette[key]);if(form===3)el.append(aura(key,form));
   }
@@ -69,7 +69,7 @@
       const body=L.screens.home.nodes.find(n=>n.id==='home.hero');
       if(body)body.rect=[338,975,290,305];
     }
-    if(state.screen==='upgrade'&&state.hero!=='novice'){
+    if(state.screen==='upgrade'){
       const key=state.hero,form=M.lookForm(key,p.heroes[key]),caption=L.screens.upgrade.nodes.find(n=>n.id==='upgrade.hero-caption');
       if(caption){
         C[caption.text]=`${M.HEROES[key].name} · Hình thái ${form}/3 ›`;

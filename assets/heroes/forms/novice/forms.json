@@ -299,7 +299,8 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 0.9
         }
       }
     }
