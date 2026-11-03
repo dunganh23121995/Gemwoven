@@ -14,7 +14,7 @@
   function powerDialog(ctx,state,key){
     const p=G.engine.read();if(!p.heroes[key])return;
     const b=M.statBreakdown(p,key),t=b.total,name=M.HEROES[key].name;
-    const modal=window.GemwovenUI.makeDialog('power-detail',name+' · Chi tiết lực chiến','growth-dialog');
+    const modal=window.GemwovenUI.makeDialog('power-detail','Lực Chiến · '+name,'growth-dialog');
     const rows=b.rows.map((r,i)=>`<tr class="${i&&!r.hp&&!r.attack&&!r.defense?'is-zero':''}"><td>${esc(r.label)}</td><td>${i?signed(r.hp,fmt):fmt(r.hp)}</td><td>${i?signed(r.attack,v=>'×'+v.toFixed(2).replace('.',',')):'×'+r.attack.toFixed(2).replace('.',',')}</td><td>${i?signed(r.defense,pct):pct(r.defense)}</td></tr>`).join('');
     modal.body.innerHTML=`<div class="power-hero">${img('portrait-'+key,'power-portrait')}<div><b>${fmt(t.power)}</b></div></div>`+
       `<table class="gw-table power-table"><thead><tr><th>Nguồn</th><th>HP</th><th>Công</th><th>Thủ</th></tr></thead><tbody>${rows}</tbody>`+

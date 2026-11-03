@@ -83,7 +83,7 @@
     <li>Máy chủ (Sắp ra mắt): mở sau ải ${M.CUP.stage}, ghép người thật theo điểm, cần ≥ ${M.CUP.minField} người đủ điều kiện để trao ngôi.</li></ul></details>`;
   function openCup(ctx,state,tab=state.cupTab||'race'){
     state.cupTab=tab;let v;try{v=G.engine.cupSync();}catch{v=G.engine.cup();}
-    const modal=window.GemwovenUI.makeDialog('cup-dialog',`${M.CUP.name} · Tháng ${v.season.month}`,'cup-dialog');
+    const modal=window.GemwovenUI.makeDialog('cup-dialog',M.CUP.name,'cup-dialog');
     const a=action(v),hero=cupHero(state,v);
     modal.body.innerHTML=`<p class="ar-head"><b>${esc(phase(v))}</b> · ${esc(left(v.season))}<span>${esc(M.CUP.label)}</span></p>`+
       `<nav class="ar-tabs">${TABS.map(([id,name,icon])=>`<button type="button" class="${id===tab?'on':''}" data-tab="${id}"><img src="${file(icon)}" alt="">${name}</button>`).join('')}</nav>`+

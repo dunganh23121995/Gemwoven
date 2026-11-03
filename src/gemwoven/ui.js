@@ -295,8 +295,10 @@
     // One or two choices sit beside "Quay lại" in the footer; a long directory scrolls in the body.
     const back=$('return-dialog'),holder=$('dialog-links'),inline=links.length>0&&links.length<=2;
     if(inline)back.before(holder);else $('dialog-body').append(holder);holder.classList.toggle('inline',inline);
-    const primary=inline?holder.firstElementChild:back;
+    const primary=inline?holder.firstElementChild:$('close-dialog');
     back.classList.toggle('secondary',primary!==back);
+    // Popup standard (Codex review 30): the × closes; "Quay lại" only when it is not the sole button, the footer only with actions.
+    back.hidden=!inline;holder.closest('.gw-actions')?.classList.toggle('is-empty',!inline);
     for(const b of dialog.querySelectorAll('[autofocus]'))b.removeAttribute('autofocus');primary.setAttribute('autofocus','');
     if(!dialog.open)dialog.showModal();
     primary.focus?.({preventScroll:true});$('dialog-body').scrollTop=0;fitTitle($('dialog-title'));

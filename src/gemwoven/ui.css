@@ -245,3 +245,13 @@ body{overflow-x:hidden}
 .gw-dialog>.gw-emblem{top:calc(58*var(--ft)*var(--s));width:calc(68*var(--ft)*var(--s))}
 .gw-dialog>.gw-head{top:calc(105*var(--ft)*var(--s));height:calc(66*var(--ft)*var(--s));left:calc(158*var(--fs)*var(--s) + 30px);right:calc(158*var(--fs)*var(--s) + 30px)}
 .gw-dialog>.gw-head h2{font-size:calc(40*var(--ft)*var(--s) + 3px)}
+
+/* Popup standard (Codex review 30): one × inside the frame, level with the title plank; a footer only with actions,
+   secondary left → primary right, centred; the title keeps room for the ×. */
+.gw-dialog>.gw-close,.gw-dialog .gw-close{right:calc(40*var(--s) + 4px)!important;top:max(10px,calc(97*var(--s) - 24px))!important;width:48px!important;height:48px!important;font-size:26px!important;padding:0 0 3px!important;filter:drop-shadow(0 2px 2px #2a140899)}
+.gw-dialog>.gw-head{right:calc(40*var(--s) + 58px)!important;left:calc(40*var(--s) + 58px)!important}
+.gw-dialog .gw-actions{gap:max(8px,calc(20*var(--s)));padding-top:max(10px,calc(20*var(--s)))}
+.gw-dialog .gw-actions:empty,.gw-dialog .gw-actions.is-empty:not(:has(> :not([hidden]):not(.inline:empty))){display:none}
+.gw-dialog .gw-actions .gw-btn{min-height:44px;min-width:120px}
+.gw-dialog .gw-actions .secondary{order:-1}
+.gw-dialog .gw-actions [hidden]{display:none!important}
