@@ -2046,6 +2046,54 @@
     ],
     "purpose": "Bụi Ký Ức icon (D3): Cửa Hàng · Ký Ức balance, price and preview, Túi Đồ row (Codex mockup assets/gemwoven/raw/memory-shop)."
   },
+  "skilltree-bough2": {
+    "file": "assets/gemwoven/skill-tree/bough2.webp",
+    "width": 515,
+    "height": 920,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass2/",
+    "purpose": "Kỹ Năng pass 2 pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-socket": {
+    "file": "assets/gemwoven/skill-tree/socket.webp",
+    "width": 357,
+    "height": 360,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass2/",
+    "purpose": "Kỹ Năng pass 2 pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-select-ring": {
+    "file": "assets/gemwoven/skill-tree/select-ring.webp",
+    "width": 376,
+    "height": 380,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass2/",
+    "purpose": "Kỹ Năng pass 2 pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-gate-plate2": {
+    "file": "assets/gemwoven/skill-tree/gate-plate2.webp",
+    "width": 440,
+    "height": 165,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass2/",
+    "purpose": "Kỹ Năng pass 2 pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-tray-wide": {
+    "file": "assets/gemwoven/skill-tree/tray-wide.webp",
+    "width": 1000,
+    "height": 249,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass2/",
+    "purpose": "Kỹ Năng pass 2 pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-next-card2": {
+    "file": "assets/gemwoven/skill-tree/next-card2.webp",
+    "width": 560,
+    "height": 261,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/pass2/",
+    "purpose": "Kỹ Năng pass 2 pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
   "forge-pedestal": {
     "file": "assets/gemwoven/forge/pedestal.webp",
     "width": 1311,

@@ -1,17 +1,18 @@
-/* Kỹ Năng — the skill tree rebuilt as drawn art (owner 04/11: "Cây kỹ năng dựng lại đi"; Codex critique and the
- * approved mockup assets/gemwoven/raw/skill-tree/mockup-1.png). A carved bough climbs the trunk from the root:
- * Chủ Động → Bị Động → Biến Dị → Chân Thân, in the order the branches open (SKILL_GATES), not a prerequisite chain.
- * Every frame is a Codex picture (assets/gemwoven/skill-tree): medallion frames by state (learned bronze, selected
- * gold laurel, locked stone with its padlock), wooden rank plates, two-line gate plates, a leaf that points at the one
- * suggested next step, a sprout on a skill that can be learned, and one sleeping bud on a side twig for the future
- * branches ("Sắp ra mắt"). The bough's opened part is lit and the rest dry (CSS light on the same picture).
- * The detail panel below uses the same pieces: rank plate, branch plate, a material tray, a "Cấp kế" card.
+/* Kỹ Năng — the skill tree as drawn art. Pass 1 (owner 04/11 "Cây kỹ năng dựng lại đi", mockup
+ * assets/gemwoven/raw/skill-tree/mockup-1.png); pass 2 answers the full-game review ("các nút rời rạc trên thân cây …
+ * vẽ thêm nhánh nối và ổ gắn biểu tượng; làm nút đang chọn nổi bật, gom điều kiện khóa thành một kiểu nhãn") with
+ * Codex's critique and approved mockup assets/gemwoven/raw/skill-tree/pass2/ (critique-1.md, mockup-1.png).
+ * One honey-wood bough climbs the trunk from the root, Chủ Động → Bị Động → Biến Dị → Chân Thân, in the order the
+ * branches open (SKILL_GATES), not a prerequisite chain; it stays fully lit, locked parts included. Every medallion
+ * sits in a carved wooden socket; the selected one alone gets the gold selection ring (static), the one suggested
+ * next step only a small leaf, a learnable skill a sprout and "Học". Every gate uses the same wooden plate.
+ * The detail panel: rank and branch plates, a wide material tray with "Có / Cần" lines, a compact "Cấp kế" card.
  * Words and numbers are the HTML layer; rules stay in progression.js (skillUnlock, skillCost, skillText).
  */
 (() => {
   'use strict';
   const G=window.GEMWOVEN_GAME,M=window.GemwovenProgression,L=window.GEMWOVEN_LAYOUT,A=window.GEMWOVEN_ASSETS,C=window.GEMWOVEN_DEFAULT_COPY;
-  if(!G?.decorate||!M?.skillText||!A?.['skilltree-bough'])return;
+  if(!G?.decorate||!M?.skillText||!A?.['skilltree-bough2'])return;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const file=k=>A[k]?.file||'',art=k=>file('skilltree-'+k);
   const tight=n=>M.compact(n,1000);
@@ -20,10 +21,11 @@
   const box=(x,y,w,h)=>`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
   const icon=(key,i)=>key==='novice'?['stat-attack','stat-shield','stat-heart','crest'][i]:`skill-${key}-${i}`;
   const skillArt=(key,i)=>file(`skill-${key}-${i}`)||file(icon(key,i));
-  // The bough is placed by its own pixels: the raw sheet is 1024x1536, the webp is its crop (144,21)-(927,1535);
-  // the four round pads sit at these raw points. S scales raw pixels to stage units.
-  const S=.43,RAW={x:144,y:21,w:784,h:1515},PADS=[[399,1230],[780,868],[378,565],[787,232]],TWIG=[150,262];
-  const OX=447.7,OY=342-232*S,at=([x,y])=>[OX+x*S,OY+y*S];
+  const cssUrl=k=>`url("${new URL(art(k),document.baseURI).href}")`;
+  // The bough (pass2/bough2-raw.png) is placed by its own pixels: the webp is the sheet crop (94,32) 859x1504; the
+  // four round pads were measured on the sheet (distance-transform peaks). S scales sheet pixels to stage units.
+  const S=.46,RAW={x:94,y:32,w:859,h:1504},PADS=[[395,1229],[777,868],[378,565],[785,231]],TWIG=[112,255];
+  const OX=447.5,OY=233.8,at=([x,y])=>[OX+x*S,OY+y*S];
   const CENTRES=PADS.map(at),FRAME=144/320;
   // Hole centre of each frame picture (fraction of its own box), measured from the art.
   const FRAMES={learned:[320,327,.5,.512],selected:[331,326,.498,.52],locked:[325,361,.498,.458]};
@@ -33,6 +35,8 @@
 
   function gateLines(i){const g=M.SKILL_GATES[i];return g?[`Cấp ${g.level}`,g.evolution?`Tiến hóa ${g.evolution}`:'']:[''];}
   function rows(values){return (values||[]).map(([l,v,u])=>`${l} ${v}${u}`);}
+  // A long description (Chân Thân) shows its first clause; the full text is one tap away.
+  function summary(text){const s=String(text||'');if(s.length<=90)return [s,false];const cut=s.search(/\s*[(:]/);return [(cut>12?s.slice(0,cut):s.slice(0,80)).replace(/[.;,\s]+$/,'')+'.',true];}
   // One suggestion at a time: a skill that can be learned now, else the cheapest affordable upgrade.
   function suggestion(p,h){
     if(!h)return -1;let best=-1,bestCost=Infinity;
@@ -43,29 +47,27 @@
   function frame(kind,[cx,cy]){const [w,h,fx,fy]=FRAMES[kind],W=w*FRAME,H=h*FRAME;return `<img class="st-frame" src="${art('frame-'+kind)}" alt="" style="${box(cx-W*fx,cy-H*fy,W,H)}">`;}
   function tree(el,p,state){
     const hero=state.hero,h=p.heroes[hero],sel=state.skill||0,next=suggestion(p,h);
-    const open=[0,1,2,3].map(i=>!!h&&M.skillUnlock(h,i)),top=open.lastIndexOf(true);
-    // Lit bough: from the root up to the highest opened pad; the side twig stays dry (future branches).
-    const litY=top<0?RAW.h:Math.max(0,(PADS[top][1]-RAW.y)/RAW.h*100);
-    const twigX=((PADS[2][0]-RAW.x)/RAW.w*100).toFixed(1),twigY=((PADS[3][1]+70-RAW.y)/RAW.h*100).toFixed(1);
-    const bough=box(OX+RAW.x*S-STAGE_TREE[0],OY+RAW.y*S-STAGE_TREE[1],RAW.w*S,RAW.h*S);
-    let html=`<img class="st-bough dry" src="${art('bough')}" alt="" style="${bough}">`+
-      (top<0?'':`<img class="st-bough lit" src="${art('bough')}" alt="" style="${bough};clip-path:polygon(0 ${litY.toFixed(1)}%,${twigX}% ${litY.toFixed(1)}%,${twigX}% ${twigY}%,0 ${twigY}%,0 100%,100% 100%,100% ${litY.toFixed(1)}%)">`);
-    const [tx,ty]=at(TWIG).map((v,k)=>v-STAGE_TREE[k]);
+    const open=[0,1,2,3].map(i=>!!h&&M.skillUnlock(h,i));
+    const T=([x,y])=>[x-STAGE_TREE[0],y-STAGE_TREE[1]];
+    let html=`<img class="st-bough" src="${art('bough2')}" alt="" style="${box(OX+RAW.x*S-STAGE_TREE[0],OY+RAW.y*S-STAGE_TREE[1],RAW.w*S,RAW.h*S)}">`;
+    const [tx,ty]=T(at(TWIG));
     html+=`<button type="button" class="st-soon" data-action="art:skill-soon" style="${box(tx-104,ty-66,124,128)}" aria-label="Nhánh kỹ năng mở rộng · Sắp ra mắt"><img class="st-bud" src="${art('bud')}" alt=""></button>`+
       `<b class="st-ribbon" style="${box(tx-112,ty+14,176,40)}">Sắp ra mắt</b>`;
-    CENTRES.forEach(([X,Y],i)=>{
-      const cx=X-STAGE_TREE[0],cy=Y-STAGE_TREE[1],t=M.skillText(hero,h,i),rank=h?h.skills[i]||0:0;
-      const state_=!open[i]?'locked':i===sel?'selected':'learned',learnable=open[i]&&rank===0,right=cx>(CENTRES[0][0]+CENTRES[1][0])/2-STAGE_TREE[0];
-      html+=`<button type="button" class="st-node skill-live ${state_}${i===sel?' on':''}${i===next?' next':''}${open[i]?'':' skill-unavailable'}" data-action="do:skill-node" data-index="${i}" style="${box(cx-72,cy-72,144,144)}" aria-label="${esc(t.name)} · ${esc(M.SKILL_BRANCHES[i])}${open[i]?` · ${rank}/${M.SKILL_MAX}`:' · '+esc(gateLines(i).join(' '))}">`+
-        `<i class="st-well" style="--el:${WELL[i]}"></i><img class="st-icon" src="${skillArt(hero,i)}" alt=""></button>`+frame(state_,[cx,cy]);
-      if(i===next)html+=`<img class="st-pointer ${right?'':'flip'}" src="${art('pointer')}" alt="" style="${box(right?cx+70:cx-70-64,cy-16,64,28)}">`;
-      if(learnable)html+=`<img class="st-sprout" src="${art('sprout')}" alt="" style="${box(cx+28,cy-80,50,36)}">`;
-      if(open[i])html+=`<b class="st-rank${learnable?' learn':''}" style="${box(cx-66,cy+54,132,42)}">${learnable?'Học':`${rank}/${M.SKILL_MAX}`}</b>`;
-      else{const [a,b]=gateLines(i);html+=`<b class="st-gate${b?'':' one'}" style="${box(cx-92,cy+80,184,b?80:58)}"><span>${esc(a)}</span>${b?`<span>${esc(b)}</span>`:''}</b>`;}
+    CENTRES.forEach((c,i)=>{
+      const [cx,cy]=T(c),t=M.skillText(hero,h,i),rank=h?h.skills[i]||0:0,on=i===sel;
+      const kind=!open[i]?'locked':on?'selected':'learned',learnable=open[i]&&rank===0;
+      html+=`<img class="st-socket" src="${art('socket')}" alt="" style="${box(cx-82,cy-82,164,164)}">`;
+      if(on)html+=`<i class="st-halo" style="${box(cx-130,cy-130,260,260)}"></i><img class="st-ring" src="${art('select-ring')}" alt="" style="${box(cx-97,cy-97,194,194)}">`;
+      // The tap target covers the medallion and its plate (≥ 176 units ≈ 73 CSS px on a phone).
+      const tall=open[i]?176+8:176+80;
+      html+=`<button type="button" class="st-node skill-live ${kind}${on?' on':''}${i===next?' next':''}${open[i]?'':' skill-unavailable'}" data-action="do:skill-node" data-index="${i}" style="${box(cx-88,cy-88,176,tall)}" aria-label="${esc(t.name)} · ${esc(M.SKILL_BRANCHES[i])}${open[i]?` · ${rank}/${M.SKILL_MAX}`:' · '+esc(gateLines(i).filter(Boolean).join(' · '))}"${on?' aria-current="true"':''}>`+
+        `<i class="st-well" style="--el:${WELL[i]}"></i><img class="st-icon" src="${skillArt(hero,i)}" alt=""></button>`+frame(kind,[cx,cy]);
+      if(i===next)html+=`<img class="st-pointer" src="${art('pointer')}" alt="" style="${box(cx-166,cy-17,76,34)}">`;
+      if(learnable)html+=`<img class="st-sprout" src="${art('sprout')}" alt="" style="${box(cx+30,cy-86,46,33)}">`;
+      if(open[i])html+=`<b class="st-rank${learnable?' learn':''}${on?' on':''}" style="${box(cx-66,cy+56,132,40)}">${learnable?'Học':`${rank}/${M.SKILL_MAX}`}</b>`;
+      else{const [a,b]=gateLines(i);html+=`<b class="st-gate${b?'':' one'}" style="${box(cx-98+(cx<(CENTRES[0][0]+CENTRES[1][0])/2-STAGE_TREE[0]?-12:14),cy+90,196,78)}"><span>${esc(a)}</span>${b?`<span>${esc(b)}</span>`:''}</b>`;}
     });
-    el.style.setProperty('--st-rank',`url("${new URL(art('rank-plate'),document.baseURI).href}")`);
-    el.style.setProperty('--st-gate',`url("${new URL(art('gate-plate'),document.baseURI).href}")`);
-    el.style.setProperty('--st-ribbon',`url("${new URL(art('ribbon'),document.baseURI).href}")`);
+    for(const k of ['rank-plate','gate-plate2','ribbon'])el.style.setProperty('--st-'+k,cssUrl(k));
     el.innerHTML=html;
   }
   // The detail panel (stage box [15,1004,911,484]; children are placed relative to it).
@@ -73,27 +75,34 @@
   function detail(el,p,state){
     const hero=state.hero,h=p.heroes[hero],i=state.skill||0,t=M.skillText(hero,h,i),open=!!h&&t.unlocked;
     let c;try{if(open&&!t.maxed)c=M.skillCost(h,i);}catch{}
-    for(const k of ['rank-plate','category-plate','tray','next-card','header-tag'])el.style.setProperty('--st-'+k,`url("${new URL(art(k),document.baseURI).href}")`);
+    for(const k of ['rank-plate','category-plate','tray-wide','next-card2','header-tag'])el.style.setProperty('--st-'+k,cssUrl(k));
     const nameKey=`skills.skill-name-${hero}-${i}`;C[nameKey]=t.name;
-    let html=`<img class="sd-icon${open?'':' locked'}" src="${skillArt(hero,i)}" alt="" style="${rel(64,1026,150,150)}">`+
-      `<b class="sd-rank" style="${rel(59,1158,160,46)}">Lv.${t.rank}${t.bonusRank?' (+'+t.bonusRank+')':''}/${t.max}</b>`+
-      `<b class="sd-name" data-copy="${esc(nameKey)}" style="${rel(244,1024,640,52)}">${esc(t.name)}</b>`+
-      `<b class="sd-branch" style="${rel(244,1078,220,46)}">${esc(M.SKILL_BRANCHES[i])}</b>`+
-      `<p class="sd-desc" style="${rel(244,1128,646,90)}">${esc(t.description)}</p>`;
+    const [desc,more]=summary(t.description);
+    let html=`<img class="sd-icon${open?'':' locked'}" src="${skillArt(hero,i)}" alt="" style="${rel(44,1030,132,132)}">`+
+      `<b class="sd-rank" style="${rel(40,1152,140,42)}">Lv.${t.rank}${t.bonusRank?' (+'+t.bonusRank+')':''}/${t.max}</b>`+
+      `<b class="sd-name" data-copy="${esc(nameKey)}" style="${rel(198,1027,686,44)}">${esc(t.name)}</b>`+
+      `<b class="sd-branch" style="${rel(198,1072,220,40)}">${esc(M.SKILL_BRANCHES[i])}</b>`+
+      `<p class="sd-desc" style="${rel(198,1114,690,66)}">${esc(desc)}</p>`+
+      (more?`<button type="button" class="sd-more" data-action="skilltree:info" data-hero="${esc(hero)}" data-index="${i}" style="${rel(430,1069,140,46)}" aria-label="Xem đầy đủ"><span>Chi tiết</span></button>`:'');
     const left=c?(t.rank===0?'Nguyên liệu học':'Nguyên liệu'):t.maxed?'Hoàn thiện':'Điều kiện';
-    html+=`<b class="sd-head" style="${rel(118,1222,250,54)}">${left}</b><div class="sd-tray" style="${rel(46,1252,412,128)}">`;
+    const lw=left.length>12?292:250;html+=`<b class="sd-head" style="${rel(323-lw/2,1200,lw,46)}">${left}</b><div class="sd-tray" style="${rel(40,1228,566,140)}">`;
     if(c){const list=Object.entries(c).filter(([,n])=>n>0);
-      html+=`<div class="sd-mats n${list.length}">`+list.map(([id,n])=>{const have=owned(p,id);return `<button type="button" class="sd-mat ${have>=n?'':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${tight(have)}/${tight(n)}</b></button>`;}).join('')+'</div>';}
+      html+=`<div class="sd-mats n${list.length}">`+list.map(([id,n])=>{const have=owned(p,id),ok=have>=n;return `<button type="button" class="sd-mat ${ok?'ok':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><span>Có ${tight(have)}</span><b>Cần ${tight(n)}</b></button>`;}).join('')+'</div>';}
     else if(t.maxed)html+=`<p class="sd-note">✓ Cấp tối đa</p>`;
     else if(!h)html+=`<p class="sd-note">${esc(M.heroAvailable&&!M.heroAvailable(hero)?'Tướng xuất hiện ở kỳ triệu hồi sau.':'Cần sở hữu tướng.')}</p>`;
-    else{const g=M.SKILL_GATES[i];html+=`<p class="sd-note"><span>Cần ${esc(gateLines(i).filter(Boolean).join(' · '))}</span><small>Hiện tại: cấp ${h.level} · tiến hóa ${h.evolution||0}</small></p>`;void g;}
+    else html+=`<p class="sd-note"><span>Cần ${esc(gateLines(i).filter(Boolean).join(' · '))}</span><small>Hiện tại: Cấp ${h.level} · Tiến hóa ${h.evolution||0}</small></p>`;
     html+='</div>';
     const right=!open?'Khi mở':t.maxed?'Cấp tối đa':t.rank===0?'Khi học':'Cấp kế';
     const lines=!open||t.rank===0?rows(t.values):t.maxed?rows(t.values):String(t.next||'').split(' · ').filter(Boolean);
-    html+=`<b class="sd-head" style="${rel(574,1222,230,54)}">${right}</b><div class="sd-card" style="${rel(484,1252,404,128)}">`+
-      `<img src="${skillArt(hero,i)}" alt="">`+`<p class="${lines.length>1?'many':''}">${lines.slice(0,3).map(l=>{const k=l.search(/[-+×]?\d/);return `<span>${k>0?`<small>${esc(l.slice(0,k).trim())}</small>`:''}<b>${esc(k>0?l.slice(k):l).replace('→','<i>→</i>')}</b></span>`;}).join('')}</p></div>`;
-    const ready=!!c&&affordable(p,c),label=t.maxed?'Đã Tối Đa':!open?'Chưa Mở':t.rank===0?'Học':'Tăng Cấp';
-    html+=`<button type="button" class="sd-go ${ready?'ready':'off'}" data-action="do:train" data-hero="${esc(hero)}" data-index="${i}" ${ready?'':'disabled'} style="${rel(300,1388,340,95)}"><img src="${art(ready?'button-ready':'button-locked')}" alt=""><span>${label}</span></button>`;
+    // Each line splits into its label and its value; the card fits the longest value (Cambria bold ≈ .55 em a glyph),
+    // dropping the small picture when the value needs the room.
+    const parts=lines.slice(0,3).map(l=>{const k=l.search(/[-+×]?\d/);return k>0?[l.slice(0,k).trim(),l.slice(k)]:['',l];});
+    const one=parts.length===1,longest=Math.max(...parts.map(([,v])=>v.length),1),pic=one&&longest<=9;
+    const room=pic?176:238,size=Math.min(one?36:28,Math.floor(room/(longest*.55))),label=Math.min(one?27:25,Math.floor(room/(Math.max(...parts.map(([a])=>a.length),1)*.5)));
+    html+=`<b class="sd-head" style="${rel(646,1200,230,46)}">${right}</b><div class="sd-card${one?' one':' many'}" style="${rel(624,1228,274,140)};--v:${size}px;--l:${label}px">`+
+      (pic?`<img src="${skillArt(hero,i)}" alt="">`:'')+`<p>${parts.map(([a,v])=>`<span>${a?`<small>${esc(a)}</small>`:''}<b>${esc(v).replace('→','<i>→</i>')}</b></span>`).join('')}</p></div>`;
+    const ready=!!c&&affordable(p,c),action=t.maxed?'Đã Tối Đa':!open?'Chưa Mở':t.rank===0?'Học':'Tăng Cấp';
+    html+=`<button type="button" class="sd-go ${ready?'ready':'off'}" data-action="do:train" data-hero="${esc(hero)}" data-index="${i}" ${ready?'':'disabled'} style="${rel(300,1376,340,100)}"><img src="${art(ready?'button-ready':'button-locked')}" alt=""><span>${action}</span></button>`;
     el.innerHTML=html;
   }
   const OLD=/^skills\.(node-\d|node-level-\d|link-\d|locked-\d|selected-icon|skill-name-|skill-category|skill-level|skill-description-|materials-title|skill-materials-|next-title|next-effect-|upgrade-skill|unlock-requirement)/;
@@ -102,10 +111,14 @@
     const p=decorate(state);if(state.screen!=='skills')return p;
     // Codex text review 25: the slogan and the second title add nothing to tap; the tree speaks for itself.
     const nodes=L.screens.skills.nodes.filter(n=>!OLD.test(n.id)&&!/^skills\.(motto|path-title|path-title-board)$/.test(n.id));
-    // The path title gets a little room inside its board (Codex review).
-    for(const n of nodes)if(n.id==='skills.path-title'){n.rect=[574,177,281,51];n.size=29;}
     nodes.push({id:'skills.tree',kind:'content',rect:STAGE_TREE,className:'exploration-map st-tree',build:el=>tree(el,p,state)});
     nodes.push({id:'skills.detail',kind:'content',rect:[PX,PY,911,484],className:'exploration-map st-detail',build:el=>detail(el,p,state)});
     L.screens.skills.nodes=nodes;return p;
+  };
+  const handle=G.handle;
+  G.handle=(action,el,ctx,state)=>{
+    if(action!=='skilltree:info')return handle(action,el,ctx,state);
+    const hero=el.dataset.hero,i=Number(el.dataset.index),h=G.engine.read().heroes[hero],t=M.skillText(hero,h,i);
+    ctx.showModal(`${t.name} · ${M.SKILL_BRANCHES[i]}`,[],t.description);return true;
   };
 })();

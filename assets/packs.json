@@ -4653,6 +4653,7 @@
     "assets/gemwoven/plaza/ui/x-empty.webp",
     "assets/gemwoven/plaza/ui/x-recruit.webp",
     "assets/gemwoven/skill-tree/bough.webp",
+    "assets/gemwoven/skill-tree/bough2.webp",
     "assets/gemwoven/skill-tree/bud.webp",
     "assets/gemwoven/skill-tree/button-locked.webp",
     "assets/gemwoven/skill-tree/button-ready.webp",
@@ -4661,12 +4662,17 @@
     "assets/gemwoven/skill-tree/frame-locked.webp",
     "assets/gemwoven/skill-tree/frame-selected.webp",
     "assets/gemwoven/skill-tree/gate-plate.webp",
+    "assets/gemwoven/skill-tree/gate-plate2.webp",
     "assets/gemwoven/skill-tree/header-tag.webp",
     "assets/gemwoven/skill-tree/next-card.webp",
+    "assets/gemwoven/skill-tree/next-card2.webp",
     "assets/gemwoven/skill-tree/pointer.webp",
     "assets/gemwoven/skill-tree/rank-plate.webp",
     "assets/gemwoven/skill-tree/ribbon.webp",
+    "assets/gemwoven/skill-tree/select-ring.webp",
+    "assets/gemwoven/skill-tree/socket.webp",
     "assets/gemwoven/skill-tree/sprout.webp",
+    "assets/gemwoven/skill-tree/tray-wide.webp",
     "assets/gemwoven/skill-tree/tray.webp",
     "assets/gemwoven/summon-lake/scene.webp",
     "assets/gemwoven/treasures/treasure-borrow-blue.webp",
@@ -4828,7 +4834,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 156907461
+   "bytes": 157143452
   },
   {
    "id": "hero-earth-f1",
@@ -5061,7 +5067,7 @@
     "assets/reimagined/heroes/ice/hurt.webp",
     "assets/reimagined/heroes/ice/run.webp"
    ],
-   "bytes": 9499810
+   "bytes": 9500040
   },
   {
    "id": "hero-ice-f2",
@@ -5247,7 +5253,7 @@
     "assets/heroes/novice/run.webp",
     "assets/heroes/novice/skill.webp"
    ],
-   "bytes": 6345382
+   "bytes": 6345759
   },
   {
    "id": "hero-novice-f2",

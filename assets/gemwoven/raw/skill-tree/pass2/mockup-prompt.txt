@@ -1,0 +1,206 @@
+Use case: ui-mockup.
+
+Create one production-quality FULL-SCREEN MOCKUP of the Vietnamese
+portrait mobile match-3 RPG Gemwoven, Skills screen, second design pass.
+
+CANVAS AND COORDINATES
+Output canvas: exactly 1200 × 1800 pixels.
+Place the complete 941 × 1672 game stage at native 1:1 scale, with its
+top-left corner at canvas offset (129.5, 64).
+Thus canvas coordinates = stage coordinates + (129.5, 64).
+Keep the complete stage visible, including its HUD and bottom navigation.
+Use subdued blurred environmental color in the outer margins.
+No phone bezel, desktop chrome, Studio controls, captions or annotations.
+
+REFERENCE ROLES
+bg-skills.png is the environment reference: preserve its giant tree on
+the right, blue sky, distant green hills, stone platform on the left,
+painted roots and warm daylight.
+before-phone-mid.png is the content, Hiro identity and persistent UI
+reference. Keep Hiro, his pose, platform, nameplate, HUD, upper-left
+"Kỹ Năng" title board, drifting clouds, hero portrait roster and bottom
+navigation.
+before-phone-mid-3.png clarifies the locked fourth skill's emblem.
+approved-refs.png is the quality reference for hand-painted wood,
+carved gold trim, parchment, foliage, icon clarity and finished UI craft.
+Do not copy its alternative screen layouts.
+
+ART DIRECTION
+Match the approved screens: polished hand-painted fantasy RPG art,
+warm carved wood, restrained gold hardware, readable cream parchment,
+clean silhouette separation and rich but controlled detail.
+Every branch, socket, frame, plate, ribbon, tray, tag and button must
+look like drawn game art.
+No flat CSS rectangles, wireframe boxes, sci-fi neon or excessive bloom.
+All lettering must look like a crisp, separately composited HTML text
+layer over textless artwork, never carved or painted into the artwork.
+Use accurate Vietnamese diacritics.
+
+PERSISTENT CONTENT
+Show the mid-game save: Hiro level 120, evolution 2.
+Preserve the HUD layout, with hero level "120", gold "900.000",
+premium gems "120.000", the existing "+" controls and mail badge "2".
+Keep the upper-left title board with "Kỹ Năng".
+Keep Hiro and his existing nameplate in the reserved left platform
+area, approximately stage x 100–345; do not move him to fit the tree.
+Nameplate text:
+"Lv.120 · Hiro"
+"Lữ Khách Tập Sự"
+
+Keep the hero portrait roster at stage y 906–1004, with Hiro selected,
+then the red-haired hero and dark hooded hero, then three locked heroes.
+Their visible level badges are "120", "24", "1".
+Locked portraits show padlock icons, not added text.
+
+TREE COMPOSITION
+There are EXACTLY FOUR skill medallions.
+They show progression unlock milestones, NOT skill prerequisites.
+No arrows, arrowheads, prerequisite lines or animated-flow imagery.
+Do not add a fifth socket.
+
+Draw one continuous raised carved wooden bough within stage
+[430,270,484,624].
+Its principal stem winds upward through these socket centres:
+Chủ Động: (620,798)
+Bị Động: (812,638)
+Biến Dị: (620,478)
+Chân Thân: (812,352)
+
+Use a substantial 26–36-unit honey-colored wooden stem, wider at forks,
+with a narrow ivory-gold upper bevel and a tight contact shadow.
+It must remain clearly visible against the dark tree trunk, including
+the section supporting the locked top skill.
+The locked section has fewer leaves, but is not darkened into invisibility.
+Branches enter behind the sockets.
+
+At each centre draw a 164-unit round carved wooden mounting socket
+with small retaining lugs, then a 144-unit circular medallion face.
+Use bright but restrained edging on all wooden sockets.
+Only the selected medallion receives the strong selection treatment.
+
+STATE 1 — BOTTOM, CHỦ ĐỘNG
+Centre (620,798), sword emblem.
+Rank 6 of 10, SELECTED.
+Use the existing gold laurel medallion style.
+Add a separate 176-unit outer selection ring centred on this socket:
+two fine ivory-gold contours with a compact warm edge light.
+This is the strongest focal accent in the tree.
+Do not add a suggestion leaf here.
+Rank plate at [554,854,132,40], text "6/10".
+
+STATE 2 — BỊ ĐỘNG
+Centre (812,638), blue shield emblem.
+Learned bronze frame, rank 3 of 10.
+Rank plate at [746,694,132,40], text "3/10".
+This is the SUGGESTED NEXT upgrade.
+Place one small green leaf pointer at [662,624,60,28], pointing right
+toward the socket.
+No selection ring, no gold laurel and no whole-node glow.
+
+STATE 3 — BIẾN DỊ
+Centre (620,478), red gemstone heart emblem.
+Available, rank zero, unlearned.
+Use a bronze medallion frame with no padlock.
+Rank plate at [554,534,132,40], text "Học".
+Add a small fresh sprout at [650,394,44,32].
+No selection ring and no suggestion pointer.
+
+STATE 4 — TOP, CHÂN THÂN
+Centre (812,352), leaf-and-laurel crest emblem.
+LOCKED.
+Use a muted stone medallion frame and a physical padlock whose lower
+extension occupies approximately [796,414,32,38].
+The wooden socket and supporting branch remain readable.
+One fixed-size wooden gate plate at [714,444,196,76].
+Exact two-line text:
+"Cấp 180"
+"Tiến hóa 3"
+The plate has two small mounting fasteners and matches the warm wood
+of the other plates.
+
+FUTURE BRANCH
+A thin side twig within [452,314,288,72] supports a sleeping flower bud
+at [466,288,72,68].
+A small parchment ribbon at [430,350,176,40] reads "Sắp ra mắt".
+This is a bud on a twig, NOT another skill node or circular socket.
+
+VISUAL HIERARCHY
+The selected sword's outer ring is static and unmistakable.
+The suggestion is communicated only by the small green leaf.
+The rank-zero state is communicated by its sprout and "Học" plate.
+The locked state is communicated by stone, padlock and gate plate.
+Keep decorative leaves subordinate.
+Repeat the selected sword artwork prominently in the detail panel
+to link the selection with its details.
+Do not draw a connector across the hero portrait roster.
+
+DETAIL PANEL
+Preserve the full parchment panel at stage [15,1004,911,484].
+Use the existing illustrated parchment frame and foliage.
+
+Selected sword image: [42,1022,136,136].
+Level plate: [40,1148,140,42], text "Lv.6/10".
+Skill title: [198,1020,686,50], text "Kiếm Nhiệt Huyết".
+Branch tag: [198,1074,220,42], text "Chủ Động".
+Description: [198,1122,686,64], exactly two lines:
+"Một nhát kiếm gỗ gây 103"
+"sát thương cơ bản."
+
+Materials header tag: [198,1188,250,48], text "Nguyên liệu".
+Draw a broad dark wooden material tray at [40,1218,566,150].
+Show TWO evenly spaced material columns, with a gold coin icon in the
+first and a red skill-book icon in the second.
+Keep clear padding inside the carved border.
+
+First material column [56,1238,267,122]:
+52-unit gold coin icon centred above these two distinct text lines:
+"Có 900 N"
+"Cần 12,6 N"
+
+Second material column [323,1238,267,122]:
+52-unit red skill-book icon centred above these two distinct text lines:
+"Có 40"
+"Cần 7"
+
+Use 32-unit text for both counter lines.
+Owned values are cream; required values are light green because both
+requirements are affordable.
+Do not combine ownership and cost with a slash.
+
+Next-value header tag: [647,1188,230,48], text "Cấp kế".
+Compact parchment next-value card: [624,1218,274,150].
+Small sword icon: [640,1262,52,52].
+Stat label at [700,1240,182,36]: "Sát thương".
+Large value at [700,1280,182,48]: "103 → 109".
+Use a green arrow; all text remains crisp and easy to read.
+
+Use the existing illustrated orange-and-gold action button at
+[300,1380,340,95], text "Tăng Cấp".
+Do not place any description or counter behind a header tag or button.
+
+BOTTOM NAVIGATION
+Preserve the existing illustrated navigation icons and their order.
+Exact labels:
+"Trang Chủ"
+"Tướng"
+"Túi Đồ"
+"Kỹ Năng"
+"Triệu Hồi"
+"Đấu Trường"
+"Thêm"
+"Kỹ Năng" is selected.
+Preserve badge "3" on "Thêm" and the small upgrade arrow on "Tướng".
+
+TEXT WHITELIST
+Render only the exact strings explicitly specified above.
+Do not add branch-name labels next to tree nodes, explanatory legends,
+English words, prerequisite captions, extra numbers, watermarks or logos.
+
+FINAL CHECK
+The entire stage must fit within the specified canvas offset.
+Exactly four medallions; one future bud.
+Visible continuous bough, including the locked section.
+Selected sword and suggested shield must be visually distinct.
+All Vietnamese text is correctly accented.
+The material counters are two separate readable lines.
+Preserve Hiro, HUD, roster, clouds and bottom navigation.

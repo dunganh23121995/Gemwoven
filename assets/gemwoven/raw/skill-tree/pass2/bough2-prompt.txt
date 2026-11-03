@@ -1,0 +1,9 @@
+Reference image 1 is the approved mockup of the Skills screen of a cozy hand-painted fantasy chibi mobile RPG: on the right a giant dark tree trunk carries four round skill medallions joined by a raised, honey-coloured carved wooden bough. Reference image 2 is the previous bough piece, for material only.
+Draw ONLY that BOUGH, alone, as one transparent-ready piece, in the same hand-painted style as the mockup.
+Composition (portrait canvas 1024x1536; positions in percent of canvas width x height):
+- One continuous living branch of warm honey-gold carved wood, about 60-70 px thick, wider (about 90 px) where it forks; fine wood grain, a narrow bright ivory-gold bevel along its upper edge and a darker warm-brown underside so it reads strongly against a dark brown trunk; two or three thin brass bands; only a few small green leaves.
+- It climbs in a soft S-shaped zigzag through four places where medallions will sit. At each place draw a flat round plain wooden disc about 300 px wide (lighter honey wood, a medallion will cover it completely): disc 1 centre at (40%, 78%), disc 2 at (77%, 57%), disc 3 at (40%, 36.5%), disc 4 at (77%, 20%).
+- The branch enters from the bottom edge directly below disc 1, rises into disc 1, then runs to disc 2, then to disc 3, then to disc 4, and ends with a short rounded tip a little above-right of disc 4. Branch segments meet the discs from behind, smoothly, like a growing vine.
+- From the left side of disc 4 a thinner side twig (about 30 px thick) reaches left and slightly down, ending near (12%, 17%) in a small empty fork (a flower bud will be added there later).
+- Nothing else: no trunk, no bark background, no medallions, no icons, no flowers, no sky, no arrows.
+No text, no glow, no drop shadow. Solid flat pure magenta #FF00FF background everywhere around the branch, with at least 20 px of magenta between the branch and the left, right and top canvas edges.
