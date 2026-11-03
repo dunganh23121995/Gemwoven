@@ -382,3 +382,34 @@
 #scene[data-kp-tavern] [data-node$=".quest-accept"]:not(:disabled) .copy-layer{font-size:33px!important}
 #scene[data-kp-tavern] [data-node$=".quest-accept"]{left:614px!important;width:270px!important;top:1274px!important;height:116px!important}
 #power-detail.kp-pop .kp-ways{margin-bottom:4px!important}
+/* ----- Lực chiến, third pass (full review 8.2: the number plaque took the room, the contribution table read thin): the
+ * plaque and portrait about 15% smaller, the source column wider, rows further apart, the total line the strongest. */
+#power-detail.kp-pop .power-hero{margin:0 0 12px;gap:10px}
+#power-detail.kp-pop .power-hero .power-portrait{width:52px!important;height:52px!important}
+#power-detail.kp-pop .power-hero>div{flex:0 1 74%;margin:0 auto;min-height:58px;padding:2px 0 4px}
+#power-detail.kp-pop .power-hero b{font-size:30px!important}
+#power-detail.kp-pop .power-hero small{font-size:13px}
+#power-detail.kp-pop .power-table tr:not(.kp-zero){grid-template-columns:1fr 50px 56px 44px}
+#power-detail.kp-pop .power-table tbody tr:not(.kp-zero){min-height:42px}
+#power-detail.kp-pop .power-table tbody tr:not(.kp-zero)+tr:not(.kp-zero){border-top:1px solid #c9a35a40!important}
+#power-detail.kp-pop .power-table tbody td{font-size:17px!important}
+#power-detail.kp-pop .power-table tbody td:first-child{font-weight:700;white-space:nowrap}
+#power-detail.kp-pop .power-table tr.kp-zero{margin:8px 0 2px}
+#power-detail.kp-pop .power-table tfoot tr{min-height:60px;margin-top:12px;border-width:11px 16px;border-image-width:11px 16px;filter:drop-shadow(0 4px 4px #2a140855)}
+#power-detail.kp-pop .power-table tfoot td{font-size:22px!important;color:#3a1e06!important;letter-spacing:.2px}
+#power-detail.kp-pop .power-table tfoot td:first-child{font-size:21px!important}
+#power-detail.kp-pop .power-table tr:not(.kp-zero){grid-template-columns:1fr 58px 64px 52px;column-gap:4px}
+#power-detail.kp-pop .power-table tfoot tr{border-width:11px 12px;border-image-width:11px 12px}
+#power-detail.kp-pop .power-table tfoot td{font-size:20px!important;white-space:nowrap;padding:3px 2px!important}
+#power-detail.kp-pop .power-table tfoot td:first-child{padding-left:4px!important}
+/* With the empty sources open the popup reaches its full height: the list, the info line and the growth buttons
+ * close up so the button labels stay above the fade at the foot of the body. */
+#power-detail.kp-pop .kp-zero-list{gap:4px 6px;padding:6px 2px 2px}
+#power-detail.kp-pop .kp-zero-list em{min-height:24px;font-size:12px}
+#power-detail.kp-pop:has(.kp-zero.is-open) .power-hero{margin-bottom:8px}
+#power-detail.kp-pop:has(.kp-zero.is-open) .power-table tbody tr:not(.kp-zero){min-height:36px}
+#power-detail.kp-pop:has(.kp-zero.is-open) details.kp-info{margin-top:2px}
+#power-detail.kp-pop:has(.kp-zero.is-open) details.kp-info>summary{min-height:32px}
+#power-detail.kp-pop:has(.kp-zero.is-open) .growth-sub{margin:2px 0 4px!important}
+#power-detail.kp-pop:has(.kp-zero.is-open) .kp-way{gap:4px}
+#power-detail.kp-pop:has(.kp-zero.is-open) .kp-way img{width:60px;height:60px;padding:8px}

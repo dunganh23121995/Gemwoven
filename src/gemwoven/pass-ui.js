@@ -73,7 +73,7 @@
   }
   function tree(rows,current){
     return `<div class="pv-rows" style="height:${rows.length*ROW+16}px;background-image:url('${art('trunk-tile')}')">${rows.map((r,i)=>{const cur=r.level===current;
-      return `<div class="pv-row ${r.reached?'is-reached':''}" style="${box(0,i*ROW,VW,ROW)}">`+
+      return `<div class="pv-row ${r.reached?'is-reached':''} ${cur?'is-current':''}" style="${box(0,i*ROW,VW,ROW)}">`+(cur?'<span class="pv-glow"></span>':'')+
         `<span class="pv-medal ${cur?'is-current':''}" style="${box(TRUNK-(cur?50:48),ROW/2-(cur?42:32),cur?100:96,cur?84:64)}"><img src="${art(cur?'medal-current':'medal')}" alt=""><b>${esc(r.badge)}</b></span>`+
         r.cells.map(c=>c&&socket(c,c.lane,r)).join('')+`</div>`;}).join('')}</div>`;
   }

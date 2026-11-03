@@ -157,3 +157,35 @@
 .pv-perklist li{margin:.25em 0}
 
 .pv-dialog .gw-body:has(.pv-ladder){-webkit-mask:linear-gradient(#000 0,#000 calc(100% - 40px),#0006)}
+
+/* Third pass (full review 7.8: faded cells, small numbers, rows of one weight, a veil over the paid lanes): numbers and
+ * pictures stay crisp in every state, only the trays of rows not reached yet step back; the current level row stands
+ * out on a band of warm light behind its trays; the pale backing under the paid lanes is gone, the one 'Sắp ra mắt'
+ * strip alone groups them. */
+.pv-backing{display:none}
+.pv-items img{width:76px;height:66px}
+.pv-items b{font-size:42px;color:#3e220a;text-shadow:0 1px 0 #fffc,0 0 6px #fff8e6}
+.pv-items.n1 img{width:80px;height:70px}
+.pv-items.n1 b{font-size:38px}
+.pv-socket.is-ready .pv-items img{height:46px}
+.pv-socket.is-ready .pv-items b{font-size:36px}
+.pv-socket.is-level{filter:drop-shadow(0 3px 4px #1c0c0444)}
+.pv-socket.is-level .pv-tray{filter:saturate(.55) brightness(.9)}
+.pv-socket.is-level .pv-items{opacity:1}
+.pv-socket.is-level .pv-items img{filter:saturate(.75) drop-shadow(0 2px 2px #0005)}
+.pv-socket.is-level .pv-items b{color:#5a3a1c}
+.pv-socket.is-track .pv-items{filter:none}
+.pv-row.is-current .pv-glow{left:84px;right:24px;top:2px;bottom:2px;z-index:0;border-radius:40px;pointer-events:none;
+  background:radial-gradient(ellipse 60% 70% at 50% 50%,#ffe7a0cc,#ffd77a66 55%,#ffd77a00 100%)}
+.pv-row.is-current .pv-socket{filter:drop-shadow(0 0 6px #ffd77a) drop-shadow(0 3px 4px #1c0c0466)}
+.pv-row.is-current .pv-socket::before{content:'';position:absolute;inset:3px;border-radius:14px;box-shadow:0 0 0 3px #e9b54acc;pointer-events:none;z-index:1}
+.pv-row.is-current .pv-socket.is-ready::before{display:none}
+.pv-medal.is-current{filter:drop-shadow(0 0 10px #ffd77a)}
+.pv-row.is-current .pv-glow{left:70px;right:0;top:-10px;bottom:-10px;border-radius:30px;
+  background:linear-gradient(90deg,#ffd77a00,#ffe7a0dd 12%,#ffe7a0dd 88%,#ffd77a00),linear-gradient(#ffd77a00,#ffd77a99 30%,#ffd77a99 70%,#ffd77a00)}
+.pv-row.is-current .pv-glow{-webkit-mask:linear-gradient(#0000,#000 22%,#000 78%,#0000);mask:linear-gradient(#0000,#000 22%,#000 78%,#0000)}
+.pv-socket.is-ready .pv-items b{font-size:34px}
+.pv-socket.is-ready .pv-items{inset:2% 6% 38%}
+.pv-row.is-current .pv-socket::before{box-shadow:0 0 0 5px #eaa93ae6,0 0 14px 4px #ffd77a99}
+.pv-row.is-current .pv-glow{background:linear-gradient(90deg,#ffd77a00,#ffe39af0 10%,#ffe39af0 90%,#ffd77a00)}
+.pv-medal.is-current{filter:drop-shadow(0 0 12px #ffd77a) drop-shadow(0 0 4px #ffe7a0)}
