@@ -61,7 +61,7 @@
         `<button type="button" class="game-btn" data-action="growth:newbie" data-day="${d.day}" ${d.open&&!d.claimed?'':'disabled'}>${d.claimed?'Đã nhận':d.open?'Nhận':`Mở sau ${d.day-days.filter(x=>x.open).length} ngày`}</button></article>`).join('')}</div></section>`;
   }
   function weeklySection(){
-    const name=id=>M.RESOURCES[id]?.[0]||id,rows=G.engine.weekly();
+    const name=id=>M.RESOURCES[id]?.[0]||({gemChoices:'Phiếu chọn ngọc',noviceFragments:'Mảnh Hiro'}[id])||id,rows=G.engine.weekly();
     return `<section class="weekly-quests"><h3>Nhiệm Vụ Tuần</h3><p class="hint">Làm mới Thứ Hai 00:00 (GMT+7) · tuần từ ${esc(rows[0]?.week.split('-').reverse().join('/'))}</p>`+
       `<div class="cadence-grid">${rows.map(q=>`<article class="${q.claimed?'is-claimed':''}"><b>${esc(q.name)}</b><small>Tiến độ ${fmt(q.progress)} / ${fmt(q.target)}</small>`+
         `<ul>${Object.entries(q.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
