@@ -100,7 +100,8 @@
   const decorate=G.decorate;
   G.decorate=state=>{
     const p=decorate(state);if(state.screen!=='skills')return p;
-    const nodes=L.screens.skills.nodes.filter(n=>!OLD.test(n.id));
+    // Codex text review 25: the slogan and the second title add nothing to tap; the tree speaks for itself.
+    const nodes=L.screens.skills.nodes.filter(n=>!OLD.test(n.id)&&!/^skills\.(motto|path-title|path-title-board)$/.test(n.id));
     // The path title gets a little room inside its board (Codex review).
     for(const n of nodes)if(n.id==='skills.path-title'){n.rect=[574,177,281,51];n.size=29;}
     nodes.push({id:'skills.tree',kind:'content',rect:STAGE_TREE,className:'exploration-map st-tree',build:el=>tree(el,p,state)});

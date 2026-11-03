@@ -175,7 +175,7 @@
 
   function build(el,state){
     if(!TABS.some(t=>t[0]===state.vipTab))state.vipTab='pass';
-    el.innerHTML=`<img class="pv-sign" src="${art('title-sign')}" alt="" style="${box(262,112,416,122)}"><h2 class="pv-title" style="${box(312,160,316,60)}">VIP & Nạp</h2>`+
+    el.innerHTML=`<img class="pv-sign" src="${art('title-sign')}" alt="" style="${box(262,112,416,122)}"><h2 class="pv-title" style="${box(312,160,316,60)}">VIP</h2>`+
       vipStrip()+tabs(state)+({pass:passTab,monthly:monthlyTab,fund:fundTab}[state.vipTab])(state);
     requestAnimationFrame(()=>{for(const s of el.querySelectorAll('.pv-scroll')){const thumb=s.parentNode.querySelector('.pv-rail .pv-thumb');
       const sync=()=>{state[s.dataset.scroll]=s.scrollTop;if(thumb){const room=s.scrollHeight-s.clientHeight;thumb.style.top=(34+(room>0?s.scrollTop/room:0)*(544-68-80))+'px';}};
