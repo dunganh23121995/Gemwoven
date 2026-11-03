@@ -42,7 +42,11 @@
       return `<button type="button" class="fg2-mat fg3-mat ${have>=n?'ok':'short'}${tight(n).length>5?' long':''}" data-action="item:${id}" style="${part(x0+i*w,y0,x0+(i+1)*w,y1)}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><span><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${tight(n)}</b></span>${have>=n?'<i class="ok">✓ Đủ</i>':`<i>Thiếu ${tight(n-have)}</i>`}</button>`;}).join('');
   }
   const fit=c=>{const n=String(c).split(' +')[0].length;return n>14?' xlong':n>7?' long':'';};
-  const recess=(where,label,img,caption,cls='')=>`<div class="fg2-recess ${cls}${fit(caption)}" style="${part(...where)}">${img?`<img src="${img}" alt="">`:''}<small>${String(caption).replace(' +','<br>+')}</small></div><b class="fg2-tag" style="${box(bx(where[0])+bs(where[2]-where[0])/2-90,by(where[1])-26,180,44)}">${label}</b>`;
+  // Full review 5 (Codex 8.3: "tăng phân cấp giữa món đang dùng → món sau rèn → nguyên liệu thiếu"): the left recess
+  // (what is worn now) steps back, the right one (the result) carries the light.
+  const recess=(where,label,img,caption,cls='')=>{const k=`${cls}${where===LEFT?' cur':''}`;return `<div class="fg2-recess ${k}${fit(caption)}" style="${part(...where)}">${img?`<img src="${img}" alt="">`:''}<small>${String(caption).replace(' +','<br>+')}</small></div><b class="fg2-tag ${k}" style="${box(bx(where[0])+bs(where[2]-where[0])/2-90,by(where[1])-26,180,44)}">${label}</b>`;};
+  // How many ingredients are short (the locked plate names the count; each short compartment is lit red).
+  const shortCount=(p,c)=>Object.entries(c||{}).filter(([id,n])=>n>0&&owned(p,id)<n).length;
   // The action plate: centred and wider when it stands alone, beside a small button otherwise; short of materials
   // it says so on the plate itself.
   const plate=(ready,text,act,data='',enabled=true,alone=false)=>`<button type="button" class="fg2-plate ${ready?'ready':'locked'}${alone?' alone':''}" data-action="${act}" ${data} ${enabled?'':'disabled'} style="${alone?box(130,1340,680,128):box(96,1354,560,112)}"><span>${text}</span></button>`;
@@ -63,7 +67,7 @@
       recess(RIGHT,'Sau rèn',pic(slot,rarity),`${esc(M.RARITIES[rarity].name)} +0${rarity==='divine'?' · ✦':''}`,'new')+
       `<p class="fg2-strip" style="${part(...STRIP)}">${changes(M.stats(p,hero),next)}</p>`+tray(p,c);
     if(!open)return html+plate(false,`Mở sau ải ${gate}`,'forge:noop','',true)+`<button type="button" class="fg2-small gold" data-action="route:campaign" style="${box(672,1370,190,82)}">Khám Phá</button>`;
-    return html+(affordable(p,c)?plate(true,'Rèn','forge:craft','',true,true):plate(false,'Thiếu nguyên liệu','forge:craft','',false,true));
+    return html+(affordable(p,c)?plate(true,'Rèn','forge:craft','',true,true):plate(false,`Thiếu ${shortCount(p,c)} nguyên liệu`,'forge:craft','',false,true));
   }
   function strengthenTab(p,state){
     const hero=state.forgeHero,g=worn(p,hero,state.forgeSlot);
@@ -76,7 +80,7 @@
     html+=recess(LEFT,'Hiện tại',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +${g.level}`)+`<i class="fg2-arrow" style="${box(bx(690),by(395),bs(140),bs(80))}">→</i>`+
       recess(RIGHT,'Sau khi nâng',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +${to}`,'new')+
       `<p class="fg2-strip" style="${part(...STRIP)}">${changes(M.stats(p,hero),stats(p,hero,q=>{q.equipment.find(x=>x.id===g.id).level=to;}))}</p>`+tray(p,c,`<b>+${g.level} → +${to}</b><small>${to-g.level} cấp · trả một lần</small>`);
-    return html+(affordable(p,c)?plate(true,`Nâng +${to}`,'forge:strengthen',`data-id="${g.id}" data-to="${to}"`,true,true):plate(false,'Thiếu nguyên liệu','forge:strengthen',`data-id="${g.id}" data-to="${to}"`,false,true));
+    return html+(affordable(p,c)?plate(true,`Nâng +${to}`,'forge:strengthen',`data-id="${g.id}" data-to="${to}"`,true,true):plate(false,`Thiếu ${shortCount(p,c)} nguyên liệu`,'forge:strengthen',`data-id="${g.id}" data-to="${to}"`,false,true));
   }
   function gemTab(p,state){
     const g=worn(p,state.forgeHero,state.forgeSlot),n=g?(M.SOCKETS?.[g.rarity]||0):0,[x0,y0,x1,y1]=SHELF;

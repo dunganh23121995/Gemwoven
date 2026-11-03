@@ -113,3 +113,21 @@
 .st-gate{z-index:6!important}
 /* The name plates ride over the hero model where they meet (full review 4). */
 #stage[data-screen="skills"] [data-node="skills.tree"]{z-index:5}
+/* Full review 5 (Codex 8.4: "làm nút đang chọn nổi bật hơn bằng quầng sáng và đường nối sáng; hạ độ nổi của các nút
+ * khóa"): a wider breathing halo and a brighter lit bough for the selection; the bough above it and every locked
+ * medallion and its plate step back so the tree reads root → selected → panel at a glance. */
+.st-halo{background:radial-gradient(circle closest-side,#fff3c8f0 0,#ffe08ac0 34%,#ffc85a70 60%,#ffb44a26 80%,#ffb44a00 100%);animation:st-breathe 3.2s ease-in-out infinite}
+@keyframes st-breathe{0%,100%{opacity:.82;scale:.96}50%{opacity:1;scale:1.04}}
+.reduced-motion .st-halo{animation:none}
+.st-ring:not(.dim){filter:drop-shadow(0 0 4px #fff6c8) drop-shadow(0 0 12px #ffd060) drop-shadow(0 0 22px #ffb84ccc)}
+.st-bough:not(.st-lit){filter:brightness(.7) saturate(.7) drop-shadow(0 5px 3px #1e0e05b0) drop-shadow(0 0 1px #2a1408)}
+.st-lit{filter:brightness(1.5) saturate(1.3) drop-shadow(0 0 4px #fff6cc) drop-shadow(0 0 10px #ffd060) drop-shadow(0 0 20px #ffb03cd0)}
+.st-thread{width:8px!important;margin-left:-1px;background:linear-gradient(#ffd86a00,#fff0b8 14%,#fffbe8 80%,#fff0b8);box-shadow:0 0 8px #ffd060,0 0 18px #ffb03cc0}
+.st-spark{scale:1.4;box-shadow:0 0 14px #ffd060,0 0 26px #ffb03c}
+.st-frame.locked{filter:brightness(.62) saturate(.5) drop-shadow(0 3px 3px #2a140866)}
+.st-tree .st-node.locked .st-icon{filter:grayscale(.9) brightness(.55) drop-shadow(0 2px 2px #0006)}
+.st-node.locked .st-well{opacity:.7}
+.st-gate.is-need:not(.on){filter:brightness(.66) saturate(.55)}
+.st-gate.is-need:not(.on) .st-name{color:#e6d2ac!important}
+.st-gate.is-open.on{filter:drop-shadow(0 0 6px #ffd06a) drop-shadow(0 0 2px #ffe9a8)}
+.st-rank.on{filter:drop-shadow(0 0 6px #ffd06a)}

@@ -44,7 +44,7 @@
       if(!affordable(p,c))continue;const w=(h.skills[i]||0)===0?-1:c.gold;if(w<bestCost){bestCost=w;best=i;}}
     return best;
   }
-  function frame(kind,[cx,cy]){const [w,h,fx,fy]=FRAMES[kind],W=w*FRAME,H=h*FRAME;return `<img class="st-frame" src="${art('frame-'+kind)}" alt="" style="${box(cx-W*fx,cy-H*fy,W,H)}">`;}
+  function frame(kind,[cx,cy]){const [w,h,fx,fy]=FRAMES[kind],W=w*FRAME,H=h*FRAME;return `<img class="st-frame ${kind}" src="${art('frame-'+kind)}" alt="" style="${box(cx-W*fx,cy-H*fy,W,H)}">`;}
   function tree(el,p,state){
     const hero=state.hero,h=p.heroes[hero],sel=state.skill||0,next=suggestion(p,h);
     const open=[0,1,2,3].map(i=>!!h&&M.skillUnlock(h,i));
@@ -61,7 +61,7 @@
       const kind=!open[i]?'locked':on?'selected':'learned',learnable=open[i]&&rank===0;
       // A locked medallion keeps only its padlock frame and one gate plate (no socket ring behind it).
       if(open[i])html+=`<img class="st-socket" src="${art('socket')}" alt="" style="${box(cx-82,cy-82,164,164)}">`;
-      if(on)html+=`${open[i]?`<i class="st-halo" style="${box(cx-130,cy-130,260,260)}"></i>`:''}<img class="st-ring${open[i]?'':' dim'}" src="${art('select-ring')}" alt="" style="${box(cx-97,cy-97,194,194)}">`;
+      if(on)html+=`${open[i]?`<i class="st-halo" style="${box(cx-160,cy-160,320,320)}"></i>`:''}<img class="st-ring${open[i]?'':' dim'}" src="${art('select-ring')}" alt="" style="${box(cx-97,cy-97,194,194)}">`;
       // The tap target covers the medallion and its plate (≥ 176 units ≈ 73 CSS px on a phone).
       const tall=open[i]?176+16:176+96;
       html+=`<button type="button" class="st-node skill-live ${kind}${on?' on':''}${i===next?' next':''}${open[i]?'':' skill-unavailable'}" data-action="do:skill-node" data-index="${i}" style="${box(cx-88,cy-88,176,tall)}" aria-label="${esc(t.name)} · ${esc(M.SKILL_BRANCHES[i])}${open[i]?` · ${rank}/${M.SKILL_MAX}`:' · '+esc(gateLines(i).filter(Boolean).join(' · '))}"${on?' aria-current="true"':''}>`+

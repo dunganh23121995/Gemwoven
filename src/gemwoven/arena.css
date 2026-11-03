@@ -137,3 +137,22 @@
 .arena-dialog .arena-more>:not(summary){margin:6px 10px}
 
 .cup-dialog .ar-prize .title-plate b{filter:drop-shadow(0 0 1px #2a1006) drop-shadow(0 0 1px #2a1006) drop-shadow(0 2px 0 rgba(40,18,6,.9))}
+
+/* Full review 5 (Codex 8.6): you, your standing and the play button are one group under one warm light; the AI podium
+ * steps back a notch so your progress reads first. */
+.ar-you-glow{z-index:0;pointer-events:none!important;border-radius:50%;background:radial-gradient(ellipse 50% 46% at 50% 50%,#ffe7a0b0,#ffc85a55 50%,#ffb44a00 100%)}
+.ar-strip,.ar-hero,.ar-go,.ar-chest{z-index:1}
+.ar-strip{padding:0 26px 0 64px!important;filter:drop-shadow(0 0 8px #ffd36ad0) drop-shadow(0 4px 6px #2a140899)}
+.ar-strip span{font:800 36px Cambria,serif;color:#fff1d2;white-space:nowrap}
+.ar-strip span b{font-weight:900;color:#ffe08a}
+.ar-strip span em{font-style:normal;font-weight:900;color:#b8f08a;text-shadow:0 2px 2px #1a2a08,0 0 6px #7fd04a99}
+.ar-hero{z-index:2!important;filter:drop-shadow(0 0 8px #ffd36ad0) drop-shadow(0 4px 6px #2a140899)}
+.ar-hero small{bottom:-34px;font-size:30px;color:#ffe9bc}
+.ar-go{filter:drop-shadow(0 6px 8px #5a2c0c88) drop-shadow(0 0 12px #ffc85acc)}
+.ar-frame,.ar-podium{filter:brightness(.84) saturate(.8)}
+.ar-name{font-size:28px;color:#efe2c8}
+.ar-strip{padding:0 44px 0 58px!important}
+.ar-strip span{font-size:33px;letter-spacing:-.2px}
+.ar-you-glow{background:radial-gradient(ellipse 50% 48% at 52% 50%,#fff0c0d8,#ffd27a90 42%,#ffb44a30 72%,#ffb44a00 100%)}
+.ar-frame,.ar-podium{filter:brightness(.78) saturate(.72)}
+.ar-hero small{color:#fff1d2;font-weight:900;text-shadow:0 2px 3px #1d1208,0 0 6px #1d1208}

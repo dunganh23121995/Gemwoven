@@ -25,7 +25,7 @@
     if(v.match)return {text:`Vào ${ROUND[v.match.round]} · ${v.match.wins[0]}–${v.match.wins[1]}`,on:true};
     return {text:'Xem nhánh Top 8',on:true,view:'finals'};
   }
-  function standing(v){const y=v.you;return y.ranked?`Bạn · Hạng ${y.rank} · ${fmt(y.points)} điểm`:`Bạn · Chưa xếp hạng · ${y.played}/${M.CUP.rankedAfter} trận`;}
+  function standingHtml(v){const y=v.you;return y.ranked?`<b>Bạn</b> · Hạng <em>${y.rank}</em> · ${fmt(y.points)} điểm`:`<b>Bạn</b> · Chưa xếp hạng · <em>${y.played}/${M.CUP.rankedAfter} trận</em>`;}
   const cupHero=(state,v)=>v.pool.includes(state.cupHero)?state.cupHero:v.pool.includes(G.engine.read().selected)?G.engine.read().selected:v.pool[0];
   function build(el,state){
     const v=G.engine.cup(),a=action(v),hero=cupHero(state,v);
@@ -37,9 +37,13 @@
       pod.map(([i,tone,f,t])=>{const r=v.top[i];return `<button type="button" class="ar-podium ${tone}" data-action="cup:open" data-tab="race" style="${box(t[0],t[1],t[2],t[3])}" aria-label="Hạng ${i+1}${r?' · '+esc(r.name):''}"><img src="${file('rank-'+tone)}" alt=""><b>${i+1}</b></button>`+
         `<div class="ar-frame ${tone} ${r?'':'empty'}" style="${box(...f)}">${r?`<img class="ar-face" src="${face(r.hero)}" alt="">`:''}<img src="${P}frame-${tone}.webp" alt=""><small>${r?(r.ai?'AI':'Bạn'):'—'}</small></div>`+
         `<p class="ar-name" style="${box(t[0]-30,t[1]+t[3]-4,t[2]+60,38)}">${r?esc(r.name):'Chưa có'}</p>`;}).join('')+
-      `<button type="button" class="ar-strip" data-action="cup:open" data-tab="race" style="${box(95,925,751,76)}"><img src="${face(hero)}" alt=""><span>${esc(standing(v))}</span></button>`+
-      `<button type="button" class="ar-hero" data-action="cup:hero" style="${box(108,1012,108,108)}" aria-label="Tướng thi đấu: ${esc(M.HEROES[hero].name)} · chạm để đổi"><img class="ar-face" src="${face(hero)}" alt=""><img src="${file('avatar-ring')}" alt=""><small>${esc(M.HEROES[hero].name)}</small></button>`+
-      `<button type="button" class="ar-go ${a.on?'':'off'}" data-action="${a.view?'cup:open':'cup:play'}" ${a.view?`data-tab="${a.view}"`:''} ${a.on?'':'disabled'} style="${box(230,1004,466,122)}"><span>${esc(a.text)}</span></button>`+
+      // Full review 5 (Codex 8.6: "tăng độ nổi dòng 'Bạn · …', gắn thị giác chặt hơn với nút Đấu thử; bục AI hút mắt
+      // hơn tiến độ"): your hero's ring holds the standing strip and the play button together under one warm light;
+      // the podium steps back.
+      `<i class="ar-you-glow" style="${box(60,880,820,280)}"></i>`+
+      `<button type="button" class="ar-strip" data-action="cup:open" data-tab="race" style="${box(196,922,650,80)}"><span>${standingHtml(v)}</span></button>`+
+      `<button type="button" class="ar-hero" data-action="cup:hero" style="${box(78,920,156,156)}" aria-label="Tướng thi đấu: ${esc(M.HEROES[hero].name)} · chạm để đổi"><img class="ar-face" src="${face(hero)}" alt=""><img src="${file('avatar-ring')}" alt=""><small>${esc(M.HEROES[hero].name)}</small></button>`+
+      `<button type="button" class="ar-go ${a.on?'':'off'}" data-action="${a.view?'cup:open':'cup:play'}" ${a.view?`data-tab="${a.view}"`:''} ${a.on?'':'disabled'} style="${box(240,1008,456,120)}"><span>${esc(a.text)}</span></button>`+
       `<button type="button" class="ar-chest" data-action="cup:open" data-tab="prizes" style="${box(708,996,160,140)}"><img src="${file('chest')}" alt=""><span>Xem thưởng</span></button>`+
       `<p class="ar-note" style="${box(70,1146,801,76)}"><span>31 AI + bạn · Không thưởng</span><span>Kết quả không lên bảng toàn cầu</span></p>`+
       `<img class="ar-rack" src="${P}mode-rack.webp" alt="" style="${box(39,1232,863,228)}">`+
