@@ -193,3 +193,4 @@
 .treasure-slot{position:relative;width:112px;height:112px}.treasure-slot .ghost{opacity:.28;filter:grayscale(.6)}.treasure-slot.locked .ghost{opacity:.15}.treasure-slot i{position:absolute;font-style:normal;font-size:36px}
 .live-panel.treasure-slots-host{height:auto}
 .borrow-flow i{white-space:nowrap}.borrow-flow .bf-pass{white-space:nowrap}
+.borrow-flow{flex-wrap:wrap}.borrow-flow .bf-none{flex-basis:100%;text-align:center;order:5;color:#7a3fb0;font-weight:700}.treasure-slot.empty{border-color:#c9a46a}.treasure-slot .ghost{opacity:.4}
