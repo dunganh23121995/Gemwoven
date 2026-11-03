@@ -112,7 +112,7 @@
   // its account-wide daily cap would silently shrink a gift.
   const MAIL_LIMIT=50,MAIL_ATTACHMENTS=4,MAIL_COUNT_MAX=999999,MAIL_TITLE_MAX=60,MAIL_BODY_MAX=600,MAIL_FROM_MAX=40,MAIL_EXPIRY_DAYS=[1,30],DAY_MS=86400000;
   const MAIL_RESOURCES=Object.keys(RESOURCES).filter(id=>id!=='gems'&&id!=='seals');
-  const MAIL_ADMIN='Ban Quản Trị Gemwoven';
+  const MAIL_ADMIN='Gemwoven';
   function welcomeMail(at){return {id:'welcome-mailbox',kind:'notice',from:MAIL_ADMIN,title:'Chào mừng đến Hòm Thư',
     body:'Chào mừng lữ khách đến với Gemwoven!\nHòm Thư là nơi Ban Quản Trị gửi thông báo và quà tặng cho bạn. Thư có quà mang biểu tượng hộp quà: mở thư và chọn “Nhận quà” để cất vật phẩm vào Túi Đồ.\nMột số thư có thời hạn và tự biến mất khi hết hạn, hãy nhận quà kịp thời. Thư đã đọc và đã nhận quà có thể xóa bất cứ lúc nào.',
     sentAt:at,expiresAt:null,attachments:[],read:false,claimed:false,source:'system'};}

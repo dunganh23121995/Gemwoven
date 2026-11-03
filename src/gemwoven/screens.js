@@ -150,7 +150,7 @@
   text('upgrade-story','Mạnh hơn\nHơn nữa\nCùng nhau\nviết tiếp\nchuyến phiêu lưu!',[40,218,126,192],24);
   image('right-story-flag','flag-blue',[819,141,112,255],{fit:'fill'});
   text('potential','Tiềm năng\nvẫn còn\nrất nhiều…',[835,192,81,132],23);
-  ['Level','Tăng Sao','Tiến Hóa'].forEach((label,i)=>button(`upgrade-tab-${i}`,'tab-wood',[226+i*164,268,160,76],label,`upgrade-tab:${i}`,{size:30,selected:i===0,group:'upgrade-tab'}));
+  ['Cấp','Tăng Sao','Tiến Hóa'].forEach((label,i)=>button(`upgrade-tab-${i}`,'tab-wood',[226+i*164,268,160,76],label,`upgrade-tab:${i}`,{size:30,selected:i===0,group:'upgrade-tab'}));
   button('hero-model','hero-fire',[292,351,330,366],'Mika','hero:fire',{labelHidden:true});
   panel('evolution-panel',[767,395,166,508],true);
   button('evolution-now','gem-fire',[793,416,116,129],'Mika hiện tại','hero:fire',{labelHidden:true});

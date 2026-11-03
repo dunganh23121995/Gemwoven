@@ -144,7 +144,7 @@
         pin.append(idleActor('idle-'+id,A[still]?still:'nav-arena',tall,w/2,top));pin.style.setProperty('--actor',tall+'px');
       }
       // The next stage's plaque is its Khiêu Chiến button (crossed swords clashing), above everything around it.
-      if(next)pin.insertAdjacentHTML('beforeend',`<span class="seal-go"><i>${img(A['icon-battle']?'icon-battle':'icon-arena')}</i>Khiêu Chiến</span>`);
+      if(next)pin.insertAdjacentHTML('beforeend',`<span class="seal-go"><i>${img(A['icon-battle']?'icon-battle':'icon-arena')}</i>Vào ải</span>`);
       layer.append(pin);
     }
     // The strongest hero stands on the last stage beaten in this chapter (beside stage 1 at the start), and walks
@@ -224,7 +224,7 @@
       region.style.cssText=`left:${x-w/2}px;top:${y-h/2}px;width:${w}px;height:${h}px;z-index:${Math.round(y)}`;
       region.style.setProperty('--ribbon',ribbon);region.style.setProperty('--float-delay',`${-(i*1.3)%6}s`);
       const tapped=c&&!open&&state.atlasLocked===n,progress=c&&M.chapterProgress(p,n);
-      region.setAttribute('aria-label',!c?'Vùng đất mới · Sắp ra mắt':hidden?`Chương ${n} · Chưa khám phá`:`Chương ${n} · ${c.name} · ${open?progress.total+'/150 sao':'Chưa mở'}`);
+      region.setAttribute('aria-label',!c?'Vùng đất mới · Sắp ra mắt':hidden?`Chương ${n} · Chưa khám phá`:`Chương ${n} · ${c.name} · ${open?'★ '+progress.total+'/150':'Chưa mở'}`);
       // Its name rides on the clouds under the island, never over the painting (an unexplored one keeps its secret).
       const name=!c?'Sắp ra mắt':hidden?'???':esc(c.name);
       region.innerHTML=img(key,'atlas-island')+`<span class="atlas-plate${tapped?' tapped':''}">${open||!c?'':img('skill-lock','atlas-lock')}<b>${c?`<small>${n}</small>`:''}${name}</b>${open?`<em>${n===current?'Đang chơi · ':''}★ ${progress.total}/150</em>`:tapped?`<em>Vượt hết chương ${n-1} để mở</em>`:!c?'<em>Coming soon</em>':''}</span>`;
@@ -263,7 +263,7 @@
     // Title stays on one line inside the banner's painted label area (safeContentRects.label); long names shrink.
     nodes.push(image(key,'title-board',A['chapter-banner']?'chapter-banner':'title-wood',[150,96,640,160]),{...text(key,'title',`Chương ${chapter} · ${def.name}`,[244,138,453,76],38),className:'single-line'});
     if(p.campaign.cleared>=chapter*50)nodes.push({...text(key,'conquered','✔ Đã vượt 50/50 ải',[640,268,290,64],26,'ink'),className:'chapter-conquered'});
-    nodes.push(button(key,'rewards',`${progress.total}/150 sao`,'button-gold',[300,250,341,100],'journey:rewards',{}, {size:34,icon:A['reward-star']?'reward-star':'chest',iconRect:[36,18,64,64],labelRect:[100,24,220,52],tone:'ink'}));
+    nodes.push(button(key,'rewards',`★ ${progress.total}/150`,'button-gold',[300,250,341,100],'journey:rewards',{}, {size:34,icon:A['reward-star']?'reward-star':'chest',iconRect:[36,18,64,64],labelRect:[100,24,220,52],tone:'ink'}));
     // Back from a chapter goes to the world atlas (chapters are chosen there); the atlas's back goes to town.
     nodes.push(button(key,'back','Bản Đồ Thế Giới',A['map-back']?'map-back':'journey-button',[787,1512,136,134],'journey:atlas',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
     if(state.mapRewards){
@@ -355,7 +355,7 @@
   }
   function settings(el){
     const levels=audioLevels(),muted=readStorage(MUTE_KEY,false);
-    el.innerHTML=`<header class="crafted-heading"><h2>Cài Đặt</h2><p>Âm thanh và gợi ý cho thị trấn, chiến đấu</p></header><div class="sound-emblem">${img('icon-settings')}</div><form id="home-audio-form"><label class="mute-control"><input type="checkbox" name="muted" ${muted?'checked':''}> Tắt toàn bộ âm thanh</label>${[['music','Nhạc nền','Giai điệu của thị trấn và các vùng đất'],['effects','Hiệu ứng','Ghép ngọc, vũ khí và kỹ năng'],['voices','Lời thoại','Giọng nói của nhân vật trong trận']].map(([key,label,hint])=>`<label class="audio-slider"><span>${label}<output for="home-volume-${key}" id="home-output-${key}">${levels[key]}%</output></span><small>${hint}</small><input id="home-volume-${key}" name="${key}" type="range" min="0" max="100" value="${levels[key]}" aria-label="${label}"></label>`).join('')}<button type="button" class="game-btn secondary" id="home-audio-reset">Mặc Định</button><p class="audio-save-note" role="status">Tự lưu khi điều chỉnh</p></form>`;
+    el.innerHTML=`<header class="crafted-heading"><h2>Cài Đặt</h2></header><div class="sound-emblem">${img('icon-settings')}</div><form id="home-audio-form"><label class="mute-control"><input type="checkbox" name="muted" ${muted?'checked':''}> Tắt toàn bộ âm thanh</label>${[['music','Nhạc nền','Giai điệu của thị trấn và các vùng đất'],['effects','Hiệu ứng','Ghép ngọc, vũ khí và kỹ năng'],['voices','Lời thoại','Giọng nói của nhân vật trong trận']].map(([key,label,hint])=>`<label class="audio-slider"><span>${label}<output for="home-volume-${key}" id="home-output-${key}">${levels[key]}%</output></span><small>${hint}</small><input id="home-volume-${key}" name="${key}" type="range" min="0" max="100" value="${levels[key]}" aria-label="${label}"></label>`).join('')}<button type="button" class="game-btn secondary" id="home-audio-reset">Mặc Định</button><p class="audio-save-note" role="status">Tự lưu khi điều chỉnh</p></form>`;
   }
   function chatRows(){const rows=readStorage(CHAT_KEY,[]);return Array.isArray(rows)?rows.filter(r=>typeof r.text==='string'&&r.text.trim()&&r.text.length<=240&&Number.isFinite(r.at)&&Math.abs(r.at)<=8.64e15&&M.HEROES[r.hero]).slice(-80):[];}
   function chat(el,p,state){

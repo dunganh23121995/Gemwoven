@@ -46,26 +46,26 @@
     const [x0,y0,x1,y1]=SHELF,w=(x1-x0)/5;
     let html=M.CRAFT_RARITIES.map((r,i)=>{const g=M.craftGate(r),lock=p.campaign.cleared<g;return `<button type="button" class="fg2-ingot ${r===rarity?'on':''} ${lock?'locked':''}" data-action="forge:rarity" data-rarity="${r}" style="${part(x0+i*w,y0-10,x0+(i+1)*w,y1+12)}"><img src="${F}ingot-${r}.webp" alt="">${lock?`<em><img src="${F}lock.webp" alt="">${g}</em>`:''}<small>${esc(M.RARITIES[r].name)}</small></button>`;}).join('');
     if(result){const on=worn(p,hero,result.slot)?.id===result.id;
-      html+=recess(LEFT,'Đang mặc',cur&&cur.id!==result.id?pic(slot,cur.rarity):pic(slot,'uncommon'),cur&&cur.id!==result.id?`${esc(M.RARITIES[cur.rarity].name)} +${cur.level}`:'Trống',cur&&cur.id!==result.id?'':'empty')+
+      html+=recess(LEFT,'Đang dùng',cur&&cur.id!==result.id?pic(slot,cur.rarity):pic(slot,'uncommon'),cur&&cur.id!==result.id?`${esc(M.RARITIES[cur.rarity].name)} +${cur.level}`:'Trống',cur&&cur.id!==result.id?'':'empty')+
         recess(RIGHT,'Vừa rèn',pic(result.slot,result.rarity),`${esc(M.RARITIES[result.rarity].name)} +0${result.affix?' · '+esc(M.AFFIXES[result.affix].name):''}`,'new')+
         `<p class="fg2-strip" style="${part(...STRIP)}">${changes(stats(p,hero,q=>{if(on)delete q.heroes[hero].gear[result.slot];}),stats(p,hero,q=>{q.heroes[hero].gear[result.slot]=result.id;}))}</p>`+tray(p,c)+
-        (on?`<div class="fg2-done" style="${box(96,1330,560,112)}">✓ Đang mặc</div>`:plate(true,'Mặc ngay','forge:wear',`data-id="${result.id}"`))+
+        (on?`<div class="fg2-done" style="${box(96,1330,560,112)}">✓ Đang dùng</div>`:plate(true,'Mặc ngay','forge:wear',`data-id="${result.id}"`))+
         `<button type="button" class="fg2-small" data-action="forge:again" style="${box(672,1346,190,82)}">Rèn tiếp</button>`;
       return html;}
     const next=stats(p,hero,q=>{q.equipment.push({id:'__forge',slot,rarity,level:0,affix:null});q.heroes[hero].gear[slot]='__forge';});
-    html+=recess(LEFT,'Đang mặc',cur?pic(slot,cur.rarity):pic(slot,'uncommon'),cur?`${esc(M.RARITIES[cur.rarity].name)} +${cur.level}`:'Trống',cur?'':'empty')+`<i class="fg2-arrow" style="${box(bx(690),by(395),bs(140),bs(80))}">→</i>`+
-      recess(RIGHT,'Nếu mặc',pic(slot,rarity),`${esc(M.RARITIES[rarity].name)} +0${rarity==='divine'?' · ✦':''}`,'new')+
+    html+=recess(LEFT,'Đang dùng',cur?pic(slot,cur.rarity):pic(slot,'uncommon'),cur?`${esc(M.RARITIES[cur.rarity].name)} +${cur.level}`:'Trống',cur?'':'empty')+`<i class="fg2-arrow" style="${box(bx(690),by(395),bs(140),bs(80))}">→</i>`+
+      recess(RIGHT,'Nếu dùng',pic(slot,rarity),`${esc(M.RARITIES[rarity].name)} +0${rarity==='divine'?' · ✦':''}`,'new')+
       `<p class="fg2-strip" style="${part(...STRIP)}">${changes(M.stats(p,hero),next)}</p>`+tray(p,c);
     if(!open)return html+plate(false,`Mở sau ải ${gate}`,'forge:noop','',true)+`<button type="button" class="fg2-small gold" data-action="route:campaign" style="${box(672,1346,190,82)}">Khám Phá</button>`;
     return html+plate(affordable(p,c),'Rèn','forge:craft','',affordable(p,c));
   }
   function strengthenTab(p,state){
     const hero=state.forgeHero,g=worn(p,hero,state.forgeSlot);
-    if(!g)return recess(LEFT,'Đang mặc',pic(state.forgeSlot,'uncommon'),'Trống','empty')+recess(RIGHT,'Cần món đồ',pic(state.forgeSlot,'uncommon'),'Rèn hoặc lấy từ túi','empty')+
+    if(!g)return recess(LEFT,'Đang dùng',pic(state.forgeSlot,'uncommon'),'Trống','empty')+recess(RIGHT,'Cần món đồ',pic(state.forgeSlot,'uncommon'),'Rèn hoặc lấy từ túi','empty')+
       plate(true,'Chế tạo','forge:tab','data-index="0"')+`<button type="button" class="fg2-small" data-action="route:equipment" style="${box(672,1346,190,82)}">Chọn từ túi</button>`;
     const [x0,y0,x1,y1]=SHELF,mid=(x0+x1)/2,max=!!state.forgeMax;
     let html=[['×1',false],['Tối đa',true]].map(([t,on],i)=>`<button type="button" class="fg2-mode ${max===on?'on':''}" data-action="forge:max" data-on="${on?1:0}" style="${part(i?mid+20:x0+60,y0+40,i?x1-60:mid-20,y1-20)}">${t}</button>`).join('');
-    if(g.level>=20)return html+recess(LEFT,'Đang mặc',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +20`)+recess(RIGHT,'Đã tối đa',pic(g.slot,g.rarity),'+20','new')+`<div class="fg2-done" style="${box(96,1330,560,112)}">✓ Đã tối đa</div>`;
+    if(g.level>=20)return html+recess(LEFT,'Đang dùng',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +20`)+recess(RIGHT,'Đã tối đa',pic(g.slot,g.rarity),'+20','new')+`<div class="fg2-done" style="${box(96,1330,560,112)}">✓ Đã tối đa</div>`;
     const plan=max?G.engine.strengthenPlan(g.id):null,to=plan&&plan.to>g.level?plan.to:g.level+1,c=plan&&plan.to>g.level?plan.cost:M.strengthenCost(g);
     html+=recess(LEFT,'Hiện tại',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +${g.level}`)+`<i class="fg2-arrow" style="${box(bx(690),by(395),bs(140),bs(80))}">→</i>`+
       recess(RIGHT,'Sau khi nâng',pic(g.slot,g.rarity),`${esc(M.RARITIES[g.rarity].name)} +${to}`,'new')+

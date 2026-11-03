@@ -193,7 +193,7 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
     return {engine,storage,make,at:v=>{t=v;},edit:fn=>{const p=engine.read();fn(p);storage.setItem(M.KEY,JSON.stringify(p));}};};
   const a=fx(),ae=a.engine;let box=ae.mailbox();
   assert.equal(box.mails.length,1);assert.equal(box.unread,1);assert.equal(box.pending,0);
-  const welcome=box.mails[0];assert.equal(welcome.kind,'notice');assert.equal(welcome.from,'Ban Quản Trị Gemwoven');assert.deepEqual(welcome.attachments,[]);assert.equal(welcome.expiresAt,null);assert.equal(welcome.source,'system');
+  const welcome=box.mails[0];assert.equal(welcome.kind,'notice');assert.equal(welcome.from,'Gemwoven');assert.deepEqual(welcome.attachments,[]);assert.equal(welcome.expiresAt,null);assert.equal(welcome.source,'system');
   assert.throws(()=>ae.claimMail(welcome.id),/không có quà/);ae.readMail(welcome.id);assert.equal(ae.mailbox().unread,0);
   // Old saves without a mailbox get the single welcome notice, dated at their last save.
   a.edit(p=>{delete p.mail;p.updated=t0-5*HOUR;});const migrated=ae.read().mail;assert.equal(migrated.length,1);assert.equal(migrated[0].id,'welcome-mailbox');assert.equal(migrated[0].sentAt,t0-5*HOUR);assert.equal(ae.read().mail[0].sentAt,migrated[0].sentAt,'Migration is stable across reads');

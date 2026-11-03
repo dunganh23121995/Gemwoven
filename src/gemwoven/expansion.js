@@ -111,7 +111,7 @@
         text('recipe-count-'+i,count,[590+i*100,1393,60,24],18,{tone:'ink'});
       });
       text('recipe-arrow','→',[750,1345,34,35],26,{tone:'ink'});
-    }else{text('held-label','Số lượng đang có',[599,1310,260,32],23,{tone:'ink'});text('held-count',item[2],[599,1347,260,39],31,{tone:'ink'});}
+    }else{text('held-label','Đang có',[599,1310,260,32],23,{tone:'ink'});text('held-count',item[2],[599,1347,260,39],31,{tone:'ink'});}
     button('item-action','button-gold',[666,1410,211,58],item[3]==='gear'?'Rèn Đồ':item[3]==='book'?'Kỹ Năng':item[3]==='fragment'?'Triệu Hồi':'Chế Tạo','route:'+(item[3]==='book'?'skills':item[3]==='fragment'?'summon':'forge'),{size:29,tone:'ink'});
     footer();return {page,pages,visible:list.map(p=>p[0])};
   }

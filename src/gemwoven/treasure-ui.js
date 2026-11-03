@@ -16,9 +16,9 @@
 
   function section(){
     const on=active(),d=G.engine.treasure();
-    if(!on)return `<section class="treasure-trial"><h3>Kỳ Báu Vật <em class="trial-tag">Bản thử nghiệm cục bộ</em></h3><div class="treasure-row">${['mountain','borrow','counter'].map(f=>pic({family:f,quality:'red'},'treasure-teaser')).join('')}</div>`+
-      `<button type="button" class="game-btn" data-action="treasure:enter">Vào bản thử</button><details class="hint"><summary aria-label="Bản thử là gì">ⓘ</summary><p>Chơi trên một bản sao tài khoản: điểm, báu vật và mọi tiến triển trong bản thử không quay về tài khoản thật. Thoát bất cứ lúc nào. Máy chủ sẽ quyết định khi phát hành.</p></details></section>`;
-    return `<section class="treasure-trial is-on"><h3>Kỳ Báu Vật <em class="trial-tag">Bản thử nghiệm cục bộ</em></h3>`+
+    if(!on)return `<section class="treasure-trial"><h3>Kỳ Báu Vật <em class="trial-tag">Thử trên thiết bị</em></h3><div class="treasure-row">${['mountain','borrow','counter'].map(f=>pic({family:f,quality:'red'},'treasure-teaser')).join('')}</div>`+
+      `<button type="button" class="game-btn" data-action="treasure:enter">Chơi thử</button><details class="hint"><summary aria-label="Bản thử là gì">ⓘ</summary><p>Chơi trên một bản sao tài khoản: điểm, báu vật và mọi tiến triển trong bản thử không quay về tài khoản thật. Thoát bất cứ lúc nào. Máy chủ sẽ quyết định khi phát hành.</p></details></section>`;
+    return `<section class="treasure-trial is-on"><h3>Kỳ Báu Vật <em class="trial-tag">Thử trên thiết bị</em></h3>`+
       `<div class="treasure-points"><b>${fmt(d.points)}</b><small>điểm</small></div>`+
       (d.items.length?`<div class="treasure-grid">${d.items.map(t=>`<button type="button" data-action="treasure:open" data-id="${t.id}" class="treasure-cell q-${t.quality}" aria-label="${esc(T.families[t.family].name)} ${T.names[qi(t)]}">${pic(t)}<i>${esc(T.families[t.family].name)}</i><b class="q-badge">${T.names[qi(t)]}</b></button>`).join('')}</div>`
         :`<p class="growth-lead">🎁 Chọn quà Lam</p><div class="treasure-grid">${Object.entries(T.families).map(([f,v])=>`<button type="button" data-action="treasure:gift" data-family="${f}" class="treasure-cell q-blue">${pic({family:f,quality:'blue'})}<i>${esc(v.name)}</i></button>`).join('')}</div>`)+

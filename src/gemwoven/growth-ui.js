@@ -28,7 +28,7 @@
   }
   function tips(p,key){
     const rows=M.growthMap(p,key).filter(r=>r.state==='ready').slice(0,3);
-    if(!rows.length)return '<p class="growth-note">Chưa có bước nào làm được ngay: cày thêm nguyên liệu ở Khám Phá, Trùm Vô Tận và Tích Lũy.</p>';
+    if(!rows.length)return '<p class="growth-note">Cần thêm nguyên liệu · Khám Phá, Trùm Vô Tận, Tích Lũy</p>';
     return `<ul class="growth-tips">${rows.map(r=>`<li><span><b>${esc(r.name)}</b> ${esc(r.next)}</span><button type="button" class="gw-btn secondary" data-go="${esc(r.id)}">Đi tới</button></li>`).join('')}</ul>`;
   }
   function growthDialog(ctx,state,key){
@@ -56,7 +56,7 @@
     const days=G.engine.newbie();if(days.every(d=>d.claimed))return '';
     const name=id=>M.RESOURCES[id]?.[0]||id;
     const got=days.filter(d=>d.claimed).length,ready=days.filter(d=>d.open&&!d.claimed).length;
-    return `<section class="newbie-week"><h3>Hành Trình Tân Thủ · đã nhận ${got}/7${ready?` · <span class="newbie-ready">${ready} quà chờ nhận</span>`:''}</h3><p class="hint">Mỗi ngày một phần quà; lỡ ngày thì nhận bù. Đủ 80 Mảnh Hiro trong tuần đầu là lên 2 sao.</p>`+
+    return `<section class="newbie-week"><h3>Hành Trình Tân Thủ · đã nhận ${got}/7${ready?` · <span class="newbie-ready">${ready} quà chờ nhận</span>`:''}</h3><p class="hint">Mỗi ngày 1 quà · nhận bù được</p><details class="hint"><summary aria-label="Chi tiết">ⓘ</summary><p>Đủ 80 Mảnh Hiro trong tuần đầu là lên 2 sao.</p></details>`+
       `<div class="newbie-days">${days.map(d=>`<article class="newbie-day${d.claimed?' is-claimed':d.open?' is-open':''}"><b>Ngày ${d.day}</b>${img('portrait-novice','newbie-portrait')}`+
         `<ul>${Object.entries(d.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
         `<button type="button" class="game-btn" data-action="growth:newbie" data-day="${d.day}" ${d.open&&!d.claimed?'':'disabled'}>${d.claimed?'Đã nhận':d.open?'Nhận':`Mở sau ${d.day-days.filter(x=>x.open).length} ngày`}</button></article>`).join('')}</div></section>`;
@@ -77,7 +77,7 @@
     const bosses=M.TRIAL.chapters.map((c,i)=>({i:i+1,e:M.trialEncounter(i+1,hero.level),today:open.includes(i+1),best:p.trial?.best?.[i+1]||0,day:days[i]}));
     const card=b=>`<article class="trial-today"><div><b>${esc(b.e.enemyName)}</b><small>Hôm nay · hệ ${esc(el(b.e.enemyKey))} · cấp ${hero.level}</small>`+
       `<p>Kỷ lục: <strong>${b.best?fmt(b.best)+` · ${(b.best/b.e.enemyHp).toLocaleString('vi-VN',{maximumFractionDigits:1})} thanh`:'chưa có'}</strong></p></div>`+
-      `<div class="trial-go"><span class="trial-left ${left?'':'is-out'}">${left?`Còn <b>${left}/${M.TRIAL.rewarded}</b> lượt có thưởng`:'Hết lượt thưởng · vẫn ghi kỷ lục'}</span><button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${b.i}">Thử sức</button></div></article>`;
+      `<div class="trial-go"><span class="trial-left ${left?'':'is-out'}">${left?`Lượt nhận thưởng: <b>${left}/${M.TRIAL.rewarded}</b>`:'Hết lượt thưởng · vẫn ghi kỷ lục'}</span><button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${b.i}">Thử sức</button></div></article>`;
     const others=bosses.filter(b=>!b.today);
     return `<section class="trial-ground"><h3>Sân Thử Luyện</h3>${bosses.filter(b=>b.today).map(card).join('')}`+
       (others.length?`<ul class="trial-week">${others.map(b=>`<li class="${b.best?'done':''}" title="${esc(b.e.enemyName)}">${A['boss-'+b.e.bossId]?img('boss-'+b.e.bossId,'trial-boss'):''}<b>${esc(b.day.replace('Thứ ','T'))}</b>${b.best?'<i>✓</i>':''}</li>`).join('')}</ul>`:'')+
