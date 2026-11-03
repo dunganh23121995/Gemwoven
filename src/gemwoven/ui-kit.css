@@ -145,3 +145,6 @@
 #scene>.live-panel.hall-level-board{background:none!important;padding:0!important;box-shadow:none!important;border:solid transparent!important;border-width:26px 30px!important;border-image:var(--kit-plaque) 30 40 fill / 26px 30px stretch!important;filter:drop-shadow(0 6px 6px #2a140877)}
 #stage[data-screen="upgrade"] [data-node="upgrade.exp-value"]{background:none!important;font-size:27px!important}
 #stage[data-screen="upgrade"] [data-node="upgrade.level-preview"]{color:#ffe3a0!important;font-weight:900}
+#stage[data-screen="upgrade"] .material-tile>.copy-layer{font-size:30px!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]:not(:disabled){filter:drop-shadow(0 0 10px #ffd77a99) drop-shadow(0 5px 5px #2a140888)}
+#stage[data-screen="upgrade"] [data-node="upgrade.gain-preview"]{font-size:33px!important}

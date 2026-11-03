@@ -189,7 +189,7 @@ ${price}`);}
         label(nodes,'level-preview',max?`Cấp ${h.level} · Tối đa`:`Cấp ${h.level} → ${h.level+range.levels}`);label(nodes,'upgrade-material-title',max?'Đã đạt cấp tối đa':range.levels>1?`Nguyên liệu tăng ${range.levels} cấp`:'Nguyên liệu tăng cấp');
         disabled=max||!affordable(p,c);
         if(step===10&&range)action(nodes,'upgrade-action','art:level',{hero,count:range.levels},disabled);else action(nodes,'upgrade-action','do:level',{hero},disabled);
-        label(nodes,'upgrade-action',max?'Đã Tối Đa':range.levels>1?`Tăng ${range.levels} Level`:'Tăng Cấp');
+        label(nodes,'upgrade-action',max?'Đã Tối Đa':range.levels>1?`Tăng ${range.levels} Cấp`:'Tăng Cấp');
         gain=max?'Đã đạt cấp tối đa 500.':gainText(levelGain);
         if(!max)side=button('upgrade','level-step',step===10?'×10 ✓':'×10',[664,1344,118,58],'art:level-step',{},{asset:'nameplate',size:24,selected:step===10,className:'upgrade-side-toggle'});
       }

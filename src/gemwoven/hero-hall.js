@@ -103,6 +103,10 @@
       const i=nodes.findIndex(n=>n.id==='upgrade.level-preview');
       nodes.splice(Math.max(0,i),0,{id:'upgrade.level-board',kind:'content',rect:[188,946,566,372],className:'exploration-map hall-level-board',build:el=>{el.innerHTML='';}});
       for(const [id,rect] of [['upgrade.level-preview',[325,962,296,42]],['upgrade.exp-crystal',[212,1006,56,60]],['upgrade.exp-meter',[272,1016,440,30]],['upgrade.exp-value',[296,1050,350,32]]]){const n=nodes.find(n=>n.id===id);if(n)n.rect=rect;}
+      // Full review 3: the main action is the second thing the eye meets, the counts read at a glance.
+      for(const n of nodes){if(/^upgrade\.upgrade-materials-\d$/.test(n.id)){n.size=34;}
+        if(n.id==='upgrade.upgrade-action'){n.rect=[275,1322,392,112];n.size=44;}
+        if(/^upgrade\.(level-step|perk-list)$/.test(n.id))n.rect=[686,1348,128,62];}
     }
     nodes.push({id:'upgrade.profile-info',kind:'button',rect:[678,146,92,92],action:'hall:info',text:'upgrade.profile-info',className:'hall-info',size:40});C['upgrade.profile-info']='ⓘ';
     L.screens.upgrade.nodes=nodes;return p;
