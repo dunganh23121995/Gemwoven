@@ -135,7 +135,12 @@
     cards.forEach((el,index)=>card.sockets.top.forEach((point,side)=>{
       const end=socket(el,point);let start;
       if(index)start=socket(cards[index-1],card.sockets.bottom[side]);
-      else if(parseFloat(el.style.left)>=470)start=[end[0],Math.max(0,end[1]-48)];
+      // The right column hangs from the HUD buttons above it (mail, settings), or from the top edge without them.
+      else if(parseFloat(el.style.left)>=470){
+        const hooks=[...scene.querySelectorAll('[data-node$=".mail"],[data-node$=".settings"]')].map(h=>[parseFloat(h.style.left)+parseFloat(h.style.width)/2,parseFloat(h.style.top)+parseFloat(h.style.height)*.9]).filter(([x,y])=>y<end[1]);
+        const near=hooks.sort((a,b)=>Math.abs(a[0]-end[0])-Math.abs(b[0]-end[0]))[side?hooks.length>1?0:0:0];
+        start=near&&Math.abs(near[0]-end[0])<70?near:[end[0],0];
+      }
       else{
         const profile=scene.querySelector('.hud-profile');
         if(!profile)return;

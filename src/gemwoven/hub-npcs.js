@@ -7,6 +7,9 @@
   const npcs=Object.entries(A).filter(([k,v])=>k.startsWith('npc-')&&v.stage);
   const reduced=()=>document.body.classList.contains('reduced-motion')||!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   let timer=0;
+  // The shop's slogan pennant is gone (owner 03/11): the stall's own wares carry the mood.
+  const decorate=G.decorate;
+  G.decorate=state=>{const p=decorate(state);if(state.screen==='shop'){const L=window.GEMWOVEN_LAYOUT;L.screens.shop.nodes=L.screens.shop.nodes.filter(n=>!/^shop\.shop-story(-flag)?$/.test(n.id));}return p;};
   const mount=G.mount;
   G.mount=(state,ctx)=>{
     const r=mount(state,ctx),scene=document.getElementById('scene');
