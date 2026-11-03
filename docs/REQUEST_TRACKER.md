@@ -28,9 +28,9 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 
 | # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
 |---|---|---|---|---|
-| B1 | Bấm dùng vật phẩm trong túi thì sao? | Mỗi loại một hành động: rương mở ra (chọn món với rương tự chọn), sách EXP dùng cho tướng đã chọn, mảnh tướng ghép, vé đi triệu hồi, nguyên liệu dẫn tới nơi dùng. | 🔨 | Túi Đồ |
+| B1 | Bấm dùng vật phẩm trong túi thì sao? | Mỗi loại một nút ở khung chi tiết: mảnh tướng → **Ghép**; sách EXP/bí kíp → **Sử Dụng** (mở màn nâng); vé → triệu hồi; ngọc → **Ghép 3→1**; phiếu chọn ngọc → **Chọn**; trang bị → **Trang Bị / Phân rã / Khóa**; nguyên liệu → **Đi Tới** nơi kiếm, **Mua thêm** nếu cửa hàng có. Rương tự chọn của Sổ Hành Trình sẽ mở bằng lưới hình khi sổ chạy (cần máy chủ thanh toán). | ✅ | Túi Đồ |
 | B2 | Quá nhiều vũ khí, trang bị cấp thấp thì xử lý thế nào? | Thống nhất với Codex: túi 500 (cảnh báo 450), phân giải hàng loạt có lọc ô/phẩm và xem trước tổng thu hồi, hoàn 70% chi phí cường hóa, khóa món, tự phân giải mặc định tắt, "Mặc tốt nhất"; không dung luyện. | ✅ | Túi Đồ → Trang Bị (nút Phân giải hàng loạt, Khóa, Phân rã) · Tướng → ô đồ (Mặc tốt nhất) |
-| B3 | Cái gì bán ở cửa hàng, cái gì không? | Bảng đầy đủ. Không bán tướng trực tiếp và Mảnh Hiro; bán nguyên liệu, rương, vé theo giới hạn. | ✅ bảng · 🔨 cửa hàng theo bảng | §8 |
+| B3 | Cái gì bán ở cửa hàng, cái gì không? | Bảng §8: không bán tướng, Mảnh Hiro, Đá Ngọc, vé bằng vàng. Cửa hàng Vàng: nguyên liệu, bí kíp (5/ngày); Đá Ngọc: tinh hoa (10/ngày), thần thạch (5/tuần), đồ Huyền Thoại/Thần (1 món/tuần mỗi loại); số lượt còn lại hiện cạnh giá. Ngọc khảm bằng vàng chờ Codex chốt (ảnh hưởng nhịp 100 ngày tới ngọc cấp 5). | ✅ | Cửa Hàng |
 | B4 | Cái gì cần triệu hồi, mở rộng cho sự kiện | Tướng hiếm qua banner 2 tuần; vũ khí bản mệnh banner riêng; cửa hàng đổi mảnh; mẫu sự kiện cho Studio. | ✅ tỉ lệ 1%/100 · 📐 banner | §9 |
 
 ## C. Kiếm tiền, VIP, thẻ, sổ

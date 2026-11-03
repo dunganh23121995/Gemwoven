@@ -183,3 +183,9 @@ console.log('titles ok');
   e.claimWeekly&&0;edit(p=>{p.gemChoices=1;});e.pickGem('def');assert.equal(e.read().gems['def-1'],1);assert.throws(()=>e.pickGem('def'),/phiếu/);
 }
 console.log('gems ok');
+{ // Shop limits (GAME_DESIGN §8): per day / per week, counted on the server-side rule copy.
+  const {engine:e,edit}=fixture();edit(p=>{p.wallet.gold=1e7;p.wallet.gems=1e5;});
+  e.purchase('skillBooks',5);assert.throws(()=>e.purchase('skillBooks',1),/hết lượt/);assert.equal(e.shopLeft('exp'),Infinity);
+  e.purchase('legendary-weapon',1);assert.throws(()=>e.purchase('legendary-weapon',1),/tuần này/);
+}
+console.log('shop limits ok');

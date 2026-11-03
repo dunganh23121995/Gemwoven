@@ -259,5 +259,8 @@
   ].map(([id,name,kind,target,rarity,currency,price,asset,description])=>({id,name,kind,target,rarity,currency,price,asset,description}));
   for(const [slot,name]of [['helmet','Mũ'],['pants','Quần'],['glasses','Kính']])for(const [rarity,label,price]of [['legendary','Huyền Thoại',2000],['divine','Thần',5200]])SHOP.push({id:rarity+'-'+slot,name:name+' '+label,kind:'gear',target:slot,rarity,currency:'gems',price,asset:'gear-'+slot,description:name+' dùng chung giữa các tướng. Cường hóa tối đa +20.'});
   for(const row of SHOP)if(row.kind==='gear'&&row.target==='armor')row.asset='gear-armor';
+  // Limits from the shop table (GAME_DESIGN §8): per GMT+7 day or per week (Monday).
+  const LIMITS={skillBooks:['day',5],essence:['day',10],divineOre:['week',5]};
+  for(const row of SHOP){if(LIMITS[row.id])row.limit={per:LIMITS[row.id][0],n:LIMITS[row.id][1]};if(row.kind==='gear')row.limit={per:'week',n:1};}
   return {BOSSES,CHAPTERS,CREATURE_NAMES,SHOP,chapterForStage,EXPANSION,MAX_STAGES:CHAPTERS.length*50,ELITE_EVERY:5,COMMON_SKILL,ELITE_SKILLS,ELITE_BASIC,tacticalSkill,tacticalElite};
 });
