@@ -1,0 +1,749 @@
+{
+ "purpose": "Gặp Gỡ plaza UI pieces drawn by Codex from the approved mockups (assets/gemwoven/raw/plaza-ui, plaza.js).",
+ "items": {
+  "plaza-ui-action": {
+   "file": "assets/gemwoven/plaza/ui/action.webp",
+   "width": 1000,
+   "height": 182,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-arrow": {
+   "file": "assets/gemwoven/plaza/ui/arrow.webp",
+   "width": 142,
+   "height": 158,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-back": {
+   "file": "assets/gemwoven/plaza/ui/back.webp",
+   "width": 256,
+   "height": 260,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-bubble": {
+   "file": "assets/gemwoven/plaza/ui/bubble.webp",
+   "width": 578,
+   "height": 203,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-bubble-tail": {
+   "file": "assets/gemwoven/plaza/ui/bubble-tail.webp",
+   "width": 98,
+   "height": 79,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-chan": {
+   "file": "assets/gemwoven/plaza/ui/chan.webp",
+   "width": 318,
+   "height": 168,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-close": {
+   "file": "assets/gemwoven/plaza/ui/close.webp",
+   "width": 238,
+   "height": 238,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-crest": {
+   "file": "assets/gemwoven/plaza/ui/crest.webp",
+   "width": 161,
+   "height": 188,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-e-angry": {
+   "file": "assets/gemwoven/plaza/ui/e-angry.webp",
+   "width": 200,
+   "height": 192,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-cheer": {
+   "file": "assets/gemwoven/plaza/ui/e-cheer.webp",
+   "width": 200,
+   "height": 180,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-cry": {
+   "file": "assets/gemwoven/plaza/ui/e-cry.webp",
+   "width": 200,
+   "height": 173,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-duel": {
+   "file": "assets/gemwoven/plaza/ui/e-duel.webp",
+   "width": 200,
+   "height": 188,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-laugh": {
+   "file": "assets/gemwoven/plaza/ui/e-laugh.webp",
+   "width": 200,
+   "height": 193,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-love": {
+   "file": "assets/gemwoven/plaza/ui/e-love.webp",
+   "width": 200,
+   "height": 186,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-think": {
+   "file": "assets/gemwoven/plaza/ui/e-think.webp",
+   "width": 199,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-e-wave": {
+   "file": "assets/gemwoven/plaza/ui/e-wave.webp",
+   "width": 200,
+   "height": 193,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emotes-raw.png"
+  },
+  "plaza-ui-field": {
+   "file": "assets/gemwoven/plaza/ui/field.webp",
+   "width": 775,
+   "height": 168,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-field-form": {
+   "file": "assets/gemwoven/plaza/ui/field-form.webp",
+   "width": 1000,
+   "height": 128,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-fill": {
+   "file": "assets/gemwoven/plaza/ui/fill.webp",
+   "width": 996,
+   "height": 57,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-g-crown": {
+   "file": "assets/gemwoven/plaza/ui/g-crown.webp",
+   "width": 168,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-flame": {
+   "file": "assets/gemwoven/plaza/ui/g-flame.webp",
+   "width": 167,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-fox": {
+   "file": "assets/gemwoven/plaza/ui/g-fox.webp",
+   "width": 171,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-gem": {
+   "file": "assets/gemwoven/plaza/ui/g-gem.webp",
+   "width": 167,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-leaf": {
+   "file": "assets/gemwoven/plaza/ui/g-leaf.webp",
+   "width": 168,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-moon": {
+   "file": "assets/gemwoven/plaza/ui/g-moon.webp",
+   "width": 168,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-owl": {
+   "file": "assets/gemwoven/plaza/ui/g-owl.webp",
+   "width": 170,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-shield": {
+   "file": "assets/gemwoven/plaza/ui/g-shield.webp",
+   "width": 167,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-star": {
+   "file": "assets/gemwoven/plaza/ui/g-star.webp",
+   "width": 170,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-sun": {
+   "file": "assets/gemwoven/plaza/ui/g-sun.webp",
+   "width": 168,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-sword": {
+   "file": "assets/gemwoven/plaza/ui/g-sword.webp",
+   "width": 166,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-g-wave": {
+   "file": "assets/gemwoven/plaza/ui/g-wave.webp",
+   "width": 170,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-emblems-raw.png"
+  },
+  "plaza-ui-h-chat": {
+   "file": "assets/gemwoven/plaza/ui/h-chat.webp",
+   "width": 200,
+   "height": 165,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-guild": {
+   "file": "assets/gemwoven/plaza/ui/h-guild.webp",
+   "width": 200,
+   "height": 166,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-meet": {
+   "file": "assets/gemwoven/plaza/ui/h-meet.webp",
+   "width": 200,
+   "height": 135,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-spar": {
+   "file": "assets/gemwoven/plaza/ui/h-spar.webp",
+   "width": 200,
+   "height": 147,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-h-walk": {
+   "file": "assets/gemwoven/plaza/ui/h-walk.webp",
+   "width": 200,
+   "height": 195,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-i-block": {
+   "file": "assets/gemwoven/plaza/ui/i-block.webp",
+   "width": 200,
+   "height": 187,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-board": {
+   "file": "assets/gemwoven/plaza/ui/i-board.webp",
+   "width": 200,
+   "height": 161,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-checkin": {
+   "file": "assets/gemwoven/plaza/ui/i-checkin.webp",
+   "width": 200,
+   "height": 192,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-emote": {
+   "file": "assets/gemwoven/plaza/ui/i-emote.webp",
+   "width": 200,
+   "height": 168,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-friends": {
+   "file": "assets/gemwoven/plaza/ui/i-friends.webp",
+   "width": 200,
+   "height": 151,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-gate": {
+   "file": "assets/gemwoven/plaza/ui/i-gate.webp",
+   "width": 200,
+   "height": 165,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-goto": {
+   "file": "assets/gemwoven/plaza/ui/i-goto.webp",
+   "width": 200,
+   "height": 181,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-goto-off": {
+   "file": "assets/gemwoven/plaza/ui/i-goto-off.webp",
+   "width": 200,
+   "height": 183,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-i-guild": {
+   "file": "assets/gemwoven/plaza/ui/i-guild.webp",
+   "width": 200,
+   "height": 193,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-heart": {
+   "file": "assets/gemwoven/plaza/ui/i-heart.webp",
+   "width": 200,
+   "height": 197,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-heart-done": {
+   "file": "assets/gemwoven/plaza/ui/i-heart-done.webp",
+   "width": 200,
+   "height": 196,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-i-help": {
+   "file": "assets/gemwoven/plaza/ui/i-help.webp",
+   "width": 182,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-invite": {
+   "file": "assets/gemwoven/plaza/ui/i-invite.webp",
+   "width": 200,
+   "height": 191,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-lantern": {
+   "file": "assets/gemwoven/plaza/ui/i-lantern.webp",
+   "width": 140,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-letter": {
+   "file": "assets/gemwoven/plaza/ui/i-letter.webp",
+   "width": 200,
+   "height": 139,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-log": {
+   "file": "assets/gemwoven/plaza/ui/i-log.webp",
+   "width": 200,
+   "height": 167,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-map": {
+   "file": "assets/gemwoven/plaza/ui/i-map.webp",
+   "width": 200,
+   "height": 147,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-near": {
+   "file": "assets/gemwoven/plaza/ui/i-near.webp",
+   "width": 200,
+   "height": 139,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-report": {
+   "file": "assets/gemwoven/plaza/ui/i-report.webp",
+   "width": 200,
+   "height": 176,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-i-swords": {
+   "file": "assets/gemwoven/plaza/ui/i-swords.webp",
+   "width": 200,
+   "height": 181,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
+  },
+  "plaza-ui-knob": {
+   "file": "assets/gemwoven/plaza/ui/knob.webp",
+   "width": 123,
+   "height": 123,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-knob-off": {
+   "file": "assets/gemwoven/plaza/ui/knob-off.webp",
+   "width": 259,
+   "height": 261,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-knot": {
+   "file": "assets/gemwoven/plaza/ui/knot.webp",
+   "width": 177,
+   "height": 140,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-dark": {
+   "file": "assets/gemwoven/plaza/ui/lamp-dark.webp",
+   "width": 148,
+   "height": 210,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-off": {
+   "file": "assets/gemwoven/plaza/ui/lamp-off.webp",
+   "width": 148,
+   "height": 210,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-on": {
+   "file": "assets/gemwoven/plaza/ui/lamp-on.webp",
+   "width": 148,
+   "height": 210,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-lamp-wait": {
+   "file": "assets/gemwoven/plaza/ui/lamp-wait.webp",
+   "width": 149,
+   "height": 210,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-ledge": {
+   "file": "assets/gemwoven/plaza/ui/ledge.webp",
+   "width": 1000,
+   "height": 124,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-notice": {
+   "file": "assets/gemwoven/plaza/ui/notice.webp",
+   "width": 1000,
+   "height": 195,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-npc-tag": {
+   "file": "assets/gemwoven/plaza/ui/npc-tag.webp",
+   "width": 208,
+   "height": 116,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-plaque": {
+   "file": "assets/gemwoven/plaza/ui/plaque.webp",
+   "width": 381,
+   "height": 387,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-plate": {
+   "file": "assets/gemwoven/plaza/ui/plate.webp",
+   "width": 579,
+   "height": 122,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-plate-me": {
+   "file": "assets/gemwoven/plaza/ui/plate-me.webp",
+   "width": 582,
+   "height": 122,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-rail": {
+   "file": "assets/gemwoven/plaza/ui/rail.webp",
+   "width": 1000,
+   "height": 132,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-seal": {
+   "file": "assets/gemwoven/plaza/ui/seal.webp",
+   "width": 177,
+   "height": 178,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-send": {
+   "file": "assets/gemwoven/plaza/ui/send.webp",
+   "width": 307,
+   "height": 169,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-composer-raw.png"
+  },
+  "plaza-ui-sign": {
+   "file": "assets/gemwoven/plaza/ui/sign.webp",
+   "width": 976,
+   "height": 238,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-socket": {
+   "file": "assets/gemwoven/plaza/ui/socket.webp",
+   "width": 256,
+   "height": 259,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-stick-ring": {
+   "file": "assets/gemwoven/plaza/ui/stick-ring.webp",
+   "width": 288,
+   "height": 293,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-stick-thumb": {
+   "file": "assets/gemwoven/plaza/ui/stick-thumb.webp",
+   "width": 199,
+   "height": 201,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-world-raw.png"
+  },
+  "plaza-ui-strip": {
+   "file": "assets/gemwoven/plaza/ui/strip.webp",
+   "width": 982,
+   "height": 150,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-controls-raw.png"
+  },
+  "plaza-ui-switch": {
+   "file": "assets/gemwoven/plaza/ui/switch.webp",
+   "width": 241,
+   "height": 107,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-switch-off": {
+   "file": "assets/gemwoven/plaza/ui/switch-off.webp",
+   "width": 300,
+   "height": 131,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-switch-on": {
+   "file": "assets/gemwoven/plaza/ui/switch-on.webp",
+   "width": 300,
+   "height": 131,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-t-blue": {
+   "file": "assets/gemwoven/plaza/ui/t-blue.webp",
+   "width": 200,
+   "height": 191,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-t-gold": {
+   "file": "assets/gemwoven/plaza/ui/t-gold.webp",
+   "width": 200,
+   "height": 191,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-t-red": {
+   "file": "assets/gemwoven/plaza/ui/t-red.webp",
+   "width": 200,
+   "height": 191,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-tab": {
+   "file": "assets/gemwoven/plaza/ui/tab.webp",
+   "width": 386,
+   "height": 119,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tab-on": {
+   "file": "assets/gemwoven/plaza/ui/tab-on.webp",
+   "width": 386,
+   "height": 138,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tag": {
+   "file": "assets/gemwoven/plaza/ui/tag.webp",
+   "width": 245,
+   "height": 94,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tile": {
+   "file": "assets/gemwoven/plaza/ui/tile.webp",
+   "width": 260,
+   "height": 250,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-tile-off": {
+   "file": "assets/gemwoven/plaza/ui/tile-off.webp",
+   "width": 300,
+   "height": 292,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "plaza-ui-tile-on": {
+   "file": "assets/gemwoven/plaza/ui/tile-on.webp",
+   "width": 266,
+   "height": 254,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-trough": {
+   "file": "assets/gemwoven/plaza/ui/trough.webp",
+   "width": 1000,
+   "height": 79,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-fittings-raw.png"
+  },
+  "plaza-ui-x-calendar": {
+   "file": "assets/gemwoven/plaza/ui/x-calendar.webp",
+   "width": 200,
+   "height": 175,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-x-empty": {
+   "file": "assets/gemwoven/plaza/ui/x-empty.webp",
+   "width": 187,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  },
+  "plaza-ui-x-recruit": {
+   "file": "assets/gemwoven/plaza/ui/x-recruit.webp",
+   "width": 164,
+   "height": 200,
+   "transparent": true,
+   "textless": true,
+   "source": "assets/gemwoven/raw/plaza-ui/sheet-extras-raw.png"
+  }
+ }
+}

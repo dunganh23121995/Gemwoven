@@ -18038,7 +18038,7 @@
   "plaza-ui-i-guild": {
     "file": "assets/gemwoven/plaza/ui/i-guild.webp",
     "width": 200,
-    "height": 156,
+    "height": 193,
     "transparent": true,
     "textless": true,
     "source": "assets/gemwoven/raw/plaza-ui/sheet-icons-raw.png"
@@ -19047,6 +19047,138 @@
     "transparent": true,
     "textless": true,
     "source": "assets/gemwoven/raw/plaza-ui/sheet-states-raw.png"
+  },
+  "kit-icon-emblem-trophy": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-trophy.webp",
+    "width": 191,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-emblem-calendar": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-calendar.webp",
+    "width": 188,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-emblem-coins": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-coins.webp",
+    "width": 188,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-emblem-swords": {
+    "file": "assets/gemwoven/ui-kit/icon-emblem-swords.webp",
+    "width": 187,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-helm": {
+    "file": "assets/gemwoven/ui-kit/icon-helm.webp",
+    "width": 192,
+    "height": 163,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-swords": {
+    "file": "assets/gemwoven/ui-kit/icon-swords.webp",
+    "width": 192,
+    "height": 183,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-skull": {
+    "file": "assets/gemwoven/ui-kit/icon-skull.webp",
+    "width": 192,
+    "height": 187,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-stairs": {
+    "file": "assets/gemwoven/ui-kit/icon-stairs.webp",
+    "width": 184,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-gift": {
+    "file": "assets/gemwoven/ui-kit/icon-gift.webp",
+    "width": 185,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-trophy": {
+    "file": "assets/gemwoven/ui-kit/icon-trophy.webp",
+    "width": 192,
+    "height": 179,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-farm": {
+    "file": "assets/gemwoven/ui-kit/icon-farm.webp",
+    "width": 184,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
+  },
+  "kit-icon-hourglass": {
+    "file": "assets/gemwoven/ui-kit/icon-hourglass.webp",
+    "width": 152,
+    "height": 192,
+    "textless": true,
+    "source": "assets/gemwoven/raw/ui-kit/panels/icons2-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/ui-kit/panels/icons2-prompt.txt"
+    ],
+    "purpose": "UI kit icons for the panel screens (Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận; mockups assets/gemwoven/raw/ui-kit/panels)."
   },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",
@@ -21399,232 +21531,5 @@
     "rows": 4,
     "count": 24,
     "ms": 1800
-  },
-  "skilltree-frame-learned": {
-    "file": "assets/gemwoven/skill-tree/frame-learned.webp",
-    "width": 320,
-    "height": 327,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-frame-selected": {
-    "file": "assets/gemwoven/skill-tree/frame-selected.webp",
-    "width": 331,
-    "height": 326,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-frame-locked": {
-    "file": "assets/gemwoven/skill-tree/frame-locked.webp",
-    "width": 325,
-    "height": 361,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-pointer": {
-    "file": "assets/gemwoven/skill-tree/pointer.webp",
-    "width": 120,
-    "height": 53,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-sprout": {
-    "file": "assets/gemwoven/skill-tree/sprout.webp",
-    "width": 100,
-    "height": 72,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-rank-plate": {
-    "file": "assets/gemwoven/skill-tree/rank-plate.webp",
-    "width": 360,
-    "height": 105,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-gate-plate": {
-    "file": "assets/gemwoven/skill-tree/gate-plate.webp",
-    "width": 400,
-    "height": 173,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-bud": {
-    "file": "assets/gemwoven/skill-tree/bud.webp",
-    "width": 240,
-    "height": 152,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-ribbon": {
-    "file": "assets/gemwoven/skill-tree/ribbon.webp",
-    "width": 440,
-    "height": 96,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-tray": {
-    "file": "assets/gemwoven/skill-tree/tray.webp",
-    "width": 810,
-    "height": 282,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-next-card": {
-    "file": "assets/gemwoven/skill-tree/next-card.webp",
-    "width": 560,
-    "height": 257,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-header-tag": {
-    "file": "assets/gemwoven/skill-tree/header-tag.webp",
-    "width": 400,
-    "height": 97,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-category-plate": {
-    "file": "assets/gemwoven/skill-tree/category-plate.webp",
-    "width": 400,
-    "height": 72,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-bough": {
-    "file": "assets/gemwoven/skill-tree/bough.webp",
-    "width": 466,
-    "height": 900,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-button-ready": {
-    "file": "assets/gemwoven/skill-tree/button-ready.webp",
-    "width": 700,
-    "height": 196,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "skilltree-button-locked": {
-    "file": "assets/gemwoven/skill-tree/button-locked.webp",
-    "width": 700,
-    "height": 197,
-    "textless": true,
-    "source": "assets/gemwoven/raw/skill-tree/",
-    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
-  },
-  "arena-cup-sign": {
-    "file": "assets/gemwoven/arena/cup-sign.webp",
-    "width": 827,
-    "height": 355,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-frame-bronze": {
-    "file": "assets/gemwoven/arena/frame-bronze.webp",
-    "width": 333,
-    "height": 327,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-frame-gold": {
-    "file": "assets/gemwoven/arena/frame-gold.webp",
-    "width": 337,
-    "height": 335,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-frame-silver": {
-    "file": "assets/gemwoven/arena/frame-silver.webp",
-    "width": 332,
-    "height": 330,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-match": {
-    "file": "assets/gemwoven/arena/match.webp",
-    "width": 900,
-    "height": 344,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-mode-rack": {
-    "file": "assets/gemwoven/arena/mode-rack.webp",
-    "width": 1184,
-    "height": 313,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-ribbon": {
-    "file": "assets/gemwoven/arena/ribbon.webp",
-    "width": 455,
-    "height": 103,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-a-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-row": {
-    "file": "assets/gemwoven/arena/row.webp",
-    "width": 1400,
-    "height": 245,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
-  },
-  "arena-slot": {
-    "file": "assets/gemwoven/arena/slot.webp",
-    "width": 320,
-    "height": 309,
-    "textless": true,
-    "source": "assets/gemwoven/raw/arena-mockup/",
-    "promptFiles": [
-      "assets/gemwoven/raw/arena-mockup/sheet-b-prompt.txt"
-    ],
-    "purpose": "Đấu Trường / Cúp Đấu Trường pieces drawn by Codex from the approved mockup (arena-ui.js)."
   }
 }

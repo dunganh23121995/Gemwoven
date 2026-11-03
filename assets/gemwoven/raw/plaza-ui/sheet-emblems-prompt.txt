@@ -1,0 +1,5 @@
+Reference image 1 is the approved Gặp Gỡ plaza mockup of Gemwoven (cozy hand-painted chibi fantasy mobile RPG). Draw 12 separate GUILD EMBLEM badges, all on the same base shape: a small heraldic shield of deep blue enamel with an aged brass rim, each with a different painted brass-and-colour symbol in the middle, arranged 4 columns x 3 rows, each centred in its own cell with wide empty magenta space around it, no text:
+Row 1: (1) a sword; (2) a round shield; (3) a crown; (4) a faceted gem.
+Row 2: (5) a crescent moon; (6) a sun; (7) a leaf; (8) a flame.
+Row 3: (9) an ocean wave; (10) a five-point star; (11) an owl head; (12) a fox head.
+Each badge about 230x260 in a 384x340 cell. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.

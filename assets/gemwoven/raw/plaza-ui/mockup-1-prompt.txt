@@ -1,0 +1,83 @@
+Attached references, in order: (1) studio-main.png — the current plaza in the Studio page (use only its geography, actors and HUD); (2) plaza-map.png — the full plaza map painting; (3) phone-forge.png — an approved screen of the same game; (4) forge-mockup.png — an approved mockup; (5) chrome.png — existing painted frames of the game.
+
+Use case: ui-mockup.
+Create ONE finished art-direction mockup of Gemwoven’s redesigned Gặp Gỡ plaza, a portrait mobile match-3 RPG.
+
+OUTPUT
+One opaque 2:3 portrait image, ideally 1200×1800.
+Center a complete 941×1672 logical game screen, scaled proportionally to approximately 1013×1800. Extend only plaza scenery into the narrow side margins. Keep all interface elements inside the central screen.
+No phone device, browser, Studio toolbar, sidebar, annotations, or alternative designs.
+
+REFERENCES
+01-main.png and studio-main.png: existing plaza geography, actors, and shared resource HUD only; replace their plaza interface.
+phone-forge.png, forge-mockup.png: strict references for painted craftsmanship and typography.
+chrome.png: reusable material and frame vocabulary.
+Do not reproduce the current cream web-style boxes.
+
+ART DIRECTION
+Cozy hand-painted chibi fantasy. Warm timber signs, worn leather, aged brass, soft parchment, restrained ivy, small lantern fittings. Clear silhouettes, readable surfaces, modest ornament.
+Every visible control surface, frame, plate, icon, badge, and bubble must look individually painted.
+Words and numbers represent crisp HTML overlays, not lettering engraved into production assets.
+
+STATE
+Existing account, online. Your hero and TWO other nearby live players: THREE people total. Preserve the existing shared HUD portrait, level, balances, and mail exactly.
+One chat bubble only. Two ticker lines. Composer empty. No keyboard, sheet, bottom navigation, or joystick at rest.
+The context action “Sẵn sàng giao hữu” is visible because your hero is beside the sparring ring.
+
+LAYOUT
+Coordinates below refer to the central 941×1672 logical screen, origin top-left.
+
+Y 0–150:
+Preserve the shared resource HUD.
+
+X 20–130, Y 174–284:
+Painted brass-and-wood back medallion with “‹”.
+
+X 144–764, Y 166–294:
+Compact wooden sign reading “Gặp Gỡ · Quảng Trường”.
+Below it, a separate dark leather channel strip, tiny green lantern light, and “Kênh 1 · 3 người”.
+Keep the full place name readable.
+
+X 779–923:
+Four separate 144×140 wooden hanging plaques at Y 330, 486, 642, 798.
+Generous painted icons above short labels:
+“Bạn bè”, paired companions, wax badge “2”;
+“Bang hội”, guild crest, wax badge “1”;
+“Biểu cảm”, smiling guide-cat face;
+“Thêm”, small utility satchel.
+Icons share the same painted style. No emoji.
+
+Y 300–1270:
+The map remains the main visual.
+Recognizable stone fountain centrally, guild gate toward the top, notice board left, practice ring right, market stalls, lanterns, and guide cat lower-left.
+Frame the existing square toward its sparring area without changing its geography.
+Show your hero near the ring around X 610, Y 1180; nearby players around X 320, Y 1110 and X 700, Y 1060.
+Keep bodies, nameplates, and walkable ground readable.
+Names: your hero “Lữ Khách Vân”, players “Kiếm Sĩ Lam” and “Hoa Mai”.
+Use quiet painted nameplates: your blue clasp, a green friendship knot, and a brass guild crest. Gold “[ABC]” beside a guild member’s name. Preserve existing worn-title plate artwork.
+The guide cat has a small “NPC” pennant.
+One parchment speech bubble above Kiếm Sĩ Lam: “Chào mọi người!”
+Do not overlap names, actors, sidebar, or other text.
+
+X 365–915, Y 1284–1396:
+One substantial leather-and-brass action plate, separate painted practice-swords icon, exact text “Sẵn sàng giao hữu”.
+
+X 20–921, Y 1408–1512:
+A shallow dark leather ticker rail, two readable lines with separate small parchment channel tags:
+“Bang” — “Hoa Mai: Gặp ở Sảnh Bang nhé!”
+“Hệ thống” — “Kiếm Sĩ Lam vừa vào.”
+Leave text padding and breathing room.
+
+Y 1522–1672:
+A shallow painted wooden writing ledge, not a flat brown strip.
+At Y 1542–1652:
+X 20–204: wooden channel selector “Khu vực” with small downward chevron.
+X 220–760: recessed parchment input, placeholder “Nhắn gì đó…”, counter “0/120”.
+X 776–921: illustrated brass send plate with folded-letter icon and “Gửi”.
+Keep text-entry space quiet and generous.
+
+FINISH
+Warm readable serif labels, correct Vietnamese accents, ordinary text approximately 36–40 logical pixels.
+All lettering stays inside clean safe areas.
+Match the approved screens’ craft without excessive gold, bloom, or decoration.
+No repeated cream rounded rectangles, CSS-looking cards, emoji, tiny instructions, oversized panels, or bottom navigation.

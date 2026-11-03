@@ -12,6 +12,13 @@
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN');
   const asset=key=>A[key]?.file||'';
+  // Drawn plaza pieces (assets/gemwoven/plaza/ui, cut from Codex sheets by assets/gemwoven/raw/plaza-ui/cut.py).
+  const ui=name=>asset('plaza-ui-'+name)||`assets/gemwoven/plaza/ui/${name}.webp`;
+  const icon=(name,cls='pz-ico')=>`<img class="${cls}" src="${esc(ui(name))}" alt="" draggable="false">`;
+  const CSS_PIECES=['back','sign','strip','plaque','seal','action','ledge','rail','chan','field','send','plate','plate-me','npc-tag','bubble','bubble-tail',
+    'stick-ring','stick-thumb','close','socket','tile','tile-on','tile-off','switch-on','switch-off','knob-off','tab','tab-on','tag','switch','knob','field-form','notice','trough','fill','lamp-on','lamp-wait','lamp-off','lamp-dark','knot','crest','arrow'];
+  const EMBLEM=e=>`<img class="pz-emblem" src="${esc(ui('g-'+(S.GUILD_EMBLEMS.includes(e)?e:'sword')))}" alt="">`;
+  const empty=text=>`<li class="empty">${icon('x-empty','pz-empty-art')}<span>${text}</span></li>`;
   const ACCOUNT_KEY='gemwoven.social.v1',PREFS_KEY='gemwoven.plaza.v1';
   const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k)||'null')??f;}catch{return f;}};
   const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}};
@@ -90,10 +97,12 @@
   function heroSheet(hero,look){const forms=sprites[hero]||sprites.novice||{};return forms[String(look)]||forms['1']||null;}
   function makeActor(id,{name,hero='novice',look=1,npc=null,tag='',title='',x,y}){
     const el=document.createElement('div');el.className='pz-actor'+(npc?' is-npc':'')+(id==='me'?' is-me':'');el.dataset.id=id;
-    el.innerHTML=`<div class="pz-shadow"></div><div class="pz-body"></div><button type="button" class="pz-hit" aria-label="${esc(name)}"></button><div class="pz-plate"><span class="pz-title"></span><span class="pz-name"></span></div><div class="pz-bubbles"></div><div class="pz-emote"></div>`;
-    const a={id,el,name,hero,look,npc,tag,title,pos:[x,y],target:[x,y],side:0,dir:1,moving:false,frame:0,sheet:null,bubbles:[]};
+    el.innerHTML=`<div class="pz-shadow"></div><div class="pz-body"></div><button type="button" class="pz-hit" aria-label="${esc(name)}"></button>`;
+    // Name plate, speech and emotes ride in a layer above every body so nobody's sprite hides them.
+    const lab=document.createElement('div');lab.className='pz-actor pz-labels'+(npc?' is-npc':'')+(id==='me'?' is-me':'');lab.innerHTML=`<div class="pz-plate"><span class="pz-title"></span><span class="pz-name"></span></div><div class="pz-bubbles"></div><div class="pz-emote"></div>`;
+    const a={id,el,lab,name,hero,look,npc,tag,title,pos:[x,y],target:[x,y],side:0,dir:1,moving:false,frame:0,sheet:null,bubbles:[]};
     el.querySelector('.pz-hit').addEventListener('click',e=>{e.stopPropagation();talkTo(a);});
-    setLook(a,hero,look,npc);setPlate(a);P.world.append(el);P.actors.set(id,a);return a;
+    setLook(a,hero,look,npc);setPlate(a);P.world.append(el);labels().append(lab);P.actors.set(id,a);return a;
   }
   function setLook(a,hero,look,npc){
     a.hero=hero;a.look=look;const body=a.el.querySelector('.pz-body');
@@ -109,12 +118,14 @@
     body.style.cssText=`background-image:url("${s.src}");background-size:${s.cols*100}% ${s.rows*100}%;width:${size}px;height:${size}px;left:${-fx*size}px;top:${-foot*size}px;transform-origin:${fx*100}% ${foot*100}%`;
   }
   function setPlate(a){
-    a.el.querySelector('.pz-name').innerHTML=(a.tag?`<b>[${esc(a.tag)}]</b> `:'')+esc(a.name)+(a.npc?' <i>NPC</i>':'');
+    const friend=!a.npc&&a!==P.me&&P.friends.friends.some(f=>f.id===a.id),mate=!a.npc&&a!==P.me&&!!P.guild?.members?.some(m=>m.id===a.id);
+    // Drawn plate (own plate has blue clasps); a friendship knot or a guild crest rides in front of the name.
+    a.lab.querySelector('.pz-name').innerHTML=(friend?icon('knot','pz-mark'):'')+(mate?icon('crest','pz-mark'):'')+(a.tag?`<b>[${esc(a.tag)}]</b>`:'')+`<span>${esc(a.name)}</span>`+(a.npc?'<i>NPC</i>':'');
     // The worn title rides above the name on its rarity plate (assets/gemwoven/titles), as in combat.
-    const t=a.el.querySelector('.pz-title');t.hidden=!a.title;t.innerHTML=a.title?`<span class="title-plate tier-${a.titleTier||1}"><img src="assets/gemwoven/titles/plate-${a.titleTier||1}.webp" alt=""><b>${esc(a.title)}</b></span>`:'';
-    a.el.querySelector('.pz-plate').style.top=`${a.headY-(a.title?84:30)}px`;a.el.querySelector('.pz-bubbles').style.bottom=`${-a.headY+40}px`;a.el.querySelector('.pz-emote').style.bottom=`${-a.headY+36}px`;
+    const t=a.lab.querySelector('.pz-title');t.hidden=!a.title;t.innerHTML=a.title?`<span class="title-plate tier-${a.titleTier||1}"><img src="assets/gemwoven/titles/plate-${a.titleTier||1}.webp" alt=""><b>${esc(a.title)}</b></span>`:'';
+    a.lab.querySelector('.pz-plate').style.top=`${a.headY-(a.title?84:30)}px`;a.lab.querySelector('.pz-bubbles').style.bottom=`${-a.headY+40}px`;a.lab.querySelector('.pz-emote').style.bottom=`${-a.headY+36}px`;
     a.el.querySelector('.pz-hit').style.cssText=`width:${Math.max(70,a.cell*.42||90)}px;height:${Math.max(90,-a.headY+10)}px;left:${-Math.max(70,a.cell*.42||90)/2}px;top:${a.headY}px`;
-    a.el.classList.toggle('is-friend',!!P.friends.friends.some(f=>f.id===a.id));a.el.classList.toggle('is-guildmate',!!P.guild?.members?.some(m=>m.id===a.id));
+    for(const e of [a.el,a.lab]){e.classList.toggle('is-friend',friend);e.classList.toggle('is-guildmate',mate);}
   }
   function spawnMe(pos,keep){
     const prof=myProfile(),name=P.you?.name||'Bạn';
@@ -128,7 +139,8 @@
     else{if(a.hero!==p.p?.hero||a.look!==p.p?.look)setLook(a,p.p?.hero,p.p?.look);a.name=p.name;a.tag=p.tag;a.title=p.p?.title||'';a.titleTier=p.p?.titleTier||0;a.target=[p.x,p.y];}
     a.profile=p.p;a.guildName=p.guild;setPlate(a);
   }
-  function removeActor(id){const a=P.actors.get(id);if(!a)return;a.el.remove();P.actors.delete(id);}
+  function labels(){let l=P.world.querySelector('.pz-label-layer');if(!l){l=document.createElement('div');l.className='pz-label-layer';P.world.append(l);}return l;}
+  function removeActor(id){const a=P.actors.get(id);if(!a)return;a.el.remove();a.lab.remove();P.actors.delete(id);}
   function spawnNpcs(){
     for(const n of geo.npcs||[]){if(P.actors.has('npc-'+n.id))continue;const img=asset('plaza-npc-'+n.id)||`assets/gemwoven/plaza/npc-${n.id}.webp`;
       const a=makeActor('npc-'+n.id,{name:n.name,npc:{img,w:118,h:150},x:n.x,y:n.y});a.npcId=n.id;a.headY=-150;setPlate(a);}
@@ -136,20 +148,21 @@
 
   // ---------- Speech ----------
   function bubble(a,text){
-    const box=a.el.querySelector('.pz-bubbles'),b=document.createElement('p');b.className='pz-bubble';
-    b.textContent=text.length>120?text.slice(0,119)+'…':text;box.append(b);while(box.children.length>2)box.firstChild.remove();
+    const box=a.lab.querySelector('.pz-bubbles'),b=document.createElement('p');b.className='pz-bubble';
+    b.innerHTML=`<span>${esc(text.length>120?text.slice(0,119)+'…':text)}</span><i class="pz-tail"></i>`;box.append(b);while(box.children.length>2)box.firstChild.remove();
     const all=[...P.world.querySelectorAll('.pz-bubble')];if(all.length>4)all.slice(0,all.length-4).forEach(x=>x.remove());
     setTimeout(()=>{b.classList.add('fade');setTimeout(()=>b.remove(),500);},Math.min(6000,4000+text.length*25));
   }
-  function emote(a,id){const e=S.EMOTES.find(x=>x[0]===id);if(!e)return;const box=a.el.querySelector('.pz-emote');box.textContent=e[2];box.classList.remove('show');void box.offsetWidth;box.classList.add('show');}
+  function emote(a,id){const e=S.EMOTES.find(x=>x[0]===id);if(!e)return;const box=a.lab.querySelector('.pz-emote');box.innerHTML=icon('e-'+id,'');box.classList.remove('show');void box.offsetWidth;box.classList.add('show');}
   function addLog(m){
     P.log.push({...m,at:m.at||Date.now()});if(P.log.length>150)P.log.shift();
     const ticker=P.root?.querySelector('.pz-ticker');if(ticker){const rows=P.log.filter(x=>x.ch!=='whisper'||x.from===P.you?.id||x.to===P.you?.id).slice(-3);
-      ticker.innerHTML=rows.map(r=>`<p class="ch-${r.ch}"><b>${chLabel(r)}${who(r)}</b> ${esc(r.text)}</p>`).join('');}
+      ticker.innerHTML=rows.map(r=>`<p class="ch-${r.ch}">${chLabel(r)}<b>${who(r)}</b> ${esc(r.text)}</p>`).join('');}
     if(P.sheet==='log')openSheet('log',P.sheetTab);
   }
   const who=r=>r.ch==='system'?'':`${esc(r.tag?`[${r.tag}] `:'')}${esc(r.name)}:`;
-  const chLabel=r=>r.ch==='guild'?'<em class="tag-guild">Bang</em>':r.ch==='whisper'?`<em class="tag-whisper">${r.from===P.you?.id?'→ '+esc(r.toName):'Riêng'}</em>`:r.ch==='system'?'<em class="tag-system">Hệ thống</em>':'';
+  // Channel tags ride on a small drawn parchment tag (plaza-ui-tag); the colour of the word tells the channel.
+  const chLabel=r=>r.ch==='guild'?'<em class="pz-chtag tag-guild">Bang</em>':r.ch==='whisper'?`<em class="pz-chtag tag-whisper">${r.from===P.you?.id?'→ '+esc(r.toName):'Riêng'}</em>`:r.ch==='system'?'<em class="pz-chtag tag-system">Hệ thống</em>':'';
 
   // ---------- Movement: intents to the server, the same steering locally ----------
   function goTo(world){if(!P.me)return;P.me.target=S.clampTarget(geo,world);send({t:'move',to:P.me.target});}
@@ -162,19 +175,35 @@
     // Keyboard
     if(!P.typing&&P.keys.size){const k=P.keys;steer((k.has('d')||k.has('arrowright')?1:0)-(k.has('a')||k.has('arrowleft')?1:0),(k.has('s')||k.has('arrowdown')?1:0)-(k.has('w')||k.has('arrowup')?1:0));P.pendingTalk=null;}
     for(const a of P.actors.values()){
-      if(a.npc){a.el.style.transform=`translate(${a.pos[0]}px,${a.pos[1]}px)`;a.el.style.zIndex=String(Math.round(a.pos[1]));continue;}
+      if(a.npc){a.el.style.transform=a.lab.style.transform=`translate(${a.pos[0]}px,${a.pos[1]}px)`;a.el.style.zIndex=a.lab.style.zIndex=String(Math.round(a.pos[1]));continue;}
       const before=a.pos;let moving=false;
       if(a===P.me){const r=S.step(geo,a.pos,a.target,dt,a.side);a.side=r.side;moving=Math.hypot(r.pos[0]-before[0],r.pos[1]-before[1])>.2;if(moving&&Math.abs(r.pos[0]-before[0])>.3)a.dir=r.pos[0]>before[0]?1:-1;a.pos=r.pos;}
       else{const d=Math.hypot(a.target[0]-a.pos[0],a.target[1]-a.pos[1]);if(d>200)a.pos=[...a.target];else if(d>.5){const k=Math.min(1,dt*12);const nx=a.pos[0]+(a.target[0]-a.pos[0])*k;if(Math.abs(nx-a.pos[0])>.3)a.dir=nx>a.pos[0]?1:-1;a.pos=[nx,a.pos[1]+(a.target[1]-a.pos[1])*k];moving=d>2;}}
       a.moving=moving;applySheet(a,moving?'move':'idle');
       const s=a.sheet;if(s&&!reduced()){a.frameAt=(a.frameAt||0)+dt*1000;const dur=s.frameDuration||(moving?90:120);if(a.frameAt>=dur){a.frameAt%=dur;a.frame=(a.frame+1)%s.count;}}
       if(s){const c=a.frame%s.cols,r=Math.floor(a.frame/s.cols),body=a.el.querySelector('.pz-body');body.style.backgroundPosition=`${s.cols>1?c/(s.cols-1)*100:0}% ${s.rows>1?r/(s.rows-1)*100:0}%`;body.style.transform=a.dir<0?'scaleX(-1)':'';}
-      a.el.style.transform=`translate(${a.pos[0].toFixed(1)}px,${a.pos[1].toFixed(1)}px)`;a.el.style.zIndex=String(Math.round(a.pos[1]));
+      a.el.style.transform=a.lab.style.transform=`translate(${a.pos[0].toFixed(1)}px,${a.pos[1].toFixed(1)}px)`;a.el.style.zIndex=a.lab.style.zIndex=String(Math.round(a.pos[1]));
     }
     // Name plates of people standing close step up so they never overlap (a few times a second).
     if(now-(P.declutterAt||0)>200){P.declutterAt=now;const list=[...P.actors.values()].filter(a=>!a.npc).sort((a,b)=>b.pos[1]-a.pos[1]);
-      for(let i=0;i<list.length;i++){let lift=0;for(let j=0;j<i;j++)if(Math.abs(list[i].pos[0]-list[j].pos[0])<110&&Math.abs(list[i].pos[1]-list[j].pos[1])<50)lift=Math.max(lift,(list[j].lift||0)+34);
-        if(lift!==(list[i].lift||0)){list[i].lift=lift;for(const sel of ['.pz-plate','.pz-bubbles','.pz-emote'])list[i].el.querySelector(sel).style.translate=`0 ${-lift}px`;}}}
+      const near=(a,b,w,h)=>Math.abs(a.pos[0]-b.pos[0])<w&&Math.abs(a.pos[1]-b.pos[1])<h;
+      for(let i=0;i<list.length;i++){const a=list[i];let lift=0;a.pdx??=0;for(let j=0;j<i;j++)if(near(a,list[j],130,50))lift=Math.max(lift,(list[j].lift||0)+44);
+        a.bubbleH=a.lab.querySelector('.pz-bubbles').offsetHeight;
+        if(lift!==(a.lift||0)){a.lift=lift;a.lab.querySelector('.pz-emote').style.translate=`0 ${-lift}px`;}}
+      // Speech never covers a name plate or other speech: measured on screen, front people first, later speech steps up.
+      const k=P.world.getBoundingClientRect().width/1024*WORLD_K||1,plates=list.map(a=>a.lab.querySelector('.pz-plate').getBoundingClientRect()),placed=[];
+      for(let i=0;i<list.length;i++){const a=list[i],box=a.lab.querySelector('.pz-bubbles');if(!a.bubbleH){if(a.blift){a.blift=0;box.style.translate='';}continue;}
+        const r=box.getBoundingClientRect(),base=r.bottom+(a.blift||0)*k,h=r.height,over=q=>q.right>r.left+4&&q.left<r.right-4;let need=0;
+        for(const q of plates)if(over(q)&&q.bottom>base-h-4&&q.top<base+2)need=Math.max(need,(base-q.top+6)/k);
+        for(let pass=0;pass<2;pass++)for(const q of placed)if(over(q)&&base-need*k>q.top-4&&base-need*k-h<q.bottom)need=Math.max(need,(base-q.top+8)/k);
+        need=Math.round(need);placed.push({left:r.left,right:r.right,top:base-need*k-h,bottom:base-need*k});
+        if(need!==(a.blift||0)){a.blift=need;box.style.translate=`${a.bdx||0}px ${-need}px`;}}
+      // Plates and speech slide sideways to stay clear of the right-hand plaques and the frame edges.
+      const side=P.root.querySelector('.pz-side').getBoundingClientRect(),root=P.root.getBoundingClientRect();
+      const clear=(el,cur,ty)=>{const r=el.getBoundingClientRect(),left=r.left-cur*k,right=r.right-cur*k,top=r.top,bottom=r.bottom;
+        const edge=side.width&&bottom>side.top&&top<side.bottom?side.left-6:root.right-6;let dx=0;if(right>edge)dx=(edge-right)/k;if(left+dx*k<root.left+6)dx=(root.left+6-left)/k;
+        dx=Math.round(dx);const t=`${dx}px ${-ty}px`;if(el.style.translate!==t)el.style.translate=t;return dx;};
+      for(const a of P.actors.values()){a.pdx=clear(a.lab.querySelector('.pz-plate'),a.pdx||0,a.lift||0);if(a.bubbleH)a.bdx=clear(a.lab.querySelector('.pz-bubbles'),a.bdx||0,a.blift||0);}}
     if(P.me){camera();zone();if(P.pendingTalk){const t=P.pendingTalk;if(performance.now()>t.until||!P.actors.has(t.a.id))P.pendingTalk=null;else if(S.near(P.me.pos,t.a.pos,geo.interact||S.MAP.interact)){P.pendingTalk=null;goTo(P.me.pos);openCard(t.a);}}arrows();}
   }
   function viewH(){return FRAME_H-CHAT_H-(P.typing?520:0);}
@@ -186,8 +215,8 @@
   function zone(){
     const z=S.zoneAt(geo,P.me.pos[0],P.me.pos[1]);if(z===P.zone)return;P.zone=z;
     const btn=P.root.querySelector('.pz-context'),info=(geo.zones||[]).find(x=>x.id===z);
-    const label={guild:'Vào Sảnh Bang',lantern:'Dệt Đèn Bang',ring:'Sẵn sàng giao hữu',board:'Xem Bảng Tin'}[z];
-    btn.hidden=!label;if(label){btn.textContent=label;btn.dataset.zone=z;}
+    const label={guild:'Vào Sảnh Bang',lantern:'Dệt Đèn Bang',ring:'Sẵn sàng',board:'Xem Bảng Tin'}[z],pic={guild:'i-gate',lantern:'i-lantern',ring:'i-swords',board:'i-board'}[z];
+    btn.hidden=!label;if(label){btn.innerHTML=`${icon(pic)}<span>${label}</span>`;btn.dataset.zone=z;btn.setAttribute('aria-label',z==='ring'?'Sẵn sàng giao hữu':label);}
     P.root.querySelector('.pz-place').textContent=info&&z!=='fountain'?info.name:'Gặp Gỡ · Quảng Trường';
   }
   // Up to three arrows at the edge for friends and guild mates outside the view (optional).
@@ -197,13 +226,16 @@
       const sx=a.pos[0]*WORLD_K-P.cam[0],sy=a.pos[1]*WORLD_K-P.cam[1];if(sx>40&&sx<FRAME_W-40&&sy>200&&sy<vh-40)continue;out.push({a,sx,sy,d:Math.hypot(a.pos[0]-P.me.pos[0],a.pos[1]-P.me.pos[1])});}
     out.sort((x,y)=>x.d-y.d);
     box.innerHTML=out.slice(0,3).map(({a,sx,sy})=>{const x=Math.max(40,Math.min(FRAME_W-40,sx)),y=Math.max(230,Math.min(vh-50,sy)),ang=Math.atan2(sy-y,sx-x)*180/Math.PI;
-      return `<span style="left:${x}px;top:${y}px"><i style="transform:rotate(${ang}deg)"></i><b>${esc(a.name)}</b></span>`;}).join('');
+      const friend=P.friends.friends.some(f=>f.id===a.id);
+      return `<span style="left:${x}px;top:${y}px"><i style="transform:rotate(${ang}deg)"></i><b>${icon(friend?'knot':'crest','pz-mark')}${esc(a.name)}</b></span>`;}).join('');
   }
 
   // ---------- Interaction ----------
   function talkTo(a){
     if(a===P.me)return openSheet('me');
     if(a.npc)return npcTalk(a);
+    // Several players on one spot: let the player choose who they meant.
+    if([...P.actors.values()].some(b=>!b.npc&&b!==P.me&&b!==a&&Math.hypot(b.pos[0]-a.pos[0],b.pos[1]-a.pos[1])<40))return openSheet('near');
     if(S.near(P.me.pos,a.pos,geo.interact||S.MAP.interact))return openCard(a);
     P.pendingTalk={a,until:performance.now()+5000};const dx=P.me.pos[0]-a.pos[0],dy=P.me.pos[1]-a.pos[1],d=Math.hypot(dx,dy)||1;goTo([a.pos[0]+dx/d*90,a.pos[1]+dy/d*60]);
   }
@@ -217,101 +249,112 @@
   const isFriend=id=>P.friends.friends.some(f=>f.id===id);
   const myRank=()=>P.guild?.me?.rank;const can=k=>myRank()&&S.RANKS[myRank()][k];
   function face(hero){return `<img class="pz-face" src="${esc(asset('face-'+hero)||asset('portrait-'+hero))}" alt="">`;}
+  // Every sheet starts with <h3>: openSheet moves it onto the frame's wooden title plank.
+  const tabs=(list,t)=>`<nav class="pz-tabs">${list.map(([k,l])=>`<button type="button" data-tab="${k}" class="${t===k?'on':''}">${l}</button>`).join('')}</nav>`;
+  const tile=(kind,id,pic,label,{off=false,cls=''}={})=>`<button type="button" class="pz-tile ${cls}" data-do="${kind}" ${id!=null?`data-id="${esc(id)}"`:''} aria-label="${esc(label)}" title="${esc(label)}" ${off?'disabled':''}>${icon(pic)}</button>`;
+  const lamp=(on,cls='')=>icon(on===true?'lamp-on':on==='wait'?'lamp-wait':on==='off'?'lamp-off':'lamp-dark','pz-lamp '+cls);
+  const socket=html=>`<span class="pz-socket">${html}</span>`;
+  const stars=n=>`<span class="pz-stars">${'★'.repeat(Math.max(1,n||1))}</span>`;
   function sheetHtml(kind,tab){
-    const online=P.status==='online',needNet=online?'':'<p class="pz-note">Cần kết nối máy chủ Quảng Trường.</p>';
+    const online=P.status==='online',needNet=online?'':`<p class="pz-note pz-offline">${lamp('off')}Cần kết nối máy chủ Quảng Trường.</p>`;
     switch(kind){
-      case 'name':return `<h3>Tên của bạn ở Quảng Trường</h3><p class="pz-note">Tên hiện trên đầu nhân vật, ${S.LIMITS.name[0]}–${S.LIMITS.name[1]} ký tự, không đổi được trong bản thử nghiệm.</p>
-        <form class="pz-form" data-form="name"><input name="name" maxlength="${S.LIMITS.name[1]}" autocomplete="off" value="${esc(P.suggest||='Lữ Khách '+Math.floor(1000+Math.random()*9000))}"><button class="gw-btn" type="submit">Vào Quảng Trường</button></form><p class="pz-name-error"></p>`;
+      case 'name':return `<h3>Đặt tên</h3><header class="pz-card-head">${socket('<img src="assets/gemwoven/plaza/npc-guide.webp" alt="">')}<div><b class="pz-card-name">Chào bạn mới, meo!</b><p>Tên hiện trên đầu nhân vật · ${S.LIMITS.name[0]}–${S.LIMITS.name[1]} ký tự · không đổi được trong bản thử nghiệm.</p></div></header>
+        <form class="pz-form" data-form="name"><span class="pz-input-wrap"><input name="name" maxlength="${S.LIMITS.name[1]}" autocomplete="off" aria-label="Tên của bạn" value="${esc(P.suggest||='Lữ Khách '+Math.floor(1000+Math.random()*9000))}"></span><button class="gw-btn" type="submit">Vào Quảng Trường</button></form><p class="pz-name-error"></p>`;
       case 'card':{const a=P.cardFor;if(!a)return '';const p=a.profile||{},friend=isFriend(a.id),pending=P.friends.outgoing.some(f=>f.id===a.id);
         const inviteGuild=can('approve')&&!a.tag;
-        return `<header class="pz-card-head">${face(a.hero)}<div><h3>${a.tag?`<b>[${esc(a.tag)}]</b> `:''}${esc(a.name)}</h3><p>${esc(M.HEROES[a.hero]?.name||'')} · cấp ${p.level||1} · ${'★'.repeat(p.stars||1)}</p>
-          <p>Lực chiến ${fmt(p.power)} <small>(chưa xác thực)</small>${a.guildName?` · Bang ${esc(a.guildName)}`:''}</p></div></header>
-          <div class="pz-actions">${friend?`<button class="gw-btn" data-do="whisper" data-id="${a.id}">Nhắn riêng</button>`:`<button class="gw-btn" data-do="friend" data-id="${a.id}" ${pending?'disabled':''}>${pending?'Đã gửi lời mời':'Kết bạn'}</button>`}
-          <button class="gw-btn" data-do="duel" data-id="${a.id}">Giao hữu · bản sao AI</button>${inviteGuild?`<button class="gw-btn secondary" data-do="ginvite" data-id="${a.id}">Mời vào bang</button>`:''}</div>
-          <details class="pz-more"><summary>Thêm</summary><div class="pz-actions small">${friend?`<button class="gw-btn secondary" data-do="heart" data-id="${a.id}">Tặng tim</button>`:''}<button class="gw-btn secondary" data-do="whisper" data-id="${a.id}">Nhắn riêng</button><button class="gw-btn secondary" data-do="block" data-id="${a.id}">Chặn</button><button class="gw-btn secondary" data-do="report" data-id="${a.id}">Báo cáo</button></div></details>
-          <p class="pz-note">Đấu bản sao tướng của họ do máy điều khiển · chỉ số chuẩn hóa · không thưởng.</p>${needNet}`;}
+        return `<h3>Hồ sơ</h3><header class="pz-card-head">${socket(face(a.hero))}<div><b class="pz-card-name">${a.tag?`<em>[${esc(a.tag)}]</em> `:''}${esc(a.name)}</b><p>${esc(M.HEROES[a.hero]?.name||'')} · cấp ${p.level||1} ${stars(p.stars)}</p>
+          <p>Lực chiến <b>${fmt(p.power)}</b> <small>chưa xác thực</small>${a.guildName?` · ${icon('crest','pz-mark')}${esc(a.guildName)}`:''}</p></div></header>
+          <div class="pz-actions">${friend?`<button class="gw-btn" data-do="whisper" data-id="${a.id}">${icon('i-letter')}Nhắn riêng</button>`:`<button class="gw-btn" data-do="friend" data-id="${a.id}" ${pending?'disabled':''}>${icon('i-friends')}${pending?'Đã mời':'Kết bạn'}</button>`}
+          <button class="gw-btn" data-do="duel" data-id="${a.id}">${icon('i-swords')}Giao hữu</button>${inviteGuild?`<button class="gw-btn secondary" data-do="ginvite" data-id="${a.id}">${icon('i-invite')}Mời vào bang</button>`:''}</div>
+          <p class="pz-note pz-center">${icon('i-swords','pz-ico-s')}Đấu bản sao AI · chỉ số chuẩn hóa · Không thưởng</p>
+          <details class="pz-more"><summary>Thêm</summary><div class="pz-tiles">${friend?`<span>${tile('heart',a.id,'i-heart','Tặng tim')}<small>Tặng tim</small></span>`:''}${friend?'':`<span>${tile('whisper',a.id,'i-letter','Nhắn riêng')}<small>Nhắn riêng</small></span>`}<span>${tile('block',a.id,'i-block','Chặn')}<small>Chặn</small></span><span>${tile('report',a.id,'i-report','Báo cáo')}<small>Báo cáo</small></span></div></details>${needNet}`;}
       case 'friends':{const f=P.friends,t=tab||'list';
-        const tabs=`<nav class="pz-tabs">${[['list',`Bạn bè ${f.friends.length}/${S.LIMITS.friends}`],['incoming',`Lời mời${f.incoming.length?` (${f.incoming.length})`:''}`],['blocks','Đã chặn']].map(([k,l])=>`<button data-tab="${k}" class="${t===k?'on':''}">${l}</button>`).join('')}</nav>`;
-        const body=t==='incoming'?(f.incoming.map(x=>`<li><b>${esc(x.name)}</b><span><button class="gw-btn" data-do="accept" data-id="${x.id}">Đồng ý</button><button class="gw-btn secondary" data-do="decline" data-id="${x.id}">Từ chối</button></span></li>`).join('')+f.outgoing.map(x=>`<li><b>${esc(x.name)}</b><small>Đã gửi lời mời</small><span><button class="gw-btn secondary" data-do="cancel" data-id="${x.id}">Hủy</button></span></li>`).join('')||'<li class="empty">Chưa có lời mời. Đứng gần ai đó và chạm vào nhân vật của họ để kết bạn.</li>')
-          :t==='blocks'?(f.blocks.map(x=>`<li><b>${esc(x.name)}</b><span><button class="gw-btn secondary" data-do="unblock" data-id="${x.id}">Bỏ chặn</button></span></li>`).join('')||'<li class="empty">Chưa chặn ai.</li>')
-          :(f.friends.map(x=>`<li class="${x.online?'on':''}">${face(x.hero)}<b>${esc(x.name)}</b><small>${x.online?`Trực tuyến · Kênh ${x.channel}`:'Ngoại tuyến'} · cấp ${x.level}</small><span>${x.online?`<button class="gw-btn" data-do="goto" data-id="${x.id}">Đến chỗ</button>`:''}<button class="gw-btn secondary" data-do="whisper" data-id="${x.id}">Nhắn</button><button class="gw-btn secondary" data-do="heart" data-id="${x.id}" ${x.heart?'disabled':''}>${x.heart?'Đã tặng':'Tặng tim'}</button></span></li>`).join('')||'<li class="empty">Chưa có bạn bè. Ra giữa quảng trường làm quen nhé!</li>');
-        return `<h3>Bạn bè</h3><p class="pz-note">Điểm Bằng Hữu: <b>${fmt(f.friendPoints)}</b> (tặng tim mỗi ngày; cửa hàng bằng hữu mở khi có máy chủ kinh tế).</p>${tabs}<ul class="pz-list">${body}</ul>${needNet}`;}
+        const head=tabs([['list',`Bạn bè ${f.friends.length}/${S.LIMITS.friends}`],['incoming',`Lời mời${f.incoming.length?` (${f.incoming.length})`:''}`],['blocks','Đã chặn']],t);
+        const body=t==='incoming'?(f.incoming.map(x=>`<li>${icon('i-friends','pz-row-ico')}<div class="pz-who"><b>${esc(x.name)}</b><small>Muốn kết bạn</small></div><span><button class="gw-btn" data-do="accept" data-id="${x.id}">Đồng ý</button><button class="gw-btn secondary" data-do="decline" data-id="${x.id}">Từ chối</button></span></li>`).join('')+f.outgoing.map(x=>`<li>${icon('i-letter','pz-row-ico')}<div class="pz-who"><b>${esc(x.name)}</b><small>Đã gửi lời mời</small></div><span><button class="gw-btn secondary" data-do="cancel" data-id="${x.id}">Hủy</button></span></li>`).join('')||empty('Chưa có lời mời. Chạm vào nhân vật đứng gần để kết bạn.'))
+          :t==='blocks'?(f.blocks.map(x=>`<li>${icon('i-block','pz-row-ico')}<div class="pz-who"><b>${esc(x.name)}</b></div><span><button class="gw-btn secondary" data-do="unblock" data-id="${x.id}">Bỏ chặn</button></span></li>`).join('')||empty('Chưa chặn ai.'))
+          :(f.friends.map(x=>`<li class="${x.online?'on':''}">${socket(face(x.hero))}<div class="pz-who"><b>${esc(x.name)}</b><small>${lamp(!!x.online)}${x.online?`Kênh ${x.channel}`:'Ngoại tuyến'} · cấp ${x.level}</small></div><span>${tile('goto',x.id,x.online?'i-goto':'i-goto-off','Đến chỗ',{off:!x.online})}${tile('whisper',x.id,'i-letter','Nhắn')}${tile('heart',x.id,x.heart?'i-heart-done':'i-heart',x.heart?'Đã tặng tim':'Tặng tim',{off:!!x.heart})}</span></li>`).join('')||empty('Chưa có bạn bè. Ra giữa quảng trường làm quen nhé!'));
+        return `<h3>Bạn bè</h3>${head}<ul class="pz-list">${body}</ul><p class="pz-note pz-center">${icon('i-heart','pz-ico-s')}Điểm Bằng Hữu <b>${fmt(f.friendPoints)}</b> · tặng tim mỗi ngày · cửa hàng bằng hữu: Sắp ra mắt</p>${needNet}`;}
       case 'guild':return guildHtml(tab);
       case 'lantern':return lanternHtml();
       case 'log':{const t=tab||'all',rows=P.log.filter(r=>t==='all'||r.ch===t).slice(-60);
-        return `<h3>Nhật ký trò chuyện</h3><nav class="pz-tabs">${[['all','Tất cả'],['area','Khu vực'],['guild','Bang'],['whisper','Riêng'],['system','Hệ thống']].map(([k,l])=>`<button data-tab="${k}" class="${t===k?'on':''}">${l}</button>`).join('')}</nav>
-          <ul class="pz-list pz-log">${rows.map(r=>`<li class="ch-${r.ch}"><time>${new Date(r.at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}</time><p><b>${chLabel(r)}${who(r)}</b> ${esc(r.text)}</p></li>`).join('')||'<li class="empty">Chưa có tin nhắn.</li>'}</ul>`;}
-      case 'more':return `<h3>Thêm</h3><div class="pz-more-grid"><button data-do="open-near"><span>👥</span>Người ở gần</button><button data-do="channels"><span>🗺️</span>Đổi kênh</button><button data-do="open-log"><span>💬</span>Nhật ký chat</button><button data-do="help"><span>?</span>Hướng dẫn</button></div>`;
-      case 'emotes':return `<h3>Biểu cảm</h3><div class="pz-emotes">${S.EMOTES.map(([id,name,icon])=>`<button data-do="emote" data-id="${id}"><span>${icon}</span>${esc(name)}</button>`).join('')}</div>`;
+        return `<h3>Nhật ký chat</h3>${tabs([['all','Tất cả'],['area','Khu vực'],['guild','Bang'],['whisper','Riêng'],['system','Hệ thống']],t).replace('pz-tabs','pz-tabs many')}
+          <ul class="pz-list pz-log">${rows.map(r=>`<li class="ch-${r.ch}"><time>${new Date(r.at).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})}</time><p>${chLabel(r)}<b>${who(r)}</b> ${esc(r.text)}</p></li>`).join('')||empty('Chưa có tin nhắn.')}</ul>`;}
+      case 'more':return `<h3>Thêm</h3><div class="pz-grid two">${[['open-near','i-near','Người ở gần'],['channels','i-map','Đổi kênh'],['open-log','i-log','Nhật ký chat'],['help','i-help','Hướng dẫn']].map(([k,pic,l])=>`<button type="button" class="pz-cell" data-do="${k}">${icon(pic)}<span>${l}</span></button>`).join('')}</div>`;
+      case 'emotes':return `<h3>Biểu cảm</h3><div class="pz-grid">${S.EMOTES.map(([id,name])=>`<button type="button" class="pz-cell" data-do="emote" data-id="${id}">${icon('e-'+id)}<span>${esc(name)}</span></button>`).join('')}</div>`;
       case 'near':{const list=[...P.actors.values()].filter(a=>a!==P.me).map(a=>({a,d:Math.hypot(a.pos[0]-P.me.pos[0],a.pos[1]-P.me.pos[1])})).sort((x,y)=>x.d-y.d).slice(0,20);
-        return `<h3>Người ở gần</h3><ul class="pz-list">${list.map(({a,d})=>`<li>${a.npc?'':face(a.hero)}<b>${a.tag?`[${esc(a.tag)}] `:''}${esc(a.name)}${a.npc?' <i>NPC</i>':''}</b><small>${Math.round(d/10)} bước</small><span><button class="gw-btn secondary" data-do="talk" data-id="${a.id}">Đến gặp</button></span></li>`).join('')||'<li class="empty">Chưa có ai ở gần.</li>'}</ul>`;}
+        return `<h3>Người ở gần</h3><ul class="pz-list">${list.map(({a,d})=>`<li>${socket(a.npc?`<img src="${esc(a.npcImg)}" alt="">`:face(a.hero))}<div class="pz-who"><b>${a.tag?`<em>[${esc(a.tag)}]</em> `:''}${esc(a.name)}${a.npc?' <i class="pz-npc">NPC</i>':''}</b><small>${Math.round(d/10)} bước</small></div><span>${tile('talk',a.id,'i-goto','Đến gặp')}</span></li>`).join('')||empty('Chưa có ai ở gần.')}</ul>`;}
       case 'board':{const O=window.GemwovenLiveOps,open=P.guilds.filter(g=>g.policy!=='closed').slice(0,8);
-        return `<h3>Bảng Tin</h3><h4>Bang đang tuyển</h4><ul class="pz-list">${open.map(g=>`<li><b>[${esc(g.tag)}] ${esc(g.name)}</b><small>Cấp ${g.level} · ${g.members}/${g.cap} · ${g.policy==='open'?'Vào ngay':'Cần duyệt'} · từ cấp ${g.minLevel}</small><span>${P.guild?'':`<button class="gw-btn" data-do="apply" data-id="${g.id}">Xin vào</button>`}</span></li>`).join('')||'<li class="empty">Chưa có bang nào tuyển. Hãy lập bang đầu tiên!</li>'}</ul>
-          ${O?`<h4>Lịch sự kiện</h4><ul class="pz-list">${O.CADENCE.map(c=>`<li><b>${esc(c.name)}</b><small>${esc(c.items.slice(0,2).join(' · '))}</small></li>`).join('')}</ul>`:''}${needNet}`;}
-      case 'help':return `<header class="pz-card-head"><img class="pz-face" src="assets/gemwoven/plaza/npc-guide.webp" alt=""><div><h3>Mèo Hướng Dẫn <i>NPC</i></h3><p>Chào mừng tới Quảng Trường, meo!</p></div></header>
-        <ol class="pz-help"><li><b>Đi lại:</b> kéo ngón tay trên mặt đất (cần điều hướng hiện ngay chỗ chạm), chạm một chỗ để đi tới đó, hoặc WASD / phím mũi tên.</li>
-        <li><b>Trò chuyện:</b> gõ ở ô dưới cùng, tin nhắn hiện trên đầu bạn. Đổi kênh Khu vực / Bang / Riêng bằng nút bên trái ô chat.</li>
-        <li><b>Làm quen:</b> đứng gần ai đó rồi chạm vào nhân vật của họ để kết bạn, nhắn riêng hoặc mời giao hữu.</li>
-        <li><b>Sàn Giao Hữu</b> (vòng đá bên phải): hai người cùng đứng trong vòng và bấm Sẵn sàng để đấu bản sao.</li>
-        <li><b>Sảnh Bang</b> (cửa lớn phía trên): lập hoặc xin vào bang. Bà Dệt Đèn cạnh sảnh cho bang dệt đèn mỗi tuần.</li>
-        <li><b>Bảng Tin</b> (bên trái): bang đang tuyển và lịch sự kiện.</li></ol>
-        <label class="pz-check"><input type="checkbox" data-pref="arrows" ${prefs.arrows?'checked':''}> Mũi tên chỉ bạn bè và người cùng bang ngoài màn hình</label>
-        <label class="pz-check"><input type="checkbox" data-pref="fixed" ${prefs.stick==='fixed'?'checked':''}> Cần điều hướng cố định ở góc</label>
-        <label class="pz-check"><input type="checkbox" data-pref="right" ${prefs.side==='right'?'checked':''}> Cần điều hướng bên phải</label>`;
-      case 'me':{const p=myProfile();return `<header class="pz-card-head">${face(p.hero)}<div><h3>${P.guild?`<b>[${esc(P.guild.tag)}]</b> `:''}${esc(P.you?.name||'Bạn')}</h3><p>${esc(M.HEROES[p.hero]?.name)} · cấp ${p.level} · Lực chiến ${fmt(p.power)}</p><p>Kênh ${P.channel||'—'} · ${P.status==='online'?'Trực tuyến':'Ngoại tuyến'}</p></div></header>
-        <p class="pz-note">Đổi tướng xuất chiến hoặc diện mạo ở trang Tướng; Quảng Trường hiện đúng diện mạo bạn đang khoác.</p><div class="pz-actions"><button class="gw-btn secondary" data-do="channels">Đổi kênh</button><button class="gw-btn secondary" data-do="help">Hướng dẫn</button></div>`;}
+        return `<h3>Bảng Tin</h3><h4>${icon('x-recruit','pz-ico-s')}Bang đang tuyển</h4><ul class="pz-list">${open.map(g=>`<li>${EMBLEM(g.emblem)}<div class="pz-who"><b><em>[${esc(g.tag)}]</em> ${esc(g.name)}</b><small>Cấp ${g.level} · ${g.members}/${g.cap} · ${g.policy==='open'?'Vào ngay':'Cần duyệt'} · từ cấp ${g.minLevel}</small></div><span>${P.guild?'':`<button class="gw-btn" data-do="apply" data-id="${g.id}">Xin vào</button>`}</span></li>`).join('')||empty('Chưa có bang nào tuyển. Hãy lập bang đầu tiên!')}</ul>
+          ${O?`<h4>${icon('x-calendar','pz-ico-s')}Lịch sự kiện</h4><ul class="pz-list pz-compact">${O.CADENCE.map(c=>`<li><div class="pz-who"><b>${esc(c.name)}</b><small>${esc(c.items.slice(0,2).join(' · '))}</small></div></li>`).join('')}</ul>`:''}${needNet}`;}
+      case 'help':{const rules=[['h-walk','Đi lại','Kéo ngón tay trên mặt đất (cần điều hướng hiện ngay chỗ chạm), chạm một chỗ để đi tới đó, hoặc WASD / phím mũi tên.'],
+          ['h-chat','Trò chuyện','Gõ ở ô dưới cùng, tin nhắn hiện trên đầu bạn. Đổi kênh Khu vực / Bang / Riêng bằng nút bên trái ô chat.'],
+          ['h-meet','Làm quen','Đứng gần ai đó rồi chạm vào nhân vật của họ để kết bạn, nhắn riêng hoặc mời giao hữu.'],
+          ['h-spar','Sàn Giao Hữu','Vòng đá bên phải: hai người cùng đứng trong vòng và bấm Sẵn sàng để đấu bản sao AI (không thưởng).'],
+          ['h-guild','Sảnh Bang','Cửa lớn phía trên: lập hoặc xin vào bang. Bà Dệt Đèn cạnh sảnh cho bang dệt đèn mỗi tuần.'],
+          ['i-board','Bảng Tin','Bên trái: bang đang tuyển và lịch sự kiện.']];
+        const sw=(k,on,l)=>`<label class="pz-switch"><input type="checkbox" data-pref="${k}" ${on?'checked':''}><i></i><span>${l}</span></label>`;
+        return `<h3>Hướng dẫn</h3><header class="pz-card-head">${socket('<img src="assets/gemwoven/plaza/npc-guide.webp" alt="">')}<div><b class="pz-card-name">Mèo Hướng Dẫn <i class="pz-npc">NPC</i></b><p>Chào mừng tới Quảng Trường, meo! Chạm từng mục để xem.</p></div></header>
+          <div class="pz-rules">${rules.map(([pic,t,txt])=>`<details>${`<summary>${icon(pic)}<b>${t}</b></summary>`}<p>${txt}</p></details>`).join('')}</div>
+          <div class="pz-switches">${sw('arrows',prefs.arrows,'Mũi tên chỉ bạn bè, người cùng bang')}${sw('fixed',prefs.stick==='fixed','Cần điều hướng cố định ở góc')}${sw('right',prefs.side==='right','Cần điều hướng bên phải')}</div>`;}
+      case 'me':{const p=myProfile();return `<h3>Của bạn</h3><header class="pz-card-head">${socket(face(p.hero))}<div><b class="pz-card-name">${P.guild?`<em>[${esc(P.guild.tag)}]</em> `:''}${esc(P.you?.name||'Bạn')}</b><p>${esc(M.HEROES[p.hero]?.name)} · cấp ${p.level} ${stars(p.stars)}</p><p>Lực chiến <b>${fmt(p.power)}</b></p><p>${lamp(P.status==='online'?true:'off')}Kênh ${P.channel||'—'} · ${P.status==='online'?'Trực tuyến':'Ngoại tuyến'}</p></div></header>
+        <div class="pz-actions"><button class="gw-btn secondary" data-do="channels">${icon('i-map')}Đổi kênh</button><button class="gw-btn secondary" data-do="help">${icon('i-help')}Hướng dẫn</button></div><p class="pz-note pz-center">Đổi tướng hoặc diện mạo ở trang Tướng.</p>`;}
       case 'channels':{const list=Object.entries(P.counts).map(([n,c])=>[Number(n),c]);if(!list.some(([n])=>n===P.channel))list.push([P.channel||1,1]);const next=Math.max(1,...list.map(([n])=>n))+1;
-        return `<h3>Kênh Quảng Trường</h3><p class="pz-note">Mỗi kênh tối đa ${S.LIMITS.channelCap} người. Kênh đông vui hơn; bạn bè có thể "Đến chỗ" bạn ở kênh nào cũng được.</p><ul class="pz-list">${list.sort((a,b)=>a[0]-b[0]).map(([n,c])=>`<li class="${n===P.channel?'on':''}"><b>Kênh ${n}</b><small>${c}/${S.LIMITS.channelCap} người</small><span>${n===P.channel?'<em>Đang ở</em>':`<button class="gw-btn" data-do="channel" data-id="${n}" ${c>=S.LIMITS.channelCap?'disabled':''}>Vào</button>`}</span></li>`).join('')}<li><b>Kênh ${next}</b><small>Kênh mới</small><span><button class="gw-btn secondary" data-do="channel" data-id="${next}">Vào</button></span></li></ul>${needNet}`;}
+        return `<h3>Kênh</h3><ul class="pz-list">${list.sort((a,b)=>a[0]-b[0]).map(([n,c])=>`<li class="${n===P.channel?'on':''}">${icon('i-map','pz-row-ico')}<div class="pz-who"><b>Kênh ${n}</b><small>${lamp(c<S.LIMITS.channelCap?true:'off')}${c}/${S.LIMITS.channelCap} người</small></div><span>${n===P.channel?'<em class="pz-here">Đang ở</em>':`<button class="gw-btn" data-do="channel" data-id="${n}" ${c>=S.LIMITS.channelCap?'disabled':''}>Vào</button>`}</span></li>`).join('')}<li>${icon('i-map','pz-row-ico')}<div class="pz-who"><b>Kênh ${next}</b><small>Kênh mới</small></div><span><button class="gw-btn secondary" data-do="channel" data-id="${next}">Vào</button></span></li></ul>
+          <p class="pz-note pz-center">Mỗi kênh tối đa ${S.LIMITS.channelCap} người · bạn bè "Đến chỗ" được ở mọi kênh.</p>${needNet}`;}
     }
     return '';
   }
   function guildHtml(tab){
     const g=P.guild,online=P.status==='online';
-    if(!online)return `<h3>Bang Hội</h3><p class="pz-note">Cần kết nối máy chủ Quảng Trường.</p>`;
+    if(!online)return `<h3>Bang Hội</h3><ul class="pz-list">${empty('Cần kết nối máy chủ Quảng Trường.')}</ul>`;
     if(!g){const t=tab||'find';const emb=P.emblem||'sword';
-      return `<h3>Bang Hội</h3><nav class="pz-tabs"><button data-tab="find" class="${t==='find'?'on':''}">Tìm bang</button><button data-tab="create" class="${t==='create'?'on':''}">Lập bang</button></nav>`+
-        (t==='create'?`<form class="pz-form pz-guild-form" data-form="guild"><label>Tên bang<input name="name" maxlength="${S.LIMITS.guildName[1]}" autocomplete="off" required></label><label>Thẻ (2–4 chữ in hoa)<input name="tag" maxlength="4" autocomplete="off" required style="text-transform:uppercase"></label>
-          <fieldset class="pz-emblems"><legend>Biểu tượng</legend>${S.GUILD_EMBLEMS.map(e=>`<label><input type="radio" name="emblem" value="${e}" ${e===emb?'checked':''}><span class="emblem emblem-${e}"></span></label>`).join('')}</fieldset>
-          <button class="gw-btn" type="submit">Lập bang</button><p class="pz-note">Cần tướng cấp ${S.LIMITS.guildMinLevel}. Phí 100.000 vàng sẽ thu khi kinh tế chuyển lên máy chủ; bản thử nghiệm miễn phí.</p></form>`
-        :`<ul class="pz-list">${P.guilds.map(x=>`<li><span class="emblem emblem-${esc(x.emblem)}"></span><b>[${esc(x.tag)}] ${esc(x.name)}</b><small>Cấp ${x.level} · ${x.members}/${x.cap} · ${x.policy==='open'?'Vào ngay':x.policy==='closed'?'Đóng':'Cần duyệt'} · từ cấp ${x.minLevel}</small><span><button class="gw-btn" data-do="apply" data-id="${x.id}" ${x.policy==='closed'||x.members>=x.cap?'disabled':''}>Xin vào</button></span></li>`).join('')||'<li class="empty">Chưa có bang nào. Hãy lập bang đầu tiên!</li>'}</ul>`);}
+      return `<h3>Bang Hội</h3>${tabs([['find','Tìm bang'],['create','Lập bang']],t)}`+
+        (t==='create'?`<form class="pz-form pz-guild-form" data-form="guild"><label><span>Tên bang</span><span class="pz-input-wrap"><input name="name" maxlength="${S.LIMITS.guildName[1]}" autocomplete="off" required></span></label><label><span>Thẻ · 2–4 chữ in hoa</span><span class="pz-input-wrap"><input name="tag" maxlength="4" autocomplete="off" required style="text-transform:uppercase"></span></label>
+          <fieldset class="pz-emblems"><legend>Biểu tượng</legend>${S.GUILD_EMBLEMS.map(e=>`<label><input type="radio" name="emblem" value="${e}" ${e===emb?'checked':''}><span class="pz-tile">${EMBLEM(e)}</span></label>`).join('')}</fieldset>
+          <button class="gw-btn" type="submit">Lập bang</button><p class="pz-note pz-center">Cần tướng cấp ${S.LIMITS.guildMinLevel} · bản thử nghiệm miễn phí (sau này 100.000 vàng khi kinh tế lên máy chủ)</p></form>`
+        :`<ul class="pz-list">${P.guilds.map(x=>`<li>${EMBLEM(x.emblem)}<div class="pz-who"><b><em>[${esc(x.tag)}]</em> ${esc(x.name)}</b><small>Cấp ${x.level} · ${x.members}/${x.cap} · ${x.policy==='open'?'Vào ngay':x.policy==='closed'?'Đóng':'Cần duyệt'} · từ cấp ${x.minLevel}</small></div><span><button class="gw-btn" data-do="apply" data-id="${x.id}" ${x.policy==='closed'||x.members>=x.cap?'disabled':''}>Xin vào</button></span></li>`).join('')||empty('Chưa có bang nào. Hãy lập bang đầu tiên!')}</ul>`);}
     const t=tab||'info',lvlNext=g.next?`${fmt(g.exp)}/${fmt(g.next)}`:'Tối đa',pct=g.next?Math.min(100,(g.exp-(S.GUILD_EXP[g.level-1]||0))/(g.next-(S.GUILD_EXP[g.level-1]||0))*100):100;
-    const tabs=[['info','Thông tin'],['members',`Thành viên ${g.members.length}/${g.cap}`],...(g.applications.length||can('approve')?[['apps',`Đơn xin${g.applications.length?` (${g.applications.length})`:''}`]]:[]),['events','Hoạt động'],['log','Nhật ký']];
-    const head=`<header class="pz-guild-head"><span class="emblem emblem-${esc(g.emblem)}"></span><div><h3>[${esc(g.tag)}] ${esc(g.name)}</h3><p>Cấp ${g.level} · ${S.RANKS[g.me.rank].name}</p><div class="pz-bar"><i style="width:${pct}%"></i><span>${lvlNext}</span></div></div></header>`;
+    const list=[['info','Thông tin'],['members',`Thành viên ${g.members.length}/${g.cap}`],...(g.applications.length||can('approve')?[['apps',`Đơn xin${g.applications.length?` (${g.applications.length})`:''}`]]:[]),['events','Hoạt động'],['log','Nhật ký']];
+    const head=`<h3>Bang Hội</h3><header class="pz-guild-head">${EMBLEM(g.emblem)}<div><b class="pz-card-name"><em>[${esc(g.tag)}]</em> ${esc(g.name)}</b><p>Cấp ${g.level} · ${S.RANKS[g.me.rank].name}</p><div class="pz-bar"><i style="width:${pct}%"></i><span>${lvlNext}</span></div></div></header>`;
     let body='';
-    if(t==='info')body=`<blockquote class="pz-notice">${esc(g.notice)}</blockquote>${can('notice')?`<form class="pz-form" data-form="notice"><input name="text" maxlength="${S.LIMITS.guildNotice}" placeholder="Thông báo mới"><button class="gw-btn secondary" type="submit">Đổi</button></form>
-        <form class="pz-form" data-form="policy"><select name="policy">${[['open','Vào ngay'],['approval','Cần duyệt'],['closed','Đóng']].map(([v,l])=>`<option value="${v}" ${g.policy===v?'selected':''}>${l}</option>`).join('')}</select><input name="minLevel" type="number" min="1" max="500" value="${g.minLevel}"><button class="gw-btn secondary" type="submit">Lưu</button></form>`:''}
-      <div class="pz-actions"><button class="gw-btn" data-do="checkin" ${g.me.checked?'disabled':''}>${g.me.checked?'Đã điểm danh':`Điểm danh (+${S.CHECKIN.contribution} cống hiến)`}</button><button class="gw-btn secondary" data-do="lantern">Đèn bang · bậc ${g.lantern.tier}/3</button></div>
+    if(t==='info')body=`<blockquote class="pz-notice">${esc(g.notice)}</blockquote>${can('notice')?`<form class="pz-form" data-form="notice"><span class="pz-input-wrap"><input name="text" maxlength="${S.LIMITS.guildNotice}" placeholder="Thông báo mới"></span><button class="gw-btn secondary" type="submit">Đổi</button></form>
+        <form class="pz-form" data-form="policy"><span class="pz-input-wrap"><select name="policy">${[['open','Vào ngay'],['approval','Cần duyệt'],['closed','Đóng']].map(([v,l])=>`<option value="${v}" ${g.policy===v?'selected':''}>${l}</option>`).join('')}</select></span><span class="pz-input-wrap pz-num"><input name="minLevel" type="number" min="1" max="500" value="${g.minLevel}" aria-label="Cấp tối thiểu"></span><button class="gw-btn secondary" type="submit">Lưu</button></form>`:''}
+      <div class="pz-actions"><button class="gw-btn" data-do="checkin" ${g.me.checked?'disabled':''}>${icon('i-checkin')}${g.me.checked?'Đã điểm danh':`Điểm danh +${S.CHECKIN.contribution}`}</button><button class="gw-btn secondary" data-do="lantern">${icon('i-lantern')}Đèn bang ${g.lantern.tier}/3</button></div>
       ${g.leaderAway>=S.LIMITS.leaderWarnDays?`<p class="pz-note">Bang Chủ vắng ${g.leaderAway} ngày; tới ${S.LIMITS.leaderTransferDays} ngày quyền Bang Chủ chuyển cho cán bộ hoạt động nhất.</p>`:''}
-      <button class="gw-btn danger" data-do="leave">Rời bang</button>`;
+      <div class="pz-actions pz-end"><button class="gw-btn secondary danger" data-do="leave">Rời bang</button></div>`;
     if(t==='members')body=`<ul class="pz-list">${g.members.map(m=>{const higher=S.RANK_ORDER.indexOf(m.rank)>S.RANK_ORDER.indexOf(g.me.rank);const ctl=m.id!==P.you?.id&&higher&&can('promote');
-      return `<li class="${m.online?'on':''}">${face(m.hero)}<b>${esc(m.name)}</b><small>${S.RANKS[m.rank].name} · cấp ${m.level} · tuần ${fmt(m.week)} / tổng ${fmt(m.contribution)}${m.checked?' · ✓':''}</small><span>${ctl?`<button class="gw-btn secondary" data-do="promote" data-id="${m.id}">Thăng</button><button class="gw-btn secondary" data-do="demote" data-id="${m.id}">Giáng</button>`:''}${m.id!==P.you?.id&&higher&&can('kick')?`<button class="gw-btn danger" data-do="kick" data-id="${m.id}">Mời ra</button>`:''}${g.me.rank==='leader'&&m.rank==='vice'?`<button class="gw-btn secondary" data-do="promote" data-id="${m.id}">Nhường chủ</button>`:''}</span></li>`;}).join('')}</ul>
-      <p class="pz-note">Cán bộ: ${S.LIMITS.officers.vice} Phó Bang, ${S.LIMITS.officers.elder} Trưởng Lão. Chỉ thao tác được với người chức thấp hơn mình.</p>`;
-    if(t==='apps')body=`<ul class="pz-list">${g.applications.map(x=>`<li><b>${esc(x.name)}</b><small>cấp ${x.level}</small><span>${can('approve')?`<button class="gw-btn" data-do="approve" data-id="${x.id}">Nhận</button><button class="gw-btn secondary" data-do="reject" data-id="${x.id}">Từ chối</button>`:''}</span></li>`).join('')||'<li class="empty">Chưa có đơn.</li>'}</ul>`;
-    if(t==='events')body=`<ul class="pz-list pz-events"><li class="on"><b>Dệt Đèn Bang · hằng tuần</b><small>Mỗi người dệt 1 sợi/ngày tại Bà Dệt Đèn (tối đa ${S.LIMITS.lanternPerWeek}/tuần). Đèn sáng bậc 1/2/3 ở ${S.LANTERN.tiers.join('/')} sợi khi đủ cả ba màu.</small><span><button class="gw-btn" data-do="lantern">Xem đèn</button></span></li>
-      <li><b>Boss Bang · hằng tuần</b><small>Chung một thanh máu, xếp hạng sát thương trong bang. Sắp ra mắt (cần máy chủ trận).</small></li>
-      <li><b>Viễn Chinh · cuối tuần</b><small>Cả bang cùng đi một chuỗi ải. Sắp ra mắt.</small></li><li><b>Chiến Trường Bang · theo mùa</b><small>Bang đấu bang. Sắp ra mắt.</small></li>
-      <li><b>Cửa Hàng Bang</b><small>Đổi cống hiến lấy nguyên liệu, mảnh tướng cũ giới hạn tuần. Sắp ra mắt (cần máy chủ kinh tế).</small></li></ul>`;
-    if(t==='log')body=`<ul class="pz-list pz-log">${g.log.slice().reverse().map(r=>`<li><time>${new Date(r.at).toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</time><p>${esc(r.text)}</p></li>`).join('')||'<li class="empty">Chưa có gì.</li>'}</ul>`;
-    return head+`<nav class="pz-tabs">${tabs.map(([k,l])=>`<button data-tab="${k}" class="${t===k?'on':''}">${l}</button>`).join('')}</nav>`+body;
+      return `<li class="${m.online?'on':''}">${socket(face(m.hero))}<div class="pz-who"><b>${esc(m.name)}</b><small>${lamp(!!m.online)}${S.RANKS[m.rank].name} · cấp ${m.level} · tuần ${fmt(m.week)} / tổng ${fmt(m.contribution)}${m.checked?' · ✓':''}</small></div><span>${ctl?`<button class="gw-btn secondary" data-do="promote" data-id="${m.id}">Thăng</button><button class="gw-btn secondary" data-do="demote" data-id="${m.id}">Giáng</button>`:''}${m.id!==P.you?.id&&higher&&can('kick')?`<button class="gw-btn secondary danger" data-do="kick" data-id="${m.id}">Mời ra</button>`:''}${g.me.rank==='leader'&&m.rank==='vice'?`<button class="gw-btn secondary" data-do="promote" data-id="${m.id}">Nhường chủ</button>`:''}</span></li>`;}).join('')}</ul>
+      <p class="pz-note pz-center">Cán bộ: ${S.LIMITS.officers.vice} Phó Bang, ${S.LIMITS.officers.elder} Trưởng Lão · chỉ thao tác với người chức thấp hơn.</p>`;
+    if(t==='apps')body=`<ul class="pz-list">${g.applications.map(x=>`<li>${icon('i-invite','pz-row-ico')}<div class="pz-who"><b>${esc(x.name)}</b><small>cấp ${x.level}</small></div><span>${can('approve')?`<button class="gw-btn" data-do="approve" data-id="${x.id}">Nhận</button><button class="gw-btn secondary" data-do="reject" data-id="${x.id}">Từ chối</button>`:''}</span></li>`).join('')||empty('Chưa có đơn.')}</ul>`;
+    if(t==='events')body=`<ul class="pz-list pz-events"><li class="on">${icon('i-lantern','pz-row-ico')}<div class="pz-who"><b>Dệt Đèn Bang · hằng tuần</b><small>1 sợi/ngày tại Bà Dệt Đèn (tối đa ${S.LIMITS.lanternPerWeek}/tuần) · bậc 1/2/3 ở ${S.LANTERN.tiers.join('/')} sợi đủ ba màu</small></div><span>${tile('lantern',null,'i-lantern','Xem đèn')}</span></li>
+      ${[['Boss Bang · hằng tuần','Chung một thanh máu, xếp hạng sát thương trong bang'],['Viễn Chinh · cuối tuần','Cả bang cùng đi một chuỗi ải'],['Chiến Trường Bang · theo mùa','Bang đấu bang'],['Cửa Hàng Bang','Đổi cống hiến lấy nguyên liệu, mảnh tướng cũ giới hạn tuần']].map(([n,d])=>`<li class="soon">${icon('i-guild','pz-row-ico')}<div class="pz-who"><b>${n}</b><small>${d}</small></div><span><em class="pz-soon">Sắp ra mắt</em></span></li>`).join('')}</ul>`;
+    if(t==='log')body=`<ul class="pz-list pz-log">${g.log.slice().reverse().map(r=>`<li><time>${new Date(r.at).toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</time><p>${esc(r.text)}</p></li>`).join('')||empty('Chưa có gì.')}</ul>`;
+    return head+tabs(list,t).replace('pz-tabs','pz-tabs scroll')+body;
   }
   function lanternHtml(){
     const g=P.guild,tier=g?.lantern?.tier||0,threads=g?.lantern?.threads||{};
-    const at=P.zone==='lantern';
-    return `<header class="pz-card-head"><img class="pz-face" src="assets/gemwoven/plaza/npc-weaver.webp" alt=""><div><h3>Bà Dệt Đèn <i>NPC</i></h3><p>Mỗi ngày một sợi, cả bang cùng dệt nên ngọn đèn.</p></div></header>
-      <div class="pz-lantern"><img src="assets/gemwoven/plaza/lantern-${tier}.webp" alt="Đèn bang bậc ${tier}"><div><p>Đèn bang tuần này: <b>bậc ${tier}/3</b></p>
-      <ul class="pz-threads">${S.LANTERN.colors.map(([c,name,color])=>`<li style="--c:${color}"><i></i>${esc(name)} <b>${threads[c]||0}</b></li>`).join('')}</ul>
-      <p class="pz-note">Bậc 1/2/3 ở ${S.LANTERN.tiers.join(' / ')} sợi và mỗi màu ít nhất 1 / 3 / 5 sợi. Đèn sáng hiện ở sảnh bang cả tuần. Chưa trao tài nguyên trong bản thử nghiệm.</p></div></div>
-      ${!g?'<p class="pz-note">Vào một bang để cùng dệt đèn.</p>':g.me.wove?'<p class="pz-note">Hôm nay bạn đã dệt. Quay lại vào ngày mai nhé!</p>':g.me.woven>=S.LIMITS.lanternPerWeek?'<p class="pz-note">Tuần này bạn đã dệt đủ 5 sợi.</p>':!at?'<p class="pz-note">Lại gần Bà Dệt Đèn (cạnh sảnh bang) để dệt.</p><div class="pz-actions"><button class="gw-btn" data-do="walk-weaver">Đi tới Bà Dệt Đèn</button></div>'
-      :`<div class="pz-actions">${S.LANTERN.colors.map(([c,name,color])=>`<button class="gw-btn thread" style="--c:${color}" data-do="weave" data-id="${c}">${esc(name)}</button>`).join('')}</div><p class="pz-note">Bàn với bang chọn màu đang thiếu để đèn lên bậc.</p>`}`;
+    const at=P.zone==='lantern',total=S.LANTERN.colors.reduce((n,[c])=>n+(threads[c]||0),0),goal=S.LANTERN.tiers[Math.min(tier,S.LANTERN.tiers.length-1)];
+    const spool={red:'t-red',blue:'t-blue',gold:'t-gold'};
+    return `<h3>Dệt Đèn Bang</h3><header class="pz-card-head">${socket('<img src="assets/gemwoven/plaza/npc-weaver.webp" alt="">')}<div><b class="pz-card-name">Bà Dệt Đèn <i class="pz-npc">NPC</i></b><p>Mỗi ngày một sợi, cả bang cùng dệt nên ngọn đèn.</p></div></header>
+      <div class="pz-lantern"><img src="assets/gemwoven/plaza/lantern-${tier}.webp" alt="Đèn bang bậc ${tier}"><div><p class="pz-card-name">Bậc ${tier}/3</p>
+      <ul class="pz-threads">${S.LANTERN.colors.map(([c,name])=>`<li title="${esc(name)}">${icon(spool[c]||'t-gold')}<b>${threads[c]||0}</b></li>`).join('')}</ul>
+      <div class="pz-bar"><i style="width:${tier>=3?100:Math.min(100,total/goal*100)}%"></i><span>${tier>=3?'Đèn sáng tối đa':`${total}/${goal} sợi`}</span></div></div></div>
+      <details class="pz-more"><summary>Luật dệt</summary><p class="pz-note">Bậc 1/2/3 ở ${S.LANTERN.tiers.join(' / ')} sợi và mỗi màu ít nhất 1 / 3 / 5 sợi. Đèn sáng hiện ở sảnh bang cả tuần. Chưa trao tài nguyên trong bản thử nghiệm.</p></details>
+      ${!g?'<p class="pz-note pz-center">Vào một bang để cùng dệt đèn.</p>':g.me.wove?'<p class="pz-note pz-center">Hôm nay bạn đã dệt. Quay lại vào ngày mai nhé!</p>':g.me.woven>=S.LIMITS.lanternPerWeek?'<p class="pz-note pz-center">Tuần này bạn đã dệt đủ 5 sợi.</p>':!at?`<div class="pz-actions"><button class="gw-btn" data-do="walk-weaver">${icon('i-goto')}Đi tới Bà Dệt Đèn</button></div>`
+      :`<div class="pz-actions">${S.LANTERN.colors.map(([c,name])=>`<button class="gw-btn" data-do="weave" data-id="${c}">${icon(spool[c]||'t-gold')}${esc(name.replace('Sợi ',''))}</button>`).join('')}</div><p class="pz-note pz-center">Chọn màu bang đang thiếu để đèn lên bậc.</p>`}`;
   }
   function openSheet(kind,tab){
-    P.sheet=kind;P.sheetTab=tab;const box=P.root.querySelector('.pz-sheet');box.hidden=false;box.dataset.kind=kind;
-    box.querySelector('.pz-sheet-body').innerHTML=sheetHtml(kind,tab);
+    P.sheet=kind;P.sheetTab=tab;const box=P.root.querySelector('.pz-sheet');box.hidden=false;box.dataset.kind=kind;P.root.classList.add('sheet-open');
+    const body=box.querySelector('.pz-sheet-body');body.innerHTML=sheetHtml(kind,tab);
+    // The sheet's title rides on the painted frame's wooden plank.
+    // A sideways tab rail fades at its edge until the last tab is in view.
+    for(const rail of body.querySelectorAll('.pz-tabs.scroll')){const on=rail.querySelector('.on');if(on)rail.scrollLeft=Math.max(0,on.offsetLeft-120);const end=()=>rail.classList.toggle('end',rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-4);end();rail.addEventListener('scroll',end,{passive:true});}
+    const h=body.querySelector(':scope>h3');box.querySelector('.pz-sheet-title').textContent=h?.textContent||'';h?.remove();
     if(kind==='name')setTimeout(()=>box.querySelector('input')?.focus(),50);
     if(kind==='guild'&&!P.guild&&P.status==='online')send({t:'guild',op:'list'});
     if(kind==='board'&&P.status==='online')send({t:'guild',op:'list'});
   }
-  function closeSheet(){P.sheet=null;const box=P.root.querySelector('.pz-sheet');box.hidden=true;}
+  function closeSheet(){P.sheet=null;const box=P.root.querySelector('.pz-sheet');box.hidden=true;P.root.classList.remove('sheet-open');}
   function act(kind,id){
     const go=m=>{if(P.status!=='online')return toast('Cần kết nối máy chủ Quảng Trường.',{error:true});send(m);};
     switch(kind){
@@ -344,7 +387,7 @@
 
   // ---------- Chat ----------
   function setChannel(ch){
-    P.chatCh=ch;const b=P.root.querySelector('.pz-chan');b.textContent={area:'Khu vực',guild:'Bang',whisper:P.whisperTo?`→ ${P.whisperTo.name}`:'Riêng'}[ch];b.dataset.ch=ch;
+    P.chatCh=ch;const b=P.root.querySelector('.pz-chan');b.querySelector('span').textContent={area:'Khu vực',guild:'Bang',whisper:P.whisperTo?`→ ${P.whisperTo.name}`:'Riêng'}[ch];b.dataset.ch=ch;
   }
   function cycleChannel(){const order=['area',...(P.guild?['guild']:[]),...(P.whisperTo?['whisper']:[])];setChannel(order[(order.indexOf(P.chatCh)+1)%order.length]);}
   function sendChat(){
@@ -357,7 +400,8 @@
   // ---------- Friendly fight ----------
   function duelPrompt(m){
     const box=P.root.querySelector('.pz-invite');box.hidden=false;let left=Math.round(S.LIMITS.duelReplyMs/1000);
-    const paint=()=>{box.innerHTML=`<p><b>${esc(m.name)}</b> mời bạn giao hữu (${esc(M.HEROES[m.p?.hero]?.name||'')})</p><small>Đấu bản sao tướng của họ · AI · không thưởng · ${left}s</small><div><button class="gw-btn" data-duel="accept">Đồng ý</button><button class="gw-btn secondary" data-duel="decline">Từ chối</button></div>`;};
+    const mine=myProfile();
+    const paint=()=>{box.innerHTML=`<span class="pz-sheet-crest" aria-hidden="true"></span><div class="pz-duel-faces"><span class="pz-socket">${face(m.p?.hero)}</span>${icon('i-swords','pz-duel-swords')}<span class="pz-socket">${face(mine.hero)}</span></div><p><b>${esc(m.name)}</b> mời bạn giao hữu</p><strong>Đấu bản sao AI · Không thưởng</strong><small>${esc(M.HEROES[m.p?.hero]?.name||'')} · còn <b>${left}s</b></small><div><button class="gw-btn" data-duel="accept">Đồng ý</button><button class="gw-btn secondary" data-duel="decline">Từ chối</button></div>`;};
     paint();clearInterval(P.inviteTimer);P.inviteTimer=setInterval(()=>{left--;if(left<=0){clearInterval(P.inviteTimer);box.hidden=true;}else paint();},1000);
     box.onclick=e=>{const b=e.target.closest('[data-duel]');if(!b)return;clearInterval(P.inviteTimer);box.hidden=true;send({t:'duel',op:b.dataset.duel,id:m.from});};
   }
@@ -369,12 +413,13 @@
 
   // ---------- Small UI ----------
   function toast(text,{error=false,label,run}={}){
-    const box=P.root?.querySelector('.pz-toast');if(!box)return;box.innerHTML=`<span>${esc(text)}</span>${label?`<button class="gw-btn secondary">${esc(label)}</button>`:''}`;box.className='pz-toast show'+(error?' error':'');
+    const box=P.root?.querySelector('.pz-toast');if(!box)return;box.innerHTML=`<span>${esc(text)}</span>${label?`<button type="button" class="gw-btn">${esc(label)}</button>`:''}`;box.className='pz-toast show'+(error?' error':'');
     if(label)box.querySelector('button').onclick=()=>{box.className='pz-toast';run();};clearTimeout(P.toastTimer);P.toastTimer=setTimeout(()=>{box.className='pz-toast';},label?6000:3200);
   }
   function status(){
     if(!P.root)return;const s=P.root.querySelector('.pz-status');const n=[...P.actors.values()].filter(a=>!a.npc).length;
-    s.className='pz-status '+P.status;s.innerHTML=P.status==='online'?`<i></i>Kênh ${P.channel||'—'} · ${n} người`:P.status==='connecting'?'<i></i>Đang kết nối…':P.status==='naming'?'<i></i>Đặt tên':'<i></i>Ngoại tuyến · Thử lại';
+    const lampOf={online:'lamp-on',connecting:'lamp-wait',naming:'lamp-wait'}[P.status]||'lamp-off';
+    s.className='pz-status '+P.status;s.innerHTML=icon(lampOf,'pz-lamp')+`<span>${P.status==='online'?`Kênh ${P.channel||'—'} · ${n} người`:P.status==='connecting'?'Đang kết nối…':P.status==='naming'?'Đặt tên':'Ngoại tuyến · Thử lại'}</span>`;
   }
   function badges(){
     if(!P.root)return;const inc=P.friends.incoming.length,apps=P.guild?.applications?.length||0,unchecked=P.guild&&!P.guild.me?.checked;
@@ -390,16 +435,19 @@
       <div class="pz-arrows" aria-hidden="true"></div>
       <header class="pz-top"><button type="button" class="pz-back" data-action="route:home" aria-label="Về thị trấn">‹</button><div><b class="pz-place">Gặp Gỡ · Quảng Trường</b><button type="button" class="pz-status" data-open="channels"></button></div></header>
       <nav class="pz-side" aria-label="Quảng Trường">
-        <button type="button" data-open="friends"><img src="${esc(asset('icon-friends'))}" alt=""><span>Bạn bè</span><b class="pz-badge" hidden></b></button>
-        <button type="button" data-open="guild"><img src="${esc(asset('icon-crown'))}" alt=""><span>Bang hội</span><b class="pz-badge" hidden></b></button>
-        <button type="button" data-open="emotes"><span class="pz-emoji">😄</span><span>Biểu cảm</span></button>
-        <button type="button" data-open="more"><img src="${esc(asset('icon-grid'))}" alt=""><span>Thêm</span></button></nav>
+        <button type="button" data-open="friends">${icon('i-friends')}<span>Bạn bè</span><b class="pz-badge" hidden></b></button>
+        <button type="button" data-open="guild">${icon('i-guild')}<span>Bang hội</span><b class="pz-badge" hidden></b></button>
+        <button type="button" data-open="emotes">${icon('i-emote')}<span>Biểu cảm</span></button>
+        <button type="button" data-open="more"><img class="pz-ico" src="${esc(asset('icon-grid'))}" alt=""><span>Thêm</span></button></nav>
       <button type="button" class="pz-context" hidden></button>
       <div class="pz-stick ${stickSide} ${prefs.stick==='fixed'?'fixed':''}" aria-hidden="true"><i></i></div>
       <button type="button" class="pz-ticker" data-open="log" aria-label="Mở nhật ký trò chuyện"></button>
-      <form class="pz-chat"><button type="button" class="pz-chan" data-ch="area">Khu vực</button><label class="pz-field"><input class="pz-input" maxlength="${S.LIMITS.chat}" placeholder="Nhắn gì đó…" autocomplete="off" enterkeyhint="send" aria-label="Tin nhắn"><small class="pz-count">0/${S.LIMITS.chat}</small></label><button type="submit" class="gw-btn pz-send">Gửi</button></form>
+      <form class="pz-chat"><button type="button" class="pz-chan" data-ch="area" aria-label="Đổi kênh chat"><span>Khu vực</span></button><label class="pz-field"><input class="pz-input" maxlength="${S.LIMITS.chat}" placeholder="Nhắn gì đó…" autocomplete="off" enterkeyhint="send" aria-label="Tin nhắn"><small class="pz-count">0/${S.LIMITS.chat}</small></label><button type="submit" class="pz-send">${icon('i-letter')}<span>Gửi</span></button></form>
       <div class="pz-invite" hidden></div><div class="pz-toast" role="status" aria-live="polite"></div>
-      <section class="pz-sheet" hidden><button type="button" class="pz-close" aria-label="Đóng">×</button><div class="pz-sheet-body"></div></section>`;
+      <section class="pz-sheet" hidden><span class="pz-sheet-crest" aria-hidden="true"></span><h2 class="pz-sheet-title"></h2><button type="button" class="pz-close" aria-label="Đóng">×</button><div class="pz-sheet-body"></div></section>`;
+    // Drawn pieces reach the stylesheet as variables (absolute URLs, so the inlined build resolves them too).
+    for(const n of CSS_PIECES)root.style.setProperty('--pz-'+n,`url("${new URL(ui(n),document.baseURI).href}")`);
+    for(const [n,k] of [['frame','settings-frame'],['crest','crest'],['row','ui-row']])if(asset(k))root.style.setProperty('--pz-'+n,`url("${new URL(asset(k),document.baseURI).href}")`);
     P.root=root;P.world=root.querySelector('.pz-world');
     const view=root.querySelector('.pz-view');
     // Pointer: a drag on the ground is a joystick at the touch point (or the fixed corner stick); a short tap walks there.

@@ -1,0 +1,78 @@
+Attached references, in order: (1) mockup-1.png — the approved plaza mockup (Mockup 1); (2) chrome.png — existing painted frames of the game (the leafy settings popup frame is the second row, first item; the wooden tab is top-left; the cream row plate is second row, last item); (3) forge-mockup.png — an approved mockup; (4) phone-forge.png — an approved screen.
+
+Use case: ui-mockup.
+Create ONE finished Gemwoven plaza mockup with the FRIENDS sheet open.
+
+OUTPUT
+One opaque 1200×1800, 2:3 portrait image.
+Center the complete 941×1672 logical screen at approximately 1013×1800; extend only scenery into side margins.
+No device, browser, Studio chrome, annotations, or alternative panels.
+
+REFERENCES
+Use Mockup 1 as the exact plaza, HUD, material, and layout reference.
+Use chrome.png’s painted leafy settings popup frame, wooden tabs, and cream row plate.
+Match forge-mockup.png and the approved Inventory and Shop screens’ craftsmanship.
+
+PRESERVE
+Keep the HUD at Y 0–150 unchanged.
+Keep the same online plaza, three people total, header, actors, fountain, and sidebar above the sheet.
+Apply only gentle dimming to the exposed map; keep the HUD readable.
+The sheet replaces the composer and covers the context action and ticker.
+
+SHEET
+Logical bounds: X 18–923, Y 852–1672.
+Use the existing painted leafy popup construction: warm parchment center, timber edges, restrained ivy and brass corner fittings.
+Keep ornament away from content. The paper must be quiet enough to read.
+No plain cream CSS rectangle.
+
+HEADER, Y 874–980
+A separate wooden title plank reading “Bạn bè”.
+A separate brass close medallion at X 784–892, Y 874–982, with crisp “×”.
+Keep title and close control distinct.
+
+TABS, Y 990–1098
+Three painted wooden tabs across X 48–893:
+“Bạn bè 3/50”, “Lời mời”, “Đã chặn”.
+Select the first using a warm brass clasp and lighter wood.
+No orange web-form pills.
+
+THREE ROWS
+Cream painted row plates at:
+X 48–893, Y 1116–1276;
+X 48–893, Y 1290–1450;
+X 48–893, Y 1464–1624.
+
+Each row has:
+A separate brass portrait socket, approximately 96×96, at X 68.
+Name and one short status line starting at X 184, kept within X 504.
+Three separate 108×108 action fittings at X 534, 654, 774:
+painted walking boots with destination pin;
+painted sealed letter;
+painted heart token.
+Use recognizable illustrations, no emoji and no tiny action captions.
+A small painted lantern beside status reinforces online/offline state.
+
+Row 1:
+Portrait of Kiếm Sĩ Lam.
+“Kiếm Sĩ Lam”
+“Kênh 1 · Gần bạn”
+Green lantern. All three actions available.
+
+Row 2:
+Portrait of Hoa Mai.
+“Hoa Mai”
+“Kênh 2 · Đang chơi”
+Green lantern. All three actions available.
+
+Row 3:
+Portrait of Mộc Miên.
+“Mộc Miên”
+“Ngoại tuyến”
+Unlit lantern. Walking and letter fittings visibly inactive using subdued painted variants; heart token remains available.
+Keep the name and portrait readable.
+
+FINISH
+Text is a crisp HTML-overlay simulation; production art will contain no words or numbers.
+Names approximately 40 logical pixels, status and tab labels 36, title 48.
+Consistent alignment, generous touch targets, fully visible final row.
+No explanatory paragraphs, nested cards, oversized empty areas, bottom navigation, or competing dialog.

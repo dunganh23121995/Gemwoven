@@ -1,0 +1,467 @@
+{
+ "action": {
+  "h": 182,
+  "sheet": "sheet-controls-raw.png",
+  "w": 1000
+ },
+ "arrow": {
+  "h": 158,
+  "sheet": "sheet-world-raw.png",
+  "w": 142
+ },
+ "back": {
+  "h": 260,
+  "sheet": "sheet-controls-raw.png",
+  "w": 256
+ },
+ "bubble": {
+  "h": 203,
+  "sheet": "sheet-world-raw.png",
+  "w": 578
+ },
+ "bubble-tail": {
+  "h": 79,
+  "sheet": "sheet-world-raw.png",
+  "w": 98
+ },
+ "chan": {
+  "h": 168,
+  "sheet": "sheet-composer-raw.png",
+  "w": 318
+ },
+ "close": {
+  "h": 238,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 238
+ },
+ "crest": {
+  "h": 188,
+  "sheet": "sheet-world-raw.png",
+  "w": 161
+ },
+ "e-angry": {
+  "h": 192,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "e-cheer": {
+  "h": 180,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "e-cry": {
+  "h": 173,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "e-duel": {
+  "h": 188,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "e-laugh": {
+  "h": 193,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "e-love": {
+  "h": 186,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "e-think": {
+  "h": 200,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 199
+ },
+ "e-wave": {
+  "h": 193,
+  "sheet": "sheet-emotes-raw.png",
+  "w": 200
+ },
+ "field": {
+  "h": 168,
+  "sheet": "sheet-composer-raw.png",
+  "w": 775
+ },
+ "field-form": {
+  "h": 128,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 1000
+ },
+ "fill": {
+  "h": 57,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 996
+ },
+ "g-crown": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 168
+ },
+ "g-flame": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 167
+ },
+ "g-fox": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 171
+ },
+ "g-gem": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 167
+ },
+ "g-leaf": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 168
+ },
+ "g-moon": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 168
+ },
+ "g-owl": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 170
+ },
+ "g-shield": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 167
+ },
+ "g-star": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 170
+ },
+ "g-sun": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 168
+ },
+ "g-sword": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 166
+ },
+ "g-wave": {
+  "h": 200,
+  "sheet": "sheet-emblems-raw.png",
+  "w": 170
+ },
+ "h-chat": {
+  "h": 165,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "h-guild": {
+  "h": 166,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "h-meet": {
+  "h": 135,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "h-spar": {
+  "h": 147,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "h-walk": {
+  "h": 195,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "i-block": {
+  "h": 187,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-board": {
+  "h": 161,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-checkin": {
+  "h": 192,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-emote": {
+  "h": 168,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-friends": {
+  "h": 151,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-gate": {
+  "h": 165,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-goto": {
+  "h": 181,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-goto-off": {
+  "h": 183,
+  "sheet": "sheet-states-raw.png",
+  "w": 200
+ },
+ "i-guild": {
+  "h": 193,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-heart": {
+  "h": 197,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-heart-done": {
+  "h": 196,
+  "sheet": "sheet-states-raw.png",
+  "w": 200
+ },
+ "i-help": {
+  "h": 200,
+  "sheet": "sheet-icons-raw.png",
+  "w": 182
+ },
+ "i-invite": {
+  "h": 191,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-lantern": {
+  "h": 200,
+  "sheet": "sheet-icons-raw.png",
+  "w": 140
+ },
+ "i-letter": {
+  "h": 139,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-log": {
+  "h": 167,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-map": {
+  "h": 147,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-near": {
+  "h": 139,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-report": {
+  "h": 176,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "i-swords": {
+  "h": 181,
+  "sheet": "sheet-icons-raw.png",
+  "w": 200
+ },
+ "knob": {
+  "h": 123,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 123
+ },
+ "knob-off": {
+  "h": 261,
+  "sheet": "sheet-states-raw.png",
+  "w": 259
+ },
+ "knot": {
+  "h": 140,
+  "sheet": "sheet-world-raw.png",
+  "w": 177
+ },
+ "lamp-dark": {
+  "h": 210,
+  "sheet": "sheet-world-raw.png",
+  "w": 148
+ },
+ "lamp-off": {
+  "h": 210,
+  "sheet": "sheet-world-raw.png",
+  "w": 148
+ },
+ "lamp-on": {
+  "h": 210,
+  "sheet": "sheet-world-raw.png",
+  "w": 148
+ },
+ "lamp-wait": {
+  "h": 210,
+  "sheet": "sheet-world-raw.png",
+  "w": 149
+ },
+ "ledge": {
+  "h": 124,
+  "sheet": "sheet-composer-raw.png",
+  "w": 1000
+ },
+ "notice": {
+  "h": 195,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 1000
+ },
+ "npc-tag": {
+  "h": 116,
+  "sheet": "sheet-world-raw.png",
+  "w": 208
+ },
+ "plaque": {
+  "h": 387,
+  "sheet": "sheet-controls-raw.png",
+  "w": 381
+ },
+ "plate": {
+  "h": 122,
+  "sheet": "sheet-world-raw.png",
+  "w": 579
+ },
+ "plate-me": {
+  "h": 122,
+  "sheet": "sheet-world-raw.png",
+  "w": 582
+ },
+ "rail": {
+  "h": 132,
+  "sheet": "sheet-composer-raw.png",
+  "w": 1000
+ },
+ "seal": {
+  "h": 178,
+  "sheet": "sheet-controls-raw.png",
+  "w": 177
+ },
+ "send": {
+  "h": 169,
+  "sheet": "sheet-composer-raw.png",
+  "w": 307
+ },
+ "sign": {
+  "h": 238,
+  "sheet": "sheet-controls-raw.png",
+  "w": 976
+ },
+ "socket": {
+  "h": 259,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 256
+ },
+ "stick-ring": {
+  "h": 293,
+  "sheet": "sheet-world-raw.png",
+  "w": 288
+ },
+ "stick-thumb": {
+  "h": 201,
+  "sheet": "sheet-world-raw.png",
+  "w": 199
+ },
+ "strip": {
+  "h": 150,
+  "sheet": "sheet-controls-raw.png",
+  "w": 982
+ },
+ "switch": {
+  "h": 107,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 241
+ },
+ "switch-off": {
+  "h": 131,
+  "sheet": "sheet-states-raw.png",
+  "w": 300
+ },
+ "switch-on": {
+  "h": 131,
+  "sheet": "sheet-states-raw.png",
+  "w": 300
+ },
+ "t-blue": {
+  "h": 191,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "t-gold": {
+  "h": 191,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "t-red": {
+  "h": 191,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "tab": {
+  "h": 119,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 386
+ },
+ "tab-on": {
+  "h": 138,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 386
+ },
+ "tag": {
+  "h": 94,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 245
+ },
+ "tile": {
+  "h": 250,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 260
+ },
+ "tile-off": {
+  "h": 292,
+  "sheet": "sheet-states-raw.png",
+  "w": 300
+ },
+ "tile-on": {
+  "h": 254,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 266
+ },
+ "trough": {
+  "h": 79,
+  "sheet": "sheet-fittings-raw.png",
+  "w": 1000
+ },
+ "x-calendar": {
+  "h": 175,
+  "sheet": "sheet-extras-raw.png",
+  "w": 200
+ },
+ "x-empty": {
+  "h": 200,
+  "sheet": "sheet-extras-raw.png",
+  "w": 187
+ },
+ "x-recruit": {
+  "h": 200,
+  "sheet": "sheet-extras-raw.png",
+  "w": 164
+ }
+}

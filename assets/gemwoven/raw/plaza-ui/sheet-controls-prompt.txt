@@ -1,0 +1,11 @@
+Reference image 1 is the approved art-direction mockup of the Gặp Gỡ plaza screen of Gemwoven, a cozy hand-painted chibi fantasy mobile RPG. Draw these EMPTY UI pieces from it as separate items on one sheet, in exactly the same painted style and materials (honey-brown timber, worn leather, aged brass, restrained ivy). Each item fully separate, with wide empty magenta space around it, front view, no perspective, no shadows on the background.
+Top row, left to right:
+(A) a ROUND BACK MEDALLION: brass-rimmed round wooden button, the centre plain and EMPTY (no arrow), about 220x220.
+(B) a long horizontal wooden PLACE SIGN plank with brass end caps and a sprig of ivy on one end only, centre plain and EMPTY for a title, about 900x130, the middle 70% of its length perfectly uniform so it can stretch.
+(C) a small round red WAX SEAL badge, plain centre, about 90x90.
+Middle row:
+(D) a long thin dark LEATHER STRIP with stitched edges and small brass rivets at both ends, centre plain and EMPTY, about 900x80, uniform middle so it can stretch.
+(E) a WOODEN HANGING PLAQUE for a side menu button: a rounded-square wooden board with brass corner fittings hanging from two short brass rings at the top, face plain and EMPTY, about 260x250.
+Bottom row:
+(F) a long LEATHER-AND-BRASS ACTION PLATE: warm amber leather plate with aged brass rims and pointed brass ends, a round empty brass socket at its LEFT end for an icon, the rest plain and EMPTY for text, about 1000x190, uniform middle.
+No text, no letters, no numbers, no arrows, no icons inside the pieces. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.

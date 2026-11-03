@@ -1,0 +1,5 @@
+Reference image 1 is the approved Gặp Gỡ plaza mockup of Gemwoven (cozy hand-painted chibi fantasy mobile RPG). Draw 12 separate small painted ILLUSTRATIONS in the same style (clear chibi-fantasy silhouettes, warm palette, thin dark outline), arranged 4 columns x 3 rows, each centred in its own cell with wide empty magenta space around it, no frame, no text:
+Row 1: (1) a spool of RED-ORANGE thread; (2) a spool of TEAL-BLUE thread; (3) a spool of GOLDEN-YELLOW thread; (4) a fingertip dragging on cobblestones with a small motion swirl (walking help).
+Row 2: (5) a parchment speech bubble with three dots (chat help); (6) two chibi hands shaking (meet help); (7) a round stone sparring ring seen from above with two small flags (spar help); (8) a big guild-hall door with a banner (guild help).
+Row 3: (9) a small recruiting pennant on a pole (guild recruiting); (10) a small calendar leaf page with a ribbon (event calendar); (11) an empty wooden mailbox with an open lid (empty list); (12) a fountain crystal on a small stone plinth (plaza).
+Each illustration about 260x260 in a 384x340 cell. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.

@@ -1,0 +1,4 @@
+Reference image 1 is the approved Gặp Gỡ plaza mockup of Gemwoven (cozy hand-painted chibi fantasy mobile RPG); reference image 2 is the guide cat NPC (orange tabby cat with a teal scarf). Draw 8 separate EMOTE icons of this same guide cat's FACE (head only, round, same character, same painted style, thin dark outline), arranged 4 columns x 2 rows, each centred in its own cell with wide empty magenta space around it, no frame, no text:
+Row 1: (1) waving a paw, cheerful; (2) laughing with closed eyes; (3) loving, eyes as hearts with a small red heart; (4) cheering with tiny confetti.
+Row 2: (5) thinking, paw on chin, small question mark; (6) sad with a tear; (7) angry, puffed cheeks, small anger mark; (8) determined challenge face with two tiny crossed swords behind.
+Each face about 280x280 in a 384x512 cell. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.
