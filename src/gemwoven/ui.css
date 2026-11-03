@@ -235,3 +235,13 @@ body{overflow-x:hidden}
 /* Featured gear chips: square slot art on the left, two-line name beside it. */
 .featured-equipment>.art{width:94px!important;right:auto!important}
 .featured-equipment>.copy-layer{line-height:1.12}
+
+/* Thinner popup frame (owner 04/11): the same painted frame drawn at a fraction of its thickness — the top keeps
+   enough room for the title plank (--ft), the sides and the bottom shrink more (--fs). */
+.gw-dialog{--ft:.7;--fs:.5;
+  padding:calc(214*var(--ft)*var(--s)) calc(92*var(--fs)*var(--s) + 6px) calc(100*var(--fs)*var(--s) + 6px);
+  background:linear-gradient(#f0e2c3,#f0e2c3) calc(76*var(--fs)*var(--s)) calc(208*var(--ft)*var(--s))/calc(100% - 152*var(--fs)*var(--s)) calc(100% - 208*var(--ft)*var(--s) - 104*var(--fs)*var(--s)) no-repeat}
+.gw-dialog::before{border-width:calc(250*var(--ft)*var(--s)) calc(125*var(--fs)*var(--s)) calc(160*var(--fs)*var(--s))}
+.gw-dialog>.gw-emblem{top:calc(58*var(--ft)*var(--s));width:calc(68*var(--ft)*var(--s))}
+.gw-dialog>.gw-head{top:calc(105*var(--ft)*var(--s));height:calc(66*var(--ft)*var(--s));left:calc(158*var(--fs)*var(--s) + 30px);right:calc(158*var(--fs)*var(--s) + 30px)}
+.gw-dialog>.gw-head h2{font-size:calc(40*var(--ft)*var(--s) + 3px)}
