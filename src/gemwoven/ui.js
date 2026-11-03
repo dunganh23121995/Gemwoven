@@ -128,11 +128,14 @@
   }
   function hangingChains(){
     if(!assets['hud-chain']||!assets['hud-side-card'])return;
-    const card=assets['hud-side-card'],chain=assets['hud-chain'],cards=[...scene.querySelectorAll('.home-feature-card')];
+    const card=assets['hud-side-card'],chain=assets['hud-chain'],all=[...scene.querySelectorAll('.home-feature-card')];
     const socket=(el,point)=>[parseFloat(el.style.left)+point[0]*parseFloat(el.style.width)/card.width,parseFloat(el.style.top)+point[1]*parseFloat(el.style.height)/card.height];
+    // Each column hangs on its own chain: the left one from the avatar, the right one straight from the top.
+    for(const cards of [all.filter(el=>parseFloat(el.style.left)<470),all.filter(el=>parseFloat(el.style.left)>=470)])
     cards.forEach((el,index)=>card.sockets.top.forEach((point,side)=>{
       const end=socket(el,point);let start;
       if(index)start=socket(cards[index-1],card.sockets.bottom[side]);
+      else if(parseFloat(el.style.left)>=470)start=[end[0],Math.max(0,end[1]-48)];
       else{
         const profile=scene.querySelector('.hud-profile');
         if(!profile)return;
