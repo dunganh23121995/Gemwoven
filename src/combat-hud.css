@@ -223,11 +223,18 @@ html.chud .game-layout{gap:0}
   /* The fighters grow with the stage (their phone sizes, measured against its height, about 12% larger so they
      weigh as much as the board) and stand closer to the middle of a wide stage: each centre sits at most 33-34% of the
      stage height from the middle, never nearer the edge than 22% / 21% on a narrow one. */
-  html.chud .scene .hero-actor{--actor-size:min(50.5cqh,46cqw);left:calc(max(22%,50% - 33cqh) - var(--actor-size)/2)}
-  html.chud .scene .enemy-actor{--actor-size:min(46cqh,42.5cqw);right:calc(max(21%,50% - 34cqh) - var(--actor-size)/2)}
-  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(59cqh,52.5cqw)}
-  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(50.5cqh,46cqw)}
-  html.chud .scene .actor.boss{--actor-size:min(76cqh,67cqw);right:calc(20% - var(--actor-size)/2)}
+  html.chud .scene .hero-actor{--actor-size:min(54cqh,49cqw);left:calc(max(22%,50% - 33cqh) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor{--actor-size:min(49cqh,45.5cqw);right:calc(max(21%,50% - 34cqh) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(62cqh,55.5cqw)}
+  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(54cqh,49cqw)}
+  html.chud .scene .actor.boss{--actor-size:min(78cqh,69cqw);right:calc(20% - var(--actor-size)/2)}
+  /* Less empty sky (full review 5): the painted layers are framed taller, held by their bottom edge, so the floor
+     and the scenery behind the fighters fill more of the stage; never squeezed narrower than their drawn 2:1. */
+  html.chud .scene .landscape .parallax-layer{top:auto;bottom:0;height:calc(128cqh + max(0px,(100cqh - 100cqw) * .4));width:max(250cqw,256cqh)}
+  /* On a stage taller than wide the fighters' ground line rises a little, so the pair sits nearer its middle. */
+  /* A soft dusk at the stage's corners keeps the eye on the pair in the middle. */
+  html.chud .battle-card .scene::after{background:radial-gradient(ellipse 72% 68% at 50% 58%,transparent 52%,#070b0e70 100%),linear-gradient(#09191d40,transparent 25% 85%,#0c1b18a6)!important}
+  html.chud .scene .actor,html.chud .scene .actor.boss{bottom:calc(max(18cqh,18cqh + (100cqh - 100cqw) * .5) - var(--actor-size) * (1 - var(--foot-y,.94)))}
   /* Name and gauges sit a little lower and tighter, close over the head (the HUD keeps following it). */
   html.chud .actor-hud{width:250px;translate:0 8px}
   html.chud .actor-hud .vital-name{max-width:250px;height:40px;padding:0 24px 1px;margin-bottom:2px}
