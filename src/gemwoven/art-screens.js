@@ -284,7 +284,7 @@ ${price}`);}
     const eq=tab==='equipment',x0=eq?134:62,cw=eq?392:404,step=eq?398:412;
     catalog.forEach((row,i)=>{const left=row.limit?G.engine.shopLeft(row.id):null,out=left===0;
       const note=row.kind==='goldpack'||row.kind==='gear'?'':left!=null?` · còn ${left}/${per[row.limit.per]||''}`:'',price=out?'Hết lượt '+(per[row.limit.per]||''):fmt(row.price)+cur(row)+note;
-      nodes.push(button('shop','product-'+row.id,row.name+'\n'+price,[x0+i%2*step,852+Math.floor(i/2)*104,cw,98],'art:shop-product',{product:row.id},{asset:'inventory-slot',icon:row.asset,iconRect:row.kind==='goldpack'?[18,14,76,70]:[16,10,78,78],labelRect:[104,0,cw-112,98],size:30,selected:row.id===product.id,className:cls(row,'shop-row'+(out?' is-out':''))}));});
+      nodes.push(button('shop','product-'+row.id,row.name+'\n'+price,[x0+i%2*step,852+Math.floor(i/2)*104,cw,98],'art:shop-product',{product:row.id},{asset:'inventory-slot',icon:row.asset,iconRect:row.kind==='goldpack'?[18,14,76,70]:[16,10,78,78],labelRect:[104,0,cw-110,98],size:30,selected:row.id===product.id,className:cls(row,'shop-row'+(out?' is-out':''))}));});
     return nodes;
   }
   // Nạp (topup-ui.js) from the shop; a back arrow when the shop was opened from a resource popup ("Mua thêm").

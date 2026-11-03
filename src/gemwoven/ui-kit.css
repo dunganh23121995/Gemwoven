@@ -169,4 +169,4 @@
 #stage[data-screen="shop"] .shop-tier.selected{border-image-source:var(--kit-stat-on)!important}
 #stage[data-screen="shop"] .shop-tier:not(.selected){filter:brightness(.82) saturate(.8)}
 #stage[data-screen="shop"] .shop-tier .copy-layer{color:#3a2008!important;text-shadow:none!important;font:900 28px/1.1 Cambria,serif!important}
-#stage[data-screen="shop"] .shop-row .copy-layer{font-size:25px!important;padding-right:10px}
+#stage[data-screen="shop"] .shop-row .copy-layer{font-size:24px!important;padding-right:8px;white-space:pre!important;overflow:hidden}

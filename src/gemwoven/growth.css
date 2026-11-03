@@ -207,4 +207,4 @@
 .kp-rankings .title-grid.is-soon .title-plate{height:78px}
 .kp-rankings .title-grid.is-soon .title-plate b{font-size:22px}
 .kp-rankings .title-grid.is-soon .title-cell.is-locked .title-plate{filter:grayscale(.85) brightness(.9)!important;opacity:.75!important}
-.kp-rankings .title-grid{row-gap:22px!important}.kp-rankings .title-cell.is-near .title-plate{margin-top:14px}
+.kp-rankings .title-grid{row-gap:22px!important}.kp-rankings .title-cell .title-near{top:-18px}
