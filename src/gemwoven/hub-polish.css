@@ -78,3 +78,7 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .live-panel.hall-decor,.live-panel.hall-roster,.live-panel.hall-waiting{background:none;padding:0;border:0;box-shadow:none;overflow:visible}
 .hall-waiter .hall-body .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom center}
 .skills-roster .hall-card{flex-basis:90px;width:90px;height:90px}
+
+/* The right column chains run from the top edge behind the mail and settings buttons (owner 04/11). */
+#scene>[data-node$=".mail"],#scene>[data-node$=".settings"]{z-index:2}
+.lh-rig.right{z-index:1}

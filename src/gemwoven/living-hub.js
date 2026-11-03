@@ -43,9 +43,12 @@
   function swayRig(scene){
     const profile=scene.querySelector('.hud-profile'),parts=[...scene.querySelectorAll('.home-feature-card,.home-chain-link')];
     if(!profile||!parts.length)return;
-    const rig=document.createElement('div');rig.className='lh-rig';
-    rig.style.transformOrigin=`${parseFloat(profile.style.left)+72}px ${parseFloat(profile.style.top)+138}px`;
-    parts[0].before(rig);parts.forEach(part=>rig.append(part));
+    // Two rigs: the left column swings from the avatar, the right one from the top edge, behind the HUD buttons.
+    const left=parts.filter(el=>parseFloat(el.style.left)<470),right=parts.filter(el=>parseFloat(el.style.left)>=470);
+    for(const [list,origin,cls] of [[left,`${parseFloat(profile.style.left)+72}px ${parseFloat(profile.style.top)+138}px`,''],[right,`${(parseFloat(right[0]?.style.left)||800)+64}px 0px`,' right']]){
+      if(!list.length)continue;const rig=document.createElement('div');rig.className='lh-rig'+cls;rig.style.transformOrigin=origin;
+      list[0].before(rig);list.forEach(part=>rig.append(part));
+    }
   }
   function emphasize(scene){
     for(const el of scene.querySelectorAll('[data-node="home.explore"],[data-action="do:summon"],[data-node="upgrade.upgrade-action"],[data-node="forge.craft"],[data-action="art:purchase"]'))
