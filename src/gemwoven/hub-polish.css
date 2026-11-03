@@ -39,7 +39,7 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .hall-card.is-locked img{filter:grayscale(.9) brightness(.55)}
 .hall-card.is-on{border-color:#fff1b0;box-shadow:0 0 0 4px #ffb63188,0 0 18px #ffcf5c}
 .hall-all .copy-layer,.hall-all .node-text{align-items:flex-end;padding-bottom:6px}
-.hall-all::before{content:"▦";position:absolute;inset:14px 0 auto;text-align:center;font-size:44px;color:#ffe3a0;text-shadow:0 2px 3px #000}
+
 .hall-info{border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff3cf,#d9a84a 60%,#7a4b16);border:4px solid #6b3f12;color:#4a2508;box-shadow:0 3px 6px #0009}
 .hall-info .copy-layer,.hall-info .node-text{color:#4a2508;text-shadow:none;font-weight:900}
 .hall-flag .copy-layer,.hall-flag .node-text{color:#5a2a10;text-shadow:0 1px #fff5d7aa}

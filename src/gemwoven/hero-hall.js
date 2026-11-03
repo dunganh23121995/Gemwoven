@@ -85,7 +85,7 @@
       C[n.id+'-label']=left?'Lộ trình\n›':'Chỉ số\n›';n.className=((n.className||'')+' hall-flag').trim();}}
     if(!state.outfitSlot){
       nodes.push({id:'upgrade.roster',kind:'content',rect:[60,824,676,116],className:'exploration-map hall-roster',build:el=>strip(el,p,state)});
-      nodes.push({id:'upgrade.roster-all',kind:'button',rect:[748,824,124,112],action:'hall:all',text:'upgrade.roster-all',asset:'avatar-ring',className:'hall-all',size:22});C['upgrade.roster-all']='Tất cả';
+      nodes.push({id:'upgrade.roster-all',kind:'button',rect:[748,820,124,120],action:'hall:all',text:'upgrade.roster-all',asset:'kit-round',icon:'nav-more',iconRect:[26,14,72,72],labelRect:[0,84,124,36],className:'hall-all',size:24});C['upgrade.roster-all']='Tất cả';
       waiting(p,state).forEach((key,i)=>nodes.push({id:'upgrade.waiting-'+i,kind:'content',rect:PEDESTALS[i],className:'exploration-map hall-waiting',build:el=>{
         el.innerHTML=`<button type="button" class="hall-waiter" data-action="do:hero" data-hero="${key}" aria-label="Chọn ${esc(M.HEROES[key].name)}"><span class="hall-body"></span></button>`;
         const body=el.querySelector('.hall-body'),form=M.lookForm(key,p.heroes[key]);
@@ -96,6 +96,13 @@
         let f=0;const step=()=>{const i=f++%rig.count;body.style.backgroundPosition=`${(i%rig.cols)/(rig.cols-1)*100}% ${Math.floor(i/rig.cols)/(rig.rows-1)*100}%`;};step();
         if(!document.body.classList.contains('reduced-motion')){const t=setInterval(()=>{if(!body.isConnected){clearInterval(t);return;}step();},rig.frameDuration||110);}
       }}));
+    }
+    // Codex review 28: the step title, the EXP trough and the materials sit on one leather board.
+    if(!state.outfitSlot){
+      nodes=nodes.filter(n=>n.id!=='upgrade.level-strip');
+      const i=nodes.findIndex(n=>n.id==='upgrade.level-preview');
+      nodes.splice(Math.max(0,i),0,{id:'upgrade.level-board',kind:'content',rect:[188,946,566,372],className:'exploration-map hall-level-board',build:el=>{el.innerHTML='';}});
+      for(const [id,rect] of [['upgrade.level-preview',[325,962,296,42]],['upgrade.exp-crystal',[212,1006,56,60]],['upgrade.exp-meter',[272,1016,440,30]],['upgrade.exp-value',[296,1050,350,32]]]){const n=nodes.find(n=>n.id===id);if(n)n.rect=rect;}
     }
     nodes.push({id:'upgrade.profile-info',kind:'button',rect:[678,146,92,92],action:'hall:info',text:'upgrade.profile-info',className:'hall-info',size:40});C['upgrade.profile-info']='ⓘ';
     L.screens.upgrade.nodes=nodes;return p;

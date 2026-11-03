@@ -122,3 +122,26 @@
 
 /* Khám Phá (Codex review 27): the stars under each stage on a leather plate. */
 .seal-stars{background:var(--kit-badge-leather) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+
+/* Sảnh Anh Hùng, upper half (full review 28, 7.8/10): clearer gear sockets, the deployed state as a brass plate, readable banners. */
+#stage[data-screen="upgrade"] .inventory-slot.empty>.icon{opacity:.55!important;filter:grayscale(.4) brightness(1.5) drop-shadow(0 1px 1px #0008)!important}
+#stage[data-screen="upgrade"] [data-node^="upgrade.gear-"] .copy-layer{color:#fff3d0!important;text-shadow:0 1px 2px #000,0 0 4px #000!important;font-weight:800}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"]>.art{content:var(--kit-btn-gold)}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"] .copy-layer{color:#4a2508!important;text-shadow:0 1px #fff3cf!important;font-weight:900}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"]:disabled>.art{content:var(--kit-badge-brass)}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"]:disabled{opacity:1!important;filter:none!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"]:disabled .copy-layer{color:#4a2508!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.equipped-stars"]{color:#ffd35a!important;text-shadow:0 2px 2px #3a1a04,0 0 6px #000!important;font-size:30px!important;letter-spacing:2px}
+#stage[data-screen="upgrade"] .hall-flag .copy-layer{color:#3a1406!important;font-weight:900;text-shadow:0 1px #fff6dd!important}
+#stage[data-screen="upgrade"] .hall-all .copy-layer{color:#ffe9bc!important;text-shadow:0 1px 2px #000!important;font-weight:800}
+#stage[data-screen="upgrade"] [data-node="upgrade.deploy"]:disabled>.art{filter:drop-shadow(0 3px 3px #0008)!important;opacity:1!important}
+
+/* Review 28 round 2: brighter sockets, Hiro lifted off the hall, one leather board for the upgrade step. */
+#stage[data-screen="upgrade"] .inventory-slot.empty>.art{filter:brightness(1.22) saturate(.9)}
+#stage[data-screen="upgrade"] .inventory-slot.empty>.icon{opacity:.72!important;filter:grayscale(.2) brightness(1.7) drop-shadow(0 1px 2px #000)!important}
+#stage[data-screen="upgrade"] [data-node^="upgrade.gear-"] .copy-layer{text-shadow:0 0 3px #000,0 0 6px #000,0 1px 2px #000!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"]{filter:drop-shadow(0 0 2px #fff6d8) drop-shadow(0 0 12px #ffe0a088)}
+#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"]::after{content:"";position:absolute;left:18%;right:18%;bottom:-2%;height:9%;border-radius:50%;background:radial-gradient(closest-side,#2a140888,transparent);z-index:-1;pointer-events:none}
+#scene>.live-panel.hall-level-board{background:none!important;padding:0!important;box-shadow:none!important;border:solid transparent!important;border-width:26px 30px!important;border-image:var(--kit-plaque) 30 40 fill / 26px 30px stretch!important;filter:drop-shadow(0 6px 6px #2a140877)}
+#stage[data-screen="upgrade"] [data-node="upgrade.exp-value"]{background:none!important;font-size:27px!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.level-preview"]{color:#ffe3a0!important;font-weight:900}
