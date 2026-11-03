@@ -156,8 +156,9 @@ ${price}`);}
     const index=Math.max(0,Math.min(M.DAILY.length-1,state.dailyQuest||0)),q=M.DAILY[index],progress=p.daily.progress[q.id]||0,claimed=p.daily.claimed.includes(q.id);
     label(nodes,'quest-heading','Nhiệm Vụ Hằng Ngày');find(nodes,'quest-heading').size=24;
     // Reward tiles show what claiming pays now: Ấn is limited by today's remaining cap.
-    const preview=M.dailyRewardPreview(p,q.id),capNote=!claimed&&preview.sealCapped?'Đã đạt giới hạn Ấn hôm nay':'Hoàn thành';
-    label(nodes,'quest-name',q.name);label(nodes,'quest-description',`Tiến độ: ${fmt(Math.min(progress,q.target))} / ${fmt(q.target)} · ${capNote}`);
+    // "Hoàn thành" only once the target is reached (Codex review: 0 / 3 read as done).
+    const preview=M.dailyRewardPreview(p,q.id),capNote=!claimed&&preview.sealCapped?'Đã đạt giới hạn Ấn hôm nay':progress>=q.target?'Hoàn thành':'';
+    label(nodes,'quest-name',q.name);label(nodes,'quest-description',`Tiến độ: ${fmt(Math.min(progress,q.target))} / ${fmt(q.target)}${capNote?' · '+capNote:''}`);
     label(nodes,'quest-accept',claimed?'Đã Nhận':progress>=q.target?'Nhận Thưởng':'Chưa Hoàn Thành');action(nodes,'quest-accept','do:daily',{quest:q.id},claimed||progress<q.target);
     action(nodes,'quest-dismiss','route:home');
     ['Ghé Thăm','Vượt Ải','Boss','Chi Tiêu'].forEach((name,i)=>{label(nodes,'tavern-tab-'+i,name.replace(' ','\n'));action(nodes,'tavern-tab-'+i,'art:quest',{index:i});find(nodes,'tavern-tab-'+i).selected=index===i;});

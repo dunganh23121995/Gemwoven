@@ -1,0 +1,33 @@
+Use case: ui-mockup.
+Create a polished, production-looking Gemwoven phone screenshot.
+
+References in this call: image 1 = the current Quán Bia screen (edit target), image 2 = UI kit sheet, image 3 = approved Cửa Hàng screen, image 4 = approved Túi Đồ screen.
+Output: portrait 1024×1536, using the complete phone framing specified.
+
+Preserve image 1’s tavern illustration, NPCs, character identities and
+poses, lighting, top HUD, hanging tab banners and bottom navigation.
+Replace only the bottom daily quest board. Do not repaint the scene.
+
+Within the 941×1672 game stage, place a wide parchment board at
+x28 y1096, width885 height330. Its bottom must remain at y1426,
+clearly above the bottom navigation bar which begins at y1478, with visible floor between them. Use the kit parchment surface,
+tab-on heading, round close control, four socket reward frames,
+badge-leather quantities and a separate btn-gold claim button.
+Match the kit’s painted wood, brass and parchment materials.
+
+Heading: “Nhiệm Vụ Hằng Ngày”.
+Quest title: “Ghé thăm thị trấn”.
+Progress: “Tiến độ: 1 / 1 · Hoàn thành”.
+Reward heading: “Thưởng:”.
+Retain this quest’s four original reward illustrations, enlarged into
+88×88 stage-pixel sockets, with quantities “500”, “10”, “80”, “1”.
+Remove the town thumbnail.
+Place “Nhận Thưởng” on a 280×106 gold button at x600 y1250.
+Use a clear × close control.
+
+Layout inside the board: heading tab overlapping the board top-left edge; quest title 32px bold and progress line 28px at the top left; four reward sockets in one row at the lower left; the claim button on the right, vertically centred on the reward row, with clear space between rewards and button.
+Render Vietnamese diacritics accurately, with crisp text that looks
+like HTML layered over drawn assets. Keep paper quiet and readable;
+make the claim action the strongest interactive accent.
+One screenshot only; no annotations or kit-piece names.
+Output framing: 1024x1536 portrait, a complete 390x844 logical phone viewport centered and uniformly scaled, subdued background in the side margins, no device bezel.

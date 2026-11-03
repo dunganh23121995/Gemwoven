@@ -1,0 +1,36 @@
+Use case: ui-mockup.
+Create a polished Gemwoven power-breakdown popup over a softly blurred
+village hub under a 55% dark scrim.
+
+References in this call: image 1 = the current Lực chiến popup (data, portrait), image 2 = UI kit sheet, image 3 = approved Cửa Hàng screen, image 4 = approved Túi Đồ screen.
+Output: portrait 1024×1536, using the complete phone framing specified.
+
+At a logical 390×844 phone viewport, center a parchment popup at
+x16 y118, width358 height608. Follow the supplied panel-relative
+layout specification. Use kit parchment, tab-on, round, stat-on,
+ribbon-info, row-off and btn-gold pieces. Keep ornament restrained.
+
+Exact heading: “Hiro · Chi tiết lực chiến”.
+Show Hiro’s portrait beside “123” and “Lực chiến”.
+Use a compact four-column table:
+“Nguồn”, “HP”, “Công”, “Thủ”.
+Visible source row: “Gốc tướng”, “145”, “×0,85”, “0%”.
+Below it, show one collapsed disclosure:
+“6 nguồn chưa đóng góp”, with a small downward chevron.
+Do not show the six empty rows or repeated dashes in this collapsed state.
+
+Highlight the total using stat-on:
+“Tổng”, “145”, “×0,85”, “0%”.
+Below: an information control labeled “Cách tính”.
+Then “Cách tăng tiếp” and three identical gold buttons:
+icon-stairs with “Khám Phá”;
+icon-helm with “Trùm”;
+icon-hourglass with “Tích Lũy”.
+Finish with a full-width “Lộ trình phát triển” button.
+Include an accessible round × close control.
+
+Use 14 px body text, aligned numeric columns, generous spacing and
+accurate Vietnamese diacritics. Text should resemble crisp HTML over
+drawn kit assets. Show the closed information and source disclosures.
+One real-looking game screenshot; no annotations or kit-piece names.
+Output framing: 1024x1536 portrait, a complete 390x844 logical phone viewport centered and uniformly scaled, subdued background in the side margins, no device bezel.

@@ -125,16 +125,17 @@
     }
   }
 
-  function tavern(scene){
+  // Quán Bia (#tavern and #quests share the board; second pass, mockup raw/ui-kit/tavern-power/mockup-tavern-raw.png):
+  // one wide paper board with the quest, large reward sockets with their counts on leather tags, the claim plate apart.
+  function tavern(scene,s){
     for(const f of scene.querySelectorAll('[data-group="tavern-tab"]')){f.querySelector('.kp-check')?.remove();if(f.classList.contains('selected'))f.insertAdjacentHTML('beforeend','<span class="kp-check" aria-hidden="true">✓</span>');}
-    const n=scene.querySelectorAll('[data-node^="tavern.quest-rewards-"]').length;scene.querySelector('[data-node="tavern.quest-panel"]')?.style.setProperty('--n',n);
-    scene.dataset.kpRewards=n;
+    const n=scene.querySelectorAll(`[data-node^="${s}.quest-rewards-"]`).length;scene.dataset.kpRewards=n;
   }
 
   const SCREENS={rankings,events,offline,boss};
   function dress(state){
-    const s=state?.screen;document.getElementById('scene')?.toggleAttribute('data-kp',!!(SCREENS[s]||s==='tavern'));
-    if(s==='tavern'){const sc=document.getElementById('scene');if(sc)tavern(sc);return;}
+    const s=state?.screen,sc=document.getElementById('scene'),inn=s==='tavern'||s==='quests';sc?.toggleAttribute('data-kp',!!(SCREENS[s]||inn));sc?.toggleAttribute('data-kp-tavern',inn);
+    if(inn){if(sc)tavern(sc,s);return;}
     const fn=SCREENS[s];if(!fn)return;const live=document.querySelector(`#scene [data-node="${s}.live"]`);const body=live?.querySelector('.gw-body');if(!body)return;
     live.classList.add('kp-panel','kp-'+s);try{fn(body);}catch(e){console.warn('ui-kit-panels',s,e);}
   }
@@ -160,11 +161,34 @@
       const stars=M.FORM_STARS||[1,4,6];
       d.querySelectorAll('.hp-forms>span').forEach((f,i)=>{if(f.dataset.kp)return;f.dataset.kp='1';const name=f.querySelector('small')?.textContent||'';f.title=name;
         f.innerHTML=(f.classList.contains('locked')?lock():face?`<img class="kp-face" src="${esc(face)}" alt="">`:`<b>${i+1}</b>`)+`<small>${f.classList.contains('locked')?`${stars[i]||''}★`:'Dạng '+(i+1)}</small>`;});}
-    if(d.id==='power-detail'){const b=d.querySelector('.power-hero b');if(b&&!b.nextElementSibling)b.insertAdjacentHTML('afterend','<small>Lực chiến</small>');
-      const note=[...d.querySelectorAll('.growth-note')].find(x=>/Cần thêm nguyên liệu/.test(x.textContent));
-      if(note&&!note.dataset.kp){note.dataset.kp='1';note.classList.add('kp-ways');note.innerHTML=[['icon-quest','Khám Phá'],['kit-icon-helm','Trùm'],['chest','Tích Lũy']].map(([k,l])=>`<span>${img(k)}<b>${l}</b></span>`).join('');}
-      const s=d.querySelector('details.hint summary');if(s&&!s.dataset.kp){s.dataset.kp='1';d.querySelector('details.hint').classList.add('kp-info');s.innerHTML='<i aria-hidden="true">i</i><span>Cách tính</span>';}}
+    if(d.id==='power-detail')power(d);
     if(d.id==='title-detail'){d.querySelector('.title-bar')?.classList.add('kp-bar');}
+  }
+  // Lực chiến (second pass, mockup assets/gemwoven/raw/ui-kit/tavern-power/mockup-power-raw.png): the sources that add
+  // nothing fold into one tap-to-open line, no dash cells, a raised total, and the ways to grow as matching buttons.
+  const WAY_ICON={level:'kit-icon-up',stars:'kit-icon-sparkle',forms:'kit-icon-sparkle',evolution:'kit-icon-stairs',gear:'kit-icon-swords',relic:'chest'};
+  function power(d){
+    const b=d.querySelector('.power-hero b');if(b&&!b.nextElementSibling)b.insertAdjacentHTML('afterend','<small>Lực chiến</small>');
+    const table=d.querySelector('.power-table');
+    if(table&&!table.dataset.kp){table.dataset.kp='1';
+      for(const td of table.querySelectorAll('td')){const v=td.textContent.trim();if(v==='—'){td.textContent='';td.classList.add('kp-nil');}else if(/^[+−]×/.test(v))td.textContent=v.replace('×','');}
+      const zero=[...table.querySelectorAll('tbody tr.is-zero')];
+      if(zero.length){const tr=document.createElement('tr');tr.className='kp-zero';
+        tr.innerHTML=`<td><button type="button" class="kp-zero-btn" aria-expanded="false"><span>${zero.length} nguồn chưa đóng góp</span><i aria-hidden="true"></i></button>`+
+          `<span class="kp-zero-list">${zero.map(r=>`<em>${esc(r.cells[0].textContent)}</em>`).join('')}</span></td>`;
+        zero[0].before(tr);zero.forEach(r=>r.remove());
+        const btn=tr.querySelector('button');btn.addEventListener('click',()=>{const open=tr.classList.toggle('is-open');btn.setAttribute('aria-expanded',String(open));});}}
+    const s=d.querySelector('details.hint summary');if(s&&!s.dataset.kp){s.dataset.kp='1';d.querySelector('details.hint').classList.add('kp-info');s.innerHTML='<i aria-hidden="true">i</i><span>Cách tính</span>';}
+    const note=[...d.querySelectorAll('.growth-note')].find(x=>/Cần thêm nguyên liệu/.test(x.textContent));
+    if(note&&!note.dataset.kp){note.dataset.kp='1';note.className='kp-ways';
+      note.innerHTML=[['kit-icon-stairs','Khám Phá','campaign'],['kit-icon-helm','Trùm','boss'],['kit-icon-hourglass','Tích Lũy','offline']].map(([k,l,r])=>`<button type="button" class="kp-way" data-route="${r}">${img(k)}<b>${l}</b></button>`).join('');
+      note.addEventListener('click',e=>{const w=e.target.closest('[data-route]');if(!w)return;d.close();const key=w.dataset.route;if(location.hash==='#'+key)dispatchEvent(new HashChangeEvent('hashchange'));else location.hash=key;});}
+    const tips=d.querySelector('ul.growth-tips');
+    if(tips&&!tips.dataset.kp){tips.dataset.kp='1';tips.classList.add('kp-ways');
+      const hero=(d.querySelector('.power-portrait')?.getAttribute('src')||'').match(/portrait-(\w+)/)?.[1];
+      const icon=id=>WAY_ICON[id]||(id.startsWith('skill')?(A[`skill-${hero}-${id.slice(6)}`]?`skill-${hero}-${id.slice(6)}`:'skill-book'):'kit-icon-up');
+      for(const li of tips.querySelectorAll('li')){const go=li.querySelector('[data-go]');if(!go)continue;const id=go.dataset.go,name=li.querySelector('b')?.textContent||'',next=li.querySelector('span')?.textContent.replace(name,'').trim()||'';
+        li.innerHTML=`<button type="button" class="kp-way" data-go="${esc(id)}" title="${esc(next)}">${img(icon(id))}<b>${esc(name)}</b><small>${esc(next)}</small></button>`;}}
   }
   const scan=()=>{for(const d of document.querySelectorAll('dialog'))if(d.open)pop(d);};
   let queued=false;

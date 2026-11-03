@@ -153,31 +153,36 @@
 .kp-boss .kp-rank .game-btn{min-width:46%;font-size:30px!important}
 .kp-boss .kp-rank small{font:700 25px/1.35 Cambria,serif!important;color:#6b4a22!important}
 
-/* ----- Quán Bia: the daily quest board (tavern nodes are stage-positioned; the scene stays as drawn). ----- */
-#scene[data-kp] [data-node="tavern.quest-panel"]{top:1102px!important;height:380px!important}
-#scene[data-kp] [data-node="tavern.quest-heading-board"]{top:1068px!important;left:58px!important;width:360px!important;height:84px!important;content:var(--kit-plaque);object-fit:fill}
-#scene[data-kp] [data-node="tavern.quest-heading"]{top:1082px!important;left:80px!important;width:316px!important;height:56px!important;font-size:30px!important;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04}
-#scene[data-kp] [data-node="tavern.quest-dismiss"]{top:1100px!important;left:836px!important;width:72px!important;height:72px!important;background:var(--kit-round) center/contain no-repeat!important}
-#scene[data-kp] [data-node="tavern.quest-dismiss"] img{display:none}
-#scene[data-kp] [data-node="tavern.quest-dismiss"] .copy-layer{color:#5a3412!important;text-shadow:0 1px #fff3cf!important;font-weight:900}
-#scene[data-kp] [data-node="tavern.quest-art"]{top:1160px!important;left:62px!important;width:220px!important;height:160px!important}
-#scene[data-kp] [data-node="tavern.quest-name"]{top:1166px!important;left:300px!important;width:520px!important;height:50px!important;font-size:38px!important;font-weight:800}
-#scene[data-kp] [data-node="tavern.quest-description"]{top:1220px!important;left:300px!important;width:540px!important;height:40px!important;font-size:29px!important}
-#scene[data-kp] [data-node="tavern.reward-heading"]{display:none!important}
-#scene[data-kp] [data-node^="tavern.quest-rewards-"]{top:1262px!important;width:108px!important;height:108px!important;background:var(--kit-socket) center/100% 100% no-repeat!important}
-#scene[data-kp] [data-node^="tavern.quest-rewards-"]>img.art{display:none}
-#scene[data-kp] [data-node^="tavern.quest-rewards-"] img.icon{position:absolute!important;left:16px!important;top:12px!important;width:76px!important;height:70px!important;object-fit:contain;filter:drop-shadow(0 2px 2px #0007)}
-#scene[data-kp] [data-node^="tavern.quest-rewards-"] .copy-layer{left:auto!important;right:6px!important;top:auto!important;bottom:2px!important;width:auto!important;height:auto!important;font:900 27px/1 Cambria,serif!important;color:#fff3cf!important;text-shadow:0 0 3px #1a0c04,0 2px 2px #1a0c04!important;background:none!important}
-#scene[data-kp] [data-node="tavern.quest-rewards-0"]{left:300px!important}
-#scene[data-kp] [data-node="tavern.quest-rewards-1"]{left:418px!important}
-#scene[data-kp] [data-node="tavern.quest-rewards-2"]{left:536px!important}
-#scene[data-kp] [data-node="tavern.quest-rewards-3"]{left:654px!important}
-#scene[data-kp] [data-node="tavern.quest-rewards-4"]{left:772px!important}
-#scene[data-kp] [data-node="tavern.quest-accept"]{top:1378px!important;left:290px!important;width:380px!important;height:96px!important}
-#scene[data-kp] [data-node="tavern.quest-accept"]>img{content:var(--kit-btn-gold);object-fit:fill}
-#scene[data-kp] [data-node="tavern.quest-accept"] .copy-layer{font:900 36px Cambria,serif!important;color:#4a2508!important;text-shadow:0 1px #fff3cf!important}
-#scene[data-kp] [data-group="tavern-tab"] .kp-check{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;width:86px;height:56px;background:var(--kit-badge-brass) center/100% 100% no-repeat;font:900 34px/1 Cambria,serif;color:#4a2508;text-shadow:0 1px #fff3cf;pointer-events:none;filter:drop-shadow(0 3px 3px #0007)}
-#scene[data-kp] [data-group="tavern-tab"]:not(.selected){filter:brightness(.86) saturate(.85)}
+/* ----- Quán Bia (#tavern, #quests): the daily quest board. Tavern nodes are stage-positioned; the scene stays as drawn.
+ * Second pass (Codex mockup raw/ui-kit/tavern-power/mockup-tavern-raw.png): one wide paper board, no thumbnail, the
+ * quest name and progress across the top, large reward sockets with leather count tags, the claim plate on its own. */
+#scene[data-kp-tavern] [data-node$=".quest-panel"]{left:24px!important;top:1094px!important;width:893px!important;height:344px!important}
+#scene[data-kp-tavern] [data-node$=".quest-heading-board"]{top:1058px!important;left:52px!important;width:384px!important;height:86px!important;content:var(--kit-plaque);object-fit:fill}
+#scene[data-kp-tavern] [data-node$=".quest-heading"]{top:1073px!important;left:72px!important;width:344px!important;height:56px!important;font-size:32px!important;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04}
+#scene[data-kp-tavern] [data-node$=".quest-dismiss"]{top:1112px!important;left:830px!important;width:76px!important;height:76px!important;background:var(--kit-round) center/contain no-repeat!important}
+#scene[data-kp-tavern] [data-node$=".quest-dismiss"] img{display:none}
+#scene[data-kp-tavern] [data-node$=".quest-dismiss"] .copy-layer{color:#5a3412!important;text-shadow:0 1px #fff3cf!important;font-weight:900}
+#scene[data-kp-tavern] [data-node$=".quest-art"]{display:none!important}
+#scene[data-kp-tavern] [data-node$=".quest-name"]{top:1160px!important;left:84px!important;width:730px!important;height:54px!important;font:800 42px/1.2 Cambria,serif!important;color:#4a2a10!important}
+#scene[data-kp-tavern] [data-node$=".quest-description"]{top:1216px!important;left:84px!important;width:760px!important;height:40px!important;font:700 30px/1.3 Cambria,serif!important;color:#6b4a22!important}
+#scene[data-kp-tavern] [data-node$=".reward-heading"]{display:none!important}
+#scene[data-kp-tavern] [data-node*=".quest-rewards-"]{top:1266px!important;width:118px!important;height:146px!important;
+  background:var(--kit-socket) center top/112px 108px no-repeat,var(--kit-badge-leather) center bottom/118px 40px no-repeat!important}
+#scene[data-kp-tavern] [data-node*=".quest-rewards-"]>img.art{display:none}
+#scene[data-kp-tavern] [data-node*=".quest-rewards-"] img.icon{position:absolute!important;left:22px!important;top:15px!important;width:74px!important;height:74px!important;object-fit:contain;filter:drop-shadow(0 3px 2px #0008)}
+#scene[data-kp-tavern] [data-node*=".quest-rewards-"] .copy-layer{position:absolute!important;left:0!important;right:0!important;top:auto!important;bottom:0!important;width:auto!important;height:40px!important;display:flex!important;align-items:center;justify-content:center;font:900 28px/1 Cambria,serif!important;color:#fff3cf!important;text-shadow:0 1px 2px #1a0c04!important;background:none!important}
+#scene[data-kp-tavern] [data-node$=".quest-rewards-0"]{left:80px!important}
+#scene[data-kp-tavern] [data-node$=".quest-rewards-1"]{left:212px!important}
+#scene[data-kp-tavern] [data-node$=".quest-rewards-2"]{left:344px!important}
+#scene[data-kp-tavern] [data-node$=".quest-rewards-3"]{left:476px!important}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]{top:1282px!important;left:618px!important;width:276px!important;height:110px!important}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]>img{content:var(--kit-btn-gold);object-fit:fill;filter:drop-shadow(0 6px 5px #2a140877)}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]:active:not(:disabled)>img{content:var(--kit-btn-gold-down)}
+#scene[data-kp-tavern] [data-node$=".quest-accept"] .copy-layer{font:900 36px/1.05 Cambria,serif!important;color:#4a2508!important;text-shadow:0 1px #fff3cf!important}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]:disabled>img{content:var(--kit-btn-steel);filter:drop-shadow(0 4px 3px #2a140855)}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]:disabled .copy-layer{left:30px!important;right:30px!important;width:auto!important;white-space:normal!important;line-height:1!important;font-size:29px!important;color:#efe7da!important;text-shadow:0 1px 2px #1a1008!important}
+#scene[data-kp-tavern] [data-group="tavern-tab"] .kp-check{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;width:86px;height:56px;background:var(--kit-badge-brass) center/100% 100% no-repeat;font:900 34px/1 Cambria,serif;color:#4a2508;text-shadow:0 1px #fff3cf;pointer-events:none;filter:drop-shadow(0 3px 3px #0007)}
+#scene[data-kp-tavern] [data-group="tavern-tab"]:not(.selected){filter:brightness(.86) saturate(.85)}
 
 /* ----- Popups (CSS px) ----- */
 .kp-pop .gw-btn{min-height:52px;padding:0 26px!important;background:none!important;border:solid transparent!important;border-width:0 22px!important;border-image:var(--kit-btn-gold) 0 40 fill / 0 22px stretch!important;box-shadow:none!important;filter:drop-shadow(0 3px 3px #2a140866);border-radius:0!important;font:900 18px/1 Cambria,serif!important;color:#4a2508!important;text-shadow:0 1px #fff3cf!important}
@@ -331,3 +336,49 @@
 .kp-events>.gw-emblem{background-image:var(--kit-icon-emblem-calendar)!important;width:calc(96*var(--s,1px))}
 .kp-offline>.gw-emblem{background-image:var(--kit-icon-emblem-coins)!important;width:calc(96*var(--s,1px))}
 .kp-boss>.gw-emblem{background-image:var(--kit-icon-emblem-swords)!important;width:calc(96*var(--s,1px))}
+/* ----- Lực chiến, second pass (Codex mockup raw/ui-kit/tavern-power/mockup-power-raw.png): no rules between rows and
+ * no dash cells, the sources that add nothing behind one leather-edged line, a raised total, three matching buttons. */
+#power-detail.kp-pop .power-hero{margin:0 0 10px}
+#power-detail.kp-pop .power-hero>div{min-height:70px}
+#power-detail.kp-pop .power-hero b{font-size:36px!important}
+#power-detail.kp-pop .power-table thead tr{border-width:4px 12px;border-image-width:4px 12px}
+#power-detail.kp-pop .power-table thead th{font-size:15px!important;padding:4px 4px!important}
+#power-detail.kp-pop .power-table tbody tr{border:0!important;min-height:34px}
+#power-detail.kp-pop .power-table tbody tr,#power-detail.kp-pop .power-table tbody td{border-bottom:0!important;box-shadow:none!important}
+#power-detail.kp-pop .power-table tbody td{font-size:16px!important;color:#4a2a10}
+#power-detail.kp-pop .power-table tr.kp-zero{display:block;margin:4px 0 2px}
+#power-detail.kp-pop .power-table tr.kp-zero>td{display:block;padding:0!important}
+#power-detail.kp-pop .kp-zero-btn{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:40px;margin:0;padding:0 14px;box-sizing:border-box;cursor:pointer;
+  background:none;border:solid transparent;border-width:8px 14px;border-image:var(--kit-row-read) 22 26 fill / 8px 14px stretch;font:700 15px Cambria,serif;color:#6b4a22;text-align:left}
+#power-detail.kp-pop .kp-zero-btn>i{flex:none;width:9px;height:9px;margin:0 2px 4px 10px;border:solid #6b4a22;border-width:0 2.5px 2.5px 0;transform:rotate(45deg);transition:transform .2s}
+#power-detail.kp-pop .kp-zero.is-open .kp-zero-btn>i{transform:rotate(-135deg);margin-bottom:-4px}
+#power-detail.kp-pop .kp-zero-list{display:none;flex-wrap:wrap;gap:6px;padding:8px 4px 4px}
+#power-detail.kp-pop .kp-zero.is-open .kp-zero-list{display:flex}
+#power-detail.kp-pop .kp-zero-list em{font:700 13px Cambria,serif;font-style:normal;color:#f3dcae;padding:5px 14px;background:var(--kit-badge-leather) center/100% 100% no-repeat;text-shadow:0 1px 2px #1a0c04}
+#power-detail.kp-pop .power-table tfoot tr{min-height:48px;margin-top:8px;border-width:9px 16px;border-image-source:var(--kit-stat-on);border-image-slice:26 28 fill;border-image-width:9px 16px;filter:drop-shadow(0 3px 3px #2a140844)}
+#power-detail.kp-pop .power-table tfoot td{font:900 18px Cambria,serif!important;color:#4a2a10!important}
+#power-detail.kp-pop details.kp-info{text-align:center;margin:6px 0 0}
+#power-detail.kp-pop .growth-sub{margin:6px 0 8px!important;text-align:center}
+#power-detail.kp-pop .kp-ways{display:grid!important;grid-template-columns:repeat(3,92px);justify-content:center;gap:14px;margin:0 0 14px!important;padding:0;list-style:none}
+#power-detail.kp-pop .kp-ways>li{display:contents}
+#power-detail.kp-pop .kp-way{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;width:92px;min-height:44px;margin:0;padding:0;background:none;border:0;cursor:pointer;font:800 15px/1.1 Cambria,serif;color:#4a2a10}
+#power-detail.kp-pop .kp-way img{width:84px;height:84px;padding:12px;box-sizing:border-box;object-fit:contain;background:var(--kit-socket) center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #2a140855);transition:transform .12s}
+#power-detail.kp-pop .kp-way:hover img{transform:translateY(-2px)}
+#power-detail.kp-pop .kp-way:active img{background-image:var(--kit-socket-on);transform:translateY(1px)}
+#power-detail.kp-pop .kp-way small{font:700 11px/1.15 Cambria,serif;color:#6b4a22;text-align:center;max-width:92px}
+/* Round 2 of the second pass (Codex 8.7 / 8.5 / 8.8 / 8.6): one column grid for header, rows and total; slimmer board
+ * plaque; leather tags keep their pointed ends; growth buttons a little smaller. */
+#power-detail.kp-pop .power-table thead tr,#power-detail.kp-pop .power-table tfoot tr{border-left-width:12px;border-right-width:12px;border-image-width:9px 12px}
+#power-detail.kp-pop .power-table thead tr{border-image-width:4px 12px}
+#power-detail.kp-pop .power-table tbody tr:not(.kp-zero){padding:0 12px}
+#power-detail.kp-pop .power-table tr:not(.kp-zero){grid-template-columns:1fr 54px 62px 48px}
+#power-detail.kp-pop .kp-zero-list em{min-height:26px;display:inline-flex;align-items:center;padding:0 10px;background:none;border:solid transparent;border-width:0 18px;border-image:var(--kit-badge-leather) 0 44 fill / 0 18px stretch}
+#power-detail.kp-pop .kp-ways{grid-template-columns:repeat(3,84px);gap:18px}
+#power-detail.kp-pop .kp-way{width:84px;gap:8px}
+#power-detail.kp-pop .kp-way img{width:74px;height:74px;padding:10px}
+#scene[data-kp-tavern] [data-node$=".quest-heading-board"]{top:1062px!important;height:68px!important}
+#scene[data-kp-tavern] [data-node$=".quest-heading"]{top:1068px!important}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]{left:604px!important;width:272px!important}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]:not(:disabled) .copy-layer{font-size:33px!important}
+#scene[data-kp-tavern] [data-node$=".quest-accept"]{left:614px!important;width:270px!important;top:1274px!important;height:116px!important}
+#power-detail.kp-pop .kp-ways{margin-bottom:4px!important}
