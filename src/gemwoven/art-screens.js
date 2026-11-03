@@ -229,7 +229,9 @@ ${price}`);}
     // Fighters stay clear of the hanging menu on the left.
     find(nodes,'fighter-fire').rect=[166,559,250,215];find(nodes,'fighter-ice').rect=[528,559,250,215];
     // Say what these really are (Codex UI review): a local duel on one device, and records kept on this device.
-    label(nodes,'mode-solo','1v1\nCùng máy');label(nodes,'ranking','Kỷ lục\nthiết bị');label(nodes,'versus','VS · Cục bộ');
+    // The podium opens what ranked play will be (Coming soon).
+    for(const id of ['ranking','rank-one','rank-two','rank-three'])action(nodes,id,'growth:arena');
+    label(nodes,'mode-solo','1v1\nCùng máy');label(nodes,'ranking','Đấu Hạng\nSắp ra mắt');label(nodes,'versus','VS · Cục bộ');
     find(nodes,'reward-gem').asset='exp-book';action(nodes,'rewards','route:boss');label(nodes,'rewards','Thưởng\nBoss');Object.assign(find(nodes,'rewards'),{labelRect:[6,190,151,66],size:28,iconRect:[38,20,88,86]});find(nodes,'reward-coins').rect=[774,1112,62,62];find(nodes,'reward-gem').rect=[842,1112,48,62];
     return nodes;
   }

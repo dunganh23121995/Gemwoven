@@ -58,9 +58,9 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 
 | # | Câu hỏi / yêu cầu | Trả lời | Trạng thái | Xem ở đâu |
 |---|---|---|---|---|
-| E1 | Cơ chế đấu trường, máy chủ tự quyết | Hai hàng Tự Do và Chuẩn Hóa; máy chủ giữ bàn ngọc, RNG, kết quả, kể cả PvE. | 📐 · 🔨 trang giới thiệu | §12 |
-| E2 | Thưởng hạng tuần, tháng | Bậc Đồng → Thách Đấu, thưởng tuần (không Ngọc), mùa 28 ngày đồ trang trí. | 📐 · 🔨 trang bậc | §12.2 |
-| E3 | Trận Thư Hùng | Thư Hùng Đại Hội theo quý: vòng loại, 64 người, chung kết phát trực tiếp. | 📐 · 🔨 trang | §12.3 |
+| E1 | Cơ chế đấu trường, máy chủ tự quyết | Hai hàng Tự Do và Chuẩn Hóa; máy chủ giữ bàn ngọc, RNG, kết quả, kể cả PvE. | 📐 máy chủ trận · ✅ trang giới thiệu (Đấu Trường → bục Đấu Hạng) | §12 |
+| E2 | Thưởng hạng tuần, tháng | Bậc Đồng → Thách Đấu, thưởng tuần (không Ngọc), mùa 28 ngày đồ trang trí. | 📐 · ✅ bảng bậc và thưởng tuần | §12.2 |
+| E3 | Trận Thư Hùng | Thư Hùng Đại Hội theo quý: vòng loại, 64 người, chung kết phát trực tiếp. | 📐 · ✅ thể thức trong trang Đấu Hạng | §12.3 |
 
 ## F. Xã hội
 

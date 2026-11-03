@@ -128,6 +128,17 @@
       b.onclick=()=>{try{G.engine.wearTitle(t.worn?null:t.id);modal.close();ctx.render();}catch(e){ctx.showModal('Chưa thể thực hiện',[],e.message);}};modal.actions.append(b);}
     modal.present();
   }
+  // Đấu Hạng (docs/GAME_DESIGN.md §12): what ranked play will be, plainly marked Coming soon; nothing here plays or ranks.
+  function arenaDialog(){
+    if(!O)return;const modal=window.GemwovenUI.makeDialog('arena-info','Đấu Hạng · Sắp ra mắt','growth-dialog arena-dialog');
+    const tiers=[...new Map(O.LEAGUES.map(l=>[l.tier,l])).values()];
+    modal.body.innerHTML=`<p class="growth-lead">Đấu hạng thời gian thực mở cùng máy chủ trận đấu: máy chủ giữ bàn ngọc, xúc xắc và kết quả. Hiện có: 1v1 cùng máy và Giao hữu bản sao ở Gặp Gỡ.</p>`+
+      `<h3 class="growth-sub">Hai hàng đấu</h3><ul class="growth-tips">${O.ARENA_RULES.queues.map(q=>`<li><span><b>${esc(q.name)}</b> · ${esc(q.desc)}</span></li>`).join('')}<li><span>Lượt ${O.ARENA_RULES.turnSeconds} giây; ${O.ARENA_RULES.timeoutsToLose} lần hết giờ là thua; mất kết nối ${O.ARENA_RULES.reconnectSeconds} giây thì máy tạm đánh rồi xử thua.</span></li></ul>`+
+      `<h3 class="growth-sub">Bậc và thưởng tuần (không Đá Ngọc)</h3><table class="gw-table"><thead><tr><th>Bậc</th><th>Vàng</th><th>Huy hiệu</th><th>Bí kíp</th></tr></thead><tbody>${tiers.map(l=>`<tr><td>${esc(l.name.replace(/ (III|II|I)$/,''))}${l.top?` · top ${l.top}`:''}</td><td>${fmt(l.weekly.gold)}</td><td>${fmt(l.weekly.arenaMedals)}</td><td>${fmt(l.weekly.skillBooks)}</td></tr>`).join('')}</tbody></table>`+
+      `<p class="growth-note">Mùa 28 ngày, cuối mùa hạ mềm bậc. ${esc(O.ARENA_RULES.seasonRewards)}</p>`+
+      `<h3 class="growth-sub">Thư Hùng Đại Hội · mỗi quý</h3><ul class="growth-tips"><li><span>Đăng ký 1 tuần → vòng Thụy Sĩ 7 vòng → top 64 loại trực tiếp, xem trực tiếp (trễ 10 giây).</span></li><li><span>Hai hạng: Chuẩn Hóa và Tự Do.</span></li><li><span>Thưởng: danh hiệu Thư Hùng Vô Địch (tên riêng theo khuôn, có kiểm duyệt), trang phục vô địch, tượng ở Quảng Trường mùa sau. Không sức mạnh độc quyền.</span></li></ul>`;
+    modal.present();
+  }
   function monthlyCard(ctx){
     const x=O?.PRODUCTS.find(x=>x.id==='monthly-card');if(!x)return false;
     const modal=window.GemwovenUI.makeDialog('monthly-card','Thẻ Tháng · Sắp ra mắt','growth-dialog');
@@ -167,6 +178,7 @@
     if(action==='growth:power'){powerDialog(ctx,state,hero);return true;}
     if(action==='growth:map'){growthDialog(ctx,state,hero);return true;}
     if(action==='growth:newbie'){try{const got=G.engine.claimNewbie(Number(el.dataset.day));ctx.render();G.showRewards(ctx,got,'Quà Tân Thủ');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
+    if(action==='growth:arena'){arenaDialog();return true;}
     if(action==='growth:title-open'){titleDialog(ctx,el.dataset.id);return true;}
     if(action==='growth:weekly'){try{const got=G.engine.claimWeekly(el.dataset.quest);ctx.render();G.showRewards(ctx,got,'Thưởng nhiệm vụ tuần');}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}return true;}
     if(action==='journey:monthly'&&monthlyCard(ctx))return true;
