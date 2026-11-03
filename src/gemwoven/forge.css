@@ -78,3 +78,24 @@
 .fg2-traynote{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;pointer-events:none}
 .fg2-traynote b{font:900 38px Cambria,serif;color:#5a3412}
 .fg2-traynote small{font:800 26px Cambria,serif;color:#7a5a2a}
+
+/* Full review 28 / Codex 29: the piece on a pedestal is the one bright thing; the rest steps back. */
+.fg2-pedestal{object-fit:contain;filter:drop-shadow(0 8px 6px #2a140899);pointer-events:none}
+.fg2-preview{z-index:1}
+.fg2-ingot:not(.on)>img:first-child{filter:brightness(.75) saturate(.8) drop-shadow(0 3px 3px #0007)!important}
+.fg2-ingot.on{box-shadow:inset 0 0 0 3px #f0c060!important}
+.fg2-recess.new{background:none!important}
+.fg2-recess{filter:brightness(.94)}
+.fg2-mat{gap:2px!important}
+.fg2-mat span{display:flex;align-items:center;gap:6px}
+.fg2-mat span img{width:44px!important;height:44px!important}
+.fg2-mat span b{font:900 27px Cambria,serif!important;color:#3f2a12!important}
+.fg2-mat i{position:static!important;font:900 23px Cambria,serif!important;color:#a8321f!important}
+.fg2-mat i.ok{color:#2f7a2a!important}
+.fg2-mat span{flex-direction:column;gap:0!important}
+.fg2-mat span img{width:40px!important;height:40px!important}
+.fg2-mat span b{font-size:24px!important;letter-spacing:-.5px}
+.fg2-mat i{font-size:21px!important;line-height:1}
+.fg2-mat span b{font-size:27px!important}
+.fg2-mat i{font-size:24px!important}
+.fg2-mat span img{width:36px!important;height:36px!important}

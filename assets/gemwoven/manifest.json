@@ -21527,5 +21527,16 @@
     "rows": 4,
     "count": 24,
     "ms": 1800
+  },
+  "forge-pedestal": {
+    "file": "assets/gemwoven/forge/pedestal.webp",
+    "width": 1311,
+    "height": 610,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/pedestal-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/forge-mockup/pedestal-prompt.txt"
+    ],
+    "purpose": "Display pedestal under the forge preview (Codex 29)."
   }
 }

@@ -2165,5 +2165,16 @@
       "assets/gemwoven/raw/memory-shop/dust-prompt.txt"
     ],
     "purpose": "Bụi Ký Ức icon (D3): Cửa Hàng · Ký Ức balance, price and preview, Túi Đồ row (Codex mockup assets/gemwoven/raw/memory-shop)."
+  },
+  "forge-pedestal": {
+    "file": "assets/gemwoven/forge/pedestal.webp",
+    "width": 1311,
+    "height": 610,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-mockup/pedestal-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/forge-mockup/pedestal-prompt.txt"
+    ],
+    "purpose": "Display pedestal under the forge preview (Codex 29)."
   }
 }
