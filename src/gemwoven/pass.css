@@ -60,9 +60,13 @@
 .pv-head2.head-free.long b{top:39%}
 .pv-head2 small{left:0;right:0;top:69%;text-align:center;font:800 28px/1 Cambria,serif;white-space:nowrap;color:#5a3412}
 .pv-head2 small.own{color:#2f6a1c}
+.pv-head2 small{display:flex;align-items:center;justify-content:center;gap:4px}
+.pv-lockico{position:static!important;width:26px;height:29px;object-fit:contain;flex:none;filter:drop-shadow(0 1px 1px #2a140866)}
+.pv-action.two small{display:flex;align-items:center;gap:6px}
+.pv-action.two small .pv-lockico{width:24px;height:26px}
 /* Lock strip over the tracks still to be bought: the padlock end keeps its shape, the strip stretches. */
 .pv-band{z-index:3;border-style:solid;border-width:0 19px 0 146px;border-image-slice:0 30 0 230 fill;border-image-width:0 19px 0 146px;filter:drop-shadow(0 3px 4px #1c0c0466)}
-.pv-band b{inset:0;display:flex;align-items:center;justify-content:center;font:800 30px/1 Cambria,serif;color:#fff0d0;text-shadow:0 1px 2px #1c0c04;letter-spacing:.3px}
+.pv-band b{inset:0;display:flex;align-items:center;justify-content:center;white-space:nowrap;font:800 28px/1 Cambria,serif;color:#fff0d0;text-shadow:0 1px 2px #1c0c04;letter-spacing:.3px}
 .pv-band.one b{font-size:20px;line-height:1.05;white-space:normal;text-align:center}
 .pv-backing{pointer-events:none!important;object-fit:fill;opacity:.38}
 .pv-sprout{pointer-events:none!important;object-fit:contain}

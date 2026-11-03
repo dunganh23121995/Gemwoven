@@ -117,8 +117,14 @@
 /* ----- Tích Lũy ----- */
 .kp-offline .kp-rate{display:block;width:58%;margin:6px auto 4px!important;padding:16px 0 18px;background:var(--kit-plaque) center/100% 100% no-repeat;font:800 34px/1 Cambria,serif!important;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04}
 .kp-offline .feature-art{width:330px!important;height:290px!important;object-fit:contain;margin:4px auto 0!important;display:block;filter:drop-shadow(0 10px 10px #2a140855)}
-.kp-offline .kp-time{display:flex;align-items:center;justify-content:center;gap:12px;margin:6px 0 0!important;font:800 36px Cambria,serif!important}
+.kp-offline .kp-time{display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 0 0!important;font:800 34px Cambria,serif!important}
 .kp-offline .kp-time .kp-ico{width:56px;height:56px}
+.kp-offline .kp-time>span{white-space:nowrap}
+.kp-offline .kp-time>span>b{font:inherit;color:inherit}
+.kp-offline .kp-time>span>small{font-size:27px;opacity:.75}
+.kp-offline .kp-time .kp-gain{display:inline-flex;align-items:center;gap:6px;margin-left:4px;padding:6px 24px 8px 14px;white-space:nowrap;font-style:normal;background:var(--kit-badge-leather) center/100% 100% no-repeat}
+.kp-offline .kp-time .kp-gain .kp-ico{width:46px;height:46px}
+.kp-offline .kp-time .kp-gain b{font:900 34px/1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 2px #2a1408}
 .kp-offline .kp-bar{margin:12px 10px 20px}
 .kp-offline .kp-stats-3{gap:12px}
 .kp-offline .kp-res{min-height:190px}

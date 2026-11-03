@@ -11,6 +11,8 @@
   const baseNodes=Object.fromEntries(Object.entries(L.screens).map(([key,v])=>[key,v.nodes.slice()]));
   for(const [key,[name,,bg]]of Object.entries(extra)){L.names[key]=name;L.screens[key]={key,name,background:`assets/gemwoven/backgrounds/${bg}.webp`,backgroundKey:bg,nodes:[]};}
   L.order=['home','campaign','boss','upgrade','skills','summon','inventory','equipment','forge','shop','quests','offline','arena','rankings','events','vip','mail','settings','admin','chat'];
+  // Banked offline time: seconds in the first minute (the gold already counts), then hours and minutes (Codex review 4).
+  const offlineTime=h=>h<1/60?`${Math.floor(h*3600)} giây`:`${Math.floor(h)} giờ ${String(Math.floor(h%1*60)).padStart(2,'0')} phút`;
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN'),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const img=(asset,cls='',alt='')=>`<img class="${cls}" src="${esc((A[asset]||A['icon-hero']).file)}" alt="${esc(alt)}" draggable="false">`;
   const button=(label,action,data={},disabled=false,cls='')=>`<button type="button" class="game-btn ${cls}" data-action="${esc(action)}" ${Object.entries(data).map(([k,v])=>`data-${k}="${esc(v)}"`).join(' ')} ${disabled?'disabled':''}>${esc(label)}</button>`;
@@ -104,7 +106,7 @@
     if(key==='quests'||key==='tavern')return heading('Nhiệm Vụ Hàng Ngày','Làm mới lúc 00:00 GMT+7. Vé được trao ở nhiệm vụ ghé thăm mỗi ngày.')+M.DAILY.map(q=>`<article class="quest-live">${img(q.id==='boss'?'nav-arena':'icon-quest')}<div><h3>${q.name}</h3><p>${fmt(Math.min(q.target,p.daily.progress[q.id]||0))}/${fmt(q.target)}</p><small>${Object.entries(q.reward).map(([k,n])=>`${fmt(n)} ${M.RESOURCES[k][0]}`).join(' · ')}</small></div>${button(p.daily.claimed.includes(q.id)?'Đã nhận':'Nhận','do:daily',{quest:q.id},p.daily.claimed.includes(q.id)||(p.daily.progress[q.id]||0)<q.target)}</article>`).join('')+route('Tới vượt ải','campaign')+route('Tới boss','boss');
     if(key==='offline'){
       // Rate, time, the three rewards and the button with what it waits for (Codex UI review); the formula is folded.
-      const r=engine.offline(),hm=h=>`${Math.floor(h)} giờ ${String(Math.floor(h%1*60)).padStart(2,'0')} phút`,ready=r.hours>=1/60;
+      const r=engine.offline(),hm=offlineTime,ready=r.hours>=1/60;
       return heading('Tích Lũy',`${fmt(r.goldPerHour)} vàng/giờ`)+img('chest','feature-art')+`<h3>Đã tích: ${hm(r.hours)} / ${r.capHours} giờ</h3><div class="offline-bar"><i style="width:${Math.min(100,r.hours/r.capHours*100)}%"></i></div><div class="stat-grid"><p>Vàng<b>${fmt(r.gold)}</b></p><p>Sách kinh nghiệm<b>${fmt(r.exp)}</b></p><p>Ấn tu luyện<b>${fmt(Math.min(r.seals,M.DAILY_SEAL_CAP-p.daily.seals))}</b></p></div>${button(ready?'Nhận thưởng':'Đang tích lũy','do:offline',{},!ready)}${r.hours>=r.capHours?'<p class="hint"><b>Kho đã đầy 12 giờ:</b> nhận ngay để tiếp tục tích.</p>':''}<details class="hint"><summary>Cách tính</summary><p>Vàng/giờ = 80 + cấp tướng cao nhất ×8 + số ải đã vượt ×15. Tối đa 12 giờ mỗi lượt; nhận thưởng bắt đầu lượt mới. Không có Đá Ngọc hay vé trong thưởng offline; giờ máy quay lùi không sinh thêm thưởng.</p></details>`;
     }
     if(key==='summon'){
@@ -259,5 +261,5 @@
     }catch(error){ctx.showModal('Thư chưa hợp lệ',[],error.message);}});
     const form=document.getElementById('event-form');if(form)form.addEventListener('submit',e=>{e.preventDefault();try{const draft=Object.fromEntries(new FormData(form));draft.enabled=form.elements.namedItem('enabled').checked;draft.status='coming-soon';engine.saveEvent(draft);ctx.render();ctx.showModal('Đã lưu bản nháp',[],'Mở Sự kiện để xem nội dung được bật hiển thị.');}catch(e){ctx.showModal('Cấu hình chưa hợp lệ',[],e.message);}});
   }
-  window.GEMWOVEN_GAME={engine,decorate,handle,mount,extra,showRewards,initialHero:engine.read().selected};
+  window.GEMWOVEN_GAME={engine,decorate,handle,mount,extra,showRewards,offlineTime,initialHero:engine.read().selected};
 })();

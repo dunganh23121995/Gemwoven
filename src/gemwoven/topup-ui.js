@@ -3,7 +3,8 @@
  * - Resource popup (tap any resource): picture, name, held count; one main button "Mua thêm" that opens the shop on the
  *   right tab with that product picked (a back arrow returns), "Nạp" for Đá Ngọc; free sources folded under "Cách kiếm ›"
  *   (at most three, icon + short name, tap goes there). Resources the shop never sells show only their sources.
- * - Nạp page: Đá Ngọc packs (liveops.js GEM_PACKS) with "Lần đầu ×2" written as "60 + 60 = 120", a compact VIP bar
+ * - Nạp page: Đá Ngọc packs (liveops.js GEM_PACKS) with "Lần đầu ×2" written as "60 + 60 = 120"; each pack carries a lock on its
+ *   price and a "Sắp ra mắt" tag, and "Thanh toán sắp ra mắt" sits right above the packs (Codex review 4), a compact VIP bar
  *   (progression.js vipProgress) and entries to Thẻ Tháng / Sổ Hành Trình / Quỹ on the VIP page. Payment is a future server
  *   feature: a pack opens a Coming-soon sheet and nothing is charged, granted, counted toward VIP or marked as used.
  * Every frame is drawn art (Codex mockup assets/gemwoven/raw/topup/mockup-page.png, pieces in assets/gemwoven/topup and
@@ -16,6 +17,7 @@
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN'),vnd=n=>fmt(n)+'₫',file=k=>A[k]?.file||'';
   const T='assets/gemwoven/topup/',P='assets/gemwoven/vip-pass/',tp=n=>T+n+'.webp',pv=n=>P+n+'.webp';
+  const LOCK='assets/gemwoven/forge/lock.webp',TAG='assets/gemwoven/forge/tag.webp';
   const box=(x,y,w,h)=>`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
 
   // ----- The Nạp screen (registered here; progression-ui.js gives it the HUD, the nav bar and the back arrow) -----
@@ -41,8 +43,9 @@
     return `<button type="button" class="tp-card" data-action="topup:buy" data-pack="${x.id}" style="${box(left,top,414,246)}" aria-label="${fmt(x.gems)} Đá Ngọc · ${vnd(x.price)} · lần đầu ${fmt(x.gems)} + ${fmt(x.firstBonus)} = ${fmt(x.gems+x.firstBonus)} · sắp ra mắt">`+
       `<img class="tp-art" src="${tp('card-wide')}" alt="">`+
       `<img class="tp-pack" src="${tp('pack-'+x.tier)}" alt="" style="${box(18,40,182,150)}">`+
-      `<span class="tp-amount" style="${box(196,30,206,82)}"><img src="${file('mana')}" alt=""><b>${fmt(x.gems)}</b></span>`+
-      `<span class="tp-price" style="${box(198,112,206,64)}"><img src="${tp('price-plate')}" alt=""><b${vnd(x.price).length>9?' class="long"':''}>${vnd(x.price)}</b></span>`+
+      `<span class="tp-amount" style="${box(196,30,206,82)}"><img src="${file('mana')}" alt=""><b${fmt(x.gems).length>3?' class="long"':''}>${fmt(x.gems)}</b></span>`+
+      `<span class="tp-price" style="${box(198,112,206,64)}"><img src="${tp('price-plate')}" alt=""><b${vnd(x.price).length>9?' class="long"':''}>${vnd(x.price)}</b><img class="tp-lock" src="${LOCK}" alt=""></span>`+
+      `<span class="tp-locktag" style="${box(14,146,186,44)}"><img src="${TAG}" alt=""><b>Sắp ra mắt</b></span>`+
       `<span class="tp-total" style="${box(58,186,298,44)}"><b${total.length>17?' class="long"':''}>${total}</b></span>`+
       `<span class="tp-ribbon" style="${box(-10,-14,214,62)}"><img src="${tp('ribbon')}" alt=""><b>Lần đầu ×2</b></span></button>`;
   }
@@ -50,7 +53,7 @@
     el.innerHTML=`<img class="tp-sign" src="${pv('title-sign')}" alt="" style="${box(262,112,416,122)}"><h2 class="tp-title" style="${box(312,160,316,60)}">Nạp</h2>`+
       vipBar()+entries()+
       `<span class="tp-head" style="${box(76,520,370,108)}"><img src="${pv('head2-free')}" alt=""><b>Đá Ngọc</b></span>`+
-      `<button type="button" class="tp-soon" data-action="topup:soon" style="${box(486,546,392,70)}" aria-label="Thanh toán sắp ra mắt"><img class="tp-art" src="${pv('lock-band')}" alt=""><b>Sắp ra mắt</b></button>`+
+      `<button type="button" class="tp-soon" data-action="topup:soon" style="${box(462,540,436,84)}" aria-label="Thanh toán sắp ra mắt"><img class="tp-art" src="${TAG}" alt=""><img class="tp-soonlock" src="${LOCK}" alt=""><b>Thanh toán sắp ra mắt</b></button>`+
       O.GEM_PACKS.map(card).join('');
   }
 

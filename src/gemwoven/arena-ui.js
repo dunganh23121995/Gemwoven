@@ -1,4 +1,4 @@
-/* Đấu Trường — Cúp Đấu Trường first (owner 04/11: "các item sắp xếp chưa hợp lý; chưa có chỗ thi đấu mỗi tháng").
+/* Đấu Trường — Cúp Đấu Trường first; under the cup's name the sign says it is a local trial against AI (Codex review 4) (owner 04/11: "các item sắp xếp chưa hợp lý; chưa có chỗ thi đấu mỗi tháng").
  * Claude + Codex arena rounds 1–2 (assets/gemwoven/raw/arena-mockup/: critique, approved mockup-1.png 8,5/10, sheets
  * A/B). Reading order: the month's cup (sign) → who leads (2–1–3 podium of portraits) → where you stand (strip) → play
  * (one button) → the other modes as three banners on one rack, each its own action (1v1 cùng máy, Đấu Hạng Sắp ra mắt,
@@ -32,7 +32,7 @@
     for(const [k,f] of [['row',P+'row.webp'],['slot',P+'slot.webp'],['match',P+'match.webp'],['tab','assets/gemwoven/forge/tab.webp'],['tag','assets/gemwoven/forge/tag.webp'],...['tab-wood','button-gold','nameplate','panel-parchment'].map(k=>[k,file(k)])])document.documentElement.style.setProperty('--ar-'+k,`url("${url(f)}")`);
     const pod=[[1,'silver',[228,604,150,150],[243,722,120,154]],[0,'gold',[381,552,178,178],[395,680,150,173]],[2,'bronze',[563,604,150,150],[578,722,120,154]]];
     el.innerHTML=
-      `<button type="button" class="ar-sign" data-action="cup:open" style="${box(150,212,641,275)}" aria-label="Cúp Đấu Trường · mở bảng giải"><img src="${P}cup-sign.webp" alt=""><b>${esc(M.CUP.name)}</b><span>${esc(phase(v))}</span><em><img src="${file('icon-trophy')}" alt="">${esc(left(v.season))}</em></button>`+
+      `<button type="button" class="ar-sign" data-action="cup:open" style="${box(150,212,641,275)}" aria-label="Cúp Đấu Trường · mở bảng giải"><img src="${P}cup-sign.webp" alt=""><b>${esc(M.CUP.name)}</b><span class="ar-local">Đấu thử cục bộ · đối thủ AI</span><em><img src="${file('icon-trophy')}" alt="">${esc(phase(v).replace('Vòng ',''))} · ${esc(left(v.season))}</em></button>`+
       `<div class="ar-ribbon" style="${box(300,468,341,77)}"><img src="${P}ribbon.webp" alt=""><span>${esc(M.CUP.server)}</span></div>`+
       pod.map(([i,tone,f,t])=>{const r=v.top[i];return `<button type="button" class="ar-podium ${tone}" data-action="cup:open" data-tab="race" style="${box(t[0],t[1],t[2],t[3])}" aria-label="Hạng ${i+1}${r?' · '+esc(r.name):''}"><img src="${file('rank-'+tone)}" alt=""><b>${i+1}</b></button>`+
         `<div class="ar-frame ${tone} ${r?'':'empty'}" style="${box(...f)}">${r?`<img class="ar-face" src="${face(r.hero)}" alt="">`:''}<img src="${P}frame-${tone}.webp" alt=""><small>${r?(r.ai?'AI':'Bạn'):'—'}</small></div>`+
@@ -41,7 +41,7 @@
       `<button type="button" class="ar-hero" data-action="cup:hero" style="${box(108,1012,108,108)}" aria-label="Tướng thi đấu: ${esc(M.HEROES[hero].name)} · chạm để đổi"><img class="ar-face" src="${face(hero)}" alt=""><img src="${file('avatar-ring')}" alt=""><small>${esc(M.HEROES[hero].name)}</small></button>`+
       `<button type="button" class="ar-go ${a.on?'':'off'}" data-action="${a.view?'cup:open':'cup:play'}" ${a.view?`data-tab="${a.view}"`:''} ${a.on?'':'disabled'} style="${box(230,1004,466,122)}"><span>${esc(a.text)}</span></button>`+
       `<button type="button" class="ar-chest" data-action="cup:open" data-tab="prizes" style="${box(708,996,160,140)}"><img src="${file('chest')}" alt=""><span>Xem thưởng</span></button>`+
-      `<p class="ar-note" style="${box(70,1146,801,76)}"><span>Bản thử cục bộ · 31 AI + bạn · Không thưởng</span><span>Kết quả không lên bảng toàn cầu</span></p>`+
+      `<p class="ar-note" style="${box(70,1146,801,76)}"><span>31 AI + bạn · Không thưởng</span><span>Kết quả không lên bảng toàn cầu</span></p>`+
       `<img class="ar-rack" src="${P}mode-rack.webp" alt="" style="${box(39,1232,863,228)}">`+
       [['duel','flag-blue','icon-arena','1v1','Cùng máy','cup:duel'],['ranked','flag-blue','icon-arena','Đấu Hạng','Sắp ra mắt','growth:arena'],['boss','flag-red','icon-crown','Trùm','Vô Tận','route:boss']].map(([id,flag,icon,a1,a2,act],i)=>
         `<button type="button" class="ar-mode ${id}" data-action="${act}" style="${box(39+863*[.204,.498,.793][i]-100,1236,200,240)}" aria-label="${a1} ${a2}"><img src="${file(flag)}" alt=""><i><img src="${file(icon)}" alt="">${id==='ranked'?`<img class="ar-lock" src="assets/gemwoven/forge/lock.webp" alt="">`:''}</i><b>${a1}</b><small>${a2}</small></button>`).join('');

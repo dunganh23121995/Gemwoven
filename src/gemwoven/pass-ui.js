@@ -12,6 +12,7 @@
   if(!G?.decorate||!G.engine?.pass||!O||!L?.screens?.vip)return;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN'),vnd=n=>fmt(n)+'đ',file=k=>A[k]?.file||'';
+  const LOCK='<img class="pv-lockico" src="assets/gemwoven/forge/lock.webp" alt="">';
   const F='assets/gemwoven/vip-pass/',art=n=>F+n+'.webp';
   const box=(x,y,w,h)=>`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
   const product=id=>O.PRODUCTS.find(x=>x.id===id);
@@ -88,16 +89,17 @@
   // scrolling trunk runs on from it.
   const sprout=()=>`<img class="pv-sprout" src="${art('trunk-top')}" alt="" style="${box(VX+TRUNK-52,VY-104,108,126)}">`;
   // Column heads: name on the plaque, a second word or the price in the paid plaques' parchment slot.
-  function head(i,frame,name,sub,action,product,label){
+  // A price still to be paid carries a small lock: it cannot be bought yet (Codex review 4).
+  function head(i,frame,name,sub,action,product,label,locked){
     const paid=frame!=='free',tag=action?'button':'span';
     return `<${tag} ${action?`type="button" data-action="${action}" data-product="${product||''}" aria-label="${esc(label||name)}"`:''} class="pv-head2 head-${frame} ${name.length>7?'long':''}" style="${box(laneX(i),paid?HEAD_Y:HEAD_Y+4,CELL[0],paid?125:118)}">`+
-      `<img class="pv-art" src="${art('head2-'+frame)}" alt=""><b>${esc(name)}</b>${paid?`<small class="${sub==='Đã mở'?'own':''}">${esc(sub)}</small>`:''}</${tag}>`;
+      `<img class="pv-art" src="${art('head2-'+frame)}" alt=""><b>${esc(name)}</b>${paid?`<small class="${sub==='Đã mở'?'own':''}">${locked?LOCK:''}${esc(sub)}</small>`:''}</${tag}>`;
   }
   // One lock strip and a pale backing over the lanes still to be bought (from lane a to lane 2).
   function lockLayer(a,product){
     const x=laneX(a),w=laneX(2)+CELL[0]-x;
     return `<img class="pv-backing" src="${art('paid-backing')}" alt="" style="${box(x-10,BAND_Y-6,w+20,VY+VH-BAND_Y+10)}">`+
-      `<button type="button" class="pv-band ${a===2?'one':''}" data-action="pass:buy" data-product="${product}" style="${box(x,BAND_Y,w,52)};border-image-source:url('${art('lock-band')}')" aria-label="Kích hoạt · sắp ra mắt"><b>Sắp ra mắt</b></button>`;
+      `<button type="button" class="pv-band ${a===2?'one':''}" data-action="pass:buy" data-product="${product}" style="${box(x,BAND_Y,w,52)};border-image-source:url('${art('lock-band')}')" aria-label="Kích hoạt · thanh toán sắp ra mắt"><b>${a===2?'Sắp ra mắt':'Thanh toán sắp ra mắt'}</b></button>`;
   }
 
   // ----- Sổ Hành Trình -----
@@ -108,7 +110,7 @@
   function passTab(state){
     const v=G.engine.pass();if(!v)return '';
     const heads=O.PASS.tracks.map((t,i)=>{const own=t.id==='free'||v.owned[t.id],price=t.product&&product(t.product)?.price;
-      return head(i,t.id,t.name,own?'Đã mở':vnd(price),t.product?'pass:buy':'pass:detail-track',t.product,`Nhánh ${t.name}${own?'':' · '+vnd(price)+' · sắp ra mắt'}`);}).join('');
+      return head(i,t.id,t.name,own?'Đã mở':vnd(price),t.product?'pass:buy':'pass:detail-track',t.product,`Nhánh ${t.name}${own?'':' · '+vnd(price)+' · sắp ra mắt'}`,!own);}).join('');
     const lockFrom=!v.owned.gold&&!v.owned.jewel?1:!v.owned.jewel?2:0;
     return (lockFrom?lockLayer(lockFrom,O.PASS.tracks[lockFrom].product):'')+sprout()+scroller('pass',passRows(v),v.level,state)+heads+
       `<button type="button" class="pv-season" data-action="pass:season" style="${box(44,474,852,84)}" aria-label="Mùa ${v.season+1} · cấp ${v.level}/${v.max} · cách kiếm điểm">`+
@@ -174,7 +176,7 @@
       head(0,'free','Cấp tướng')+head(1,'gold','Đá Ngọc',own?'Đã mở':'Σ '+fmt(total),'pass:buy','growth-fund')+head(2,'jewel','Tích lũy','Tới mốc','pass:buy','growth-fund')+
       buyButton('growth-fund','fund-pouch','Kích hoạt');
   }
-  const buyButton=(id,icon,text)=>`<button type="button" class="pv-action primary two" data-action="pass:buy" data-product="${id}" style="${box(206,1346,530,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art(icon)}" alt=""><span><b>${text} · ${vnd(product(id).price)}</b><small>Sắp ra mắt</small></span></button>`;
+  const buyButton=(id,icon,text)=>`<button type="button" class="pv-action primary two" data-action="pass:buy" data-product="${id}" style="${box(206,1346,530,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art(icon)}" alt=""><span><b>${text} · ${vnd(product(id).price)}</b><small>${LOCK}Sắp ra mắt</small></span></button>`;
   // The season strip slot on the card tabs: the price on the pennant, the name and one short fact beside it.
   function productStrip(id,sub,own){
     const x=product(id);

@@ -78,9 +78,22 @@
       d.innerHTML='<summary><i aria-hidden="true">i</i><span>Lịch dự kiến · Sắp ra mắt</span></summary>';h?.remove();d.append(...cad.childNodes);cad.append(d);}
   }
 
-  function offline(body){
+  // The banked gold sits beside the timer; both tick each second (each 20 s after the first minute) while the page is
+  // open, and the page redraws once when the reward becomes claimable (Codex review 4: "0 giờ 00 phút" with 5 gold banked).
+  function offline(body,ctx){
     const sub=body.querySelector('.gw-sub');sub?.classList.add('kp-rate');
-    const h=body.querySelector(':scope>h3');if(h&&!h.dataset.kp){h.dataset.kp='1';h.classList.add('kp-time');h.innerHTML=kit('hourglass')+`<span>${esc(h.textContent.replace(/^Đã tích:\s*/,''))}</span>`;}
+    const h=body.querySelector(':scope>h3');if(h&&!h.dataset.kp){h.dataset.kp='1';h.classList.add('kp-time');
+      const [t,cap]=h.textContent.replace(/^Đã tích:\s*/,'').split(' / ');
+      h.innerHTML=kit('hourglass')+`<span><b>${esc(t)}</b><small> / ${esc(cap||'')}</small></span><em class="kp-gain">${img('coins','kp-ico')}<b>+${esc(body.querySelector('.stat-grid>p b')?.textContent||'0')}</b></em>`;}
+    if(h&&!body.dataset.kpTick&&G.offlineTime){body.dataset.kpTick='1';const r0=G.engine.offline(),t0=r0.hours,live=t0<r0.capHours;
+      const tick=()=>{if(!body.isConnected)return;const r=G.engine.offline(),f=fmt=>Math.floor(fmt).toLocaleString('vi-VN');
+        const now=h.querySelector(':scope>span>b');if(now)now.textContent=G.offlineTime(r.hours);
+        const gain=h.querySelector('.kp-gain b');if(gain)gain.textContent='+'+f(r.gold);
+        const cells=body.querySelectorAll('.stat-grid>p b');if(cells[0])cells[0].textContent=f(r.gold);if(cells[1])cells[1].textContent=f(r.exp);
+        const bar=body.querySelector('.offline-bar>i');if(bar)bar.style.width=Math.min(100,r.hours/r.capHours*100)+'%';
+        if(t0<1/60&&r.hours>=1/60){ctx?.render?.();return;}
+        if(r.hours<r.capHours)setTimeout(tick,r.hours<1/60?1000:20000);};
+      if(live)setTimeout(tick,t0<1/60?1000:20000);}
     const bar=body.querySelector('.offline-bar');bar?.classList.add('kp-bar');
     const icons=['coins','exp-book','crest'],names=['Vàng','Sách KN','Ấn tu luyện'];
     body.querySelectorAll('.stat-grid>p').forEach((p,i)=>{if(p.dataset.kp)return;p.dataset.kp='1';p.classList.add('kp-stat','kp-res');const b=p.querySelector('b')?.textContent||'';
@@ -133,14 +146,14 @@
   }
 
   const SCREENS={rankings,events,offline,boss};
-  function dress(state){
+  function dress(state,ctx){
     const s=state?.screen,sc=document.getElementById('scene'),inn=s==='tavern'||s==='quests';sc?.toggleAttribute('data-kp',!!(SCREENS[s]||inn));sc?.toggleAttribute('data-kp-tavern',inn);
     if(inn){if(sc)tavern(sc,s);return;}
     const fn=SCREENS[s];if(!fn)return;const live=document.querySelector(`#scene [data-node="${s}.live"]`);const body=live?.querySelector('.gw-body');if(!body)return;
-    live.classList.add('kp-panel','kp-'+s);try{fn(body);}catch(e){console.warn('ui-kit-panels',s,e);}
+    live.classList.add('kp-panel','kp-'+s);try{fn(body,ctx);}catch(e){console.warn('ui-kit-panels',s,e);}
   }
   const mount=G.mount;
-  G.mount=(state,ctx)=>{const r=mount(state,ctx);dress(state);return r;};
+  G.mount=(state,ctx)=>{const r=mount(state,ctx);dress(state,ctx);return r;};
 
   // ----- Popups: hero profile, all heroes, power detail, title detail, item detail and received rewards -----
   const POPS=new Set(['hero-profile','hero-all','power-detail','growth-map','title-detail','preview-dialog']);
