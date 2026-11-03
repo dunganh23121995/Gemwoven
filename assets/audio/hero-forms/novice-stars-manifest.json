@@ -1,0 +1,154 @@
+{
+  "novice-f2-gust": {
+    "file": "hero-forms/novice/f2-gust.wav",
+    "duration": 1.6,
+    "beat": "gust of wind with leaves as the traveller's wind whirls round his boots (0-1.6 s)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "a gust of wind blowing some leaves",
+        "author": "F3ather",
+        "source_url": "https://freesound.org/people/F3ather/sounds/711441/",
+        "license": "CC0-1.0",
+        "sha256": "a8412d03bc0832117ce39fc81da3880fa708f7869650669ef8a58458f2c23071"
+      }
+    ],
+    "processing": "excerpt 0.00-1.60 s of one recording, 70 Hz high-pass, edge fades, gain",
+    "peak": 0.5,
+    "rms": 0.075,
+    "sha256": "1104c1b1d610834daa36bde073d42172dc4e2688c2ffa62860af7314858e3b4c"
+  },
+  "novice-f2-swing": {
+    "file": "hero-forms/novice/f2-swing.wav",
+    "duration": 0.58,
+    "beat": "sword swing: the first and the finishing cut (peak 100 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sword Swing 1",
+        "author": "Nomagician",
+        "source_url": "https://freesound.org/people/Nomagician/sounds/840716/",
+        "license": "CC0-1.0",
+        "sha256": "f89c475ec8877ac75f3df1076f6541b9dd2ec07a3c2ceeb730c58a29ae58d160"
+      }
+    ],
+    "processing": "excerpt 0.04-0.62 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.063,
+    "sha256": "968a603a7e1336261d6464d4278b53543567fc1aa83430d44a4ac8758f7cd9f8"
+  },
+  "novice-f2-swing-up": {
+    "file": "hero-forms/novice/f2-swing-up.wav",
+    "duration": 0.58,
+    "beat": "second take of the same swordsman: the rising cut (peak 100 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sword Swing 3",
+        "author": "Nomagician",
+        "source_url": "https://freesound.org/people/Nomagician/sounds/840717/",
+        "license": "CC0-1.0",
+        "sha256": "70406b6c5884f5549719d4c357c70e1b060a362ebf59cf8350166ac2a487d7b0"
+      }
+    ],
+    "processing": "excerpt 0.04-0.62 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.063,
+    "sha256": "49e8483dcb6bdb99f1da6d6d672ae26765a4405ff002fda85905f5dc53175f29"
+  },
+  "novice-f2-hit": {
+    "file": "hero-forms/novice/f2-hit.wav",
+    "duration": 0.52,
+    "beat": "sword strikes the body on the finishing cross cut, the damage (struck 80 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Sword hits the body.wav",
+        "author": "vdovitsky",
+        "source_url": "https://freesound.org/people/vdovitsky/sounds/411122/",
+        "license": "CC0-1.0",
+        "sha256": "c314bdd106058a5520aac20497a8e3db69c473e7081c6898e90da403bd91fd46"
+      }
+    ],
+    "processing": "excerpt 0.20-0.72 s of one recording, 60 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.061,
+    "sha256": "d091ecc5c170d9341c36c597dcb6b27b6acfbe6e7c9039048a347ff4b37910cb"
+  },
+  "novice-f3-gather": {
+    "file": "hero-forms/novice/f3-gather.wav",
+    "duration": 1.3,
+    "beat": "glass wind chimes jangling as the four jewel lights gather into the blade (0-1.3 s)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Glass Wind Chimes Jangling in a Soft Breeze",
+        "author": "bassimat",
+        "source_url": "https://freesound.org/people/bassimat/sounds/867567/",
+        "license": "CC0-1.0",
+        "sha256": "af497b7811530a38227a9edda6aac4747ee1a26685aec80398ca68f40999c6ab"
+      }
+    ],
+    "processing": "excerpt 0.55-1.85 s of one recording, 200 Hz high-pass, edge fades, gain",
+    "peak": 0.45,
+    "rms": 0.042,
+    "sha256": "e22644071466abdaa0766762c4d71efffd33031f0787be3def7908f759434ccd"
+  },
+  "novice-f3-swing": {
+    "file": "hero-forms/novice/f3-swing.wav",
+    "duration": 0.8,
+    "beat": "low swoosh of the great downward cut (peaks 160 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "FX - Swoosh - Low Pitch",
+        "author": "bolkmar",
+        "source_url": "https://freesound.org/people/bolkmar/sounds/475135/",
+        "license": "CC0-1.0",
+        "sha256": "f618f47f61005225e6442e2b0e385fd0b3950b307fd932fee4497bb663885278"
+      }
+    ],
+    "processing": "excerpt 0.06-0.86 s of one recording, 50 Hz high-pass, edge fades, gain",
+    "peak": 0.6,
+    "rms": 0.082,
+    "sha256": "edb8a507f41d3f7009c4a9e1c1693e3fa47b2266061a0c6bd1859467d9682748"
+  },
+  "novice-f3-crest": {
+    "file": "hero-forms/novice/f3-crest.wav",
+    "duration": 0.94,
+    "beat": "glass tinkle as the crystal spires rise round the foe (peak 250 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Glass Tinkle 1.mp3",
+        "author": "FunWithSound",
+        "source_url": "https://freesound.org/people/FunWithSound/sounds/390731/",
+        "license": "CC0-1.0",
+        "sha256": "f5ae4d31f2627e6a4b3255d11d4027b09ec2ce695a1cefd01f57e971c000e7c5"
+      }
+    ],
+    "processing": "excerpt 0.00-0.94 s of one recording, 300 Hz high-pass, edge fades, gain",
+    "peak": 0.45,
+    "rms": 0.033,
+    "sha256": "b911fa9bdfff6b5c35935f34cb70ecbcb654ede7b74cc3dc854b973e62ec5e28"
+  },
+  "novice-f3-shatter": {
+    "file": "hero-forms/novice/f3-shatter.wav",
+    "duration": 0.7,
+    "beat": "glass shatter as the jewel prison breaks, the damage (bursts 100 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "glass shatter",
+        "author": "ccen18",
+        "source_url": "https://freesound.org/people/ccen18/sounds/686849/",
+        "license": "CC0-1.0",
+        "sha256": "80500bd0bff2346cc03969e8f15d3a12fc1fa5d0b7d1112ebf478a5bbbfebae9"
+      }
+    ],
+    "processing": "excerpt 0.10-0.80 s of one recording, 60 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.104,
+    "sha256": "3071c5e82be5553ef4d9683d2badb851c456ee1cd6202250f4dfae78f782d655"
+  }
+}

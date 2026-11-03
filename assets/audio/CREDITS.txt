@@ -935,3 +935,17 @@ Other chapter bosses (scripts/pick_boss_skill_sounds.py; cue -> recording)
 Elite skill sounds (scripts/prepare_elite_sounds.py):
     "Fantasy SFX Pack Vol 1" by JC Sounds, https://opengameart.org/content/jc-sounds-fantasy-sfx-pack-vol-1 (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/)
     Changes: mixed to mono, trimmed, gain and fades.
+
+Hiro (starter hero) four- and six-star ultimates, Lữ Kiếm Liên Trảm and Diệu Ngọc Tứ Hệ Trảm (2026-11-03): built on his
+form-1 recordings above (battle cry, strides, clothes rush, played as they are); new cues are one real recording each
+(excerpt with natural attack and decay, gentle high-pass, gain, short fades; no layering, pitch/time change or synthesis).
+Clips: hero-forms/novice/f2-*.wav, f3-*.wav, manifest hero-forms/novice-stars-manifest.json (sources, checksums).
+Build: python scripts/prepare_hiro_star_form_sounds.py. Sources (CC0 1.0) in sources/freesound/<id>-<title>/ (source.json):
+  f2-gust      #711441 "a gust of wind blowing some leaves" by F3ather, https://freesound.org/people/F3ather/sounds/711441/
+  f2-swing    #840716 "Sword Swing 1" by Nomagician, https://freesound.org/people/Nomagician/sounds/840716/
+  f2-swing-up #840717 "Sword Swing 3" by Nomagician, https://freesound.org/people/Nomagician/sounds/840717/
+  f2-hit      #411122 "Sword hits the body.wav" by vdovitsky, https://freesound.org/people/vdovitsky/sounds/411122/
+  f3-gather   #867567 "Glass Wind Chimes Jangling in a Soft Breeze" by bassimat, https://freesound.org/people/bassimat/sounds/867567/
+  f3-swing    #475135 "FX - Swoosh - Low Pitch" by bolkmar, https://freesound.org/people/bolkmar/sounds/475135/
+  f3-crest    #390731 "Glass Tinkle 1.mp3" by FunWithSound, https://freesound.org/people/FunWithSound/sounds/390731/
+  f3-shatter  #686849 "glass shatter" by ccen18, https://freesound.org/people/ccen18/sounds/686849/
