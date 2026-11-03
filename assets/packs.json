@@ -3064,7 +3064,7 @@
     "assets/scenes/chapters/hourglass-mid.webp",
     "assets/scenes/chapters/hourglass-stage.webp"
    ],
-   "bytes": 36385707
+   "bytes": 36385367
   },
   {
    "id": "chapter-23",
@@ -4834,7 +4834,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 157143452
+   "bytes": 157037212
   },
   {
    "id": "hero-earth-f1",
