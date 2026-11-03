@@ -42,7 +42,7 @@
     });
   }
   function sides(left=true,right=true){
-    const a=left?[['event','Sự Kiện','icon-event'],['gift','Phúc Lợi','icon-gift'],['book','Thẻ Tháng','icon-book'],['chat','Cộng Đồng','icon-chat']]:[];
+    const a=left?[['event','Sự Kiện','icon-event'],['gift','Phúc Lợi','icon-gift'],['book','Thẻ Tháng','icon-book'],['chat','Gặp Gỡ','icon-chat']]:[];
     const b=right?[['quest','Nhiệm Vụ','icon-quest'],['mail','Hòm Thư','icon-mail'],['trophy','Thành Tựu','icon-trophy'],['crown','BXH','icon-crown']]:[];
     a.forEach(([id,label,icon],i)=>button(`side-${id}`,'side-pennant',[10,145+i*125,95,137],label,`preview:${id}`,{icon,iconRect:[25,33,48,48],labelRect:[1,86,93,32],size:24,fit:'fill'}));
     // Right pennants (the mail slot is not shown): taller banners with two-line names readable on a phone.

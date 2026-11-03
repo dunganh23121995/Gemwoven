@@ -39,8 +39,8 @@
 
   function myProfile(){
     const p=G.engine.read(),key=p.selected,h=p.heroes[key];
-    const title=p.title&&M.titleList?M.titleList(p).find(t=>t.id===p.title&&t.unlocked)?.name||'':'';
-    return {hero:key,look:M.lookForm?M.lookForm(key,h):1,level:h?.level||1,stars:h?.stars||1,power:M.stats(p,key).power,title,frame:''};
+    const worn=p.title&&M.titleList?M.titleList(p).find(t=>t.id===p.title&&t.unlocked):null;
+    return {hero:key,look:M.lookForm?M.lookForm(key,h):1,level:h?.level||1,stars:h?.stars||1,power:M.stats(p,key).power,title:worn?.name||'',titleTier:worn?.tier||0,frame:''};
   }
 
   // ---------- Network ----------
@@ -110,8 +110,9 @@
   }
   function setPlate(a){
     a.el.querySelector('.pz-name').innerHTML=(a.tag?`<b>[${esc(a.tag)}]</b> `:'')+esc(a.name)+(a.npc?' <i>NPC</i>':'');
-    const t=a.el.querySelector('.pz-title');t.textContent=a.title||'';t.hidden=!a.title;
-    a.el.querySelector('.pz-plate').style.top=`${a.headY-30}px`;a.el.querySelector('.pz-bubbles').style.bottom=`${-a.headY+40}px`;a.el.querySelector('.pz-emote').style.bottom=`${-a.headY+36}px`;
+    // The worn title rides above the name on its rarity plate (assets/gemwoven/titles), as in combat.
+    const t=a.el.querySelector('.pz-title');t.hidden=!a.title;t.innerHTML=a.title?`<span class="title-plate tier-${a.titleTier||1}"><img src="assets/gemwoven/titles/plate-${a.titleTier||1}.webp" alt=""><b>${esc(a.title)}</b></span>`:'';
+    a.el.querySelector('.pz-plate').style.top=`${a.headY-(a.title?84:30)}px`;a.el.querySelector('.pz-bubbles').style.bottom=`${-a.headY+40}px`;a.el.querySelector('.pz-emote').style.bottom=`${-a.headY+36}px`;
     a.el.querySelector('.pz-hit').style.cssText=`width:${Math.max(70,a.cell*.42||90)}px;height:${Math.max(90,-a.headY+10)}px;left:${-Math.max(70,a.cell*.42||90)/2}px;top:${a.headY}px`;
     a.el.classList.toggle('is-friend',!!P.friends.friends.some(f=>f.id===a.id));a.el.classList.toggle('is-guildmate',!!P.guild?.members?.some(m=>m.id===a.id));
   }
@@ -120,11 +121,11 @@
     if(P.me&&keep){P.me.name=name;setLook(P.me,prof.hero,prof.look);refreshMyTag();return;}
     if(P.me)removeActor('me');P.me=makeActor('me',{name,hero:prof.hero,look:prof.look,x:pos[0],y:pos[1]});refreshMyTag();
   }
-  function refreshMyTag(){if(!P.me)return;P.me.name=P.you?.name||'Bạn';P.me.tag=P.guild?.tag||'';P.me.title=myProfile().title;setPlate(P.me);for(const a of P.actors.values())if(!a.npc&&a!==P.me)setPlate(a);}
+  function refreshMyTag(){if(!P.me)return;P.me.name=P.you?.name||'Bạn';P.me.tag=P.guild?.tag||'';const mine=myProfile();P.me.title=mine.title;P.me.titleTier=mine.titleTier;setPlate(P.me);for(const a of P.actors.values())if(!a.npc&&a!==P.me)setPlate(a);}
   function upsert(p){
     if(p.id===P.you?.id)return;let a=P.actors.get(p.id);
-    if(!a)a=makeActor(p.id,{name:p.name,hero:p.p?.hero,look:p.p?.look,tag:p.tag,title:p.p?.title,x:p.x,y:p.y});
-    else{if(a.hero!==p.p?.hero||a.look!==p.p?.look)setLook(a,p.p?.hero,p.p?.look);a.name=p.name;a.tag=p.tag;a.title=p.p?.title||'';a.target=[p.x,p.y];}
+    if(!a){a=makeActor(p.id,{name:p.name,hero:p.p?.hero,look:p.p?.look,tag:p.tag,title:p.p?.title,x:p.x,y:p.y});a.titleTier=p.p?.titleTier||0;}
+    else{if(a.hero!==p.p?.hero||a.look!==p.p?.look)setLook(a,p.p?.hero,p.p?.look);a.name=p.name;a.tag=p.tag;a.title=p.p?.title||'';a.titleTier=p.p?.titleTier||0;a.target=[p.x,p.y];}
     a.profile=p.p;a.guildName=p.guild;setPlate(a);
   }
   function removeActor(id){const a=P.actors.get(id);if(!a)return;a.el.remove();P.actors.delete(id);}
@@ -183,7 +184,7 @@
     const btn=P.root.querySelector('.pz-context'),info=(geo.zones||[]).find(x=>x.id===z);
     const label={guild:'Vào Sảnh Bang',lantern:'Dệt Đèn Bang',ring:'Sẵn sàng giao hữu',board:'Xem Bảng Tin'}[z];
     btn.hidden=!label;if(label){btn.textContent=label;btn.dataset.zone=z;}
-    P.root.querySelector('.pz-place').textContent=info&&z!=='fountain'?info.name:'Quảng Trường';
+    P.root.querySelector('.pz-place').textContent=info&&z!=='fountain'?info.name:'Gặp Gỡ · Quảng Trường';
   }
   // Up to three arrows at the edge for friends and guild mates outside the view (optional).
   function arrows(){
@@ -380,7 +381,7 @@
     const stickSide=prefs.side==='right'?'right':'left';
     root.innerHTML=`<div class="pz-view"><div class="pz-world"><img class="pz-map" src="${esc(asset('plaza-map')||'assets/gemwoven/plaza/map.webp')}" alt="" draggable="false"></div></div>
       <div class="pz-arrows" aria-hidden="true"></div>
-      <header class="pz-top"><button type="button" class="pz-back" data-action="route:home" aria-label="Về thị trấn">‹</button><div><b class="pz-place">Quảng Trường</b><button type="button" class="pz-status" data-open="channels"></button></div></header>
+      <header class="pz-top"><button type="button" class="pz-back" data-action="route:home" aria-label="Về thị trấn">‹</button><div><b class="pz-place">Gặp Gỡ · Quảng Trường</b><button type="button" class="pz-status" data-open="channels"></button></div></header>
       <nav class="pz-side" aria-label="Quảng Trường">
         <button type="button" data-open="friends"><img src="${esc(asset('icon-friends'))}" alt=""><span>Bạn bè</span><b class="pz-badge" hidden></b></button>
         <button type="button" data-open="guild"><img src="${esc(asset('icon-crown'))}" alt=""><span>Bang hội</span><b class="pz-badge" hidden></b></button>

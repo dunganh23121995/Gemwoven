@@ -85,7 +85,7 @@
     const hero=typeof p?.hero==='string'&&/^[a-z]{2,12}$/.test(p.hero)?p.hero:'novice';
     const num=(v,lo,hi)=>Math.max(lo,Math.min(hi,Math.round(Number(v)||lo)));
     return {hero,look:num(p?.look,1,3),level:num(p?.level,1,500),stars:num(p?.stars,1,6),power:num(p?.power,0,1e9),
-      title:typeof p?.title==='string'?p.title.slice(0,24):'',frame:typeof p?.frame==='string'?p.frame.slice(0,24):''};
+      title:typeof p?.title==='string'?p.title.slice(0,24):'',titleTier:num(p?.titleTier,0,5),frame:typeof p?.frame==='string'?p.frame.slice(0,24):''};
   }
   return {VERSION,MAP,LIMITS,CHANNELS,EMOTES,RANKS,RANK_ORDER,GUILD_EXP,GUILD_EMBLEMS,CHECKIN,LANTERN,lanternTier,guildLevel,guildCap,
     fold,cleanText,checkName,checkGuild,DEFAULT_GEO,inside,walkable,step,clampTarget,near,zoneAt,cleanProfile};

@@ -349,7 +349,7 @@
     if(type==='quest-dismiss')return setQuestHidden(true);
     if(type==='tavern-tab'){setQuestHidden(false);changeText('quest-heading',['Tin Đồn','Nhiệm Vụ','Tình Thân','Chiêu Mộ'][value]);return;}
     if(type==='quest-preview')return showModal('Người lữ hành bí ẩn',['quest-scene'],'Một cuộc gặp gỡ mới ở rìa rừng.',[{label:'Triệu hồi',route:'summon'}]);
-    const previews={mail:['Hòm Thư','icon-mail'],settings:['Cài Đặt','icon-settings'],event:['Sự Kiện','icon-event'],gift:['Phúc Lợi','icon-gift'],book:['Thẻ Tháng','icon-book'],chat:['Cộng Đồng','icon-chat'],trophy:['Thành Tựu','icon-trophy'],crown:['Bảng Xếp Hạng','icon-crown'],ranking:['Xếp Hạng','rank-gold'],rewards:['Phần Thưởng','chest'],summon:['Triệu Hồi','summon-crystal'],evolution:['Chân Thân','gem-fire']};
+    const previews={mail:['Hòm Thư','icon-mail'],settings:['Cài Đặt','icon-settings'],event:['Sự Kiện','icon-event'],gift:['Phúc Lợi','icon-gift'],book:['Thẻ Tháng','icon-book'],chat:['Gặp Gỡ','icon-chat'],trophy:['Thành Tựu','icon-trophy'],crown:['Bảng Xếp Hạng','icon-crown'],ranking:['Xếp Hạng','rank-gold'],rewards:['Phần Thưởng','chest'],summon:['Triệu Hồi','summon-crystal'],evolution:['Chân Thân','gem-fire']};
     if(type==='preview'){const entry=previews[value]||['Gemwoven','mana'];showModal(entry[0],[entry[1]]);}
   }
   function setEditMode(enabled){stage.classList.toggle('edit-copy',enabled);scene.querySelectorAll('[data-copy]').forEach(el=>{el.contentEditable=enabled?'true':'false';el.spellcheck=false;});if(!enabled)requestAnimationFrame(fitCopy);}

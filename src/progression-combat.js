@@ -99,6 +99,13 @@ startStage=function(){
   progressionProcs.clear();progressionTurn=0;progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
+// The worn title (Danh Hiệu) rides on top of the hero's head bar (name, health) on its rarity plate, as in town
+// and Gặp Gỡ. Cosmetic only. The head bar is redrawn often, so the plate is put back whenever it is missing.
+function progressionTitlePlate(){
+  const hud=$('heroHeadHud'),t=progressionBattle?.title;if(!hud||!t||hud.querySelector(':scope > .combat-title'))return;
+  const plate=document.createElement('span');plate.className=`combat-title tier-${t.tier}`;plate.setAttribute('aria-label','Danh hiệu: '+t.name);
+  const img=document.createElement('img');img.src=`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
+}
 const progressionOriginalRender=renderActors;
 renderActors=function(){
   progressionOriginalRender();
@@ -108,6 +115,7 @@ renderActors=function(){
   }
   if(!progressionBattle)return;
   const root=actor('hero'),evolution=Math.max(0,Math.min(6,progressionBattle.stats.evolution|0));root.dataset.evolution=evolution;
+  progressionTitlePlate();
   // Evolution reads as light around the current form instead of armour pasted
   // over faces: a back-glow, a ground sigil and rising motes grow with each tier.
   const sheet=spriteDefinition('hero',state.key,'idle').sheet,bodyHeight=sheet.bodyHeight||.75,foot=sheet.footY||.94,centre=sheet.bodyX||sheet.heads?.[0]?.[0];
@@ -119,7 +127,7 @@ renderActors=function(){
   if(evolution>=6&&ART.evolution?.aura){const aura=document.createElement('img');aura.className='combat-evo combat-evo-aura';aura.src=ART.evolution.aura;aura.alt='';aura.setAttribute('aria-hidden','true');root.prepend(aura);}
 };
 const progressionOriginalUpdate=update;
-update=function(){progressionOriginalUpdate();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
+update=function(){progressionOriginalUpdate();progressionTitlePlate();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
 const progressionOriginalDetail=showHeroDetail;
 showHeroDetail=function(){
   progressionOriginalDetail();if(!progressionBattle)return;

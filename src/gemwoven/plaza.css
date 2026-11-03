@@ -15,7 +15,7 @@
 .pz-plate{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;white-space:nowrap;pointer-events:none}
 .pz-name{font:700 13px/1.15 inherit;color:#fff;padding:2px 8px;border-radius:9px;background:rgba(38,28,18,.62);text-shadow:0 1px 2px #000}
 .pz-name b{color:#ffd76a}.pz-name i{font-style:normal;font-size:10px;color:#3b2a18;background:#ffe9a8;border-radius:5px;padding:0 4px;margin-left:3px}
-.pz-title{font:700 11px/1.1 inherit;color:#ffe6a0;text-shadow:0 1px 2px #000;margin-bottom:1px}
+.pz-title{margin-bottom:-2px}.pz-title .title-plate{width:230px;height:58px}.pz-title .title-plate b{font-size:19px;padding:0 36px}
 .pz-actor.is-me .pz-name{background:rgba(196,120,40,.85)}
 .pz-actor.is-friend .pz-name{box-shadow:0 0 0 2px #7fd18b}
 .pz-actor.is-guildmate .pz-name{box-shadow:0 0 0 2px #8fb6ff}

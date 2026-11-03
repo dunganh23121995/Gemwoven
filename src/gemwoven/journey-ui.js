@@ -9,7 +9,7 @@
   function image(key,id,asset,rect){return {id:key+'.'+id,kind:'image',asset,rect,fit:'fill'};}
   const frame=(key,asset,build,cls='')=>({id:key+'.surface',kind:'content',rect:[73,180,795,1278],backgroundAsset:A[asset]?asset:'panel-parchment',className:'crafted-panel '+cls,build});
   const resourceText=reward=>Object.entries(reward).map(([key,n])=>`${fmt(n)} ${M.RESOURCES[key][0]}`).join(' · ');
-  L.names.campaign='Khám Phá';L.screens.campaign.name='Khám Phá';L.names.chat='Trò Chuyện';L.screens.chat.name='Trò Chuyện';
+  L.names.campaign='Khám Phá';L.screens.campaign.name='Khám Phá';L.names.chat='Gặp Gỡ';L.screens.chat.name='Gặp Gỡ';
   L.names.settings='Âm Thanh';L.screens.settings.name='Âm Thanh';
   function home(nodes,p){
     nodes=nodes.filter(n=>!/^home\.(live|feature-mail|feature-settings)$/.test(n.id));
@@ -18,7 +18,7 @@
     Object.assign(power,{rect:[713,1146,210,173],iconRect:[85,16,40,44],labelRect:[22,62,166,84]});
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1010,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
-    nodes.push(button('home','feature-chat','Trò Chuyện','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
+    nodes.push(button('home','feature-chat','Gặp Gỡ','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
     [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,asset,[841,160+i*112,98,104],'route:'+route,{}, {labelHidden:true,fit:'contain',className:'home-right-icon'})));
     nodes.push(button('home','explore','Khám Phá',A['journey-button']?'journey-button':'title-parchment',[215,1338,525,140],'route:campaign',{}, {labelRect:[130,44,265,56],size:43,tone:'ink',className:'explore-entry'}));
     return nodes;
@@ -364,7 +364,7 @@
     if(key==='home')nodes=home(nodes,p);
     else nodes=nodes.filter(n=>!n.id.endsWith('.settings'));
     nodes=nodes.filter(n=>!n.id.endsWith('.side-mail'));
-    for(const n of nodes)if(n.id.endsWith('.side-chat')){n.action='route:chat';C[n.text]='Trò Chuyện';}
+    for(const n of nodes)if(n.id.endsWith('.side-chat')){n.action='route:chat';C[n.text]='Gặp Gỡ';}
     if(key==='campaign')nodes=campaign(nodes,p,state);
     if(key==='settings'||key==='chat'){
       nodes=nodes.filter(n=>n.kind!=='content');nodes.push(frame(key,key==='chat'?'chat-frame':'settings-frame',el=>key==='chat'?chat(el,p,state):settings(el),key==='chat'?'chat-panel':'settings-panel'));

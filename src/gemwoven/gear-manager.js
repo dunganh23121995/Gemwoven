@@ -30,7 +30,7 @@
 
   function bulkDialog(ctx){
     const modal=window.GemwovenUI.makeDialog('gear-bulk','Phân giải hàng loạt','growth-dialog gear-dialog');
-    const f={rarities:['common','uncommon'],slots:null,maxLevel:20};
+    const f={rarities:['common','uncommon'],slots:null,maxLevel:0};
     const paint=()=>{
       const p=G.engine.read(),pv=M.salvagePreview(p,f),pick=new Set(pv.ids),list=p.equipment.filter(g=>pick.has(g.id));
       const locked=p.equipment.filter(g=>g.locked).length;
@@ -38,12 +38,13 @@
         `<fieldset class="gear-filter"><legend>Ô</legend><label><input type="radio" name="slot" value="" ${!f.slots?'checked':''}> Tất cả</label>${Object.entries(M.SLOTS).map(([k,l])=>`<label><input type="radio" name="slot" value="${k}" ${f.slots?.[0]===k?'checked':''}> ${l}</label>`).join('')}</fieldset>`+
         `<label class="gear-level">Chỉ món cường hóa tới <select data-max>${[0,5,10,20].map(n=>`<option value="${n}" ${f.maxLevel===n?'selected':''}>+${n}</option>`).join('')}</select></label>`+
         `<div class="gear-total"><b>${fmt(pv.count)} món</b><span>Nhận ${fmt(pv.ore)} quặng · ${fmt(pv.gold)} vàng</span></div>`+
-        `<ul class="gear-chips">${list.slice(0,40).map(g=>`<li style="--rarity:${M.RARITIES[g.rarity].color}">${esc(gearName(g))}</li>`).join('')}${list.length>40?`<li>… và ${list.length-40} món</li>`:''}</ul>`+
-        `<p class="growth-note">Không bao giờ phân giải món đang mặc (mọi tướng), món đang khóa${locked?` (${locked} món)`:''} và vũ khí bản mệnh. Món đã cường hóa hoàn ${Math.round(M.SALVAGE_REFUND*100)}% vàng và quặng đã bỏ ra.</p>`;
+        `<ul class="gear-chips">${list.slice(0,12).map(g=>`<li style="--rarity:${M.RARITIES[g.rarity].color}">${esc(gearName(g))}</li>`).join('')}${list.length>12?`<li>… và ${list.length-12} món</li>`:''}</ul>`;
       modal.body.querySelectorAll('[data-r]').forEach(b=>b.onchange=()=>{f.rarities=[...modal.body.querySelectorAll('[data-r]:checked')].map(x=>x.dataset.r);paint();});
       modal.body.querySelectorAll('[name=slot]').forEach(b=>b.onchange=()=>{f.slots=b.value?[b.value]:null;paint();});
       modal.body.querySelector('[data-max]').onchange=e=>{f.maxLevel=Number(e.target.value);paint();};
-      modal.actions.innerHTML='';const go=document.createElement('button');go.type='button';go.className='gw-btn';go.textContent=pv.count?`Phân giải ${fmt(pv.count)} món`:'Không có món nào';go.disabled=!pv.count;
+      // The rule sits right above the confirm button, never scrolled away.
+      modal.actions.innerHTML=`<p class="gear-rule">Không phân giải món đang mặc, đang khóa${locked?` (${locked})`:''}, vũ khí bản mệnh. Đồ đã cường hóa hoàn ${Math.round(M.SALVAGE_REFUND*100)}% chi phí.</p>`;
+      const go=document.createElement('button');go.type='button';go.className='gw-btn';go.textContent=pv.count?`Phân giải ${fmt(pv.count)} món`:'Không có món nào';go.disabled=!pv.count;
       // Rare and better ask once more: those pieces cannot be bought back.
       go.onclick=()=>{if(f.rarities.some(r=>!['common','uncommon'].includes(r))&&!confirm(`Phân giải cả đồ ${f.rarities.filter(r=>!['common','uncommon'].includes(r)).map(r=>M.RARITIES[r].name).join(', ')}? Không lấy lại được.`))return;
         try{const got=G.engine.salvageMany(pv.ids);modal.close();ctx.render();G.showRewards?.(ctx,got,`Phân giải ${pv.count} món`);}catch(e){fail(ctx,e);}};modal.actions.append(go);

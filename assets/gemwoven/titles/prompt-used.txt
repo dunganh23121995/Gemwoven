@@ -1,0 +1,10 @@
+Use the attached image only as the STYLE reference (Gemwoven painted cozy fantasy UI: warm gold trims, gems, soft painterly shading). Draw a NEW UI asset sheet.
+
+Subject: five TEXTLESS title nameplates (banners shown over a character's head, like MMORPG title badges), one per rarity, stacked in a single column, 5 rows x 1 column, equal row height, each plate centered in its row, all plates the same width (wide, about 4:1), same height, the empty center area left plain so text can be written over it:
+1 (top) Common-green: a simple polished wooden plaque with a thin green enamel band and two small leaves at the ends.
+2 Rare-blue: silver frame with sapphire enamel center, small crystal studs at both ends.
+3 Epic-purple: ornate gold-and-amethyst frame, small curled filigree wings at both ends, faint violet sparkle.
+4 Legendary-gold: radiant gold frame with a ruby at each end, larger feathered golden wings, warm glow.
+5 (bottom) Mythic-red: crimson and gold frame with a central crest gem on top, flame-like red-gold wings, star sparkles, the most splendid.
+
+Rules: absolutely no text, no letters, no numbers. Each plate kept inside the central 80% width of its row, nothing crossing into another row, glows tight to the plate. Background: solid flat #FF00FF magenta everywhere, no gradients, no shadows on the background, no grid lines.

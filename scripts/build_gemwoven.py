@@ -212,6 +212,7 @@ html=html.replace('<link rel="stylesheet" href="src/gemwoven/journey.css">','<st
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/equipment.css">','<style>'+(ROOT/'src/gemwoven/equipment.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/growth.css">','<style>'+(ROOT/'src/gemwoven/growth.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/plaza.css">','<style>'+(ROOT/'src/gemwoven/plaza.css').read_text(encoding='utf-8')+'</style>')
+html=html.replace('<link rel="stylesheet" href="src/gemwoven/hub-polish.css">','<style>'+(ROOT/'src/gemwoven/hub-polish.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('href="assets/gemwoven/items/mana.png"','href="'+data_uri('assets/gemwoven/items/mana.png')+'"')
 manifest=json.loads((ROOT/'assets/gemwoven/manifest.json').read_text(encoding='utf-8'))
 for a in manifest.values():a['file']=data_uri(a['file'])

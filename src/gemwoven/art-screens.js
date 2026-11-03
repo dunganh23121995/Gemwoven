@@ -109,9 +109,9 @@
     if(product)nodes.push(button('inventory','purchase','Mua thêm',[716,1384,162,86],'art:shop-product',{product:product.id},{size:27,labelRect:[16,0,130,86]}));
     // A piece of gear: its salvage value beside "Trang Bị", and a lock so it is never salvaged by mistake.
     if(item[3]==='gear'){const g=gearFor[asset],worn=Object.values(p.heroes).some(h=>Object.values(h.gear).includes(g.id));
-      Object.assign(act,{rect:[552,1384,162,86],labelRect:[16,0,130,86]});
-      nodes.push(button('inventory','salvage',worn?'Đang mặc':g.locked?'Đang khóa':'Phân rã',[716,1384,162,86],'do:salvage',{id:g.id},{size:27,labelRect:[16,0,130,86],disabled:worn||!!g.locked}));
-      nodes.push(button('inventory','lock',g.locked?'🔒 Đã khóa':'🔓 Khóa',[600,1162,150,50],'gear:lock',{id:g.id,on:g.locked?'0':'1'},{size:21,labelRect:[8,0,134,50],asset:'button-blue'}));label(nodes,'held-label','Cường hóa');}
+      Object.assign(act,{rect:[552,1374,162,100],labelRect:[16,0,130,100]});
+      nodes.push(button('inventory','salvage',worn?'Đang mặc':g.locked?'Đang khóa':'Phân rã',[716,1374,162,100],'do:salvage',{id:g.id},{size:27,labelRect:[16,0,130,100],disabled:worn||!!g.locked}));
+      nodes=remove(nodes,/\.item-type$/);nodes.push(button('inventory','lock',g.locked?'🔒 Đã khóa':'🔓 Khóa',[712,1158,186,66],'gear:lock',{id:g.id,on:g.locked?'0':'1'},{size:25,labelRect:[10,0,166,66],asset:'button-blue'}));label(nodes,'held-label','Cường hóa');}
     // The gear tab: bag fill and bulk salvage.
     if(state.category==='gear'){const full=p.equipment.length>=M.BAG.warn;
       nodes.push(button('inventory','bulk-salvage',`Phân giải hàng loạt · ${p.equipment.length}/${M.BAG.cap}`,[232,418,372,74],'gear:bulk',{},{size:24,labelRect:[18,0,336,74],className:full?'bag-full':''}));}
@@ -120,7 +120,10 @@
   function summon(nodes,p,state){
     nodes=remove(nodes,/\.(guarantee|one-cost|ten-cost|featured-(?:fire|ice|earth|lightning|shadow)|portrait-(?:ice|earth|lightning|shadow))$/);
     action(nodes,'summon-one','do:summon',{count:1});action(nodes,'summon-ten','do:summon',{count:10});action(nodes,'central-crystal','do:summon',{count:1});action(nodes,'summon-details','do:rates');action(nodes,'fragments','art:fragments');
-    for(const id of ['summon-one','summon-ten']){const n=find(nodes,id);n.labelRect=[24,48,225,35];n.size=31;}
+    // The price on each button, and what is missing when tickets run short (Codex UI review): 1 ticket, or 120 Đá Ngọc a pull.
+    for(const [id,count] of [['summon-one',1],['summon-ten',10]]){const n=find(nodes,id);n.labelRect=[24,30,225,70];n.size=29;
+      const t=p.wallet.tickets,price=t>=count?`${count} vé`:p.wallet.gems>=count*120?`${fmt(count*120)} Đá Ngọc`:`Thiếu ${count-t} vé`;label(nodes,id,`Triệu Hồi ×${count}
+${price}`);}
     const featured=find(nodes,'portrait-fire');featured.icon='portrait-'+M.SUMMON_BANNER.hero;featured.action='hero:'+M.SUMMON_BANNER.hero;featured.rect=[350,366,240,285];featured.iconRect=[38,55,164,165];
     // Banner name + one short line on a board sized for two readable lines.
     label(nodes,'subtitle',M.SUMMON_BANNER.title+'\nTướng nổi bật kỳ này');Object.assign(find(nodes,'subtitle'),{rect:[300,276,341,80],size:28});find(nodes,'subtitle-board').rect=[284,268,373,96];
@@ -224,6 +227,8 @@
     action(nodes,'battle',mode==='duel'?'do:battle':'route:boss',mode==='duel'?{mode:'duel',index:1}:{});
     // Fighters stay clear of the hanging menu on the left.
     find(nodes,'fighter-fire').rect=[166,559,250,215];find(nodes,'fighter-ice').rect=[528,559,250,215];
+    // Say what these really are (Codex UI review): a local duel on one device, and records kept on this device.
+    label(nodes,'mode-solo','1v1\nCùng máy');label(nodes,'ranking','Kỷ lục\nthiết bị');label(nodes,'versus','VS · Cục bộ');
     find(nodes,'reward-gem').asset='exp-book';action(nodes,'rewards','route:boss');label(nodes,'rewards','Thưởng\nBoss');Object.assign(find(nodes,'rewards'),{labelRect:[6,190,151,66],size:28,iconRect:[38,20,88,86]});find(nodes,'reward-coins').rect=[774,1112,62,62];find(nodes,'reward-gem').rect=[842,1112,48,62];
     return nodes;
   }
@@ -255,7 +260,11 @@
     nodes=remove(nodes,/\.(nav-label-board|nav-active-label)$/);
     const order=['home','upgrade','inventory','skills','summon','arena','more'],selected=order.includes(key)?key:'more',index=order.indexOf(selected),name=['Trang Chủ','Tướng','Túi Đồ','Kỹ Năng','Triệu Hồi','Đấu Trường','Thêm'][index];
     for(const n of nodes)if(n.role==='nav')n.selected=n.action==='route:'+selected;
-    nodes.push(image(key,'nav-label-board','nameplate',[4+index*130,1600,156,60],{fit:'fill'}),text(key,'nav-active-label',name,[14+index*130,1608,136,42],28));return nodes;
+    nodes.push(image(key,'nav-label-board','nameplate',[4+index*130,1600,156,60],{fit:'fill'}),text(key,'nav-active-label',name,[14+index*130,1608,136,42],28));
+    // Every tab keeps a short name (Codex UI review): the others get a small plate under their icon.
+    const names=['Trang Chủ','Tướng','Túi Đồ','Kỹ Năng','Triệu Hồi','Đấu Trường','Thêm'];
+    names.forEach((label,i)=>{if(i!==index)nodes.push(text(key,'nav-mini-'+i,label,[10+i*130,1622,144,34],23,'gold',{className:'nav-mini-label'}));});
+    return nodes;
   }
   const oldDecorate=G.decorate;
   G.decorate=state=>{
