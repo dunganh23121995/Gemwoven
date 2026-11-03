@@ -105,3 +105,17 @@
 #stage[data-screen="inventory"] .bag-plate:disabled .copy-layer{color:#eee6d8!important;text-shadow:0 1px 2px #1a1008!important}
 #stage[data-screen="inventory"] .item-detail{line-height:1.15}
 #stage[data-screen="inventory"] [data-node="inventory.item-type"]{background:var(--kit-badge-brass) center/100% 100% no-repeat;color:#4a2508!important}
+
+/* Cửa Hàng (Codex review 27, 7.2/10): drawn round −/+ buttons around a paper count tag, a gold buy plate, larger product text. */
+#stage[data-screen="shop"] [data-node="shop.quantity-minus"]>.art,#stage[data-screen="shop"] [data-node="shop.quantity-plus"]>.art{content:var(--kit-round)}
+#stage[data-screen="shop"] [data-node="shop.quantity-minus"] .copy-layer,#stage[data-screen="shop"] [data-node="shop.quantity-plus"] .copy-layer{color:#4a2508!important;text-shadow:none!important;font:900 40px/1 Cambria,serif!important}
+#stage[data-screen="shop"] [data-node="shop.quantity"]{background:var(--kit-stat) center/100% 100% no-repeat;font-size:36px!important}
+#stage[data-screen="shop"] [data-node="shop.buy"]>.art{content:var(--kit-btn-gold)}
+#stage[data-screen="shop"] [data-node="shop.buy"] .copy-layer{color:#4a2508!important;text-shadow:0 1px #fff3cf!important;font-weight:900;font-size:38px!important}
+#stage[data-screen="shop"] [data-node="shop.buy"]:disabled>.art{content:var(--kit-btn-steel)}
+#stage[data-screen="shop"] [data-node="shop.buy"]:disabled .copy-layer{color:#eee6d8!important;text-shadow:0 1px 2px #1a1008!important}
+#stage[data-screen="shop"] [data-node="shop.purchase-price"]{font-size:32px!important;font-weight:900}
+#stage[data-screen="shop"] [data-node="shop.product-name"]{font-size:31px!important;font-weight:900;white-space:nowrap}
+#stage[data-screen="shop"] [data-node="shop.product-description"]{font-size:28px!important;line-height:1.15}
+#stage[data-screen="shop"] [data-node^="shop.shop-tab-"]:not(.selected){filter:brightness(.8) saturate(.75)}
+#stage[data-screen="shop"] [data-node^="shop.shop-tab-"].selected{filter:drop-shadow(0 0 8px #ffcf6a)}
