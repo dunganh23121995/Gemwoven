@@ -19,7 +19,8 @@
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1010,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Gặp Gỡ','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
-    [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,asset,[841,160+i*112,98,104],'route:'+route,{}, {labelHidden:true,fit:'contain',className:'home-right-icon'})));
+    // The right column hangs the same cards as the left one (owner 03/11: bare icons got lost in the painting).
+    [['offline','Kho Offline','chest'],['boss','Boss Vô Hạn','nav-arena'],['rankings','Xếp Hạng','rank-gold']].forEach(([route,name,asset],i)=>nodes.push(button('home','right-'+route,name,'hud-side-card',[785,166+i*162,128,164],'route:'+route,{}, {icon:asset,className:'home-feature-card hud-hanging-card home-right-card'})));
     nodes.push(button('home','explore','Khám Phá',A['journey-button']?'journey-button':'title-parchment',[215,1338,525,140],'route:campaign',{}, {labelRect:[130,44,265,56],size:43,tone:'ink',className:'explore-entry'}));
     return nodes;
   }
@@ -30,6 +31,7 @@
     const scaleRect=r=>r.map((v,k)=>v*(k%2?height/card.height:width/card.width));
     const cards=nodes.filter(n=>n.kind==='button'&&n.rect[0]<200&&
       (n.id.startsWith('home.feature-')||n.asset==='side-pennant'||n.asset==='hud-side-card'));
+    for(const n of nodes.filter(n=>/^home\.right-(offline|boss|rankings)$/.test(n.id))){n.fit='fill';n.iconRect=scaleRect(card.safeRects.icon);n.labelRect=scaleRect([18,213,220,64]);n.size=23;n.labelHidden=false;}
     cards.forEach((n,i)=>{
       n.asset='hud-side-card';n.rect=[center-width/2,166+i*162,width,height];n.fit='fill';
       n.iconRect=scaleRect(card.safeRects.icon);n.labelRect=scaleRect(card.safeRects.label);
@@ -363,6 +365,8 @@
     if(key!=='campaign')state.mapStage=null;
     if(key==='home')nodes=home(nodes,p);
     else nodes=nodes.filter(n=>!n.id.endsWith('.settings'));
+    // The side menus belong to Home only (owner 03/11); every other screen keeps its own picture clear.
+    if(key!=='home')nodes=nodes.filter(n=>!/\.(side-[a-z]+|right-(quest|event|gift|friends|offline|boss|rankings))$/.test(n.id)&&n.asset!=='side-pennant');
     nodes=nodes.filter(n=>!n.id.endsWith('.side-mail'));
     for(const n of nodes)if(n.id.endsWith('.side-chat')){n.action='route:chat';C[n.text]='Gặp Gỡ';}
     if(key==='campaign')nodes=campaign(nodes,p,state);
