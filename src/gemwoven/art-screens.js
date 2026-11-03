@@ -173,7 +173,7 @@ ${price}`);}
       label(nodes,'stat-value-0',levelGain?`${fmt(stats.hp)} → ${fmt(levelGain.after.hp)}`:fmt(stats.hp));label(nodes,'stat-value-1',levelGain?`×${stats.attack.toFixed(2).replace('.',',')} → ×${levelGain.after.attack.toFixed(2).replace('.',',')}`:`×${stats.attack.toFixed(2).replace('.',',')}`);label(nodes,'stat-value-2',`${Math.round(stats.defense*100)}%`);label(nodes,'hero-stars','★'.repeat(h.stars)+'☆'.repeat(6-h.stars));label(nodes,'exp-value',`Cấp ${h.level} / ${M.MAX_LEVEL}`);find(nodes,'exp-meter').value=h.level/M.MAX_LEVEL;
       if(tab==='level'){
         const max=!range;if(range)c=range.cost;
-        label(nodes,'level-preview',max?`Lv.${h.level} · Tối đa`:`Lv.${h.level} → Lv.${h.level+range.levels}`);label(nodes,'upgrade-material-title',max?'Đã đạt cấp tối đa':range.levels>1?`Nguyên liệu tăng ${range.levels} cấp`:'Nguyên liệu tăng cấp');
+        label(nodes,'level-preview',max?`Cấp ${h.level} · Tối đa`:`Cấp ${h.level} → ${h.level+range.levels}`);label(nodes,'upgrade-material-title',max?'Đã đạt cấp tối đa':range.levels>1?`Nguyên liệu tăng ${range.levels} cấp`:'Nguyên liệu tăng cấp');
         disabled=max||!affordable(p,c);
         if(step===10&&range)action(nodes,'upgrade-action','art:level',{hero,count:range.levels},disabled);else action(nodes,'upgrade-action','do:level',{hero},disabled);
         label(nodes,'upgrade-action',max?'Đã Tối Đa':range.levels>1?`Tăng ${range.levels} Level`:'Tăng Cấp');

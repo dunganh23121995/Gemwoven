@@ -76,3 +76,23 @@
 .settings-panel #home-audio-reset{height:92px}
 .mail-thumb{width:96px!important;height:90px!important;padding:14px!important}
 .mail-thumbs{flex-wrap:nowrap!important}
+
+/* Sảnh Anh Hùng, lower half (Codex review 27, 6.4/10): drawn trough and fill, plaques, gold plates, paper ribbon. */
+#stage[data-screen="upgrade"] [data-node="upgrade.exp-meter"]{border:0!important;box-shadow:none!important;border-radius:0!important;background:var(--kit-progress) center/100% 100% no-repeat!important;padding:7px 12px!important;overflow:visible!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.exp-meter"] i{height:100%!important;border-radius:0!important;box-shadow:none!important;background:var(--kit-progress-fill) left center/100% 100% no-repeat!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.exp-value"]{background:var(--kit-badge-leather) center/100% 100% no-repeat!important;border-radius:0!important;color:#ffe9bc!important}
+#stage[data-screen="upgrade"] .material-tile .copy-layer,#stage[data-screen="upgrade"] .material-tile .node-text{background:var(--kit-badge-leather) center/100% 100% no-repeat;border-radius:0}
+#stage[data-screen="upgrade"] .material-tile.material-enough .copy-layer{color:#c9f0a0}
+#stage[data-screen="upgrade"] .material-tile.material-missing .copy-layer{color:#ffb39a}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]>.art{content:var(--kit-btn-gold)}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]{filter:drop-shadow(0 5px 5px #2a140888)}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"] .copy-layer{color:#4a2508!important;text-shadow:0 1px #fff3cf!important;font-weight:900}
+#stage[data-screen="upgrade"] [data-node="upgrade.level-step"]>.art{content:var(--kit-badge-brass)}
+#stage[data-screen="upgrade"] [data-node="upgrade.level-step"] .copy-layer{color:#4a2508!important;text-shadow:none!important;font-weight:900}
+#stage[data-screen="upgrade"] [data-node$=".level-gain"],#stage[data-screen="upgrade"] [data-node="upgrade.stat-strip"]{background:var(--kit-ribbon-info) center/100% 100% no-repeat!important;border-radius:0!important;color:#4a2a10!important;text-shadow:none!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.gain-preview"]{background:var(--kit-ribbon-info) center/100% 100% no-repeat!important;border-radius:0!important;color:#4a2a10!important;text-shadow:none!important;font-weight:800}
+#stage[data-screen="upgrade"] .material-tile>.copy-layer{border:0!important;background:var(--kit-badge-leather) center/100% 100% no-repeat!important;border-radius:0!important;padding:0 10px}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]:disabled{filter:drop-shadow(0 5px 5px #2a140888)!important;opacity:1!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]:disabled>.art{content:var(--kit-btn-steel);filter:none!important}
+#stage[data-screen="upgrade"] [data-node="upgrade.upgrade-action"]:disabled .copy-layer{color:#eee6d8!important;text-shadow:0 1px 2px #1a1008!important}
+#stage[data-screen="upgrade"] .material-tile>.copy-layer{padding:0 4px!important;letter-spacing:-.5px;font-size:26px!important}
