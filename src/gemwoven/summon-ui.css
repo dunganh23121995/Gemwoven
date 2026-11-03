@@ -1,0 +1,53 @@
+/* Triệu Hồi UI layers (summon-ui.js). Stage units: 941 wide ≈ 390 CSS px on a phone. Drawn pieces only
+ * (assets/gemwoven/summon-ui, ui-kit, items); CSS places them and lights them. */
+
+/* Above the portal's screen-blended light and mist, so numbers keep their colour. */
+#scene>.node.su{z-index:2}
+#scene>.node-button.su:hover{z-index:3}
+
+/* The banner sign: cream lettering on red lacquer. */
+.su-sign>.copy-layer{font-weight:700;color:#ffe7b0;text-shadow:0 2px 2px #3a0b04,0 0 6px #5a1608;letter-spacing:.5px}
+.su-sign:hover{filter:brightness(1.08)}
+
+/* The fragment chest medallion. */
+.su-frag>.art{left:32px!important;top:0!important;width:86px!important;height:86px!important;filter:drop-shadow(0 3px 3px #1a0c0499)}
+.su-frag>.icon{filter:drop-shadow(0 2px 2px #1a0c04aa)}
+.su-frag>.copy-layer{font-weight:700;color:#ffe9bc}
+.su-frag::before{content:'';position:absolute;inset:-6px -4px}
+
+/* Tickets held. */
+.su-price.su-held{inset:0;width:auto;height:auto;font-size:36px;color:#fff0c1;text-shadow:0 2px 0 #2a1406,0 2px 3px #1a0c04}
+.su-price.su-held img{width:58px;height:48px;filter:drop-shadow(0 2px 1px #1a0c04) saturate(1.15) brightness(1.08)}
+
+/* The two summon buttons: the face, then the price pedestal tucked under it. */
+.su-call>.art{height:142px!important;filter:drop-shadow(0 5px 4px #1a0c0488)}
+.su-call>.icon{filter:drop-shadow(0 3px 3px #1a0c0488)}
+.su-call>.copy-layer{font-weight:800;color:#fffaf0;letter-spacing:1px}
+.su-call.blue>.copy-layer{text-shadow:0 3px 2px #062a6a,0 0 10px #0b3f9c,0 0 2px #062a6a}
+.su-call.gold>.copy-layer{text-shadow:0 3px 2px #6a3104,0 0 10px #8a4306,0 0 2px #6a3104}
+.su-price{position:absolute;left:24px;top:138px;width:252px;height:50px;display:flex;align-items:center;justify-content:center;gap:10px;pointer-events:none;
+  font:700 38px/1 Cambria,'Times New Roman',serif;color:#ffe9bc;text-shadow:0 2px 2px #1a0c04}
+.su-price img{width:50px;height:42px;object-fit:contain;filter:drop-shadow(0 2px 2px #1a0c04aa)}
+.su-price.short{gap:8px}
+.su-price.short b{color:#ffaa91;text-shadow:0 2px 2px #3a0804}
+.su-price .su-lock{width:22px;height:22px}
+.su-call.su-short>.art{filter:saturate(.85) brightness(.94) drop-shadow(0 5px 4px #1a0c0488)}
+
+/* One honey-wood board for the prizes and the guarantee (9-slice, corners stay square). */
+.node-frame.su-panel{pointer-events:none;border:solid transparent;border-width:30px 34px;border-image:var(--su-panel) 46 52 fill / 30px 34px stretch;filter:drop-shadow(0 6px 6px #1a0c0477)}
+[data-node="summon.featured-title"]{font-weight:700}
+.su-next>.copy-layer{font-weight:700;color:#f3dcae;line-height:1.1}
+.su-info>.art{inset:14px!important;width:72px!important;height:72px!important;filter:drop-shadow(0 3px 3px #1a0c0488)}
+.su-i{position:absolute;inset:14px;display:flex;align-items:center;justify-content:center;pointer-events:none;font:italic 900 46px/1 Cambria,serif;color:#5a3412;text-shadow:0 1px #fff3cf}
+.su-info::before{content:'';position:absolute;inset:-4px}
+
+/* Prize sockets: the picture in a gold socket, one word beside it. */
+.su-prize>.art{right:auto!important;width:96px!important;height:96px!important}
+.su-prize>.icon{filter:drop-shadow(0 2px 2px #1a0c0499)}
+.su-prize>.copy-layer{font-weight:700;padding-left:6px}
+.su-check{position:absolute;left:62px;top:56px;width:44px;height:44px;object-fit:contain;pointer-events:none;filter:drop-shadow(0 2px 2px #1a0c04aa)}
+
+/* The pity bar: the drawn track, the drawn fill, the count on top. */
+.node-bar.su-meter{border:0;border-radius:0;box-shadow:none;background:none}
+.node-bar.su-meter i{border-radius:0;box-shadow:none;background:var(--kit-progress-fill) left center/100% 100% no-repeat}
+.su-pity-value{font-weight:700;color:#fff3d0;text-shadow:0 2px 2px #1a0c04,0 0 4px #1a0c04}

@@ -1,0 +1,11 @@
+Create one production UI pieces sheet for the Gemwoven game: a portrait image, 1024 x 1536, one column, four rows stacked top to bottom with wide gaps. References: Image 1 (mockup-1) defines the component shapes; Image 2 (ref-kit) and Images 3-4 (approved Shop and Forge screens) define the painted materials.
+
+Background: perfectly flat solid #FF00FF magenta everywhere, including all gaps and the openings inside the chain links. Cozy hand-painted storybook fantasy, honey wood, restrained brass, crisp mobile silhouettes, consistent upper-left lighting. Each piece is a single isolated object with clear magenta all around it.
+
+Fixed order, top to bottom:
+Row 1: a slim dark reddish-brown lacquered wooden sign with a thin brass bevel and small brass corner studs, blank face, with two short gold chains rising from its top corners. Sign body about 820 x 140 px, chains about 60 px tall above it.
+Row 2: a recessed dark wooden price pedestal with brass trim and a small blue crystal stud at each end, about 520 x 92 px, shaped to sit under a blue faceted summon button.
+Row 3: the matching price pedestal with small amber crystal studs, about 520 x 92 px, to sit under a gold faceted summon button.
+Row 4: a wide honey-wood reward panel with a darker inset centre, thin brass edge, brass corner fittings and a few small leaves only on the two top corners, about 1000 x 300 px, blank interior.
+
+Keep every piece fully inside the image with generous magenta margins; no overlap, no clipping. No text, letters, numerals, labels, currency icons, sockets, progress bars, button faces, characters, scenery, guides, watermark, outer glow or cast shadows.

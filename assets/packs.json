@@ -4168,6 +4168,7 @@
     "assets/gemwoven/forge/action-locked.webp",
     "assets/gemwoven/forge/action-ready.webp",
     "assets/gemwoven/forge/bench.webp",
+    "assets/gemwoven/forge/fodder-slot.webp",
     "assets/gemwoven/forge/ingot-divine.webp",
     "assets/gemwoven/forge/ingot-epic.webp",
     "assets/gemwoven/forge/ingot-legendary.webp",
@@ -4175,7 +4176,9 @@
     "assets/gemwoven/forge/ingot-uncommon.webp",
     "assets/gemwoven/forge/lock.webp",
     "assets/gemwoven/forge/pedestal.webp",
+    "assets/gemwoven/forge/plaque.webp",
     "assets/gemwoven/forge/rack.webp",
+    "assets/gemwoven/forge/rarityup-icon.webp",
     "assets/gemwoven/forge/socket.webp",
     "assets/gemwoven/forge/tab.webp",
     "assets/gemwoven/forge/tag.webp",
@@ -4226,9 +4229,18 @@
     "assets/gemwoven/hall/bg-raw.png",
     "assets/gemwoven/hall/hall-flag-short.webp",
     "assets/gemwoven/hall/hall-flag-tall.webp",
+    "assets/gemwoven/hall/label-wood.webp",
     "assets/gemwoven/hall/lamp-raw.png",
     "assets/gemwoven/hall/lamp.webp",
     "assets/gemwoven/hall/layout-guide.png",
+    "assets/gemwoven/hall/medal-route.webp",
+    "assets/gemwoven/hall/medal-stats.webp",
+    "assets/gemwoven/hall/socket-divine.webp",
+    "assets/gemwoven/hall/socket-epic.webp",
+    "assets/gemwoven/hall/socket-legendary.webp",
+    "assets/gemwoven/hall/socket-none.webp",
+    "assets/gemwoven/hall/socket-rare.webp",
+    "assets/gemwoven/hall/socket-uncommon.webp",
     "assets/gemwoven/hud-connections/gold-chain.png",
     "assets/gemwoven/hud-connections/hanging-card.png",
     "assets/gemwoven/hud-connections/vine-terminal-left.png",
@@ -4658,6 +4670,9 @@
     "assets/gemwoven/skill-tree/button-locked.webp",
     "assets/gemwoven/skill-tree/button-ready.webp",
     "assets/gemwoven/skill-tree/category-plate.webp",
+    "assets/gemwoven/skill-tree/crown-leaves.webp",
+    "assets/gemwoven/skill-tree/cue-down.webp",
+    "assets/gemwoven/skill-tree/cue-up.webp",
     "assets/gemwoven/skill-tree/frame-learned.webp",
     "assets/gemwoven/skill-tree/frame-locked.webp",
     "assets/gemwoven/skill-tree/frame-selected.webp",
@@ -4675,6 +4690,10 @@
     "assets/gemwoven/skill-tree/tray-wide.webp",
     "assets/gemwoven/skill-tree/tray.webp",
     "assets/gemwoven/summon-lake/scene.webp",
+    "assets/gemwoven/summon-ui/panel.webp",
+    "assets/gemwoven/summon-ui/price-blue.webp",
+    "assets/gemwoven/summon-ui/price-gold.webp",
+    "assets/gemwoven/summon-ui/sign.webp",
     "assets/gemwoven/topup/card-wide.webp",
     "assets/gemwoven/topup/coins-1.webp",
     "assets/gemwoven/topup/coins-2.webp",
@@ -4847,7 +4866,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 157285370
+   "bytes": 157871684
   },
   {
    "id": "hero-earth-f1",
@@ -5128,7 +5147,7 @@
     "assets/heroes/forms/ice/form-3/showcase/twirl.webp",
     "assets/heroes/forms/ice/form-3/skill.webp"
    ],
-   "bytes": 14492325
+   "bytes": 13196349
   },
   {
    "id": "hero-lightning-f1",

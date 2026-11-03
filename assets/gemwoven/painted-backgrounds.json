@@ -2416,5 +2416,49 @@
       "assets/gemwoven/raw/topup/pieces-prompt.txt"
     ],
     "purpose": "Nạp page and shop gold packs (owner 04/11, Claude + Codex topup round): drawn by Codex gpt-6.1-sol low, cut by raw/topup/slice.py; used by topup-ui.js and art-screens.js."
+  },
+  "summon-ui-sign": {
+    "file": "assets/gemwoven/summon-ui/sign.webp",
+    "width": 872,
+    "height": 252,
+    "textless": true,
+    "source": "assets/gemwoven/raw/summon-ui/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/summon-ui/pieces-prompt.txt"
+    ],
+    "purpose": "Triệu Hồi UI pieces drawn by Codex gpt-6.1-sol low from the approved mockup (raw/summon-ui/mockup-1.png), cut by raw/summon-ui/cut.py; used by summon-ui.js."
+  },
+  "summon-ui-price-blue": {
+    "file": "assets/gemwoven/summon-ui/price-blue.webp",
+    "width": 634,
+    "height": 118,
+    "textless": true,
+    "source": "assets/gemwoven/raw/summon-ui/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/summon-ui/pieces-prompt.txt"
+    ],
+    "purpose": "Triệu Hồi UI pieces drawn by Codex gpt-6.1-sol low from the approved mockup (raw/summon-ui/mockup-1.png), cut by raw/summon-ui/cut.py; used by summon-ui.js."
+  },
+  "summon-ui-price-gold": {
+    "file": "assets/gemwoven/summon-ui/price-gold.webp",
+    "width": 634,
+    "height": 117,
+    "textless": true,
+    "source": "assets/gemwoven/raw/summon-ui/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/summon-ui/pieces-prompt.txt"
+    ],
+    "purpose": "Triệu Hồi UI pieces drawn by Codex gpt-6.1-sol low from the approved mockup (raw/summon-ui/mockup-1.png), cut by raw/summon-ui/cut.py; used by summon-ui.js."
+  },
+  "summon-ui-panel": {
+    "file": "assets/gemwoven/summon-ui/panel.webp",
+    "width": 920,
+    "height": 315,
+    "textless": true,
+    "source": "assets/gemwoven/raw/summon-ui/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/summon-ui/pieces-prompt.txt"
+    ],
+    "purpose": "Triệu Hồi UI pieces drawn by Codex gpt-6.1-sol low from the approved mockup (raw/summon-ui/mockup-1.png), cut by raw/summon-ui/cut.py; used by summon-ui.js."
   }
 }

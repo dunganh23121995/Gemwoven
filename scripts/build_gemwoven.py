@@ -218,6 +218,7 @@ html=html.replace('<link rel="stylesheet" href="src/gemwoven/plaza.css">','<styl
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/hub-polish.css">','<style>'+(ROOT/'src/gemwoven/hub-polish.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/forge.css">','<style>'+(ROOT/'src/gemwoven/forge.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/arena.css">','<style>'+(ROOT/'src/gemwoven/arena.css').read_text(encoding='utf-8')+'</style>')
+html=html.replace('<link rel="stylesheet" href="src/gemwoven/summon-ui.css">','<style>'+(ROOT/'src/gemwoven/summon-ui.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/ui-kit.css">','<style>'+(ROOT/'src/gemwoven/ui-kit.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/ui-kit-panels.css">','<style>'+(ROOT/'src/gemwoven/ui-kit-panels.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/skill-tree.css">','<style>'+(ROOT/'src/gemwoven/skill-tree.css').read_text(encoding='utf-8')+'</style>')
@@ -229,7 +230,7 @@ for a in manifest.values():a['file']=data_uri(a['file'])
 backdrops={}
 for key in ['home','inventory','skills','arena','summon','shop','forge','upgrade','tavern']:
     backdrops[key]={'background':data_uri(merged.get('background-'+key,{}).get('file',f'assets/gemwoven/backgrounds/{key}.webp'))}
-for name in ['motion-setting','assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-show','hero-forms','summon-cinematic','liveops','growth-ui','pass-ui','pass-ui','social-protocol','plaza','gear-manager','badges','hub-npcs','hero-hall','forge-ui','ui-kit','ui-kit-panels','arena-ui','skill-tree','treasure-ui','memory-ui','topup-ui','living-hub','living-motion','ui']:
+for name in ['motion-setting','assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-show','hero-forms','summon-cinematic','liveops','growth-ui','pass-ui','pass-ui','social-protocol','plaza','gear-manager','badges','hub-npcs','hero-hall','forge-ui','ui-kit','ui-kit-panels','arena-ui','summon-ui','skill-tree','treasure-ui','memory-ui','topup-ui','living-hub','living-motion','ui']:
     code='window.GEMWOVEN_ASSETS = '+json.dumps(manifest)+';' if name=='assets' else (ROOT/f'src/gemwoven/{name}.js').read_text(encoding='utf-8')
     if name=='expansion':code+='\nwindow.GEMWOVEN_BACKDROPS = '+json.dumps(backdrops)+';\nfor (const [key,images] of Object.entries(window.GEMWOVEN_BACKDROPS)) Object.assign(window.GEMWOVEN_LAYOUT.screens[key],images);'
     if name=='journey-ui':code='window.GEMWOVEN_HOME_MUSIC='+json.dumps(data_uri('assets/audio/music/earth.ogg'))+';\n'+code

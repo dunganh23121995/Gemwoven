@@ -1,0 +1,41 @@
+OUTPUT
+
+Create one polished, production-quality UI approval mockup for Gemwoven, a portrait mobile match-3 RPG. Deliver one opaque portrait image, 2:3 aspect ratio, ideally 1200 x 1800. The actual game screen is a precisely centered 941 x 1672 rectangle with its top-left corner at about (130, 64). All coordinates below are LOCAL to this inner game screen. Fill the outer margins with a soft blurred extension of the scene only. No device bezel, captions or presentation labels outside the game screen.
+
+This is a visual approval mockup: render the specified Vietnamese text exactly, with correct diacritics. In production every word and number is a separate HTML layer over text-free painted pieces.
+
+REFERENCES
+
+Image 1, summon-bg: IMMUTABLE BACKGROUND. Reproduce this painting as faithfully as possible: vine-wrapped stone archway with the wooden board and blue gem on top, two short golden chains hanging under the board, floating castle islands and waterfalls, the glowing blue portal ring on the stepped stone dais, the purple-crystal wooden chest at right, lantern at left, stone stairs and leaves.
+Image 2, current-stage: CURRENT SCREEN. Keep exactly in place: the HUD row (avatar with level 1, gold 1.200, gem 120.000, mail with badge 2) at y 0-150; the title "Triệu Hồi" on the arch board; the red fire crystal with the fox girl Mika inside (350,366,240,285); the big blue central crystal (365,579,211,326); the white-haired fox-ear girl with two bunnies at left (100,784,214,251); the bottom menu bar (y 1460-1672) with Triệu Hồi selected. Remove everything else that is UI in Image 2.
+Images 3-4, approved Shop and Forge screens: STYLE references for drawn UI (honey wood, parchment, brass, small leaves).
+Image 5, ref-kit: existing drawn parts to reuse (leather plaque, leather badge, round brass medallion, square socket, progress bar, blue and gold faceted buttons, ticket icon, gem icon, Mika puzzle-piece fragment, Mika portrait).
+
+ART DIRECTION
+
+Painted cozy storybook fantasy, honey wood, parchment, restrained brass, crisp mobile readability. Red accent only on the banner sign. Every frame, plate and button is a painted object, never a flat box. The UI must sit lightly on the painting; keep the arch and crystals the focus.
+
+SCREEN STATE
+
+1.000 tickets, Mika fragments 0/80, pity 0/100, next banner not announced, the vertical slogan flag is REMOVED (the castles at top-right show freely).
+
+VISUAL HIERARCHY (x, y, w, h)
+
+1. Banner sign (268,294,405,68): a slim deep-red lacquered wood sign with thin brass rim, hung from the upper links of the two chains under the arch board, one line "Khế Ước Hỏa Hồ". It must not touch the Mika crystal below.
+2. Chest badge (754,904,160,126): a small round brass medallion on the front of the painted chest holding the Mika puzzle-piece fragment icon, with a leather tab under it reading "0/80". No other words.
+3. Ticket balance badge (358,955,225,62), centred under the portal: ticket icon + "1.000" on a dark leather badge.
+4. Two summon buttons, the main action: blue faceted crystal button (145,1043,310,140) with big "×1"; gold faceted button (486,1043,310,140) with big "×10". Under each face, attached to the button, a recessed brass-and-wood price socket: ticket icon + "1" and ticket icon + "10".
+5. One unified honey-wood reward panel with light brass corners (52,1194,837,254), replacing two dark boards:
+   - top-left leather plaque (78,1200,390,72) "Phần Thưởng Hiếm";
+   - small leather tag (493,1198,276,80) "Kỳ sau: ?";
+   - round brass "i" medallion (799,1208,64,64);
+   - three square gold-rimmed sockets 112 x 112 at x 82 / 350 / 618, y 1280: Mika portrait, Mika puzzle fragment, a red-gold divine sword; a short label beside each: "Tướng", "Mảnh", "Thần";
+   - bottom row y 1398: "Bảo đảm tướng hiếm" (80,1398,350,42) and a painted empty progress bar (450,1398,408,42) with "0/100" centred on it.
+
+TYPOGRAPHY
+
+Warm serif lettering like the references; cream text on wood and leather, dark brown ink on parchment. Exact Vietnamese diacritics. Secondary text at least 34 px, prices 40 px, "×1"/"×10" about 54 px.
+
+AVOID
+
+Repainting or moving the background, crystals, NPC, HUD or menu; extra glow or particles; flat CSS-looking boxes; the words "vé" or "Đá Ngọc"; any text not listed; a filled progress bar; a hero portrait on the pity bar; the vertical flag.
