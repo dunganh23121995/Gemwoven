@@ -147,7 +147,7 @@
   addEventListener('hashchange',()=>{const key=location.hash.slice(1);if(L.screens[key])remember(key);});
   function backNode(key){
     const text=key+'.back';C[text]='Quay lại';
-    return {id:text,kind:'button',rect:[12,170,112,112],asset:A['map-back']?'map-back':'nav-tile',fit:'contain',text,labelHidden:true,action:'nav:back',className:'panel-back'};
+    return {id:text,kind:'button',rect:[817,170,112,112],asset:A['map-back']?'map-back':'nav-tile',fit:'contain',text,labelHidden:true,action:'nav:back',className:'panel-back'};
   }
   function decorate(state){
     const p=engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;const key=state.screen;remember(key);

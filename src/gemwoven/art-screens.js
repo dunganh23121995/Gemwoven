@@ -290,7 +290,7 @@ ${price}`);}
   // Nạp (topup-ui.js) from the shop; a back arrow when the shop was opened from a resource popup ("Mua thêm").
   function shopExtras(nodes,state){
     nodes.push(button('shop','topup','Nạp',[724,560,180,86],'topup:open',{},{icon:'mana',iconRect:[18,14,52,58],labelRect:[64,0,104,86],size:32,className:'shop-topup'}));
-    if(state.shopBack)nodes.push({...text('shop','back','Quay lại',[12,170,112,112]),kind:'button',asset:A['map-back']?'map-back':'nav-tile',fit:'contain',labelHidden:true,action:'nav:back',className:'panel-back'});
+    if(state.shopBack)nodes.push({...text('shop','back','Quay lại',[817,170,112,112]),kind:'button',asset:A['map-back']?'map-back':'nav-tile',fit:'contain',labelHidden:true,action:'nav:back',className:'panel-back'});
     return nodes;
   }
   // Four equal tabs on the wooden strip (Ký Ức joins Vàng / Đá Ngọc / Trang Bị).
