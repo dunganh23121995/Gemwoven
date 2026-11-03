@@ -1,0 +1,9 @@
+Reference image 1 is an approved art-direction mockup of the Skills screen of a cozy fantasy chibi mobile RPG (hand-painted wood, aged brass, small leaves). Draw these EMPTY UI pieces from it as separate items in one sheet, same painted style and materials, each fully separate with generous empty space around it, all facing the viewer flat (no perspective):
+Top row, three ROUND MEDALLION FRAMES of exactly the same size and shape (thick circular ring, outer diameter about 380 px, ring width about 50 px), the round inner opening filled with solid flat pure magenta #FF00FF (the skill picture goes there):
+ (A) LEARNED: warm aged BRONZE ring, simple engraved rim, two tiny leaves at the lower left;
+ (B) SELECTED: bright polished GOLD ring with a laurel wreath of small gold-green leaves wrapped around the lower half and a tiny leaf seal at the top; clearly the most precious of the three;
+ (C) LOCKED: dark weathered wood-and-stone ring, cool grey-brown, iron rivets, a small dark iron padlock attached to the lower rim (overlapping the ring bottom, not the opening).
+Bottom row, small separate pieces:
+ (D) a small bright green-gold LEAF POINTER (one elegant leaf with a curled stem, pointing left), about 120 px tall;
+ (E) a tiny SPROUT of two fresh green leaves on a short stem, about 90 px tall;
+No text, no letters, no numbers, no glow halos, no drop shadows touching the background. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.

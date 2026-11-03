@@ -1,0 +1,8 @@
+Reference image 1 is an approved art-direction mockup of the Skills screen of a cozy fantasy chibi mobile RPG (hand-painted wood, aged brass, cream parchment, small leaves). Draw these EMPTY UI pieces from it as separate items in one sheet, same painted style and materials, each fully separate with generous empty space around it, flat front view:
+Top row:
+ (A) a RANK PLAQUE: a short wide dark walnut wooden plank with an aged brass rim and rounded ends, aspect about 3.3 : 1 (about 460 x 140 px), the face plain and EMPTY for one short line of light text;
+ (B) a GATE PLAQUE: a wider two-line plaque of dark weathered wood with grey stone corners and brass rivets, aspect about 2.7 : 1 (about 520 x 190 px), the face a slightly lighter plain wood panel, EMPTY for two short lines of light text.
+Bottom row:
+ (C) a SLEEPING FLOWER BUD: one closed pale pink-and-cream flower bud wrapped by two green sepals on a short curved twig with two small leaves, the twig base on the right, about 300 x 260 px;
+ (D) a small PARCHMENT RIBBON banner: cream parchment ribbon with gently curled forked ends and a thin brown edge, aspect about 4.5 : 1 (about 560 x 125 px), EMPTY for one short line of dark text.
+No text, no letters, no numbers, no glow, no shadows touching the background. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.

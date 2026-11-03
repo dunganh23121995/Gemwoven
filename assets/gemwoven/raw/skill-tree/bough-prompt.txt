@@ -1,0 +1,7 @@
+Reference image 1 is an approved art-direction mockup of the Skills screen of a cozy fantasy chibi mobile RPG; four round skill medallions sit on a winding carved wooden bough that climbs the giant tree trunk on the right. Draw ONLY that BOUGH, alone, as one transparent-ready piece: same hand-painted style.
+Composition (portrait canvas 1024x1536, positions in percent of the canvas width x height):
+- A substantial living branch, about 60-80 px thick, of lighter honey-brown carved wood with fine grain, a few thin brass bands and sparse small green leaves, curving softly in a zigzag that climbs from the bottom to the top. It passes through four round places where medallions will sit; at each of these places draw a flat round wooden knot pad about 300 px wide (plain carved wood disc, slightly lighter, so a medallion can cover it): pad 1 centre at (41%, 83%), pad 2 at (79%, 59%), pad 3 at (38%, 33%), pad 4 at (79%, 12%).
+- The branch starts at the bottom edge just below pad 1, runs to pad 2, then to pad 3, then to pad 4. It ends a little above pad 4.
+- From the left of pad 4 a short thin side twig reaches left and slightly down, ending near (16%, 16%) with an empty little fork (a flower bud will be added there later).
+- Nothing else: no trunk, no bark background, no medallions, no icons, no flowers, no sky.
+No text, no glow, no drop shadow. Solid flat pure magenta #FF00FF background everywhere around the branch.

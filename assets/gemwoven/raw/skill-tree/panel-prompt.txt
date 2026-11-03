@@ -1,0 +1,8 @@
+Reference image 1 is an approved art-direction mockup of the Skills screen of a cozy fantasy chibi mobile RPG; look at its lower detail panel (cream parchment panel with a wooden material tray, a parchment box for the next level and small header tags). Draw these EMPTY UI pieces from it as separate items in one sheet, same painted style and materials, each fully separate with generous empty space around it, flat front view:
+Top row:
+ (A) a MATERIAL TRAY: a shallow wooden tray of warm walnut planks with a carved raised rim and small brass corner plates, the inner floor plain dark leather-brown, EMPTY (no items), aspect about 4.1 : 1 (about 860 x 210 px);
+ (B) a NEXT-LEVEL CARD: a slightly darker cream parchment card with a thin brown inked border and softly worn edges, EMPTY, aspect about 2.5 : 1 (about 560 x 225 px).
+Bottom row:
+ (C) a small HEADER TAG: cream parchment label with a carved wooden frame and pointed ends, EMPTY for one short word, aspect about 3.6 : 1 (about 440 x 120 px);
+ (D) a CATEGORY PLAQUE: a smaller pale tan wooden plaque with brass pointed ends, EMPTY, aspect about 4.5 : 1 (about 430 x 95 px).
+No text, no letters, no numbers, no icons, no glow, no shadows touching the background. Canvas 1536x1024 on a solid flat pure magenta #FF00FF background.

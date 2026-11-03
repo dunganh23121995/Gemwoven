@@ -4519,6 +4519,22 @@
     "assets/gemwoven/plaza/npc-weaver.webp",
     "assets/gemwoven/plaza/plaza.json",
     "assets/gemwoven/plaza/sprites.json",
+    "assets/gemwoven/skill-tree/bough.webp",
+    "assets/gemwoven/skill-tree/bud.webp",
+    "assets/gemwoven/skill-tree/button-locked.webp",
+    "assets/gemwoven/skill-tree/button-ready.webp",
+    "assets/gemwoven/skill-tree/category-plate.webp",
+    "assets/gemwoven/skill-tree/frame-learned.webp",
+    "assets/gemwoven/skill-tree/frame-locked.webp",
+    "assets/gemwoven/skill-tree/frame-selected.webp",
+    "assets/gemwoven/skill-tree/gate-plate.webp",
+    "assets/gemwoven/skill-tree/header-tag.webp",
+    "assets/gemwoven/skill-tree/next-card.webp",
+    "assets/gemwoven/skill-tree/pointer.webp",
+    "assets/gemwoven/skill-tree/rank-plate.webp",
+    "assets/gemwoven/skill-tree/ribbon.webp",
+    "assets/gemwoven/skill-tree/sprout.webp",
+    "assets/gemwoven/skill-tree/tray.webp",
     "assets/gemwoven/summon-lake/scene.webp",
     "assets/gemwoven/treasures/treasure-borrow-blue.webp",
     "assets/heroes/head-scale.json",
@@ -4574,7 +4590,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 152869210
+   "bytes": 153252932
   },
   {
    "id": "hero-earth-f1",

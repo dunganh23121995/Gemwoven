@@ -107,5 +107,5 @@ Thiết kế chi tiết nằm ở `docs/GAME_DESIGN.md` (tab Studio "Thiết k�
 | I7 | Gặp Gỡ: nút và popup còn là hộp CSS | Đang làm lại bằng hình vẽ theo mockup Codex. | 🔨 | Gặp Gỡ |
 | I8 | Đấu Trường sắp xếp lại; giải đấu tháng tìm người mạnh nhất, thưởng xịn | Đang thiết kế cùng Codex: bố cục mới + Giải Đấu Tháng (luật, thưởng không có Đá Ngọc; bản thử cục bộ, phần toàn cầu Sắp ra mắt). | 🔨 | Đấu Trường |
 | I9 | Thanh tiến độ VIP; thẻ dạng cây mốc, mốc cao mở bằng thẻ kích hoạt | Đang làm: thanh VIP thật; Sổ Hành Trình thành cây mốc dọc, mỗi mốc nhận thưởng, nhánh vàng/Diệu Ngọc khóa đến khi kích hoạt thẻ. | 🔨 | VIP, Thẻ |
-| I10 | Dựng lại cây kỹ năng | Đang làm bằng hình vẽ (nhánh trên thân cây, khung nút theo trạng thái, mốc mở). | 🔨 | Kỹ Năng |
+| I10 | Dựng lại cây kỹ năng | Cây vẽ lại theo mockup Codex: một cành chạm leo thân cây từ gốc lên theo thứ tự mở (Chủ Động → Bị Động → Biến Dị → Chân Thân), phần đã mở sáng, phần chưa mở khô; khung nút theo trạng thái (đồng đã học, vàng nguyệt quế đang chọn, đá có ổ khóa), bảng cấp gỗ, thẻ điều kiện "Cấp 100 / Tiến hóa 2", lá chỉ một bước nên làm tiếp, chồi + "Học" khi học được; 5 ổ khóa cũ thay bằng một nụ ngủ "Sắp ra mắt". Bảng dưới: khay nguyên liệu, thẻ Cấp kế (số lớn), nút mới. Codex 8,4 / 8,2. | ✅ | Kỹ Năng |
 

@@ -6,7 +6,7 @@ const dom=new JSDOM(fs.readFileSync(path.join(root,'Gemwoven.html'),'utf8'),{url
 const motionPreference={matches:true,addEventListener(){},removeEventListener(){}};
 const w=dom.window,d=w.document;w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};w.matchMedia=()=>motionPreference;w.HTMLElement.prototype.scrollIntoView=function(){};
 w.ResizeObserver=class{observe(){}disconnect(){}};const inert2d=new Proxy({},{get:(o,k)=>k in o?o[k]:()=>({addColorStop(){}})});w.HTMLCanvasElement.prototype.getContext=()=>inert2d;
-for(const name of ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','living-hub','ui'])w.eval(fs.readFileSync(path.join(root,`src/gemwoven/${name}.js`),'utf8'));
+for(const name of ['assets','screens','expansion','copy','boss-chapters','boss-tactics','world','progression','progression-ui','art-screens','journey-ui','equipment-ui','chapter-guide','form-effects','hero-forms','summon-cinematic','living-hub','skill-tree','ui'])w.eval(fs.readFileSync(path.join(root,`src/gemwoven/${name}.js`),'utf8'));
 const sleep=()=>new Promise(r=>setTimeout(r,15));
 const click=action=>{const node=d.querySelector(`[data-action="${action}"]`);assert.ok(node,action);assert.equal(node.disabled,false,action);node.click();return node;};
 async function go(key){w.location.hash=key;await sleep();assert.equal(d.title,'Gemwoven · '+w.GEMWOVEN_LAYOUT.names[key]);}
@@ -20,7 +20,7 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
   assert.equal(d.querySelector('[data-node="home.hero"]').dataset.action,'hero:novice','Animated hero still opens the hero page');
   motionPreference.matches=true;await go('inventory');await go('home');
   for(const key of w.GEMWOVEN_LAYOUT.order){await go(key);const ids=[...d.querySelectorAll('[data-node]')].map(n=>n.dataset.node);assert.equal(new Set(ids).size,ids.length,key);assert.equal(d.querySelectorAll('.bottom-nav').length,key==='campaign'?0:7,key);if(key!=='home')assert.equal(d.querySelector(`[data-node="${key}.settings"]`),null,'Settings button belongs only on Home');for(const im of d.querySelectorAll('#scene img'))assert.ok(fs.existsSync(path.join(root,im.getAttribute('src'))),im.src);screens++;}
-  const layers={home:['power','explore','feature-chat','right-offline'],campaign:['title-board','stage-1','stage-2','back'],summon:['central-crystal','featured-board','pity-board','portrait-fire','summon-one','summon-ten'],inventory:['category-all','category-material','detail-panel','detail-art'],skills:['path-title-board','hero-model','detail-panel','node-0','node-3','locked-4'],quests:['quest-panel','quest-art','quest-accept','tavern-tab-0','tavern-tab-3'],tavern:['title-board','left-chalkboard','quest-panel'],upgrade:['hero-model','gear-weapon','gear-pants','gear-glasses','relic','upgrade-material-panel'],forge:['floating-sword','forge-panel','weapon-card'],shop:['product-preview','description-board','purchase-board'],arena:['fighter-fire','rank-one','mode-solo','mode-boss']};
+  const layers={home:['power','explore','feature-chat','right-offline'],campaign:['title-board','stage-1','stage-2','back'],summon:['central-crystal','featured-board','pity-board','portrait-fire','summon-one','summon-ten'],inventory:['category-all','category-material','detail-panel','detail-art'],skills:['path-title-board','hero-model','detail-panel','tree','detail'],quests:['quest-panel','quest-art','quest-accept','tavern-tab-0','tavern-tab-3'],tavern:['title-board','left-chalkboard','quest-panel'],upgrade:['hero-model','gear-weapon','gear-pants','gear-glasses','relic','upgrade-material-panel'],forge:['floating-sword','forge-panel','weapon-card'],shop:['product-preview','description-board','purchase-board'],arena:['fighter-fire','rank-one','mode-solo','mode-boss']};
   // Every scene alias must resolve to the approved painting, including secondary screens.
   for(const key of w.GEMWOVEN_LAYOUT.order){
     if(key==='campaign')continue;
@@ -33,7 +33,7 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
   }
   const captures=[];
   for(const [key,items]of Object.entries(layers)){
-    await go(key);assert.equal(d.querySelectorAll('#scene .live-panel').length,key==='campaign'?1:0,key+' must retain its illustrated layout');
+    await go(key);assert.equal(d.querySelectorAll('#scene .live-panel').length,key==='campaign'?1:key==='skills'?2:0,key+' must retain its illustrated layout (the drawn skill tree and its panel are two art layers)');
     for(const id of items)assert.ok(d.querySelector(`[data-node="${key}.${id}"]`),key+'.'+id);
     if(key!=='campaign')assert.ok(d.querySelector(`[data-node="${key}.nav-active-label"]`).textContent.trim(),'Active menu label survives on '+key);
     for(const el of d.querySelectorAll('#scene .node-button'))assert.ok(el.getAttribute('aria-label')?.trim(),'Button name missing: '+el.dataset.node);

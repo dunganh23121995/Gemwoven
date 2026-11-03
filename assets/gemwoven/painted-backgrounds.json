@@ -744,5 +744,133 @@
       "assets/gemwoven/npc/librarian/rig/show/parts-prompt.txt"
     ],
     "purpose": "The Bag girl moves at rest (owner 03/11): Codex drew her alone in her lying pose, the rig only moves that picture."
+  },
+  "skilltree-frame-learned": {
+    "file": "assets/gemwoven/skill-tree/frame-learned.webp",
+    "width": 320,
+    "height": 327,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-frame-selected": {
+    "file": "assets/gemwoven/skill-tree/frame-selected.webp",
+    "width": 331,
+    "height": 326,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-frame-locked": {
+    "file": "assets/gemwoven/skill-tree/frame-locked.webp",
+    "width": 325,
+    "height": 361,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-pointer": {
+    "file": "assets/gemwoven/skill-tree/pointer.webp",
+    "width": 120,
+    "height": 53,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-sprout": {
+    "file": "assets/gemwoven/skill-tree/sprout.webp",
+    "width": 100,
+    "height": 72,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-rank-plate": {
+    "file": "assets/gemwoven/skill-tree/rank-plate.webp",
+    "width": 360,
+    "height": 105,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-gate-plate": {
+    "file": "assets/gemwoven/skill-tree/gate-plate.webp",
+    "width": 400,
+    "height": 173,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-bud": {
+    "file": "assets/gemwoven/skill-tree/bud.webp",
+    "width": 240,
+    "height": 152,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-ribbon": {
+    "file": "assets/gemwoven/skill-tree/ribbon.webp",
+    "width": 440,
+    "height": 96,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-tray": {
+    "file": "assets/gemwoven/skill-tree/tray.webp",
+    "width": 810,
+    "height": 282,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-next-card": {
+    "file": "assets/gemwoven/skill-tree/next-card.webp",
+    "width": 560,
+    "height": 257,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-header-tag": {
+    "file": "assets/gemwoven/skill-tree/header-tag.webp",
+    "width": 400,
+    "height": 97,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-category-plate": {
+    "file": "assets/gemwoven/skill-tree/category-plate.webp",
+    "width": 400,
+    "height": 72,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-bough": {
+    "file": "assets/gemwoven/skill-tree/bough.webp",
+    "width": 466,
+    "height": 900,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-button-ready": {
+    "file": "assets/gemwoven/skill-tree/button-ready.webp",
+    "width": 700,
+    "height": 196,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
+  },
+  "skilltree-button-locked": {
+    "file": "assets/gemwoven/skill-tree/button-locked.webp",
+    "width": 700,
+    "height": 197,
+    "textless": true,
+    "source": "assets/gemwoven/raw/skill-tree/",
+    "purpose": "Kỹ Năng tree pieces drawn by Codex from the approved mockup (skill-tree.js)."
   }
 }

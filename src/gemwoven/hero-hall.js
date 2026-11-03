@@ -69,7 +69,7 @@
   // and the roster becomes the same sideways strip as the hall's, on its own row under the hero.
   function skills(p,state){
     let nodes=L.screens.skills.nodes.filter(n=>!/^skills\.roster-/.test(n.id));
-    for(const n of nodes)if(/^skills\.(node-\d|node-level-\d|link-\d|locked-\d)$/.test(n.id)&&!n.hallShift){n.rect=[n.rect[0],n.rect[1]-110,...n.rect.slice(2)];n.hallShift=true;}
+    for(const n of nodes)if(/^skills\.(node-\d|node-level-\d)$/.test(n.id)&&!n.hallShift){n.rect=[n.rect[0],n.rect[1]-110,...n.rect.slice(2)];n.hallShift=true;}
     nodes.push({id:'skills.roster',kind:'content',rect:[24,906,893,98],className:'exploration-map hall-roster skills-roster',build:el=>strip(el,p,state)});
     L.screens.skills.nodes=nodes;
   }

@@ -1,0 +1,77 @@
+Use case: ui-mockup.
+Create ONE polished full-screen redesign mockup for Gemwoven, a Vietnamese portrait mobile match-3 RPG.
+
+REFERENCE ROLES
+- Image 1 (bg-skills.png): exact environmental background and spatial foundation. Preserve its giant tree trunk, left stone platform, sky opening, mountains, stonework and roots.
+- Image 2 (refs.png): approved UI art direction. Match the hand-painted wood, cream parchment, aged brass, small leaves, material richness and restrained ornament.
+- Image 3 (phone-1.png): preserve Hiro's identity, pose, HUD, hero nameplate, portrait roster and bottom navigation.
+Do not copy the existing diamond-shaped skill tree.
+
+OUTPUT AND STAGE
+Portrait 2:3 composition. Use a 1200×1800 composition with the complete, undistorted 941×1672 logical game stage centered at offset (129.5,64). Fill the surrounding margins with a quiet dark matte. All coordinates below are local to the 941×1672 stage. Show the entire stage, including bottom navigation. No phone hardware, perspective or Studio browser frame.
+
+ART DIRECTION
+A finished, cohesive illustrated fantasy game interface. Warm carved wood and brass integrate naturally into the giant tree. Every frame, plaque, ribbon, tray and button is painted artwork. Crisp silhouettes and readable Vietnamese typography at phone size. Keep the sky spacious and Hiro clearly visible on the left. No flat translucent square cards behind the skill icons.
+
+PRESERVE
+The existing top HUD: Hiro level 40, gold 900.000, premium currency 120.000, mail badge 2.
+The left “Kỹ Năng” title and its existing short motto.
+The “Con Đường Kỹ Năng” title board at [535,147,359,113].
+Hiro standing on the left platform, within x=133–391, with his existing nameplate.
+The exact hero portrait roster at y=906–1004.
+The existing illustrated bottom navigation and selected “Kỹ Năng” tab.
+Soft distant clouds; represent one natural moment of their movement.
+
+NEW SKILL TREE
+Place exactly FOUR large skill medallions on one ascending, gently zigzagging carved wooden bough on the right trunk. The order from bottom to top is Active, Passive, Mutation, True Form.
+The bough represents unlock milestones, not mandatory skill-rank prerequisites. Use no connecting arrows.
+Keep all tree artwork within [435,270,459,624]. Nothing enters the roster at y>=906 or the title board ending at y=260.
+
+Each medallion has a 144×144 painted frame and a recognizable 108×108 skill illustration:
+1. Active sword, center (625,782), frame [553,710,144,144].
+   Learned and SELECTED. Full-color sword, aged golden frame, steady double gold outline with a small fixed leaf seal.
+   Wooden rank plaque [553,850,144,44], exact text “4/10”.
+2. Passive shield, center (798,631), frame [726,559,144,144].
+   Learned, recommended NEXT UPGRADE. Full-color shield, bronze frame, one restrained warm highlight and a small green-gold leaf pointer at [860,574,32,44].
+   Rank plaque [726,699,144,44], exact text “2/10”.
+   Its recommendation treatment must differ clearly from the selected sword.
+3. Mutation ruby heart, center (610,477), frame [538,405,144,144].
+   Locked. Dark wood-and-stone frame, subdued but recognizable colored heart, small lock at the lower rim.
+   Gate plaque [514,545,192,70], exact text on two lines:
+   “Cấp 100”
+   “Tiến hóa 2”
+4. True Form laurel crest, center (798,342), frame [726,270,144,144].
+   Locked with the same treatment.
+   Gate plaque [702,410,192,70], exact text on two lines:
+   “Cấp 180”
+   “Tiến hóa 3”
+
+Draw a substantial, softly curving wooden bough behind those four centers. The learned Active-to-Passive connection has warm amber details; connections towards locked milestones are darker, dry wood. No thin straight CSS-like lines.
+
+On a short auxiliary twig extending left from the highest medallion, add ONE small sleeping flower bud at [486,270,112,90], with a parchment ribbon at [435,354,216,44].
+Ribbon text: “Sắp ra mắt”.
+This is a quiet future ornament, not a fifth progression node. Remove all five old decorative lock nodes.
+
+DETAIL PANEL
+At [18,1004,905,484], paint a cream parchment panel with a carved wooden rim and restrained corner leaves, matching the approved Forge and Inventory screens.
+Selected skill: Hiro's Active sword, rank 4/10.
+Large sword illustration [52,1034,164,164].
+Rank plaque [56,1190,160,42]: “Lv.4/10”.
+Name [242,1030,640,46]: “Kiếm Nhiệt Huyết”.
+Small painted category plaque [244,1080,190,40]: “Chủ Động”.
+Description [242,1128,630,88]:
+“Một nhát kiếm gỗ gây 87 sát thương cơ bản.”
+Use up to two readable lines.
+
+Lower left heading: “Nguyên liệu”.
+Paint a wooden material tray at [48,1268,420,102].
+Two centered material icons: gold and a red skill book.
+Readable counters beneath: “900 N/9 N” and “40/5”.
+Lower right heading: “Cấp kế”.
+Show a small attack icon and the large concise value “87 → 92”.
+Paint a gold-orange action button at [310,1380,322,84], exact text “Tăng Cấp”.
+
+FINAL QUALITY
+Prioritize the four-node reading order, distinction between selected and recommended states, clear locked gates, and generous separation from Hiro and the roster.
+Use no extra skill nodes, no duplicated labels, no extra currencies, no modern flat UI cards, no oversized glow obscuring artwork, and no watermark.
+Render one coherent finished game screen, not an asset sheet or annotated wireframe.

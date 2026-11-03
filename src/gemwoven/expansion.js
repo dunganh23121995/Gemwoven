@@ -131,13 +131,11 @@
     text('hero-name-'+hero,`Lv.32 · ${h.name}`,[140,827,255,34],28,{tone:'ink'});
     text('hero-title-'+hero,h.title,[140,861,255,30],25,{tone:'ink'});
     const positions=[[647,383],[529,510],[767,510],[647,641]];
-    [[708,488,588,570],[708,488,826,570],[588,580,708,702],[826,580,708,702],[708,720,584,800],[708,720,832,800],[584,800,708,848],[832,800,708,848]].forEach(([x1,y1,x2,y2],i)=>add('link-'+i,'connector',[x1,y1,Math.hypot(x2-x1,y2-y1),4],{angle:Math.atan2(y2-y1,x2-x1)*180/Math.PI,color:h.color}));
     positions.forEach(([x,y],i)=>{
       button('node-'+i,`skill-${hero}-${i}`,[x,y,123,123],h.skills[i][0],'skill:'+i,{labelHidden:true,selected:selected===i,className:'skill-node'});
       text('node-level-'+i,['3/5','2/5','1/5','1/5'][i],[x+19,y+100,86,34],29,{className:'text-backing'});
     });
-    // Future branches: a V under the last node plus one lock beside it on each side.
-    [[536,752],[784,752],[660,800],[536,650],[784,650]].forEach(([x,y],i)=>button('locked-'+i,'skill-lock',[x,y,97,97],'Nhánh kỹ năng mở rộng · Sắp ra mắt','skill-locked:'+i,{labelHidden:true}));
+    // The drawn tree (bough, frames by state, plates, the future-branch bud) is skill-tree.js.
     panel('detail-panel',[15,1004,911,484]);
     image('selected-icon',`skill-${hero}-${selected}`,[56,1030,184,184]);
     text('skill-name-'+hero+'-'+selected,skill[0],[268,1030,586,47],35,{tone:'ink',align:'left'});

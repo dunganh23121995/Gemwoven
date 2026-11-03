@@ -74,10 +74,8 @@
       if(/^node-\d$/.test(id)){const index=+id.slice(-1);n.action='do:skill-node';n.data={index};n.className+=' skill-live'+(!h||!M.skillUnlock(h,index)?' skill-unavailable':'');}
       // A locked branch says how it opens (Codex UI review) instead of 0/10.
       if(/^node-level-/.test(id)){const index=+id.slice(-1),g=M.SKILL_GATES?.[index];C[n.text]=h&&M.skillUnlock(h,index)?`${h.skills[index]||0}/${M.SKILL_MAX}`:g?`Cấp ${g.level}${g.evolution?' · TH'+g.evolution:''}`:'Khóa';}
-      // Decorative outer locks are future branches, not part of the current tree.
-      if(/^locked-\d$/.test(id)){n.action='art:skill-soon';n.data={};C[n.text]='Nhánh kỹ năng mở rộng · Sắp ra mắt';}
     }
-    if(filter!=='all')nodes=nodes.filter(n=>!(/\.(link-|locked-)/.test(n.id)||/\.(node-|node-level-)\d$/.test(n.id)&&!n.id.endsWith('-'+filter)));
+    if(filter!=='all')nodes=nodes.filter(n=>!(/\.(node-|node-level-)\d$/.test(n.id)&&!n.id.endsWith('-'+filter)));
     label(nodes,'hero-name-'+hero,`${h?'Lv.'+h.level:'Chưa sở hữu'} · ${M.HEROES[hero].name}`);
     label(nodes,'skill-level',`Lv.${t.rank}${t.bonusRank?' (+'+t.bonusRank+')':''} / ${t.max}`);
     const open=h&&t.unlocked;
