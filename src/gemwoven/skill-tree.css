@@ -131,3 +131,6 @@
 .st-gate.is-need:not(.on) .st-name{color:#e6d2ac!important}
 .st-gate.is-open.on{filter:drop-shadow(0 0 6px #ffd06a) drop-shadow(0 0 2px #ffe9a8)}
 .st-rank.on{filter:drop-shadow(0 0 6px #ffd06a)}
+/* Round 2 (Codex Studio 8.6: the locked name plates still a little heavy). */
+.st-gate.is-need:not(.on){filter:brightness(.56) saturate(.45);opacity:.9}
+.st-gate.is-need:not(.on) .st-need{font-size:25px}
