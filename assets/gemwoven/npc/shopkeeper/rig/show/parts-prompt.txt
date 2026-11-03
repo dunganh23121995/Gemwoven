@@ -1,0 +1,8 @@
+Image 1 is a chibi anime shopkeeper girl with white hair and cat ears, upper body only, holding a quill on a plain background, cut off by a straight horizontal edge at the bottom. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: the whole face, eyes, mouth, cat ears, the hair on top of the head and the bangs. The face is never any other colour.
+- pure WHITE #FFFFFF: the body: torso, collar, ribbon tie, shoulders, both arms and both hands (the hand at the cheek too).
+- pure GREEN #00FF00: the bottom band of the picture along the straight cut edge (about the lowest tenth of her height): it rests on the counter and never moves.
+- pure YELLOW #FFFF00: the quill pen only, without the hand.
+- pure RED #FF0000: the long loose hair falling down both sides of her body and the side locks.
+- pure CYAN #00FFFF: the orange hair bow, small hair strands over the face and loose sleeve edges.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.

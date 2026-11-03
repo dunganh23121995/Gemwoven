@@ -58,12 +58,13 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/shop-raw.png",
+    "source": "assets/gemwoven/npc/shopkeeper/plate-raw.png",
     "reference": "assets/gemwoven/backgrounds/shop-painted.webp",
     "promptFiles": [
-      "assets/gemwoven/raw/redraw-2026-11/shop-prompt.txt"
+      "assets/gemwoven/raw/redraw-2026-11/shop-prompt.txt",
+      "assets/gemwoven/npc/shopkeeper/plate-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. The shopkeeper is painted out (plate) and stands on it as a baked rig sheet (npc-shopkeeper, assets/gemwoven/npc/npc_rig.py)."
   },
   "background-forge": {
     "file": "assets/gemwoven/backgrounds/forge-calm.webp",
@@ -116,5 +117,27 @@
       "assets/gemwoven/raw/redraw-2026-11/arena-prompt.txt"
     ],
     "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+  },
+  "npc-shopkeeper": {
+    "file": "assets/gemwoven/npc/shopkeeper/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 108,
+    "stage": {
+      "x": 295,
+      "y": 528,
+      "size": 225.7
+    },
+    "screen": "shop",
+    "textless": true,
+    "source": "assets/gemwoven/npc/shopkeeper/proc/raw-sheet-clean.png",
+    "promptFiles": [
+      "assets/gemwoven/npc/shopkeeper/girl-prompt.txt",
+      "assets/gemwoven/npc/shopkeeper/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "The shopkeeper moves at rest (owner 03/11): Codex drew her alone, the rig only moves that picture."
   }
 }

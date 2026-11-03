@@ -1,0 +1,5 @@
+Reference image 1 shows a white-haired cat-eared shopkeeper girl (chibi anime, cozy fantasy mobile RPG style) leaning on a wooden shop counter, smiling with her mouth open, holding a quill over an open book. Reference image 2 is the whole shop picture for context.
+
+Draw ONLY this same girl as a single game sprite: the exact same character design, outfit, colours, hair, orange bow, pose, expression, facing and proportions as reference 1, rendered crisp and clean at high resolution in the same painted style. Show her upper body exactly as visible above the counter (head, hair, ears, shoulders, arms, hands with the quill); cut her off with a clean straight horizontal edge at the counter line, no counter, no book, no rabbit, no jars, no background objects.
+
+Centered, filling about 80% of the canvas height, square 1:1 canvas (1024x1024), on a solid flat pure magenta #FF00FF background with no shadow, no gradient, no glow, no text.

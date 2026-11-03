@@ -22,3 +22,6 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .newbie-ready{color:#c0392b}
 .sc-elem{font-style:normal;font-weight:800;padding:1px 8px;border-radius:10px;white-space:nowrap}.sc-elem.bad{background:#c0392b;color:#fff}.sc-elem.good{background:#2f8a3a;color:#fff}
 
+
+/* Hub NPCs on baked rig sheets (hub-npcs.js). */
+#scene>.hub-npc{position:absolute;z-index:0;pointer-events:none;background-repeat:no-repeat}
