@@ -763,6 +763,13 @@ nhiều ải cùng xác nhận; boss chương 1 giữ (ngoại lệ nhập môn)
   không hệ nên không bị (93%). Đúng thiết kế khắc hệ: người chơi đổi tướng (Nori hệ Mộc khắc Lôi). **Không chỉnh số.** Gợi ý cho
   giao diện: thẻ ải nên báo "Bất lợi hệ" khi tướng đang chọn bị khắc.
 
+
+### Vòng 14 (boss chương 2 cho Hiro, không buff Hiro) — đã thống nhất
+
+Codex: 44% ở 80 trận nằm trong KTC Wilson 33–55%, chưa đủ bằng chứng; giữ boss, đo lại mẫu lớn trước khi chỉnh (ứng viên duy nhất
+nếu vẫn thấp: Long Vĩ Quật 1,25 → 1,22, đo xen kẽ). **Đo lại (04/11, bot trận thật, ải 100, cấp + đồ gợi ý, chưa ngọc, 200 trận/ô):
+Hiro 1★ thắng 48% (trung vị 21 nước, P90 32, không hết giờ); Mika 1★ 75% (14 / 21).** Hiro nằm trong mục tiêu 45–55% → **giữ nguyên,
+không chỉnh số**.
 ### Vòng Đấu Trường 1–2 (04/11, Cúp Đấu Trường) — đã thống nhất
 - **Tên:** Codex chọn "Cúp Đấu Trường" (dễ nhận bằng chiếc cúp, khác hẳn tên trang trọng của giải quý). Đồng ý.
 - **Điểm:** Claude đề xuất thắng +20 / thua −10 → Codex phản biện: một thắng một thua trước đối thủ ngang sức vẫn +10, thưởng đánh nhiều.
