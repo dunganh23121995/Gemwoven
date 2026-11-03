@@ -25,3 +25,55 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 
 /* Hub NPCs on baked rig sheets (hub-npcs.js). */
 #scene>.hub-npc{position:absolute;z-index:0;pointer-events:none;background-repeat:no-repeat}
+
+/* Sảnh Anh Hùng (hero-hall.js): roster strip, Tất cả grid, profile, waiting heroes. */
+.hall-roster{overflow:visible}
+.hall-strip{display:flex;gap:12px;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 6px;align-items:center}
+.hall-strip::-webkit-scrollbar{display:none}
+.hall-roster.more-left::before,.hall-roster.more-right::after{content:"‹";position:absolute;top:50%;translate:0 -50%;left:-26px;font:900 44px/1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 4px #000;pointer-events:none}
+.hall-roster.more-right::after{content:"›";left:auto;right:-26px}
+.hall-card{position:relative;flex:0 0 104px;width:104px;height:104px;border-radius:50%;border:5px solid #c9a35a;background:radial-gradient(circle at 50% 35%,color-mix(in srgb,var(--el) 55%,#fff3d8),color-mix(in srgb,var(--el) 70%,#2a1708));padding:0;scroll-snap-align:center;box-shadow:0 3px 6px #0009}
+.hall-card img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top}
+.hall-card>b{position:absolute;right:-6px;bottom:-4px;min-width:38px;padding:1px 6px;border-radius:12px;background:#2b1a0e;border:2px solid #c9a35a;color:#ffe3a0;font:800 20px/1.2 Cambria,serif}
+.hall-card>i{position:absolute;inset:auto 0 -6px;font-style:normal;font-size:24px}
+.hall-card.is-locked img{filter:grayscale(.9) brightness(.55)}
+.hall-card.is-on{border-color:#fff1b0;box-shadow:0 0 0 4px #ffb63188,0 0 18px #ffcf5c}
+.hall-all .copy-layer,.hall-all .node-text{align-items:flex-end;padding-bottom:6px}
+.hall-all::before{content:"▦";position:absolute;inset:14px 0 auto;text-align:center;font-size:44px;color:#ffe3a0;text-shadow:0 2px 3px #000}
+.hall-info{border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff3cf,#d9a84a 60%,#7a4b16);border:4px solid #6b3f12;color:#4a2508;box-shadow:0 3px 6px #0009}
+.hall-info .copy-layer,.hall-info .node-text{color:#4a2508;text-shadow:none;font-weight:900}
+.hall-flag .copy-layer,.hall-flag .node-text{color:#5a2a10;text-shadow:0 1px #fff5d7aa}
+.hall-waiting{overflow:visible}
+.hall-waiter{position:absolute;inset:0;padding:0;border:0;background:none}
+.hall-waiter .hall-body{position:absolute;left:50%;bottom:-8px;width:230px;height:230px;translate:-50% 0;background-repeat:no-repeat}
+.hall-waiter .hall-body.is-face{border-radius:50%;inset:auto 10px 10px;height:110px}
+.hall-dialog .hall-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.hall-dialog .hall-filters button{border:2px solid var(--el,#a07a40);background:#fff6e0;color:#3a220e;border-radius:18px;padding:6px 14px;font:700 18px Cambria,serif}
+.hall-dialog .hall-filters button.on{background:var(--el);color:#fff}
+.hall-dialog .hall-sort{margin-left:auto;--el:#7a5a2a}
+.hall-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:16px 10px;justify-items:center}
+.hall-grid .hall-card{flex:none;width:96px;height:96px}
+.hall-grid .hall-card em{position:absolute;top:104%;left:50%;translate:-50% 0;white-space:nowrap;font:700 16px Cambria,serif;color:#3a220e;font-style:normal}
+.hall-grid .hall-card .hall-stars{position:absolute;top:-14px;left:50%;translate:-50% 0;font-size:13px;color:#e8a400;white-space:nowrap;text-shadow:0 1px 1px #000a}
+.hall-grid{padding-bottom:22px;row-gap:40px}
+.hero-profile .hp-head{display:flex;gap:14px;align-items:center}
+.hero-profile .hp-head>img{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid var(--el)}
+.hero-profile .hp-head b{display:block;font-size:20px}
+.hero-profile .hp-tags i{display:inline-block;font-style:normal;margin:4px 6px 0 0;padding:1px 10px;border-radius:12px;background:var(--el);color:#fff;font-weight:700}
+.hero-profile .hp-tags i+i{background:var(--q)}
+.hero-profile .hall-stars{color:#e8a400;letter-spacing:1px}
+.hero-profile .hp-skills details{border-top:1px solid #c9a35a66;padding:6px 0}
+.hero-profile .hp-skills summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none}
+.hero-profile .hp-skills summary img{width:48px;height:48px;object-fit:contain}
+.hero-profile .hp-skills summary small{margin-left:auto;color:#7a5a2a}
+.hero-profile .hp-forms{display:flex;gap:8px;margin-top:10px}
+.hero-profile .hp-forms span{flex:1;text-align:center;border:2px solid #c9a35a;border-radius:10px;padding:4px;font-weight:800}
+.hero-profile .hp-forms span small{display:block;font-weight:400;font-size:12px}
+.hero-profile .hp-forms span.locked{opacity:.45}
+.hall-decor{pointer-events:none;z-index:0}
+.hall-decor .hall-banner{position:absolute;width:56px;transform-origin:50% 4%;animation:hall-sway 5.5s var(--d) ease-in-out infinite}
+@keyframes hall-sway{0%,100%{rotate:-2.5deg}50%{rotate:2.5deg}}
+.reduced-motion .hall-decor .hall-banner{animation:none}
+
+.live-panel.hall-decor,.live-panel.hall-roster,.live-panel.hall-waiting{background:none;padding:0;border:0;box-shadow:none;overflow:visible}
+.hall-waiter .hall-body .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom center}

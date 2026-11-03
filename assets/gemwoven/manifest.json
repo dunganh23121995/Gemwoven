@@ -8459,17 +8459,17 @@
     "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
   },
   "background-upgrade": {
-    "file": "assets/gemwoven/backgrounds/upgrade-calm.webp",
+    "file": "assets/gemwoven/backgrounds/upgrade-hall.webp",
     "width": 941,
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/upgrade-raw.png",
-    "reference": "assets/gemwoven/backgrounds/upgrade-painted.webp",
+    "source": "assets/gemwoven/hall/bg-raw.png",
+    "reference": "assets/gemwoven/hall/layout-guide.png",
     "promptFiles": [
-      "assets/gemwoven/raw/redraw-2026-11/upgrade-prompt.txt"
+      "assets/gemwoven/hall/bg-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+    "purpose": "Sảnh Anh Hùng (owner 03/11: the hero screen is a place where heroes gather; Codex design review 18). Main dais under the hero, two waiting pedestals, five banner rods; drawn by Codex gpt-6.1-sol low, cropped 55 px lower so the dais meets the hero feet."
   },
   "background-shop": {
     "file": "assets/gemwoven/backgrounds/shop-calm.webp",
@@ -16405,6 +16405,86 @@
       "assets/gemwoven/npc/shopkeeper/rig/show/parts-prompt.txt"
     ],
     "purpose": "The shopkeeper moves at rest (owner 03/11): Codex drew her alone, the rig only moves that picture."
+  },
+  "hall-banner-fire": {
+    "file": "assets/gemwoven/hall/banner-fire.webp",
+    "width": 279,
+    "height": 414,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-banner-ice": {
+    "file": "assets/gemwoven/hall/banner-ice.webp",
+    "width": 279,
+    "height": 414,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-banner-earth": {
+    "file": "assets/gemwoven/hall/banner-earth.webp",
+    "width": 279,
+    "height": 414,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-banner-lightning": {
+    "file": "assets/gemwoven/hall/banner-lightning.webp",
+    "width": 278,
+    "height": 414,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-banner-shadow": {
+    "file": "assets/gemwoven/hall/banner-shadow.webp",
+    "width": 278,
+    "height": 414,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-flag-tall": {
+    "file": "assets/gemwoven/hall/hall-flag-tall.webp",
+    "width": 279,
+    "height": 525,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-flag-short": {
+    "file": "assets/gemwoven/hall/hall-flag-short.webp",
+    "width": 277,
+    "height": 415,
+    "textless": true,
+    "source": "assets/gemwoven/hall/banners-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/banners-prompt.txt"
+    ]
+  },
+  "hall-lamp": {
+    "file": "assets/gemwoven/hall/lamp.webp",
+    "width": 562,
+    "height": 1200,
+    "textless": true,
+    "source": "assets/gemwoven/hall/lamp-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/hall/lamp-prompt.txt"
+    ]
   },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",

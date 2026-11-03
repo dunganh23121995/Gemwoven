@@ -1,0 +1,12 @@
+Paint a background for the Hero screen of a cozy fantasy chibi mobile RPG (portrait). The place is the "Hall of Heroes": a warm, grand gathering hall where many adventurers muster — warm honey-brown wood, cream stone, brass/gold trim and deep wine-red cloth accents, a big skylight in the ceiling letting soft sunbeams fall onto the centre. Same hand-painted anime game style, warm palette and crisp rendering quality as reference image 2 (the game's current screen, for style and the UI on top).
+
+Reference image 1 is a LAYOUT GUIDE on the same 2:3 canvas (not art, do not copy its lines or colours):
+- gold ellipse: the MAIN round dais (a raised circular stone-and-brass platform with a subtle engraved ring), centre of the canvas, its top surface empty — the selected hero stands on it.
+- two orange ellipses: two smaller round waiting pedestals at the left and right, same perspective, tops empty — other heroes stand on them.
+- white box: keep this area calm and low-detail (no foreground objects): the hero and equipment slots sit here.
+- blue box (lower part): a calm stone floor with a soft rug and two or three low steps, plain enough for panels and a hero list on top.
+- red lines: the image will be cropped at these lines; extend the scene naturally beyond them.
+
+Show that it is a gathering place of many heroes WITHOUT painting any person: weapon racks with a few varied weapons along the side walls, an armour stand, a long notice board with pinned quest papers on one side, tall arched alcoves along the back wall, sturdy columns at both edges. Leave EMPTY hanging hooks/rods: five small banner rods high on the back wall and two lantern hooks on the columns (banners and lanterns are added later as separate images). Keep clutter low and shapes large so the UI stands out.
+
+No people, no creatures, no text, no letters, no numbers, no UI, no glowing runes. Output one full-bleed portrait 2:3 image (1024x1536).
