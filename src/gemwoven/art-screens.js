@@ -228,26 +228,37 @@ ${price}`);}
     nodes.push(button('upgrade','choose-novice','Hiro',[660,711,61,66],'do:hero',{hero:'novice'},{asset:'avatar-ring',icon:'portrait-novice',iconRect:[12,8,37,48],labelHidden:true,selected:hero==='novice'}));
     return nodes;
   }
-  // Cửa Hàng · Ký Ức (D3, Codex mockup assets/gemwoven/raw/memory-shop): the week's two heroes on the shelf, the dust
-  // balance on a ribbon, 10 fragments for 80 dust (no quantity stepper), the rules behind ⓘ. Rules: progression.js memory().
+  // Cửa Hàng on the painted shelf (owner 04/11: "tràn ra khỏi background", "vàng, ngọc có hình thì sao phải dùng chữ";
+  // Codex mockup assets/gemwoven/raw/shop-shelf, 8.8). Goods stand as cards, three a bay, on the two real boards of
+  // shop-calm.webp (inner posts x≈102–826 upper, 82–844 middle; board tops y≈980 / 1128): never over a post or a board
+  // front. Prices are pictures: {gold} {gems} {dust} {lock} in the copy become the coin, gem, vial and lock icons at
+  // mount (shopIcons). A tab holds at most six goods (qa check-progression).
+  const SHELF_X=[114,352,590],SHELF_Y=[868,1016],CARD=[226,112],PER={day:'ngày',week:'tuần'},LEFT_WHEN={day:'hôm nay',week:'tuần này'};
+  const money=(currency,n)=>'{'+currency+'}'+fmt(n);
+  const SHELF_NAME={exp:'Sách EXP'};
+  const GEAR_TIERS=['uncommon','rare','epic'];
+  function shelfCard(i,id,name,price,rect,act,data,extra={}){
+    const [x,y]=rect||[SHELF_X[i%3],SHELF_Y[Math.floor(i/3)]];
+    return button('shop','product-'+id,name+'\n'+price,[x,y,...CARD],act,data,{asset:'inventory-slot',iconRect:[18,13,56,56],labelRect:[0,0,...CARD],size:26,...extra,className:['shop-card',extra.className].filter(Boolean).join(' ')});
+  }
+  // Cửa Hàng · Ký Ức (D3): the week's two heroes as cards on the upper board, the dust balance beside them, 10 fragments
+  // for 80 dust (no stepper), the rules behind ⓘ. Rules: progression.js memory().
   function memoryShop(nodes,p,state){
     const v=G.engine.memory(),pick=v.heroes.find(h=>h.hero===state.memoryHero)||v.heroes[0],key='shop';state.memoryHero=pick?.hero||null;
     nodes=remove(nodes,/\.(product-(?!name$|description$|preview$)|price-|quantity(-minus|-plus)?$|purchase-price$)/);
-    nodes.push(button(key,'memory-balance',fmt(v.dust),[354,850,232,74],'art:memory-info',{},{asset:'kit-ribbon-info',fit:'fill',icon:'memory-dust',iconRect:[20,7,60,60],labelRect:[82,0,136,74],size:34,tone:'ink',className:'memory-balance'}));
-    if(!pick){nodes.push(image(key,'memory-empty-row','kit-row-read',[132,950,680,132],{fit:'fill'}),image(key,'memory-empty-icon','kit-icon-hourglass',[164,972,88,88]),
-        text(key,'memory-empty','Chưa có tướng đủ điều kiện\n· kỳ sau',[262,956,530,120],35,'ink',{className:'memory-empty'}));}
-    else v.heroes.forEach((h,i)=>{const x=v.heroes.length>1?224+i*316:380;nodes.push(button(key,'memory-'+h.hero,h.name,[x,906,180,180],'art:memory-pick',{hero:h.hero},{asset:'inventory-slot',icon:'fragment-'+h.hero,iconRect:[18,14,144,144],labelHidden:true,selected:h.hero===pick.hero}),
-        text(key,'memory-name-'+h.hero,h.name,[x-30,1088,240,44],34,'gold',{className:'memory-name'}));});
+    nodes.push(button(key,'memory-balance',fmt(v.dust),[SHELF_X[2]+8,888,210,72],'art:memory-info',{},{asset:'kit-ribbon-info',fit:'fill',icon:'memory-dust',iconRect:[14,6,60,60],labelRect:[72,0,124,72],size:34,tone:'ink',className:'memory-balance'}));
+    if(!pick){nodes.push(image(key,'memory-empty-row','kit-row-read',[SHELF_X[0],872,464,104],{fit:'fill'}),image(key,'memory-empty-icon','kit-icon-hourglass',[SHELF_X[0]+22,886,76,76]),
+        text(key,'memory-empty','Chưa có tướng đủ\nđiều kiện · kỳ sau',[SHELF_X[0]+100,876,354,96],29,'ink',{className:'memory-empty'}));}
+    else v.heroes.slice(0,2).forEach((h,i)=>{const tag=h.maxed?'6★':h.left<v.bundle?'Hết':'';
+      nodes.push(shelfCard(i,'memory-'+h.hero,`${h.name} ×${v.bundle}`,money('dust',v.bundlePrice),null,'art:memory-pick',{hero:h.hero,...(tag?{tag}:{})},{icon:'fragment-'+h.hero,selected:h.hero===pick.hero,className:tag?'is-out':''}));});
     label(nodes,'product-name',pick?pick.name:'Bụi Ký Ức');
     label(nodes,'product-description',state.shopMessage||(pick?`${v.bundle} mảnh/lần\n${pick.owned?'Đang có '+fmt(pick.fragments):`Có ${fmt(pick.fragments)}/80`}`:'Vật liệu không bán trực tiếp'));
-    const preview=find(nodes,'product-preview');preview.asset=pick?'fragment-'+pick.hero:'memory-dust';preview.rect=[350,1128,264,306];
+    const preview=find(nodes,'product-preview');preview.asset=pick?'fragment-'+pick.hero:'memory-dust';preview.rect=[384,1180,200,250];
     for(const id of ['product-name','product-description']){const n=find(nodes,id);if(n)n.className=((n.className||'')+' memory-copy').trim();}action(nodes,'product-preview','art:memory-info');
     nodes.push(button(key,'memory-info','i',[298,1222,54,54],'art:memory-info',{},{asset:'kit-round',fit:'fill',size:32,tone:'ink',className:'memory-info'}));
-    if(pick)nodes.push(text(key,'memory-left',`Còn ${pick.left}/${v.cap} mảnh\ntuần này`,[632,1238,232,104],36,'ink',{className:'memory-left'}));
-    const buy=find(nodes,'buy');
+    if(pick)nodes.push(text(key,'memory-left',`Còn ${pick.left}/${v.cap} mảnh\ntuần này`,[632,1238,232,96],32,'ink',{className:'memory-left'}));
     if(!pick){action(nodes,'buy','art:memory-info',{},true);label(nodes,'buy','Kỳ sau');nodes=remove(nodes,/\.purchase-board$/);}
-    else{action(nodes,'buy','art:memory-buy',{hero:pick.hero},!pick.canBuy);label(nodes,'buy',pick.maxed?'Đã 6★':pick.left<v.bundle?'Hết lượt':'Mua · '+v.bundlePrice);
-      if(!pick.maxed&&pick.left>=v.bundle)Object.assign(buy,{icon:'memory-dust',iconRect:[170,19,52,52],labelRect:[6,0,166,90],className:'memory-buy'});}
+    else{action(nodes,'buy','art:memory-buy',{hero:pick.hero},!pick.canBuy);label(nodes,'buy',pick.maxed?'Đã 6★':pick.left<v.bundle?'Hết lượt':'Mua\n'+money('dust',v.bundlePrice));}
     return nodes;
   }
   function shop(nodes,p,state){
@@ -255,36 +266,54 @@ ${price}`);}
     if(tab==='memory'&&window.GemwovenLiveOps?.MEMORY){nodes=memoryShop(nodes,p,state);shopTabs(nodes,tab);return shopExtras(shopPlates(nodes),state);}
     // Đá Ngọc tab: the three gold packs (progression.js GOLD_PACKS) beside Tinh Hoa and Thần Thạch, showing the real gold amount.
     const packs=tab==='gems'&&G.engine.goldShop?G.engine.goldShop():null;
-    const goldRows=packs?packs.packs.map((x,i)=>({id:x.id,name:fmt(x.gold)+' vàng',kind:'goldpack',currency:'gems',price:x.gems,asset:A['topup-coins-'+(i+1)]?'topup-coins-'+(i+1):'coins',pack:x})):[];
-    const catalog=M.WORLD.SHOP.filter(row=>tab==='equipment'?row.kind==='gear':row.kind==='resource'&&row.currency===(tab==='gold'?'gold':'gems')).concat(goldRows);
-    const product=catalog.find(row=>row.id===state.shopProduct)||catalog[0],quantity=product.kind==='resource'?state.quantity||1:1;state.shopProduct=product.id;
-    nodes=remove(nodes,/\.(product-(?!name$|description$|preview$)|price-)/);
-    nodes=shopShelf(nodes,catalog,product,tab,state);
+    const goldRows=packs?packs.packs.map((x,i)=>({id:x.id,name:money('gold',x.gold),kind:'goldpack',currency:'gems',price:x.gems,asset:A['topup-coins-'+(i+1)]?'topup-coins-'+(i+1):'coins',pack:x})):[];
+    // Trang Bị: one rarity at a time (Tốt / Hiếm / Sử Thi), chosen on the purchase board; it opens with the stage gate
+    // of the forge (progression.js craftGate). Default: the best rarity already open.
+    const gateOpen=r=>p.campaign.cleared>=M.craftGate(r);
+    if(tab==='equipment'&&!GEAR_TIERS.includes(state.shopTier))state.shopTier=[...GEAR_TIERS].reverse().find(gateOpen)||GEAR_TIERS[0];
+    const catalog=M.WORLD.SHOP.filter(row=>tab==='equipment'?row.kind==='gear'&&row.rarity===state.shopTier:row.kind==='resource'&&row.currency===(tab==='gold'?'gold':'gems')).concat(goldRows);
+    const product=catalog.find(row=>row.id===state.shopProduct)||catalog[0],gear=product.kind==='gear',pack=product.kind==='goldpack';state.shopProduct=product.id;
+    const left=product.limit?G.engine.shopLeft(product.id):Infinity,locked=gear&&!gateOpen(product.rarity);
+    const quantity=product.kind==='resource'?Math.max(1,Math.min(state.quantity||1,20,left)):1,total=product.price*quantity;
+    nodes=remove(nodes,/\.(product-(?!name$|description$|preview$)|price-|purchase-price$)/);
+    nodes=shopShelf(nodes,catalog,product,p,state);
     state.shopPick=null;
-    label(nodes,'product-name',product.name);label(nodes,'product-description',state.shopMessage||product.description);find(nodes,'product-preview').asset=product.asset;
-    action(nodes,'product-preview','art:shop-product',{product:product.id});label(nodes,'quantity',quantity);const left=product.limit?G.engine.shopLeft(product.id):null;label(nodes,'purchase-price',fmt(product.price*quantity)+(product.currency==='gold'?' vàng':' Ngọc'));action(nodes,'quantity-minus','art:quantity',{delta:-1},quantity<=1);action(nodes,'quantity-plus','art:quantity',{delta:1},product.kind==='gear'||quantity>=20);action(nodes,'buy','art:purchase',{product:product.id,count:quantity},p.wallet[product.currency]<product.price*quantity||product.kind==='gear'&&p.equipment.length>=500);
-    if(product.kind==='goldpack'){const x=product.pack;label(nodes,'product-description',state.shopMessage||(packs.left?`Hôm nay còn đổi ${fmt(packs.leftGold)} vàng`:'Hôm nay đã đổi đủ. Mới lúc 00:00.'));
-      label(nodes,'purchase-price',fmt(x.gems)+' Ngọc');action(nodes,'quantity-plus','art:quantity',{delta:1},true);action(nodes,'buy','art:gold-pack',{pack:x.id},!x.canBuy);label(nodes,'buy',x.fits?'Mua':'Hết lượt');}
-    shopTabs(nodes,tab);return shopExtras(shopPlates(nodes),state);
+    const preview=find(nodes,'product-preview');if(preview){preview.rect=[384,1180,200,250];preview.asset=product.asset;}
+    action(nodes,'product-preview','art:shop-product',{product:product.id});
+    label(nodes,'product-name',product.name);
+    const limitNote=product.limit&&left<product.limit.n?`\nCòn ${left}/${product.limit.n} ${LEFT_WHEN[product.limit.per]}`:'';
+    label(nodes,'product-description',state.shopMessage||(gear&&locked?`Mở khi vượt ải ${M.craftGate(product.rarity)}.`:product.description+limitNote));
+    label(nodes,'quantity',quantity);
+    action(nodes,'quantity-minus','art:quantity',{delta:-1},quantity<=1);action(nodes,'quantity-plus','art:quantity',{delta:1},quantity>=Math.min(20,left));
+    const short=p.wallet[product.currency]<total;
+    action(nodes,'buy','art:purchase',{product:product.id,count:quantity},short||left<1||locked||gear&&p.equipment.length>=500);
+    label(nodes,'buy',locked?'{lock}Ải '+M.craftGate(product.rarity):left<1?'Hết lượt':'Mua\n'+money(product.currency,total));
+    if(pack){const x=product.pack;label(nodes,'product-description',state.shopMessage||(packs.left?`Còn hôm nay\n${money('gold',packs.leftGold)}`:'Đã đổi đủ.\nMới lúc 00:00.'));
+      action(nodes,'buy','art:gold-pack',{pack:x.id},!x.canBuy);label(nodes,'buy',x.fits?'Mua\n'+money('gems',x.gems):'Hết lượt');}
+    // Gear is bought one at a time and the goldpack has no count: the stepper gives way (gear: to the rarity switch).
+    if(gear||pack)nodes=remove(nodes,/\.quantity(-minus|-plus)?$/);
+    if(gear)nodes.push(button('shop','rarity-switch',M.RARITIES[state.shopTier].name,[636,1238,224,82],'art:shop-rarity-open',{},{asset:'kit-row-on',icon:'forge-ingot-'+state.shopTier,iconRect:[10,12,72,56],labelRect:[80,0,114,82],size:29,className:'shop-rarity-switch r-'+state.shopTier+(state.shopRarityOpen?' is-open':'')}));
+    if(gear&&state.shopRarityOpen)nodes=rarityChooser(nodes,p,state,gateOpen);
+    shopTabs(nodes,tab);nodes=shopPlates(nodes);
+    if(pack)find(nodes,'buy').rect=[630,1282,236,104];
+    return shopExtras(nodes,state);
   }
-  // Full review 4 (Codex: "khoảng trống lớn, hàng biểu tượng khó so sánh"): the goods read as a list on the shelves,
-  // each with its name, price and what is left this day/week, so the player compares without tapping. Vàng / Đá Ngọc:
-  // two columns of parchment rows (kit-stat); Trang Bị: one row per tier, one card per slot. The detail and Mua stay below.
-  function shopShelf(nodes,catalog,product,tab,state){
-    catalog=catalog.slice();
-    const cur=row=>row.currency==='gold'?' vàng':' Ngọc',per={day:'ngày',week:'tuần'};
-    const preview=find(nodes,'product-preview');if(preview)preview.rect=[384,1172,200,258];
-    const cls=(row,extra)=>[extra,row.kind==='goldpack'&&'shop-goldpack',row.id===state.shopPick&&'shop-pick'].filter(Boolean).join(' ');
-    // Trang Bị (Codex round 1: six cards a row were crowded): a tier switch on the left, that tier's six pieces as rows.
-    if(tab==='equipment'){
-      const tiers=[['legendary','Huyền\nThoại',/Huyền Thoại$/],['divine','Thần',/ Thần$/]],tier=state.shopTier||(/ Thần$/.test(product.name)?'divine':'legendary');state.shopTier=tier;
-      tiers.forEach(([id,name],r)=>nodes.push(button('shop','shelf-tier-'+r,name,[22,868+r*150,104,138],'art:shop-tier',{tier:id},{asset:'inventory-slot',labelRect:[0,0,104,138],size:28,selected:tier===id,className:'shop-tier'})));
-      catalog=catalog.filter(row=>tiers.find(t=>t[0]===tier)[2].test(row.name));
-    }
-    const eq=tab==='equipment',x0=eq?134:62,cw=eq?392:404,step=eq?398:412;
-    catalog.forEach((row,i)=>{const left=row.limit?G.engine.shopLeft(row.id):null,out=left===0;
-      const note=row.kind==='goldpack'||row.kind==='gear'?'':left!=null?` · còn ${left}/${per[row.limit.per]||''}`:'',price=out?'Hết lượt '+(per[row.limit.per]||''):fmt(row.price)+cur(row)+note;
-      nodes.push(button('shop','product-'+row.id,row.name+'\n'+price,[x0+i%2*step,852+Math.floor(i/2)*104,cw,98],'art:shop-product',{product:row.id},{asset:'inventory-slot',icon:row.asset,iconRect:row.kind==='goldpack'?[18,14,76,70]:[16,10,78,78],labelRect:[104,0,cw-110,98],size:30,selected:row.id===product.id,className:cls(row,'shop-row'+(out?' is-out':''))}));});
+  function shopShelf(nodes,catalog,product,p,state){
+    catalog.slice(0,6).forEach((row,i)=>{
+      const left=row.limit?G.engine.shopLeft(row.id):null,out=left===0,gear=row.kind==='gear',locked=gear&&p.campaign.cleared<M.craftGate(row.rarity);
+      const packOut=row.kind==='goldpack'&&!row.pack.fits,tag=out||packOut?(gear?'Đã mua':'Hết'):row.limit&&!locked?`${row.limit.n}/${PER[row.limit.per]}`:'';
+      const short=!out&&!packOut&&!locked&&p.wallet[row.currency]<row.price;
+      nodes.push(shelfCard(i,row.id,gear?M.SLOTS[row.target]:SHELF_NAME[row.id]||row.name,money(row.currency,row.price),null,'art:shop-product',{product:row.id,...(tag?{tag}:{})},
+        {icon:row.asset,iconRect:row.kind==='goldpack'?[12,16,68,50]:[18,13,56,56],selected:row.id===product.id,className:[row.kind==='goldpack'&&'shop-goldpack',(out||packOut)&&'is-out',locked&&'is-locked',short&&'is-short',row.id===state.shopPick&&'shop-pick'].filter(Boolean).join(' ')}));});
+    return nodes;
+  }
+  // Trang Bị rarity chooser (Codex study raw/shop-shelf/mockup-gear-raw.png): below both shelves, over the purchase area,
+  // the shelf left bright. A choice picks and closes; a locked one shows its stage and stays; a tap outside closes.
+  function rarityChooser(nodes,p,state,gateOpen){
+    nodes.push(button('shop','rarity-scrim','',[0,0,941,1672],'art:shop-rarity-close',{},{labelHidden:true,className:'shop-rarity-scrim'}),
+      image('shop','rarity-panel','kit-parchment',[480,1144,420,336],{fit:'fill',className:'shop-rarity-panel'}));
+    GEAR_TIERS.forEach((r,i)=>{const open=gateOpen(r),price=M.WORLD.SHOP.find(row=>row.kind==='gear'&&row.rarity===r)?.price||0;
+      nodes.push(button('shop','rarity-'+r,M.RARITIES[r].name+'\n'+(open?money('gold',price):'{lock}Ải '+M.craftGate(r)),[500,1164+i*100,380,94],'art:shop-tier',{tier:r},{asset:'kit-row-read',icon:'forge-ingot-'+r,iconRect:[14,10,100,74],labelRect:[124,0,240,94],size:30,selected:r===state.shopTier,className:'shop-rarity-choice r-'+r+(open?'':' is-locked')}));});
     return nodes;
   }
   // Nạp (topup-ui.js) from the shop; a back arrow when the shop was opened from a resource popup ("Mua thêm").
@@ -298,11 +327,27 @@ ${price}`);}
     const base=find(nodes,'shop-tab-0');if(base&&!find(nodes,'shop-tab-3'))nodes.splice(nodes.indexOf(base)+3,0,{...base,id:'shop.shop-tab-3',text:'shop.shop-tab-3'});
     [['gold','Vàng'],['gems','Đá Ngọc'],['equipment','Trang Bị'],['memory','Ký Ức']].forEach(([id,name],i)=>{label(nodes,'shop-tab-'+i,name);action(nodes,'shop-tab-'+i,'art:shop-tab',{tab:id});Object.assign(find(nodes,'shop-tab-'+i),{selected:tab===id,rect:[112+i*186,758,181,82],size:29});});
   }
-  // Codex review 27: larger round −/+ around the count, a wider buy plate.
+  // Codex review 27: larger round −/+ around the count; the buy plate carries "Mua" over the total in pictures.
   function shopPlates(nodes){
-    for(const [id,rect] of [['quantity-minus',[634,1240,70,70]],['quantity-plus',[786,1240,70,70]],['quantity',[704,1248,82,52]],['buy',[630,1344,236,90]]]){const n=find(nodes,id);if(n)n.rect=rect;}
+    for(const [id,rect] of [['quantity-minus',[634,1244,70,70]],['quantity-plus',[786,1244,70,70]],['quantity',[704,1252,82,52]],['buy',[630,1330,236,104]]]){const n=find(nodes,id);if(n)n.rect=rect;}
     return nodes;
   }
+  // {gold} {gems} {dust} {lock} → the drawn icon, each line its own span (cards style the first as the name, the last
+  // as the price). The accessible name keeps the words.
+  const CUR_ICON={gold:'coins',gems:'mana',dust:'memory-dust',lock:'kit-lock'},CUR_WORD={gold:'vàng',gems:'Đá Ngọc',dust:'Bụi Ký Ức',lock:'Khóa'};
+  const CUR_TOKEN=/\{(gold|gems|dust|lock)\}/;
+  function shopIcons(){
+    for(const el of document.querySelectorAll('#scene [data-node^="shop."] .copy-layer,#scene .node-text[data-node^="shop."]')){
+      const raw=el.textContent;if(!CUR_TOKEN.test(raw))continue;
+      el.replaceChildren(...raw.split('\n').map(line=>{const s=document.createElement('span');s.className='ln';
+        for(const part of line.split(/(\{(?:gold|gems|dust|lock)\})/)){const m=/^\{(\w+)\}$/.exec(part);
+          if(m&&A[CUR_ICON[m[1]]]){const img=document.createElement('img');img.src=A[CUR_ICON[m[1]]].file;img.alt='';img.draggable=false;img.className='cur cur-'+m[1];s.append(img);}else if(part)s.append(part);}
+        return s;}));
+      el.classList.add('has-cur');
+      const host=el.closest('button');if(host)host.setAttribute('aria-label',raw.replace(/\{(\w+)\}/g,(_,k)=>(CUR_WORD[k]||'')+' ').replace(/\n/g,' · '));
+    }
+  }
+  {const mount=G.mount;G.mount=(state,ctx)=>{const r=mount(state,ctx);if(state.screen==='shop')shopIcons();return r;};}
   function arena(nodes,p,state){
     const mode=state.arenaMode||'duel';
     find(nodes,'fighter-fire').asset='hero-novice';find(nodes,'fighter-ice').asset='hero-novice';label(nodes,'fighter-fire','Người chơi 1 · Hiro');label(nodes,'fighter-ice','Người chơi 2 · Hiro');
@@ -394,12 +439,16 @@ ${price}`);}
     if(command==='memory-buy'){try{const r=G.engine.buyMemory(d.hero);state.shopMessage=`Đã nhận ${r.fragments} mảnh ${M.HEROES[r.hero].name}.`;}catch(error){state.shopMessage=error.message;}}
     if(command==='memory-info'){const X=window.GemwovenLiveOps?.MEMORY,v=G.engine.memory();if(!X)return true;
       ctx.showModal('Bụi Ký Ức',['memory-dust'],`${X.desc} · đang có ${fmt(v.dust)}.\nNguồn: bản dư tướng 6★ ${X.copyDust} · mảnh dư 6★ ${X.fragmentDust} · nhiệm vụ tuần ${X.weeklyDust} · Cúp Đấu Trường ${X.cupDust}/tháng (máy chủ, sắp ra mắt). Hiro không đổi bụi.\nKệ làm mới Thứ Hai 00:00 (GMT+7): tối đa ${X.heroesPerWeek} tướng lần lượt, không Hiro, không tướng đang banner, đã qua ${X.minDaysSinceFirstBanner} ngày từ banner đầu.\n${X.bundle} mảnh = ${X.price*X.bundle} bụi · tối đa ${X.capPerHeroWeek} mảnh/tướng/tuần · 80 mảnh ghép một tướng.`);return true;}
-    if(command==='shop-tier'){state.shopTier=d.tier;const first=M.WORLD.SHOP.find(row=>row.kind==='gear'&&(d.tier==='divine'?/ Thần$/:/Huyền Thoại$/).test(row.name));if(first)state.shopProduct=first.id;state.shopMessage='';}
-    if(command==='shop-tab'){state.shopTab=d.tab;state.shopTier=null;state.shopProduct=null;state.quantity=1;state.shopMessage='';}
+    // Trang Bị rarity: an open rarity keeps the chosen slot and closes the chooser; a locked one only shows its stage.
+    if(command==='shop-rarity-open')state.shopRarityOpen=!state.shopRarityOpen;
+    if(command==='shop-rarity-close')state.shopRarityOpen=false;
+    if(command==='shop-tier'){if(G.engine.read().campaign.cleared<M.craftGate(d.tier))return true;const slot=M.WORLD.SHOP.find(row=>row.id===state.shopProduct)?.target||'weapon';
+      state.shopTier=d.tier;state.shopProduct=d.tier+'-'+slot;state.shopRarityOpen=false;state.shopMessage='';}
+    if(command==='shop-tab'){state.shopTab=d.tab;state.shopTier=null;state.shopProduct=null;state.quantity=1;state.shopMessage='';state.shopRarityOpen=false;}
     if(command==='shop-product'&&/^gold-pack-/.test(d.product)){state.shopProduct=d.product;state.shopTab='gems';state.quantity=1;state.shopMessage='';if(state.screen!=='shop'){ctx.navigate('shop');return true;}}
-    else if(command==='shop-product'){const product=M.WORLD.SHOP.find(row=>row.id===d.product);if(!product)return true;state.shopProduct=product.id;state.shopTab=product.kind==='gear'?'equipment':product.currency;state.quantity=1;state.shopMessage='';if(state.screen!=='shop'){ctx.navigate('shop');return true;}}
+    else if(command==='shop-product'){const product=M.WORLD.SHOP.find(row=>row.id===d.product);if(!product)return true;state.shopProduct=product.id;state.shopTab=product.kind==='gear'?'equipment':product.currency;if(product.kind==='gear')state.shopTier=product.rarity;state.quantity=1;state.shopMessage='';state.shopRarityOpen=false;if(state.screen!=='shop'){ctx.navigate('shop');return true;}}
     if(command==='purchase'){try{const r=G.engine.purchase(d.product,Number(d.count));state.shopMessage='Đã nhận '+M.WORLD.SHOP.find(row=>row.id===r.product).name+' ×'+r.count+'.';}catch(error){state.shopMessage=error.message;}}
-    if(command==='gold-pack'){try{const r=G.engine.buyGold(d.pack);state.shopMessage=`Đã nhận ${fmt(r.gold)} vàng.`;}catch(error){state.shopMessage=error.message;}}
+    if(command==='gold-pack'){try{const r=G.engine.buyGold(d.pack);state.shopMessage=`Đã nhận ${money('gold',r.gold)}`;}catch(error){state.shopMessage=error.message;}}
     if(command==='quantity')state.quantity=Math.max(1,Math.min(20,(state.quantity||1)+Number(d.delta)));
     if(command==='arena-mode')state.arenaMode=d.mode;
     if(command==='forge-tab')state.forgeTab=+d.index;

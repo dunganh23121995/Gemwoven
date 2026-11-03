@@ -1,0 +1,112 @@
+Create a polished UI design mockup for Gemwoven, a cozy fantasy portrait match-3 RPG.
+
+REFERENCE AND CANVAS
+Use attached Image 1 as the primary visual reference. Reuse its exact painted mushroom-shop background, perspective, warm wood, parchment, gold trim, foliage, lighting and cozy illustrated style. Treat this as a precise UI correction of that screen.
+
+Output one straight-on portrait game stage, approximately 941 × 1672 pixels. Remove the screenshot’s external blurred letterboxing. No perspective phone device, no desktop chrome, no extra shop building.
+
+PRESERVE THE APPROVED COMPOSITION
+Preserve the original character HUD and currency counters, hanging “Cửa Hàng” sign, cat-eared shopkeeper, rabbit, speech bubble, “Nạp” button, four category tabs, bottom navigation, lower parchment detail panel, large selected-product preview and wooden purchase board.
+
+Keep the tab strip at approximately stage y758–840, with “Vàng” selected. Preserve the category labels:
+“Vàng”, “Đá Ngọc”, “Trang Bị”, “Ký Ức”.
+
+Do not repaint, move, widen or flatten the shop’s posts, shelf boards or furniture. The corrected UI must fit the existing furniture.
+
+SHELF GEOMETRY
+The stage is 941 pixels wide.
+
+Upper product bay:
+- Inner usable horizontal range approximately x110–818.
+- Cards rest on the board surface at y980.
+- The shelf front face at y985–1003 remains visibly unobstructed.
+
+Middle product bay:
+- Inner usable horizontal range approximately x90–838.
+- Cards rest on the board surface at y1128.
+- The shelf front face at y1140–1176 remains visibly unobstructed.
+
+Use five compact parchment product cards:
+- Each approximately 226 × 112 pixels.
+- Column left edges x114, x352 and x590.
+- Upper cards y868–980.
+- Middle cards y1016–1128.
+- Three cards on the upper shelf and two on the middle shelf, occupying its left and center positions.
+- Leave the middle shelf’s right position empty, showing the painted wood.
+
+No card, ornament, glow or shadow crosses a post or covers a shelf front face. Keep the board surfaces visible around the cards.
+
+CARD ART AND HIERARCHY
+Use the existing Gemwoven visual language: illustrated parchment “kit-stat” cards, gold-rimmed “kit-stat-on” selected card, small “kit-badge-leather” availability tag, ornate illustrated inventory icon frames.
+
+Frames and tags must look like drawn game assets. Text must look crisp and clean, as if composited as an HTML layer over the art.
+
+Each card has:
+- An approximately 76–80 pixel illustrated product picture at upper left.
+- A short dark-brown title at upper right, approximately 26–28 stage pixels, maximum two lines.
+- A full-width price footer inside the card, approximately 30–32 pixels bold, with a recognizable 30–34 pixel coin-pile icon followed by the number.
+
+Do not squeeze the price into the narrow area beside the picture.
+
+EXACT PRODUCT ORDER AND CONTENT
+Upper left, SELECTED:
+- Purple-and-gold experience book picture.
+- Title: “Sách EXP”
+- Price: [gold coin-pile icon] 120
+- Existing gold-rimmed selected parchment, with a subtle contained glow.
+
+Upper center:
+- Iron ore picture.
+- Title: “Quặng Sắt”
+- Price: [gold coin-pile icon] 80
+
+Upper right:
+- Soft timber logs picture.
+- Title: “Gỗ Mềm”
+- Price: [gold coin-pile icon] 55
+
+Middle left:
+- Rolled coarse cloth picture.
+- Title: “Vải Thô”
+- Price: [gold coin-pile icon] 55
+
+Middle center:
+- Red-and-gold manual picture.
+- Title: “Bí Kíp”
+- Price: [gold coin-pile icon] 1.800
+- Small illustrated leather tag reading exactly “5/ngày”, approximately 24 pixel text.
+- Pin this tag at the upper-right edge, approximately 12 pixels above the card, entirely inside the middle bay. Keep the title below it and fully readable.
+
+CURRENCY RULE
+Render real currency pictures, not bracketed descriptions:
+- Gold: the game’s recognizable gold coin-pile icon.
+- Premium gems, wherever needed: the game’s blue faceted gem.
+- Memory dust, wherever needed: the game’s purple vial.
+
+Every transactional price is an icon plus a number. Never append currency words such as “vàng” or “Ngọc” to a price. Preserve the approved category tab names.
+
+LOWER DETAIL AREA
+Keep the original parchment detail panel around x66–356 and y1215–1440.
+
+Selected item name:
+“Sách kinh nghiệm”
+
+Description:
+“Dùng để tăng cấp tướng.”
+
+Preserve the large purple-and-gold book preview around x384–584.
+
+Preserve the wooden purchase board around x625–870. Keep its illustrated minus and plus controls. Show quantity “2” between them.
+
+Remove the old separate price line.
+
+Within the existing illustrated gold purchase button, show two clearly readable lines:
+“Mua”
+[gold coin-pile icon] 240
+
+Both lines must be inside the button. Give the total a strong, recognizable currency icon. No currency word beside the number. Keep the entire board within its approved lower-screen area and above the bottom navigation.
+
+FINISH
+The result should feel like the original painted shop with carefully fitted, picture-led merchandise. Preserve generous visible wood between the shelf rows. Keep all labels readable at phone size and at roughly half-scale Studio display.
+
+Do not add equipment cards, extra panels, pagination, explanatory captions or an inset to this main Vàng mockup.

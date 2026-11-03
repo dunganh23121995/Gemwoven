@@ -249,16 +249,14 @@
     ['cloth','Vải Thô','resource','cloth','common','gold',55,'cloth','Nguyên liệu may giáp thông dụng.'],
     ['skillBooks','Bí Kíp','resource','skillBooks','uncommon','gold',1800,'skill-book','Dùng học và tăng cấp kỹ năng.'],
     ['essence','Tinh Hoa','resource','essence','rare','gems',20,'fire-essence','Nguyên liệu quý để tăng sao và tiến hóa.'],
-    ['divineOre','Thần Thạch','resource','divineOre','divine','gems',120,'lightning-essence','Mảnh nguyên liệu dùng rèn trang bị Thần.'],
-    ['legendary-weapon','Kiếm Huyền Thoại','gear','weapon','legendary','gems',2500,'fire-sword','Vũ khí phẩm Huyền Thoại, có thể cường hóa đến +20.'],
-    ['legendary-armor','Giáp Huyền Thoại','gear','armor','legendary','gems',2200,'helmet','Giáp phẩm Huyền Thoại, tăng HP của tướng.'],
-    ['legendary-boots','Ủng Huyền Thoại','gear','boots','legendary','gems',1800,'boots','Giày phẩm Huyền Thoại, tăng phòng thủ.'],
-    ['divine-weapon','Kiếm Thần','gear','weapon','divine','gems',6000,'fire-sword','Vũ khí Thần có một hiệu ứng ngẫu nhiên: choáng, hút máu hoặc xuyên giáp.'],
-    ['divine-armor','Giáp Thần','gear','armor','divine','gems',5500,'helmet','Giáp Thần có hiệu ứng kháng mất lượt hoặc hộ thân.'],
-    ['divine-boots','Ủng Thần','gear','boots','divine','gems',5000,'boots','Giày Thần có hiệu ứng kháng mất lượt hoặc hộ thân.']
+    ['divineOre','Thần Thạch','resource','divineOre','divine','gems',120,'lightning-essence','Mảnh nguyên liệu dùng rèn trang bị Thần.']
   ].map(([id,name,kind,target,rarity,currency,price,asset,description])=>({id,name,kind,target,rarity,currency,price,asset,description}));
-  for(const [slot,name]of [['helmet','Mũ'],['pants','Quần'],['glasses','Kính']])for(const [rarity,label,price]of [['legendary','Huyền Thoại',2000],['divine','Thần',5200]])SHOP.push({id:rarity+'-'+slot,name:name+' '+label,kind:'gear',target:slot,rarity,currency:'gems',price,asset:'gear-'+slot,description:name+' dùng chung giữa các tướng. Cường hóa tối đa +20.'});
-  for(const row of SHOP)if(row.kind==='gear'&&row.target==='armor')row.asset='gear-armor';
+  // Gear (Claude + Codex 04/11, GAME_DESIGN §8): the shop sells only up to Sử Thi, for gold, one per slot and rarity a
+  // week, opened by the same stage as the forge (progression.js craftGate 20/40/60). Huyền Thoại and Thần come from
+  // the forge, rarity upgrades and summons only.
+  for(const [rarity,label,price]of [['uncommon','Tốt',12000],['rare','Hiếm',48000],['epic','Sử Thi',108000]])
+    for(const [slot,name]of [['weapon','Vũ khí'],['armor','Áo'],['helmet','Mũ'],['boots','Giày'],['pants','Quần'],['glasses','Kính']])
+      SHOP.push({id:rarity+'-'+slot,name:name+' '+label,kind:'gear',target:slot,rarity,currency:'gold',price,asset:'gear-'+rarity+'-'+slot,description:'Cho mọi tướng.\nCường hóa đến +20.'});
   // Limits from the shop table (GAME_DESIGN §8): per GMT+7 day or per week (Monday).
   const LIMITS={skillBooks:['day',5],essence:['day',10],divineOre:['week',5]};
   for(const row of SHOP){if(LIMITS[row.id])row.limit={per:LIMITS[row.id][0],n:LIMITS[row.id][1]};if(row.kind==='gear')row.limit={per:'week',n:1};}

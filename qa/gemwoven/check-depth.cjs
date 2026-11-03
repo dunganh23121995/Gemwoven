@@ -186,7 +186,7 @@ console.log('gems ok');
 { // Shop limits (GAME_DESIGN §8): per day / per week, counted on the server-side rule copy.
   const {engine:e,edit}=fixture();edit(p=>{p.wallet.gold=1e7;p.wallet.gems=1e5;});
   e.purchase('skillBooks',5);assert.throws(()=>e.purchase('skillBooks',1),/hết lượt/);assert.equal(e.shopLeft('exp'),Infinity);
-  e.purchase('legendary-weapon',1);assert.throws(()=>e.purchase('legendary-weapon',1),/tuần này/);
+  edit(p=>{p.campaign.cleared=20;});e.purchase('uncommon-weapon',1);assert.throws(()=>e.purchase('uncommon-weapon',1),/tuần này/);assert.throws(()=>e.purchase('rare-weapon',1),/ải 40/);
 }
 console.log('shop limits ok');
 { // Báu vật trial (round 9): only the trial copy earns, shops and wears; caps; the real save stays untouched.

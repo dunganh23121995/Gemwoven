@@ -1,0 +1,10 @@
+Create a small companion UI study using the same painted Gemwoven shop assets.
+
+Show the equipment purchase board with its quantity stepper replaced by one wide drawn rarity selector: the forge’s Tốt ingot, label “Tốt”, and a small chevron. Below it, retain the gold Mua button with [coin-pile icon] 12.000.
+
+Beside it, show the selector’s open state as a transient illustrated parchment chooser with three large forge ingot choices:
+“Tốt”
+“Hiếm” with lock icon and “Ải 40”
+“Sử Thi” with lock icon and “Ải 60”
+
+Use at least 26 pixel rarity labels and 24 pixel stage requirements. Keep the choices large enough for phone interaction. This chooser appears only while selecting a rarity; it does not permanently displace the shopkeeper, product shelves or lower detail composition.

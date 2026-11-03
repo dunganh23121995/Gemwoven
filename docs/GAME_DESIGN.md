@@ -260,7 +260,8 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 | Sách EXP, quặng, gỗ, vải | ✔ | | ✔ | ✔ | ✔ | |
 | Bí kíp | ✔ (giới hạn) | ✔ | | ✔ | ✔ | |
 | Tinh hoa, thần thạch | | ✔ (giới hạn) | | ✔ | ✔ | bán bằng vàng |
-| Trang bị Huyền thoại/Thần | | ✔ (giới hạn tuần) | ✔ | | | |
+| Trang bị Tốt / Hiếm / Sử Thi | ✔ 12.000 / 48.000 / 108.000, 1 món mỗi ô mỗi phẩm mỗi tuần, mở theo ải như Lò Rèn (20 / 40 / 60) | | ✔ | | | bán bằng Đá Ngọc |
+| Trang bị Huyền Thoại / Thần | | | ✔ | | | bán ở Cửa Hàng (chỉ Lò Rèn, Nâng Phẩm, triệu hồi) |
 | **Tướng hiếm** | | | ✔ banner | | | bán trực tiếp |
 | Mảnh tướng banner | | | ✔ | ✔ đổi ≤ 30/kỳ | | |
 | Mảnh tướng cũ | | | | Cửa Hàng Ký Ức (Bụi Ký Ức) · rương ngày 28 | ✔ (giới hạn tuần) | |
@@ -296,6 +297,8 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
   bằng tiền/Đá Ngọc, không gửi qua thư, không có trong cửa hàng thường. Bụi và mảnh không hết hạn.
 - **Cửa Hàng · Ký Ức [Có]** (tab thứ 4): làm mới **Thứ Hai 00:00 GMT+7**; tối đa **2 tướng/tuần**, xoay lần lượt theo thứ tự
   phát hành trong các tướng: đã phát hành, ngoài banner hiện tại, **đã qua ≥ 42 ngày từ lần mở banner đầu**, không Hiro. Thiếu
+Cửa Hàng (04/11, Claude + Codex, `codex-gear` + review kệ hàng): Cửa Hàng chỉ bán trang bị đến Sử Thi; Huyền Thoại và Thần đến từ Lò Rèn, Nâng Phẩm và triệu hồi. Mỗi tab tối đa 6 món, xếp 3 món một tầng trên hai tầng kệ vẽ sẵn (không đè cột, không che mép ván); giá luôn là biểu tượng + số (đồng vàng, viên Đá Ngọc, lọ Bụi Ký Ức), hạn mức là thẻ da nhỏ "5/ngày". Luật mua: `progression.js` `purchase` (cổng ải `craftGate`), bảng hàng `world.js` SHOP. Mô phỏng cân bằng trước/sau giống hệt (cửa hàng không nằm trong mô phỏng trận).
+
   tướng thì bày ít hơn, bụi vẫn tích. **8 bụi/mảnh, mua 10 mảnh = 80 bụi**, tối đa **40 mảnh/tướng/tuần**; mua được tướng chưa sở
   hữu (80 mảnh ghép một tướng); tướng đã 6★ không mua (mảnh sẽ thành bụi). Hiện Mika đang ở banner nên kệ trống:
   "Chưa có tướng đủ điều kiện · kỳ sau".
