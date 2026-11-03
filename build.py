@@ -492,6 +492,16 @@ def share_blobs(node):
     return node
 shared_art=share_blobs(art)
 resolve_blobs="(function resolve(node){for(const k in node){const v=node[k];if(typeof v==='string'&&v.startsWith('@blob:'))node[k]=ART_BLOBS[+v.slice(6)];else if(v&&typeof v==='object')resolve(v);}})(ART);\n"
+# The plaza (src/gemwoven/plaza.js) walks every hero in town: each form's resting loop and run (Lumi hovers),
+# with the same feet line and head-based size as combat.
+plaza_sprites={}
+def plaza_sheet(sheet):return {k:sheet[k] for k in ('src','cols','rows','count','frameDuration','footY','bodyHeight','feetX','scale') if k in sheet}
+for hero in art['heroes']:
+    looks={'1':art['heroes'][hero],**art['heroForms'].get(hero,{})}
+    for form,actions in looks.items():
+        move=actions.get('hover') if hero=='lightning' else actions.get('run')
+        plaza_sprites.setdefault(hero,{})[form]={'idle':plaza_sheet(actions['idle']),'move':plaza_sheet(move or actions['idle']),'head':art['heroHead'].get(hero,{}).get(form)}
+(root/'assets/gemwoven/plaza/sprites.json').write_text(json.dumps(plaza_sprites,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                         for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js', 'summon-showcase.js'])

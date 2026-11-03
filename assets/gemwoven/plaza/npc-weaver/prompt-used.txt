@@ -1,0 +1,5 @@
+Use the attached hero image only as the STYLE and SCALE reference (Gemwoven chibi fantasy hero art: soft painted shading, clean dark outline, warm palette). Draw a NEW character.
+
+Subject: "Bà Dệt Đèn", the lantern weaver NPC of the guild square: a kind elderly woman, chibi proportions like the reference (big head), silver hair in a bun with a wooden hairpin, round glasses, warm brown shawl over a deep green dress, a little apron with colored thread spools in the pocket. She holds a small wooden spindle trailing three glowing threads (rose red, sky blue, gold) that curl around her, a small unlit paper lantern hanging from her other hand. Full body, standing, slight 3/4 angle, feet on the ground.
+
+Output: ONE character, centered, full body inside the central 70% of the image, generous empty margin on all sides, nothing touching the edges. Background: solid flat #FF00FF magenta only, no gradient, no shadow on the background, no ground plane, no text, no frame.

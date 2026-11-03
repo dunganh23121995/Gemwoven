@@ -1,0 +1,13 @@
+{
+  "name": "gemwoven-social",
+  "private": true,
+  "description": "Gemwoven social server: plaza presence, chat, friends, guilds (docs/GAME_DESIGN.md §14).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.cjs"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

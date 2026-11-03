@@ -64,7 +64,11 @@ function progressionBossPick(skills){
   const heroMax=HEROES[state.key].hp;
   return window.GemwovenBossTactics.chooseSkill(skills,{hpRatio:state.enemyHp/state.enemyMax,armor:state.enemyArmor,heroHpRatio:state.hp/heroMax,heroEnergy:state.energy,heroArmorRatio:state.armor/heroMax,heroDot:!!progressionEnemyDot,history:progressionBossHistory});
 }
-function progressionIsDuel(){return progressionBattle?.mode==='duel';}
+// A friendly fight from the plaza (spar) plays like the local duel (both sides normalized heroes), but the
+// other side is an AI copy of the other player's hero.
+function progressionIsDuel(){return progressionBattle?.mode==='duel'||progressionBattle?.mode==='spar';}
+function progressionIsSpar(){return progressionBattle?.mode==='spar';}
+function progressionDuelKey(side){return progressionIsSpar()?(side==='hero'?state.key:progressionBattle.opponent.hero):'novice';}
 function progressionRecordTurn(){
   if(progressionBattle?.mode==='campaign')progressionTurn++;
   if(progressionIsTrial()){progressionTurn++;message(`Thử luyện · lượt ${Math.min(progressionTurn,progressionBattle.turnLimit)}/${progressionBattle.turnLimit} · tổng sát thương ${progressionTrialDamage().toLocaleString('vi-VN')}`);}
@@ -234,17 +238,19 @@ finishBattle=async function(){
     if(progressionReward.counterReward){const c=progressionReward.counterReward;$('resultDesc').textContent+=` · +3 mảnh ${c.name} (${c.shards}/12) · Khắc chế bậc ${c.rank}.`;}
     $('resultStage').textContent=String(progressionBattle.index);$('nextBtn').textContent=state.hp>0?'Trận kế tiếp':'Thử lại';
     if(progressionBattle.mode==='campaign'&&state.hp>0&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES)$('nextBtn').textContent='Về bản đồ';
-    if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
-    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent='Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
+    if(progressionIsSpar()){$('resultEyebrow').textContent='GIAO HỮU';$('resultTitle').textContent=state.hp>0?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=`${progressionBattle.name} · Đối thủ: bản sao ${progressionBattle.opponent.name}. Kết quả không được công bố.`;$('nextBtn').textContent='Về Quảng Trường';}
+    else if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
+    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent=progressionIsSpar()?'Về Quảng Trường':'Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
   }return result;
 };
 $('nextBtn').addEventListener('click',event=>{
   if(!progressionBattle)return;event.stopImmediatePropagation();
+  if(progressionIsSpar()){location.href='Gemwoven.html#chat';return;}
   const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:mode==='trial'?progressionBattle.index:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
   if(mode==='campaign'&&won&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES){location.href='Gemwoven.html#campaign';return;}
   try{const next=progressionStore.begin(mode,index);location.href='Game.html?encounter='+encodeURIComponent(next.token);}catch(error){message(error.message);}
 },true);
-const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
+const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
 if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Trận không hợp lệ · Về thị trấn';document.body.append(progressionBack);}
 
 if(['campaign','boss','trial'].includes(progressionBattle?.mode)){
@@ -291,11 +297,14 @@ if(['campaign','boss','trial'].includes(progressionBattle?.mode)){
 }
 
 if(progressionIsDuel()){
-  // Both players use the novice with identical normalized stats and tile yields.
-  ART.enemies.fire=ART.heroes.novice;MONSTERS.fire={...MONSTERS.fire,name:'Người chơi 2 · Hiro',skill:'Kiếm Nhiệt Huyết',attack:'Kiếm gỗ'};MONSTERS.novice=MONSTERS.fire;ELEMENTS.fire={...ELEMENTS.novice};
+  // Both players use normalized heroes with identical tile yields: the local duel is Hiro against Hiro; a
+  // plaza spar is your hero against an AI copy of the other player's (their town look's form when drawn).
+  const rival=progressionIsSpar()?progressionBattle.opponent:null,rivalKey=rival?.hero||'novice',rivalForm=rival&&ART.heroForms?.[rivalKey]?.[rival.look]?ART.heroForms[rivalKey][rival.look]:null;
+  const enemyKey=progressionIsSpar()?progressionBattle.enemyKey:'fire';
+  ART.enemies[enemyKey]=rivalForm||ART.heroes[rivalKey];MONSTERS[enemyKey]={...MONSTERS[enemyKey],name:rival?`Bản sao ${rival.name} · ${HEROES[rivalKey].name}`:'Người chơi 2 · Hiro',skill:rival?(HEROES[rivalKey].skill||'Tuyệt kỹ'):'Kiếm Nhiệt Huyết',attack:rival?'Bản sao · AI':'Kiếm gỗ'};if(!rival)MONSTERS.novice=MONSTERS.fire;ELEMENTS[enemyKey]={...ELEMENTS.novice};
   const aiMove=chooseEnemyMove;
   chooseEnemyMove=async function(){
-    if(!progressionIsDuel())return aiMove();
+    if(!progressionIsDuel()||progressionIsSpar())return aiMove();
     const moves=legalMoves();if(!moves.length)return null;
     const modal=document.createElement('dialog');modal.className='duel-dialog';modal.setAttribute('aria-label','Lượt người chơi 2');
     const title=document.createElement('h2');title.textContent='Người chơi 2 · Chọn hai ngọc kề nhau';modal.append(title);

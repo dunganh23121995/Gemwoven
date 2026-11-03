@@ -107,3 +107,30 @@ console.log('gear row ok');
   const reload=e.read();assert.equal(reload.pending,null);
 }
 console.log('trial ok');
+{ // Owner review 2026-11-03: no lifetime card; the pass has a third (jewel) track without gems or Hiro fragments.
+  const O=require('../../src/gemwoven/liveops.js');
+  assert.ok(!O.PRODUCTS.some(p=>p.id==='lifetime-card'),'No lifetime card');
+  assert.deepEqual(O.PASS.tracks.map(t=>t.id),['free','gold','jewel']);
+  for(let l=1;l<=O.PASS.levels;l++)assert.equal(O.PASS.jewel(l).gems,undefined,'No Đá Ngọc in the jewel track');
+  assert.ok(O.PASS.fragmentRule.exclude.includes('novice')&&O.PASS.fragmentRule.ownedOnly,'Paid fragment chests skip Hiro and unowned heroes');
+  assert.ok(O.PASS.boughtIncludesJewel&&O.PASS.jewelBonusLevels<=O.PASS.boughtLevelsMax,'Jewel levels count toward the bought-level cap');
+  const jewel=O.PRODUCTS.find(p=>p.id==='journey-pass-jewel');assert.equal(jewel.upgradePrice,jewel.price-O.PRODUCTS.find(p=>p.id==='journey-pass').price);
+}
+{ // Plaza friendly fight: an AI copy with normalized stats, never a reward.
+  const {engine:e}=fixture();const before=JSON.stringify(e.read().wallet);
+  const b=e.begin('spar',1,{opponent:{hero:'fire',name:'Bạn',look:2}});assert.equal(b.mode,'spar');assert.match(b.name,/bản sao · AI · Không thưởng/);
+  assert.equal(b.enemyHp,M.HEROES.fire.hp*2);const r=e.settle(b.token,true,999);assert.deepEqual(Object.keys(r),['spar']);assert.equal(JSON.stringify(e.read().wallet),before,'No reward');
+  assert.throws(()=>e.begin('spar',1,{opponent:{hero:'nobody'}}),/không hợp lệ/);
+}
+{ // Social protocol shared by the plaza and the social server.
+  const S=require('../../src/gemwoven/social-protocol.js'),geo=require('../../assets/gemwoven/plaza/plaza.json');
+  assert.equal(S.cleanText('chào đm bạn').text,'chào ** bạn');assert.equal(S.cleanText('Các bạn đi du lịch, đeo kính, mua lon bia').text,'Các bạn đi du lịch, đeo kính, mua lon bia','ordinary words untouched');assert.equal(S.cleanText('ĐM thật').text,'** thật');
+  assert.ok(!S.cleanText('x'.repeat(S.LIMITS.chat+1)).ok);assert.ok(!S.checkName('admin').ok);assert.ok(S.checkName('Lữ Khách').ok);
+  assert.ok(S.checkGuild('Hội Dệt Ngọc','dn').ok&&S.checkGuild('Hội Dệt Ngọc','dn').tag==='DN');assert.ok(!S.checkGuild('Hội','D').ok);
+  assert.equal(S.guildLevel(0),1);assert.equal(S.guildLevel(45000),10);assert.equal(S.guildCap(10),38);
+  assert.equal(S.lanternTier({red:5,blue:0,gold:0}),0,'every colour is needed');assert.equal(S.lanternTier({red:5,blue:5,gold:15}),3);
+  for(const z of geo.zones)assert.ok(S.walkable(geo,z.x,z.y)||z.id==='fountain','zone centres are reachable');
+  // Walking from the gate reaches every place by steering round the fountain and the board.
+  for(const z of geo.zones.filter(z=>z.id!=='fountain')){let p=[...geo.spawn],side=0;for(let i=0;i<600;i++){const r=S.step(geo,p,[z.x,z.y],.1,side);p=r.pos;side=r.side;if(r.arrived)break;}assert.ok(Math.hypot(p[0]-z.x,p[1]-z.y)<3,'reach '+z.id);}
+}
+console.log('plaza, pass tracks, spar ok');

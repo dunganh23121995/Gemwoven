@@ -1,0 +1,13 @@
+Use the attached images only as the STYLE reference (painted cozy fantasy storybook town art of the Gemwoven hub: soft daylight, warm stone, lush greenery, golden lanterns, gentle painterly brushwork). Draw a NEW image.
+
+Subject: the town square ("Quảng Trường") where players walk around with their heroes, seen from a high 3/4 top-down camera (about 60 degrees down), like a cozy mobile RPG social hub map. Portrait image, 2:3 (1024x1536).
+
+Layout (keep these places clearly readable, leave most of the ground open and walkable):
+- Centre: a round stone fountain with clear water and a small gem-shaped crystal on top, a ring of low flower beds around it with gaps to walk through.
+- North (top centre): the front of a guild hall ("sảnh bang hội"): wide stone steps up to a big wooden double door, two tall hanging banners without any letters or symbols, warm lanterns. The building only occupies the top ~18% of the image.
+- East (right, middle): a circular raised stone duel ring with a carved rim and four short torch posts, open inside.
+- West (left, middle): a wooden notice board with blank pinned papers (no readable text) under a small roof, a bench beside it.
+- South (bottom): a gentle stone stair/arch entrance from the town, two small market stalls with awnings at the lower corners.
+- Edges: trees, hedges, lamp posts and a low wall frame the square; big cobblestone plaza in between, with soft paths radiating from the fountain.
+
+Rules: no people, no animals, no characters, no text, no letters, no logos, no UI. Ground plane continuous, consistent perspective, no fisheye. Bright, readable, not too busy in the walkable area so small character sprites stand out. Full scene to all four edges, no border, no frame.

@@ -66,3 +66,6 @@ tools/sound-library.json
 
 # Elite capture frames and measures (qa/gemwoven/capture-elites.cjs)
 /qa/gemwoven/elites/
+
+# Social server dev data (accounts, guilds) — never committed
+/server/social/data/

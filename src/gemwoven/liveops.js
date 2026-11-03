@@ -22,20 +22,29 @@
     {level:11,spend:60000000,perks:['Khung và danh hiệu Đại Phú Hộ']},
     {level:12,spend:100000000,perks:['Chăm sóc khách hàng riêng','Offline 16 giờ']}
   ].map(v=>({...v,dailyGold:v.level>=2?1000:500,combatStats:false}));
-  // Payment products (suggested prices, Codex review: 109k card, 149k pass, 299k fund).
+  // Payment products (suggested prices, Codex review: 109k card, 149k pass, 299k fund). No lifetime card
+  // (owner, 2026-11-03): the pass has a third, higher track instead.
   const PRODUCTS=[
     {id:'monthly-card',name:'Thẻ Tháng',price:109000,days:30,stackMaxDays:180,gemsNow:300,gemsDaily:100,
       perks:['300 Đá Ngọc ngay khi mua','100 Đá Ngọc mỗi ngày trong 30 ngày (tự vào Hòm Thư nếu quên đăng nhập)','Trần offline +2 giờ','+1 lượt Boss Vô Hạn có thưởng mỗi ngày','Quét ải 3★ không cần vé quét']},
-    {id:'lifetime-card',name:'Thẻ Trọn Đời',price:499000,gemsNow:980,perks:['980 Đá Ngọc','+20% vàng offline','Thêm một hàng đợi rèn']},
     {id:'journey-pass',name:'Sổ Hành Trình · Nhánh Vàng',price:149000,perks:['Mở nhánh Vàng của mùa hiện tại','Nhận ngay mọi phần thưởng Vàng của các cấp đã đạt','Không có Đá Ngọc trong sổ']},
+    {id:'journey-pass-jewel',name:'Sổ Hành Trình · Nhánh Diệu Ngọc',price:299000,upgradeFrom:'journey-pass',upgradePrice:150000,
+      perks:['Gồm nhánh Vàng, thêm nhánh Diệu Ngọc (đã mua Vàng thì bù 150.000₫, không mua trùng)','+10 cấp sổ ngay khi mua (tính vào giới hạn 10 cấp mua mỗi mùa)','80 Mảnh tướng tự chọn mỗi mùa: tướng đã sở hữu, trừ Hiro; tài khoản chỉ có Hiro nhận phiếu chọn không hết hạn','Rương trang bị Sử Thi (cấp 25, nhận khi đã qua ải 60) và Huyền Thoại (cấp 50, nhận khi đã qua ải 80) tự chọn ô','Khung avatar và danh hiệu mùa (không chỉ số)','Không có Đá Ngọc; sức mạnh mua tắt ở hàng Chuẩn Hóa']},
     {id:'growth-fund',name:'Quỹ Trưởng Thành',price:299000,perks:['Đá Ngọc và tài nguyên ở các mốc cấp tướng cao nhất','Trả theo tiến độ, không hết hạn']}
   ];
   // Growth fund ("speed pass"): delivery of a purchase, unlocked by the highest hero level.
   const GROWTH_FUND=[[10,300],[20,300],[30,400],[50,500],[70,500],[100,600],[130,600],[160,700],[200,800],[250,900],[300,1400]].map(([level,gems])=>({level,gems}));
-  // Journey pass: 28-day season, 50 levels from daily/weekly activity points (never from payment).
-  const PASS={seasonDays:28,levels:50,pointsPerLevel:100,boughtLevelsMax:10,boughtLevelsLastDays:7,
+  // Journey pass: 28-day season, 50 levels from daily/weekly activity points (never from payment, apart from
+  // the jewel track's 10 levels at purchase). Three tracks: free, gold (149k), jewel (299k, includes gold).
+  // Jewel: fragments only for heroes already owned (summons stay the way to a new hero), choice gear chests.
+  // Codex round 3: the jewel track's +10 levels count toward the 10 bought levels; fragment chests never hold
+  // Hiro (his fragments are not sold) or a hero not owned; gear chests open at the forge gates (stages 60/80).
+  const PASS={seasonDays:28,levels:50,pointsPerLevel:100,boughtLevelsMax:10,boughtLevelsLastDays:7,jewelBonusLevels:10,boughtIncludesJewel:true,
+    fragmentRule:{ownedOnly:true,exclude:['novice'],hiroOnlyVoucher:true},gearGates:{epicGearChoice:60,legendaryGearChoice:80},seasonTitle:'Lữ Khách Diệu Ngọc',
+    tracks:[{id:'free',name:'Thường'},{id:'gold',name:'Vàng',product:'journey-pass'},{id:'jewel',name:'Diệu Ngọc',product:'journey-pass-jewel'}],
     free:level=>level%10===0?{tickets:2,essence:20}:level%5===0?{skillBooks:2,ore:20}:{gold:3000+level*200},
-    gold:level=>level%10===0?{tickets:5,divineOre:2}:level%5===0?{essence:15,skillBooks:3}:{exp:20+level,ore:10}};
+    gold:level=>level%10===0?{tickets:5,divineOre:2}:level%5===0?{essence:15,skillBooks:3}:{exp:20+level,ore:10},
+    jewel:level=>level===50?{legendaryGearChoice:1,divineOre:10,seasonFrame:1}:level===25?{epicGearChoice:1,divineOre:2}:level%10===0?{fragmentChoice:20}:level%5===0?{divineOre:2,skillBooks:4}:{essence:6,ore:15}};
   // Event cadence (GMT+7). Each window lists what renews; the server owns the calendar. Two-week banner
   // periods and 28-day seasons count from the anchor Monday (period 0 / season 0).
   const CADENCE_ANCHOR='2026-11-02';

@@ -3006,6 +3006,15 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     const reward=runs<=TRIAL.rewarded&&tier?{gold:Math.round(rate.gold*.75*f),exp:Math.max(1,Math.round(rate.exp*.75*f)),...(tier>=3?{essence:1}:{})}:{};
     return {tier,rewarded:runs<=TRIAL.rewarded,reward};
   }
+  // Giao hữu (plaza, docs/GAME_DESIGN.md §14.6): an AI copy of another player's hero, both sides with the
+  // normalized stats of the Chuẩn Hóa queue (the other's profile is unverified); no reward, no ranking.
+  const SPAR_LABEL='Giao hữu với bản sao · AI · Không thưởng';
+  function sparEncounter(opponent){
+    const hero=HEROES[opponent?.hero]?opponent.hero:'novice',data=HEROES[hero],name=String(opponent?.name||'Lữ khách').slice(0,14);
+    return {mode:'spar',index:1,recommended:1,boss:false,tier:'normal',chapter:1,theme:WORLD.CHAPTERS[0].id,bossId:null,music:'fire',creature:null,enemyName:`Bản sao ${name}`,turnLimit:30,
+      enemyKey:['fire','ice','earth','lightning'].includes(hero)?hero:'fire',enemyHp:Math.round(data.hp*2),enemyAttack:Math.round(data.attack*1.8*1e4)/1e4,enemySkillBase:45,
+      skills:[data.ultimate||'Tuyệt kỹ'],skillSet:[],eliteUlt:false,tactical:false,variant:0,name:SPAR_LABEL,opponent:{hero,name,look:Math.max(1,Math.min(3,Math.round(Number(opponent?.look)||1)))}};
+  }
   function encounter(mode,index){
     if(mode==='trial')return trialEncounter(index);
     check(['campaign','boss','duel'].includes(mode),'Chế độ chưa phát hành.');check(int(index,1,mode==='campaign'?WORLD.MAX_STAGES:1000000),'Ải không hợp lệ.');
@@ -3083,7 +3092,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   function clampCampaign(p){p.campaign.cleared=Math.min(p.campaign.cleared,WORLD.MAX_STAGES);for(const n of Object.keys(p.campaign.stars))if(Number(n)>WORLD.MAX_STAGES)delete p.campaign.stars[n];if(p.pending?.mode==='campaign'&&p.pending.index>WORLD.MAX_STAGES)p.pending=null;}
   function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
     let memory,sequence=0;
-    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...encounter(p.pending.mode,p.pending.index),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
+    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...(p.pending.mode==='spar'?sparEncounter(p.pending.opponent):encounter(p.pending.mode,p.pending.index)),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
     function save(p){p.updated=now();p.revision++;if(storage)storage.setItem(KEY,JSON.stringify(p));else memory=clone(p);return p;}
     // Device-clock guard (stopgap until server time): the save remembers the latest time it
     // has seen. Setting the clock back never re-opens daily resets, Ấn caps or idle income;
@@ -3150,13 +3159,14 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
         }
         p.summon.last=results;note(p,'Triệu hồi '+count+' lần');return results;
       }),
-      begin:(mode,index)=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel')};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
+      begin:(mode,index,opts={})=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true)};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel')};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
         if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
         if(won&&b.mode==='campaign')p.campaign.stars[b.index]=Math.max(p.campaign.stars[b.index]||0,stageStars(b,won,performance));
         if(won&&b.mode==='campaign'&&b.tier==='elite'&&stageStars(b,true,performance)===3){const counter=counterProgress(p,b.chapter),local=(b.index-1)%50+1;if(counter&&!counter.claimed.includes(local)){p.campaign.artifacts[counter.theme]={claimed:[...counter.claimed,local]};counterReward={...counterProgress(p,b.chapter),earned:3};}}
         let hiroFragments=0,trial=null;
+        if(b.mode==='spar'){note(p,`${b.name}: ${won?'thắng':'thua'} bản sao ${b.opponent.name}`);return {spar:{won,opponent:b.opponent}};}
         if(b.mode==='trial'){const dmg=Math.floor(damage),t=trialReward(p,b,dmg);p.daily.trialRuns=(p.daily.trialRuns||0)+1;p.trial??={best:{}};p.trial.best[b.index]=Math.max(p.trial.best[b.index]||0,dmg);reward=t.reward;trial={damage:dmg,bar:b.enemyHp,tier:t.tier,rewarded:t.rewarded,best:p.trial.best[b.index]};}
         if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){if(b.index>p.boss.best&&b.index%HIRO_FRAGMENTS.endlessEvery===0){hiroFragments=HIRO_FRAGMENTS.endless;p.fragments.novice=(p.fragments.novice||0)+hiroFragments;}p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.weekly.progress.boss++;p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;}}
         // heroFragments is listed with the resources (label in RESOURCES) so the result popup shows it.
@@ -4679,7 +4689,7 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   if(ultimate)return rageChoreography(side,raw,{hits});
   if(side==='hero'&&state.key==='shadow')return shadowAttack(raw,{hits,damageLedger,attackChain});
   const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
-  const key=progressionIsDuel()?'novice':side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
+  const key=progressionIsDuel()?progressionDuelKey(side):side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
   const sourceOrigin=combatV3Point(side),targetOrigin=combatV3Point(targetSide);
   // A pounce stops with the foe's drawn body (its sheet span, not its whole cell) at the
   // hero's front, however large the foe is.
@@ -8812,7 +8822,11 @@ function progressionBossPick(skills){
   const heroMax=HEROES[state.key].hp;
   return window.GemwovenBossTactics.chooseSkill(skills,{hpRatio:state.enemyHp/state.enemyMax,armor:state.enemyArmor,heroHpRatio:state.hp/heroMax,heroEnergy:state.energy,heroArmorRatio:state.armor/heroMax,heroDot:!!progressionEnemyDot,history:progressionBossHistory});
 }
-function progressionIsDuel(){return progressionBattle?.mode==='duel';}
+// A friendly fight from the plaza (spar) plays like the local duel (both sides normalized heroes), but the
+// other side is an AI copy of the other player's hero.
+function progressionIsDuel(){return progressionBattle?.mode==='duel'||progressionBattle?.mode==='spar';}
+function progressionIsSpar(){return progressionBattle?.mode==='spar';}
+function progressionDuelKey(side){return progressionIsSpar()?(side==='hero'?state.key:progressionBattle.opponent.hero):'novice';}
 function progressionRecordTurn(){
   if(progressionBattle?.mode==='campaign')progressionTurn++;
   if(progressionIsTrial()){progressionTurn++;message(`Thử luyện · lượt ${Math.min(progressionTurn,progressionBattle.turnLimit)}/${progressionBattle.turnLimit} · tổng sát thương ${progressionTrialDamage().toLocaleString('vi-VN')}`);}
@@ -8982,17 +8996,19 @@ finishBattle=async function(){
     if(progressionReward.counterReward){const c=progressionReward.counterReward;$('resultDesc').textContent+=` · +3 mảnh ${c.name} (${c.shards}/12) · Khắc chế bậc ${c.rank}.`;}
     $('resultStage').textContent=String(progressionBattle.index);$('nextBtn').textContent=state.hp>0?'Trận kế tiếp':'Thử lại';
     if(progressionBattle.mode==='campaign'&&state.hp>0&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES)$('nextBtn').textContent='Về bản đồ';
-    if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
-    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent='Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
+    if(progressionIsSpar()){$('resultEyebrow').textContent='GIAO HỮU';$('resultTitle').textContent=state.hp>0?'Bạn thắng bản sao':'Bản sao thắng';$('resultDesc').textContent=`${progressionBattle.name} · Đối thủ: bản sao ${progressionBattle.opponent.name}. Kết quả không được công bố.`;$('nextBtn').textContent='Về Quảng Trường';}
+    else if(progressionIsDuel()){$('resultTitle').textContent=state.hp>0?'Người chơi 1 thắng':'Người chơi 2 thắng';$('resultDesc').textContent='PvP cục bộ · Không trao tài nguyên hoặc điểm xếp hạng.';}
+    if(!$('returnHub')){const a=document.createElement('a');a.id='returnHub';a.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle.mode);a.textContent=progressionIsSpar()?'Về Quảng Trường':'Về thị trấn';a.className='progression-return';$('resultDialog').append(a);}
   }return result;
 };
 $('nextBtn').addEventListener('click',event=>{
   if(!progressionBattle)return;event.stopImmediatePropagation();
+  if(progressionIsSpar()){location.href='Gemwoven.html#chat';return;}
   const mode=progressionBattle.mode,won=state.hp>0,index=mode==='duel'?1:mode==='trial'?progressionBattle.index:Math.min(mode==='campaign'?progressionRules.WORLD.MAX_STAGES:1000000,progressionBattle.index+(won?1:0));
   if(mode==='campaign'&&won&&progressionBattle.index===progressionRules.WORLD.MAX_STAGES){location.href='Gemwoven.html#campaign';return;}
   try{const next=progressionStore.begin(mode,index);location.href='Game.html?encounter='+encodeURIComponent(next.token);}catch(error){message(error.message);}
 },true);
-const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
+const progressionBack=document.createElement('a');progressionBack.href='Gemwoven.html#'+(progressionIsSpar()?'chat':progressionIsDuel()?'arena':progressionIsTrial()?'boss':progressionBattle?.mode||'home');progressionBack.textContent='← Thị trấn';progressionBack.className='progression-back';document.querySelector('.app-header')?.append(progressionBack);
 if(progressionError){$('startBtn').disabled=true;progressionBack.textContent='Trận không hợp lệ · Về thị trấn';document.body.append(progressionBack);}
 
 if(['campaign','boss','trial'].includes(progressionBattle?.mode)){
@@ -9039,11 +9055,14 @@ if(['campaign','boss','trial'].includes(progressionBattle?.mode)){
 }
 
 if(progressionIsDuel()){
-  // Both players use the novice with identical normalized stats and tile yields.
-  ART.enemies.fire=ART.heroes.novice;MONSTERS.fire={...MONSTERS.fire,name:'Người chơi 2 · Hiro',skill:'Kiếm Nhiệt Huyết',attack:'Kiếm gỗ'};MONSTERS.novice=MONSTERS.fire;ELEMENTS.fire={...ELEMENTS.novice};
+  // Both players use normalized heroes with identical tile yields: the local duel is Hiro against Hiro; a
+  // plaza spar is your hero against an AI copy of the other player's (their town look's form when drawn).
+  const rival=progressionIsSpar()?progressionBattle.opponent:null,rivalKey=rival?.hero||'novice',rivalForm=rival&&ART.heroForms?.[rivalKey]?.[rival.look]?ART.heroForms[rivalKey][rival.look]:null;
+  const enemyKey=progressionIsSpar()?progressionBattle.enemyKey:'fire';
+  ART.enemies[enemyKey]=rivalForm||ART.heroes[rivalKey];MONSTERS[enemyKey]={...MONSTERS[enemyKey],name:rival?`Bản sao ${rival.name} · ${HEROES[rivalKey].name}`:'Người chơi 2 · Hiro',skill:rival?(HEROES[rivalKey].skill||'Tuyệt kỹ'):'Kiếm Nhiệt Huyết',attack:rival?'Bản sao · AI':'Kiếm gỗ'};if(!rival)MONSTERS.novice=MONSTERS.fire;ELEMENTS[enemyKey]={...ELEMENTS.novice};
   const aiMove=chooseEnemyMove;
   chooseEnemyMove=async function(){
-    if(!progressionIsDuel())return aiMove();
+    if(!progressionIsDuel()||progressionIsSpar())return aiMove();
     const moves=legalMoves();if(!moves.length)return null;
     const modal=document.createElement('dialog');modal.className='duel-dialog';modal.setAttribute('aria-label','Lượt người chơi 2');
     const title=document.createElement('h2');title.textContent='Người chơi 2 · Chọn hai ngọc kề nhau';modal.append(title);

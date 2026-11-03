@@ -294,8 +294,8 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 |---|---|---|
 | Gói Đá Ngọc | 22k–2,2tr | 60–6.480; lần đầu mỗi mốc ×2 |
 | **Thẻ Tháng** | 109k / 30 ngày | 300 ngay + 100/ngày (quên đăng nhập thì vào Hòm Thư, không mất), +2 giờ offline, +1 lượt boss có thưởng, quét ải 3★; cộng dồn tối đa 180 ngày |
-| **Thẻ Trọn Đời** | 499k | 980 Ngọc, +20% vàng offline, +1 hàng đợi rèn |
-| **Sổ Hành Trình** | 149k / mùa 28 ngày | nhánh Vàng 50 cấp; **mua giữa mùa nhận ngay mọi phần thưởng Vàng đã đạt**; không có Đá Ngọc trong sổ; 7 ngày cuối mua tối đa 10 cấp |
+| **Sổ Hành Trình · Vàng** | 149k / mùa 28 ngày | nhánh Vàng 50 cấp; **mua giữa mùa nhận ngay mọi phần thưởng đã đạt**; không có Đá Ngọc trong sổ; 7 ngày cuối mua tối đa 10 cấp |
+| **Sổ Hành Trình · Diệu Ngọc** (chủ dự án 03/11) | 299k / mùa (đã có Vàng: bù 150k) | gồm Vàng + nhánh Diệu Ngọc: 80 mảnh tướng tự chọn (tướng đã sở hữu, **trừ Hiro**; tài khoản chỉ có Hiro nhận phiếu chọn không hết hạn), rương Sử Thi (cấp 25, nhận khi qua ải 60) và Huyền Thoại (cấp 50, qua ải 80) tự chọn ô, 20 thần thạch, khung + danh hiệu mùa; +10 cấp khi mua **tính vào** giới hạn 10 cấp mua; không Đá Ngọc; tắt ở Chuẩn Hóa |
 | **Quỹ Trưởng Thành** (speed pass) | 299k một lần | 7.000 Ngọc trả theo mốc cấp tướng cao nhất 10..300 |
 | Gói ưu đãi | 49k–499k | đúng nút người chơi đang kẹt; tối đa 1 lần/7 ngày mỗi gói; không popup ép |
 | Trang phục hình thái | 199k | skin, không chỉ số |
@@ -385,12 +385,113 @@ Quảng Trường mùa sau.
 
 ---
 
-## 14. Xã hội: Quảng Trường [Máy chủ]
+## 14. Xã hội: Quảng Trường, bạn bè, bang hội [Có · máy chủ xã hội chạy thật]
 
-- Cảnh thị trấn 2D: mỗi người là **tướng + diện mạo đã chọn + danh hiệu**, chạy qua lại, bong bóng chat, biểu cảm.
-- Chạm người khác: hồ sơ (tướng, lực chiến, danh hiệu, thành tích), **mời Giao Hữu**, kết bạn, báo cáo.
-- Kênh: Thế giới (phòng ~50 người), Khu vực, Bang hội (sau), Riêng tư.
-- Kiểm duyệt: lọc từ, giới hạn tốc độ, tắt tiếng, chặn, báo cáo; tài khoản mới 24 giờ chỉ chat kênh khu vực.
+Trò Chuyện **là một không gian**, không phải khung chat. Người chơi vào Quảng Trường bằng tướng đang xuất chiến (diện
+mạo đã khoác), tự đi lại, nhắn tin thì bong bóng hiện trên đầu, đứng gần ai thì bấm vào nhân vật của nhau để kết bạn,
+nhắn riêng, mời giao hữu, mời vào bang.
+
+### 14.1 Kiến trúc: máy chủ xã hội trực tuyến (không phải LAN)
+- **Tiến trình riêng** `server/social/` (Node + WebSocket), là máy chủ xã hội của bản phát hành; bản dev chạy nó trên
+  máy dev (cổng 8091), bản phát hành chạy sau Cloudflare Tunnel ở đường dẫn `/social` cùng tên miền với game
+  (`wss://<miền>/social`). Client chỉ đổi địa chỉ, không đổi giao thức.
+- **Máy chủ quyết định**: vị trí (giới hạn tốc độ, va chạm, biên bản đồ), kênh/phòng, chat (độ dài, tốc độ, lọc từ,
+  chặn), bạn bè, bang hội, lời mời. Client gửi *ý định* (đích đến, câu chat), nhận *trạng thái*.
+- **Giao thức dùng chung** `src/gemwoven/social-protocol.js` (UMD như progression.js): hằng số bản đồ, tốc độ, bán
+  kính tương tác, giới hạn chat, kiểm tra hợp lệ từng loại tin. Client và máy chủ chạy cùng một mã kiểm tra.
+- **Danh tính:** trước khi có máy chủ tài khoản, **máy chủ cấp mã tài khoản + token** (lưu băm, thu hồi được; thiết bị giữ token), tối đa 5 tài khoản mới/giờ/địa chỉ; máy chủ gắn tên hiển thị
+  duy nhất 3–14 ký tự. Hồ sơ tướng (cấp, lực chiến) do client gửi là **chưa xác thực** — chỉ để khoe, không dùng xếp
+  hạng; khi có máy chủ tài khoản, hồ sơ do máy chủ ký.
+- **Lưu trữ:** bạn bè, bang, tên, danh sách chặn ghi file JSON trên máy chủ (dev); bản phát hành chuyển SQLite/Postgres
+  và sao lưu hằng ngày theo luật máy chủ. Vị trí và chat kênh không lưu (chỉ nhật ký kiểm duyệt 7 ngày).
+- **Không có máy chủ** (mất mạng): Quảng Trường mở ở chế độ **Ngoại tuyến** — chỉ có bạn và các NPC thị trấn ghi rõ NPC;
+  không giả người chơi.
+
+### 14.2 Màn hình dọc (khung 941×1672)
+```
+┌──────────────────────────────┐ HUD hub (avatar, vàng, ngọc)
+│ ← Quảng Trường · Kênh 3 (27) │ thanh đầu: quay lại, tên khu, kênh + số người, nút đổi kênh
+│                              │
+│      bản đồ (camera theo     │ tên + danh hiệu + [TAG] bang trên đầu; bong bóng chat 4 giây
+│      tướng của mình)         │ người ngoài tầm nhìn hiện mũi tên ở mép (bạn bè, thành viên bang)
+│                     [Bạn]    │ cột nút phải: Bạn bè (chấm đỏ lời mời), Bang hội, Biểu cảm
+│                     [Bang]   │
+│                     [😀]     │
+│ ◯ cần điều hướng    (ticker) │ 3 dòng chat gần nhất mờ dần, chạm để mở nhật ký đầy đủ
+│ [Kênh▾][ Nhắn gì đó…  ][Gửi] │ ô chat (bàn phím thu vùng bản đồ, ẩn cần/ticker/cột nút, camera giữ mình trong vùng còn thấy)
+└──────────────────────────────┘ thanh điều hướng hub ẩn trong Quảng Trường (toàn màn hình)
+```
+- **Điều khiển:** cần điều hướng ảo hiện nơi ngón cái chạm ở nửa dưới-trái; chạm mặt đất ở chỗ khác → đi tới đó;
+  bàn phím WASD/mũi tên trên máy tính; Enter mở ô chat. Nhân vật dùng sheet chạy khi đi, vòng nghỉ khi đứng, quay
+  mặt theo hướng đi.
+- **Chạm một nhân vật:** trong bán kính tương tác (220 đơn vị bản đồ) → **thẻ hồ sơ** trượt từ dưới: chân dung, tên,
+  cấp, lực chiến (chưa xác thực), danh hiệu, bang; nút *Kết bạn · Nhắn riêng · Giao hữu · Mời vào bang · Chặn · Báo
+  cáo*. Ngoài bán kính → nhân vật tự đi tới gần người đó rồi mở thẻ.
+- **Mật độ:** tối đa 40 người/kênh; ưu tiên vẽ bạn bè và người đang tương tác. Tối đa 4 bong bóng cùng lúc, 2 dòng mỗi bong bóng, hiện 4–6 giây, phần dài xem ở nhật ký. Thẻ hồ sơ chiếm ~45% màn hình, ba nút chính; Chặn/Báo cáo nằm trong "Thêm". Danh sách **Người gần** cho trình đọc màn hình; giảm chuyển động theo cài đặt.
+
+### 14.3 Bản đồ và khu vực (Codex vẽ, dọc 1024×1536, hiển thị ×1,35, camera cuộn hai chiều)
+- **Đài phun nước** giữa quảng trường (vật cản tròn) — chỗ tụ tập.
+- **Sảnh Bang Hội** (cửa phía bắc) — bước vào cửa mở bảng bang.
+- **Sàn Giao Hữu** (vòng đá phía đông) — hai người cùng đứng trong vòng và bấm Sẵn sàng thì vào trận.
+- **Bảng Tin** (phía tây) — sự kiện, thông báo bang, bảng xếp hạng (từ máy chủ).
+- **Mèo Hướng Dẫn** (NPC) — giải thích Quảng Trường; NPC luôn có nhãn NPC.
+- Vùng đi được khai báo bằng đa giác + vật cản tròn trong `assets/gemwoven/plaza/plaza.json`, đo trên ảnh đã vẽ.
+
+### 14.4 Chat
+- Kênh: **Khu vực** (cùng kênh Quảng Trường), **Bang**, **Riêng** (bạn bè hoặc người đang đứng gần), **Hệ thống**.
+- Tối đa 120 ký tự; 1 tin/2 giây, dồn tối đa 3; lặp nguyên văn 3 lần bị chặn 30 giây; lọc từ thô tục (che `***`);
+  ẩn tin của người đã chặn; báo cáo gửi 20 tin gần nhất của người đó vào nhật ký kiểm duyệt.
+- Tài khoản mới (< 24 giờ) chỉ chat Khu vực và Bang. Biểu cảm (8 cái) không bị giới hạn chữ, vẫn chịu giới hạn tốc độ.
+
+### 14.5 Bạn bè
+- Tối đa 50. **Lời mời kết bạn chỉ gửi khi hai người đứng gần nhau** (máy chủ kiểm tra khoảng cách) hoặc từ thẻ hồ
+  sơ trong kênh bang; chấp nhận từ danh sách bất cứ lúc nào.
+- Danh sách: trực tuyến/ngoại tuyến, đang ở kênh nào (*Đến chỗ bạn*: đổi kênh và đặt mình cạnh họ), nhắn riêng,
+  mời giao hữu, xóa bạn.
+- **Tặng Tim** mỗi ngày một lần cho mỗi bạn: Điểm Bằng Hữu (tối đa 30/ngày) đổi vé triệu hồi/nguyên liệu ở cửa hàng
+  bằng hữu (không Đá Ngọc). Phần thưởng chỉ giao khi có máy chủ kinh tế; bản hiện tại đếm điểm.
+
+### 14.6 Giao hữu
+- Mời từ thẻ hồ sơ hoặc Sàn Giao Hữu; người được mời có 20 giây đồng ý. Trận **không thưởng, không xếp hạng**.
+- Trước khi có máy chủ trận PvP thời gian thực: mỗi bên đấu với **bản sao tướng của người kia do máy điều khiển**
+  (ảnh chụp chỉ số máy chủ gửi), ghi rõ "Giao hữu với bản sao". Kết quả gửi lại kênh như tin hệ thống.
+- Khi có máy chủ trận: cùng bàn ngọc, lượt 20 giây, máy chủ giữ bàn và RNG (§12.4).
+
+### 14.7 Bang hội
+- **Lập bang:** tên 3–16 ký tự (duy nhất), thẻ 2–4 chữ in hoa, biểu tượng chọn từ bộ có sẵn, cổng cấp tướng 20,
+  phí 100.000 vàng (thu khi kinh tế chuyển lên máy chủ). Mỗi người một bang; rời bang chờ 12 giờ mới vào bang khác.
+- **Chức vụ** (Codex vòng 3): Bang Chủ (1), Phó Bang (1), Trưởng Lão (2), Thành Viên. Duyệt đơn: Bang Chủ, Phó Bang, Trưởng Lão.
+  Đuổi, thăng chức, đổi thông báo: Bang Chủ, Phó Bang; chỉ thao tác với người **chức thấp hơn mình**. Bang Chủ vắng 7 ngày → bang
+  được báo; vắng **14 ngày** → quyền chuyển cho cán bộ hoạt động nhất, không còn cán bộ thì thành viên cống hiến nhiều nhất còn hoạt động.
+  Cống hiến cá nhân giữ lại khi rời bang.
+- **Gia nhập:** Mở / Cần duyệt / Đóng; cấp tối thiểu. Tối đa 20 người, +2 mỗi cấp bang (cấp 10: 38).
+- **Điểm danh** mỗi ngày: +10 cống hiến cá nhân, +10 kinh nghiệm bang. **Quyên góp** vàng (3 lần/ngày) khi có kinh tế máy chủ.
+- **Cấp bang 1–10** từ kinh nghiệm (lên cấp n+1 cần thêm 1.000×n; điểm danh một lần/ngày/tài khoản do máy chủ chốt): tăng chỗ, mở bậc Cửa Hàng Bang (cống hiến đổi nguyên liệu, mảnh tướng cũ
+  giới hạn tuần), mở hoạt động.
+- **Dệt Đèn Bang** [Có] — hoạt động bang đầu tiên (Codex đề xuất): mỗi ngày mỗi người chọn một trong ba màu sợi tại
+  **Bà Dệt Đèn** cạnh sảnh (máy chủ kiểm tra đứng đúng chỗ), tối đa 5 sợi/người/tuần. Đèn bang sáng bậc 1/2/3 ở 5/15/25
+  sợi khi mỗi màu đạt ít nhất 1/3/5 sợi — bang nhỏ vẫn làm được, cần bàn nhau chọn màu, không cần hẹn giờ. Chưa trao
+  tài nguyên (chỉ trang trí sảnh tuần) cho tới khi có máy chủ kinh tế.
+- **Hoạt động khác** (theo lịch máy chủ): *Boss Bang* hằng tuần (chung một thanh máu, xếp hạng sát thương trong bang),
+  *Viễn Chinh* cuối tuần, *Chiến Trường Bang* theo mùa. Bản hiện tại: chưa có (Sắp ra mắt), hiển thị lịch.
+- **Bảng bang:** thông tin, thông báo, thành viên (chức vụ, cấp, trực tuyến, cống hiến tuần), đơn xin vào, nhật ký,
+  kênh chat bang; thẻ [TAG] hiện cạnh tên ở Quảng Trường.
+
+### 14.8 Đã làm [Có]
+- `server/social/server.js` (Node + `ws`, cổng 8091, `/social`; sức khỏe ở `/social/health`), `npm test` trong `server/social`
+  chạy hai máy khách thật qua đăng ký, di chuyển, kết bạn khi đứng gần, chat, chặn, bang, Dệt Đèn, giao hữu.
+- `src/gemwoven/social-protocol.js` dùng chung; `src/gemwoven/plaza.js` + `plaza.css` là màn Trò Chuyện.
+- Bản đồ, Mèo Hướng Dẫn, Bà Dệt Đèn, đèn bang 4 bậc: Codex vẽ (`gpt-6.1-sol` low), `assets/gemwoven/plaza/`.
+- Nhân vật đi bằng vòng nghỉ rig 24 khung và sheet chạy của đúng hình thái đang khoác; cỡ thân theo đầu như trong trận
+  (`build.py` xuất `assets/gemwoven/plaza/sprites.json`).
+- Giao hữu = chế độ `spar` trong `progression.js` + combat: tướng của bạn đấu bản sao tướng đối thủ do AI điều khiển,
+  chỉ số chuẩn hóa, nhãn "Giao hữu với bản sao · AI · Không thưởng", không công bố kết quả.
+- Giao thức cho Godot: `docs/SOCIAL_PROTOCOL.md`.
+
+### 14.9 An toàn
+- Chặn: không thấy chat, lời mời, bong bóng của người bị chặn. Báo cáo: lý do có sẵn + 20 tin gần nhất.
+- Giới hạn: 10 lời mời kết bạn/giờ, 20 lời mời giao hữu/giờ; vị trí gửi tối đa 10 lần/giây, máy chủ phát lại 10 lần/giây.
+- Trẻ vị thành niên (khi có xác minh tuổi): chỉ chat với bạn bè, theo luật §17.
 
 ---
 
@@ -466,7 +567,7 @@ nguồn `raw/`, `sources/`):
 |---|---|
 | Chọn hình thái thấp hơn trong trận? | Không. Chọn diện mạo ở thị trấn; trận dùng hình thái cao nhất. |
 | Hình thái Hiro? | Có, ở 4★/6★ như mọi tướng; cần vẽ. |
-| Giá | Thẻ tháng 109k, Sổ 149k, Quỹ 299k, Thẻ trọn đời 499k (chỉnh khi có dữ liệu). |
+| Giá | Thẻ tháng 109k, Sổ Vàng 149k, Sổ Diệu Ngọc 299k, Quỹ 299k. **Bỏ Thẻ Trọn Đời** (chủ dự án 03/11). |
 | Cân bằng | Hiro tuyệt kỹ 70 và kiếm ×1,2 (đã áp, đo bằng mô phỏng); dẫn người chơi tới đồ + kỹ năng (Lộ trình); chưa hạ HP boss. |
 | Báu vật độc quyền nạp? | Không. PvE đạt được trong 12–16 tuần; nạp chỉ nhanh hơn. |
 
@@ -510,3 +611,15 @@ thần đó nhưng chỉ cho đổi diện mạo **ngoài trận**, vì trong tr
 | Thiếu ngày neo, bảng thu–chi báu vật | Ngày neo 02/11/2026; bảng điểm báu vật PvE (mục 4) |
 | Chưa đồng ý chốt cân bằng | Giữ trạng thái "đo, chưa chốt"; việc kế tiếp số 1: đối chiếu mô phỏng với combat thật |
 | Việc tiếp theo nên làm | 1) đối chiếu mô phỏng; 2) khép ngân sách 28/90 ngày; 3) Sân Thử Luyện |
+
+### Vòng 3 (03/11, sau phản hồi của chủ dự án; luật mới: hai bên cùng quan điểm mới làm)
+
+| Mục | Codex | Claude | Chốt chung |
+|---|---|---|---|
+| A. Quảng Trường dọc | Đồng ý nếu sửa bàn phím, điều khiển, mật độ, tiếp cận | Đồng ý cả | Bàn phím thu vùng bản đồ; kéo = cần điều hướng tại chỗ chạm (tùy chọn cố định, đổi bên); chạm = đi; WASD dừng khi gõ; chạm người xa tự đi tới (hết hạn 5 giây, hủy khi kéo); tối đa 4 bong bóng × 2 dòng; thẻ 45% với 3 nút chính; Người gần; tối đa 3 mũi tên chỉ bạn/bang (tắt được); hướng dẫn 30 giây do Mèo Hướng Dẫn |
+| B. Máy chủ xã hội | Đồng ý nếu sửa danh tính, xác thực, lưu trữ, giao thức Godot | Đồng ý | Máy chủ cấp token (băm, thu hồi được); máy chủ tính chuyển động từ ý định; tick 10 Hz + số thứ tự; nhịp tim 30 giây; payload 4 KB; giới hạn theo loại tin; Origin cho web (SOCIAL_ORIGINS); JSON chỉ dev, SQLite trước thử công khai; giao thức có phiên bản (`docs/SOCIAL_PROTOCOL.md`) |
+| C. Bang hội | Đồng ý nếu sửa phân quyền, kế vị; làm Dệt Đèn trước | Đồng ý | 1 Phó + 2 Trưởng Lão; chỉ thao tác người chức thấp hơn; kế vị 14 ngày (báo ở ngày 7); cấp kế cần 1.000×cấp; Dệt Đèn Bang làm thật |
+| D. Giao hữu | Đồng ý nếu ghi nhãn, bỏ công bố kết quả | Đồng ý | "Giao hữu với bản sao · AI · Không thưởng"; chỉ số chuẩn hóa; không công bố thắng/thua |
+| E. Trang bị dư | **Không đồng ý** gói số liệu của Claude | Đồng ý với Codex | Giữ túi 500 (cảnh báo 450), quặng phân giải hiện tại 3/5/8/12/21/33; hoàn 70% chi phí cường hóa thực trả, ghi lịch sử, chống nhận trùng; loại món khóa, đang mặc, vũ khí bản mệnh; tự phân giải mặc định tắt (gợi ý bật Thường ở cấp 30, bảo vệ món tốt hơn bộ đang dùng); lọc ô/phẩm/chủ, xem trước tổng thu hồi; **bỏ dung luyện 3→1**; "Mặc tốt nhất" chọn mục tiêu Công/Sinh tồn, xem trước, không lấy đồ tướng khác |
+| F. Chấm đỏ | Đồng ý nếu sửa nghĩa màu | Đồng ý | Đỏ = quà nhận ngay, miễn phí; xanh lá = gợi ý nâng được (tắt được); xanh dương = số thư/lời mời; hợp nhất theo ID ở nút cha; sự kiện nạp: viền sáng 2 nhịp khi vào hub rồi đứng yên, tắt được, không chấm đỏ vì "có thể nạp" |
+| G. Sổ 3 nhánh | Đồng ý nếu sửa điều kiện, Hiro, cấp mua | Đồng ý | Xem §10: không Mảnh Hiro trong rương trả phí, phiếu cho tài khoản chỉ có Hiro, rương đồ theo cổng ải 60/80, +10 cấp tính vào giới hạn mua; bỏ Thẻ Trọn Đời |

@@ -240,7 +240,7 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   if(ultimate)return rageChoreography(side,raw,{hits});
   if(side==='hero'&&state.key==='shadow')return shadowAttack(raw,{hits,damageLedger,attackChain});
   const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
-  const key=progressionIsDuel()?'novice':side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
+  const key=progressionIsDuel()?progressionDuelKey(side):side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
   const sourceOrigin=combatV3Point(side),targetOrigin=combatV3Point(targetSide);
   // A pounce stops with the foe's drawn body (its sheet span, not its whole cell) at the
   // hero's front, however large the foe is.

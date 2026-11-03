@@ -12,3 +12,4 @@
 - New heroes, and new items for every hero, follow `docs/HERO_PIPELINE.md`; the checklist `docs/hero-checklist.json` (run `python scripts/hero_checklist.py`) feeds the hero studio's "Hạng mục tướng" grid.
 - Growth, economy, live-ops and arena design lives in `docs/GAME_DESIGN.md` (Studio tab "Thiết kế hệ thống"); live-ops numbers in `src/gemwoven/liveops.js`. Measure balance changes with `node qa/gemwoven/balance-sim.cjs` before and after.
 - After adding runtime art or sound, refresh the download packs with `node scripts/build_asset_packs.cjs` (`assets/packs.json`; `src/gemwoven/asset-packs.js` picks packs per account).
+- The plaza (Trò Chuyện) talks to the social server `server/social` (Node + ws, port 8091; `npm install && npm test` there); shared rules in `src/gemwoven/social-protocol.js`, protocol in `docs/SOCIAL_PROTOCOL.md`. Contested design waits until Claude and Codex agree (`docs/GAME_DESIGN.md` §20); `docs/REQUEST_TRACKER.md` answers each owner request.

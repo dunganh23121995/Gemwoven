@@ -86,12 +86,19 @@
     const product=x=>`<article class="product-card"><header><b>${esc(x.name)}</b><span>${vnd(x.price)}</span></header><ul>${x.perks.map(k=>`<li>${esc(k)}</li>`).join('')}</ul><em>Sắp ra mắt</em></article>`;
     return `<header class="game-heading"><h2>VIP & Nạp</h2><p>Sắp ra mắt · Thanh toán và quyền lợi do máy chủ xác nhận. Chưa thu tiền.</p></header>`+
       `<p class="vip-now">VIP hiện tại: <b>${p.vip.level}</b> · Tổng nạp đã xác thực: <b>${vnd(p.vip.paidTotal)}</b></p>`+
-      `<div class="product-grid">${['monthly-card','journey-pass','growth-fund','lifetime-card'].map(id=>product(card(id))).join('')}</div>`+
+      `<div class="product-grid">${['monthly-card','journey-pass','journey-pass-jewel','growth-fund'].map(id=>card(id)).filter(Boolean).map(product).join('')}</div>`+
       `<h3 class="growth-sub">Bậc VIP</h3><p class="hint">VIP chỉ thêm tiện lợi, tài nguyên ngày và trang trí, không cộng chỉ số chiến đấu. Giao dịch bị hoàn tiền sẽ bị thu hồi và tính lại VIP.</p>`+
       `<table class="gw-table vip-table"><thead><tr><th>VIP</th><th>Quyền lợi thêm</th><th>Tổng nạp</th></tr></thead><tbody>${O.VIP.map(v=>`<tr class="${p.vip.level>=v.level?'is-reached':''}"><td>${v.level}</td><td>${v.perks.map(esc).join(' · ')}</td><td>${vnd(v.spend)}</td></tr>`).join('')}</tbody></table>`+
       `<h3 class="growth-sub">Quỹ Trưởng Thành</h3><p class="hint">Mua một lần; mỗi mốc cấp tướng cao nhất mở một phần Đá Ngọc của gói đã mua.</p>`+
       `<div class="fund-row">${O.GROWTH_FUND.map(f=>`<span><b>Cấp ${f.level}</b>${fmt(f.gems)}</span>`).join('')}</div>`+
-      `<h3 class="growth-sub">Sổ Hành Trình</h3><p class="hint">Mùa ${O.PASS.seasonDays} ngày, ${O.PASS.levels} cấp từ điểm nhiệm vụ. Mua nhánh Vàng giữa mùa vẫn nhận ngay mọi phần thưởng Vàng của các cấp đã đạt. Sổ không chứa Đá Ngọc.</p>`;
+      `<h3 class="growth-sub">Sổ Hành Trình · 3 nhánh</h3><p class="hint">Mùa ${O.PASS.seasonDays} ngày, ${O.PASS.levels} cấp từ điểm nhiệm vụ (chơi đều đạt cấp 50 sau khoảng 20 ngày). Mua giữa mùa vẫn nhận ngay mọi phần thưởng của các cấp đã đạt. Sổ không chứa Đá Ngọc.</p>`+passTable();
+  }
+  // The three pass tracks at their milestone levels (every fifth level; the others give small materials).
+  function passTable(){
+    const label=r=>Object.entries(r).map(([k,n])=>`${fmt(n)} ${({fragmentChoice:'mảnh tướng tự chọn',epicGearChoice:'rương Sử Thi tự chọn',legendaryGearChoice:'rương Huyền Thoại tự chọn',seasonFrame:'khung mùa'})[k]||M.RESOURCES[k]?.[0]||k}`).join(' · ');
+    const rows=[5,10,15,20,25,30,35,40,45,50].map(l=>`<tr><td>${l}</td>${O.PASS.tracks.map(t=>`<td>${esc(label(O.PASS[t.id](l)))}</td>`).join('')}</tr>`).join('');
+    return `<table class="gw-table pass-table"><thead><tr><th>Cấp</th>${O.PASS.tracks.map(t=>`<th>${esc(t.name)}${t.product?`<small>${vnd(O.PRODUCTS.find(x=>x.id===t.product).price)}</small>`:'<small>Miễn phí</small>'}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`+
+      `<p class="hint">Diệu Ngọc: +${O.PASS.jewelBonusLevels} cấp ngay khi mua (tính vào giới hạn ${O.PASS.boughtLevelsMax} cấp mua), danh hiệu mùa "${esc(O.PASS.seasonTitle)}". Mảnh tướng tự chọn chỉ cho tướng đã sở hữu, trừ Hiro. Rương Sử Thi/Huyền Thoại nhận khi đã qua ải ${O.PASS.gearGates.epicGearChoice}/${O.PASS.gearGates.legendaryGearChoice}.</p>`;
   }
   function monthlyCard(ctx){
     const x=O?.PRODUCTS.find(x=>x.id==='monthly-card');if(!x)return false;

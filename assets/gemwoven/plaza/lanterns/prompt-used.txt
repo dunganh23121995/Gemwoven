@@ -1,0 +1,9 @@
+Use the attached image only as the STYLE reference (Gemwoven painted cozy fantasy art). Draw a NEW prop sheet.
+
+Subject: the guild lantern woven from glowing threads, shown in 4 stages, in a 2x2 grid of equal cells, same lantern, same size, same position in every cell, base at the same height:
+1 (top-left): unlit — a round paper-and-rattan lantern with a carved wooden cap, the paper pale and dark inside, a few loose threads hanging.
+2 (top-right): tier 1 — softly lit from inside, one band of woven rose-red, sky-blue and gold thread around its middle, small warm glow.
+3 (bottom-left): tier 2 — brighter, three woven bands of rose-red, sky-blue and gold, gentle sparkles.
+4 (bottom-right): tier 3 — radiant, fully woven with the three colors in a gem-like pattern, a small jewel at the bottom tassel, bright warm halo close around it.
+
+Each lantern centered in its cell inside the central 65% of the cell, nothing crossing cell edges, glows kept tight to the lantern. Background: solid flat #FF00FF magenta in every cell, no grid lines, no text, no ground.
