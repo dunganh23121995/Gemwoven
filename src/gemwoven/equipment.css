@@ -59,7 +59,7 @@
 #stage[data-screen="upgrade"] [data-node^="upgrade.gear-level-"]{background:var(--kit-badge-leather) center/100% 100% no-repeat;color:#ffe9bc!important;font-weight:900;white-space:nowrap;text-shadow:0 1px 2px #1a0c04!important;filter:drop-shadow(0 2px 2px #0008);pointer-events:none}
 #stage[data-screen="upgrade"] [data-node="upgrade.equipped-stars"]{font-size:31px!important;letter-spacing:3px!important;white-space:nowrap;text-shadow:0 2px 1px #3a1a04,0 0 3px #000!important}
 /* Later forms carry more art (staff, tails, aura): a step smaller here, feet kept on the dais. */
-#stage[data-screen="upgrade"] [data-node="upgrade.hero-model"].has-hero-form{scale:.82;transform-origin:50% 100%}
+/* Every form keeps form 1's body size, measured by the head (HERO_PIPELINE): no per-screen shrink of forms 2-3. */
 /* The form-3 body keeps a thin edge light here, not a wide glow that blurs its outline. */
 #stage[data-screen="upgrade"] [data-node="upgrade.hero-model"].has-hero-form[data-hero-form="3"]>.art{filter:drop-shadow(0 0 2px var(--form-color)) drop-shadow(0 3px 2px #0006)}
 #stage[data-screen="upgrade"] [data-node="upgrade.hero-model"].has-hero-form[data-hero-form="3"]{filter:none}
