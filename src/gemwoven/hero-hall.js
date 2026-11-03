@@ -39,7 +39,7 @@
     const modal=window.GemwovenUI.makeDialog('hero-all','Tất cả tướng','growth-dialog hall-dialog');
     const draw=()=>{const p=G.engine.read(),list=Object.keys(M.HEROES).filter(k=>!view.element||M.HEROES[k].element===view.element);
       modal.body.innerHTML=`<div class="hall-filters">${ELEMENTS.filter(([e])=>Object.values(M.HEROES).some(h=>h.element===e)).map(([e,c])=>`<button type="button" data-el="${e}" class="${view.element===e?'on':''}" style="--el:${c}">${e}</button>`).join('')}`+
-        `<button type="button" data-sort class="hall-sort">${view.sort==='level'?'⇅ Cấp':'⇅ Sao'}</button></div>`+
+        `<button type="button" data-sort class="hall-sort">${view.sort==='level'?'Cấp ↓':'Sao ↓'}</button></div>`+
         `<div class="hall-grid">${order(p,list).map(k=>card(p,k,state.hero,true)).join('')||'<p class="growth-lead">Chưa có tướng hệ này.</p>'}</div>`;
       modal.body.querySelectorAll('[data-el]').forEach(b=>b.onclick=()=>{view.element=view.element===b.dataset.el?'':b.dataset.el;draw();});
       modal.body.querySelector('[data-sort]').onclick=()=>{view.sort=view.sort==='level'?'stars':'level';draw();};
@@ -53,8 +53,8 @@
     modal.body.innerHTML=`<div class="hp-head" style="--el:${tint(hero.element)}"><img src="${file('face-'+key)}" alt=""><div><b>${esc(forms[form-1]?.name||hero.title)}</b>`+
       `<span class="hp-tags"><i>${esc(hero.element)}</i>${M.RARITIES[hero.rarity]?.name===hero.element?'':`<i style="--q:${M.RARITIES[hero.rarity]?.color||'#999'}">${esc(M.RARITIES[hero.rarity]?.name||hero.rarity)}</i>`}</span>`+
       `<span class="hall-stars">${h?'★'.repeat(h.stars)+'☆'.repeat(Math.max(0,6-h.stars)):'Chưa sở hữu'}</span></div></div>`+
-      `<p class="stat-chips">${stat('stat-heart',fmt(st?st.hp:hero.hp))}${stat('stat-attack','×'+(st?st.attack:hero.attack).toFixed(2))}${stat('stat-shield',Math.round((st?st.defense:0)*100)+'%')}</p>`+
-      `<div class="hp-skills">${hero.skills.map((name,i)=>{const t=M.skillText(key,h,i);return `<details><summary><img src="${file(skillIcon(key,i))}" alt=""><b>${esc(name)}</b><small>${esc(M.SKILL_BRANCHES[i])}${h&&t.unlocked?` · ${t.rank}/${t.max}`:' · 🔒'}</small></summary><p>${esc(t.description)}</p>${t.unlocked?'':`<p class="missing">${esc(M.skillGateText(i))}</p>`}</details>`;}).join('')}</div>`+
+      `<p class="stat-chips">${stat('stat-heart',fmt(st?st.hp:hero.hp))}${stat('stat-attack','×'+(st?st.attack:hero.attack).toFixed(2).replace('.',','))}${stat('stat-shield',Math.round((st?st.defense:0)*100)+'%')}</p>`+
+      `<div class="hp-skills">${hero.skills.map((name,i)=>{const t=M.skillText(key,h,i);return `<details><summary><img src="${file(skillIcon(key,i))}" alt=""><b>${esc(name)}</b><small>${esc(M.SKILL_BRANCHES[i])}${h&&t.unlocked?` · Cấp ${t.rank}/${t.max}`:' · 🔒'}</small></summary><p>${esc(t.description)}</p>${t.unlocked?'':`<p class="missing">${esc(M.skillGateText(i))}</p>`}</details>`;}).join('')}</div>`+
       (forms.length>1?`<div class="hp-forms">${forms.map((f,i)=>`<span class="${h&&i<M.formMax(key,h)?'':'locked'}">${i+1}<small>${esc(f.name)}</small></span>`).join('')}</div>`:'');
     const go=document.createElement('button');go.type='button';go.className='gw-btn';go.textContent='Kỹ năng';go.onclick=()=>{modal.close();ctx.navigate('skills');};
     modal.actions.append(go);modal.present();

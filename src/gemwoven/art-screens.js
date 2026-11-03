@@ -46,7 +46,7 @@
   const inventory=window.GEMWOVEN_INVENTORY,resourceFor={},gearFor={};
   function prepare(state){
     const p=G.engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;
-    const descriptions={gold:'Vàng từ nhiệm vụ, vượt ải, boss và tích lũy offline.',gems:'Đá Ngọc chỉ nhận qua nạp tiền. Tính năng nạp sắp ra mắt.',tickets:'Vé nhận từ nhiệm vụ ngày và các mốc cấp tướng.',exp:'Sách kinh nghiệm dùng tăng cấp tướng.',seals:'Ấn tu luyện dùng tăng cấp tướng, tối đa 1.600 ấn mỗi ngày.',skillBooks:'Bí kíp dùng học và tăng cấp kỹ năng.',essence:'Dùng tăng sao, tiến hóa, kỹ năng và bảo bối.',ore:'Quặng dùng rèn, cường hóa trang bị, tiến hóa tướng và bảo bối.',wood:'Gỗ dùng rèn trang bị.',cloth:'Vải dùng rèn trang bị.',divineOre:'Rèn trang bị Thần (50 mảnh, sau ải 300) và tiến hóa bảo bối.'};
+    const descriptions={gold:'Dùng để tăng cấp, rèn và mua đồ.',gems:'Đá Ngọc chỉ nhận qua nạp tiền. Tính năng nạp sắp ra mắt.',tickets:'Vé nhận từ nhiệm vụ ngày và các mốc cấp tướng.',exp:'Sách kinh nghiệm dùng tăng cấp tướng.',seals:'Ấn tu luyện dùng tăng cấp tướng, tối đa 1.600 ấn mỗi ngày.',skillBooks:'Bí kíp dùng học và tăng cấp kỹ năng.',essence:'Dùng tăng sao, tiến hóa, kỹ năng và bảo bối.',ore:'Quặng dùng rèn, cường hóa trang bị, tiến hóa tướng và bảo bối.',wood:'Gỗ dùng rèn trang bị.',cloth:'Vải dùng rèn trang bị.',divineOre:'Rèn trang bị Thần (50 mảnh, sau ải 300) và tiến hóa bảo bối.'};
     const rows=Object.entries(M.RESOURCES).map(([id,[name,asset]])=>{resourceFor[asset]=id;return [asset,name,fmt(owned(p,id)),['exp','skillBooks'].includes(id)?'book':['ore','wood','cloth','essence','divineOre','seals'].includes(id)?'material':id==='tickets'?'other':'item',descriptions[id]];});
     for(const [hero,h]of Object.entries(M.HEROES)){const asset='fragment-'+hero;if(!A[asset]?.fragmentArt)A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro để tăng sao. Hiro không có trong triệu hồi: mảnh đến từ Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương và mỗi 10 tầng Trùm Vô Tận.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
     refreshSkillCopy(p);
@@ -161,7 +161,7 @@ ${price}`);}
   // Compact "what this step gives" line, computed by progression.js.
   function gainText(r){
     if(!r)return '';
-    const a=r.before,b=r.after,parts=[`HP ${fmt(a.hp)} → ${fmt(b.hp)}`,`Công ×${a.attack.toFixed(2)} → ×${b.attack.toFixed(2)}`];
+    const a=r.before,b=r.after,parts=[`HP ${fmt(a.hp)} → ${fmt(b.hp)}`,`Công ×${a.attack.toFixed(2).replace('.',',')} → ×${b.attack.toFixed(2).replace('.',',')}`];
     if(Math.round(a.defense*100)!==Math.round(b.defense*100))parts.push(`Thủ ${Math.round(a.defense*100)}% → ${Math.round(b.defense*100)}%`);
     return parts.join(' · ')+(r.unlock?'\n'+r.unlock:'');
   }
@@ -172,7 +172,7 @@ ${price}`);}
     action(nodes,'evolution-next','do:upgrade-tab',{tab:'evolution'});
     if(h){
       const stats=M.stats(p,hero),step=state.levelStep===10?10:1,range=h.level<M.MAX_LEVEL?M.levelCostRange(h.level,step):null,levelGain=range?M.upgradePreview(p,hero,'level',range.levels):null;
-      label(nodes,'stat-value-0',levelGain?`${fmt(stats.hp)} → ${fmt(levelGain.after.hp)}`:fmt(stats.hp));label(nodes,'stat-value-1',levelGain?`×${stats.attack.toFixed(2)} → ×${levelGain.after.attack.toFixed(2)}`:`×${stats.attack.toFixed(2)}`);label(nodes,'stat-value-2',`${Math.round(stats.defense*100)}%`);label(nodes,'hero-stars','★'.repeat(h.stars)+'☆'.repeat(6-h.stars));label(nodes,'exp-value',`Cấp ${h.level} / ${M.MAX_LEVEL}`);find(nodes,'exp-meter').value=h.level/M.MAX_LEVEL;
+      label(nodes,'stat-value-0',levelGain?`${fmt(stats.hp)} → ${fmt(levelGain.after.hp)}`:fmt(stats.hp));label(nodes,'stat-value-1',levelGain?`×${stats.attack.toFixed(2).replace('.',',')} → ×${levelGain.after.attack.toFixed(2).replace('.',',')}`:`×${stats.attack.toFixed(2).replace('.',',')}`);label(nodes,'stat-value-2',`${Math.round(stats.defense*100)}%`);label(nodes,'hero-stars','★'.repeat(h.stars)+'☆'.repeat(6-h.stars));label(nodes,'exp-value',`Cấp ${h.level} / ${M.MAX_LEVEL}`);find(nodes,'exp-meter').value=h.level/M.MAX_LEVEL;
       if(tab==='level'){
         const max=!range;if(range)c=range.cost;
         label(nodes,'level-preview',max?`Lv.${h.level} · Tối đa`:`Lv.${h.level} → Lv.${h.level+range.levels}`);label(nodes,'upgrade-material-title',max?'Đã đạt cấp tối đa':range.levels>1?`Nguyên liệu tăng ${range.levels} cấp`:'Nguyên liệu tăng cấp');

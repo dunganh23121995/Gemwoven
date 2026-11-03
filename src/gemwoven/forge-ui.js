@@ -28,7 +28,7 @@
   function stats(p,hero,mutate){const q=JSON.parse(JSON.stringify(p));mutate?.(q);return M.stats(q,hero);}
   // The stats that change, before → after (the strip shows at most two).
   function changes(a,b){
-    return [['stat-attack','Công',a.attack,b.attack,v=>'×'+v.toFixed(2)],['stat-heart','HP',a.hp,b.hp,v=>M.compact(v,10000)],['stat-shield','Thủ',a.defense,b.defense,v=>Math.round(v*100)+'%']]
+    return [['stat-attack','Công',a.attack,b.attack,v=>'×'+v.toFixed(2).replace('.',',')],['stat-heart','HP',a.hp,b.hp,v=>M.compact(v,10000)],['stat-shield','Thủ',a.defense,b.defense,v=>Math.round(v*100)+'%']]
       .filter(([, ,x,y])=>Math.abs(y-x)>1e-9).slice(0,2)
       .map(([icon,name,x,y,f])=>`<span class="${y>x?'up':'down'}"><img src="${file(icon)}" alt="">${name} ${f(x)} <i>→</i> <b>${f(y)}</b></span>`).join('')||'<span>Không đổi chỉ số</span>';
   }

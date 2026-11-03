@@ -16,12 +16,12 @@
     const p=G.engine.read();if(!p.heroes[key])return;
     const b=M.statBreakdown(p,key),t=b.total,name=M.HEROES[key].name;
     const modal=window.GemwovenUI.makeDialog('power-detail',name+' · Chi tiết lực chiến','growth-dialog');
-    const rows=b.rows.map((r,i)=>`<tr class="${i&&!r.hp&&!r.attack&&!r.defense?'is-zero':''}"><td>${esc(r.label)}</td><td>${i?signed(r.hp,fmt):fmt(r.hp)}</td><td>${i?signed(r.attack,v=>'×'+v.toFixed(2)):'×'+r.attack.toFixed(2)}</td><td>${i?signed(r.defense,pct):pct(r.defense)}</td></tr>`).join('');
-    modal.body.innerHTML=`<div class="power-hero">${img('portrait-'+key,'power-portrait')}<div><b>${fmt(t.power)}</b><small>${esc(b.formula)}</small></div></div>`+
+    const rows=b.rows.map((r,i)=>`<tr class="${i&&!r.hp&&!r.attack&&!r.defense?'is-zero':''}"><td>${esc(r.label)}</td><td>${i?signed(r.hp,fmt):fmt(r.hp)}</td><td>${i?signed(r.attack,v=>'×'+v.toFixed(2).replace('.',',')):'×'+r.attack.toFixed(2).replace('.',',')}</td><td>${i?signed(r.defense,pct):pct(r.defense)}</td></tr>`).join('');
+    modal.body.innerHTML=`<div class="power-hero">${img('portrait-'+key,'power-portrait')}<div><b>${fmt(t.power)}</b></div></div>`+
       `<table class="gw-table power-table"><thead><tr><th>Nguồn</th><th>HP</th><th>Công</th><th>Thủ</th></tr></thead><tbody>${rows}</tbody>`+
-      `<tfoot><tr><td>Tổng</td><td>${fmt(t.hp)}</td><td>×${t.attack.toFixed(2)}</td><td>${pct(t.defense)}</td></tr></tfoot></table>`+
+      `<tfoot><tr><td>Tổng</td><td>${fmt(t.hp)}</td><td>×${t.attack.toFixed(2).replace('.',',')}</td><td>${pct(t.defense)}</td></tr></tfoot></table>`+
       (b.capped?'<p class="growth-note">Thủ tối đa 50%: phần vượt không còn tác dụng.</p>':'')+
-      `<p class="growth-note">Công là hệ số nhân sát thương mỗi viên ngọc kiếm và tuyệt kỹ. Thủ giảm sát thương nhận vào. Trong trận dùng đúng các số này.</p>`+
+      `<details class="hint"><summary>ⓘ Cách tính lực chiến</summary><p>${esc(b.formula)}</p><p>Công nhân sát thương mỗi viên ngọc kiếm và tuyệt kỹ. Thủ giảm sát thương nhận vào. Trong trận dùng đúng các số này.</p></details>`+
       `<h3 class="growth-sub">Cách tăng tiếp</h3>`+tips(p,key);
     const map=document.createElement('button');map.type='button';map.className='gw-btn';map.textContent='Lộ trình phát triển';map.onclick=()=>{modal.close();growthDialog(ctx,state,key);};
     modal.actions.append(map);wire(modal,ctx,state,key);modal.present();
@@ -73,14 +73,14 @@
   // with their day; the rules folded under "Cách chơi".
   function trialSection(p){
     const open=M.trialOpen(Date.now()),runs=p.daily.trialRuns||0,left=Math.max(0,M.TRIAL.rewarded-runs),hero=p.heroes[p.selected];
-    const days=['Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu'],el=k=>({fire:'Hỏa',ice:'Băng',earth:'Mộc',lightning:'Lôi'}[k]||k);
+    const days=['T2','T3','T4','T5','T6'],el=k=>({fire:'Hỏa',ice:'Băng',earth:'Mộc',lightning:'Lôi'}[k]||k);
     const bosses=M.TRIAL.chapters.map((c,i)=>({i:i+1,e:M.trialEncounter(i+1,hero.level),today:open.includes(i+1),best:p.trial?.best?.[i+1]||0,day:days[i]}));
     const card=b=>`<article class="trial-today"><div><b>${esc(b.e.enemyName)}</b><small>Hôm nay · hệ ${esc(el(b.e.enemyKey))} · cấp ${hero.level}</small>`+
       `<p>Kỷ lục: <strong>${b.best?fmt(b.best)+` · ${(b.best/b.e.enemyHp).toLocaleString('vi-VN',{maximumFractionDigits:1})} thanh`:'chưa có'}</strong></p></div>`+
       `<div class="trial-go"><span class="trial-left ${left?'':'is-out'}">${left?`Lượt nhận thưởng: <b>${left}/${M.TRIAL.rewarded}</b>`:'Hết lượt thưởng · vẫn ghi kỷ lục'}</span><button type="button" class="game-btn" data-action="do:battle" data-mode="trial" data-index="${b.i}">Thử sức</button></div></article>`;
     const others=bosses.filter(b=>!b.today);
     return `<section class="trial-ground"><h3>Sân Thử Luyện</h3>${bosses.filter(b=>b.today).map(card).join('')}`+
-      (others.length?`<ul class="trial-week">${others.map(b=>`<li class="${b.best?'done':''}" title="${esc(b.e.enemyName)}">${A['boss-'+b.e.bossId]?img('boss-'+b.e.bossId,'trial-boss'):''}<b>${esc(b.day.replace('Thứ ','T'))}</b>${b.best?'<i>✓</i>':''}</li>`).join('')}</ul>`:'')+
+      (others.length?`<ul class="trial-week">${others.map(b=>`<li class="${b.best?'done':''}" title="${esc(b.e.enemyName)}">${A['boss-'+b.e.bossId]?img('boss-'+b.e.bossId,'trial-boss'):''}<b>${esc(b.day)}</b>${b.best?'<i>✓</i>':''}</li>`).join('')}</ul>`:'')+
       `<details class="trial-rules"><summary aria-label="Cách chơi">ⓘ Cách chơi</summary><p>Boss trâu không bao giờ ngã: hết thanh máu thì đứng dậy với thanh mới. ${M.TRIAL.turns} lượt, tính tổng sát thương. Boss ở đúng cấp tướng đang xuất chiến (${esc(M.HEROES[p.selected].name)} cấp ${hero.level}). ${M.TRIAL.rewarded} lượt có thưởng mỗi ngày theo mốc ½, 1, 2, 3, 5 thanh máu; sau đó đánh thoải mái để thử tướng, vẫn ghi kỷ lục. Cuối tuần mở cả 5 boss.</p></details></section>`;
   }
   function cadenceSection(){
