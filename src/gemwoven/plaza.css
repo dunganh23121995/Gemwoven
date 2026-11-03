@@ -296,3 +296,6 @@
 .pz-sheet[data-kind="friends"],.pz-sheet[data-kind="guild"],.pz-sheet[data-kind="log"],.pz-sheet[data-kind="near"],.pz-sheet[data-kind="board"],.pz-sheet[data-kind="help"],.pz-sheet[data-kind="channels"],.pz-sheet[data-kind="lantern"]{min-height:820px}
 .pz-tabs.scroll{-webkit-mask:linear-gradient(90deg,#000 calc(100% - 70px),#0000);mask:linear-gradient(90deg,#000 calc(100% - 70px),#0000)}
 .pz-tabs.scroll.end{-webkit-mask:none;mask:none}
+/* Popup standard (Codex review 30): the × sits inside the frame, level with the title plank, 108 stage px (≈45 CSS px). */
+.pz-close{right:calc(40*var(--s) + 10px)!important;top:calc(138*var(--ft)*var(--s) - 54px)!important;width:108px!important;height:108px!important}
+.pz-sheet-title{right:calc(40*var(--s) + 128px)!important;left:calc(40*var(--s) + 128px)!important}
