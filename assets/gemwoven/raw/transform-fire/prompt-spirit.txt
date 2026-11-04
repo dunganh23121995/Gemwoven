@@ -1,0 +1,9 @@
+Use the images just shown as visual references: image 1 is Mika (form 3), a locked hero whose art must not be copied or redrawn; it only shows the scale and style of the game. Image 2 is the approved mockup: copy only the spectral fox from its LEFT panel.
+
+Create ONE game VFX sprite: a spectral nine-tailed fox spirit made of painted flame, seen from the front-left, sitting tall like a guardian behind a hero. Clean hand-painted HD 2D game asset style, crisp silhouette, bold flame shapes, clean antialiased edges. Do not make pixel art.
+
+Shape: a recognizable fox head with two pointed ears and one small glowing almond eye, a slender chest, and nine clearly separated broad flame tail lobes fanning out behind and to both sides, with visible empty gaps between every lobe. The head sits at the upper RIGHT of the image (offset right of centre), so a hero standing at the centre does not cover it. The tail fan fills the lower and left part. The bottom edge fades into a few low flame tongues that would sit at a hero's feet.
+
+Palette strictly: deep wine red #591923 core, vermilion #C93628 flame body, coral #F36338 hot edges, only tiny peach-orange #FFB06A highlights. No white or yellow flame mass, no bloom, no glow halo, no smoke, no blur. The fox is a flat-ish painted silhouette with layered flame strokes inside, readable when shown 150 px tall.
+
+Background: 100% solid flat magenta #FF00FF everywhere outside the fox, no gradient, no shadow, no ground. Leave at least 6% empty magenta margin on every side; nothing touches the edges. No text, no labels, no UI, no hero, no border.

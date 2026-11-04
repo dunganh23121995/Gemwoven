@@ -1,5 +1,7 @@
 /* Shared star thresholds select art; previews never alter ownership or stats. */
 (() => {
+  // Mika's drawn resting aura waits for the owner's approval; ?restaura previews it (hero-forms.css).
+  if(new URLSearchParams(location.search).has('restaura'))document.documentElement.classList.add('mika-rest-aura-enabled');
   const G=window.GEMWOVEN_GAME,M=window.GemwovenProgression,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
   const originals={};
   for(const key of Object.keys(M.HEROES))for(const prefix of ['hero-','portrait-','home-idle-']){

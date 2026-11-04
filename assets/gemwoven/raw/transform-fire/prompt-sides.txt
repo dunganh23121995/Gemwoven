@@ -1,0 +1,10 @@
+Use the images just shown as visual references: image 1 is Mika (form 3), a locked hero (do not draw her); image 2 is the approved mockup: copy only the two tall flame ribbons beside the hero in its CENTRE panel.
+
+Create ONE sprite sheet on a portrait canvas with exactly TWO separate game VFX pieces side by side, each in its own half, never touching:
+- LEFT half: the LEFT side flame ribbon. A tall, slightly S-curved vertical ribbon of painted flame, about 4.5 times taller than wide, with three large flame tips along its outer edge, an open gap through the middle of the ribbon, a narrow root at the bottom. Its inner (right) edge is a smooth calm curve that would hug a hero's silhouette; flames lick outward to the left.
+- RIGHT half: the RIGHT side flame ribbon. Shorter (about 90% of the left one), a different shape (not a mirror copy), two large tips plus one small, open gap, inner (left) edge smooth, flames licking outward to the right.
+
+Style: clean hand-painted HD 2D game VFX, bold stable flame shapes with layered strokes, crisp antialiased edges, no motion blur, no soft glow, no smoke, no sparks detached far away. Do not make pixel art.
+Palette strictly: deep wine red #591923 inner core, vermilion #C93628 body, coral #F36338 hot edges, tiny peach-orange #FFB06A highlights only. No white or yellow masses.
+
+Background: 100% solid flat magenta #FF00FF, no gradient, no shadow, no ground. Each piece stands upright, centred in its half, with at least 5% empty margin to every edge and a clear magenta gap between the two. No text, no labels, no UI, no hero, no border.

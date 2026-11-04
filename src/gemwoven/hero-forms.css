@@ -119,3 +119,17 @@ body.ambience-paused .aura-motes i{animation-play-state:paused}
 
 /* Mika's flame-ribbon band (owner 04/11: jittery, blurry, faint) is off until her drawn element aura replaces it; the soft halo stays. */
 [data-hero-element="fire"] .form-aura-band{display:none!important}
+
+/* Mika's resting aura, drawn (Biến Thân look, src/transform-fx.js; Codex plan assets/gemwoven/raw/transform-fire/critique.md):
+   her two side flames shrunk to low tongues from heel to knee behind her, forms 2-3 only, slow drift, no fox, no embers,
+   no sound. Off until the owner approves it (html.mika-rest-aura-enabled; preview with ?restaura in the URL). */
+html.mika-rest-aura-enabled [data-hero-element="fire"]:is([data-hero-form="2"],[data-hero-form="3"]) .hero-form-aura::before,
+html.mika-rest-aura-enabled [data-hero-element="fire"]:is([data-hero-form="2"],[data-hero-form="3"]) .hero-form-aura::after{
+  content:"";position:absolute;bottom:0;width:calc(var(--hero-visible-height,120px) * .13);height:calc(var(--hero-visible-height,120px) * .34);
+  background:no-repeat center bottom/contain;transform-origin:50% 100%;opacity:.38;pointer-events:none}
+html.mika-rest-aura-enabled [data-hero-element="fire"] .hero-form-aura::before{left:calc(50% - var(--hero-visible-height,120px) * .30);background-image:url("assets/heroes/forms/fire/transform/side-left.webp");animation:mika-rest-l 6s ease-in-out infinite}
+html.mika-rest-aura-enabled [data-hero-element="fire"] .hero-form-aura::after{left:calc(50% + var(--hero-visible-height,120px) * .17);height:calc(var(--hero-visible-height,120px) * .30);background-image:url("assets/heroes/forms/fire/transform/side-right.webp");animation:mika-rest-r 7.3s ease-in-out -2.4s infinite}
+html.mika-rest-aura-enabled [data-hero-element="fire"][data-hero-form="2"] .hero-form-aura::before,html.mika-rest-aura-enabled [data-hero-element="fire"][data-hero-form="2"] .hero-form-aura::after{opacity:.28}
+@keyframes mika-rest-l{50%{transform:translateY(-1.2%) scale(1.01)}}
+@keyframes mika-rest-r{50%{transform:translateY(-1.3%) scale(1.01)}}
+.reduced-motion .hero-form-aura::before,.reduced-motion .hero-form-aura::after{display:none}

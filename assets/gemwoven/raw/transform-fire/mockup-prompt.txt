@@ -1,0 +1,83 @@
+Use case: ui-mockup.
+Asset type: Gemwoven combat VFX approval mockup.
+
+Create one high-resolution comparison board, approximately 2400 × 1800
+pixels, containing three equally sized portrait phone combat panels
+placed side by side. Preserve the reference phone screen proportions.
+Place short captions outside the game panels, never over gameplay.
+
+Reference roles:
+- Image 1 is the layout reference: preserve the ornate wooden and gold
+  combat frame, forest ruin battlefield, HUD placement, enemy placement,
+  turn controls, and complete 8 × 8 gem board.
+- Image 2 is the locked Mika form-3 appearance and sharpness reference.
+  Preserve her face, pose, red and gold costume, crescent weapon, and
+  existing cream-white and orange nine tails.
+- Image 3 is a negative VFX reference only. Do not reproduce its blurred
+  swirling fire band, doubled contours, or washed-out appearance.
+
+Primary request:
+Show the same form-3 Mika in three transformation states. Treat her
+existing artwork as an immutable insert. Add only separate painted VFX
+around and behind her. Keep identical camera, hero scale, battlefield,
+enemy, health bars, energy bars, and gem arrangement in all three panels.
+Do not enlarge Mika to make the effect easier to see.
+
+Visual language:
+Match Gemwoven's crisp, richly painted fantasy game art. Use bold flame
+shapes, clean antialiased edges, controlled highlights, and deliberate
+negative space. Effects must remain readable when Mika is approximately
+144 CSS pixels tall on a portrait phone.
+
+Transformation palette:
+Deep wine red #591923, vermilion #C93628, coral #F36338, and tiny peach-orange
+highlights #FFB06A. Keep this clearly separate from Mika's existing pale
+cream and orange tails. No broad yellow glow, white flame mass, bloom,
+fog, or overall brightening of the hero.
+
+LEFT PANEL — caption “IGNITION · 320 ms”
+Show the peak of a brief transformation ignition.
+Behind Mika, place one distinct spectral nine-tailed fox silhouette,
+rendered as deep wine-red painted flame with a restrained coral edge.
+Give the spirit a recognizable fox head, pointed ears, a small eye, and
+nine separated broad tail lobes. Offset its head slightly to Mika's upper
+right so it does not merge with her face.
+The spirit is independent of Mika's physical tails: do not attach more
+tails to her body.
+Keep the spirit within roughly 1.08 times her visible body height in
+width, below the HUD and inside the battlefield.
+Add two rising side flames, a small open curl at her ankles, and six
+sparse embers. Preserve clear visibility of her face, weapon, and costume.
+Show the existing round transformation counter with “3”.
+
+CENTRE PANEL — caption “ACTIVE · 3 TURNS”
+Remove the large spectral fox completely.
+Keep two distinct, asymmetrical painted flame ribbons hugging the outer
+left and right edges of Mika's silhouette. The left ribbon is slightly
+longer. Place both behind the hero, with open space through the centre.
+Add only two low flame tips in front of her ankles and four sparse embers
+near the sides. No flame belt across her waist, no rotating ring, and no
+second pale tail fan.
+The effect should suggest slow, smooth drifting of two stable painted
+pieces, without motion blur, ghosting, or multiple animation poses.
+Show the round counter with “3”.
+
+RIGHT PANEL — caption “AFTERGLOW”
+Remove the spectral fox, tall side flames, and airborne embers.
+Keep only a tiny, crisp ember-red coal flourish behind Mika's heels,
+approximately one quarter of her body height in width.
+Show the existing residual-bonus badge with “+10%”.
+Her original nine tails remain unchanged and fully visible.
+This state must read as quiet remaining attack power.
+
+Composition and invariants:
+Keep Mika's HP at 1584 / 3520, energy at 20 / 100, and the enemy HP at
+811 / 811 in all panels.
+Preserve existing Vietnamese interface labels from the layout reference.
+Keep every new effect below health and energy bars, clear of skill
+announcements, clear of the enemy, and entirely above the gem board.
+Do not add interface controls, character redesigns, new weapons,
+screen flashes, camera shake, damage numbers, attack projectiles,
+giant swords, a sun explosion, or foxes charging toward the enemy.
+Do not produce an animation sheet. This is a three-state comparison
+mockup showing three clean, individually readable snapshots.

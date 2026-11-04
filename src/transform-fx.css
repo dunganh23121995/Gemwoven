@@ -1,0 +1,103 @@
+/* Biến Thân looks (src/transform-fx.js, docs/GAME_DESIGN.md §2.4). Boxes are in body units: t / h / x are the actor's
+   --evo-top / --evo-h / --evo-x (fractions of the square actor box), so a piece of w×hh body heights at (dx, dy) sits at
+   left (x + dx·h − w·h/2), top (t + dy·h). Back pieces sit under the body (z 0), the ankle accent over it (z 2).
+   Each hero sets its own numbers per form (.tf-<hero>[data-form]) and its motion below; the defaults are Mika's. */
+.tf-look,.tf-front{position:absolute;inset:0;pointer-events:none;--t:var(--evo-top,.19);--h:var(--evo-h,.75);--x:var(--evo-x,.5);transition:opacity .2s ease;
+  /* place: side spread left/right, spirit width/height/offset x/top (body heights) */
+  --sl:.40;--sr:.40;--fw:1.08;--fh:.96;--fx:0;--ft:.02;
+  /* motion: side sway periods and phase, lift (% of the piece), tilt, stretch; spirit peak; ground period and glow;
+     mote rise (body heights) and periods; mote shape; afterglow fade; strength while the hero acts */
+  --swl:2.8s;--swr:3.4s;--swp:-1.1s;--lyl:-1.05%;--lyr:-.86%;--rol:-.7deg;--ror:.5deg;--scl:1.018;--scr:1.014;--sideop:1;
+  --peak:.85;--gp:3.8s;--g0:.65;--g1:.75;--mr:16%;--mk:1;--ma:1/2;--fade:.32s;--act:.35}
+:is(.tf-look,.tf-front).tf-fire[data-form="2"]{--sl:.46;--sr:.47;--fw:1.20;--fh:1.02;--fx:.06;--ft:-.02}
+:is(.tf-look,.tf-front).tf-fire[data-form="3"]{--sl:.53;--sr:.55;--fw:1.32;--fh:1.10;--fx:.12;--ft:-.04}
+.tf-look{z-index:0}.tf-front{z-index:2}
+/* Longhands only, so each piece's own background-image is never reset. */
+.tf-look .tf-spirit{background-image:var(--tf-0)}.tf-look .tf-motes>i>b{background-image:var(--tf-4)}.tf-look .tf-mark{background-image:var(--tf-6)}
+.tf-look i,.tf-front i{position:absolute;display:block;background-repeat:no-repeat;background-position:center bottom;background-size:contain}
+.tf-look i>b,.tf-front i>b{position:absolute;inset:0;display:block;background-repeat:no-repeat;background-position:center bottom;background-size:contain}
+.tf-spirit{left:calc((var(--x) + var(--h) * (var(--fx) - var(--fw) / 2)) * 100%);top:calc((var(--t) + var(--h) * var(--ft)) * 100%);width:calc(var(--h) * var(--fw) * 100%);height:calc(var(--h) * var(--fh) * 100%);opacity:0;transform-origin:50% 100%}
+.tf-left{left:calc((var(--x) - var(--h) * (var(--sl) + .11)) * 100%);top:calc((var(--t) + var(--h) * .18) * 100%);width:calc(var(--h) * 22%);height:calc(var(--h) * 76%);transform-origin:50% 100%;opacity:var(--sideop)}
+.tf-look .tf-left>b{background-image:var(--tf-1)}
+.tf-right{left:calc((var(--x) + var(--h) * (var(--sr) - .11)) * 100%);top:calc((var(--t) + var(--h) * .24) * 100%);width:calc(var(--h) * 22%);height:calc(var(--h) * 70%);transform-origin:50% 100%;opacity:var(--sideop)}
+.tf-look .tf-right>b{background-image:var(--tf-2)}
+.tf-side>b{transform-origin:50% 100%;will-change:transform}
+.tf-left>b{animation:tf-sway-l var(--swl) ease-in-out infinite}
+.tf-right>b{animation:tf-sway-r var(--swr) ease-in-out var(--swp) infinite}
+@keyframes tf-sway-l{50%{transform:translateY(var(--lyl)) rotate(var(--rol)) scaleY(var(--scl))}}
+@keyframes tf-sway-r{50%{transform:translateY(var(--lyr)) rotate(var(--ror)) scaleY(var(--scr))}}
+.tf-ground{left:calc((var(--x) - var(--h) * .29) * 100%);top:calc((var(--t) + var(--h) * .83) * 100%);width:calc(var(--h) * 58%);height:calc(var(--h) * 15%);opacity:var(--g0)}
+.tf-front .tf-ground>b{background-image:var(--tf-3)}
+.tf-ground>b{animation:tf-ground var(--gp) ease-in-out infinite;transform-origin:50% 100%}
+@keyframes tf-ground{50%{transform:scaleX(1.01)}}
+.tf-front .tf-ground{animation:tf-ground-glow var(--gp) ease-in-out infinite}
+@keyframes tf-ground-glow{0%,100%{opacity:var(--g0)}50%{opacity:var(--g1)}}
+/* Motes: each travels its own lane beside the hero (rising by default), fading in and out at the ends. */
+.tf-motes>i{width:max(5px,calc(var(--h) * 3.2%));height:calc(var(--h) * var(--mr));
+  left:calc((var(--x) + var(--h) * var(--ex) * var(--sr) / .4) * 100%);top:calc((var(--t) + var(--h) * var(--ey)) * 100%)}
+.tf-motes>i>b{inset:auto 0 0;height:auto;aspect-ratio:var(--ma);background-position:center;opacity:0;animation:tf-mote calc(var(--ed) * var(--mk)) linear var(--edl) infinite}
+.tf-look .tf-motes>i:nth-child(even)>b{background-image:var(--tf-5)}
+.tf-motes>i:nth-child(1){--ex:-.40;--ey:.42;--ed:1.8s;--edl:-.2s}
+.tf-motes>i:nth-child(2){--ex:.36;--ey:.50;--ed:2.1s;--edl:-1.1s}
+.tf-motes>i:nth-child(3){--ex:-.33;--ey:.62;--ed:1.6s;--edl:-.9s}
+.tf-motes>i:nth-child(4){--ex:.42;--ey:.35;--ed:2.2s;--edl:-.4s}
+.tf-motes>i:nth-child(5){--ex:-.46;--ey:.28;--ed:2s;--edl:-1.5s;display:none}
+.tf-motes>i:nth-child(6){--ex:.30;--ey:.66;--ed:1.7s;--edl:-.6s;display:none}
+.tf-flare .tf-motes>i:nth-child(n+5){display:block}
+@keyframes tf-mote{0%{bottom:0;opacity:0}15%{opacity:.95}75%{opacity:.85}100%{bottom:100%;opacity:0}}
+.tf-mark{left:calc((var(--x) - var(--h) * .13) * 100%);top:calc((var(--t) + var(--h) * .92) * 100%);width:calc(var(--h) * 26%);height:calc(var(--h) * 7%);opacity:0;transition:opacity var(--fade) ease}
+/* The flare: the spirit opens from the feet (80-240 ms), holds (240-380 ms), settles back and is gone by 720 ms; the side pieces rise. */
+.tf-flare .tf-spirit{animation:tf-spirit 1s linear both}
+@keyframes tf-spirit{0%,8%{opacity:0;transform:scale(.86);animation-timing-function:cubic-bezier(.16,1,.3,1)}24%{opacity:var(--peak);transform:scale(1)}38%{opacity:var(--peak);transform:scale(1);animation-timing-function:cubic-bezier(.4,0,.2,1)}72%{opacity:0;transform:scale(.96)}100%{opacity:0;transform:scale(.96)}}
+.tf-flare .tf-side{animation:tf-rise .72s cubic-bezier(.16,1,.3,1) .08s both}
+@keyframes tf-rise{0%{opacity:0;transform:scaleY(.55)}22%{opacity:var(--sideop);transform:scaleY(1.08)}53%{transform:scaleY(1.04)}100%{opacity:var(--sideop);transform:scaleY(1)}}
+.tf-flare.tf-front .tf-ground{animation:tf-ground-in .24s ease-out both,tf-ground-glow var(--gp) ease-in-out .24s infinite}
+@keyframes tf-ground-in{from{opacity:0}to{opacity:var(--g0)}}
+/* Afterglow: everything goes out and only the small mark stays. */
+.tf-side,.tf-motes,.tf-front .tf-ground{transition:opacity var(--fade) ease}
+.tf-after .tf-side,.tf-after .tf-motes,.tf-after.tf-front .tf-ground,.tf-after .tf-spirit{opacity:0!important;animation:none}
+.tf-after .tf-mark{opacity:.95}
+
+/* ---- Other heroes (Codex five-hero plan, assets/gemwoven/raw/transform-fire/plan-other-heroes.md) ---- */
+/* Hiro: an earthen wayfarer's light, calmer than Mika; dust rises slowly. */
+:is(.tf-look,.tf-front).tf-novice{--sl:.25;--sr:.25;--fw:.82;--fh:.92;--fx:.04;--ft:.03;--swl:3.6s;--swr:4.3s;--swp:-1.3s;--lyl:-.66%;--lyr:-.7%;--rol:-.35deg;--ror:.3deg;--scl:1.008;--scr:1.008;
+  --gp:4.6s;--g0:.45;--g1:.55;--mr:10%;--mk:1.35;--ma:1/1}
+:is(.tf-look,.tf-front).tf-novice[data-form="2"]{--sl:.28;--sr:.30;--fw:.90;--fh:.96;--fx:.05;--ft:.01}
+:is(.tf-look,.tf-front).tf-novice[data-form="3"]{--sl:.31;--sr:.35;--fw:1.00;--fh:1.00;--fx:.07;--ft:-.01}
+/* Yuki: a seated snow rabbit of frozen mist; snow crystals fall slowly with a small sideways lilt. */
+:is(.tf-look,.tf-front).tf-ice{--sl:.31;--sr:.30;--fw:.94;--fh:.95;--fx:.06;--ft:.01;--swl:4.2s;--swr:5s;--swp:-1.6s;--lyl:-.53%;--lyr:-.57%;--rol:-.1deg;--ror:.1deg;--scl:1.004;--scr:1.004;
+  --gp:5s;--mr:12%;--mk:1.9;--ma:1/1;--fade:.4s}
+:is(.tf-look,.tf-front).tf-ice[data-form="2"]{--sl:.35;--sr:.34;--fw:1.04;--fh:1.00;--fx:.08;--ft:-.02}
+:is(.tf-look,.tf-front).tf-ice[data-form="3"]{--sl:.39;--sr:.42;--fw:1.14;--fh:1.04;--fx:.10;--ft:-.03}
+.tf-ice .tf-motes>i>b{animation:tf-mote calc(var(--ed) * var(--mk)) linear var(--edl) infinite reverse,tf-lilt 1.7s ease-in-out var(--edl) infinite alternate}
+@keyframes tf-lilt{from{translate:-25% 0}to{translate:25% 0}}
+/* Nori: an open ancient-tree crest; heavy, barely lifts, no stretch; leaves rise slowly and turn a little. */
+:is(.tf-look,.tf-front).tf-earth{--sl:.39;--sr:.37;--fw:1.08;--fh:.94;--fx:.06;--ft:.03;--swl:4.8s;--swr:5.6s;--swp:-1.7s;--lyl:-.4%;--lyr:-.43%;--rol:-.25deg;--ror:.2deg;--scl:1;--scr:1;
+  --gp:5.2s;--g0:.55;--g1:.65;--mr:8%;--mk:2;--ma:1/1;--fade:.4s}
+:is(.tf-look,.tf-front).tf-earth[data-form="2"]{--sl:.44;--sr:.43;--fw:1.18;--fh:1.00;--fx:.09;--ft:0}
+:is(.tf-look,.tf-front).tf-earth[data-form="3"]{--sl:.49;--sr:.51;--fw:1.28;--fh:1.04;--fx:.10;--ft:-.02}
+.tf-earth .tf-ground>b{animation:none}
+.tf-earth .tf-motes>i>b{animation:tf-mote calc(var(--ed) * var(--mk)) linear var(--edl) infinite,tf-turn 2.6s ease-in-out var(--edl) infinite alternate}
+@keyframes tf-turn{from{rotate:-12deg}to{rotate:12deg}}
+/* Lumi: an asymmetric four-point astral-lightning crest; no flicker; stars drift outward, never toward the foe's side only. */
+:is(.tf-look,.tf-front).tf-lightning{--sl:.34;--sr:.34;--fw:1.00;--fh:.96;--fx:.08;--ft:.02;--swl:2.6s;--swr:3.2s;--swp:-.9s;--lyl:-.8%;--lyr:-.86%;--rol:-.4deg;--ror:.35deg;--scl:1.01;--scr:1.01;
+  --gp:3.6s;--g0:.7;--g1:.78;--ma:1/1;--fade:.28s}
+:is(.tf-look,.tf-front).tf-lightning[data-form="2"]{--sl:.38;--sr:.37;--fw:1.10;--fh:1.01;--fx:.10;--ft:-.01}
+:is(.tf-look,.tf-front).tf-lightning[data-form="3"]{--sl:.42;--sr:.46;--fw:1.22;--fh:1.06;--fx:.12;--ft:-.03}
+.tf-lightning .tf-motes>i{width:calc(var(--h) * 6%);height:max(5px,calc(var(--h) * 3.2%))}
+.tf-lightning .tf-motes>i>b{inset:0 auto auto 0;width:max(5px,calc(var(--h) * 3.2%));height:100%;aspect-ratio:auto;animation:tf-drift calc(var(--ed) * 1.2) linear var(--edl) infinite}
+.tf-lightning .tf-motes>i:nth-child(odd)>b{animation-direction:reverse}
+@keyframes tf-drift{0%{left:0;translate:0 0;opacity:0}15%{opacity:.95}75%{opacity:.85}100%{left:100%;translate:0 -40%;opacity:0}}
+/* Noct: an open shadow-veil crest, quieter than the others; his own locked aura stays untouched. */
+:is(.tf-look,.tf-front).tf-shadow{--sl:.37;--sr:.28;--fw:1.00;--fh:.96;--fx:.08;--ft:.02;--swl:4.6s;--swr:5.4s;--swp:-1.8s;--lyl:-.53%;--lyr:-.57%;--rol:-.2deg;--ror:.15deg;--scl:1;--scr:1;--sideop:.45;
+  --peak:.62;--gp:5.8s;--g0:.35;--g1:.45;--mr:9%;--mk:2.2;--ma:1/1;--fade:.42s;--act:.25}
+:is(.tf-look,.tf-front).tf-shadow[data-form="2"]{--sl:.39;--sr:.35;--fw:1.10;--fh:1.00;--fx:.10;--ft:0}
+:is(.tf-look,.tf-front).tf-shadow[data-form="3"]{--sl:.48;--sr:.40;--fw:1.22;--fh:1.04;--fx:.12;--ft:-.02}
+
+/* While the hero strikes or casts, the look steps back so the attack reads first. */
+#heroActor:is([data-state="attack"],[data-state="cast"]) :is(.tf-look,.tf-front){opacity:var(--act);transition:opacity .1s ease}
+/* A hero with a drawn look drops the plain golden glow. */
+#heroActor.has-tf-look.is-transformed .sprite-body,#heroActor.has-tf-look.is-afterglow .sprite-body{filter:none;animation:none}
+#heroActor.has-tf-look.is-transformed::before{display:none}
+.reduced-motion :is(.tf-look,.tf-front),body.reduced-motion :is(.tf-look,.tf-front){display:none}
+body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!important}

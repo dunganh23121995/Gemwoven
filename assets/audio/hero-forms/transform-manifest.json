@@ -1,0 +1,40 @@
+{
+  "fire-transform": {
+    "file": "hero-forms/transform/fire-transform.wav",
+    "duration": 0.84,
+    "beat": "the fox spirit flares up (BIẾN THÂN pressed, from 80 ms)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "flame burst ignite bbq barbecue.flac",
+        "author": "kyles",
+        "source_url": "https://freesound.org/people/kyles/sounds/637533/",
+        "license": "CC0-1.0",
+        "sha256": "7d0ac55c43955b3533e4e894f446842ce08725722cd3e4428cf1d048def61b02"
+      }
+    ],
+    "processing": "excerpt 0.00-0.84 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.505,
+    "rms": 0.065,
+    "sha256": "5c290193a4d2a56be06d254770614b8ccdf53ab541f8c325210f5c7bf68a5422"
+  },
+  "fire-transform-end": {
+    "file": "hero-forms/transform/fire-transform-end.wav",
+    "duration": 0.45,
+    "beat": "the flames sink to coals (last transformed turn ends)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Fire Crackling 01.wav",
+        "author": "kingsrow",
+        "source_url": "https://freesound.org/people/kingsrow/sounds/181563/",
+        "license": "CC0-1.0",
+        "sha256": "f06ff554e43415d6fe1d83d00d964c93f8a3b1c1ec7c5b59e4e6c4383dd4c591"
+      }
+    ],
+    "processing": "excerpt 1.55-2.00 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.182,
+    "rms": 0.02,
+    "sha256": "7ae34dd39b5df78e4ccec3c01154a8f0e0ce591817bb2da3995d170682b64696"
+  }
+}

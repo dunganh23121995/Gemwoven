@@ -1,0 +1,12 @@
+Use the image just shown (the approved mockup) as the visual reference for style and palette of Mika's fire transformation effects.
+
+Create ONE landscape sprite sheet with exactly FOUR separate small game VFX pieces, laid out left to right in one row with wide magenta gaps, none touching:
+1. ANKLE CURL: a low, wide pair of flame tongues (about 4 times wider than tall), two small flames curling up at the left and right ends with an EMPTY space in the middle where a hero's feet stand; not a closed ring.
+2. EMBER: a single teardrop-shaped flying ember, pointed tip up, bright orange core, coral edge, crisp; no glow.
+3. EMBER (variant): a second smaller ember, slightly bent teardrop.
+4. AFTERGLOW COALS: a tiny low flourish of two short curved strokes of glowing ember-red coal with one orange dot, about 3 times wider than tall, like embers left on the ground; no flame height.
+
+Style: clean hand-painted HD 2D game VFX, bold stable shapes, crisp antialiased edges, no blur, no bloom, no smoke. Do not make pixel art.
+Palette strictly: deep wine red #591923, vermilion #C93628, coral #F36338, tiny peach-orange #FFB06A highlights. No white, no yellow masses.
+
+Background: 100% solid flat magenta #FF00FF, no gradient, no shadow, no ground line. Each piece centred in its own quarter with generous margins. No text, no labels, no UI, no hero, no border.
