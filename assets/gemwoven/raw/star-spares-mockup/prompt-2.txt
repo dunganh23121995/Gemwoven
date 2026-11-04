@@ -1,0 +1,6 @@
+Edit the supplied mockup (image 1) using the current screen (image 2) for exact layout: keep the materials panel and every button at the SAME size and position as in image 2 (panel width and height unchanged, title strip on top, materials row, "Tăng Sao"-style gold main button and the small "Hình thái" button below). Do not enlarge the panel.
+Changes to image 1:
+- Replace the five big stamp buttons with a single slim row of five small leather stamps that fits the panel's title strip height (about 35 px on the 941-wide screen): "1★ ×4", "2★ ×0", "3★ ×0", "4★ ×0", "5★ ×0"; neutral brown numbers; only 3★ has a thin gold outline; two tiny brass arrows only after 1★ and 2★. Drop the "3 sao → 4 sao" title (the star preview is already shown above the panel in image 2).
+- Materials row as in image 1 but calmer: Mika portrait with brass "3★" seal and a small forge-hammer badge (no flames around the tile), "0/1" red; gold coin "900N/125N" green; essence crystal "400/82" green.
+- Main button text "Luyện & Tăng Sao", "Hình thái" at its right as in image 2.
+Everything hand-painted like the game's walnut, brass, leather and parchment kit; crisp on a phone.

@@ -23,7 +23,7 @@
     nodes=remove(nodes,new RegExp('\\.'+prefix+'-'));
     const entries=Object.entries(cost||{}).filter(([,n])=>reward?n>=0:n>0),[x,y,w,h]=rect,gap=10;
     if(!entries.length)return nodes;
-    const rows=entries.map(([id,n])=>{const available=id==='copies'?p.copies:owned(p,id);return {id,n,available,label:reward?tight(n):`${tight(available)}/${tight(n)}`};});
+    const rows=entries.map(([id,n])=>{const available=id==='copies'?p.copies:owned(p,id);return {id,n,available,label:reward?tight(n):`${tight(available)}/${tight(n)}`.replace(/\s/g,'')};});
     // Each tile is at least as wide as its count at the readable size; spare room is shared evenly.
     const room=w-gap*(rows.length-1),need=rows.map(r=>Math.max(76,ems(r.label)*size+16)),total=need.reduce((a,b)=>a+b,0);
     const widths=total<=room?(need.every(v=>v<=room/rows.length)?need.map(()=>room/rows.length):need.map(v=>v+(room-total)/rows.length)):need.map(v=>v*room/total);
@@ -178,8 +178,23 @@ ${price}`);}
     if(Math.round(a.defense*100)!==Math.round(b.defense*100))parts.push(`Thủ ${Math.round(a.defense*100)}% → ${Math.round(b.defense*100)}%`);
     return parts.join(' · ')+(r.unlock?'\n'+r.unlock:'');
   }
+  // Tăng Sao for starred spares: the five spare stamps (1★..5★ ×n) replace the level strip, the stamp of the star needed
+  // lit; small brass arrows join only the stars the plan fuses. The spare tile carries its star seal and the forge badge
+  // (lit when the plan fuses), and opens the fusion sheet.
+  function spareStrip(nodes,hero,plan){
+    nodes=remove(nodes,/\.(level-strip|level-preview|exp-meter|exp-value|exp-crystal|exp-label)$/);
+    const used=new Set(plan.refines.map(r=>r.to-1)),w=90,gap=18,x0=210,y=1022;
+    for(let st=1;st<=5;st++){const x=x0+(st-1)*(w+gap);
+      nodes.push(button('upgrade','spare-'+st,`${st}★ ×${plan.stock[st]}`,[x,y,w,56],'art:spares',{hero},{asset:'kit-badge-leather',size:22,tone:'gold',className:'spare-stamp'+(st===plan.fodderStar?' is-need':'')+(used.has(st)?' is-used':'')}));
+      if(st<5&&used.has(st))nodes.push(image('upgrade','spare-arrow-'+st,'vip-pass-scroll-arrow',[x+w-2,y+16,gap+4,24],{fit:'contain',className:'spare-arrow'}));}
+    const tile=find(nodes,'upgrade-materials-0');
+    if(tile){tile.action='art:spares';tile.data={hero};const [tx,ty,tw]=tile.rect;
+      nodes.push(button('upgrade','spare-seal',`${plan.fodderStar}★`,[tx+tw-66,ty-8,64,34],'art:spares',{hero},{asset:'kit-badge-brass',size:20,tone:'ink',className:'spare-seal'}));
+      nodes.push(button('upgrade','spare-forge','',[tx-22,ty+42,52,52],'art:spares',{hero},{asset:'icon-forge',fit:'contain',labelHidden:true,className:'spare-forge'+(plan.ok&&plan.refines.length?' is-lit':'')}));}
+    return nodes;
+  }
   function upgrade(nodes,p,state){
-    const hero=state.hero,h=p.heroes[hero],tab=state.upgradeTab||'level';let c=null,disabled=true,gain='',side=null;
+    const hero=state.hero,h=p.heroes[hero],tab=state.upgradeTab||'level';let c=null,disabled=true,gain='',side=null,plan=null;
     for(const [i,t]of ['level','stars','evolution'].entries()){action(nodes,'upgrade-tab-'+i,'do:upgrade-tab',{tab:t});find(nodes,'upgrade-tab-'+i).selected=tab===t;}
     for(const n of nodes){if(n.id.startsWith('upgrade.choose-')){n.action='do:hero';n.data={hero:n.id.slice(15)};n.selected=n.data.hero===hero;}}
     action(nodes,'evolution-next','do:upgrade-tab',{tab:'evolution'});
@@ -196,9 +211,12 @@ ${price}`);}
         if(!max)side=button('upgrade','level-step',step===10?'×10 ✓':'×10',[664,1344,118,58],'art:level-step',{},{asset:'nameplate',size:24,selected:step===10,className:'upgrade-side-toggle'});
       }
       if(tab==='stars'){
-        const s=h.stars<6?M.starCost(h.stars):null;c=s?{copies:s.copies,gold:s.gold,essence:s.essence}:null;
-        label(nodes,'level-preview',s?`${h.stars} sao → ${h.stars+1} sao`:'6 sao · Tối đa');label(nodes,'upgrade-material-title',s?'Bản sao · Vàng · Tinh hoa':'Đã đạt 6 sao');
-        disabled=!s||h.copies-1<s.copies||!affordable(p,{gold:s.gold,essence:s.essence});action(nodes,'upgrade-action','do:star',{hero},disabled);label(nodes,'upgrade-action',s?'Tăng Sao':'Đã Tối Đa');
+        // Starred spares (owner 04/11, Claude + Codex, mockup assets/gemwoven/raw/star-spares-mockup): the spare needed is one
+        // of the hero's current star; Tăng Sao fuses it from lower spares when it can (fees included). Hiro keeps plain copies.
+        const s=M.starPlan(hero,h);plan=s;c=s?(s.legacy?{copies:s.need,gold:s.gold,essence:s.essence}:{copies:s.need,gold:s.gold,essence:s.essence}):null;
+        label(nodes,'level-preview',s?`${h.stars} sao → ${h.stars+1} sao`:'6 sao · Tối đa');label(nodes,'upgrade-material-title',s?(s.legacy?'Bản sao · Vàng · Tinh hoa':''):'Đã đạt 6 sao');
+        const fuse=s&&!s.legacy&&s.ok&&s.refines.length>0;
+        disabled=!s||!s.ok||!affordable(p,{gold:s.gold,essence:s.essence});action(nodes,'upgrade-action','do:star',{hero},disabled);label(nodes,'upgrade-action',!s?'Đã Tối Đa':fuse?'Luyện & Tăng Sao':'Tăng Sao');
         gain=s?gainText(M.upgradePreview(p,hero,'stars')):'Đã mở mọi hình thái.';
         if(M.HERO_FORMS[hero])side=button('upgrade','form-gallery','Hình thái',[664,1344,118,58],'forms:gallery',{hero},{asset:'nameplate',size:21,className:'upgrade-side-toggle'});
       }
@@ -211,7 +229,8 @@ ${price}`);}
       }
       find(nodes,'upgrade-material-panel').rect=[200,1096,541,230];
       find(nodes,'upgrade-material-title').rect=[236,1124,469,35];
-      nodes=materials(nodes,'upgrade',{...p,copies:h.copies-1,materialHero:hero},c,[226,1166,489,132],'upgrade-materials',false,31);
+      nodes=materials(nodes,'upgrade',{...p,copies:plan?plan.have:h.copies-1,materialHero:hero},c,[226,1166,489,132],'upgrade-materials',false,31);
+      if(plan&&!plan.legacy)nodes=spareStrip(nodes,hero,plan);
       nodes.push(button('upgrade','select-active',p.selected===hero?'Đang xuất chiến':'Xuất chiến',[582,636,174,59],'do:select',{hero},{size:21,disabled:p.selected===hero}));
     }else{
       const frags=p.fragments[hero]||0,soon=unreleased(hero)&&frags<80;
@@ -221,10 +240,10 @@ ${price}`);}
       gain=soon?'Coming soon · Kỳ triệu hồi này chưa có mảnh của tướng này.':'Mảnh nhận từ triệu hồi và lần đầu hạ boss chương.';
     }
     // Phone-readable preview: one line of stat changes, a second line only for unlocks.
-    Object.assign(find(nodes,'upgrade-action'),{rect:[311,1320,326,98]});Object.assign(find(nodes,'exp-value'),{rect:[296,1058,350,38],size:31});
+    Object.assign(find(nodes,'upgrade-action'),{rect:[311,1320,326,98]});const ev=find(nodes,'exp-value');if(ev)Object.assign(ev,{rect:[296,1058,350,38],size:31});
     if(gain)nodes.push(text('upgrade','gain-preview',gain,[70,1422,800,70],31,'gold',{className:'text-backing upgrade-gain'}));
     if(side)nodes.push(side);
-    nodes=remove(nodes,/\.exp-label$/);find(nodes,'exp-crystal').asset='exp-book';
+    nodes=remove(nodes,/\.exp-label$/);const crystal=find(nodes,'exp-crystal');if(crystal)crystal.asset='exp-book';
     nodes.push(button('upgrade','choose-novice','Hiro',[660,711,61,66],'do:hero',{hero:'novice'},{asset:'avatar-ring',icon:'portrait-novice',iconRect:[12,8,37,48],labelHidden:true,selected:hero==='novice'}));
     return nodes;
   }
@@ -422,6 +441,21 @@ ${price}`);}
     }
     L.screens[key].nodes=nodes;return p;
   };
+  // Fusion sheet: each step shows two spares of a star becoming one of the next, its fee as icons + numbers (green/red),
+  // and a Luyện button. Words kept to the title, Luyện and the shortfall.
+  function sparesDialog(ctx,hero){
+    const modal=window.GemwovenUI.makeDialog('star-spares','Luyện bản dư','growth-dialog spares-dialog');
+    const face=`<img src="${A['portrait-'+hero]?.file||''}" alt="">`,need=(have,n)=>`<b class="${have>=n?'ok':'short'}">${tight(n)}</b>`;
+    const draw=()=>{const p=G.engine.read(),h=p.heroes[hero];if(!h){modal.close();return;}const st=M.spares(h),plan=M.starPlan(hero,h);
+      const card=s=>`<span class="sp-card${plan&&s===plan.fodderStar?' is-need':''}">${face}<i>${s}★</i><em>×${st[s]}</em></span>`;
+      modal.body.innerHTML=[1,2,3,4].map(s=>{const f=M.REFINE[s],ok=st[s]>=2&&owned(p,'gold')>=f.gold&&owned(p,'essence')>=f.essence;
+        return `<div class="sp-step">${card(s)}<span class="sp-two">×2</span><img class="sp-arrow" src="${A['vip-pass-scroll-arrow']?.file||''}" alt="">${card(s+1)}`+
+          `<span class="sp-fee"><span><img src="${A[M.RESOURCES.gold[1]]?.file||''}" alt="">${need(owned(p,'gold'),f.gold)}</span><span><img src="${A[M.RESOURCES.essence[1]]?.file||''}" alt="">${need(owned(p,'essence'),f.essence)}</span></span>`+
+          `<button type="button" class="gw-btn sp-go" data-to="${s+1}" ${ok?'':'disabled'}>Luyện</button></div>`;}).join('')+
+        (plan&&!plan.ok?`<p class="sp-short">Thiếu ${plan.rawShort} bản 1★</p>`:'');
+      modal.body.querySelectorAll('.sp-go').forEach(b=>b.onclick=()=>{try{G.engine.refineCopy(hero,+b.dataset.to);}catch(e){ctx.toast?.(e.message);}draw();ctx.render();});};
+    draw();modal.present();
+  }
   const oldHandle=G.handle;
   G.handle=(act,el,ctx,state)=>{
     if(act.startsWith('item:')){
@@ -456,6 +490,7 @@ ${price}`);}
     if(command==='level-step')state.levelStep=state.levelStep===10?1:10;
     if(command==='level'){try{const r=G.engine.levelUp(d.hero,Number(d.count));ctx.render();if(r.tickets)G.showRewards(ctx,{tickets:r.tickets});}catch(error){ctx.render();ctx.showModal('Chưa thể tăng cấp',[],error.message);}return true;}
     if(command==='skill-soon'){ctx.showModal('Nhánh Kỹ Năng · Sắp ra mắt',['skill-lock'],'Các nhánh này chưa phát hành. Hiện mỗi tướng có 4 kỹ năng: Chủ Động, Bị Động, Biến Dị và Chân Thân.');return true;}
+    if(command==='spares'){sparesDialog(ctx,d.hero||state.hero);return true;}
     if(command==='evolution-perks'){
       const hero=d.hero||state.hero,h=G.engine.read().heroes[hero],now=h?.evolution||0;
       ctx.showModal('Mốc tiến hóa · '+M.HEROES[hero].name,[],M.EVOLUTION.map((e,i)=>`${i<now?'✓':'○'} Tiến hóa ${i+1} · cấp ${e.level}, ${e.stars} sao: ${e.perk}. ${e.name}.`).join('\n'));return true;

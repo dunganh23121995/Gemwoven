@@ -1,0 +1,6 @@
+Create a portrait mobile game UI mockup (941x1672 proportions) using the supplied Gemwoven screenshot as the reference; keep the whole screen identical (hero hall, Mika, HUD, tabs, bottom nav) and redesign ONLY the materials panel under the hero roster and the button row below it, keeping their positions.
+Match the game's painted kit: dark walnut wood frame, brass trims, leather stamps, parchment inner panel, warm fantasy style, crisp and readable on a phone.
+Inside the panel, top row: five small leather inventory stamps side by side reading "1★ ×4", "2★ ×0", "3★ ×0", "4★ ×0", "5★ ×0"; the 3★ stamp has a glowing gold outline; small arrow marks on 1★ and 2★ (they will be fused).
+Below them, three illustrated material sockets in a row: (1) a Mika portrait tile with a brass "3★" seal and a small glowing forge-hammer badge, number "0/1" in red under it; (2) gold coin tile, number "900N/125N" in green; (3) red essence crystal tile, number "400/82" in green.
+Main gold button below: "Luyện & Tăng Sao"; the small "Hình thái" button stays at its right.
+No extra words, no plain flat CSS boxes; every piece looks hand-painted like the reference.

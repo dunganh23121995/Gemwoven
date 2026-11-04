@@ -40,7 +40,7 @@ Ký hiệu: **[Có]** đã chạy · **[Đêm nay]** thêm ở đợt 03/11 · *
 | Trục | Việc duy nhất | Tài nguyên | Cổng | Trạng thái |
 |---|---|---|---|---|
 | **Cấp** 1–500 | HP +4,5%, Công +1,8% mỗi cấp | Vàng, Sách EXP, Ấn (trần 1.600/ngày) | Không khóa bởi sao | [Có] |
-| **Sao** 1–6★ | HP +12%, Công +9% mỗi sao; **mở Hình thái** | Bản sao (80 mảnh = 1), vàng, tinh hoa | Bản sao | [Có] |
+| **Sao** 1–6★ | HP +12%, Công +9% mỗi sao; **mở Hình thái** | **Bản dư có sao** (80 mảnh = 1 bản 1★; 2 bản s★ luyện thành 1 bản (s+1)★), vàng, tinh hoa; s→s+1 cần 1 bản s★ (Hiro: bản thường 1/2/3/5/8) | Bản dư | [Có · 04/11] |
 | **Hình thái** 1–3 | Dáng + bộ tuyệt kỹ (×1 / ×1,1 / ×1,25 + đặc tính 6★) | 4★ → H2, 6★ → H3 | Sao | [Có]; diện mạo tùy chọn [Đêm nay] |
 | **Tiến hóa** 0–6 | Mở nhánh kỹ năng, năng lượng đầu trận, mảnh giáp; HP +10%, Công +7%/bậc | Vàng, tinh hoa, quặng | **Cấp + Sao** | [Có] |
 | **Kỹ năng** 4 × 10 | Đổi *cách* thắng | Vàng, bí kíp, tinh hoa | Cấp + Tiến hóa | [Có] |
@@ -1001,3 +1001,28 @@ lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được;
 - Đã sửa ngay: rương Diệu Ngọc chờ ải 60/80 không còn mất khi hết mùa, cất thành phiếu.
 - **Chờ chủ dự án:** (1) 299k = hai bản X (một khi mua, 80 mảnh ở cấp 50); (2) bù miễn phí đến ngày 28; (3) X của mùa đầu
   (hiện chỉ Mika được phát hành, nên mùa đầu chưa có Y chạy lại: tuần 3–4 là sự kiện nguyên liệu); (4) chốt bộ 7 món.
+
+### Vòng Nâng Sao (04/11, "phải có bản sao cấp cao mới đủ nguyên liệu để nâng sao cao") — Claude + Codex thống nhất, đã làm
+
+- **Bản dư có sao** (tướng triệu hồi, không phải Hiro): bản dư mới (triệu hồi, ghép 80 mảnh) là **1★**. **Luyện**: 2 bản s★ cùng
+  tướng → 1 bản (s+1)★, phí lên 2★ 5.000 vàng/5 tinh hoa, 3★ 15.000/12, 4★ 50.000/30, 5★ 150.000/70. Chỉ cùng tướng (không dùng
+  tướng khác cùng độ hiếm, tránh tướng dễ kiếm nuôi tướng đắt).
+- **Lên sao tướng chính s→s+1 cần 1 bản s★** + phí cũ (10k/35k/100k/300k/1M vàng, 10/25/60/140/300 tinh hoa). Bản thô 1/2/4/8/16:
+  **4★ (hình thái 2) = 7 bản dư, 175.000 vàng, 122 tinh hoa** (cũ 6 · 145.000 · 95); **6★ (hình thái 3) = 31 bản dư, 1.925.000 vàng,
+  854 tinh hoa** (cũ 19 · 1.445.000 · 535). Phần tăng nằm ở cuối.
+- **Bấm Tăng Sao tự luyện** từ bản thấp nếu đủ, một giao dịch, chỉ luyện tới bậc cần; nút đổi thành "Luyện & Tăng Sao", vàng/tinh hoa
+  hiện tổng gồm phí luyện. Ô bản dư luôn ghi tồn thật (0/1 đỏ dù luyện được). Luyện thủ công trong bảng "Luyện bản dư".
+- **Hiro giữ bảng cũ** (1/2/3/5/8 bản thường, 6★ = 19 bản ≈ 8 tháng): đường miễn phí không đổi, không phải buff (chỉ số, nguồn mảnh
+  giữ nguyên). Áp nhị phân sẽ kéo 6★ Hiro lên ~13 tháng nên bác.
+- **6★ đổi Bụi Ký Ức theo bản thô**: bản dư s★ = 80 × 2^(s−1) bụi; không hoàn phí luyện. Lưu cũ: bản dư hiện có thành bản 1★, giữ sao.
+- **Mùa Mika giữ nguyên**: miễn phí ghép bản đầu ngày 14; Diệu Ngọc 299k = hai bản thô (đủ 1★→2★).
+- **Thời gian ước tính** (Codex, ~63 lượt/bản, mảnh từ quay làm thực tế ~57): người chi tiền từ bản chính tới 4★ 378 → 441 lượt
+  (~15,4 → 18,0 triệu), 6★ 1.197 → 1.953 lượt (~48,7 → 79,5 triệu). Miễn phí Mika (Mika thường trực, bụi chưa tiêu được) 4★ ~190 →
+  222 ngày, 6★ ~601 → 981 ngày; không hứa Mika 6★ miễn phí trong vài tháng. Hiro 67/240 ngày không đổi. Mô phỏng trận
+  (`balance-sim`) không đổi vì chỉ số mỗi sao giữ nguyên.
+- **Giao diện Tăng Sao** (mockup `assets/gemwoven/raw/star-spares-mockup/`, Codex 8,2 → 8,3 mockup, bản dựng 8,2/8,4 → **8,6/8,7**
+  điện thoại/Studio): dải 5 dấu da "1★ ×4 … 5★ ×0" thay dải cấp, dấu bậc cần viền vàng, mũi tên đồng chỉ nối các bậc đem luyện; ô
+  chân dung có ấn "3★" và búa rèn (sáng khi luyện được), chạm mở bảng Luyện bản dư (hai bản → một bản, phí bằng hình + số xanh/đỏ,
+  nút Luyện, "Thiếu n bản 1★").
+- **Chủ dự án duyệt**: (1) 6★ tướng triệu hồi = 31 bản dư (~2–3 năm miễn phí với nguồn hiện có); (2) Hiro giữ 19 bản; (3) người
+  đã lên sao theo luật cũ giữ nguyên, không truy thu.

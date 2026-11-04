@@ -207,3 +207,33 @@
 #scene .panel-back{filter:drop-shadow(0 4px 4px #1a0c0499);z-index:6}
 #scene .panel-back::after{content:"";position:absolute;inset:-8px}
 #scene .panel-back:active>.art{content:var(--kit-back-down)}
+
+/* Tăng Sao starred spares (owner 04/11, Claude + Codex mockup star-spares-mockup): leather stamps 1★..5★ ×n, the needed one
+   with a thin gold outline, brass arrows only where the plan fuses; the spare tile wears its star seal and the forge badge. */
+#scene .spare-stamp .copy-layer{color:#f3dfb4!important;font-weight:800;letter-spacing:-.3px;text-shadow:0 1px 2px #1d0d04}
+#scene .spare-stamp>.art{filter:brightness(.92) saturate(.9)}
+#scene .spare-stamp.is-need>.art{filter:drop-shadow(0 0 2px #ffd36a) drop-shadow(0 0 5px #f0b23a)}
+#scene .spare-stamp.is-need .copy-layer{color:#ffe08a!important}
+#scene .spare-arrow{transform:rotate(90deg);filter:drop-shadow(0 1px 1px #0008)}
+#scene .spare-seal .copy-layer{font-weight:900;color:#4a2a10!important;text-shadow:0 1px #ffe9b0}
+#scene .spare-seal{z-index:3}
+#scene .spare-forge{z-index:3;filter:drop-shadow(0 0 2px #fff3c8) drop-shadow(0 0 3px #f6d58a) drop-shadow(0 2px 3px #000a)}
+#scene .spare-forge.is-lit{filter:drop-shadow(0 0 2px #fff6d8) drop-shadow(0 0 8px #ffaa2a) drop-shadow(0 2px 3px #000a);animation:spare-forge 1.6s ease-in-out infinite}
+@keyframes spare-forge{50%{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){#scene .spare-forge.is-lit{animation:none}}
+.spares-dialog .sp-card{position:relative;display:inline-flex;flex-direction:column;align-items:center;width:50px;flex:none;border:solid transparent;border-width:6px;border-image:var(--kit-stat) 26 28 fill / 6px stretch}
+.spares-dialog .sp-card img{width:38px;height:38px;border-radius:6px;object-fit:cover}
+.spares-dialog .sp-card i{position:absolute;top:-9px;right:-10px;min-width:28px;padding:1px 3px;text-align:center;font:900 12px Cambria,serif;font-style:normal;color:#4a2a10;background:var(--kit-badge-brass) center/100% 100% no-repeat}
+.spares-dialog .sp-card em{font:800 14px Cambria,serif;font-style:normal;color:#472b16}
+.spares-dialog .sp-card.is-need{filter:drop-shadow(0 0 4px #f0b23a)}
+.spares-dialog .sp-step{display:flex;align-items:center;gap:5px;padding:8px 2px;border-top:1px solid #c9a46a66}
+.spares-dialog .sp-step:first-child{border-top:0}
+.spares-dialog .sp-two{font:900 14px Cambria,serif;color:#472b16}
+.spares-dialog .sp-arrow{width:16px;height:16px;transform:rotate(90deg);flex:none}
+.spares-dialog .sp-fee{display:flex;flex-direction:column;gap:2px;margin-left:auto}
+.spares-dialog .sp-fee>span{display:flex;align-items:center;gap:3px}
+.spares-dialog .sp-fee img{width:18px;height:18px;object-fit:contain}
+.spares-dialog .sp-fee b{font:800 14px Cambria,serif;white-space:nowrap}
+.spares-dialog .sp-fee b.ok{color:#2f7a2a}.spares-dialog .sp-fee b.short{color:#b32a1c}
+.spares-dialog .sp-go{min-width:0;width:88px;padding:5px 14px;font-size:15px;flex:none;white-space:nowrap}
+.spares-dialog .sp-short{text-align:center;color:#b32a1c;font-weight:800;margin:10px 0 0}

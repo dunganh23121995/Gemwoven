@@ -13,6 +13,21 @@ function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setI
   assert.equal(e.stats('fire').form,2);assert.equal(e.stats('fire').kit.formPower,1.1);
   assert.equal(e.chooseLook('fire',2),2);assert.equal(e.read().heroes.fire.look,undefined,'Choosing the highest clears the override');
   e.chooseLook('fire',1);edit(p=>{p.heroes.fire.stars=5;p.heroes.fire.copies=20;});e.starUp('fire');
+  // Starred spares (owner 04/11): 5→6 takes one 5★ spare = 16 raw copies; starUp fuses what it needs (20 → 4 left) and pays
+  // the fusions too; Hiro keeps the plain table (8 copies for 5→6).
+  {const h=e.read().heroes.fire;assert.equal(h.stars,6);assert.equal(h.fodder,undefined,'16 raw spent, the 3 left become dust at 6★');}
+  assert.deepEqual([1,2,3,4,5].map(s=>M.spareRaw(s)),[1,2,4,8,16]);
+  {const plan=M.starPlan('ice',{stars:5,copies:1+15});assert.ok(!plan.ok);assert.equal(plan.rawShort,1);assert.equal(plan.gold,1350000);assert.equal(plan.essence,518);
+   assert.deepEqual(plan.refines,[{to:2,count:8},{to:3,count:4},{to:4,count:2},{to:5,count:1}]);
+   const part=M.starPlan('ice',{stars:5,copies:1+8,fodder:{4:1}});assert.ok(part.ok);assert.deepEqual(part.refines,[{to:2,count:4},{to:3,count:2},{to:4,count:1},{to:5,count:1}]);
+   assert.ok(M.starPlan('ice',{stars:3,copies:1,fodder:{3:1}}).ok);assert.ok(!M.starPlan('ice',{stars:3,copies:1+3}).ok,'3 raw do not make a 3★ spare');
+   const hiro=M.starPlan('novice',{stars:5,copies:9});assert.ok(hiro.legacy&&hiro.ok&&hiro.need===8&&hiro.gold===1000000);}
+  // Manual fusion: two spares of a star into one of the next; Hiro has no starred spares.
+  edit(p=>{p.heroes.ice={...p.heroes.fire,stars:1,copies:1+5};delete p.heroes.ice.fodder;p.wallet.gold=1e6;p.materials.essence=500;});
+  assert.deepEqual(e.refineCopy('ice',2),[0,3,1,0,0,0]);assert.deepEqual(e.refineCopy('ice',2),[0,1,2,0,0,0]);assert.deepEqual(e.refineCopy('ice',3),[0,1,0,1,0,0]);
+  assert.throws(()=>e.refineCopy('ice',4),/2 bản 3★/);assert.throws(()=>e.refineCopy('novice',2),/Hiro/);
+  edit(p=>{p.heroes.ice.stars=3;});e.starUp('ice');assert.equal(e.read().heroes.ice.stars,4);assert.deepEqual(M.spares(e.read().heroes.ice),[0,1,0,0,0,0]);
+
   assert.equal(M.heroForm('fire',e.read().heroes.fire),3);assert.equal(M.lookForm('fire',e.read().heroes.fire),3,'A newly unlocked form is shown');
 }
 { // Hiro's copies come from play: newbie week, daily campaign quest, chapter chests, endless floors.
@@ -407,11 +422,13 @@ console.log('cup ok');
   edit(p=>{p.fragments.fire=5;p.heroes.fire.copies=2;});e.select('novice');assert.equal(e.read().memory.dust,185+85,'later gains convert too');
   edit(p=>{p.previewGrants=['noct-preview-2026-10'];p.heroes.shadow=six({copies:5});});e.select('novice');assert.equal(e.read().heroes.shadow.copies,5,'test heroes never feed the economy');
   // Reaching 6★ converts what is left after the star cost.
-  edit(p=>{p.heroes.earth=six({stars:5,copies:1+8+3});p.wallet.gold=2e6;p.materials.essence=500;});e.starUp('earth');assert.equal(e.read().heroes.earth.copies,1);assert.equal(e.read().memory.dust,270+3*80);
+  edit(p=>{p.heroes.earth=six({stars:5,copies:1+16+3});p.wallet.gold=2e6;p.materials.essence=600;});e.starUp('earth');assert.equal(e.read().heroes.earth.copies,1);assert.equal(e.read().memory.dust,270+3*80);
+  // A starred spare of a 6★ hero converts by its raw copies (80 × 2^(s−1)).
+  edit(p=>{p.heroes.earth.copies=2;p.heroes.earth.fodder={3:1};});e.select('novice');assert.equal(e.read().memory.dust,510+80+320);assert.equal(e.read().heroes.earth.fodder,undefined);
   // Weekly milestone: 40 dust once a week from the third weekly quest.
-  edit(p=>{p.weekly.progress.daily=12;});assert.equal(e.claimWeekly('daily').memoryDust,40);assert.throws(()=>e.claimWeekly('daily'),/Đã nhận/);assert.equal(e.read().memory.dust,550);
+  edit(p=>{p.weekly.progress.daily=12;});assert.equal(e.claimWeekly('daily').memoryDust,40);assert.throws(()=>e.claimWeekly('daily'),/Đã nhận/);assert.equal(e.read().memory.dust,950);
   // Today only Mika is released and she is on the banner: an empty shelf, dust kept.
-  let v=e.memory();assert.ok(v.empty);assert.equal(v.dust,550);assert.equal(v.banner,'fire');assert.throws(()=>e.buyMemory('fire'),/không có trên kệ/);assert.throws(()=>e.buyMemory('novice'),/không có trên kệ/);
+  let v=e.memory();assert.ok(v.empty);assert.equal(v.dust,950);assert.equal(v.banner,'fire');assert.throws(()=>e.buyMemory('fire'),/không có trên kệ/);assert.throws(()=>e.buyMemory('novice'),/không có trên kệ/);
   assert.equal(e.read().wallet.gems,0,'no Đá Ngọc');
   // Banner rules: 14-day periods from 02/11/2026, reruns 3+ periods apart, rotation only with 3+ released rare heroes.
   const rel={fire:'2026-11-02',ice:'2026-11-16',earth:'2026-11-30'};
