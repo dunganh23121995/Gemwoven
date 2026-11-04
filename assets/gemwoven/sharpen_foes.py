@@ -417,12 +417,15 @@ def pockets(new, old, colour, soft=False):
         cut |= look > .45
     if soft and none:
         # and the backdrop mixed into thin strings and soft edges goes too, by how much of it a pixel holds
-        alpha = k[..., 0] * np.clip(1 - (look - .12) / .3, 0, 1)
+        # (a pink or green glow the old frame does show, there, stays)
+        shown_too = cv2.resize(((olook > .2) & (o[..., 3] > .2)).astype(np.uint8), (n, n), interpolation=cv2.INTER_NEAREST)
+        free = ~ndimage.binary_dilation(shown_too.astype(bool), iterations=max(2, n // 128))
+        alpha = np.where(free, k[..., 0] * np.clip(1 - (look - .12) / .3, 0, 1), k[..., 0])
         rgb = rgb.copy()
         if colour[1] > 0:
-            rgb[..., 1] = np.minimum(rgb[..., 1], np.maximum(rgb[..., 0], rgb[..., 2]))
+            rgb[..., 1] = np.where(free, np.minimum(rgb[..., 1], np.maximum(rgb[..., 0], rgb[..., 2])), rgb[..., 1])
         else:
-            over = np.maximum(np.minimum(rgb[..., 0], rgb[..., 2]) - rgb[..., 1], 0)
+            over = np.maximum(np.minimum(rgb[..., 0], rgb[..., 2]) - rgb[..., 1], 0) * free
             rgb[..., 0] -= over; rgb[..., 2] -= over
         out = new.copy(); out[..., 3] = alpha; out[..., :3] = rgb * alpha[..., None]
         return out
