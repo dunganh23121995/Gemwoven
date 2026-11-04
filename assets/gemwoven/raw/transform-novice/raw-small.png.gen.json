@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "max",
+  "at": "2026-11-04T06:24:16Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform-fire\\ref-heroes-rest.png"
+  ],
+  "prompt": "Use the supplied heroes-rest image only as a painted-style reference. Hiro is the first group of three heroes from the left. Do not draw any hero.\n\nCreate ONE landscape 3072 x 1024 VFX asset sheet divided into four equal invisible columns. Exactly FOUR asset groups, left to right:\n\n1. GROUND: two low earthen-light pebble strokes positioned at the far left and right of one wide group, approximately four times wider than tall. Leave the central 40% entirely empty for the hero's feet. No connecting line or closed ring.\n2. MOTE: one compact upward-pointing wedge of mineral dust, with one small warm edge highlight. No trail.\n3. MOTE VARIANT: one smaller rice-grain-shaped mineral fleck, slightly tilted. No trail.\n4. AFTER: two tiny low horizontal ochre strokes forming a quiet remaining path mark, approximately three times wider than tall. No tall rays or particles.\n\nStyle: clean hand-painted HD 2D game VFX, bold simple shapes, crisp antialiased edges, no pixel art, blur, bloom, or smoke.\n\nPalette strictly: #30251D, #5B4932, #947246, #C7A16A, tiny #F0D6A1 highlights.\n\nBackground: completely solid flat magenta #FF00FF. Centre every group within its own quarter, leaving at least 8% empty margin to every cell edge and wide gaps between groups. No gradient, cast shadow, ground plane, text, labels, UI, hero, watermark, or border. Not animation frames.\n\nRevision 3 (Codex fight review 2): piece 4 (AFTER) must be exactly two separate short dashes side by side, clearly thick, colour #C7A16A with a dark #30251D edge, readable at 40 pixels wide.\n\nRevision 4 (Codex fight review 3): piece 4 (AFTER): two short dashes with a #5B4932 body and #C7A16A edge, each clearly thick.\n\nRevision 5 (Codex fight review 4): piece 4 (AFTER): two short dashes with a #C7A16A top face and a short #F0D6A1 highlight edge.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows four asset groups on a flat magenta background, one per column: paired ground pebbles at the left, an upward crystal wedge, a small rice-grain fleck, and two horizontal dashes at the right. No hero, text, border or gradient is visible, and the palette looks consistent with the brief. Only minor stylistic detail differs, so no clear defect is found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000619
+  }
+}

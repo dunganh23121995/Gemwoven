@@ -37,6 +37,44 @@
     "rms": 0.02,
     "sha256": "7ae34dd39b5df78e4ccec3c01154a8f0e0ce591817bb2da3995d170682b64696"
   },
+  "novice-transform": {
+    "file": "hero-forms/transform/novice-transform.wav",
+    "duration": 0.65,
+    "beat": "a wayfarer's light rises (BIẾN THÂN pressed)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Whoosh stereo light (transition)",
+        "author": "xkeril",
+        "source_url": "https://freesound.org/people/xkeril/sounds/701104/",
+        "license": "CC0-1.0",
+        "sha256": "791bf392615c81ef7b0fd1a92fa39b847241ae0f995669f22573763edbaef07b"
+      }
+    ],
+    "processing": "excerpt 0.20-0.85 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.53,
+    "rms": 0.06,
+    "sha256": "ec6a1bec4b9f0821e168de6e91a7195bdeff7e3f7666ddaa466dad470b29d8fe"
+  },
+  "novice-transform-end": {
+    "file": "hero-forms/transform/novice-transform-end.wav",
+    "duration": 0.3,
+    "beat": "a cloth flap settles (last transformed turn ends)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "cloth flap",
+        "author": "ssierra1202",
+        "source_url": "https://freesound.org/people/ssierra1202/sounds/391945/",
+        "license": "CC0-1.0",
+        "sha256": "738e7f5938bdb0c040e869d2517af4a5e428c908828d0976a1798883e02d7ac0"
+      }
+    ],
+    "processing": "excerpt 0.08-0.38 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.168,
+    "rms": 0.02,
+    "sha256": "07dbf4996e7a3c9cdf1d6518e148bb69b96ac42ff161683a54dc937818da0f0a"
+  },
   "ice-transform": {
     "file": "hero-forms/transform/ice-transform.wav",
     "duration": 0.85,

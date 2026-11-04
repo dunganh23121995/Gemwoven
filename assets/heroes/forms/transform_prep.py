@@ -25,13 +25,13 @@ def ramp(*colours):
 HEROES = {
     'fire': {'key': 'magenta', 'warm': True, 'ramp': ramp('#3A0E16', '#591923', '#C93628', '#F36338', '#FFB06A')},
     # Hiro's sides on his ramp too: about a quarter less bright gold (Codex fight review 1).
-    'novice': {'key': 'magenta', 'sides': True, 'ramp': ramp('#30251D', '#5B4932', '#947246', '#C7A16A', '#F0D6A1')},
+    'novice': {'key': 'magenta', 'sides': True, 'gamma': .9, 'ramp': ramp('#30251D', '#5B4932', '#947246', '#C7A16A', '#F0D6A1')},
     'ice': {'key': 'magenta', 'ramp': ramp('#122C49', '#285A7E', '#518FAF', '#A7D8E5', '#E6F4F3')},
     # Nori keeps the plan ramp (Codex fight review 1: simpler drawn masses, not lighter colours, separate it from the
     # foliage). Noct's crest sank into his own dark aura, so it is lifted one step onto violet-grey.
-    'earth': {'key': 'magenta', 'sides': True, 'ramp': ramp('#172B22', '#31513A', '#5C8050', '#9EAA69', '#DBCD92')},
+    'earth': {'key': 'magenta', 'sides': True, 'gamma': .62, 'ramp': ramp('#172B22', '#31513A', '#5C8050', '#9EAA69', '#DBCD92')},
     'lightning': {'key': 'green', 'ramp': ramp('#211A3E', '#4B2D78', '#8A55BD', '#C9AA64', '#F5D98A')},
-    'shadow': {'key': 'green', 'sides': True, 'ramp': ramp('#2D2941', '#514367', '#817297', '#B5A7C7', '#E2DAF0')},
+    'shadow': {'key': 'green', 'sides': True, 'ramp': ramp('#151924', '#66557D', '#817297', '#B5A7C7', '#E2DAF0')},
 }
 
 
@@ -60,12 +60,12 @@ def key(path, colour, warm=False):
     return Image.fromarray(rgba, 'RGBA')
 
 
-def palette(im, stops):
+def palette(im, stops, gamma=1.25):
     """Remap colours by lightness onto the hero's ramp; the drawn strokes and alpha stay."""
     a = np.asarray(im).astype(np.float32)
     lum = (a[..., 0] * .3 + a[..., 1] * .59 + a[..., 2] * .11) / 255
     lo, hi = np.percentile(lum[a[..., 3] > 128], [2, 99.5])
-    t = np.clip((lum - lo) / max(1e-3, hi - lo), 0, 1) ** 1.25
+    t = np.clip((lum - lo) / max(1e-3, hi - lo), 0, 1) ** gamma
     xs = [p for p, _ in stops]
     rgb = np.dstack([np.interp(t, xs, [c[k] for _, c in stops]) for k in range(3)])
     return Image.fromarray(np.dstack([rgb, a[..., 3]]).clip(0, 255).astype(np.uint8), 'RGBA')
@@ -104,10 +104,10 @@ def prepare(hero):
     out.mkdir(parents=True, exist_ok=True)
     k = lambda name: key(raw / name, cfg['key'], cfg.get('warm', False))
     spirit = k('raw-spirit.png')
-    save(palette(spirit, cfg['ramp']) if cfg.get('ramp') else spirit, out, 'spirit')
+    save(palette(spirit, cfg['ramp'], cfg.get('gamma', 1.25)) if cfg.get('ramp') else spirit, out, 'spirit')
     sides = k('raw-sides.png')
     if cfg.get('sides'):
-        sides = palette(sides, cfg['ramp'])
+        sides = palette(sides, cfg['ramp'], cfg.get('gamma', 1.25))
     save(sides.crop((0, 0, sides.width // 2, sides.height)), out, 'side-left')
     save(sides.crop((sides.width // 2, 0, sides.width, sides.height)), out, 'side-right')
     small = k('raw-small.png')

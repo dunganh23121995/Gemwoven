@@ -1,0 +1,20 @@
+Use the supplied heroes-rest image only as a painted-style reference. Hiro is the first group of three heroes from the left. Do not draw any hero.
+
+Create ONE landscape 3072 x 1024 VFX asset sheet divided into four equal invisible columns. Exactly FOUR asset groups, left to right:
+
+1. GROUND: two low earthen-light pebble strokes positioned at the far left and right of one wide group, approximately four times wider than tall. Leave the central 40% entirely empty for the hero's feet. No connecting line or closed ring.
+2. MOTE: one compact upward-pointing wedge of mineral dust, with one small warm edge highlight. No trail.
+3. MOTE VARIANT: one smaller rice-grain-shaped mineral fleck, slightly tilted. No trail.
+4. AFTER: two tiny low horizontal ochre strokes forming a quiet remaining path mark, approximately three times wider than tall. No tall rays or particles.
+
+Style: clean hand-painted HD 2D game VFX, bold simple shapes, crisp antialiased edges, no pixel art, blur, bloom, or smoke.
+
+Palette strictly: #30251D, #5B4932, #947246, #C7A16A, tiny #F0D6A1 highlights.
+
+Background: completely solid flat magenta #FF00FF. Centre every group within its own quarter, leaving at least 8% empty margin to every cell edge and wide gaps between groups. No gradient, cast shadow, ground plane, text, labels, UI, hero, watermark, or border. Not animation frames.
+
+Revision 3 (Codex fight review 2): piece 4 (AFTER) must be exactly two separate short dashes side by side, clearly thick, colour #C7A16A with a dark #30251D edge, readable at 40 pixels wide.
+
+Revision 4 (Codex fight review 3): piece 4 (AFTER): two short dashes with a #5B4932 body and #C7A16A edge, each clearly thick.
+
+Revision 5 (Codex fight review 4): piece 4 (AFTER): two short dashes with a #C7A16A top face and a short #F0D6A1 highlight edge.

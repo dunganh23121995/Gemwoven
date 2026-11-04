@@ -1,0 +1,13 @@
+Use the supplied heroes-rest image only for Gemwoven's painted style. Hiro is the first group of three heroes from the left. Do not draw any hero.
+
+Create ONE portrait 1024 x 1536 VFX asset sheet containing exactly TWO separate upright pieces, one centred in each half, with a wide empty gap between them.
+
+LEFT: a slender wayfarer's earthen-light ribbon, approximately 4.5 times taller than wide, with two broad folded sections, one open slit through the middle, and a narrow lower root. Its inner right edge is calm and smooth; the folds open outward to the left.
+
+RIGHT: a different ribbon, 90% as tall, with one broad folded section and a small angular notch opening outward to the right. Its inner left edge is smooth. Do not mirror the left piece. Neither piece resembles flame, a sword slash, or a gust carrying leaves.
+
+Style: clean hand-painted HD 2D VFX, solid layered strokes, crisp antialiased edges, no pixel art, motion blur, bloom, or detached particles.
+
+Palette strictly: #30251D, #5B4932, #947246, #C7A16A, tiny #F0D6A1 accents.
+
+Background: 100% solid flat magenta #FF00FF, also inside openings. Each complete piece stays inside its own half with at least 6% empty margin to every cell edge. No gradient, shadow, ground, text, labels, UI, hero, watermark, or border. These are two different still assets, not animation frames.

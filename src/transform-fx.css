@@ -57,19 +57,21 @@
 .tf-side,.tf-motes,.tf-front .tf-ground{transition:opacity var(--fade) ease}
 .tf-after .tf-side,.tf-after .tf-motes,.tf-after.tf-front .tf-ground,.tf-after .tf-spirit{opacity:0!important;animation:none}
 .tf-after .tf-mark{opacity:.95}
-.tf-earth .tf-mark{left:calc((var(--x) + var(--h) * .18) * 100%);top:calc((var(--t) + var(--h) * .96) * 100%);width:calc(var(--h) * 26%);height:calc(var(--h) * 8%)}
+.tf-earth .tf-mark{left:calc((var(--x) + var(--h) * .15) * 100%);top:calc((var(--t) + var(--h) * .91) * 100%);width:calc(var(--h) * 30%);height:calc(var(--h) * 10%)}
 .tf-ice .tf-mark{left:calc((var(--x) - var(--h) * .11) * 100%);width:calc(var(--h) * 30%);height:calc(var(--h) * 8%)}
-.tf-shadow .tf-mark{left:calc((var(--x) + var(--h) * .13) * 100%)}
+.tf-shadow .tf-mark{left:calc((var(--x) + var(--h) * .19) * 100%);width:calc(var(--h) * 30%);height:calc(var(--h) * 8%)}
+.tf-novice :is(.tf-left,.tf-right){width:calc(var(--h) * 26%);margin-left:calc(var(--h) * -2%)}
+.tf-novice .tf-mark{left:calc((var(--x) - var(--h) * .05) * 100%)}
 .tf-lightning .tf-mark{left:calc((var(--x) - var(--h) * .03) * 100%)}
 
 /* ---- Other heroes (Codex five-hero plan, assets/gemwoven/raw/transform-fire/plan-other-heroes.md). Placement follows each
    form's silhouette width as for Mika (sides at half its width + .06, the spirit .36 wider, at most 1.16 tall so it stays
    under the head bar), so the spirit and sides read beyond the body instead of hiding behind it. ---- */
 /* Hiro: an earthen wayfarer's light, calmer than Mika; dust rises slowly. */
-:is(.tf-look,.tf-front).tf-novice{--sl:.32;--sr:.34;--fw:1.02;--fh:1.04;--fx:.12;--ft:.02;--swl:3.6s;--swr:4.3s;--swp:-1.3s;--lyl:-.66%;--lyr:-.7%;--rol:-.35deg;--ror:.3deg;--scl:1.008;--scr:1.008;
-  --gp:4.6s;--g0:.45;--g1:.55;--mr:10%;--mk:1.35;--ma:1/1;--peak:1;--sideop:.9}
-:is(.tf-look,.tf-front).tf-novice[data-form="2"]{--sl:.34;--sr:.36;--fw:1.08;--fh:1.00;--fx:.14;--ft:.04;--sideop:.9}
-:is(.tf-look,.tf-front).tf-novice[data-form="3"]{--sl:.36;--sr:.38;--fw:1.20;--fh:1.00;--fx:.22;--ft:.04;--sideop:.9}
+:is(.tf-look,.tf-front).tf-novice{--sl:.32;--sr:.34;--fw:1.08;--fh:1.04;--fx:.18;--ft:.02;--swl:3.6s;--swr:4.3s;--swp:-1.3s;--lyl:-.66%;--lyr:-.7%;--rol:-.35deg;--ror:.3deg;--scl:1.008;--scr:1.008;
+  --gp:4.6s;--g0:.45;--g1:.55;--mr:10%;--mk:1.35;--ma:1/1;--peak:1;--sideop:1}
+:is(.tf-look,.tf-front).tf-novice[data-form="2"]{--sl:.34;--sr:.36;--fw:1.14;--fh:1.00;--fx:.22;--ft:.04;--sideop:1}
+:is(.tf-look,.tf-front).tf-novice[data-form="3"]{--sl:.38;--sr:.40;--fw:1.26;--fh:1.00;--fx:.28;--ft:.04;--sideop:1}
 /* Yuki: a seated snow rabbit of frozen mist; snow crystals fall slowly with a small sideways lilt. */
 :is(.tf-look,.tf-front).tf-ice{--sl:.42;--sr:.43;--fw:1.00;--fh:1.04;--fx:.32;--ft:.02;--swl:4.2s;--swr:5s;--swp:-1.6s;--lyl:-.53%;--lyr:-.57%;--rol:-.1deg;--ror:.1deg;--scl:1.004;--scr:1.004;
   --gp:5s;--mr:12%;--mk:1.9;--ma:1/1;--fade:.4s;--sideop:.88;--peak:1}
@@ -78,10 +80,10 @@
 .tf-ice .tf-motes>i>b{animation:tf-mote calc(var(--ed) * var(--mk)) linear var(--edl) infinite reverse,tf-lilt 1.7s ease-in-out var(--edl) infinite alternate}
 @keyframes tf-lilt{from{translate:-25% 0}to{translate:25% 0}}
 /* Nori: an open ancient-tree crest; heavy, barely lifts, no stretch; leaves rise slowly and turn a little. */
-:is(.tf-look,.tf-front).tf-earth{--peak:1;--sl:.44;--sr:.46;--fw:1.20;--fh:1.02;--fx:.30;--ft:.02;--swl:4.8s;--swr:5.6s;--swp:-1.7s;--lyl:-.4%;--lyr:-.43%;--rol:-.25deg;--ror:.2deg;--scl:1;--scr:1;
+:is(.tf-look,.tf-front).tf-earth{--peak:1;--sl:.45;--sr:.47;--fw:1.26;--fh:1.02;--fx:.36;--ft:.02;--swl:4.8s;--swr:5.6s;--swp:-1.7s;--lyl:-.4%;--lyr:-.43%;--rol:-.25deg;--ror:.2deg;--scl:1;--scr:1;
   --gp:5.2s;--g0:.55;--g1:.65;--mr:8%;--mk:2;--ma:1/1;--fade:.4s}
-:is(.tf-look,.tf-front).tf-earth[data-form="2"]{--sl:.49;--sr:.51;--fw:1.28;--fh:1.03;--fx:.31;--ft:.01}
-:is(.tf-look,.tf-front).tf-earth[data-form="3"]{--sl:.54;--sr:.56;--fw:1.36;--fh:1.04;--fx:.32;--ft:0}
+:is(.tf-look,.tf-front).tf-earth[data-form="2"]{--sl:.50;--sr:.52;--fw:1.34;--fh:1.03;--fx:.38;--ft:.01}
+:is(.tf-look,.tf-front).tf-earth[data-form="3"]{--sl:.54;--sr:.56;--fw:1.42;--fh:1.04;--fx:.40;--ft:0}
 .tf-earth .tf-ground>b{animation:none}
 .tf-earth .tf-motes>i>b{animation:tf-mote calc(var(--ed) * var(--mk)) linear var(--edl) infinite,tf-turn 2.6s ease-in-out var(--edl) infinite alternate}
 @keyframes tf-turn{from{rotate:-12deg}to{rotate:12deg}}
@@ -95,11 +97,15 @@
 .tf-lightning .tf-motes>i:nth-child(odd)>b{animation-direction:reverse}
 @keyframes tf-drift{0%{left:0;translate:0 0;opacity:0}15%{opacity:.95}75%{opacity:.85}100%{left:100%;translate:0 -40%;opacity:0}}
 /* Noct: an open shadow-veil crest, quieter than the others; his own locked aura stays untouched. */
-:is(.tf-look,.tf-front).tf-shadow{--sl:.48;--sr:.50;--fw:1.16;--fh:1.02;--fx:.32;--ft:0;--swl:4.6s;--swr:5.4s;--swp:-1.8s;--lyl:-.53%;--lyr:-.57%;--rol:-.2deg;--ror:.15deg;--scl:1;--scr:1;--sideop:.82;
-  --peak:.85;--gp:5.8s;--g0:.35;--g1:.45;--mr:9%;--mk:2.2;--ma:1/1;--fade:.42s;--act:.25}
-:is(.tf-look,.tf-front).tf-shadow[data-form="2"]{--sl:0.5;--sr:0.48;--fw:1.16;--fh:1.04;--fx:.30;--ft:0}
-:is(.tf-look,.tf-front).tf-shadow[data-form="3"]{--sl:.48;--sr:.48;--fw:1.30;--fh:1.00;--fx:.26;--ft:.02}
+:is(.tf-look,.tf-front).tf-shadow{--sl:.44;--sr:.38;--fw:1.22;--fh:1.02;--fx:.40;--ft:0;--swl:4.6s;--swr:5.4s;--swp:-1.8s;--lyl:-.53%;--lyr:-.57%;--rol:-.2deg;--ror:.15deg;--scl:1;--scr:1;--sideop:.84;
+  --peak:.95;--gp:5.8s;--g0:.35;--g1:.45;--mr:9%;--mk:2.2;--ma:1/1;--fade:.42s;--act:.25}
+:is(.tf-look,.tf-front).tf-shadow[data-form="2"]{--sl:.45;--sr:.39;--fw:1.30;--fh:1.01;--fx:.41;--ft:.01}
+:is(.tf-look,.tf-front).tf-shadow[data-form="3"]{--sl:.46;--sr:.40;--fw:1.44;--fh:.92;--fx:.38;--ft:.10}
 
+.tf-novice :is(.tf-spirit,.tf-side>b,.tf-mark),.tf-earth :is(.tf-spirit,.tf-side>b,.tf-mark),.tf-shadow :is(.tf-spirit,.tf-side>b,.tf-mark){
+  filter:drop-shadow(1px 0 0 var(--edge)) drop-shadow(-1px 0 0 var(--edge)) drop-shadow(0 1px 0 var(--edge)) drop-shadow(0 -1px 0 var(--edge))
+    drop-shadow(1px 0 0 var(--rim)) drop-shadow(-1px 0 0 var(--rim)) drop-shadow(0 1px 0 var(--rim)) drop-shadow(0 -1px 0 var(--rim))}
+.tf-novice{--edge:#30251D;--rim:#C7A16A}.tf-earth{--edge:#172B22;--rim:#DBCD92}.tf-shadow{--edge:#151924;--rim:#B5A7C7}
 /* While the hero strikes or casts, the look steps back so the attack reads first. */
 #heroActor:is([data-state="attack"],[data-state="cast"]) :is(.tf-look,.tf-front){opacity:var(--act);transition:opacity .1s ease}
 /* A hero with a drawn look drops the plain golden glow. */

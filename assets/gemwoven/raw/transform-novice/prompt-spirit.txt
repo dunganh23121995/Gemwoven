@@ -1,0 +1,17 @@
+Use the supplied heroes-rest image as a style and scale reference only. Hiro is the first group of three heroes from the left. His artwork is locked: do not draw, copy, or redesign any hero.
+
+Create ONE standalone transformation VFX sprite on a square 1536 x 1536 canvas: an upright wayfarer's light emblem, formed from two broad, weathered earthen-light strokes surrounding an open central space. The left stroke rises from a low forked base; the right stroke bends higher and ends in a small diamond-shaped light knot in the upper-right quadrant. Keep the central face and chest region mostly empty. This is a quiet traveller symbol, not a weapon, shield, portal, or elemental spell.
+
+Style: clean hand-painted HD 2D fantasy game VFX, bold stable shapes, restrained layered brushwork, crisp antialiased edges, readable at 150 pixels tall. Do not make pixel art.
+
+Palette strictly: #30251D, #5B4932, #947246, #C7A16A, with tiny #F0D6A1 highlights. No coloured jewels, fire, metallic gold mass, white core, bloom, blur, or cast shadow.
+
+Background: completely solid flat magenta #FF00FF, including every opening. Leave at least 6% empty margin on all four sides. Nothing touches the edges. No ground plane, text, labels, UI, hero, watermark, or border. One still drawing, not animation frames.
+
+Revision after the first fight review (Codex): the emblem was hidden by the hero and its knot hard to see. Make the upper-right diamond light knot about 1.4 times larger and brighter-edged, simplify the strokes into 2-3 large bold masses (fewer thin wisps), main edges thick enough to read when the sprite is shown 120 pixels tall.
+
+Revision 3 (Codex fight review 2): make the upper-right diamond knot a further 1.35 times larger and every main stroke about 1.4 times thicker; keep the centre open. Body colour #5B4932, edges #C7A16A, only tiny #F0D6A1 dots.
+
+Revision 4 (Codex fight review 3): redraw the diamond knot as one thick, solid, simple shape (no splinters), with a dark #30251D edge and a light #C7A16A face; the main strokes stay bold and readable when the sprite is only 90 pixels tall.
+
+Revision 5 (Codex fight review 4): the emblem must read as its own symbol, not like the side ribbons: paint the inner edges facing the open centre with a continuous bold #C7A16A line, put #F0D6A1 only on the diamond tip (at most 5% of the area), keep the core #30251D-#5B4932 and remove small grain.
