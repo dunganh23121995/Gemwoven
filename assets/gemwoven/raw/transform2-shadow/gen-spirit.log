@@ -1,0 +1,17 @@
+OpenAI API not used (API skipped until recheck: credit used up (credit_balance_exhausted)); drawing with Codex.
+{
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt: one hooded spectral figure with a glowing face, a crescent moon halo behind the hood, both arms reaching down and inward around an empty centre, no weapon, and a flat black background. The crescent halo rises slightly above the hood tip, a minor layout deviation rather than a clear defect, and the figure reads as luminous outlines rather than a solid body.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000699
+  },
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-shadow\\raw-spirit.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a7a5-3202-7230-ba02-c010a04ce4a2\\exec-813c4cff-0ff5-42b3-88a2-80d686405ace.png",
+  "extra_new_images": [],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 55.4
+}

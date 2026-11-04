@@ -1,0 +1,17 @@
+OpenAI API not used (API skipped until recheck: credit used up (credit_balance_exhausted)); drawing with Codex.
+{
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the prompt: four separate wisps in four columns, matching the reference layout, recoloured to lilac and silver as requested. The background is flat black, nothing is cropped, and there is no text, border or extra figure. The shapes are soft and separate with empty space between them.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000392
+  },
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-shadow\\raw-mist.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a7a6-057d-7b11-963d-70b3df143101\\exec-78a4ccda-9d10-4cdb-afa1-77b6e473f174.png",
+  "extra_new_images": [],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 41.5
+}

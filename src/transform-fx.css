@@ -220,10 +220,14 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 /* Noct's black aura (owner 05/11, NOCT_AURA in transform-fx.js; 'violet' uses the rules above): the silhouette as ink, a
    hairline of cool violet-grey light at its edge so it still reads on dark ground and on his dark body, then smoke-black
    glows; the mist and the pool lean dark too. The spirit's design is unchanged. */
-.tf-v2.tf2-aura-black .tf2-sil{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 1px rgba(196,182,238,.95)) drop-shadow(0 0 calc(var(--u) * 2.2) rgba(12,8,24,.95))
-    drop-shadow(0 0 calc(var(--u) * 4.5) rgba(0,0,0,.75))}
-.tf-v2.tf2-aura-black .tf2-flowbox>.tf2-flow{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 calc(var(--u) * 3) rgba(6,4,14,.9))
-    drop-shadow(0 0 calc(var(--u) * 7) rgba(26,14,46,.65)) drop-shadow(0 0 calc(var(--u) * 11) rgba(0,0,0,.45))}
+.tf-v2.tf2-aura-black .tf2-sil{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 calc(var(--u) * 1.2) #000) drop-shadow(0 0 calc(var(--u) * 1.2) #000)
+    drop-shadow(0 0 .6px rgba(206,192,246,.9)) drop-shadow(0 0 calc(var(--u) * 3) rgba(0,0,0,.9))}
+.tf-v2.tf2-aura-black .tf2-flowbox>.tf2-flow{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 calc(var(--u) * 4.5) #000)
+    drop-shadow(0 0 calc(var(--u) * 9) rgba(0,0,0,.75)) drop-shadow(0 0 calc(var(--u) * 15) rgba(10,6,20,.45))}
+/* the wide black glow stands a little proud of the cloak (back, hips, hem), with a soft fall-off, so it reads as a separate layer */
+.tf-v2.tf2-aura-black .tf2-flowbox{scale:1.08;transform-origin:50% 80%}
+/* a black glow needs a little more bulk than a light one to separate from his dark cloak */
+.tf-v2.tf2-aura-black .tf2-silbox{scale:1.04}
 .tf-v2.tf2-aura-black .tf2-pool{background:radial-gradient(closest-side,rgba(20,14,34,.85),rgba(10,6,20,.6) 40%,rgba(0,0,0,.3) 68%,transparent 100%)}
 .tf-v2.tf2-aura-black .tf2-mist>i{filter:brightness(.42) saturate(.8) drop-shadow(0 0 3px rgba(0,0,0,.6))}
 .tf-v2.tf2-aura-black.tf-after .tf2-sil{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 .8px rgba(196,182,238,.7)) drop-shadow(0 0 calc(var(--u) * 1.8) rgba(8,4,16,.85))}
