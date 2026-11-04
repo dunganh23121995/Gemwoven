@@ -12,8 +12,9 @@
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN'),file=k=>A[k]?.file||'',vnd=n=>fmt(n)+'đ';
   const box=(x,y,w,h)=>`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
-  const S=k=>file('season-mika-'+k),VP=k=>`assets/gemwoven/vip-pass/${k}.webp`;
-  const HERO_ART={fire:'assets/gemwoven/items/hero-fire.png'},heroArt=key=>HERO_ART[key]||file('portrait-'+key);
+  // The active season's own art (assets/gemwoven/season/<art>), shared pieces fall back to the first season's set.
+  let ART='mika',HERO='fire';const use=season=>{const h=O.seasonHero(season);ART=h?.art||'mika';HERO=h?.hero||'fire';};const S=k=>file('season-'+ART+'-'+k)||file('season-mika-'+k),artOf=season=>O.seasonHero(season)?.art||'mika',VP=k=>`assets/gemwoven/vip-pass/${k}.webp`;
+  const heroArt=key=>`assets/gemwoven/items/hero-${key}.png`;
   const heroName=key=>M.HEROES[key]?.name||'';
   const cos=id=>O.COSMETICS.find(c=>c.id===id);
   const playerName=()=>{try{return JSON.parse(localStorage.getItem('gemwoven.plaza.v1')||'{}').name||'Lữ Khách';}catch{return 'Lữ Khách';}};
@@ -29,7 +30,7 @@
     if(slot==='title')return `<span class="sz-look sz-title"><img src="${f}" alt="">${mini?'':`<b>${esc(c.name)}</b>`}</span>`;
     if(slot==='nameplate')return `<span class="sz-look sz-plate"><img src="${f}" alt="">${mini?'':`<b>${esc(playerName())}</b>`}</span>`;
     if(slot==='bubble')return `<span class="sz-look sz-bubble"><img src="${f}" alt="">${mini?'':'<b>Chào!</b>'}</span>`;
-    if(slot==='combatFrame')return `<span class="sz-look sz-combat"><img class="bg" src="${file('battle-card-forest')||'assets/gemwoven/backgrounds/battles/bamboo.webp'}" alt=""><img class="hero" src="${heroArt('fire')}" alt=""><img class="tl" src="${f}" alt=""><img class="tr" src="${f}" alt=""></span>`;
+    if(slot==='combatFrame')return `<span class="sz-look sz-combat"><img class="bg" src="${file('battle-card-forest')||'assets/gemwoven/backgrounds/battles/bamboo.webp'}" alt=""><img class="hero" src="${heroArt(HERO)}" alt=""><img class="tl" src="${f}" alt=""><img class="tr" src="${f}" alt=""></span>`;
     if(slot==='entry')return `<span class="sz-look sz-entry"><img class="bg" src="${file('battle-card-abyss')||file('battle-card-forest')||'assets/gemwoven/backgrounds/battles/bamboo.webp'}" alt=""><span class="fx" style="background-image:url('${f}')"></span>${big?'':`<img class="play" src="${S('play')}" alt="">`}</span>`;
     return '';
   }
@@ -63,7 +64,7 @@
     return {html:out.join(''),height:y+12,at};
   }
   function passTab(state){
-    const v=G.engine.pass();if(!v?.hero)return null;
+    const v=G.engine.pass();if(!v?.hero)return null;use(v.season);
     const hero=v.hero.hero,list=rows(v),next=v.milestones.find(l=>l>v.level)||50;
     const jewelPrice=O.PRODUCTS.find(p=>p.id==='journey-pass-jewel')?.price,goldPrice=O.PRODUCTS.find(p=>p.id==='journey-pass')?.price;
     const nextCos=v.rows[next-1]?.gold.reward.cosmetic||v.rows[next-1]?.jewel.reward.cosmetic||v.rows[next-1]?.free.reward.cosmetic;
@@ -98,7 +99,7 @@
     const y=Math.max(0,list.at[level]-4);state['vipScroll-season']=y;if(s)s.scrollTo({top:y,behavior:window.GemwovenMotion?.reduced?'auto':'smooth'});
   }
   function detailDialog(level,track){
-    const v=G.engine.pass(),r=v.rows[level-1],c=r[track],t=O.PASS.tracks.find(x=>x.id===track),hero=v.hero.hero;
+    const v=G.engine.pass(),r=v.rows[level-1],c=r[track],t=O.PASS.tracks.find(x=>x.id===track),hero=v.hero.hero;use(v.season);
     const modal=window.GemwovenUI.makeDialog('season-detail',`Cấp ${level} · ${t.name}`,'growth-dialog pv-dialog sz-dialog');
     const parts=Object.entries(c.reward).map(([k,n])=>k==='cosmetic'?(()=>{const x=O.seasonCosmetic(v.season,n);return `<span class="sz-big">${look(n,x,true)}<small>${esc(x?.name||'')}</small><i>Trang trí · không chỉ số</i></span>`;})():
       k==='seasonFragments'?`<span>${fragPic(hero,n)}<small>Mảnh ${esc(heroName(hero))}</small></span>`:`<span>${resPic(EXTRA[k]||k,n)}<small>${esc(M.RESOURCES[k]?.[0]||({epicGearChoice:'Rương Sử Thi tự chọn',legendaryGearChoice:'Rương Huyền Thoại tự chọn'})[k]||k)}</small></span>`);
@@ -107,13 +108,13 @@
     modal.present();
   }
   function offerDialog(){
-    const v=G.engine.pass(),x=O.PRODUCTS.find(p=>p.id==='journey-pass-jewel'),hero=v.hero.hero;
+    const v=G.engine.pass(),x=O.PRODUCTS.find(p=>p.id==='journey-pass-jewel'),hero=v.hero.hero;use(v.season);
     const modal=window.GemwovenUI.makeDialog('season-offer',`Diệu Ngọc · ${heroName(hero)}`,'growth-dialog pv-dialog sz-dialog');
     modal.body.innerHTML=`<div class="sz-offer-sheet"><img class="hero" src="${heroArt(hero)}" alt=""><ul>`+
       `<li><img src="${file('fragment-'+hero)}" alt=""><b>${esc(heroName(hero))} ngay khi mua</b></li>`+
       `<li><img src="${S('tier-nested')}" alt=""><b>Gồm nhánh Vàng</b></li>`+
-      `<li>${look('combatFrame',cos('mika-combat-frame'))}<b>Khung trận · cấp 25</b></li>`+
-      `<li>${look('entry',cos('mika-entry'),true)}<b>Hiệu ứng vào trận · cấp 40</b></li>`+
+      `<li>${look('combatFrame',O.seasonCosmetic(v.season,'combatFrame'))}<b>Khung trận · cấp 25</b></li>`+
+      `<li>${look('entry',O.seasonCosmetic(v.season,'entry'),true)}<b>Hiệu ứng vào trận · cấp 40</b></li>`+
       `<li>${fragPic(hero,80)}<b>Cấp 50</b></li></ul></div>`+
       `<p class="pv-price">${vnd(x.price)} · đã có Vàng bù ${vnd(x.upgradePrice)}</p><p class="pv-why"><img src="${VP('status-plaque')}" alt="">Sắp ra mắt · chưa thu tiền. ${esc(heroName(hero))} được giao khi máy chủ xác nhận thanh toán.</p>`;
     modal.present();
@@ -150,7 +151,7 @@
       (t.state==='taken'?`<img class="mk" src="${S('mark-claimed')}" alt="Đã nhận">`:t.state==='ready'?`<img class="mk" src="${VP('claim-button')}" alt="Sẵn sàng">`:!open?`<img class="mk" src="${S('mark-future')}" alt="Chưa mở">`:'')+`</span>`;
   }
   function companionPage(state){
-    const v=G.engine.companion();if(!v||!v.hero&&v.phase!=='materials')return `<p class="sz-empty">Mùa này chưa có sự kiện tướng.</p>`;
+    const v=G.engine.companion();if(v)use(v.season);if(!v||!v.hero&&v.phase!=='materials')return `<p class="sz-empty">Mùa này chưa có sự kiện tướng.</p>`;
     const hero=v.hero||'fire',p=G.engine.read(),tab=state.seasonTab||(v.phase==='materials'?'mat':'hero'),mat=tab==='mat';
     const daily=Math.min(3,p.daily.claimed.length),pv=G.engine.pass();
     const passFr=pv?.rows.filter(r=>r.free.reward.seasonFragments&&r.free.state==='claimed').length*4||0;
@@ -178,7 +179,7 @@
   }
   // Sự Kiện list: the season's event card above the other sections.
   function entryCard(){
-    const v=G.engine.companion();if(!v||!v.hero||v.phase==='done')return '';const hero=v.hero;
+    const v=G.engine.companion();if(!v||!v.hero||v.phase==='done')return '';const hero=v.hero;use(v.season);
     return `<button type="button" class="sz-entry" data-action="season:companion" aria-label="${esc(v.name)}"><img class="bg" src="${S('banner')}" alt=""><img class="hero" src="${heroArt(hero)}" alt="">`+
       `<b class="t">${esc(v.name)}</b><span class="fr"><img src="${file('fragment-'+hero)}" alt="">${v.fragments.owned?'<b class="sz-num ok">✓</b>':pair(v.fragments.held,80)}</span>`+
       `<span class="dl"><img src="${VP('hourglass')}" alt=""><b>${v.daysLeft} ngày</b></span>${v.ready?`<em class="kp-seal">${v.ready}</em>`:''}</button>`;
@@ -203,7 +204,7 @@
     const screen=L.screens.events;
     if(state.seasonPage==='companion'){
       // Its own drawn courtyard (ui.js reads background-<backgroundKey>); the list keeps the Sự Kiện painting.
-      if(A['season-mika-event-bg']){A['background-season-companion']=A['season-mika-event-bg'];screen.backgroundKey='season-companion';}
+      const bg=A[`season-${artOf(G.engine.companion()?.season)}-event-bg`]||A['season-mika-event-bg'];if(bg){A['background-season-companion']=bg;screen.backgroundKey='season-companion';}
       screen.nodes=screen.nodes.filter(n=>!/^events\.(live|back)$/.test(n.id));
       screen.nodes.push({id:'events.live',kind:'content',rect:[0,0,941,1490],className:'exploration-map pv sz-page',build:el=>{el.innerHTML=companionPage(state);}});
       screen.nodes.push({id:'events.season-back',kind:'button',rect:[790,120,112,112],asset:A['kit-back']?'kit-back':'map-back',fit:'contain',text:'events.season-back',labelHidden:true,action:'season:back',className:'panel-back'});

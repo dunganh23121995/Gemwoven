@@ -1017,6 +1017,13 @@ lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được;
   trận và hiệu ứng vào trận trong combat (giảm chuyển động thì bỏ qua). Codex vẽ: bộ nhận diện + 7 món + tranh mùa + nền sự kiện +
   các mảnh giao diện (`assets/gemwoven/raw/season-mika/`, runtime `assets/gemwoven/season/mika/`). Mockup Sổ 8/10, sự kiện 8,5/10;
   bản dựng vòng 1 7,5/7,9 → vòng 2 **8,5 điện thoại / 8,6 Studio**. Test `check-depth` "mika season ok"; balance sim không đổi.
+- **Mùa cho mọi tướng hiếm (chủ dự án 04/11: "Vẽ luôn cho các nhân vật khác đi. Sau vận hành thời gian đầu chỉ cần active dần các
+  sự kiện") [Có · chờ kích hoạt]:** Yuki (Tuyết Thỏ), Nori (Lộc Thần), Lumi (Tinh Lôi), Noct (Ảnh Nguyệt) có bộ mùa sẵn sàng như Mika:
+  7 món trang trí + tranh mùa, nền sự kiện, ô ngày, huy hiệu, dải ưu đãi (Codex vẽ, `assets/gemwoven/raw/season-<tên>/`, runtime
+  `assets/gemwoven/season/<tên>/`; Codex chấm so với Mika: Yuki 8,7, Nori 8,6, Lumi 8,7, Noct 8,4 → 8,7 sau khi vẽ lại nền và hiệu ứng).
+  `liveops.js` SEASON_KITS giữ tên, chủ đề, tên món; sổ, sự kiện "Đồng Hành Cùng X" và bộ trang trí sinh từ đó. **Kích hoạt = thêm
+  `{index, hero}` vào SEASONS**, không cần code hay hình mới. Tướng chưa phát hành ẩn trong hub cho tới ngày đầu mùa của mình
+  (`heroAvailable` theo lịch SEASONS). Hiro không có mùa (tướng miễn phí ban đầu). Test `check-depth` "season kits ok".
 
 ### Vòng Nâng Sao (04/11, "phải có bản sao cấp cao mới đủ nguyên liệu để nâng sao cao") — Claude + Codex thống nhất, đã làm
 

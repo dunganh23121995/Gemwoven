@@ -66,20 +66,30 @@
   // released hero X ("Hành Trình Của X"). Its pass swaps in the hero table below; seasons without an entry keep the generic
   // tables above. `rerun` is the hero re-run in days 15-28 once three rare heroes are out; until then weeks 3-4 are a
   // material event. Season one (index 0, from the anchor Monday) is Mika; every new account still starts with Hiro only.
-  const SEASONS=[{index:0,hero:'fire',name:'Hành Trình Của Mika',event:'Đồng Hành Cùng Mika',rerun:null}];
-  const seasonHero=index=>SEASONS.find(s=>s.index===index)||null;
+  // Season kits (owner 04/11: "Vẽ luôn cho các nhân vật khác đi. Sau vận hành thời gian đầu chỉ cần active dần các sự kiện"):
+  // every rare hero has its season ready (pass, Đồng Hành Cùng X event, seven cosmetics drawn by Codex in
+  // assets/gemwoven/season/<art>/). A kit stays inactive until SEASONS schedules it: live-ops activates a season by adding
+  // {index,hero} there, with no new code or art. A hero not released yet stays hidden in the hub until its season starts
+  // (progression.js heroAvailable follows this schedule). Hiro has no season: he is the free starter.
+  const SEASON_KITS={
+    fire:{hero:'Mika',art:'mika',theme:'Hỏa Hồ',avatar:'Mika Hỏa Hồ',entry:'Hồ Hỏa Khai Trận'},
+    ice:{hero:'Yuki',art:'yuki',theme:'Tuyết Thỏ',avatar:'Yuki Tuyết Thỏ',entry:'Băng Hoa Khai Trận'},
+    earth:{hero:'Nori',art:'nori',theme:'Lộc Thần',avatar:'Nori Lộc Thần',entry:'Rừng Thiêng Khai Trận'},
+    lightning:{hero:'Lumi',art:'lumi',theme:'Tinh Lôi',avatar:'Lumi Tinh Lôi',entry:'Tinh Lôi Khai Trận'},
+    shadow:{hero:'Noct',art:'noct',theme:'Ảnh Nguyệt',avatar:'Noct Ảnh Nguyệt',entry:'Ảnh Nguyệt Khai Trận'}};
+  // The live-ops schedule: season index (28 days each from the anchor Monday) and its hero. Season one is Mika.
+  const SEASONS=[{index:0,hero:'fire',rerun:null}];
+  const seasonHero=index=>{const s=SEASONS.find(x=>x.index===index),k=s&&SEASON_KITS[s.hero];return k?{...s,art:k.art,theme:k.theme,name:'Hành Trình Của '+k.hero,event:'Đồng Hành Cùng '+k.hero}:null;};
+  const seasonOf=hero=>SEASONS.find(s=>s.hero===hero)||null;
   // The season's cosmetics: no stats, usable without owning X. Free-track pieces can be earned locally; paid ones arrive
   // only with a server-recorded purchase. `cosmetic` in a reward names the slot; the season resolves the item.
   const COSMETIC_SLOTS=[['avatar','Avatar'],['frame','Khung avatar'],['title','Danh hiệu'],['nameplate','Thẻ tên'],['bubble','Bong bóng chat'],['combatFrame','Khung trận'],['entry','Hiệu ứng vào trận']];
-  const COSMETICS=[
-    {id:'mika-avatar',art:'season-mika-avatar',file:'assets/gemwoven/season/mika/avatar.webp',slot:'avatar',season:0,name:'Mika Hỏa Hồ',track:'free',level:10},
-    {id:'mika-frame',art:'season-mika-frame',file:'assets/gemwoven/season/mika/frame.webp',slot:'frame',season:0,name:'Khung Hỏa Hồ',track:'gold',level:10},
-    {id:'mika-title',art:'season-mika-title',file:'assets/gemwoven/season/mika/title.webp',slot:'title',season:0,name:'Bạn Đồng Hành Hỏa Hồ',track:'gold',level:20},
-    {id:'mika-nameplate',art:'season-mika-nameplate',file:'assets/gemwoven/season/mika/nameplate.webp',slot:'nameplate',season:0,name:'Thẻ tên Hỏa Hồ',track:'gold',level:30},
-    {id:'mika-bubble',art:'season-mika-bubble',file:'assets/gemwoven/season/mika/bubble.webp',slot:'bubble',season:0,name:'Bong bóng Hỏa Hồ',track:'gold',level:40},
-    {id:'mika-combat-frame',art:'season-mika-combat-corner',file:'assets/gemwoven/season/mika/combat-corner.webp',slot:'combatFrame',season:0,name:'Khung trận Hỏa Hồ',track:'jewel',level:25},
-    {id:'mika-entry',art:'season-mika-entry',file:'assets/gemwoven/season/mika/entry.webp',slot:'entry',season:0,name:'Hồ Hỏa Khai Trận',track:'jewel',level:40}];
-  const seasonCosmetic=(season,slot)=>COSMETICS.find(c=>c.season===season&&c.slot===slot)||null;
+  const KIT_ITEMS=[['avatar','avatar','avatar','free',10,k=>k.avatar],['frame','frame','frame','gold',10,k=>'Khung '+k.theme],['title','title','title','gold',20,k=>'Bạn Đồng Hành '+k.theme],
+    ['nameplate','nameplate','nameplate','gold',30,k=>'Thẻ tên '+k.theme],['bubble','bubble','bubble','gold',40,k=>'Bong bóng '+k.theme],
+    ['combatFrame','combat-frame','combat-corner','jewel',25,k=>'Khung trận '+k.theme],['entry','entry','entry','jewel',40,k=>k.entry]];
+  const COSMETICS=Object.entries(SEASON_KITS).flatMap(([hero,k])=>KIT_ITEMS.map(([slot,id,pic,track,level,name])=>({id:k.art+'-'+id,art:`season-${k.art}-${pic}`,
+    file:`assets/gemwoven/season/${k.art}/${pic}.webp`,slot,hero,get season(){return seasonOf(hero)?.index??null;},name:name(k),track,level})));
+  const seasonCosmetic=(season,slot)=>{const h=seasonHero(season);return h&&COSMETICS.find(c=>c.hero===h.hero&&c.slot===slot)||null;};
   // Hero pass (Codex rounds 1-2): free 4 X fragments at levels 5-25 (20 a season, so the free track alone needs several
   // seasons), the avatar at 10; gold the frame/title/nameplate/bubble at 10/20/30/40; jewel the combat frame at 25, the
   // entry effect at 40 and 80 X fragments at 50 (replaces the old 80 choice fragments). The jewel activation gift, one copy
@@ -163,5 +173,5 @@
   // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
   const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
     desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
-  return {SEASONS,seasonHero,COSMETIC_SLOTS,COSMETICS,seasonCosmetic,HERO_PASS,COMPANION,GEM_PACKS,TOPUP,BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {SEASON_KITS,SEASONS,seasonHero,seasonOf,COSMETIC_SLOTS,COSMETICS,seasonCosmetic,HERO_PASS,COMPANION,GEM_PACKS,TOPUP,BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

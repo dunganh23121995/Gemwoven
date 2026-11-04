@@ -332,7 +332,8 @@
   // Release state: Hiro is always available; a rare hero is released from the start of its first banner (GMT+7 date).
   // Only the current banner hero drops from summons.
   const RELEASES={fire:'2026-11-02'};
-  function heroAvailable(key){return key==='novice'||key in RELEASES;}
+  // Released, or its season has started on the live-ops schedule (liveops SEASONS): until then the hero stays hidden.
+  function heroAvailable(key,at=Date.now()){if(key==='novice'||key in RELEASES)return true;const O=OPS(),s=O?.seasonOf?.(key);return !!s&&O.passSeason(at).index>=s.index;}
   // ----- Kỳ banner and Cửa Hàng Ký Ức (D3; numbers in liveops.js BANNER / MEMORY) -----
   const gmt7=date=>Date.parse(date+'T00:00:00+07:00'),WEEK_MS=7*DAY_MS;
   function bannerPeriod(at){const B=OPS().BANNER,start0=gmt7(B.anchor),len=B.periodDays*DAY_MS,index=Math.max(0,Math.floor((at-start0)/len)),start=start0+index*len;return {index,start,end:start+len};}
@@ -1116,7 +1117,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       deleteReadMail:()=>tx(p=>{const before=p.mail.length;p.mail=p.mail.filter(m=>!m.read||mailPending(m));return before-p.mail.length;}),
       // Local studio prototype only; real administrator mail needs the server.
       // Season cosmetics: the catalogue with what this save owns and wears; wearing never changes stats.
-      cosmetics:()=>{const p=read(),O=OPS(),c=p.cosmetics||{owned:[],worn:{}};return (O?.COSMETICS||[]).map(x=>({...x,owned:(c.owned||[]).includes(x.id),worn:c.worn?.[x.slot]===x.id}));},
+      cosmetics:()=>{const p=read(),O=OPS(),c=p.cosmetics||{owned:[],worn:{}},now=O?.passSeason(current).index??0;return (O?.COSMETICS||[]).filter(x=>(c.owned||[]).includes(x.id)||x.season!=null&&x.season<=now).map(x=>({...x,owned:(c.owned||[]).includes(x.id),worn:c.worn?.[x.slot]===x.id}));},
       looks:()=>wornLooks(read()),
       wearCosmetic:(id,slot)=>tx(p=>{const O=OPS(),c=cosmeticState(p);if(id==null||id===''){check(O.COSMETIC_SLOTS.some(([x])=>x===slot),'Ô trang trí không hợp lệ.');delete c.worn[slot];return null;}
         const x=O.COSMETICS.find(x=>x.id===id);check(x,'Món trang trí không tồn tại.');check(c.owned.includes(id),'Chưa sở hữu món này.');c.worn[x.slot]=id;if(x.slot==='title')delete p.title;note(p,'Trang bị '+x.name);return id;}),

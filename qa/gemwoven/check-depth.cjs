@@ -338,21 +338,6 @@ console.log('rarity up fodder ok');
   assert.equal(e.monthlyCard().active,false,'no local card purchase');
 }
 console.log('journey pass ok');
-{ // Cúp Đấu Trường (§12.5, Codex arena rounds 1–2): month calendar, symmetric Elo, daily matches, AI field, knockout, no rewards.
-  const O=require('../../src/gemwoven/liveops.js'),H7=7*3600000;
-  const s=M.cupSeason(Date.UTC(2026,10,3,20));assert.deepEqual([s.key,s.date,s.raceDays,s.phase],['2026-11',4,27,'race'],'UTC+7 calendar day');
-  assert.deepEqual([M.cupSeason(Date.UTC(2026,10,28)-H7).phase,M.cupSeason(Date.UTC(2026,10,28)-H7).round,M.cupSeason(Date.UTC(2026,10,30,16,59)).round],['finals',1,3],'quarter D−2 … final D');
-  assert.equal(M.cupDelta(1000,1000,1),20);assert.equal(M.cupDelta(1000,1000,0),-20,'symmetric at equal ratings');
-  assert.equal(M.cupDelta(1000,2000,1),M.cupDelta(1000,1240,1),'gap capped at ±240');assert.equal(M.cupDelta(5,1000,0),-5,'nobody drops below 0');
-  const field=M.cupField('2026-11');assert.equal(field.length,31);assert.deepEqual(M.cupField('2026-11'),field,'same field on every device');
-  assert.ok(field.every(f=>M.heroAvailable(f.hero)),'AI copies use released heroes only');
-  const sim=M.cupSimulate('2026-11',27);assert.equal(sim.reduce((n,r)=>n+r.points,0),31*1000,'AI matches only move points between them');
-  assert.ok(sim.every(r=>r.played<=27*5),'an AI plays at most 5 matches a day');
-  const map=new Map(),st={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};let at=Date.UTC(2026,10,4,5);
-  const e=M.makeEngine(st,{now:()=>at,random:()=>.3}),before=JSON.stringify(e.read().wallet);
-  assert.equal(e.cupSync().tickets,5);const b=e.begin('cup',1,{hero:'fire'});assert.equal(b.mode,'cup');assert.equal(b.hero,'fire','any released hero can be borrowed');
-  assert.deepEqual([b.stats.form,b.stats.evolution,b.stats.skills.join(),b.stats.affixes.length,b.stats.treasure],[1,0,'1,0,0,0',0,null],'Chuẩn Hóa: base form, rank-1 skills, no gear/treasure');
-  assert.throws(()=>e.begin('cup',1,{hero:'ice'}),/chưa phát hành/);
 { // Mika's season (owner 04/11, Claude + Codex "Vòng Mùa của tướng"): a free player who plays fully fuses Mika on day 14
   // (20 pass fragments + 60 from Đồng Hành Cùng Mika); a missed day is caught up with 6 PvE wins on a later day; the caps
   // hold; the jewel's Mika copy is server-only; the season's cosmetics carry no stats and need no Mika.
@@ -391,6 +376,34 @@ console.log('journey pass ok');
   for(let l=1;l<=50;l++)for(const t of ['free','gold','jewel'])assert.equal(O.PASS.reward(0,t,l).gems,undefined,'no Đá Ngọc in the hero pass');
 }
 console.log('mika season ok');
+{ // Every rare hero's season is ready but inactive (owner 04/11: "chỉ cần active dần các sự kiện"): seven cosmetics each, no
+  // season until live-ops schedules one; scheduling a season shows the hero from its first day and resolves its kit.
+  const O=require('../../src/gemwoven/liveops.js'),fs=require('node:fs');
+  for(const hero of ['fire','ice','earth','lightning','shadow']){const kit=O.COSMETICS.filter(c=>c.hero===hero);assert.equal(kit.length,7,hero+' has seven pieces');
+    for(const c of kit)assert.ok(fs.existsSync(require('node:path').join(__dirname,'../..',c.file)),c.file+' is drawn');}
+  assert.equal(O.COSMETICS.filter(c=>c.hero==='novice').length,0,'Hiro has no season');
+  assert.equal(M.heroAvailable('ice',Date.UTC(2027,0,1)),false,'Yuki hidden while her season waits');assert.equal(O.seasonCosmetic(1,'avatar'),null);
+  O.SEASONS.push({index:1,hero:'ice',rerun:null});const s1=O.passSeason(Date.UTC(2026,10,3)).end+86400000;
+  assert.equal(M.heroAvailable('ice',s1-86400000*2),false,'not before her season');assert.equal(M.heroAvailable('ice',s1),true,'shown from her season');
+  assert.equal(O.seasonHero(1).event,'Đồng Hành Cùng Yuki');assert.equal(O.seasonCosmetic(1,'entry').id,'yuki-entry');assert.equal(O.PASS.reward(1,'jewel',50).seasonFragments,80);
+  O.SEASONS.pop();
+}
+console.log('season kits ok');
+{ // Cúp Đấu Trường (§12.5, Codex arena rounds 1–2): month calendar, symmetric Elo, daily matches, AI field, knockout, no rewards.
+  const O=require('../../src/gemwoven/liveops.js'),H7=7*3600000;
+  const s=M.cupSeason(Date.UTC(2026,10,3,20));assert.deepEqual([s.key,s.date,s.raceDays,s.phase],['2026-11',4,27,'race'],'UTC+7 calendar day');
+  assert.deepEqual([M.cupSeason(Date.UTC(2026,10,28)-H7).phase,M.cupSeason(Date.UTC(2026,10,28)-H7).round,M.cupSeason(Date.UTC(2026,10,30,16,59)).round],['finals',1,3],'quarter D−2 … final D');
+  assert.equal(M.cupDelta(1000,1000,1),20);assert.equal(M.cupDelta(1000,1000,0),-20,'symmetric at equal ratings');
+  assert.equal(M.cupDelta(1000,2000,1),M.cupDelta(1000,1240,1),'gap capped at ±240');assert.equal(M.cupDelta(5,1000,0),-5,'nobody drops below 0');
+  const field=M.cupField('2026-11');assert.equal(field.length,31);assert.deepEqual(M.cupField('2026-11'),field,'same field on every device');
+  assert.ok(field.every(f=>M.heroAvailable(f.hero)),'AI copies use released heroes only');
+  const sim=M.cupSimulate('2026-11',27);assert.equal(sim.reduce((n,r)=>n+r.points,0),31*1000,'AI matches only move points between them');
+  assert.ok(sim.every(r=>r.played<=27*5),'an AI plays at most 5 matches a day');
+  const map=new Map(),st={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};let at=Date.UTC(2026,10,4,5);
+  const e=M.makeEngine(st,{now:()=>at,random:()=>.3}),before=JSON.stringify(e.read().wallet);
+  assert.equal(e.cupSync().tickets,5);const b=e.begin('cup',1,{hero:'fire'});assert.equal(b.mode,'cup');assert.equal(b.hero,'fire','any released hero can be borrowed');
+  assert.deepEqual([b.stats.form,b.stats.evolution,b.stats.skills.join(),b.stats.affixes.length,b.stats.treasure],[1,0,'1,0,0,0',0,null],'Chuẩn Hóa: base form, rank-1 skills, no gear/treasure');
+  assert.throws(()=>e.begin('cup',1,{hero:'ice'}),/chưa phát hành/);
   const r=e.settle(b.token,true,0);assert.ok(r.cup.won&&r.cup.delta>0);assert.equal(JSON.stringify(e.read().wallet),before,'the prototype grants nothing');
   const q=e.begin('cup',1,{});const lost=e.cup().you.points;e.begin('cup',1,{});assert.equal(e.cup().you.played,3,'leaving a started match keeps it as a loss');assert.ok(lost<1000+r.cup.delta);
   for(let i=0;i<2;i++)e.settle(e.begin('cup',1,{}).token,false,0);assert.throws(()=>e.begin('cup',1,{}),/Hết lượt/);
