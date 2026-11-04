@@ -303,10 +303,12 @@ console.log('rarity up fodder ok');
   // Jewel includes gold; its level-25 Sử Thi chest waits for stage 60; claim-all skips it and takes the rest.
   edit(p=>{p.pass.owned={gold:false,jewel:true};p.campaign.cleared=20;});v=e.pass();assert.ok(v.owned.gold&&v.owned.jewel);assert.equal(v.rows[24].jewel.state,'stage');assert.equal(v.rows[24].jewel.gate,60);
   assert.throws(()=>e.claimPass(25,'jewel'),/ải 60/);
-  const all=e.claimPassAll();assert.equal(all.gems,undefined);assert.equal(all.fragmentChoice,40,'levels 10 and 20 give hero fragment vouchers');
-  v=e.pass();assert.equal(v.ready,0);assert.equal(v.rows[24].jewel.state,'stage');assert.equal(v.vouchers.fragmentChoice,40);assert.throws(()=>e.claimPassAll(),/Chưa có mốc/);
-  edit(p=>{p.campaign.cleared=60;});assert.deepEqual(e.claimPass(25,'jewel'),{epicGearChoice:1,divineOre:2});
-  for(let l=1;l<=O.PASS.levels;l++)for(const t of ['free','gold','jewel'])assert.equal(O.PASS[t](l).gems,undefined);
+  // Season one is Mika's (hero season): the free track gives 4 Mika fragments at 5-25, the cosmetics arrive on their tracks.
+  const all=e.claimPassAll();assert.equal(all.gems,undefined);assert.equal(all.seasonFragments,20,'free levels 5-25 give 4 Mika fragments each');assert.equal(all.fragmentHero,'fire');
+  assert.deepEqual(all.cosmetics.sort(),['mika-avatar','mika-frame','mika-title'],'avatar (free 10), frame (gold 10), title (gold 20)');
+  v=e.pass();assert.equal(v.ready,0);assert.equal(v.hero.hero,'fire');assert.equal(v.rows[24].jewel.state,'stage');assert.equal(e.read().fragments.fire,20);assert.throws(()=>e.claimPassAll(),/Chưa có mốc/);
+  edit(p=>{p.campaign.cleared=60;});assert.deepEqual(e.claimPass(25,'jewel'),{epicGearChoice:1,divineOre:2,cosmetic:'mika-combat-frame'});
+  for(let l=1;l<=O.PASS.levels;l++)for(const t of ['free','gold','jewel']){assert.equal(O.PASS[t](l).gems,undefined);assert.equal(O.PASS.reward(0,t,l).gems,undefined);}
   // A new season (00:00 GMT+7, 28 days from the anchor Monday) starts at zero and grants what was left to take.
   edit(p=>{p.pass.points=2700;});assert.equal(e.pass().ready,3);
   clock=O.passSeason(clock).end+3600000;v=e.pass();assert.equal(v.season,1);assert.equal(v.level,0);assert.ok(!v.owned.gold&&!v.owned.jewel,'a purchase covers one season');
@@ -336,6 +338,44 @@ console.log('journey pass ok');
   assert.equal(e.cupSync().tickets,5);const b=e.begin('cup',1,{hero:'fire'});assert.equal(b.mode,'cup');assert.equal(b.hero,'fire','any released hero can be borrowed');
   assert.deepEqual([b.stats.form,b.stats.evolution,b.stats.skills.join(),b.stats.affixes.length,b.stats.treasure],[1,0,'1,0,0,0',0,null],'Chuẩn Hóa: base form, rank-1 skills, no gear/treasure');
   assert.throws(()=>e.begin('cup',1,{hero:'ice'}),/chưa phát hành/);
+{ // Mika's season (owner 04/11, Claude + Codex "Vòng Mùa của tướng"): a free player who plays fully fuses Mika on day 14
+  // (20 pass fragments + 60 from Đồng Hành Cùng Mika); a missed day is caught up with 6 PvE wins on a later day; the caps
+  // hold; the jewel's Mika copy is server-only; the season's cosmetics carry no stats and need no Mika.
+  const O=require('../../src/gemwoven/liveops.js');assert.equal(O.seasonHero(0).hero,'fire');assert.equal(O.COMPANION.total,60);
+  const play=skip=>{clock=Date.UTC(2026,10,1,18);const {engine:e,edit}=fixture();assert.deepEqual(Object.keys(e.read().heroes),['novice'],'a new account starts with Hiro only');
+    for(let d=1;d<=14;d++){clock=Date.UTC(2026,10,1+d,3);if(d===skip){e.read();continue;}
+      edit(p=>{p.daily.progress.campaign=3;p.daily.progress.boss=3;p.daily.progress.spend=99999;p.campaign.cleared=Math.max(p.campaign.cleared,5);p.boss.best=Math.max(p.boss.best,3);});
+      for(const q of ['login','campaign','boss','spend'])e.claimDaily(q);
+      for(let i=0;i<(skip&&d===skip+1?4:3);i++){const b=e.begin('campaign',1);e.settle(b.token,true,0,{});}
+      for(let i=0;i<2;i++){const b=e.begin('boss',1);e.settle(b.token,true,1e6,{});}
+      if(d%7===0){edit(p=>{p.weekly.progress.campaign=15;p.weekly.progress.boss=8;});e.claimWeekly('campaign');e.claimWeekly('boss');}}
+    return {e,edit};};
+  let {e,edit}=play(0);let v=e.companion();assert.equal(v.day,14);assert.equal(v.phase,'hero');assert.ok(v.slots.every(s=>s.state==='ready'),'14 day stamps');
+  assert.deepEqual(v.tasks.map(t=>t.state),['ready','ready','ready','ready'],'15 campaign + 8 boss wins in each chapter');
+  assert.equal(e.claimPassAll().seasonFragments,20);assert.equal(e.claimCompanion().heroFragments,60);assert.equal(e.read().fragments.fire,80);
+  e.fuse('fire');assert.equal(e.read().heroes.fire.stars,1,'Mika fused on day 14');
+  assert.throws(()=>e.claimCompanion(),/Chưa có phần quà/);
+  // Missed day 5: on day 6 the sixth PvE win stamps it; one catch-up a day, never above the 14 day slots.
+  ({e,edit}=play(5));v=e.companion();assert.ok(v.slots.every(s=>s.state==='ready'));assert.deepEqual(v.slots.filter(s=>s.catchup).map(s=>s.day),[5]);
+  e.claimPassAll();e.claimCompanion();assert.equal(e.read().fragments.fire,80,'catch-up keeps the day-14 promise');
+  clock=Date.UTC(2026,10,16,3);edit(p=>{p.campaign.cleared=Math.max(p.campaign.cleared,5);});for(let i=0;i<8;i++){const b=e.begin('campaign',1);e.settle(b.token,true,0,{});}
+  v=e.companion();assert.equal(v.phase,'materials','weeks 3-4: material event while no re-run hero');assert.equal(v.slots.filter(s=>s.catchup).length,1,'nothing left to catch up');
+  assert.equal(v.fragments.taken,60,'never more than 60 event fragments');
+  // Earned and left at the season's end is granted, not lost; the next season has no hero until one is announced.
+  ({e,edit}=play(0));clock=Date.UTC(2026,10,30,3);v=e.companion();assert.equal(v.season,1);assert.equal(v.hero,null);assert.equal(v.last.count,18);
+  assert.equal(e.read().fragments.fire,80,'60 event + 20 pass fragments kept');
+  // Jewel: one Mika copy at activation is delivered by the server only; this client has no way to grant it.
+  assert.ok(O.PASS.activation.serverOnly);assert.equal(typeof e.activatePass,'undefined');assert.equal(typeof e.setPassOwned,'undefined');
+  ({e,edit}=play(0));assert.equal(e.read().heroes.fire,undefined,'no local copy from the jewel');
+  // Cosmetics: only owned ones can be worn, they ride into the fight, and stats never change.
+  e.claimPassAll();const before=e.stats('novice');assert.throws(()=>e.wearCosmetic('mika-frame'),/Chưa sở hữu/);
+  e.wearCosmetic('mika-avatar');assert.deepEqual(e.looks(),{avatar:'mika-avatar'});assert.deepEqual(e.stats('novice'),before,'no stats from cosmetics');
+  edit(p=>{p.cosmetics.owned.push('mika-title','mika-combat-frame','mika-entry');});e.wearCosmetic('mika-title');e.wearCosmetic('mika-combat-frame');e.wearCosmetic('mika-entry');
+  const b=e.begin('campaign',1);assert.equal(b.title.name,'Bạn Đồng Hành Hỏa Hồ');assert.equal(b.looks.combatFrame,'mika-combat-frame');assert.equal(b.looks.entry,'mika-entry');e.settle(b.token,true,0,{});
+  e.wearCosmetic(null,'title');assert.equal(e.looks().title,undefined);
+  for(let l=1;l<=50;l++)for(const t of ['free','gold','jewel'])assert.equal(O.PASS.reward(0,t,l).gems,undefined,'no Đá Ngọc in the hero pass');
+}
+console.log('mika season ok');
   const r=e.settle(b.token,true,0);assert.ok(r.cup.won&&r.cup.delta>0);assert.equal(JSON.stringify(e.read().wallet),before,'the prototype grants nothing');
   const q=e.begin('cup',1,{});const lost=e.cup().you.points;e.begin('cup',1,{});assert.equal(e.cup().you.played,3,'leaving a started match keeps it as a loss');assert.ok(lost<1000+r.cup.delta);
   for(let i=0;i<2;i++)e.settle(e.begin('cup',1,{}).token,false,0);assert.throws(()=>e.begin('cup',1,{}),/Hết lượt/);

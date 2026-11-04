@@ -62,6 +62,45 @@
   PASS.points={daily:50,weekly:150};
   const SEASON_START=Date.parse(CADENCE_ANCHOR+'T00:00:00+07:00'),SEASON_MS=PASS.seasonDays*86400000;
   function passSeason(at){const index=Math.max(0,Math.floor((at-SEASON_START)/SEASON_MS)),start=SEASON_START+index*SEASON_MS;return {index,start,end:start+SEASON_MS};}
+  // Hero seasons (owner 04/11, Claude + Codex "Vòng Mùa của tướng", GAME_DESIGN §20): a season may carry one newly
+  // released hero X ("Hành Trình Của X"). Its pass swaps in the hero table below; seasons without an entry keep the generic
+  // tables above. `rerun` is the hero re-run in days 15-28 once three rare heroes are out; until then weeks 3-4 are a
+  // material event. Season one (index 0, from the anchor Monday) is Mika; every new account still starts with Hiro only.
+  const SEASONS=[{index:0,hero:'fire',name:'Hành Trình Của Mika',event:'Đồng Hành Cùng Mika',rerun:null}];
+  const seasonHero=index=>SEASONS.find(s=>s.index===index)||null;
+  // The season's cosmetics: no stats, usable without owning X. Free-track pieces can be earned locally; paid ones arrive
+  // only with a server-recorded purchase. `cosmetic` in a reward names the slot; the season resolves the item.
+  const COSMETIC_SLOTS=[['avatar','Avatar'],['frame','Khung avatar'],['title','Danh hiệu'],['nameplate','Thẻ tên'],['bubble','Bong bóng chat'],['combatFrame','Khung trận'],['entry','Hiệu ứng vào trận']];
+  const COSMETICS=[
+    {id:'mika-avatar',slot:'avatar',season:0,name:'Mika Hỏa Hồ',track:'free',level:10},
+    {id:'mika-frame',slot:'frame',season:0,name:'Khung Hỏa Hồ',track:'gold',level:10},
+    {id:'mika-title',slot:'title',season:0,name:'Bạn Đồng Hành Hỏa Hồ',track:'gold',level:20},
+    {id:'mika-nameplate',slot:'nameplate',season:0,name:'Thẻ tên Hỏa Hồ',track:'gold',level:30},
+    {id:'mika-bubble',slot:'bubble',season:0,name:'Bong bóng Hỏa Hồ',track:'gold',level:40},
+    {id:'mika-combat-frame',slot:'combatFrame',season:0,name:'Khung trận Hỏa Hồ',track:'jewel',level:25},
+    {id:'mika-entry',slot:'entry',season:0,name:'Hồ Hỏa Khai Trận',track:'jewel',level:40}];
+  const seasonCosmetic=(season,slot)=>COSMETICS.find(c=>c.season===season&&c.slot===slot)||null;
+  // Hero pass (Codex rounds 1-2): free 4 X fragments at levels 5-25 (20 a season, so the free track alone needs several
+  // seasons), the avatar at 10; gold the frame/title/nameplate/bubble at 10/20/30/40; jewel the combat frame at 25, the
+  // entry effect at 40 and 80 X fragments at 50 (replaces the old 80 choice fragments). The jewel activation gift, one copy
+  // of X, is delivered by the server with the purchase (never by this client). Owned X → fragments; X at 6★ → Bụi Ký Ức.
+  const HERO_PASS={
+    free:level=>({...(level%10===0?{tickets:2,essence:20}:level%5===0?{skillBooks:2,ore:20}:{gold:3000+level*200}),...(level<=25&&level%5===0?{seasonFragments:4}:{}),...(level===10?{cosmetic:'avatar'}:{})}),
+    gold:level=>level===50?{tickets:10,divineOre:2}:level%10===0?{tickets:5,divineOre:2,cosmetic:{10:'frame',20:'title',30:'nameplate',40:'bubble'}[level]}:level%5===0?{essence:15,skillBooks:3}:{exp:20+level,ore:10},
+    jewel:level=>level===50?{seasonFragments:80,legendaryGearChoice:1,divineOre:10}:level===40?{cosmetic:'entry',essence:60,ore:70}:level===30?{essence:50,ore:60}:
+      level===25?{cosmetic:'combatFrame',epicGearChoice:1,divineOre:2}:level===20?{essence:40,ore:50}:level===10?{essence:30,ore:40}:level%5===0?{divineOre:2,skillBooks:4}:{essence:6,ore:15}};
+  PASS.activation={jewel:{seasonCopy:1},serverOnly:true};
+  PASS.milestones=[10,20,25,30,40,50];
+  PASS.reward=(season,track,level)=>(seasonHero(season)?HERO_PASS:PASS)[track](level);
+  // Đồng Hành Cùng X (Codex round 2, owner approved catch-up): days 1-14, 30 X fragments a week, 60 in all. Each day the
+  // third claimed daily quest stamps that day (2 fragments); weekly tasks count wins from their chapter's first day to
+  // day 28 (15 campaign wins → 8, 8 Trùm Vô Tận wins → 8). Catch-up to day 28: a day with 6 PvE wins stamps the earliest
+  // missed day 1-14, at most one a day, never more than the 14 day slots. With the 20 free pass fragments a player who
+  // plays fully fuses X on day 14. Weeks 3-4 hold a material event while the season has no re-run hero.
+  const COMPANION={days:14,until:28,daily:{quests:3,fragments:2},catchup:{wins:6,perDay:1},chapters:[1,8],
+    tasks:[{id:'campaign',name:'Thắng 15 trận vượt ải',target:15,fragments:8},{id:'boss',name:'Thắng 8 trận Trùm Vô Tận',target:8,fragments:8}],
+    materials:{from:15,chapters:[15,22],daily:{ore:15,essence:5},tasks:{campaign:{skillBooks:2,gold:5000},boss:{essence:15,ore:20}}}};
+  COMPANION.total=COMPANION.days*COMPANION.daily.fragments+COMPANION.chapters.length*COMPANION.tasks.reduce((n,t)=>n+t.fragments,0);
   const CADENCE=[
     {id:'daily',name:'Ngày',reset:'00:00',items:['Nhiệm vụ ngày','Sân Thử Luyện theo hệ (2 lượt có thưởng, thử lại thoải mái)','Quà VIP và Thẻ Tháng']},
     {id:'weekly',name:'Tuần',reset:'Thứ Hai 00:00',items:['Nhiệm vụ tuần: 3 vé + 40 Bụi Ký Ức (đang chạy); Mảnh Hiro ~42/tuần từ nhiệm vụ vượt ải hằng ngày','Thưởng hạng Đấu Trường','Cửa hàng tuần làm mới; Cửa Hàng Ký Ức bày 2 tướng','Cuối tuần ×2 luân phiên: vàng ải / nguyên liệu boss']},
@@ -124,5 +163,5 @@
   // round 3). Payment is not live yet, so each one is labelled Coming soon and grants nothing.
   const TOPUP_EVENTS=[{id:'first-topup',name:'Nạp Đầu Nhân Đôi',tag:'Nạp đầu ×2',start:'2026-11-02T00:00:00+07:00',end:'2026-12-28T00:00:00+07:00',
     desc:'Lần nạp đầu mỗi mốc gói Đá Ngọc nhận gấp đôi (một lần mỗi mốc).',status:STATUS}];
-  return {GEM_PACKS,TOPUP,BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
+  return {SEASONS,seasonHero,COSMETIC_SLOTS,COSMETICS,seasonCosmetic,HERO_PASS,COMPANION,GEM_PACKS,TOPUP,BANNER,MEMORY,CUP_PRIZES,CUP_SCHEDULE,passSeason,TOPUP_EVENTS,STATUS,CADENCE_ANCHOR,VIP,PRODUCTS,GROWTH_FUND,PASS,CADENCE,LEAGUES,ARENA_RULES,TREASURE_QUALITIES,TREASURE_FAMILIES,TITLES};
 });

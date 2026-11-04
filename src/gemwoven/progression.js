@@ -733,7 +733,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function clockNow(p,write){const raw=now();p.clock??={max:Math.max(p.updated||0,p.offlineAt||0)};p.clock.behind=raw<p.clock.max-CLOCK_TOLERANCE;current=Math.max(p.clock.max,raw);if(write)p.clock.max=current;return current;}
     const onTime=p=>check(!p.clock.behind,'Giờ thiết bị đang sớm hơn lần chơi trước. Hãy chỉnh lại ngày giờ để nhận thưởng theo thời gian.');
     function weekly(p){if(!p.weekly||week(current)>p.weekly.week)p.weekly={week:week(current),progress:{campaign:0,boss:0,daily:0},claimed:[]};}
-    function daily(p){weekly(p);passSync(p);memorySync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
+    function daily(p){weekly(p);passSync(p);companionSync(p);memorySync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
     function bankOffline(p){const r=offlineRaw(p,current);p.offlineBank={hours:r.hours,gold:r.gold,exp:r.exp,seals:r.seals};p.offlineAt=Math.max(current,p.offlineAt);}
     // Expired mail (and any unclaimed gift in it) leaves the box at the next transaction.
     function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);memorySync(p);calendarSync(p);guideSync(p);save(p);return value;}
@@ -801,18 +801,70 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     const PASS_TRACKS=['free','gold','jewel'];
     function passSync(p){const O=OPS();if(!O)return null;const s=O.passSeason(current).index;
       if(p.pass&&p.pass.season>=s){p.pass.owned??={};p.pass.claimed??={};for(const t of PASS_TRACKS)p.pass.claimed[t]??=[];p.pass.points|=0;return p.pass;}
-      if(p.pass){const left=passRows(p).flatMap(r=>PASS_TRACKS.filter(t=>r[t].state==='ready'||r[t].state==='stage').map(t=>[r.level,t]));const got={};for(const [l,t] of left)for(const [k,n] of Object.entries(passGrant(p,O.PASS[t](l))))got[k]=(got[k]||0)+n;
+      if(p.pass){const left=passRows(p).flatMap(r=>PASS_TRACKS.filter(t=>r[t].state==='ready'||r[t].state==='stage').map(t=>[r.level,t]));const got={};for(const [l,t] of left)for(const [k,n] of Object.entries(passGrant(p,passRows(p)[l-1][t].reward)))if(typeof n==='number')got[k]=(got[k]||0)+n;
         p.passLast={season:p.pass.season,granted:got,count:left.length};if(left.length)note(p,`Sổ Hành Trình mùa ${p.pass.season+1}: cất ${left.length} phần quà chưa nhận`);}
       p.pass={season:s,points:0,bought:0,claimed:{free:[],gold:[],jewel:[]},owned:{gold:false,jewel:false}};return p.pass;}
     function passLevel(p){const O=OPS();return Math.min(O.PASS.levels,Math.floor(p.pass.points/O.PASS.pointsPerLevel)+(p.pass.bought|0));}
     const passOwns=(p,t)=>t==='free'||(t==='gold'?!!(p.pass.owned.gold||p.pass.owned.jewel):!!p.pass.owned.jewel);
     function passRows(p){const O=OPS(),level=passLevel(p),gates=O.PASS.gearGates;
       return Array.from({length:O.PASS.levels},(_,i)=>{const l=i+1,row={level:l,reached:l<=level};
-        for(const t of PASS_TRACKS){const reward=O.PASS[t](l),gate=Math.max(0,...Object.keys(reward).map(k=>gates[k]||0));
+        for(const t of PASS_TRACKS){const reward=O.PASS.reward?O.PASS.reward(p.pass.season,t,l):O.PASS[t](l),gate=Math.max(0,...Object.keys(reward).map(k=>gates[k]||0));
           row[t]={reward,gate,state:p.pass.claimed[t].includes(l)?'claimed':!row.reached?'level':!passOwns(p,t)?'track':p.campaign.cleared<gate?'stage':'ready'};}
         return row;});}
-    function passGrant(p,reward){const res={},other={};for(const [k,n] of Object.entries(reward))(k in RESOURCES?res:other)[k]=n;const actual=grant(p,res);
-      for(const [k,n] of Object.entries(other)){p.vouchers??={};p.vouchers[k]=(p.vouchers[k]||0)+n;actual[k]=n;}return actual;}
+    // Hero seasons: seasonFragments go to the season's hero X (a 6★ X turns them into Bụi Ký Ức in memorySync), cosmetic
+    // names a slot of the season's set. Everything else that is not a resource becomes a voucher.
+    function passGrant(p,reward){const O=OPS(),hero=O.seasonHero?.(p.pass?.season)?.hero,res={},other={};for(const [k,n] of Object.entries(reward))(k in RESOURCES?res:other)[k]=n;const actual=grant(p,res);
+      for(const [k,n] of Object.entries(other)){
+        if(k==='seasonFragments'){check(HEROES[hero],'Mùa này không có tướng.');p.fragments[hero]=(p.fragments[hero]||0)+n;actual.seasonFragments=n;actual.fragmentHero=hero;continue;}
+        if(k==='cosmetic'){const c=O.seasonCosmetic(p.pass.season,n);if(c){cosmeticGive(p,c.id);actual.cosmetic=c.id;}continue;}
+        p.vouchers??={};p.vouchers[k]=(p.vouchers[k]||0)+n;actual[k]=n;}return actual;}
+    // Season cosmetics (no stats, usable without owning the hero): owned ids and the worn piece of each slot.
+    function cosmeticState(p){const c=p.cosmetics??={owned:[],worn:{}};c.owned??=[];c.worn??={};return c;}
+    function cosmeticGive(p,id){const c=cosmeticState(p);if(!c.owned.includes(id))c.owned.push(id);}
+    function wornCosmetic(p,slot){const id=p.cosmetics?.worn?.[slot];return id&&p.cosmetics.owned.includes(id)?OPS()?.COSMETICS.find(c=>c.id===id)||null:null;}
+    function wornLooks(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c)out[slot]=c.id;}return out;}
+    // Đồng Hành Cùng X (liveops COMPANION): day stamps from the third daily quest, catch-up stamps from 6 PvE wins on a later
+    // day (to day 28, one a day, earliest missed day first), weekly tasks counting wins from their chapter's first day. Days
+    // 15-28 run the material event while the season has no re-run hero. Earned rewards wait for "Nhận"; a new season grants
+    // whatever was earned and left.
+    const seasonDay=s=>Math.floor((current-s.start)/DAY_MS)+1;
+    function companionFresh(s,hero){return {season:s,hero,stamps:[],catchDays:[],taken:[],wins:[{campaign:0,boss:0},{campaign:0,boss:0}],mat:{stamps:[],taken:[],wins:[{campaign:0,boss:0},{campaign:0,boss:0}]}};}
+    function companionRows(p){const O=OPS(),C=O.COMPANION,c=p.companion,rows=[];
+      if(c.hero){for(let d=1;d<=C.days;d++)rows.push({key:'d'+d,kind:'day',day:d,reward:{heroFragments:C.daily.fragments},earned:c.stamps.includes(d),taken:c.taken.includes('d'+d),catchup:c.catchDays.includes(d)});
+        C.chapters.forEach((from,i)=>C.tasks.forEach(t=>rows.push({key:`t${i}:${t.id}`,kind:'task',chapter:i,from,id:t.id,name:t.name,target:t.target,progress:Math.min(t.target,c.wins[i][t.id]),reward:{heroFragments:t.fragments},earned:c.wins[i][t.id]>=t.target,taken:c.taken.includes(`t${i}:${t.id}`)})));}
+      if(!O.seasonHero(c.season)?.rerun){const X=C.materials;
+        for(let d=X.from;d<=C.until;d++)rows.push({key:'m'+d,kind:'mday',day:d,reward:X.daily,earned:c.mat.stamps.includes(d),taken:c.mat.taken.includes('m'+d)});
+        X.chapters.forEach((from,i)=>C.tasks.forEach(t=>rows.push({key:`n${i}:${t.id}`,kind:'mtask',chapter:i,from,id:t.id,name:t.name,target:t.target,progress:Math.min(t.target,c.mat.wins[i][t.id]),reward:X.tasks[t.id],earned:c.mat.wins[i][t.id]>=t.target,taken:c.mat.taken.includes(`n${i}:${t.id}`)})));}
+      return rows;}
+    function companionTake(p,row){const c=p.companion,{heroFragments=0,...res}=row.reward,actual=grant(p,res);
+      if(heroFragments){check(HEROES[c.hero],'Mùa này không có tướng.');p.fragments[c.hero]=(p.fragments[c.hero]||0)+heroFragments;actual.heroFragments=heroFragments;actual.fragmentHero=c.hero;}
+      (row.kind==='mday'||row.kind==='mtask'?c.mat.taken:c.taken).push(row.key);return actual;}
+    function companionSync(p){const O=OPS();if(!O?.COMPANION)return null;const s=O.passSeason(current);
+      if(p.companion&&p.companion.season>=s.index)return p.companion;
+      if(p.companion){let n=0;const got={};for(const r of companionRows(p))if(r.earned&&!r.taken){for(const [k,v] of Object.entries(companionTake(p,r)))if(typeof v==='number')got[k]=(got[k]||0)+v;n++;}
+        if(n)note(p,`${O.seasonHero(p.companion.season)?.event||'Sự kiện mùa'}: cất ${n} phần quà chưa nhận`);p.companionLast={season:p.companion.season,granted:got,count:n};}
+      p.companion=companionFresh(s.index,O.seasonHero(s.index)?.hero||null);return p.companion;}
+    function companionStamp(p){const O=OPS(),C=O?.COMPANION;if(!C||!companionSync(p))return;const c=p.companion,d=seasonDay(O.passSeason(current));
+      if(p.daily.claimed.length<C.daily.quests)return;
+      if(c.hero&&d<=C.days&&!c.stamps.includes(d))c.stamps.push(d);
+      if(d>=C.materials.from&&d<=C.until&&!O.seasonHero(c.season)?.rerun&&!c.mat.stamps.includes(d))c.mat.stamps.push(d);}
+    function companionWin(p,mode){const O=OPS(),C=O?.COMPANION;if(!C||!companionSync(p))return;const c=p.companion,d=seasonDay(O.passSeason(current));if(d>C.until)return;
+      C.chapters.forEach((from,i)=>{if(d>=from)c.wins[i][mode]++;});
+      if(!O.seasonHero(c.season)?.rerun)C.materials.chapters.forEach((from,i)=>{if(d>=from)c.mat.wins[i][mode]++;});
+      // Catch-up: today's PvE wins fill the earliest missed day 1-14 (never today, never more than one a day).
+      const today=day(current),wins=(p.daily.campaignWins||0)+(p.daily.bossWins||0);
+      if(c.hero&&wins>=C.catchup.wins&&c.lastCatch!==today){const miss=Array.from({length:Math.min(C.days,d-1)},(_,k)=>k+1).find(k=>!c.stamps.includes(k));
+        if(miss){c.stamps.push(miss);c.catchDays.push(miss);c.lastCatch=today;}}}
+    function companionView(p){const O=OPS(),C=O.COMPANION;if(!companionSync(p))return null;const c=p.companion,s=O.passSeason(current),d=seasonDay(s),info=O.seasonHero(c.season),rows=companionRows(p);
+      const dayState=r=>r.taken?'taken':r.earned?'ready':r.day===d?'today':r.day<d?'missed':'future',taskState=r=>r.taken?'taken':r.earned?'ready':'open';
+      const days=rows.filter(r=>r.kind==='day').map(r=>({...r,state:dayState(r)}));
+      const wins=(p.daily.campaignWins||0)+(p.daily.bossWins||0),missed=days.filter(r=>r.state==='missed').length;
+      return {season:c.season,hero:c.hero,name:info?.event||'',day:d,days:C.days,until:C.until,daysLeft:Math.max(0,C.until-d+1),phase:c.hero&&d<=C.days?'hero':d<=C.until&&!info?.rerun?'materials':'done',
+        slots:days,tasks:rows.filter(r=>r.kind==='task').map(r=>({...r,state:taskState(r)})),
+        materials:{slots:rows.filter(r=>r.kind==='mday').map(r=>({...r,state:dayState(r)})),tasks:rows.filter(r=>r.kind==='mtask').map(r=>({...r,state:taskState(r)}))},
+        catchup:{wins:Math.min(C.catchup.wins,wins),need:C.catchup.wins,usedToday:c.lastCatch===day(current),missed,open:!!c.hero&&d<=C.until&&missed>0},
+        fragments:{taken:rows.filter(r=>r.reward.heroFragments&&r.taken).reduce((n,r)=>n+r.reward.heroFragments,0),total:C.total,held:c.hero?p.fragments[c.hero]||0:0,need:80,owned:!!(c.hero&&p.heroes[c.hero])},
+        ready:rows.filter(r=>r.earned&&!r.taken).length,last:p.companionLast||null};}
     function passPoints(p,n){if(passSync(p))p.pass.points+=n;}
     function passClaim(p,level,track){const row=passRows(p)[level-1];check(row&&PASS_TRACKS.includes(track),'Mốc không hợp lệ.');const c=row[track];
       check(c.state!=='claimed','Đã nhận mốc này.');check(c.state!=='level',`Cần cấp sổ ${level}.`);check(c.state!=='track','Nhánh này cần kích hoạt Sổ Hành Trình (thanh toán sắp ra mắt).');
@@ -839,7 +891,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       if(round)c.games.push({round,won:0,token});else{c.points+=loss;c.played++;c.oppSum+=opp.points;if(s.date>=s.lateFrom)c.late++;c.adjust[opp.id]=(c.adjust[opp.id]||0)-loss;}
       c.open={token,opp:opp.id,name:opp.name,hero:opp.hero,round,loss,win,at:current};
       const data=HEROES[hero],kit=skillKit(hero,null,true),e=cupEncounter({...opp,round},hero);
-      p.pending={...e,token,hero,started:now(),counter:null,title,stats:{hp:Math.round(data.hp*2),attack:Number((data.attack*1.8).toFixed(4)),defense:0,active:kit.activePower,mutation:false,awakened:false,skills:kit.ranks.slice(),evolution:0,form:1,stars:1,affixes:[],treasure:null,resist:0,precision:0,power:0,kit}};
+      p.pending={...e,token,hero,started:now(),counter:null,title,looks:wornLooks(p),stats:{hp:Math.round(data.hp*2),attack:Number((data.attack*1.8).toFixed(4)),defense:0,active:kit.activePower,mutation:false,awakened:false,skills:kit.ranks.slice(),evolution:0,form:1,stars:1,affixes:[],treasure:null,resist:0,precision:0,power:0,kit}};
       return clone(p.pending);}
     function cupSettle(p,token,won){
       const c=p.cup,o=c?.open?.token===token?c.open:null;let delta=0;
@@ -860,7 +912,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       summonQuote:count=>summonQuote(read(),count),
       claimChapter:(chapter,milestone)=>tx(p=>{const progress=chapterProgress(p,chapter),reward=chapterReward(chapter,milestone);check(progress.total>=milestone,'Chưa đủ sao của chương này.');const key=`world2:${chapter}:${milestone}`;check(!p.campaign.claimedStars.includes(key),'Mốc sao này đã nhận.');const actual=grant(p,reward);p.campaign.claimedStars.push(key);const hiro=HIRO_FRAGMENTS.chest[milestone]||0;if(hiro){p.fragments.novice=(p.fragments.novice||0)+hiro;actual.noviceFragments=hiro;}note(p,`Nhận thưởng chương ${chapter} · ${milestone} sao`);return actual;}),
       claimOffline:()=>tx(p=>{onTime(p);const pending=offline(p,current);check(pending.hours>=1/60,'Cần ít nhất một phút để nhận thưởng.');const actual=grant(p,{gold:pending.gold,exp:pending.exp,seals:pending.seals});p.offlineAt=Math.max(current,p.offlineAt);p.offlineBank=null;note(p,'Nhận thưởng offline');return actual;}),
-      claimDaily:quest=>tx(p=>{onTime(p);const q=DAILY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.daily.claimed.includes(quest),'Bạn đã nhận thưởng hôm nay.');check(p.daily.progress[quest]>=q.target,'Chưa hoàn thành nhiệm vụ.');const actual=grantAll(p,q.reward);p.daily.claimed.push(quest);p.weekly.progress.daily++;passPoints(p,OPS()?.PASS.points.daily||0);treasurePoint(p,'daily',day(current),p.daily.claimed.length>=3);note(p,'Nhiệm vụ: '+q.name);return actual;}),
+      claimDaily:quest=>tx(p=>{onTime(p);const q=DAILY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.daily.claimed.includes(quest),'Bạn đã nhận thưởng hôm nay.');check(p.daily.progress[quest]>=q.target,'Chưa hoàn thành nhiệm vụ.');const actual=grantAll(p,q.reward);p.daily.claimed.push(quest);companionStamp(p);p.weekly.progress.daily++;passPoints(p,OPS()?.PASS.points.daily||0);treasurePoint(p,'daily',day(current),p.daily.claimed.length>=3);note(p,'Nhiệm vụ: '+q.name);return actual;}),
       weekly:()=>{const p=read();return WEEKLY.map(q=>({...q,reward:weeklyReward(q,p.campaign.cleared),progress:Math.min(q.target,p.weekly.progress[q.id]||0),claimed:p.weekly.claimed.includes(q.id),week:p.weekly.week}));},
       claimWeekly:quest=>tx(p=>{onTime(p);const q=WEEKLY.find(q=>q.id===quest);check(q,'Nhiệm vụ không tồn tại.');check(!p.weekly.claimed.includes(quest),'Đã nhận thưởng tuần này.');check((p.weekly.progress[quest]||0)>=q.target,'Chưa hoàn thành nhiệm vụ tuần.');const actual=grantAll(p,weeklyReward(q,p.campaign.cleared));p.weekly.claimed.push(quest);passPoints(p,OPS()?.PASS.points.weekly||0);note(p,'Nhiệm vụ tuần: '+q.name);return actual;}),
       newbie:()=>{const p=read();return newbieState(p,current);},
@@ -896,17 +948,17 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         }
         p.summon.last=results;note(p,'Triệu hồi '+count+' lần');return results;
       }),
-      begin:(mode,index,opts={})=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');const wornTitle=p.title?titleList(p).find(t=>t.id===p.title&&t.unlocked):null,title=wornTitle?{name:wornTitle.name,tier:wornTitle.tier}:null;
-        if(mode==='cup')return cupBegin(p,opts.hero,title);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title};if(mode==='campaign'&&index===1){const gv=guideView(p);if(gv.active&&gv.step==='win1')p.pending.coach=true;}if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
+      begin:(mode,index,opts={})=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');const wornTitle=p.title?titleList(p).find(t=>t.id===p.title&&t.unlocked):null,seasonTitle=wornCosmetic(p,'title'),title=seasonTitle?{name:seasonTitle.name,tier:3,cosmetic:seasonTitle.id}:wornTitle?{name:wornTitle.name,tier:wornTitle.tier}:null,looks=wornLooks(p);
+        if(mode==='cup')return cupBegin(p,opts.hero,title);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title,looks};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title,looks};if(mode==='campaign'&&index===1){const gv=guideView(p);if(gv.active&&gv.step==='win1')p.pending.coach=true;}if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
-        if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
+        if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;companionWin(p,'campaign');if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
         if(won&&b.mode==='campaign')p.campaign.stars[b.index]=Math.max(p.campaign.stars[b.index]||0,stageStars(b,won,performance));
         if(won&&b.mode==='campaign'&&b.tier==='elite'&&stageStars(b,true,performance)===3){const counter=counterProgress(p,b.chapter),local=(b.index-1)%50+1;if(counter&&!counter.claimed.includes(local)){p.campaign.artifacts[counter.theme]={claimed:[...counter.claimed,local]};counterReward={...counterProgress(p,b.chapter),earned:3};}}
         let hiroFragments=0,trial=null,gemDrop=null;
         if(b.mode==='cup')return cupSettle(p,token,won);if(b.mode==='spar'){note(p,`${b.name}: ${won?'thắng':'thua'} bản sao ${b.opponent.name}`);return {spar:{won,opponent:b.opponent}};}
         if(b.mode==='trial'){const dmg=Math.floor(damage),t=trialReward(p,b,dmg);p.daily.trialRuns=(p.daily.trialRuns||0)+1;treasurePoint(p,'trial','w'+week(current),dmg>=3*b.enemyHp);p.trial??={best:{}};p.trial.best[b.index]=Math.max(p.trial.best[b.index]||0,dmg);reward=t.reward;trial={damage:dmg,bar:b.enemyHp,tier:t.tier,rewarded:t.rewarded,best:p.trial.best[b.index]};if(t.rewarded&&t.tier>=4){const type=Object.keys(GEMS)[Math.floor(random()*5)],k=gemKey(type,1);p.gems??={};p.gems[k]=(p.gems[k]||0)+1;gemDrop=k;}}
-        if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){if(b.index>p.boss.best&&b.index%HIRO_FRAGMENTS.endlessEvery===0){hiroFragments=HIRO_FRAGMENTS.endless;p.fragments.novice=(p.fragments.novice||0)+hiroFragments;}p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.weekly.progress.boss++;treasurePoint(p,'boss','w'+week(current),p.weekly.progress.boss>=8);p.daily.bossWins++;const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;
+        if(b.mode==='boss'){p.boss.damageBest=Math.max(p.boss.damageBest,Math.floor(damage));if(won){if(b.index>p.boss.best&&b.index%HIRO_FRAGMENTS.endlessEvery===0){hiroFragments=HIRO_FRAGMENTS.endless;p.fragments.novice=(p.fragments.novice||0)+hiroFragments;}p.boss.best=Math.max(p.boss.best,b.index);p.boss.wins++;p.daily.progress.boss++;p.weekly.progress.boss++;treasurePoint(p,'boss','w'+week(current),p.weekly.progress.boss>=8);p.daily.bossWins++;companionWin(p,'boss');const late=p.daily.bossWins>BOSS_DAILY_WINS,diminishing=late?.25:1;const floor=endlessRewardFloor(b.index);reward={gold:Math.floor((1200+floor*130)*diminishing),exp:Math.max(2,Math.floor((16+floor)*diminishing)),seals:p.daily.bossWins<=24?65:0,essence:late?0:1+Number(b.index%5===0),ore:late?1:3};if(b.index>=60&&random()<.01)reward.divineOre=1;
           if(b.index>=20&&p.daily.bossWins<=12){const r=random(),level=b.index>=80&&r<.05?2:r<(b.index>=80?.2:.15)?1:0;if(level){const type=Object.keys(GEMS)[Math.floor(random()*5)],k=gemKey(type,level);p.gems??={};p.gems[k]=(p.gems[k]||0)+1;gemDrop=k;}}}}
         // heroFragments is listed with the resources (label in RESOURCES) so the result popup shows it.
         const actual=grant(p,reward);if(heroFragments){actual.heroFragments=heroFragments;actual.fragmentHero=SUMMON_BANNER.hero;}if(hiroFragments)actual.noviceFragments=hiroFragments;if(trial)actual.trial=trial;if(gemDrop)actual.gem=gemDrop;if(counterReward)actual.counterReward=counterReward;note(p,`${b.name}: ${won?'thắng':'thua'}`);return actual;
@@ -995,7 +1047,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       cup:()=>{const p=read();return cupView(p,current);},
       cupSync:()=>tx(p=>{cupRefresh(p);return cupView(p,current);}),
       titles:()=>titleList(read()),
-      wearTitle:id=>tx(p=>{if(id==null||id===''){delete p.title;return {title:null};}const t=titleList(p).find(x=>x.id===id);check(t,'Danh hiệu không tồn tại.');check(t.unlocked,'Chưa đạt danh hiệu này.');p.title=id;note(p,'Đeo danh hiệu '+t.name);return {title:id};}),
+      wearTitle:id=>tx(p=>{if(id==null||id===''){delete p.title;return {title:null};}const t=titleList(p).find(x=>x.id===id);check(t,'Danh hiệu không tồn tại.');check(t.unlocked,'Chưa đạt danh hiệu này.');p.title=id;if(p.cosmetics?.worn)delete p.cosmetics.worn.title;note(p,'Đeo danh hiệu '+t.name);return {title:id};}),
       lockGear:(gearId,on=true)=>tx(p=>{const g=p.equipment.find(g=>g.id===gearId);check(g,'Trang bị không tồn tại.');if(on)g.locked=true;else delete g.locked;return {locked:!!g.locked};}),
       setAutoSalvage:(rarity,on)=>tx(p=>{check(['common','uncommon'].includes(rarity),'Chỉ tự phân giải đồ Thường hoặc Tốt.');p.settings??={};p.settings.autoSalvage??={};p.settings.autoSalvage[rarity]=!!on;return {...p.settings.autoSalvage};}),
       bestGear:(key,goal='attack')=>bestGear(read(),key,goal),
@@ -1008,9 +1060,11 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       // what can be raised now (green, the UI hides those already seen until they change); `count` is unread mail (blue).
       pass:()=>{const p=read(),O=OPS();if(!p.pass)return null;const s=O.passSeason(current),level=passLevel(p),per=O.PASS.pointsPerLevel,rows=passRows(p);
         return {season:s.index,start:s.start,end:s.end,daysLeft:Math.max(0,Math.ceil((s.end-current)/86400000)),points:p.pass.points,level,max:O.PASS.levels,per,
-          into:level>=O.PASS.levels?per:p.pass.points%per,owned:{gold:passOwns(p,'gold'),jewel:passOwns(p,'jewel')},rows,ready:rows.reduce((n,r)=>n+PASS_TRACKS.filter(t=>r[t].state==='ready').length,0),last:p.passLast||null,vouchers:{...(p.vouchers||{})}};},
+          into:level>=O.PASS.levels?per:p.pass.points%per,owned:{gold:passOwns(p,'gold'),jewel:passOwns(p,'jewel')},rows,ready:rows.reduce((n,r)=>n+PASS_TRACKS.filter(t=>r[t].state==='ready').length,0),last:p.passLast||null,vouchers:{...(p.vouchers||{})},
+          hero:O.seasonHero?.(p.pass.season)||null,milestones:O.PASS.milestones||[],activation:O.PASS.activation||null,
+          cosmetics:(O.COSMETICS||[]).filter(c=>c.season===p.pass.season).map(c=>({...c,owned:!!p.cosmetics?.owned?.includes(c.id),worn:p.cosmetics?.worn?.[c.slot]===c.id}))};},
       claimPass:(level,track)=>tx(p=>{onTime(p);const actual=passClaim(p,Number(level),track);note(p,`Sổ Hành Trình: nhận cấp ${level}`);return actual;}),
-      claimPassAll:()=>tx(p=>{onTime(p);const total={};let count=0;for(const r of passRows(p))for(const t of PASS_TRACKS)if(r[t].state==='ready'){for(const [k,n] of Object.entries(passClaim(p,r.level,t)))total[k]=(total[k]||0)+n;count++;}
+      claimPassAll:()=>tx(p=>{onTime(p);const total={};let count=0;for(const r of passRows(p))for(const t of PASS_TRACKS)if(r[t].state==='ready'){for(const [k,n] of Object.entries(passClaim(p,r.level,t))){if(typeof n==='number')total[k]=(total[k]||0)+n;else if(k==='cosmetic')(total.cosmetics??=[]).push(n);else total[k]=n;}count++;}
         check(count,'Chưa có mốc nào để nhận.');note(p,`Sổ Hành Trình: nhận ${count} mốc`);return total;}),
       // Thẻ Tháng: the server records the paid days; the client only reads them.
       monthlyCard:()=>{const p=read(),until=p.cards?.monthly?.until||0;return {active:until>current,daysLeft:Math.max(0,Math.ceil((until-current)/86400000))};},
@@ -1018,6 +1072,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       notices:()=>{const p=read();daily(p);const at=current,claim={},hint={};
         claim.quests=DAILY.filter(q=>!p.daily.claimed.includes(q.id)&&(p.daily.progress[q.id]||0)>=q.target).length;
         claim.events=newbieState(p,at).filter(r=>r.open&&!r.claimed).length+WEEKLY.filter(q=>!p.weekly.claimed.includes(q.id)&&(p.weekly.progress[q.id]||0)>=q.target).length;
+        if(OPS()?.COMPANION&&companionSync(p))claim.events+=companionRows(p).filter(r=>r.earned&&!r.taken).length;
         if(OPS()?.MEMORY){const mv=memoryView(p);claim.events+=(mv.chest.ready?1:0)+(mv.vouchers&&mv.chest.choices.length?1:0);}
         claim.offline=offline(p,at).hours>=1?1:0;
         let chests=0;for(let c=1;c<=Math.min(WORLD.CHAPTERS.length,Math.floor(p.campaign.cleared/50)+1);c++){const pr=chapterProgress(p,c);chests+=STAR_MILESTONES.filter(m=>pr.total>=m&&!pr.claimed.includes(m)).length;}claim.campaign=chests;
@@ -1035,6 +1090,14 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       deleteMail:mailId=>tx(p=>{const m=findMail(p,mailId);check(!mailPending(m),'Hãy nhận quà trước khi xóa thư.');p.mail=p.mail.filter(x=>x!==m);}),
       deleteReadMail:()=>tx(p=>{const before=p.mail.length;p.mail=p.mail.filter(m=>!m.read||mailPending(m));return before-p.mail.length;}),
       // Local studio prototype only; real administrator mail needs the server.
+      // Season cosmetics: the catalogue with what this save owns and wears; wearing never changes stats.
+      cosmetics:()=>{const p=read(),O=OPS(),c=p.cosmetics||{owned:[],worn:{}};return (O?.COSMETICS||[]).map(x=>({...x,owned:(c.owned||[]).includes(x.id),worn:c.worn?.[x.slot]===x.id}));},
+      looks:()=>wornLooks(read()),
+      wearCosmetic:(id,slot)=>tx(p=>{const O=OPS(),c=cosmeticState(p);if(id==null||id===''){check(O.COSMETIC_SLOTS.some(([x])=>x===slot),'Ô trang trí không hợp lệ.');delete c.worn[slot];return null;}
+        const x=O.COSMETICS.find(x=>x.id===id);check(x,'Món trang trí không tồn tại.');check(c.owned.includes(id),'Chưa sở hữu món này.');c.worn[x.slot]=id;if(x.slot==='title')delete p.title;note(p,'Trang bị '+x.name);return id;}),
+      companion:()=>companionView(read()),
+      claimCompanion:()=>tx(p=>{onTime(p);if(!companionSync(p))return {};const total={};let n=0;for(const r of companionRows(p))if(r.earned&&!r.taken){for(const [k,v] of Object.entries(companionTake(p,r)))if(typeof v==='number')total[k]=(total[k]||0)+v;else total[k]=v;n++;}
+        check(n,'Chưa có phần quà nào để nhận.');note(p,`${OPS().seasonHero(p.companion.season)?.event||'Sự kiện mùa'}: nhận ${n} phần quà`);return total;}),
       sendMail:draft=>tx(p=>{const m=normalizeMailDraft(draft,current);check(p.mail.length<MAIL_LIMIT,`Hòm thư đã đầy (${MAIL_LIMIT} thư). Hãy xóa bớt thư cũ.`);m.id='mail-'+id();p.mail.push(m);note(p,'Studio local gửi thư: '+m.title);return clone(m);}),
       recallMail:mailId=>tx(p=>{const m=p.mail.find(m=>m.id===mailId);check(m&&m.source==='local-studio','Chỉ thu hồi được thư gửi từ studio local.');p.mail=p.mail.filter(x=>x!==m);}),
       exportSave:()=>JSON.stringify(read(),null,2),
