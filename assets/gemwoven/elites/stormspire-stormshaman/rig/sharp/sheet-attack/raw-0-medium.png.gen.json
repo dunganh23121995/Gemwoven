@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "at": "2026-11-04T08:01:55Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\stormspire-stormshaman\\rig\\sharp\\sheet-attack\\ref-0.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\elites\\stormspire-stormshaman\\rig\\sharp\\sheet-attack\\style.png"
+  ],
+  "prompt": "Image 1 shows 3 animation frames of a fantasy game humanoid elite enemy (a chibi fantasy RPG elite enemy: bearded storm sorcerer in a deep-blue hooded cowl with a gold gryphon-crest circlet, layered blue and cream robes with lightning runes, holding a gryphon-headed wooden staff) in a 3 by 1 grid of equal cells (read left to right, top to bottom), enlarged from small frames and soft. Redraw EXACTLY the same frames at full resolution on the same canvas in the same grid: in every cell the same pose, the same angles of every limb, weapon, wing, tail and loose piece, the same size and the same position inside the cell as Image 1, and any drawn effect (a glow, a slash, sparks, a spell in the hand) where it is, the same size, shape and colour. The body keeps one size in every cell. No borders or lines between cells. Nothing crosses a cell edge.\nImage 2 is the same character drawn crisply in its resting pose: render the frames the way Image 2 is rendered (its clean sharp dark outlines, its exact colours, its crisp detail and design). Take only the rendering and the design details from Image 2, never its pose.\nKeep everything about the character exactly: identity, face, every part of the body, armour or costume and every ornament, the weapon, the colours, brightness and saturation, proportions and chibi game style. Do not add or remove anything, and add no new effects.\nBackground 100% solid flat magenta #FF00FF, the same colour everywhere around and between the parts. No gradients, no text, no labels, no frame, no shadow on the ground, no loose sparkles.\nKeep every frame inside its cell with the whole body and weapon, the same size and place as Image 1.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the three stacked frames of the same bearded hooded sorcerer in blue, cream and gold with the gryphon-headed staff, matching the reference poses. The magenta background is flat, nothing is cut off, and there is no text or extra content.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000555
+  }
+}
