@@ -110,6 +110,8 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
       <button data-do="ultimate" class="hot">Tuyệt kỹ</button>
       <button data-do="depart">Rời sân</button>
       <button data-do="hit">Bị đánh</button>
+      <button data-do="transform" class="hot" title="Biến Thân (Chân Thân): bùng lên rồi giữ dáng biến thân">Biến Thân</button>
+      <button data-do="afterglow" title="Hết 3 lượt Biến Thân: dư âm">Dư âm</button>
       <button id="swapSide" title="Đổi tướng sang bên kia sân (chỉ để thử, trong game tướng luôn đứng bên trái)">⇄ Đổi bên</button>
     </div>
     <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
@@ -321,6 +323,9 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
   const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);b.classList.add('busy');
   try{
     if(b.dataset.do!=='hit')configure();
+    if(['idle','attack','ultimate','depart'].includes(b.dataset.do))q.transformReset?.();
+    if(b.dataset.do==='transform'){if(!q.transformTest)throw Error('Bản game chưa có Biến Thân, bấm Tải lại game');q.transformTest();}
+    if(b.dataset.do==='afterglow')q.transformAfter?.();
     if(b.dataset.do==='attack')await q.attack('hero',100,{attackChain:1});
     if(b.dataset.do==='ultimate')await q.heroUltimate();
     if(b.dataset.do==='depart')await q.departVictoriousHero();

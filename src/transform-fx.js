@@ -18,7 +18,7 @@ function transformLookBuild(key){
   back.innerHTML='<i class="tf-spirit"></i><i class="tf-side tf-left"><b></b></i><i class="tf-side tf-right"><b></b></i>'+
     '<span class="tf-motes">'+[0,1,2,3,4,5].map(i=>`<i style="--e:${i}"><b></b></i>`).join('')+'</span><i class="tf-mark"></i>';
   front.innerHTML='<i class="tf-ground"><b></b></i>';
-  const form=String(progressionBattle?.stats?.form||1);back.dataset.form=form;front.dataset.form=form;
+  const form=String(progressionBattle?.stats?.form||state.form||1);back.dataset.form=form;front.dataset.form=form;
   // The form's own body box from its resting frame (build.py transform_body) over the sheet's, which some forms lack.
   const body=files.bodies?.[form];if(body)for(const el of [back,front]){el.style.setProperty('--t',body[0]);el.style.setProperty('--h',body[1]);el.style.setProperty('--x',body[2]);}
   return [back,front];
@@ -57,4 +57,11 @@ update=function(){transformLookUpdate();transformLookSync();};
 // QA: run the transformed turns down (the studio and the screenshot checks), and replay the flare.
 setTimeout(()=>{if(window.gameQA)Object.assign(window.gameQA,{
   transformTurns(n=1){for(let i=0;i<n;i++)progressionTransformTurn();update();},
-  transformFlare(){transformLookSync(true);}});},0);
+  transformFlare(){transformLookSync(true);},
+  // The hero studio's Biến Thân button: the flare and the transformed look on the configured hero and form, outside a hub
+  // battle (presentation only; no bonus is applied without a battle kit). transformReset puts the hero back at rest.
+  transformTest(){const hero=actor('hero');progressionTransform={left:3};hero.classList.remove('is-afterglow');hero.classList.add('is-transformed');
+    hero.querySelector(':scope > .tf-look')?.remove();hero.querySelector(':scope > .tf-front')?.remove();transformLookSync(true);
+    const key=transformLook();if(key&&sound&&typeof playCastSound==='function')setTimeout(()=>playCastSound(key,'transform',{volume:.3,pan:-.2}),80);},
+  transformAfter(){if(!progressionTransform)this.transformTest();progressionTransform.left=0;const hero=actor('hero');hero.classList.remove('is-transformed');hero.classList.add('is-afterglow');transformLookSync();},
+  transformReset(){progressionTransform=null;actor('hero')?.classList.remove('is-transformed','is-afterglow');transformLookSync();}});},0);
