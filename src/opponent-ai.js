@@ -34,6 +34,7 @@ const OpponentAI = (() => {
         boss: !!current.boss, enraged: !!current.enraged, frozen: !!current.frozen,
         stunned: !!current.stunned, playerFrozen: !!current.playerFrozen,
         noriStunTurns: current.noriStunTurns || 0, noriStoredDamage: current.noriStoredDamage || 0,
+        controlGuard: current.controlGuard || 0, iceBar: current.iceBar || 0,
       },
     };
   }
@@ -150,11 +151,14 @@ const OpponentAI = (() => {
     const hp = enemy ? 'enemyHp' : 'hp', armor = enemy ? 'enemyArmor' : 'armor', energy = enemy ? 'enemyEnergy' : 'energy';
     const maximum = enemy ? current.enemyMax : current.heroMax;
     const hpRatio = current[hp] / Math.max(1, maximum);
-    const gain = enemy ? sum(counts) * 3 + (counts[2] ? 25 : 0)
-      : (counts[0] * 7 + counts[2] * 5 + (counts[1] + counts[3] + counts[4]) * 2) * (key === 'lightning' ? 2 : 1);
+    // Rage from the shared board table (board-rules.js); this is the AI's estimate, combat pays the real amount.
+    const R = globalThis.GemwovenBoardRules;
+    const purple = key === 'lightning' ? 10 : 0;
+    const gain = enemy ? sum(counts) * R.FOE_RAGE.perGem + (counts[2] ? R.FOE_RAGE.firstCrystal : 0)
+      : counts.reduce((total, n, type) => total + n * R.heroRage(type, { purple }), 0);
     const beforeEnergy = current[energy];
-    const energyGain = Math.min(100 - beforeEnergy, gain); current[energy] += energyGain;
-    const damage = damageValue(current, side, counts[0] * 8 * (enemy ? current.boss ? 1.15 : .55 : key === 'fire' ? 1.6 : 1));
+    const energyGain = Math.min(R.ULTIMATE.cap - beforeEnergy, gain); current[energy] += energyGain;
+    const damage = damageValue(current, side, counts[0] * 8 * (enemy ? current.boss ? R.FOE_SWORD.boss : R.FOE_SWORD.common : key === 'fire' ? 1.6 : 1));
     const healing = Math.min(Math.max(0, maximum - current[hp]), counts[1] * 6); current[hp] += healing;
     const armorGain = Math.min(999 - current[armor], counts[4] * (enemy ? 5 : key === 'ice' ? 8 : 4));
     const armorWeight = current[armor] < 20 ? .85 : current[armor] < 60 ? .5 : .2;
@@ -162,9 +166,11 @@ const OpponentAI = (() => {
     let value = damage + healing * (hpRatio < .3 ? 1.75 : hpRatio < .65 ? 1.15 : .7) + armorGain * armorWeight;
     value += energyGain * (enemy ? current.boss ? .35 : .16 : .32);
     if (beforeEnergy < 100 && current[energy] >= 100) value += enemy ? current.boss ? 42 : 14 : 45;
-    if (counts[3]) {
-      if (enemy) { const drain = Math.min(current.energy, 20); current.energy -= drain; value += drain * .5; }
-      else if (counts[3] >= 3) { if (!current.frozen) value += 24 + current.stage * .5; current.frozen = true; }
+    // Ice: a common foe freezes at 3 in one resolution, a boss fills its bar to 6; nothing lands during the guard.
+    if (counts[3] && !enemy && !current.controlGuard && !current.frozen && !current.stunned) {
+      const need = current.boss ? R.ICE.boss : R.ICE.common, filled = current.boss ? current.iceBar + counts[3] : counts[3];
+      if (filled >= need) { value += 24 + current.stage * .5; current.frozen = true; if (current.boss) current.iceBar = 0; }
+      else if (current.boss) current.iceBar = filled;
     }
     return { value, damage, heal: healing, armor: armorGain, energy: energyGain };
   }

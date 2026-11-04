@@ -9,7 +9,7 @@ const defaults = {stage:10,key:'fire',enemyKey:'earth',hp:170,armor:0,energy:0,e
 let randomCalls = 0;
 const privateMath = Object.create(Math);
 privateMath.random = () => {randomCalls++; throw Error('AI consumed the gameplay RNG');};
-const sandbox = {HEROES:heroes,state:{...defaults},board:[],performance,setTimeout,Math:privateMath};
+const sandbox = {HEROES:heroes,state:{...defaults},board:[],performance,setTimeout,Math:privateMath,GemwovenBoardRules:require(path.join(root,'src/gemwoven/board-rules.js'))};
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(root,'src/opponent-ai.js'),'utf8')+'\nglobalThis.api={OpponentAI,chooseEnemyMove,enemyThinkingLevel};',sandbox);
 const AI=sandbox.api.OpponentAI;

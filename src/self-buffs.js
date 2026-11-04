@@ -116,7 +116,7 @@ async function noriRenewalUltimate(){
     root.style.transform=`translate(${travel}px,0px)`;playCastSound('earth','launch',{volume:.22});
     await at(1550);root.dataset.ragePhase='renewal';setSpriteFrame('hero','cast',4);
     if(state.enemyHp>0){
-      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
+      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.noriSealFree=controlBlocked();state.stunned=!state.noriSealFree;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
       playCastSound('earth','shield-bash',{volume:.62,pan:.2});popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);
       castFx('earth','bloom',combatV3Point('enemy'),90,'',300,pending);
       combatV3Camera(1,true,false,pending);
@@ -157,9 +157,9 @@ function syncNoriDamageSeal(){
 }
 async function consumeNoriStunTurn(){
   const remaining=state.noriStunTurns;
-  const pending=[];popActorSkill('enemy','CHOÁNG · '+remaining+' LƯỢT',false,pending);
+  const pending=[];popActorSkill('enemy',(state.noriSealFree?'PHONG ẤN · ':'CHOÁNG · ')+remaining+' LƯỢT',false,pending);
   await Promise.all(pending);
-  state.noriStunTurns=Math.max(0,remaining-1);state.stunned=state.noriStunTurns>0;state.frozen=false;
+  state.noriStunTurns=Math.max(0,remaining-1);state.stunned=state.noriStunTurns>0&&!state.noriSealFree;if(!state.noriSealFree)state.frozen=false;if(!state.noriStunTurns)state.noriSealFree=false;
   if(state.noriStunTurns>0){update();return;}
   // Store post-element/critical damage before armor. Apply armor exactly once
   // to the burst, without multiplying elemental or Nori's base damage again.

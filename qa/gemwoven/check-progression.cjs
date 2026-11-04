@@ -99,7 +99,7 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
     }
     // Innate traits hold at rank 0, ranks add on top.
     const base=M.skillKit(key,{level:1,stars:1,evolution:0,skills:[1,0,0,0]});
-    assert.equal(base.sword,key==='fire'?1.6:1);assert.equal(base.pveSword,key==='novice'?1.2:undefined,"Hiro's edge is PvE only");assert.equal(base.damageReduction,key==='ice'?.2:0);assert.equal(base.attackScale,key==='earth'?.75:1);assert.equal(base.energy,key==='lightning'?2:1);
+    assert.equal(base.sword,key==='fire'?1.6:1);assert.equal(base.pveSword,key==='novice'?1.2:undefined,"Hiro's edge is PvE only");assert.equal(base.damageReduction,key==='ice'?.2:0);assert.equal(base.attackScale,key==='earth'?.75:1);assert.equal(base.energy,1);assert.equal(base.purple,key==='lightning'?10:undefined,'Lumi: purple is her rage gem');
     assert.equal(base.mutation,false);assert.equal(base.awakened,false);assert.equal(base.power,1);
   }
   // Published table (rank 1/5/10, base form, no evolution).
@@ -108,9 +108,13 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   assert.deepEqual([1,5,10].map(r=>at('ice',r,0).armor),[25,37,52]);assert.deepEqual([1,5,10].map(r=>at('earth',r,0).heal),[40,60,85]);assert.deepEqual([1,5,10].map(r=>at('earth',r,0).burst),[3,3.4,3.9]);
   assert.deepEqual([1,5,10].map(r=>at('fire',r,2).burn.turns),[2,3,4]);assert.deepEqual([1,5,10].map(r=>at('ice',r,2).mutationArmor),[.06,.08,.105]);assert.deepEqual([1,5,10].map(r=>at('earth',r,2).mutationArmor),[.04,.06,.085]);
   assert.deepEqual([1,5,10].map(r=>at('lightning',r,2).drain),[21,25,30]);assert.deepEqual([1,5,10].map(r=>at('shadow',r,2).echo),[15,27,42]);assert.deepEqual([1,5,10].map(r=>at('novice',r,2).regen),[.01,.014,.019]);
-  // Biến Thân (Codex round 4): Công +25% → +40%, 3 turns (4 at level 400 + evolution 5), +10% (+15%) afterwards; no whole-battle bonus.
-  assert.deepEqual([1,5,10].map(r=>at('fire',r,3).transform.attack),[.25,.3167,.4]);assert.deepEqual(at('fire',1,3).awaken,{attack:0,hp:0});
-  assert.deepEqual(M.skillKit('fire',{level:200,stars:4,evolution:3,skills:[1,1,1,1]}).transform,{turns:3,attack:.25,reduce:.15,after:.1});
+  // Biến Thân (board round, owner 05/11): no shared +Công and nothing after it; 3 turns (4 at level 400 + evolution 5),
+  // 15% (+1% a rank) less damage taken, and each hero's own board effect scaled a little by the Chân Thân rank.
+  assert.deepEqual([1,5,10].map(r=>at('fire',r,3).transform.reduce),[.15,.19,.24]);assert.deepEqual(at('fire',1,3).awaken,{attack:0,hp:0});
+  assert.deepEqual([1,5,10].map(r=>at('fire',r,3).transform.burn.base),[16,18.56,21.76]);assert.deepEqual([1,10].map(r=>at('lightning',r,3).transform.purple),[16,18.7]);
+  assert.deepEqual(at('ice',10,3).transform.ice,{common:2,boss:4});assert.equal(at('novice',1,3).transform.firstSword,.1);assert.ok(at('novice',10,3).transform.firstSword<.25,'Hiro stays below the old +25% Công');
+  const tf=M.skillKit('fire',{level:200,stars:4,evolution:3,skills:[1,1,1,1]}).transform;assert.equal(tf.turns,3);assert.equal(tf.reduce,.15);assert.equal(tf.attack,undefined);assert.equal(tf.after,undefined);
+  for(const key of ['novice','fire','ice','earth','lightning','shadow'])assert.ok(at(key,1,3).transform.text,'every hero has its own Biến Thân text');
   assert.equal(M.skillKit('fire',{level:500,stars:6,evolution:6,skills:[1,1,1,1]},true).transform,null,'not in normalized play');assert.deepEqual(M.SKILL_GATES[3],{level:180,evolution:3});
   // Forms and evolution perks.
   for(const forms of Object.values(M.HERO_FORMS)){assert.deepEqual(forms.map(f=>f.power),[1,1.1,1.25]);assert.equal(new Set(forms.map(f=>f.skill)).size,3,'Each form has its own skill name');assert.ok(forms[2].signature);}

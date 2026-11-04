@@ -372,7 +372,7 @@ async function enemyAction(){
   turn='enemy';update();
   await castReadyUltimates();if(state.enemyHp<=0||state.hp<=0)return;
   await battleBeat(650);
-  if(state.noriStunTurns>0){await consumeNoriStunTurn();return;}
+  if(noriSealHolds()){await consumeNoriStunTurn();return;}
   if(state.frozen||state.stunned){message(state.stunned?'Quái bị choáng, bỏ qua lượt này.':'Quái bị đóng băng, bỏ qua lượt này.');await floating('enemy',state.stunned?'Choáng':'Đóng băng','armor');state.frozen=false;state.stunned=false;update();return;}
   const it=plannedIntent||intent();
   if(!state.boss&&it.kind==='board')message(MONSTERS[state.enemyKey].name+' dùng '+it.name+'.');
@@ -381,7 +381,7 @@ async function enemyAction(){
   if(!played)await attack('enemy',(progressionBattle?10:10+5*(state.stage-1))*(state.boss?1.3:1));
   if(state.enemyHp>0&&state.hp>0){
     await castReadyUltimates();
-    if(!state.boss&&state.hp>0&&state.enemyHp>0&&!(state.noriStunTurns>0)){
+    if(!state.boss&&state.hp>0&&state.enemyHp>0&&!noriSealHolds()){
       state.enemyTurn++;
       if(it.kind==='guard'||it.kind==='heal'){
         await battleBeat(450);
@@ -530,7 +530,7 @@ function showHeroDetail(){
 }
 $('heroBackBtn').addEventListener('click',()=>showHeroList());
 function startStage(){
-  state.noriStunTurns=0;state.noriStoredDamage=0;
+  state.noriStunTurns=0;state.noriStoredDamage=0;state.controlGuard=0;state.iceBar=0;state.tfDodge=false;state.noriSealFree=false;
   state.noriRegenTurns=0;clearNoriRenewal();
   stopCombatVoices();bossDeathVoicePlayed=false;
   resetBoardCombo();

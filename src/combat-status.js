@@ -25,7 +25,10 @@ const STATUS_DEFS={
   noheal:{kind:'debuff',name:'Cấm hồi',desc:()=>'Không hồi được máu'},
   armormelt:{kind:'debuff',name:'Giáp tan chảy',desc:()=>'Không nhận thêm giáp'},
   frostrune:{kind:'debuff',name:'Hàn ấn',desc:s=>'Nạp năng lượng chậm hơn '+pct(s.value)},
-  transform:{kind:'buff',name:'Biến Thân',desc:s=>'Công +'+pct(s.value)+', giảm 15% sát thương nhận, miễn choáng'},
+  transform:{kind:'buff',name:'Biến Thân',desc:s=>(s.text||'')+(s.text?'; ':'')+'giảm '+pct(s.value)+' sát thương nhận, miễn choáng'},
+  // Board round (owner 05/11): a boss's ice bar, and the guard after a stun or freeze.
+  icebar:{kind:'debuff',icon:'freeze',name:'Tích băng',desc:s=>s.stacks+'/'+s.value+' Băng: đủ thì đóng băng'},
+  controlguard:{kind:'buff',icon:'invulnerable',name:'Kháng khống chế',desc:()=>'Chưa thể bị choáng hay đóng băng thêm'},
   afterglow:{kind:'buff',name:'Dư âm Biến Thân',desc:s=>'Công +'+pct(s.value)},
   veil:{kind:'buff',name:'Hóa mờ',desc:()=>'Chặn mọi bất lợi mới từ lượt địch'},
   regen:{kind:'buff',name:'Hồi phục',desc:()=>'Hồi máu mỗi lượt'},
@@ -54,10 +57,13 @@ function combatStatusList(side){
     if(dot?.turns>0)add(dot.name==='Độc'?'poison':'burn',{turns:dot.turns});
     const veil=typeof progressionVeil!=='undefined'?progressionVeil:0;if(veil>0)add('veil',{turns:veil});
     const tf=typeof progressionTransform!=='undefined'?progressionTransform:null,kit=tf&&typeof progressionTransformKit==='function'?progressionTransformKit():null;
-    if(tf&&kit)add(tf.left>0?'transform':'afterglow',tf.left>0?{turns:tf.left,value:kit.attack}:{value:kit.after});
+    // The afterglow is only a look now (owner 05/11): no tile after the transformed turns.
+    if(tf&&kit&&tf.left>0)add('transform',{turns:tf.left,text:kit.text,value:kit.reduce});
     if(state.key==='earth'&&state.noriRegenTurns>0)add('regen',{turns:state.noriRegenTurns});
   }else{
     if(state.frozen)add('freeze',{turns:1});
+    if(state.boss&&state.iceBar>0&&!state.frozen)add('icebar',{stacks:state.iceBar,value:typeof GemwovenBoardRules==='object'?GemwovenBoardRules.iceThreshold(true,typeof transformEffect==='function'?transformEffect():null):6});
+    if(state.controlGuard>0&&!state.frozen&&!state.stunned)add('controlguard',{turns:state.controlGuard});
     if(state.stunned)add('stun',{turns:state.noriStunTurns>0?state.noriStunTurns:1});
     if(dot?.turns>0)add('burn',{turns:dot.turns});
     if(state.enraged)add('rage',{mult:'×1,25'});

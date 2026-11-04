@@ -101,7 +101,7 @@ function yukiUltimateOpening(kit,pending){
   combatVoice('hero','cast');
 }
 function yukiUltimateHit(kit,pending,sound){
-  const result=damage('hero',kit.base);if(state.enemyHp>0)state.stunned=true;
+  const result=damage('hero',kit.base);if(state.enemyHp>0&&!controlBlocked())state.stunned=true;
   // Third form: the foe also loses energy.
   if(kit.enemyDrain&&state.enemyHp>0){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.enemyDrain);popActorSkill('enemy','−'+kit.enemyDrain+' NĂNG LƯỢNG',false,pending);}
   update();

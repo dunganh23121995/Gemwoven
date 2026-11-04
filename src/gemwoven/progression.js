@@ -188,6 +188,20 @@
   // the hub prints them, so descriptions cannot drift from the rules.
   // Innate traits (Mika's sword, Yuki's 20% guard, Nori's 75% strikes, Lumi's
   // double energy, Noct's immunity to weakness) are always on; ranks add on top.
+  // Each hero's Biến Thân board effect (Codex board round 1 table C, owner 05/11), read by combat and the hub text. Rank 1
+  // is the table; each Chân Thân rank adds a little (Yuki's thresholds stay), and every rank also adds 1% damage reduction.
+  const vn=(n,d=1)=>Number(n).toLocaleString('vi-VN',{maximumFractionDigits:d});
+  function transformEffect(key,rank){
+    const r=Math.max(1,rank)-1,R4=n=>Number(n.toFixed(4));
+    const effects={
+      novice:()=>{const firstSword=R4(.1+.005*r);return {firstSword,text:`Nhóm Kiếm đầu mỗi lượt +${vn(firstSword*100)}% sát thương`};},
+      fire:()=>{const base=R4(16*(1+.04*r));return {burn:{base,turns:2},text:`Nhóm Kiếm đầu mỗi lượt gây thiêu đốt ${vn(base)}×Công/lượt trong 2 lượt`};},
+      ice:()=>({ice:{common:2,boss:4},text:'2 Băng đủ đóng băng (trùm: thanh 4)'}),
+      earth:()=>{const support=R4(1.5+.02*r);return {support,overflowArmor:.25,overflowCap:.04,text:`Tim và Khiên ×${vn(support,2)}; 25% máu hồi dư thành giáp`};},
+      lightning:()=>{const purple=R4(16+.3*r);return {purple,rageCap:75,text:`Tím ${vn(purple)} nộ mỗi viên (tối đa 75 nộ mỗi lượt)`};},
+      shadow:()=>{const mult=R4(1.5+.02*r);return {cascadeCrit:{waves:2,mult},dodge:{waves:3},text:`Combo từ đợt 2: Kiếm chí mạng ×${vn(mult,2)}; combo 3 đợt: né đòn thường kế tiếp`};}};
+    return effects[key]();
+  }
   function skillKit(key,h,normalized=false){
     check(HEROES[key],'Tướng không hợp lệ.');
     const base=SKILL_KIT[key],save=h||heroSave();
@@ -199,18 +213,19 @@
     const kit={key,form,evolution,ranks,levels:[active,passive,mutation,awaken],activePower:round(activePower),formPower,evolutionPower:round(bonus.power),power,startEnergy:bonus.startEnergy,
       base:base.base,hits:base.hits,damage:Math.round(base.base*power),sword:1,attackScale:1,shieldGem:4,energy:1,damageReduction:0,attackBonus:0,hpBonus:0,defenseBonus:0,
       mutation:mutation>0,awakened:awaken>0,awaken:{attack:0,hp:0},
-      // Biến Thân (docs/GAME_DESIGN.md §2.4, Codex round 4): once a battle, pressed by the player when HP ≤ 50% or after
-      // the second ultimate; for its owner's next turns Công +25% (rank 1) → +40% (rank 10) and 15% less damage taken,
-      // immune to new stun/freeze; afterwards +10% Công to the end (it replaces the bonus, never adds). Level 400 +
-      // evolution 5: 4 turns and +15% afterwards. Not in normalized play (Chuẩn Hóa, local duel, friendly fights).
-      transform:awaken&&!normalized?{turns:save.level>=400&&evolution>=5?4:3,attack:round(.25+(awaken-1)*.15/9),reduce:.15,after:save.level>=400&&evolution>=5?.15:.1}:null};
+      // Biến Thân (docs/GAME_DESIGN.md §2.4; board round, owner 05/11): once a battle, pressed by the player when HP ≤ 50% or
+      // after the second ultimate; for its owner's next 3 turns (level 400 + evolution 5: 4) 15% less damage taken and
+      // immune to new stun/freeze, plus the hero's own board effect (transformEffect). Nothing lingers afterwards (the
+      // afterglow is only a look). Not in normalized play (Chuẩn Hóa, local duel, friendly fights).
+      transform:awaken&&!normalized?{turns:save.level>=400&&evolution>=5?4:3,reduce:round(.15+.01*(awaken-1)),...transformEffect(key,awaken)}:null};
     // Hiro's traveller's edge: sword gems +20% (balance-sim: geared Hiro wins about half of chapter bosses at the
     // recommended level). Normalized play (local PvP, practice) keeps both sides even.
     if(key==='novice'){if(!normalized)kit.pveSword=QA_VARIANT.hiroSword||1.2;if(form===3&&!normalized)kit.tetra=QA_VARIANT.hiroTetra||1.15;kit.defenseBonus=passive?round(.02+.002*(passive-1)):0;kit.regen=mutation?round(.01+.001*(mutation-1)):0;}
     if(key==='fire'){kit.sword=1.6;kit.attackBonus=round(.025*passive);if(mutation||form===3)kit.burn={base:round(8*(1+.1*mutation),2),turns:(mutation>=10?4:mutation>=5?3:2)+(form===3?1:0)};}
     if(key==='ice'){kit.shieldGem=8;kit.damageReduction=.2;kit.defenseBonus=round(.008*passive);kit.armor=Math.round((base.armor+3*(active-1))*(form===3?1.6:1));kit.enemyDrain=form===3?25:0;kit.mutationArmor=mutation?round(.06+.005*(mutation-1)):0;}
     if(key==='earth'){kit.attackScale=.75;kit.hpBonus=round(.015*passive);kit.heal=Math.round((base.heal+5*(active-1))*formPower*bonus.power);kit.burst=round(base.burst+.1*(active-1)+(form===3?.5:0),2);kit.stun=base.stun;kit.regenTurns=base.regen+(form===3?1:0);kit.mutationArmor=mutation?round(.04+.005*(mutation-1)):0;}
-    if(key==='lightning'){kit.energy=round(2+.05*passive);kit.hits=form===3?9:base.hits;kit.drain=mutation?20+mutation:0;kit.energyReturn=mutation?5:0;}
+    // Lumi's spark: purple is her rage gem (10 a gem at rank 1, 11.8 at rank 10); other colours follow the board table.
+    if(key==='lightning'){kit.purple=round(10+.2*Math.max(0,passive-1),1);kit.hits=form===3?9:base.hits;kit.drain=mutation?20+mutation:0;kit.energyReturn=mutation?5:0;}
     // Six-star Noct: nine reaping cuts that ignore armour, then one enemy turn of untouchable veil.
     if(key==='shadow'){kit.attackBonus=round(.012*passive);kit.echo=mutation?12+3*mutation:0;kit.execute=form===3?{threshold:.3,bonus:1.5}:null;kit.hits=form===3?9:base.hits;kit.pierceArmor=form===3;kit.veil=form===3?1:0;}
     return kit;
@@ -224,12 +239,12 @@
   function skillValues(kit,slot){
     const k=kit.key;
     if(slot===0)return k==='earth'?[['Hồi',vi(kit.heal),' HP/lượt'],['Bộc phá','×'+vi(kit.burst,2),'']]:[['Sát thương',vi(kit.damage),''],...(k==='ice'?[['Giáp',vi(kit.armor),'']]:[])];
-    if(slot===1)return [{novice:()=>['Giảm sát thương',pct(kit.defenseBonus),''],fire:()=>['Công','+'+pct(kit.attackBonus),''],ice:()=>['Phòng thủ','+'+pct(kit.defenseBonus),''],earth:()=>['HP','+'+pct(kit.hpBonus),''],lightning:()=>['Năng lượng','×'+vi(kit.energy,2),''],shadow:()=>['Công','+'+pct(kit.attackBonus),'']}[k]()];
+    if(slot===1)return [{novice:()=>['Giảm sát thương',pct(kit.defenseBonus),''],fire:()=>['Công','+'+pct(kit.attackBonus),''],ice:()=>['Phòng thủ','+'+pct(kit.defenseBonus),''],earth:()=>['HP','+'+pct(kit.hpBonus),''],lightning:()=>['Tím',vi(kit.purple,1),' nộ/viên'],shadow:()=>['Công','+'+pct(kit.attackBonus),'']}[k]()];
     if(slot===2){
       if(!kit.mutation)return [];
       return {novice:()=>[['Hồi',pct(kit.regen),' HP/lượt']],fire:()=>[['Thiêu đốt',vi(kit.burn.base),'/lượt'],['Thời gian',String(kit.burn.turns),' lượt']],ice:()=>[['Giáp',pct(kit.mutationArmor),' HP']],earth:()=>[['Giáp',pct(kit.mutationArmor),' HP']],lightning:()=>[['Hút',String(kit.drain),' năng lượng']],shadow:()=>[['Tàn ảnh',String(kit.echo),' sát thương']]}[k]();
     }
-    return kit.transform?[['Công','+'+pct(kit.transform.attack),''],['Lượt',String(kit.transform.turns),''],['Dư âm','+'+pct(kit.transform.after),' Công']]:[];
+    return kit.transform?[['Lượt',String(kit.transform.turns),''],['Giảm sát thương',pct(kit.transform.reduce),'']]:[];
   }
   function skillDescription(kit,slot){
     const k=kit.key;
@@ -241,14 +256,14 @@
     if(slot===1){
       const learned=kit.levels[1]>0;
       return {novice:()=>'Ngọc kiếm gây thêm 20% sát thương.'+(learned?` Giảm ${pct(kit.defenseBonus)} sát thương nhận vào.`:' Học để giảm sát thương nhận vào.'),fire:()=>'Ngọc kiếm gây thêm 60% sát thương.'+(learned?` Công +${pct(kit.attackBonus)}.`:''),ice:()=>'Giảm 20% sát thương nhận vào; ngọc khiên cho 8 giáp.'+(learned?` Phòng thủ +${pct(kit.defenseBonus)}.`:''),
-        earth:()=>`Đánh thường còn ${pct(kit.attackScale)} sát thương; đổi lại HP rất cao.`+(learned?` HP +${pct(kit.hpBonus)}.`:''),lightning:()=>`Năng lượng từ ngọc ×${vi(kit.energy,2)}.`,shadow:()=>'Không bị khắc hệ.'+(learned?` Công +${pct(kit.attackBonus)}.`:'')}[k]();
+        earth:()=>`Đánh thường còn ${pct(kit.attackScale)} sát thương; đổi lại HP rất cao.`+(learned?` HP +${pct(kit.hpBonus)}.`:''),lightning:()=>`Ngọc tím cho ${vi(kit.purple,1)} nộ mỗi viên (thường 7).`,shadow:()=>'Không bị khắc hệ.'+(learned?` Công +${pct(kit.attackBonus)}.`:'')}[k]();
     }
     if(slot===2){
       if(!kit.mutation)return 'Sau tuyệt kỹ, kích hoạt hiệu ứng nguyên tố.';
       return {novice:()=>`Mỗi lượt hồi ${pct(kit.regen)} HP tối đa.`,fire:()=>`Sau tuyệt kỹ, thiêu đốt địch ${kit.burn.turns} lượt, mỗi lượt ${vi(kit.burn.base)} sát thương cơ bản.`,ice:()=>`Sau tuyệt kỹ, nhận thêm giáp bằng ${pct(kit.mutationArmor)} HP tối đa.`,
         earth:()=>`Rễ cây hóa giáp: sau tuyệt kỹ nhận giáp bằng ${pct(kit.mutationArmor)} HP tối đa.`,lightning:()=>`Sau tuyệt kỹ, hút ${kit.drain} năng lượng của địch và hồi ${kit.energyReturn} năng lượng.`,shadow:()=>`Sau tuyệt kỹ, tàn ảnh chém thêm ${kit.echo} sát thương cơ bản.`}[k]();
     }
-    return kit.transform?`Biến Thân một lần mỗi trận (bấm khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai, không tốn lượt): ${kit.transform.turns} lượt Công +${pct(kit.transform.attack)}, giảm 15% sát thương nhận, miễn choáng và đóng băng mới; sau đó giữ Công +${pct(kit.transform.after)} tới hết trận. Cấp 400 + tiến hóa 5: 4 lượt, dư âm +15%.`:'Biến Thân một lần mỗi trận: Công tăng mạnh, giảm sát thương nhận và miễn choáng trong vài lượt, sau đó giữ một phần Công tới hết trận.';
+    return kit.transform?`Biến Thân một lần mỗi trận (bấm khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai, không tốn lượt): ${kit.transform.turns} lượt ${kit.transform.text.charAt(0).toLowerCase()+kit.transform.text.slice(1)}, giảm ${pct(kit.transform.reduce)} sát thương nhận, miễn choáng và đóng băng mới. Cấp 400 + tiến hóa 5: 4 lượt.`:`Biến Thân một lần mỗi trận: ${transformEffect(k,1).text.toLowerCase()}, giảm sát thương nhận và miễn choáng trong vài lượt.`;
   }
   function skillText(key,h,slot){
     check(HEROES[key]&&int(slot,0,3),'Kỹ năng không hợp lệ.');
@@ -288,7 +303,7 @@
     // Practice is normalized: base HP/Công, rank-1 active, innate traits only, no gear.
     if(normalized){hp=data.hp*2;attack=data.attack*1.8;defense=0;}
     return {hp:Math.round(hp),attack:Number(attack.toFixed(4)),defense:Math.min(.5,defense),active:kit.activePower,mutation:kit.mutation,awakened:kit.awakened,skills:normalized?kit.ranks.slice():h.skills.slice(),evolution:h.evolution,form:heroForm(key,h),stars:h.stars,affixes:normalized?[]:affixes,treasure:normalized?null:(()=>{const t=treasureTotals(p,key),e=t.effects,out={};if(e.mountain)out.mountain=TREASURE.families.mountain.hp[e.mountain.q];if(e.counter)out.counter=TREASURE.families.counter.drain[e.counter.q];
-      if(e.borrow&&e.borrow.borrow&&e.borrow.borrow!==key&&p.heroes[e.borrow.borrow]){const src=skillKit(e.borrow.borrow,p.heroes[e.borrow.borrow]),base=skillKit(e.borrow.borrow,{...p.heroes[e.borrow.borrow],skills:[1,0,0,0]});out.borrow={hero:e.borrow.borrow,attack:round((src.attackBonus-base.attackBonus)/2),hp:round((src.hpBonus-base.hpBonus)/2),defense:round((src.defenseBonus-base.defenseBonus)/2),energy:round((src.energy-base.energy)/2)};}
+      if(e.borrow&&e.borrow.borrow&&e.borrow.borrow!==key&&p.heroes[e.borrow.borrow]){const src=skillKit(e.borrow.borrow,p.heroes[e.borrow.borrow]),base=skillKit(e.borrow.borrow,{...p.heroes[e.borrow.borrow],skills:[1,0,0,0]});out.borrow={hero:e.borrow.borrow,attack:round((src.attackBonus-base.attackBonus)/2),hp:round((src.hpBonus-base.hpBonus)/2),defense:round((src.defenseBonus-base.defenseBonus)/2),energy:round(((src.purple||7)-(base.purple||7))/14)};}
       return Object.keys(out).length?out:null;})(),resist:normalized?0:gemTotals(p,key).resist,precision:normalized?0:gemTotals(p,key).precision,power:Math.round(hp*attack/(1-Math.min(.5,defense))),kit};
   }
   // The hub's "Chi tiết lực chiến": rows per source (HP, Công, Thủ added by it) and what power is.

@@ -5,9 +5,14 @@ function createLiveCombat(){
   const feedback=new Map(),receiveJobs=new Set();
   const attackChains={hero:0,enemy:0};
   const damageLedger={hero:{raw:0,applied:0},enemy:{raw:0,applied:0}};
-  let running=null,failure=null,closed=false,wave=0,heroTiles=0;
+  let running=null,failure=null,closed=false,wave=0,heroTiles=0,owner=null,comboPaid=false;
+  // Per resolution: hero rage earned (Lumi's Biến Thân cap), the first hero sword wave, armour from overflow healing.
+  const turnGain={rage:0,firstSwordWave:0,overflowArmor:0,burned:false};
   const alive=side=>state[side==='hero'?'hp':'enemyHp']>0;
+  // Ultimates wait until the board has resolved (one per own turn, src/board-control.js castReadyUltimates); the queue
+  // below only plays board impacts now.
   function queueUltimates(){
+    return;
     if(closed||failure||!alive('hero')||!alive('enemy'))return;
     for(const side of ['enemy','hero']){
       if(side==='enemy'&&state.noriStunTurns>0)continue;
@@ -26,7 +31,7 @@ function createLiveCombat(){
       while(queue.length&&!closed){
         const job=queue.shift();
         if(!alive(job.side))continue;
-        if(job.side==='enemy'&&state.noriStunTurns>0&&(job.kind==='attack'||job.kind==='ultimate')){
+        if(job.side==='enemy'&&noriSealHolds()&&(job.kind==='attack'||job.kind==='ultimate')){
           if(job.kind==='ultimate'){state.enemyEnergy=Math.min(199,state.enemyEnergy+100);update();}
           continue;
         }
@@ -64,9 +69,10 @@ function createLiveCombat(){
   }
   function label(kind,value){return '+'+Math.round(value)+(kind==='heal'?' HP':kind==='armor'?' GIÁP':' NL');}
   return {
-    beginWave(chain,plan,owner){
+    beginWave(chain,plan,mover){
+      owner=mover;
       for(const side of ['hero','enemy']){
-        const swords=plan.targets.some(t=>t.type===0&&(owner==='hero'||plan.playerTiles.has(t)?'hero':'enemy')===side);
+        const swords=plan.targets.some(t=>t.type===0&&(mover==='hero'||plan.playerTiles.has(t)?'hero':'enemy')===side);
         attackChains[side]=swords?attackChains[side]+1:0;
       }
       // Preserve the existing final-combo score multiplier as waves arrive.
@@ -82,27 +88,55 @@ function createLiveCombat(){
       own[type]++;
       if(hero&&typeof expeditionCollect==='function')expeditionCollect(type);
       if(hero){heroTiles++;state.score+=10*chain;}
-      const energyKey=hero?'energy':'enemyEnergy',before=state[energyKey];
-      const energy=progressionIsDuel()?[7,2,5,2,2][type]:hero?([7,2,5,2,2][type]*progressionEnergyMultiplier(key)):3+(type===2&&own[2]===1?25:0);
-      state[energyKey]=Math.min(alive('hero')&&alive('enemy')?199:100,before+energy);
+      // Rage by the shared board table (board-rules.js): heroes and duel players 3/2/7/2/2 (Lumi's purple from her kit,
+      // more in her Biến Thân, capped per turn); a PvE foe 3 a gem and 25 for its first purple.
+      const R=GemwovenBoardRules,tf=hero?transformEffect():null,energyKey=hero?'energy':'enemyEnergy',before=state[energyKey];
+      let energy=progressionIsDuel()?R.heroRage(type):hero?R.heroRage(type,{purple:tf?.purple||progressionKit(key).purple||0,factor:progressionEnergyMultiplier(key)}):R.FOE_RAGE.perGem+(type===2&&own[2]===1?R.FOE_RAGE.firstCrystal:0);
+      if(hero&&tf?.rageCap)energy=Math.max(0,Math.min(energy,tf.rageCap-turnGain.rage));
+      state[energyKey]=Math.min(alive('hero')&&alive('enemy')?R.ULTIMATE.cap:R.ULTIMATE.cost,before+energy);
+      if(hero)turnGain.rage+=state[energyKey]-before;
       receipt(side,'energy',state[energyKey]-before);
-      if(hero&&own[3]>=3)state.frozen=true;
-      if(!hero&&type===3&&own[3]>=3&&progressionIsDuel())state.playerFrozen=true;
-      // An enemy snow match drains 20 energy, unless Ngọc Kháng resists it (each time).
-      if(!hero&&type===3&&own[3]===1&&!progressionIsDuel()&&!(Math.random()<(progressionBattle?.stats?.resist||0)))state.energy=Math.max(0,state.energy-20);
+      // Ice: 3 in one resolution freezes a common foe; a boss fills its bar across turns; the control guard applies.
+      // A foe's ice no longer drains rage (that is now a skill of the foes that have it).
+      if(hero&&type===3&&!progressionIsDuel())boardIceGem(own[3]);
+      if(hero&&type===3&&progressionIsDuel()&&own[3]>=R.ICE.common)state.frozen=true;
+      if(!hero&&type===3&&own[3]>=R.ICE.common&&progressionIsDuel())state.playerFrozen=true;
       if(type===0){
-        const raw=8*(hero?progressionSwordFactor(key):1)*(progressionIsDuel()?1:hero?1:state.boss?1.15:.55);
+        let raw=8*(hero?progressionSwordFactor(key):1)*(progressionIsDuel()?1:hero?1:state.boss?R.FOE_SWORD.boss:R.FOE_SWORD.common);
+        // Biến Thân board effects on swords: Hiro's first group, Noct's cascade crit, Mika's burn from her first group.
+        if(hero&&tf){
+          if(!turnGain.firstSwordWave)turnGain.firstSwordWave=chain;
+          const first=turnGain.firstSwordWave===chain;
+          if(tf.firstSword&&first)raw*=1+tf.firstSword;
+          if(tf.cascadeCrit&&chain>=tf.cascadeCrit.waves)raw*=tf.cascadeCrit.mult;
+          if(tf.burn&&first&&!turnGain.burned&&alive('enemy')){turnGain.burned=true;const amount=Math.max(1,Math.round(tf.burn.base*(progressionBattle?.stats.attack||1)));
+            if(!(progressionDot?.turns>0&&progressionDot.amount>=amount))progressionDot={turns:tf.burn.turns,amount};popActorSkill('enemy','THIÊU ĐỐT · '+tf.burn.turns+' LƯỢT',false);}
+        }
         enqueue(side,'attack',raw);
       }else if(type===1||type===4){
         const kind=type===1?'heal':'armor',stat=type===1?(hero?'hp':'enemyHp'):(hero?'armor':'enemyArmor');
         const cap=type===1?(hero?HEROES[key].hp:state.enemyMax):combatArmorCap(side);
-        const amount=combatTileYield(side,type),gained=Math.max(0,Math.min(amount,cap-state[stat]));
+        const tf=hero?transformEffect():null,amount=Math.round(combatTileYield(side,type)*(tf?.support||1)),gained=Math.max(0,Math.min(amount,cap-state[stat]));
         state[stat]+=gained;receipt(side,kind,gained);enqueue(side,kind,gained);
+        // Nori's Biến Thân: a share of the healing past full HP becomes armour (capped a turn).
+        if(tf?.overflowArmor&&type===1&&amount>gained){const room=Math.round(HEROES[key].hp*tf.overflowCap)-turnGain.overflowArmor,add=Math.max(0,Math.min(room,Math.round((amount-gained)*tf.overflowArmor),combatArmorCap('hero')-state.armor));
+          if(add>0){state.armor+=add;turnGain.overflowArmor+=add;receipt('hero','armor',add);}}
       }
       update();
       queueUltimates();
     },
     async finish(){
+      // Combo rage: one bonus for the mover by the number of waves (heroes, and both players in duels).
+      if(!comboPaid&&owner&&!closed&&!failure){comboPaid=true;
+        const side=owner==='hero'?'hero':progressionIsDuel()?'enemy':null,bonus=side&&alive('hero')&&alive('enemy')?GemwovenBoardRules.comboRage(wave):0;
+        if(bonus){const key=side==='hero'?'energy':'enemyEnergy',tf=side==='hero'?transformEffect():null,before=state[key];
+          const add=tf?.rageCap?Math.max(0,Math.min(bonus,tf.rageCap-turnGain.rage)):bonus;
+          state[key]=Math.min(GemwovenBoardRules.ULTIMATE.cap,before+add);receipt(side,'energy',state[key]-before);
+          if(state[key]>before)popActorSkill(side,'COMBO ×'+wave+' · +'+(state[key]-before)+' NỘ',false);update();}
+        // Noct's Biến Thân: three waves let him slip the next basic hit (once per Biến Thân).
+        const tf=owner==='hero'?transformEffect():null;
+        if(tf?.dodge&&wave>=tf.dodge.waves&&!progressionTransform.dodged){progressionTransform.dodged=true;state.tfDodge=true;popActorSkill('hero','SẴN SÀNG NÉ',false);update();}
+      }
       while(running)await running;
       await Promise.all([...feedback.values()].map(item=>item.job));
       await Promise.all(receiveJobs);

@@ -222,7 +222,7 @@ async function noriJadeUltimate(){
     if(!reduced&&state.enemyHp>0){pending.push(wait(270).then(()=>noriSqueeze(target,440)));pending.push(wait(710).then(()=>noriJolt(target)));}
     wait(reduced?0:710).then(()=>noriShards(foeNow,cage,cageX,left));
     if(state.enemyHp>0){
-      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
+      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.noriSealFree=controlBlocked();state.stunned=!state.noriSealFree;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
       popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);
       if(!reduced)pending.push(animate(target,[{transform:oldTarget||'none'},{transform:'translate(0px,-5px)',offset:.25},{transform:'translate(0px,1px)',offset:.55},{transform:oldTarget||'none'}],{duration:420,easing:'ease-out'}));
     }
@@ -288,7 +288,7 @@ async function noriFormUltimate(form){
       pending.push(animate(flash,[{opacity:0},{opacity:.55,offset:.25},{opacity:0}],{duration:reduced?1:520}).finally(()=>flash.remove()));
     }
     if(state.enemyHp>0){
-      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.stunned=true;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
+      state.noriStunTurns=kit.stun;state.noriStoredDamage=state.noriStoredDamage||0;state.noriSealFree=controlBlocked();state.stunned=!state.noriSealFree;setSpriteAction('enemy','hurt',330);combatVoice('enemy','hurt');
       popActorSkill('enemy','CHOÁNG · '+kit.stun+' LƯỢT',false,pending);
     }
     await at(1780);setSpriteFrame('hero','attack',4);

@@ -103,7 +103,7 @@ startStage=function(){
   if(progressionError){$('startBtn').disabled=true;message(progressionError);return;}
   if(progressionBattle){state.key=progressionBattle.hero;state.enemyKey=progressionBattle.enemyKey;state.stage=Math.max(1,Math.ceil(progressionBattle.recommended/5));HEROES[state.key].hp=progressionBattle.stats.hp;}
   progressionOriginalStart();
-  progressionProcs.clear();progressionTurn=0;progressionTransform=null;progressionUlts=0;actor('hero').classList.remove('is-transformed','is-afterglow');progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
+  progressionProcs.clear();progressionTurn=0;progressionTransform=null;progressionUlts=0;state.controlGuard=0;state.iceBar=0;state.tfDodge=false;state.noriSealFree=false;actor('hero').classList.remove('is-transformed','is-afterglow');progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
 // The worn title (Danh Hiệu) rides on top of the hero's head bar (name, health) on its rarity plate, as in town
@@ -179,7 +179,7 @@ combatV3Number=function(side,text,kind,...rest){
 function progressionDamage(side,raw,ledger=null){
   if(!progressionBattle)return progressionOriginalDamage(side,raw,ledger);
   const s=progressionBattle.stats,kit=progressionKit(progressionBattle.hero);
-  let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1)*(1+progressionTransformBonus()):progressionIsDuel()?s.attack:progressionBattle.enemyAttack;
+  let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.enemyAttack;
   if(side==='enemy'&&progressionTransform?.left>0)factor*=1-(progressionTransformKit()?.reduce||0);
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   // Hiro form 3 (Tứ Hệ): a mild ultimate bonus (×1,15); the free starter is not to be made strong.
@@ -192,7 +192,7 @@ function progressionDamage(side,raw,ledger=null){
   if(bypassed)state.enemyArmor+=bypassed;
   if(side==='hero'&&result.amount>0){
     if(s.affixes.includes('lifesteal')&&state.hp>0){const gained=Math.min(HEROES[state.key].hp-state.hp,Math.floor(result.amount*.06));state.hp+=gained;progressionShowGain('hero','heal',gained);}
-    if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<Math.min(1,.12*(1+(s.precision||0)))&&state.enemyHp>0){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
+    if(s.affixes.includes('stun')&&!progressionProcs.has('stun')&&Math.random()<Math.min(1,.12*(1+(s.precision||0)))&&state.enemyHp>0&&!controlBlocked()){progressionProcs.add('stun');state.stunned=true;message('Chấn kích · Mục tiêu mất lượt kế tiếp.');}
   }
   update();return result;
 }
@@ -277,27 +277,29 @@ let progressionTrialScore=null;
 let progressionTransform=null,progressionUlts=0;
 function progressionTransformKit(){return progressionBattle&&!progressionIsDuel()?progressionKit(progressionBattle.hero)?.transform||null:null;}
 function progressionTransformReady(){const t=progressionTransformKit();return !!t&&!progressionTransform&&!ended&&state.hp>0&&state.enemyHp>0&&(state.hp<=HEROES[state.key].hp*.5||progressionUlts>=2);}
-function progressionTransformBonus(){const t=progressionTransformKit();return t&&progressionTransform?(progressionTransform.left>0?t.attack:t.after):0;}
+// The shared +Công is gone (owner 05/11): each hero's own board effect applies in live-combat.js / board-control.js.
+function progressionTransformBonus(){return 0;}
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}
   if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span class="tf-label">BIẾN THÂN</span><b class="tf-count"></b><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
   const ready=progressionTransformReady();b.hidden=!ready&&!progressionTransform;b.disabled=!ready;
   b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);b.classList.toggle('is-after',!!progressionTransform&&progressionTransform.left===0);
-  b.querySelector('.tf-count').textContent=progressionTransform?(progressionTransform.left>0?String(progressionTransform.left):`+${Math.round(t.after*100)}%`):'';
-  b.querySelector('small').textContent=progressionTransform?(progressionTransform.left>0?`Còn ${progressionTransform.left} lượt`:`Dư âm Công +${Math.round(t.after*100)}%`):`${t.turns} lượt · Công +${Math.round(t.attack*100)}%`;
-  b.setAttribute('aria-label',ready?`Biến Thân: ${t.turns} lượt, Công +${Math.round(t.attack*100)}%, giảm 15% sát thương nhận`:b.querySelector('small').textContent);
+  b.querySelector('.tf-count').textContent=progressionTransform?.left>0?String(progressionTransform.left):'';
+  b.querySelector('small').textContent=progressionTransform?(progressionTransform.left>0?`Còn ${progressionTransform.left} lượt`:'Đã dùng'):`${t.turns} lượt`;
+  b.title=t.text;
+  b.setAttribute('aria-label',ready?`Biến Thân: ${t.turns} lượt, ${t.text}, giảm ${Math.round(t.reduce*100)}% sát thương nhận, miễn choáng`:b.querySelector('small').textContent);
 }
 function progressionActivateTransform(){
   if(!progressionTransformReady()||locked)return;const t=progressionTransformKit();
   progressionTransform={left:t.turns};const hero=actor('hero');hero.classList.add('is-transformed');
-  popActorSkill('hero','BIẾN THÂN',true);message(`Biến Thân! ${t.turns} lượt: Công +${Math.round(t.attack*100)}%, giảm 15% sát thương nhận, miễn choáng và đóng băng.`);
+  popActorSkill('hero','BIẾN THÂN',true);message(`Biến Thân! ${t.turns} lượt: ${t.text}; giảm ${Math.round(t.reduce*100)}% sát thương nhận, miễn choáng và đóng băng.`);
   if(typeof sfx==='function'&&sound)sfx('buff');update();
 }
 function progressionTransformTurn(){
   if(!progressionTransform||progressionTransform.left<=0)return;
   progressionTransform.left--;
-  if(progressionTransform.left===0){actor('hero').classList.remove('is-transformed');actor('hero').classList.add('is-afterglow');const t=progressionTransformKit();message(`Biến Thân kết thúc · giữ Công +${Math.round(t.after*100)}% tới hết trận.`);}
+  if(progressionTransform.left===0){actor('hero').classList.remove('is-transformed');actor('hero').classList.add('is-afterglow');state.tfDodge=false;message('Biến Thân kết thúc.');}
 }
 finishBattle=async function(){
   // A trial run ends when its rounds are used up (or the hero falls); the boss is laid down only to close the fight.

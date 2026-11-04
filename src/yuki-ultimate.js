@@ -85,7 +85,7 @@ async function yukiGlacierUltimate(){
     root.dataset.ragePhase='skyfall';combatVoice('hero','release');if(!reduced)playCastSound('ice','glacier-fall',{volume:.56,pan:.18});
     setSpriteFrame('hero','cast',4);
     await boulder.drop();root.dataset.ragePhase='impact';
-    result=damage('hero',kit.base);if(state.enemyHp>0)state.stunned=true;
+    result=damage('hero',kit.base);if(state.enemyHp>0&&!controlBlocked())state.stunned=true;
     // Third form: the moon glacier also drains the enemy's energy.
     if(kit.enemyDrain&&state.enemyHp>0){state.enemyEnergy=Math.max(0,state.enemyEnergy-kit.enemyDrain);popActorSkill('enemy','−'+kit.enemyDrain+' NĂNG LƯỢNG',false,pending);}
     update();

@@ -1,0 +1,31 @@
+/* Board rules shared by combat (src/live-combat.js, src/game.js), the opponent AI (src/opponent-ai.js) and the balance
+ * simulator (qa/gemwoven/balance-sim.cjs), so the three can never drift (docs/GAME_DESIGN.md §20 "Vòng Bàn ngọc",
+ * Claude + Codex, owner 05/11). Gems: 0 Kiếm, 1 Tim, 2 Tím, 3 Băng, 4 Khiên.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.GemwovenBoardRules=api;})(typeof globalThis!=='undefined'?globalThis:this,()=>{
+  'use strict';
+  const GEM={sword:0,heart:1,crystal:2,snow:3,shield:4};
+  // Rage a gem gives the hero (and both players in duels): purple is the rage gem, every colour still charges a little.
+  const HERO_RAGE=[3,2,7,2,2];
+  // A foe in PvE keeps its own rule: 3 a gem, and 25 more for the first purple of a resolution.
+  const FOE_RAGE={perGem:3,firstCrystal:25};
+  // A foe's sword gem (×8 × its attack): bosses lost most of their frozen turns to the guard, so their swords hit softer
+  // (1.15 → 0.82, Codex tuning: Hiro back to about half of chapter bosses at the recommended level).
+  const FOE_SWORD={common:.55,boss:.82};
+  // One bonus per board resolution by its number of waves (only the highest tier reached, never summed).
+  const COMBO_RAGE=[0,0,3,6,10,15];
+  const comboRage=waves=>COMBO_RAGE[Math.max(0,Math.min(COMBO_RAGE.length-1,Math.floor(waves)||0))];
+  // An ultimate costs 100 rage; the gauge banks up to 199; each side casts at most one in its own turn, after its board.
+  const ULTIMATE={cost:100,cap:199,perTurn:1};
+  // Ice: a common foe or an elite freezes at 3 ice in one resolution; a boss fills a bar to 6 across turns, then resets.
+  const ICE={common:3,boss:6};
+  // After a stun or freeze ends, the foe must complete this many full actions before stun or freeze can land again.
+  const CONTROL_GUARD={common:1,boss:2};
+  const iceThreshold=(boss,transform)=>transform?.ice?(boss?transform.ice.boss:transform.ice.common):boss?ICE.boss:ICE.common;
+  const guardTurns=boss=>boss?CONTROL_GUARD.boss:CONTROL_GUARD.common;
+  // Rage for one hero gem: the table, a kit's purple value (Lumi, Lumi's Biến Thân), then a kit-wide factor (borrowed
+  // energy, foe effects).
+  function heroRage(type,{purple=0,factor=1}={}){const base=type===GEM.crystal&&purple?purple:HERO_RAGE[type]||0;return base*factor;}
+  // Kits (progression.js skillKit) own the hero numbers: Lumi's purple value and each hero's Biến Thân effect.
+  return {GEM,HERO_RAGE,FOE_RAGE,FOE_SWORD,COMBO_RAGE,comboRage,ULTIMATE,ICE,CONTROL_GUARD,iceThreshold,guardTurns,heroRage};
+});

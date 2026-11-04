@@ -544,7 +544,7 @@ for hero in art['heroes']:
         move=actions.get('hover') if hero=='lightning' else actions.get('run')
         plaza_sprites.setdefault(hero,{})[form]={'idle':plaza_sheet(actions['idle']),'move':plaza_sheet(move or actions['idle']),'head':art['heroHead'].get(hero,{}).get(form)}
 (root/'assets/gemwoven/plaza/sprites.json').write_text(json.dumps(plaza_sprites,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
-extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
+extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression','board-rules'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                         for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js', 'summon-showcase.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
@@ -556,6 +556,8 @@ extensions += '\n'+(root/'src/hero-forms-combat.js').read_text(encoding='utf-8')
 hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan','forms-hiro','forms-noct']
 extensions += '\n'+'\n'.join((root/f'src/{name}.js').read_text(encoding='utf-8') for name in hero_kit_files)
 css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for name in hero_kit_files)
+# Board control (ice, guard, one ultimate a turn, Biến Thân board effects): after every layer it wraps (src/board-control.js).
+extensions += '\n'+(root/'src/board-control.js').read_text(encoding='utf-8')
 # The combat HUD's drawn layer (src/combat-hud.js): last, so it wraps every other update and restyles the shared controls.
 extensions += '\n'+(root/'src/combat-hud.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-hud.css').read_text(encoding='utf-8')
