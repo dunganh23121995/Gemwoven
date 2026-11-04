@@ -1100,3 +1100,30 @@ lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được;
   (trước đây lên sao tự khoác hình mới). Bảng Hình thái có "Xem lại nghi thức" cho hình thái đã mở, không cấp gì. Không gọi là
   kỹ năng Biến Thân trong trận. Luyện bản dư bằng tay chỉ có nhịp ghép 0,5 giây trên thẻ mới.
 - Codex: mockup 8,6; bản dựng 8,1/8,4 → **8,6/8,8** (điện thoại/Studio).
+
+### Vòng Bàn ngọc (05/11, nộ, đóng băng, combo, Biến Thân riêng) — Claude + Codex thống nhất, chờ chủ dự án chốt
+
+Yêu cầu: "Ghép băng có đóng băng luôn không, ghép tím tăng nộ, các mảnh khác có tăng nộ không, combo có tăng nộ không? Cân bằng
+board trước, rồi phát triển tính năng tướng vào những thứ người chơi làm được trên board." Hai vòng (`assets/gemwoven/raw/board-design/`).
+
+**Luật hiện tại (đã kiểm chứng trong code):** nộ người chơi Kiếm/Tim/Tím/Băng/Khiên = 7/2/5/2/2 (Lumi ×2 mọi màu) → Kiếm vừa
+sát thương vừa nhiều nộ nhất, tím không có vai trò; quái 3 nộ/ngọc +25 ở viên tím đầu. Thu 3 Băng trong một lần giải board (cả
+cascade, special) → quái mất lượt, **không có miễn**, kể cả boss. Combo chỉ nhân sát thương Kiếm +15%/sóng có Kiếm (tối đa +90%,
+sóng thứ 3/6/9 chí mạng), **không cộng nộ**. Băng quái hút 20 nộ. Hai Lõi xóa toàn board nhiều lần. Tài liệu ghi boss 80 nộ, game dùng 100.
+
+**Đề xuất chốt:**
+
+| Mục | Luật |
+|---|---|
+| Nộ người chơi | Kiếm/Tim/Tím/Băng/Khiên = **3/2/7/2/2** (đo 10.000 lượt: nhịp tuyệt kỹ gần như cũ, bot chọn tím nhanh hơn 12%, tím ≈ 59% nộ từ ngọc) |
+| Combo nộ | Tổng sóng 1/2/3/4/≥5 → **+0/3/6/10/15**, nhận một mức; combo sát thương giữ như cũ |
+| Băng | Thường/tinh anh: 3 Băng trong một lần giải board → đóng băng ngay; boss: thanh 0/6 tích xuyên lượt |
+| Chống khóa | Sau khống chế phải hành động đủ 1 (thường) / 2 (boss) lượt; choáng + đóng băng chung giới hạn; không tích Băng khi đang miễn |
+| Băng quái | Bỏ hút 20 nộ mặc định (thành kỹ năng riêng của quái nào cần) |
+| Tuyệt kỹ | Thanh 199, tốn 100, tối đa 1 tuyệt kỹ trong lượt của mình, nộ dư giữ; không trần nộ/lượt |
+| Special | Giữ nguyên trong PvE (hình, vùng nổ, art); sửa: hai Lõi nổ đúng 1 lần, mỗi viên thưởng 1 lần; quái tạo special + quyền hưởng đối xứng chỉ trong PvP |
+| Biến Thân | Giữ miễn choáng/đóng băng + giảm 15% sát thương; thay +Công chung bằng hiệu ứng riêng (Hiro: Kiếm đầu lượt +10%, không mạnh hơn; Mika: Kiếm đặt thiêu đốt; Yuki: 2 Băng đủ đóng băng thường, 4 với boss; Nori: Tim/Khiên ×1,5, hồi dư thành giáp; Lumi: tím 16 nộ/viên; Noct: cascade cho chí mạng, né một đòn); bỏ dư âm +Công vĩnh viễn |
+
+Thứ tự: đo baseline → gom luật thưởng board thành một bảng dữ liệu chung (combat, AI, mô phỏng) → Băng/miễn/1 tuyệt kỹ/combo nộ/hai
+Lõi → bảng nộ mới → đo 6 tướng (bot trận thật, 1/4/6★) → Biến Thân riêng → Bị Động/Biến Dị theo hướng board (bảng D vòng 1).
+Hệ số từng tướng chỉ chốt sau khi đo; không buff Hiro.
