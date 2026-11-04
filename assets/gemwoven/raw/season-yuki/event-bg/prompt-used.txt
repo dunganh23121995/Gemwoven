@@ -1,0 +1,3 @@
+Use case: full-screen background for the event page "Đồng Hành Cùng Yuki" in the portrait fantasy match-3 RPG Gemwoven, matching the reference (Mika's shrine courtyard) in composition, framing and painted style.
+Portrait image. a moonlit snowy mountain shrine at blue hour: frosted pines, snow-covered stone lanterns, an ice-blue torii gate, a crescent moon, gentle falling snow, as a courtyard seen from above with decorative interest at the left and right edges and the top 15%. The centre (from about 15% to 90% height, 6% to 94% width) must stay calm and low-contrast (soft paving, snow, moss or mist) because UI panels will cover it.
+Crisp and sharp everywhere (no blur, no vignette, no dark overlay). No text, no characters, no animals.
