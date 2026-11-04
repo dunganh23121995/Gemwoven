@@ -966,3 +966,36 @@ không chỉnh số**.
      lần hai lỗi, qua mùa, vào giữa mùa, nửa đêm GMT+7, lùi đồng hồ, trần Ấn, nhiệm vụ tuần/sổ, rương và phiếu ngày 28 độc lập.
 - Giao diện cả hai: mockup Codex trước, rồi vẽ mảnh, dựng, Codex chấm ≥ 8,5 trên điện thoại 390×844 và Studio 1920×911 (cả lớp dẫn
   trong trận và lịch).
+
+### Vòng Mùa của tướng (04/11, Thẻ Tháng / Sổ Hành Trình / Quỹ theo tướng ra mắt) — Claude + Codex thống nhất, chờ chủ dự án chốt
+
+Yêu cầu: "Thẻ tháng mở theo tướng được ra mắt… bán kèm danh hiệu, thẻ tên, popup chat, khung, avatar, sách kỹ năng, khung màn combat,
+hiệu ứng trên battle, tướng làm phần thưởng cho các mốc quan trọng… Xem cả Sổ Hành Trình, Thẻ Tháng và Quỹ." Sau đó: "Miễn phí thì có
+lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được; có sự kiện tuần để miễn phí trong 2 tuần chơi đủ nhiệm vụ sẽ ghép được tướng."
+
+- **Chủ đề tướng đặt ở Sổ Hành Trình**, không ở Thẻ Tháng: mỗi mùa 28 ngày là "Hành Trình Của X", tối đa **một tướng mới mỗi mùa**.
+  Ngày 1–14 banner ra mắt X, ngày 15–28 chạy lại một tướng cũ Y đủ điều kiện (luật D3 giữ nguyên: cách ≥42 ngày, cần ≥3 tướng hiếm).
+- **Thẻ Tháng giữ nguyên** (109k, 300 + 100/ngày, cộng dồn 180 ngày; không thêm quà theo tướng: thời hạn 30 ngày lệch mùa 28 ngày).
+  **Quỹ Trưởng Thành giữ nguyên** (299k một lần/tài khoản, 7.000 ngọc theo cấp tướng cao nhất; không chia theo tướng hay mùa).
+- **Ba nhánh, giữ giá:** Thường / Vàng 149k / Diệu Ngọc 299k (gồm Vàng, nâng bù 150k). Mốc ★ 10·20·25·30·40·50:
+  Thường cấp 10 avatar X; Vàng 10 khung avatar X, 20 danh hiệu mùa, 30 thẻ tên X, 40 bong bóng chat X, 50 10 vé;
+  Diệu Ngọc 25 khung màn combat X + rương Sử Thi, 40 hiệu ứng vào trận X, 50 **80 mảnh X** + rương Huyền Thoại + 10 thần thạch.
+  Sách kỹ năng rải ở cả ba nhánh (mốc 5/15/35/45). Bảng mốc là cấu hình thử, đo thu–chi trước khi gọi là cân bằng.
+- **Tướng X:** Diệu Ngọc giao **một bản X ngay khi kích hoạt** (quà kích hoạt riêng, một lần mỗi mùa; nâng từ Vàng cũng nhận) + 80 mảnh
+  ở cấp 50; thay gói 80 mảnh tự chọn cũ. Đã có X → 80 mảnh X; X đã 6★ → 80 Bụi Ký Ức. Giá trị trả tiền là có sớm, thêm bản sao, trang trí.
+- **Miễn phí ghép X ngày 14 khi chơi đủ:** nhánh Thường 4 mảnh X ở cấp 5/10/15/20/25 (20 mảnh) + sự kiện tuần **"Đồng Hành Cùng X"**
+  ngày 1–14, 30 mảnh/tuần (ngày: xong 3 nhiệm vụ ngày → 2 mảnh × 7; tuần: thắng 15 trận vượt ải → 8; thắng 8 trận Trùm Vô Tận → 8)
+  = 60. Bù miễn phí đến hết ngày 28: mỗi suất ngày lỡ làm bù bằng 6 trận PvE thắng, tối đa 1 suất bù/ngày, tổng vẫn ≤14 suất.
+  Không bán lượt bù. Riêng nhánh Thường (20/mùa) phải nhiều mùa mới đủ 80. Tuần 3–4: cùng cấu trúc, 60 mảnh Y.
+- **Sửa luật cũ:** quà chỉ định X của mùa được mở tướng chưa sở hữu (rương ngày 28 và Cửa Hàng Ký Ức giữ điều kiện cũ; trần 30 mảnh/kỳ
+  là của cửa hàng đổi mảnh, sự kiện nhiệm vụ là nguồn riêng). Mảnh mùa gắn cố định `seasonHero`, không theo banner đang chạy.
+- **Bộ trang trí mùa đầu (7 món, không chỉ số, dùng được khi chưa có X):** avatar, khung avatar, danh hiệu, thẻ tên, bong bóng chat
+  (Quảng Trường), khung màn combat (viền HUD, không che bàn ngọc/máu), hiệu ứng vào trận (một lần đầu trận, có tùy chọn giảm hiệu ứng).
+  Cần thêm kho trang trí + thao tác Trang bị. Codex vẽ bộ nhận diện của X rồi xuất từng món (khuôn chung + biểu tượng, chất liệu,
+  họa tiết riêng của tướng, không chỉ đổi màu). Làm sau: avatar động, hào quang, đổi hiệu ứng đánh, skin, giọng.
+- **Màn Sổ:** tranh mùa 240–280 đơn vị (X lớn bên phải, tên mùa, ngày còn lại, "Diệu Ngọc · nhận X ngay"), thanh cấp gọn kèm quà quan
+  trọng kế tiếp, đầu ba cột ghim, mốc ★ cao 1,5 lần hiện đúng hình món trang trí, nút nhảy 10·20·25·30·40·50, đáy ghim Nhận tất cả.
+  Mockup duyệt phone + Studio ≥8/10 trước khi dựng.
+- Đã sửa ngay: rương Diệu Ngọc chờ ải 60/80 không còn mất khi hết mùa, cất thành phiếu.
+- **Chờ chủ dự án:** (1) 299k = hai bản X (một khi mua, 80 mảnh ở cấp 50); (2) bù miễn phí đến ngày 28; (3) X của mùa đầu
+  (hiện chỉ Mika được phát hành, nên mùa đầu chưa có Y chạy lại: tuần 3–4 là sự kiện nguyên liệu); (4) chốt bộ 7 món.
