@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "max",
+  "at": "2026-11-04T06:25:28Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform-fire\\ref-heroes-rest.png"
+  ],
+  "prompt": "Use the supplied heroes-rest image only for Gemwoven's painted style. Nori is the third group of three heroes from the left. Do not draw any hero, hammer, or shield.\n\nCreate ONE portrait 1024 x 1536 VFX asset sheet containing exactly TWO separate upright bark-light ribbons, one in each half.\n\nLEFT: a slender gently curved strip approximately 4.5 times taller than wide, with two broad bark folds, one open central slit, and two simple outward-growing leaf buds. Its inner right edge stays smooth and calm. Keep the base narrow.\n\nRIGHT: a different strip, 90% as tall, with three staggered bark facets and one small leaf bud opening to the right. Its inner left edge is smooth. Do not mirror the left piece. Both strips must read as suspended tree-light accents, not solid armour, clubs, thick vines, or a restraining cage.\n\nStyle: clean hand-painted HD 2D VFX, crisp antialiased edges, broad simple facets, no fine bark noise, pixel art, blur, bloom, or detached particles.\n\nPalette strictly: #172B22, #31513A, #5C8050, #9EAA69, tiny #DBCD92 highlights. No bright jade or neon green.\n\nBackground: 100% solid flat magenta #FF00FF. Each complete piece remains within its own half with at least 6% empty margin to all cell edges and a wide empty gap between pieces. No gradient, shadow, ground, text, labels, UI, hero, watermark, or border. Two still assets, not animation frames.\n\nRevision after the first fight review (Codex): the strips read as vines or accessories. Make each strip a column of broad, flat, overlapping BARK PLATES (not leaves, not vines), one small bud at most, main shapes thick and simple.\n\nRevision 3 (Codex fight review 2): LEFT strip shows exactly two broad bark folds; RIGHT strip three staggered bark plates; add moss-brown #31513A masses; they must not read as long hanging leaves.\n\nRevision 4 (Codex fight review 3): give both bark strips a clear earthy #9EAA69 edge line and dark #31513A body; do not add more yellow.\n\nRevision 5 (Codex fight review 4): make each strip read as BARK with broad broken faces (wide angular facets like split bark), the buds smaller; no long leaves.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate has two upright green faceted strips on a flat magenta background, one in each half, with empty margins and no text, borders, or extra figures. The left strip has two bud-like nubs and the right has one, and the right is not a mirror of the left. The strips read somewhat like leaves rather than broad bark plates, but that is stylistic drift, not an objective defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000581
+  }
+}

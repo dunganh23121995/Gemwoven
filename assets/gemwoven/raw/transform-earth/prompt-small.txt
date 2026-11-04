@@ -1,0 +1,16 @@
+Use the supplied heroes-rest image only as a painted-style reference. Nori is the third group of three heroes from the left. Do not draw any hero.
+
+Create ONE landscape 3072 x 1024 VFX asset sheet with four equal invisible columns. Exactly FOUR asset groups, left to right:
+
+1. GROUND: two low bent root-light tips at opposite ends of a wide group, approximately four times wider than tall. Leave the central 40% entirely empty for feet. No connecting root, floor slab, ground crack, cage, or grass bed.
+2. MOTE: one broad simple young leaf with a single central vein, pointed upward. No stem trail.
+3. MOTE VARIANT: one smaller oval seed with one restrained ochre edge.
+4. AFTER: one tiny low seedling mark with two short cotyledon leaves, approximately three times wider than tall. Keep it emblematic and flat, not a growing plant scene.
+
+Style: clean hand-painted HD 2D game VFX, crisp antialiased edges, bold miniature silhouettes, no pixel art, noisy texture, blur, bloom, or fog.
+
+Palette strictly: #172B22, #31513A, #5C8050, #9EAA69, tiny #DBCD92 highlights. No turquoise jade or neon green.
+
+Background: completely solid flat magenta #FF00FF. Centre each group in its own quarter, with at least 8% empty margin to every cell edge and wide gaps between groups. No gradient, cast shadow, ground plane, text, labels, UI, hero, watermark, or border. Separate still pieces, not animation frames.
+
+Revision 2 (Codex fight review 4): piece 4 (AFTER): the two seedling leaves get a light earthy #9EAA69 edge so they stand out from green light.

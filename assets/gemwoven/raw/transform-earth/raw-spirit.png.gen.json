@@ -1,0 +1,22 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "max",
+  "at": "2026-11-04T06:24:13Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform-fire\\ref-heroes-rest.png"
+  ],
+  "prompt": "Use the supplied heroes-rest image as a style and scale reference only. Nori is the third group of three heroes from the left. His artwork, hammer, and shield are locked; do not draw or redesign them.\n\nCreate ONE standalone transformation VFX sprite on a square 1536 x 1536 canvas: an open ancient-tree crest made from painted bark-light and broad moss-green foliage. Two divided trunk strokes rise around a large central opening and support three separated compact canopy lobes. Place one distinct budding crown in the upper-right quadrant, clear of the central hero head position. Use a few broad root-like strokes at the base, without a ground slab. Keep the silhouette compact and emblematic.\n\nStyle: clean hand-painted HD 2D fantasy game VFX, bold stable shapes, restrained bark facets, crisp antialiased edges, readable at 150 pixels tall. Do not make pixel art.\n\nPalette strictly: #172B22, #31513A, #5C8050, #9EAA69, with tiny #DBCD92 highlights. No turquoise jade, white mass, neon green, bloom, blur, or fog.\n\nDo not draw a humanoid tree, face, shield, hammer, vine cage, earth fissure, or tree growing around an enemy.\n\nBackground: completely solid flat magenta #FF00FF, including all openings. Leave at least 6% empty margin on every side. No ground plane, shadow, text, labels, UI, hero, watermark, or border. One still sprite, not animation frames.\n\nRevision after the first fight review (Codex): the canopy looked like background trees. Merge the leaves into three large simple canopy masses (about half the leaf detail), stress the two divided trunks and the budding crown in the upper right. Core #172B22, body #31513A, edges #9EAA69; #DBCD92 at most 10% of the area.\n\nRevision 3 (Codex fight review 2): keep the three canopy masses and the upper-right bud, but repaint the values: about 40% of the shape in mid-light greens #5C8050 and #9EAA69, the dark core #172B22 only in the deepest folds, and a clear light #DBCD92 rim along the outer edge only, so the crest stands out from dark foliage.\n\nRevision 4 (Codex fight review 3): separate the three canopy masses with clear empty gaps, fewer small leaves, outer edge #9EAA69, the bud accented in #DBCD92; main strokes bold at small size.\n\nRevision 5 (Codex fight review 4): outline the whole crest with one large continuous light earthy #9EAA69 rim line, thick; #DBCD92 accents about 10% of the area; keep three canopy masses and the right bud.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The left and right edges of the crest sit about 40px in from the 1024px frame edges, roughly 4% margin, below the required minimum of 6% on every side. The top and bottom margins look compliant. This is a borderline deviation, not a clear defect."
+      }
+    ],
+    "summary": "Flat #FF00FF background, single still crest, three canopy masses and upper-right bud are present, and no text or extra figures appear. The only concern is the narrow left and right margins, which may fall short of the 6% requirement, so this needs a human check rather than an automatic fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000713
+  }
+}

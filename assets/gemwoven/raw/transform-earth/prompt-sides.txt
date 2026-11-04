@@ -1,0 +1,21 @@
+Use the supplied heroes-rest image only for Gemwoven's painted style. Nori is the third group of three heroes from the left. Do not draw any hero, hammer, or shield.
+
+Create ONE portrait 1024 x 1536 VFX asset sheet containing exactly TWO separate upright bark-light ribbons, one in each half.
+
+LEFT: a slender gently curved strip approximately 4.5 times taller than wide, with two broad bark folds, one open central slit, and two simple outward-growing leaf buds. Its inner right edge stays smooth and calm. Keep the base narrow.
+
+RIGHT: a different strip, 90% as tall, with three staggered bark facets and one small leaf bud opening to the right. Its inner left edge is smooth. Do not mirror the left piece. Both strips must read as suspended tree-light accents, not solid armour, clubs, thick vines, or a restraining cage.
+
+Style: clean hand-painted HD 2D VFX, crisp antialiased edges, broad simple facets, no fine bark noise, pixel art, blur, bloom, or detached particles.
+
+Palette strictly: #172B22, #31513A, #5C8050, #9EAA69, tiny #DBCD92 highlights. No bright jade or neon green.
+
+Background: 100% solid flat magenta #FF00FF. Each complete piece remains within its own half with at least 6% empty margin to all cell edges and a wide empty gap between pieces. No gradient, shadow, ground, text, labels, UI, hero, watermark, or border. Two still assets, not animation frames.
+
+Revision after the first fight review (Codex): the strips read as vines or accessories. Make each strip a column of broad, flat, overlapping BARK PLATES (not leaves, not vines), one small bud at most, main shapes thick and simple.
+
+Revision 3 (Codex fight review 2): LEFT strip shows exactly two broad bark folds; RIGHT strip three staggered bark plates; add moss-brown #31513A masses; they must not read as long hanging leaves.
+
+Revision 4 (Codex fight review 3): give both bark strips a clear earthy #9EAA69 edge line and dark #31513A body; do not add more yellow.
+
+Revision 5 (Codex fight review 4): make each strip read as BARK with broad broken faces (wide angular facets like split bark), the buds smaller; no long leaves.

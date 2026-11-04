@@ -113,6 +113,44 @@
     "rms": 0.02,
     "sha256": "0fbc2dad49a80092113b12d7ec2e0ccf8261c389866ae8e4594aa78554269aa7"
   },
+  "earth-transform": {
+    "file": "hero-forms/transform/earth-transform.wav",
+    "duration": 0.8,
+    "beat": "old wood creaks under load (BIẾN THÂN pressed)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wood Creak Single V10",
+        "author": "Rudmer_Rotteveel",
+        "source_url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/506665/",
+        "license": "CC0-1.0",
+        "sha256": "11975c80e5dcf3937eded1a4b31927061fb632d925e8118af4de3f6e96d51306"
+      }
+    ],
+    "processing": "excerpt 0.03-0.83 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.526,
+    "rms": 0.06,
+    "sha256": "688f1389babd0f9595776b6c36aa755a5f9e8800e69b8a78d4bab1bbf382d7ca"
+  },
+  "earth-transform-end": {
+    "file": "hero-forms/transform/earth-transform-end.wav",
+    "duration": 0.45,
+    "beat": "leaves settle (last transformed turn ends)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Leaves Rustling",
+        "author": "SoundDesigner0101",
+        "source_url": "https://freesound.org/people/SoundDesigner0101/sounds/765965/",
+        "license": "CC0-1.0",
+        "sha256": "fed55827e52a76b168981c1b7dd597e3adae642c43874259f8d4ab6c9074eed5"
+      }
+    ],
+    "processing": "excerpt 29.05-29.50 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.175,
+    "rms": 0.02,
+    "sha256": "11fd6cd2e13238cf346d16c0a79ebd0d993b1a6d2578bbfd0743c374b4b8ffac"
+  },
   "lightning-transform": {
     "file": "hero-forms/transform/lightning-transform.wav",
     "duration": 0.45,
