@@ -217,7 +217,7 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 .tf-v2.tf-lightning .tf2-pool{background:radial-gradient(closest-side,rgba(245,235,255,.85),rgba(200,155,255,.55) 38%,rgba(120,60,255,.25) 66%,transparent 100%)}
 .tf-v2.tf-shadow .tf2-pool{background:radial-gradient(closest-side,rgba(235,228,255,.7),rgba(170,155,225,.45) 38%,rgba(90,72,150,.22) 66%,transparent 100%)}
 .tf-v2.tf-novice .tf2-pool{background:radial-gradient(closest-side,rgba(255,246,220,.85),rgba(242,203,116,.55) 38%,rgba(184,132,60,.25) 66%,transparent 100%)}
-/* Noct's black aura (owner 05/11, NOCT_AURA in transform-fx.js; 'violet' uses the rules above): the silhouette as ink, a
+/* Noct's black aura: a variant the owner tried and rejected (05/11); kept, on only when NOCT_AURA='black' in transform-fx.js: the silhouette as ink, a
    hairline of cool violet-grey light at its edge so it still reads on dark ground and on his dark body, then smoke-black
    glows; the mist and the pool lean dark too. The spirit's design is unchanged. */
 .tf-v2.tf2-aura-black .tf2-sil{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 calc(var(--u) * 1.2) #000) drop-shadow(0 0 calc(var(--u) * 1.2) #000)
