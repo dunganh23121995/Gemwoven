@@ -1,0 +1,11 @@
+Use the supplied heroes-rest image as a style and scale reference only. Lumi is the fourth group of three heroes from the left. Her artwork, hat, weapon, and existing orbiting stars are locked; do not draw or redesign them.
+
+Create ONE standalone transformation VFX sprite on a square 1536 x 1536 canvas: an upright asymmetric four-point astral-lightning crest. Build it from broad violet painted strokes around a clearly open central diamond. The longest and most distinctive point extends toward the upper-right quadrant; the lower section divides into two short descending electrical folds. Keep the central hero face and chest region open. The crest rises locally behind a hero; it does not aim or fire toward an enemy.
+
+Style: clean hand-painted HD 2D fantasy game VFX, bold stable angular curves, crisp antialiased edges, readable at 150 pixels tall. Do not make pixel art.
+
+Palette strictly: #211A3E, #4B2D78, #8A55BD, restrained #C9AA64 accents, and tiny #F5D98A tips. Violet dominates. No white core, neon bloom, blur, pentagram, orbit rings, galaxy, storm orb, falling thunderbolt, or projectile.
+
+Background: entirely solid flat green #00FF00, including every opening. No green anywhere in the artwork. Leave at least 6% empty margin on every side. No ground, shadow, text, labels, UI, hero, watermark, or border. One still sprite, not animation frames.
+
+Revision 2 (Codex fight review 3): the exposed right part read as one diagonal purple blade. Shorten the upper-right point by 15%, make the two short points 25% thicker, make the two lower electric branches clear; main face #8A55BD, shade #4B2D78, gold only at the four tips.

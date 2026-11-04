@@ -1,0 +1,9 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform-fire\\ref-heroes-rest.png"
+  ],
+  "at": "2026-11-04T06:16:18Z"
+}

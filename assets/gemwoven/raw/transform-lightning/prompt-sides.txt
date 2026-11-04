@@ -1,0 +1,13 @@
+Use the supplied heroes-rest image only for Gemwoven's painted style. Lumi is the fourth group of three heroes from the left. Do not draw any hero, weapon, or existing orbiting star.
+
+Create ONE portrait 1024 x 1536 VFX asset sheet with exactly TWO separate upright violet electrical ribbons, one centred in each half.
+
+LEFT: a slender ribbon approximately 4.5 times taller than wide, combining a calm curved inner right edge with two broad angular joints along its outer left edge. Include one clear open slit and a narrow lower root.
+
+RIGHT: a different ribbon, 90% as tall, with three smaller angular joints opening outward to the right and one restrained warm-gold tip. Its inner left edge is calm. Do not mirror the left piece. Keep both pieces vertical and local, not horizontal attack bolts, weapons, orbit rings, or star projectiles.
+
+Style: clean hand-painted HD 2D game VFX, bold stable shapes, crisp antialiased edges, no pixel art, fine branching electricity, blur, bloom, glow halo, or detached sparks.
+
+Palette strictly: #211A3E, #4B2D78, #8A55BD, small #C9AA64 accents, tiny #F5D98A highlights.
+
+Background: completely solid flat green #00FF00. No green in the pieces. Keep every piece inside its own half with at least 6% empty margin to each cell edge and a wide gap between pieces. No gradient, shadow, ground, text, labels, UI, hero, watermark, or border. Two still assets, not animation frames.

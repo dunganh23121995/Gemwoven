@@ -74,5 +74,43 @@
     "peak": 0.198,
     "rms": 0.02,
     "sha256": "0fbc2dad49a80092113b12d7ec2e0ccf8261c389866ae8e4594aa78554269aa7"
+  },
+  "lightning-transform": {
+    "file": "hero-forms/transform/lightning-transform.wav",
+    "duration": 0.45,
+    "beat": "one electric zap (BIẾN THÂN pressed)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "zap (zap7.wav)",
+        "author": "sgossner",
+        "source_url": "https://freesound.org/people/sgossner/sounds/375168/",
+        "license": "CC0-1.0",
+        "sha256": "7568873600727ffd65494edb6db735cfe5c699354079cdde85a5ced04f8e22ab"
+      }
+    ],
+    "processing": "excerpt 0.00-0.45 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.82,
+    "rms": 0.038,
+    "sha256": "01209db995c36fe5048554544bf17b67d952036f8dae846c1ecc74c652f3fd09"
+  },
+  "lightning-transform-end": {
+    "file": "hero-forms/transform/lightning-transform-end.wav",
+    "duration": 0.25,
+    "beat": "static dies out (last transformed turn ends)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Electricity static .wav",
+        "author": "sophiehall3535",
+        "source_url": "https://freesound.org/people/sophiehall3535/sounds/245942/",
+        "license": "CC0-1.0",
+        "sha256": "407860d7aeaee13d3bb6f59d44c8dfdd5c5c6ad74ccf903464db321614f46d08"
+      }
+    ],
+    "processing": "excerpt 6.00-6.25 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.256,
+    "rms": 0.016,
+    "sha256": "cab6357ffd3b7dce0c299e8043b11934f7b0f5afb6a351f69374ccd322991f8f"
   }
 }

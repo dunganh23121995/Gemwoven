@@ -1,0 +1,16 @@
+Use the supplied heroes-rest image only as a painted-style reference. Lumi is the fourth group of three heroes from the left. Do not draw any hero.
+
+Create ONE landscape 3072 x 1024 VFX asset sheet divided into four equal invisible columns. Exactly FOUR asset groups, left to right:
+
+1. GROUND: two short low angular electrical hooks at opposite ends of a wide group, approximately four times wider than tall. Leave the central 40% completely empty for feet. No connecting line, closed ring, orbit, pentagram, or ground crack.
+2. MOTE: one compact four-point violet star with short thick points and one tiny gold tip. No trail or surrounding halo.
+3. MOTE VARIANT: one smaller bent diamond-shaped electrical chip, predominantly violet, with one warm edge. No trail.
+4. AFTER: one tiny low broken-star mark made from two short angular strokes, approximately three times wider than tall. No tall rays or orbiting particles.
+
+Style: clean hand-painted HD 2D game VFX, bold miniature shapes, crisp antialiased edges, no pixel art, blur, bloom, or fine electrical branches.
+
+Palette strictly: #211A3E, #4B2D78, #8A55BD, small #C9AA64 accents, tiny #F5D98A highlights.
+
+Background: entirely solid flat green #00FF00. No green in any piece. Centre each group in its quarter with at least 8% empty margin to every cell edge and wide separating gaps. No gradient, shadow, ground plane, text, labels, UI, hero, watermark, or border. Separate still pieces, not animation frames.
+
+Revision after the first fight review (Codex): the afterglow mark was too small. Make piece 4 two bold broken-star strokes in violet #8A55BD with a #4B2D78 edge, clearly thicker, readable at 40 pixels wide.
