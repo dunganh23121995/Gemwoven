@@ -88,10 +88,8 @@ function renderCombatStatuses(){
     // Older renderers (boss pills, Nori's seal count) still add chips here; the drawn tiles replace them all.
     if(row.dataset.cs!==html||[...row.children].some(n=>!n.classList.contains('cs-tile'))){row.innerHTML=html;row.dataset.cs=html;}
     row.classList.add('cs-row');
-    // The fighter's element: a small emblem at the right end of the spark gauge (fixed information, never a tile).
-    const track=row.closest('.actor-hud')?.querySelector('.head-rage-track');
-    if(track){let em=track.querySelector(':scope>.cs-elem');if(!em){em=document.createElement('span');em.className='cs-elem';em.setAttribute('aria-hidden','true');track.append(em);}
-      const key=side==='hero'?state.key:state.enemyKey;if(em.dataset.key!==key){em.dataset.key=key;em.style.backgroundImage=`url(assets/combat-hud/em-${key}.webp)`;}}
+    // No element emblem on the spark gauge (owner 04/11: the energy icon on its left is enough); element advantage stays a tile.
+    row.closest('.actor-hud')?.querySelector('.head-rage-track>.cs-elem')?.remove();
     // A fighter standing near the frame would push its gauges or its row out of the stage: slide them back inside
     // (gauges 8 px from the frame's inner edge, the row 6 px).
     const box=$('scene')?.getBoundingClientRect(),k=box?box.width/($('scene').offsetWidth||box.width):1,hud=row.closest('.actor-hud');
