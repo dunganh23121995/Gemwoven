@@ -1,0 +1,29 @@
+You are Codex, co-designer of Gemwoven. Read-only. Your survey is in assets/gemwoven/raw/feature-pick/survey.md. Claude agrees with your top 2 (1: first-time onboarding, 2: complete 28-day login calendar, zero net reward). Owner rule: build only what both agree on. Below is Claude's concrete proposal. For EACH numbered point answer "Agree" or "Disagree + the fix", then give the final agreed rule list I will write into docs/GAME_DESIGN.md §20 (Vietnamese not needed; English is fine). Verify claims against the code (progression.js, growth-ui.js, memory-ui.js, art-screens.js, progression-ui.js, journey-ui.js, src/game.js) where relevant.
+
+## 1. "Dẫn Đường" — first-time onboarding (no rewards of its own)
+1.1 Save: `p.guide={v:1,skipped:false,done:[],lessons:[]}`. Rules in progression.js (`guideView(p)`, engine `guideSkip()`, `guideReplay()`, `guideLesson(id)`), UI in a new module src/gemwoven/guide-ui.js + guide.css, combat coach in a new src/combat-coach.js.
+1.2 Steps are GOALS read from the save, fixed order; each auto-completes when its predicate is true, however the player got there (manual play, other order). Current step = first step whose predicate is false and that is not auto-skipped. Steps:
+   a. win1 — campaign.cleared ≥ 1. Path: Home "Khám Phá" → chapter 1 map → stage-1 seal → "Khiêu Chiến". Combat coach on that fight.
+   b. visit — today's "Ghé thăm thị trấn" claimed (or ever claimed, kept in guide.done). Path: Quán Bia → quest list → its Nhận.
+   c. newbie1 — Hành Trình Tân Thủ day 1 claimed. Path: Sự Kiện → day 1.
+   d. level — any owned hero level ≥ 2. Path: nav Tướng → Tăng Cấp (cost lv1→2 is 62 gold/3 books/7 seals; a new save has 1.200 gold).
+   e. win3 — cleared ≥ 3. Path: Khám Phá → next stage → Khiêu Chiến.
+   f. summon — summon.total ≥ 1; auto-skipped when the player holds 0 tickets (never pushes Đá Ngọc; the visit quest gives 1 ticket). Path: nav Triệu Hồi → ×1 (overlay only; the Summon screen itself is not changed).
+   g. gear — some owned hero wears ≥ 1 piece; auto-skipped when the account owns no gear. Path: Tướng → gear slot / "Mặc tốt nhất".
+   h. win5 — cleared ≥ 5 → guide finished; the cat says one closing line.
+1.3 Existing saves: on first load after shipping, if cleared ≥ 5 the guide is marked finished silently (never shown). Otherwise it resumes at the first unmet step.
+1.4 Later one-shot lessons (shown once each, dismiss = done, also after the guide is finished or skipped? — Claude: yes, unless skipped): `skills` when any hero reaches level 10 (Bị Động unlockable) → point Kỹ Năng nav then Học; `forge` when cleared ≥ 20 (Tốt crafting opens) → point Rèn Đồ.
+1.5 UI (all drawn by Codex image_gen, text as HTML): a small Mèo Hướng Dẫn bust (reuse assets/gemwoven/plaza/npc-guide.webp) beside a new drawn parchment speech plaque with one line ≤ ~40 chars and a step counter "2/7"; a new drawn pointing glove/arrow that bobs at the target; a new drawn golden ring frame around the target. One target at a time. Non-blocking (rest of the screen stays usable, soft dim only outside the target? Claude: no dim, just ring + glove, so nothing feels forced). Plaque sits on the side away from the target. Plaque tap opens nothing extra (one line is the whole message). Small "Bỏ qua" on the plaque → confirm "Bỏ hướng dẫn?" → skipped. Replay: Cài Đặt gets a row "Hướng dẫn · Xem lại" that clears skipped and re-shows from the first unmet step (no rewards exist to repeat).
+1.6 Combat coach (Game.html), only when the pending fight is campaign stage 1 and the guide's current step is win1 (flag passed through the save, read by combat): after the board is ready on the player's turn and 1.5 s idle, the drawn glove slides between the two tiles of the first legal move (same pick as the existing hint button) with plaque "Kéo đổi 2 ngọc cạnh nhau · xếp 3 cùng màu". After the first match it says once "Đầy năng lượng: tuyệt kỹ tự tung" when energy first fills, then hides. Glove repeats after 6 s idle. Never changes board, RNG, numbers, AI or timing.
+1.7 No rewards, no Đá Ngọc, Hiro unchanged, all heroes and Home/Summon screen art unchanged (overlay only).
+1.8 Tests (check-depth.cjs): fresh save → win1; settle win stage 1 → visit; doing level first then visit → steps skip in order; 0 tickets → summon skipped; no gear → gear skipped; skip → inactive and replay → active again; guide never changes wallet; migrated save cleared ≥ 5 → finished; lesson ids recorded once. Plus a browser check script walking a fresh account through the path on phone.
+1.9 Design review: mockup first (Codex draws a mockup of Home with the guide on step win1 and the stage card with the glove), then pieces, build, score ≥ 8.5 on phone 390×844 and Studio 1920×911.
+
+## 2. "Lịch 28 ngày" — complete calendar, zero net reward
+2.1 Sự Kiện → the existing "Lịch 28 ngày" row grows into a 4×7 calendar of the current 28-day season (anchor 02/11/2026 00:00 GMT+7, `passSeason`).
+2.2 Each day's cell shows the EXISTING Ghé thăm reward (500 gold, 10 sách EXP, 80 Ấn, 1 vé). Claiming a cell = `claimDaily('login')` (one transaction, one weekly-quest increment, one pass-point award, seal cap as today). Quán Bia's Ghé thăm and the calendar show the same state.
+2.3 The calendar records which season days were claimed (`p.calendar={season, days:[]}`) only for display; missed days stay missed (no catch-up), no extra rewards on day 7/14/21. Day 28 keeps the existing 20-shard chest/voucher.
+2.4 Drawn pieces: day cell (open / claimed stamp / missed / future), today glow, the day-28 chest cell; text HTML.
+2.5 Tests: claiming via either entry point marks both; second claim fails; season rollover resets the display; no Đá Ngọc; totals identical to baseline.
+
+Also tell me: is 2 worth building given zero net reward, or would you rather swap #2 for something else from your survey? Answer briefly.

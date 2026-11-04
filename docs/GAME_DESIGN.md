@@ -916,3 +916,53 @@ không chỉnh số**.
 - **Giao diện:** Codex phê bình bố cục, viết prompt và vẽ 3 mockup (`assets/gemwoven/raw/forge-rarity/mockup-1..3.png`:
   8,6 / 8,8 / 8,7), vẽ biểu tượng tab, khung ô hiến, tấm gỗ hoàn trả; bản dựng 8,4 / 8,3 → 8,6 / 8,5 → **8,8 / 8,6** (điện
   thoại / Studio). Kiểm thử: `check-depth.cjs` ("rarity up ok", "rarity up fodder ok").
+
+### Vòng Tính năng kế tiếp (04/11, Dẫn Đường + Lịch 28 ngày) — đã thống nhất
+- **Chọn việc:** Codex soát toàn bộ tài liệu + code (`assets/gemwoven/raw/feature-pick/survey.md`), xếp theo giá trị/công sức những
+  phần đã thiết kế mà chưa làm và làm được cục bộ: **1. Dẫn Đường** (hướng dẫn tân thủ 10 phút đầu, 5/M), **2. Lịch 28 ngày**
+  đầy đủ (4/M), rồi album hình thái, khung chân dung, ×2 cuối tuần, mở rương/thẻ thời gian, bộ hệ, mẫu sự kiện chạy thật, thư
+  thưởng sự kiện. Để sau: vũ khí bản mệnh (chưa chốt giá, tỷ lệ, tinh luyện; thêm lớp sức mạnh trước khi có hướng dẫn), quét ải 3★
+  (quyền lợi trả phí), trang phục (cần vẽ thân tướng mới, tướng đang khóa). Không phải việc dở: thành tích ngoài danh hiệu, đội hai
+  tướng, Bách khoa quái (chưa có thiết kế); ngọc tầng 60+ và "Bất lợi hệ" đã có. Claude đồng ý thứ tự này.
+- **Dẫn Đường** (Claude đề xuất, Codex sửa 6 điểm, Claude nhận cả 6 — `agree.md`):
+  1. Không thưởng riêng, không Đá Ngọc, không đổi số trận, Hiro giữ nguyên; tướng, Trang Chủ, Triệu Hồi giữ nguyên hình (chỉ lớp phủ).
+  2. Lưu `p.guide={v:1,skipped,done:[],lessons:[]}`; `done` là bước **đã xong hoặc đã bỏ qua tự động**, chốt rồi không mở lại.
+     Luật ở `progression.js` (`GUIDE_STEPS`, `guideView`), đồng bộ trong mọi giao dịch; giao diện `guide-ui.js`, trận `combat-coach.js`.
+  3. Tám bước theo thứ tự **Thắng ải 1 → Ghé thăm → Tân Thủ ngày 1 → Tăng cấp → Thắng ải 3 → Triệu hồi → Mặc đồ → Thắng ải 5**:
+     ải đã qua ≥ 1; đã nhận "Ghé thăm thị trấn" (chốt ngay khi nhận, kể cả trước lượt của bước, giữ qua ngày mới); Tân Thủ ngày 1 đã
+     nhận; một tướng sở hữu cấp ≥ 2; ải ≥ 3; đã triệu hồi ≥ 1 lần; một tướng mặc ≥ 1 món có thật; ải ≥ 5. Điều kiện đúng lúc nào
+     thì bước đó xong lúc đó, dù làm theo thứ tự nào. **Bỏ qua tự động chỉ xét khi tới lượt bước**: Triệu hồi khi 0 vé, Mặc đồ khi
+     không có món nào. Xong cả tám mới kết thúc (một câu chào, không quà). Bộ đếm cố định `n/8`.
+  4. Đường đi: Trang Chủ → Khám Phá → bản đồ thế giới → chương 1 → ải → Khiêu Chiến; Quán Bia → Nhận Thưởng; Sự Kiện → Ngày 1;
+     Tướng → Tăng Cấp; Triệu Hồi → ×1 **chỉ khi còn vé**, cả ở bảng xác nhận; nếu bảng đổi sang trả Đá Ngọc thì thôi chỉ; Tướng →
+     ô đồ / Mặc tốt nhất.
+  5. Bản lưu cũ chưa có `guide` mà đã qua ≥ 5 ải → hoàn tất im lặng (không câu chào); còn lại tiếp từ bước chưa xong đầu tiên.
+     **Bỏ qua** (xác nhận) tắt cả hướng dẫn lẫn bài học; Cài Đặt → **Hướng dẫn · Xem lại** bỏ trạng thái bỏ qua và tiếp từ bước
+     chưa xong (không đặt lại tiến độ hay bước đã chốt); đã hoàn tất thì ghi "Hướng dẫn đã hoàn tất".
+  6. **Bài học một lần** sau khi hướng dẫn chính hoàn tất (không hiện khi đang bỏ qua, mỗi lúc một chỉ dẫn): *Bị Động* khi một tướng
+     cấp ≥ 10 — chọn đúng tướng và nút Bị Động, chỉ vào "Học" chỉ khi học được (1.800 vàng + 1 bí kíp), đã học thì tự xong;
+     *Rèn Đồ* khi qua ải 20 — chỉ vào Rèn Đồ xem phôi Tốt (mở không có nghĩa là đủ tiền). Ghi một lần khi đóng hoặc làm xong.
+  7. Hình: Mèo Hướng Dẫn có sẵn + tấm giấy da lời thoại, găng chỉ, vòng sáng (Codex vẽ), chữ HTML một dòng; không làm tối màn,
+     một đích mỗi lúc, bám theo cuộn/đổi cỡ, không che nút, tôn trọng giảm chuyển động.
+  8. **Trận ải 1**: quyền dẫn ghi trên trận đang chờ (gắn mã trận), kiểm lại lúc combat mở (ải 1, bước Thắng ải 1, không bỏ qua).
+     Sau 1,5 giây rảnh ở lượt mình (bàn mở, không kéo, không bảng) găng trượt giữa hai ngọc của `legalMoves()[0]` (như nút gợi ý,
+     không gọi nút đó) với "Đổi 2 ngọc cạnh nhau, xếp 3 cùng màu"; nhắc lại sau 6 giây tới khi ghép thành công; chạm là ẩn. Lần đầu
+     đủ nộ thật (bắt đúng lúc xếp tuyệt kỹ) nói một lần "Đủ 100 nộ: tuyệt kỹ tự tung". Không chờ, không dừng, không gọi RNG, không
+     đổi trạng thái trận.
+  9. Kiểm thử: bỏ qua tự động chỉ khi tới lượt; chốt bền sau khi tiêu vé, tháo đồ, qua nửa đêm; bỏ qua → xem lại; làm theo hướng
+     dẫn và tự làm cho cùng ví, nguyên liệu, mảnh, tiến độ; tải lại, thua/đánh lại, cờ trận cũ, mất vé trước xác nhận; câu nộ và bài
+     học chỉ một lần; đường đi trên điện thoại qua bản đồ, thẻ ải, xác nhận triệu hồi, chọn đồ.
+- **Lịch 28 ngày** (Claude đề xuất, Codex sửa 3 điểm, Claude nhận cả 3):
+  1. Sự Kiện → "Lịch 28 ngày" thành lịch 4 hàng × 7 ngày của **mùa 28 ngày chung** (`passSeason`, neo 02/11/2026 00:00 GMT+7;
+     ngày mùa, không phải ngày tạo tài khoản), ngày giờ theo đồng hồ đã chặn lùi của engine.
+  2. **Chỉ hôm nay nhận được**, và là đúng phần thưởng "Ghé thăm thị trấn" (500 vàng, 10 sách, 80 Ấn theo trần, 1 vé): hai lối vào
+     (lịch, Quán Bia) gọi cùng `claimDaily('login')`, giao dịch đó đóng dấu ngày trên lịch; giữ nguyên +1 nhiệm vụ tuần, +50 điểm sổ.
+  3. Lưu `p.calendar={season,from,days:[]}`: ngày đã nhận và mốc bắt đầu ghi; ngày lỡ sau mốc là "lỡ", ngày trước mốc (chưa có dữ
+     liệu, trước khi tạo tài khoản) để trung tính. Chỉ suy từ bằng chứng chắc (`daily.date` hôm nay đã nhận `login`). **Không nhận
+     bù, không chuỗi, không quà ngày 7/14/21.**
+  4. **Ngày 28** có hai phần độc lập: phần Ghé thăm của ngày đó và **rương 20 mảnh** có sẵn (tướng sở hữu, không Hiro, chưa 6★; không
+     có thì phiếu không hết hạn; rương chưa nhận sang mùa thành phiếu như cũ). Không cần đăng nhập đủ ngày.
+  5. Tổng 28 ngày như cũ: 14.000 vàng, 280 sách, 2.240 Ấn (theo trần), 28 vé + rương. Kiểm thử: hai lối vào cùng một dấu, nhận
+     lần hai lỗi, qua mùa, vào giữa mùa, nửa đêm GMT+7, lùi đồng hồ, trần Ấn, nhiệm vụ tuần/sổ, rương và phiếu ngày 28 độc lập.
+- Giao diện cả hai: mockup Codex trước, rồi vẽ mảnh, dựng, Codex chấm ≥ 8,5 trên điện thoại 390×844 và Studio 1920×911 (cả lớp dẫn
+  trong trận và lịch).
