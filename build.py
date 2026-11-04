@@ -162,7 +162,10 @@ art['transformLooks']={hero:{name:image(f'assets/heroes/forms/{hero}/transform/{
 # Biến Thân v2 (owner 04/11: a huge see-through spirit rises and fades, then an aura built from the hero's own silhouette
 # stays): a hero whose transform folder holds v2.json (assets/heroes/forms/transform_spirit.py) plays the v2 look.
 for hero,look in art['transformLooks'].items():
-    if (root/f'assets/heroes/forms/{hero}/transform/v2.json').exists():look['v2']=1
+    if (root/f'assets/heroes/forms/{hero}/transform/v2.json').exists():
+        look['v2']=1
+        # a hero with no spirit (Hiro, owner 05/11) keeps only the silhouette aura
+        if json.loads((root/f'assets/heroes/forms/{hero}/transform/v2.json').read_text(encoding='utf-8')).get('spirit') is False:look['noSpirit']=1
     if (root/f'assets/heroes/forms/{hero}/transform/mist.webp').exists():look['mist']=image(f'assets/heroes/forms/{hero}/transform/mist.webp')
 # The v2 spirit dissolves into drifting mist: the hero's own drawn wisps (transform/mist.webp), else the summon screen's, tinted.
 art['transformMist']=image('assets/gemwoven/summon/runtime/wisps.webp')

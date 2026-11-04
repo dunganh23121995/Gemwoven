@@ -167,14 +167,14 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 /* The sheets themselves (.tf2-sil) only copy the body (transform-fx.js); their wrappers breathe and kindle. */
 .tf-v2 .tf2-silbox{position:absolute;inset:0;display:block;pointer-events:none;transform-origin:50% 94%;animation:tf2-breathe 2.4s ease-in-out infinite}
 .tf-v2 .tf2-sil{position:absolute;inset:0;display:block;pointer-events:none;background-repeat:no-repeat;
-  filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-14deg) drop-shadow(0 0 calc(var(--u) * .9) var(--core))
+  filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(var(--sil-sat,5)) hue-rotate(var(--sil-hue,-14deg)) drop-shadow(0 0 calc(var(--u) * .9) var(--core))
     drop-shadow(0 0 calc(var(--u) * 2.4) var(--glow)) drop-shadow(0 0 calc(var(--u) * 5) var(--out))}
 /* The wider glow: its brightness flows slowly up the silhouette in soft bands (a moving mask, no shapes of its own). The mask
    sits on a box 20% larger than the actor on every side, so it never cuts the glow on a straight edge. */
 .tf-v2 .tf2-flowbox{position:absolute;inset:-20%;display:block;pointer-events:none;
   -webkit-mask-image:linear-gradient(to top,#000 0,rgba(0,0,0,.3) 25%,#000 50%,rgba(0,0,0,.3) 75%,#000 100%);mask-image:linear-gradient(to top,#000 0,rgba(0,0,0,.3) 25%,#000 50%,rgba(0,0,0,.3) 75%,#000 100%);
   -webkit-mask-size:100% 200%;mask-size:100% 200%;opacity:.85;transform-origin:50% 80%;animation:tf2-flow 2.8s linear infinite,tf2-breathe 2.4s ease-in-out -1.2s infinite}
-.tf-v2 .tf2-flowbox>.tf2-flow{inset:14.2857%;filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-18deg) drop-shadow(0 0 calc(var(--u) * 2.4) var(--glow))
+.tf-v2 .tf2-flowbox>.tf2-flow{inset:14.2857%;filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(calc(var(--sil-sat,5) * 1.2)) hue-rotate(calc(var(--sil-hue,-14deg) - 4deg)) drop-shadow(0 0 calc(var(--u) * 2.4) var(--glow))
     drop-shadow(0 0 calc(var(--u) * 5) var(--out)) drop-shadow(0 0 calc(var(--u) * 7.5) rgba(255,70,15,.32))}
 @keyframes tf2-flow{from{-webkit-mask-position:0 0;mask-position:0 0}to{-webkit-mask-position:0 -100%;mask-position:0 -100%}}
 @keyframes tf2-breathe{0%,100%{opacity:.88;transform:scale(1)}50%{opacity:1;transform:scale(1.012)}}
@@ -193,7 +193,7 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 /* Afterglow: no spirit; the rim thinner and dimmer, the wide glow gone, the pool low. */
 .tf-v2.tf-after .tf2-spirit{opacity:0!important;animation:none!important}
 .tf-v2.tf-after .tf2-silbox{opacity:.7;animation:none;transition:opacity .4s ease}
-.tf-v2.tf-after .tf2-sil{filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-14deg) drop-shadow(0 0 calc(var(--u) * .7) var(--glow)) drop-shadow(0 0 calc(var(--u) * 2) var(--out));transition:opacity .4s ease}
+.tf-v2.tf-after .tf2-sil{filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(var(--sil-sat,5)) hue-rotate(var(--sil-hue,-14deg)) drop-shadow(0 0 calc(var(--u) * .7) var(--glow)) drop-shadow(0 0 calc(var(--u) * 2) var(--out));transition:opacity .4s ease}
 .tf-v2.tf-after .tf2-flowbox{opacity:0;transition:opacity .4s ease}
 .tf-v2.tf-after .tf2-pool{opacity:.5;animation:none;transition:opacity .4s ease}
 /* While the hero strikes or casts the aura steps back a little: the blow reads first. */
@@ -201,3 +201,19 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 /* The spirit is up for a moment only, so it may stand over the gauges (owner 04/11): they stay put and fade back, then return. */
 :is(#heroHeadHud,#enemyHeadHud){transition:opacity .3s ease}
 :is(#heroHeadHud,#enemyHeadHud).tf2-hud-fade{opacity:.3!important}
+
+/* Per hero: the aura's light (silhouette tint and its three glows) and the spirit's size and place. The mist is each hero's
+   own drawing, already in its colours. */
+.tf-v2.tf-ice{--sil-hue:150deg;--sil-sat:3;--core:#eefcff;--glow:#9ee6ff;--out:#3d9cff}
+.tf-v2.tf-earth{--sil-hue:62deg;--sil-sat:3.5;--core:#f6ffdc;--glow:#a6e070;--out:#3f9a3c}
+.tf-v2.tf-lightning{--sil-hue:225deg;--sil-sat:3.5;--core:#f7efff;--glow:#c99bff;--out:#7a3cff}
+.tf-v2.tf-shadow{--sil-hue:220deg;--sil-sat:1.6;--core:#f1ecff;--glow:#ad9fe0;--out:#5a4896}
+.tf-v2.tf-novice{--sil-hue:-6deg;--sil-sat:3;--core:#fff7de;--glow:#f2cb74;--out:#b8843c}
+/* Hiro has no spirit: his aura kindles at once on the press. */
+.tf-v2.tf2-nospirit.tf-flare :is(.tf2-silbox,.tf2-pool){animation-delay:0s}
+.tf-v2.tf2-nospirit.tf-flare .tf2-flowbox{animation-delay:0s,0s}
+.tf-v2.tf-ice .tf2-pool{background:radial-gradient(closest-side,rgba(235,252,255,.85),rgba(150,225,255,.55) 38%,rgba(60,150,255,.25) 66%,transparent 100%)}
+.tf-v2.tf-earth .tf2-pool{background:radial-gradient(closest-side,rgba(240,255,210,.85),rgba(165,225,110,.55) 38%,rgba(60,150,60,.25) 66%,transparent 100%)}
+.tf-v2.tf-lightning .tf2-pool{background:radial-gradient(closest-side,rgba(245,235,255,.85),rgba(200,155,255,.55) 38%,rgba(120,60,255,.25) 66%,transparent 100%)}
+.tf-v2.tf-shadow .tf2-pool{background:radial-gradient(closest-side,rgba(235,228,255,.7),rgba(170,155,225,.45) 38%,rgba(90,72,150,.22) 66%,transparent 100%)}
+.tf-v2.tf-novice .tf2-pool{background:radial-gradient(closest-side,rgba(255,246,220,.85),rgba(242,203,116,.55) 38%,rgba(184,132,60,.25) 66%,transparent 100%)}
