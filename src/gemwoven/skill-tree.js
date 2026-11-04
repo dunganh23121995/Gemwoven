@@ -171,15 +171,16 @@
       `<img class="sd-cue up" src="${art('cue-up')}" alt="" style="${rel(866,1084,28,28)}" hidden><img class="sd-cue down" src="${art('cue-down')}" alt="" style="${rel(866,1196,28,28)}" hidden>`;
     const left=c?(t.rank===0?'Nguyên liệu học':'Nguyên liệu'):t.maxed?'Hoàn thiện':'Điều kiện';
     const lw=left.length>12?280:236;html+=`<b class="sd-head" style="${rel(315-lw/2,1224,lw,42)}">${left}</b><div class="sd-tray" style="${rel(40,1244,550,150)}">`;
-    // Each material is its own light compartment: big picture, "Có / Cần", then ✓ Đủ or Thiếu N in red (as the forge).
+    // Each material is its own light compartment: big picture and held/needed as numbers, green when enough, red when short
+    // (owner 04/11: fewer words, "123/456" instead of Có / Cần / Thiếu).
     if(c){const mats=Object.entries(c).filter(([,n])=>n>0);
-      html+=`<div class="sd-mats n${mats.length}">`+mats.map(([id,n])=>{const have=owned(p,id),ok=have>=n;return `<button type="button" class="sd-mat ${ok?'ok':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><span><small>Có ${tight(have)}</small><small>Cần ${tight(n)}</small><em>${ok?'✓ Đủ':'Thiếu '+tight(n-have)}</em></span></button>`;}).join('')+'</div>';}
+      html+=`<div class="sd-mats n${mats.length}">`+mats.map(([id,n])=>{const have=owned(p,id),ok=have>=n;return `<button type="button" class="sd-mat ${ok?'ok':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${(tight(have)+'/'+tight(n)).replace(/\s/g,'')}</b></button>`;}).join('')+'</div>';}
     else if(t.maxed)html+=`<p class="sd-note">✓ Cấp tối đa</p>`;
     else if(!h)html+=`<p class="sd-note">${esc(M.heroAvailable&&!M.heroAvailable(hero)?'Tướng xuất hiện ở kỳ triệu hồi sau.':'Cần sở hữu tướng.')}</p>`;
     // Locked: one compartment per requirement, like the materials (Codex critique: requirement, current, met or not).
     else{const g=s.real?M.SKILL_GATES[i]||{}:{level:200+i*20,evolution:Math.min(6,i-2)};
       const need=[['Cấp',g.level,h.level,'exp-book'],['Tiến hóa',g.evolution,h.evolution||0,'evo-crest']].filter(([,n])=>n>0);
-      html+=`<div class="sd-mats n${need.length}">`+need.map(([l,n,v,pic])=>{const ok=v>=n;return `<div class="sd-mat ${ok?'ok':'short'}" aria-label="${l} ${n} · hiện ${v}"><img src="${file(pic)}" alt=""><span><small>${l} ${n}</small><small>Hiện ${v}</small><em>${ok?'✓ Đạt':'Thiếu '+(n-v)}</em></span></div>`;}).join('')+'</div>';}
+      html+=`<div class="sd-mats n${need.length}">`+need.map(([l,n,v,pic])=>{const ok=v>=n;return `<div class="sd-mat ${ok?'ok':'short'}" aria-label="${l} ${n} · hiện ${v}"><img src="${file(pic)}" alt=""><b>${v}/${n}</b></div>`;}).join('')+'</div>';}
     html+='</div>';
     const right=!open?'Khi mở':t.maxed?'Cấp tối đa':t.rank===0?'Khi học':'Cấp kế';
     const lines=!open||t.rank===0?rows(t.values):t.maxed?rows(t.values):String(t.next||'').split(' · ').filter(Boolean);

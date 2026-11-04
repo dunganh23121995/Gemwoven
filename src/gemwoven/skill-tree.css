@@ -179,3 +179,14 @@
 .sd-go span{font-size:32px}
 .sd-go.off span{font-size:32px}
 .sd-go img{top:0;height:100%}
+
+/* Held/needed as one number pair (owner 04/11): green when enough, red when short. */
+#stage .sd-mat>b{font:900 32px/1 Cambria,serif;white-space:nowrap;text-shadow:none;letter-spacing:-.3px}
+#stage .sd-mat.ok>b{color:#2f7a2a}
+#stage .sd-mat.short>b{color:#b32a1c}
+#stage .sd-mats.n3 .sd-mat{flex-direction:column;gap:2px}
+#stage .sd-mats.n3 .sd-mat img{width:44px;height:44px}
+#stage .sd-mats.n3 .sd-mat>b{font-size:26px}
+#stage .sd-mat{gap:8px}
+#stage .sd-mat img{width:56px;height:56px}
+#stage .sd-mat>b{font-size:30px}

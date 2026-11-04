@@ -18,8 +18,10 @@
   const tint=el=>(ELEMENTS.find(e=>e[0]===el)||ELEMENTS[5])[1];
   const skillIcon=(key,i)=>key==='novice'?['stat-attack','stat-shield','stat-heart','crest'][i]:`skill-${key}-${i}`;
   const view={element:'',sort:'level'};
+  // Unreleased heroes stay hidden everywhere (owner 04/11): the hall lists only released or owned ones.
+  const shown=p=>Object.keys(M.HEROES).filter(k=>p.heroes[k]||M.heroAvailable(k));
   // Owned heroes first (highest level, then stars), the rest after in catalogue order.
-  function order(p,list=Object.keys(M.HEROES)){
+  function order(p,list=shown(p)){
     const by={level:h=>h.level*10+h.stars,stars:h=>h.stars*1000+h.level}[view.sort];
     return list.slice().sort((a,b)=>{const ha=p.heroes[a],hb=p.heroes[b];if(!!ha!==!!hb)return ha?-1:1;return ha?by(hb)-by(ha):0;});
   }
@@ -37,8 +39,8 @@
   }
   function allDialog(ctx,state){
     const modal=window.GemwovenUI.makeDialog('hero-all','Tất cả tướng','growth-dialog hall-dialog');
-    const draw=()=>{const p=G.engine.read(),list=Object.keys(M.HEROES).filter(k=>!view.element||M.HEROES[k].element===view.element);
-      modal.body.innerHTML=`<div class="hall-filters">${ELEMENTS.filter(([e])=>Object.values(M.HEROES).some(h=>h.element===e)).map(([e,c])=>`<button type="button" data-el="${e}" class="${view.element===e?'on':''}" style="--el:${c}">${e}</button>`).join('')}`+
+    const draw=()=>{const p=G.engine.read(),list=shown(p).filter(k=>!view.element||M.HEROES[k].element===view.element);
+      modal.body.innerHTML=`<div class="hall-filters">${ELEMENTS.filter(([e])=>shown(p).some(k=>M.HEROES[k].element===e)).map(([e,c])=>`<button type="button" data-el="${e}" class="${view.element===e?'on':''}" style="--el:${c}">${e}</button>`).join('')}`+
         `<button type="button" data-sort class="hall-sort">${view.sort==='level'?'Cấp ↓':'Sao ↓'}</button></div>`+
         `<div class="hall-grid">${order(p,list).map(k=>card(p,k,state.hero,true)).join('')||'<p class="growth-lead">Chưa có tướng hệ này.</p>'}</div>`;
       modal.body.querySelectorAll('[data-el]').forEach(b=>b.onclick=()=>{view.element=view.element===b.dataset.el?'':b.dataset.el;draw();});

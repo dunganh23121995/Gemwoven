@@ -36,10 +36,10 @@
   function tray(p,c,note='',cut=[]){
     const rows=Object.entries(c||{}).filter(([,n])=>n>0),[x0,y0,x1,y1]=TRAY,w=(x1-x0)/Math.max(5,rows.length);
     const spare=5-rows.length;
-    // Readability pass (full review 3): each compartment shows what it needs, icon beside the number, and one
-    // status line under it, ✓ or 'Thiếu N' on a red-lit compartment; what is held is one tap away (item detail).
-    return `<b class="fg2-caption" style="${box(bx(x0)+bs(x1-x0)/2-70,by(y0)-22,140,34)}">Cần</b>`+(spare>0&&note?`<p class="fg2-traynote" style="${part(x0+rows.length*w,y0,x1,y1)}">${note}</p>`:'')+rows.map(([id,n],i)=>{const have=owned(p,id);
-      return `<button type="button" class="fg2-mat fg3-mat ${have>=n?'ok':'short'}${tight(n).length>5||(have<n&&tight(n-have).length>4)?' long':''}${cut.includes(id)?' cut':''}" data-action="item:${id}" style="${part(x0+i*w,y0,x0+(i+1)*w,y1)}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><span><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${tight(n)}</b></span>${have>=n?'<i class="ok">✓ Đủ</i>':`<i>Thiếu ${tight(n-have)}</i>`}</button>`;}).join('');
+    // Each compartment shows held/needed as numbers beside the icon, green when enough and red (on a red-lit compartment)
+    // when short (owner 04/11: "123/456" instead of words).
+    return (spare>0&&note?`<p class="fg2-traynote" style="${part(x0+rows.length*w,y0,x1,y1)}">${note}</p>`:'')+rows.map(([id,n],i)=>{const have=owned(p,id);
+      return `<button type="button" class="fg2-mat fg3-mat ${have>=n?'ok':'short'}${(tight(have)+tight(n)).length>6?' long':''}${cut.includes(id)?' cut':''}" data-action="item:${id}" style="${part(x0+i*w,y0,x0+(i+1)*w,y1)}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><span><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><b>${(tight(have)+'/'+tight(n)).replace(/\s/g,'')}</b></span></button>`;}).join('');
   }
   // Nâng Phẩm to Thần: the five drawn compartments keep gold → essence; thần thạch rides on a leather tag at the right
   // shoulder of the tray (Codex: no sixth squeezed compartment), lit red while short.

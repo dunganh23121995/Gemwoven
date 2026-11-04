@@ -267,3 +267,12 @@
 /* Build round 2 (Codex 8,6 / 8,5): +N clear of the frame; the result recess takes its rarity's colour in its light. */
 .fg4-pic em{bottom:16px!important}
 .fg4-recess.new:not(.empty){background:radial-gradient(ellipse 72% 78% at 40% 52%,#fff6d0f0,color-mix(in srgb,var(--rc) 55%,#ffe08a) 40%,color-mix(in srgb,var(--rc) 45%,transparent) 66%,transparent 84%)!important;box-shadow:0 0 18px color-mix(in srgb,var(--rc) 70%,#ffd36a),inset 0 0 14px #fff0b880}
+
+/* Held/needed numbers (owner 04/11): green when enough, red when short; no status words. */
+#stage .fg3-mat{justify-content:center!important;padding:0!important}
+#stage .fg3-mat span b{color:#2f6a22!important;font-size:28px!important;letter-spacing:-.4px!important}
+#stage .fg3-mat.short span b{color:#a8240f!important}
+#stage .fg3-mat.long span{flex-direction:row!important;gap:4px!important}
+#stage .fg3-mat.long span img{width:32px!important;height:32px!important}
+#stage .fg3-mat.long span b{font-size:22px!important;letter-spacing:-.6px!important}
+#stage .fg3-mat.ok{filter:none}
