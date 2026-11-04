@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node ../check-progression.cjs && node ../check-boss-chapters.cjs && node ../check-live-ui.cjs && node ../check-combat-progression.cjs && node ../check-depth.cjs",
+    "test": "node ../check-progression.cjs && node ../check-boss-chapters.cjs && node ../check-live-ui.cjs && node ../check-combat-progression.cjs && node ../check-depth.cjs && node ../check-specials.cjs",
     "test:art": "node ../check-dom.cjs",
     "test:offline": "node ../check-offline.cjs",
     "test:browser": "node ../check-presentation.cjs"

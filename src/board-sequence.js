@@ -406,13 +406,15 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
     for(const t of ordinary){detonate(t);await boardV3Pause(beat);}
   }
   const sequence={targets,cleared,sources,primed,tails,charge,beat,detonate};
-  for(const act of plan.acts)await specialEffect(act,sequence);
+  // Specials fire by generation (src/board-specials.js chain): one ring of a chain together, 50 ms apart (owner 05/11).
+  for(const gen of [...new Set(plan.acts.map(a=>a.gen||0))].sort((a,b)=>a-b))
+    await Promise.all(plan.acts.filter(a=>(a.gen||0)===gen).map((act,i)=>boardV3Pause(Math.min(i,6)*(typeof SPECIAL_FX==='object'?SPECIAL_FX.stagger:50)).then(()=>specialEffect(act,sequence))));
   // Covers any unusual plan while preserving the exactly-once clear rule.
   for(const t of plan.targets)if(!cleared.has(t)){detonate(t);await boardV3Pause(beat);}
   await Promise.all(tails);
   for(const t of plan.targets){if(board[t.r][t.c]===t)board[t.r][t.c]=null;t.el.remove();}
   for(const x of plan.creates){
-    x.tile.special=x.kind;if(x.kind==='core')x.tile.type=-1;paintTile(x.tile);
+    x.tile.special=x.kind;x.tile.dir=x.dir;if(x.kind==='core')x.tile.type=-1;paintTile(x.tile);
     await boardV3Charge({tile:x.tile,kind:x.kind},BOARD_V5_PACING.creation[x.kind]||BOARD_V5_PACING.creation.bolt,'creation');
   }
   await boardV3Pause(BOARD_V5_PACING.settle);

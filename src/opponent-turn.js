@@ -24,6 +24,8 @@ async function opponentBoardTurn(){
   await battleBeat(180);
   await swapAnimated(a,b);
   if(fusionCount)await resolveBoard('enemy',makeCoreFusionPlan(a,fusionCount));
+  // Two specials swapped together fire their combo (src/board-specials.js), as on the hero's turn.
+  else if(a.special&&b.special)await resolveBoard('enemy',makeComboPlan(a,b,'enemy'));
   else if(core)await resolveBoard('enemy',makePlan(null,null,'enemy',core,move.coreType));
   else await resolveBoard('enemy');
   return true;

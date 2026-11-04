@@ -11,9 +11,13 @@ function enemyThinkingLevel(stage = state.stage) {
 
 const OpponentAI = (() => {
   const N = 8, LEN = 64, EMPTY = 0, BOLT = 1, BOMB = 2, CORE = 3;
-  const encode = tile => tile ? ((tile.type >= 0 ? tile.type + 1 : 0) | ({ bolt: BOLT, bomb: BOMB, core: CORE }[tile.special] || 0) << 3) : EMPTY;
+  // Bit 5 marks a column Sao băng (src/board-specials.js: a straight 4 clears its row or its column).
+  const COL = 32, KINDS = { bolt: BOLT, bomb: BOMB, core: CORE }, NAMES = [null, 'bolt', 'bomb', 'core'];
+  const encode = tile => tile ? ((tile.type >= 0 ? tile.type + 1 : 0) | (KINDS[tile.special] || 0) << 3 | (tile.special === 'bolt' && tile.dir === 'col' ? COL : 0)) : EMPTY;
   const type = value => (value & 7) - 1;
-  const kind = value => value >> 3;
+  const kind = value => (value >> 3) & 3;
+  const dir = value => value & COL ? 'col' : 'row';
+  const S = globalThis.GemwovenSpecials;
   const sum = counts => counts.reduce((a, b) => a + b, 0);
   const now = () => typeof performance !== 'undefined' ? performance.now() : Date.now();
   const rank = (a, b) => b.score - a.score || a.from - b.from || a.to - b.to || (a.coreType ?? -1) - (b.coreType ?? -1);
@@ -86,36 +90,45 @@ const OpponentAI = (() => {
     return best;
   }
 
-  function plan(cells, match, side, preferred, primaryCore, coreType, current) {
-    const targets = new Uint8Array(match.marked), gifts = new Uint8Array(LEN), queued = new Uint8Array(LEN);
-    const creates = [], actions = [];
-    if (side === 'hero') for (const cluster of clusters(match.groups)) {
-      const special = cluster.length >= 6 ? CORE : cluster.length === 5 ? BOMB : cluster.length === 4 ? BOLT : 0;
-      const normal = cluster.filter(p => !kind(cells[p]));
-      if (special && normal.length) {
-        const p = normal.includes(preferred) ? preferred : normal[Math.floor(normal.length / 2)];
-        creates.push({ at: p, special }); targets[p] = 0;
-      }
+  // Specials follow the live board's shared rules (src/board-specials.js): the hero creates them (both sides in PvP),
+  // every special a clear reaches fires once, and in PvE the gems a special clears on the foe's move are the hero's.
+  function plan(cells, match, side, preferred, primaryCore, coreType, current, pair = null) {
+    const targets = new Uint8Array(LEN), gifts = new Uint8Array(LEN);
+    const creates = [], actions = [], duel = !!current.duel;
+    if (match) for (let p = 0; p < LEN; p++) targets[p] = match.marked[p];
+    if (match && (side === 'hero' || duel)) for (const cluster of clusters(match.groups)) {
+      const shape = S.shape(cluster, match.groups);
+      if (!shape.kind) continue;
+      const at = S.createAt(cluster, preferred == null ? [] : [preferred], q => !kind(cells[q]));
+      if (at == null) continue;
+      creates.push({ at, special: KINDS[shape.kind], dir: shape.dir }); targets[at] = 0;
     }
-    const enqueue = p => { if (kind(cells[p]) && !queued[p]) { queued[p] = 1; actions.push(p); } };
-    if (primaryCore != null) { targets[primaryCore] = 1; enqueue(primaryCore); }
-    for (let p = 0; p < LEN; p++) if (targets[p]) enqueue(p);
+    const created = new Set(creates.map(item => item.at));
+    const typeAt = p => cells[p] ? type(cells[p]) : -1;
+    const isSpecial = p => cells[p] && kind(cells[p]) && !created.has(p) && !(pair && (p === pair.a || p === pair.b)) ? { kind: NAMES[kind(cells[p])], dir: dir(cells[p]) } : null;
+    let start = [], initial = [];
+    for (let p = 0; p < LEN; p++) if (targets[p]) initial.push(p);
     let uncertainCores = 0;
-    for (let a = 0; a < actions.length; a++) {
-      const origin = actions[a], special = kind(cells[origin]);
-      let hitType = type(cells[origin]);
-      if (special === CORE) {
-        hitType = origin === primaryCore ? coreType : dangerousCoreType(cells, current);
-        if (origin !== primaryCore) uncertainCores++;
-      }
-      for (let p = 0; p < LEN; p++) {
-        if (!cells[p]) continue;
-        const hit = special === BOLT ? Math.abs((p / N | 0) - (origin / N | 0)) <= 2 && Math.abs(p % N - origin % N) <= 2
-          : special === CORE ? p === origin || type(cells[p]) === hitType
-            : type(cells[p]) === hitType && kind(cells[p]) !== CORE;
-        if (hit) { targets[p] = 1; gifts[p] = 1; enqueue(p); }
-      }
+    if (pair) {
+      // Two specials swapped together: the combo's own clear, then the specials it reaches.
+      const spec = p => ({ p, kind: NAMES[kind(cells[p])], dir: dir(cells[p]), type: type(cells[p]) });
+      const combo = S.combo(spec(pair.a), spec(pair.b), pair.a, typeAt, p => cells[p] && kind(cells[p]) ? NAMES[kind(cells[p])] : null);
+      start = combo.turn.map(p => ({ p, kind: combo.kind, dir: combo.dir }));
+      initial = combo.clear.filter(p => !combo.turn.includes(p));
+      for (const p of combo.clear) targets[p] = 1;
+      actions.push(pair.a);
+    } else if (primaryCore != null) {
+      targets[primaryCore] = 1; initial.push(primaryCore);
+      start.push({ p: primaryCore, kind: 'core', color: coreType });
     }
+    const run = S.chain(start, initial, typeAt, isSpecial);
+    for (const fired of run.fired) {
+      actions.push(fired.p);
+      if (fired.kind === 'core' && fired.p !== primaryCore) uncertainCores++;
+      if (!duel) for (const p of fired.hits) if (!created.has(p)) gifts[p] = 1;
+    }
+    if (pair && !duel && side === 'enemy') for (const p of run.cleared) gifts[p] = 1;
+    for (const p of run.cleared) if (cells[p]) targets[p] = 1;
     creates.forEach(item => targets[item.at] = 0);
     return { targets, gifts, creates, actions, uncertainCores };
   }
@@ -189,20 +202,22 @@ const OpponentAI = (() => {
   function analyze(cells, current, from, to, side = 'enemy', explicitCoreType = null) {
     if (!cells[from] || !cells[to] || Math.abs((from / N | 0) - (to / N | 0)) + Math.abs(from % N - to % N) !== 1) return null;
     let next = cells.slice(); [next[from], next[to]] = [next[to], next[from]];
-    const fusionWaves=kind(cells[from])===CORE&&kind(cells[to])===CORE?cells.filter(cell=>kind(cell)).length:0;
-    const primary = kind(cells[from]) === CORE ? to : kind(cells[to]) === CORE ? from : null;
+    // Two Lõi clear the board once; any other two specials swapped together fire their combo (board-specials.js).
+    const fusionWaves=kind(cells[from])===CORE&&kind(cells[to])===CORE?1:0;
+    const pair = !fusionWaves && kind(cells[from]) && kind(cells[to]) ? { a: to, b: from } : null; // a: where the dragged special landed
+    const primary = pair ? null : kind(cells[from]) === CORE ? to : kind(cells[to]) === CORE ? from : null;
     const other = primary === to ? from : to;
     const coreType = primary == null ? null : type(next[other]) >= 0 ? type(next[other]) : explicitCoreType ?? dangerousCoreType(next, current);
     let match = matches(next);
-    if (primary == null && !match.count) return null;
-    if (primary != null) match = { groups: [], marked: new Uint8Array(LEN), count: 0 };
+    if (primary == null && !pair && !match.count) return null;
+    if (primary != null || pair) match = { groups: [], marked: new Uint8Array(LEN), count: 0 };
     const heroCounts = [0, 0, 0, 0, 0], enemyCounts = [0, 0, 0, 0, 0];
     let cascades = 0, specials = 0, createdValue = 0, uncertainCores = 0;
-    while ((match.count || cascades === 0 && primary != null) && cascades < 8) {
+    while ((match.count || cascades === 0 && (primary != null || pair)) && cascades < 8) {
       const action = fusionWaves?{
         targets:Uint8Array.from(next,cell=>cell?1:0),gifts:new Uint8Array(LEN).fill(1),
         creates:[],actions:next.flatMap((cell,p)=>kind(cell)?[p]:[]),uncertainCores:0,
-      }:plan(next, match, side, cascades === 0 ? to : null, cascades === 0 ? primary : null, coreType, current);
+      }:plan(next, match, side, cascades === 0 ? to : null, cascades === 0 ? primary : null, coreType, current, cascades === 0 ? pair : null);
       specials += action.actions.length; uncertainCores += action.uncertainCores;
       for (let p = 0; p < LEN; p++) if (action.targets[p]) {
         const t = type(next[p]);
@@ -210,7 +225,7 @@ const OpponentAI = (() => {
         next[p] = EMPTY;
       }
       for (const item of action.creates) {
-        next[item.at] = (item.special === CORE ? 0 : next[item.at] & 7) | item.special << 3;
+        next[item.at] = (item.special === CORE ? 0 : next[item.at] & 7) | item.special << 3 | (item.dir === 'col' ? COL : 0);
         createdValue += item.special === CORE ? 36 : item.special === BOMB ? 24 : 16;
       }
       next = gravity(next); match = matches(next); cascades++;
@@ -310,7 +325,9 @@ const OpponentAI = (() => {
 
 async function chooseEnemyMove(options = {}) {
   const liveTiles = board.flat();
-  const chosen = await OpponentAI.choose(OpponentAI.snapshot(board, state), options);
+  // PvP plays the symmetric special rules (both sides create specials, the mover takes every cleared gem).
+  const data = OpponentAI.snapshot(board, state); data.state.duel = typeof progressionIsDuel === 'function' && progressionIsDuel();
+  const chosen = await OpponentAI.choose(data, options);
   if (!chosen) return null;
   return { a: liveTiles[chosen.from], b: liveTiles[chosen.to], score: chosen.score,
     reason: chosen.reason, level: chosen.level, coreType: chosen.coreType, stats: chosen.stats };

@@ -126,7 +126,7 @@ function update(){
   $('heroStatuses').innerHTML=state.playerFrozen?'<span class="status-pill" title="Đóng băng">'+icon('snow')+'</span>':'';
   $('enemyStatuses').innerHTML=(state.frozen||state.stunned?'<span class="status-pill" title="'+(state.stunned?'Choáng':'Đóng băng')+'">'+icon(state.stunned?'spark':'snow')+'</span>':'')+(state.enraged?'<span class="status-pill enraged" title="Cuồng nộ">'+icon('flame')+'</span>':'');
   $('score').textContent=state.score.toLocaleString('vi-VN');$('stageLabel').textContent=(state.boss?'BOSS':'MÀN')+' '+String(state.stage).padStart(2,'0');$('footerStage').textContent='Màn '+state.stage;
-  $('tipTitle').textContent=ELEMENTS[state.key].beats===state.enemyKey?'Bạn đang có lợi thế nguyên tố!':'Nhỏ bé. Nhưng đầy phép màu.';$('tipText').textContent=ELEMENTS[state.key].beats===state.enemyKey?ELEMENTS[state.key].label+' khắc '+ELEMENTS[state.enemyKey].label+' · Đòn đánh của '+h.name+' gây thêm 50% sát thương.':'Ghép 4 ngọc tạo Sao băng, ghép 5 tạo Bom. Ghép Băng giúp bạn chặn lượt tiếp theo của quái.';
+  $('tipTitle').textContent=ELEMENTS[state.key].beats===state.enemyKey?'Bạn đang có lợi thế nguyên tố!':'Nhỏ bé. Nhưng đầy phép màu.';$('tipText').textContent=ELEMENTS[state.key].beats===state.enemyKey?ELEMENTS[state.key].label+' khắc '+ELEMENTS[state.enemyKey].label+' · Đòn đánh của '+h.name+' gây thêm 50% sát thương.':'Ghép 4 thẳng tạo Sao băng, chữ L/T tạo Bom, 5 thẳng tạo Lõi. Ghép Băng giúp bạn chặn lượt tiếp theo của quái.';
   $('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const step=i+1,current=(state.stage-1)%5+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(step===current?'active':step<current?'done':'')+'" '+(step===current?'aria-current="step"':'')+' aria-label="Màn '+(Math.floor((state.stage-1)/5)*5+step)+'">'+(step===5?icon('crown'):step<current?'✓':step)+'</span>';}).join('');
   updateTurn();
 }
@@ -135,7 +135,7 @@ function renderActors(){ $('heroActor').innerHTML=heroArt(state.key);$('enemyAct
 function all(){return board.flat().filter(Boolean);}
 function tileType(t){return t&&t.special!=='core'?t.type:null;}
 function newTile(type,r,c,special=null){return {id:++nextId,type,r,c,special,el:null};}
-function tileLabel(t){return (t.special==='core'?'Cầu vồng':TYPES[t.type].name+(t.special==='bolt'?' · Sao băng':t.special==='bomb'?' · Bom':''))+', hàng '+(t.r+1)+', cột '+(t.c+1);}
+function tileLabel(t){return (t.special==='core'?'Lõi':TYPES[t.type].name+(t.special==='bolt'?' · Sao băng '+(t.dir==='col'?'dọc':'ngang'):t.special==='bomb'?' · Bom':''))+', hàng '+(t.r+1)+', cột '+(t.c+1);}
 function paintTile(t){
   const p=TYPES[Math.max(0,t.type)],e=t.el;e.className='tile'+(t.special?' special '+t.special:'');e.setAttribute('aria-label',tileLabel(t));e.setAttribute('aria-rowindex',t.r+1);e.setAttribute('aria-colindex',t.c+1);e.setAttribute('aria-selected','false');
   e.style.setProperty('--tile-light',p.light);e.style.setProperty('--tile-bg',p.bg);e.style.setProperty('--tile-edge',p.edge);
@@ -164,7 +164,7 @@ function legalMoves(includeCore=true){
   for(let r=0;r<SIZE;r++)for(let c=0;c<SIZE;c++)for(const [dr,dc] of [[0,1],[1,0]]){
     if(r+dr>=SIZE||c+dc>=SIZE)continue;
     const a=board[r][c],b=board[r+dr][c+dc];if(!a||!b)continue;
-    if(a.special==='core'||b.special==='core'){if(includeCore)result.push({a,b,score:100});continue;}
+    if(a.special==='core'||b.special==='core'||a.special&&b.special){if(includeCore)result.push({a,b,score:100});continue;}
     swapData(a,b);const m=matches();if(m.tiles.length){const counts=[0,0,0,0,0];m.tiles.forEach(t=>counts[t.type]++);const score=counts[0]*8+counts[1]*(state.enemyHp<state.enemyMax*.6?5:0)+counts[4]*2+counts[2]*2;result.push({a,b,score});}swapData(a,b);
   }
   return result;
@@ -189,26 +189,57 @@ async function moveTile(t,fromR,fromC,delay=0){
   await animate(t.el,[{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}],{duration:Math.min(450,240+Math.abs(fromR-t.r)*22),delay,easing:'cubic-bezier(.22,.65,.35,1)',fill:'backwards'});
 }
 async function swapAnimated(a,b){const ar=a.r,ac=a.c,br=b.r,bc=b.c;swapData(a,b);sfx('swap');await Promise.all([moveTile(a,ar,ac),moveTile(b,br,bc)]);}
+// Special gems follow one shared rule set (src/board-specials.js; owner 05/11, Claude + Codex): a straight 4 makes a
+// Sao băng sweeping its band (row or column, 3 lanes), a straight 5+ or a 6+ cluster a Lõi, an L/T a Bom (5×5). The hero makes specials in
+// PvE, both sides in PvP; specials a blast reaches fire once each, in generations (gen) the board plays together.
 function makePlan(m,preferred,owner,core=null,coreType=null){
-  const targets=new Set(m?m.tiles:[]),creates=[],acts=[],playerTiles=new Set(),queued=new Set();
-  if(owner==='hero'&&m)for(const cl of matchClusters(m)){
-    const kind=cl.size>=6?'core':cl.size===5?'bomb':cl.size===4?'bolt':null;
-    if(kind){const normals=[...cl].filter(t=>!t.special),pick=normals.includes(preferred)?preferred:normals[Math.floor(normals.length/2)];if(pick){creates.push({tile:pick,kind});targets.delete(pick);}}
+  const targets=new Set(m?m.tiles:[]),creates=[],playerTiles=new Set();
+  if((owner==='hero'||specialDuel())&&m){
+    const groups=m.groups.map(g=>g.map(tilePos)),swapped=(Array.isArray(preferred)?preferred:[preferred]).filter(Boolean).map(tilePos);
+    for(const cl of matchClusters(m)){
+      const cluster=[...cl].map(tilePos),shape=specialRules.shape(cluster,groups);if(!shape.kind)continue;
+      const p=specialRules.createAt(cluster,swapped,q=>!tileAt(q).special);if(p==null)continue;
+      creates.push({tile:tileAt(p),kind:shape.kind,dir:shape.dir});targets.delete(tileAt(p));
+    }
   }
-  const enqueue=t=>{if(t.special&&!queued.has(t)){queued.add(t);acts.push({tile:t,kind:t.special});}};
-  if(core){targets.add(core);enqueue(core);}
-  [...targets].forEach(enqueue);
-  for(let i=0;i<acts.length;i++){
-    const a=acts[i],type=a.kind==='core'?(a.tile===core?coreType:rand(5)):a.tile.type;
-    const hits=all().filter(t=>a.kind==='bolt'?Math.abs(t.r-a.tile.r)<=2&&Math.abs(t.c-a.tile.c)<=2:a.kind==='core'?t===a.tile||t.type===type:t.type===type&&t.special!=='core');
-    a.hits=hits;
-    for(const t of hits){targets.add(t);playerTiles.add(t);enqueue(t);}
-  }
-  creates.forEach(x=>targets.delete(x.tile));
+  const created=new Set(creates.map(x=>x.tile)),start=[];
+  const typeAt=p=>tileAt(p)?.type??-1,isSpecial=p=>{const t=tileAt(p);return t?.special&&!created.has(t)?{kind:t.special,dir:t.dir}:null;};
+  if(core){targets.add(core);start.push({p:tilePos(core),kind:'core',color:coreType??specialRules.mostCommon(typeAt)});}
+  const run=specialRules.chain(start,[...targets].map(tilePos),typeAt,isSpecial);
+  for(const p of run.cleared){const t=tileAt(p);if(t&&!created.has(t))targets.add(t);}
+  const acts=specialActs(run.fired,created);
+  // PvE keeps today's gift: gems a special clears on the foe's move are the hero's. In PvP the mover takes everything.
+  if(!specialDuel())for(const a of acts)for(const t of a.hits)playerTiles.add(t);
   return {targets:[...targets],creates,acts,playerTiles};
 }
+// Two specials swapped together always fire, centred where the dragged gem landed (combo table in board-specials.js).
+function makeComboPlan(a,b,owner){
+  const typeAt=p=>tileAt(p)?.type??-1,kindAt=p=>tileAt(p)?.special||null;
+  const spec=x=>({p:tilePos(x),kind:x.special,dir:x.dir,type:x.type});
+  const c=specialRules.combo(spec(a),spec(b),tilePos(a),typeAt,kindAt);
+  if(c.full)return makeCoreFusionPlan(a,1);
+  const turned=c.turn.map(tileAt);
+  // The turned gems fire as the partner kind; every other special the combo reaches fires once on its own.
+  const start=c.turn.map(p=>({p,kind:c.kind,dir:c.dir}));
+  const isSpecial=p=>{const t=tileAt(p);if(t===a||t===b)return null;return t?.special?{kind:t.special,dir:t.dir}:null;};
+  const run=specialRules.chain(start,c.clear.filter(p=>!c.turn.includes(p)),typeAt,isSpecial);
+  for(const p of c.clear)run.cleared.add(p);
+  const targets=[...run.cleared].map(tileAt).filter(Boolean);
+  const head={tile:a,partner:b,kind:'combo',name:c.name,gen:0,hits:c.clear.map(tileAt).filter(Boolean),turn:turned.length?{tiles:turned,kind:c.kind,dir:c.dir}:null};
+  const acts=[head,...specialActs(run.fired,new Set()).map(x=>({...x,gen:x.gen+1}))];
+  const playerTiles=new Set();if(!specialDuel()&&owner==='enemy')targets.forEach(t=>playerTiles.add(t));
+  return {targets,creates:[],acts,playerTiles,combo:c.name};
+}
+const specialRules=globalThis.GemwovenSpecials;
+const tileAt=p=>board[Math.floor(p/SIZE)]?.[p%SIZE]||null,tilePos=t=>t.r*SIZE+t.c;
+function specialDuel(){return typeof progressionIsDuel==='function'&&progressionIsDuel();}
+function specialActs(fired,created){
+  // The chain's fired specials as board acts; gen lets the board play one ring of a chain together.
+  return fired.map(f=>({tile:tileAt(f.p),kind:f.kind,dir:f.dir,color:f.color,gen:f.gen||0,hits:f.hits.map(tileAt).filter(t=>t&&!created.has(t))}));
+}
+// Two Lõi clear the whole board exactly once (owner 05/11: was once per special on the board).
 function coreFusionCount(a,b){
-  return a.special==='core'&&b.special==='core'?all().filter(t=>t.special).length:0;
+  return a.special==='core'&&b.special==='core'?1:0;
 }
 function makeCoreFusionPlan(origin,total,wave=1){
   const targets=all(),tile=board[origin.r][origin.c];
@@ -256,7 +287,7 @@ async function clearPlan(plan,chain){
   }).concat(plan.targets.slice(0,28).map(t=>boardBurst(t,TYPES[Math.max(0,t.type)].color))));
   const focused=document.activeElement,hadFocus=focused?.classList.contains('tile'),focusRow=hadFocus?Number(focused.getAttribute('aria-rowindex'))-1:0,focusCol=hadFocus?Number(focused.getAttribute('aria-colindex'))-1:0;
   plan.targets.forEach(t=>{if(board[t.r][t.c]===t)board[t.r][t.c]=null;t.el.remove();});
-  for(const x of plan.creates){x.tile.special=x.kind;if(x.kind==='core')x.tile.type=-1;paintTile(x.tile);await animate(x.tile.el.firstElementChild,[{transform:'scale(.65)'},{transform:'scale(1.13)',offset:.6},{transform:'scale(1)'}],{duration:260});}
+  for(const x of plan.creates){x.tile.special=x.kind;x.tile.dir=x.dir;if(x.kind==='core')x.tile.type=-1;paintTile(x.tile);await animate(x.tile.el.firstElementChild,[{transform:'scale(.65)'},{transform:'scale(1.13)',offset:.6},{transform:'scale(1)'}],{duration:260});}
   await gravity();
   if(hadFocus)focusTile(board[Math.max(0,focusRow)][Math.max(0,focusCol)]);else if(!all().some(t=>t.el.tabIndex===0))board[0][0].el.tabIndex=0;
 }
@@ -431,12 +462,14 @@ async function trySwap(a,b){
     const core=a.special==='core'?a:b.special==='core'?b:null,other=core===a?b:a,fusionCount=coreFusionCount(a,b);
     await swapAnimated(a,b);
     if(fusionCount){await resolveBoard('hero',makeCoreFusionPlan(a,fusionCount));return true;}
-    if(core){await resolveBoard('hero',makePlan(null,null,'hero',core,other.special==='core'?rand(5):other.type));return true;}
+    if(a.special&&b.special){await resolveBoard('hero',makeComboPlan(a,b,'hero'));return true;}
+    if(core){await resolveBoard('hero',makePlan(null,null,'hero',core,other.type));return true;}
     if(!matches().tiles.length){await swapAnimated(a,b);sfx('fail');message('Chưa tạo được bộ ba. Thử một kết nối khác nhé.',false);return false;}
-    await resolveBoard('hero',null,a);return true;
+    await resolveBoard('hero',null,[a,b]);return true;
   });
 }
-function activateCore(t){return perform(async()=>{await resolveBoard('hero',makePlan(null,null,'hero',t,rand(5)));return true;});}
+// A tapped Lõi clears the colour most common on the board (owner 05/11; was a random colour).
+function activateCore(t){return perform(async()=>{await resolveBoard('hero',makePlan(null,null,'hero',t,specialRules.mostCommon(p=>tileAt(p)?.type??-1)));return true;});}
 function activateSkill(){
   if(state.energy<100)return;
   if(typeof foeSilenced==='function'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');return;}
@@ -578,7 +611,7 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   playCastSound,stopCastSounds,get castSounds(){return [...castSoundSources].map(({id})=>id);},
   spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads,span:sheet.span,footY:sheet.footY,scale:sheet.scale,bodyHeight:sheet.bodyHeight};},
   spriteAction(side,action,duration){setSpriteAction(side,action,duration);},
-  get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,
+  get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,makeComboPlan,specialRules,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,
   get progressionTurns(){return progressionTurn;},
   get expedition(){return typeof expeditionState==='undefined'?null:expeditionState;},expeditionCollect,
   expeditionTurn(){return expeditionEnemyTurn();},rageCast(){state.enemyEnergy=100;return castReadyUltimates();},bossHistory(){return progressionBossHistory.slice();},heroStrike(raw){return attack('hero',raw);},foeStrike(raw){return attack('enemy',raw);},
@@ -586,7 +619,7 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   // Studio: try an alternative drawing of a hero (ART.heroVariants) in place of its current one.
   heroVariant(key,name){const base=ART.heroVariantBase||(ART.heroVariantBase={});base[key]??=ART.heroes[key];ART.heroes[key]=name?ART.heroVariants?.[key]?.[name]||base[key]:base[key];renderActors();update();return Object.keys(ART.heroVariants?.[key]||{});},
   configure(options){if(locked&&!$('selectDialog').open)throw Error('Wait for the current action to finish');Object.assign(state,options);if($('selectDialog').open)$('selectDialog').close();if($('resultDialog').open)$('resultDialog').close();startStage();Object.assign(state,options);plannedIntent=intent();renderActors();update();},
-  setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
+  setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;board[s.r][s.c].dir=s.kind==='bolt'?s.dir||'row':undefined;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
   setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get creatureNames(){return progressionRules.WORLD.CREATURE_NAMES;},creatureSheets,get foeStatuses(){return foeStatuses;},get foeHaste(){return foeHaste;},resetFoeStatuses(){foeStatusReset();},tickFoeStatuses(){return tickFoeStatuses();},applyFoeStatus(s,base){return applyFoeStatus(s,base);},castReadyUltimates(){return castReadyUltimates();},foeSkills(){const o=state.qaFoeFx;if(!o)return [];const W=progressionRules.WORLD;return (o.tier==='boss'?W.BOSSES[o.boss]?.skills:o.tier==='elite'?[...W.ELITE_SKILLS[o.creature],...(foeEliteUlt(o)?[foeEliteUlt(o)]:[])]:[W.COMMON_SKILL])||[];},
   foeCast(index,base=30){const s=this.foeSkills()[index];if(!s)return;const hit=s.effects?.find(e=>e.type==='hit'||e.type==='burst'),ward=s.effects?.find(e=>e.type==='ward'),heal=s.effects?.find(e=>e.type==='heal');
     const skill=s.effects?{name:s.name,move:s.move,ult:s.ult,kind:s.kind,power:hit?.power||0,hits:hit?.hits||1,shield:ward?.pct,heal:heal?.pct,status:s.effects.find(e=>e.type==='status')}:s;return castFoeSkill(skill,base);},

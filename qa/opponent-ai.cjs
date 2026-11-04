@@ -9,7 +9,7 @@ const defaults = {stage:10,key:'fire',enemyKey:'earth',hp:170,armor:0,energy:0,e
 let randomCalls = 0;
 const privateMath = Object.create(Math);
 privateMath.random = () => {randomCalls++; throw Error('AI consumed the gameplay RNG');};
-const sandbox = {HEROES:heroes,state:{...defaults},board:[],performance,setTimeout,Math:privateMath,GemwovenBoardRules:require(path.join(root,'src/gemwoven/board-rules.js'))};
+const sandbox = {HEROES:heroes,state:{...defaults},board:[],performance,setTimeout,Math:privateMath,GemwovenBoardRules:require(path.join(root,'src/gemwoven/board-rules.js')),GemwovenSpecials:require(path.join(root,'src/board-specials.js'))};
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(root,'src/opponent-ai.js'),'utf8')+'\nglobalThis.api={OpponentAI,chooseEnemyMove,enemyThinkingLevel};',sandbox);
 const AI=sandbox.api.OpponentAI;
@@ -19,7 +19,7 @@ function grid(values,specials=[]){const cells=values.map((row,r)=>row.map((type,
 function base(){return Array.from({length:8},(_,r)=>Array.from({length:8},(_,c)=>(r*2+c)%5));}
 let seed=1337;function rng(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;}
 function playable(){for(;;){const a=Array.from({length:8},()=>Array(8));for(let r=0;r<8;r++)for(let c=0;c<8;c++){let t;do{t=Math.floor(rng()*5);}while(c>1&&a[r][c-1]===t&&a[r][c-2]===t||r>1&&a[r-1][c]===t&&a[r-2][c]===t);a[r][c]=t;}const data=AI.snapshot(grid(a),defaults);if(AI.legal(data.cells,data.state).length>3)return a;}}
-function reference(board,current=defaults){const src=fs.readFileSync(path.join(root,'src/game.js'),'utf8');const r={SIZE:8,state:{...current},board,rand:()=>2,tileType:t=>t&&t.special!=='core'?t.type:null};r.all=()=>r.board.flat();vm.createContext(r);vm.runInContext(src.slice(src.indexOf('function matches()'),src.indexOf('function seedBoard()'))+src.slice(src.indexOf('function makePlan('),src.indexOf('function svgNode(')),r);return r;}
+function reference(board,current=defaults){const src=fs.readFileSync(path.join(root,'src/game.js'),'utf8');const r={SIZE:8,state:{...current},board,rand:()=>2,GemwovenSpecials:require(path.join(root,'src/board-specials.js')),tileType:t=>t&&t.special!=='core'?t.type:null};r.all=()=>r.board.flat();vm.createContext(r);vm.runInContext(src.slice(src.indexOf('function matches()'),src.indexOf('function seedBoard()'))+src.slice(src.indexOf('function makePlan('),src.indexOf('function svgNode(')),r);return r;}
 
 (async()=>{
   assert.deepEqual([1,5,10,20].map(s=>sandbox.api.enemyThinkingLevel(s).depth),[1,1,2,3]);checks.push('Stage progression 1/1/2/3 plies');
@@ -70,14 +70,14 @@ function reference(board,current=defaults){const src=fs.readFileSync(path.join(r
   for(const specialList of [pair,[...pair,{r:0,c:0,kind:'bolt'},{r:7,c:7,kind:'bomb'}]]){
     const data=AI.snapshot(grid(base(),specialList),{...defaults,enemyHp:1000000,enemyMax:1000000});
     const before=JSON.stringify(data),move=AI.analyze(data.cells,data.state,27,28);
-    assert.equal(move.fusionWaves,specialList.length);
+    assert.equal(move.fusionWaves,1,'two Lõi clear the board exactly once (owner 05/11)');
     assert.equal(move.heroCounts.reduce((a,b)=>a+b,0),62);
     assert.equal(move.enemyCounts.reduce((a,b)=>a+b,0),0);
-    assert(move.next.every(cell=>cell===0));assert(move.hero.value>previousFusionValue);
+    assert(move.next.every(cell=>cell===0));assert(previousFusionValue===0||Math.abs(move.hero.value-previousFusionValue)<1e-9,'more specials on the board no longer add waves');
     previousFusionValue=move.hero.value;assert.equal(JSON.stringify(data),before);assert.equal(randomCalls,0);
     assert.equal(AI.legal(data.cells,data.state).filter(m=>m.from===27&&m.to===28).length,1);
   }
-  checks.push('Dual cores count all initial specials, give full-board rewards to hero and estimate unknown refills without RNG or duplicate colour choices');
+  checks.push('Dual cores clear the board once, give full-board rewards to hero and use no RNG');
 
   const frozen=grid(fixtures[1]);for(const row of frozen){row.forEach(Object.freeze);Object.freeze(row)}Object.freeze(frozen);sandbox.board=frozen;sandbox.state={...defaults,stage:22};
   const before=JSON.stringify({board:sandbox.board,state:sandbox.state});const one=await sandbox.api.chooseEnemyMove();const two=await sandbox.api.chooseEnemyMove();
