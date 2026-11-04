@@ -1,0 +1,17 @@
+OpenAI API not used (API skipped until recheck: credit used up (credit_balance_exhausted)); drawing with Codex.
+{
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows four separate violet wisps in four columns on a flat black background, matching the prompt's layout, shapes and colour scheme. No cropping, text, extra figures or background defects are visible. The small star sparkles are within what the prompt asked for.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000369
+  },
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-lightning\\raw-mist.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a7a4-545d-7353-b157-b25ad20895c7\\exec-70a25043-14dc-4a2c-b4b6-eb5c111120c2.png",
+  "extra_new_images": [],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 57.9
+}

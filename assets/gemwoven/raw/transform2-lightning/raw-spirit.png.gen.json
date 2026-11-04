@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T17:38:40Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\lightning\\form-3\\showcase\\master.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-fire\\raw-spirit.png"
+  ],
+  "prompt": "Game VFX art for a 2D anime fantasy mobile RPG, same style as the second reference (an approved see-through fox-goddess spirit of fire lines) but for the hero in the first reference: Lumi (lightning hero, a witch-like girl in violet with stars).\nDraw ONE giant guardian spirit: an original a STORM-AND-STAR SPIRIT: a serene starry goddess with flowing hair full of tiny stars, a mantle of storm clouds traced with thin violet lightning, a crescent of stars behind her head, seen from the waist up, rising out of a low soft base of glowing mist.\nIt must read as a SEE-THROUGH spirit, like a glowing light projection: drawn mainly with bright luminous outlines and highlights (violet, lilac and electric white, with white-hot cores; tiny stars and fine lightning threads (calm, no harsh bolts)), strongest on the face, shoulders, arms and hands, while the inside of the body and mantle is only a very faint thin glow, mostly empty so the background would show through. Not a solid figure.\nPose that must be obvious at small size: her two long arms come forward and down on BOTH sides, open hands curving inward toward each other around an EMPTY space at the bottom centre — sheltering a small figure standing there (do not draw the figure). NO weapon, nothing held in the hands. Keep a clear dark gap between each arm and the mantle.\nComposition: tall portrait image, centred; the top of the head (ears or antlers or hood tip) is the HIGHEST point, about 4% below the top edge; the face at about 20–25% from the top; nothing rises above the head; the spirit fills about 94% of the height; the empty sheltered space between the hands is about 40% of the image width.\nBackground: PURE FLAT BLACK #000000 everywhere outside the glowing lines (keyed by brightness). No ground, no scenery, no text, no frame, no watermark, no vignette.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the prompt: one witch-hat starry spirit with a crescent behind the head, arms reaching down on both sides with hands curving toward an empty bottom-centre space, no weapon, a flat black background, and no text or extra figures. The top of the hat is near the top edge and the face sits roughly a quarter of the way down. The body is more filled with violet glow than the requested faint see-through interior, but that is stylistic drift, not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000777
+  }
+}

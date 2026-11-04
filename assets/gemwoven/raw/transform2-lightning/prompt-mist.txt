@@ -1,0 +1,8 @@
+Game VFX art for a 2D anime fantasy mobile RPG, same style and layout as the reference (four separate drifting wisps of glowing spirit mist in four equal columns), but in the colours of the hero Lumi (lightning hero, a witch-like girl in violet with stars).
+Draw FOUR separate drifting wisps of glowing spirit mist, the kind this hero's guardian spirit leaves as it dissolves, side by side in four equal columns of one wide image (one wisp per column, nothing crossing between columns):
+1. a curl of violet star-mist rising, tall S-shaped, thick rounded belly at the bottom, tapering to a thin curled tip at the top;
+2. a long ribbon of storm mist drifting to the right, rounded head on the left, long tapered tail on the right, a gentle wave;
+3. a curled ribbon of mist, shorter, curling upward at its tail;
+4. a cluster of small star-mist puffs with a few tiny stars, with soft gaps between them, thinning at the edges.
+Look: luminous see-through mist — lilac and violet star mist with bright white-lilac cores, translucent purple edges and a few tiny stars; smooth soft edges (no hard outlines, no faces), each wisp clearly a separate shape with empty space around it.
+Background: PURE FLAT BLACK #000000 everywhere (keyed by brightness). No text, no frame, no watermark.
