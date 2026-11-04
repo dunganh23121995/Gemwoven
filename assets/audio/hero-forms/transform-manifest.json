@@ -188,5 +188,24 @@
     "peak": 0.256,
     "rms": 0.016,
     "sha256": "cab6357ffd3b7dce0c299e8043b11934f7b0f5afb6a351f69374ccd322991f8f"
+  },
+  "shadow-transform": {
+    "file": "hero-forms/transform/shadow-transform.wav",
+    "duration": 0.8,
+    "beat": "a dark whoosh (BIẾN THÂN pressed)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "whoosh dark.wav",
+        "author": "sfx4animation",
+        "source_url": "https://freesound.org/people/sfx4animation/sounds/431976/",
+        "license": "CC0-1.0",
+        "sha256": "f6b1d2a15fd6a5695fb2a37886609efe05a1cf744cbd593c57a0bb3bf19cd1d6"
+      }
+    ],
+    "processing": "excerpt 0.30-1.10 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.28,
+    "rms": 0.06,
+    "sha256": "bca3581461229f1610bbb8a0a871eded1ac8c6efaf30132b52359ce9a42fe572"
   }
 }

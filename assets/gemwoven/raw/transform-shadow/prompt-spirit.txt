@@ -1,0 +1,15 @@
+Use the supplied heroes-rest image as a style and scale reference only. Noct is the fifth and final group of three heroes. His faceless appearance, hood, weapons, scythe, and existing aura are locked. Do not draw, copy, replace, or redesign any of them.
+
+Create ONE standalone transformation VFX sprite on a square 1536 x 1536 canvas: an open shadow-veil crest made from two broad folded bands of cool charcoal-violet darkness. Leave a large irregular central opening. The left fold rises from a low divided base; the right fold gathers into a small angular knot with a restrained pale edge in the upper-right quadrant. Make it an abstract painted emblem, not another character, a head, a hood, or a portal.
+
+Style: clean hand-painted HD 2D game VFX, bold stable silhouette, crisp antialiased edges, a few deliberate internal folds, readable at 150 pixels tall. Do not make pixel art.
+
+Palette strictly: #151924, #2D2941, #514367, #817297, with tiny #B5A7C7 highlights. No neon purple, white mass, bloom, blur, soft smoke halo, face, eyes, skull, feathers, moon, blade, scythe, slash, or clone.
+
+Background: completely solid flat green #00FF00, including every opening. No green in the artwork. Leave at least 6% empty margin on every side. No ground, cast shadow, text, labels, UI, hero, watermark, or border. One still sprite, not animation frames.
+
+Revision after the first fight review (Codex): the crest sank into the hero's own dark aura. Make two broad, clearly separated folds with a distinct angular knot in the upper-right quadrant, main edges in #817297 with small #B5A7C7 accents, bold shapes readable when shown 120 pixels tall.
+
+Revision 3 (Codex fight review 2): it read as a closed ring or portal. Make two clearly SEPARATE folds with wide open gaps at the top and the bottom (gap at least a fifth of the height), and gather the right fold into one solid angular knot in the upper-right quadrant. Edges #817297; #B5A7C7 accents at most 5% of the area; no neon.
+
+Revision 4 (Codex fight review 3): it read as a crescent blade. Open the outline more: cut the right curve into two broad folds with BLUNT ends, make the upper-right knot a clear solid block, keep at least half the centre empty; avoid any crescent or round portal shape. Main mass #514367, edges #817297, #B5A7C7 only as tiny dots.

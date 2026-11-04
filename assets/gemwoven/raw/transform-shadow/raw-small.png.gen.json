@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "at": "2026-11-04T06:26:23Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform-fire\\ref-heroes-rest.png"
+  ],
+  "prompt": "Use the supplied heroes-rest image only as a painted-style reference. Noct is the final group of three heroes. Do not draw any hero, weapon, or existing aura.\n\nCreate ONE landscape 3072 x 1024 VFX asset sheet with four equal invisible columns and exactly FOUR asset groups, left to right:\n\n1. GROUND: two low folded shadow tips at opposite ends of a wide group, approximately four times wider than tall. Leave the central 40% entirely empty for feet. No connecting black puddle, closed ring, portal, or ground shadow.\n2. MOTE: one compact curved fragment of painted charcoal-violet shadow with a blunt upward tip and one restrained cool edge. No smoke trail.\n3. MOTE VARIANT: one smaller irregular dark ash grain, slightly tilted, with one muted violet facet. No trail.\n4. AFTER: one tiny low broken-notch mark made of two short violet-grey strokes, approximately three times wider than tall. No eyes, face, crescent blade, floating smoke, or particles.\n\nStyle: clean hand-painted HD 2D game VFX, bold miniature shapes, crisp antialiased edges, no pixel art, blur, bloom, or soft fog.\n\nPalette strictly: #151924, #2D2941, #514367, #817297, tiny #B5A7C7 accents. No neon purple.\n\nBackground: completely solid flat green #00FF00. No green in the artwork. Centre each group within its own quarter with at least 8% empty margin to every cell edge and wide gaps between groups. No gradient, cast shadow, ground plane, text, labels, UI, hero, watermark, or border. Separate still pieces, not animation frames.\n\nRevision after the first fight review (Codex): the afterglow mark was too faint. Make piece 4 two short, solid violet-grey strokes, clearly thicker, readable at 40 pixels wide.\n\nRevision 3 (Codex fight review 4): piece 4 (AFTER): two solid strokes in #817297 with one small #B5A7C7 dot, clearly thick.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows four separate groups in the expected left-to-right order on a flat green background, with no hero, text, border or cut-off. Each group sits roughly centred in its quarter with empty margins, and the centre of the ground pair is left clear. The pieces are small relative to the canvas, but that is not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000588
+  }
+}

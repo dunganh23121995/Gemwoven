@@ -1,0 +1,11 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "at": "2026-11-04T06:17:05Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform-fire\\ref-heroes-rest.png"
+  ],
+  "prompt": "Use the supplied heroes-rest image only for Gemwoven's painted style. Noct is the final group of three heroes. His art and existing aura must remain unchanged; do not draw either.\n\nCreate ONE portrait 1024 x 1536 VFX asset sheet containing exactly TWO separate upright shadow-fold ribbons, one in each half.\n\nLEFT: a tall slender charcoal-violet ribbon approximately 4.5 times taller than wide, with two broad torn folds, one clearly open middle slit, and a narrow lower root. Keep its inner right edge calm and smooth; the outer left edge opens into blunt folded tips.\n\nRIGHT: a different ribbon, 90% as tall, with one long opening and two shorter blunt outer tips. Its inner left edge is smooth. Do not mirror the left piece. Neither piece resembles a wing, feather, hood, weapon, slash arc, or enclosing barrier.\n\nStyle: clean hand-painted HD 2D game VFX, crisp antialiased edges, bold painted folds, no pixel art, fine smoke strands, blur, bloom, glow halo, or detached particles.\n\nPalette strictly: #151924, #2D2941, #514367, #817297, tiny #B5A7C7 edge accents. No neon purple.\n\nBackground: entirely solid flat green #00FF00. No green in the pieces. Each complete piece stays inside its own half with at least 6% empty margin to all cell edges and a wide empty gap between pieces. No gradient, shadow, ground, text, labels, UI, hero, watermark, or border. Two still assets, not animation frames.\n\nRevision 2 (Codex fight review 3): give each ribbon a broad, clearly drawn main edge in #817297, thick at small size, without brightening the whole ribbon.",
+  "precheck": "skipped: no ANTHROPIC_HELPER_API_KEY"
+}
