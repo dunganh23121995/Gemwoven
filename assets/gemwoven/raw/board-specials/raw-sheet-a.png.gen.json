@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T20:07:09Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\items\\crystal-bolt.webp"
+  ],
+  "prompt": "Game VFX sprite sheet for a polished 2D anime fantasy match-3 mobile RPG (same jewel style as the reference gems: glossy faceted gems with gold trim, bright and magical). Draw ONLY glowing light effects, no gems, no characters, no text.\n\nCanvas: wide 2:1 landscape. PURE FLAT BLACK #000000 background everywhere (the effects will be keyed by brightness and added with screen blending). Leave black space between pieces. No frames, no labels, no grid lines, no vignette.\n\nLayout (keep exactly):\nTOP HALF — piece 1 \"STAR BEAM\": one long horizontal beam of light crossing almost the whole width, centred vertically in the top half, about 1/9 of the image height thick. A thin bright ivory-white core line (#FFF6DA) inside a luminous electric-cyan body (#63DFFF) with soft glowing edges, faint flowing energy streaks and tiny four-point star glints sprinkled along it; the two ends taper and fade smoothly to black. Perfectly straight, horizontally symmetric.\nBOTTOM HALF — three pieces in a row, each centred in its third, each fitting inside a square with margin:\n  piece 2 \"COMET HEAD\": a bright comet head pointing RIGHT: an ivory-white pointed core with cyan electric glow and a short swept tail streaming to the left, two small sparkles.\n  piece 3 \"BLAST RING\": a circular shockwave ring seen from the front: thick glowing ring of golden-orange fire light (#FFB34D) with an ivory inner edge, small ember flecks and crystal glints around it, the centre mostly black/empty.\n  piece 4 \"RAINBOW RING\": a circular ribbon of prismatic rainbow light (red, gold, green, cyan, violet) with a thin gold sheen, gently swirling like silk, small prism sparkles, the centre mostly black/empty.\n\nStyle: luminous, sparkling, magical, crisp edges at small size, high saturation but never a white wash; glow fades to pure black. Nothing touches the image border.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested layout: one full-width horizontal beam on top, then a comet head pointing right, a golden-orange ring and a rainbow ring along the bottom. The background looks flat black, there is no text, no gems and no characters, and nothing touches the image border. I found no objective defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000429
+  }
+}

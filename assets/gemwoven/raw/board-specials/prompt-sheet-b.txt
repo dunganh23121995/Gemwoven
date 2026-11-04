@@ -1,0 +1,14 @@
+Game VFX sprite sheet for a polished 2D anime fantasy match-3 mobile RPG (same jewel style as the reference gems: glossy faceted gems with gold trim). Draw ONLY glowing light effects and gem fragments, no full gems, no characters, no text.
+
+Canvas: square. PURE FLAT BLACK #000000 background everywhere (keyed by brightness, added with screen blending). A 3 columns × 2 rows layout of six pieces, each centred in its cell with generous black margin; nothing crosses a cell or the image border. No frames, no labels, no grid lines.
+
+Row 1:
+  piece 5 "BLOOM FLASH": a radiant starburst flower of light: an ivory-white core with eight to twelve sharp gem-cut petals/rays in warm gold and soft pink-violet, faceted like cut crystal.
+  piece 6 "TARGET MARK": a circular target halo meant to frame one gem: a thin rainbow-gold ring broken into 3 elegant arcs with tiny diamond studs, glowing, empty centre.
+  piece 7 "DIRECTION ARROWS": a pair of bright ivory-and-cyan arrowheads pointing LEFT and RIGHT away from the centre (like ◀ ▶ with an energy line between them), crisp and readable at small size.
+Row 2:
+  piece 8 "SPARKLE": one large four-point star glint, ivory-white core with cyan and gold spikes, a small soft glow.
+  piece 9 "GEM SHARD": a single sharp faceted crystal shard fragment, glossy, light-catching, pale gold-white with cool cyan facets, clear bright and dark facets.
+  piece 10 "SOFT GLOW": a soft round glow orb, ivory centre fading through warm gold to black, no hard edge.
+
+Style: luminous, sparkling, magical, crisp at small size, saturated colours that fade to pure black, never a white wash.

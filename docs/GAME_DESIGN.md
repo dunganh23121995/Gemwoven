@@ -1150,3 +1150,28 @@ sóng thứ 3/6/9 chí mạng), **không cộng nộ**. Băng quái hút 20 nộ
 Thứ tự: đo baseline → gom luật thưởng board thành một bảng dữ liệu chung (combat, AI, mô phỏng) → Băng/miễn/1 tuyệt kỹ/combo nộ/hai
 Lõi → bảng nộ mới → đo 6 tướng (bot trận thật, 1/4/6★) → Biến Thân riêng → Bị Động/Biến Dị theo hướng board (bảng D vòng 1).
 Hệ số từng tướng chỉ chốt sau khi đo; không buff Hiro.
+
+### Vòng Ngọc đặc biệt (05/11, làm thử theo hướng Codex + bộ hiệu ứng mới) — Claude + Codex, đang thử
+
+Chủ dự án: "Ngọc đặc biệt: làm thử theo hướng Codex (ghép 4 xóa một hàng, ghép 5 ra Lõi, chữ L/T ra Bom). Cùng Codex xây dựng bộ
+hiệu ứng đẹp hơn, lung linh hơn, cơ chế item đặc biệt xịn hơn." Luật dùng chung một nơi: `src/board-specials.js` (bàn thật, AI, mô
+phỏng); hiệu ứng `src/special-fx.js` + `src/special-fx.css`; spec, hai tấm vẽ và các vòng chấm ở `assets/gemwoven/raw/board-specials/`.
+
+| Tạo | Kích hoạt |
+|---|---|
+| **Ghép 4 thẳng → Sao băng** (hướng theo trục ghép, có mũi tên vẽ trên ngọc) | Quét **dải 3 làn** hàng (hoặc cột) của nó, làn giữa sáng nhất |
+| **Ghép chữ L/T → Bom** | Nổ **5×5** |
+| **Ghép 5 thẳng, hoặc cụm giao từ 6 ngọc → Lõi** | Đổi với một ngọc: xóa cả màu đó; bấm riêng: màu nhiều nhất trên bàn |
+| Đổi **hai ngọc đặc biệt** cho nhau (luôn hợp lệ) | Sao+Sao 3 hàng + 3 cột · Sao+Bom 5 + 5 · Bom+Bom 7×7 · Lõi+Sao/Bom: cả màu đó thành Sao/Bom rồi nổ cùng lúc · Lõi+Lõi xóa cả bàn **đúng 1 lần** |
+
+- Ưu tiên trong một cụm: Lõi > Bom > Sao, một special/cụm; đặt ở viên vừa kéo (hoặc viên đổi chỗ kia), cascade thì gần tâm cụm.
+- Special bị nổ trúng kích dây chuyền **1 lần/ngọc**, theo **thế hệ** (cùng thế hệ nổ cùng lúc, cách 50 ms); mỗi ngọc thưởng 1 lần.
+- PvE: chỉ người chơi tạo special; ngọc do special xóa trong lượt quái vẫn tính cho người chơi (như cũ). PvP: hai bên cùng luật, ai đi
+  người đó hưởng.
+- **Cân bằng** (`qa/gemwoven/special-sim.cjs`, 20.000 lượt, chỉ khác luật special): bản đầu (Sao 1 hàng, Bom 3×3) làm nộ/sát thương
+  mỗi lượt −42%, trận dài +66% → bù trong luật special: Sao dải 3 làn, Bom 5×5, cụm 6+ ra Lõi. Kết quả so với special cũ: bảng nộ
+  cũ −9,3% nộ / −9,6% sát thương / +9% lượt hạ quái; bảng 3/2/7/2/2 −8,9% / −9,2% / +9,3%. Sát biên ±10%: theo dõi khi chơi thật.
+- **Hiệu ứng:** Codex vẽ 2 tấm (10 mảnh sáng: tia sao, đầu sao chổi, vành nổ, vành cầu vồng, hoa sáng, dấu mục tiêu, mũi tên hướng,
+  sao lấp lánh, mảnh ngọc, quầng), mỗi mảnh chuyển động nguyên khối + vài hạt; một nova/lần xóa; ngọc bị special xóa phồng sáng chính
+  art của nó rồi tan thành hạt màu; combo kéo hai ngọc vào nhau trước khi nổ; giảm chuyển động chỉ giữ kết quả. Codex chấm: v1 6/10 →
+  v2 8/10 (điện thoại 8,1, ngang 7,9, Studio 8,0) → sửa thêm 3 điểm cuối (tan sạch không vòng xám, giữ màu ngọc, làn bên dịu hơn).

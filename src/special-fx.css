@@ -1,0 +1,7 @@
+/* Special gems v2 (owner 05/11): a Sao băng shows which way it sweeps, a pair of drawn arrows across its row or down its
+   column; Bom and Lõi keep their art. The arrows breathe gently so a special reads at a glance (still with reduced motion). */
+.tile.special.bolt .special-dir{position:absolute;left:50%;top:50%;width:104%;height:auto;translate:-50% -50%;pointer-events:none;mix-blend-mode:screen;filter:drop-shadow(0 0 3px #63dfff);animation:special-dir-breathe 1.6s ease-in-out infinite}
+.tile.special.bolt[data-dir="col"] .special-dir{rotate:90deg}
+@keyframes special-dir-breathe{50%{opacity:.62;scale:.92}}
+.reduced-motion .tile.special.bolt .special-dir,html.reduce-motion .tile.special.bolt .special-dir{animation:none}
+.special-gallery-note{margin:0;padding:8px 10px;font-size:12px;line-height:1.45;color:#e8dcc0;border-top:1px solid #8b96734d}

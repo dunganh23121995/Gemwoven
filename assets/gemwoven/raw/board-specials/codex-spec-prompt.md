@@ -1,0 +1,14 @@
+Gemwoven (Codex) — vòng thiết kế NGỌC ĐẶC BIỆT + FX. Trả lời tiếng Việt, ngắn, quyết định rõ, có số.
+
+Chủ dự án duyệt thử hướng của bạn (vòng Bàn ngọc, assets/gemwoven/raw/board-design/codex-round1.md mục B): "ghép 4 thẳng → Sao băng xóa một hàng/cột theo hướng ghép; ghép 5+ thẳng → Lõi đổi với màu muốn xóa; L/T → Bom 3×3; hai Lõi xóa toàn board 1 lần. Và cùng Codex xây dựng bộ hiệu ứng đẹp hơn, lung linh hơn. Cơ chế các item đặc biệt xịn hơn."
+Luật nộ/băng/combo do agent khác làm; ở đây CHỈ special. Mỗi viên thưởng đúng 1 lần theo id (live-combat collect đã có seen.has(tile.id)).
+
+Code hiện tại (đọc để xác nhận): src/game.js makePlan (cluster ≥6 → core, 5 → bomb, 4 → bolt; bolt xóa 5×5; bomb xóa mọi viên cùng màu; core đổi với màu/ bấm ngẫu nhiên; hai core = toàn bàn N lần), src/board-sequence.js (specialEffect/clearPlan/boardV3Charge/Beam/BombWave; chú ý boardSpecialEffectKind đang đảo bolt↔bomb), src/opponent-ai.js plan(), qa/gemwoven/balance-sim.cjs (chưa có special). Art viên đặc biệt có sẵn (ảnh items.png): <màu>-bolt = ngọc bọc tia điện xanh; <màu>-bomb = ngọc bọc lửa; core = cầu vồng có vành vàng.
+Ảnh before-*.png: khung hình mỗi 110ms của FX hiện tại trong trận thật (điện thoại 390×844): bolt 5×5 (vòng tròn trắng mảnh, nổ lần lượt từng vòng, ~1,3s), bomb xóa màu (tia sét trắng mảnh), core, fusion hai lõi.
+
+Cần:
+1. **Phê bình FX hiện tại** (5–8 ý, thẳng): vì sao chưa "lung linh/xịn".
+2. **Spec cơ chế chốt** (bảng): tạo special (4 thẳng → Sao băng ngang/dọc theo trục ghép, đặt ở viên người chơi vừa kéo; 5+ thẳng → Lõi; L/T/cụm ≥5 không thẳng → Bom 3×3; ưu tiên khi cụm vừa 5 thẳng vừa L), kích hoạt (Sao băng xóa cả hàng/cột 8 ô; Bom 3×3; Lõi đổi với viên → xóa màu đó, bấm Lõi → màu nhiều nhất hay ngẫu nhiên?), **combo special+special khi đổi chỗ 2 special** (đề xuất: Sao+Sao = chữ thập; Sao+Bom = hàng+cột rộng 3; Bom+Bom = 5×5; Lõi+Sao = mọi viên màu đó thành Sao rồi nổ; Lõi+Bom = màu đó thành Bom rồi nổ; Lõi+Lõi = toàn bàn 1 lần) — chỉnh cho đọc được và có trần; special bị nổ trúng thì kích dây chuyền (Sao trúng giữ hướng của nó); special do quái tạo trong PvE? (hiện quái không tạo special; giữ như vậy), PvP đối xứng. Tên tiếng Việt hiển thị cho 3 loại (giữ "Sao băng", "Bom", "Lõi" hay tên hay hơn?).
+3. **Nhịp (ms)** cho từng loại để trận không chậm hơn hiện tại (tổng một Sao băng ≤ ~0,7s, Bom ≤ ~0,6s, Lõi ≤ ~1,0s, combo ≤ ~1,4s).
+4. **Kế hoạch FX "lung linh"**: danh sách mảnh vẽ cần Codex vẽ (tối thiểu, gộp thành 1–2 tấm sheet), mỗi mảnh dùng thế nào (ví dụ: tia quét hàng/cột dạng dải sáng có lõi trắng + viền màu ngọc + vệt sao; vòng nổ 3×3 có sóng xung kích + mảnh vỡ ánh kim; sóng cầu vồng lan theo màu; lóe tạo special; chỉ báo hướng trên Sao băng). Mỗi mảnh là hình vẽ chuyển động nguyên khối + hạt; không ghép khung AI. Gợi ý bảng màu, độ sáng, blend (screen/lighter) để "lung linh" mà không rối, giảm hiệu ứng khi reduced-motion.
+5. Rủi ro + cách đo (sim: nộ/lượt, sát thương/lượt, số lượt/trận trước–sau).

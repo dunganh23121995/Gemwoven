@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T20:08:05Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\items\\core.webp",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\board-specials\\raw-sheet-a.png"
+  ],
+  "prompt": "Game VFX sprite sheet for a polished 2D anime fantasy match-3 mobile RPG (same jewel style as the reference gems: glossy faceted gems with gold trim). Draw ONLY glowing light effects and gem fragments, no full gems, no characters, no text.\n\nCanvas: square. PURE FLAT BLACK #000000 background everywhere (keyed by brightness, added with screen blending). A 3 columns × 2 rows layout of six pieces, each centred in its cell with generous black margin; nothing crosses a cell or the image border. No frames, no labels, no grid lines.\n\nRow 1:\n  piece 5 \"BLOOM FLASH\": a radiant starburst flower of light: an ivory-white core with eight to twelve sharp gem-cut petals/rays in warm gold and soft pink-violet, faceted like cut crystal.\n  piece 6 \"TARGET MARK\": a circular target halo meant to frame one gem: a thin rainbow-gold ring broken into 3 elegant arcs with tiny diamond studs, glowing, empty centre.\n  piece 7 \"DIRECTION ARROWS\": a pair of bright ivory-and-cyan arrowheads pointing LEFT and RIGHT away from the centre (like ◀ ▶ with an energy line between them), crisp and readable at small size.\nRow 2:\n  piece 8 \"SPARKLE\": one large four-point star glint, ivory-white core with cyan and gold spikes, a small soft glow.\n  piece 9 \"GEM SHARD\": a single sharp faceted crystal shard fragment, glossy, light-catching, pale gold-white with cool cyan facets, clear bright and dark facets.\n  piece 10 \"SOFT GLOW\": a soft round glow orb, ivory centre fading through warm gold to black, no hard edge.\n\nStyle: luminous, sparkling, magical, crisp at small size, saturated colours that fade to pure black, never a white wash.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows six glowing effect pieces in a 3x2 grid on a flat black background, matching the prompt's layout and piece descriptions (starburst, target ring, left-right arrows, sparkle, gem shard, soft glow). No text, watermarks, cut-off elements, or anatomy issues are visible. The ring reads as a fuller halo than the three arcs requested, but that is minor stylistic drift.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000543
+  }
+}

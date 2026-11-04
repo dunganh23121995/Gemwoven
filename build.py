@@ -148,6 +148,8 @@ for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
     for suffix in ['', '-bolt', '-bomb']:
         art['items'][name + suffix] = image(f'assets/items/{name}{suffix}.webp')
 art['items']['core'] = image('assets/items/core.webp')
+# Special gem FX pieces (owner 05/11, Codex-drawn, assets/gemwoven/raw/board-specials/prep.py): moved whole by src/special-fx.js.
+art['specialFx'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorted((root/'assets/special-fx').glob('*.webp'))}
 novice_meta=json.loads((root/'assets/heroes/novice/meta.json').read_text(encoding='utf-8'))
 art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration']} for action,meta in novice_meta['actions'].items()}
 art['heroes']['novice']['buff']=art['heroes']['novice']['cast']
@@ -518,6 +520,7 @@ css = '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
                 for p in ['game.css', 'theme-v3.css', 'combat-v3.css', 'sprites.css', 'combo-v4.css', 'antique.css', 'combat-stage.css', 'adventure-effects.css', 'cinematic.css', 'restoration.css', 'scene-ambience.css', 'audio-settings.css', 'shadow-combat.css', 'hero-departures.css', 'gem-selection.css', 'cast-redesign.css', 'self-buffs.css', 'yuki-ultimate.css', 'mika-ultimate.css', 'foe-skills.css', 'summon-showcase.css'])
 css += '\n'+(root/'src/progression-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/transform-fx.css').read_text(encoding='utf-8')
+css += '\n'+(root/'src/special-fx.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/expedition-combat.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/gemwoven/hero-forms.css').read_text(encoding='utf-8')
 css += '\n'+(root/'src/hero-forms-combat.css').read_text(encoding='utf-8')
@@ -546,7 +549,7 @@ for hero in art['heroes']:
 (root/'assets/gemwoven/plaza/sprites.json').write_text(json.dumps(plaza_sprites,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression','board-rules'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')
-                        for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js', 'summon-showcase.js'])
+                        for p in ['audio-settings.js', 'hero-kits.js', 'sprite-runtime.js', 'combo-v4.js', 'opponent-ai.js', 'opponent-turn.js', 'board-sequence.js', 'special-fx.js', 'combat-v3.js', 'live-combat.js', 'antique-trim.js', 'combat-stage.js', 'adventure-effects.js', 'noct-audio.js', 'recorded-voices.js', 'restoration.js', 'cinematic.js', 'scene-ambience.js', 'shadow-combat.js', 'hero-departures.js', 'cast-redesign.js', 'self-buffs.js', 'yuki-ultimate.js', 'mika-ultimate.js', 'foe-skills.js', 'summon-showcase.js'])
 extensions += '\n'+(root/'src/progression-combat.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/transform-fx.js').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/expedition-combat.js').read_text(encoding='utf-8')
@@ -568,6 +571,8 @@ css += '\n'+(root/'src/combat-status.css').read_text(encoding='utf-8')
 extensions += '\n'+(root/'src/combat-coach.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-coach.css').read_text(encoding='utf-8')
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
+# Special gem rules shared with the opponent AI and the simulators (src/board-specials.js), loaded before the game.
+js = (root / 'src/board-specials.js').read_text(encoding='utf-8') + chr(10) + js
 # Skill titles' face (Anton, OFL, subset to Latin and Vietnamese: assets/fonts/anton-vi.woff2)
 css = "@font-face{font-family:'Gemwoven Title';src:url(data:font/woff2;base64,"+base64.b64encode((root/'assets/fonts/anton-vi.woff2').read_bytes()).decode()+") format('woff2');font-display:block}\n"+css
 html = html.replace('/* GAME_CSS */', css).replace('/* GAME_JS */', js)

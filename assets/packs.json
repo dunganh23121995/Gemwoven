@@ -4764,9 +4764,19 @@
     "assets/scenes/painted/ice-near.webp",
     "assets/scenes/painted/lightning-far.webp",
     "assets/scenes/painted/lightning-mid.webp",
-    "assets/scenes/painted/lightning-near.webp"
+    "assets/scenes/painted/lightning-near.webp",
+    "assets/special-fx/arrows.webp",
+    "assets/special-fx/beam.webp",
+    "assets/special-fx/blast.webp",
+    "assets/special-fx/flash.webp",
+    "assets/special-fx/glow.webp",
+    "assets/special-fx/head.webp",
+    "assets/special-fx/mark.webp",
+    "assets/special-fx/ring.webp",
+    "assets/special-fx/shard.webp",
+    "assets/special-fx/sparkle.webp"
    ],
-   "bytes": 165637526
+   "bytes": 166011372
   },
   {
    "id": "hero-earth-f1",
