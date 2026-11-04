@@ -311,6 +311,9 @@ console.log('rarity up fodder ok');
   edit(p=>{p.pass.points=2700;});assert.equal(e.pass().ready,3);
   clock=O.passSeason(clock).end+3600000;v=e.pass();assert.equal(v.season,1);assert.equal(v.level,0);assert.ok(!v.owned.gold&&!v.owned.jewel,'a purchase covers one season');
   assert.equal(v.last.count,3,'leftover rewards are granted, not lost');
+  // A chest still waiting for its stage is not lost at the season's end: it is kept as a voucher.
+  edit(p=>{p.pass.owned.jewel=true;p.pass.points=5000;p.campaign.cleared=20;});assert.equal(e.pass().rows[49].jewel.state,'stage');
+  clock=O.passSeason(clock).end+3600000;v=e.pass();assert.equal(v.season,2);assert.equal(v.vouchers.legendaryGearChoice,1,'gated chest kept as a voucher');
   // VIP progress: 1 point per 1.000 ₫ verified, one cumulative scale, VIP 12 is the top.
   assert.deepEqual(M.vipProgress(0),{level:0,points:0,from:0,next:{level:1,points:100},need:100,ratio:0,max:false});
   const mid=M.vipProgress(450000);assert.equal(mid.level,2);assert.equal(mid.need,150);assert.equal(mid.ratio,.5);

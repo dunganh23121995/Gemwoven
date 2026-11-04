@@ -747,11 +747,12 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     // Sổ Hành Trình (owner 2026-11-04, Codex round 1). Levels come from quest points (plus levels a verified purchase
     // adds, set by the server only); free rewards open as levels are reached, the gold and jewel tracks only once the
     // server records the season's purchase (this client has no way to set it). Jewel gear chests wait for their stage.
-    // Choice items become vouchers. A new season keeps nothing but grants what was left to take on the old one.
+    // Choice items become vouchers. A new season keeps nothing but grants what was left to take on the old one, chests
+    // still waiting for their stage included (Codex hero-season round: the voucher is kept, its stage counts when opened).
     const PASS_TRACKS=['free','gold','jewel'];
     function passSync(p){const O=OPS();if(!O)return null;const s=O.passSeason(current).index;
       if(p.pass&&p.pass.season>=s){p.pass.owned??={};p.pass.claimed??={};for(const t of PASS_TRACKS)p.pass.claimed[t]??=[];p.pass.points|=0;return p.pass;}
-      if(p.pass){const left=passRows(p).flatMap(r=>PASS_TRACKS.filter(t=>r[t].state==='ready').map(t=>[r.level,t]));const got={};for(const [l,t] of left)for(const [k,n] of Object.entries(passGrant(p,O.PASS[t](l))))got[k]=(got[k]||0)+n;
+      if(p.pass){const left=passRows(p).flatMap(r=>PASS_TRACKS.filter(t=>r[t].state==='ready'||r[t].state==='stage').map(t=>[r.level,t]));const got={};for(const [l,t] of left)for(const [k,n] of Object.entries(passGrant(p,O.PASS[t](l))))got[k]=(got[k]||0)+n;
         p.passLast={season:p.pass.season,granted:got,count:left.length};if(left.length)note(p,`Sổ Hành Trình mùa ${p.pass.season+1}: cất ${left.length} phần quà chưa nhận`);}
       p.pass={season:s,points:0,bought:0,claimed:{free:[],gold:[],jewel:[]},owned:{gold:false,jewel:false}};return p.pass;}
     function passLevel(p){const O=OPS();return Math.min(O.PASS.levels,Math.floor(p.pass.points/O.PASS.pointsPerLevel)+(p.pass.bought|0));}
