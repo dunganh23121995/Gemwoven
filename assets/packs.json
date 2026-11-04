@@ -4165,6 +4165,14 @@
     "assets/gemwoven/beanstalk/branch-segment.png",
     "assets/gemwoven/beanstalk/double-stem.png",
     "assets/gemwoven/beanstalk/leaf-platform.png",
+    "assets/gemwoven/calendar/cell-claimed.webp",
+    "assets/gemwoven/calendar/cell-dim.webp",
+    "assets/gemwoven/calendar/cell-today.webp",
+    "assets/gemwoven/calendar/cell.webp",
+    "assets/gemwoven/calendar/check.webp",
+    "assets/gemwoven/calendar/cross.webp",
+    "assets/gemwoven/calendar/lock.webp",
+    "assets/gemwoven/calendar/tray.webp",
     "assets/gemwoven/forge/action-locked.webp",
     "assets/gemwoven/forge/action-ready.webp",
     "assets/gemwoven/forge/bench.webp",
@@ -4220,6 +4228,13 @@
     "assets/gemwoven/gems/gem-atk-2.webp",
     "assets/gemwoven/gems/gem-atk-3.webp",
     "assets/gemwoven/gems/gem-precision-1.webp",
+    "assets/gemwoven/guide/count.webp",
+    "assets/gemwoven/guide/glove-down.webp",
+    "assets/gemwoven/guide/glove-left.webp",
+    "assets/gemwoven/guide/plaque.webp",
+    "assets/gemwoven/guide/ring.webp",
+    "assets/gemwoven/guide/swipe.webp",
+    "assets/gemwoven/guide/tab.webp",
     "assets/gemwoven/hall/banner-earth.webp",
     "assets/gemwoven/hall/banner-fire.webp",
     "assets/gemwoven/hall/banner-ice.webp",
@@ -4868,7 +4883,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 159389372
+   "bytes": 159565458
   },
   {
    "id": "hero-earth-f1",
