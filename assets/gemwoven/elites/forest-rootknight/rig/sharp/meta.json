@@ -1,0 +1,16 @@
+{
+ "id": "forest-rootknight",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.961
+ },
+ "iou": 0.959,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 26.4,
+ "colour": 20.2,
+ "sharpness": 0.743
+}

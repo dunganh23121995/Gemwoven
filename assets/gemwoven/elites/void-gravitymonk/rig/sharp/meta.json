@@ -1,0 +1,16 @@
+{
+ "id": "void-gravitymonk",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.976
+ },
+ "iou": 0.976,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 24.1,
+ "colour": 16.6,
+ "sharpness": 0.706
+}

@@ -1,0 +1,16 @@
+{
+ "id": "void-riftstalker",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "rest",
+  "iou": 0.926
+ },
+ "iou": 0.969,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 17.4,
+ "colour": 17.9,
+ "sharpness": 0.747
+}

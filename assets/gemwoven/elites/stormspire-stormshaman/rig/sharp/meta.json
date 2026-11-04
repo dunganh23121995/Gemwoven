@@ -1,0 +1,16 @@
+{
+ "id": "stormspire-stormshaman",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.988
+ },
+ "iou": 0.977,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 26.4,
+ "colour": 21.4,
+ "sharpness": 0.72
+}

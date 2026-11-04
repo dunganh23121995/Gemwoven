@@ -1,0 +1,16 @@
+{
+ "id": "eldergrove-blossomranger",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.976
+ },
+ "iou": 0.967,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 27.7,
+ "colour": 23.6,
+ "sharpness": 0.778
+}

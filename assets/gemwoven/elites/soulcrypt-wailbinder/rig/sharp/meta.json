@@ -1,0 +1,16 @@
+{
+ "id": "soulcrypt-wailbinder",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.935
+ },
+ "iou": 0.934,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 23.7,
+ "colour": 22.9,
+ "sharpness": 0.832
+}

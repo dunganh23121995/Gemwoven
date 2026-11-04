@@ -1,0 +1,16 @@
+{
+ "id": "thorns-shearkeeper",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.959
+ },
+ "iou": 0.955,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 25.1,
+ "colour": 20.8,
+ "sharpness": 0.874
+}

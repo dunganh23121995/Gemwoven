@@ -1,0 +1,16 @@
+{
+ "id": "volcano-pyremonk",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.963
+ },
+ "iou": 0.957,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 26.3,
+ "colour": 24.8,
+ "sharpness": 0.791
+}

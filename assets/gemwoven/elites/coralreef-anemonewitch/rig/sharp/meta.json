@@ -1,0 +1,16 @@
+{
+ "id": "coralreef-anemonewitch",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "rest",
+  "iou": 0.908
+ },
+ "iou": 0.944,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 27.6,
+ "colour": 24.8,
+ "sharpness": 0.736
+}

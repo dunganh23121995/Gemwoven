@@ -1,0 +1,16 @@
+{
+ "id": "desert-sunarcher",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.959
+ },
+ "iou": 0.943,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 29.0,
+ "colour": 26.9,
+ "sharpness": 0.785
+}

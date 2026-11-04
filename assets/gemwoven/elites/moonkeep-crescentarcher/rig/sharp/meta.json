@@ -1,0 +1,16 @@
+{
+ "id": "moonkeep-crescentarcher",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "rest",
+  "iou": 0.914
+ },
+ "iou": 0.942,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 23.8,
+ "colour": 24.9,
+ "sharpness": 0.8
+}

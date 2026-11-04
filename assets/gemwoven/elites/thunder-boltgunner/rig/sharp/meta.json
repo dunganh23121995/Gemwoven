@@ -1,0 +1,16 @@
+{
+ "id": "thunder-boltgunner",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.94
+ },
+ "iou": 0.939,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 31.4,
+ "colour": 28.2,
+ "sharpness": 0.7
+}

@@ -1,0 +1,16 @@
+{
+ "id": "crystal-shardmonk",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.978
+ },
+ "iou": 0.977,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 40.0,
+ "colour": 26.8,
+ "sharpness": 0.747
+}

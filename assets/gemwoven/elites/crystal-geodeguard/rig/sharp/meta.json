@@ -1,0 +1,16 @@
+{
+ "id": "crystal-geodeguard",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.973
+ },
+ "iou": 0.948,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 32.2,
+ "colour": 18.9,
+ "sharpness": 0.709
+}

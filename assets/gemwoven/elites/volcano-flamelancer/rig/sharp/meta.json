@@ -1,0 +1,16 @@
+{
+ "id": "volcano-flamelancer",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.942
+ },
+ "iou": 0.935,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 24.7,
+ "colour": 20.7,
+ "sharpness": 0.77
+}

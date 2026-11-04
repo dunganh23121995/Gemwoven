@@ -1,0 +1,16 @@
+{
+ "id": "void-voidknight",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "rest",
+  "iou": 0.925
+ },
+ "iou": 0.95,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 24.7,
+ "colour": 19.6,
+ "sharpness": 0.68
+}

@@ -1,0 +1,16 @@
+{
+ "id": "abyss-tidecaller",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.969
+ },
+ "iou": 0.961,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 22.4,
+ "colour": 22.9,
+ "sharpness": 0.836
+}

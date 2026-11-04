@@ -1,0 +1,16 @@
+{
+ "id": "forest-mossdruid",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.978
+ },
+ "iou": 0.968,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 22.8,
+ "colour": 17.0,
+ "sharpness": 0.722
+}

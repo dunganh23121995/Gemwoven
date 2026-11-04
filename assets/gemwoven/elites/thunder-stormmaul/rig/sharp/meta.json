@@ -1,0 +1,16 @@
+{
+ "id": "thunder-stormmaul",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.947
+ },
+ "iou": 0.937,
+ "foot": -0.0098,
+ "effort": "low",
+ "drawn_colour": 63.0,
+ "colour": 53.9,
+ "sharpness": 0.7
+}

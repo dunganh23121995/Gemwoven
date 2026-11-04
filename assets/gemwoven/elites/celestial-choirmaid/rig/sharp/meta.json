@@ -1,0 +1,16 @@
+{
+ "id": "celestial-choirmaid",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.957
+ },
+ "iou": 0.952,
+ "foot": 0.0059,
+ "effort": "low",
+ "drawn_colour": 27.1,
+ "colour": 27.2,
+ "sharpness": 0.834
+}

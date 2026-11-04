@@ -1,0 +1,16 @@
+{
+ "id": "sky-tempestmage",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "rest",
+  "iou": 0.918
+ },
+ "iou": 0.956,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 24.7,
+ "colour": 16.9,
+ "sharpness": 0.728
+}

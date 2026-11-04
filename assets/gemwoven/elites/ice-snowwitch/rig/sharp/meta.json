@@ -1,0 +1,16 @@
+{
+ "id": "ice-snowwitch",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.982
+ },
+ "iou": 0.963,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 27.1,
+ "colour": 20.9,
+ "sharpness": 0.861
+}

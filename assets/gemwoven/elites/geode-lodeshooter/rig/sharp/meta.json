@@ -1,0 +1,16 @@
+{
+ "id": "geode-lodeshooter",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.975
+ },
+ "iou": 0.968,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 28.1,
+ "colour": 27.2,
+ "sharpness": 0.793
+}

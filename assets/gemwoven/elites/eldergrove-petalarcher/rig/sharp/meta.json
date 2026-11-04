@@ -1,0 +1,16 @@
+{
+ "id": "eldergrove-petalarcher",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.964
+ },
+ "iou": 0.958,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 22.6,
+ "colour": 22.4,
+ "sharpness": 0.821
+}

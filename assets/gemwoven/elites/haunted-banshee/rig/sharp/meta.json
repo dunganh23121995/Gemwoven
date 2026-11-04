@@ -1,0 +1,16 @@
+{
+ "id": "haunted-banshee",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "rest",
+  "iou": 0.908
+ },
+ "iou": 0.932,
+ "foot": -0.0078,
+ "effort": "low",
+ "drawn_colour": 40.7,
+ "colour": 42.6,
+ "sharpness": 0.818
+}

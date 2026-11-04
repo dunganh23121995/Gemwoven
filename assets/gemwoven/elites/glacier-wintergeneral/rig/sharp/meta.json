@@ -1,0 +1,16 @@
+{
+ "id": "glacier-wintergeneral",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.951
+ },
+ "iou": 0.945,
+ "foot": 0.0078,
+ "effort": "low",
+ "drawn_colour": 60.2,
+ "colour": 47.8,
+ "sharpness": 0.788
+}

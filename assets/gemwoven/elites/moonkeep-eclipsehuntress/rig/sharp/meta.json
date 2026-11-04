@@ -1,0 +1,16 @@
+{
+ "id": "moonkeep-eclipsehuntress",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.968
+ },
+ "iou": 0.957,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 22.8,
+ "colour": 22.2,
+ "sharpness": 0.809
+}

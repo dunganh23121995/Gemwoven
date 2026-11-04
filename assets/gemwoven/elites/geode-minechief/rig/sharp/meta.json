@@ -1,0 +1,16 @@
+{
+ "id": "geode-minechief",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.987
+ },
+ "iou": 0.981,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 28.3,
+ "colour": 27.2,
+ "sharpness": 0.784
+}

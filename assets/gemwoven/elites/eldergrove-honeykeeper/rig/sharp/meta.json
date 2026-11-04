@@ -1,0 +1,16 @@
+{
+ "id": "eldergrove-honeykeeper",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.982
+ },
+ "iou": 0.973,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 20.8,
+ "colour": 18.7,
+ "sharpness": 0.815
+}

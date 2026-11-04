@@ -1,0 +1,16 @@
+{
+ "id": "desert-sphinxguard",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.948
+ },
+ "iou": 0.941,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 28.9,
+ "colour": 26.9,
+ "sharpness": 0.772
+}

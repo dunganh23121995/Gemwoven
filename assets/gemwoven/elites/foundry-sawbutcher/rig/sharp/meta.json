@@ -1,0 +1,16 @@
+{
+ "id": "foundry-sawbutcher",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.984
+ },
+ "iou": 0.981,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 20.1,
+ "colour": 17.0,
+ "sharpness": 0.759
+}

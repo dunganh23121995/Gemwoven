@@ -1,0 +1,16 @@
+{
+ "id": "glacier-frostbolter",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.96
+ },
+ "iou": 0.959,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 32.1,
+ "colour": 29.6,
+ "sharpness": 0.811
+}

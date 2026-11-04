@@ -1,0 +1,16 @@
+{
+ "id": "thunder-bellpriest",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.951
+ },
+ "iou": 0.946,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 23.5,
+ "colour": 20.0,
+ "sharpness": 0.668
+}

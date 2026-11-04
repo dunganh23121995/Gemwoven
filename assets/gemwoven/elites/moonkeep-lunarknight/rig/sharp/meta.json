@@ -1,0 +1,16 @@
+{
+ "id": "moonkeep-lunarknight",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.954
+ },
+ "iou": 0.954,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 29.5,
+ "colour": 26.2,
+ "sharpness": 0.774
+}

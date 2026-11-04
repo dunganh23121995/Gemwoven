@@ -1,0 +1,16 @@
+{
+ "id": "mycelium-plagueherald",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.96
+ },
+ "iou": 0.951,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 35.0,
+ "colour": 33.2,
+ "sharpness": 0.844
+}

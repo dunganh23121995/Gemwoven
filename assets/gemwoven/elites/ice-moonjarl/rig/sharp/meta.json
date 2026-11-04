@@ -1,0 +1,16 @@
+{
+ "id": "ice-moonjarl",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.984
+ },
+ "iou": 0.969,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 25.6,
+ "colour": 22.7,
+ "sharpness": 0.821
+}

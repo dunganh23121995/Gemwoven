@@ -1,0 +1,16 @@
+{
+ "id": "abyss-harpooner",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.973
+ },
+ "iou": 0.963,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 19.8,
+ "colour": 18.4,
+ "sharpness": 0.801
+}

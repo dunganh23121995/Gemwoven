@@ -1,0 +1,16 @@
+{
+ "id": "thorns-rosearcher",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.934
+ },
+ "iou": 0.929,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 20.0,
+ "colour": 18.1,
+ "sharpness": 0.873
+}

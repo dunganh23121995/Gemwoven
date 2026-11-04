@@ -1,0 +1,16 @@
+{
+ "id": "hourglass-sandarcher",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "rest",
+  "iou": 0.926
+ },
+ "iou": 0.962,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 19.6,
+ "colour": 21.0,
+ "sharpness": 0.739
+}

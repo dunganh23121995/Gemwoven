@@ -1,0 +1,16 @@
+{
+ "id": "volcano-ashcultist",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.967
+ },
+ "iou": 0.963,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 18.5,
+ "colour": 16.4,
+ "sharpness": 0.789
+}

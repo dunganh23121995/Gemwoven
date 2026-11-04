@@ -1,0 +1,16 @@
+{
+ "id": "ice-moonduelist",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.959
+ },
+ "iou": 0.95,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 23.2,
+ "colour": 23.4,
+ "sharpness": 0.788
+}

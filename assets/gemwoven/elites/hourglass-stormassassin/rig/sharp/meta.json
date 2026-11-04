@@ -1,0 +1,16 @@
+{
+ "id": "hourglass-stormassassin",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.933
+ },
+ "iou": 0.92,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 30.5,
+ "colour": 29.5,
+ "sharpness": 0.764
+}

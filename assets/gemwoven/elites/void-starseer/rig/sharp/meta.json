@@ -1,0 +1,16 @@
+{
+ "id": "void-starseer",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.932
+ },
+ "iou": 0.931,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 35.6,
+ "colour": 32.6,
+ "sharpness": 0.77
+}

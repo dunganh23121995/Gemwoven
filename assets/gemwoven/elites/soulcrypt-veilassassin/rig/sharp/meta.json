@@ -1,0 +1,16 @@
+{
+ "id": "soulcrypt-veilassassin",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "rest",
+  "iou": 0.907
+ },
+ "iou": 0.934,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 30.3,
+ "colour": 25.6,
+ "sharpness": 0.761
+}

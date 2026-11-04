@@ -1,0 +1,16 @@
+{
+ "id": "thunder-sparkmage",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.964
+ },
+ "iou": 0.937,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 23.5,
+ "colour": 24.0,
+ "sharpness": 0.732
+}

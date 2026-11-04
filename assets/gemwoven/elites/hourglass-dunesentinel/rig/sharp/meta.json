@@ -1,0 +1,16 @@
+{
+ "id": "hourglass-dunesentinel",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.949
+ },
+ "iou": 0.943,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 37.2,
+ "colour": 38.2,
+ "sharpness": 0.806
+}

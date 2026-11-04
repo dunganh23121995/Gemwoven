@@ -1,0 +1,16 @@
+{
+ "id": "celestial-dawnlegate",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.93
+ },
+ "iou": 0.928,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 22.7,
+ "colour": 20.1,
+ "sharpness": 0.801
+}

@@ -1,0 +1,16 @@
+{
+ "id": "coralreef-coraloracle",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "rest",
+  "iou": 0.912
+ },
+ "iou": 0.941,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 21.7,
+ "colour": 25.8,
+ "sharpness": 0.773
+}

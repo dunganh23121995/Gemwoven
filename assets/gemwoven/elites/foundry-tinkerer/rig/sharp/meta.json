@@ -1,0 +1,16 @@
+{
+ "id": "foundry-tinkerer",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.982
+ },
+ "iou": 0.986,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 22.5,
+ "colour": 13.7,
+ "sharpness": 0.758
+}

@@ -1,0 +1,16 @@
+{
+ "id": "soulcrypt-cellbolter",
+ "kind": "elite",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.936
+ },
+ "iou": 0.923,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 23.1,
+ "colour": 18.1,
+ "sharpness": 0.787
+}
