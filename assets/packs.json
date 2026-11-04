@@ -4520,6 +4520,19 @@
     "assets/gemwoven/season/mika/tier-nested.webp",
     "assets/gemwoven/season/mika/title.webp",
     "assets/gemwoven/season/mika/wardrobe.webp",
+    "assets/gemwoven/season/noct/avatar.webp",
+    "assets/gemwoven/season/noct/banner.webp",
+    "assets/gemwoven/season/noct/bubble.webp",
+    "assets/gemwoven/season/noct/combat-corner.webp",
+    "assets/gemwoven/season/noct/day-ready.webp",
+    "assets/gemwoven/season/noct/day.webp",
+    "assets/gemwoven/season/noct/emblem.webp",
+    "assets/gemwoven/season/noct/entry.webp",
+    "assets/gemwoven/season/noct/event-bg.webp",
+    "assets/gemwoven/season/noct/frame.webp",
+    "assets/gemwoven/season/noct/nameplate.webp",
+    "assets/gemwoven/season/noct/offer.webp",
+    "assets/gemwoven/season/noct/title.webp",
     "assets/gemwoven/season/nori/avatar.webp",
     "assets/gemwoven/season/nori/banner.webp",
     "assets/gemwoven/season/nori/bubble.webp",
@@ -4751,7 +4764,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 164128938
+   "bytes": 164995380
   },
   {
    "id": "hero-earth-f1",

@@ -22937,5 +22937,148 @@
       "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
     ],
     "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-avatar": {
+    "file": "assets/gemwoven/season/noct/avatar.webp",
+    "width": 384,
+    "height": 384,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/avatar/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/avatar/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-banner": {
+    "file": "assets/gemwoven/season/noct/banner.webp",
+    "width": 1200,
+    "height": 400,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/banner/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/banner/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-bubble": {
+    "file": "assets/gemwoven/season/noct/bubble.webp",
+    "width": 449,
+    "height": 293,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-combat-corner": {
+    "file": "assets/gemwoven/season/noct/combat-corner.webp",
+    "width": 392,
+    "height": 308,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-day-ready": {
+    "file": "assets/gemwoven/season/noct/day-ready.webp",
+    "width": 300,
+    "height": 291,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-day": {
+    "file": "assets/gemwoven/season/noct/day.webp",
+    "width": 288,
+    "height": 266,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-emblem": {
+    "file": "assets/gemwoven/season/noct/emblem.webp",
+    "width": 343,
+    "height": 344,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-entry": {
+    "file": "assets/gemwoven/season/noct/entry.webp",
+    "width": 1920,
+    "height": 320,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/entry/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/entry/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-event-bg": {
+    "file": "assets/gemwoven/season/noct/event-bg.webp",
+    "width": 941,
+    "height": 1672,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/event-bg/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/event-bg/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-frame": {
+    "file": "assets/gemwoven/season/noct/frame.webp",
+    "width": 405,
+    "height": 418,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-nameplate": {
+    "file": "assets/gemwoven/season/noct/nameplate.webp",
+    "width": 460,
+    "height": 106,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-offer": {
+    "file": "assets/gemwoven/season/noct/offer.webp",
+    "width": 360,
+    "height": 155,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-noct-title": {
+    "file": "assets/gemwoven/season/noct/title.webp",
+    "width": 460,
+    "height": 248,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
   }
 }
