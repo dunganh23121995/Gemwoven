@@ -82,7 +82,8 @@
   const seasonHero=index=>{const s=SEASONS.find(x=>x.index===index),k=s&&SEASON_KITS[s.hero];return k?{...s,art:k.art,theme:k.theme,name:'Hành Trình Của '+k.hero,event:'Đồng Hành Cùng '+k.hero}:null;};
   const seasonOf=hero=>SEASONS.find(s=>s.hero===hero)||null;
   // The season's cosmetics: no stats, usable without owning X. Free-track pieces can be earned locally; paid ones arrive
-  // only with a server-recorded purchase. `cosmetic` in a reward names the slot; the season resolves the item.
+  // only with a server-recorded purchase. `cosmetic` in a reward names the slot; the season resolves the item. `season` is
+  // the scheduled season of the kit's hero, null while the kit waits.
   const COSMETIC_SLOTS=[['avatar','Avatar'],['frame','Khung avatar'],['title','Danh hiệu'],['nameplate','Thẻ tên'],['bubble','Bong bóng chat'],['combatFrame','Khung trận'],['entry','Hiệu ứng vào trận']];
   const KIT_ITEMS=[['avatar','avatar','avatar','free',10,k=>k.avatar],['frame','frame','frame','gold',10,k=>'Khung '+k.theme],['title','title','title','gold',20,k=>'Bạn Đồng Hành '+k.theme],
     ['nameplate','nameplate','nameplate','gold',30,k=>'Thẻ tên '+k.theme],['bubble','bubble','bubble','gold',40,k=>'Bong bóng '+k.theme],
