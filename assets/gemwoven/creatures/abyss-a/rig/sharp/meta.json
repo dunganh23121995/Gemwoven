@@ -1,0 +1,16 @@
+{
+ "id": "abyss-a",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.975
+ },
+ "iou": 0.972,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 32.9,
+ "colour": 24.5,
+ "sharpness": 0.752
+}

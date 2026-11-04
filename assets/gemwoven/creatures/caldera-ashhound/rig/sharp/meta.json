@@ -1,0 +1,16 @@
+{
+ "id": "caldera-ashhound",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.971
+ },
+ "iou": 0.958,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 26.6,
+ "colour": 25.3,
+ "sharpness": 0.799
+}

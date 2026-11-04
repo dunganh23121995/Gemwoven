@@ -1,0 +1,16 @@
+{
+ "id": "desert-a",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.984
+ },
+ "iou": 0.982,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 25.4,
+ "colour": 24.9,
+ "sharpness": 0.729
+}

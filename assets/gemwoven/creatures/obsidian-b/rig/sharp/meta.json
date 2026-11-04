@@ -1,0 +1,16 @@
+{
+ "id": "obsidian-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.985
+ },
+ "iou": 0.991,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 19.3,
+ "colour": 19.4,
+ "sharpness": 0.935
+}

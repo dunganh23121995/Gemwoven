@@ -1,0 +1,16 @@
+{
+ "id": "crystal-a",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.985
+ },
+ "iou": 0.987,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 24.2,
+ "colour": 21.8,
+ "sharpness": 0.776
+}

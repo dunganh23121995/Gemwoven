@@ -1,0 +1,16 @@
+{
+ "id": "haunted-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.985
+ },
+ "iou": 0.979,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 21.2,
+ "colour": 20.4,
+ "sharpness": 0.727
+}

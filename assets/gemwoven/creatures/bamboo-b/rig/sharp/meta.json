@@ -1,0 +1,16 @@
+{
+ "id": "bamboo-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.97
+ },
+ "iou": 0.97,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 27.6,
+ "colour": 23.6,
+ "sharpness": 0.742
+}

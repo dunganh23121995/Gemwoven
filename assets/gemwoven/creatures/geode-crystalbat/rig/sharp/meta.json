@@ -1,0 +1,16 @@
+{
+ "id": "geode-crystalbat",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.979
+ },
+ "iou": 0.975,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 25.0,
+ "colour": 23.5,
+ "sharpness": 0.915
+}

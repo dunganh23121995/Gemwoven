@@ -1,0 +1,16 @@
+{
+ "id": "pine-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.986
+ },
+ "iou": 0.985,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 24.6,
+ "colour": 24.1,
+ "sharpness": 0.773
+}

@@ -1,0 +1,16 @@
+{
+ "id": "stormspire-cloudjelly",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.99
+ },
+ "iou": 0.965,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 38.9,
+ "colour": 29.7,
+ "sharpness": 0.734
+}

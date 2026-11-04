@@ -1,0 +1,16 @@
+{
+ "id": "thorns-a",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.986
+ },
+ "iou": 0.986,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 29.0,
+ "colour": 17.7,
+ "sharpness": 0.807
+}

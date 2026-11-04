@@ -1,0 +1,16 @@
+{
+ "id": "soulcrypt-chainrat",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.944
+ },
+ "iou": 0.903,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 34.3,
+ "colour": 29.8,
+ "sharpness": 0.859
+}

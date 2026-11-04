@@ -1,0 +1,16 @@
+{
+ "id": "dream-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.987
+ },
+ "iou": 0.985,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 22.3,
+ "colour": 20.7,
+ "sharpness": 0.785
+}

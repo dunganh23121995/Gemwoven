@@ -1,0 +1,16 @@
+{
+ "id": "coralreef-reefcrab",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.971
+ },
+ "iou": 0.955,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 32.1,
+ "colour": 29.8,
+ "sharpness": 0.756
+}

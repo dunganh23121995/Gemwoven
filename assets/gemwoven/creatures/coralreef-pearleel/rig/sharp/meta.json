@@ -1,0 +1,16 @@
+{
+ "id": "coralreef-pearleel",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.983
+ },
+ "iou": 0.962,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 29.1,
+ "colour": 29.2,
+ "sharpness": 0.826
+}

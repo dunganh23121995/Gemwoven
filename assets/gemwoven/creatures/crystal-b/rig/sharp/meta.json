@@ -1,0 +1,16 @@
+{
+ "id": "crystal-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.936
+ },
+ "iou": 0.941,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 38.7,
+ "colour": 21.3,
+ "sharpness": 0.761
+}

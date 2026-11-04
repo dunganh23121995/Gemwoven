@@ -1,0 +1,16 @@
+{
+ "id": "slime",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.991
+ },
+ "iou": 0.992,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 37.2,
+ "colour": 17.5,
+ "sharpness": 0.625
+}

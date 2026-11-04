@@ -1,0 +1,16 @@
+{
+ "id": "sky-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.99
+ },
+ "iou": 0.989,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 18.7,
+ "colour": 18.6,
+ "sharpness": 0.738
+}

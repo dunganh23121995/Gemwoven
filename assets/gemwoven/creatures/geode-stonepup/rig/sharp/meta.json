@@ -1,0 +1,16 @@
+{
+ "id": "geode-stonepup",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.983
+ },
+ "iou": 0.975,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 29.4,
+ "colour": 26.9,
+ "sharpness": 0.886
+}

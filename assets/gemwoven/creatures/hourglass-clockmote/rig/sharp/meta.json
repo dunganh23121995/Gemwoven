@@ -1,0 +1,16 @@
+{
+ "id": "hourglass-clockmote",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.982
+ },
+ "iou": 0.971,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 25.7,
+ "colour": 24.8,
+ "sharpness": 0.881
+}

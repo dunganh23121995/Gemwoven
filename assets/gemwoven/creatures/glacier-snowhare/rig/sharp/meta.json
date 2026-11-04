@@ -1,0 +1,16 @@
+{
+ "id": "glacier-snowhare",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.982
+ },
+ "iou": 0.976,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 16.9,
+ "colour": 17.8,
+ "sharpness": 0.917
+}

@@ -1,0 +1,16 @@
+{
+ "id": "moonkeep-shadowraven",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.973
+ },
+ "iou": 0.96,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 34.1,
+ "colour": 30.0,
+ "sharpness": 0.858
+}

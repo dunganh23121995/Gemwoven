@@ -1,0 +1,16 @@
+{
+ "id": "caldera-emberimp",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.983
+ },
+ "iou": 0.965,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 24.4,
+ "colour": 25.9,
+ "sharpness": 0.827
+}

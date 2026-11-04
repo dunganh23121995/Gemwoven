@@ -1,0 +1,16 @@
+{
+ "id": "eldergrove-vineboar",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.981
+ },
+ "iou": 0.98,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 36.3,
+ "colour": 30.8,
+ "sharpness": 0.778
+}

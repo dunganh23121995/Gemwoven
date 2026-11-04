@@ -1,0 +1,16 @@
+{
+ "id": "coralreef-foamjelly",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.976
+ },
+ "iou": 0.971,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 20.0,
+ "colour": 20.8,
+ "sharpness": 0.71
+}

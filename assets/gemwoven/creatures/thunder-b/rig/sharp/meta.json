@@ -1,0 +1,16 @@
+{
+ "id": "thunder-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.987
+ },
+ "iou": 0.976,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 29.8,
+ "colour": 28.5,
+ "sharpness": 0.722
+}

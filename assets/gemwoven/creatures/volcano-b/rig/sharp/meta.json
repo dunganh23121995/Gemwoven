@@ -1,0 +1,16 @@
+{
+ "id": "volcano-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.988
+ },
+ "iou": 0.99,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 16.7,
+ "colour": 14.4,
+ "sharpness": 0.839
+}

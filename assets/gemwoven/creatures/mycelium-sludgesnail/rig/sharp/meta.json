@@ -1,0 +1,16 @@
+{
+ "id": "mycelium-sludgesnail",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.99
+ },
+ "iou": 0.983,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 38.4,
+ "colour": 32.7,
+ "sharpness": 0.834
+}

@@ -1,0 +1,16 @@
+{
+ "id": "marsh-a",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.987
+ },
+ "iou": 0.99,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 15.1,
+ "colour": 14.2,
+ "sharpness": 0.723
+}

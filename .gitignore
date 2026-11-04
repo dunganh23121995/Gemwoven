@@ -69,3 +69,11 @@ tools/sound-library.json
 
 # Social server dev data (accounts, guilds) — never committed
 /server/social/data/
+
+# Foe redraws (assets/gemwoven/sharpen_foes.py): Codex references and fitted frames are rebuilt from the kept raws
+assets/gemwoven/*/*/rig/sharp/ref.png
+assets/gemwoven/*/*/rig/sharp/rest.png
+assets/gemwoven/*/*/rig/sharp/rejected/
+assets/gemwoven/*/*/rig/sharp/fidget-*/ref.png
+assets/gemwoven/*/*/rig/sharp/fidget-*/style.png
+assets/gemwoven/*/*/rig/sharp/fidget-*/frame-*.png

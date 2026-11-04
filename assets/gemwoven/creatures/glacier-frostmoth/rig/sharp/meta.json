@@ -1,0 +1,16 @@
+{
+ "id": "glacier-frostmoth",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.973
+ },
+ "iou": 0.963,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 25.9,
+ "colour": 20.9,
+ "sharpness": 1.009
+}

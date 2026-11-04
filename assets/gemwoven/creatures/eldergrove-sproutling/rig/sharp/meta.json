@@ -1,0 +1,16 @@
+{
+ "id": "eldergrove-sproutling",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.979
+ },
+ "iou": 0.971,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 32.3,
+ "colour": 26.8,
+ "sharpness": 0.79
+}

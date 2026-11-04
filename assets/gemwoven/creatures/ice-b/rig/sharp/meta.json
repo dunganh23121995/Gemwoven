@@ -1,0 +1,16 @@
+{
+ "id": "ice-b",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.985
+ },
+ "iou": 0.986,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 21.6,
+ "colour": 19.6,
+ "sharpness": 0.839
+}

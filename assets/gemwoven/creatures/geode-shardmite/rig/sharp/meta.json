@@ -1,0 +1,16 @@
+{
+ "id": "geode-shardmite",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.987
+ },
+ "iou": 0.971,
+ "foot": 0.0,
+ "effort": "low",
+ "drawn_colour": 38.1,
+ "colour": 31.6,
+ "sharpness": 0.887
+}

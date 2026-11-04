@@ -1,0 +1,16 @@
+{
+ "id": "moonkeep-moonmoth",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.977
+ },
+ "iou": 0.97,
+ "foot": 0.002,
+ "effort": "low",
+ "drawn_colour": 27.2,
+ "colour": 25.1,
+ "sharpness": 0.79
+}

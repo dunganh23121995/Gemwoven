@@ -1,0 +1,16 @@
+{
+ "id": "hourglass-sandcobra",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.979
+ },
+ "iou": 0.973,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 33.2,
+ "colour": 31.5,
+ "sharpness": 1.0
+}

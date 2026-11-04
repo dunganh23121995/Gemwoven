@@ -6,6 +6,8 @@ Their first idle frame moves, nothing is redrawn; a foe that floats is told from
   python assets/gemwoven/rig_foes.py list                        every foe id
 
 Output: <foe folder>/rig/foe/ and rig/buff/. build.py uses them wherever rig.json exists.
+The resting frame (rig/foe/rest.png) is first cut at 256px from the drawn loop; sharpen_foes.py redraws it at the size
+combat shows it (512px, bosses 640px) and `make` then bakes at that size with the same part map.
 """
 import re
 import sys

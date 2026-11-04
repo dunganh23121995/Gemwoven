@@ -1,0 +1,16 @@
+{
+ "id": "astral-a",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.981
+ },
+ "iou": 0.985,
+ "foot": -0.002,
+ "effort": "low",
+ "drawn_colour": 21.0,
+ "colour": 17.6,
+ "sharpness": 0.802
+}

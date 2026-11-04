@@ -1,0 +1,16 @@
+{
+ "id": "eldergrove-barkmoth",
+ "kind": "creature",
+ "cell": 512,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.983
+ },
+ "iou": 0.976,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 36.3,
+ "colour": 34.3,
+ "sharpness": 0.812
+}
