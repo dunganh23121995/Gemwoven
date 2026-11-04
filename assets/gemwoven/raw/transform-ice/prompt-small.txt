@@ -1,0 +1,14 @@
+Use the supplied heroes-rest image only as a painted-style reference. Yuki is the second group of three heroes from the left. Do not draw any hero.
+
+Create ONE landscape 3072 x 1024 VFX asset sheet with four equal invisible columns and exactly FOUR asset groups, left to right:
+
+1. GROUND: two low curled frost tongues at opposite ends of a wide group, approximately four times wider than tall. Leave the central 40% completely empty for feet. No connecting frost floor, ring, lotus, or spikes.
+2. MOTE: one compact four-armed snow crystal with thick simple arms, readable at five pixels wide. No fine branching or trail.
+3. MOTE VARIANT: one smaller blunt diamond-shaped ice grain with one diagonal facet. No trail.
+4. AFTER: two short low frost strokes and one tiny ice grain, approximately three times wider than tall. No flower or floating particles.
+
+Style: clean hand-painted HD 2D game VFX, crisp antialiased edges, bold miniature shapes, no pixel art, blur, bloom, or soft fog.
+
+Palette strictly: #122C49, #285A7E, #518FAF, #A7D8E5, tiny #E6F4F3 highlights. No pink or purple.
+
+Background: completely solid flat magenta #FF00FF. Every group is centred in its own quarter with at least 8% empty margin to every cell edge and wide separating gaps. No gradient, cast shadow, ground plane, text, labels, UI, hero, watermark, or border. These are separate still pieces, not animation frames.

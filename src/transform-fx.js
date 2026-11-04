@@ -7,6 +7,7 @@
 //   afterglow: the flames go out in 320 ms and only a small coal flourish stays behind her heels.
 // Every piece is one still drawing moved as a whole (no frame-swapped sheets). NO FX hides the look; sound keeps its own switch.
 const TRANSFORM_LOOK_PIECES=['spirit','side-left','side-right','ground','mote','mote-2','after'];
+// files.bodies is not a piece; only these names become --tf-<i> images.
 function transformLook(){const key=state.key;return ART.transformLooks?.[key]?key:null;}
 function transformLookBuild(key){
   const files=ART.transformLooks[key],url=name=>`url("${files[name]}")`;
@@ -18,6 +19,8 @@ function transformLookBuild(key){
     '<span class="tf-motes">'+[0,1,2,3,4,5].map(i=>`<i style="--e:${i}"><b></b></i>`).join('')+'</span><i class="tf-mark"></i>';
   front.innerHTML='<i class="tf-ground"><b></b></i>';
   const form=String(progressionBattle?.stats?.form||1);back.dataset.form=form;front.dataset.form=form;
+  // The form's own body box from its resting frame (build.py transform_body) over the sheet's, which some forms lack.
+  const body=files.bodies?.[form];if(body)for(const el of [back,front]){el.style.setProperty('--t',body[0]);el.style.setProperty('--h',body[1]);el.style.setProperty('--x',body[2]);}
   return [back,front];
 }
 // Puts the look on the hero for the current phase; the actor is redrawn often, so it is put back whenever missing.

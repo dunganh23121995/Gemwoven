@@ -1,0 +1,11 @@
+Use the supplied heroes-rest image as a style and scale reference only. Yuki is the second group of three heroes from the left. Her artwork is locked; do not draw or redesign her.
+
+Create ONE standalone transformation VFX sprite on a square 1536 x 1536 canvas: a seated spectral snow rabbit made of layered frozen mist. Give it two clearly separated long ears, a small recognisable rabbit muzzle, a compact curved chest, and two broad lower frost folds. Position its head in the upper-right quadrant so a hero standing centrally would not cover it. Use deliberate empty openings between ears, chest strokes, and lower folds. The mood is quiet moonlit snow, not an attacking animal.
+
+Style: clean hand-painted HD 2D game VFX, bold painted silhouette, crisp antialiased edges, simple internal strokes readable at 150 pixels tall. Do not make pixel art.
+
+Palette strictly: #122C49, #285A7E, #518FAF, #A7D8E5, with tiny #E6F4F3 highlights. Dark and medium blue occupy most of the sprite. No white fur mass, pink, purple, large moon disk, crescent weapon, lotus, ice armour, falling boulder, bloom, blur, or soft fog halo.
+
+Background: 100% solid flat magenta #FF00FF, including all openings. Leave at least 6% empty margin on every side. No ground, shadow, text, labels, UI, hero, watermark, or border. One still sprite, not animation frames.
+
+Revision after the first fight review (Codex): the spirit read as a horned beast, not a rabbit. Draw an unmistakable sitting snow rabbit: short rounded muzzle, two long ears with ROUNDED tips (not pointed), a compact chest, its head clearly in the upper-right quadrant of the canvas. Dark and medium blue body masses (#122C49, #285A7E) with a #A7D8E5 rim; white #E6F4F3 only as tiny accents.

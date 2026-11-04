@@ -24,11 +24,14 @@ def ramp(*colours):
 # (assets/gemwoven/raw/transform-fire/plan-other-heroes.md); Mika's darkest stop is a deeper wine than its plan colour.
 HEROES = {
     'fire': {'key': 'magenta', 'warm': True, 'ramp': ramp('#3A0E16', '#591923', '#C93628', '#F36338', '#FFB06A')},
-    'novice': {'key': 'magenta', 'ramp': ramp('#30251D', '#5B4932', '#947246', '#C7A16A', '#F0D6A1')},
+    # Hiro's sides on his ramp too: about a quarter less bright gold (Codex fight review 1).
+    'novice': {'key': 'magenta', 'sides': True, 'ramp': ramp('#30251D', '#5B4932', '#947246', '#C7A16A', '#F0D6A1')},
     'ice': {'key': 'magenta', 'ramp': ramp('#122C49', '#285A7E', '#518FAF', '#A7D8E5', '#E6F4F3')},
-    'earth': {'key': 'magenta', 'ramp': ramp('#172B22', '#31513A', '#5C8050', '#9EAA69', '#DBCD92')},
+    # Nori keeps the plan ramp (Codex fight review 1: simpler drawn masses, not lighter colours, separate it from the
+    # foliage). Noct's crest sank into his own dark aura, so it is lifted one step onto violet-grey.
+    'earth': {'key': 'magenta', 'sides': True, 'ramp': ramp('#172B22', '#31513A', '#5C8050', '#9EAA69', '#DBCD92')},
     'lightning': {'key': 'green', 'ramp': ramp('#211A3E', '#4B2D78', '#8A55BD', '#C9AA64', '#F5D98A')},
-    'shadow': {'key': 'green', 'ramp': ramp('#151924', '#2D2941', '#514367', '#817297', '#B5A7C7')},
+    'shadow': {'key': 'green', 'sides': True, 'ramp': ramp('#2D2941', '#514367', '#817297', '#B5A7C7', '#E2DAF0')},
 }
 
 
@@ -103,6 +106,8 @@ def prepare(hero):
     spirit = k('raw-spirit.png')
     save(palette(spirit, cfg['ramp']) if cfg.get('ramp') else spirit, out, 'spirit')
     sides = k('raw-sides.png')
+    if cfg.get('sides'):
+        sides = palette(sides, cfg['ramp'])
     save(sides.crop((0, 0, sides.width // 2, sides.height)), out, 'side-left')
     save(sides.crop((sides.width // 2, 0, sides.width, sides.height)), out, 'side-right')
     small = k('raw-small.png')

@@ -1,0 +1,13 @@
+Use the supplied heroes-rest image only for Gemwoven's painted style. Yuki is the second group of three heroes from the left. Do not draw any hero.
+
+Create ONE portrait 1024 x 1536 VFX asset sheet with exactly TWO separate frozen-mist ribbons, one centred in each half.
+
+LEFT: a tall slender ribbon approximately 4.5 times taller than wide, composed of three broad curved frost folds with one clear open slit. The inner right edge is calm and smooth; the outer left edge carries two blunt ice tips. Keep its base narrow.
+
+RIGHT: a different ribbon, 90% as tall, composed of two broader frost folds and one small outward tip. Its inner left edge is smooth. Do not mirror the left piece. Neither ribbon forms armour plates, a flower, a moon, or a closed barrier.
+
+Style: clean hand-painted HD 2D VFX, crisp antialiased edges, bold stable shapes, opaque painted mist strokes rather than translucent blur. No pixel art, bloom, motion blur, detached snow, or glow halo.
+
+Palette strictly: #122C49, #285A7E, #518FAF, #A7D8E5; tiny #E6F4F3 edge highlights only. No pink or purple.
+
+Background: entirely solid flat magenta #FF00FF, also inside openings. Keep each complete piece inside its half with at least 6% empty margin to every cell edge and a wide gap between pieces. No gradient, shadow, ground, text, labels, UI, hero, watermark, or border. Two still assets, not animation frames.

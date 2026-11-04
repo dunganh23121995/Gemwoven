@@ -159,6 +159,12 @@ for creature in ['slime','acorn','bat']:
 art['evolution']={piece:image(f'assets/gemwoven/items/evo-{piece}.png') for piece in ['weapon','shoulders','gloves','boots','crest','aura']}
 # Each hero's drawn Biến Thân look (src/transform-fx.js); a hero without one keeps the plain golden glow.
 art['transformLooks']={hero:{name:image(f'assets/heroes/forms/{hero}/transform/{name}.webp') for name in ['spirit','side-left','side-right','ground','mote','mote-2','after']} for hero in sorted(p.parent.parent.name for p in (root/'assets/heroes/forms').glob('*/transform/spirit.webp'))}
+# Each form's own body box (top, height, centre as fractions of the cell, from its resting frame) places the look, since
+# not every combat sheet carries its body height.
+def transform_body(hero,form):
+    box=Image.open(root/f'assets/heroes/forms/{hero}/form-{form}/rig/combat/rest.png').getchannel('A').point(lambda v:255 if v>40 else 0).getbbox()
+    return [round(box[1]/512,4),round((box[3]-box[1])/512,4),round((box[0]+box[2])/1024,4)]
+for hero,look in art['transformLooks'].items():look['bodies']={form:transform_body(hero,form) for form in (1,2,3) if (root/f'assets/heroes/forms/{hero}/form-{form}/rig/combat/rest.png').exists()}
 for name in ['theme-creature-items','boss-items']:
     catalog=json.loads((root/f'assets/gemwoven/{name}.json').read_text(encoding='utf-8'))['items']
     art.setdefault('worldBosses',{})

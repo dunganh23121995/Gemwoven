@@ -36,5 +36,43 @@
     "peak": 0.182,
     "rms": 0.02,
     "sha256": "7ae34dd39b5df78e4ccec3c01154a8f0e0ce591817bb2da3995d170682b64696"
+  },
+  "ice-transform": {
+    "file": "hero-forms/transform/ice-transform.wav",
+    "duration": 0.85,
+    "beat": "a cold breeze rises around her (BIẾN THÂN pressed)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind_Arctic_Storm_Breeze-021.wav",
+        "author": "EricsSoundschmiede",
+        "source_url": "https://freesound.org/people/EricsSoundschmiede/sounds/407029/",
+        "license": "CC0-1.0",
+        "sha256": "78fde891ef500819df33ce53c5fd06a7d7bbf188d496e33f5b750d510c0fbdcd"
+      }
+    ],
+    "processing": "excerpt 0.75-1.60 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.257,
+    "rms": 0.06,
+    "sha256": "17ec11a9824d8b865416e005fc5c76330015c2a0f3a5a102125962f7c7d089e6"
+  },
+  "ice-transform-end": {
+    "file": "hero-forms/transform/ice-transform-end.wav",
+    "duration": 0.55,
+    "beat": "one crystal bell as the frost settles (last transformed turn ends)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "2022-01-14-crystal-bell-08.flac",
+        "author": "arseniiv",
+        "source_url": "https://freesound.org/people/arseniiv/sounds/614832/",
+        "license": "CC0-1.0",
+        "sha256": "6c1fc1d0d685aefd5a01f4a287c9237859935e497c7ece78f298b7ff3240fb05"
+      }
+    ],
+    "processing": "excerpt 0.00-0.55 s of one recording, 45 Hz high-pass, edge fades, gain",
+    "peak": 0.198,
+    "rms": 0.02,
+    "sha256": "0fbc2dad49a80092113b12d7ec2e0ccf8261c389866ae8e4594aa78554269aa7"
   }
 }
