@@ -1953,7 +1953,7 @@ html.chud .game-layout{gap:0}
 }
 
 /* ---- Landscape screens: battle left, board right, on the plank wall ---------------------------------------- */
-@media (min-width:900px) and (min-aspect-ratio:5/4){
+@media (min-width:900px) and (min-aspect-ratio:5/4) and (min-height:601px){
   html.chud{--fc:70px;--ft:16px}
   html.chud .app{display:flex;flex-direction:column;width:100%;max-width:2200px;height:100vh;height:100dvh;padding:10px 24px 16px;
     --bf:min(calc(100dvh - 62px - 10px - 26px - 84px),46vw,880px)}
@@ -2020,6 +2020,59 @@ html.chud .game-layout{gap:0}
   .chud-sheet{width:340px}
 }
 
+/* ---- Short landscape (phones on their side, up to 600 tall): battle and action strip left, board right ------- */
+/* The desktop layout above starts at 601 tall; this one keeps the board square at the full height beside the
+   battlefield, the strip under the battlefield, everything inside the notch-safe area. Portrait stays as it was. */
+@media (orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2){
+  html.chud{--fc:44px;--ft:10px}
+  html.chud .app{display:flex;flex-direction:column;width:100%;max-width:none;height:100vh;height:100dvh;margin:0;
+    padding:4px max(8px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+    --bf:min(calc(100dvh - 36px - 4px - 8px - env(safe-area-inset-bottom)),54vw,560px)}
+  html.chud .app-header{flex:none;height:36px;margin:0 0 4px}
+  .chud-bar{gap:8px;padding:0 10px 2px 8px;border-image-width:0 46px}
+  .chud-back{width:72px;height:32px;font-size:14px}
+  .chud-back-arrow{width:18px;height:15px}
+  .chud-stage{min-width:74px;height:28px;font-size:14px}
+  .chud-medal{width:34px;height:30px}
+  html.chud .chud-score .score{min-width:46px;height:23px}
+  html.chud .chud-score .score strong{font-size:13px}
+  .chud-gear{width:34px;height:34px}
+  html.chud .game-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) var(--bf);grid-template-rows:minmax(0,1fr) auto;
+    column-gap:10px;row-gap:4px;max-width:none;width:100%;margin:0}
+  html.chud .adventure-column{grid-area:1/1;align-self:stretch;height:100%;min-width:0;min-height:0;display:flex;flex-direction:column;max-width:none}
+  html.chud .battle-card{flex:1;min-height:0;display:flex;flex-direction:column}
+  html.chud .battle-card .scene{flex:1;height:auto;min-height:0}
+  html.chud .puzzle-card{display:contents}
+  html.chud .board-toolbar.chud-strip{grid-area:2/1;width:100%;height:52px;margin:0;padding:0 12px 2px 10px;border-image-width:0 44px}
+  html.chud .turn-chip{width:126px;height:32px;font-size:13.5px}
+  html.chud .hint-button{width:42px;height:42px}
+  /* The medallion and its plaque side by side (as on desktop), so nothing hangs below the strip. */
+  .chud-ult{display:flex;align-items:center;width:auto;height:52px;margin:0}
+  .chud-ult-art{z-index:1;width:50px;height:50px}
+  .chud-ult-art .chud-ult-emblem{inset:11px!important}
+  .chud-ult-art .chud-ult-halo{inset:-3px!important}
+  .chud-ult-label{width:104px;height:30px;margin:0 0 0 -12px;padding-left:10px;font-size:15px}
+  .chud-ult-auto{left:auto;right:4px;top:-7px;translate:none;font-size:11px;line-height:13px}
+  html.chud .board-frame{grid-area:1/2/3/3;align-self:center;justify-self:center;width:var(--bf);max-width:none;padding:7px}
+  html.chud .board-frame .board-effects{inset:7px;width:calc(100% - 14px);height:calc(100% - 14px)}
+  html.chud .transform-btn{left:12px;bottom:8px}
+  /* Fighters sized by the stage (not the screen width) and kept off its side edges, so a narrow stage never cuts a
+     wide pose or the Biến Thân look; the HUD boxes keep a wider gap (heart caps and emblems hang past them). */
+  html.chud .scene{--hud-gap:30px;--hud-gap-y:10px;--hud-edge:34px}
+  html.chud .scene .hero-actor{--actor-size:calc(min(52cqh,40cqw,170px) * var(--hero-art-scale,1));left:calc(max(24%,var(--actor-size) * .72) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor{--actor-size:min(48cqh,38cqw,158px);right:calc(max(21%,var(--actor-size) * .7) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(60cqh,48cqw,196px)}
+  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(52cqh,40cqw,170px)}
+  html.chud .scene .actor.boss{--actor-size:min(70cqh,62cqw,228px);right:calc(20% - var(--actor-size)/2)}
+}
+@media (orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2) and (max-width:720px){
+  html.chud .turn-chip{width:108px;font-size:12.5px;padding:0 12px 2px}
+  .chud-ult-label{width:92px;font-size:14px}
+  html.chud .board-toolbar.chud-strip{padding:0 8px 2px 6px}
+  /* A narrow stage: the two gauges stay apart (Codex: the foe's heart sat over the hero's energy bar). */
+  html.chud .actor-hud{width:112px}
+}
+
 /* Status icons over the fighters and the PvP name plaques (combat-status.js; Codex critique and mockup in
    assets/gemwoven/raw/combat-status/). The name plate stays in the page for screen readers only. */
 html.chud .actor-hud .vital-name{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;background:none}
@@ -2070,7 +2123,7 @@ html.cs-pvp-bar .chud-bar .chud-stage,html.cs-pvp-bar .chud-bar .chud-score{visi
 .chud-bar .cs-pvp{top:50%;translate:0 -50%;max-width:min(150px,22vw)}
 .chud-bar .cs-pvp.hero{left:auto;right:calc(50% + 6px)}.chud-bar .cs-pvp.enemy{right:auto;left:calc(50% + 6px)}
 html[data-hero-side="right"] .cs-pvp.hero{left:auto;right:10px}html[data-hero-side="right"] .cs-pvp.enemy{right:auto;left:10px}
-@media (min-width:900px) and (min-aspect-ratio:5/4){
+@media (min-width:900px) and (min-aspect-ratio:5/4) and (min-height:601px){
   html.chud .actor-hud{--cs:44px}
   html.chud .actor-hud .status-row.cs-row{gap:4px;margin-bottom:6px}
   html.cs-pvp-on .chud-stage[data-mode]::after{font-size:23px}
@@ -2078,6 +2131,12 @@ html[data-hero-side="right"] .cs-pvp.hero{left:auto;right:10px}html[data-hero-si
   .cs-pvp{top:16px;max-width:160px;height:30px;padding:0 15px 1px}.cs-pvp.hero{left:18px}.cs-pvp.enemy{right:18px}
   .cs-pvp span{font-size:14px;line-height:30px}
   html.chud .actor-hud .cs-elem{width:22px;height:22px;right:-17px}
+}
+
+/* ---- Short landscape (phones on their side): long account names get more room in the top bar --------------- */
+@media (orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2){
+  .chud-bar .cs-pvp{max-width:min(170px,24vw);height:26px}
+  .chud-bar .cs-pvp span{font-size:12px;line-height:26px}
 }
 
 /* Dẫn Đường coach in the first fight (combat-coach.js): drawn plaque, cat, ring, glove and swipe from assets/gemwoven/guide. */
@@ -6161,18 +6220,22 @@ function combatNumberPoint(side,index=0,lift=0){
   return {x:Math.max(34,Math.min(W-34,x)),y:Math.max(30,Math.min(H-34,p.y+Math.min(48,p.height*.3)+(index%3)*7+lift))};
 }
 function placeCombatHuds(points){
-  const scene=$('scene'),W=scene.clientWidth||375,boxes={};
+  // CSS knobs on the scene (defaults keep the portrait and desktop layouts): --hud-gap (6) between the two boxes side by
+  // side, --hud-gap-y (4) when one has to sit above the other, --hud-edge (4) from the stage's sides. Short landscape
+  // stages widen them so the heart caps and emblems that hang past each box stay apart and inside too.
+  const scene=$('scene'),W=scene.clientWidth||375,boxes={},css=getComputedStyle(scene),knob=(name,d)=>{const v=parseFloat(css.getPropertyValue(name));return Number.isFinite(v)?v:d;};
+  const gap=knob('--hud-gap',6),gapY=knob('--hud-gap-y',4),edge=knob('--hud-edge',4);
   for(const side of ['hero','enemy']){
     const hud=$(side+'HeadHud');if(!hud)continue;
     const w=hud.offsetWidth||108,h=hud.offsetHeight||48;
-    boxes[side]={hud,w,h,x:Math.max(w/2+4,Math.min(W-w/2-4,points[side].x)),bottom:Math.max(h+4,points[side].y-9)};
+    boxes[side]={hud,w,h,x:Math.max(w/2+edge,Math.min(W-w/2-edge,points[side].x)),bottom:Math.max(h+4,points[side].y-9)};
   }
   const a=boxes.hero,b=boxes.enemy;
   // Resting HUDs never overlap: separate horizontally first, then vertically.
-  if(a&&b&&Math.abs(a.x-b.x)<(a.w+b.w)/2+6&&Math.abs(a.bottom-b.bottom)<Math.max(a.h,b.h)+4){
-    const need=(a.w+b.w)/2+6-Math.abs(a.x-b.x),left=a.x<=b.x?a:b,right=left===a?b:a;
-    left.x=Math.max(left.w/2+4,left.x-need/2);right.x=Math.min(W-right.w/2-4,left.x+(left.w+right.w)/2+6);
-    if(right.x-left.x<(left.w+right.w)/2+6){const low=a.bottom>=b.bottom?a:b,high=low===a?b:a;high.bottom=Math.max(high.h+4,low.bottom-low.h-4);}
+  if(a&&b&&Math.abs(a.x-b.x)<(a.w+b.w)/2+gap&&Math.abs(a.bottom-b.bottom)<Math.max(a.h,b.h)+gapY){
+    const need=(a.w+b.w)/2+gap-Math.abs(a.x-b.x),left=a.x<=b.x?a:b,right=left===a?b:a;
+    left.x=Math.max(left.w/2+edge,left.x-need/2);right.x=Math.min(W-right.w/2-edge,left.x+(left.w+right.w)/2+gap);
+    if(right.x-left.x<(left.w+right.w)/2+gap){const low=a.bottom>=b.bottom?a:b,high=low===a?b:a;high.bottom=Math.max(high.h+4,low.bottom-low.h-gapY);}
   }
   for(const [side,box] of Object.entries(boxes)){
     box.hud.style.left=box.x+'px';box.hud.style.top=box.bottom+'px';
@@ -12952,7 +13015,7 @@ function openStatusTip(tile){
   // A spot that covers a gauge or a status row (with a 4 px margin) loses to any that does not; then a name plaque costs
   // more than a fighter. Each spot is
   // tried at three widths (the CSS width, 92% and 84%), since a narrower, taller note sometimes fits between the rows.
-  const blocks=[['.cs-tile,.health-track,.head-rage-track,.health-label,.shield-label',1000,4],['.cs-pvp',2,2],['#heroActor,#enemyActor',1,0]]
+  const blocks=[['.cs-tile,.health-track,.head-rage-track,.health-label,.shield-label',1000,4],['.cs-pvp',2,2],['.chud-back,.chud-gear',3,2],['#heroActor,#enemyActor',1,0]]
     .flatMap(([q,weight,m])=>[...document.querySelectorAll(q)].map(n=>[n.getBoundingClientRect(),weight,m])).filter(([b])=>b.width&&b.height);
   let best=null,bestCost=Infinity,w=0,h=0;
   const base=el.offsetWidth;
@@ -12967,10 +13030,12 @@ function openStatusTip(tile){
   // A small parchment point toward the chosen tile when the note sits right above or below it.
   const cx=r.left+r.width/2-best[0];if(cx>14&&cx<w-14){if(best[1]+h<=r.top)pointTip(el,'down',cx);else if(best[1]>=r.bottom)pointTip(el,'up',cx);}
 }
-document.addEventListener('click',e=>{const tile=e.target.closest?.('.cs-tile');if(tile){e.stopPropagation();if(statusTip?.anchor===tile)closeStatusTip();else openStatusTip(tile);return;}if(statusTip&&!e.target.closest?.('.cs-tip'))closeStatusTip();},true);
+// A tap focuses the tile first (focusin opens the note), then clicks it: that click must not close the note again.
+let statusFocusOpen=0;
+document.addEventListener('click',e=>{const tile=e.target.closest?.('.cs-tile');if(tile){e.stopPropagation();if(statusTip?.anchor===tile&&performance.now()-statusFocusOpen>400)closeStatusTip();else if(statusTip?.anchor!==tile)openStatusTip(tile);return;}if(statusTip&&!e.target.closest?.('.cs-tip'))closeStatusTip();},true);
 document.addEventListener('mouseover',e=>{const tile=e.target.closest?.('.cs-tile');if(tile&&matchMedia('(hover:hover)').matches&&statusTip?.anchor!==tile)openStatusTip(tile);});
 document.addEventListener('mouseout',e=>{const tile=e.target.closest?.('.cs-tile');if(tile&&statusTip?.anchor===tile&&!tile.contains(e.relatedTarget)&&matchMedia('(hover:hover)').matches)closeStatusTip();});
-document.addEventListener('focusin',e=>{const tile=e.target.closest?.('.cs-tile');if(tile)openStatusTip(tile);});
+document.addEventListener('focusin',e=>{const tile=e.target.closest?.('.cs-tile');if(tile&&statusTip?.anchor!==tile){openStatusTip(tile);statusFocusOpen=performance.now();}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeStatusTip();});
 // PvP plaques: the local duel names its two players; a friendly match and the cup show this account and the other
 // player's (or the AI copy's) display name. Long names end in "…"; a tap shows the whole name.
@@ -12998,7 +13063,8 @@ function renderPvpNames(){
   const tag=document.querySelector('.chud-stage');if(tag){if(names?.mode)tag.dataset.mode=names.mode;else delete tag.dataset.mode;}
   if(!plates.length){document.documentElement.classList.remove('cs-pvp-bar');return;}
   const box=scene.getBoundingClientRect(),k=box.width/(scene.offsetWidth||box.width),tops=[...document.querySelectorAll('.cs-row')].map(r=>r.getBoundingClientRect().top).filter(t=>t>0);
-  const room=tops.length?Math.min(...tops)-box.top:Infinity,inBar=!!bar&&room<(10+24+12)*k;
+  // Phones on their side always carry the names in the top bar (one place for every short stage).
+  const room=tops.length?Math.min(...tops)-box.top:Infinity,short=matchMedia('(orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2)').matches,inBar=!!bar&&(short||room<(10+24+12)*k);
   document.documentElement.classList.toggle('cs-pvp-bar',inBar);
   for(const plate of plates){const home=inBar?bar:scene;if(plate.parentNode!==home)home.append(plate);}
 }
@@ -13006,6 +13072,8 @@ function renderPvpNames(){
 // keep the auras on the boss's body.
 if(typeof renderFoeStatuses==='function')renderFoeStatuses=function(){if(typeof syncFoeSelfStates==='function')syncFoeSelfStates();};
 queueMicrotask(()=>{const statusUpdate=update;update=function(){statusUpdate();renderCombatStatuses();};update();});
+// Turning the phone moves the stage's edges: slide the gauges, rows and name plates in again for the new size.
+addEventListener('resize',()=>requestAnimationFrame(()=>{try{renderCombatStatuses();}catch{}}));
 // Studio / QA: put effects on either side, and preview the PvP plaques.
 queueMicrotask(()=>{if(!window.gameQA)return;Object.assign(window.gameQA,{
   statusQA(sides={}){
