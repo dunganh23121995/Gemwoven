@@ -3662,6 +3662,7 @@
     "assets/audio/elite-skills/melee-swing-1.wav",
     "assets/audio/elite-skills/melee-swing-2.wav",
     "assets/audio/elite-skills/melee-swing-3.wav",
+    "assets/audio/hero-forms/transform/spirit-rise.wav",
     "assets/audio/music/earth.ogg",
     "assets/audio/music/fire.ogg",
     "assets/audio/music/lightning.ogg",
@@ -4765,7 +4766,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 165035848
+   "bytes": 165573492
   },
   {
    "id": "hero-earth-f1",
@@ -4923,7 +4924,7 @@
     "assets/reimagined/heroes/fire/run.webp",
     "assets/reimagined/heroes/fire/smash.webp"
    ],
-   "bytes": 11750836
+   "bytes": 11971202
   },
   {
    "id": "hero-fire-f2",

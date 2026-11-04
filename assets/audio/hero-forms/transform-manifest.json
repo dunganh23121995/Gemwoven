@@ -207,5 +207,31 @@
     "peak": 0.28,
     "rms": 0.06,
     "sha256": "bca3581461229f1610bbb8a0a871eded1ac8c6efaf30132b52359ce9a42fe572"
+  },
+  "spirit-rise": {
+    "file": "hero-forms/transform/spirit-rise.wav",
+    "duration": 4.2,
+    "beat": "the guardian spirit rises (every hero, BIẾN THÂN pressed)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Wind Whirl (Small Air Blow)",
+        "author": "DARTEKZ_GAMEZ",
+        "source_url": "https://freesound.org/people/DARTEKZ_GAMEZ/sounds/719560/",
+        "license": "CC0-1.0",
+        "sha256": "5b41e14eaa752d4715ee7c706b99581f3adf5b02630c1d6c565b445a4e725c75"
+      },
+      {
+        "title": "Asoada impact low tube.wav",
+        "author": "CawawaC",
+        "source_url": "https://freesound.org/people/CawawaC/sounds/378558/",
+        "license": "CC0-1.0",
+        "sha256": "d821aff68fb85fd10505c9f8ff844d9515451a14dd39882c5e0fb870dba85078"
+      }
+    ],
+    "processing": "surge 0.05-1.00 s (50 Hz high-pass, 5000 Hz low-pass) + boom 0.00-3.60 s at 0.60 s (25 Hz high-pass, 2500 Hz low-pass), edge fades, one gain",
+    "peak": 0.89,
+    "rms": 0.107,
+    "sha256": "ddb9c3abe6e6f549677287829d45f87a4121cf9d0128639448f689a319ea9edb"
   }
 }

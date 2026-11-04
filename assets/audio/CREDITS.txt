@@ -953,3 +953,15 @@ Build: python scripts/prepare_hiro_star_form_sounds.py. Sources (CC0 1.0) in sou
 Form ceremony sounds (2026-11-04): the Tướng screen's form-unlock scene (src/gemwoven/form-ceremony.js) plays the
 summon reveal's own recordings, unchanged (assets/audio/summon: bell, rise, sting-<hero>, gold, strike, touch; sources and
 licences in assets/audio/summon/summon-sounds.json). One recording per beat, no new files, no extra processing.
+
+Biến Thân spirit sound (2026-11-04): one shared cue under every hero's own flare, as the guardian spirit rises
+(src/transform-fx.js): a soft air blow builds up and, as the spirit stands at full size (0.6 s), a deep round low-tube impact
+lands with its long hum (the owner's pick). Two real recordings, nothing else: each trimmed, high-passed (50 / 25 Hz),
+low-passed (5 / 2.5 kHz, no hiss or fizz) and faded, then set to one level (peak -1 dBFS, no limiting); no pitch/time
+change or synthesis. Clip: hero-forms/transform/spirit-rise.wav (manifest hero-forms/transform-manifest.json). A spare
+with a dark air whoosh as its rise is kept in the sound library, not played: library/spares/spirit-rise-gio-vut-tram.wav
+(library/spares-manifest.json, "Linh thần xuất hiện · gió vút trầm (dự phòng)"). Build: python
+scripts/prepare_transform_sounds.py. Sources (CC0 1.0):
+  spirit-rise/rise       #719560 "Wind Whirl (Small Air Blow)" by DARTEKZ_GAMEZ, https://freesound.org/people/DARTEKZ_GAMEZ/sounds/719560/
+  spirit-rise/boom, spare #378558 "Asoada impact low tube.wav" by CawawaC, https://freesound.org/people/CawawaC/sounds/378558/
+  spare/rise             #431976 "whoosh dark.wav" by sfx4animation, https://freesound.org/people/sfx4animation/sounds/431976/

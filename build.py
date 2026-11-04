@@ -159,6 +159,10 @@ for creature in ['slime','acorn','bat']:
 art['evolution']={piece:image(f'assets/gemwoven/items/evo-{piece}.png') for piece in ['weapon','shoulders','gloves','boots','crest','aura']}
 # Each hero's drawn Biến Thân look (src/transform-fx.js); a hero without one keeps the plain golden glow.
 art['transformLooks']={hero:{name:image(f'assets/heroes/forms/{hero}/transform/{name}.webp') for name in ['spirit','side-left','side-right','ground','mote','mote-2','after']} for hero in sorted(p.parent.parent.name for p in (root/'assets/heroes/forms').glob('*/transform/spirit.webp'))}
+# Biến Thân v2 (owner 04/11: a huge see-through spirit rises and fades, then an aura built from the hero's own silhouette
+# stays): a hero whose transform folder holds v2.json (assets/heroes/forms/transform_spirit.py) plays the v2 look.
+for hero,look in art['transformLooks'].items():
+    if (root/f'assets/heroes/forms/{hero}/transform/v2.json').exists():look['v2']=1
 # Each form's own body box (top, height, centre as fractions of the cell, from its resting frame) places the look, since
 # not every combat sheet carries its body height.
 def transform_body(hero,form):

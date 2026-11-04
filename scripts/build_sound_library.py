@@ -26,6 +26,7 @@ GROUPS = [
     ('Tiếng quái', ['creature-manifest.json'], 'combatVoice quái thường'),
     ('Nhạc', ['music-manifest.json', 'boss-music-manifest.json'], 'nhạc nền trận và boss'),
     ('Triệu hồi', ['summon/summon-sounds.json'], 'màn triệu hồi ở hub'),
+    ('Kho dự phòng', ['library/spares-manifest.json'], 'âm thanh để dành cho sau, chưa gắn vào game (scripts/prepare_transform_sounds.py)'),
 ]
 
 

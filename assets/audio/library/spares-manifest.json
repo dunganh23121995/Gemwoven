@@ -1,0 +1,28 @@
+{
+  "spirit-rise-gio-vut-tram": {
+    "file": "library/spares/spirit-rise-gio-vut-tram.wav",
+    "duration": 4.3,
+    "beat": "Linh thần xuất hiện · gió vút trầm (dự phòng)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "whoosh dark.wav",
+        "author": "sfx4animation",
+        "source_url": "https://freesound.org/people/sfx4animation/sounds/431976/",
+        "license": "CC0-1.0",
+        "sha256": "f6b1d2a15fd6a5695fb2a37886609efe05a1cf744cbd593c57a0bb3bf19cd1d6"
+      },
+      {
+        "title": "Asoada impact low tube.wav",
+        "author": "CawawaC",
+        "source_url": "https://freesound.org/people/CawawaC/sounds/378558/",
+        "license": "CC0-1.0",
+        "sha256": "d821aff68fb85fd10505c9f8ff844d9515451a14dd39882c5e0fb870dba85078"
+      }
+    ],
+    "processing": "surge 0.00-1.05 s (50 Hz high-pass, 5000 Hz low-pass) + boom 0.00-3.60 s at 0.70 s (25 Hz high-pass, 2500 Hz low-pass), edge fades, one gain",
+    "peak": 0.89,
+    "rms": 0.1,
+    "sha256": "3c04a3af762d4ccf5a9c6aa231663617722c6e78ee1765f8d09acf7cfa774248"
+  }
+}

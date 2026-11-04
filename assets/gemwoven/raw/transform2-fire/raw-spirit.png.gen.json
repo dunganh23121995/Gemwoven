@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T14:27:28Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-fire\\raw-spirit-v4-approved.png"
+  ],
+  "prompt": "EDIT the provided image (the first reference): keep it IDENTICAL in every way — same fox-goddess spirit, same pose, same face, same glowing line style, same colours, same position and size in the frame, same pure black background — with ONE change: remove her weapon completely. Erase the crescent flame glaive (the crescent blade, its long staff and its tassel) from her raised hand and from the image. Where the staff crossed her arm, sleeve and hair, continue those glowing lines naturally; her hand becomes an open, relaxed glowing hand like the other one, palm slightly inward toward the empty space at the bottom centre. Nothing else may change. Pure flat black #000000 background, no text, no frame.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate removes the crescent glaive and staff, and her raised hand becomes an open glowing hand that matches the other one. The character, outfit, colour scheme, flat black background and frame are preserved, with no text, extra figures or anatomy errors. Only minor stylistic drift from the reference is visible, such as a slightly different smile and a rescaled canvas at the same aspect ratio.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000529
+  }
+}
