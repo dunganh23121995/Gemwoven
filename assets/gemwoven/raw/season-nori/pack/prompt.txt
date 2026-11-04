@@ -1,0 +1,16 @@
+Use case: game UI asset pack for a portrait fantasy match-3 RPG ("Gemwoven"), the cosmetic set of the hero season "Hành Trình Của Nori".
+Reference images: image 1 is Nori: an antlered young forest knight with messy brown hair, green eyes, golden stag antlers with leaves, green-and-gold armour with a golden tree emblem, a fur collar, a green scarf, carrying a tall green tower shield with a gold tree and a stone warhammer. Image 2 is the approved cosmetic set of another season (Mika, crimson fox): match its layout, shapes, sizes, quality and finish exactly, but re-theme every piece to Nori's identity motifs: deep forest-green lacquer, burnished gold trim, golden stag antlers, oak leaves and vines, emerald gems, carved bark. Do NOT draw Nori herself or himself in this sheet.
+Style: painted hand-drawn fantasy game UI, the same rich warm illustration style and quality as the reference cosmetic set (Mika, crimson fox), crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers anywhere.
+Layout: exactly 9 separate assets on a solid flat pure magenta #FF00FF background, arranged in a 3 columns x 3 rows grid of equal cells, each asset centred in its cell with generous magenta margin, nothing touching cell edges or another asset, no cell borders or guide lines. No magenta or pink inside the assets.
+Row 1:
+1) Avatar frame: a circular portrait ring (clean round empty centre filled with magenta) in the season's lacquer and trim, a small signature ornament of Nori rising on top, a small emblem at the bottom centre, a few themed accents curling around one side. Ring thickness about 12% of its diameter.
+2) Title plate: a horizontal ribbon-banner plate about 4:1, season colour silk with metal trim, a small round crest medallion at the left end, a themed flourish at the right end, calm plain centre for a short title.
+3) Nameplate: a wider slimmer horizontal plate about 6:1, light silk on a dark lacquer back, small themed corner caps at both ends, a thin accent line along the bottom, plain centre for a player name.
+Row 2:
+4) Chat speech bubble: a rounded speech bubble with a pale calm interior, season-coloured border with metal trim, a small themed tail at the bottom left, a tiny emblem at the top right corner; suits nine-slice stretching.
+5) Combat frame corner: one ornate L-shaped corner piece for the top-left corner of a battle screen border in the season's lacquer and trim, with a small themed head or emblem at the corner and themed wisps, the two arms thin, ending in clean flat cuts.
+6) Season emblem: a round medallion with a stylised golden stag head with antlers framing a sacred tree and an emerald, readable at small size.
+Row 3:
+7) Calendar day tile: a square parchment card with a small dark header strip across its top (empty), thin metal edge, a tiny golden oak-leaf clasp at the bottom centre; plain calm centre.
+8) The same day tile glowing: identical card with a bright polished border and a soft glow in the season's light colour around it.
+9) Offer ribbon: a wide horizontal parchment scroll ribbon about 5:1 with metal rolled ends and small themed curls at both ends, calm empty centre.

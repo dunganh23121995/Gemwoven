@@ -3289,5 +3289,148 @@
       "assets/gemwoven/raw/season-yuki/pack/prompt.txt"
     ],
     "purpose": "Season kit of the hero (yuki), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-avatar": {
+    "file": "assets/gemwoven/season/nori/avatar.webp",
+    "width": 384,
+    "height": 384,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/avatar/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/avatar/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-banner": {
+    "file": "assets/gemwoven/season/nori/banner.webp",
+    "width": 1200,
+    "height": 400,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/banner/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/banner/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-bubble": {
+    "file": "assets/gemwoven/season/nori/bubble.webp",
+    "width": 416,
+    "height": 258,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-combat-corner": {
+    "file": "assets/gemwoven/season/nori/combat-corner.webp",
+    "width": 385,
+    "height": 326,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-day-ready": {
+    "file": "assets/gemwoven/season/nori/day-ready.webp",
+    "width": 300,
+    "height": 298,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-day": {
+    "file": "assets/gemwoven/season/nori/day.webp",
+    "width": 272,
+    "height": 300,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-emblem": {
+    "file": "assets/gemwoven/season/nori/emblem.webp",
+    "width": 342,
+    "height": 342,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-entry": {
+    "file": "assets/gemwoven/season/nori/entry.webp",
+    "width": 1920,
+    "height": 320,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/entry/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/entry/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-event-bg": {
+    "file": "assets/gemwoven/season/nori/event-bg.webp",
+    "width": 941,
+    "height": 1672,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/event-bg/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/event-bg/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-frame": {
+    "file": "assets/gemwoven/season/nori/frame.webp",
+    "width": 343,
+    "height": 383,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-nameplate": {
+    "file": "assets/gemwoven/season/nori/nameplate.webp",
+    "width": 459,
+    "height": 132,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-offer": {
+    "file": "assets/gemwoven/season/nori/offer.webp",
+    "width": 360,
+    "height": 117,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-nori-title": {
+    "file": "assets/gemwoven/season/nori/title.webp",
+    "width": 460,
+    "height": 197,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
   }
 }

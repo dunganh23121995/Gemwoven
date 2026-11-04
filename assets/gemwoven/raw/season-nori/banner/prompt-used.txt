@@ -1,0 +1,4 @@
+Use case: painted banner panel for the season page "Hành Trình Của Nori" in the portrait fantasy match-3 RPG Gemwoven (warm hand-painted wood, parchment and metal UI like the reference banner of Mika's season).
+Image: one wide landscape banner panel filling the whole image, aspect about 3:1, in a thin carved frame with small themed ornaments at the corners matching the reference banner's frame.
+Inside: an ancient sacred forest grove in warm afternoon light: giant mossy trees, golden sunbeams, a carved stone deer shrine, ferns and hanging vines, floating golden motes. Left 55% of the panel: calm, low-detail soft sky or mist so a title can sit there. Right 45%: an open space where a character will be placed later (leave it empty, no people, no animals, no creatures).
+Crisp, sharp, not blurred, no dark overlay. No text, no letters, no characters.
