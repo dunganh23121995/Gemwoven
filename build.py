@@ -516,6 +516,9 @@ css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for n
 # The combat HUD's drawn layer (src/combat-hud.js): last, so it wraps every other update and restyles the shared controls.
 extensions += '\n'+(root/'src/combat-hud.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-hud.css').read_text(encoding='utf-8')
+# Dẫn Đường's coach in the guided stage-1 fight (src/combat-coach.js): after the HUD, read-only.
+extensions += '\n'+(root/'src/combat-coach.js').read_text(encoding='utf-8')
+css += '\n'+(root/'src/combat-coach.css').read_text(encoding='utf-8')
 js = (root / 'src/game.js').read_text(encoding='utf-8').replace('/* GAME_EXTENSIONS */', extensions)
 # Skill titles' face (Anton, OFL, subset to Latin and Vietnamese: assets/fonts/anton-vi.woff2)
 css = "@font-face{font-family:'Gemwoven Title';src:url(data:font/woff2;base64,"+base64.b64encode((root/'assets/fonts/anton-vi.woff2').read_bytes()).decode()+") format('woff2');font-display:block}\n"+css

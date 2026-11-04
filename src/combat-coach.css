@@ -1,0 +1,14 @@
+/* Dẫn Đường coach in the first fight (combat-coach.js): drawn plaque, cat, ring, glove and swipe from assets/gemwoven/guide. */
+.coach-layer{position:fixed;inset:0;pointer-events:none;z-index:40}
+.coach-talk{position:fixed;filter:drop-shadow(0 4px 8px rgba(40,22,8,.45));animation:coach-in .3s ease-out both}
+.coach-cat{position:absolute;left:-2%;bottom:-6%;width:calc(var(--h) * 1.05);height:calc(var(--h) * 1.25);background:50% 0/cover no-repeat;z-index:2;
+  -webkit-mask-image:linear-gradient(#000 72%,transparent 98%);mask-image:linear-gradient(#000 72%,transparent 98%)}
+.coach-plaque{position:absolute;left:calc(var(--h) * .78);right:0;top:0;bottom:0;background:center/100% 100% no-repeat;display:flex;align-items:center;justify-content:center;padding:0 6% 0 calc(var(--h) * .42)}
+.coach-plaque p{margin:0;color:#4a2a12;font-family:Cambria,Georgia,serif;font-weight:700;font-size:clamp(13px,calc(var(--h) * .18),25px);white-space:nowrap;line-height:1.15;text-align:center}
+.coach-ring{position:fixed;box-sizing:border-box;border:5px solid transparent;border-image-slice:76;border-image-width:8px;animation:coach-pulse 1.2s ease-in-out infinite}
+.coach-swipe{position:fixed;height:auto;transform-origin:50% 50%;filter:drop-shadow(0 0 4px rgba(255,190,80,.6))}
+.coach-glove{position:fixed;height:auto;filter:drop-shadow(0 3px 4px rgba(30,16,6,.5));animation:coach-slide 1.4s ease-in-out infinite}
+@keyframes coach-in{from{opacity:0;transform:translateY(-8px)}}
+@keyframes coach-pulse{50%{filter:brightness(1.25)}}
+@keyframes coach-slide{0%,15%{transform:translate(0,0);opacity:1}60%,80%{transform:translate(var(--dx),var(--dy));opacity:1}100%{transform:translate(var(--dx),var(--dy));opacity:0}}
+@media (prefers-reduced-motion:reduce){.coach-talk,.coach-ring{animation:none}.coach-glove{animation:none;transform:translate(calc(var(--dx) / 2),calc(var(--dy) / 2))}}
