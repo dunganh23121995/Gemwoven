@@ -381,7 +381,7 @@ console.log('mika season ok');
   const O=require('../../src/gemwoven/liveops.js'),fs=require('node:fs');
   for(const hero of ['fire','ice','earth','lightning','shadow']){const kit=O.COSMETICS.filter(c=>c.hero===hero);assert.equal(kit.length,7,hero+' has seven pieces');
     for(const c of kit)assert.ok(fs.existsSync(require('node:path').join(__dirname,'../..',c.file)),c.file+' is drawn');}
-  assert.equal(O.COSMETICS.filter(c=>c.hero==='novice').length,0,'Hiro has no season');
+  assert.equal(O.COSMETICS.filter(c=>c.hero==='novice'&&c.season!==null).length,0,'Hiro has no season');assert.deepEqual(O.COSMETICS.filter(c=>c.hero==='novice').map(c=>c.id),['hiro-frame'],'only his free Tân Thủ frame');
   assert.equal(M.heroAvailable('ice',Date.UTC(2027,0,1)),false,'Yuki hidden while her season waits');assert.equal(O.seasonCosmetic(1,'avatar'),null);
   O.SEASONS.push({index:1,hero:'ice',rerun:null});const s1=O.passSeason(Date.UTC(2026,10,3)).end+86400000;
   assert.equal(M.heroAvailable('ice',s1-86400000*2),false,'not before her season');assert.equal(M.heroAvailable('ice',s1),true,'shown from her season');
@@ -569,3 +569,16 @@ console.log('guide ok');
   const q=M.DAILY.find(q=>q.id==='login').reward;assert.deepEqual([q.gold*28,q.exp*28,q.tickets*28],[14000,280,28]);
 }
 console.log('calendar ok');
+{ // Trang trí (owner 04/11): Hiro's frame on Tân Thủ day 7, owned hero portraits as the avatar, the frame that follows the
+  // selected hero, and "Thử" looks only with previewLooks (a test server), never owned.
+  const mk=opts=>{const map=new Map(),st={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};let at=Date.UTC(2026,10,4,5);return {e:M.makeEngine(st,{now:()=>at,random:()=>.5,...opts}),adv:d=>at+=d};};
+  const {e,adv}=mk({});
+  for(let d=1;d<=7;d++){const r=e.claimNewbie(d);if(d===7)assert.equal(r.cosmetic,'hiro-frame');adv(DAY);}
+  assert.ok(e.cosmetics().find(c=>c.id==='hiro-frame').owned,'Hiro frame owned after day 7');
+  e.wearCosmetic('hero:novice','avatar');assert.equal(e.looks().avatar,'hero:novice');assert.throws(()=>e.wearCosmetic('hero:fire','avatar'),/sở hữu/);
+  e.cosmeticOption('followHero',true);assert.equal(e.looks().frame,'hiro-frame','the frame follows the selected hero');
+  assert.equal(e.lookTrial().allowed,false);assert.throws(()=>e.lookTrialMode(true),/máy chủ thử/);
+  const t=mk({previewLooks:true}).e;t.lookTrialMode(true);t.lookTrialWear('mika-combat-frame','combatFrame');assert.equal(t.looks().combatFrame,'mika-combat-frame');
+  assert.ok(!t.cosmetics().find(c=>c.id==='mika-combat-frame')?.owned,'trial never owns');t.lookTrialMode(false);assert.equal(t.looks().combatFrame,undefined);
+}
+console.log('wardrobe ok');

@@ -1,0 +1,100 @@
+/* Trang trí (wardrobe-ui.js, Codex wardrobe round, mockup assets/gemwoven/raw/wardrobe/mockup-1.png). Units are the
+   popup's own (--s: 760 across the frame); every surface is a drawn kit piece. */
+.wd-dialog{--wu:var(--s)}
+.wd-dialog .gw-body{padding:0 2px 6px;display:flex;flex-direction:column}
+.wd-dialog .gw-body>*{flex:none}
+.wd-stage{position:relative;height:calc(330*var(--wu));margin:0 0 calc(14*var(--wu));border:solid transparent;border-width:calc(22*var(--wu));
+  border-image:var(--kit-parchment) 40 fill / calc(22*var(--wu)) stretch;filter:drop-shadow(0 3px 4px #5a341433)}
+.wd-stage>*{position:absolute}
+/* Thử (test servers only): a kit toggle in the preview's top-left corner. */
+.wd-trial{display:flex;align-items:center;gap:calc(6*var(--wu));margin:0 0 calc(6*var(--wu)) auto;padding:calc(4*var(--wu)) calc(14*var(--wu));border:0;background:var(--kit-plaque) center/100% 100% no-repeat;cursor:pointer}
+.wd-trial img{width:calc(64*var(--wu));height:calc(34*var(--wu));object-fit:contain}
+.wd-trial b{font:800 calc(22*var(--wu))/1 Cambria,serif;color:#ffe9bc;text-shadow:0 1px 2px #2a1006}
+.wd-trial small{font:800 calc(16*var(--wu))/1 Cambria,serif;color:#fff;background:#8a5a2a;border-radius:calc(8*var(--wu));padding:calc(3*var(--wu)) calc(7*var(--wu))}
+.wd-trial.on b{color:#ffd27a}
+.wd-trial.on small{background:#a8321f}
+/* Profile looks: the avatar in its frame, the nameplate with the player's name, the title under it. */
+.wd-prof{inset:0;display:flex;align-items:center;justify-content:center;gap:calc(26*var(--wu))}
+.wd-ava{position:relative;display:block;width:calc(220*var(--wu));height:calc(220*var(--wu));flex:none}
+.wd-ava .in{position:absolute;left:14%;top:14%;width:72%;height:72%;border-radius:50%;object-fit:cover;background:#3a2a1a}
+.wd-ava .ring{position:absolute;left:-14%;top:-22%;width:128%;height:136%;object-fit:contain;pointer-events:none}
+.wd-ava.small{width:calc(130*var(--wu));height:calc(130*var(--wu))}
+.wd-ids{display:flex;flex-direction:column;align-items:center;gap:calc(16*var(--wu));width:calc(300*var(--wu))}
+.wd-plate,.wd-title{position:relative;display:grid;place-items:center;width:100%;height:calc(76*var(--wu))}
+.wd-plate img,.wd-title img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.wd-plate.plain{background:var(--kit-plaque) center/100% 100% no-repeat}
+.wd-title{height:calc(110*var(--wu))}
+.wd-plate b,.wd-title b{position:relative;font:800 calc(26*var(--wu))/1 Cambria,serif;color:#fff3d6;text-shadow:0 2px 2px #2a1006,0 0 4px #2a1006;white-space:nowrap;max-width:86%;overflow:hidden;text-overflow:ellipsis}
+.wd-plate.plain b{color:#fff1cf;text-shadow:0 1px 1px #2a1006}
+.wd-title b{margin-top:calc(-8*var(--wu));font-size:calc(22*var(--wu))}
+/* Bubble: the avatar and one chat line. */
+.wd-chat{inset:0;display:flex;align-items:center;justify-content:center;gap:calc(20*var(--wu))}
+.wd-bubble{position:relative;display:grid;place-items:center;width:calc(330*var(--wu));height:calc(240*var(--wu))}
+.wd-bubble img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.wd-bubble.plain{background:#fff8e6;border-radius:calc(40*var(--wu));height:calc(130*var(--wu));box-shadow:inset 0 0 0 calc(3*var(--wu)) #c99a52}
+.wd-bubble b{position:relative;font:800 calc(30*var(--wu))/1 Cambria,serif;color:#4a2610}
+/* Khung trận / Vào trận: a small battle; corners as in combat (progression-combat.css .cos-corner, 21% width). */
+.wd-battle{inset:0;overflow:hidden;border-radius:calc(12*var(--wu));background:#24331c}
+.wd-battle>*{position:absolute}
+.wd-battle .bg{inset:0;width:100%;height:100%;object-fit:cover}
+.wd-battle .hero{left:12%;bottom:6%;height:72%;width:auto;filter:drop-shadow(0 4px 4px #0008)}
+.wd-battle .foe{right:12%;bottom:8%;height:40%;width:auto;transform:scaleX(-1);filter:drop-shadow(0 4px 4px #0008)}
+.wd-battle .corner{width:21%;height:auto;z-index:2;filter:drop-shadow(0 2px 3px #0008)}
+.wd-battle .corner.tl{left:0;top:0}.wd-battle .corner.tr{right:0;top:0;transform:scaleX(-1)}
+.wd-battle .corner.bl{left:0;bottom:0;transform:scaleY(-1)}.wd-battle .corner.br{right:0;bottom:0;transform:scale(-1,-1)}
+.wd-entry{inset:0;z-index:3;background-size:600% 100%;background-position:40% 0;background-repeat:no-repeat;mix-blend-mode:screen;pointer-events:none}
+.wd-entry.run{animation:wd-entry .9s steps(5) 1 both}
+@keyframes wd-entry{from{background-position:0 0}to{background-position:100% 0}}
+.wd-play{right:calc(10*var(--wu));bottom:calc(10*var(--wu));z-index:4;width:calc(70*var(--wu));height:calc(70*var(--wu));padding:0;border:0;background:none;cursor:pointer}
+.wd-play img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 3px #0009)}
+/* Seven fixed category tiles. */
+.wd-slots{display:grid;grid-template-columns:repeat(7,1fr);gap:calc(4*var(--wu));margin:0 0 calc(10*var(--wu))}
+.wd-slot{display:flex;flex-direction:column;align-items:center;gap:calc(4*var(--wu));padding:calc(6*var(--wu)) 0;border:0;border-radius:calc(14*var(--wu));background:none;cursor:pointer}
+.wd-slot span{display:grid;place-items:center;width:calc(76*var(--wu));height:calc(76*var(--wu));background:var(--kit-round-off) center/contain no-repeat}
+.wd-slot span img{width:58%;height:58%;object-fit:contain;filter:drop-shadow(0 2px 2px #0006)}
+.wd-slot b{font:800 calc(20*var(--wu))/1.05 Cambria,serif;color:#5a3414;min-height:calc(42*var(--wu))}
+.wd-slot.on{background:var(--kit-plaque-on) center/100% 100% no-repeat}
+.wd-slot.on span{background-image:var(--kit-round)}
+.wd-slot.on b{color:#ffe9bc;text-shadow:0 1px 2px #2a1006}
+/* The selected piece's name once; a locked one adds where it comes from. */
+.wd-name{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:calc(8*var(--wu)) calc(14*var(--wu));min-height:calc(52*var(--wu));margin:0 0 calc(10*var(--wu))}
+.wd-name>b{font:800 calc(28*var(--wu))/1.1 Cambria,serif;color:#4a2610}
+.wd-name small{display:flex;align-items:center;gap:calc(5*var(--wu));font:700 calc(21*var(--wu))/1 Cambria,serif;color:#8a4a1a}
+.wd-name small img{width:calc(22*var(--wu));height:calc(24*var(--wu))}
+.wd-chip,.wd-follow{display:flex;align-items:center;gap:calc(6*var(--wu));padding:0 calc(10*var(--wu)) 0 0;border:0;background:none;cursor:pointer}
+.wd-chip{background:var(--kit-plaque) center/100% 100% no-repeat;padding:calc(6*var(--wu)) calc(16*var(--wu))}
+.wd-chip img{width:calc(34*var(--wu));height:calc(34*var(--wu));object-fit:contain}
+.wd-chip b,.wd-follow b{font:800 calc(21*var(--wu))/1 Cambria,serif;color:#4a2610}
+.wd-chip i{font:800 calc(24*var(--wu))/1 Cambria,serif;color:#a8321f;font-style:normal}
+.wd-follow img{width:calc(60*var(--wu));height:calc(32*var(--wu));object-fit:contain}
+/* Pieces: drawn sockets, selected = socket-on, worn = the brass medal, locked = socket-locked with a lock and the level. */
+.wd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(14*var(--wu))}
+.wd-item{position:relative;aspect-ratio:1;padding:0;border:0;background:var(--kit-socket) center/100% 100% no-repeat;cursor:pointer;display:grid;place-items:center}
+.wd-item>img:not(.worn){width:72%;height:72%;object-fit:contain;filter:drop-shadow(0 3px 3px #0007)}
+.wd-item>img.strip{object-fit:cover;object-position:40% 50%;border-radius:calc(10*var(--wu))}
+.wd-item.on{background-image:var(--kit-socket-on)}
+.wd-item.locked{background-image:var(--kit-socket)}
+.wd-item.locked>img:not(.worn){filter:saturate(.7) brightness(.82) drop-shadow(0 3px 3px #0007)}
+.wd-item .none{font:800 calc(54*var(--wu))/1 Cambria,serif;color:#e9d6ac;font-style:normal}
+.wd-item .worn{position:absolute;right:calc(-6*var(--wu));top:calc(-8*var(--wu));width:calc(54*var(--wu));height:calc(54*var(--wu));object-fit:contain}
+.wd-item em{position:absolute;left:50%;bottom:calc(10*var(--wu));translate:-50% 0;display:flex;align-items:center;gap:calc(4*var(--wu));padding:calc(3*var(--wu)) calc(10*var(--wu));
+  border-radius:calc(14*var(--wu));background:#2a1a0ed9;font:800 calc(20*var(--wu))/1 Cambria,serif;color:#ffe2a0;font-style:normal;white-space:nowrap}
+.wd-item em img{width:calc(18*var(--wu));height:calc(20*var(--wu))}
+/* A reward that brings a piece shows its picture above "Trang bị ngay". */
+.wd-new{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:8px 0 0}
+.wd-new span{display:flex;flex-direction:column;align-items:center;gap:4px;width:120px}
+.wd-new img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 3px 4px #0006)}
+.wd-new b{font:800 14px/1.15 Cambria,serif;color:#4a2610}
+
+/* Phone (Codex round 1): larger labels, toggles and footer with 44px touch areas. */
+@media(max-width:700px){
+  .wd-slot b{font-size:calc(24*var(--wu));line-height:1.1;min-height:calc(54*var(--wu))}
+  .wd-slots{gap:calc(2*var(--wu))}
+  .wd-trial,.wd-follow{min-height:44px;box-sizing:border-box}
+  .wd-trial b,.wd-follow b{font-size:calc(27*var(--wu))}
+  .wd-trial small{font-size:calc(21*var(--wu))}
+  .wd-trial img,.wd-follow img{width:calc(74*var(--wu));height:calc(40*var(--wu))}
+  .wd-name>b{font-size:calc(31*var(--wu))}
+  .wd-name small{font-size:calc(24*var(--wu))}
+  .wd-dialog .gw-actions .gw-btn{min-height:48px;min-width:calc(330*var(--wu));font-size:calc(34*var(--wu))}
+}

@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T11:56:35Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\items\\portrait-novice.png",
+    "C:\\Users\\dungc\\AppData\\Local\\Temp\\claude\\d--Project-Gemwoven\\2c671ee4-f9db-475b-a7cc-92a9417de54b\\scratchpad\\wardrobe\\ref-frames.png"
+  ],
+  "prompt": "Use case: one game UI asset for a portrait fantasy match-3 RPG (\"Gemwoven\"): the avatar frame of Hiro, the free starter hero, awarded on day 7 of the newcomer journey.\nReference images: image 1 is Hiro: a young traveller boy with messy brown hair, a long green scarf, a brown leather tunic and belt, a wooden practice sword. Image 2 shows two approved avatar frames of season heroes (Mika crimson fox, Yuki snow rabbit): match their size, proportions, ring thickness, painted quality and finish exactly, but make Hiro's frame clearly more modest and earthy, a traveller's frame.\nDesign: a round portrait ring of warm polished walnut wood with a thin aged-bronze rim, a small bronze compass-rose emblem at the top centre, a knotted green scarf ribbon with two short tails at the bottom centre, two small green leaf sprigs on the sides, a few tiny brass rivets. No gems, no gold filigree, no wings, no flames.\nStyle: painted hand-drawn fantasy game UI, the same rich warm illustration style as the reference frames, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nLayout: exactly one asset centred on a solid flat pure magenta #FF00FF background, generous magenta margin all round, nothing touching the edges. The round centre of the ring is empty and filled with the same pure magenta. No magenta or pink inside the artwork itself.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a single centred walnut-and-bronze ring frame on a flat pure magenta background, with an empty magenta centre as requested. It has a compass-rose emblem at the top, a green scarf knot at the bottom, leaf sprigs on the sides and rivets, with no gems, flames, wings or text. Nothing is cut off by the image edges, and I see no clear defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000541
+  }
+}

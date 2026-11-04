@@ -6,7 +6,7 @@
   // Test servers only: this machine, a phone on the same private network (192.168.x.x / 10.x.x.x),
   // or the temporary Cloudflare quick-tunnel test link (*.trycloudflare.com). The real domain never matches.
   const localPreview=/^https?:$/.test(location.protocol)&&(['localhost','127.0.0.1','[::1]'].includes(location.hostname)||/^(192\.168|10)\.\d+\.\d+(\.\d+)?$/.test(location.hostname)||/\.trycloudflare\.com$/.test(location.hostname));
-  const engine=M.makeEngine(storage,{previewTickets:localPreview,previewGems:localPreview,previewMail:localPreview,previewHeroes:localPreview});
+  const engine=M.makeEngine(storage,{previewTickets:localPreview,previewGems:localPreview,previewMail:localPreview,previewHeroes:localPreview,previewLooks:localPreview});
   const extra={campaign:['Vượt Ải','icon-quest','home'],boss:['Trùm Vô Tận','nav-arena','arena'],quests:['Quán Bia','icon-tavern','tavern'],offline:['Tích Lũy','chest','home'],equipment:['Trang Bị','helmet','forge'],events:['Sự Kiện','icon-event','home'],vip:['VIP','icon-crown','shop'],rankings:['Thành Tích','rank-gold','arena'],admin:['Studio Sự Kiện','icon-settings','home'],mail:['Hòm Thư','icon-mail','tavern'],settings:['Cài Đặt','icon-settings','home'],chat:['Gặp Gỡ','icon-chat','tavern']};
   const baseNodes=Object.fromEntries(Object.entries(L.screens).map(([key,v])=>[key,v.nodes.slice()]));
   for(const [key,[name,,bg]]of Object.entries(extra)){L.names[key]=name;L.screens[key]={key,name,background:`assets/gemwoven/backgrounds/${bg}.webp`,backgroundKey:bg,nodes:[]};}

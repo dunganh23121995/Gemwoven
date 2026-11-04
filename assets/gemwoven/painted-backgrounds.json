@@ -3718,5 +3718,16 @@
       "assets/gemwoven/raw/season-noct/pack/prompt.txt"
     ],
     "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+  },
+  "season-hiro-frame": {
+    "file": "assets/gemwoven/season/hiro/frame.webp",
+    "width": 420,
+    "height": 454,
+    "textless": true,
+    "source": "assets/gemwoven/raw/hiro-frame/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/hiro-frame/prompt.txt"
+    ],
+    "purpose": "Hiro's avatar frame, free on day 7 of Hành Trình Tân Thủ (owner 04/11, Codex wardrobe round)."
   }
 }

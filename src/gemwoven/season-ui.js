@@ -228,7 +228,7 @@
       if(cmd==='fuse'){const v=G.engine.companion(),had=v.fragments.owned;G.engine.fuse(v.hero);ctx.render();ctx.showModal(had?`+1 bản sao ${heroName(v.hero)}`:`${heroName(v.hero)} đã gia nhập!`,[],'');}
       if(cmd==='sources')sourcesDialog();
       if(cmd==='jump')jump(state,Number(d.level),el);
-      if(cmd==='wardrobe')wardrobe(ctx);
+      if(cmd==='wardrobe'){if(window.GemwovenWardrobe)window.GemwovenWardrobe.open(ctx,{season:G.engine.pass()?.season??null,state});else wardrobe(ctx);}
       if(cmd==='detail')detailDialog(Number(d.level),d.track);
       if(cmd==='offer')offerDialog();
     }catch(e){ctx.showModal('Chưa thể thực hiện',[],e.message);}

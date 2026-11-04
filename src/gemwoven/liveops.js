@@ -90,6 +90,10 @@
     ['combatFrame','combat-frame','combat-corner','jewel',25,k=>'Khung trận '+k.theme],['entry','entry','entry','jewel',40,k=>k.entry]];
   const COSMETICS=Object.entries(SEASON_KITS).flatMap(([hero,k])=>KIT_ITEMS.map(([slot,id,pic,track,level,name])=>({id:k.art+'-'+id,art:`season-${k.art}-${pic}`,
     file:`assets/gemwoven/season/${k.art}/${pic}.webp`,slot,hero,get season(){return seasonOf(hero)?.index??null;},name:name(k),track,level})));
+  // Hiro's own avatar frame (owner 04/11, Codex wardrobe round): a modest free reward on day 7 of Hành Trình Tân Thủ; no
+  // season, always in the wardrobe. Every hero thus has one frame: Hiro here, the season heroes in their kits.
+  COSMETICS.push({id:'hiro-frame',art:'season-hiro-frame',file:'assets/gemwoven/season/hiro/frame.webp',slot:'frame',hero:'novice',season:null,always:true,
+    name:'Khung Lữ Khách',track:'newbie',level:7,source:'Tân Thủ · Ngày 7'});
   const seasonCosmetic=(season,slot)=>{const h=seasonHero(season);return h&&COSMETICS.find(c=>c.hero===h.hero&&c.slot===slot)||null;};
   // Hero pass (Codex rounds 1-2): free 4 X fragments at levels 5-25 (20 a season, so the free track alone needs several
   // seasons), the avatar at 10; gold the frame/title/nameplate/bubble at 10/20/30/40; jewel the combat frame at 25, the

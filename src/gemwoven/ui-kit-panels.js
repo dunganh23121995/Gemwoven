@@ -13,7 +13,7 @@
   const kit=n=>img('kit-icon-'+n,'kp-ico');
   const lock=()=>img('kit-lock','kp-lock');
   // Reward names as printed by growth-ui.js → their item art.
-  const byName={'Mảnh Hiro':'portrait-novice',gemChoices:'gem-choice','Phiếu chọn ngọc':'gem-choice'};
+  const byName={'Mảnh Hiro':'portrait-novice','Khung Hiro':'season-hiro-frame',gemChoices:'gem-choice','Phiếu chọn ngọc':'gem-choice'};
   for(const [name,asset] of Object.values(M.RESOURCES||{}))byName[name]=asset;
   const shortName={gemChoices:'Phiếu chọn ngọc','Sách kinh nghiệm':'Sách KN','Tinh hoa tiến hóa':'Tinh hoa','Bí kíp kỹ năng':'Bí kíp'};
   const assetFile=k=>k==='gem-choice'?'assets/gemwoven/gems/gem-precision-1.webp':src(k);

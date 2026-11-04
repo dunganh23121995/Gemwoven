@@ -649,6 +649,15 @@ nhắn riêng, mời giao hữu, mời vào bang.
   kiện, VIP, Thư Hùng (`liveops.js` TITLES). Đeo 1 danh hiệu; khung chữ theo phẩm (Codex vẽ).
 - **Sưu tập hình thái** [Đề xuất]: chỉ huy hiệu và thành tích, không chỉ số.
 - **Thiết kế danh hiệu:** không cho tự do; chỉ nhà vô địch Thư Hùng đặt chữ theo khuôn, kiểm duyệt.
+- **Trang trí (chạm avatar trên HUD) [Có · Claude + Codex, 04/11]:** một bảng cho mọi cài đặt cá nhân: Avatar (chân dung tướng
+  đã có + avatar mùa; "—" = theo tướng đang chọn), Khung (công tắc **Theo tướng**: khung HUD tự theo khung của tướng đang chọn nếu
+  đã có), Danh hiệu, Thẻ tên, Bong bóng, Khung trận, Vào trận. Xem trước theo loại đang chọn (hồ sơ / chat / trận mini, ▶ phát lại
+  hiệu ứng vào trận), lưới ô vẽ (chọn = socket sáng, đang dùng = huy hiệu đồng), món khóa ghi nguồn (mùa · nhánh ★cấp, Tân Thủ ·
+  Ngày 7), footer một nút: Trang bị / Gỡ / Đi tới. Sổ "Bộ sưu tập" mở cùng bảng lọc theo mùa; nhận món mới có "Trang bị ngay".
+- **Mỗi tướng một khung avatar:** Mika/Yuki/Nori/Lumi/Noct trong bộ mùa (nhánh Vàng ★10); **Hiro: Khung Lữ Khách**, miễn phí ở ngày 7
+  Hành Trình Tân Thủ (cùng 20 mảnh Hiro), không mốc sao, không Đá Ngọc (`liveops.js` COSMETICS `hiro-frame`).
+- **Thử (chỉ máy chủ thử / LAN, `previewLooks`):** đeo thử mọi món của mọi bộ, kể cả mùa chưa mở, để kiểm tra HUD, Quảng Trường và
+  trận; không bao giờ ghi là đã sở hữu, tắt Thử là về bộ đã lưu. Tên miền thật không bật được.
 
 ---
 

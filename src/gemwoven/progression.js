@@ -104,7 +104,7 @@
   const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Trùm Vô Tận',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
   // Hành Trình Tân Thủ: seven gifts, one per GMT+7 day since the account was made (missed days
   // can be caught up). 80 Mảnh Hiro in the first week = his second star.
-  const NEWBIE=[{noviceFragments:10,gold:2000,tickets:2},{noviceFragments:10,exp:30},{noviceFragments:10,tickets:2},{noviceFragments:10,essence:10},{noviceFragments:10,skillBooks:3},{noviceFragments:10,ore:30},{noviceFragments:20,tickets:5}];
+  const NEWBIE=[{noviceFragments:10,gold:2000,tickets:2},{noviceFragments:10,exp:30},{noviceFragments:10,tickets:2},{noviceFragments:10,essence:10},{noviceFragments:10,skillBooks:3},{noviceFragments:10,ore:30},{noviceFragments:20,tickets:5,cosmetic:'hiro-frame'}];
   function newbieState(p,at){const days=Math.round((Date.parse(day(at))-Date.parse(day(p.created||at)))/DAY_MS)+1,claimed=p.newbie?.claimed||[];
     return NEWBIE.map((reward,i)=>({day:i+1,reward,claimed:claimed.includes(i+1),open:i+1<=days}));}
   // Weekly quests (reset Monday 00:00 GMT+7): one ticket each, so play gives about 40 tickets per 28 days
@@ -738,7 +738,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   // The Báu Vật trial runs the whole game on a copy of the save (gemwoven.treasure.v1) while it is on; the real save
   // is untouched. Hub and combat build their engine on storageFor(localStorage).
   function storageFor(raw){try{if(raw?.getItem('gemwoven.trialActive')==='1'){const T='gemwoven.treasure.v1',m=k=>k===KEY?T:k;return {getItem:k=>raw.getItem(m(k)),setItem:(k,v)=>raw.setItem(m(k),v),removeItem:k=>raw.removeItem(m(k)),trial:true};}}catch{}return raw;}
-  function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
+  function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,previewLooks=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
     let memory,sequence=0;
     function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...(p.pending.mode==='cup'?{}:p.pending.mode==='spar'?sparEncounter(p.pending.opponent):encounter(p.pending.mode,p.pending.index)),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
     function save(p){p.updated=now();p.revision++;if(storage)storage.setItem(KEY,JSON.stringify(p));else memory=clone(p);return p;}
@@ -762,7 +762,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function spend(p,cost){for(const [id,n] of Object.entries(cost)){check(Number.isSafeInteger(n)&&n>=0,'Chi phí không hợp lệ.');check(amount(p,id)>=n,`Thiếu ${RESOURCES[id]?.[0]||id}: cần ${n.toLocaleString('vi-VN')}.`);}for(const [id,n]of Object.entries(cost)){if(id in p.wallet)p.wallet[id]-=n;else p.materials[id]-=n;}p.daily.progress.spend+=cost.gold||0;}
     function grant(p,reward){const actual={};for(const [id,requested]of Object.entries(reward)){check(id!=='gems','Đá Ngọc chỉ nhận từ giao dịch nạp được máy chủ xác nhận.');check(Object.keys(RESOURCES).includes(id)&&Number.isSafeInteger(requested)&&requested>=0,'Phần thưởng không hợp lệ.');const n=id==='seals'?Math.min(requested,Math.max(0,DAILY_SEAL_CAP-p.daily.seals)):requested;if(id==='seals')p.daily.seals+=n;if(id in p.wallet)p.wallet[id]+=n;else p.materials[id]=(p.materials[id]||0)+n;actual[id]=n;}return actual;}
     // grant() plus Mảnh Hiro, which are fragments, not a wallet resource.
-    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,memoryDust=0,...rest}=reward;const actual=grant(p,rest);if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}
+    function grantAll(p,reward){const {noviceFragments=0,gemChoices=0,memoryDust=0,cosmetic=null,...rest}=reward;const actual=grant(p,rest);if(cosmetic){cosmeticGive(p,cosmetic);actual.cosmetic=cosmetic;}if(noviceFragments){p.fragments.novice=(p.fragments.novice||0)+noviceFragments;actual.noviceFragments=noviceFragments;}if(gemChoices){p.gemChoices=(p.gemChoices||0)+gemChoices;actual.gemChoices=gemChoices;}
       if(memoryDust){check(Number.isSafeInteger(memoryDust)&&memoryDust>0,'Phần thưởng không hợp lệ.');memoryState(p).dust+=memoryDust;actual.memoryDust=memoryDust;}return actual;}
     // ----- Bụi Ký Ức (D3) -----
     // Test heroes from the local preview grants never feed the real economy.
@@ -840,10 +840,18 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     // Season cosmetics (no stats, usable without owning the hero): owned ids and the worn piece of each slot.
     function cosmeticState(p){const c=p.cosmetics??={owned:[],worn:{}};c.owned??=[];c.worn??={};return c;}
     function cosmeticGive(p,id){const c=cosmeticState(p);if(!c.owned.includes(id))c.owned.push(id);}
-    function wornCosmetic(p,slot){const id=p.cosmetics?.worn?.[slot];return id&&p.cosmetics.owned.includes(id)?OPS()?.COSMETICS.find(c=>c.id===id)||null:null;}
+    // The avatar slot also takes an owned hero's portrait ('hero:<key>', the hub draws it). "Khung theo tướng đang chọn"
+    // (followHero) wears the selected hero's own frame when it is owned, otherwise the worn one. Trial looks ("Thử", only
+    // on a test server: previewLooks) override for preview and are never owned.
+    function wornCosmetic(p,slot){const c=p.cosmetics,cat=OPS()?.COSMETICS||[],find=id=>cat.find(x=>x.id===id)||null;
+      if(previewLooks&&c?.trial?.on&&c.trial.worn?.[slot]){const id=c.trial.worn[slot];return id.startsWith('hero:')?{id,slot,hero:id.slice(5),file:null}:find(id);}
+      if(slot==='frame'&&c?.followHero){const own=cat.find(x=>x.slot==='frame'&&x.hero===p.selected&&c.owned?.includes(x.id));if(own)return own;}
+      const id=c?.worn?.[slot];if(!id)return null;
+      if(id.startsWith('hero:'))return p.heroes[id.slice(5)]?{id,slot,hero:id.slice(5),file:null}:null;
+      return c.owned.includes(id)?find(id):null;}
     function wornLooks(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c)out[slot]=c.id;}return out;}
     // Files of the worn looks, for the combat page (it has no live-ops catalogue of its own).
-    function lookFiles(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c)out[slot]=c.file;}return out;}
+    function lookFiles(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c?.file)out[slot]=c.file;}return out;}
     // Đồng Hành Cùng X (liveops COMPANION): day stamps from the third daily quest, catch-up stamps from 6 PvE wins on a later
     // day (to day 28, one a day, earliest missed day first), weekly tasks counting wins from their chapter's first day. Days
     // 15-28 run the material event while the season has no re-run hero. Earned rewards wait for "Nhận"; a new season grants
@@ -1117,10 +1125,20 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       deleteReadMail:()=>tx(p=>{const before=p.mail.length;p.mail=p.mail.filter(m=>!m.read||mailPending(m));return before-p.mail.length;}),
       // Local studio prototype only; real administrator mail needs the server.
       // Season cosmetics: the catalogue with what this save owns and wears; wearing never changes stats.
-      cosmetics:()=>{const p=read(),O=OPS(),c=p.cosmetics||{owned:[],worn:{}},now=O?.passSeason(current).index??0;return (O?.COSMETICS||[]).filter(x=>(c.owned||[]).includes(x.id)||x.season!=null&&x.season<=now).map(x=>({...x,owned:(c.owned||[]).includes(x.id),worn:c.worn?.[x.slot]===x.id}));},
+      cosmetics:()=>{const p=read(),O=OPS(),c=p.cosmetics||{owned:[],worn:{}},now=O?.passSeason(current).index??0;return (O?.COSMETICS||[]).filter(x=>(c.owned||[]).includes(x.id)||x.always||x.season!=null&&x.season<=now).map(x=>({...x,owned:(c.owned||[]).includes(x.id),worn:c.worn?.[x.slot]===x.id}));},
       looks:()=>wornLooks(read()),
       wearCosmetic:(id,slot)=>tx(p=>{const O=OPS(),c=cosmeticState(p);if(id==null||id===''){check(O.COSMETIC_SLOTS.some(([x])=>x===slot),'Ô trang trí không hợp lệ.');delete c.worn[slot];return null;}
+        if(String(id).startsWith('hero:')){check(slot==='avatar'&&p.heroes[id.slice(5)],'Chưa sở hữu tướng này.');c.worn.avatar=id;return id;}
         const x=O.COSMETICS.find(x=>x.id===id);check(x,'Món trang trí không tồn tại.');check(c.owned.includes(id),'Chưa sở hữu món này.');c.worn[x.slot]=id;if(x.slot==='title')delete p.title;note(p,'Trang bị '+x.name);return id;}),
+      // Wardrobe options: followHero ("Khung theo tướng đang chọn"). Trial ("Thử") exists only on a test server.
+      cosmeticOption:(name,value)=>tx(p=>{check(name==='followHero','Tùy chọn không hợp lệ.');cosmeticState(p).followHero=!!value;return !!value;}),
+      lookTrial:()=>{const t=read().cosmetics?.trial;return previewLooks?{allowed:true,on:!!t?.on,worn:{...(t?.worn||{})}}:{allowed:false,on:false,worn:{}};},
+      lookTrialMode:on=>tx(p=>{check(previewLooks,'Chế độ thử chỉ có trên máy chủ thử.');const c=cosmeticState(p);c.trial??={on:false,worn:{}};c.trial.on=!!on;return c.trial.on;}),
+      lookTrialWear:(id,slot)=>tx(p=>{check(previewLooks,'Chế độ thử chỉ có trên máy chủ thử.');const O=OPS(),c=cosmeticState(p);c.trial??={on:true,worn:{}};
+        if(id==null||id===''){delete c.trial.worn[slot];return null;}
+        if(String(id).startsWith('hero:')){check(slot==='avatar'&&HEROES[id.slice(5)],'Tướng không hợp lệ.');c.trial.worn.avatar=id;return id;}
+        const x=O.COSMETICS.find(x=>x.id===id);check(x,'Món trang trí không tồn tại.');c.trial.worn[x.slot]=id;return id;}),
+      wardrobeOptions:()=>{const c=read().cosmetics;return {followHero:!!c?.followHero};},
       companion:()=>companionView(read()),
       claimCompanion:()=>tx(p=>{onTime(p);if(!companionSync(p))return {};const total={};let n=0;for(const r of companionRows(p))if(r.earned&&!r.taken){for(const [k,v] of Object.entries(companionTake(p,r)))if(typeof v==='number')total[k]=(total[k]||0)+v;else total[k]=v;n++;}
         check(n,'Chưa có phần quà nào để nhận.');note(p,`${OPS().seasonHero(p.companion.season)?.event||'Sự kiện mùa'}: nhận ${n} phần quà`);return total;}),

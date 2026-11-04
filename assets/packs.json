@@ -4482,6 +4482,7 @@
     "assets/gemwoven/plaza/ui/x-calendar.webp",
     "assets/gemwoven/plaza/ui/x-empty.webp",
     "assets/gemwoven/plaza/ui/x-recruit.webp",
+    "assets/gemwoven/season/hiro/frame.webp",
     "assets/gemwoven/season/lumi/avatar.webp",
     "assets/gemwoven/season/lumi/banner.webp",
     "assets/gemwoven/season/lumi/bubble.webp",
@@ -4764,7 +4765,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 164995380
+   "bytes": 165035848
   },
   {
    "id": "hero-earth-f1",

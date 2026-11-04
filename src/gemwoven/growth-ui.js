@@ -57,7 +57,7 @@
     const got=days.filter(d=>d.claimed).length,ready=days.filter(d=>d.open&&!d.claimed).length;
     return `<section class="newbie-week"><h3>Hành Trình Tân Thủ · đã nhận ${got}/7${ready?` · <span class="newbie-ready">${ready} quà chờ nhận</span>`:''}</h3><p class="hint">Mỗi ngày 1 quà · nhận bù được</p><details class="hint"><summary aria-label="Chi tiết">ⓘ</summary><p>Đủ 80 Mảnh Hiro trong tuần đầu là lên 2 sao.</p></details>`+
       `<div class="newbie-days">${days.map(d=>`<article class="newbie-day${d.claimed?' is-claimed':d.open?' is-open':''}"><b>Ngày ${d.day}</b>${img('portrait-novice','newbie-portrait')}`+
-        `<ul>${Object.entries(d.reward).map(([id,n])=>`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
+        `<ul>${Object.entries(d.reward).map(([id,n])=>id==='cosmetic'?'<li>Khung Hiro ×1</li>':`<li>${esc(name(id))} ×${fmt(n)}</li>`).join('')}</ul>`+
         `<button type="button" class="game-btn" data-action="growth:newbie" data-day="${d.day}" ${d.open&&!d.claimed?'':'disabled'}>${d.claimed?'Đã nhận':d.open?'Nhận':`Mở sau ${d.day-days.filter(x=>x.open).length} ngày`}</button></article>`).join('')}</div></section>`;
   }
   function weeklySection(){
