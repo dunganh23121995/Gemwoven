@@ -204,10 +204,10 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 
 /* Per hero: the aura's light (silhouette tint and its three glows) and the spirit's size and place. The mist is each hero's
    own drawing, already in its colours. */
-.tf-v2.tf-ice{--sil-hue:150deg;--sil-sat:3;--core:#eefcff;--glow:#9ee6ff;--out:#3d9cff}
-.tf-v2.tf-earth{--sil-hue:62deg;--sil-sat:3.5;--core:#f6ffdc;--glow:#a6e070;--out:#3f9a3c}
+.tf-v2.tf-ice{--sil-hue:150deg;--sil-sat:4.5;--core:#f2fdff;--glow:#86dcff;--out:#2a7dff}
+.tf-v2.tf-earth{--sil-hue:40deg;--sil-sat:4.5;--core:#fbffe0;--glow:#d6f07a;--out:#5aa82e}
 .tf-v2.tf-lightning{--sil-hue:225deg;--sil-sat:3.5;--core:#f7efff;--glow:#c99bff;--out:#7a3cff}
-.tf-v2.tf-shadow{--sil-hue:220deg;--sil-sat:1.6;--core:#f1ecff;--glow:#ad9fe0;--out:#5a4896}
+.tf-v2.tf-shadow{--sil-hue:215deg;--sil-sat:3;--core:#f6f2ff;--glow:#c7b4ff;--out:#8a64ff}
 .tf-v2.tf-novice{--sil-hue:-6deg;--sil-sat:3;--core:#fff7de;--glow:#f2cb74;--out:#b8843c}
 /* Hiro has no spirit: his aura kindles at once on the press. */
 .tf-v2.tf2-nospirit.tf-flare :is(.tf2-silbox,.tf2-pool){animation-delay:0s}
@@ -217,3 +217,13 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
 .tf-v2.tf-lightning .tf2-pool{background:radial-gradient(closest-side,rgba(245,235,255,.85),rgba(200,155,255,.55) 38%,rgba(120,60,255,.25) 66%,transparent 100%)}
 .tf-v2.tf-shadow .tf2-pool{background:radial-gradient(closest-side,rgba(235,228,255,.7),rgba(170,155,225,.45) 38%,rgba(90,72,150,.22) 66%,transparent 100%)}
 .tf-v2.tf-novice .tf2-pool{background:radial-gradient(closest-side,rgba(255,246,220,.85),rgba(242,203,116,.55) 38%,rgba(184,132,60,.25) 66%,transparent 100%)}
+/* Noct's black aura (owner 05/11, NOCT_AURA in transform-fx.js; 'violet' uses the rules above): the silhouette as ink, a
+   hairline of cool violet-grey light at its edge so it still reads on dark ground and on his dark body, then smoke-black
+   glows; the mist and the pool lean dark too. The spirit's design is unchanged. */
+.tf-v2.tf2-aura-black .tf2-sil{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 1px rgba(196,182,238,.95)) drop-shadow(0 0 calc(var(--u) * 2.2) rgba(12,8,24,.95))
+    drop-shadow(0 0 calc(var(--u) * 4.5) rgba(0,0,0,.75))}
+.tf-v2.tf2-aura-black .tf2-flowbox>.tf2-flow{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 calc(var(--u) * 3) rgba(6,4,14,.9))
+    drop-shadow(0 0 calc(var(--u) * 7) rgba(26,14,46,.65)) drop-shadow(0 0 calc(var(--u) * 11) rgba(0,0,0,.45))}
+.tf-v2.tf2-aura-black .tf2-pool{background:radial-gradient(closest-side,rgba(20,14,34,.85),rgba(10,6,20,.6) 40%,rgba(0,0,0,.3) 68%,transparent 100%)}
+.tf-v2.tf2-aura-black .tf2-mist>i{filter:brightness(.42) saturate(.8) drop-shadow(0 0 3px rgba(0,0,0,.6))}
+.tf-v2.tf2-aura-black.tf-after .tf2-sil{filter:url(#tf2-cut) brightness(0) drop-shadow(0 0 .8px rgba(196,182,238,.7)) drop-shadow(0 0 calc(var(--u) * 1.8) rgba(8,4,16,.85))}

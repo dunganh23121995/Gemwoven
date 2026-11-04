@@ -25,6 +25,8 @@ function transformLookBuild(key){
     back.style.setProperty('--tf-mist',`url("${files.mist||ART.transformMist}")`);if(files.mist)back.classList.add('tf2-own-mist');back.style.setProperty('--tf2-dissolve',TRANSFORM_DISSOLVE_MS+'ms');
     back.innerHTML='<i class="tf2-dim"></i><i class="tf2-spirit"></i><span class="tf2-mist">'+'<i></i>'.repeat(5)+'</span><i class="tf2-pool"></i><i class="tf2-silbox"><i class="tf2-sil"></i></i><i class="tf2-flowbox"><i class="tf2-sil tf2-flow"></i></i>';
     // Hiro (owner 05/11): no spirit, no mist, no spirit sound; only the aura, which kindles at once.
+    // Noct's aura tone (owner 05/11: "Noct tone đen"): 'black' by default; set NOCT_AURA to 'violet' to go back to the violet aura.
+    if(key==='shadow'&&NOCT_AURA==='black')back.classList.add('tf2-aura-black');
     if(files.noSpirit){back.classList.add('tf2-nospirit');for(const el of back.querySelectorAll('.tf2-dim,.tf2-spirit,.tf2-mist'))el.remove();}
     front.innerHTML='';}
   const form=String(progressionBattle?.stats?.form||state.form||1);back.dataset.form=form;front.dataset.form=form;
@@ -75,6 +77,8 @@ function transformSilMirror(hero,back){const body=hero.querySelector('.sprite-bo
 // keyframes in transform-fx.css mark it as 38.26% of 2.3 s, so change both together. The shared cue starts at the dissolve
 // plus TRANSFORM_SOUND_AFTER_DISSOLVE_MS: -450 ms, the owner's choice after testing (studio slider). The hero studio's "Âm (ms)" slider
 // overrides it for testing only (gameQA.transformSoundOffset); the game always uses the constant.
+// Noct's aura: 'black' (owner 05/11) or 'violet' (the earlier one, kept to switch back). One line to change.
+const NOCT_AURA='black';
 const TRANSFORM_DISSOLVE_MS=880,TRANSFORM_SOUND_AFTER_DISSOLVE_MS=-450;let transformSoundOffsetQA=null;
 const transformSoundDelay=()=>Math.max(0,TRANSFORM_DISSOLVE_MS+(transformSoundOffsetQA??TRANSFORM_SOUND_AFTER_DISSOLVE_MS));
 function transformSounds(key){if(ART.transformLooks[key]?.noSpirit){playCastSound(key,'transform',{volume:.3,pan:-.2});return;}

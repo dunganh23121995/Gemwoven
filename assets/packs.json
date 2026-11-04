@@ -4809,6 +4809,7 @@
     "assets/heroes/forms/earth/form-1/showcase/shieldslam.webp",
     "assets/heroes/forms/earth/transform/after.webp",
     "assets/heroes/forms/earth/transform/ground.webp",
+    "assets/heroes/forms/earth/transform/mist.webp",
     "assets/heroes/forms/earth/transform/mote-2.webp",
     "assets/heroes/forms/earth/transform/mote.webp",
     "assets/heroes/forms/earth/transform/side-left.webp",
@@ -4820,7 +4821,7 @@
     "assets/reimagined/heroes/earth/run.webp",
     "assets/reimagined/heroes/earth/smash.webp"
    ],
-   "bytes": 10658996
+   "bytes": 11096688
   },
   {
    "id": "hero-earth-f2",
@@ -5013,6 +5014,7 @@
     "assets/heroes/forms/ice/form-1/showcase/snowflake.webp",
     "assets/heroes/forms/ice/transform/after.webp",
     "assets/heroes/forms/ice/transform/ground.webp",
+    "assets/heroes/forms/ice/transform/mist.webp",
     "assets/heroes/forms/ice/transform/mote-2.webp",
     "assets/heroes/forms/ice/transform/mote.webp",
     "assets/heroes/forms/ice/transform/side-left.webp",
@@ -5027,7 +5029,7 @@
     "assets/reimagined/heroes/ice/hurt.webp",
     "assets/reimagined/heroes/ice/run.webp"
    ],
-   "bytes": 9898698
+   "bytes": 10278100
   },
   {
    "id": "hero-ice-f2",
@@ -5111,6 +5113,7 @@
     "assets/heroes/forms/lightning/form-1/showcase/staffspin.webp",
     "assets/heroes/forms/lightning/transform/after.webp",
     "assets/heroes/forms/lightning/transform/ground.webp",
+    "assets/heroes/forms/lightning/transform/mist.webp",
     "assets/heroes/forms/lightning/transform/mote-2.webp",
     "assets/heroes/forms/lightning/transform/mote.webp",
     "assets/heroes/forms/lightning/transform/side-left.webp",
@@ -5125,7 +5128,7 @@
     "assets/reimagined/heroes/lightning/hover.webp",
     "assets/reimagined/heroes/lightning/hurt.webp"
    ],
-   "bytes": 8099000
+   "bytes": 8622462
   },
   {
    "id": "hero-lightning-f2",
@@ -5296,6 +5299,7 @@
     "assets/heroes/forms/shadow/form-1/showcase/rift.webp",
     "assets/heroes/forms/shadow/transform/after.webp",
     "assets/heroes/forms/shadow/transform/ground.webp",
+    "assets/heroes/forms/shadow/transform/mist.webp",
     "assets/heroes/forms/shadow/transform/mote-2.webp",
     "assets/heroes/forms/shadow/transform/mote.webp",
     "assets/heroes/forms/shadow/transform/side-left.webp",
@@ -5309,7 +5313,7 @@
     "assets/heroes/shadow/idle/frame-02.png",
     "assets/heroes/shadow/idle/frame-03.png"
    ],
-   "bytes": 4835084
+   "bytes": 5206794
   },
   {
    "id": "hero-shadow-f2",

@@ -1,0 +1,17 @@
+OpenAI API not used (API skipped until recheck: credit used up (credit_balance_exhausted)); drawing with Codex.
+{
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows four separate wisps in four columns on a flat black background, matching the prompt's layout and the requested pale cyan/white frost colouring. No cropping, extra text, or other objective defects are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000352
+  },
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-ice\\raw-mist.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a7a0-a202-78f2-96d5-9447b335feb8\\exec-bf187231-f87c-498a-9289-4a2ca893302d.png",
+  "extra_new_images": [],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 41.0
+}
