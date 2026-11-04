@@ -225,7 +225,6 @@ html=html.replace('<link rel="stylesheet" href="src/gemwoven/skill-tree.css">','
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/memory.css">','<style>'+(ROOT/'src/gemwoven/memory.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/topup.css">','<style>'+(ROOT/'src/gemwoven/topup.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/guide.css">','<style>'+(ROOT/'src/gemwoven/guide.css').read_text(encoding='utf-8')+'</style>')
-html=html.replace('<link rel="stylesheet" href="src/gemwoven/calendar.css">','<style>'+(ROOT/'src/gemwoven/calendar.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/type-scale.css">','<style>'+(ROOT/'src/gemwoven/type-scale.css').read_text(encoding='utf-8')+'</style>')
 html=html.replace('href="assets/gemwoven/items/mana.png"','href="'+data_uri('assets/gemwoven/items/mana.png')+'"')
 manifest=json.loads((ROOT/'assets/gemwoven/manifest.json').read_text(encoding='utf-8'))
