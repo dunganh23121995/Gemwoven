@@ -102,7 +102,7 @@
     const origin=root?root.getBoundingClientRect():S;
     if(t.el&&t.scroll){const r=t.el.getBoundingClientRect();if(r.top<S.top+180*k||r.bottom>S.bottom-200*k){
       let box=t.el.parentElement;while(box&&box.id!=='scene'&&!(box.scrollHeight>box.clientHeight+4&&/auto|scroll/.test(getComputedStyle(box).overflowY)))box=box.parentElement;
-      if(box&&box.id!=='scene'){const b=box.getBoundingClientRect();box.scrollTop+=r.top+r.height/2-(b.top+b.height/2);}}}
+      if(box&&box.id!=='scene'){const b=box.getBoundingClientRect();box.scrollTop+=(r.top+r.height/2-(b.top+b.height/2))/k;}}}   // scrollTop is in stage units
     const r=t.el?.getBoundingClientRect(),box=r?[(r.left-origin.left)/k,(r.top-origin.top)/k,r.width/k,r.height/k]:null;
     host.style.setProperty('--k',root?k:1);
     const counter=v.active&&!v.lesson&&!v.closing?`<span class="guide-count"><b>${v.index}/${v.total}</b></span>`:'';
