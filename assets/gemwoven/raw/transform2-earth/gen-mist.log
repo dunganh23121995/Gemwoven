@@ -1,0 +1,17 @@
+OpenAI API not used (API skipped until recheck: credit used up (credit_balance_exhausted)); drawing with Codex.
+{
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows four separate wisps in four columns on a flat black background, recoloured to jade green and pale gold as the prompt asks. The shapes follow the reference: an S-curl, a long ribbon with a tapered tail, a shorter upward-curling ribbon, and a puff cluster with a couple of tiny leaves, as requested. No text, watermark, cut-off or extra figures are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00038
+  },
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-earth\\raw-mist.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a7a2-ce8d-79f3-95c3-35c723bf2cf3\\exec-7de7715c-b11a-4b74-8d27-053fbcce6a3b.png",
+  "extra_new_images": [],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 40.7
+}

@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T18:10:12Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-3\\showcase\\master.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-earth\\raw-spirit-v1-female.png"
+  ],
+  "prompt": "Game VFX art for a 2D anime fantasy mobile RPG, same style as the second reference (an approved see-through fox-goddess spirit of fire lines) but for the hero in the first reference: Nori, the Thiết Giáp Vệ earth knight with a shield (a young MAN).\nDraw ONE giant guardian spirit: an original ancient FOREST-STAG GUARDIAN GOD, clearly MALE: broad strong shoulders and chest, a calm noble male face with a short beard, great branching antlers like an old tree, a mantle of leaves and bark patterns, moss and small glowing leaves, seen from the waist up, rising out of a low soft base of glowing mist.\nIt must read as a SEE-THROUGH spirit, like a glowing light projection: drawn mainly with bright luminous outlines and highlights (soft jade green, leaf green and warm gold, with bright pale-gold cores; a few drifting glowing leaves), strongest on the face, shoulders, arms and hands, while the inside of the body and mantle is only a very faint thin glow, mostly empty so the background would show through. Not a solid figure.\nPose that must be obvious at small size: his two long strong arms come forward and down on BOTH sides, open hands curving inward toward each other around an EMPTY space at the bottom centre — sheltering a small figure standing there (do not draw the figure). NO weapon, nothing held in the hands. Keep a clear dark gap between each arm and the mantle.\nComposition: tall portrait image, centred; the top of the head (ears or antlers or hood tip) is the HIGHEST point, about 4% below the top edge; the face at about 20–25% from the top; nothing rises above the head; the spirit fills about 94% of the height; the empty sheltered space between the hands is about 40% of the image width.\nBackground: PURE FLAT BLACK #000000 everywhere outside the glowing lines (keyed by brightness). No ground, no scenery, no text, no frame, no watermark, no vignette.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt: a single male forest-stag guardian with antlers, a short beard and a leaf-and-vine mantle, drawn as a glowing see-through spirit. The arms reach down and inward toward an empty centre with no weapon, the background is flat black, and the head sits near the top edge with the face around 20-25% down. No cut-off, extra text, or obvious anatomy errors were found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000692
+  }
+}
