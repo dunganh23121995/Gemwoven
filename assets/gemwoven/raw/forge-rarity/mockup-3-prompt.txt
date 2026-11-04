@@ -1,0 +1,12 @@
+Create one polished portrait GAME UI MOCKUP, 941 × 1672 pixels, showing Gemwoven’s forge rarity-upgrade confirmation dialog.
+
+References: build-1-phone.png for the existing screen structure; mockup-1.png for the approved illustrated fantasy art direction. Behind the dialog, show the forge “Nâng Phẩm” screen dimmed, with two sacrifice items selected and one empty “+” socket on the upper workbench shelf.
+
+Center a compact illustrated parchment dialog with carved wood and gold trim. Keep it comfortably inside the phone viewport. Arrange its contents vertically:
+
+1. Large Vietnamese title: “Tiêu hao 2 món?”
+2. Two clearly separated item portraits: rare blue-accented boots +3 and rare blue-accented armor +4, matching the selected items behind the dialog.
+3. A short label “Hoàn trả”, followed by one readable row containing a return arrow, gold coin icon “6,3 N”, ore icon “14”, and red socketed-gem icon “1”.
+4. Two large buttons: secondary “Hủy” on the left and primary gold “Nâng Phẩm” on the right.
+
+Do not show probability, “100%”, extra currencies, explanatory paragraphs, or another confirmation step. The consumed items and returned resources must be immediately understandable. Use crisp Vietnamese diacritics, generous spacing, and the same hand-painted materials as the approved forge screen. Render one finished screen without annotations, letterboxing, or a device frame.

@@ -1,0 +1,4 @@
+Chấm mockup (ảnh 1: mockup-1.png, tab "Nâng Phẩm" của Lò Rèn, Gemwoven) do bạn viết prompt, so với màn hiện tại (ảnh 2) và mockup Lò Rèn đã duyệt (ảnh 3). Không sửa file.
+Tiêu chí: thứ tự đọc, phân cấp (món sau nâng + nút chính mạnh nhất), "giữ +7 và ngọc" đọc được bằng hình, không có "%", ít chữ, đúng phong cách các màn đã duyệt, dựng được bằng mảnh vẽ + lớp chữ HTML.
+Claude định giữ khay nguyên liệu giống hệt hai tab kia (số cần + "✓ Đủ" / "Thiếu N" trên ô ánh đỏ, nhãn "Cần") để cả Lò Rèn nhất quán, thay vì "Đang có/Cần"; và dải chỉ số dùng số thật (Công ×1,03 → ×1,10) như các tab khác thay vì "Công tăng". Đồng ý không?
+Trả lời ngắn tiếng Việt: điểm /10, Đạt hay chưa (≥ 8,5 để dựng), những điểm phải giữ khi dựng, những điểm cần sửa khi dựng (không cần vẽ lại mockup nếu đạt), và xác nhận danh sách mảnh mới cần vẽ (biểu tượng tab Nâng Phẩm; có cần gì khác không, vd tấm gỗ đặt phôi trên kệ, nhãn "Mới").

@@ -822,6 +822,30 @@
     "source": "assets/gemwoven/raw/forge-mockup/",
     "purpose": "Lò Rèn workbench pieces drawn by Codex from the approved mockup (forge-ui.js)."
   },
+  "forge-rarityup-icon": {
+    "file": "assets/gemwoven/forge/rarityup-icon.webp",
+    "width": 459,
+    "height": 393,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-rarity/",
+    "purpose": "Lò Rèn Nâng Phẩm tab pieces drawn by Codex from the approved mockups (forge-ui.js)."
+  },
+  "forge-plaque": {
+    "file": "assets/gemwoven/forge/plaque.webp",
+    "width": 923,
+    "height": 348,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-rarity/",
+    "purpose": "Lò Rèn Nâng Phẩm tab pieces drawn by Codex from the approved mockups (forge-ui.js)."
+  },
+  "forge-fodder-slot": {
+    "file": "assets/gemwoven/forge/fodder-slot.webp",
+    "width": 400,
+    "height": 388,
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-rarity/",
+    "purpose": "Lò Rèn Nâng Phẩm tab pieces drawn by Codex from the approved mockups (forge-ui.js)."
+  },
   "npc-librarian": {
     "file": "assets/gemwoven/npc/librarian/rig/show/idle.webp",
     "width": 3840,

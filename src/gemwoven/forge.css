@@ -157,3 +157,113 @@
 /* Round 2 (Codex Studio 8.6: the red tray pulled nearly as hard as the result): the short marks stay, softer. */
 .fg3-mat.short{background:radial-gradient(ellipse 66% 58% at 50% 60%,#ff5a3a3a,#ff5a3a14 70%,transparent 100%);box-shadow:inset 0 0 0 2px #c0442a80}
 .fg3-mat.short span b{color:#5a2a14!important}
+
+/* Nâng Phẩm (fourth tab, Claude + Codex 04/11, mockup assets/gemwoven/raw/forge-rarity/mockup-1.png): four tabs share
+ * the row; the shelf shows the step as two ingots on drawn plaques; both recesses keep the same +N and gems, the new
+ * sockets glow with "Mới". No percentage anywhere: it always succeeds. */
+.fg4-tab{font-size:27px;gap:6px;letter-spacing:-.2px;white-space:nowrap}
+.fg4-tab img{width:40px;height:40px}
+.fg4-plaque{display:flex;align-items:center;justify-content:center;gap:14px;background:var(--fg-plaque) center/100% 100% no-repeat;pointer-events:none;padding:4px 18px}
+.fg4-plaque img{height:82%;max-width:42%;object-fit:contain;filter:drop-shadow(0 3px 3px #0008)}
+.fg4-plaque b{font:900 34px Cambria,serif;color:#ffe9bc;text-shadow:0 2px 2px #1a0c04;white-space:nowrap}
+.fg4-plaque.cur{filter:brightness(.82) saturate(.8)}
+.fg4-plaque.on{filter:drop-shadow(0 0 8px #ffd36a99)}
+.fg4-plaque.on b{color:#fff3cf}
+.fg4-step{font-size:58px}
+.fg4-recess{gap:6px!important;padding:4px 8px 4px 6px!important}
+.fg4-pic{position:relative;flex:0 0 36%;height:100%;display:flex;align-items:center;justify-content:center}
+.fg4-pic img{max-width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 4px #0006)}
+.fg2-recess.new:not(.empty) .fg4-pic img{filter:drop-shadow(0 0 6px #fff4c8) drop-shadow(0 0 14px #ffc94ccc) drop-shadow(0 4px 4px #0006)}
+.fg4-pic em{position:absolute;left:-2px;bottom:-2px;font:900 29px/1 Cambria,serif;font-style:normal;color:#ffe9b0;text-shadow:0 0 3px #2a1408,0 1px 2px #000,0 0 6px #2a1408,0 0 2px #000}
+.fg4-cap{flex:1 1 auto;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;min-width:0;padding-top:14px}
+.fg4-cap b{font:900 36px/1 Cambria,serif;color:#4a2a10;white-space:nowrap}
+.fg4-cap.long b{font-size:27px;white-space:normal;line-height:.95}
+.fg2-recess.new .fg4-cap b{color:#2e1404;text-shadow:0 1px 0 #fff3cc}
+.fg4-sockets{display:flex;gap:3px}
+.fg4-sockets i{position:relative;display:block;width:44px;height:44px;font-style:normal}
+.fg4-sockets:has(i:nth-child(3)) i{width:36px;height:36px}
+.fg4-sockets:has(i:nth-child(4)) i{width:32px;height:32px}
+.fg4-sockets img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.fg4-sockets img:not(.ring){inset:13%;width:74%;height:74%}
+.fg4-sockets i.new{filter:drop-shadow(0 0 4px #fff0a8) drop-shadow(0 0 8px #ffc94c)}
+.fg4-sockets u{position:absolute;left:-2px;top:calc(100% - 2px);z-index:1;padding:0 6px;border-radius:8px;background:#2a1408f0;border:2px solid #f0c060;font:900 18px/20px Cambria,serif;color:#ffe9a8;text-decoration:none;white-space:nowrap}
+.fg4-sockets i.new~i.new u{display:none}
+.fg2-glow.soft{opacity:.55;animation:none}
+/* The current piece only steps back a little here: it is the same piece, kept. */
+.fg2-recess.cur.keep{filter:brightness(.9) saturate(.85)}
+.fg2-recess.cur.keep>img{opacity:.92}
+.fg2-tag.cur.keep{filter:brightness(.82) saturate(.7)}
+.fg2-recess.done{animation:fg4-flash 1.2s ease-out 1}
+@keyframes fg4-flash{0%{box-shadow:0 0 0 #fff0,inset 0 0 0 #fff0}30%{box-shadow:0 0 40px #fff2b0,inset 0 0 30px #fff6d0}100%{box-shadow:0 0 18px #ffd36a99,inset 0 0 14px #fff0b880}}
+.reduced-motion .fg2-recess.done{animation:none}
+.fg4-affix{color:#7a2a8a;font-weight:900}
+.fg4-note{color:#5a3412;text-shadow:none;font-size:30px;line-height:1.2}
+/* Đồ hiến (owner + Codex 04/11, mockups forge-rarity/mockup-2.png, mockup-3.png): three drawn sockets on the shelf, the
+ * cut and refund on the drawn plaque; the same socket frame holds each piece in the picker and the confirm. */
+.fg4-slot{display:flex;align-items:center;justify-content:center;position:absolute}
+.fg4-slot>.frame,.fg4-tile>.frame{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;filter:drop-shadow(0 3px 3px #0007)}
+.fg4-slot>i{position:relative;font:900 64px/1 Cambria,serif;font-style:normal;color:#f0c060;text-shadow:0 0 8px #ffcf6a88,0 2px 2px #1a0c04}
+.fg4-slot.none{filter:grayscale(.6) brightness(.7)}.fg4-slot.none>i{opacity:.4}
+.fg4-slot:not(.none):not(.full){animation:fg4-breathe 2.8s ease-in-out infinite}
+@keyframes fg4-breathe{0%,100%{filter:none}50%{filter:drop-shadow(0 0 6px #ffd36a)}}
+.reduced-motion .fg4-slot{animation:none!important}
+.fg4-tile{position:relative;display:block;width:100%;height:100%}
+.fg4-tile>img:not(.frame){position:absolute;inset:16%;width:68%;height:68%;object-fit:contain;filter:drop-shadow(0 2px 3px #000a)}
+.fg4-tile em{position:absolute;right:9%;bottom:7%;font:900 26px/1 Cambria,serif;font-style:normal;color:#ffe9b0;text-shadow:0 0 3px #1a0c04,0 1px 2px #000,0 0 5px #1a0c04}
+.fg4-tile s{position:absolute;left:8%;bottom:6%;display:flex;align-items:center;gap:1px;text-decoration:none;font:900 22px/1 Cambria,serif;color:#fff;text-shadow:0 0 3px #000,0 1px 2px #000}
+.fg4-tile s img{width:24px;height:24px;object-fit:contain}
+.fg4-tile b.x{position:absolute;right:-8px;top:-10px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 40% 35%,#e0503a,#8a1a0c);border:3px solid #f0c060;font:900 26px/1 Cambria,serif;color:#fff;box-shadow:0 2px 3px #0008}
+.fg4-tile b.ok{display:none}
+.fg4-info{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--fg-plaque) center/100% 100% no-repeat;padding:4px 14px;pointer-events:none}
+.fg4-info>b{font:900 28px/1.05 Cambria,serif;color:#e8d6b0;text-shadow:0 2px 2px #1a0c04;white-space:nowrap}
+.fg4-info.on>b{color:#fff3cf;font-size:33px}
+.fg4-refund{display:flex;align-items:center;justify-content:center;gap:12px;margin:0;font:900 27px/1 Cambria,serif;color:#ffe9bc;text-shadow:0 1px 2px #000;white-space:nowrap}
+.fg4-refund i{font-style:normal;color:#9fe07a;font-size:30px}
+.fg4-refund span{display:flex;align-items:center;gap:4px}
+.fg4-refund img{width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 1px 1px #000a)}
+.fg4-refund.cut{gap:6px}.fg4-refund.cut i{color:#9fe07a}.fg4-refund.cut img{width:32px;height:32px}
+.fg3-mat.cut span b{color:#1f6a1a!important}
+/* The picker and the confirm (body CSS px, inside the shared drawn popup frame). */
+.fg4-dialog .fg4-count{margin:0 0 10px;text-align:center;font:800 18px Cambria,serif;color:#5a3a18}.fg4-dialog .fg4-count b{color:#2f6a1a;font-size:20px}
+.fg4-dialog .fg4-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;max-height:52vh;overflow:auto;padding:12px 4px 4px}
+.fg4-dialog .fg4-grid button{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;background:none;cursor:pointer}
+.fg4-dialog .fg4-tile{width:88px;height:88px}
+.fg4-dialog .fg4-tile em{font-size:16px}.fg4-dialog .fg4-tile s{font-size:13px}.fg4-dialog .fg4-tile s img{width:15px;height:15px}
+.fg4-dialog .fg4-grid small{font:800 14px Cambria,serif;color:#5a3a18}
+.fg4-dialog .fg4-grid button.on .fg4-tile{filter:drop-shadow(0 0 5px #ffd36a) drop-shadow(0 0 2px #ffe9a8)}
+.fg4-dialog .fg4-grid button.on b.ok{display:flex;position:absolute;right:-4px;top:-6px;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:radial-gradient(circle at 40% 35%,#6ccf4a,#2a7a1a);border:2px solid #f0c060;font:900 16px/1 Cambria,serif;color:#fff}
+.fg4-dialog .fg4-grid button:disabled{opacity:.45;cursor:default}
+.fg4-dialog .fg4-grid.confirm{display:flex;justify-content:center;gap:14px;overflow:visible}
+.fg4-dialog .fg4-grid.confirm .fg4-tile{width:96px;height:96px}
+.fg4-dialog .fg4-back{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0 4px}
+.fg4-dialog .fg4-back>b{font:800 16px Cambria,serif;color:#7a5a2a}
+.fg4-dialog .fg4-back .fg4-refund{padding:8px 20px;background:var(--fg-plaque-abs) center/100% 100% no-repeat;font-size:18px;gap:14px}
+.fg4-dialog .fg4-back .fg4-refund img{width:24px;height:24px}.fg4-dialog .fg4-back .fg4-refund i{font-size:20px}
+.fg4-dialog .gw-actions{flex-wrap:nowrap;gap:10px}
+.fg4-dialog .gw-actions .gw-btn{--h:34px;flex:1 1 0;min-width:0;margin-inline:0;padding-inline:calc(150*var(--u));font-size:15px;white-space:nowrap}
+.fg4-dialog .gw-actions .gw-btn:only-child{flex:0 0 auto;min-width:160px}
+.fg2-strip.fg4-tight{gap:12px;font-size:28px}.fg2-strip.fg4-tight img{width:32px;height:32px}
+.fg3-mat.long i{white-space:nowrap;font-size:22px!important}
+/* Build round 1 (Codex 8,4 / 8,3): larger piece and sockets in the recesses, "Mới" inside the new socket, ✓ apart from
+ * +N in the picker, a roomier confirm button, thần thạch on its own tag. */
+.fg4-pic{flex-basis:41%!important}
+.fg4-pic img{height:118%!important;margin:-9% 0!important;max-width:118%!important}
+.fg4-pic em{left:0!important;bottom:6px!important;font-size:31px!important}
+.fg4-cap{gap:6px!important;padding-top:16px!important}
+.fg4-sockets i{width:48px!important;height:48px!important}
+.fg4-sockets:has(i:nth-child(3)) i{width:40px!important;height:40px!important}
+.fg4-sockets:has(i:nth-child(4)) i{width:33px!important;height:33px!important}
+.fg4-sockets u{left:50%!important;top:auto!important;bottom:-2px;translate:-50% 0;padding:0 4px!important;font-size:16px!important;line-height:17px!important;border-width:1.5px!important}
+.fg4-sockets:has(i:nth-child(4)) u{font-size:13px!important;line-height:14px!important;padding:0 2px!important}
+.fg4-dialog .fg4-grid button.on b.ok{right:auto!important;left:-6px!important}
+.fg4-dialog .gw-actions .gw-btn:not(.secondary){flex:1.8 1 0!important;padding-inline:calc(110*var(--u))!important}
+.fg4-dialog .gw-actions .gw-btn.secondary{flex:1 1 0!important}
+.fg4-extra{gap:6px;pointer-events:auto!important;filter:none!important;font-size:26px!important;padding:0 10px}
+.fg4-extra img{width:30px;height:30px;object-fit:contain}
+.fg4-extra i{font-style:normal;font-size:22px;color:#a8f080}
+.fg4-extra.short i{color:#ffb0a0}
+.fg4-extra.short{filter:drop-shadow(0 0 6px #ff6a4a)!important}
+.fg4-dialog .gw-actions .gw-btn:only-child{flex:0 0 auto!important;min-width:180px}
+/* Build round 2 (Codex 8,6 / 8,5): +N clear of the frame; the result recess takes its rarity's colour in its light. */
+.fg4-pic em{bottom:16px!important}
+.fg4-recess.new:not(.empty){background:radial-gradient(ellipse 72% 78% at 40% 52%,#fff6d0f0,color-mix(in srgb,var(--rc) 55%,#ffe08a) 40%,color-mix(in srgb,var(--rc) 45%,transparent) 66%,transparent 84%)!important;box-shadow:0 0 18px color-mix(in srgb,var(--rc) 70%,#ffd36a),inset 0 0 14px #fff0b880}

@@ -214,6 +214,77 @@ console.log('treasure trial ok');
   assert.throws(()=>e.strengthenTo(g.id,10));assert.equal(e.read().equipment.find(x=>x.id===g.id).level,3,'nothing half done');
 }
 console.log('forge ok');
+{ // Nâng Phẩm (GAME_DESIGN §3, Claude + Codex 04/11): one rarity up, always succeeds, cost = craft(target) − craft(source).
+  const {engine:e,edit}=fixture();
+  const want={common:{gold:8000,ore:25,wood:15,cloth:15,essence:10},uncommon:{gold:24000,ore:25,wood:15,cloth:15,essence:10},rare:{gold:40000,ore:25,wood:15,cloth:15,essence:10},epic:{gold:56000,ore:25,wood:15,cloth:15,essence:10},legendary:{gold:72000,ore:25,wood:15,cloth:15,essence:10,divineOre:50}};
+  for(const [r,c] of Object.entries(want))assert.deepEqual(M.rarityUpCost(r),c,'Nâng Phẩm from '+r);
+  assert.deepEqual([M.rarityUpGate('common'),M.rarityUpGate('uncommon'),M.rarityUpGate('rare'),M.rarityUpGate('epic'),M.rarityUpGate('legendary')],[20,40,60,80,300]);
+  const sum={};for(const r of Object.keys(want))for(const [k,n] of Object.entries(M.rarityUpCost(r)))sum[k]=(sum[k]||0)+n;assert.deepEqual(sum,M.craftCost('divine'),'Thường → Thần step by step = crafting Thần');
+  for(const r of M.CRAFT_RARITIES.slice(1)){const a=M.craftCost(r),b=M.craftCost(M.CRAFT_RARITIES[M.CRAFT_RARITIES.indexOf(r)-1]),c=M.rarityUpCost(M.CRAFT_RARITIES[M.CRAFT_RARITIES.indexOf(r)-1]);for(const k of Object.keys(a))assert.equal(c[k]||0,a[k]-(b[k]||0),'difference of craft costs');}
+  assert.throws(()=>M.rarityUpCost('divine'),/Thần/);
+  edit(p=>{p.campaign.cleared=60;p.wallet.gold=1e6;Object.assign(p.materials,{ore:500,wood:500,cloth:500,essence:500,divineOre:0});p.gems={};
+    p.equipment.push({id:'u',slot:'armor',rarity:'rare',level:7,affix:null,sockets:['hp-3'],locked:true},{id:'s',slot:'weapon',rarity:'epic',level:0,affix:null,signature:'fire'});p.heroes.novice.gear.armor='u';});
+  const pre=e.upgradeRarityPreview('u');assert.deepEqual([pre.from,pre.to,pre.gate,pre.open,pre.affordable],['rare','epic',60,true,true]);assert.deepEqual(pre.sockets,{from:1,to:2});
+  const before=e.read(),hp0=e.stats('novice').hp,r=e.upgradeRarity('u'),after=e.read(),g=after.equipment.find(x=>x.id==='u');
+  assert.deepEqual([r.from,r.to],['rare','epic']);assert.equal(g.rarity,'epic');assert.equal(g.level,7,'strengthen level kept');assert.equal(g.locked,true,'lock kept');
+  assert.deepEqual(g.sockets,['hp-3',null],'gems kept, one more socket open');assert.equal(after.heroes.novice.gear.armor,'u','still worn by the same hero');
+  assert.deepEqual(after.gems,{},'no gem spent or granted');assert.equal(after.equipment.length,before.equipment.length,'no piece made or used up');
+  assert.equal(before.wallet.gold-after.wallet.gold,40000);assert.equal(before.materials.ore-after.materials.ore,25);assert.ok(e.stats('novice').hp>hp0,'stats grow');
+  assert.throws(()=>e.upgradeRarity('u'),/ải 80/,'gate: the target rarity craft gate');assert.equal(e.read().equipment.find(x=>x.id==='u').rarity,'epic','nothing half done');
+  assert.throws(()=>e.upgradeRarity('s'),/bản mệnh/);assert.equal(e.upgradeRarityPreview('s').signature,true);assert.throws(()=>e.upgradeRarity('nope'),/không tồn tại/);
+  edit(p=>{p.campaign.cleared=299;});e.upgradeRarity('u');assert.equal(e.read().equipment.find(x=>x.id==='u').rarity,'legendary');
+  assert.throws(()=>e.upgradeRarity('u'),/ải 300/);edit(p=>{p.campaign.cleared=300;});assert.equal(e.upgradeRarityPreview('u').affordable,false);assert.throws(()=>e.upgradeRarity('u'),/thần thạch/,'short of thần thạch');
+  edit(p=>{p.materials.divineOre=50;});const top=e.upgradeRarity('u').gear;assert.equal(top.rarity,'divine');assert.ok(M.AFFIXES[top.affix]&&['steadfast','ward'].includes(top.affix),'reaching Thần rolls an armor affix');
+  assert.deepEqual(top.sockets,['hp-3',null,null,null],'four sockets at Thần, the gem still in the first');assert.equal(top.level,7);assert.equal(e.read().materials.divineOre,0);
+  assert.throws(()=>e.upgradeRarity('u'),/Thần/,'cannot go past Thần');assert.equal(e.upgradeRarityPreview('u').max,true);
+  edit(p=>{p.equipment.push({id:'c',slot:'weapon',rarity:'common',level:3,affix:null});});const c=e.upgradeRarity('c').gear;assert.equal(c.rarity,'uncommon');assert.equal(c.sockets,undefined,'Tốt has no socket');assert.equal(c.level,3);
+  edit(p=>{p.equipment.find(x=>x.id==='c').rarity='legendary';p.materials.divineOre=50;});assert.ok(['stun','lifesteal','pierce'].includes(e.upgradeRarity('c').gear.affix),'a weapon gets a weapon affix');
+  edit(p=>{delete p.heroes.novice.gear.armor;p.equipment.find(x=>x.id==='u').locked=false;});const v=M.salvageValue(e.read().equipment.find(x=>x.id==='u'));assert.equal(v.gold,Math.ceil(11*80)+Math.floor(900*28*.7),'salvage refunds strengthen cost only, not the upgrade');
+}
+{ // After stage 300 the weekly Trùm Vô Tận quest adds 10 thần thạch.
+  clock=Date.UTC(2026,10,4,6);const {engine:e,edit}=fixture();
+  assert.equal(e.weekly().find(q=>q.id==='boss').reward.divineOre,undefined);edit(p=>{p.campaign.cleared=300;p.weekly.progress.boss=8;});
+  assert.equal(e.weekly().find(q=>q.id==='boss').reward.divineOre,10);const d0=e.read().materials.divineOre||0;const got=e.claimWeekly('boss');assert.equal(got.divineOre,10);assert.equal(e.read().materials.divineOre,d0+10);
+  assert.equal(M.WEEKLY.find(q=>q.id==='boss').reward.divineOre,undefined,'the base table is untouched');
+}
+console.log('rarity up ok');
+{ // Đồ hiến (owner + Codex 04/11): 0–3 same-rarity pieces cut 20% each of ore/wood/cloth (cap 60%, rounded up); gold,
+  // essence and thần thạch stay; each refunds 70% of its strengthen gold/ore (rounded down) and all its gems; one transaction.
+  assert.deepEqual(M.rarityUpCostWith('rare',3),{gold:40000,ore:10,wood:6,cloth:6,essence:10},'25/15/15 → 10/6/6 with 3 pieces, essence stays');
+  assert.deepEqual(M.rarityUpCostWith('rare',1),{gold:40000,ore:20,wood:12,cloth:12,essence:10});
+  assert.deepEqual(M.rarityUpCostWith('rare',2),{gold:40000,ore:15,wood:9,cloth:9,essence:10});
+  assert.deepEqual(M.rarityUpCostWith('rare',5),M.rarityUpCostWith('rare',3),'cap 60%');
+  const thần=M.rarityUpCostWith('legendary',3);assert.equal(thần.divineOre,50,'Thần still needs 50 thần thạch');assert.equal(thần.gold,72000);
+  assert.deepEqual(M.fodderRefund([{level:4},{level:0}]),{gold:Math.floor(900*10*.7),ore:Math.floor(2*10*.7)});
+  const {engine:e,edit}=fixture();
+  edit(p=>{p.campaign.cleared=60;p.wallet.gold=1e6;p.wallet.gems=7;Object.assign(p.materials,{ore:500,wood:500,cloth:500,essence:500,divineOre:0});p.gems={};
+    p.heroes.fire={level:1,stars:1,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[]};
+    p.equipment.push({id:'main',slot:'weapon',rarity:'rare',level:5,affix:null,sockets:['atk-2']},
+      {id:'f1',slot:'boots',rarity:'rare',level:4,affix:null,sockets:['hp-3']},{id:'f2',slot:'helmet',rarity:'rare',level:0,affix:null},{id:'f3',slot:'armor',rarity:'rare',level:2,affix:null},
+      {id:'worn',slot:'pants',rarity:'rare',level:0,affix:null},{id:'lock',slot:'glasses',rarity:'rare',level:0,affix:null,locked:true},{id:'sig',slot:'weapon',rarity:'rare',level:0,affix:null,signature:'fire'},
+      {id:'epic',slot:'boots',rarity:'epic',level:0,affix:null},{id:'f4',slot:'boots',rarity:'rare',level:1,affix:null});
+    p.heroes.novice.gear.weapon='main';p.heroes.fire.gear.pants='worn';});
+  const cand=e.upgradeRarityPreview('main').candidates.map(g=>g.id);assert.deepEqual(cand.sort(),['f1','f2','f3','f4'],'only same rarity, unworn, unlocked, not signature, not itself');
+  assert.equal(e.upgradeRarityPreview('main').fodder.length,0,'never pre-selected');
+  for(const bad of [['worn'],['lock'],['sig'],['epic'],['main'],['f1','f1'],['f1','f2','f3','f4'],['nope']])assert.throws(()=>e.upgradeRarity('main',bad),/hiến/,'rejects '+bad);
+  assert.equal(e.read().equipment.find(x=>x.id==='main').rarity,'rare','nothing half done');assert.equal(e.read().equipment.length,9);
+  const pre=e.upgradeRarityPreview('main',['f1','f2','f3']);assert.equal(pre.cut,60);assert.deepEqual(pre.cost,{gold:40000,ore:10,wood:6,cloth:6,essence:10});assert.equal(pre.gems,1);
+  assert.deepEqual(pre.refund,{gold:Math.floor(900*10*.7)+Math.floor(900*3*.7),ore:Math.floor(20*.7)+Math.floor(6*.7)});
+  // Atomicity: short of essence → nothing consumed, nothing refunded.
+  edit(p=>{p.materials.essence=9;});const snap=JSON.stringify(e.read().equipment);assert.throws(()=>e.upgradeRarity('main',['f1','f2','f3']),/Tinh hoa/);
+  assert.equal(JSON.stringify(e.read().equipment),snap,'a failed upgrade keeps every piece');edit(p=>{p.materials.essence=500;});
+  // Locked between preview and confirm: rechecked.
+  edit(p=>{p.equipment.find(x=>x.id==='f3').locked=true;});assert.throws(()=>e.upgradeRarity('main',['f1','f2','f3']),/hiến/);edit(p=>{p.equipment.find(x=>x.id==='f3').locked=false;});
+  const b=e.read(),r=e.upgradeRarity('main',['f1','f2','f3']),a=e.read(),g=a.equipment.find(x=>x.id==='main');
+  assert.deepEqual([g.rarity,g.level],['epic',5]);assert.deepEqual(g.sockets,['atk-2',null],'the main piece keeps level and gems');assert.equal(r.consumed,3);
+  assert.equal(a.equipment.length,b.equipment.length-3);for(const id of ['f1','f2','f3'])assert.ok(!a.equipment.some(x=>x.id===id),'consumed');
+  assert.equal(a.gems['hp-3'],1,'socketed gems return to the bag');
+  assert.equal(b.wallet.gold-a.wallet.gold,40000-pre.refund.gold,'gold: full price, refund of strengthening');assert.equal(b.materials.ore-a.materials.ore,10-pre.refund.ore);
+  assert.equal(b.materials.wood-a.materials.wood,6);assert.equal(b.materials.cloth-a.materials.cloth,6);assert.equal(b.materials.essence-a.materials.essence,10);
+  assert.equal(a.wallet.gems,7,'no Đá Ngọc granted or spent');assert.equal(a.heroes.fire.gear.pants,'worn');
+  assert.deepEqual(e.upgradeRarityPreview('main').candidates.map(x=>x.id),['epic'],'next step offers the new rarity');
+}
+console.log('rarity up fodder ok');
 { // Sổ Hành Trình timeline (owner 2026-11-04): quest points raise levels, free nodes open as reached, the gold and
   // jewel tracks only after a server-recorded purchase, jewel gear chests wait for their stage. No Đá Ngọc anywhere.
   const O=require('../../src/gemwoven/liveops.js');const {engine:e,edit}=fixture();

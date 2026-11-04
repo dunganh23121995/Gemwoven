@@ -1,0 +1,4 @@
+Chấm BẢN DỰNG tab Nâng Phẩm (Lò Rèn, Gemwoven) so với các mockup bạn đã duyệt: mockup-1.png (8,6), mockup-2.png (Đồ hiến, 8,8), mockup-3.png (xác nhận, 8,7). Không sửa file.
+Ảnh bản dựng (điện thoại 390×844 DPR2 và Studio 1920×911): phone-ready (chưa chọn đồ hiến), phone-fodder (2 món hiến), phone-picker (popup chọn), phone-confirm (popup "Tiêu hao 2 món?"), phone-fodderdone (vừa nâng, đã hiến 2 món, hoàn trả), phone-max (Huyền Thoại → Thần: 6 ngăn có thần thạch, thuộc tính), studio-fodder, studio-confirm.
+Đã theo những điểm bạn chốt: khay "Cần" + "✓ Đủ"/"Thiếu N" chung Lò Rèn, ba số giảm xanh; dải chỉ số số thật; bỏ hai phôi trên kệ; không có "%" xác suất ở đâu (chỉ "−40%" giảm phí); popup dùng khung chung, nút phụ trái / chính phải "Xác nhận nâng phẩm"; ô hiến có nút × bỏ; "+N" giống nhau hai bên, ngọc cùng chỗ, lỗ mới "Mới".
+Trả lời ngắn tiếng Việt: điểm /10 cho điện thoại và cho Studio (cần ≥ 8,5 cả hai), lỗi cụ thể cần sửa (ưu tiên), điểm đã tốt.

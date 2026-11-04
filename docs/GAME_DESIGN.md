@@ -156,6 +156,28 @@ Chủ dự án (04/11): "bỏ phần mô tả yêu cầu và tên ngay cạnh k�
 ## 3. Trang bị, vũ khí bản mệnh, ngọc khảm
 
 - **Trang bị [Có]:** 6 ô, 6 phẩm (hệ số 1/1,6/2,5/4/7/11), +20 luôn thành công, chuyển chủ tự tháo.
+- **Nâng Phẩm [Có · Claude + Codex 04/11, chủ dự án duyệt]:** một món + nguyên liệu → phẩm kế (Thường → … → Thần),
+  **luôn thành công**, không thất bại, không bảo hiểm (Codex: thất bại làm công cày khó đoán; bán bảo hiểm thành trả tiền
+  tránh mất mát; ngẫu nhiên đã có ở triệu hồi và thuộc tính Thần). Giữ ô, tướng đang mặc, cấp cường hóa và mọi ngọc; phẩm
+  mới mở thêm lỗ (Hiếm 1 … Thần 4); lên Thần nhận một thuộc tính ngẫu nhiên. **Phí = phí rèn phẩm đích − phẩm nguồn**
+  (`rarityUpCost` tính từ `craftCost`, nên nâng tuần tự Thường → Thần tốn đúng phí rèn Thần); cổng ải = cổng rèn phẩm đích:
+
+  | Nâng | Ải | Vàng | Quặng / Gỗ / Vải / Tinh hoa | Thần thạch |
+  |---|---:|---:|---|---:|
+  | Thường → Tốt | 20 | 8.000 | 25 / 15 / 15 / 10 | — |
+  | Tốt → Hiếm | 40 | 24.000 | 25 / 15 / 15 / 10 | — |
+  | Hiếm → Sử Thi | 60 | 40.000 | 25 / 15 / 15 / 10 | — |
+  | Sử Thi → Huyền Thoại | 80 | 56.000 | 25 / 15 / 15 / 10 | — |
+  | Huyền Thoại → Thần | 300 | 72.000 | 25 / 15 / 15 / 10 | 50 |
+
+  **Đồ hiến (tùy chọn):** 0–3 món cùng phẩm với món đang nâng, ô bất kỳ, chủ bất kỳ; không phải chính món đó; loại món đang
+  mặc, đã khóa, vũ khí bản mệnh (kiểm lại lúc xác nhận); người chơi tự chọn, không chọn sẵn. Mỗi món giảm 20% quặng/gỗ/vải
+  của phí gốc, cộng thẳng, trần 60%, làm tròn lên từng loại (3 món: 25/15/15 → 10/6/6); vàng, tinh hoa, thần thạch không
+  giảm (lên Thần vẫn 50). Món hiến hoàn 70% vàng/quặng cường hóa đã trả (làm tròn xuống) và trả 100% ngọc về túi; không
+  có giá phân rã cơ bản, không hoàn phí rèn/nâng. Tiêu hao, nâng và hoàn trong một giao dịch (`upgradeRarity(id, hiến)`).
+  Phân rã vẫn hoàn 70% **phí cường hóa** (không hoàn phí nâng phẩm). Rèn trực tiếp mọi phẩm giữ nguyên; cường hóa vẫn 100%.
+  Sau ải 300, nhiệm vụ tuần "Thắng 8 trận Trùm Vô Tận" thêm **10 thần thạch** (riêng nguồn này đủ 50 sau 5 tuần).
+  Giao diện: Lò Rèn → tab thứ tư **Nâng Phẩm**, không có "%" nào (luôn thành công). Vũ khí bản mệnh dùng hệ riêng.
 - **Bộ hệ [Đề xuất]:** đồ Sử thi+ có hệ; 2/4/6 món cùng hệ tướng: +5/+12/+20% Công. Không khóa.
 - **Vũ khí bản mệnh [Đề xuất · nguồn thu]:** mỗi tướng hiếm một món riêng; đúng chủ mang thì tuyệt kỹ thêm một
   hiệu ứng (Mika thiêu lan, Noct +1 nhát, Yuki +1 lượt choáng). Banner vũ khí chạy song song banner tướng,
@@ -878,3 +900,19 @@ không chỉnh số**.
 - **Giao diện:** Codex phê bình, viết prompt và vẽ mockup trang Nạp và popup (`assets/gemwoven/raw/topup/mockup-page.png`,
   `mockup-popup.png`, cả hai 8/10 điện thoại, 8,5/10 Studio), vẽ túi/rương ngọc 6 mốc, khung thẻ, ruy băng, bảng giá, 3 chồng
   vàng; bản dựng 8,4 / 8,5 → **8,7 / 8,6** (điện thoại / Studio). Thanh toán vẫn Sắp ra mắt. Kiểm thử: `check-depth.cjs` ("gold for gems ok").
+
+### Vòng Nâng Phẩm (04/11, nâng/ghép trang bị, tỉ lệ thành công) — đã thống nhất, đã làm
+- **Chủ dự án:** trang bị có nâng/ghép lên đồ tốt hơn được không, có nên có tỉ lệ thành công?
+- **Ghép 3 món → 1** (Claude cân nhắc) → Codex: phải tích ba món cùng ô, mất món đang đầu tư. Chốt **một món + nguyên liệu
+  → phẩm kế**, giữ +N, ngọc, chủ. Đồng ý.
+- **Tỉ lệ:** Codex: không thêm thất bại lúc này, kể cả +16→+20 (phương án dự phòng nếu thử: 50% → 75% → 100% sau mỗi lần
+  trượt, không vỡ đồ/tụt cấp, không bán bảo hiểm). Chốt **100%**, giao diện không hiện "%" để đồ hiến không bị hiểu là
+  tăng tỉ lệ. Đồng ý.
+- **Phí:** hiệu phí rèn phẩm đích − phẩm nguồn, tính từ `craftCost` (bảng §3); phân rã không hoàn phí nâng. Đồng ý.
+- **Đồ hiến** (chủ dự án duyệt thêm): Codex: ô bất kỳ đúng phẩm nguồn (ép cùng ô gây tích đồ chờ; cho phẩm cao hơn dễ đốt
+  món tốt); 20%/món quặng/gỗ/vải, trần 60%; hoàn 70% cường hóa + 100% ngọc. Đồng ý.
+- **Thần thạch:** sau ải 300, nhiệm vụ tuần Trùm Vô Tận +10. Không Đá Ngọc, không buff Hiro. `balance-sim` không mô phỏng
+  trang bị nâng nên kết quả trước/sau giống hệt (đã chạy).
+- **Giao diện:** Codex phê bình bố cục, viết prompt và vẽ 3 mockup (`assets/gemwoven/raw/forge-rarity/mockup-1..3.png`:
+  8,6 / 8,8 / 8,7), vẽ biểu tượng tab, khung ô hiến, tấm gỗ hoàn trả; bản dựng 8,4 / 8,3 → 8,6 / 8,5 → **8,8 / 8,6** (điện
+  thoại / Studio). Kiểm thử: `check-depth.cjs` ("rarity up ok", "rarity up fodder ok").

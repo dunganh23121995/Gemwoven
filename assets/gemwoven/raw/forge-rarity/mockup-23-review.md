@@ -1,0 +1,5 @@
+- **Ảnh 1 — màn chính: 8,8/10, Đạt.** Giữ khay 3 ô hiến, dòng số món/giảm phí và hoàn trả cạnh nhau; so sánh trước–sau rõ ràng. Khi dựng: thêm nút bỏ từng món, ghi rõ **−40% giảm khoản nào**, phân biệt hoàn trả với chi phí. Giữ khay **“Cần” + số + “✓ Đủ”/“Thiếu N”** và dải chỉ số thật như đã chốt.
+
+- **Ảnh 2 — xác nhận: 8,7/10, Đạt.** Giữ câu hỏi nêu số món, hình món đủ lớn kèm mức cường hóa, hoàn trả rõ, nút phụ trái/chính phải. Khi dựng: dùng **khung popup chung có ×**, nền Lò Rèn hiện tại phủ tối; bỏ các bệ đá của mockup. Dùng cùng khung ô với màn chính; tên nút chính nên là **“Xác nhận nâng phẩm”**.
+
+**Chốt mảnh mới: chỉ cần vẽ 1 khung ô vuông gỗ chạm viền vàng, nền trong suốt**, dùng cho cả 3 ô hiến và ô trong popup chọn/xác nhận. Dùng lại plaque đã vẽ cho dòng hoàn trả; dấu ✓, nút bỏ, dấu +, trạng thái chọn và icon vật phẩm dùng HTML/hình có sẵn. Không cần vẽ thêm nền hay khung popup.
