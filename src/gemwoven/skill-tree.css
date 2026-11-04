@@ -139,3 +139,43 @@
 /* Round 1 (Codex): when the tree is scrolled off its root, the fixed thread starts at the roster, so it never
  * crosses a rank plate fading out at the bottom. */
 .st-long:not(.at-bottom) .st-thread{clip-path:inset(56px 0 0 0)}
+
+/* Detail panel, pass 4 (owner 04/11: "Chỗ này đang không hợp lý về thiết kế. Và nội dung kỹ năng nên scroll được";
+ * Codex critique + mockup assets/gemwoven/raw/skill-detail-mockup/mockup-1.png, 8.5). Type scale: name 42, heads and
+ * button 32, body 26, labels 24, the next value up to 56. */
+.sd-name{font-size:42px;line-height:52px}
+.sd-branch{font-size:24px}
+.sd-desc{display:block;-webkit-line-clamp:none;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;touch-action:pan-y;
+  pointer-events:auto;font:600 26px/34px Cambria,'Times New Roman',serif;color:#472b16;outline:none}
+.sd-desc::-webkit-scrollbar{display:none}
+.sd-desc span{display:block}
+.sd-desc.pts span{position:relative;padding-left:24px}
+.sd-desc.pts span::before{content:"•";position:absolute;left:4px;color:#8a5a26}
+.sd-rail{background:var(--kit-scroll-track) center/100% 100% no-repeat;pointer-events:none}
+.sd-rail b{position:absolute;left:0;right:0;background:var(--kit-scroll-thumb) center/100% 100% no-repeat}
+.st-detail img.sd-cue{pointer-events:auto;cursor:pointer;z-index:3;object-fit:contain;filter:drop-shadow(0 2px 2px #1e0e05a0)}
+.sd-cue[hidden],.sd-rail[hidden]{display:none}
+.sd-head{font-size:32px}
+.sd-tray{padding:22px 24px 28px}
+.sd-mats{gap:8px}
+.sd-mat{flex-direction:row;gap:10px;line-height:1;border:solid transparent;border-width:18px 18px;border-image:var(--kit-stat) 26 28 fill / 18px 18px stretch;padding:0 4px}
+.sd-mat img{width:64px;height:64px;margin:0;flex:none}
+.sd-mat>span{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}
+.sd-mat small,.sd-mat em{font:800 24px/27px Cambria,serif;white-space:nowrap;text-shadow:none;color:#472b16;font-style:normal}
+.sd-mat.ok em{color:#2f7a2a}
+.sd-mat.short em{color:#b32a1c}
+.sd-mats.n3{gap:6px}
+.sd-mats.n3 .sd-mat{gap:4px;border-width:14px 8px;padding:0 6px 0 2px}
+.sd-mats.n3 .sd-mat img{width:40px;height:40px}
+.sd-mats.n3 .sd-mat small,.sd-mats.n3 .sd-mat em{font-size:21px;line-height:24px}
+.sd-tray .sd-mat:is(div){cursor:default}
+.sd-note{font-size:28px}
+.sd-note small{font-size:24px}
+.sd-card{padding:18px 20px 16px}
+.sd-card.one p{align-items:center;text-align:center}
+.sd-card.one span{align-items:center}
+.sd-card.one small{font-size:var(--l,26px)}
+.sd-card b{line-height:1.05}
+.sd-go span{font-size:32px}
+.sd-go.off span{font-size:32px}
+.sd-go img{top:0;height:100%}

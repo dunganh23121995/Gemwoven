@@ -1,0 +1,15 @@
+Edit the supplied Gemwoven screenshot to create a high-fidelity design mockup of ONLY the skill detail panel. Preserve the existing tree background and outer wood-and-parchment frame. The panel occupies stage rectangle [15,1004,911,484] on a 941×1672 stage. Output a tight 911×484 crop of this panel. All coordinates below are relative to its top-left corner.
+
+Match the reference’s hand-painted fantasy wood, warm ivory parchment, restrained brass trim and small leafy corners. Reuse the supplied Gemwoven UI kit and skill-tree assets wherever possible. Use dark brown Vietnamese serif typography with accurate accents. Keep decorative borders thin enough to preserve reading space.
+
+Place Mika’s fiery skill medallion at [27,18,136,136], with “Lv.1/10” below at [27,146,136,36]. Set the title “Cửu Dương Hồ Diêm” at [183,18,686,50], font size 42; the branch plaque “Chủ Động” at [183,72,220,32], font size 24.
+
+Create an independent scrollable description viewport at [183,108,668,101.4], using font size 26 and exact 33.8 line height: three complete visible lines. Use this illustrative multi-point copy, with each item on its own line: “• Cửu dương hội tụ, hồ diễm bùng lên.” “• Sát thương kỹ năng hiện tại: 169.” “• Xem hiệu ứng bổ sung ở phần dưới.” “• Chi tiết hiệu ứng của kỹ năng.” “• Quy tắc tương tác và ghi chú bổ sung.” Show only the first three lines. Add a subtle scroll thumb in the right gutter and a downward hint outside the text because more content remains below. Never obscure or crop half a visible line.
+
+Place the “Nguyên liệu” header at [189,214,222,34] and its wooden tray at [25,242,550,164]. Inside, create two equal light-parchment compartments, not a dark empty leather field. Each has a prominent 64×64 resource icon, two clearly readable rows and a final status row. Gold compartment: “Có 11,7 N”, “Cần 3,6 N”, green “✓ Đủ”. Skill-book compartment: “Có 0”, “Cần 2”, red “Thiếu 2”. Use font size 24 for these rows.
+
+Place “Cấp kế” at [623,214,230,34], with a matching parchment card at [591,242,294,164]. Show “Sát thương” at size 24 and “169 → 182” at size 56, with 182 green. Omit an extra decorative stat icon.
+
+Place the disabled wooden action button at [235,414,440,56], labelled “Thiếu nguyên liệu” at size 32. Match its trim and materials to the tray and next-level card. Preserve clean spacing, complete Vietnamese diacritics and all specified values. Add no other interface elements.
+
+Reference images: 1) current game screen (phone) with the old panel at the bottom; 2) the forge's 'Có / Cần' material compartments (good reference); 3) ui-kit parchment stat cell; 4) skill-tree wide tray; 5) next-level card. The output is a design mockup image only, 911x484 aspect (about 1.88:1).

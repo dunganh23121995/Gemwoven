@@ -37,8 +37,9 @@
 
   function gateLines(i){const g=M.SKILL_GATES[i];return g?[`Cấp ${g.level}`,g.evolution?`Tiến hóa ${g.evolution}`:'']:[''];}
   function rows(values){return (values||[]).map(([l,v,u])=>`${l} ${v}${u}`);}
-  // A long description (Chân Thân) shows its first clause; the full text is one tap away.
-  function summary(text){const s=String(text||'');if(s.length<=90)return [s,false];const cut=s.search(/\s*[(:]/);return [(cut>12?s.slice(0,cut):s.slice(0,80)).replace(/[.;,\s]+$/,'')+'.',true];}
+  // A description reads as its points, one per sentence or clause after ";" (owner 04/11: "nội dung kỹ năng nên scroll
+  // được vì nó thường sẽ nhiều ý"); the panel scrolls them instead of cutting the text short.
+  function points(text){return String(text||'').split(/(?<=[.;])\s+(?=\S)/).map(x=>x.trim()).filter(Boolean);}
   // ---- The hero's skill list (pass 3, owner 04/11: "nếu mỗi tướng sau này phát triển thêm kỹ năng thì sao?").
   // Every node comes from this list, in unlock order from the root up. Real heroes have the four branches of
   // progression.js. window.GEMWOVEN_QA_SKILLS = N is a QA-only switch (never set by the game) that appends fake
@@ -50,8 +51,8 @@
   function qaSkill(hero,h,i){
     const open=!!h&&i<6,rank=i===4?3:0,base=i%4,name=`Kỹ năng thử ${i+1}`;
     return {i,real:false,open,rank,well:WELL[base],icon:skillArt(hero,base),gate:[`Cấp ${200+i*20}`,`Tiến hóa ${Math.min(6,i-2)}`],
-      text:()=>({name,branch:'Mở rộng',rank,max:M.SKILL_MAX,owned:!!h,unlocked:open,maxed:false,bonusRank:0,description:'Kỹ năng thử để kiểm tra cây mở rộng.',values:[['Sát thương','+5','%']],next:'Sát thương 91 → 97'}),
-      cost:()=>({gold:9000,skillBooks:5})};
+      text:()=>({name,branch:'Mở rộng',rank,max:M.SKILL_MAX,owned:!!h,unlocked:open,maxed:false,bonusRank:0,description:'Kỹ năng thử để kiểm tra cây mở rộng. Gây 120% sát thương lên một mục tiêu. Mỗi lần trúng có 20% gây bỏng 2 lượt; hiệu ứng cộng dồn tối đa 3 lần. Khi HP dưới 30%, sát thương tăng thêm 15%. Không tác dụng lên boss đang miễn khống chế.',values:[['Sát thương','+5','%']],next:'Sát thương 91 → 97'}),
+      cost:()=>(i%2?{gold:9000,skillBooks:5,essence:30}:{gold:9000,skillBooks:5})};
   }
   function skillList(hero,h){
     const n=M.SKILL_BRANCHES.length,qa=Math.min(24,Math.floor(Number(window.GEMWOVEN_QA_SKILLS)||0));
@@ -157,36 +158,65 @@
     let c;try{if(open&&!t.maxed)c=s.cost();}catch{}
     for(const k of ['rank-plate','category-plate','tray-wide','next-card2','header-tag'])el.style.setProperty('--st-'+k,cssUrl(k));
     const nameKey=`skills.skill-name-${hero}-${i}`;if(s.real)C[nameKey]=t.name;
-    const [desc,more]=summary(t.description);
+    const pts=points(t.description);
     // The panel repeats the selected medallion (socket, branch colour, gold ring) so it reads as that node's card.
     let html=`<img class="sd-socket" src="${art(open?'socket':'frame-locked')}" alt="" style="${open?rel(46,1022,128,128):rel(50,1018,120,134)}"><i class="sd-well${open?'':' locked'}" style="${rel(74,1050,72,72)};--el:${s.well}"></i>`+
       `<img class="sd-icon${open?'':' locked'}" src="${s.icon}" alt="" style="${rel(68,1044,84,84)}">`+(open?`<img class="sd-ring" src="${art('select-ring')}" alt="" style="${rel(34,1010,152,152)}">`:'')+
       `<b class="sd-rank" style="${rel(40,1152,140,42)}">Lv.${t.rank}${t.bonusRank?' (+'+t.bonusRank+')':''}/${t.max}</b>`+
-      `<b class="sd-name"${s.real?` data-copy="${esc(nameKey)}"`:''} style="${rel(198,1022,686,50)}">${esc(t.name)}</b>`+
-      `<b class="sd-branch" style="${rel(198,1072,220,40)}">${esc(t.branch||M.SKILL_BRANCHES[i])}</b>`+
-      `<p class="sd-desc" style="${rel(198,1112,692,84)}">${esc(desc)}</p>`+
-      (more?`<button type="button" class="sd-more" data-action="skilltree:info" data-hero="${esc(hero)}" data-index="${i}" style="${rel(430,1069,140,46)}" aria-label="Xem đầy đủ"><span>Chi tiết</span></button>`:'');
+      `<b class="sd-name"${s.real?` data-copy="${esc(nameKey)}"`:''} style="${rel(198,1020,686,52)}">${esc(t.name)}</b>`+
+      `<b class="sd-branch" style="${rel(198,1074,210,34)}">${esc(t.branch||M.SKILL_BRANCHES[i])}</b>`+
+      // Mockup assets/gemwoven/raw/skill-detail-mockup: three whole 34-unit lines show, the rest scrolls in place.
+      `<div class="sd-desc${pts.length>1?' pts':''}" style="${rel(198,1110,668,102)}" tabindex="0" aria-label="Mô tả kỹ năng">${pts.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`+
+      `<i class="sd-rail" style="${rel(874,1110,12,102)}" hidden><b></b></i>`+
+      `<img class="sd-cue up" src="${art('cue-up')}" alt="" style="${rel(866,1084,28,28)}" hidden><img class="sd-cue down" src="${art('cue-down')}" alt="" style="${rel(866,1196,28,28)}" hidden>`;
     const left=c?(t.rank===0?'Nguyên liệu học':'Nguyên liệu'):t.maxed?'Hoàn thiện':'Điều kiện';
-    const lw=left.length>12?292:250;html+=`<b class="sd-head" style="${rel(323-lw/2,1200,lw,46)}">${left}</b><div class="sd-tray" style="${rel(40,1228,566,140)}">`;
+    const lw=left.length>12?280:236;html+=`<b class="sd-head" style="${rel(315-lw/2,1224,lw,42)}">${left}</b><div class="sd-tray" style="${rel(40,1244,550,150)}">`;
+    // Each material is its own light compartment: big picture, "Có / Cần", then ✓ Đủ or Thiếu N in red (as the forge).
     if(c){const mats=Object.entries(c).filter(([,n])=>n>0);
-      html+=`<div class="sd-mats n${mats.length}">`+mats.map(([id,n])=>{const have=owned(p,id),ok=have>=n;return `<button type="button" class="sd-mat ${ok?'ok':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><span>Có ${tight(have)}</span><b>Cần ${tight(n)}</b></button>`;}).join('')+'</div>';}
+      html+=`<div class="sd-mats n${mats.length}">`+mats.map(([id,n])=>{const have=owned(p,id),ok=have>=n;return `<button type="button" class="sd-mat ${ok?'ok':'short'}" data-action="item:${id}" aria-label="${esc(M.RESOURCES[id]?.[0]||id)} · có ${tight(have)} · cần ${tight(n)}"><img src="${file(M.RESOURCES[id]?.[1]||id)}" alt=""><span><small>Có ${tight(have)}</small><small>Cần ${tight(n)}</small><em>${ok?'✓ Đủ':'Thiếu '+tight(n-have)}</em></span></button>`;}).join('')+'</div>';}
     else if(t.maxed)html+=`<p class="sd-note">✓ Cấp tối đa</p>`;
     else if(!h)html+=`<p class="sd-note">${esc(M.heroAvailable&&!M.heroAvailable(hero)?'Tướng xuất hiện ở kỳ triệu hồi sau.':'Cần sở hữu tướng.')}</p>`;
-    else html+=`<p class="sd-note"><span>Cần: ${esc(s.gate.filter(Boolean).join(' · '))}</span><small>Hiện tại: Cấp ${h.level} · Tiến hóa ${h.evolution||0}</small></p>`;
+    // Locked: one compartment per requirement, like the materials (Codex critique: requirement, current, met or not).
+    else{const g=s.real?M.SKILL_GATES[i]||{}:{level:200+i*20,evolution:Math.min(6,i-2)};
+      const need=[['Cấp',g.level,h.level,'exp-book'],['Tiến hóa',g.evolution,h.evolution||0,'evo-crest']].filter(([,n])=>n>0);
+      html+=`<div class="sd-mats n${need.length}">`+need.map(([l,n,v,pic])=>{const ok=v>=n;return `<div class="sd-mat ${ok?'ok':'short'}" aria-label="${l} ${n} · hiện ${v}"><img src="${file(pic)}" alt=""><span><small>${l} ${n}</small><small>Hiện ${v}</small><em>${ok?'✓ Đạt':'Thiếu '+(n-v)}</em></span></div>`;}).join('')+'</div>';}
     html+='</div>';
     const right=!open?'Khi mở':t.maxed?'Cấp tối đa':t.rank===0?'Khi học':'Cấp kế';
     const lines=!open||t.rank===0?rows(t.values):t.maxed?rows(t.values):String(t.next||'').split(' · ').filter(Boolean);
     // Each line splits into its label and its value; the card fits the longest value (Cambria bold ≈ .55 em a glyph),
     // dropping the small picture when the value needs the room.
     const parts=lines.slice(0,3).map(l=>{const k=l.search(/[-+×]?\d/);return k>0?[l.slice(0,k).trim(),l.slice(k)]:['',l];});
-    const one=parts.length===1,longest=Math.max(...parts.map(([,v])=>v.length),1),pic=one&&longest<=9;
-    const room=pic?176:238,size=Math.min(one?36:28,Math.floor(room/(longest*.55))),label=Math.min(one?27:25,Math.floor(room/(Math.max(...parts.map(([a])=>a.length),1)*.5)));
-    html+=`<b class="sd-head" style="${rel(646,1200,230,46)}">${right}</b><div class="sd-card${one?' one':' many'}" style="${rel(624,1228,274,140)};--v:${size}px;--l:${label}px">`+
-      (pic?`<img src="${s.icon}" alt="">`:'')+`<p>${parts.map(([a,v])=>`<span>${a?`<small>${esc(a)}</small>`:''}<b>${esc(v).replace('→','<i>→</i>')}</b></span>`).join('')}</p></div>`;
+    // The value is the card's one big thing (56 at most, mockup); no picture beside it.
+    const one=parts.length===1,longest=Math.max(...parts.map(([,v])=>v.length),1);
+    const room=250,size=Math.min(one?56:28,Math.floor(room/(longest*.55))),label=Math.min(one?26:22,Math.floor(room/(Math.max(...parts.map(([a])=>a.length),1)*.5)));
+    html+=`<b class="sd-head" style="${rel(636,1224,236,42)}">${right}</b><div class="sd-card${one?' one':' many'}" style="${rel(606,1244,294,150)};--v:${size}px;--l:${label}px">`+
+      `<p>${parts.map(([a,v])=>`<span>${a?`<small>${esc(a)}</small>`:''}<b>${esc(v).replace('→','<i>→</i>')}</b></span>`).join('')}</p></div>`;
     const ready=!!c&&affordable(p,c),action=t.maxed?'Đã Tối Đa':!open?'Chưa Mở':!ready&&c?'Thiếu nguyên liệu':t.rank===0?'Học':'Tăng Cấp';
     // A QA skill only says so: it has no rule to train against.
-    html+=`<button type="button" class="sd-go ${ready?'ready':'off'}" data-action="${s.real?'do:train':'skilltree:qa'}" data-hero="${esc(hero)}" data-index="${i}" ${ready?'':'disabled'} style="${!ready&&c?rel(250,1376,440,100):rel(300,1376,340,100)}"><img src="${art(ready?'button-ready':'button-locked')}" alt=""><span>${action}</span></button>`;
-    el.innerHTML=html;
+    html+=`<button type="button" class="sd-go ${ready?'ready':'off'}" data-action="${s.real?'do:train':'skilltree:qa'}" data-hero="${esc(hero)}" data-index="${i}" ${ready?'':'disabled'} style="${!ready&&c?rel(260,1400,420,86):rel(300,1400,340,86)}"><img src="${art(ready?'button-ready':'button-locked')}" alt=""><span>${action}</span></button>`;
+    el.innerHTML=html;descScroll(el,state);
+  }
+  // The description scrolls by whole lines (touch and wheel natively, mouse drag for the Studio); a rail and an arrow
+  // show only on the side that still hides text, outside the text itself.
+  const LINE=34;
+  function descScroll(el,state){
+    const view=el.querySelector('.sd-desc'),rail=el.querySelector('.sd-rail'),thumb=rail?.firstElementChild,up=el.querySelector('.sd-cue.up'),down=el.querySelector('.sd-cue.down');
+    if(!view)return;
+    const key=state.hero+':'+state.skill;if(descScroll.key!==key){descScroll.key=key;descScroll.top=0;}
+    const sync=()=>{const max=view.scrollHeight-view.clientHeight,over=max>1;rail.hidden=!over;
+      up.hidden=!(over&&view.scrollTop>1);down.hidden=!(over&&view.scrollTop<max-1);
+      if(over){const h=Math.max(24,view.clientHeight*view.clientHeight/view.scrollHeight);thumb.style.height=h+'px';thumb.style.top=(view.scrollTop/max*(view.clientHeight-h))+'px';}
+      descScroll.top=view.scrollTop;};
+    let settle;const snap=()=>{const t=Math.round(view.scrollTop/LINE)*LINE;if(Math.abs(t-view.scrollTop)>1)view.scrollTo({top:t,behavior:'smooth'});};
+    view.addEventListener('scroll',()=>{sync();clearTimeout(settle);settle=setTimeout(snap,160);},{passive:true});
+    // A wheel notch moves one line; the tree and the page do not move with it.
+    view.addEventListener('wheel',e=>{if(view.scrollHeight<=view.clientHeight+1)return;e.preventDefault();view.scrollBy({top:Math.sign(e.deltaY)*LINE,behavior:'smooth'});},{passive:false});
+    let drag=null;
+    view.onpointerdown=e=>{if(e.pointerType!=='mouse')return;drag={y:e.clientY,top:view.scrollTop};};
+    view.onpointermove=e=>{if(!drag)return;view.scrollTop=drag.top-(e.clientY-drag.y)*view.clientHeight/view.getBoundingClientRect().height;};
+    view.onpointerup=view.onpointerleave=()=>{if(drag){drag=null;snap();}};
+    for(const b of [up,down])b.onclick=()=>view.scrollBy({top:(b===up?-1:1)*LINE,behavior:'smooth'});
+    requestAnimationFrame(()=>{view.scrollTop=descScroll.top||0;sync();});
   }
   const OLD=/^skills\.(node-\d|node-level-\d|link-\d|locked-\d|selected-icon|skill-name-|skill-category|skill-level|skill-description-|materials-title|skill-materials-|next-title|next-effect-|upgrade-skill|unlock-requirement)/;
   const decorate=G.decorate;
