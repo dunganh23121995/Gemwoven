@@ -145,8 +145,13 @@ Chủ dự án (04/11): "bỏ phần mô tả yêu cầu và tên ngay cạnh k�
 
 ### 2.4 Biến Thân (nhánh Chân Thân) [Có · Codex vòng 4]
 - Một lần mỗi trận: thanh năng lượng có vạch **Biến Thân**; kích hoạt khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai.
-- 3 lượt: hào quang hình thái cao nhất bật lên (art đã có), Công +25..40% theo cấp kỹ năng, giảm 15% sát
-  thương nhận vào, miễn choáng; hết 3 lượt giữ một nửa thưởng Công đến cuối trận.
+- 3 lượt (cấp 400 + TH5: 4): giảm 15% sát thương nhận (+1% mỗi cấp Chân Thân), miễn choáng/đóng băng mới, và **hiệu ứng
+  bàn ngọc riêng của tướng** (vòng Bàn ngọc, chủ dự án 05/11; thay Công +25..40% chung; **không còn dư âm sức mạnh**,
+  dư âm chỉ là hình). Cấp 1, mỗi cấp thêm chút: Hiro nhóm Kiếm đầu lượt +10% (+0,5%/cấp, vẫn yếu hơn +25% cũ);
+  Mika nhóm Kiếm đầu lượt đặt thiêu đốt 16×Công/lượt × 2 lượt (+4%/cấp); Yuki 2 Băng đủ đóng băng (trùm: thanh 4);
+  Nori Tim/Khiên ×1,5 (+0,02/cấp), 25% máu hồi dư thành giáp (trần 4% HP/lượt); Lumi tím 16 nộ/viên (+0,3/cấp),
+  tối đa 75 nộ/lượt; Noct combo từ đợt 2 Kiếm chí mạng ×1,5 (+0,02/cấp), combo 3 đợt né đòn thường kế tiếp (một lần).
+  Số trong `progression.js` `transformEffect`, áp dụng ở `live-combat.js` / `board-control.js`.
 - **Cổng mới khi làm Biến Thân: cấp 180 + TH3** (Codex: cấp 400 cần tối thiểu 190 ngày theo trần Ấn —
   khoảnh khắc hay nhất không được đến muộn vậy). Cấp 400 + TH5 nâng hiệu quả Biến Thân.
 - Tắt trong hàng PvP Chuẩn Hóa, 1vs1 cùng máy và giao hữu. **Đã làm:** nút "BIẾN THÂN" cạnh tướng hiện khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai; bấm không tốn lượt; đếm theo lượt của tướng; miễn choáng/đóng băng mới; hào quang vàng; dư âm sau đó; bỏ thưởng Công/HP Chân Thân cũ. Bot trận thật tự bấm Biến Thân.
@@ -277,6 +282,24 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 - Mỗi trận ghi **phiên bản luật**; đổi luật không áp lên trận đang chạy.
 
 ---
+
+### 5.4b Luật bàn ngọc chung [Có · vòng Bàn ngọc, chủ dự án 05/11]
+Một bảng dữ liệu dùng chung cho trận (`src/live-combat.js`, `src/board-control.js`), AI đối thủ (`src/opponent-ai.js`) và mô
+phỏng (`qa/gemwoven/balance-sim.cjs`): `src/gemwoven/board-rules.js`.
+
+| Luật | Số |
+|---|---|
+| Nộ người chơi (và hai bên trong PvP) mỗi viên Kiếm/Tim/Tím/Băng/Khiên | **3/2/7/2/2**; Lumi tím 10 (+0,2/cấp Bị Động), màu khác theo bảng |
+| Nộ combo (số đợt trong một lần giải bàn) 1/2/3/4/≥5 | **+0/3/6/10/15**, nhận một mức |
+| Nộ quái PvE | 3/viên, +25 ở viên tím đầu; Băng quái **không** hút nộ nữa |
+| Tuyệt kỹ | 100 nộ, thanh tối đa 199, **một tuyệt kỹ mỗi lượt của mình**, tung sau khi bàn giải xong |
+| Băng | thường/tinh anh: 3 Băng trong một lần giải bàn → đóng băng; trùm: thanh **0/6 cộng dồn qua các lượt** |
+| Chống khóa | sau choáng/đóng băng, quái phải hành động đủ **1** lượt (trùm **2**) mới bị khống chế lại; Phong ấn Nori lúc đó chỉ tích sát thương |
+| Kiếm quái | thường ×0,55, trùm **×0,82** (trước 1,15; trùm mất phần lớn lượt bị khóa nên đánh nhẹ lại) |
+
+Ô trạng thái: "Tích băng n/6" trên trùm, "Kháng khống chế" khi đang được bảo hộ. Đo (200–300 trận/ô, cấp gợi ý, có đồ):
+khóa lượt quái 35% → 14% (trùm), Hiro trùm ải 100 54% → 51%, ải 50 89% → 94%; tướng hiếm 1★ trùm 96–100%; nhịp
+tuyệt kỹ ~4,7 → ~4,2 lượt (Lumi 2,1 → 3,5). Chưa đạt: Nori trận trùm 120–140 lượt (1★ 72–75%), chờ chủ dự án chốt.
 
 ### 5.5 Biểu tượng hiệu ứng trên đầu nhân vật, tên tài khoản PvP [Có · Claude + Codex, 04/11]
 Chủ dự án: "Không cần hiện tên… thay bằng biểu tượng băng, ×2, suy kiệt, thiêu đốt, choáng… các hiệu ứng buff, bất lợi"; "Sau PvP thì tên
