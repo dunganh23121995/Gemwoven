@@ -291,3 +291,7 @@
 .pz-title .title-plate.is-season img{object-fit:fill}
 .pz-title .title-plate.is-season b{color:#fff1cf;text-shadow:0 1px 2px #4a0a04;padding-left:58px}
 .hud-profile .hud-cos-frame{left:-10%;top:-12%;width:120%;height:128%}
+.sz-entry .fx{mix-blend-mode:normal}
+.pz-title .title-plate.is-season{width:250px;height:60px}
+.pz-title .title-plate.is-season b{font-size:21px;padding-left:62px;padding-right:22px;letter-spacing:-.2px}
+.pz-actor.is-me .pz-name.is-season{height:44px;font-size:24px}

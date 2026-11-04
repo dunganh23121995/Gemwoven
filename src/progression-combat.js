@@ -108,10 +108,25 @@ startStage=function(){
 };
 // The worn title (Danh Hiệu) rides on top of the hero's head bar (name, health) on its rarity plate, as in town
 // and Gặp Gỡ. Cosmetic only. The head bar is redrawn often, so the plate is put back whenever it is missing.
+// Season looks (Mika's season, cosmetic only): the worn combat frame puts four drawn corner pieces on the battle scene,
+// clear of the board, health bars and skill cues; the worn entry effect plays once over the hero when the fight starts
+// (skipped with reduced motion) and never holds up a turn.
+function progressionLooks(){
+  const files=progressionBattle?.lookFiles||{},scene=$('scene');if(!scene)return;
+  if(files.combatFrame&&!scene.querySelector('.cos-corner'))for(const c of ['tl','tr','bl','br']){const img=document.createElement('img');img.src=files.combatFrame;img.alt='';img.className='cos-corner '+c;scene.append(img);}
+  if(files.entry&&!progressionLooks.played&&!document.body.classList.contains('reduced-motion')){progressionLooks.played=true;
+    // Wait until the hero actually stands on the visible scene (the page loads behind its intro), then play once.
+    let tries=0;const play=()=>{const hero=actor('hero'),r=hero?.getBoundingClientRect();if(!hero||!hero.offsetParent||!r||r.width<10||r.bottom<0){if(tries++<50)setTimeout(play,120);return;}
+      const fx=document.createElement('span');fx.className='cos-entry';fx.style.backgroundImage=`url("${files.entry}")`;fx.setAttribute('aria-hidden','true');
+      hero.append(fx);fx.addEventListener('animationend',()=>fx.remove(),{once:true});setTimeout(()=>fx.remove(),2000);};
+    // The strip is loaded first so the first frames are not lost while it downloads.
+    const strip=new Image();strip.src=files.entry;(strip.decode?strip.decode():Promise.resolve()).catch(()=>{}).then(()=>setTimeout(play,250));}
+}
 function progressionTitlePlate(){
   const hud=$('heroHeadHud'),t=progressionBattle?.title;if(!hud||!t||hud.querySelector(':scope > .combat-title'))return;
   const plate=document.createElement('span');plate.className=`combat-title tier-${t.tier}`;plate.setAttribute('aria-label','Danh hiệu: '+t.name);
-  const img=document.createElement('img');img.src=`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
+  // A worn season title shows its own drawn ribbon (Mika's season); other titles their rarity plate.
+  const img=document.createElement('img');img.src=t.cosmetic&&progressionBattle.lookFiles?.title||`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';if(t.cosmetic)plate.classList.add('is-season');const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
   // Keep it inside the stage when the hero stands near its edge.
   requestAnimationFrame(()=>{const s=$('scene').getBoundingClientRect(),r=plate.getBoundingClientRect();const shift=r.left<s.left+4?s.left+4-r.left:r.right>s.right-4?s.right-4-r.right:0;if(shift)plate.style.marginLeft=shift+'px';});
 }
@@ -124,7 +139,7 @@ renderActors=function(){
   }
   if(!progressionBattle)return;
   const root=actor('hero'),evolution=Math.max(0,Math.min(6,progressionBattle.stats.evolution|0));root.dataset.evolution=evolution;
-  progressionTitlePlate();
+  progressionTitlePlate();progressionLooks();
   // Evolution reads as light around the current form instead of armour pasted
   // over faces: a back-glow, a ground sigil and rising motes grow with each tier.
   const sheet=spriteDefinition('hero',state.key,'idle').sheet,bodyHeight=sheet.bodyHeight||.75,foot=sheet.footY||.94,centre=sheet.bodyX||sheet.heads?.[0]?.[0];
