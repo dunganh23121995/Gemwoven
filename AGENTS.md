@@ -1,6 +1,6 @@
 # Gemwoven development
 
-- Hand image generation, and any deep image processing, to Codex. Climb the model ladder only when the result fails review: `gpt-6.1-sol` low -> medium -> high -> `gpt-6-astra` medium -> high (the ceiling). Keep mechanics, feature design, integration, and ordinary coding on the current model.
+- Draw images through `codex_image_gen.py`: the OpenAI API credit (`gpt-image-2.5-sunburst`, quality low first) draws first, Codex when the credit is used up or the rung is 4+ (one shared ladder, rules in the owner's global CLAUDE.md, "Image generation: two backends"). Deep image processing and every review stay on Codex; the API key only draws. Climb only when the result fails review. Keep mechanics, feature design, integration, and ordinary coding on the current model.
 - Read the imagegen and applicable sprite skills before generating. Use built-in ImageGen; keep final assets and prompts in this repository. Preserve original raw sheets for reproducibility.
 - Start a new account with Hiro only. Premium Đá Ngọc must never be awarded from gameplay, daily quests, offline accumulation, summons, or the event editor. Payment processing is a future server feature.
 - Chapter elites fight as drawn (range, body sheets, a boss-staged first skill with art and sounds of their own): `docs/ELITE_SKILLS.md`. Boss kits stay exclusive to their boss, with one exception: a chapter's last elite plays its boss's ultimate on stage 45.
