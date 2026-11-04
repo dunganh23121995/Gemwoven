@@ -1,0 +1,3 @@
+Use case: full-screen background for the event page "Đồng Hành Cùng Lumi" in the portrait fantasy match-3 RPG Gemwoven, matching the reference (Mika's shrine courtyard) in composition, framing and painted style.
+Portrait image. a starry night observatory tower terrace: a giant brass telescope, floating star charts, a purple aurora sky with a crescent moon, glowing crystal lamps, distant lightning over the clouds, as a courtyard seen from above with decorative interest at the left and right edges and the top 15%. The centre (from about 15% to 90% height, 6% to 94% width) must stay calm and low-contrast (soft paving, snow, moss or mist) because UI panels will cover it.
+Crisp and sharp everywhere (no blur, no vignette, no dark overlay). No text, no characters, no animals.

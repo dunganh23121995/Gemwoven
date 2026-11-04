@@ -3432,5 +3432,148 @@
       "assets/gemwoven/raw/season-nori/pack/prompt.txt"
     ],
     "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-avatar": {
+    "file": "assets/gemwoven/season/lumi/avatar.webp",
+    "width": 384,
+    "height": 384,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/avatar/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/avatar/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-banner": {
+    "file": "assets/gemwoven/season/lumi/banner.webp",
+    "width": 1200,
+    "height": 400,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/banner/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/banner/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-bubble": {
+    "file": "assets/gemwoven/season/lumi/bubble.webp",
+    "width": 405,
+    "height": 278,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-combat-corner": {
+    "file": "assets/gemwoven/season/lumi/combat-corner.webp",
+    "width": 373,
+    "height": 297,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-day-ready": {
+    "file": "assets/gemwoven/season/lumi/day-ready.webp",
+    "width": 300,
+    "height": 274,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-day": {
+    "file": "assets/gemwoven/season/lumi/day.webp",
+    "width": 268,
+    "height": 263,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-emblem": {
+    "file": "assets/gemwoven/season/lumi/emblem.webp",
+    "width": 342,
+    "height": 344,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-entry": {
+    "file": "assets/gemwoven/season/lumi/entry.webp",
+    "width": 1920,
+    "height": 320,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/entry/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/entry/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-event-bg": {
+    "file": "assets/gemwoven/season/lumi/event-bg.webp",
+    "width": 941,
+    "height": 1672,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/event-bg/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/event-bg/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-frame": {
+    "file": "assets/gemwoven/season/lumi/frame.webp",
+    "width": 344,
+    "height": 369,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-nameplate": {
+    "file": "assets/gemwoven/season/lumi/nameplate.webp",
+    "width": 438,
+    "height": 110,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-offer": {
+    "file": "assets/gemwoven/season/lumi/offer.webp",
+    "width": 360,
+    "height": 103,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+  },
+  "season-lumi-title": {
+    "file": "assets/gemwoven/season/lumi/title.webp",
+    "width": 449,
+    "height": 210,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+    ],
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
   }
 }

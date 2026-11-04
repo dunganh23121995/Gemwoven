@@ -4482,6 +4482,19 @@
     "assets/gemwoven/plaza/ui/x-calendar.webp",
     "assets/gemwoven/plaza/ui/x-empty.webp",
     "assets/gemwoven/plaza/ui/x-recruit.webp",
+    "assets/gemwoven/season/lumi/avatar.webp",
+    "assets/gemwoven/season/lumi/banner.webp",
+    "assets/gemwoven/season/lumi/bubble.webp",
+    "assets/gemwoven/season/lumi/combat-corner.webp",
+    "assets/gemwoven/season/lumi/day-ready.webp",
+    "assets/gemwoven/season/lumi/day.webp",
+    "assets/gemwoven/season/lumi/emblem.webp",
+    "assets/gemwoven/season/lumi/entry.webp",
+    "assets/gemwoven/season/lumi/event-bg.webp",
+    "assets/gemwoven/season/lumi/frame.webp",
+    "assets/gemwoven/season/lumi/nameplate.webp",
+    "assets/gemwoven/season/lumi/offer.webp",
+    "assets/gemwoven/season/lumi/title.webp",
     "assets/gemwoven/season/mika/avatar.webp",
     "assets/gemwoven/season/mika/banner.webp",
     "assets/gemwoven/season/mika/bubble.webp",
@@ -4738,7 +4751,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 163178502
+   "bytes": 164128938
   },
   {
    "id": "hero-earth-f1",
