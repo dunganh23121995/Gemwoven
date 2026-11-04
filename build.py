@@ -36,10 +36,19 @@ def sound(path):
     return rel(path)
 
 
+# A foe's action sheet redrawn sharper (assets/gemwoven/sharpen_foes.py) keeps its old drawing beside it: every number
+# measured off a sheet (feet, body height, reach, front points) is measured on that, so the redraw stands, reaches and
+# casts exactly where the approved drawing did.
+_sharp_path = root / 'assets/gemwoven/sharp-sheets.json'
+sharp_old = json.loads(_sharp_path.read_text(encoding='utf-8')) if _sharp_path.exists() else {}
+
+
 def load_pil(src):
-    """The image behind an ART src (a repository path, or a data URI from older builds)."""
+    """The image behind an ART src (a repository path, or a data URI from older builds), to measure."""
     if src.startswith('data:'):
         return Image.open(io.BytesIO(base64.b64decode(src.split(',', 1)[1])))
+    if src in sharp_old:
+        return Image.open(root / sharp_old[src])
     return Image.open(root / src)
 
 def atlas(path, cols, rows, count, fallback):

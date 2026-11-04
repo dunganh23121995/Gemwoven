@@ -9,6 +9,8 @@ size it is shown, the same picture in the same place, then the mesh rig is fitte
   python assets/gemwoven/sharpen_foes.py rig [workers] [id ...]   apply + rig_foes.py make (the kept part map, rebaked)
   python assets/gemwoven/sharpen_foes.py fidgets [id ...]         its fidget sheets rebuilt at the new size (hd_frame)
   python assets/gemwoven/sharpen_foes.py drawfidgets [workers] [id ...]  Codex redraws the middle frames of whole-body fidgets
+  python assets/gemwoven/sharpen_foes.py actions [workers] [boss|elite|<chapter>|id ...]  Codex redraws the action sheets
+  python assets/gemwoven/sharpen_foes.py applyactions [ids]       writes the redrawn action sheets over the live ones
   python assets/gemwoven/sharpen_foes.py sheets [id ...]          before / after strips for review
 
 Sharpness (sharpness()) is the ratio of the finest luminance detail to the next coarser band inside the body (alpha,
@@ -377,12 +379,12 @@ def colour_shift(new, old):
     return float(np.sqrt(((ca - cb) ** 2).sum(-1))[m].mean() * 255) if m.any() else 0.
 
 
-def strays(new, old):
+def strays(new, old, faint=.3):
     """Sparkles, bubbles and snowflakes Codex adds round a sprite, apart from it: a separate piece that lies (almost)
     wholly outside the old frame's silhouette goes. A loose piece of the old drawing (a pendant, a spark) lies on its
     own old place and stays."""
     n = new.shape[0]
-    was = cv2.resize((premul(old)[..., 3] > .3).astype(np.uint8), (n, n), interpolation=cv2.INTER_NEAREST).astype(bool)
+    was = cv2.resize((premul(old)[..., 3] > faint).astype(np.uint8), (n, n), interpolation=cv2.INTER_NEAREST).astype(bool)
     was = ndimage.binary_dilation(was, iterations=max(2, n // 64))
     lab, cnt = ndimage.label(new[..., 3] > .08, structure=np.ones((3, 3)))
     if cnt < 2:
@@ -751,6 +753,241 @@ def strips(ids, name="before-after", per=6, height=340):
     return out
 
 
+# --- Action sheets (a boss's skill poses, an elite's attack / skill / cast / hurt / defeat) ------------------------------
+# Drawn small (bosses 256px cells, elites 480px) and enlarged up to ~3x in combat. Codex redraws each sheet a few frames
+# per canvas, cropped to the box the frames use (the cells' empty margin is not sent), at about the size combat shows,
+# with the redrawn resting frame shown for its rendering. Each frame is laid on its old silhouette (one scale per canvas,
+# soles on the old soles), cleaned like the resting frames, and the sheet keeps its grid, so the frame timing, poses and
+# placement stay. The old sheet stays in <foe>/rig/sharp/sheet-<name>/old.webp; SHEETS_BOOK maps each redrawn sheet to
+# it, and build.py measures feet, reach and front points on the old drawing (placement stays exactly the approved one).
+SHEETS_BOOK = ROOT / "assets/gemwoven/sharp-sheets.json"
+CANVASES = ((1774, 887), (1254, 1254), (887, 1774))     # the shapes Codex's image tool draws
+
+
+def action_jobs(kinds=("boss", "elite")):
+    """[(job name, dict)] for every drawn action sheet of a foe (not its rig loops), from Game.html's ART."""
+    html = (ROOT / "Game.html").read_text(encoding="utf-8")
+    art, _ = json.JSONDecoder().raw_decode(html[html.index("const ART=") + len("const ART="):])
+    table = by_id(); out = {}
+    for fam in ("bosses", "worldBosses", "campaignCreatures"):
+        for fid, entry in art.get(fam, {}).items():
+            if fid not in table or table[fid][0] not in kinds or not isinstance(entry, dict):
+                continue
+            kind, folder = table[fid]
+            for name, s in entry.items():
+                if not isinstance(s, dict) or "src" not in s or s["src"].startswith("data:") or "/rig/" in s["src"]:
+                    continue
+                path = ROOT / s["src"]
+                if not path.exists():
+                    continue
+                cols, rows = s["cols"], s["rows"]
+                rel = path.relative_to(ROOT).as_posix()
+                sheet_name = path.stem if path.parent == folder else f"{rel.split('/')[-3]}-{path.stem}"
+                kept = work(folder) / f"sheet-{sheet_name}" / "old.webp"     # a sheet redrawn already: its old cell
+                with Image.open(kept if kept.exists() else path) as im:
+                    cell = im.width // cols
+                shown_px = SHOWN[kind] * (s.get("scale") or 1)
+                n = int(min(4096 // cols, 4096 // rows, max(cell, -(-shown_px // 16) * 16)))
+                job = out.setdefault(rel, dict(fid=fid, kind=kind, folder=folder, path=path, rel=rel, cols=cols, rows=rows,
+                                              count=s.get("count") or cols * rows, cell=cell, n=n, uses=[], name=sheet_name))
+                job["uses"].append(name)
+                job["n"] = max(job["n"], n)
+    return {k: j for k, j in out.items() if j["n"] > j["cell"] * 1.15}     # drawn at about its shown size already
+
+
+def sheet_work(job):
+    return work(job["folder"]) / f"sheet-{job['name']}"
+
+
+def content_box(cells):
+    """The box (old cell px) every frame's drawing lies in, padded a little and kept inside the cell."""
+    box = None
+    for c in cells:
+        a = np.asarray(c)[..., 3] > 24
+        ys, xs = np.where(a)
+        if not len(ys):
+            continue
+        b = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
+        box = b if box is None else (min(box[0], b[0]), min(box[1], b[1]), max(box[2], b[2]), max(box[3], b[3]))
+    w = cells[0].width
+    if box is None:
+        return (0, 0, w, w)
+    pad = round(w * .03)
+    return (max(0, box[0] - pad), max(0, box[1] - pad), min(w, box[2] + pad), min(w, box[3] + pad))
+
+
+def layout(job, box):
+    """(canvas, rows, cols): the fewest Codex calls that still draw each frame at ~the size combat shows it."""
+    bw, bh = box[2] - box[0], box[3] - box[1]
+    need = job["n"] / job["cell"] * .9            # drawn px per old px
+    best = None
+    for k in (6, 4, 3, 2, 1):
+        if job["count"] % k:
+            continue
+        for (W, H) in CANVASES:
+            for r in range(1, k + 1):
+                if k % r:
+                    continue
+                c = k // r
+                res = min(W / c / bw, H / r / bh)
+                calls = job["count"] // k
+                key_ = (res >= need, -calls if res >= need else res, res)
+                if best is None or key_ > best[0]:
+                    best = (key_, (W, H), r, c, res)
+    return best[1], best[2], best[3], best[4]
+
+
+ACTION_PROMPT = """Image 1 shows {k} animation frame{s} of a fantasy game {what} ({desc}) in a {r} by {c} grid of equal cells (read left to right, top to bottom), enlarged from small frames and soft. Redraw EXACTLY the same frame{s} at full resolution on the same canvas in the same grid: in every cell the same pose, the same angles of every limb, weapon, wing, tail and loose piece, the same size and the same position inside the cell as Image 1, and any drawn effect (a glow, a slash, sparks, a spell in the hand) where it is, the same size, shape and colour. The body keeps one size in every cell. No borders or lines between cells. Nothing crosses a cell edge.
+Image 2 is the same character drawn crisply in its resting pose: render the frames the way Image 2 is rendered (its clean sharp dark outlines, its exact colours, its crisp detail and design). Take only the rendering and the design details from Image 2, never its pose.
+Keep everything about the character exactly: identity, face, every part of the body, armour or costume and every ornament, the weapon, the colours, brightness and saturation, proportions and chibi game style. Do not add or remove anything, and add no new effects.
+Background 100% solid flat {colour}, the same colour everywhere around and between the parts. No gradients, no text, no labels, no frame, no shadow on the ground, no loose sparkles."""
+
+
+def draw_sheet(job, ladder=LADDER[:2]):
+    """Codex for one action sheet; writes sheet-<name>/frame-<i>.png for the frames it accepts and frames.json."""
+    d = sheet_work(job); d.mkdir(parents=True, exist_ok=True)
+    meta = json.loads((work(job["folder"]) / "meta.json").read_text(encoding="utf-8"))
+    colour = GREEN if "green" in meta["backdrop"] else MAGENTA
+    if not (d / "old.webp").exists():
+        (d / "old.webp").write_bytes(job["path"].read_bytes())
+    olds = frames(d / "old.webp", job["cols"], job["rows"], job["count"])
+    box = content_box(olds)
+    (W, H), r, c, res = layout(job, box)
+    k = r * c
+    bw, bh = box[2] - box[0], box[3] - box[1]
+    groups = [list(range(g, g + k)) for g in range(0, job["count"], k)]
+    rest = Image.open(job["folder"] / "rig/foe/rest.png").convert("RGBA")
+    if not (d / "style.png").exists():
+        flat = Image.new("RGBA", rest.size, colour[0] + (255,)); flat.alpha_composite(rest)
+        flat.convert("RGB").resize((1024, 1024), Image.Resampling.LANCZOS).save(d / "style.png")
+    sw, sh = round(bw * res), round(bh * res)
+    for g, idx in enumerate(groups):
+        ref = d / f"ref-{g}.png"
+        if not ref.exists():
+            canvas = Image.new("RGB", (W, H), colour[0])
+            for j, i in enumerate(idx):
+                a = premul(olds[i].crop(box))
+                big = cv2.resize(a, (sw, sh), interpolation=cv2.INTER_CUBIC).clip(0, 1)
+                im = to_image(big)
+                x0 = (j % c) * (W // c) + (W // c - sw) // 2; y0 = (j // c) * (H // r) + (H // r - sh) // 2
+                canvas.paste(im, (x0, y0), im)
+            canvas.save(ref)
+    prompt_file = d / "prompt.txt"
+    if not prompt_file.exists():
+        prompt_file.write_text(ACTION_PROMPT.format(k=k, s="s" if k > 1 else "", r=r, c=c, what=WHAT[job["kind"]],
+                                                    desc=describe(job["folder"], job["kind"]), colour=colour[1]) + "\n", encoding="utf-8")
+    book = json.loads((d / "frames.json").read_text(encoding="utf-8")) if (d / "frames.json").exists() else {}
+    accepted = book.get("accepted", {})
+    n = job["n"]
+    for g, idx in enumerate(groups):
+        for model, effort in ladder:
+            if all(str(i) in accepted for i in idx if (np.asarray(olds[i])[..., 3] > 128).sum() > 200):
+                break
+            raw = d / f"raw-{g}-{effort}.png"
+            if not raw.exists():
+                rr = subprocess.run([sys.executable, str(GEN), "--prompt-file", str(prompt_file), "--out", str(raw), "--ref", str(d / f"ref-{g}.png"),
+                                     "--ref", str(d / "style.png"), "--model", model, "--effort", effort, "--timeout", "900"], capture_output=True,
+                                    text=True, encoding="utf-8", errors="replace", creationflags=0x08000000)
+                if rr.returncode or not raw.exists():
+                    print(job["rel"], g, effort, "gen failed", rr.stderr[-200:].replace("\n", " "), flush=True)
+                    continue
+            cuts = cells_of(key(Image.open(raw), colour[0]), c, r)
+            fits = [align(cu, olds[i]) if cu is not None and (cu[..., 3] > .5).sum() > 300 else None for i, cu in zip(idx, cuts)]
+            scales = [f[1] for f in fits if f and f[0] > .6]
+            if not scales:
+                continue
+            s = float(np.median(scales))
+            for i, cu in zip(idx, cuts):
+                if cu is None or (cu[..., 3] > .5).sum() <= 300 or (np.asarray(olds[i])[..., 3] > 128).sum() <= 200:
+                    continue
+                fr, iou, foot = fitted(cu, olds[i], n, scale=s)
+                # a slash or a cast glow is faint in the old frame: it counts as drawing there
+                fr = match_colour(strays(pockets(fr, olds[i], colour[0]), olds[i], faint=.04), olds[i])
+                prev = accepted.get(str(i))
+                if iou >= .8 and abs(foot) <= .02 and (prev is None or iou > prev["iou"]):
+                    to_image(fr).save(d / f"frame-{i}.png"); accepted[str(i)] = dict(iou=round(iou, 3), effort=effort)
+            print(job["rel"], g, effort, {i: accepted.get(str(i), {}).get("iou") for i in idx}, flush=True)
+    book = dict(cols=job["cols"], rows=job["rows"], count=job["count"], cell=job["cell"], n=n, box=list(map(int, box)),
+                canvas=[W, H], grid=[r, c], accepted=accepted, uses=job["uses"])
+    (d / "frames.json").write_text(json.dumps(book, indent=1) + "\n", encoding="utf-8")
+    return job["rel"], len(accepted), job["count"]
+
+
+def assemble_sheet(job):
+    """The sheet at its new cell: each accepted redraw, the rest of the frames enlarged from the old ones."""
+    d = sheet_work(job)
+    book = json.loads((d / "frames.json").read_text(encoding="utf-8"))
+    olds = frames(d / "old.webp", job["cols"], job["rows"], job["count"])
+    n = book["n"]
+    sheet = np.zeros((job["rows"] * n, job["cols"] * n, 4), np.float32)
+    def twin(i):
+        """An accepted frame whose old drawing is (almost) this one's: a return to the ready pose repeats frame 1."""
+        a = premul(olds[i])
+        for k in sorted(book["accepted"], key=int):
+            b = premul(olds[int(k)])
+            ma, mb = a[..., 3] > .5, b[..., 3] > .5
+            if (ma & mb).sum() / max(1, (ma | mb).sum()) > .95 and np.abs(a - b).max(-1)[ma | mb].mean() < .06:
+                return premul(Image.open(d / f"frame-{k}.png"))
+        return None
+    for i, old in enumerate(olds):
+        fr = premul(Image.open(d / f"frame-{i}.png")) if str(i) in book["accepted"] else twin(i)
+        fr = shown(old, n) if fr is None else fr
+        sheet[(i // job["cols"]) * n:(i // job["cols"] + 1) * n, (i % job["cols"]) * n:(i % job["cols"] + 1) * n] = fr
+    to_image(sheet).save(job["path"], quality=86, alpha_quality=90, method=6)
+    reg = json.loads(SHEETS_BOOK.read_text(encoding="utf-8")) if SHEETS_BOOK.exists() else {}
+    reg[job["rel"]] = (d / "old.webp").relative_to(ROOT).as_posix()
+    SHEETS_BOOK.write_text(json.dumps(dict(sorted(reg.items())), indent=1) + "\n", encoding="utf-8")
+    return len(book["accepted"]), job["count"]
+
+
+def pick(jobs, args):
+    """Jobs named by foe id, chapter prefix (e.g. forest), kind (boss / elite) or sheet path."""
+    if not args:
+        return list(jobs.values())
+    out = []
+    for j in jobs.values():
+        if any(a in (j["fid"], j["kind"], j["rel"]) or j["fid"].startswith(a + "-") for a in args):
+            out.append(j)
+    return out
+
+
+def drawactions(args):
+    workers = int(args[0]) if args and args[0].isdigit() else 4
+    todo = [j for j in pick(action_jobs(), [a for a in args if not a.isdigit()]) if not (sheet_work(j) / "frames.json").exists()]
+    print(len(todo), "action sheets to draw", flush=True)
+    with ThreadPoolExecutor(workers) as pool:
+        for rel, got, count in pool.map(draw_sheet, todo):
+            print("DONE", rel, f"{got}/{count}", flush=True)
+
+
+def applyactions(args):
+    for j in pick(action_jobs(), args):
+        if (sheet_work(j) / "frames.json").exists():
+            got, count = assemble_sheet(j)
+            print("applied", j["rel"], f"{got}/{count}", j["n"], flush=True)
+
+
+def actionview(out, jobs, S=230):
+    """Old frames (top row) over the new ones (bottom row), each sheet two rows, for review."""
+    rows = []
+    for j in jobs:
+        d = sheet_work(j)
+        olds = frames(d / "old.webp", j["cols"], j["rows"], j["count"])
+        news = frames(j["path"], j["cols"], j["rows"], j["count"])
+        strip = Image.new("RGB", (S * len(olds), S * 2 + 18), (50, 62, 50))
+        for i, (o, nw) in enumerate(zip(olds, news)):
+            o = o.resize((S, S), Image.Resampling.BILINEAR); nw = nw.resize((S, S), Image.Resampling.LANCZOS)
+            strip.paste(o, (i * S, 18), o); strip.paste(nw, (i * S, 18 + S), nw)
+        ImageDraw.Draw(strip).text((4, 2), f"{j['fid']} {j['name']}", fill=(255, 255, 255))
+        rows.append(strip)
+    W = max(r.width for r in rows); sheet = Image.new("RGB", (W, sum(r.height for r in rows)), (30, 34, 30))
+    y = 0
+    for r in rows:
+        sheet.paste(r, (0, y)); y += r.height
+    sheet.save(out)
+
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "audit":
@@ -765,5 +1002,9 @@ if __name__ == "__main__":
         fidgets(sys.argv[2:])
     elif cmd == "drawfidgets":
         drawfidgets(sys.argv[2:])
+    elif cmd == "actions":
+        drawactions(sys.argv[2:])
+    elif cmd == "applyactions":
+        applyactions(sys.argv[2:])
     elif cmd == "sheets":
         print("\n".join(map(str, strips(sys.argv[2:] or sorted(by_id())))))

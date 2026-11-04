@@ -1,0 +1,42 @@
+{
+ "cols": 2,
+ "rows": 2,
+ "count": 4,
+ "cell": 256,
+ "n": 672,
+ "box": [
+  32,
+  49,
+  224,
+  253
+ ],
+ "canvas": [
+  1254,
+  1254
+ ],
+ "grid": [
+  2,
+  2
+ ],
+ "accepted": {
+  "0": {
+   "iou": 0.917,
+   "effort": "low"
+  },
+  "1": {
+   "iou": 0.835,
+   "effort": "medium"
+  },
+  "2": {
+   "iou": 0.877,
+   "effort": "low"
+  },
+  "3": {
+   "iou": 0.81,
+   "effort": "medium"
+  }
+ },
+ "uses": [
+  "hurt"
+ ]
+}

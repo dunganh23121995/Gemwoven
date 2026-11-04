@@ -1,0 +1,50 @@
+{
+ "cols": 3,
+ "rows": 2,
+ "count": 6,
+ "cell": 256,
+ "n": 800,
+ "box": [
+  2,
+  66,
+  235,
+  252
+ ],
+ "canvas": [
+  887,
+  1774
+ ],
+ "grid": [
+  3,
+  1
+ ],
+ "accepted": {
+  "0": {
+   "iou": 0.959,
+   "effort": "low"
+  },
+  "1": {
+   "iou": 0.955,
+   "effort": "low"
+  },
+  "2": {
+   "iou": 0.964,
+   "effort": "low"
+  },
+  "3": {
+   "iou": 0.961,
+   "effort": "low"
+  },
+  "4": {
+   "iou": 0.958,
+   "effort": "low"
+  },
+  "5": {
+   "iou": 0.952,
+   "effort": "low"
+  }
+ },
+ "uses": [
+  "punch"
+ ]
+}
