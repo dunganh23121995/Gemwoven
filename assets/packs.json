@@ -133,7 +133,7 @@
     "assets/scenes/chapters/forest-mid.webp",
     "assets/scenes/chapters/forest-stage.webp"
    ],
-   "bytes": 47749099
+   "bytes": 50321717
   },
   {
    "id": "chapter-2",
@@ -275,7 +275,7 @@
     "assets/scenes/chapters/volcano-mid.webp",
     "assets/scenes/chapters/volcano-stage.webp"
    ],
-   "bytes": 43590529
+   "bytes": 47330713
   },
   {
    "id": "chapter-3",
@@ -403,7 +403,7 @@
     "assets/reimagined/bosses/ice/idle/frame-00.png",
     "assets/scenes/ice.webp"
    ],
-   "bytes": 43198547
+   "bytes": 46271171
   },
   {
    "id": "chapter-4",
@@ -541,7 +541,7 @@
     "assets/scenes/chapters/thunder-mid.webp",
     "assets/scenes/chapters/thunder-stage.webp"
    ],
-   "bytes": 46684575
+   "bytes": 50241205
   },
   {
    "id": "chapter-5",
@@ -667,7 +667,7 @@
     "assets/scenes/chapters/marsh-mid.webp",
     "assets/scenes/chapters/marsh-stage.webp"
    ],
-   "bytes": 44872554
+   "bytes": 48359706
   },
   {
    "id": "chapter-6",
@@ -794,7 +794,7 @@
     "assets/scenes/chapters/desert-mid.webp",
     "assets/scenes/chapters/desert-stage.webp"
    ],
-   "bytes": 38479286
+   "bytes": 41293792
   },
   {
    "id": "chapter-7",
@@ -923,7 +923,7 @@
     "assets/scenes/chapters/abyss-mid.webp",
     "assets/scenes/chapters/abyss-stage.webp"
    ],
-   "bytes": 44062831
+   "bytes": 47708319
   },
   {
    "id": "chapter-8",
@@ -1048,7 +1048,7 @@
     "assets/scenes/chapters/foundry-mid.webp",
     "assets/scenes/chapters/foundry-stage.webp"
    ],
-   "bytes": 41359652
+   "bytes": 45036800
   },
   {
    "id": "chapter-9",
@@ -1181,7 +1181,7 @@
     "assets/scenes/chapters/crystal-mid.webp",
     "assets/scenes/chapters/crystal-stage.webp"
    ],
-   "bytes": 43362698
+   "bytes": 46318904
   },
   {
    "id": "chapter-10",
@@ -1305,7 +1305,7 @@
     "assets/scenes/chapters/haunted-mid.webp",
     "assets/scenes/chapters/haunted-stage.webp"
    ],
-   "bytes": 39463855
+   "bytes": 42459735
   },
   {
    "id": "chapter-11",
@@ -1426,7 +1426,7 @@
     "assets/scenes/chapters/sky-mid.webp",
     "assets/scenes/chapters/sky-stage.webp"
    ],
-   "bytes": 40776071
+   "bytes": 44348551
   },
   {
    "id": "chapter-12",
@@ -1552,7 +1552,7 @@
     "assets/scenes/chapters/thorns-mid.webp",
     "assets/scenes/chapters/thorns-stage.webp"
    ],
-   "bytes": 40662848
+   "bytes": 43937616
   },
   {
    "id": "chapter-13",
@@ -1674,7 +1674,7 @@
     "assets/scenes/chapters/celestial-mid.webp",
     "assets/scenes/chapters/celestial-stage.webp"
    ],
-   "bytes": 40072038
+   "bytes": 43366484
   },
   {
    "id": "chapter-14",
@@ -1807,7 +1807,7 @@
     "assets/scenes/chapters/void-mid.webp",
     "assets/scenes/chapters/void-stage.webp"
    ],
-   "bytes": 46765967
+   "bytes": 49887901
   },
   {
    "id": "chapter-15",
@@ -1943,7 +1943,7 @@
     "assets/scenes/chapters/eldergrove-mid.webp",
     "assets/scenes/chapters/eldergrove-stage.webp"
    ],
-   "bytes": 51457269
+   "bytes": 54849593
   },
   {
    "id": "chapter-16",
@@ -2077,7 +2077,7 @@
     "assets/scenes/chapters/caldera-mid.webp",
     "assets/scenes/chapters/caldera-stage.webp"
    ],
-   "bytes": 48305530
+   "bytes": 51661512
   },
   {
    "id": "chapter-17",
@@ -2212,7 +2212,7 @@
     "assets/scenes/chapters/glacier-mid.webp",
     "assets/scenes/chapters/glacier-stage.webp"
    ],
-   "bytes": 47002031
+   "bytes": 50120127
   },
   {
    "id": "chapter-18",
@@ -2344,7 +2344,7 @@
     "assets/scenes/chapters/stormspire-mid.webp",
     "assets/scenes/chapters/stormspire-stage.webp"
    ],
-   "bytes": 46376216
+   "bytes": 49863784
   },
   {
    "id": "chapter-19",
@@ -2477,7 +2477,7 @@
     "assets/scenes/chapters/soulcrypt-mid.webp",
     "assets/scenes/chapters/soulcrypt-stage.webp"
    ],
-   "bytes": 46311374
+   "bytes": 49091964
   },
   {
    "id": "chapter-20",
@@ -2610,7 +2610,7 @@
     "assets/scenes/chapters/mycelium-mid.webp",
     "assets/scenes/chapters/mycelium-stage.webp"
    ],
-   "bytes": 51708889
+   "bytes": 55073509
   },
   {
    "id": "chapter-21",
@@ -2746,7 +2746,7 @@
     "assets/scenes/chapters/geode-mid.webp",
     "assets/scenes/chapters/geode-stage.webp"
    ],
-   "bytes": 51131091
+   "bytes": 55403881
   },
   {
    "id": "chapter-22",
@@ -2880,7 +2880,7 @@
     "assets/scenes/chapters/hourglass-mid.webp",
     "assets/scenes/chapters/hourglass-stage.webp"
    ],
-   "bytes": 49013709
+   "bytes": 52914691
   },
   {
    "id": "chapter-23",
@@ -3013,7 +3013,7 @@
     "assets/scenes/chapters/coralreef-mid.webp",
     "assets/scenes/chapters/coralreef-stage.webp"
    ],
-   "bytes": 54621949
+   "bytes": 59029169
   },
   {
    "id": "chapter-24",
@@ -3146,7 +3146,7 @@
     "assets/scenes/chapters/moonkeep-mid.webp",
     "assets/scenes/chapters/moonkeep-stage.webp"
    ],
-   "bytes": 44231988
+   "bytes": 47145120
   },
   {
    "id": "core",
@@ -4818,7 +4818,7 @@
     "assets/reimagined/heroes/earth/run.webp",
     "assets/reimagined/heroes/earth/smash.webp"
    ],
-   "bytes": 10297222
+   "bytes": 10658996
   },
   {
    "id": "hero-earth-f2",
@@ -4922,7 +4922,7 @@
     "assets/reimagined/heroes/fire/run.webp",
     "assets/reimagined/heroes/fire/smash.webp"
    ],
-   "bytes": 11331448
+   "bytes": 11750836
   },
   {
    "id": "hero-fire-f2",
@@ -5024,7 +5024,7 @@
     "assets/reimagined/heroes/ice/hurt.webp",
     "assets/reimagined/heroes/ice/run.webp"
    ],
-   "bytes": 9500040
+   "bytes": 9898698
   },
   {
    "id": "hero-ice-f2",
@@ -5122,7 +5122,7 @@
     "assets/reimagined/heroes/lightning/hover.webp",
     "assets/reimagined/heroes/lightning/hurt.webp"
    ],
-   "bytes": 7866282
+   "bytes": 8099000
   },
   {
    "id": "hero-lightning-f2",
@@ -5228,7 +5228,7 @@
     "assets/heroes/novice/run.webp",
     "assets/heroes/novice/skill.webp"
    ],
-   "bytes": 6345759
+   "bytes": 6568741
   },
   {
    "id": "hero-novice-f2",
@@ -5306,7 +5306,7 @@
     "assets/heroes/shadow/idle/frame-02.png",
     "assets/heroes/shadow/idle/frame-03.png"
    ],
-   "bytes": 4589406
+   "bytes": 4835084
   },
   {
    "id": "hero-shadow-f2",
