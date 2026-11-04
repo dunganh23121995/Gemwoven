@@ -1,0 +1,135 @@
+/* Type scale (owner 04/11: "cỡ chữ cân xứng với màn Trang chủ"; Codex type review). Sizes are 941-wide stage units,
+ * anchored on Home: card labels 22, HUD 32, Lực chiến 56. Loaded last so it wins over each screen's own sizes.
+ * Icon glyphs (i, ‹ › × ★) are icons, not text, and keep their size. Home itself is locked and is not touched here. */
+:root{--ts-title:42px;--ts-main:32px;--ts-label:22px;--ts-body:26px;--ts-big:56px;--ts-cap:19px}
+
+/* Screen titles on their planks. */
+#stage #scene :is([data-node="upgrade.title"],[data-node="skills.title"],[data-node="inventory.title"],[data-node="forge.title"],[data-node="shop.title"],
+  [data-node="tavern.title"],[data-node="quests.title"],[data-node="summon.title"]),
+#stage #scene .live-panel .game-heading h2,#stage #scene .live-panel h2.tp-title{font-size:var(--ts-title)!important}
+
+/* Shared bottom menu. */
+#stage #scene :is([data-node$=".nav-active-label"],[data-node*=".nav-mini-"]){font-size:var(--ts-label)!important}
+
+/* Chiến Dịch */
+#stage #scene .stage-seal .seal-number{font-size:36px!important}
+#stage #scene .stage-seal .seal-go{font-size:var(--ts-main)!important}
+#stage #scene [data-node="campaign.rewards"] .copy-layer{font-size:var(--ts-body)!important}
+
+/* Trùm Vô Tận */
+#stage #scene [data-node="boss.live"] .trial-go .game-btn{font-size:var(--ts-main)!important}
+#stage #scene [data-node="boss.live"] .trial-left,#stage #scene [data-node="boss.live"] .trial-left b{font-size:var(--ts-body)!important}
+
+/* Tướng */
+#stage #scene :is([data-node^="upgrade.upgrade-tab-"],[data-node$="-story-flag"],.hero-gear-slot,[data-node="upgrade.skills-link"]) .copy-layer,
+#stage #scene :is([data-node^="upgrade.upgrade-tab-"],[data-node$="-story-flag"]){font-size:var(--ts-label)!important}
+#stage #scene [data-node="upgrade.upgrade-action"],#stage #scene [data-node="upgrade.upgrade-action"] .copy-layer{font-size:var(--ts-main)!important}
+#stage #scene [data-node="upgrade.gain-preview"],#stage #scene [data-node^="upgrade.upgrade-materials-"] .copy-layer{font-size:var(--ts-body)!important}
+
+/* Kỹ Năng */
+#stage #scene [data-node="skills.tree"] .st-rank{font-size:var(--ts-body)!important}
+
+/* Triệu Hồi */
+#stage #scene [data-node="summon.banner"] .copy-layer{font-size:var(--ts-main)!important}
+#stage #scene :is([data-node="summon.featured-hero"],[data-node="summon.featured-fragment"],[data-node="summon.featured-weapon"]) .copy-layer{font-size:var(--ts-label)!important}
+#stage #scene [data-node="summon.featured-title"]{font-size:var(--ts-main)!important}
+#stage #scene .su-price b,#stage #scene .su-price.su-held b,#stage #scene [data-node="summon.pity-label"]{font-size:var(--ts-body)!important}
+#stage #scene :is([data-node="summon.summon-one"],[data-node="summon.summon-ten"])>.copy-layer{font-size:var(--ts-big)!important}
+
+/* Túi Đồ */
+#stage #scene [data-node^="inventory.item-title-"]{font-size:var(--ts-main)!important}
+#stage #scene [data-node="inventory.held-count"],#stage #scene [data-node^="inventory.count-"]{font-size:var(--ts-body)!important}
+#stage #scene [data-node="inventory.page"],#stage #scene [data-node^="inventory.category-"] .copy-layer{font-size:var(--ts-label)!important}
+
+/* Rèn Đồ */
+#stage #scene [data-node="forge.bench"] .fg2-plate span{font-size:var(--ts-main)!important}
+#stage #scene [data-node="forge.bench"] .fg2-recess small,#stage #scene [data-node="forge.bench"] .fg2-strip :is(span,i,b){font-size:var(--ts-body)!important}
+#stage #scene [data-node="forge.bench"] .fg2-tab{font-size:var(--ts-label)!important}
+
+/* Cửa Hàng */
+#stage #scene [data-node="shop.product-name"]{font-size:var(--ts-body)!important}
+#stage #scene [data-node^="shop.shop-tab-"] .copy-layer{font-size:var(--ts-label)!important}
+#stage #scene [data-node="shop.buy"] .ln:first-child{font-size:var(--ts-main)!important}
+#stage #scene [data-node="shop.buy"] .ln+.ln,#stage #scene [data-node="shop.buy"] .ln+.ln *{font-size:var(--ts-body)!important}
+
+/* Quán Bia */
+#stage #scene [data-node="tavern.quest-name"],#stage #scene [data-node="quests.quest-name"]{font-size:var(--ts-main)!important}
+#stage #scene :is([data-node="tavern.quest-heading"],[data-node="quests.quest-heading"],[data-node="tavern.quest-description"],[data-node="quests.quest-description"]){font-size:var(--ts-body)!important}
+#stage #scene :is([data-node^="tavern.tavern-tab-"],[data-node^="quests.tavern-tab-"]) .copy-layer{font-size:var(--ts-label)!important}
+
+/* Tích Lũy */
+#stage #scene [data-node="offline.live"] .kp-row .game-btn{font-size:var(--ts-main)!important}
+#stage #scene [data-node="offline.live"] .kp-rate,#stage #scene [data-node="offline.live"] .kp-rate *,#stage #scene [data-node="offline.live"] .kp-gain b,
+#stage #scene [data-node="offline.live"] .kp-res b{font-size:var(--ts-body)!important}
+
+/* Đấu Trường */
+#stage #scene [data-node="arena.cup"] .ar-sign>b{font-size:var(--ts-title)!important}
+#stage #scene [data-node="arena.cup"] .ar-go span{font-size:var(--ts-main)!important}
+#stage #scene [data-node="arena.cup"] .ar-mode b,#stage #scene [data-node="arena.cup"] .ar-strip :is(b,span,em),#stage #scene [data-node="arena.cup"] .ar-local{font-size:var(--ts-body)!important}
+#stage #scene [data-node="arena.cup"] .ar-mode small{font-size:var(--ts-label)!important}
+#stage #scene [data-node="arena.cup"] .ar-podium b{font-size:var(--ts-big)!important}
+
+/* Thành Tích */
+#stage #scene [data-node="rankings.live"] .kp-head span{font-size:var(--ts-main)!important}
+#stage #scene [data-node="rankings.live"] .kp-head small,#stage #scene [data-node="rankings.live"] .gw-sub{font-size:var(--ts-body)!important}
+#stage #scene [data-node="rankings.live"] .title-soon-head{font-size:var(--ts-label)!important}
+
+/* Sự Kiện */
+#stage #scene [data-node="events.live"] .kp-row .game-btn{font-size:var(--ts-main)!important}
+#stage #scene [data-node="events.live"] .newbie-day>b,#stage #scene [data-node="events.live"] .mem-what b{font-size:var(--ts-body)!important}
+
+/* VIP · Sổ Hành Trình */
+#stage #scene .pv-items b,#stage #scene .pv-items.n1 b,#stage #scene .pv-socket.is-ready .pv-items b{font-size:var(--ts-body)!important}
+
+/* Nạp */
+#stage #scene .tp-head b{font-size:var(--ts-main)!important}
+#stage #scene .tp-price b{font-size:var(--ts-main)!important}
+#stage #scene .tp-total b{font-size:var(--ts-body)!important}
+#stage #scene .tp-amount b:not(.long){font-size:var(--ts-big)!important}
+
+/* Hòm Thư */
+#stage #scene [data-node="mail.live"] .mail-title-line b,#stage #scene [data-node="mail.live"] .mail-footer .game-btn{font-size:var(--ts-main)!important}
+#stage #scene [data-node="mail.live"] .mail-tabs .game-btn,#stage #scene [data-node="mail.live"] .mail-meta,#stage #scene [data-node="mail.live"] .mail-meta span,
+#stage #scene [data-node="mail.live"] .mail-expiry{font-size:var(--ts-label)!important}
+#stage #scene [data-node="mail.live"] .gw-sub{font-size:var(--ts-body)!important}
+#stage #scene [data-node="mail.live"] .mail-new{font-size:var(--ts-cap)!important}
+
+/* Cài Đặt */
+#stage #scene [data-node="settings.surface"] :is(.kit-switch,.audio-slider,.guide-row)>span,#stage #scene [data-node="settings.surface"] output{font-size:var(--ts-body)!important}
+#stage #scene [data-node="settings.surface"] #home-audio-reset{font-size:var(--ts-main)!important}
+
+/* Gặp Gỡ (Quảng Trường: the scene is scaled by its own camera, sizes in its 941 frame) */
+#stage #scene .pz-card-name{font-size:var(--ts-main)!important}
+#stage #scene .pz-sheet p{font-size:var(--ts-body)!important}
+#stage #scene .pz-form .gw-btn,#stage #scene .pz-place{font-size:var(--ts-main)!important}
+#stage #scene .pz-status,#stage #scene .pz-status span{font-size:var(--ts-label)!important}
+
+/* Second pass: body lines the first pass missed. */
+#stage #scene [data-node^="inventory.item-description-"],#stage #scene [data-node="shop.product-description"],
+#stage #scene [data-node="offline.live"] .kp-time>span>b,#stage #scene [data-node="events.live"] .mem-what small{font-size:var(--ts-body)!important}
+
+/* Round 2 (Codex score 8,4): tabs that sat lost in wide plates, small table text, two tavern boards with shorter copy. */
+#stage #scene :is([data-node^="upgrade.upgrade-tab-"],[data-node$="-story-flag"],.hero-gear-slot) .copy-layer,
+#stage #scene :is([data-node^="upgrade.upgrade-tab-"],[data-node$="-story-flag"]){font-size:24px!important}
+#stage #scene [data-node="boss.live"] .trial-today b{font-size:var(--ts-main)!important}
+#stage #scene [data-node="boss.live"] .trial-today small,#stage #scene [data-node="boss.live"] .kp-stats-3 .kp-stat{font-size:var(--ts-body)!important}
+#stage #scene [data-node="boss.live"] .kp-stats-3 .kp-stat b{font-size:var(--ts-main)!important}
+#stage #scene [data-node="inventory.source"]{font-size:24px!important}
+#stage #scene [data-node="forge.bench"] .fg2-tab{font-size:28px!important}
+#stage #scene [data-node="forge.bench"] .fg2-slot{font-size:24px!important}
+#stage #scene [data-node^="shop.shop-tab-"] .copy-layer{font-size:24px!important}
+#stage #scene :is([data-node^="tavern.tavern-tab-"],[data-node^="quests.tavern-tab-"]) .copy-layer{font-size:24px!important}
+#stage #scene [data-node="tavern.tavern-menu"]{font-size:22px!important;line-height:1.25!important}
+#stage #scene [data-node="tavern.friendship-note"]{font-size:24px!important;line-height:1.2!important}
+#stage #scene [data-node="offline.live"] .kp-res{font-size:var(--ts-body)!important}
+#stage #scene [data-node="offline.live"] .kp-res b{font-size:var(--ts-main)!important}
+#stage #scene [data-node="arena.cup"] .ar-name{font-size:28px!important}
+#stage #scene [data-node="arena.cup"] .ar-mode small{font-size:24px!important}
+#stage #scene [data-node="rankings.live"] .title-plate b{font-size:var(--ts-label)!important}
+#stage #scene [data-node="rankings.live"] .title-need,#stage #scene [data-node="rankings.live"] .title-need b{font-size:var(--ts-body)!important}
+#stage #scene [data-node="events.live"] .trial-tag{font-size:24px!important}
+#stage #scene [data-node="events.live"] .kp-socket b{font-size:var(--ts-body)!important}
+#stage #scene .pv-band b{font-size:22px!important}
+#stage #scene [data-node="mail.live"] .mail-tabs .game-btn{font-size:28px!important}
+#stage #scene [data-node="mail.live"] .mail-meta,#stage #scene [data-node="mail.live"] .mail-meta span,#stage #scene [data-node="mail.live"] .mail-expiry{font-size:24px!important}
+#stage #scene .pz-sheet p{font-size:28px!important}

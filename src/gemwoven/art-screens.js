@@ -124,7 +124,7 @@
       nodes=remove(nodes,/\.item-type$/);nodes.push(button('inventory','lock',g.locked?'🔒 Đã khóa':'🔓 Khóa',[712,1158,186,66],'gear:lock',{id:g.id,on:g.locked?'0':'1'},{size:25,labelRect:[10,0,166,66],asset:'button-blue'}));label(nodes,'held-label','Cường hóa');}
     // Codex review 27 (Túi Đồ 7/10): one clear reading order in the detail panel — name, one line of use, then
     // "Đang có" and where it comes from on one row, the actions as large gold plates; the type tag stays small.
-    for(const [id,rect,size] of [['item-title-'+asset,[300,1158,430,50],38],['item-description-'+asset,[300,1212,590,70],29],['held-label',[300,1290,180,36],27],['held-count',[300,1324,180,46],38],['source-title',[490,1290,200,36],27],['source',[490,1324,210,108],25]]){const n=find(nodes,id);if(n)Object.assign(n,{rect,size,align:'left',className:((n.className||'').replace(/\bitem-detail\b/,'')+' item-detail').trim()});}
+    for(const [id,rect,size] of [['item-title-'+asset,[300,1158,430,50],38],['item-description-'+asset,[300,1212,590,70],29],['held-label',[300,1290,180,36],27],['held-count',[300,1324,180,46],38],['source-title',[490,1290,200,36],27],['source',[490,1328,220,118],26]]){const n=find(nodes,id);if(n)Object.assign(n,{rect,size,align:'left',className:((n.className||'').replace(/\bitem-detail\b/,'')+' item-detail').trim()});}
     for(const n of nodes)if(/\.(item-action|purchase|salvage)$/.test(n.id)&&n.rect[1]>1300){const i=['item-action','purchase','salvage'].findIndex(k=>n.id.endsWith('.'+k));n.rect=[712,1290+(i?1:0)*96,184,88];n.labelRect=[10,0,164,88];n.size=29;n.className=((n.className||'')+' bag-plate').trim();}
     // The gear tab: bag fill and bulk salvage.
     if(state.category==='gear'){const full=p.equipment.length>=M.BAG.warn;

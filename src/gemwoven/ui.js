@@ -270,10 +270,12 @@
   }
   function fitCopy(){
     // A DOM-only test has zero layout metrics; browsers fit replacement copy.
+    // Never below 19 stage units (the type scale's caption size, owner 04/11 / Codex type review).
     scene.querySelectorAll('[data-copy]').forEach(el=>{
       if(!el.clientWidth||el.isContentEditable||el.classList.contains('engraved-label'))return;
-      let size=parseFloat(el.style.fontSize)||28;
-      while(size>12&&(el.scrollWidth>el.clientWidth+1||el.scrollHeight>el.clientHeight+1))el.style.fontSize=`${--size}px`;
+      // Start from the size actually shown (type-scale.css may override the node's own) and shrink with priority so it wins.
+      let size=parseFloat(getComputedStyle(el).fontSize)||28;
+      while(size>19&&(el.scrollWidth>el.clientWidth+1||el.scrollHeight>el.clientHeight+1))el.style.setProperty('font-size',`${--size}px`,'important');
     });
   }
   function navigate(key){

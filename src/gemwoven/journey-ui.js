@@ -16,7 +16,7 @@
     // Quests live in the tavern; this board reads the power of the hero standing beside it.
     const power=nodes.find(n=>n.id==='home.power');C[power.text]=fmt(M.stats(p,p.selected).power);
     Object.assign(power,{rect:[713,1146,210,173],iconRect:[85,16,40,44],labelRect:[14,92,182,64],size:56,className:((power.className||'')+' home-power').trim()});
-    C['home.power-label']='Lực chiến';nodes.push({id:'home.power-label',kind:'text',text:'home.power-label',rect:[733,1206,170,36],size:28,tone:'ink',className:'home-power-label'});
+    C['home.power-label']='Lực chiến';nodes.push({id:'home.power-label',kind:'text',text:'home.power-label',rect:[743,1210,150,30],size:22,tone:'ink',className:'home-power-label'});
     const hero=nodes.find(n=>n.id==='home.hero');if(hero){hero.rect=[391,1010,184,270];hero.kind='button';hero.text='home.hero';hero.labelHidden=true;C['home.hero']='Tướng';}
     nodes.push(button('home','feature-monthly','Thẻ Tháng','side-pennant',[10,421,96,109],'journey:monthly',{}, {icon:'icon-book'}));
     nodes.push(button('home','feature-chat','Gặp Gỡ','side-pennant',[10,553,96,109],'route:chat',{}, {icon:'icon-chat'}));
@@ -32,10 +32,10 @@
     const scaleRect=r=>r.map((v,k)=>v*(k%2?height/card.height:width/card.width));
     const cards=nodes.filter(n=>n.kind==='button'&&n.rect[0]<200&&
       (n.id.startsWith('home.feature-')||n.asset==='side-pennant'||n.asset==='hud-side-card'));
-    // Codex review 25: the icon takes about two thirds of the card, the name 28 units on at most two lines.
+    // Codex review 25: the icon takes about two thirds of the card; the name 22 units on at most two lines (owner 04/11: smaller).
     // A two-line name lifts the icon a little so both lines stay above the card's point.
     const BREAK={'Trùm Vô Tận':'Trùm\nVô Tận'};
-    const dress=n=>{const two=n.text&&BREAK[C[n.text]];if(two)C[n.text]=two;n.fit='fill';n.iconRect=two?[29,12,70,70]:[22,16,84,84];n.labelRect=two?[2,82,124,58]:[2,100,124,34];n.size=28;n.labelHidden=false;};
+    const dress=n=>{const two=n.text&&BREAK[C[n.text]];if(two)C[n.text]=two;n.fit='fill';n.iconRect=two?[26,12,76,76]:[20,14,88,88];n.labelRect=two?[4,88,120,48]:[4,104,120,28];n.size=22;n.labelHidden=false;};
     for(const n of nodes.filter(n=>/^home\.right-(offline|boss|rankings)$/.test(n.id)))dress(n);
     cards.forEach((n,i)=>{
       n.asset='hud-side-card';n.rect=[center-width/2,166+i*162,width,height];n.fit='fill';

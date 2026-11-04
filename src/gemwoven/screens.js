@@ -178,9 +178,9 @@
   text('tavern-subtitle','Bạn tốt\nNhững hành trình vĩ đại hơn!',[74,390,229,51],22);
   [['Tin Đồn','icon-event','flag-gold'],['Nhiệm Vụ','icon-quest','flag-gold'],['Tình Thân','stat-heart','flag-red'],['Chiêu Mộ','hero-fragment','flag-blue']].forEach(([label,icon,flag],i)=>button(`tavern-tab-${i}`,flag,[479+i*109,214,108,297],label,`tavern-tab:${i}`,{icon,iconRect:[21,79,66,84],labelRect:[5,188,98,44],size:25,fit:'fill',selected:i===0,group:'tavern-tab'}));
   image('left-chalkboard','card-dark',[-8,640,157,249],{fit:'fill'});
-  text('tavern-menu','Hôm nay có\nBia Ngọc\nThịt Nướng\nKể Chuyện\nKết Bạn',[11,680,124,150],21,{align:'left'});
+  text('tavern-menu','Bia Ngọc\nThịt Nướng\nKết Bạn',[11,680,124,150],24,{align:'left'});
   image('right-chalkboard','card-dark',[799,560,137,198],{fit:'fill'});
-  text('friendship-note','Những người\nbạn tốt\nSẽ cùng ta\nđi xa hơn',[817,589,100,136],22);
+  text('friendship-note','Bạn tốt\ncùng đi\nxa hơn',[817,589,100,136],24);
   panel('quest-panel',[23,1151,895,280]);
   image('quest-heading-board','tab-wood',[109,1139,205,65],{fit:'fill'});text('quest-heading','Tin Đồn',[142,1150,144,42],32);
   button('quest-art','quest-scene',[62,1220,204,170],'Người lữ hành bí ẩn','quest-preview',{labelHidden:true});
