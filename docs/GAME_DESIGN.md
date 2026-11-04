@@ -941,9 +941,11 @@ không chỉnh số**.
      chưa xong (không đặt lại tiến độ hay bước đã chốt); đã hoàn tất thì ghi "Hướng dẫn đã hoàn tất".
   6. **Bài học một lần** sau khi hướng dẫn chính hoàn tất (không hiện khi đang bỏ qua, mỗi lúc một chỉ dẫn): *Bị Động* khi một tướng
      cấp ≥ 10 — chọn đúng tướng và nút Bị Động, chỉ vào "Học" chỉ khi học được (1.800 vàng + 1 bí kíp), đã học thì tự xong;
-     *Rèn Đồ* khi qua ải 20 — chỉ vào Rèn Đồ xem phôi Tốt (mở không có nghĩa là đủ tiền). Ghi một lần khi đóng hoặc làm xong.
-  7. Hình: Mèo Hướng Dẫn có sẵn + tấm giấy da lời thoại, găng chỉ, vòng sáng (Codex vẽ), chữ HTML một dòng; không làm tối màn,
-     một đích mỗi lúc, bám theo cuộn/đổi cỡ, không che nút, tôn trọng giảm chuyển động.
+     *Rèn Đồ* khi qua ải 20 — chỉ vào Rèn Đồ xem phôi Tốt (mở không có nghĩa là đủ tiền). Ghi một lần khi đóng hoặc làm xong. Bài học **chỉ hiện trên đúng màn của nó** (Kỹ Năng / Rèn Đồ), không
+     bao giờ đè hành động của màn khác; bản lưu cũ hoàn tất im lặng thì bài học đã tới hạn cũng chốt luôn (người chơi lâu năm không bị dạy lại).
+  7. Hình: Miu Dẫn Lối (NPC dẫn đường của Quảng Trường, dùng lại nguyên chân dung) + tấm giấy da lời thoại, găng chỉ, vòng sáng (Codex vẽ), chữ HTML một dòng; không làm tối màn,
+     một đích mỗi lúc, bám theo cuộn/đổi cỡ, không che nút, tôn trọng giảm chuyển động. Khi người chơi lạc đường (đích là thanh điều
+     hướng hay nút quay lại) chỉ còn vòng sáng + găng, không có tấm lời thoại đè màn đó; trong bảng xác nhận cũng vậy.
   8. **Trận ải 1**: quyền dẫn ghi trên trận đang chờ (gắn mã trận), kiểm lại lúc combat mở (ải 1, bước Thắng ải 1, không bỏ qua).
      Sau 1,5 giây rảnh ở lượt mình (bàn mở, không kéo, không bảng) găng trượt giữa hai ngọc của `legalMoves()[0]` (như nút gợi ý,
      không gọi nút đó) với "Đổi 2 ngọc cạnh nhau, xếp 3 cùng màu"; nhắc lại sau 6 giây tới khi ghép thành công; chạm là ẩn. Lần đầu

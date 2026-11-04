@@ -682,6 +682,40 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   }
   // Saves from the 30-chapter map (1500 stages) keep their progress up to the current last stage.
   function clampCampaign(p){p.campaign.cleared=Math.min(p.campaign.cleared,WORLD.MAX_STAGES);for(const n of Object.keys(p.campaign.stars))if(Number(n)>WORLD.MAX_STAGES)delete p.campaign.stars[n];if(p.pending?.mode==='campaign'&&p.pending.index>WORLD.MAX_STAGES)p.pending=null;}
+  // Dẫn Đường (Claude + Codex 04/11, docs/GAME_DESIGN.md §20 "Vòng Tính năng kế tiếp"): a new player's first ten minutes as
+  // eight goals read from the save, in a fixed order. A goal that comes true (however the player got there) is latched in
+  // guide.done and never reopens; Triệu hồi and Mặc đồ are bypassed only when they are the current goal (no ticket / no gear).
+  // The guide gives nothing of its own: every step is an ordinary action with its ordinary cost and reward.
+  const GUIDE_STEPS=[
+    {id:'win1',ok:p=>p.campaign.cleared>=1},
+    {id:'visit',ok:p=>p.daily.claimed.includes('login')},
+    {id:'newbie1',ok:p=>(p.newbie?.claimed||[]).includes(1)},
+    {id:'level',ok:p=>Object.values(p.heroes).some(h=>h.level>=2)},
+    {id:'win3',ok:p=>p.campaign.cleared>=3},
+    {id:'summon',ok:p=>(p.summon?.total||0)>=1,bypass:p=>(p.wallet.tickets||0)<1},
+    {id:'gear',ok:p=>Object.values(p.heroes).some(h=>Object.values(h.gear||{}).some(id=>p.equipment.some(g=>g.id===id))),bypass:p=>!p.equipment.length},
+    {id:'win5',ok:p=>p.campaign.cleared>=5}];
+  // One-shot lessons after the guide is finished: Bị Động at hero level 10, Rèn Đồ after stage 20.
+  const GUIDE_LESSONS=[
+    {id:'skills',due:p=>Object.values(p.heroes).some(h=>h.level>=10),solved:p=>Object.values(p.heroes).some(h=>h.level>=10&&h.skills[1]>0)},
+    {id:'forge',due:p=>p.campaign.cleared>=20,solved:()=>false}];
+  // A save made before the guide existed with five stages cleared finishes it silently (no closing line).
+  // Its lessons already due are latched too: a veteran is not taught what they have long passed.
+  function guideInit(p){const old=p.campaign.cleared>=5;return {v:2,skipped:false,done:old?GUIDE_STEPS.map(s=>s.id):[],lessons:old?GUIDE_LESSONS.filter(l=>l.due(p)).map(l=>l.id):[],finished:old,closed:old};}
+  function guideResolve(g,p){
+    // v1 (first preview build) taught finished saves every lesson already due; v2 latches those as passed.
+    if((g.v||1)<2){g.v=2;if(g.finished)for(const l of GUIDE_LESSONS)if(l.due(p)&&!g.lessons.includes(l.id))g.lessons.push(l.id);}
+    for(const s of GUIDE_STEPS)if(!g.done.includes(s.id)&&s.ok(p))g.done.push(s.id);
+    for(let s=GUIDE_STEPS.find(s=>!g.done.includes(s.id));s&&s.bypass&&s.bypass(p);s=GUIDE_STEPS.find(s=>!g.done.includes(s.id)))g.done.push(s.id);
+    if(!g.finished&&GUIDE_STEPS.every(s=>g.done.includes(s.id)))g.finished=true;
+    for(const l of GUIDE_LESSONS)if(!g.lessons.includes(l.id)&&l.due(p)&&l.solved(p))g.lessons.push(l.id);
+    return g;}
+  function guideSync(p){p.guide=guideResolve(p.guide||guideInit(p),p);}
+  // The projection the hub draws: the current goal (index 1..8) or, once finished, the closing line then one due lesson.
+  function guideView(p){const g=guideResolve(clone(p.guide||guideInit(p)),p),i=GUIDE_STEPS.findIndex(s=>!g.done.includes(s.id));
+    const lesson=g.finished&&g.closed&&!g.skipped?GUIDE_LESSONS.find(l=>!g.lessons.includes(l.id)&&l.due(p))?.id||null:null;
+    return {active:!g.skipped&&i>=0,step:i>=0?GUIDE_STEPS[i].id:null,index:i>=0?i+1:GUIDE_STEPS.length,total:GUIDE_STEPS.length,done:[...g.done],
+      skipped:g.skipped,finished:g.finished,closing:g.finished&&!g.closed&&!g.skipped,lesson,stale:JSON.stringify(g)!==JSON.stringify(p.guide||null)};}
   // The Báu Vật trial runs the whole game on a copy of the save (gemwoven.treasure.v1) while it is on; the real save
   // is untouched. Hub and combat build their engine on storageFor(localStorage).
   function storageFor(raw){try{if(raw?.getItem('gemwoven.trialActive')==='1'){const T='gemwoven.treasure.v1',m=k=>k===KEY?T:k;return {getItem:k=>raw.getItem(m(k)),setItem:(k,v)=>raw.setItem(m(k),v),removeItem:k=>raw.removeItem(m(k)),trial:true};}}catch{}return raw;}
@@ -702,7 +736,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function daily(p){weekly(p);passSync(p);memorySync(p);if(day(current)>p.daily.date)p.daily={date:day(current),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0};}
     function bankOffline(p){const r=offlineRaw(p,current);p.offlineBank={hours:r.hours,gold:r.gold,exp:r.exp,seals:r.seals};p.offlineAt=Math.max(current,p.offlineAt);}
     // Expired mail (and any unclaimed gift in it) leaves the box at the next transaction.
-    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);memorySync(p);save(p);return value;}
+    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);memorySync(p);calendarSync(p);guideSync(p);save(p);return value;}
     function findMail(p,mailId){const m=p.mail.find(m=>m.id===mailId&&mailLive(m,current));check(m,'Thư không tồn tại hoặc đã hết hạn.');return m;}
     function read(){const p=load();clockNow(p,false);daily(p);return clone(p);}
     function amount(p,id){return id in p.wallet?p.wallet[id]:p.materials[id]||0;}
@@ -725,6 +759,21 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         const copies=Math.max(0,(h.copies|0)-1),fragments=Math.max(0,p.fragments[key]|0),dust=copies*X.copyDust+fragments*X.fragmentDust;if(!dust)continue;
         h.copies=1;p.fragments[key]=0;m.dust+=dust;m.log.unshift({at:current,hero:key,copies,fragments,dust});m.log=m.log.slice(0,20);
         note(p,`${HEROES[key].name} 6★: ${copies} bản, ${fragments} mảnh dư → ${dust} Bụi Ký Ức`);}}
+    // Lịch 28 ngày (Claude + Codex 04/11, GAME_DESIGN §20 "Vòng Tính năng kế tiếp"): the shared 28-day season as a calendar of
+    // the existing Ghé thăm reward. Only today can be claimed and that is claimDaily('login') itself, which stamps the day; no
+    // catch-up, no streak, no day-7/14/21 bonus. `from` is the first day this save can vouch for (account creation or the
+    // first season seen): earlier days are neutral, later unstamped days are missed. Day 28 also holds the memory chest.
+    function calendarFrom(p,c,s,today){if(c)return 1;const made=Math.floor(((p.created||current)-s.start)/DAY_MS)+1;return made>=1?Math.min(made,today):today;}
+    function calendarSync(p){const O=OPS();if(!O?.passSeason)return;const s=O.passSeason(current),today=Math.floor((current-s.start)/DAY_MS)+1;
+      if(!p.calendar||p.calendar.season!==s.index)p.calendar={season:s.index,from:calendarFrom(p,p.calendar,s,today),days:[]};
+      if(p.daily.date===day(current)&&p.daily.claimed.includes('login')&&!p.calendar.days.includes(today))p.calendar.days.push(today);}
+    function calendarView(p){const O=OPS(),s=O.passSeason(current),today=Math.floor((current-s.start)/DAY_MS)+1,days=O.PASS.seasonDays;
+      const c=p.calendar?.season===s.index?p.calendar:{from:calendarFrom(p,p.calendar,s,today),days:p.daily.claimed.includes('login')?[today]:[]};
+      const q=DAILY.find(q=>q.id==='login'),claimed=p.daily.claimed.includes('login');
+      const cells=Array.from({length:days},(_,i)=>{const d=i+1,stamp=c.days.includes(d);
+        return {day:d,date:s.start+i*DAY_MS,state:stamp?'claimed':d===today?'today':d>today?'future':d<c.from?'none':'missed'};});
+      return {season:s.index,start:s.start,end:s.end,today,from:c.from,cells,reward:{...q.reward,seals:Math.min(q.reward.seals,Math.max(0,DAILY_SEAL_CAP-p.daily.seals))},
+        canClaim:!claimed&&p.daily.progress.login>=q.target&&!p.clock.behind,claimedToday:claimed,stamped:c.days.length,chest:memoryView(p).chest};}
     function memoryChestOpen(at){const O=OPS(),s=O.passSeason(at);return at>=s.start+(O.MEMORY.chest.day-1)*DAY_MS;}
     const memoryChoices=p=>Object.keys(p.heroes).filter(k=>!OPS().MEMORY.exclude.includes(k)&&p.heroes[k].stars<6);
     function memoryChestGive(p,hero){check(memoryChoices(p).includes(hero),'Chọn tướng đã sở hữu, chưa 6★ (không phải Hiro).');const n=OPS().MEMORY.chest.fragments;p.fragments[hero]=(p.fragments[hero]||0)+n;return {hero,fragments:n};}
@@ -848,7 +897,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         p.summon.last=results;note(p,'Triệu hồi '+count+' lần');return results;
       }),
       begin:(mode,index,opts={})=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');const wornTitle=p.title?titleList(p).find(t=>t.id===p.title&&t.unlocked):null,title=wornTitle?{name:wornTitle.name,tier:wornTitle.tier}:null;
-        if(mode==='cup')return cupBegin(p,opts.hero,title);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title};if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
+        if(mode==='cup')return cupBegin(p,opts.hero,title);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title};if(mode==='campaign'&&index===1){const gv=guideView(p);if(gv.active&&gv.step==='win1')p.pending.coach=true;}if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
         if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
@@ -910,6 +959,10 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       pickGem:type=>tx(p=>{check(GEMS[type],'Loại ngọc không hợp lệ.');check((p.gemChoices||0)>0,'Không có phiếu chọn ngọc.');p.gemChoices--;p.gems??={};const k=gemKey(type,1);p.gems[k]=(p.gems[k]||0)+1;return {gem:k};}),
       // Cửa Hàng Ký Ức and the day-28 chest (D3). Bụi Ký Ức is never bought with money or Đá Ngọc.
       memory:()=>memoryView(read()),
+      calendar:()=>calendarView(read()),
+      guide:()=>guideView(read()),guideSync:()=>tx(()=>{}),
+      guideSkip:()=>tx(p=>{guideSync(p);p.guide.skipped=true;}),guideReplay:()=>tx(p=>{guideSync(p);p.guide.skipped=false;}),
+      guideClose:()=>tx(p=>{guideSync(p);p.guide.closed=true;}),guideLesson:id=>tx(p=>{check(GUIDE_LESSONS.some(l=>l.id===id),'Bài học không tồn tại.');guideSync(p);if(!p.guide.lessons.includes(id))p.guide.lessons.push(id);}),
       buyMemory:hero=>tx(p=>{onTime(p);const X=OPS().MEMORY,m=memoryState(p),offer=memoryOffer(current);check(offer.heroes.includes(hero),'Tướng này không có trên kệ Ký Ức tuần này.');
         check((p.heroes[hero]?.stars||0)<6,'Tướng đã 6★: mảnh sẽ thành Bụi Ký Ức.');const bought=m.bought[hero]||0;check(bought+X.bundle<=X.capPerHeroWeek,`Đã mua đủ ${X.capPerHeroWeek} mảnh tướng này tuần này.`);
         const cost=X.price*X.bundle;check(m.dust>=cost,`Cần ${cost} Bụi Ký Ức.`);m.dust-=cost;m.bought[hero]=bought+X.bundle;p.fragments[hero]=(p.fragments[hero]||0)+X.bundle;
@@ -1012,5 +1065,5 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {RELEASES,bannerPeriod,bannerCheck,bannerPlan,bannerFirstStart,memoryOffer,CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,GOLD_PACKS,GOLD_DAILY_UNITS,goldPackGold,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,RARITY_ORDER,nextRarity,rarityUpCost,rarityUpGate,UPGRADE_FODDER,rarityUpCostWith,fodderRefund,upgradeFodder,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,weeklyReward,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {RELEASES,bannerPeriod,bannerCheck,bannerPlan,bannerFirstStart,memoryOffer,CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,GOLD_PACKS,GOLD_DAILY_UNITS,goldPackGold,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,RARITY_ORDER,nextRarity,rarityUpCost,rarityUpGate,UPGRADE_FODDER,rarityUpCostWith,fodderRefund,upgradeFodder,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,weeklyReward,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,GUIDE_STEPS,GUIDE_LESSONS,guideView,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });

@@ -1,0 +1,32 @@
+Create an EDIT MOCKUP of Gemwoven’s first onboarding step.
+
+OUTPUT: portrait 1024x1792, OR match the reference aspect ratio exactly; prefer matching the reference. Preserve the complete screenshot, including its letterboxing, without stretching or cropping.
+
+INPUT ROLES:
+- Reference image 1, current-home-phone.png: the sole edit target.
+- Reference image 2, the approved forge mockup: style reference for the NEW overlay pieces only.
+- Reference image 3, the cat guide: existing character insert. Reuse this exact cat artwork; crop/mask it into a bust. Do not redraw, reinterpret, mirror, or change his face, costume, colors, or raised paw.
+
+KEEP THE HOME SCREEN ART IDENTICAL. Only add the guide overlay pieces. Preserve every existing building, hero, button, label, number, HUD element, navigation item, and background detail. Do not move Khám Phá or modify any underlying screen art.
+
+STYLE: same hand-painted chibi fantasy style as the approved forge and current hub pieces. Warm wood, ivory parchment, small brass fittings, restrained golden light. All frames, plaques, target outlines, and the glove must look like drawn game art, not plain CSS boxes or flat vector UI.
+
+COMPOSITION:
+Use the inner game stage, excluding letterboxing, as a conceptual 941x1672 coordinate system.
+Place the unchanged cat bust around [38,1014,166,200].
+Place a compact parchment speech plaque with a warm wooden rim around [202,1040,702,174], immediately above Khám Phá.
+Put a small brass counter badge in its upper-left area and a small parchment skip tab at its upper-right.
+Keep the main instruction on one clear line below these small controls.
+
+Add one thin, open-center, hand-painted golden outline around the ACTUAL existing Khám Phá button, with about 12 stage units of clearance. Follow the button’s visible bounds in the reference; do not relocate it to fit nominal coordinates.
+Add one ivory pointing glove with a brass cuff just above-right of the target. Its index points down-left to the button’s upper-right edge. Keep the glove outside the button lettering.
+Keep the entire bottom navigation unobstructed.
+
+NEW TEXT, EXACTLY:
+"Bấm Khám Phá để vào ải đầu tiên"
+"1/8"
+"Bỏ qua"
+
+Use crisp, dark-brown Vietnamese lettering with all diacritics correct. No additional overlay words. Treat this lettering as the visual proof of a future HTML text layer.
+
+No dimming, dark scrim, full-screen frame, second pointer, extra character, or altered Home painting. Only add the specified overlay pieces.

@@ -438,3 +438,64 @@ console.log('memory dust ok');
   assert.equal(typeof e.topup,'undefined','no client-side top-up');
 }
 console.log('gold for gems ok');
+{ // Dẫn Đường (Claude + Codex 04/11, GAME_DESIGN §20): eight goals read from the save, latched, no rewards of its own.
+  clock=Date.UTC(2026,10,4,6);
+  const play=(e,edit,stage)=>{const b=e.begin('campaign',stage);const g=e.guide();assert.equal(!!b.coach,stage===1&&g.active&&g.step==='win1','only the guided stage-1 fight is coached');e.settle(b.token,true,0,{hpRatio:1,turns:3});};
+  const ids=M.GUIDE_STEPS.map(s=>s.id);assert.deepEqual(ids,['win1','visit','newbie1','level','win3','summon','gear','win5']);
+  let {engine:e,edit}=fixture();let v=e.guide();assert.equal(v.active,true);assert.equal(v.step,'win1');assert.equal(v.index,1);assert.equal(v.total,8);
+  const before=e.read();play(e,edit,1);v=e.guide();assert.equal(v.step,'visit','stage 1 cleared');
+  e.claimDaily('login');assert.equal(e.guide().step,'newbie1');e.claimNewbie(1);assert.equal(e.guide().step,'level');
+  e.levelUp('novice');assert.equal(e.guide().step,'win3');play(e,edit,2);play(e,edit,3);assert.equal(e.guide().step,'summon');
+  assert.ok(e.read().wallet.tickets>=1);e.summon(1,'tickets');assert.ok(['gear','win5'].includes(e.guide().step));
+  // The same actions without the guide give exactly the same account (the guide adds nothing).
+  const manual=fixture();edit=manual.edit;const m=manual.engine;m.guideSkip();play(m,edit,1);m.claimDaily('login');m.claimNewbie(1);m.levelUp('novice');play(m,edit,2);play(m,edit,3);m.summon(1,'tickets');
+  const strip=p=>JSON.stringify({w:p.wallet,m:p.materials,f:p.fragments,c:p.campaign,h:p.heroes,eq:p.equipment.length,s:p.summon.total});
+  assert.equal(strip(e.read()),strip(m.read()),'guided and manual play end identical');assert.equal(e.read().wallet.gems,0,'never Đá Ngọc');
+  assert.equal(m.guide().active,false,'skipped');m.guideReplay();assert.equal(m.guide().active,true,'replay resumes unresolved goals');
+  // Any order: levelling and the visit before the first win latch at once and are passed over later.
+  ({engine:e,edit}=fixture());e.claimDaily('login');e.levelUp('novice');assert.equal(e.guide().step,'win1');play(e,edit,1);assert.equal(e.guide().step,'newbie1');
+  clock+=DAY;assert.ok(e.guide().done.includes('visit'),'latched across midnight');
+  // Bypass only when reached: a fresh account holds no ticket, yet summon stays a goal until it is current.
+  ({engine:e,edit}=fixture());assert.equal(e.read().wallet.tickets,0);assert.ok(!e.guide().done.includes('summon'));
+  edit(p=>{p.campaign.cleared=3;p.daily.claimed.push('login');p.newbie={claimed:[1]};p.heroes.novice.level=2;p.wallet.tickets=0;});
+  v=e.guide();assert.ok(v.done.includes('summon')&&v.done.includes('gear'),'no ticket and no gear: both bypassed at their turn');assert.equal(v.step,'win5');assert.equal(v.stale,true);
+  e.guideSync();assert.equal(e.guide().stale,false);edit(p=>{p.wallet.tickets=5;});assert.ok(e.guide().done.includes('summon'),'a bypass never reopens');
+  // Gear counts only a real piece; finishing needs all eight, then one closing line, then lessons one at a time.
+  ({engine:e,edit}=fixture());edit(p=>{p.campaign.cleared=4;p.daily.claimed.push('login');p.newbie={claimed:[1]};p.heroes.novice.level=2;p.summon.total=1;p.equipment=[{id:'g1',slot:'weapon',rarity:'common',level:0}];p.heroes.novice.gear={helmet:'ghost'};});
+  assert.equal(e.guide().step,'gear','a stale gear id is not a worn piece');e.equip('novice','g1');assert.equal(e.guide().step,'win5');
+  edit(p=>{p.heroes.novice.level=12;});play(e,edit,5);v=e.guide();assert.equal(v.finished,true);assert.equal(v.closing,true);assert.equal(v.lesson,null,'no lesson before the closing line');
+  e.guideClose();v=e.guide();assert.equal(v.closing,false);assert.equal(v.lesson,'skills');e.guideLesson('skills');e.guideLesson('skills');
+  assert.deepEqual(e.read().guide.lessons,['skills'],'recorded once');assert.equal(e.guide().lesson,null);
+  edit(p=>{p.campaign.cleared=20;});assert.equal(e.guide().lesson,'forge');e.guideSkip();assert.equal(e.guide().lesson,null,'skip hides lessons');
+  assert.throws(()=>e.guideLesson('nope'),/không tồn tại/);
+  // A save from before the guide with five clears finishes silently; one with fewer resumes.
+  ({engine:e,edit}=fixture());edit(p=>{p.campaign.cleared=32;p.heroes.novice.level=24;delete p.guide;});v=e.guide();assert.equal(v.finished,true);assert.equal(v.closing,false);assert.equal(v.active,false);assert.equal(v.lesson,null,'a veteran is not taught lessons already passed');
+  ({engine:e,edit}=fixture());edit(p=>{p.campaign.cleared=2;delete p.guide;});assert.equal(e.guide().step,'visit');
+  // The coach flag rides the pending fight only for the guided stage 1.
+  ({engine:e,edit}=fixture());e.guideSkip();assert.equal(!!e.begin('campaign',1).coach,false,'skipped: no coach');
+}
+console.log('guide ok');
+{ // Lịch 28 ngày (Claude + Codex 04/11, GAME_DESIGN §20): the season calendar of the existing Ghé thăm reward; no catch-up.
+  const O=require('../../src/gemwoven/liveops.js');const S=O.passSeason(Date.UTC(2026,10,4)).start;
+  clock=S+2*DAY+6*3600000;let {engine:e,edit}=fixture();   // made on day 3 of season 0
+  let v=e.calendar();assert.equal(v.today,3);assert.equal(v.from,3);assert.deepEqual(v.cells.slice(0,4).map(c=>c.state),['none','none','today','future'],'days before the account are neutral');
+  assert.equal(v.cells.length,28);assert.equal(v.canClaim,true);assert.deepEqual(Object.keys(v.reward).sort(),['exp','gold','seals','tickets']);assert.equal(v.reward.gems,undefined);
+  const before=e.read();const got=e.claimDaily('login');assert.deepEqual(got,{gold:500,exp:10,seals:80,tickets:1},'exactly the Ghé thăm reward');
+  const after=e.read();assert.equal(after.weekly.progress.daily-before.weekly.progress.daily,1,'one weekly increment');assert.equal(after.wallet.gems,0);
+  v=e.calendar();assert.equal(v.cells[2].state,'claimed');assert.equal(v.canClaim,false);assert.equal(v.claimedToday,true);assert.throws(()=>e.claimDaily('login'),/đã nhận/i,'one claim a day from either entry');
+  clock+=2*DAY;v=e.calendar();assert.equal(v.cells[3].state,'missed','a day passed without the visit is missed, never claimable');assert.equal(v.cells[4].state,'today');
+  e.claimDaily('login');assert.deepEqual(e.read().calendar.days,[3,5]);
+  // Clock set back: nothing to claim (the engine waits at its latest time).
+  clock+=DAY;e.read();edit(p=>{p.clock.max=clock+5*DAY;});v=e.calendar();assert.equal(v.canClaim,false,'clock behind: no claim');edit(p=>{p.clock.max=clock;});
+  // Day 28: the day's visit and the season chest are separate claims.
+  clock=S+27*DAY+3600000;edit(p=>{p.heroes.fire={level:1,stars:1,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[]};});
+  e.claimDaily('login');assert.equal(e.claimMemoryChest('fire').fragments,20);v=e.calendar();assert.equal(v.cells[27].state,'claimed');assert.equal(v.chest.claimed,true);
+  // A new season starts a fresh calendar from day 1; the old one is gone (no carried catch-up).
+  clock=S+28*DAY+3600000;v=e.calendar();assert.equal(v.season,1);assert.equal(v.today,1);assert.equal(v.cells[0].state,'today');
+  e.claimDaily('login');v=e.calendar();assert.equal(v.from,1);assert.deepEqual(e.read().calendar.days,[1]);
+  // A save from before the calendar (made in an earlier season) vouches only from today.
+  clock=S+28*DAY+5*DAY;({engine:e,edit}=fixture());edit(p=>{p.created=S-40*DAY;delete p.calendar;});v=e.calendar();assert.equal(v.from,6);assert.equal(v.cells[2].state,'none');
+  // 28 visits stay the old total: 14.000 gold, 280 books, 28 tickets (seals under the daily cap).
+  const q=M.DAILY.find(q=>q.id==='login').reward;assert.deepEqual([q.gold*28,q.exp*28,q.tickets*28],[14000,280,28]);
+}
+console.log('calendar ok');

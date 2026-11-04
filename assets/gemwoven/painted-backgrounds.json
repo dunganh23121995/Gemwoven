@@ -2675,5 +2675,91 @@
       "assets/gemwoven/plaza/npcs/weaver/rig/show/parts-prompt.txt"
     ],
     "purpose": "Tơ Đèn: the guild lantern weaver by the guild hall, a young woman with a spindle and a lantern. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-weaver) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-weaver.webp."
+  },
+  "guide-plaque": {
+    "file": "assets/gemwoven/guide/plaque.webp",
+    "width": 1384,
+    "height": 289,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: speech plaque for the cat’s one line."
+  },
+  "guide-count": {
+    "file": "assets/gemwoven/guide/count.webp",
+    "width": 286,
+    "height": 175,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: step counter badge (n/8)."
+  },
+  "guide-tab": {
+    "file": "assets/gemwoven/guide/tab.webp",
+    "width": 407,
+    "height": 176,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: Bỏ qua / Đã hiểu tab."
+  },
+  "guide-ring": {
+    "file": "assets/gemwoven/guide/ring.webp",
+    "width": 311,
+    "height": 298,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: 9-slice ring around the target."
+  },
+  "guide-glove-left": {
+    "file": "assets/gemwoven/guide/glove-left.webp",
+    "width": 285,
+    "height": 231,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: pointing glove (down-left) for hub targets."
+  },
+  "guide-glove-down": {
+    "file": "assets/gemwoven/guide/glove-down.webp",
+    "width": 172,
+    "height": 272,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: pointing glove (down) for the board."
+  },
+  "guide-swipe": {
+    "file": "assets/gemwoven/guide/swipe.webp",
+    "width": 325,
+    "height": 115,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: swap motion arrow on the board."
+  },
+  "guide-cat": {
+    "file": "assets/gemwoven/plaza/npc-guide.webp",
+    "width": 364,
+    "height": 435,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-npc/",
+    "promptFiles": [],
+    "purpose": "Miu Dẫn Lối, the plaza guide NPC (reused unchanged), as the Dẫn Đường guide bust."
   }
 }

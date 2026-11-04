@@ -1,0 +1,35 @@
+Create an EDIT MOCKUP of Gemwoven’s stage-1 combat coach.
+
+OUTPUT: portrait 1024x1792, OR match the reference aspect ratio exactly; prefer matching the taller fight reference. Preserve the complete screen without stretching, cropping, or rearranging its contents.
+
+INPUT ROLES:
+- Reference image 1, current-fight-phone.png: the sole edit target.
+- Reference image 2, the approved forge mockup: style reference for the NEW overlay pieces only.
+- Reference image 3, the cat guide: existing cat character insert. Reuse the exact artwork as a cropped bust; do not redraw, mirror, or restyle him.
+
+KEEP THE FIGHT SCREEN ART IDENTICAL. Only add the coach overlay pieces. Preserve Hiro, Slime Rêu, their bars and numbers, every control, the battlefield, and every gem in its original cell. Do not show a completed swap or change the board.
+
+STYLE: same hand-painted chibi fantasy style; warm wood, ivory parchment, brass details, and restrained amber light. Drawn game-art plaques, glove, and outlines, with no plain CSS boxes.
+
+PLACEMENT:
+For annotation only, normalize the full fight reference to a conceptual 941x1672 coordinate system; preserve the original aspect ratio in the output.
+Place the unchanged cat bust around [26,126,150,180].
+Place a slim parchment speech plaque with wooden edging around [182,128,727,174], entirely within the sky below the top toolbar and above both character name/HP/energy bars.
+Place a small "1/8" badge at the plaque’s upper-left and a "Bỏ qua" tab at its upper-right. Put the instruction on one clear line in the lower portion.
+Keep all character bars, the turn/ultimate/hint controls, and the board unobstructed by the plaque.
+
+GESTURE:
+Count board rows from the top and columns from the left.
+Demonstrate swapping row 3 column 3, the blue ice gem, RIGHT with row 3 column 4, the blue-and-gold shield. This would complete three blue ice gems vertically in column 4.
+Add thin, open-center golden outlines just inside those two cells, preserving symbol visibility.
+Show one small ivory glove with a brass cuff, approximately 78x94 normalized units, fingertip near the destination cell center at approximately [417,1135].
+A short, delicate amber motion stroke from approximately [311,1135] to [417,1135] communicates the rightward slide. Keep the palm offset below the stroke. One glove only; no duplicate ghost hands and no long arrow across the board.
+
+NEW TEXT, EXACTLY:
+"Đổi 2 ngọc cạnh nhau, xếp 3 cùng màu"
+"1/8"
+"Bỏ qua"
+
+Use crisp dark-brown Vietnamese lettering with correct diacritics. No extra explanation or overlay words. Treat the lettering as the visual proof of a future HTML text layer.
+
+No dimming, scrim, board-covering dialogue, changed gems, added combat effects, or altered underlying screen art. Only add the specified overlay pieces.
