@@ -4,7 +4,7 @@ fill thins (steeper curve) so the bright lines carry the shape, and its base of 
 that stays after it is not a drawing: it is built from the hero's own silhouette in src/transform-fx.css.
 
 python assets/heroes/forms/transform_spirit.py <hero>   (reads assets/gemwoven/raw/transform2-<hero>/raw-spirit.png,
-writes assets/heroes/forms/<hero>/transform/spirit.webp and v2.json, which switches the hero to the v2 look in build.py)
+writes assets/heroes/forms/<hero>/transform/spirit.webp, mist.webp (from raw-mist.png, if any) and v2.json, which switches the hero to the v2 look in build.py)
 """
 import json
 import sys
@@ -38,6 +38,12 @@ def main(hero):
     spirit = spirit.resize((768, round(768 * spirit.height / spirit.width)), Image.LANCZOS)
     rgba = fade_bottom(luma_key(np.asarray(spirit, np.float32)))
     Image.fromarray(np.clip(rgba, 0, 255).astype(np.uint8), 'RGBA').save(out / 'spirit.webp', quality=90, method=6)
+    # The hero's own dissolving mist, if drawn: four separate wisps in four equal columns (curl, ribbon, curled ribbon, puffs).
+    if (raw / 'raw-mist.png').exists():
+        mist = Image.open(raw / 'raw-mist.png').convert('RGB')
+        mist = mist.resize((1600, round(1600 * mist.height / mist.width)), Image.LANCZOS)
+        rgba = luma_key(np.asarray(mist, np.float32), floor=.05, gamma=.9)
+        Image.fromarray(np.clip(rgba, 0, 255).astype(np.uint8), 'RGBA').save(out / 'mist.webp', quality=90, method=6)
     (out / 'v2.json').write_text(json.dumps({'v2': True, 'source': f'assets/gemwoven/raw/transform2-{hero}/raw-spirit.png'}) + '\n', encoding='utf-8')
     print(hero, 'spirit', spirit.size)
 

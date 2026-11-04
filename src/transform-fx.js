@@ -21,7 +21,9 @@ function transformLookBuild(key){
   // v2 (owner 04/11): a huge see-through spirit rises around the hero and fades; a smooth aura built from the hero's own
   // silhouette stays (two copies of the body drawn as light behind it, transformSilMirror keeps them on the current frame).
   if(files.v2){for(const el of [back,front])el.classList.add('tf-v2');
-    back.innerHTML='<i class="tf2-dim"></i><i class="tf2-spirit"></i><i class="tf2-pool"></i><i class="tf2-sil"></i><i class="tf2-flowbox"><i class="tf2-sil tf2-flow"></i></i>';
+    // the spirit breaks into mist on the boom: drawn wisps (ART.transformMist) laid over its body, each drifting as a whole
+    back.style.setProperty('--tf-mist',`url("${files.mist||ART.transformMist}")`);if(files.mist)back.classList.add('tf2-own-mist');back.style.setProperty('--tf2-dissolve',TRANSFORM_DISSOLVE_MS+'ms');
+    back.innerHTML='<i class="tf2-dim"></i><i class="tf2-spirit"></i><span class="tf2-mist">'+'<i></i>'.repeat(5)+'</span><i class="tf2-pool"></i><i class="tf2-silbox"><i class="tf2-sil"></i></i><i class="tf2-flowbox"><i class="tf2-sil tf2-flow"></i></i>';
     front.innerHTML='';}
   const form=String(progressionBattle?.stats?.form||state.form||1);back.dataset.form=form;front.dataset.form=form;
   // The form's own body box from its resting frame (build.py transform_body) over the sheet's, which some forms lack.
@@ -42,34 +44,52 @@ function transformSpiritFit(hero,back){const stage=$('scene')?.getBoundingClient
   const area={left:cx+dx-half,right:cx+dx+half,top:feet-sh,bottom:feet};
   for(const id of ['heroHeadHud','enemyHeadHud']){const el=$(id),r=el?.getBoundingClientRect();
     if(!r?.width||r.right<area.left||r.left>area.right||r.bottom<area.top||r.top>area.bottom)continue;
-    el.classList.add('tf2-hud-fade');clearTimeout(el._tf2);el._tf2=setTimeout(()=>el.classList.remove('tf2-hud-fade'),2000);}}
+    el.classList.add('tf2-hud-fade');clearTimeout(el._tf2);el._tf2=setTimeout(()=>el.classList.remove('tf2-hud-fade'),2100);}}
 // The aura's two silhouettes follow the body's current frame (the sprite sheet steps by background position).
 // The sheets carry a faint alpha haze around the body; this filter cuts it (alpha under ~.4 gone, over ~.65 solid) before the
 // glow, so the light follows the drawn contour only (#tf2-cut, used first in the CSS filter chains).
 function transformSilFilter(){if(document.getElementById('tf2-cut'))return;const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.setAttribute('width','0');svg.setAttribute('height','0');svg.setAttribute('aria-hidden','true');svg.style.position='absolute';
   svg.innerHTML='<filter id="tf2-cut" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="linear" slope="4" intercept="-1.6"/></feComponentTransfer></filter>';document.body.append(svg);}
-function transformSilMirror(hero,back){const body=hero.querySelector('.sprite-body'),sils=back.querySelectorAll('.tf2-sil');if(!body||!sils.length)return;transformSilFilter();
+// The aura's two silhouettes follow whatever the body is drawing, every frame: its sheet and cell, and its box and motion,
+// which change in every state (combat-v3 swaps in attack / skill / hurt sheets with their own cell size, and moves the body
+// with Web Animations that no attribute change reports). Each value is written only when it changed.
+const TF2_SIL_PROPS=['backgroundImage','backgroundSize','backgroundPosition','transform','translate','scale','rotate','transformOrigin'];
+function transformSilMirror(hero,back){const body=hero.querySelector('.sprite-body'),sils=[...back.querySelectorAll('.tf2-sil')];if(!body||!sils.length)return;transformSilFilter();
   back.style.setProperty('--u',(hero.offsetHeight*(parseFloat(getComputedStyle(back).getPropertyValue('--h'))||.75)/100).toFixed(2)+'px');
-  const copy=()=>{const cs=getComputedStyle(body);for(const el of sils){el.style.backgroundImage=cs.backgroundImage;el.style.backgroundSize=cs.backgroundSize;el.style.backgroundPosition=cs.backgroundPosition;}};
-  copy();back._sil?.disconnect();back._sil=new MutationObserver(copy);back._sil.observe(body,{attributes:true,attributeFilter:['style','class']});}
+  cancelAnimationFrame(back._silRaf);const last=new Map();
+  const set=(el,k,v)=>{const key=el.className+k;if(last.get(key)!==v){last.set(key,v);el.style[k]=v;}};
+  const tick=()=>{if(!back.isConnected||!body.isConnected)return;const cs=getComputedStyle(body);
+    for(const el of sils){const box=el.parentElement===back?{x:0,y:0}:{x:el.parentElement.offsetLeft,y:el.parentElement.offsetTop};
+      set(el,'inset','auto');set(el,'left',(body.offsetLeft-box.x)+'px');set(el,'top',(body.offsetTop-box.y)+'px');
+      set(el,'width',body.offsetWidth+'px');set(el,'height',body.offsetHeight+'px');
+      for(const k of TF2_SIL_PROPS)set(el,k,cs[k]);}
+    back._silRaf=requestAnimationFrame(tick);};
+  tick();}
 // Biến Thân sounds only the spirit-rise cue every hero shares, exactly the approved preview b3 (owner 04/11: no hero
 // flame cue on top of or after it). The hero's own cue is kept for the end of the transformed turns.
-function transformSounds(){playCastSound('spirit','rise',{volume:.34,pan:-.1});}
+// Timeline (owner 04/11): the spirit stands at full size by 600 ms and starts to dissolve into mist at TRANSFORM_DISSOLVE_MS
+// (the aura kindles on the same beat). The mist and aura delays read the same value (--tf2-dissolve); the spirit's own
+// keyframes in transform-fx.css mark it as 38.26% of 2.3 s, so change both together. The shared cue starts at the dissolve
+// plus TRANSFORM_SOUND_AFTER_DISSOLVE_MS: -450 ms, the owner's choice after testing (studio slider). The hero studio's "Âm (ms)" slider
+// overrides it for testing only (gameQA.transformSoundOffset); the game always uses the constant.
+const TRANSFORM_DISSOLVE_MS=880,TRANSFORM_SOUND_AFTER_DISSOLVE_MS=-450;let transformSoundOffsetQA=null;
+const transformSoundDelay=()=>Math.max(0,TRANSFORM_DISSOLVE_MS+(transformSoundOffsetQA??TRANSFORM_SOUND_AFTER_DISSOLVE_MS));
+function transformSounds(){setTimeout(()=>playCastSound('spirit','rise',{volume:.34,pan:-.1}),transformSoundDelay());}
 // Puts the look on the hero for the current phase; the actor is redrawn often, so it is put back whenever missing.
 function transformLookSync(flare=false){
   const hero=actor('hero');if(!hero)return;
   const key=transformLook(),phase=!key||!progressionTransform?null:progressionTransform.left>0?'active':'after';
   hero.classList.toggle('has-tf-look',!!phase);hero.classList.toggle('has-tf-v2',!!phase&&!!ART.transformLooks[key]?.v2);
   let back=hero.querySelector(':scope > .tf-look'),front=hero.querySelector(':scope > .tf-front');
-  if(!phase){back?._sil?.disconnect();back?.remove();front?.remove();return;}
+  if(!phase){if(back)cancelAnimationFrame(back._silRaf);back?.remove();front?.remove();return;}
   if(!back||!front){back?.remove();front?.remove();[back,front]=transformLookBuild(key);
     const glow=hero.querySelector(':scope > .combat-evo-glow');if(glow)glow.after(back);else hero.prepend(back);hero.append(front);
     if(back.classList.contains('tf-v2'))transformSilMirror(hero,back);}
   for(const el of [back,front])el.classList.toggle('tf-after',phase==='after');
   if(flare&&back.classList.contains('tf-v2')&&!reduced)transformSpiritFit(hero,back);
   if(flare&&!reduced){for(const el of [back,front]){el.classList.remove('tf-flare');void el.offsetWidth;el.classList.add('tf-flare');}
-    setTimeout(()=>{for(const el of [back,front])el.classList.remove('tf-flare');},ART.transformLooks[key].v2?2600:1000);}
+    setTimeout(()=>{for(const el of [back,front])el.classList.remove('tf-flare');},ART.transformLooks[key].v2?2500:1000);}
 }
 const transformLookActivate=progressionActivateTransform;
 progressionActivateTransform=function(){
@@ -99,4 +119,11 @@ setTimeout(()=>{if(window.gameQA)Object.assign(window.gameQA,{
     hero.querySelector(':scope > .tf-look')?.remove();hero.querySelector(':scope > .tf-front')?.remove();transformLookSync(true);
     const key=transformLook();if(key&&sound&&typeof playCastSound==='function')transformSounds(key);},
   transformAfter(){if(!progressionTransform)this.transformTest();progressionTransform.left=0;const hero=actor('hero');hero.classList.remove('is-transformed');hero.classList.add('is-afterglow');transformLookSync();},
-  transformReset(){progressionTransform=null;actor('hero')?.classList.remove('is-transformed','is-afterglow');transformLookSync();}});},0);
+  transformReset(){progressionTransform=null;actor('hero')?.classList.remove('is-transformed','is-afterglow');transformLookSync();},
+  // The studio re-configures the fight before each action, which clears the transform: it reads the phase first and puts the
+  // look back quietly afterwards (no flare, no sound).
+  // Studio: try another start for the spirit cue, in ms after the dissolve (negative = before); null puts the default back.
+  transformSoundOffset(ms){transformSoundOffsetQA=ms==null||ms===''?null:Number(ms);return {offset:transformSoundOffsetQA??TRANSFORM_SOUND_AFTER_DISSOLVE_MS,start:transformSoundDelay(),dissolve:TRANSFORM_DISSOLVE_MS};},
+  transformPhase(){return !progressionTransform?null:progressionTransform.left>0?'active':'after';},
+  transformRestore(phase){if(!phase)return;const hero=actor('hero');progressionTransform={left:phase==='after'?0:3};
+    hero.classList.toggle('is-transformed',phase!=='after');hero.classList.toggle('is-afterglow',phase==='after');transformLookSync();}});},0);

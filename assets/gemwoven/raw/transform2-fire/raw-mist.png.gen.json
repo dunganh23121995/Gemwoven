@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-04T17:09:21Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\transform2-fire\\raw-spirit.png"
+  ],
+  "prompt": "Game VFX art for a 2D anime fantasy mobile RPG, same palette as the reference (a see-through fox-goddess spirit of fire light).\nDraw FOUR separate drifting wisps of glowing spirit mist, the kind a fire spirit leaves as it dissolves, laid out side by side in four equal columns of one wide image (one wisp per column, nothing crossing between columns):\n1. a tall S-shaped curl of mist rising upward, thick rounded belly at the bottom, tapering to a thin curled tip at the top;\n2. a long horizontal ribbon of mist drifting to the right, rounded head on the left, long tapered tail on the right, a gentle wave;\n3. the same kind of ribbon but shorter and more curved, curling upward at its tail;\n4. a loose cluster of three or four small rounded puffs with soft gaps between them, thinning at the edges.\nLook: luminous, see-through warm mist — soft golden-orange light with brighter cream cores along the bellies and darker translucent amber edges, smooth soft edges (no hard outlines, no sparks, no fire tongues, no faces), each wisp clearly a separate shape with empty space around it.\nBackground: PURE FLAT BLACK #000000 everywhere (keyed by brightness). No text, no frame, no watermark.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt: four separate wisps sit in four roughly equal columns (tall S-curl, horizontal ribbon, shorter curled ribbon, cluster of puffs), with a flat black background, no text or frame, and no sparks, tongues or faces. Nothing objective fails.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000444
+  }
+}

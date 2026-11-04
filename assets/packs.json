@@ -4913,6 +4913,7 @@
     "assets/heroes/forms/fire/form-1/showcase/poster.png",
     "assets/heroes/forms/fire/transform/after.webp",
     "assets/heroes/forms/fire/transform/ground.webp",
+    "assets/heroes/forms/fire/transform/mist.webp",
     "assets/heroes/forms/fire/transform/mote-2.webp",
     "assets/heroes/forms/fire/transform/mote.webp",
     "assets/heroes/forms/fire/transform/side-left.webp",
@@ -4924,7 +4925,7 @@
     "assets/reimagined/heroes/fire/run.webp",
     "assets/reimagined/heroes/fire/smash.webp"
    ],
-   "bytes": 11971202
+   "bytes": 12073084
   },
   {
    "id": "hero-fire-f2",

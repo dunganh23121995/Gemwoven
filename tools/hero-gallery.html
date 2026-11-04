@@ -112,6 +112,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
       <button data-do="hit">Bị đánh</button>
       <button data-do="transform" class="hot" title="Biến Thân (Chân Thân): bùng lên rồi giữ dáng biến thân">Biến Thân</button>
       <button data-do="afterglow" title="Hết 3 lượt Biến Thân: dư âm">Dư âm</button>
+      <label class="tf-sound" title="Thử lúc bắt đầu tiếng Biến Thân, tính từ lúc linh thần bắt đầu tan (âm = sớm hơn). Chỉ để thử, không lưu vào game.">Âm (ms) <input id="tfSound" type="range" min="-900" max="600" step="10" value="-450"> <b id="tfSoundVal">-450</b> <small id="tfSoundNote">Lưu: -450 ms</small></label>
       <button id="swapSide" title="Đổi tướng sang bên kia sân (chỉ để thử, trong game tướng luôn đứng bên trái)">⇄ Đổi bên</button>
     </div>
     <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
@@ -319,12 +320,16 @@ $('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src
 for(const id of ['enemy','fx','armor','variant','side'])$(id).onchange=configure;
 // The swap button by the battle view flips the hero to the other side of the stage (the same as the select below).
 $('swapSide').onclick=()=>{$('side').value=$('side').value==='right'?'left':'right';$('swapSide').classList.toggle('on',$('side').value==='right');configure();};
+// The Biến Thân sound offset slider: shows the value to send back ("Lưu"); applied on the next Biến Thân press only.
+$('tfSound').oninput=()=>{const v=$('tfSound').value;$('tfSoundVal').textContent=v;$('tfSoundNote').textContent=`Lưu: ${v} ms`;};
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
   const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);b.classList.add('busy');
   try{
-    if(b.dataset.do!=='hit')configure();
-    if(['idle','attack','ultimate','depart'].includes(b.dataset.do))q.transformReset?.();
-    if(b.dataset.do==='transform'){if(!q.transformTest)throw Error('Bản game chưa có Biến Thân, bấm Tải lại game');q.transformTest();}
+    // configure() clears a transform; the look comes back quietly after it, so the action plays transformed.
+    const phase=q.transformPhase?.();if(b.dataset.do!=='hit')configure();if(phase&&b.dataset.do!=='idle')q.transformRestore?.(phase);
+    // Biến Thân stays on through the other actions (owner 04/11: test them transformed); "Nghỉ" alone puts the hero back.
+    if(b.dataset.do==='idle')q.transformReset?.();
+    if(b.dataset.do==='transform'){if(!q.transformTest)throw Error('Bản game chưa có Biến Thân, bấm Tải lại game');const t=q.transformSoundOffset?.(Number($('tfSound').value));q.transformTest();if(t)say(`Biến Thân · âm bắt đầu ở ${t.start} ms (tan ở ${t.dissolve} ms, lệch ${t.offset} ms)`);}
     if(b.dataset.do==='afterglow')q.transformAfter?.();
     if(b.dataset.do==='attack')await q.attack('hero',100,{attackChain:1});
     if(b.dataset.do==='ultimate')await q.heroUltimate();

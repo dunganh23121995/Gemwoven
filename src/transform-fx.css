@@ -129,32 +129,53 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
   left:calc((var(--x) + var(--h) * var(--spx)) * 100% + var(--spdx,0%));translate:-50% 0;opacity:0;transform-origin:50% 92%;will-change:transform,opacity;
   /* a thin glow lifts the lines (face, arms, hands) off the hero's own bright tails */
   filter:drop-shadow(0 0 3px rgba(255,120,30,.75)) brightness(1.12)}
-.tf-v2.tf-flare .tf2-spirit{animation:tf2-spirit 2.6s linear both}
+.tf-v2.tf-flare .tf2-spirit{animation:tf2-spirit 2.3s linear both}
+/* Timed to the shared spirit cue (owner 04/11): it rises with the surge, stands at full size by 0.6 s, and on the boom's
+   loudest point (0.88 s) breaks into mist: it blurs, swells and thins while the wisps below drift out of it (1.2 s). */
 @keyframes tf2-spirit{
-  0%{opacity:0;transform:translateY(10%) scale(.72);animation-timing-function:cubic-bezier(.16,1,.3,1)}
-  20%{opacity:var(--peak2);transform:translateY(0) scale(1)}
-  34%{opacity:var(--peak2);transform:scale(1.025);animation-timing-function:ease-in-out}
-  50%{opacity:calc(var(--peak2) * .94);transform:scale(1)}
-  62%{opacity:calc(var(--peak2) * .9);transform:scale(1.015);animation-timing-function:cubic-bezier(.4,0,.6,1)}
-  /* it melts in place: the head never rises past the stage top while it fades */
-  92%,100%{opacity:0;transform:scale(1.03)}}
+  0%{opacity:0;transform:translateY(10%) scale(.72);filter:drop-shadow(0 0 3px rgba(255,120,30,.75)) brightness(1.12) blur(0);animation-timing-function:cubic-bezier(.16,1,.3,1)}
+  26%{opacity:var(--peak2);transform:translateY(0) scale(1)}
+  38.26%{opacity:var(--peak2);transform:scale(1.012);filter:drop-shadow(0 0 3px rgba(255,120,30,.75)) brightness(1.12) blur(0);animation-timing-function:cubic-bezier(.3,0,.5,1)}
+  39.6%{opacity:var(--peak2);transform:scale(1.025);filter:drop-shadow(0 0 6px rgba(255,170,60,.9)) brightness(1.6) blur(1px)}
+  60%{opacity:calc(var(--peak2) * .35);transform:scale(1.05);filter:drop-shadow(0 0 3px rgba(255,120,30,.5)) brightness(1.25) blur(3px)}
+  76%,100%{opacity:0;transform:scale(1.08);filter:drop-shadow(0 0 2px rgba(255,120,30,0)) brightness(1.3) blur(6px)}}
+/* The mist: drawn wisps (the summon screen's) over the spirit, tinted warm and see-through; each fades in on the dissolve
+   beat and drifts out and up as one piece, swelling and thinning, gone by ~2.2 s. */
+.tf-v2 .tf2-mist{position:absolute;display:block;pointer-events:none;height:calc(var(--h) * min(var(--sp),var(--spm,9)) * 100%);aspect-ratio:var(--sw);
+  bottom:calc((1 - var(--t) - var(--h) * var(--sy)) * 100%);left:calc((var(--x) + var(--h) * var(--spx)) * 100% + var(--spdx,0%));translate:-50% 0}
+.tf-v2 .tf2-mist>i{position:absolute;display:block;opacity:0;background:var(--tf-mist) var(--mx) 0/400% 100% no-repeat;
+  filter:brightness(.92) sepia(1) saturate(6) hue-rotate(-28deg) brightness(1.15) drop-shadow(0 0 6px rgba(255,140,50,.8));transform-origin:50% 60%}
+/* Five separate wisps with room between them, each on its own curved path: a curl rising off the head, two ribbons peeling
+   sideways off the shoulders, a puff cluster off each hand. Pieces: 0 curl, 1 ribbon, 2 curled ribbon, 3 puffs. */
+.tf-v2 .tf2-mist>i:nth-child(1){--mx:0%;left:30%;top:-10%;width:40%;height:52%;--dx:4%;--dy:-30%;--r:10deg}
+.tf-v2 .tf2-mist>i:nth-child(2){--mx:33.33%;left:46%;top:14%;width:72%;height:30%;--dx:32%;--dy:-14%;--r:8deg}
+.tf-v2 .tf2-mist>i:nth-child(3){--mx:66.67%;left:-18%;top:12%;width:72%;height:30%;--dx:-32%;--dy:-18%;--r:-8deg;scale:-1 1}
+.tf-v2 .tf2-mist>i:nth-child(4){--mx:100%;left:-14%;top:50%;width:56%;height:36%;--dx:-26%;--dy:-22%;--r:-6deg}
+.tf-v2 .tf2-mist>i:nth-child(5){--mx:100%;left:58%;top:52%;width:56%;height:36%;--dx:26%;--dy:-24%;--r:6deg;scale:-1 1}
+/* a hero's own drawn mist is already in its colours: no tint, only a soft glow */
+.tf-v2.tf2-own-mist .tf2-mist>i{filter:drop-shadow(0 0 4px rgba(255,150,60,.6)) brightness(1.1)}
+.tf-v2.tf-flare .tf2-mist>i{animation:tf2-mist 1.25s cubic-bezier(.2,.6,.35,1) var(--tf2-dissolve,.88s) both}
+.tf-v2.tf-flare .tf2-mist>i:nth-child(even){animation-duration:1.4s}
+@keyframes tf2-mist{0%{opacity:0;transform:translate(0,0) scale(.85) rotate(0)}4%{opacity:.95;transform:translate(calc(var(--dx) * .05),calc(var(--dy) * .05)) scale(.9)}
+  45%{opacity:.6}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.5) rotate(var(--r))}}
 /* While the spirit stands the stage around the hero dims, so its light reads. */
 .tf-v2 .tf2-dim{position:absolute;display:block;pointer-events:none;left:-160%;top:-170%;width:420%;height:420%;opacity:0;
   background:radial-gradient(closest-side,var(--dim),color-mix(in srgb,var(--dim) 70%,transparent) 55%,transparent 100%)}
-.tf-v2.tf-flare .tf2-dim{animation:tf2-dim 2.6s ease-in-out both}
-@keyframes tf2-dim{0%{opacity:0}14%{opacity:1}58%{opacity:1}100%{opacity:0}}
+.tf-v2.tf-flare .tf2-dim{animation:tf2-dim 2.3s ease-in-out both}
+@keyframes tf2-dim{0%{opacity:0}16%{opacity:1}52%{opacity:1}100%{opacity:0}}
 /* The aura: the body's own frame turned to light (colour first gone, then tinted fire gold), its glow hugging the contour. */
-.tf-v2 .tf2-sil{position:absolute;inset:0;display:block;pointer-events:none;background-repeat:no-repeat;transform-origin:50% 94%;
+/* The sheets themselves (.tf2-sil) only copy the body (transform-fx.js); their wrappers breathe and kindle. */
+.tf-v2 .tf2-silbox{position:absolute;inset:0;display:block;pointer-events:none;transform-origin:50% 94%;animation:tf2-breathe 2.4s ease-in-out infinite}
+.tf-v2 .tf2-sil{position:absolute;inset:0;display:block;pointer-events:none;background-repeat:no-repeat;
   filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-14deg) drop-shadow(0 0 calc(var(--u) * .9) var(--core))
-    drop-shadow(0 0 calc(var(--u) * 2.4) var(--glow)) drop-shadow(0 0 calc(var(--u) * 5) var(--out));
-  animation:tf2-breathe 2.4s ease-in-out infinite}
+    drop-shadow(0 0 calc(var(--u) * 2.4) var(--glow)) drop-shadow(0 0 calc(var(--u) * 5) var(--out))}
 /* The wider glow: its brightness flows slowly up the silhouette in soft bands (a moving mask, no shapes of its own). The mask
    sits on a box 20% larger than the actor on every side, so it never cuts the glow on a straight edge. */
 .tf-v2 .tf2-flowbox{position:absolute;inset:-20%;display:block;pointer-events:none;
   -webkit-mask-image:linear-gradient(to top,#000 0,rgba(0,0,0,.3) 25%,#000 50%,rgba(0,0,0,.3) 75%,#000 100%);mask-image:linear-gradient(to top,#000 0,rgba(0,0,0,.3) 25%,#000 50%,rgba(0,0,0,.3) 75%,#000 100%);
-  -webkit-mask-size:100% 200%;mask-size:100% 200%;opacity:.85;animation:tf2-flow 2.8s linear infinite}
+  -webkit-mask-size:100% 200%;mask-size:100% 200%;opacity:.85;transform-origin:50% 80%;animation:tf2-flow 2.8s linear infinite,tf2-breathe 2.4s ease-in-out -1.2s infinite}
 .tf-v2 .tf2-flowbox>.tf2-flow{inset:14.2857%;filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-18deg) drop-shadow(0 0 calc(var(--u) * 2.4) var(--glow))
-    drop-shadow(0 0 calc(var(--u) * 5) var(--out)) drop-shadow(0 0 calc(var(--u) * 7.5) rgba(255,70,15,.32));animation:tf2-breathe 2.4s ease-in-out -1.2s infinite}
+    drop-shadow(0 0 calc(var(--u) * 5) var(--out)) drop-shadow(0 0 calc(var(--u) * 7.5) rgba(255,70,15,.32))}
 @keyframes tf2-flow{from{-webkit-mask-position:0 0;mask-position:0 0}to{-webkit-mask-position:0 -100%;mask-position:0 -100%}}
 @keyframes tf2-breathe{0%,100%{opacity:.88;transform:scale(1)}50%{opacity:1;transform:scale(1.012)}}
 /* A soft pool of light at the feet. */
@@ -162,16 +183,17 @@ body.ambience-paused :is(.tf-look,.tf-front) *{animation-play-state:paused!impor
   top:calc((var(--t) + var(--h) * .9) * 100%);height:calc(var(--h) * 18%);border-radius:50%;
   background:radial-gradient(closest-side,rgba(255,236,170,.85),rgba(255,170,50,.6) 38%,rgba(255,90,20,.28) 66%,transparent 100%);
   animation:tf2-breathe 2.4s ease-in-out -.6s infinite}
-/* Flare: the spirit shows alone first; the aura kindles as it starts to fade, so it is glowing when the spirit is gone. */
-.tf-v2.tf-flare :is(.tf2-sil,.tf2-pool){animation:tf2-kindle .9s cubic-bezier(.16,1,.3,1) 1.05s both}
-.tf-v2.tf-flare .tf2-flowbox{animation:tf2-kindle .9s cubic-bezier(.16,1,.3,1) 1.05s both,tf2-flow 2.8s linear infinite}
+/* Flare: the spirit shows alone first; the aura kindles on the boom (0.88 s) as the spirit breaks into mist. */
+.tf-v2.tf-flare :is(.tf2-silbox,.tf2-pool){animation:tf2-kindle .9s cubic-bezier(.16,1,.3,1) var(--tf2-dissolve,.88s) both}
+.tf-v2.tf-flare .tf2-flowbox{animation:tf2-kindle .9s cubic-bezier(.16,1,.3,1) var(--tf2-dissolve,.88s) both,tf2-flow 2.8s linear infinite}
 @keyframes tf2-kindle{0%{opacity:0;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}
 /* The body itself keeps only a hairline of heat; the light around it does the rest. */
 #heroActor.has-tf-v2:is(.is-transformed,.is-afterglow) .sprite-body{filter:drop-shadow(0 0 1px rgba(255,200,90,.9))!important;animation:none!important}
 #heroActor.has-tf-v2::before{display:none!important}
 /* Afterglow: no spirit; the rim thinner and dimmer, the wide glow gone, the pool low. */
 .tf-v2.tf-after .tf2-spirit{opacity:0!important;animation:none!important}
-.tf-v2.tf-after .tf2-sil{opacity:.7;animation:none;filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-14deg) drop-shadow(0 0 calc(var(--u) * .7) var(--glow)) drop-shadow(0 0 calc(var(--u) * 2) var(--out));transition:opacity .4s ease}
+.tf-v2.tf-after .tf2-silbox{opacity:.7;animation:none;transition:opacity .4s ease}
+.tf-v2.tf-after .tf2-sil{filter:url(#tf2-cut) brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-14deg) drop-shadow(0 0 calc(var(--u) * .7) var(--glow)) drop-shadow(0 0 calc(var(--u) * 2) var(--out));transition:opacity .4s ease}
 .tf-v2.tf-after .tf2-flowbox{opacity:0;transition:opacity .4s ease}
 .tf-v2.tf-after .tf2-pool{opacity:.5;animation:none;transition:opacity .4s ease}
 /* While the hero strikes or casts the aura steps back a little: the blow reads first. */

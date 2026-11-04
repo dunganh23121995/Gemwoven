@@ -163,6 +163,9 @@ art['transformLooks']={hero:{name:image(f'assets/heroes/forms/{hero}/transform/{
 # stays): a hero whose transform folder holds v2.json (assets/heroes/forms/transform_spirit.py) plays the v2 look.
 for hero,look in art['transformLooks'].items():
     if (root/f'assets/heroes/forms/{hero}/transform/v2.json').exists():look['v2']=1
+    if (root/f'assets/heroes/forms/{hero}/transform/mist.webp').exists():look['mist']=image(f'assets/heroes/forms/{hero}/transform/mist.webp')
+# The v2 spirit dissolves into drifting mist: the hero's own drawn wisps (transform/mist.webp), else the summon screen's, tinted.
+art['transformMist']=image('assets/gemwoven/summon/runtime/wisps.webp')
 # Each form's own body box (top, height, centre as fractions of the cell, from its resting frame) places the look, since
 # not every combat sheet carries its body height.
 def transform_body(hero,form):
