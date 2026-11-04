@@ -40,10 +40,10 @@ const {chromium}=require(path.join(require('node:os').tmpdir(),'minipuzzle-qa/no
   assert.equal(await page.evaluate(()=>gameQA.state.key),'earth');assert.equal(await page.evaluate(()=>gameQA.state.hp),320);assert.equal(await page.locator('.tile').count(),64);
   await page.evaluate(async()=>{gameQA.setReduced(true);gameQA.configure({key:'earth',hp:240,armor:27,energy:42,enemyHp:0});await gameQA.finishBattle();});
   await page.locator('#nextBtn').click();await page.locator('#heroList').waitFor({state:'visible'});
-  await page.locator('[data-class="fire"]').click();assert.match(await page.locator('#heroCarryover').textContent(),/170\/170 HP · 27 giáp · 42\/100 nộ/);
-  await page.locator('#heroBackBtn').click();await page.locator('[data-class="earth"]').click();assert.match(await page.locator('#heroCarryover').textContent(),/240\/320 HP/);
-  assert.equal(await page.evaluate(()=>gameQA.state.hp),240);await page.locator('#startBtn').click();
-  assert.deepEqual(await page.evaluate(()=>[gameQA.state.key,gameQA.state.hp,gameQA.state.armor,gameQA.state.energy]),['earth',240,27,42]);
+  // Every stage starts fresh (owner 04/11): nothing carries over, so no carry-over line either.
+  await page.locator('[data-class="earth"]').click();assert.equal(await page.locator('#heroCarryover').isVisible(),false);
+  await page.locator('#startBtn').click();
+  assert.deepEqual(await page.evaluate(()=>[gameQA.state.key,gameQA.state.hp,gameQA.state.armor,gameQA.state.energy]),['earth',320,0,0]);
   checks.push('Explicit deployment starts chosen hero; next-stage preview preserves HP/armor/rage and hero browsing never mutates combat state');
   assert.deepEqual(errors,[]);console.log(JSON.stringify({passed:checks.length,checks,errors},null,2));
  }finally{await browser.close();}

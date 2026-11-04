@@ -524,7 +524,7 @@ function showHeroDetail(){
   $('heroDetailTrait').textContent=h.trait+(chosen==='lightning'?' · Luôn lơ lửng khi còn sống.':'.');
   $('heroSkillName').textContent=h.skill;$('heroSkillDescription').textContent=skillDetails[chosen]||h.desc;
   $('heroStatNote').textContent='Sát thương cơ bản trước khắc hệ, liên hoàn và chí mạng; làm tròn khi gây sát thương.';
-  $('heroCarryover').hidden=newRun;
+  $('heroCarryover').hidden=true;
   $('heroCarryover').textContent=newRun?'':'Xuất chiến với '+Math.min(state.hp,h.hp)+'/'+h.hp+' HP · '+state.armor+' giáp · '+state.energy+'/100 nộ. Chỉ số được giữ từ màn trước, máu giới hạn theo tướng.';
   $('selectTitle').focus({preventScroll:true});$('heroSelectionScroll').scrollTop=0;
 }
@@ -537,7 +537,8 @@ function startStage(){
   state.boss=state.stage%5===0;state.enemyMax=Math.round((350+180*(state.stage-1))*(state.boss?2.5:1));state.enemyHp=state.enemyMax;state.enemyArmor=0;state.enemyEnergy=0;state.frozen=false;state.stunned=false;state.playerFrozen=false;state.enemyTurn=0;state.enraged=false;
   ended=false;locked=false;turn='player';pointer=null;suppressClickUntil=0;plannedIntent=intent();$('heroActor').style.opacity='1';$('enemyActor').style.opacity='1';$('combatEffects').replaceChildren();seedBoard();renderActors();update();message(state.boss?'Người giữ rừng xuất hiện! Đọc ý định và chuẩn bị ngọc đặc biệt.':'Chào '+HEROES[state.key].name+'! Ghép ngọc, cùng nhau đánh thức khu rừng.');
 }
-$('startBtn').addEventListener('click',()=>{if(sound)sfx('buff');state.key=chosen;state.hp=newRun?HEROES[chosen].hp:Math.min(state.hp,HEROES[chosen].hp);$('selectDialog').close();startStage();$('hintBtn').focus({preventScroll:true});startReadyUltimates();});
+// Every stage starts fresh (owner 04/11): full HP, no armour, no energy carried over.
+$('startBtn').addEventListener('click',()=>{if(sound)sfx('buff');state.key=chosen;state.hp=HEROES[chosen].hp;state.armor=0;state.energy=0;$('selectDialog').close();startStage();$('hintBtn').focus({preventScroll:true});startReadyUltimates();});
 $('nextBtn').addEventListener('click',async()=>{
   if(stageTransition)return;stageTransition=true;
   const won=state.hp>0;$('resultDialog').close();
