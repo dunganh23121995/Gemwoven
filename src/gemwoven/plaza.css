@@ -302,3 +302,7 @@
 /* Back always on the right (owner 04/11): the back medallion leaves the title strip for the top-right, above the side column. */
 .pz-top .pz-back{position:absolute;left:auto;right:-160px;top:0;margin:0;pointer-events:auto}
 .pz-top{right:150px!important}
+
+/* Back: the same drawn walnut-and-bronze medallion as every other screen (owner 04/11). */
+.pz-top .pz-back{background-image:var(--kit-back,var(--pz-back));color:transparent;font-size:0;filter:drop-shadow(0 4px 4px #1a0c0499)}
+.pz-top .pz-back:active{background-image:var(--kit-back-down,var(--kit-back,var(--pz-back)))}
