@@ -398,7 +398,7 @@ def strays(new, old, faint=.3):
     return out
 
 
-def pockets(new, old, colour):
+def pockets(new, old, colour, soft=False):
     """Backdrop Codex left between thin parts (harp strings, chains, a bow and its string) where the old frame is see-
     through: those pixels go, by how much they look like the backdrop. Where the old frame is solid nothing changes,
     so a pink gem or a violet glow keeps its colour."""
@@ -412,8 +412,20 @@ def pockets(new, old, colour):
     # a foe with (almost) none of the backdrop's colour in its old frame: none of it is drawn, wherever it lies
     o = premul(old); oc = o[..., :3] / np.maximum(o[..., 3:], 1e-3)
     olook = (oc[..., 1] - np.maximum(oc[..., 0], oc[..., 2])) if colour[1] > 0 else (np.minimum(oc[..., 0], oc[..., 2]) - oc[..., 1])
-    if ((olook > .45) & (o[..., 3] > .5)).sum() < .002 * max(1, (o[..., 3] > .5).sum()):
+    none = ((olook > .45) & (o[..., 3] > .5)).sum() < .002 * max(1, (o[..., 3] > .5).sum())
+    if none:
         cut |= look > .45
+    if soft and none:
+        # and the backdrop mixed into thin strings and soft edges goes too, by how much of it a pixel holds
+        alpha = k[..., 0] * np.clip(1 - (look - .12) / .3, 0, 1)
+        rgb = rgb.copy()
+        if colour[1] > 0:
+            rgb[..., 1] = np.minimum(rgb[..., 1], np.maximum(rgb[..., 0], rgb[..., 2]))
+        else:
+            over = np.maximum(np.minimum(rgb[..., 0], rgb[..., 2]) - rgb[..., 1], 0)
+            rgb[..., 0] -= over; rgb[..., 2] -= over
+        out = new.copy(); out[..., 3] = alpha; out[..., :3] = rgb * alpha[..., None]
+        return out
     if not cut.any():
         return new
     keep = np.clip(1 - (look - .3) / .25, 0, 1)
@@ -421,6 +433,24 @@ def pockets(new, old, colour):
     out = new.copy()
     out[..., 3] = alpha
     out[..., :3] = rgb * alpha[..., None]
+    return out
+
+
+def leftovers(new, old, colour):
+    """Backdrop colour Codex left inside the drawing (the gap inside a harp, between cage bars) where the old frame shows
+    none: those pixels take the old frame's colour there (enlarged), so no green or pink patch stays."""
+    n = new.shape[0]
+    o = cv2.resize(premul(old), (n, n), interpolation=cv2.INTER_CUBIC).clip(0, 1)
+    def look(a):
+        c = a[..., :3] / np.maximum(a[..., 3:], 1e-3)
+        return (c[..., 1] - np.maximum(c[..., 0], c[..., 2])) if colour[1] > 0 else (np.minimum(c[..., 0], c[..., 2]) - c[..., 1])
+    bad = (look(new) > .35) & (new[..., 3] > .3) & (look(o) < .15) & (o[..., 3] > .5)
+    if bad.sum() < 20:
+        return new
+    m = cv2.GaussianBlur(ndimage.binary_dilation(bad, iterations=2).astype(np.float32), (0, 0), 1.2)[..., None]
+    oc = o[..., :3] / np.maximum(o[..., 3:], 1e-3)
+    out = new.copy()
+    out[..., :3] = new[..., :3] * (1 - m) + oc * new[..., 3:] * m
     return out
 
 
@@ -902,7 +932,7 @@ def draw_sheet(job, ladder=LADDER[:2]):
                     continue
                 fr, iou, foot = fitted(cu, olds[i], n, scale=s)
                 # a slash or a cast glow is faint in the old frame: it counts as drawing there
-                fr = match_colour(strays(pockets(fr, olds[i], colour[0]), olds[i], faint=.04), olds[i])
+                fr = match_colour(leftovers(strays(pockets(fr, olds[i], colour[0], soft=True), olds[i], faint=.04), olds[i], colour[0]), olds[i])
                 prev = accepted.get(str(i))
                 if iou >= .8 and abs(foot) <= .02 and (prev is None or iou > prev["iou"]):
                     to_image(fr).save(d / f"frame-{i}.png"); accepted[str(i)] = dict(iou=round(iou, 3), effort=effort)
