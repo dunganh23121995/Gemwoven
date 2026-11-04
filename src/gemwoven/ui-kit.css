@@ -202,3 +202,8 @@
 #stage[data-screen="shop"] .r-uncommon .copy-layer .ln:first-child,#stage[data-screen="shop"] .shop-rarity-switch.r-uncommon .copy-layer{color:#2f6d1e!important}
 #stage[data-screen="shop"] .r-rare .copy-layer .ln:first-child,#stage[data-screen="shop"] .shop-rarity-switch.r-rare .copy-layer{color:#1f5aa0!important}
 #stage[data-screen="shop"] .r-epic .copy-layer .ln:first-child,#stage[data-screen="shop"] .shop-rarity-switch.r-epic .copy-layer{color:#6e2fae!important}
+
+/* Back button (owner 04/11, Codex 31): drawn walnut-and-bronze medallion, pressed state, 128-unit hit area. */
+#scene .panel-back{filter:drop-shadow(0 4px 4px #1a0c0499);z-index:6}
+#scene .panel-back::after{content:"";position:absolute;inset:-8px}
+#scene .panel-back:active>.art{content:var(--kit-back-down)}

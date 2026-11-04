@@ -19618,6 +19618,28 @@
     "source": "assets/gemwoven/raw/forge-rarity/",
     "purpose": "Lò Rèn Nâng Phẩm tab pieces drawn by Codex from the approved mockups (forge-ui.js)."
   },
+  "kit-back": {
+    "file": "assets/gemwoven/ui-kit/back.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/raw/back-button/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/back-button/prompt.txt"
+    ],
+    "purpose": "Back button on the right end of the title plank (owner 04/11, Codex 31)."
+  },
+  "kit-back-down": {
+    "file": "assets/gemwoven/ui-kit/back-down.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "source": "assets/gemwoven/raw/back-button/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/back-button/prompt.txt"
+    ],
+    "purpose": "Back button on the right end of the title plank (owner 04/11, Codex 31)."
+  },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",
     "width": 512,

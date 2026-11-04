@@ -255,7 +255,7 @@
       L.screens.campaign.backgroundKey='atlas-sea';L.screens.campaign.background=A['atlas-sea'].file;
       if(state.atlasLocked){const c=M.WORLD.CHAPTERS[state.atlasLocked-1],known=chapterOpen(p,state.atlasLocked-1);nodes.push({...text(key,'atlas-note',`Chương ${state.atlasLocked}${known?' · '+c.name:''} — vượt hết chương ${state.atlasLocked-1} để mở`,[60,200,821,96],30,'ink'),className:'atlas-note'});}
       nodes.unshift({id:'campaign.atlas',kind:'content',rect:[0,mapTop,941,mapViewport],className:'exploration-map atlas-map',backgroundAsset:'panel-parchment',build:el=>atlasContent(el,p,state)});
-      nodes.push(button(key,'back','Về Thị Trấn',A['map-back']?'map-back':'journey-button',[787,1512,136,134],'route:home',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
+      nodes.push(button(key,'back','Về Thị Trấn',A['kit-back']?'kit-back':'map-back',[800,124,112,112],'route:home',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
       return nodes;
     }
     const profile=mapProfile(def);L.screens.campaign.backgroundKey=profile.assetKey;L.screens.campaign.background=profile.background;
@@ -265,7 +265,7 @@
     if(p.campaign.cleared>=chapter*50)nodes.push({...text(key,'conquered','✔ Đã vượt 50/50 ải',[640,268,290,64],26,'ink'),className:'chapter-conquered'});
     nodes.push(button(key,'rewards',`${progress.total}/150`,'button-gold',[300,250,341,100],'journey:rewards',{}, {size:34,icon:A['reward-star']?'reward-star':'chest',iconRect:[36,18,64,64],labelRect:[100,24,220,52],tone:'ink'}));
     // Back from a chapter goes to the world atlas (chapters are chosen there); the atlas's back goes to town.
-    nodes.push(button(key,'back','Bản Đồ Thế Giới',A['map-back']?'map-back':'journey-button',[787,1512,136,134],'journey:atlas',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
+    nodes.push(button(key,'back','Bản Đồ Thế Giới',A['kit-back']?'kit-back':'map-back',[800,124,112,112],'journey:atlas',{}, {labelHidden:true,fit:'contain',className:'exploration-back'}));
     if(state.mapRewards){
       nodes.push(image(key,'rewards-board','panel-parchment',[46,1078,849,370]),text(key,'rewards-title',`Rương sao · ${progress.total}/150 ★`,[110,1112,721,50],36,'ink'));
       M.STAR_MILESTONES.forEach((milestone,i)=>nodes.push(button(key,'reward-'+milestone,progress.claimed.includes(milestone)?'Đã nhận':milestone+' ★','button-gold',[96+i*254,1180,240,112],'journey:claim-stars',{chapter,milestone},{icon:'chest',iconRect:[26,18,70,66],labelRect:[94,26,128,58],size:33,tone:'ink',disabled:progress.total<milestone||progress.claimed.includes(milestone)})));

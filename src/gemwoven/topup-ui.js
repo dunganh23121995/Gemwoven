@@ -113,7 +113,8 @@
     const back=screen.nodes.find(n=>n.id==='topup.back');
     screen.nodes=screen.nodes.filter(n=>n.id!=='topup.live'&&n.id!=='topup.back');
     screen.nodes.push({id:'topup.live',kind:'content',rect:[0,0,941,1490],className:'exploration-map tp',build:el=>build(el)});
-    if(back)screen.nodes.push(back);
+    // The Nạp sign sits higher than the other panels' title planks: the back medallion follows it.
+    if(back){back.rect=[790,96,112,112];screen.nodes.push(back);}
     return p;
   };
   const handle=G.handle;
