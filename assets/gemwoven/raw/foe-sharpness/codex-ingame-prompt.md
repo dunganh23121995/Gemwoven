@@ -1,0 +1,3 @@
+These are in-game combat screenshots of a match-3 RPG, each row is one stage: left BEFORE, right AFTER (the enemy's resting art was redrawn at 2x resolution; nothing else should change). Images 1-2: desktop 1920x911 crops; images 3-4: phone 390x844 at 3x, crops. Both shots show the enemy's first resting frame.
+
+Check for each stage: (1) is the enemy clearly crisper AFTER; (2) does it stand on exactly the same ground line, same size and same place; (3) is it the same character (pose, colours, design); (4) did anything else in the scene change. Score the AFTER versus BEFORE from 1 to 10 for overall visual quality in combat, and list any problem by stage. Under 200 words. End with "SCORE desktop x/10, phone y/10".

@@ -1,0 +1,16 @@
+{
+ "id": "reaper",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.958
+ },
+ "iou": 0.955,
+ "foot": 0.0031,
+ "effort": "low",
+ "drawn_colour": 37.3,
+ "colour": 23.4,
+ "sharpness": 0.745
+}

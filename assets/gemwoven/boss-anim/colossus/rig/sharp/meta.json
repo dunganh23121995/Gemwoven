@@ -1,0 +1,16 @@
+{
+ "id": "colossus",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.952
+ },
+ "iou": 0.948,
+ "foot": 0.0031,
+ "effort": "low",
+ "drawn_colour": 57.1,
+ "colour": 42.7,
+ "sharpness": 0.54
+}

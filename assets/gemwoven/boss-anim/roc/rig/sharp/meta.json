@@ -1,0 +1,16 @@
+{
+ "id": "roc",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.941
+ },
+ "iou": 0.934,
+ "foot": 0.0055,
+ "effort": "low",
+ "drawn_colour": 55.4,
+ "colour": 49.4,
+ "sharpness": 0.727
+}

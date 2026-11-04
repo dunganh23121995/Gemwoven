@@ -1,0 +1,16 @@
+{
+ "id": "frostregent",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "rest",
+  "iou": 0.911
+ },
+ "iou": 0.928,
+ "foot": -0.0039,
+ "effort": "low",
+ "drawn_colour": 24.3,
+ "colour": 22.4,
+ "sharpness": 0.73
+}

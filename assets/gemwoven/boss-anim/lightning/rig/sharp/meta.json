@@ -1,0 +1,16 @@
+{
+ "id": "lightning",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.97
+ },
+ "iou": 0.971,
+ "foot": 0.0023,
+ "effort": "low",
+ "drawn_colour": 34.3,
+ "colour": 28.2,
+ "sharpness": 0.586
+}

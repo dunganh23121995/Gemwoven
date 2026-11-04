@@ -1,0 +1,16 @@
+{
+ "id": "mire",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.946
+ },
+ "iou": 0.975,
+ "foot": -0.0008,
+ "effort": "low",
+ "drawn_colour": 36.3,
+ "colour": 25.2,
+ "sharpness": 0.519
+}

@@ -1,0 +1,16 @@
+{
+ "id": "scarab",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.971
+ },
+ "iou": 0.967,
+ "foot": 0.0023,
+ "effort": "low",
+ "drawn_colour": 39.7,
+ "colour": 28.8,
+ "sharpness": 0.602
+}

@@ -1,0 +1,31 @@
+briar beckon: OK
+cinderheart chestpound: OK
+earth fists: OK
+eclipse tail: OK
+elderbloom fist: OK
+fire wings: OK
+ice crest: OK
+leviathan finflare: OK
+leviathan tailflick: OK
+lightning roar: OK
+prism wings: PROBLEM - frames 1-2: long forearm blades abruptly shrink into short claws.
+prismback crystals: OK
+prismback yawn: OK
+roc wings: OK
+sandchronarch hourglass: OK
+scarab elytra: OK
+seraph wings: OK
+souljailer soulflame: OK
+sporefather capglow: OK
+sporefather stafftap: OK
+tempestwing wings: OK
+abyss-harpooner crank: OK
+abyss-harpooner sight: OK
+abyss-krakenlord ground: OK
+abyss-krakenlord shoulder: OK
+abyss-reefcorsair shoulder: OK
+abyss-sirenblade flick: OK
+abyss-sirenblade salute: OK
+caldera-basaltbrute fistbump: OK
+caldera-lavadancer tapblades: OK
+PROBLEMS 1 / OK 29

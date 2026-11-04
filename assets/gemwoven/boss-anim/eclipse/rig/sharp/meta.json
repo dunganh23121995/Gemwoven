@@ -1,0 +1,16 @@
+{
+ "id": "eclipse",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.969
+ },
+ "iou": 0.967,
+ "foot": 0.0016,
+ "effort": "low",
+ "drawn_colour": 34.5,
+ "colour": 23.0,
+ "sharpness": 0.669
+}

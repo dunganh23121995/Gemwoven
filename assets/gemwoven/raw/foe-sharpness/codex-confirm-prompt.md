@@ -1,0 +1,5 @@
+You are reviewing game art for sharpness. The three images are contact sheets from a mobile/desktop match-3 RPG combat screen. Each tile shows one enemy's resting frame drawn exactly as soft or sharp as it appears in combat (scaled to the device pixels it covers on a 1920x911 desktop), cut out and brought to the same body height. The first tile of every sheet is Hiro, a hero whose art the owner approved as crisp. The number after each name is a measured sharpness ratio (finest detail over the next coarser detail band; heroes measure 0.73-0.89).
+
+Image 1: the 30 softest enemies by the measure. Image 2: 12 enemies from the middle of the ranking. Image 3: the 12 sharpest enemies by the measure.
+
+For each image, say which enemies look clearly blurrier/softer than Hiro (soft outlines, smeared detail, upscaled look) and which, if any, look as crisp as Hiro. Be concrete and name them. Then give a verdict: should every enemy (all 215: 71 common, 120 elites, 24 bosses; all currently 256px cells shown at 386-611px) be redrawn at a higher resolution, or only some? If only some, which kinds. Keep the answer under 350 words.

@@ -1,0 +1,6 @@
+heroes: earth-form-1 0.771, earth-form-2 0.817, earth-form-3 0.760, fire-form-1 0.844, fire-form-2 0.743, fire-form-3 0.834, ice-form-1 0.726, ice-form-2 0.829, ice-form-3 0.887, lightning-form-1 0.801, lightning-form-2 0.835, lightning-form-3 0.840, novice-form-1 0.746, novice-form-2 0.807, novice-form-3 0.836, shadow-form-1 0.846, shadow-form-2 0.800, shadow-form-3 0.777
+hero median 0.812, min 0.726; flag below 0.653
+215 foes, 215 below 90% of the softest hero (0.653); 1174 of 1174 other sheets
+  creature: 71, median 0.477, min 0.354, max 0.613, flagged 71
+  elite: 120, median 0.483, min 0.435, max 0.570, flagged 120
+  boss: 24, median 0.363, min 0.322, max 0.418, flagged 24

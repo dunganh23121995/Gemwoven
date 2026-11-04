@@ -1,0 +1,16 @@
+{
+ "id": "moonfang",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.96
+ },
+ "iou": 0.959,
+ "foot": -0.0047,
+ "effort": "low",
+ "drawn_colour": 30.2,
+ "colour": 26.8,
+ "sharpness": 0.68
+}

@@ -19640,6 +19640,226 @@
     ],
     "purpose": "Back button on the right end of the title plank (owner 04/11, Codex 31)."
   },
+  "guide-plaque": {
+    "file": "assets/gemwoven/guide/plaque.webp",
+    "width": 1384,
+    "height": 289,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: speech plaque for the cat’s one line."
+  },
+  "guide-count": {
+    "file": "assets/gemwoven/guide/count.webp",
+    "width": 286,
+    "height": 175,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: step counter badge (n/8)."
+  },
+  "guide-tab": {
+    "file": "assets/gemwoven/guide/tab.webp",
+    "width": 407,
+    "height": 176,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: Bỏ qua / Đã hiểu tab."
+  },
+  "guide-ring": {
+    "file": "assets/gemwoven/guide/ring.webp",
+    "width": 311,
+    "height": 298,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: 9-slice ring around the target."
+  },
+  "guide-glove-left": {
+    "file": "assets/gemwoven/guide/glove-left.webp",
+    "width": 285,
+    "height": 231,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: pointing glove (down-left) for hub targets."
+  },
+  "guide-glove-down": {
+    "file": "assets/gemwoven/guide/glove-down.webp",
+    "width": 172,
+    "height": 272,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: pointing glove (down) for the board."
+  },
+  "guide-swipe": {
+    "file": "assets/gemwoven/guide/swipe.webp",
+    "width": 325,
+    "height": 115,
+    "textless": true,
+    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/guide/pieces-prompt.txt"
+    ],
+    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: swap motion arrow on the board."
+  },
+  "guide-cat": {
+    "file": "assets/gemwoven/plaza/npc-guide.webp",
+    "width": 364,
+    "height": 435,
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-npc/",
+    "promptFiles": [],
+    "purpose": "Miu Dẫn Lối, the plaza guide NPC (reused unchanged), as the Dẫn Đường guide bust."
+  },
+  "plaza-npc-guide": {
+    "file": "assets/gemwoven/plaza/npcs/guide/rig/show/idle.webp",
+    "width": 2400,
+    "height": 1600,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 117,
+    "plaza": {
+      "height": 190,
+      "footY": 0.95,
+      "feetX": 0.55865,
+      "bodyHeight": 0.81875
+    },
+    "screen": "chat",
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-npc/guide/raw-master-5.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/plaza-npc/guide/prompt-master-5.txt",
+      "assets/gemwoven/plaza/npcs/guide/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "Miu Dẫn Lối: the square guide (help and naming sheets), a cat-eared young woman with a map. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-guide) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-guide.webp."
+  },
+  "plaza-npc-weaver": {
+    "file": "assets/gemwoven/plaza/npcs/weaver/rig/show/idle.webp",
+    "width": 2400,
+    "height": 1600,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 117,
+    "plaza": {
+      "height": 185,
+      "footY": 0.95,
+      "feetX": 0.47088,
+      "bodyHeight": 0.81875
+    },
+    "screen": "chat",
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-npc/weaver/raw-master-5.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/plaza-npc/weaver/prompt-master-5.txt",
+      "assets/gemwoven/plaza/npcs/weaver/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "Tơ Đèn: the guild lantern weaver by the guild hall, a young woman with a spindle and a lantern. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-weaver) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-weaver.webp."
+  },
+  "cal-tray": {
+    "file": "assets/gemwoven/calendar/tray.webp",
+    "width": 1252,
+    "height": 203,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: the daily reward tray."
+  },
+  "cal-cell": {
+    "file": "assets/gemwoven/calendar/cell.webp",
+    "width": 293,
+    "height": 274,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: a day cell."
+  },
+  "cal-cell-claimed": {
+    "file": "assets/gemwoven/calendar/cell-claimed.webp",
+    "width": 292,
+    "height": 273,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: a claimed day cell."
+  },
+  "cal-cell-today": {
+    "file": "assets/gemwoven/calendar/cell-today.webp",
+    "width": 304,
+    "height": 288,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: today's cell with the gold rim."
+  },
+  "cal-cell-dim": {
+    "file": "assets/gemwoven/calendar/cell-dim.webp",
+    "width": 292,
+    "height": 274,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: a missed or future day cell."
+  },
+  "cal-check": {
+    "file": "assets/gemwoven/calendar/check.webp",
+    "width": 196,
+    "height": 201,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: claimed stamp."
+  },
+  "cal-cross": {
+    "file": "assets/gemwoven/calendar/cross.webp",
+    "width": 193,
+    "height": 197,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: missed stamp."
+  },
+  "cal-lock": {
+    "file": "assets/gemwoven/calendar/lock.webp",
+    "width": 170,
+    "height": 198,
+    "textless": true,
+    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
+    ],
+    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: future-day padlock."
+  },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",
     "width": 512,
@@ -21991,225 +22211,5 @@
     "rows": 4,
     "count": 24,
     "ms": 1800
-  },
-  "plaza-npc-guide": {
-    "file": "assets/gemwoven/plaza/npcs/guide/rig/show/idle.webp",
-    "width": 2400,
-    "height": 1600,
-    "cols": 6,
-    "rows": 4,
-    "count": 24,
-    "frameDuration": 117,
-    "plaza": {
-      "height": 190,
-      "footY": 0.95,
-      "feetX": 0.55865,
-      "bodyHeight": 0.81875
-    },
-    "screen": "chat",
-    "textless": true,
-    "source": "assets/gemwoven/raw/plaza-npc/guide/raw-master-5.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/plaza-npc/guide/prompt-master-5.txt",
-      "assets/gemwoven/plaza/npcs/guide/rig/show/parts-prompt.txt"
-    ],
-    "purpose": "Miu Dẫn Lối: the square guide (help and naming sheets), a cat-eared young woman with a map. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-guide) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-guide.webp."
-  },
-  "plaza-npc-weaver": {
-    "file": "assets/gemwoven/plaza/npcs/weaver/rig/show/idle.webp",
-    "width": 2400,
-    "height": 1600,
-    "cols": 6,
-    "rows": 4,
-    "count": 24,
-    "frameDuration": 117,
-    "plaza": {
-      "height": 185,
-      "footY": 0.95,
-      "feetX": 0.47088,
-      "bodyHeight": 0.81875
-    },
-    "screen": "chat",
-    "textless": true,
-    "source": "assets/gemwoven/raw/plaza-npc/weaver/raw-master-5.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/plaza-npc/weaver/prompt-master-5.txt",
-      "assets/gemwoven/plaza/npcs/weaver/rig/show/parts-prompt.txt"
-    ],
-    "purpose": "Tơ Đèn: the guild lantern weaver by the guild hall, a young woman with a spindle and a lantern. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-weaver) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-weaver.webp."
-  },
-  "guide-plaque": {
-    "file": "assets/gemwoven/guide/plaque.webp",
-    "width": 1384,
-    "height": 289,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: speech plaque for the cat’s one line."
-  },
-  "guide-count": {
-    "file": "assets/gemwoven/guide/count.webp",
-    "width": 286,
-    "height": 175,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: step counter badge (n/8)."
-  },
-  "guide-tab": {
-    "file": "assets/gemwoven/guide/tab.webp",
-    "width": 407,
-    "height": 176,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: Bỏ qua / Đã hiểu tab."
-  },
-  "guide-ring": {
-    "file": "assets/gemwoven/guide/ring.webp",
-    "width": 311,
-    "height": 298,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: 9-slice ring around the target."
-  },
-  "guide-glove-left": {
-    "file": "assets/gemwoven/guide/glove-left.webp",
-    "width": 285,
-    "height": 231,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: pointing glove (down-left) for hub targets."
-  },
-  "guide-glove-down": {
-    "file": "assets/gemwoven/guide/glove-down.webp",
-    "width": 172,
-    "height": 272,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: pointing glove (down) for the board."
-  },
-  "guide-swipe": {
-    "file": "assets/gemwoven/guide/swipe.webp",
-    "width": 325,
-    "height": 115,
-    "textless": true,
-    "source": "assets/gemwoven/raw/guide/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/guide/pieces-prompt.txt"
-    ],
-    "purpose": "Dẫn Đường overlay (guide-ui.js, combat-coach.js), drawn by Codex gpt-6.1-sol low from the approved mockups: swap motion arrow on the board."
-  },
-  "guide-cat": {
-    "file": "assets/gemwoven/plaza/npc-guide.webp",
-    "width": 364,
-    "height": 435,
-    "textless": true,
-    "source": "assets/gemwoven/raw/plaza-npc/",
-    "promptFiles": [],
-    "purpose": "Miu Dẫn Lối, the plaza guide NPC (reused unchanged), as the Dẫn Đường guide bust."
-  },
-  "cal-tray": {
-    "file": "assets/gemwoven/calendar/tray.webp",
-    "width": 1252,
-    "height": 203,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: the daily reward tray."
-  },
-  "cal-cell": {
-    "file": "assets/gemwoven/calendar/cell.webp",
-    "width": 293,
-    "height": 274,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: a day cell."
-  },
-  "cal-cell-claimed": {
-    "file": "assets/gemwoven/calendar/cell-claimed.webp",
-    "width": 292,
-    "height": 273,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: a claimed day cell."
-  },
-  "cal-cell-today": {
-    "file": "assets/gemwoven/calendar/cell-today.webp",
-    "width": 304,
-    "height": 288,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: today's cell with the gold rim."
-  },
-  "cal-cell-dim": {
-    "file": "assets/gemwoven/calendar/cell-dim.webp",
-    "width": 292,
-    "height": 274,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: a missed or future day cell."
-  },
-  "cal-check": {
-    "file": "assets/gemwoven/calendar/check.webp",
-    "width": 196,
-    "height": 201,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: claimed stamp."
-  },
-  "cal-cross": {
-    "file": "assets/gemwoven/calendar/cross.webp",
-    "width": 193,
-    "height": 197,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: missed stamp."
-  },
-  "cal-lock": {
-    "file": "assets/gemwoven/calendar/lock.webp",
-    "width": 170,
-    "height": 198,
-    "textless": true,
-    "source": "assets/gemwoven/raw/calendar/pieces-raw.png",
-    "promptFiles": [
-      "assets/gemwoven/raw/calendar/pieces-prompt.txt"
-    ],
-    "purpose": "Lịch 28 ngày (calendar-ui.js), drawn by Codex gpt-6.1-sol low from the approved mockup: future-day padlock."
   }
 }

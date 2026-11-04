@@ -1,0 +1,16 @@
+{
+ "id": "souljailer",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.936
+ },
+ "iou": 0.911,
+ "foot": 0.0008,
+ "effort": "low",
+ "drawn_colour": 26.7,
+ "colour": 22.5,
+ "sharpness": 0.659
+}

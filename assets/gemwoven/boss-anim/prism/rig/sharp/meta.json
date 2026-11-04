@@ -1,0 +1,16 @@
+{
+ "id": "prism",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.936
+ },
+ "iou": 0.926,
+ "foot": 0.0023,
+ "effort": "low",
+ "drawn_colour": 30.5,
+ "colour": 26.5,
+ "sharpness": 0.725
+}

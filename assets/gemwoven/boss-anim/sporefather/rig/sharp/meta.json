@@ -1,0 +1,16 @@
+{
+ "id": "sporefather",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.976
+ },
+ "iou": 0.962,
+ "foot": 0.0023,
+ "effort": "low",
+ "drawn_colour": 35.3,
+ "colour": 30.6,
+ "sharpness": 0.641
+}

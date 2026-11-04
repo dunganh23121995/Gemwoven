@@ -1,0 +1,16 @@
+{
+ "id": "briar",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.945
+ },
+ "iou": 0.942,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 37.4,
+ "colour": 20.8,
+ "sharpness": 0.663
+}

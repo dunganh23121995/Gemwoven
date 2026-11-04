@@ -1,0 +1,16 @@
+{
+ "id": "fire",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.97
+ },
+ "iou": 0.967,
+ "foot": 0.0039,
+ "effort": "low",
+ "drawn_colour": 39.4,
+ "colour": 30.6,
+ "sharpness": 0.603
+}

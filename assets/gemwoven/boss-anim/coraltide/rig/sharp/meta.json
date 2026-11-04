@@ -1,0 +1,16 @@
+{
+ "id": "coraltide",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "green #00FF00",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.973
+ },
+ "iou": 0.952,
+ "foot": -0.007,
+ "effort": "low",
+ "drawn_colour": 46.7,
+ "colour": 46.1,
+ "sharpness": 0.732
+}

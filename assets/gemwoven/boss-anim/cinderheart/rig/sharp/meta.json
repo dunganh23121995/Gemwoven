@@ -1,0 +1,16 @@
+{
+ "id": "cinderheart",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.989
+ },
+ "iou": 0.974,
+ "foot": 0.0008,
+ "effort": "low",
+ "drawn_colour": 24.5,
+ "colour": 22.5,
+ "sharpness": 0.583
+}

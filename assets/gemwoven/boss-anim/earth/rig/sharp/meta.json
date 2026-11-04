@@ -1,0 +1,16 @@
+{
+ "id": "earth",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.941
+ },
+ "iou": 0.936,
+ "foot": 0.0008,
+ "effort": "low",
+ "drawn_colour": 34.3,
+ "colour": 26.0,
+ "sharpness": 0.603
+}

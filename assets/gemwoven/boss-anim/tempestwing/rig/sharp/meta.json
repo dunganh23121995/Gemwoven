@@ -1,0 +1,16 @@
+{
+ "id": "tempestwing",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.963
+ },
+ "iou": 0.969,
+ "foot": -0.0031,
+ "effort": "low",
+ "drawn_colour": 36.6,
+ "colour": 26.4,
+ "sharpness": 0.736
+}

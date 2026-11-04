@@ -1,0 +1,16 @@
+{
+ "id": "seraph",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "raw-idle.png",
+  "iou": 0.953
+ },
+ "iou": 0.955,
+ "foot": 0.0023,
+ "effort": "low",
+ "drawn_colour": 35.0,
+ "colour": 30.3,
+ "sharpness": 0.673
+}

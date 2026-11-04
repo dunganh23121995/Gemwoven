@@ -275,6 +275,9 @@ for key,poses in boss_actions.items():
 def register_feet(sheet):
     im=load_pil(sheet['src']).convert('RGBA')
     frame=im.crop((0,0,im.width//sheet['cols'],im.height//sheet['rows']))
+    # A foe's resting frame redrawn at 512/640px (assets/gemwoven/sharpen_foes.py) is measured at the 256px its
+    # poses were placed by, so the boots found (runs >= 8px) and every number stay those of the same picture.
+    if '/rig/foe/' in sheet['src'] and frame.width>256:frame=frame.resize((256,256),Image.Resampling.LANCZOS)
     bounds=frame.getchannel('A').point(lambda a:255 if a>=128 else 0).getbbox()
     sheet['footY']=round(bounds[3]/frame.height,5) if bounds else .94
     sheet['bodyHeight']=round((bounds[3]-bounds[1])/frame.height,5) if bounds else .75
@@ -390,6 +393,17 @@ def foes_with_rigs():
         for key,entry in art[family].items():
             if isinstance(entry,dict) and 'idle' in entry and (root/'assets/gemwoven'/folder/key/'rig').exists():yield entry,root/'assets/gemwoven'/folder/key/'rig'
 for entry,path in foes_with_rigs():rig_idle(entry['idle'],path=path/'foe')
+# A strike or recoil that holds the resting pose shows the rig's frame 1: the resting frame itself, at the rig's size
+# (a redrawn foe rests on a 512/640px frame, assets/gemwoven/sharpen_foes.py), not the drawn 256px loop's first cell.
+def rig_still(entry,path):
+    idle=entry['idle']
+    if not (path/'foe'/'rig.json').exists():return
+    drawn=image(path.parent/'idle.webp')
+    still={k:v for k,v in idle.items() if k!='fidgets'};still.update(count=1,heads=idle['heads'][:1])
+    for name,sheet in list(entry.items()):
+        if isinstance(sheet,dict) and sheet.get('src')==drawn and sheet.get('count')==1:
+            entry[name]={**still,**({'scale':sheet['scale']} if 'scale' in sheet else {})}
+for entry,path in foes_with_rigs():rig_still(entry,path)
 for family in ['heroes','enemies','bosses','worldBosses']:
     for character in art[family].values():register_feet(character['idle'])
 for hero,character in art['heroes'].items():rig_buff(character,hero,'1')

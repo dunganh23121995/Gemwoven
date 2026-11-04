@@ -1,0 +1,16 @@
+{
+ "id": "elderbloom",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.973
+ },
+ "iou": 0.957,
+ "foot": -0.0023,
+ "effort": "low",
+ "drawn_colour": 36.1,
+ "colour": 26.1,
+ "sharpness": 0.622
+}

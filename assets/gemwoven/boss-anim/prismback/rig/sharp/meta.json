@@ -1,0 +1,16 @@
+{
+ "id": "prismback",
+ "kind": "boss",
+ "cell": 640,
+ "backdrop": "magenta #FF00FF",
+ "reference": {
+  "source": "master.png",
+  "iou": 0.977
+ },
+ "iou": 0.972,
+ "foot": -0.0008,
+ "effort": "low",
+ "drawn_colour": 32.0,
+ "colour": 27.0,
+ "sharpness": 0.685
+}
