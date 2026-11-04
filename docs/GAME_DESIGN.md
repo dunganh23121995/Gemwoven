@@ -275,6 +275,23 @@ xử thua ở lượt 60 trong khi combat thật không có luật đó). Số l
 
 ---
 
+### 5.5 Biểu tượng hiệu ứng trên đầu nhân vật, tên tài khoản PvP [Có · Claude + Codex, 04/11]
+Chủ dự án: "Không cần hiện tên… thay bằng biểu tượng băng, ×2, suy kiệt, thiêu đốt, choáng… các hiệu ứng buff, bất lợi"; "Sau PvP thì tên
+tài khoản hiển thị góc trên màn combat (không đè lên các hiệu ứng)".
+- Biển tên trên thanh máu thành **một hàng ô vẽ** (`src/combat-status.js/.css`, ảnh `assets/combat-status/`): mất lượt → bất lợi khác →
+  có lợi, thứ tự cố định; tối đa 5 ô (4 ô + "+N" khi nhiều hơn). Lượt còn lại góc phải trên, tầng ×N góc trái dưới, hệ số (×1,5 khắc hệ,
+  ×1,25 cuồng nộ) dưới hình; hiệu ứng đến hết trận không có số. Khung vàng góc tròn = có lợi, đồng đỏ góc vát = bất lợi.
+- 28 hình: Choáng, Đóng băng, Phong ấn, Hỗn loạn, Mù, Thiêu đốt, Độc, Nguyền rủa, Ấn sấm, Hàn ấn, Tê liệt, Suy yếu, Vỡ giáp, Cấm hồi,
+  Giáp tan chảy, Hút năng lượng (dự phòng); Biến Thân, Dư âm, Hóa mờ, Hồi phục/Tái sinh, Khắc hệ, Cuồng nộ, Tàng hình, Miễn thương, Bất
+  tử, Gai phản, Cuồng huyết, Tăng công (dự phòng). Huy hiệu hệ nhỏ ở đầu phải thanh nộ. Tên nhân vật chỉ còn cho trình đọc màn hình.
+- Chạm / rê / focus một ô: chú giải giấy da (tên, tác dụng, lượt còn); "+N" mở cả danh sách. Chú giải tự chọn chỗ trống không che ô, máu,
+  nộ, giáp; màn ngang có lề thì nằm ở lề. Máu/nộ và hàng ô tự trượt vào trong khung khi nhân vật đứng sát mép.
+- PvP (1v1 cùng máy, giao hữu, Cúp, trực tuyến sau này): tên tài khoản hai góc trên khung trận (tên dài "…", chạm xem đủ); khung thấp
+  (màn ngang) thì lên thanh trên. Nhãn "Ải N" thành "Cùng máy" / "AI", ẩn điểm hành trình. PvE không có tên. Tên tài khoản lấy từ
+  Quảng Trường (`gemwoven.social.v1`), chưa đặt thì "Bạn"; AI hiện tên hiển thị của bản sao.
+- Codex: phê bình + mockup 8,2; bản dựng 8,0/7,5/8,4 → 8,3/8,7/8,6 → 8,3/8,7/8,8 → **8,7 / 8,8 / 8,9** (điện thoại / ngang / Studio).
+  Tất cả ở `assets/gemwoven/raw/combat-status/`. Màn ngang không thấy bàn ngọc là bố cục có từ trước (ngoài phạm vi).
+
 ## 6. Hồ sơ, chỉ số chi tiết, Lực chiến [Đêm nay]
 
 - **Lực chiến = HP × Công ÷ (1 − Thủ)** (trước đây × (1 + Thủ)). Codex: sức chịu đòn thật là `HP/(1−Thủ)`,

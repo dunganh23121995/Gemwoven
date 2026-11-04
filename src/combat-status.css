@@ -1,0 +1,59 @@
+/* Status icons over the fighters and the PvP name plaques (combat-status.js; Codex critique and mockup in
+   assets/gemwoven/raw/combat-status/). The name plate stays in the page for screen readers only. */
+html.chud .actor-hud .vital-name{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;background:none}
+html.chud .actor-hud{--cs:28px}
+html.chud .actor-hud .status-row.cs-row{grid-row:1;justify-self:center;display:flex;justify-content:center;gap:2px;width:max-content;min-width:calc(var(--cs) * 5 + 8px);height:var(--cs);min-height:0;margin:0 0 4px;padding:0;pointer-events:none}
+.cs-tile{position:relative;flex:none;width:var(--cs,28px);height:var(--cs,28px);margin:0;padding:0;border:0;background:none;cursor:pointer;pointer-events:auto;-webkit-tap-highlight-color:transparent}
+.cs-tile .cs-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.cs-tile .cs-glyph{position:absolute;inset:14%;width:72%;height:72%;object-fit:contain;filter:drop-shadow(0 1px 1px #000a);pointer-events:none}
+.cs-tile b{position:absolute;font:900 calc(var(--cs,28px) * .36)/1 Cambria,Georgia,serif;color:#fff;pointer-events:none;
+  text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000,0 -1px 1px #000}
+.cs-tile .cs-turns{right:-1px;top:-2px}
+.cs-tile .cs-stacks{left:0;bottom:-1px;font-size:calc(var(--cs,28px) * .3);color:#ffe2a8}
+.cs-tile .cs-mult{left:50%;bottom:-3px;translate:-50% 0;font-size:calc(var(--cs,28px) * .3);color:#ffe9a6;white-space:nowrap}
+.cs-tile.cs-more b{position:absolute;inset:0;display:grid;place-items:center;font-size:calc(var(--cs,28px) * .42);color:#ffe9bc}
+.cs-tile.is-open{z-index:2;scale:1.12;filter:drop-shadow(0 0 2px #fff6d0) drop-shadow(0 0 5px #ffd25a) drop-shadow(0 0 2px #ffd25a)}
+.cs-tile:focus-visible{outline:2px solid #ffe08a;outline-offset:1px;border-radius:4px}
+/* The note: parchment with a bronze edge, 210 wide, 13 px text; "+N" lists every effect, 44 px a row. */
+.cs-tip{position:fixed;z-index:60;width:222px;padding:7px 10px;background:url(assets/gemwoven/ui-kit/parchment.webp) center/100% 100% no-repeat;filter:drop-shadow(0 3px 5px #000b);pointer-events:auto}
+.cs-tip[data-point]::after{content:"";position:absolute;width:16px;height:11px;background:url(assets/gemwoven/ui-kit/parchment.webp) center/200px 140px;filter:drop-shadow(0 1px 0 #8a643a)}
+.cs-tip[data-point="down"]::after{top:100%;left:calc(var(--at) - 8px);margin-top:-2px;clip-path:polygon(0 0,100% 0,50% 100%)}
+.cs-tip[data-point="up"]::after{bottom:100%;left:calc(var(--at) - 8px);margin-bottom:-2px;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cs-tip[data-point="left"]::after,.cs-tip[data-point="right"]::after{width:11px;height:16px;top:calc(var(--at) - 8px)}
+.cs-tip[data-point="left"]::after{right:100%;margin-right:-2px;clip-path:polygon(100% 0,100% 100%,0 50%)}
+.cs-tip[data-point="right"]::after{left:100%;margin-left:-2px;clip-path:polygon(0 0,100% 50%,0 100%)}
+.cs-tip p{display:flex;align-items:center;gap:6px;min-height:34px;margin:0}
+.cs-tip.is-list p{min-height:44px}
+.cs-tip.is-list p+p{border-top:1px solid #8a643a55}
+.cs-tip img{flex:none;width:26px;height:26px;object-fit:contain}
+.cs-tip span{display:grid;gap:1px;min-width:0;flex:1}
+.cs-tip span>i{display:flex;align-items:baseline;justify-content:space-between;gap:6px;font-style:normal}
+.cs-tip b{font:800 13px/1.1 Cambria,Georgia,serif;color:#4a2a10}
+.cs-tip small{font:600 12px/1.15 Cambria,Georgia,serif;color:#5a3a1c}
+.cs-tip em{flex:none;font:700 11px/1.1 Cambria,Georgia,serif;color:#8a3a18;font-style:normal}
+/* PvP plaques in the stage's top corners, clear of the fighters' rows. */
+.cs-pvp{position:absolute;z-index:9;top:10px;max-width:124px;height:24px;padding:0 12px 1px;border:0;cursor:pointer;
+  background:url(assets/gemwoven/ui-kit/badge-leather.webp) center/100% 100% no-repeat;filter:drop-shadow(0 2px 2px #000a)}
+.cs-pvp.hero{left:10px}.cs-pvp.enemy{right:10px}
+.cs-pvp span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:800 12px/24px Cambria,Georgia,serif;color:#fff0d0;text-shadow:0 1px 2px #000}
+.cs-pvp.is-full{max-width:calc(100% - 20px);z-index:31}
+/* The element emblem rides the right end of the spark gauge. */
+html.chud .actor-hud .cs-elem{position:absolute;z-index:4;right:-11px;top:50%;translate:0 -50%;width:16px;height:16px;background:center/contain no-repeat;filter:drop-shadow(0 1px 1px #000a);pointer-events:none}
+/* PvP: the stage tag reads the kind of match, and the journey score is not shown. */
+html.cs-pvp-on .chud-stage[data-mode]{font-size:0}
+html.cs-pvp-on .chud-stage[data-mode]::after{content:attr(data-mode);font-size:15px}
+html.cs-pvp-on .chud-bar .chud-score{visibility:hidden}
+/* Short stages: the plaques sit in the top bar, either side of its middle. */
+html.cs-pvp-bar .chud-bar .chud-stage,html.cs-pvp-bar .chud-bar .chud-score{visibility:hidden}
+.chud-bar .cs-pvp{top:50%;translate:0 -50%;max-width:min(150px,22vw)}
+.chud-bar .cs-pvp.hero{left:auto;right:calc(50% + 6px)}.chud-bar .cs-pvp.enemy{right:auto;left:calc(50% + 6px)}
+html[data-hero-side="right"] .cs-pvp.hero{left:auto;right:10px}html[data-hero-side="right"] .cs-pvp.enemy{right:auto;left:10px}
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud .actor-hud{--cs:44px}
+  html.chud .actor-hud .status-row.cs-row{gap:4px;margin-bottom:6px}
+  html.cs-pvp-on .chud-stage[data-mode]::after{font-size:23px}
+  .cs-tip{width:240px}.cs-tip b{font-size:15px}.cs-tip small{font-size:14px}.cs-tip em{font-size:13px}.cs-tip img{width:36px;height:36px}
+  .cs-pvp{top:16px;max-width:160px;height:30px;padding:0 15px 1px}.cs-pvp.hero{left:18px}.cs-pvp.enemy{right:18px}
+  .cs-pvp span{font-size:14px;line-height:30px}
+  html.chud .actor-hud .cs-elem{width:22px;height:22px;right:-17px}
+}

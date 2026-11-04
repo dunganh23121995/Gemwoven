@@ -1,0 +1,7 @@
+Use case: two replacement status icons for the attached Gemwoven icon sheet; match its line weight, shading, palette family and glyph size exactly.
+
+Sheet: exactly 2 columns x 2 rows, 4 equal square cells on a perfectly flat solid #FF00FF magenta background; no grid lines, labels, text or frames. Each glyph centered inside the central 65% of its cell; nothing crosses a cell edge. Everything fully opaque with a clean dark outline: no soft transparent glow, no haze, no blurred mist, no semi-transparent light that could mix with the background. Never use pink or magenta in a glyph.
+1. Top-left: Afterglow — a warm GOLD-and-amber human silhouette (opaque, solid painted, a little dimmer than a hero), with three small solid gold spark stars beside it.
+2. Top-right: Afterglow, alternative — a golden ember-shaped human bust silhouette with a solid amber flame trail behind it.
+3. Bottom-left: Veil — a deep indigo hooded silhouette whose lower half breaks into solid opaque slate-grey swirls (painted shapes with outlines, not mist).
+4. Bottom-right: Veil, alternative — a dark indigo hooded head inside an opaque grey ring of ghostly swirls.

@@ -76,7 +76,7 @@
     switch(m.t){
       case 'needName':clearTimeout(timer);P.status='naming';status();return openSheet('name');
       case 'registered':write(ACCOUNT_KEY,{id:m.id,token:m.token});return;
-      case 'welcome':clearTimeout(timer);P.retry=0;P.status='online';P.you=m.you;P.friends=m.friends;P.guild=m.guild;status();badges();
+      case 'welcome':clearTimeout(timer);P.retry=0;P.status='online';P.you=m.you;if(m.you?.name)write(ACCOUNT_KEY,{...read(ACCOUNT_KEY,{}),name:m.you.name});P.friends=m.friends;P.guild=m.guild;status();badges();
         if(P.sheet==='name')closeSheet();addLog({ch:'system',name:'Hệ thống',text:`Chào ${m.you.name}! Đứng gần ai đó rồi chạm vào nhân vật của họ để kết bạn hoặc giao hữu.`});return;
       case 'channel':{P.channel=m.n;P.counts=m.counts||{};for(const [id,a] of [...P.actors])if(!a.npc&&id!=='me')removeActor(id);
         spawnMe(P.me?.pos||[...(geo.spawn||S.MAP.spawn)],true);for(const p of m.players)upsert(p);status();return;}

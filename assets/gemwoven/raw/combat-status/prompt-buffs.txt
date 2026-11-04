@@ -1,0 +1,19 @@
+Use case: game UI status-effect icon pack (compact props), Gemwoven fantasy match-3 RPG, hand-painted HD style matching the attached icon sheet exactly (same line weight, shading, palette family and glyph size) and the attached game screenshot (warm wood-and-brass kit).
+
+Sheet: exactly 4 columns x 3 rows, 12 equal square cells, on a perfectly flat solid #FF00FF magenta background. No borders, no grid lines, no labels, no text, no numbers, no frames or badges around the glyphs. Each glyph is centered in its cell and stays inside the central 65% of the cell with generous magenta padding; nothing crosses a cell edge. All glyphs share one consistent size. At most 2-3 main shapes each, readable at 24 px. Never use pink or magenta in any glyph; purples are deep violet or indigo only.
+
+Row 1, left to right:
+1. Transformation: a small golden human silhouette radiating bright rays.
+2. Afterglow: a faint golden silhouette with a few lingering sparks.
+3. Veil (fading): a blurred dark-violet hooded silhouette dissolving into mist.
+4. Regeneration: a green leaf wrapped around a small white plus sign.
+Row 2:
+5. Element advantage: a sword over a bold upward gold arrow.
+6. Rage: a roaring red beast face with small horns.
+7. Stealth: an eye half hidden behind a draped dark-teal curtain.
+8. Invulnerable: a closed golden dome shield, glowing.
+Row 3:
+9. Undying: a red heart inside a golden infinity ring.
+10. Thorn reflect: a round shield covered with sharp brown thorns.
+11. Blood frenzy: two white fangs around a red blood drop.
+12. Power up: a crossed sword with a bold red-gold upward burst (more damage).

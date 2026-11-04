@@ -549,6 +549,9 @@ css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for n
 # The combat HUD's drawn layer (src/combat-hud.js): last, so it wraps every other update and restyles the shared controls.
 extensions += '\n'+(root/'src/combat-hud.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-hud.css').read_text(encoding='utf-8')
+# Status icons over the fighters and PvP name plaques (src/combat-status.js): after the HUD, which it builds on.
+extensions += '\n'+(root/'src/combat-status.js').read_text(encoding='utf-8')
+css += '\n'+(root/'src/combat-status.css').read_text(encoding='utf-8')
 # Dẫn Đường's coach in the guided stage-1 fight (src/combat-coach.js): after the HUD, read-only.
 extensions += '\n'+(root/'src/combat-coach.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-coach.css').read_text(encoding='utf-8')

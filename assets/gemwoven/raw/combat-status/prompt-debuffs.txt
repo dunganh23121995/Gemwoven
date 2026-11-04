@@ -1,0 +1,24 @@
+Use case: game UI status-effect icon pack (compact props), Gemwoven fantasy match-3 RPG, hand-painted HD style that matches the attached reference screenshot (warm wood-and-brass kit, bold readable shapes, clean dark outline about 1.5 px at 24 px size, soft cel shading, slight brass/gold rim lights).
+
+Sheet: exactly 4 columns x 4 rows, 16 equal square cells, on a perfectly flat solid #FF00FF magenta background. No borders, no grid lines, no labels, no text, no numbers, no frames or badges around the glyphs (frames are added later in the game). Each glyph is centered in its cell and stays inside the central 65% of the cell with generous magenta padding; nothing crosses a cell edge. All 16 glyphs share one consistent size, line weight, lighting and palette family. Each glyph has at most 2-3 main shapes so it reads at 24 px. Never use pink or magenta in any glyph; purples are deep violet or indigo only.
+
+Row 1, left to right:
+1. Stun: three golden stars circling in a small swirl.
+2. Freeze: a solid pale-cyan ice block with a frosty highlight.
+3. Seal (silence): a small brass padlock over a glowing blue rune circle.
+4. Confusion: two curved arrows tangled into a knot, teal and gold.
+Row 2:
+5. Blind: a single eye crossed by a dark slash.
+6. Burn: one bold orange-red flame.
+7. Poison: one green poison drop with a tiny bubble.
+8. Curse: a small bone-white skull with a violet sigil on its forehead.
+Row 3:
+9. Thunder mark: a yellow lightning rune inside a ring with tick marks (countdown).
+10. Frost rune: a blue rune engraved on a shard of ice.
+11. Paralysis: a crackling electric bolt clamping a small energy vial.
+12. Weaken: a steel sword pointing down with a small red down arrow.
+Row 4:
+13. Armor break: a blue-and-steel shield with a big crack.
+14. No healing: a red heart crossed by a dark slash.
+15. Melting armor: a steel breastplate with molten orange drips.
+16. Energy drain: a yellow lightning spark leaking out of a cracked amber orb.

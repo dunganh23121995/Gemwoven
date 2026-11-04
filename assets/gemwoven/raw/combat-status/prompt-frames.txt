@@ -1,0 +1,7 @@
+Use case: game UI status-icon frames for Gemwoven, hand-painted HD wood-and-brass kit matching the attached screenshot.
+
+Sheet: exactly 2 columns x 2 rows, 4 equal square cells on a perfectly flat solid #FF00FF magenta background; no grid lines, labels or text. Each frame is an empty square tile seen straight on, centered, inside the central 80% of its cell, nothing crosses a cell edge. Same size and thickness for all four. The centre of each tile is a dark recessed field (deep brown-black, opaque, never magenta) where an icon will be placed later.
+1. Top-left: positive effect frame, polished warm gold brass rim with rounded corners and a soft inner glow.
+2. Top-right: negative effect frame, dark red-bronze rim with cut (bevelled, octagon-like) corners and a deep crimson inner edge.
+3. Bottom-left: neutral frame, plain aged bronze rim with rounded corners (for a "+N" overflow tile).
+4. Bottom-right: a small round brass medallion ring with an empty dark centre (for an element emblem).
