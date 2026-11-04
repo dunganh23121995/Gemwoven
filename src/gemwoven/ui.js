@@ -118,6 +118,10 @@
     button.dataset.action=node.action;button.setAttribute('aria-label',`${copy[node.text]||'Tướng'} · Cấp ${level} / 500`);
     const portrait=document.createElement('span');portrait.className='hud-portrait';portrait.append(art(node.icon));
     const frame=art(node.asset);frame.className='hud-avatar-frame';
+    // A worn season avatar replaces the hero portrait; a worn season frame rides over the ring (cosmetic only).
+    const looks=game?.engine.looks?.()||{},look=id=>window.GemwovenLiveOps?.COSMETICS?.find(c=>c.id===id)?.file;
+    if(looks.avatar&&look(looks.avatar)){const img=document.createElement('img');img.src=look(looks.avatar);img.alt='';img.className='hud-cos-avatar';portrait.replaceChildren(img);}
+    if(looks.frame&&look(looks.frame)){const img=document.createElement('img');img.src=look(looks.frame);img.alt='';img.className='hud-cos-frame';button.classList.add('has-cos-frame');button.append(img);}
     const ns='http://www.w3.org/2000/svg',ring=document.createElementNS(ns,'svg');
     ring.setAttribute('viewBox','0 0 144 144');ring.classList.add('hud-experience');ring.setAttribute('aria-hidden','true');
     // Keep the same level progression as the hero screen; no synthetic XP is awarded.

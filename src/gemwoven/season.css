@@ -1,0 +1,293 @@
+/* Mika's season (season-ui.js): Sổ Hành Trình as "Hành Trình Của X", the Đồng Hành Cùng X page, the collection.
+   Mockups: assets/gemwoven/raw/season-mika/mockup/. Drawn pieces: assets/gemwoven/season/mika/. Stage units. */
+.pv .sz-num{font:900 30px/1 Cambria,serif;white-space:nowrap;text-shadow:0 1px 0 #fff8}
+.sz-num.ok{color:#2f7a22}.sz-num.short{color:#b32a14}
+
+/* ----- banner ----- */
+.pv .sz-banner{z-index:2;filter:drop-shadow(0 6px 8px #1c0c0477)}
+.pv .sz-banner .pv-art{object-fit:cover;border-radius:10px}
+.pv .sz-banner .sz-hero{right:10px;bottom:4px;height:252px;width:auto;object-fit:contain;filter:drop-shadow(0 6px 6px #2a120866)}
+.pv .sz-banner .sz-name{left:36px;top:24px;width:480px;text-align:left;font:900 44px/1.05 Cambria,'Times New Roman',serif;color:#8a1c10;letter-spacing:.5px;
+  text-shadow:0 0 2px #fff6e0,0 0 3px #fff6e0,0 2px 0 #fff3d6,0 4px 6px #5a2a1066;white-space:nowrap}
+.pv .sz-banner .sz-seal{left:34px;top:84px;width:76px;height:76px}
+.pv .sz-banner .sz-seal img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 3px #0006)}
+.pv .sz-banner .sz-mua{left:112px;top:98px;width:150px;height:48px}
+.pv .sz-banner .sz-mua img,.pv .sz-banner .sz-days img{left:0;top:0;width:100%;height:100%;object-fit:fill}
+.pv .sz-banner .sz-mua b{left:0;right:0;top:10px;text-align:center;font:800 26px/1 Cambria,serif;color:#4a2610}
+.pv .sz-banner .sz-days{left:272px;top:98px;width:150px;height:48px}
+.pv .sz-banner .sz-days img{left:0;top:2px;width:30px;height:44px;object-fit:contain}
+.pv .sz-banner .sz-days b{left:36px;top:10px;font:800 26px/1 Cambria,serif;color:#4a2610;text-shadow:0 0 3px #fff6e0,0 0 3px #fff6e0}
+.pv .sz-banner .sz-offer{left:24px;top:150px;width:520px;height:66px}
+.pv .sz-banner .sz-offer>img{left:0;top:0;width:100%;height:100%;object-fit:fill}
+.pv .sz-banner .sz-offer b{left:56px;right:150px;top:13px;text-align:center;font:900 24px/1 Cambria,serif;color:#6a1d78;white-space:nowrap}
+.pv .sz-banner .sz-offer em{right:44px;top:12px;height:32px;padding:0 10px 0 6px;display:flex;align-items:center;gap:4px;background:#8a2416;border-radius:16px;
+  font:800 20px/1 Cambria,serif;color:#ffe9c4;box-shadow:inset 0 0 0 2px #e0a84a}
+.pv .sz-banner .sz-offer em img{position:static;width:20px;height:22px;object-fit:contain}
+
+/* ----- level bar, milestone pills, collection ----- */
+.pv .sz-level{z-index:2}
+.pv .sz-level .sz-lv{left:0;top:2px;width:210px;height:54px}
+.pv .sz-level .sz-lv img{left:0;top:0;width:100%;height:100%;object-fit:fill}
+.pv .sz-level .sz-lv b{left:0;right:0;top:12px;text-align:center;font:900 28px/1 Cambria,serif;color:#4a2610}
+.pv .sz-level .sz-trough{left:220px;top:8px;width:470px;height:42px}
+.pv .sz-level .sz-trough>img{left:0;top:0;width:100%;height:100%;object-fit:fill}
+.pv .sz-level .sz-trough em{left:8px;top:7px;height:28px;max-width:454px;overflow:hidden;border-radius:14px}
+.pv .sz-level .sz-trough em img{left:0;top:0;width:454px;height:28px;object-fit:fill}
+.pv .sz-level .sz-trough .sz-num{left:0;right:0;top:7px;text-align:center;font-size:27px;text-shadow:0 0 3px #fff4d8,0 0 3px #fff4d8}
+.pv .sz-level .sz-next{left:700px;top:0;width:161px;height:58px}
+.pv .sz-level .sz-next>b{right:6px;top:14px;font:900 28px/1 Cambria,serif;color:#7a4a10;text-shadow:0 1px 0 #fff8}
+.pv .sz-level .sz-next .sz-look{left:0;top:0;width:88px;height:58px}
+.pv .sz-pills{z-index:2;display:flex;gap:6px;align-items:center}
+.pv .sz-pill{position:relative!important;flex:1;height:52px}
+.pv .sz-pill img{left:0;top:0;width:100%;height:100%;object-fit:fill}
+.pv .sz-pill b{left:18px;right:0;top:12px;text-align:center;font:900 27px/1 Cambria,serif;color:#fff0cc;text-shadow:0 2px 2px #2a1408}
+.pv .sz-pill.on b{color:#5a2a08;text-shadow:0 1px 0 #fff6}
+.pv .sz-wardrobe-btn{z-index:2}
+.pv .sz-wardrobe-btn .ic{left:6px;top:-6px;width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 3px 3px #0007)}
+.pv .sz-wardrobe-btn b{left:78px;right:8px;top:17px;text-align:center;font:800 26px/1 Cambria,serif;color:#4a2610;white-space:nowrap}
+
+/* ----- heads, band, track ----- */
+.pv .sz-head b{top:30%!important}
+.pv .sz-head.head-free b{top:34%!important}
+.pv .sz-head .sz-nested{right:-14px;top:-18px;width:62px;height:62px;object-fit:contain;filter:drop-shadow(0 3px 3px #0007)}
+.pv .sz-band{z-index:3;border-style:solid;border-width:0 30px;border-image-slice:0 60 fill;display:flex;align-items:center;justify-content:center}
+.pv .sz-band b{position:static!important;display:flex;align-items:center;gap:6px;font:800 21px/1 Cambria,serif;color:#ffe9c4;text-shadow:0 1px 2px #000a}
+.pv .sz-band b img{position:static!important;width:18px;height:20px}
+.sz-rows{background-size:77px 110px}
+.pv .sz-row.is-star::before{content:'';position:absolute;left:96px;right:20px;top:2px;bottom:2px;border-radius:16px;background:radial-gradient(ellipse at 50% 50%,#ffd27a33,transparent 70%)}
+.pv .sz-socket .sz-main{left:8%;right:8%;top:6%;bottom:30%;display:flex;align-items:center;justify-content:center}
+.pv .sz-socket .sz-main *{position:relative}
+.pv .sz-socket .sz-items{left:5%;right:5%;top:8%;bottom:10%;display:flex;align-items:center;justify-content:center;gap:10px}
+.pv .sz-socket .sz-items.small{top:auto;bottom:8%;height:30%;gap:6px}
+.pv .sz-socket .sz-items *{position:relative}
+.pv .sz-socket.is-ready .sz-items:not(.small){bottom:36%}
+.pv .sz-socket.is-ready .sz-main{bottom:36%}
+.pv .sz-socket.is-ready .sz-items.small{display:none}
+.pv .sz-res,.pv .sz-frag{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pv .sz-res img{width:60px;height:54px;object-fit:contain;filter:drop-shadow(0 2px 2px #0006)}
+.pv .sz-res b,.pv .sz-frag b{font:900 28px/1 Cambria,serif;color:#4a2a10;text-shadow:0 1px 0 #fff9;white-space:nowrap}
+.pv .sz-items.small .sz-res{flex-direction:row;gap:2px}
+.pv .sz-items.small .sz-res img{width:34px;height:32px}
+.pv .sz-items.small .sz-res b{font-size:21px}
+.pv .sz-frag{flex-direction:row;gap:4px}
+.pv .sz-frag img{width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 2px 3px #0007)}
+.pv .sz-main .sz-frag img{width:92px;height:92px}
+.pv .sz-main .sz-frag b{font-size:32px}
+.pv .sz-items.small .sz-frag img{width:36px;height:36px}
+.pv .sz-items.small .sz-frag b{font-size:21px}
+
+/* the season's looks, shared by cells, the next-reward thumb, dialogs and the collection */
+.sz-look{position:relative;display:block;width:100%;height:100%}
+.sz-look img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.sz-ava img{border-radius:50%;object-fit:cover;inset:6%;width:88%;height:88%;box-shadow:0 0 0 3px #d9a84a,0 3px 5px #0007}
+.sz-frame img.in{inset:22% 20% 16% 20%;width:60%;height:62%;border-radius:50%;object-fit:cover}
+.sz-title b,.sz-plate b,.sz-bubble b{position:absolute;left:0;right:0;text-align:center;white-space:nowrap;font-family:Cambria,serif;font-weight:900}
+.sz-title b{top:34%;padding-left:18%;font-size:15px;color:#fff1cf;text-shadow:0 1px 2px #4a0a04}
+.sz-plate b{top:34%;font-size:17px;color:#4a2610}
+.sz-bubble b{top:32%;font-size:19px;color:#4a2610}
+.sz-combat{overflow:hidden;border-radius:10px}
+.sz-combat img.bg{object-fit:cover}
+.sz-combat img.tl,.sz-combat img.tr{width:46%;height:62%;inset:auto}
+.sz-combat img.tl{left:0;top:0}
+.sz-combat img.tr{right:0;top:0;transform:scaleX(-1)}
+.sz-entry .fx{position:absolute;inset:0;background-size:600% 100%;background-position:40% 0;background-repeat:no-repeat;mix-blend-mode:screen;border-radius:10px;background-color:#1a0b06}
+.sz-entry img.play{inset:auto;right:2px;bottom:2px;width:38%;height:38%}
+.pv .sz-main .sz-look{width:100%;height:100%}
+.pv .sz-main .sz-look *{position:absolute}
+
+/* ----- dialogs ----- */
+.sz-dialog .sz-detail{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.sz-dialog .sz-detail>span{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:120px}
+.sz-dialog .sz-detail .sz-big{min-width:240px}
+.sz-dialog .sz-detail .sz-big .sz-look{width:240px;height:150px}
+.sz-dialog .sz-detail small{font:700 18px/1.2 Cambria,serif;color:#4a2610}
+.sz-dialog .sz-detail i{font:700 15px/1 Cambria,serif;color:#7a5a30}
+.sz-dialog .sz-res,.sz-dialog .sz-frag{display:flex;align-items:center;gap:4px}
+.sz-dialog .sz-res img,.sz-dialog .sz-frag img{width:56px;height:56px;object-fit:contain}
+.sz-dialog .sz-res b,.sz-dialog .sz-frag b,.sz-dialog .sz-num{font:900 24px/1 Cambria,serif;color:#4a2610}
+.sz-offer-sheet{display:flex;gap:12px;align-items:center}
+.sz-offer-sheet img.hero{width:150px;height:auto;filter:drop-shadow(0 4px 4px #0006)}
+.sz-offer-sheet ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;flex:1}
+.sz-offer-sheet li{display:flex;align-items:center;gap:10px;font:700 18px/1.2 Cambria,serif;color:#4a2610}
+.sz-offer-sheet li>img{width:48px;height:48px;object-fit:contain}
+.sz-offer-sheet li>.sz-look{width:72px;height:48px;flex:none}
+.sz-sources{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sz-sources li{display:flex;align-items:center;gap:12px;font:700 19px/1.2 Cambria,serif;color:#4a2610}
+.sz-sources li img{width:56px;height:56px;object-fit:contain}
+.sz-sources li b{flex:1}
+.sz-wardrobe .sz-tag{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 10px;font:800 18px/1 Cambria,serif;color:#6a3a14}
+.sz-wardrobe .sz-tag img{width:34px;height:34px}
+.sz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sz-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 8px;border-radius:14px;background:#f6e6c4;box-shadow:inset 0 0 0 2px #c99a52}
+.sz-card .sz-look{width:130px;height:96px}
+.sz-card>b{font:800 16px/1.15 Cambria,serif;color:#4a2610;text-align:center;min-height:38px}
+.sz-card small{display:flex;align-items:center;gap:4px;font:700 15px/1 Cambria,serif;color:#8a5a2a}
+.sz-card small img{width:16px;height:18px}
+.sz-card.locked .sz-look{filter:saturate(.75) brightness(.92)}
+.sz-card.worn{box-shadow:inset 0 0 0 3px #e0a43a,0 0 10px #ffcf6a88}
+
+/* ----- Đồng Hành Cùng X page ----- */
+.sz-page>*{position:absolute}
+.sz-page img{pointer-events:none}
+.sz-page .sz-ribbon{object-fit:fill;filter:drop-shadow(0 5px 6px #2a0c0466)}
+.sz-page .sz-pagetitle{margin:0;padding-left:60px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:900 40px/1 Cambria,serif;color:#fff3d6;text-shadow:0 2px 3px #4a0804,0 0 6px #8a1c10;white-space:nowrap}
+.sz-goal .pv-art{object-fit:cover;border-radius:12px;filter:drop-shadow(0 6px 8px #1c0c0477)}
+.sz-goal>*{position:absolute}
+.sz-goal .sz-hero{right:16px;bottom:6px;height:300px;width:auto;object-fit:contain;filter:drop-shadow(0 6px 6px #2a120866)}
+.sz-goal .frag{left:44px;top:34px;width:132px;height:132px;object-fit:contain;filter:drop-shadow(0 4px 5px #0008)}
+.sz-goal .sz-num.big{left:186px;top:66px;font-size:62px;text-shadow:0 0 3px #fff6e0,0 0 4px #fff6e0,0 3px 4px #5a2a1066}
+.sz-goal .sz-fuse{left:44px;top:176px;width:300px;height:72px}
+.sz-goal .sz-fuse>*{position:absolute}
+.sz-goal .sz-fuse img{inset:0;width:100%;height:100%;object-fit:fill}
+.sz-goal .sz-fuse b{left:0;right:0;top:20px;text-align:center;font:900 30px/1 Cambria,serif;color:#5a3a1a}
+.sz-goal .sz-fuse.on b{color:#4a2008}
+.sz-goal .sz-fuse:disabled{filter:saturate(.6)}
+.sz-goal .sz-src{top:176px;width:120px;height:80px}
+.sz-goal .sz-src.a{left:356px}.sz-goal .sz-src.b{left:478px}
+.sz-goal .sz-src>*{position:absolute}
+.sz-goal .sz-src img{left:0;top:0;width:64px;height:58px;object-fit:contain;filter:drop-shadow(0 2px 3px #0007)}
+.sz-goal .sz-src b{left:0;right:0;bottom:0;text-align:center;font:900 22px/1 Cambria,serif;color:#4a2610;text-shadow:0 0 3px #fff6e0,0 0 3px #fff6e0}
+.sz-phase>*{position:absolute}
+.sz-phase img{inset:0;width:100%;height:100%;object-fit:fill}
+.sz-phase b{left:0;right:0;top:18px;text-align:center;font:900 28px/1 Cambria,serif;color:#f6e2b8;text-shadow:0 2px 2px #2a1408}
+.sz-phase.on b{color:#4a2610;text-shadow:0 1px 0 #fff8}
+.sz-phase img.clk{inset:auto;right:16px;top:12px;width:42px;height:42px;object-fit:contain}
+.sz-strip{display:flex;align-items:center;gap:10px;padding:0 22px;box-sizing:border-box;border:solid transparent;border-width:14px 22px;border-image:var(--kit-plaque) 30 44 fill / 14px 22px stretch}
+.sz-strip>*{position:static!important}
+.sz-strip .d{font:900 26px/1 Cambria,serif;color:#4a2610;margin-right:auto}
+.sz-strip .ic,.sz-strip .rw{width:44px;height:44px;object-fit:contain}
+.sz-strip .arr,.sz-catch .arr,.sz-task .arr{font:900 28px/1 Cambria,serif;color:#b0702a;font-style:normal}
+.sz-strip .x{font:900 26px/1 Cambria,serif;color:#4a2610}
+.sz-day>*{position:absolute}
+.sz-day .pv-art{inset:0;width:100%;height:100%;object-fit:fill}
+.sz-day .n{left:0;right:0;top:8px;text-align:center;font:900 22px/1 Cambria,serif;color:#fff0cc;text-shadow:0 1px 2px #2a1408}
+.sz-day .r{left:8px;right:8px;top:36px;bottom:18px;display:flex;align-items:center;justify-content:center;gap:2px}
+.sz-day .r>*{position:static}
+.sz-day .r img.f{width:52px;height:52px;object-fit:contain}
+.sz-day .r .x{font:900 22px/1 Cambria,serif;color:#4a2610}
+.sz-day .r .m{display:flex;flex-direction:column;align-items:center}
+.sz-day .r .m img{width:32px;height:30px;object-fit:contain}
+.sz-day .r .m b{font:900 17px/1 Cambria,serif;color:#4a2610}
+.sz-day .mk{right:2px;top:26px;width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 2px 2px #0007)}
+.sz-day .mk.cu{left:2px;right:auto}
+.sz-day.is-taken .r{opacity:.55;filter:saturate(.5)}
+.sz-day.is-future .r{opacity:.8}
+.sz-day.is-missed .r{opacity:.6;filter:grayscale(.4)}
+.sz-day.is-today{filter:drop-shadow(0 0 8px #ffcf6acc)}
+.sz-catch{display:flex;align-items:center;gap:12px;padding:0 20px;box-sizing:border-box;border:solid transparent;border-width:14px 22px;border-image:var(--kit-plaque) 30 44 fill / 14px 22px stretch}
+.sz-catch>*{position:static!important}
+.sz-catch .ic{width:48px;height:48px;object-fit:contain}
+.sz-catch .t{font:900 26px/1 Cambria,serif;color:#1f4a8a}
+.sz-catch .sw{width:44px;height:44px;object-fit:contain;margin-left:auto}
+.sz-catch .miss{display:flex;align-items:center;gap:2px}
+.sz-catch .miss img{width:40px;height:40px;object-fit:contain}
+.sz-catch .miss b{font:900 26px/1 Cambria,serif;color:#a8321f}
+.sz-chapter>*{position:absolute}
+.sz-chapter .pv-art{inset:0;width:100%;height:100%;object-fit:fill;filter:drop-shadow(0 4px 5px #1c0c0455)}
+.sz-chapter .med{left:14px;top:10px;width:140px;height:140px;display:flex;flex-direction:column;align-items:center}
+.sz-chapter .med>*{position:static}
+.sz-chapter .med img{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 3px 3px #0007)}
+.sz-chapter .med b{font:900 22px/1 Cambria,serif;color:#7a1c10}
+.sz-chapter .med small{font:700 17px/1.1 Cambria,serif;color:#7a5a30}
+.sz-task{display:flex;align-items:center;gap:10px;padding:0 12px;box-sizing:border-box;border-radius:14px;background:#fff4dc99;box-shadow:inset 0 0 0 2px #d6b27a}
+.sz-task>*{position:static!important}
+.sz-task .ic{width:44px;height:44px;object-fit:contain}
+.sz-task .t{font:800 24px/1 Cambria,serif;color:#4a2610;width:190px}
+.sz-task .rw{display:flex;align-items:center;gap:4px}
+.sz-task .rw img{width:42px;height:42px;object-fit:contain}
+.sz-task .rw b{font:900 24px/1 Cambria,serif;color:#4a2610}
+.sz-task .mk{width:46px;height:46px;object-fit:contain;margin-left:auto}
+.sz-task.is-ready{box-shadow:inset 0 0 0 3px #e8b44a,0 0 10px #ffcf6a88}
+.sz-task.is-soon{opacity:.75}
+
+/* ----- Sự Kiện entry card ----- */
+.sz-entry{position:relative;display:block;width:100%;height:168px;margin:6px 0 14px;padding:0;border:0;background:none;cursor:pointer;filter:drop-shadow(0 5px 6px #1c0c0466)}
+.sz-entry>*{position:absolute}
+.sz-entry .bg{inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px}
+.sz-entry .hero{right:6px;bottom:2px;height:176px;width:auto;object-fit:contain}
+.sz-entry .t{left:22px;top:18px;font:900 28px/1 Cambria,serif;color:#8a1c10;text-shadow:0 0 2px #fff6e0,0 0 3px #fff6e0,0 2px 0 #fff3d6;white-space:nowrap}
+.sz-entry .fr{left:20px;top:58px;display:flex;align-items:center;gap:8px}
+.sz-entry .fr>*{position:static}
+.sz-entry .fr img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 3px 3px #0007)}
+.sz-entry .fr .sz-num{font-size:34px;text-shadow:0 0 3px #fff6e0,0 0 3px #fff6e0}
+.sz-entry .dl{left:22px;top:128px;display:flex;align-items:center;gap:4px}
+.sz-entry .dl>*{position:static}
+.sz-entry .dl img{width:24px;height:36px;object-fit:contain}
+.sz-entry .dl b{font:800 24px/1 Cambria,serif;color:#4a2610;text-shadow:0 0 3px #fff6e0,0 0 3px #fff6e0}
+.sz-entry .kp-seal{left:auto;right:6px;top:6px}
+
+/* Words on the dark wooden plaques read light (review r2). */
+.pv .sz-level .sz-lv b,.sz-strip .d,.sz-strip .x{color:#ffe9bc;text-shadow:0 2px 2px #1c0c04}
+.sz-strip .sz-num.ok,.sz-catch .sz-num.ok{color:#a6ec84;text-shadow:0 2px 2px #1c0c04}
+.sz-strip .sz-num.short,.sz-catch .sz-num.short{color:#ffa486;text-shadow:0 2px 2px #1c0c04}
+.sz-catch .t{color:#bcd8ff;text-shadow:0 2px 2px #1c0c04}
+.sz-catch .miss b{color:#ffa486}
+.sz-phase b,.sz-phase.on b{color:#4a2610;text-shadow:0 1px 0 #fff8}
+
+/* Review r4: two-line season name clear of the hero, the full offer line, a three-column collection, smaller day marks. */
+.pv .sz-banner .sz-name{top:16px;width:420px;font-size:42px;line-height:1;white-space:normal}
+.pv .sz-banner .sz-seal{top:98px;width:60px;height:60px;left:34px}
+.pv .sz-banner .sz-mua{top:106px;left:98px;width:140px;height:44px}
+.pv .sz-banner .sz-mua b{top:9px;font-size:24px}
+.pv .sz-banner .sz-days{top:106px;left:246px}
+.pv .sz-banner .sz-offer{top:156px;left:18px;width:560px;height:62px}
+.pv .sz-banner .sz-offer b{left:50px;right:160px;top:15px;font-size:22px}
+.pv .sz-banner .sz-offer em{right:46px;top:13px;font-size:19px}
+.pv .sz-level .sz-trough .sz-num{-webkit-text-stroke:5px #fff6e0;paint-order:stroke fill;text-shadow:none}
+.sz-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sz-card{padding:8px 6px;gap:4px}
+.sz-card .sz-look{width:100%;max-width:120px;height:78px}
+.sz-card>b{font-size:14px;min-height:34px}
+.sz-card .game-btn{min-height:0;padding:6px 10px;font-size:15px}
+.sz-card small{font-size:13px}
+.sz-day .mk{right:4px;top:auto;bottom:6px;width:30px;height:30px}
+.sz-day .mk.cu{left:4px}
+.sz-day .r{justify-content:flex-start;padding-left:10px}
+.sz-goal .sz-src img{width:72px;height:60px}
+.pv .sz-banner .sz-name{color:#8a1608;text-shadow:none;-webkit-text-stroke:6px #fff3dc;paint-order:stroke fill;filter:drop-shadow(0 3px 3px #5a2a1055)}
+.sz-entry .t{text-shadow:none;-webkit-text-stroke:5px #fff3dc;paint-order:stroke fill}
+.sz-goal .sz-num.big{text-shadow:none;-webkit-text-stroke:7px #fff6e0;paint-order:stroke fill}
+
+/* Build review 1 (Codex 7.5/7.9). */
+.sz-dialog::backdrop{backdrop-filter:none}
+.sz-entry img.bg{object-fit:cover;border-radius:10px}
+.sz-entry .fx{background-color:transparent}
+.sz-combat img.hero{inset:auto;left:8%;bottom:4%;width:auto;height:58%;object-fit:contain;filter:drop-shadow(0 3px 3px #0008)}
+.pv .sz-level .sz-trough{width:390px}
+.pv .sz-level .sz-trough em{max-width:374px}
+.pv .sz-level .sz-trough .sz-num{-webkit-text-stroke:3px #fff6e0;font-size:28px}
+.pv .sz-level .sz-next{left:620px;width:241px}
+.pv .sz-level .sz-next .sz-look{width:170px;height:58px}
+.pv .sz-level .sz-next .sz-plate b,.pv .sz-level .sz-next .sz-title b{font-size:13px}
+.pv .sz-head .sz-nested{left:-34px;right:auto;top:20px;width:64px;height:64px}
+.sz-goal .sz-hero{height:340px;bottom:2px}
+.sz-goal .sz-src{top:170px;width:116px;height:100px}
+.sz-goal .sz-src.a{left:360px}.sz-goal .sz-src.b{left:486px}
+.sz-goal .sz-src img{left:14px;top:0;width:88px;height:66px}
+.sz-goal .sz-src b{bottom:0;left:4px;right:4px;padding:3px 0;border-radius:14px;background:#fff3dce6;box-shadow:inset 0 0 0 2px #c99a52;font-size:24px;text-shadow:none}
+.sz-catch .ok{width:42px;height:42px;object-fit:contain}
+
+/* Build review 2 polish: a filling bar reads warm until the level is done; "Gồm Vàng" under the nested badge. */
+.pv .sz-level .sz-trough.short em img{filter:hue-rotate(-75deg) saturate(1.35) brightness(1.05)}
+.pv .sz-head .sz-incl{left:-44px;top:82px;width:84px;text-align:center;font:800 15px/1 Cambria,serif;font-style:normal;color:#5a1d6a;background:#fff3dc;border-radius:10px;padding:2px 0;box-shadow:inset 0 0 0 1px #b07ad0}
+.pv .sz-level .sz-next .sz-plate b,.pv .sz-level .sz-next .sz-title b{font-size:15px}
+.sz-goal .sz-src b{font-size:28px}
+.pv .sz-items.small .sz-res b,.pv .sz-items.small .sz-frag b{font-size:23px}
+.sz-day .mk{opacity:.95;width:28px;height:28px}
+.pv .sz-head .sz-nested{left:-8px;top:-30px;width:56px;height:56px}
+.pv .sz-head .sz-incl{left:42px;top:-20px;width:84px}
+.pv .sz-head .sz-nested{top:-6px;left:-14px}
+.pv .sz-head .sz-incl{top:2px;left:36px;width:76px;font-size:14px}
+
+/* Worn looks on the HUD portrait (ui.js profileNode). */
+.hud-portrait .hud-cos-avatar{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.hud-profile .hud-cos-frame{position:absolute;left:-14%;top:-22%;width:128%;height:136%;object-fit:contain;pointer-events:none;z-index:3}
+.hud-profile.has-cos-frame .hud-avatar-frame{opacity:0}
+
+/* Gặp Gỡ: my worn season nameplate, bubble and title art (this device only until the server checks ownership). */
+.pz-actor.is-me .pz-name.is-season{border-image:none;border:0;padding:0 34px 2px;background:var(--season-plate) center/100% 100% no-repeat;color:#4a2610;text-shadow:0 1px 0 #fff8}
+.pz-bubble.is-season{border-image:none;border:0;padding:22px 34px 30px 30px;background:var(--season-bubble) center/100% 100% no-repeat}
+.pz-bubble.is-season>.pz-tail{display:none}
+.pz-title .title-plate.is-season img{object-fit:fill}
+.pz-title .title-plate.is-season b{color:#fff1cf;text-shadow:0 1px 2px #4a0a04;padding-left:58px}
+.hud-profile .hud-cos-frame{left:-10%;top:-12%;width:120%;height:128%}

@@ -44,10 +44,15 @@
     guild:null,guilds:[],log:[],chatCh:'area',whisperTo:null,sheet:null,active:false,keys:new Set(),stick:null,pendingTalk:null,zone:null,lastSend:0,raf:0,toastTimer:0,seenHelp:false};
   const prefs=Object.assign({stick:'free',side:'left',arrows:true},read(PREFS_KEY,{}));
 
+  // Worn season looks (progression.js cosmetics), drawn only on this device for now.
+  function myLook(slot){const id=G.engine.looks?.()?.[slot];return id&&window.GemwovenLiveOps?.COSMETICS?.find(c=>c.id===id)||null;}
   function myProfile(){
     const p=G.engine.read(),key=p.selected,h=p.heroes[key];
     const worn=p.title&&M.titleList?M.titleList(p).find(t=>t.id===p.title&&t.unlocked):null;
-    return {hero:key,look:M.lookForm?M.lookForm(key,h):1,level:h?.level||1,stars:h?.stars||1,power:M.stats(p,key).power,title:worn?.name||'',titleTier:worn?.tier||0,frame:''};
+    // A worn season title rides like any title; owning it is checked by the server later (Sắp ra mắt), so other players
+    // see its name on a common plate while this device shows the season's own art.
+    const season=myLook('title');
+    return {hero:key,look:M.lookForm?M.lookForm(key,h):1,level:h?.level||1,stars:h?.stars||1,power:M.stats(p,key).power,title:season?.name||worn?.name||'',titleTier:season?3:worn?.tier||0,frame:''};
   }
 
   // ---------- Network ----------
@@ -125,7 +130,8 @@
     // Drawn plate (own plate has blue clasps); a friendship knot or a guild crest rides in front of the name.
     a.lab.querySelector('.pz-name').innerHTML=(friend?icon('knot','pz-mark'):'')+(mate?icon('crest','pz-mark'):'')+(a.tag?`<b>[${esc(a.tag)}]</b>`:'')+`<span>${esc(a.name)}</span>`+(a.npc?'<i>NPC</i>':'');
     // The worn title rides above the name on its rarity plate (assets/gemwoven/titles), as in combat.
-    const t=a.lab.querySelector('.pz-title');t.hidden=!a.title;t.innerHTML=a.title?`<span class="title-plate tier-${a.titleTier||1}"><img src="assets/gemwoven/titles/plate-${a.titleTier||1}.webp" alt=""><b>${esc(a.title)}</b></span>`:'';
+    const t=a.lab.querySelector('.pz-title'),own=a===P.me?myLook('title'):null;t.hidden=!a.title;t.innerHTML=a.title?`<span class="title-plate tier-${a.titleTier||1}${own?' is-season':''}"><img src="${own?own.file:`assets/gemwoven/titles/plate-${a.titleTier||1}.webp`}" alt=""><b>${esc(a.title)}</b></span>`:'';
+    const plate=a===P.me?myLook('nameplate'):null;a.lab.querySelector('.pz-name').classList.toggle('is-season',!!plate);a.lab.querySelector('.pz-name').style.setProperty('--season-plate',plate?`url("${new URL(plate.file,document.baseURI).href}")`:'');
     a.lab.querySelector('.pz-plate').style.top=`${a.headY-(a.title?84:30)}px`;a.lab.querySelector('.pz-bubbles').style.bottom=`${-a.headY+40}px`;a.lab.querySelector('.pz-emote').style.bottom=`${-a.headY+36}px`;
     a.el.querySelector('.pz-hit').style.cssText=`width:${Math.max(70,a.cell*.42||90)}px;height:${Math.max(90,-a.headY+10)}px;left:${-Math.max(70,a.cell*.42||90)/2}px;top:${a.headY}px`;
     for(const e of [a.el,a.lab]){e.classList.toggle('is-friend',friend);e.classList.toggle('is-guildmate',mate);}
@@ -153,7 +159,7 @@
 
   // ---------- Speech ----------
   function bubble(a,text){
-    const box=a.lab.querySelector('.pz-bubbles'),b=document.createElement('p');b.className='pz-bubble';
+    const box=a.lab.querySelector('.pz-bubbles'),b=document.createElement('p'),cos=a===P.me?myLook('bubble'):null;b.className='pz-bubble'+(cos?' is-season':'');if(cos)b.style.setProperty('--season-bubble',`url("${new URL(cos.file,document.baseURI).href}")`);
     b.innerHTML=`<span>${esc(text.length>120?text.slice(0,119)+'…':text)}</span><i class="pz-tail"></i>`;box.append(b);while(box.children.length>2)box.firstChild.remove();
     const all=[...P.world.querySelectorAll('.pz-bubble')];if(all.length>4)all.slice(0,all.length-4).forEach(x=>x.remove());
     setTimeout(()=>{b.classList.add('fade');setTimeout(()=>b.remove(),500);},Math.min(6000,4000+text.length*25));

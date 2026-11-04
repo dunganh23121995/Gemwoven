@@ -1,0 +1,14 @@
+Use case: UI piece pack for the event page "Đồng Hành Cùng Mika" in the portrait fantasy match-3 RPG Gemwoven. Warm hand-painted wood, parchment and gold style matching the reference screen; fox-fire accents in crimson and gold matching the reference cosmetic set.
+Layout: exactly 9 separate pieces on a solid flat pure magenta #FF00FF background in a 3 columns x 3 rows grid of equal cells, each piece centred with generous magenta margin, nothing touching cell edges or other pieces, no grid lines. No text, no letters, no numbers anywhere.
+Row 1:
+1) Calendar day tile: a square parchment card with a small dark-wood header strip across its top (empty, for a day number), slightly rounded, thin gold edge; plain calm centre.
+2) The same day tile glowing: identical card but with a bright polished gold border and a soft warm golden glow around it (ready to claim).
+3) A small round golden sun marker with short rays (today marker), simple and readable at 40px.
+Row 2:
+4) A small torn calendar page icon with a red X mark (missed day), readable at 40px.
+5) A small brass pocket-clock icon (future, not yet), readable at 40px.
+6) A round blue enamel stamp with a white circular arrow (caught up), readable at 40px.
+Row 3:
+7) A round green wax-seal check mark (claimed), readable at 40px.
+8) A small closed purple book with a gold fox emblem on its cover, nestled in maple leaves (source icon: the journey book).
+9) A small red torii shrine gate with two lanterns, nestled in maple leaves (source icon: the event).

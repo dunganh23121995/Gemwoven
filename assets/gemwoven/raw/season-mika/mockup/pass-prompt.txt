@@ -1,0 +1,21 @@
+Use case: ui-mockup.
+Create ONE production-quality portrait game screen, exactly 941×1672, edge-to-edge, without a device frame.
+
+References: Image 1 is the approved Gemwoven visual language and shared HUD/navigation. Image 2 contains the exact Mika cosmetic designs: fox-ear avatar frame, red title ribbon, ivory nameplate, speech bubble, flaming combat-frame corner and circular season emblem. Remove its magenta background. Image 3 is the locked Mika character artwork: preserve her face, costume, colors, weapon and pose.
+
+Warm hand-painted fantasy RPG interface: carved wood, parchment, gilded edges, autumn leaves and restrained fox-fire details. Every panel, button and frame must look painted. Crisp readable background; no blur, dimming, flat CSS cards or wireframes.
+
+Coordinates in the 941×1672 canvas:
+0–128 shared HUD.
+136–192 wooden “VIP” title, back arrow on the RIGHT.
+200–280 compact VIP progress.
+288–360 tabs: “Sổ”, “Thẻ Tháng”, “Quỹ”; select Sổ.
+368–628 seasonal illustration: large unchanged Mika on the right; left text “Hành Trình Của Mika”, season emblem “Mùa 1”, hourglass “17 ngày”. Painted offer strip: “Diệu Ngọc · nhận Mika ngay”, with clearly visible “Sắp ra mắt”.
+636–704 progress: “Cấp 25/50”, red “40/100”, next-reward nameplate thumbnail marked “★30”.
+712–816 six milestone buttons “10”, “20”, “25”, “30”, “40”, “50”, plus “Bộ sưu tập”.
+824–936 pinned column headers: “Thường”, “Vàng”, “Diệu Ngọc”, prices “149.000đ”, “299.000đ”. Indicate jewel includes gold using nested tier badges. One shared “Sắp ra mắt” ribbon beneath the paid columns.
+944–1384 vertically scrolling reward track: narrow level gutter, three equal columns. Show the tall ★25 row and smaller consecutive rows 26 and 27. Milestone rows are 1.5 times normal height. At ★25 show Mika fragment ×4 prominently in Free, books and essence in Gold, and the EXACT flaming combat corner from Image 2 around a miniature combat preview in Jewel. Paid rewards stay fully visible and unclaimable. Do not invent premium currency rewards.
+1396–1504 buttons “Nhiệm vụ” and “Nhận tất cả”.
+1512–1672 preserve the reference bottom navigation.
+
+Use the reference season emblem only as seasonal identity, not as an awarded entry effect. Large reward pictures, minimal text, dark readable numerals. Preserve every Vietnamese accent exactly. No explanatory paragraphs or external annotations.

@@ -1,0 +1,10 @@
+Use case: UI piece pack for the season pass page "Hành Trình Của Mika" in the portrait fantasy match-3 RPG Gemwoven. Warm hand-painted wood, parchment and gold style matching the reference screen; crimson-and-gold fox-fire accents matching the reference cosmetic set.
+Layout: exactly 6 separate pieces on a solid flat pure magenta #FF00FF background in a 3 columns x 2 rows grid of equal cells, each piece centred with generous magenta margin, nothing touching cell edges or other pieces, no grid lines. No text, no letters, no numbers anywhere.
+Row 1:
+1) Milestone pill: a horizontal oval wooden plaque about 2.2:1 with a thin brass rim and a tiny gold star stud at its left end, calm empty centre for a short number.
+2) The same milestone pill lit: identical shape with a polished gold face and a warm golden glow (selected).
+3) Collection cabinet icon: a small lacquered crimson wardrobe cabinet with gold fox-head handles and its doors slightly open showing a glimpse of a ring frame and ribbon inside.
+Row 2:
+4) Nested tier badge: a purple-and-gold lotus jewel crest overlapping, in front of, a smaller gold crown crest (meaning the jewel tier includes the gold tier).
+5) Offer ribbon: a wide horizontal parchment scroll ribbon about 5:1 with gilded rolled ends and small fox-fire curls at both ends, calm empty centre for one short line of text.
+6) Play button: a round gold medallion with a crimson centre and a white triangular play symbol.

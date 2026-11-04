@@ -1,0 +1,11 @@
+Use case: battle entry effect animation for the hero season "Hành Trình Của Mika" in the portrait fantasy match-3 RPG Gemwoven. Plays once when a fight starts, centred over the player's side, then fades.
+Subject: a burst of warm fox fire that forms a spectral nine-tailed fox spirit, which flares and dissolves into golden sparks and small gold chrysanthemum petals. Colours: orange-gold flame, crimson edges, white-hot core, gold sparks; translucent glowing look. No character, no ground, no text.
+Sheet: exactly 6 frames in a 3 columns x 2 rows grid of equal square cells on a solid flat pure black #000000 background (the effect will be drawn with additive "screen" blending, so black must stay perfectly black and empty), read left to right, top to bottom:
+1) small ignition: a tight swirl of fox fire at the cell centre;
+2) the swirl grows, nine flame tails start to fan upward;
+3) full bloom: a fox head of flame with nine fanned flame tails, the largest frame;
+4) the fox spirit holds, flames licking upward, sparks spreading;
+5) the fox breaks into gold sparks and chrysanthemum petals;
+6) last few sparks and a faint glow fading out.
+Keep the effect centred on the same point in every cell, the largest frame inside the central 75% of its cell, nothing crossing cell edges, no cell borders or guide lines drawn.
+Colour note: keep the flames warm orange, gold and crimson with a white-hot core; no pink, no magenta, no purple.

@@ -1,0 +1,20 @@
+Use case: ui-mockup.
+Create ONE production-quality portrait event screen, exactly 941×1672, edge-to-edge, without a device frame.
+
+Reference Image 1: match Gemwoven’s warm hand-painted wood, parchment, gold and foliage interface. Reference Image 2: reuse the exact Mika fox-fire ornamental vocabulary and season emblem, removing magenta. Reference Image 3: use the locked Mika artwork unchanged, including face, outfit, weapon, colors and pose.
+
+Paint a crisp autumn shrine courtyard background. All panels and buttons are illustrated objects. No background blur, dark overlay, flat CSS rectangles or wireframe elements. This is a standalone event page, without VIP tabs or bottom navigation.
+
+Canvas layout:
+0–128 shared game HUD.
+136–244 title “Đồng Hành Cùng Mika”, large back arrow on the RIGHT.
+252–544 seasonal hero illustration: Mika on the right; fragment portrait and large red “60/80” on the left, with an inactive “Ghép Mika” button. Add small book and event icons beneath the meter to suggest the two fragment sources.
+552–656 painted phase tabs “1–14 · Mika” and “15–28 · Nguyên liệu”; select Mika.
+664–708 show “Ngày 12/28” and daily quest progress, green “3/3”, leading to Mika fragments ×2.
+716–948 calendar with exactly fourteen tiles, two rows of seven, labeled 1 through 14. Every tile depicts Mika fragments ×2.
+Show a coherent example: days 1–7 claimed with checkmarks; day 8 missed with a torn-calendar mark; day 9 caught up and claimed with a blue circular-arrow stamp plus checkmark; days 10–11 ready with golden borders; day 12 ready with an additional sun marker for today; days 13–14 future with small clocks. Keep all reward pictures sharp and readable. These state names are visual instructions, not printed labels.
+956–1060 catch-up strip: circular-arrow icon, “Làm bù”, red “4/6”, tiny PvE sword icons and a pointer to missed day 8.
+1068–1508 four compact quest rows grouped into “Chương 1” and “Chương 2”. Each chapter has a campaign row “Vượt ải” with target 15 and a boss row “Trùm Vô Tận” with target 8. Each row rewards Mika fragments ×8. Chapter 1: green “15/15” and “8/8”, already claimed. Chapter 2: red “9/15” and “4/8”, unfinished.
+1520–1640 large painted “Nhận · 3” button; bottom safe space to 1672.
+
+Prioritize pictures over words. Use green sufficient counters, red insufficient counters, and distinct status symbols. Fox-fire ornament must frame rather than cover content. Render the quoted Vietnamese text verbatim with correct accents. No extra instructional text or annotations.

@@ -1,0 +1,12 @@
+Use case: game UI asset pack for a portrait fantasy match-3 RPG ("Gemwoven"), the cosmetic set of the hero season "Hành Trình Của Mika".
+Reference images: Mika, a fox-eared samurai girl in crimson-and-gold lacquered armour, white scarf, gold chrysanthemum hair ornament, orange fox tail and fox fire (her form 3 is a nine-tailed fire fox empress). Keep her identity motifs: crimson lacquer, polished gold trim, white silk, orange fox fur, warm fox-fire flames, the gold chrysanthemum emblem. Do NOT draw Mika herself in this sheet.
+Style: painted hand-drawn fantasy game UI, same rich warm illustration style as the references, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers anywhere.
+Layout: exactly 6 separate assets on a solid flat pure magenta #FF00FF background, arranged in a 3 columns x 2 rows grid of equal cells, each asset centred in its cell with generous magenta margin, nothing touching cell edges or another asset, no cell borders or guide lines drawn.
+Row 1:
+1) Avatar frame: a circular portrait ring (empty transparent-looking centre filled with magenta) of crimson lacquer with gold rim, two small fox ears rising on top, a gold chrysanthemum at the bottom centre, small fox-fire flames curling around the right side. Ring thickness about 12% of its diameter; centre hole is clean and round.
+2) Title plate: a horizontal ribbon-banner plate, about 4:1, crimson silk with gold trim edges, small gold fox crest medallion at the left end, fox-fire flicker at the right end, the central area plain and calm to hold a short title text.
+3) Nameplate: a wider, slimmer horizontal plate about 6:1, cream white silk on a dark lacquer back, gold corner caps shaped like tiny fox heads, a thin crimson line along the bottom, plain centre for a player name.
+Row 2:
+4) Chat speech bubble: a rounded speech bubble, cream parchment interior (plain, calm, big empty area), crimson lacquer border with gold trim, a small fox-tail shaped tail at the bottom left, a tiny gold chrysanthemum at the top right corner. Shape suits nine-slice stretching.
+5) Combat frame corner: one ornate corner piece for the top-left corner of a battle screen border: an L-shaped crimson-and-gold lacquer bracket with a fox head and fox-fire flame wisps, the two arms thin so they never cover the playfield, arms ending in clean flat cuts.
+6) Season emblem: a round gold medallion with a stylised nine-tailed fox head in crimson enamel over fox-fire, the badge of the season, readable at small size.

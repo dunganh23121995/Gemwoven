@@ -22211,5 +22211,280 @@
     "rows": 4,
     "count": 24,
     "ms": 1800
+  },
+  "season-mika-avatar": {
+    "file": "assets/gemwoven/season/mika/avatar.webp",
+    "width": 384,
+    "height": 384,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/avatar/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/avatar/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-banner": {
+    "file": "assets/gemwoven/season/mika/banner.webp",
+    "width": 1200,
+    "height": 400,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/banner/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/banner/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-bubble": {
+    "file": "assets/gemwoven/season/mika/bubble.webp",
+    "width": 460,
+    "height": 342,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-combat-corner": {
+    "file": "assets/gemwoven/season/mika/combat-corner.webp",
+    "width": 421,
+    "height": 397,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-day-ready": {
+    "file": "assets/gemwoven/season/mika/day-ready.webp",
+    "width": 300,
+    "height": 284,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-day": {
+    "file": "assets/gemwoven/season/mika/day.webp",
+    "width": 283,
+    "height": 290,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-emblem": {
+    "file": "assets/gemwoven/season/mika/emblem.webp",
+    "width": 421,
+    "height": 426,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-entry": {
+    "file": "assets/gemwoven/season/mika/entry.webp",
+    "width": 1920,
+    "height": 320,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/entry-black/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/entry-black/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-event-bg": {
+    "file": "assets/gemwoven/season/mika/event-bg.webp",
+    "width": 941,
+    "height": 1672,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-bg/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-bg/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-frame": {
+    "file": "assets/gemwoven/season/mika/frame.webp",
+    "width": 401,
+    "height": 433,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-mark-catchup": {
+    "file": "assets/gemwoven/season/mika/mark-catchup.webp",
+    "width": 273,
+    "height": 269,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-mark-claimed": {
+    "file": "assets/gemwoven/season/mika/mark-claimed.webp",
+    "width": 253,
+    "height": 253,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-mark-future": {
+    "file": "assets/gemwoven/season/mika/mark-future.webp",
+    "width": 253,
+    "height": 262,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-mark-missed": {
+    "file": "assets/gemwoven/season/mika/mark-missed.webp",
+    "width": 234,
+    "height": 227,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-mark-today": {
+    "file": "assets/gemwoven/season/mika/mark-today.webp",
+    "width": 244,
+    "height": 241,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-nameplate": {
+    "file": "assets/gemwoven/season/mika/nameplate.webp",
+    "width": 447,
+    "height": 108,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-offer": {
+    "file": "assets/gemwoven/season/mika/offer.webp",
+    "width": 360,
+    "height": 179,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pass-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-pill-on": {
+    "file": "assets/gemwoven/season/mika/pill-on.webp",
+    "width": 360,
+    "height": 165,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pass-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-pill": {
+    "file": "assets/gemwoven/season/mika/pill.webp",
+    "width": 360,
+    "height": 126,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pass-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-play": {
+    "file": "assets/gemwoven/season/mika/play.webp",
+    "width": 352,
+    "height": 360,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pass-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-src-event": {
+    "file": "assets/gemwoven/season/mika/src-event.webp",
+    "width": 300,
+    "height": 220,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-src-pass": {
+    "file": "assets/gemwoven/season/mika/src-pass.webp",
+    "width": 300,
+    "height": 222,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/event-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/event-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-tier-nested": {
+    "file": "assets/gemwoven/season/mika/tier-nested.webp",
+    "width": 360,
+    "height": 349,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pass-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-title": {
+    "file": "assets/gemwoven/season/mika/title.webp",
+    "width": 460,
+    "height": 217,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "season-mika-wardrobe": {
+    "file": "assets/gemwoven/season/mika/wardrobe.webp",
+    "width": 360,
+    "height": 352,
+    "textless": true,
+    "source": "assets/gemwoven/raw/season-mika/pass-ui/raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
+    ],
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
   }
 }

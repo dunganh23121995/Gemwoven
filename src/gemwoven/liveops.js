@@ -72,13 +72,13 @@
   // only with a server-recorded purchase. `cosmetic` in a reward names the slot; the season resolves the item.
   const COSMETIC_SLOTS=[['avatar','Avatar'],['frame','Khung avatar'],['title','Danh hiệu'],['nameplate','Thẻ tên'],['bubble','Bong bóng chat'],['combatFrame','Khung trận'],['entry','Hiệu ứng vào trận']];
   const COSMETICS=[
-    {id:'mika-avatar',slot:'avatar',season:0,name:'Mika Hỏa Hồ',track:'free',level:10},
-    {id:'mika-frame',slot:'frame',season:0,name:'Khung Hỏa Hồ',track:'gold',level:10},
-    {id:'mika-title',slot:'title',season:0,name:'Bạn Đồng Hành Hỏa Hồ',track:'gold',level:20},
-    {id:'mika-nameplate',slot:'nameplate',season:0,name:'Thẻ tên Hỏa Hồ',track:'gold',level:30},
-    {id:'mika-bubble',slot:'bubble',season:0,name:'Bong bóng Hỏa Hồ',track:'gold',level:40},
-    {id:'mika-combat-frame',slot:'combatFrame',season:0,name:'Khung trận Hỏa Hồ',track:'jewel',level:25},
-    {id:'mika-entry',slot:'entry',season:0,name:'Hồ Hỏa Khai Trận',track:'jewel',level:40}];
+    {id:'mika-avatar',art:'season-mika-avatar',file:'assets/gemwoven/season/mika/avatar.webp',slot:'avatar',season:0,name:'Mika Hỏa Hồ',track:'free',level:10},
+    {id:'mika-frame',art:'season-mika-frame',file:'assets/gemwoven/season/mika/frame.webp',slot:'frame',season:0,name:'Khung Hỏa Hồ',track:'gold',level:10},
+    {id:'mika-title',art:'season-mika-title',file:'assets/gemwoven/season/mika/title.webp',slot:'title',season:0,name:'Bạn Đồng Hành Hỏa Hồ',track:'gold',level:20},
+    {id:'mika-nameplate',art:'season-mika-nameplate',file:'assets/gemwoven/season/mika/nameplate.webp',slot:'nameplate',season:0,name:'Thẻ tên Hỏa Hồ',track:'gold',level:30},
+    {id:'mika-bubble',art:'season-mika-bubble',file:'assets/gemwoven/season/mika/bubble.webp',slot:'bubble',season:0,name:'Bong bóng Hỏa Hồ',track:'gold',level:40},
+    {id:'mika-combat-frame',art:'season-mika-combat-corner',file:'assets/gemwoven/season/mika/combat-corner.webp',slot:'combatFrame',season:0,name:'Khung trận Hỏa Hồ',track:'jewel',level:25},
+    {id:'mika-entry',art:'season-mika-entry',file:'assets/gemwoven/season/mika/entry.webp',slot:'entry',season:0,name:'Hồ Hỏa Khai Trận',track:'jewel',level:40}];
   const seasonCosmetic=(season,slot)=>COSMETICS.find(c=>c.season===season&&c.slot===slot)||null;
   // Hero pass (Codex rounds 1-2): free 4 X fragments at levels 5-25 (20 a season, so the free track alone needs several
   // seasons), the avatar at 10; gold the frame/title/nameplate/bubble at 10/20/30/40; jewel the combat frame at 25, the

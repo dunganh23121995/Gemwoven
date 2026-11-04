@@ -188,12 +188,19 @@
   function build(el,state){
     if(!TABS.some(t=>t[0]===state.vipTab))state.vipTab='pass';
     el.innerHTML=`<img class="pv-sign" src="${art('title-sign')}" alt="" style="${box(262,112,416,122)}"><h2 class="pv-title" style="${box(312,160,316,60)}">VIP</h2>`+
-      vipStrip()+tabs(state)+({pass:passTab,monthly:monthlyTab,fund:fundTab}[state.vipTab])(state);
+      vipStrip()+tabs(state)+(state.vipTab==='pass'&&window.GemwovenSeasonUI?.passTab(state)||({pass:passTab,monthly:monthlyTab,fund:fundTab}[state.vipTab])(state));
     requestAnimationFrame(()=>{for(const s of el.querySelectorAll('.pv-scroll')){const thumb=s.parentNode.querySelector('.pv-rail .pv-thumb'),track=s.clientHeight-12;
       const sync=()=>{state[s.dataset.scroll]=s.scrollTop;if(thumb){const room=s.scrollHeight-s.clientHeight;thumb.style.top=(34+(room>0?s.scrollTop/room:0)*(track-68-80))+'px';}};
       s.scrollTop=Number(s.dataset.top)||0;sync();s.addEventListener('scroll',sync,{passive:true});}});
   }
 
+  // Season fragments show as the hero's fragments; a new cosmetic is named under the rewards.
+  function rewards(ctx,got,title){
+    const r={...got};if(r.seasonFragments){r.heroFragments=(r.heroFragments||0)+r.seasonFragments;delete r.seasonFragments;}
+    const looks=[...(r.cosmetics||[]),...(r.cosmetic?[r.cosmetic]:[])].map(id=>O.COSMETICS?.find(c=>c.id===id)?.name).filter(Boolean);
+    const note=looks.length?'Trang trí mới: '+looks.join(', '):'';
+    if(!G.showRewards?.(ctx,r,title,note)&&note)ctx.showModal(title,[],note);
+  }
   let ctxRef=null,stateRef=null;
   const decorate=G.decorate;
   G.decorate=state=>{
@@ -201,6 +208,8 @@
     const screen=L.screens.vip;screen.backgroundKey='vip';if(A['background-vip'])screen.background=A['background-vip'].file;
     screen.nodes=screen.nodes.filter(n=>n.id!=='vip.live'&&n.id!=='vip.back');
     screen.nodes.push({id:'vip.live',kind:'content',rect:[0,0,941,1490],className:'exploration-map pv',build:el=>build(el,state)});
+    // Back on the right like every panel (owner 04/11), clear of the VIP sign.
+    screen.nodes.push({id:'vip.back',kind:'button',rect:[790,120,112,112],asset:A['kit-back']?'kit-back':'map-back',fit:'contain',text:'vip.back',labelHidden:true,action:'nav:back',className:'panel-back'});
     return p;
   };
   const handle=G.handle;
@@ -216,8 +225,8 @@
       if(cmd==='detail')detailDialog(el);
       if(cmd==='detail-track'){const t=O.PASS.tracks.find(x=>x.id==='free');ctx.showModal('Nhánh '+t.name,[],'Miễn phí: mỗi cấp sổ đạt được mở một phần quà ở nhánh này.');}
       if(cmd==='buy')buyDialog(d.product);
-      if(cmd==='claim'){const got=G.engine.claimPass(Number(d.level),d.track);ctx.render();G.showRewards?.(ctx,got,`Sổ Hành Trình · cấp ${d.level}`);}
-      if(cmd==='claim-all'){const got=G.engine.claimPassAll();ctx.render();G.showRewards?.(ctx,got,'Sổ Hành Trình');}
+      if(cmd==='claim'){const got=G.engine.claimPass(Number(d.level),d.track);ctx.render();rewards(ctx,got,`Sổ Hành Trình · cấp ${d.level}`);}
+      if(cmd==='claim-all'){const got=G.engine.claimPassAll();ctx.render();rewards(ctx,got,'Sổ Hành Trình');}
     }catch(e){ctx.showModal('Chưa thể thực hiện',[],e.message);}
     return true;
   };

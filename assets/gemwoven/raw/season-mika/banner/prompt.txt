@@ -1,0 +1,4 @@
+Use case: painted banner panel for the season page "Hành Trình Của Mika" in the portrait fantasy match-3 RPG Gemwoven (warm hand-painted wood, parchment and gold UI like the reference screen).
+Image: one wide landscape banner panel that fills the whole image edge to edge, aspect about 3.3:1 as the visible band centred vertically (the top and bottom 15% may be plain dark wood that will be cropped).
+Inside a thin gilded carved-wood frame with small autumn maple leaves at the corners: an autumn shrine scene at golden hour, red torii gates, stone lanterns, a pagoda roof on the far right, falling red and orange maple leaves, soft fox-fire wisps. Left 55% of the panel: calm, low-detail warm parchment-coloured sky and soft leaves so a title can sit there. Right 45%: an open stone courtyard where a character will be placed later (leave it empty, no people, no animals, no foxes).
+Crisp, sharp, not blurred, no dark overlay. No text, no letters, no characters.

@@ -360,6 +360,9 @@ Cửa Hàng (04/11, Claude + Codex, `codex-gear` + review kệ hàng): Cửa Hà
 
 ## 10. Kiếm tiền (máy chủ thanh toán, hiện **Sắp ra mắt**)
 
+**Mùa của tướng (04/11):** mùa có tướng mới X dùng bảng sổ riêng (§20 "Vòng Mùa của tướng"): Diệu Ngọc giao 1 bản X khi máy chủ xác nhận
+thanh toán + 80 mảnh X ở cấp 50 (thay 80 mảnh tự chọn); Vàng có khung/danh hiệu/thẻ tên/bong bóng; Thẻ Tháng và Quỹ không đổi.
+
 | Sản phẩm | Giá gợi ý | Nhận |
 |---|---|---|
 | Gói Đá Ngọc | 22k / 109k / 349k / 699k / 1.149k / 2.199k | 60 / 300 / 980 / 1.980 / 3.280 / 6.480; lần đầu mỗi mốc ×2 (ghi "60 + 60 = 120") |
@@ -969,7 +972,7 @@ không chỉnh số**.
 - Giao diện cả hai: mockup Codex trước, rồi vẽ mảnh, dựng, Codex chấm ≥ 8,5 trên điện thoại 390×844 và Studio 1920×911 (cả lớp dẫn
   trong trận và lịch).
 
-### Vòng Mùa của tướng (04/11, Thẻ Tháng / Sổ Hành Trình / Quỹ theo tướng ra mắt) — Claude + Codex thống nhất, chờ chủ dự án chốt
+### Vòng Mùa của tướng (04/11, Thẻ Tháng / Sổ Hành Trình / Quỹ theo tướng ra mắt) — Claude + Codex thống nhất, chủ dự án chốt, đã làm
 
 Yêu cầu: "Thẻ tháng mở theo tướng được ra mắt… bán kèm danh hiệu, thẻ tên, popup chat, khung, avatar, sách kỹ năng, khung màn combat,
 hiệu ứng trên battle, tướng làm phần thưởng cho các mốc quan trọng… Xem cả Sổ Hành Trình, Thẻ Tháng và Quỹ." Sau đó: "Miễn phí thì có
@@ -999,8 +1002,16 @@ lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được;
   trọng kế tiếp, đầu ba cột ghim, mốc ★ cao 1,5 lần hiện đúng hình món trang trí, nút nhảy 10·20·25·30·40·50, đáy ghim Nhận tất cả.
   Mockup duyệt phone + Studio ≥8/10 trước khi dựng.
 - Đã sửa ngay: rương Diệu Ngọc chờ ải 60/80 không còn mất khi hết mùa, cất thành phiếu.
-- **Chờ chủ dự án:** (1) 299k = hai bản X (một khi mua, 80 mảnh ở cấp 50); (2) bù miễn phí đến ngày 28; (3) X của mùa đầu
-  (hiện chỉ Mika được phát hành, nên mùa đầu chưa có Y chạy lại: tuần 3–4 là sự kiện nguyên liệu); (4) chốt bộ 7 món.
+- **Chủ dự án chốt (04/11):** mùa đầu là **Mika**; tài khoản mới vẫn chỉ có Hiro; tướng chưa phát hành ẩn hết; làm bù đến ngày 28
+  "ok"; bộ 7 món "đúng rồi làm đi". (Luật lên sao đổi riêng ở "Vòng Nâng Sao"; mùa chỉ giao bản/mảnh qua luật chung.)
+- **Đã làm [Có · thanh toán Sắp ra mắt]:** luật trong `liveops.js` (SEASONS, HERO_PASS, COMPANION, COSMETICS) và `progression.js`
+  (pass theo mùa, `companion`/`claimCompanion`, `cosmetics`/`wearCosmetic`/`looks`; danh hiệu và đồ trận đi theo trận qua `pending`).
+  Màn: tab Sổ "Hành Trình Của Mika" (`season-ui.js`, tranh mùa, mốc ★ hiện đúng món, nút nhảy mốc, Bộ sưu tập + Trang bị), trang
+  "Đồng Hành Cùng Mika" từ Sự Kiện (14 ô ngày, làm bù tự động, 2 chương nhiệm vụ, giai đoạn nguyên liệu 15–28), avatar/khung trên
+  HUD, danh hiệu/thẻ tên/bong bóng của mình ở Quảng Trường (chỉ máy này, máy chủ xác nhận quyền sở hữu: Sắp ra mắt), góc khung
+  trận và hiệu ứng vào trận trong combat (giảm chuyển động thì bỏ qua). Codex vẽ: bộ nhận diện + 7 món + tranh mùa + nền sự kiện +
+  các mảnh giao diện (`assets/gemwoven/raw/season-mika/`, runtime `assets/gemwoven/season/mika/`). Mockup Sổ 8/10, sự kiện 8,5/10;
+  bản dựng vòng 1 7,5/7,9 → vòng 2 **8,5 điện thoại / 8,6 Studio**. Test `check-depth` "mika season ok"; balance sim không đổi.
 
 ### Vòng Nâng Sao (04/11, "phải có bản sao cấp cao mới đủ nguyên liệu để nâng sao cao") — Claude + Codex thống nhất, đã làm
 
