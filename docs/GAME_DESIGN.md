@@ -1174,4 +1174,8 @@ phỏng); hiệu ứng `src/special-fx.js` + `src/special-fx.css`; spec, hai t�
 - **Hiệu ứng:** Codex vẽ 2 tấm (10 mảnh sáng: tia sao, đầu sao chổi, vành nổ, vành cầu vồng, hoa sáng, dấu mục tiêu, mũi tên hướng,
   sao lấp lánh, mảnh ngọc, quầng), mỗi mảnh chuyển động nguyên khối + vài hạt; một nova/lần xóa; ngọc bị special xóa phồng sáng chính
   art của nó rồi tan thành hạt màu; combo kéo hai ngọc vào nhau trước khi nổ; giảm chuyển động chỉ giữ kết quả. Codex chấm: v1 6/10 →
-  v2 8/10 (điện thoại 8,1, ngang 7,9, Studio 8,0) → sửa thêm 3 điểm cuối (tan sạch không vòng xám, giữ màu ngọc, làn bên dịu hơn).
+  v2 8/10 (điện thoại 8,1, ngang 7,9, Studio 8,0) → v3 8,3 → v4 **8,4** (điện thoại 8,5, ngang 8,3, Studio 8,3; Sao 8,5, Bom 8,4,
+  Sao+Bom 8,3, Lõi+Sao 8,5, Lõi+Lõi 8,6), sau đó làm thêm 2 góp ý cuối (làn ngoài combo 1/.5/.3, đỉnh sáng dịu) chưa chấm lại.
+- **Nhịp:** màn "COMBO ×1" (~850 ms) chạy song song với vụ nổ special thay vì trước nó (nổ bắt đầu ~200 ms sau khi bấm thay vì ~900 ms);
+  khi special chạy, chữ COMBO thu nhỏ và nằm mép trên. Ghép thường giữ nhịp cũ. Sửa lỗi: mảnh FX hiện lại sau khi tan (animate() hủy
+  animation khi xong) — mảnh FX nhận độ mờ cuối làm nền trước khi chạy.

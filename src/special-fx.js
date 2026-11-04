@@ -14,6 +14,9 @@ const SPECIAL_FX=Object.freeze({
 });
 // The drawn kinds now match the clears: no more swapped bolt/bomb looks.
 boardSpecialEffectKind=kind=>kind;
+// fxAnimate() cancels a finished animation, which snaps a piece back to its base look (a fully visible gem copy) until its
+// group is removed. FX pieces therefore take their final opacity as their base before they play (Codex review 4).
+function fxAnimate(el,frames,options){const end=frames[frames.length-1];if(el&&end&&end.opacity!=null)el.style.opacity=end.opacity;return animate(el,frames,options);}
 const specialFxArt=name=>ART.specialFx?.[name]||null;
 const specialFxRules=()=>globalThis.GemwovenSpecials.TUNE;
 function specialFxImage(group,name,x,y,w,h,attrs={}){
@@ -29,12 +32,12 @@ async function specialFxMassBurst(t,color){
   const {x,y}=boardV3Point(t),group=boardV3Group('mass-burst',t,'mass'),tasks=[];
   const art=boardV3Child(group,'image',{x:x-44,y:y-44,width:88,height:88,href:itemImage(Math.max(0,t.type),t.special),preserveAspectRatio:'xMidYMid meet'});
   boardV3Origin(art,x,y);
-  tasks.push(animate(art,[{opacity:1,transform:'scale(1)',filter:'brightness(1) saturate(1)'},{opacity:1,transform:'scale(1.16)',filter:'brightness(1.35) saturate(1.25)',offset:.35},{opacity:0,transform:'scale(.45)',filter:'brightness(1.6) saturate(1.2)'}],{duration:240,easing:'ease-out'}));
+  tasks.push(fxAnimate(art,[{opacity:1,transform:'scale(1)',filter:'brightness(1) saturate(1)'},{opacity:1,transform:'scale(1.14)',filter:'brightness(1.2) saturate(1.3)',offset:.35},{opacity:0,transform:'scale(.45)',filter:'brightness(1.35) saturate(1.2)'}],{duration:240,easing:'ease-out',fill:'forwards'}));
   // Codex review 3: keep the gem's colour; a coloured mote and one sparkle carry it away, no white veil.
   for(let i=0;i<2;i++){
     const star=i?specialFxImage(group,'sparkle',x,y,30,30,{style:'mix-blend-mode:screen'})||boardV9Star(group,x,y,8,'#fff4cf'):boardV6Mote(group,x,y,Math.max(0,t.type),color||boardV3Color(t),i);
     boardV3Origin(star,x,y);const a=(t.r*3+t.c*5+i*3)%6*Math.PI/3,d=26+i*10;
-    tasks.push(animate(star,[{opacity:0,transform:'translate(0px,0px) scale(.3)'},{opacity:1,transform:`translate(${Math.cos(a)*d*.5}px,${Math.sin(a)*d*.5}px) scale(1)`,offset:.4},{opacity:0,transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(.3)`}],{duration:320,delay:i*40,easing:'ease-out'}));
+    tasks.push(fxAnimate(star,[{opacity:0,transform:'translate(0px,0px) scale(.3)'},{opacity:1,transform:`translate(${Math.cos(a)*d*.5}px,${Math.sin(a)*d*.5}px) scale(1)`,offset:.4},{opacity:0,transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(.3)`}],{duration:320,delay:i*40,easing:'ease-out',fill:'forwards'}));
   }
   await Promise.all(tasks).finally(()=>group.remove());
 }
@@ -44,13 +47,27 @@ function specialFxHit(t,sequence,kind){
   if(sources.has(t)){
     // A special the blast reaches waits, lit, for its own generation.
     primed.add(t);
-    tails.push(animate(t.el.firstElementChild,[{filter:'brightness(1)'},{filter:'brightness(2.1)',offset:.35},{filter:'brightness(1.4)'}],{duration:BOARD_V5_PACING.primed,easing:'linear'}));
+    tails.push(fxAnimate(t.el.firstElementChild,[{filter:'brightness(1)'},{filter:'brightness(2.1)',offset:.35},{filter:'brightness(1.4)'}],{duration:BOARD_V5_PACING.primed,easing:'linear',fill:'forwards'}));
   }else detonate(t,'mass');
 }
 // The big star nova (cinematic.js) once per clear; chained sources only get their own light.
-function specialFxNova(t,kind,sequence){if(sequence.novaDone)return;sequence.novaDone=true;sequence.tails.push(specialStarNova(t,kind));}
+// Codex review 4: no soft round blob at the peak; a small drawn starburst and a ring of sparkles that break up and go out.
+function specialFxNova(t,kind,sequence){
+  if(sequence.novaDone||reduced)return;sequence.novaDone=true;
+  const {x,y}=boardV3Point(t),group=boardV3Group('special-nova-v2',t,kind),tasks=[],big=kind==='core'||kind==='combo'?1.35:kind==='bomb'?1.15:1;
+  const burst=specialFxImage(group,'flash',x,y,120*big,120*big,{style:'mix-blend-mode:screen'});
+  if(burst){boardV3Origin(burst,x,y);tasks.push(fxAnimate(burst,[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:.9,transform:'scale(1) rotate(25deg)',offset:.25},{opacity:0,transform:'scale(1.25) rotate(45deg)'}],{duration:380,easing:'ease-out',fill:'forwards'}));}
+  const count=kind==='core'||kind==='combo'?14:10,colors=kind==='core'?boardV4Prism:[boardV3Color(t),'#fff2ad','#bfefff'];
+  for(let i=0;i<count;i++){
+    const a=i/count*Math.PI*2+.3,d=(120+(i%3)*40)*big;
+    const spark=i%2?specialFxImage(group,'sparkle',x,y,30,30,{style:'mix-blend-mode:screen'})||boardV9Star(group,x,y,7,'#fff4cf'):boardV9Star(group,x,y,6,colors[i%colors.length]);
+    boardV3Origin(spark,x,y);
+    tasks.push(fxAnimate(spark,[{opacity:0,transform:'translate(0px,0px) scale(.4)'},{opacity:1,transform:`translate(${Math.cos(a)*d*.45}px,${Math.sin(a)*d*.45}px) scale(1.1)`,offset:.3},{opacity:0,transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(.2)`}],{duration:560,easing:'cubic-bezier(.2,.7,.35,1)',fill:'forwards'}));
+  }
+  sequence.tails.push(Promise.all(tasks).finally(()=>group.remove()));
+}
 // One lane of light across a row or column, opening from the origin to both ends; gems pop as the light reaches them.
-function specialFxLane(origin,dir,hits,sequence,{duration=SPECIAL_FX.bolt.sweep,thick=84,color=SPECIAL_FX.colors.bolt,kind='bolt',heads=true,delay=0}={}){
+function specialFxLane(origin,dir,hits,sequence,{duration=SPECIAL_FX.bolt.sweep,thick=84,color=SPECIAL_FX.colors.bolt,kind='bolt',heads=true,delay=0,dim=heads?1:.55}={}){
   const {x,y}=boardV3Point(origin),line=hits.filter(t=>dir==='col'?t.c===origin.c:t.r===origin.r);
   const distance=t=>dir==='col'?Math.abs(t.r-origin.r):Math.abs(t.c-origin.c);
   const pops=line.map(t=>boardV3Pause(delay+distance(t)/7*duration).then(()=>specialFxHit(t,sequence,kind)));
@@ -58,22 +75,22 @@ function specialFxLane(origin,dir,hits,sequence,{duration=SPECIAL_FX.bolt.sweep,
   const group=boardV3Group('sweep',origin,kind),tasks=[];
   group.setAttribute('data-sweep-axis',dir);
   // Drawn as a horizontal band through the origin; a column is the same band turned 90° about the origin.
-  const along=dir==='col',start=along?y:x,lane=boardV3Child(group,'g',{...(along?{transform:`rotate(90 ${x} ${y})`}:{}),opacity:heads?1:.55});
+  const along=dir==='col',start=along?y:x,lane=boardV3Child(group,'g',{...(along?{transform:`rotate(90 ${x} ${y})`}:{}),opacity:dim});
   const left=x-start,right=left+800;
   const beam=specialFxImage(lane,'beam',(left+right)/2,y,800,thick,{style:'mix-blend-mode:screen'})
     ||boardV3Child(lane,'rect',{x:left,y:y-thick/2,width:800,height:thick,fill:boardV6Gradient(lane,[[color,0],[color,.55],[SPECIAL_FX.colors.ivory,1],[color,.55],[color,0]],false,{x1:0,y1:y-thick/2,x2:0,y2:y+thick/2})});
   boardV3Origin(beam,x,y);
-  tasks.push(animate(beam,[{opacity:0,transform:'scaleX(0) scaleY(1)'},{opacity:1,transform:'scaleX(1) scaleY(1.05)',offset:.5},{opacity:.8,transform:'scaleX(1) scaleY(.8)',offset:.75},{opacity:0,transform:'scaleX(1) scaleY(.25)'}],{duration:duration+SPECIAL_FX.bolt.after,delay,easing:'cubic-bezier(.2,.7,.3,1)',fill:'backwards'}));
+  tasks.push(fxAnimate(beam,[{opacity:0,transform:'scaleX(0) scaleY(1)'},{opacity:1,transform:'scaleX(1) scaleY(1.05)',offset:.5},{opacity:.8,transform:'scaleX(1) scaleY(.8)',offset:.75},{opacity:0,transform:'scaleX(1) scaleY(.25)'}],{duration:duration+SPECIAL_FX.bolt.after,delay,easing:'cubic-bezier(.2,.7,.3,1)',fill:'backwards'}));
   if(heads)for(const sign of [-1,1]){
     // A comet head flies to each end, four large sparkles ride its wake and fade behind it.
     const travel=sign<0?left-x:right-x,flip=sign<0?' scaleX(-1)':'';
     const head=specialFxImage(lane,'head',x,y,143,67,{style:'mix-blend-mode:screen'})||boardV3Child(lane,'circle',{cx:x,cy:y,r:16,fill:SPECIAL_FX.colors.ivory});
     boardV3Origin(head,x,y);
-    tasks.push(animate(head,[{opacity:0,transform:`translate(0px,0px)${flip} scale(.6)`},{opacity:1,offset:.12},{opacity:.95,transform:`translate(${travel}px,0px)${flip} scale(1.1)`,offset:.85},{opacity:0,transform:`translate(${travel}px,0px)${flip} scale(.7)`}],{duration:duration+60,delay,easing:'cubic-bezier(.3,.6,.4,1)',fill:'backwards'}));
+    tasks.push(fxAnimate(head,[{opacity:0,transform:`translate(0px,0px)${flip} scale(.6)`},{opacity:1,offset:.12},{opacity:.95,transform:`translate(${travel}px,0px)${flip} scale(1.1)`,offset:.85},{opacity:0,transform:`translate(${travel}px,0px)${flip} scale(.7)`}],{duration:duration+60,delay,easing:'cubic-bezier(.3,.6,.4,1)',fill:'backwards'}));
     for(let i=0;i<4;i++){
       const star=specialFxImage(lane,'sparkle',x,y,40,40,{style:'mix-blend-mode:screen'})||boardV9Star(lane,x,y,9,'#fff4cf');
       boardV3Origin(star,x,y);const at=travel*(.3+i*.18),drift=(i%2?1:-1)*(10+i*4);
-      tasks.push(animate(star,[{opacity:0,transform:'translate(0px,0px) scale(.4)'},{opacity:1,transform:`translate(${at}px,${drift}px) scale(1.1)`,offset:.55},{opacity:0,transform:`translate(${at}px,${drift*1.5}px) scale(.3)`}],{duration:duration+150,delay:delay+i*22,easing:'ease-out',fill:'backwards'}));
+      tasks.push(fxAnimate(star,[{opacity:0,transform:'translate(0px,0px) scale(.4)'},{opacity:1,transform:`translate(${at}px,${drift}px) scale(1.1)`,offset:.55},{opacity:0,transform:`translate(${at}px,${drift*1.5}px) scale(.3)`}],{duration:duration+150,delay:delay+i*22,easing:'ease-out',fill:'backwards'}));
     }
   }
   sequence.tails.push(Promise.all(tasks).finally(()=>group.remove()));
@@ -84,7 +101,8 @@ function specialFxSweep(origin,dir,hits,sequence,{lanes=specialFxRules().boltMod
   const jobs=[];
   for(let d=-lanes;d<=lanes;d++){
     const o=dir==='col'?tileAtOr(origin.r,origin.c+d):tileAtOr(origin.r+d,origin.c);if(!o)continue;
-    jobs.push(specialFxLane(o,dir,hits,sequence,{duration,kind,delay,thick:d?62:96,heads:!d}));
+    // Codex review 5: outer lanes fall off (1, .5, .3) so a wide combo reads as one beam, not a grid.
+    jobs.push(specialFxLane(o,dir,hits,sequence,{duration,kind,delay,thick:d?62:96,heads:!d,dim:[1,.5,.3][Math.min(2,Math.abs(d))]}));
   }
   return Promise.all(jobs);
 }
@@ -95,22 +113,20 @@ function specialFxBloom(origin,radius,hits,sequence,{duration=SPECIAL_FX.bomb.bl
   if(reduced)return pop;
   const {x,y}=boardV3Point(origin),size=(radius*2+1)*100,group=boardV3Group('bloom',origin,kind),tasks=[];
   group.setAttribute('data-bloom-radius',radius);
-  const glow=specialFxImage(group,'glow',x,y,size*.9,size*.9,{style:'mix-blend-mode:screen',opacity:.55});
-  if(glow){boardV3Origin(glow,x,y);tasks.push(animate(glow,[{opacity:0,transform:'scale(.4)'},{opacity:.55,transform:'scale(1)',offset:.35},{opacity:0,transform:'scale(1.15)'}],{duration:duration+260,easing:'ease-out'}));}
   const ring=specialFxImage(group,'blast',x,y,size*1.15,size*1.15,{style:'mix-blend-mode:screen'})
     ||boardV3Child(group,'circle',{cx:x,cy:y,r:size*.5,fill:'none',stroke:SPECIAL_FX.colors.bomb,'stroke-width':18});
   boardV3Origin(ring,x,y);
-  tasks.push(animate(ring,[{opacity:0,transform:'scale(.15) rotate(-14deg)'},{opacity:1,transform:'scale(.92) rotate(0deg)',offset:.45},{opacity:.6,transform:'scale(1.02) rotate(4deg)',offset:.75},{opacity:0,transform:'scale(1.1) rotate(8deg)'}],{duration:duration+SPECIAL_FX.bomb.after+180,easing:'cubic-bezier(.15,.8,.3,1)'}));
+  tasks.push(fxAnimate(ring,[{opacity:0,transform:'scale(.15) rotate(-14deg)'},{opacity:1,transform:'scale(.92) rotate(0deg)',offset:.45},{opacity:.6,transform:'scale(1.02) rotate(4deg)',offset:.75},{opacity:0,transform:'scale(1.1) rotate(8deg)'}],{duration:duration+SPECIAL_FX.bomb.after+180,easing:'cubic-bezier(.15,.8,.3,1)',fill:'forwards'}));
   // A small ivory core (under one cell) so the gems and the ring keep their colour.
-  const core=specialFxImage(group,'flash',x,y,85,85,{style:'mix-blend-mode:screen',opacity:.7})||boardV3Child(group,'circle',{cx:x,cy:y,r:30,fill:SPECIAL_FX.colors.ivory,opacity:.6});
+  const core=specialFxImage(group,'flash',x,y,70,70,{style:'mix-blend-mode:screen',opacity:.55})||boardV3Child(group,'circle',{cx:x,cy:y,r:30,fill:SPECIAL_FX.colors.ivory,opacity:.6});
   boardV3Origin(core,x,y);
-  tasks.push(animate(core,[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:.7,transform:'scale(1) rotate(20deg)',offset:.3},{opacity:0,transform:'scale(1.2) rotate(35deg)'}],{duration:duration+140,easing:'ease-out'}));
+  tasks.push(fxAnimate(core,[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:.7,transform:'scale(1) rotate(20deg)',offset:.3},{opacity:0,transform:'scale(1.2) rotate(35deg)'}],{duration:duration+140,easing:'ease-out',fill:'forwards'}));
   const count=10+radius*4;
   for(let i=0;i<count;i++){
     const angle=(i/count)*Math.PI*2+radius*.3,dist=size*.45+(i%3)*18;
     const shard=specialFxImage(group,'shard',x,y,34,45)||boardV6Mote(group,x,y,Math.max(0,origin.type),i%2?SPECIAL_FX.colors.bomb:'#fff2c8',i);
     boardV3Origin(shard,x,y);
-    tasks.push(animate(shard,[{opacity:0,transform:'translate(0px,0px) rotate(0deg) scale(.5)'},{opacity:1,offset:.22},{opacity:0,transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${i*40}deg) scale(.85)`}],{duration:duration+300,easing:'cubic-bezier(.2,.7,.35,1)'}));
+    tasks.push(fxAnimate(shard,[{opacity:0,transform:'translate(0px,0px) rotate(0deg) scale(.5)'},{opacity:1,offset:.22},{opacity:0,transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${i*40}deg) scale(.85)`}],{duration:duration+300,easing:'cubic-bezier(.2,.7,.35,1)',fill:'forwards'}));
   }
   sequence.tails.push(Promise.all(tasks).finally(()=>group.remove()));
   return pop;
@@ -120,7 +136,7 @@ function specialFxMark(t,sequence,duration){
   const mark=specialFxImage(group,'mark',x,y,108,108,{style:'mix-blend-mode:screen'})
     ||boardV3Child(group,'circle',{cx:x,cy:y,r:38,fill:'none',stroke:boardV3Color(t),'stroke-width':3});
   boardV3Origin(mark,x,y);
-  sequence.tails.push(animate(mark,[{opacity:0,transform:'scale(1.4) rotate(-30deg)'},{opacity:1,transform:'scale(1) rotate(0deg)',offset:.3},{opacity:1,transform:'scale(.96) rotate(20deg)',offset:.75},{opacity:0,transform:'scale(.6) rotate(40deg)'}],{duration:duration+140,easing:'ease-out'}).finally(()=>group.remove()));
+  sequence.tails.push(fxAnimate(mark,[{opacity:0,transform:'scale(1.4) rotate(-30deg)'},{opacity:1,transform:'scale(1) rotate(0deg)',offset:.3},{opacity:1,transform:'scale(.96) rotate(20deg)',offset:.75},{opacity:0,transform:'scale(.6) rotate(40deg)'}],{duration:duration+140,easing:'ease-out',fill:'forwards'}).finally(()=>group.remove()));
 }
 function specialFxRing(t,sequence,{size=280,duration=520,spin=240}={}){
   if(reduced)return;
@@ -128,14 +144,14 @@ function specialFxRing(t,sequence,{size=280,duration=520,spin=240}={}){
   const ring=specialFxImage(group,'ring',x,y,size,size,{style:'mix-blend-mode:screen'});
   if(!ring){group.remove();return;}
   boardV3Origin(ring,x,y);
-  sequence.tails.push(animate(ring,[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:1,transform:`scale(1) rotate(${spin/2}deg)`,offset:.4},{opacity:0,transform:`scale(1.5) rotate(${spin}deg)`}],{duration,easing:'ease-out'}).finally(()=>group.remove()));
+  sequence.tails.push(fxAnimate(ring,[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:1,transform:`scale(1) rotate(${spin/2}deg)`,offset:.4},{opacity:0,transform:`scale(1.5) rotate(${spin}deg)`}],{duration,easing:'ease-out'}).finally(()=>group.remove()));
 }
 // The Lõi marks every gem of its colour, holds a beat, then gathers them in three beats (nearest first).
 async function specialFxGather(act,sequence){
   const hits=act.hits.filter(t=>t!==act.tile),distance=t=>Math.max(Math.abs(t.r-act.tile.r),Math.abs(t.c-act.tile.c));
   hits.sort((a,b)=>distance(a)-distance(b)||a.r-b.r||a.c-b.c);
   const F=SPECIAL_FX.core;
-  if(!reduced){specialFxRing(act.tile,sequence,{duration:F.hold+F.beats*F.gap+F.after+200});hits.slice(0,24).forEach(t=>specialFxMark(t,sequence,F.hold+F.beats*F.gap));}
+  if(!reduced){specialFxRing(act.tile,sequence,{duration:F.hold+F.beats*F.gap+F.after+200,fill:'forwards'});hits.slice(0,24).forEach(t=>specialFxMark(t,sequence,F.hold+F.beats*F.gap));}
   await boardV3Pause(F.hold);
   const per=Math.ceil(hits.length/F.beats);
   for(let b=0;b<F.beats;b++){hits.slice(b*per,(b+1)*per).forEach(t=>specialFxHit(t,sequence,'core'));await boardV3Pause(F.gap);}
@@ -157,7 +173,7 @@ function specialFxPreview(t,lanes,sequence){
   for(let d=-lanes;d<=lanes;d++)for(const dir of ['row','col']){
     const r=dir==='row'?t.r+d:null,c=dir==='col'?t.c+d:null;if(r!=null&&(r<0||r>=SIZE)||c!=null&&(c<0||c>=SIZE))continue;
     const band=boardV3Child(group,'rect',dir==='row'?{x:0,y:r*100+8,width:800,height:84,rx:18,fill:SPECIAL_FX.colors.bolt}:{x:c*100+8,y:0,width:84,height:800,rx:18,fill:SPECIAL_FX.colors.bolt});
-    tasks.push(animate(band,[{opacity:0},{opacity:.22,offset:.6},{opacity:0}],{duration:SPECIAL_FX.combo.preview+40,easing:'ease-in-out'}));
+    tasks.push(fxAnimate(band,[{opacity:0},{opacity:.22,offset:.6},{opacity:0}],{duration:SPECIAL_FX.combo.preview+40,easing:'ease-in-out',fill:'forwards'}));
   }
   sequence.tails.push(Promise.all(tasks).finally(()=>group.remove()));
 }
@@ -175,7 +191,7 @@ specialEffect = async function specialEffectV4(act,sequence){
       for(const g of act.turn.tiles){g.special=act.turn.kind;g.dir=act.turn.dir;paintTile(g);if(!reduced)specialFxMark(g,sequence,SPECIAL_FX.core.hold+80);}
       await boardV3Pause(SPECIAL_FX.core.hold);return;
     }
-    if(x==='bomb'&&y==='bomb')await specialFxBloom(t,T.bombRadius+1,act.hits,sequence,{duration:SPECIAL_FX.combo.blast*.45,kind:'combo'});
+    if(x==='bomb'&&y==='bomb')await specialFxBloom(t,T.bombRadius+1,act.hits,sequence,{duration:SPECIAL_FX.combo.blast*.45,kind:'combo',fill:'forwards'});
     else{
       // Sao+Sao: a band of 3 rows and 3 columns; Sao+Bom: 5 and 5. Rows sweep first, columns a beat after.
       const lanes=(T.boltMode==='wide'?1:0)+(x==='bomb'||y==='bomb'?1:0);

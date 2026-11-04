@@ -5,3 +5,6 @@
 @keyframes special-dir-breathe{50%{opacity:.62;scale:.92}}
 .reduced-motion .tile.special.bolt .special-dir,html.reduce-motion .tile.special.bolt .special-dir{animation:none}
 .special-gallery-note{margin:0;padding:8px 10px;font-size:12px;line-height:1.45;color:#e8dcc0;border-top:1px solid #8b96734d}
+/* While a special plays, the COMBO cue shrinks and sits at the board's top edge, dimmed, so the blast stays the star. */
+.special-playing .combo-cue{top:2px;scale:.68;filter:saturate(.8) brightness(.85)}
+.special-playing .combo-cue::before{opacity:.35}

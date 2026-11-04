@@ -379,7 +379,13 @@ specialEffect = async function specialEffectV3(act,sequence){
 clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
   const focused=document.activeElement,hadFocus=focused?.classList.contains('tile');
   const focusRow=hadFocus?Number(focused.getAttribute('aria-rowindex'))-1:0,focusCol=hadFocus?Number(focused.getAttribute('aria-colindex'))-1:0;
-  if(typeof boardComboStart==='function')await boardComboStart(plan,chain);
+  // A special fires at once: its COMBO intro (about 850 ms) plays alongside the blast instead of before it (owner 05/11).
+  // Plain matches keep the intro first, so nothing else changes pace.
+  const special=plan.acts.length>0||!!plan.fusion,intro=typeof boardComboStart==='function'?boardComboStart(plan,chain):null;
+  // The overlapping intro is never waited on, so the refill is not held back by it; it removes its own cue.
+  if(intro&&!special)await intro;else intro?.catch(()=>{});
+  // While a special plays, the COMBO cue is small and up out of the blast's way (Codex review 4).
+  $('boardFrame')?.classList.toggle('special-playing',special);
   const targets=new Set(plan.targets),cleared=new Set(),sources=new Set(plan.acts.map(a=>a.tile)),primed=new Set(),tails=[];
   const affected=new Set(plan.acts.flatMap(a=>a.hits));
   const beat=boardV5ImpactBeat(targets.size),charge=BOARD_V5_PACING.charge;
@@ -398,7 +404,8 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
       {transform:'scale(1)',opacity:1,filter:'brightness(1)'},
       {transform:'scale(1.06)',opacity:1,filter:'brightness(1.2)',offset:.25},
       {transform:'translateY(-3px) scale(1.1)',opacity:0,filter:'brightness(1.05)'}
-    ],{duration:BOARD_V5_PACING.dissolve,easing:'ease-out'}).then(()=>{t.el.style.visibility='hidden';}));
+    // Held at its end (fill), so a busy frame between the fade and the hide never shows the gem again.
+    ],{duration:BOARD_V5_PACING.dissolve,easing:'ease-out',fill:'forwards'}).then(()=>{t.el.style.visibility='hidden';}));
   };
   const ordinary=plan.targets.filter(t=>!sources.has(t)&&!affected.has(t)).sort((a,b)=>a.r-b.r||a.c-b.c);
   if(ordinary.length){
@@ -418,6 +425,7 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
     await boardV3Charge({tile:x.tile,kind:x.kind},BOARD_V5_PACING.creation[x.kind]||BOARD_V5_PACING.creation.bolt,'creation');
   }
   await boardV3Pause(BOARD_V5_PACING.settle);
+  $('boardFrame')?.classList.remove('special-playing');
   await gravity();
   if(typeof boardComboSettle==='function')await boardComboSettle(plan,chain);
   if(hadFocus)focusTile(board[Math.max(0,Math.min(SIZE-1,focusRow))][Math.max(0,Math.min(SIZE-1,focusCol))]);
