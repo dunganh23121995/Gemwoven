@@ -116,3 +116,6 @@ body.ambience-paused .aura-motes i{animation-play-state:paused}
    which otherwise lie over it and dull and soften it: it used to rise above them only under the pointer (the
    button hover's z-index 3). Home hero, hero and skill screens, arena fighters. */
 [data-node="home.hero"],[data-node$=".hero-model"],[data-node^="arena.fighter-"]{z-index:3}
+
+/* Mika's flame-ribbon band (owner 04/11: jittery, blurry, faint) is off until her drawn element aura replaces it; the soft halo stays. */
+[data-hero-element="fire"] .form-aura-band{display:none!important}
