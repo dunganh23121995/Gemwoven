@@ -209,8 +209,8 @@
     "sha256": "bca3581461229f1610bbb8a0a871eded1ac8c6efaf30132b52359ce9a42fe572"
   },
   "spirit-rise": {
-    "file": "hero-forms/transform/spirit-rise.wav",
-    "duration": 4.2,
+    "file": "hero-forms/transform/spirit-rise-b3.wav",
+    "duration": 4.7,
     "beat": "the guardian spirit rises (every hero, BIẾN THÂN pressed)",
     "license": "CC0-1.0",
     "sources": [
@@ -229,9 +229,9 @@
         "sha256": "d821aff68fb85fd10505c9f8ff844d9515451a14dd39882c5e0fb870dba85078"
       }
     ],
-    "processing": "surge 0.05-1.00 s (50 Hz high-pass, 5000 Hz low-pass) + boom 0.00-3.60 s at 0.60 s (25 Hz high-pass, 2500 Hz low-pass), edge fades, one gain",
+    "processing": "the owner-approved preview assets/gemwoven/raw/transform2-fire/spirit-sound-preview-b3.mp3 decoded as is (surge 719560 + boom 378558 at 0.60 s, loudest at 0.88 s)",
     "peak": 0.89,
     "rms": 0.107,
-    "sha256": "ddb9c3abe6e6f549677287829d45f87a4121cf9d0128639448f689a319ea9edb"
+    "sha256": "3c0887a3c51ab685aa84ccac1c774c7bdc060d9275667eded3c95b9429d128a6"
   }
 }

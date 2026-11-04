@@ -132,6 +132,15 @@ BOOM_B = ('378558', 0.0, 3.6, 25, .003, 1.2, 2500)
 RISES = {'b2': (('431976', 0.0, 1.05, 50, .25, .3, 5000), .7), 'b3': (('719560', 0.05, 1.0, 50, .2, .25, 5000), .6)}
 rise, at = RISES['b3']
 surge_and_boom('spirit-rise', rise, BOOM_B, at, 'the guardian spirit rises (every hero, BIẾN THÂN pressed)', rms=.11, boom_gain=1.0)
+# The game plays the owner-approved preview itself, decoded unchanged (owner 04/11: "Tôi cần âm trong link"), under a new
+# file name so no cached older take is served. Its boom is loudest at 0.88 s; the spirit dissolves into mist on that beat.
+import subprocess
+_b3 = AUDIO / 'hero-forms/transform/spirit-rise-b3.wav'
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(AUDIO.parent.parent / 'assets/gemwoven/raw/transform2-fire/spirit-sound-preview-b3.mp3'),
+                '-ar', '32000', '-ac', '2', '-c:a', 'pcm_s16le', str(_b3)], check=True)
+(AUDIO / 'hero-forms/transform/spirit-rise.wav').unlink(missing_ok=True)
+USED['spirit-rise'].update(file='hero-forms/transform/spirit-rise-b3.wav', sha256=hashlib.sha256(_b3.read_bytes()).hexdigest(),
+                           processing='the owner-approved preview spirit-sound-preview-b3.mp3 decoded as is (boom loudest at 0.88 s)')
 SPARES = {}
 rise, at = RISES['b2']
 surge_and_boom('spirit-rise-gio-vut-tram', rise, BOOM_B, at, 'Linh thần xuất hiện · gió vút trầm (dự phòng)', rms=.11, boom_gain=1.0,

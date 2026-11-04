@@ -53,10 +53,9 @@ function transformSilMirror(hero,back){const body=hero.querySelector('.sprite-bo
   back.style.setProperty('--u',(hero.offsetHeight*(parseFloat(getComputedStyle(back).getPropertyValue('--h'))||.75)/100).toFixed(2)+'px');
   const copy=()=>{const cs=getComputedStyle(body);for(const el of sils){el.style.backgroundImage=cs.backgroundImage;el.style.backgroundSize=cs.backgroundSize;el.style.backgroundPosition=cs.backgroundPosition;}};
   copy();back._sil?.disconnect();back._sil=new MutationObserver(copy);back._sil.observe(body,{attributes:true,attributeFilter:['style','class']});}
-// The spirit-rise cue every hero shares plays alone, as the owner approved it (preview b3); the hero's own element cue
-// follows softly as the aura kindles, after the boom, so it never masks the spirit (owner 04/11).
-function transformSounds(key){playCastSound('spirit','rise',{volume:.34,pan:-.1});
-  setTimeout(()=>playCastSound(key,'transform',{volume:.14,pan:-.2}),1900);}
+// Biến Thân sounds only the spirit-rise cue every hero shares, exactly the approved preview b3 (owner 04/11: no hero
+// flame cue on top of or after it). The hero's own cue is kept for the end of the transformed turns.
+function transformSounds(){playCastSound('spirit','rise',{volume:.34,pan:-.1});}
 // Puts the look on the hero for the current phase; the actor is redrawn often, so it is put back whenever missing.
 function transformLookSync(flare=false){
   const hero=actor('hero');if(!hero)return;
