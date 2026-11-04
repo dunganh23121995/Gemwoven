@@ -28,7 +28,7 @@ function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setI
   assert.throws(()=>e.refineCopy('ice',4),/2 bản 3★/);assert.throws(()=>e.refineCopy('novice',2),/Hiro/);
   edit(p=>{p.heroes.ice.stars=3;});e.starUp('ice');assert.equal(e.read().heroes.ice.stars,4);assert.deepEqual(M.spares(e.read().heroes.ice),[0,1,0,0,0,0]);
 
-  assert.equal(M.heroForm('fire',e.read().heroes.fire),3);assert.equal(M.lookForm('fire',e.read().heroes.fire),3,'A newly unlocked form is shown');
+  assert.equal(M.heroForm('fire',e.read().heroes.fire),3);assert.equal(M.lookForm('fire',e.read().heroes.fire),1,'A town look the player chose stays when a new form opens (form ceremony round)');
 }
 { // Hiro's copies come from play: newbie week, daily campaign quest, chapter chests, endless floors.
   const {engine:e,edit}=fixture();

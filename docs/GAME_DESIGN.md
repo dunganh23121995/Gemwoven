@@ -70,7 +70,7 @@ Trang bị / Bảo bối / Ngọc / Báu vật ──► chỉ số; KHÔNG đ�
 - *Nâng sao rồi còn dùng hình thái cũ?* **Có, miễn phí** [Đêm nay]. Hình thái đã mở không mất. Chọn
   **diện mạo ở thị trấn** (Home, Tướng, bản đồ, sau này Quảng Trường) bằng nút "Khoác diện mạo này" trong
   bảng Hình thái. **Trong trận luôn là hình thái cao nhất** — vì hoạt cảnh tuyệt kỹ gắn với bộ kỹ năng
-  của từng hình thái; trộn dáng cũ với kỹ năng mới sẽ sai hình. Lên sao mở hình thái mới thì tự khoác hình mới.
+  của từng hình thái; trộn dáng cũ với kỹ năng mới sẽ sai hình. Lên sao mở hình thái mới: chưa chọn diện mạo thì tự khoác hình mới; đã chọn diện mạo cũ thì giữ lựa chọn ấy (vòng Nghi thức biến hình).
 - *Chế độ biến hình trong trận?* Có, qua nhánh **Chân Thân** (2.4).
 
 ### 1.2 Hiro và người chơi miễn phí [Đêm nay]
@@ -1037,3 +1037,21 @@ lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được;
   nút Luyện, "Thiếu n bản 1★").
 - **Chủ dự án duyệt**: (1) 6★ tướng triệu hồi = 31 bản dư (~2–3 năm miễn phí với nguồn hiện có); (2) Hiro giữ 19 bản; (3) người
   đã lên sao theo luật cũ giữ nguyên, không truy thu.
+
+### Vòng Nghi thức biến hình (04/11, "triệu hồi có nên ra hình thái cao? mở hình thái có hiệu ứng như triệu hồi?") — Claude + Codex thống nhất, đã làm
+
+- **Triệu hồi luôn ra 1★ hình thái 1.** Banner được khoe hình thái 3 với nhãn "Mở tại 6★" — chưa làm vì màn Triệu Hồi đang khóa.
+- **Nghi thức** (`src/gemwoven/form-ceremony.js`, mockup `assets/gemwoven/raw/form-ceremony/`): chạy toàn màn khi tướng chính
+  3→4★ (hình thái 2, 4,8 giây) hoặc 5→6★ (hình thái 3, 6 giây), dựng riêng, màn Triệu Hồi không đổi. Nhịp: hình thái cũ trên
+  vòng phép (Codex vẽ `assets/gemwoven/ceremony/rune-circle.webp`) → vòng gom sáng, chỉ sao mới bật → sáng ấm che thân, chuyển
+  sang showcase đã khóa của hình thái mới (fitBody, giữ cỡ thân theo đầu, không kéo méo) → sáng rút, lộ toàn thân, tia sáng sau
+  lưng, tên hình thái (6★ thêm hào quang sau lưng) → bảng kết quả: sao, tên hình thái, tuyệt kỹ mới, hệ số, đặc tính 6★, "Tiếp tục".
+- **Âm:** đúng các bản ghi CC0 của triệu hồi, mỗi nhịp một bản (bell, rise, bell cho sao mới, sting của tướng, gold / strike 6★,
+  touch), theo âm lượng hiệu ứng và nút tắt âm của hub.
+- **Bỏ qua** hiện ngay, hủy mọi nhịp, âm và vòng lặp, mở thẳng bảng kết quả; Esc cũng vậy. **Giảm chuyển động:** ảnh tĩnh,
+  cross-fade 0,6 giây rồi bảng. Ánh sáng vàng ấm, không chớp trắng, lớp tối tối đa 85%; ẩn tướng, sao, bảo bối và tên hình thái
+  của màn nền để không thấy hai tướng.
+- **Giao dịch lưu trước khi chạy cảnh** (tải lại không trừ lần nữa, không chạy lại cảnh). **Diện mạo đã chọn giữ nguyên**
+  (trước đây lên sao tự khoác hình mới). Bảng Hình thái có "Xem lại nghi thức" cho hình thái đã mở, không cấp gì. Không gọi là
+  kỹ năng Biến Thân trong trận. Luyện bản dư bằng tay chỉ có nhịp ghép 0,5 giây trên thẻ mới.
+- Codex: mockup 8,6; bản dựng 8,1/8,4 → **8,6/8,8** (điện thoại/Studio).

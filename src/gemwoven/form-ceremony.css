@@ -1,0 +1,70 @@
+/* Nghi thức biến hình (form-ceremony.js): a full-stage overlay in 941×1672 units. Layers: veil → element glow → rune circle →
+   hero → foreground light → stars, words and buttons. The light is warm gold, never a white flash; the veil stays ≤ 85%. */
+#stage.fc-open #scene .has-hero-show,#stage.fc-open #scene [data-node="upgrade.hero-stars"],#stage.fc-open #scene [data-node="upgrade.relic"],#stage.fc-open #scene [data-node="upgrade.hero-caption"]{visibility:hidden}
+.fc-root{position:absolute;inset:0;z-index:60;overflow:hidden;pointer-events:auto;--el:255,180,90}
+.fc-root>*{position:absolute;pointer-events:none}
+.fc-veil{inset:0;background:radial-gradient(ellipse 60% 42% at 50% 46%,rgba(36,18,8,.55),rgba(14,8,4,.85) 75%);opacity:0;transition:opacity .6s ease}
+.fc-root.in .fc-veil{opacity:1}
+.fc-glow{left:0;top:0;width:941px;height:1672px;opacity:0;mix-blend-mode:screen;transition:opacity 1.2s ease}
+.fc-root.gather .fc-glow{opacity:.55}.fc-root.reveal .fc-glow{opacity:.8}.fc-root.done .fc-glow{opacity:.45}
+.fc-halo{left:170px;top:270px;width:600px;height:600px;opacity:0;transform:scale(.6);transition:opacity 1s ease,transform 1.2s cubic-bezier(.2,.8,.3,1);filter:sepia(1) saturate(2.2) hue-rotate(-12deg) brightness(.9)}
+.fc-root.gather .fc-halo{opacity:.4;transform:scale(.9)}.fc-root.reveal .fc-halo{opacity:.5;transform:scale(1.05)}.fc-root.done .fc-halo{opacity:.3;transform:scale(1)}
+.fc-circle{left:190px;top:660px;width:560px;height:280px;opacity:.35;transform:scale(.88);transition:opacity .9s ease,transform 1.2s cubic-bezier(.2,.8,.3,1),filter .9s ease;filter:drop-shadow(0 0 0 rgba(255,200,110,0))}
+.fc-root.gather .fc-circle{opacity:1;transform:scale(1);filter:drop-shadow(0 0 10px rgba(255,196,96,.9)) drop-shadow(0 0 26px rgba(var(--el),.55))}
+.fc-root.done .fc-circle{filter:drop-shadow(0 0 6px rgba(255,196,96,.6))}
+.fc-heroes{left:170px;top:0;width:600px;height:800px}
+.fc-hero{position:absolute;left:0;top:0;width:600px;height:800px;display:block;transition:opacity .5s ease,filter .5s ease}
+.fc-hero.new{opacity:0}
+.fc-root.cover .fc-hero.old{filter:brightness(1.6) sepia(.6) saturate(1.3)}
+.fc-root.swap .fc-hero.old{opacity:0}.fc-root.swap .fc-hero.new{opacity:1;filter:brightness(1.45) sepia(.5)}
+.fc-root.clear .fc-hero.new,.fc-root.reveal .fc-hero.new{filter:none;transition:opacity .5s ease,filter 1.1s ease}
+.fc-root.is-still .fc-hero{transition:opacity .6s ease}
+/* The light that covers the body while the forms change: warm, centred on the chest so the face shows again at once. */
+.fc-cover{left:260px;top:350px;width:420px;height:420px;opacity:0;transform:scale(.4);filter:sepia(1) saturate(2.2) hue-rotate(-12deg);transition:opacity .35s ease,transform .5s cubic-bezier(.2,.8,.3,1)}
+.fc-root.cover .fc-cover{opacity:.82;transform:scale(1)}.fc-root.clear .fc-cover,.fc-root.reveal .fc-cover{opacity:0;transform:scale(1.35);transition:opacity .9s ease,transform .9s ease}
+/* Weapon accent: one streak sweeping the upper body when the new form stands. */
+.fc-streak{left:200px;top:300px;width:540px;height:540px;opacity:0;transform:rotate(-38deg) scale(.6);filter:sepia(1) saturate(2) hue-rotate(-10deg)}
+.fc-root.reveal:not(.skipped) .fc-streak{animation:fc-streak 1s ease-out .15s both}
+@keyframes fc-streak{0%{opacity:0;transform:rotate(-38deg) scale(.5)}35%{opacity:.6}100%{opacity:0;transform:rotate(-38deg) scale(1.25)}}
+.fc-aura{left:200px;top:300px;width:540px;height:540px;opacity:0;background:var(--sheet) 0 0/800% 100% no-repeat;animation:fc-aura 1.28s steps(8) infinite paused}
+.fc-root.reveal .fc-aura{opacity:.6;animation-play-state:running;transition:opacity .6s ease}.fc-root.done .fc-aura{opacity:.4}
+@keyframes fc-aura{to{background-position:100% 0}}
+.fc-sparks{left:220px;top:390px;width:500px;height:420px;opacity:0}
+.fc-sparks>i{position:absolute;left:var(--x);bottom:0;width:var(--s);height:var(--s);background:0 0/800% 100% no-repeat;animation:fc-rise 1.8s ease-out var(--d) infinite,fc-twinkle .68s steps(8) infinite}
+.fc-root.gather .fc-sparks{opacity:1}.fc-root.done .fc-sparks{opacity:.5}
+@keyframes fc-rise{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-360px);opacity:0}}
+@keyframes fc-twinkle{to{background-position:100% 0}}
+.fc-root.is-still .fc-sparks,.fc-root.is-still .fc-streak,.fc-root.is-still .fc-aura{display:none}
+/* Stars over the head: the old ones steady, the new one ignites (only that one). */
+.fc-stars{left:0;width:941px;display:flex;justify-content:center;gap:10px;opacity:0;transition:opacity .6s ease}
+.fc-root.gather .fc-stars{opacity:1}.fc-root.done .fc-stars{opacity:0}
+.fc-star{width:70px;height:66px;object-fit:contain;filter:grayscale(1) brightness(.45);transition:filter .5s ease}
+.is-six .fc-star{width:62px;height:58px}
+.fc-star.on{filter:drop-shadow(0 2px 3px #0009)}
+.fc-root.ignite .fc-stars .fc-star.new{filter:drop-shadow(0 0 8px #ffc04a) drop-shadow(0 0 18px rgba(var(--el),.8));animation:fc-ignite .7s cubic-bezier(.2,.9,.3,1)}
+@keyframes fc-ignite{0%{transform:scale(.5)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+.fc-root.is-still .fc-star.new{animation:none}
+.fc-name{left:0;width:941px;top:952px;text-align:center;font:900 48px/1.1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 3px #1d0d04,0 0 14px rgba(var(--el),.7);opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.fc-root.reveal .fc-name{opacity:1;transform:none}.fc-root.settle .fc-name,.fc-root.done .fc-name{opacity:0;transition-duration:.3s}
+/* Buttons and the result plate are drawn kit pieces (ui-kit.js vars). */
+.fc-skip{pointer-events:auto;right:36px;top:118px;width:178px;height:66px;border:0;padding:0 0 4px;background:var(--kit-btn-gold) center/100% 100% no-repeat;font:900 28px Cambria,serif;color:#4a2a10;text-shadow:0 1px #ffe9b0;cursor:pointer;filter:drop-shadow(0 4px 4px #0008)}
+.fc-skip:active{background-image:var(--kit-btn-gold-down,var(--kit-btn-gold))}
+.fc-skip[hidden],.fc-plate[hidden]{display:none}
+.fc-plate{pointer-events:auto;left:96px;top:944px;width:749px;padding:84px 40px 30px;background:#f0dfba padding-box;display:flex;flex-direction:column;align-items:center;gap:14px;border:solid transparent;border-width:40px 36px;border-image:var(--kit-parchment) 60 fill / 40px 36px stretch;filter:drop-shadow(0 10px 16px #000a);animation:fc-plate .45s cubic-bezier(.2,.9,.3,1)}
+@keyframes fc-plate{from{opacity:0;transform:translateY(40px)}}
+.fc-root.is-still .fc-plate{animation:none}
+.fc-head{position:absolute;left:50%;top:-74px;width:560px;height:118px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;padding-top:40px;background:var(--fc-sign) center/100% 100% no-repeat;font:900 38px Cambria,serif;color:#ffe9bc;text-shadow:0 2px 3px #1d0d04}
+.fc-plate-stars{display:flex;gap:8px}.fc-plate-stars .fc-star{width:58px;height:54px}
+.fc-form{min-width:420px;padding:12px 44px 16px;text-align:center;background:var(--kit-plaque) center/100% 100% no-repeat;font:900 40px Cambria,serif;color:#ffe3a0;text-shadow:0 2px 2px #1d0d04}
+.fc-skill{display:flex;align-items:center;gap:16px;width:100%;padding:8px 10px;border:solid transparent;border-width:14px;border-image:var(--kit-stat) 26 28 fill / 14px stretch}
+.fc-skill>img{width:96px;height:96px;object-fit:contain;flex:none;filter:drop-shadow(0 3px 3px #0007)}
+.fc-skill>span{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.fc-skill small{font:800 32px Cambria,serif;color:#6a4a26}
+.fc-skill b{font:900 38px/1.1 Cambria,serif;color:#3f2410}
+.fc-skill em{font:900 34px Cambria,serif;font-style:normal;color:#3f2410;padding:4px 30px 6px;background:var(--kit-ribbon-info) center/100% 100% no-repeat}
+.fc-skill q{font:700 31px/1.22 Cambria,serif;color:#5a3a1a;quotes:none}
+.fc-go{width:330px;height:104px;border:0;padding:0 0 6px;background:var(--kit-btn-gold) center/100% 100% no-repeat;font:900 40px Cambria,serif;color:#4a2a10;text-shadow:0 1px #ffe9b0;cursor:pointer;filter:drop-shadow(0 5px 5px #0008)}
+.fc-go:active{background-image:var(--kit-btn-gold-down,var(--kit-btn-gold))}
+.fc-replay{margin-top:8px}
+/* Skip stops every loop too (sparks gone, aura still). */
+.fc-root.skipped .fc-sparks{display:none}.fc-root.skipped .fc-aura{animation-play-state:paused}

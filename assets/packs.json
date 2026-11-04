@@ -3973,6 +3973,7 @@
     "assets/gemwoven/calendar/cross.webp",
     "assets/gemwoven/calendar/lock.webp",
     "assets/gemwoven/calendar/tray.webp",
+    "assets/gemwoven/ceremony/rune-circle.webp",
     "assets/gemwoven/forge/action-locked.webp",
     "assets/gemwoven/forge/action-ready.webp",
     "assets/gemwoven/forge/bench.webp",
@@ -4710,7 +4711,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 160829842
+   "bytes": 160971102
   },
   {
    "id": "hero-earth-f1",

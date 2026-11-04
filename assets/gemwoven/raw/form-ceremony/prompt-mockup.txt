@@ -1,0 +1,29 @@
+Create a production-quality UI mockup for Gemwoven's form-unlock ceremony.
+
+OUTPUT: Two portrait screens side by side, each 941×1672; total canvas 1882×1672, without a gutter, device frames or presentation captions.
+
+REFERENCES:
+Image 1: the supplied Heroes / Star Upgrade screen. Use it directly for the existing hall, layout, painted UI materials, typography and art style. Remove only the external letterboxing; preserve proportions.
+Image 2: the approved Mika form-2 showcase artwork. Preserve her exact face, fox ears, orange hair, tail, red-and-black gold-trimmed armor, sword and pose. Composite this artwork rather than redesigning her.
+
+BOTH SCREENS:
+This is a full-screen overlay on the existing Heroes screen. Keep the hall and interface recognizable beneath a dark translucent scrim, without blur. Suppress the underlying hero and duplicate star row. Keep Mika's established head-based body scale and feet anchored to the existing pedestal. Match the reference's crisp hand-painted fantasy style, bronze-gold ornament, carved wood and warm parchment.
+
+LEFT — FORM-2 REVEAL:
+Show Mika clearly revealed, full body and entire sword visible. Place a bronze-gold elliptical magic circle beneath her feet, projected at 2:1 width to height. Add restrained warm golden rays, a halo behind her and sparse sparks. Keep her face and weapon unobscured.
+Show exactly four foreground stars above her: three steady gold stars, the fourth newly igniting with a compact amber bloom.
+Place a clearly readable illustrated kit button labelled “Bỏ qua” at the upper right, above all effects.
+Use warm gold, never a white flash. Even at peak light, retain visible artwork beneath the veil; maximum veil opacity 85%.
+
+RIGHT — RESULT, SAME CEREMONY:
+Keep Mika visible above a compact lower result panel, with calm lighting and no active burst. Build the panel from illustrated parchment, a bronze-edged wooden plaque and a ribbon matching Image 1.
+Display these exact Vietnamese texts with correct diacritics:
+“Mở hình thái mới”
+“★★★★”
+“Hồ Diễm Kiếm Vệ”
+“Tuyệt kỹ mới: Hồ Diễm Long Trảm”
+“Tuyệt kỹ ×1,1”
+One prominent illustrated button: “Tiếp tục”.
+Keep the panel below her feet, with generous readable spacing.
+
+No extra rewards, currencies, summon crystals, additional characters or additional action buttons. Leave the Summon navigation item unchanged. No flat modern cards or generic wireframe UI.

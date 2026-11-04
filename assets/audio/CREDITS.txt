@@ -949,3 +949,7 @@ Build: python scripts/prepare_hiro_star_form_sounds.py. Sources (CC0 1.0) in sou
   f3-swing    #475135 "FX - Swoosh - Low Pitch" by bolkmar, https://freesound.org/people/bolkmar/sounds/475135/
   f3-crest    #390731 "Glass Tinkle 1.mp3" by FunWithSound, https://freesound.org/people/FunWithSound/sounds/390731/
   f3-shatter  #686849 "glass shatter" by ccen18, https://freesound.org/people/ccen18/sounds/686849/
+
+Form ceremony sounds (2026-11-04): the Tướng screen's form-unlock scene (src/gemwoven/form-ceremony.js) plays the
+summon reveal's own recordings, unchanged (assets/audio/summon: bell, rise, sting-<hero>, gold, strike, touch; sources and
+licences in assets/audio/summon/summon-sounds.json). One recording per beat, no new files, no extra processing.

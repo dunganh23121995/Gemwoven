@@ -453,7 +453,8 @@ ${price}`);}
           `<span class="sp-fee"><span><img src="${A[M.RESOURCES.gold[1]]?.file||''}" alt="">${need(owned(p,'gold'),f.gold)}</span><span><img src="${A[M.RESOURCES.essence[1]]?.file||''}" alt="">${need(owned(p,'essence'),f.essence)}</span></span>`+
           `<button type="button" class="gw-btn sp-go" data-to="${s+1}" ${ok?'':'disabled'}>Luyện</button></div>`;}).join('')+
         (plan&&!plan.ok?`<p class="sp-short">Thiếu ${plan.rawShort} bản 1★</p>`:'');
-      modal.body.querySelectorAll('.sp-go').forEach(b=>b.onclick=()=>{try{G.engine.refineCopy(hero,+b.dataset.to);}catch(e){ctx.toast?.(e.message);}draw();ctx.render();});};
+      modal.body.querySelectorAll('.sp-go').forEach(b=>b.onclick=()=>{const to=+b.dataset.to;let ok=false;try{G.engine.refineCopy(hero,to);ok=true;}catch(e){ctx.toast?.(e.message);}draw();ctx.render();
+        if(ok)document.dispatchEvent(new CustomEvent('gemwoven:spare-merged',{detail:{el:modal.body.querySelectorAll('.sp-step')[to-2]?.querySelector('.sp-card:last-of-type')}}));});};
     draw();modal.present();
   }
   const oldHandle=G.handle;

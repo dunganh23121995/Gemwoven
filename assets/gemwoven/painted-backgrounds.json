@@ -3124,5 +3124,16 @@
       "assets/gemwoven/raw/season-mika/pass-ui/prompt.txt"
     ],
     "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+  },
+  "fc-rune-circle": {
+    "file": "assets/gemwoven/ceremony/rune-circle.webp",
+    "width": 1024,
+    "height": 454,
+    "textless": true,
+    "source": "assets/gemwoven/raw/form-ceremony/rune/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-ceremony/rune/prompt-used.txt"
+    ],
+    "purpose": "Rune circle under the hero in the form-unlock ceremony (owner 04/11, Claude + Codex)."
   }
 }
