@@ -1,0 +1,8 @@
+Image 1 is a young woman guide with cat ears and a cat tail standing, holding a rolled map on a plain background. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:
+- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the ears, the hair on top of the head, the bangs and the hair ornaments on the head. The face is never any other colour.
+- pure WHITE #FFFFFF: the body: neck, torso, chest, waist, the upper skirt or coat, shoulders, both arms and both hands.
+- pure GREEN #00FF00: both legs below the skirt with the boots: they stand on the ground and never move.
+- pure YELLOW #FFFF00: the rolled map scroll only, without the hands.
+- pure RED #FF0000: the long cat tail from its base to its tip, the long hair locks falling beside her face and shoulders, the long free ends of the scarf.
+- pure CYAN #00FFFF: the skirt hem and coat-dress tails below the waist, the short shoulder cape edge, the belt pouch, small hair strands over the face.
+Background solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.

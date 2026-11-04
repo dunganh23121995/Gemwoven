@@ -1,0 +1,9 @@
+Image 1 is the character to redraw (the edit target). Image 2 shows the game heroes: their clean painted chibi-anime fantasy style and compact proportions are the style reference.
+
+Redraw this exact Gemwoven guide, preserving her identity, beautiful adult face, copper hair, cat ears, ginger-and-cream tail, costume, palette, props and welcoming pose. Keep her facing SCREEN-RIGHT, map in the SCREEN-RIGHT hand and open greeting hand on SCREEN-LEFT exactly as pictured.
+
+Change her proportions into a compact FOUR-HEAD-TALL adult chibi character: anatomical crown to chin equals one quarter of crown-to-soles height, excluding ears. Reduce the remaining body length by approximately one quarter relative to the existing head, redrawing the torso and legs anatomically rather than squashing the picture. Preserve developed adult shoulders, a defined adult jaw, rounded hips and her existing naturally full bust beneath fully closed clothing. She must clearly read as a beautiful woman around 25; retain her eye size and mature facial structure.
+
+Preserve the teal coat-dress, cream blouse, cape, scarf, diamond brooch, leggings, boots and pouch. Keep broad decoration readable at 180 map pixels. Separate free hair tips and scarf ends from arms where practical. Both soles remain planted; torso, bust and pelvis stay stable for a later baked mesh idle. Hair, ears, tail, scarf and skirt may sway; map and gripping hand form one rigid unit.
+
+Match the heroes’ (Image 2) clean painted chibi-anime fantasy rendering. Output one complete opaque character centred within the central 70% of both canvas dimensions on flat #FF00FF. No ground, shadow, text, effects, alternate views or rig markings.

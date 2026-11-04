@@ -112,7 +112,7 @@
   },
   {
    "id": "lantern",
-   "name": "Bà Dệt Đèn",
+   "name": "Tơ Đèn",
    "x": 745,
    "y": 372,
    "r": 95
@@ -142,14 +142,14 @@
  "npcs": [
   {
    "id": "guide",
-   "name": "Mèo Hướng Dẫn",
+   "name": "Miu Dẫn Lối",
    "x": 300,
    "y": 1180,
    "zone": null
   },
   {
    "id": "weaver",
-   "name": "Bà Dệt Đèn",
+   "name": "Tơ Đèn",
    "x": 760,
    "y": 340,
    "zone": "lantern"

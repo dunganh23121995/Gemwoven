@@ -1,0 +1,13 @@
+{
+ "cols": 6,
+ "rows": 4,
+ "count": 24,
+ "frameDuration": 117,
+ "cell": 400,
+ "plaza": {
+  "height": 185,
+  "footY": 0.95,
+  "feetX": 0.47088,
+  "bodyHeight": 0.81875
+ }
+}

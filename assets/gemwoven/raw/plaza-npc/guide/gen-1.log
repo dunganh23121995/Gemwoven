@@ -1,0 +1,16 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\plaza-npc\\guide\\raw-master-1.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a403-8dd9-7c70-a1a4-4810a2b5d71a\\exec-0f33b6a0-d4f3-4952-9310-25bc0c953d43.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a403-3ff8-7eb2-b934-a9ef4e9735c3\\exec-86548952-1973-4a57-a6b4-9fef0c8a3129.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a403-a7e6-78f0-9c4c-e9f41565cd74\\exec-1fce4ecd-475e-4761-8606-cd9a05a9f90c.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a403-13c6-7f33-9cd4-9637960614d7\\exec-635334ff-ec3a-4c41-9b14-22e88224d440.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a402-8ae9-7093-b850-74f6f6bd7107\\exec-1ca0a6d7-7a30-4258-a663-1721b7e03f7f.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a403-9eb3-7bf1-9b55-c4e9e39e92a2\\exec-7464d5dd-e1c2-45d5-8533-120e5fee492e.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a403-2c84-70e3-8427-46712377444a\\exec-e2554367-1bb7-492c-bc39-b46d1287b408.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "seconds": 66.4
+}

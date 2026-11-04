@@ -1,0 +1,19 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\plaza-npc\\guide\\raw-master-5.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40e-4313-7ba2-aa68-4bda4ffc43ea\\exec-37eedd1b-4914-4e85-b12c-8dbb7a3dcadb.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40d-fe40-73f1-9104-947c2bc73583\\exec-ea4b2761-f9cc-4c5e-93fc-f9578dcab112.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40d-c46d-70a1-a467-83681b19cfd4\\exec-f68f3f6c-b894-4b7c-a6f1-63e560f6d0f4.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40d-cd1a-7a62-8064-f8177870740f\\exec-d124a8bc-37ab-445e-b1bd-c9da54561742.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40d-ef20-7103-af57-8d889c66c329\\exec-f43b678a-72c2-4392-b7d4-673aea3543e2.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40d-fdcf-7710-890b-898a403177c3\\exec-9ecf5068-fdf5-471d-9598-fd84a173a063.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40e-8a51-70e3-9d46-5b3a5db3beb1\\exec-e17de077-98db-4373-9400-edac3e95be03.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40e-430b-7e81-a60d-f2cb02c95b21\\exec-0c7372d7-e15c-43bb-8788-4661cbc108d3.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40d-8fbe-7703-82bc-9ab41a72ed3c\\exec-a6f571ca-369c-4d72-aef9-e255340758c8.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a40e-5192-7203-9f5c-57e99d122bea\\exec-f05dcd61-0302-4479-99ca-8b1d4acc8076.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "seconds": 76.1
+}

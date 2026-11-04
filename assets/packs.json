@@ -4569,6 +4569,8 @@
     "assets/gemwoven/plaza/map.webp",
     "assets/gemwoven/plaza/npc-guide.webp",
     "assets/gemwoven/plaza/npc-weaver.webp",
+    "assets/gemwoven/plaza/npcs/guide/rig/show/idle.webp",
+    "assets/gemwoven/plaza/npcs/weaver/rig/show/idle.webp",
     "assets/gemwoven/plaza/plaza.json",
     "assets/gemwoven/plaza/sprites.json",
     "assets/gemwoven/plaza/ui/action.webp",
@@ -4866,7 +4868,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 157871684
+   "bytes": 159389372
   },
   {
    "id": "hero-earth-f1",

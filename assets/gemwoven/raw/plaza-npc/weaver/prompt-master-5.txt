@@ -1,0 +1,9 @@
+Image 1 is the character to redraw (the edit target). Image 2 shows the game heroes: their clean painted chibi-anime fantasy style and compact proportions are the style reference.
+
+Redraw this exact Gemwoven lantern weaver, preserving her beautiful adult face, chestnut half-up hairstyle, brass hairpin, indigo dress, terracotta over-robe, ivory apron, three coloured-spool pockets and planted pose. Preserve SCREEN-LEFT facing, spindle in the SCREEN-RIGHT hand and lantern in the SCREEN-LEFT hand.
+
+Change her proportions into a compact FOUR-HEAD-TALL adult chibi character, excluding bun and ornaments: anatomical crown to chin occupies one quarter of crown-to-soles height. Shorten the torso, skirt and legs relative to the head, redrawing natural anatomy rather than vertically squashing the image. Preserve her mature jawline, existing eye size, adult shoulders, rounded hips and naturally full covered bust. She must clearly look approximately 25; retain the reference’s elegant adult expression.
+
+Simplify the spindle into one recognizable wound-thread bobbin on a tapered shaft with modest brass fittings. Preserve its upright placement and broad red, blue and gold ribbons. Keep the opaque lantern firmly gripped and clear of the skirt. Use fewer, broader embroidery motifs readable at 185 map pixels. Give ponytail tips, loose locks, ribbons and robe panels distinct free contours. Both soles remain planted; torso, bust and pelvis stay stable. Props and gripping hands remain rigid together.
+
+Match the heroes’ (Image 2) clean painted chibi-anime fantasy rendering. Fully clothed and tasteful. Output one complete opaque character centred within the central 70% of both canvas dimensions on flat #FF00FF. No ground, shadow, glow, text, alternate views or rig markings.

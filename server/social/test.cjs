@@ -54,7 +54,7 @@ async function walk(c,to){c.send({t:'move',to});await sleep(40);}
     b.send({t:'guild',op:'kick',id:a.id});assert.match((await b.wait('err')).text,/Không thể/);
     b.send({t:'guild',op:'checkin'});const checked=await b.wait(m=>m.t==='guild'&&m.guild.me.checked);assert.equal(checked.guild.exp,10);
     b.send({t:'guild',op:'checkin'});assert.match((await b.wait('err')).text,/đã điểm danh/);
-    b.send({t:'guild',op:'weave',color:'red'});assert.match((await b.wait('err')).text,/Bà Dệt Đèn/);
+    b.send({t:'guild',op:'weave',color:'red'});assert.match((await b.wait('err')).text,/Tơ Đèn/);
     b.send({t:'move',to:[745,380]});a.send({t:'move',to:[735,390]});await sleep(9000);
     b.send({t:'guild',op:'weave',color:'red'});await b.wait(m=>m.t==='toast'&&/dệt/.test(m.text));
     a.send({t:'guild',op:'weave',color:'blue'});const woven=await a.wait(m=>m.t==='guild'&&m.guild.lantern.threads.blue===1);assert.equal(woven.guild.lantern.tier,0);

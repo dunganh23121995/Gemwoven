@@ -557,7 +557,7 @@ nhắn riêng, mời giao hữu, mời vào bang.
 - **Sảnh Bang Hội** (cửa phía bắc) — bước vào cửa mở bảng bang.
 - **Sàn Giao Hữu** (vòng đá phía đông) — hai người cùng đứng trong vòng và bấm Sẵn sàng thì vào trận.
 - **Bảng Tin** (phía tây) — sự kiện, thông báo bang, bảng xếp hạng (từ máy chủ).
-- **Mèo Hướng Dẫn** (NPC) — giải thích Quảng Trường; NPC luôn có nhãn NPC.
+- **Miu Dẫn Lối** (NPC, cô gái tai mèo) — giải thích Quảng Trường; NPC luôn có nhãn NPC.
 - Vùng đi được khai báo bằng đa giác + vật cản tròn trong `assets/gemwoven/plaza/plaza.json`, đo trên ảnh đã vẽ.
 
 ### 14.4 Chat
@@ -592,7 +592,7 @@ nhắn riêng, mời giao hữu, mời vào bang.
 - **Cấp bang 1–10** từ kinh nghiệm (lên cấp n+1 cần thêm 1.000×n; điểm danh một lần/ngày/tài khoản do máy chủ chốt): tăng chỗ, mở bậc Cửa Hàng Bang (cống hiến đổi nguyên liệu, mảnh tướng cũ
   giới hạn tuần), mở hoạt động.
 - **Dệt Đèn Bang** [Có] — hoạt động bang đầu tiên (Codex đề xuất): mỗi ngày mỗi người chọn một trong ba màu sợi tại
-  **Bà Dệt Đèn** cạnh sảnh (máy chủ kiểm tra đứng đúng chỗ), tối đa 5 sợi/người/tuần. Đèn bang sáng bậc 1/2/3 ở 5/15/25
+  **Tơ Đèn** cạnh sảnh (máy chủ kiểm tra đứng đúng chỗ), tối đa 5 sợi/người/tuần. Đèn bang sáng bậc 1/2/3 ở 5/15/25
   sợi khi mỗi màu đạt ít nhất 1/3/5 sợi — bang nhỏ vẫn làm được, cần bàn nhau chọn màu, không cần hẹn giờ. Chưa trao
   tài nguyên (chỉ trang trí sảnh tuần) cho tới khi có máy chủ kinh tế.
 - **Hoạt động khác** (theo lịch máy chủ): *Boss Bang* hằng tuần (chung một thanh máu, xếp hạng sát thương trong bang),
@@ -604,7 +604,7 @@ nhắn riêng, mời giao hữu, mời vào bang.
 - `server/social/server.js` (Node + `ws`, cổng 8091, `/social`; sức khỏe ở `/social/health`), `npm test` trong `server/social`
   chạy hai máy khách thật qua đăng ký, di chuyển, kết bạn khi đứng gần, chat, chặn, bang, Dệt Đèn, giao hữu.
 - `src/gemwoven/social-protocol.js` dùng chung; `src/gemwoven/plaza.js` + `plaza.css` là màn Trò Chuyện.
-- Bản đồ, Mèo Hướng Dẫn, Bà Dệt Đèn, đèn bang 4 bậc: Codex vẽ (`gpt-6.1-sol` low), `assets/gemwoven/plaza/`.
+- Bản đồ, đèn bang 4 bậc: Codex vẽ (`gpt-6.1-sol` low), `assets/gemwoven/plaza/`. NPC (chủ dự án 04/11: dễ thương, xinh đẹp, đầy đặn, idle tĩnh chất lượng cao): **Miu Dẫn Lối** và **Tơ Đèn** là hai cô gái trưởng thành (~25 tuổi), cao ~4 đầu như phong cách tướng, mặc kín, Codex vẽ và duyệt (8,7 / 8,6, `assets/gemwoven/raw/plaza-npc/`); mỗi người một vòng nghỉ rig 24 khung (`assets/gemwoven/npc/npc_rig.py plaza-<id>`: tóc, tai, đuôi, khăn, dải lụa, gấu váy đung đưa; chân đứng yên; đồ cầm cứng theo tay), Codex duyệt 8,7 / 8,6; giảm chuyển động giữ khung đầu.
 - Nhân vật đi bằng vòng nghỉ rig 24 khung và sheet chạy của đúng hình thái đang khoác; cỡ thân theo đầu như trong trận
   (`build.py` xuất `assets/gemwoven/plaza/sprites.json`).
 - Giao hữu = chế độ `spar` trong `progression.js` + combat: tướng của bạn đấu bản sao tướng đối thủ do AI điều khiển,

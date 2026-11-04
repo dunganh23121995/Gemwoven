@@ -21991,5 +21991,51 @@
     "rows": 4,
     "count": 24,
     "ms": 1800
+  },
+  "plaza-npc-guide": {
+    "file": "assets/gemwoven/plaza/npcs/guide/rig/show/idle.webp",
+    "width": 2400,
+    "height": 1600,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 117,
+    "plaza": {
+      "height": 190,
+      "footY": 0.95,
+      "feetX": 0.55865,
+      "bodyHeight": 0.81875
+    },
+    "screen": "chat",
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-npc/guide/raw-master-5.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/plaza-npc/guide/prompt-master-5.txt",
+      "assets/gemwoven/plaza/npcs/guide/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "Miu Dẫn Lối: the square guide (help and naming sheets), a cat-eared young woman with a map. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-guide) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-guide.webp."
+  },
+  "plaza-npc-weaver": {
+    "file": "assets/gemwoven/plaza/npcs/weaver/rig/show/idle.webp",
+    "width": 2400,
+    "height": 1600,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 117,
+    "plaza": {
+      "height": 185,
+      "footY": 0.95,
+      "feetX": 0.47088,
+      "bodyHeight": 0.81875
+    },
+    "screen": "chat",
+    "textless": true,
+    "source": "assets/gemwoven/raw/plaza-npc/weaver/raw-master-5.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/plaza-npc/weaver/prompt-master-5.txt",
+      "assets/gemwoven/plaza/npcs/weaver/rig/show/parts-prompt.txt"
+    ],
+    "purpose": "Tơ Đèn: the guild lantern weaver by the guild hall, a young woman with a spindle and a lantern. Owner 04/11 asked for cute, beautiful plaza NPCs with a full figure and a high-quality resting idle: Codex drew the adult master (5 attempts, approved 8.7/8.6), the baked mesh rig (assets/gemwoven/npc/npc_rig.py plaza-weaver) only moves that picture; the still portrait is assets/gemwoven/plaza/npc-weaver.webp."
   }
 }

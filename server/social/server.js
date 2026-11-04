@@ -124,7 +124,7 @@ function createServer({port=8091,host='0.0.0.0',dataFile=path.join(__dirname,'da
         const before=S.guildLevel(g.exp);g.exp+=S.CHECKIN.exp;const after=S.guildLevel(g.exp);glog(g,`${a.name} điểm danh (+${S.CHECKIN.exp} kinh nghiệm bang).`);if(after>before)glog(g,`Bang lên cấp ${after}!`);
         save();pushGuild(gid);return toast(s,`Điểm danh: +${S.CHECKIN.contribution} cống hiến.`);}
       case 'weave':{
-        if(!me)return err(s,'Bạn chưa có bang.');if(S.zoneAt(geo,s.pos[0],s.pos[1])!=='lantern')return err(s,'Đến chỗ Bà Dệt Đèn cạnh sảnh bang để dệt.');
+        if(!me)return err(s,'Bạn chưa có bang.');if(S.zoneAt(geo,s.pos[0],s.pos[1])!=='lantern')return err(s,'Đến chỗ Tơ Đèn cạnh sảnh bang để dệt.');
         if(!S.LANTERN.colors.some(([c])=>c===m.color))return err(s,'Màu sợi không hợp lệ.');
         const L=g.lantern=g.lantern?.week===week()?g.lantern:{week:week(),threads:{},by:{},days:{}};
         if(L.days[s.id]===day())return err(s,'Hôm nay bạn đã dệt một sợi.');if((L.by[s.id]||0)>=S.LIMITS.lanternPerWeek)return err(s,`Mỗi tuần dệt tối đa ${S.LIMITS.lanternPerWeek} sợi.`);

@@ -1,0 +1,9 @@
+You are the art director of Gemwoven. Review the baked mesh-rig idles of the two approved plaza NPC masters (`assets/gemwoven/raw/plaza-npc/review-master-5.md`): Miu Dẫn Lối (guide) and Tơ Đèn (weaver). The owner asked for "idle tĩnh mức độ cao": a high-quality resting loop on one approved drawing (24 frames, 2.8 s loop, 117 ms per frame) in the manner of the heroes' rig idles: the drawing is only moved, never redrawn. Rules: no squash or stretch of the body; feet planted; held props move rigidly with the hand; hair, ears, tail, scarf, skirt, ribbons sway; gentle breathing only as a small bob; nothing reaches the cell edge; no tears or smudges (check zoomed).
+
+Image 1: guide frames 1, 7, 13, 19 (zoomed). Image 2: weaver frames 1, 7, 13, 19.
+Image 3: guide close-ups (rows = frames 1, 9, 13; columns = left hair+ear, face+map, scarf+greeting hand, tail).
+Image 4: weaver close-ups (rows = frames 1, 9, 13, 19; columns = bun+hairpin, spindle+ribbons, face+left hair, apron+right side).
+Image 5 / 6: motion heat maps (red = how much each pixel changes over the loop, grey = still) for guide / weaver.
+
+Score each idle /10 (pass ≥ 8.5): liveliness for a plaza NPC standing among walking players (is it too subtle to notice at ~185 px?), rule compliance, artefacts (tears, ghost edges, dark smudges, crumbs), appeal. If one fails, say exactly what to change in terms of these rig knobs (per NPC): T (loop seconds), bob and sway (shares of body height), tilt (head nod degrees), grip (held-prop swing degrees), loose (back-piece bend, radians; currently 0.2), front (sway of small front pieces; 0.06), lean (degrees about the hips), and which parts should be reassigned (e.g. a piece that should not swing). Current knobs: T 2.8, bob .006, sway .0025, tilt .8, grip .8, loose .2, front .06, lean .45 (bob, sway, tilt and lean are multiplied by 1.4 for this context).
+Answer in Markdown, concise.

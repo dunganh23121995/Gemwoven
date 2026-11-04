@@ -1,0 +1,22 @@
+{
+  "out": "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\plaza-npc\\weaver\\raw-master-2.png",
+  "original": "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-2f86-7f00-9b91-c62b913cbc00\\exec-2f24418f-edc1-42f9-ad2b-52819296aad4.png",
+  "extra_new_images": [
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a405-8415-7bf3-a1a5-b3dd43c86794\\exec-a5438298-4df0-4a6e-be18-dbc61d456642.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a405-57db-76c0-9cbb-3e86af06cb8c\\exec-1ccd9113-b0a5-46fe-a96c-b0f6bbb177fe.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-2f67-75d2-9c40-3215c4827ddf\\exec-ebfb2aaa-2266-43ea-9dd6-ab33a908d627.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-78e5-7e73-a745-0e2d1b6e0131\\exec-09a04240-8cc7-46d9-b1b8-768929775cd1.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-8533-7331-8838-9243bb88edaa\\exec-54e65a94-bc7e-4f81-9411-a0cb34baef1f.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-5b6c-7511-95aa-733f632ea677\\exec-ec6fd4a0-6a94-4c72-a816-780abcb0b602.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a405-3a05-7c82-a817-5def4c91b0db\\exec-d352dd8a-0edd-4910-820a-5775f69da938.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a405-deff-7713-90aa-67cb8eb73da4\\exec-4c884d67-0e33-44c8-be21-2f4b637b23e0.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-78e0-7073-bba5-34d277879ed7\\exec-4227ddbd-43f1-4d08-a801-bea0d4d37298.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-ab61-7281-b231-9a184876b483\\exec-83322a6c-5db1-48e1-8fb7-6045dc0f6d24.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a406-51ae-7f02-88ba-7f640b63cfa1\\exec-eaf6a69d-2fcc-4682-b84e-3c9ab32da2ab.png",
+    "C:\\Users\\dungc\\.codex\\generated_images\\01a1a405-bb50-79b0-a144-7c2df5cb252d\\exec-3aab326f-3975-4386-acae-e5b43fb783cf.png"
+  ],
+  "codex_exit": 0,
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "seconds": 84.1
+}

@@ -84,7 +84,7 @@ chạy trận (§12.4); client không gửi kết quả.
 {"t":"say","ch":"area","text":"Xin chào, đm"}
 {"t":"say","from":"9f3c2a1b7d004e11","name":"Lữ Khách An","tag":"DN","ch":"area","text":"Xin chào, **","at":1793667590259}
 {"t":"guild","op":"weave","color":"red"}
-{"t":"err","text":"Đến chỗ Bà Dệt Đèn cạnh sảnh bang để dệt."}
+{"t":"err","text":"Đến chỗ Tơ Đèn cạnh sảnh bang để dệt."}
 ```
 
 Kiểm thử đầy đủ: `cd server/social && npm install && npm test`.
