@@ -128,7 +128,7 @@ function openStatusTip(tile){
   // A spot that covers a gauge or a status row (with a 4 px margin) loses to any that does not; then a name plaque costs
   // more than a fighter. Each spot is
   // tried at three widths (the CSS width, 92% and 84%), since a narrower, taller note sometimes fits between the rows.
-  const blocks=[['.cs-tile,.health-track,.head-rage-track,.health-label,.shield-label',1000,4],['.cs-pvp',2,2],['#heroActor,#enemyActor',1,0]]
+  const blocks=[['.cs-tile,.health-track,.head-rage-track,.health-label,.shield-label',1000,4],['.cs-pvp',2,2],['.chud-back,.chud-gear',3,2],['#heroActor,#enemyActor',1,0]]
     .flatMap(([q,weight,m])=>[...document.querySelectorAll(q)].map(n=>[n.getBoundingClientRect(),weight,m])).filter(([b])=>b.width&&b.height);
   let best=null,bestCost=Infinity,w=0,h=0;
   const base=el.offsetWidth;
@@ -143,10 +143,12 @@ function openStatusTip(tile){
   // A small parchment point toward the chosen tile when the note sits right above or below it.
   const cx=r.left+r.width/2-best[0];if(cx>14&&cx<w-14){if(best[1]+h<=r.top)pointTip(el,'down',cx);else if(best[1]>=r.bottom)pointTip(el,'up',cx);}
 }
-document.addEventListener('click',e=>{const tile=e.target.closest?.('.cs-tile');if(tile){e.stopPropagation();if(statusTip?.anchor===tile)closeStatusTip();else openStatusTip(tile);return;}if(statusTip&&!e.target.closest?.('.cs-tip'))closeStatusTip();},true);
+// A tap focuses the tile first (focusin opens the note), then clicks it: that click must not close the note again.
+let statusFocusOpen=0;
+document.addEventListener('click',e=>{const tile=e.target.closest?.('.cs-tile');if(tile){e.stopPropagation();if(statusTip?.anchor===tile&&performance.now()-statusFocusOpen>400)closeStatusTip();else if(statusTip?.anchor!==tile)openStatusTip(tile);return;}if(statusTip&&!e.target.closest?.('.cs-tip'))closeStatusTip();},true);
 document.addEventListener('mouseover',e=>{const tile=e.target.closest?.('.cs-tile');if(tile&&matchMedia('(hover:hover)').matches&&statusTip?.anchor!==tile)openStatusTip(tile);});
 document.addEventListener('mouseout',e=>{const tile=e.target.closest?.('.cs-tile');if(tile&&statusTip?.anchor===tile&&!tile.contains(e.relatedTarget)&&matchMedia('(hover:hover)').matches)closeStatusTip();});
-document.addEventListener('focusin',e=>{const tile=e.target.closest?.('.cs-tile');if(tile)openStatusTip(tile);});
+document.addEventListener('focusin',e=>{const tile=e.target.closest?.('.cs-tile');if(tile&&statusTip?.anchor!==tile){openStatusTip(tile);statusFocusOpen=performance.now();}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeStatusTip();});
 // PvP plaques: the local duel names its two players; a friendly match and the cup show this account and the other
 // player's (or the AI copy's) display name. Long names end in "…"; a tap shows the whole name.
@@ -174,7 +176,8 @@ function renderPvpNames(){
   const tag=document.querySelector('.chud-stage');if(tag){if(names?.mode)tag.dataset.mode=names.mode;else delete tag.dataset.mode;}
   if(!plates.length){document.documentElement.classList.remove('cs-pvp-bar');return;}
   const box=scene.getBoundingClientRect(),k=box.width/(scene.offsetWidth||box.width),tops=[...document.querySelectorAll('.cs-row')].map(r=>r.getBoundingClientRect().top).filter(t=>t>0);
-  const room=tops.length?Math.min(...tops)-box.top:Infinity,inBar=!!bar&&room<(10+24+12)*k;
+  // Phones on their side always carry the names in the top bar (one place for every short stage).
+  const room=tops.length?Math.min(...tops)-box.top:Infinity,short=matchMedia('(orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2)').matches,inBar=!!bar&&(short||room<(10+24+12)*k);
   document.documentElement.classList.toggle('cs-pvp-bar',inBar);
   for(const plate of plates){const home=inBar?bar:scene;if(plate.parentNode!==home)home.append(plate);}
 }
@@ -182,6 +185,8 @@ function renderPvpNames(){
 // keep the auras on the boss's body.
 if(typeof renderFoeStatuses==='function')renderFoeStatuses=function(){if(typeof syncFoeSelfStates==='function')syncFoeSelfStates();};
 queueMicrotask(()=>{const statusUpdate=update;update=function(){statusUpdate();renderCombatStatuses();};update();});
+// Turning the phone moves the stage's edges: slide the gauges, rows and name plates in again for the new size.
+addEventListener('resize',()=>requestAnimationFrame(()=>{try{renderCombatStatuses();}catch{}}));
 // Studio / QA: put effects on either side, and preview the PvP plaques.
 queueMicrotask(()=>{if(!window.gameQA)return;Object.assign(window.gameQA,{
   statusQA(sides={}){

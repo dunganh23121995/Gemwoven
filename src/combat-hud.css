@@ -186,7 +186,7 @@ html.chud .game-layout{gap:0}
 }
 
 /* ---- Landscape screens: battle left, board right, on the plank wall ---------------------------------------- */
-@media (min-width:900px) and (min-aspect-ratio:5/4){
+@media (min-width:900px) and (min-aspect-ratio:5/4) and (min-height:601px){
   html.chud{--fc:70px;--ft:16px}
   html.chud .app{display:flex;flex-direction:column;width:100%;max-width:2200px;height:100vh;height:100dvh;padding:10px 24px 16px;
     --bf:min(calc(100dvh - 62px - 10px - 26px - 84px),46vw,880px)}
@@ -251,4 +251,57 @@ html.chud .game-layout{gap:0}
   html.chud .transform-btn small{font-size:12.5px}
   html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:66px;height:66px;min-width:0;min-height:0}
   .chud-sheet{width:340px}
+}
+
+/* ---- Short landscape (phones on their side, up to 600 tall): battle and action strip left, board right ------- */
+/* The desktop layout above starts at 601 tall; this one keeps the board square at the full height beside the
+   battlefield, the strip under the battlefield, everything inside the notch-safe area. Portrait stays as it was. */
+@media (orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2){
+  html.chud{--fc:44px;--ft:10px}
+  html.chud .app{display:flex;flex-direction:column;width:100%;max-width:none;height:100vh;height:100dvh;margin:0;
+    padding:4px max(8px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+    --bf:min(calc(100dvh - 36px - 4px - 8px - env(safe-area-inset-bottom)),54vw,560px)}
+  html.chud .app-header{flex:none;height:36px;margin:0 0 4px}
+  .chud-bar{gap:8px;padding:0 10px 2px 8px;border-image-width:0 46px}
+  .chud-back{width:72px;height:32px;font-size:14px}
+  .chud-back-arrow{width:18px;height:15px}
+  .chud-stage{min-width:74px;height:28px;font-size:14px}
+  .chud-medal{width:34px;height:30px}
+  html.chud .chud-score .score{min-width:46px;height:23px}
+  html.chud .chud-score .score strong{font-size:13px}
+  .chud-gear{width:34px;height:34px}
+  html.chud .game-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) var(--bf);grid-template-rows:minmax(0,1fr) auto;
+    column-gap:10px;row-gap:4px;max-width:none;width:100%;margin:0}
+  html.chud .adventure-column{grid-area:1/1;align-self:stretch;height:100%;min-width:0;min-height:0;display:flex;flex-direction:column;max-width:none}
+  html.chud .battle-card{flex:1;min-height:0;display:flex;flex-direction:column}
+  html.chud .battle-card .scene{flex:1;height:auto;min-height:0}
+  html.chud .puzzle-card{display:contents}
+  html.chud .board-toolbar.chud-strip{grid-area:2/1;width:100%;height:52px;margin:0;padding:0 12px 2px 10px;border-image-width:0 44px}
+  html.chud .turn-chip{width:126px;height:32px;font-size:13.5px}
+  html.chud .hint-button{width:42px;height:42px}
+  /* The medallion and its plaque side by side (as on desktop), so nothing hangs below the strip. */
+  .chud-ult{display:flex;align-items:center;width:auto;height:52px;margin:0}
+  .chud-ult-art{z-index:1;width:50px;height:50px}
+  .chud-ult-art .chud-ult-emblem{inset:11px!important}
+  .chud-ult-art .chud-ult-halo{inset:-3px!important}
+  .chud-ult-label{width:104px;height:30px;margin:0 0 0 -12px;padding-left:10px;font-size:15px}
+  .chud-ult-auto{left:auto;right:4px;top:-7px;translate:none;font-size:11px;line-height:13px}
+  html.chud .board-frame{grid-area:1/2/3/3;align-self:center;justify-self:center;width:var(--bf);max-width:none;padding:7px}
+  html.chud .board-frame .board-effects{inset:7px;width:calc(100% - 14px);height:calc(100% - 14px)}
+  html.chud .transform-btn{left:12px;bottom:8px}
+  /* Fighters sized by the stage (not the screen width) and kept off its side edges, so a narrow stage never cuts a
+     wide pose or the Biến Thân look; the HUD boxes keep a wider gap (heart caps and emblems hang past them). */
+  html.chud .scene{--hud-gap:30px;--hud-gap-y:10px;--hud-edge:34px}
+  html.chud .scene .hero-actor{--actor-size:calc(min(52cqh,40cqw,170px) * var(--hero-art-scale,1));left:calc(max(24%,var(--actor-size) * .72) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor{--actor-size:min(48cqh,38cqw,158px);right:calc(max(21%,var(--actor-size) * .7) - var(--actor-size)/2)}
+  html.chud .scene .enemy-actor[data-tier="elite"]{--actor-size:min(60cqh,48cqw,196px)}
+  html.chud .scene .enemy-actor[data-tier="duel"]{--actor-size:min(52cqh,40cqw,170px)}
+  html.chud .scene .actor.boss{--actor-size:min(70cqh,62cqw,228px);right:calc(20% - var(--actor-size)/2)}
+}
+@media (orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2) and (max-width:720px){
+  html.chud .turn-chip{width:108px;font-size:12.5px;padding:0 12px 2px}
+  .chud-ult-label{width:92px;font-size:14px}
+  html.chud .board-toolbar.chud-strip{padding:0 8px 2px 6px}
+  /* A narrow stage: the two gauges stay apart (Codex: the foe's heart sat over the hero's energy bar). */
+  html.chud .actor-hud{width:112px}
 }

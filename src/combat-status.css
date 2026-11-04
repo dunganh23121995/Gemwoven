@@ -48,7 +48,7 @@ html.cs-pvp-bar .chud-bar .chud-stage,html.cs-pvp-bar .chud-bar .chud-score{visi
 .chud-bar .cs-pvp{top:50%;translate:0 -50%;max-width:min(150px,22vw)}
 .chud-bar .cs-pvp.hero{left:auto;right:calc(50% + 6px)}.chud-bar .cs-pvp.enemy{right:auto;left:calc(50% + 6px)}
 html[data-hero-side="right"] .cs-pvp.hero{left:auto;right:10px}html[data-hero-side="right"] .cs-pvp.enemy{right:auto;left:10px}
-@media (min-width:900px) and (min-aspect-ratio:5/4){
+@media (min-width:900px) and (min-aspect-ratio:5/4) and (min-height:601px){
   html.chud .actor-hud{--cs:44px}
   html.chud .actor-hud .status-row.cs-row{gap:4px;margin-bottom:6px}
   html.cs-pvp-on .chud-stage[data-mode]::after{font-size:23px}
@@ -56,4 +56,10 @@ html[data-hero-side="right"] .cs-pvp.hero{left:auto;right:10px}html[data-hero-si
   .cs-pvp{top:16px;max-width:160px;height:30px;padding:0 15px 1px}.cs-pvp.hero{left:18px}.cs-pvp.enemy{right:18px}
   .cs-pvp span{font-size:14px;line-height:30px}
   html.chud .actor-hud .cs-elem{width:22px;height:22px;right:-17px}
+}
+
+/* ---- Short landscape (phones on their side): long account names get more room in the top bar --------------- */
+@media (orientation:landscape) and (max-height:600px) and (min-aspect-ratio:3/2){
+  .chud-bar .cs-pvp{max-width:min(170px,24vw);height:26px}
+  .chud-bar .cs-pvp span{font-size:12px;line-height:26px}
 }

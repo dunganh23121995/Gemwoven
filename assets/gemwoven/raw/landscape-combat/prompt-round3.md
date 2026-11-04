@@ -1,0 +1,4 @@
+Gemwoven combat, điện thoại nằm ngang, vòng 3 (Codex). Tiếng Việt, ngắn.
+Sửa theo vòng 2: ở màn nằm ngang thấp, hai cụm HUD giữ khoảng cách 30px (tính cả nắp tim và biểu tượng hệ treo ngoài hộp), nên ở 667×375 cụm địch được hạ xuống, không còn chạm thanh năng lượng của bạn; tướng và quái được tính cỡ theo sân (cqh/cqw, tối đa như cũ) và cách mép sân ít nhất ~22% cỡ người, nên Biến Thân Mika không còn bị xén mép trái. (190/170 HP trong ảnh là số QA đặt tay, không phải lỗi game.)
+Ảnh mới: r4-844x390.png, r4-932x430.png, r4-667x375.png, r4-740x360.png (PvP + hiệu ứng), bt-flare-667x375.png, bt-held-667x375.png, bt-flare-844x390.png (Biến Thân). Dọc/Studio/iPad không đổi (đo trùng từng px).
+Chấm lại 1-10 cho 844×390, 932×430, 667×375, 740×360 theo cùng tiêu chí vòng 2, và cho 1180×820 nếu điểm vòng 2 (8.8) giữ nguyên thì ghi lại. Đạt khi mọi kích thước ≥8.5. Nếu còn lỗi chặn, nêu cụ thể (px).

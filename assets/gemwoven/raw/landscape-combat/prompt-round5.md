@@ -1,0 +1,3 @@
+Gemwoven combat, điện thoại nằm ngang, vòng 5 (Codex). Tiếng Việt, ngắn.
+Sửa theo vòng 4: (1) 932×430: tướng/quái được lớn hơn trên sân cao (trần tướng 138→170px, quái 129→158px, vẫn giới hạn theo cqh/cqw nên 667/740/844 gần như giữ nguyên), nên khoảng trống phía trên hàng trạng thái giảm; (2) --hud-edge 30→34px để biểu tượng hệ của địch cách mép trong khung rõ hơn. Tất cả ảnh dưới đây là SAU khi sửa: r7-932x430.png, r7-667x375.png, r7-844x390.png, r7-740x360.png.
+Chấm lại 1-10 cho 4 kích thước (vòng 4: 667 8.7, 844 8.8, 932 8.2, 740 8.6; iPad 8.8 không đổi). Đạt khi mọi kích thước ≥8.5. Nếu còn lỗi chặn nêu cụ thể (px).

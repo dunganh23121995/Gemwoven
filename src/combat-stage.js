@@ -51,18 +51,22 @@ function combatNumberPoint(side,index=0,lift=0){
   return {x:Math.max(34,Math.min(W-34,x)),y:Math.max(30,Math.min(H-34,p.y+Math.min(48,p.height*.3)+(index%3)*7+lift))};
 }
 function placeCombatHuds(points){
-  const scene=$('scene'),W=scene.clientWidth||375,boxes={};
+  // CSS knobs on the scene (defaults keep the portrait and desktop layouts): --hud-gap (6) between the two boxes side by
+  // side, --hud-gap-y (4) when one has to sit above the other, --hud-edge (4) from the stage's sides. Short landscape
+  // stages widen them so the heart caps and emblems that hang past each box stay apart and inside too.
+  const scene=$('scene'),W=scene.clientWidth||375,boxes={},css=getComputedStyle(scene),knob=(name,d)=>{const v=parseFloat(css.getPropertyValue(name));return Number.isFinite(v)?v:d;};
+  const gap=knob('--hud-gap',6),gapY=knob('--hud-gap-y',4),edge=knob('--hud-edge',4);
   for(const side of ['hero','enemy']){
     const hud=$(side+'HeadHud');if(!hud)continue;
     const w=hud.offsetWidth||108,h=hud.offsetHeight||48;
-    boxes[side]={hud,w,h,x:Math.max(w/2+4,Math.min(W-w/2-4,points[side].x)),bottom:Math.max(h+4,points[side].y-9)};
+    boxes[side]={hud,w,h,x:Math.max(w/2+edge,Math.min(W-w/2-edge,points[side].x)),bottom:Math.max(h+4,points[side].y-9)};
   }
   const a=boxes.hero,b=boxes.enemy;
   // Resting HUDs never overlap: separate horizontally first, then vertically.
-  if(a&&b&&Math.abs(a.x-b.x)<(a.w+b.w)/2+6&&Math.abs(a.bottom-b.bottom)<Math.max(a.h,b.h)+4){
-    const need=(a.w+b.w)/2+6-Math.abs(a.x-b.x),left=a.x<=b.x?a:b,right=left===a?b:a;
-    left.x=Math.max(left.w/2+4,left.x-need/2);right.x=Math.min(W-right.w/2-4,left.x+(left.w+right.w)/2+6);
-    if(right.x-left.x<(left.w+right.w)/2+6){const low=a.bottom>=b.bottom?a:b,high=low===a?b:a;high.bottom=Math.max(high.h+4,low.bottom-low.h-4);}
+  if(a&&b&&Math.abs(a.x-b.x)<(a.w+b.w)/2+gap&&Math.abs(a.bottom-b.bottom)<Math.max(a.h,b.h)+gapY){
+    const need=(a.w+b.w)/2+gap-Math.abs(a.x-b.x),left=a.x<=b.x?a:b,right=left===a?b:a;
+    left.x=Math.max(left.w/2+edge,left.x-need/2);right.x=Math.min(W-right.w/2-edge,left.x+(left.w+right.w)/2+gap);
+    if(right.x-left.x<(left.w+right.w)/2+gap){const low=a.bottom>=b.bottom?a:b,high=low===a?b:a;high.bottom=Math.max(high.h+4,low.bottom-low.h-gapY);}
   }
   for(const [side,box] of Object.entries(boxes)){
     box.hud.style.left=box.x+'px';box.hud.style.top=box.bottom+'px';
