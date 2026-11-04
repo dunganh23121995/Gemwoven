@@ -20,16 +20,16 @@
  ],
  "accepted": {
   "0": {
-   "iou": 0.917,
-   "effort": "low"
+   "iou": 0.867,
+   "effort": "medium"
   },
   "1": {
    "iou": 0.835,
    "effort": "medium"
   },
   "2": {
-   "iou": 0.877,
-   "effort": "low"
+   "iou": 0.852,
+   "effort": "medium"
   },
   "3": {
    "iou": 0.81,

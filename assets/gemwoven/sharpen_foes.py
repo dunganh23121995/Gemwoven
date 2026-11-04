@@ -415,7 +415,7 @@ def pockets(new, old, colour, soft=False):
     none = ((olook > .45) & (o[..., 3] > .5)).sum() < .002 * max(1, (o[..., 3] > .5).sum())
     if none:
         cut |= look > .45
-    if soft and none:
+    if soft and none and colour[1] > 0:      # green backdrops only: a white glow on magenta reads as backdrop here
         # and the backdrop mixed into thin strings and soft edges goes too, by how much of it a pixel holds
         # (a pink or green glow the old frame does show, there, stays)
         shown_too = cv2.resize(((olook > .2) & (o[..., 3] > .2)).astype(np.uint8), (n, n), interpolation=cv2.INTER_NEAREST)
@@ -876,7 +876,7 @@ Keep everything about the character exactly: identity, face, every part of the b
 Background 100% solid flat {colour}, the same colour everywhere around and between the parts. No gradients, no text, no labels, no frame, no shadow on the ground, no loose sparkles."""
 
 
-def draw_sheet(job, ladder=LADDER[:2]):
+def draw_sheet(job, ladder=LADDER[:2], draw=True):
     """Codex for one action sheet; writes sheet-<name>/frame-<i>.png for the frames it accepts and frames.json."""
     d = sheet_work(job); d.mkdir(parents=True, exist_ok=True)
     meta = json.loads((work(job["folder"]) / "meta.json").read_text(encoding="utf-8"))
@@ -917,6 +917,8 @@ def draw_sheet(job, ladder=LADDER[:2]):
             if all(str(i) in accepted for i in idx if (np.asarray(olds[i])[..., 3] > 128).sum() > 200):
                 break
             raw = d / f"raw-{g}-{effort}.png"
+            if not raw.exists() and not draw:      # refitting kept drawings only
+                continue
             if not raw.exists():
                 rr = subprocess.run([sys.executable, str(GEN), "--prompt-file", str(prompt_file), "--out", str(raw), "--ref", str(d / f"ref-{g}.png"),
                                      "--ref", str(d / "style.png"), "--model", model, "--effort", effort, "--timeout", "900"], capture_output=True,
@@ -937,7 +939,7 @@ def draw_sheet(job, ladder=LADDER[:2]):
                 # a slash or a cast glow is faint in the old frame: it counts as drawing there
                 fr = match_colour(leftovers(strays(pockets(fr, olds[i], colour[0], soft=True), olds[i], faint=.04), olds[i], colour[0]), olds[i])
                 prev = accepted.get(str(i))
-                if iou >= .8 and abs(foot) <= .02 and (prev is None or iou > prev["iou"]):
+                if iou >= .8 and abs(foot) <= .02 and prev is None:      # a frame keeps the first rung that drew it well
                     to_image(fr).save(d / f"frame-{i}.png"); accepted[str(i)] = dict(iou=round(iou, 3), effort=effort)
             print(job["rel"], g, effort, {i: accepted.get(str(i), {}).get("iou") for i in idx}, flush=True)
     book = dict(cols=job["cols"], rows=job["rows"], count=job["count"], cell=job["cell"], n=n, box=list(map(int, box)),
