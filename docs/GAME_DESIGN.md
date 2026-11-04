@@ -424,6 +424,10 @@ thanh toán + 80 mảnh X ở cấp 50 (thay 80 mảnh tự chọn); Vàng có k
 - **Mẫu sự kiện cho Studio** (mở rộng `docs/event.schema.json` khi có máy chủ): Đăng nhập N ngày, Tích nạp, Tiêu
   Ngọc, Đổi vật phẩm, Boss sự kiện, Đua top (điểm do máy chủ tính), Nhiệm vụ mốc. Không có vòng quay bán bằng tiền.
 - [Đêm nay] Trang **Sự Kiện** chạy thật **Hành Trình Tân Thủ 7 ngày** và hiển thị lịch dự kiến ở trên.
+- **Sự kiện ngày đặc biệt [Đề xuất · live-ops sau, chủ dự án 04/11]:** vào các ngày đặc biệt (lễ, kỷ niệm, sinh nhật tướng…)
+  có nhiệm vụ cho thêm **bản dư 1★ hoặc mảnh tướng** để bù đường 6★ (31 bản dư, §20 "Vòng Nâng Sao"). Nhận bằng chơi; **không
+  bao giờ có Đá Ngọc từ gameplay**; Hiro ngoài phạm vi (nguồn riêng §1.2); máy chủ giữ lịch, Studio cấu hình, đếm vào ngân sách
+  mảnh miễn phí khi đo.
 
 ---
 
@@ -1035,12 +1039,16 @@ lấy được mảnh tướng, nhưng phải nhiều mùa mới ghép được;
   điện thoại/Studio): dải 5 dấu da "1★ ×4 … 5★ ×0" thay dải cấp, dấu bậc cần viền vàng, mũi tên đồng chỉ nối các bậc đem luyện; ô
   chân dung có ấn "3★" và búa rèn (sáng khi luyện được), chạm mở bảng Luyện bản dư (hai bản → một bản, phí bằng hình + số xanh/đỏ,
   nút Luyện, "Thiếu n bản 1★").
-- **Chủ dự án duyệt**: (1) 6★ tướng triệu hồi = 31 bản dư (~2–3 năm miễn phí với nguồn hiện có); (2) Hiro giữ 19 bản; (3) người
-  đã lên sao theo luật cũ giữ nguyên, không truy thu.
+- **Chủ dự án đã duyệt (04/11)**: (1) 6★ tướng triệu hồi = 31 bản dư; sau này bù bằng sự kiện ngày đặc biệt (§11); (2) Hiro giữ
+  bảng cũ 19 bản; (3) sao đã lên theo luật cũ giữ nguyên, không truy thu.
 
 ### Vòng Nghi thức biến hình (04/11, "triệu hồi có nên ra hình thái cao? mở hình thái có hiệu ứng như triệu hồi?") — Claude + Codex thống nhất, đã làm
 
-- **Triệu hồi luôn ra 1★ hình thái 1.** Banner được khoe hình thái 3 với nhãn "Mở tại 6★" — chưa làm vì màn Triệu Hồi đang khóa.
+- **Triệu hồi luôn ra 1★ hình thái 1.** Chủ dự án duyệt (04/11) đây là **thay đổi duy nhất** trên màn Triệu Hồi đã khóa (nền,
+  pha lê, hoạt cảnh giữ nguyên): **bệ trưng bày "Hình thái 3 · Mở tại 6★"** cạnh vòm [732,430,194,300], khung gỗ-đồng Codex vẽ
+  (`assets/gemwoven/summon-ui/form-preview-frame.webp`), tranh showcase hình thái 3 đã khóa qua fitBody, tối chỉ trong lòng khung;
+  không sao, khóa, ánh sáng hay liên kết với nút quay; chạm mở thư viện Hình thái. Codex mockup 8,0 → 8,4 (chỉ còn kích thước,
+  sửa khi dựng), bản dựng **8,7 / 8,5** (điện thoại/Studio); `assets/gemwoven/raw/summon-form3/`.
 - **Nghi thức** (`src/gemwoven/form-ceremony.js`, mockup `assets/gemwoven/raw/form-ceremony/`): chạy toàn màn khi tướng chính
   3→4★ (hình thái 2, 4,8 giây) hoặc 5→6★ (hình thái 3, 6 giây), dựng riêng, màn Triệu Hồi không đổi. Nhịp: hình thái cũ trên
   vòng phép (Codex vẽ `assets/gemwoven/ceremony/rune-circle.webp`) → vòng gom sáng, chỉ sao mới bật → sáng ấm che thân, chuyển

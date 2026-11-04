@@ -22497,5 +22497,16 @@
       "assets/gemwoven/raw/form-ceremony/rune/prompt-used.txt"
     ],
     "purpose": "Rune circle under the hero in the form-unlock ceremony (owner 04/11, Claude + Codex)."
+  },
+  "su-form-preview-frame": {
+    "file": "assets/gemwoven/summon-ui/form-preview-frame.webp",
+    "width": 389,
+    "height": 600,
+    "textless": true,
+    "source": "assets/gemwoven/raw/summon-form3/frame/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/summon-form3/frame/prompt-used.txt"
+    ],
+    "purpose": "Form-3 preview stand on the Triệu Hồi screen, 'Hình thái 3 · Mở tại 6★' (owner 04/11)."
   }
 }

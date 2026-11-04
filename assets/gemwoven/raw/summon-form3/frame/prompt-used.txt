@@ -1,0 +1,17 @@
+Create one isolated hand-painted fantasy RPG display frame matching
+Gemwoven's existing warm wooden and aged-brass UI.
+
+A narrow upright wooden arch, thin restrained brass edging, a shallow
+stone pedestal, and a clear open center for a separately composited
+full-body character. Design for a final 188×300 stage-unit footprint.
+Reserve space above the opening for an HTML title and below the
+pedestal for an existing wooden plaque; do not paint either label.
+
+Clean HD painted game art, crisp readable silhouette at small phone
+size, modest ornament, soft static material shading, straight-on view.
+
+Use a completely uniform solid #FF00FF background, including the open
+center, for later chroma-key removal. No magenta in the object.
+Keep all parts inside the canvas with generous extraction padding.
+No character, lettering, numbers, stars, lock, crystals, glow,
+particles, scenery, backdrop panel or cast shadow on the magenta.

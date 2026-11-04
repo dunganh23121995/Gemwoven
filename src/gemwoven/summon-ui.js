@@ -49,12 +49,27 @@
      ['fragment','fragment-'+star,'Mảnh','art:fragments',{},`Mảnh ${name}`],
      ['weapon',M.SLOT_ART.weapon,'Thần','journey:featured-gear',{slot:'weapon',rarity:'divine',asset:M.SLOT_ART.weapon},`Vũ khí ${M.RARITIES.divine.name}`]].forEach(([id,icon,word,act,data,aria],i)=>
       out.push(button('featured-'+id,'kit-socket-on',[76+i*274,1306,250,96],word,act,{data,icon,iconRect:[9,9,78,78],labelRect:[110,0,138,96],size:36,tone:'gold',align:'left',aria,className:`featured-equipment su-prize single-line${id==='hero'&&owned?' su-owned':''}`})));
+    // 6. Owner 04/11 (the one change allowed on this locked screen): a small evolution-preview stand beside the arch, the
+    // banner hero's locked form-3 showcase in a drawn frame, "Hình thái 3" / "Mở tại 6★". A pull still gives 1★ form 1;
+    // the stand reads as a gallery preview (no stars, lock, glow or link to the pull buttons) and opens the form gallery.
+    if(M.HERO_FORMS[star]&&A[`show-${star}-3`]&&A['su-form-preview-frame'])
+      out.push(button('form-preview','su-form-preview-frame',[732,430,194,300],'Hình thái 3','forms:gallery',{data:{hero:star},labelHidden:true,className:'su-form3'}));
     const dry=Math.min(p.summon.dry,M.SUMMON_PITY);
     out.push(text('pity-label','Bảo đảm tướng hiếm',[80,1408,348,44],32,{align:'left',className:'single-line'}));
     out.push(node('pity-board','image',[436,1412,424,38],{asset:'kit-progress',fit:'fill'}));
     out.push(node('pity-meter','bar',[446,1418,404,26],{value:dry/M.SUMMON_PITY,className:'su-meter'}));
     out.push(text('pity-value',`${fmt(p.summon.dry)}/${M.SUMMON_PITY}`,[436,1406,424,50],30,{className:'single-line su-pity-value'}));
     return out;
+  }
+  // The stand's inside, added after render under the drawn frame: a dark well, the locked art at its head-based size (same
+  // rule as every screen, scaled with the whole stand) and the two words on the frame's planks.
+  function formPreview(el,star){
+    if(!el||el.querySelector('.su-f3-hero'))return;const name=M.HEROES[star].name,show=A[`show-${star}-3`],art=el.querySelector('.art');
+    const well=document.createElement('i');well.className='su-f3-well';
+    const hero=document.createElement('span');hero.className='su-f3-hero';hero.innerHTML=`<img class="art" src="${file(`show-${star}-3`)}" alt="">`;
+    el.insertBefore(hero,art);el.insertBefore(well,hero);window.GEMWOVEN_FORMS?.fitBody(hero,show,138);
+    el.insertAdjacentHTML('beforeend','<b class="su-f3-top">Hình thái 3</b><b class="su-f3-bottom">Mở tại 6★</b>');
+    el.setAttribute('aria-label',`Xem hình thái 3 của ${name}, mở tại 6 sao. Triệu hồi nhận tướng 1 sao, hình thái 1.`);
   }
   const decorate=G.decorate;
   G.decorate=state=>{
@@ -77,6 +92,7 @@
     const named=(id,label)=>{const el=scene.querySelector(`[data-node="summon.${id}"]`);if(el)el.setAttribute('aria-label',label);return el;};
     const held=scene.querySelector('[data-node="summon.ticket-balance"]');
     if(held&&!held.querySelector('.su-price')){const s=document.createElement('span');s.className='su-price su-held';s.innerHTML=`<img src="${file('ticket')}" alt=""><b>${fmt(save.wallet.tickets)}</b>`;held.append(s);}
+    formPreview(scene.querySelector('[data-node="summon.form-preview"]'),star);
     named('fragments',`Mảnh ${name} · ${fmt(save.fragments[star]||0)}/80 · ghép 80 mảnh thành tướng`);
     named('banner',`${M.SUMMON_BANNER.title} · tướng nổi bật ${name} · xem tỷ lệ`);
     const info=named('summon-details','Xem chi tiết tỷ lệ và bảo đảm');if(info&&!info.querySelector('.su-i')){const i=document.createElement('b');i.className='su-i';i.textContent='i';info.append(i);}

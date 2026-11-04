@@ -4533,6 +4533,7 @@
     "assets/gemwoven/skill-tree/tray-wide.webp",
     "assets/gemwoven/skill-tree/tray.webp",
     "assets/gemwoven/summon-lake/scene.webp",
+    "assets/gemwoven/summon-ui/form-preview-frame.webp",
     "assets/gemwoven/summon-ui/panel.webp",
     "assets/gemwoven/summon-ui/price-blue.webp",
     "assets/gemwoven/summon-ui/price-gold.webp",
@@ -4711,7 +4712,7 @@
     "assets/scenes/painted/lightning-mid.webp",
     "assets/scenes/painted/lightning-near.webp"
    ],
-   "bytes": 161126300
+   "bytes": 161180220
   },
   {
    "id": "hero-earth-f1",

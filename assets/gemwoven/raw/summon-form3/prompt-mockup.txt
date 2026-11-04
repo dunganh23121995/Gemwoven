@@ -1,0 +1,27 @@
+Edit target: phone-before.png, the existing Gemwoven summon screen.
+Exact character insert: Mika's approved form-3 showcase/poster.png.
+Context reference only: studio-before.png.
+
+Add exactly one small, static evolution-preview display at stage rect
+[738,430,188,300] on the 941×1672 game stage. Coordinates exclude
+screenshot letterboxing. Keep the original screenshot dimensions.
+
+Create a restrained hand-painted wooden arch with thin aged-brass trim,
+a shallow stone pedestal, and a softly darkened interior confined to
+this new display. Composite the supplied Mika artwork unchanged:
+preserve her identity, pose, colors, complete weapon and tails.
+Scale the entire character uniformly; do not crop or redraw her.
+
+Top label, verbatim: “Hình thái 3”.
+Bottom wooden plaque label, verbatim: “Mở tại 6★”.
+Both labels must remain readable at a 390×844 phone viewport.
+
+This is an evolution-gallery preview, subordinate to the central
+crystals. Summoning always grants a 1-star, form-1 hero.
+No star row, lock icon, reward badge, price, glow, particles, arrows
+or visual connection to the summon controls.
+
+Change only this new display area. Preserve the background, both
+crystals and their existing character art, banner, chest, NPC,
+buttons, reward board, navigation, lighting and layout exactly.
+Do not blur, relight or repaint the existing scene.

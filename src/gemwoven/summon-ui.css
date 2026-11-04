@@ -51,3 +51,13 @@
 .node-bar.su-meter{border:0;border-radius:0;box-shadow:none;background:none}
 .node-bar.su-meter i{border-radius:0;box-shadow:none;background:var(--kit-progress-fill) left center/100% 100% no-repeat}
 .su-pity-value{font-weight:700;color:#fff3d0;text-shadow:0 2px 2px #1a0c04,0 0 4px #1a0c04}
+
+/* Form-3 preview stand (owner 04/11): drawn frame on top, darkened only inside the opening, the locked showcase on the pedestal. */
+#stage .su-form3{filter:drop-shadow(0 6px 6px #1a0c0499);overflow:visible}
+#stage .su-form3>.art{position:relative;z-index:2;pointer-events:none}
+#stage .su-form3:active{transform:scale(.97)}
+#stage .su-f3-well{position:absolute;left:14%;top:17%;width:72%;height:64%;z-index:0;border-radius:46% 46% 6% 6%/26% 26% 4% 4%;background:radial-gradient(ellipse 70% 60% at 50% 60%,#3a1d0ccc,#1a0c06ee 80%);pointer-events:none}
+#stage .su-f3-hero{position:absolute;left:0;top:0;width:194px;height:248px;display:block;overflow:visible;z-index:1;pointer-events:none}
+#stage .su-f3-top,#stage .su-f3-bottom{position:absolute;z-index:3;left:12%;width:76%;text-align:center;font:900 28px/1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 2px #1d0d04;white-space:nowrap;letter-spacing:-.3px;pointer-events:none}
+#stage .su-f3-top{top:9.5%}
+#stage .su-f3-bottom{top:88%}

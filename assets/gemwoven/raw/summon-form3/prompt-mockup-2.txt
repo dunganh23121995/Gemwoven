@@ -1,0 +1,4 @@
+Edit image 1 (a Gemwoven summon screen mockup). Keep everything identical except the small "Hình thái 3 / Mở tại 6★" display on the right of the arch:
+shrink the whole display uniformly to about two thirds of its current size (it must fit a box roughly 20% of the screen width and 18% of the screen height), and move it to hug the right edge of the arch beside the waterfalls, its top just below the "Khế Ước Hỏa Hồ" sign level, clearly separate from the central crystals and from the fragment chest below.
+Keep the wooden arch frame with thin brass trim, the dark interior, Mika's form-3 art unchanged and complete (weapon and tails), the low stone pedestal, and both labels "Hình thái 3" (top) and "Mở tại 6★" (bottom plaque) readable.
+No stars row, lock, glow, particles or arrows. Do not change the background, crystals, sign, chest, NPC, buttons, board or navigation.
