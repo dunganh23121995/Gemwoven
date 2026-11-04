@@ -1,0 +1,76 @@
+Use case: precise-object-edit / high-fidelity game UI mockup.
+
+Input images:
+Image 1 is the EDIT TARGET: current-events-phone.png.
+Image 2 is a STYLE REFERENCE only: current-events-top-phone.png, especially its approved novice-day cards.
+Image 3 is a MATERIAL REFERENCE only: forge-rarity/mockup-2.png, especially painted wood, bronze bevels, parchment, gold buttons and reward sockets.
+
+Edit image 1 so its existing “Lịch 28 ngày” progress-bar-and-chest row becomes the compact calendar specified below.
+
+Preserve the original portrait screenshot dimensions, crop, letterboxing and 941×1672 stage scale. Keep the forest background, HUD, “Sự Kiện” heading, outer panel, back button, preceding novice cards and bottom navigation identical in appearance and position. Only redesign the calendar block. Allow the following weekly-quest content to move downward naturally inside the same existing scroll viewport; retain its original artwork, wording and scale, clipping it at the original panel boundary. Do not move or enlarge the outer panel or navigation.
+
+Layout:
+Use the existing content column, stage x≈161..780, width≈619.
+Start where the old calendar header begins.
+Total calendar height approximately 542 stage units:
+- Header 56 high.
+- Gap 8.
+- Daily reward tray 64 high.
+- Gap 12.
+- Grid 320 high.
+- Gap 10.
+- Gold daily-claim button 72 high.
+
+Header:
+A shallow painted wooden plaque on the left reading exactly “Lịch 28 ngày”.
+On the right, exactly “Ngày 3/28”, followed by a round bronze information button containing italic “i”.
+Keep all three on one line without crowding.
+
+Daily reward tray:
+ONE shallow hand-painted parchment-and-bronze tray with four equal horizontal groups.
+Show, in order:
+gold coin icon + “500”;
+experience-book icon + “10”;
+Ấn resource icon + “80”;
+ticket icon + “1”.
+Use the game's existing resource identities.
+No resource-name captions. No premium crystal reward.
+Do not repeat these four rewards inside calendar cells.
+
+Calendar grid:
+Exactly FOUR rows and SEVEN columns.
+Cells approximately 81 wide × 74 high in stage units.
+Horizontal and vertical gaps exactly 8.
+Grid width 615, centred in the 619-wide column.
+Read left to right:
+row 1: 1, 2, 3, 4, 5, 6, 7
+row 2: 8, 9, 10, 11, 12, 13, 14
+row 3: 15, 16, 17, 18, 19, 20, 21
+row 4: 22, 23, 24, 25, 26, 27, 28
+
+Use miniature versions of image 2's parchment day cards: shallow bronze bevels, warm paper, painted corner details and soft contact shadows. Keep the grid orderly and numbers readable.
+
+Coherent example state: season day 3, account started on day 1.
+Day 1: claimed, drawn green check stamp below its unobscured number.
+Day 2: missed, muted parchment with a small faded brown crossed stamp.
+Day 3: claimable today, luminous gold rim, restrained amber glow, small drawn gift icon below its number.
+Days 4–27: future, subdued cool parchment and small drawn padlocks.
+Day 28: same-sized future cell, number “28” at the top, purple-and-gold chest below, small “20” quantity badge and a small chest lock.
+No extra rewards or special treatment on days 7, 14 or 21.
+
+Below the grid:
+One wide, richly painted gold button reading exactly “Nhận hôm nay”.
+Use the same button material language as image 2.
+No separate chest claim button in this screenshot; the chest opens details when tapped.
+
+Typography:
+Dark warm-brown Vietnamese serif matching the existing screen.
+Day numbers approximately 30 stage units.
+Reward quantities and button text approximately 32–34 stage units.
+Render all specified text exactly with correct Vietnamese accents.
+Words and numbers should look like clean HTML overlays, separate from the painted frames and stamps.
+
+Remove the old progress bar, standalone chest row, “25 ngày” countdown and their calendar captions.
+No open tooltip, modal, tutorial hand, explanatory paragraph, legend or additional banner.
+No flat modern cards, CSS-like rounded rectangles or oversized new framing.
+Preserve the existing hand-painted fantasy RPG finish and readable phone-scale hierarchy.

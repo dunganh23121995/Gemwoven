@@ -1,0 +1,4 @@
+You are Codex, UI co-designer of Gemwoven. Read-only. Round 2 of the Lịch 28 ngày build review; your round 1: assets/gemwoven/raw/calendar/build-r1-review.md (8.3 / 8.2). Code: src/gemwoven/calendar-ui.js, calendar.css.
+Changes: (1) tapping day 28 always opens the chest sheet (its daily reward is only the wide button); (2) day 28: number 29 like other days, a 42x30 chest below it with its own drawn lock before opening (ready glow / claimed check otherwise), quantity 22 inside the frame; (3) compact rhythm: header 56 (the kit's 88 summary overridden), tray 64, grid 320, gap 10, button 72; (4) today's gift 30x30 at y 38 inside the cell.
+Images: 1 phone day 3 (day 1 claimed, day 2 missed, today claimable); 2 after "Nhận hôm nay"; 3 day 28 tapped (chest sheet); 4 Studio 1920x911.
+Score phone and Studio /10 (pass ≥ 8.5) and list any remaining fixes.

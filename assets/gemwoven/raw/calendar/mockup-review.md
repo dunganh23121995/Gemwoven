@@ -1,0 +1,80 @@
+**9/10 — approved as art direction for the Lịch 28 ngày block.** The parchment cells, bronze bevels and clear state symbols fit Gemwoven. The reward tray → calendar → claim button hierarchy makes daily participation much clearer than the current countdown.
+
+The build must not copy:
+
+- **The mockup’s altered screen geometry.** Preserve the real panel, HUD, navigation and scroll viewport; let weekly quests flow downward.
+- **The tray’s dividers.** Use one uninterrupted tray; position four reward groups through layout.
+- **Baked text, numbers or example states.** Render these in HTML from `calendarView()`; retain the specified 81×74 cells and 8-unit gaps.
+- **The strongest bloom and green saturation.** Keep today’s glow contained and claimed parchment pale enough for readable numbers.
+- **Day 28’s crowded badge and missing chest lock.** Keep its number, chest and quantity readable within the same cell dimensions. Chest availability remains independent of the daily claim.
+
+```PROMPT_PIECES
+Create ONE production asset sheet, exactly 1536×1024 pixels, containing exactly eight separate hand-painted fantasy RPG UI pieces.
+
+REFERENCE:
+Use attached mockup.png (Image 1) ONLY as the material and style reference, particularly its Lịch 28 ngày reward tray and calendar cells. Do not reproduce the screen, layout, text or existing reward icons.
+
+BACKGROUND:
+Uniform, opaque, flat pure magenta #FF00FF across the entire canvas. No gradient, texture, vignette, checkerboard or environment. Magenta is reserved for the removable background.
+
+STYLE:
+Match the mockup’s warm ivory parchment, shallow bronze bevels, painted corner rivets, delicate brown edging and restrained gold highlights. Crisp silhouettes and readable detail when reduced to phone size. Straight-on orthographic UI artwork, consistent lighting from the upper left, no perspective tilt. Restrained contact shadows only.
+
+PACKING:
+Every piece must be fully separate, with at least 64 pixels of untouched magenta between pieces and at least 48 pixels from every canvas edge. These clearances include all shadows and glow.
+
+Use the following bounding boxes, measured from the upper-left canvas corner. All artwork and effects must remain inside its assigned box. Coordinates and piece letters are instructions only; NEVER render them.
+
+A — x168, y64, width1200, height160:
+One wide, shallow EMPTY reward tray, approximately 7.5:1.
+Warm parchment interior, thin bronze bevel, subtly chamfered corners and small restrained corner fasteners, matching the mockup’s reward strip.
+One continuous open interior.
+NO dividers, seams, compartments, sockets, icons, symbols or contents.
+
+B — x96, y352, width242, height220:
+One EMPTY neutral calendar cell, approximately 1.1:1.
+Warm ivory parchment with a shallow bronze bevel and small painted corner details, matching the mockup.
+Keep the interior spacious and quiet for later number and icon overlays.
+
+C — x448, y352, width242, height220:
+The identical EMPTY cell in the claimed state.
+Preserve B’s frame geometry, corner details and parchment texture, with a gentle pale-green parchment tint.
+NO check mark or other contents; the stamp is supplied separately.
+
+D — x800, y352, width242, height220:
+The identical EMPTY cell in the today state.
+Preserve the same frame geometry, replacing the bronze rim with a bright, crisp gold rim and a restrained amber glow.
+Contain the entire glow inside the assigned box; leave pure magenta beyond it.
+Keep the parchment center calm and readable.
+NO gift, sparkle icon, number or other contents.
+
+E — x1152, y352, width242, height220:
+The identical EMPTY cell in a muted state shared by missed and future days.
+Slightly cooler, greyer parchment with subdued bronze highlights; retain clear edges and the same material detail.
+NO lock, crossed stamp or other contents.
+
+B–E must share the same visible frame dimensions, corner geometry, bevel thickness and front-facing alignment. Allow equivalent internal padding for D’s glow.
+
+F — x272, y736, width112, height112:
+One small standalone green check stamp: a hand-drawn green circle containing a clear check stroke.
+Slightly irregular ink edges, rich enough to remain readable at small scale.
+No parchment backing, tile or frame.
+
+G — x712, y736, width112, height112:
+One small standalone faded brown missed-day stamp: a hand-drawn circle enclosing two crossing diagonal strokes.
+Match F’s visual weight, but use subdued brown ink.
+No parchment backing, tile or frame.
+
+H — x1152, y736, width112, height128:
+One small standalone closed bronze padlock.
+Rounded shackle, simple warm bronze body, subtle bevel and readable dark keyhole, matching the mockup’s future-day locks.
+No tile, backing plate or surrounding badge.
+
+STRICT EXCLUSIONS:
+NO text or numbers anywhere.
+NO labels, letters, captions, watermarks or signatures.
+NO embedded stamps or padlocks inside the four cells.
+NO gift, chest, coin, book, seal, ticket or button artwork; those assets already exist.
+NO extra pieces, duplicate variants, outer screen frame, foliage or decorative scene.
+Exactly one tray, four empty cell variants, two separate stamps and one separate padlock.
+```

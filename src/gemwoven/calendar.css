@@ -1,0 +1,57 @@
+/* Lịch 28 ngày (calendar-ui.js, Codex mockup assets/gemwoven/raw/calendar/mockup.png). Stage units; drawn pieces in
+   assets/gemwoven/calendar (tray, cells, stamps, lock); CSS only places and lights them. */
+.cal{margin:18px 0 10px}
+.cal .cal-head{display:flex;align-items:center;gap:10px;min-height:56px}
+.cal .cal-head .kp-sec{margin:0}
+.cal .cal-head details.kp-info{margin:0;position:static}
+.cal .cal-head details.kp-info[open]>p{position:absolute;left:24px;right:24px;z-index:3;margin-top:8px}
+.cal .cal-day{margin-left:auto;font:800 30px Cambria,serif;color:#5a3a18;white-space:nowrap}
+.cal-tray{display:flex;align-items:center;justify-content:space-around;height:72px;margin:8px 0 12px;padding:0 22px;background:var(--cal-tray) center/100% 100% no-repeat}
+.cal-gift{display:flex;align-items:center;gap:8px}
+.cal-gift img{width:50px;height:50px;object-fit:contain;filter:drop-shadow(0 2px 2px #0006)}
+.cal-gift b{font:800 32px Cambria,serif;color:#4a2a12}
+.cal-grid{display:grid;grid-template-columns:repeat(7,81px);grid-auto-rows:74px;gap:8px;justify-content:center}
+.cal-cell{position:relative;border:0;padding:0;cursor:pointer;background:var(--cal-cell) center/100% 100% no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.cal-cell.is-claimed{background-image:var(--cal-cell-claimed)}
+.cal-cell.is-today{background-image:var(--cal-cell-today);animation:cal-glow 1.8s ease-in-out infinite}
+.cal-cell.is-missed,.cal-cell.is-future{background-image:var(--cal-cell-dim)}
+.cal-cell.is-none .cal-n{opacity:.55}
+.cal-n{margin-top:7px;font:800 30px/1 Cambria,serif;color:#4a2a12}
+.cal-cell.is-future .cal-n,.cal-cell.is-missed .cal-n{color:#6a5640}
+.cal-mark{width:34px;height:34px;object-fit:contain;margin-top:2px}
+.cal-mark.lock{width:28px;height:28px;opacity:.85}
+.cal-mark.gift{width:38px;height:38px;filter:drop-shadow(0 0 6px rgba(255,190,80,.8))}
+.cal-mark.small{position:absolute;left:2px;bottom:2px;width:24px;height:24px}
+.cal-chest{position:relative;display:block;width:52px;height:38px;margin-top:1px}
+.cal-chest img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 2px #0007)}
+.cal-chest b{position:absolute;right:-12px;bottom:-6px;font:900 21px/1 Cambria,serif;color:#fff3cf;text-shadow:0 0 3px #1a0c04,0 2px 2px #1a0c04}
+.cal-chest.is-ready img{filter:drop-shadow(0 0 8px rgba(255,200,90,.95))}
+.cal-chest.is-done img{filter:grayscale(.4) brightness(.85)}
+.cal-chest-done{position:absolute;left:12px;top:4px;width:28px;height:28px}
+.cal-foot{display:flex;gap:12px;justify-content:center;margin-top:12px}
+.cal-claim{min-width:420px;min-height:72px;font-size:33px!important}
+.cal-claim.is-done{filter:saturate(.45) brightness(.9)}
+.cal-voucher{min-height:72px;display:flex;align-items:center;gap:8px}
+.cal-ticket{width:40px;height:40px;object-fit:contain}
+.cal-cell:focus-visible{outline:4px solid #fff1b8;outline-offset:2px}
+.cal-pop-date{text-align:center;font:700 26px Cambria,serif;margin:4px 0 2px;color:#6a4a28}
+.cal-pop-state{text-align:center;font:800 30px Cambria,serif;margin:0 0 6px;color:#4a2a12}
+.cal-pop-state.is-missed{color:#7a3a22}
+@keyframes cal-glow{50%{filter:brightness(1.12) drop-shadow(0 0 8px rgba(255,190,80,.7))}}
+@media (prefers-reduced-motion:reduce){.cal-cell.is-today{animation:none}}
+/* Day 28: number, a small chest with its own lock / ready glow / check, and the 20 inside the frame. */
+.cal-cell.is-last .cal-n{font-size:29px}
+.cal-cell.is-last .cal-chest{position:absolute;left:50%;top:38px;width:42px;height:30px;margin:0 0 0 -24px}
+.cal-chest>img.cal-chest-lock{position:absolute;left:11px;top:4px;width:20px;height:24px;object-fit:contain}
+.cal-chest>img.cal-chest-done{left:9px;top:2px;width:24px;height:24px}
+.cal-qty{position:absolute;right:6px;bottom:5px;font:900 22px/1 Cambria,serif;color:#fff3cf;text-shadow:0 0 3px #1a0c04,0 2px 2px #1a0c04}
+/* Compact rhythm (Codex): header 56, tray 64, grid 320, gap 10, button 72 — over the shared kit's 88/100 minimums. */
+.kp-panel .cal .cal-head .kp-info>summary{min-height:56px}
+.kp-panel .cal .cal-head .kp-info>summary>i{width:54px;height:54px}
+.cal-tray{height:64px;margin:8px 0 12px}
+.kp-panel .cal .cal-claim{min-height:72px!important;height:72px}
+.cal-foot{margin-top:10px}
+.cal-mark.gift{position:absolute;left:50%;top:38px;width:30px;height:30px;margin:0 0 0 -15px}
+/* A stored voucher shares the foot row with the daily button. */
+.cal-foot .cal-claim:not(:only-child){min-width:0;flex:1 1 0;font-size:28px!important}
+.cal-foot .cal-voucher{flex:0 1 280px;min-height:72px!important;height:72px;font-size:24px!important;padding:0 14px}

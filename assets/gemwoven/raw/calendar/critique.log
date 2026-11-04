@@ -1,0 +1,1375 @@
+OpenAI Codex v0.163.0
+--------
+workdir: D:\Project\Gemwoven\assets\gemwoven\raw\calendar
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1a432-ce23-77a3-84c2-236ea1e2aa92
+--------
+user
+You are Codex, UI co-designer of Gemwoven (portrait match-3 RPG, Vietnamese UI, 941x1672 stage). Read-only. Agreed design: docs/GAME_DESIGN.md §20 "Vòng Tính năng kế tiếp", part "Lịch 28 ngày" (rules in src/gemwoven/progression.js calendarView; today the Sự Kiện screen shows only a "Lịch 28 ngày" row: progress bar + day-28 chest, built by src/gemwoven/memory-ui.js calendar(), styled by memory.css and the shared kit ui-kit-panels.css). Owner rules: frames/cells/stamps are drawn art (image_gen), words/numbers HTML; minimal text, pictures, details behind a tap.
+Images: 1 = current Sự Kiện scrolled to the "Lịch 28 ngày" row (phone 390x844); 2 = the top of the same screen (Hành Trình Tân Thủ day cards — the approved style to match); 3 = approved Lò Rèn mockup for material style.
+Calendar facts: season of 28 days (4 rows × 7), today's cell claimable once (exactly the daily Ghé thăm reward: 500 vàng, 10 sách kinh nghiệm, 80 Ấn, 1 vé — the same reward every day), past unclaimed days after the account's first day are "missed", days before it are neutral, future days locked; day 28 also holds the separate free 20-shard chest (its own claim). The Quán Bia Ghé thăm and the calendar share one claim.
+1. Short critique of the current row (/10).
+2. Specify the calendar block inside the panel (content column ≈ x 161..780 in stage units, ≈ 619 wide): header (title plaque, "Ngày n/28", ⓘ), ONE reward strip showing the daily reward once (icons + numbers), the 4×7 grid (cell size, gaps), cell states (claimed stamp, today glow + claim affordance, missed, neutral, future), day-28 cell with the chest, how claiming works (tap today's cell or a button), what a tap on other cells shows. Keep it compact (the screen also holds Kỳ Báu Vật, Tân Thủ, weekly quests).
+3. Write ONE image_gen prompt for a MOCKUP (fenced block ```PROMPT_MOCK): image 1 edited so the row becomes the calendar block (keep the rest of the screen identical), Vietnamese text exactly as you specify, portrait, same hand-painted style.
+
+2026-11-04T01:35:57.784360Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+2026-11-04T01:36:00.063647Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+codex
+I’ll check the agreed calendar rules and the image skills, then specify a compact block that fits the existing panel and matches the approved day cards.
+2026-11-04T01:36:03.099710Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Location; rg --files -g AGENTS.md -g GAME_DESIGN.md -g progression.js -g memory-ui.js -g memory.css -g ui-kit-panels.css -g SKILL.md' in D:\Project\Gemwoven
+ succeeded in 570ms:
+
+src\gemwoven\ui-kit-panels.css
+src\gemwoven\progression.js
+src\gemwoven\memory.css
+src\gemwoven\memory-ui.js
+AGENTS.md
+docs\GAME_DESIGN.md
+Path               
+----               
+D:\Project\Gemwoven
+
+
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content 'C:\\Users\\dungc\\.codex\\skills\\generate2dsprite\\SKILL.md'" in D:\Project\Gemwoven\assets\gemwoven\raw\calendar
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content 'C:\\Users\\dungc\\.codex\\skills\\.system\\imagegen\\SKILL.md'" in D:\Project\Gemwoven\assets\gemwoven\raw\calendar
+ succeeded in 468ms:
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including transparent-output requests; fallback CLI only if explicitly requested or confirmed.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user's prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user's prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, ask built-in `image_gen` for a transparent background and preserve the generated alpha channel.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user's goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user's prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural �?" candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup �?" product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup �?" app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram �?" diagrams/infographics with structured layout and text.
+- scientific-educational �?" classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing �?" campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual �?" slide, chart, workflow, and data-heavy business visuals.
+- logo-brand �?" logo/mark exploration, vector-friendly.
+- illustration-story �?" comics, children�?Ts book art, narrative scenes.
+- stylized-concept �?" style-driven concept art, 3D/stylized renders.
+- historical-scene �?" period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization �?" translate/replace in-image text, preserve layout.
+- identity-preserve �?" try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit �?" remove/replace a specific element (including interior swaps).
+- lighting-weather �?" time-of-day/season/atmosphere changes only.
+- background-extraction �?" transparent background / clean cutout. Ask built-in `image_gen` for actual transparency.
+- style-transfer �?" apply reference style while changing subject/scene.
+- compositing �?" multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render �?" drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: <taxonomy slug>
+Asset type: <where the asset will be used>
+Primary request: <user's main prompt>
+Input images: <Image 1: role; Image 2: role> (optional)
+Scene/backdrop: <environment>
+Subject: <main subject>
+Style/medium: <photo/illustration/3D/etc>
+Composition/framing: <wide/close/top-down; placement>
+Lighting/mood: <lighting + mood>
+Color palette: <palette notes>
+Materials/textures: <surface details>
+Text (verbatim): "<exact text>"
+Constraints: <must keep/must avoid>
+Avoid: <negative constraints>
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -> subject -> details -> constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, ask built-in `image_gen` for actual transparency and preserve its alpha.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the user confirms a different model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `<= 3840px`, both edges multiples of `16px`, long-to-short ratio `<= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Optional for image inspection and downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Use only when the user explicitly chooses or confirms CLI mode.
+
+ succeeded in 530ms:
+---
+name: generate2dsprite
+description: "Generate and postprocess general 2D game assets and animation sheets: pixel-art sprites, clean HD map props, creatures, characters, NPCs, spells, projectiles, impacts, props, summons, and transparent GIF exports. Use when Codex should infer the asset plan from a natural-language request, match a reference or map art style, call built-in `image_gen` for solid-magenta raw sheets, and use the local processor only for chroma-key cleanup, frame extraction, alignment, QC, and transparent exports."
+---
+
+# Generate2dsprite
+
+Use this skill for self-contained 2D sprite or animation assets.
+
+When a larger game or playable prototype needs sprites, use this skill for the visible sprite assets and keep runtime/game assembly separate. Do not replace requested sprite assets with code-drawn placeholders.
+
+## Parameters
+
+Infer these from the user request:
+
+- `asset_type`: `player` | `npc` | `creature` | `character` | `spell` | `projectile` | `impact` | `prop` | `summon` | `fx`
+- `action`: `single` | `idle` | `cast` | `attack` | `shoot` | `jump` | `hurt` | `combat` | `walk` | `run` | `hover` | `charge` | `projectile` | `impact` | `explode` | `death`
+- `view`: `topdown` | `side` | `3/4`
+- `sheet`: `auto` | `2x2` | `2x3` | `2x4` | `3x3` | `3x4` | `4x4` | `5x5` | `custom_grid` | `strip_1x3` | `strip_1x4`
+- `frames`: `auto` or explicit count
+- `bundle`: `single_asset` | `unit_bundle` | `spell_bundle` | `combat_bundle` | `line_bundle` | `hero_action_bundle` | `engine_atlas`
+- `effect_policy`: `all` | `largest`
+- `anchor`: `center` | `bottom` | `feet`
+- `scale_strategy`: `fit` | `preserve`
+- `scale_profile`: `none` | `create_from_accepted_action` | `reuse_existing`
+- `margin`: `tight` | `normal` | `safe`
+- `art_style`: pixel_art | clean_hd | pixel_inspired | retro_pixel | map_style | project-native
+- `reference`: `none` | `attached_image` | `generated_image` | `local_file`
+- `layout_guide`: `none` | `geometry` | `character_anchor`
+- `runtime_contract`: `none` | `godot_sprite3d`
+- `world_height`: desired in-engine subject height when a runtime contract is requested
+- `prompt`: the user's theme or visual direction
+- `role`: only when the asset is clearly an NPC role
+- `name`: optional output slug
+
+Read [references/modes.md](references/modes.md) when the request is ambiguous.
+
+## Agent Rules
+
+- Decide the asset plan yourself. Do not force the user to spell out sheet size, frame count, or bundle structure when the request already implies them.
+- Do not pack unrelated actions into one raw generated sheet just to satisfy a `4x4`, `5x5`, or custom engine atlas. A raw generated sheet should represent one action family, one continuous sequence, one canonical directional locomotion sheet, or one prop/asset pack.
+- For controllable heroes, main characters, and high-value player assets with multiple actions, generate separate per-action grid sheets first, QC each action, then deterministically assemble the engine-required atlas only after the grids pass visual review.
+- For controllable heroes, main characters, and high-value player body actions, default attack/shoot/cast body sheets to body-only. Do not include large slash arcs, muzzle flashes, projectiles, impact bursts, detached dust, long trails, or wide detached FX in the body sheet. Generate those as separate `fx`, `projectile`, or `impact` sheets and layer them in the game.
+- Only include wide attack FX in the same raw body sheet when the target runtime explicitly supports wider per-action cells plus per-action origin/anchor metadata. Otherwise, a wide FX bbox will force the body to shrink inside the fixed cell.
+- When a grounded hero/player attack must keep an integrated weapon in the body sheet and there is no runtime FX layer, process it with `scale_strategy=preserve` and `align=feet` by default. This preserves raw-cell scale, translates frames to a shared feet line, and avoids bbox-fit shrinking from long swords, spears, weapon trails, capes, or wide melee poses.
+- Write the art prompt yourself. Do not default to the prompt-builder script.
+- Use built-in `image_gen` for every raw image.
+- Do not create raw sprite art with Three.js, Canvas, SVG, HTML/CSS drawing, PIL shape drawing, procedural geometry, placeholder primitives, or code-rendered screenshots. Runtime code may display finished generated assets, and scripts may make layout guides or postprocess generated images, but requested sprite art must originate from built-in `image_gen`.
+- When the user provides or implies a visual reference, use built-in image edit/reference semantics only after the reference image is visible in the conversation context. If the reference is a local file, call `view_image` first; do not rely on a filesystem path in the prompt as the visual reference.
+- Do not force pixel art when the asset is a map prop for `$generate2dmap` or when the user/project requests a different style. Match the map or reference style first.
+- Use the script only as a deterministic processor: magenta cleanup, frame splitting, component filtering, scaling, alignment, QC metadata, transparent sheet export, and GIF export.
+- Do not use scripts to generate the creative image prompt. If a legacy prompt-builder command exists, treat it as historical compatibility only, not the normal skill workflow.
+- Layout guides are allowed only as deterministic geometry references for image generation. They may show slot count, spacing, centering, and safe padding, but must never define the creative art direction.
+- Treat script flags as execution primitives chosen by the agent, not user-facing hardcoded workflow.
+- If a generated sheet touches cell edges, drifts in scale, or breaks a projectile / impact loop, either reprocess with better primitive settings or regenerate the raw sheet.
+- Do not use raw single-row sheets such as `1x4`, `1x6`, `1x8`, or `1xN` for characters, players, controllable heroes, creatures, NPCs, enemies, summons, animated props, or any asset where a body/subject must stay centered. Single-row raw generation is too likely to drift horizontally and crop inconsistently.
+- For animated body assets, use a multi-row grid by default: 4 frames -> `2x2`, 6 frames -> `2x3`, 8 frames -> `2x4`, 9 frames -> `3x3`, 12 frames -> `3x4` or `4x3`, 16 frames -> `4x4`.
+- If a game engine needs a final single-row strip or mixed atlas, first generate and QC the action as a multi-row grid, then assemble the delivery strip/atlas deterministically.
+- In every animated body grid prompt, require the subject body to stay centered in each cell, full body inside the central 60% to 70% safe area, consistent scale across cells, stable feet/bottom anchor line when applicable, and no limbs, weapons, hair, capes, dust, muzzle flashes, or detached FX crossing cell edges.
+- For hero attack body prompts, explicitly require body height and body scale to match the accepted idle/run sheets, stable feet/bottom anchor, weapon kept close enough to avoid widening the body bbox, and no detached slash arc or screen-space attack effect.
+- For elongated quadrupeds, serpentine creatures, and actors whose tail or attack extension nearly fills a cell, add a shared-silhouette-envelope contract to action prompts: keep the torso center fixed, keep every pose inside the same central 70% to 72% width/height box, tuck tails and long appendages inward, and express pounces or bites through in-place compression/extension instead of translating the whole body across the cell. "Generous margin" alone is not a reliable containment instruction for these silhouettes.
+- For massive grounded bosses, lock the feet and pelvis against lateral translation in idle prompts. Express weight through vertical torso compression, chest/core pulse, shoulder settling, and secondary motion of attached ornaments; do not use whole-body left/right sway as the idle beat.
+- For ground-contact environmental FX such as fire, write one explicit shared ignition/baseline coordinate into the prompt and forbid baked ground plates. Treat tip-height variation as animation, not anchor drift; visually verify the contact line and use an FX-specific anchor threshold instead of applying humanoid feet gates.
+- For high-value grounded player/hero body actions, prefer a character anchor sheet when consistent scale or feet placement matters: repeat one accepted master frame at the intended size and feet line in every cell, then use that sheet as a scale/root template while asking built-in `image_gen` to change only the poses. Do not use a grounded anchor sheet for jumps, knockback, airborne motion, projectiles, or FX.
+- For a multi-action character bundle, create one scale profile from an accepted idle or run sheet, then process every grounded body action with that profile. The profile locks output cell size, one shared raw-cell scale, anchor, trimming, and component rules across actions. Do not choose a new `fit_scale` per action.
+- For map prop packs, classify props before choosing a grid. Square `2x2`, `3x3`, and `4x4` packs are only for compact props. Do not put platforms, floors, bridges, walls, ladders, gates, doors, long hazards, wide/tall props, collision-bearing objects, or tileset/strip pieces into square prop packs; use one-by-one, `1x3`/`1x4` strips, custom wide cells, or a tileset-like atlas instead.
+- Keep the solid `#FF00FF` background rule unless the user explicitly wants a different processing workflow.
+
+## Workflow
+
+### 1. Infer the asset plan
+
+Pick the smallest useful output.
+
+Examples:
+
+- controllable hero with four directions -> `player` + `player_sheet`
+- side-view controllable hero with idle/run/shoot/jump -> `player` + `hero_action_bundle`
+  - idle grid sheet, usually `2x2` for 4 frames
+  - run grid sheet, usually `2x2` or `2x3` depending on needed frame count
+  - shoot grid sheet with body/weapon only, usually `2x2`
+  - jump grid sheet, usually `2x2`
+  - projectile / muzzle flash as separate assets when needed
+  - optional assembled engine atlas after per-action QC
+- side-view controllable hero with melee attack -> `player` + `hero_action_bundle`
+  - attack body grid sheet, usually `2x2` or `2x3`, body-only
+  - slash arc / weapon trail as a separate `fx` sheet when the attack needs a wide visual effect
+  - impact spark as a separate `impact` sheet when hits need feedback
+- healer overworld NPC -> `npc` + `single_asset` or `unit_bundle`
+- large boss idle loop -> `creature` + `idle` + `3x3`
+- wizard throwing a magic orb -> `spell_bundle`
+  - caster cast sheet
+  - projectile loop
+  - impact burst
+- monster line request -> `line_bundle`
+  - plan 1-3 forms
+  - per form, make the sheets the request actually needs
+
+### 2. Write the prompt manually
+
+Use [references/prompt-rules.md](references/prompt-rules.md).
+
+Choose `art_style` before writing the prompt:
+
+- Use `pixel_art` or `retro_pixel` for classic sprites, 16-bit RPG actors, and requests that explicitly ask for pixel art.
+- Use `clean_hd` for map props or assets intended to match clean hand-painted HD maps.
+- Use `pixel_inspired` only when the user wants a pixel-adjacent look without retro chunkiness.
+- Use `map_style` or `project-native` when an existing map, game, or reference should define the style.
+
+If a reference is involved:
+
+- Make the reference visible first. For local paths, use `view_image`; for freshly generated references, rely on the image already shown in context.
+- State the reference role explicitly: preserve identity/style, create an animation sheet for the same subject, create an evolution/variant, or derive a matching prop/FX.
+- Preserve the stable identity markers from the reference: silhouette, palette, face/eye features, costume marks, major accessories, and material language.
+- Let only the requested action or evolution change. Do not redesign the subject unless the user asks.
+- Still require exact sheet shape, solid magenta background, frame containment, and same scale across frames.
+
+Keep the strict parts:
+
+- solid `#FF00FF` background
+- exact sheet shape
+- same character or asset identity across frames
+- same camera distance and standing-equivalent anatomical scale across body frames; natural pose bboxes may change, but the model must not zoom individual poses
+- explicit containment: nothing may cross cell edges
+
+Mixed-action atlas guardrail:
+
+- Do not ask `image_gen` to generate unrelated action rows in one raw sheet, such as `row 1 idle, row 2 run, row 3 shoot, row 4 jump`, for a controllable hero or main character.
+- Do not ask `image_gen` to generate raw single-row action strips such as `1x4 idle`, `1x4 run`, `1x4 shoot`, or `1x4 jump` for a controllable hero, character, creature, NPC, enemy, summon, or animated prop.
+- If an engine needs a combined `4x4`, `5x5`, custom atlas, or row-strip delivery format, generate the action grids separately, process and QC them separately, then assemble the delivery atlas deterministically.
+- Exceptions are canonical directional locomotion sheets, one continuous long action sequence, prop packs, tileset-like atlases, and low-stakes compact enemy combat sheets. These still need one coherent prompt and visual QC.
+- Keep projectile, muzzle flash, impact, dust trails, and detached FX in separate sheets unless they are intentionally part of the same action silhouette and remain tightly attached.
+- For controllable heroes and main characters, "tightly attached" is not enough when the effect makes the action bbox much wider or taller than idle/run. Split wide slash arcs, muzzle flashes, long weapon trails, dust clouds, and impact bursts into separate FX sheets by default.
+
+Animated body grid guardrail:
+
+- `1x4` and other raw single-row sheets are not valid defaults for animated bodies. This includes players, controllable heroes, creatures, NPCs, enemies, summons, animated props, and body-attached combat actions.
+- Use `2x2` for 4-frame body actions. This is the default for idle, short attack, shoot body, jump, hurt, hover, and compact side-view walk/run actions.
+- Use `2x3` for 6-frame body actions such as cast, attack, summon, run, charge, or transformation.
+- Use `2x4`, `3x3`, `3x4`, or `4x4` for longer body actions. Prefer a compact grid over a long row.
+- For 4-direction top-down walk, `4x4` can remain a raw generation shape because it is a canonical directional locomotion sheet, not four unrelated action rows.
+- If final runtime needs a row strip, assemble it after QC from the processed multi-row grid frames.
+- Keep the character centered in every cell. The body centerline should stay near the cell center, feet/bottom anchor should stay on the same y-position when visible, and the subject should occupy only the central safe area with generous magenta padding.
+- For attack, shoot, cast, charge, and other body actions, the body height should stay close to the accepted idle/run body height. If a fixed-cell runtime is being used, reject body-action output when the body appears more than about 10-15% smaller than idle/run, even if `edge_touch_frames` is empty.
+
+Map prop pack guardrail:
+
+- Use square `2x2`, `3x3`, and `4x4` raw prop packs only for compact props such as rocks, shrubs, barrels, crates, lamps, small signs, pots, debris, and small ornaments.
+- Do not use square prop packs for wide or collision-critical map objects: floors, platforms, ledges, terrain chunks, bridges, wall runs, ladders, roads, rails, pipes, long spike traps, gates, doors, buildings, large trees, checkpoints, exits, or build pads.
+- Use one-by-one generation for unique, large, important, tall, irregular, or collision-aligned props.
+- Use `1x3` or `1x4` strips for repeatable platform/floor assets, with left cap, middle repeat, right cap, and optional slope/corner/end variant.
+- Use custom wide cells for multiple similar wide objects. The grid must state explicit non-square cell dimensions and must not mix compact props with platform/terrain objects.
+- If a square prop pack fails due to edge touch or bad cropping, do not solve it by relaxing QC. Reclassify the object and regenerate with a more suitable sheet shape.
+
+If a layout guide is useful, generate one before calling built-in `image_gen`:
+
+```bash
+python scripts/make_layout_guide.py \
+  --rows <rows> \
+  --cols <cols> \
+  --cell-width 384 \
+  --cell-height 384 \
+  --output <run-dir>/references/<rows>x<cols>-layout-guide.png
+```
+
+Then make the guide visible in the conversation context and tell `image_gen` to use it only for invisible slot count, spacing, centering, and safe padding. The output must not reproduce guide boxes, safe-area rectangles, center marks, labels, borders, or guide background.
+
+Use layout guides deliberately:
+
+- recommended for `prop_pack_3x3`, `prop_pack_4x4`, tileset-like atlases, fixed multi-row animation grids, and non-directional 16-frame action sequences such as casting, summoning, charging, death, or transformation
+- optional for `3x3` large idle and high-value showcase loops when previous generations drift in scale or spacing
+- not the default for `4x4` four-direction walk sheets, because the guide can make directional poses too conservative; use it only after an unguided run fails layout or edge safety
+
+For grounded high-value character actions, an abstract box guide is weaker than a character anchor sheet. After accepting a neutral/idle master frame, create the anchor sheet:
+
+```bash
+python scripts/make_anchor_layout.py \
+  --input <accepted-master-frame.png> \
+  --rows 2 \
+  --cols 3 \
+  --cell-width 512 \
+  --cell-height 512 \
+  --subject-height-ratio 0.66 \
+  --feet-ratio 0.82 \
+  --output <run-dir>/references/attack-anchor-2x3.png
+```
+
+Make both the master frame and anchor sheet visible to built-in `image_gen`. State that the master locks identity/style and the anchor sheet locks slot positions, camera distance, standing-equivalent scale, body root, feet line, and padding. Ask the model to change only the action poses and never reproduce guides, borders, labels, or separators.
+
+### 3. Generate the raw image
+
+Use built-in `image_gen`.
+
+Do not use Three.js, Canvas, SVG, HTML/CSS, PIL drawing, or other code-generated art as the raw sprite source. These are acceptable only for runtime display, debug overlays, deterministic layout guides, or postprocessing already-generated images.
+
+After generation:
+
+- find the raw PNG under `$CODEX_HOME/generated_images/...`
+- copy or reference it from the working output folder
+- keep the original generated image in place
+
+### 4. Postprocess locally
+
+Run `scripts/generate2dsprite.py process` on the raw image.
+
+The processor is intentionally low-level. The agent chooses:
+
+- `rows` / `cols`
+- `fit_scale`
+- `align`
+- `shared_scale`
+- `component_mode`
+- `component_padding`
+- `scale_strategy`
+- `edge_touch` rejection strategy
+
+Use the processor to gather QC metadata, not to make aesthetic decisions for you.
+
+For hero action bundles, process each action grid as its own sheet before any final atlas assembly. Use `component_mode=largest` for body-only hero grids. Use `component_mode=all` only for projectile, impact, aura, slash FX, or intentionally detached FX sheets, not for fixed-cell hero body attacks that need stable body scale.
+
+Use `--scale-strategy preserve --align feet` for grounded hero/player body sheets when the raw art already has acceptable scale but bbox-fit would shrink the character because of a long weapon, extended pose, cape, or integrated melee effect. Preserve mode applies one uniform raw-cell-to-output scale to every frame, including one shared safety margin, then translates each detected subject to the shared anchor. It never applies a different bbox-fit scale per frame. Use the default `fit` strategy for compact bodies, creatures, projectiles, impacts, and intentionally normalized FX.
+
+For a character with multiple actions, write a scale profile only after an accepted reference action passes QC:
+
+```bash
+python scripts/generate2dsprite.py process \
+  --input <accepted-run-raw.png> \
+  --target player --mode run --rows 2 --cols 3 \
+  --output-dir <run-dir> \
+  --cell-size 128 --fit-scale 0.80 \
+  --align feet --scale-strategy preserve --component-mode largest \
+  --strict-qc --write-scale-profile <bundle>/character-scale-profile.json \
+  --profile-name <character-name> --max-profile-scale-drift 0.08
+```
+
+Process later actions with `--scale-profile <bundle>/character-scale-profile.json`. Profile values override per-command scale, anchor, trim, and component defaults so actions cannot silently use different output magnification. Keep using the same generation grid geometry and character anchor sheet when possible; a processing profile cannot repair a model-generated anatomy-scale change.
+
+When integrating a processed grid as a Godot `Sprite3D`, request a world-height contract instead of hand-tuning each action in the game:
+
+```bash
+python scripts/generate2dsprite.py process \
+  --input <raw-sheet.png> \
+  --target player --mode idle --rows 2 --cols 3 \
+  --output-dir <action-dir> \
+  --cell-size 256 --fit-scale 0.84 \
+  --align feet --scale-strategy preserve --component-mode largest \
+  --strict-qc --max-body-scale-cv 0.08 --max-anchor-y-std 0.05 \
+  --duration 125 --godot-world-height 0.70
+```
+
+This writes `godot-sprite3d.json` beside the frames. The reference action derives `recommended_pixel_size` from the QC-measured mean subject height and stores it in the scale profile. Later actions processed with that profile reuse the exact pixel size, so crouching, recoil, hurt, and creature silhouette changes remain real pose changes instead of being normalized back to the reference height. The contract also converts the shared output origin to Godot's `Sprite3D.offset`, lists animation frames, and records timing. Reuse the same `world_height` and scale profile for every compatible action in one bundle.
+
+After all actions pass QC, build one Godot animation bundle:
+
+```bash
+python scripts/generate2dsprite.py build-godot-bundle \
+  --action idle=<bundle>/idle/godot-sprite3d.json \
+  --action move=<bundle>/move/godot-sprite3d.json \
+  --action attack=<bundle>/attack/godot-sprite3d.json \
+  --action hurt=<bundle>/hurt/godot-sprite3d.json \
+  --default-action idle --one-shot attack --one-shot hurt \
+  --output <bundle>/godot-sprite3d-bundle.json
+```
+
+The bundle validates cross-action world height and `pixel_size`, stores relative contract paths, and declares loop versus one-shot playback. Treat a bundle drift failure as an asset-generation or wrong-profile error; do not compensate with per-action runtime scale.
+
+### 5. QC the result
+
+Check:
+
+- did any frame touch the cell edge
+- did any frame resize differently than intended
+- did detached effects become noise
+- does the sheet still read as one coherent animation
+- for hero/player body actions, does the body height match the accepted idle/run scale within roughly 10-15%
+- for fixed-cell runtimes, did a wide weapon trail or FX arc shrink the body inside the cell
+- for preserve-scale runs, are feet/bottom anchors aligned without any `paste_clamped` frames
+- for grounded high-value body sheets, does `qc_summary.body_scale_cv` stay at or below about `0.08` and `qc_summary.anchor_y_std` at or below about `0.05`
+- for rooted boss idles, do the feet and pelvis remain fixed while motion comes from compression, glow, shoulders, and attached secondary elements
+- for ground-contact FX, is the authored ignition/baseline stable even when flame tips, embers, or effect height change
+- for multi-action bundles, does `qc_summary.profile_body_scale_drift` stay within the scale profile limit, normally `0.08`
+
+If not, rerun with different processor settings or regenerate the raw sheet.
+
+Strict QC distinguishes raw source-cell contact from processed output contact. Prefer regeneration when a body part is visibly clipped. If visual review confirms the raw subject is complete and only an antialiased or harmless contour touches the source-cell boundary, use `--allow-source-edge-touch`; it never permits output-edge contact, paste clamping, or empty frames.
+
+For elongated creature attacks, any `paste_clamped_frames` or `output_edge_touch_frames` means the raw sheet must be regenerated with the shared-silhouette-envelope contract above. Do not use `--allow-source-edge-touch` until clamp and processed-output edge contact are both zero and visual review confirms the full snout, paws, weapon, wings, or tail are intact.
+
+For grounded high-value humanoid player/hero body actions, run strict QC after generation-first scale control:
+
+```bash
+python scripts/generate2dsprite.py process \
+  --input <raw-sheet.png> \
+  --target player \
+  --mode attack \
+  --output-dir <out-dir> \
+  --rows 2 \
+  --cols 3 \
+  --align feet \
+  --scale-strategy preserve \
+  --component-mode largest \
+  --strict-qc \
+  --max-body-scale-cv 0.08 \
+  --max-anchor-y-std 0.05
+```
+
+These numeric gates are for grounded humanoid body actions, not jumps, knockback, projectiles, impacts, floating actors, creatures whose attack strongly changes silhouette/posture, or intentionally changing-scale FX. A failed gate is a regeneration signal; do not hide generation drift with per-frame scale normalization.
+
+For ground-contact FX, prefer `component_mode=largest` when detached embers would corrupt the contact anchor. Accept a looser action-specific `max_anchor_y_std` only after visual review confirms a fixed baseline, zero output-edge contact, zero paste clamping, and correct in-engine placement. Do not loosen the grounded-character defaults globally.
+
+Cross-action scale-profile drift is a generation QC signal. Preserve legitimate crouching, recoil, and compressed pose bboxes; inspect borderline hurt or knockback sheets visually instead of applying per-frame resize. For ordinary idle, run, walk, and grounded body attacks, reject unexplained profile drift.
+
+### 6. Return the right bundle
+
+For a single sheet, expect:
+
+- `raw-sheet.png`
+- `raw-sheet-clean.png`
+- `sheet-transparent.png`
+- frame PNGs
+- `animation.gif`
+- `prompt-used.txt`
+- `pipeline-meta.json`
+- optional `godot-sprite3d.json` when `--godot-world-height` is supplied
+- `godot-sprite3d-bundle.json` for a multi-action Godot unit
+
+For `player_sheet`, expect:
+
+- transparent 4x4 sheet
+- 16 frame PNGs
+- direction strips
+- 4 direction GIFs
+
+For `spell_bundle` or `unit_bundle`, create one folder per asset in the bundle.
+
+For `hero_action_bundle`, expect:
+
+- one raw and processed sheet per action
+- per-action frame PNGs and GIFs for visual QC
+- separate projectile / muzzle / slash / impact assets when the hero shoots, casts, or uses wide melee effects
+- optional assembled `engine-atlas-transparent.png` only after per-action QC passes
+- one shared `character-scale-profile.json` for grounded body actions when cross-action scale consistency matters
+
+## Defaults
+
+- `idle`
+  - small or medium actor -> `2x2`
+  - large creature or boss -> `3x3`
+- `cast` -> prefer `2x3`
+- `projectile` -> prefer `2x2` for short animated loops; use row strips only when the engine specifically requires a strip, and assemble that strip after QC when practical
+- `impact` / `explode` -> prefer `2x2`
+- `walk`
+  - topdown actor -> `4x4` for four-direction walk
+  - side-view asset -> `2x2`
+- controllable hero or main player with multiple actions -> `hero_action_bundle`
+  - generate one action per raw multi-row grid sheet, not as a raw `1x4` strip
+  - attack/shoot/cast body sheets are body-only by default; wide slash arcs, muzzle flashes, projectiles, trails, dust, and hit impacts are separate FX/projectile/impact sheets
+  - if the weapon must stay integrated and there is no separate FX layer, use `--scale-strategy preserve --align feet` instead of bbox-fit normalization
+  - default 4-frame action grid is `2x2`
+  - use `2x3` for 6-frame actions and `2x4`, `3x3`, `3x4`, or `4x4` for longer actions
+  - do not generate a mixed-action raw `4x4`, `5x5`, or custom atlas
+  - assemble the final atlas only as a deterministic delivery step if the game requires it
+- `4x4`, `5x5`, and custom grids
+  - use as raw generation only for one coherent long action sequence, canonical directional locomotion, prop packs, or tileset-like atlases
+  - use as delivery atlases for mixed actions only after separate action sheets pass QC
+- use `shared_scale` by default for any multi-frame asset where frame-to-frame consistency matters
+- use `largest` component mode for hero/player body grids; use `all` for separate FX/projectile/impact sheets
+- use `scale_strategy=preserve` for grounded hero/player melee attacks with integrated weapons or wide body poses that would shrink under bbox-fit normalization; use `fit` for normal compact sheets and FX
+
+## Resources
+
+- `references/modes.md`: asset, action, bundle, and sheet selection
+- `references/prompt-rules.md`: manual prompt patterns and containment rules
+- `scripts/generate2dsprite.py`: postprocess primitive for cleanup, extraction, alignment, QC, and GIF export
+- `scripts/make_anchor_layout.py`: repeat an accepted character frame into a fixed scale/root generation template
+- `scripts/make_layout_guide.py`: create abstract geometry-only guides for prop packs and suitable grids
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n 'calendarView|calendar|Ghé thăm' src/gemwoven/progression.js src/gemwoven/memory-ui.js src/gemwoven/memory.css src/gemwoven/ui-kit-panels.css" in D:\Project\Gemwoven
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-ChildItem -Name; Get-Content 'C:\\Users\\dungc\\.codex\\skills\\.system\\imagegen\\references\\prompting.md'" in D:\Project\Gemwoven\assets\gemwoven\raw\calendar
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content AGENTS.md; rg -n 'Vòng Tính năng|Lịch 28 ngày|§20|"'^## 20|calendar'"' docs/GAME_DESIGN.md" in D:\Project\Gemwoven
+ succeeded in 701ms:
+src/gemwoven/ui-kit-panels.css:342:.kp-events>.gw-emblem{background-image:var(--kit-icon-emblem-calendar)!important;width:calc(96*var(--s,1px))}
+src/gemwoven/memory-ui.js:14:  function calendar(){
+src/gemwoven/memory-ui.js:56:    live.build=el=>{build(el);const html=calendar(),wq=el.querySelector('.weekly-quests');if(wq)wq.insertAdjacentHTML('beforebegin',html);else el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',html);};
+src/gemwoven/memory-ui.js:67:  window.GemwovenMemoryUI={calendar,picker};
+src/gemwoven/progression.js:104:  const DAILY=[{id:'login',name:'Ghé thăm thị trấn',target:1,reward:{gold:500,exp:10,seals:80,tickets:1}}, {id:'campaign',name:'Hoàn thành 3 trận vượt ải',target:3,reward:{gold:1500,exp:20,seals:120,noviceFragments:6}}, {id:'boss',name:'Thắng 2 trận Trùm Vô Tận',target:2,reward:{gold:2000,exp:25,seals:150}}, {id:'spend',name:'Dùng 1.000 vàng',target:1000,reward:{gold:800,skillBooks:1,seals:80}}];
+src/gemwoven/progression.js:154:  // Display helpers (Vietnamese, GMT+7 calendar days) shared by the hub and tests.
+src/gemwoven/progression.js:519:  // A calendar month (UTC+7): points race on days 1..D−3, then a top-8 BO3 knockout (quarter D−2, semi D−1,
+src/gemwoven/progression.js:739:    function tx(fn){const p=load();clockNow(p,true);daily(p);p.mail=p.mail.filter(m=>mailLive(m,current));const value=fn(p);memorySync(p);calendarSync(p);guideSync(p);save(p);return value;}
+src/gemwoven/progression.js:762:    // Lịch 28 ngày (Claude + Codex 04/11, GAME_DESIGN §20 "Vòng Tính năng kế tiếp"): the shared 28-day season as a calendar of
+src/gemwoven/progression.js:763:    // the existing Ghé thăm reward. Only today can be claimed and that is claimDaily('login') itself, which stamps the day; no
+src/gemwoven/progression.js:766:    function calendarFrom(p,c,s,today){if(c)return 1;const made=Math.floor(((p.created||current)-s.start)/DAY_MS)+1;return made>=1?Math.min(made,today):today;}
+src/gemwoven/progression.js:767:    function calendarSync(p){const O=OPS();if(!O?.passSeason)return;const s=O.passSeason(current),today=Math.floor((current-s.start)/DAY_MS)+1;
+src/gemwoven/progression.js:768:      if(!p.calendar||p.calendar.season!==s.index)p.calendar={season:s.index,from:calendarFrom(p,p.calendar,s,today),days:[]};
+src/gemwoven/progression.js:769:      if(p.daily.date===day(current)&&p.daily.claimed.includes('login')&&!p.calendar.days.includes(today))p.calendar.days.push(today);}
+src/gemwoven/progression.js:770:    function calendarView(p){const O=OPS(),s=O.passSeason(current),today=Math.floor((current-s.start)/DAY_MS)+1,days=O.PASS.seasonDays;
+src/gemwoven/progression.js:771:      const c=p.calendar?.season===s.index?p.calendar:{from:calendarFrom(p,p.calendar,s,today),days:p.daily.claimed.includes('login')?[today]:[]};
+src/gemwoven/progression.js:962:      calendar:()=>calendarView(read()),
+
+ succeeded in 679ms:
+critique-prompt.md
+critique.log
+current-events-phone.png
+current-events-top-phone.png
+# Prompting best practices
+
+These prompting principles are shared by both top-level modes of the skill:
+- built-in `image_gen` tool (default)
+- explicit `scripts/image_gen.py` CLI fallback
+
+This file is about prompt structure, specificity, and iteration. Fallback-only execution controls such as `quality`, `input_fidelity`, masks, output format, and output paths live in the fallback docs.
+
+## Contents
+- [Structure](#structure)
+- [Specificity policy](#specificity-policy)
+- [Allowed and disallowed augmentation](#allowed-and-disallowed-augmentation)
+- [Composition and layout](#composition-and-layout)
+- [Constraints and invariants](#constraints-and-invariants)
+- [Text in images](#text-in-images)
+- [Input images and references](#input-images-and-references)
+- [Iterate deliberately](#iterate-deliberately)
+- [Transparent images](#transparent-images)
+- [Fallback-only execution controls](#fallback-only-execution-controls)
+- [Use-case tips](#use-case-tips)
+- [Where to find copy/paste recipes](#where-to-find-copypaste-recipes)
+
+## Structure
+- Use a consistent order: scene/backdrop -> subject -> key details -> constraints -> output intent.
+- Include intended use (ad, UI mock, infographic) to set the level of polish.
+- For complex requests, use short labeled lines instead of one long paragraph.
+
+## Specificity policy
+- If the user prompt is already specific and detailed, normalize it into a clean spec without adding creative requirements.
+- If the prompt is generic, you may add tasteful detail when it materially improves the output.
+- Treat examples in `sample-prompts.md` as fully-authored recipes, not as the default amount of augmentation to add to every request.
+- For photorealism, include `photorealistic` directly when that is the goal, plus concrete real-world texture such as pores, wrinkles, fabric wear, material grain, or imperfect everyday detail.
+
+## Allowed and disallowed augmentation
+
+Allowed augmentation for generic prompts:
+- composition and framing cues
+- intended-use or polish-level hints
+- practical layout guidance
+- reasonable scene concreteness that supports the request
+
+Do not add:
+- extra characters, props, or objects that are not implied
+- brand palettes, slogans, or story beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Composition and layout
+- Specify framing and viewpoint (close-up, wide, top-down) and placement only when it materially helps.
+- Call out negative space if the asset clearly needs room for UI or copy.
+- Avoid making left/right layout decisions unless the user or surrounding layout supports them.
+- For people, describe body framing, scale, gaze, and object interactions when they matter (`full body visible`, `looking down at the book`, `hands naturally gripping the handlebars`).
+
+## Constraints and invariants
+- State what must not change (`keep background unchanged`).
+- For edits, say `change only X; keep Y unchanged` and repeat invariants on every iteration to reduce drift.
+
+## Text in images
+- Put literal text in quotes or ALL CAPS and specify typography (font style, size, color, placement).
+- Spell uncommon words letter-by-letter if accuracy matters.
+- For in-image copy, require verbatim rendering and no extra characters.
+- In CLI fallback mode, use `medium` or `high` quality for small text, dense infographics, data-heavy slides, multi-font layouts, legends, axes, and footnotes.
+
+## Input images and references
+- Do not assume that every provided image is an edit target.
+- Label each image by index and role (`Image 1: edit target`, `Image 2: style reference`).
+- If the user provides images for style, composition, or mood guidance and does not ask to modify them, treat the request as generation with references.
+- If the user asks to preserve an existing image while changing specific parts, treat the request as an edit.
+- For compositing, describe how the images interact (`place the subject from Image 2 into Image 1`).
+
+## Iterate deliberately
+- Start with a clean base prompt, then make small single-change edits.
+- Re-specify critical constraints when you iterate.
+- Prefer one targeted follow-up at a time over rewriting the whole prompt.
+
+## Transparent images
+- Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Fallback-only execution controls
+- `quality`, `input_fidelity`, explicit masks, output format, and output paths are fallback-only execution controls.
+- Do not assume they are built-in `image_gen` tool arguments.
+- If the user explicitly chooses CLI fallback, see `references/cli.md` and `references/image-api.md` for those controls.
+- In CLI fallback mode, `gpt-image-2` is the default. It supports `quality=low|medium|high|auto`; use `low` for fast drafts and thumbnails, and move to `medium`, `high`, or `auto` for final assets.
+- `gpt-image-2` always uses high fidelity for image inputs, so do not set `input_fidelity` with that model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- If the user asks for 4K-style output with `gpt-image-2`, use `3840x2160` for landscape or `2160x3840` for portrait.
+
+## Use-case tips
+Generate:
+- photorealistic-natural: Prompt as if a real photo is captured in the moment; use photography language (lens, lighting, framing); call for real texture; avoid over-stylized polish unless requested.
+- product-mockup: Describe the product/packaging and materials; ensure clean silhouette and label clarity; if in-image text is needed, require verbatim rendering and specify typography.
+- ui-mockup: Describe the target fidelity first (shippable mockup or low-fi wireframe), then focus on layout, hierarchy, and practical UI elements; avoid concept-art language.
+- infographic-diagram: Define the audience and layout flow; label parts explicitly; require verbatim text; prefer higher quality in CLI mode for dense labels.
+- logo-brand: Keep it simple and scalable; ask for a strong silhouette and balanced negative space; avoid decorative flourishes unless requested.
+- ads-marketing: Write like a creative brief; include brand positioning, audience, desired vibe, scene, and exact tagline if text must appear.
+- productivity-visual: Name the exact artifact (slide, chart, workflow diagram), define the canvas and hierarchy, provide real labels/data, and ask for readable typography and polished spacing.
+- scientific-educational: Define audience, lesson objective, required labels, scientific constraints, arrows, and scan-friendly whitespace.
+- illustration-story: Define panels or scene beats; keep each action concrete.
+- stylized-concept: Specify style cues, material finish, and rendering approach (3D, painterly, clay) without inventing new story elements.
+- historical-scene: State the location/date and required period accuracy; constrain clothing, props, and environment to match the era.
+
+Edit:
+- text-localization: Change only the text; preserve layout, typography, spacing, and hierarchy; no extra words or reflow unless needed.
+- identity-preserve: Lock identity (face, body, pose, hair, expression); change only the specified elements; match lighting and shadows.
+- precise-object-edit: Specify exactly what to remove/replace; preserve surrounding texture and lighting; keep everything else unchanged.
+- lighting-weather: Change only environmental conditions (light, shadows, atmosphere, precipitation); keep geometry, framing, and subject identity.
+- background-extraction: Request a clean cutout on a genuinely transparent background; preserve fine edges and label text; no halos or restyling.
+- style-transfer: Specify style cues to preserve (palette, texture, brushwork) and what must change; add `no extra elements` to prevent drift.
+- compositing: Reference inputs by index; specify what moves where; match lighting, perspective, and scale; keep the base framing unchanged.
+- sketch-to-render: Preserve layout, proportions, and perspective; choose materials and lighting that support the supplied sketch without adding new elements.
+
+## Where to find copy/paste recipes
+For copy/paste prompt specs (examples only), see `references/sample-prompts.md`. This file focuses on principles, specificity, and iteration patterns.
+
+ succeeded in 761ms:
+# Gemwoven development
+
+- Hand image generation, and any deep image processing, to Codex. Climb the model ladder only when the result fails review: `gpt-6.1-sol` low -> medium -> high -> `gpt-6-astra` medium -> high (the ceiling). Keep mechanics, feature design, integration, and ordinary coding on the current model.
+- Read the imagegen and applicable sprite skills before generating. Use built-in ImageGen; keep final assets and prompts in this repository. Preserve original raw sheets for reproducibility.
+- Start a new account with Hiro only. Premium �?A� Ng��?c must never be awarded from gameplay, daily quests, offline accumulation, summons, or the event editor. Payment processing is a future server feature.
+- Chapter elites fight as drawn (range, body sheets, a boss-staged first skill with art and sounds of their own): `docs/ELITE_SKILLS.md`. Boss kits stay exclusive to their boss, with one exception: a chapter's last elite plays its boss's ultimate on stage 45.
+- Progression rules are shared by the hub and combat through `src/gemwoven/progression.js`. Avoid duplicating economy calculations in UI code.
+- Keep unreleased features clearly marked Coming soon. Local PvP is not online PvP; local records are not global leaderboards. The event studio is a local configuration prototype, not an authenticated production admin.
+- Keep generated hub HTML, ZIPs, QA images, dependency folders, and temporary reports out of Git. `Game.html` is an existing tracked entry point; preserve its current repository convention. Commit useful source art, runtime assets, source, tests, and dependency locks.
+- Rebuild combat with `python build.py`; rebuild the hub with `python scripts/build_gemwoven.py`. Run `npm test` in `qa/gemwoven/runtime` after mechanics changes.
+- Foes rest and take buffs in baked mesh rigs too: a new creature, elite or boss needs `python assets/gemwoven/rig_foes.py parts <id>` then `make <id>`; without a rig folder it falls back to its drawn sheets. Its resting frame is then redrawn crisp at the size combat shows it (512px, bosses 640px): `python assets/gemwoven/sharpen_foes.py draw <id>`, `rig <id>`, `fidgets <id>` (`audit` measures every foe against the heroes).
+- New heroes, and new items for every hero, follow `docs/HERO_PIPELINE.md`; the checklist `docs/hero-checklist.json` (run `python scripts/hero_checklist.py`) feeds the hero studio's "H���ng m���c t����>ng" grid.
+- Growth, economy, live-ops and arena design lives in `docs/GAME_DESIGN.md` (Studio tab "Thi���t k��� h��� th��`ng"); live-ops numbers in `src/gemwoven/liveops.js`. Measure balance changes with `node qa/gemwoven/balance-sim.cjs` before and after.
+- After adding runtime art or sound, refresh the download packs with `node scripts/build_asset_packs.cjs` (`assets/packs.json`; `src/gemwoven/asset-packs.js` picks packs per account).
+- The plaza (TrA� Chuy���n) talks to the social server `server/social` (Node + ws, port 8091; `npm install && npm test` there); shared rules in `src/gemwoven/social-protocol.js`, protocol in `docs/SOCIAL_PROTOCOL.md`. Contested design waits until Claude and Codex agree (`docs/GAME_DESIGN.md` A20); `docs/REQUEST_TRACKER.md` answers each owner request.
+- Every new or rebuilt screen gets a design review, not only a size/bug checklist: Codex critiques it against the approved screens, draws a mockup with image_gen that both agree on before coding, the build uses drawn art (not plain CSS boxes), and Codex scores the result against the mockup on a phone viewport and in the Studio page (`tools/studio.html`, Game (Hub), 1920A-911) until it passes (�%� 8/10). Example: `assets/gemwoven/raw/forge-mockup/`.
+350:- **Rương miễn phí ngày 28 [Có]** (Sự Kiện → Lịch 28 ngày): ngày 28 của mỗi mùa 28 ngày, **20 mảnh tự chọn** một tướng đã sở
+699:## 20. Phản biện của Codex (vòng 1, `gpt-6.1-sol` high) và cách xử lý
+867:- **Thưởng:** Claude đề xuất 400 điểm báu vật, 2 ngọc cấp 3, vàng/tinh hoa theo hạng → Codex: tạo vòng thắng-rồi-mạnh-hơn, trái §20 vòng 1
+920:### Vòng Tính năng kế tiếp (04/11, Dẫn Đường + Lịch 28 ngày) — đã thống nhất
+922:  phần đã thiết kế mà chưa làm và làm được cục bộ: **1. Dẫn Đường** (hướng dẫn tân thủ 10 phút đầu, 5/M), **2. Lịch 28 ngày**
+955:- **Lịch 28 ngày** (Claude đề xuất, Codex sửa 3 điểm, Claude nhận cả 3):
+956:  1. Sự Kiện → "Lịch 28 ngày" thành lịch 4 hàng × 7 ngày của **mùa 28 ngày chung** (`passSeason`, neo 02/11/2026 00:00 GMT+7;
+960:  3. Lưu `p.calendar={season,from,days:[]}`: ngày đã nhận và mốc bắt đầu ghi; ngày lỡ sau mốc là "lỡ", ngày trước mốc (chưa có dữ
+
+codex
+I’m using the imagegen skill to structure the mockup prompt. The current row matches the panel’s materials, but it makes the day-28 chest look like the whole feature; it gives no visual explanation of daily claims or missed days.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -Encoding UTF8 src/gemwoven/memory-ui.js | Select-Object -First 74; rg -n 'cal-|calendar|memory-calendar|month-reward' src/gemwoven/memory.css src/gemwoven/ui-kit-panels.css; Get-Content -Encoding UTF8 src/gemwoven/memory.css | Select-Object -First 65" in D:\Project\Gemwoven
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 docs/GAME_DESIGN.md | Select-Object -Skip 950 -First 29; Get-Content -Encoding UTF8 src/gemwoven/progression.js | Select-Object -Skip 759 -First 34' in D:\Project\Gemwoven
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 critique-prompt.md' in D:\Project\Gemwoven\assets\gemwoven\raw\calendar
+ succeeded in 405ms:
+You are Codex, UI co-designer of Gemwoven (portrait match-3 RPG, Vietnamese UI, 941x1672 stage). Read-only. Agreed design: docs/GAME_DESIGN.md 20 "V�ng T�nh nang k? ti?p", part "L?ch 28 ng�y" (rules in src/gemwoven/progression.js calendarView; today the S? Ki?n screen shows only a "L?ch 28 ng�y" row: progress bar + day-28 chest, built by src/gemwoven/memory-ui.js calendar(), styled by memory.css and the shared kit ui-kit-panels.css). Owner rules: frames/cells/stamps are drawn art (image_gen), words/numbers HTML; minimal text, pictures, details behind a tap.
+Images: 1 = current S? Ki?n scrolled to the "L?ch 28 ng�y" row (phone 390x844); 2 = the top of the same screen (H�nh Tr�nh T�n Th? day cards - the approved style to match); 3 = approved L� R�n mockup for material style.
+Calendar facts: season of 28 days (4 rows x 7), today's cell claimable once (exactly the daily Gh� tham reward: 500 v�ng, 10 s�ch kinh nghi?m, 80 ?n, 1 v� - the same reward every day), past unclaimed days after the account's first day are "missed", days before it are neutral, future days locked; day 28 also holds the separate free 20-shard chest (its own claim). The Qu�n Bia Gh� tham and the calendar share one claim.
+1. Short critique of the current row (/10).
+2. Specify the calendar block inside the panel (content column � x 161..780 in stage units, � 619 wide): header (title plaque, "Ng�y n/28", ?), ONE reward strip showing the daily reward once (icons + numbers), the 4x7 grid (cell size, gaps), cell states (claimed stamp, today glow + claim affordance, missed, neutral, future), day-28 cell with the chest, how claiming works (tap today's cell or a button), what a tap on other cells shows. Keep it compact (the screen also holds K? B�u V?t, T�n Th?, weekly quests).
+3. Write ONE image_gen prompt for a MOCKUP (fenced block ```PROMPT_MOCK): image 1 edited so the row becomes the calendar block (keep the rest of the screen identical), Vietnamese text exactly as you specify, portrait, same hand-painted style.
+
+ succeeded in 654ms:
+     d?i tr?ng th�i tr?n.
+  9. Ki?m th?: b? qua t? d?ng ch? khi t?i lu?t; ch?t b?n sau khi ti�u v�, th�o d?, qua n?a d�m; b? qua  xem l?i; l�m theo hu?ng
+     d?n v� t? l�m cho c�ng v�, nguy�n li?u, m?nh, ti?n d?; t?i l?i, thua/d�nh l?i, c? tr?n cu, m?t v� tru?c x�c nh?n; c�u n? v� b�i
+     h?c ch? m?t l?n; du?ng di tr�n di?n tho?i qua b?n d?, th? ?i, x�c nh?n tri?u h?i, ch?n d?.
+- **L?ch 28 ng�y** (Claude d? xu?t, Codex s?a 3 di?m, Claude nh?n c? 3):
+  1. S? Ki?n  "L?ch 28 ng�y" th�nh l?ch 4 h�ng x 7 ng�y c?a **m�a 28 ng�y chung** (`passSeason`, neo 02/11/2026 00:00 GMT+7;
+     ng�y m�a, kh�ng ph?i ng�y t?o t�i kho?n), ng�y gi? theo d?ng h? da ch?n l�i c?a engine.
+  2. **Ch? h�m nay nh?n du?c**, v� l� d�ng ph?n thu?ng "Gh� tham th? tr?n" (500 v�ng, 10 s�ch, 80 ?n theo tr?n, 1 v�): hai l?i v�o
+     (l?ch, Qu�n Bia) g?i c�ng `claimDaily('login')`, giao d?ch d� d�ng d?u ng�y tr�n l?ch; gi? nguy�n +1 nhi?m v? tu?n, +50 di?m s?.
+  3. Luu `p.calendar={season,from,days:[]}`: ng�y da nh?n v� m?c b?t d?u ghi; ng�y l? sau m?c l� "l?", ng�y tru?c m?c (chua c� d?
+     li?u, tru?c khi t?o t�i kho?n) d? trung t�nh. Ch? suy t? b?ng ch?ng ch?c (`daily.date` h�m nay da nh?n `login`). **Kh�ng nh?n
+     b�, kh�ng chu?i, kh�ng qu� ng�y 7/14/21.**
+  4. **Ng�y 28** c� hai ph?n d?c l?p: ph?n Gh� tham c?a ng�y d� v� **ruong 20 m?nh** c� s?n (tu?ng s? h?u, kh�ng Hiro, chua 6?; kh�ng
+     c� th� phi?u kh�ng h?t h?n; ruong chua nh?n sang m�a th�nh phi?u nhu cu). Kh�ng c?n dang nh?p d? ng�y.
+  5. T?ng 28 ng�y nhu cu: 14.000 v�ng, 280 s�ch, 2.240 ?n (theo tr?n), 28 v� + ruong. Ki?m th?: hai l?i v�o c�ng m?t d?u, nh?n
+     l?n hai l?i, qua m�a, v�o gi?a m�a, n?a d�m GMT+7, l�i d?ng h?, tr?n ?n, nhi?m v? tu?n/s?, ruong v� phi?u ng�y 28 d?c l?p.
+- Giao di?n c? hai: mockup Codex tru?c, r?i v? m?nh, d?ng, Codex ch?m � 8,5 tr�n di?n tho?i 390x844 v� Studio 1920x911 (c? l?p d?n
+  trong tr?n v� l?ch).
+
+### V�ng M�a c?a tu?ng (04/11, Th? Th�ng / S? H�nh Tr�nh / Qu? theo tu?ng ra m?t) - Claude + Codex th?ng nh?t, ch? ch? d? �n ch?t
+
+Y�u c?u: "Th? th�ng m? theo tu?ng du?c ra m?t. b�n k�m danh hi?u, th? t�n, popup chat, khung, avatar, s�ch k? nang, khung m�n combat,
+hi?u ?ng tr�n battle, tu?ng l�m ph?n thu?ng cho c�c m?c quan tr?ng. Xem c? S? H�nh Tr�nh, Th? Th�ng v� Qu?." Sau d�: "Mi?n ph� th� c�
+l?y du?c m?nh tu?ng, nhung ph?i nhi?u m�a m?i gh�p du?c; c� s? ki?n tu?n d? mi?n ph� trong 2 tu?n choi d? nhi?m v? s? gh�p du?c tu?ng."
+
+- **Ch? d? tu?ng d?t ? S? H�nh Tr�nh**, kh�ng ? Th? Th�ng: m?i m�a 28 ng�y l� "H�nh Tr�nh C?a X", t?i da **m?t tu?ng m?i m?i m�a**.
+  Ng�y 1-14 banner ra m?t X, ng�y 15-28 ch?y l?i m?t tu?ng cu Y d? di?u ki?n (lu?t D3 gi? nguy�n: c�ch �42 ng�y, c?n �3 tu?ng hi?m).
+- **Th? Th�ng gi? nguy�n** (109k, 300 + 100/ng�y, c?ng d?n 180 ng�y; kh�ng th�m qu� theo tu?ng: th?i h?n 30 ng�y l?ch m�a 28 ng�y).
+  **Qu? Tru?ng Th�nh gi? nguy�n** (299k m?t l?n/t�i kho?n, 7.000 ng?c theo c?p tu?ng cao nh?t; kh�ng chia theo tu?ng hay m�a).
+        h.copies=1;p.fragments[key]=0;m.dust+=dust;m.log.unshift({at:current,hero:key,copies,fragments,dust});m.log=m.log.slice(0,20);
+        note(p,`${HEROES[key].name} 6?: ${copies} b?n, ${fragments} m?nh du  ${dust} B?i Ky ?c`);}}
+    // L?ch 28 ng�y (Claude + Codex 04/11, GAME_DESIGN 20 "V�ng T�nh nang k? ti?p"): the shared 28-day season as a calendar of
+    // the existing Gh� tham reward. Only today can be claimed and that is claimDaily('login') itself, which stamps the day; no
+    // catch-up, no streak, no day-7/14/21 bonus. `from` is the first day this save can vouch for (account creation or the
+    // first season seen): earlier days are neutral, later unstamped days are missed. Day 28 also holds the memory chest.
+    function calendarFrom(p,c,s,today){if(c)return 1;const made=Math.floor(((p.created||current)-s.start)/DAY_MS)+1;return made>=1?Math.min(made,today):today;}
+    function calendarSync(p){const O=OPS();if(!O?.passSeason)return;const s=O.passSeason(current),today=Math.floor((current-s.start)/DAY_MS)+1;
+      if(!p.calendar||p.calendar.season!==s.index)p.calendar={season:s.index,from:calendarFrom(p,p.calendar,s,today),days:[]};
+      if(p.daily.date===day(current)&&p.daily.claimed.includes('login')&&!p.calendar.days.includes(today))p.calendar.days.push(today);}
+    function calendarView(p){const O=OPS(),s=O.passSeason(current),today=Math.floor((current-s.start)/DAY_MS)+1,days=O.PASS.seasonDays;
+      const c=p.calendar?.season===s.index?p.calendar:{from:calendarFrom(p,p.calendar,s,today),days:p.daily.claimed.includes('login')?[today]:[]};
+      const q=DAILY.find(q=>q.id==='login'),claimed=p.daily.claimed.includes('login');
+      const cells=Array.from({length:days},(_,i)=>{const d=i+1,stamp=c.days.includes(d);
+        return {day:d,date:s.start+i*DAY_MS,state:stamp?'claimed':d===today?'today':d>today?'future':d<c.from?'none':'missed'};});
+      return {season:s.index,start:s.start,end:s.end,today,from:c.from,cells,reward:{...q.reward,seals:Math.min(q.reward.seals,Math.max(0,DAILY_SEAL_CAP-p.daily.seals))},
+        canClaim:!claimed&&p.daily.progress.login>=q.target&&!p.clock.behind,claimedToday:claimed,stamped:c.days.length,chest:memoryView(p).chest};}
+    function memoryChestOpen(at){const O=OPS(),s=O.passSeason(at);return at>=s.start+(O.MEMORY.chest.day-1)*DAY_MS;}
+    const memoryChoices=p=>Object.keys(p.heroes).filter(k=>!OPS().MEMORY.exclude.includes(k)&&p.heroes[k].stars<6);
+    function memoryChestGive(p,hero){check(memoryChoices(p).includes(hero),'Ch?n tu?ng da s? h?u, chua 6? (kh�ng ph?i Hiro).');const n=OPS().MEMORY.chest.fragments;p.fragments[hero]=(p.fragments[hero]||0)+n;return {hero,fragments:n};}
+    function memoryView(p){const O=OPS(),X=O.MEMORY,m=memoryState(p),offer=memoryOffer(current),s=O.passSeason(current),open=memoryChestOpen(current),choices=memoryChoices(p);
+      const heroes=offer.heroes.map(key=>{const bought=m.bought[key]||0,h=p.heroes[key];
+        return {hero:key,name:HEROES[key].name,bought,left:Math.max(0,X.capPerHeroWeek-bought),owned:!!h,stars:h?.stars||0,fragments:p.fragments[key]||0,maxed:(h?.stars||0)>=6,
+          canBuy:(h?.stars||0)<6&&X.capPerHeroWeek-bought>=X.bundle&&m.dust>=X.price*X.bundle};});
+      return {dust:m.dust,price:X.price,bundle:X.bundle,bundlePrice:X.price*X.bundle,cap:X.capPerHeroWeek,week:offer.week,weekEnd:offer.end,banner:offer.banner,heroes,
+        empty:!heroes.length,log:m.log.slice(0,5),vouchers:m.vouchers,
+        chest:{season:s.index,start:s.start,end:s.end,day:Math.min(O.PASS.seasonDays,Math.floor((current-s.start)/DAY_MS)+1),openDay:X.chest.day,open,claimed:m.chest,fragments:X.chest.fragments,
+          ready:open&&!m.chest,choices,opensAt:s.start+(X.chest.day-1)*DAY_MS}};}
+    function returnGems(p,list){for(const g of list)for(const k of g.sockets||[])if(k){p.gems??={};p.gems[k]=(p.gems[k]||0)+1;}}
+    const goldUsed=p=>p.goldBuy?.day===day(current)?p.goldBuy.units|0:0;
+    function goldShop(p){const used=goldUsed(p),left=GOLD_DAILY_UNITS-used,rate=offlineRate(p).gold;
+      return {rate,used,cap:GOLD_DAILY_UNITS,left,capGold:GOLD_DAILY_UNITS*rate,leftGold:left*rate,resetAt:Date.parse(day(current)+'T00:00:00+07:00')+DAY_MS,
+        packs:GOLD_PACKS.map(x=>({...x,gold:x.units*rate,fits:x.units<=left,canBuy:x.units<=left&&p.wallet.gems>=x.gems}))};}
+    const shopKey=product=>product.limit.per==='day'?day(current):'w'+week(current);
+
+ succeeded in 721ms:
+/* D3 "Chu k? l?p d? l?y th�m m?nh tu?ng" in the hub (Codex mockup assets/gemwoven/raw/memory-shop/mockup-raw.png):
+ * the "L?ch 28 ng�y" row on S? Ki?n with the free day-28 chest, and the chest's hero picker (also opened from a
+ * voucher in T�i D?). C?a H�ng � Ky ?c lives in art-screens.js shop(). Rules and numbers: progression.js memory(),
+ * liveops.js MEMORY. Markup uses the shared kit classes (kp-*) that ui-kit-panels.css dresses; memory.css adds the rest.
+ */
+(() => {
+  'use strict';
+  const G=window.GEMWOVEN_GAME,M=window.GemwovenProgression,O=window.GemwovenLiveOps,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT;
+  if(!G||!M||!O?.MEMORY||!G.engine?.memory)return;
+  const X=O.MEMORY,esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const src=k=>(A[k]||A['chest']).file,img=(k,cls='')=>`<img class="${cls}" src="${esc(src(k))}" alt="" draggable="false">`;
+  const DAY=86400000,date=ms=>new Date(ms+7*3600000).toISOString().slice(5,10).split('-').reverse().join('/');
+
+  function calendar(){
+    const v=G.engine.memory(),c=v.chest,left=Math.max(0,Math.ceil((c.opensAt-Date.now())/DAY));
+    const state=c.claimed?'is-claimed':c.ready?'is-ready':'is-wait';
+    const tag=c.claimed?'<em class="mem-tag is-done">Da nh?n</em>':c.ready?'<em class="mem-go">Mi?n ph�</em>':`<em class="mem-tag">${left} ng�y</em>`;
+    return `<section class="mem-cal ${state}"><div class="mem-head"><h3 class="kp-sec"><span class="kp-plaque-in">L?ch 28 ng�y</span></h3>`+
+      `<details class="hint kp-info" data-kp="1"><summary aria-label="C�ch nh?n"><i aria-hidden="true">i</i></summary><p>M�a 28 ng�y t? ${date(c.start)}. Ng�y ${c.openDay} m? ruong mi?n ph�: ${c.fragments} m?nh m?t tu?ng da s? h?u, chua 6? (kh�ng ph?i Hiro). Chua c� tu?ng h?p l? th� c?t phi?u kh�ng h?t h?n; l? ng�y ${c.openDay} cung th�nh phi?u.</p></details>`+
+      `<b class="mem-day">Ng�y ${c.day}/${O.PASS.seasonDays}</b></div>`+
+      `<span class="kp-bar mem-bar"><i style="width:${Math.min(100,c.day/O.PASS.seasonDays*100)}%"></i></span>`+
+      `<button type="button" class="mem-chest" data-action="memory:chest" aria-label="Ruong ng�y ${c.openDay}: ${c.fragments} m?nh t? ch?n"><span class="mem-socket">${img('chest')}</span>`+
+      `<span class="mem-what"><b>${c.fragments} m?nh<br>t? ch?n</b>${c.ready?'':`<small>Mi?n ph� � ng�y ${c.openDay}</small>`}</span>${tag}</button>`+
+      (v.vouchers?`<button type="button" class="game-btn kp-gold mem-voucher" data-action="memory:chest" data-voucher="1">${img('ticket','mem-ticket')}<span>D�ng phi?u � ${v.vouchers}</span></button>`:'')+`</section>`;
+  }
+
+  // The picker: owned heroes below 6? (never Hiro); a voucher when none qualifies. Before day 28 it only tells the day.
+  function picker(ctx,state,voucher){
+    const v=G.engine.memory(),c=v.chest,useVoucher=voucher||(!c.ready&&v.vouchers>0);
+    const modal=window.GemwovenUI.makeDialog('memory-chest',useVoucher||c.ready?'Ch?n tu?ng':'Ruong ng�y '+c.openDay,'kp-pop memory-dialog');
+    const done=got=>{modal.close();ctx.render();if(got.voucher)ctx.showModal('Da c?t phi?u',['ticket'],'Phi?u 20 m?nh kh�ng h?t h?n, n?m trong T�i D? � Kh�c.');
+      else ctx.showModal(`+${got.fragments} m?nh ${M.HEROES[got.hero].name}`,['fragment-'+got.hero],`Dang c� ${G.engine.read().fragments[got.hero]||0} m?nh.`);};
+    if(!useVoucher&&!c.ready){
+      modal.body.innerHTML=`<div class="mem-pop-chest">${img('chest')}</div><p class="mem-pop-tag">${c.fragments} m?nh t? ch?n</p><p class="mem-pop-note">${c.claimed?'Da nh?n m�a n�y � m�a sau ng�y '+c.openDay:`M? ng�y ${c.openDay} � ${date(c.opensAt)}`}</p>`;
+      modal.present();return;}
+    let pick=c.choices[0]||null;
+    if(!c.choices.length){
+      modal.body.innerHTML=`<p class="mem-pop-tag">${c.fragments} m?nh</p><div class="mem-pop-chest">${img('ticket')}</div><p class="mem-pop-note">Chua c� tu?ng h?p l? � Phi?u kh�ng h?t h?n</p>`;
+      if(!useVoucher){const b=document.createElement('button');b.type='button';b.className='gw-btn';b.textContent='C?t phi?u';
+        b.onclick=()=>{try{done(G.engine.claimMemoryChest());}catch(e){ctx.showModal('Chua th? nh?n',[],e.message);}};modal.actions.append(b);}
+      modal.present();return;}
+    const grid=c.choices.map(k=>{const h=G.engine.read().heroes[k];return `<button type="button" class="mem-hero${k===pick?' is-picked':''}" data-hero="${esc(k)}" aria-pressed="${k===pick}"><span class="mem-socket">${img('portrait-'+k)}</span><b>${esc(M.HEROES[k].name)}</b><small>${'?'.repeat(h.stars)}</small></button>`;}).join('');
+    modal.body.innerHTML=`<p class="mem-pop-tag">${c.fragments} m?nh</p><div class="mem-heroes">${grid}</div>`;
+    modal.body.addEventListener('click',e=>{const b=e.target.closest('.mem-hero');if(!b)return;pick=b.dataset.hero;for(const x of modal.body.querySelectorAll('.mem-hero')){x.classList.toggle('is-picked',x===b);x.setAttribute('aria-pressed',String(x===b));}});
+    const b=document.createElement('button');b.type='button';b.className='gw-btn';b.textContent=`Nh?n ${c.fragments} m?nh`;
+    b.onclick=()=>{try{done(useVoucher?G.engine.useMemoryVoucher(pick):G.engine.claimMemoryChest(pick));}catch(e){ctx.showModal('Chua th? nh?n',[],e.message);}};
+    modal.actions.append(b);modal.present();
+  }
+
+  // S? Ki?n: the row sits under H�nh Tr�nh T�n Th?, before the weekly quests.
+  const decorate=G.decorate;
+  G.decorate=state=>{
+    const p=decorate(state);if(state.screen!=='events')return p;
+    const live=L.screens.events?.nodes.find(n=>n.id==='events.live');if(!live||live.memoryWrapped)return p;
+    const build=live.build;live.memoryWrapped=true;
+    live.build=el=>{build(el);const html=calendar(),wq=el.querySelector('.weekly-quests');if(wq)wq.insertAdjacentHTML('beforebegin',html);else el.querySelector('.game-heading')?.insertAdjacentHTML('afterend',html);};
+    return p;
+  };
+  // Weekly-quest reward sockets show the dust vial (ui-kit-panels maps wallet resources only).
+  const mount=G.mount;
+  G.mount=(state,ctx)=>{const r=mount(state,ctx);if(state?.screen==='events')for(const s of document.querySelectorAll('#scene .kp-socket[title="B?i Ky ?c"] img'))s.src=src('memory-dust');return r;};
+  const handle=G.handle;
+  G.handle=(action,el,ctx,state)=>{
+    if(action==='memory:chest'){picker(ctx,state,el?.dataset?.voucher==='1'||state.screen==='inventory');return true;}
+    return handle(action,el,ctx,state);
+  };
+  window.GemwovenMemoryUI={calendar,picker};
+})();
+src/gemwoven/ui-kit-panels.css:15:.kp-panel .kp-lock,.kp-pop .kp-lock{width:auto;height:1.1em;object-fit:contain;vertical-align:-.15em;filter:drop-shadow(0 1px 1px #0006)}
+src/gemwoven/ui-kit-panels.css:342:.kp-events>.gw-emblem{background-image:var(--kit-icon-emblem-calendar)!important;width:calc(96*var(--s,1px))}
+/* D3 memory pieces (memory-ui.js, art-screens.js shop Ky ?c). Panel sizes are stage units (941 wide � 390 CSS px on a
+ * phone); the picker popup is CSS px. Drawn pieces: assets/gemwoven/ui-kit (--kit-*), memory-dust.webp, chest, portraits. */
+
+/* S? Ki?n � L?ch 28 ng�y: plaque + ? + day count, the kit progress bar, one chest row. */
+.mem-cal{margin:18px 0 8px}
+.mem-cal .mem-head{display:flex;align-items:center;gap:10px}
+.mem-cal .mem-head .kp-sec{margin:0}
+.mem-cal .mem-head details.kp-info{margin:0;position:static}
+.mem-cal .mem-head details.kp-info[open]>p{position:absolute;left:24px;right:24px;z-index:3;margin-top:8px}
+.mem-cal .mem-day{margin-left:auto;font:800 30px Cambria,serif;color:#5a3a18;white-space:nowrap}
+.mem-cal .mem-bar{margin:12px 6px 14px}
+.mem-chest{display:flex;align-items:center;gap:18px;width:100%;min-height:124px;padding:12px 26px!important;cursor:pointer;text-align:left;
+  background:none!important;border:solid transparent!important;border-width:20px 24px!important;border-image:var(--kit-stat) 26 28 fill / 20px 24px stretch!important;border-radius:0!important;box-shadow:none!important;color:#4a2a10}
+.mem-cal.is-ready .mem-chest{border-image-source:var(--kit-stat-on)!important}
+.mem-chest:focus-visible{outline:4px solid #fff1b8;outline-offset:3px}
+.mem-socket{flex:none;display:flex;align-items:center;justify-content:center;width:104px;height:104px;background:var(--kit-socket) center/100% 100% no-repeat}
+.mem-socket img{width:74%;height:74%;object-fit:contain;filter:drop-shadow(0 2px 2px #0007)}
+.mem-cal.is-ready .mem-socket{background-image:var(--kit-socket-on)}
+.mem-cal.is-ready .mem-socket img{animation:mem-glow 1.6s ease-in-out infinite}
+.mem-cal.is-claimed .mem-socket{background-image:var(--kit-socket-claimed)}
+.mem-cal.is-claimed .mem-socket img{filter:grayscale(.6) brightness(.85)}
+.mem-what{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mem-what b{font:800 31px/1.1 Cambria,serif;color:#4a2a10}
+.mem-what small{font:700 26px Cambria,serif;color:#2f6a1e}
+.mem-tag{margin-left:auto;flex:none;font:800 26px Cambria,serif;font-style:normal;color:#f3dcae;padding:12px 22px;background:var(--kit-badge-leather) center/100% 100% no-repeat;text-shadow:0 1px 2px #1a0c04;white-space:nowrap}
+.mem-tag.kp-seal{padding:0 12px;color:#fff4df}
+.mem-tag.is-done{background-image:var(--kit-ribbon-done);color:#2c4a14;text-shadow:none}
+.mem-voucher{display:flex!important;margin:12px auto 0;width:70%}
+.mem-voucher .mem-ticket{width:56px;height:56px;object-fit:contain}
+@keyframes mem-glow{50%{filter:drop-shadow(0 0 10px #ffe08a) brightness(1.12)}}
+@media (prefers-reduced-motion:reduce){.mem-cal.is-ready .mem-socket img{animation:none}}
+
+/* The picker popup (CSS px): a tag, hero portraits in sockets, the gold kit button from .kp-pop. */
+.memory-dialog .gw-body{text-align:center}
+.memory-dialog .mem-pop-tag{display:inline-block;margin:4px auto 10px;padding:8px 22px;font:800 17px Cambria,serif;color:#4a2a10;background:var(--kit-stat) center/100% 100% no-repeat}
+.memory-dialog .mem-pop-note{font:700 15px/1.35 Cambria,serif;color:#5a3a18;margin:8px 0}
+.memory-dialog .mem-pop-chest img{width:110px;height:110px;object-fit:contain;filter:drop-shadow(0 3px 3px #0006)}
+.memory-dialog .mem-heroes{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.memory-dialog .mem-hero{display:flex;flex-direction:column;align-items:center;gap:2px;width:96px;padding:4px;background:none;border:0;cursor:pointer;color:#4a2a10}
+.memory-dialog .mem-hero .mem-socket{width:78px;height:78px}
+.memory-dialog .mem-hero.is-picked .mem-socket{background-image:var(--kit-socket-on);filter:drop-shadow(0 0 6px #ffcf6a)}
+.memory-dialog .mem-hero b{font:800 16px Cambria,serif}
+.memory-dialog .mem-hero small{font:700 12px Cambria,serif;color:#b07a1c}
+.memory-dialog .mem-hero:focus-visible{outline:3px solid #fff1b8}
+
+/* C?a H�ng � Ky ?c (layout nodes in art-screens.js). */
+#stage[data-screen="shop"] [data-node="shop.memory-balance"] .copy-layer{font:900 36px/1 Cambria,serif!important;color:#3a2008!important;text-shadow:0 1px #fff3cf!important}
+#stage[data-screen="shop"] [data-node="shop.memory-empty"]{font-weight:800!important;line-height:1.25!important;color:#4a2a10!important}
+#stage[data-screen="shop"] [data-node="shop.memory-left"]{font-weight:800!important;line-height:1.2!important}
+#stage[data-screen="shop"] [data-node="shop.memory-info"] .copy-layer{font:italic 900 34px/1 Cambria,serif!important;color:#4a2508!important;text-shadow:none!important}
+#stage[data-screen="shop"] [data-node^="shop.memory-name-"]{font-weight:800!important;color:#f6e2b8!important;text-shadow:0 1px 2px #1a0c04,0 0 4px #1a0c04!important}
+/* Codex build review 1 (7,5/7,6): larger reading text in the shop, a gold "Mi?n ph�" plate on the ready chest, bigger popup. */
+#stage[data-screen="shop"] .memory-copy[data-node="shop.product-description"]{font-size:37px!important;line-height:1.25!important}
+#stage[data-screen="shop"] .memory-copy[data-node="shop.product-name"]{font-size:39px!important}
+.mem-go{margin-left:auto;flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:150px;min-height:86px;padding:0 14px;font:900 29px Cambria,serif;font-style:normal;color:#4a2508;text-shadow:0 1px #fff3cf;
+  border:solid transparent;border-width:0 30px;border-image:var(--kit-btn-gold) 0 40 fill / 0 30px stretch;filter:drop-shadow(0 4px 3px #2a140866)}
+.mem-cal.is-ready .mem-chest:active .mem-go{border-image-source:var(--kit-btn-gold-down)}
+.memory-dialog .gw-head h2{font-size:27px!important}
+.memory-dialog .mem-pop-tag{font-size:19px}
+.memory-dialog .mem-hero{width:116px}
+.memory-dialog .mem-hero .mem-socket{width:96px;height:96px}
+.memory-dialog .mem-hero b{font-size:18px}
+.memory-dialog .mem-heroes{margin-bottom:2px}
+
+codex
+The rules confirm that daily claims and the day-28 chest must remain independent. I’d use one reward strip above the grid and a wide daily-claim button below it. A readable grid will be taller than the current row, so weekly quests will need to move down within the existing scroll area; the surrounding artwork can stay unchanged.
+codex
+**1. Current row: 5/10.**
+
+The wood, parchment and chest belong to the approved style. But it reads as a countdown to one chest, rather than a daily calendar. The progress bar cannot distinguish claimed, missed or future days, and the daily reward and claim action are absent.
+
+**2. Proposed calendar block**
+
+Use the existing **619-unit content column**, approximately **542 units tall**—225 CSS px on the phone. Keep one shared vertical scroller. The taller block moves weekly quests downward; surrounding artwork and preceding content retain their positions.
+
+| Element | Specification |
+|---|---|
+| Header, 56 high | Drawn wooden **“Lịch 28 ngày”** plaque left; **“Ngày 3/28”** right; round **ⓘ** at the far right. |
+| Gap, 8 | Exposed panel parchment. |
+| Reward strip, 64 high | One shallow drawn tray: gold icon **500**, experience-book icon **10**, Ấn icon **80**, ticket icon **1**. Four equal groups; no resource names or repeated rewards inside cells. |
+| Gap, 12 | |
+| Grid, 320 high | **7 columns × 4 rows**, sequential days 1–28. Cells **81 × 74**, gaps **8** both ways: total width **615**, centred in the column. |
+| Gap, 10 | |
+| Daily button, 72 high | Wide drawn gold button: **“Nhận hôm nay”**. After claiming: subdued drawn button, **“Đã nhận hôm nay”**. |
+
+Use shallow versions of image 2’s stitched parchment cards: bevelled bronze corners, warm paper and restrained shadows. Image 3 supplies the material richness. Avoid another heavy outer frame.
+
+Day numbers are approximately **30 stage units**; reward quantities and button text **32–34**. Frames, stamps, locks and glow are drawn assets; all words and numbers remain HTML. Populate states and reward quantities from `calendarView()`, including its existing Ấn cap.
+
+| Cell state | Visual treatment |
+|---|---|
+| Claimed | Warm parchment, drawn green check stamp below the readable day number. |
+| Today, claimable | Bright gold rim, restrained amber glow and a small drawn gift icon. The wide button provides the clear claim action. |
+| Missed | Muted parchment with a small faded brown crossed stamp. No red warning or glow. |
+| Neutral, before account start | Plain parchment and a subdued readable number; no stamp or lock. |
+| Future | Cooler, subdued parchment with a small drawn padlock. Number stays legible. |
+
+**Day 28:** retain the same cell dimensions. Put **28** at the top and the purple chest below, with a small HTML **20** badge. Its chest lock, ready sparkle or claimed check is independent of the daily stamp. Claiming the daily reward must leave an available chest visibly available.
+
+**Interaction:**
+
+- Tap today’s ordinary cell or **“Nhận hôm nay”** to claim through the same `claimDaily('login')` used by Quán Bia. Both entrances immediately reflect the claim.
+- Day 28’s cell opens chest details; the wide daily button claims that day’s ordinary reward separately.
+- Other cells open a small date/status popover: **“Đã nhận”**, **“Đã lỡ”** with **“Không nhận bù”**, **“Trước khi bắt đầu”**, or **“Chưa mở”** with its opening date.
+- Chest details show **“Rương ngày 28”**, **“20 mảnh tự chọn”** and its opening date. When available, **“Nhận rương”** opens the existing picker or voucher flow.
+- ⓘ holds season dates, reset time, the shared Quán Bia claim and chest eligibility rules. Keep these explanations off the main block. No streak or day-7/14/21 bonuses.
+
+**3. Mockup prompt**
+
+A readable calendar needs more height than the current row. The prompt preserves the rest of the design while allowing weekly quests to flow downward.
+
+```PROMPT_MOCK
+Use case: precise-object-edit / high-fidelity game UI mockup.
+
+Input images:
+Image 1 is the EDIT TARGET: current-events-phone.png.
+Image 2 is a STYLE REFERENCE only: current-events-top-phone.png, especially its approved novice-day cards.
+Image 3 is a MATERIAL REFERENCE only: forge-rarity/mockup-2.png, especially painted wood, bronze bevels, parchment, gold buttons and reward sockets.
+
+Edit image 1 so its existing “Lịch 28 ngày” progress-bar-and-chest row becomes the compact calendar specified below.
+
+Preserve the original portrait screenshot dimensions, crop, letterboxing and 941×1672 stage scale. Keep the forest background, HUD, “Sự Kiện” heading, outer panel, back button, preceding novice cards and bottom navigation identical in appearance and position. Only redesign the calendar block. Allow the following weekly-quest content to move downward naturally inside the same existing scroll viewport; retain its original artwork, wording and scale, clipping it at the original panel boundary. Do not move or enlarge the outer panel or navigation.
+
+Layout:
+Use the existing content column, stage x≈161..780, width≈619.
+Start where the old calendar header begins.
+Total calendar height approximately 542 stage units:
+- Header 56 high.
+- Gap 8.
+- Daily reward tray 64 high.
+- Gap 12.
+- Grid 320 high.
+- Gap 10.
+- Gold daily-claim button 72 high.
+
+Header:
+A shallow painted wooden plaque on the left reading exactly “Lịch 28 ngày”.
+On the right, exactly “Ngày 3/28”, followed by a round bronze information button containing italic “i”.
+Keep all three on one line without crowding.
+
+Daily reward tray:
+ONE shallow hand-painted parchment-and-bronze tray with four equal horizontal groups.
+Show, in order:
+gold coin icon + “500”;
+experience-book icon + “10”;
+Ấn resource icon + “80”;
+ticket icon + “1”.
+Use the game's existing resource identities.
+No resource-name captions. No premium crystal reward.
+Do not repeat these four rewards inside calendar cells.
+
+Calendar grid:
+Exactly FOUR rows and SEVEN columns.
+Cells approximately 81 wide × 74 high in stage units.
+Horizontal and vertical gaps exactly 8.
+Grid width 615, centred in the 619-wide column.
+Read left to right:
+row 1: 1, 2, 3, 4, 5, 6, 7
+row 2: 8, 9, 10, 11, 12, 13, 14
+row 3: 15, 16, 17, 18, 19, 20, 21
+row 4: 22, 23, 24, 25, 26, 27, 28
+
+Use miniature versions of image 2's parchment day cards: shallow bronze bevels, warm paper, painted corner details and soft contact shadows. Keep the grid orderly and numbers readable.
+
+Coherent example state: season day 3, account started on day 1.
+Day 1: claimed, drawn green check stamp below its unobscured number.
+Day 2: missed, muted parchment with a small faded brown crossed stamp.
+Day 3: claimable today, luminous gold rim, restrained amber glow, small drawn gift icon below its number.
+Days 4–27: future, subdued cool parchment and small drawn padlocks.
+Day 28: same-sized future cell, number “28” at the top, purple-and-gold chest below, small “20” quantity badge and a small chest lock.
+No extra rewards or special treatment on days 7, 14 or 21.
+
+Below the grid:
+One wide, richly painted gold button reading exactly “Nhận hôm nay”.
+Use the same button material language as image 2.
+No separate chest claim button in this screenshot; the chest opens details when tapped.
+
+Typography:
+Dark warm-brown Vietnamese serif matching the existing screen.
+Day numbers approximately 30 stage units.
+Reward quantities and button text approximately 32–34 stage units.
+Render all specified text exactly with correct Vietnamese accents.
+Words and numbers should look like clean HTML overlays, separate from the painted frames and stamps.
+
+Remove the old progress bar, standalone chest row, “25 ngày” countdown and their calendar captions.
+No open tooltip, modal, tutorial hand, explanatory paragraph, legend or additional banner.
+No flat modern cards, CSS-like rounded rectangles or oversized new framing.
+Preserve the existing hand-painted fantasy RPG finish and readable phone-scale hierarchy.
+PROMPT_MOCK
+```
+tokens used
+39,024
+**1. Current row: 5/10.**
+
+The wood, parchment and chest belong to the approved style. But it reads as a countdown to one chest, rather than a daily calendar. The progress bar cannot distinguish claimed, missed or future days, and the daily reward and claim action are absent.
+
+**2. Proposed calendar block**
+
+Use the existing **619-unit content column**, approximately **542 units tall**—225 CSS px on the phone. Keep one shared vertical scroller. The taller block moves weekly quests downward; surrounding artwork and preceding content retain their positions.
+
+| Element | Specification |
+|---|---|
+| Header, 56 high | Drawn wooden **“Lịch 28 ngày”** plaque left; **“Ngày 3/28”** right; round **ⓘ** at the far right. |
+| Gap, 8 | Exposed panel parchment. |
+| Reward strip, 64 high | One shallow drawn tray: gold icon **500**, experience-book icon **10**, Ấn icon **80**, ticket icon **1**. Four equal groups; no resource names or repeated rewards inside cells. |
+| Gap, 12 | |
+| Grid, 320 high | **7 columns × 4 rows**, sequential days 1–28. Cells **81 × 74**, gaps **8** both ways: total width **615**, centred in the column. |
+| Gap, 10 | |
+| Daily button, 72 high | Wide drawn gold button: **“Nhận hôm nay”**. After claiming: subdued drawn button, **“Đã nhận hôm nay”**. |
+
+Use shallow versions of image 2’s stitched parchment cards: bevelled bronze corners, warm paper and restrained shadows. Image 3 supplies the material richness. Avoid another heavy outer frame.
+
+Day numbers are approximately **30 stage units**; reward quantities and button text **32–34**. Frames, stamps, locks and glow are drawn assets; all words and numbers remain HTML. Populate states and reward quantities from `calendarView()`, including its existing Ấn cap.
+
+| Cell state | Visual treatment |
+|---|---|
+| Claimed | Warm parchment, drawn green check stamp below the readable day number. |
+| Today, claimable | Bright gold rim, restrained amber glow and a small drawn gift icon. The wide button provides the clear claim action. |
+| Missed | Muted parchment with a small faded brown crossed stamp. No red warning or glow. |
+| Neutral, before account start | Plain parchment and a subdued readable number; no stamp or lock. |
+| Future | Cooler, subdued parchment with a small drawn padlock. Number stays legible. |
+
+**Day 28:** retain the same cell dimensions. Put **28** at the top and the purple chest below, with a small HTML **20** badge. Its chest lock, ready sparkle or claimed check is independent of the daily stamp. Claiming the daily reward must leave an available chest visibly available.
+
+**Interaction:**
+
+- Tap today’s ordinary cell or **“Nhận hôm nay”** to claim through the same `claimDaily('login')` used by Quán Bia. Both entrances immediately reflect the claim.
+- Day 28’s cell opens chest details; the wide daily button claims that day’s ordinary reward separately.
+- Other cells open a small date/status popover: **“Đã nhận”**, **“Đã lỡ”** with **“Không nhận bù”**, **“Trước khi bắt đầu”**, or **“Chưa mở”** with its opening date.
+- Chest details show **“Rương ngày 28”**, **“20 mảnh tự chọn”** and its opening date. When available, **“Nhận rương”** opens the existing picker or voucher flow.
+- ⓘ holds season dates, reset time, the shared Quán Bia claim and chest eligibility rules. Keep these explanations off the main block. No streak or day-7/14/21 bonuses.
+
+**3. Mockup prompt**
+
+A readable calendar needs more height than the current row. The prompt preserves the rest of the design while allowing weekly quests to flow downward.
+
+```PROMPT_MOCK
+Use case: precise-object-edit / high-fidelity game UI mockup.
+
+Input images:
+Image 1 is the EDIT TARGET: current-events-phone.png.
+Image 2 is a STYLE REFERENCE only: current-events-top-phone.png, especially its approved novice-day cards.
+Image 3 is a MATERIAL REFERENCE only: forge-rarity/mockup-2.png, especially painted wood, bronze bevels, parchment, gold buttons and reward sockets.
+
+Edit image 1 so its existing “Lịch 28 ngày” progress-bar-and-chest row becomes the compact calendar specified below.
+
+Preserve the original portrait screenshot dimensions, crop, letterboxing and 941×1672 stage scale. Keep the forest background, HUD, “Sự Kiện” heading, outer panel, back button, preceding novice cards and bottom navigation identical in appearance and position. Only redesign the calendar block. Allow the following weekly-quest content to move downward naturally inside the same existing scroll viewport; retain its original artwork, wording and scale, clipping it at the original panel boundary. Do not move or enlarge the outer panel or navigation.
+
+Layout:
+Use the existing content column, stage x≈161..780, width≈619.
+Start where the old calendar header begins.
+Total calendar height approximately 542 stage units:
+- Header 56 high.
+- Gap 8.
+- Daily reward tray 64 high.
+- Gap 12.
+- Grid 320 high.
+- Gap 10.
+- Gold daily-claim button 72 high.
+
+Header:
+A shallow painted wooden plaque on the left reading exactly “Lịch 28 ngày”.
+On the right, exactly “Ngày 3/28”, followed by a round bronze information button containing italic “i”.
+Keep all three on one line without crowding.
+
+Daily reward tray:
+ONE shallow hand-painted parchment-and-bronze tray with four equal horizontal groups.
+Show, in order:
+gold coin icon + “500”;
+experience-book icon + “10”;
+Ấn resource icon + “80”;
+ticket icon + “1”.
+Use the game's existing resource identities.
+No resource-name captions. No premium crystal reward.
+Do not repeat these four rewards inside calendar cells.
+
+Calendar grid:
+Exactly FOUR rows and SEVEN columns.
+Cells approximately 81 wide × 74 high in stage units.
+Horizontal and vertical gaps exactly 8.
+Grid width 615, centred in the 619-wide column.
+Read left to right:
+row 1: 1, 2, 3, 4, 5, 6, 7
+row 2: 8, 9, 10, 11, 12, 13, 14
+row 3: 15, 16, 17, 18, 19, 20, 21
+row 4: 22, 23, 24, 25, 26, 27, 28
+
+Use miniature versions of image 2's parchment day cards: shallow bronze bevels, warm paper, painted corner details and soft contact shadows. Keep the grid orderly and numbers readable.
+
+Coherent example state: season day 3, account started on day 1.
+Day 1: claimed, drawn green check stamp below its unobscured number.
+Day 2: missed, muted parchment with a small faded brown crossed stamp.
+Day 3: claimable today, luminous gold rim, restrained amber glow, small drawn gift icon below its number.
+Days 4–27: future, subdued cool parchment and small drawn padlocks.
+Day 28: same-sized future cell, number “28” at the top, purple-and-gold chest below, small “20” quantity badge and a small chest lock.
+No extra rewards or special treatment on days 7, 14 or 21.
+
+Below the grid:
+One wide, richly painted gold button reading exactly “Nhận hôm nay”.
+Use the same button material language as image 2.
+No separate chest claim button in this screenshot; the chest opens details when tapped.
+
+Typography:
+Dark warm-brown Vietnamese serif matching the existing screen.
+Day numbers approximately 30 stage units.
+Reward quantities and button text approximately 32–34 stage units.
+Render all specified text exactly with correct Vietnamese accents.
+Words and numbers should look like clean HTML overlays, separate from the painted frames and stamps.
+
+Remove the old progress bar, standalone chest row, “25 ngày” countdown and their calendar captions.
+No open tooltip, modal, tutorial hand, explanatory paragraph, legend or additional banner.
+No flat modern cards, CSS-like rounded rectangles or oversized new framing.
+Preserve the existing hand-painted fantasy RPG finish and readable phone-scale hierarchy.
+PROMPT_MOCK
+```
