@@ -395,7 +395,8 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
     if(!targets.has(t)||cleared.has(t))return;
     cleared.add(t);
     boardItemSound(t.type,'normal',chain);
-    if(!comboShaken&&(chain>=3||targets.size>=12)){comboShaken=true;tails.push(boardImpactShake(chain,true),boardItemRecoil(t,1+comboPower(chain)*4));}
+    // A special shakes the board itself (special-fx.js); the combo shake is for plain cascades only.
+    if(!comboShaken&&!special&&(chain>=3||targets.size>=12)){comboShaken=true;tails.push(boardImpactShake(chain,true),boardItemRecoil(t,1+comboPower(chain)*4));}
     onImpact(t);
     t.el.dataset.clearing='true';
     const gem=t.el.firstElementChild;
@@ -412,10 +413,19 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
     await Promise.all(ordinary.map(t=>animate(t.el.firstElementChild,[{filter:'brightness(1)',transform:'scale(1)'},{filter:'brightness(1.3)',transform:'scale(.94)'}],{duration:BOARD_V5_PACING.anticipation,easing:'ease-in-out'})));
     for(const t of ordinary){detonate(t);await boardV3Pause(beat);}
   }
+  // A chained special fires 50 ms after a blast reaches it (Codex: no waiting for the whole wave before it); one that is
+  // never reached by a visible blast still fires once its generation's turn comes (src/board-specials.js chain).
+  const reached=new Map(),primedAdd=primed.add.bind(primed);
+  primed.add=t=>{const r=primedAdd(t);reached.get(t)?.();return r;};
   const sequence={targets,cleared,sources,primed,tails,charge,beat,detonate};
-  // Specials fire by generation (src/board-specials.js chain): one ring of a chain together, 50 ms apart (owner 05/11).
-  for(const gen of [...new Set(plan.acts.map(a=>a.gen||0))].sort((a,b)=>a-b))
-    await Promise.all(plan.acts.filter(a=>(a.gen||0)===gen).map((act,i)=>boardV3Pause(Math.min(i,6)*(typeof SPECIAL_FX==='object'?SPECIAL_FX.stagger:50)).then(()=>specialEffect(act,sequence))));
+  const stagger=typeof SPECIAL_FX==='object'?SPECIAL_FX.stagger:50,gens=[...new Set(plan.acts.map(a=>a.gen||0))].sort((a,b)=>a-b),done=new Map();
+  for(const gen of gens){
+    const before=gens.filter(g=>g<gen).map(g=>done.get(g));
+    done.set(gen,Promise.all(plan.acts.filter(a=>(a.gen||0)===gen).map((act,i)=>(gen===gens[0]?boardV3Pause(Math.min(i,6)*stagger)
+      :Promise.race([new Promise(r=>{if(primed.has(act.tile))r();else reached.set(act.tile,r);}),Promise.all(before)]).then(()=>boardV3Pause(stagger)))
+      .then(()=>specialEffect(act,sequence)))));
+  }
+  await Promise.all(done.values());
   // Covers any unusual plan while preserving the exactly-once clear rule.
   for(const t of plan.targets)if(!cleared.has(t)){detonate(t);await boardV3Pause(beat);}
   await Promise.all(tails);

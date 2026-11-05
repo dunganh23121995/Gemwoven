@@ -1,0 +1,5 @@
+Use case: one status-effect icon for the Gemwoven status icon set. The attached reference is the existing "Freeze" icon (a pale-cyan ice block with snow on top). Keep that ice block EXACTLY as it is (same shape, colours, outline, snow cap, size and position) and add one bold RED diagonal slash across it, from the top-left to the bottom-right corner, like a "not allowed" mark: a solid crimson-red bar with a dark outline matching the icon's line weight, crossing the whole block on top of it.
+
+Sheet: exactly 2 columns x 1 row, 2 equal square cells on a perfectly flat solid #FF00FF magenta background; no grid lines, labels, text or frames. Each glyph centred inside the central 65% of its cell; nothing crosses a cell edge. Fully opaque with a clean dark outline, no soft glow or haze. Never use pink or magenta in the glyph.
+1. Left: the ice block with the single red diagonal slash.
+2. Right: the same ice block inside a red circle with the red diagonal slash (a prohibition sign), the circle as thick as the slash.

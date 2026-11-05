@@ -237,16 +237,21 @@ function specialActs(fired,created){
   // The chain's fired specials as board acts; gen lets the board play one ring of a chain together.
   return fired.map(f=>({tile:tileAt(f.p),kind:f.kind,dir:f.dir,color:f.color,gen:f.gen||0,hits:f.hits.map(tileAt).filter(t=>t&&!created.has(t))}));
 }
-// Two Lõi clear the whole board exactly once (owner 05/11: was once per special on the board).
+// Two Lõi clear the whole board once for every special on it, the two Lõi included (owner 05/11: "nổ board số lần bằng
+// item đặc biệt có trên board"; the single clear read no stronger than a Sao on a Lõi). Counted before the first blast.
 function coreFusionCount(a,b){
-  return a.special==='core'&&b.special==='core'?1:0;
+  return a.special==='core'&&b.special==='core'?all().filter(t=>t.special).length:0;
 }
-function makeCoreFusionPlan(origin,total,wave=1){
+function makeCoreFusionPlan(origin,total,wave=1,origins=null){
   const targets=all(),tile=board[origin.r][origin.c];
+  // Where each wave starts: the swapped Lõi, the other Lõi, then every other special on the board (nearest first), so
+  // the N waves come from the N specials instead of one spot (owner 05/11).
+  if(!origins){const rest=all().filter(t=>t.special&&t!==tile).sort((a,b)=>(b.special==='core')-(a.special==='core')||Math.hypot(a.r-tile.r,a.c-tile.c)-Math.hypot(b.r-tile.r,b.c-tile.c));
+    origins=[{r:tile.r,c:tile.c},...rest.map(t=>({r:t.r,c:t.c}))];}
   // The pair consumes every special together. Count once, before the first
   // blast; refills and subsequent matches cannot extend this finite sequence.
-  return {targets,creates:[],acts:[{tile,kind:'core',hits:targets,fullBoard:true}],
-    playerTiles:new Set(targets),fusion:{total,wave,r:origin.r,c:origin.c}};
+  return {targets,creates:[],acts:[{tile,kind:'core',hits:targets,fullBoard:true,wave,total}],
+    playerTiles:new Set(targets),fusion:{total,wave,r:origin.r,c:origin.c,origins}};
 }
 function svgNode(tag,attrs){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);$('boardEffects').append(e);return e;}
 async function boardBurst(t,color){
@@ -366,7 +371,7 @@ async function resolveBoard(owner,initial=null,preferred=null){
     const wavePlan=plan;
     await clearPlan(plan,chain,t=>combat.collect(t,owner==='hero'||wavePlan.playerTiles.has(t)?'hero':'enemy',chain));
     const fusion=wavePlan.fusion;
-    if(fusion&&fusion.wave<fusion.total){plan=makeCoreFusionPlan(fusion,fusion.total,fusion.wave+1);}
+    if(fusion&&fusion.wave<fusion.total){plan=makeCoreFusionPlan(fusion.origins?.[fusion.wave]||fusion,fusion.total,fusion.wave+1,fusion.origins);}
     else{m=matches();plan=null;}
   }
   await Promise.all([finishBoardCombo(),combat.finish()]);
@@ -394,7 +399,7 @@ async function enemySkill({reserved=false}={}){
   await rageChoreography('enemy',base*(key==='earth'?1.1:key==='ice'?.75:1),{
     hits:key==='fire'?3:key==='lightning'?(state.boss?5:3):1,onRelease(pending){
       if(key==='earth'){state.enemyArmor=Math.min(combatArmorCap('enemy'),state.enemyArmor+(state.boss?35:12+state.stage*2));pending.push(combatLootReceive('enemy',4));}
-      if(key==='ice'&&state.hp>0){state.playerFrozen=true;message('Băng tuyết bao phủ! Bạn sẽ mất 1 lượt hành động.');popActorSkill('hero','Đóng băng',false,pending);}
+      if(key==='ice'&&state.hp>0){state.playerFrozen=true;state.playerLock='freeze';message('Băng tuyết bao phủ! Bạn sẽ mất 1 lượt hành động.');popActorSkill('hero','Đóng băng',false,pending);}
       if(key==='lightning'){state.energy=Math.max(0,state.energy-15);message('Dòng điện cuốn đi 15 năng lượng của bạn.');}
     }
   });
@@ -445,10 +450,12 @@ async function perform(action){
     // A fresh freeze from the following enemy action also resolves in this lock.
     while(state.playerFrozen&&state.hp>0&&state.enemyHp>0){
       turn='frozen';clearSelection();pointer=null;update();
-      message('Đóng băng: bạn mất 1 lượt. Quái tiếp tục hành động.');
-      await floating('hero','ĐÓNG BĂNG · MẤT LƯỢT','armor');
+      // Freeze, stun and paralysis each say what took the turn (owner 05/11: "phân biệt đóng băng với choáng").
+      const lock={freeze:'Đóng băng',stun:'Choáng',paralyze:'Tê liệt'}[state.playerLock]||'Đóng băng';
+      message(lock+': bạn mất 1 lượt. Đối thủ tiếp tục hành động.');
+      await floating('hero',lock.toUpperCase()+' · MẤT LƯỢT','armor');
       await battleBeat(450);
-      state.playerFrozen=false;update();
+      state.playerFrozen=false;state.playerLock=null;update();
       if(typeof progressionRecordTurn==='function')progressionRecordTurn();
       await enemyAction();await castReadyUltimates();
     }
@@ -565,7 +572,7 @@ function showHeroDetail(){
 }
 $('heroBackBtn').addEventListener('click',()=>showHeroList());
 function startStage(){
-  state.noriStunTurns=0;state.noriStoredDamage=0;state.controlGuard=0;state.iceBar=0;state.tfDodge=false;state.noriSealFree=false;
+  state.noriStunTurns=0;state.noriStoredDamage=0;state.controlGuard=0;state.iceBar=0;state.playerIceBar=0;state.playerLock=null;state.tfDodge=false;state.noriSealFree=false;
   state.noriRegenTurns=0;clearNoriRenewal();
   stopCombatVoices();bossDeathVoicePlayed=false;
   resetBoardCombo();
@@ -622,6 +629,9 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   heroVariant(key,name){const base=ART.heroVariantBase||(ART.heroVariantBase={});base[key]??=ART.heroes[key];ART.heroes[key]=name?ART.heroVariants?.[key]?.[name]||base[key]:base[key];renderActors();update();return Object.keys(ART.heroVariants?.[key]||{});},
   configure(options){if(locked&&!$('selectDialog').open)throw Error('Wait for the current action to finish');Object.assign(state,options);if($('selectDialog').open)$('selectDialog').close();if($('resultDialog').open)$('resultDialog').close();startStage();Object.assign(state,options);plannedIntent=intent();renderActors();update();},
   setBoard(types,specials=[]){if(locked)throw Error('Board is busy');clearSelection();$('board').replaceChildren();board=types.map((row,r)=>row.map((type,c)=>newTile(type,r,c)));specials.forEach(s=>{board[s.r][s.c].special=s.kind;board[s.r][s.c].dir=s.kind==='bolt'?s.dir||'row':undefined;if(s.kind==='core')board[s.r][s.c].type=-1;});all().forEach(createTile);board[0][0].el.tabIndex=0;},
+  // Studio only (?qa): turn one gem into a special (bolt row/col, bomb, core) or back into a plain gem, to test specials.
+  setSpecial(r,c,kind,dir='row'){if(locked)throw Error('Board is busy');const t=board[r]?.[c];if(!t)return;t.special=kind||null;t.dir=kind==='bolt'?dir:undefined;
+    if(kind==='core')t.type=-1;else if(t.type<0)t.type=rand(5);paintTile(t);clearSelection();},
   setReduced(value){reduced=value;updateSettings();},async settle(){await ensurePlayable();},get effects(){return activeAnimations.size;},get art(){return ART;},get monsters(){return MONSTERS;},get creatureNames(){return progressionRules.WORLD.CREATURE_NAMES;},creatureSheets,get foeStatuses(){return foeStatuses;},get foeHaste(){return foeHaste;},resetFoeStatuses(){foeStatusReset();},tickFoeStatuses(){return tickFoeStatuses();},applyFoeStatus(s,base){return applyFoeStatus(s,base);},castReadyUltimates(){return castReadyUltimates();},foeSkills(){const o=state.qaFoeFx;if(!o)return [];const W=progressionRules.WORLD;return (o.tier==='boss'?W.BOSSES[o.boss]?.skills:o.tier==='elite'?[...W.ELITE_SKILLS[o.creature],...(foeEliteUlt(o)?[foeEliteUlt(o)]:[])]:[W.COMMON_SKILL])||[];},
   foeCast(index,base=30){const s=this.foeSkills()[index];if(!s)return;const hit=s.effects?.find(e=>e.type==='hit'||e.type==='burst'),ward=s.effects?.find(e=>e.type==='ward'),heal=s.effects?.find(e=>e.type==='heal');
     const skill=s.effects?{name:s.name,move:s.move,ult:s.ult,kind:s.kind,power:hit?.power||0,hits:hit?.hits||1,shield:ward?.pct,heal:heal?.pct,status:s.effects.find(e=>e.type==='status')}:s;return castFoeSkill(skill,base);},

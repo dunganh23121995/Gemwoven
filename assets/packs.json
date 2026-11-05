@@ -3151,6 +3151,11 @@
   {
    "id": "core",
    "files": [
+    "assets/audio/board-specials/bolt-sweep.wav",
+    "assets/audio/board-specials/bomb-boom.wav",
+    "assets/audio/board-specials/bomb-swirl.wav",
+    "assets/audio/board-specials/core-burst.wav",
+    "assets/audio/board-specials/core-gather.wav",
     "assets/audio/bosses/boss-ashdragon-attack1.wav",
     "assets/audio/bosses/boss-ashdragon-attack2.wav",
     "assets/audio/bosses/boss-ashdragon-attack3.wav",
@@ -3787,6 +3792,15 @@
     "assets/audio/voices/noct-hurt2.wav",
     "assets/audio/voices/noct-hurt3.wav",
     "assets/audio/voices/noct-release.wav",
+    "assets/board-items/bolt-aura.webp",
+    "assets/board-items/bomb-ring.webp",
+    "assets/board-items/core-ring.webp",
+    "assets/board-items/core.webp",
+    "assets/board-items/ice-crust.webp",
+    "assets/board-items/ice-pip.webp",
+    "assets/board-items/pop.webp",
+    "assets/board-items/rage-burst.webp",
+    "assets/board-items/rage-comet.webp",
     "assets/combat-hud/arrow.webp",
     "assets/combat-hud/backdrop.webp",
     "assets/combat-hud/board-back.webp",
@@ -4767,16 +4781,22 @@
     "assets/scenes/painted/lightning-near.webp",
     "assets/special-fx/arrows.webp",
     "assets/special-fx/beam.webp",
+    "assets/special-fx/blade.webp",
     "assets/special-fx/blast.webp",
+    "assets/special-fx/fireball.webp",
     "assets/special-fx/flash.webp",
     "assets/special-fx/glow.webp",
+    "assets/special-fx/halo.webp",
     "assets/special-fx/head.webp",
     "assets/special-fx/mark.webp",
-    "assets/special-fx/ring.webp",
+    "assets/special-fx/orbit.webp",
+    "assets/special-fx/prism-wave.webp",
+    "assets/special-fx/prism.webp",
     "assets/special-fx/shard.webp",
-    "assets/special-fx/sparkle.webp"
+    "assets/special-fx/sparkle.webp",
+    "assets/special-fx/vortex.webp"
    ],
-   "bytes": 166011372
+   "bytes": 168174746
   },
   {
    "id": "hero-earth-f1",

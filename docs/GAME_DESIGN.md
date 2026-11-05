@@ -149,8 +149,8 @@ Chủ dự án (04/11): "bỏ phần mô tả yêu cầu và tên ngay cạnh k�
   bàn ngọc riêng của tướng** (vòng Bàn ngọc, chủ dự án 05/11; thay Công +25..40% chung; **không còn dư âm sức mạnh**,
   dư âm chỉ là hình). **Mạnh rõ rệt (chủ dự án 05/11, Codex đồng ý):** mỗi tướng thêm **sát thương +X%** cho mọi đòn
   trong lúc Biến Thân, cộng hiệu ứng riêng: Hiro +13% và nhóm Kiếm đầu lượt +10% (tổng ≤ +25% cũ, không mạnh hơn);
-  Mika +40%, nhóm Kiếm đầu lượt đặt thiêu đốt 16×Công/lượt × 2 lượt (+4%/cấp); Yuki +45%, 2 Băng đủ đóng băng (trùm:
-  thanh 4); Nori +45%, Tim/Khiên ×1,5 (+0,02/cấp), 25% máu hồi dư thành giáp (trần 4% HP/lượt); Lumi +30%, tím 16 nộ/viên
+  Mika +40%, nhóm Kiếm đầu lượt đặt thiêu đốt 16×Công/lượt × 2 lượt (+4%/cấp); Yuki +45%, 4 Băng đủ đóng băng (trùm:
+  6, luật tích băng 05/11); Nori +45%, Tim/Khiên ×1,5 (+0,02/cấp), 25% máu hồi dư thành giáp (trần 4% HP/lượt); Lumi +30%, tím 16 nộ/viên
   (+0,3/cấp), tối đa 75 nộ/lượt; Noct +40%, combo từ đợt 2 Kiếm chí mạng ×1,5 (+0,02/cấp), combo 3 đợt né đòn thường kế
   tiếp (một lần). Đo (`balance-sim.cjs`, `TF=shell` = cùng cửa sổ không hiệu ứng, ải 400/500, 4★, Chân Thân cấp 3): sát
   thương mỗi lượt khi Biến Thân **×1,39–1,48** với tướng hiếm, Hiro ×1,18–1,20 (+Công 25% cũ ×1,19–1,28; bộ trước chỉ
@@ -298,12 +298,16 @@ phỏng (`qa/gemwoven/balance-sim.cjs`): `src/gemwoven/board-rules.js`.
 | Nộ combo (số đợt trong một lần giải bàn) 1/2/3/4/≥5 | **+0/3/6/10/15**, nhận một mức |
 | Nộ quái PvE | 3/viên, +25 ở viên tím đầu; Băng quái **không** hút nộ nữa |
 | Tuyệt kỹ | 100 nộ, thanh tối đa 199, **một tuyệt kỹ mỗi lượt của mình**, tung sau khi bàn giải xong |
-| Băng | thường/tinh anh: 3 Băng trong một lần giải bàn → đóng băng; trùm: thanh **0/6 cộng dồn qua các lượt** |
-| Chống khóa | sau choáng/đóng băng, quái phải hành động đủ **1** lượt (trùm **2**) mới bị khống chế lại; Phong ấn Nori lúc đó chỉ tích sát thương |
+| Băng | (chủ dự án 05/11) mỗi viên Băng **tích vào đối phương qua các lượt**: quái thường/tinh anh và người chơi PvP **6** → đóng băng, trùm **9**; đóng băng xong về 0; không tích khi đang khống chế/kháng. Biến Thân Yuki: 4 (trùm 6) |
+| Chống khóa | (chủ dự án 05/11) **chỉ trùm**: sau choáng/đóng băng phải hành động đủ **2** lượt mới bị khống chế lại; quái thường, tinh anh, người chơi PvP không có kháng (vẫn tích băng liên tục); Phong ấn Nori lúc đó chỉ tích sát thương |
 | Phong ấn Nori | đòn của Nori trong phong ấn **vẫn gây sát thương** và tích thêm toàn bộ đòn đó vào bộc phá ×3 (PvP tích 2/3 để giữ ngân sách cũ); bộc phá nổ một lần, không nhân hệ/sức mạnh lần hai. Giữ đặc tính sát thương 75% (chủ dự án 05/11) |
 | Kiếm quái | thường ×0,55, trùm **×1,15** (chủ dự án 05/11: bỏ thử 0,82, khôi phục như cũ) |
 
-Ô trạng thái: "Tích băng n/6" trên trùm, "Kháng khống chế" khi đang được bảo hộ. Đo (200–300 trận/ô, cấp gợi ý, có đồ):
+Ô trạng thái (05/11): mảnh băng đầy dần "n/6" (trùm "n/9") ở đúng ô của Đóng băng, đủ thì hóa khối băng; sau đó ô nhỏ "Kháng đóng băng"
+(khối băng của Đóng băng + một gạch chéo đỏ, chỉ trùm) cùng chỗ; tướng đang Biến Thân (miễn đóng băng/choáng) cũng hiện biểu tượng này.
+Mất lượt của tướng ghi rõ nguyên nhân: ĐÓNG BĂNG / CHOÁNG / TÊ LIỆT (trước đây choáng cũng hiện "Đóng băng"). Không còn thanh băng dưới HUD
+hay cung hổ phách trên thân quái. Đo luật 6/9 (200 trận/ô, so với 3/6):
+Hiro trùm 55 → 53%, thường 99 → 97%; Mika trùm 84 → 82%; Noct không đổi. Đo (200–300 trận/ô, cấp gợi ý, có đồ):
 khóa lượt quái 35% → 14% (trùm), Hiro trùm ải 100 54% → 51%, ải 50 89% → 94%; tướng hiếm 1★ trùm 96–100%; nhịp
 tuyệt kỹ ~4,7 → ~4,2 lượt (Lumi 2,1 → 3,5).
 **Sau chốt 05/11 (kiếm trùm 1,15, Nori gây + tích):** Hiro 1★ trùm ải 50/100/150 **62/12/3%** (2★ 82/33/8%; luật cũ trước vòng
@@ -1196,3 +1200,41 @@ Sao băng (giá phóng rune ngang + 3 vệt; cột chỉ xoay giá), Bom (lồng
 vòng rune); nảy khi tạo; chọn hoặc rê special → sáng đúng ô sẽ nổ (cùng luật GemwovenSpecials); thanh băng boss 6 tinh thể (thay ô trạng
 thái); đóng băng: băng bọc tới thắt lưng + "ĐÓNG BĂNG · MẤT LƯỢT", vỡ thành mảnh khi hết; Kháng: cung hổ phách quanh thân dưới + nhãn;
 ngọc tím bắn tia nộ về thanh nộ; thưởng nộ combo bùng "Combo +N" trên HUD. Giảm chuyển động chỉ giữ hình tĩnh. Codex 8,4 (§ tracker I47).
+
+### Vòng FX item đặc biệt v3 (05/11) — đã làm, Codex duyệt vòng 3
+Chủ dự án: "Các item đặc biệt đang hơi tệ, nhất là item quét cột/hàng… Hiệu ứng khi nổ chưa có, chỉ mới là item bị ảnh hưởng và biến
+mất. Bom: xoáy lửa co lại rồi bùm; quét dọc/ngang: tiếng như đàn piano bị miết phím; tương tự các item khác." Codex phê bình (4/5/7 item,
+3/2/3 FX), lập danh sách kiểm tra cứng, viết prompt tấm 6 mảnh (`assets/gemwoven/raw/board-fx-v3/`), chấm 3 vòng → mọi mục ≥ 8.
+- **Item** (thay giá phóng, lồng, ngòi, vòng rune): ngọc giữ nguyên cỡ; Sao = dải sao chổi hai mũi tên sáng sau ngọc (dọc xoay 90°);
+  Bom = vòng lửa đứt đoạn quay 3,5 s; Lõi = cầu 0,8 ô + quầng cầu vồng xoay.
+- **Sao băng** ~0,75 s: tích 150 ms → hai lưỡi trăng khuyết cao ~2,85 ô quét từ ngọc ra hai mép (66 ms/ô, một đồng hồ cho lưỡi và
+  phím); mỗi viên lún 0,11 ô như phím đàn rồi vỡ; âm: 420 ms cuối một bản thu piano thật miết phím đi lên (Freesound CC0 #383858).
+- **Bom** ~0,9 s: phồng 120 ms → xoáy lửa phủ đủ 5×5 (bốn lưỡi chạm góc), quay rồi co liên tục 150 ms cuối, ngọc trong vùng bị hút
+  15% và ửng cam → cầu lửa nở, chớp 50 ms, sóng xung kích, ngọc văng ra; âm vù lửa cắt đúng lúc nổ + tiếng nổ thật; rung board 3 px/120 ms.
+- **Lõi** ~1,1 s: nâng 0,2 ô → tia lăng kính tới mọi viên cùng màu (8 nhóm, tới đích trong 320 ms) → bản sao ngọc bay dọc tia vào Lõi →
+  co lại rồi nổ sao + vòng cầu vồng; chuông gió thật lúc phóng tia và lúc nổ.
+- **Combo/chuỗi**: Sao+Sao hai trục cùng nhịp; Sao+Bom xoáy rồi lưỡi dày 5+5; Bom+Bom xoáy 7×7; Lõi+X đổi từng nhóm khi tia chạm rồi tự
+  nổ sau 90 ms; item bị chạm kích hoạt sau 50 ms (không chờ cả lượt nổ trước). Mảnh sáng lớn chạy trên lớp HTML riêng (compositor), board
+  không chờ tàn sáng mới rơi ngọc. Giảm chuyển động: xóa đúng, không FX.
+- Âm: `scripts/prepare_board_special_sounds.py` → `assets/audio/board-specials/` (nguồn trong `assets/audio/CREDITS.txt`).
+- Ghi nhận: khi một lần xóa lớn trúng nhiều viên, sân đấu phía trên (nhân vật ra đòn ngay) có thể làm rơi khung ~150–200 ms trên máy
+  yếu; đo bằng trace, không do FX board.
+
+### Lõi chậm lại, Lõi + Lõi nhiều đợt (05/11, sau góp ý)
+Chủ dự án: "Quầng xoay của Lõi bị lệch; âm không hợp; hiệu ứng nhanh quá, từ từ thôi. Hai Lõi ghép nhau rất hiếm mà chỉ quét sạch board một
+lần thì yếu, không khác Lõi + Sao; cho nổ board số lần bằng item đặc biệt có trên board." Quầng cũ bị cắt cụt mép trên và không tròn nên
+xoay bị lắc: Codex vẽ lại vòng lăng kính tròn đều + sóng cầu vồng (`assets/gemwoven/raw/core-fx/`). Lõi ~2 s (nâng 320, tia 600, hút 520,
+co 200, nổ 360 ms); âm mới: phép tụ lực (Freesound CC0 #876167) và bùng nổ pha lê (#691005), thay chuông gió. **Lõi + Lõi = số lần nổ
+toàn bàn bằng số item đặc biệt trên bàn lúc đổi (tính cả hai Lõi)**: đợt 1 Lõi thật hút cả bàn, mỗi đợt sau một Lõi bóng quay lại, bàn rơi
+đầy giữa các đợt; AI và mô phỏng theo cùng luật.
+
+### Tuyệt kỹ tung ngay khi đầy nộ (05/11)
+Chủ dự án: "Khi đầy nộ thì vẫn chờ item khác trên board xong mới thi triển? Không được, thi triển luôn khi đầy nộ." Tuyệt kỹ của bên đang
+đi lượt vào hàng hành động ngay khi nộ chạm 100 (đứng trước mọi đòn đánh), board vẫn giải tiếp; vẫn tối đa một tuyệt kỹ mỗi lượt của
+mình; nộ đầy trong lượt đối phương chờ tới lượt mình.
+
+### Combat chạy song song board (05/11)
+Chủ dự án: "Board chỉ có nhiệm vụ lấy item và thông tin board. Bên trên nhận được gì thì phải chạy luôn." Máu/giáp/nộ vốn cộng ngay khi
+viên vỡ, nhưng đòn đánh xếp sau tư thế nhận giáp/hồi máu (~0,85 s). Nay đòn đánh được ưu tiên trong hàng hành động; nhận giáp/hồi máu khi
+còn đòn chờ chỉ lóe ánh sáng (số đã hiện). Đo: tướng ra đòn từ 1.375 ms → 522 ms sau khi đổi ngọc, trúng từ 1,87 s → 1,27 s. Tuyệt kỹ vẫn
+tung sau khi bàn giải xong (luật một tuyệt kỹ mỗi lượt).

@@ -1,0 +1,87 @@
+{
+  "board-bolt-sweep": {
+    "file": "board-specials/bolt-sweep.wav",
+    "duration": 0.77,
+    "beat": "Sao băng quét: piano miết phím",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Piano Slide Low Note to High Note Ascending",
+        "author": "deleted_user_7146007",
+        "source_url": "https://freesound.org/people/deleted_user_7146007/sounds/383858/",
+        "license": "CC0-1.0",
+        "sha256": "fbd0d450aabd85d1edb558541d9dd10fc9cff85c4bbe7e39e36aac3cf2387a4e"
+      }
+    ],
+    "processing": "excerpt 0.98-1.75 s of one recording, 50 Hz high-pass, 0.33 s fade-out, gain to peak 0.85",
+    "peak": 0.85
+  },
+  "board-bomb-swirl": {
+    "file": "board-specials/bomb-swirl.wav",
+    "duration": 0.47,
+    "beat": "Bom: xoáy lửa co lại",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "ESE - WHOOSH - CALM - Fire Flame.wav",
+        "author": "EpicSoundEffects",
+        "source_url": "https://freesound.org/people/EpicSoundEffects/sounds/475879/",
+        "license": "CC0-1.0",
+        "sha256": "61ca0e728909d6af2bb442f11de728c9df0155e94bac4678106ba22b8e294558"
+      }
+    ],
+    "processing": "excerpt 0.00-0.47 s of one recording, 50 Hz high-pass, 0.15 s fade-out, gain to peak 0.7",
+    "peak": 0.7
+  },
+  "board-bomb-boom": {
+    "file": "board-specials/bomb-boom.wav",
+    "duration": 2.57,
+    "beat": "Bom: bùm",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "BOOMING PUNCHY EXPLOSION - close, big SCHOEPS MK41.wav",
+        "author": "misosound",
+        "source_url": "https://freesound.org/people/misosound/sounds/251759/",
+        "license": "CC0-1.0",
+        "sha256": "3ce9606a53fba36a37ab04716253f932260b2f23523ad3356326cbbac41614d0"
+      }
+    ],
+    "processing": "excerpt 0.03-2.60 s of one recording, 35 Hz high-pass, 1.40 s fade-out, gain to peak 0.9",
+    "peak": 0.9
+  },
+  "board-core-gather": {
+    "file": "board-specials/core-gather.wav",
+    "duration": 1.23,
+    "beat": "Lõi: tụ lực, hút ngọc",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Soft Magic Spell Cast Whoosh (Fantasy RPG)",
+        "author": "Assetsmith",
+        "source_url": "https://freesound.org/people/Assetsmith/sounds/876167/",
+        "license": "CC0-1.0",
+        "sha256": "62e36b46b0a0d4f9acd024e23c06ffd32c6f2c4213598e09e75f485f3dc10da6"
+      }
+    ],
+    "processing": "excerpt 0.00-1.23 s of one recording, 60 Hz high-pass, 0.45 s fade-out, gain to peak 0.75",
+    "peak": 0.75
+  },
+  "board-core-burst": {
+    "file": "board-specials/core-burst.wav",
+    "duration": 2.84,
+    "beat": "Lõi: bung nổ",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Icy Magic Cast",
+        "author": "DustyWind",
+        "source_url": "https://freesound.org/people/DustyWind/sounds/691005/",
+        "license": "CC0-1.0",
+        "sha256": "ebe220ecbfde4186d42fc8d9f5f88b23d83d47a389fdc26702754831bf4dd08a"
+      }
+    ],
+    "processing": "excerpt 0.04-2.88 s of one recording, 60 Hz high-pass, 1.60 s fade-out, gain to peak 0.85",
+    "peak": 0.85
+  }
+}

@@ -1,7 +1,8 @@
 // Board control and Biến Thân effects (docs/GAME_DESIGN.md §20 "Vòng Bàn ngọc", owner 05/11). Numbers live in
 // src/gemwoven/board-rules.js (shared with the opponent AI and the balance simulator) and in each hero's kit.
-//   Ice: 3 in one board resolution freezes a common foe or an elite; a boss fills a bar to 6 across turns.
-//   Guard: after a stun or freeze ends, the foe completes 1 full action (boss 2) before stun or freeze can land again.
+//   Ice (owner 05/11): ice gems build up on the opponent across turns; 6 freeze a common foe, an elite or a PvP player,
+//   9 a boss. Nothing builds while a stun, a freeze or the guard is on.
+//   Guard (bosses only): after a stun or freeze ends, a boss completes 2 full actions before stun or freeze can land again.
 //   Nori's seal still stores damage while the guard is up, but then the foe keeps acting.
 //   Ultimates: each side casts at most one in its own turn, after its board resolves; leftover rage is kept.
 const BOARD_RULES=GemwovenBoardRules;
@@ -13,12 +14,17 @@ function controlActed(){if(state.controlGuard>0)state.controlGuard--;}
 function noriSealHolds(){return state.noriStunTurns>0&&!state.noriSealFree;}
 // The hero's Biến Thân effect while it is on (the kit's transform entry), else null.
 function transformEffect(){return progressionTransform?.left>0?(progressionTransformKit()||(progressionSandbox?progressionKit(state.key)?.transform:null)):null;}
-// One hero ice gem collected in this resolution (count = ice so far in it). Rage from ice is paid by the caller either way.
-function boardIceGem(count){
+// One ice gem the hero collected: it builds up on the foe. Rage from ice is paid by the caller either way.
+function boardIceGem(){
   if(controlBlocked())return;
   const need=BOARD_RULES.iceThreshold(state.boss,transformEffect());
-  if(state.boss){state.iceBar=(state.iceBar||0)+1;if(state.iceBar>=need){state.iceBar=0;state.frozen=true;popActorSkill('enemy','ĐÓNG BĂNG',false);}}
-  else if(count>=need){state.frozen=true;}
+  state.iceBar=(state.iceBar||0)+1;if(state.iceBar>=need){state.iceBar=0;state.frozen=true;}
+}
+// One ice gem the other player collected in a PvP fight: it builds up on the hero (no Biến Thân, no guard in duels).
+function boardIceOnHero(){
+  if(state.playerFrozen)return;
+  state.playerIceBar=(state.playerIceBar||0)+1;
+  if(state.playerIceBar>=BOARD_RULES.ICE.common){state.playerIceBar=0;state.playerFrozen=true;state.playerLock='freeze';}
 }
 // Per side, the ultimates cast in the current own turn (reset when that side's turn begins).
 const boardUltTurn={hero:0,enemy:0};
@@ -31,6 +37,8 @@ castReadyUltimates=async function(){
   for(const side of ['hero','enemy']){
     if(state.hp<=0||state.enemyHp<=0)return;
     if(side==='enemy'&&noriSealHolds())continue;
+    // A frozen or stunned hero has lost the turn: the ultimate waits until it is free again.
+    if(side==='hero'&&state.playerFrozen)continue;
     const key=side==='hero'?'energy':'enemyEnergy';if(state[key]<BOARD_RULES.ULTIMATE.cost||!boardUltAllowed(side))continue;
     if(side==='hero'&&typeof foeSilenced==='function'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');continue;}
     state[key]-=BOARD_RULES.ULTIMATE.cost;boardUltTurn[side]++;update();
@@ -47,6 +55,9 @@ enemyAction=async function(){
   try{await boardControlEnemy();}
   finally{
     boardUltTurn.hero=0;
+    // The hero's turn begins here: rage that filled during the foe's turn is cast right away (owner 05/11), not after
+    // the hero's next move (castReadyUltimates checks whose turn it is).
+    if(state.hp>0&&state.enemyHp>0)turn='player';
     if(state.hp>0&&state.enemyHp>0){
       if(skipped){if(!noriSealHolds()&&!state.frozen&&!state.stunned)controlEnded();}
       else{controlActed();if(sealFree&&typeof consumeNoriStunTurn==='function')await consumeNoriStunTurn();}

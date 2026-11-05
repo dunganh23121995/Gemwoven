@@ -112,7 +112,7 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   // 15% (+1% a rank) less damage taken, and each hero's own board effect scaled a little by the Chân Thân rank.
   assert.deepEqual([1,5,10].map(r=>at('fire',r,3).transform.reduce),[.15,.19,.24]);assert.deepEqual(at('fire',1,3).awaken,{attack:0,hp:0});
   assert.deepEqual([1,5,10].map(r=>at('fire',r,3).transform.burn.base),[16,18.56,21.76]);assert.deepEqual([1,10].map(r=>at('lightning',r,3).transform.purple),[16,18.7]);
-  assert.deepEqual(at('ice',10,3).transform.ice,{common:2,boss:4});assert.equal(at('novice',1,3).transform.firstSword,.1);assert.ok(at('novice',10,3).transform.firstSword<.25,'Hiro stays below the old +25% Công');
+  assert.deepEqual(at('ice',10,3).transform.ice,{common:4,boss:6});assert.equal(at('novice',1,3).transform.firstSword,.1);assert.ok(at('novice',10,3).transform.firstSword<.25,'Hiro stays below the old +25% Công');
   const tf=M.skillKit('fire',{level:200,stars:4,evolution:3,skills:[1,1,1,1]}).transform;assert.equal(tf.turns,3);assert.equal(tf.reduce,.15);assert.equal(tf.attack,undefined);assert.equal(tf.after,undefined);
   for(const key of ['novice','fire','ice','earth','lightning','shadow'])assert.ok(at(key,1,3).transform.text,'every hero has its own Biến Thân text');
   assert.equal(M.skillKit('fire',{level:500,stars:6,evolution:6,skills:[1,1,1,1]},true).transform,null,'not in normalized play');assert.deepEqual(M.SKILL_GATES[3],{level:180,evolution:3});

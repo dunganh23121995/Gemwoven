@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-05T09:41:46.498789+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\board-fx-v3\\raw-fx.png"
+  ],
+  "prompt": "Create ONE VFX texture for Gemwoven, a polished jewel fantasy match-3 phone game, in the same hand-painted luminous fire style as the bottom-left \"fire vortex\" of the attached reference sheet.\n\nONE top-down clockwise fire vortex whose overall silhouette is a ROUND DISC (a circle, not a square): five or six bold curling orange-gold flame arms spiral inward toward an open dark centre, and their outer ends sweep around the rim so the outline is circular and even all the way round, like a whirlpool of fire. Clear black gaps between the arms, bright yellow cores and red-orange edges, a few embers.\n\nSquare canvas, opaque PURE FLAT BLACK #000000 background, the vortex centred and inside the central 82% with black margin all round; nothing touches the image edge. Screen-blend ready: saturated colour with crisp bright cores, glow fading to pure black; no smoke, no grey haze, no explosion, no text, no other objects.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows one clockwise fire vortex with a round disc silhouette, five or six curling orange-gold arms, bright yellow cores, a flat black background, and a few embers. Nothing is cropped by the image edge, and there is no text or extra figures. The outer flames extend slightly past the nominal central 82% margin, which is a minor drift and not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000477
+  }
+}

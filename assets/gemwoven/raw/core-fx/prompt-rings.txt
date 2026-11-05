@@ -1,0 +1,9 @@
+Create ONE VFX texture sheet for Gemwoven, a polished jewel fantasy match-3 phone game, in the same luminous hand-painted VFX style as the attached reference sheet.
+
+Canvas: wide 2:1 landscape, opaque PURE FLAT BLACK #000000 background, exactly 2 equal square cells side by side (left, right). No visible grid, borders, text, labels, gems, metal or scenery. Each effect is centred in its own cell, a PERFECT CIRCLE seen straight from above (not tilted, not an ellipse, not a spiral), and stays inside the central 82% of its cell with black margin all round; nothing touches a cell edge.
+
+LEFT — Prism halo: one thin, perfectly round ring of rainbow light (red, gold, green, cyan, violet flowing evenly around the circle) with an ivory-white bright inner core line, its thickness EVEN all the way round, six small four-point star glints spaced evenly around it. Rotationally symmetric so it looks the same when it spins. Empty black centre.
+
+RIGHT — Rainbow shockwave: one wide, perfectly round ring wave of prismatic light, thicker than the halo (about 1/7 of its diameter), bright ivory leading outer edge fading inward into soft rainbow bands, evenly spaced small sparkles riding on it. Rotationally symmetric. Empty black centre.
+
+Screen-blend ready: saturated coloured light with crisp bright cores and restrained glow fading to pure black; no grey haze, no smoke.

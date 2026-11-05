@@ -90,6 +90,8 @@ for manifest in sorted((root/'assets/audio/boss-skills').glob('*-manifest.json')
 # The elites' bank (src/foe-skills.js ELITE_LOOKS, scripts/prepare_elite_sounds.py).
 elite_sfx=root/'assets/audio/elite-skills/manifest.json'
 if elite_sfx.exists():cast_sfx.update(json.loads(elite_sfx.read_text(encoding='utf-8')))
+# Board specials (src/special-fx.js; scripts/prepare_board_special_sounds.py): piano sweep, fire vortex, boom, chimes.
+cast_sfx.update(json.loads((root/'assets/audio/board-specials/manifest.json').read_text(encoding='utf-8')))
 art['castSounds']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration']} for key,value in cast_sfx.items()}
 music_manifest=json.loads((root/'assets/audio/music-manifest.json').read_text(encoding='utf-8'))
 if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update(json.loads((root/'assets/audio/boss-music-manifest.json').read_text(encoding='utf-8')))

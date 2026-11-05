@@ -11,6 +11,11 @@ const pct=v=>Math.round((v||0)*100)+'%';
 // kind: control (loses a turn) → debuff → buff; order inside a kind is the order of this table.
 const STATUS_DEFS={
   freeze:{kind:'control',name:'Đóng băng',desc:()=>'Mất lượt tới'},
+  // Ice building up (owner 05/11): a shard that fills n/6 (boss n/9) in the freeze's own slot, then turns into the ice
+  // block; after a freeze, a small resistance tile in the same slot while the guard is up (no ward on the body).
+  icebar:{kind:'control',icon:'iceshard',name:'Tích băng',desc:s=>s.stacks+'/'+s.value+' Băng: đủ thì đóng băng mất 1 lượt'},
+  controlguard:{kind:'control',icon:'freezeguard',name:'Kháng đóng băng',desc:()=>'Trùm vừa hết đóng băng/choáng: chưa thể bị khống chế lại, không tích Băng'},
+  freezeimmune:{kind:'control',icon:'freezeguard',name:'Kháng đóng băng',desc:()=>'Biến Thân: miễn đóng băng và choáng mới'},
   stun:{kind:'control',name:'Choáng',desc:()=>'Mất lượt'},
   paralyze:{kind:'control',name:'Tê liệt',desc:s=>'Mất lượt, mỗi lượt địch mất máu và −'+Math.round(s.value||0)+' năng lượng'},
   burn:{kind:'debuff',name:'Thiêu đốt',desc:()=>'Mất máu mỗi lượt'},
@@ -26,9 +31,6 @@ const STATUS_DEFS={
   armormelt:{kind:'debuff',name:'Giáp tan chảy',desc:()=>'Không nhận thêm giáp'},
   frostrune:{kind:'debuff',name:'Hàn ấn',desc:s=>'Nạp năng lượng chậm hơn '+pct(s.value)},
   transform:{kind:'buff',name:'Biến Thân',desc:s=>(s.text||'')+(s.text?'; ':'')+'giảm '+pct(s.value)+' sát thương nhận, miễn choáng'},
-  // Board round (owner 05/11): a boss's ice bar, and the guard after a stun or freeze.
-  icebar:{kind:'debuff',icon:'freeze',name:'Tích băng',desc:s=>s.stacks+'/'+s.value+' Băng: đủ thì đóng băng'},
-  controlguard:{kind:'buff',icon:'invulnerable',name:'Kháng khống chế',desc:()=>'Chưa thể bị choáng hay đóng băng thêm'},
   afterglow:{kind:'buff',name:'Dư âm Biến Thân',desc:s=>'Công +'+pct(s.value)},
   veil:{kind:'buff',name:'Hóa mờ',desc:()=>'Chặn mọi bất lợi mới từ lượt địch'},
   regen:{kind:'buff',name:'Hồi phục',desc:()=>'Hồi máu mỗi lượt'},
@@ -53,16 +55,19 @@ function combatStatusList(side){
   const dot=side==='hero'?(typeof progressionEnemyDot!=='undefined'?progressionEnemyDot:null):(typeof progressionDot!=='undefined'?progressionDot:null);
   if(side==='hero'){
     if(!state.playerFrozen)statusStunned=false;
-    if(state.playerFrozen&&!(foes.paralyze?.turns>0))add(statusStunned?'stun':'freeze',{turns:1});
+    if(state.playerFrozen&&!(foes.paralyze?.turns>0))add(state.playerLock==='stun'||statusStunned&&state.playerLock!=='freeze'?'stun':'freeze',{turns:1});
+    if(state.playerIceBar>0&&!state.playerFrozen)add('icebar',{stacks:state.playerIceBar,value:GemwovenBoardRules.ICE.common});
     if(dot?.turns>0)add(dot.name==='Độc'?'poison':'burn',{turns:dot.turns});
     const veil=typeof progressionVeil!=='undefined'?progressionVeil:0;if(veil>0)add('veil',{turns:veil});
     const tf=typeof progressionTransform!=='undefined'?progressionTransform:null,kit=tf&&typeof progressionTransformKit==='function'?progressionTransformKit():null;
     // The afterglow is only a look now (owner 05/11): no tile after the transformed turns.
     if(tf&&kit&&tf.left>0)add('transform',{turns:tf.left,text:kit.text,value:kit.reduce});
+    // Biến Thân makes the hero immune to new freezes and stuns: the freeze-resist tile shows it while it lasts.
+    if(tf&&kit&&tf.left>0)add('freezeimmune',{turns:tf.left});
     if(state.key==='earth'&&state.noriRegenTurns>0)add('regen',{turns:state.noriRegenTurns});
   }else{
     if(state.frozen)add('freeze',{turns:1});
-    if(state.boss&&state.iceBar>0&&!state.frozen)add('icebar',{stacks:state.iceBar,value:typeof GemwovenBoardRules==='object'?GemwovenBoardRules.iceThreshold(true,typeof transformEffect==='function'?transformEffect():null):6});
+    if(state.iceBar>0&&!state.frozen)add('icebar',{stacks:state.iceBar,value:GemwovenBoardRules.iceThreshold(state.boss,typeof transformEffect==='function'?transformEffect():null)});
     if(state.controlGuard>0&&!state.frozen&&!state.stunned)add('controlguard',{turns:state.controlGuard});
     if(state.stunned)add('stun',{turns:state.noriStunTurns>0?state.noriStunTurns:1});
     if(dot?.turns>0)add('burn',{turns:dot.turns});
@@ -79,8 +84,12 @@ function combatStatusList(side){
     return {...o,kind:def.kind,icon:def.icon||o.id,name:def.name,desc:def.desc(o),left:o.turns>0?'Còn '+o.turns+' lượt':'Đến hết trận'};});
 }
 function statusTile(s){
-  const frame=s.kind==='buff'?'frame-buff':'frame-debuff';
-  return `<button type="button" class="cs-tile is-${s.kind==='buff'?'buff':'debuff'}" data-status="${s.id}" aria-label="${s.name}: ${s.desc}. ${s.left}">`+
+  // The guard sits in the freeze's slot but is a protection: it takes the gold frame.
+  const boon=s.kind==='buff'||s.id==='controlguard'||s.id==='freezeimmune',frame=boon?'frame-buff':'frame-debuff';
+  if(s.id==='icebar')return `<button type="button" class="cs-tile is-debuff cs-ice" data-status="icebar" style="--fill:${Math.round(s.stacks/s.value*100)}%" aria-label="${s.name}: ${s.desc}">`+
+    `<img class="cs-frame" src="${STATUS_ART}frame-debuff.webp" alt=""><img class="cs-glyph cs-ice-empty" src="${STATUS_ART}iceshard.webp" alt=""><img class="cs-glyph cs-ice-full" src="${STATUS_ART}iceshard.webp" alt="">`+
+    `<b class="cs-count">${s.stacks}/${s.value}</b></button>`;
+  return `<button type="button" class="cs-tile is-${boon?'buff':'debuff'}" data-status="${s.id}" aria-label="${s.name}: ${s.desc}. ${s.left}">`+
     `<img class="cs-frame" src="${STATUS_ART}${frame}.webp" alt=""><img class="cs-glyph" src="${STATUS_ART}${s.icon}.webp" alt="">`+
     (s.turns>0?`<b class="cs-turns">${s.turns}</b>`:'')+(s.stacks>0?`<b class="cs-stacks">×${s.stacks}</b>`:'')+(s.mult?`<b class="cs-mult">${s.mult}</b>`:'')+`</button>`;
 }
@@ -92,7 +101,9 @@ function renderCombatStatuses(){
     statusShown[side]=list;
     const html=shown.map(statusTile).join('')+(more>0?`<button type="button" class="cs-tile cs-more" data-status="+" aria-label="Thêm ${more} hiệu ứng"><img class="cs-frame" src="${STATUS_ART}frame-more.webp" alt=""><b>+${more}</b></button>`:'');
     // Older renderers (boss pills, Nori's seal count) still add chips here; the drawn tiles replace them all.
-    if(row.dataset.cs!==html||[...row.children].some(n=>!n.classList.contains('cs-tile'))){row.innerHTML=html;row.dataset.cs=html;}
+    if(row.dataset.cs!==html||[...row.children].some(n=>!n.classList.contains('cs-tile'))){
+      const was=row.querySelector('.cs-ice'),before=was?parseInt(was.style.getPropertyValue('--fill'))||0:-1;
+      row.innerHTML=html;row.dataset.cs=html;statusIceChange(row,before);}
     row.classList.add('cs-row');
     // No element emblem on the spark gauge (owner 04/11: the energy icon on its left is enough); element advantage stays a tile.
     row.closest('.actor-hud')?.querySelector('.head-rage-track>.cs-elem')?.remove();
@@ -106,6 +117,18 @@ function renderCombatStatuses(){
   }
   renderPvpNames();
   if(statusTip&&!document.body.contains(statusTip.anchor))closeStatusTip();
+}
+// The shard took a stack: it flashes; it filled up: the ice block takes its slot with a burst of shards.
+function statusIceChange(row,before){
+  if(typeof reduced!=='undefined'&&reduced)return;
+  const ice=row.querySelector('.cs-ice'),block=row.querySelector('.cs-tile[data-status="freeze"]');
+  if(ice&&parseInt(ice.style.getPropertyValue('--fill'))>before)ice.animate([{scale:1.35,filter:'brightness(1.8) drop-shadow(0 0 6px #9be7ff)'},{scale:1,filter:'none'}],{duration:360,easing:'ease-out'});
+  if(block&&before>=0){
+    block.animate([{scale:.4,rotate:'-12deg',filter:'brightness(2.4)'},{scale:1.3,rotate:'0deg',filter:'brightness(1.6) drop-shadow(0 0 8px #9be7ff)',offset:.5},{scale:1,filter:'none'}],{duration:520,easing:'cubic-bezier(.2,.8,.3,1)'});
+    for(let i=0;i<6;i++){const s=document.createElement('img');s.className='cs-ice-bit';s.src=STATUS_ART+'iceshard.webp';s.alt='';block.append(s);
+      const a=i/6*Math.PI*2-.4,d=22+(i%2)*8;
+      s.animate([{opacity:1,translate:'0 0',rotate:'0deg',scale:.9},{opacity:0,translate:`${Math.cos(a)*d}px ${Math.sin(a)*d}px`,rotate:`${(i%2?1:-1)*120}deg`,scale:.4}],{duration:480,easing:'cubic-bezier(.2,.7,.4,1)'}).finished.then(()=>s.remove(),()=>s.remove());}
+  }
 }
 // The parchment note: one effect, or the whole list from "+N"; it opens above the row when there is room.
 let statusTip=null;
@@ -198,7 +221,8 @@ queueMicrotask(()=>{if(!window.gameQA)return;Object.assign(window.gameQA,{
       const foe=Object.entries(FOE_TO_ICON).find(([,icon])=>icon===id)?.[0]||id;
       if(id==='burn'&&side==='enemy'){progressionDot={turns,amount:10};continue;}
       if(id==='burn'||id==='poison'){if(side==='hero')progressionEnemyDot={name:id==='poison'?'Độc':'Thiêu đốt',turns,raw:10};continue;}
-      if(id==='veil'){progressionVeil=turns;continue;}if(id==='stun'){if(side==='hero'){state.playerFrozen=true;statusStunned=true;}else state.stunned=true;continue;}
+      if(id==='veil'){progressionVeil=turns;continue;}if(id==='stun'){if(side==='hero'){state.playerFrozen=true;state.playerLock='stun';statusStunned=true;}else state.stunned=true;continue;}
+      if(id==='freeze'){if(side==='hero'){state.playerFrozen=true;state.playerLock='freeze';}else state.frozen=true;continue;}
       if(id==='regen'&&side==='hero'){state.noriRegenTurns=turns;continue;}
       if(typeof FOE_STATUS==='object'&&FOE_STATUS[foe])foeStatuses[foe]={turns,value:.3,raw:10,stage:id==='curse'?2:0};
     }

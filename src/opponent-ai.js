@@ -182,11 +182,12 @@ const OpponentAI = (() => {
     let value = damage + healing * (hpRatio < .3 ? 1.75 : hpRatio < .65 ? 1.15 : .7) + armorGain * armorWeight;
     value += energyGain * (enemy ? current.boss ? .35 : .16 : .32);
     if (beforeEnergy < 100 && current[energy] >= 100) value += enemy ? current.boss ? 42 : 14 : 45;
-    // Ice: a common foe freezes at 3 in one resolution, a boss fills its bar to 6; nothing lands during the guard.
+    // Ice builds up on the foe across turns (6, a boss 9); nothing builds during the guard. A gem toward the freeze is
+    // worth a little on its own, the freeze itself much more.
     if (counts[3] && !enemy && !current.controlGuard && !current.frozen && !current.stunned) {
-      const need = current.boss ? R.ICE.boss : R.ICE.common, filled = current.boss ? current.iceBar + counts[3] : counts[3];
-      if (filled >= need) { value += 24 + current.stage * .5; current.frozen = true; if (current.boss) current.iceBar = 0; }
-      else if (current.boss) current.iceBar = filled;
+      const need = current.boss ? R.ICE.boss : R.ICE.common, filled = current.iceBar + counts[3];
+      if (filled >= need) { value += 24 + current.stage * .5; current.frozen = true; current.iceBar = 0; }
+      else { value += counts[3] * 1.5; current.iceBar = filled; }
     }
     return { value, damage, heal: healing, armor: armorGain, energy: energyGain };
   }
@@ -205,8 +206,8 @@ const OpponentAI = (() => {
   function analyze(cells, current, from, to, side = 'enemy', explicitCoreType = null) {
     if (!cells[from] || !cells[to] || Math.abs((from / N | 0) - (to / N | 0)) + Math.abs(from % N - to % N) !== 1) return null;
     let next = cells.slice(); [next[from], next[to]] = [next[to], next[from]];
-    // Two Lõi clear the board once; any other two specials swapped together fire their combo (board-specials.js).
-    const fusionWaves=kind(cells[from])===CORE&&kind(cells[to])===CORE?1:0;
+    // Two Lõi clear the board once per special on it; any other two specials swapped together fire their combo.
+    const fusionWaves=kind(cells[from])===CORE&&kind(cells[to])===CORE?cells.filter(cell=>kind(cell)).length:0;
     const pair = !fusionWaves && kind(cells[from]) && kind(cells[to]) ? { a: to, b: from } : null; // a: where the dragged special landed
     const primary = pair ? null : kind(cells[from]) === CORE ? to : kind(cells[to]) === CORE ? from : null;
     const other = primary === to ? from : to;

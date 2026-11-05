@@ -11,7 +11,7 @@ function progressionMusicKey(){const theme=progressionBattle?.music;return theme
 try{
   progressionStore=progressionRules.makeEngine(progressionRules.storageFor(window.localStorage));
   // The Báu Vật trial plays on a copy of the save; say so on screen the whole time.
-  if(progressionRules.storageFor(window.localStorage)?.trial){const tag=document.createElement('div');tag.textContent='BẢN THỬ BÁU VẬT · không lưu vào tài khoản thật';tag.style.cssText='position:fixed;left:50%;top:2px;transform:translateX(-50%);z-index:9999;background:#7a3fb0;color:#fff;font:800 11px/1.3 sans-serif;padding:2px 10px;border-radius:10px;pointer-events:none';document.body.append(tag);}
+  if(progressionRules.storageFor(window.localStorage)?.trial){const tag=document.createElement('div');tag.id='trialTag';tag.textContent='BẢN THỬ BÁU VẬT · không lưu vào tài khoản thật';tag.style.cssText='position:fixed;left:50%;top:2px;transform:translateX(-50%);z-index:9999;background:#7a3fb0;color:#fff;font:800 11px/1.3 sans-serif;padding:2px 10px;border-radius:10px;pointer-events:none';document.body.append(tag);}
   if(!progressionSandbox){
     const token=new URLSearchParams(location.search).get('encounter');
     if(token){progressionBattle=progressionStore.pending();if(!progressionBattle||progressionBattle.token!==token)throw Error('Trận này đã kết thúc hoặc không còn hợp lệ. Hãy về thị trấn để vào trận mới.');}
@@ -103,7 +103,7 @@ startStage=function(){
   if(progressionError){$('startBtn').disabled=true;message(progressionError);return;}
   if(progressionBattle){state.key=progressionBattle.hero;state.enemyKey=progressionBattle.enemyKey;state.stage=Math.max(1,Math.ceil(progressionBattle.recommended/5));HEROES[state.key].hp=progressionBattle.stats.hp;}
   progressionOriginalStart();
-  progressionProcs.clear();progressionTurn=0;progressionTransform=null;progressionUlts=0;state.controlGuard=0;state.iceBar=0;state.tfDodge=false;state.noriSealFree=false;actor('hero').classList.remove('is-transformed','is-afterglow');progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
+  progressionProcs.clear();progressionTurn=0;progressionTransform=null;progressionUlts=0;state.controlGuard=0;state.iceBar=0;state.playerIceBar=0;state.playerLock=null;state.tfDodge=false;state.noriSealFree=false;actor('hero').classList.remove('is-transformed','is-afterglow');progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
 // The worn title (Danh Hiệu) rides on top of the hero's head bar (name, health) on its rarity plate, as in town

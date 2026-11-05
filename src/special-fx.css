@@ -8,3 +8,9 @@
 /* While a special plays, the COMBO cue shrinks and sits at the board's top edge, dimmed, so the blast stays the star. */
 .special-playing .combo-cue{top:2px;scale:.68;filter:saturate(.8) brightness(.85)}
 .special-playing .combo-cue::before{opacity:.35}
+/* Board FX v3: the big drawn pieces play on an HTML layer over the board (src/special-fx.js specialFxStageEl), an
+   800×800-unit stage scaled to the board; they only move and fade, so the compositor plays them without repainting. */
+.special-fx-layer{z-index:9}
+.sfx-stage{position:absolute;left:0;top:0;width:800px;height:800px;transform-origin:0 0;pointer-events:none}
+.sfx-piece{position:absolute;max-width:none;pointer-events:none;opacity:0;will-change:transform,opacity;filter:brightness(1.3) saturate(1.15)}
+.sfx-piece.sfx-gem{filter:drop-shadow(0 0 6px #fff8)}

@@ -78,25 +78,26 @@ html.chud .battle-card .scene{border-radius:3px;height:var(--scene-h,320px);min-
 html.chud .arena-stage{display:none}
 
 /* ---- Fighters' labels: leather name tag, heart and spark gauges in brass troughs ------------------------------ */
-html.chud .actor-hud{display:grid;justify-items:center;width:124px;filter:drop-shadow(0 2px 2px #000a)}
+/* Owner 05/11 (twice): shorter, thinner gauges (124 → 88 wide, heart 16 → 11 tall, spark 14 → 9) and smaller icons. */
+html.chud .actor-hud{display:grid;justify-items:center;width:88px;filter:drop-shadow(0 2px 2px #000a)}
 html.chud .actor-hud .vital-name{grid-row:1;display:flex;align-items:center;justify-content:center;max-width:116px;height:23px;margin:0 0 2px;padding:0 13px 1px;
   border:0;background:url(assets/gemwoven/ui-kit/badge-leather.webp) center/100% 100% no-repeat}
 html.chud .actor-hud .vital-name strong{font:800 12.5px/1 Cambria,Georgia,serif;color:var(--hud-cream);text-shadow:0 1px 2px #000;max-width:94px;overflow:hidden;text-overflow:ellipsis}
 html.chud .actor-hud .health-label{grid-row:2;grid-column:1;position:relative;z-index:2;width:calc(100% - 14px);margin:0 0 0 14px;justify-content:center;
-  font:800 12px/15px Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
+  font:800 9.5px/11px Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
 html.chud .actor-hud .shield-label{position:absolute;left:100%;margin-left:3px;padding:1px 4px;border-radius:7px;background:#173048e0;box-shadow:0 0 0 1px #9fd3f088;font-size:9px}
 html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{position:relative;display:grid;overflow:visible;width:calc(100% - 14px);margin:0 0 0 14px;border:0;border-radius:0;box-shadow:none;
   background:url(assets/gemwoven/ui-kit/progress.webp) center/100% 100% no-repeat}
-html.chud .actor-hud .health-track{grid-row:2;grid-column:1;height:16px;padding:3.5px 8px 3.5px 6px}
-html.chud .actor-hud .head-rage-track{grid-row:3;height:14px;margin-top:3px;padding:3px 8px 3px 6px}
+html.chud .actor-hud .health-track{grid-row:2;grid-column:1;height:11px;padding:2.25px 6px 2.25px 4px}
+html.chud .actor-hud .head-rage-track{grid-row:3;height:9px;margin-top:2px;padding:2px 6px 2px 4px}
 html.chud .actor-hud .health-track>i,html.chud .actor-hud .head-rage-track>i:not(.chud-rage-num){grid-area:1/1;position:static;display:block;height:100%;min-width:0;max-width:100%;border-radius:2px;box-shadow:none}
 html.chud .actor-hud .health-track>i:not(.health-trail){background:#20a64b url(assets/gemwoven/ui-kit/progress-fill.webp) left center/100% 100% no-repeat}
 html.chud .actor-hud .health-track>i.health-trail{background:#e9c978}
 html.chud .actor-hud .head-rage-track>i:not(.chud-rage-num){background:#f4b52c url(assets/combat-hud/fill-amber.webp) left center/100% 100% no-repeat}
-html.chud .actor-hud .health-track::before,html.chud .actor-hud .head-rage-track::before{content:"";position:absolute;z-index:3;left:-16px;top:50%;translate:0 -50%;width:26px;height:22px;background:center/contain no-repeat}
+html.chud .actor-hud .health-track::before,html.chud .actor-hud .head-rage-track::before{content:"";position:absolute;z-index:3;left:-12px;top:50%;translate:0 -50%;width:19px;height:16px;background:center/contain no-repeat}
 html.chud .actor-hud .health-track::before{background-image:url(assets/combat-hud/cap-heart.webp)}
-html.chud .actor-hud .head-rage-track::before{width:22px;height:19px;left:-14px;background-image:url(assets/combat-hud/cap-spark.webp)}
-html.chud .actor-hud .chud-rage-num{grid-area:1/1;z-index:2;align-self:center;justify-self:center;font:800 10px/1 Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
+html.chud .actor-hud .head-rage-track::before{width:15px;height:13px;left:-10px;background-image:url(assets/combat-hud/cap-spark.webp)}
+html.chud .actor-hud .chud-rage-num{grid-area:1/1;z-index:2;align-self:center;justify-self:center;font:800 8px/1 Cambria,Georgia,serif;color:#fff;text-shadow:0 0 2px #000,0 1px 1px #000,1px 0 1px #000,-1px 0 1px #000;pointer-events:none}
 html.chud .actor-hud.is-rage-full .head-rage-track>i:not(.chud-rage-num){box-shadow:0 0 6px #ffc14d,0 0 2px #fff4c4}
 html.chud .actor-hud .status-row{grid-row:4}
 
@@ -236,16 +237,16 @@ html.chud .game-layout{gap:0}
   html.chud .battle-card .scene::after{background:radial-gradient(ellipse 72% 68% at 50% 58%,transparent 52%,#070b0e70 100%),linear-gradient(#09191d40,transparent 25% 85%,#0c1b18a6)!important}
   html.chud .scene .actor,html.chud .scene .actor.boss{bottom:calc(max(18cqh,18cqh + (100cqh - 100cqw) * .5) - var(--actor-size) * (1 - var(--foot-y,.94)))}
   /* Name and gauges sit a little lower and tighter, close over the head (the HUD keeps following it). */
-  html.chud .actor-hud{width:250px;translate:0 8px}
+  html.chud .actor-hud{width:176px;translate:0 8px}
   html.chud .actor-hud .vital-name{max-width:250px;height:40px;padding:0 24px 1px;margin-bottom:2px}
   html.chud .actor-hud .vital-name strong{font-size:22px;max-width:200px}
-  html.chud .actor-hud .health-label{font-size:16px;line-height:24px;width:calc(100% - 30px);margin-left:30px}
-  html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{width:calc(100% - 30px);margin-left:30px}
-  html.chud .actor-hud .health-track{height:26px;padding:6px 14px 6px 10px}
-  html.chud .actor-hud .head-rage-track{height:21px;margin-top:4px;padding:5px 14px 5px 10px}
-  html.chud .actor-hud .chud-rage-num{font-size:14px}
-  html.chud .actor-hud .health-track::before{width:44px;height:37px;left:-30px}
-  html.chud .actor-hud .head-rage-track::before{width:38px;height:32px;left:-27px}
+  html.chud .actor-hud .health-label{font-size:12px;line-height:17px;width:calc(100% - 22px);margin-left:22px}
+  html.chud .actor-hud .health-track,html.chud .actor-hud .head-rage-track{width:calc(100% - 22px);margin-left:22px}
+  html.chud .actor-hud .health-track{height:17px;padding:3.5px 10px 3.5px 7px}
+  html.chud .actor-hud .head-rage-track{height:14px;margin-top:3px;padding:3px 10px 3px 7px}
+  html.chud .actor-hud .chud-rage-num{font-size:10.5px}
+  html.chud .actor-hud .health-track::before{width:31px;height:26px;left:-22px}
+  html.chud .actor-hud .head-rage-track::before{width:26px;height:22px;left:-19px}
   html.chud .actor-hud .shield-label{font-size:14px}
   html.chud .transform-btn{left:22px;bottom:14px;min-width:160px;min-height:60px;font-size:18px}
   html.chud .transform-btn small{font-size:12.5px}

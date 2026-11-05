@@ -9,16 +9,20 @@ function createLiveCombat(){
   // Per resolution: hero rage earned (Lumi's Biến Thân cap), the first hero sword wave, armour from overflow healing.
   const turnGain={rage:0,firstSwordWave:0,overflowArmor:0,burned:false};
   const alive=side=>state[side==='hero'?'hp':'enemyHp']>0;
-  // Ultimates wait until the board has resolved (one per own turn, src/board-control.js castReadyUltimates); the queue
-  // below only plays board impacts now.
+  // An ultimate casts the moment its side's rage is full in its own turn, while the board keeps resolving (owner 05/11:
+  // "đầy nộ thì thi triển luôn", no waiting for the board); still at most one per own turn (board-control.js). Rage that
+  // fills on the other side's turn waits for that side's turn (castReadyUltimates after the board).
   function queueUltimates(){
-    return;
     if(closed||failure||!alive('hero')||!alive('enemy'))return;
-    for(const side of ['enemy','hero']){
-      if(side==='enemy'&&state.noriStunTurns>0)continue;
+    const R=GemwovenBoardRules,allowed=typeof boardUltAllowed==='function'?boardUltAllowed:()=>false;
+    for(const side of ['hero','enemy']){
+      if(side==='enemy'&&noriSealHolds())continue;
+      if(side==='hero'&&state.playerFrozen)continue;
+      if(queue.some(job=>job.kind==='ultimate'&&job.side===side))continue;
       const key=side==='hero'?'energy':'enemyEnergy';
-      if(state[key]<100)continue;
-      state[key]-=100;queue.unshift({side,kind:'ultimate',value:0});
+      if(state[key]<R.ULTIMATE.cost||!allowed(side))continue;
+      if(side==='hero'&&typeof foeSilenced==='function'&&foeSilenced())continue;
+      state[key]-=R.ULTIMATE.cost;boardUltTurn[side]++;queue.unshift({side,kind:'ultimate',value:0});
       update();
     }
     if(queue.length)start();
@@ -29,8 +33,14 @@ function createLiveCombat(){
       // A short gathering window combines adjacent impacts into one gesture.
       await boardV3Pause(150);
       while(queue.length&&!closed){
-        const job=queue.shift();
+        // The fight never waits on board gains (owner 05/11: "bên trên nhận được gì thì phải chạy luôn"): a queued strike
+        // goes first, and a heal or armour job with a strike still waiting behind it only flashes its light (the number
+        // is already shown) instead of holding the fighter in its buff pose.
+        // An ultimate goes first of all, then strikes.
+        const ult=queue.findIndex(j=>j.kind==='ultimate'),strike=queue.findIndex(j=>j.kind==='attack'),job=queue.splice(ult>=0?ult:strike>=0?strike:0,1)[0];
         if(!alive(job.side))continue;
+        if((job.kind==='heal'||job.kind==='armor')&&queue.some(j=>j.kind==='attack')){
+          if(!reduced)restorationEffect(job.side,job.kind);if(typeof combatV3BuffSound==='function')combatV3BuffSound(job.kind);continue;}
         if(job.side==='enemy'&&noriSealHolds()&&(job.kind==='attack'||job.kind==='ultimate')){
           if(job.kind==='ultimate'){state.enemyEnergy=Math.min(199,state.enemyEnergy+100);update();}
           continue;
@@ -96,11 +106,10 @@ function createLiveCombat(){
       state[energyKey]=Math.min(alive('hero')&&alive('enemy')?R.ULTIMATE.cap:R.ULTIMATE.cost,before+energy);
       if(hero)turnGain.rage+=state[energyKey]-before;
       receipt(side,'energy',state[energyKey]-before);
-      // Ice: 3 in one resolution freezes a common foe; a boss fills its bar across turns; the control guard applies.
-      // A foe's ice no longer drains rage (that is now a skill of the foes that have it).
-      if(hero&&type===3&&!progressionIsDuel())boardIceGem(own[3]);
-      if(hero&&type===3&&progressionIsDuel()&&own[3]>=R.ICE.common)state.frozen=true;
-      if(!hero&&type===3&&own[3]>=R.ICE.common&&progressionIsDuel())state.playerFrozen=true;
+      // Ice builds up on the opponent across turns (6, a boss 9); the control guard applies. In PvP both players build it;
+      // a PvE foe's ice no longer drains rage (that is now a skill of the foes that have it).
+      if(hero&&type===3)boardIceGem();
+      if(!hero&&type===3&&progressionIsDuel())boardIceOnHero();
       if(type===0){
         let raw=8*(hero?progressionSwordFactor(key):1)*(progressionIsDuel()?1:hero?1:state.boss?R.FOE_SWORD.boss:R.FOE_SWORD.common);
         // Biến Thân board effects on swords: Hiro's first group, Noct's cascade crit, Mika's burn from her first group.
@@ -132,7 +141,9 @@ function createLiveCombat(){
         if(bonus){const key=side==='hero'?'energy':'enemyEnergy',tf=side==='hero'?transformEffect():null,before=state[key];
           const add=tf?.rageCap?Math.max(0,Math.min(bonus,tf.rageCap-turnGain.rage)):bonus;
           state[key]=Math.min(GemwovenBoardRules.ULTIMATE.cap,before+add);receipt(side,'energy',state[key]-before);
-          if(state[key]>before)popActorSkill(side,'COMBO ×'+wave+' · +'+(state[key]-before)+' NỘ',false);update();}
+          if(state[key]>before)popActorSkill(side,'COMBO ×'+wave+' · +'+(state[key]-before)+' NỘ',false);update();
+          // The combo bonus can fill the gauge: the ultimate goes at once, not after the board.
+          queueUltimates();}
         // Noct's Biến Thân: three waves let him slip the next basic hit (once per Biến Thân).
         const tf=owner==='hero'?transformEffect():null;
         if(tf?.dodge&&wave>=tf.dodge.waves&&!progressionTransform.dodged){progressionTransform.dodged=true;state.tfDodge=true;popActorSkill('hero','SẴN SÀNG NÉ',false);update();}

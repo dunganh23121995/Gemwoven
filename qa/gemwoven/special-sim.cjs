@@ -54,7 +54,7 @@ function resolve(b,R,move,rand,stats){
   else{
     swap(b,i,j);const a=b[j],o=b[i];// a: the dragged gem, now at j
     if(a.k&&o.k){
-      if(a.k==='core'&&o.k==='core'){if(R===OLD){const total=process.env.OLD_FIX?1:b.filter(x=>x.k).length;for(let w=0;w<total;w++){const all=new Set(Array.from({length:LEN},(_,q)=>q));const c=take(all);c.forEach((n,t)=>counts[t]+=n);wave(all,c[SWORD]);all.forEach(q=>b[q]=null);refill(b,rand);}
+      if(a.k==='core'&&o.k==='core'){if(true){const total=R===OLD&&process.env.OLD_FIX?1:b.filter(x=>x.k).length;for(let w=0;w<total;w++){const all=new Set(Array.from({length:LEN},(_,q)=>q));const c=take(all);c.forEach((n,t)=>counts[t]+=n);wave(all,c[SWORD]);all.forEach(q=>b[q]=null);refill(b,rand);}
           fired+=2;stats.fired+=fired;return {counts,waves,damage};}
         first={cleared:new Set(Array.from({length:LEN},(_,q)=>q)),fired:2};}
       else if(R===OLD){const core=a.k==='core'?j:o.k==='core'?i:null;

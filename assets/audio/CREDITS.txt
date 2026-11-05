@@ -965,3 +965,13 @@ scripts/prepare_transform_sounds.py. Sources (CC0 1.0):
   spirit-rise/rise       #719560 "Wind Whirl (Small Air Blow)" by DARTEKZ_GAMEZ, https://freesound.org/people/DARTEKZ_GAMEZ/sounds/719560/
   spirit-rise/boom, spare #378558 "Asoada impact low tube.wav" by CawawaC, https://freesound.org/people/CawawaC/sounds/378558/
   spare/rise             #431976 "whoosh dark.wav" by sfx4animation, https://freesound.org/people/sfx4animation/sounds/431976/
+
+Board special gems (2026-11-05, owner: the row/column sweep should sound like a hand run over piano keys; the bomb's
+fire vortex closes in, then booms). One recording per cue, excerpt + high-pass + fades + gain only. Build: python
+scripts/prepare_board_special_sounds.py (assets/audio/board-specials/manifest.json). Sources (CC0 1.0, HQ previews
+kept in sources/board-specials/):
+  bolt-sweep  #383858 "Piano Slide Low Note to High Note Ascending" by a deleted Freesound user, https://freesound.org/s/383858/
+  bomb-swirl  #475879 "ESE - WHOOSH - CALM - Fire Flame.wav" by EpicSoundEffects, https://freesound.org/people/EpicSoundEffects/sounds/475879/
+  bomb-boom   #251759 "BOOMING PUNCHY EXPLOSION - close, big SCHOEPS MK41.wav" by misosound, https://freesound.org/people/misosound/sounds/251759/
+  core-gather #876167 "Soft Magic Spell Cast Whoosh (Fantasy RPG)" by Assetsmith, https://freesound.org/people/Assetsmith/sounds/876167/
+  core-burst  #691005 "Icy Magic Cast" by DustyWind, https://freesound.org/people/DustyWind/sounds/691005/

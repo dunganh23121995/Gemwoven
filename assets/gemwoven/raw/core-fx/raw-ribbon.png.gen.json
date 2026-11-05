@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-05T09:11:23.486341+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\core-fx\\ref-old-ring.webp"
+  ],
+  "prompt": "Create ONE VFX texture for Gemwoven, a polished jewel fantasy match-3 phone game, in exactly the style of the attached reference: a silky ribbon ring of prismatic rainbow light (red, gold, green, cyan, violet strands flowing and twisting softly around each other, a thin gold sheen, a few four-point star sparkles).\n\nUnlike the reference (which is cut off and lopsided), draw ONE COMPLETE ring that is a PERFECT CIRCLE seen straight from above: the ribbon band has the same width all the way round, the colours flow evenly around the whole circle, and it is centred in the image. Square canvas, opaque PURE FLAT BLACK #000000 background, the ring inside the central 80% with black margin all round; nothing touches the image edge. Empty black centre. Screen-blend ready: saturated coloured light with crisp bright strands, glow fading to pure black; no grey haze, no smoke, no text, no other objects.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Flat black #000000 background, one complete circular rainbow ribbon ring centred with an empty black centre, four-point star sparkles present, no text or extra objects, and nothing touches the image edge. The ring's top glow reaches slightly into the outer 10% margin, which is a minor deviation rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000566
+  }
+}

@@ -30,10 +30,22 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .status{color:var(--dim);font-size:13px}
 .note{color:var(--dim);font-size:13px;margin:6px 0 0}
 .combat{flex:none;display:flex;flex-direction:column;gap:8px;width:390px;max-width:100%}
-.combat-bar{position:sticky;top:var(--head,0px);z-index:5;background:var(--bg);padding:6px 0;gap:6px}
-.combat-bar button{flex:1 1 auto;padding:10px 8px;font-weight:600}
-.combat-bar button.hot{border-color:var(--gold);color:var(--gold)}
-.combat-bar button.busy{background:var(--gold);color:#1a1409}
+/* Owner 05/11: settings on the left, the game in the middle, its states on the right; the test actions are one row of
+   icons with a small caption (full name on hover). */
+.controls{flex:none;width:350px;display:flex;flex-direction:column;gap:10px}
+.combat-bar{display:flex;flex-wrap:nowrap;gap:4px;background:var(--bg);padding:2px 0}
+.combat-bar button{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:1px;padding:5px 2px 4px;border-radius:7px;line-height:1}
+.combat-bar button i{font-style:normal;font-size:17px;line-height:20px}
+.combat-bar button small{font-size:9px;letter-spacing:-.2px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.combat-bar button.hot{border-color:var(--gold)}.combat-bar button.hot small{color:var(--gold)}
+.combat-bar button.busy,.combat-bar button.on{background:var(--gold);color:#1a1409}.combat-bar button.busy small,.combat-bar button.on small{color:#1a1409}
+.tf-sound{font-size:12px;width:100%}.tf-sound input{flex:1;min-width:0}
+.controls section .row{gap:6px}.controls #enemyBtn{min-width:0;max-width:none;width:100%}.controls .foe-pick{display:flex;width:100%}
+@media (min-width:1100px){
+  .layout{display:grid;grid-template-columns:350px 390px minmax(0,1fr);flex-wrap:nowrap}
+  .controls,.combat{position:sticky;top:calc(var(--head,0px) + 4px)}
+  .controls{max-height:calc(100vh - var(--head,0px) - 12px);overflow:auto}
+}
 [hidden]{display:none!important}
 .foe-pick{position:relative;display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 #enemyBtn{min-width:240px;max-width:340px;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
@@ -61,10 +73,16 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
   #forms{order:2;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}#forms button{flex:none}
   #forms button{padding:8px 10px}
   .layout{flex-direction:column;gap:10px}
+  /* On a phone the icon bar stays pinned above the pinned fight; the test settings follow below it. */
+  .controls{display:contents}
+  .combat-bar{order:1;position:sticky;top:var(--head,0px);z-index:7;width:100%}
+  .combat{order:2;top:calc(var(--head,0px) + var(--bar,0px))!important}
+  .controls>section{order:3;width:100%}
+  .side{order:4}
+  .tf-sound{order:3}
   /* The fight and its buttons stay pinned at the top while the rest scrolls underneath. */
   .combat{width:100%;position:sticky;top:var(--head,0px);z-index:6;background:var(--bg);padding-bottom:6px}
-  .combat-bar{position:static}
-  .combat-bar button{font-size:15px;padding:12px 6px;min-width:30%}
+  .combat-bar button i{font-size:19px}
   .side{min-width:0;width:100%}
   .shows{grid-template-columns:1fr 1fr}
   .viewer canvas.play{width:100%;height:auto;max-width:256px}
@@ -102,29 +120,22 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
   <button id="reload" title="Tải lại sau khi build lại Game.html">Tải lại game</button>
 </header>
 <div class="layout">
-  <div class="combat">
-    <!-- The combat actions sit right above the fight (sticky on a phone) so they are easy to tap and watch. -->
-    <div class="combat-bar row">
-      <button data-do="idle">Nghỉ</button>
-      <button data-do="attack">Đánh thường</button>
-      <button data-do="ultimate" class="hot">Tuyệt kỹ</button>
-      <button data-do="depart">Rời sân</button>
-      <button data-do="hit">Bị đánh</button>
-      <button data-do="transform" class="hot" title="Biến Thân (Chân Thân): bùng lên rồi giữ dáng biến thân">Biến Thân</button>
-      <button data-do="afterglow" title="Hết 3 lượt Biến Thân: dư âm">Dư âm</button>
-      <label class="tf-sound" title="Thử lúc bắt đầu tiếng Biến Thân, tính từ lúc linh thần bắt đầu tan (âm = sớm hơn). Chỉ để thử, không lưu vào game.">Âm (ms) <input id="tfSound" type="range" min="-900" max="600" step="10" value="-450"> <b id="tfSoundVal">-450</b> <small id="tfSoundNote">Lưu: -450 ms</small></label>
-      <button id="swapSide" title="Đổi tướng sang bên kia sân (chỉ để thử, trong game tướng luôn đứng bên trái)">⇄ Đổi bên</button>
+  <aside class="controls">
+    <!-- Test actions: one row of icons (full names on hover). -->
+    <div class="combat-bar" id="combatBar">
+      <button data-do="idle" title="Nghỉ"><i>💤</i><small>Nghỉ</small></button>
+      <button data-do="attack" title="Đánh thường"><i>⚔️</i><small>Đánh</small></button>
+      <button data-do="ultimate" class="hot" title="Tuyệt kỹ"><i>🌟</i><small>Tuyệt kỹ</small></button>
+      <button data-do="depart" title="Rời sân"><i>🏃</i><small>Rời sân</small></button>
+      <button data-do="hit" title="Bị đánh"><i>💥</i><small>Bị đánh</small></button>
+      <button data-do="transform" class="hot" title="Biến Thân (Chân Thân): bùng lên rồi giữ dáng biến thân"><i>✨</i><small>Biến</small></button>
+      <button data-do="afterglow" title="Hết 3 lượt Biến Thân: dư âm"><i>🌙</i><small>Dư âm</small></button>
+      <button id="swapSide" title="Đổi tướng sang bên kia sân (chỉ để thử, trong game tướng luôn đứng bên trái)"><i>⇄</i><small>Đổi bên</small></button>
     </div>
-    <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
-  </div>
-  <div class="side">
+    <label class="tf-sound" title="Thử lúc bắt đầu tiếng Biến Thân, tính từ lúc linh thần bắt đầu tan (âm = sớm hơn). Chỉ để thử, không lưu vào game.">Âm BT (ms) <input id="tfSound" type="range" min="-900" max="600" step="10" value="-450"> <b id="tfSoundVal">-450</b> <small id="tfSoundNote">Lưu: -450 ms</small></label>
     <section>
-      <h2>Ngoài trận</h2>
-      <div class="shows" id="shows"></div>
-    </section>
-    <section>
-      <h2>Trong trận</h2>
-      <div class="row" style="margin-top:8px"><label>Kỹ năng địch <select id="foeSkill"></select></label><button id="foeCast">Dùng chiêu</button><button id="foeFall" hidden>Địch gục ngã</button></div>
+      <h2>Thiết lập trận</h2>
+      <div class="row"><label>Kỹ năng địch <select id="foeSkill" style="max-width:150px"></select></label><button id="foeCast">Dùng chiêu</button><button id="foeFall" hidden>Địch gục ngã</button></div>
       <div id="foeRule" style="margin-top:4px;font-size:12px;opacity:.8"></div>
       <div class="row" style="margin-top:8px">
         <div class="foe-pick">Đối thủ <button id="enemyBtn" aria-haspopup="tree" aria-expanded="false" aria-controls="enemyTree"></button><select id="enemy" hidden></select><div id="enemyTree" role="tree" aria-label="Chọn đối thủ" hidden></div></div>
@@ -133,6 +144,28 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
         <label>Tướng đứng <select id="side"><option value="left">bên trái</option><option value="right">bên phải</option></select></label>
       </div>
       <p class="note" id="kit"></p>
+    </section>
+    <section>
+      <h2>Ngọc đặc biệt (chỉ để thử)</h2>
+      <!-- Studio only: pick a kind, then tap gems on the board to turn them into it (gameQA.setSpecial). -->
+      <div class="row" id="specialPick">
+        <button data-special="bolt:row" class="on" title="Sao băng quét hàng">↔ Sao ngang</button>
+        <button data-special="bolt:col" title="Sao băng quét cột">↕ Sao dọc</button>
+        <button data-special="bomb" title="Bom 5×5">💣 Bom</button>
+        <button data-special="core" title="Lõi: xóa một màu">🌈 Lõi</button>
+        <button data-special="" title="Trả về ngọc thường">◻ Thường</button>
+      </div>
+      <div class="row" style="margin-top:6px"><button id="specialMode">🖱 Bấm ngọc để đổi: tắt</button></div>
+      <p class="note">Bật rồi bấm vào ngọc trên board; tắt để chơi lại bình thường. Không có trong game.</p>
+    </section>
+  </aside>
+  <div class="combat">
+    <div class="game" id="gameBox"><iframe id="game" src="Game.html?qa" title="Game"></iframe></div>
+  </div>
+  <div class="side">
+    <section>
+      <h2>Ngoài trận</h2>
+      <div class="shows" id="shows"></div>
     </section>
     <section>
       <h2>Sprite sheet trong trận</h2>
@@ -305,25 +338,45 @@ async function boot(){
 // On a phone the 390x844 game frame is scaled down to the screen width (the game itself is unchanged).
 // On a phone only the battle scene of the frame is shown (its title bar and gem board are cut off),
 // so the fight and the buttons above it fit on screen together.
+// The studio tests combat and hero forms only (owner 05/11): the game's top bar (Về, stage, score, settings) is cut off
+// everywhere, and on a phone the gem board too.
 const SCENE={top:72,bottom:424};
 function fitGame(){
   const box=$('gameBox'),phone=innerWidth<=760,w=box.parentElement.clientWidth,k=Math.min(1,w/390);
-  box.style.width=390*k+'px';box.style.height=(phone?(SCENE.bottom-SCENE.top):844)*k+'px';
+  box.style.width=390*k+'px';box.style.height=((phone?SCENE.bottom:844)-SCENE.top)*k+'px';
   frame.style.transformOrigin='0 0';
-  frame.style.transform=`translateY(${phone?-SCENE.top*k:0}px) scale(${k})`;
+  frame.style.transform=`translateY(${-SCENE.top*k}px) scale(${k})`;
 }
+// The Báu Vật trial tag (shown when this browser holds a trial account from the hub) has no place in the studio.
+frame.addEventListener('load',()=>{try{const st=frame.contentDocument.createElement('style');st.textContent='#trialTag{display:none!important}';frame.contentDocument.head.append(st);}catch{}});
 addEventListener('resize',fitGame);fitGame();
 // The pinned header's height, so the sticky fight (and its buttons) sit right under it.
 new ResizeObserver(()=>document.documentElement.style.setProperty('--head',document.querySelector('header').offsetHeight+'px')).observe(document.querySelector('header'));
+// On a phone the pinned fight sits under the pinned icon bar.
+new ResizeObserver(()=>document.documentElement.style.setProperty('--bar',$('combatBar').offsetHeight+'px')).observe($('combatBar'));
 frame.addEventListener('load',()=>boot().catch(e=>say('Lỗi: '+e.message)));
 $('reload').onclick=()=>{originalMob=null;$('enemy').replaceChildren();frame.src='Game.html?qa&t='+Date.now();};
 for(const id of ['enemy','fx','armor','variant','side'])$(id).onchange=configure;
 // The swap button by the battle view flips the hero to the other side of the stage (the same as the select below).
 $('swapSide').onclick=()=>{$('side').value=$('side').value==='right'?'left':'right';$('swapSide').classList.toggle('on',$('side').value==='right');configure();};
+// Studio only: tap gems to turn them into the chosen special (the game itself never offers this).
+let specialPlacing=false,specialKind='bolt:row';
+document.querySelectorAll('[data-special]').forEach(b=>b.onclick=()=>{specialKind=b.dataset.special;document.querySelectorAll('[data-special]').forEach(x=>x.classList.toggle('on',x===b));
+  if(!specialPlacing)$('specialMode').click();});
+$('specialMode').onclick=()=>{specialPlacing=!specialPlacing;$('specialMode').classList.toggle('on',specialPlacing);$('specialMode').textContent='🖱 Bấm ngọc để đổi: '+(specialPlacing?'bật':'tắt');};
+function hookSpecialPlacing(){
+  const doc=frame.contentDocument;if(!doc||doc.__specialHook)return;doc.__specialHook=true;
+  const grab=e=>{if(!specialPlacing)return;const tile=e.target.closest?.('#board .tile');if(!tile)return;
+    e.preventDefault();e.stopPropagation();if(e.type!=='pointerdown')return;
+    const r=+tile.getAttribute('aria-rowindex')-1,c=+tile.getAttribute('aria-colindex')-1,[kind,dir]=specialKind.split(':');
+    try{gq().setSpecial(r,c,kind||null,dir);say(`Hàng ${r+1}, cột ${c+1}: ${kind?({bolt:'Sao băng '+(dir==='col'?'dọc':'ngang'),bomb:'Bom',core:'Lõi'})[kind]:'ngọc thường'}`);}catch(err){say('Lỗi: '+err.message);}};
+  for(const type of ['pointerdown','pointerup','click','pointermove'])doc.addEventListener(type,grab,true);
+}
+frame.addEventListener('load',()=>setTimeout(hookSpecialPlacing,500));
 // The Biến Thân sound offset slider: shows the value to send back ("Lưu"); applied on the next Biến Thân press only.
 $('tfSound').oninput=()=>{const v=$('tfSound').value;$('tfSoundVal').textContent=v;$('tfSoundNote').textContent=`Lưu: ${v} ms`;};
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
-  const q=gq();if(!q)return;say('Đang chạy: '+b.textContent);b.classList.add('busy');
+  const q=gq();if(!q)return;say('Đang chạy: '+(b.title||b.textContent));b.classList.add('busy');
   try{
     // configure() clears a transform; the look comes back quietly after it, so the action plays transformed.
     const phase=q.transformPhase?.();if(b.dataset.do!=='hit')configure();if(phase&&b.dataset.do!=='idle')q.transformRestore?.(phase);

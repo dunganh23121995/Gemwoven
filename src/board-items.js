@@ -3,8 +3,8 @@
 //   Sao băng: the plain gem on a horizontal rune launcher (turned for a column); Bom: the gem in an open bronze cage with a
 //   burning fuse; Lõi: a prism orb in a turning rune ring. A special pops when it is made; selecting one, or dragging it onto
 //   another special, previews exactly what it will clear (the rules come from GemwovenSpecials, never a copy).
-//   Boss ice bar: six icicle pips under the boss's gauges; frozen: an ice crust over the foe's feet that shatters on release;
-//   guard: a broken amber ward at its feet. Purple gems send rage comets to the gauge; a combo rage bonus bursts there.
+//   Frozen: an ice crust over the foe's feet that shatters on release (the ice build-up and the guard after a freeze are
+//   status tiles, owner 05/11). Purple gems send rage comets to the gauge; a combo rage bonus bursts there.
 // Every piece is one image moved whole (no frame swaps); reduced motion keeps only the still state.
 const BOARD_ITEM=name=>ART.boardItems?.[name]||null;
 const boardItemPlain=type=>ART.items[itemNames[Math.max(0,type)]];
@@ -16,15 +16,22 @@ paintTile=function(t){
   const e=t.el,gem=e.querySelector('.gem');if(!gem||!t.special||!ART.boardItems)return;
   gem.querySelector('.special-tier')?.remove();gem.querySelector('.special-dir')?.remove();
   const art=gem.querySelector('.item-art');
+  // v3 (owner 05/11: "item đặc biệt hơi tệ … có thể làm lại"; assets/gemwoven/raw/board-fx-v3/): the gem keeps its full
+  // size and its look; the special is light drawn behind it (a comet band with two arrow tips, a ring of fire, a
+  // rainbow halo), no more metal launcher, cage or fuse.
   if(t.special==='bolt'){
     e.dataset.dir=t.dir==='col'?'col':'row';art.src=boardItemPlain(t.type);
-    gem.insertAdjacentHTML('afterbegin',`<img class="bi-launcher" src="${BOARD_ITEM('launcher')}" alt="" draggable="false"><span class="bi-streaks" aria-hidden="true"><i></i><i></i><i></i></span>`);
+    gem.insertAdjacentHTML('afterbegin',`<img class="bi-aura" src="${BOARD_ITEM('bolt-aura')}" alt="" draggable="false">`);
   }else if(t.special==='bomb'){
     art.src=boardItemPlain(t.type);
-    gem.insertAdjacentHTML('beforeend',`<img class="bi-cage" src="${BOARD_ITEM('cage')}" alt="" draggable="false"><img class="bi-fuse" src="${BOARD_ITEM('fuse')}" alt="" draggable="false">`);
+    gem.insertAdjacentHTML('afterbegin',`<img class="bi-firering" src="${BOARD_ITEM('bomb-ring')}" alt="" draggable="false">`);
   }else if(t.special==='core'){
     art.src=BOARD_ITEM('core');art.classList.add('bi-core');
-    gem.insertAdjacentHTML('afterbegin',`<img class="bi-ring" src="${BOARD_ITEM('core-ring')}" alt="" draggable="false">`);
+    // A silky rainbow ring orbiting the orb's equator, tilted down so it reads as an ellipse: its far half behind the
+    // orb, its near half in front (owner 05/11).
+    const ring=ART.specialFx?.orbit||BOARD_ITEM('core-ring');
+    gem.insertAdjacentHTML('afterbegin',`<span class="bi-orbit back"><img src="${ring}" alt="" draggable="false"></span>`);
+    gem.insertAdjacentHTML('beforeend',`<span class="bi-orbit front"><img src="${ring}" alt="" draggable="false"></span>`);
   }
   if(was==='normal')boardItemPop(e);
 };
@@ -69,24 +76,10 @@ $('board').addEventListener('pointerover',e=>{
   if(t&&t!==selected&&t.special&&adjacent(selected,t))boardItemPreview(boardItemArea(selected,t));
 });
 
-// ----- The foe: boss ice bar, frozen crust, control guard -----
-let boardItemFrozen=false,boardItemShattered=0;
+// ----- The foe: frozen crust (the ice build-up and the guard are status tiles, combat-status.js) -----
+let boardItemFrozen=false;
 function boardItemFoe(){
-  const hud=$('enemyHeadHud'),foe=actor('enemy');if(!hud||!foe||!ART.boardItems)return;
-  // Ice bar: only on bosses outside duels (common foes freeze on three ice at once).
-  const bossBar=state.boss&&!(typeof progressionIsDuel==='function'&&progressionIsDuel());
-  let bar=hud.querySelector(':scope>.bi-icebar');
-  if(bossBar){
-    const need=typeof GemwovenBoardRules==='object'?GemwovenBoardRules.iceThreshold(true,typeof transformEffect==='function'?transformEffect():null):6;
-    const have=state.frozen?need:Math.min(need,state.iceBar||0);
-    if(!bar||bar.childElementCount-1!==need){bar?.remove();bar=document.createElement('div');bar.className='bi-icebar';bar.setAttribute('aria-hidden','true');
-      bar.innerHTML=Array.from({length:need},()=>`<i><img class="bi-pip-empty" src="${BOARD_ITEM('ice-pip-empty')}" alt=""><img class="bi-pip" src="${BOARD_ITEM('ice-pip')}" alt=""></i>`).join('')+'<b></b>';
-      hud.append(bar);bar.dataset.have=0;}
-    const old=+bar.dataset.have||0;
-    [...bar.children].forEach((pip,i)=>{if(pip.tagName!=='I')return;const full=i<have;pip.classList.toggle('full',full);
-      if(full&&i>=old&&!reduced)pip.querySelector('.bi-pip').animate([{scale:1.6,filter:'brightness(2)'},{scale:1,filter:'brightness(1)'}],{duration:320,easing:'ease-out'});});
-    bar.dataset.have=have;bar.lastElementChild.textContent=have+'/'+need;
-  }else bar?.remove();
+  const foe=actor('enemy');if(!foe||!ART.boardItems)return;
   // Frozen: ice crust over the feet, a cold tint; released: the crust shatters.
   const frozen=!!state.frozen;
   if(frozen!==boardItemFrozen){boardItemFrozen=frozen;
@@ -94,17 +87,9 @@ function boardItemFoe(){
       // Two crusts: the wide one over the feet, a narrower one higher on the body, so the ice reaches the waist.
       for(const cls of ['bi-crust','bi-crust up']){const crust=document.createElement('img');crust.className=cls;crust.src=BOARD_ITEM('ice-crust');crust.alt='';foe.append(crust);
         if(!reduced)crust.animate([{opacity:0,scale:'1 .2'},{opacity:1,scale:'1 1.08',offset:.6},{scale:'1 1'}],{duration:340,delay:cls==='bi-crust'?0:90,easing:'ease-out',fill:'backwards'});}
-      if(!state.boss)popActorSkill('enemy','ĐÓNG BĂNG · MẤT LƯỢT',false);}
-    else{foe.classList.remove('bi-frozen');foe.querySelectorAll(':scope>.bi-crust').forEach((c,i)=>boardItemShatter(foe,c,i===0));boardItemShattered=performance.now();}
+      popActorSkill('enemy','ĐÓNG BĂNG · MẤT LƯỢT',false);}
+    else{foe.classList.remove('bi-frozen');foe.querySelectorAll(':scope>.bi-crust').forEach((c,i)=>boardItemShatter(foe,c,i===0));}
   }
-  // Guard after a control: a broken amber ward at the feet while the foe cannot be stopped again.
-  const guard=state.controlGuard>0&&!state.frozen&&!state.stunned;let ward=foe.querySelector(':scope>.bi-guard');
-  if(guard&&!ward){ward=document.createElement('img');ward.className='bi-guard';ward.src=BOARD_ITEM('guard-arc');ward.alt='';foe.append(ward);
-    // After a shatter the ward waits for the ice to clear, so the two moments read apart.
-    const wait=Math.max(0,520-(performance.now()-boardItemShattered));
-    if(!reduced)ward.animate([{opacity:0,scale:.7},{opacity:1,scale:1}],{duration:300,delay:wait,easing:'ease-out',fill:'backwards'});
-    setTimeout(()=>popActorSkill('enemy','KHÁNG KHỐNG CHẾ',false),wait);}
-  else if(!guard&&ward){if(reduced)ward.remove();else ward.animate([{opacity:1},{opacity:0,scale:1.15}],{duration:260}).finished.then(()=>ward.remove(),()=>ward.remove());}
 }
 function boardItemShatter(foe,crust,shards=true){
   if(reduced){crust.remove();return;}

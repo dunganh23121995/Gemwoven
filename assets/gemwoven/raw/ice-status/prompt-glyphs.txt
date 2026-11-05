@@ -1,0 +1,7 @@
+Use case: two new status-effect icons for the attached Gemwoven status icon sheet (first reference); match its line weight, soft cel shading, palette family, clean dark outline and glyph size exactly. The second reference is the existing "Freeze" icon (a pale-cyan ice block): the new icons must look like they belong to the same set as it.
+
+Sheet: exactly 2 columns x 2 rows, 4 equal square cells on a perfectly flat solid #FF00FF magenta background; no grid lines, labels, text, numbers or frames. Each glyph centered inside the central 65% of its cell; nothing crosses a cell edge. Everything fully opaque with a clean dark outline: no soft transparent glow, no haze, no mist, no semi-transparent light that could mix with the background. Never use pink or magenta in a glyph.
+1. Top-left: Ice shard — ONE single tall crystal shard of ice, pointed at the top, slightly tilted, the same pale cyan and white ice material, facets and frosty highlight as the Freeze ice block, with a broken jagged base. Bold simple silhouette that reads at 24 px.
+2. Top-right: Ice shard, alternative — two overlapping ice shards (one tall, one short) of the same ice material, pointed tips up.
+3. Bottom-left: Freeze resistance — the same pale-cyan ice block as the Freeze icon, smaller, behind a solid warm golden-amber round shield (polished gold rim) in front of its lower half; the ice block shows a crack.
+4. Bottom-right: Freeze resistance, alternative — a golden-amber kite shield with a small white snowflake emblem crossed out by a bold dark slash.

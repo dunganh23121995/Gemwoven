@@ -19,10 +19,12 @@
   const comboRage=waves=>COMBO_RAGE[Math.max(0,Math.min(COMBO_RAGE.length-1,Math.floor(waves)||0))];
   // An ultimate costs 100 rage; the gauge banks up to 199; each side casts at most one in its own turn, after its board.
   const ULTIMATE={cost:100,cap:199,perTurn:1};
-  // Ice: a common foe or an elite freezes at 3 ice in one resolution; a boss fills a bar to 6 across turns, then resets.
-  const ICE={common:3,boss:6};
-  // After a stun or freeze ends, the foe must complete this many full actions before stun or freeze can land again.
-  const CONTROL_GUARD={common:1,boss:2};
+  // Ice (owner 05/11): every ice gem a side collects builds up on its opponent across turns; 6 freeze a common foe, an
+  // elite or a PvP player, a boss needs 9; the count resets on a freeze.
+  const ICE={common:6,boss:9};
+  // After a stun or freeze ends, a boss must complete 2 full actions before stun or freeze can land again. Common foes,
+  // elites and PvP players have no guard (owner 05/11: "kháng đóng băng chỉ áp dụng cho boss, quái thì vẫn bị tích luôn").
+  const CONTROL_GUARD={common:0,boss:2};
   const iceThreshold=(boss,transform)=>transform?.ice?(boss?transform.ice.boss:transform.ice.common):boss?ICE.boss:ICE.common;
   const guardTurns=boss=>boss?CONTROL_GUARD.boss:CONTROL_GUARD.common;
   // Rage for one hero gem: the table, a kit's purple value (Lumi, Lumi's Biến Thân), then a kit-wide factor (borrowed

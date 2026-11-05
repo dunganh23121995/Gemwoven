@@ -198,7 +198,7 @@
       // damage per turn ×1,4–1,5 for the rare heroes). Hiro stays at or under the old +25%: 1,13 × his first group's 1,10.
       novice:()=>({power:.13,firstSword:.1,text:'Sát thương +13%; nhóm Kiếm đầu mỗi lượt thêm +10%'}),
       fire:()=>{const base=R4(16*(1+.04*r));return {power:.4,burn:{base,turns:2},text:`Sát thương +40%; nhóm Kiếm đầu mỗi lượt gây thiêu đốt ${vn(base)}×Công/lượt trong 2 lượt`};},
-      ice:()=>({power:.45,ice:{common:2,boss:4},text:'Sát thương +45%; 2 Băng đủ đóng băng (trùm: thanh 4)'}),
+      ice:()=>({power:.45,ice:{common:4,boss:6},text:'Sát thương +45%; 4 Băng đủ đóng băng (trùm: 6)'}),
       earth:()=>{const support=R4(1.5+.02*r);return {power:.45,support,overflowArmor:.25,overflowCap:.04,text:`Sát thương +45%; Tim và Khiên ×${vn(support,2)}; 25% máu hồi dư thành giáp`};},
       lightning:()=>{const purple=R4(16+.3*r);return {power:.3,purple,rageCap:75,text:`Sát thương +30%; Tím ${vn(purple)} nộ mỗi viên (tối đa 75 nộ mỗi lượt)`};},
       shadow:()=>{const mult=R4(1.5+.02*r);return {power:.4,cascadeCrit:{waves:2,mult},dodge:{waves:3},text:`Sát thương +40%; combo từ đợt 2: Kiếm chí mạng ×${vn(mult,2)}; combo 3 đợt: né đòn thường kế tiếp`};}};

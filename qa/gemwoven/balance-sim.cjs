@@ -80,7 +80,7 @@ function fight(hero,enc,seed,{skill=.8}={}){
     if(!OLD){
       let bonus=R.comboRage(waves.length);if(tfNew&&tf.rageCap)bonus=Math.max(0,Math.min(bonus,tf.rageCap-rage));st.energy=Math.min(R.ULTIMATE.cap,st.energy+bonus);
       if(ice&&!blocked()){const need=R.iceThreshold(enc.boss,tfNew?tf:null);
-        if(enc.boss){st.iceBar+=ice;if(st.iceBar>=need){st.iceBar=0;st.frozen=true;}}else if(ice>=need)st.frozen=true;}
+        st.iceBar+=ice;if(st.iceBar>=need){st.iceBar=0;st.frozen=true;}}
       if(tfNew&&tf.dodge&&waves.length>=tf.dodge.waves&&!st.dodged){st.dodged=true;st.dodge=true;}
     }
     if(st.eHp<=0)break;

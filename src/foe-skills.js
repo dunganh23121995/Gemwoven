@@ -25,9 +25,9 @@ function foeStatusReset(){foeStatuses={};foeDamageTaken=0;foeHaste=0;const enemy
 async function applyFoeStatus(s,base=20,pending=[]){
   if(!s||state.hp<=0||state.enemyHp<=0)return;
   const elite=foeSkillOwner()?.tier==='elite',turns=Math.max(1,s.turns||1),value=s.value||0;
-  if(s.id==='stun'){state.playerFrozen=true;popActorSkill('hero','Choáng · mất lượt',false,pending);update();return;}
+  if(s.id==='stun'){state.playerFrozen=true;state.playerLock='stun';popActorSkill('hero','Choáng · mất lượt',false,pending);update();return;}
   // Paralysis: the hero loses this turn, then the shock drains energy (value) at every foe turn it lasts.
-  if(s.id==='paralyze')state.playerFrozen=true;
+  if(s.id==='paralyze'){state.playerFrozen=true;state.playerLock='paralyze';}
   if(s.id==='haste'){foeHaste++;popActorSkill('enemy','Hành động thêm',false,pending);return;}
   if(s.id==='wash'){state.armor=0;state.energy=0;update();popActorSkill('hero','Cuốn trôi giáp & năng lượng',false,pending);return;}
   if(s.id==='rewind'){const back=Math.round(foeDamageTaken*(value||.5));foeDamageTaken=0;popActorSkill('enemy','Nghịch thời',false,pending);if(back)await buff('enemy','heal',back);return;}

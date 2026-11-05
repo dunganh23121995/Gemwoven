@@ -4,7 +4,8 @@
  *   a straight 5+ makes a Lõi that clears one colour; an L/T or crossing cluster of 5+ makes a Bom clearing 3×3.
  *   Priority inside one cluster: Lõi > Bom > Sao băng, one special per cluster.
  *   Swapping two specials always fires a combo: Sao+Sao a cross, Sao+Bom three rows and three columns, Bom+Bom 5×5,
- *   Lõi+Sao / Lõi+Bom turn that colour's plain gems into the partner kind and fire them all, Lõi+Lõi clears the board once.
+ *   Lõi+Sao / Lõi+Bom turn that colour's plain gems into the partner kind and fire them all, Lõi+Lõi clears the board once
+ *   for every special on it (game.js coreFusionCount, owner 05/11).
  * Positions are p = r*N + c. Callers pass accessors, so the module never touches tiles, DOM or randomness. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.GemwovenSpecials=api;})(typeof globalThis!=='undefined'?globalThis:this,()=>{
   'use strict';
