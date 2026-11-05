@@ -32,7 +32,6 @@ function boardUltAllowed(side){
   if(boardUltTurn[side]>=BOARD_RULES.ULTIMATE.perTurn)return false;
   return side==='hero'?turn!=='enemy':turn==='enemy';
 }
-const boardControlCast=castReadyUltimates;
 castReadyUltimates=async function(){
   for(const side of ['hero','enemy']){
     if(state.hp<=0||state.enemyHp<=0)return;

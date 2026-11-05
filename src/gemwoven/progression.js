@@ -571,7 +571,6 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     const phaseEnd=phase==='race'?dayStart(raceDays+1):dayStart(date+1);
     return {key:`${y}-${String(m+1).padStart(2,'0')}`,year:y,month:m+1,days,date,raceDays,phase,round,start:dayStart(1),end:dayStart(days+1),phaseEnd,msLeft:phaseEnd-at,lateFrom:raceDays-CUP.lateDays+1,hourNow:d.getUTCHours()};
   }
-  const cupPrevKey=key=>{const [y,m]=key.split('-').map(Number);return m===1?`${y-1}-12`:`${y}-${String(m-1).padStart(2,'0')}`;};
   const cupSeasonOf=key=>{const [y,m]=key.split('-').map(Number);return cupSeason(Date.UTC(y,m-1,1)-H7);};
   function cupRandom(seed){let a=2166136261;for(const c of String(seed))a=Math.imul(a^c.charCodeAt(0),16777619)>>>0;return ()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
   // Expected score of a against b and the symmetric change for a (S = 1 win, .5 draw, 0 loss); nobody drops below 0.

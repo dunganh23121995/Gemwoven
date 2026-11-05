@@ -22,7 +22,6 @@
   const heroPic=key=>file('portrait-'+key)||file('face-'+key);
   // The picture of any look id: an owned hero's portrait ('hero:<key>') or a catalogue piece.
   const pic=id=>!id?'':id.startsWith('hero:')?heroPic(id.slice(5)):cat(id)?.file||'';
-  const seasonName=c=>c?.season!=null?O.seasonHero(c.season)?.name||'':'';
   const source=c=>c.source||[M.HEROES[c.hero]?.name,TRACK[c.track]&&`${TRACK[c.track]} ★${c.level}`].filter(Boolean).join(' · ');
 
   function state(){

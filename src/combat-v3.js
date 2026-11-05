@@ -122,15 +122,7 @@ function combatV3Earth(point,ultimate,pending){
     combatV3Fx(rock,[{opacity:0,transform:'translate(-50%,-50%) scale(.3)'},{opacity:1,transform:`translate(calc(-50% + ${x*.5}px),${-48-(i%3)*15}px) rotate(${i*38}deg)`,offset:.35},{opacity:0,transform:`translate(calc(-50% + ${x*1.1}px),-7px) rotate(${i*60+70}deg)`}],{duration:680,delay:i*24},pending);
   }
 }
-function combatV3Breath(sourcePoint,targetPoint,ultimate,pending){
-  const direction=targetPoint.x>sourcePoint.x?1:-1,start=sourcePoint.x+direction*sourcePoint.width*.22;
-  const timing=COMBAT_V3_STRIKES.breath;
-  const width=Math.abs(targetPoint.x-start)+35;
-  const flame=combatV3Element('combat-v3-breath',{x:(start+targetPoint.x)/2,y:targetPoint.y-2},width,combatV3Svg('<path d="M8 49C27 34 43 42 58 27L52 43C73 35 82 27 96 20L86 42 115 38 104 53 116 70C93 75 79 62 67 73L70 58 51 68 53 54 29 60Z" fill="var(--combat-deep)"/><path d="M8 49C30 43 52 48 74 40L70 49 99 44 88 56 102 65 68 57 55 62 47 53Z" fill="var(--combat-main)"/><path d="m8 49 67 1 19 6-27-2-19 2Z" fill="var(--combat-light)"/>','0 0 120 90'),combatV3Palette.fire);
-  flame.style.height=(ultimate?115:85)+'px';
-  flame.firstElementChild.setAttribute('preserveAspectRatio','none');
-  combatV3Fx(flame,[{opacity:0,transform:`translate(-50%,-50%) scaleX(${direction*.15}) scaleY(.5)`,easing:'cubic-bezier(.22,.7,.3,1)'},{opacity:1,transform:`translate(-50%,-50%) scaleX(${direction}) scaleY(1)`,offset:timing.contact/timing.duration},{opacity:.9,offset:.6},{opacity:0,transform:`translate(-50%,-50%) scaleX(${direction*1.03}) scaleY(.3)`}],{duration:timing.duration,easing:'linear'},pending);
-}
+let combatV3Breath; // set by shadow-combat.js
 function combatV3Impact(side,key,direction,strong,pending){
   const p=combatV3Point(side),color=combatV3Palette[key],size=strong?125:91;
   const star=combatV3Element('combat-v3-contact',p,size,combatV3Svg('<path d="m110 5 15 73 52-38-30 56 68 14-69 14 31 56-52-38-15 73-15-73-52 38 30-56-68-14 69-14-31-56 52 38Z" fill="var(--combat-main)"/><path d="m110 28 9 68 63 14-63 10-9 72-10-72-62-10 62-14Z" fill="var(--combat-light)"/>'),color);

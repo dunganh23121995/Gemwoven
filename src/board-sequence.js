@@ -12,8 +12,6 @@ const BOARD_V5_PACING=Object.freeze({
   shard:275/1.5,shardSpread:12.5,targetTail:250/1.5,beamTail:150,primed:162.5/1.5,settle:87.5/1.5,
   creation:{bolt:350/1.5,bomb:250,core:400/1.5}
 });
-// Feathered light retains the established special-match propagation rhythm.
-const BOARD_V12_SPREAD=Object.freeze({fade:BOARD_V5_PACING.beamTail,easing:'linear'});
 function boardV5ImpactBeat(targetCount){return targetCount>=BOARD_V5_PACING.largeClearThreshold?BOARD_V5_PACING.largeImpact:BOARD_V5_PACING.impact;}
 const boardV4Prism=['#ff758e','#ffc66d','#f7ee8a','#80edb4','#77d8ff','#b69aff'];
 let boardV4GradientId=0;
@@ -26,12 +24,6 @@ function boardV6Gradient(group,colors,radial=false,coords={}){
   const defs=boardV3Child(group,'defs',{}),id='board-bloom-'+(++boardV4GradientId);
   const gradient=boardV3Child(defs,radial?'radialGradient':'linearGradient',{id,...(radial?{}:{gradientUnits:'userSpaceOnUse',...coords})});
   colors.forEach((color,i)=>boardV3Child(gradient,'stop',{offset:i/(colors.length-1),'stop-color':color[0],'stop-opacity':color[1]}));
-  return `url(#${id})`;
-}
-function boardV12Feather(parent,deviation){
-  const defs=boardV3Child(parent,'defs',{}),id='board-feather-'+(++boardV4GradientId);
-  const filter=boardV3Child(defs,'filter',{id,x:'-80%',y:'-80%',width:'260%',height:'260%','color-interpolation-filters':'sRGB'});
-  boardV3Child(filter,'feGaussianBlur',{stdDeviation:deviation});
   return `url(#${id})`;
 }
 function boardV6Mote(group,x,y,type,color,index){
@@ -108,12 +100,10 @@ moveTile = async function moveTileV3(t,fromR,fromC,delay=0,movement='swap'){
   });
 };
 
-function boardSpecialEffectKind(kind){return kind==='bolt'?'bomb':kind==='bomb'?'bolt':kind;}
 
 boardBurst = async function boardBurstV3(t,color=boardV3Color(t),kind='normal'){
   if(reduced)return;
   const {x,y}=boardV3Point(t),group=boardV3Group('burst',t,kind),tasks=[];
-  kind=boardSpecialEffectKind(kind);
   group.setAttribute('data-dissolve-style','artifact-petals');
   const accent=kind==='core'?'#cbb0ff':kind==='bomb'?'#ffcd89':color;
   const bloom=boardV6Gradient(group,[['#fff8e3',.8],[accent,.35],[accent,0]],true);
@@ -167,7 +157,7 @@ boardBurst = async function boardBurstV3(t,color=boardV3Color(t),kind='normal'){
 
 async function boardV3Charge(act,duration,phase='charge'){
   if(reduced)return;
-  const sourceKind=act.kind;act={...act,kind:boardSpecialEffectKind(act.kind)};
+  const sourceKind=act.kind;
   const t=act.tile,{x,y}=boardV3Point(t),color=act.kind==='bomb'?'#ffba57':act.kind==='core'?'#dba9ff':boardV3Color(t);
   const group=boardV3Group(phase,t,sourceKind),tasks=[];
   group.setAttribute('data-charge-motif',act.kind==='core'?'prismatic-vortex':act.kind==='bomb'?'pressure-rings':'comet-orbit');
@@ -207,24 +197,6 @@ async function boardV3Charge(act,duration,phase='charge'){
   await Promise.all(tasks).finally(()=>group.remove());
 }
 
-function boardV4TargetMark(act,target,duration,tails){
-  if(reduced)return;
-  const {x,y}=boardV3Point(target),group=boardV3Group('target-mark',target,act.kind);
-  if(act.kind==='core'){
-    for(let i=0;i<6;i++){
-      const a=i*Math.PI/3,b=a+.7;
-      boardV3Child(group,'path',{d:`M${x+Math.cos(a)*34} ${y+Math.sin(a)*34}A34 34 0 0 1 ${x+Math.cos(b)*34} ${y+Math.sin(b)*34}`,fill:'none',stroke:boardV4Prism[i],'stroke-width':3});
-    }
-  }else{
-    boardV3Child(group,'circle',{cx:x,cy:y,r:32,fill:'none',stroke:boardV3Color(target),'stroke-width':1.5,opacity:.7});
-    for(let i=0;i<3;i++){
-      const a=i*Math.PI*2/3;
-      boardV3Child(group,'circle',{cx:x+Math.cos(a)*32,cy:y+Math.sin(a)*32,r:2.5,fill:'#fff4d8'});
-    }
-  }
-  boardV3Origin(group,x,y);
-  tails.push(animate(group,[{opacity:0,transform:'scale(1.25)'},{opacity:.65,transform:'scale(.95)',offset:.3},{opacity:.7,transform:'scale(.9)',offset:.65},{opacity:0,transform:'scale(1.25)'}],{duration:duration+BOARD_V12_SPREAD.fade,easing:BOARD_V12_SPREAD.easing}).finally(()=>group.remove()));
-}
 
 function boardV13Point(from,c1,c2,to,p){
   const q=1-p;
@@ -246,135 +218,8 @@ function boardV13Particle(parent,color,size=5){
   boardV9Star(particle,0,0,size*1.2,'#fff8df',{'data-particle-glint':'true',opacity:.7});
   return particle;
 }
-function boardV15Shimmer(particle,duration,delay=0){
-  return animate(particle.querySelector('[data-particle-glint]'),[
-    {opacity:.15,transform:'rotate(-25deg) scale(.35)'},
-    {opacity:1,transform:'rotate(10deg) scale(1.15)',offset:.42},
-    {opacity:.55,transform:'rotate(30deg) scale(.7)',offset:.72},
-    {opacity:0,transform:'rotate(48deg) scale(.25)'}
-  ],{duration,delay,easing:'ease-in-out',fill:'both'});
-}
-async function boardV3Beam(act,target,duration,tails){
-  if(reduced)return;
-  const from=boardV3Point(act.tile),to=boardV3Point(target),{x,y}=from,{x:tx,y:ty}=to;
-  const group=boardV3Group('beam',target,act.kind),electric=act.kind==='bomb',tailLife=420;
-  group.setAttribute('data-travel-ms',duration);group.setAttribute('data-source-id',act.tile.id);
-  group.setAttribute('data-connection',electric?'electric-particle-stream':'prismatic-particle-stream');
-  boardV4TargetMark(act,target,duration,tails);
-  const dx=tx-x,dy=ty-y,length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
-  const bend=Math.min(electric?65:110,length*.28)*((target.r+target.c)%2?1:-1);
-  const c1={x:x+dx*.28+nx*bend,y:y+dy*.28+ny*bend},c2={x:x+dx*.72+nx*bend,y:y+dy*.72+ny*bend};
-  const trail=boardV3Child(group,'g',{'data-board-glitter':'particle-trail'});
-  for(let i=0;i<14;i++){
-    const spread=(i%3-1)*7,offset1={x:c1.x+nx*spread,y:c1.y+ny*spread},offset2={x:c2.x+nx*spread,y:c2.y+ny*spread};
-    const color=electric?['#94ddff','#d3b7ff','#b9f5ff'][i%3]:boardV4Prism[i%6];
-    const particle=boardV13Particle(trail,color,i%4===0?8:4+i%3);
-    tails.push(boardV15Shimmer(particle,220,i*(tailLife-220)/13));
-    tails.push(animate(particle,boardV13Flight(from,offset1,offset2,to),{duration:220,delay:i*(tailLife-220)/13,easing:'linear',fill:'backwards'}));
-  }
-  // A drifting wake outlives each passing particle within the existing tail beat.
-  const wake=boardV3Child(group,'g',{'data-board-glitter':'star-wake'});
-  const wakeGlow=boardV6Gradient(wake,[['#fffbed',.6],['#b9caff',.2],['#b9caff',0]],true);
-  for(let i=0;i<10;i++){
-    const p=(i+1)/11,point=boardV13Point(from,c1,c2,to,p),side=i%2?1:-1;
-    const drift=26+i%4*11,ex=point.x+nx*drift*side+dx/length*(i%3-1)*10,ey=point.y+ny*drift*side+14+i%3*6;
-    const star=boardV3Child(wake,'g',{'data-wake-star':i}),color=i%3===0?'#fff6cf':boardV4Prism[(i+target.c)%6];
-    boardV3Child(star,'circle',{r:22,fill:wakeGlow});
-    boardV9Star(star,0,0,8+i%3*2,color);boardV9Star(star,0,0,3.5,'#fffbed');
-    tails.push(animate(star,[
-      {opacity:0,transform:`translate(${point.x}px,${point.y}px) rotate(-15deg) scale(.3)`},
-      {opacity:.95,transform:`translate(${point.x+(ex-point.x)*.2}px,${point.y+(ey-point.y)*.2}px) rotate(5deg) scale(1.1)`,offset:.2},
-      {opacity:.7,transform:`translate(${point.x+(ex-point.x)*.75}px,${point.y+(ey-point.y)*.75}px) rotate(32deg) scale(.75)`,offset:.65},
-      {opacity:0,transform:`translate(${ex}px,${ey}px) rotate(55deg) scale(.2)`}
-    ],{duration:400,delay:duration*p,easing:'ease-out',fill:'both'}));
-  }
-  if(electric){
-    const channel=boardV3Child(group,'g',{'data-electric-channel':'continuous'});
-    const shapes=Array.from({length:9},(_,phase)=>{
-      let d='';
-      for(let i=0;i<=16;i++){
-        const p=i/16,point=boardV13Point(from,c1,c2,to,p),jitter=Math.sin(i*2.1+phase*1.7)*Math.sin(p*Math.PI)*9;
-        d+=(i?'L':'M')+(point.x+nx*jitter)+' '+(point.y+ny*jitter)+' ';
-      }
-      return d.trim();
-    });
-    const halo=boardV3Child(channel,'path',{d:shapes[0],fill:'none',stroke:'#89cfff','stroke-width':11,opacity:.34,'stroke-linecap':'round','stroke-linejoin':'round',filter:boardV12Feather(group,2)});
-    const core=boardV3Child(channel,'path',{d:shapes[0],fill:'none',stroke:'#c2f4ff','stroke-width':3.2,opacity:.95,'stroke-linecap':'round','stroke-linejoin':'round'});
-    const filament=boardV3Child(channel,'path',{d:shapes[0],fill:'none',stroke:'#fffbed','stroke-width':1,opacity:.95,'stroke-linecap':'round','stroke-linejoin':'round'});
-    for(const [path,opacity]of [[halo,.34],[core,.95],[filament,.95]])tails.push(animate(path,shapes.map(d=>({d:`path("${d}")`,opacity})),{duration:duration+tailLife,easing:'linear'}));
-  }
-  const head=boardV13Particle(group,electric?'#c2f1ff':boardV3Color(target),9);
-  tails.push(boardV15Shimmer(head,duration+tailLife));
-  head.setAttribute('data-comet-head','true');
-  const flight=boardV13Flight(from,c1,c2,to);flight[flight.length-1].opacity=1;
-  await animate(head,flight,{duration,easing:'linear',fill:'forwards'});
-  head.setAttribute('transform',`translate(${tx} ${ty})`);
-  group.setAttribute('data-arrived','true');
-  tails.push(animate(group,[{opacity:1},{opacity:.8,offset:.45},{opacity:0}],{duration:tailLife,easing:'ease-in-out'}).finally(()=>group.remove()));
-}
 
-function boardV3BombWave(act,radius,duration,tails){
-  if(reduced)return;
-  const {x,y}=boardV3Point(act.tile),group=boardV3Group('blast-wave',act.tile,act.kind);
-  const palette=act.fullBoard?boardV4Prism:['#ffe5a5','#ffbb79','#fff4d9'],color=palette[radius%palette.length];
-  group.setAttribute('data-blast-radius',radius);
-  if(act.fullBoard)group.setAttribute('data-full-board','true');
-  const feather=boardV12Feather(group,2);
-  const ring=boardV3Child(group,'circle',{cx:x,cy:y,r:radius*100+30,fill:'none',stroke:color,'stroke-width':7,filter:feather,opacity:.6});
-  const inner=boardV3Child(group,'circle',{cx:x,cy:y,r:radius*100+13,fill:'none',stroke:'#fff0cd','stroke-width':1.5,opacity:.4});
-  const bandGradient=boardV6Gradient(group,[[color,0],[color,0],[color,.04],[color,.23],[color,0]],true);
-  const band=boardV3Child(group,'circle',{cx:x,cy:y,r:radius*100+45,fill:bandGradient,'data-board-glitter':'aurora-wave'});
-  boardV3Origin(ring,x,y);
-  boardV3Origin(inner,x,y);
-  boardV3Origin(band,x,y);
-  tails.push(Promise.all([
-    animate(ring,[{opacity:0,transform:'scale(.65)',strokeWidth:'10px'},{opacity:.65,offset:.2},{opacity:0,transform:'scale(1.12)',strokeWidth:'1px'}],{duration,easing:BOARD_V12_SPREAD.easing}),
-    animate(inner,[{opacity:0,transform:'scale(.65)'},{opacity:.5,offset:.2},{opacity:0,transform:'scale(1.13)'}],{duration,easing:BOARD_V12_SPREAD.easing}),
-    animate(band,[{opacity:0,transform:'scale(.65)'},{opacity:.65,offset:.3},{opacity:0,transform:'scale(1.15)'}],{duration,easing:BOARD_V12_SPREAD.easing}),
-    boardV9Glitter(group,x,y,palette,duration,{count:12,radius:radius*100+24,start:.76,end:1.1,rotation:radius*13})
-  ]).finally(()=>group.remove()));
-}
 
-specialEffect = async function specialEffectV3(act,sequence){
-  // Keeping this callable without a clear context is useful for previews.
-  if(!sequence){await boardV3Charge(act,BOARD_V5_PACING.charge);return;}
-  const {targets,cleared,sources,primed,tails,charge,beat,detonate}=sequence;
-  await boardV3Charge(act,charge);
-  const effectKind=boardSpecialEffectKind(act.kind);
-  boardItemSound(act.tile.type,effectKind);tails.push(boardImpactShake({bolt:2,bomb:4,core:5}[effectKind]||2));
-  tails.push(boardItemRecoil(act.tile,{bolt:2,bomb:4,core:5}[effectKind]||2),specialStarNova(act.tile,effectKind));
-  detonate(act.tile,act.kind);
-  await boardV3Pause(beat);
-  const hits=act.hits.filter(t=>t!==act.tile&&targets.has(t)&&!cleared.has(t)&&!primed.has(t));
-  const distance=t=>Math.max(Math.abs(t.r-act.tile.r),Math.abs(t.c-act.tile.c));
-  hits.sort((a,b)=>distance(a)-distance(b)||a.r-b.r||a.c-b.c);
-  if(act.fullBoard){
-    // A full-board blast travels in visible rings, then gravity refills all
-    // cells before the next blast. No hidden instant duplicate clears.
-    const rings=[...new Set(hits.map(distance))];
-    for(const ring of rings){
-      boardV3BombWave(act,ring,BOARD_V5_PACING.shockwave,tails);
-      await boardV3Pause(110);
-      for(const t of hits)if(distance(t)===ring)detonate(t,'core');
-    }
-    return;
-  }
-  let previousRing=-1;
-  for(const t of hits){
-    if(cleared.has(t))continue;
-    if(act.kind==='bolt'){
-      const ring=distance(t);
-      if(ring!==previousRing){boardV3BombWave(act,ring,BOARD_V5_PACING.shockwave,tails);previousRing=ring;}
-      await boardV3Pause(beat*.7);
-    }else await boardV3Beam(act,t,beat*.7,tails);
-    if(sources.has(t)){
-      primed.add(t);
-      // A chained special remains on the board until it gets its own charge.
-      tails.push(animate(t.el.firstElementChild,[{filter:'brightness(1)'},{filter:'brightness(2)',offset:.35},{filter:'brightness(1)'}],{duration:BOARD_V5_PACING.primed,easing:'linear'}));
-    }else detonate(t,act.kind);
-    await boardV3Pause(beat*.3);
-  }
-};
 
 clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
   const focused=document.activeElement,hadFocus=focused?.classList.contains('tile');

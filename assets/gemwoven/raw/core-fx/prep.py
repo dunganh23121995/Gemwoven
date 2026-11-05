@@ -10,7 +10,8 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE.parents[3] / 'assets/special-fx'
 # orbit (owner 05/11: "style kiểu trước đó nhưng xoay quanh xích đạo"): the silky ribbon ring of the old halo, drawn whole
 # and round (raw-ribbon.png), shown squashed and tilted as a ring orbiting the Lõi's equator.
-for file, cols, col, name, side in [('raw-rings.png', 2, 0, 'halo', 320), ('raw-rings.png', 2, 1, 'prism-wave', 512), ('raw-ribbon.png', 1, 0, 'orbit', 512)]:
+# 'halo' (raw-rings.png left) retired 05/11: the Lõi's orbit ring replaced it.
+for file, cols, col, name, side in [('raw-rings.png', 2, 1, 'prism-wave', 512), ('raw-ribbon.png', 1, 0, 'orbit', 512)]:
     im = Image.open(HERE / file).convert('RGB'); W, H = im.size
     a = np.asarray(im.crop((col * W // cols, 0, (col + 1) * W // cols, H))).astype(np.float32) / 255
     alpha = np.clip((a.max(axis=2) - .03) / .97, 0, 1)

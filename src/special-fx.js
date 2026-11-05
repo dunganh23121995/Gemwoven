@@ -64,8 +64,6 @@ async function specialFxPlayCue(cue,ms=null,volume=.42){
 }
 const specialFxSound=cue=>{specialFxPlayCue(cue);};
 const specialFxSoundFor=(cue,ms,volume)=>{specialFxPlayCue(cue,ms,volume);};
-// The drawn kinds now match the clears: no more swapped bolt/bomb looks.
-boardSpecialEffectKind=kind=>kind;
 // fxAnimate() cancels a finished animation, which snaps a piece back to its base look (a fully visible gem copy) until its
 // group is removed. FX pieces therefore take their final opacity as their base before they play (Codex review 4).
 function fxAnimate(el,frames,options){const end=frames[frames.length-1];if(el&&end&&end.opacity!=null)el.style.opacity=end.opacity;return animate(el,frames,options);}
@@ -466,4 +464,3 @@ specialEffect = async function specialEffectV5(act,sequence){
   }
   act.hits.forEach(h=>specialFxHit(h,sequence,act.kind));
 };
-function tileAtOr(r,c){return r>=0&&r<SIZE&&c>=0&&c<SIZE?board[r][c]:null;}

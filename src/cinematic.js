@@ -46,12 +46,7 @@ function specialStarNova(tile,kind){
     jobs.push(animate(s,[{opacity:1,transform:`translate(${p.x}px,${p.y}px) scale(1.15)`},{opacity:1,transform:`translate(${p.x+Math.cos(angle)*distance*.4}px,${p.y+Math.sin(angle)*distance*.4}px) rotate(30deg) scale(1.3)`,offset:.22},{opacity:.55,offset:.6},{opacity:0,transform:`translate(${p.x+Math.cos(angle)*distance}px,${p.y+Math.sin(angle)*distance}px) rotate(100deg) scale(.15)`}],{duration:850+tier*90,easing:'cubic-bezier(.15,.55,.35,1)'}));
   }return Promise.all(jobs).finally(()=>g.remove());
 }
-function rageSkyfall(side,key,pending){
-  const target=combatV3Point(side==='hero'?'enemy':'hero');
-  const node=document.createElement('span');node.className='rage-skyfall '+key;node.style.left=target.x+'px';node.style.top=Math.max(10,target.y-170)+'px';node.style.height=(target.y-Math.max(10,target.y-170)+35)+'px';
-  node.style.setProperty('--rage-color',combatV3Palette[key].main);node.innerHTML='<i></i><b></b><em></em>';$('combatEffects').append(node);
-  pending.push(animate(node,[{opacity:0,transform:'translateX(-50%) scaleY(.08)'},{opacity:1,transform:'translateX(-50%) scaleY(1)',offset:.36},{opacity:1,offset:.82},{opacity:0,transform:'translateX(-50%) scaleY(1.1)'}],{duration:650,easing:'linear'}).finally(()=>node.remove()));
-}
+let rageSkyfall; // set by shadow-combat.js, wrapped by cast-redesign.js
 // One absolute timeline for every rage skill: 0..3000 ms, independent of hit count.
 async function rageChoreography(side,raw,{hits=1,onRelease=()=>{}}={}){
   if(side==='hero'&&state.key==='fire')return mikaFlameRage(raw,onRelease);

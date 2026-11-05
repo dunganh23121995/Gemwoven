@@ -7,10 +7,11 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE.parents[3] / 'assets/special-fx'; OUT.mkdir(parents=True, exist_ok=True)
 # name: (sheet, region as fractions x0,y0,x1,y1, longest side in px)
 PIECES = {
-    'beam': ('a', (0, 0, 1, .5), 1024), 'head': ('a', (0, .5, 1/3, 1), 256), 'blast': ('a', (1/3, .5, 2/3, 1), 512),
+    # 'head' (comet head) and 'shard' retired 05/11 with the v2 sweep and bloom (src/special-fx.js v3 uses neither).
+    'beam': ('a', (0, 0, 1, .5), 1024), 'blast': ('a', (1/3, .5, 2/3, 1), 512),
     # 'ring' retired 05/11 (it was cut off at the top and wobbled as it turned): assets/gemwoven/raw/core-fx/ draws the halo.
     'flash': ('b', (0, 0, 1/3, .5), 320), 'mark': ('b', (1/3, 0, 2/3, .5), 256), 'arrows': ('b', (2/3, 0, 1, .5), 256),
-    'sparkle': ('b', (0, .5, 1/3, 1), 128), 'shard': ('b', (1/3, .5, 2/3, 1), 96), 'glow': ('b', (2/3, .5, 1, 1), 256),
+    'sparkle': ('b', (0, .5, 1/3, 1), 128), 'glow': ('b', (2/3, .5, 1, 1), 256),
 }
 SQUARE = {'blast', 'ring', 'flash', 'mark', 'sparkle', 'glow'}
 for name, (sheet, (x0, y0, x1, y1), longest) in PIECES.items():

@@ -4792,17 +4792,13 @@
     "assets/special-fx/fireball.webp",
     "assets/special-fx/flash.webp",
     "assets/special-fx/glow.webp",
-    "assets/special-fx/halo.webp",
-    "assets/special-fx/head.webp",
     "assets/special-fx/mark.webp",
     "assets/special-fx/orbit.webp",
     "assets/special-fx/prism-wave.webp",
-    "assets/special-fx/prism.webp",
-    "assets/special-fx/shard.webp",
     "assets/special-fx/sparkle.webp",
     "assets/special-fx/vortex.webp"
    ],
-   "bytes": 168203564
+   "bytes": 168109486
   },
   {
    "id": "hero-earth-f1",

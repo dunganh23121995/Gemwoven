@@ -29,7 +29,6 @@
   function hangingMenu(nodes){
     const card=A['hud-side-card'];if(!card)return;
     const width=128,height=164,center=92;
-    const scaleRect=r=>r.map((v,k)=>v*(k%2?height/card.height:width/card.width));
     const cards=nodes.filter(n=>n.kind==='button'&&n.rect[0]<200&&
       (n.id.startsWith('home.feature-')||n.asset==='side-pennant'||n.asset==='hud-side-card'));
     // Codex review 25: the icon takes about two thirds of the card; the name 22 units on at most two lines (owner 04/11: smaller).

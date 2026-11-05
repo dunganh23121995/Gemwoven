@@ -44,12 +44,6 @@ function combatIdleHead(side){
   const lift=root.dataset.floating==='true'?Math.round(parseFloat((root.style.translate||'').split(' ')[1])||0):0;
   return {x:root.offsetLeft+x/256*root.offsetWidth,y:root.offsetTop+y/256*root.offsetHeight+lift,width:root.offsetWidth,height:root.offsetHeight};
 }
-// Floating numbers sit beside the body on the outer side, below the HUD.
-function combatNumberPoint(side,index=0,lift=0){
-  const p=combatIdleHead(side),scene=$('scene'),W=scene.clientWidth||375,H=scene.clientHeight||300,out=side==='hero'?-1:1;
-  const x=p.x+out*Math.min(64,p.width*.22)+(index%2?12:-8);
-  return {x:Math.max(34,Math.min(W-34,x)),y:Math.max(30,Math.min(H-34,p.y+Math.min(48,p.height*.3)+(index%3)*7+lift))};
-}
 function placeCombatHuds(points){
   // CSS knobs on the scene (defaults keep the portrait and desktop layouts): --hud-gap (6) between the two boxes side by
   // side, --hud-gap-y (4) when one has to sit above the other, --hud-edge (4) from the stage's sides. Short landscape
@@ -327,22 +321,6 @@ function combatSkillTitle(side,title,pending){
   ],{duration:1900,fill:'both'}).finally(()=>node.remove());
   return ready;
 }
-async function ultimateAura(side){
-  const root=actor(side),key=side==='hero'?state.key:state.enemyKey;
-  const aura=document.createElement('span');aura.className='ultimate-aura';aura.dataset.auraSide=side;
-  aura.style.setProperty('--aura-color',combatV3Palette[key].main);
-  aura.innerHTML='<i class="aura-halo"></i><i class="aura-ring"></i><i class="aura-ring second"></i>'+Array.from({length:8},(_,i)=>`<b style="--ray:${i*45}deg"></b>`).join('');
-  root.append(aura);root.classList.add('charging-ultimate');
-  const title=side==='hero'?HEROES[key].skill:MONSTERS[key].skill;
-  combatV3Action(side,'cast',850);combatV3Frame(side,'cast',0);combatV3ChargeSound(key,true);
-  const popup=popActorSkill(side,title,true);
-  const glow=animate(aura,[{opacity:0,transform:'scale(.55)'},{opacity:.65,transform:'scale(.9)',offset:.35},{opacity:1,transform:'scale(1.13)',offset:.78},{opacity:0,transform:'scale(1.3)'}],{duration:700,easing:'ease-in-out'});
-  try{
-    await wait(reduced?0:220);combatV3Frame(side,'cast',1);
-    await wait(reduced?0:260);combatV3Frame(side,'cast',2);
-    await Promise.all([glow,popup]);
-  }finally{aura.remove();root.classList.remove('charging-ultimate');}
-}
 async function heroUltimate(){
   const key=state.key;sfx('special');
   if(key==='earth')return noriRenewalUltimate();
@@ -350,16 +328,7 @@ async function heroUltimate(){
   const kit=progressionKit(key);
   await rageChoreography('hero',kit.base,{hits:Math.max(1,kit.hits),onRelease(pending){}});
 }
-async function castReadyUltimates(){
-  for(const side of ['hero','enemy']){
-    if(state.hp<=0||state.enemyHp<=0)return;
-    if(side==='enemy'&&state.noriStunTurns>0)continue;
-    const key=side==='hero'?'energy':'enemyEnergy';if(state[key]<100)continue;
-    if(side==='hero'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');continue;}
-    state[key]-=100;update();
-    if(side==='hero')await heroUltimate();else await enemySkill({reserved:true});
-  }
-}
+let castReadyUltimates; // set by board-control.js (one ultimate a turn, cast at once when rage is full)
 function startReadyUltimates(){
   if(state.energy<100&&state.enemyEnergy<100)return;
   return perform(async()=>{await castReadyUltimates();return false;});

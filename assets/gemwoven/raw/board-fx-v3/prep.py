@@ -11,7 +11,7 @@ ROOT = HERE.parents[3]
 PIECES = {'bolt-aura': (0, 0, 'board-items', 256, False), 'blade': (1, 0, 'special-fx', 384, False),
           'bomb-ring': (2, 0, 'board-items', 256, True), 'vortex-square': (0, 1, 'special-fx', 640, True),  # retired 05/11: the round vortex is bomb-vortex/prep.py
           
-          'fireball': (1, 1, 'special-fx', 640, True), 'prism': (2, 1, 'special-fx', 512, False)}
+          'fireball': (1, 1, 'special-fx', 640, True)}  # 'prism' (2, 1) retired 05/11: the Lõi's beams became star wisps
 im = Image.open(HERE / 'raw-fx.png').convert('RGB'); W, H = im.size
 for name, (col, row, folder, longest, square) in PIECES.items():
     a = np.asarray(im.crop((col * W // 3, row * H // 2, (col + 1) * W // 3, (row + 1) * H // 2))).astype(np.float32) / 255

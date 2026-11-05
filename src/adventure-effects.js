@@ -45,12 +45,6 @@ function renderEncounterScene(){
   mountSceneAmbience();
   land.classList.toggle('boss-landscape',state.boss);
 }
-function mountBossGloom(){
-  if(!state.boss)return;
-  const veil=document.createElement('span');veil.className='boss-gloom';veil.setAttribute('aria-hidden','true');
-  veil.innerHTML='<i></i><i></i><i></i><b></b>';
-  $('enemyActor').prepend(veil);
-}
 let stageTransition=false;
 async function departVictoriousHero(){
   const own=typeof combatHeroForm==='function'&&heroKit(state.key,combatHeroForm(state.key),'depart');if(own)return own();
