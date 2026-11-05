@@ -42,19 +42,25 @@ function specialFxShake(px=3){
 }
 // Decode the drawn pieces once, so the first fireball or vortex of a fight does not stall a frame.
 setTimeout(()=>{for(const src of Object.values(ART.specialFx||{})){const img=new Image();img.src=src;img.decode?.().catch(()=>{});}},0);
-// One real recording per cue (scripts/prepare_board_special_sounds.py).
-const specialFxSound=cue=>{if(!reduced&&typeof playCastSound==='function')playCastSound('board',cue,{volume:.42});};
-// A cue cut short at a given moment with a 40 ms fade (the vortex's rush stops on the bang, whatever its length).
-async function specialFxSoundFor(cue,ms,volume=.42){
+// One real recording per cue (scripts/prepare_board_special_sounds.py). The board plays its own voices, apart from the
+// skills' pool, which drops its oldest sound past 8 and so cut ultimates and earlier blasts short when many specials
+// fired (owner 05/11: "cho phép chồng lên nhau mà không bị ngắn"): cues overlap freely, a playing one is never cut to
+// make room, and past 10 at once a new cue is left out. ms ends a cue at that moment with a 40 ms fade (the vortex's
+// rush stops on the bang, whatever its length).
+const specialFxVoices=new Set();
+async function specialFxPlayCue(cue,ms=null,volume=.42){
   const context=!reduced&&typeof combatV3AudioContext==='function'?combatV3AudioContext():null,id='board-'+cue;
-  if(!context||!ART.castSounds?.[id]||typeof decodeCastSound!=='function')return;
+  if(!context||!sound||!ART.castSounds?.[id]||typeof decodeCastSound!=='function'||specialFxVoices.size>=10)return;
   try{
-    const buffer=await decodeCastSound(context,id),source=context.createBufferSource(),gain=context.createGain(),end=context.currentTime+ms/1000;
-    source.buffer=buffer;gain.gain.setValueAtTime(volume,context.currentTime);gain.gain.setValueAtTime(volume,Math.max(context.currentTime,end-.04));gain.gain.linearRampToValueAtTime(0,end);
-    source.connect(gain);gain.connect(audioOutput(context,'effects'));source.start();source.stop(end+.01);
-    source.onended=()=>{source.disconnect();gain.disconnect();};
+    const buffer=await decodeCastSound(context,id),source=context.createBufferSource(),gain=context.createGain(),now=context.currentTime;
+    source.buffer=buffer;gain.gain.setValueAtTime(volume,now);
+    if(ms!=null){const end=now+ms/1000;gain.gain.setValueAtTime(volume,Math.max(now,end-.04));gain.gain.linearRampToValueAtTime(0,end);source.stop(end+.01);}
+    source.connect(gain);gain.connect(audioOutput(context,'effects'));specialFxVoices.add(source);source.start(now);
+    source.onended=()=>{specialFxVoices.delete(source);source.disconnect();gain.disconnect();};
   }catch{}
 }
+const specialFxSound=cue=>{specialFxPlayCue(cue);};
+const specialFxSoundFor=(cue,ms,volume)=>{specialFxPlayCue(cue,ms,volume);};
 // The drawn kinds now match the clears: no more swapped bolt/bomb looks.
 boardSpecialEffectKind=kind=>kind;
 // fxAnimate() cancels a finished animation, which snaps a piece back to its base look (a fully visible gem copy) until its
