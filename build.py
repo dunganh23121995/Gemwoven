@@ -150,6 +150,8 @@ for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
 art['items']['core'] = image('assets/items/core.webp')
 # Special gem FX pieces (owner 05/11, Codex-drawn, assets/gemwoven/raw/board-specials/prep.py): moved whole by src/special-fx.js.
 art['specialFx'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorted((root/'assets/special-fx').glob('*.webp'))}
+# Board item pieces (owner 05/11, Codex-drawn, assets/gemwoven/raw/board-items/prep.py): dressed on by src/board-items.js.
+art['boardItems'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorted((root/'assets/board-items').glob('*.webp'))}
 novice_meta=json.loads((root/'assets/heroes/novice/meta.json').read_text(encoding='utf-8'))
 art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration']} for action,meta in novice_meta['actions'].items()}
 art['heroes']['novice']['buff']=art['heroes']['novice']['cast']
@@ -567,6 +569,9 @@ css += '\n'+(root/'src/combat-hud.css').read_text(encoding='utf-8')
 # Status icons over the fighters and PvP name plaques (src/combat-status.js): after the HUD, which it builds on.
 extensions += '\n'+(root/'src/combat-status.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-status.css').read_text(encoding='utf-8')
+# Drawn board items (specials, previews, boss ice bar, frozen crust, guard, rage comets): after the status layer (src/board-items.js).
+extensions += '\n'+(root/'src/board-items.js').read_text(encoding='utf-8')
+css += '\n'+(root/'src/board-items.css').read_text(encoding='utf-8')
 # Dẫn Đường's coach in the guided stage-1 fight (src/combat-coach.js): after the HUD, read-only.
 extensions += '\n'+(root/'src/combat-coach.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-coach.css').read_text(encoding='utf-8')

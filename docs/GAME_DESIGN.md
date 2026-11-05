@@ -1188,3 +1188,11 @@ phỏng); hiệu ứng `src/special-fx.js` + `src/special-fx.css`; spec, hai t�
 - **Nhịp:** màn "COMBO ×1" (~850 ms) chạy song song với vụ nổ special thay vì trước nó (nổ bắt đầu ~200 ms sau khi bấm thay vì ~900 ms);
   khi special chạy, chữ COMBO thu nhỏ và nằm mép trên. Ghép thường giữ nhịp cũ. Sửa lỗi: mảnh FX hiện lại sau khi tan (animate() hủy
   animation khi xong) — mảnh FX nhận độ mờ cuối làm nền trước khi chạy.
+
+### Vòng Item tương tác trên board (05/11) — đã làm
+Chủ dự án: "Board thêm cơ chế mới nhưng hình ảnh item tương tác chưa được làm; tham khảo mấy game có hiệu ứng mạnh." Theo thể loại
+(hình riêng → báo vùng tác động → bùng nổ → trả bàn rõ), không chép game nào. `src/board-items.js` / `.css`, mảnh vẽ ở `assets/board-items/`:
+Sao băng (giá phóng rune ngang + 3 vệt; cột chỉ xoay giá), Bom (lồng đồng mở + ngòi cháy, ngọc gốc nằm trước), Lõi (cầu lăng kính +
+vòng rune); nảy khi tạo; chọn hoặc rê special → sáng đúng ô sẽ nổ (cùng luật GemwovenSpecials); thanh băng boss 6 tinh thể (thay ô trạng
+thái); đóng băng: băng bọc tới thắt lưng + "ĐÓNG BĂNG · MẤT LƯỢT", vỡ thành mảnh khi hết; Kháng: cung hổ phách quanh thân dưới + nhãn;
+ngọc tím bắn tia nộ về thanh nộ; thưởng nộ combo bùng "Combo +N" trên HUD. Giảm chuyển động chỉ giữ hình tĩnh. Codex 8,4 (§ tracker I47).

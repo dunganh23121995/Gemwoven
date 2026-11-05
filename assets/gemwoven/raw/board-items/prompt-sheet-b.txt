@@ -1,0 +1,8 @@
+Game asset sheet for the 2D fantasy match-3 mobile game Gemwoven, same painted style as the reference (polished gems, crisp outlines, rich highlights). Solid flat MAGENTA #FF00FF background everywhere, no gradient, no shadow on the background, no text, no labels, no frame.
+Layout: a 3 columns x 2 rows grid of equal cells; each piece centred in its own cell with generous magenta space; nothing touches a cell edge or another piece.
+Cell 1 (top left): one FILLED icicle crystal pip for a gauge: a tall narrow pointed ice shard standing upright, bright cyan with white highlights and a gold base cap.
+Cell 2 (top middle): the same icicle pip EMPTY: same outline shape and gold base cap, but the inside is a dark navy hollow with only a thin pale cyan outline.
+Cell 3 (top right): a wide ICE CRUST to encase a monster's feet and lower body: a jagged low wall of clear blue ice blocks and spikes, wider than tall (about 3:1), flat bottom, uneven top with spikes, light inner highlights, slightly see-through looking.
+Cell 4 (bottom left): a broken AMBER SHIELD ARC: a wide shallow arc made of 5 separate glowing amber-gold segments with small gaps between them, engraved runes, like a protective ward around a monster's lower body, wider than tall.
+Cell 5 (bottom middle): a sharp eight-point burst star, gold with a violet core, crisp spikes, for a rage bonus burst.
+Cell 6 (bottom right): a small violet energy comet: a bright violet-white glowing head with a short tapering tail pointing left.

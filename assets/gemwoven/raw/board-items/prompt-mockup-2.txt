@@ -1,0 +1,18 @@
+Game UI mockup image for the mobile game Gemwoven. Write all on-image text in Vietnamese exactly as given.
+Vẽ một mockup màn hình game Gemwoven dọc, khung nhìn logic **390×844**, tràn khung, không vẽ điện thoại. Ảnh 1 là tham chiếu bố cục, nhân vật, nền và khung đồng vàng; ảnh 2 là tham chiếu ngọc. Mỹ thuật fantasy vẽ tay sắc nét, chất liệu đồng cổ và đá quý, đúng phong cách hai ảnh.
+>
+Bố cục: thanh trên y=0–54; đấu trường y=64–374; điều khiển y=382–444; bàn 8×8 tại x=16, y=466, kích thước 358×358, mỗi ô khoảng 45px. Giữ nữ chiến binh lửa bên trái, boss golem rêu bên phải. Dưới máu boss đặt sáu tinh thể băng: **bốn đầy xanh sáng, hai rỗng tối**, kèm “4/6”. Boss chính đang tích băng, thân chưa phủ băng.
+>
+Bàn chứa đúng **ba special**: hàng 2 cột 3 là Sao băng ngọc tím, giá rune ngang với hai mũi tên vàng lớn và ba vệt sáng song song; hàng 5 cột 6 là Bom ngọc tim đỏ trong khung cầu đồng mở, ngòi cháy rõ; hàng 7 cột 3 là Lõi lăng kính cầu vồng, nhân trắng, một vòng rune. Ngọc thường giữ nguyên thiết kế tham chiếu. Special phân biệt bằng silhouette, vẫn đọc rõ màu gốc, không có chữ IV/V, ánh sáng không tràn sang ô cạnh.
+>
+Thêm ô minh họa nhỏ **102×78 tại x=22, y=76**, viền đồng mảnh, nhãn “Đóng băng”: cùng boss bị băng trong xanh bọc chân tới nửa thân, mặt còn rõ, sương thấp. Đây là ảnh trạng thái phụ riêng.
+>
+Chụp trạng thái đang chờ thao tác: ba special có hình dáng rõ, hiệu ứng tiết chế. Ưu tiên đọc ở kích thước điện thoại; rune ít nét, tương phản sáng tối rõ, không phủ bloom trắng, không thêm bảng chú giải lớn.
+Reference image 1 = the current phone screen (layout, characters, background, bronze frame); reference image 2 = the current gem art.
+
+FIXES for this second version (keep everything else from reference image 3, the first mockup):
+1. The Sao băng special (row 2, column 3, purple gem) sits on a perfectly HORIZONTAL rune launcher: one straight bar crossing the cell left to right, two big gold arrowheads pointing LEFT and RIGHT at the ends, and three short parallel light streaks above, through and below the gem. The purple gem stays upright in the centre. Nothing diagonal.
+2. The Bom special (row 5, column 6, red heart gem) sits in an OPEN bronze cage sphere (thin ribs, the red heart clearly visible inside), with one bright burning fuse on top that is the most eye-catching part. The Lõi special (row 7, column 3) is a prism orb with a bright WHITE core, a few big rainbow facets, and one simple thin rune ring. Use less gold detail so the three silhouettes differ at a glance.
+3. EXACTLY three specials on the board. Every other gem is the plain normal gem from reference image 2 (plain sword, plain snowflake with no gold centre, plain heart, purple crystal, shield). No glowing swords, no snowflakes with gold centres.
+4. The boss ice bar under the boss HP: six LONG icicle-shaped crystals (tall narrow shards, not snowflakes): four filled bright cyan, two empty with dark hollow insides, plus "4/6".
+5. The main boss is NOT frozen in this state: no ice, frost, snowflakes or ice swirl on or around the main boss. Only the small inset labelled "Đóng băng" shows the ice crust covering the boss from feet to mid-body with a low mist.

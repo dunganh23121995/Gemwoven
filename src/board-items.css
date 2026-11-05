@@ -1,0 +1,94 @@
+/* Board items (owner 05/11, Codex mockup assets/gemwoven/raw/board-items/mockup-2.png): drawn specials, previews, the boss
+   ice bar, the frozen crust, the guard ward and rage comets. Every piece is one image moved whole. */
+.tile.special .gem{overflow:visible}
+.tile.special::before{content:"";position:absolute;inset:6%;border-radius:22%;pointer-events:none;
+  background:radial-gradient(circle,color-mix(in srgb,var(--item-glow,#fff) 42%,transparent) 0,transparent 70%);animation:bi-glow 1.8s ease-in-out infinite}
+@keyframes bi-glow{50%{opacity:.45;scale:.9}}
+/* Sao băng: the plain gem upright on the launcher; a column turns only the launcher. */
+.tile.special.bolt .item-art{scale:.74}
+.bi-launcher{position:absolute;left:50%;top:50%;width:122%;height:auto;translate:-50% -50%;pointer-events:none;z-index:-1;
+  filter:drop-shadow(0 0 3px #7fe7ff) drop-shadow(0 1px 1px #000a);animation:bi-launch 1.1s ease-in-out infinite}
+.tile.special.bolt[data-dir="col"] .bi-launcher{rotate:90deg}
+@keyframes bi-launch{50%{scale:1.07 1;filter:drop-shadow(0 0 6px #b9f4ff) brightness(1.18) drop-shadow(0 1px 1px #000a)}}
+/* Bom: the gem in the open cage, the fuse flame flickering on top. */
+.tile.special.bomb .item-art{scale:.68;translate:0 7%}
+.bi-cage{position:absolute;left:50%;top:50%;width:94%;height:auto;translate:-50% -48%;pointer-events:none;filter:drop-shadow(0 1px 2px #000b)}
+.bi-fuse{position:absolute;right:-6%;top:-20%;width:52%;height:auto;pointer-events:none;transform-origin:20% 90%;
+  filter:drop-shadow(0 0 4px #ff9a3c);animation:bi-fuse .42s steps(1) infinite alternate,bi-fuse-sway .9s ease-in-out infinite}
+@keyframes bi-fuse{50%{opacity:.82}}
+@keyframes bi-fuse-sway{50%{rotate:-12deg;scale:1.12}}
+.tile.special.bomb .gem{animation:bi-bomb 1.2s ease-in-out infinite}
+@keyframes bi-bomb{50%{scale:1.05}}
+/* Lõi: the prism orb breathing in its turning rune ring. */
+.tile.special.core .item-art.bi-core{scale:.86;filter:drop-shadow(0 0 5px #fff6) drop-shadow(0 0 2px #fff);animation:bi-core 1.6s ease-in-out infinite}
+@keyframes bi-core{50%{filter:drop-shadow(0 0 9px #fffb) drop-shadow(0 0 3px #fff) brightness(1.15)}}
+.bi-ring{position:absolute;left:50%;top:56%;width:118%;height:auto;translate:-50% -50%;pointer-events:none;z-index:-1;
+  filter:drop-shadow(0 0 3px #ffd36a);animation:bi-ring 2.8s ease-in-out infinite}
+@keyframes bi-ring{0%,100%{rotate:-9deg}50%{rotate:9deg;scale:1.05}}
+/* Selected special: a gold ring and a lift. */
+.tile.special.selected .gem{scale:1.08}
+.tile.special.selected::after{content:"";position:absolute;inset:3%;border-radius:20%;pointer-events:none;
+  box-shadow:0 0 0 2px #ffe08a,0 0 12px 2px #ffd25e,inset 0 0 10px #ffe9a8a0;animation:bi-select .9s ease-in-out infinite}
+@keyframes bi-select{50%{box-shadow:0 0 0 2px #fff3c4,0 0 18px 4px #ffd25e,inset 0 0 12px #ffe9a8}}
+.bi-pop{position:absolute;left:50%;top:50%;width:160%;height:auto;translate:-50% -50%;pointer-events:none;z-index:4;mix-blend-mode:screen}
+/* Preview: the cells a selected or dragged special will clear. */
+#board.bi-previewing .tile:not(.bi-target){filter:brightness(.72) saturate(.85)}
+#board .tile.bi-target{z-index:2}
+#board .tile.bi-target::after{content:"";position:absolute;inset:6%;border-radius:18%;pointer-events:none;
+  background:radial-gradient(circle,#fff4c740 0,transparent 75%);box-shadow:inset 0 0 0 2px #ffe08ab0,0 0 8px #ffd25e80;animation:bi-target .7s ease-in-out infinite}
+@keyframes bi-target{50%{box-shadow:inset 0 0 0 2px #fff6d0,0 0 12px #ffd25e}}
+/* Boss ice bar: icicle pips under the boss's gauges; the status tile it replaces is hidden. */
+.bi-icebar{position:absolute;left:50%;top:100%;translate:-50% 3px;display:flex;align-items:flex-end;gap:2px;padding:2px 7px 2px 6px;border-radius:9px;
+  background:linear-gradient(#0e2a3ad9,#08161fe6);box-shadow:inset 0 0 0 1px #8fd9ff59,0 2px 4px #0008;pointer-events:none;z-index:5}
+.bi-icebar i{position:relative;width:9px;height:24px}
+.bi-icebar i img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bi-icebar .bi-pip{opacity:0}
+.bi-icebar i.full .bi-pip{opacity:1;filter:drop-shadow(0 0 3px #7fe7ff)}
+.bi-icebar b{margin-left:4px;font:800 11px/1 Georgia,serif;color:#dff6ff;text-shadow:0 1px 2px #000}
+.cs-tile[data-status="icebar"]{display:none}
+/* Frozen: the crust over the feet and a cold tint on the foe. */
+.bi-crust{position:absolute;left:50%;bottom:2%;width:96%;height:auto;translate:-50% 0;pointer-events:none;z-index:3;opacity:.92;
+  filter:drop-shadow(0 0 6px #8fe3ff) drop-shadow(0 2px 2px #0008);transform-origin:50% 100%}
+.actor.bi-frozen>.sprite-body,.actor.bi-frozen .sprite-body{filter:saturate(.45) brightness(1.08) hue-rotate(-12deg) drop-shadow(0 0 6px #9be7ff)!important}
+.bi-shard{position:absolute;left:50%;bottom:16%;width:18%;height:auto;pointer-events:none;z-index:4;filter:hue-rotate(160deg) brightness(1.3)}
+/* Guard: a broken amber ward at the feet, breathing. */
+.bi-guard{position:absolute;left:50%;bottom:1%;width:78%;opacity:.85;height:auto;translate:-50% 0;pointer-events:none;z-index:3;
+  filter:drop-shadow(0 0 6px #ffb340);animation:bi-guard 1.6s ease-in-out infinite}
+@keyframes bi-guard{50%{opacity:.55;scale:1.03}}
+/* Rage: comets fly to the gauge; a combo bonus bursts there. */
+.bi-comet{position:fixed;width:46px;height:auto;margin:-10px 0 0 -23px;pointer-events:none;z-index:60;mix-blend-mode:screen}
+.bi-burst{position:fixed;width:58px;height:58px;margin:-29px 0 0 -29px;pointer-events:none;z-index:61;display:grid;place-items:center}
+.bi-burst img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 6px #c58cff)}
+.bi-burst b{position:relative;font:900 15px/1 Georgia,serif;color:#fff;text-shadow:0 0 4px #6a2bb0,0 1px 2px #000}
+.reduced-motion .tile.special::before,.reduced-motion .bi-launcher,.reduced-motion .bi-fuse,.reduced-motion .tile.special.bomb .gem,
+.reduced-motion .bi-core,.reduced-motion .bi-ring,.reduced-motion .tile.special.selected::after,.reduced-motion .bi-guard,.reduced-motion #board .tile.bi-target::after{animation:none!important}
+
+/* Review round 1 (Codex 7.4): three bold streaks on Sao băng, the bomb's gem in front of its cage, a bigger fuse, a bigger
+   ice bar, ice up to the waist, the ward around the lower body, thicker comets and the combo label beside the gauge. */
+.bi-streaks{position:absolute;left:50%;top:50%;width:112%;height:62%;translate:-50% -50%;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;z-index:-1}
+.tile.special.bolt[data-dir="col"] .bi-streaks{rotate:90deg}
+.bi-streaks i{height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,#c9f6ff 18%,#fff 50%,#c9f6ff 82%,transparent);box-shadow:0 0 6px #5fdcff,0 0 2px #fff;animation:bi-streak 1.1s ease-in-out infinite}
+.bi-streaks i:nth-child(2){animation-delay:.09s}
+.bi-streaks i:nth-child(3){animation-delay:.18s}
+@keyframes bi-streak{50%{opacity:.55;scale:1.08 1}}
+.tile.special.bomb .item-art{scale:.74;translate:0 6%;position:relative;z-index:1;filter:drop-shadow(0 0 4px #fff7) drop-shadow(0 2px 2px #000a)}
+.bi-cage{opacity:.88}
+.bi-fuse{width:62%;right:-10%;top:-26%;z-index:2;filter:drop-shadow(0 0 6px #ffb347) brightness(1.15)}
+.bi-icebar{gap:3px;padding:3px 8px 3px 7px}
+.bi-icebar i{width:13px;height:32px}
+.bi-icebar b{font-size:13px}
+.bi-icebar .bi-pip-empty{opacity:.95;filter:brightness(1.25)}
+.bi-crust.up{bottom:22%;width:70%;opacity:.8;scale:-1 1;filter:drop-shadow(0 0 5px #8fe3ff)}
+.bi-guard{bottom:14%;width:92%;opacity:.78}
+.bi-shard{width:26%}
+.bi-comet{width:70px;margin:-15px 0 0 -35px;filter:drop-shadow(0 0 6px #b06bff) brightness(1.25)}
+.bi-burst{width:64px;height:64px;margin:-32px 0 0 -32px}
+.bi-burst b{position:absolute;left:58px;top:50%;translate:0 -50%;white-space:nowrap;font-size:14px;padding:2px 7px;border-radius:8px;background:#2a1240d9;box-shadow:inset 0 0 0 1px #c58cff80}
+.bi-burst.left b{left:auto;right:58px}
+.bi-burst b{left:56px}
+/* Review round 2 (Codex 8.1): crisp icicle shards, three streaks with dark gaps, a stronger rage comet. */
+.bi-shard{width:11%;filter:drop-shadow(0 0 2px #bff3ff) drop-shadow(0 1px 1px #0009)}
+.bi-shard.big{width:17%}
+.bi-streaks{height:84%}
+.bi-streaks i{height:2.5px;background:linear-gradient(90deg,transparent,#9eeeff 15%,#fff 50%,#9eeeff 85%,transparent);box-shadow:0 0 3px #4fd6ff}
+.bi-comet{width:84px;margin:-18px 0 0 -42px;mix-blend-mode:normal;filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px #a64dff) brightness(1.35) saturate(1.3)}

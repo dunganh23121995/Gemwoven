@@ -1,0 +1,8 @@
+Game asset sheet for the 2D fantasy match-3 mobile game Gemwoven, same painted style as the reference gems (polished gold, bronze and gemstones, crisp outlines, rich highlights). Solid flat MAGENTA #FF00FF background everywhere, no gradient, no shadow on the background, no text, no labels, no frame.
+Layout: a 3 columns x 2 rows grid of equal cells; each piece centred in its own cell with generous magenta space around it; nothing touches a cell edge or another piece.
+Cell 1 (top left): a HORIZONTAL rune launcher frame for a special gem: one straight slim gold-and-bronze bar crossing left to right, two big bold gold arrowheads at the ends pointing LEFT and RIGHT, and three short parallel bright cyan-white light streaks above, through and below the bar. The CENTRE of the bar is an EMPTY round gap (no gem drawn) where a gem will be placed later. Perfectly horizontal, symmetric.
+Cell 2 (top middle): an OPEN bronze cage sphere for a bomb gem: thin curved ribs forming a sphere, small rivets, the INSIDE is EMPTY (magenta shows through between the ribs, no gem drawn), a short dark fuse stub with a little brass cap on top. Fewer gold details, clean silhouette.
+Cell 3 (top right): a bright burning fuse flame/spark: small teardrop flame, orange-yellow with a white hot core and a few sparks.
+Cell 4 (bottom left): a prism orb "rainbow core": round crystal orb with a bright WHITE glowing core and a few BIG faceted rainbow panels (red, orange, yellow, green, cyan, blue, violet), crisp facets, no ring.
+Cell 5 (bottom middle): one simple thin gold rune ring, seen slightly tilted as a flat ellipse, with small engraved runes, empty inside.
+Cell 6 (bottom right): a crisp four-point star burst flash, white-gold with a thin cyan edge, sharp points, for a creation pop.
