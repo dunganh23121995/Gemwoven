@@ -9,9 +9,11 @@
   const HERO_RAGE=[3,2,7,2,2];
   // A foe in PvE keeps its own rule: 3 a gem, and 25 more for the first purple of a resolution.
   const FOE_RAGE={perGem:3,firstCrystal:25};
-  // A foe's sword gem (×8 × its attack): bosses lost most of their frozen turns to the guard, so their swords hit softer
-  // (1.15 → 0.82, Codex tuning: Hiro back to about half of chapter bosses at the recommended level).
-  const FOE_SWORD={common:.55,boss:.82};
+  // A foe's sword gem (×8 × its attack). Bosses hit at the original 1.15 (owner 05/11: the 0.82 trial is undone).
+  const FOE_SWORD={common:.55,boss:1.15};
+  // Nori's seal: his hits during it still land, and this share of each also builds the burst (owner 05/11). PvE stores
+  // the whole hit; duels store 2/3, so n + 2/3·n × 3 keeps the old damage budget there (Codex).
+  const NORI_SEAL_STORE={pve:1,duel:2/3};
   // One bonus per board resolution by its number of waves (only the highest tier reached, never summed).
   const COMBO_RAGE=[0,0,3,6,10,15];
   const comboRage=waves=>COMBO_RAGE[Math.max(0,Math.min(COMBO_RAGE.length-1,Math.floor(waves)||0))];
@@ -27,5 +29,5 @@
   // energy, foe effects).
   function heroRage(type,{purple=0,factor=1}={}){const base=type===GEM.crystal&&purple?purple:HERO_RAGE[type]||0;return base*factor;}
   // Kits (progression.js skillKit) own the hero numbers: Lumi's purple value and each hero's Biến Thân effect.
-  return {GEM,HERO_RAGE,FOE_RAGE,FOE_SWORD,COMBO_RAGE,comboRage,ULTIMATE,ICE,CONTROL_GUARD,iceThreshold,guardTurns,heroRage};
+  return {GEM,HERO_RAGE,FOE_RAGE,FOE_SWORD,NORI_SEAL_STORE,COMBO_RAGE,comboRage,ULTIMATE,ICE,CONTROL_GUARD,iceThreshold,guardTurns,heroRage};
 });

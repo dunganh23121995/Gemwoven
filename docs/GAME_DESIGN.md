@@ -147,11 +147,16 @@ Chủ dự án (04/11): "bỏ phần mô tả yêu cầu và tên ngay cạnh k�
 - Một lần mỗi trận: thanh năng lượng có vạch **Biến Thân**; kích hoạt khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai.
 - 3 lượt (cấp 400 + TH5: 4): giảm 15% sát thương nhận (+1% mỗi cấp Chân Thân), miễn choáng/đóng băng mới, và **hiệu ứng
   bàn ngọc riêng của tướng** (vòng Bàn ngọc, chủ dự án 05/11; thay Công +25..40% chung; **không còn dư âm sức mạnh**,
-  dư âm chỉ là hình). Cấp 1, mỗi cấp thêm chút: Hiro nhóm Kiếm đầu lượt +10% (+0,5%/cấp, vẫn yếu hơn +25% cũ);
-  Mika nhóm Kiếm đầu lượt đặt thiêu đốt 16×Công/lượt × 2 lượt (+4%/cấp); Yuki 2 Băng đủ đóng băng (trùm: thanh 4);
-  Nori Tim/Khiên ×1,5 (+0,02/cấp), 25% máu hồi dư thành giáp (trần 4% HP/lượt); Lumi tím 16 nộ/viên (+0,3/cấp),
-  tối đa 75 nộ/lượt; Noct combo từ đợt 2 Kiếm chí mạng ×1,5 (+0,02/cấp), combo 3 đợt né đòn thường kế tiếp (một lần).
-  Số trong `progression.js` `transformEffect`, áp dụng ở `live-combat.js` / `board-control.js`.
+  dư âm chỉ là hình). **Mạnh rõ rệt (chủ dự án 05/11, Codex đồng ý):** mỗi tướng thêm **sát thương +X%** cho mọi đòn
+  trong lúc Biến Thân, cộng hiệu ứng riêng: Hiro +13% và nhóm Kiếm đầu lượt +10% (tổng ≤ +25% cũ, không mạnh hơn);
+  Mika +40%, nhóm Kiếm đầu lượt đặt thiêu đốt 16×Công/lượt × 2 lượt (+4%/cấp); Yuki +45%, 2 Băng đủ đóng băng (trùm:
+  thanh 4); Nori +45%, Tim/Khiên ×1,5 (+0,02/cấp), 25% máu hồi dư thành giáp (trần 4% HP/lượt); Lumi +30%, tím 16 nộ/viên
+  (+0,3/cấp), tối đa 75 nộ/lượt; Noct +40%, combo từ đợt 2 Kiếm chí mạng ×1,5 (+0,02/cấp), combo 3 đợt né đòn thường kế
+  tiếp (một lần). Đo (`balance-sim.cjs`, `TF=shell` = cùng cửa sổ không hiệu ứng, ải 400/500, 4★, Chân Thân cấp 3): sát
+  thương mỗi lượt khi Biến Thân **×1,39–1,48** với tướng hiếm, Hiro ×1,18–1,20 (+Công 25% cũ ×1,19–1,28; bộ trước chỉ
+  ×0,99–1,14). Tỷ lệ thắng cả trận chỉ +0–6 điểm vì cửa sổ 3 lượt/trận.
+  Số trong `progression.js` `transformEffect` (`power` áp qua `progressionTransformBonus`), hiệu ứng bàn ở
+  `live-combat.js` / `board-control.js`.
 - **Cổng mới khi làm Biến Thân: cấp 180 + TH3** (Codex: cấp 400 cần tối thiểu 190 ngày theo trần Ấn —
   khoảnh khắc hay nhất không được đến muộn vậy). Cấp 400 + TH5 nâng hiệu quả Biến Thân.
 - Tắt trong hàng PvP Chuẩn Hóa, 1vs1 cùng máy và giao hữu. **Đã làm:** nút "BIẾN THÂN" cạnh tướng hiện khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai; bấm không tốn lượt; đếm theo lượt của tướng; miễn choáng/đóng băng mới; hào quang vàng; dư âm sau đó; bỏ thưởng Công/HP Chân Thân cũ. Bot trận thật tự bấm Biến Thân.
@@ -295,11 +300,15 @@ phỏng (`qa/gemwoven/balance-sim.cjs`): `src/gemwoven/board-rules.js`.
 | Tuyệt kỹ | 100 nộ, thanh tối đa 199, **một tuyệt kỹ mỗi lượt của mình**, tung sau khi bàn giải xong |
 | Băng | thường/tinh anh: 3 Băng trong một lần giải bàn → đóng băng; trùm: thanh **0/6 cộng dồn qua các lượt** |
 | Chống khóa | sau choáng/đóng băng, quái phải hành động đủ **1** lượt (trùm **2**) mới bị khống chế lại; Phong ấn Nori lúc đó chỉ tích sát thương |
-| Kiếm quái | thường ×0,55, trùm **×0,82** (trước 1,15; trùm mất phần lớn lượt bị khóa nên đánh nhẹ lại) |
+| Phong ấn Nori | đòn của Nori trong phong ấn **vẫn gây sát thương** và tích thêm toàn bộ đòn đó vào bộc phá ×3 (PvP tích 2/3 để giữ ngân sách cũ); bộc phá nổ một lần, không nhân hệ/sức mạnh lần hai. Giữ đặc tính sát thương 75% (chủ dự án 05/11) |
+| Kiếm quái | thường ×0,55, trùm **×1,15** (chủ dự án 05/11: bỏ thử 0,82, khôi phục như cũ) |
 
 Ô trạng thái: "Tích băng n/6" trên trùm, "Kháng khống chế" khi đang được bảo hộ. Đo (200–300 trận/ô, cấp gợi ý, có đồ):
 khóa lượt quái 35% → 14% (trùm), Hiro trùm ải 100 54% → 51%, ải 50 89% → 94%; tướng hiếm 1★ trùm 96–100%; nhịp
-tuyệt kỹ ~4,7 → ~4,2 lượt (Lumi 2,1 → 3,5). Chưa đạt: Nori trận trùm 120–140 lượt (1★ 72–75%), chờ chủ dự án chốt.
+tuyệt kỹ ~4,7 → ~4,2 lượt (Lumi 2,1 → 3,5).
+**Sau chốt 05/11 (kiếm trùm 1,15, Nori gây + tích):** Hiro 1★ trùm ải 50/100/150 **62/12/3%** (2★ 82/33/8%; luật cũ trước vòng
+bàn ngọc 89/54/19%) — chủ dự án chọn không buff Hiro; Mika 1★ 99/84/88%; Lumi 1★ 75/99/83%; Noct 1★ 99/91/72%; Yuki ~100%;
+Nori 1★ 94/96/20% (trước 75/72/7%), 107–163 lượt, 4★ 100/100/85%.
 
 ### 5.5 Biểu tượng hiệu ứng trên đầu nhân vật, tên tài khoản PvP [Có · Claude + Codex, 04/11]
 Chủ dự án: "Không cần hiện tên… thay bằng biểu tượng băng, ×2, suy kiệt, thiêu đốt, choáng… các hiệu ứng buff, bất lợi"; "Sau PvP thì tên

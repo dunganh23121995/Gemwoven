@@ -6,6 +6,7 @@
  *   node qa/gemwoven/balance-sim.cjs [fights=300] [--json out.json]   prints a table (and keeps a JSON copy)
  */
 const M=require('../../src/gemwoven/progression.js'),R=require('../../src/gemwoven/board-rules.js');
+// TF=shell opens the same Biến Thân window with no effect at all (the baseline a look's spike is measured against).
 // BOARD_OLD=1 replays the rules before the board round (7/2/5/2/2, no guard, ice drain); TF=none|old|new picks the Biến Thân model.
 // STEP2=1 keeps the old rage table with the new control, combo rage and one ultimate a turn (step ii alone).
 const BOSS_SWORD=+(process.env.BOSS_SWORD||(process.env.BOARD_OLD==='1'?1.15:R.FOE_SWORD.boss));
@@ -29,18 +30,23 @@ function resolve(b,[i,j],rand){swap(b,i,j);const waves=[];let m;while((m=matches
 function fight(hero,enc,seed,{skill=.8}={}){
   const rand=rng(seed),b=board(rand),kit=hero.kit,s=hero.stats;
   const st={hp:s.hp,max:s.hp,armor:0,energy:kit.startEnergy||0,eHp:enc.enemyHp,eMax:enc.enemyHp,eArmor:0,eEnergy:0,stun:0,frozen:false,burn:null,regen:0,stored:0,enraged:false,turn:0,ults:0,foeTurns:0,lost:0,
-    guard:0,iceBar:0,sealFree:0,tf:0,tfUsed:false,dodge:false,dodged:false};
+    guard:0,iceBar:0,sealFree:0,tf:0,tfUsed:false,dodge:false,dodged:false,tfDmg:0,tfTurns:0,baseDmg:0,baseTurns:0};
   const heroCap=Math.max(999,Math.round(st.max*.5)),foeCap=Math.max(999,Math.round(st.eMax*.08));
   const heroMult=(hero.key!=='novice'&&hero.key!=='shadow'&&BEATS[hero.key]===enc.enemyKey)?1.5:1;
   const foeMult=(hero.key!=='shadow'&&BEATS[enc.enemyKey]===hero.key)?1.5:1;
   // Biến Thân: the old shared +Công (BOARD_OLD or TF=old) or each hero's board effect (TF=new, the default); TF=none skips it.
-  const tfKit=TF==='none'||!kit.transform?null:TF==='old'?{turns:kit.transform.turns,attack:.25+(Math.max(1,kit.ranks[3])-1)*.15/9,after:.1}:kit.transform;
+  const tfKit=TF==='none'||!kit.transform?null:TF==='shell'?{turns:kit.transform.turns,reduce:1e-9}:TF==='old'?{turns:kit.transform.turns,attack:.25+(Math.max(1,kit.ranks[3])-1)*.15/9,after:.1}:kit.transform;
   const takeHero=n=>{n=Math.round(n*foeMult*(st.enraged?1.25:1)*(1-kit.damageReduction)*(st.tf>0?1-(tfKit.reduce||.15):1)*Math.max(.5,1-s.defense));const blocked=Math.min(st.armor,n);st.armor-=blocked;st.hp-=n-blocked;};
   const storing=()=>hero.key==='earth'&&(st.stun>0||st.sealFree>0);
-  const hitFoe=n=>{n=Math.round(n*heroMult);if(storing()){st.stored+=n;return;}const blocked=Math.min(st.eArmor,n);st.eArmor-=blocked;st.eHp-=n-blocked;if(!st.enraged&&enc.boss&&st.eHp<=st.eMax*.4)st.enraged=true;};
+  // Nori's seal: his hits still land and a share of each also builds the burst (owner 05/11; SEAL_STORE overrides for tuning).
+  // Biến Thân power (each hero's own number, TF_POWER overrides for tuning) lifts all hero damage while it lasts.
+  const sealStore=process.env.SEAL_STORE!=null?+process.env.SEAL_STORE:OLD?null:R.NORI_SEAL_STORE.pve;
+  const tfPower=()=>{if(!(st.tf>0)||TF!=='new'||!tfKit)return 0;const o=process.env.TF_POWER&&JSON.parse(process.env.TF_POWER);return o&&o[hero.key]!=null?o[hero.key]:tfKit.power||0;};
+  const hitFoe=n=>{n=Math.round(n*heroMult*(1+tfPower()));if(st.tf>0)st.tfDmg+=n;else st.baseDmg+=n;if(storing()){if(sealStore==null){st.stored+=n;return;}st.stored+=Math.round(n*sealStore);}const blocked=Math.min(st.eArmor,n);st.eArmor-=blocked;st.eHp-=n-blocked;if(!st.enraged&&enc.boss&&st.eHp<=st.eMax*.4)st.enraged=true;};
   const heal=n=>{const before=st.hp;st.hp=Math.min(st.max,st.hp+n);return st.hp-before;};
   const blocked=()=>!OLD&&(st.guard>0||st.frozen||st.stun>0);
-  const burst=()=>{const b2=st.stored*kit.burst;st.stored=0;hitFoe(b2);};
+  // The burst lands once, without the element, power or other multipliers a second time (as combat does).
+  const burst=()=>{const b2=Math.round(st.stored*kit.burst);st.stored=0;const blocked=Math.min(st.eArmor,b2);st.eArmor-=blocked;st.eHp-=b2-blocked;if(st.tf>0)st.tfDmg+=b2;else st.baseDmg+=b2;};
   const value=(m,side)=>{let v=0;const own=side==='hero';for(const k of m){const t=b[k];v+=t===SWORD?1:t===CRYSTAL?(own?(st.energy>=60?.9:.6):.7):t===HEART?(own?(st.hp<st.max*.5?1:.3):.3):t===SHIELD?.4:.35;}return v;};
   const pick=side=>{const list=moves(b);let best=list[0],bv=-1;for(const mv of list){const v=value(mv[2],side)+rand()*.01;if(v>bv){bv=v;best=mv;}}return rand()<(side==='hero'?skill:.85)?best:list[Math.floor(rand()*list.length)];};
   const enemySkills=enc.skillSet.length?enc.skillSet:[{kind:'strike',power:1}];let skillTurn=0;
@@ -53,7 +59,7 @@ function fight(hero,enc,seed,{skill=.8}={}){
     if(st.burn){hitFoe(st.burn.dmg);if(--st.burn.turns<=0)st.burn=null;}
     if(kit.regen)heal(Math.round(st.max*kit.regen));if(st.regen>0){heal(kit.heal*s.attack**.5|0);st.regen--;}
     if(tfKit&&!st.tfUsed&&(st.hp<=st.max*.5||st.ults>=2)){st.tfUsed=true;st.tf=tfKit.turns;}
-    const tf=st.tf>0?tfKit:null,tfNew=tf&&TF!=='old';
+    const tf=st.tf>0?tfKit:null,tfNew=tf&&TF!=='old';if(tf)st.tfTurns++;else st.baseTurns++;
     const waves=resolve(b,pick('hero'),rand);let chain=0,rage=0,firstSword=0,burned=false,overflow=0,ice=0;
     for(const [wi,w] of waves.entries()){
       chain=w[SWORD]?chain+1:0;
@@ -112,7 +118,7 @@ function fight(hero,enc,seed,{skill=.8}={}){
       else{takeHero(enc.enemySkillBase*(sk.power||1)*enc.enemyAttack);if(sk.kind==='drain')st.energy=Math.max(0,st.energy-(sk.drain||15));}}
     if(!OLD){if(st.guard>0)st.guard--;if(st.sealFree>0&&--st.sealFree===0&&st.stored)burst();}
   }
-  return {won:st.eHp<=0&&st.hp>0,turns:st.turn,hpLeft:Math.max(0,st.hp)/st.max,ults:st.ults,foeTurns:st.foeTurns,lost:st.lost};
+  return {won:st.eHp<=0&&st.hp>0,turns:st.turn,hpLeft:Math.max(0,st.hp)/st.max,ults:st.ults,foeTurns:st.foeTurns,lost:st.lost,tfDmg:st.tfDmg,tfTurns:st.tfTurns,baseDmg:st.baseDmg,baseTurns:st.baseTurns};
 }
 // ---- Scenarios ----
 function heroAt(key,level,stars,evolution,{gear=null,gearLevel=0,skills,relic=true}={}){
@@ -125,8 +131,10 @@ function heroAt(key,level,stars,evolution,{gear=null,gearLevel=0,skills,relic=tr
 function bare(key,level,stars){const evo=M.EVOLUTION.filter(e=>level>=e.level&&stars>=e.stars).length;return heroAt(key,level,stars,evo,{skills:[1,level>=10?1:0,evo>=2?1:0,0],relic:false});}
 function typical(key,level,stars){const evo=M.EVOLUTION.filter(e=>level>=e.level&&stars>=e.stars).length;const gear=level>=60?'epic':level>=30?'rare':level>=10?'uncommon':null;return heroAt(key,level,stars,evo,{gear,gearLevel:Math.min(20,Math.floor(level/8))});}
 // Also reports the ultimate cadence (hero turns per ultimate) and the share of foe turns lost to freeze or stun.
-function rate(hero,mode,index,n){let won=0,turns=0,allTurns=0,ults=0,foeTurns=0,lost=0;for(let i=0;i<n;i++){const r=fight(hero,M.encounter(mode,index),1000+i*7919);allTurns+=r.turns;ults+=r.ults;foeTurns+=r.foeTurns;lost+=r.lost;if(r.won){won++;turns+=r.turns;}}
-  return {win:won/n,turns:won?turns/won:null,cadence:ults?allTurns/ults:null,lockShare:foeTurns?lost/foeTurns:0};}
+function rate(hero,mode,index,n){let won=0,turns=0,allTurns=0,ults=0,foeTurns=0,lost=0,tfDmg=0,tfTurns=0,baseDmg=0,baseTurns=0;for(let i=0;i<n;i++){const r=fight(hero,M.encounter(mode,index),1000+i*7919);allTurns+=r.turns;ults+=r.ults;tfDmg+=r.tfDmg;tfTurns+=r.tfTurns;baseDmg+=r.baseDmg;baseTurns+=r.baseTurns;foeTurns+=r.foeTurns;lost+=r.lost;if(r.won){won++;turns+=r.turns;}}
+  return {win:won/n,turns:won?turns/won:null,cadence:ults?allTurns/ults:null,lockShare:foeTurns?lost/foeTurns:0,
+    // Damage per hero turn while Biến Thân is up against the rest of the fight (how strong the spike feels).
+    tfSpike:tfTurns&&baseTurns&&baseDmg?(tfDmg/tfTurns)/(baseDmg/baseTurns):null};}
 // --six: the six heroes at 1/4/6★ (level = recommended) against a common stage, an elite and two bosses.
 function six(n){const rows=[],heroes=[['Hiro','novice'],['Mika','fire'],['Yuki','ice'],['Nori','earth'],['Lumi','lightning'],['Noct','shadow']];
   const stages=[['ải 12 thường',12],['ải 10 tinh anh',10],['ải 50 boss',50],['ải 100 boss',100]];

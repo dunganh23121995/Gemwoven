@@ -313,9 +313,11 @@ function damage(side,raw,ledger=null){
   if(ledger)ledger.raw+=raw;
   let n=Math.round((ledger?ledger.raw:raw)*mult(attackerKey,defenderKey)*(side==='enemy'&&state.enraged?1.25:1));if(target==='hero'&&progressionKit(state.key).damageReduction)n=Math.round(n*(1-progressionKit(state.key).damageReduction));
   if(ledger){const total=n;n-=ledger.applied;ledger.applied=total;}
+  // Nori's seal: his hit still lands, and a share of it also builds the burst (owner 05/11; board-rules NORI_SEAL_STORE).
   if(side==='hero'&&state.key==='earth'&&state.noriStunTurns>0&&state.enemyHp>0&&state.hp>0){
-    state.noriStoredDamage=(state.noriStoredDamage||0)+n;update();
-    return {amount:0,blocked:0,stored:n};
+    const share=GemwovenBoardRules.NORI_SEAL_STORE[typeof progressionIsDuel==='function'&&progressionIsDuel()?'duel':'pve'],stored=Math.round(n*share);
+    state.noriStoredDamage=(state.noriStoredDamage||0)+stored;
+    return {...applyCombatDamage(target,n),stored};
   }
   return applyCombatDamage(target,n);
 }

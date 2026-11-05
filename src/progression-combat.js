@@ -181,6 +181,7 @@ function progressionDamage(side,raw,ledger=null){
   const s=progressionBattle.stats,kit=progressionKit(progressionBattle.hero);
   let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.enemyAttack;
   if(side==='enemy'&&progressionTransform?.left>0)factor*=1-(progressionTransformKit()?.reduce||0);
+  if(side==='hero')factor*=1+progressionTransformBonus();
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   // Hiro form 3 (Tứ Hệ): a mild ultimate bonus (×1,15); the free starter is not to be made strong.
   if(side==='hero'&&progressionCasting&&kit.tetra)factor*=kit.tetra;
@@ -277,8 +278,9 @@ let progressionTrialScore=null;
 let progressionTransform=null,progressionUlts=0;
 function progressionTransformKit(){return progressionBattle&&!progressionIsDuel()?progressionKit(progressionBattle.hero)?.transform||null:null;}
 function progressionTransformReady(){const t=progressionTransformKit();return !!t&&!progressionTransform&&!ended&&state.hp>0&&state.enemyHp>0&&(state.hp<=HEROES[state.key].hp*.5||progressionUlts>=2);}
-// The shared +Công is gone (owner 05/11): each hero's own board effect applies in live-combat.js / board-control.js.
-function progressionTransformBonus(){return 0;}
+// While Biến Thân lasts each hero's own power lifts all its damage (owner 05/11); its board effects apply in
+// live-combat.js / board-control.js. Nothing stays after it (no permanent afterglow bonus).
+function progressionTransformBonus(){return progressionTransform?.left>0?progressionTransformKit()?.power||0:0;}
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}

@@ -320,7 +320,7 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
         combatV3Impact(targetSide,key,direction,strong||boss,pending);
         if(key==='earth')combatV3Earth(contact,ultimate,pending);
       }
-      combatV3Number(targetSide,result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
+      combatV3Number(targetSide,result.stored?(result.amount?'-'+result.amount+' · TÍCH +'+result.stored:'TÍCH +'+result.stored):result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
       if(hits>1){
         const count=document.createElement('span');count.className='combat-v3-hit-count';count.textContent=String(i+1).padStart(2,'0')+' / '+String(hits).padStart(2,'0');$('combatEffects').append(count);
         combatV3Fx(count,[{opacity:0,transform:'translate(-50%,5px)'},{opacity:1,transform:'translate(-50%,0)',offset:.2},{opacity:0,transform:'translate(-50%,-3px)'}],{duration:520},pending);

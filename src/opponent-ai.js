@@ -148,14 +148,17 @@ const OpponentAI = (() => {
     const beats = { fire: 'ice', ice: 'earth', earth: 'lightning', lightning: 'fire' };
     let value = Math.round(raw * (beats[attacker] === defender ? 1.5 : 1) * (enemy && current.enraged ? 1.25 : 1));
     if (enemy && current.key === 'ice') value = Math.round(value * .8);
+    // Nori's seal: the hit still lands and the whole hit (2/3 in duels) also builds the ×3 burst (owner 05/11).
+    let pending = 0;
     if (!enemy && current.key === 'earth' && current.noriStunTurns > 0) {
-      current.noriStoredDamage += value;
-      return value * 3 * .8; // Discount the pending burst until the seal expires.
+      const stored = Math.round(value * (current.duel ? 2 / 3 : 1));
+      current.noriStoredDamage += stored;
+      pending = stored * 3 * .8; // Discount the pending burst until the seal expires.
     }
     const hp = enemy ? 'hp' : 'enemyHp', armor = enemy ? 'armor' : 'enemyArmor';
     const blocked = Math.min(current[armor], value), dealt = Math.min(current[hp], value - blocked);
     current[armor] -= blocked; current[hp] -= dealt;
-    return dealt + blocked * .72;
+    return dealt + blocked * .72 + pending;
   }
 
   function loot(current, counts, side) {
