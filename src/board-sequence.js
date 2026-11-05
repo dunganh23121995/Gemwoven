@@ -413,19 +413,32 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
     await Promise.all(ordinary.map(t=>animate(t.el.firstElementChild,[{filter:'brightness(1)',transform:'scale(1)'},{filter:'brightness(1.3)',transform:'scale(.94)'}],{duration:BOARD_V5_PACING.anticipation,easing:'ease-in-out'})));
     for(const t of ordinary){detonate(t);await boardV3Pause(beat);}
   }
-  // A chained special fires 50 ms after a blast reaches it (Codex: no waiting for the whole wave before it); one that is
-  // never reached by a visible blast still fires once its generation's turn comes (src/board-specials.js chain).
-  const reached=new Map(),primedAdd=primed.add.bind(primed);
-  primed.add=t=>{const r=primedAdd(t);reached.get(t)?.();return r;};
+  // A special inside a blast fires the moment the blast reaches it (owner 06/11: "nằm trong phạm vi bị phá hủy thì khi
+  // bị phá cũng kích hoạt luôn, không chờ đến lượt"). The others (the move's own, or one no visible blast reached) never
+  // start together: each starts SPECIAL_FX.gap (0.2 s) after the one before it started, and they overlap.
   const sequence={targets,cleared,sources,primed,tails,charge,beat,detonate};
-  const stagger=typeof SPECIAL_FX==='object'?SPECIAL_FX.stagger:50,gens=[...new Set(plan.acts.map(a=>a.gen||0))].sort((a,b)=>a-b),done=new Map();
-  for(const gen of gens){
-    const before=gens.filter(g=>g<gen).map(g=>done.get(g));
-    done.set(gen,Promise.all(plan.acts.filter(a=>(a.gen||0)===gen).map((act,i)=>(gen===gens[0]?boardV3Pause(Math.min(i,6)*stagger)
-      :Promise.race([new Promise(r=>{if(primed.has(act.tile))r();else reached.set(act.tile,r);}),Promise.all(before)]).then(()=>boardV3Pause(stagger)))
-      .then(()=>specialEffect(act,sequence)))));
+  const started=new Set(),primedAdd=primed.add.bind(primed),byTile=new Map(plan.acts.map(a=>[a.tile,a])),runs=[],waiting=new Map();
+  let nextAt=0;
+  // join(act) books a start; join(act,true) (a blast reached it) starts it at once, even when it was already booked.
+  const join=(act,now=false)=>{
+    if(!act)return;
+    if(waiting.has(act)){if(now)waiting.get(act)();return;}
+    if(started.has(act))return;
+    let done,timer=0;const finished=new Promise(r=>done=r);runs.push(finished);
+    const fire=()=>{if(started.has(act))return;started.add(act);waiting.delete(act);clearTimeout(timer);
+      specialEffect(act,sequence).catch(error=>console.error(error)).finally(done);};
+    const t=performance.now(),at=now?t:Math.max(t,nextAt);nextAt=Math.max(nextAt,at+(reduced?0:SPECIAL_FX.gap));
+    waiting.set(act,fire);if(at>t)timer=setTimeout(fire,at-t);else fire();};
+  primed.add=t=>{const r=primedAdd(t);const act=byTile.get(t);if(act&&(act.gen||0)>0)join(act,true);return r;};
+  const drain=async()=>{let n;do{n=runs.length;await Promise.all(runs.slice());}while(runs.length!==n);};
+  const gens=[...new Set(plan.acts.map(a=>a.gen||0))].sort((a,b)=>a-b);
+  plan.acts.filter(a=>(a.gen||0)===gens[0]).forEach(a=>join(a));
+  for(let guard=0;guard<plan.acts.length+1;guard++){
+    await drain();
+    const next=gens.map(g=>plan.acts.filter(a=>(a.gen||0)===g&&!started.has(a)&&!waiting.has(a))).find(list=>list.length);
+    if(!next)break;next.forEach(a=>join(a));
   }
-  await Promise.all(done.values());
+  await drain();
   // Covers any unusual plan while preserving the exactly-once clear rule.
   for(const t of plan.targets)if(!cleared.has(t)){detonate(t);await boardV3Pause(beat);}
   await Promise.all(tails);
@@ -437,7 +450,9 @@ clearPlan = async function clearPlanV3(plan,chain,onImpact=()=>{}){
   await boardV3Pause(BOARD_V5_PACING.settle);
   $('boardFrame')?.classList.remove('special-playing');
   await gravity();
-  if(typeof boardComboSettle==='function')await boardComboSettle(plan,chain);
+  // Between Lõi + Lõi's full-board waves only a short beat (Codex round 5: the 4 waves ran 10–11 s, aim ≤ 8 s).
+  if(plan.fusion&&plan.fusion.wave<plan.fusion.total)await boardV3Pause(120);
+  else if(typeof boardComboSettle==='function')await boardComboSettle(plan,chain);
   if(hadFocus)focusTile(board[Math.max(0,Math.min(SIZE-1,focusRow))][Math.max(0,Math.min(SIZE-1,focusCol))]);
   else if(!all().some(t=>t.el.tabIndex===0))board[0][0].el.tabIndex=0;
 };

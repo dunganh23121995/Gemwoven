@@ -13,12 +13,15 @@
 const SPECIAL_FX=Object.freeze({
   bolt:{charge:150,cell:66,press:55,after:180},
   bomb:{arm:120,vortex:450,blast:300,after:130},
-  // Lõi (owner 05/11, twice: "từ từ + lần lượt, tổng ~2 s, cho phép đè lên nhau"): one beam after another around the
-  // orb over `span`, each growing out softly over `grow`; each gem is drawn in down its own beam as soon as it lands.
-  core:{lift:320,span:2000,grow:460,pull:620,shrink:220,nova:360},
-  wave:{appear:260,span:1200,grow:360,pull:480,shrink:180},
-  turn:{span:2000,grow:460,prime:280},
-  chainCharge:70,stagger:50,
+  // Lõi (owner 05/11: "lần lượt, cho phép đè lên nhau", then "lan sang các quả cầu khác cho nhanh lên, chồng lên nhau
+  // nhưng có độ trễ một ít"): one wisp after another around the orb over `span` (about 0.1 s apart for a dozen gems),
+  // each flying over `grow` and overlapping the next; each gem is drawn in down its own arc as soon as it lands.
+  core:{lift:280,span:1100,grow:300,pull:420,shrink:200,nova:360},
+  wave:{appear:100,span:380,grow:180,pull:240,shrink:110},
+  turn:{span:1100,grow:300,prime:220},
+  // Specials start `gap` ms apart and overlap (clearPlan; owner 06/11: 0.5 s, then 0.2 s); a chained Bom closes its
+  // vortex quicker.
+  chainCharge:60,chainVortex:240,gap:200,stagger:50,
   colors:{bolt:'#63dfff',bomb:'#ffb34d',ivory:'#fff6da'}
 });
 // Light-only pieces (blades, vortex, fireball, beams, stars) play out on their own: the refill never waits for a fading
@@ -75,21 +78,68 @@ function specialFxImage(group,name,x,y,w,h,attrs={}){
 // Gems a special clears in bulk pop as their own art (a quick bright swell into a few sparkles), not the grey halo and
 // ring the one-by-one match clear uses, which turned a 5×5 into a grid of circles (Codex review 2).
 const specialFxBaseBurst=boardBurst;
-boardBurst=function(t,color,kind){return kind==='mass'?specialFxMassBurst(t,color):kind==='quiet'?Promise.resolve():specialFxBaseBurst(t,color,kind);};
-async function specialFxMassBurst(t,color){
+boardBurst=function(t,color,kind){return kind==='mass'||kind==='quiet'||kind==='dust'?specialFxMassBurst(t,color,kind):specialFxBaseBurst(t,color,kind);};
+// A gem a special clears breaks apart (owner 05/11: "hiệu ứng các item vỡ ra xử lý thêm, sau đó bụi sao xuất hiện luôn
+// lan rộng ra xung quanh"): it swells and flashes, splits into four pieces of itself that tumble outward and fade, and
+// at once a burst of coloured stardust spreads out from where it stood and twinkles away. quiet (under the bomb's
+// fireball): no swell, the pieces and dust only. dust (reeled into a Lõi): the dust only. On the HTML layer, so the
+// compositor plays it; the refill waits only for the first 120 ms.
+const SPECIAL_FX_PIECES=['polygon(50% 50%,0 0,100% 0)','polygon(50% 50%,100% 0,100% 100%)','polygon(50% 50%,100% 100%,0 100%)','polygon(50% 50%,0 100%,0 0)'];
+// Particles are made a few dozen per frame and within a budget (owner 05/11: Bom + Bom "bị khựng lại 1 nhịp": its 49
+// gems broke in one frame and made ~900 pieces at once, stalling the page for 0.8 s). Each job creates its pieces when
+// its turn comes and gets fewer pieces the more are already playing, so a big clear thins out instead of stalling.
+const specialFxJobs=[];let specialFxPump=0;
+const specialFxLive=()=>($('specialFxLayer')?.firstElementChild?.childElementCount||0)+specialFxJobs.length*3;
+function specialFxLater(job){specialFxJobs.push(job);if(!specialFxPump)specialFxPump=requestAnimationFrame(specialFxFlush);}
+function specialFxFlush(){
+  specialFxPump=0;let made=0;
+  while(specialFxJobs.length&&made<36)made+=specialFxJobs.shift()()||1;
+  if(specialFxJobs.length)specialFxPump=requestAnimationFrame(specialFxFlush);
+}
+async function specialFxMassBurst(t,color,mode='mass'){
   if(reduced)return;
-  const {x,y}=boardV3Point(t),group=boardV3Group('mass-burst',t,'mass'),tasks=[];
-  const art=boardV3Child(group,'image',{x:x-44,y:y-44,width:88,height:88,href:itemImage(Math.max(0,t.type),t.special),preserveAspectRatio:'xMidYMid meet'});
-  boardV3Origin(art,x,y);
-  tasks.push(fxAnimate(art,[{opacity:1,transform:'scale(1)',filter:'brightness(1) saturate(1)'},{opacity:1,transform:'scale(1.14)',filter:'brightness(1.2) saturate(1.3)',offset:.35},{opacity:0,transform:'scale(.45)',filter:'brightness(1.35) saturate(1.2)'}],{duration:240,easing:'ease-out',fill:'forwards'}));
-  // Codex review 3: keep the gem's colour; a coloured mote and one sparkle carry it away, no white veil.
-  for(let i=0;i<2;i++){
-    const star=i?specialFxImage(group,'sparkle',x,y,30,30,{style:'mix-blend-mode:screen'})||boardV9Star(group,x,y,8,'#fff4cf'):boardV6Mote(group,x,y,Math.max(0,t.type),color||boardV3Color(t),i);
-    boardV3Origin(star,x,y);const a=(t.r*3+t.c*5+i*3)%6*Math.PI/3,d=26+i*10;
-    tasks.push(fxAnimate(star,[{opacity:0,transform:'translate(0px,0px) scale(.3)'},{opacity:1,transform:`translate(${Math.cos(a)*d*.5}px,${Math.sin(a)*d*.5}px) scale(1)`,offset:.4},{opacity:0,transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(.3)`}],{duration:320,delay:i*40,easing:'ease-out',fill:'forwards'}));
-  }
-  // The sparkles fade on their own; the refill waits only for the gem's own pop.
-  specialFxLoose(Promise.all(tasks).finally(()=>group.remove()));
+  const {x,y}=boardV3Point(t),src=itemImage(Math.max(0,t.type),t.special),seed=t.r*8+t.c,spin=(seed*47)%360;
+  if(mode==='mass')specialFxPlay(specialFxSprite('gem',x,y,88,88,{src}),[{opacity:1,transform:'scale(1)',filter:'brightness(1)'},{opacity:1,transform:'scale(1.16)',filter:'brightness(1.6) saturate(1.3)',offset:.5},{opacity:0,transform:'scale(1.05)',filter:'brightness(2)'}],{duration:130,easing:'ease-out'});
+  // The gem splits into four pieces of itself that tumble outward and fade (always four: Codex round 5).
+  if(mode!=='dust')specialFxLater(()=>{
+    const count=4;
+    SPECIAL_FX_PIECES.slice(0,count).forEach((clip,j)=>{
+      const k=count===2?j*2:j,piece=specialFxSprite('gem',x,y,84,84,{src});if(!piece)return;
+      piece.style.clipPath=count===2?(j?'inset(0 0 0 50%)':'inset(0 50% 0 0)'):clip;
+      const a=(k*90-90)*Math.PI/180+(spin/360-.5)*.6,d=34+(seed*13+k*29)%22,turn=(k%2?1:-1)*(70+(seed*7+k*31)%80);
+      specialFxPlay(piece,[{opacity:1,transform:'translate(0px,0px) rotate(0deg) scale(1)'},{opacity:1,transform:`translate(${Math.cos(a)*d*.45}px,${Math.sin(a)*d*.45}px) rotate(${turn*.4}deg) scale(.92)`,offset:.3},
+        {opacity:0,transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d+14}px) rotate(${turn}deg) scale(.6)`}],{duration:380,easing:'cubic-bezier(.2,.7,.4,1)'});
+    });
+    return count;
+  });
+  // The stardust (owner 05/11: "tan nhanh quá; thêm hiệu ứng bung ra rồi tan ra xung quanh"): stars burst out from the
+  // gem's centre, hang there twinkling, then drift further out while each breaks into two small glints that scatter
+  // sideways and fade, about 2.4–3 s in all. Five stars a gem on a quiet board, down to two on a busy one, each always breaking into its two glints.
+  specialFxLater(()=>{
+    const live=specialFxLive(),stars=live<220?5:live<380?3:2;
+    for(let k=0;k<stars;k++){
+      const r=(seed*31+k*17)%100/100,jitter=((seed*13+k*37)%50)-25,a=(k/stars*360+spin+jitter)*Math.PI/180,d=35+r*35+(k%2)*12,size=32+r*22,life=2200+r*800,delay=k*14;
+      const at=f=>`translate(${Math.cos(a)*d*f}px,${Math.sin(a)*d*f-(f>1?(f-1)*40:0)}px)`;
+      const star=specialFxSprite(SPECIAL_FX_DUST[(seed+k*2)%SPECIAL_FX_DUST.length],x,y,size,size);if(!star)break;
+      specialFxPlay(star,[{opacity:0,transform:`${at(0)} scale(.2) rotate(0deg)`},{opacity:1,transform:`${at(.62)} scale(1.25) rotate(18deg)`,offset:.1,easing:'cubic-bezier(.2,.8,.4,1)'},
+        {opacity:1,transform:`${at(.8)} scale(1) rotate(26deg)`,offset:.24},{opacity:.5,transform:`${at(.88)} scale(.85) rotate(32deg)`,offset:.38},
+        {opacity:1,transform:`${at(.95)} scale(1.05) rotate(38deg)`,offset:.52},{opacity:.6,transform:`${at(1.1)} scale(.8) rotate(46deg)`,offset:.72},
+        {opacity:0,transform:`${at(1.3)} scale(.3) rotate(60deg)`}],{duration:life,delay,easing:'ease-out'});
+      // As it fades, the star breaks into two glints that scatter to either side of its path (made when their time
+      // comes, so they never add to the burst's own frame).
+      setTimeout(()=>specialFxLater(()=>{
+        for(const side of [-1,1]){
+          const glint=specialFxSprite(SPECIAL_FX_DUST[(seed+k*2+(side>0?1:3))%SPECIAL_FX_DUST.length],x,y,size*.5,size*.5);if(!glint)break;
+          const b=a+side*1.1,from=at(1.1),far=26+r*20;
+          specialFxPlay(glint,[{opacity:0,transform:`${from} scale(.3)`},{opacity:1,transform:`${from} translate(${Math.cos(b)*far*.4}px,${Math.sin(b)*far*.4}px) scale(1)`,offset:.25},
+            {opacity:.4,transform:`${from} translate(${Math.cos(b)*far*.7}px,${Math.sin(b)*far*.7-8}px) scale(.8)`,offset:.6},{opacity:0,transform:`${from} translate(${Math.cos(b)*far}px,${Math.sin(b)*far-16}px) scale(.3)`}],
+            {duration:900,easing:'ease-out'});
+        }
+        return 2;
+      }),delay+life*.66);
+    }
+    return stars;
+  });
   await boardV3Pause(120);
 }
 function specialFxHit(t,sequence,kind,burst='mass'){
@@ -181,11 +231,24 @@ function specialFxBlade(origin,axis,sign,half,sequence,{delay=0}={}){
     specialFxPlay(star,[{opacity:0,transform:`${turn} translate(0px,0px) scale(.4)`},{opacity:1,transform:`${turn} translate(${to}px,${drift}px) scale(1.1)`,offset:.6},{opacity:0,transform:`${turn} translate(${to+30}px,${drift}px) scale(.3)`}],{duration:duration*(.4+i*.25)+160,delay,easing:'ease-out'});
   }
 }
+// After a sweep (owner 05/11: "các item ghép dọc ngang cũng nên có hiệu ứng gì đó sau khi quét xong"): each swept lane
+// keeps a faint afterglow streak that fades (the stardust comes from each gem as it breaks, specialFxMassBurst).
+function specialFxSweepTrail(origin,axis,half,delay=0){
+  if(reduced)return;
+  const along=axis==='col';
+  for(let d=-half;d<=half;d++){
+    const lane=along?origin.c+d:origin.r+d;if(lane<0||lane>=SIZE)continue;
+    const cx=along?lane*100+50:400,cy=along?400:lane*100+50;
+    specialFxPlay(specialFxSprite('beam',cx,cy,800,d?44:64),[{opacity:0,transform:`rotate(${along?90:0}deg) scaleY(1)`},{opacity:d?.35:.6,transform:`rotate(${along?90:0}deg) scaleY(.8)`,offset:.15},{opacity:0,transform:`rotate(${along?90:0}deg) scaleY(.15)`}],{duration:700,delay,easing:'ease-out'});
+  }
+}
 // The sweep of one or two axes; the gems of its band are hit in order of their distance from the origin.
 async function specialFxSweep(origin,axes,half,hits,sequence,{kind='bolt',delay=0}={}){
   const F=SPECIAL_FX.bolt,jobs=[];
   for(const axis of axes){
     specialFxBlade(origin,axis,1,half,sequence,{delay});specialFxBlade(origin,axis,-1,half,sequence,{delay});
+    // The stardust settles once the farther blade has reached its edge.
+    specialFxSweepTrail(origin,axis,half,delay+Math.max(axis==='col'?origin.r:origin.c,SIZE-1-(axis==='col'?origin.r:origin.c))*F.cell);
     const band=hits.filter(t=>axis==='col'?Math.abs(t.c-origin.c)<=half:Math.abs(t.r-origin.r)<=half);
     for(const t of band){const d=axis==='col'?Math.abs(t.r-origin.r):Math.abs(t.c-origin.c);
       // The key dips just before the blade reaches its centre, so it breaks under the blade.
@@ -216,20 +279,25 @@ async function specialFxVortex(origin,radius,hits,sequence,{duration=SPECIAL_FX.
 function specialFxFireball(origin,radius,inside,sequence){
   if(!reduced){
     const {x,y}=boardV3Point(origin),size=(radius*2+1)*100*1.05;
-    specialFxPlay(specialFxSprite('fireball',x,y,size,size),[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:1,transform:'scale(1.02) rotate(8deg)',offset:.27},{opacity:.85,transform:'scale(1.08) rotate(12deg)',offset:.55},{opacity:0,transform:'scale(1.16) rotate(16deg)'}],{duration:SPECIAL_FX.bomb.blast,easing:'cubic-bezier(.15,.8,.3,1)'});
+    specialFxPlay(specialFxSprite('fireball',x,y,size,size),[{opacity:0,transform:'scale(.3) rotate(0deg)'},{opacity:1,transform:'scale(1.02) rotate(8deg)',offset:.3},{opacity:.85,transform:'scale(1.08) rotate(12deg)',offset:.55},{opacity:0,transform:'scale(1.16) rotate(16deg)'}],{duration:SPECIAL_FX.bomb.blast,easing:'cubic-bezier(.15,.8,.3,1)'});
     specialFxPlay(specialFxSprite('flash',x,y,150,150),[{opacity:0,transform:'scale(.4)'},{opacity:.85,transform:'scale(1)',offset:.4},{opacity:0,transform:'scale(1.2)'}],{duration:50,easing:'ease-out'});
-    specialFxPlay(specialFxSprite('blast',x,y,size*1.12,size*1.12),[{opacity:0,transform:'scale(.35)'},{opacity:.9,transform:'scale(.85)',offset:.4},{opacity:0,transform:'scale(1.1)'}],{duration:260,delay:40,easing:'ease-out'});
+    specialFxPlay(specialFxSprite('blast',x,y,size*1.12,size*1.12),[{opacity:0,transform:'scale(.35)'},{opacity:.55,transform:'scale(.85)',offset:.4},{opacity:0,transform:'scale(1.1)'}],{duration:260,delay:50,easing:'ease-out'});
   }
+  // The gems break in rings from the centre, 35 ms apart, like the blast travelling out (a 7×7 breaking all in one frame
+  // stalled the page for 0.13 s: each break also pays its loot to the fight).
+  const ring=t=>Math.max(Math.abs(t.r-origin.r),Math.abs(t.c-origin.c)),done=[];
   for(const t of inside){
     const fresh=!sequence.cleared.has(t)&&!sequence.primed.has(t)&&!sequence.sources.has(t);
-    // The fireball covers the area, so its gems only pop (no sparkle burst each): one bright moment, no stalled frame.
-    specialFxHit(t,sequence,'bomb','quiet');
-    if(fresh&&!reduced){
-      // Thrown outward 0.25–0.6 cell from the centre: the tile moves while its gem fades.
-      const dx=t.c-origin.c,dy=t.r-origin.r,len=Math.hypot(dx,dy)||1,push=(.25+.35*Math.min(1,len/radius))*t.el.offsetWidth;
-      sequence.tails.push(specialFxHold(t.el,[{transform:'translate(0,0)'},{transform:`translate(${dx/len*push}px,${dy/len*push}px)`}],{duration:220,easing:'cubic-bezier(.2,.8,.3,1)'}));
-    }
+    done.push(boardV3Pause(Math.max(0,ring(t)-1)*35).then(()=>{
+      specialFxHit(t,sequence,'bomb','quiet');
+      if(fresh&&!reduced){
+        // Thrown outward 0.25–0.6 cell from the centre: the tile moves while its gem fades.
+        const dx=t.c-origin.c,dy=t.r-origin.r,len=Math.hypot(dx,dy)||1,push=(.25+.35*Math.min(1,len/radius))*t.el.offsetWidth;
+        sequence.tails.push(specialFxHold(t.el,[{transform:'translate(0,0)'},{transform:`translate(${dx/len*push}px,${dy/len*push}px)`}],{duration:220,easing:'cubic-bezier(.2,.8,.3,1)'}));
+      }
+    }));
   }
+  sequence.tails.push(Promise.all(done));
 }
 // A soft arc from (x0,y0) to (x1,y1), bowed sideways by `bend` × its length: points along it for keyframes, so a piece
 // follows the curve on the compositor (owner 05/11: the straight beams looked stiff; "dải cong kiểu chấm sao, tia phép").
@@ -241,17 +309,21 @@ function specialFxArc(x0,y0,x1,y1,bend,steps=14){
 const SPECIAL_FX_HUES=[0,40,90,170,210,270,320];
 // A wisp of stars: a bright star in a soft coloured glow flies along the arc from the orb, eight smaller stars trail it
 // closely on the same path and fade, so it reads as a flowing ribbon of light (a fairy's flight) rather than a line.
-function specialFxWisp(x0,y0,x1,y1,{bend=.3,duration=460,delay=0,hue=0,size=70}={}){
-  const arc=specialFxArc(x0,y0,x1,y1,bend),glow=specialFxSprite('glow',x0,y0,size*1.7,size*1.7);
+function specialFxWisp(x0,y0,x1,y1,{bend=.3,duration=460,delay=0,hue=0,size=50}={}){
+  const trail=specialFxLive()<200?7:5,arc=specialFxArc(x0,y0,x1,y1,bend),glow=specialFxSprite('glow',x0,y0,size*1.7,size*1.7);
   if(glow){glow.style.filter=`hue-rotate(${hue}deg) saturate(2) brightness(1.2)`;
-    specialFxPlay(glow,arc.map(({x,y,offset})=>({transform:`translate(${x-x0}px,${y-y0}px) scale(${.7+Math.sin(offset*Math.PI)*.4})`,opacity:offset===1?0:.75,offset})),{duration,delay,easing:'cubic-bezier(.4,0,.3,1)'});}
-  for(let k=0;k<9;k++){
+    specialFxPlay(glow,arc.map(({x,y,offset})=>({transform:`translate(${x-x0}px,${y-y0}px) scale(${.7+Math.sin(offset*Math.PI)*.4})`,opacity:offset===1?0:.5,offset})),{duration,delay,easing:'cubic-bezier(.4,0,.3,1)'});}
+  for(let k=0;k<trail;k++){
     const side=k?size*(.72-k*.055):size,star=specialFxSprite('sparkle',x0,y0,side,side);if(!star)return;
-    star.style.filter=`hue-rotate(${hue+k*10}deg) saturate(2.2) brightness(1.45) drop-shadow(0 0 6px #fff)`;
+    star.style.filter=`hue-rotate(${hue+k*40}deg) saturate(2.4) brightness(1.3)`;
     specialFxPlay(star,arc.map(({x,y,offset})=>({transform:`translate(${x-x0}px,${y-y0}px) rotate(${offset*300}deg) scale(${k?1-offset*.3:1+Math.sin(offset*Math.PI)*.3})`,opacity:offset===1?0:k?(.95-k*.08):1,offset})),
-      {duration:duration+k*16,delay:delay+k*22,easing:'cubic-bezier(.4,0,.3,1)'});
+      {duration:duration+k*16,delay:delay+k*23,easing:'cubic-bezier(.4,0,.3,1)'});
   }
 }
+// The stardust motes (owner 05/11: "không đẹp, không nhiều màu, cánh xấu — vẽ lại"): six drawn twinkle stars with slim
+// curved rays, rose, gold, mint, sky, violet and prismatic (assets/gemwoven/raw/stardust/), each kept in its own colour;
+// thrown out by every gem a special breaks (specialFxMassBurst).
+const SPECIAL_FX_DUST=['dust-rose','dust-gold','dust-mint','dust-sky','dust-violet','dust-prism'];
 // Star wisps from the orb, one after another around it (clockwise from the top) over `span` ms, each flying a soft arc
 // over `grow` ms and overlapping the next; onLand(gem) runs as each reaches its gem. Resolves when the last lands.
 function specialFxBeams(origin,targets,sequence,{span=SPECIAL_FX.core.span,grow=SPECIAL_FX.core.grow,stay=SPECIAL_FX.core.pull,onLand=null}={}){
@@ -265,7 +337,9 @@ function specialFxBeams(origin,targets,sequence,{span=SPECIAL_FX.core.span,grow=
     t.fxBend=(i%2?1:-1)*(.22+(i*7%5)*.04);
     if(!reduced){
       const p=boardV3Point(t);
-      specialFxWisp(x,y,p.x,p.y,{bend:t.fxBend,duration:grow,delay,hue:SPECIAL_FX_HUES[i%SPECIAL_FX_HUES.length]});
+      // Made when it flies (Lõi + Lõi sends 60+ at once; creating them all up front stalled the page for 0.5 s).
+      const bend=t.fxBend,hue=SPECIAL_FX_HUES[i%SPECIAL_FX_HUES.length];
+      setTimeout(()=>specialFxLater(()=>{specialFxWisp(x,y,p.x,p.y,{bend,duration:grow,hue});return 6;}),delay);
       specialFxPlay(specialFxSprite('mark',p.x,p.y,96,96),[{opacity:0,transform:'scale(1.6) rotate(-30deg)'},{opacity:1,transform:'scale(1) rotate(0deg)',offset:.3},{opacity:0,transform:'scale(.6) rotate(30deg)'}],{duration:stay+200,delay:land-60,easing:'ease-out'});
     }
     return boardV3Pause(land).then(()=>onLand?.(t));
@@ -278,9 +352,10 @@ function specialFxPullOne(origin,t,sequence,pull=SPECIAL_FX.core.pull){
     const {x,y}=boardV3Point(origin),p=boardV3Point(t),copy=specialFxSprite('gem',p.x,p.y,84,84,{src:itemImage(Math.max(0,t.type),null)});
     const arc=specialFxArc(p.x,p.y,x,y,-(t.fxBend||.25));
     specialFxPlay(copy,arc.map(({x:ax,y:ay,offset})=>({transform:`translate(${ax-p.x}px,${ay-p.y}px) scale(${offset<.2?1+offset*.4:1.08-offset*.88})`,opacity:offset===1?0:1,offset})),{duration:pull,easing:'cubic-bezier(.5,0,.75,.4)'});
-    specialFxWisp(p.x,p.y,x,y,{bend:-(t.fxBend||.25),duration:pull,delay:60,size:40,hue:SPECIAL_FX_HUES[(t.r+t.c)%SPECIAL_FX_HUES.length]});
+    const bend=-(t.fxBend||.25),hue=SPECIAL_FX_HUES[(t.r+t.c)%SPECIAL_FX_HUES.length];
+    setTimeout(()=>specialFxLater(()=>{specialFxWisp(p.x,p.y,x,y,{bend,duration:pull-60,size:40,hue});return 6;}),60);
   }
-  specialFxHit(t,sequence,'core');
+  specialFxHit(t,sequence,'core','dust');
 }
 // A ring wave of prism light opening from a point (a Lõi's burst, each full-board wave).
 function specialFxWave(x,y,size,duration){
@@ -326,7 +401,7 @@ specialEffect = async function specialEffectV5(act,sequence){
       // Lõi + Sao / Lõi + Bom: beams reach the colour's gems, each turns into the partner kind, then they all fire.
       specialFxSound('core-gather');detonate(t,'combo');if(act.partner)detonate(act.partner,'combo');
       // One beam after another (owner 05/11: "ghép với boom thì nổ cũng cần lần lượt"): each gem turns into the partner
-      // kind as its beam lands and fires on its own a moment later, so the blasts follow one another and overlap.
+      // kind as its beam lands and joins the line of specials, which then fire one at a time in that order (clearPlan).
       const F=SPECIAL_FX.turn;
       await specialFxBeams(t,act.turn.tiles,sequence,{span:F.span,grow:F.grow,stay:F.prime,onLand:g=>{g.special=act.turn.kind;g.dir=act.turn.dir;paintTile(g);
         boardV3Pause(F.prime).then(()=>sequence.primed.add(g));}});
@@ -341,17 +416,17 @@ specialEffect = async function specialEffectV5(act,sequence){
       specialFxSound('bomb-boom');specialFxNova(t,'bomb',sequence);
       detonate(t,'combo');if(act.partner)detonate(act.partner,'combo');specialFxFireball(t,r,inside,sequence,'combo');tails.push(specialFxShake(3),boardItemRecoil(t,5));
       await boardV3Pause(SPECIAL_FX.bomb.after);
-    }else if(x==='bomb'||y==='bomb'){
-      // Sao + Bom: the vortex draws in, then two thick blades sweep 5 rows and 5 columns.
-      specialFxSoundFor('bomb-swirl',SPECIAL_FX.bomb.vortex*.8);await specialFxVortex(t,lanes+1,act.hits,sequence,{kind:'combo',duration:SPECIAL_FX.bomb.vortex*.8});
-      specialFxSound('bomb-boom');specialFxSound('bolt-sweep');tails.push(specialFxShake(3));specialFxNova(t,'combo',sequence);
-      detonate(t,'combo');if(act.partner)detonate(act.partner,'combo');
-      await specialFxSweep(t,['row','col'],lanes+1,act.hits,sequence,{kind:'combo'});
     }else{
-      // Sao + Sao: both axes sweep together.
-      specialFxSound('bolt-sweep');tails.push(boardImpactShake(1));specialFxNova(t,'combo',sequence);
+      // Sao + Sao (3 columns, then 3 rows) and Sao + Bom (5 and 5): the column sweeps first, the row after it
+      // (owner 05/11: "quét dọc trước rồi cho quét ngang", no square blast ahead of them).
+      // The row starts `gap` after the column started (owner 06/11: staggered, not waiting for it to finish).
+      const half=x==='bomb'||y==='bomb'?lanes+1:lanes;
+      specialFxSound('bolt-sweep');tails.push(specialFxShake(2));specialFxNova(t,'combo',sequence);
       detonate(t,'combo');if(act.partner)detonate(act.partner,'combo');
-      await specialFxSweep(t,['row','col'],lanes,act.hits,sequence,{kind:'combo'});
+      const column=specialFxSweep(t,['col'],half,act.hits,sequence,{kind:'combo'});
+      await boardV3Pause(SPECIAL_FX.gap);
+      specialFxSound('bolt-sweep');
+      await Promise.all([column,specialFxSweep(t,['row'],half,act.hits,sequence,{kind:'combo'})]);
     }
     act.hits.forEach(h=>specialFxHit(h,sequence,'combo'));
     return;
@@ -366,7 +441,7 @@ specialEffect = async function specialEffectV5(act,sequence){
       t.special='core';paintTile(t);await boardV3Pause(W.appear);
     }
     await specialFxLift(t,wave===1?F.lift:W.appear,'core');
-    await specialFxCoreSweep(t,hits,sequence,{F:wave===1?F:{...F,...W},wave:1500,shake:Math.min(5,2+wave)});
+    await specialFxCoreSweep(t,hits,sequence,{F:wave===1?{...F,span:700}:{...F,...W},wave:1500,shake:Math.min(5,2+wave)});
     return;
   }
   if(act.kind==='bolt'){
@@ -379,7 +454,7 @@ specialEffect = async function specialEffectV5(act,sequence){
   }else if(act.kind==='bomb'){
     const F=SPECIAL_FX.bomb,r=T.bombRadius;
     await specialFxLift(t,chained?SPECIAL_FX.chainCharge:F.arm,'bomb');
-    const spin=chained?F.vortex*.7:F.vortex;specialFxSoundFor('bomb-swirl',spin);
+    const spin=chained?SPECIAL_FX.chainVortex:F.vortex;specialFxSoundFor('bomb-swirl',spin);
     const inside=await specialFxVortex(t,r,act.hits,sequence,{duration:spin});
     specialFxSound('bomb-boom');if(!chained)specialFxNova(t,'bomb',sequence);
     detonate(t,'bomb');specialFxFireball(t,r,inside,sequence);tails.push(specialFxShake(3),boardItemRecoil(t,4));

@@ -4783,6 +4783,12 @@
     "assets/special-fx/beam.webp",
     "assets/special-fx/blade.webp",
     "assets/special-fx/blast.webp",
+    "assets/special-fx/dust-gold.webp",
+    "assets/special-fx/dust-mint.webp",
+    "assets/special-fx/dust-prism.webp",
+    "assets/special-fx/dust-rose.webp",
+    "assets/special-fx/dust-sky.webp",
+    "assets/special-fx/dust-violet.webp",
     "assets/special-fx/fireball.webp",
     "assets/special-fx/flash.webp",
     "assets/special-fx/glow.webp",
@@ -4796,7 +4802,7 @@
     "assets/special-fx/sparkle.webp",
     "assets/special-fx/vortex.webp"
    ],
-   "bytes": 168174746
+   "bytes": 168203564
   },
   {
    "id": "hero-earth-f1",

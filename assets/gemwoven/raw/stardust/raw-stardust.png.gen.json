@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-05T16:18:47.008892+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\board-fx-v3\\raw-fx.png"
+  ],
+  "prompt": "Create ONE VFX texture sheet of magical stardust sparkles for Gemwoven, a polished jewel fantasy match-3 phone game, in the same luminous hand-painted VFX style as the attached reference sheet. These will be scattered as tiny glittering particles over the board, so each must stay crisp and beautiful when shown very small (about 20 px).\n\nCanvas: wide 3:2 landscape, opaque PURE FLAT BLACK #000000 background, exactly 3 columns x 2 rows of equal square cells, ONE sparkle centred in each cell, inside the central 70% of its cell with black margin; nothing touches a cell edge. No grid lines, text or other objects.\n\nEach sparkle: an elegant four-point twinkle star with slim, gracefully curved concave rays that taper to fine sharp points (long vertical and horizontal rays, shorter diagonal glints between them), a small brilliant white-hot core, and a thin halo of its own colour. Rich, saturated, jewel-like colour on each; different colour per cell:\nRow 1: rose pink, warm gold, mint green.\nRow 2: sky cyan, violet, a prismatic one whose rays shimmer through the rainbow.\n\nScreen-blend ready: saturated coloured light with crisp bright cores, glow fading quickly to pure black; no grey haze, no smoke, no blobs.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 3x2 grid of four-point sparkles on a flat black background, one per cell, with colours matching the prompt: rose pink, warm gold and mint green on top, then sky cyan, violet and a prismatic rainbow sparkle below. Each sparkle sits centred with black margin and no ray touches a cell edge. No text, grid lines or extra figures appear. Only stylistic differences from the reference remain, which are outside this filter's scope.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000478
+  }
+}
