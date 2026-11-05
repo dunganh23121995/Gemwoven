@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-05T03:32:15Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\form-3\\sharp\\run-z1-ref.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\form-3\\sharp\\run-z1-style.png"
+  ],
+  "prompt": "Image 1 shows 2 animation frames of a chibi game character side by side (2 equal square cells in one row), drawn small and soft. Redraw EXACTLY the same frames at full resolution on a wide landscape canvas, 2 equal square cells in one row: in every cell the same pose, the same limb and weapon angles, the same size and the same position inside the cell as Image 1, any drawn effect where it is. No borders between cells. Nothing crosses a cell edge.\nImage 2 is the same character drawn crisply in its resting pose: render the frames the way Image 2 is rendered (its clean dark outlines, solid saturated colours, crisp metal, fur and hair), with no loose specks or dust floating around. Take only the rendering from Image 2, never its pose.\nKeep everything about the character exactly: identity, face, eyes, hair, every part of the costume and every ornament, weapon, palette family, proportions and chibi style. Do not redesign, add or remove anything, and keep any drawn effect that is already there.\nImprove only the rendering quality: redraw it as a crisp, high-resolution finished game illustration with clean sharp dark outlines, fine readable detail in hair strands, cloth folds and metal, rich saturated colours and clear highlights. No blur, no soft focus, no painterly smear, no pixelation.\nBackground 100% solid flat magenta #FF00FF. No gradients in the background, no text, no labels, no shadow on the ground.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate has two side-by-side frames on a flat magenta background, matching the two-cell layout of Reference 1. The character matches the references in outfit, colours, tails, and weapon, and nothing is cropped at the cell or canvas edges. No text or extra figures are visible, and I see no clear defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000534
+  }
+}

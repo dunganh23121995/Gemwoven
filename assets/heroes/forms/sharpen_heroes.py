@@ -6,6 +6,7 @@ resting frames go to 512px cells, the showcase actions outside combat to 640px.
   python assets/heroes/forms/sharpen_heroes.py refit [job ...]            refits the kept raws, no Codex
   python assets/heroes/forms/sharpen_heroes.py apply [job ...]            copies the accepted sheets over the live ones
   python assets/heroes/forms/sharpen_heroes.py list
+  python assets/heroes/forms/sharpen_heroes.py audit                     each combat sheet's detail at its shown size vs the rest
 
 The old pixels come from the commit below, so a redraw can be repeated. A 2 x 4 showcase sheet is drawn as two 2 x 2
 halves (Codex's tall canvas holds only ~440px cells).
@@ -18,6 +19,7 @@ the resting frames, then the builds.
 import json
 import subprocess
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 from pathlib import Path
@@ -51,6 +53,41 @@ earth-attack earth-cast earth-hurt earth-run earth-smash earth2-attack earth2-ca
 lightning-attack lightning-hover lightning-run lightning-cast lightning2-skill lightning2-hover
 lightning3-attack lightning3-cast lightning3-skill lightning3-ride lightning3-run lightning3-show-orbitspin lightning3-show-wingtwirl
 shadow-attack shadow-cast shadow2-attack shadow2-attackLeft shadow2-run shadow3-hover shadow3-cast""".split()
+
+
+ZOOM_OLD = "6a2acc8c"
+# Third pass (ZOOMED, owner 2026-11-05: six-star Mika's attack and ultimate very blurry beside her crisp rest): these
+# sheets draw the body small in a 512px cell and combat grows the cell by the sheet's scale (Mika's attack x2.19), so
+# the body showed at under half the resting frame's pixels. Each frame pair goes to Codex cropped to the sheet's
+# drawn area (the body drawn large), and the sheet is kept in cells of 512 x scale so nothing is shrunk and grown back;
+# the layout in the cell (feet, reach, grips) is the old one, only finer. A few sheets at scale 1 drawn softer than
+# their resting frame (six-star Yuki) take the same zoomed redraw at 512px.
+ZOOMED = """fire3-attack fire3-skill fire3-run fire3-cast shadow2-attack shadow2-attackLeft
+lightning3-attack lightning3-ride lightning3-skill lightning3-cast lightning3-hover lightning2-skill
+earth2-attack earth2-cast earth2-run earth3-attack earth3-cast earth3-run
+ice3-attack ice3-cast ice3-run ice3-skill""".split()
+MAX_CELL = 1152
+
+
+def zoom_cell(job):
+    sheet = json.loads((FORMS / job["hero"] / "forms.json").read_text(encoding="utf-8"))["forms"][str(job["form"])]["actions"].get(job["name"], {})
+    return max(CELL, min(MAX_CELL, round(CELL * sheet.get("scale", 1) / 32) * 32))
+
+
+def zoom_box(frames_, margin=.03):
+    """The square of the cell (x0, y0, side as fractions) holding every frame's drawing."""
+    box = None
+    for f in frames_:
+        b = f.getchannel("A").point(lambda v: 255 if v > 40 else 0).getbbox()
+        if b:
+            b = [v / f.width for v in b]
+            box = b if box is None else [min(box[0], b[0]), min(box[1], b[1]), max(box[2], b[2]), max(box[3], b[3])]
+    if box is None:
+        return 0., 0., 1.
+    side = min(1., max(box[2] - box[0], box[3] - box[1]) + 2 * margin)
+    x0 = min(max(0., (box[0] + box[2] - side) / 2), 1 - side)
+    y0 = min(max(0., (box[1] + box[3] - side) / 2), 1 - side)
+    return x0, y0, side
 
 
 def form1_sheets():
@@ -116,6 +153,11 @@ def jobs():
     for name in PAIRED:
         job = out[name]
         job.update(pair=True, old=PAIR_OLD, cell=SHOW if job["name"].startswith("show-") else CELL,
+                   style=(f"assets/heroes/forms/{job['hero']}/form-{job['form']}/rig/combat/rest.png", 1, 1, 0))
+        job.pop("split", None); job.pop("keep", None)
+    for name in ZOOMED:
+        job = out[name]
+        job.update(pair=True, zoom=True, old=ZOOM_OLD, cell=zoom_cell(job),
                    style=(f"assets/heroes/forms/{job['hero']}/form-{job['form']}/rig/combat/rest.png", 1, 1, 0))
         job.pop("split", None); job.pop("keep", None)
     for name in KEEP_SHEETS:
@@ -265,12 +307,13 @@ def parts(job):
     count = job["cols"] * job["rows"]
     if job.get("pair"):
         n, olds, out = job["cell"], frames(old, job), []
+        crop = zoom_box(olds[:count]) if job.get("zoom") else None
         for k in range(0, count, 2):
             idx = list(range(k, min(k + 2, count)))
             strip = Image.new("RGBA", (n * len(idx), n))
             for j, i in enumerate(idx):
                 strip.alpha_composite(olds[i].resize((n, n), Image.Resampling.LANCZOS), (j * n, 0))
-            out.append(({**job, "cols": len(idx), "rows": 1}, strip, f"-p{k // 2}", idx))
+            out.append(({**job, "cols": len(idx), "rows": 1, "crop": crop}, strip, f"-{'z' if crop else 'p'}{k // 2}", idx))
         return out
     split = job.get("split")
     if not split:
@@ -287,7 +330,16 @@ def work_dir(job):
 def draw_part(name, job, old, tag):
     work = work_dir(job); work.mkdir(exist_ok=True)
     target = (job["cell"] * job["cols"], job["cell"] * job["rows"])
-    ref = Image.new("RGBA", old.size, BACKDROP.get(job["hero"], MAGENTA)[0] + (255,)); ref.alpha_composite(old)
+    shown = old
+    if job.get("crop"):
+        # Codex sees each frame cropped to the sheet's drawn square, so it draws the body large; fitting is still
+        # against the whole old cell
+        (x0, y0, side), n = job["crop"], old.height
+        shown = Image.new("RGBA", old.size)
+        for j in range(job["cols"]):
+            box = (j * n + round(x0 * n), round(y0 * n), j * n + round((x0 + side) * n), round((y0 + side) * n))
+            shown.alpha_composite(old.crop(box).resize((n, n), Image.Resampling.LANCZOS), (j * n, 0))
+    ref = Image.new("RGBA", old.size, BACKDROP.get(job["hero"], MAGENTA)[0] + (255,)); ref.alpha_composite(shown)
     tmp = work / f"{job['name']}{tag}-ref.png"
     ref.convert("RGB").resize(target if job["cols"] > 1 else (1024, 1024), Image.Resampling.LANCZOS).save(tmp)
     pf = work / f"{job['name']}{tag}-prompt.txt"; pf.write_text(prompt(job, job["rows"]) + "\n", encoding="utf-8")
@@ -316,7 +368,11 @@ def draw_part(name, job, old, tag):
         sty.unlink(missing_ok=True)
     if best is None:
         print(name + tag, "FAIL no image", flush=True); return None
-    raw.write_bytes(best[4])
+    for attempt in range(5):     # a scanner may hold the raw Codex just wrote for a moment
+        try:
+            raw.write_bytes(best[4]); break
+        except OSError:
+            time.sleep(2)
     return best
 
 
@@ -355,6 +411,29 @@ def refit(name, job):
     save(name, job, results, "scale " + "/".join(scales))
 
 
+def audit():
+    """Every combat sheet against its form's resting frame, as combat shows it: each frame grown to its cell x scale,
+    then the mean edge strength over the body (Laplacian), as a share of the rest's. Under ~.8 reads blurred in game."""
+    def edges(im):
+        a = np.asarray(im.convert("RGBA"), dtype=np.float32)
+        body = cv2.erode((a[..., 3] > 200).astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+        lap = np.abs(cv2.Laplacian((a[..., :3] * a[..., 3:] / 255).mean(-1), cv2.CV_32F, ksize=3))
+        return float(lap[body].mean()) if body.sum() > 300 else None
+    rows = []
+    for name, job in jobs().items():
+        if job["name"].startswith(("rest", "show-", "idle")) or not (ROOT / job["path"]).exists():
+            continue
+        book = FORMS / job["hero"] / "forms.json"
+        scale = json.loads(book.read_text(encoding="utf-8"))["forms"].get(str(job["form"]), {}).get("actions", {}).get(job["name"], {}).get("scale", 1) if job["form"] > 1 else 1
+        rest = edges(Image.open(FORMS / job["hero"] / f"form-{job['form']}/rig/combat/rest.png").resize((CELL, CELL), Image.Resampling.LANCZOS))
+        n = round(CELL * scale)
+        vals = [v for v in (edges(f.resize((n, n), Image.Resampling.LANCZOS)) for f in frames(Image.open(ROOT / job["path"]).convert("RGBA"), job)) if v]
+        if vals:
+            rows.append((float(np.median(vals)) / rest, name, Image.open(ROOT / job["path"]).width // job["cols"], scale))
+    for share, name, cell, scale in sorted(rows):
+        print(f"{share:5.2f}  {name:22} cell {cell:4} scale {scale:.2f}{'  SOFT' if share < .8 else ''}")
+
+
 def apply(names):
     everything = jobs()
     for name in names or everything:
@@ -371,7 +450,9 @@ def apply(names):
 
 if __name__ == "__main__":
     everything = jobs()
-    if sys.argv[1] == "list":
+    if sys.argv[1] == "audit":
+        audit()
+    elif sys.argv[1] == "list":
         for k, j in everything.items():
             print(f"{k:28} {j['path']}")
     elif sys.argv[1] == "apply":
