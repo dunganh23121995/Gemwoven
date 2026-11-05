@@ -2773,9 +2773,11 @@ function damage(side,raw,ledger=null){
   if(ledger)ledger.raw+=raw;
   let n=Math.round((ledger?ledger.raw:raw)*mult(attackerKey,defenderKey)*(side==='enemy'&&state.enraged?1.25:1));if(target==='hero'&&progressionKit(state.key).damageReduction)n=Math.round(n*(1-progressionKit(state.key).damageReduction));
   if(ledger){const total=n;n-=ledger.applied;ledger.applied=total;}
+  // Nori's seal: his hit still lands, and a share of it also builds the burst (owner 05/11; board-rules NORI_SEAL_STORE).
   if(side==='hero'&&state.key==='earth'&&state.noriStunTurns>0&&state.enemyHp>0&&state.hp>0){
-    state.noriStoredDamage=(state.noriStoredDamage||0)+n;update();
-    return {amount:0,blocked:0,stored:n};
+    const share=GemwovenBoardRules.NORI_SEAL_STORE[typeof progressionIsDuel==='function'&&progressionIsDuel()?'duel':'pve'],stored=Math.round(n*share);
+    state.noriStoredDamage=(state.noriStoredDamage||0)+stored;
+    return {...applyCombatDamage(target,n),stored};
   }
   return applyCombatDamage(target,n);
 }
@@ -3711,12 +3713,14 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   function transformEffect(key,rank){
     const r=Math.max(1,rank)-1,R4=n=>Number(n.toFixed(4));
     const effects={
-      novice:()=>{const firstSword=R4(.1+.005*r);return {firstSword,text:`Nhóm Kiếm đầu mỗi lượt +${vn(firstSword*100)}% sát thương`};},
-      fire:()=>{const base=R4(16*(1+.04*r));return {burn:{base,turns:2},text:`Nhóm Kiếm đầu mỗi lượt gây thiêu đốt ${vn(base)}×Công/lượt trong 2 lượt`};},
-      ice:()=>({ice:{common:2,boss:4},text:'2 Băng đủ đóng băng (trùm: thanh 4)'}),
-      earth:()=>{const support=R4(1.5+.02*r);return {support,overflowArmor:.25,overflowCap:.04,text:`Tim và Khiên ×${vn(support,2)}; 25% máu hồi dư thành giáp`};},
-      lightning:()=>{const purple=R4(16+.3*r);return {purple,rageCap:75,text:`Tím ${vn(purple)} nộ mỗi viên (tối đa 75 nộ mỗi lượt)`};},
-      shadow:()=>{const mult=R4(1.5+.02*r);return {cascadeCrit:{waves:2,mult},dodge:{waves:3},text:`Combo từ đợt 2: Kiếm chí mạng ×${vn(mult,2)}; combo 3 đợt: né đòn thường kế tiếp`};}};
+      // power lifts every hero hit while Biến Thân lasts (owner 05/11: clearly stronger; balance-sim TF=shell measures
+      // damage per turn ×1,4–1,5 for the rare heroes). Hiro stays at or under the old +25%: 1,13 × his first group's 1,10.
+      novice:()=>({power:.13,firstSword:.1,text:'Sát thương +13%; nhóm Kiếm đầu mỗi lượt thêm +10%'}),
+      fire:()=>{const base=R4(16*(1+.04*r));return {power:.4,burn:{base,turns:2},text:`Sát thương +40%; nhóm Kiếm đầu mỗi lượt gây thiêu đốt ${vn(base)}×Công/lượt trong 2 lượt`};},
+      ice:()=>({power:.45,ice:{common:2,boss:4},text:'Sát thương +45%; 2 Băng đủ đóng băng (trùm: thanh 4)'}),
+      earth:()=>{const support=R4(1.5+.02*r);return {power:.45,support,overflowArmor:.25,overflowCap:.04,text:`Sát thương +45%; Tim và Khiên ×${vn(support,2)}; 25% máu hồi dư thành giáp`};},
+      lightning:()=>{const purple=R4(16+.3*r);return {power:.3,purple,rageCap:75,text:`Sát thương +30%; Tím ${vn(purple)} nộ mỗi viên (tối đa 75 nộ mỗi lượt)`};},
+      shadow:()=>{const mult=R4(1.5+.02*r);return {power:.4,cascadeCrit:{waves:2,mult},dodge:{waves:3},text:`Sát thương +40%; combo từ đợt 2: Kiếm chí mạng ×${vn(mult,2)}; combo 3 đợt: né đòn thường kế tiếp`};}};
     return effects[key]();
   }
   function skillKit(key,h,normalized=false){
@@ -4718,9 +4722,11 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   const HERO_RAGE=[3,2,7,2,2];
   // A foe in PvE keeps its own rule: 3 a gem, and 25 more for the first purple of a resolution.
   const FOE_RAGE={perGem:3,firstCrystal:25};
-  // A foe's sword gem (×8 × its attack): bosses lost most of their frozen turns to the guard, so their swords hit softer
-  // (1.15 → 0.82, Codex tuning: Hiro back to about half of chapter bosses at the recommended level).
-  const FOE_SWORD={common:.55,boss:.82};
+  // A foe's sword gem (×8 × its attack). Bosses hit at the original 1.15 (owner 05/11: the 0.82 trial is undone).
+  const FOE_SWORD={common:.55,boss:1.15};
+  // Nori's seal: his hits during it still land, and this share of each also builds the burst (owner 05/11). PvE stores
+  // the whole hit; duels store 2/3, so n + 2/3·n × 3 keeps the old damage budget there (Codex).
+  const NORI_SEAL_STORE={pve:1,duel:2/3};
   // One bonus per board resolution by its number of waves (only the highest tier reached, never summed).
   const COMBO_RAGE=[0,0,3,6,10,15];
   const comboRage=waves=>COMBO_RAGE[Math.max(0,Math.min(COMBO_RAGE.length-1,Math.floor(waves)||0))];
@@ -4736,7 +4742,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   // energy, foe effects).
   function heroRage(type,{purple=0,factor=1}={}){const base=type===GEM.crystal&&purple?purple:HERO_RAGE[type]||0;return base*factor;}
   // Kits (progression.js skillKit) own the hero numbers: Lumi's purple value and each hero's Biến Thân effect.
-  return {GEM,HERO_RAGE,FOE_RAGE,FOE_SWORD,COMBO_RAGE,comboRage,ULTIMATE,ICE,CONTROL_GUARD,iceThreshold,guardTurns,heroRage};
+  return {GEM,HERO_RAGE,FOE_RAGE,FOE_SWORD,NORI_SEAL_STORE,COMBO_RAGE,comboRage,ULTIMATE,ICE,CONTROL_GUARD,iceThreshold,guardTurns,heroRage};
 });
 
 const ART_BLOBS=[];
@@ -5344,14 +5350,17 @@ const OpponentAI = (() => {
     const beats = { fire: 'ice', ice: 'earth', earth: 'lightning', lightning: 'fire' };
     let value = Math.round(raw * (beats[attacker] === defender ? 1.5 : 1) * (enemy && current.enraged ? 1.25 : 1));
     if (enemy && current.key === 'ice') value = Math.round(value * .8);
+    // Nori's seal: the hit still lands and the whole hit (2/3 in duels) also builds the ×3 burst (owner 05/11).
+    let pending = 0;
     if (!enemy && current.key === 'earth' && current.noriStunTurns > 0) {
-      current.noriStoredDamage += value;
-      return value * 3 * .8; // Discount the pending burst until the seal expires.
+      const stored = Math.round(value * (current.duel ? 2 / 3 : 1));
+      current.noriStoredDamage += stored;
+      pending = stored * 3 * .8; // Discount the pending burst until the seal expires.
     }
     const hp = enemy ? 'hp' : 'enemyHp', armor = enemy ? 'armor' : 'enemyArmor';
     const blocked = Math.min(current[armor], value), dealt = Math.min(current[hp], value - blocked);
     current[armor] -= blocked; current[hp] -= dealt;
-    return dealt + blocked * .72;
+    return dealt + blocked * .72 + pending;
   }
 
   function loot(current, counts, side) {
@@ -6546,7 +6555,7 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
         combatV3Impact(targetSide,key,direction,strong||boss,pending);
         if(key==='earth')combatV3Earth(contact,ultimate,pending);
       }
-      combatV3Number(targetSide,result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
+      combatV3Number(targetSide,result.stored?(result.amount?'-'+result.amount+' · TÍCH +'+result.stored:'TÍCH +'+result.stored):result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
       if(hits>1){
         const count=document.createElement('span');count.className='combat-v3-hit-count';count.textContent=String(i+1).padStart(2,'0')+' / '+String(hits).padStart(2,'0');$('combatEffects').append(count);
         combatV3Fx(count,[{opacity:0,transform:'translate(-50%,5px)'},{opacity:1,transform:'translate(-50%,0)',offset:.2},{opacity:0,transform:'translate(-50%,-3px)'}],{duration:520},pending);
@@ -10760,6 +10769,7 @@ function progressionDamage(side,raw,ledger=null){
   const s=progressionBattle.stats,kit=progressionKit(progressionBattle.hero);
   let factor=side==='hero'?s.attack*(progressionCasting?kit.power:1):progressionIsDuel()?s.attack:progressionBattle.enemyAttack;
   if(side==='enemy'&&progressionTransform?.left>0)factor*=1-(progressionTransformKit()?.reduce||0);
+  if(side==='hero')factor*=1+progressionTransformBonus();
   if(side==='hero'&&progressionCasting&&kit.execute&&state.enemyHp<state.enemyMax*kit.execute.threshold)factor*=kit.execute.bonus;
   // Hiro form 3 (Tứ Hệ): a mild ultimate bonus (×1,15); the free starter is not to be made strong.
   if(side==='hero'&&progressionCasting&&kit.tetra)factor*=kit.tetra;
@@ -10856,8 +10866,9 @@ let progressionTrialScore=null;
 let progressionTransform=null,progressionUlts=0;
 function progressionTransformKit(){return progressionBattle&&!progressionIsDuel()?progressionKit(progressionBattle.hero)?.transform||null:null;}
 function progressionTransformReady(){const t=progressionTransformKit();return !!t&&!progressionTransform&&!ended&&state.hp>0&&state.enemyHp>0&&(state.hp<=HEROES[state.key].hp*.5||progressionUlts>=2);}
-// The shared +Công is gone (owner 05/11): each hero's own board effect applies in live-combat.js / board-control.js.
-function progressionTransformBonus(){return 0;}
+// While Biến Thân lasts each hero's own power lifts all its damage (owner 05/11); its board effects apply in
+// live-combat.js / board-control.js. Nothing stays after it (no permanent afterglow bonus).
+function progressionTransformBonus(){return progressionTransform?.left>0?progressionTransformKit()?.power||0:0;}
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}
