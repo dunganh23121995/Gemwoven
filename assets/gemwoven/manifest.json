@@ -12443,7 +12443,7 @@
     }
   },
   "ulti-fire-3-wave": {
-    "file": "assets/fx/heroes/fire/sweep3.webp",
+    "file": "assets/fx/heroes/fire/pierce3.webp",
     "width": 1536,
     "height": 384
   },
@@ -12484,7 +12484,7 @@
     ],
     "end": 3250,
     "wave": {
-      "file": "assets/fx/heroes/fire/sweep3.webp",
+      "file": "assets/fx/heroes/fire/pierce3.webp",
       "cols": 4,
       "rows": 1,
       "at": 2010,

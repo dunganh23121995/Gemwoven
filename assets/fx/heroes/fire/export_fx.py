@@ -28,7 +28,6 @@ FX = {
     "slash2": (2, 2, 320, 320, 45, "fx"),
     "engulf3": (3, 2, 384, 384, 110, "fire"),
     "arc2s": (2, 2, 576, 384, 60, "fire"),
-    "sweep3": (2, 2, 384, 384, 45, "fire"),
     # six-star basic attack (owner 07/11): the spear tip's hit on the foe, frames aligned on the impact (pierce3/align.py)
     "pierce3": (2, 2, 384, 384, 55, "fire"),
 }

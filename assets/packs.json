@@ -4930,7 +4930,6 @@
     "assets/fx/heroes/fire/pierce3.webp",
     "assets/fx/heroes/fire/ring3.webp",
     "assets/fx/heroes/fire/slash2.webp",
-    "assets/fx/heroes/fire/sweep3.webp",
     "assets/heroes/fire/idle/frame-00.png",
     "assets/heroes/fire/idle/frame-01.png",
     "assets/heroes/fire/idle/frame-02.png",
@@ -4959,7 +4958,7 @@
     "assets/reimagined/heroes/fire/run.webp",
     "assets/reimagined/heroes/fire/smash.webp"
    ],
-   "bytes": 12207628
+   "bytes": 12032932
   },
   {
    "id": "hero-fire-f2",
@@ -5007,7 +5006,7 @@
     "assets/heroes/forms/fire/form-3/skill.webp",
     "assets/heroes/forms/fire/form-3/thrust3.webp"
    ],
-   "bytes": 13348661
+   "bytes": 13347397
   },
   {
    "id": "hero-ice-f1",

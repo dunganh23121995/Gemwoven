@@ -421,8 +421,7 @@ const SHEET_STATES=[['idle','Nghỉ'],['attack','Đánh thường'],['cast','G�
   ['run','Vào / rời sân'],['hover','Bay lơ lửng'],['skill','Tuyệt kỹ']];
 const SHEET_EXTRA={smash:'Tuyệt kỹ (smash)',slash:'Đánh thường riêng (slash)',dash:'Lướt (dash)'};
 const SHEET_BORROW={buff:'cast',hurt:'attack'};
-// A form whose basic attack plays another sheet for the player's hero (Mika six-star: "slash") shows that one.
-function ownSheet(name){const own=sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;return own?.heroPlays&&sheets[own.heroPlays]?sheets[own.heroPlays]:own;}
+function ownSheet(name){return sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;}
 function loadSheets(){
   const art=gq().art;
   sheets=(form>1&&art.heroForms?.[hero]?.[String(form)])||art.heroes[hero]||{};
@@ -447,7 +446,7 @@ function drawSheet(){
   box.replaceChildren();const im=img.cloneNode();im.style.width=img.naturalWidth*scale+'px';box.append(im);
   const cw=img.naturalWidth/s.cols*scale,ch=img.naturalHeight/s.rows*scale;
   for(let i=0;i<s.count;i++){const c=document.createElement('div');c.className='cell';c.textContent=i;Object.assign(c.style,{left:(i%s.cols)*cw+'px',top:Math.floor(i/s.cols)*ch+'px',width:cw+'px',height:ch+'px'});c.onclick=()=>{cur=i;playing=false;$('playpause').textContent='Phát';};box.append(c);}
-  $('meta').textContent=`${sheets[action]?.heroPlays?`${action} (trong trận: «${sheets[action].heroPlays}»)`:action}: ${s.count} khung · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${!$('ingameBox').hidden?' · trong trận: theo thứ tự đòn (bật «Như trong trận»)':s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
+  $('meta').textContent=`${action}: ${s.count} khung · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${!$('ingameBox').hidden?' · trong trận: theo thứ tự đòn (bật «Như trong trận»)':s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
 }
 // The basic attack as the game plays it (forms-mika.js orders, read from the game; the call times measured in
 // combat, ms from the strike's start): first cut, two linked cuts, then the walk back to rest.

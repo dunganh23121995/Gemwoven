@@ -17,7 +17,7 @@
      "paths": ["assets/heroes/forms/{key}/form-{form}/combat-idle/idle.webp", "assets/heroes/forms/shadow/idle-cloth/form-{form}/frame-07.png"]},
     {"id": "idle-rig", "group": "2. Hình chiến đấu", "label": "Nghỉ trong trận: vòng rig 24 khung", "forms": "all", "paths": ["assets/heroes/forms/{key}/form-{form}/rig/combat/rig.json"]},
     {"id": "buff-rig", "group": "2. Hình chiến đấu", "label": "Nhận máu, giáp: rig từ tư thế nghỉ", "forms": "all", "paths": ["assets/heroes/forms/{key}/form-{form}/rig/buff/rig.json"]},
-    {"id": "attack", "group": "2. Hình chiến đấu", "label": "Sheet đánh thường", "forms": "all", "paths": ["{formdir}/attack.webp"]},
+    {"id": "attack", "group": "2. Hình chiến đấu", "label": "Sheet đánh thường", "forms": "all", "paths": ["{formdir}/attack.webp"], "byHero": {"fire": {"paths": ["{formdir}/attack.webp", "{formdir}/thrust3.webp"]}}},
     {"id": "cast", "group": "2. Hình chiến đấu", "label": "Sheet thi triển", "forms": "all", "paths": ["{formdir}/cast.webp"]},
     {"id": "move", "group": "2. Hình chiến đấu", "label": "Sheet di chuyển (chạy, hoặc bay với tướng bay)", "forms": "all", "paths": ["{formdir}/run.webp", "{formdir}/hover.webp"]},
     {"id": "skill", "group": "2. Hình chiến đấu", "label": "Tư thế tuyệt kỹ riêng của dạng (skill/press/slash...)", "forms": "2-3", "optional": true,

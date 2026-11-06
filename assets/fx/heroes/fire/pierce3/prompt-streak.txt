@@ -1,9 +1,0 @@
-Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached reference (the fox-fire slash effect of Mika, nine-tailed fox girl with a crescent moon glaive): the same fire colours and painting, white-gold bright core, golden-orange fox-fire, crimson flame tongues, a few cream-tipped fox-tail-shaped wisps.
-Subject: the effect of ONE powerful straight SPEAR THRUST (a stab, not a cut): a long, narrow, perfectly STRAIGHT horizontal streak of fox-fire shooting from the LEFT to the RIGHT, sharp and pointed like a spear tip at its right end, thin and tapering at its left end. At the moment of impact a sharp star-shaped piercing flash bursts at the right tip.
-Layout: EXACTLY 2 columns x 4 rows, eight equal WIDE cells (each 768 wide x 256 high), landscape 1536x1024. Use ONLY the first 4 cells (read left to right, top to bottom); the last 4 cells are empty magenta. The streak stays on the same horizontal centre line in every cell and spans about 90% of the cell width.
-Frame 1: the thrust shooting forward: a short bright pointed streak in the left two thirds of the cell, its tip glowing.
-Frame 2: the full streak reaching the right end, brightest, with the star-shaped piercing flash bursting at the right tip.
-Frame 3: the streak thinning, the flash breaking into embers and small flame tongues flying forward to the right.
-Frame 4: only a faint thin line and drifting embers left.
-Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No glaive, no hand, no character.
-Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.
