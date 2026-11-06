@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-06T18:02:19Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\fx\\heroes\\fire\\sweep3\\raw-sheet.png",
+    "D:\\Project\\Gemwoven\\assets\\fx\\heroes\\fire\\impact3\\raw-sheet.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached reference (the fox-fire effects of Mika, nine-tailed fox girl with a crescent moon glaive): the same fire colours and painting, white-gold bright core, golden-orange fox-fire, crimson flame tongues, a few cream-tipped fox-tail-shaped wisps.\nSubject: the HIT effect of a spear tip piercing an enemy, coming from the LEFT and striking toward the RIGHT: the impact at the point where the blade tip goes in. Centred in each cell (the impact point is at the cell centre).\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024. Read left to right, then the next row.\nFrame 1: the instant of the hit: a small, intensely bright white-gold point with a sharp spear-tip shaped spike of light stabbing to the right, and short speed lines converging from the left.\nFrame 2: the full piercing burst: a sharp star-shaped flash at the centre with long thin rays, a cone of fox-fire sparks and flame shards spraying out to the RIGHT (the direction of the thrust), a thin bright shockwave ring around the centre, small cracks of light.\nFrame 3: the burst breaking up: the ring wider and fainter, the sparks and flame shards flying further right and fading, a few fox-tail wisps curling.\nFrame 4: only drifting embers and a faint fading ring.\nOpaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No glaive, no character, no enemy.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows a 2x2 grid of four frames on a flat magenta background, with no visible text, borders, or extra figures. The progression runs from a small bright impact point to a star burst with sparks spraying right, then a breaking-up burst and faint embers, matching the prompt's layout. Flames and fox-tail wisps use the reference palette. Impact points sit roughly near cell centres, and nothing appears cut off by the cell edges. The only loose match is that frame 1's spike reads more as a star than a distinct spear-tip shape, which is stylistic drift rather than a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000852
+  }
+}

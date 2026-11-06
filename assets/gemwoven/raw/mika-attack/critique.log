@@ -1,0 +1,629 @@
+Reading prompt from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: D:\Project\Gemwoven
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1ad9e-d0d2-7352-9947-895eeb0b5ab1
+--------
+user
+Gemwoven (Codex) — ĐÒN ĐÁNH THƯỜNG của Mika khi đánh LIÊN TIẾP. Read-only. Tiếng Việt, ngắn, quyết định rõ, có số (ms, px).
+
+Chủ dự án (06/11): "Đánh thường Mika khi đánh liên tiếp động tác có vấn đề. Cho Codex review cùng. Tôi muốn động tác đánh mượt mà hơn. Làm thử với Mika trước."
+
+Bối cảnh: mỗi đợt ngọc Kiếm trên board tạo một "đòn đánh" xếp hàng (src/live-combat.js, vào trước ra trước); một chuỗi combo nhiều đợt → nhiều đòn liên tiếp. Đòn đánh thường: src/combat-v3.js attack() (lùi lấy đà → lao tới → chém → địch giật lùi → quay về vị trí, + COMBAT_V3_PACING scale .45, anticipationHold 150, recoveryHold 90), Mika hình thái 2/3 vẽ lại vết chém và (hình thái 3) chọn khung "slash" riêng trong src/forms-mika.js (combatV3Frame/combatV3Action/combatV3Pose bọc lại, mikaGlaiveShortening). combatV3Charge() phủ một quầng lửa lúc tích lực đòn thường.
+
+Ảnh (điện thoại 430×932, sân đấu, khung cách 100 ms, 3 đòn liên tiếp, mỗi đòn 40 sát thương):
+- now-form1.jpg, now-form2.jpg, now-form3.jpg; now-form3-windup.png: cận cảnh 133–267 ms của hình thái 3.
+Quan sát của Claude: (1) mỗi đòn đều lùi về hẳn vị trí cũ rồi đứng ~200–300 ms mới lao lại → giật cục; (2) lúc tích lực mỗi đòn có quầng lửa cam phủ kín người Mika ~150 ms, nhìn như tướng mờ/bóng ma; (3) tên chiêu "Liệt diễm trảm" bật lại mỗi đòn; (4) cả chuỗi 3 đòn ~3,3 s.
+
+Cần:
+1. Phê bình ngắn (≤6 ý, điểm /10 cho từng hình thái hiện tại).
+2. Spec "đánh liên tiếp mượt" cho Mika (áp dụng cả 3 hình thái), có số: khi còn đòn đánh thường của cùng phía nối ngay sau (trong hàng), Mika ở lại phía trước (không quay về), đòn sau bắt đầu từ tư thế kết của đòn trước, đổi hướng chém xen kẽ (ví dụ chém xuống / chém hất lên / chém ngang), nhịp mỗi đòn nối (ms), lực giật của địch, chỉ quay về sau đòn cuối; quầng tích lực chỉ ở đòn đầu và nhẹ hơn (độ mờ tối đa, không che quá X% thân); tên chiêu chỉ hiện một lần cho cả chuỗi; giữ đúng thời điểm trừ máu lúc vũ khí chạm. Không đổi luật/sát thương.
+3. Danh sách kiểm tra cứng (đạt/không) để chấm bản dựng sau, theo ý "mượt mà".
+
+2026-11-05T21:30:32.332627Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+2026-11-05T21:30:34.641317Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+codex
+Tôi sẽ đọc luồng hàng đợi, nhịp đánh và phần vẽ Mika để chốt spec có số; chỉ review, không sửa file.
+
+2026-11-05T21:30:37.701828Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg -n \"COMBAT_V3_PACING|anticipationHold|recoveryHold|combatV3Charge|attack\\(\" src/combat-v3.js; rg -n \"combatV3Frame|combatV3Action|combatV3Pose|mikaGlaiveShortening|slash\" src/forms-mika.js; rg -n \"queue|attack|Kiếm\" src/live-combat.js" in D:\Project\Gemwoven
+ succeeded in 162ms:
+3:const COMBAT_V3_PACING=Object.freeze({scale:.45,anticipationHold:150,recoveryHold:90});
+14:function combatV3Duration(milliseconds){return reduced?milliseconds:Math.round(milliseconds*COMBAT_V3_PACING.scale);}
+62:function combatV3Charge(side,key,ultimate,pending){
+64:  combatV3ChargeSound(key,ultimate);
+195:function combatV3ChargeSound(key,ultimate){
+264:    combatV3Charge(side,key,ultimate,pending);
+270:    if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.anticipationHold);
+335:    if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.recoveryHold);
+358:    if(!isHero&&!plain)combatV3Charge(side,key,true,pending);
+13: * Basic attacks keep the lunge and the form's own attack poses, with the form's own slash art.
+29:  mikaSlashForm=form;mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_FIRST;mikaSlashShorten=form===3?mikaGlaiveShortening():0;
+334:// ---- Basic attack: the form's own slash art -------------------------------------------------------
+340:  const form=mikaSlashForm,name=form===3?'sweep3':'slash'+form,sheet=mikaSheet(name);
+348:  const node=mikaFxNode(name,'mika-slash');
+365:// recover, rest) with indices that differ per chain stance. Six-star Mika plays her own "slash" sheet
+370:const mikaBaseFrame=combatV3Frame,mikaBaseAction=combatV3Action,mikaBasePose=combatV3Pose;
+371:combatV3Frame=function(side,action,index){
+374:  if(index===5){mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_NEXT;return mikaBaseFrame(side,'slash',5);}
+375:  return mikaBaseFrame(side,'slash',mikaSlashOrder[Math.min(mikaSlashCalls++,mikaSlashOrder.length-1)]);
+377:combatV3Action=function(side,action,duration){
+378:  return mikaBaseAction(side,mikaSlashForm===3&&side==='hero'&&action==='attack'?'slash':action,duration);
+381:function mikaGlaiveShortening(){
+382:  const sheet=mikaSheet('sweep3')&&ART.heroForms?.fire?.['3']?.slash;if(!sheet)return 0;
+395:combatV3Pose=function(node,transform,...rest){
+1:// Board impacts grant resources immediately; one actor-action queue prevents
+2:// attacks, recoil and authored buff poses from overwriting each other.
+4:  const queue=[],seen=new Set(),counts={hero:[0,0,0,0,0],enemy:[0,0,0,0,0]};
+6:  const attackChains={hero:0,enemy:0};
+16:  function queueUltimates(){
+26:        queue.push({side,kind:'ultimate',value:0,at:Math.round(performance.now())});
+30:    if(queue.length)start();
+37:      while(queue.length&&!closed){
+41:        const job=queue.shift();
+44:        if(job.side==='enemy'&&noriSealHolds()&&(job.kind==='attack'||job.kind==='ultimate')){
+54:        }else if(job.kind==='attack'){
+56:          const hit=await attack(job.side,job.value,{damageLedger:damageLedger[job.side],attackChain:job.chain});
+59:        queueUltimates();
+61:    })().catch(error=>{failure=error;queue.length=0;}).finally(()=>{running=null;if(queue.length&&!closed&&!failure)start();});
+63:  function enqueue(side,kind,value){
+65:    const pending=queue.find(job=>job.side===side&&job.kind===kind&&(kind!=='attack'||job.wave===wave));
+67:    else queue.push({side,kind,value,wave,chain:attackChains[side]||1,at:Math.round(performance.now())});
+86:        attackChains[side]=swords?attackChains[side]+1:0;
+90:      queueUltimates();
+107:      state[energyKey]=before+energy;queueUltimates();
+123:          if(tf.burn&&first&&!turnGain.burned&&alive('enemy')){turnGain.burned=true;const amount=Math.max(1,Math.round(tf.burn.base*(progressionBattle?.stats.attack||1)));
+126:        enqueue(side,'attack',raw);
+131:        state[stat]+=gained;receipt(side,kind,gained);enqueue(side,kind,gained);
+137:      queueUltimates();
+146:          state[key]=before+add;queueUltimates();state[key]=Math.min(GemwovenBoardRules.ULTIMATE.cap,state[key]);receipt(side,'energy',add);
+158:      closed=true;queue.length=0;
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content src/combat-v3.js | Select-Object -First 115; Get-Content src/combat-v3.js | Select-Object -Skip 225 -First 120; Get-Content src/live-combat.js | Select-Object -First 76; Get-Content src/forms-mika.js | Select-Object -Skip 334 -First 80' in D:\Project\Gemwoven
+ succeeded in 280ms:
+// Combat direction: preparation -> contact -> hit stop -> recoil -> recovery.
+// Included inside the game closure; all combat mutations still use damage().
+const COMBAT_V3_PACING=Object.freeze({scale:.45,anticipationHold:150,recoveryHold:90});
+const COMBAT_V3_STRIKES=Object.freeze({
+  fire:{duration:470,ultimateDuration:530,contact:115},
+  earth:{duration:470,contact:160},
+  ice:{duration:460,contact:320},
+  lightning:{duration:410,contact:115},
+  novice:{duration:470,contact:115},
+  breath:{duration:560,contact:180}
+});
+// These wrappers are deliberately combat-local. Board and turn timing have
+// their own pacing, while reduced-motion continues using the fast primitives.
+function combatV3Duration(milliseconds){return reduced?milliseconds:Math.round(milliseconds*COMBAT_V3_PACING.scale);}
+function combatV3Wait(milliseconds){return wait(combatV3Duration(milliseconds));}
+function combatV3Animate(node,frames,options={}){
+  return animate(node,frames,{...options,duration:combatV3Duration(options.duration??300),delay:combatV3Duration(options.delay??0)});
+}
+const combatV3Palette={
+  fire:{main:'#ff8b38',light:'#fff0a7',deep:'#e14532'},
+  earth:{main:'#c6e768',light:'#f8ffd1',deep:'#5aa16d'},
+  ice:{main:'#67ddff',light:'#e5ffff',deep:'#448ed9'},
+  lightning:{main:'#c19aff',light:'#fff4ac',deep:'#8254ec'},
+  shadow:{main:'#81b8cf',light:'#dcffff',deep:'#171126'},
+  novice:{main:'#c4a376',light:'#f6e6c6',deep:'#745d43'}
+};
+function combatV3Action(side,action,duration=0){
+  actor(side).dataset.state=action;
+  if(typeof setSpriteAction==='function')setSpriteAction(side,action,combatV3Duration(duration));
+}
+function combatV3Frame(side,action,index){
+  if(typeof setSpriteFrame==='function')setSpriteFrame(side,action,index);
+}
+function combatV3Point(side){
+  const scene=$('scene').getBoundingClientRect(),r=actor(side).getBoundingClientRect();
+  return {x:r.left-scene.left+r.width*.5,y:r.top-scene.top+r.height*.62,foot:r.bottom-scene.top-r.height*.06,width:r.width,height:r.height};
+}
+function combatV3Element(className,point,size,html='',palette=combatV3Palette.fire){
+  const node=document.createElement('span');
+  node.className='combat-v3-effect '+className;
+  node.setAttribute('aria-hidden','true');
+  node.style.cssText=`left:${point.x}px;top:${point.y}px;width:${size}px;height:${size}px;--combat-main:${palette.main};--combat-light:${palette.light};--combat-deep:${palette.deep};`;
+  node.innerHTML=html;$('combatEffects').append(node);return node;
+}
+function combatV3Svg(content,view='0 0 220 220'){
+  return `<svg viewBox="${view}" fill="none" aria-hidden="true">${content}</svg>`;
+}
+function combatV3Fx(node,frames,options,pending){
+  const job=combatV3Animate(node,frames,options).finally(()=>node.remove());
+  if(pending)pending.push(job);return job;
+}
+// Actor movement stays rigid: drawn poses carry the motion, never an extra zoom.
+async function combatV3Pose(node,transform,duration,easing='cubic-bezier(.22,.7,.3,1)'){
+  const previous=node.style.transform||'translate(0px,0px) rotate(0deg) scale(1)';
+  await combatV3Animate(node,[{transform:previous},{transform}],{duration,easing});
+  node.style.transform=transform;
+}
+function combatV3Cue(side,key,ultimate,hits,pending){
+  const title=side==='hero'?(ultimate?HEROES[key].skill:({fire:'Li���t di��.m tr���m',earth:'Tr��?ng chA1y',ice:'B��ng th����ng',lightning:'LA'i kA-ch',novice:'Ki���m g��-'})[key]):(ultimate?MONSTERS[key].skill:MONSTERS[key].attack);
+  return popActorSkill(side,title,ultimate,pending);
+}
+function combatV3Charge(side,key,ultimate,pending){
+  const p=combatV3Point(side),color=combatV3Palette[key],size=Math.min(p.width*.85,170);
+  combatV3ChargeSound(key,ultimate);
+  const seal=combatV3Element('combat-v3-seal',{x:p.x,y:p.foot-9},size,combatV3Svg('<ellipse cx="110" cy="110" rx="94" ry="94" stroke="currentColor" stroke-width="3"/><ellipse cx="110" cy="110" rx="77" ry="77" stroke="currentColor" stroke-width="1" stroke-dasharray="5 9"/><path d="m110 22 76 132H34Zm0 176L34 66h152Z" stroke="currentColor" stroke-width="1.5" opacity=".8"/>'),color);
+  combatV3Fx(seal,[{opacity:0,transform:'translate(-50%,-50%) scale(.55) rotateX(64deg) rotate(-16deg)'},{opacity:.85,transform:'translate(-50%,-50%) scale(1) rotateX(64deg) rotate(12deg)',offset:.45},{opacity:0,transform:'translate(-50%,-50%) scale(1.2) rotateX(64deg) rotate(32deg)'}],{duration:ultimate?1150:690},pending);
+  if(!ultimate)return;
+  const glow=combatV3Element('combat-v3-charge',p,size*.9,'',color);
+  combatV3Fx(glow,[{opacity:0,transform:'translate(-50%,-50%) scale(.35)'},{opacity:.7,transform:'translate(-50%,-50%) scale(1)',offset:.7},{opacity:0,transform:'translate(-50%,-50%) scale(.5)'}],{duration:780},pending);
+  if(reduced)return;
+  for(let i=0;i<8;i++){
+    const angle=i*Math.PI/4,spark=combatV3Element('combat-v3-mote',{x:p.x+Math.cos(angle)*size*.5,y:p.y+Math.sin(angle)*size*.45},i%2?5:8,'',color);
+    combatV3Fx(spark,[{opacity:0,transform:'translate(-50%,-50%) scale(.3)'},{opacity:1,offset:.25},{opacity:0,transform:`translate(calc(-50% + ${-Math.cos(angle)*size*.5}px),calc(-50% + ${-Math.sin(angle)*size*.45}px)) scale(.3)`}],{duration:620,delay:i*35},pending);
+  }
+}
+function combatV3Slash(point,key,index,ultimate,direction,pending){
+  const color=combatV3Palette[key],size=Math.min(point.width*(ultimate?1.05:.9),210),rotation=[38,-70,100][index%3]*direction;
+  const timing=COMBAT_V3_STRIKES[key],duration=ultimate&&timing.ultimateDuration?timing.ultimateDuration:timing.duration;
+  const svg=combatV3Svg('<path d="M10 180C-5 71 105-7 217 27C116 13 43 92 10 180Z" fill="var(--combat-deep)" opacity=".4"/><path d="M20 183C10 82 114 9 211 32C119 29 54 91 20 183Z" fill="var(--combat-main)"/><path d="M28 171C36 83 120 28 205 34C124 44 68 91 28 171Z" fill="var(--combat-light)"/><path d="M39 148C66 88 134 46 194 40" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M9 145C25 76 73 27 145 17" stroke="var(--combat-main)" stroke-width="3" opacity=".5"/>');
+  const arc=combatV3Element('combat-v3-slash',point,size,svg,color);
+  // A strike whose contact lands late in its duration (some foes) must keep the keyframe offsets in order.
+  const hit=Math.min(.9,timing.contact/duration);
+  combatV3Fx(arc,[{opacity:0,transform:`translate(-50%,-50%) rotate(${rotation-45*direction}deg) scale(.58) scaleX(${direction})`,easing:'cubic-bezier(.12,.75,.25,1)'},{opacity:1,transform:`translate(-50%,-50%) rotate(${rotation}deg) scale(1) scaleX(${direction})`,offset:hit},{opacity:.95,transform:`translate(-50%,-50%) rotate(${rotation+15*direction}deg) scale(1.08) scaleX(${direction})`,offset:Math.max(.6,Math.min(.95,hit+.08))},{opacity:0,transform:`translate(-50%,-50%) rotate(${rotation+29*direction}deg) scale(1.17) scaleX(${direction})`}],{duration,easing:'linear'},pending);
+  if(ultimate&&index===2){
+    const cross=combatV3Element('combat-v3-finisher',point,size*1.02,combatV3Svg('<path d="m35 35 150 150M185 35 35 185" stroke="var(--combat-main)" stroke-width="17"/><path d="m35 35 150 150M185 35 35 185" stroke="var(--combat-light)" stroke-width="5"/>'),color);
+    combatV3Fx(cross,[{opacity:0,transform:'translate(-50%,-50%) scale(.5)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.2},{opacity:0,transform:'translate(-50%,-50%) scale(1.25)'}],{duration:560,delay:90},pending);
+  }
+}
+function combatV3Bolt(point,key,index,ultimate,pending){
+  const color=combatV3Palette[key],x=point.x+(index%2?-10:10),height=Math.max(90,point.y+10),width=ultimate?110:78;
+  const timing=COMBAT_V3_STRIKES.lightning;
+  const paths=[`M50 0 36 24 58 28 31 54 54 53 44 78 55 100`,`M58 0 39 20 55 33 27 48 47 56 32 80 55 100`,`M39 0 59 18 35 31 57 46 30 65 57 76 55 100`];
+  const d=paths[index%3];
+  const beam=combatV3Element('combat-v3-lightning',{x,y:height*.5},width,combatV3Svg(`<path d="${d}" stroke="var(--combat-deep)" stroke-width="15" opacity=".45"/><path d="${d}" stroke="var(--combat-main)" stroke-width="8"/><path d="${d}" stroke="var(--combat-light)" stroke-width="3"/><path d="M40 28 19 39 28 54M45 62 76 54 71 76" stroke="var(--combat-main)" stroke-width="2"/>`,'0 0 100 100'),color);
+  beam.style.height=height+'px';
+  beam.firstElementChild.setAttribute('preserveAspectRatio','none');
+  combatV3Fx(beam,[{opacity:0,transform:'translate(-50%,-50%) scaleY(.05)',easing:'cubic-bezier(.16,.75,.25,1)'},{opacity:1,transform:'translate(-50%,-50%) scaleY(1)',offset:timing.contact/timing.duration},{opacity:.9,offset:.65},{opacity:0,transform:'translate(-50%,-50%) scaleY(1.04)'}],{duration:timing.duration,easing:'linear'},pending);
+  const cloud=combatV3Element('combat-v3-storm',{x,y:9},width*1.5,'',color);
+  combatV3Fx(cloud,[{opacity:0,transform:'translate(-50%,-50%) scale(.3)'},{opacity:.8,transform:'translate(-50%,-50%) scale(1)',offset:.25},{opacity:0,transform:'translate(-50%,-50%) scale(1.3)'}],{duration:500},pending);
+}
+function combatV3Ice(sourcePoint,targetPoint,ultimate,index,direction,pending){
+  const color=combatV3Palette.ice,size=ultimate?116:90;
+  const timing=COMBAT_V3_STRIKES.ice;
+  const start={x:sourcePoint.x+direction*sourcePoint.width*.24,y:sourcePoint.y-13},end={x:targetPoint.x,y:targetPoint.y};
+  const angle=Math.atan2(end.y-start.y,end.x-start.x)*180/Math.PI;
+  const lance=combatV3Element('combat-v3-ice-lance',start,size,combatV3Svg('<path d="m8 110 131-22 72 22-72 22Z" fill="var(--combat-main)"/><path d="m20 110 119-15 72 15-72 3Z" fill="var(--combat-light)"/><path d="m54 99 32-18 59 18m-91 22 32 18 59-18" stroke="var(--combat-light)" stroke-width="3"/><path d="M4 110h100" stroke="#fff" stroke-width="3"/>'),color);
+  combatV3Fx(lance,[{opacity:0,transform:`translate(-50%,-50%) rotate(${angle}deg) scaleX(.3)`},{opacity:1,transform:`translate(-50%,-50%) rotate(${angle}deg) scaleX(1)`,offset:.15,easing:'cubic-bezier(.32,.02,.85,.55)'},{opacity:1,transform:`translate(calc(-50% + ${end.x-start.x}px),calc(-50% + ${end.y-start.y}px)) rotate(${angle}deg) scaleX(1.2)`,offset:timing.contact/timing.duration},{opacity:0,transform:`translate(calc(-50% + ${end.x-start.x+direction*19}px),calc(-50% + ${end.y-start.y}px)) rotate(${angle}deg) scaleX(.5)`}],{duration:timing.duration,easing:'linear'},pending);
+  if(ultimate){
+    for(let n=0;n<3;n++){
+      const spike=combatV3Element('combat-v3-ice-spike',{x:end.x+(n-1)*30,y:targetPoint.foot-20},55+n%2*20,combatV3Svg('<path d="m110 12 43 144-43 49-43-49Z" fill="var(--combat-main)"/><path d="m110 12 3 163-38-22Z" fill="var(--combat-light)"/><path d="m113 175 40-19-43 49Z" fill="var(--combat-deep)"/>'),color);
+      combatV3Fx(spike,[{opacity:0,transform:'translate(-50%,-12%) scaleY(.1)'},{opacity:1,transform:`translate(-50%,-65%) rotate(${(n-1)*13}deg) scaleY(1)`,offset:.3},{opacity:.9,offset:.64},{opacity:0,transform:`translate(-50%,-73%) rotate(${(n-1)*13}deg) scaleY(1.05)`}],{duration:760,delay:230+n*80},pending);
+    }
+  }
+}
+function combatV3Earth(point,ultimate,pending){
+  }
+}
+function combatV3BuffSound(kind){
+  const context=combatV3AudioContext();if(!context)return;
+  const notes=kind==='heal'?[523,659,784]:[392,523,784];
+  notes.forEach((frequency,index)=>combatV3Tone(context,{frequency,end:frequency*1.01,at:context.currentTime+combatV3Duration(index*110)/1000,duration:.32,volume:.024}));
+}
+attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=false,attackChain=1}={}){
+  if(ultimate)return rageChoreography(side,raw,{hits});
+  if(side==='hero'&&state.key==='shadow')return shadowAttack(raw,{hits,damageLedger,attackChain});
+  const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
+  const key=progressionIsDuel()?progressionDuelKey(side):side==='hero'?state.key:state.enemyKey,direction=side==='hero'?1:-1;
+  const sourceOrigin=combatV3Point(side),targetOrigin=combatV3Point(targetSide);
+  // A pounce stops with the foe's drawn body (its sheet span, not its whole cell) at the
+  // hero's front, however large the foe is.
+  const foeSpan=side==='enemy'?spriteDefinition('enemy',state.enemyKey,'attack').sheet.span:null;
+  const reach=foeSpan?Math.max(0,sourceOrigin.x-sourceOrigin.width*(.5-foeSpan[0])-(targetOrigin.x+targetOrigin.width*.3)):Math.max(0,Math.abs(targetOrigin.x-sourceOrigin.x)-sourceOrigin.width*.43);
+  // Foes pounce on the hero for a basic attack; only one that stands too far away (more than
+  // half the arena to cover) strikes from range with its element instead.
+  const foe=side==='enemy'&&!progressionIsDuel(),pounce=foe&&reach<=$('scene').clientWidth*.5&&!foeShoots();
+  const melee=foe?pounce:key==='earth'||(['fire','novice'].includes(key)&&side==='hero');
+  const travel=melee?reach:0;
+  const sourceTransform=source.style.transform,targetTransform=target.style.transform,sourceZ=source.style.zIndex,targetFilter=target.style.filter;
+  const pending=[];let total=0,blocked=0,stored=0;
+  const chain=ultimate?1:Math.max(1,Math.floor(attackChain)),variant=(chain-1)%3;
+  const poses=[{windup:0,ready:1,launch:2,contact:3,recover:4,tilt:7,lift:-3},{windup:4,ready:2,launch:1,contact:2,recover:3,tilt:-10,lift:-15},{windup:1,ready:0,launch:2,contact:4,recover:3,tilt:12,lift:5}];
+  const critical=chain>=3&&chain%3===0;
+  const opening=poses[variant];raw*=attackChainMultiplier(chain)*(critical?1.5:1);
+  source.dataset.attackChain=chain;source.dataset.attackStance=['sweep','rising','overhead'][variant];
+  hits=Math.max(1,Math.min(8,Math.round(hits)||1));
+  source.classList.add('combat-v3-acting');source.style.zIndex='4';$('scene').classList.add('combat-v3-active');
+  try{
+    combatVoice(side,'attack');
+    const preparationAction=ultimate?'cast':'attack';
+    combatV3Action(side,preparationAction,ultimate?900:620);combatV3Frame(side,preparationAction,ultimate?0:opening.windup);
+    if(chain>1)popActorSkill(side,'�?A'N A-'+chain+' A� +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%',false,pending);
+    if(pounce)popActorSkill(side,'V��" t��>i',false,pending);
+    else if(!ultimate&&chain===1)combatV3Cue(side,key,false,hits,pending);
+    combatV3Charge(side,key,ultimate,pending);
+    // Wind-ups lean backwards only as far as the arena edge allows.
+    const lean=combatOuterMotion(side,ultimate?13:8,melee?7:2),lean1=combatOuterMotion(side,ultimate?7:4,melee?3:1);
+    await combatV3Pose(source,`translate(${-direction*lean1.distance}px,0px) rotate(${-direction*lean1.tilt}deg)`,ultimate?290:150);
+    combatV3Frame(side,preparationAction,ultimate?1:opening.ready);
+    await combatV3Pose(source,`translate(${-direction*lean.distance}px,${ultimate?-4:1}px) rotate(${-direction*lean.tilt}deg)`,ultimate?330:200);
+    if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.anticipationHold);
+    combatV3Frame(side,preparationAction,ultimate?2:opening.launch);
+    if(melee){
+      combatV3Action(side,'attack',ultimate?1000:700);
+      if(ultimate){combatV3Frame(side,'attack',0);await combatV3Wait(70);combatV3Frame(side,'attack',1);await combatV3Wait(100);}
+      combatV3Frame(side,'attack',opening.launch);
+      await combatV3Pose(source,`translate(${direction*travel}px,${opening.lift}px) rotate(${direction*opening.tilt*.5}deg)`,ultimate?250:210,'cubic-bezier(.18,.65,.25,1)');
+    }else await combatV3Wait(ultimate?130:75);
+    for(let i=0;i<hits;i++){
+      const last=i===hits-1,strong=ultimate&&last,boss=side==='enemy'&&state.boss;
+      const strike=poses[(variant+i)%3],strikeIndex=(variant+i)%3;
+      // Each cut has a distinct wind-up and a held contact pose.
+      const action=melee||!ultimate?'attack':'cast';
+      combatV3Action(side,action,500);combatV3Frame(side,action,i?strike.windup:strike.launch);
+      if(i){
+        await combatV3Wait(melee?45:30);
+        combatV3Frame(side,action,strike.ready);
+        await combatV3Pose(source,`translate(${direction*(travel-7)}px,${melee?-7:-3}px) rotate(${-direction*(i%2?8:4)}deg)`,melee?130:85);
+        combatV3Frame(side,action,strike.launch);await combatV3Wait(melee?45:35);
+      }
+      const origin=combatV3Point(side),contact=combatV3Point(targetSide);
+      const contactDelay=COMBAT_V3_STRIKES[pounce?'novice':key==='fire'&&side==='enemy'?'breath':key].contact;
+      combatV3Whoosh(key,strong||boss,contactDelay);
+      if(melee||key==='lightning')combatV3AttackTrail(origin,contact,key,direction,contactDelay,pending);
+      if(pounce)combatV3Slash({x:contact.x-direction*15,y:contact.y+5,width:contact.width},key,strikeIndex,false,direction,pending);
+      else if(castAttackVisual(side,key,origin,contact,strikeIndex,pending)){}
+      else if(key==='fire'&&side==='hero')combatV3Slash(contact,key,strikeIndex,ultimate,direction,pending);
+      else if(key==='fire')combatV3Breath(origin,contact,ultimate,pending);
+      else if(key==='ice')combatV3Ice(origin,contact,ultimate,i,direction,pending);
+      else if(key==='lightning')combatV3Bolt(contact,key,i,ultimate,pending);
+      else{
+        combatV3Slash({x:contact.x-direction*15,y:contact.y+5,width:contact.width},key,strikeIndex,false,direction,pending);
+      }
+      await combatV3Pose(source,`translate(${direction*(travel+(melee?8:3))}px,${strike.lift}px) rotate(${direction*strike.tilt}deg)`,contactDelay,'cubic-bezier(.2,.8,.35,1)');
+      // HP changes only once the visual weapon actually reaches its target.
+      combatV3Frame(side,action,strike.contact);
+      const evade=noctEvades(targetSide);
+      const result=damage(side,raw/hits,damageLedger);total+=result.amount;blocked+=result.blocked;stored+=result.stored||0;
+      if(evade)noctDodge(direction,pending);
+      else{
+        combatVoice(targetSide,'hurt');hitAccents(side,result,critical,pending);
+        combatV3Action(targetSide,'hurt',strong||boss?560:410);combatV3HitSound(key,strong||boss);
+        combatV3Impact(targetSide,key,direction,strong||boss,pending);
+        if(key==='earth')combatV3Earth(contact,ultimate,pending);
+      }
+      combatV3Number(targetSide,result.stored?(result.amount?'-'+result.amount+' A� TA?CH +'+result.stored:'TA?CH +'+result.stored):result.amount?'-'+result.amount:'CH��N '+result.blocked,result.stored?'stored':result.amount?(critical?'crit':'damage'):'armor',i,pending);
+      if(hits>1){
+        const count=document.createElement('span');count.className='combat-v3-hit-count';count.textContent=String(i+1).padStart(2,'0')+' / '+String(hits).padStart(2,'0');$('combatEffects').append(count);
+        combatV3Fx(count,[{opacity:0,transform:'translate(-50%,5px)'},{opacity:1,transform:'translate(-50%,0)',offset:.2},{opacity:0,transform:'translate(-50%,-3px)'}],{duration:520},pending);
+      }
+      if(!evade){
+        combatV3Camera(direction,strong,boss,pending);
+        target.style.filter='brightness(1.35)';
+        const recoil=combatOuterMotion(targetSide,strong||boss?15:9,strong||boss?7:4);
+        await combatV3Pose(target,`translate(${direction*recoil.distance}px,${strong||boss?-5:-2}px) rotate(${direction*recoil.tilt}deg)`,75);
+      }
+      await combatV3Wait(strong?105:melee?75:65); // restrained hit stop, no full-screen strobe
+      target.style.filter='';
+      combatV3Frame(side,action,strike.recover);
+      await combatV3Pose(target,'translate(0px,0px) rotate(0deg)',last?300:melee?175:130);
+      combatV3Frame(side,action,5);
+      if(!evade)combatV3Action(targetSide,'idle');
+      if(!last)await combatV3Wait(melee?85:55);
+    }
+    await combatV3Pose(source,'translate(0px,0px) rotate(0deg)',ultimate?390:310);
+    if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.recoveryHold);
+    await Promise.all(pending);
+    return {amount:total,blocked,...(stored?{stored}:{} )};
+  }finally{
+    await Promise.allSettled(pending);
+    source.style.transform=sourceTransform;target.style.transform=targetTransform;source.style.zIndex=sourceZ;target.style.filter=targetFilter;
+    source.classList.remove('combat-v3-acting');$('scene').classList.remove('combat-v3-active');
+    delete source.dataset.attackChain;delete source.dataset.attackStance;
+    combatV3Action(side,'idle');combatV3Action(targetSide,'idle');
+  }
+};
+// Board impacts grant resources immediately; one actor-action queue prevents
+// attacks, recoil and authored buff poses from overwriting each other.
+function createLiveCombat(){
+  const queue=[],seen=new Set(),counts={hero:[0,0,0,0,0],enemy:[0,0,0,0,0]};
+  const feedback=new Map(),receiveJobs=new Set();
+  const attackChains={hero:0,enemy:0};
+  const damageLedger={hero:{raw:0,applied:0},enemy:{raw:0,applied:0}};
+  let running=null,failure=null,closed=false,wave=0,heroTiles=0,owner=null,comboPaid=false;
+  // Per resolution: hero rage earned (Lumi's Bi���n ThA�n cap), the first hero sword wave, armour from overflow healing.
+  const turnGain={rage:0,firstSwordWave:0,overflowArmor:0,burned:false};
+  const alive=side=>state[side==='hero'?'hp':'enemyHp']>0;
+  // An ultimate casts the moment its side's rage is full in its own turn, while the board keeps resolving (owner 05/11:
+  // "�`��y n��T thA� thi tri���n luA'n"; 06/11: no limit a turn, "�`��� cA�n tA-ch n��T m��>i"). Each 100 is taken at once to book one,
+  // so the gauge keeps filling; booked ultimates join the line of actions in the order they happened.
+  // Rage that fills on the other side's turn waits for that side's turn (castReadyUltimates).
+  function queueUltimates(){
+    if(closed||failure||!alive('hero')||!alive('enemy'))return;
+    const R=GemwovenBoardRules,allowed=typeof boardUltAllowed==='function'?boardUltAllowed:()=>false;
+    for(const side of ['hero','enemy']){
+      if(side==='enemy'&&noriSealHolds())continue;
+      if(side==='hero'&&state.playerFrozen)continue;
+      const key=side==='hero'?'energy':'enemyEnergy';
+      if(side==='hero'&&typeof foeSilenced==='function'&&foeSilenced())continue;
+      while(state[key]>=R.ULTIMATE.cost&&allowed(side)){
+        state[key]-=R.ULTIMATE.cost;boardUltTurn[side]++;
+        queue.push({side,kind:'ultimate',value:0,at:Math.round(performance.now())});
+        update();
+      }
+    }
+    if(queue.length)start();
+  }
+  function start(){
+    if(running||closed)return;
+    running=(async()=>{
+      // A short gathering window combines adjacent impacts into one gesture.
+      await boardV3Pause(150);
+      while(queue.length&&!closed){
+        // First come, first played (owner 06/11: "cA�i nA�o �`���n tr����>c th���c hi���n tr����>c"): ultimates, strikes and the
+        // fighters' heal or armour gains play in the order they happened, none jumping the line. The fight still runs
+        // alongside the board: each job starts as soon as the one before it ends.
+        const job=queue.shift();
+        if(window.gameQA)(window.combatJobLog||=[]).push({t:Math.round(performance.now()),side:job.side,kind:job.kind,at:job.at,start:true});// studio QA
+        if(!alive(job.side))continue;
+        if(job.side==='enemy'&&noriSealHolds()&&(job.kind==='attack'||job.kind==='ultimate')){
+          if(job.kind==='ultimate'){state.enemyEnergy=Math.min(199,state.enemyEnergy+100);update();}
+          continue;
+        }
+        if(job.kind==='ultimate'){
+          if(alive(job.side==='hero'?'enemy':'hero')){
+            if(job.side==='hero')await heroUltimate();else await enemySkill({reserved:true});
+          }else{
+            const key=job.side==='hero'?'energy':'enemyEnergy';state[key]=Math.min(100,state[key]+100);update();
+          }
+        }else if(job.kind==='attack'){
+          if(!alive(job.side==='hero'?'enemy':'hero'))continue;
+          const hit=await attack(job.side,job.value,{damageLedger:damageLedger[job.side],attackChain:job.chain});
+          message((job.side==='hero'?HEROES[state.key].name:MONSTERS[state.enemyKey].name)+': '+(hit.stored?'tA-ch '+hit.stored+' sA�t th����ng':hit.amount+' sA�t th����ng')+(hit.blocked?' A� phA� '+hit.blocked+' giA�p':'')+'.');
+        }else await buff(job.side,job.kind,job.value,{alreadyApplied:true});
+        queueUltimates();
+      }
+    })().catch(error=>{failure=error;queue.length=0;}).finally(()=>{running=null;if(queue.length&&!closed&&!failure)start();});
+  }
+  function enqueue(side,kind,value){
+    if(!value||closed||failure)return;
+    const pending=queue.find(job=>job.side===side&&job.kind===kind&&(kind!=='attack'||job.wave===wave));
+    if(pending)pending.value+=value;
+    else queue.push({side,kind,value,wave,chain:attackChains[side]||1,at:Math.round(performance.now())});
+    start();
+  }
+  // Board receipts (+HP, +GIA?P, +NL) join the actor's popup column; while one is still on screen
+  // further gains of that kind add to it. finish() waits only for each receipt's short beat.
+  function receipt(side,kind,value){
+    if(reduced||!value)return;
+    const id=side+kind,existing=feedback.get(id);
+    if(existing){existing.value+=value;if(existing.popup.update(label(kind,existing.value)))return;}
+    const popup=combatPopup(side,label(kind,value),{kind:kind==='heal'?'heal':kind==='armor'?'armor':'energy',beat:440});
+// The lunge and the attack poses are the form's (forms.json "attack"); only the cut is redrawn: a
+// heavy fox-fire broadsword arc (form 2) or a moon-glaive crescent (form 3), peaking at contact.
+const mikaBaseSlash=combatV3Slash;
+combatV3Slash=function(point,key,index,ultimate,direction,pending){
+  // Six-star: the long glaive's own crescent sweep (sweep3), drawn from upper left down to the strike.
+  const form=mikaSlashForm,name=form===3?'sweep3':'slash'+form,sheet=mikaSheet(name);
+  if(!form||key!=='fire'||!sheet||reduced)return mikaBaseSlash(point,key,index,ultimate,direction,pending);
+  const foe=mikaFoeBody(),size=form===3?Math.min(Math.max(foe.height*1.3,foe.width*1.1),point.width*1.3,230):Math.min(foe.height*1.25,point.width*1.15,220);
+  // Three cuts in a chain: a falling diagonal, a rising one, an overhead (form 2). Form 3's crescent
+  // trail is drawn from upper left bulging to lower left; mirrored across its diagonal (rotate 90 after
+  // flipping vertically) it bulges OUTWARD to the upper right, away from her hands, as the glaive tip
+  // sweeps from overhead down onto the foe, its bright end landing on the foe's near side.
+  const pose=form===2?[[0,1],[0,-1],[28,1]][index%3]:[[90,-1],[80,-1],[100,-1]][index%3];
+  const node=mikaFxNode(name,'mika-slash');
+  const aim=Math.min(foe.x,foe.left+Math.min(foe.width*.35,70));
+  const at=form===3?{x:aim-direction*size*.2,y:foe.y-size*.15}:{x:foe.x-direction*6,y:foe.y};
+  node.style.cssText+=`;left:${at.x}px;top:${at.y}px;width:${size}px;height:${size}px`;
+  const frames=[0,1,1,2,3],contact=COMBAT_V3_STRIKES.fire.contact;
+  pending.push((async()=>{
+    for(const [i,f] of frames.entries()){
+      mikaFxFrame(node,name,f);
+      node.style.transform=`translate(-50%,-50%) rotate(${pose[0]*direction}deg) scale(${direction*(1+i*.03)},${pose[1]})`;
+      await wait(i===0?contact:sheet.frameDuration);
+    }
+    await animate(node,[{opacity:1},{opacity:0}],{duration:120,fill:'forwards'});
+  })().finally(()=>node.remove()));
+};
+
+// ---- Six-star basic attack: the long glaive swung from the butt of its shaft -------------------------
+// The shared lunge (combat-v3.js) asks for "attack" frames by role (wind-up, ready, launch, contact,
+// recover, rest) with indices that differ per chain stance. Six-star Mika plays her own "slash" sheet
+// in that order instead: ready with both hands at the shaft's end, the glaive swung back behind her,
+// swept forward low, held out at full reach on contact, carried up past the foe, then settling.
+const MIKA_SLASH_FIRST=[0,1,2,2,3,4],MIKA_SLASH_NEXT=[1,1,2,3,4];
+let mikaSlashCalls=0,mikaSlashOrder=MIKA_SLASH_FIRST,mikaSlashShorten=0;
+const mikaBaseFrame=combatV3Frame,mikaBaseAction=combatV3Action,mikaBasePose=combatV3Pose;
+combatV3Frame=function(side,action,index){
+  if(mikaSlashForm!==3||side!=='hero'||action!=='attack')return mikaBaseFrame(side,action,index);
+  // Index 5 is always the rest after a cut; the next cut of a multi-hit chain starts from wind-up.
+  if(index===5){mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_NEXT;return mikaBaseFrame(side,'slash',5);}
+  return mikaBaseFrame(side,'slash',mikaSlashOrder[Math.min(mikaSlashCalls++,mikaSlashOrder.length-1)]);
+};
+combatV3Action=function(side,action,duration){
+  return mikaBaseAction(side,mikaSlashForm===3&&side==='hero'&&action==='attack'?'slash':action,duration);
+};
+// The glaive reaches far: the lunge stops short, so the crescent (not her body) meets the foe.
+function mikaGlaiveShortening(){
+  const sheet=mikaSheet('sweep3')&&ART.heroForms?.fire?.['3']?.slash;if(!sheet)return 0;
+  const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,Math.abs(to.x-from.x)-from.width*.43);
+  // Contact pose ("strike" frame 3): the crescent's middle sits 0.34 of the drawn cell right of its
+  // centre, her body's front (boots, skirt) 0.17.
+  const cell=from.width*(sheet.scale||1),reach=cell*.34,front=cell*.17,foe=mikaFoeBody();
+  // The crescent lands on the foe's near side (a big foe's middle can be far beyond its front), and her
+  // body stops short of the foe's drawn edge, so she never overlaps any foe.
+  const aim=Math.min(foe.x,foe.left+Math.min(foe.width*.35,70));
+  // (the contact pose adds 8px and a lean to the planned travel; measured overshoot ~26px)
+  const advance=Math.min(travel,aim-from.x-reach,foe.left-34-from.x-front);
+  window.mikaLungeLog={foeLeft:Math.round(foe.left),heroX:Math.round(from.x),front:Math.round(front),travel:Math.round(travel),advance:Math.round(advance)};// studio QA
+  return Math.max(0,Math.min(travel,travel-Math.max(0,advance)));
+}
+combatV3Pose=function(node,transform,...rest){
+  if(mikaSlashShorten&&node===actor('hero')){
+    const m=/^translate\((-?[\d.]+)px,/.exec(transform);
+    if(m&&+m[1]>0)transform=transform.replace(m[0],`translate(${Math.max(0,+m[1]-mikaSlashShorten)}px,`);
+  }
+  return mikaBasePose(node,transform,...rest);
+};
+
+// ---- Six-star departure: a fox-like dash ----------------------------------------------------------
+// Like the shared walk off (adventure-effects.js), but on the "dash" loop (every frame is a stride;
+// no anticipation poses) with the glaive over her shoulder; the fox-fire spirit runs at her heels.
+async function mikaFoxDash(){
+  const hero=actor('hero'),width=$('scene').clientWidth,layers=[...$('landscape').children],dash=spriteDefinition('hero','fire','dash').sheet;
+  hero.dataset.departing='true';
+  let fx=null;
+  try{
+    setSpriteFrame('hero','dash',0);fx=departFx('fire');
+    await wait(reduced?0:160);
+    const start=performance.now(),duration=reduced?1:2300;
+    await new Promise(resolve=>{
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg -n -A 22 "function combatV3AttackTrail" src/combat-v3.js; Get-Content src/combat-v3.js | Select-Object -Skip 270 -First 24; rg -n "charge|windup|flame" src/forms-mika.js' in D:\Project\Gemwoven
+ succeeded in 252ms:
+138:function combatV3AttackTrail(sourcePoint,targetPoint,key,direction,contactDelay,pending){
+139-  if(reduced)return;
+140-  const start={x:sourcePoint.x+direction*sourcePoint.width*.16,y:sourcePoint.y-9};
+141-  const dx=targetPoint.x-start.x,dy=targetPoint.y-start.y,length=Math.hypot(dx,dy);
+142-  if(length<14)return;
+143-  const angle=Math.atan2(dy,dx)*180/Math.PI,duration=contactDelay+340;
+144-  const node=combatV3Element('combat-v3-direction-trail',{x:(start.x+targetPoint.x)/2,y:(start.y+targetPoint.y)/2},length,combatV3Svg('<path d="M1 26Q44 10 99 26" stroke="var(--combat-main)" stroke-width="10" opacity=".32"/><path d="M1 26Q44 10 99 26" stroke="var(--combat-light)" stroke-width="2.5"/><path d="M9 34Q50 22 91 33" stroke="var(--combat-main)" stroke-width="1.5" opacity=".65"/>','0 0 100 48'),combatV3Palette[key]);
+145-  node.style.height='48px';node.firstElementChild.setAttribute('preserveAspectRatio','none');
+146-  const transform=`translate(-50%,-50%) rotate(${angle}deg)`;
+147-  combatV3Fx(node,[{opacity:0,transform,clipPath:'inset(0 100% 0 0)'},{opacity:.9,transform,clipPath:'inset(0 0 0 0)',offset:contactDelay/duration},{opacity:0,transform,clipPath:'inset(0 0 0 65%)'}],{duration,easing:'linear'},pending);
+148-}
+149-function combatV3Camera(direction,strong,boss,pending){
+150-  if(reduced)return;
+151-  const force=boss?(strong?8:6):(strong?6:3.5),scene=$('scene');
+152-  pending.push(combatV3Animate(scene,[
+153-    {transform:'translate(0px,0px)'},
+154-    {transform:`translate(${-direction*force}px,${force*.28}px)`,offset:.16},
+155-    {transform:`translate(${direction*force*.72}px,${-force*.2}px)`,offset:.38},
+156-    {transform:`translate(${-direction*force*.35}px,${force*.12}px)`,offset:.64},
+157-    {transform:'translate(0px,0px)'}
+158-  ],{duration:210,easing:'ease-out'}));
+159-}
+160-function combatV3Number(side,value,kind,index,pending){
+    combatV3Frame(side,preparationAction,ultimate?2:opening.launch);
+    if(melee){
+      combatV3Action(side,'attack',ultimate?1000:700);
+      if(ultimate){combatV3Frame(side,'attack',0);await combatV3Wait(70);combatV3Frame(side,'attack',1);await combatV3Wait(100);}
+      combatV3Frame(side,'attack',opening.launch);
+      await combatV3Pose(source,`translate(${direction*travel}px,${opening.lift}px) rotate(${direction*opening.tilt*.5}deg)`,ultimate?250:210,'cubic-bezier(.18,.65,.25,1)');
+    }else await combatV3Wait(ultimate?130:75);
+    for(let i=0;i<hits;i++){
+      const last=i===hits-1,strong=ultimate&&last,boss=side==='enemy'&&state.boss;
+      const strike=poses[(variant+i)%3],strikeIndex=(variant+i)%3;
+      // Each cut has a distinct wind-up and a held contact pose.
+      const action=melee||!ultimate?'attack':'cast';
+      combatV3Action(side,action,500);combatV3Frame(side,action,i?strike.windup:strike.launch);
+      if(i){
+        await combatV3Wait(melee?45:30);
+        combatV3Frame(side,action,strike.ready);
+        await combatV3Pose(source,`translate(${direction*(travel-7)}px,${melee?-7:-3}px) rotate(${-direction*(i%2?8:4)}deg)`,melee?130:85);
+        combatV3Frame(side,action,strike.launch);await combatV3Wait(melee?45:35);
+      }
+      const origin=combatV3Point(side),contact=combatV3Point(targetSide);
+      const contactDelay=COMBAT_V3_STRIKES[pounce?'novice':key==='fire'&&side==='enemy'?'breath':key].contact;
+      combatV3Whoosh(key,strong||boss,contactDelay);
+      if(melee||key==='lightning')combatV3AttackTrail(origin,contact,key,direction,contactDelay,pending);
+      if(pounce)combatV3Slash({x:contact.x-direction*15,y:contact.y+5,width:contact.width},key,strikeIndex,false,direction,pending);
+1:/* Mika's star forms (hero-kits.js). Form 1 keeps Hỏa Kiếm Cuồng Nộ, the charged sword and its flying
+7: *    through the foe, leaving a quarter-circle of fire and a horizontal cut of flame on the foe;
+126:const MIKA_SOUNDS={2:['f2-rise','f2-dipbody','f2-dip','f2-flyby','f2-boom','f2-floor'],3:['gather','f3-flare','draw','f3-sweep','cut','f3-sun','finale','f3-wave','flame-whoosh','f3-engulf']};
+267:    pending.push(wait(delay+450).then(()=>{if(!reduced){// Each wave bursts with the main sun burst's own sound; after the last, form 1's flame whoosh rings out
+268:    // exactly as form 1 plays it (mika-ultimate.js: 'flame-whoosh', volume .48, pan .12).
+269:    if(i%3===0){mikaSound('f3-wave',.56,.3);mikaShake(pending,.6);if(i===6){mikaSound('flame-whoosh',.48,.12);pending.push(wait(140).then(()=>mikaEngulf(foe,pending)));}}mikaBurst('impact3',{x:foe.x+(i%3-1)*foe.width*.15,y:foe.y-(i%2)*foe.height*.15},foe.width*.55,pending,{hold:.6,fade:120});}}));
+
+codex
+**Chốt: cần nối tư thế và giữ Mika ở phía trước giữa các đòn; chỉ tăng tốc toàn bộ sẽ vẫn giật.** Đây là review read-only, chưa sửa file.
+
+1. **Hiện tại — chưa đạt**
+   - **Hình thái 1: 5/10.** Đọc được động tác chém, nhưng cứ lao tới → về gốc → lấy đà lại, khiến chuỗi thành ba đòn rời.
+   - **Hình thái 2: 5/10.** Vết chém rõ hơn; thân và kiếm vẫn reset giữa đòn, thiếu chuyển động nối.
+   - **Hình thái 3: 4/10.** Vũ khí dài nhưng các nhát gần cùng hướng; quầng cam che thân khoảng **150 ms**, làm mất khả năng đọc tay và cán đao.
+   - Chuỗi khoảng **3.300 ms**, có khoảng đứng chờ ước lượng **200–300 ms** giữa nhịp; lực đánh bị ngắt.
+   - Popup lặp làm nhiễu. Tuy nhiên, code hiện chỉ gọi tên chiêu khi `chain===1`; cần kiểm tra `job.chain` thực tế. `combatV3Charge()` thường chỉ tạo vòng dưới chân, nên **chưa đủ bằng chứng quy toàn bộ mảng cam che thân cho hàm này**.
+
+2. **Spec đề nghị — dùng chung cả ba hình thái**
+
+   Mọi thời gian dưới đây là **ms thực trên màn hình, sau scale .45**; khoảng cách tính ở viewport **430×932**.
+
+   | Thành phần | Chốt |
+   |---|---|
+   | Điều kiện nối | Ngay trước pha hồi, xem **phần tử đầu hàng đợi**: phải là đánh thường cùng phía. Không tìm vượt qua buff, tuyệt kỹ hoặc đòn phía khác; giữ FIFO. |
+   | Đòn đầu | Lấy đà **100 ms** → lao tới **120 ms** → vung tới chạm **80 ms**. Chạm lần đầu ở **300 ms**. |
+   | Mỗi đòn nối | Khoảng cách giữa hai lần chạm **360 ms**: ghìm va chạm **35** → theo đà **105** → chuyển thế **140** → vung tới chạm **80**. Không đứng idle. |
+   | Nối tư thế | Đòn sau bắt đầu đúng tư thế kết đòn trước; thân chỉ dịch **2–6 px**, không lùi lấy đà từ gốc. |
+   | Hướng chém | **Chéo xuống → hất lên → ngang**, lặp lại. Tay, vũ khí và vệt chém cùng hướng; cần pose phù hợp, không chỉ xoay hiệu ứng. |
+   | Vị trí phía trước | Giữ chân quanh điểm áp sát, dao động tối đa **6 px**. Thân không xuyên địch; hình thái 3 giữ khoảng thân **≥12 px**, đầu đao vẫn chạm đúng mục tiêu. |
+   | Địch giật | Lùi **6 px trong 45 ms**, trở về trong **100 ms**; không cộng dồn vị trí. Phản ứng bắt đầu tại va chạm. |
+   | Kết chuỗi | Sau chạm cuối: theo đà **140 ms** → về gốc **180 ms** → ổn định **60 ms**. Chỉ một lần quay về. |
+   | Quầng tích lực | Chỉ đòn đầu, dài **100 ms**, opacity tổng hợp tối đa **0,25**; vùng hiệu ứng chồng lên tối đa **20% diện tích thân**, tránh mặt và tay cầm vũ khí. |
+   | Tên chiêu | Hiện **một lần/chuỗi**, tối đa **600 ms**; popup combo không được thay bằng tên chiêu lặp. |
+   | Máu, âm thanh | Trừ máu đúng lúc lưỡi vũ khí chạm; âm va chạm đồng thời. Mỗi job giữ nguyên sát thương, hệ số và số lần áp dụng. |
+
+   Với ba đòn đã có sẵn: chạm tại **300 / 660 / 1.020 ms**, về trạng thái nghỉ khoảng **1.400 ms**. Nếu hàng đợi không còn đòn hợp lệ khi bắt đầu quay về, đóng chuỗi; đòn đến sau mở chuỗi mới.
+
+   Lưu ý triển khai: hiện mỗi `attack()` đều trả về gốc và đặt `idle` trong `finally`. Cần giữ trạng thái xuyên các job; **không gộp ba job thành một đòn nhiều hit**, vì có thể đổi hệ số và thứ tự xử lý.
+
+3. **Checklist cứng — chỉ đạt khi tất cả đều đạt**
+
+   Chấm riêng từng hình thái bằng video **60 fps**, ba đòn đã xếp hàng; ảnh cách 100 ms chưa đủ kiểm tra độ mượt.
+
+   - [ ] **Nhịp:** hai khoảng chạm liên tiếp đều **360±30 ms**; toàn chuỗi **1.400±100 ms**.
+   - [ ] **Không reset:** giữa các đòn không về gốc, không hiện idle; chân dao động **≤6 px**, không nhảy vị trí giữa hai frame **>3 px** trong pha nối.
+   - [ ] **Tư thế liên tục:** cuối đòn trước nối sang đầu đòn sau, không bật về pose lấy đà cũ; ba hướng chém phân biệt được khi tắt VFX.
+   - [ ] **Chạm thật:** đầu vũ khí cách đường biên thân địch **≤4 px** tại hit; máu, âm và phản ứng địch lệch tối đa **1 frame ≈17 ms**.
+   - [ ] **Giật có kiểm soát:** địch lùi **6±2 px**, hồi trong **145±20 ms**, không trôi sau ba đòn.
+   - [ ] **Đọc rõ Mika:** quầng chỉ xuất hiện một lần, **≤100 ms**, opacity **≤0,25**, che thân **≤20%**.
+   - [ ] **Kết đúng:** tên chiêu một lần; Mika chỉ quay về sau đòn cuối, sai lệch vị trí gốc **≤2 px**.
+   - [ ] **Luật nguyên vẹn:** ca kiểm thử ba đòn ×40 vẫn có đúng **3 lần trừ 40 =120 HP**; thử xen buff/tuyệt kỹ/phía khác vẫn giữ FIFO, chết hoặc kết thúc trận không để Mika mắc phía trước.
+tokens used
+23,754
+**Chốt: cần nối tư thế và giữ Mika ở phía trước giữa các đòn; chỉ tăng tốc toàn bộ sẽ vẫn giật.** Đây là review read-only, chưa sửa file.
+
+1. **Hiện tại — chưa đạt**
+   - **Hình thái 1: 5/10.** Đọc được động tác chém, nhưng cứ lao tới → về gốc → lấy đà lại, khiến chuỗi thành ba đòn rời.
+   - **Hình thái 2: 5/10.** Vết chém rõ hơn; thân và kiếm vẫn reset giữa đòn, thiếu chuyển động nối.
+   - **Hình thái 3: 4/10.** Vũ khí dài nhưng các nhát gần cùng hướng; quầng cam che thân khoảng **150 ms**, làm mất khả năng đọc tay và cán đao.
+   - Chuỗi khoảng **3.300 ms**, có khoảng đứng chờ ước lượng **200–300 ms** giữa nhịp; lực đánh bị ngắt.
+   - Popup lặp làm nhiễu. Tuy nhiên, code hiện chỉ gọi tên chiêu khi `chain===1`; cần kiểm tra `job.chain` thực tế. `combatV3Charge()` thường chỉ tạo vòng dưới chân, nên **chưa đủ bằng chứng quy toàn bộ mảng cam che thân cho hàm này**.
+
+2. **Spec đề nghị — dùng chung cả ba hình thái**
+
+   Mọi thời gian dưới đây là **ms thực trên màn hình, sau scale .45**; khoảng cách tính ở viewport **430×932**.
+
+   | Thành phần | Chốt |
+   |---|---|
+   | Điều kiện nối | Ngay trước pha hồi, xem **phần tử đầu hàng đợi**: phải là đánh thường cùng phía. Không tìm vượt qua buff, tuyệt kỹ hoặc đòn phía khác; giữ FIFO. |
+   | Đòn đầu | Lấy đà **100 ms** → lao tới **120 ms** → vung tới chạm **80 ms**. Chạm lần đầu ở **300 ms**. |
+   | Mỗi đòn nối | Khoảng cách giữa hai lần chạm **360 ms**: ghìm va chạm **35** → theo đà **105** → chuyển thế **140** → vung tới chạm **80**. Không đứng idle. |
+   | Nối tư thế | Đòn sau bắt đầu đúng tư thế kết đòn trước; thân chỉ dịch **2–6 px**, không lùi lấy đà từ gốc. |
+   | Hướng chém | **Chéo xuống → hất lên → ngang**, lặp lại. Tay, vũ khí và vệt chém cùng hướng; cần pose phù hợp, không chỉ xoay hiệu ứng. |
+   | Vị trí phía trước | Giữ chân quanh điểm áp sát, dao động tối đa **6 px**. Thân không xuyên địch; hình thái 3 giữ khoảng thân **≥12 px**, đầu đao vẫn chạm đúng mục tiêu. |
+   | Địch giật | Lùi **6 px trong 45 ms**, trở về trong **100 ms**; không cộng dồn vị trí. Phản ứng bắt đầu tại va chạm. |
+   | Kết chuỗi | Sau chạm cuối: theo đà **140 ms** → về gốc **180 ms** → ổn định **60 ms**. Chỉ một lần quay về. |
+   | Quầng tích lực | Chỉ đòn đầu, dài **100 ms**, opacity tổng hợp tối đa **0,25**; vùng hiệu ứng chồng lên tối đa **20% diện tích thân**, tránh mặt và tay cầm vũ khí. |
+   | Tên chiêu | Hiện **một lần/chuỗi**, tối đa **600 ms**; popup combo không được thay bằng tên chiêu lặp. |
+   | Máu, âm thanh | Trừ máu đúng lúc lưỡi vũ khí chạm; âm va chạm đồng thời. Mỗi job giữ nguyên sát thương, hệ số và số lần áp dụng. |
+
+   Với ba đòn đã có sẵn: chạm tại **300 / 660 / 1.020 ms**, về trạng thái nghỉ khoảng **1.400 ms**. Nếu hàng đợi không còn đòn hợp lệ khi bắt đầu quay về, đóng chuỗi; đòn đến sau mở chuỗi mới.
+
+   Lưu ý triển khai: hiện mỗi `attack()` đều trả về gốc và đặt `idle` trong `finally`. Cần giữ trạng thái xuyên các job; **không gộp ba job thành một đòn nhiều hit**, vì có thể đổi hệ số và thứ tự xử lý.
+
+3. **Checklist cứng — chỉ đạt khi tất cả đều đạt**
+
+   Chấm riêng từng hình thái bằng video **60 fps**, ba đòn đã xếp hàng; ảnh cách 100 ms chưa đủ kiểm tra độ mượt.
+
+   - [ ] **Nhịp:** hai khoảng chạm liên tiếp đều **360±30 ms**; toàn chuỗi **1.400±100 ms**.
+   - [ ] **Không reset:** giữa các đòn không về gốc, không hiện idle; chân dao động **≤6 px**, không nhảy vị trí giữa hai frame **>3 px** trong pha nối.
+   - [ ] **Tư thế liên tục:** cuối đòn trước nối sang đầu đòn sau, không bật về pose lấy đà cũ; ba hướng chém phân biệt được khi tắt VFX.
+   - [ ] **Chạm thật:** đầu vũ khí cách đường biên thân địch **≤4 px** tại hit; máu, âm và phản ứng địch lệch tối đa **1 frame ≈17 ms**.
+   - [ ] **Giật có kiểm soát:** địch lùi **6±2 px**, hồi trong **145±20 ms**, không trôi sau ba đòn.
+   - [ ] **Đọc rõ Mika:** quầng chỉ xuất hiện một lần, **≤100 ms**, opacity **≤0,25**, che thân **≤20%**.
+   - [ ] **Kết đúng:** tên chiêu một lần; Mika chỉ quay về sau đòn cuối, sai lệch vị trí gốc **≤2 px**.
+   - [ ] **Luật nguyên vẹn:** ca kiểm thử ba đòn ×40 vẫn có đúng **3 lần trừ 40 =120 HP**; thử xen buff/tuyệt kỹ/phía khác vẫn giữ FIFO, chết hoặc kết thúc trận không để Mika mắc phía trước.

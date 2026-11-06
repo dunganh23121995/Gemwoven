@@ -29,7 +29,12 @@ FX = {
     "engulf3": (3, 2, 384, 384, 110, "fire"),
     "arc2s": (2, 2, 576, 384, 60, "fire"),
     "sweep3": (2, 2, 384, 384, 45, "fire"),
+    # six-star basic attack (owner 07/11): the spear tip's hit on the foe, frames aligned on the impact (pierce3/align.py)
+    "pierce3": (2, 2, 384, 384, 55, "fire"),
 }
+# sheets read from another file than raw-sheet.png, and sheets that use only their first cells
+FX_RAW = {"pierce3": "raw-aligned.png"}
+FX_COUNT = {}
 
 
 def key_out(img):
@@ -69,7 +74,7 @@ def base_point(frame):
 def main():
     meta = {}
     for name, (cols, rows, ow, oh, ms, kind) in FX.items():
-        raw = key_out(Image.open(ROOT / name / "raw-sheet.png"))
+        raw = key_out(Image.open(ROOT / name / FX_RAW.get(name, "raw-sheet.png")))
         cw, ch = raw.width / cols, raw.height / rows
         frames = []
         if kind == "weapon":
@@ -88,7 +93,7 @@ def main():
                 keep = np.isin(labels[y0:y1], own)
                 cut[y0 - top:y1 - top] = np.where(keep[..., None], arr[y0:y1], 0)
                 frames.append(Image.fromarray(cut, "RGBA").resize((ow, oh), Image.Resampling.LANCZOS))
-        for i in range(cols * rows) if kind != "weapon" else []:
+        for i in range(FX_COUNT.get(name, cols * rows)) if kind != "weapon" else []:
             c, r = i % cols, i // cols
             cell = raw.crop((round(c * cw), round(r * ch), round((c + 1) * cw), round((r + 1) * ch)))
             cell = cell.resize((ow, oh), Image.Resampling.LANCZOS)

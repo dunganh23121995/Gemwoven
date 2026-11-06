@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-06T15:58:48Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\form-3\\thrust\\marks3-push2.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\form-3\\thrust\\guard3.png"
+  ],
+  "prompt": "Image 1 is this chibi character in a spear-fighting stance with her glaive level (left hand forward, SUPPORTING the shaft from below with the palm up; right hand gripping the very butt end), with GUIDE MARKS drawn on it: a cyan line (the shaft), a green dot (where the butt end must now be), a white dot (where the crescent blade's leading tip must now be), a BIG yellow ring and a SMALL yellow ring. Image 2 is the same frame without marks.\nRedraw the frame WITHOUT any marks (no rings, no dots, no lines may remain), keeping the same character, size, feet, exact colours and saturation, rendering, hair (one long braid down her back), costume, nine tails and the SAME glaive (same length, same shaft, same crescent blade below the shaft) as Image 2. Show the thrust: her LEFT hand stays EXACTLY where and how it is in Image 2 (inside the BIG yellow ring): palm up, supporting the shaft from BELOW so the shaft slides over it, never gripping from above; her RIGHT hand ALWAYS grips the very END of the shaft (only the small gold butt cap behind her fist, never further up the shaft) and pushes the shaft forward to the SMALL yellow ring; the whole glaive slides forward along its line so its butt end is at the green dot and the blade's leading tip at the white dot. Full thrust: her right fist, at the butt end, is right behind her left hand; right arm extended forward, torso turned into the thrust, front knee bent, the blade piercing forward.\nBackground 100% solid flat magenta #FF00FF. No marks, no text, no effects, no shadow.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Magenta background looks flat, and no guide marks, rings, dots, or text are visible. The character, nine tails, braid, costume, and glaive match the references, with the figure and blade fully in frame. The thrust pose and hand placement could not be verified in detail at this resolution, but nothing clearly defective is visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000695
+  }
+}

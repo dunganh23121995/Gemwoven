@@ -1,0 +1,276 @@
+Reading prompt from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: D:\Project\Gemwoven
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1af5e-f83d-7011-bfef-6335e9e40f49
+--------
+user
+Gemwoven (Codex) — CHẤM vòng 4 đòn đánh thường Mika hình thái 3. Read-only. Tiếng Việt, ngắn, có số, gắt; đối chiếu codex-score-6.md (vòng 3: 7,7/10) và yêu cầu chủ dự án: hai tay tách như cầm đao thật (tay trái ở đuôi cán, tay phải ~38% cán như lúc nghỉ), đao dài như lúc nghỉ ở mọi khung, "mọi thế chuyển đổi phải hợp lý với tư thế trước đó", mượt.
+Sửa theo vòng 3 của bạn (đo lại cẩn thận trên lưới toạ độ, khung 1536 px rộng, nghỉ = 656 px):
+1. Khung 3 (nâng đao) và 5 (vượt đỉnh) vẽ lại theo dấu đặt trên khung: tay trái ở đuôi cán, tay phải ~38% cán; chiều dài nay 3: ~658 px, 5: ~684 px (+4%). (Số cũ "622" vòng trước là đo nhầm; thực tế lúc đó 5 dài ~781, 3 dài ~787 — đã sửa.)
+2. Khung 4 (vung lên) đo lại: tay trái 4%, tay phải 36% cán, cổ lưỡi ở 57% (như lúc nghỉ 59%) — lưỡi to nên trông gần tay, nhưng đúng tỉ lệ nghỉ.
+3. Khung 11 (gom thấp) vẽ mới: hông nâng nửa chừng, hai tay đẩy ra trước gần duỗi, đao ~30°; dài ~656 (đã trượt lưỡi). Khung 11 trước dài ~650 chứ không phải 608 (đo nhầm).
+build9-sheet.png = 12 khung: 1 nghỉ, 2 thủ, 3 nâng đao, 4 vung lên, 5 vượt đỉnh, 6 vung tới, 7 dồn lực, 8 chạm, 9 đi tiếp thấp, 10 thu đao, 11 gom thấp, 12 về nghỉ.
+Thứ tự chạy đo được: đòn đầu 2→3→4→5→6→7→8(chạm)→9→10; nối đòn 10→11→2→3→4→5→6→7→8(chạm)→9→10; kết chuỗi 10→11→2→12→nghỉ. Mỗi bước trong nhát ~32 ms; khoảng chạm ~365–395 ms.
+build9-form3.jpg = trong trận, 3 đòn liên tiếp, khung cách ~40 ms. idle3.png = nghỉ.
+Cần: (1) bảng từng khung (dài đao / chỗ cầm / lưỡi / tóc) ĐẠT/SAI; (2) từng chuyển tiếp; (3) điểm /10, "DUYỆT" nếu ≥ 8; nếu chưa, tối đa 3 sửa cụ thể.
+
+2026-11-06T05:40:01.818557Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+2026-11-06T05:40:04.093619Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+codex
+Tôi sẽ đọc `codex-score-6.md`, đối chiếu 12 khung và nhịp trong trận. Tôi sẽ kiểm tra riêng các số đo đã sửa, không dùng lại số cũ.
+
+2026-11-06T05:40:07.155202Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg --files -g '*codex-score-6*' -g '*build9*' -g '*idle3*' -g AGENTS.md" in D:\Project\Gemwoven
+ succeeded in 82ms:
+AGENTS.md
+assets\gemwoven\raw\mika-attack\idle3.png
+assets\gemwoven\raw\mika-attack\codex-score-6.md
+assets\gemwoven\raw\mika-attack\build9-sheet.png
+assets\gemwoven\raw\mika-attack\build9-form3.jpg
+assets\gemwoven\raw\board-fx-v3\codex-score-6.md
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content assets/gemwoven/raw/mika-attack/codex-score-6.md' in D:\Project\Gemwoven
+ succeeded in 80ms:
+**7,7/10 �?" CH�_A DUY��+T** (+0,5 so v��>i vA�ng 2). �?ao �`A� �`��"ng nh���t h��n, �`o���n lao t��>i �`��?c rA� h��n. **Ch��- c��m ��Y th��� cao vA� nh��<p �`��cng d��-y v���n ch��a qua yA�u c��u ch�� d��� A�n. ThA�m khung ch��a �`��"ng ngh�ca h���t gi��-t.**
+
+Chi��?u dA�i d����>i �`A�y dA1ng s��` b���n cung c���p, l���y **656 px = 100%**; khA'ng coi lA� phAcp �`o �`��Tc l��-p c��a tA'i. Ch��- c��m ch���m b���ng hA�nh, ch��a xA�c nh��-n chA-nh xA�c m��`c 38%.
+
+| Khung | DA�i �`ao | Ch��- c��m | L�����i | TA3c |
+|---|---|---|---|---|
+| 1 �?" ngh��% | �?���T, chu��cn | �?���T, chu��cn ngh��% | �?���T | �?���T |
+| 2 �?" th�� | �?���T t����ng �`��`i | �?���T t����ng �`��`i, hai tay tA�ch | �?���T | �?���T |
+| 3 �?" nA�ng �`ao | �?���T, 645; �^'1,7% | **SAI: c���p tay n���m cao trA�n cA�n; tay trA�i ch��a �`��?c ra gi��_ �`uA'i** | �?���T | �?���T |
+| 4 �?" vung lA�n | �?���T, 649; �^'1,1% | **SAI: tay trA�n sA�t c�� �`ao, l���ch rA� chu��cn c��m ngh��%** | �?���T, �`A� s��-a �`��T l��>n | �?���T |
+| 5 �?" v�����t �`��%nh | **SAI nh��1: 622; �^'5,2%** | **SAI: gi��_ l��-i c��m cao c��a 4** | �?���T v��? dA�ng, cA�n co t��ng th��� | �?���T |
+| 6 �?" vung t��>i | �?���T t����ng �`��`i | �?���T t����ng �`��`i | �?���T | �?���T |
+| 7 �?" d��"n l���c | �?���T t����ng �`��`i | �?���T t����ng �`��`i, hai �`i���m gi��_ rA� | �?���T | �?���T |
+| 8 �?" ch���m | �?���T t����ng �`��`i | �?���T t����ng �`��`i | �?���T | �?���T |
+| 9 �?" �`i ti���p th���p | �?���T t����ng �`��`i | �?���T t����ng �`��`i | �?���T | �?���T |
+| 10 �?" thu �`ao | �?���T t����ng �`��`i | �?���T t����ng �`��`i | �?���T | �?���T |
+| 11 �?" gom th���p | **SAI: 608; �^'7,3%** | �?���T t����ng �`��`i | �?���T v��? dA�ng | �?���T |
+| 12 �?" v��? ngh��% | �?���T | �?���T theo chu��cn ngh��% | �?���T | �?���T |
+
+**TA3c �?���T v��? t���o hA�nh.** �?��T tr��. c��a tA3c vA� �`uA'i v���n y���u, ch��a di��.n t��� �`�� s��cc n���ng c��a nhA�t vung.
+
+| Chuy���n ti���p th���c ch���y | Ch���m |
+|---|---|
+| Ngh��%�+'2 | **�?���T:** vA�o th�� rA� |
+| 2�+'3 | **SAI nh��1:** t��� ch���ch sang d���ng cA�n nh���y gA3c; tay �`��i v��< trA- c��m |
+| 3�+'4 | **�?���T:** �`��?c �`�����c �`��Tng tA�c �`��a qua �`��u |
+| 4�+'5 | **�?���T t����ng �`��`i:** cA3 �`i���m �`���o chi��?u; �`ao h��i co |
+| 5�+'6 | **SAI nh��1:** vai�?"khu���u ch��a d���n �`��, �`ao v���n �`i tr����>c thA�n |
+| 6�+'7 | **�?���T:** khung m��>i cA3 tA�c d���ng, h��� gA3c vA� lao ng����?i h���p lA� |
+| 7�+'8 | **�?���T:** n��`i t��>i ch���m t��`t h��n vA�ng 2 |
+| 8�+'9 | **�?���T:** gi��_ th���p, cA3 �`i ti���p |
+| 9�+'10 | **�?���T:** thu �`ao �`��?c �`�����c |
+| 10�+'11 | **SAI v��? ch��cc n��ng:** quA� gi��`ng nhau, ch��a th���y b����>c kAco tay/cA�n ra tr����>c rA� |
+| 11�+'2 �?" n��`i �`A�n | **SAI:** v���n b��-t t��� th���p lA�n th��; l��-i c�c gi���m nh��ng ch��a h���t |
+| 2�+'3 �?" cA�c �`A�n sau | **L���p l��-i nh��1** c��a �`A�n �`��u |
+| 2�+'12 �?" k���t chu��-i | **�?���T t����ng �`��`i:** h����>ng �`ao h���p lA�, thA�n cA�n c��cng |
+| 12�+'ngh��% | **�?���T** |
+
+Trong ���nh tr��-n, **chu��-i ra �`A�n rA� h��n**, nh��ng nh��<p d���ng �`ao vA� b��-t v��? th�� v���n n��i lA�n ��Y m��-i l��n l���p. B���ng ���nh cA�ch kho���ng 40 ms khA'ng ch��cng minh �`�����c toA�n b��T b����>c 32 ms �`��?u m�����t.
+
+**Ch��% s��-a 3 vi���c:**
+
+1. **KhA3a ch��- c��m khung 3�?"5:** tay trA�i ��Y �`uA'i cA�n, tay ph���i kho���ng **38% chi��?u dA�i cA�n tA-nh t��� �`uA'i**; s��-a vai�?"khu���u theo hai �`i���m �`A3.
+2. **S��-a chi��?u dA�i 5 vA� 11:** �`��a v��? g��n **656 px**, gi��_ nguyA�n t��� l��� cA�n/l�����i; �`���ng ch��% kAco m�ci l�����i.
+3. **V��� l���i 11 cho khA�c 10 th��-t s���:** cA�n th���p, �`��a hai tay vA� cA�n ra tr����>c, thA�n nA�ng m��Tt ph��n �`��� n��`i sang 2. �?��"ng th��?i ch��%nh 6 cho vai�?"khu���u d���n �`ao.
+
+**Ch��a qua 8: khung 11 hi���n m��>i thA�m th��?i gian, ch��a gi���i quy���t �`�� �`��Tng tA�c.**
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding UTF8 assets/gemwoven/raw/mika-attack/codex-score-6.md; Get-ChildItem assets/gemwoven/raw/mika-attack -Name' in D:\Project\Gemwoven
+ succeeded in 75ms:
+**7,7/10 - CHUA DUY?T** (+0,5 so v?i v�ng 2). Dao da d?ng nh?t hon, do?n lao t?i d?c ro hon. **Ch? c?m ? th? cao v� nh?p d?ng d?y v?n chua qua y�u c?u ch? d? �n. Th�m khung chua d?ng nghia h?t gi?t.**
+
+Chi?u d�i du?i d�y d�ng s? b?n cung c?p, l?y **656 px = 100%**; kh�ng coi l� ph�p do d?c l?p c?a t�i. Ch? c?m ch?m b?ng h�nh, chua x�c nh?n ch�nh x�c m?c 38%.
+
+| Khung | D�i dao | Ch? c?m | Lu?i | T�c |
+|---|---|---|---|---|
+| 1 - ngh? | D?T, chu?n | D?T, chu?n ngh? | D?T | D?T |
+| 2 - th? | D?T tuong d?i | D?T tuong d?i, hai tay t�ch | D?T | D?T |
+| 3 - n�ng dao | D?T, 645; -1,7% | **SAI: c?p tay n?m cao tr�n c�n; tay tr�i chua d?c ra gi? du�i** | D?T | D?T |
+| 4 - vung l�n | D?T, 649; -1,1% | **SAI: tay tr�n s�t c? dao, l?ch ro chu?n c?m ngh?** | D?T, da s?a d? l?n | D?T |
+| 5 - vu?t d?nh | **SAI nh?: 622; -5,2%** | **SAI: gi? l?i c?m cao c?a 4** | D?T v? d�ng, c�n co t?ng th? | D?T |
+| 6 - vung t?i | D?T tuong d?i | D?T tuong d?i | D?T | D?T |
+| 7 - d?n l?c | D?T tuong d?i | D?T tuong d?i, hai di?m gi? ro | D?T | D?T |
+| 8 - ch?m | D?T tuong d?i | D?T tuong d?i | D?T | D?T |
+| 9 - di ti?p th?p | D?T tuong d?i | D?T tuong d?i | D?T | D?T |
+| 10 - thu dao | D?T tuong d?i | D?T tuong d?i | D?T | D?T |
+| 11 - gom th?p | **SAI: 608; -7,3%** | D?T tuong d?i | D?T v? d�ng | D?T |
+| 12 - v? ngh? | D?T | D?T theo chu?n ngh? | D?T | D?T |
+
+**T�c D?T v? t?o h�nh.** D? tr? c?a t�c v� du�i v?n y?u, chua di?n t? d? s?c n?ng c?a nh�t vung.
+
+| Chuy?n ti?p th?c ch?y | Ch?m |
+|---|---|
+| Ngh?2 | **D?T:** v�o th? ro |
+| 23 | **SAI nh?:** t? ch?ch sang d?ng c�n nh?y g�c; tay d?i v? tr� c?m |
+| 34 | **D?T:** d?c du?c d?ng t�c dua qua d?u |
+| 45 | **D?T tuong d?i:** c� di?m d?o chi?u; dao hoi co |
+| 56 | **SAI nh?:** vai-khu?u chua d?n d?, dao v?n di tru?c th�n |
+| 67 | **D?T:** khung m?i c� t�c d?ng, h? g�c v� lao ngu?i h?p ly |
+| 78 | **D?T:** n?i t?i ch?m t?t hon v�ng 2 |
+| 89 | **D?T:** gi? th?p, c� di ti?p |
+| 910 | **D?T:** thu dao d?c du?c |
+| 1011 | **SAI v? ch?c nang:** qu� gi?ng nhau, chua th?y bu?c k�o tay/c�n ra tru?c ro |
+| 112 - n?i d�n | **SAI:** v?n b?t t? th?p l�n th?; l?i cu gi?m nhung chua h?t |
+| 23 - c�c d�n sau | **L?p l?i nh?** c?a d�n d?u |
+| 212 - k?t chu?i | **D?T tuong d?i:** hu?ng dao h?p ly, th�n c�n c?ng |
+| 12ngh? | **D?T** |
+
+Trong ?nh tr?n, **chu?i ra d�n ro hon**, nhung nh?p d?ng dao v� b?t v? th? v?n n?i l�n ? m?i l?n l?p. B?ng ?nh c�ch kho?ng 40 ms kh�ng ch?ng minh du?c to�n b? bu?c 32 ms d?u mu?t.
+
+**Ch? s?a 3 vi?c:**
+
+1. **Kh�a ch? c?m khung 3-5:** tay tr�i ? du�i c�n, tay ph?i kho?ng **38% chi?u d�i c�n t�nh t? du�i**; s?a vai-khu?u theo hai di?m d�.
+2. **S?a chi?u d�i 5 v� 11:** dua v? g?n **656 px**, gi? nguy�n t? l? c�n/lu?i; d?ng ch? k�o mui lu?i.
+3. **V? l?i 11 cho kh�c 10 th?t s?:** c�n th?p, dua hai tay v� c�n ra tru?c, th�n n�ng m?t ph?n d? n?i sang 2. D?ng th?i ch?nh 6 cho vai-khu?u d?n dao.
+
+**Chua qua 8: khung 11 hi?n m?i th�m th?i gian, chua gi?i quy?t d? d?ng t�c.**
+build1-form1.jpg
+build1-form2.jpg
+build1-form3-link.png
+build1-form3.jpg
+build2-form1.jpg
+build2-form2.jpg
+build2-form3.jpg
+build2-slash2-sheet.png
+build3-form1.jpg
+build3-form2.jpg
+build3-form3.jpg
+build4-form3.jpg
+build4-slash2-sheet.png
+build4-slash3-sheet.png
+build5-form3.jpg
+build6-form3.jpg
+build6-sheet.png
+build7-form3.jpg
+build7-sheet.png
+build8-form3.jpg
+build8-sheet.png
+build9-form3.jpg
+build9-sheet.png
+codex-critique.md
+codex-pose-review.md
+codex-score-1.md
+codex-score-2.md
+codex-score-3.md
+codex-score-4.md
+codex-score-5.md
+codex-score-6.md
+critique-prompt.md
+critique.log
+idle-master.png
+idle3.png
+now-form1.jpg
+now-form2.jpg
+now-form3-windup.png
+now-form3.jpg
+pose-prompt.md
+pose.log
+score-1.log
+score-2.log
+score-3.log
+score-4.log
+score-5.log
+score-6.log
+score-7.log
+score-prompt-1.md
+score-prompt-2.md
+score-prompt-3.md
+score-prompt-4.md
+score-prompt-5.md
+score-prompt-6.md
+score-prompt-7.md
+slash2-try3.png
+
+codex
+**8,1/10 — DUYỆT** (+0,4 so với vòng 3). Khung 3–5 đã sửa được cách cầm; khung 11 giờ có tác dụng nối động tác. **Qua ngưỡng, nhưng chưa mượt sạch: 2→3 còn gắt, 5→6 còn thiếu lực dẫn từ vai.**
+
+Đối chiếu `codex-score-6.md`: **bỏ các kết luận dựa trên số đo sai** 622 và 608. Các số 658/684/656 dưới đây lấy từ phép đo bạn cung cấp; tôi kiểm tra hình, **không nhận là đã đo độc lập trên bản gốc 1536 px**.
+
+| Khung | Dài đao | Chỗ cầm | Lưỡi | Tóc |
+|---|---|---|---|---|
+| 1 nghỉ | **ĐẠT**, chuẩn 656 | **ĐẠT**, chuẩn nghỉ | **ĐẠT** | **ĐẠT** |
+| 2 thủ | **ĐẠT** theo hình | **ĐẠT**, hai tay tách rõ | **ĐẠT** | **ĐẠT** |
+| 3 nâng | **ĐẠT**, ~658; +0,3% | **ĐẠT**, tay đuôi đã xuống đúng, tay trước tách rõ | **ĐẠT** | **ĐẠT** |
+| 4 vung lên | **ĐẠT** theo hình | **ĐẠT**: 4%/36%; không còn căn cứ chê “cầm sát cổ” chỉ vì lưỡi lớn | **ĐẠT**, cổ 57% gần chuẩn 59% | **ĐẠT** |
+| 5 vượt đỉnh | **ĐẠT**, ~684; +4,3%, còn hơi dài | **ĐẠT**, không còn cụm tay dồn cao | **ĐẠT** | **ĐẠT** |
+| 6 vung tới | **ĐẠT** theo hình | **ĐẠT**, giữ được hai điểm cầm | **ĐẠT** | **ĐẠT** |
+| 7 dồn lực | **ĐẠT** theo hình | **ĐẠT**, đẩy cán rõ | **ĐẠT** | **ĐẠT** |
+| 8 chạm | **ĐẠT** theo hình | **ĐẠT**, hai tay cùng phục vụ hướng đánh | **ĐẠT** | **ĐẠT** |
+| 9 đi tiếp thấp | **ĐẠT** theo hình | **ĐẠT** | **ĐẠT**, đi tiếp xuống thấp hợp lý | **ĐẠT** |
+| 10 thu | **ĐẠT** theo hình | **ĐẠT** | **ĐẠT** | **ĐẠT** |
+| 11 gom thấp | **ĐẠT**, ~656 | **ĐẠT**, tay đẩy trước, khác 10 rõ hơn | **ĐẠT**, không thấy gãy chỗ nối cán | **ĐẠT** |
+| 12 về nghỉ | **ĐẠT** theo hình | **ĐẠT** | **ĐẠT** | **ĐẠT** |
+
+**Tóc đạt tạo hình; quán tính vẫn yếu.** Tóc và đuôi còn đổi thế khá đồng loạt với thân, làm nhát chém nhẹ cân.
+
+| Chuyển tiếp thực chạy | Chấm |
+|---|---|
+| Nghỉ→2 | **ĐẠT:** mở thế rõ |
+| 2→3, cả đầu và nối đòn | **SAI nhẹ:** dựng cán khá đột ngột trong ~32 ms; chỗ cầm đã sửa nhưng nhịp góc chưa mềm |
+| 3→4 | **ĐẠT:** tiếp tục đưa đao qua đầu, không đổi đường vô cớ |
+| 4→5 | **ĐẠT:** đọc được vượt đỉnh; độ dài 5 hơi phồng |
+| 5→6 | **SAI nhẹ:** đao hạ trước, vai–khuỷu chưa dẫn lực đủ rõ |
+| 6→7 | **ĐẠT:** hạ góc, đưa người tới hợp lý |
+| 7→8 | **ĐẠT:** kéo dài tới điểm chạm rõ |
+| 8→9 | **ĐẠT:** có đi tiếp sau chạm |
+| 9→10 | **ĐẠT:** thu ngược lên có đường đi |
+| 10→11 | **ĐẠT:** nay có bước đẩy tay ra và nâng thân một phần |
+| 11→2 | **ĐẠT, sát ngưỡng:** cùng hướng cán, giảm được cú bật thân; vẫn hơi nhanh |
+| 2→12 | **ĐẠT:** dựng về thế nghỉ hợp lý |
+| 12→nghỉ | **ĐẠT:** khép chuỗi ổn |
+
+Trong trận, ba nhát đọc được **nâng → chém → đi tiếp → thu**, đoạn nối bớt bật hơn vòng 3. Tuy nhiên, ảnh cách ~40 ms bỏ lọt một số bước ~32 ms: **đủ duyệt tư thế và đường nối, chưa đủ khẳng định mọi bước đều mượt**. Hai điểm gắt còn lại là lỗi nhỏ, không còn đủ nặng để giữ dưới 8.
+tokens used
+28,020
+**8,1/10 — DUYỆT** (+0,4 so với vòng 3). Khung 3–5 đã sửa được cách cầm; khung 11 giờ có tác dụng nối động tác. **Qua ngưỡng, nhưng chưa mượt sạch: 2→3 còn gắt, 5→6 còn thiếu lực dẫn từ vai.**
+
+Đối chiếu `codex-score-6.md`: **bỏ các kết luận dựa trên số đo sai** 622 và 608. Các số 658/684/656 dưới đây lấy từ phép đo bạn cung cấp; tôi kiểm tra hình, **không nhận là đã đo độc lập trên bản gốc 1536 px**.
+
+| Khung | Dài đao | Chỗ cầm | Lưỡi | Tóc |
+|---|---|---|---|---|
+| 1 nghỉ | **ĐẠT**, chuẩn 656 | **ĐẠT**, chuẩn nghỉ | **ĐẠT** | **ĐẠT** |
+| 2 thủ | **ĐẠT** theo hình | **ĐẠT**, hai tay tách rõ | **ĐẠT** | **ĐẠT** |
+| 3 nâng | **ĐẠT**, ~658; +0,3% | **ĐẠT**, tay đuôi đã xuống đúng, tay trước tách rõ | **ĐẠT** | **ĐẠT** |
+| 4 vung lên | **ĐẠT** theo hình | **ĐẠT**: 4%/36%; không còn căn cứ chê “cầm sát cổ” chỉ vì lưỡi lớn | **ĐẠT**, cổ 57% gần chuẩn 59% | **ĐẠT** |
+| 5 vượt đỉnh | **ĐẠT**, ~684; +4,3%, còn hơi dài | **ĐẠT**, không còn cụm tay dồn cao | **ĐẠT** | **ĐẠT** |
+| 6 vung tới | **ĐẠT** theo hình | **ĐẠT**, giữ được hai điểm cầm | **ĐẠT** | **ĐẠT** |
+| 7 dồn lực | **ĐẠT** theo hình | **ĐẠT**, đẩy cán rõ | **ĐẠT** | **ĐẠT** |
+| 8 chạm | **ĐẠT** theo hình | **ĐẠT**, hai tay cùng phục vụ hướng đánh | **ĐẠT** | **ĐẠT** |
+| 9 đi tiếp thấp | **ĐẠT** theo hình | **ĐẠT** | **ĐẠT**, đi tiếp xuống thấp hợp lý | **ĐẠT** |
+| 10 thu | **ĐẠT** theo hình | **ĐẠT** | **ĐẠT** | **ĐẠT** |
+| 11 gom thấp | **ĐẠT**, ~656 | **ĐẠT**, tay đẩy trước, khác 10 rõ hơn | **ĐẠT**, không thấy gãy chỗ nối cán | **ĐẠT** |
+| 12 về nghỉ | **ĐẠT** theo hình | **ĐẠT** | **ĐẠT** | **ĐẠT** |
+
+**Tóc đạt tạo hình; quán tính vẫn yếu.** Tóc và đuôi còn đổi thế khá đồng loạt với thân, làm nhát chém nhẹ cân.
+
+| Chuyển tiếp thực chạy | Chấm |
+|---|---|
+| Nghỉ→2 | **ĐẠT:** mở thế rõ |
+| 2→3, cả đầu và nối đòn | **SAI nhẹ:** dựng cán khá đột ngột trong ~32 ms; chỗ cầm đã sửa nhưng nhịp góc chưa mềm |
+| 3→4 | **ĐẠT:** tiếp tục đưa đao qua đầu, không đổi đường vô cớ |
+| 4→5 | **ĐẠT:** đọc được vượt đỉnh; độ dài 5 hơi phồng |
+| 5→6 | **SAI nhẹ:** đao hạ trước, vai–khuỷu chưa dẫn lực đủ rõ |
+| 6→7 | **ĐẠT:** hạ góc, đưa người tới hợp lý |
+| 7→8 | **ĐẠT:** kéo dài tới điểm chạm rõ |
+| 8→9 | **ĐẠT:** có đi tiếp sau chạm |
+| 9→10 | **ĐẠT:** thu ngược lên có đường đi |
+| 10→11 | **ĐẠT:** nay có bước đẩy tay ra và nâng thân một phần |
+| 11→2 | **ĐẠT, sát ngưỡng:** cùng hướng cán, giảm được cú bật thân; vẫn hơi nhanh |
+| 2→12 | **ĐẠT:** dựng về thế nghỉ hợp lý |
+| 12→nghỉ | **ĐẠT:** khép chuỗi ổn |
+
+Trong trận, ba nhát đọc được **nâng → chém → đi tiếp → thu**, đoạn nối bớt bật hơn vòng 3. Tuy nhiên, ảnh cách ~40 ms bỏ lọt một số bước ~32 ms: **đủ duyệt tư thế và đường nối, chưa đủ khẳng định mọi bước đều mượt**. Hai điểm gắt còn lại là lỗi nhỏ, không còn đủ nặng để giữ dưới 8.

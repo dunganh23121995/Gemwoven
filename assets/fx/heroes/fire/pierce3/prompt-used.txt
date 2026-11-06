@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached reference (the fox-fire effects of Mika, nine-tailed fox girl with a crescent moon glaive): the same fire colours and painting, white-gold bright core, golden-orange fox-fire, crimson flame tongues, a few cream-tipped fox-tail-shaped wisps.
+Subject: the HIT effect of a spear tip piercing an enemy, coming from the LEFT and striking toward the RIGHT: the impact at the point where the blade tip goes in. Centred in each cell (the impact point is at the cell centre).
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024. Read left to right, then the next row.
+Frame 1: the instant of the hit: a small, intensely bright white-gold point with a sharp spear-tip shaped spike of light stabbing to the right, and short speed lines converging from the left.
+Frame 2: the full piercing burst: a sharp star-shaped flash at the centre with long thin rays, a cone of fox-fire sparks and flame shards spraying out to the RIGHT (the direction of the thrust), a thin bright shockwave ring around the centre, small cracks of light.
+Frame 3: the burst breaking up: the ring wider and fainter, the sparks and flame shards flying further right and fading, a few fox-tail wisps curling.
+Frame 4: only drifting embers and a faint fading ring.
+Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No glaive, no character, no enemy.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

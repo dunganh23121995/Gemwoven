@@ -1,0 +1,4 @@
+Gemwoven (Codex) — CHẤM nhanh hiệu ứng đánh thường mới của Mika hình thái 3. Read-only. Tiếng Việt, ngắn.
+Chủ dự án (06/11): "Sửa cả hiệu ứng chém thành hiệu ứng chọc"; trước đó: độ nét phải như ảnh nghỉ (đã làm nét bằng unsharp, đo độ nét ngang ảnh nghỉ); "khi tay phải đẩy lên thì mới tiến lại gần chọc" (khung đâm bật ra từ lúc bắt đầu lao tới đến lúc chạm, trước đó đứng thủ tại chỗ); chỉ còn một mục đánh thường.
+pierce3-raw.png = hiệu ứng mới (4 khung: vệt lửa cáo thẳng mũi nhọn, tia sáng xuyên ở đầu mũi, tan thành tàn lửa) thay cho vệt chém trăng khuyết; đặt dọc theo cán đao ở độ cao tay, tia sáng trên mép gần của địch; phát lúc chạm. thrust5-form3.jpg = trong trận 3 đòn (khung cách ~35 ms).
+Cần: hiệu ứng có đọc là CHỌC không; có khớp hướng/độ cao cán đao, có lệch phong cách lửa của Mika không; nhịp lao + đâm có hợp ý chủ dự án; điểm /10, "DUYỆT" nếu ≥ 8; nếu chưa, tối đa 2 sửa cụ thể.

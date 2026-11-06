@@ -1,0 +1,3 @@
+Gemwoven (Codex) — CHẤM nhanh hiệu ứng trúng đích mới của đòn chọc Mika hình thái 3. Read-only. Tiếng Việt, ngắn.
+Chủ dự án (07/11), xem vệt lửa dài: "Vẽ lại hiệu ứng. Loại hiệu ứng mũi lao trúng địch ấy." → hiệu ứng mới pierce3 (pierce3-strip.png, 4 khung, căn cùng tâm điểm xuyên): tia sáng nhọn ở điểm xuyên → bùng sao + vòng sóng chấn + tia lửa cáo bắn về phía trước theo hướng đâm → vỡ ra → tàn lửa. Hiện đúng lúc chạm, đặt trên mép gần của địch ngang tầm mũi đao. thrust6-form3.jpg = trong trận 3 đòn (khung cách ~25 ms).
+Cần: có đọc là mũi lao trúng địch không; vị trí/độ lớn/thời điểm; phong cách lửa Mika; điểm /10, "DUYỆT" nếu ≥ 8; nếu chưa, tối đa 2 sửa cụ thể.

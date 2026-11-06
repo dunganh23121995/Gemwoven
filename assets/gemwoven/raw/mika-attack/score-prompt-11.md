@@ -1,0 +1,5 @@
+Gemwoven (Codex) — CHẤM đòn CHỌC bản 3 khung của Mika hình thái 3. Read-only. Tiếng Việt, ngắn.
+Chủ dự án (06/11): "Lúc chọc cần phải làm tay trái giữ nguyên. Tay phải đẩy cán thương về phía trước sát lại gần tay trái. Lúc này thương đâm vào địch." / "Bỏ qua tư thế hạ thương xuống ở ảnh 2." / "Tay trái thế tay không đúng. Nó phải ở tư thế đỡ đao, chứ không phải cầm từ hướng trên." / "Tay phải lúc đâm luôn phải cầm cuối cán."
+Bản này (thrust4-sheet.png): 1 nghỉ, 2 thủ (tay trái phía trước ngửa tay đỡ cán từ dưới, tay phải nắm cuối cán ở hông), 3 đâm (tay phải đẩy cuối cán tới sát sau tay trái, cán trượt qua tay trái, mũi đâm ra). Bỏ nghiêng, rút, hông dẫn, đẩy giữa chừng (game đã cho nhân vật lao tới). Màu khớp ảnh nghỉ. thrust4-hands.png = cận cảnh khung đâm. Chạy: giữ thủ trong lúc lao → đâm (chạm) → thủ; nối đòn lặp; kết thủ → nghỉ. thrust4-form3.jpg = trong trận.
+Lưu ý thật: ở khung đâm tay trái dịch tới ~70 px (trên khung 1536) so với khung thủ vì thân lao người tới.
+Cần: các yêu cầu của chủ dự án đạt/chưa (từng câu); lỗi còn lại (cổ, tay, đao, màu); điểm /10, "DUYỆT" nếu ≥ 8; nếu chưa, tối đa 2 sửa cụ thể.

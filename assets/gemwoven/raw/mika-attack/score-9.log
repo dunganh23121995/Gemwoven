@@ -1,0 +1,275 @@
+Reading prompt from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: D:\Project\Gemwoven
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1b13f-e1cf-7b60-8b0e-a8457ec3d1c7
+--------
+user
+Gemwoven (Codex) — CHẤM vòng 2 đòn đánh thường CHỌC của Mika hình thái 3. Read-only. Tiếng Việt, ngắn, có số, gắt; đối chiếu codex-score-8.md (vòng 1: 7,5/10).
+Sửa theo 3 điểm của bạn:
+1. Khóa hình đao giữa lao và chạm: khung chạm mang đúng phần lưỡi (đoạn từ tay phải ra mũi) của khung lao, ghép ở tay phải của nó. Đo lại tất cả (px trên khung 1536): khoảng tay phải → mũi lưỡi ~400 ở mọi khung (nghỉ ~400 = 62% của 645), hai tay cách ~200–245 (một vai), đuôi cán ở tay trái.
+2. Thêm khung "hông dẫn" giữa rút và lao: hông đẩy tới trước, tay và đao còn ở hông, tóc/đuôi trễ lại.
+3. Thêm khung "thu đao" riêng sau chạm: kéo đao về nửa chừng, mũi hơi ngóc lên, trọng tâm về chân sau, thân đứng lên — không phát ngược đoạn lao nữa.
+Màu: mọi khung khớp histogram về ảnh nghỉ (trung bình RGB lệch < 1).
+thrust2-sheet.png = 8 khung: 1 nghỉ, 2 nghiêng, 3 thủ, 4 rút về, 5 hông dẫn, 6 lao, 7 chọc hết tầm (chạm), 8 thu đao.
+Thứ tự chạy đo được: đòn đầu 2→3→4→5→6→7(chạm)→8→4; nối đòn 4→5→6→7(chạm)→8→4; kết 4→3→2→1→nghỉ. Chạm cách ~365 ms. thrust2-form3.jpg = trong trận 3 đòn (khung cách ~40 ms). idle3.png = nghỉ.
+Cần: (1) màu; (2) từng khung ĐẠT/SAI (dài đao / chỗ cầm / lưỡi / tóc); (3) từng chuyển tiếp; (4) điểm /10, "DUYỆT" nếu ≥ 8; nếu chưa, tối đa 3 sửa cụ thể.
+
+2026-11-06T14:25:19.090018Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+2026-11-06T14:25:21.409991Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+codex
+Tôi sẽ đọc tiêu chí vòng 1, rồi đối chiếu 8 khung và chuỗi trong trận. Chỉ chấm, không sửa file.
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg --files -g '*codex-score-8*' -g '*thrust2*' -g 'idle3.png' -g 'AGENTS.md'" in D:\Project\Gemwoven
+ succeeded in 94ms:
+AGENTS.md
+assets\gemwoven\raw\mika-attack\thrust2-sheet.png
+assets\gemwoven\raw\mika-attack\thrust2-form3.jpg
+assets\gemwoven\raw\mika-attack\idle3.png
+assets\gemwoven\raw\mika-attack\codex-score-8.md
+assets\heroes\forms\fire\form-3\thrust\p-thrust2.txt
+
+2026-11-06T14:25:24.461184Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content assets/gemwoven/raw/mika-attack/codex-score-8.md; Get-Content AGENTS.md' in D:\Project\Gemwoven
+ succeeded in 82ms:
+**7,5/10 �?" CH�_A DUY��+T.** H����>ng ch��?c �`A�ng yA�u c��u, �`��?c �`��Tng tA�c rA� h��n b���n chAcm. V���n cA�n c���m giA�c �`��i hA�nh gi��_a cA�c t�� th���.
+
+**1. MA�u:** **�?���T khi nhA�n t��ng th���.** �?��?�?"cam, vA�ng giA�p vA� tr��_ng kem g��n ���nh ngh��%; khA'ng th���y l���ch tA'ng rA�. Histogram g��n nhau lA� tA-n hi���u t��`t, nh��ng **khA'ng ch��cng minh t���ng vA1ng tA3c/giA�p gi��_ �`A�ng mA�u**.
+
+**2. Ch���m t���ng khung**
+
+| Khung | DA�i �`ao | Ch��- c��m | L�����i | TA3c |
+|---|---|---|---|---|
+| 1 �?" Ngh��% | �?���T, chu��cn g��`c | �?���T cho t�� th��� ngh��% | �?���T | �?���T |
+| 2 �?" NghiA�ng | �?���T | Hai tay tA�ch, �?���T t����ng �`��`i | �?���T | �?���T |
+| 3 �?" Th�� | �?���T | Hai tay tA�ch rA� | �?���T | �?���T |
+| 4 �?" RA�t | �?���T | �?���T t����ng �`��`i | �?���T | �?���T |
+| 5 �?" Lao | �?���T riA�ng l��� | Hai tay tA�ch rA� | **SAI �`��T nh���t quA�n:** trA'ng g��?n, m��?ng h��n | �?���T v��? h����>ng chuy���n �`��Tng |
+| 6 �?" Ch��?c | �?���T riA�ng l��� | Hai tay tA�ch rA� | **SAI �`��T nh���t quA�n v��>i 5:** n��Y l���i | �?���T riA�ng l��� |
+
+**Ch��- c��m ch��a th��� xA�c nh��-n �`���t chu��cn �?o38% cA�n�?? t��� sheet nA�y.** NhA�n �`�����c kho���ng cA�ch hai tay; ch��a �`�� c��n c��c nA3i chA�ng gi��_ nguyA�n �`A�ng �`i���m bA�m trA�n cA�n. �?���ng �`A�nh �`��"ng hai vi���c �`A3.
+
+**3. Chuy���n ti���p**
+
+- **1�+'2�+'3:** h���p lA� v��? h����>ng h��� �`ao; �`o���n tay trA�i t��� hA'ng lA�n cA�n cA�n A-t t�� th��� d���n.
+- **3�+'4:** h���p lA�, �`��?c �`�����c rA�t �`ao l���y �`A�.
+- **4�+'5:** �`��i thA�n, chA�n vA� kh��`i tA3c khA� m���nh; **cA3 nguy c�� b��-t t�� th���**.
+- **5�+'6:** �`A�ng h����>ng ch��?c, nh��ng chi��?u dA�i �`o t��ng **628�+'675 px, t��cc 7,5%**. C��Tng v��>i l�����i �`��i dA�ng, d��. thA�nh c���m giA�c �`ao t��� dA�i ra.
+- **6�+'5�+'4:** thu �`ao h���p lA�; �`���o nguyA�n cA�c t�� th��� lao khi���n h��"i chiA�u h��i mA�y.
+- **4�+'3�+'2�+'1:** h���p lA� v��? trA�nh t���.
+
+���nh trong tr��-n xA�c nh��-n **�`��?c ra ba l��n ch��?c**, nh��ng cA�c ���nh cA�ch kho���ng 40 ms ch��a �`�� �`��� k���t lu��-n h���t gi��-t khi phA�t th��-t. **350�?"380 ms lA� nh��<p ch���m, khA'ng ph���i b���ng ch��cng chuy���n �`��Tng m�����t.**
+
+**T��`i �`a 3 s��-a:**
+
+1. **KhA3a m��Tt hA�nh �`ao vA� hai �`i���m bA�m tay**, ��u tiA�n s��-a c���p 5�?"6; khA'ng ch��% cA�n t��ng chi��?u dA�i.
+2. ThA�m **m��Tt t�� th��� trung gian 4�+'5**, cho hA'ng d���n tr����>c, tA3c vA� �`uA'i theo sau.
+3. LA�m **m��Tt t�� th��� thu �`ao riA�ng sau ch���m**, gi���m c���m giA�c phA�t ng�����c �`o���n lao.
+
+**Gi��_ h����>ng ch��?c. S��-a tA-nh liA�n t���c, ch��a c��n v��� l���i c��� b��T.**
+# Gemwoven development
+
+- Draw images through `codex_image_gen.py`: the OpenAI API credit (`gpt-image-2.5-sunburst`, quality low first) draws first, Codex when the credit is used up or the rung is 4+ (one shared ladder, rules in the owner's global CLAUDE.md, "Image generation: two backends"). Deep image processing and every review stay on Codex; the API key only draws. Climb only when the result fails review. Keep mechanics, feature design, integration, and ordinary coding on the current model.
+- Read the imagegen and applicable sprite skills before generating. Use built-in ImageGen; keep final assets and prompts in this repository. Preserve original raw sheets for reproducibility.
+- Start a new account with Hiro only. Premium �?A� Ng��?c must never be awarded from gameplay, daily quests, offline accumulation, summons, or the event editor. Payment processing is a future server feature.
+- Chapter elites fight as drawn (range, body sheets, a boss-staged first skill with art and sounds of their own): `docs/ELITE_SKILLS.md`. Boss kits stay exclusive to their boss, with one exception: a chapter's last elite plays its boss's ultimate on stage 45.
+- Progression rules are shared by the hub and combat through `src/gemwoven/progression.js`. Avoid duplicating economy calculations in UI code.
+- Keep unreleased features clearly marked Coming soon. Local PvP is not online PvP; local records are not global leaderboards. The event studio is a local configuration prototype, not an authenticated production admin.
+- Keep generated hub HTML, ZIPs, QA images, dependency folders, and temporary reports out of Git. `Game.html` is an existing tracked entry point; preserve its current repository convention. Commit useful source art, runtime assets, source, tests, and dependency locks.
+- Rebuild combat with `python build.py`; rebuild the hub with `python scripts/build_gemwoven.py`. Run `npm test` in `qa/gemwoven/runtime` after mechanics changes.
+- Foes rest and take buffs in baked mesh rigs too: a new creature, elite or boss needs `python assets/gemwoven/rig_foes.py parts <id>` then `make <id>`; without a rig folder it falls back to its drawn sheets. Its resting frame is then redrawn crisp at the size combat shows it (512px, bosses 640px): `python assets/gemwoven/sharpen_foes.py draw <id>`, `rig <id>`, `fidgets <id>` (`audit` measures every foe against the heroes).
+- New heroes, and new items for every hero, follow `docs/HERO_PIPELINE.md`; the checklist `docs/hero-checklist.json` (run `python scripts/hero_checklist.py`) feeds the hero studio's "H���ng m���c t����>ng" grid.
+- Growth, economy, live-ops and arena design lives in `docs/GAME_DESIGN.md` (Studio tab "Thi���t k��� h��� th��`ng"); live-ops numbers in `src/gemwoven/liveops.js`. Measure balance changes with `node qa/gemwoven/balance-sim.cjs` before and after.
+- After adding runtime art or sound, refresh the download packs with `node scripts/build_asset_packs.cjs` (`assets/packs.json`; `src/gemwoven/asset-packs.js` picks packs per account).
+- The plaza (TrA� Chuy���n) talks to the social server `server/social` (Node + ws, port 8091; `npm install && npm test` there); shared rules in `src/gemwoven/social-protocol.js`, protocol in `docs/SOCIAL_PROTOCOL.md`. Contested design waits until Claude and Codex agree (`docs/GAME_DESIGN.md` A20); `docs/REQUEST_TRACKER.md` answers each owner request.
+- Every new or rebuilt screen gets a design review, not only a size/bug checklist: Codex critiques it against the approved screens, draws a mockup with image_gen that both agree on before coding, the build uses drawn art (not plain CSS boxes), and Codex scores the result against the mockup on a phone viewport and in the Studio page (`tools/studio.html`, Game (Hub), 1920A-911) until it passes (�%� 8/10). Example: `assets/gemwoven/raw/forge-mockup/`.
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content -Encoding utf8 assets/gemwoven/raw/mika-attack/codex-score-8.md; Get-ChildItem assets/gemwoven/raw/mika-attack | Select-Object Name,Length' in D:\Project\Gemwoven
+ succeeded in 160ms:
+**7,5/10 - CHUA DUY?T.** Hu?ng ch?c d�ng y�u c?u, d?c d?ng t�c ro hon b?n ch�m. V?n c�n c?m gi�c d?i h�nh gi?a c�c tu th?.
+
+**1. M�u:** **D?T khi nh�n t?ng th?.** D?-cam, v�ng gi�p v� tr?ng kem g?n ?nh ngh?; kh�ng th?y l?ch t�ng ro. Histogram g?n nhau l� t�n hi?u t?t, nhung **kh�ng ch?ng minh t?ng v�ng t�c/gi�p gi? d�ng m�u**.
+
+**2. Ch?m t?ng khung**
+
+| Khung | D�i dao | Ch? c?m | Lu?i | T�c |
+|---|---|---|---|---|
+| 1 - Ngh? | D?T, chu?n g?c | D?T cho tu th? ngh? | D?T | D?T |
+| 2 - Nghi�ng | D?T | Hai tay t�ch, D?T tuong d?i | D?T | D?T |
+| 3 - Th? | D?T | Hai tay t�ch ro | D?T | D?T |
+| 4 - R�t | D?T | D?T tuong d?i | D?T | D?T |
+| 5 - Lao | D?T ri�ng l? | Hai tay t�ch ro | **SAI d? nh?t qu�n:** tr�ng g?n, m?ng hon | D?T v? hu?ng chuy?n d?ng |
+| 6 - Ch?c | D?T ri�ng l? | Hai tay t�ch ro | **SAI d? nh?t qu�n v?i 5:** n? l?i | D?T ri�ng l? |
+
+**Ch? c?m chua th? x�c nh?n d?t chu?n "38% c�n" t? sheet n�y.** Nh�n du?c kho?ng c�ch hai tay; chua d? can c? n�i ch�ng gi? nguy�n d�ng di?m b�m tr�n c�n. D?ng d�nh d?ng hai vi?c d�.
+
+**3. Chuy?n ti?p**
+
+- **123:** h?p ly v? hu?ng h? dao; do?n tay tr�i t? h�ng l�n c�n c�n �t tu th? d?n.
+- **34:** h?p ly, d?c du?c r�t dao l?y d�.
+- **45:** d?i th�n, ch�n v� kh?i t�c kh� m?nh; **c� nguy co b?t tu th?**.
+- **56:** d�ng hu?ng ch?c, nhung chi?u d�i do tang **628675 px, t?c 7,5%**. C?ng v?i lu?i d?i d�ng, d? th�nh c?m gi�c dao t? d�i ra.
+- **654:** thu dao h?p ly; d?o nguy�n c�c tu th? lao khi?n h?i chi�u hoi m�y.
+- **4321:** h?p ly v? tr�nh t?.
+
+?nh trong tr?n x�c nh?n **d?c ra ba l?n ch?c**, nhung c�c ?nh c�ch kho?ng 40 ms chua d? d? k?t lu?n h?t gi?t khi ph�t th?t. **350-380 ms l� nh?p ch?m, kh�ng ph?i b?ng ch?ng chuy?n d?ng mu?t.**
+
+**T?i da 3 s?a:**
+
+1. **Kh�a m?t h�nh dao v� hai di?m b�m tay**, uu ti�n s?a c?p 5-6; kh�ng ch? c�n t?ng chi?u d�i.
+2. Th�m **m?t tu th? trung gian 45**, cho h�ng d?n tru?c, t�c v� du�i theo sau.
+3. L�m **m?t tu th? thu dao ri�ng sau ch?m**, gi?m c?m gi�c ph�t ngu?c do?n lao.
+
+**Gi? hu?ng ch?c. S?a t�nh li�n t?c, chua c?n v? l?i c? b?.**
+
+Name                     Length
+----                     ------
+build1-form1.jpg         313667
+build1-form2.jpg         322262
+build1-form3-link.png   1186818
+build1-form3.jpg         341354
+build2-form1.jpg         238937
+build2-form2.jpg         275183
+build2-form3.jpg         277414
+build2-slash2-sheet.png 1818397
+build3-form1.jpg         284382
+build3-form2.jpg         268575
+build3-form3.jpg         269057
+build4-form3.jpg         297679
+build4-slash2-sheet.png 1827945
+build4-slash3-sheet.png 1839888
+build5-form3.jpg         269269
+build6-form3.jpg         333489
+build6-sheet.png         881258
+build7-form3.jpg         336903
+build7-sheet.png         987871
+build8-form3.jpg         355225
+build8-sheet.png        1032503
+build9-form3.jpg         350624
+build9-sheet.png        1028951
+codex-critique.md          5347
+codex-pose-review.md      15025
+codex-score-1.md           2922
+codex-score-2.md           2267
+codex-score-3.md           1402
+codex-score-4.md           2722
+codex-score-5.md           3232
+codex-score-6.md           3980
+codex-score-7.md           3650
+codex-score-8.md           2714
+critique-prompt.md         2571
+critique.log              54696
+idle-master.png          330469
+idle3.png                330469
+now-form1.jpg            292182
+now-form2.jpg            293500
+now-form3-windup.png     479831
+now-form3.jpg            328434
+pose-prompt.md             2419
+pose.log                  82673
+score-1.log               28423
+score-2.log               60283
+score-3.log               11254
+score-4.log                8206
+score-5.log               14373
+score-6.log               20455
+score-7.log               21682
+score-8.log                8283
+score-9.log                  29
+score-prompt-1.md          2183
+score-prompt-2.md          1677
+score-prompt-3.md          1188
+score-prompt-4.md          1690
+score-prompt-5.md          1867
+score-prompt-6.md          1850
+score-prompt-7.md          2028
+score-prompt-8.md          1773
+score-prompt-9.md          1599
+slash2-try3.png         1849413
+thrust1-form3.jpg        316281
+thrust1-sheet.png        502713
+thrust2-form3.jpg        319367
+thrust2-sheet.png        666669
+
+
+
+codex
+**8,2/10 — DUYỆT.** Tăng từ **7,5** ở `codex-score-8.md`. Ba sửa đều có tác dụng; lỗi lưỡi “co rồi nở” giữa lao–chạm đã hết rõ rệt.
+
+**1. Màu: ĐẠT.** Đỏ cam tóc, vàng giáp và trắng kem đuôi khớp ảnh nghỉ bằng mắt; không thấy khung lóe màu. **RGB trung bình lệch <1 không chứng minh từng vùng giữ màu**, nhưng bộ này nhìn nhất quán.
+
+**2. Từng khung**
+
+| Khung | Dài đao | Chỗ cầm | Lưỡi | Tóc |
+|---|---|---|---|---|
+| 1 — Nghỉ | ĐẠT | ĐẠT theo ảnh gốc | ĐẠT | ĐẠT |
+| 2 — Nghiêng | ĐẠT | ĐẠT, hai tay tách | ĐẠT | ĐẠT |
+| 3 — Thủ | ĐẠT | ĐẠT, cán xuyên hai tay hợp lý | ĐẠT | ĐẠT |
+| 4 — Rút | ĐẠT | ĐẠT, đuôi cán phía tay trái | ĐẠT | ĐẠT |
+| 5 — Hông dẫn | ĐẠT | ĐẠT, tay còn thấp ở hông | ĐẠT | ĐẠT, khối tóc kéo sau |
+| 6 — Lao | ĐẠT | ĐẠT, tay trước dẫn đao | ĐẠT | ĐẠT |
+| 7 — Chạm | ĐẠT so với 6 | ĐẠT | **ĐẠT, giữ được hình lưỡi của 6** | ĐẠT |
+| 8 — Thu | ĐẠT | ĐẠT, kéo tay về | ĐẠT, mũi ngóc hợp lý | ĐẠT, còn đà |
+
+**Đạt về hình nhìn thấy; chưa phải xác nhận độc lập số đo 400 px và 200–245 px trên bản 1536.** Khoảng cách hai tay hợp lý hơn, nhưng riêng con số không bảo đảm điểm bám không trượt.
+
+**3. Từng chuyển tiếp**
+
+- **1→2:** ĐẠT, hạ đao rõ hướng.
+- **2→3:** ĐẠT; tay trái lên cán vẫn hơi nhanh.
+- **3→4:** ĐẠT, đọc được rút lấy đà.
+- **4→5:** ĐẠT sát ngưỡng. Có hông dẫn, nhưng thân/chân đã đổi khá mạnh; tư thế còn hơi giống bắt đầu lao.
+- **5→6:** ĐẠT, đao được đẩy ra sau nhịp dẫn thân.
+- **6→7:** **ĐẠT rõ nhất vòng này.** Tăng tầm bằng duỗi người và tay; không còn cảm giác lưỡi tự phình.
+- **7→8:** ĐẠT, thu riêng đọc được; thân đứng lên còn ít.
+- **8→4:** ĐẠT nhưng là chỗ dễ bật nhất khi nối đòn: đao hạ và người trở về tư thế rút khá nhanh.
+- **4→3→2→1:** ĐẠT về trình tự kết.
+
+Ảnh trận đọc được **3 lần chọc**, hướng đánh rõ. Nhịp chạm **~365 ms** hợp chuỗi; ảnh cách **~40 ms** chưa đủ chứng nhận phát thật hoàn toàn hết giật.
+
+**Duyệt bộ này. Điểm còn yếu là nối 8→4 và độ rõ của hông dẫn; chưa cần mở thêm vòng vẽ chỉ vì hai điểm đó.**
+tokens used
+17,947
+**8,2/10 — DUYỆT.** Tăng từ **7,5** ở `codex-score-8.md`. Ba sửa đều có tác dụng; lỗi lưỡi “co rồi nở” giữa lao–chạm đã hết rõ rệt.
+
+**1. Màu: ĐẠT.** Đỏ cam tóc, vàng giáp và trắng kem đuôi khớp ảnh nghỉ bằng mắt; không thấy khung lóe màu. **RGB trung bình lệch <1 không chứng minh từng vùng giữ màu**, nhưng bộ này nhìn nhất quán.
+
+**2. Từng khung**
+
+| Khung | Dài đao | Chỗ cầm | Lưỡi | Tóc |
+|---|---|---|---|---|
+| 1 — Nghỉ | ĐẠT | ĐẠT theo ảnh gốc | ĐẠT | ĐẠT |
+| 2 — Nghiêng | ĐẠT | ĐẠT, hai tay tách | ĐẠT | ĐẠT |
+| 3 — Thủ | ĐẠT | ĐẠT, cán xuyên hai tay hợp lý | ĐẠT | ĐẠT |
+| 4 — Rút | ĐẠT | ĐẠT, đuôi cán phía tay trái | ĐẠT | ĐẠT |
+| 5 — Hông dẫn | ĐẠT | ĐẠT, tay còn thấp ở hông | ĐẠT | ĐẠT, khối tóc kéo sau |
+| 6 — Lao | ĐẠT | ĐẠT, tay trước dẫn đao | ĐẠT | ĐẠT |
+| 7 — Chạm | ĐẠT so với 6 | ĐẠT | **ĐẠT, giữ được hình lưỡi của 6** | ĐẠT |
+| 8 — Thu | ĐẠT | ĐẠT, kéo tay về | ĐẠT, mũi ngóc hợp lý | ĐẠT, còn đà |
+
+**Đạt về hình nhìn thấy; chưa phải xác nhận độc lập số đo 400 px và 200–245 px trên bản 1536.** Khoảng cách hai tay hợp lý hơn, nhưng riêng con số không bảo đảm điểm bám không trượt.
+
+**3. Từng chuyển tiếp**
+
+- **1→2:** ĐẠT, hạ đao rõ hướng.
+- **2→3:** ĐẠT; tay trái lên cán vẫn hơi nhanh.
+- **3→4:** ĐẠT, đọc được rút lấy đà.
+- **4→5:** ĐẠT sát ngưỡng. Có hông dẫn, nhưng thân/chân đã đổi khá mạnh; tư thế còn hơi giống bắt đầu lao.
+- **5→6:** ĐẠT, đao được đẩy ra sau nhịp dẫn thân.
+- **6→7:** **ĐẠT rõ nhất vòng này.** Tăng tầm bằng duỗi người và tay; không còn cảm giác lưỡi tự phình.
+- **7→8:** ĐẠT, thu riêng đọc được; thân đứng lên còn ít.
+- **8→4:** ĐẠT nhưng là chỗ dễ bật nhất khi nối đòn: đao hạ và người trở về tư thế rút khá nhanh.
+- **4→3→2→1:** ĐẠT về trình tự kết.
+
+Ảnh trận đọc được **3 lần chọc**, hướng đánh rõ. Nhịp chạm **~365 ms** hợp chuỗi; ảnh cách **~40 ms** chưa đủ chứng nhận phát thật hoàn toàn hết giật.
+
+**Duyệt bộ này. Điểm còn yếu là nối 8→4 và độ rõ của hông dẫn; chưa cần mở thêm vòng vẽ chỉ vì hai điểm đó.**

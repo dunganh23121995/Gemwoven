@@ -212,6 +212,8 @@ combatV3Charge=function(side,key,ultimate,pending){
   if(!(side==='hero'&&key==='lightning'&&ultimate))playCastSound(key,ultimate?'charge':'launch',{volume:ultimate?.25:.12,pan:side==='hero'?-.2:.2});
   if(reduced)return;
   const p=combatV3Point(side),duration=ultimate?900:380;
+  // Mika's basic strike: no emblem over her body (it hid her for 0.38 s at opacity .94; Codex: ≤ .25, ≤ 20% of her).
+  if(side==='hero'&&key==='fire'&&!ultimate){castScatter(key,p,false,pending,true);return;}
   const crest=castFx(key,'channel',p,Math.min(150,p.width*.8),castEmblem(key),duration,pending);
   if(crest)crest.dataset.caster=side;
   if(key==='lightning'&&side==='hero')lumiChargeMantle(crest);

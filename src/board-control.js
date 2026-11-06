@@ -38,10 +38,13 @@ castReadyUltimates=async function(){
     if(side==='enemy'&&noriSealHolds())continue;
     // A frozen or stunned hero has lost the turn: the ultimate waits until it is free again.
     if(side==='hero'&&state.playerFrozen)continue;
-    const key=side==='hero'?'energy':'enemyEnergy';if(state[key]<BOARD_RULES.ULTIMATE.cost||!boardUltAllowed(side))continue;
-    if(side==='hero'&&typeof foeSilenced==='function'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');continue;}
-    state[key]-=BOARD_RULES.ULTIMATE.cost;boardUltTurn[side]++;update();
-    if(side==='hero')await heroUltimate();else await enemySkill({reserved:true});
+    const key=side==='hero'?'energy':'enemyEnergy';
+    if(side==='hero'&&state[key]>=BOARD_RULES.ULTIMATE.cost&&typeof foeSilenced==='function'&&foeSilenced()){message('Bị phong ấn: tuyệt kỹ chưa thể dùng.');continue;}
+    // Every full gauge is cast, one after another (no limit a turn).
+    while(state[key]>=BOARD_RULES.ULTIMATE.cost&&boardUltAllowed(side)&&state.hp>0&&state.enemyHp>0){
+      state[key]-=BOARD_RULES.ULTIMATE.cost;boardUltTurn[side]++;update();
+      if(side==='hero')await heroUltimate();else await enemySkill({reserved:true});
+    }
   }
 };
 // The enemy turn opens a new enemy ultimate allowance; when it is over, the hero's next turn opens a new one.

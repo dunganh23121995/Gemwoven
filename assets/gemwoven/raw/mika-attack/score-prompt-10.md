@@ -1,0 +1,3 @@
+Gemwoven (Codex) — CHẤM nhanh bản rút gọn đòn CHỌC Mika hình thái 3. Read-only. Tiếng Việt, ngắn.
+Chủ dự án (06/11): "bỏ bớt khung đi. tại chỗ phải lấy đà lao tới chọc rồi. tấm số 3 (rút về) thậm chí có vấn đề cổ. lược bỏ luôn." → bỏ khung rút về và hông dẫn (game đã cho nhân vật lao tới). Còn 6 khung (thrust3-sheet.png): 1 nghỉ, 2 nghiêng, 3 thủ, 4 lao, 5 chọc (chạm), 6 thu đao. Chạy: đòn đầu 2→3 (giữ thủ trong lúc lao tới)→4→5(chạm)→6→3; nối đòn 3→4→5(chạm)→6→3; kết 3→2→1→nghỉ. Chạm cách ~365 ms. thrust3-form3.jpg = trong trận. Đối chiếu codex-score-9.md (8,2).
+Cần: còn khung nào lỗi (cổ, tay, đao, màu)? chuyển tiếp nào giật sau khi bỏ khung? điểm /10, "DUYỆT" nếu ≥ 8; nếu chưa, tối đa 2 sửa.

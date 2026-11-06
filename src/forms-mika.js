@@ -23,11 +23,15 @@ mikaFlameRage=function(raw,onRelease=()=>{}){
   if(form===3)return mikaNineSunSweep(raw,onRelease);
   return mikaFlameRageForm1(raw,onRelease);
 };
-let mikaSlashForm=0;
+// The form whose basic attack is playing; strikes may overlap (the Studio's button pressed fast), so it is cleared
+// only when the last of them ends (owner 07/11: a later strike fell back to the shared fire slash).
+let mikaSlashForm=0,mikaSlashRuns=0;
 const mikaStarUltimate=()=>formOriginalUltimate();
 const mikaStarAttack=form=>async(raw,options)=>{
-  mikaSlashForm=form;mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_FIRST;mikaSlashShorten=form===3?mikaGlaiveShortening():0;
-  try{return await formOriginalAttack('hero',raw,options);}finally{mikaSlashForm=0;mikaSlashShorten=0;}
+  // A linked cut (combat-v3.js combatV3Link) keeps the glaive's shortening measured from her home spot.
+  const linked=!!combatV3Link.hero;
+  mikaSlashForm=form;mikaSlashRuns++;mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_FIRST;mikaSlashShorten=form===3?(linked?mikaLinkShorten:(mikaLinkShorten=mikaGlaiveShortening())):0;
+  try{return await formOriginalAttack('hero',raw,options);}finally{if(--mikaSlashRuns<=0){mikaSlashRuns=0;mikaSlashForm=0;mikaSlashShorten=0;}}
 };
 HERO_KITS.fire={forms:{
   2:{ultimate:mikaStarUltimate,attack:mikaStarAttack(2)},
@@ -333,12 +337,13 @@ async function mikaNineSunSweep(raw,onRelease){
 
 // ---- Basic attack: the form's own slash art -------------------------------------------------------
 // The lunge and the attack poses are the form's (forms.json "attack"); only the cut is redrawn: a
-// heavy fox-fire broadsword arc (form 2) or a moon-glaive crescent (form 3), peaking at contact.
+// heavy fox-fire broadsword arc (form 2), or for the six-star thrust (owner 06/11: "sửa cả hiệu ứng chém thành
+// hiệu ứng chọc") a straight fox-fire streak along the glaive's line, its piercing flash on the foe.
 const mikaBaseSlash=combatV3Slash;
 combatV3Slash=function(point,key,index,ultimate,direction,pending){
-  // Six-star: the long glaive's own crescent sweep (sweep3), drawn from upper left down to the strike.
-  const form=mikaSlashForm,name=form===3?'sweep3':'slash'+form,sheet=mikaSheet(name);
+  const form=mikaSlashForm,name=form===3?'pierce3':'slash'+form,sheet=mikaSheet(name);
   if(!form||key!=='fire'||!sheet||reduced)return mikaBaseSlash(point,key,index,ultimate,direction,pending);
+  if(form===3)return mikaPierce(point,direction,sheet,pending);
   const foe=mikaFoeBody(),size=form===3?Math.min(Math.max(foe.height*1.3,foe.width*1.1),point.width*1.3,230):Math.min(foe.height*1.25,point.width*1.15,220);
   // Three cuts in a chain: a falling diagonal, a rising one, an overhead (form 2). Form 3's crescent
   // trail is drawn from upper left bulging to lower left; mirrored across its diagonal (rotate 90 after
@@ -360,30 +365,64 @@ combatV3Slash=function(point,key,index,ultimate,direction,pending){
   })().finally(()=>node.remove()));
 };
 
+// The six-star thrust's hit (owner 07/11: "loại hiệu ứng mũi lao trúng địch"): the spear tip's burst (pierce3, the
+// impact point at 0.404 / 0.5 of its cell, sparks spraying the way of the thrust), on the foe's near side at the
+// glaive's height, appearing at contact.
+function mikaPierce(point,direction,sheet,pending){
+  const foe=mikaFoeBody(),aim=Math.min(foe.x,foe.left+Math.min(foe.width*.35,70));
+  const size=Math.min(Math.max(foe.height*1.1,130),point.width*1.2,210);
+  const body=actor('hero').getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
+  const y=body.top-scene.top+body.height*.59;   // the glaive's line in the thrust pose
+  const node=mikaFxNode('pierce3','mika-slash');
+  node.style.cssText+=`;left:${aim+direction*(.5-.404)*size}px;top:${y}px;width:${size}px;height:${size}px;opacity:0`;
+  const contact=COMBAT_V3_STRIKES.fire.contact;
+  pending.push((async()=>{
+    await wait(contact);node.style.opacity='1';
+    for(const [i,f] of [0,1,1,2,3].entries()){
+      mikaFxFrame(node,'pierce3',f);
+      node.style.transform=`translate(-50%,-50%) scale(${direction*(1+i*.04)},${1+i*.04})`;
+      await wait(sheet.frameDuration);
+    }
+    await animate(node,[{opacity:1},{opacity:0}],{duration:120,fill:'forwards'});
+  })().finally(()=>node.remove()));
+}
+
 // ---- Six-star basic attack: the long glaive swung from the butt of its shaft -------------------------
 // The shared lunge (combat-v3.js) asks for "attack" frames by role (wind-up, ready, launch, contact,
 // recover, rest) with indices that differ per chain stance. Six-star Mika plays her own "slash" sheet
 // in that order instead: ready with both hands at the shaft's end, the glaive swung back behind her,
 // swept forward low, held out at full reach on contact, carried up past the foe, then settling.
-const MIKA_SLASH_FIRST=[0,1,2,2,3,4],MIKA_SLASH_NEXT=[1,1,2,3,4];
-let mikaSlashCalls=0,mikaSlashOrder=MIKA_SLASH_FIRST,mikaSlashShorten=0;
-const mikaBaseFrame=combatV3Frame,mikaBaseAction=combatV3Action,mikaBasePose=combatV3Pose;
+// The six-star "attack" sheet is a spear thrust (owner 06/11: the left hand stays in front supporting the shaft from below,
+// the right hand always grips the butt end and pushes the shaft through the left hand into the foe; no tilt, no
+// wind-up, the lunge carries her in; the resting pose's colours; thrust3.webp): 0 rest, 1 guard, 2 full thrust.
+// She stands on guard while she gathers, and moves in only as the right hand pushes (owner 06/11: "khi tay phải đẩy
+// lên thì mới tiến lại gần chọc"): the thrust pose from the start of the lunge to the contact, then back to the guard.
+const MIKA_SLASH_FIRST=[1,1,2,2,2,2,1],MIKA_SLASH_NEXT=[1,2,2,2,1],MIKA_SLASH_REST=[1,0];
+window.mikaSlashOrders={first:MIKA_SLASH_FIRST,next:MIKA_SLASH_NEXT,rest:MIKA_SLASH_REST};// the Studio's in-combat preview
+let mikaSlashCalls=0,mikaSlashOrder=MIKA_SLASH_FIRST,mikaSlashShorten=0,mikaLinkShorten=0,mikaSlashSteps=0;
+const mikaBaseFrame=combatV3Frame,mikaBasePose=combatV3Pose;
 combatV3Frame=function(side,action,index){
   if(mikaSlashForm!==3||side!=='hero'||action!=='attack')return mikaBaseFrame(side,action,index);
   // Index 5 is always the rest after a cut; the next cut of a multi-hit chain starts from wind-up.
-  if(index===5){mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_NEXT;return mikaBaseFrame(side,'slash',5);}
-  return mikaBaseFrame(side,'slash',mikaSlashOrder[Math.min(mikaSlashCalls++,mikaSlashOrder.length-1)]);
+  const frames=index===5?(mikaSlashCalls=0,MIKA_SLASH_REST):mikaSlashOrder[Math.min(mikaSlashCalls++,mikaSlashOrder.length-1)];
+  return mikaSlashSteps_(side,[].concat(frames),index===5?90:32);
 };
-combatV3Action=function(side,action,duration){
-  return mikaBaseAction(side,mikaSlashForm===3&&side==='hero'&&action==='attack'?'slash':action,duration);
-};
+// Plays poses in turn (inside a cut 32 ms apart, the walk to rest 90 ms); a newer call cancels the rest.
+function mikaSlashSteps_(side,frames,step){
+  const run=++mikaSlashSteps,result=mikaBaseFrame(side,'attack',frames[0]);
+  frames.slice(1).forEach((frame,k)=>setTimeout(()=>{if(run===mikaSlashSteps&&actor('hero').classList.contains('combat-v3-acting'))mikaBaseFrame(side,'attack',frame);},step*(k+1)));
+  return result;
+}
+// A linked cut (combat-v3.js) starts the six-star order again from its ready pose.
+combatV3LinkStart=side=>{if(side==='hero'){mikaSlashCalls=0;mikaSlashOrder=MIKA_SLASH_NEXT;}};
+
 // The glaive reaches far: the lunge stops short, so the crescent (not her body) meets the foe.
 function mikaGlaiveShortening(){
-  const sheet=mikaSheet('sweep3')&&ART.heroForms?.fire?.['3']?.slash;if(!sheet)return 0;
+  const sheet=mikaSheet('pierce3')&&ART.heroForms?.fire?.['3']?.attack;if(!sheet)return 0;
   const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,Math.abs(to.x-from.x)-from.width*.43);
-  // Contact pose ("strike" frame 3): the crescent's middle sits 0.34 of the drawn cell right of its
-  // centre, her body's front (boots, skirt) 0.17.
-  const cell=from.width*(sheet.scale||1),reach=cell*.34,front=cell*.17,foe=mikaFoeBody();
+  // Contact pose (frame 2 of thrust3): the crescent's middle sits 0.37 of the drawn cell right of its centre, her
+  // body's front (tails) 0.15 (measured on the frames: the blade's gold pixels, the rest pose's right edge).
+  const cell=from.width*(sheet.scale||1),reach=cell*.37,front=cell*.15,foe=mikaFoeBody();
   // The crescent lands on the foe's near side (a big foe's middle can be far beyond its front), and her
   // body stops short of the foe's drawn edge, so she never overlaps any foe.
   const aim=Math.min(foe.x,foe.left+Math.min(foe.width*.35,70));
@@ -393,6 +432,9 @@ function mikaGlaiveShortening(){
   return Math.max(0,Math.min(travel,travel-Math.max(0,advance)));
 }
 combatV3Pose=function(node,transform,...rest){
+  // Six-star: the drawn sheet carries the body's motion; the shared lunge's per-cut tilt and hop (+7°, −10°, +12°)
+  // made each cut of a chain look different (owner 06/11), so she moves level.
+  if(mikaSlashForm===3&&node===actor('hero'))transform=transform.replace(/rotate\(-?[\d.]+deg\)/,'rotate(0deg)').replace(/^translate\((-?[\d.]+px),\s*-?[\d.]+px\)/,'translate($1,0px)');
   if(mikaSlashShorten&&node===actor('hero')){
     const m=/^translate\((-?[\d.]+)px,/.exec(transform);
     if(m&&+m[1]>0)transform=transform.replace(m[0],`translate(${Math.max(0,+m[1]-mikaSlashShorten)}px,`);

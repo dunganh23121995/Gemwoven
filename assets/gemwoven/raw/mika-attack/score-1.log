@@ -1,0 +1,340 @@
+Reading prompt from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: D:\Project\Gemwoven
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1ade2-a3fa-7551-ac7c-03d980fa22b5
+--------
+user
+Gemwoven (Codex) — CHẤM đòn đánh thường liên tiếp của Mika (vòng 1). Read-only. Tiếng Việt, ngắn, có số, gắt theo ý chủ dự án ("động tác đánh mượt mà hơn"; "làm lại bộ đánh thường xuất phát từ ảnh nghỉ trong trận"; "tư thế vung đao lạ") và checklist của bạn (codex-critique.md) + review tư thế (codex-pose-review.md).
+
+Đã làm:
+- Đánh liên tiếp (src/combat-v3.js combatV3Link, src/live-combat.js): khi đòn kế trong hàng là đòn đánh thường cùng phía, Mika đứng lại phía trước, đòn sau bắt đầu từ tư thế kết đòn trước (xoay thân ~112 ms, không lùi lấy đà, không quầng tích lực, không tên chiêu lặp, không vệt kéo từ chỗ gốc), địch bật về 67 ms; chỉ đòn cuối mới về chỗ. Sát thương/thời điểm trừ máu giữ nguyên (3 × 40 = 120 cả hai cách). Hàng hành động FIFO (đến trước làm trước).
+- Bỏ biểu tượng lửa phủ người Mika lúc tích lực đòn thường (cast-redesign.js; trước đây che người 0,38 s ở độ mờ 0,94), giữ âm và tia lửa nhỏ.
+- Hình thái 3: vẽ lại sheet chém từ ảnh nghỉ trong trận theo prompt tư thế của bạn (build2-slash2-sheet.png: nghỉ → rút đao sau vai → tăng tốc → chạm → đi tiếp → về nghỉ), cắt cùng một tỉ lệ cho mọi khung, khóa chân theo dáng nghỉ. Thứ tự khung đòn đầu: rút đao, tăng tốc, chạm, đi tiếp; đòn nối: thu đao lên (khung 6) → rút → tăng tốc → chạm → đi tiếp. Bỏ độ nghiêng/nhún riêng từng nhát (+7°/−10°/+12°) của hình thái 3.
+- Đo nhịp (hình thái 3): chạm ở 613 / 1017 / 1416 ms → khoảng 404 / 399 ms; toàn chuỗi về nghỉ ~1,8 s.
+Ảnh: build3-form1.jpg, build3-form2.jpg, build3-form3.jpg (khung cách ~55 ms, sân đấu điện thoại; ba đòn ×40), build2-slash2-sheet.png (sheet thô hình thái 3).
+Cần: (1) điểm /10 từng hình thái + từng mục checklist đạt/không; (2) tối đa 5 sửa đổi có số; (3) "DUYỆT" nếu cả ba ≥ 8.
+
+2026-11-05T22:44:37.011934Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+2026-11-05T22:44:39.347919Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+codex
+Tôi sẽ đọc hai checklist và đối chiếu chuỗi ảnh, tập trung vào độ mượt khi nối đòn và tư thế vung đao.
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg --files -g '*codex*critique*' -g '*codex*pose*' -g 'AGENTS.md'" in D:\Project\Gemwoven
+ succeeded in 74ms:
+AGENTS.md
+assets\gemwoven\raw\mika-attack\codex-pose-review.md
+assets\gemwoven\raw\mika-attack\codex-critique.md
+assets\gemwoven\raw\board-items\codex-critique.md
+assets\gemwoven\raw\board-fx-v3\codex-critique.md
+
+2026-11-05T22:44:42.393345Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9100/mcp)")))
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content assets/gemwoven/raw/mika-attack/codex-critique.md -Encoding UTF8' in D:\Project\Gemwoven
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content assets/gemwoven/raw/mika-attack/codex-pose-review.md -Encoding UTF8' in D:\Project\Gemwoven
+ succeeded in 68ms:
+**Ch?t: c?n n?i tu th? v� gi? Mika ? ph�a tru?c gi?a c�c d�n; ch? tang t?c to�n b? s? v?n gi?t.** D�y l� review read-only, chua s?a file.
+
+1. **Hi?n t?i - chua d?t**
+   - **H�nh th�i 1: 5/10.** D?c du?c d?ng t�c ch�m, nhung c? lao t?i  v? g?c  l?y d� l?i, khi?n chu?i th�nh ba d�n r?i.
+   - **H�nh th�i 2: 5/10.** V?t ch�m ro hon; th�n v� ki?m v?n reset gi?a d�n, thi?u chuy?n d?ng n?i.
+   - **H�nh th�i 3: 4/10.** Vu kh� d�i nhung c�c nh�t g?n c�ng hu?ng; qu?ng cam che th�n kho?ng **150 ms**, l�m m?t kh? nang d?c tay v� c�n dao.
+   - Chu?i kho?ng **3.300 ms**, c� kho?ng d?ng ch? u?c lu?ng **200-300 ms** gi?a nh?p; l?c d�nh b? ng?t.
+   - Popup l?p l�m nhi?u. Tuy nhi�n, code hi?n ch? g?i t�n chi�u khi `chain===1`; c?n ki?m tra `job.chain` th?c t?. `combatV3Charge()` thu?ng ch? t?o v�ng du?i ch�n, n�n **chua d? b?ng ch?ng quy to�n b? m?ng cam che th�n cho h�m n�y**.
+
+2. **Spec d? ngh? - d�ng chung c? ba h�nh th�i**
+
+   M?i th?i gian du?i d�y l� **ms th?c tr�n m�n h�nh, sau scale .45**; kho?ng c�ch t�nh ? viewport **430x932**.
+
+   | Th�nh ph?n | Ch?t |
+   |---|---|
+   | Di?u ki?n n?i | Ngay tru?c pha h?i, xem **ph?n t? d?u h�ng d?i**: ph?i l� d�nh thu?ng c�ng ph�a. Kh�ng t�m vu?t qua buff, tuy?t k? ho?c d�n ph�a kh�c; gi? FIFO. |
+   | D�n d?u | L?y d� **100 ms**  lao t?i **120 ms**  vung t?i ch?m **80 ms**. Ch?m l?n d?u ? **300 ms**. |
+   | M?i d�n n?i | Kho?ng c�ch gi?a hai l?n ch?m **360 ms**: gh�m va ch?m **35**  theo d� **105**  chuy?n th? **140**  vung t?i ch?m **80**. Kh�ng d?ng idle. |
+   | N?i tu th? | D�n sau b?t d?u d�ng tu th? k?t d�n tru?c; th�n ch? d?ch **2-6 px**, kh�ng l�i l?y d� t? g?c. |
+   | Hu?ng ch�m | **Ch�o xu?ng  h?t l�n  ngang**, l?p l?i. Tay, vu kh� v� v?t ch�m c�ng hu?ng; c?n pose ph� h?p, kh�ng ch? xoay hi?u ?ng. |
+   | V? tr� ph�a tru?c | Gi? ch�n quanh di?m �p s�t, dao d?ng t?i da **6 px**. Th�n kh�ng xuy�n d?ch; h�nh th�i 3 gi? kho?ng th�n **�12 px**, d?u dao v?n ch?m d�ng m?c ti�u. |
+   | D?ch gi?t | L�i **6 px trong 45 ms**, tr? v? trong **100 ms**; kh�ng c?ng d?n v? tr�. Ph?n ?ng b?t d?u t?i va ch?m. |
+   | K?t chu?i | Sau ch?m cu?i: theo d� **140 ms**  v? g?c **180 ms**  ?n d?nh **60 ms**. Ch? m?t l?n quay v?. |
+   | Qu?ng t�ch l?c | Ch? d�n d?u, d�i **100 ms**, opacity t?ng h?p t?i da **0,25**; v�ng hi?u ?ng ch?ng l�n t?i da **20% di?n t�ch th�n**, tr�nh m?t v� tay c?m vu kh�. |
+   | T�n chi�u | Hi?n **m?t l?n/chu?i**, t?i da **600 ms**; popup combo kh�ng du?c thay b?ng t�n chi�u l?p. |
+   | M�u, �m thanh | Tr? m�u d�ng l�c lu?i vu kh� ch?m; �m va ch?m d?ng th?i. M?i job gi? nguy�n s�t thuong, h? s? v� s? l?n �p d?ng. |
+
+   V?i ba d�n da c� s?n: ch?m t?i **300 / 660 / 1.020 ms**, v? tr?ng th�i ngh? kho?ng **1.400 ms**. N?u h�ng d?i kh�ng c�n d�n h?p l? khi b?t d?u quay v?, d�ng chu?i; d�n d?n sau m? chu?i m?i.
+
+   Luu y tri?n khai: hi?n m?i `attack()` d?u tr? v? g?c v� d?t `idle` trong `finally`. C?n gi? tr?ng th�i xuy�n c�c job; **kh�ng g?p ba job th�nh m?t d�n nhi?u hit**, v� c� th? d?i h? s? v� th? t? x? ly.
+
+3. **Checklist c?ng - ch? d?t khi t?t c? d?u d?t**
+
+   Ch?m ri�ng t?ng h�nh th�i b?ng video **60 fps**, ba d�n da x?p h�ng; ?nh c�ch 100 ms chua d? ki?m tra d? mu?t.
+
+   - [ ] **Nh?p:** hai kho?ng ch?m li�n ti?p d?u **360�30 ms**; to�n chu?i **1.400�100 ms**.
+   - [ ] **Kh�ng reset:** gi?a c�c d�n kh�ng v? g?c, kh�ng hi?n idle; ch�n dao d?ng **�6 px**, kh�ng nh?y v? tr� gi?a hai frame **>3 px** trong pha n?i.
+   - [ ] **Tu th? li�n t?c:** cu?i d�n tru?c n?i sang d?u d�n sau, kh�ng b?t v? pose l?y d� cu; ba hu?ng ch�m ph�n bi?t du?c khi t?t VFX.
+   - [ ] **Ch?m th?t:** d?u vu kh� c�ch du?ng bi�n th�n d?ch **�4 px** t?i hit; m�u, �m v� ph?n ?ng d?ch l?ch t?i da **1 frame �17 ms**.
+   - [ ] **Gi?t c� ki?m so�t:** d?ch l�i **6�2 px**, h?i trong **145�20 ms**, kh�ng tr�i sau ba d�n.
+   - [ ] **D?c ro Mika:** qu?ng ch? xu?t hi?n m?t l?n, **�100 ms**, opacity **�0,25**, che th�n **�20%**.
+   - [ ] **K?t d�ng:** t�n chi�u m?t l?n; Mika ch? quay v? sau d�n cu?i, sai l?ch v? tr� g?c **�2 px**.
+   - [ ] **Lu?t nguy�n v?n:** ca ki?m th? ba d�n x40 v?n c� d�ng **3 l?n tr? 40 =120 HP**; th? xen buff/tuy?t k?/ph�a kh�c v?n gi? FIFO, ch?t ho?c k?t th�c tr?n kh�ng d? Mika m?c ph�a tru?c.
+
+ succeeded in 87ms:
+**Khung 2 c?n v? l?i.** V?n d? kh�ng ph?i ch? v� lu?i dao n?m ph�a sau: d� l� v? tr� l?y d� h?p ly. V?n d? l� **hai tay t? g?n gi?a c�n, c�n d� ch�o tru?c ng?c, trong khi vai v� h�ng chua xoay d?**. Tu th? v� v?y d?c th�nh "�m dao ngang ngu?i", chua th�nh l?y d� cho m?t vu kh� d?u n?ng.
+
+D�y l� nh?n x�t t? hai ?nh tinh du?c cung c?p; nh?ng ch? tay/c�n b? trang ph?c che kh�ng th? x�c nh?n ch�nh x�c trong kh�ng gian 3D.
+
+**1. Review s�u khung hi?n t?i**
+
+Quy u?c: tr�i/ph?i c?a tay l� **tay c?a Mika**; tr�i/ph?i m�n h�nh l� hu?ng ngu?i xem th?y.
+
+| Khung | K?t lu?n | Nh?n x�t co h?c v� h�nh ?nh |
+|---|---|---|
+| **1 - Ngh?** | **D?t l�m m?c** | Gi? du?c d�ng ?nh chu?n: dao d?ng b�n ph?i m�n h�nh, m?t tay gi?, tay kia ch?ng h�ng, hai ch�n t?o n?n d?ng ?n. C?m m?t tay ph� h?p l�c ngh?; tru?c khi ph�t l?c ph?i c� d?ng t�c tay tr�i b?t v�o c�n. |
+| **2 - R�t dao** | **Kh�ng d?t** | Hai tay nh�n kh� g?n nhau ? do?n gi?a c�n, l�m y?u c?m gi�c d�n b?y. Lu?i du?c dua l�n tr�i nhung c?m tay v?n n?m tru?c ng?c; du?ng c�n v� th? d?c nhu xuy�n/�p s�t th�n. H�ng v� ch�n g?n nhu chua n?p l?c tuong ?ng. Kh�ng th?y ro du?ng chuy?n t? tay tr�i ch?ng h�ng sang c?m dao. |
+| **3 - Vung** | **Chua d?t** | Lu?i cao b�n ph?i, hu?ng t?i d?ch n�n silhouette d? d?c hon khung 2. Tuy nhi�n, tay v� c�n d?c g?n nhu dang **d?y dao l�n tru?c**; xoay vai-h�ng v� chuy?n t?i xu?ng ch�n tru?c c�n y?u. Kho?ng c�ch hai tay chua th? hi?n ro quy?n di?u khi?n d?u dao. |
+| **4 - Ch?m** | **Kh�ng d?t cho nh�t ch�m da m� t?** | Ch�n tru?c khu?u v� th�n ti?n v? ph?i l� di?m t?t. Nhung c�n g?n ngang, hai tay c�ng vuon t?i d?ch khi?n d?ng t�c d?c th�nh **th?c/d?y d?u dao**. Lu?i trang khuy?t d?ng ? d?u c�n chua cho th?y ro c?nh s?c dang qu�t qua m?c ti�u. Ch�m ngang v?n c� th? c� c�n ngang; l?i ? d�y l� t?ng h?p du?ng tay, xoay th�n v� hu?ng m?t lu?i, kh�ng ph?i ri�ng g�c c�n. |
+| **5 - Di ti?p** | **D?t m?t ph?n** | D?u dao h? th?p v? ph?i l� k?t th�c h?p ly cho ch�m ch�o xu?ng. Tuy nhi�n, n� l�m l? s? thi?u th?ng nh?t v?i khung 4 dang d?c th�nh d�m ngang. Vai, h�ng v� ch�n c?n di ti?p theo c�ng v�ng ch�m; tay kh�ng n�n ch? h? vu kh� xu?ng. |
+| **6 - Thu v?** | **D?t h�nh tinh; chua d?t chuy?n d?ng** | G?n tu th? ngh? n�n d�ng d�ch k?t th�c. Nhung t? d?u dao th?p b�n ph?i ? khung 5 sang dao d?ng v� tay ch?ng h�ng ? khung 6 l� quang h?i kh� l?n. Tay tr�i c?n c�n gi? c�n trong l�c d?ng dao, r?i m?i bu�ng v? h�ng. |
+
+**K?t lu?n v? c? chu?i:** hi?n t?i dang tr?n ba y: l?y d� qua vai  d?y/th?c ngang  h? ch�o. C?n th?ng nh?t th�nh **m?t du?ng ch�m c� d?u dao n?ng d?n chuy?n d?ng**.
+
+**2. B? tu th? d? xu?t**
+
+T�i ch?n **ch�m ch�o thu?n t? sau vai ph?i xu?ng ph�a tru?c b�n ph?i m�n h�nh**. "Vai ph?i" ? d�y l� vai gi?i ph?u c?a Mika; v? tr� lu?i khi l?y d� ph?i d?c ro ? **ph�a sau nh�n v?t, b�n tr�i m�n h�nh**.
+
+D�y l� nh�t ch�m ng?n, ch?c, ph� h?p d�nh thu?ng hon m?t v�ng xoay l?n. Nh�n v?t gi? v? tr�; l?c d?n t? ch�n, h�ng v� vai, c�n game d?m nhi?m lao t?i.
+
+C�c quy t?c xuy�n su?t:
+
+- **Tay ph?i ? do?n tr�n, g?n d?u lu?i hon; tay tr�i ? do?n du?i, g?n du�i c�n hon.** Hai tay c�ch nhau kho?ng m?t b? ngang vai, kh�ng ch?m l?i.
+- Tay ph?i d?n hu?ng; tay tr�i k�o du�i c�n d? t?o m�-men. Kh�ng kh�a th?ng c? hai khu?u.
+- C�n c� th? **che tru?c** trang ph?c theo ph?i c?nh; kh�ng du?c m?t h�t r?i m?c ra ? v? tr� khi?n n� d?c nhu xuy�n th�n.
+- Gi? nguy�n h�nh h?c lu?i v� ph�a c?nh s?c. **C?nh s?c d?n theo cung ch�m**, kh�ng ph?i ch? chia mui dao v? d?ch.
+- Hai ch�n gi? n?n d?ng c?a ?nh ngh?. Ch�n ph�a d?ch nh?n t?i khi ch�m; ch�n sau d?y v� xoay nh? tr�n mui ch�n. Kh�ng th�m bu?c lao.
+
+G�c du?i d�y t�nh t? hu?ng ph?i m�n h�nh: `0�` l� ngang ph?i, `+90�` l� d?ng l�n; do t? du�i c�n t?i d?u lu?i. D�y l� g�c tham kh?o cho silhouette, kh�ng ph?i khu�n c?ng.
+
+| Khung | Hai tay v� c�n | Lu?i, th�n v� ch�n |
+|---|---|---|
+| **1 - Ngh? chu?n** | Gi? d�ng tay ph?i v� g�c dao c?a `idle-master.png`; tay tr�i ch?ng h�ng. | Kh?p ?nh ngh? v? th�n, ch�n, m?t v� tr?ng t�m. Kh�ng "s?a" ?nh ngh? th�nh th? th? hai tay. |
+| **2 - N?p l?c sau vai** | Tay tr�i r?i h�ng, b?t do?n du?i; tay ph?i gi? do?n tr�n. Dua **c? c?m c?m ra ngo�i su?n ph�a sau**, thay v� gi? hai tay gi?a ng?c. C�n g?n d?ng, nghi�ng l�n tr�i kho?ng **105-120�**. | Lu?i ? tr�n-sau vai, b�n tr�i m�n h�nh, c�ch d?u/tai/du�i ro r�ng. Vai v� h�ng xoay nh? kh?i d?ch, m?t v?n nh�n ph?i. G?i m?m, t?i hoi v? ch�n sau; kh�ng ng? ngu?i d? "n� c�n". |
+| **3 - Tang t?c** | Tay tr�i k�o du�i c�n v? g?n h�ng; tay ph?i d?n d?u c�n ra tru?c. Hai tay gi? kho?ng c�ch, khu?u c�n cong. C�n kho?ng **40-55�** l�n ph?i. | Lu?i di qua v�ng cao ph�a tru?c, c?nh s?c d?n xu?ng-ph?i. H�ng m? v? d?ch r?i vai theo; t?i b?t d?u chuy?n sang ch�n tru?c. D�y ph?i d?c l� dang ch�m xu?ng, kh�ng n�ng dao l�n d? d�m. |
+| **4 - Ch?m** | C�n g?n ngang ho?c ch�c xu?ng ph?i kho?ng **0 d?n -15�**. Tay ph?i ? tru?c, tay tr�i th?p hon v� g?n th�n; kh�ng du?i c? hai tay th�nh m?t du?ng th?c. | C?nh s?c di qua v�ng ng?c-b?ng d?ch theo ti?p tuy?n xu?ng-ph?i. Th�n xoay theo nh�t ch�m, kh�ng g?p r?p. G?i ch�n tru?c nh?n l?c; ch�n sau c�n ch?ng d?t, g�t c� th? nh?c nh?. |
+| **5 - Di ti?p v� ham** | D?u dao ti?p t?c xu?ng ph?i, c�n kho?ng **-25 d?n -40�**. Khu?u m?m d? h?p th? l?c, tay tr�i ki?m so�t du�i c�n; kh�ng bu�ng tay. | Lu?i k?t th�c ngo�i ph�a tru?c ch�n, **kh�ng ch?m d?t ho?c c?t v�o ch�n/du�i**. H�ng ho�n t?t xoay, tr?ng t�m v?n n?m trong n?n hai ch�n. T�c, t� �o, du�i tr? theo m?t �t, kh�ng che d?ng t�c ch�nh. |
+| **6 - Tr? v? ngh?** | Hai tay dua dao d?ng l?i **? ngo�i su?n ph?i m�n h�nh**. Sau khi tay ph?i da d? ch?c, tay tr�i m?i v? h�ng. | Tr? vai, h�ng, g?i v� tr?ng t�m v? ?nh ngh?; khung cu?i kh?p khung 1. Kh�ng d?ng dao xuy�n qua m?t ho?c ng?c. |
+
+**C� m?t gi?i h?n c?n n�i ro v?i v�ng l?p 2  5:** n?u khung 2 l� l?y d� cao ph�a sau v� khung 5 l� di ti?p th?p ph�a tru?c, n?i th?ng **5  2 s? gi?t**. M?t nh�t ch�m d�ng v?n c?n du?ng h?i v? sau vai. S�u ?nh n�y c� th? l�m s�u **tu th? kh�a** t?t, nhung kh�ng t? ch?a d? chuy?n d?ng d? v?a ch�m, v?a h?i, v?a l?p ho�n to�n mu?t.
+
+D? xu?t gi? s�u tu th? tr�n d? s?a d�ng co h?c tru?c; khi n?i d�n, c?n b? sung chuy?n d?ng h?i **5  2**, c�n khi d?ng d�ng **5  6  1**. N?u runtime ch? d?i ?nh, kh�ng c� n?i suy vu kh�/th�n, ph?n h?i c?n th�m ?nh trung gian. Kh�ng n�n ch?a b?ng c�ch xo?n c? tay ho?c cho dao nh?y qua ngu?i.
+
+**3. Prompt thay ph?n m� t? khung**
+
+```PROMPT_SLASH
+Create a six-key-pose normal glaive attack sprite sheet for Mika, form 3.
+
+REFERENCES
+Use idle-master.png as the authoritative reference for character identity,
+rendering style, proportions, weapon design, camera, and exact resting pose.
+Use slash2-try3.png only to understand the requested six-frame sheet format.
+Replace its attack choreography; do not copy its awkward frame-2 grip.
+
+LAYOUT AND BACKGROUND
+Exactly 3 columns by 2 rows, six equal cells, read left to right, top to bottom.
+Use a perfectly flat, uniform #FF00FF background.
+No visible grid, borders, labels, numbers, text, ground, or shadows.
+Keep the complete character, all tails, and the entire weapon inside each cell,
+with generous padding. No clipping and no overlap between cells.
+
+IDENTITY AND SCALE
+Preserve Mika's face, fox ears, orange-red hair, braid, ornaments, costume,
+armor, colors, tail arrangement, and original glaive design.
+Match the clean, detailed chibi rendering of idle-master.png.
+Maintain the same three-quarter view facing screen-right in every frame.
+Enemies are to screen-right.
+Keep identical standing-equivalent anatomical scale, camera distance,
+body-root placement, and ground baseline across all six cells.
+Allow natural knee compression and torso rotation; do not resize individual poses.
+
+WEAPON AND GRIP
+One rigid long-shafted crescent glaive, approximately 1.3 times her standing
+height, matching the reference. Preserve shaft length, blade shape,
+blade mounting, and the identity of the sharpened edge in every frame.
+
+During the two-handed attack:
+Her anatomical RIGHT hand is the upper grip, closer to the blade.
+Her anatomical LEFT hand is the lower grip, closer to the butt.
+Separate the hands by approximately one shoulder width.
+Maintain this hand order throughout the attack.
+Keep both hands firmly wrapped around the shaft, with plausible wrists
+and softly bent elbows. Never cluster both hands at the shaft midpoint.
+No hand swapping, crossed wrists, bent shaft, or detached blade.
+
+The sharpened edge must lead along the cutting arc.
+Do not animate the glaive as a spear thrust.
+Do not flip or mirror the blade independently between frames.
+The shaft may visibly overlap clothing in the foreground, but must never
+appear to penetrate her chest, neck, head, or limbs.
+The blade must clear her ears, hair, tails, and legs.
+
+ACTION
+One compact, powerful diagonal descending cut:
+from behind her anatomical right shoulder, with the blade visibly behind
+her toward screen-left, sweeping forward and downward toward screen-right.
+
+She attacks in place. The game supplies forward movement.
+Use hip rotation, shoulder rotation, controlled weight transfer, and a slight
+rear-foot pivot. No running step, jump, spin, or large body translation.
+
+FRAME 1 - EXACT RESTING START
+Match idle-master.png as closely as possible.
+Her right hand holds the glaive upright on the screen-right side of her body.
+Her left hand rests on her hip.
+Preserve the reference stance, gaze, feet, and relaxed balance.
+
+FRAME 2 - CLEAR REAR-SHOULDER WIND-UP
+Her left hand has joined the lower shaft; her right hand remains the upper grip.
+The hands are clearly separated.
+Carry the grip beside the rear side of her torso, outside its silhouette,
+rather than bunching both hands in front of her chest.
+The shaft is nearly upright, leaning toward upper screen-left.
+The crescent blade is high behind her rear shoulder, toward screen-left,
+well clear of her head and ears.
+Do not lay the shaft diagonally across the center of her chest.
+Rotate her hips and shoulders slightly away from the enemy while keeping
+her eyes on screen-right.
+Both knees are soft; slightly load the rear leg without leaning backward.
+
+FRAME 3 - ACCELERATING DIAGONAL CUT
+Begin the forward hip turn, followed by shoulders and arms.
+Her left hand draws the butt toward her hip while her right hand guides
+the upper shaft forward.
+Keep the hand spacing and softly bent elbows.
+The shaft now rises approximately 40-55 degrees toward screen-right.
+The blade has traveled from behind the shoulder into the high front-right
+part of the same continuous descending cutting arc.
+The cutting edge leads downward and forward.
+Transfer weight toward the front leg.
+This is a rotating cut, not an upward push or spear thrust.
+
+FRAME 4 - CONTACT
+Show the decisive diagonal cut through the enemy's chest-to-abdomen zone
+to screen-right.
+The shaft is approximately horizontal to 15 degrees downward toward the blade.
+The sharp edge sweeps downward and forward through the contact region;
+the weapon is not simply being pushed lengthwise at the enemy.
+Her right hand is forward; her left hand stays closer to her body,
+controlling the butt. Neither elbow is rigidly locked.
+Her hips and shoulders have turned into the strike.
+The front knee accepts the weight; the rear foot remains grounded or
+pivots lightly with a slightly raised heel.
+Keep her torso balanced and her head looking toward the enemy.
+
+FRAME 5 - CONTROLLED LOW FOLLOW-THROUGH
+Continue the same arc, bringing the blade low toward screen-right.
+The shaft slopes approximately 25-40 degrees downward toward the blade.
+Keep the blade safely above the ground and outside her legs and tails.
+Both hands retain their original grips.
+Use soft elbows and the lower hand to brake the heavy weapon.
+Finish the hip rotation without falling forward or stepping.
+Hair, clothing, and tails may lag subtly behind the body.
+Do not turn this into a new attack, reverse cut, or wrist-only movement.
+
+FRAME 6 - RETURNED TO THE EXACT RESTING POSE
+Return the glaive upright along the outside of her screen-right side.
+Her right hand supports it securely; her left hand returns to her hip.
+Match frame 1 and idle-master.png in pose, scale, feet, and balance.
+The intended recovery path stays outside the body, never through her face
+or chest.
+
+CONTINUITY
+These are six key poses of one attack, not six unrelated illustrations.
+Preserve a coherent weapon trajectory from frames 2 through 5.
+Do not force frame 5 to resemble frame 2 by teleporting or reversing the blade.
+A repeated attack requires a separate recovery transition from frame 5
+back to frame 2; stopping the attack recovers through frame 6.
+Do not add extra cells or ghosted intermediate poses to this sheet.
+
+NO EFFECTS
+Character and physical weapon only.
+No slash trails, motion streaks, blade afterimages, glow trails, flames,
+sparks, impact flashes, particles, dust, or duplicate limbs or weapons.
+The slash effect will be drawn separately.
+```
+
+codex
+**CHƯA DUYỆT.** Đã bớt cảnh lao vào rồi về gốc sau mỗi nhát, nhưng **đứng lại trước địch chưa đồng nghĩa với nối động tác mượt**. Tư thế vung đao hình thái 3 vẫn chưa đạt yêu cầu.
+
+| Hình thái | Điểm | Nhận xét |
+|---|---:|---|
+| **1** | **7/10** | Chuỗi liền vị trí hơn; đọc được nhát chém. Còn lặp lấy đà và cùng kiểu vung, chưa thành ba động tác nối nhau. |
+| **2** | **7/10** | Người và vũ khí khá rõ. Đoạn thu kiếm rồi đánh tiếp vẫn đọc thành lặp một đòn; thiếu chuyển thế có lực. |
+| **3** | **6/10** | Hình nghỉ và nhận diện tốt hơn. Nhưng khung chạm vẫn giống **đẩy cán ngang**, vai–hông xoay yếu; dùng khung 6 chống hông để nối đòn tạo cảm giác nghỉ rồi nạp lại. |
+
+Đối chiếu checklist trong `codex-critique.md` và `codex-pose-review.md`:
+
+**Đ = đạt qua ảnh; K = không đạt; K* = chưa đủ bằng chứng để công nhận đạt.**
+
+| Mục | HT1 | HT2 | HT3 |
+|---|:---:|:---:|:---:|
+| Nhịp 360±30 ms; tổng 1.400±100 ms | K* | K* | **K** |
+| Không reset; chân ổn định đúng ngưỡng | K* | K* | K* |
+| Tư thế liên tục; ba hướng chém khi tắt VFX | **K** | **K** | **K** |
+| Chạm thật; máu/âm/phản ứng lệch ≤17 ms | K* | K* | K* |
+| Địch giật đúng biên độ, hồi đúng thời gian | K* | K* | K* |
+| Đọc rõ Mika; bỏ quầng che người | **Đ** | **Đ** | **Đ** |
+| Tên chiêu một lần; chỉ cuối chuỗi về gốc | **Đ** | **Đ** | **Đ** |
+| Sát thương, FIFO và xử lý ngắt nguyên vẹn | K* | K* | K* |
+
+HT3 **404/399 ms**, tổng **~1.800 ms** đều vượt chuẩn đã chốt. Ảnh cách ~55 ms không chứng minh được độ mượt 60 fps hay đồng bộ âm thanh. HT1 hiện **−60 và khắc hệ ×1,5**: có thể hợp lý, nhưng không phải bằng chứng trực tiếp cho ca **3×40**.
+
+Tối đa **5 sửa đổi**, theo ưu tiên:
+
+1. **Vẽ đường hồi riêng từ khung 5 về 2**, giữ hai tay trên cán. Khung 6 chống hông chỉ dùng khi kết chuỗi; xoay cả sprite 112 ms không thay được chuyển động khớp.
+2. **Sửa khung 3–5 HT3:** tay sau kéo đuôi cán sát hông, tay trước dẫn lưỡi; vai–hông xoay theo. Khung 4 phải đọc thành **chém**, không phải đẩy đao.
+3. **Làm đủ ba hướng chém** cho cả ba hình thái; thân, tay, vũ khí và VFX cùng hướng. Hiện vẫn chủ yếu lặp một nhát.
+4. **Đưa nhịp về chuẩn** 360±30 ms, tổng 1.400±100 ms; giữ nguyên số lần và lượng sát thương.
+5. **Nộp video 60 fps có âm**, thêm lượt tắt VFX và ca xen buff/khác phía để chốt các ô K*.
+
+**Vòng 1: chưa hình thái nào đạt 8/10.**
+tokens used
+20,970
+**CHƯA DUYỆT.** Đã bớt cảnh lao vào rồi về gốc sau mỗi nhát, nhưng **đứng lại trước địch chưa đồng nghĩa với nối động tác mượt**. Tư thế vung đao hình thái 3 vẫn chưa đạt yêu cầu.
+
+| Hình thái | Điểm | Nhận xét |
+|---|---:|---|
+| **1** | **7/10** | Chuỗi liền vị trí hơn; đọc được nhát chém. Còn lặp lấy đà và cùng kiểu vung, chưa thành ba động tác nối nhau. |
+| **2** | **7/10** | Người và vũ khí khá rõ. Đoạn thu kiếm rồi đánh tiếp vẫn đọc thành lặp một đòn; thiếu chuyển thế có lực. |
+| **3** | **6/10** | Hình nghỉ và nhận diện tốt hơn. Nhưng khung chạm vẫn giống **đẩy cán ngang**, vai–hông xoay yếu; dùng khung 6 chống hông để nối đòn tạo cảm giác nghỉ rồi nạp lại. |
+
+Đối chiếu checklist trong `codex-critique.md` và `codex-pose-review.md`:
+
+**Đ = đạt qua ảnh; K = không đạt; K* = chưa đủ bằng chứng để công nhận đạt.**
+
+| Mục | HT1 | HT2 | HT3 |
+|---|:---:|:---:|:---:|
+| Nhịp 360±30 ms; tổng 1.400±100 ms | K* | K* | **K** |
+| Không reset; chân ổn định đúng ngưỡng | K* | K* | K* |
+| Tư thế liên tục; ba hướng chém khi tắt VFX | **K** | **K** | **K** |
+| Chạm thật; máu/âm/phản ứng lệch ≤17 ms | K* | K* | K* |
+| Địch giật đúng biên độ, hồi đúng thời gian | K* | K* | K* |
+| Đọc rõ Mika; bỏ quầng che người | **Đ** | **Đ** | **Đ** |
+| Tên chiêu một lần; chỉ cuối chuỗi về gốc | **Đ** | **Đ** | **Đ** |
+| Sát thương, FIFO và xử lý ngắt nguyên vẹn | K* | K* | K* |
+
+HT3 **404/399 ms**, tổng **~1.800 ms** đều vượt chuẩn đã chốt. Ảnh cách ~55 ms không chứng minh được độ mượt 60 fps hay đồng bộ âm thanh. HT1 hiện **−60 và khắc hệ ×1,5**: có thể hợp lý, nhưng không phải bằng chứng trực tiếp cho ca **3×40**.
+
+Tối đa **5 sửa đổi**, theo ưu tiên:
+
+1. **Vẽ đường hồi riêng từ khung 5 về 2**, giữ hai tay trên cán. Khung 6 chống hông chỉ dùng khi kết chuỗi; xoay cả sprite 112 ms không thay được chuyển động khớp.
+2. **Sửa khung 3–5 HT3:** tay sau kéo đuôi cán sát hông, tay trước dẫn lưỡi; vai–hông xoay theo. Khung 4 phải đọc thành **chém**, không phải đẩy đao.
+3. **Làm đủ ba hướng chém** cho cả ba hình thái; thân, tay, vũ khí và VFX cùng hướng. Hiện vẫn chủ yếu lặp một nhát.
+4. **Đưa nhịp về chuẩn** 360±30 ms, tổng 1.400±100 ms; giữ nguyên số lần và lượng sát thương.
+5. **Nộp video 60 fps có âm**, thêm lượt tắt VFX và ca xen buff/khác phía để chốt các ô K*.
+
+**Vòng 1: chưa hình thái nào đạt 8/10.**

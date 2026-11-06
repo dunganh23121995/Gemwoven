@@ -17,8 +17,10 @@
   // One bonus per board resolution by its number of waves (only the highest tier reached, never summed).
   const COMBO_RAGE=[0,0,3,6,10,15];
   const comboRage=waves=>COMBO_RAGE[Math.max(0,Math.min(COMBO_RAGE.length-1,Math.floor(waves)||0))];
-  // An ultimate costs 100 rage; the gauge banks up to 199; each side casts at most one in its own turn, after its board.
-  const ULTIMATE={cost:100,cap:199,perTurn:1};
+  // An ultimate costs 100 rage and the gauge banks up to 199. No limit a turn (owner 06/11, Claude + Codex): each time a
+  // side reaches 100 in its own turn, 100 is taken at once to book an ultimate (before the 199 cap, so a big gain is not
+  // lost) and the gauge keeps filling; booked ultimates play one after another, after the action in progress.
+  const ULTIMATE={cost:100,cap:199,perTurn:Infinity};
   // Ice (owner 05/11): every ice gem a side collects builds up on its opponent across turns; 6 freeze a common foe, an
   // elite or a PvP player, a boss needs 9; the count resets on a freeze.
   const ICE={common:6,boss:9};

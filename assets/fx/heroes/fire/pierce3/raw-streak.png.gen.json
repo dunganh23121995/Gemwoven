@@ -1,0 +1,22 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-06T17:30:18Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\fx\\heroes\\fire\\sweep3\\raw-sheet.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, warm painted anime style matching the attached reference (the fox-fire slash effect of Mika, nine-tailed fox girl with a crescent moon glaive): the same fire colours and painting, white-gold bright core, golden-orange fox-fire, crimson flame tongues, a few cream-tipped fox-tail-shaped wisps.\nSubject: the effect of ONE powerful straight SPEAR THRUST (a stab, not a cut): a long, narrow, perfectly STRAIGHT horizontal streak of fox-fire shooting from the LEFT to the RIGHT, sharp and pointed like a spear tip at its right end, thin and tapering at its left end. At the moment of impact a sharp star-shaped piercing flash bursts at the right tip.\nLayout: EXACTLY 2 columns x 4 rows, eight equal WIDE cells (each 768 wide x 256 high), landscape 1536x1024. Use ONLY the first 4 cells (read left to right, top to bottom); the last 4 cells are empty magenta. The streak stays on the same horizontal centre line in every cell and spans about 90% of the cell width.\nFrame 1: the thrust shooting forward: a short bright pointed streak in the left two thirds of the cell, its tip glowing.\nFrame 2: the full streak reaching the right end, brightest, with the star-shaped piercing flash bursting at the right tip.\nFrame 3: the streak thinning, the flash breaking into embers and small flame tongues flying forward to the right.\nFrame 4: only a faint thin line and drifting embers left.\nOpaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell. No glaive, no hand, no character.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The prompt asks for a 1536x1024 landscape sheet split into 2 columns x 4 rows of 768x256 cells, with the four frames filling the first four cells. The candidate is about 1024x683 and packs its four streaks into the top ~40% of the image, leaving the lower ~60% empty. The frames do not follow the requested cell grid."
+      }
+    ],
+    "summary": "Single-thrust spear streak sequence has the correct magenta background and fox-fire styling, but the layout is wrong: four frames are crowded into a 2x2 arrangement at the top, with the bottom of the sheet empty and the canvas not 1536x1024.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00081
+  }
+}

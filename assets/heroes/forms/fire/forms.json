@@ -258,23 +258,11 @@
           "frameDuration": 200
         },
         "attack": {
-          "file": "assets/heroes/forms/fire/form-3/attack.webp",
+          "file": "assets/heroes/forms/fire/form-3/thrust3.webp",
           "cols": 3,
-          "rows": 2,
-          "count": 6,
+          "rows": 1,
+          "count": 3,
           "heads": [
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ],
             [
               134,
               70
@@ -290,7 +278,8 @@
           ],
           "footY": 0.94,
           "frameDuration": 100,
-          "scale": 2.186
+          "scale": 2.562,
+          "note": "owner 06/11: a spear thrust - the LEFT hand stays in front supporting the shaft from below, the RIGHT hand always grips the butt end and pushes the shaft through the left hand into the foe; no tilt, no wind-up (the lunge carries her in); colours of the resting pose. thrust/guard3, push2, redrawn with the nine tails gathered at her hips and spreading behind her, natural and close to her body, a little more stretched back in the thrust (owner 07/11 picked option A of thrust/tail-options/options.png; thrust/guard-tailsA, thrust-tailsA) (blade length fixed with slide.py), colours matched (match_colors.py), sharpened to the resting pose's crispness (unsharp mask, radius 2, 24% guard / 62% thrust, measured by Laplacian variance at combat size): 0 rest, 1 guard, 2 full thrust. The only basic attack of six-star Mika (owner 06/11: \"từ giờ chỉ dùng 1 kiểu đánh thường\"); the old attack.webp is no longer used"
         },
         "cast": {
           "file": "assets/heroes/forms/fire/form-3/cast.webp",
@@ -432,41 +421,6 @@
           "footY": 0.94,
           "frameDuration": 90,
           "scale": 1.45
-        },
-        "slash": {
-          "file": "assets/heroes/forms/fire/form-3/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ],
-            [
-              134,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100,
-          "scale": 2.186
         }
       }
     }

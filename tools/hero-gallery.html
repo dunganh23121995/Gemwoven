@@ -85,7 +85,7 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
   .combat-bar button i{font-size:19px}
   .side{min-width:0;width:100%}
   .shows{grid-template-columns:1fr 1fr}
-  .viewer canvas.play{width:100%;height:auto;max-width:256px}
+  .viewer canvas.play{width:100%;height:auto;max-width:400px}
 }
 .checklist{overflow:auto}
 .checklist table{border-collapse:collapse;font-size:12px;min-width:100%}
@@ -102,7 +102,7 @@ label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .hero{position:absolute;inset:0}
 .hero>img.plain{position:absolute;left:10%;top:6%;width:80%;height:80%;object-fit:contain}
 .viewer{display:flex;gap:12px;flex-wrap:wrap}
-canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-conic-gradient(#2a241d 0 25%,#221d17 0 50%) 0 0/16px 16px}
+canvas.play{width:400px;height:400px;border-radius:8px;background:repeating-conic-gradient(#2a241d 0 25%,#221d17 0 50%) 0 0/16px 16px}
 .sheet{position:relative;max-width:100%;overflow:auto;border-radius:8px;background:repeating-conic-gradient(#2a241d 0 25%,#221d17 0 50%) 0 0/16px 16px}
 .sheet img{display:block;max-width:none}
 .sheet .cell{position:absolute;border:1px solid #e8c26a55;color:#e8c26a;font:11px monospace;padding:1px 3px;cursor:pointer}
@@ -175,6 +175,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
         <label>ms/khung <input type="range" id="ms" min="40" max="600" value="150"><span id="msv">150</span></label>
         <label><input type="checkbox" id="blend" checked> Hoà khung</label>
         <label><input type="checkbox" id="onion"> Bóng khung trước</label>
+        <label id="ingameBox" hidden title="Thứ tự khung và nhịp như trong trận: 3 nhát đánh liên tiếp rồi về nghỉ"><input type="checkbox" id="ingame" checked> Như trong trận (3 nhát)</label>
       </div>
       <div class="viewer"><canvas class="play" id="play" width="512" height="512"></canvas><div><div class="meta" id="meta"></div><div class="sheet" id="sheet"></div></div></div>
     </section>
@@ -194,7 +195,7 @@ canvas.play{width:256px;height:256px;border-radius:8px;background:repeating-coni
 <script src="src/gemwoven/hero-show.js"></script>
 <script>
 const $=id=>document.getElementById(id),frame=$('game'),A=window.GEMWOVEN_ASSETS,M=window.GemwovenProgression;
-let hero=new URLSearchParams(location.search).get('hero')||'shadow',form=3,sheets={},action='idle',img=null,cur=0,playing=true,last=0,acc=0;
+let hero=new URLSearchParams(location.search).get('hero')||'shadow',form=3,sheets={},action='idle',img=null,shown=null,cur=0,playing=true,last=0,acc=0;
 const gq=()=>frame.contentWindow?.gameQA,say=t=>$('status').textContent=t;
 const formsOf=key=>M.HERO_FORMS[key]?M.HERO_FORMS[key].map((f,i)=>[i+1,f.name]):[[1,M.HEROES[key].title||M.HEROES[key].name]];
 
@@ -375,8 +376,13 @@ function hookSpecialPlacing(){
 frame.addEventListener('load',()=>setTimeout(hookSpecialPlacing,500));
 // The Biến Thân sound offset slider: shows the value to send back ("Lưu"); applied on the next Biến Thân press only.
 $('tfSound').oninput=()=>{const v=$('tfSound').value;$('tfSoundVal').textContent=v;$('tfSoundNote').textContent=`Lưu: ${v} ms`;};
+// "Đánh" pressed again while strikes play queues one more, linked as in combat (owner 07/11: pressed fast, strikes
+// overlapped and the later ones fell back to another effect).
+let studioStrikes=null;
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
-  const q=gq();if(!q)return;say('Đang chạy: '+(b.title||b.textContent));b.classList.add('busy');
+  const q=gq();if(!q)return;
+  if(b.dataset.do==='attack'&&studioStrikes){studioStrikes.qaStrikes('hero',[100]);say('Đánh tiếp (nối đòn)');return;}
+  say('Đang chạy: '+(b.title||b.textContent));b.classList.add('busy');
   try{
     // configure() clears a transform; the look comes back quietly after it, so the action plays transformed.
     const phase=q.transformPhase?.();if(b.dataset.do!=='hit')configure();if(phase&&b.dataset.do!=='idle')q.transformRestore?.(phase);
@@ -384,7 +390,7 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     if(b.dataset.do==='idle')q.transformReset?.();
     if(b.dataset.do==='transform'){if(!q.transformTest)throw Error('Bản game chưa có Biến Thân, bấm Tải lại game');const t=q.transformSoundOffset?.(Number($('tfSound').value));q.transformTest();if(t)say(`Biến Thân · âm bắt đầu ở ${t.start} ms (tan ở ${t.dissolve} ms, lệch ${t.offset} ms)`);}
     if(b.dataset.do==='afterglow')q.transformAfter?.();
-    if(b.dataset.do==='attack')await q.attack('hero',100,{attackChain:1});
+    if(b.dataset.do==='attack'){const c=studioStrikes=q.createLiveCombat();c.qaStrikes('hero',[100]);try{await c.finish();}finally{studioStrikes=null;}}
     if(b.dataset.do==='ultimate')await q.heroUltimate();
     if(b.dataset.do==='depart')await q.departVictoriousHero();
     if(b.dataset.do==='hit'){const hp=q.state.hp,blow=foeBlow();await q.attack('enemy',100);say(`Bị đánh${blow?' ('+blow+')':''}: mất ${hp-q.state.hp} HP`);return;}
@@ -413,9 +419,10 @@ $('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').s
 // which sheet the game borrows in its place: sprite-runtime.js spriteDefinition).
 const SHEET_STATES=[['idle','Nghỉ'],['attack','Đánh thường'],['cast','Gồng chiêu'],['buff','Nhận máu / giáp'],['hurt','Bị đánh'],
   ['run','Vào / rời sân'],['hover','Bay lơ lửng'],['skill','Tuyệt kỹ']];
-const SHEET_EXTRA={smash:'Tuyệt kỹ (smash)',slash:'Chém thương (slash)',dash:'Lướt (dash)'};
+const SHEET_EXTRA={smash:'Tuyệt kỹ (smash)',slash:'Đánh thường riêng (slash)',dash:'Lướt (dash)'};
 const SHEET_BORROW={buff:'cast',hurt:'attack'};
-function ownSheet(name){return sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;}
+// A form whose basic attack plays another sheet for the player's hero (Mika six-star: "slash") shows that one.
+function ownSheet(name){const own=sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;return own?.heroPlays&&sheets[own.heroPlays]?sheets[own.heroPlays]:own;}
 function loadSheets(){
   const art=gq().art;
   sheets=(form>1&&art.heroForms?.[hero]?.[String(form)])||art.heroes[hero]||{};
@@ -432,21 +439,49 @@ function pick(name){
     const borrow=sheets[name]?.aliasOf||(SHEET_BORROW[name]&&sheets[SHEET_BORROW[name]]?SHEET_BORROW[name]:'');
     $('meta').textContent='Không có trạng thái này'+(borrow?` · trong trận dùng sheet «${borrow}»`:'');return;
   }
-  img=new Image();img.onload=drawSheet;img.src=s.src;cur=0;
+  img=new Image();img.onload=()=>{findCrop();drawSheet();};img.src=s.src;cur=0;acc=0;shown=s;crop=null;planIngame();
   if(s.frameDuration){$('ms').value=s.frameDuration;$('msv').textContent=s.frameDuration;}
 }
 function drawSheet(){
-  const s=sheets[action],box=$('sheet'),scale=Math.min(1,560/img.naturalWidth);
+  const s=shown,box=$('sheet'),scale=Math.min(1,560/img.naturalWidth,440/img.naturalHeight);
   box.replaceChildren();const im=img.cloneNode();im.style.width=img.naturalWidth*scale+'px';box.append(im);
   const cw=img.naturalWidth/s.cols*scale,ch=img.naturalHeight/s.rows*scale;
   for(let i=0;i<s.count;i++){const c=document.createElement('div');c.className='cell';c.textContent=i;Object.assign(c.style,{left:(i%s.cols)*cw+'px',top:Math.floor(i/s.cols)*ch+'px',width:cw+'px',height:ch+'px'});c.onclick=()=>{cur=i;playing=false;$('playpause').textContent='Phát';};box.append(c);}
-  $('meta').textContent=`${action}: ${s.count} khung · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
+  $('meta').textContent=`${sheets[action]?.heroPlays?`${action} (trong trận: «${sheets[action].heroPlays}»)`:action}: ${s.count} khung · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${!$('ingameBox').hidden?' · trong trận: theo thứ tự đòn (bật «Như trong trận»)':s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
 }
-function cell(i){const s=sheets[action],w=img.naturalWidth/s.cols,h=img.naturalHeight/s.rows;return [(i%s.cols)*w,Math.floor(i/s.cols)*h,w,h];}
+// The basic attack as the game plays it (forms-mika.js orders, read from the game; the call times measured in
+// combat, ms from the strike's start): first cut, two linked cuts, then the walk back to rest.
+let ingamePlan=null,crop=null;
+function planIngame(){
+  ingamePlan=null;const w=frame.contentWindow;let orders=null;
+  const o=w?.mikaSlashOrders;if(o)orders=[o.first,o.next,o.rest];
+  // the order the game plays six-star Mika's basic attack in (forms-mika.js)
+  const plays=!!orders&&action==='attack'&&hero==='fire'&&form===3;$('ingameBox').hidden=!plays;if(!plays)return;
+  const [first,next,rest]=orders,steps=[];
+  const put=(t,entry,gap=32)=>[].concat(entry).forEach((f,k)=>steps.push({t:t+gap*k,f}));
+  [0,35,110,110,205,277,360].forEach((t,i)=>put(t,first[i]));
+  for(const start of [440,810])[0,105,110,208,290].forEach((t,i)=>put(start+t,next[i]));
+  put(1270,rest,90);steps.push({t:1270+90*rest.length+500,f:0});
+  steps.sort((a,b)=>a.t-b.t);
+  // a later call cancels the rest of an earlier list, as in the game
+  ingamePlan=steps.filter((s,i)=>!steps.slice(i+1).some(o=>o.t===s.t));ingamePlan.total=steps.at(-1).t+400;
+}
+// The preview shows the part of the cells the frames use, larger.
+function findCrop(){
+  const s=shown,c=document.createElement('canvas'),k=.125;c.width=img.naturalWidth*k;c.height=img.naturalHeight*k;
+  const g=c.getContext('2d');g.drawImage(img,0,0,c.width,c.height);const d=g.getImageData(0,0,c.width,c.height).data;
+  const cw=c.width/s.cols,ch=c.height/s.rows;let x0=cw,y0=ch,x1=0,y1=0;
+  for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++)if(d[(y*c.width+x)*4+3]>24){const u=x%cw,v=y%ch;x0=Math.min(x0,u);y0=Math.min(y0,v);x1=Math.max(x1,u);y1=Math.max(y1,v);}
+  if(x1<=x0)return crop=null;const side=Math.max(x1-x0,y1-y0)*1.08,cx=(x0+x1)/2,cy=(y0+y1)/2;
+  crop={x:(cx-side/2)/cw,y:(cy-side/2)/ch,w:side/cw,h:side/ch};
+}
+function cell(i){const s=shown,w=img.naturalWidth/s.cols,h=img.naturalHeight/s.rows,c=crop||{x:0,y:0,w:1,h:1};return [(i%s.cols+c.x)*w,(Math.floor(i/s.cols)+c.y)*h,w*c.w,h*c.h];}
 function render(now){
   requestAnimationFrame(render);const s=ownSheet(action);if(!img?.complete||!s)return;
-  const ms=+$('ms').value;if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=(cur+1)%s.count;}}last=now;
-  const g=$('play').getContext('2d'),k=playing&&$('blend').checked?acc/ms:0,m=k*k*(3-2*k);
+  const ms=+$('ms').value,plan=$('ingame').checked&&!$('ingameBox').hidden?ingamePlan:null;
+  if(plan){if(playing){acc=(acc+now-(last||now))%plan.total;let f=plan[0].f;for(const st of plan)if(st.t<=acc)f=st.f;cur=f;}last=now;}
+  else{if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=(cur+1)%s.count;}}last=now;}
+  const g=$('play').getContext('2d'),k=playing&&$('blend').checked&&!plan?acc/ms:0,m=k*k*(3-2*k);
   g.clearRect(0,0,512,512);
   if($('onion').checked){g.globalAlpha=.3;g.drawImage(img,...cell((cur+s.count-1)%s.count),0,0,512,512);}
   g.globalAlpha=1;g.drawImage(img,...cell(cur),0,0,512,512);
@@ -457,8 +492,8 @@ function render(now){
 requestAnimationFrame(render);
 $('ms').oninput=()=>$('msv').textContent=$('ms').value;
 $('playpause').onclick=()=>{playing=!playing;$('playpause').textContent=playing?'Tạm dừng':'Phát';};
-$('prev').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+sheets[action].count-1)%sheets[action].count;};
-$('next').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+1)%sheets[action].count;};
+$('prev').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+shown.count-1)%shown.count;};
+$('next').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+1)%shown.count;};
 
 fillForms();showcases();
 </script>

@@ -84,7 +84,7 @@ function fight(hero,enc,seed,{skill=.8}={}){
       if(tfNew&&tf.dodge&&waves.length>=tf.dodge.waves&&!st.dodged){st.dodged=true;st.dodge=true;}
     }
     if(st.eHp<=0)break;
-    for(let cast=0;st.energy>=100&&st.eHp>0&&(OLD||cast<R.ULTIMATE.perTurn);cast++){st.energy-=100;st.ults++;const exec=kit.execute&&st.eHp<st.eMax*kit.execute.threshold?kit.execute.bonus:1;
+    for(let cast=0;st.energy>=100&&st.eHp>0&&(OLD||cast<(+process.env.ULT_PER_TURN||R.ULTIMATE.perTurn));cast++){st.energy-=100;st.ults++;const exec=kit.execute&&st.eHp<st.eMax*kit.execute.threshold?kit.execute.bonus:1;
       if(hero.key==='earth'){if(blocked()){if(!st.sealFree)st.sealFree=kit.stun;}else st.stun=Math.max(st.stun,kit.stun);st.regen=kit.regenTurns;}
       else hitFoe(kit.base*kit.power*s.attack*exec*(TF==='old'&&tf?1+tf.attack:1));
       if(hero.key==='ice'){st.armor=Math.min(heroCap,st.armor+kit.armor);if(!blocked())st.stun=Math.max(st.stun,1);if(kit.mutationArmor)st.armor=Math.min(heroCap,st.armor+Math.round(st.max*kit.mutationArmor));}

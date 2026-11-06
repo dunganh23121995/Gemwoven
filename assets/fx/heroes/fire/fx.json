@@ -69,5 +69,12 @@
     "frameDuration": 45,
     "width": 384,
     "height": 384
+  },
+  "pierce3": {
+    "file": "assets/fx/heroes/fire/pierce3.webp",
+    "count": 4,
+    "frameDuration": 55,
+    "width": 384,
+    "height": 384
   }
 }

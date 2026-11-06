@@ -297,7 +297,7 @@ phỏng (`qa/gemwoven/balance-sim.cjs`): `src/gemwoven/board-rules.js`.
 | Nộ người chơi (và hai bên trong PvP) mỗi viên Kiếm/Tim/Tím/Băng/Khiên | **3/2/7/2/2**; Lumi tím 10 (+0,2/cấp Bị Động), màu khác theo bảng |
 | Nộ combo (số đợt trong một lần giải bàn) 1/2/3/4/≥5 | **+0/3/6/10/15**, nhận một mức |
 | Nộ quái PvE | 3/viên, +25 ở viên tím đầu; Băng quái **không** hút nộ nữa |
-| Tuyệt kỹ | 100 nộ, thanh tối đa 199, **một tuyệt kỹ mỗi lượt của mình**, tung sau khi bàn giải xong |
+| Tuyệt kỹ | (chủ dự án 06/11, Claude + Codex) 100 nộ, thanh tối đa 199, **không giới hạn số lần trong lượt mình**: đủ 100 là trừ nộ giữ chỗ ngay (trước khi cắt về 199), nộ tích tiếp; các hành động trận (tuyệt kỹ, đòn đánh, hồi máu/giáp) chạy **đến trước làm trước**, song song với board; đủ nộ ngoài lượt mình thì tung đầu lượt mình |
 | Băng | (chủ dự án 05/11) mỗi viên Băng **tích vào đối phương qua các lượt**: quái thường/tinh anh và người chơi PvP **6** → đóng băng, trùm **9**; đóng băng xong về 0; không tích khi đang khống chế/kháng. Biến Thân Yuki: 4 (trùm 6) |
 | Chống khóa | (chủ dự án 05/11) **chỉ trùm**: sau choáng/đóng băng phải hành động đủ **2** lượt mới bị khống chế lại; quái thường, tinh anh, người chơi PvP không có kháng (vẫn tích băng liên tục); Phong ấn Nori lúc đó chỉ tích sát thương |
 | Phong ấn Nori | đòn của Nori trong phong ấn **vẫn gây sát thương** và tích thêm toàn bộ đòn đó vào bộc phá ×3 (PvP tích 2/3 để giữ ngân sách cũ); bộc phá nổ một lần, không nhân hệ/sức mạnh lần hai. Giữ đặc tính sát thương 75% (chủ dự án 05/11) |

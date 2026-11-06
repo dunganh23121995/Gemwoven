@@ -230,7 +230,23 @@ function combatV3BuffSound(kind){
   const notes=kind==='heal'?[523,659,784]:[392,523,784];
   notes.forEach((frequency,index)=>combatV3Tone(context,{frequency,end:frequency*1.01,at:context.currentTime+combatV3Duration(index*110)/1000,duration:.32,volume:.024}));
 }
-attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=false,attackChain=1}={}){
+// Linked basic strikes (owner 06/11: "đánh liên tiếp mượt mà hơn, làm thử với Mika trước"; Codex spec in
+// assets/gemwoven/raw/mika-attack/codex-critique.md). When the next job in the fight's queue is another basic strike of
+// the same side, the striker stays at the front: the next cut starts from the pose the last one ended in, changes
+// direction (falling, rising, level), and only the last cut walks home. Mika only for now (combatV3Linked).
+const combatV3Link={hero:null,enemy:null};
+const combatV3Linked=(side,key,melee)=>side==='hero'&&key==='fire'&&melee;
+// Forms that pick their own attack frames reset their order here (forms-mika.js).
+let combatV3LinkStart=()=>{};
+// A striker left at the front with no strike following walks home (the queue moved on, the foe fell, the fight ended).
+async function combatV3Unlink(side){
+  const link=combatV3Link[side];if(!link)return;combatV3Link[side]=null;
+  const source=actor(side);
+  if(!reduced)await combatV3Pose(source,link.home||'translate(0px,0px) rotate(0deg)',400);
+  source.style.transform=link.home;source.style.zIndex=link.z;source.classList.remove('combat-v3-acting');$('scene').classList.remove('combat-v3-active');
+  delete source.dataset.attackChain;delete source.dataset.attackStance;combatV3Action(side,'idle');
+}
+attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=false,attackChain=1,link=null}={}){
   if(ultimate)return rageChoreography(side,raw,{hits});
   if(side==='hero'&&state.key==='shadow')return shadowAttack(raw,{hits,damageLedger,attackChain});
   const targetSide=side==='hero'?'enemy':'hero',source=actor(side),target=actor(targetSide);
@@ -244,10 +260,15 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   // half the arena to cover) strikes from range with its element instead.
   const foe=side==='enemy'&&!progressionIsDuel(),pounce=foe&&reach<=$('scene').clientWidth*.5&&!foeShoots();
   const melee=foe?pounce:key==='earth'||(['fire','novice'].includes(key)&&side==='hero');
-  const travel=melee?reach:0;
-  const sourceTransform=source.style.transform,targetTransform=target.style.transform,sourceZ=source.style.zIndex,targetFilter=target.style.filter;
-  const pending=[];let total=0,blocked=0,stored=0;
-  const chain=ultimate?1:Math.max(1,Math.floor(attackChain)),variant=(chain-1)%3;
+  let travel=melee?reach:0;
+  const linked=!ultimate&&!!link&&combatV3Linked(side,key,melee),fromFront=linked&&!!combatV3Link[side];
+  // The striker already stands at the front: the reach measured from there is short, so keep the first cut's.
+  if(fromFront)travel=combatV3Link[side].travel;
+  // From the front the strike keeps the home pose it left from, not the forward one it stands in.
+  const sourceTransform=fromFront?combatV3Link[side].home:source.style.transform,targetTransform=target.style.transform,sourceZ=fromFront?combatV3Link[side].z:source.style.zIndex,targetFilter=target.style.filter;
+  const pending=[];let total=0,blocked=0,stored=0,stayFront=false;
+  // Linked cuts turn through falling, rising and level (their own step), whatever the board's chain count.
+  const chain=ultimate?1:Math.max(1,Math.floor(attackChain)),variant=linked?(link.step||0)%3:(chain-1)%3;
   const poses=[{windup:0,ready:1,launch:2,contact:3,recover:4,tilt:7,lift:-3},{windup:4,ready:2,launch:1,contact:2,recover:3,tilt:-10,lift:-15},{windup:1,ready:0,launch:2,contact:4,recover:3,tilt:12,lift:5}];
   const critical=chain>=3&&chain%3===0;
   const opening=poses[variant];raw*=attackChainMultiplier(chain)*(critical?1.5:1);
@@ -257,24 +278,35 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
   try{
     combatVoice(side,'attack');
     const preparationAction=ultimate?'cast':'attack';
+    if(fromFront){
+      // A linked cut: from where the last one ended, a turn of the body into the next direction (140 ms), no wind-up,
+      // no lunge, no charge or name again.
+      combatV3Link[side]=null;combatV3LinkStart(side,link.step||0);
+      combatV3Action(side,'attack',700);combatV3Frame(side,'attack',opening.ready);
+      await combatV3Pose(source,`translate(${direction*(travel-4)}px,${opening.lift*.5}px) rotate(${-direction*opening.tilt*.4}deg)`,200,'cubic-bezier(.35,0,.25,1)');
+      combatV3Frame(side,'attack',opening.launch);
+    }else{
     combatV3Action(side,preparationAction,ultimate?900:620);combatV3Frame(side,preparationAction,ultimate?0:opening.windup);
-    if(chain>1)popActorSkill(side,'ĐÒN ×'+chain+' · +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%',false,pending);
+    if(chain>1&&!linked)popActorSkill(side,'ĐÒN ×'+chain+' · +'+Math.round((attackChainMultiplier(chain)-1)*100)+'%',false,pending);
     if(pounce)popActorSkill(side,'Vồ tới',false,pending);
-    else if(!ultimate&&chain===1)combatV3Cue(side,key,false,hits,pending);
+    else if(!ultimate&&(chain===1||linked))combatV3Cue(side,key,false,hits,pending);
     combatV3Charge(side,key,ultimate,pending);
     // Wind-ups lean backwards only as far as the arena edge allows.
     const lean=combatOuterMotion(side,ultimate?13:8,melee?7:2),lean1=combatOuterMotion(side,ultimate?7:4,melee?3:1);
-    await combatV3Pose(source,`translate(${-direction*lean1.distance}px,0px) rotate(${-direction*lean1.tilt}deg)`,ultimate?290:150);
+    // A striker that links its cuts opens quicker too (Codex: first contact at about 0.3 s).
+    const quick=linked&&!ultimate;
+    await combatV3Pose(source,`translate(${-direction*lean1.distance}px,0px) rotate(${-direction*lean1.tilt}deg)`,ultimate?290:quick?70:150);
     combatV3Frame(side,preparationAction,ultimate?1:opening.ready);
-    await combatV3Pose(source,`translate(${-direction*lean.distance}px,${ultimate?-4:1}px) rotate(${-direction*lean.tilt}deg)`,ultimate?330:200);
-    if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.anticipationHold);
+    await combatV3Pose(source,`translate(${-direction*lean.distance}px,${ultimate?-4:1}px) rotate(${-direction*lean.tilt}deg)`,ultimate?330:quick?90:200);
+    if(!ultimate)await combatV3Wait(quick?60:COMBAT_V3_PACING.anticipationHold);
     combatV3Frame(side,preparationAction,ultimate?2:opening.launch);
     if(melee){
       combatV3Action(side,'attack',ultimate?1000:700);
       if(ultimate){combatV3Frame(side,'attack',0);await combatV3Wait(70);combatV3Frame(side,'attack',1);await combatV3Wait(100);}
       combatV3Frame(side,'attack',opening.launch);
-      await combatV3Pose(source,`translate(${direction*travel}px,${opening.lift}px) rotate(${direction*opening.tilt*.5}deg)`,ultimate?250:210,'cubic-bezier(.18,.65,.25,1)');
+      await combatV3Pose(source,`translate(${direction*travel}px,${opening.lift}px) rotate(${direction*opening.tilt*.5}deg)`,ultimate?250:quick?160:210,'cubic-bezier(.18,.65,.25,1)');
     }else await combatV3Wait(ultimate?130:75);
+    }
     for(let i=0;i<hits;i++){
       const last=i===hits-1,strong=ultimate&&last,boss=side==='enemy'&&state.boss;
       const strike=poses[(variant+i)%3],strikeIndex=(variant+i)%3;
@@ -290,7 +322,8 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
       const origin=combatV3Point(side),contact=combatV3Point(targetSide);
       const contactDelay=COMBAT_V3_STRIKES[pounce?'novice':key==='fire'&&side==='enemy'?'breath':key].contact;
       combatV3Whoosh(key,strong||boss,contactDelay);
-      if(melee||key==='lightning')combatV3AttackTrail(origin,contact,key,direction,contactDelay,pending);
+      // A linked cut starts at the front: no trail from the home spot across the arena.
+      if((melee||key==='lightning')&&!fromFront)combatV3AttackTrail(origin,contact,key,direction,contactDelay,pending);
       if(pounce)combatV3Slash({x:contact.x-direction*15,y:contact.y+5,width:contact.width},key,strikeIndex,false,direction,pending);
       else if(castAttackVisual(side,key,origin,contact,strikeIndex,pending)){}
       else if(key==='fire'&&side==='hero')combatV3Slash(contact,key,strikeIndex,ultimate,direction,pending);
@@ -323,24 +356,34 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
         const recoil=combatOuterMotion(targetSide,strong||boss?15:9,strong||boss?7:4);
         await combatV3Pose(target,`translate(${direction*recoil.distance}px,${strong||boss?-5:-2}px) rotate(${direction*recoil.tilt}deg)`,75);
       }
-      await combatV3Wait(strong?105:melee?75:65); // restrained hit stop, no full-screen strobe
+      await combatV3Wait(strong?105:linked&&link.next?.()?50:melee?75:65); // restrained hit stop, no full-screen strobe
       target.style.filter='';
       combatV3Frame(side,action,strike.recover);
-      await combatV3Pose(target,'translate(0px,0px) rotate(0deg)',last?300:melee?175:130);
-      combatV3Frame(side,action,5);
+      // A linked cut that another follows holds its recover pose (no rest frame), the foe springs back in 100 ms.
+      stayFront=last&&linked&&!!link.next?.();
+      await combatV3Pose(target,'translate(0px,0px) rotate(0deg)',stayFront?110:last?300:melee?175:130);
+      if(!stayFront)combatV3Frame(side,action,5);
       if(!evade)combatV3Action(targetSide,'idle');
       if(!last)await combatV3Wait(melee?85:55);
     }
-    await combatV3Pose(source,'translate(0px,0px) rotate(0deg)',ultimate?390:310);
-    if(!ultimate)await combatV3Wait(COMBAT_V3_PACING.recoveryHold);
+    if(stayFront){
+      // Stay at the front for the next cut; the sparks of this one finish on their own.
+      combatV3Link[side]={home:sourceTransform,z:sourceZ,travel};
+      return {amount:total,blocked,...(stored?{stored}:{} ),linked:true};
+    }
+    await combatV3Pose(source,'translate(0px,0px) rotate(0deg)',ultimate?390:linked?240:310);
+    if(!ultimate)await combatV3Wait(linked?40:COMBAT_V3_PACING.recoveryHold);
     await Promise.all(pending);
     return {amount:total,blocked,...(stored?{stored}:{} )};
   }finally{
-    await Promise.allSettled(pending);
-    source.style.transform=sourceTransform;target.style.transform=targetTransform;source.style.zIndex=sourceZ;target.style.filter=targetFilter;
-    source.classList.remove('combat-v3-acting');$('scene').classList.remove('combat-v3-active');
-    delete source.dataset.attackChain;delete source.dataset.attackStance;
-    combatV3Action(side,'idle');combatV3Action(targetSide,'idle');
+    target.style.transform=targetTransform;target.style.filter=targetFilter;combatV3Action(targetSide,'idle');
+    if(!stayFront){
+      await Promise.allSettled(pending);
+      source.style.transform=sourceTransform;source.style.zIndex=sourceZ;
+      source.classList.remove('combat-v3-acting');$('scene').classList.remove('combat-v3-active');
+      delete source.dataset.attackChain;delete source.dataset.attackStance;
+      combatV3Action(side,'idle');
+    }
   }
 };
 // plain: the gain only (pose and number), for a boss skill that has drawn its own effect (foe-skills.js).
