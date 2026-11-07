@@ -1,0 +1,10 @@
+Clean HD painterly 2D game VFX storyboard sheet, NOT pixel art, matching the colours of the attached character (Image 1: a moon-frost priestess with a bunny's ears, holding an upright staff topped with a large CRESCENT MOON in her right hand and an ICE FAN in her left; Image 2 shows her basic-attack pose: she stands still and casts). Show ONLY the effect, no character, no enemy.
+Each cell is the battle line: the caster stands just off the LEFT edge, the enemy stands at the RIGHT part of the cell (around 75% across, centre height).
+Subject: her staff shines moonlight upward and a volley of ICE SPEARS rains down from above onto the enemy
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row.
+Frame 1: a beam of silver moonlight rising from the LEFT edge up toward the top of the cell
+Frame 2: sharp ice spears appearing at the top of the cell above the RIGHT part, pointing down
+Frame 3: the ice spears stabbing down into the ground around the RIGHT part (75% across), with a frost burst and ice crystals spraying
+Frame 4: the spears shattering into ice fragments and frost glints
+Colours: icy pale blue, white, silver moonlight, a touch of lilac. Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a fox-girl knight of fire with a huge broadsword). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.
+Subject: the TRAIL of one HEAVY OVERHEAD BROADSWORD CHOP of fox-fire that follows the blade tip exactly: the sword is raised straight up above her head (TOP CENTRE of the cell) and chops straight DOWN in front of her, the tip sweeping forward and down to the BOTTOM on the RIGHT side. So the trail is a thick, wide, half-moon arc from the top centre, curving out to the RIGHT and down to the bottom right, BULGING toward the RIGHT (toward the enemy), white-gold core on the outer leading edge, golden-orange fox-fire body, crimson flames and fox-tail shaped flame curls on the inner side, with a fiery impact burst at the bottom where it lands.
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.
+Frame 1: the first part of the arc from the top, curving out to the right, a thick bright trail forming.
+Frame 2: the full thick half-moon chop trail from the top round to the bottom right, with a strong fiery impact burst at the bottom.
+Frame 3: the trail breaking apart into big flame curls and embers, the impact burst fading.
+Frame 4: fading embers and thin flame wisps.
+Powerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

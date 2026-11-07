@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a dark hooded shadow swordsman (black, grey and violet)). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.
+Subject: a single DRAW-CUT SWORD GLEAM going DIAGONALLY UPWARD: one long, very thin, razor-sharp line of bright white-violet light cutting from the LOWER-LEFT to the UPPER-RIGHT, with a dark shadow edge trailing it and tiny sharp sparks along it
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.
+Frame 1: the gleam just starting at the lower-left, a bright point
+Frame 2: the full long diagonal upward gleam, brightest, razor-thin
+Frame 3: the line splitting slightly and fading, small dark wisps
+Frame 4: a faint thin trace and a few sparks
+Powerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

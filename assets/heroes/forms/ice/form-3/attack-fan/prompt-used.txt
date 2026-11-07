@@ -1,0 +1,13 @@
+Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art, of the EXACT character in Image 1 (Yuki, the Snow-Moon Empress: rabbit ears, white braided hair, opal-white crystal armour, deep blue cape, a tall upright staff topped with a large blue CRESCENT MOON held in the hand on the RIGHT side of the image, and a radiant ice FAN held in the other hand in front of her body). Keep her identity, colours, face, armour, staff and fan exactly.
+Image 2 is the current sheet: EXACTLY the same layout (3 columns x 2 rows, six 512x512 cells, landscape 1536x1024), the same character size, the same position in every cell, the same feet line. Change only the arms and the fan as described.
+THE BASIC ATTACK: she casts a FAN GUST at the enemy on the right. Facing RIGHT, three-quarter view.
+THE STAFF HAND (on the right side of the image) holds the crescent staff upright with ONE hand in EVERY frame, exactly as in Image 1: same grip, the staff perfectly still and vertical. There is only ever ONE hand on the staff; no second hand on the staff in any frame.
+THE FAN HAND does the attack:
+Frame 1: ready, exactly like Image 1 (fan held in front of her body).
+Frame 2: she draws the fan back toward her opposite shoulder, fan half closed, body coiling slightly.
+Frame 3: she sweeps the fan forward and open, mid-swing in front of her chest.
+Frame 4: full release: the fan wide open, arm extended forward toward the RIGHT (toward the enemy), body leaning slightly into it.
+Frame 5: the fan coming back toward her body.
+Frame 6: back to the ready pose of Frame 1.
+No effects, no wind, no snowflakes, no glow: body, staff and fan only. Nothing crosses a cell edge.
+Uniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.

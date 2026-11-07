@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-06T21:38:59.872649+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\yuki-f2.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a bunny-eared moon-frost mage with a crescent-moon staff). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.\nSubject: a MOON-FROST BURST: a glowing crescent moon of frost crashing into the centre and bursting into a ring of sharp ice shards and silver moonlight rays, pale blue and white with soft lilac accents\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.\nFrame 1: a small glowing frost crescent moon arriving at the centre\nFrame 2: the full burst: a ring of sharp ice shards and moonlight rays exploding outward around the crescent\nFrame 3: the shards flying out and the moonlight fading\nFrame 4: drifting ice glints and a faint crescent trace\nPowerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 2x2 grid of four moon-frost effect frames on a flat magenta background, matching the prompt's layout, progression and colour scheme. The top-right burst comes close to the cell edges but is not clearly cut off, and there is no text, border or extra figure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000613
+  }
+}

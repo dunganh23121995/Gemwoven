@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-06T21:58:33.105021+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\mika-f1.png",
+    "D:\\Project\\Gemwoven\\assets\\reimagined\\heroes\\fire\\attack.webp"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a young fox-girl swordswoman of fire with a katana). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.\nSubject: the TRAIL of one fast blazing KATANA SWING that follows the blade tip exactly: the sword starts raised high behind her head (upper LEFT of the cell), sweeps OVER the top and FORWARD, passes level at chest height on the RIGHT side, and finishes LOW in front on the lower RIGHT. So the trail is a big curved arc running from the upper-left, over the top, around the right side and down to the lower-right, BULGING OUTWARD toward the upper-right (like the outer rim of a wheel turning clockwise), thin and sharp, white-hot leading edge on the outside of the curve, golden-orange flame body, crimson flame tongues and embers peeling off the inner side.\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.\nFrame 1: only the first part of the arc, from the upper-left over the top, its leading end bright.\nFrame 2: the full blazing arc from the upper-left, over the top, round to the lower-right, brightest at its lower-right end where it strikes.\nFrame 3: the arc splitting into flame tongues and embers.\nFrame 4: a faint thin trace of the arc and drifting embers.\nPowerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 2x2 grid of katana-trail arcs on a flat #FF00FF background with no text, borders, or character. The four cells show the progression the prompt asks for. The upper-right arc comes close to the right edge of its cell, but it is not cropped, so this is at most a minor margin issue.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000729
+  }
+}

@@ -562,6 +562,8 @@ extensions += '\n'+(root/'src/hero-forms-combat.js').read_text(encoding='utf-8')
 # Each hero's own form staging (hero-kits.js), after the shared form wrappers it builds on.
 hero_kit_files=['forms-mika','forms-yuki','forms-nori','forms-lumi','forms-tan','forms-hiro','forms-noct']
 extensions += '\n'+'\n'.join((root/f'src/{name}.js').read_text(encoding='utf-8') for name in hero_kit_files)
+# The redrawn basic-attack hits (src/basic-fx.js, owner 07/11): after the hero kits whose effects it replaces.
+extensions += '\n'+(root/'src/basic-fx.js').read_text(encoding='utf-8')
 css += '\n'+'\n'.join((root/f'src/{name}.css').read_text(encoding='utf-8') for name in hero_kit_files)
 # Board control (ice, guard, one ultimate a turn, Biến Thân board effects): after every layer it wraps (src/board-control.js).
 extensions += '\n'+(root/'src/board-control.js').read_text(encoding='utf-8')

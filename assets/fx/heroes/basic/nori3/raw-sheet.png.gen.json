@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-06T21:39:12.954385+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\nori-f3.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a towering jade-and-gold earth lord with a massive jade hammer). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.\nSubject: a MASSIVE GOLDEN-JADE EARTH SLAM: a huge hammer impact at the bottom centre: a tall burst of golden and jade light, a wide double shockwave ring, the ground shattering into big rock slabs that jut up, jade crystal shards and rocks flying high (NO plants, NO leaves, NO trees, NO roots)\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.\nFrame 1: a huge bright golden-jade flash at the bottom centre, ground splitting\nFrame 2: the full slam: tall light burst, double shockwave, rock slabs jutting up, crystals flying\nFrame 3: slabs crumbling, debris raining down, light fading\nFrame 4: dust settling with a few golden-jade sparks\nPowerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 2x2 grid of slam effect frames on a flat magenta background, matching the requested layout. No character, text, watermark, or plants appear, and the effects stay within their cells. The main drift is that the burst scale varies between cells, which is a minor instruction deviation rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000675
+  }
+}

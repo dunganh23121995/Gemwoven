@@ -1,0 +1,19 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T01:57:01Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\lumi-f1.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\lumi1\\ref-star.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\lumi1\\ref-starpop.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, in EXACTLY the same painting style, colours and finish as Image 2 and Image 3 (the four-star form's star bolt and star burst of the same character, a young lightning witch, Image 1). This is the simpler ONE-STAR version of her basic attack: NO star shapes and NO rings (those belong to her higher forms).\nSubject: the PROJECTILE: a small crackling ELECTRIC SPARK ORB flying to the RIGHT: a round white-gold glowing core, wrapped in thin crackling violet and cyan lightning threads, with a short tapering golden spark trail to the LEFT. Four frames of the same orb in flight, its crackles flickering (a loop): the orb centred, filling about 45% of the cell width with its trail.\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. Same centre point and scale in every cell. Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a wide magenta margin inside every cell edge, nothing cut off.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a clean 2x2 grid of four orb-in-flight frames on flat magenta, with no text, borders, or cut-off elements. The orbs have no star shapes or rings, matching the one-star prompt, and the gold core, lightning crackle and left-pointing trail are consistent across frames. No objective defects found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000522
+  }
+}

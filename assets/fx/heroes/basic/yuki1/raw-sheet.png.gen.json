@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-06T21:38:55.684507+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\yuki-f1.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a young bunny-eared ice mage girl with a frost staff). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.\nSubject: a FROST LANCE IMPACT: a sharp icy spear-tip hits the centre and the ice SHATTERS into a star-shaped explosion of jagged pale-blue ice crystals and frost shards flying outward, a thin frost ring, small snowflake sparkles\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.\nFrame 1: a sharp ice spear-tip arriving from the left with a bright point at the centre\nFrame 2: the full shatter: jagged ice crystals bursting outward in a star, frost ring\nFrame 3: ice shards flying further out and breaking into small pieces\nFrame 4: a few small falling ice glints and snowflakes\nPowerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 2x2 grid of ice-shatter frames on a flat magenta background, matching the requested layout, with no visible text, borders, characters, or cut-off effects. Minor drift: the effect's scale and centre vary between cells, which the prompt asked to keep constant, but this is stylistic rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000674
+  }
+}

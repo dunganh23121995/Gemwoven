@@ -1,0 +1,19 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T01:57:24Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\lumi-f1.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\lumi1\\ref-star.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\lumi1\\ref-starpop.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, in EXACTLY the same painting style, colours and finish as Image 2 and Image 3 (the four-star form's star bolt and star burst of the same character, a young lightning witch, Image 1). This is the simpler ONE-STAR version of her basic attack: NO star shapes and NO rings (those belong to her higher forms).\nSubject: the HIT: the spark orb bursting on the enemy: a quick electric burst of short jagged violet and cyan lightning branches and golden sparks around a bright white-gold core, smaller and simpler than Image 3.\nFrame 1: a small bright white-gold flash at the centre.\nFrame 2: the full burst: short jagged lightning branches and golden sparks radiating out.\nFrame 3: the branches breaking up into flying sparks.\nFrame 4: a few fading sparks.\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. Same centre point and scale in every cell. Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a wide magenta margin inside every cell edge, nothing cut off.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 2x2 grid of four burst frames on flat #FF00FF magenta, matching the prompt. Frame 1 is a small flash, frame 2 a full lightning-and-spark burst, frame 3 breaking into sparks, and frame 4 a few fading sparks. No stars, rings, text, borders or cut-off elements appear, and each frame sits near the centre of its cell.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00065
+  }
+}

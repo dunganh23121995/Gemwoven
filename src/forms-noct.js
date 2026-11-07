@@ -12,11 +12,13 @@ function noctMoonForm(){return state.key==='shadow'&&combatHeroForm('shadow')===
 // One straight samurai cut (lines.webp, four drawings, one per row) laid across the foe; it is drawn
 // along its length in a flash and stays until `hold` ends. Five cuts cross the foe at these angles.
 const NOCT_CUT_ANGLES=[-30,22,-6,48,-56];
-function noctCut(point,index,direction,pending,{length=null,hold=0,shift=[0,0],angle=null}={}){
+function noctCut(point,index,direction,pending,{length=null,hold=0,shift=[0,0],angle=null,thick=1}={}){
   const sheet=ART.heroFx?.shadow?.lines;if(!sheet||reduced)return null;
   const len=length||Math.min(230,point.width*1.5),variant=index%sheet.count;angle??=NOCT_CUT_ANGLES[index%NOCT_CUT_ANGLES.length]*direction;
   const node=document.createElement('span');node.className='noct-cut';node.setAttribute('aria-hidden','true');
-  node.style.cssText=`left:${point.x+shift[0]}px;top:${point.y+shift[1]}px;width:${len}px;height:${len*sheet.height/sheet.count/sheet.width}px;background-image:url('${sheet.src}');background-size:100% ${sheet.count*100}%;background-position:0 ${variant/(sheet.count-1)*100}%`;
+  node.style.cssText=`left:${point.x+shift[0]}px;top:${point.y+shift[1]}px;width:${len}px;height:${len*sheet.height/sheet.count/sheet.width*thick}px;background-image:url('${sheet.src}');background-size:100% ${sheet.count*100}%;background-position:0 ${variant/(sheet.count-1)*100}%`;
+  // A heavier line (the moon form's draw-cut, owner 07/11 + Codex: readable at play size): thicker and brighter.
+  if(thick>1)node.style.filter='brightness(1.35) contrast(1.15) drop-shadow(0 0 5px #d8c8ffcc)';
   $('combatEffects').append(node);
   // animate() cancels its animation when done: the end state is set inline first.
   node.style.transform=`translate(-50%,-50%) rotate(${angle}deg)`;node.style.opacity='1';
@@ -179,7 +181,7 @@ async function noctDrawCut(raw,{hits=1,damageLedger=null,attackChain=1}={}){
     // The draw and the cut, in one motion.
     setSpriteFrame('hero','attack',2);playNoctSound('draw',{volume:.2,pan:.3});await wait(50);
     setSpriteFrame('hero','attack',3);combatV3Whoosh('shadow',critical,60);
-    const target=combatV3Point('enemy');noctCut(target,critical?1:0,1,pending,{length:Math.min(260,target.width*1.7),angle:critical?-8:-4});
+    const target=combatV3Point('enemy');noctCut(target,critical?1:0,1,pending,{length:Math.min(260,target.width*1.7),angle:critical?-42:-38,thick:1.3});   // owner 07/11: the gleam cuts diagonally upward
     for(let i=0;i<hits;i++){const result=bladeContact(raw/hits,ledger,i,1,critical,pending);amount+=result.amount;blocked+=result.blocked;if(i<hits-1)await wait(40);}
     await wait(130);setSpriteFrame('hero','attack',4);await wait(120);
     // Back to his place, sheathing.

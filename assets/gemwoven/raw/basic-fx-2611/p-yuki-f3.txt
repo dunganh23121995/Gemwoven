@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a moon-frost priestess with a crescent-moon halberd). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.
+Subject: a SWEEPING MOONLIT ICE SLASH: a broad crescent cut of icy moonlight sweeping diagonally from upper-left to lower-right, with jagged ice crystals erupting along the cut and a frost burst at its centre, pale blue, white and silver
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.
+Frame 1: the crescent cut forming, a thin bright moonlit line
+Frame 2: the full broad icy crescent with ice crystals erupting along it
+Frame 3: ice crystals shattering off the fading cut
+Frame 4: drifting ice glints and a faint silver trace
+Powerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

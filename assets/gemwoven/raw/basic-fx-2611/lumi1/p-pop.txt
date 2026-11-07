@@ -1,0 +1,8 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, in EXACTLY the same painting style, colours and finish as Image 2 and Image 3 (the four-star form's star bolt and star burst of the same character, a young lightning witch, Image 1). This is the simpler ONE-STAR version of her basic attack: NO star shapes and NO rings (those belong to her higher forms).
+Subject: the HIT: the spark orb bursting on the enemy: a quick electric burst of short jagged violet and cyan lightning branches and golden sparks around a bright white-gold core, smaller and simpler than Image 3.
+Frame 1: a small bright white-gold flash at the centre.
+Frame 2: the full burst: short jagged lightning branches and golden sparks radiating out.
+Frame 3: the branches breaking up into flying sparks.
+Frame 4: a few fading sparks.
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. Same centre point and scale in every cell. Opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a wide magenta margin inside every cell edge, nothing cut off.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-06T21:39:13.102928+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\refs\\lumi-f1.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a young witch girl of lightning with a staff (purple and gold)). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.\nSubject: a LIGHTNING STRIKE: a thick jagged bolt of bright lightning crashing down from the top onto the centre, white-hot core, electric yellow and violet edges, with an electric burst of crackling branches and sparks where it hits\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.\nFrame 1: a thin bright bolt just striking down\nFrame 2: the full thick jagged bolt with a big electric burst of branching arcs and sparks at the hit point\nFrame 3: the bolt fading, crackling arcs breaking apart\nFrame 4: a few small sparks and a faint glow line\nPowerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "cut_off",
+        "detail": "In the top-right cell (frame 2), the thick bolt runs right up to the top edge of the image with no magenta margin, which the prompt asked for. The bolt's origin at the top is ambiguous, so this may be intended."
+      }
+    ],
+    "summary": "The candidate is a correct 2x2 grid of four lightning frames on flat magenta, with the centre point held consistently and no text or extra figures. The only possible defect is frame 2's bolt touching the top cell edge, which is a minor margin deviation rather than a clear fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000773
+  }
+}

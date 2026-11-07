@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, an antlered jade earth knight with a warhammer and a shield). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.
+Subject: a JADE EARTH SHOCKWAVE: a powerful hammer smash at the bottom centre releasing a jade-green energy shockwave, radial glowing jade cracks in the ground, rock chunks and jade crystal shards erupting upward, ochre dust (NO plants, NO leaves, NO trees, NO roots)
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.
+Frame 1: impact flash with jade light at the bottom centre, ground cracking
+Frame 2: the full shockwave: a jade energy ring, glowing cracks, rocks and jade shards blasting upward
+Frame 3: debris falling, jade light fading, dust spreading
+Frame 4: settling dust and a few jade glints
+Powerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.

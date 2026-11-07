@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-07T00:15:51.309033+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\ice\\form-3\\master.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\ice\\form-3\\attack-fan\\template.png"
+  ],
+  "prompt": "Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art, of the EXACT character in Image 1 (Yuki, the Snow-Moon Empress: rabbit ears, white braided hair, opal-white crystal armour, deep blue cape, a tall upright staff topped with a large blue CRESCENT MOON held in the hand on the RIGHT side of the image, and a radiant ice FAN held in the other hand in front of her body). Keep her identity, colours, face, armour, staff and fan exactly.\nImage 2 is the current sheet: EXACTLY the same layout (3 columns x 2 rows, six 512x512 cells, landscape 1536x1024), the same character size, the same position in every cell, the same feet line. Change only the arms and the fan as described.\nTHE BASIC ATTACK: she casts a FAN GUST at the enemy on the right. Facing RIGHT, three-quarter view.\nTHE STAFF HAND (on the right side of the image) holds the crescent staff upright with ONE hand in EVERY frame, exactly as in Image 1: same grip, the staff perfectly still and vertical. There is only ever ONE hand on the staff; no second hand on the staff in any frame.\nTHE FAN HAND does the attack:\nFrame 1: ready, exactly like Image 1 (fan held in front of her body).\nFrame 2: she draws the fan back toward her opposite shoulder, fan half closed, body coiling slightly.\nFrame 3: she sweeps the fan forward and open, mid-swing in front of her chest.\nFrame 4: full release: the fan wide open, arm extended forward toward the RIGHT (toward the enemy), body leaning slightly into it.\nFrame 5: the fan coming back toward her body.\nFrame 6: back to the ready pose of Frame 1.\nNo effects, no wind, no snowflakes, no glow: body, staff and fan only. Nothing crosses a cell edge.\nUniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt requires a flat #FF00FF magenta key background, but the candidate background is plain white, so it cannot be chroma-keyed as specified."
+      }
+    ],
+    "summary": "The sheet keeps the 3x2 layout and the character design, but the background is white instead of the required flat magenta key colour, which makes it unusable as raw material without redrawing.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000605
+  }
+}

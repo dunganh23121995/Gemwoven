@@ -1,0 +1,9 @@
+Clean HD painterly 2D game VFX sprite sheet, NOT pixel art, matching the colours and theme of the attached character (Image 1, a young bunny-eared ice mage girl with a frost staff). This is ONLY the hit effect of the character's basic attack: no character, no weapon, no hand, no enemy.
+Subject: a FROST LANCE IMPACT: a sharp icy spear-tip hits the centre and the ice SHATTERS into a star-shaped explosion of jagged pale-blue ice crystals and frost shards flying outward, a thin frost ring, small snowflake sparkles
+Layout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row. The effect keeps the same centre point and scale in every cell, filling about 80% of the cell.
+Frame 1: a sharp ice spear-tip arriving from the left with a bright point at the centre
+Frame 2: the full shatter: jagged ice crystals bursting outward in a star, frost ring
+Frame 3: ice shards flying further out and breaking into small pieces
+Frame 4: a few small falling ice glints and snowflakes
+Powerful and impactful, opaque painted shapes with crisp edges, no soft haze, no glow halo spreading into the background, no smoke. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.
+Uniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.
