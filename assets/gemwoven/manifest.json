@@ -16402,7 +16402,7 @@
     },
     "screen": "shop",
     "textless": true,
-    "source": "assets/gemwoven/npc/shopkeeper/proc/raw-sheet-clean.png",
+    "source": "assets/gemwoven/npc/shopkeeper/proc/raw-sheet.png",
     "promptFiles": [
       "assets/gemwoven/npc/shopkeeper/girl-prompt.txt",
       "assets/gemwoven/npc/shopkeeper/rig/show/parts-prompt.txt"
@@ -16504,7 +16504,7 @@
     },
     "screen": "shop",
     "textless": true,
-    "source": "assets/gemwoven/npc/bunny/proc/raw-sheet-clean.png",
+    "source": "assets/gemwoven/npc/bunny/proc/raw-sheet.png",
     "promptFiles": [
       "assets/gemwoven/npc/bunny/bunny-prompt.txt",
       "assets/gemwoven/npc/bunny/rig/show/parts-prompt.txt"
@@ -17004,7 +17004,7 @@
     },
     "screen": "inventory",
     "textless": true,
-    "source": "assets/gemwoven/npc/librarian/proc/raw-sheet-clean.png",
+    "source": "assets/gemwoven/npc/librarian/proc/raw-sheet.png",
     "promptFiles": [
       "assets/gemwoven/npc/librarian/girl-prompt.txt",
       "assets/gemwoven/npc/librarian/rig/show/parts-prompt.txt"

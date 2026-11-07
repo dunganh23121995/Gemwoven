@@ -100,7 +100,7 @@
     html+=`<b class="fg2-caption" style="${box(bx(t0)+bs(t2-t0)/2-100,by(t1)-20,200,34)}">Túi ngọc</b><div class="fg2-gembag" style="${part(t0+10,t1+8,t2-10,t3-8)}">${bag.length?bag.map(([k,c])=>{const d=M.gemParse(k);return `<button type="button" data-action="gem:detail" data-gem="${k}" aria-label="${esc(M.GEMS[d.type].name)} ${d.level}"><img src="assets/gemwoven/gems/gem-${k}.webp" alt=""><u>${ROMAN[d.level]}</u><b>×${c}</b></button>`;}).join(''):'<p>Chưa có ngọc · Trùm Vô Tận tầng 20+, Sân Thử Luyện</p>'}</div>`;
     return html;
   }
-  // Nâng Phẩm (Claude + Codex 04/11, mockups assets/gemwoven/raw/forge-rarity/mockup-1..3.png, 8,6 / 8,8 / 8,7): the
+  // Nâng Phẩm (Claude + Codex 04/11, mockups assets/gemwoven/raw/forge-rarity/mockup-1.png, mockup-2.png, mockup-3.png, 8,6 / 8,8 / 8,7): the
   // worn piece goes one rarity up and always succeeds, so no percentage anywhere. Both recesses carry the same +N and
   // the same gems in the same places; the new rarity's empty sockets glow with "Mới". The shelf holds the optional
   // Đồ hiến: three drawn sockets for 0–3 spare pieces of the same rarity (chosen by the player, never pre-filled), the

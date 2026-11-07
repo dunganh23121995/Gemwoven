@@ -1,4 +1,4 @@
-/* Drawn UI kit on the remaining panel screens (Codex mockups assets/gemwoven/raw/ui-kit/panels/mockup-A/B/C-raw.png):
+/* Drawn UI kit on the remaining panel screens (Codex mockups assets/gemwoven/raw/ui-kit/panels/mockup-A-raw.png, mockup-B-raw.png, mockup-C-raw.png):
  * Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận, the Quán Bia quest board and the shared popups. The markup comes from
  * progression-ui.js, growth-ui.js, treasure-ui.js, hero-hall.js and art-screens.js; this module only regroups it after
  * mount (icons beside numbers, reward text as reward sockets, long notes folded behind ⓘ) and ui-kit-panels.css dresses

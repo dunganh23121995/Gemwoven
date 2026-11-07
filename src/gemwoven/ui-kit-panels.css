@@ -1,5 +1,5 @@
 /* Drawn UI kit on Thành Tích, Sự Kiện, Tích Lũy, Trùm Vô Tận, the Quán Bia quest board and the shared popups
- * (ui-kit-panels.js; mockups assets/gemwoven/raw/ui-kit/panels/mockup-A/B/C-raw.png). Panel sizes are stage units
+ * (ui-kit-panels.js; mockups assets/gemwoven/raw/ui-kit/panels/mockup-A-raw.png, mockup-B-raw.png, mockup-C-raw.png). Panel sizes are stage units
  * (941 wide ≈ 390 CSS px on a phone); popups are CSS px. Pieces come from assets/gemwoven/ui-kit via --kit-* vars. */
 
 /* ----- Shared pieces on the panels ----- */

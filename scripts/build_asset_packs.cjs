@@ -9,10 +9,20 @@ const fs=require('node:fs'),path=require('node:path');
 const ROOT=path.resolve(__dirname,'..'),W=require(path.join(ROOT,'src/gemwoven/world.js'));
 const FILE=/assets\/[A-Za-z0-9_.\/-]+\.(?:webp|png|jpg|ogg|wav|mp3|json|woff2)/g;
 // Every file a build or source references, plus the hub manifest.
-const files=new Set();
+const files=new Set(),runtime=[];
 for(const rel of ['Game.html','Gemwoven.html',...fs.readdirSync(path.join(ROOT,'src')).filter(f=>f.endsWith('.js')).map(f=>'src/'+f),...fs.readdirSync(path.join(ROOT,'src/gemwoven')).filter(f=>f.endsWith('.js')).map(f=>'src/gemwoven/'+f)]){
   const text=fs.readFileSync(path.join(ROOT,rel),'utf8');for(const m of text.matchAll(FILE))files.add(m[0]);
+  if(rel.startsWith('src/'))runtime.push(text);
 }
+// Files the runtime names as it runs never appear whole in a source: a template (`assets/gemwoven/gems/gem-${k}.webp`) or a
+// folder joined with a name ('assets/combat-status/'+id). Every tracked file that fits one ships too.
+const tracked=require('node:child_process').execSync('git ls-files assets',{cwd:ROOT,encoding:'utf8',maxBuffer:1<<26}).split('\n').filter(f=>FILE.test(f)&&(FILE.lastIndex=0,true));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),named=[];
+for(const text of runtime){
+  for(const m of text.matchAll(/assets\/[A-Za-z0-9_.\/-]*\$\{[^}]+\}[A-Za-z0-9_.\/${}-]*/g))named.push(new RegExp('^'+m[0].split(/\$\{[^}]+\}/).map(esc).join('[^/]*')+'$'));
+  for(const m of text.matchAll(/['"`](assets\/[A-Za-z0-9_.\/-]*\/)['"`]/g))named.push(new RegExp('^'+esc(m[1])+'[^/]+$'));
+}
+for(const file of tracked)if(named.some(r=>r.test(file)))files.add(file);
 const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/gemwoven/manifest.json'),'utf8'));
 // Only fields the game loads: source art and prompts (source, sources, prompt*, raw*) never ship.
 const SKIP=/^(source|sources|prompt|prompts|promptFile|promptFiles|raw|rawSheet|reference|references)$/;
