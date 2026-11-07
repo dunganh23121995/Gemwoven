@@ -98,26 +98,16 @@ if (root/'assets/audio/boss-music-manifest.json').exists():music_manifest.update
 # Boss themes of chapters folded into another chapter (same boss) are no longer played.
 for retired in ['pine','obsidian','bamboo','coast','dream','astral']:music_manifest.pop('boss-'+retired,None)
 art['music']={key:{'src':sound('assets/audio/'+value['file']),'duration':value['duration'],'title':value['title']} for key,value in music_manifest.items()}
+# The four element heroes' sheets come from the reimagined main cast below (their old assets/heroes/<key> sheets are gone);
+# their places are taken here so ART.heroes keeps its order (fire, earth, ice, lightning, shadow).
 for key in keys:
-    art['heroes'][key] = {
-        action: atlas(f'assets/heroes/{key}/{action}.webp', 2 if action == 'idle' else 3,
-                      2, 4 if action == 'idle' else 6, f'assets/masters/{key}-transparent.png')
-        for action in ['idle', 'attack', 'cast']
-    }
+    art['heroes'][key] = {}
     art['enemies'][key] = {
         action: atlas(f'assets/monsters/{key}/{action}.webp', 2 if action == 'idle' else 3,
                       1 if action == 'idle' else 2, 2 if action == 'idle' else 6,
                       f'assets/masters/{key}-transparent.png')
         for action in ['idle', 'attack']
     }
-    run = atlas(f'assets/heroes/{key}/run.webp', 3, 2, 6, f'assets/masters/{key}-transparent.png')
-    run['heads'] = []
-    for index in range(6):
-        frame = Image.open(root / f'assets/heroes/{key}/run/frame-{index:02}.png').convert('RGBA')
-        box = frame.getchannel('A').getbbox()
-        top = [(x, y) for y in range(box[1], box[1]+10) for x in range(256) if frame.getpixel((x,y))[3]>128]
-        run['heads'].append([round(sum(p[0] for p in top)/max(1,len(top))), box[1]])
-    art['heroes'][key]['run'] = run
 shadow_heads = {
     'idle': [[140,88]]*8,  # idle-cloth.webp: 8 stabilized cloth frames (package_cloth_idle.py)
     'attack': [[140,89],[156,113],[140,89],[112,90],[134,105],[140,89]],
@@ -129,8 +119,6 @@ art['heroes']['shadow'] = {}
 for action, heads in shadow_heads.items():
     art['heroes']['shadow'][action] = {'src':image(f'assets/heroes/shadow/{"idle-cloth" if action=="idle" else action}.webp'),
         'cols':2 if action=='idle' else 3,'rows':4 if action=='idle' else 2,'count':len(heads),'heads':heads,**({'frameDuration':200} if action=='idle' else {})}
-art['heroes']['earth']['smash'] = atlas('assets/heroes/earth/smash.webp',3,2,6,'assets/masters/earth-transparent.png')
-art['heroes']['earth']['smash']['heads'] = [[144,84],[132,79],[119,86],[140,89],[126,94],[127,87]]
 # Reimagined main cast: every action must have passed the shared-scale pipeline.
 art['bosses'] = {}
 for family in ['heroes', 'bosses']:
