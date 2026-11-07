@@ -3839,6 +3839,7 @@
     "assets/fx/heroes/basic/lumi1pop.webp",
     "assets/fx/heroes/basic/mika1.webp",
     "assets/fx/heroes/basic/mika2.webp",
+    "assets/fx/heroes/basic/noct3.webp",
     "assets/fx/heroes/basic/nori1.webp",
     "assets/fx/heroes/basic/nori2.webp",
     "assets/fx/heroes/basic/nori3.webp",
@@ -4807,7 +4808,7 @@
     "assets/special-fx/sparkle.webp",
     "assets/special-fx/vortex.webp"
    ],
-   "bytes": 170084060
+   "bytes": 169889578
   },
   {
    "id": "hero-earth-f1",
@@ -5354,7 +5355,7 @@
     "assets/heroes/shadow/idle/frame-02.png",
     "assets/heroes/shadow/idle/frame-03.png"
    ],
-   "bytes": 5206794
+   "bytes": 4903512
   },
   {
    "id": "hero-shadow-f2",
@@ -5379,7 +5380,7 @@
     "assets/heroes/forms/shadow/form-2/showcase/slashtear.webp",
     "assets/heroes/forms/shadow/form-2/skill.webp"
    ],
-   "bytes": 7434104
+   "bytes": 7294618
   },
   {
    "id": "hero-shadow-f3",
@@ -5403,7 +5404,7 @@
     "assets/heroes/forms/shadow/form-3/showcase/rift.webp",
     "assets/heroes/forms/shadow/form-3/showcase/scythespin.webp"
    ],
-   "bytes": 7770306
+   "bytes": 7437677
   },
   {
    "id": "summon",

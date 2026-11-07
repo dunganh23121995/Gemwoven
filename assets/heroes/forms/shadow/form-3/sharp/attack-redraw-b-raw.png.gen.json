@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T15:30:10Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-3\\sharp\\attack-redraw-b-ref.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-3\\sharp\\attack-redraw-rest.png"
+  ],
+  "prompt": "Image 1 is a rough paste-up of two animation frames of a grim reaper's scythe attack, side by side (two equal square cells in one row). In each cell the SCYTHE is exactly right and must stay exactly where it is: the same position, the same angle, the same length, the same straight shaft, and the blade at the same angle to the shaft. The body is rough: holes where an old weapon was cut out, arms that do not hold the shaft.\nRedraw both cells as clean finished frames on a wide landscape canvas, two equal square cells in one row: keep each scythe exactly as laid in Image 1, and draw his two black-gloved hands firmly wrapped round its shaft (one hand where the shaft crosses his chest or shoulder, the other a little further along the shaft toward its butt end), with the arms joined naturally to his shoulders; fill the holes in the cloak and hood. Where the shaft passes his hood, it passes BEHIND the hood. He holds ONE scythe only: remove any leftover dark stick or fragment that is not part of it.\nLEFT cell, the STRIKE: he leans into the swing, the shaft rising forward from his hands to the head at the upper right, the blade coming down in front of him onto the enemy.\nRIGHT cell, the PULL THROUGH: crouched lower, the shaft level in front of his chest, the blade hanging down at its right end and hooking back toward his feet, the cloak swept back by the swing.\nImage 2 is the same character drawn crisply in his resting pose: render the frames the way Image 2 is rendered and keep its scythe design exactly.\nKeep the character exactly as in Image 2: the black tattered hooded cloak with deep-blue cloak tips, the black hood with a dark face and two glowing cyan eyes, black gloves and boots, the long straight dark scythe shaft with its silver spiked head, and the WHITE silver crescent blade. Chibi proportions, crisp clean dark outlines, sharp detail, the same rendering as Image 2. No violet or purple anywhere.\nThe character faces RIGHT (the enemy is off to the right). In every cell the body keeps the size, the place and the feet line it has in Image 1, both boots on the ground.\nBackground 100% solid flat green #00FF00, no gradients, no text, no labels, no borders between cells, no shadow on the ground, no slash trail or effect (the body sheet only). Nothing crosses a cell edge; keep a margin of green around everything.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Two cells on a flat #00FF00 background, figures and scythes match the reference design, no cropping, no stray text, and both figures have hands on the shaft. The only uncertain point is whether the shaft passes behind the hood in the left frame, which is too minor to fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000642
+  }
+}

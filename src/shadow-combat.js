@@ -42,6 +42,14 @@ function reaperCut(point,index,direction,pending,size=Math.min(250,point.width*1
   node.dataset.cutDirection=direction>0?'right':'left';node.dataset.cutIndex=index;
   pending.push(animate(node,[{opacity:0,transform:`translate(-50%,-50%) rotate(${angle-55*direction}deg) scaleX(${direction})`},{opacity:1,transform:`translate(-50%,-50%) rotate(${angle}deg) scaleX(${direction})`,offset:.32},{opacity:.75,offset:.6},{opacity:0,transform:`translate(-50%,-50%) rotate(${angle+25*direction}deg) scaleX(${direction*1.08})`}],{duration:260,easing:'cubic-bezier(.2,.7,.3,1)'}).finally(()=>node.remove()));
 }
+// The basic reap's drawn crescent (assets/fx/heroes/basic/noct3, basic-fx.js plays it); false keeps the vector cut.
+function reaperBasicCut(pending){
+  const sheet=ART.heroFx?.basic?.noct3;if(!sheet||reduced||typeof basicFxPlay!=='function')return false;
+  // the crescent's strike end (lower right of the drawing, .78/.88) on the foe's front low, where his hooked blade lands;
+  // its arc then starts over his own head, as the swing does
+  const foe=mikaFoeBody(),side=Math.min(Math.max(foe.height*.95,115),190),hit={x:foe.left+foe.width*.28,y:foe.bottom-foe.height*.1};
+  basicFxPlay(basicFxNode('noct3',hit.x+(.5-.78)*side,hit.y+(.5-.88)*side,side,side),sheet,0,pending);return true;
+}
 // Hắc Liêm Đoạt Hồn finale: a pale soul is torn out of the target and drawn into the reaper,
 // then one giant crescent falls across it. "ĐOẠT HỒN" marks the execute bonus (target under 30% HP).
 function reaperHarvest(pending,executed){
@@ -77,8 +85,11 @@ function bladeContact(raw,ledger,index,direction,critical,pending){
 }
 async function shadowAttack(raw,{hits=1,damageLedger=null,attackChain=1}={}){
   const root=actor('hero'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
-  const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,to.x-from.x-from.width*.25);
-  const chain=Math.max(1,Math.floor(attackChain)),critical=chain>=3&&chain%3===0,reaper=reaperForm();
+  const from=combatV3Point('hero'),to=combatV3Point('enemy'),reaper=reaperForm();
+  // The scythe reaches far: six-star Noct stops a scythe's length short, so the hooked blade lands on the foe's front
+  // instead of his body walking into it (owner 07/11).
+  const travel=Math.max(0,reaper?mikaFoeBody().left+mikaFoeBody().width*.2-from.x-from.width*.33:to.x-from.x-from.width*.25);
+  const chain=Math.max(1,Math.floor(attackChain)),critical=chain>=3&&chain%3===0;
   raw*=attackChainMultiplier(chain)*(critical?1.5:1);hits=Math.max(1,Math.min(8,Math.round(hits)||1));
   const ledger=damageLedger||{raw:0,applied:0};let amount=0,blocked=0;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.attackChain=chain;root.dataset.attackStance='shadow-draw';
@@ -87,10 +98,17 @@ async function shadowAttack(raw,{hits=1,damageLedger=null,attackChain=1}={}){
     if(reaper)reaperDashFrame(1);else setSpriteFrame('hero','cast',3);shadowTransitEchoes(0,travel,pending);playNoctSound('dash',{volume:.22,pan:.28});
     await animate(root,[{transform:old||'none'},{transform:`translateX(${travel}px)`}],{duration:120,easing:'cubic-bezier(.12,.8,.3,1)'});root.style.transform=`translateX(${travel}px)`;
     for(let i=0;i<hits;i++){
-      const direction=i%2?-1:1;setSpriteFrame('hero','attack',i%2?3:2);
-      if(reaper)reaperCut(combatV3Point('enemy'),i,direction,pending);else quickBladeCut(combatV3Point('enemy'),'shadow',i,direction,pending);combatV3Whoosh('shadow',critical,100);
+      const direction=i%2?-1:1;
+      if(reaper){
+        // the reap (owner 07/11, sheet redrawn): wind-back, over the top, the blade down on the foe, the pull through;
+        // the drawn crescent (basic-fx noct3) follows the blade from the top and peaks with the contact
+        setSpriteFrame('hero','attack',1);await wait(50);setSpriteFrame('hero','attack',2);
+        if(!reaperBasicCut(pending))reaperCut(combatV3Point('enemy'),i,direction,pending);
+        await wait(45);setSpriteFrame('hero','attack',3);
+      }else{setSpriteFrame('hero','attack',i%2?3:2);quickBladeCut(combatV3Point('enemy'),'shadow',i,direction,pending);}
+      combatV3Whoosh('shadow',critical,100);
       const result=bladeContact(raw/hits,ledger,i,direction,critical,pending);amount+=result.amount;blocked+=result.blocked;
-      await wait(85);
+      if(reaper){await wait(80);setSpriteFrame('hero','attack',4);await wait(95);}else await wait(85);
     }
     if(reaper)reaperDashFrame(4);else setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(travel,0,pending);
     await animate(root,[{transform:root.style.transform},{transform:old||'none'}],{duration:180,easing:'ease-out'});root.style.transform=old;

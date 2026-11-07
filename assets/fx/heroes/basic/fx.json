@@ -68,5 +68,12 @@
     "frameDuration": 60,
     "width": 512,
     "height": 512
+  },
+  "noct3": {
+    "file": "assets/fx/heroes/basic/noct3.webp",
+    "count": 4,
+    "frameDuration": 55,
+    "width": 512,
+    "height": 512
   }
 }

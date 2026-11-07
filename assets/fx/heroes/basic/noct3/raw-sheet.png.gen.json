@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T15:40:47Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\basic-fx-2611\\noct-f3-bright.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\season-noct\\avatar\\raw.png"
+  ],
+  "prompt": "Clean HD painterly 2D game VFX sprite sheet, NOT pixel art. Image 1 is the effect to repaint: keep its layout, its four cells, and the exact shape, size and position of the crescent in every cell; change ONLY its colours and material. Image 2 is the character it belongs to, a grim reaper of the underworld (black hood, glowing cyan eyes, dark blue-black ghost flames).\nSubject: the TRAIL of one heavy SCYTHE REAP as a crescent of UNDERWORLD SOUL-FIRE, dim and ominous, like damned souls burning in hell: the body of the crescent is dark abyssal smoke-flame, near-black deep teal (#05141A to #0A2E3A); its outer rim and the flame tongues peeling off it glow an eerie, muted soul-cyan (#1FA8C4 to #3CC8E0), brightest only along a hairline of pale cyan at the very leading edge of the curve; a few small dim cyan embers. Not bright, no large white or light areas, no pure white glow, no royal blue, no violet, no purple.\nLayout: EXACTLY 2 columns x 2 rows, four equal square cells, square 1024x1024, read left to right then the next row, the same frames as Image 1: Frame 1 the first part of the crescent from the top to the upper-right; Frame 2 the full crescent round the right side down to the lower-right, its strike end at the lower-right with a short cyan flare; Frame 3 the crescent breaking into dark soul-flame wisps with cyan edges; Frame 4 a faint thin cyan trace and drifting dark wisps.\nPowerful and impactful, crisp painted shapes, no soft haze, no glow halo spreading into the background. Keep a magenta margin inside every cell edge; nothing crosses into a neighbouring cell.\nUniform pure flat #FF00FF magenta background, no gradients, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the four-cell 2x2 layout of the reference, with a crescent in each cell in matching positions. The background is flat magenta with no text, borders, or extra figures. The crescents are dark teal with cyan edges, matching the prompt's colour direction, and none are cut off by the image edges. Only minor drift from the reference shapes, which is a pass.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000691
+  }
+}

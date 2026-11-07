@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T15:04:47Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-3\\sharp\\attack-redraw-a-ref.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-3\\sharp\\attack-redraw-rest.png"
+  ],
+  "prompt": "Image 1 shows two animation frames of a grim reaper's scythe attack side by side (two equal square cells in one row). Redraw them on a wide landscape canvas, two equal square cells in one row.\nLEFT cell, the WIND-BACK: he twists back and draws the scythe far behind him over his LEFT shoulder (the side away from the enemy), both hands gripping the straight shaft near his left shoulder, the shaft slanting up and back to the upper LEFT behind his hood, the blade at its upper-left end standing UP with its sharp concave edge facing FORWARD to the right, toward his hood and the enemy, ready to come over.\nRIGHT cell, OVER THE TOP: keep it exactly as in Image 1 (the scythe raised over his head, the blade reaching forward to the right with its edge facing down).\nImage 2 is the same character drawn crisply in his resting pose: render the frames the way Image 2 is rendered and keep its scythe design exactly.\nKeep the character exactly as in Image 2: the black tattered hooded cloak with deep-blue cloak tips, the black hood with a dark face and two glowing cyan eyes, black gloves and boots, the long STRAIGHT dark scythe shaft with its silver spiked head, and the WHITE silver crescent blade. Chibi proportions, crisp clean dark outlines, sharp detail, the same rendering as Image 2. No violet or purple anywhere.\nThe character faces RIGHT (the enemy is off to the right). In every cell the body keeps the size, the place and the feet line it has in Image 1, both boots on the ground; only the arms, the scythe and the swing of the cloak change. The scythe shaft is always perfectly STRAIGHT and rigid. The blade is fixed at the TOP end of the shaft, at a right angle to it; its sharp edge is the INNER (concave) side of the crescent.\nBackground 100% solid flat green #00FF00, no gradients, no text, no labels, no borders between cells, no shadow on the ground, no slash trail or effect (the body sheet only). Nothing crosses a cell edge; keep a margin of green around everything.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Two chibi reaper frames on a flat green background in one row, with both boots grounded, no cut-off parts, no text or extra figures, and the character, glowing eyes, cloak tips and scythe design consistent with the references. The left wind-back scythe pose is hard to verify exactly against the prompt's edge orientation, but no clear defect is visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000653
+  }
+}

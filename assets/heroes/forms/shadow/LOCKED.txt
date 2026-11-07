@@ -27,3 +27,18 @@ redrawn at 512px cells by sharpen_heroes.py, the same poses in the same places; 
 Changed on request 2026-11-02 ("chỉnh sửa đầy đủ hết các form cho đồng bộ kích thước và sắc nét hơn"): every form's
 soft combat sheets and resting frames (512px cells) and showcase actions (640px cells) are redrawn the same way by
 sharpen_heroes.py (raws and prompts in form-N/sharp); rigs rebaked. Noct form 2's eyeflare keeps its drawn fade.
+
+Changed on request 2026-11-07 ("Chỗ nào tím chuyển sang tone màu xanh này", the cyan of his season avatar): every violet in
+his three forms, showcase, rigs, aura, Biến Thân pieces, skill and ultimate effects, hub portraits, skill icons and his
+ultimate button emblem moved to cyan (hue 197) by retone_cyan.py; only the hue moves, the drawings are unchanged. The code's
+violet glows (forms-noct.css/js, the Biến Thân aura in transform-fx.css, the scythe glint) are cyan too. Raw drawings keep
+the old violet: a sheet rebuilt from a raw must go through `retone_cyan.py file` again.
+Changed on request 2026-11-07 ("Liềm của Noct form 3 lưỡi liềm bỏ ánh xanh chuyển sang tông trắng"): form 3's scythe blade glow
+is a cool white in every form-3 picture (`retone_cyan.py scythe`, run after the retone; `file` does both for a form-3 sheet),
+and the idle scythe glint's glow is white. Eyes and cloak tips stay cyan/blue.
+Changed on request 2026-11-07 ("Xem Noct form 3 đánh thường có phải có vấn đề không?", then the owner's notes on frames 1, 2, 4, 5 and the
+trail colour): form 3's attack sheet redrawn as one clockwise reap (1 ready, 2 wind-back, 3 over the top, 4 strike, 5 pull
+through, 6 ready) by form-3/redraw_attack.py: the scythe is the resting frame's own drawing laid rigidly (blade at a right angle
+to a straight shaft), Codex drew the hands round it. The basic attack now plays 1-2-3-4-5 at the foe and stops a scythe's length
+short (shadow-combat.js); its hit is a drawn underworld soul-cyan crescent (assets/fx/heroes/basic/noct3) instead of the vector
+cut. Codex 8/10.

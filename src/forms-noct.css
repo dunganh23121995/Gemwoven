@@ -1,16 +1,16 @@
 /* Noct four-star (forms-noct.js): night and moon behind the fighters, shadow clones, straight cuts. */
-.noct-night{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 70% at 70% 35%,#1a1440b0,#05030fe0 70%)}
+.noct-night{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 70% at 70% 35%,#0b2234b0,#02070fe0 70%)}
 .noct-moon{position:absolute;z-index:1;pointer-events:none;opacity:0;filter:blur(1.5px);background:center/contain no-repeat;mix-blend-mode:screen;transform:translate(-50%,-50%)}
-.noct-shadow-clone{position:absolute;pointer-events:none;opacity:0;filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #a58bff) drop-shadow(0 0 8px #6a4fd0aa)}
+.noct-shadow-clone{position:absolute;pointer-events:none;opacity:0;filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #7fd6ff) drop-shadow(0 0 8px #2a8cc0aa)}
 .noct-shadow-clone .sprite-body{position:absolute;inset:0}
 /* A shadow behind the foe stands in the stage under the actors, over the night and the moon. */
 .noct-shadow-clone.behind{z-index:1}
 .noct-cut{position:absolute;pointer-events:none;opacity:0;background-repeat:no-repeat;mix-blend-mode:screen;transform:translate(-50%,-50%)}
-.noct-cut.bright{filter:drop-shadow(0 0 5px #e4dcff)}
+.noct-cut.bright{filter:drop-shadow(0 0 5px #dcf6ff)}
 /* The dash between two strikes: smeared afterimages and a dim violet blade streak. */
-.noct-shadow-clone.trail{filter:brightness(.4) sepia(1) hue-rotate(215deg) saturate(4) blur(1px) drop-shadow(0 0 5px #8f72ff)}
-.noct-trail{position:absolute;pointer-events:none;opacity:0;mix-blend-mode:screen;background:linear-gradient(90deg,#5b3fd000,#7a5cff 45%,#c9b8ff 85%,#fff);-webkit-mask:var(--trail-mask) var(--trail-at)/var(--trail-size) no-repeat;mask:var(--trail-mask) var(--trail-at)/var(--trail-size) no-repeat;filter:drop-shadow(0 0 5px #8f72ff) drop-shadow(0 0 2px #b9a6ff)}
-.actor.noct-shadowed>.sprite-body{filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #a58bff) drop-shadow(0 0 8px #6a4fd0aa)!important}
+.noct-shadow-clone.trail{filter:brightness(.4) sepia(1) hue-rotate(158deg) saturate(4) blur(1px) drop-shadow(0 0 5px #4cc4f2)}
+.noct-trail{position:absolute;pointer-events:none;opacity:0;mix-blend-mode:screen;background:linear-gradient(90deg,#1a7fb000,#38b6ea 45%,#b6eaff 85%,#fff);-webkit-mask:var(--trail-mask) var(--trail-at)/var(--trail-size) no-repeat;mask:var(--trail-mask) var(--trail-at)/var(--trail-size) no-repeat;filter:drop-shadow(0 0 5px #4cc4f2) drop-shadow(0 0 2px #a4e2ff)}
+.actor.noct-shadowed>.sprite-body{filter:brightness(.18) saturate(.5) drop-shadow(0 0 3px #7fd6ff) drop-shadow(0 0 8px #2a8cc0aa)!important}
 /* The blood moon is solid, so it is laid over the sky as it is (the silver moon glows additively). */
 .noct-moon.blood{mix-blend-mode:normal}
 /* The summon showcase (summon-showcase.js) plays the ultimate over the hub's own realm: no night or moon there. */

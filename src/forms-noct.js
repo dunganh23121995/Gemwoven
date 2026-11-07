@@ -18,7 +18,7 @@ function noctCut(point,index,direction,pending,{length=null,hold=0,shift=[0,0],a
   const node=document.createElement('span');node.className='noct-cut';node.setAttribute('aria-hidden','true');
   node.style.cssText=`left:${point.x+shift[0]}px;top:${point.y+shift[1]}px;width:${len}px;height:${len*sheet.height/sheet.count/sheet.width*thick}px;background-image:url('${sheet.src}');background-size:100% ${sheet.count*100}%;background-position:0 ${variant/(sheet.count-1)*100}%`;
   // A heavier line (the moon form's draw-cut, owner 07/11 + Codex: readable at play size): thicker and brighter.
-  if(thick>1)node.style.filter='brightness(1.35) contrast(1.15) drop-shadow(0 0 5px #d8c8ffcc)';
+  if(thick>1)node.style.filter='brightness(1.35) contrast(1.15) drop-shadow(0 0 5px #c8f0ffcc)';
   $('combatEffects').append(node);
   // animate() cancels its animation when done: the end state is set inline first.
   node.style.transform=`translate(-50%,-50%) rotate(${angle}deg)`;node.style.opacity='1';
@@ -152,7 +152,7 @@ async function noctMoonRage(raw,{hits=5,onRelease=()=>{}}={}){
     for(const layer of [sky?.night,sky?.moon,...clones].filter(Boolean)){const from=layer.style.opacity;layer.style.opacity='0';pending.push(animate(layer,[{opacity:from},{opacity:0}],{duration:420}));}
     await Promise.all(bursts);setSpriteFrame('hero','skill',5);
     const sprite=root.querySelector('.sprite-body');root.classList.remove('noct-shadowed');
-    if(sprite)pending.push(animate(sprite,[{filter:'brightness(.18) saturate(.5) drop-shadow(0 0 3px #a58bff)'},{filter:'none'}],{duration:300,easing:'ease-out'}));
+    if(sprite)pending.push(animate(sprite,[{filter:'brightness(.18) saturate(.5) drop-shadow(0 0 3px #7fd6ff)'},{filter:'none'}],{duration:300,easing:'ease-out'}));
     await at(3000);await Promise.all(pending);return {amount,blocked};
   }finally{
     await Promise.allSettled(pending);for(const cut of cuts)cut.remove();for(const clone of clones)clone.remove();sky?.night.remove();sky?.moon?.remove();

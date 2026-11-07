@@ -1,7 +1,7 @@
 .quick-blade-cut{filter:drop-shadow(0 0 5px var(--combat-main));mix-blend-mode:screen;z-index:6}
 .quick-blade-cut.shadow{mix-blend-mode:normal;filter:drop-shadow(0 0 7px #08101d) drop-shadow(0 0 3px #87bdd3)}
 .blade-ember{border-radius:50%;background:radial-gradient(#fff,var(--combat-main) 30%,transparent 72%);mix-blend-mode:screen}
-.blade-ember.shadow{background:radial-gradient(#9edbea,#332447 40%,transparent 72%);mix-blend-mode:normal}
+.blade-ember.shadow{background:radial-gradient(#9edbea,#1d3242 40%,transparent 72%);mix-blend-mode:normal}
 .shadow-contact{background:radial-gradient(ellipse,#dbffff99,#6093a54d 17%,#0a071abb 40%,transparent 70%);border-radius:50%;filter:blur(2px)}
 .shadow-afterimage{position:absolute;pointer-events:none;z-index:3;opacity:0;filter:brightness(.32) sepia(.2) drop-shadow(0 0 3px #7394a9)}
 .actor.shadow-burst>.sprite-body{opacity:.32}

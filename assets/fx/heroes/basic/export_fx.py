@@ -11,7 +11,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT.parent / 'fire')); from export_fx import key_out
 FX = {name: (512, ms) for name, ms in [('mika1', 50), ('mika2', 55), ('yuki1', 55), ('yuki2', 60), ('yuki3', 75), ('nori1', 60),
-                                       ('nori2', 60), ('nori3', 65), ('lumi1orb', 55), ('lumi1pop', 60)]}
+                                       ('nori2', 60), ('nori3', 65), ('lumi1orb', 55), ('lumi1pop', 60), ('noct3', 55)]}
 meta = {}
 for name, (out, ms) in FX.items():
     raw = key_out(Image.open(ROOT / name / 'raw-sheet.png')); cw, ch = raw.width / 2, raw.height / 2

@@ -1,0 +1,23 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T15:27:38Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-3\\sharp\\attack-redraw-a-ref.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-3\\sharp\\attack-redraw-rest.png"
+  ],
+  "prompt": "Image 1 is a rough paste-up of two animation frames of a grim reaper's scythe attack, side by side (two equal square cells in one row). In each cell the SCYTHE is exactly right and must stay exactly where it is: the same position, the same angle, the same length, the same straight shaft, and the blade at the same angle to the shaft. The body is rough: holes where an old weapon was cut out, arms that do not hold the shaft.\nRedraw both cells as clean finished frames on a wide landscape canvas, two equal square cells in one row: keep each scythe exactly as laid in Image 1, and draw his two black-gloved hands firmly wrapped round its shaft (one hand where the shaft crosses his chest or shoulder, the other a little further along the shaft toward its butt end), with the arms joined naturally to his shoulders; fill the holes in the cloak and hood. Where the shaft passes his hood, it passes BEHIND the hood. He holds ONE scythe only: remove any leftover dark stick or fragment that is not part of it.\nLEFT cell, the WIND-BACK: the shaft level behind him at shoulder height, the blade standing up at its far left end.\nRIGHT cell, OVER THE TOP: keep it exactly as in Image 1.\nImage 2 is the same character drawn crisply in his resting pose: render the frames the way Image 2 is rendered and keep its scythe design exactly.\nKeep the character exactly as in Image 2: the black tattered hooded cloak with deep-blue cloak tips, the black hood with a dark face and two glowing cyan eyes, black gloves and boots, the long straight dark scythe shaft with its silver spiked head, and the WHITE silver crescent blade. Chibi proportions, crisp clean dark outlines, sharp detail, the same rendering as Image 2. No violet or purple anywhere.\nThe character faces RIGHT (the enemy is off to the right). In every cell the body keeps the size, the place and the feet line it has in Image 1, both boots on the ground.\nBackground 100% solid flat green #00FF00, no gradients, no text, no labels, no borders between cells, no shadow on the ground, no slash trail or effect (the body sheet only). Nothing crosses a cell edge; keep a margin of green around everything.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "In the left cell the shaft appears to run across the front of the hood near the eye line rather than passing clearly behind it as the prompt requires. This is hard to confirm at this resolution."
+      }
+    ],
+    "summary": "Flat green background, two cells, both scythes present, one scythe per frame, character design consistent with the references, and no cut-off or extra text. The only doubt is whether the left-cell shaft passes behind the hood, so I cannot call it a clear fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000787
+  }
+}
