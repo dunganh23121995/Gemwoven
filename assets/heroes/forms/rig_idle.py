@@ -60,8 +60,8 @@ HINTS = {
     "lightning": "RED: the long blonde hair and ponytail, the coat or cape tails, the witch hat's bent tip, hat ribbons, and any star or spark floating apart from her. CYAN: skirt panels, sleeve edges, belt charms, small pouch straps. YELLOW: the staff and anything fixed to it. GREEN: her dangling legs and boots.",
     "shadow": "RED: the whole torn cloak or coat tail behind him and every ragged strip reaching outside the body. CYAN: scarf ends, hanging belts, tassels, hanging cloth strips on the front of the body. YELLOW: the dagger, katana or scythe. BLUE: the hood and head.",
     # a form whose costume differs from the hero's first one has its own hint ("<hero>-<form>")
-    "novice-2": "RED: the moss-green half-cloak behind him, the long moss-green scarf end and the springy cowlick tuft. CYAN: the leather strap ends, the pouch, the map case and the loose sleeve edges. YELLOW: the steel sword with its crossguard only. GREEN: both legs with the tall boots.",
-    "novice-3": "RED: the long moss-green cape with its gold border behind him and the springy cowlick tuft. CYAN: the cream tabard panel hanging in front and its green side panels. YELLOW: the jewelled longsword with its crossguard only. GREEN: both armoured legs with the boots.",
+    "novice-2": "RED: the dull green half-cloak behind him, the long green scarf end and the springy cowlick tuft. CYAN: the leather strap ends, the pouch and the loose sleeve edges. YELLOW: the iron sword with its crossguard only. GREEN: both legs with the boots.",
+    "novice-3": "RED: the long worn green cloak behind him, the green scarf end and the springy cowlick tuft. CYAN: the leather tassets hanging at his hips and the belt end. YELLOW: the steel longsword with its crossguard only. GREEN: both armoured legs with the boots.",
 }
 
 PARTS = """Image 1 is a chibi game character on a black background ({what}). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:

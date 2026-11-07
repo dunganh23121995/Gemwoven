@@ -18,38 +18,38 @@
     "file": "assets/fx/heroes/novice/f2-gale.webp",
     "count": 6,
     "frameDuration": 90,
-    "aspect": 1.5977,
-    "foot": 0.9669
+    "aspect": 1.3398,
+    "foot": 0.9467
   },
   "f2-slash": {
     "file": "assets/fx/heroes/novice/f2-slash.webp",
     "count": 6,
     "frameDuration": 50,
-    "aspect": 2.8477
+    "aspect": 4.0859
   },
   "f2-cross": {
     "file": "assets/fx/heroes/novice/f2-cross.webp",
     "count": 8,
     "frameDuration": 70,
-    "aspect": 1.0125
+    "aspect": 1.1406
   },
   "f3-gems": {
     "file": "assets/fx/heroes/novice/f3-gems.webp",
     "count": 6,
     "frameDuration": 90,
-    "aspect": 0.9583
+    "aspect": 1.059
   },
   "f3-crescent": {
     "file": "assets/fx/heroes/novice/f3-crescent.webp",
     "count": 6,
     "frameDuration": 55,
-    "aspect": 0.875
+    "aspect": 0.7526
   },
   "f3-crest": {
     "file": "assets/fx/heroes/novice/f3-crest.webp",
     "count": 8,
     "frameDuration": 85,
-    "aspect": 0.9948,
-    "foot": 0.982
+    "aspect": 2.1016,
+    "foot": 0.8889
   }
 }

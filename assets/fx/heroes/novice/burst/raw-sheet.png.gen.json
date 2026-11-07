@@ -1,0 +1,26 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:34:01Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-1-master-magenta.png"
+  ],
+  "prompt": "Image 1 is only a palette and art-style reference (Hiro, a humble boy traveler with a wooden sword, brown cloth and a green scarf). Do NOT draw the character or the sword.\n\nCreate a 6-frame spell VFX sprite sheet, one continuous sequence centred in every cell: the IMPACT where a wooden sword lands on an enemy: a short white impact flash, a puff of dust and a few small wood chips and dust specks flying out, then settling.\nFrame 1: a small white flash. Frame 2: the flash with short impact lines around it. Frame 3: a dust puff spreading, small chips flying. Frame 4: dust widening, thinner. Frame 5: dust fading. Frame 6: a few specks.\nPLAIN and MODEST: this is the free starter hero, so the effect is simple and down to earth. Painted as OPAQUE solid shapes with crisp edges: no glow halo, no haze, no sparkles, no gold light, no jewels, no rainbow colours, no magic runes. No pink, no purple, no magenta tint. Colours only white, pale beige, sandy brown, light grey.\nExactly 6 frames in a 3 columns x 2 rows grid of equal square 512x512 cells, total image 1536x1024, read left-to-right then next row. Nothing crosses a cell edge; leave a magenta margin of at least 8% on all sides of every cell. Background 100% solid flat #FF00FF magenta in every cell, no gradient, no text, no labels, no borders, no gridlines. Clean HD smooth painted anime game VFX, NOT pixel art.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The fading dust in the bottom-middle frame (frame 5) has a mauve/pink tint, which the prompt explicitly forbids (no pink, no purple, no magenta tint). It may read as palette drift rather than a hard defect."
+      },
+      {
+        "kind": "layout",
+        "detail": "The image appears to be about 1024x684 rather than the requested 1536x1024. The 3x2 arrangement of six frames looks correct, but the cell size and margins cannot be verified against the spec."
+      }
+    ],
+    "summary": "Six frames in a 3x2 arrangement with a flat magenta background and no text or extra figures. The main concerns are a pink tint on frame 5 and an image size that appears to differ from the requested 1536x1024, so the verdict is unsure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000777
+  }
+}

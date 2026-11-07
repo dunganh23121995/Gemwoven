@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:51:15Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-3-master-magenta.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\rests\\show-3-old.png"
+  ],
+  "prompt": "Clean HD painterly chibi 2D RPG character art, NOT pixel art.\nImage 1 is HIRO's approved look for this form: copy his face, messy brown hair, brown eyes, scarf, outfit, boots and sword EXACTLY from Image 1 (plain, humble, muted earthy colours, no gold, no gems, no glow).\nImage 2 is one small, slightly soft frame of him: redraw it SHARP at full resolution with EXACTLY the same pose, the same position of every limb, the sword, the scarf and cloth, the same size and the same place in the square image, the same foot line. Change nothing about the pose; only the drawing becomes crisp and clean.\nNo effects. Uniform pure flat #FF00FF magenta background, no text, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the same character, outfit, scarf, sword and pose as the references, with a flat magenta background and no text, cut-off limbs or anatomy errors. Its scale and placement match Reference 2 proportionally, and only minor stylistic drift is visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000698
+  }
+}

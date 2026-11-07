@@ -11,7 +11,7 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
-FX = {"fox": ("mika", 80), "rabbit": ("yuki", 95), "comet": ("lumi", 90), "sprout": ("nori", 70), "dust": ("tan", 85), "gleam": ("hiro", 80)}  # folder, ms per frame
+FX = {"fox": ("mika", 80), "rabbit": ("yuki", 95), "comet": ("lumi", 90), "sprout": ("nori", 70), "dust": ("tan", 85)}  # folder, ms per frame
 
 
 def key(cell):

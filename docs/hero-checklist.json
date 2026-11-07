@@ -36,7 +36,7 @@
     {"id": "fx", "group": "4. Chiến đấu", "label": "Hiệu ứng tuyệt kỹ riêng (FX)", "forms": "2-3",
      "paths": ["assets/fx/heroes/{key}/fx.json"], "byHero": {"shadow": {"paths": ["assets/fx/noct/fx.json"]}, "novice": {"grep": ["assets/fx/heroes/novice/fx.json", "\"f{form}-"]}}},
     {"id": "depart", "group": "4. Chiến đấu", "label": "Rời sân có dấu ấn riêng", "forms": "3",
-     "grep": ["src/hero-departures.js", "\\b{key}:\\{name:"], "byHero": {"shadow": {"grep": ["src/shadow-combat.js", "noctSoul"]}, "novice": {"grep": ["src/hero-departures.js", "novice:\\{name:[^\\n]*byForm:\\{{form}:"]}}},
+     "grep": ["src/hero-departures.js", "\\b{key}:\\{name:"], "byHero": {"shadow": {"grep": ["src/shadow-combat.js", "noctSoul"]}, "novice": {"grep": ["src/hero-departures.js", "novice:\\{name:'dust'"]}}},
     {"id": "voice", "group": "5. Âm thanh", "label": "Giọng nhân vật (hô, bị đánh)", "forms": "1", "optional": true,
      "grep": ["assets/audio/cast-voice-manifest.json", "\"{name}-"], "byHero": {"shadow": {"paths": ["assets/audio/noct-manifest.json"]}}},
     {"id": "sounds", "group": "5. Âm thanh", "label": "Âm thanh tuyệt kỹ riêng (bản thu thật)", "forms": "2-3",

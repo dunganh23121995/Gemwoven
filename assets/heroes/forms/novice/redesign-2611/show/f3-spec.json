@@ -1,0 +1,9 @@
+{"dir": "assets/heroes/forms/novice/form-3/showcase",
+ "identity": "assets/heroes/forms/novice/form-3/showcase/master.png",
+ "what": "Hiro in his third form, a plain young knight: a chibi boy with messy chestnut-brown hair and one springy cowlick tuft, big brown eyes, plain grey steel breastplate, pauldrons and greaves over brown leather, a worn dull green cloak, a plain steel longsword with four tiny dull stones in its guard; humble muted colours, no gold, no gems lighting up, no glow",
+ "pose": "",
+ "idle": "",
+ "fidgets": [["polish", "Lau kiếm", "he lowers the longsword across his body, wipes the flat of the blade once with the edge of his green cloak from guard to tip (frames 3-5), glances along the clean blade with a small satisfied nod (frame 6), and raises it back to the resting pose (frame 7). Plain steel, no shine, no sparkle.", true]],
+ "entrance": "he walks in from the left side of the cell with steady confident steps, cloak trailing behind him, the longsword held low at his side (frames 1-4, starting at the left edge), slows down (frame 5), plants his feet and lifts the sword into the resting pose (frames 6-8). A little dust at his boots only, plain. Frame 8 is exactly the resting pose of Image 1.",
+ "entrance_label": "Bước tới thủ kiếm",
+ "only": ["polish", "entrance"]}

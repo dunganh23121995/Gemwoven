@@ -1,0 +1,42 @@
+{
+  "fidgets": [
+    {
+      "name": "salute",
+      "label": "Chào kiếm hiệp sĩ",
+      "file": "salute.webp",
+      "whole": true,
+      "frameMs": [
+        130,
+        150,
+        200,
+        700,
+        170,
+        170,
+        150,
+        130
+      ]
+    },
+    {
+      "name": "gems",
+      "label": "Ngọc tứ hệ tỏa sáng",
+      "file": "gems.webp",
+      "whole": true,
+      "frameMs": [
+        130,
+        160,
+        220,
+        260,
+        260,
+        300,
+        180,
+        130
+      ]
+    },
+    {
+      "name": "entrance",
+      "label": "Trụ pha lê tứ hệ",
+      "file": "entrance.webp",
+      "whole": false
+    }
+  ]
+}

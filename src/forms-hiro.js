@@ -4,10 +4,11 @@
  *  - four-star Lữ Kiếm Liên Trảm, the wandering swordsman: the traveller's wind whirls leaves round his boots as he
  *    drops into a low stance, he dashes in on the wind, cuts across the foe, cuts up through it, and brings the
  *    steel sword down into a cross cut that bursts into wind and leaves;
- *  - six-star Diệu Ngọc Tứ Hệ Trảm, the jewel hero (no element of his own: his sword holds four jewels): he raises
- *    the longsword and four jewel lights, ruby, sapphire, emerald and amethyst, gather into its tip; a jewel crest
- *    blooms under the foe, he steps in and sweeps a giant jewel-light crescent down through it, crystal spires
- *    close round the foe and the jewel prison shatters into gem shards.
+ *  - six-star Diệu Ngọc Tứ Hệ Trảm, the plain knight (no element of his own: four small dull stones in his guard):
+ *    he raises the longsword and four dull motes ride thin wind lines into its tip; the ground cracks under the
+ *    foe, he steps in and sweeps a big steel crescent down through it, a ring of dust rises round the foe and the
+ *    blow lands. Plain since the redesign (owner 07/11: "cơ bản, không rực rỡ", the free starter): no glow on the
+ *    blade or the foe, no gold flash, no crystal.
  * The rules are the plain ultimate's, unchanged (progressionNoviceUltimate in progression-combat.js, reached through
  * formOriginalUltimate() inside the progression wrapper, so form power, the Tứ Hệ signature and the Báu vật effects
  * still apply): for each of the kit's hits, damage('hero',kit.base/hits) exactly as attack('hero',kit.base,{hits})
@@ -16,7 +17,7 @@
  * keeps the shared run (six-star footprints: DEPART_FX.novice.byForm in hero-departures.js). */
 HERO_KITS.novice={forms:{...HERO_KITS.novice.forms,
   2:{ultimate:()=>formOriginalUltimate(),attack:(raw,options)=>hiroStarAttack(2,raw,options)},
-  // The six-star longsword draws its own jewel crescent (hiroBasicSlash), not the shared form-3 arc.
+  // The six-star longsword draws its own steel crescent (hiroBasicSlash), not the shared form-3 arc.
   3:{ultimate:()=>formOriginalUltimate(),attack:(raw,options)=>hiroStarAttack(3,raw,options)}
 }};
 const hiroPlainUltimate=progressionNoviceUltimate;
@@ -53,7 +54,7 @@ function hiroHeroBody(){
 }
 // One authored FX strip (ART.heroFx.novice[name]) placed by its width: on a ground line (`feet`: the strip's own
 // foot line lands there) or centred on `y`; `rotate` turns it about its centre. Frames are stepped explicitly
-// so a sequence can hold a pose (the X before it bursts, the closed crystal cage).
+// so a sequence can hold a pose (the X before it bursts, the dust ring at its height).
 function hiroStrip(name,{x,y,feet,width,rotate=0,parent=null,className=''}){
   const sheet=ART.heroFx?.novice?.[name];if(!sheet||reduced)return null;
   const height=width/sheet.aspect,top=feet!=null?feet-height*(sheet.foot??1):y-height/2;
@@ -69,7 +70,7 @@ function hiroStrip(name,{x,y,feet,width,rotate=0,parent=null,className=''}){
     fade(ms,pending,extra={}){token++;const job=animate(node,[{opacity:getComputedStyle(node).opacity},{opacity:0,...extra}],{duration:ms,easing:'ease-in',fill:'forwards'}).finally(()=>node.remove());pending?.push(job);return job;},
     remove(){token++;node.remove();}};
 }
-// An afterimage of his current pose left behind on the dash, tinted by the form (wind green, jewel gold).
+// An afterimage of his current pose left behind on the dash, tinted by the form (wind green, plain steel grey).
 function hiroEcho(pending,delay,kind){
   if(reduced)return;
   const root=actor('hero'),rect=root.getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
@@ -83,7 +84,7 @@ function hiroFlash(kind,pending){
   const flash=document.createElement('span');flash.className='hiro-flash '+kind;flash.setAttribute('aria-hidden','true');$('combatEffects').append(flash);
   pending.push(animate(flash,[{opacity:0},{opacity:.6,offset:.2},{opacity:0}],{duration:440}).finally(()=>flash.remove()));
 }
-// The whole stage jolts on the finishing blow (heavier for the six-star prison).
+// The whole stage jolts on the finishing blow (heavier for the six-star cut).
 function hiroShake(force,pending){
   if(reduced)return;
   const f=force;
@@ -149,7 +150,7 @@ function hiroOpen(root,form,pending){
 }
 function hiroClose(root,target,old,oldZ,form){
   root.style.transform=old;root.style.zIndex=oldZ;target.style.filter='';target.style.transform='';
-  delete root.dataset.ragePhase;root.classList.remove('combat-v3-acting','hiro-star','hiro-f'+form,'hiro-jewel-blade');target.classList.remove('hiro-jeweled');
+  delete root.dataset.ragePhase;root.classList.remove('combat-v3-acting','hiro-star','hiro-f'+form);
   if(state.hp>0)setSpriteAction('hero','idle');if(state.enemyHp>0)setSpriteAction('enemy','idle');update();
 }
 // A light hop back to his place, sword still out.
@@ -228,28 +229,28 @@ async function hiroChainSlash(kit){
 }
 
 // ---- Six-star: Diệu Ngọc Tứ Hệ Trảm ----------------------------------------------------------------
-// Where the four jewel lights meet in their strip (frames 4-5): its centre column, 17% down.
-const HIRO_GEM_MEET={x:.5,y:.17};
+// Where the four motes meet in their strip (frames 4-5): about its centre column, 30% down.
+const HIRO_GEM_MEET={x:.49,y:.3};
 // The longsword's tip in skill frames 0 and 1 (share of his 512 px cell, measured on skill.webp).
-const HIRO_TIP=[{x:.523,y:.049},{x:.506,y:.156}];
+const HIRO_TIP=[{x:.521,y:.053},{x:.505,y:.162}];
 async function hiroJewelSlash(kit){
   if(state.hp<=0||state.enemyHp<=0)return;
   const root=actor('hero'),target=actor('enemy'),pending=[],at=hiroTimeline(),move=hiroMover(root),W=$('scene').clientWidth;
   const old=root.style.transform,oldZ=root.style.zIndex;
   let gems=null,crest=null,crescent=null,result={amount:0,blocked:0};
-  // ms from the cast; the swoosh peaks 160 ms in, the tinkle 260 ms, the shatter 100 ms (PLAYS[3]). Three clear beats
-  // after the charge: the crescent sweeps (1400 ms), the crystal cage closes (1700 ms), the cage shatters (1950 ms, the hit).
-  hiroScore(at,pending,'f3-shatter',[
-    [0,'f3-gather',.5,-.2],      // glass chimes as the jewel lights gather into the blade (0-1.3 s)
+  // ms from the cast; the swoosh peaks 160 ms in, the sword hit 80 ms in (PLAYS[3]). Three clear beats after the
+  // charge: the crescent sweeps (1400 ms), the dust ring rises (1700 ms), the blow lands (1950 ms, the hit).
+  hiroScore(at,pending,'f3-hit',[
+    [0,'f3-gather',.4,-.2],      // a soft gust as the wind lines draw the motes into the blade (0-1.1 s)
     [60,'charge-cry',.55,-.2],   // form 1's battle cry as he raises the sword
     [1150,'dash-steps',.45,0],   // form 1's strides: he steps in
     [1290,'f3-swing',.6,.15],    // the great downward cut (1450 ms)
-    [1460,'f3-crest',.45,.3]]);  // glass tinkle as the crystal cage closes (1720 ms); the shatter plays with the damage (1950 ms)
+    [1460,'f3-crest',.45,.3]]);  // soil cracking under the foe, rising into the dust ring (1700 ms); the sword hit plays with the damage
   root.dataset.ragePhase='raise';
   try{
     hiroOpen(root,3,pending);setSpriteFrame('hero','skill',0);
-    // Four jewel lights rise round him and meet at the raised blade's tip (effects layer, scene pixels: he stands
-    // still meanwhile), kept under his own name and HP bars.
+    // Four dull motes ride wind lines round him and meet at the raised blade's tip (effects layer, scene pixels: he
+    // stands still meanwhile), kept under his own name and HP bars.
     const hero=hiroHeroBody();
     const sheet=ART.heroFx?.novice?.['f3-gems'],gemWidth=hero.height*1.05,tip=hero.at(HIRO_TIP[0].x,HIRO_TIP[0].y);
     if(sheet){
@@ -258,10 +259,9 @@ async function hiroJewelSlash(kit){
       gems=hiroStrip('f3-gems',{x:tip.x+(.5-HIRO_GEM_MEET.x)*gemWidth,y:centre,width:gemWidth,className:'hiro-gems'});
       gems?.play(0,5,95);
     }
-    await at(400);root.classList.add('hiro-jewel-blade');
     await at(620);root.dataset.ragePhase='salute';setSpriteFrame('hero','skill',1);
     await at(900);root.dataset.ragePhase='coil';setSpriteFrame('hero','skill',2);gems?.fade(120,pending);gems=null;await move(-6,0,160,'ease-out');
-    // The jewel crest blooms on the ground under the foe before the cut: ring, star, the four crystals sprouting.
+    // The ground cracks under the foe before the cut: cracks spreading, small rocks popping up.
     const foe=hiroFoeBody(),hud=hiroHudFloor();
     const crestSheet=ART.heroFx?.novice?.['f3-crest'],crestAspect=(crestSheet?.aspect)||1;
     const crestWidth=Math.min(W*.62,Math.max(foe.width*1.6,foe.height*1.25/crestAspect,100),(foe.feet+6-hud)/((crestSheet?.foot)||1)*crestAspect);
@@ -271,30 +271,29 @@ async function hiroJewelSlash(kit){
     // He steps in, the sword high.
     const near=hiroReach(.05)*.75;
     await at(1150);root.dataset.ragePhase='step';setSpriteFrame('hero','skill',3);
-    hiroEcho(pending,0,'jewel');
+    hiroEcho(pending,0,'steel');
     await move(near,-6,220,'cubic-bezier(.4,0,.6,1)');
-    // Beat 1, the great downward cut: a jewel-light crescent sweeps down through the foe and is gone.
+    // Beat 1, the great downward cut: a steel crescent sweeps down through the foe and is gone.
     await at(1400);root.dataset.ragePhase='cut';setSpriteFrame('hero','skill',4);move(near,0,90,'ease-in');
     // It stands on the foe's feet (not over the name and HP bars above it) and covers the whole drawn body.
     const crescentHeight=Math.min($('scene').clientHeight*.8,Math.max(foe.height*1.2,160),foe.feet+8-hud),cs=ART.heroFx?.novice?.['f3-crescent'];
     crescent=hiroStrip('f3-crescent',{x:foe.x+foe.width*.05,y:foe.feet+8-crescentHeight*.5,width:crescentHeight*((cs?.aspect)||.875)});
     if(crescent){const c=crescent;c.play(0,5,45).then(()=>c.fade(90,pending));}
     combatV3Camera(1,false,state.boss,pending);hiroFlinch(target,pending);
-    // Beat 2, the crystal cage closes round the foe and holds; the foe is lit by jewel light inside it.
-    await at(1700);root.dataset.ragePhase='cage';crest?.play(3,4,90);
-    await at(1780);target.classList.add('hiro-jeweled');
-    // Beat 3, the cage shatters: the hit.
-    await at(1950);root.dataset.ragePhase='shatter';
-    target.classList.remove('hiro-jeweled');crest?.play(5,7,95);
-    result=hiroHits(kit,pending,'f3-shatter');
-    combatV3Camera(1,true,state.boss,pending);hiroShake(state.boss?1.25:1,pending);hiroFlash('jewel',pending);
+    // Beat 2, a ring of dust rises round the foe from the cracks.
+    await at(1700);root.dataset.ragePhase='dust';crest?.play(3,4,90);
+    // Beat 3, the blow lands: the hit, the dust at its widest and settling.
+    await at(1950);root.dataset.ragePhase='hit';
+    crest?.play(5,7,95);
+    result=hiroHits(kit,pending,'f3-hit');
+    combatV3Camera(1,true,state.boss,pending);hiroShake(state.boss?1.25:1,pending);hiroFlash('dust',pending);
     if(!reduced){
       target.style.filter='brightness(1.4)';
       const recoil=combatOuterMotion('enemy',15,7);
       await combatV3Pose(target,`translate(${recoil.distance}px,-5px) rotate(${recoil.tilt}deg)`,80);
     }
     await at(2180);target.style.filter='';combatV3Pose(target,'translate(0px,0px) rotate(0deg)',300);
-    await at(2240);root.dataset.ragePhase='finish';setSpriteFrame('hero','skill',5);root.classList.remove('hiro-jewel-blade');
+    await at(2240);root.dataset.ragePhase='finish';setSpriteFrame('hero','skill',5);
     await at(2300);crest?.fade(220,pending);crest=null;
     await at(2440);root.dataset.ragePhase='return';await hiroHopBack(root,near);
     await at(3000);await Promise.all(pending);
@@ -307,7 +306,7 @@ async function hiroJewelSlash(kit){
 
 // ---- Basic attacks ---------------------------------------------------------------------------------
 // The shared attack() (its timing, chain bonus and damage) with the form's own drawn arc in place of the shared
-// slash: the four-star steel cut with its emerald rim, the six-star jewel-light crescent.
+// slash: the four-star steel cut, the six-star steel crescent.
 let hiroSlashForm=0;
 async function hiroStarAttack(form,raw,options){
   hiroSlashForm=form;$('combatEffects').classList.add('hiro-strike');

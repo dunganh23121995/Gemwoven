@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:46:05Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-1-master-magenta.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\portraits\\bust-1-old.png"
+  ],
+  "prompt": "Image 1 is the identity: Hiro form 1: a humble boy traveler, messy brown hair, brown eyes, a dull green scarf, a brown cloth vest over a cream shirt. Image 2 is the old picture to replace.\nDraw a head-and-shoulders portrait of him like Image 2: same framing, angle (3/4 facing right) and size of the head in the frame, calm friendly smile. Copy his face, hair, colours and outfit EXACTLY from Image 1 (plain, humble, muted earthy colours: no gold trim, no gems, no glow). Clean HD painterly anime game art, NOT pixel art. Uniform pure flat #FF00FF magenta background, nothing else.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the head-and-shoulders 3/4 right-facing framing of Reference 2, with the same outfit (green scarf, brown vest, cream shirt) and a calm smile. The background is flat #FF00FF magenta with no extra content. The hair runs a bit more orange-ginger than the references' brown, which is minor stylistic drift. The shoulders and scarf are cropped at the bottom and left edges, as in Reference 2, so this is not a defect. No anatomy or text problems are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000644
+  }
+}

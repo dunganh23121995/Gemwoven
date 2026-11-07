@@ -1618,22 +1618,22 @@
   },
   "hero-novice": {
     "file": "assets/gemwoven/items/hero-novice.png",
-    "width": 312,
-    "height": 548,
-    "source": "raw/novice-idle.png",
+    "width": 308,
+    "height": 512,
+    "source": "heroes/forms/novice/redesign-2611",
     "textless": true,
     "footBounds": [
+      7,
       6,
-      6,
-      306,
-      542
+      301,
+      506
     ]
   },
   "portrait-novice": {
     "file": "assets/gemwoven/items/portrait-novice.png",
     "width": 210,
     "height": 256,
-    "source": "raw/novice-idle.png",
+    "source": "heroes/forms/novice/redesign-2611",
     "textless": true
   },
   "journey-button": {
@@ -8111,10 +8111,10 @@
     "frameDuration": 240,
     "loop": true,
     "footBounds": [
-      10,
       3,
-      109,
-      180
+      3,
+      108,
+      179
     ]
   },
   "home-idle-novice-poster": {
@@ -11991,14 +11991,14 @@
     "width": 384,
     "height": 384,
     "footBounds": [
-      117,
       119,
-      267,
+      119,
+      266,
       330
     ],
     "bodyAnchor": {
-      "x": 0.5520833333333334,
-      "bodyX": 0.5533854166666666,
+      "x": 0.5546875,
+      "bodyX": 0.5572916666666666,
       "crown": 0.3098958333333333,
       "foot": 0.859375
     },
@@ -16172,15 +16172,15 @@
     "width": 512,
     "height": 512,
     "footBounds": [
-      108,
-      129,
-      316,
-      482
+      94,
+      123,
+      319,
+      481
     ],
     "bodyAnchor": {
-      "x": 0.466796875,
+      "x": 0.474609375,
       "crown": 0.2734375,
-      "foot": 0.94140625
+      "foot": 0.939453125
     }
   },
   "form-portrait-novice-2": {
@@ -16188,9 +16188,9 @@
     "width": 256,
     "height": 256,
     "footBounds": [
-      0,
+      22,
       10,
-      209,
+      230,
       256
     ]
   },
@@ -16199,15 +16199,15 @@
     "width": 512,
     "height": 512,
     "bodyAnchor": {
-      "x": 0.466796875,
+      "x": 0.474609375,
       "crown": 0.2734375,
-      "foot": 0.94140625
+      "foot": 0.939453125
     },
     "footBounds": [
-      98,
+      100,
       122,
-      314,
-      482
+      312,
+      480
     ]
   },
   "form-novice-3": {
@@ -16215,15 +16215,15 @@
     "width": 512,
     "height": 512,
     "footBounds": [
-      118,
-      129,
-      349,
-      482
+      112,
+      123,
+      351,
+      481
     ],
     "bodyAnchor": {
-      "x": 0.50390625,
+      "x": 0.501953125,
       "crown": 0.2734375,
-      "foot": 0.94140625
+      "foot": 0.939453125
     }
   },
   "form-portrait-novice-3": {
@@ -16231,9 +16231,9 @@
     "width": 256,
     "height": 256,
     "footBounds": [
-      0,
+      30,
       10,
-      209,
+      225,
       256
     ]
   },
@@ -16242,15 +16242,15 @@
     "width": 512,
     "height": 512,
     "bodyAnchor": {
-      "x": 0.50390625,
+      "x": 0.501953125,
       "crown": 0.2734375,
-      "foot": 0.94140625
+      "foot": 0.939453125
     },
     "footBounds": [
-      114,
-      123,
-      349,
-      482
+      118,
+      124,
+      343,
+      480
     ]
   },
   "show-novice-2": {
@@ -16258,15 +16258,15 @@
     "width": 640,
     "height": 640,
     "footBounds": [
-      150,
-      198,
-      490,
+      155,
+      199,
+      486,
       550
     ],
     "bodyAnchor": {
-      "x": 0.5546875,
-      "bodyX": 0.55625,
-      "crown": 0.309375,
+      "x": 0.55625,
+      "bodyX": 0.55703125,
+      "crown": 0.3109375,
       "foot": 0.859375
     },
     "sheets": {
@@ -16313,33 +16313,33 @@
     },
     "bodyPx": 351.67,
     "headPx": 27.383,
-    "headFit": 1.0052
+    "headFit": 1.0024
   },
   "show-novice-3": {
     "file": "assets/heroes/forms/novice/form-3/showcase/poster.png",
     "width": 640,
     "height": 640,
     "footBounds": [
-      138,
+      142,
       198,
-      502,
-      550
+      500,
+      549
     ],
     "bodyAnchor": {
       "x": 0.5453125,
       "bodyX": 0.54609375,
       "crown": 0.309375,
-      "foot": 0.859375
+      "foot": 0.8578125
     },
     "sheets": {
       "idle": "assets/heroes/forms/novice/form-3/showcase/idle.webp",
       "fidgets": [
         "assets/heroes/forms/novice/form-3/showcase/salute.webp",
-        "assets/heroes/forms/novice/form-3/showcase/gems.webp"
+        "assets/heroes/forms/novice/form-3/showcase/polish.webp"
       ],
       "labels": [
         "Chào kiếm hiệp sĩ",
-        "Ngọc tứ hệ tỏa sáng"
+        "Lau kiếm"
       ],
       "timing": {
         "assets/heroes/forms/novice/form-3/showcase/salute.webp": [
@@ -16352,14 +16352,14 @@
           150,
           130
         ],
-        "assets/heroes/forms/novice/form-3/showcase/gems.webp": [
+        "assets/heroes/forms/novice/form-3/showcase/polish.webp": [
           130,
+          150,
+          170,
+          170,
+          170,
+          450,
           160,
-          220,
-          260,
-          260,
-          300,
-          180,
           130
         ]
       },
@@ -16375,7 +16375,7 @@
     },
     "bodyPx": 351.67,
     "headPx": 27.5,
-    "headFit": 1.0009
+    "headFit": 1
   },
   "form-aura-novice": {
     "file": "assets/heroes/forms/novice/aura/aura.webp",

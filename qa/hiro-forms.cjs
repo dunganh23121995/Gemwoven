@@ -33,7 +33,7 @@ const frames=process.argv.includes('--frames');
   }
   // 2. The staging: its FX strips, skill poses, sounds by phase, the shake on the hit, clean-up.
   const expect={2:{fx:['f2-gale','f2-slash','f2-cross'],sounds:['novice-f2-gust','novice-charge-cry','novice-dash-steps','novice-dash-rush','novice-f2-swing','novice-f2-swing-up','novice-f2-hit'],hit:'novice-f2-hit',phase:'burst'},
-   3:{fx:['f3-gems','f3-crest','f3-crescent'],sounds:['novice-f3-gather','novice-charge-cry','novice-dash-steps','novice-f3-crest','novice-f3-swing','novice-f3-shatter'],hit:'novice-f3-shatter',phase:'shatter'}};
+   3:{fx:['f3-gems','f3-crest','f3-crescent'],sounds:['novice-f3-gather','novice-charge-cry','novice-dash-steps','novice-f3-crest','novice-f3-swing','novice-f3-hit'],hit:'novice-f3-hit',phase:'hit'}};
   if(frames)fs.mkdirSync('qa/out/hiro',{recursive:true});
   for(const form of [2,3])for(const [foe,options] of [['slime',{}],['elite',{creature:'forest-stagchief',elite:true}],['boss',{creature:null,enemyKey:'fire',boss:true}]]){
    await page.evaluate(([form,options])=>{
@@ -49,7 +49,7 @@ const frames=process.argv.includes('--frames');
    },[form,options]);
    if(frames)for(let i=0;i<26;i++){await page.screenshot({path:`qa/out/hiro/${form}-${foe}-${String(i).padStart(2,'0')}.png`,clip:{x:0,y:40,width:390,height:330}});await page.waitForTimeout(95);}
    const ms=await page.evaluate(()=>ult);
-   const r=await page.evaluate(()=>({fx:[...seen.fx],sounds:seen.sounds,frames:[...seen.frames],shake:seen.shake,left:document.querySelectorAll('.hiro-fx,.hiro-echo,.hiro-flash,.hiro-jeweled,.hiro-jewel-blade').length,acting:document.querySelector('#heroActor').classList.contains('combat-v3-acting')}));
+   const r=await page.evaluate(()=>({fx:[...seen.fx],sounds:seen.sounds,frames:[...seen.frames],shake:seen.shake,left:document.querySelectorAll('.hiro-fx,.hiro-echo,.hiro-flash').length,acting:document.querySelector('#heroActor').classList.contains('combat-v3-acting')}));
    const e=expect[form];
    for(const name of e.fx)assert.ok(r.fx.includes(name),`form ${form} ${foe}: ${name} shown (${r.fx})`);
    for(const id of e.sounds)assert.ok(r.sounds[id],`form ${form} ${foe}: ${id} played (${Object.keys(r.sounds)})`);

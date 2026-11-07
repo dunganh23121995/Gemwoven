@@ -1,0 +1,22 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:36:13Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-3-master-magenta.png"
+  ],
+  "prompt": "Image 1 is only a palette and art-style reference (Hiro the plain hero: grey steel armour over leather, a worn green cloak, a plain steel longsword with four tiny dull stones in its guard). Do NOT draw the character or the sword.\n\nCreate a 6-frame spell VFX sprite sheet, one continuous sequence: FOUR SMALL COLOURED MOTES gather into the tip of a raised sword (the sword and its bearer are NOT drawn; only the motes). Four small, simple, softly coloured round motes (dull red, dull blue, dull green, dull yellow), each no bigger than a coin, drift in from the four sides toward a point near the top centre, with thin plain wind lines, and merge into one small plain white point. Understated, not glowing.\nPLAIN and MODEST: this is the free starter hero, so the effect is simple and down to earth. Painted as OPAQUE solid shapes with crisp edges: no glow halo, no haze, no sparkles, no gold light, no jewels, no rainbow colours, no magic runes. No pink, no purple, no magenta tint. Colours only dull red, dull blue, dull green, dull yellow, white and pale grey.\nExactly 6 frames in a 3 columns x 2 rows grid of equal square 512x512 cells, total image 1536x1024, read left-to-right then next row. Nothing crosses a cell edge; leave a magenta margin of at least 8% on all sides of every cell. Background 100% solid flat #FF00FF magenta in every cell, no gradient, no text, no labels, no borders, no gridlines. Clean HD smooth painted anime game VFX, NOT pixel art.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The candidate appears to be about 1024x684 pixels rather than the requested 1536x1024 with 512x512 cells. The 3x2 arrangement of six frames looks right, but the mote clusters sit closer to the cell centres than to the top centre the prompt asks for. The actual pixel dimensions are hard to confirm from the image alone."
+      }
+    ],
+    "summary": "Six-frame 3x2 mote sequence on a flat magenta background, with no sword or character drawn and only the allowed colours. The main uncertainty is whether the total image size and cell size match the spec.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000827
+  }
+}

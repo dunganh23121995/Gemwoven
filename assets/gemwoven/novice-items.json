@@ -79,16 +79,16 @@
   },
   "hero-novice": {
     "file": "assets/gemwoven/items/hero-novice.png",
-    "width": 312,
-    "height": 548,
-    "source": "raw/novice-idle.png",
+    "width": 308,
+    "height": 512,
+    "source": "heroes/forms/novice/redesign-2611",
     "textless": true
   },
   "portrait-novice": {
     "file": "assets/gemwoven/items/portrait-novice.png",
     "width": 210,
     "height": 256,
-    "source": "raw/novice-idle.png",
+    "source": "heroes/forms/novice/redesign-2611",
     "textless": true
   }
 }

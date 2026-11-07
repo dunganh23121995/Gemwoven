@@ -7,13 +7,14 @@ literal sound of what is new on screen, a few cues each:
   four-star Lữ Kiếm Liên Trảm: a gust of wind with leaves as the traveller's wind whirls round him, a real
   sword swing for each of the three cuts (two takes of one swordsman's recording) and a sword striking a
   body on the finishing cross cut (the damage, loudest);
-  six-star Diệu Ngọc Tứ Hệ Trảm: glass wind chimes as the four jewel lights gather into his blade, a low
-  swoosh for the great downward cut, a glass tinkle as the crystal spires rise round the foe and a glass
-  shatter as the jewel prison breaks (the damage, loudest).
+  six-star Diệu Ngọc Tứ Hệ Trảm, plain since the redesign (owner 07/11: "cơ bản, không rực rỡ"): the soft gust
+  of the four-star form's wind as plain wind lines draw four dull motes into his blade, a low swoosh for the
+  great downward cut, soil cracking as the ground shock spreads under the foe, and the four-star sword striking
+  the body (the damage, loudest; the same recording, as the same kind of beat).
 Each clip is ONE real recording (Freesound CC0), minimally edited: an excerpt with its natural attack and
 decay, a gentle high-pass, plain gain (peak <= 0.82, no limiting or saturation) and short edge fades. No
 layering, pitch or time change, no synthesis. None of these recordings is used by another hero, a boss,
-an elite or the summon screen.
+an elite or the summon screen (the soil cracking is also a rock creature's).
 Output: assets/audio/hero-forms/novice/f2-*.wav, f3-*.wav and assets/audio/hero-forms/novice-stars-manifest.json
 (merged by build.py into ART.castSounds as novice-<name>; form 1's novice-manifest.json is left alone).
 Sources are kept in assets/audio/sources/freesound/<id>-<slug>/ (source.json); fetched once if missing.
@@ -40,10 +41,8 @@ SOURCES = {
     840716: ('sword-swing-1', 'Sword Swing 1', 'Nomagician', 18136826),
     840717: ('sword-swing-3', 'Sword Swing 3', 'Nomagician', 18136826),
     411122: ('sword-hits-the-body-wav', 'Sword hits the body.wav', 'vdovitsky', 1424100),
-    867567: ('glass-wind-chimes-jangling-in-a-soft-breeze', 'Glass Wind Chimes Jangling in a Soft Breeze', 'bassimat', 15636277),
     475135: ('fx-swoosh-low-pitch', 'FX - Swoosh - Low Pitch', 'bolkmar', 2927958),
-    390731: ('glass-tinkle-1-mp3', 'Glass Tinkle 1.mp3', 'FunWithSound', 6456158),
-    686849: ('glass-shatter', 'glass shatter', 'ccen18', 14918565),
+    222521: ('cracking-earthquake-cracking-soil-cracki', 'Cracking Earthquake (cracking soil, cracking stone)', 'uagadugu', 255863),
 }
 
 
@@ -110,18 +109,18 @@ gust = clip('f2-gust', 711441, 0.0, 1.6, 'gust of wind with leaves as the travel
 swing1 = clip('f2-swing', 840716, 0.04, 0.62, 'sword swing: the first and the finishing cut (peak 100 ms in)', fade_in=.004, fade_out=.12, highpass=90, peak=.6)
 swing2 = clip('f2-swing-up', 840717, 0.04, 0.62, 'second take of the same swordsman: the rising cut (peak 100 ms in)', fade_in=.004, fade_out=.12, highpass=90, peak=.6)
 hit2 = clip('f2-hit', 411122, 0.20, 0.72, 'sword strikes the body on the finishing cross cut, the damage (struck 80 ms in)', fade_in=.004, fade_out=.14, highpass=60, peak=.82)
-# Six-star Diệu Ngọc Tứ Hệ Trảm: the jewel lights gather from 0 ms, he steps in at 1150, the crescent sweeps
-# down at 1400-1450, the crystal cage closes at 1700-1790 and shatters on the hit (1950).
-gather = clip('f3-gather', 867567, 0.55, 1.85, 'glass wind chimes jangling as the four jewel lights gather into the blade (0-1.3 s)', fade_in=.03, fade_out=.4, highpass=200, peak=.45)
+# Six-star Diệu Ngọc Tứ Hệ Trảm: the motes gather from 0 ms, he steps in at 1150, the crescent sweeps down at
+# 1400-1450, the ground cracks from 1000 and its dust ring rises at 1700, the sword lands on the hit (1950).
+gather = clip('f3-gather', 711441, 0.30, 1.40, 'soft gust of his wind as plain wind lines draw the four motes into the blade (0-1.1 s)', fade_in=.06, fade_out=.4, highpass=90, peak=.4)
 swoosh = clip('f3-swing', 475135, 0.06, 0.86, 'low swoosh of the great downward cut (peaks 160 ms in)', fade_in=.01, fade_out=.2, highpass=50, peak=.6)
-tinkle = clip('f3-crest', 390731, 0.0, 0.94, 'glass tinkle as the crystal spires rise round the foe (peak 250 ms in)', fade_in=.004, fade_out=.25, highpass=300, peak=.45)
-shatter = clip('f3-shatter', 686849, 0.10, 0.80, 'glass shatter as the jewel prison breaks, the damage (bursts 100 ms in)', fade_in=.003, fade_out=.2, highpass=60, peak=.82)
+crack = clip('f3-crest', 222521, 0.30, 1.30, 'soil cracking as the ground shock spreads under the foe, rising into the dust ring (1460-2460 ms)', fade_in=.02, fade_out=.35, highpass=50, peak=.45)
+hit3 = clip('f3-hit', 411122, 0.20, 0.72, 'the four-star sword striking the body: the great cut lands, the damage (struck 80 ms in)', fade_in=.004, fade_out=.14, highpass=60, peak=.82)
 
 cry, steps, rush = form1('charge-cry'), form1('dash-steps'), form1('dash-rush')
 # (sound, ms from the cast, volume) exactly as forms-hiro.js plays them.
 PLAYS = {
     2: [(cry, 60, .55), (gust, 0, .5), (steps, 740, .5), (rush, 760, .5), (swing1, 930, .5), (swing2, 1190, .5), (swing1, 1450, .55), (hit2, 1700, .8)],
-    3: [(cry, 60, .55), (gather, 0, .5), (steps, 1150, .45), (swoosh, 1290, .6), (tinkle, 1460, .45), (shatter, 1850, .8)],
+    3: [(cry, 60, .55), (gather, 0, .4), (steps, 1150, .45), (swoosh, 1290, .6), (crack, 1460, .45), (hit3, 1870, .8)],
 }
 for form, plays in PLAYS.items():
     mix = np.zeros((round(3.5 * RATE), 2)); played = mix.copy()

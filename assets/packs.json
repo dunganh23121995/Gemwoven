@@ -3833,9 +3833,18 @@
     "assets/fx/depart/comet.webp",
     "assets/fx/depart/dust.webp",
     "assets/fx/depart/fox.webp",
-    "assets/fx/depart/gleam.webp",
     "assets/fx/depart/rabbit.webp",
     "assets/fx/depart/sprout.webp",
+    "assets/fx/heroes/basic/lumi1orb.webp",
+    "assets/fx/heroes/basic/lumi1pop.webp",
+    "assets/fx/heroes/basic/mika1.webp",
+    "assets/fx/heroes/basic/mika2.webp",
+    "assets/fx/heroes/basic/nori1.webp",
+    "assets/fx/heroes/basic/nori2.webp",
+    "assets/fx/heroes/basic/nori3.webp",
+    "assets/fx/heroes/basic/yuki1.webp",
+    "assets/fx/heroes/basic/yuki2.webp",
+    "assets/fx/heroes/basic/yuki3.webp",
     "assets/fx/heroes/motes/earth-1.png",
     "assets/fx/heroes/motes/earth-2.png",
     "assets/fx/heroes/motes/earth-3.png",
@@ -4798,7 +4807,7 @@
     "assets/special-fx/sparkle.webp",
     "assets/special-fx/vortex.webp"
    ],
-   "bytes": 168109486
+   "bytes": 170084060
   },
   {
    "id": "hero-earth-f1",
@@ -5109,7 +5118,7 @@
     "assets/heroes/forms/ice/form-3/showcase/twirl.webp",
     "assets/heroes/forms/ice/form-3/skill.webp"
    ],
-   "bytes": 14574435
+   "bytes": 15178945
   },
   {
    "id": "hero-lightning-f1",
@@ -5225,7 +5234,7 @@
     "assets/audio/hero-forms/novice/f2-swing.wav",
     "assets/audio/hero-forms/novice/f3-crest.wav",
     "assets/audio/hero-forms/novice/f3-gather.wav",
-    "assets/audio/hero-forms/novice/f3-shatter.wav",
+    "assets/audio/hero-forms/novice/f3-hit.wav",
     "assets/audio/hero-forms/novice/f3-swing.wav",
     "assets/audio/hero-forms/transform/novice-transform-end.wav",
     "assets/audio/hero-forms/transform/novice-transform.wav",
@@ -5266,7 +5275,7 @@
     "assets/heroes/novice/run.webp",
     "assets/heroes/novice/skill.webp"
    ],
-   "bytes": 6568741
+   "bytes": 8709756
   },
   {
    "id": "hero-novice-f2",
@@ -5288,7 +5297,7 @@
     "assets/heroes/forms/novice/form-2/showcase/twirl.webp",
     "assets/heroes/forms/novice/form-2/skill.webp"
    ],
-   "bytes": 8838429
+   "bytes": 9197552
   },
   {
    "id": "hero-novice-f3",
@@ -5304,13 +5313,13 @@
     "assets/heroes/forms/novice/form-3/rig/show/idle.webp",
     "assets/heroes/forms/novice/form-3/run.webp",
     "assets/heroes/forms/novice/form-3/showcase/entrance.webp",
-    "assets/heroes/forms/novice/form-3/showcase/gems.webp",
     "assets/heroes/forms/novice/form-3/showcase/idle.webp",
+    "assets/heroes/forms/novice/form-3/showcase/polish.webp",
     "assets/heroes/forms/novice/form-3/showcase/poster.png",
     "assets/heroes/forms/novice/form-3/showcase/salute.webp",
     "assets/heroes/forms/novice/form-3/skill.webp"
    ],
-   "bytes": 10441372
+   "bytes": 9394850
   },
   {
    "id": "hero-shadow-f1",
@@ -5439,7 +5448,7 @@
     "assets/gemwoven/summon/scenes-detail/shadow/scene.webp",
     "assets/gemwoven/summon/scenes-detail/shadow/water.webp"
    ],
-   "bytes": 4031382
+   "bytes": 4030000
   }
  ]
 }

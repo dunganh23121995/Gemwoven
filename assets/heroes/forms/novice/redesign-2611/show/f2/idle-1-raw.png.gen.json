@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:41:04Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-2-master-magenta.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\show\\f2\\idle-1-old.png"
+  ],
+  "prompt": "Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art.\nImage 1 is HIRO's approved new look for this form: copy his face, messy brown hair, brown eyes, green scarf, outfit, boots and sword EXACTLY from Image 1 (plain, humble, muted earthy colours, no gold trim, no gems, no glow).\nImage 2 is four frames of one of his animations: copy EXACTLY its layout (2 columns x 2 rows of equal square cells, square 1024x1024, read left to right then the next row), EVERY pose, the position of every limb, the sword, the scarf and cloth, the body size and position inside every cell and the foot line. Redraw each frame of Image 2 with the look of Image 1; change nothing about the motion. His face stays the same in every frame unless Image 2 shows another expression.\nNo effects, no glow, no particles.\nNothing crosses a cell edge. Uniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a clean 2x2 grid of four chibi frames on a flat magenta background, with no text, borders, or extra figures. The character matches the reference look (brown hair, green scarf, armour, sword), and the poses broadly follow the reference sheet. Any differences in pose and figure size look like ordinary drift rather than clear defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000659
+  }
+}

@@ -1,0 +1,5 @@
+Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art.
+Image 1 is HIRO's approved new look for this form: copy his face, messy brown hair, brown eyes, green scarf, outfit, boots and sword EXACTLY from Image 1 (plain, humble, muted earthy colours, no gold trim, no gems, no glow).
+Image 2 is four frames of one of his animations: copy EXACTLY its layout (2 columns x 2 rows of equal square cells, square 1024x1024, read left to right then the next row), EVERY pose, the position of every limb, the sword, the scarf and cloth, the body size and position inside every cell and the foot line. Redraw each frame of Image 2 with the look of Image 1; change nothing about the motion. His face stays the same in every frame unless Image 2 shows another expression.
+No effects, no glow, no particles.
+Nothing crosses a cell edge. Uniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.

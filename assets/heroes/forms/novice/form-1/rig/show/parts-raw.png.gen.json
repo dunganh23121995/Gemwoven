@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-07T02:52:51.118351+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\form-1\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a chibi game character on a black background (Hiro, a humble chibi boy traveler (he/him): messy chestnut-brown hair with one springy cowlick tuft, big brown eyes, a dull green scarf, a brown cloth vest over a cream shirt, brown trousers and boots, a plain wooden practice sword). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the main hair mass, hood, hat brim and crown, helmet. The face is never any other colour.\n- pure WHITE #FFFFFF: torso, chest armour, shoulders, arms and hands.\n- pure GREEN #00FF00: both legs from the hip down, with the boots.\n- pure YELLOW #FFFF00: the held weapon or staff or shield, without the hand.\n- pure RED #FF0000: long loose pieces that lie behind the body or stick out of it and move freely.\n- pure CYAN #00FFFF: small loose pieces lying on top of the body.\nFor this character: RED: the long end of the green scarf, the springy cowlick tuft and any hair strand sticking out. CYAN: the tunic hem, its laces, the belt end, the loose sleeve edges and the scarf knot. YELLOW: the wooden sword only. GREEN: both legs with the boots.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested flat colour-coded part map: blue head and hair, white torso and arms, yellow sword, green legs and boots, red scarf end and cowlick, cyan hem and sleeve edges, on a flat black background. The pose and character match the reference, with no cut-off parts, text or extra figures. The canvas is 1024px against the reference's 768px, which is not a listed defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000614
+  }
+}

@@ -1,14 +1,13 @@
 /* A fully evolved hero leaves a cleared stage with something of its own, as six-star Noct hauls
  * a harvested soul: Mika's fox-fire spirit gallops at her heels, Yuki's snow rabbit hops beside
  * her, flowers sprout in Nori's footsteps, a comet trail of stars streams behind Lumi, and Hiro,
- * a rookie on the road, kicks up dust as he runs (as the six-star jewel hero, his footprints gleam). Art: assets/fx/depart (ART.departFx). */
+ * a rookie on the road, kicks up dust as he runs (in every form since his plain redesign). Art: assets/fx/depart (ART.departFx). */
 const DEPART_FX={
   fire:{name:'fox',kind:'companion',form:3},
   ice:{name:'rabbit',kind:'companion',form:3},
   lightning:{name:'comet',kind:'trail',form:3},
   earth:{name:'sprout',kind:'ground',form:3,every:300,life:1500},
-  // six-star Hiro leaves gleaming jewel-light footprints instead of road dust (byForm: a form's own mark)
-  novice:{name:'dust',kind:'ground',form:1,every:260,life:560,byForm:{3:{name:'gleam',kind:'ground',form:3,every:320,life:720}}}
+  novice:{name:'dust',kind:'ground',form:1,every:260,life:560}
 };
 function departFx(key){
   const form=typeof combatHeroForm==='function'?combatHeroForm(key):1,fx=DEPART_FX[key]?.byForm?.[form]||DEPART_FX[key],sheet=fx&&ART.departFx?.[fx.name];

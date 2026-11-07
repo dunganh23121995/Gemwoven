@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-07T02:53:31.899162+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\form-2\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a chibi game character on a black background (Hiro in his four-star form, a chibi traveling swordsman (he/him): messy chestnut-brown hair with one springy cowlick tuft, big brown eyes, a dull green scarf and half-cloak, a brown leather jerkin with straps and a pouch, one plain iron pauldron, brown trousers and boots, a plain iron sword). Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the main hair mass, hood, hat brim and crown, helmet. The face is never any other colour.\n- pure WHITE #FFFFFF: torso, chest armour, shoulders, arms and hands.\n- pure GREEN #00FF00: both legs from the hip down, with the boots.\n- pure YELLOW #FFFF00: the held weapon or staff or shield, without the hand.\n- pure RED #FF0000: long loose pieces that lie behind the body or stick out of it and move freely.\n- pure CYAN #00FFFF: small loose pieces lying on top of the body.\nFor this character: RED: the dull green half-cloak behind him, the long green scarf end and the springy cowlick tuft. CYAN: the leather strap ends, the pouch and the loose sleeve edges. YELLOW: the iron sword with its crossguard only. GREEN: both legs with the boots.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested flat colour-coded part map: blue head and hair, white torso and arms, green legs and boots, red cloak and cowlick, cyan straps and pouch, yellow sword, and a flat black background. The pose and placement match the reference. The canvas is larger (1024 versus 768), which looks like a resize rather than a defect. The only ambiguity is that the whole blade is yellow where the prompt says 'crossguard only', which is a minor interpretation point and not a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000804
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:44:40Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-3-master-magenta.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\show\\f3\\idle-2-old.png"
+  ],
+  "prompt": "Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art.\nImage 1 is HIRO's approved new look for this form: copy his face, messy brown hair, brown eyes, green scarf, outfit, boots and sword EXACTLY from Image 1 (plain, humble, muted earthy colours, no gold trim, no gems, no glow).\nImage 2 is four frames of one of his animations: copy EXACTLY its layout (2 columns x 2 rows of equal square cells, square 1024x1024, read left to right then the next row), EVERY pose, the position of every limb, the sword, the scarf and cloth, the body size and position inside every cell and the foot line. Redraw each frame of Image 2 with the look of Image 1; change nothing about the motion. His face stays the same in every frame unless Image 2 shows another expression.\nNo effects, no glow, no particles.\nNothing crosses a cell edge. Uniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "Small yellow sparkle-like dots appear around the open hands of all four frames, which may be the glow or particle effects the prompt forbids. Not certain they are effects rather than finger highlights."
+      },
+      {
+        "kind": "background",
+        "detail": "Faint pinkish-magenta flecks appear on the green cape in several frames, which may be the key colour bleeding into the subject. Not certain at this resolution."
+      }
+    ],
+    "summary": "Layout is a correct 2x2 grid in a 1024x1024 square with flat magenta background, and the character matches the plain Image 1 look without gold trim or gems. Possible glow dots near the hands and possible key-colour flecks on the cape need a closer look, so the verdict is unsure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00079
+  }
+}

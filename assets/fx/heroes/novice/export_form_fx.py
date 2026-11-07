@@ -1,11 +1,10 @@
 """Pack Hiro's form 2/3 skill FX (src/forms-hiro.js) into runtime strips beside form 1's.
 
 Input: <name>/raw-sheet.png, the untouched Codex image_gen sheet (solid #FF00FF background, prompt in
-<name>/prompt-used.txt, written by fx_prompts.py). The generate2dsprite processor keys out the magenta;
-a despill pass then fades the pink fringe. The form-2 FX (steel, wind, leaves) never hold pink or violet,
-so any key tint is faded wherever it is; the form-3 jewel FX hold real rubies and indigo amethysts, so
-only rose pixels (red as strong as blue) near the cut edge are faded and rose pixels inside go back to
-warm gold (a faded gold ring blended toward the key). Every frame of a sheet is cut with
+<name>/prompt-used.txt, written by fx_prompts_plain.py). The generate2dsprite processor keys out the magenta;
+a despill pass then fades the pink fringe and unpink() takes dust and wind Codex tinted toward the key back to
+sandy beige (the plain FX hold no pink or violet). The `jewel` path is kept for jewel-light art (rubies and
+indigo amethysts: only rose pixels near the cut edge fade, rose pixels inside go back to warm gold). Every frame of a sheet is cut with
 ONE shared box (the union of all frames) so a sequence keeps its own motion and ground line, then the
 whole sheet is scaled uniformly to the runtime cell, as Yuki's export_fx.py does.
 Output: <name>.webp strips, merged into fx.json (read by build.py as ART.heroFx.novice). Form 1's
@@ -32,10 +31,22 @@ FX = {
     'f2-gale': (3, 2, 6, 256, 90, 0, False),       # the traveller's wind whirling round his boots (loop)
     'f2-slash': (3, 2, 6, 256, 50, None, False),   # one steel cut of the chain (turned per cut)
     'f2-cross': (4, 2, 8, 320, 70, None, False),   # the finishing cross cut that bursts into wind and leaves
-    'f3-gems': (3, 2, 6, 288, 90, None, True),     # four jewel lights gathering into the raised blade
-    'f3-crescent': (3, 2, 6, 384, 55, None, True),  # the giant jewel-light crescent swept down
-    'f3-crest': (4, 2, 8, 384, 85, 0, True),       # the jewel crest prison that blooms under the foe
+    # plain redesign (owner 07/11): no jewel light left, so no form keeps rose pixels
+    'f3-gems': (3, 2, 6, 288, 90, None, False),     # four small dull motes gathering into the raised blade
+    'f3-crescent': (3, 2, 6, 384, 55, None, False),  # the big steel crescent swept down
+    'f3-crest': (4, 2, 8, 384, 85, 0, False),       # the ground shock under the foe after the heavy blow
 }
+
+
+def unpink(a):
+    """Plain redesign: Codex tints the dust and wind of these sheets toward the magenta key (salmon, rose, lilac).
+    Pixels that lean pink go to sandy beige at their own brightness; saturated reds (the dull red mote) and
+    neutral whites, greys and beiges stay."""
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    w = np.clip((b - g + 30) / 25, 0, 1) * np.clip((r - g - 10) / 20, 0, 1) * np.clip((g - .5 * r) / 20, 0, 1)
+    lum = .299 * r + .587 * g + .114 * b
+    for ch, k in enumerate((1.08, 1.0, .84)):
+        a[..., ch] = a[..., ch] * (1 - w) + np.minimum(255, lum * k) * w
 
 
 def despill(frame, jewel):
@@ -56,6 +67,7 @@ def despill(frame, jewel):
         al *= 1 - np.clip((spill - 10) / 50, 0, 1)
         lift = np.clip(spill, 0, None)       # the magenta share left in a fringe pixel: taken out of red and blue
         a[..., 0], a[..., 2] = r - lift, b - lift
+        unpink(a)
     a[..., 3] = al
     return Image.fromarray(a.clip(0, 255).astype('uint8'), 'RGBA')
 

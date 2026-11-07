@@ -17,24 +17,24 @@
       ]
     },
     {
-      "name": "gems",
-      "label": "Ngọc tứ hệ tỏa sáng",
-      "file": "gems.webp",
+      "name": "polish",
+      "label": "Lau kiếm",
+      "file": "polish.webp",
       "whole": true,
       "frameMs": [
         130,
+        150,
+        170,
+        170,
+        170,
+        450,
         160,
-        220,
-        260,
-        260,
-        300,
-        180,
         130
       ]
     },
     {
       "name": "entrance",
-      "label": "Trụ pha lê tứ hệ",
+      "label": "Bước tới thủ kiếm",
       "file": "entrance.webp",
       "whole": false
     }

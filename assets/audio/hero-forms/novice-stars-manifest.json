@@ -77,22 +77,22 @@
   },
   "novice-f3-gather": {
     "file": "hero-forms/novice/f3-gather.wav",
-    "duration": 1.3,
-    "beat": "glass wind chimes jangling as the four jewel lights gather into the blade (0-1.3 s)",
+    "duration": 1.1,
+    "beat": "soft gust of his wind as plain wind lines draw the four motes into the blade (0-1.1 s)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Glass Wind Chimes Jangling in a Soft Breeze",
-        "author": "bassimat",
-        "source_url": "https://freesound.org/people/bassimat/sounds/867567/",
+        "title": "a gust of wind blowing some leaves",
+        "author": "F3ather",
+        "source_url": "https://freesound.org/people/F3ather/sounds/711441/",
         "license": "CC0-1.0",
-        "sha256": "af497b7811530a38227a9edda6aac4747ee1a26685aec80398ca68f40999c6ab"
+        "sha256": "a8412d03bc0832117ce39fc81da3880fa708f7869650669ef8a58458f2c23071"
       }
     ],
-    "processing": "excerpt 0.55-1.85 s of one recording, 200 Hz high-pass, edge fades, gain",
-    "peak": 0.45,
-    "rms": 0.042,
-    "sha256": "e22644071466abdaa0766762c4d71efffd33031f0787be3def7908f759434ccd"
+    "processing": "excerpt 0.30-1.40 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.4,
+    "rms": 0.06,
+    "sha256": "fb5eb951706f8d6b4a39c62644f8000a6a388e4e34703bc64ebe313dea62a039"
   },
   "novice-f3-swing": {
     "file": "hero-forms/novice/f3-swing.wav",
@@ -115,40 +115,40 @@
   },
   "novice-f3-crest": {
     "file": "hero-forms/novice/f3-crest.wav",
-    "duration": 0.94,
-    "beat": "glass tinkle as the crystal spires rise round the foe (peak 250 ms in)",
+    "duration": 1.0,
+    "beat": "soil cracking as the ground shock spreads under the foe, rising into the dust ring (1460-2460 ms)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Glass Tinkle 1.mp3",
-        "author": "FunWithSound",
-        "source_url": "https://freesound.org/people/FunWithSound/sounds/390731/",
+        "title": "Cracking Earthquake (cracking soil, cracking stone)",
+        "author": "uagadugu",
+        "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
         "license": "CC0-1.0",
-        "sha256": "f5ae4d31f2627e6a4b3255d11d4027b09ec2ce695a1cefd01f57e971c000e7c5"
+        "sha256": "c0711d04a2c000e0dfbbd9284210056051920b1768b26403182f22d12703a0b8"
       }
     ],
-    "processing": "excerpt 0.00-0.94 s of one recording, 300 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.30-1.30 s of one recording, 50 Hz high-pass, edge fades, gain",
     "peak": 0.45,
-    "rms": 0.033,
-    "sha256": "b911fa9bdfff6b5c35935f34cb70ecbcb654ede7b74cc3dc854b973e62ec5e28"
+    "rms": 0.136,
+    "sha256": "66c56aade90f40ec62d23857e35c5669556d99b5ce965bc04b4ef0946b6dd892"
   },
-  "novice-f3-shatter": {
-    "file": "hero-forms/novice/f3-shatter.wav",
-    "duration": 0.7,
-    "beat": "glass shatter as the jewel prison breaks, the damage (bursts 100 ms in)",
+  "novice-f3-hit": {
+    "file": "hero-forms/novice/f3-hit.wav",
+    "duration": 0.52,
+    "beat": "the four-star sword striking the body: the great cut lands, the damage (struck 80 ms in)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "glass shatter",
-        "author": "ccen18",
-        "source_url": "https://freesound.org/people/ccen18/sounds/686849/",
+        "title": "Sword hits the body.wav",
+        "author": "vdovitsky",
+        "source_url": "https://freesound.org/people/vdovitsky/sounds/411122/",
         "license": "CC0-1.0",
-        "sha256": "80500bd0bff2346cc03969e8f15d3a12fc1fa5d0b7d1112ebf478a5bbbfebae9"
+        "sha256": "c314bdd106058a5520aac20497a8e3db69c473e7081c6898e90da403bd91fd46"
       }
     ],
-    "processing": "excerpt 0.10-0.80 s of one recording, 60 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.20-0.72 s of one recording, 60 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.104,
-    "sha256": "3071c5e82be5553ef4d9683d2badb851c456ee1cd6202250f4dfae78f782d655"
+    "rms": 0.061,
+    "sha256": "d091ecc5c170d9341c36c597dcb6b27b6acfbe6e7c9039048a347ff4b37910cb"
   }
 }

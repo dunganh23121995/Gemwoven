@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:48:20Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\aura\\raw-ornate.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-3-master-magenta.png"
+  ],
+  "prompt": "Create an independent animated AURA VFX sprite sheet for a chibi fantasy RPG hero's final form. NO CHARACTER: no body, no face, no hands, no weapon, no hero silhouette, no scenery. Clean HD painterly anime game effect, NOT pixel art.\nImage 1 is the old aura on the same layout: match its cell layout, sparseness, scale and where its elements sit, NOT its gold light, sparkles or jewels. Image 2 is only a palette reference (Hiro, a plain young knight in grey steel and brown leather with a worn green cloak): do NOT draw him.\nPLAIN and MODEST: Hiro is the free starter hero, so his aura is simple and down to earth: a little traveller's wind. Painted as opaque soft shapes: no glow halo, no sparkles, no gold light, no jewels, no magic runes, no rainbow colours.\nDraw ONLY: 1) two or three THIN pale off-white wind streaks curving behind his head and shoulders, open, at about 22-50% of cell height; 2) three or four small dull green and brown leaves drifting at different heights around the upper body, far apart; 3) one thin wisp of pale sandy dust trailing along the ground around the ankles at about 80-88% of cell height, about 40% of cell width.\nColours only off-white, pale grey, dull green, leaf brown and sandy beige.\nMOTION: the wind streaks slide round a few degrees, the leaves drift and turn, the dust wisp flows sideways.\nCOMPOSITION in every cell: imagine an invisible small chibi hero standing in the middle (head from 28% to 42% of cell height, shoulders at about 45%, waist at about 60%, feet at 82%, body about 28% of cell width, centred). The zone where the hero stands (central 30% of cell width, from 24% to 80% of cell height) stays EMPTY pure magenta, except where a thin streak passes behind the neck or body edge.\nLAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid, every cell square, tall 1024x2048 canvas, read left-to-right, top-to-bottom. One seamless gentle loop; frame 8 flows back into frame 1. Same size, centre and feet line in all eight frames; no camera change, no zoom.\nEverything stays fully inside its own cell with at least 6% magenta padding on all four sides. No full circle, no ground disc, no shadow, no text, no labels, no borders, no grid lines. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta or pink in the effect.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Eight cells in a 2x4 grid on flat #FF00FF magenta, with no character, text, borders or grid lines. Each cell has thin pale wind streaks, a few small leaves at the edges, and a low ground wisp at roughly 84-88% height. The central hero zone stays empty. Leaves show slight reddish tints, which is minor drift and not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000607
+  }
+}

@@ -1,0 +1,13 @@
+1 attack D:/Project/Gemwoven/assets/heroes/novice/attack.webp 3 2
+1 cast D:/Project/Gemwoven/assets/heroes/novice/cast.webp 3 2
+1 hurt D:/Project/Gemwoven/assets/heroes/novice/hurt.webp 3 2
+1 run D:/Project/Gemwoven/assets/heroes/novice/run.webp 2 2
+1 skill D:/Project/Gemwoven/assets/heroes/novice/skill.webp 3 2
+2 attack D:/Project/Gemwoven/assets/heroes/forms/novice/form-2/attack.webp 3 2
+2 cast D:/Project/Gemwoven/assets/heroes/forms/novice/form-2/cast.webp 3 2
+2 run D:/Project/Gemwoven/assets/heroes/forms/novice/form-2/run.webp 3 2
+2 skill D:/Project/Gemwoven/assets/heroes/forms/novice/form-2/skill.webp 3 2
+3 attack D:/Project/Gemwoven/assets/heroes/forms/novice/form-3/attack.webp 3 2
+3 cast D:/Project/Gemwoven/assets/heroes/forms/novice/form-3/cast.webp 3 2
+3 run D:/Project/Gemwoven/assets/heroes/forms/novice/form-3/run.webp 3 2
+3 skill D:/Project/Gemwoven/assets/heroes/forms/novice/form-3/skill.webp 3 2

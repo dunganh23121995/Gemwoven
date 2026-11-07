@@ -1,7 +1,8 @@
 /* Hiro (novice, one form): his own ultimate, Kiếm Nhiệt Huyết. The eager rookie plants his feet in
- * a flare of golden fighting spirit, winds up, dashes in with a trail of warm afterimages, rises and
- * brings the wooden sword down in one big earnest overhead chop: a golden crescent sweeps across
- * the foe and a burst of spirit lands on its body. Art: the `skill` sheet beside his other actions
+ * a swirl of road dust, winds up, dashes in with a trail of faint afterimages, rises and brings the
+ * wooden sword down in one big earnest overhead chop: a plain air trail sweeps across the foe and a
+ * puff of dust bursts on its body (plain since the redesign, owner 07/11: no golden spirit).
+ * Art: the `skill` sheet beside his other actions
  * (assets/heroes/novice/skill.webp; an alternative drawing may carry its own) and the strips in
  * assets/fx/heroes/novice (ART.heroFx.novice: aura, slash, burst).
  * Damage is the old ultimate's, unchanged: progressionCasting on, then for each of the kit's hits
@@ -25,7 +26,7 @@ function tanFx(name,point,size,{rotate=0,duration}={}){
   const job=animate(node,[{backgroundPosition:'0% 0'},{backgroundPosition:'100% 0'}],{duration:duration||sheet.count*sheet.frameDuration,easing:`steps(${sheet.count},jump-none)`,fill:'forwards'}).finally(()=>node.remove());
   return {node,job};
 }
-// The fighting-spirit flare stands behind him (inside his actor, under the sprite), looping.
+// The dust swirl stands round his feet (inside his actor, under the sprite), looping.
 function tanSpiritAura(){
   const sheet=ART.heroFx?.novice?.aura;if(!sheet||reduced)return null;
   const node=document.createElement('span');node.className='tan-spirit-aura';node.setAttribute('aria-hidden','true');
@@ -41,11 +42,6 @@ function tanEcho(pending,delay=0){
   const sprite=root.querySelector('.sprite-body').cloneNode(true);sprite.removeAttribute('role');sprite.removeAttribute('aria-label');node.append(sprite);$('combatEffects').append(node);
   pending.push(animate(node,[{opacity:.55,translate:'0 0'},{opacity:0,translate:'-16px 0'}],{duration:300,delay,easing:'ease-out',fill:'both'}).finally(()=>node.remove()));
 }
-function tanSpiritSound(){
-  const context=combatV3AudioContext();if(!context)return;
-  combatV3Tone(context,{frequency:196,end:520,duration:.62,volume:.018,type:'triangle'});
-  combatV3Tone(context,{at:context.currentTime+.08,frequency:392,end:880,duration:.5,volume:.01});
-}
 async function tanSpiritSword(){
   const root=actor('hero'),target=actor('enemy'),pending=[],kit=progressionKit(),act=tanSkillAction();
   const old=root.style.transform,oldZ=root.style.zIndex,start=performance.now();
@@ -58,7 +54,7 @@ async function tanSpiritSword(){
   progressionCasting=true;
   root.classList.add('combat-v3-acting','tan-spirit');root.style.zIndex='4';root.dataset.ragePhase='plant';
   try{
-    combatVoice('hero','cast');tanSpiritSound();popActorSkill('hero',HEROES.novice.skill,true,pending);
+    combatVoice('hero','cast');popActorSkill('hero',HEROES.novice.skill,true,pending);
     // The charge (scripts/prepare_hiro_form_sounds.py): his battle cry bursts out as he plants his feet (60 ms)
     // and his boots drive him over the dirt on the dash; the rush of his jacket is played with the dash below.
     if(!reduced){setTimeout(()=>playCastSound('novice','charge-cry',{volume:.55,pan:-.2}),60);setTimeout(()=>playCastSound('novice','dash-steps',{volume:.55,pan:0}),850);}

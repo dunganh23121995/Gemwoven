@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:25:36Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-2-master-magenta.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\sheets\\f2-attack-old.png"
+  ],
+  "prompt": "Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art.\nImage 1 is HIRO's approved new look for this form: copy his face, messy brown hair, brown eyes, green scarf, outfit, boots and sword EXACTLY from Image 1 (plain, humble, muted earthy colours, no gold, no gems, no glow).\nImage 2 is his current \"attack\" animation sheet: copy EXACTLY its layout (3 columns x 2 rows of equal square cells, landscape 1536x1024, read left to right then the next row), the number of frames, EVERY pose, the position and angle of every limb and of the sword, the body size and position inside every cell and the foot line. Redraw each frame of Image 2 with the look of Image 1; change nothing about the motion.\nRemove every effect that Image 2 may contain: no glow, no sparkles, no flames, no slash trails, no light, no particles, no aura. Body and sword only.\nNothing crosses a cell edge. Uniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 3x2 grid of six chibi figures on a flat magenta background, matching the layout and sword poses of the attack sheet. Character identity (brown messy hair, green scarf, armour, boots, sword) is consistent with Reference 1. No text, extra figures, effects, or cropping are visible, and no defects were found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000618
+  }
+}

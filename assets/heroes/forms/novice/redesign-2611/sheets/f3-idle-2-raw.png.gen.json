@@ -1,0 +1,23 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T02:32:59Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\form-3-master-magenta.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\redesign-2611\\sheets\\f3-idle-2-old.png"
+  ],
+  "prompt": "Clean HD painterly chibi 2D RPG animation sheet, NOT pixel art.\nImage 1 is HIRO's approved new look for this form: copy his face, messy brown hair, brown eyes, green scarf, outfit, boots and sword EXACTLY from Image 1 (plain, humble, muted earthy colours, no gold, no gems, no glow).\nImage 2 is four frames of his current resting loop: copy EXACTLY its layout (2 columns x 2 rows of equal square cells, square 1024x1024, read left to right then the next row), EVERY pose, the position of every limb, the sword, the scarf and cloth, the body size and position inside every cell and the foot line. Redraw each frame of Image 2 with the look of Image 1; change nothing about the motion. His face stays the same in every frame.\nNo effects, no glow, no particles. Nothing crosses a cell edge. Uniform pure flat #FF00FF magenta background, no text, no labels, no borders, no grid lines, no floor, no shadows.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "Small magenta/pink specks appear on the green cloak edges in several frames, which may be the key colour bleeding into the subject. It could also be painterly texture, so this is not certain."
+      }
+    ],
+    "summary": "The 2x2 layout, square cells, magenta background, plain earthy outfit and sword match the prompt, and no figure is cut off. The only possible defect is the magenta speckling on the cloak. Pose fidelity to Image 2 looks roughly right but could not be verified precisely, so the verdict is unsure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000788
+  }
+}
