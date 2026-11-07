@@ -143,7 +143,7 @@ art['specialFx'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorte
 # Board item pieces (owner 05/11, Codex-drawn, assets/gemwoven/raw/board-items/prep.py): dressed on by src/board-items.js.
 art['boardItems'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorted((root/'assets/board-items').glob('*.webp'))}
 novice_meta=json.loads((root/'assets/heroes/novice/meta.json').read_text(encoding='utf-8'))
-art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration']} for action,meta in novice_meta['actions'].items()}
+art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration'],**({'scale':meta['scale']} if 'scale' in meta else {})} for action,meta in novice_meta['actions'].items()}
 art['heroes']['novice']['buff']=art['heroes']['novice']['cast']
 art['campaignCreatures']={}
 journey_items=json.loads((root/'assets/gemwoven/journey-items.json').read_text(encoding='utf-8'))['items']

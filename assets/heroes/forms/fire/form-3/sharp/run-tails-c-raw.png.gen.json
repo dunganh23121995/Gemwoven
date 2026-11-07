@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-07T19:11:07Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\form-3\\sharp\\run-tails-c-ref.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\form-3\\sharp\\run-tails-rest.png"
+  ],
+  "prompt": "Image 1 shows two animation frames of a chibi fox-girl running with her glaive (two equal square cells in one row). Redraw them on a wide landscape canvas, two equal square cells in one row: in every cell the same running pose, the same limb and glaive angles, the same size and the same position inside the cell as Image 1.\nChange one thing: her nine big fox tails all fan out BEHIND her, to the left and back, below her shoulders. No tail rises above or beside her head and none shows between her ears and the glaive: behind her head there is only her own hair, her two fox ears and the glaive.\nImage 2 is the same character drawn in her resting pose: render the frames exactly the way Image 2 is rendered (soft clean edges, the same colours and detail, NO black outline around the figure), and keep her face, hair, ears, armour, glaive and tails exactly as designed in Image 2.\nBackground 100% solid flat magenta #FF00FF, no gradients, no text, no labels, no borders between cells, no shadow on the ground. Nothing crosses a cell edge.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Two equal square cells in one row on flat magenta, with the same chibi fox-girl in a running pose with the glaive. Her hair, ears, gold-red armour and glaive match the references, and the tails fan out behind her with none above the head. Nothing is cut off at the image edges. Only about five or six tails are clearly visible, so the nine-tail count cannot be confirmed, but this looks like overlap rather than a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000647
+  }
+}

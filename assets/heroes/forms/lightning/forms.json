@@ -405,7 +405,8 @@
             ]
           ],
           "footY": 0.94,
-          "frameDuration": 100
+          "frameDuration": 100,
+          "scale": 0.9
         },
         "hover": {
           "file": "assets/heroes/forms/lightning/form-2/hover.webp",

@@ -4914,7 +4914,7 @@
     "assets/special-fx/sparkle.webp",
     "assets/special-fx/vortex.webp"
    ],
-   "bytes": 181341540
+   "bytes": 181341553
   },
   {
    "id": "hero-earth-f1",
@@ -4969,7 +4969,7 @@
     "assets/reimagined/heroes/earth/run.webp",
     "assets/reimagined/heroes/earth/smash.webp"
    ],
-   "bytes": 11096688
+   "bytes": 10989772
   },
   {
    "id": "hero-earth-f2",
@@ -4992,7 +4992,7 @@
     "assets/heroes/forms/earth/form-2/showcase/poster.png",
     "assets/heroes/forms/earth/form-2/showcase/shieldtap.webp"
    ],
-   "bytes": 9016587
+   "bytes": 8922115
   },
   {
    "id": "hero-earth-f3",
@@ -5015,7 +5015,7 @@
     "assets/heroes/forms/earth/form-3/showcase/poster.png",
     "assets/heroes/forms/earth/form-3/showcase/shieldbloom.webp"
    ],
-   "bytes": 11414224
+   "bytes": 11290616
   },
   {
    "id": "hero-fire-f1",
@@ -5074,7 +5074,7 @@
     "assets/reimagined/heroes/fire/run.webp",
     "assets/reimagined/heroes/fire/smash.webp"
    ],
-   "bytes": 12032932
+   "bytes": 11934122
   },
   {
    "id": "hero-fire-f2",
@@ -5122,7 +5122,7 @@
     "assets/heroes/forms/fire/form-3/skill.webp",
     "assets/heroes/forms/fire/form-3/thrust3.webp"
    ],
-   "bytes": 13347397
+   "bytes": 13222969
   },
   {
    "id": "hero-ice-f1",
@@ -5177,7 +5177,7 @@
     "assets/reimagined/heroes/ice/hurt.webp",
     "assets/reimagined/heroes/ice/run.webp"
    ],
-   "bytes": 10278100
+   "bytes": 10227472
   },
   {
    "id": "hero-ice-f2",
@@ -5201,7 +5201,7 @@
     "assets/heroes/forms/ice/form-2/showcase/poster.png",
     "assets/heroes/forms/ice/form-2/skill.webp"
    ],
-   "bytes": 8762669
+   "bytes": 8642513
   },
   {
    "id": "hero-ice-f3",
@@ -5225,7 +5225,7 @@
     "assets/heroes/forms/ice/form-3/showcase/twirl.webp",
     "assets/heroes/forms/ice/form-3/skill.webp"
    ],
-   "bytes": 15178945
+   "bytes": 15120791
   },
   {
    "id": "hero-lightning-f1",
@@ -5276,7 +5276,7 @@
     "assets/reimagined/heroes/lightning/hover.webp",
     "assets/reimagined/heroes/lightning/hurt.webp"
    ],
-   "bytes": 8622462
+   "bytes": 8597448
   },
   {
    "id": "hero-lightning-f2",
@@ -5301,7 +5301,7 @@
     "assets/heroes/forms/lightning/form-2/showcase/zigzag.webp",
     "assets/heroes/forms/lightning/form-2/skill.webp"
    ],
-   "bytes": 8602944
+   "bytes": 8562826
   },
   {
    "id": "hero-lightning-f3",
@@ -5327,7 +5327,7 @@
     "assets/heroes/forms/lightning/form-3/showcase/wingtwirl.webp",
     "assets/heroes/forms/lightning/form-3/skill.webp"
    ],
-   "bytes": 15215529
+   "bytes": 15119081
   },
   {
    "id": "hero-novice-f1",
@@ -5382,7 +5382,7 @@
     "assets/heroes/novice/run.webp",
     "assets/heroes/novice/skill.webp"
    ],
-   "bytes": 8709756
+   "bytes": 7042436
   },
   {
    "id": "hero-novice-f2",

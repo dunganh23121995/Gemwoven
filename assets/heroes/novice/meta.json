@@ -409,7 +409,8 @@
         "d88f8aed4421d0c554b8e5ba3a32b8e7d6208bb7e72637514a7e16cf05d6c4eb",
         "5f380c9ca60bef3b837352c530cdcf366eb1fdea92ee75ec1260ccdc27a9e218",
         "f49fceb2b9cc90e971b48d4bcd4e396d1740d49212ae4ef4a95fd7acb468c4be"
-      ]
+      ],
+      "scale": 0.86
     },
     "skill": {
       "hero": "novice",
@@ -472,7 +473,8 @@
         "anchor_x_std": 0.020344693670994757,
         "anchor_y_std": 0.02774823637010342,
         "anchor_y_mean": 0.8700396825396824
-      }
+      },
+      "scale": 0.88
     }
   }
 }

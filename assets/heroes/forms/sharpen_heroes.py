@@ -47,7 +47,7 @@ MAGENTA = ((255, 0, 255), "magenta #FF00FF")
 PAIR_OLD = "609627ff"
 # The sheets a detail-per-body audit (and a look at each) found softer or paler than their form's resting frame
 PAIRED = """novice-attack novice-cast novice-hurt
-fire-attack fire-hurt fire-smash fire-run fire3-skill fire3-attack fire3-run fire3-cast
+fire-attack fire-hurt fire-smash fire-run fire3-skill fire3-attack fire3-cast
 ice-attack ice-cast ice-hurt ice2-attack ice2-skill ice2-run ice2-cast ice3-show-fanwave ice3-show-twirl
 earth-attack earth-cast earth-hurt earth-run earth-smash earth2-attack earth2-cast earth2-run earth3-attack earth3-cast earth3-run
 lightning-attack lightning-hover lightning-run lightning-cast lightning2-skill lightning2-hover
@@ -62,7 +62,8 @@ ZOOM_OLD = "6a2acc8c"
 # drawn area (the body drawn large), and the sheet is kept in cells of 512 x scale so nothing is shrunk and grown back;
 # the layout in the cell (feet, reach, grips) is the old one, only finer. A few sheets at scale 1 drawn softer than
 # their resting frame (six-star Yuki) take the same zoomed redraw at 512px.
-ZOOMED = """fire3-attack fire3-skill fire3-run fire3-cast shadow2-attack shadow2-attackLeft
+# fire3-run left both lists 08/11: six-star Mika's run is redrawn by form-3/redraw_run.py (tails behind her)
+ZOOMED = """fire3-attack fire3-skill fire3-cast shadow2-attack shadow2-attackLeft
 lightning3-attack lightning3-ride lightning3-skill lightning3-cast lightning3-hover lightning2-skill
 earth2-attack earth2-cast earth2-run earth3-attack earth3-cast earth3-run
 ice3-attack ice3-cast ice3-run ice3-skill""".split()

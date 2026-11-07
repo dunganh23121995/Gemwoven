@@ -4,6 +4,9 @@
 /* Above the portal's screen-blended light and mist, so numbers keep their colour. */
 #scene>.node.su{z-index:2}
 #scene>.node-button.su:hover{z-index:3}
+/* The featured hero's crystal sits above that light and mist too (owner 08/11: under it the hero looked hazy and only
+   came sharp on hover, which lifted it); it keeps one look, with no hover change. */
+#scene>.node-button.portrait-gem,#scene>.node-button.portrait-gem:hover{z-index:2;filter:none}
 
 /* The banner sign: cream lettering on red lacquer. */
 .su-sign>.copy-layer{font-weight:700;color:#ffe7b0;text-shadow:0 2px 2px #3a0b04,0 0 6px #5a1608;letter-spacing:.5px}
