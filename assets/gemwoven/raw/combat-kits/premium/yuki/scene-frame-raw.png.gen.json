@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:40.222225+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\scene-frame-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\yuki\\ref-motif.png"
+  ],
+  "prompt": "One ornate rectangular landscape picture frame (3:2), seen straight on, laid out exactly like reference image 1: the frame band about 8 percent of the frame's height thick, four DIFFERENT carved corner pieces (top-left a carved rabbit head with long ears and a crescent moon, top-right a silver crescent moon with icicles, bottom-left and bottom-right small snowflake knots with ice studs), each corner ornament within about 14 percent of the frame's height from its corner. Between the corners the four straight edges are one continuous uniform carved molding with a thin frost-crystal groove, identical all along so it can repeat. The inside of the frame is empty and filled with the same pure magenta. Nothing at the middle of the top edge. Style: a premium seasonal battle frame 'Tuyết Thỏ — Moon Ice Rabbit', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, polished silver, frosted midnight-blue lacquer and pale ice crystals, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat pure magenta #FF00FF background around the artwork and magenta inside the frame opening. The candidate uses a white background and a white interior instead, so the key colour is missing and the image cannot be keyed out."
+      }
+    ],
+    "summary": "The frame motif, corner pieces and palette broadly follow the prompt, but the background and interior are white rather than the required #FF00FF magenta key colour, which is a clear, objective defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000587
+  }
+}

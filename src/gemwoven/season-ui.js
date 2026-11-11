@@ -26,7 +26,7 @@
   function look(slot,c,big,mini){
     const f=c?.file||'';
     if(slot==='avatar')return `<span class="sz-look sz-ava"><img src="${f}" alt=""></span>`;
-    if(slot==='frame')return `<span class="sz-look sz-frame"><img class="in" src="${S('avatar')}" alt=""><img src="${f}" alt=""></span>`;
+    if(slot==='frame')return `<span class="sz-look sz-frame"><span class="sq"><img class="in" src="${S('avatar')}" alt=""><img src="${f}" alt="" data-frame-fit="50,50,30,%"></span></span>`;
     if(slot==='title')return `<span class="sz-look sz-title"><img src="${f}" alt="">${mini?'':`<b>${esc(c.name)}</b>`}</span>`;
     if(slot==='nameplate')return `<span class="sz-look sz-plate"><img src="${f}" alt="">${mini?'':`<b>${esc(playerName())}</b>`}</span>`;
     if(slot==='bubble')return `<span class="sz-look sz-bubble"><img src="${f}" alt="">${mini?'':'<b>Chào!</b>'}</span>`;

@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T01:18:14.423189+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\form-faces\\novice\\ref-face.webp"
+  ],
+  "prompt": "Create TWO circular painted avatar BACKGROUNDS for a hand-painted fantasy mobile RPG, side by side, each a perfect circle about 420 px wide, on a perfectly flat solid magenta #FF00FF background with wide magenta gutters.\n\nReference 1 is an approved avatar of the same hero: copy its painting style, soft lighting, colour richness and level of detail for the BACKGROUND only.\nLeft circle (form 2): a sunset mountain trail with travellers' banners and warm amber clouds.\nRight circle (form 3): a radiant golden sky with a glowing compass-rose halo and drifting light motes.\n\nNO character, NO person, NO face, NO creature, NO text, NO frame or border ring: only the painted scenery filling each circle edge to edge, a little brighter and calmer in the middle and lower half where a portrait will be placed on top. Each circle clearly different from the other and from the reference's background. Crisp circle edges, nothing outside the circles, no magenta or pink inside the art.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Two circular scenery backgrounds on a flat magenta field with wide gutters. No characters, text, or frame rings. The left circle shows a mountain trail with banners and the right shows a golden sky with a compass-rose halo, matching the prompt. Circle sizes are slightly larger than the requested 420 px, which is a minor deviation and not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.0004
+  }
+}

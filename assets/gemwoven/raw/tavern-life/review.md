@@ -1,0 +1,3 @@
+1. **Quán bia — 7,5/10, chưa đạt.** Kệ đã đầy và hợp nét vẽ. Tuy nhiên Mika ngồi quá nổi ra phía trước: chân và thân thiếu điểm tựa rõ với ghế, cảm giác dán lên bàn. Cô thỏ lớn hơn bản cũ, che Mika và lấn phần đồ ăn; nhóm khách hơi chật. Bốn khung idle khá sạch, nhưng chuyển động rất nhẹ; ba ảnh hub chưa chứng minh rõ thú nhỏ có hoạt ảnh. Nên sửa tư thế ngồi và lớp che trước–sau trước.
+
+2. **Lò rèn — 8/10, đạt phần nhìn thấy.** Thợ rèn có tỷ lệ hợp cảnh, chân thân gắn với không gian tốt. Lửa làm cảnh sống hơn nhưng mảng vàng–cam hơi phẳng, mép sắc và sáng gắt so với nền vẽ mềm; nên thêm lõi sáng, than hồng và ánh hắt lên gạch/người. Ba thời điểm chưa cho thấy rõ nhịp búa chạm đe. **Ảnh cắt mất kệ trái nên chưa chấm được giá vũ khí/khiên.**

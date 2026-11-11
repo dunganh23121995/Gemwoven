@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T06:20:59.210217+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\xp-frames\\yuki\\original-ref.png"
+  ],
+  "prompt": "Use case: a texture strip for a game UI ring (portrait fantasy match-3 RPG \"Gemwoven\", painted hand-drawn style).\nReference image 1 is the avatar frame whose round ring band shows the pattern to copy: polished silver with midnight-blue inlay, frost crystal streaks and tiny snowflakes. Copy only that ring band's surface pattern, colours, painted brushwork and lighting.\nDraw ONE long straight horizontal band carrying this pattern, running edge to edge across the whole width of the image, centred vertically, about one sixth of the image height tall, with even height along its length. The band is the ring's surface unrolled flat: no rims, borders or edge lines along its top and bottom, no ornaments at all (no ears, flames, bows, hats, antlers, leaves sticking out, gems, emblems), no text. The pattern repeats evenly along the band and its left end continues seamlessly into its right end.\nAbove and below the band: solid flat pure magenta #FF00FF. No magenta or pink inside the band.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a single horizontal band spanning the full width, centred vertically on flat magenta, with the snowflake, silver-and-blue pattern from the reference ring. It has no ornaments, text or borders, and no visible magenta inside the band. Seamless wrapping can't be fully verified from the image, but no clear defect is visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000426
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:37.965347+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\board-back-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\yuki\\ref-motif.png"
+  ],
+  "prompt": "A square seamless background panel for a gem board: deep midnight blue, with a barely visible tone-on-tone pattern of frost crystals and snowflakes, very low contrast, quiet, no bright spots, filling the whole square image edge to edge, hand-painted, no frame, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a dark midnight-blue square panel with faint tone-on-tone swirl and snowflake patterns, filling the frame edge to edge with no frame, text, or bright spots, matching the prompt. Reference 1 is a teal swirl texture and Reference 2 is a magenta-keyed frame; the candidate is a background panel as requested and no defect applies. Snowflakes are slightly more visible than 'barely visible' but that is stylistic drift, not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000442
+  }
+}

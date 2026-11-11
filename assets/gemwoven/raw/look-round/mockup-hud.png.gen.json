@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T00:20:53.853230+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\look-round\\ref-hud-frame.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\look-round\\ref-noct-frame.webp"
+  ],
+  "prompt": "Create a close-up portrait HUD mockup. The first reference shows the current HUD (left: default avatar ring with its turquoise XP arc and the level badge \"1\" at the upper right, next to the gold currency bar). The second reference is Noct's \"Ảnh Nguyệt\" avatar-frame art. Preserve Hiro's portrait, the separate level badge at the upper right, and the adjacent currency bar. Retain the ornate blackened-metal frame, aged silver details, and restrained cyan accents of the second reference. Reserve a continuous circular experience track INSIDE the decorative frame, between the portrait and the metalwork: portrait, narrow dark clearance, thin recessed XP track, outer seasonal frame. Fill approximately 65 percent clockwise from twelve o'clock with a crisp turquoise arc, leaving the remaining track visibly dark. No ornaments may overlap the XP track. Keep the level badge outside the track. Show a large detail view and a second copy at actual mobile HUD size. Hand-painted game art, clearly readable face, experience progress, and level.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "extra_content",
+        "detail": "The mockup includes text labels 'DETAIL VIEW' and 'ACTUAL MOBILE HUD SIZE' that the prompt did not ask for. They are likely presentation annotations rather than defects in the art, but they are unrequested text."
+      }
+    ],
+    "summary": "The candidate shows both requested copies (a large detail view and a mobile-size copy) with Hiro's portrait, the separate level badge '1' outside the ring, the adjacent currency bar, and the ornate dark frame with a cyan accent. The main open question is the unrequested 'DETAIL VIEW' and 'ACTUAL MOBILE HUD SIZE' labels. The XP arc's ~65% fill could not be verified precisely, but it does not clearly fail any listed defect category.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000745
+  }
+}

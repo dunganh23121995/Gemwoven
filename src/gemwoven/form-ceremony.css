@@ -26,11 +26,11 @@
 .fc-streak{left:200px;top:300px;width:540px;height:540px;opacity:0;transform:rotate(-38deg) scale(.6);filter:sepia(1) saturate(2) hue-rotate(-10deg)}
 .fc-root.reveal:not(.skipped) .fc-streak{animation:fc-streak 1s ease-out .15s both}
 @keyframes fc-streak{0%{opacity:0;transform:rotate(-38deg) scale(.5)}35%{opacity:.6}100%{opacity:0;transform:rotate(-38deg) scale(1.25)}}
-.fc-aura{left:200px;top:300px;width:540px;height:540px;opacity:0;background:var(--sheet) 0 0/800% 100% no-repeat;animation:fc-aura 1.28s steps(8) infinite paused}
+.fc-aura{left:200px;top:300px;width:540px;height:540px;opacity:0;background:var(--sheet) 0 0/800% 100% no-repeat;animation:fc-aura 1.28s steps(8,jump-none) infinite paused}
 .fc-root.reveal .fc-aura{opacity:.6;animation-play-state:running;transition:opacity .6s ease}.fc-root.done .fc-aura{opacity:.4}
 @keyframes fc-aura{to{background-position:100% 0}}
 .fc-sparks{left:220px;top:390px;width:500px;height:420px;opacity:0}
-.fc-sparks>i{position:absolute;left:var(--x);bottom:0;width:var(--s);height:var(--s);background:0 0/800% 100% no-repeat;animation:fc-rise 1.8s ease-out var(--d) infinite,fc-twinkle .68s steps(8) infinite}
+.fc-sparks>i{position:absolute;left:var(--x);bottom:0;width:var(--s);height:var(--s);background:0 0/800% 100% no-repeat;animation:fc-rise 1.8s ease-out var(--d) infinite,fc-twinkle .68s steps(8,jump-none) infinite}
 .fc-root.gather .fc-sparks{opacity:1}.fc-root.done .fc-sparks{opacity:.5}
 @keyframes fc-rise{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-360px);opacity:0}}
 @keyframes fc-twinkle{to{background-position:100% 0}}

@@ -43,14 +43,20 @@
   }
   const unreleased=hero=>!M.heroAvailable(hero);
   ['stat-attack','stat-shield','stat-heart','crest'].forEach((asset,i)=>A['skill-novice-'+i]=A[asset]);
-  const inventory=window.GEMWOVEN_INVENTORY,resourceFor={},gearFor={};
+  const inventory=window.GEMWOVEN_INVENTORY,resourceFor={},gearFor={},tierFor={};
+  // Owner 08/11: precious things read as precious (Codex critique + approved mockup, raw/rarity-tiles): a drawn slot per
+  // tier, colour on the rim and gems, a quiet tinted well. A display tier only; it changes no rule or source.
+  const CURRENCY={gold:'Dùng để tăng cấp, rèn và mua đồ.',gems:'Đá Ngọc chỉ nhận qua nạp tiền. Tính năng nạp sắp ra mắt.'};
+  const RESOURCE_TIER={tickets:'epic',essence:'epic',divineOre:'divine'};
+  const slotFor=asset=>{const t=tierFor[asset];return t&&A['rarity-slot-'+t]?'rarity-slot-'+t:'inventory-slot';};
   function prepare(state){
     const p=G.engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;
-    const descriptions={gold:'Dùng để tăng cấp, rèn và mua đồ.',gems:'Đá Ngọc chỉ nhận qua nạp tiền. Tính năng nạp sắp ra mắt.',tickets:'Vé nhận từ nhiệm vụ ngày và các mốc cấp tướng.',exp:'Sách kinh nghiệm dùng tăng cấp tướng.',seals:'Ấn tu luyện dùng tăng cấp tướng, tối đa 1.600 ấn mỗi ngày.',skillBooks:'Bí kíp dùng học và tăng cấp kỹ năng.',essence:'Dùng tăng sao, tiến hóa, kỹ năng và bảo bối.',ore:'Quặng dùng rèn, cường hóa trang bị, tiến hóa tướng và bảo bối.',wood:'Gỗ dùng rèn trang bị.',cloth:'Vải dùng rèn trang bị.',divineOre:'Rèn trang bị Thần (50 mảnh, sau ải 300) và tiến hóa bảo bối.'};
-    const rows=Object.entries(M.RESOURCES).map(([id,[name,asset]])=>{resourceFor[asset]=id;return [asset,name,fmt(owned(p,id)),['exp','skillBooks'].includes(id)?'book':['ore','wood','cloth','essence','divineOre','seals'].includes(id)?'material':id==='tickets'?'other':'item',descriptions[id]];});
+    const descriptions={tickets:'Vé nhận từ nhiệm vụ ngày và các mốc cấp tướng.',exp:'Sách kinh nghiệm dùng tăng cấp tướng.',seals:'Ấn tu luyện dùng tăng cấp tướng, tối đa 1.600 ấn mỗi ngày.',skillBooks:'Bí kíp dùng học và tăng cấp kỹ năng.',essence:'Dùng tăng sao, tiến hóa, kỹ năng và bảo bối.',ore:'Quặng dùng rèn, cường hóa trang bị, tiến hóa tướng và bảo bối.',wood:'Gỗ dùng rèn trang bị.',cloth:'Vải dùng rèn trang bị.',divineOre:'Rèn trang bị Thần (50 mảnh, sau ải 300) và tiến hóa bảo bối.'};
+    // Gold and Đá Ngọc live in the top bar with their own +, not in the bag (owner 08/11).
+    const rows=Object.entries(M.RESOURCES).filter(([id])=>id!=='gold'&&id!=='gems').map(([id,[name,asset]])=>{resourceFor[asset]=id;return [asset,name,fmt(owned(p,id)),['exp','skillBooks'].includes(id)?'book':['ore','wood','cloth','essence','divineOre','seals'].includes(id)?'material':'item',descriptions[id]];});
     for(const [hero,h]of Object.entries(M.HEROES)){if(unreleased(hero)&&!p.heroes[hero]&&!p.fragments[hero])continue;const asset='fragment-'+hero;if(!A[asset]?.fragmentArt)A[asset]=A['portrait-'+hero];rows.push([asset,'Mảnh '+h.name,fmt(p.fragments[hero]||0),'fragment',hero==='novice'?'Ghép 80 mảnh thành một bản sao Hiro để tăng sao. Hiro không có trong triệu hồi: mảnh đến từ Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương và mỗi 10 tầng Trùm Vô Tận.':unreleased(hero)?`Ghép 80 mảnh thành ${h.name}. Tướng xuất hiện ở kỳ triệu hồi sau.`:'Ghép 80 mảnh cùng loại thành một tướng hoặc bản sao.']);}
     refreshSkillCopy(p);
-    for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;const sv=M.salvageValue(gear);rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'+'+gear.level,'gear',M.RARITIES[gear.rarity].name+(gear.locked?' · đang khóa':'')+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')+` · phân rã ${fmt(sv.ore)} quặng, ${fmt(sv.gold)} vàng`]);}
+    for(const gear of p.equipment){const asset='gear-'+gear.id;A[asset]=A[`gear-${gear.rarity}-${gear.slot}`]||A[M.SLOT_ART[gear.slot]]||A['helmet'];gearFor[asset]=gear;const sv=M.salvageValue(gear);rows.push([asset,M.SLOTS[gear.slot]+' +'+gear.level,'+'+gear.level,'gear',M.RARITIES[gear.rarity].name+(gear.locked?' · đang khóa':'')+(gear.affix?' · '+M.AFFIXES[gear.affix].desc:'')+` · phân rã ${fmt(sv.ore)} quặng, ${fmt(sv.gold)} vàng`]);}
     // Dệt Ngọc: each gem as its picture with a count (Khác); the weekly choice token.
     for(const [k,n] of Object.entries(p.gems||{}).filter(([,n])=>n>0).sort(([a],[b])=>a.localeCompare(b))){const g=M.gemParse(k);if(!g)continue;const asset='gem-'+k;A[asset]={file:`assets/gemwoven/gems/gem-${k}.webp`,width:160,height:160};rows.push([asset,`${M.GEMS[g.type].name} ${g.level}`,fmt(n),'other',`${M.GEMS[g.type].stat} +${Math.round(M.GEMS[g.type].values[g.level-1]*100)}%`]);}
     if(p.gemChoices>0){A['gem-choice']={file:'assets/gemwoven/gems/gem-precision-1.webp',width:160,height:160};rows.push(['gem-choice','Phiếu chọn ngọc',fmt(p.gemChoices),'other','Đổi lấy một viên ngọc cấp 1 tự chọn.']);}
@@ -58,6 +64,8 @@
     if(p.memory?.dust>0)rows.push(['memory-dust','Bụi Ký Ức',fmt(p.memory.dust),'other','Vật liệu không bán trực tiếp. Đổi mảnh tướng ở Cửa Hàng · Ký Ức.']);
     if(p.memory?.vouchers>0){A['memory-voucher']=A['ticket'];rows.push(['memory-voucher','Phiếu 20 mảnh',fmt(p.memory.vouchers),'other','Đổi 20 mảnh một tướng đã sở hữu, chưa 6★ (không phải Hiro). Không hết hạn.']);}
     for(const d of M.WORLD.EXPANSION.definitions){const c=M.counterProgress(p,d.chapter);if(c.shards)rows.push([d.counterKey,d.counter,c.shards+'/12','other',d.counterText+' Tự dùng đúng chủ đề; bậc '+c.rank+'/4.']);}
+    for(const k of Object.keys(tierFor))delete tierFor[k];
+    for(const [asset,,,kind] of rows)tierFor[asset]=kind==='gear'?gearFor[asset].rarity:kind==='fragment'?(asset==='fragment-novice'?'rare':'legendary'):RESOURCE_TIER[resourceFor[asset]];
     inventory.splice(0,inventory.length,...rows);
     if(state.screen==='inventory'){
       const visible=rows.filter(r=>state.category==='all'||r[3]===state.category);
@@ -93,18 +101,21 @@
     return nodes;
   }
   // Where each resource really comes from (progression.js rewards, shop and summon tables).
-  const SOURCES={gold:'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy',tickets:'Nhiệm vụ Ghé thăm\nMốc cấp tướng',exp:'Vượt ải · Trùm · Tích lũy\nNhiệm vụ · Cửa hàng',seals:'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy',
-    skillBooks:'Nhiệm vụ Chi tiêu\nCửa hàng',essence:'Trùm Vô Tận · Trùm chương\nRương sao chương',ore:'Vượt ải · Boss · Phân rã\nCửa hàng · Triệu hồi',wood:'Cửa hàng\nTriệu hồi',cloth:'Cửa hàng\nTriệu hồi',divineOre:'Trùm Vô Tận tầng 60+\nCửa hàng Đá Ngọc'};
+  const SOURCES={tickets:'Nhiệm vụ Ghé thăm\nMốc cấp tướng',exp:'Vượt ải · Trùm · Tích lũy\nNhiệm vụ · Cửa hàng',seals:'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy',
+    skillBooks:'Nhiệm vụ Chi tiêu\nCửa hàng',essence:'Trùm Vô Tận\nTrùm chương\nRương sao chương',ore:'Vượt ải · Boss · Phân rã\nCửa hàng · Triệu hồi',wood:'Cửa hàng\nTriệu hồi',cloth:'Cửa hàng\nTriệu hồi',divineOre:'Trùm Vô Tận tầng 60+\nCửa hàng Đá Ngọc'};
   function bag(nodes,p,state){
-    for(const n of nodes){if(n.id.startsWith('inventory.category-')){n.rect=[15,n.rect[1],215,85];n.labelRect=[56,14,150,56];n.size=28;n.className='inventory-category';}if(n.action?.startsWith('bag-item:')){n.labelHidden=true;delete n.labelAsset;n.iconRect=[24,12,107,107];}}
+    for(const n of nodes){if(n.id.startsWith('inventory.category-')){n.rect=[15,n.rect[1],215,85];n.labelRect=[56,14,150,56];n.size=28;n.className='inventory-category';}if(n.action?.startsWith('bag-item:')){n.labelHidden=true;delete n.labelAsset;n.iconRect=[36,18,80,80];const a=n.action.slice(9);n.asset=slotFor(a);if(tierFor[a])n.className=((n.className||'')+' rarity-'+tierFor[a]).trim();if(a.startsWith('fragment-'))n.iconRect=[35,18,82,82];}}
     const asset=state.bagItem,item=inventory.find(r=>r[0]===asset);if(!item)return nodes;
+    const well=find(nodes,'detail-slot');if(well){well.asset=slotFor(asset);if(tierFor[asset])well.className=((well.className||'')+' rarity-'+tierFor[asset]).trim();}
+    // Items sit a little inside their slot so its tier background shows (owner 08/11); a fragment is a solid puzzle piece, smaller still.
+    const art=find(nodes,'detail-art');if(art)art.rect=item[3]==='fragment'?[90,1214,148,148]:[92,1216,144,144];
     nodes=remove(nodes,/\.(recipe-|held-|source-icon$)/);
     const fragmentHero=item[3]==='fragment'?asset.slice(9):null;
-    label(nodes,'source',resourceFor[asset]==='gems'?'Nạp tiền\nComing soon':fragmentHero==='novice'?'Tân Thủ · Nhiệm vụ\nRương sao · Boss':fragmentHero&&unreleased(fragmentHero)?'Kỳ triệu hồi sau\nComing soon':fragmentHero?'Triệu hồi\nTrùm chương':item[3]==='gear'?'Triệu hồi\nLò rèn':SOURCES[resourceFor[asset]]||'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy');
+    label(nodes,'source',fragmentHero==='novice'?'Tân Thủ · Nhiệm vụ\nRương sao · Boss':fragmentHero&&unreleased(fragmentHero)?'Kỳ triệu hồi sau\nComing soon':fragmentHero?'Triệu hồi\nTrùm chương':item[3]==='gear'?'Triệu hồi\nLò rèn':SOURCES[resourceFor[asset]]||'Nhiệm vụ · Vượt ải\nTrùm · Tích lũy');
     Object.assign(find(nodes,'source'),{rect:[307,1336,250,108],size:26});Object.assign(find(nodes,'source-title'),{rect:[307,1296,250,36],size:28});
     nodes.push(text('inventory','held-label','Đang có',[566,1296,340,36],28),text('inventory','held-count',item[2],[566,1332,340,44],34));
     if(item[3]==='fragment'){const hero=asset.slice(9);action(nodes,'item-action','do:fuse',{hero},(p.fragments[hero]||0)<80);label(nodes,'item-action','Ghép Tướng');}
-    else{const route=item[3]==='gear'?'equipment':item[3]==='book'?(asset==='exp-book'?'upgrade':'skills'):asset==='ticket'?'summon':asset==='mana'?'topup':'campaign';action(nodes,'item-action','route:'+route);label(nodes,'item-action',item[3]==='gear'?'Trang Bị':item[3]==='book'?'Sử Dụng':asset==='mana'?'Nạp':'Đi Tới');}
+    else{const route=item[3]==='gear'?'equipment':item[3]==='book'?(asset==='exp-book'?'upgrade':'skills'):asset==='ticket'?'summon':'campaign';action(nodes,'item-action','route:'+route);label(nodes,'item-action',item[3]==='gear'?'Trang Bị':item[3]==='book'?'Sử Dụng':'Đi Tới');}
     const product=M.WORLD.SHOP.find(row=>row.kind==='resource'&&row.target===resourceFor[asset]);
     if(asset.startsWith('gem-')&&asset!=='gem-choice'){action(nodes,'item-action','gem:detail',{gem:asset.slice(4)});label(nodes,'item-action','Ghép');label(nodes,'source','Trùm Vô Tận 20+\nThử Luyện · Tuần');}
     if(asset==='gem-choice'){action(nodes,'item-action','gem:choice');label(nodes,'item-action','Chọn');}
@@ -112,8 +123,6 @@
     if(asset==='memory-voucher'){action(nodes,'item-action','memory:chest');label(nodes,'item-action','Dùng');label(nodes,'source','Lịch 28 ngày\nSự Kiện');}
     const counterDef=M.WORLD.EXPANSION.definitions.find(d=>d.counterKey===asset);
     if(counterDef){action(nodes,'item-action','guide:chapter',{chapter:counterDef.chapter});label(nodes,'item-action','Đến Chương');label(nodes,'source','Tinh anh 3 sao\nMốc 10 / 20 / 30 / 40');}
-    // Currencies need no explanation (owner 04/11): gold is bought with Đá Ngọc in the shop, Đá Ngọc is topped up.
-    if(asset==='coins'||asset==='mana'){action(nodes,'item-action','topup:more',{resource:asset==='coins'?'gold':'gems'});label(nodes,'item-action',asset==='coins'?'Mua thêm':'Nạp');nodes=remove(nodes,/\.item-description-/);}
     // The item's action and "buy more" sit side by side under the held count.
     const act=find(nodes,'item-action');Object.assign(act,{rect:product?[552,1384,162,86]:[670,1384,196,86],size:27,labelRect:[22,0,(product?162:196)-44,86]});
     if(product)nodes.push(button('inventory','purchase','Mua thêm',[716,1384,162,86],'art:shop-product',{product:product.id},{size:27,labelRect:[16,0,130,86]}));
@@ -121,14 +130,14 @@
     if(item[3]==='gear'){const g=gearFor[asset],worn=Object.values(p.heroes).some(h=>Object.values(h.gear).includes(g.id));
       Object.assign(act,{rect:[552,1374,162,100],labelRect:[16,0,130,100]});
       nodes.push(button('inventory','salvage',worn?'Đang mặc':g.locked?'Đang khóa':'Phân rã',[716,1374,162,100],'do:salvage',{id:g.id},{size:27,labelRect:[16,0,130,100],disabled:worn||!!g.locked}));
-      nodes=remove(nodes,/\.item-type$/);nodes.push(button('inventory','lock',g.locked?'🔒 Đã khóa':'🔓 Khóa',[712,1158,186,66],'gear:lock',{id:g.id,on:g.locked?'0':'1'},{size:25,labelRect:[10,0,166,66],asset:'button-blue'}));label(nodes,'held-label','Cường hóa');}
+      nodes=remove(nodes,/\.item-type$/);nodes.push(button('inventory','lock',g.locked?'Mở khóa':'Khóa',[712,1158,186,66],'gear:lock',{id:g.id,on:g.locked?'0':'1'},{size:25,icon:'kit-lock',iconRect:[14,13,34,40],labelRect:[48,0,128,66],asset:'button-gold',className:'kit-plate'}));label(nodes,'held-label','Cường hóa');}
     // Codex review 27 (Túi Đồ 7/10): one clear reading order in the detail panel — name, one line of use, then
     // "Đang có" and where it comes from on one row, the actions as large gold plates; the type tag stays small.
     for(const [id,rect,size] of [['item-title-'+asset,[300,1158,430,50],38],['item-description-'+asset,[300,1212,590,70],29],['held-label',[300,1290,180,36],27],['held-count',[300,1324,180,46],38],['source-title',[490,1290,200,36],27],['source',[490,1328,220,118],26]]){const n=find(nodes,id);if(n)Object.assign(n,{rect,size,align:'left',className:((n.className||'').replace(/\bitem-detail\b/,'')+' item-detail').trim()});}
     for(const n of nodes)if(/\.(item-action|purchase|salvage)$/.test(n.id)&&n.rect[1]>1300){const i=['item-action','purchase','salvage'].findIndex(k=>n.id.endsWith('.'+k));n.rect=[712,1290+(i?1:0)*96,184,88];n.labelRect=[10,0,164,88];n.size=29;n.className=((n.className||'')+' bag-plate').trim();}
     // The gear tab: bag fill and bulk salvage.
     if(state.category==='gear'){const full=p.equipment.length>=M.BAG.warn;
-      nodes.push(button('inventory','bulk-salvage',`Phân giải hàng loạt · ${p.equipment.length}/${M.BAG.cap}`,[232,418,372,74],'gear:bulk',{},{size:24,labelRect:[18,0,336,74],className:full?'bag-full':''}));}
+      nodes.push(button('inventory','bulk-salvage',`Phân giải hàng loạt · ${p.equipment.length}/${M.BAG.cap}`,[232,418,372,74],'gear:bulk',{},{size:24,labelRect:[18,0,336,74],className:'kit-plate'+(full?' bag-full':'')}));}
     return nodes;
   }
   function summon(nodes,p,state){
@@ -138,7 +147,7 @@
     for(const [id,count] of [['summon-one',1],['summon-ten',10]]){const n=find(nodes,id);n.labelRect=[24,30,225,70];n.size=29;
       const t=p.wallet.tickets,price=t>=count?`${count} vé`:p.wallet.gems>=count*120?`${fmt(count*120)} Đá Ngọc`:`Thiếu ${count-t} vé`;label(nodes,id,`Triệu Hồi ×${count}
 ${price}`);}
-    const featured=find(nodes,'portrait-fire');featured.icon='portrait-'+M.SUMMON_BANNER.hero;featured.action='hero:'+M.SUMMON_BANNER.hero;featured.rect=[350,366,240,285];featured.iconRect=[38,55,164,165];
+    const featured=find(nodes,'portrait-fire');featured.icon=(A['form-portrait-'+M.SUMMON_BANNER.hero+'-1']?'form-portrait-'+M.SUMMON_BANNER.hero+'-1':'portrait-'+M.SUMMON_BANNER.hero);featured.action='hero:'+M.SUMMON_BANNER.hero;featured.rect=[350,366,240,285];featured.iconRect=[38,55,164,165];
     // Banner name + one short line on a board sized for two readable lines.
     label(nodes,'subtitle',M.SUMMON_BANNER.title+'\nTướng nổi bật kỳ này');Object.assign(find(nodes,'subtitle'),{rect:[300,276,341,80],size:28});find(nodes,'subtitle-board').rect=[284,268,373,96];
     Object.assign(find(nodes,'featured-board'),{rect:[50,1178,842,174]});label(nodes,'featured-title','Phần Thưởng Hiếm');Object.assign(find(nodes,'featured-title'),{rect:[84,1194,400,38],size:31});
@@ -409,10 +418,8 @@ ${price}`);}
     nodes=remove(nodes,/\.(nav-label-board|nav-active-label)$/);
     const order=['home','upgrade','inventory','skills','summon','arena','more'],selected=order.includes(key)?key:'more',index=order.indexOf(selected),name=['Trang Chủ','Tướng','Túi Đồ','Kỹ Năng','Triệu Hồi','Đấu Trường','Thêm'][index];
     for(const n of nodes)if(n.role==='nav')n.selected=n.action==='route:'+selected;
+    // Only the tab you are on shows its name, on a plate; the others are their icons alone (owner 08/11).
     nodes.push(image(key,'nav-label-board','nameplate',[4+index*130,1600,156,60],{fit:'fill'}),text(key,'nav-active-label',name,[14+index*130,1608,136,42],28));
-    // Every tab keeps a short name (Codex UI review): the others get a small plate under their icon.
-    const names=['Trang Chủ','Tướng','Túi Đồ','Kỹ Năng','Triệu Hồi','Đấu Trường','Thêm'];
-    names.forEach((label,i)=>{if(i!==index)nodes.push(text(key,'nav-mini-'+i,label,[10+i*130,1622,144,34],23,'gold',{className:'nav-mini-label'}));});
     return nodes;
   }
   const oldDecorate=G.decorate;
@@ -435,7 +442,7 @@ ${price}`);}
     for(const n of nodes){
       const suffix=n.id.split('.').slice(1).join('.');
       if(suffix==='gold')C[n.text]=short(p.wallet.gold);if(suffix==='gems')C[n.text]=short(p.wallet.gems);if(suffix==='level')C[n.text]=p.heroes[p.selected].level;
-      if(suffix==='gems-plus')n.action='route:topup';if(suffix==='profile')n.icon='portrait-'+p.selected;
+      if(suffix==='gems-plus')n.action='route:topup';if(suffix==='profile')n.icon=A['face-'+p.selected]?'face-'+p.selected:'portrait-'+p.selected;
       if(n.action==='route:tavern')n.action='route:quests';
       if(key==='home'&&n.id.startsWith('home.feature-')){n.labelHidden=false;n.labelRect=[3,79,90,26];n.iconRect=[26,15,45,54];n.size=18;}
     }
@@ -463,6 +470,9 @@ ${price}`);}
       const id=act.slice(5),asset=M.RESOURCES[id]?.[1]||id,item=inventory.find(row=>row[0]===asset);
       // Item card: picture, use, where it comes from and how many are owned.
       if(item){const source=SOURCES[resourceFor[asset]];ctx.showModal(item[1],[asset],item[4]+(source?'\nNguồn: '+source.replace(/\n/g,' · '):'')+'\nĐang có: '+item[2]);return true;}
+      // Gold and Đá Ngọc are not bag items; a reward tile still opens their card, read from the wallet.
+      const cur=Object.keys(CURRENCY).find(k=>k===id||M.RESOURCES[k][1]===id);
+      if(cur){ctx.showModal(M.RESOURCES[cur][0],[M.RESOURCES[cur][1]],CURRENCY[cur]+'\nĐang có: '+fmt(G.engine.read().wallet[cur]));return true;}
     }
     if(!act.startsWith('art:'))return oldHandle(act,el,ctx,state);
     const d=el.dataset,command=act.slice(4);

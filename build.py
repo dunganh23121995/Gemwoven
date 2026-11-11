@@ -558,6 +558,23 @@ extensions += '\n'+(root/'src/board-control.js').read_text(encoding='utf-8')
 # The combat HUD's drawn layer (src/combat-hud.js): last, so it wraps every other update and restyles the shared controls.
 extensions += '\n'+(root/'src/combat-hud.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-hud.css').read_text(encoding='utf-8')
+# Season combat frame kits (Khung trận cao cấp): src/combat-kits-premium.css once per kit drawn in
+# assets/combat-hud/kits/<season>; assets/gemwoven/raw/combat-kits/premium/cut_premium.py measured its pieces into kit.json.
+KIT_BASE={'noct':'#15191d','mika':'#2a0f0a','yuki':'#141d28','nori':'#172012','lumi':'#1c1229'}
+for kit in sorted((root/'assets/combat-hud/kits').glob('*/kit.json')):
+    s,bg=kit.parent.name,KIT_BASE.get(kit.parent.name,'#2b1d10')
+    k=json.loads(kit.read_text(encoding='utf-8'));sc,bd=k['scene'],k['board']
+    f=lambda v:f'{v:.3f}'.rstrip('0').rstrip('.')
+    vals={'s':s,'bg':bg,'cap':str(k['rail']['cap']),'cw':str(k['crest'][0]),'ch':str(k['crest'][1]),
+          'bl':f(bd['left']),'bt':f(bd['top']),'bw':f(bd['width']),'bh':f(bd['height'])}
+    # how far the frame's art passes the gem area on each side (% of the gem area): it centres the frame, not the gems
+    L,T=-bd['left'],-bd['top'];R,B=bd['width']-100-L,bd['height']-100-T
+    vals.update(shift=f((L-R)/2),right=f(R),vshift=f((T-B)/2))
+    for i,side in enumerate('trbl'):
+        vals['s'+side]=str(sc['slice'][i]);vals['w'+side]=f(sc['slice'][i]/sc['band']);vals['o'+side]=f(sc['margin'][i]/sc['band'])
+    tpl=(root/'src/combat-kits-premium.css').read_text(encoding='utf-8')
+    for key,v in vals.items():tpl=tpl.replace('{'+key+'}',v)
+    css += '\n'+tpl
 # Status icons over the fighters and PvP name plaques (src/combat-status.js): after the HUD, which it builds on.
 extensions += '\n'+(root/'src/combat-status.js').read_text(encoding='utf-8')
 css += '\n'+(root/'src/combat-status.css').read_text(encoding='utf-8')

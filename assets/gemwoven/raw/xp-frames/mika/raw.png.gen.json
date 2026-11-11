@@ -1,0 +1,26 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T05:22:27.171637+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\season\\mika\\frame.webp"
+  ],
+  "prompt": "Use case: one game UI asset for a portrait fantasy match-3 RPG (\"Gemwoven\"): a paid season avatar frame (Mika, crimson fire fox) redrawn so its ring carries an experience gauge.\nReference image 1 is the current approved frame: keep its identity, palette, painted quality, proportions and ornaments (two fox ears on top, a curling flame on the right, the golden flower emblem with red rope knots and cream ribbon tails at the bottom).\nChange only the ring itself: the ring is now an EXPERIENCE GAUGE TRACK. It is built from a thin polished gold inner rim, a thin polished gold outer rim, and between them one smooth, recessed, empty groove of even width all the way round, dark lacquered crimson-black, plain with no pattern, no flames, no swirls, no gems and no highlights inside the groove. The groove is a perfect circle concentric with the round opening, and about the same total ring thickness as the reference.\nNothing may cross or overlap the groove: the fox ears sit fully outside the outer rim at the top (they touch the outer rim from outside only); the flame grows outward from the outer rim on the right side and stays outside the outer rim; the flower emblem, rope knots and ribbon tails are gathered compactly at the bottom centre only, covering no more than the lowest quarter of the ring (from about seven o'clock to five o'clock); the groove is fully visible and clean from about seven o'clock, over the top, round to about five o'clock.\nStyle: painted hand-drawn fantasy game UI, the same rich warm illustration style as the reference, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nLayout: exactly one asset centred on a solid flat pure magenta #FF00FF background, generous magenta margin all round, nothing touching the edges. The round centre of the ring is empty and filled with the same pure magenta. No magenta or pink inside the artwork itself.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The top fox-ear tips sit only a few pixels from the top edge, and the ring fills most of the canvas width, so the 'generous magenta margin, nothing touching the edges' requirement is weakly met."
+      },
+      {
+        "kind": "layout",
+        "detail": "The right-side flame appears to overlap the outer gold rim rather than growing cleanly outward from it, and the left ear base may overlap the outer rim. The prompt says these should touch the rim from outside only, so this is uncertain rather than clearly wrong."
+      }
+    ],
+    "summary": "Background is flat #FF00FF, the groove is plain dark crimson-black, the bottom emblem is compact, and there is no text or extra figures. The main uncertainty is whether the ears and flame overlap the outer rim and how close the ear tips come to the top edge, so this needs a human look rather than an automatic fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000778
+  }
+}

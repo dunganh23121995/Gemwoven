@@ -33,7 +33,7 @@
   // Reveal order: bronze by rarity, then silver (weapons, then fragments), then gold with the
   // whole hero at the very end.
   const order=r=>({bronze:0,silver:10,gold:20})[cardType(r)]+(r.kind==='hero'?9:r.kind==='fragments'?8:RANK[r.rarity]||0);
-  const rewardArt=r=>r.kind==='hero'?'hero-'+r.hero:r.kind==='fragments'?(A['fragment-'+r.hero]?'fragment-'+r.hero:'portrait-'+r.hero)
+  const rewardArt=r=>r.kind==='hero'?(A[`form-${r.hero}-${r.form||1}`]?`form-${r.hero}-${r.form||1}`:'hero-'+r.hero):r.kind==='fragments'?(A['fragment-'+r.hero]?'fragment-'+r.hero:'portrait-'+r.hero)
     :r.kind==='gear'?M.SLOT_ART[r.gear.slot]:M.RESOURCES[r.resource]?.[1]||'summon-crystal';
   // A whole hero on its card: the first resting frame of the summoned form's showcase, cropped to its
   // figure, so every hero and form fills its card window at the same height.

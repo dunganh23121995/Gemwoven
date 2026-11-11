@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T15:43:32.883365+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\season-titles\\mika\\ref.png"
+  ],
+  "prompt": "Reference image 1 is a title ribbon of a fantasy mobile game. Redraw it as a STRAIGHT, LEVEL banner, keeping its identity: the golden fox-mask medallion with its red cord and red tassels on the left, the same design and size; the curling orange flame at the right end, the same style; the cloth crimson red silk with gold trim.\nThe cloth band between the medallion and the tail is perfectly straight and horizontal: no wave, no twist, no bend, the same height all along, its top and bottom trims two straight parallel horizontal lines. The cloth is plain, with only a faint soft sheen of the same colour: no stars, snowflakes, vines, flames, runes or any other painting on it, so a name can be written on it later.\nLayout: the whole banner about 4 times as wide as tall; the medallion takes about the left fifth, the plain straight cloth runs from about 23 percent to about 85 percent of the width, the tail ornament in the last 15 percent; the tail may rise a little above the band, the medallion's tassels may hang below it.\nHand-painted fantasy game UI, the same finish, palette and quality as reference image 1, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nSolid flat pure magenta #FF00FF background around the banner, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the brief: a straight, level crimson band with gold trim, a fox-mask medallion with red cord and tassels on the left, and an orange flame tail on the right. The cloth is plain with no painted elements, the background is flat magenta with margin, and nothing is cut off or contains text. The overall proportions are wider than the reference's, but the brief's aspect ratio is loose enough that this is not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00056
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:37.303212+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\rail-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\nori\\ref-motif.png"
+  ],
+  "prompt": "One long horizontal bar like reference image 1, about 8 times as wide as tall: a carved plank framed by trim, with ornate golden antler-and-leaf end caps; between the caps a uniform surface with a faint vine inlay, identical along its length so it can repeat. Style: a premium seasonal battle frame 'Lộc Thần — Sacred Forest Deer', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, aged gold, mossy forest-green lacquer and carved twining vines, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Single horizontal bar on a flat magenta background with generous margins, golden antler end caps with green gems, and a green vine-inlay middle section; no text or extra figures. Its proportions run closer to 12:1 than the requested 8:1, which is a minor deviation rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000669
+  }
+}

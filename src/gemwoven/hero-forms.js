@@ -4,9 +4,11 @@
   if(new URLSearchParams(location.search).has('restaura'))document.documentElement.classList.add('mika-rest-aura-enabled');
   const G=window.GEMWOVEN_GAME,M=window.GemwovenProgression,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
   const originals={};
-  for(const key of Object.keys(M.HEROES))for(const prefix of ['hero-','portrait-','home-idle-']){
+  for(const key of Object.keys(M.HEROES))for(const prefix of ['hero-','portrait-','home-idle-','face-']){
     originals[prefix+key]=A[prefix+key];originals[prefix+key+'-poster']=A[prefix+key+'-poster'];
   }
+  // Form 1 under its own keys: what a summon gives (1★ form 1), whatever form the player's copy wears (owner 08/11).
+  for(const key of Object.keys(M.HEROES)){A[`form-${key}-1`]??=originals['hero-'+key];A[`form-portrait-${key}-1`]??=originals['portrait-'+key];}
   const palette={novice:'#f0d27a',fire:'#ffb35e',ice:'#a6efff',earth:'#bde88d',lightning:'#d6b7ff',shadow:'#8d8d94'};
   function aura(key,form){
     const el=document.createElement('span');el.className='hero-form-effects';el.setAttribute('aria-hidden','true');
@@ -55,6 +57,8 @@
       const form=M.HERO_FORMS[key]?M.lookForm(key,snapshot.heroes[key]):1,poster=A[`form-${key}-${form}`],portrait=A[`form-portrait-${key}-${form}`],idle=A[`form-idle-${key}-${form}`];
       A['hero-'+key]=poster||originals['hero-'+key];A['portrait-'+key]=portrait||originals['portrait-'+key];
       A['home-idle-'+key]=idle||originals['home-idle-'+key];A['home-idle-'+key+'-poster']=poster||originals['home-idle-'+key+'-poster'];
+      // The round avatar (HUD, Trang trí) on the form's own background (owner 08/11: "mỗi form 1 background").
+      A['face-'+key]=A[`face-${key}-${form}`]||originals['face-'+key];
       // A showcase pose replaces the resting body on every screen outside combat.
       const show=A[`show-${key}-${form}`];if(show?.sheets){A['home-idle-'+key]=show;A['home-idle-'+key+'-poster']=show;}
     }
@@ -87,7 +91,7 @@
     if(!M.HERO_FORMS[key])return true;
     // Same painted dialog as every other popup; on a phone the three forms are a swipe carousel.
     const modal=window.GemwovenUI.makeDialog('hero-form-gallery',M.HEROES[key].name+' · Ba hình thái','hero-form-gallery');modal.setAttribute('aria-label','Ba hình thái của '+M.HEROES[key].name);
-    const intro=document.createElement('p');intro.className='form-gallery-intro';intro.textContent='4 sao mở hình thái 2 · 6 sao mở hình thái 3. Hình thái đã mở không mất: chọn diện mạo ở thị trấn tùy thích; trong trận luôn dùng hình thái cao nhất.';
+    const intro=document.createElement('p');intro.className='form-gallery-intro';intro.textContent='4 sao mở hình thái 2 · 6 sao mở hình thái 3. Hình thái đã mở không mất. Mỗi hình thái có bộ kỹ năng riêng (tuyệt kỹ ×1 / ×1,1 / ×1,25; chỉ hình thái 3 có đặc tính riêng); chọn hình thái nào thì ra trận và ở thị trấn với hình thái đó. Cấp, sao, trang bị giữ nguyên.';
     const tabs=document.createElement('div');tabs.className='form-tabs';tabs.setAttribute('role','tablist');
     const list=document.createElement('div');list.className='hero-form-gallery-list';modal.body.append(intro,tabs,list);
     const cards=M.HERO_FORMS[key].map((info,i)=>{
@@ -95,12 +99,12 @@
       const image=document.createElement('img'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,locked=key==='shadow',asset=(!locked&&A[`show-${key}-${form}`])||(i?(!reduced&&A[`form-idle-${key}-${form}`])||A[`form-${key}-${form}`]||originals['hero-'+key]:originals['hero-'+key]);image.src=asset.file;image.alt=info.name;body.append(image);fitBody(body,asset,locked&&form===3?128:122);  // Noct is locked as approved: his cards stay as they weredecorateBody(body,key,form);
       card.dataset.current=String(form===current&&owned);card.dataset.form=form;card.dataset.unlocked=String(form<=max);
       const title=document.createElement('h3');title.textContent=info.name;
-      const note=document.createElement('p');note.className='form-state';note.textContent=`${M.FORM_STARS[i]} sao · ${!owned||form>max?'Chưa mở':[form===current&&'Đang khoác',form===max&&'Dùng trong trận'].filter(Boolean).join(' · ')||'Đã mở'}`;
+      const note=document.createElement('p');note.className='form-state';note.textContent=`${M.FORM_STARS[i]} sao · ${!owned||form>max?'Chưa mở':(form===current?'Đang dùng':'Đã mở')}`;
       const weapon=document.createElement('p');weapon.textContent=info.weapon;
       const skill=document.createElement('strong');skill.textContent=info.skill+(info.power?` · Tuyệt kỹ ×${String(info.power).replace('.',',')}`:'');
       card.append(body,title,note,weapon,skill);
       if(info.signature){const sig=document.createElement('p');sig.className='form-signature';sig.textContent=info.signature;card.append(sig);}
-      if(owned&&form<=max&&form!==current){const wear=document.createElement('button');wear.type='button';wear.className='gw-btn form-wear';wear.textContent='Khoác diện mạo';
+      if(owned&&form<=max&&form!==current){const wear=document.createElement('button');wear.type='button';wear.className='gw-btn form-wear';wear.textContent='Dùng hình thái này';
         wear.onclick=()=>{try{G.engine.chooseLook(key,form);modal.close();ctx.render();}catch(error){ctx.showModal('Chưa thể thực hiện',[],error.message);}};card.append(wear);}
       list.append(card);
       const tab=document.createElement('button');tab.type='button';tab.className='gw-btn secondary';tab.setAttribute('role','tab');tab.textContent=`${[1,4,6][i]} ★`;tab.setAttribute('aria-label',`Hình thái ${form}`);

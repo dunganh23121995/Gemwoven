@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:33.355504+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\board-back-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\lumi\\ref-motif.png"
+  ],
+  "prompt": "A square seamless background panel for a gem board: deep indigo, with a barely visible tone-on-tone pattern of small stars and constellation lines, very low contrast, quiet, no bright spots, filling the whole square image edge to edge, hand-painted, no frame, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a deep indigo, edge-to-edge seamless swirl background with small faint stars and thin constellation lines, matching the prompt. It has no frame, text, or flat key-colour requirement to violate, and its swirl motif is consistent with the teal swirl reference. Minor stylistic differences from the reference are not defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000495
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:27:26Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\mika\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a a chibi red-haired fox girl with fox ears and a fluffy fox tail in red and gold armour with a white scarf, sitting on a stool and raising a foaming beer mug, laughing on a plain background. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the ears, the hair on top of the head and the bangs. The face is never any other colour.\n- pure WHITE #FFFFFF: the body: neck, torso, shoulders, both arms and both hands.\n- pure GREEN #00FF00: the hips, both legs and the boots sitting on the stool: it never moves.\n- pure YELLOW #FFFF00: the beer mug with its foam, without the hand.\n- pure RED #FF0000: the long red hair and the fluffy fox tail.\n- pure CYAN #00FFFF: the white scarf ends and small hair strands over the face.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested flat colour part map: blue head and ears, white torso and arms, green legs and boots, yellow mug, red hair and tail, cyan scarf ends, and a solid black background. The pose, framing and mug placement match the reference, and nothing is cut off. Thin dark outline strokes remain, but the prompt asked to keep outlines where they are in Image 1, so this is minor.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000669
+  }
+}

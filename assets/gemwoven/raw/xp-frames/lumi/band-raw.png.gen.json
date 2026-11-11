@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T06:20:55.340990+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\xp-frames\\lumi\\original-ref.png"
+  ],
+  "prompt": "Use case: a texture strip for a game UI ring (portrait fantasy match-3 RPG \"Gemwoven\", painted hand-drawn style).\nReference image 1 is the avatar frame whose round ring band shows the pattern to copy: deep royal purple lacquer scattered with small golden four-point stars and tiny sparkles. Copy only that ring band's surface pattern, colours, painted brushwork and lighting.\nDraw ONE long straight horizontal band carrying this pattern, running edge to edge across the whole width of the image, centred vertically, about one sixth of the image height tall, with even height along its length. The band is the ring's surface unrolled flat: no rims, borders or edge lines along its top and bottom, no ornaments at all (no ears, flames, bows, hats, antlers, leaves sticking out, gems, emblems), no text. The pattern repeats evenly along the band and its left end continues seamlessly into its right end.\nAbove and below the band: solid flat pure magenta #FF00FF. No magenta or pink inside the band.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for solid flat pure magenta #FF00FF above and below the band, but the area above and below the band is white instead, so the key colour is missing and the band cannot be keyed out cleanly."
+      }
+    ],
+    "summary": "The band pattern (purple lacquer with gold four-point stars) matches the reference and runs edge to edge, but the surround is white rather than the required flat #FF00FF magenta key colour.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00046
+  }
+}

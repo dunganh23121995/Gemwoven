@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:35.299390+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\board-back-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\nori\\ref-motif.png"
+  ],
+  "prompt": "A square seamless background panel for a gem board: deep dark forest green, with a barely visible tone-on-tone pattern of leaves and vines, very low contrast, quiet, no bright spots, filling the whole square image edge to edge, hand-painted, no frame, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a dark forest green square panel with a tone-on-tone leaf and vine pattern filling edge to edge, matching the prompt. No frame, text, bright spots, or extra figures are visible. Reference 1 is a different swirl style, but the prompt asks for leaves and vines, so this is not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000411
+  }
+}

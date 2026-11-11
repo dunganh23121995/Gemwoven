@@ -71,12 +71,13 @@
   // assets/gemwoven/season/<art>/). A kit stays inactive until SEASONS schedules it: live-ops activates a season by adding
   // {index,hero} there, with no new code or art. A hero not released yet stays hidden in the hub until its season starts
   // (progression.js heroAvailable follows this schedule). Hiro has no season: he is the free starter.
+  // Season titles (owner 10/11: a different four-word Hán-Việt name for each, like "Cửu Vĩ Phi Hồ"; Claude + Codex).
   const SEASON_KITS={
-    fire:{hero:'Mika',art:'mika',theme:'Hỏa Hồ',avatar:'Mika Hỏa Hồ',entry:'Hồ Hỏa Khai Trận'},
-    ice:{hero:'Yuki',art:'yuki',theme:'Tuyết Thỏ',avatar:'Yuki Tuyết Thỏ',entry:'Băng Hoa Khai Trận'},
-    earth:{hero:'Nori',art:'nori',theme:'Lộc Thần',avatar:'Nori Lộc Thần',entry:'Rừng Thiêng Khai Trận'},
-    lightning:{hero:'Lumi',art:'lumi',theme:'Tinh Lôi',avatar:'Lumi Tinh Lôi',entry:'Tinh Lôi Khai Trận'},
-    shadow:{hero:'Noct',art:'noct',theme:'Ảnh Nguyệt',avatar:'Noct Ảnh Nguyệt',entry:'Ảnh Nguyệt Khai Trận'}};
+    fire:{hero:'Mika',art:'mika',theme:'Hỏa Hồ',title:'Hỏa Hồ Cửu Vĩ',avatar:'Mika Hỏa Hồ',entry:'Hồ Hỏa Khai Trận'},
+    ice:{hero:'Yuki',art:'yuki',theme:'Tuyết Thỏ',title:'Hàn Nguyệt Ngọc Thố',avatar:'Yuki Tuyết Thỏ',entry:'Băng Hoa Khai Trận'},
+    earth:{hero:'Nori',art:'nori',theme:'Lộc Thần',title:'Kim Giác Bạch Lộc',avatar:'Nori Lộc Thần',entry:'Rừng Thiêng Khai Trận'},
+    lightning:{hero:'Lumi',art:'lumi',theme:'Tinh Lôi',title:'Tinh Lôi Vu Nữ',avatar:'Lumi Tinh Lôi',entry:'Tinh Lôi Khai Trận'},
+    shadow:{hero:'Noct',art:'noct',theme:'Ảnh Nguyệt',title:'U Minh Câu Hồn',avatar:'Noct Ảnh Nguyệt',entry:'Ảnh Nguyệt Khai Trận'}};
   // The live-ops schedule: season index (28 days each from the anchor Monday) and its hero. Season one is Mika.
   const SEASONS=[{index:0,hero:'fire',rerun:null}];
   const seasonHero=index=>{const s=SEASONS.find(x=>x.index===index),k=s&&SEASON_KITS[s.hero];return k?{...s,art:k.art,theme:k.theme,name:'Hành Trình Của '+k.hero,event:'Đồng Hành Cùng '+k.hero}:null;};
@@ -85,7 +86,7 @@
   // only with a server-recorded purchase. `cosmetic` in a reward names the slot; the season resolves the item. `season` is
   // the scheduled season of the kit's hero, null while the kit waits.
   const COSMETIC_SLOTS=[['avatar','Avatar'],['frame','Khung avatar'],['title','Danh hiệu'],['nameplate','Thẻ tên'],['bubble','Bong bóng chat'],['combatFrame','Khung trận'],['entry','Hiệu ứng vào trận']];
-  const KIT_ITEMS=[['avatar','avatar','avatar','free',10,k=>k.avatar],['frame','frame','frame','gold',10,k=>'Khung '+k.theme],['title','title','title','gold',20,k=>'Bạn Đồng Hành '+k.theme],
+  const KIT_ITEMS=[['avatar','avatar','avatar','free',10,k=>k.avatar],['frame','frame','frame','gold',10,k=>'Khung '+k.theme],['title','title','title','gold',20,k=>k.title],
     ['nameplate','nameplate','nameplate','gold',30,k=>'Thẻ tên '+k.theme],['bubble','bubble','bubble','gold',40,k=>'Bong bóng '+k.theme],
     ['combatFrame','combat-frame','combat-corner','jewel',25,k=>'Khung trận '+k.theme],['entry','entry','entry','jewel',40,k=>k.entry]];
   const COSMETICS=Object.entries(SEASON_KITS).flatMap(([hero,k])=>KIT_ITEMS.map(([slot,id,pic,track,level,name])=>({id:k.art+'-'+id,art:`season-${k.art}-${pic}`,

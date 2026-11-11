@@ -419,3 +419,12 @@
 #power-detail.kp-pop:has(.kp-zero.is-open) .growth-sub{margin:2px 0 4px!important}
 #power-detail.kp-pop:has(.kp-zero.is-open) .kp-way{gap:4px}
 #power-detail.kp-pop:has(.kp-zero.is-open) .kp-way img{width:60px;height:60px;padding:8px}
+/* Button roles everywhere (owner 08/11 "còn nhiều chỗ khác ngoài triệu hồi dùng nút dạng đá kim cương"; Codex look round D):
+   the gem buttons belong to the summon ritual alone (its confirm and reveal); every other plain action button is the kit's gold
+   plate, a secondary or unavailable one the steel plate. Tabs keep their own art. */
+:is(.gw-btn,.game-btn):not(:is(#summon-confirm,#summon-reveal,.live-tabs,.chat-tabs) *){background:none!important;border:solid transparent!important;border-width:0 22px!important;
+  border-image:var(--kit-btn-gold) 0 40 fill / 0 22px stretch!important;box-shadow:none!important;filter:drop-shadow(0 3px 3px #2a140866);border-radius:0!important;
+  color:#4a2508!important;text-shadow:0 1px #fff3cf!important;font-weight:900!important}
+:is(.gw-btn,.game-btn):not(:is(#summon-confirm,#summon-reveal,.live-tabs,.chat-tabs) *)::before,
+:is(.gw-btn,.game-btn):not(:is(#summon-confirm,#summon-reveal,.live-tabs,.chat-tabs) *)::after{display:none!important}
+:is(.gw-btn,.game-btn):is(.secondary,:disabled):not(:is(#summon-confirm,#summon-reveal,.live-tabs,.chat-tabs) *){border-image-source:var(--kit-btn-steel)!important;color:#efe7da!important;text-shadow:0 1px 2px #1a1008!important}

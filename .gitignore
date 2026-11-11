@@ -80,3 +80,6 @@ assets/gemwoven/*/*/rig/sharp/fidget-*/frame-*.png
 assets/gemwoven/*/*/rig/sharp/sheet-*/ref-*.png
 assets/gemwoven/*/*/rig/sharp/sheet-*/style.png
 assets/gemwoven/*/*/rig/sharp/sheet-*/frame-*.png
+
+# Claude sets the owner's trial save through this on a dev server (src/gemwoven/ui.js)
+/tools/dev-trial.json

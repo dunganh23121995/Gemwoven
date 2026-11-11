@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:39:42.669807+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\scene-frame-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\lumi\\scene-frame-raw-v1.png"
+  ],
+  "prompt": "One ornate rectangular landscape picture frame (3:2), seen straight on, laid out exactly like reference image 1: the frame band about 8 percent of the frame's height thick, four DIFFERENT carved corner pieces (top-left a small purple witch hat with a golden crescent moon, top-right a golden lightning bolt with stars, bottom-left and bottom-right small four-point star knots with violet gem studs), each corner ornament within about 14 percent of the frame's height from its corner. Between the corners the four straight edges are one continuous uniform carved molding with a thin groove of tiny stars, identical all along so it can repeat. The inside of the frame is empty and filled with the same pure magenta. Nothing at the middle of the top edge. THUNDER is part of this witch: crackling golden-violet lightning veins run inside the band's groove all the way round, small lightning bolts spring from the corners, and the band's trim has a jagged lightning edge. Style: a premium seasonal battle frame 'Tinh Lôi — Star-Thunder Witch', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, gold and deep royal-purple lacquer with small golden stars and fine lightning lines, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat pure magenta #FF00FF background and a magenta interior, but the candidate's background and inner area are white. The key colour is missing entirely, so the image cannot be keyed out as the prompt requires."
+      }
+    ],
+    "summary": "The frame artwork broadly matches the prompt's motif: the purple witch hat, golden lightning corner, violet gem knots, and lightning veins along the band. However, the background and interior are white instead of the required flat #FF00FF magenta, which is a clear, objective defect against the prompt.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000642
+  }
+}

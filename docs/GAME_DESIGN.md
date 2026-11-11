@@ -41,7 +41,7 @@ Ký hiệu: **[Có]** đã chạy · **[Đêm nay]** thêm ở đợt 03/11 · *
 |---|---|---|---|---|
 | **Cấp** 1–500 | HP +4,5%, Công +1,8% mỗi cấp | Vàng, Sách EXP, Ấn (trần 1.600/ngày) | Không khóa bởi sao | [Có] |
 | **Sao** 1–6★ | HP +12%, Công +9% mỗi sao; **mở Hình thái** | **Bản dư có sao** (80 mảnh = 1 bản 1★; 2 bản s★ luyện thành 1 bản (s+1)★), vàng, tinh hoa; s→s+1 cần 1 bản s★ (Hiro: bản thường 1/2/3/5/8) | Bản dư | [Có · 04/11] |
-| **Hình thái** 1–3 | Dáng + bộ tuyệt kỹ (×1 / ×1,1 / ×1,25 + đặc tính 6★) | 4★ → H2, 6★ → H3 | Sao | [Có]; diện mạo tùy chọn [Đêm nay] |
+| **Hình thái** 1–3 | Dáng + bộ tuyệt kỹ (×1 / ×1,1 / ×1,25 + đặc tính 6★) | 4★ → H2, 6★ → H3 | Sao | [Có]; chọn hình thái dùng (thị trấn và trận) [08/11] |
 | **Tiến hóa** 0–6 | Mở nhánh kỹ năng, năng lượng đầu trận, mảnh giáp; HP +10%, Công +7%/bậc | Vàng, tinh hoa, quặng | **Cấp + Sao** | [Có] |
 | **Kỹ năng** 4 × 10 | Đổi *cách* thắng | Vàng, bí kíp, tinh hoa | Cấp + Tiến hóa | [Có] |
 | **Trang bị** 6 ô | Chỉ số; đồ Thần có thuộc tính | Rèn, triệu hồi, cửa hàng | Ải | [Có] |
@@ -67,10 +67,13 @@ Trang bị / Bảo bối / Ngọc / Báu vật ──► chỉ số; KHÔNG đ�
   đã vẽ của hình thái. Mọi hình thái mặc được mọi trang bị.
 - *Form 3 không có vũ khí thì biến thân được không?* **Được.** Thiếu vũ khí chỉ thiếu Công.
 - *Ngoại lệ có chủ đích:* **Vũ khí bản mệnh** (3.3) — khi đúng chủ mang, tuyệt kỹ thêm một hiệu ứng.
-- *Nâng sao rồi còn dùng hình thái cũ?* **Có, miễn phí** [Đêm nay]. Hình thái đã mở không mất. Chọn
-  **diện mạo ở thị trấn** (Home, Tướng, bản đồ, sau này Quảng Trường) bằng nút "Khoác diện mạo này" trong
-  bảng Hình thái. **Trong trận luôn là hình thái cao nhất** — vì hoạt cảnh tuyệt kỹ gắn với bộ kỹ năng
-  của từng hình thái; trộn dáng cũ với kỹ năng mới sẽ sai hình. Lên sao mở hình thái mới: chưa chọn diện mạo thì tự khoác hình mới; đã chọn diện mạo cũ thì giữ lựa chọn ấy (vòng Nghi thức biến hình).
+- *Nâng sao rồi còn dùng hình thái cũ?* **Có, miễn phí, cả trong trận** [08/11, phương án 2 của chủ dự án, Claude + Codex
+  đồng thuận §20]. Hình thái đã mở không mất. Nút "Dùng hình thái này" trong bảng Ba hình thái chọn hình thái mà tướng dùng
+  **ở thị trấn và khi ra trận** (một lựa chọn chung, `h.look`). Mỗi hình thái giữ **bộ kỹ năng riêng** (đánh thường, tuyệt kỹ
+  ×1 / ×1,1 / ×1,25, hoạt cảnh, âm thanh; chỉ hình thái 3 có đặc tính riêng), nên dáng và kỹ năng luôn khớp và tài nguyên
+  của hình thái 1–2 không bị bỏ phí sau 6★. Cấp, sao, trang bị, ngọc, báu vật giữ nguyên; HP/Công/Thủ và lực chiến không
+  phụ thuộc hình thái. Chỉ chọn ngoài trận: trận chụp hình thái lúc bắt đầu. Mở hình thái mới (nghi thức 4★/6★) thì tự
+  chuyển sang hình thái mới. Bản lưu trước 08/11 (diện mạo cũ chỉ là hình ở thị trấn) được đưa về hình thái cao nhất một lần.
 - *Chế độ biến hình trong trận?* Có, qua nhánh **Chân Thân** (2.4).
 
 ### 1.2 Hiro và người chơi miễn phí [Đêm nay]
@@ -159,7 +162,7 @@ Chủ dự án (04/11): "bỏ phần mô tả yêu cầu và tên ngay cạnh k�
   `live-combat.js` / `board-control.js`.
 - **Cổng mới khi làm Biến Thân: cấp 180 + TH3** (Codex: cấp 400 cần tối thiểu 190 ngày theo trần Ấn —
   khoảnh khắc hay nhất không được đến muộn vậy). Cấp 400 + TH5 nâng hiệu quả Biến Thân.
-- Tắt trong hàng PvP Chuẩn Hóa, 1vs1 cùng máy và giao hữu. **Đã làm:** nút "BIẾN THÂN" cạnh tướng hiện khi HP ≤ 50% hoặc sau tuyệt kỹ thứ hai; bấm không tốn lượt; đếm theo lượt của tướng; miễn choáng/đóng băng mới; hào quang vàng; dư âm sau đó; bỏ thưởng Công/HP Chân Thân cũ. Bot trận thật tự bấm Biến Thân.
+- Tắt trong hàng PvP Chuẩn Hóa, 1vs1 cùng máy và giao hữu. **Đã làm:** huy hiệu Biến Thân ẩn tới khi bấm được (chủ dự án 10/11): tướng đã học kỹ năng 4 và HP ≤ 50% hoặc sau tuyệt kỹ thứ hai thì hiện ở góc trên trái khung cảnh, nháy nhẹ liên tục tới khi bấm; trong lúc biến thân hiện số lượt còn lại; bấm không tốn lượt; đếm theo lượt của tướng; miễn choáng/đóng băng mới; hào quang vàng; dư âm sau đó; bỏ thưởng Công/HP Chân Thân cũ. Bot trận thật tự bấm Biến Thân.
 - **Diện mạo Biến Thân vẽ theo hệ (chủ dự án 04/11, phương án A; Codex lên kế hoạch, mockup 8,4, bản dựng điện thoại 8,5 / Studio 8,8):** mỗi tướng một bộ 7 mảnh vẽ (spirit, hai dải sườn, vật ở chân, hai hạt, dấu dư âm) dùng chung 3 hình thái, đặt theo thân (`--evo-top/h/x`), cỡ và độ rộng chỉnh theo hình thái. Bùng 1 giây khi bấm (linh thú hiện từ chân, giữ 240–380ms, tan ở 720ms; hai dải sườn dựng lên), 3 lượt hai dải trôi chậm lệch pha (2,8 / 3,4 giây) + lửa ở chân + vài hạt bay, lùi còn 35% khi tướng ra đòn; dư âm còn một dấu nhỏ sau gót. Mỗi mảnh là một ảnh vẽ chuyển động nguyên khối, không sheet đổi khung. Hai tiếng thu thật (bùng; hạ xuống dư âm), thay tiếng buff chung. NO FX ẩn toàn bộ. Luật không đổi. Mika: cáo chín đuôi đỏ rượu bùng lên. **Đủ 6 tướng (chủ dự án: "vẽ luôn cho các nhân vật khác")**, mỗi tướng Codex chấm trong trận thật ≥8,5 ở điện thoại dọc, ngang và Studio: Hiro — ấn đường hành hương gam đất, nút thoi phải-trên (chỉ hình ảnh, không thêm sức mạnh); Yuki — thỏ tuyết linh bằng sương băng, tuyết rơi chậm; Nori — ấn cổ thụ ba tán lệch phải, dải vỏ cây, lá bay chậm; Lumi — tinh ấn điện bốn mũi tím, sao trôi ngang, không chớp; Noct — ấn màn bóng khuyết tím xám, hào quang khóa giữ nguyên. Vị trí theo hộp thân của từng hình thái (khung nghỉ), sườn đặt ngoài bề rộng thân; Hiro/Nori/Noct có viền cứng 1px tối + 1px sáng theo hệ để tách khỏi nền đá, lá và hào quang tối. Tướng chưa phát hành đã có bộ sẵn cho live-ops mở sau. Code `src/transform-fx.js/.css`, mảnh `assets/heroes/forms/<hero>/transform/`, xử lý `assets/heroes/forms/transform_prep.py`, âm `scripts/prepare_transform_sounds.py`, thô + kế hoạch + điểm `assets/gemwoven/raw/transform-<hero>/`. Hào quang nghỉ của Mika (hai lưỡi lửa thấp, H2/H3, ở Trang Chủ / Tướng) đã dựng sau cờ `html.mika-rest-aura-enabled`, tắt mặc định, chờ chủ dự án duyệt (xem trước: `?restaura`).
 
 - **Biến Thân v2 · linh thần + hào quang (chủ dự án 04/11, Mika trước; đã duyệt):** bấm BIẾN THÂN thì sân quanh tướng tối đi, một **linh thần khổng lồ trong suốt** (Mika: nữ thần cáo chín đuôi bằng nét lửa sáng, không vũ khí) mọc lên đứng trên chân tướng, mặt thẳng trên đầu tướng, hai tay ôm vòng xuống; cao tới 2,5 thân, tự co để cả hình nằm trong sân (mép trái được che một ít); hiện → giữ → thở → tan tại chỗ trong 2,6 giây. Lúc linh thần hiện, thanh máu và hàng hiệu ứng **giữ nguyên chỗ, mờ còn 30%** rồi hiện lại. Khi linh thần tan, **hào quang mịn bám sát thân** (dựng từ chính hình bóng khung hiện tại của tướng: viền sáng vàng-cam ôm đường viền, lớp sáng rộng với dải sáng trôi chậm dọc thân, quầng sáng mềm ở chân; không lưỡi lửa, không hình đuôi) giữ suốt 3 lượt; dư âm là viền đó mỏng và mờ hơn. Âm thanh: tiếng của hệ tướng + **một tiếng chung cho mọi tướng** (gió vút nhẹ rồi tiếng va trầm, ngân dài; 2 bản ghi CC0, `assets/audio/hero-forms/transform/spirit-rise.wav`); bản dự phòng "gió vút trầm" để trong Kho dự phòng của thư viện âm thanh. Linh thần: `assets/heroes/forms/transform_spirit.py`, bật bằng `transform/v2.json`. Codex soát khắt khe 7 vòng → dọc 8,5 / ngang 8,6 / Studio 8,6. Các tướng khác chờ chủ dự án duyệt Mika.
@@ -527,8 +530,11 @@ Chủ dự án (04/11): "chưa có chỗ tổ chức thi đấu mỗi tháng xem
 `begin('cup')`); thưởng: `liveops.js` `CUP_PRIZES`, `CUP_SCHEDULE`.
 - **Lịch:** tháng dương lịch, UTC+7. Tháng D ngày: **đua điểm** ngày 1 → hết D−3; **tứ kết** D−2, **bán kết** D−1, **chung kết** D
   (BO3, 20:00, có xem lại). Độc lập với mùa Đấu Hạng 28 ngày và Thư Hùng (quý).
-- **Công bằng:** luật Chuẩn Hóa. **Mượn mọi tướng đã phát hành** (không cần sở hữu, không thêm vào bộ sưu tập), hình thái gốc, kỹ
-  năng cấp 1; không trang bị, báu vật, ngọc, VIP, Biến Thân. Không xoay nhóm tướng; danh sách và bản cân bằng khóa đầu tháng.
+- **Tướng thi đấu (chủ dự án 08/11, thay luật Chuẩn Hóa cũ):** chỉ **tướng mình sở hữu**, không mượn tướng đã phát hành; đánh
+  bằng **chỉ số thật** (cấp, sao, trang bị, ngọc, báu vật) và hình thái đã mở mà người chơi chọn. **Chọn tướng trước khi ghép
+  trận, 10 giây** (Claude + Codex `raw/hero-roster`, mockup 8/10): bấm là chọn, "Sẵn sàng" xác nhận sớm; hết giờ giữ lựa chọn
+  đã có, chưa chọn thì tự lấy tướng lực chiến cao nhất ở hình thái cao nhất. **Không biết đối thủ chọn gì** (thẻ úp "?") cho
+  tới khi vào trận. Bản thử cục bộ: đối thủ AI là bản sao mạnh tương đương tướng đã chọn, lệch theo chênh điểm (±15%).
 - **Điều kiện:** miễn phí, qua ải 30, tài khoản xác thực (bản thử bỏ cổng ải để thử ngay).
 - **Lượt:** 5 trận tính điểm/ngày, lượt chưa dùng dồn tối đa 10; không bán lượt, không lượt VIP. Người vào giữa tháng bắt đầu như mọi người.
 - **Điểm:** Elo đối xứng từ 1.000, `K = 40`, chênh lệch kẹp ±240: `E = 1/(1+10^(gap/400))`, `Δ = round(40·(S−E))` (ngang sức ±20,
@@ -761,7 +767,7 @@ nguồn `raw/`, `sources/`):
 
 | Câu hỏi | Chốt |
 |---|---|
-| Chọn hình thái thấp hơn trong trận? | Không. Chọn diện mạo ở thị trấn; trận dùng hình thái cao nhất. |
+| Chọn hình thái thấp hơn trong trận? | Lúc đầu: không. **08/11: có** (phương án 2, xem cuối §20). |
 | Hình thái Hiro? | Có, ở 4★/6★ như mọi tướng; cần vẽ. |
 | Giá | Thẻ tháng 109k, Sổ Vàng 149k, Sổ Diệu Ngọc 299k, Quỹ 299k. **Bỏ Thẻ Trọn Đời** (chủ dự án 03/11). |
 | Cân bằng | Hiro tuyệt kỹ 70 và kiếm ×1,2 (đã áp, đo bằng mô phỏng); dẫn người chơi tới đồ + kỹ năng (Lộ trình); chưa hạ HP boss. |
@@ -792,6 +798,13 @@ nguồn `raw/`, `sources/`):
 
 Điểm Claude không theo Codex: Codex đề xuất "diện mạo cũ nhưng sức mạnh bộ kỹ năng cao nhất" — Claude giữ đúng tinh
 thần đó nhưng chỉ cho đổi diện mạo **ngoài trận**, vì trong trận hoạt cảnh tuyệt kỹ thuộc về từng hình thái.
+
+**Cập nhật 08/11 (hình thái xuất trận):** chủ dự án: "bộ kỹ năng 3 form khác nhau, chỉ form 3 thì không dùng được tài nguyên
+form 1 và 2" và chọn phương án 2: ra trận với hình thái đã mở nào cũng được, sức mạnh đi theo hình thái. Codex
+(`gpt-6.1-sol` medium, `assets/gemwoven/raw/combat-form/review.md`) đồng thuận với điều kiện: một lựa chọn chung thị trấn +
+trận; đưa `h.look` cũ về cao nhất một lần (không để diện mạo cũ âm thầm thành hình thái yếu hơn); hình thái chốt từ lúc
+bắt đầu trận; mở hình thái mới thì tự chuyển; câu chữ không khẳng định hình thái thấp luôn yếu hơn; lực chiến không đổi theo
+hình thái nên không dùng để ghép đối thủ yếu.
 
 ### Vòng 2 (Codex soát code + tài liệu bản 2)
 

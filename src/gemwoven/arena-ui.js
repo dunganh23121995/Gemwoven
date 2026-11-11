@@ -26,10 +26,13 @@
     return {text:'Xem nhánh Top 8',on:true,view:'finals'};
   }
   function standingHtml(v){const y=v.you;return y.ranked?`<b>Bạn</b> · Hạng <em>${y.rank}</em> · ${fmt(y.points)} điểm`:`<b>Bạn</b> · Chưa xếp hạng · <em>${y.played}/${M.CUP.rankedAfter} trận</em>`;}
-  const cupHero=(state,v)=>v.pool.includes(state.cupHero)?state.cupHero:v.pool.includes(G.engine.read().selected)?G.engine.read().selected:v.pool[0];
+  // Only owned heroes fight the cup, at their real strength (owner 08/11). The default: the strongest one, in its highest form.
+  const owned=p=>Object.keys(p.heroes).filter(k=>M.heroAvailable(k));
+  const strongest=p=>owned(p).sort((a,b)=>(M.stats(p,b).power||0)-(M.stats(p,a).power||0))[0]||p.selected;
+  const cupHero=state=>{const p=G.engine.read();return p.heroes[state.cupHero]?state.cupHero:strongest(p);};
   function build(el,state){
-    const v=G.engine.cup(),a=action(v),hero=cupHero(state,v);
-    for(const [k,f] of [['row',P+'row.webp'],['slot',P+'slot.webp'],['match',P+'match.webp'],['tab','assets/gemwoven/forge/tab.webp'],['tag','assets/gemwoven/forge/tag.webp'],...['tab-wood','button-gold','nameplate','panel-parchment'].map(k=>[k,file(k)])])document.documentElement.style.setProperty('--ar-'+k,`url("${url(f)}")`);
+    const v=G.engine.cup(),a=action(v),hero=cupHero(state);
+    for(const [k,f] of [['row',P+'row.webp'],['slot',P+'slot.webp'],['match',P+'match.webp'],['tab','assets/gemwoven/forge/tab.webp'],['tag','assets/gemwoven/forge/tag.webp'],...['tab-wood','nameplate','panel-parchment'].map(k=>[k,file(k)])])document.documentElement.style.setProperty('--ar-'+k,`url("${url(f)}")`);
     const pod=[[1,'silver',[228,604,150,150],[243,722,120,154]],[0,'gold',[381,552,178,178],[395,680,150,173]],[2,'bronze',[563,604,150,150],[578,722,120,154]]];
     el.innerHTML=
       `<button type="button" class="ar-sign" data-action="cup:open" style="${box(150,212,641,275)}" aria-label="Cúp Đấu Trường · mở bảng giải"><img src="${P}cup-sign.webp" alt=""><b>${esc(M.CUP.name)}</b><span class="ar-local">Đấu thử cục bộ · đối thủ AI</span><em><img src="${file('icon-trophy')}" alt="">${esc(phase(v).replace('Vòng ',''))} · ${esc(left(v.season))}</em></button>`+
@@ -42,7 +45,7 @@
       // the podium steps back.
       `<i class="ar-you-glow" style="${box(60,880,820,280)}"></i>`+
       `<button type="button" class="ar-strip" data-action="cup:open" data-tab="race" style="${box(196,922,650,80)}"><span>${standingHtml(v)}</span></button>`+
-      `<button type="button" class="ar-hero" data-action="cup:hero" style="${box(78,920,156,156)}" aria-label="Tướng thi đấu: ${esc(M.HEROES[hero].name)} · chạm để đổi"><img class="ar-face" src="${face(hero)}" alt=""><img src="${file('avatar-ring')}" alt=""><small>${esc(M.HEROES[hero].name)}</small></button>`+
+      `<span class="ar-hero" style="${box(78,920,156,156)}" aria-label="Tướng gần nhất: ${esc(M.HEROES[hero].name)}"><img class="ar-face" src="${face(hero)}" alt=""><img src="${file('avatar-ring')}" alt=""><small>${esc(M.HEROES[hero].name)}</small></span>`+
       `<button type="button" class="ar-go ${a.on?'':'off'}" data-action="${a.view?'cup:open':'cup:play'}" ${a.view?`data-tab="${a.view}"`:''} ${a.on?'':'disabled'} style="${box(240,1008,456,120)}"><span>${esc(a.text)}</span></button>`+
       `<button type="button" class="ar-chest" data-action="cup:open" data-tab="prizes" style="${box(708,996,160,140)}"><img src="${file('chest')}" alt=""><span>Xem thưởng</span></button>`+
       `<p class="ar-note" style="${box(70,1146,801,76)}"><span>31 AI + bạn · Không thưởng</span><span>Kết quả không lên bảng toàn cầu</span></p>`+
@@ -101,11 +104,49 @@
     modal.actions.append(pick,go);modal.present();
     if(v.you.ranked)modal.querySelector('.ar-pane .ar-row.you')?.scrollIntoView({block:'center'});
   }
+  // ----- Chọn tướng before the match (owner 08/11: "trước khi ghép trận cho chọn tướng; hết time mà chưa chọn thì mặc định tướng
+  // lực chiến cao nhất và form lớn nhất; không biết đối thủ đang chọn gì, khi vào trận mới biết", 10 s; Claude + Codex
+  // hero-roster round, mockup-arena.png 8/10). A full-screen layer: the countdown, your pick and a face-down "?" for the foe,
+  // the forms of your pick, the owned heroes, one "Sẵn sàng". A tap chooses; when time runs out a choice already made stands,
+  // otherwise the strongest hero in its highest form is taken. Then input locks and the match is prepared; the foe's hero
+  // shows only in battle. -----
+  const PICK_MS=10000,ROMAN=['I','II','III'];
   function play(ctx,state){
-    try{const v=G.engine.cup(),b=G.engine.begin('cup',1,{hero:cupHero(state,v)});document.getElementById('cup-dialog')?.close();
-      ctx.showModal?.(`${M.CUP.name} · bản thử`,['icon-arena'],`Gặp bản sao ${b.cup.opponent.name} (AI). Thoát giữa trận tính thua.`);
-      setTimeout(()=>{location.href='Game.html?encounter='+encodeURIComponent(b.token);},700);}
-    catch(e){ctx.showModal('Chưa thể vào trận',[],e.message);}
+    if(document.querySelector('.ar-pick'))return;
+    const p=G.engine.read(),list=owned(p).sort((a,b)=>(M.stats(p,b).power||0)-(M.stats(p,a).power||0));
+    if(!list.length){ctx.showModal('Chưa thể vào trận',[],'Cần ít nhất một tướng đã sở hữu.');return;}
+    document.getElementById('cup-dialog')?.close();
+    const pick={hero:null,form:0},shown=()=>pick.hero||list[0],formOf=k=>pick.hero===k&&pick.form?pick.form:M.formMax(k,p.heroes[k]);
+    const layer=document.createElement('div');layer.className='ar-pick';layer.setAttribute('role','dialog');layer.setAttribute('aria-label','Chọn tướng thi đấu');
+    (document.getElementById('scene')||document.body).append(layer);
+    const card=window.GemwovenHall?.rosterCard;
+    function draw(){
+      const k=shown(),h=p.heroes[k],max=M.formMax(k,h),f=formOf(k);
+      layer.innerHTML=`<i class="ar-pick-veil"></i>`+
+        `<div class="ar-pick-title" style="${box(270,36,401,96)}"><img src="${file('kit-plaque')}" alt=""><b>Chọn tướng</b></div>`+
+        `<div class="ar-pick-clock" style="${box(400,138,141,141)}"><img src="${file('kit-round')}" alt=""><svg viewBox="0 0 100 100"><circle class="t" cx="50" cy="50" r="38"/><circle class="f" cx="50" cy="50" r="38" pathLength="100"/></svg><b>10</b></div>`+
+        `<p class="ar-pick-sub" style="${box(250,288,441,52)}">Đấu thử cục bộ · Chỉ số thật</p>`+
+        `<div class="ar-pick-me" style="${box(120,360,300,360)}"><b class="ar-pick-tag">Bạn</b>${card?card(p,k,null).replace('<button','<span').replace(/<\/button>$/,'</span>'):''}</div>`+
+        `<div class="ar-pick-foe" style="${box(521,360,300,360)}"><b class="ar-pick-tag foe">Đối thủ</b><img src="${file('summon-back-gold')}" alt=""><i>?</i></div>`+
+        `<div class="ar-pick-forms" style="${box(120,730,300,64)}">${ROMAN.map((r,i)=>`<button type="button" data-form="${i+1}" class="${f===i+1?'on':''}" ${i+1>max?'disabled':''} aria-label="Hình thái ${i+1}${i+1>max?' · chưa mở':''}">${i+1>max?`<img src="${file('kit-lock')}" alt="">`:r}</button>`).join('')}</div>`+
+        `<div class="ar-pick-list" style="${box(36,812,869,520)}"><b class="ar-pick-head">Tướng sở hữu (${list.length})</b><div class="roster-grid">${card?list.map(x=>card(p,x,pick.hero||'')).join(''):''}</div></div>`+
+        `<button type="button" class="ar-pick-go" style="${box(170,1350,601,112)}">Sẵn sàng</button>`+
+        `<p class="ar-pick-note" style="${box(80,1470,781,60)}">Chưa chọn khi hết giờ: tự chọn tướng mạnh nhất ở hình thái cao nhất.</p>`;
+      layer.querySelectorAll('.ar-pick-list [data-hero]').forEach(b=>b.onclick=()=>{if(done)return;pick.hero=b.dataset.hero;pick.form=0;draw();tick();});
+      layer.querySelectorAll('[data-form]').forEach(b=>b.onclick=()=>{if(done)return;pick.hero=shown();pick.form=Number(b.dataset.form);draw();tick();});
+      layer.querySelector('.ar-pick-go').onclick=()=>go(false);
+    }
+    const t0=Date.now();let done=false,timer=0;
+    function tick(){const left=Math.max(0,PICK_MS-(Date.now()-t0)),clock=layer.querySelector('.ar-pick-clock');if(!clock)return;
+      clock.querySelector('b').textContent=Math.ceil(left/1000);clock.querySelector('.f').style.strokeDasharray=`${left/PICK_MS*100} 100`;clock.classList.toggle('low',left<=3000);
+      if(left<=0)go(true);}
+    function go(timeUp){if(done)return;done=true;clearInterval(timer);
+      const hero=pick.hero||list[0],form=pick.hero?formOf(hero):M.formMax(hero,p.heroes[hero]);state.cupHero=hero;
+      if(timeUp&&!pick.hero){pick.hero=hero;draw();}
+      layer.classList.add('busy');const btn=layer.querySelector('.ar-pick-go');btn.textContent='Đang chuẩn bị trận…';btn.disabled=true;
+      setTimeout(()=>{try{const b=G.engine.begin('cup',1,{hero,form});location.href='Game.html?encounter='+encodeURIComponent(b.token);}
+        catch(e){layer.remove();ctx.showModal('Chưa thể vào trận',[],e.message);}},1000);}
+    draw();tick();timer=setInterval(tick,100);
   }
   const decorate=G.decorate;
   G.decorate=state=>{
@@ -124,7 +165,6 @@
     const cmd=act.slice(4);
     if(cmd==='open'){openCup(ctx,state,el.dataset.tab||state.cupTab||'race');return true;}
     if(cmd==='play'){play(ctx,state);return true;}
-    if(cmd==='hero'){const v=G.engine.cup(),i=v.pool.indexOf(cupHero(state,v));state.cupHero=v.pool[(i+1)%v.pool.length];ctx.render();return true;}
     // Hai người một máy: straight into the local duel (Hiro against Hiro, no reward, no ranking).
     if(cmd==='duel'){try{const b=G.engine.begin('duel',1);location.href='Game.html?encounter='+encodeURIComponent(b.token);}catch(e){ctx.showModal('Chưa thể vào trận',[],e.message);}return true;}
     return true;

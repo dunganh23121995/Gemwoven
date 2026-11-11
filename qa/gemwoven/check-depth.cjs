@@ -4,15 +4,17 @@ const M=require('../../src/gemwoven/progression.js');
 const DAY=86400000;let clock=Date.UTC(2026,10,3,6);
 function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};const engine=M.makeEngine(storage,{now:()=>clock,random:()=>.7});const edit=fn=>{const p=engine.read();fn(p);storage.setItem(M.KEY,JSON.stringify(p));};return {engine,edit};}
 
-{ // Forms: stars unlock them, combat keeps the highest, any unlocked one can be worn in town.
+{ // Forms: stars unlock them; the chosen unlocked form is used in town and in battle with its own kit (owner 08/11, option 2).
   const {engine:e,edit}=fixture();edit(p=>{p.heroes.fire={level:1,stars:4,evolution:0,copies:3,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[]};p.wallet.gold=5e6;p.materials.essence=1000;});
   assert.equal(M.heroForm('fire',e.read().heroes.fire),2);assert.equal(M.lookForm('fire',e.read().heroes.fire),2);
   assert.throws(()=>e.chooseLook('fire',3),/6 sao/);assert.throws(()=>e.chooseLook('novice',2),/4 sao|Chưa mở|chưa mở/);
   assert.equal(e.chooseLook('fire',1),1);const h=e.read().heroes.fire;
-  assert.equal(M.lookForm('fire',h),1,'Town look follows the choice');assert.equal(M.heroForm('fire',h),2,'Combat keeps the highest form');
-  assert.equal(e.stats('fire').form,2);assert.equal(e.stats('fire').kit.formPower,1.1);
+  assert.equal(M.lookForm('fire',h),1,'Town look follows the choice');assert.equal(M.heroForm('fire',h),1,'Battle uses the chosen form');
+  assert.equal(e.stats('fire').form,1);assert.equal(e.stats('fire').kit.formPower,1,'Form 1 fights with its own kit');
+  {const a=e.stats('fire');e.chooseLook('fire',2);const b=e.stats('fire');assert.equal(b.form,2);assert.equal(b.kit.formPower,1.1);assert.deepEqual([a.hp,a.attack,a.defense],[b.hp,b.attack,b.defense],'HP, Công, Thủ do not depend on the form');e.chooseLook('fire',1);}
   assert.equal(e.chooseLook('fire',2),2);assert.equal(e.read().heroes.fire.look,undefined,'Choosing the highest clears the override');
   e.chooseLook('fire',1);edit(p=>{p.heroes.fire.stars=5;p.heroes.fire.copies=20;});e.starUp('fire');
+  assert.equal(M.heroForm('fire',e.read().heroes.fire),3,'Opening a new form switches to it');
   // Starred spares (owner 04/11): 5→6 takes one 5★ spare = 16 raw copies; starUp fuses what it needs (20 → 4 left) and pays
   // the fusions too; Hiro keeps the plain table (8 copies for 5→6).
   {const h=e.read().heroes.fire;assert.equal(h.stars,6);assert.equal(h.fodder,undefined,'16 raw spent, the 3 left become dust at 6★');}
@@ -28,7 +30,11 @@ function fixture(){const map=new Map(),storage={getItem:k=>map.get(k)||null,setI
   assert.throws(()=>e.refineCopy('ice',4),/2 bản 3★/);assert.throws(()=>e.refineCopy('novice',2),/Hiro/);
   edit(p=>{p.heroes.ice.stars=3;});e.starUp('ice');assert.equal(e.read().heroes.ice.stars,4);assert.deepEqual(M.spares(e.read().heroes.ice),[0,1,0,0,0,0]);
 
-  assert.equal(M.heroForm('fire',e.read().heroes.fire),3);assert.equal(M.lookForm('fire',e.read().heroes.fire),1,'A town look the player chose stays when a new form opens (form ceremony round)');
+  assert.equal(M.heroForm('fire',e.read().heroes.fire),3);assert.equal(M.lookForm('fire',e.read().heroes.fire),3,'A new form opens in use, in town and in battle (owner 08/11, D2)');
+}
+{ // Saves from before the battle-form rule: a town look is cleared once (Codex: never a silent weaker battle form).
+  const {engine:e,edit}=fixture();edit(p=>{p.heroes.fire={level:1,stars:6,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:{level:1,evolution:1},ticketMilestones:[],look:1};delete p.formChoice;});
+  assert.equal(M.heroForm('fire',e.read().heroes.fire),3);e.chooseLook('fire',2);assert.equal(e.read().formChoice,1);assert.equal(M.heroForm('fire',e.read().heroes.fire),2,'A choice made under the new rule stays');
 }
 { // Hiro's copies come from play: newbie week, daily campaign quest, chapter chests, endless floors.
   const {engine:e,edit}=fixture();
@@ -371,7 +377,7 @@ console.log('journey pass ok');
   e.claimPassAll();const before=e.stats('novice');assert.throws(()=>e.wearCosmetic('mika-frame'),/Chưa sở hữu/);
   e.wearCosmetic('mika-avatar');assert.deepEqual(e.looks(),{avatar:'mika-avatar'});assert.deepEqual(e.stats('novice'),before,'no stats from cosmetics');
   edit(p=>{p.cosmetics.owned.push('mika-title','mika-combat-frame','mika-entry');});e.wearCosmetic('mika-title');e.wearCosmetic('mika-combat-frame');e.wearCosmetic('mika-entry');
-  const b=e.begin('campaign',1);assert.equal(b.title.name,'Bạn Đồng Hành Hỏa Hồ');assert.equal(b.looks.combatFrame,'mika-combat-frame');assert.equal(b.looks.entry,'mika-entry');e.settle(b.token,true,0,{});
+  const b=e.begin('campaign',1);assert.equal(b.title.name,'Hỏa Hồ Cửu Vĩ');assert.equal(b.looks.combatFrame,'mika-combat-frame');assert.equal(b.looks.entry,'mika-entry');e.settle(b.token,true,0,{});
   e.wearCosmetic(null,'title');assert.equal(e.looks().title,undefined);
   for(let l=1;l<=50;l++)for(const t of ['free','gold','jewel'])assert.equal(O.PASS.reward(0,t,l).gems,undefined,'no Đá Ngọc in the hero pass');
 }
@@ -401,9 +407,12 @@ console.log('season kits ok');
   assert.ok(sim.every(r=>r.played<=27*5),'an AI plays at most 5 matches a day');
   const map=new Map(),st={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};let at=Date.UTC(2026,10,4,5);
   const e=M.makeEngine(st,{now:()=>at,random:()=>.3}),before=JSON.stringify(e.read().wallet);
-  assert.equal(e.cupSync().tickets,5);const b=e.begin('cup',1,{hero:'fire'});assert.equal(b.mode,'cup');assert.equal(b.hero,'fire','any released hero can be borrowed');
-  assert.deepEqual([b.stats.form,b.stats.evolution,b.stats.skills.join(),b.stats.affixes.length,b.stats.treasure],[1,0,'1,0,0,0',0,null],'Chuẩn Hóa: base form, rank-1 skills, no gear/treasure');
-  assert.throws(()=>e.begin('cup',1,{hero:'ice'}),/chưa phát hành/);
+  // Owner 08/11: only owned heroes, at their real strength and the chosen form; the AI copy mirrors that strength.
+  assert.equal(e.cupSync().tickets,5);assert.throws(()=>e.begin('cup',1,{hero:'fire'}),/chưa sở hữu/,'nothing is borrowed');
+  {const s=e.read();s.heroes.fire={...s.heroes.novice,stars:6,level:40};st.setItem(M.KEY,JSON.stringify(s));}
+  const b=e.begin('cup',1,{hero:'fire',form:2});assert.equal(b.mode,'cup');assert.equal(b.hero,'fire');
+  assert.equal(b.stats.form,2,'the picked form fights');assert.equal(b.stats.hp,e.stats('fire').hp,'real stats, not Chuẩn Hóa');
+  assert.ok(b.enemyHp>b.stats.hp*.5&&b.enemyHp<b.stats.hp*2.5,'the AI copy is about as strong');assert.equal(b.opponent.look,3,'the copy fights in the form its stars allow');
   const r=e.settle(b.token,true,0);assert.ok(r.cup.won&&r.cup.delta>0);assert.equal(JSON.stringify(e.read().wallet),before,'the prototype grants nothing');
   const q=e.begin('cup',1,{});const lost=e.cup().you.points;e.begin('cup',1,{});assert.equal(e.cup().you.played,3,'leaving a started match keeps it as a loss');assert.ok(lost<1000+r.cup.delta);
   for(let i=0;i<2;i++)e.settle(e.begin('cup',1,{}).token,false,0);assert.throws(()=>e.begin('cup',1,{}),/Hết lượt/);
@@ -481,7 +490,7 @@ console.log('cup ok');
   clock=O.passSeason(clock).start+27*DAY+60000;assert.throws(()=>e.claimMemoryChest(),/chọn một tướng/);assert.equal(e.claimMemoryChest('fire').fragments,20);
   // Cúp Đấu Trường dust is server-only: the local prototype gives none.
   assert.deepEqual(O.CUP_PRIZES.find(z=>z.id==='done').serverReward,{memoryDust:30});
-  clock=Date.UTC(2026,10,4,6);({engine:e}=fixture());const cb=e.begin('cup',1,{hero:'fire'});e.settle(cb.token,true,0);assert.equal(e.memory().dust,0);
+  clock=Date.UTC(2026,10,4,6);({engine:e}=fixture());const cb=e.begin('cup',1,{hero:'novice'});e.settle(cb.token,true,0);assert.equal(e.memory().dust,0);
 }
 console.log('memory dust ok');
 { // Vàng đổi bằng Đá Ngọc (owner 04/11, Claude + Codex topup round): 3 packs of 2R / 6R / 12R gold, R = offlineRate(p).gold,

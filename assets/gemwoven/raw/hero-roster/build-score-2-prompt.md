@@ -1,0 +1,2 @@
+Chấm lại màn chọn tướng Đấu Trường (build-score-1.md: 7/10). Tiếng Việt, ngắn: điểm /10, đạt (≥8) hay chưa, lỗi còn lại (nếu có).
+Đã sửa: sao/lực chiến trong danh sách to và sáng hơn. Về "Hiro đấu Hiro": không phải lỗi — đối thủ AI được bốc ngẫu nhiên trong các tướng đã phát hành (lần này bốc trúng Hiro; lần trước là Mika) và là bản sao mạnh TƯƠNG ĐƯƠNG tướng bạn chọn (HP/Công theo tỉ lệ chỉ số gốc hai tướng × chênh điểm ±15%), nên cùng tướng thì cùng HP. build-arena-2.png: trái 9 s, giữa đã chọn Hiro, phải vào trận.

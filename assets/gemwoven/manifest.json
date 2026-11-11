@@ -8494,12 +8494,12 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/forge-raw.png",
-    "reference": "assets/gemwoven/backgrounds/forge-painted.webp",
+    "source": "assets/gemwoven/raw/forge-life/plate-raw.png",
+    "reference": "assets/gemwoven/raw/forge-life/ref-forge.png",
     "promptFiles": [
-      "assets/gemwoven/raw/redraw-2026-11/forge-prompt.txt"
+      "assets/gemwoven/raw/forge-life/plate-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. Redrawn 08/11 without the smith (now a drawn sheet), with a weapon and shield rack on the left wall."
   },
   "background-tavern": {
     "file": "assets/gemwoven/backgrounds/tavern-calm.webp",
@@ -8507,12 +8507,12 @@
     "height": 1672,
     "transparent": false,
     "textless": true,
-    "source": "assets/gemwoven/raw/redraw-2026-11/tavern-raw.png",
-    "reference": "assets/gemwoven/backgrounds/tavern-painted.webp",
+    "source": "assets/gemwoven/raw/tavern-life/plate-raw.png",
+    "reference": "assets/gemwoven/raw/tavern-life/ref-tavern.png",
     "promptFiles": [
-      "assets/gemwoven/raw/redraw-2026-11/tavern-prompt.txt"
+      "assets/gemwoven/raw/tavern-life/plate-prompt.txt"
     ],
-    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px."
+    "purpose": "Calmer redraw (owner 2026-11-03: the old painting was too busy for the UI); same anchors, fewer small props, plain surfaces under the panels. Drawn by Codex gpt-6.1-sol low; the raw 2:3 image is cropped to its central 864 px. Redrawn 08/11 without its guests (each a moving rig, raw/tavern-life) and with full shelves."
   },
   "background-summon": {
     "file": "assets/gemwoven/backgrounds/summon-painted.webp",
@@ -19895,14 +19895,14 @@
   },
   "season-mika-combat-corner": {
     "file": "assets/gemwoven/season/mika/combat-corner.webp",
-    "width": 421,
-    "height": 397,
+    "width": 400,
+    "height": 364,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "source": "assets/gemwoven/raw/combat-kits/mika/raw-sheet.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+      "assets/gemwoven/raw/combat-kits/mika/prompt-used.txt"
     ],
-    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+    "purpose": "Khung trận mika: the corner of the season combat frame kit (owner 08/11, assets/combat-hud/kits/mika)."
   },
   "season-mika-day-ready": {
     "file": "assets/gemwoven/season/mika/day-ready.webp",
@@ -19961,14 +19961,35 @@
   },
   "season-mika-frame": {
     "file": "assets/gemwoven/season/mika/frame.webp",
-    "width": 401,
-    "height": 433,
+    "width": 452,
+    "height": 500,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "source": "assets/gemwoven/raw/xp-frames/mika/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+      "assets/gemwoven/raw/xp-frames/mika/prompt-used.txt"
     ],
-    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex. Redrawn 08/11 with a plain groove for the experience gauge.",
+    "script": "assets/gemwoven/raw/xp-frames/cut.py",
+    "opening": [
+      0.4535,
+      0.498,
+      0.2988
+    ],
+    "hole": [
+      0.4382,
+      0.518,
+      0.3456
+    ],
+    "holeFile": "assets/gemwoven/season/mika/frame-hole.webp",
+    "groove": [
+      0.3466,
+      0.3921,
+      33,
+      0.4396,
+      0.5213
+    ],
+    "overFile": "assets/gemwoven/season/mika/frame-over.webp",
+    "fillFile": "assets/gemwoven/season/mika/frame-fill.webp"
   },
   "season-mika-mark-catchup": {
     "file": "assets/gemwoven/season/mika/mark-catchup.webp",
@@ -20115,14 +20136,21 @@
   },
   "season-mika-title": {
     "file": "assets/gemwoven/season/mika/title.webp",
-    "width": 460,
-    "height": 217,
+    "width": 560,
+    "height": 218,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-mika/pack/raw.png",
+    "source": "assets/gemwoven/raw/season-titles/mika/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-mika/pack/prompt.txt"
+      "assets/gemwoven/raw/season-titles/mika/prompt.txt"
     ],
-    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex."
+    "purpose": "Mika season (Hành Trình Của Mika / Đồng Hành Cùng Mika), owner 04/11, Claude + Codex.",
+    "script": "assets/gemwoven/raw/season-titles/straight.py",
+    "cloth": [
+      0.2539,
+      0.7486,
+      0.2798,
+      0.6789
+    ]
   },
   "season-mika-wardrobe": {
     "file": "assets/gemwoven/season/mika/wardrobe.webp",
@@ -20192,14 +20220,14 @@
   },
   "season-yuki-combat-corner": {
     "file": "assets/gemwoven/season/yuki/combat-corner.webp",
-    "width": 401,
-    "height": 340,
+    "width": 400,
+    "height": 364,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-yuki/pack/raw.png",
+    "source": "assets/gemwoven/raw/combat-kits/yuki/raw-sheet.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-yuki/pack/prompt.txt"
+      "assets/gemwoven/raw/combat-kits/yuki/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (yuki), ready for live-ops activation (owner 04/11)."
+    "purpose": "Khung trận yuki: the corner of the season combat frame kit (owner 08/11, assets/combat-hud/kits/yuki)."
   },
   "season-yuki-day-ready": {
     "file": "assets/gemwoven/season/yuki/day-ready.webp",
@@ -20258,14 +20286,35 @@
   },
   "season-yuki-frame": {
     "file": "assets/gemwoven/season/yuki/frame.webp",
-    "width": 368,
-    "height": 397,
+    "width": 447,
+    "height": 500,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-yuki/pack/raw.png",
+    "source": "assets/gemwoven/raw/xp-frames/yuki/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-yuki/pack/prompt.txt"
+      "assets/gemwoven/raw/xp-frames/yuki/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (yuki), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (yuki), ready for live-ops activation (owner 04/11). Redrawn 08/11 with a plain groove for the experience gauge.",
+    "script": "assets/gemwoven/raw/xp-frames/cut.py",
+    "opening": [
+      0.4251,
+      0.47,
+      0.2734
+    ],
+    "hole": [
+      0.4548,
+      0.493,
+      0.35
+    ],
+    "holeFile": "assets/gemwoven/season/yuki/frame-hole.webp",
+    "groove": [
+      0.3476,
+      0.39,
+      44,
+      0.4635,
+      0.5026
+    ],
+    "overFile": "assets/gemwoven/season/yuki/frame-over.webp",
+    "fillFile": "assets/gemwoven/season/yuki/frame-fill.webp"
   },
   "season-yuki-nameplate": {
     "file": "assets/gemwoven/season/yuki/nameplate.webp",
@@ -20291,14 +20340,21 @@
   },
   "season-yuki-title": {
     "file": "assets/gemwoven/season/yuki/title.webp",
-    "width": 460,
-    "height": 194,
+    "width": 560,
+    "height": 164,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-yuki/pack/raw.png",
+    "source": "assets/gemwoven/raw/season-titles/yuki/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-yuki/pack/prompt.txt"
+      "assets/gemwoven/raw/season-titles/yuki/prompt.txt"
     ],
-    "purpose": "Season kit of the hero (yuki), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (yuki), ready for live-ops activation (owner 04/11).",
+    "script": "assets/gemwoven/raw/season-titles/straight.py",
+    "cloth": [
+      0.2182,
+      0.7361,
+      0.2073,
+      0.6463
+    ]
   },
   "season-nori-avatar": {
     "file": "assets/gemwoven/season/nori/avatar.webp",
@@ -20335,14 +20391,14 @@
   },
   "season-nori-combat-corner": {
     "file": "assets/gemwoven/season/nori/combat-corner.webp",
-    "width": 385,
-    "height": 326,
+    "width": 400,
+    "height": 364,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "source": "assets/gemwoven/raw/combat-kits/nori/raw-sheet.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+      "assets/gemwoven/raw/combat-kits/nori/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+    "purpose": "Khung trận nori: the corner of the season combat frame kit (owner 08/11, assets/combat-hud/kits/nori)."
   },
   "season-nori-day-ready": {
     "file": "assets/gemwoven/season/nori/day-ready.webp",
@@ -20401,14 +20457,35 @@
   },
   "season-nori-frame": {
     "file": "assets/gemwoven/season/nori/frame.webp",
-    "width": 343,
-    "height": 383,
+    "width": 444,
+    "height": 500,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "source": "assets/gemwoven/raw/xp-frames/nori/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+      "assets/gemwoven/raw/xp-frames/nori/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11). Redrawn 08/11 with a plain groove for the experience gauge.",
+    "script": "assets/gemwoven/raw/xp-frames/cut.py",
+    "opening": [
+      0.4077,
+      0.506,
+      0.2766
+    ],
+    "hole": [
+      0.4482,
+      0.5237,
+      0.3468
+    ],
+    "holeFile": "assets/gemwoven/season/nori/frame-hole.webp",
+    "groove": [
+      0.3494,
+      0.3989,
+      20,
+      0.4479,
+      0.5295
+    ],
+    "overFile": "assets/gemwoven/season/nori/frame-over.webp",
+    "fillFile": "assets/gemwoven/season/nori/frame-fill.webp"
   },
   "season-nori-nameplate": {
     "file": "assets/gemwoven/season/nori/nameplate.webp",
@@ -20434,14 +20511,21 @@
   },
   "season-nori-title": {
     "file": "assets/gemwoven/season/nori/title.webp",
-    "width": 460,
-    "height": 197,
+    "width": 560,
+    "height": 192,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-nori/pack/raw.png",
+    "source": "assets/gemwoven/raw/season-titles/nori/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-nori/pack/prompt.txt"
+      "assets/gemwoven/raw/season-titles/nori/prompt.txt"
     ],
-    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (nori), ready for live-ops activation (owner 04/11).",
+    "script": "assets/gemwoven/raw/season-titles/straight.py",
+    "cloth": [
+      0.2432,
+      0.7486,
+      0.2604,
+      0.75
+    ]
   },
   "season-lumi-avatar": {
     "file": "assets/gemwoven/season/lumi/avatar.webp",
@@ -20478,14 +20562,14 @@
   },
   "season-lumi-combat-corner": {
     "file": "assets/gemwoven/season/lumi/combat-corner.webp",
-    "width": 373,
-    "height": 297,
+    "width": 400,
+    "height": 364,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "source": "assets/gemwoven/raw/combat-kits/lumi/raw-sheet.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+      "assets/gemwoven/raw/combat-kits/lumi/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+    "purpose": "Khung trận lumi: the corner of the season combat frame kit (owner 08/11, assets/combat-hud/kits/lumi)."
   },
   "season-lumi-day-ready": {
     "file": "assets/gemwoven/season/lumi/day-ready.webp",
@@ -20544,14 +20628,35 @@
   },
   "season-lumi-frame": {
     "file": "assets/gemwoven/season/lumi/frame.webp",
-    "width": 344,
-    "height": 369,
+    "width": 439,
+    "height": 500,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "source": "assets/gemwoven/raw/xp-frames/lumi/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+      "assets/gemwoven/raw/xp-frames/lumi/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11). Redrawn 08/11 with a plain groove for the experience gauge.",
+    "script": "assets/gemwoven/raw/xp-frames/cut.py",
+    "opening": [
+      0.4487,
+      0.53,
+      0.2962
+    ],
+    "hole": [
+      0.443,
+      0.5542,
+      0.3425
+    ],
+    "holeFile": "assets/gemwoven/season/lumi/frame-hole.webp",
+    "groove": [
+      0.3469,
+      0.397,
+      25,
+      0.4424,
+      0.5578
+    ],
+    "overFile": "assets/gemwoven/season/lumi/frame-over.webp",
+    "fillFile": "assets/gemwoven/season/lumi/frame-fill.webp"
   },
   "season-lumi-nameplate": {
     "file": "assets/gemwoven/season/lumi/nameplate.webp",
@@ -20577,14 +20682,21 @@
   },
   "season-lumi-title": {
     "file": "assets/gemwoven/season/lumi/title.webp",
-    "width": 449,
-    "height": 210,
+    "width": 560,
+    "height": 175,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-lumi/pack/raw.png",
+    "source": "assets/gemwoven/raw/season-titles/lumi/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-lumi/pack/prompt.txt"
+      "assets/gemwoven/raw/season-titles/lumi/prompt.txt"
     ],
-    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (lumi), ready for live-ops activation (owner 04/11).",
+    "script": "assets/gemwoven/raw/season-titles/straight.py",
+    "cloth": [
+      0.2039,
+      0.7771,
+      0.2571,
+      0.6629
+    ]
   },
   "season-noct-avatar": {
     "file": "assets/gemwoven/season/noct/avatar.webp",
@@ -20621,14 +20733,14 @@
   },
   "season-noct-combat-corner": {
     "file": "assets/gemwoven/season/noct/combat-corner.webp",
-    "width": 392,
-    "height": 308,
+    "width": 400,
+    "height": 364,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "source": "assets/gemwoven/raw/combat-kits/noct/raw-sheet.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+      "assets/gemwoven/raw/combat-kits/noct/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+    "purpose": "Khung trận noct: the corner of the season combat frame kit (owner 08/11, assets/combat-hud/kits/noct)."
   },
   "season-noct-day-ready": {
     "file": "assets/gemwoven/season/noct/day-ready.webp",
@@ -20687,14 +20799,35 @@
   },
   "season-noct-frame": {
     "file": "assets/gemwoven/season/noct/frame.webp",
-    "width": 405,
-    "height": 418,
+    "width": 460,
+    "height": 493,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "source": "assets/gemwoven/raw/xp-frames/noct/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+      "assets/gemwoven/raw/xp-frames/noct/prompt-used.txt"
     ],
-    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11). Redrawn 08/11 with a plain groove for the experience gauge.",
+    "script": "assets/gemwoven/raw/xp-frames/cut.py",
+    "opening": [
+      0.487,
+      0.5051,
+      0.2828
+    ],
+    "hole": [
+      0.4935,
+      0.5269,
+      0.3229
+    ],
+    "holeFile": "assets/gemwoven/season/noct/frame-hole.webp",
+    "groove": [
+      0.3243,
+      0.358,
+      20,
+      0.4944,
+      0.5259
+    ],
+    "overFile": "assets/gemwoven/season/noct/frame-over.webp",
+    "fillFile": "assets/gemwoven/season/noct/frame-fill.webp"
   },
   "season-noct-nameplate": {
     "file": "assets/gemwoven/season/noct/nameplate.webp",
@@ -20720,25 +20853,457 @@
   },
   "season-noct-title": {
     "file": "assets/gemwoven/season/noct/title.webp",
-    "width": 460,
-    "height": 248,
+    "width": 560,
+    "height": 180,
     "textless": true,
-    "source": "assets/gemwoven/raw/season-noct/pack/raw.png",
+    "source": "assets/gemwoven/raw/season-titles/noct/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/season-noct/pack/prompt.txt"
+      "assets/gemwoven/raw/season-titles/noct/prompt.txt"
     ],
-    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11)."
+    "purpose": "Season kit of the hero (noct), ready for live-ops activation (owner 04/11).",
+    "script": "assets/gemwoven/raw/season-titles/straight.py",
+    "cloth": [
+      0.2236,
+      0.6914,
+      0.2889,
+      0.6444
+    ]
   },
   "season-hiro-frame": {
     "file": "assets/gemwoven/season/hiro/frame.webp",
-    "width": 420,
-    "height": 454,
+    "width": 439,
+    "height": 500,
     "textless": true,
-    "source": "assets/gemwoven/raw/hiro-frame/raw.png",
+    "source": "assets/gemwoven/raw/xp-frames/hiro/raw.png",
     "promptFiles": [
-      "assets/gemwoven/raw/hiro-frame/prompt.txt"
+      "assets/gemwoven/raw/xp-frames/hiro/prompt-used.txt"
     ],
-    "purpose": "Hiro's avatar frame, free on day 7 of Hành Trình Tân Thủ (owner 04/11, Codex wardrobe round)."
+    "purpose": "Hiro's avatar frame, free on day 7 of Hành Trình Tân Thủ (owner 04/11, Codex wardrobe round). Redrawn 08/11 with a plain groove for the experience gauge.",
+    "script": "assets/gemwoven/raw/xp-frames/cut.py",
+    "opening": [
+      0.4806,
+      0.488,
+      0.315
+    ],
+    "hole": [
+      0.495,
+      0.4799,
+      0.353
+    ],
+    "holeFile": "assets/gemwoven/season/hiro/frame-hole.webp",
+    "groove": [
+      0.3574,
+      0.4075,
+      39,
+      0.4967,
+      0.4838
+    ],
+    "overFile": "assets/gemwoven/season/hiro/frame-over.webp",
+    "fillFile": "assets/gemwoven/season/hiro/frame-fill.webp"
+  },
+  "ambient-crest-summon": {
+    "file": "assets/gemwoven/ambient/crest-summon.webp",
+    "width": 941,
+    "height": 1672
+  },
+  "rarity-slot-divine": {
+    "file": "assets/gemwoven/rarity/slot-divine.webp",
+    "width": 341,
+    "height": 338,
+    "source": "assets/gemwoven/raw/rarity-tiles/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/rarity-tiles/prompt-used.txt"
+    ]
+  },
+  "rarity-slot-epic": {
+    "file": "assets/gemwoven/rarity/slot-epic.webp",
+    "width": 341,
+    "height": 336,
+    "source": "assets/gemwoven/raw/rarity-tiles/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/rarity-tiles/prompt-used.txt"
+    ]
+  },
+  "rarity-slot-legendary": {
+    "file": "assets/gemwoven/rarity/slot-legendary.webp",
+    "width": 341,
+    "height": 337,
+    "source": "assets/gemwoven/raw/rarity-tiles/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/rarity-tiles/prompt-used.txt"
+    ]
+  },
+  "rarity-slot-rare": {
+    "file": "assets/gemwoven/rarity/slot-rare.webp",
+    "width": 341,
+    "height": 338,
+    "source": "assets/gemwoven/raw/rarity-tiles/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/rarity-tiles/prompt-used.txt"
+    ]
+  },
+  "rarity-slot-uncommon": {
+    "file": "assets/gemwoven/rarity/slot-uncommon.webp",
+    "width": 341,
+    "height": 335,
+    "source": "assets/gemwoven/raw/rarity-tiles/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/rarity-tiles/prompt-used.txt"
+    ]
+  },
+  "face-earth-2": {
+    "file": "assets/gemwoven/atlas/ui/face-earth-2.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/earth/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/earth/prompt-used.txt"
+    ]
+  },
+  "face-earth-3": {
+    "file": "assets/gemwoven/atlas/ui/face-earth-3.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/earth/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/earth/prompt-used.txt"
+    ]
+  },
+  "face-fire-2": {
+    "file": "assets/gemwoven/atlas/ui/face-fire-2.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/fire/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/fire/prompt-used.txt"
+    ]
+  },
+  "face-fire-3": {
+    "file": "assets/gemwoven/atlas/ui/face-fire-3.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/fire/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/fire/prompt-used.txt"
+    ]
+  },
+  "face-ice-2": {
+    "file": "assets/gemwoven/atlas/ui/face-ice-2.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/ice/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/ice/prompt-used.txt"
+    ]
+  },
+  "face-ice-3": {
+    "file": "assets/gemwoven/atlas/ui/face-ice-3.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/ice/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/ice/prompt-used.txt"
+    ]
+  },
+  "face-lightning-2": {
+    "file": "assets/gemwoven/atlas/ui/face-lightning-2.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/lightning/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/lightning/prompt-used.txt"
+    ]
+  },
+  "face-lightning-3": {
+    "file": "assets/gemwoven/atlas/ui/face-lightning-3.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/lightning/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/lightning/prompt-used.txt"
+    ]
+  },
+  "face-novice-2": {
+    "file": "assets/gemwoven/atlas/ui/face-novice-2.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/novice/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/novice/prompt-used.txt"
+    ]
+  },
+  "face-novice-3": {
+    "file": "assets/gemwoven/atlas/ui/face-novice-3.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/novice/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/novice/prompt-used.txt"
+    ]
+  },
+  "face-shadow-2": {
+    "file": "assets/gemwoven/atlas/ui/face-shadow-2.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/shadow/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/shadow/prompt-used.txt"
+    ]
+  },
+  "face-shadow-3": {
+    "file": "assets/gemwoven/atlas/ui/face-shadow-3.webp",
+    "width": 256,
+    "height": 256,
+    "textless": true,
+    "transparent": true,
+    "source": "assets/gemwoven/raw/form-faces/shadow/raw-sheet.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/form-faces/shadow/prompt-used.txt"
+    ]
+  },
+  "roster-icon-all": {
+    "file": "assets/gemwoven/hero-roster/icon-all.webp",
+    "width": 256,
+    "height": 256,
+    "source": "assets/gemwoven/raw/hero-roster/compose_icon.py"
+  },
+  "dialog-frame": {
+    "file": "assets/gemwoven/items/dialog-frame.png",
+    "width": 760,
+    "height": 1000,
+    "source": "assets/gemwoven/items/settings-frame.png",
+    "script": "assets/gemwoven/raw/dialog-frame/split_frame.py"
+  },
+  "dialog-crown": {
+    "file": "assets/gemwoven/items/dialog-crown.png",
+    "width": 220,
+    "height": 90,
+    "source": "assets/gemwoven/items/settings-frame.png",
+    "script": "assets/gemwoven/raw/dialog-frame/split_frame.py"
+  },
+  "npc-smith": {
+    "file": "assets/gemwoven/forge/smith.webp",
+    "width": 747,
+    "height": 712,
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "frameDuration": 115,
+    "seq": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      5
+    ],
+    "stage": {
+      "x": 735,
+      "y": 452,
+      "w": 199,
+      "h": 285
+    },
+    "screen": "forge",
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-life/smith-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/forge-life/smith-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/forge-life/compose.py",
+    "purpose": "The forge's smith hammering (owner 08/11), drawn sheet.",
+    "layer": 1
+  },
+  "npc-forgefire": {
+    "file": "assets/gemwoven/forge/fire.webp",
+    "width": 330,
+    "height": 322,
+    "cols": 3,
+    "rows": 2,
+    "count": 6,
+    "frameDuration": 95,
+    "stage": {
+      "x": 684.5,
+      "y": 488.3,
+      "w": 114.9,
+      "h": 170,
+      "clip": "polygon(-12.6% 58.6%,-11.3% 48.1%,-7.3% 37.9%,-0.8% 28.4%,7.9% 19.7%,18.8% 12.2%,31.3% 6.2%,45.2% 1.7%,60.0% -1.0%,75.3% -1.9%,91.0% -1.0%,106.2% 1.7%,120.5% 6.2%,133.5% 12.2%,144.6% 19.7%,153.7% 28.4%,160.3% 37.9%,164.4% 48.1%,165.8% 58.6%,165.8% 146.3%,-12.6% 146.3%)"
+    },
+    "screen": "forge",
+    "textless": true,
+    "source": "assets/gemwoven/raw/forge-life/fire-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/forge-life/fire-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/forge-life/compose.py",
+    "purpose": "The forge furnace fire (owner 08/11), drawn loop.",
+    "layer": 0,
+    "placement": "Inside the furnace arch, its foot on the top hearth step the coals rest on, small enough that its tips stay under the vault (clipped to the arch only as a guard); the smith stands in front of it (owner 11/11: \"để lửa chạy trong lò rèn, thợ rèn bên ngoài đè lên\", \"đặt ngọn lửa vào trong vòm\", \"đặt chân ngọn lửa lên vạch ngang\")."
+  },
+  "npc-tavern-barmaid": {
+    "file": "assets/gemwoven/raw/tavern-life/barmaid/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 88,
+    "phase": 0,
+    "layer": 0,
+    "stage": {
+      "x": 99.1,
+      "y": 418.9,
+      "size": 308.1
+    },
+    "screen": "tavern",
+    "textless": true,
+    "source": "assets/gemwoven/raw/tavern-life/barmaid/sprite-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/tavern-life/barmaid/sprite-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/tavern-life/tavern.py"
+  },
+  "npc-tavern-mika": {
+    "file": "assets/gemwoven/raw/tavern-life/mika/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 117,
+    "phase": 9,
+    "layer": 4,
+    "stage": {
+      "x": 10.3,
+      "y": 741.6,
+      "size": 404.8
+    },
+    "screen": "tavern",
+    "textless": true,
+    "source": "assets/gemwoven/raw/tavern-life/mika/sprite-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/tavern-life/mika/sprite-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/tavern-life/tavern.py"
+  },
+  "npc-tavern-yuki": {
+    "file": "assets/gemwoven/raw/tavern-life/yuki/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 131,
+    "phase": 17,
+    "layer": 3,
+    "stage": {
+      "x": 270.5,
+      "y": 710.9,
+      "size": 294.1
+    },
+    "screen": "tavern",
+    "textless": true,
+    "source": "assets/gemwoven/raw/tavern-life/yuki/sprite-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/tavern-life/yuki/sprite-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/tavern-life/tavern.py"
+  },
+  "npc-tavern-lumi": {
+    "file": "assets/gemwoven/raw/tavern-life/lumi/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 102,
+    "phase": 5,
+    "layer": 2,
+    "stage": {
+      "x": 497.8,
+      "y": 690.3,
+      "size": 319.7
+    },
+    "screen": "tavern",
+    "textless": true,
+    "source": "assets/gemwoven/raw/tavern-life/lumi/sprite-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/tavern-life/lumi/sprite-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/tavern-life/tavern.py"
+  },
+  "npc-tavern-noct": {
+    "file": "assets/gemwoven/raw/tavern-life/noct/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 162,
+    "phase": 13,
+    "layer": 1,
+    "stage": {
+      "x": 703.0,
+      "y": 736.8,
+      "size": 295.2
+    },
+    "screen": "tavern",
+    "textless": true,
+    "source": "assets/gemwoven/raw/tavern-life/noct/sprite-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/tavern-life/noct/sprite-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/tavern-life/tavern.py"
+  },
+  "npc-tavern-fox": {
+    "file": "assets/gemwoven/raw/tavern-life/fox/rig/show/idle.webp",
+    "width": 3840,
+    "height": 2560,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "frameDuration": 142,
+    "phase": 20,
+    "layer": 5,
+    "stage": {
+      "x": 7.7,
+      "y": 914.6,
+      "size": 188.6
+    },
+    "screen": "tavern",
+    "textless": true,
+    "source": "assets/gemwoven/raw/tavern-life/fox/sprite-raw.png",
+    "promptFiles": [
+      "assets/gemwoven/raw/tavern-life/fox/sprite-prompt.txt"
+    ],
+    "script": "assets/gemwoven/raw/tavern-life/tavern.py"
   },
   "creature-abyss-harpooner": {
     "file": "assets/gemwoven/elites/abyss-harpooner/master.png",

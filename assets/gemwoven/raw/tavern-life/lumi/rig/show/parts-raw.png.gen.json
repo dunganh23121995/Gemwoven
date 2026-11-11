@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:28:16Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\lumi\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a a chibi blonde witch girl with a big purple pointed hat with a golden moon in a purple dress, raising a foaming beer mug, eyes closed laughing on a plain background, cut off by a straight horizontal edge at the bottom. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the ears, the hair on top of the head and the bangs, and the whole witch hat. The face is never any other colour.\n- pure WHITE #FFFFFF: the body: neck, torso, shoulders, both arms and both hands.\n- pure GREEN #00FF00: the bottom band of the picture along the straight cut edge (about the lowest tenth of the height): it never moves.\n- pure YELLOW #FFFF00: the beer mug with its foam, without the hand.\n- pure RED #FF0000: the long blonde hair.\n- pure CYAN #00FFFF: the brim and tip of the witch hat and small hair strands over the face.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested flat colour-coded part map: a black background, a solid green bottom band, yellow mugs with foam, white arms and hands, red hair, and blue head and hat with cyan brim and tip. It keeps the same pose and layout as the reference, with no visible text or extra figures.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000758
+  }
+}

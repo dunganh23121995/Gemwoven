@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T06:20:52.186281+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\xp-frames\\hiro\\original-ref.png"
+  ],
+  "prompt": "Use case: a texture strip for a game UI ring (portrait fantasy match-3 RPG \"Gemwoven\", painted hand-drawn style).\nReference image 1 is the avatar frame whose round ring band shows the pattern to copy: warm polished walnut wood grain with a few small brass rivets. Copy only that ring band's surface pattern, colours, painted brushwork and lighting.\nDraw ONE long straight horizontal band carrying this pattern, running edge to edge across the whole width of the image, centred vertically, about one sixth of the image height tall, with even height along its length. The band is the ring's surface unrolled flat: no rims, borders or edge lines along its top and bottom, no ornaments at all (no ears, flames, bows, hats, antlers, leaves sticking out, gems, emblems), no text. The pattern repeats evenly along the band and its left end continues seamlessly into its right end.\nAbove and below the band: solid flat pure magenta #FF00FF. No magenta or pink inside the band.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt requires solid flat pure magenta #FF00FF above and below the band, but the candidate's surrounding background is white, not the requested key colour."
+      }
+    ],
+    "summary": "The wood-grain band with brass rivets matches the reference pattern and runs edge to edge, but the background is white instead of the flat #FF00FF magenta the prompt asks for, so the image needs redrawing.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000391
+  }
+}

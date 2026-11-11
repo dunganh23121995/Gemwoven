@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:13:42Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\forge-life\\ref-smith.png"
+  ],
+  "prompt": "Reference image 1 shows the forge's smith: a small chibi dwarf blacksmith with spiky white hair and a long white beard tied at the end, brass goggles on his forehead, a white shirt with rolled sleeves, a brown leather apron with straps, brown gloves and boots, holding a big iron sledgehammer. Keep his exact design, colours, proportions and painted style.\nDraw a 2x3 animation sheet (2 rows, 3 columns, read left to right then the next row) of this same smith hammering, seen in three-quarter view facing LEFT, full body standing, feet on the same ground line in every cell, same size and position in every cell:\n1. resting, hammer held at the shoulder, cheerful;\n2. lifting the hammer up behind his head;\n3. hammer at the top, about to swing;\n4. swinging the hammer down to his left (the hammer head at waist height in front-left of him, striking something unseen);\n5. the moment of impact, slight bounce of the body, eyes squeezed shut in a big grin;\n6. bringing the hammer back up toward the shoulder.\nBody only: no anvil, no table, no sparks, no effects, no shadow on the ground. Each figure centred in its cell, the whole body and hammer well inside the cell with generous margin, nothing crossing a cell edge, no borders or lines between cells.\nSolid flat pure magenta #FF00FF background. No magenta or pink in the character. No text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows a 2x3 grid of the same chibi dwarf smith on a flat magenta background, with consistent design, no visible text or extra figures, and no clipped limbs or hammer. Minor deviations such as the beard not being visibly tied at the end are stylistic and do not make the image unusable.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000555
+  }
+}

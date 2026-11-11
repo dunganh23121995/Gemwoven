@@ -17,7 +17,7 @@
   function art(key){const img=document.createElement('img');img.src=(assets[key]||assets['icon-hero']).file;img.alt='';img.draggable=false;return img;}
   function box(el,r){['left','top','width','height'].forEach((p,i)=>el.style[p]=`${r[i]}px`);}
   // Painted chrome shared by dialogs, framed panels and buttons (existing assets only).
-  const chrome={frame:'settings-frame',board:'panel-parchment',btn:'btn-primary',wood:'btn-secondary',close:'skill-frame',plate:'nameplate',slot:'inventory-slot',crest:'crest',card:'card-dark'};
+  const chrome={frame:assets['dialog-frame']?'dialog-frame':'settings-frame',crown:'dialog-crown',board:'panel-parchment',btn:'btn-primary',wood:'btn-secondary',close:'skill-frame',plate:'nameplate',slot:'inventory-slot',crest:'crest',card:'card-dark'};
   for(const [name,key]of Object.entries(chrome))if(assets[key])document.documentElement.style.setProperty('--art-'+name,`url("${new URL(assets[key].file,document.baseURI).href}")`);
   // In-scene sheets use the portrait frame: the title sits on its plank and a crest covers the cog.
   function framePanel(el,node){
@@ -112,23 +112,61 @@
     for(let i=0;i<count;i++){const mote=document.createElement('i');mote.className='building-mote';mote.style.setProperty('--i',i);fx.append(mote);}
     el.append(fx);
   }
+  const DEV_HOST=/^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname);
   function profileNode(node){
-    const p=game?.engine.read(),level=p?.heroes[p.selected]?.level||Number(copy[state.screen+'.level'])||1;
+    const p=game?.engine.read();
+    // Both gauges show progress toward the next level, not across all 500 (owner 08/11).
+    // ?xp=80 previews the gauge at 80% on a dev or LAN server (owner 08/11), display only, never on a public host.
+    const dev=DEV_HOST,q=new URLSearchParams(location.search);
+    const preview=dev&&q.get('xp');
+    const level=p?.heroes[p.selected]?.level||Number(copy[state.screen+'.level'])||1;
+    const toNext=preview?Math.min(1,Math.max(0,preview/100)):p?window.GemwovenProgression.levelProgress(p,p.selected):0;
     const button=document.createElement('button');button.type='button';button.className='hud-profile';
     button.dataset.action=node.action;button.setAttribute('aria-label',`${copy[node.text]||'Tướng'} · Cấp ${level} / 500`);
     const portrait=document.createElement('span');portrait.className='hud-portrait';portrait.append(art(node.icon));
     const frame=art(node.asset);frame.className='hud-avatar-frame';
     // A worn season avatar replaces the hero portrait; a worn season frame rides over the ring (cosmetic only).
-    const looks=game?.engine.looks?.()||{},look=id=>id.startsWith('hero:')?(assets['portrait-'+id.slice(5)]||assets['face-'+id.slice(5)])?.file:window.GemwovenLiveOps?.COSMETICS?.find(c=>c.id===id)?.file;
+    const looks=game?.engine.looks?.()||{},look=id=>id.startsWith('hero:')?(assets['face-'+id.slice(5)]||assets['portrait-'+id.slice(5)])?.file:window.GemwovenLiveOps?.COSMETICS?.find(c=>c.id===id)?.file;
     if(looks.avatar&&look(looks.avatar)){const img=document.createElement('img');img.src=look(looks.avatar);img.alt='';img.className='hud-cos-avatar';portrait.replaceChildren(img);}
-    if(looks.frame&&look(looks.frame)){const img=document.createElement('img');img.src=look(looks.frame);img.alt='';img.className='hud-cos-frame';button.classList.add('has-cos-frame');button.append(img);}
+    if(looks.frame&&look(looks.frame)){const img=document.createElement('img');img.src=look(looks.frame);img.alt='';img.className='hud-cos-frame';button.classList.add('has-cos-frame');button.append(img);
+      // The face fills the frame's opening (clipped by it); the groove round the frame is the experience gauge (xpGauge).
+      const fit=window.GemwovenFrameFit?.(img,look(looks.frame),72,72,49,'px',portrait);
+      if(fit?.groove&&fit.overFile&&fit.fillFile)xpGauge(button,img,fit,toNext,/season\/([a-z]+)\//.exec(look(looks.frame))?.[1]);}
     const ns='http://www.w3.org/2000/svg',ring=document.createElementNS(ns,'svg');
     ring.setAttribute('viewBox','0 0 144 144');ring.classList.add('hud-experience');ring.setAttribute('aria-hidden','true');
-    // Keep the same level progression as the hero screen; no synthetic XP is awarded.
+    // Progress toward the next level from the shared rules; no synthetic XP is awarded.
     const xpArc='M 72 138 A 66 66 0 1 1 118.67 25.33';
-    ring.innerHTML=`<path class="xp-bezel" d="${xpArc}"/><path class="xp-track" d="${xpArc}"/><path class="xp-fill" d="${xpArc}" pathLength="100" stroke-dasharray="${Math.min(100,level/500*100)} 100"/>`;
+    ring.innerHTML=`<path class="xp-bezel" d="${xpArc}"/><path class="xp-track" d="${xpArc}"/><path class="xp-fill" d="${xpArc}" pathLength="100" stroke-dasharray="${(toNext*100).toFixed(1)} 100"/>`;
     const badge=document.createElement('span');badge.className='hud-level';badge.textContent=level;badge.setAttribute('aria-hidden','true');
     button.append(portrait,frame,ring,badge);return button;
+  }
+  // The experience gauge on a season frame (owner 08/11). The frames are drawn with a plain dark groove between two thin
+  // rims; the gauge fills that groove from the bottom-left (where the bottom ornament stops hiding it) clockwise over the top
+  // to the bottom-right, as far as the hero is toward the next level (GemwovenProgression.levelProgress). What fills it is the
+  // frame's original ring art unrolled onto the groove (<frame>-fill.webp; owner 08/11: "dùng trang trí gốc làm HUD"), so a
+  // full gauge shows the ring as first drawn. The frame with its groove cleared (<frame>-over.webp) lies on top, so rims and
+  // every ornament crossing the groove stay whole. Only the leading end has a head, a short glowing drop in the frame's
+  // colour (Codex 08/11); a short stretch always shows so little progress still reads.
+  const XP_TONE={mika:'255,150,56',yuki:'160,205,255',nori:'104,210,132',lumi:'206,156,255',noct:'110,240,255',hiro:'194,202,112'};  // Codex 08/11
+  function xpGauge(button,frameImg,fit,progress,frame){
+    const [gi,go,gap,gx,gy]=fit.groove,r1=gi*fit.w,r2=go*fit.w,gw=r2-r1,rc=(r1+r2)/2,cx=gx*fit.w,cy=gy*fit.h;
+    const span=360-2*gap,start=180+gap,reach=Math.max(.04,Math.min(1,progress))*span,end=start+reach,f=v=>v.toFixed(1);
+    const pt=(deg,r=rc)=>{const a=deg*Math.PI/180;return [cx+r*Math.sin(a),cy-r*Math.cos(a)];},[x1,y1]=pt(end);
+    // The groove not reached yet reads carved (Codex 08/11): a shade along both of its walls and a slightly darker floor.
+    const arc=r=>{const [a,b]=pt(end,r),[c,d]=pt(start+span,r);return `M ${f(a)} ${f(b)} A ${f(r)} ${f(r)} 0 ${span-reach>180?1:0} 1 ${f(c)} ${f(d)}`;};
+    const carve=reach<span-1?`<path class="xg-floor ${frame}" d="${arc(rc)}" style="stroke-width:${f(gw)}px"/>`+[rc-gw*.38,rc+gw*.38].map(r=>`<path class="xg-wall" d="${arc(r)}" style="stroke-width:${f(gw*.24)}px"/>`).join(''):'';
+    const L=gw*1.25,W=gw*.9,at=`${gx*100}% ${gy*100}%`,box={left:frameImg.style.left,top:frameImg.style.top,width:frameImg.style.width,height:frameImg.style.height,objectFit:'fill',translate:'none'};
+    const drop=`M ${f(-L)} 0 Q ${f(-W*1.2)} ${f(-W/2)} ${f(-W/2)} ${f(-W/2)} A ${f(W/2)} ${f(W/2)} 0 0 1 ${f(-W/2)} ${f(W/2)} Q ${f(-W*1.2)} ${f(W/2)} ${f(-L)} 0 Z`;
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','hud-xp-gauge');svg.setAttribute('aria-hidden','true');
+    svg.setAttribute('viewBox',`0 0 ${fit.w} ${fit.h}`);Object.assign(svg.style,{left:frameImg.style.left,top:frameImg.style.top,width:fit.w+'px',height:fit.h+'px'});svg.style.setProperty('--tone',XP_TONE[frame]||XP_TONE.hiro);
+    svg.innerHTML=`<defs><linearGradient id="xg-drop" gradientUnits="userSpaceOnUse" x1="${f(-L)}" y1="0" x2="0" y2="0"><stop offset="0" class="s0"/><stop offset=".55" class="s1"/><stop offset="1" class="s2"/></linearGradient></defs>${carve}`+
+      `<g transform="translate(${f(x1)} ${f(y1)}) rotate(${f(end)})"><ellipse class="xg-halo" cx="${f(-W*.5)}" rx="${f(L*.5)}" ry="${f(gw*.75)}" style="filter:blur(${f(gw*.2)}px)"/><path class="xg-head" d="${drop}"/></g>`;
+    const layer=(file,cls)=>{const img=document.createElement('img');img.src=file;img.alt='';img.className='hud-cos-frame '+cls;Object.assign(img.style,box);return img;};
+    const fill=layer(fit.fillFile,'fill');fill.dataset.frame=frame;const m=`conic-gradient(from ${f(start)}deg at ${at},#000 ${f(Math.max(0,reach-4))}deg,transparent ${f(reach)}deg)`;
+    Object.assign(fill.style,{maskImage:m,webkitMaskImage:m});
+    // The groove not reached yet stays carved out, the frame's own dark channel (owner 08/11: "khung nên bị khoét phần chưa có
+    // kinh nghiệm").
+    frameImg.after(fill,svg,layer(fit.overFile,'over'));
   }
   function hangingChains(){
     if(!assets['hud-chain']||!assets['hud-side-card'])return;
@@ -167,7 +205,7 @@
     const displayedHero=game&&node.id==='home.hero'?game.engine.read().selected:state.hero;
     const formBody=['home.hero','upgrade.hero-model','skills.hero-model'].includes(node.id);
     const bodyForm=formBody&&game?window.GemwovenProgression.lookForm(displayedHero,game.engine.read().heroes[displayedHero]):1;
-    if(node.id.endsWith('.profile'))node.icon=`portrait-${game?game.engine.read().selected:state.hero}`;
+    if(node.id.endsWith('.profile')){const key=game?game.engine.read().selected:state.hero;node.icon=assets['face-'+key]?'face-'+key:'portrait-'+key;}
     if(['upgrade.hero-model','home.hero'].includes(node.id)){node.asset=`hero-${displayedHero}`;node.action=`hero:${displayedHero}`;copy[node.text]=heroNames[displayedHero];}
     if(node.id==='home.hero'||formBody&&(bodyForm>1||assets[`show-${displayedHero}-${bodyForm}`])){
       const idle=`home-idle-${displayedHero}${idleMotion.matches?'-poster':''}`;
@@ -378,4 +416,10 @@
   window.addEventListener('hashchange',()=>{const key=location.hash.slice(1);state.screen=layout.screens[key]?key:'home';render();});
   window.addEventListener('resize',fit);
   const initial=location.hash.slice(1);state.screen=layout.screens[initial]?initial:'home';render();
+  // On a dev or LAN server Claude can set the trial save (BẢN THỬ) in the owner's own browser (owner 08/11: "nằm trong trình
+  // duyệt thì sửa trình duyệt"): tools/dev-trial.json {"id","level","xp"} (not in Git) is applied once per id on the
+  // next load, never to the real save (engine.trialLevel refuses it).
+  if(DEV_HOST&&game&&typeof fetch==='function')fetch('tools/dev-trial.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
+    if(!j?.id||localStorage.getItem('gemwoven.devTrial')===j.id||!game.engine.read().trialMode)return;
+    game.engine.trialLevel(j.level,(j.xp||0)/100);localStorage.setItem('gemwoven.devTrial',j.id);render();}).catch(()=>{});
 })();

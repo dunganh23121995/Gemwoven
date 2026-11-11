@@ -6,7 +6,7 @@
 (() => {
   'use strict';
   const G=window.GEMWOVEN_GAME,A=window.GEMWOVEN_ASSETS;if(!G?.mount)return;
-  for(const [k,v] of Object.entries(A))if(k.startsWith('kit-'))document.documentElement.style.setProperty('--'+k,`url("${new URL(v.file,document.baseURI).href}")`);
+  for(const [k,v] of Object.entries(A))if(k.startsWith('kit-')||k==='summon-sparkle')document.documentElement.style.setProperty('--'+k,`url("${new URL(v.file,document.baseURI).href}")`);
   const fill=r=>r.style.setProperty('--v',((r.value-r.min)/((r.max-r.min)||100)*100)+'%');
   const mount=G.mount;
   G.mount=(state,ctx)=>{

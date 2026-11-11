@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:26:35Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\fox\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a a small fluffy orange and white fox with a blue scarf lying asleep curled on its belly, eyes closed in a happy smile on a plain background. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: face, closed eyes, nose, mouth and both ears. The face is never any other colour.\n- pure WHITE #FFFFFF: the chest and the front of the body with the blue scarf.\n- pure GREEN #00FF00: the belly, the hind legs and the paws lying on the stool: they never move.\n- pure RED #FF0000: the big fluffy tail from its base to its tip.\n- pure CYAN #00FFFF: the free ends of the blue scarf and small fur tufts.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested flat colour part map. The head and both ears are pure blue, the chest and scarf front are white, the belly, hind legs and paws are green, the tail is red, and the scarf ends and tufts are cyan, all on a flat black background. The pose and silhouette roughly match the reference, with no text, extra figures or cropping visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000564
+  }
+}

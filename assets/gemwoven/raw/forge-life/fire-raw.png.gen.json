@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:15:06Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\forge-life\\ref-furnace.png"
+  ],
+  "prompt": "Reference image 1 shows the mouth of a stone forge furnace with a bed of glowing coals. Draw a 2x3 animation sheet (2 rows, 3 columns, read left to right then the next row) of a looping FIRE that burns on that bed of coals: warm orange-yellow hand-painted flames with soft red edges and a bright yellow core, rising from a shared flat base line near the bottom of each cell, tips flickering and swaying differently in each frame so the six frames loop smoothly. Same size, same base line and same position in every cell; the fire about half as wide as a cell and two thirds of its height; nothing crossing a cell edge; no coals, no stone, no smoke, no sparks flying away, no borders between cells. Painted style matching image 1. Solid flat pure magenta #FF00FF background, no magenta or pink in the fire. No text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a 2x3 grid of six flame frames on a flat magenta background, with a shared base line per row, flames kept inside their cells, and no text, coals, stone or smoke. The only possible issue is a faint pinkish tint on some flame edges, which reads as the requested soft red edging rather than a real defect. The prompt's description of reference 1 as a furnace doesn't match the gnome-with-hammer image, but that mismatch belongs to the prompt, not the candidate.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000567
+  }
+}

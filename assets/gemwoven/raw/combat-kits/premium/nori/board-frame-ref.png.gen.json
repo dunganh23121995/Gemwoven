@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T13:03:48.459724+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\nori\\board-frame-ref.png"
+  ],
+  "prompt": "Reference image 1 is a square ornate frame around an empty square opening filled with magenta. Redraw the SAME frame: the same design, style, colours, mascot, band and every ornament, the same size and the same position on the canvas, with ONE change: nothing may reach into the square opening. The opening's inner edge is one clean straight line on all four sides, running unbroken all the way into each of the four corners. Every corner ornament (the green shield emblem with the golden tree on the lower-right corner, the curled deer fawn on the upper-left corner) sits on the OUTER corner of the band, centred on the band's outer corner point, small enough that all of it lies on the band and outside it, never crossing the band's inner edge. The square opening is empty and filled with pure magenta. Everything stays inside the image with a margin.\nHand-painted fantasy mobile game UI, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "Faint reddish-pink haze and smudges appear along the outer left edge of the vine band, around the upper-left and lower-left areas. The prompt forbids magenta or pink inside the artwork. The reference shows similar red marks on the left, so this may be inherited rather than newly introduced."
+      }
+    ],
+    "summary": "The candidate matches the reference frame: same deer fawn, shield, acorns, gem and green-gold band. The opening is clean, empty and pure magenta, nothing is cut off, and there is no text or extra figures. The only doubt is the faint pink haze on the left vines, which may be a minor artifact.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000816
+  }
+}

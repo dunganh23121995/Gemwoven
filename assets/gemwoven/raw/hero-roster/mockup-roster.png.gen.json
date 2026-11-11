@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T03:57:02.558771+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\hero-roster\\ref-dialog.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\hero-roster\\ref-upgrade.png"
+  ],
+  "prompt": "Edit the supplied Gemwoven hero roster dialog reference. Create a polished portrait mobile UI mockup, exactly 941×1672. Preserve the established hand-painted wood, aged brass, parchment, ivy and small white flowers, warm lighting, and Vietnamese serif typography. Keep the hero screen behind a dark blurred overlay. Center an approximately 820px-wide roster panel titled “Tất cả tướng”, with an ornate close button. Replace the sparse two-column portraits with a compact three-column grid of vertical hero cards, approximately 224×290px each. Each card has a circular form-specific portrait, a brass frame with restrained elemental color accents, an unobstructed face, a small level badge attached to the lower portrait rim, and a separate lower information strip with stars, hero name and combat power. Show Mika, Noct and Hiro using their reference appearances. Select Hiro with a crisp gold border and small checkmark, without excessive glow. Above the grid, place an “all elements” control followed by the six established fire, ice, earth, lightning, shadow and novice element emblems. Include one sort dropdown labeled “Lực chiến ↓” and a compact toggle labeled “Chưa sở hữu”, shown enabled to demonstrate locked cards in the next row. Locked portraits are desaturated with a small lock, without repeated summon buttons. Maintain readable text and generous touch targets. No bottom navigation changes, no generic flat UI, no grid symbol as the roster icon.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt: a three-column hero roster with Mika, Noct and Hiro in their reference appearances, Hiro selected with a gold border and checkmark, locked and desaturated Selene, Kael and Borin in the second row, all six element emblems, the 'Lực chiến ↓' dropdown, the 'Chưa sở hữu' toggle enabled, and a dark blurred background. No cut-off, anatomy, layout or extra-content defects are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000696
+  }
+}

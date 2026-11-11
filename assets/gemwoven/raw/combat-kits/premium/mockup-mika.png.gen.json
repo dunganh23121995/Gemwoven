@@ -1,0 +1,31 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T04:58:32.802098+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\ref-default.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\ref-mika-frame.webp"
+  ],
+  "prompt": "Edit ref-default.png into an approval mockup for Gemwoven’s premium seasonal combat frame, “Hỏa Hồ — Nine-Tailed Fire Fox.” Preserve the exact portrait canvas, layout, coordinates and sizes of all gameplay elements. Preserve every Vietnamese label and number exactly as in the reference. Keep the battlefield, characters, health bars, tutorial portrait and speech bubble, tutorial hand, all 64 gem positions, gem artwork, buttons and touch areas unchanged.\n\nRedesign the surrounding frame as a bespoke hand-painted fantasy collectible made of carved warm wood, aged brass and vermilion lacquer. Give it a clearly new silhouette and substantial sculptural depth. Place a small sculpted nine-tailed fire fox on the outer upper-left corner of the gem-board frame, below the turn strip. Arrange its nine distinct tails as layered flame-shaped ornaments following the outside left and bottom borders. Add a smaller matching fox-mask ornament at the opposite lower corner, a brass fox-flame crest centered above the battlefield, and restrained flame carvings around the top bar and turn strip. Fit every ornament within the existing canvas and outside gameplay content.\n\nKeep broad surfaces dark and quiet. Use warm brass highlights, carved joints, convincing contact shadows and selective ember accents. Keep the board background deep dark teal with a barely visible fox-tail pattern and thin subdued cell borders. Preserve strong gem readability. Suggest gentle animated flames only through a few glowing tail tips and sparse embers along the exterior border; no particles over gems, text or buttons.\n\nMatch the reference’s polished hand-painted mobile RPG art. The frame must feel valuable through unique sculptural forms, craftsmanship and a recognizable fox mascot. Preserve the original interface hierarchy and spacing. No additional text, no new controls, no layout changes, no oversized mascot, no ornament covering any gem, label, health bar or tutorial element. Deliver one complete portrait gameplay mockup, not an asset sheet.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The gem board arrangement does not match REFERENCE 1. The prompt requires all 64 gem positions and artwork to be preserved, but the gem types in nearly every cell differ from the reference."
+      },
+      {
+        "kind": "extra_content",
+        "detail": "The sculpted fox and its tail ornaments overlap the top-left gem cell and the left-column gems. The prompt says no ornament may cover any gem."
+      },
+      {
+        "kind": "other",
+        "detail": "The top-left tutorial area and board frame were redrawn with a different silhouette and added ornaments, which goes beyond keeping the gameplay layout unchanged as the prompt requires."
+      }
+    ],
+    "summary": "The candidate keeps the general 8x8 board and UI labels, but the gem layout differs from the reference and the fox ornament covers part of the top-left gem area, which the prompt explicitly forbids.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000811
+  }
+}

@@ -363,7 +363,7 @@
 .island-map .stage-seal .seal-stars i{font-style:normal;color:#ffd23a;-webkit-text-stroke:1.5px #5a3606;paint-order:stroke fill;text-shadow:0 2px 3px #000b}
 .island-map .stage-seal .seal-stars i.off{color:#3a2c1c;-webkit-text-stroke:1.5px #f0dca0}
 .island-map .stage-seal .seal-go{position:absolute;left:calc(var(--gx) + 52px);top:calc(var(--gy) + var(--ring)*var(--flat)*.4 - 30px);translate:0 0;padding:10px 40px 14px 30px;display:flex;align-items:center;gap:6px;white-space:nowrap;z-index:3;pointer-events:none;
-  background:var(--art-btn) center/100% 100% no-repeat;font:800 34px/1 Cambria,Georgia,serif;color:#4a2004;text-shadow:0 1px 0 #ffe8a8;animation:seal-bob 1.6s ease-in-out infinite}
+  background:var(--kit-btn-gold) center/100% 100% no-repeat;font:800 34px/1 Cambria,Georgia,serif;color:#4a2004;text-shadow:0 1px 0 #ffe8a8;animation:seal-bob 1.6s ease-in-out infinite}
 @keyframes seal-bob{50%{translate:0 -5px}}.island-map .stage-seal .seal-go.left{left:auto;right:calc(100% - var(--gx) + 52px);animation-name:seal-bob}
 .reduced-motion .island-map .stage-seal .seal-go,.reduced-motion .island-map .stage-seal.seal-next .seal-ring{animation:none}
 .island-map .stage-seal .pin-creature{z-index:1}
@@ -539,3 +539,9 @@
 .island-map .map-hero{z-index:11}
 .island-map .stage-seal .seal-number,.island-map .stage-seal .seal-stars{z-index:12}
 .island-map .stage-seal .seal-go{z-index:13!important}
+/* Cài Đặt's frame as a 9-slice like every popup (owner 08/11: its gear medallion was squeezed narrow when the whole 760x1000
+   picture was stretched to the 795x1278 panel): the patched frame at one scale, its crown on top at its own proportions. */
+.settings-panel{isolation:isolate;background-image:none!important}
+.settings-panel::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border:solid transparent;border-width:262px 131px 167px;border-image:var(--art-frame) 250 125 160 fill stretch}
+.settings-panel::after{content:'';position:absolute;left:50%;top:13px;width:230px;height:94px;translate:-50% 0;z-index:0;pointer-events:none;background:var(--art-crown) center/100% 100% no-repeat}
+.settings-panel .crafted-heading{top:8.6%!important}

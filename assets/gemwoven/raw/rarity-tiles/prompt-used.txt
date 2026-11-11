@@ -1,0 +1,16 @@
+Create one production UI asset sheet containing exactly FIVE empty inventory rarity slots for Gemwoven, a hand-painted wood-and-brass fantasy mobile RPG.
+
+Reference 1 (inventory-slot.png) is the exact structural reference: match its rounded square shape, bevels, aged golden brass rim, dark wooden recessed interior, small diamond ornaments at the top, bottom and sides, and the restrained lower-left foliage. Reference 2 (mockup-1.png) is the approved look for the coloured tiers: copy how its blue, purple, amber and crimson slots are treated.
+
+Arrange five complete slots in one horizontal row, left to right, evenly spaced:
+1. UNCOMMON: identical to the reference slot (same brown wooden interior, same warm brass), only the small diamond ornaments become green gemstones.
+2. RARE: blue frame inlay and blue diamond gemstones; subdued deep-blue interior, softly lit centre, darker edges.
+3. EPIC: violet frame inlay and violet gemstones; subdued deep-violet interior, softly lit centre, darker edges.
+4. LEGENDARY: amber-gold frame inlay and amber gemstones; subdued warm amber interior with faint broad radial rays from the centre.
+5. DIVINE: crimson frame inlay and crimson gemstones; dark crimson interior with restrained golden radial rays, and slightly richer engraved brass corner ornaments so it reads above Legendary by ornament, not only by brightness.
+
+All five must have IDENTICAL outer dimensions, silhouette, inner opening, ornament anchor positions, viewing angle and lighting, each with the reference's proportions (slightly wider than tall, about 341 by 319). Keep the central item area empty and spacious. Rarity colour belongs primarily on the frame inlay and gemstones; the interior tint stays dark and quiet enough for colourful item icons placed on top. Keep the brass warm and consistent across all five.
+
+Background: perfectly flat solid magenta #FF00FF. Leave generous clean magenta gutters between slots and around the sheet. Keep all painted pixels inside each slot's footprint, with crisp antialiased edges and no external glow, shadows, particles or floating sparkles. Avoid magenta and pink in the slot artwork.
+
+No items, portraits, text, letters, numbers, rarity labels, quantity plaques or separate nameplates. No perspective tilt, cropping or overlapping. Preserve the reference's polished hand-painted material detail and readability at small mobile sizes.

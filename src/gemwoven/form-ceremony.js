@@ -3,7 +3,7 @@
  * darkened Tướng screen, light gathers and the new star ignites, warm light covers the body and the new form's locked showcase
  * fades in (same head-based size, no warping), then its name, the stars, the new ultimate and one line of what changed. Form 2
  * runs 4.8 s, form 3 6 s; the result plate waits for the player. "Bỏ qua" is there from the start. The star-up transaction is
- * saved before the scene starts (the scene grants and spends nothing), a hub look the player chose stays as it is, and "Xem lại
+ * saved before the scene starts (the scene grants and spends nothing), the new form is the one in use from then on (owner 08/11; the old ones stay in the form gallery), and "Xem lại
  * nghi thức" in the form gallery replays an opened form. This is not the in-combat Biến Thân skill.
  * Light shares the summon's language (its halo, streak, sparkle and element glows; the rune circle is drawn for this scene);
  * sounds are the summon's own single CC0 recordings (assets/audio/summon), played at the hub's effects volume. */

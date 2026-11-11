@@ -7,6 +7,8 @@
 /* The featured hero's crystal sits above that light and mist too (owner 08/11: under it the hero looked hazy and only
    came sharp on hover, which lifted it); it keeps one look, with no hover change. */
 #scene>.node-button.portrait-gem,#scene>.node-button.portrait-gem:hover{z-index:2;filter:none}
+/* The form-1 portrait is cut straight at its left edge (the braid): it fades out there like at the bottom (owner 08/11). */
+#scene>.node-button.portrait-gem>.icon{-webkit-mask-image:linear-gradient(#000 72%,transparent 100%),linear-gradient(90deg,transparent,#000 26%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(#000 72%,transparent 100%),linear-gradient(90deg,transparent,#000 26%,#000 88%,transparent);mask-composite:intersect}
 
 /* The banner sign: cream lettering on red lacquer. */
 .su-sign>.copy-layer{font-weight:700;color:#ffe7b0;text-shadow:0 2px 2px #3a0b04,0 0 6px #5a1608;letter-spacing:.5px}
@@ -60,7 +62,9 @@
 #stage .su-form3>.art{position:relative;z-index:2;pointer-events:none}
 #stage .su-form3:active{transform:scale(.97)}
 #stage .su-f3-well{position:absolute;left:14%;top:17%;width:72%;height:64%;z-index:0;border-radius:46% 46% 6% 6%/26% 26% 4% 4%;background:radial-gradient(ellipse 70% 60% at 50% 60%,#3a1d0ccc,#1a0c06ee 80%);pointer-events:none}
-#stage .su-f3-hero{position:absolute;left:0;top:0;width:194px;height:248px;display:block;overflow:visible;z-index:1;pointer-events:none}
-#stage .su-f3-top,#stage .su-f3-bottom{position:absolute;z-index:3;left:12%;width:76%;text-align:center;font:900 28px/1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 2px #1d0d04;white-space:nowrap;letter-spacing:-.3px;pointer-events:none}
+#stage .su-f3-well[style*="--realm"]{background:radial-gradient(ellipse 58% 46% at 50% 58%,#1a0c0640,#1a0c0600 70%),linear-gradient(#1a0c0630,#1a0c0600 40%,#1a0c0600 72%,#1a0c0699),var(--realm) 50% 6%/auto 150% no-repeat}
+/* Feet on the middle of the frame's stone disc (owner 08/11), so the hero stands above the frame art. */
+#stage .su-f3-hero{position:absolute;left:0;top:0;width:194px;height:257px;display:block;overflow:visible;z-index:3;pointer-events:none}
+#stage .su-f3-top,#stage .su-f3-bottom{position:absolute;z-index:4;left:12%;width:76%;text-align:center;font:900 28px/1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 2px #1d0d04;white-space:nowrap;letter-spacing:-.3px;pointer-events:none}
 #stage .su-f3-top{top:9.5%}
 #stage .su-f3-bottom{top:88%}

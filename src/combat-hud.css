@@ -162,22 +162,52 @@ html.chud .gem::after{display:none}
 html.chud .special .gem{background:radial-gradient(ellipse,#eace7930,transparent 70%)}
 html.chud .board-frame .chud-frame{z-index:6}
 
-/* ---- Biến Thân: a gold plate inside the battlefield, clear of the frame -------------------------------------- */
-html.chud .transform-btn{left:10px;bottom:7px;min-width:118px;min-height:44px;padding:4px 13px 6px;border:0;border-radius:0;
-  background:url(assets/gemwoven/ui-kit/btn-gold.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:900 15px/1.05 Cambria,Georgia,serif;text-shadow:0 1px #fff3c6;
-  box-shadow:none;filter:drop-shadow(0 3px 4px #000a);animation:chud-transform-call 1.6s ease-in-out infinite}
-html.chud .transform-btn small{font:700 10.5px/1.1 Cambria,Georgia,serif;color:#5a3a1c}
-html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:50px;height:50px;min-width:0;min-height:0;padding:0;border-radius:50%;
-  background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat;box-shadow:none;filter:drop-shadow(0 0 7px #ffc46a)}
-html.chud .transform-btn.is-active .tf-count,html.chud .transform-btn.is-after .tf-count{font:900 20px/1 Cambria,Georgia,serif;color:var(--hud-ink)}
-html.chud .transform-btn.is-after .tf-count{font-size:13px}
-html.chud .transform-btn:disabled{animation:none}
-@keyframes chud-transform-call{50%{filter:drop-shadow(0 3px 4px #000a) drop-shadow(0 0 10px #ffcf6a)}}
-body.reduced-motion .transform-btn{animation:none!important}
+/* ---- Biến Thân medallion (progression-combat.js; owner 10/11): hidden until it can be pressed, then in the
+   battlefield's upper-left corner, pulsing gently; while it lasts, the turns left. The HUD's drawn medallion pieces and
+   the hero's element emblem. ---- */
+.tf-medal{position:absolute;z-index:9;left:calc(var(--ft,10px) * 1.2 + 6px);top:calc(var(--ft,10px) * 1.2 + 6px);transform-origin:0 0;display:grid;justify-items:center;width:84px;padding:0;border:0;background:none;cursor:pointer;color:var(--hud-ink,#3a210f);animation:tf-in .35s ease-out}
+.tf-medal[hidden]{display:none}
+.tf-medal:disabled{cursor:default}
+@keyframes tf-in{from{opacity:0;scale:.6}}
+.tf-medal .chud-ult-art{position:relative;width:58px;height:58px}
+.tf-medal .chud-ult-art i{position:absolute;inset:0;background-position:center;background-size:contain;background-repeat:no-repeat;pointer-events:none}
+.tf-medal .chud-ult-disc{inset:2px!important;background-image:url(assets/combat-hud/ult-disc.webp)}
+.tf-medal .chud-ult-frame{background-image:url(assets/combat-hud/ult-frame.webp);filter:drop-shadow(0 2px 3px #000b)}
+.tf-medal .chud-ult-halo{inset:-9px!important;background-image:url(assets/combat-hud/ult-halo.webp);opacity:0;transition:opacity .25s}
+.tf-medal .chud-ult-emblem{inset:12px!important;filter:saturate(1.15) brightness(1.1) drop-shadow(0 0 5px #ffd36b)}
+.tf-medal[data-element="fire"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-fire.webp)}
+.tf-medal[data-element="ice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-ice.webp)}
+.tf-medal[data-element="earth"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-earth.webp)}
+.tf-medal[data-element="lightning"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-lightning.webp)}
+.tf-medal[data-element="shadow"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-shadow.webp)}
+.tf-medal[data-element="novice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-novice.webp)}
+.tf-medal .tf-count{position:absolute;inset:0;display:grid;place-items:center;z-index:2;font:900 25px/1 Cambria,Georgia,serif;color:#fff3c6;text-shadow:0 0 4px #000,0 0 8px #e07a1c}
+.tf-medal .tf-label{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-width:82px;height:22px;margin-top:-3px;padding:0 8px;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;font:800 12.5px/1 Cambria,Georgia,serif;white-space:nowrap}
+/* Ready: a slow, soft pulse (the halo breathes, the medallion swells a little). */
+.tf-medal.is-ready .chud-ult-halo{animation:tf-glow 1.8s ease-in-out infinite}
+.tf-medal.is-ready .chud-ult-art{animation:tf-pulse 1.8s ease-in-out infinite}
+.tf-medal.is-ready .tf-label{filter:drop-shadow(0 0 4px #ffd36b)}
+@keyframes tf-glow{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes tf-pulse{0%,100%{scale:1}50%{scale:1.06}}
+.tf-medal.is-active .chud-ult-halo{opacity:.6}
+.tf-medal.is-active .chud-ult-emblem{filter:saturate(.8) brightness(.55)}
+.tf-medal:focus{outline:none}.tf-medal:focus-visible .chud-ult-art{outline:2px solid #ffe7a0;outline-offset:3px;border-radius:50%}
+body.reduced-motion .tf-medal *,body.reduced-motion .tf-medal{animation:none!important}
+body.reduced-motion .tf-medal.is-ready .chud-ult-halo{opacity:.8}
+/* The turn notice in the scene, at each turn start (the strip and its ribbon are gone). */
+.chud-turn-banner{position:absolute;z-index:8;left:50%;top:17%;translate:-50% 0;padding:5px 30px 7px;opacity:0;pointer-events:none;
+  background:url(assets/gemwoven/ui-kit/ribbon-info.webp) center/100% 100% no-repeat;color:var(--hud-ink,#3a210f);font:800 17px/1 Cambria,Georgia,serif;white-space:nowrap;filter:drop-shadow(0 3px 4px #0009)}
+.chud-turn-banner.enemy{background-image:url(assets/gemwoven/ui-kit/ribbon-warn.webp);color:#5a1d12}
+.chud-turn-banner.show{animation:chud-turn 1.3s ease both}
+@keyframes chud-turn{0%{opacity:0;scale:.85}15%,72%{opacity:1;scale:1}100%{opacity:0;scale:1}}
+body.reduced-motion .chud-turn-banner.show{animation-duration:.01s}
+html.chud .board-toolbar[hidden]{display:none!important}
 
 /* ---- Phone portrait sizes: the board takes the width, the battlefield the rest ------------------------------- */
-html.chud .app{--bf:min(calc(100vw - 12px),calc(100svh - 50px - 6px - 73px - 210px - 22px),470px);
-  --scene-h:clamp(200px,calc(100svh - 50px - 6px - 73px - var(--bf) - 2 * var(--ft) - 20px),420px)}
+/* (The 73px the action strip took now goes to the battlefield; owner 08/11.) */
+html.chud .app{--bf:min(calc(100vw - 12px),calc(100svh - 50px - 6px - 6px - 210px - 22px),470px);
+  --scene-h:clamp(200px,calc(100svh - 50px - 6px - 6px - var(--bf) - 2 * var(--ft) - 20px),500px)}
 html.chud .game-layout{gap:0}
 @media (max-width:370px){
   html.chud{--fc:46px;--ft:11px}
@@ -248,9 +278,6 @@ html.chud .game-layout{gap:0}
   html.chud .actor-hud .health-track::before{width:31px;height:26px;left:-22px}
   html.chud .actor-hud .head-rage-track::before{width:26px;height:22px;left:-19px}
   html.chud .actor-hud .shield-label{font-size:14px}
-  html.chud .transform-btn{left:22px;bottom:14px;min-width:160px;min-height:60px;font-size:18px}
-  html.chud .transform-btn small{font-size:12.5px}
-  html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:66px;height:66px;min-width:0;min-height:0}
   .chud-sheet{width:340px}
 }
 
@@ -289,7 +316,6 @@ html.chud .game-layout{gap:0}
   .chud-ult-auto{left:auto;right:4px;top:-7px;translate:none;font-size:11px;line-height:13px}
   html.chud .board-frame{grid-area:1/2/3/3;align-self:center;justify-self:center;width:var(--bf);max-width:none;padding:7px}
   html.chud .board-frame .board-effects{inset:7px;width:calc(100% - 14px);height:calc(100% - 14px)}
-  html.chud .transform-btn{left:12px;bottom:8px}
   /* Fighters sized by the stage (not the screen width) and kept off its side edges, so a narrow stage never cuts a
      wide pose or the Biến Thân look; the HUD boxes keep a wider gap (heart caps and emblems hang past them). */
   html.chud .scene{--hud-gap:30px;--hud-gap-y:10px;--hud-edge:34px}
@@ -306,3 +332,5 @@ html.chud .game-layout{gap:0}
   /* A narrow stage: the two gauges stay apart (Codex: the foe's heart sat over the hero's energy bar). */
   html.chud .actor-hud{width:112px}
 }
+/* Landscape: the medallion sits larger on the battlefield's lower edge. */
+@media (min-width:900px) and (min-aspect-ratio:5/4){.tf-medal{scale:1.35}}

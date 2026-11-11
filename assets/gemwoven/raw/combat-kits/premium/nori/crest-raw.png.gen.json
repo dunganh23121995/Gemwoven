@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:36.790701+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\crest-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\nori\\ref-motif.png"
+  ],
+  "prompt": "One ornament like reference image 1 in size and shape: a crest of golden branching antlers around an emerald gem, with oak leaves, about three times as wide as tall, centred. Style: a premium seasonal battle frame 'Lộc Thần — Sacred Forest Deer', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, aged gold, mossy forest-green lacquer and carved twining vines, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat pure magenta #FF00FF background, but the candidate's background appears white rather than magenta. It may be a transparent render shown on white, so this is not fully certain."
+      }
+    ],
+    "summary": "The golden antler crest with emerald gem, oak leaves and acorns matches the requested motif and palette, is centred, roughly three times as wide as tall, and has no visible text. The background is not the requested flat magenta key colour, which makes it unusable as raw material for the magenta-keyed pipeline.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000526
+  }
+}

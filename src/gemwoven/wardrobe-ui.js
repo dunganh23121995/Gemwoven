@@ -19,7 +19,7 @@
   const view={slot:'avatar',sel:null,season:null,ctx:null,state:null,modal:null};
   const playerName=()=>{try{return JSON.parse(localStorage.getItem('gemwoven.plaza.v1')||'{}').name||'Lữ Khách';}catch{return 'Lữ Khách';}};
   const cat=id=>O.COSMETICS.find(c=>c.id===id)||null;
-  const heroPic=key=>file('portrait-'+key)||file('face-'+key);
+  const heroPic=key=>file('face-'+key)||file('portrait-'+key);
   // The picture of any look id: an owned hero's portrait ('hero:<key>') or a catalogue piece.
   const pic=id=>!id?'':id.startsWith('hero:')?heroPic(id.slice(5)):cat(id)?.file||'';
   const source=c=>c.source||[M.HEROES[c.hero]?.name,TRACK[c.track]&&`${TRACK[c.track]} ★${c.level}`].filter(Boolean).join(' · ');
@@ -46,17 +46,18 @@
     const avatar=pic(look('avatar'))||heroPic(s.p.selected),frame=pic(look('frame'));
     if(['avatar','frame','title','nameplate'].includes(slot)){
       const plate=pic(look('nameplate')),title=look('title')?cat(look('title')):null;
-      return `<div class="wd-prof"><span class="wd-ava"><img class="in" src="${esc(avatar)}" alt=""><img class="ring" src="${esc(frame||file('avatar-ring'))}" alt=""></span>`+
+      return `<div class="wd-prof"><span class="wd-ava"><img class="in" src="${esc(avatar)}" alt=""><img class="ring${frame?'':' base'}" src="${esc(frame||file('avatar-ring'))}" alt=""${frame?' data-frame-fit="50,50,36,%"':''}></span>`+
         `<span class="wd-ids"><span class="wd-plate ${plate?'':'plain'}">${plate?`<img src="${esc(plate)}" alt="">`:''}<b>${esc(playerName())}</b></span>`+
         (title?`<span class="wd-title"><img src="${esc(title.file)}" alt=""><b>${esc(title.name)}</b></span>`:'')+`</span></div>`;
     }
     if(slot==='bubble'){const b=pic(look('bubble'));
       return `<div class="wd-chat"><span class="wd-ava small"><img class="in" src="${esc(avatar)}" alt="">${frame?`<img class="ring" src="${esc(frame)}" alt="">`:''}</span>`+
         `<span class="wd-bubble ${b?'':'plain'}">${b?`<img src="${esc(b)}" alt="">`:''}<b>Chào!</b></span></div>`;}
-    // Khung trận / Vào trận: a small battle with the real corner placement (progression-combat.css .cos-corner).
-    const corner=pic(look('combatFrame')),entry=slot==='entry'?pic(look('entry')):'';
+    // Khung trận / Vào trận: a small battle inside the worn season frame kit (its carved scene frame and crest, as in combat).
+    const corner=pic(look('combatFrame')),kit=/season\/([a-z]+)\//.exec(corner)?.[1],entry=slot==='entry'?pic(look('entry')):'';
+    const kitUrl=n=>esc(`assets/combat-hud/kits/${kit}/${n}.webp`);
     return `<div class="wd-battle"><img class="bg" src="${esc(file('battle-card-forest'))}" alt=""><img class="hero" src="assets/gemwoven/items/hero-${esc(s.p.selected)}.png" alt="">`+
-      `<img class="foe" src="${esc(file('monster-slime'))}" alt="">`+(corner?['tl','tr','bl','br'].map(c=>`<img class="corner ${c}" src="${esc(corner)}" alt="">`).join(''):'')+
+      `<img class="foe" src="${esc(file('monster-slime'))}" alt="">`+(kit?`<i class="kit frame" style="border-image-source:url('${kitUrl('scene-frame')}')"></i><i class="kit crest" style="background-image:url('${kitUrl('crest')}')"></i>`:'')+
       (entry?`<span class="wd-entry" style="background-image:url('${esc(entry)}')"></span><button type="button" class="wd-play" data-wd="play" aria-label="Xem lại"><img src="${esc(file('season-mika-play')||file('kit-round'))}" alt=""></button>`:'')+`</div>`;
   }
 
@@ -76,7 +77,7 @@
           (isWorn?`<img class="worn" src="${file('kit-medal-worn')}" alt="">`:'')+(locked?`<em><img src="${file('kit-lock')}" alt="">${x.track==='newbie'?'Ngày '+x.level:x.level?'★'+x.level:''}</em>`:'')+`</button>`;}).join('')}</div>`;
     // Footer: one action for the selected piece.
     m.actions.replaceChildren();const btn=(label,cls,fn)=>{const b=document.createElement('button');b.type='button';b.className='gw-btn '+cls;b.textContent=label;b.onclick=fn;m.actions.append(b);};
-    if(s.trial.on)btn(sel.id===worn?'Bỏ thử':'Đeo thử','kp-gold',()=>act(()=>G.engine.lookTrialWear(sel.id===worn?null:sel.id||null,slot)));
+    if(s.trial.on)btn(sel.id===worn?'Gỡ':'Đeo thử',sel.id===worn?'secondary':'kp-gold',()=>act(()=>G.engine.lookTrialWear(sel.id===worn?null:sel.id||null,slot)));
     else if(sel.owned&&sel.id!==worn)btn(sel.none?'Dùng mặc định':'Trang bị','kp-gold',()=>act(()=>G.engine.wearCosmetic(sel.id||null,slot)));
     else if(sel.owned&&sel.id&&sel.id===worn&&!(slot==='frame'&&s.opts.followHero))btn('Gỡ','secondary',()=>act(()=>G.engine.wearCosmetic(null,slot)));
     else if(!sel.owned){const to=goTo(sel);if(to)btn('Đi tới','kp-gold',()=>{m.close();to();});}

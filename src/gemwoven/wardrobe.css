@@ -18,6 +18,8 @@
 .wd-ava{position:relative;display:block;width:calc(220*var(--wu));height:calc(220*var(--wu));flex:none}
 .wd-ava .in{position:absolute;left:14%;top:14%;width:72%;height:72%;border-radius:50%;object-fit:cover;background:#3a2a1a}
 .wd-ava .ring{position:absolute;left:-14%;top:-22%;width:128%;height:136%;object-fit:contain;pointer-events:none}
+/* The plain ring's centre is solid: with no season frame the avatar sits on top of it, inside its brass rim. */
+.wd-ava .ring.base{left:0;top:0;width:100%;height:100%}.wd-ava .ring.base~.in,.wd-ava:has(.ring.base) .in{z-index:1}
 .wd-ava.small{width:calc(130*var(--wu));height:calc(130*var(--wu))}
 .wd-ids{display:flex;flex-direction:column;align-items:center;gap:calc(16*var(--wu));width:calc(300*var(--wu))}
 .wd-plate,.wd-title{position:relative;display:grid;place-items:center;width:100%;height:calc(76*var(--wu))}
@@ -25,23 +27,25 @@
 .wd-plate.plain{background:var(--kit-plaque) center/100% 100% no-repeat}
 .wd-title{height:calc(110*var(--wu))}
 .wd-plate b,.wd-title b{position:relative;font:800 calc(26*var(--wu))/1 Cambria,serif;color:#fff3d6;text-shadow:0 2px 2px #2a1006,0 0 4px #2a1006;white-space:nowrap;max-width:86%;overflow:hidden;text-overflow:ellipsis}
+.wd-title b{max-width:none;overflow:visible;padding:0 8%}
 .wd-plate.plain b{color:#fff1cf;text-shadow:0 1px 1px #2a1006}
-.wd-title b{margin-top:calc(-8*var(--wu));font-size:calc(22*var(--wu))}
+.wd-title b{font-size:calc(24*var(--wu))}
 /* Bubble: the avatar and one chat line. */
 .wd-chat{inset:0;display:flex;align-items:center;justify-content:center;gap:calc(20*var(--wu))}
 .wd-bubble{position:relative;display:grid;place-items:center;width:calc(330*var(--wu));height:calc(240*var(--wu))}
 .wd-bubble img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .wd-bubble.plain{background:#fff8e6;border-radius:calc(40*var(--wu));height:calc(130*var(--wu));box-shadow:inset 0 0 0 calc(3*var(--wu)) #c99a52}
 .wd-bubble b{position:relative;font:800 calc(30*var(--wu))/1 Cambria,serif;color:#4a2610}
-/* Khung trận / Vào trận: a small battle; corners as in combat (progression-combat.css .cos-corner, 21% width). */
-.wd-battle{inset:0;overflow:hidden;border-radius:calc(12*var(--wu));background:#24331c}
+/* Khung trận / Vào trận: a small battle inside the season frame kit, laid out like the combat frame (combat-hud.css). */
+.wd-battle{inset:0;overflow:hidden;border-radius:calc(12*var(--wu));background:#24331c;container-type:size}
 .wd-battle>*{position:absolute}
 .wd-battle .bg{inset:0;width:100%;height:100%;object-fit:cover}
 .wd-battle .hero{left:12%;bottom:6%;height:72%;width:auto;filter:drop-shadow(0 4px 4px #0008)}
 .wd-battle .foe{right:12%;bottom:8%;height:40%;width:auto;transform:scaleX(-1);filter:drop-shadow(0 4px 4px #0008)}
-.wd-battle .corner{width:21%;height:auto;z-index:2;filter:drop-shadow(0 2px 3px #0008)}
-.wd-battle .corner.tl{left:0;top:0}.wd-battle .corner.tr{right:0;top:0;transform:scaleX(-1)}
-.wd-battle .corner.bl{left:0;bottom:0;transform:scaleY(-1)}.wd-battle .corner.br{right:0;bottom:0;transform:scale(-1,-1)}
+.wd-battle .kit{z-index:2;pointer-events:none}
+/* The premium kit's scene frame as a 9-slice (the cut shares of assets/combat-hud/kits/<season>/kit.json) and its crest. */
+.wd-battle .kit.frame{inset:0;border:solid transparent;border-width:9cqw 7.5cqw 7cqw 7.5cqw;border-image-slice:33% 19% 29% 19%;border-image-width:9cqw 7.5cqw 7cqw 7.5cqw;border-image-outset:1.6cqw 1cqw .5cqw 1cqw;border-image-repeat:round}
+.wd-battle .kit.crest{z-index:3;left:50%;top:0;translate:-50% -8%;width:44cqw;aspect-ratio:900/249;background:center/contain no-repeat}
 .wd-entry{inset:0;z-index:3;background-size:600% 100%;background-position:40% 0;background-repeat:no-repeat;mix-blend-mode:screen;pointer-events:none}
 .wd-entry.run{animation:wd-entry .9s steps(5) 1 both}
 @keyframes wd-entry{from{background-position:0 0}to{background-position:100% 0}}

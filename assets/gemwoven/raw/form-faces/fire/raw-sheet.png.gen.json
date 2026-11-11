@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T01:18:15.146883+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\form-faces\\fire\\ref-face.webp"
+  ],
+  "prompt": "Create TWO circular painted avatar BACKGROUNDS for a hand-painted fantasy mobile RPG, side by side, each a perfect circle about 420 px wide, on a perfectly flat solid magenta #FF00FF background with wide magenta gutters.\n\nReference 1 is an approved avatar of the same hero: copy its painting style, soft lighting, colour richness and level of detail for the BACKGROUND only.\nLeft circle (form 2): a crimson night with paper lanterns and drifting embers.\nRight circle (form 3): a blazing golden flame halo with nine fox-fire wisps curling around the rim.\n\nNO character, NO person, NO face, NO creature, NO text, NO frame or border ring: only the painted scenery filling each circle edge to edge, a little brighter and calmer in the middle and lower half where a portrait will be placed on top. Each circle clearly different from the other and from the reference's background. Crisp circle edges, nothing outside the circles, no magenta or pink inside the art.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Two circular scenery backgrounds on a flat magenta field with no characters, text or frames. Left circle shows a crimson night with paper lanterns, moon and maple leaves; right circle shows a golden flame halo with fox-fire wisps around the rim. The wisp count looks close to nine, which is hard to verify exactly, but no clear defect is visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00055
+  }
+}

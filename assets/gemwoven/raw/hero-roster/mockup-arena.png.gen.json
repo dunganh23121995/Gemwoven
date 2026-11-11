@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T03:57:00.331090+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\hero-roster\\ref-arena.png"
+  ],
+  "prompt": "Create a full-screen Gemwoven arena hero-selection mockup, exactly 941×1672, based on the supplied arena reference. Preserve its hand-painted stone arena, blue sky, carved wood, aged brass, gold plates and Vietnamese serif typography. This is a local AI trial using the player's real progression stats. Replace the leaderboard content with a focused selection screen. At the top show “Chọn tướng”, a large readable brass countdown ring displaying “10”, approximately 140px in diameter, and the subtitle “Đấu thử cục bộ · Chỉ số thật”. In the upper-middle area, place two approximately 280px-wide framed panels: the player's selected Hiro on the left, and an opaque face-down opponent card with a large “?” on the right. Label them “Bạn” and “Đối thủ”. Reveal absolutely no opponent portrait, silhouette, element, stars or combat power. Under Hiro, show three form selectors labeled “I”, “II”, “III”; select II and lock III. Below, show a three-column scrollable grid containing only owned heroes, with portraits, stars, levels and combat power; mark Hiro with a gold border and checkmark. Anchor a large approximately 600×110px gold button labeled “Sẵn sàng” near the bottom. Include the concise helper text “Chưa chọn khi hết giờ: tự chọn tướng mạnh nhất ở hình thái cao nhất.” Remove resource bars, leaderboard podiums, rewards, arena mode banners and bottom navigation from this selection screen. Clear hierarchy, readable at phone size, no normalized-stat messaging, no online matchmaking claims.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt's layout: the countdown ring shows 10, the subtitle is present, Hiro and a face-down opponent card sit side by side, form selectors I/II/III show II selected and III locked, a three-column owned-hero grid marks Hiro with a gold border and checkmark, and the Sẵn sàng button and helper text are included. Resource bars, podiums, rewards and bottom navigation are removed, and no clear defects are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000585
+  }
+}

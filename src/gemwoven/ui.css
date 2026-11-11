@@ -123,6 +123,10 @@ body{overflow-x:hidden}
   border-image:var(--art-frame) 250 125 160 fill stretch}
 .gw-emblem{position:absolute;left:50%;top:calc(58*var(--s));width:calc(68*var(--s));aspect-ratio:1;translate:-50% -50%;
   background:var(--art-crest) center/contain no-repeat;pointer-events:none;z-index:1}
+/* The frame's crown (the medallion, its scrolls and leaves) rides with the crest at its own proportions: in the 9-slice it sat in
+   the squeezed-and-stretched top slice and its round cartouche turned oval (owner 08/11; raw/dialog-frame/split_frame.py). */
+.gw-emblem::before{content:'';position:absolute;z-index:-1;left:50%;top:-14.7%;width:323.5%;height:132.4%;translate:-50% 0;
+  background:var(--art-crown) center/100% 100% no-repeat}
 .gw-head{position:absolute;left:calc(158*var(--s));right:calc(158*var(--s));top:calc(105*var(--s));height:calc(66*var(--s));
   display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0;padding:0;border:0;z-index:2;pointer-events:none}
 .gw-head h2,.gw-dialog .gw-head h2{margin:0;max-width:100%;font:700 calc(40*var(--s))/1.05 var(--gw-font);color:#4a2c13;

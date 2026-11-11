@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:28:24Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\noct\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a a chibi hooded dark reaper in black armour with a black hood, a shadowed face with two glowing cyan eyes, raising a foaming beer mug, a spear tip behind his shoulder on a plain background, cut off by a straight horizontal edge at the bottom. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the ears, the hair on top of the head and the bangs, and the hood. The face is never any other colour.\n- pure WHITE #FFFFFF: the body: neck, torso, shoulders, both arms and both hands.\n- pure GREEN #00FF00: the bottom band of the picture along the straight cut edge (about the lowest tenth of the height): it never moves.\n- pure YELLOW #FFFF00: the beer mug with its foam and the spear, without the hand.\n- pure RED #FF0000: the hood tail and the scarf ends.\n- pure CYAN #00FFFF: the loose cloth edges of the scarf.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate follows the requested flat colour-coded part map: blue hood and head, white armour and hands, yellow mug and spear, red hood tail and scarf ends, cyan scarf edges, a green bottom band and a black background. It is cut off at the bottom as the prompt asks. The only deviation is thin black outlines on the white body, which the prompt said to avoid, but that is minor and does not make the map unusable.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000617
+  }
+}

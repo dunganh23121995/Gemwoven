@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T13:03:50.799213+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\lumi\\board-frame-ref.png"
+  ],
+  "prompt": "Reference image 1 is a square ornate frame around an empty square opening filled with magenta. Redraw the SAME frame: the same design, style, colours, mascot, band and every ornament, the same size and the same position on the canvas, with ONE change: nothing may reach into the square opening. The opening's inner edge is one clean straight line on all four sides, running unbroken all the way into each of the four corners. Every corner ornament (the golden star charm with the violet gem on the lower-right corner, the witch hat on the upper-left corner) sits on the OUTER corner of the band, centred on the band's outer corner point, small enough that all of it lies on the band and outside it, never crossing the band's inner edge. The square opening is empty and filled with pure magenta. Everything stays inside the image with a margin.\nHand-painted fantasy mobile game UI, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The prompt requires nothing to reach into the square opening, but the top-centre star ornament dips below the inner top edge, and the left-side star extends slightly past the inner left edge. The lower-right star also comes close to the inner corner."
+      }
+    ],
+    "summary": "Background is flat magenta, the frame design matches the reference, and nothing is cut off. However, the central top star and left star protrude into the opening, violating the explicit constraint that the inner edge stay a clean straight line.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000829
+  }
+}

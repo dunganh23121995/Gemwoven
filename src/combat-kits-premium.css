@@ -1,0 +1,37 @@
+/* Premium season battle frames (Khung trận cao cấp; owner 08/11 "mất tiền mà chỉ đổi màu thì không xứng đáng bỏ tiền";
+   Codex mockup assets/gemwoven/raw/combat-kits/premium/mockup-mika-v2.png 8.5/10). Each season draws its own scene frame
+   (four different carved corners, laid as a 9-slice whose edges repeat, so it fits the phone and the landscape battlefield), a crest on the
+   battlefield's top edge, a square board frame with its mascot outside the board, the top rail and the board backing.
+   build.py writes these rules once per kit with a kit.json (premium/cut_premium.py measures the pieces): {s} season,
+   {bg} base colour, the scene frame's 9-slice cuts {st}..{sl} (image px), its widths {wt}..{wl} and outsets {ot}..{ol}
+   (in frame bands, var(--ft)), the board frame's box {bl},{bt},{bw},{bh} (% of the board frame) and the rail cap {cap}. */
+html.chud.kit-{s} .chud-frame>i{display:none}
+html.chud.kit-{s} .battle-card{overflow:visible;background:{bg}}
+html.chud.kit-{s} .battle-card>.chud-frame{border-style:solid;border-color:transparent;
+  border-width:calc(var(--ft) * {wt}) calc(var(--ft) * {wr}) calc(var(--ft) * {wb}) calc(var(--ft) * {wl});
+  border-image:url(assets/combat-hud/kits/{s}/scene-frame.webp) {st} {sr} {sb} {sl} / calc(var(--ft) * {wt}) calc(var(--ft) * {wr}) calc(var(--ft) * {wb}) calc(var(--ft) * {wl})
+    / calc(var(--ft) * {ot}) calc(var(--ft) * {or}) calc(var(--ft) * {ob}) calc(var(--ft) * {ol}) round;
+  filter:drop-shadow(0 3px 4px #000a)}
+html.chud.kit-{s} .battle-card>.chud-frame::after{content:"";position:absolute;left:50%;top:calc(var(--ft) * (.5 - {wt}));translate:-50% -50%;
+  width:min(48%,320px);aspect-ratio:{cw}/{ch};background:url(assets/combat-hud/kits/{s}/crest.webp) center/contain no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+/* The board frame's opening lies on the gems (inside the board frame's padding --bp), so its band sits on the padding. */
+html.chud.kit-{s} .board-frame{--bp:17px;padding:var(--bp);background:url(assets/combat-hud/kits/{s}/board-back.webp) center/cover no-repeat,{bg}}
+@media (min-width:900px) and (min-aspect-ratio:5/4){html.chud.kit-{s} .board-frame{--bp:7px}}
+html.chud.kit-{s} .board-frame::after{content:"";position:absolute;z-index:7;pointer-events:none;
+  left:calc(var(--bp) + (100% - 2 * var(--bp)) * {bl} / 100);top:calc(var(--bp) + (100% - 2 * var(--bp)) * {bt} / 100);
+  width:calc((100% - 2 * var(--bp)) * {bw} / 100);height:calc((100% - 2 * var(--bp)) * {bh} / 100);
+  background:url(assets/combat-hud/kits/{s}/board-frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px #000b)}
+html.chud.kit-{s} .chud-bar{border-image-source:url(assets/combat-hud/kits/{s}/rail.webp);border-image-slice:0 {cap} fill;border-image-repeat:round}
+html.chud.kit-{s} .chud-backdrop{filter:brightness(.42) saturate(.75)}
+/* The whole board frame stays on screen (owner 10/11: nothing cut): the board (--kb, its gem area --kc) is as wide as
+   before (93 % of --bf on a phone) unless the frame, {bw} % of the gem area wide and {bh} % high, would then pass the
+   screen's edge, and it moves sideways by {shift} % of the gem area so the frame, not the gems, is centred. */
+html.chud.kit-{s} .app{--kb:min(calc(var(--bf) * .93),calc((100vw - 6px) * 100 / {bw} + 34px));--kc:calc(var(--kb) - 34px)}
+html.chud.kit-{s} .board-frame{width:var(--kb);margin-inline:auto;translate:calc(var(--kc) * {shift} / 100) 0}
+/* Landscape: the columns part wider so the mascot's tails stay off the battlefield frame; the board fits the frame's
+   height ({bh} %) into the screen, moves left as far as the frame passes the right edge ({right} % of the gem area beyond
+   it) and up or down so the frame, not the gems, is centred ({vshift} %). */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud.kit-{s} .app{--kb:min(calc(var(--bf) * .88),calc((100dvh - 84px) * 100 / {bh} + 14px));--kc:calc(var(--kb) - 14px)}
+  html.chud.kit-{s} .game-layout{gap:calc(var(--bf) * .15)}
+  html.chud.kit-{s} .board-frame{translate:calc(-1 * max(0px,var(--kc) * {right} / 100 - (var(--bf) - var(--kb)) / 2 - 18px)) calc(var(--kc) * {vshift} / 100)}}

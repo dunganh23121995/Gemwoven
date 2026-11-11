@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T15:43:33.135379+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\season-titles\\nori\\ref.png"
+  ],
+  "prompt": "Reference image 1 is a title ribbon of a fantasy mobile game. Redraw it as a STRAIGHT, LEVEL banner, keeping its identity: the golden antler medallion with the emerald gem, the acorn and oak leaves on the left, the same design and size; the golden vine with oak leaves at the right end, the same style; the cloth forest green silk with gold trim.\nThe cloth band between the medallion and the tail is perfectly straight and horizontal: no wave, no twist, no bend, the same height all along, its top and bottom trims two straight parallel horizontal lines. The cloth is plain, with only a faint soft sheen of the same colour: no stars, snowflakes, vines, flames, runes or any other painting on it, so a name can be written on it later.\nLayout: the whole banner about 4 times as wide as tall; the medallion takes about the left fifth, the plain straight cloth runs from about 23 percent to about 85 percent of the width, the tail ornament in the last 15 percent; the tail may rise a little above the band, the medallion's tassels may hang below it.\nHand-painted fantasy game UI, the same finish, palette and quality as reference image 1, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nSolid flat pure magenta #FF00FF background around the banner, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the medallion, acorn, oak leaves, right-end vine and green cloth with gold trim. The background is flat magenta, the band is straight and level, and nothing is cropped by the edges. The band is closer to 3:1 than the requested 4:1, which is a minor layout drift rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000554
+  }
+}

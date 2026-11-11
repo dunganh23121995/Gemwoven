@@ -14,6 +14,8 @@
   if(!G?.decorate||!M||!L?.screens?.summon||!A?.['summon-ui-sign'])return;
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN');
   const file=k=>A[k]?.file||'';
+  // A pull gives the hero at 1★ in form 1, so the screen shows that face even when the player's own copy wears a later form.
+  const face=hero=>A[`form-portrait-${hero}-1`]?`form-portrait-${hero}-1`:'portrait-'+hero;
   document.documentElement.style.setProperty('--su-panel',`url("${new URL(file('summon-ui-panel'),document.baseURI).href}")`);
   // Layers this module draws itself (from screens.js and art-screens.js summon()); everything else is kept in order.
   const REPLACED=/^summon\.(subtitle-board|subtitle|story-flag|story|fragments|summon-one|summon-ten|guarantee|ticket-balance|featured-.+|next-banner|pity-.+|summon-details|banner|prize-plaque)$/;
@@ -44,11 +46,12 @@
     out.push(text('featured-title','Phần Thưởng Hiếm',[86,1241,344,62],34,{tone:'gold',className:'single-line'}));
     out.push(button('next-banner','kit-badge-leather',next?[508,1232,258,80]:[544,1241,222,62],next?`Kỳ sau: ${next.name}\n${next.date}`:'Kỳ sau: ?','summon-ui:next',{labelRect:next?[10,4,238,72]:[10,0,202,62],size:next?27:32,className:'su-next'}));
     out.push(button('summon-details','kit-round',[786,1222,100,100],'Tỷ lệ và bảo đảm','do:rates',{labelHidden:true,className:'su-info'}));
-    const owned=star in p.heroes;
-    [['hero','portrait-'+star,'Tướng','hero:'+star,{},`Tướng ${name}${owned?' · đã có':''}`],
-     ['fragment','fragment-'+star,'Mảnh','art:fragments',{},`Mảnh ${name}`],
-     ['weapon',M.SLOT_ART.weapon,'Thần','journey:featured-gear',{slot:'weapon',rarity:'divine',asset:M.SLOT_ART.weapon},`Vũ khí ${M.RARITIES.divine.name}`]].forEach(([id,icon,word,act,data,aria],i)=>
-      out.push(button('featured-'+id,'kit-socket-on',[76+i*274,1306,250,96],word,act,{data,icon,iconRect:[9,9,78,78],labelRect:[110,0,138,96],size:36,tone:'gold',align:'left',aria,className:`featured-equipment su-prize single-line${id==='hero'&&owned?' su-owned':''}`})));
+    // Each prize in its rarity's drawn slot (owner 08/11): the hero and its fragments Legendary, the weapon Divine (in its divine art).
+    const owned=star in p.heroes,divine=A['gear-divine-weapon']?'gear-divine-weapon':M.SLOT_ART.weapon,slot=t=>A['rarity-slot-'+t]?'rarity-slot-'+t:'kit-socket-on';
+    [['hero',face(star),'Tướng','hero:'+star,{},`Tướng ${name}${owned?' · đã có':''}`,'legendary'],
+     ['fragment','fragment-'+star,'Mảnh','art:fragments',{},`Mảnh ${name}`,'legendary'],
+     ['weapon',divine,'Thần','journey:featured-gear',{slot:'weapon',rarity:'divine',asset:divine},`Vũ khí ${M.RARITIES.divine.name}`,'divine']].forEach(([id,icon,word,act,data,aria,tier],i)=>
+      out.push(button('featured-'+id,slot(tier),[76+i*274,1306,250,96],word,act,{data,icon,iconRect:[11,11,74,74],labelRect:[110,0,138,96],size:36,tone:'gold',align:'left',aria,className:`featured-equipment su-prize single-line rarity-${tier}${id==='hero'&&owned?' su-owned':''}`})));
     // 6. Owner 04/11 (the one change allowed on this locked screen): a small evolution-preview stand beside the arch, the
     // banner hero's locked form-3 showcase in a drawn frame, "Hình thái 3" / "Mở tại 6★". A pull still gives 1★ form 1;
     // the stand reads as a gallery preview (no stars, lock, glow or link to the pull buttons) and opens the form gallery.
@@ -61,11 +64,13 @@
     out.push(text('pity-value',`${fmt(p.summon.dry)}/${M.SUMMON_PITY}`,[436,1406,424,50],30,{className:'single-line su-pity-value'}));
     return out;
   }
-  // The stand's inside, added after render under the drawn frame: a dark well, the locked art at its head-based size (same
-  // rule as every screen, scaled with the whole stand) and the two words on the frame's planks.
+  // The stand's inside, added after render under the drawn frame: the hero's own realm (the painted scene of its summon
+  // spotlight, owner 08/11: no plain black), the locked art at its head-based size (same rule as every screen, scaled with
+  // the whole stand) and the two words on the frame's planks.
   function formPreview(el,star){
     if(!el||el.querySelector('.su-f3-hero'))return;const name=M.HEROES[star].name,show=A[`show-${star}-3`],art=el.querySelector('.art');
     const well=document.createElement('i');well.className='su-f3-well';
+    if(A['summon-scene-'+star])well.style.setProperty('--realm',`url("${new URL(file('summon-scene-'+star),document.baseURI).href}")`);
     const hero=document.createElement('span');hero.className='su-f3-hero';hero.innerHTML=`<img class="art" src="${file(`show-${star}-3`)}" alt="">`;
     el.insertBefore(hero,art);el.insertBefore(well,hero);window.GEMWOVEN_FORMS?.fitBody(hero,show,138);
     el.insertAdjacentHTML('beforeend','<b class="su-f3-top">Hình thái 3</b><b class="su-f3-bottom">Mở tại 6★</b>');
@@ -105,7 +110,7 @@
   G.handle=(act,el,ctx,state)=>{
     if(act!=='summon-ui:next')return handle(act,el,ctx,state);
     const next=nextBanner(),save=G.engine.read();
-    ctx.showModal(next?`Kỳ sau: ${next.name}`:'Kỳ sau',[next?'portrait-'+next.hero:'summon-crystal'],`${next?`Từ ${next.date}.`:'Chưa công bố.'} Bảo đảm ${fmt(save.summon.dry)}/${M.SUMMON_PITY} giữ sang kỳ sau.`);
+    ctx.showModal(next?`Kỳ sau: ${next.name}`:'Kỳ sau',[next?face(next.hero):'summon-crystal'],`${next?`Từ ${next.date}.`:'Chưa công bố.'} Bảo đảm ${fmt(save.summon.dry)}/${M.SUMMON_PITY} giữ sang kỳ sau.`);
     return true;
   };
 })();

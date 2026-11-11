@@ -1,0 +1,26 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:26:31Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\barmaid\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a a cheerful chibi barmaid with curly brown hair and a white ribbon, raising a foaming beer mug in each hand, eyes closed in a big laugh on a plain background, cut off by a straight horizontal edge at the bottom. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the ears, the hair on top of the head and the bangs. The face is never any other colour.\n- pure WHITE #FFFFFF: the body: neck, torso, shoulders, both arms and both hands.\n- pure GREEN #00FF00: the bottom band of the picture along the straight cut edge (about the lowest tenth of the height): it never moves.\n- pure YELLOW #FFFF00: both beer mugs with their foam, without the hands.\n- pure RED #FF0000: the long curly hair falling behind her shoulders.\n- pure CYAN #00FFFF: the white hair ribbon and small hair curls over the face.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The candidate does not keep the reference framing. It is a 1024x1024 canvas with the head and mugs placed noticeably lower and larger than in the reference, so the outlines are not where Image 1 has them, as the prompt requires."
+      },
+      {
+        "kind": "other",
+        "detail": "The pure green bottom band is only about 3% of the height, far thinner than the requested lowest tenth."
+      }
+    ],
+    "summary": "The candidate is a valid colour-coded part map with the right colours for head, body, mugs, hair and ribbon, and no text or stray figures. However, its positions and scale drift from the reference, and the green cut band is much thinner than specified, so it is not usable as an exact redraw.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000827
+  }
+}

@@ -1,0 +1,4 @@
+Use case: a texture strip for a game UI ring (portrait fantasy match-3 RPG "Gemwoven", painted hand-drawn style).
+Reference image 1 is the avatar frame whose round ring band shows the pattern to copy: deep crimson lacquer with flowing golden-orange fox-fire flame swirls. Copy only that ring band's surface pattern, colours, painted brushwork and lighting.
+Draw ONE long straight horizontal band carrying this pattern, running edge to edge across the whole width of the image, centred vertically, about one sixth of the image height tall, with even height along its length. The band is the ring's surface unrolled flat: no rims, borders or edge lines along its top and bottom, no ornaments at all (no ears, flames, bows, hats, antlers, leaves sticking out, gems, emblems), no text. The pattern repeats evenly along the band and its left end continues seamlessly into its right end.
+Above and below the band: solid flat pure magenta #FF00FF. No magenta or pink inside the band.

@@ -247,7 +247,9 @@ body.reduced-motion .lh-rig,body.reduced-motion .lh-call>.art{animation:none}
 @keyframes lm-stream{from{-webkit-mask-position:0 0,0 0,var(--water);mask-position:0 0,0 0,var(--water)}to{-webkit-mask-position:0 0,0 var(--period),var(--water);mask-position:0 0,0 var(--period),var(--water)}}
 .lm-sprite{background:var(--sheet) 0 0/calc(var(--count) * 100%) 100% no-repeat;animation:lm-frames var(--cycle) steps(var(--count),jump-none) infinite}
 @keyframes lm-frames{from{background-position:0 0}to{background-position:100% 0}}
-.lm-foam{opacity:.88}
+/* The foam sheet carries a short column of water cut flat at its top and a flat-bottomed splash: both fade, so the foot of
+   each painted fall blends instead of looking pasted on (owner 08/11). */
+.lm-foam{opacity:.88;-webkit-mask-image:linear-gradient(180deg,transparent 20%,#000 54%,#000 80%,transparent 97%);mask-image:linear-gradient(180deg,transparent 20%,#000 54%,#000 80%,transparent 97%)}
 .lm-fire{mix-blend-mode:screen;opacity:.9}
 .lm-portal{mix-blend-mode:screen;opacity:.85;transform:scaleY(var(--squash,1))}
 .lm-portal::after{content:'';position:absolute;inset:0;background:inherit;animation:inherit;opacity:.6;transform:rotate(180deg) scale(.7)}
@@ -271,7 +273,7 @@ body.reduced-motion .lh-rig,body.reduced-motion .lh-call>.art{animation:none}
    the storm turns and strikes. */
 .lm-glow{translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(var(--c),.55) 0,rgba(var(--c),.22) 35%,transparent 68%);mix-blend-mode:screen;animation:lh-flicker 3.2s var(--delay) ease-in-out infinite}
 .lm-crow{filter:brightness(.12) saturate(0)}
-.lm-pulse,.lm-aurora{left:0;top:0;width:941px;height:1672px;background-size:941px 1672px;background-repeat:no-repeat;-webkit-mask-size:941px 1672px;mask-size:941px 1672px}
+.lm-pulse,.lm-aurora,.lm-crest{left:0;top:0;width:941px;height:1672px;background-size:941px 1672px;background-repeat:no-repeat;-webkit-mask-size:941px 1672px;mask-size:941px 1672px}
 .lm-pulse{filter:brightness(1.55) saturate(1.15);mix-blend-mode:screen;opacity:0;animation:lm-pulse 4.2s var(--delay) ease-in-out infinite alternate}
 /* Lava seams go dim and bright (the copy covers the painting, darker or lighter). */
 .lm-deep{mix-blend-mode:normal;opacity:1;animation:lm-deep 3.6s var(--delay) ease-in-out infinite alternate}
@@ -301,6 +303,9 @@ body.page-hidden .living-motion *{animation-play-state:paused!important}
 .lm-rays{background:center/contain no-repeat;mix-blend-mode:screen;opacity:var(--o);animation:sm-spin 24s linear var(--delay) infinite,lm-rays 4.5s ease-in-out var(--delay) infinite alternate}
 .lm-twinkle{translate:-50% -50%;background:var(--sheet) 0 0/calc(var(--count) * 100%) 100% no-repeat;opacity:0;animation:sm-twinkle var(--wait) linear var(--delay) infinite}
 .lm-mote{width:var(--size);height:var(--size);background:center/contain no-repeat;mix-blend-mode:screen;opacity:0;animation:lm-mote 7s ease-out var(--delay) infinite}
+/* The crowning crest over its own rays: the crystal glows a little, never washed out. */
+.lm-crest{animation:lm-crest 4.5s ease-in-out infinite alternate}
+@keyframes lm-crest{from{filter:brightness(1)}to{filter:brightness(1.12) saturate(1.08)}}
 @keyframes lm-rays{from{scale:.88;filter:brightness(.85)}to{scale:1.08;filter:brightness(1.25)}}
 @keyframes lm-mote{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:.75}70%{opacity:.45}100%{opacity:0;transform:translate(var(--drift),-420px) scale(1.1)}}
 

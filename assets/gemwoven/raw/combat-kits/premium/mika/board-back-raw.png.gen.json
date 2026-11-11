@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T08:14:13.366742+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\ref-mockup.png"
+  ],
+  "prompt": "A square seamless background panel for a gem board: deep dark teal, with a barely visible tone-on-tone pattern of flowing fox tails, very low contrast, quiet, no bright spots, filling the whole square image edge to edge, hand-painted, no frame, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a dark teal square background with low-contrast flowing swirl shapes filling the frame edge to edge, with no text, frame, or bright spots. It matches the prompt, and I found no clear defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000363
+  }
+}

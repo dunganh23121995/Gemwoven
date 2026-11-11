@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:37.357906+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\rail-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\yuki\\ref-motif.png"
+  ],
+  "prompt": "One long horizontal bar like reference image 1, about 8 times as wide as tall: a carved plank framed by trim, with ornate silver crescent-moon end caps with a small snowflake; between the caps a uniform surface with a faint frost inlay, identical along its length so it can repeat. Style: a premium seasonal battle frame 'Tuyết Thỏ — Moon Ice Rabbit', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, polished silver, frosted midnight-blue lacquer and pale ice crystals, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The prompt asks for generous margin with nothing touching the image edges, but the outer end caps and tassels sit roughly 8-15 px from the left and right edges. They are not cropped, but the margin is much tighter than requested."
+      }
+    ],
+    "summary": "Single horizontal bar with crescent-moon, snowflake and ice-rabbit-ear end caps, a flat magenta background, no text and no cropping. The motif and palette follow reference 2. The only issue is the tight side margin, which is a prompt-compliance point rather than a clear unusable defect, so the verdict is unsure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000768
+  }
+}

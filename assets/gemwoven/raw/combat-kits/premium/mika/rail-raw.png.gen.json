@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T08:14:16.236976+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\ref-mockup.png"
+  ],
+  "prompt": "One long horizontal bar for the top bar of a battle screen, about 10.5 times as wide as tall: a carved vermilion-lacquered wooden plank framed by brass trim, with ornate brass fox-flame end caps at the left and right ends; between the caps the bar is a uniform surface with a faint flame inlay, identical along its length so it can be stretched. Style: the premium seasonal battle frame 'Hỏa Hồ — Nine-Tailed Fire Fox' of reference image 1: hand-painted fantasy mobile game UI, carved warm wood, aged brass and vermilion lacquer, flame carvings, sculptural depth, warm brass highlights, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a single horizontal bar with fox-flame end caps on a flat, uniform #FF00FF magenta background. Nothing touches the edges, there is no text, and the fox and flame styling matches the reference's fox ornaments. The bar's aspect ratio is roughly 8:1 rather than the requested ~10.5:1, a minor deviation that does not make the image unusable.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000598
+  }
+}

@@ -1,0 +1,7 @@
+Create TWO circular painted avatar BACKGROUNDS for a hand-painted fantasy mobile RPG, side by side, each a perfect circle about 420 px wide, on a perfectly flat solid magenta #FF00FF background with wide magenta gutters.
+
+Reference 1 is an approved avatar of the same hero: copy its painting style, soft lighting, colour richness and level of detail for the BACKGROUND only.
+Left circle (form 2): a crimson night with paper lanterns and drifting embers.
+Right circle (form 3): a blazing golden flame halo with nine fox-fire wisps curling around the rim.
+
+NO character, NO person, NO face, NO creature, NO text, NO frame or border ring: only the painted scenery filling each circle edge to edge, a little brighter and calmer in the middle and lower half where a portrait will be placed on top. Each circle clearly different from the other and from the reference's background. Crisp circle edges, nothing outside the circles, no magenta or pink inside the art.

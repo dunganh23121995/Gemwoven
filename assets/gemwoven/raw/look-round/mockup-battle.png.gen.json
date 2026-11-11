@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T00:20:01.073719+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\look-round\\ref-battle-default.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\look-round\\ref-combat-kit.png"
+  ],
+  "prompt": "Edit only the first reference (ref-battle-default.png, the default battle screen) and output one complete portrait mobile screen. Preserve the exact layout, characters, scenery, gems, grid, health bars, Vietnamese text, and functional icons. Replace the entire combat framing system using the second reference (ref-combat-kit.png, the current wooden frame kit) as the structural reference: all four corners and all four edges around BOTH the battlefield and gem board, the top navigation rail, the middle action strip, and the recessed backing beneath the gem grid. Create Noct’s “Ảnh Nguyệt” seasonal skin: hand-painted blackened iron, aged silver trim, restrained cyan moonlight, subtle crescent engravings. Keep label surfaces calm and readable, and the board backing dark and low-detail. Preserve frame thickness and usable space. The result must clearly read as a complete replacement kit, with no original wooden frame pieces remaining. Polished fantasy RPG game art, crisp at phone size.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The gem arrangement in rows 2 to 8 of the board differs from the reference, although the prompt asked to preserve the gems. The 8x8 grid count and frame kit look correct, so this may be a content drift rather than a clear defect."
+      }
+    ],
+    "summary": "The candidate replaces the wooden frames with dark iron and silver trim across the nav bar, battlefield, action strip and board, with no wood remaining. The Vietnamese text, characters, slime, health bars, hand pointer and lightbulb icon are preserved, and nothing is cut off or has extra text. The only doubt is the shuffled gem layout in most rows, which is why I'm marking it unsure rather than fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00087
+  }
+}

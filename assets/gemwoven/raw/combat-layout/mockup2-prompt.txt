@@ -1,0 +1,7 @@
+Use case: UI mockup for a portrait mobile match-3 RPG battle screen ("Gemwoven"), hand-painted wood and brass style. Image 1 is the current screen, image 2 a first mockup. Make a new mockup from image 2 and keep everything identical (top bar, scene art, hero, monster, HP bars, the tutorial speech bubble, 8x8 gem board, wooden frames, colours, painting style, aspect ratio) except:
+1. The round "Biến Thân" medallion on the seam between the scene frame and the board frame is about 25 percent smaller than in image 2, centred exactly on the seam so its lower edge only just touches the board's top frame and never reaches the first row of gems.
+2. Inside the medallion: the fire element emblem (a stylised flame) on a dark disc, shown dimmed and greyish because it is still locked.
+3. Instead of a progress ring, three small pips sit along the medallion's lower rim: one small red heart (lights up when HP falls to half) and two small golden lightning sparks (one lights up per ultimate used). In this mockup the heart is dim and one spark is lit.
+4. Under the medallion a small curved brass plate reads "Biến Thân".
+5. In the scene, a small parchment banner near the top centre reads "Lượt bạn" (the turn notice that briefly appears at the start of each turn).
+Keep all other text exactly as it is.

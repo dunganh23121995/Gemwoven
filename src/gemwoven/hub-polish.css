@@ -3,7 +3,6 @@
 [data-node$=".gold-plus"]::after,[data-node$=".gems-plus"]::after{content:"";position:absolute;inset:-32px -26px}
 [data-node$=".mail"]::after,[data-node$=".settings"]::after{content:"";position:absolute;inset:-16px}
 /* Bottom bar: the other tabs' names. */
-.nav-mini-label{pointer-events:none;text-align:center;font-weight:700;text-shadow:0 2px 3px #000,0 0 6px #000;letter-spacing:-.2px;white-space:nowrap}
 /* The phone's extra height around the frame shows the current screen's art, blurred, instead of empty bars. */
 body{isolation:isolate}
 body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--screen-bg,none) center/cover no-repeat;filter:blur(26px) brightness(.5) saturate(1.1);pointer-events:none}
@@ -25,6 +24,8 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 
 /* Hub NPCs on baked rig sheets (hub-npcs.js). */
 #scene>.hub-npc{position:absolute;z-index:0;pointer-events:none;background-repeat:no-repeat}
+/* The forge fire glows into the furnace and lights the brick around it (Codex 08/11: the flat flame looked pasted). */
+#scene>.hub-npc[data-npc="forgefire"]{filter:drop-shadow(0 0 6px rgba(255,170,70,.8)) drop-shadow(0 0 22px rgba(255,120,40,.5));opacity:.94}
 
 /* Sảnh Anh Hùng (hero-hall.js): roster strip, Tất cả grid, profile, waiting heroes. */
 .hall-roster{overflow:visible}
@@ -38,7 +39,7 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .hall-card>i{position:absolute;inset:auto 0 -6px;font-style:normal;font-size:24px}
 .hall-card.is-locked img{filter:grayscale(.9) brightness(.55)}
 .hall-card.is-on{border-color:#fff1b0;box-shadow:0 0 0 4px #ffb63188,0 0 18px #ffcf5c}
-.hall-all .copy-layer,.hall-all .node-text{align-items:flex-end;padding-bottom:6px}
+.hall-all .copy-layer,.hall-all .node-text{align-items:center;padding:0}
 
 .hall-info{border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff3cf,#d9a84a 60%,#7a4b16);border:4px solid #6b3f12;color:#4a2508;box-shadow:0 3px 6px #0009}
 .hall-info .copy-layer,.hall-info .node-text{color:#4a2508;text-shadow:none;font-weight:900}
@@ -88,3 +89,30 @@ body::before{content:"";position:fixed;inset:-60px;z-index:-1;background:var(--s
 .hud-hanging-card>.icon{filter:drop-shadow(0 2px 2px #0009)}
 .home-power .copy-layer,.home-power .node-text{font-weight:900;color:#4a2a10;text-shadow:0 1px #fff3cf}
 .home-power-label{font-weight:800}
+/* Tất cả roster (hero-hall.js rosterCard; Codex hero-roster round, mockup-roster.png): three columns of hall-socket cards. */
+.roster-dialog .roster-filters{display:flex;align-items:center;gap:6px;margin:0 0 8px}
+.roster-dialog .roster-filters button{flex:none;width:46px;height:46px;padding:0;border:0;background:none;cursor:pointer;filter:saturate(.55) brightness(.85)}
+.roster-dialog .roster-filters button.on{filter:drop-shadow(0 0 5px #ffcf5c) saturate(1.1)}
+.roster-dialog .roster-filters img{width:100%;height:100%;object-fit:contain}
+.roster-dialog .roster-filters .roster-all{width:auto;min-width:70px;padding:0 12px;background:var(--kit-tab-dark) center/100% 100% no-repeat;color:#ffe9bc;font:800 17px/1 Cambria,serif;filter:none}
+.roster-dialog .roster-filters .roster-all.on{background-image:var(--kit-tab-on);color:#4a2a10}
+.roster-dialog .roster-tools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.roster-dialog .roster-sort{min-height:40px;padding:0 16px;border:0;background:var(--kit-badge-leather) center/100% 100% no-repeat;color:#ffe9bc;font:800 17px/1 Cambria,serif;cursor:pointer}
+.roster-dialog .roster-toggle{display:flex;align-items:center;gap:6px;border:0;background:none;padding:0;color:#3a220e;font:700 16px/1 Cambria,serif;cursor:pointer}
+.roster-dialog .roster-toggle img{width:50px;height:26px;object-fit:contain}
+.roster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 8px;padding-bottom:6px}
+.roster-card{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;background:none;cursor:pointer;color:#3a220e}
+.roster-card .rc-socket{position:relative;display:block;width:100%;aspect-ratio:378/425}
+.roster-card .rc-socket>*{position:absolute;pointer-events:none}
+.roster-card .rc-base{inset:0;width:100%;height:100%;object-fit:fill}
+.roster-card .rc-face{left:16%;top:9%;width:68%;aspect-ratio:1;border-radius:50%;object-fit:cover}
+.roster-card .rc-el{left:50%;top:-6%;width:24%;translate:-50% 0;filter:drop-shadow(0 2px 2px #0008)}
+.roster-card .rc-lv{right:8%;top:58%;min-width:26%;padding:2px 5px;border-radius:12px;background:#2b1a0e;border:2px solid #c9a35a;color:#ffe3a0;font:800 15px/1.1 Cambria,serif;text-align:center}
+.roster-card .rc-lock{right:10%;top:56%;width:22%}
+.roster-card .rc-tick{right:-2%;top:-3%;width:24%;filter:drop-shadow(0 2px 2px #0008)}
+.roster-card em{left:8%;right:8%;bottom:4.5%;height:15%;display:grid;place-items:center;font:800 16px/1 Cambria,serif;font-style:normal;color:#ffe9bc;text-shadow:0 1px 2px #000;white-space:nowrap}
+.roster-card .rc-stars{color:#e8a400;font-size:12px;letter-spacing:.5px;min-height:14px;text-shadow:0 1px 0 #6a4206}
+.roster-card .rc-power{display:flex;align-items:center;gap:3px;font:800 14px/1 Cambria,serif}
+.roster-card .rc-power img{width:16px;height:16px;object-fit:contain}
+.roster-card.is-on .rc-socket{filter:drop-shadow(0 0 0 #ffd36a) drop-shadow(0 0 4px #ffcf5c)}
+.roster-card.is-locked .rc-face{filter:grayscale(1) brightness(.75)}.roster-card.is-locked .rc-socket .rc-base{filter:grayscale(.6)}

@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T06:57:11.452584+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-layout\\ref-now.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-layout\\mockup.png"
+  ],
+  "prompt": "Use case: UI mockup for a portrait mobile match-3 RPG battle screen (\"Gemwoven\"), hand-painted wood and brass style. Image 1 is the current screen, image 2 a first mockup. Make a new mockup from image 2 and keep everything identical (top bar, scene art, hero, monster, HP bars, the tutorial speech bubble, 8x8 gem board, wooden frames, colours, painting style, aspect ratio) except:\n1. The round \"Biến Thân\" medallion on the seam between the scene frame and the board frame is about 25 percent smaller than in image 2, centred exactly on the seam so its lower edge only just touches the board's top frame and never reaches the first row of gems.\n2. Inside the medallion: the fire element emblem (a stylised flame) on a dark disc, shown dimmed and greyish because it is still locked.\n3. Instead of a progress ring, three small pips sit along the medallion's lower rim: one small red heart (lights up when HP falls to half) and two small golden lightning sparks (one lights up per ultimate used). In this mockup the heart is dim and one spark is lit.\n4. Under the medallion a small curved brass plate reads \"Biến Thân\".\n5. In the scene, a small parchment banner near the top centre reads \"Lượt bạn\" (the turn notice that briefly appears at the start of each turn).\nKeep all other text exactly as it is.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the top bar, scene, hero, monster, HP bars, tutorial bubble, 8x8 board and wooden frames of the reference, and adds the requested 'Lượt bạn' banner and the Biến Thân medallion on the seam. No clear objective defects such as cut-off parts, extra text, wrong character, or layout errors were found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000864
+  }
+}

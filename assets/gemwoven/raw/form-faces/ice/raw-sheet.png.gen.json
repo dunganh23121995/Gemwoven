@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T01:18:17.217578+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\form-faces\\ice\\ref-face.webp"
+  ],
+  "prompt": "Create TWO circular painted avatar BACKGROUNDS for a hand-painted fantasy mobile RPG, side by side, each a perfect circle about 420 px wide, on a perfectly flat solid magenta #FF00FF background with wide magenta gutters.\n\nReference 1 is an approved avatar of the same hero: copy its painting style, soft lighting, colour richness and level of detail for the BACKGROUND only.\nLeft circle (form 2): a moonlit frozen lake under a large pale crescent moon, soft snowfall.\nRight circle (form 3): an aurora sky in ice blue and lilac with floating snow-lotus petals.\n\nNO character, NO person, NO face, NO creature, NO text, NO frame or border ring: only the painted scenery filling each circle edge to edge, a little brighter and calmer in the middle and lower half where a portrait will be placed on top. Each circle clearly different from the other and from the reference's background. Crisp circle edges, nothing outside the circles, no magenta or pink inside the art.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Two circular winter scenes on a flat magenta background, as requested. The left circle shows a frozen lake under a crescent moon with snowfall, and the right shows an ice-blue and lilac aurora with floating petals and snow lotuses. There are no characters, text, or borders, and no magenta inside the circles. Minor size and roundness differences from the spec are not clear defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000511
+  }
+}

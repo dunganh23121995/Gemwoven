@@ -1,0 +1,23 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:45.627223+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\scene-frame-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\nori\\ref-motif.png"
+  ],
+  "prompt": "One ornate rectangular landscape picture frame (3:2), seen straight on, laid out exactly like reference image 1: the frame band about 8 percent of the frame's height thick, four DIFFERENT carved corner pieces (top-left a carved deer head with branching golden antlers, top-right a golden antler branch with oak leaves, bottom-left and bottom-right small acorn-and-leaf knots with gold studs), each corner ornament within about 14 percent of the frame's height from its corner. Between the corners the four straight edges are one continuous uniform carved molding with a thin carved vine groove, identical all along so it can repeat. The inside of the frame is empty and filled with the same pure magenta. Nothing at the middle of the top edge. Style: a premium seasonal battle frame 'Lộc Thần — Sacred Forest Deer', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, aged gold, mossy forest-green lacquer and carved twining vines, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat pure magenta #FF00FF background and an interior filled with the same magenta. The candidate's background and interior are white, not the requested key colour."
+      }
+    ],
+    "summary": "The frame's corner motifs and edge molding follow the prompt: a deer head top-left, an antler branch top-right, and acorn-and-leaf knots at the bottom corners. The background and interior are white instead of the required flat #FF00FF magenta, so the image is not usable as keyed raw material.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000604
+  }
+}

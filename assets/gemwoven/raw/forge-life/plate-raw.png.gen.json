@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T08:12:31.300534+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\forge-life\\ref-forge.png"
+  ],
+  "prompt": "Edit image 1 (a painted fantasy forge scene for a portrait mobile RPG, hand-painted warm style). Keep the canvas, composition, perspective, lighting, colours and painting style exactly the same, and change only:\n1. Remove the old smith completely (the white-haired dwarf with goggles and the hammer standing in front of the furnace). Paint what was behind him: the stone furnace base and the floor. Keep the small wooden stool/table in front of the furnace.\n2. Inside the furnace arch: a dark glowing bed of coals and embers with a soft orange glow, but no tall flames (animated flames will be laid on top).\n3. On the left part of the scene, on the stone and timber wall left of the central pillar (left of the anvil, above the floor), add a sturdy wooden weapon rack fixed to the wall: hanging swords, a battle axe, a spear, a war hammer and two or three round painted wooden-and-iron shields with simple emblems, neatly displayed, in the same painted style and lighting. It must not cover the anvil, the banners or the pillar.\nNo characters, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The smith is removed, the furnace holds a glowing bed of coals with no tall flames, the stool is kept, and a wall weapon rack with swords, axe, spear and three shields sits left of the pillar without covering the anvil or banners. No characters or text appear. The framing is somewhat zoomed compared with the reference, but that is minor drift rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000678
+  }
+}

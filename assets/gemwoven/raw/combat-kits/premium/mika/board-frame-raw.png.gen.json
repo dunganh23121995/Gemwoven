@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T13:09:29.172699+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\board-frame-ref.png"
+  ],
+  "prompt": "Reference image 1 is a square ornate frame around an empty square opening filled with magenta. Redraw it EXACTLY: the same design, style, colours, band, mascot and ornaments, every one at the same size and the same place on the canvas, with ONE change at the lower-right corner only: the small fox-mask ornament with short red tassels there is drawn about 25 percent smaller and shifted diagonally down and to the right, so it sits on the band's OUTER corner and nothing of it reaches inside the band's inner edge. The opening's lower-right inner corner becomes a plain, sharp right angle: the inner edge of the right band and of the bottom band run straight and unbroken all the way into it. Every other part of the frame stays exactly as in reference image 1. The square opening is empty and filled with pure magenta. Everything stays inside the image with a margin.\nHand-painted fantasy mobile game UI, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the reference's frame design, fox mascot, flame crest, flower medallion, twisted tail band and fox-mask ornament in matching positions, with a flat magenta background and an empty magenta opening. No cut-off, text, extra figures or anatomy issues are visible. The requested 25% shrink and shift of the lower-right mask is hard to verify exactly, but it does not look like a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00078
+  }
+}

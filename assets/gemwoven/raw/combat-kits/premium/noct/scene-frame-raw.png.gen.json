@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:44.417827+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\scene-frame-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\noct\\ref-motif.png"
+  ],
+  "prompt": "One ornate rectangular landscape picture frame (3:2), seen straight on, laid out exactly like reference image 1: the frame band about 8 percent of the frame's height thick, four DIFFERENT carved corner pieces (top-left a small hooded shadow with two glowing cyan eyes, top-right a silver crescent-moon blade, bottom-left and bottom-right small thorny rune knots with cyan glow), each corner ornament within about 14 percent of the frame's height from its corner. Between the corners the four straight edges are one continuous uniform carved molding with a thin glowing cyan rune groove, identical all along so it can repeat. The inside of the frame is empty and filled with the same pure magenta. Nothing at the middle of the top edge. Style: a premium seasonal battle frame 'Ảnh Nguyệt — Moon Reaper', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, dark gunmetal and smoky black-violet lacquer with soul-cyan glowing runes and crescent moons, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt's layout: a 3:2 rectangular frame with four distinct corner ornaments (hooded shadow top-left, crescent blade top-right, thorny rune knots at the bottom), nothing at the top-edge midpoint, a continuous cyan-rune molding, and a flat magenta background and interior. No text, extra figures, cropping or magenta bleed into the artwork is visible. The margin is somewhat tight but nothing touches the image edges, so this is not a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00063
+  }
+}

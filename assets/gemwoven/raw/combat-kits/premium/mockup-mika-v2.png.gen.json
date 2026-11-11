@@ -1,0 +1,27 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T08:10:05.105796+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\ref-layout-v2.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mockup-mika.png"
+  ],
+  "prompt": "Edit image 1 (the current Gemwoven battle screen, new layout: top bar, tall battlefield, the round \"Biến Thân\" medallion on the battlefield's lower edge, 8x8 gem board) into an approval mockup of the premium seasonal battle frame \"Hỏa Hồ — Nine-Tailed Fire Fox\". Image 2 is an earlier approved direction for the same frame (old layout): keep its style, materials and fox motifs.\nKeep exactly: the portrait canvas, every gameplay element's position and size, the battlefield art, both fighters, HP and rage bars, the Biến Thân medallion and its label, all 64 gems and cells, the top bar buttons and their text.\nRedesign only the frames around the top bar, the battlefield and the gem board as a bespoke hand-painted collectible of carved warm wood, aged brass and vermilion lacquer with a clearly new silhouette and sculptural depth: four distinct carved corners per frame, flame carvings along the borders, a brass fox-mask crest centred on the top edge of the battlefield frame, a small sculpted nine-tailed fire fox sitting ON the outer upper-left corner of the gem-board frame (on the wood, never over any gem), its tails flowing as layered flame shapes along the OUTSIDE of the left and bottom borders, and a smaller fox-mask ornament on the lower-right corner. A few glowing tail tips and sparse embers outside the borders only.\nBoard background: deep dark teal with a barely visible fox-tail pattern; thin subdued cell borders; gems stay perfectly readable. No ornament covers a gem, text, bar, button or the medallion. No new text.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "extra_content",
+        "detail": "The top bar's centre label reads 'Ải 12' with an overlapping extra '12:12' or clock-like text drawn over the button, which is not in the reference and adds text the prompt did not ask for."
+      },
+      {
+        "kind": "other",
+        "detail": "The top bar's star/score counter with its '0' value from the reference is missing, although the prompt says to keep the top bar buttons and their text."
+      }
+    ],
+    "summary": "The 8x8 gem board, both fighters, the bars and the Biến Thân medallion are present, but the top bar has an overlapping stray text element and the star/score counter is missing, so the candidate needs redrawing.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00073
+  }
+}

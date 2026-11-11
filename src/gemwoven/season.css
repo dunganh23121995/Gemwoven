@@ -80,7 +80,9 @@
 .sz-look{position:relative;display:block;width:100%;height:100%}
 .sz-look img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .sz-ava img{border-radius:50%;object-fit:cover;inset:6%;width:88%;height:88%;box-shadow:0 0 0 3px #d9a84a,0 3px 5px #0007}
-.sz-frame img.in{inset:22% 20% 16% 20%;width:60%;height:62%;border-radius:50%;object-fit:cover}
+/* The face and its frame in a centred square, the frame centred on the face by its measured opening (data-frame-fit). */
+.sz-frame .sq{position:absolute;top:0;bottom:0;left:50%;translate:-50% 0;aspect-ratio:1;height:100%}
+.sz-frame img.in{inset:20%;width:60%;height:60%;border-radius:50%;object-fit:cover}
 .sz-title b,.sz-plate b,.sz-bubble b{position:absolute;left:0;right:0;text-align:center;white-space:nowrap;font-family:Cambria,serif;font-weight:900}
 .sz-title b{top:34%;padding-left:18%;font-size:15px;color:#fff1cf;text-shadow:0 1px 2px #4a0a04}
 .sz-plate b{top:34%;font-size:17px;color:#4a2610}
@@ -295,3 +297,24 @@
 .pz-title .title-plate.is-season{width:250px;height:60px}
 .pz-title .title-plate.is-season b{font-size:21px;padding-left:62px;padding-right:22px;letter-spacing:-.2px}
 .pz-actor.is-me .pz-name.is-season{height:44px;font-size:24px}
+/* With a season frame worn, the groove between the frame's two rims is the progress (ui.js xpGauge) and the face fills the
+   frame's opening under its mask (GemwovenFrameFit); the frame's ears and hats may reach the level badge, which stays on top. */
+.hud-profile.has-cos-frame .hud-experience{display:none}
+.hud-profile.has-cos-frame .hud-level{z-index:6}
+/* The experience gauge (ui.js xpGauge): the frame's original ring art (.fill) revealed round the groove, a glowing drop at
+   the leading end only, and the frame's rims and ornaments (.over) laid on top. */
+.hud-xp-gauge{position:absolute;z-index:4;overflow:visible;pointer-events:none}
+.hud-profile .hud-cos-frame.fill{z-index:3;filter:brightness(1.1)}
+.hud-profile .hud-cos-frame.fill[data-frame=hiro]{filter:brightness(1.04) saturate(.82)}
+.hud-profile .hud-cos-frame.over{z-index:5}
+.hud-xp-gauge .xg-floor,.hud-xp-gauge .xg-wall{fill:none;stroke-linecap:butt}
+.hud-xp-gauge .xg-floor{stroke:rgba(0,0,0,.18)}
+.hud-xp-gauge .xg-floor.noct{stroke:rgba(0,0,0,.26)}
+.hud-xp-gauge .xg-wall{stroke:rgba(0,0,0,.42);filter:blur(.6px)}
+.hud-xp-gauge .xg-head{fill:url(#xg-drop)}
+.hud-xp-gauge .s0{stop-color:rgb(var(--tone));stop-opacity:0}
+.hud-xp-gauge .s1{stop-color:rgb(var(--tone))}
+.hud-xp-gauge .s2{stop-color:color-mix(in srgb,rgb(var(--tone)) 45%,#fff)}
+.hud-xp-gauge .xg-halo{fill:color-mix(in srgb,rgb(var(--tone)) 60%,#fff);opacity:.3;mix-blend-mode:screen;animation:xg-breathe 2.6s ease-in-out infinite alternate}
+@keyframes xg-breathe{from{opacity:.45}to{opacity:.7}}
+.reduced-motion .hud-xp-gauge *{animation:none!important}

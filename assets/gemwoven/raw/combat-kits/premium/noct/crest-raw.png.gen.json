@@ -1,0 +1,27 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:39.601956+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\crest-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\noct\\ref-motif.png"
+  ],
+  "prompt": "One ornament like reference image 1 in size and shape: a silver crescent-moon crest with two curved scythe-blade wings and a soft soul-cyan glow, about three times as wide as tall, centred. Style: a premium seasonal battle frame 'Ảnh Nguyệt — Moon Reaper', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, dark gunmetal and smoky black-violet lacquer with soul-cyan glowing runes and crescent moons, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat #FF00FF magenta background, but the candidate's background is white or light grey, not magenta. The key colour is missing entirely."
+      },
+      {
+        "kind": "layout",
+        "detail": "The wing tips reach close to the left and right image edges, leaving little of the generous margin the prompt requests."
+      }
+    ],
+    "summary": "The ornament itself matches the request: a dark hooded reaper with soul-cyan glow, crescent-moon crest, scythe-like wings, and roughly 3:1 proportions with no text. It fails on the background, which is white rather than the flat magenta key colour the prompt specifies, and the wing tips crowd the edges.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000513
+  }
+}

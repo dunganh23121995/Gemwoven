@@ -1,0 +1,18 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:38.623637+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\board-back-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\noct\\ref-motif.png"
+  ],
+  "prompt": "A square seamless background panel for a gem board: deep black-teal, with a barely visible tone-on-tone pattern of mist and faint runes, very low contrast, quiet, no bright spots, filling the whole square image edge to edge, hand-painted, no frame, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a square, dark teal background with a tone-on-tone swirl texture and faint rune marks, as the prompt asks. It has no frame, no bright spots and no lettering, and it fills the image edge to edge. The runes are requested by the prompt, so they are not extra content. No objective defects were found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00049
+  }
+}

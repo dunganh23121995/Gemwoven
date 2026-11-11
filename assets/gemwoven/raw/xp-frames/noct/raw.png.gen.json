@@ -1,0 +1,26 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T05:23:38.801452+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\season\\noct\\frame.webp"
+  ],
+  "prompt": "Use case: one game UI asset for a portrait fantasy match-3 RPG (\"Gemwoven\"): the avatar frame of Noct, moon reaper of the underworld, redrawn so its ring carries an experience gauge.\nReference image 1 is the current approved frame: keep its identity, palette, painted quality, proportions and ornaments (a tattered dark hood with a dim glowing shadow face on top, soul-cyan ghost flames on the right, dark leather straps with silver buckles and a silver four-point star at the bottom).\nChange only the ring itself: the ring is now an EXPERIENCE GAUGE TRACK. It is built from a thin dark gunmetal silver inner rim, a thin dark gunmetal silver outer rim, and between them one smooth, recessed, empty groove of even width all the way round, dark smoky black-violet lacquer, plain with no pattern, no stars, no swirls, no gems and no highlights inside the groove. The groove is a perfect circle concentric with the round opening, and about the same total ring thickness as the reference.\nNothing may cross or overlap the groove: the hood sits fully outside the outer rim at the top; the cyan ghost flames rise outward on the right, outside the outer rim; the bottom ornaments are gathered compactly at the bottom centre only, covering no more than the lowest quarter of the ring (from about seven o'clock to five o'clock); the groove is fully visible and clean from about seven o'clock, over the top, round to about five o'clock.\nStyle: painted hand-drawn fantasy game UI, the same rich illustration style as the reference, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nLayout: exactly one asset centred on a solid flat pure magenta #FF00FF background, generous magenta margin all round, every ornament completely inside the picture, nothing touching or cut by the edges. The round centre of the ring is empty and filled with the same pure magenta. No magenta or pink inside the artwork itself.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The hood tip sits at roughly the top edge of the image and the bottom cloth tatters reach near the bottom edge, leaving little or no magenta margin where the prompt asks for generous margin with nothing touching the edges."
+      },
+      {
+        "kind": "other",
+        "detail": "The recessed groove between the inner and outer rims is very dark and hard to distinguish from the surrounding dark ring, so it is unclear whether the gauge track reads as a clean, fully visible groove as specified."
+      }
+    ],
+    "summary": "Background is flat magenta and the character identity, flames, straps and star match the reference. The main uncertainty is the tight margin at the top and bottom edges, and the groove's visibility is hard to confirm, so this is flagged as unsure rather than a clear fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000751
+  }
+}

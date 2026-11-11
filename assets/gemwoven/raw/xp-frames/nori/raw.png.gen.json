@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T05:23:36.450776+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\season\\nori\\frame.webp"
+  ],
+  "prompt": "Use case: one game UI asset for a portrait fantasy match-3 RPG (\"Gemwoven\"): the avatar frame of Nori, forest deer spirit, redrawn so its ring carries an experience gauge.\nReference image 1 is the current approved frame: keep its identity, palette, painted quality, proportions and ornaments (golden antlers with a green gem and leaves on top, leaves and acorns on the right side, a green shield emblem with a golden tree and cream leaf wings at the bottom).\nChange only the ring itself: the ring is now an EXPERIENCE GAUGE TRACK. It is built from a thin polished gold inner rim, a thin polished gold outer rim, and between them one smooth, recessed, empty groove of even width all the way round, dark mossy forest-green lacquer, plain with no pattern, no stars, no swirls, no gems and no highlights inside the groove. The groove is a perfect circle concentric with the round opening, and about the same total ring thickness as the reference.\nNothing may cross or overlap the groove: the antlers, gem and leaves sit fully outside the outer rim at the top; the leaves and acorns on the right grow outward, outside the outer rim; the bottom ornaments are gathered compactly at the bottom centre only, covering no more than the lowest quarter of the ring (from about seven o'clock to five o'clock); the groove is fully visible and clean from about seven o'clock, over the top, round to about five o'clock.\nStyle: painted hand-drawn fantasy game UI, the same rich illustration style as the reference, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nLayout: exactly one asset centred on a solid flat pure magenta #FF00FF background, generous magenta margin all round, every ornament completely inside the picture, nothing touching or cut by the edges. The round centre of the ring is empty and filled with the same pure magenta. No magenta or pink inside the artwork itself.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The prompt requires nothing to cross or overlap the groove. In the candidate, the right-side vine with its acorns and leaves sits over the ring band and covers part of the dark groove around 7 to 4 o'clock, and the bottom shield and cream wings overlap the groove at the bottom instead of sitting fully outside the outer rim."
+      }
+    ],
+    "summary": "The magenta background is flat and the character identity, palette and ornaments match the reference. The ring layout breaks the brief because the right-side vine and the bottom shield overlap the groove, which the prompt forbids.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000788
+  }
+}

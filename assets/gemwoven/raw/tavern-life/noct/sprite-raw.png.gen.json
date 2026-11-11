@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:25:17Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\noct\\ref-crop.png"
+  ],
+  "prompt": "Reference image 1 shows a chibi hooded dark reaper in black armour with a black hood, a shadowed face with two glowing cyan eyes, raising a foaming beer mug, a spear tip behind his shoulder in a painted cozy fantasy tavern (chibi anime, warm hand-painted mobile RPG style).\nDraw ONLY this same character as a single game sprite: the exact same design, outfit, colours, hair, pose, expression, facing and proportions as reference 1, rendered crisp and clean at high resolution in the same painted style. Show cut off with a clean straight horizontal edge at the table line at his chest, nothing below it. No table, no stool, no counter, no other characters, no background objects.\nCentered, filling about 80% of the canvas height, square 1:1 canvas, on a solid flat pure magenta #FF00FF background with no shadow, no gradient, no glow, no text. No magenta or pink inside the character.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the reference character: hooded dark reaper with glowing cyan eyes, dark armour with gold trim, a foaming beer mug in the left hand, and a spear tip behind the right shoulder. The background is flat magenta, the figure is cut off with a straight horizontal edge at the chest as the prompt asked, and there is no visible text, extra figures or table.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000436
+  }
+}

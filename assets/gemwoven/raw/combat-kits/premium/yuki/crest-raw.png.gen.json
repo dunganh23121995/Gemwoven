@@ -1,0 +1,31 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T09:14:37.279245+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\crest-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\yuki\\ref-motif.png"
+  ],
+  "prompt": "One ornament like reference image 1 in size and shape: a silver crescent moon crest with two long rabbit ears and spreading wings of ice crystals, about three times as wide as tall, centred. Style: a premium seasonal battle frame 'Tuyết Thỏ — Moon Ice Rabbit', the same quality and finish as reference image 1 (the approved Hỏa Hồ frame of the same game) with the motif and palette of reference image 2: hand-painted fantasy mobile game UI, polished silver, frosted midnight-blue lacquer and pale ice crystals, sculptural depth, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat pure magenta #FF00FF background, but the candidate background is white or off-white, not the requested key colour."
+      },
+      {
+        "kind": "other",
+        "detail": "The prompt says no magenta or pink inside the artwork, but the inner rabbit ears are visibly pink."
+      },
+      {
+        "kind": "layout",
+        "detail": "The wing tips extend very close to the left and right image edges, which conflicts with the requested generous margin and nothing touching the edges."
+      }
+    ],
+    "summary": "The candidate fails mainly because its background is white rather than flat magenta #FF00FF, which breaks the required key-colour setup. It also has pink in the ears and wing tips that come close to the edges, against the prompt's margin requirement. The character design and motif otherwise follow the references.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000491
+  }
+}

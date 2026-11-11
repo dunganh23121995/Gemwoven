@@ -4,8 +4,9 @@
 // on its element; the elements are restyled, wrapped or moved, never replaced.
 //   top bar:      Về (hub link) · Ải tag (mirrors #stageLabel) · journey medal (#score) · settings medallion
 //   settings:     #soundBtn, #motionBtn ("Hiệu ứng"), #helpBtn (with the gem guide) behind one gear
-//   action strip: #turnChip ribbon · ultimate medallion (fills with nộ, blazes at 100; it fires by itself) · #hintBtn
-// Phone portrait stacks battle, strip and board; landscape screens put the battle left and the board right.
+//   no action strip (owner 08/11): the ultimate fires by itself at 100 nộ, hints are gone; #turnChip stays hidden and
+//   a short banner in the scene tells whose turn it is; Biến Thân is a medallion on the seam (progression-combat.js).
+// Phone portrait stacks battle and board; landscape screens put the battle left and the board right.
 (function combatHud(){
   if(new URLSearchParams(location.search).has('showcase'))return;
   const root=document.documentElement,app=document.querySelector('.app'),header=document.querySelector('.app-header');
@@ -69,17 +70,16 @@
   $('helpBtn').addEventListener('click',()=>closeAll());
   addEventListener('resize',()=>closeAll());
 
-  // ---- Action strip: turn ribbon, ultimate medallion, hint medallion ------------------------------------------
-  const strip=document.querySelector('.board-toolbar');
-  const ult=make('button','chud-ult');ult.type='button';ult.id='hudUltimate';
-  ult.innerHTML='<span class="chud-ult-art" aria-hidden="true"><i class="chud-ult-halo"></i><i class="chud-ult-disc"></i><i class="chud-ult-emblem"></i><i class="chud-ult-ring"></i><i class="chud-ult-frame"></i></span><span class="chud-ult-label">Tuyệt kỹ</span><small class="chud-ult-auto">Tự động</small>';
-  if(strip){strip.classList.add('chud-strip');strip.insertBefore(ult,$('hintBtn'));}
-  ult.addEventListener('click',e=>{e.stopPropagation();const n=Math.round(state.energy);showNote(ult,'Tuyệt kỹ · '+Math.min(100,n)+'/100 nộ','Tự thi triển khi đủ 100 nộ.');});
-  // The idle sentence moves into the guide; combo counts and the foe's choice still show while they happen.
-  const combo=$('comboLabel');
-  const syncCombo=()=>{combo.classList.toggle('is-idle',/^Ghép 3/.test(combo.textContent));};
-  new MutationObserver(syncCombo).observe(combo,{childList:true,characterData:true,subtree:true});syncCombo();
-  $('hintBtn').title='Gợi ý';
+  // ---- No action strip (owner 08/11: "Bỏ cái khoanh đỏ... bỏ cả gợi ý"; Codex mockup raw/combat-layout, 8/10) --------
+  // The strip (turn ribbon, ultimate disc, hint bulb) is hidden; the scene takes its height. At each turn start a short
+  // banner in the scene says whose turn it is, and the board frame keeps its enemy-turn glow.
+  const strip=document.querySelector('.board-toolbar');if(strip)strip.hidden=true;
+  const turnChip=$('turnChip'),banner=make('div','chud-turn-banner');banner.setAttribute('aria-hidden','true');$('scene')?.append(banner);
+  let lastTurn='';
+  if(turnChip)new MutationObserver(()=>{const t=turnChip.textContent.trim(),enemy=turnChip.classList.contains('enemy');
+    if(!/^(Lượt |Đóng băng)/.test(t)||t===lastTurn)return;lastTurn=t;
+    banner.textContent=t.split(' · ')[0]==='Đóng băng'?'Đóng băng · mất lượt':t;banner.classList.toggle('enemy',enemy);
+    banner.classList.remove('show');void banner.offsetWidth;banner.classList.add('show');}).observe(turnChip,{childList:true,characterData:true,subtree:true,attributes:true});
 
   // ---- Wooden frames around the battlefield and the board ----------------------------------------------------
   const frame=()=>make('span','chud-frame','<i class="chud-c tl"></i><i class="chud-c tr"></i><i class="chud-c bl"></i><i class="chud-c br"></i><i class="chud-e t"></i><i class="chud-e b"></i><i class="chud-e l"></i><i class="chud-e r"></i>');
@@ -96,10 +96,6 @@
   const hudUpdate=update;
   update=function(){
     hudUpdate();
-    const energy=Math.max(0,Math.min(100,state.energy||0)),full=energy>=100;
-    ult.style.setProperty('--energy',String(energy));ult.dataset.element=ELEMENTS[state.key]?state.key:'novice';
-    ult.classList.toggle('is-full',full);
-    ult.setAttribute('aria-label',`Tuyệt kỹ: ${Math.round(energy)}/100 nộ${full?', sẵn sàng tự thi triển':''}`);
     for(const side of ['hero','enemy']){const r=$(side+'Rage');if(!r)continue;const n=Math.max(0,Math.min(100,Math.round(+r.getAttribute('aria-valuenow')||0)));r.closest('.actor-hud')?.classList.toggle('is-rage-full',n>=100);if(rageNum[side])rageNum[side].textContent=n+'/100';}
     syncStage();
   };

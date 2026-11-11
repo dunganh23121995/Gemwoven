@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:24:34Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\mika\\ref-crop.png"
+  ],
+  "prompt": "Reference image 1 shows a chibi red-haired fox girl with fox ears and a fluffy fox tail in red and gold armour with a white scarf, sitting on a stool and raising a foaming beer mug, laughing in a painted cozy fantasy tavern (chibi anime, warm hand-painted mobile RPG style).\nDraw ONLY this same character as a single game sprite: the exact same design, outfit, colours, hair, pose, expression, facing and proportions as reference 1, rendered crisp and clean at high resolution in the same painted style. Show the whole figure. No table, no stool, no counter, no other characters, no background objects.\nCentered, filling about 80% of the canvas height, square 1:1 canvas, on a solid flat pure magenta #FF00FF background with no shadow, no gradient, no glow, no text. No magenta or pink inside the character.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows the whole fox-girl character with the red hair, fox ears, tail, red and gold armour, white scarf and beer mug from reference 1. The background is flat magenta with no stool, table or other figures, and no visible text. The figure fills most of the canvas height without cropping. The pose is a floating crouch rather than sitting on a stool, which follows the prompt's instruction to remove the stool, so it is not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000513
+  }
+}

@@ -5,7 +5,9 @@ let spriteFrameClock=0;
 function spriteDefinition(family,key,action){
   const set=family==='hero'?(ART.heroForms?.[key]?.[combatHeroForm(key)]||ART.heroes[key]):state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
   const armored=family!=='hero'&&state.enemyArmor>0;
-  const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt||armored&&set.hurt_armored?'hurt':'attack'):action;
+  // A hit with no hurt sheet: a foe recoils on its attack sheet's last frames; a hero holds its resting pose and the hit's
+  // knock-back moves it (owner 08/11: forms 2-3 have no hurt sheet, and their redrawn attacks end in the strike itself).
+  const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt||armored&&set.hurt_armored?'hurt':family==='hero'?'idle':'attack'):action;
   // A boss that grows armour of its own (the fire dragon's lava scales) rests in it while the armour holds.
   if(mapped==='idle'&&armored&&set.armoridle)return {sheet:set.armoridle,action:'armoridle'};
   // Its actions too: each has an armoured drawing (<action>_armored) it fights in while the armour holds.
@@ -140,7 +142,7 @@ function setSpriteAction(side,action,duration=0){
   root.dataset.state=action;
   const idle=action==='idle';el.dataset.loop=String(idle);
   spritePlayback.set(el,{action,start:performance.now(),duration:duration||1200,manual:false});
-  spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)?4:0);
+  spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)&&el.dataset.family!=='hero'?4:0);
 }
 function setSpriteFrame(side,action,index){
   const el=actor(side).querySelector('.sprite-body');if(!el)return;
@@ -171,7 +173,7 @@ function spriteTick(now){
       if(def.count>=8){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
     }else{
       const elapsed=Math.max(0,now-playback.start);
-      const fallbackHurt=playback.action==='hurt'&&!spriteOwnHurt(el);
+      const fallbackHurt=playback.action==='hurt'&&!spriteOwnHurt(el);if(fallbackHurt&&el.dataset.family==='hero'){if(el.dataset.frame!=='0')spriteApply(el,'hurt',0);return;}
       const frame=fallbackHurt?Math.min(def.count-1,4+Math.floor(elapsed/Math.max(1,playback.duration)*2)):Math.min(def.count-1,Math.floor(elapsed/(playback.duration||1000)*def.count));
       if(+el.dataset.frame!==frame)spriteApply(el,playback.action,frame);
     }

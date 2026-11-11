@@ -37,9 +37,10 @@
 .ar-hero>img:not(.ar-face){inset:0;width:100%;height:100%;object-fit:contain}
 .ar-hero>.ar-face{left:18%;top:15%;width:64%;height:64%;background:#2c3c58;z-index:1}
 .ar-hero small{position:absolute;left:-14px;right:-14px;bottom:-30px;text-align:center;font:800 28px Cambria,serif;color:#fff4dc;text-shadow:0 2px 3px #1d1208}
-.ar-go{display:flex;align-items:center;justify-content:center;background:var(--ar-button-gold) center/100% 100% no-repeat;filter:drop-shadow(0 6px 8px #5a2c0c88)}
-.ar-go span{font:900 42px Cambria,serif;color:#fff8e6;text-shadow:0 3px 0 #8a3c0a,0 0 8px #8a3c0a88;margin-top:-4px}
-.ar-go.off{filter:grayscale(.75) brightness(.85)}
+/* The cup's play button is the kit's gold plate: the gem buttons belong to the summon ritual (owner 08/11). */
+.ar-go{display:flex;align-items:center;justify-content:center;background:var(--kit-btn-gold) center/100% 100% no-repeat;filter:drop-shadow(0 6px 8px #5a2c0c88)}
+.ar-go span{font:900 42px Cambria,serif;color:#4a2508;text-shadow:0 1px #fff3cf;margin-top:-4px}
+.ar-go.off{background-image:var(--kit-btn-steel)}.ar-go.off span{color:#efe7da;text-shadow:0 1px 2px #1a1008}
 .ar-chest{display:flex;flex-direction:column;align-items:center}
 .ar-chest img{width:118px;height:100px;object-fit:contain;filter:drop-shadow(0 4px 4px #0006)}
 .ar-chest span{margin-top:-6px;padding:6px 18px 8px;background:var(--ar-nameplate) center/100% 100% no-repeat;font:800 28px Cambria,serif;color:#4a2a10;white-space:nowrap}
@@ -156,3 +157,37 @@
 .ar-you-glow{background:radial-gradient(ellipse 50% 48% at 52% 50%,#fff0c0d8,#ffd27a90 42%,#ffb44a30 72%,#ffb44a00 100%)}
 .ar-frame,.ar-podium{filter:brightness(.78) saturate(.72)}
 .ar-hero small{color:#fff1d2;font-weight:900;text-shadow:0 2px 3px #1d1208,0 0 6px #1d1208}
+/* Chọn tướng before a cup match (arena-ui.js play; Codex hero-roster round, mockup-arena.png): a full-screen layer over the
+   arena painting, the countdown on a brass ring, your pick beside a face-down card, the owned heroes on the honey-wood board. */
+.ar-pick{position:absolute;inset:0;z-index:60;font-family:Cambria,Georgia,serif}
+.ar-pick>*{position:absolute}
+.ar-pick-veil{inset:0;background:linear-gradient(#0b0604a0,#0b0604cc 45%,#0b0604e6)}
+.ar-pick-title img,.ar-pick-clock>img,.ar-pick-foe img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.ar-pick-title b{position:relative;display:grid;place-items:center;height:100%;font:900 40px/1 Cambria,serif;color:#ffe3a0;text-shadow:0 2px 2px #1d0d04}
+.ar-pick-clock svg{position:absolute;inset:9%;width:82%;height:82%;rotate:-90deg}
+.ar-pick-clock circle{fill:none;stroke-width:7}.ar-pick-clock .t{stroke:#2a1608}.ar-pick-clock .f{stroke:#ffd36a;stroke-linecap:round;transition:stroke-dasharray .1s linear}
+.ar-pick-clock.low .f{stroke:#ff7a52}
+.ar-pick-clock b{position:relative;display:grid;place-items:center;height:100%;font:900 52px/1 Cambria,serif;color:#fff1cf;text-shadow:0 2px 3px #000}
+.ar-pick-sub{margin:0;display:grid;place-items:center;background:var(--kit-badge-leather) center/100% 100% no-repeat;color:#ffe9bc;font:800 24px/1 Cambria,serif}
+.ar-pick-me .roster-card{width:84%;margin:0 auto;pointer-events:none}.ar-pick-me .roster-card .rc-tick{display:none}
+.ar-pick-me .roster-card em{font-size:30px}.ar-pick-me .roster-card .rc-lv{font-size:24px}
+.ar-pick-me .rc-stars{font-size:20px}.ar-pick-me .rc-power{color:#ffe9bc;font-size:24px}.ar-pick-me .rc-power img{width:24px;height:24px}
+.ar-pick-tag{position:absolute;z-index:2;left:50%;top:-30px;translate:-50% 0;padding:6px 26px;background:var(--kit-tab-on) center/100% 100% no-repeat;color:#4a2a10;font:900 24px/1 Cambria,serif}
+.ar-pick-tag.foe{background-image:var(--kit-tab-dark);color:#ffe9bc}
+.ar-pick-foe img{object-fit:contain;filter:drop-shadow(0 6px 8px #000a)}
+.ar-pick-foe i{position:absolute;inset:0;display:grid;place-items:center;font:900 120px/1 Cambria,serif;font-style:normal;color:#fff1cf;text-shadow:0 4px 8px #000}
+.ar-pick-forms{display:flex;justify-content:center;gap:12px}
+.ar-pick-forms button{width:84px;height:60px;border:0;padding:0;background:var(--kit-tab-dark) center/100% 100% no-repeat;color:#ffe9bc;font:900 26px/1 Cambria,serif;cursor:pointer}
+.ar-pick-forms button.on{background-image:var(--kit-tab-on);color:#4a2a10}
+.ar-pick-forms button:disabled{cursor:default;background-image:var(--kit-tab);filter:brightness(1.15)}.ar-pick-forms button img{width:30px;height:36px;object-fit:contain;filter:brightness(1.3) drop-shadow(0 1px 1px #000a)}
+.ar-pick-list{padding:70px 34px 30px;background:var(--su-panel,#5a3518) center/100% 100% no-repeat;overflow:hidden}
+.ar-pick-list .ar-pick-head{position:absolute;left:50%;top:14px;translate:-50% 0;padding:8px 30px;background:var(--kit-plaque) center/100% 100% no-repeat;color:#ffe3a0;text-shadow:0 2px 2px #1d0d04;font:900 26px/1 Cambria,serif;white-space:nowrap}
+.ar-pick-list .roster-grid{height:100%;overflow-y:auto;gap:14px 12px;padding:6px 4px}
+.ar-pick-list .roster-card{color:#ffe9bc}.ar-pick-list .roster-card em{font-size:26px}.ar-pick-list .rc-lv{font-size:22px}
+.ar-pick-list .rc-stars{font-size:24px;min-height:26px}.ar-pick-list .rc-power{font-size:28px;color:#fff1cf;text-shadow:0 2px 2px #1d0d04}.ar-pick-list .rc-power img{width:28px;height:28px}
+.ar-pick-go{border:0;padding:0;background:var(--kit-btn-gold) center/100% 100% no-repeat;color:#4a2508;font:900 44px/1 Cambria,serif;text-shadow:0 1px #fff3cf;cursor:pointer;filter:drop-shadow(0 6px 6px #000a)}
+.ar-pick-go:disabled{background-image:var(--kit-btn-steel);color:#eee6d8;text-shadow:0 1px 2px #1a1008;font-size:34px}
+.ar-pick-note{margin:0;text-align:center;color:#ffe9bc;font:italic 700 27px/1.25 Cambria,serif;text-shadow:0 2px 3px #000}
+.ar-pick.busy .ar-pick-list,.ar-pick.busy .ar-pick-forms{pointer-events:none;filter:saturate(.6) brightness(.8)}
+/* While picking, only the arena painting stays behind the layer (Codex: no podium, rewards, resources or menu). */
+#scene:has(>.ar-pick)>.node{visibility:hidden}

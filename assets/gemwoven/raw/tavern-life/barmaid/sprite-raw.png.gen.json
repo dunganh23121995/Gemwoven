@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:23:42Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\barmaid\\ref-crop.png"
+  ],
+  "prompt": "Reference image 1 shows a cheerful chibi barmaid with curly brown hair and a white ribbon, raising a foaming beer mug in each hand, eyes closed in a big laugh in a painted cozy fantasy tavern (chibi anime, warm hand-painted mobile RPG style).\nDraw ONLY this same character as a single game sprite: the exact same design, outfit, colours, hair, pose, expression, facing and proportions as reference 1, rendered crisp and clean at high resolution in the same painted style. Show cut off with a clean straight horizontal edge at the counter line at her waist, nothing below it. No table, no stool, no counter, no other characters, no background objects.\nCentered, filling about 80% of the canvas height, square 1:1 canvas, on a solid flat pure magenta #FF00FF background with no shadow, no gradient, no glow, no text. No magenta or pink inside the character.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the reference character (brown ponytail with white ribbon, dark bodice with gold trim, fingerless gloves, open-mouthed laugh with closed eyes) and holds a foaming mug in each hand. The background is flat magenta with no gradient or shadow, the lower body is cut at a clean straight horizontal line as the prompt requests, and there is no extra text, figures or objects. No clear defects found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000519
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T06:55:19.394846+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-layout\\ref-now.png"
+  ],
+  "prompt": "Use case: UI mockup for a portrait mobile match-3 RPG battle screen (\"Gemwoven\"), hand-painted wood and brass style. Edit reference image 1 (the current battle screen) and keep everything identical except the changes below: same top bar, same scene art, same hero and monster, same 8x8 gem board, same wooden frames, same colours and painting style, same aspect ratio.\nChanges:\n1. Remove the whole middle action strip between the battle scene and the gem board: the \"Lượt bạn\" scroll ribbon on the left, the round flame ultimate disc with its \"Tự động\" and \"Tuyệt kỹ\" labels in the middle, and the round light-bulb hint button on the right. Remove the tutorial hand pointer on the board too.\n2. The battle scene frame grows downward to fill the freed space, so the scene is taller and sits directly above the board frame.\n3. Add ONE round \"Biến Thân\" (transform) medallion, centred on the seam where the scene frame meets the board frame, overlapping both frames slightly, about the size the ultimate disc had: a carved brass and wood medallion with a glowing fox-spirit emblem in the middle, a thin progress ring around it about two thirds filled in warm orange, and a small curved brass plate under it with the text \"Biến Thân\". It looks like an important button but stays compact and does not cover the hero, the monster or the gems.\nNo other text changes. Keep all existing text exactly as it is.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate removes the middle action strip and the tutorial hand, enlarges the scene frame, and adds a compact Biến Thân medallion with the fox emblem, progress ring and 'Biến Thân' plate at the seam. Top bar, hero, monster, HP bars and the 8x8 board layout are preserved. The only difference is a reshuffled gem arrangement, which is a minor drift rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000667
+  }
+}

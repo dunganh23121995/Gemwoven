@@ -1,6 +1,8 @@
-"""Build a portable, offline HTML and the reusable UI kit ZIP. No network needed."""
+"""Build a portable, offline HTML and the reusable UI kit ZIP. No network needed.
+--quick (owner 08/11): only what the game and Studio read (manifest.json, assets.js, copy.js); the offline HTML and the ZIP
+are for exporting and are skipped."""
 from pathlib import Path
-import base64,json,zipfile
+import base64,json,sys,zipfile
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -159,6 +161,144 @@ for hero in ['novice','fire','ice','earth','lightning','shadow']:
         combat=head_scale.get(f'{hero}-{form}',{}).get('combat',{})
         if move:merged[f'cmove-{hero}-{form}']={**move,'headPx':combat.get('headPx'),'cellPx':combat.get('cellPx',256),'bodyPx':combat.get('bodyPx')}
 for scene in ['home','summon','arena']:merged['ambient-water-'+scene]={'file':f'assets/gemwoven/ambient/water-{scene}.webp','width':941,'height':1672}
+# Item slots by rarity (owner 08/11; raw/rarity-tiles, cut_slots.py): uncommon, rare, epic, legendary, divine.
+for tile in sorted((ROOT/'assets/gemwoven/rarity').glob('slot-*.webp')):
+    with Image.open(tile) as im:merged['rarity-'+tile.stem]={'file':tile.relative_to(ROOT).as_posix(),'width':im.width,'height':im.height,'source':'assets/gemwoven/raw/rarity-tiles/raw-sheet.png','promptFiles':['assets/gemwoven/raw/rarity-tiles/prompt-used.txt']}
+# Round avatars of forms 2 and 3 on their own backgrounds (owner 08/11; raw/form-faces/compose.py); form 1 is face-<hero>.
+for face in sorted((ROOT/'assets/gemwoven/atlas/ui').glob('face-*-[23].webp')):
+    merged[face.stem]={'file':face.relative_to(ROOT).as_posix(),'width':256,'height':256,'textless':True,'transparent':True,'source':f'assets/gemwoven/raw/form-faces/{face.stem[5:-2]}/raw-sheet.png','promptFiles':[f'assets/gemwoven/raw/form-faces/{face.stem[5:-2]}/prompt-used.txt']}
+for name in ['dialog-frame','dialog-crown']:
+    with Image.open(ROOT/f'assets/gemwoven/items/{name}.png') as im:merged[name]={'file':f'assets/gemwoven/items/{name}.png','width':im.width,'height':im.height,'source':'assets/gemwoven/items/settings-frame.png','script':'assets/gemwoven/raw/dialog-frame/split_frame.py'}
+# Avatar frames: the opening's centre and inscribed radius (fractions of width/height), so every frame sits centred on the
+# face whatever its drawing (owner 08/11: "lệch avatar mỗi khung lại lệch khác nhau"; growth-ui.js GemwovenFrameFit).
+def frame_opening(path):
+    import numpy as np
+    from scipy import ndimage
+    with Image.open(path) as im:a=np.asarray(im.convert('RGBA'))[...,3]
+    h,w=a.shape;lab,_=ndimage.label(a<60);hole=lab==lab[h//2,w//2];d=ndimage.distance_transform_edt(hole)
+    y,x=np.unravel_index(int(np.argmax(d)),d.shape);return [round(x/w,4),round(y/h,4),round(float(d[y,x])/w,4)]
+def frame_hole(key,path):
+    # The face fills the opening's whole shape, clipped by it (owner 08/11 "avatar fill hết khung tròn, bị clip theo khung"):
+    # <frame>-hole.webp masks it; 'hole' is the circle [cx, cy, r] (fractions of width) that covers the opening.
+    import numpy as np
+    from scipy import ndimage
+    with Image.open(path) as im:a=np.asarray(im.convert('RGBA'))[...,3]
+    h,w=a.shape;lab,_=ndimage.label(a<60);hole=ndimage.binary_dilation(lab==lab[h//2,w//2],iterations=max(2,w//80))
+    ys,xs=np.nonzero(hole);cx,cy=xs.mean(),ys.mean();r=float(np.sqrt(((xs-cx)**2+(ys-cy)**2).max()))
+    out=path.with_name(path.stem+'-hole.webp');m=Image.new('RGBA',(w,h),(255,255,255,0));m.putalpha(Image.fromarray((hole*255).astype('uint8'),'L'));m.save(out,'WEBP',quality=80,method=6)
+    return [round(cx/w,4),round(cy/h,4),round(r/w,4)],out.relative_to(ROOT).as_posix()
+def frame_groove(path,hole,band=None):
+    # The frames are drawn with a plain dark groove between two thin rims, the experience gauge's track (owner 08/11). The groove
+    # need not share the opening's centre, so it is measured on its own: along rays from the opening's centre, the longest dark
+    # run inside the frame gives a first radius and the groove's colour; then a circle is fitted through the middle of the
+    # groove-coloured pixels on every ray. Returns [inner, outer, gap, cx, cy] (radii as fractions of the width, centre as
+    # fractions of width and height); gap is the half-angle round the bottom where ornaments hide the groove, so the gauge
+    # starts and ends where it shows.
+    # <frame>-over.webp is the frame with the groove's own pixels cleared, laid over the gauge so rims and every ornament
+    # crossing the groove stay whole. Only the groove's large connected stretches are cleared: a small patch of the groove's
+    # colour inside an ornament (a green gem on a green groove) is not the groove and stays.
+    # <frame>-fill.webp is what the gauge reveals (owner 08/11: "dùng trang trí gốc làm HUD"): a drawn strip of the original
+    # ring's pattern (raw/xp-frames/<season>/band.webp) wrapped onto the groove.
+    import numpy as np
+    from scipy import ndimage
+    with Image.open(path) as im:a=np.asarray(im.convert('RGBA')).astype(np.float32)
+    h,w=a.shape[:2];cx,cy=hole[0]*w,hole[1]*h;r0=int(hole[2]*w*.85);lum=a[...,:3]@np.array([.3,.59,.11],np.float32)
+    def ray(deg,x0,y0,lo,W,H):
+        t=np.radians(deg-90);r=np.arange(lo,W);x=(x0+r*np.cos(t)).round().astype(int);y=(y0+r*np.sin(t)).round().astype(int)
+        ok=(x>=0)&(x<W)&(y>=0)&(y<H);return r[ok],x[ok],y[ok]
+    ins,outs=[],[]
+    for deg in range(-70,71):                                        # css degrees: 0 is up, clockwise
+        r,x,y=ray(deg,cx,cy,r0,w,h);op=a[y,x,3]>200
+        if op.sum()<4:continue
+        l=lum[y,x];thr=(l[op].min()+np.percentile(l[op],80))/2;dark=op&(l<thr);best=(0,0,0);i=0
+        while i<len(dark):
+            if dark[i]:
+                j=i
+                while j<len(dark) and dark[j]:j+=1
+                if j-i>best[0]:best=(j-i,i,j)
+                i=j
+            else:i+=1
+        if best[0]>2:ins.append(r[best[1]]);outs.append(r[best[2]-1])
+    gi,go=float(np.median(ins)),float(np.median(outs));gw=go-gi
+    yy,xx=np.mgrid[0:h,0:w];rr=np.hypot(xx-cx,yy-cy)
+    core=(rr>gi+gw*.3)&(rr<go-gw*.3)&(yy<cy-gi*.5)&(a[...,3]>200)
+    tone=np.median(a[core][:,:3],axis=0);dist=np.linalg.norm(a[...,:3]-tone,axis=2);near=(dist<40)&(a[...,3]>200)
+    pts=[]                                                            # the groove's middle on each ray, then a circle through them
+    for deg in range(0,360,2):
+        r,x,y=ray(deg,cx,cy,int(gi-gw),w,h);m=near[y,x]&(r<go+gw)
+        if m.sum()>=gw*.6:k=r[m];pts.append((cx+np.median(k)*np.sin(np.radians(deg)),cy-np.median(k)*np.cos(np.radians(deg))))
+    P=np.array(pts)
+    for _ in range(3):                                                # least-squares circle, dropping outliers
+        A=np.c_[2*P,np.ones(len(P))];bx=(P**2).sum(1);(gx,gy,c),*_=np.linalg.lstsq(A,bx,rcond=None);rc=np.sqrt(c+gx*gx+gy*gy)
+        res=np.abs(np.hypot(P[:,0]-gx,P[:,1]-gy)-rc);P=P[res<max(1.5,np.percentile(res,80))]
+    # A hand-drawn groove is not equally wide all round, so its two edges are found on every half degree: from the groove's
+    # middle outward and inward until the rim's light starts (owner 08/11: the fill must reach both rims).
+    rr=np.hypot(xx-gx,yy-gy);gl=float(np.median(lum[core&near]));thr=gl+30;n=720;ein=np.full(n,np.nan);eout=np.full(n,np.nan)
+    for k in range(n):
+        t=np.radians(k/2);steps=np.arange(0,gw*1.2,.5)
+        def at(r):
+            x=int(round(gx+r*np.sin(t)));y=int(round(gy-r*np.cos(t)))
+            return lum[y,x] if 0<=x<w and 0<=y<h and a[y,x,3]>200 else 999
+        if at(rc)>=thr:continue
+        i=next((d for d in steps if at(rc-d)>=thr),None);o=next((d for d in steps if at(rc+d)>=thr),None)
+        if i is None or o is None or not gw*.6<i+o<gw*1.5:continue
+        ein[k],eout[k]=rc-i+.25,rc+o-.25
+    ok=~np.isnan(ein);idx=np.arange(n)
+    for e in (ein,eout):                                              # fill the gaps under ornaments, smooth the rest
+        e[~ok]=np.interp(idx[~ok],idx[ok],e[ok],period=n);e[:]=ndimage.median_filter(e,size=9,mode='wrap')
+    gi,go=float(np.median(ein)),float(np.median(eout));gw=go-gi
+    ang=(np.round((np.degrees(np.arctan2(xx-gx,gy-yy))+360)%360*2).astype(int))%n;lo,hi=ein[ang],eout[ang]
+    ring=(rr>lo-1)&(rr<hi+1)
+    soft=np.clip((thr+12-lum)/14,0,1)*np.clip((75-dist)/15,0,1)*((rr>lo-.5)&(rr<hi+.5))
+    lab,cnt=ndimage.label(soft>.5,structure=np.ones((3,3)));size=ndimage.sum(np.ones_like(soft),lab,range(1,cnt+1))
+    keep=np.isin(lab,1+np.flatnonzero(size>=ring.sum()*.01))
+    groove=soft*ndimage.binary_dilation(keep,iterations=1)
+    over=a.copy();over[...,3]*=1-groove
+    out=path.with_name(path.stem+'-over.webp');Image.fromarray(over.clip(0,255).astype('uint8'),'RGBA').save(out,'WEBP',quality=90,method=6)
+    deg=(ang//2)%360;mid=(rr>lo+(hi-lo)*.2)&(rr<hi-(hi-lo)*.2)
+    shows=np.bincount(deg[mid],weights=keep[mid],minlength=360)/np.maximum(1,np.bincount(deg[mid],minlength=360))>.6
+    sides=[]
+    for sign in (1,-1):
+        run=0
+        for d in range(0,120):
+            run=run+1 if shows[(180+sign*d)%360] else 0
+            if run==4:sides.append(d-3);break
+        else:sides.append(40)
+    gap=int(min(80,max(20,max(sides)+3)))
+    fill=None
+    if band and band.exists():
+        # The band texture (a straight strip of the original ring's pattern, drawn without ornaments) wrapped round the groove
+        # edge to edge, repeated a whole number of times so its ends meet.
+        with Image.open(band) as im:B=np.asarray(im.convert('RGB')).astype(np.float32)
+        bh,bw=B.shape[:2];reps=max(1,round(2*np.pi*(gi+go)/2/(bw*gw/bh)))
+        t=np.clip((rr-lo)/np.maximum(1,hi-lo),0,1)*(bh-1);u=((np.degrees(np.arctan2(xx-gx,gy-yy))+360)%360/360*reps%1)*bw
+        f=np.dstack([ndimage.map_coordinates(B[...,ch],[t,u],order=1,mode='grid-wrap') for ch in range(3)]+[np.where(ring,255.,0.)])
+        fill=path.with_name(path.stem+'-fill.webp');Image.fromarray(f.clip(0,255).astype('uint8'),'RGBA').save(fill,'WEBP',quality=90,method=6)
+        fill=fill.relative_to(ROOT).as_posix()
+    return [round(gi/w,4),round(go/w,4),gap,round(gx/w,4),round(gy/h,4)],out.relative_to(ROOT).as_posix(),fill
+for key in [k for k in merged if k.startswith('season-') and k.endswith('-frame')]:
+    merged[key]['opening']=frame_opening(ROOT/merged[key]['file'])
+    merged[key]['hole'],merged[key]['holeFile']=frame_hole(key,ROOT/merged[key]['file'])
+    season=key.split('-')[1]
+    merged[key]['groove'],merged[key]['overFile'],merged[key]['fillFile']=frame_groove(ROOT/merged[key]['file'],merged[key]['hole'],ROOT/f'assets/gemwoven/raw/xp-frames/{season}/band.webp')
+# Season title ribbons are straight banners (owner 10/11: "làm cái background thẳng tuột rồi nhét chữ vào; để sau này đổi
+# ngôn ngữ được"; raw/season-titles/straight.py): the name is ordinary text on the plain cloth between the medallion and the
+# tail. 'cloth' = [left, right, top, bottom] (fractions of width and height): the columns where the banner is only its band
+# (the band's usual height; the medallion, its tassels and the tail's ornament reach past it), kept a little clear of both.
+def title_cloth(path):
+    import numpy as np
+    with Image.open(path) as im:a=np.asarray(im.convert('RGBA'))[...,3]>128
+    h,w=a.shape;cols=[np.flatnonzero(a[:,x]) for x in range(w)]
+    ext=[(int(c[0]),int(c[-1])) if len(c) else (-1,-1) for c in cols]
+    mid=ext[w//2];plain=[abs(t-mid[0])<=2 and abs(b-mid[1])<=2 for t,b in ext]
+    l=r=w//2
+    while l>0 and plain[l-1]:l-=1
+    while r<w-1 and plain[r+1]:r+=1
+    return [round(l/w+.02,4),round(r/w-.03,4),round(mid[0]/h,4),round(mid[1]/h,4)]
+for key in [k for k in merged if k.startswith('season-') and k.endswith('-title')]:
+    merged[key]['cloth']=title_cloth(ROOT/merged[key]['file'])
+merged['roster-icon-all']={'file':'assets/gemwoven/hero-roster/icon-all.webp','width':256,'height':256,'source':'assets/gemwoven/raw/hero-roster/compose_icon.py'}
+merged['ambient-crest-summon']={'file':'assets/gemwoven/ambient/crest-summon.webp','width':941,'height':1672}
 for catalog in sorted((ROOT/'assets/heroes/forms').glob('*/aura.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'))
     cell=Image.open(ROOT/data['file']).height
@@ -204,6 +344,7 @@ def data_uri(rel):
 # JSON is the canonical editable copy; regenerate its browser script.
 copy=json.loads((ROOT/'src/gemwoven/copy.json').read_text(encoding='utf-8'))
 (ROOT/'src/gemwoven/copy.js').write_text('/* Generated from copy.json by scripts/build_gemwoven.py */\nwindow.GEMWOVEN_COPY = '+json.dumps(copy,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
+if '--quick' in sys.argv:print('Quick build: manifest.json, assets.js, copy.js (offline HTML and UI kit ZIP skipped)');sys.exit()
 html=(ROOT/'Gemwoven.html').read_text(encoding='utf-8')
 css=(ROOT/'src/gemwoven/ui.css').read_text(encoding='utf-8')
 html=html.replace('<link rel="stylesheet" href="src/gemwoven/ui.css">','<style>'+css+'</style>')

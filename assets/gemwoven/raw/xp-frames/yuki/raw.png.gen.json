@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T05:23:37.392620+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\season\\yuki\\frame.webp"
+  ],
+  "prompt": "Use case: one game UI asset for a portrait fantasy match-3 RPG (\"Gemwoven\"): the avatar frame of Yuki, silver snow rabbit, redrawn so its ring carries an experience gauge.\nReference image 1 is the current approved frame: keep its identity, palette, painted quality, proportions and ornaments (two white rabbit ears and a small ice snowflake crest on top, a flowing pale silk ribbon on the right, a crescent moon with a blue bow, white feathered wings and small tassels at the bottom).\nChange only the ring itself: the ring is now an EXPERIENCE GAUGE TRACK. It is built from a thin polished silver inner rim, a thin polished silver outer rim, and between them one smooth, recessed, empty groove of even width all the way round, dark midnight-blue lacquer, plain with no pattern, no stars, no swirls, no gems and no highlights inside the groove. The groove is a perfect circle concentric with the round opening, and about the same total ring thickness as the reference.\nNothing may cross or overlap the groove: the ears and snowflake crest sit fully outside the outer rim at the top; the silk ribbon floats outward on the right, outside the outer rim; the bottom ornaments are gathered compactly at the bottom centre only, covering no more than the lowest quarter of the ring (from about seven o'clock to five o'clock); the groove is fully visible and clean from about seven o'clock, over the top, round to about five o'clock.\nStyle: painted hand-drawn fantasy game UI, the same rich illustration style as the reference, crisp clean edges, soft shading, no pixel art, no text, no letters, no numbers.\nLayout: exactly one asset centred on a solid flat pure magenta #FF00FF background, generous magenta margin all round, every ornament completely inside the picture, nothing touching or cut by the edges. The round centre of the ring is empty and filled with the same pure magenta. No magenta or pink inside the artwork itself.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The silk ribbon's lower tail crosses over the ring on the right side (roughly y 560 to 700), overlapping the outer rim and groove. The prompt requires the ribbon to float fully outside the outer rim and nothing to overlap the groove."
+      }
+    ],
+    "summary": "Flat magenta background, rabbit ears, snowflake crest, moon, wings and tassels are correct and sit outside the ring. The main defect is the right-side ribbon intruding onto the ring band, which breaks the no-overlap requirement for the experience-gauge groove.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000763
+  }
+}

@@ -1,0 +1,3 @@
+1. Còn lại: pips trên điện thoại vẫn hơi khó đọc khi thu nhỏ; trạng thái chưa học và đã dùng có chữ khá tối. Bản Studio: huy hiệu đã đủ lớn, nhưng cụm huy hiệu–nhãn sát mép dưới, hơi chật. Tổng thể rõ hơn vòng 1; năm trạng thái phân biệt tốt, đặc biệt sẵn sàng và đang kích hoạt.
+
+2. **Điện thoại: 8.3/10 — đạt. Studio: 8.4/10 — đạt.** Có thể chốt bố cục; chỉ cần tăng nhẹ độ rõ của pips và chữ trạng thái tối.

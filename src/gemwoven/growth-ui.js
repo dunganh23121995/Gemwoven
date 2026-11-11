@@ -4,6 +4,84 @@
 (() => {
   const G=window.GEMWOVEN_GAME,M=window.GemwovenProgression,O=window.GemwovenLiveOps,A=window.GEMWOVEN_ASSETS,L=window.GEMWOVEN_LAYOUT,C=window.GEMWOVEN_DEFAULT_COPY;
   if(!G||!M)return;
+  // A title's name always sits inside its plate (owner 08/11: long season names ran past their ribbon in Gặp Gỡ). The plate
+  // is drawn in three parts (owner 08/11: "bị kéo dài"): its two ends (a season ribbon's medallion and tail, a rarity plate's
+  // wings) keep their drawn proportions and only the plain middle grows. It starts at its drawn length; a long name first
+  // shrinks to 75% of its size (smaller is unreadable on a phone), then the middle lengthens.
+  // A season ribbon is a straight banner (owner 10/11: "thẳng tuột rồi nhét chữ vào; để sau này đổi ngôn ngữ được"): the
+  // name is plain text centred on its plain cloth (manifest 'cloth', build_gemwoven.py title_cloth), no taller than the cloth
+  // allows, so any language fits the same way.
+  // Every plate that appears (Gặp Gỡ, Trang trí, the titles list) is fitted once it is laid out; season pages place the
+  // name on their own ribbon pictures (placeTitle).
+  const clothOf=art=>art&&Object.values(A||{}).find(x=>x.cloth&&x.file===art.getAttribute('src'))?.cloth;
+  function fitTitle(plate,tries=0){
+    const b=plate.querySelector(':scope > b'),art=plate.querySelector(':scope > img');if(!b||!plate.isConnected)return;
+    if(!plate.offsetHeight||(art&&!art.naturalWidth)){if(tries<60)requestAnimationFrame(()=>fitTitle(plate,tries+1));return;}
+    b.style.fontSize='';b.style.translate='';
+    const cloth=clothOf(art);
+    if(cloth){
+      // Every season ribbon shows its cloth at the same height (0.42 of the plate's box), the name at a fixed share of it;
+      // the plain middle lengthens for a long name; where the whole ribbon would pass the space it has, ribbon and name
+      // shrink together, so the name always stays on the cloth.
+      plate.style.height='';const h0=plate.clientHeight,frac=cloth[3]-cloth[2],host=plate.parentElement;
+      const max=host?.matches('.pz-title')?300:host?.clientWidth||Infinity;   // over a head in Gặp Gỡ the label wraps the plate: up to 300 px
+      const lay=h=>{const k=h/art.naturalHeight,l=cloth[0],r=1-cloth[1],capL=Math.round(art.naturalWidth*l*k),capR=Math.round(art.naturalWidth*r*k);
+        Object.assign(plate.style,{height:h+'px',borderStyle:'solid',borderColor:'transparent',borderWidth:`0 ${capR}px 0 ${capL}px`,
+          borderImage:`url("${art.src}") 0 ${r*100}% 0 ${l*100}% fill / 0 ${capR}px 0 ${capL}px stretch`,width:Math.round(art.naturalWidth*k)+'px',maxWidth:'none'});
+        Object.assign(b.style,{paddingLeft:'2px',paddingRight:'2px',fontSize:(frac*h*.56).toFixed(1)+'px',translate:`0 ${((cloth[2]+cloth[3])/2-.5)*h}px`});
+        const text=b.scrollWidth,room=plate.clientWidth;if(text+6>room)plate.style.width=Math.ceil(plate.offsetWidth+text+6-room)+'px';
+        return plate.offsetWidth;};
+      art.style.display='none';
+      const h=h0*Math.max(.8,Math.min(1.25,.42/frac)),w=lay(h);
+      if(w>max)lay(h*max/w);
+      return;
+    }
+    if(art){
+      const [l,r]=[.21,.21],h=plate.clientHeight,k=h/art.naturalHeight;
+      const capL=Math.round(art.naturalWidth*l*k),capR=Math.round(art.naturalWidth*r*k);
+      Object.assign(plate.style,{borderStyle:'solid',borderColor:'transparent',borderWidth:`0 ${capR}px 0 ${capL}px`,
+        borderImage:`url("${art.src}") 0 ${r*100}% 0 ${l*100}% fill / 0 ${capR}px 0 ${capL}px stretch`,width:Math.round(art.naturalWidth*k)+'px',maxWidth:'none'});
+      art.style.display='none';Object.assign(b.style,{paddingLeft:'2px',paddingRight:'2px'});
+    }else plate.style.width='';
+    const cs=getComputedStyle(b),pad=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight),base=parseFloat(cs.fontSize),room=plate.clientWidth-pad,text=b.scrollWidth-pad;
+    if(text<=room+1)return;
+    b.style.fontSize=Math.max(base*.75,base*room/text).toFixed(1)+'px';
+    const now=b.scrollWidth-pad,edges=plate.offsetWidth-plate.clientWidth;
+    if(now>room+1)plate.style.width=Math.ceil(now+pad+edges+6)+'px';
+  }
+  window.GemwovenFitTitle=fitTitle;
+  // A season page's ribbon picture (an <img> drawn contained): its name sits on the plain cloth, straight and centred.
+  function placeTitle(el,tries=0){
+    const b=el.querySelector(':scope > b'),art=el.querySelector(':scope > img'),cloth=clothOf(art);if(!b||!cloth||!el.isConnected)return;
+    if(!art.naturalWidth||!art.clientWidth){if(tries<60)requestAnimationFrame(()=>placeTitle(el,tries+1));return;}
+    const W=art.clientWidth,H=art.clientHeight,k=Math.min(W/art.naturalWidth,H/art.naturalHeight),dw=art.naturalWidth*k,dh=art.naturalHeight*k,x0=art.offsetLeft+(W-dw)/2,y0=art.offsetTop+(H-dh)/2;
+    const band=(cloth[3]-cloth[2])*dh;
+    Object.assign(b.style,{left:(x0+cloth[0]*dw)+'px',right:'auto',width:((cloth[1]-cloth[0])*dw)+'px',top:(y0+(cloth[2]+cloth[3])/2*dh)+'px',translate:'0 -50%',padding:'0',
+      fontSize:'',overflow:'hidden',textOverflow:'ellipsis',lineHeight:'1'});
+    b.style.fontSize=Math.min(parseFloat(getComputedStyle(b).fontSize),band*.56).toFixed(1)+'px';
+  }
+  // A season avatar frame on a round face (centre cx,cy and radius r in the given unit): the frame's measured opening
+  // (build_gemwoven.py frame_opening) is centred on the face, its inner rim just over the face edge, so no frame sits off-centre.
+  // face (optional): an element holding the avatar <img>; it is laid on the frame's own box, masked by the frame's opening
+  // (holeFile), its picture covering the opening's whole circle, so the face fills any frame and the frame clips it.
+  window.GemwovenFrameFit=(img,file,cx,cy,r,unit='px',face=null)=>{
+    const a=Object.values(window.GEMWOVEN_ASSETS||{}).find(x=>x.file===file&&x.opening);if(!img||!a)return null;
+    const [ox,oy,or]=a.opening,w=r*.92/or,h=w*a.height/a.width,box={left:(cx-ox*w)+unit,top:(cy-oy*h)+unit,width:w+unit,height:h+unit};
+    Object.assign(img.style,box,{objectFit:'fill',translate:'none'});
+    if(face&&a.hole&&a.holeFile){const [hx,hy,hr]=a.hole,mask=`url("${new URL(a.holeFile,document.baseURI).href}")`,pic=face.querySelector('img');
+      Object.assign(face.style,{inset:'auto'},box,{position:'absolute',borderRadius:'0',overflow:'visible',background:'none',maskImage:mask,webkitMaskImage:mask,maskSize:'100% 100%',webkitMaskSize:'100% 100%',maskRepeat:'no-repeat',webkitMaskRepeat:'no-repeat'});
+      if(pic)Object.assign(pic.style,{position:'absolute',left:(hx-hr)*100+'%',top:(hy-hr*a.width/a.height)*100+'%',width:hr*200+'%',height:hr*200*a.width/a.height+'%',objectFit:'cover',borderRadius:'50%',maxWidth:'none'});}
+    return {r:or*w,w,h,opening:[ox,oy],hole:a.hole,groove:a.groove,overFile:a.overFile,fillFile:a.fillFile};};
+  // A frame picture marked data-frame-fit="cx,cy,r,unit" (the face it rings) is centred on that face as it appears.
+  // Its face (the sibling img.in) is wrapped once and laid under the frame's opening mask.
+  const fitFrame=img=>{const [cx,cy,r,u]=img.dataset.frameFit.split(',');let face=img.parentElement?.querySelector(':scope > img.in, :scope > .fa-face');
+    if(face?.tagName==='IMG'){const wrap=document.createElement('span');wrap.className='fa-face';face.replaceWith(wrap);wrap.append(face);face=wrap;}
+    window.GemwovenFrameFit(img,img.getAttribute('src'),+cx,+cy,+r,u||'px',face);};
+  new MutationObserver(list=>{for(const m of list)for(const n of m.addedNodes)if(n.nodeType===1){
+    for(const el of [n,...n.querySelectorAll('.title-plate,.wd-title')])if(el.matches('.title-plate,.wd-title'))fitTitle(el);
+    for(const el of [n,...n.querySelectorAll('.sz-title')])if(el.matches('.sz-title'))placeTitle(el);
+    for(const el of [n,...n.querySelectorAll('img[data-frame-fit]')])if(el.matches('img[data-frame-fit]'))fitFrame(el);}})
+    .observe(document.documentElement,{childList:true,subtree:true});
   const fmt=n=>Math.floor(n||0).toLocaleString('vi-VN'),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const img=(asset,cls='')=>`<img class="${cls}" src="${esc((A[asset]||A['icon-hero']).file)}" alt="" draggable="false">`;
   const pct=x=>(x*100).toLocaleString('vi-VN',{maximumFractionDigits:1})+'%';

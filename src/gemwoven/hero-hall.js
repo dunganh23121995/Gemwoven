@@ -17,13 +17,19 @@
   const ELEMENTS=[['Hỏa','#e8553a'],['Băng','#5fb8e8'],['Mộc','#5aa84a'],['Lôi','#9a6ae0'],['Ảnh','#4b4a8a'],['Thường','#b89a62']];
   const tint=el=>(ELEMENTS.find(e=>e[0]===el)||ELEMENTS[5])[1];
   const skillIcon=(key,i)=>key==='novice'?['stat-attack','stat-shield','stat-heart','crest'][i]:`skill-${key}-${i}`;
-  const view={element:'',sort:'level'};
+  const view={element:'',sort:'power',unowned:false};
+  // The Tất cả roster (owner 08/11 "hình ảnh có vấn đề"; Codex hero-roster round, mockup-roster.png 8,5/10): each element has
+  // its drawn emblem (the combat HUD's) and its hall socket colour; the cards are the hall's own sockets.
+  const EL_KEY={'Hỏa':'fire','Băng':'ice','Mộc':'earth','Lôi':'lightning','Ảnh':'shadow','Thường':'novice'};
+  const EL_SOCKET={'Hỏa':'divine','Băng':'rare','Mộc':'uncommon','Lôi':'epic','Ảnh':'none','Thường':'legendary'};
+  const SORTS=[['power','Lực chiến'],['level','Cấp'],['stars','Sao']];
+  const power=(p,k)=>p.heroes[k]?M.stats(p,k).power||0:0;
   // Unreleased heroes stay hidden everywhere (owner 04/11): the hall lists only released or owned ones.
   const shown=p=>Object.keys(M.HEROES).filter(k=>p.heroes[k]||M.heroAvailable(k));
   // Owned heroes first (highest level, then stars), the rest after in catalogue order.
   function order(p,list=shown(p)){
-    const by={level:h=>h.level*10+h.stars,stars:h=>h.stars*1000+h.level}[view.sort];
-    return list.slice().sort((a,b)=>{const ha=p.heroes[a],hb=p.heroes[b];if(!!ha!==!!hb)return ha?-1:1;return ha?by(hb)-by(ha):0;});
+    const by={level:(h,k)=>h.level*10+h.stars,stars:(h,k)=>h.stars*1000+h.level,power:(h,k)=>power(p,k)}[view.sort];
+    return list.slice().sort((a,b)=>{const ha=p.heroes[a],hb=p.heroes[b];if(!!ha!==!!hb)return ha?-1:1;return ha?by(hb,b)-by(ha,a):0;});
   }
   function card(p,key,selected,big){
     const h=p.heroes[key],hero=M.HEROES[key];
@@ -37,14 +43,30 @@
     const mark=()=>{el.classList.toggle('more-left',s.scrollLeft>4);el.classList.toggle('more-right',s.scrollLeft+s.clientWidth<s.scrollWidth-4);};
     s.addEventListener('scroll',mark,{passive:true});
   }
+  // A roster card: the hero's round face for its form on its element's hall socket, the level on the portrait's rim, the
+  // name on the socket's plate, stars and lực chiến underneath; the chosen hero has a gold edge and a tick, a missing one is
+  // greyed with a lock.
+  function rosterCard(p,key,selected){
+    const h=p.heroes[key],hero=M.HEROES[key],socket=file('hall-socket-'+EL_SOCKET[hero.element])||file('hall-socket-none');
+    return `<button type="button" class="roster-card ${h?'':'is-locked'} ${key===selected?'is-on':''}" data-hero="${key}" aria-label="${esc(hero.name)}${h?` · cấp ${h.level} · ${h.stars} sao · lực chiến ${fmt(power(p,key))}`:' · chưa sở hữu'}">`+
+      `<span class="rc-socket"><img class="rc-base" src="${socket}" alt=""><img class="rc-face" src="${file('face-'+key)}" alt="">`+
+      `<img class="rc-el" src="assets/combat-hud/em-${EL_KEY[hero.element]}.webp" alt="">${h?`<b class="rc-lv">${h.level}</b>`:`<img class="rc-lock" src="${file('kit-lock')}" alt="">`}`+
+      `${key===selected?`<img class="rc-tick" src="${file('vip-pass-claimed-check')}" alt="">`:''}<em>${esc(hero.name)}</em></span>`+
+      `<span class="rc-stars">${'★'.repeat(h?.stars||0)}${h?'':'—'}</span><span class="rc-power">${h?`<img src="${file('stat-attack')}" alt="">${fmt(power(p,key))}`:'Chưa có'}</span></button>`;
+  }
+  window.GemwovenHall={rosterCard,power};
   function allDialog(ctx,state){
-    const modal=window.GemwovenUI.makeDialog('hero-all','Tất cả tướng','growth-dialog hall-dialog');
-    const draw=()=>{const p=G.engine.read(),list=shown(p).filter(k=>!view.element||M.HEROES[k].element===view.element);
-      modal.body.innerHTML=`<div class="hall-filters">${ELEMENTS.filter(([e])=>shown(p).some(k=>M.HEROES[k].element===e)).map(([e,c])=>`<button type="button" data-el="${e}" class="${view.element===e?'on':''}" style="--el:${c}">${e}</button>`).join('')}`+
-        `<button type="button" data-sort class="hall-sort">${view.sort==='level'?'Cấp ↓':'Sao ↓'}</button></div>`+
-        `<div class="hall-grid">${order(p,list).map(k=>card(p,k,state.hero,true)).join('')||'<p class="growth-lead">Chưa có tướng hệ này.</p>'}</div>`;
-      modal.body.querySelectorAll('[data-el]').forEach(b=>b.onclick=()=>{view.element=view.element===b.dataset.el?'':b.dataset.el;draw();});
-      modal.body.querySelector('[data-sort]').onclick=()=>{view.sort=view.sort==='level'?'stars':'level';draw();};
+    const modal=window.GemwovenUI.makeDialog('hero-all','Tất cả tướng','growth-dialog hall-dialog roster-dialog');
+    const draw=()=>{const p=G.engine.read(),pool=shown(p).filter(k=>view.unowned||p.heroes[k]),list=pool.filter(k=>!view.element||M.HEROES[k].element===view.element);
+      const els=ELEMENTS.filter(([e])=>shown(p).some(k=>M.HEROES[k].element===e)),sort=SORTS.find(s=>s[0]===view.sort)||SORTS[0];
+      modal.body.innerHTML=`<div class="roster-filters"><button type="button" data-el="" class="roster-all ${view.element?'':'on'}">Tất cả</button>`+
+        els.map(([e])=>`<button type="button" data-el="${e}" class="roster-el ${view.element===e?'on':''}" aria-label="Hệ ${e}"><img src="assets/combat-hud/em-${EL_KEY[e]}.webp" alt=""></button>`).join('')+`</div>`+
+        `<div class="roster-tools"><button type="button" data-sort class="roster-sort">${sort[1]} ↓</button>`+
+        `<button type="button" data-unowned class="roster-toggle" aria-pressed="${view.unowned}"><img src="${file(view.unowned?'kit-toggle-on':'kit-toggle-off')}" alt=""><span>Chưa sở hữu</span></button></div>`+
+        `<div class="roster-grid">${order(p,list).map(k=>rosterCard(p,k,state.hero)).join('')||'<p class="growth-lead">Chưa có tướng hệ này.</p>'}</div>`;
+      modal.body.querySelectorAll('[data-el]').forEach(b=>b.onclick=()=>{view.element=b.dataset.el===view.element?'':b.dataset.el;draw();});
+      modal.body.querySelector('[data-sort]').onclick=()=>{view.sort=SORTS[(SORTS.indexOf(sort)+1)%SORTS.length][0];draw();};
+      modal.body.querySelector('[data-unowned]').onclick=()=>{view.unowned=!view.unowned;draw();};
       modal.body.querySelectorAll('[data-hero]').forEach(b=>b.onclick=()=>{modal.close();state.hero=b.dataset.hero;state.outfitSlot=null;ctx.render();});};
     draw();modal.present();
   }
@@ -97,7 +119,7 @@
       if(n.id==='upgrade.hero-caption'){n.rect=[306,314,330,48];n.labelRect=[20,7,290,34];n.size=26;}}
     if(!state.outfitSlot){
       nodes.push({id:'upgrade.roster',kind:'content',rect:[60,824,676,116],className:'exploration-map hall-roster',build:el=>strip(el,p,state)});
-      nodes.push({id:'upgrade.roster-all',kind:'button',rect:[748,820,124,120],action:'hall:all',text:'upgrade.roster-all',asset:'kit-round',icon:'nav-more',iconRect:[26,14,72,72],labelRect:[0,84,124,36],className:'hall-all',size:24});C['upgrade.roster-all']='Tất cả';
+      nodes.push({id:'upgrade.roster-all',kind:'button',rect:[752,806,128,132],action:'hall:all',text:'upgrade.roster-all',asset:'kit-round',icon:A['roster-icon-all']?'roster-icon-all':'nav-more',iconRect:[24,6,80,80],labelAsset:'kit-badge-leather',labelRect:[4,84,120,46],className:'hall-all single-line',size:26});C['upgrade.roster-all']='Tất cả';
       waiting(p,state).forEach((key,i)=>nodes.push({id:'upgrade.waiting-'+i,kind:'content',rect:PEDESTALS[i],className:'exploration-map hall-waiting',build:el=>{
         el.innerHTML=`<button type="button" class="hall-waiter" data-action="do:hero" data-hero="${key}" aria-label="Chọn ${esc(M.HEROES[key].name)}"><span class="hall-body"></span></button>`;
         const body=el.querySelector('.hall-body'),form=M.lookForm(key,p.heroes[key]);

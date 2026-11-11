@@ -1,0 +1,3 @@
+1. **Quán rượu:** Bố cục mới thoáng hơn; cô thỏ không còn lấn đĩa đồ ăn, cô cáo ngồi hợp lý hơn. Điểm còn vướng là mép ghế sau và chỗ tiếp xúc dưới người cô cáo chưa rõ, khiến dáng ngồi hơi lơ lửng. Trong hub, bảng bên trái sát nhân vật và đuôi cáo bị bảng nhiệm vụ cắt, làm góc dưới trái khá chật. **8,2/10 — đạt.**
+
+2. **Lò rèn:** Ánh lửa dịu, hòa với lòng lò tốt hơn; giá vũ khí và khiên bên trái giúp cảnh đầy đặn, có nghề. Kiếm trưng bày vẫn rất lớn, khá sát thanh trang bị phía trên; vùng sáng quanh đế kiếm hơi trắng, làm vật liệu kim loại mất độ chắc. **8,5/10 — đạt.** Hai ảnh tĩnh chưa đủ xác nhận nhịp thở, nghiêng người và khoảng nghỉ giữa các nhát búa.

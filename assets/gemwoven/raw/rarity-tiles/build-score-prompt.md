@@ -1,0 +1,4 @@
+Chấm bản dựng ô độ hiếm (Gemwoven) so với mockup đã duyệt mockup-1.png (8,5/10). Ảnh:
+- build-bag-phone.png, build-bag-selected-phone.png (đang chọn Mảnh Mika, chụp lúc vệt sáng quét qua ô), build-bag-studio.png (Studio 1920×911).
+- build-summon-phone.png, build-summon-studio.png: màn Triệu Hồi sau 5 sửa của chủ: (1) huy hiệu pha lê trên vòm vẽ lại phía trên tia sáng, tia toả từ sau pha lê; (2) pha lê nổi bật hiện mặt Mika hình thái 1; (3) khung "Hình thái 3" có nền vương quốc lửa của Mika (tranh có sẵn của đoạn phim triệu hồi) thay ô đen, chân đứng giữa bục đá, đuôi được tràn qua khung (chủ cho phép); (4) ô "Tướng" hiện Mika hình thái 1; (5) ba ô Phần Thưởng Hiếm dùng ô Huyền Thoại/Huyền Thoại/Thần, vũ khí Thần hiện tranh vũ khí Thần.
+Trả lời tiếng Việt, ngắn: (1) điểm /10 Túi Đồ điện thoại và Studio; (2) điểm /10 màn Triệu Hồi điện thoại và Studio; đạt (≥8) hay chưa; (3) tối đa 3 lỗi cụ thể phải sửa (nếu có), kèm cách sửa.

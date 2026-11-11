@@ -1,0 +1,17 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-08T08:21:34.024273+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\ref-tavern.png"
+  ],
+  "prompt": "Edit image 1 (a painted cozy fantasy tavern scene for a portrait mobile RPG, warm hand-painted style). Keep the canvas, composition, perspective, lighting, colours and painting style exactly the same, and change only:\n1. Remove ALL the characters and the animal: the brown-haired barmaid behind the upper counter, the red-haired fox girl, the white rabbit-eared girl, the blonde witch with the purple hat, the hooded dark figure with glowing eyes, and the small orange fox lying on the left stool. Also remove the beer mugs they hold. Paint what was behind them: the wooden walls, the upper counter with its barrel, the railing, the bench backs. Keep the big wooden table with the plate of roast meat and fruit and the folded cloth, the stools, the barrels, the lantern, the open window with the mountain view.\n2. The empty wooden wall shelves on the upper left are now full and lively: rows of glass bottles in different colours, stoneware jugs, stacked wooden and pewter mugs, a wheel of cheese, a jar of pickles, a small cask and a few hanging dried herbs, in the same painted style and warm light.\nNo characters, no animals, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "All characters and the fox are removed, and the beer mugs they held are gone. The upper-left shelves are filled with coloured bottles, jugs, mugs, cheese, a pickle jar, a cask and hanging herbs as requested. The table, stools, barrels, lantern and window view are kept, with no text or watermarks. The framing and some background details differ slightly from the reference, but this is minor drift rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000578
+  }
+}

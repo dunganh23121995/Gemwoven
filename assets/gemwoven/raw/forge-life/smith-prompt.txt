@@ -1,0 +1,10 @@
+Reference image 1 shows the forge's smith: a small chibi dwarf blacksmith with spiky white hair and a long white beard tied at the end, brass goggles on his forehead, a white shirt with rolled sleeves, a brown leather apron with straps, brown gloves and boots, holding a big iron sledgehammer. Keep his exact design, colours, proportions and painted style.
+Draw a 2x3 animation sheet (2 rows, 3 columns, read left to right then the next row) of this same smith hammering, seen in three-quarter view facing LEFT, full body standing, feet on the same ground line in every cell, same size and position in every cell:
+1. resting, hammer held at the shoulder, cheerful;
+2. lifting the hammer up behind his head;
+3. hammer at the top, about to swing;
+4. swinging the hammer down to his left (the hammer head at waist height in front-left of him, striking something unseen);
+5. the moment of impact, slight bounce of the body, eyes squeezed shut in a big grin;
+6. bringing the hammer back up toward the shoulder.
+Body only: no anvil, no table, no sparks, no effects, no shadow on the ground. Each figure centred in its cell, the whole body and hammer well inside the cell with generous margin, nothing crossing a cell edge, no borders or lines between cells.
+Solid flat pure magenta #FF00FF background. No magenta or pink in the character. No text.

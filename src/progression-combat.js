@@ -106,29 +106,43 @@ startStage=function(){
   progressionProcs.clear();progressionTurn=0;progressionTransform=null;progressionUlts=0;state.controlGuard=0;state.iceBar=0;state.playerIceBar=0;state.playerLock=null;state.tfDodge=false;state.noriSealFree=false;actor('hero').classList.remove('is-transformed','is-afterglow');progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
-// The worn title (Danh Hiệu) rides on top of the hero's head bar (name, health) on its rarity plate, as in town
-// and Gặp Gỡ. Cosmetic only. The head bar is redrawn often, so the plate is put back whenever it is missing.
-// Season looks (Mika's season, cosmetic only): the worn combat frame puts four drawn corner pieces on the battle scene,
-// clear of the board, health bars and skill cues; the worn entry effect plays once over the hero when the fight starts
+// The worn title (Danh Hiệu) shows only in Gặp Gỡ, never in a fight (owner 10/11).
+// Season looks (cosmetic only): the worn combat frame replaces the whole drawn frame kit around the battlefield and the
+// board; the worn entry effect plays once over the hero when the fight starts
 // (skipped with reduced motion) and never holds up a turn.
 function progressionLooks(){
   const files=progressionBattle?.lookFiles||{},scene=$('scene');if(!scene)return;
-  if(files.combatFrame&&!scene.querySelector('.cos-corner'))for(const c of ['tl','tr','bl','br']){const img=document.createElement('img');img.src=files.combatFrame;img.alt='';img.className='cos-corner '+c;scene.append(img);}
-  if(files.entry&&!progressionLooks.played&&!document.body.classList.contains('reduced-motion')){progressionLooks.played=true;
-    // Wait until the hero actually stands on the visible scene (the page loads behind its intro), then play once.
+  // A worn Khung trận swaps the whole drawn frame kit (combat-kits-premium.css): html.kit-<season>.
+  const kit=/season\/([a-z]+)\//.exec(files.combatFrame||'')?.[1];if(kit)document.documentElement.classList.add('kit-'+kit);
+  if(files.entry&&!progressionLooks.played){progressionLooks.played=true;
+    // Wait until the hero actually stands on the visible scene (the page loads behind its intro), then open the fight.
     let tries=0;const play=()=>{const hero=actor('hero'),r=hero?.getBoundingClientRect();if(!hero||!hero.offsetParent||!r||r.width<10||r.bottom<0){if(tries++<50)setTimeout(play,120);return;}
-      const fx=document.createElement('span');fx.className='cos-entry';fx.style.backgroundImage=`url("${files.entry}")`;fx.setAttribute('aria-hidden','true');
-      hero.append(fx);fx.addEventListener('animationend',()=>fx.remove(),{once:true});setTimeout(()=>fx.remove(),2000);};
-    // The strip is loaded first so the first frames are not lost while it downloads.
-    const strip=new Image();strip.src=files.entry;(strip.decode?strip.decode():Promise.resolve()).catch(()=>{}).then(()=>setTimeout(play,250));}
+      progressionOpening(files,progressionBattle?.lookNames?.entry||'',hero);};
+    // The strip and the ribbon are loaded first so the show does not start half drawn.
+    const ready=[files.entry,files.entry.replace(/entry\.webp$/,'nameplate.webp')].map(src=>{const im=new Image();im.src=src;return (im.decode?im.decode():Promise.resolve()).catch(()=>{});});
+    Promise.all(ready).then(()=>setTimeout(play,250));}
 }
-function progressionTitlePlate(){
-  const hud=$('heroHeadHud'),t=progressionBattle?.title;if(!hud||!t||hud.querySelector(':scope > .combat-title'))return;
-  const plate=document.createElement('span');plate.className=`combat-title tier-${t.tier}`;plate.setAttribute('aria-label','Danh hiệu: '+t.name);
-  // A worn season title shows its own drawn ribbon (Mika's season); other titles their rarity plate.
-  const img=document.createElement('img');img.src=t.cosmetic&&progressionBattle.lookFiles?.title||`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';if(t.cosmetic)plate.classList.add('is-season');const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
-  // Keep it inside the stage when the hero stands near its edge.
-  requestAnimationFrame(()=>{const s=$('scene').getBoundingClientRect(),r=plate.getBoundingClientRect();const shift=r.left<s.left+4?s.left+4-r.left:r.right>s.right-4?s.right-4-r.right:0;if(shift)plate.style.marginLeft=shift+'px';});
+// Khai trận (owner 08/11 "khai màn nên có cả khoảng thời gian trình diễn"; Claude + Codex look round,
+// assets/gemwoven/raw/look-round/mockup-entry.png 8,5/10): a worn entry effect opens the fight with a 2.2 s show before the
+// first move. 0–0.3 s the battlefield dims; 0.3–0.9 s the season's light gathers behind the hero and its drawn effect (the
+// entry strip, large) rises around the hero; 0.9–1.5 s the effect's name passes on the season's ribbon in the lower field;
+// 1.5–2.2 s it all clears. The ribbon is the season's slim name plate (Codex: a thin band that hides no one). The board waits for it and a tap anywhere skips it; with reduced motion only the ribbon shows,
+// still, for 0.3 s. Nothing of it stays once the first move opens.
+const PROGRESSION_OPENING_LIGHT={mika:'255,128,64',yuki:'160,222,255',nori:'150,232,120',lumi:'196,156,255',noct:'96,222,255'};
+function progressionOpening(files,name,hero){
+  const scene=$('scene'),season=/season\/([a-z]+)\//.exec(files.entry)?.[1]||'';if(!scene)return;
+  const calm=document.body.classList.contains('reduced-motion'),s=scene.getBoundingClientRect(),h=hero.getBoundingClientRect();
+  const show=document.createElement('div');show.className='cos-open'+(calm?' calm':'');show.setAttribute('aria-hidden','true');
+  show.style.setProperty('--light',PROGRESSION_OPENING_LIGHT[season]||'255,226,160');
+  show.style.setProperty('--hx',(h.left+h.width/2-s.left)+'px');show.style.setProperty('--hy',(h.top+h.height*.55-s.top)+'px');show.style.setProperty('--hh',h.height+'px');
+  // The dim, the light and the effect sit behind the fighters (Codex: the hero and the foe stay in front); the ribbon on top.
+  show.innerHTML=`<i class="cos-dim"></i><i class="cos-light"></i><i class="cos-fx" style="background-image:url('${files.entry}')"></i>`;
+  const ribbon=document.createElement('span');ribbon.className='cos-ribbon'+(calm?' calm':'');ribbon.setAttribute('aria-hidden','true');
+  ribbon.innerHTML=`<img src="${files.entry.replace(/entry\.webp$/,'nameplate.webp')}" alt=""><b></b>`;ribbon.querySelector('b').textContent=name;
+  scene.insertBefore(show,$('heroActor')||scene.firstChild);scene.append(ribbon);
+  const shield=document.createElement('button');shield.type='button';shield.className='cos-open-skip';shield.setAttribute('aria-label','Bỏ qua khai trận');document.body.append(shield);
+  let done=false;const end=()=>{if(done)return;done=true;show.remove();ribbon.remove();shield.remove();};
+  shield.addEventListener('pointerdown',end,{once:true});setTimeout(end,calm?300:2200);
 }
 const progressionOriginalRender=renderActors;
 renderActors=function(){
@@ -139,7 +153,7 @@ renderActors=function(){
   }
   if(!progressionBattle)return;
   const root=actor('hero'),evolution=Math.max(0,Math.min(6,progressionBattle.stats.evolution|0));root.dataset.evolution=evolution;
-  progressionTitlePlate();progressionLooks();
+  progressionLooks();
   // Evolution reads as light around the current form instead of armour pasted
   // over faces: a back-glow, a ground sigil and rising motes grow with each tier.
   const sheet=spriteDefinition('hero',state.key,'idle').sheet,bodyHeight=sheet.bodyHeight||.75,foot=sheet.footY||.94,centre=sheet.bodyX||sheet.heads?.[0]?.[0];
@@ -151,7 +165,7 @@ renderActors=function(){
   if(evolution>=6&&ART.evolution?.aura){const aura=document.createElement('img');aura.className='combat-evo combat-evo-aura';aura.src=ART.evolution.aura;aura.alt='';aura.setAttribute('aria-hidden','true');root.prepend(aura);}
 };
 const progressionOriginalUpdate=update;
-update=function(){progressionOriginalUpdate();progressionTitlePlate();progressionTransformButton();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
+update=function(){progressionOriginalUpdate();progressionTransformButton();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
 const progressionOriginalDetail=showHeroDetail;
 showHeroDetail=function(){
   progressionOriginalDetail();if(!progressionBattle)return;
@@ -281,16 +295,24 @@ function progressionTransformReady(){const t=progressionTransformKit();return !!
 // While Biến Thân lasts each hero's own power lifts all its damage (owner 05/11); its board effects apply in
 // live-combat.js / board-control.js. Nothing stays after it (no permanent afterglow bonus).
 function progressionTransformBonus(){return progressionTransform?.left>0?progressionTransformKit()?.power||0:0;}
+// Biến Thân stays hidden until it can be pressed (owner 10/11): once the hero owns it (skill 4: level 180, evolution 3)
+// and HP <= 50% or two ultimates are in, a medallion appears in the battlefield's upper-left corner, drawn from the
+// combat HUD's medallion pieces, and pulses gently until pressed; while it lasts it shows the turns left, then it goes.
+// Duels, practice and heroes without it show nothing.
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}
-  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span class="tf-label">BIẾN THÂN</span><b class="tf-count"></b><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
-  const ready=progressionTransformReady();b.hidden=!ready&&!progressionTransform;b.disabled=!ready;
-  b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);b.classList.toggle('is-after',!!progressionTransform&&progressionTransform.left===0);
-  b.querySelector('.tf-count').textContent=progressionTransform?.left>0?String(progressionTransform.left):'';
-  b.querySelector('small').textContent=progressionTransform?(progressionTransform.left>0?`Còn ${progressionTransform.left} lượt`:'Đã dùng'):`${t.turns} lượt`;
+  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='tf-medal';
+    b.innerHTML='<span class="chud-ult-art" aria-hidden="true"><i class="chud-ult-halo"></i><i class="chud-ult-disc"></i><i class="chud-ult-emblem"></i><i class="chud-ult-frame"></i><b class="tf-count"></b></span><span class="tf-label">Biến Thân</span>';
+    b.addEventListener('click',()=>{if(progressionTransformReady())progressionActivateTransform();});
+    ($('battleCard')||$('scene')).append(b);}
+  const ready=progressionTransformReady(),active=progressionTransform?.left>0;
+  b.hidden=!ready&&!active;b.disabled=!ready;b.dataset.element=state.key;
+  b.classList.toggle('is-ready',ready);b.classList.toggle('is-active',active);
+  b.querySelector('.tf-count').textContent=active?String(progressionTransform.left):'';
+  b.querySelector('.tf-label').textContent=active?`Còn ${progressionTransform.left} lượt`:'Biến Thân';
   b.title=t.text;
-  b.setAttribute('aria-label',ready?`Biến Thân: ${t.turns} lượt, ${t.text}, giảm ${Math.round(t.reduce*100)}% sát thương nhận, miễn choáng`:b.querySelector('small').textContent);
+  b.setAttribute('aria-label',active?`Biến Thân: còn ${progressionTransform.left} lượt`:`Biến Thân: ${t.turns} lượt, ${t.text}, giảm ${Math.round(t.reduce*100)}% sát thương nhận, miễn choáng`);
 }
 function progressionActivateTransform(){
   if(!progressionTransformReady()||locked)return;const t=progressionTransformKit();

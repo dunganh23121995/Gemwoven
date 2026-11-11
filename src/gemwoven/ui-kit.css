@@ -237,3 +237,17 @@
 .spares-dialog .sp-fee b.ok{color:#2f7a2a}.spares-dialog .sp-fee b.short{color:#b32a1c}
 .spares-dialog .sp-go{min-width:0;width:88px;padding:5px 14px;font-size:15px;flex:none;white-space:nowrap}
 .spares-dialog .sp-short{text-align:center;color:#b32a1c;font-weight:800;margin:10px 0 0}
+/* Rarity slots (owner 08/11, Codex mockup raw/rarity-tiles): the drawn slot carries the tier; only the chosen Legendary/Divine item
+   in the bag and the summon screen's rare prizes catch a slow sweep of light, and Divine one sparkle (Codex: never the whole bag
+   at once). Under reduced motion both stay hidden. */
+#stage .node-button:is(.rarity-legendary,.rarity-divine):is(.selected,.su-prize)::after{content:"";position:absolute;left:6%;top:6%;width:88%;height:88%;border-radius:15%;z-index:3;pointer-events:none;background:linear-gradient(115deg,#fff0 42%,#fff5 50%,#fff0 58%) 0 0/300% 100% no-repeat;mix-blend-mode:screen;animation:rarity-sheen 5.5s ease-in-out infinite}
+#stage .node-button.rarity-divine:is(.selected,.su-prize)::before{content:"";position:absolute;right:4%;top:2%;width:30%;aspect-ratio:1;z-index:4;pointer-events:none;background:var(--summon-sparkle) 0 0/800% 100% no-repeat;opacity:0;animation:sm-twinkle 3.4s linear 1.2s infinite}
+#stage .su-prize:is(.rarity-legendary,.rarity-divine)::after{left:6px;top:6px;width:84px;height:84px}
+#stage .su-prize.rarity-divine::before{left:62px;right:auto;top:-4px;width:34px}
+@keyframes rarity-sheen{0%{background-position:100% 0}38%,100%{background-position:0% 0}}
+/* Button roles (owner 08/11, Codex look round D): the crystal buttons belong to the summon ritual alone (×1 / ×10); every other
+   action is the gold plate (grey steel when it cannot be done), its word a short verb. The last crystal ones outside Triệu Hồi:
+   the chapter star chest on the map, "Nạp" in the shop and the gear lock in the bag (kit-plate). */
+#stage :is([data-node="campaign.rewards"],[data-node="shop.topup"],.kit-plate)>.art{content:var(--kit-btn-gold)}
+#stage :is([data-node="campaign.rewards"],[data-node="shop.topup"],.kit-plate):disabled>.art{content:var(--kit-btn-steel)}
+#stage :is([data-node="campaign.rewards"],[data-node="shop.topup"],.kit-plate) .copy-layer{color:#4a2508!important;text-shadow:0 1px #fff3cf!important;font-weight:900}

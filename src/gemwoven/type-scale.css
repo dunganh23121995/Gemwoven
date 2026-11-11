@@ -9,7 +9,7 @@
 #stage #scene .live-panel .game-heading h2,#stage #scene .live-panel h2.tp-title{font-size:var(--ts-title)!important}
 
 /* Shared bottom menu. */
-#stage #scene :is([data-node$=".nav-active-label"],[data-node*=".nav-mini-"]){font-size:var(--ts-label)!important}
+#stage #scene [data-node$=".nav-active-label"]{font-size:var(--ts-label)!important}
 
 /* Chiến Dịch */
 #stage #scene .stage-seal .seal-number{font-size:36px!important}

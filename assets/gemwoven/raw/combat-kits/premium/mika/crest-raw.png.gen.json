@@ -1,0 +1,22 @@
+{
+  "backend": "api",
+  "model": "gpt-image-2.6-sunburst",
+  "quality": "low",
+  "at": "2026-11-10T08:14:12.694199+00:00",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\combat-kits\\premium\\mika\\ref-mockup.png"
+  ],
+  "prompt": "One ornament: a brass fox-mask crest with a vermilion-lacquered face and two flame-shaped carved wings spreading left and right, about three times as wide as tall, centred. Style: the premium seasonal battle frame 'Hỏa Hồ — Nine-Tailed Fire Fox' of reference image 1: hand-painted fantasy mobile game UI, carved warm wood, aged brass and vermilion lacquer, flame carvings, sculptural depth, warm brass highlights, crisp clean edges, no pixel art, no text, no letters. Solid flat pure magenta #FF00FF background around the artwork, generous margin, nothing touching the image edges. No magenta or pink inside the artwork.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "background",
+        "detail": "The prompt asks for a solid flat pure magenta #FF00FF background, but the candidate's background is white, not the requested key colour."
+      }
+    ],
+    "summary": "The fox-mask crest artwork is intact, centred and has margin, but it sits on a white background instead of the flat magenta key colour the prompt specifies, so it needs redrawing or re-keying.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000455
+  }
+}

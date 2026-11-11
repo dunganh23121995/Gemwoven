@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-08T08:27:24Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\gemwoven\\raw\\tavern-life\\yuki\\rig\\show\\parts-ref.png"
+  ],
+  "prompt": "Image 1 is a a chibi girl with long silver-white hair, white rabbit ears and a blue moon hairpin in a blue and white dress, raising a foaming beer mug, smiling on a plain background, cut off by a straight horizontal edge at the bottom. Redraw EXACTLY the same picture as a flat colour-coded PART MAP for skeletal animation: the same canvas, the same pose, size and position, every outline exactly where it is in Image 1, every region filled with one solid flat colour:\n- pure BLUE #0000FF: the head: the whole face with eyes, nose and mouth, the ears, the hair on top of the head and the bangs. The face is never any other colour.\n- pure WHITE #FFFFFF: the body: neck, torso, shoulders, both arms and both hands.\n- pure GREEN #00FF00: the bottom band of the picture along the straight cut edge (about the lowest tenth of the height): it never moves.\n- pure YELLOW #FFFF00: the beer mug with its foam, without the hand.\n- pure RED #FF0000: the long silver hair falling down both sides.\n- pure CYAN #00FFFF: the blue hair ornament and small hair strands over the face.\nBackground solid pure BLACK #000000. Flat colours only: no shading, no outlines, no gradients, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a valid flat colour part map: the head is blue, the hair is red with cyan ornament strands, the body and hands are white, the mug is yellow, the background is black, and a green band sits at the bottom. Scale and position match the reference. Minor deviations: the green band is about 3.5% of the height rather than a tenth, and faint black outline lines appear in the white body region. Neither makes the image unusable as raw material.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000952
+  }
+}
