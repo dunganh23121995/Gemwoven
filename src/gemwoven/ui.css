@@ -250,6 +250,26 @@ body{overflow-x:hidden}
 .gw-dialog>.gw-head{top:calc(105*var(--ft)*var(--s));height:calc(66*var(--ft)*var(--s));left:calc(158*var(--fs)*var(--s) + 30px);right:calc(158*var(--fs)*var(--s) + 30px)}
 .gw-dialog>.gw-head h2{font-size:calc(40*var(--ft)*var(--s) + 3px)}
 
+/* One popup frame everywhere (owner 11/11, Codex 8/10 vs 6.5/10): the framed pages (Sự Kiện, Hòm Thư, Trùm Vô Tận, Thành
+   Tích, Tích Lũy, Cài Đặt, ...) wear the thin frame of Gặp Gỡ's sheets and the popups (plaza.css .pz-sheet): the same
+   --ft/--fs fractions, a small crest under its crown, a slim plank and the brass × inside the frame (progression-ui.js
+   backNode places the × node level with the plank). */
+.node.live-panel.gw-frame{--ft:.7;--fs:.5;
+  padding:calc(214*var(--ft)*var(--s)) calc(92*var(--fs)*var(--s) + 14px) calc(100*var(--fs)*var(--s) + 14px);
+  background:linear-gradient(#f0e2c3,#f0e2c3) calc(76*var(--fs)*var(--s)) calc(208*var(--ft)*var(--s))/calc(100% - 152*var(--fs)*var(--s)) calc(100% - 208*var(--ft)*var(--s) - 104*var(--fs)*var(--s)) no-repeat}
+.live-panel.gw-frame::before{border-width:calc(250*var(--ft)*var(--s)) calc(125*var(--fs)*var(--s)) calc(160*var(--fs)*var(--s))}
+.live-panel.gw-frame>.gw-emblem{top:calc(58*var(--ft)*var(--s));width:calc(68*var(--ft)*var(--s))}
+.live-panel.gw-frame>.gw-head{top:calc(105*var(--ft)*var(--s));height:calc(66*var(--ft)*var(--s));left:calc(40*var(--s) + 128px);right:calc(40*var(--s) + 128px)}
+.live-panel.gw-frame>.gw-head h2{font-size:42px;line-height:1.15}
+.live-panel.gw-frame>.gw-head:has(small) h2{font-size:36px}.live-panel.gw-frame>.gw-head:has(small) small{font-size:26px}
+/* Cài Đặt's own frame, drawn the same way (its panel is as wide as the others, 859 stage px: --s 1.1303). */
+.settings-panel{--s:1.1303px;--ft:.7;--fs:.5}
+.settings-panel::before{border-width:calc(250*var(--ft)*var(--s)) calc(125*var(--fs)*var(--s)) calc(160*var(--fs)*var(--s))!important}
+.settings-panel::after{top:calc(58*var(--ft)*var(--s) - 36px)!important;width:174px!important;height:71px!important}
+.crafted-panel.settings-panel .crafted-heading{top:calc(105*var(--ft)*var(--s))!important;height:calc(66*var(--ft)*var(--s));left:calc(40*var(--s) + 128px)!important;right:calc(40*var(--s) + 128px);width:auto!important;display:flex;align-items:center;justify-content:center}
+.crafted-panel.settings-panel .crafted-heading h2{font-size:42px!important;line-height:1.15}
+.crafted-panel.settings-panel #home-audio-form{top:150px!important}
+
 /* Popup standard (Codex review 30): one × inside the frame, level with the title plank; a footer only with actions,
    secondary left → primary right, centred; the title keeps room for the ×. */
 .gw-dialog>.gw-close,.gw-dialog .gw-close{right:calc(40*var(--s) + 4px)!important;top:max(10px,calc(97*var(--s) - 24px))!important;width:48px!important;height:48px!important;font-size:26px!important;padding:0 0 3px!important;filter:drop-shadow(0 2px 2px #2a140899)}

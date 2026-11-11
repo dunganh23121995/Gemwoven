@@ -127,6 +127,11 @@
 .pz-sheet::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border:solid transparent;
   border-width:calc(250*var(--ft)*var(--s)) calc(125*var(--fs)*var(--s)) calc(160*var(--fs)*var(--s));border-image:var(--pz-frame) 250 125 160 fill stretch}
 .pz-sheet[hidden]{display:none}
+/* The crown (medallion, scrolls, leaves) rides with the crest at its own proportions, as on every popup (ui.css .gw-emblem):
+   the old frame carried it in the stretched top slice, so its round cartouche turned oval (owner 11/11). */
+.pz-sheet-crest{z-index:1}
+.pz-sheet-crest::before{content:'';position:absolute;z-index:-1;left:50%;top:-14.7%;width:323.5%;height:132.4%;translate:-50% 0;
+  background:var(--pz-crown) center/100% 100% no-repeat}
 @keyframes pz-sheet{from{transform:translateY(40px);opacity:0}}
 .pz-sheet-crest{position:absolute;left:50%;top:calc(58*var(--ft)*var(--s));width:calc(68*var(--ft)*var(--s));aspect-ratio:1;translate:-50% -50%;background:var(--pz-crest) center/contain no-repeat;pointer-events:none}
 .pz-sheet-title{position:absolute;left:calc(158*var(--fs)*var(--s) + 40px);right:calc(158*var(--fs)*var(--s) + 40px);top:calc(105*var(--ft)*var(--s));height:calc(66*var(--ft)*var(--s));margin:0;

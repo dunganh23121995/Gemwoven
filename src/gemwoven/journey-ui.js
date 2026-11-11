@@ -376,6 +376,8 @@
     if(key==='campaign')nodes=campaign(nodes,p,state);
     if(key==='settings'||key==='chat'){
       nodes=nodes.filter(n=>n.kind!=='content');nodes.push(frame(key,key==='chat'?'chat-frame':'settings-frame',el=>key==='chat'?chat(el,p,state):settings(el),key==='chat'?'chat-panel':'settings-panel'));
+      // Cài Đặt is as wide as every other framed page (owner 11/11, Codex: the narrower frame made its plank and × look big).
+      if(key==='settings')nodes[nodes.length-1].rect=[41,188,859,1291];
     }
     if(key==='arena'){const enemy=nodes.find(n=>n.id==='arena.fighter-ice');if(enemy)enemy.className=((enemy.className||'')+' facing-left').trim();}
     hangingMenu(nodes);

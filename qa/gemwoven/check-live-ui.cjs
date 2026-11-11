@@ -231,9 +231,9 @@ function captureMap(scope=d){return {scroll:(scope.querySelector('.exploration-m
   }
   // Panels outside the bottom menu carry a back arrow that returns to the previous screen.
   w.GEMWOVEN_GAME.engine.sendMail({kind:'notice',from:'Ban Quản Trị',title:'Kiểm tra nút quay lại',body:'Thư kiểm thử.',attachments:[],expiryDays:3});
-  await go('inventory');await go('mail');assert.ok(d.querySelector('[data-node="mail.back"]'),'Mailbox has a back arrow');
+  await go('inventory');await go('mail');assert.ok(d.querySelector('[data-node="mail.back"]'),'Mailbox has its close ×');
   d.querySelector('.mail-row').click();await sleep();assert.ok(d.querySelector('.mail-detail'),'Letter opens');d.querySelector('[data-node="mail.back"]').click();await sleep();assert.equal(d.querySelector('.mail-detail'),null,'Back closes an open letter first');
   d.querySelector('[data-node="mail.back"]').click();await sleep();assert.equal(d.title,'Gemwoven · '+w.GEMWOVEN_LAYOUT.names.inventory,'Back returns to the previous screen');
-  for(const key of ['boss','offline','rankings','events','vip','settings','admin','chat']){await go(key);assert.ok(d.querySelector(`[data-node="${key}.back"]`),key+' has a back arrow');}
+  for(const key of ['boss','offline','rankings','events','vip','settings','admin','chat']){await go(key);assert.ok(d.querySelector(`[data-node="${key}.back"]`),key+' has its close × (chat: its back arrow)');}
   assert.deepEqual(errors,[]);console.log(JSON.stringify({passed:true,screens,visibilityCases,checks:'Persistent wallet, illustrated navigation, tutorial lock previews and full-width cloud frontier, trimmed scroll extent, hidden future bosses, summons, equipment, skills, events and mailbox (welcome, studio send without gems, item art, claim reward sheet, delete rules, localhost preview gift)'},null,2));w.close();
 })().catch(e=>{console.error(e);w.close();process.exitCode=1;});

@@ -39,7 +39,8 @@
   const EXTRA={epicGearChoice:'chest',legendaryGearChoice:'chest'};
 
   // ----- Sổ Hành Trình: "Hành Trình Của X" -----
-  const VX=22,VY=956,VW=897,VH=380,LANE=[106,360,614],CW=244,ROW=112,STAR=166;
+  // The VIP page hides the bottom menu (owner 11/11): the list and its buttons run ROOM stage px further down.
+  const ROOM=182,VX=22,VY=956,VW=897,VH=380+ROOM,LANE=[106,360,614],CW=244,ROW=112,STAR=166;
   function cell(v,r,track,lane){
     const c=r[track],rw=c.reward,star=v.milestones.includes(r.level),hero=v.hero.hero;
     const h=(star?STAR:ROW)-12,ready=c.state==='ready';
@@ -91,8 +92,8 @@
       `<div class="pv-viewport sz-viewport" style="${box(VX,VY,VW,VH)}"><div class="pv-scroll" data-scroll="vipScroll-season" data-top="${top}" style="${box(0,0,VW,VH)}">`+
         `<div class="pv-rows sz-rows" style="height:${list.height}px;background-image:url('${VP('trunk-tile')}')">${list.html}</div></div>`+
         `<span class="pv-rail" style="${box(868,6,14,VH-12)}"><img class="pv-railbar" src="${VP('scroll-rail')}" alt=""><img class="pv-up" src="${VP('scroll-arrow')}" alt=""><img class="pv-down" src="${VP('scroll-arrow')}" alt=""><img class="pv-thumb" src="${VP('scroll-thumb')}" alt=""></span></div>`+
-      `<button type="button" class="pv-action secondary" data-action="route:quests" style="${box(52,1350,300,104)}"><img class="pv-art" src="${VP('action-secondary')}" alt=""><img class="pv-actionicon" src="${VP('journey-book')}" alt=""><b>Nhiệm vụ</b></button>`+
-      `<button type="button" class="pv-action primary" data-action="pass:claim-all" ${v.ready?'':'disabled'} style="${box(372,1346,524,112)}"><img class="pv-art" src="${VP('action-primary')}" alt=""><img class="pv-actionicon" src="${VP('gift')}" alt=""><b>${v.ready?`Nhận tất cả · ${v.ready}`:'Chưa có quà'}</b></button>`;
+      `<button type="button" class="pv-action secondary" data-action="route:quests" style="${box(52,1350+ROOM,300,104)}"><img class="pv-art" src="${VP('action-secondary')}" alt=""><img class="pv-actionicon" src="${VP('journey-book')}" alt=""><b>Nhiệm vụ</b></button>`+
+      `<button type="button" class="pv-action primary" data-action="pass:claim-all" ${v.ready?'':'disabled'} style="${box(372,1346+ROOM,524,112)}"><img class="pv-art" src="${VP('action-primary')}" alt=""><img class="pv-actionicon" src="${VP('gift')}" alt=""><b>${v.ready?`Nhận tất cả · ${v.ready}`:'Chưa có quà'}</b></button>`;
   }
   function jump(state,level,el){
     const v=G.engine.pass(),list=rows(v),s=el.closest('.exploration-map')?.querySelector('[data-scroll="vipScroll-season"]');

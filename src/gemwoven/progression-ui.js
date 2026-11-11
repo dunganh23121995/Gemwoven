@@ -146,9 +146,12 @@
   }
   addEventListener('hashchange',()=>{const key=location.hash.slice(1);if(L.screens[key])remember(key);});
   function backNode(key){
-    const text=key+'.back';C[text]='Quay lại';
-    // On the right end of the title plank (owner 04/11, Codex 31): its own dark walnut face, clear of the painting.
-    return {id:text,kind:'button',rect:[776,284,112,112],asset:A['kit-back']?'kit-back':'map-back',fit:'contain',text,labelHidden:true,action:'nav:back',className:'panel-back'};
+    const text=key+'.back';C[text]='Đóng';
+    // On the right end of the title plank (owner 04/11, Codex 31). A framed page closes with the popups' brass ×
+    // (owner 11/11: the back arrow is only for the navigator screens, Gặp Gỡ and Khám Phá, back to the main screen).
+    // Level with the thin frame's plank, 40 frame px + 10 in from its right edge, as on Gặp Gỡ's sheets (ui.css); every
+    // framed page, Cài Đặt too, is the same 859-wide panel.
+    return {id:text,kind:'button',rect:[737,243,108,108],asset:A['plaza-ui-close']?'plaza-ui-close':'kit-round',fit:'contain',text,labelHidden:true,action:'nav:back',className:'panel-close'};
   }
   function decorate(state){
     const p=engine.read();state.hero=state.hero in M.HEROES?state.hero:p.selected;const key=state.screen;remember(key);

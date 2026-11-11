@@ -66,7 +66,7 @@
 .mail-thumb{width:104px!important;height:98px!important;padding:16px!important}
 .mail-thumb i{font-size:28px!important;bottom:-4px!important}
 .mail-footer .game-btn{--h:100px;font-size:34px!important}
-.live-panel:has(.mail-list)>.gw-emblem,.live-panel:has(.mail-letter)>.gw-emblem{background-image:var(--kit-icon-emblem-mail)!important;width:calc(96*var(--s,1px));}
+.live-panel:has(.mail-list)>.gw-emblem,.live-panel:has(.mail-letter)>.gw-emblem{background-image:var(--kit-icon-emblem-mail)!important}
 .settings-panel>.gw-emblem{background-image:var(--kit-icon-emblem-gear)!important}
 /* Round 3: everything in Cài Đặt fits the frame; four rewards stay on one line. */
 .settings-panel .kit-plaque{margin:6px auto 2px;padding:8px 0;font-size:30px}
@@ -207,6 +207,13 @@
 #scene .panel-back{filter:drop-shadow(0 4px 4px #1a0c0499);z-index:6}
 #scene .panel-back::after{content:"";position:absolute;inset:-8px}
 #scene .panel-back:active>.art{content:var(--kit-back-down)}
+/* Close × (owner 11/11): framed pages (Sự Kiện, Hòm Thư, VIP, ...) close with the popups' brass disc and its ×, as in Gặp Gỡ's
+   sheets; the back arrow stays on the navigator screens (Gặp Gỡ, Khám Phá) and the pages of their own (VIP, Nạp, the shop
+   opened from a popup). */
+#scene .panel-close{z-index:7;filter:drop-shadow(0 4px 4px #1a0c0499)}
+#scene .panel-close::after{content:"×";position:absolute;inset:-8px;display:grid;place-items:center;padding-bottom:12px;
+  font:800 64px/1 var(--gw-font,Georgia,serif);color:#5a3412;text-shadow:0 1px 0 #ffe6a0;pointer-events:none}
+#scene .panel-close:active:not(:disabled){scale:.94}
 
 /* Tăng Sao starred spares (owner 04/11, Claude + Codex mockup star-spares-mockup): leather stamps 1★..5★ ×n, the needed one
    with a thin gold outline, brass arrows only where the plan fuses; the spare tile wears its star seal and the forge badge. */

@@ -57,7 +57,9 @@
   // trunk in the left gutter carries the level medals, three light trays sit side by side, and one lock strip with a
   // pale backing covers the tracks not bought yet (mockup assets/gemwoven/raw/vip-pass/v2/mockup-1.png).
   // Boxes inside the viewport are viewport units; the viewport sits at stage (VX, VY).
-  const VX=22,VY=754,VW=897,VH=580,ROW=150,TRUNK=50,CELL=[244,136],LANE_L=[106,360,614],HEAD_Y=566,BAND_Y=697;
+  // VIP hides the bottom menu (owner 11/11: "vào trang VIP thì ẩn menu đi, trả lại không gian cho danh sách"): the list
+  // runs ROOM stage px further down and the buttons under it move down as far.
+  const ROOM=182,VX=22,VY=754,VW=897,VH=580+ROOM,ROW=150,TRUNK=50,CELL=[244,136],LANE_L=[106,360,614],HEAD_Y=566,BAND_Y=697;
   const laneX=i=>VX+LANE_L[i];
   const tray=frame=>`<span class="pv-tray" style="border-image-source:url('${art(frame)}')"></span>`;
   function socket(cell,lane,row){
@@ -118,8 +120,8 @@
         `<b class="pv-lvl" style="${box(248,14,156,56)}">Cấp ${v.level} / ${v.max}</b>`+
         `<span class="pv-trough green" style="${box(404,22,246,40)}"><img src="${art('activity-trough')}" alt=""><em style="width:${(v.level>=v.max?100:v.into/v.per*100).toFixed(1)}%"><img src="${art('activity-fill')}" alt=""></em><b>${v.level>=v.max?'Tối đa':`${v.into} / ${v.per}`}</b></span>`+
         `<img class="pv-hourglass" src="${art('hourglass')}" alt="" style="${box(654,12,38,60)}"><b class="pv-days" style="${box(694,14,96,56)}">${v.daysLeft} ngày</b></button>`+
-      `<button type="button" class="pv-action secondary" data-action="route:quests" style="${box(52,1350,300,104)}"><img class="pv-art" src="${art('action-secondary')}" alt=""><img class="pv-actionicon" src="${art('journey-book')}" alt=""><b>Nhiệm vụ</b></button>`+
-      `<button type="button" class="pv-action primary" data-action="pass:claim-all" ${v.ready?'':'disabled'} style="${box(372,1346,524,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art('gift')}" alt=""><b>${v.ready?`Nhận tất cả · ${v.ready}`:'Chưa có quà'}</b></button>`;
+      `<button type="button" class="pv-action secondary" data-action="route:quests" style="${box(52,1350+ROOM,300,104)}"><img class="pv-art" src="${art('action-secondary')}" alt=""><img class="pv-actionicon" src="${art('journey-book')}" alt=""><b>Nhiệm vụ</b></button>`+
+      `<button type="button" class="pv-action primary" data-action="pass:claim-all" ${v.ready?'':'disabled'} style="${box(372,1346+ROOM,524,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art('gift')}" alt=""><b>${v.ready?`Nhận tất cả · ${v.ready}`:'Chưa có quà'}</b></button>`;
   }
   function seasonDialog(){
     const v=G.engine.pass(),modal=window.GemwovenUI.makeDialog('pass-season',`Sổ Hành Trình · Mùa ${v.season+1}`,'growth-dialog pv-dialog');
@@ -176,7 +178,7 @@
       head(0,'free','Cấp tướng')+head(1,'gold','Đá Ngọc',own?'Đã mở':'Σ '+fmt(total),'pass:buy','growth-fund')+head(2,'jewel','Tích lũy','Tới mốc','pass:buy','growth-fund')+
       buyButton('growth-fund','fund-pouch','Kích hoạt');
   }
-  const buyButton=(id,icon,text)=>`<button type="button" class="pv-action primary two" data-action="pass:buy" data-product="${id}" style="${box(206,1346,530,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art(icon)}" alt=""><span><b>${text} · ${vnd(product(id).price)}</b><small>${LOCK}Sắp ra mắt</small></span></button>`;
+  const buyButton=(id,icon,text)=>`<button type="button" class="pv-action primary two" data-action="pass:buy" data-product="${id}" style="${box(206,1346+ROOM,530,112)}"><img class="pv-art" src="${art('action-primary')}" alt=""><img class="pv-actionicon" src="${art(icon)}" alt=""><span><b>${text} · ${vnd(product(id).price)}</b><small>${LOCK}Sắp ra mắt</small></span></button>`;
   // The season strip slot on the card tabs: the price on the pennant, the name and one short fact beside it.
   function productStrip(id,sub,own){
     const x=product(id);
@@ -206,9 +208,10 @@
   G.decorate=state=>{
     const p=decorate(state);if(state.screen!=='vip')return p;
     const screen=L.screens.vip;screen.backgroundKey='vip';if(A['background-vip'])screen.background=A['background-vip'].file;
-    screen.nodes=screen.nodes.filter(n=>n.id!=='vip.live'&&n.id!=='vip.back');
-    screen.nodes.push({id:'vip.live',kind:'content',rect:[0,0,941,1490],className:'exploration-map pv',build:el=>build(el,state)});
-    // Back on the right like every panel (owner 04/11), clear of the VIP sign.
+    screen.nodes=screen.nodes.filter(n=>!/^vip\.(live|back|footer-board|nav-.*)$/.test(n.id));
+    screen.nodes.push({id:'vip.live',kind:'content',rect:[0,0,941,1672],className:'exploration-map pv',build:el=>build(el,state)});
+    // A page of its own (its own painting, no menu), not a popup: it keeps the back arrow on the right (owner 04/11, 11/11),
+    // clear of the VIP sign.
     screen.nodes.push({id:'vip.back',kind:'button',rect:[790,120,112,112],asset:A['kit-back']?'kit-back':'map-back',fit:'contain',text:'vip.back',labelHidden:true,action:'nav:back',className:'panel-back'});
     return p;
   };

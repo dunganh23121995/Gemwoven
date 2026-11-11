@@ -462,7 +462,7 @@
       <section class="pz-sheet" hidden><span class="pz-sheet-crest" aria-hidden="true"></span><h2 class="pz-sheet-title"></h2><button type="button" class="pz-close" aria-label="Đóng">×</button><div class="pz-sheet-body"></div></section>`;
     // Drawn pieces reach the stylesheet as variables (absolute URLs, so the inlined build resolves them too).
     for(const n of CSS_PIECES)root.style.setProperty('--pz-'+n,`url("${new URL(ui(n),document.baseURI).href}")`);
-    for(const [n,k] of [['frame','settings-frame'],['crest','crest'],['row','ui-row']])if(asset(k))root.style.setProperty('--pz-'+n,`url("${new URL(asset(k),document.baseURI).href}")`);
+    for(const [n,k] of [['frame',asset('dialog-frame')?'dialog-frame':'settings-frame'],['crown','dialog-crown'],['crest','crest'],['row','ui-row']])if(asset(k))root.style.setProperty('--pz-'+n,`url("${new URL(asset(k),document.baseURI).href}")`);
     P.root=root;P.world=root.querySelector('.pz-world');
     const view=root.querySelector('.pz-view');
     // Pointer: a drag on the ground is a joystick at the touch point (or the fixed corner stick); a short tap walks there.

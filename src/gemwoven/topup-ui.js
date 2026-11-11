@@ -111,10 +111,12 @@
     const p=decorate(state);if(state.screen!=='shop')state.shopBack=false;if(state.screen!=='topup')return p;
     const screen=L.screens.topup;if(A['background-vip'])screen.background=A['background-vip'].file;
     const back=screen.nodes.find(n=>n.id==='topup.back');
-    screen.nodes=screen.nodes.filter(n=>n.id!=='topup.live'&&n.id!=='topup.back');
-    screen.nodes.push({id:'topup.live',kind:'content',rect:[0,0,941,1490],className:'exploration-map tp',build:el=>build(el)});
-    // The Nạp sign sits higher than the other panels' title planks: the back medallion follows it.
-    if(back){back.rect=[790,96,112,112];screen.nodes.push(back);}
+    // Like VIP, Nạp hides the bottom menu and gives its room to the packs (owner 11/11: "trang Nạp cũng bỏ menu bên dưới đi").
+    screen.nodes=screen.nodes.filter(n=>!/^topup\.(live|back|footer-board|nav-.*)$/.test(n.id));
+    screen.nodes.push({id:'topup.live',kind:'content',rect:[0,0,941,1672],className:'exploration-map tp',build:el=>build(el)});
+    // The Nạp sign sits higher than the other panels' title planks: the back medallion follows it. Nạp is a page of its own
+    // like VIP, so it keeps the back arrow (owner 11/11), not the popups' ×.
+    if(back){window.GEMWOVEN_DEFAULT_COPY[back.text]='Quay lại';screen.nodes.push({...back,rect:[790,96,112,112],asset:A['kit-back']?'kit-back':'map-back',className:'panel-back'});}
     return p;
   };
   const handle=G.handle;

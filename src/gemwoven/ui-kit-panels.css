@@ -337,11 +337,12 @@
 #power-detail.kp-pop .kp-info>summary{min-height:38px}
 .kp-pop .kp-ways{margin:4px 0 14px!important}
 .kp-pop .kp-ways img{width:52px;height:52px}
-/* Frame medallions per screen, as on the Hòm Thư / Cài Đặt frames. */
-.kp-rankings>.gw-emblem{background-image:var(--kit-icon-emblem-trophy)!important;width:calc(96*var(--s,1px))}
-.kp-events>.gw-emblem{background-image:var(--kit-icon-emblem-calendar)!important;width:calc(96*var(--s,1px))}
-.kp-offline>.gw-emblem{background-image:var(--kit-icon-emblem-coins)!important;width:calc(96*var(--s,1px))}
-.kp-boss>.gw-emblem{background-image:var(--kit-icon-emblem-swords)!important;width:calc(96*var(--s,1px))}
+/* Frame medallions per screen, as on the Hòm Thư / Cài Đặt frames; every frame keeps the one crest size (owner 11/11: a
+   larger crest and its crown covered the title). */
+.kp-rankings>.gw-emblem{background-image:var(--kit-icon-emblem-trophy)!important}
+.kp-events>.gw-emblem{background-image:var(--kit-icon-emblem-calendar)!important}
+.kp-offline>.gw-emblem{background-image:var(--kit-icon-emblem-coins)!important}
+.kp-boss>.gw-emblem{background-image:var(--kit-icon-emblem-swords)!important}
 /* ----- Lực chiến, second pass (Codex mockup raw/ui-kit/tavern-power/mockup-power-raw.png): no rules between rows and
  * no dash cells, the sources that add nothing behind one leather-edged line, a raised total, three matching buttons. */
 #power-detail.kp-pop .power-hero{margin:0 0 10px}
