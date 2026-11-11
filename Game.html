@@ -1263,46 +1263,34 @@ body.whole-scene.reduced-motion .scene .landscape .parallax-layer[data-depth="0"
 .scene[data-chapter="celestial"] .scene-atmosphere{--speck:#fff4c2}
 .scene[data-chapter="void"] .scene-atmosphere{--speck:#c890ff}
 
-/* Danh Hiệu over the hero's head (progressionTitlePlate): the rarity plate with the name, never mirrored. */
-.combat-title{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:128px;height:34px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:5}
-.combat-title img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.combat-title b{position:relative;font:900 11px/1 Cambria,serif;white-space:nowrap;padding:0 20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;background:linear-gradient(180deg,#fff 0%,var(--t1,#fff3c4) 55%,var(--t2,#ffc94a) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(40,18,6,.9)) drop-shadow(0 0 3px rgba(40,18,6,.7))}
-.combat-title.tier-1{--t1:#e8ffd8;--t2:#9fd889}.combat-title.tier-2{--t1:#e2f2ff;--t2:#8cc4ff}.combat-title.tier-3{--t1:#f4e6ff;--t2:#c79bff}.combat-title.tier-4{--t1:#fff4c8;--t2:#ffc94a}.combat-title.tier-5{--t1:#ffe6d0;--t2:#ff7a52}
-/* Biến Thân: the button near the hero, the golden glow while it lasts, a faint afterglow later. */
-.transform-btn{position:absolute;left:8px;bottom:10px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:1px;min-width:118px;min-height:52px;padding:6px 12px;border-radius:16px;border:2px solid #ffe7a6;background:linear-gradient(#f6b24a,#c4561c);color:#fff;font:900 15px/1.05 Cambria,serif;text-shadow:0 1px 2px #5a2a08;box-shadow:0 0 0 0 rgba(255,200,90,.8),0 4px 12px rgba(0,0,0,.45);cursor:pointer;animation:transform-call 1.6s ease-in-out infinite}
-.transform-btn small{font:700 11px/1.1 sans-serif;opacity:.95}
-.transform-btn:disabled{animation:none;cursor:default;filter:saturate(.7);opacity:.9}
-.transform-btn.is-active{background:linear-gradient(#ffd56a,#e0782a)}
-@keyframes transform-call{50%{box-shadow:0 0 0 8px rgba(255,200,90,0),0 4px 12px rgba(0,0,0,.45)}}
+/* Biến Thân: the golden glow on the hero while it lasts (the medallion is in combat-hud.css). */
 #heroActor.is-transformed .sprite-body{filter:drop-shadow(0 0 10px rgba(255,214,110,.95)) drop-shadow(0 0 22px rgba(255,170,60,.7)) brightness(1.08);animation:transform-glow 1.4s ease-in-out infinite}
 #heroActor.is-afterglow .sprite-body{filter:drop-shadow(0 0 6px rgba(255,214,110,.55))}
 @keyframes transform-glow{50%{filter:drop-shadow(0 0 16px rgba(255,224,130,1)) drop-shadow(0 0 30px rgba(255,170,60,.85)) brightness(1.12)}}
-.reduced-motion .transform-btn,.reduced-motion #heroActor.is-transformed .sprite-body{animation:none}
+.reduced-motion #heroActor.is-transformed .sprite-body{animation:none}
 #heroActor.is-transformed::before{content:"";position:absolute;left:50%;bottom:4%;width:120%;height:90%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at 50% 70%,rgba(255,220,120,.55),rgba(255,170,60,.25) 45%,rgba(255,170,60,0) 70%);pointer-events:none;z-index:0;animation:transform-aura 1.6s ease-in-out infinite}
 @keyframes transform-aura{50%{opacity:.6;transform:translateX(-50%) scale(1.06)}}
 .reduced-motion #heroActor.is-transformed::before{animation:none}
 
-/* Biến Thân states: ready = glowing label; active = round badge with the turns left; after = small +10% badge. */
-.transform-btn .tf-count{display:none}
-.transform-btn.is-active,.transform-btn.is-after{min-width:0;width:60px;height:60px;border-radius:50%;padding:0;justify-content:center;animation:none}
-.transform-btn.is-active .tf-label,.transform-btn.is-after .tf-label,.transform-btn.is-active small,.transform-btn.is-after small{display:none}
-.transform-btn.is-active .tf-count,.transform-btn.is-after .tf-count{display:block;font:900 26px/1 Cambria,serif}
-.transform-btn.is-active{box-shadow:0 0 0 4px rgba(255,214,110,.9),0 0 16px 4px rgba(255,170,60,.7)}
-.transform-btn.is-after{width:52px;height:52px;background:linear-gradient(#b98a4a,#7a5226);opacity:.9}.transform-btn.is-after .tf-count{font-size:14px}
 
-/* Season looks (progression-combat.js progressionLooks): corner pieces of the worn combat frame, the entry effect. */
-#scene .cos-corner{position:absolute;width:21%;max-width:120px;height:auto;pointer-events:none;z-index:3;filter:drop-shadow(0 2px 3px #0008)}
-#scene .cos-corner.tl{left:0;top:0}
-#scene .cos-corner.tr{right:0;top:0;transform:scaleX(-1)}
-#scene .cos-corner.bl{left:0;bottom:0;transform:scaleY(-1)}
-#scene .cos-corner.br{right:0;bottom:0;transform:scale(-1,-1)}
-.cos-entry{position:absolute;left:50%;bottom:-16%;width:min(160px,42vw);opacity:.85;aspect-ratio:1;transform:translateX(-50%);background-size:600% 100%;background-repeat:no-repeat;
-  pointer-events:none;z-index:1;animation:cos-entry 1.1s steps(5) forwards}
-@keyframes cos-entry{from{background-position:0 0}to{background-position:100% 0;opacity:.5}}
-.combat-title.is-season img{object-fit:fill}
-.combat-title.is-season b{color:#fff1cf;text-shadow:0 1px 2px #4a0a04;padding-left:18%}
-.combat-title.is-season{width:176px;height:38px}
-.combat-title.is-season b{font-size:10.5px;padding:0 10px 0 34px;-webkit-text-fill-color:#fff1cf;background:none}
+/* Season looks (progression-combat.js progressionLooks): the entry effect (the frame kit is combat-kits-premium.css). */
+.cos-open{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.cos-open>*{position:absolute;pointer-events:none}
+.cos-dim{inset:0;background:radial-gradient(ellipse at var(--hx) var(--hy),#0000 0,#0003 30%,#000a 90%);opacity:0;animation:cos-dim 2.2s ease both}
+.cos-light{left:var(--hx);top:var(--hy);width:calc(var(--hh) * 2.6);aspect-ratio:1;translate:-50% -50%;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,rgba(var(--light),.75) 0,rgba(var(--light),.32) 30%,rgba(var(--light),0) 66%);mix-blend-mode:screen;animation:cos-light 2.2s ease both}
+.cos-fx{left:var(--hx);top:var(--hy);width:calc(var(--hh) * 2.2);aspect-ratio:1;translate:-50% -54%;opacity:0;background:0 0/600% 100% no-repeat;mix-blend-mode:screen;
+  animation:cos-fx-frames 1.5s steps(6,jump-none) .3s both,cos-fx 2.2s ease both}
+.cos-ribbon{position:absolute;z-index:7;pointer-events:none;left:50%;bottom:30%;width:min(56%,320px);aspect-ratio:460/110;translate:-50% 0;display:grid;place-items:center;opacity:0;animation:cos-ribbon 2.2s ease both}
+.cos-ribbon img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.cos-ribbon b{position:relative;padding:0 12%;font:900 clamp(12px,3.3vw,19px)/1 Cambria,Georgia,serif;color:#3b2412;white-space:nowrap;text-shadow:0 1px 0 #fff6dc}
+.cos-open.calm{display:none}.cos-ribbon.calm{animation:none;opacity:1}
+.cos-open-skip{position:fixed;inset:0;z-index:60;border:0;padding:0;background:transparent;cursor:pointer}
+@keyframes cos-dim{0%{opacity:0}14%,68%{opacity:1}100%{opacity:0}}
+@keyframes cos-light{0%,14%{opacity:0;scale:.35}41%{opacity:1;scale:1}68%{opacity:.9;scale:1.05}100%{opacity:0;scale:1.2}}
+@keyframes cos-fx{0%,14%{opacity:0}30%,70%{opacity:1}100%{opacity:0}}
+@keyframes cos-fx-frames{from{background-position:0 0}to{background-position:100% 0}}
+@keyframes cos-ribbon{0%,41%{opacity:0;translate:-90% 0}52%{opacity:1;translate:-50% 0}78%{opacity:1;translate:-50% 0}100%{opacity:0;translate:-30% 0}}
 
 /* Biến Thân looks (src/transform-fx.js, docs/GAME_DESIGN.md §2.4). Boxes are in body units: t / h / x are the actor's
    --evo-top / --evo-h / --evo-x (fractions of the square actor box), so a piece of w×hh body heights at (dx, dy) sits at
@@ -2055,22 +2043,52 @@ html.chud .gem::after{display:none}
 html.chud .special .gem{background:radial-gradient(ellipse,#eace7930,transparent 70%)}
 html.chud .board-frame .chud-frame{z-index:6}
 
-/* ---- Biến Thân: a gold plate inside the battlefield, clear of the frame -------------------------------------- */
-html.chud .transform-btn{left:10px;bottom:7px;min-width:118px;min-height:44px;padding:4px 13px 6px;border:0;border-radius:0;
-  background:url(assets/gemwoven/ui-kit/btn-gold.webp) center/100% 100% no-repeat;color:var(--hud-ink);font:900 15px/1.05 Cambria,Georgia,serif;text-shadow:0 1px #fff3c6;
-  box-shadow:none;filter:drop-shadow(0 3px 4px #000a);animation:chud-transform-call 1.6s ease-in-out infinite}
-html.chud .transform-btn small{font:700 10.5px/1.1 Cambria,Georgia,serif;color:#5a3a1c}
-html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:50px;height:50px;min-width:0;min-height:0;padding:0;border-radius:50%;
-  background:url(assets/gemwoven/ui-kit/round.webp) center/contain no-repeat;box-shadow:none;filter:drop-shadow(0 0 7px #ffc46a)}
-html.chud .transform-btn.is-active .tf-count,html.chud .transform-btn.is-after .tf-count{font:900 20px/1 Cambria,Georgia,serif;color:var(--hud-ink)}
-html.chud .transform-btn.is-after .tf-count{font-size:13px}
-html.chud .transform-btn:disabled{animation:none}
-@keyframes chud-transform-call{50%{filter:drop-shadow(0 3px 4px #000a) drop-shadow(0 0 10px #ffcf6a)}}
-body.reduced-motion .transform-btn{animation:none!important}
+/* ---- Biến Thân medallion (progression-combat.js; owner 10/11): hidden until it can be pressed, then in the
+   battlefield's upper-left corner, pulsing gently; while it lasts, the turns left. The HUD's drawn medallion pieces and
+   the hero's element emblem. ---- */
+.tf-medal{position:absolute;z-index:9;left:calc(var(--ft,10px) * 1.2 + 6px);top:calc(var(--ft,10px) * 1.2 + 6px);transform-origin:0 0;display:grid;justify-items:center;width:84px;padding:0;border:0;background:none;cursor:pointer;color:var(--hud-ink,#3a210f);animation:tf-in .35s ease-out}
+.tf-medal[hidden]{display:none}
+.tf-medal:disabled{cursor:default}
+@keyframes tf-in{from{opacity:0;scale:.6}}
+.tf-medal .chud-ult-art{position:relative;width:58px;height:58px}
+.tf-medal .chud-ult-art i{position:absolute;inset:0;background-position:center;background-size:contain;background-repeat:no-repeat;pointer-events:none}
+.tf-medal .chud-ult-disc{inset:2px!important;background-image:url(assets/combat-hud/ult-disc.webp)}
+.tf-medal .chud-ult-frame{background-image:url(assets/combat-hud/ult-frame.webp);filter:drop-shadow(0 2px 3px #000b)}
+.tf-medal .chud-ult-halo{inset:-9px!important;background-image:url(assets/combat-hud/ult-halo.webp);opacity:0;transition:opacity .25s}
+.tf-medal .chud-ult-emblem{inset:12px!important;filter:saturate(1.15) brightness(1.1) drop-shadow(0 0 5px #ffd36b)}
+.tf-medal[data-element="fire"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-fire.webp)}
+.tf-medal[data-element="ice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-ice.webp)}
+.tf-medal[data-element="earth"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-earth.webp)}
+.tf-medal[data-element="lightning"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-lightning.webp)}
+.tf-medal[data-element="shadow"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-shadow.webp)}
+.tf-medal[data-element="novice"] .chud-ult-emblem{background-image:url(assets/combat-hud/em-novice.webp)}
+.tf-medal .tf-count{position:absolute;inset:0;display:grid;place-items:center;z-index:2;font:900 25px/1 Cambria,Georgia,serif;color:#fff3c6;text-shadow:0 0 4px #000,0 0 8px #e07a1c}
+.tf-medal .tf-label{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-width:82px;height:22px;margin-top:-3px;padding:0 8px;
+  background:url(assets/gemwoven/ui-kit/tab.webp) center/100% 100% no-repeat;font:800 12.5px/1 Cambria,Georgia,serif;white-space:nowrap}
+/* Ready: a slow, soft pulse (the halo breathes, the medallion swells a little). */
+.tf-medal.is-ready .chud-ult-halo{animation:tf-glow 1.8s ease-in-out infinite}
+.tf-medal.is-ready .chud-ult-art{animation:tf-pulse 1.8s ease-in-out infinite}
+.tf-medal.is-ready .tf-label{filter:drop-shadow(0 0 4px #ffd36b)}
+@keyframes tf-glow{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes tf-pulse{0%,100%{scale:1}50%{scale:1.06}}
+.tf-medal.is-active .chud-ult-halo{opacity:.6}
+.tf-medal.is-active .chud-ult-emblem{filter:saturate(.8) brightness(.55)}
+.tf-medal:focus{outline:none}.tf-medal:focus-visible .chud-ult-art{outline:2px solid #ffe7a0;outline-offset:3px;border-radius:50%}
+body.reduced-motion .tf-medal *,body.reduced-motion .tf-medal{animation:none!important}
+body.reduced-motion .tf-medal.is-ready .chud-ult-halo{opacity:.8}
+/* The turn notice in the scene, at each turn start (the strip and its ribbon are gone). */
+.chud-turn-banner{position:absolute;z-index:8;left:50%;top:17%;translate:-50% 0;padding:5px 30px 7px;opacity:0;pointer-events:none;
+  background:url(assets/gemwoven/ui-kit/ribbon-info.webp) center/100% 100% no-repeat;color:var(--hud-ink,#3a210f);font:800 17px/1 Cambria,Georgia,serif;white-space:nowrap;filter:drop-shadow(0 3px 4px #0009)}
+.chud-turn-banner.enemy{background-image:url(assets/gemwoven/ui-kit/ribbon-warn.webp);color:#5a1d12}
+.chud-turn-banner.show{animation:chud-turn 1.3s ease both}
+@keyframes chud-turn{0%{opacity:0;scale:.85}15%,72%{opacity:1;scale:1}100%{opacity:0;scale:1}}
+body.reduced-motion .chud-turn-banner.show{animation-duration:.01s}
+html.chud .board-toolbar[hidden]{display:none!important}
 
 /* ---- Phone portrait sizes: the board takes the width, the battlefield the rest ------------------------------- */
-html.chud .app{--bf:min(calc(100vw - 12px),calc(100svh - 50px - 6px - 73px - 210px - 22px),470px);
-  --scene-h:clamp(200px,calc(100svh - 50px - 6px - 73px - var(--bf) - 2 * var(--ft) - 20px),420px)}
+/* (The 73px the action strip took now goes to the battlefield; owner 08/11.) */
+html.chud .app{--bf:min(calc(100vw - 12px),calc(100svh - 50px - 6px - 6px - 210px - 22px),470px);
+  --scene-h:clamp(200px,calc(100svh - 50px - 6px - 6px - var(--bf) - 2 * var(--ft) - 20px),500px)}
 html.chud .game-layout{gap:0}
 @media (max-width:370px){
   html.chud{--fc:46px;--ft:11px}
@@ -2141,9 +2159,6 @@ html.chud .game-layout{gap:0}
   html.chud .actor-hud .health-track::before{width:31px;height:26px;left:-22px}
   html.chud .actor-hud .head-rage-track::before{width:26px;height:22px;left:-19px}
   html.chud .actor-hud .shield-label{font-size:14px}
-  html.chud .transform-btn{left:22px;bottom:14px;min-width:160px;min-height:60px;font-size:18px}
-  html.chud .transform-btn small{font-size:12.5px}
-  html.chud .transform-btn.is-active,html.chud .transform-btn.is-after{width:66px;height:66px;min-width:0;min-height:0}
   .chud-sheet{width:340px}
 }
 
@@ -2182,7 +2197,6 @@ html.chud .game-layout{gap:0}
   .chud-ult-auto{left:auto;right:4px;top:-7px;translate:none;font-size:11px;line-height:13px}
   html.chud .board-frame{grid-area:1/2/3/3;align-self:center;justify-self:center;width:var(--bf);max-width:none;padding:7px}
   html.chud .board-frame .board-effects{inset:7px;width:calc(100% - 14px);height:calc(100% - 14px)}
-  html.chud .transform-btn{left:12px;bottom:8px}
   /* Fighters sized by the stage (not the screen width) and kept off its side edges, so a narrow stage never cuts a
      wide pose or the Biến Thân look; the HUD boxes keep a wider gap (heart caps and emblems hang past them). */
   html.chud .scene{--hud-gap:30px;--hud-gap-y:10px;--hud-edge:34px}
@@ -2199,6 +2213,198 @@ html.chud .game-layout{gap:0}
   /* A narrow stage: the two gauges stay apart (Codex: the foe's heart sat over the hero's energy bar). */
   html.chud .actor-hud{width:112px}
 }
+/* Landscape: the medallion sits larger on the battlefield's lower edge. */
+@media (min-width:900px) and (min-aspect-ratio:5/4){.tf-medal{scale:1.35}}
+
+/* Premium season battle frames (Khung trận cao cấp; owner 08/11 "mất tiền mà chỉ đổi màu thì không xứng đáng bỏ tiền";
+   Codex mockup assets/gemwoven/raw/combat-kits/premium/mockup-mika-v2.png 8.5/10). Each season draws its own scene frame
+   (four different carved corners, laid as a 9-slice whose edges repeat, so it fits the phone and the landscape battlefield), a crest on the
+   battlefield's top edge, a square board frame with its mascot outside the board, the top rail and the board backing.
+   build.py writes these rules once per kit with a kit.json (premium/cut_premium.py measures the pieces): lumi season,
+   #1c1229 base colour, the scene frame's 9-slice cuts 314..286 (image px), its widths 4.331..3.945 and outsets 0.938..0.538
+   (in frame bands, var(--ft)), the board frame's box -15.714,-19.183,129.048,136.51 (% of the board frame) and the rail cap 179. */
+html.chud.kit-lumi .chud-frame>i{display:none}
+html.chud.kit-lumi .battle-card{overflow:visible;background:#1c1229}
+html.chud.kit-lumi .battle-card>.chud-frame{border-style:solid;border-color:transparent;
+  border-width:calc(var(--ft) * 4.331) calc(var(--ft) * 3.917) calc(var(--ft) * 3.669) calc(var(--ft) * 3.945);
+  border-image:url(assets/combat-hud/kits/lumi/scene-frame.webp) 314 284 266 286 / calc(var(--ft) * 4.331) calc(var(--ft) * 3.917) calc(var(--ft) * 3.669) calc(var(--ft) * 3.945)
+    / calc(var(--ft) * 0.938) calc(var(--ft) * 0.51) calc(var(--ft) * 0.276) calc(var(--ft) * 0.538) round;
+  filter:drop-shadow(0 3px 4px #000a)}
+html.chud.kit-lumi .battle-card>.chud-frame::after{content:"";position:absolute;left:50%;top:calc(var(--ft) * (.5 - 4.331));translate:-50% -50%;
+  width:min(48%,320px);aspect-ratio:900/240;background:url(assets/combat-hud/kits/lumi/crest.webp) center/contain no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+/* The board frame's opening lies on the gems (inside the board frame's padding --bp), so its band sits on the padding. */
+html.chud.kit-lumi .board-frame{--bp:17px;padding:var(--bp);background:url(assets/combat-hud/kits/lumi/board-back.webp) center/cover no-repeat,#1c1229}
+@media (min-width:900px) and (min-aspect-ratio:5/4){html.chud.kit-lumi .board-frame{--bp:7px}}
+html.chud.kit-lumi .board-frame::after{content:"";position:absolute;z-index:7;pointer-events:none;
+  left:calc(var(--bp) + (100% - 2 * var(--bp)) * -15.714 / 100);top:calc(var(--bp) + (100% - 2 * var(--bp)) * -19.183 / 100);
+  width:calc((100% - 2 * var(--bp)) * 129.048 / 100);height:calc((100% - 2 * var(--bp)) * 136.51 / 100);
+  background:url(assets/combat-hud/kits/lumi/board-frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px #000b)}
+html.chud.kit-lumi .chud-bar{border-image-source:url(assets/combat-hud/kits/lumi/rail.webp);border-image-slice:0 179 fill;border-image-repeat:round}
+html.chud.kit-lumi .chud-backdrop{filter:brightness(.42) saturate(.75)}
+/* The whole board frame stays on screen (owner 10/11: nothing cut): the board (--kb, its gem area --kc) is as wide as
+   before (93 % of --bf on a phone) unless the frame, 129.048 % of the gem area wide and 136.51 % high, would then pass the
+   screen's edge, and it moves sideways by 1.19 % of the gem area so the frame, not the gems, is centred. */
+html.chud.kit-lumi .app{--kb:min(calc(var(--bf) * .93),calc((100vw - 6px) * 100 / 129.048 + 34px));--kc:calc(var(--kb) - 34px)}
+html.chud.kit-lumi .board-frame{width:var(--kb);margin-inline:auto;translate:calc(var(--kc) * 1.19 / 100) 0}
+/* Landscape: the columns part wider so the mascot's tails stay off the battlefield frame; the board fits the frame's
+   height (136.51 %) into the screen, moves left as far as the frame passes the right edge (13.334 % of the gem area beyond
+   it) and up or down so the frame, not the gems, is centred (0.928 %). */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud.kit-lumi .app{--kb:min(calc(var(--bf) * .88),calc((100dvh - 84px) * 100 / 136.51 + 14px));--kc:calc(var(--kb) - 14px)}
+  html.chud.kit-lumi .game-layout{gap:calc(var(--bf) * .15)}
+  html.chud.kit-lumi .board-frame{translate:calc(-1 * max(0px,var(--kc) * 13.334 / 100 - (var(--bf) - var(--kb)) / 2 - 18px)) calc(var(--kc) * 0.928 / 100)}}
+
+/* Premium season battle frames (Khung trận cao cấp; owner 08/11 "mất tiền mà chỉ đổi màu thì không xứng đáng bỏ tiền";
+   Codex mockup assets/gemwoven/raw/combat-kits/premium/mockup-mika-v2.png 8.5/10). Each season draws its own scene frame
+   (four different carved corners, laid as a 9-slice whose edges repeat, so it fits the phone and the landscape battlefield), a crest on the
+   battlefield's top edge, a square board frame with its mascot outside the board, the top rail and the board backing.
+   build.py writes these rules once per kit with a kit.json (premium/cut_premium.py measures the pieces): mika season,
+   #2a0f0a base colour, the scene frame's 9-slice cuts 301..276 (image px), its widths 4.239..3.887 and outsets 0.845..0.493
+   (in frame bands, var(--ft)), the board frame's box -13.826,-18.551,127.056,134.689 (% of the board frame) and the rail cap 149. */
+html.chud.kit-mika .chud-frame>i{display:none}
+html.chud.kit-mika .battle-card{overflow:visible;background:#2a0f0a}
+html.chud.kit-mika .battle-card>.chud-frame{border-style:solid;border-color:transparent;
+  border-width:calc(var(--ft) * 4.239) calc(var(--ft) * 3.944) calc(var(--ft) * 3.62) calc(var(--ft) * 3.887);
+  border-image:url(assets/combat-hud/kits/mika/scene-frame.webp) 301 280 257 276 / calc(var(--ft) * 4.239) calc(var(--ft) * 3.944) calc(var(--ft) * 3.62) calc(var(--ft) * 3.887)
+    / calc(var(--ft) * 0.845) calc(var(--ft) * 0.549) calc(var(--ft) * 0.225) calc(var(--ft) * 0.493) round;
+  filter:drop-shadow(0 3px 4px #000a)}
+html.chud.kit-mika .battle-card>.chud-frame::after{content:"";position:absolute;left:50%;top:calc(var(--ft) * (.5 - 4.239));translate:-50% -50%;
+  width:min(48%,320px);aspect-ratio:900/249;background:url(assets/combat-hud/kits/mika/crest.webp) center/contain no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+/* The board frame's opening lies on the gems (inside the board frame's padding --bp), so its band sits on the padding. */
+html.chud.kit-mika .board-frame{--bp:17px;padding:var(--bp);background:url(assets/combat-hud/kits/mika/board-back.webp) center/cover no-repeat,#2a0f0a}
+@media (min-width:900px) and (min-aspect-ratio:5/4){html.chud.kit-mika .board-frame{--bp:7px}}
+html.chud.kit-mika .board-frame::after{content:"";position:absolute;z-index:7;pointer-events:none;
+  left:calc(var(--bp) + (100% - 2 * var(--bp)) * -13.826 / 100);top:calc(var(--bp) + (100% - 2 * var(--bp)) * -18.551 / 100);
+  width:calc((100% - 2 * var(--bp)) * 127.056 / 100);height:calc((100% - 2 * var(--bp)) * 134.689 / 100);
+  background:url(assets/combat-hud/kits/mika/board-frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px #000b)}
+html.chud.kit-mika .chud-bar{border-image-source:url(assets/combat-hud/kits/mika/rail.webp);border-image-slice:0 149 fill;border-image-repeat:round}
+html.chud.kit-mika .chud-backdrop{filter:brightness(.42) saturate(.75)}
+/* The whole board frame stays on screen (owner 10/11: nothing cut): the board (--kb, its gem area --kc) is as wide as
+   before (93 % of --bf on a phone) unless the frame, 127.056 % of the gem area wide and 134.689 % high, would then pass the
+   screen's edge, and it moves sideways by 0.298 % of the gem area so the frame, not the gems, is centred. */
+html.chud.kit-mika .app{--kb:min(calc(var(--bf) * .93),calc((100vw - 6px) * 100 / 127.056 + 34px));--kc:calc(var(--kb) - 34px)}
+html.chud.kit-mika .board-frame{width:var(--kb);margin-inline:auto;translate:calc(var(--kc) * 0.298 / 100) 0}
+/* Landscape: the columns part wider so the mascot's tails stay off the battlefield frame; the board fits the frame's
+   height (134.689 %) into the screen, moves left as far as the frame passes the right edge (13.23 % of the gem area beyond
+   it) and up or down so the frame, not the gems, is centred (1.207 %). */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud.kit-mika .app{--kb:min(calc(var(--bf) * .88),calc((100dvh - 84px) * 100 / 134.689 + 14px));--kc:calc(var(--kb) - 14px)}
+  html.chud.kit-mika .game-layout{gap:calc(var(--bf) * .15)}
+  html.chud.kit-mika .board-frame{translate:calc(-1 * max(0px,var(--kc) * 13.23 / 100 - (var(--bf) - var(--kb)) / 2 - 18px)) calc(var(--kc) * 1.207 / 100)}}
+
+/* Premium season battle frames (Khung trận cao cấp; owner 08/11 "mất tiền mà chỉ đổi màu thì không xứng đáng bỏ tiền";
+   Codex mockup assets/gemwoven/raw/combat-kits/premium/mockup-mika-v2.png 8.5/10). Each season draws its own scene frame
+   (four different carved corners, laid as a 9-slice whose edges repeat, so it fits the phone and the landscape battlefield), a crest on the
+   battlefield's top edge, a square board frame with its mascot outside the board, the top rail and the board backing.
+   build.py writes these rules once per kit with a kit.json (premium/cut_premium.py measures the pieces): noct season,
+   #15191d base colour, the scene frame's 9-slice cuts 311..296 (image px), its widths 4.231..4.027 and outsets 0.83..0.626
+   (in frame bands, var(--ft)), the board frame's box -16.37,-20.203,128.707,139.009 (% of the board frame) and the rail cap 219. */
+html.chud.kit-noct .chud-frame>i{display:none}
+html.chud.kit-noct .battle-card{overflow:visible;background:#15191d}
+html.chud.kit-noct .battle-card>.chud-frame{border-style:solid;border-color:transparent;
+  border-width:calc(var(--ft) * 4.231) calc(var(--ft) * 4.027) calc(var(--ft) * 3.782) calc(var(--ft) * 4.027);
+  border-image:url(assets/combat-hud/kits/noct/scene-frame.webp) 311 296 278 296 / calc(var(--ft) * 4.231) calc(var(--ft) * 4.027) calc(var(--ft) * 3.782) calc(var(--ft) * 4.027)
+    / calc(var(--ft) * 0.83) calc(var(--ft) * 0.626) calc(var(--ft) * 0.381) calc(var(--ft) * 0.626) round;
+  filter:drop-shadow(0 3px 4px #000a)}
+html.chud.kit-noct .battle-card>.chud-frame::after{content:"";position:absolute;left:50%;top:calc(var(--ft) * (.5 - 4.231));translate:-50% -50%;
+  width:min(48%,320px);aspect-ratio:900/271;background:url(assets/combat-hud/kits/noct/crest.webp) center/contain no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+/* The board frame's opening lies on the gems (inside the board frame's padding --bp), so its band sits on the padding. */
+html.chud.kit-noct .board-frame{--bp:17px;padding:var(--bp);background:url(assets/combat-hud/kits/noct/board-back.webp) center/cover no-repeat,#15191d}
+@media (min-width:900px) and (min-aspect-ratio:5/4){html.chud.kit-noct .board-frame{--bp:7px}}
+html.chud.kit-noct .board-frame::after{content:"";position:absolute;z-index:7;pointer-events:none;
+  left:calc(var(--bp) + (100% - 2 * var(--bp)) * -16.37 / 100);top:calc(var(--bp) + (100% - 2 * var(--bp)) * -20.203 / 100);
+  width:calc((100% - 2 * var(--bp)) * 128.707 / 100);height:calc((100% - 2 * var(--bp)) * 139.009 / 100);
+  background:url(assets/combat-hud/kits/noct/board-frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px #000b)}
+html.chud.kit-noct .chud-bar{border-image-source:url(assets/combat-hud/kits/noct/rail.webp);border-image-slice:0 219 fill;border-image-repeat:round}
+html.chud.kit-noct .chud-backdrop{filter:brightness(.42) saturate(.75)}
+/* The whole board frame stays on screen (owner 10/11: nothing cut): the board (--kb, its gem area --kc) is as wide as
+   before (93 % of --bf on a phone) unless the frame, 128.707 % of the gem area wide and 139.009 % high, would then pass the
+   screen's edge, and it moves sideways by 2.017 % of the gem area so the frame, not the gems, is centred. */
+html.chud.kit-noct .app{--kb:min(calc(var(--bf) * .93),calc((100vw - 6px) * 100 / 128.707 + 34px));--kc:calc(var(--kb) - 34px)}
+html.chud.kit-noct .board-frame{width:var(--kb);margin-inline:auto;translate:calc(var(--kc) * 2.017 / 100) 0}
+/* Landscape: the columns part wider so the mascot's tails stay off the battlefield frame; the board fits the frame's
+   height (139.009 %) into the screen, moves left as far as the frame passes the right edge (12.337 % of the gem area beyond
+   it) and up or down so the frame, not the gems, is centred (0.699 %). */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud.kit-noct .app{--kb:min(calc(var(--bf) * .88),calc((100dvh - 84px) * 100 / 139.009 + 14px));--kc:calc(var(--kb) - 14px)}
+  html.chud.kit-noct .game-layout{gap:calc(var(--bf) * .15)}
+  html.chud.kit-noct .board-frame{translate:calc(-1 * max(0px,var(--kc) * 12.337 / 100 - (var(--bf) - var(--kb)) / 2 - 18px)) calc(var(--kc) * 0.699 / 100)}}
+
+/* Premium season battle frames (Khung trận cao cấp; owner 08/11 "mất tiền mà chỉ đổi màu thì không xứng đáng bỏ tiền";
+   Codex mockup assets/gemwoven/raw/combat-kits/premium/mockup-mika-v2.png 8.5/10). Each season draws its own scene frame
+   (four different carved corners, laid as a 9-slice whose edges repeat, so it fits the phone and the landscape battlefield), a crest on the
+   battlefield's top edge, a square board frame with its mascot outside the board, the top rail and the board backing.
+   build.py writes these rules once per kit with a kit.json (premium/cut_premium.py measures the pieces): nori season,
+   #172012 base colour, the scene frame's 9-slice cuts 317..276 (image px), its widths 4.342..3.781 and outsets 0.945..0.384
+   (in frame bands, var(--ft)), the board frame's box -14.535,-20.024,128.14,132.888 (% of the board frame) and the rail cap 199. */
+html.chud.kit-nori .chud-frame>i{display:none}
+html.chud.kit-nori .battle-card{overflow:visible;background:#172012}
+html.chud.kit-nori .battle-card>.chud-frame{border-style:solid;border-color:transparent;
+  border-width:calc(var(--ft) * 4.342) calc(var(--ft) * 3.822) calc(var(--ft) * 3.493) calc(var(--ft) * 3.781);
+  border-image:url(assets/combat-hud/kits/nori/scene-frame.webp) 317 279 255 276 / calc(var(--ft) * 4.342) calc(var(--ft) * 3.822) calc(var(--ft) * 3.493) calc(var(--ft) * 3.781)
+    / calc(var(--ft) * 0.945) calc(var(--ft) * 0.425) calc(var(--ft) * 0.096) calc(var(--ft) * 0.384) round;
+  filter:drop-shadow(0 3px 4px #000a)}
+html.chud.kit-nori .battle-card>.chud-frame::after{content:"";position:absolute;left:50%;top:calc(var(--ft) * (.5 - 4.342));translate:-50% -50%;
+  width:min(48%,320px);aspect-ratio:900/278;background:url(assets/combat-hud/kits/nori/crest.webp) center/contain no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+/* The board frame's opening lies on the gems (inside the board frame's padding --bp), so its band sits on the padding. */
+html.chud.kit-nori .board-frame{--bp:17px;padding:var(--bp);background:url(assets/combat-hud/kits/nori/board-back.webp) center/cover no-repeat,#172012}
+@media (min-width:900px) and (min-aspect-ratio:5/4){html.chud.kit-nori .board-frame{--bp:7px}}
+html.chud.kit-nori .board-frame::after{content:"";position:absolute;z-index:7;pointer-events:none;
+  left:calc(var(--bp) + (100% - 2 * var(--bp)) * -14.535 / 100);top:calc(var(--bp) + (100% - 2 * var(--bp)) * -20.024 / 100);
+  width:calc((100% - 2 * var(--bp)) * 128.14 / 100);height:calc((100% - 2 * var(--bp)) * 132.888 / 100);
+  background:url(assets/combat-hud/kits/nori/board-frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px #000b)}
+html.chud.kit-nori .chud-bar{border-image-source:url(assets/combat-hud/kits/nori/rail.webp);border-image-slice:0 199 fill;border-image-repeat:round}
+html.chud.kit-nori .chud-backdrop{filter:brightness(.42) saturate(.75)}
+/* The whole board frame stays on screen (owner 10/11: nothing cut): the board (--kb, its gem area --kc) is as wide as
+   before (93 % of --bf on a phone) unless the frame, 128.14 % of the gem area wide and 132.888 % high, would then pass the
+   screen's edge, and it moves sideways by 0.465 % of the gem area so the frame, not the gems, is centred. */
+html.chud.kit-nori .app{--kb:min(calc(var(--bf) * .93),calc((100vw - 6px) * 100 / 128.14 + 34px));--kc:calc(var(--kb) - 34px)}
+html.chud.kit-nori .board-frame{width:var(--kb);margin-inline:auto;translate:calc(var(--kc) * 0.465 / 100) 0}
+/* Landscape: the columns part wider so the mascot's tails stay off the battlefield frame; the board fits the frame's
+   height (132.888 %) into the screen, moves left as far as the frame passes the right edge (13.605 % of the gem area beyond
+   it) and up or down so the frame, not the gems, is centred (3.58 %). */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud.kit-nori .app{--kb:min(calc(var(--bf) * .88),calc((100dvh - 84px) * 100 / 132.888 + 14px));--kc:calc(var(--kb) - 14px)}
+  html.chud.kit-nori .game-layout{gap:calc(var(--bf) * .15)}
+  html.chud.kit-nori .board-frame{translate:calc(-1 * max(0px,var(--kc) * 13.605 / 100 - (var(--bf) - var(--kb)) / 2 - 18px)) calc(var(--kc) * 3.58 / 100)}}
+
+/* Premium season battle frames (Khung trận cao cấp; owner 08/11 "mất tiền mà chỉ đổi màu thì không xứng đáng bỏ tiền";
+   Codex mockup assets/gemwoven/raw/combat-kits/premium/mockup-mika-v2.png 8.5/10). Each season draws its own scene frame
+   (four different carved corners, laid as a 9-slice whose edges repeat, so it fits the phone and the landscape battlefield), a crest on the
+   battlefield's top edge, a square board frame with its mascot outside the board, the top rail and the board backing.
+   build.py writes these rules once per kit with a kit.json (premium/cut_premium.py measures the pieces): yuki season,
+   #141d28 base colour, the scene frame's 9-slice cuts 313..279 (image px), its widths 4.276..3.811 and outsets 0.874..0.41
+   (in frame bands, var(--ft)), the board frame's box -13.466,-19.53,124.941,133.498 (% of the board frame) and the rail cap 215. */
+html.chud.kit-yuki .chud-frame>i{display:none}
+html.chud.kit-yuki .battle-card{overflow:visible;background:#141d28}
+html.chud.kit-yuki .battle-card>.chud-frame{border-style:solid;border-color:transparent;
+  border-width:calc(var(--ft) * 4.276) calc(var(--ft) * 3.825) calc(var(--ft) * 4.153) calc(var(--ft) * 3.811);
+  border-image:url(assets/combat-hud/kits/yuki/scene-frame.webp) 313 280 304 279 / calc(var(--ft) * 4.276) calc(var(--ft) * 3.825) calc(var(--ft) * 4.153) calc(var(--ft) * 3.811)
+    / calc(var(--ft) * 0.874) calc(var(--ft) * 0.423) calc(var(--ft) * 0.751) calc(var(--ft) * 0.41) round;
+  filter:drop-shadow(0 3px 4px #000a)}
+html.chud.kit-yuki .battle-card>.chud-frame::after{content:"";position:absolute;left:50%;top:calc(var(--ft) * (.5 - 4.276));translate:-50% -50%;
+  width:min(48%,320px);aspect-ratio:900/282;background:url(assets/combat-hud/kits/yuki/crest.webp) center/contain no-repeat;filter:drop-shadow(0 3px 3px #000a)}
+/* The board frame's opening lies on the gems (inside the board frame's padding --bp), so its band sits on the padding. */
+html.chud.kit-yuki .board-frame{--bp:17px;padding:var(--bp);background:url(assets/combat-hud/kits/yuki/board-back.webp) center/cover no-repeat,#141d28}
+@media (min-width:900px) and (min-aspect-ratio:5/4){html.chud.kit-yuki .board-frame{--bp:7px}}
+html.chud.kit-yuki .board-frame::after{content:"";position:absolute;z-index:7;pointer-events:none;
+  left:calc(var(--bp) + (100% - 2 * var(--bp)) * -13.466 / 100);top:calc(var(--bp) + (100% - 2 * var(--bp)) * -19.53 / 100);
+  width:calc((100% - 2 * var(--bp)) * 124.941 / 100);height:calc((100% - 2 * var(--bp)) * 133.498 / 100);
+  background:url(assets/combat-hud/kits/yuki/board-frame.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px #000b)}
+html.chud.kit-yuki .chud-bar{border-image-source:url(assets/combat-hud/kits/yuki/rail.webp);border-image-slice:0 215 fill;border-image-repeat:round}
+html.chud.kit-yuki .chud-backdrop{filter:brightness(.42) saturate(.75)}
+/* The whole board frame stays on screen (owner 10/11: nothing cut): the board (--kb, its gem area --kc) is as wide as
+   before (93 % of --bf on a phone) unless the frame, 124.941 % of the gem area wide and 133.498 % high, would then pass the
+   screen's edge, and it moves sideways by 0.995 % of the gem area so the frame, not the gems, is centred. */
+html.chud.kit-yuki .app{--kb:min(calc(var(--bf) * .93),calc((100vw - 6px) * 100 / 124.941 + 34px));--kc:calc(var(--kb) - 34px)}
+html.chud.kit-yuki .board-frame{width:var(--kb);margin-inline:auto;translate:calc(var(--kc) * 0.995 / 100) 0}
+/* Landscape: the columns part wider so the mascot's tails stay off the battlefield frame; the board fits the frame's
+   height (133.498 %) into the screen, moves left as far as the frame passes the right edge (11.475 % of the gem area beyond
+   it) and up or down so the frame, not the gems, is centred (2.781 %). */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  html.chud.kit-yuki .app{--kb:min(calc(var(--bf) * .88),calc((100dvh - 84px) * 100 / 133.498 + 14px));--kc:calc(var(--kb) - 14px)}
+  html.chud.kit-yuki .game-layout{gap:calc(var(--bf) * .15)}
+  html.chud.kit-yuki .board-frame{translate:calc(-1 * max(0px,var(--kc) * 11.475 / 100 - (var(--bf) - var(--kb)) / 2 - 18px)) calc(var(--kc) * 2.781 / 100)}}
 
 /* Status icons over the fighters and the PvP name plaques (combat-status.js; Codex critique and mockup in
    assets/gemwoven/raw/combat-status/). The name plate stays in the page for screen readers only. */
@@ -3607,13 +3813,15 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
       {name:'Dạ Ảnh Kiếm Sĩ',weapon:'Bạt kiếm Nguyệt Ảnh',skill:'Dạ Ảnh Ngũ Trảm',power:1.1},
       {name:'Tử Thần Vô Diện',weapon:'Lưỡi liềm Thần Chết',skill:'Hắc Liêm Đoạt Hồn',power:1.25,signature:'Tuyệt kỹ xuyên giáp, +50% khi địch dưới 30% HP; sau đó hóa mờ, né mọi đòn và hiệu ứng bất lợi 1 lượt.'}]
   };
-  // Stars unlock forms (4★ form 2, 6★ form 3) and an unlocked form is never lost. Combat always
-  // fights in the highest unlocked form (its art and kit belong together); the player may pick
-  // any unlocked form as the hero's look in town (h.look), free. Unset means the highest.
+  // Stars unlock forms (4★ form 2, 6★ form 3) and an unlocked form is never lost. The player picks
+  // which unlocked form the hero uses (h.look, free, outside battle), in town and in battle alike:
+  // its art and its own kit (attacks, ultimate ×1 / ×1,1 / ×1,25, form 3's signature) go together
+  // (owner 08/11, option 2; Claude + Codex, GAME_DESIGN §20). Unset means the highest; opening a new
+  // form switches to it. HP/Công/Thủ and so lực chiến do not depend on the form.
   const FORM_STARS=[1,4,6];
   function formMax(key,h){return !HERO_FORMS[key]?1:h?.stars>=6?3:h?.stars>=4?2:1;}
-  const heroForm=formMax;
   function lookForm(key,h){const max=formMax(key,h),chosen=Math.floor(Number(h?.look)||0);return chosen>=1&&chosen<=max?chosen:max;}
+  const heroForm=lookForm;
   // Relics belong to their hero; five visible forms, twenty training levels per form.
   const relicSave=()=>({level:1,evolution:1});
   // Relic: +0,25% HP/Công per level and +2,5% per form after the first.
@@ -3724,7 +3932,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
   }
   function mailExpiry(expiresAt,at){if(expiresAt==null)return '';const left=expiresAt-at;if(left<=0)return 'Đã hết hạn';return left<DAY_MS?`Còn ${Math.max(1,Math.ceil(left/3600000))} giờ`:`Còn ${Math.ceil(left/DAY_MS)} ngày`;}
   const heroSave=()=>({level:1,stars:1,evolution:0,copies:1,skills:[1,0,0,0],gear:{},relic:relicSave(),ticketMilestones:[]});
-  function fresh(now){return {version:VERSION,revision:0,created:now,updated:now,selected:'novice',wallet:{gold:1200,gems:0,tickets:0},materials:{exp:12,seals:0,skillBooks:0,essence:0,ore:5,wood:5,cloth:5,divineOre:0},heroes:{novice:heroSave()},fragments:{},equipment:[],campaign:{cleared:0},boss:{best:0,wins:0,damageBest:0},daily:{date:day(now),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0},offlineAt:now,offlineBank:null,clock:{max:now,behind:false},summon:{total:0,dry:0,fragmentDry:0,last:[]},events:[],mail:[welcomeMail(now)],pending:null,receipts:[],vip:{level:0,paidTotal:0},log:[]};}
+  function fresh(now){return {version:VERSION,revision:0,created:now,updated:now,selected:'novice',formChoice:1,wallet:{gold:1200,gems:0,tickets:0},materials:{exp:12,seals:0,skillBooks:0,essence:0,ore:5,wood:5,cloth:5,divineOre:0},heroes:{novice:heroSave()},fragments:{},equipment:[],campaign:{cleared:0},boss:{best:0,wins:0,damageBest:0},daily:{date:day(now),progress:{login:1,campaign:0,boss:0,spend:0},claimed:[],seals:0,bossWins:0,campaignWins:0},offlineAt:now,offlineBank:null,clock:{max:now,behind:false},summon:{total:0,dry:0,fragmentDry:0,last:[]},events:[],mail:[welcomeMail(now)],pending:null,receipts:[],vip:{level:0,paidTotal:0},log:[]};}
   function levelCost(level){check(int(level,1,499),'Cấp này không thể tăng thêm.');return {gold:Math.ceil(60+level*level*1.9),exp:Math.ceil(2+level*.6),seals:Math.ceil(6+level*.04+level*level*.014)};}
   function starCost(stars){check(int(stars,1,5),'Tướng đã đạt 6 sao.');return {copies:[0,1,2,3,5,8][stars],gold:[0,10000,35000,100000,300000,1000000][stars],essence:[0,10,25,60,140,300][stars]};}
   // Star-up with starred spares (owner 04/11: high stars need high-star copies; Claude + Codex). A new spare (summon, 80
@@ -3893,7 +4101,7 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
       opens:formAt>=0?`Hình thái ${formAt+1} ở ${FORM_STARS[formAt]} sao`:'HP +12%, Công +9% mỗi sao',state:!sc?'max':sc.ok&&pay({gold:sc.gold,essence:sc.essence})?'ready':!sc.ok?'locked':'short',
       need:sc&&!sc.ok?(key==='novice'?'Mảnh Hiro: Hành Trình Tân Thủ, nhiệm vụ vượt ải hằng ngày, rương sao chương, Trùm Vô Tận mỗi 10 tầng':'Bản sao: triệu hồi, ghép 80 mảnh'):'',route:'upgrade',tab:'stars'});
     if(forms)rows.push({id:'forms',name:'Hình thái',current:`${forms[form-1].name} (${form}/3) · đã mở ${max}`,next:max<3?`${forms[max].name} ở ${FORM_STARS[max]} sao`:'Đã mở cả ba',
-      opens:'Diện mạo và tuyệt kỹ; chọn lại hình thái cũ bất cứ lúc nào',state:max>=3?'max':'locked',route:'forms'});
+      opens:'Dáng và bộ kỹ năng riêng; ra trận với hình thái nào cũng được',state:max>=3?'max':'locked',route:'forms'});
     const e=EVOLUTION[h.evolution];
     rows.push({id:'evolution',name:'Tiến hóa',current:`Bậc ${h.evolution} / ${EVOLUTION.length}`,next:e?`Bậc ${h.evolution+1}: cấp ${e.level}, ${e.stars} sao`:'Đã tối đa',opens:e?e.perk:'Đã lột xác toàn thân',
       state:!e?'max':h.level<e.level||h.stars<e.stars?'locked':pay({gold:e.gold,essence:e.essence,ore:e.ore})?'ready':'short',need:e&&(h.level<e.level||h.stars<e.stars)?`Thiếu ${[h.level<e.level&&`cấp ${e.level}`,h.stars<e.stars&&`${e.stars} sao`].filter(Boolean).join(' và ')}`:'',route:'upgrade',tab:'evolution'});
@@ -3943,6 +4151,11 @@ let lastWidth=0;new ResizeObserver(entries=>{const w=entries[0].contentRect.widt
     const index=Math.max(0,Math.round((start-gmt7(OPS().CADENCE_ANCHOR))/WEEK_MS)),n=Math.min(X.heroesPerWeek,eligible.length);
     const heroes=Array.from({length:n},(_,i)=>eligible[(index*X.heroesPerWeek+i)%eligible.length]);
     return {week:key,start,end:start+WEEK_MS,heroes,banner:plan.hero};}
+  // How far a hero is toward the next level (owner 08/11: the avatar gauge shows progress inside one level, not across all 500):
+  // levels are bought, so it is the share of the next level's cost the player holds, counted by the scarcest resource; 1 means
+  // the level-up is affordable now (and at the top level).
+  function levelProgress(p,key){const h=p?.heroes?.[key];if(!h)return 0;if(h.level>=MAX_LEVEL)return 1;
+    return Math.min(1,...Object.entries(levelCost(h.level)).map(([id,n])=>((id in p.wallet?p.wallet[id]:p.materials[id])||0)/n));}
   function levelCostRange(level,count=1){check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const total={gold:0,exp:0,seals:0};let steps=0;for(let l=level;l<MAX_LEVEL&&steps<count;l++,steps++)for(const [id,n]of Object.entries(levelCost(l)))total[id]+=n;return steps?{cost:total,levels:steps}:null;}
   const CRAFT_RARITIES=['uncommon','rare','epic','legendary','divine'];
   function craftGate(rarity){const rank=CRAFT_RARITIES.indexOf(rarity)+1;check(rank>0,'Công thức không hợp lệ.');return rarity==='divine'?300:rank*20;}
@@ -4045,7 +4258,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   function upgradePreview(p,key,kind,count=1){
     const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const next=clone(p),n=next.heroes[key];let unlock='';
     if(kind==='level'){if(h.level>=MAX_LEVEL)return null;n.level=Math.min(MAX_LEVEL,h.level+count);}
-    else if(kind==='stars'){if(h.stars>=6)return null;n.stars++;const form=heroForm(key,n);if(form>heroForm(key,h)){const f=HERO_FORMS[key][form-1];unlock=`${n.stars} sao: ${f.name} · tuyệt kỹ ×${vi(f.power,2)}`+(f.signature?' · đặc tính mới':'');}}
+    else if(kind==='stars'){if(h.stars>=6)return null;n.stars++;const form=formMax(key,n);if(form>formMax(key,h)){const f=HERO_FORMS[key][form-1];unlock=`${n.stars} sao: ${f.name} · tuyệt kỹ ×${vi(f.power,2)}`+(f.signature?' · đặc tính mới':'');}}
     else if(kind==='evolution'){const e=EVOLUTION[h.evolution];if(!e)return null;n.evolution++;unlock=`Tiến hóa ${n.evolution}: ${e.perk}`;}
     else throw new Error('Kiểu nâng cấp không hợp lệ.');
     return {before:stats(p,key),after:stats(next,key),unlock};
@@ -4320,7 +4533,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
   function storageFor(raw){try{if(raw?.getItem('gemwoven.trialActive')==='1'){const T='gemwoven.treasure.v1',m=k=>k===KEY?T:k;return {getItem:k=>raw.getItem(m(k)),setItem:(k,v)=>raw.setItem(m(k),v),removeItem:k=>raw.removeItem(m(k)),trial:true};}}catch{}return raw;}
   function makeEngine(storage,{previewTickets=false,previewGems=false,previewMail=false,previewHeroes=false,previewLooks=false,now=()=>Date.now(),random=()=>{if(typeof crypto!=='undefined'&&crypto.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296;}return Math.random();}}={}){
     let memory,sequence=0;
-    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...(p.pending.mode==='cup'?{}:p.pending.mode==='spar'?sparEncounter(p.pending.opponent):encounter(p.pending.mode,p.pending.index)),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
+    function load(){const raw=storage?.getItem(KEY);if(raw){let p;try{p=JSON.parse(raw);}catch{throw new Error('Bản lưu bị lỗi. Hãy giữ bản lưu và khôi phục từ bản sao.');}check(p.version===VERSION,'Phiên bản bản lưu chưa được hỗ trợ.');for(const h of Object.values(p.heroes))h.relic??=relicSave();if(!p.formChoice){for(const h of Object.values(p.heroes))delete h.look;p.formChoice=1;}if(!p.campaign.stars)p.campaign.stars=Object.fromEntries(Array.from({length:p.campaign.cleared},(_,i)=>[i+1,1]));p.campaign.claimedStars??=[];p.campaign.artifacts??={};clampCampaign(p);if(p.pending)p.pending={...(p.pending.mode==='cup'?{}:p.pending.mode==='spar'?sparEncounter(p.pending.opponent):encounter(p.pending.mode,p.pending.index)),...p.pending};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.updated||p.created||now())];return p;}const p=memory?clone(memory):fresh(now());p.campaign.stars??={};p.campaign.claimedStars??=[];p.campaign.artifacts??={};if(!Array.isArray(p.mail))p.mail=[welcomeMail(p.created||now())];return p;}
     function save(p){p.updated=now();p.revision++;if(storage)storage.setItem(KEY,JSON.stringify(p));else memory=clone(p);return p;}
     // Device-clock guard (stopgap until server time): the save remembers the latest time it
     // has seen. Setting the clock back never re-opens daily resets, Ấn caps or idle income;
@@ -4432,6 +4645,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     function wornLooks(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c)out[slot]=c.id;}return out;}
     // Files of the worn looks, for the combat page (it has no live-ops catalogue of its own).
     function lookFiles(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c?.file)out[slot]=c.file;}return out;}
+    function lookNames(p){const out={};for(const [slot] of OPS()?.COSMETIC_SLOTS||[]){const c=wornCosmetic(p,slot);if(c?.name)out[slot]=c.name;}return out;}
     // Đồng Hành Cùng X (liveops COMPANION): day stamps from the third daily quest, catch-up stamps from 6 PvE wins on a later
     // day (to day 28, one a day, earliest missed day first), weekly tasks counting wins from their chapter's first day. Days
     // 15-28 run the material event while the season has no re-run hero. Earned rewards wait for "Nhận"; a new season grants
@@ -4488,8 +4702,10 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       if(c.ticketDate!==today){if(c.ticketDate)c.tickets=Math.min(CUP.bank,c.tickets+CUP.daily*Math.max(0,Math.round((Date.parse(today)-Date.parse(c.ticketDate))/86400000)));c.ticketDate=today;c.vs={};}
       if(c.open&&p.pending?.token!==c.open.token)c.open=null;
       return s;}
-    function cupBegin(p,hero=p.selected,title=null){
-      const s=cupRefresh(p),c=p.cup;check(cupPool().includes(hero),'Tướng này chưa phát hành nên chưa vào giải.');let opp,round=0;
+    // Owner 08/11: the cup is fought with the player's own heroes at their real strength (level, stars, gear, the chosen
+    // form), picked before the match; nothing is borrowed. The AI copy mirrors that strength, nudged by the points gap.
+    function cupBegin(p,hero=p.selected,title=null,form=0){
+      const s=cupRefresh(p),c=p.cup;check(p.heroes[hero],'Bạn chưa sở hữu tướng này.');check(cupPool().includes(hero),'Tướng này chưa phát hành nên chưa vào giải.');let opp,round=0;
       if(s.phase==='race'){check(c.tickets>0,`Hết lượt đấu hôm nay. Mỗi ngày có thêm ${CUP.daily} lượt (dồn tối đa ${CUP.bank}).`);
         const far=r=>Math.abs(r.points-c.points),rows=cupStandings(p,s.key,s.date).filter(r=>r.ai&&(c.vs[r.id]||0)<CUP.sameOpponentPerDay).sort((a,b)=>far(a)-far(b)||a.id.localeCompare(b.id));
         let near=[];for(const w of CUP.window){near=rows.filter(r=>far(r)<=w);if(near.length)break;}if(!near.length)near=rows;
@@ -4499,8 +4715,10 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       // Counted as a loss from the start: leaving the match keeps the loss (Codex arena round 1); a win flips it.
       if(round)c.games.push({round,won:0,token});else{c.points+=loss;c.played++;c.oppSum+=opp.points;if(s.date>=s.lateFrom)c.late++;c.adjust[opp.id]=(c.adjust[opp.id]||0)-loss;}
       c.open={token,opp:opp.id,name:opp.name,hero:opp.hero,round,loss,win,at:current};
-      const data=HEROES[hero],kit=skillKit(hero,null,true),e=cupEncounter({...opp,round},hero);
-      p.pending={...e,token,hero,started:now(),counter:null,title,looks:wornLooks(p),lookFiles:lookFiles(p),stats:{hp:Math.round(data.hp*2),attack:Number((data.attack*1.8).toFixed(4)),defense:0,active:kit.activePower,mutation:false,awakened:false,skills:kit.ranks.slice(),evolution:0,form:1,stars:1,affixes:[],treasure:null,resist:0,precision:0,power:0,kit}};
+      const h=p.heroes[hero],look=int(form,1,formMax(hero,h))?form:lookForm(hero,h),mine=stats({...p,heroes:{...p.heroes,[hero]:{...h,look}}},hero);
+      const e=cupEncounter({...opp,round},hero),foe=HEROES[e.opponent.hero],me=HEROES[hero],gap=Math.max(.85,Math.min(1.15,1+((opp.points||1000)-c.points)/800));
+      e.enemyHp=Math.round(mine.hp*foe.hp/me.hp*gap);e.enemyAttack=Math.round(mine.attack*foe.attack/me.attack*gap*1e4)/1e4;e.opponent={...e.opponent,look:formMax(e.opponent.hero,{stars:h.stars})};
+      p.pending={...e,token,hero,started:now(),counter:null,title,looks:wornLooks(p),lookFiles:lookFiles(p),lookNames:lookNames(p),stats:mine};
       return clone(p.pending);}
     function cupSettle(p,token,won){
       const c=p.cup,o=c?.open?.token===token?c.open:null;let delta=0;
@@ -4529,9 +4747,9 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       levelUp:(key,count=1)=>tx(p=>{check(int(count,1,10),'Chỉ tăng 1–10 cấp mỗi lần.');const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');bankOffline(p);const rewards={tickets:0};for(let i=0;i<count;i++){check(h.level<500,'Đã đạt cấp tối đa 500.');spend(p,levelCost(h.level));h.level++;if((h.level===10||h.level===25||h.level%50===0)&&!h.ticketMilestones.includes(h.level)){h.ticketMilestones.push(h.level);grant(p,{tickets:1});rewards.tickets++;}}note(p,`${HEROES[key].name} đạt cấp ${h.level}`);return rewards;}),
       starUp:key=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');check(h.stars<6,'Tướng đã đạt 6 sao.');const plan=starPlan(key,h);
         check(plan.ok,plan.legacy?`Cần ${plan.need} bản sao cùng tướng (ngoài bản chính).`:`Cần 1 bản ${plan.fodderStar}★ cùng tướng (thiếu ${plan.rawShort} bản 1★).`);spend(p,{gold:plan.gold,essence:plan.essence});
-        const st=plan.stock.slice();for(const r of plan.refines){st[r.to-1]-=2*r.count;st[r.to]+=r.count;}st[plan.fodderStar]-=plan.need;setSpares(h,st);h.stars++;note(p,`${HEROES[key].name} đạt ${h.stars} sao`);}),
+        const st=plan.stock.slice();for(const r of plan.refines){st[r.to-1]-=2*r.count;st[r.to]+=r.count;}st[plan.fodderStar]-=plan.need;setSpares(h,st);const opened=formMax(key,h);h.stars++;if(formMax(key,h)>opened)delete h.look;note(p,`${HEROES[key].name} đạt ${h.stars} sao`);}),
       // Any unlocked form can be worn again in town, free; combat keeps the highest form.
-      chooseLook:(key,form)=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');check(HERO_FORMS[key],'Tướng này chỉ có một hình thái.');check(int(form,1,3),'Hình thái không hợp lệ.');check(form<=formMax(key,h),`Cần ${FORM_STARS[form-1]} sao để mở hình thái này.`);if(form===formMax(key,h))delete h.look;else h.look=form;note(p,`${HEROES[key].name} khoác diện mạo ${HERO_FORMS[key][form-1].name}`);return lookForm(key,h);}),
+      chooseLook:(key,form)=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');check(HERO_FORMS[key],'Tướng này chỉ có một hình thái.');check(int(form,1,3),'Hình thái không hợp lệ.');check(form<=formMax(key,h),`Cần ${FORM_STARS[form-1]} sao để mở hình thái này.`);if(form===formMax(key,h))delete h.look;else h.look=form;note(p,`${HEROES[key].name} dùng hình thái ${HERO_FORMS[key][form-1].name}`);return lookForm(key,h);}),
       evolve:key=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');const e=EVOLUTION[h.evolution];check(e,'Đã tiến hóa tối đa.');check(h.level>=e.level&&h.stars>=e.stars,`Cần cấp ${e.level} và ${e.stars} sao.`);spend(p,{gold:e.gold,essence:e.essence,ore:e.ore});h.evolution++;note(p,HEROES[key].name+': '+e.name);}),
       train:(key,index)=>tx(p=>{const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');spend(p,skillCost(h,index));h.skills[index]++;note(p,'Nâng '+HEROES[key].skills[index]);}),
       fuse:key=>tx(p=>{check(HEROES[key],'Tướng không hợp lệ.');check((p.fragments[key]||0)>=80,'Cần 80 mảnh cùng tướng.');p.fragments[key]-=80;addHero(p,key);note(p,'Ghép tướng '+HEROES[key].name);}),
@@ -4554,7 +4772,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
           const key=OPS()?.BANNER?bannerPlan(current).hero:SUMMON_BANNER.hero;let result;
           if(kind==='hero'&&test===true){const all=Object.keys(HEROES).filter(h=>h!=='novice').flatMap(h=>[1,2,3].map(form=>[h,form])),[hero,form]=all[(p.summon.total-1)%all.length];
             p.summon.dry=0;result={kind,hero,form,rarity:'legendary',name:HERO_FORMS[hero]?.[form-1]?.name||HEROES[hero].name,test:true};}
-          else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,rarity:'legendary',name:HEROES[key].name};}
+          else if(kind==='hero'){addHero(p,key);p.summon.dry=0;result={kind,hero:key,form:1,rarity:'legendary',name:HEROES[key].name};}   // shown as it is given: 1★, form 1
           else if(kind==='fragments'){const count=2+Math.floor(random()*4);p.fragments[key]=(p.fragments[key]||0)+count;p.summon.fragmentDry=0;result={kind,hero:key,count,rarity:'rare',name:`${count} mảnh ${HEROES[key].name}`};}
           else if(kind.endsWith('Gear')){const rarity={commonGear:'common',rareGear:'rare',epicGear:'epic',legendaryGear:'legendary',divineGear:'divine'}[kind],g=dropGear(p,rarity,forced?'weapon':undefined);result={kind:'gear',gear:g,rarity,name:SLOTS[g.slot]+' '+RARITIES[rarity].name+(g.autoSalvaged?` (tự phân giải: +${g.autoSalvaged.ore} quặng)`:'')};}
           else{const resource=['exp','ore','wood','cloth'][Math.floor(random()*4)],count=resource==='exp'?5:8;grant(p,{[resource]:count});result={kind:'material',resource,count,rarity:'common',name:`${RESOURCES[resource][0]} ×${count}`};}
@@ -4563,7 +4781,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
         p.summon.last=results;note(p,'Triệu hồi '+count+' lần');return results;
       }),
       begin:(mode,index,opts={})=>tx(p=>{check(p.heroes[p.selected],'Chưa chọn tướng.');const wornTitle=p.title?titleList(p).find(t=>t.id===p.title&&t.unlocked):null,seasonTitle=wornCosmetic(p,'title'),title=seasonTitle?{name:seasonTitle.name,tier:3,cosmetic:seasonTitle.id}:wornTitle?{name:wornTitle.name,tier:wornTitle.tier}:null,looks=wornLooks(p);
-        if(mode==='cup')return cupBegin(p,opts.hero,title);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title,looks,lookFiles:lookFiles(p)};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title,looks,lookFiles:lookFiles(p)};if(mode==='campaign'&&index===1){const gv=guideView(p);if(gv.active&&gv.step==='win1')p.pending.coach=true;}if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
+        if(mode==='cup')return cupBegin(p,opts.hero,title,opts.form);if(mode==='spar'){check(HEROES[opts.opponent?.hero],'Đối thủ giao hữu không hợp lệ.');const e=sparEncounter(opts.opponent),token=id();p.pending={...e,token,hero:p.selected,started:now(),counter:null,stats:stats(p,p.selected,true),title,looks,lookFiles:lookFiles(p),lookNames:lookNames(p)};return clone(p.pending);}if(mode==='campaign')check(index<=p.campaign.cleared+1,'Chưa mở ải này.');if(mode==='boss')check(index<=p.boss.best+1,'Chưa mở tầng boss này.');if(mode==='duel')check(index===1,'Trận 1vs1 không hợp lệ.');if(mode==='trial')check(trialOpen(current).includes(index),'Hôm nay Sân Thử Luyện mở boss khác.');const e=mode==='trial'?trialEncounter(index,p.heroes[p.selected].level):encounter(mode,index),hero=mode==='duel'?'novice':p.selected;const token=id();p.pending={...e,token,hero,started:now(),counter:counterProgress(p,e.chapter),stats:stats(p,hero,mode==='duel'),title:mode==='duel'?null:title,looks,lookFiles:lookFiles(p),lookNames:lookNames(p)};if(mode==='campaign'&&index===1){const gv=guideView(p);if(gv.active&&gv.step==='win1')p.pending.coach=true;}if(mode==='duel'){const kit=skillKit('novice',null,true);p.pending.stats={...p.pending.stats,hp:290,attack:1.53,defense:0,active:1,mutation:false,awakened:false,evolution:0,form:1,stars:1,skills:kit.ranks.slice(),affixes:[],kit};}return clone(p.pending);}),
       settle:(token,won,damage=0,performance={})=>tx(p=>{check(p.pending&&p.pending.token===token,'Trận đã kết thúc hoặc mã trận không hợp lệ.');check(typeof won==='boolean'&&Number.isFinite(damage)&&damage>=0,'Kết quả không hợp lệ.');const b=p.pending;p.pending=null;let counterReward=null;p.receipts.push(token);p.receipts=p.receipts.slice(-100);let reward={};
         let heroFragments=0;
         if(won&&b.mode==='campaign'){const first=b.index>p.campaign.cleared;reward=campaignLoot(p,b);if(first){bankOffline(p);p.campaign.cleared=b.index;}p.daily.progress.campaign++;p.weekly.progress.campaign++;p.daily.campaignWins=(p.daily.campaignWins||0)+1;companionWin(p,'campaign');if(first&&b.boss){const target=SUMMON_BANNER.hero;heroFragments=3;p.fragments[target]=(p.fragments[target]||0)+heroFragments;}}
@@ -4655,6 +4873,12 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
       treasureEquip:(key,slot,itemId)=>tx(p=>{check(p.trialMode,'Chỉ có trong bản thử nghiệm.');const h=p.heroes[key];check(h,'Chưa sở hữu tướng.');check(slot===0||slot===1,'Ô không hợp lệ.');check(slot===0||(h.evolution||0)>=3,'Ô 2 mở ở tiến hóa 3.');
         const s=p.treasure.slots;for(const k of Object.keys(s))s[k]=s[k].map(x=>x===itemId?null:x);(s[key]??=[null,null])[slot]=itemId||null;return {slots:s[key]};}),
       treasureBorrow:(itemId,source)=>tx(p=>{const it=p.treasure?.items.find(t=>t.id===itemId);check(it&&it.family==='borrow','Chỉ báu vật Mượn Hồn chọn được nguồn.');check(p.heroes[source],'Chưa sở hữu tướng nguồn.');it.borrow=source;return {...it};}),
+      // Trial saves only (owner 08/11: preview the avatar gauge): the selected hero at a level, holding a share of the next
+      // level's cost, the scarcest resource set to the share as near as whole items allow (gold when it lands exactly).
+      trialLevel:(level,share)=>tx(p=>{check(p.trialMode,'Chỉ có trong bản thử nghiệm.');check(int(level,1,MAX_LEVEL-1),'Cấp không hợp lệ.');
+        const h=p.heroes[p.selected],cost=levelCost(level),pick=['gold','exp','seals'].map(id=>[id,Math.round(cost[id]*share)]).sort((a,b)=>Math.abs(a[1]/cost[a[0]]-share)-Math.abs(b[1]/cost[b[0]]-share))[0];
+        h.level=level;p.wallet.gold=Math.max(p.wallet.gold,cost.gold);for(const id of ['exp','seals'])p.materials[id]=Math.max(p.materials[id],cost[id]);
+        if(pick[0]==='gold')p.wallet.gold=pick[1];else p.materials[pick[0]]=pick[1];}),
       trialMode:on=>{check(storage,'Không có bộ nhớ.');const KEY_T='gemwoven.treasure.v1';if(on){const main=read();const copy=clone(main);copy.trialMode=true;copy.pending=null;copy.treasure??={points:0,shards:0,items:[],slots:{},claims:{}};
         storage.setItem(KEY_T,JSON.stringify(copy));try{storage.setItem('gemwoven.trialActive','1');}catch{}}else{try{storage.removeItem('gemwoven.trialActive');}catch{}}return {on:!!on};},
       // Cúp Đấu Trường (local prototype): the month's view, and a sync that rolls the month and the daily matches.
@@ -4752,7 +4976,7 @@ function strengthenCost(g){check(g&&g.level<20,'Trang bị đã +20 hoặc khôn
     return api;
   }
   function normalizeEvent(draft){check(draft&&typeof draft==='object','Cấu hình không hợp lệ.');const e={...EVENT_TEMPLATE,...draft};check(typeof e.id==='string'&&/^[a-z0-9-]{1,50}$/.test(e.id),'ID chỉ gồm chữ thường, số, dấu gạch ngang.');for(const [key,max]of [['title',80],['description',1200]])check(typeof e[key]==='string'&&e[key].length<=max,`${key} quá dài.`);check(typeof e.enabled==='boolean'&&e.status==='coming-soon','Sự kiện hiện chỉ hỗ trợ trạng thái coming-soon.');check(['icon-event','icon-gift','icon-arena','chest'].includes(e.banner),'Banner không hợp lệ.');check(int(Number(e.order),0,999),'Thứ tự không hợp lệ.');e.order=Number(e.order);for(const k of ['startsAt','endsAt'])check(e[k]===''||Number.isFinite(Date.parse(e[k])),'Ngày giờ không hợp lệ.');check(!e.startsAt||!e.endsAt||Date.parse(e.endsAt)>Date.parse(e.startsAt),'Ngày kết thúc phải sau ngày bắt đầu.');return Object.fromEntries(Object.keys(EVENT_TEMPLATE).map(k=>[k,e[k]]));}
-  return {REFINE,spares,spareRaw,starPlan,RELEASES,bannerPeriod,bannerCheck,bannerPlan,bannerFirstStart,memoryOffer,CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,GOLD_PACKS,GOLD_DAILY_UNITS,goldPackGold,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,CRAFT_RARITIES,craftGate,craftCost,RARITY_ORDER,nextRarity,rarityUpCost,rarityUpGate,UPGRADE_FODDER,rarityUpCostWith,fodderRefund,upgradeFodder,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,weeklyReward,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,GUIDE_STEPS,GUIDE_LESSONS,guideView,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
+  return {REFINE,spares,spareRaw,starPlan,RELEASES,bannerPeriod,bannerCheck,bannerPlan,bannerFirstStart,memoryOffer,CUP,cupSeason,cupDelta,cupExpected,cupField,cupSimulate,cupStandings,cupBracket,cupFinish,cupView,cupPool,vipProgress,GOLD_PACKS,GOLD_DAILY_UNITS,goldPackGold,storageFor,TREASURE,treasureStats,treasureTotals,GEMS,SOCKETS,gemKey,gemParse,gemTotals,TITLE_RULES,titleList,BAG,SALVAGE_REFUND,strengthenPaid,salvageValue,salvagePreview,bestGear,gearScore,MAIL_LIMIT,MAIL_ATTACHMENTS,MAIL_COUNT_MAX,MAIL_TITLE_MAX,MAIL_BODY_MAX,MAIL_FROM_MAX,MAIL_EXPIRY_DAYS,MAIL_RESOURCES,mailAge,mailExpiry,normalizeMailDraft,VERSION,KEY,MAX_LEVEL,DAILY_SEAL_CAP,CLOCK_TOLERANCE,REPLAY_DAILY_WINS,BOSS_DAILY_WINS,compact,dailyRewardPreview,offlineRate,WORLD,HEROES,HERO_FORMS,heroForm,RARITIES,AFFIXES,SLOTS,SLOT_ART,RELICS,FORM_STARS,formMax,lookForm,HIRO_FRAGMENTS,relicLevelCost,relicEvolveCost,relicBonus,SKILL_KIT,SKILL_GATES,SKILL_MAX,SKILL_BRANCHES,skillKit,skillText,skillValues,skillGateText,evolutionBonus,heroAvailable,levelCostRange,levelProgress,CRAFT_RARITIES,craftGate,craftCost,RARITY_ORDER,nextRarity,rarityUpCost,rarityUpGate,UPGRADE_FODDER,rarityUpCostWith,fodderRefund,upgradeFodder,strengthenCost,upgradePreview,statParts,statBreakdown,growthMap,RESOURCES,SUMMON_TABLE,SUMMON_PITY,SUMMON_BANNER,STAR_MILESTONES,CREATURES,EVOLUTION,TRIAL,trialOpen,trialEncounter,trialReward,VIP,DAILY,WEEKLY,weeklyReward,NEWBIE,EVENT_TEMPLATE,makeEngine,levelCost,starCost,GUIDE_STEPS,GUIDE_LESSONS,guideView,skillCost,skillUnlock,stats,offline,encounter,summonQuote,stageStars,campaignRewardPreview,chapterProgress,chapterReward,counterProgress,normalizeEvent};
 });
 
 /* Board rules shared by combat (src/live-combat.js, src/game.js), the opponent AI (src/opponent-ai.js) and the balance
@@ -4872,7 +5096,9 @@ let spriteFrameClock=0;
 function spriteDefinition(family,key,action){
   const set=family==='hero'?(ART.heroForms?.[key]?.[combatHeroForm(key)]||ART.heroes[key]):state.boss&&ART.bosses?.[key]?ART.bosses[key]:ART.enemies[key];
   const armored=family!=='hero'&&state.enemyArmor>0;
-  const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt||armored&&set.hurt_armored?'hurt':'attack'):action;
+  // A hit with no hurt sheet: a foe recoils on its attack sheet's last frames; a hero holds its resting pose and the hit's
+  // knock-back moves it (owner 08/11: forms 2-3 have no hurt sheet, and their redrawn attacks end in the strike itself).
+  const mapped=action==='buff'?(set.buff?'buff':'cast'):action==='victory'?'cast':action==='hurt'?(set.hurt||armored&&set.hurt_armored?'hurt':family==='hero'?'idle':'attack'):action;
   // A boss that grows armour of its own (the fire dragon's lava scales) rests in it while the armour holds.
   if(mapped==='idle'&&armored&&set.armoridle)return {sheet:set.armoridle,action:'armoridle'};
   // Its actions too: each has an armoured drawing (<action>_armored) it fights in while the armour holds.
@@ -5007,7 +5233,7 @@ function setSpriteAction(side,action,duration=0){
   root.dataset.state=action;
   const idle=action==='idle';el.dataset.loop=String(idle);
   spritePlayback.set(el,{action,start:performance.now(),duration:duration||1200,manual:false});
-  spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)?4:0);
+  spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)&&el.dataset.family!=='hero'?4:0);
 }
 function setSpriteFrame(side,action,index){
   const el=actor(side).querySelector('.sprite-body');if(!el)return;
@@ -5038,7 +5264,7 @@ function spriteTick(now){
       if(def.count>=8){const t=progress%1;el.style.setProperty('--tween-pos',spriteCellPosition(def,(frame+1)%def.count));el.style.setProperty('--tween',(t*t*(3-2*t)).toFixed(3));}
     }else{
       const elapsed=Math.max(0,now-playback.start);
-      const fallbackHurt=playback.action==='hurt'&&!spriteOwnHurt(el);
+      const fallbackHurt=playback.action==='hurt'&&!spriteOwnHurt(el);if(fallbackHurt&&el.dataset.family==='hero'){if(el.dataset.frame!=='0')spriteApply(el,'hurt',0);return;}
       const frame=fallbackHurt?Math.min(def.count-1,4+Math.floor(elapsed/Math.max(1,playback.duration)*2)):Math.min(def.count-1,Math.floor(elapsed/(playback.duration||1000)*def.count));
       if(+el.dataset.frame!==frame)spriteApply(el,playback.action,frame);
     }
@@ -10887,29 +11113,43 @@ startStage=function(){
   progressionProcs.clear();progressionTurn=0;progressionTransform=null;progressionUlts=0;state.controlGuard=0;state.iceBar=0;state.playerIceBar=0;state.playerLock=null;state.tfDodge=false;state.noriSealFree=false;actor('hero').classList.remove('is-transformed','is-afterglow');progressionTrialBars=0;progressionDot=null;progressionBossCast=0;progressionEnemyDot=null;progressionEnemyCharge=1;progressionVeil=0;delete actor('hero').dataset.veiled;
   if(progressionBattle){state.hp=HEROES[state.key].hp;state.boss=progressionBattle.boss;state.enemyMax=progressionIsDuel()?HEROES[state.key].hp:progressionBattle.enemyHp;state.enemyHp=state.enemyMax;state.enemyEnergy=0;state.armor=0;state.energy=progressionKit().startEnergy;renderActors();update();message(progressionBattle.name+' · '+(progressionIsDuel()?'Hai người luân phiên; người 1 dùng bàn chính, người 2 chọn trong bảng chuyển lượt.':'Chiến thắng để nhận vàng và nguyên liệu.'));}
 };
-// The worn title (Danh Hiệu) rides on top of the hero's head bar (name, health) on its rarity plate, as in town
-// and Gặp Gỡ. Cosmetic only. The head bar is redrawn often, so the plate is put back whenever it is missing.
-// Season looks (Mika's season, cosmetic only): the worn combat frame puts four drawn corner pieces on the battle scene,
-// clear of the board, health bars and skill cues; the worn entry effect plays once over the hero when the fight starts
+// The worn title (Danh Hiệu) shows only in Gặp Gỡ, never in a fight (owner 10/11).
+// Season looks (cosmetic only): the worn combat frame replaces the whole drawn frame kit around the battlefield and the
+// board; the worn entry effect plays once over the hero when the fight starts
 // (skipped with reduced motion) and never holds up a turn.
 function progressionLooks(){
   const files=progressionBattle?.lookFiles||{},scene=$('scene');if(!scene)return;
-  if(files.combatFrame&&!scene.querySelector('.cos-corner'))for(const c of ['tl','tr','bl','br']){const img=document.createElement('img');img.src=files.combatFrame;img.alt='';img.className='cos-corner '+c;scene.append(img);}
-  if(files.entry&&!progressionLooks.played&&!document.body.classList.contains('reduced-motion')){progressionLooks.played=true;
-    // Wait until the hero actually stands on the visible scene (the page loads behind its intro), then play once.
+  // A worn Khung trận swaps the whole drawn frame kit (combat-kits-premium.css): html.kit-<season>.
+  const kit=/season\/([a-z]+)\//.exec(files.combatFrame||'')?.[1];if(kit)document.documentElement.classList.add('kit-'+kit);
+  if(files.entry&&!progressionLooks.played){progressionLooks.played=true;
+    // Wait until the hero actually stands on the visible scene (the page loads behind its intro), then open the fight.
     let tries=0;const play=()=>{const hero=actor('hero'),r=hero?.getBoundingClientRect();if(!hero||!hero.offsetParent||!r||r.width<10||r.bottom<0){if(tries++<50)setTimeout(play,120);return;}
-      const fx=document.createElement('span');fx.className='cos-entry';fx.style.backgroundImage=`url("${files.entry}")`;fx.setAttribute('aria-hidden','true');
-      hero.append(fx);fx.addEventListener('animationend',()=>fx.remove(),{once:true});setTimeout(()=>fx.remove(),2000);};
-    // The strip is loaded first so the first frames are not lost while it downloads.
-    const strip=new Image();strip.src=files.entry;(strip.decode?strip.decode():Promise.resolve()).catch(()=>{}).then(()=>setTimeout(play,250));}
+      progressionOpening(files,progressionBattle?.lookNames?.entry||'',hero);};
+    // The strip and the ribbon are loaded first so the show does not start half drawn.
+    const ready=[files.entry,files.entry.replace(/entry\.webp$/,'nameplate.webp')].map(src=>{const im=new Image();im.src=src;return (im.decode?im.decode():Promise.resolve()).catch(()=>{});});
+    Promise.all(ready).then(()=>setTimeout(play,250));}
 }
-function progressionTitlePlate(){
-  const hud=$('heroHeadHud'),t=progressionBattle?.title;if(!hud||!t||hud.querySelector(':scope > .combat-title'))return;
-  const plate=document.createElement('span');plate.className=`combat-title tier-${t.tier}`;plate.setAttribute('aria-label','Danh hiệu: '+t.name);
-  // A worn season title shows its own drawn ribbon (Mika's season); other titles their rarity plate.
-  const img=document.createElement('img');img.src=t.cosmetic&&progressionBattle.lookFiles?.title||`assets/gemwoven/titles/plate-${t.tier}.webp`;img.alt='';if(t.cosmetic)plate.classList.add('is-season');const b=document.createElement('b');b.textContent=t.name;plate.append(img,b);hud.append(plate);
-  // Keep it inside the stage when the hero stands near its edge.
-  requestAnimationFrame(()=>{const s=$('scene').getBoundingClientRect(),r=plate.getBoundingClientRect();const shift=r.left<s.left+4?s.left+4-r.left:r.right>s.right-4?s.right-4-r.right:0;if(shift)plate.style.marginLeft=shift+'px';});
+// Khai trận (owner 08/11 "khai màn nên có cả khoảng thời gian trình diễn"; Claude + Codex look round,
+// assets/gemwoven/raw/look-round/mockup-entry.png 8,5/10): a worn entry effect opens the fight with a 2.2 s show before the
+// first move. 0–0.3 s the battlefield dims; 0.3–0.9 s the season's light gathers behind the hero and its drawn effect (the
+// entry strip, large) rises around the hero; 0.9–1.5 s the effect's name passes on the season's ribbon in the lower field;
+// 1.5–2.2 s it all clears. The ribbon is the season's slim name plate (Codex: a thin band that hides no one). The board waits for it and a tap anywhere skips it; with reduced motion only the ribbon shows,
+// still, for 0.3 s. Nothing of it stays once the first move opens.
+const PROGRESSION_OPENING_LIGHT={mika:'255,128,64',yuki:'160,222,255',nori:'150,232,120',lumi:'196,156,255',noct:'96,222,255'};
+function progressionOpening(files,name,hero){
+  const scene=$('scene'),season=/season\/([a-z]+)\//.exec(files.entry)?.[1]||'';if(!scene)return;
+  const calm=document.body.classList.contains('reduced-motion'),s=scene.getBoundingClientRect(),h=hero.getBoundingClientRect();
+  const show=document.createElement('div');show.className='cos-open'+(calm?' calm':'');show.setAttribute('aria-hidden','true');
+  show.style.setProperty('--light',PROGRESSION_OPENING_LIGHT[season]||'255,226,160');
+  show.style.setProperty('--hx',(h.left+h.width/2-s.left)+'px');show.style.setProperty('--hy',(h.top+h.height*.55-s.top)+'px');show.style.setProperty('--hh',h.height+'px');
+  // The dim, the light and the effect sit behind the fighters (Codex: the hero and the foe stay in front); the ribbon on top.
+  show.innerHTML=`<i class="cos-dim"></i><i class="cos-light"></i><i class="cos-fx" style="background-image:url('${files.entry}')"></i>`;
+  const ribbon=document.createElement('span');ribbon.className='cos-ribbon'+(calm?' calm':'');ribbon.setAttribute('aria-hidden','true');
+  ribbon.innerHTML=`<img src="${files.entry.replace(/entry\.webp$/,'nameplate.webp')}" alt=""><b></b>`;ribbon.querySelector('b').textContent=name;
+  scene.insertBefore(show,$('heroActor')||scene.firstChild);scene.append(ribbon);
+  const shield=document.createElement('button');shield.type='button';shield.className='cos-open-skip';shield.setAttribute('aria-label','Bỏ qua khai trận');document.body.append(shield);
+  let done=false;const end=()=>{if(done)return;done=true;show.remove();ribbon.remove();shield.remove();};
+  shield.addEventListener('pointerdown',end,{once:true});setTimeout(end,calm?300:2200);
 }
 const progressionOriginalRender=renderActors;
 renderActors=function(){
@@ -10920,7 +11160,7 @@ renderActors=function(){
   }
   if(!progressionBattle)return;
   const root=actor('hero'),evolution=Math.max(0,Math.min(6,progressionBattle.stats.evolution|0));root.dataset.evolution=evolution;
-  progressionTitlePlate();progressionLooks();
+  progressionLooks();
   // Evolution reads as light around the current form instead of armour pasted
   // over faces: a back-glow, a ground sigil and rising motes grow with each tier.
   const sheet=spriteDefinition('hero',state.key,'idle').sheet,bodyHeight=sheet.bodyHeight||.75,foot=sheet.footY||.94,centre=sheet.bodyX||sheet.heads?.[0]?.[0];
@@ -10932,7 +11172,7 @@ renderActors=function(){
   if(evolution>=6&&ART.evolution?.aura){const aura=document.createElement('img');aura.className='combat-evo combat-evo-aura';aura.src=ART.evolution.aura;aura.alt='';aura.setAttribute('aria-hidden','true');root.prepend(aura);}
 };
 const progressionOriginalUpdate=update;
-update=function(){progressionOriginalUpdate();progressionTitlePlate();progressionTransformButton();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
+update=function(){progressionOriginalUpdate();progressionTransformButton();if(progressionBattle){$('stageLabel').textContent=progressionBattle.name;$('footerStage').textContent=progressionBattle.name;const index=progressionBattle.index,start=Math.floor((index-1)/5)*5;$('journeyTrack').innerHTML=Array.from({length:5},(_,i)=>{const n=start+i+1;return (i?'<span class="journey-line"></span>':'')+'<span class="journey-step '+(n===index?'active':n<index?'done':'')+'" aria-label="Chặng '+n+'">'+(n<index?'✓':n)+'</span>';}).join('');}};
 const progressionOriginalDetail=showHeroDetail;
 showHeroDetail=function(){
   progressionOriginalDetail();if(!progressionBattle)return;
@@ -11062,16 +11302,24 @@ function progressionTransformReady(){const t=progressionTransformKit();return !!
 // While Biến Thân lasts each hero's own power lifts all its damage (owner 05/11); its board effects apply in
 // live-combat.js / board-control.js. Nothing stays after it (no permanent afterglow bonus).
 function progressionTransformBonus(){return progressionTransform?.left>0?progressionTransformKit()?.power||0:0;}
+// Biến Thân stays hidden until it can be pressed (owner 10/11): once the hero owns it (skill 4: level 180, evolution 3)
+// and HP <= 50% or two ultimates are in, a medallion appears in the battlefield's upper-left corner, drawn from the
+// combat HUD's medallion pieces, and pulses gently until pressed; while it lasts it shows the turns left, then it goes.
+// Duels, practice and heroes without it show nothing.
 function progressionTransformButton(){
   let b=$('transformBtn');const t=progressionTransformKit();
   if(!t){b?.remove();return;}
-  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='transform-btn';b.innerHTML='<span class="tf-label">BIẾN THÂN</span><b class="tf-count"></b><small></small>';b.addEventListener('click',progressionActivateTransform);$('scene').append(b);}
-  const ready=progressionTransformReady();b.hidden=!ready&&!progressionTransform;b.disabled=!ready;
-  b.classList.toggle('is-active',!!progressionTransform&&progressionTransform.left>0);b.classList.toggle('is-after',!!progressionTransform&&progressionTransform.left===0);
-  b.querySelector('.tf-count').textContent=progressionTransform?.left>0?String(progressionTransform.left):'';
-  b.querySelector('small').textContent=progressionTransform?(progressionTransform.left>0?`Còn ${progressionTransform.left} lượt`:'Đã dùng'):`${t.turns} lượt`;
+  if(!b){b=document.createElement('button');b.id='transformBtn';b.type='button';b.className='tf-medal';
+    b.innerHTML='<span class="chud-ult-art" aria-hidden="true"><i class="chud-ult-halo"></i><i class="chud-ult-disc"></i><i class="chud-ult-emblem"></i><i class="chud-ult-frame"></i><b class="tf-count"></b></span><span class="tf-label">Biến Thân</span>';
+    b.addEventListener('click',()=>{if(progressionTransformReady())progressionActivateTransform();});
+    ($('battleCard')||$('scene')).append(b);}
+  const ready=progressionTransformReady(),active=progressionTransform?.left>0;
+  b.hidden=!ready&&!active;b.disabled=!ready;b.dataset.element=state.key;
+  b.classList.toggle('is-ready',ready);b.classList.toggle('is-active',active);
+  b.querySelector('.tf-count').textContent=active?String(progressionTransform.left):'';
+  b.querySelector('.tf-label').textContent=active?`Còn ${progressionTransform.left} lượt`:'Biến Thân';
   b.title=t.text;
-  b.setAttribute('aria-label',ready?`Biến Thân: ${t.turns} lượt, ${t.text}, giảm ${Math.round(t.reduce*100)}% sát thương nhận, miễn choáng`:b.querySelector('small').textContent);
+  b.setAttribute('aria-label',active?`Biến Thân: còn ${progressionTransform.left} lượt`:`Biến Thân: ${t.turns} lượt, ${t.text}, giảm ${Math.round(t.reduce*100)}% sát thương nhận, miễn choáng`);
 }
 function progressionActivateTransform(){
   if(!progressionTransformReady()||locked)return;const t=progressionTransformKit();
@@ -13912,8 +14160,9 @@ attack=async function(side,raw,options={}){
 // on its element; the elements are restyled, wrapped or moved, never replaced.
 //   top bar:      Về (hub link) · Ải tag (mirrors #stageLabel) · journey medal (#score) · settings medallion
 //   settings:     #soundBtn, #motionBtn ("Hiệu ứng"), #helpBtn (with the gem guide) behind one gear
-//   action strip: #turnChip ribbon · ultimate medallion (fills with nộ, blazes at 100; it fires by itself) · #hintBtn
-// Phone portrait stacks battle, strip and board; landscape screens put the battle left and the board right.
+//   no action strip (owner 08/11): the ultimate fires by itself at 100 nộ, hints are gone; #turnChip stays hidden and
+//   a short banner in the scene tells whose turn it is; Biến Thân is a medallion on the seam (progression-combat.js).
+// Phone portrait stacks battle and board; landscape screens put the battle left and the board right.
 (function combatHud(){
   if(new URLSearchParams(location.search).has('showcase'))return;
   const root=document.documentElement,app=document.querySelector('.app'),header=document.querySelector('.app-header');
@@ -13977,17 +14226,16 @@ attack=async function(side,raw,options={}){
   $('helpBtn').addEventListener('click',()=>closeAll());
   addEventListener('resize',()=>closeAll());
 
-  // ---- Action strip: turn ribbon, ultimate medallion, hint medallion ------------------------------------------
-  const strip=document.querySelector('.board-toolbar');
-  const ult=make('button','chud-ult');ult.type='button';ult.id='hudUltimate';
-  ult.innerHTML='<span class="chud-ult-art" aria-hidden="true"><i class="chud-ult-halo"></i><i class="chud-ult-disc"></i><i class="chud-ult-emblem"></i><i class="chud-ult-ring"></i><i class="chud-ult-frame"></i></span><span class="chud-ult-label">Tuyệt kỹ</span><small class="chud-ult-auto">Tự động</small>';
-  if(strip){strip.classList.add('chud-strip');strip.insertBefore(ult,$('hintBtn'));}
-  ult.addEventListener('click',e=>{e.stopPropagation();const n=Math.round(state.energy);showNote(ult,'Tuyệt kỹ · '+Math.min(100,n)+'/100 nộ','Tự thi triển khi đủ 100 nộ.');});
-  // The idle sentence moves into the guide; combo counts and the foe's choice still show while they happen.
-  const combo=$('comboLabel');
-  const syncCombo=()=>{combo.classList.toggle('is-idle',/^Ghép 3/.test(combo.textContent));};
-  new MutationObserver(syncCombo).observe(combo,{childList:true,characterData:true,subtree:true});syncCombo();
-  $('hintBtn').title='Gợi ý';
+  // ---- No action strip (owner 08/11: "Bỏ cái khoanh đỏ... bỏ cả gợi ý"; Codex mockup raw/combat-layout, 8/10) --------
+  // The strip (turn ribbon, ultimate disc, hint bulb) is hidden; the scene takes its height. At each turn start a short
+  // banner in the scene says whose turn it is, and the board frame keeps its enemy-turn glow.
+  const strip=document.querySelector('.board-toolbar');if(strip)strip.hidden=true;
+  const turnChip=$('turnChip'),banner=make('div','chud-turn-banner');banner.setAttribute('aria-hidden','true');$('scene')?.append(banner);
+  let lastTurn='';
+  if(turnChip)new MutationObserver(()=>{const t=turnChip.textContent.trim(),enemy=turnChip.classList.contains('enemy');
+    if(!/^(Lượt |Đóng băng)/.test(t)||t===lastTurn)return;lastTurn=t;
+    banner.textContent=t.split(' · ')[0]==='Đóng băng'?'Đóng băng · mất lượt':t;banner.classList.toggle('enemy',enemy);
+    banner.classList.remove('show');void banner.offsetWidth;banner.classList.add('show');}).observe(turnChip,{childList:true,characterData:true,subtree:true,attributes:true});
 
   // ---- Wooden frames around the battlefield and the board ----------------------------------------------------
   const frame=()=>make('span','chud-frame','<i class="chud-c tl"></i><i class="chud-c tr"></i><i class="chud-c bl"></i><i class="chud-c br"></i><i class="chud-e t"></i><i class="chud-e b"></i><i class="chud-e l"></i><i class="chud-e r"></i>');
@@ -14004,10 +14252,6 @@ attack=async function(side,raw,options={}){
   const hudUpdate=update;
   update=function(){
     hudUpdate();
-    const energy=Math.max(0,Math.min(100,state.energy||0)),full=energy>=100;
-    ult.style.setProperty('--energy',String(energy));ult.dataset.element=ELEMENTS[state.key]?state.key:'novice';
-    ult.classList.toggle('is-full',full);
-    ult.setAttribute('aria-label',`Tuyệt kỹ: ${Math.round(energy)}/100 nộ${full?', sẵn sàng tự thi triển':''}`);
     for(const side of ['hero','enemy']){const r=$(side+'Rage');if(!r)continue;const n=Math.max(0,Math.min(100,Math.round(+r.getAttribute('aria-valuenow')||0)));r.closest('.actor-hud')?.classList.toggle('is-rage-full',n>=100);if(rageNum[side])rageNum[side].textContent=n+'/100';}
     syncStage();
   };
