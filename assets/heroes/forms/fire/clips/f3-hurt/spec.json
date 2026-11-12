@@ -108,5 +108,10 @@
   146,
   480,
   640
- ]
+ ],
+ "recoil": {
+  "deg": -8,
+  "ms": 380
+ },
+ "recoil_note": "chủ dự án 12/11 + review (f2 game-all, f3 spec): dáng bị đánh sát thế nghỉ, khó đọc -> cả thân ngửa ra sau quanh bàn chân lúc trúng đòn rồi hồi (sprite-runtime.js)"
 }

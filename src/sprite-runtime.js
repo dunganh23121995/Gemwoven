@@ -169,6 +169,11 @@ function setSpriteAction(side,action,duration=0){
   }
   spritePlayback.set(el,{action,start:performance.now(),duration:duration||1200,manual:false});
   spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)&&el.dataset.family!=='hero'?4:0);
+  // A hurt sheet drawn close to its resting pose (sheet recoil: {deg, ms}) is thrown back about its feet on the hit and
+  // eases back upright, so the blow reads at phone size (owner 12/11, six-star Mika's hurt).
+  const recoil=action==='hurt'&&!reduced&&spriteDefinition(el.dataset.family,el.dataset.key,action).sheet?.recoil;
+  if(recoil&&el.animate){el.style.transformOrigin=`50% ${(((s=>s.feetY||s.footY||.94)(spriteDefinition(el.dataset.family,el.dataset.key,action).sheet))*100).toFixed(1)}%`;
+    el.animate([{rotate:'0deg',translate:'0 0'},{rotate:`${recoil.deg}deg`,translate:`${recoil.deg*.6}% 0`,offset:.16},{rotate:`${recoil.deg*.35}deg`,translate:`${recoil.deg*.2}% 0`,offset:.5},{rotate:'0deg',translate:'0 0'}],{duration:recoil.ms||340,easing:'cubic-bezier(.2,.7,.3,1)',composite:'add'});}
 }
 function setSpriteFrame(side,action,index){
   const el=actor(side).querySelector('.sprite-body');if(!el)return;

@@ -20,21 +20,6 @@
    },
    "note": "ô 0 của sheet tuyệt kỹ đã duyệt"
   },
-  "k1": {
-   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k1.png",
-   "canvas": true,
-   "from": {
-    "file": "assets/heroes/forms/fire/form-2/skill.webp",
-    "cell": [
-     1,
-     4,
-     3
-    ],
-    "sheet_scale": 1.3117,
-    "sheet_foot": 0.94
-   },
-   "note": "ô 1 của sheet tuyệt kỹ đã duyệt"
-  },
   "k2": {
    "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k2.png",
    "canvas": true,
@@ -178,27 +163,6 @@
  },
  "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails keep moving with natural delay and follow-through, never frozen.",
  "segments": [
-  {
-   "name": "S1",
-   "start": "k0",
-   "end": "k1",
-   "length": 9,
-   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. She raises the greatsword up high in both hands. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
-  },
-  {
-   "name": "S2",
-   "start": "k1",
-   "end": "k2",
-   "length": 9,
-   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. Holding the greatsword high, she forces the blade down a little in one short heavy dip, straining. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
-  },
-  {
-   "name": "S3",
-   "start": "k2",
-   "end": "k3",
-   "length": 9,
-   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. From the dip she begins to swing the blade up past vertical. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
-  },
   {
    "name": "S4",
    "start": "k3",

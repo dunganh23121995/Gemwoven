@@ -1147,7 +1147,11 @@
      "scale": 1.25,
      "footY": 0.8516,
      "feetY": 0.9223,
-     "chunkRows": 1
+     "chunkRows": 1,
+     "recoil": {
+      "deg": -6,
+      "ms": 360
+     }
     }
    }
   },
@@ -2363,7 +2367,11 @@
      "scale": 1.45,
      "footY": 0.8522,
      "feetY": 0.9128,
-     "chunkRows": 1
+     "chunkRows": 1,
+     "recoil": {
+      "deg": -8,
+      "ms": 380
+     }
     }
    }
   }

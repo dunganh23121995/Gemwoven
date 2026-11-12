@@ -418,21 +418,44 @@ $('foeCast').onclick=async()=>{const q=gq();if(!q)return;const o=$('foeSkill').s
   }catch(e){say('Lỗi: '+e.message);}};
 
 // ---- Sprite sheets ---------------------------------------------------------------------------------
-// Every hero shows the same combat states; one the hero has no sheet of its own for says so (and
-// which sheet the game borrows in its place: sprite-runtime.js spriteDefinition).
+// The hero's combat states, each on the sheet combat really plays for it (owner 12/11: only the character's states, as in
+// combat). assets/heroes/combat-states.json is measured by qa/gemwoven/runtime/combat-states.cjs (it presses every
+// combat button for every hero form); a state shown on the same picture as another is one button. Without a measure the
+// list falls back to every sheet the form has.
 const SHEET_STATES=[['idle','Nghỉ'],['attack','Đánh thường'],['cast','Gồng chiêu'],['buff','Nhận máu / giáp'],['hurt','Bị đánh'],
   ['run','Vào / rời sân'],['hover','Bay lơ lửng'],['skill','Tuyệt kỹ']];
 const SHEET_EXTRA={smash:'Tuyệt kỹ (smash)',slash:'Đánh thường riêng (slash)',dash:'Lướt (dash)'};
-const SHEET_BORROW={buff:'cast',hurt:'attack'};
+const COMBAT_MOMENTS=[['attack','Đánh thường'],['ultimate','Tuyệt kỹ'],['hit','Bị đánh'],['buff','Nhận máu / giáp'],['depart','Rời sân'],['afterglow','Dư âm'],['transform','Biến thân']];
+let combatStates=null;
+fetch('assets/heroes/combat-states.json').then(r=>r.ok?r.json():null).then(j=>{combatStates=j?.heroes||null;if(gq()?.art)loadSheets();}).catch(()=>{});
 function ownSheet(name){return sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;}
+function combatTabs(){
+  const seen=combatStates?.[hero]?.[String(form)];if(!seen)return null;
+  const tabs=[],pic=s=>s.src||s.bands?.[0];
+  const add=(label,name)=>{
+    // a state without a sheet of its own plays a borrowed one (sprite-runtime.js spriteDefinition): shown on that one
+    const real=ownSheet(name)?name:sheets[name]?.aliasOf&&ownSheet(sheets[name].aliasOf)?sheets[name].aliasOf:ownSheet(SHEET_BORROW[name])?SHEET_BORROW[name]:null;if(!real)return;
+    const same=tabs.find(t=>pic(ownSheet(t.name))===pic(ownSheet(real)));
+    if(same){if(!same.label.split(' / ').includes(label))same.label+=' / '+label;return;}
+    tabs.push({name:real,label});
+  };
+  add('Nghỉ','idle');
+  for(const [k,label] of COMBAT_MOMENTS){
+    const list=k==='buff'?['buff']:(seen[k]||[]);
+    list.forEach(n=>add(list.length>1?`${label} · ${n}`:label,n));
+  }
+  return tabs;
+}
 function loadSheets(){
   const art=gq().art;
   sheets=(form>1&&art.heroForms?.[hero]?.[String(form)])||art.heroes[hero]||{};
-  const states=[...SHEET_STATES,...Object.keys(sheets).filter(k=>!SHEET_STATES.some(([s])=>s===k)).map(k=>[k,SHEET_EXTRA[k]||k])];
+  const measured=combatTabs();
+  const states=measured?measured.map(t=>[t.name,t.label]):[...SHEET_STATES,...Object.keys(sheets).filter(k=>!SHEET_STATES.some(([s])=>s===k)).map(k=>[k,SHEET_EXTRA[k]||k])];
   $('actions').replaceChildren(...states.map(([k,label])=>{const b=document.createElement('button');b.dataset.state=k;b.textContent=label;
     b.title=k;b.className=(k===action?'on ':'')+(ownSheet(k)?'':'absent');b.onclick=()=>pick(k);return b;}));
   pick(states.some(([k])=>k===action)?action:'idle');
 }
+const SHEET_BORROW={buff:'cast',hurt:'attack'};
 function pick(name){
   action=name;for(const b of $('actions').children)b.classList.toggle('on',b.dataset.state===name);
   const s=ownSheet(name);

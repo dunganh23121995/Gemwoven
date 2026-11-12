@@ -1,0 +1,279 @@
+{
+ "note": "Sprite actions each hero form plays per combat button (qa/gemwoven/runtime/combat-states.cjs); the Studio sheet list reads it.",
+ "heroes": {
+  "novice": {
+   "1": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "2": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "3": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "run"
+    ]
+   }
+  },
+  "fire": {
+   "1": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "smash"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "2": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "3": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "dash"
+    ]
+   }
+  },
+  "ice": {
+   "1": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "2": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "3": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "run"
+    ]
+   }
+  },
+  "earth": {
+   "1": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "2": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast",
+     "attack"
+    ],
+    "depart": [
+     "run"
+    ]
+   },
+   "3": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast",
+     "attack"
+    ],
+    "depart": [
+     "run"
+    ]
+   }
+  },
+  "lightning": {
+   "1": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast"
+    ],
+    "depart": [
+     "hover"
+    ]
+   },
+   "2": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "hover"
+    ]
+   },
+   "3": {
+    "attack": [
+     "attack"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "skill"
+    ],
+    "depart": [
+     "skill",
+     "ride"
+    ]
+   }
+  },
+  "shadow": {
+   "1": {
+    "attack": [
+     "attack",
+     "cast"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast",
+     "attack"
+    ],
+    "depart": [
+     "hover"
+    ]
+   },
+   "2": {
+    "attack": [
+     "attack",
+     "cast"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast",
+     "skill"
+    ],
+    "depart": [
+     "skill",
+     "cast",
+     "run"
+    ]
+   },
+   "3": {
+    "attack": [
+     "attack",
+     "run"
+    ],
+    "hit": [
+     "hurt"
+    ],
+    "ultimate": [
+     "cast"
+    ],
+    "depart": [
+     "hover"
+    ]
+   }
+  }
+ }
+}

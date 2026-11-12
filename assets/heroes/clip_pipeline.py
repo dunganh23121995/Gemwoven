@@ -768,7 +768,7 @@ def convert_grips(spec):
 
 
 def write_meta(spec, cols, rows, n, heads, sockets):
-    extra = {k: spec[k] for k in ('clock', 'roles', 'rolesBack', 'gripKeys', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows') if spec.get(k) is not None}
+    extra = {k: spec[k] for k in ('clock', 'roles', 'rolesBack', 'gripKeys', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil') if spec.get(k) is not None}
     if spec.get('legacy_grips'):
         extra['grips'] = convert_grips(spec)
     if sockets:
@@ -778,7 +778,7 @@ def write_meta(spec, cols, rows, n, heads, sockets):
     if spec.get('meta'):        # form 1: assets/reimagined/heroes/<hero>/<action>/runtime-meta.json
         p = ROOT / spec['meta']; m = json.loads(p.read_text(encoding='utf-8'))
         for k in ('frameFiles', 'framePixelHashes', 'uniqueFrames', 'sourceSha256', 'qc', 'recoveredGridCrossings', 'originalAnchorYStd',
-                  'clock', 'roles', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows'):
+                  'clock', 'roles', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil'):
             m.pop(k, None)
         m.update(columns=cols, rows=rows, frames=n, frameWidth=CELL // 2, frameHeight=CELL // 2, frameDuration=spec.get('frameDuration', 40),
                  headAnchors=heads, source=folder_of(spec).relative_to(ROOT).as_posix() + '/spec.json', **extra)
@@ -786,7 +786,7 @@ def write_meta(spec, cols, rows, n, heads, sockets):
     if spec.get('forms'):       # forms 2-3: assets/heroes/forms/<hero>/forms.json [form, action]
         p = ROOT / 'assets/heroes/forms' / spec['hero'] / 'forms.json'; m = json.loads(p.read_text(encoding='utf-8'))
         form, action = spec['forms']
-        e = {k: v for k, v in m['forms'][form]['actions'].get(action, {}).items() if k not in ('clock', 'roles', 'rolesBack', 'gripKeys', 'grips', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'note', 'feetX')}
+        e = {k: v for k, v in m['forms'][form]['actions'].get(action, {}).items() if k not in ('clock', 'roles', 'rolesBack', 'gripKeys', 'grips', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'note', 'feetX', 'recoil')}
         e.update(file=spec['out'], cols=cols, rows=rows, count=n, heads=heads, frameDuration=spec.get('frameDuration', 40), **extra)
         if spec.get('scale'):
             e['scale'] = spec['scale']

@@ -149,7 +149,7 @@ for family in ['heroes', 'bosses']:
                      'rows':meta['rows'], 'count':meta['frames'], 'heads':meta['headAnchors'],
                      **({'frameDuration':meta['frameDuration']} if meta['frames'] >= 8 else {}),
                      # A clip-route sheet (assets/heroes/clip_pipeline.py): its clock or pose roles and weapon sockets.
-                     **{k:meta[k] for k in ('clock','roles','rolesBack','sockets','stepMs','loop','loopMs','introMs','introTimes','chunkRows') if k in meta and (k!='loop' or isinstance(meta[k],list))}}
+                     **{k:meta[k] for k in ('clock','roles','rolesBack','sockets','stepMs','loop','loopMs','introMs','introTimes','chunkRows','recoil') if k in meta and (k!='loop' or isinstance(meta[k],list))}}
             sheet.update(bands(base.parent/f'{action}.webp', sheet))
             art[family].setdefault(key,{})[action]=sheet
 for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
