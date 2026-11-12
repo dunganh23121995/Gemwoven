@@ -47,7 +47,6 @@ MAGENTA = ((255, 0, 255), "magenta #FF00FF")
 PAIR_OLD = "609627ff"
 # The sheets a detail-per-body audit (and a look at each) found softer or paler than their form's resting frame
 PAIRED = """novice-attack novice-cast novice-hurt
-fire-attack fire-hurt fire-smash fire-run fire3-skill fire3-attack fire3-cast
 ice-attack ice-cast ice-hurt ice2-attack ice2-skill ice2-run ice2-cast ice3-show-fanwave ice3-show-twirl
 earth-attack earth-cast earth-hurt earth-run earth-smash earth2-attack earth2-cast earth2-run earth3-attack earth3-cast earth3-run
 lightning-attack lightning-hover lightning-run lightning-cast lightning2-skill lightning2-hover
@@ -63,11 +62,12 @@ ZOOM_OLD = "6a2acc8c"
 # the layout in the cell (feet, reach, grips) is the old one, only finer. A few sheets at scale 1 drawn softer than
 # their resting frame (six-star Yuki) take the same zoomed redraw at 512px.
 # fire3-run left both lists 08/11: six-star Mika's run is redrawn by form-3/redraw_run.py (tails behind her)
-ZOOMED = """fire3-attack fire3-skill fire3-cast shadow2-attack shadow2-attackLeft
+ZOOMED = """shadow2-attack shadow2-attackLeft
 lightning3-attack lightning3-ride lightning3-skill lightning3-cast lightning3-hover lightning2-skill
 earth2-attack earth2-cast earth2-run earth3-attack earth3-cast earth3-run
 ice3-attack ice3-cast ice3-run ice3-skill""".split()
 MAX_CELL = 1152
+# Mika (fire) left every list 12/11: her action sheets come from the clip route (assets/heroes/clip_pipeline.py).
 
 
 def zoom_cell(job):
@@ -92,7 +92,7 @@ def zoom_box(frames_, margin=.03):
 
 
 def form1_sheets():
-    for hero, actions in (("fire", "attack cast hurt run smash"), ("earth", "attack cast hurt run smash"), ("ice", "attack cast hurt run"),
+    for hero, actions in (("earth", "attack cast hurt run smash"), ("ice", "attack cast hurt run"),
                           ("lightning", "attack cast hurt hover run")):
         for action in actions.split():
             yield hero, action, f"assets/reimagined/heroes/{hero}/{action}.webp", 3, 2
@@ -108,7 +108,6 @@ FORM_SHEETS = {
     ("ice", 2): "attack cast run skill", ("ice", 3): "attack cast run skill",
     ("lightning", 2): "attack cast run hover skill", ("lightning", 3): "run hover",
     ("shadow", 2): "attack attackLeft cast run skill", ("shadow", 3): "attack cast run hover",
-    ("fire", 3): "cast",
 }
 SOFT_RESTS = (("earth", 2), ("earth", 3), ("ice", 2), ("ice", 3), ("lightning", 2), ("lightning", 3), ("shadow", 2), ("shadow", 3))
 # Rests drawn pale, with thin light outlines and loose specks (sharp by the measure, unclear in the game): Codex also

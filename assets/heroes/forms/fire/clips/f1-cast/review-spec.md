@@ -1,0 +1,11 @@
+**7/10 — LÀM LẠI spec trước khi gen.** Ý T→U đúng động tác gồng chiêu; hai mốc giữ đúng nhân vật. Cần sửa nhịp và ràng buộc chuyển động.
+
+- **Khung 0→focus:** rest có kiếm nghiêng sang phải, focus dựng thẳng; tay ở focus thấp hơn. Đổi “raises the katana” thành **“rotates the katana from its diagonal guard angle into a vertical position before her face, smoothly adjusting both hands to match the end reference”** để tránh Wan nâng cả tay quá đầu.
+- **Điểm nối T/U:** cả hai clip chứa focus; giữ hai bản liên tiếp dễ khựng. Chỉ lấy **một khung focus**, không thêm đoạn đứng im. T giảm tốc khi tới mốc, U tiếp tục nhẹ nhàng; tóc/khăn/đuôi vẫn có đà.
+- **Trong U:** “opens her eyes, then lowers…” dễ thành hai động tác tách rời. Sửa thành **“opens her eyes while smoothly rotating the katana back into the diagonal guard shown in the end reference; secondary motion gradually softens into a gentle idle sway.”**
+- **Toàn bộ 0–23:** thêm **“Feet remain planted at the reference positions; no stepping, body turning or scale changes. Preserve the same face, armour, hands and single rigid katana. Wind affects only hair, cloth and tail; no added flames, aura or particles.”** “Power gathers” hiện dễ sinh hiệu ứng che người. “Her face visible” nên đổi thành “facial features remain consistent; sword occlusion matches the focus reference”.
+- **Khung 23:** phải đúng rest, nhưng tóc/khăn/đuôi chỉ dịu xuống; tránh “settle” thành đông cứng. Chưa có clip nên chưa thể xác nhận lỗi khung thực tế.
+
+**Chọn 24 khung:** đề xuất **0 = rest, 11 = focus, 23 = rest**; lấy T đủ hai đầu, U bỏ focus đầu, phân bố thời gian đều xuyên điểm nối. Không đảo ngược T để làm U vì đà tóc/khăn/đuôi sẽ ngược tự nhiên.
+
+**Nhịp game:** runtime chia toàn bộ sheet theo `setSpriteAction.duration` ([mã](/D:/Project/Gemwoven/src/sprite-runtime.js:219)); `40 ms` không quyết định thời lượng nhánh này. Vì vậy **960 ms chỉ là nhịp danh nghĩa**. Cần kiểm tra duration và thời điểm bị action khác ngắt: nếu ngắt sớm, chưa tới khung 23 sẽ bật về idle. Với một lượt phát đủ duration, cấu trúc T→U phù hợp.

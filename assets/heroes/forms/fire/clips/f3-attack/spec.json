@@ -1,0 +1,226 @@
+{
+ "id": "f3-attack",
+ "hero": "fire",
+ "title": "Mika hình thái 3 · đánh thường (đâm đao, sheet attack)",
+ "rest": "assets/heroes/forms/fire/form-3/rig/combat/rest.png",
+ "pad": 2.2,
+ "keys": {
+  "guard": {
+   "file": "assets/heroes/forms/fire/clips/f3-attack/keys/guard.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-3/thrust3.webp",
+    "cell": [
+     1,
+     3,
+     1
+    ],
+    "sheet_scale": 2.562,
+    "sheet_foot": 0.94
+   },
+   "note": "thế thủ đâm (đã duyệt)"
+  },
+  "thrust": {
+   "file": "assets/heroes/forms/fire/clips/f3-attack/keys/thrust.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-3/thrust3.webp",
+    "cell": [
+     2,
+     3,
+     1
+    ],
+    "sheet_scale": 2.562,
+    "sheet_foot": 0.94
+   },
+   "note": "đâm thẳng (đã duyệt)"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "P",
+   "start": "rest",
+   "end": "guard",
+   "length": 13,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, from her resting pose takes the glaive in both hands and levels it into the thrusting guard of the last frame, left hand supporting the shaft in front, right hand on the butt end. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "Q",
+   "start": "guard",
+   "end": "thrust",
+   "length": 9,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, from the thrusting guard drives the glaive straight forward in one fast spear thrust toward screen-right into the pose of the last frame, the right hand pushing the shaft through the left hand; the crescent blade clearly visible. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "R",
+   "start": "thrust",
+   "end": "guard",
+   "length": 9,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, after a spear thrust pulls the glaive back smoothly into the thrusting guard of the last frame. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "S",
+   "start": "guard",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, from the thrusting guard returns to her resting pose with the glaive upright beside her, hair and nine tails settling into a gentle sway. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "forms-mika form 3: thrust3 orders (0 rest, 1 guard, 2 thrust) qua combatV3Frame; pierce3 FX khi chạm",
+  "plan": "roles [rest, guard, thrust] ánh xạ sang khung clip; runtime đi qua mọi khung giữa"
+ },
+ "out": "assets/heroes/forms/fire/form-3/attack.webp",
+ "forms": [
+  "3",
+  "attack"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 2.2,
+ "footY": 0.8502,
+ "originX": 0.15,
+ "why_origin": "Codex spec: lưỡi đao ra ngoài mép khi đâm -> nhân vật lệch trái (originX 0.2) trong khung nới 1.9",
+ "pick": [
+  [
+   "P",
+   7,
+   0
+  ],
+  [
+   "P",
+   7,
+   2
+  ],
+  [
+   "P",
+   7,
+   4
+  ],
+  [
+   "P",
+   7,
+   6
+  ],
+  [
+   "P",
+   7,
+   8
+  ],
+  [
+   "P",
+   7,
+   10
+  ],
+  [
+   "key",
+   "guard"
+  ],
+  [
+   "Q",
+   7,
+   1
+  ],
+  [
+   "Q",
+   7,
+   2
+  ],
+  [
+   "Q",
+   7,
+   3
+  ],
+  [
+   "Q",
+   7,
+   4
+  ],
+  [
+   "Q",
+   7,
+   5
+  ],
+  [
+   "Q",
+   7,
+   6
+  ],
+  [
+   "key",
+   "thrust"
+  ],
+  [
+   "R",
+   7,
+   2
+  ],
+  [
+   "R",
+   7,
+   4
+  ],
+  [
+   "R",
+   7,
+   6
+  ],
+  [
+   "key",
+   "guard"
+  ],
+  [
+   "S",
+   7,
+   2
+  ],
+  [
+   "S",
+   7,
+   4
+  ],
+  [
+   "S",
+   7,
+   6
+  ],
+  [
+   "S",
+   7,
+   8
+  ],
+  [
+   "S",
+   7,
+   10
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "roles": [
+  0,
+  6,
+  13
+ ],
+ "rolesBack": [
+  23,
+  17,
+  13
+ ],
+ "stepMs": 17,
+ "pick_note": "0-5 rest->thủ, 6 = mốc thủ, 7-12 đâm, 13 = mốc đâm, 14-16 rút về, 17 = mốc thủ, 18-22 thủ->nghỉ, 23 = rest; rolesBack: thủ sau đâm = 17, nghỉ = 23",
+ "sharpen_note": "In every cell she holds the glaive with both hands clearly drawn: the left hand in front, supporting the shaft from below, the right hand gripping the butt end; the shaft is one straight, unbroken line from the butt to the crescent blade, never doubled, bent or melted into the hands or sleeves.",
+ "zoom_box": [
+  33,
+  106,
+  636,
+  847
+ ],
+ "match_keys": true,
+ "same": {
+  "17": 6
+ }
+}

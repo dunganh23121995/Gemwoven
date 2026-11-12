@@ -1,0 +1,112 @@
+{
+ "id": "f3-hurt",
+ "hero": "fire",
+ "title": "Mika hình thái 3 · bị đánh (sheet hurt mới)",
+ "rest": "assets/heroes/forms/fire/form-3/rig/combat/rest.png",
+ "pad": 1.45,
+ "keys": {
+  "recoil": {
+   "file": "assets/heroes/forms/fire/clips/f3-hurt/keys/recoil-src.png",
+   "note": "giật nhắm mắt (Qwen Edit 2511 + Consistency, 12/11)"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "K2",
+   "start": "recoil",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, already recoiling from a hard hit at the first frame, dazed with eyes shut, immediately begins recovering: no second jolt. She opens her eyes, steadies herself with a slight knee flex and returns smoothly to her guard stance of the last frame; hair, cape and tails swing with one diminishing overshoot. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "setSpriteAction(hero,hurt,~420ms) phát đều; trước đây dạng 2-3 không có sheet hurt (giữ thế nghỉ + đẩy lùi)",
+  "plan": "rest -> recoil (giật tức thì) -> K2 hồi phục -> rest"
+ },
+ "out": "assets/heroes/forms/fire/form-3/hurt.webp",
+ "forms": [
+  "3",
+  "hurt"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.45,
+ "footY": 0.8522,
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "key",
+   "recoil"
+  ],
+  [
+   "K2",
+   7,
+   1
+  ],
+  [
+   "K2",
+   7,
+   2
+  ],
+  [
+   "K2",
+   7,
+   3
+  ],
+  [
+   "K2",
+   7,
+   4
+  ],
+  [
+   "K2",
+   7,
+   5
+  ],
+  [
+   "K2",
+   7,
+   6
+  ],
+  [
+   "K2",
+   7,
+   7
+  ],
+  [
+   "K2",
+   7,
+   8
+  ],
+  [
+   "K2",
+   7,
+   9
+  ],
+  [
+   "K2",
+   7,
+   10
+  ],
+  [
+   "K2",
+   7,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "fit_rest": true,
+ "zoom_box": [
+  149,
+  146,
+  480,
+  640
+ ]
+}

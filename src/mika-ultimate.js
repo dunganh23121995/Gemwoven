@@ -9,9 +9,11 @@ function mikaFlameSword(root,start){
   const tick=now=>{
     if(!pivot.isConnected)return;
     const elapsed=now-start,frame=Number(root.querySelector('.sprite-body')?.dataset.frame)||0;
-    let [x,y,angle]=MIKA_SWORD_SOCKETS[Math.min(frame,5)];
-    // A continuous forward sweep connects the three separately drawn chop poses.
-    if(elapsed>=1700&&elapsed<1920){
+    // A clip-route sheet carries its own sword socket per frame (assets/heroes/clip_pipeline.py sockets).
+    const sockets=spriteDefinition('hero','fire','smash').sheet.sockets||MIKA_SWORD_SOCKETS;
+    let [x,y,angle]=sockets[Math.min(frame,sockets.length-1)];
+    // A continuous forward sweep connects the three separately drawn chop poses (a clip sheet draws the sweep itself).
+    if(sockets===MIKA_SWORD_SOCKETS&&elapsed>=1700&&elapsed<1920){
       const p=(elapsed-1700)/220,from=MIKA_SWORD_SOCKETS[p<.5?2:3],to=MIKA_SWORD_SOCKETS[p<.5?3:4],t=p<.5?p*2:(p-.5)*2;
       [x,y,angle]=from.map((v,i)=>v+(to[i]-v)*t);
     }

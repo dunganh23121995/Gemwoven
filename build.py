@@ -32,6 +32,21 @@ def compact_image(path):
     return rel(path)
 
 
+def bands(path, sheet):
+    """A big clip-route sheet's row bands (<sheet>.r<k>.webp, assets/heroes/clip_pipeline.py write_chunks): the game draws
+    those, the whole sheet stays for the plaza and the studio."""
+    if not sheet.get('chunkRows'):
+        return {}
+    path = root / path if not Path(path).is_absolute() else Path(path)
+    n = -(-sheet['rows'] // sheet['chunkRows'])
+    return {'bands': [image(path.with_name(f'{path.stem}.r{k}{path.suffix}')) for k in range(n)]}
+
+
+def banded(name, sheet):
+    """Only the bands ship for a banded sheet; the run keeps its whole sheet too (the plaza walks on it)."""
+    return {k: v for k, v in sheet.items() if k not in ('src', 'file') or not sheet.get('bands') or name in ('run', 'dash')}
+
+
 def sound(path):
     return rel(path)
 
@@ -132,7 +147,10 @@ for family in ['heroes', 'bosses']:
             if not meta['accepted']: raise ValueError(f'Unaccepted art: {base}')
             sheet = {'src':image(base.parent/f'{action}.webp'), 'cols':meta['columns'],
                      'rows':meta['rows'], 'count':meta['frames'], 'heads':meta['headAnchors'],
-                     **({'frameDuration':meta['frameDuration']} if meta['frames'] >= 8 else {})}
+                     **({'frameDuration':meta['frameDuration']} if meta['frames'] >= 8 else {}),
+                     # A clip-route sheet (assets/heroes/clip_pipeline.py): its clock or pose roles and weapon sockets.
+                     **{k:meta[k] for k in ('clock','roles','rolesBack','sockets','stepMs','loop','loopMs','introMs','introTimes','chunkRows') if k in meta and (k!='loop' or isinstance(meta[k],list))}}
+            sheet.update(bands(base.parent/f'{action}.webp', sheet))
             art[family].setdefault(key,{})[action]=sheet
 for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
     for suffix in ['', '-bolt', '-bomb']:
@@ -390,7 +408,7 @@ for catalog in sorted((root/'assets/heroes/forms').glob('*/aura.json')):
 for catalog in sorted((root/'assets/heroes/forms').glob('*/forms.json')):
     data=json.loads(catalog.read_text(encoding='utf-8'));forms={}
     for form,entry in data['forms'].items():
-        actions={name:{**sheet,'src':compact_image(sheet['file'])} for name,sheet in entry['actions'].items()}
+        actions={name:{**sheet,'src':compact_image(sheet['file']),**bands(sheet['file'],sheet)} for name,sheet in entry['actions'].items()}
         # Forms have no buff sheet of their own (cast stands in) and only Lumi floats (others run):
         # marked so the studio can tell a borrowed sheet from the hero's own.
         actions['buff']={**actions['cast'],'aliasOf':'cast'}
@@ -527,12 +545,18 @@ def share_blobs(node):
         if node not in blob_index:blob_index[node]=len(blobs);blobs.append(node)
         return f'@blob:{blob_index[node]}'
     return node
+# Banded sheets (clip route) ship only their bands; the run keeps its whole sheet for the plaza.
+for looks in [art['heroes'].get(h, {}) for h in art['heroes']] + [f for forms in art['heroForms'].values() for f in forms.values()]:
+    for name, sheet in list(looks.items()):
+        if isinstance(sheet, dict) and sheet.get('bands'):
+            looks[name] = banded(name, sheet)
 shared_art=share_blobs(art)
 resolve_blobs="(function resolve(node){for(const k in node){const v=node[k];if(typeof v==='string'&&v.startsWith('@blob:'))node[k]=ART_BLOBS[+v.slice(6)];else if(v&&typeof v==='object')resolve(v);}})(ART);\n"
 # The plaza (src/gemwoven/plaza.js) walks every hero in town: each form's resting loop and run (Lumi hovers),
 # with the same feet line and head-based size as combat.
 plaza_sprites={}
-def plaza_sheet(sheet):return {k:sheet[k] for k in ('src','cols','rows','count','frameDuration','footY','bodyHeight','feetX','scale') if k in sheet}
+# A clip-route sheet's footY is the pivot combat grows its padded cell about; the plaza stands its feet (feetY) on the ground.
+def plaza_sheet(sheet):return {**{k:sheet[k] for k in ('src','cols','rows','count','frameDuration','footY','bodyHeight','feetX','scale','loop') if k in sheet},**({'footY':sheet['feetY']} if 'feetY' in sheet else {})}
 for hero in art['heroes']:
     looks={'1':art['heroes'][hero],**art['heroForms'].get(hero,{})}
     for form,actions in looks.items():

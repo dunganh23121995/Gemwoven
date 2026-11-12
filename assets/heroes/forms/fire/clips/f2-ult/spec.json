@@ -1,0 +1,834 @@
+{
+ "id": "f2-ult",
+ "hero": "fire",
+ "title": "Mika hình thái 2 · tuyệt kỹ (sheet skill)",
+ "rest": "assets/heroes/forms/fire/form-2/rig/combat/rest.png",
+ "pad": 1.4,
+ "keys": {
+  "k0": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k0.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     0,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 0 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k1": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k1.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     1,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 1 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k2": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k2.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     2,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 2 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k3": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k3.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     3,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 3 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k4": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k4.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     4,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 4 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k5": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k5.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     5,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 5 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k6": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k6.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     6,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 6 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k7": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k7.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     7,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 7 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k8": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k8.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     8,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 8 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k9": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k9.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     9,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 9 của sheet tuyệt kỹ đã duyệt"
+  },
+  "k10": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/k10.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/skill.webp",
+    "cell": [
+     10,
+     4,
+     3
+    ],
+    "sheet_scale": 1.3117,
+    "sheet_foot": 0.94
+   },
+   "note": "ô 10 của sheet tuyệt kỹ đã duyệt"
+  },
+  "V": {
+   "file": "assets/heroes/forms/fire/clips/f2-ult/keys/V.png",
+   "canvas": true,
+   "note": "kiếm giơ thẳng đứng trên đầu (ô 3 đã làm nét, khung S2-4); thay k1 nghiêng sau (chủ dự án 12/11: giơ lên đầu không ổn định)"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "S1",
+   "start": "k0",
+   "end": "k1",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. She raises the greatsword up high in both hands. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S2",
+   "start": "k1",
+   "end": "k2",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. Holding the greatsword high, she forces the blade down a little in one short heavy dip, straining. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S3",
+   "start": "k2",
+   "end": "k3",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. From the dip she begins to swing the blade up past vertical. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S4",
+   "start": "k3",
+   "end": "k4",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. The blade keeps swinging back over her head. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S5",
+   "start": "k4",
+   "end": "k5",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. The blade swings on back behind her head. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S6",
+   "start": "k5",
+   "end": "k6",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. The blade comes to lie straight back behind her head, pointing to screen-left, as she leans back slightly. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S7",
+   "start": "k6",
+   "end": "k7",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. From the blade straight back behind her head, she swings it over her head so it rises toward screen-right. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S8",
+   "start": "k7",
+   "end": "k8",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. She chops the greatsword down fast to level in front of her at screen-right: the moment of contact. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S9",
+   "start": "k8",
+   "end": "k9",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. The chop follows through, the blade driving on down toward the ground at screen-right. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S10",
+   "start": "k9",
+   "end": "k10",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. She lifts the greatsword back up into her guard, blade slanting up to screen-right. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S11",
+   "start": "k10",
+   "end": "rest",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. She settles smoothly into her calm guard stance, matching the exact sword angle and hand positions of the resting reference. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles."
+  },
+  {
+   "name": "S0",
+   "start": "rest",
+   "end": "k0",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. From her guard stance she swiftly draws the greatsword upright in front of her into the pose of the last frame. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon. No added flames, aura, glow or particles.",
+   "why": "soát 12/11: tuyệt kỹ nhảy thẳng từ thế thủ sang ô 0 -> đoạn dẫn"
+  },
+  {
+   "name": "R1",
+   "start": "k0",
+   "end": "V",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. She raises the greatsword straight up overhead in both hands until the blade stands vertical above her head. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles.",
+   "why": "chủ dự án 12/11: nhịp phải là giơ thẳng lên đầu -> chúc nhẹ về trước -> kéo kiếm về sau -> bổ xuống; S1-S3 cũ lắc sau-trước-thẳng-sau"
+  },
+  {
+   "name": "R2",
+   "start": "V",
+   "end": "k2",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. Holding the greatsword straight up overhead in both hands, she slowly tips the blade a little forward toward screen-right, a small steady lean of the arms; her head, face and torso stay steady and her feet stay planted. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles.",
+   "why": "chủ dự án 12/11: nhịp phải là giơ thẳng lên đầu -> chúc nhẹ về trước -> kéo kiếm về sau -> bổ xuống; S1-S3 cũ lắc sau-trước-thẳng-sau"
+  },
+  {
+   "name": "R3",
+   "start": "k2",
+   "end": "k3",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, holding a big broad greatsword with a wide silver blade. From the slight forward tilt she pulls the greatsword back over her head, the blade tilting back behind her, ready to strike. End exactly in the pose of the last frame. Arms, shoulders and torso drive the weapon; hair, cloth and tails follow with overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always whole and clearly visible. Feet stay grounded, adjusting only between the given stances. No added flames, aura, glow or particles.",
+   "why": "chủ dự án 12/11: nhịp phải là giơ thẳng lên đầu -> chúc nhẹ về trước -> kéo kiếm về sau -> bổ xuống; S1-S3 cũ lắc sau-trước-thẳng-sau"
+  }
+ ],
+ "game": {
+  "code": "src/forms-mika.js mikaLongCleave: legacy frames 0 draw, 1 raise (300), 2 dip (950), 3-6 backswing by angle (1270-1600), 7 chop, 8 contact (1880), 9 follow (+110), 10 recover (+680); the fox-fire blade grows from MIKA_GRIPS[2] of the shown frame",
+  "plan": "mỗi ô cũ là một khung mốc; clip lấp khung chuyển tiếp; roles ánh xạ khung cũ -> khung mới, gripKeys chỉ khung mốc cho vị trí tay cầm (nội suy cho khung giữa)"
+ },
+ "out": "assets/heroes/forms/fire/form-2/skill.webp",
+ "forms": [
+  "2",
+  "skill"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.4,
+ "footY": 0.8488,
+ "stepMs": 25,
+ "pick": [
+  [
+   "key",
+   "k0"
+  ],
+  [
+   "R1",
+   7,
+   3
+  ],
+  [
+   "key",
+   "V"
+  ],
+  [
+   "R2",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k2"
+  ],
+  [
+   "R3",
+   7,
+   7
+  ],
+  [
+   "key",
+   "k3"
+  ],
+  [
+   "S4",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k4"
+  ],
+  [
+   "S5",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k5"
+  ],
+  [
+   "S6",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k6"
+  ],
+  [
+   "S7",
+   7,
+   3
+  ],
+  [
+   "S7",
+   7,
+   6
+  ],
+  [
+   "key",
+   "k7"
+  ],
+  [
+   "S8",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k8"
+  ],
+  [
+   "S9",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k9"
+  ],
+  [
+   "S10",
+   7,
+   4
+  ],
+  [
+   "key",
+   "k10"
+  ],
+  [
+   "S11",
+   7,
+   4
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "S0",
+   7,
+   3
+  ],
+  [
+   "S0",
+   7,
+   5
+  ],
+  [
+   "R2",
+   7,
+   1
+  ],
+  [
+   "R2",
+   7,
+   2
+  ],
+  [
+   "R2",
+   7,
+   3
+  ],
+  [
+   "R2",
+   7,
+   5
+  ],
+  [
+   "R2",
+   7,
+   6
+  ],
+  [
+   "R2",
+   7,
+   7
+  ],
+  [
+   "R3",
+   7,
+   1
+  ],
+  [
+   "R3",
+   7,
+   3
+  ],
+  [
+   "R3",
+   7,
+   5
+  ],
+  [
+   "S10",
+   7,
+   1
+  ],
+  [
+   "S10",
+   7,
+   2
+  ],
+  [
+   "S10",
+   7,
+   3
+  ],
+  [
+   "S10",
+   7,
+   5
+  ],
+  [
+   "S10",
+   7,
+   6
+  ],
+  [
+   "S10",
+   7,
+   7
+  ],
+  [
+   "S11",
+   7,
+   1
+  ],
+  [
+   "S11",
+   7,
+   2
+  ],
+  [
+   "S11",
+   7,
+   3
+  ],
+  [
+   "S11",
+   7,
+   5
+  ],
+  [
+   "S11",
+   7,
+   6
+  ],
+  [
+   "S11",
+   7,
+   7
+  ]
+ ],
+ "gripKeys": [
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  12,
+  15,
+  17,
+  19,
+  21
+ ],
+ "pick_note": "mỗi ô cũ là khung mốc; 1 khung giữa mỗi đoạn (2 ở nhát vung qua đầu); khung cũ 1 (dùng lại trong lúc chém theo góc) -> 14 khi đã qua backswing; 24-26 = đoạn dẫn từ thế thủ (rest, S0 seed 7 khung 3, 5), phát 0-120ms rồi vào ô 0; 27-47 = khung giữa thêm cho các đoạn chậm (S2 1-3,5-7; S3 1-3; S10 1-3,5-7; S11 1-3,5-7), phát theo order/seq (owner 12/11: thu kiếm từng nấc); 12/11: k1 -> V (giơ thẳng), ô 1 = R1, ô 27-29,3,30-32 = R2 (thẳng -> chúc trước), ô 33-35,5 = R3 (chúc trước -> kéo về sau)",
+ "legacy_grips": [
+  [
+   317,
+   286,
+   -97
+  ],
+  [
+   254,
+   181,
+   -106
+  ],
+  [
+   274,
+   201,
+   -75
+  ],
+  [
+   223,
+   197,
+   -116
+  ],
+  [
+   229,
+   209,
+   -144
+  ],
+  [
+   227,
+   211,
+   -150
+  ],
+  [
+   210,
+   248,
+   -174
+  ],
+  [
+   326,
+   239,
+   -46
+  ],
+  [
+   312,
+   305,
+   0
+  ],
+  [
+   325,
+   351,
+   43
+  ],
+  [
+   303,
+   320,
+   -57
+  ]
+ ],
+ "legacy_scale": 1.3117,
+ "clock": [
+  {
+   "t": [
+    0,
+    120
+   ],
+   "f": [
+    24,
+    26
+   ]
+  },
+  {
+   "t": [
+    120,
+    300
+   ],
+   "f": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": [
+    300,
+    720
+   ],
+   "seq": [
+    2,
+    27,
+    28,
+    29
+   ]
+  },
+  {
+   "t": [
+    720,
+    860
+   ],
+   "seq": [
+    3,
+    30,
+    32,
+    4
+   ]
+  },
+  {
+   "t": [
+    860,
+    1040
+   ],
+   "f": [
+    4,
+    4
+   ]
+  },
+  {
+   "t": [
+    1040,
+    1560
+   ],
+   "seq": [
+    33,
+    34,
+    35,
+    5,
+    7,
+    8,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "t": [
+    1560,
+    1660
+   ],
+   "f": [
+    12,
+    12
+   ]
+  },
+  {
+   "t": [
+    1660,
+    1880
+   ],
+   "f": [
+    12,
+    17
+   ]
+  },
+  {
+   "t": [
+    1880,
+    1990
+   ],
+   "f": [
+    17,
+    19
+   ]
+  },
+  {
+   "t": [
+    1990,
+    2560
+   ],
+   "seq": [
+    19,
+    36,
+    37,
+    38,
+    20,
+    39,
+    40,
+    41,
+    21
+   ]
+  },
+  {
+   "t": [
+    2560,
+    3000
+   ],
+   "seq": [
+    21,
+    42,
+    43,
+    44,
+    22,
+    45,
+    46,
+    47,
+    23
+   ]
+  }
+ ],
+ "clock_note": "mốc cũ: giơ 300 (k1=2), nhấn 950 (k2=4), vung 1270-1600 (k3-k6 = 6..12), chém 1660-1880 (k7=15, k8=17), theo đà +110 (k9=19), thu +680 (k10=21); 12/11 lần 2 (chủ dự án: nhịp dứt khoát, không khựng giữa lúc di chuyển kiếm): giữ thẳng trên đầu 300-720 (khung sống 2,27-29), chúc trước nhanh 720-860 (3,30,32,4), dừng 860-1000, kéo về sau liền một mạch 1000-1520 (bỏ 6, 9, 31: trùng góc với khung kề nên thành nấc), giữ thế 1520-1660, chém 1660; Codex game-beats: giữ 12 còn ~160 ms (kéo về 1040-1560)",
+ "zoom_box": [
+  89,
+  -45,
+  657,
+  876
+ ],
+ "zoom_box_fixed": [
+  89,
+  -45,
+  657,
+  876
+ ],
+ "grip_same": {
+  "24": 0,
+  "25": 0,
+  "26": 0
+ },
+ "sharpen_note": "The greatsword's wide blade is always plain polished silver steel with its gold crossguard: never green, pink, purple or glowing, and no coloured smear or streak near it.",
+ "order": [
+  24,
+  25,
+  26,
+  0,
+  1,
+  2,
+  27,
+  28,
+  29,
+  3,
+  30,
+  31,
+  32,
+  4,
+  33,
+  34,
+  35,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  36,
+  37,
+  38,
+  20,
+  39,
+  40,
+  41,
+  21,
+  42,
+  43,
+  44,
+  22,
+  45,
+  46,
+  47,
+  23
+ ],
+ "even_size": true,
+ "grip_measure": [
+  2
+ ],
+ "grip_angle": [
+  27,
+  28,
+  29,
+  3,
+  30,
+  32,
+  4,
+  33,
+  34,
+  35,
+  5,
+  7,
+  8,
+  10,
+  11,
+  12
+ ]
+}

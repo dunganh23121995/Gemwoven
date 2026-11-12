@@ -1,0 +1,182 @@
+{
+ "id": "f3-cast",
+ "hero": "fire",
+ "title": "Mika hình thái 3 · gồng chiêu (sheet cast)",
+ "rest": "assets/heroes/forms/fire/form-3/rig/combat/rest.png",
+ "pad": 1.45,
+ "keys": {
+  "raise": {
+   "file": "assets/heroes/forms/fire/clips/f3-cast/keys/raise.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-3/cast.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "sheet_scale": 1.4,
+    "sheet_foot": 0.94
+   },
+   "note": "tư thế gồng chiêu đã duyệt"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "T",
+   "start": "rest",
+   "end": "raise",
+   "length": 17,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, from her guard stance smoothly moves into the power stance of the last frame, gathering strength, a rising breeze lifting her hair, cloth and tails. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "U",
+   "start": "raise",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi nine-tailed fox empress in white and gold armour with very long red hair and nine big fluffy fox tails fanned behind her, wielding a long-hafted crescent moon glaive, from the power stance smoothly returns to her calm guard stance of the last frame; hair, cloth and tails settle into a gentle sway, never freezing. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "cast/buff/victory: setSpriteAction duration, phát đều",
+  "plan": "T rồi U, khung cuối = rest"
+ },
+ "out": "assets/heroes/forms/fire/form-3/cast.webp",
+ "forms": [
+  "3",
+  "cast"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.45,
+ "footY": 0.8522,
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "T",
+   7,
+   1
+  ],
+  [
+   "T",
+   7,
+   2
+  ],
+  [
+   "T",
+   7,
+   3
+  ],
+  [
+   "T",
+   7,
+   5
+  ],
+  [
+   "T",
+   7,
+   6
+  ],
+  [
+   "T",
+   7,
+   8
+  ],
+  [
+   "T",
+   7,
+   9
+  ],
+  [
+   "T",
+   7,
+   11
+  ],
+  [
+   "T",
+   7,
+   12
+  ],
+  [
+   "T",
+   7,
+   14
+  ],
+  [
+   "T",
+   7,
+   15
+  ],
+  [
+   "U",
+   7,
+   1
+  ],
+  [
+   "U",
+   7,
+   2
+  ],
+  [
+   "U",
+   7,
+   4
+  ],
+  [
+   "U",
+   7,
+   5
+  ],
+  [
+   "U",
+   7,
+   7
+  ],
+  [
+   "U",
+   7,
+   8
+  ],
+  [
+   "U",
+   7,
+   10
+  ],
+  [
+   "U",
+   7,
+   11
+  ],
+  [
+   "U",
+   7,
+   13
+  ],
+  [
+   "U",
+   7,
+   14
+  ],
+  [
+   "U",
+   7,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "pick_note": "chủ dự án 12/11 (kiếm/đao giật ở đỉnh gồng) + soát: khung mốc gồng của sheet cũ khác cỡ clip -> bỏ khung mốc, toàn khung clip seed 7 (liền mạch cỡ), hai đầu = khung nghỉ, san phẳng vị trí ở chỗ nối",
+ "zoom_box": [
+  128,
+  104,
+  518,
+  690
+ ],
+ "sharpen_note": "She always holds the glaive in her hand: its long straight shaft is clearly visible running from her gripping hand up to the crescent blade; the blade never floats on its own behind her head, and there is only one glaive."
+}

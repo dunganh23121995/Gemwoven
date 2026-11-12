@@ -1,0 +1,175 @@
+{
+ "id": "f2-cast",
+ "hero": "fire",
+ "title": "Mika hình thái 2 · gồng chiêu (sheet cast)",
+ "rest": "assets/heroes/forms/fire/form-2/rig/combat/rest.png",
+ "pad": 1.25,
+ "keys": {
+  "raise": {
+   "file": "assets/heroes/forms/fire/clips/f2-cast/keys/raise.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/cast.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "sheet_scale": 0.9959,
+    "sheet_foot": 0.94
+   },
+   "note": "tư thế gồng chiêu đã duyệt"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "T",
+   "start": "rest",
+   "end": "raise",
+   "length": 17,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, from her guard stance smoothly moves into the power stance of the last frame, gathering strength, a rising breeze lifting her hair, cloth and tails. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "U",
+   "start": "raise",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, from the power stance smoothly returns to her calm guard stance of the last frame; hair, cloth and tails settle into a gentle sway, never freezing. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "cast/buff/victory: setSpriteAction duration, phát đều",
+  "plan": "T rồi U, khung cuối = rest"
+ },
+ "out": "assets/heroes/forms/fire/form-2/cast.webp",
+ "forms": [
+  "2",
+  "cast"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.25,
+ "footY": 0.8516,
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "T",
+   21,
+   1
+  ],
+  [
+   "T",
+   21,
+   2
+  ],
+  [
+   "T",
+   21,
+   3
+  ],
+  [
+   "T",
+   21,
+   5
+  ],
+  [
+   "T",
+   21,
+   6
+  ],
+  [
+   "T",
+   21,
+   8
+  ],
+  [
+   "T",
+   21,
+   9
+  ],
+  [
+   "T",
+   21,
+   11
+  ],
+  [
+   "T",
+   21,
+   12
+  ],
+  [
+   "T",
+   21,
+   14
+  ],
+  [
+   "T",
+   21,
+   15
+  ],
+  [
+   "U",
+   21,
+   1
+  ],
+  [
+   "U",
+   21,
+   2
+  ],
+  [
+   "U",
+   21,
+   4
+  ],
+  [
+   "U",
+   21,
+   5
+  ],
+  [
+   "U",
+   21,
+   7
+  ],
+  [
+   "U",
+   21,
+   8
+  ],
+  [
+   "U",
+   21,
+   10
+  ],
+  [
+   "U",
+   21,
+   11
+  ],
+  [
+   "U",
+   21,
+   13
+  ],
+  [
+   "U",
+   21,
+   14
+  ],
+  [
+   "U",
+   21,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "pick_note": "chủ dự án 12/11 (kiếm/đao giật ở đỉnh gồng) + soát: khung mốc gồng của sheet cũ khác cỡ clip -> bỏ khung mốc, toàn khung clip seed 21 (liền mạch cỡ), hai đầu = khung nghỉ, san phẳng vị trí ở chỗ nối"
+}

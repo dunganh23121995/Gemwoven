@@ -11133,7 +11133,7 @@
     },
     "footBounds": [
       64,
-      85,
+      86,
       446,
       480
     ]
@@ -11176,7 +11176,7 @@
     },
     "footBounds": [
       46,
-      32,
+      31,
       476,
       477
     ]
@@ -12324,16 +12324,16 @@
       ]
     ],
     "file": "assets/reimagined/heroes/fire/smash.webp",
-    "width": 1536,
-    "height": 1024,
+    "width": 3072,
+    "height": 3584,
     "cell": [
-      512,
-      512
+      1024,
+      1792
     ],
     "body": {
-      "crown": 0.287109375,
-      "foot": 0.9609375,
-      "x": 0.5302734375
+      "crown": 0.06194196428571429,
+      "foot": 1.0,
+      "x": 0.52978515625
     }
   },
   "ulti-fire-2-wave": {
@@ -12430,16 +12430,16 @@
       ]
     ],
     "file": "assets/heroes/forms/fire/form-2/skill.webp",
-    "width": 3680,
-    "height": 2760,
+    "width": 3228,
+    "height": 4304,
     "cell": [
-      920,
-      920
+      807,
+      1434
     ],
     "body": {
-      "crown": 0.2,
-      "foot": 0.941304347826087,
-      "x": 0.5114130434782609
+      "crown": 0.08368200836820083,
+      "foot": 1.0,
+      "x": 0.5446096654275093
     }
   },
   "ulti-fire-3-wave": {
@@ -12512,16 +12512,16 @@
       ]
     ],
     "file": "assets/heroes/forms/fire/form-3/skill.webp",
-    "width": 2592,
-    "height": 1728,
+    "width": 4032,
+    "height": 5376,
     "cell": [
-      864,
-      864
+      1344,
+      2688
     ],
     "body": {
-      "crown": 0.41203703703703703,
-      "foot": 0.9305555555555556,
-      "x": 0.5086805555555556
+      "crown": 0.09672619047619048,
+      "foot": 0.9720982142857143,
+      "x": 0.5022321428571429
     }
   },
   "cmove-novice-1": {
@@ -12550,12 +12550,12 @@
   },
   "cmove-fire-1": {
     "file": "assets/reimagined/heroes/fire/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
+    "cols": 6,
+    "rows": 7,
+    "count": 39,
     "scale": 1,
     "footY": 0.94,
-    "ms": 150,
+    "ms": 55,
     "headPx": 12.06,
     "cellPx": 256,
     "bodyPx": 163
@@ -12574,12 +12574,12 @@
   },
   "cmove-fire-2": {
     "file": "assets/heroes/forms/fire/form-2/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
-    "scale": 1.6172,
-    "footY": 0.94,
-    "ms": 100,
+    "cols": 6,
+    "rows": 7,
+    "count": 40,
+    "scale": 1.25,
+    "footY": 0.8516,
+    "ms": 55,
     "headPx": 12.08,
     "cellPx": 256,
     "bodyPx": 196
@@ -12598,12 +12598,12 @@
   },
   "cmove-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
-    "scale": 1.45,
-    "footY": 0.94,
-    "ms": 90,
+    "cols": 6,
+    "rows": 6,
+    "count": 32,
+    "scale": 1.55,
+    "footY": 0.851,
+    "ms": 55,
     "headPx": 11.51,
     "cellPx": 256,
     "bodyPx": 223

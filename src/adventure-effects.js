@@ -46,6 +46,23 @@ function renderEncounterScene(){
   land.classList.toggle('boss-landscape',state.boss);
 }
 let stageTransition=false;
+// A clip-route run (assets/heroes/clip_pipeline.py): its lead-in poses play once at the clip's own pace (introTimes, the
+// steps keep the cycle's rhythm), then its closed cycle loops. She gathers speed through the lead-in from a standstill and
+// runs at full speed after it (owner 12/11: the lead-in ran on the spot).
+// loopMs: the cycle's own pace once she runs flat out (owner 12/11: the steps after the lead-in were too slow for how fast
+// she crosses the stage); the plaza keeps frameDuration.
+function clipRunPlan(run){
+  const loop=run.loop,step=(run.introMs||420)/loop[0],at=[0],fd=run.loopMs||run.frameDuration||55;
+  for(let f=1;f<loop[0];f++)at.push(at[f-1]+Math.round(run.introTimes?.[f-1]??step));
+  return {loop,at,lead:at[at.length-1]+Math.round(run.introTimes?.[loop[0]-1]??fd),fd};
+}
+function clipRunFrame(plan,t){
+  if(t<plan.lead){let f=0;while(f+1<plan.at.length&&plan.at[f+1]<=t)f++;return f;}
+  const [a,b]=plan.loop;return a+Math.floor((t-plan.lead)/plan.fd)%(b-a+1);
+}
+// The share of the way off covered at t: speed grows evenly through the lead-in to the full pace (duration ms for the
+// whole way at full pace), so the walk off takes duration + lead/2.
+function clipRunShare(plan,t,duration){const L=plan.lead;return Math.min(1,(t<L?t*t/(2*L):L/2+(t-L))/duration);}
 async function departVictoriousHero(){
   const own=typeof combatHeroForm==='function'&&heroKit(state.key,combatHeroForm(state.key),'depart');if(own)return own();
   if(state.key==='shadow')return departShadowHero();
@@ -58,18 +75,18 @@ async function departVictoriousHero(){
   let fx=null;
   try{
     setSpriteFrame('hero','run',0);fx=departFx(state.key);
-    if(!fullLoop){
+    const plan=run.loop&&!reduced?clipRunPlan(run):null;
+    if(!plan&&!fullLoop){
       await wait(reduced?0:200);
       setSpriteFrame('hero','run',1);await wait(reduced?0:220);
     }
     const start=performance.now(),duration=reduced?1:2400;
     await new Promise(resolve=>{
       function tick(now){
-        const p=Math.min(1,(now-start)/duration),camera=width*.95*p;
+        const elapsed=Math.max(0,now-start),p=plan?clipRunShare(plan,elapsed,duration):Math.min(1,elapsed/duration),camera=width*.95*p;
         hero.style.transform=`translateX(${width*1.65*p-camera}px)`;
         hero.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
-        const elapsed=Math.max(0,now-start);
-        setSpriteFrame('hero','run',fullLoop?Math.floor(elapsed/(run.frameDuration||100))%run.count:2+Math.floor(elapsed/100)%4);fx?.tick(now,camera);
+        setSpriteFrame('hero','run',plan?clipRunFrame(plan,elapsed):run.loop?run.loop[0]:fullLoop?Math.floor(elapsed/(run.frameDuration||100))%run.count:2+Math.floor(elapsed/100)%4);fx?.tick(now,camera);
         layers.forEach(layer=>{layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`;});
         if(p<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);

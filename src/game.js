@@ -551,6 +551,8 @@ if(new URLSearchParams(location.search).has('qa'))window.gameQA={
   },
   warmNoctSounds,playNoctSound,stopNoctSounds,get noctSounds(){return [...noctSoundSources].map(({id,pan})=>({id,pan}));},
   playCastSound,stopCastSounds,get castSounds(){return [...castSoundSources].map(({id})=>id);},
+  // Shows one drawn cell as is (a clip sheet's roles and clock skipped): the Studio's transition captures.
+  showSpriteCell(side,action,index){const el=actor(side).querySelector('.sprite-body');if(!el)return;spritePlayback.set(el,{action,manual:true});el.dataset.loop='false';spriteApply(el,action,index);},
   spriteInfo(family,key,action){const {sheet,action:mapped}=spriteDefinition(family,key,action);return {action:mapped,count:sheet.count,heads:sheet.heads,span:sheet.span,footY:sheet.footY,scale:sheet.scale,bodyHeight:sheet.bodyHeight};},
   spriteAction(side,action,duration){setSpriteAction(side,action,duration);},
   get state(){return state;},get board(){return board;},get locked(){return locked;},get ended(){return ended;},matches,legalMoves,trySwap,activateSkill,activateCore,enemyAction,resolveBoard,ensurePlayable,makePlan,makeComboPlan,specialRules,attack,buff,setSpriteFrame,setSpriteAction,chooseEnemyMove,enemyThinkingLevel,opponentAI:OpponentAI,createLiveCombat,finishBattle,boardItemSound,boardImpactShake,

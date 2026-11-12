@@ -1,0 +1,205 @@
+{
+ "id": "f2-attack",
+ "hero": "fire",
+ "title": "Mika hình thái 2 · đánh thường (sheet attack)",
+ "rest": "assets/heroes/forms/fire/form-2/rig/combat/rest.png",
+ "pad": 1.25,
+ "keys": {
+  "raise": {
+   "file": "assets/heroes/forms/fire/clips/f2-attack/keys/raise.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/attack.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "sheet_scale": 0.9758,
+    "sheet_foot": 0.94
+   },
+   "note": "kiếm giơ cao thẳng đứng (đã duyệt)"
+  },
+  "cleave": {
+   "file": "assets/heroes/forms/fire/clips/f2-attack/keys/cleave.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/fire/form-2/attack.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "sheet_scale": 0.9758,
+    "sheet_foot": 0.94
+   },
+   "note": "bổ xuống (đã duyệt)"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "P",
+   "start": "rest",
+   "end": "raise",
+   "length": 13,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, from her guard stance lifts the greatsword with both hands straight up high above her head into the raised pose of the last frame. No pause at the endpoint. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "Q",
+   "start": "raise",
+   "end": "cleave",
+   "length": 9,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, from the raised pose brings the greatsword down in one heavy, fast cleave toward screen-right into the pose of the last frame, the wide blade clearly visible in every frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  },
+  {
+   "name": "R",
+   "start": "cleave",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, after a heavy cleave, the blade follows through a little lower, then she lifts the greatsword back into her guard stance of the last frame. No second attack. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "combat-v3 attack(): roles 0-5, chạm ~427ms; vệt chém slash2 (forms-mika)",
+  "plan": "P ~7, Q ~8, R ~8 + rest; roles ánh xạ 6 tư thế"
+ },
+ "out": "assets/heroes/forms/fire/form-2/attack.webp",
+ "forms": [
+  "2",
+  "attack"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.25,
+ "footY": 0.8516,
+ "pick": [
+  [
+   "P",
+   7,
+   0
+  ],
+  [
+   "P",
+   7,
+   2
+  ],
+  [
+   "P",
+   7,
+   4
+  ],
+  [
+   "P",
+   7,
+   6
+  ],
+  [
+   "P",
+   7,
+   8
+  ],
+  [
+   "P",
+   7,
+   9
+  ],
+  [
+   "P",
+   7,
+   10
+  ],
+  [
+   "key",
+   "raise"
+  ],
+  [
+   "Q",
+   21,
+   1
+  ],
+  [
+   "Q",
+   21,
+   2
+  ],
+  [
+   "Q",
+   21,
+   3
+  ],
+  [
+   "Q",
+   21,
+   4
+  ],
+  [
+   "Q",
+   21,
+   5
+  ],
+  [
+   "key",
+   "cleave"
+  ],
+  [
+   "R",
+   7,
+   1
+  ],
+  [
+   "R",
+   7,
+   3
+  ],
+  [
+   "R",
+   7,
+   4
+  ],
+  [
+   "R",
+   7,
+   5
+  ],
+  [
+   "R",
+   7,
+   7
+  ],
+  [
+   "R",
+   7,
+   9
+  ],
+  [
+   "R",
+   7,
+   11
+  ],
+  [
+   "R",
+   7,
+   13
+  ],
+  [
+   "R",
+   7,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "roles": [
+  0,
+  7,
+  10,
+  13,
+  16,
+  23
+ ],
+ "stepMs": 17,
+ "pick_note": "Codex frames 7: khung 6 -> mốc raise sạch; bỏ Q 6-7 nhòe, nối Q5 -> mốc cleave"
+}

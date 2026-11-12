@@ -1,0 +1,1 @@
+**8/10 — DUYỆT bước frames.** Không thấy lỗi chặn làm nét: kiếm nguyên vẹn, chân ổn định, không có cú giật thứ hai; tóc và tà áo có chuyển động hồi phục. Khung 0 → 1 dùng mốc nghỉ → nhắm mắt, khung 13 về mốc nghỉ sạch. Không cần đổi khung hoặc seed.

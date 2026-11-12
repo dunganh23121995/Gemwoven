@@ -1,9 +1,0 @@
-{
-  "source": "attack/raw-original.png",
-  "model": "gpt-6-astra",
-  "effort": "high",
-  "prompt": "attack/prompt-used.txt",
-  "processing": "tools/place_attack2.py: magenta keyed with generate2dsprite.remove_bg_magenta(100,150), specks <40px dropped, each frame scaled 0.48 (same body height as the previous accepted attack sheet) and placed so the boots midpoint/sole match frame 1 of the previous sheet (x 134, sole 238) in 256px cells",
-  "reason": "defect review: old sheet's sword changed length/width/shape between frames",
-  "frame4": "frame 4 redrawn alone (raw-frame4.png, prompt-frame4.txt, gpt-6-astra high, refs = raw frames 1,3,5,4) so its broadsword is full length; placed with tools/place_attack2_frame4.py at the same body height (ear tip to boot sole) and boot position"
-}

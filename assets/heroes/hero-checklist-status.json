@@ -67,7 +67,7 @@
     "fire": {
      "1": {
       "done": true,
-      "detail": "assets/masters/fire-transparent.png"
+      "detail": "assets/heroes/novice/references/master.png"
      },
      "2": {
       "done": true,
@@ -81,7 +81,7 @@
     "ice": {
      "1": {
       "done": true,
-      "detail": "assets/masters/ice-transparent.png"
+      "detail": "assets/heroes/novice/references/master.png"
      },
      "2": {
       "done": true,
@@ -95,7 +95,7 @@
     "earth": {
      "1": {
       "done": true,
-      "detail": "assets/masters/earth-transparent.png"
+      "detail": "assets/heroes/novice/references/master.png"
      },
      "2": {
       "done": true,
@@ -109,7 +109,7 @@
     "lightning": {
      "1": {
       "done": true,
-      "detail": "assets/masters/lightning-transparent.png"
+      "detail": "assets/heroes/novice/references/master.png"
      },
      "2": {
       "done": true,
@@ -443,7 +443,7 @@
      },
      "3": {
       "done": true,
-      "detail": "assets/heroes/forms/fire/form-3/thrust3.webp"
+      "detail": "assets/heroes/forms/fire/form-3/attack.webp"
      }
     },
     "ice": {
@@ -661,7 +661,7 @@
     "lightning": {
      "1": {
       "done": true,
-      "detail": "assets/reimagined/heroes/lightning/run.webp"
+      "detail": "assets/reimagined/heroes/lightning/hover.webp"
      },
      "2": {
       "done": true,

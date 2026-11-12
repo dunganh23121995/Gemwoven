@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-11T22:17:02Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\clips\\rest-f1\\ref-rest.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\fire\\clips\\f1-attack\\sharp-0.png"
+  ],
+  "prompt": "Image 1 is the approved resting drawing of a chibi game character on a magenta background. Redraw EXACTLY Image 1: the same pose, the same outline, the same size and the same position on the canvas, every limb, weapon, hair lock, cloth piece and tail exactly where it is in Image 1, the same face and expression.\nImage 2 shows the same character drawn in other poses, in the finished rendering of the game's animation frames: render Image 1 the way Image 2 is rendered (its clean dark outlines, line weight, solid saturated colours, shading, highlights and metal shine), so the resting frame matches those animation frames. Take only the rendering from Image 2, never its poses.\nDo not redesign, add or remove anything. Crisp, high-resolution finished game illustration, no blur, no smear.\nBackground 100% solid flat magenta #FF00FF, no gradients, no text, no shadow on the ground. The whole character stays inside the canvas with a magenta margin.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches REFERENCE 1 in pose, outfit, weapon, hair, scarf, tail and canvas placement. The background is flat magenta with no visible text, extra figures or cropping, and the limbs and face look anatomically sound. Only minor rendering differences were seen, such as a slightly warmer sword tint, which is stylistic drift and not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000647
+  }
+}

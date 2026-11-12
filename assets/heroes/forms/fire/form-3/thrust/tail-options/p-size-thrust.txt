@@ -1,6 +1,0 @@
-Image 1 is one finished animation frame of this chibi fox girl in a spear-fighting pose. Edit ONLY her nine fox tails. Everything else stays identical to Image 1: the same canvas, size and position, face, HAIR and braid, costume, arms, hands and the glaive.
-Image 2 is the SAME girl at rest on the SAME canvas scale: her nine tails there are the reference for SIZE and COLOUR. Redraw the tails of Image 1 keeping their direction and arrangement (gathered at the back of her hips and spreading BEHIND her to the LEFT, natural flame-like curls, close together and tidy, stretched back a little more than at rest because she is thrusting forward), but:
-- SIZE: each tail exactly as BIG as the tails in Image 2: just as long, just as wide and thick, just as fluffy (measure them on Image 2; the tails in Image 1 are too small and thin);
-- COLOUR: exactly the colours of the tails in Image 2: mostly cream-white fur with soft warm shading, and orange to deep red flame tips with the same proportions of white and orange as in Image 2 (Image 1's tails are too orange).
-No tail tip higher than the top of her head; no tail in front of her body or to the right of her body; no gaps.
-Background 100% solid flat magenta #FF00FF. No text, no effects, no shadow.

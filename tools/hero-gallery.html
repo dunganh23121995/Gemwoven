@@ -108,6 +108,9 @@ canvas.play{width:400px;height:400px;border-radius:8px;background:repeating-coni
 .sheet .cell{position:absolute;border:1px solid #e8c26a55;color:#e8c26a;font:11px monospace;padding:1px 3px;cursor:pointer}
 .sheet .cell.cur{border-color:var(--gold);background:#e8c26a22}
 .meta{font:12px monospace;color:var(--dim)}
+/* While a combat test plays, the showcases and the sheet player rest so the fight gets every frame (owner 12/11:
+   the clip-route ultimate stuttered with them running). */
+body.combat-busy .stage,body.combat-busy canvas.play{visibility:hidden}
 </style>
 </head>
 <body>
@@ -382,7 +385,7 @@ let studioStrikes=null;
 document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
   const q=gq();if(!q)return;
   if(b.dataset.do==='attack'&&studioStrikes){studioStrikes.qaStrikes('hero',[100]);say('Đánh tiếp (nối đòn)');return;}
-  say('Đang chạy: '+(b.title||b.textContent));b.classList.add('busy');
+  say('Đang chạy: '+(b.title||b.textContent));b.classList.add('busy');document.body.classList.add('combat-busy');
   try{
     // configure() clears a transform; the look comes back quietly after it, so the action plays transformed.
     const phase=q.transformPhase?.();if(b.dataset.do!=='hit')configure();if(phase&&b.dataset.do!=='idle')q.transformRestore?.(phase);
@@ -395,7 +398,7 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     if(b.dataset.do==='depart')await q.departVictoriousHero();
     if(b.dataset.do==='hit'){const hp=q.state.hp,blow=foeBlow();await q.attack('enemy',100);say(`Bị đánh${blow?' ('+blow+')':''}: mất ${hp-q.state.hp} HP`);return;}
     say('Xong: '+b.textContent);
-  }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');}
+  }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');document.body.classList.remove('combat-busy');}
 });
 // An elite's basic blow, what the "Bị đánh" button plays; the list below holds only what it casts on a full rage gauge.
 const foeBlow=()=>{const [tier,key]=$('enemy').value.split(':');return tier==='elite'?M.WORLD.ELITE_BASIC[key]?.name:'';};
@@ -438,7 +441,7 @@ function pick(name){
     const borrow=sheets[name]?.aliasOf||(SHEET_BORROW[name]&&sheets[SHEET_BORROW[name]]?SHEET_BORROW[name]:'');
     $('meta').textContent='Không có trạng thái này'+(borrow?` · trong trận dùng sheet «${borrow}»`:'');return;
   }
-  img=new Image();img.onload=()=>{findCrop();drawSheet();};img.src=s.src;cur=0;acc=0;shown=s;crop=null;planIngame();
+  img=new Image();img.onload=()=>{findCrop();drawSheet();};img.src=s.src||s.bands?.[0]?.replace(/\.r0(\.[a-z]+)$/i,'$1');cur=0;acc=0;shown=s;crop=null;planIngame();
   if(s.frameDuration){$('ms').value=s.frameDuration;$('msv').textContent=s.frameDuration;}
 }
 function drawSheet(){
@@ -476,7 +479,7 @@ function findCrop(){
 }
 function cell(i){const s=shown,w=img.naturalWidth/s.cols,h=img.naturalHeight/s.rows,c=crop||{x:0,y:0,w:1,h:1};return [(i%s.cols+c.x)*w,(Math.floor(i/s.cols)+c.y)*h,w*c.w,h*c.h];}
 function render(now){
-  requestAnimationFrame(render);const s=ownSheet(action);if(!img?.complete||!s)return;
+  requestAnimationFrame(render);if(document.body.classList.contains('combat-busy')){last=now;return;}const s=ownSheet(action);if(!img?.complete||!s)return;
   const ms=+$('ms').value,plan=$('ingame').checked&&!$('ingameBox').hidden?ingamePlan:null;
   if(plan){if(playing){acc=(acc+now-(last||now))%plan.total;let f=plan[0].f;for(const st of plan)if(st.t<=acc)f=st.f;cur=f;}last=now;}
   else{if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=(cur+1)%s.count;}}last=now;}

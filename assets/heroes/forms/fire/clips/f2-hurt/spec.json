@@ -1,0 +1,106 @@
+{
+ "id": "f2-hurt",
+ "hero": "fire",
+ "title": "Mika hình thái 2 · bị đánh (sheet hurt mới)",
+ "rest": "assets/heroes/forms/fire/form-2/rig/combat/rest.png",
+ "pad": 1.25,
+ "keys": {
+  "recoil": {
+   "file": "assets/heroes/forms/fire/clips/f2-hurt/keys/recoil-src.png",
+   "note": "giật nhắm mắt (Qwen Edit 2511 + Consistency, 12/11)"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "K2",
+   "start": "recoil",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, already recoiling from a hard hit at the first frame, dazed with eyes shut, immediately begins recovering: no second jolt. She opens her eyes, steadies herself with a slight knee flex and returns smoothly to her guard stance of the last frame; hair, cape and tails swing with one diminishing overshoot. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "setSpriteAction(hero,hurt,~420ms) phát đều; trước đây dạng 2-3 không có sheet hurt (giữ thế nghỉ + đẩy lùi)",
+  "plan": "rest -> recoil (giật tức thì) -> K2 hồi phục -> rest"
+ },
+ "out": "assets/heroes/forms/fire/form-2/hurt.webp",
+ "forms": [
+  "2",
+  "hurt"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.25,
+ "footY": 0.8516,
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "key",
+   "recoil"
+  ],
+  [
+   "K2",
+   21,
+   1
+  ],
+  [
+   "K2",
+   21,
+   2
+  ],
+  [
+   "K2",
+   21,
+   3
+  ],
+  [
+   "K2",
+   21,
+   4
+  ],
+  [
+   "K2",
+   21,
+   5
+  ],
+  [
+   "K2",
+   21,
+   6
+  ],
+  [
+   "K2",
+   21,
+   7
+  ],
+  [
+   "K2",
+   21,
+   8
+  ],
+  [
+   "K2",
+   21,
+   9
+  ],
+  [
+   "K2",
+   21,
+   10
+  ],
+  [
+   "K2",
+   21,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "fit_rest": true
+}

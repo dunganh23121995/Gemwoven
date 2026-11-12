@@ -83,3 +83,8 @@ assets/gemwoven/*/*/rig/sharp/sheet-*/frame-*.png
 
 # Claude sets the owner's trial save through this on a dev server (src/gemwoven/ui.js)
 /tools/dev-trial.json
+
+# Clip route cache: raw ComfyUI clip frames (assets/heroes/clip_pipeline.py); the picked soft sheets, prompts and specs are kept
+/assets/heroes/forms/*/clips/*/clip/
+/assets/heroes/forms/*/clips/**/*.jpg
+/assets/heroes/forms/*/clips/**/*.log

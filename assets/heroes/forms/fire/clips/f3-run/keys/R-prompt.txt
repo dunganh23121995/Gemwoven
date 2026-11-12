@@ -1,0 +1,11 @@
+Image 1 is the exact character: a chibi nine-tailed fox empress in white and gold armour with very long red hair, a red flower ornament, fox ears and nine big fluffy cream-and-orange fox tails, wielding a long-hafted crescent moon glaive. Keep her identity, face, costume, colours, proportions, line style and the glaive's exact design from Image 1, at the same size and camera distance as Image 1.
+Image 2 is a pose reference only (another outfit of the same hero): copy its running pose energy, not its costume or weapon.
+
+Draw ONE single full-body sprite of her running fast toward screen-right, three-quarter view facing screen-right, in a dynamic mid-stride pose:
+- her whole body leans clearly forward into the run (torso tilted about 20 degrees forward), head forward, determined face visible;
+- front leg (her left) stepping forward with the knee lifted, back leg pushing off behind her, a real running stride with feet apart;
+- her right hand holds the glaive low at her side and the glaive trails behind her almost level, the shaft pointing back to screen-left at hip height, the crescent blade behind her, the whole glaive clear of her face and body;
+- her free left arm swings forward, bent, like a sprinter;
+- her long hair, cape cloth and the nine tails stream back behind her in the wind, the nine tails fanned out behind her back, each tail distinct.
+
+Background: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character and the whole glaive fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No flames, aura, particles, speed lines, text or labels.

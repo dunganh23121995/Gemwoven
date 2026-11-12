@@ -1,0 +1,269 @@
+{
+ "id": "f2-run",
+ "hero": "fire",
+ "title": "Mika hình thái 2 · vào/rời sân + di chuyển Quảng Trường (sheet run)",
+ "rest": "assets/heroes/forms/fire/form-2/rig/combat/rest.png",
+ "pad": 1.25,
+ "keys": {},
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body and weapon always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth and tails always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "X",
+   "start": "rest",
+   "length": 49,
+   "prompt": "A chibi fox-girl swordswoman in black and gold plate armour with a red scarf and long red cape tails, wielding a big broad greatsword with a wide silver blade, from her guard stance first settles the rigid weapon, holding the greatsword with its broad blade resting on her right shoulder, then begins a steady run in place toward screen-right: locked stationary camera, no horizontal drift, pan, zoom or turn. Her legs alternate in a clear running gait with clear foot contacts, her free arm pumps and her torso bobs subtly; she keeps the same pace to the end. Hair, cape and tails stream and bounce behind her. Arms, shoulders and torso drive the weapon action; hair, cloth and tails follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid weapon, always drawn whole and clearly visible. No added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "departVictoriousHero (vào chạy 1 lần rồi lặp); plaza move dùng cùng sheet (loop)",
+  "plan": "8 khung vào chạy + vòng 16 khung kín"
+ },
+ "out": "assets/heroes/forms/fire/form-2/run.webp",
+ "forms": [
+  "2",
+  "run"
+ ],
+ "cols": 6,
+ "frameDuration": 55,
+ "scale": 1.25,
+ "footY": 0.8516,
+ "lock": "center",
+ "pick": [
+  [
+   "X",
+   21,
+   0
+  ],
+  [
+   "X",
+   21,
+   3
+  ],
+  [
+   "X",
+   21,
+   6
+  ],
+  [
+   "X",
+   21,
+   9
+  ],
+  [
+   "X",
+   21,
+   12
+  ],
+  [
+   "X",
+   21,
+   13
+  ],
+  [
+   "X",
+   21,
+   14
+  ],
+  [
+   "X",
+   21,
+   15
+  ],
+  [
+   "X",
+   21,
+   16
+  ],
+  [
+   "X",
+   21,
+   17
+  ],
+  [
+   "X",
+   21,
+   18
+  ],
+  [
+   "X",
+   21,
+   19
+  ],
+  [
+   "X",
+   21,
+   20
+  ],
+  [
+   "X",
+   21,
+   21
+  ],
+  [
+   "X",
+   21,
+   22
+  ],
+  [
+   "X",
+   21,
+   23
+  ],
+  [
+   "X",
+   21,
+   24
+  ],
+  [
+   "X",
+   21,
+   25
+  ],
+  [
+   "X",
+   21,
+   26
+  ],
+  [
+   "X",
+   21,
+   27
+  ],
+  [
+   "X",
+   21,
+   28
+  ],
+  [
+   "X",
+   21,
+   29
+  ],
+  [
+   "X",
+   21,
+   30
+  ],
+  [
+   "X",
+   21,
+   31
+  ],
+  [
+   "X",
+   21,
+   32
+  ],
+  [
+   "X",
+   21,
+   33
+  ],
+  [
+   "X",
+   21,
+   34
+  ],
+  [
+   "X",
+   21,
+   35
+  ],
+  [
+   "X",
+   21,
+   36
+  ],
+  [
+   "X",
+   21,
+   37
+  ],
+  [
+   "X",
+   21,
+   38
+  ],
+  [
+   "X",
+   21,
+   39
+  ],
+  [
+   "X",
+   21,
+   40
+  ],
+  [
+   "X",
+   21,
+   41
+  ],
+  [
+   "X",
+   21,
+   42
+  ],
+  [
+   "X",
+   21,
+   43
+  ],
+  [
+   "X",
+   21,
+   44
+  ],
+  [
+   "X",
+   21,
+   45
+  ],
+  [
+   "X",
+   21,
+   46
+  ],
+  [
+   "X",
+   21,
+   47
+  ]
+ ],
+ "loop": [
+  28,
+  39
+ ],
+ "pick_note": "X seed 21: hạ vũ khí [0, 3, 6, 9, 12] (80ms), bắt đầu bước từng khung clip 13..35 (55ms, nhịp vòng chạy), vòng 36..47; chủ dự án 12/11: đoạn đầu chân nhịp nhanh / giật",
+ "introTimes": [
+  80,
+  80,
+  80,
+  80,
+  80,
+  55,
+  54,
+  53,
+  52,
+  51,
+  50,
+  49,
+  48,
+  47,
+  46,
+  45,
+  45,
+  44,
+  43,
+  42,
+  41,
+  40,
+  39,
+  38,
+  37,
+  36,
+  35
+ ],
+ "loopMs": 33,
+ "loop_note": "chủ dự án 12/11: nhịp chân rời sân như mấy bước đầu của dạng 3 cho cả quãng -> ~200 ms mỗi bước: vòng 6 khung/bước x 33 ms (Quảng Trường giữ frameDuration), bước khởi động nhanh dần 55 -> 35"
+}

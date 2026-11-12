@@ -1,0 +1,412 @@
+{
+ "id": "f1-ult",
+ "title": "Mika hình thái 1 · Viêm Long Trảm (tuyệt kỹ, sheet 'smash')",
+ "rest": "assets/heroes/forms/fire/form-1/sharp/rest.webp",
+ "pad": 1.0,
+ "keys": {
+  "charge": {
+   "file": "assets/heroes/forms/fire/clips/f1-ult/keys/charge.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/fire/smash.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ]
+   },
+   "note": "tư thế vận sức đã duyệt (kiếm chéo sau đầu, mặt rõ)"
+  },
+  "hold": {
+   "file": "assets/heroes/forms/fire/clips/f1-ult/keys/hold-src.png",
+   "note": "kiếm ra sau xa nhất (-98 độ), khung 8 của bản 24 khung đã làm nét"
+  },
+  "low": {
+   "file": "assets/heroes/forms/fire/clips/f1-ult/keys/low.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/fire/smash.webp",
+    "cell": [
+     4,
+     3,
+     2
+    ]
+   },
+   "note": "thế chém thấp đã duyệt (kiếm chúc sát đất bên phải)"
+  }
+ },
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body always inside the frame, her face always visible and unobstructed, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines.",
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "charge",
+   "length": 17,
+   "prompt": "A chibi fox-girl samurai in red and gold armour holds a katana in a guard stance, facing right. She smoothly lifts the katana with both hands up behind her head into a raised power stance, the blade slanting up and back over her left shoulder, hands beside her right ear, her face clearly visible. Her feet stay planted.",
+   "kept": "take đã đạt ở vòng thử 11-12/11"
+  },
+  {
+   "name": "B",
+   "start": "charge",
+   "end": "rest",
+   "length": 37,
+   "prompt": "A chibi fox-girl samurai in red and gold armour holds a katana raised up behind her head, blade slanting up and back, her face visible, facing right. She holds still for a moment gathering power, then swings the katana over her head and down in one heavy, powerful diagonal cleave toward the right, the blade ending low in front of her near the ground, holds the follow-through briefly, then rises and returns to her calm guard stance, katana slanting up in front of her. Feet planted, tail, braid and scarf follow the motion.",
+   "kept": "take đã đạt ở vòng thử (seed 7)"
+  },
+  {
+   "name": "H",
+   "start": "hold",
+   "end": "hold",
+   "length": 25,
+   "prompt": "A chibi fox-girl samurai in red and gold armour. Matching the reference pose exactly, she maintains the held backswing throughout, the katana level behind her head in both hands. Both hands, wrists, arms, katana, head, torso and planted feet remain fixed. A steady breeze carries her loose hair, braid ends, scarf ends and ribbons toward screen-left in gentle continuous waves, with slightly delayed motion between them. Her fox tail sways slowly with a small amplitude, its base anchored. Secondary motion is already underway at the first frame and continues through one smooth repeating cycle, matching position and direction of motion across the loop boundary. Preserve the sword shape, armour and solid magenta background.",
+   "why": "chủ dự án 12/11: khi gồng tóc, khăn, đuôi bị đứng khựng; đoạn này là vòng lặp tư thế giữ lực có chuyển động phụ tự nhiên",
+   "review": "Codex 12/11 spec 7/10 -> prompt H theo đề xuất của Codex, bỏ gathering fiery power"
+  },
+  {
+   "name": "C",
+   "start": "hold",
+   "end": "rest",
+   "length": 33,
+   "prompt": "A chibi fox-girl samurai in red and gold armour. Starting in the exact held backswing pose, katana level behind her head, she immediately drives one fast, heavy overhead diagonal cleave down toward screen-right: her arms sweep over and beside her head, never across her face, the blade arcs over and ends low near the ground at screen-right, well inside the frame, her front knee bent deep. She holds that low finish for a beat, then rises smoothly back to her calm guard stance, katana slanting up in front of her. Feet planted; braid, scarf and tail follow the motion with natural delay.",
+   "why": "Codex frames 7/10: B che mặt khung 14-16, mũi kiếm sát mép, khung cuối bóng chồng -> gen lại đoạn chém từ đúng hold"
+  },
+  {
+   "name": "D",
+   "start": "hold",
+   "end": "low",
+   "length": 17,
+   "prompt": "A chibi fox-girl samurai in red and gold armour. Starting in the exact held backswing pose, katana level behind her head, she drives one fast, heavy overhead diagonal cleave down toward screen-right: her arms sweep up beside her head and down, the blade arcs over her head and comes down hard, ending in the low finish of the last frame with the blade pointing down near the ground at screen-right, her weight dropped forward. Braid, scarf and tail whip after the motion with natural delay.",
+   "why": "Codex frames2 7.5/10: thế kết chém chưa đủ thấp -> neo vào thế thấp đã duyệt"
+  },
+  {
+   "name": "E",
+   "start": "low",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi fox-girl samurai in red and gold armour, finishing a heavy downward cleave with the blade low near the ground at screen-right. She holds the low finish for a short beat, then rises smoothly and brings the katana back up into her calm guard stance, blade slanting up in front of her. Feet planted; braid, scarf and tail settle with natural delay.",
+   "why": "thu thế từ thế thấp đã duyệt về rest"
+  },
+  {
+   "name": "L",
+   "start": "low",
+   "end": "low",
+   "length": 17,
+   "prompt": "A chibi fox-girl samurai in red and gold armour. Matching the reference pose exactly, she holds the low finish of her heavy cleave throughout, the katana pointing down near the ground at screen-right in both hands, her weight dropped forward. Both hands, wrists, arms, katana, head, torso and planted feet remain fixed. The wind of the strike still carries her loose hair, braid ends, scarf ends and ribbons toward screen-left in gentle continuous waves, with slightly delayed motion between them. Her fox tail sways slowly with a small amplitude, its base anchored. Secondary motion is already underway at the first frame and continues through one smooth repeating cycle, matching position and direction of motion across the loop boundary. Preserve the sword shape, armour and solid magenta background.",
+   "why": "chủ dự án 12/11: sau nhát chém khung 20 đứng im 630 ms (tóc, khăn khựng như lúc gồng); vòng giữ thế thấp như đoạn H"
+  }
+ ],
+ "game": {
+  "code": "src/mika-ultimate.js mikaFlameRage: 0 giơ kiếm; lưỡi lửa hiện từ 180ms, dài dần 300-1550ms; 700 trạng thái gồng; 1700 hét, chém tới 1920 thì phóng kiếm khí; ~2320 trúng; 2550 thu thế; 3000 hết",
+  "plan": "24 khung: 1-7 (0-380ms) rest -> charge -> đúng hold (A rồi B tới tư thế khung hold); 8-13 vòng lặp H 6 khung x 73.33ms x 3 vòng (380-1700ms), không lấy trùng khung đầu/cuối vòng, pha cuối khớp đầu đoạn chém; 14-21 chém 1700-1920ms (~27.5ms/khung) dừng ở tư thế thấp, không lẫn thu thế; giữ khung 21 tới 2550; 22-24 thu thế 2550-2710 rồi đứng.",
+  "fx": "lưỡi kiếm lửa (ART.skillFx.mikaBlade) bám chuôi kiếm từng khung: đo lại vị trí và góc kiếm cho 24 khung"
+ },
+ "out": "assets/reimagined/heroes/fire/smash.webp",
+ "cols": 6,
+ "pick": [
+  [
+   "A",
+   7,
+   0
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   8
+  ],
+  [
+   "A",
+   7,
+   12
+  ],
+  [
+   "A",
+   7,
+   16
+  ],
+  [
+   "B",
+   7,
+   4
+  ],
+  [
+   "B",
+   7,
+   7
+  ],
+  [
+   "H",
+   7,
+   2
+  ],
+  [
+   "H",
+   7,
+   5
+  ],
+  [
+   "H",
+   7,
+   8
+  ],
+  [
+   "H",
+   7,
+   11
+  ],
+  [
+   "H",
+   7,
+   14
+  ],
+  [
+   "H",
+   7,
+   17
+  ],
+  [
+   "D",
+   7,
+   2
+  ],
+  [
+   "D",
+   7,
+   4
+  ],
+  [
+   "D",
+   7,
+   6
+  ],
+  [
+   "D",
+   7,
+   8
+  ],
+  [
+   "D",
+   7,
+   10
+  ],
+  [
+   "D",
+   7,
+   12
+  ],
+  [
+   "D",
+   7,
+   14
+  ],
+  [
+   "D",
+   7,
+   16
+  ],
+  [
+   "E",
+   7,
+   2
+  ],
+  [
+   "E",
+   7,
+   4
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "L",
+   7,
+   1
+  ],
+  [
+   "L",
+   7,
+   3
+  ],
+  [
+   "L",
+   7,
+   5
+  ],
+  [
+   "L",
+   7,
+   7
+  ],
+  [
+   "L",
+   7,
+   9
+  ],
+  [
+   "L",
+   7,
+   11
+  ],
+  [
+   "L",
+   7,
+   13
+  ],
+  [
+   "L",
+   7,
+   15
+  ],
+  [
+   "E",
+   7,
+   6
+  ],
+  [
+   "E",
+   7,
+   8
+  ],
+  [
+   "E",
+   7,
+   10
+  ],
+  [
+   "E",
+   7,
+   12
+  ],
+  [
+   "E",
+   7,
+   14
+  ]
+ ],
+ "clock": [
+  {
+   "t": [
+    0,
+    380
+   ],
+   "f": [
+    0,
+    6
+   ]
+  },
+  {
+   "t": [
+    380,
+    1700
+   ],
+   "loop": [
+    7,
+    12
+   ],
+   "endOnFirst": true
+  },
+  {
+   "t": [
+    1700,
+    1920
+   ],
+   "f": [
+    13,
+    20
+   ]
+  },
+  {
+   "t": [
+    1920,
+    2550
+   ],
+   "loop": [
+    24,
+    31
+   ],
+   "endOnFirst": true
+  },
+  {
+   "t": [
+    2550,
+    2950
+   ],
+   "seq": [
+    21,
+    22,
+    32,
+    33,
+    34,
+    35,
+    36,
+    23
+   ]
+  }
+ ],
+ "pick_note": "Codex frames2 7.5/10 -> chém D (hold -> thế thấp đã duyệt) seed 7, thu thế E seed 7, khung 23 = rest (sạch, k23.png); H chu kỳ kín 2..21 lặp 3 vòng dừng đúng khung đầu vòng; thu thế E2, E4 (chân sau bước dần 146 -> 178 -> rest 189, không nhảy 56px)",
+ "hero": "fire",
+ "meta": "assets/reimagined/heroes/fire/smash/runtime-meta.json",
+ "sockets": "katana",
+ "frameDuration": 40,
+ "socket_flip": [
+  1,
+  17
+ ],
+ "hold_lock": {
+  "frames": [
+   [
+    7,
+    12
+   ],
+   [
+    24,
+    31
+   ]
+  ]
+ },
+ "order": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  21,
+  22,
+  32,
+  33,
+  34,
+  35,
+  36,
+  23
+ ],
+ "even_size": true
+}

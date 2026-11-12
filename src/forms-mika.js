@@ -49,10 +49,13 @@ const MIKA_GRIPS={
 };
 // The drawing box is read without its lean (offsets), then the grip turns with the lean about her feet
 // (the cleave leans her back on the backswing and forward on the chop: sprite.dataset.lean, degrees).
-function mikaGrip(form,frame){
+// A clip-route skill sheet (assets/heroes/clip_pipeline.py) carries its own grips, one per drawn frame (grips), and where
+// the old poses now sit (gripKeys): frame is an old pose's number, or with drawn the frame on screen.
+function mikaGrip(form,frame,drawn=false){
   const el=actor('hero').querySelector('.sprite-body'),parent=el.offsetParent.getBoundingClientRect(),scene=$('scene').getBoundingClientRect();
   const left=parent.left+el.offsetLeft-scene.left,top=parent.top+el.offsetTop-scene.top,w=el.offsetWidth,h=el.offsetHeight;
-  const [x,y,angle]=MIKA_GRIPS[form][frame],lean=Number(el.dataset.lean)||0;
+  const sheet=ART.heroForms?.fire?.[form]?.skill,grips=sheet?.grips;
+  const [x,y,angle]=grips?grips[Math.min(grips.length-1,drawn?frame:sheet.gripKeys[frame])]:MIKA_GRIPS[form][frame],lean=Number(el.dataset.lean)||0;
   const px=left+w/2,py=top+h*.94,dx=left+x/512*w-px,dy=top+y/512*h-py,r=lean*Math.PI/180;
   return {x:px+dx*Math.cos(r)-dy*Math.sin(r),y:py+dx*Math.sin(r)+dy*Math.cos(r),angle:angle+lean};
 }
@@ -151,7 +154,7 @@ function mikaSwingPose(angle,back=false){return MIKA_SWING_POSES.filter(p=>!back
 const mikaHeldSheets=[];
 async function mikaHoldSheets(names){
   const sheets=names.map(n=>ART.heroForms?.fire?.['2']?.[n]).filter(Boolean);
-  const jobs=sheets.map(sheet=>{const img=new Image();img.src=sheet.src;mikaHeldSheets.push(img);return img.decode?.().catch(()=>{});});
+  const jobs=sheets.flatMap(spriteSheetSources).map(src=>{const img=new Image();img.src=src;mikaHeldSheets.push(img);return img.decode?.().catch(()=>{});});
   await Promise.race([Promise.all(jobs),wait(250)]);
 }
 async function mikaLongCleave(raw,onRelease){
@@ -166,7 +169,11 @@ async function mikaLongCleave(raw,onRelease){
     // The blade must reach past the foe's far side once it lies level across the stage.
     const foe=mikaFoeBody(),reach=Math.max(140,foe.right+8-mikaGrip(2,8).x);
     blade=mikaWeapon('blade2',reach);
-    const RAISE=300,DIP=950,BACK=1270,HOLD=1600,CHOP=1660,HIT=1880,DIP_TO=-74,LEAN_BACK=5,LEAN_FORWARD=8;
+    // A clip-route sheet plays on its own clock (the swing's in-betweens are drawn): the grip is the shown frame's and the
+    // blade turns as the drawn sword does. Its beats (owner 12/11): straight up and held, a quick tip forward and a stop,
+    // one unbroken pull back, held cocked, the chop.
+    const clip=!!ART.heroForms?.fire?.['2']?.skill?.clock;
+    const RAISE=300,DIP=clip?860:950,BACK=clip?1040:1270,HOLD=clip?1560:1600,CHOP=1660,HIT=1880,DIP_TO=-74,LEAN_BACK=5,LEAN_FORWARD=8;
     const track=now=>{
       if(!blade?.node.isConnected)return;
       const t=now-start,sprite=root.querySelector('.sprite-body'),frame=Number(sprite?.dataset.frame)||0;
@@ -175,11 +182,15 @@ async function mikaLongCleave(raw,onRelease){
       const lean=t<BACK?0:t<HOLD?mikaLerp(0,-LEAN_BACK,mikaEase((t-BACK)/(HOLD-BACK))):t<CHOP?-LEAN_BACK:
         t<HIT?mikaLerp(-LEAN_BACK,LEAN_FORWARD,mikaEase((t-CHOP)/(HIT-CHOP))):t<HIT+680?LEAN_FORWARD:mikaLerp(LEAN_FORWARD,0,mikaEase(Math.min(1,(t-HIT-680)/320)));
       if(sprite){sprite.style.transformOrigin='50% 94%';sprite.style.rotate=`${lean}deg`;sprite.dataset.lean=String(lean);}
-      let grip=mikaGrip(2,frame),angle=grip.angle,scale=1,strip=3,opacity=1;
-      const pose=fr=>{if(frame!==fr)setSpriteFrame('hero','skill',fr);return mikaGrip(2,fr);};
+      let grip=mikaGrip(2,frame,true),angle=grip.angle,scale=1,strip=3,opacity=1;
+      const pose=fr=>{if(clip)return mikaGrip(2,frame,true);if(frame!==fr)setSpriteFrame('hero','skill',fr);return mikaGrip(2,fr);};
       if(t<RAISE){scale=mikaLerp(.2,.36,t/RAISE);strip=0;opacity=mikaLerp(0,1,t/140);}
       else if(t<DIP){scale=mikaLerp(.36,1,mikaEase((t-RAISE)/420));strip=t<RAISE+200?0:1+Math.floor(t/90)%2;}
-      else if(t<BACK){
+      else if(clip&&t<CHOP){
+        // The drawn sword leads: the blade follows the shown frame's grip and angle; a short strain shake on the stop.
+        strip=1+Math.floor(t/70)%2;
+        root.style.transform=t<BACK?`translate(${Math.sin(t/23)*1.4}px,${Math.cos(t/31)*.7}px)`:oldTransform;
+      }else if(t<BACK){
         // One short heavy dip: the blade forced down a little from upright, held with strain.
         const u=Math.min(1,(t-DIP)/220);angle=mikaLerp(-93,DIP_TO,mikaEase(u));
         grip=pose(2);strip=1+Math.floor(t/70)%2;
@@ -195,7 +206,7 @@ async function mikaLongCleave(raw,onRelease){
         grip=pose(mikaSwingPose(angle-lean));strip=1+Math.floor(t/50)%2;
       }else{
         // Follow-through: the giant blade rides the sword on down into the ground beyond the foe.
-        const p=(t-HIT-110)/140,c=mikaGrip(2,8),d=mikaGrip(2,9),follow=frame>=9;strip=1+Math.floor(t/80)%2;
+        const p=(t-HIT-110)/140,c=mikaGrip(2,8),d=mikaGrip(2,9),follow=frame>=(ART.heroForms?.fire?.['2']?.skill?.gripKeys?.[9]??9);strip=1+Math.floor(t/80)%2;
         grip=follow?{x:mikaLerp(c.x,d.x,p),y:mikaLerp(c.y,d.y,p)}:c;angle=(follow?mikaLerp(0,32,mikaEase(p)):0)+lean;
         opacity=t<HIT+260?1:Math.max(0,1-(t-HIT-260)/240);
       }
@@ -296,14 +307,15 @@ async function mikaNineSunSweep(raw,onRelease){
     const foe=mikaFoeBody(),hero=combatV3Point('hero'),reach=Math.max(150,foe.right+10-mikaGrip(3,3).x);
     // Drawn back, the glaive reaches off the stage behind her; swung round, past the foe.
     back=mikaWeapon('glaive3',reach*.75);front=mikaWeapon('glaive3',reach);
-    const WIND=650,SWEEP=1250,HIT=1420;
+    // WHIP: a clip-route sheet whips the glaive round from behind her before the sweep's level reach (owner 12/11: fast).
+    const WIND=650,SWEEP=1250,HIT=1420,whipped=!!ART.heroForms?.fire?.['3']?.skill?.clock,WHIP=whipped?1250:SWEEP;
     const track=now=>{
       if(!back?.node.isConnected)return;
       const t=now-start;
-      if(t>=WIND&&t<SWEEP+80){
+      if(t>=WIND&&t<WHIP+80){
         const g=mikaGrip(3,1),grow=mikaEase((t-WIND)/480);
         back.frame(t<WIND+260?0:1+Math.floor(t/90)%2);back.place(g.x,g.y,180,mikaLerp(.35,1,grow));
-        back.node.style.opacity=String(t<SWEEP?mikaLerp(0,1,(t-WIND)/120):Math.max(0,1-(t-SWEEP)/80));
+        back.node.style.opacity=String(t<WHIP?mikaLerp(0,1,(t-WIND)/120):Math.max(0,1-(t-WHIP)/80));
       }else back.node.style.opacity='0';
       if(t>=SWEEP+100){
         const g=mikaGrip(3,3),p=(t-SWEEP-100)/90;
@@ -314,8 +326,11 @@ async function mikaNineSunSweep(raw,onRelease){
       frameId=requestAnimationFrame(track);
     };
     if(back&&front){back.node.style.opacity='0';front.node.style.opacity='0';frameId=requestAnimationFrame(track);}
-    await at(WIND);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='draw';mikaSound('draw',.34,-.3);
+    // A clip sheet whips the glaive round on the steel's scrape (owner 12/11: fast, on the sharpening sound): the scrape
+    // (loud 40-360 ms into it) rings through the whip, the fire whoosh with the ring at the sweep's level reach.
+    await at(WIND);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='draw';if(!whipped)mikaSound('draw',.34,-.3);
     if(flare){const node=flare;mikaFxFrame(node,'impact3',3);pending.push(animate(node,[{opacity:.9,rotate:'14deg'},{opacity:0,rotate:'30deg',scale:'1.15'}],{duration:320,fill:'forwards'}).finally(()=>node.remove()));}
+    if(whipped){await at(WHIP-40);mikaSound('draw',.4,-.1);}
     await at(SWEEP);setSpriteFrame('hero','skill',2);root.dataset.ragePhase='sweep';combatVoice('hero','release');mikaSound('f3-sweep',.48,0);
     // The flat ring of the spin, centred on the grip, as wide as the sweep.
     if(!reduced&&mikaSheet('ring3')){ring=mikaFxNode('ring3','mika-ring');const width=reach*2/.94;ring.style.cssText+=`;width:${width}px;height:${width*mikaSheet('ring3').height/mikaSheet('ring3').width}px`;mikaFxFrame(ring,'ring3',0);}
@@ -394,7 +409,7 @@ function mikaPierce(point,direction,sheet,pending){
 // swept forward low, held out at full reach on contact, carried up past the foe, then settling.
 // The six-star "attack" sheet is a spear thrust (owner 06/11: the left hand stays in front supporting the shaft from below,
 // the right hand always grips the butt end and pushes the shaft through the left hand into the foe; no tilt, no
-// wind-up, the lunge carries her in; the resting pose's colours; thrust3.webp): 0 rest, 1 guard, 2 full thrust.
+// wind-up, the lunge carries her in; the resting pose's colours; the clip-route attack sheet, its roles): 0 rest, 1 guard, 2 full thrust.
 // She stands on guard while she gathers, and moves in only as the right hand pushes (owner 06/11: "khi tay phải đẩy
 // lên thì mới tiến lại gần chọc"): the thrust pose from the start of the lunge to the contact, then back to the guard.
 const MIKA_SLASH_FIRST=[1,1,2,2,2,2,1],MIKA_SLASH_NEXT=[1,2,2,2,1],MIKA_SLASH_REST=[1,0];
@@ -451,15 +466,17 @@ async function mikaFoxDash(){
   let fx=null;
   try{
     setSpriteFrame('hero','dash',0);fx=departFx('fire');
-    await wait(reduced?0:160);
+    // A clip-route sheet: its lead-in gathers speed from a standstill, then its cycle at full pace (adventure-effects.js).
+    const plan=dash.loop&&!reduced?clipRunPlan(dash):null;
+    if(!plan)await wait(reduced?0:160);
     const start=performance.now(),duration=reduced?1:2300;
     await new Promise(resolve=>{
       function tick(now){
         // A short burst off the mark, then the shared pace (the same distance as everyone's walk off).
-        const p=Math.min(1,(now-start)/duration),camera=width*.95*p,eased=(p<.15?p*p/.3:p-.075)/.925;
+        const t=now-start,p=plan?clipRunShare(plan,t,duration):Math.min(1,t/duration),camera=width*.95*p,eased=plan?p:(p<.15?p*p/.3:p-.075)/.925;
         hero.style.transform=`translateX(${width*1.65*eased-camera}px)`;
         hero.dataset.worldX=String(width*1.65*eased);$('scene').dataset.cameraX=String(camera);
-        setSpriteFrame('hero','dash',Math.floor((now-start)/(dash.frameDuration||90))%dash.count);fx?.tick(now,camera);
+        setSpriteFrame('hero','dash',plan?clipRunFrame(plan,t):dash.loop?dash.loop[0]:Math.floor(t/(dash.frameDuration||90))%dash.count);fx?.tick(now,camera);
         layers.forEach(layer=>{layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`;});
         if(p<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);

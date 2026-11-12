@@ -121,7 +121,7 @@
     a.sheet=null;applySheet(a,'idle');
   }
   function applySheet(a,kind){
-    const s=a.sheets?.[kind];if(!s||a.sheet===s)return;a.sheet=s;a.frame=0;a.frameAt=0;const body=a.el.querySelector('.pz-body');
+    const s=a.sheets?.[kind];if(!s||a.sheet===s)return;a.sheet=s;a.frame=s.loop?s.loop[0]:0;a.frameAt=0;const body=a.el.querySelector('.pz-body');
     const size=a.cell*(kind==='move'&&s.scale?Math.min(1.8,s.scale):1)*(kind==='move'&&!s.scale&&a.sheets.idle.bodyHeight?1:1),foot=s.footY||.94,fx=s.feetX||.5;
     body.style.cssText=`background-image:url("${s.src}");background-size:${s.cols*100}% ${s.rows*100}%;width:${size}px;height:${size}px;left:${-fx*size}px;top:${-foot*size}px;transform-origin:${fx*100}% ${foot*100}%`;
   }
@@ -195,7 +195,7 @@
       if(a===P.me){const r=S.step(geo,a.pos,a.target,dt,a.side);a.side=r.side;moving=Math.hypot(r.pos[0]-before[0],r.pos[1]-before[1])>.2;if(moving&&Math.abs(r.pos[0]-before[0])>.3)a.dir=r.pos[0]>before[0]?1:-1;a.pos=r.pos;}
       else{const d=Math.hypot(a.target[0]-a.pos[0],a.target[1]-a.pos[1]);if(d>200)a.pos=[...a.target];else if(d>.5){const k=Math.min(1,dt*12);const nx=a.pos[0]+(a.target[0]-a.pos[0])*k;if(Math.abs(nx-a.pos[0])>.3)a.dir=nx>a.pos[0]?1:-1;a.pos=[nx,a.pos[1]+(a.target[1]-a.pos[1])*k];moving=d>2;}}
       a.moving=moving;applySheet(a,moving?'move':'idle');
-      const s=a.sheet;if(s&&!reduced()){a.frameAt=(a.frameAt||0)+dt*1000;const dur=s.frameDuration||(moving?90:120);if(a.frameAt>=dur){a.frameAt%=dur;a.frame=(a.frame+1)%s.count;}}
+      const s=a.sheet;if(s&&!reduced()){a.frameAt=(a.frameAt||0)+dt*1000;const dur=s.frameDuration||(moving?90:120);if(a.frameAt>=dur){a.frameAt%=dur;a.frame=s.loop&&a.frame+1>s.loop[1]?s.loop[0]:(a.frame+1)%s.count;}}
       if(s){const c=a.frame%s.cols,r=Math.floor(a.frame/s.cols),body=a.el.querySelector('.pz-body');body.style.backgroundPosition=`${s.cols>1?c/(s.cols-1)*100:0}% ${s.rows>1?r/(s.rows-1)*100:0}%`;body.style.transform=a.dir<0?'scaleX(-1)':'';}
       a.el.style.transform=a.lab.style.transform=`translate(${a.pos[0].toFixed(1)}px,${a.pos[1].toFixed(1)}px)`;a.el.style.zIndex=a.lab.style.zIndex=String(Math.round(a.pos[1]));
     }

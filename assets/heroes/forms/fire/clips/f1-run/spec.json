@@ -1,0 +1,263 @@
+{
+ "id": "f1-run",
+ "hero": "fire",
+ "title": "Mika hình thái 1 · vào/rời sân (sheet run)",
+ "rest": "assets/heroes/forms/fire/form-1/sharp/rest.webp",
+ "pad": 1.0,
+ "keys": {},
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body always inside the frame with a margin, her face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Her braid, loose hair, scarf ends, ribbons and fox tail always keep moving with natural delay and follow-through, never frozen.",
+ "segments": [
+  {
+   "name": "X",
+   "start": "rest",
+   "length": 49,
+   "prompt": "A chibi fox-girl samurai in red and gold armour. From her guard stance she lowers the katana into a trailing grip in her right hand, blade pointing back and down behind her, and breaks into a steady run in place toward screen-right: locked stationary camera, no horizontal drift, pan, zoom or turn. She keeps running at the same steady pace with alternating footfalls, left arm pumping, the katana held low and trailing, braid, scarf ends, ribbons and tail streaming and bouncing behind her. Preserve her identity, costume, proportions and the single rigid katana. Motion affects only hair, cloth and tail; no added flames, aura or particles."
+  },
+  {
+   "name": "X2",
+   "start": "rest",
+   "length": 49,
+   "prompt": "A chibi fox-girl samurai in red and gold armour. From her guard stance she lowers the katana and holds it in both hands low at her right side, the long blade pointing forward and down ahead of her, and breaks into a steady charging run in place toward screen-right: locked stationary camera, no horizontal drift, pan, zoom or turn. She keeps running at the same pace with alternating footfalls, the katana held steady in both hands, braid, scarf ends, ribbons and tail streaming and bouncing behind her. Preserve her identity, costume, proportions and the single rigid katana, always drawn at full length and clearly visible. Motion affects only hair, cloth and tail; no added flames, aura or particles."
+  }
+ ],
+ "game": {
+  "code": "src/adventure-effects.js departVictoriousHero: frame 0 (200ms), frame 1 (220ms), then the run loop; forms-mika dash plays the run frames",
+  "plan": "24 khung: 0-7 vào chạy (hạ kiếm cầm thấp ra sau, bắt đầu chạy), 8-23 vòng chạy 16 khung lấy từ phần chạy đều của clip X (chu kỳ kín); kiếm vẫn trên tay khi chạy (Mika không có vỏ kiếm); cùng vòng chạy dùng cho di chuyển ở Quảng Trường (plaza move)"
+ },
+ "out": "assets/reimagined/heroes/fire/run.webp",
+ "meta": "assets/reimagined/heroes/fire/run/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 55,
+ "loop": [
+  23,
+  38
+ ],
+ "review": "Codex spec 6/10 -> V kết thúc ở stride, prompt V/W theo đề xuất, runtime loop",
+ "pick": [
+  [
+   "X2",
+   33,
+   0
+  ],
+  [
+   "X2",
+   33,
+   3
+  ],
+  [
+   "X2",
+   33,
+   6
+  ],
+  [
+   "X2",
+   33,
+   9
+  ],
+  [
+   "X2",
+   33,
+   10
+  ],
+  [
+   "X2",
+   33,
+   11
+  ],
+  [
+   "X2",
+   33,
+   12
+  ],
+  [
+   "X2",
+   33,
+   13
+  ],
+  [
+   "X2",
+   33,
+   14
+  ],
+  [
+   "X2",
+   33,
+   15
+  ],
+  [
+   "X2",
+   33,
+   16
+  ],
+  [
+   "X2",
+   33,
+   17
+  ],
+  [
+   "X2",
+   33,
+   18
+  ],
+  [
+   "X2",
+   33,
+   19
+  ],
+  [
+   "X2",
+   33,
+   20
+  ],
+  [
+   "X2",
+   33,
+   21
+  ],
+  [
+   "X2",
+   33,
+   22
+  ],
+  [
+   "X2",
+   33,
+   23
+  ],
+  [
+   "X2",
+   33,
+   24
+  ],
+  [
+   "X2",
+   33,
+   25
+  ],
+  [
+   "X2",
+   33,
+   26
+  ],
+  [
+   "X2",
+   33,
+   27
+  ],
+  [
+   "X2",
+   33,
+   28
+  ],
+  [
+   "X2",
+   33,
+   29
+  ],
+  [
+   "X2",
+   33,
+   30
+  ],
+  [
+   "X2",
+   33,
+   31
+  ],
+  [
+   "X2",
+   33,
+   32
+  ],
+  [
+   "X2",
+   33,
+   33
+  ],
+  [
+   "X2",
+   33,
+   34
+  ],
+  [
+   "X2",
+   33,
+   35
+  ],
+  [
+   "X2",
+   33,
+   36
+  ],
+  [
+   "X2",
+   33,
+   37
+  ],
+  [
+   "X2",
+   33,
+   38
+  ],
+  [
+   "X2",
+   33,
+   39
+  ],
+  [
+   "X2",
+   33,
+   40
+  ],
+  [
+   "X2",
+   33,
+   41
+  ],
+  [
+   "X2",
+   33,
+   42
+  ],
+  [
+   "X2",
+   33,
+   43
+  ],
+  [
+   "X2",
+   33,
+   44
+  ]
+ ],
+ "pick_note": "X2 seed 33: hạ vũ khí [0, 3, 6, 9] (80ms), bắt đầu bước từng khung clip 10..28 (55ms, nhịp vòng chạy), vòng 29..44; chủ dự án 12/11: đoạn đầu chân nhịp nhanh / giật",
+ "why": "Codex frames 6.5: cất kiếm không thật (kiếm ngắn dần) và trang phục không có vỏ -> chạy cầm kiếm thấp phía sau",
+ "why_x2": "Codex frames2 6.5: kiếm cầm sau lưng bị khuất/ngắn dần -> cầm hai tay thấp phía trước",
+ "lock": "center",
+ "introTimes": [
+  80,
+  80,
+  80,
+  80,
+  55,
+  53,
+  52,
+  50,
+  48,
+  47,
+  45,
+  43,
+  42,
+  40,
+  39,
+  37,
+  35,
+  34,
+  32,
+  30,
+  29,
+  27
+ ],
+ "loopMs": 25,
+ "loop_note": "chủ dự án 12/11: nhịp chân rời sân như mấy bước đầu của dạng 3 cho cả quãng -> ~200 ms mỗi bước: vòng 8 khung/bước x 25 ms (Quảng Trường giữ frameDuration), bước khởi động nhanh dần 55 -> 27"
+}

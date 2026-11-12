@@ -53,6 +53,21 @@ function spriteCellPosition(sheet,frame){
   const col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   return `${sheet.cols===1?0:col/(sheet.cols-1)*100}% ${sheet.rows===1?0:row/(sheet.rows-1)*100}%`;
 }
+// A big clip-route sheet comes in row bands too (chunkRows rows each, <sheet>.r<k>.webp; assets/heroes/clip_pipeline.py):
+// the browser decodes a whole picture before showing any of it, so the game draws the band holding the frame
+// (owner 12/11: a 20-megapixel sheet stalled each strike's start by ~180 ms). {src, size, position, band} of a frame.
+function spriteSheetCell(sheet,frame){
+  const per=sheet.chunkRows;
+  if(!per)return {src:sheet.src,size:`${sheet.cols*100}% ${sheet.rows*100}%`,position:spriteCellPosition(sheet,frame),band:''};
+  const row=Math.floor(frame/sheet.cols),band=Math.floor(row/per),rows=Math.min(per,sheet.rows-band*per);
+  return {src:sheet.bands?.[band]||sheet.src?.replace(/(\.[a-z]+)$/i,`.r${band}$1`),size:`${sheet.cols*100}% ${rows*100}%`,
+    position:spriteCellPosition({cols:sheet.cols,rows},frame-band*per*sheet.cols),band:':'+band};
+}
+// Every picture a sheet is drawn from (its bands, or the sheet itself).
+function spriteSheetSources(sheet){
+  if(!sheet?.chunkRows)return sheet?.src?[sheet.src]:[];
+  return Array.from({length:Math.ceil(sheet.rows/sheet.chunkRows)},(_,k)=>spriteSheetCell(sheet,k*sheet.chunkRows*sheet.cols).src);
+}
 // Every sheet of a character (actions, fidgets) starts decoding the first time it is drawn, so later
 // switches find them ready.
 const spriteWarmed=new WeakSet();
@@ -64,12 +79,12 @@ function spriteWarm(family,key){
   if(typeof document!=='undefined'&&!reduced){
     let keep=document.getElementById('spriteKeep');
     if(!keep){keep=document.createElement('div');keep.id='spriteKeep';keep.setAttribute('aria-hidden','true');keep.style.cssText='position:fixed;left:0;bottom:0;width:2px;height:2px;opacity:.01;pointer-events:none;z-index:-1;background-size:2px 2px;background-repeat:no-repeat';document.body.append(keep);}
-    const srcs=[...Object.values(set).flatMap(s=>[s?.src,...(s?.fidgets||[]).map(f=>f.src)])].filter(Boolean);
+    const srcs=[...Object.values(set).flatMap(s=>[...spriteSheetSources(s),...(s?.fidgets||[]).map(f=>f.src)])].filter(Boolean);
     // One set per side: the hero on the stage and the foe it faces.
     (keep.__sets??={})[family]=srcs;
     keep.style.backgroundImage=[...new Set(Object.values(keep.__sets).flat())].map(s=>`url('${s}')`).join(',');
   }
-  for(const sheet of Object.values(set||{})){if(sheet?.src)spriteReady(sheet.src);for(const f of sheet?.fidgets||[])spriteReady(f.src);}
+  for(const sheet of Object.values(set||{})){for(const src of spriteSheetSources(sheet))spriteReady(src);for(const f of sheet?.fidgets||[])spriteReady(f.src);}
 }
 // Where a sheet is drawn in its actor's cell (fractions of the cell). A sheet drawn smaller than the idle
 // (its scale) grows about its feet; a chapter boss's poses stand on the resting pose's feet (build.py
@@ -78,7 +93,8 @@ function spriteWarm(family,key){
 // loops keep their own framing.
 function spriteBox(family,key,sheet,grow=(sheet.scale||1)-1){
   const width=1+grow,foot=sheet.footY||.94,idle=family==='enemy'&&(state.boss||sheet.peak!=null)&&!sheet.airborne&&sheet.feetX!=null?(state.boss?ART.bosses?.[key]:ART.enemies?.[key])?.idle:null;
-  if(!idle?.feetX)return {left:-grow*.5,top:-grow*foot,width};
+  // originX: a clip-route sheet drawn with the body off-centre in its padded cell (room ahead for a long thrust).
+  if(!idle?.feetX)return {left:-grow*(sheet.originX??.5),top:-grow*foot,width};
   return {left:idle.feetX-sheet.feetX*width,top:(idle.footY||.94)-foot*width,width};
 }
 // A chapter boss stands near the edge by its resting body (combat-stage.js combatKeepInside); a wider pose
@@ -96,8 +112,9 @@ function spriteApply(el,action,index){
   const {sheet,action:mapped}=spriteDefinition(el.dataset.family,el.dataset.key,action);
   const frame=Math.max(0,Math.min(sheet.count-1,Number.isFinite(index)?index:0)),col=frame%sheet.cols,row=Math.floor(frame/sheet.cols);
   const previous={image:el.style.backgroundImage,size:el.style.backgroundSize,position:el.style.backgroundPosition,frame:el.dataset.frame,action:el.dataset.action};
-  if(el.dataset.sheet!==mapped){el.style.backgroundImage=`url('${sheet.src}')`;el.style.backgroundSize=`${sheet.cols*100}% ${sheet.rows*100}%`;el.dataset.sheet=mapped;}
-  el.style.backgroundPosition=spriteCellPosition(sheet,frame);
+  const cell=spriteSheetCell(sheet,frame);
+  if(el.dataset.sheet!==mapped+cell.band){el.style.backgroundImage=`url('${cell.src}')`;el.style.backgroundSize=cell.size;el.dataset.sheet=mapped+cell.band;}
+  el.style.backgroundPosition=cell.position;
   // Sheets drawn smaller than the idle carry a scale: grow the drawing box about the feet so the
   // character keeps one size across actions (the cell always fills the box).
   let grow=(sheet.scale||1)-1;const foot=sheet.footY||.94;
@@ -140,14 +157,89 @@ function spriteOwnHurt(el){return /^hurt(_armored)?$/.test(spriteDefinition(el.d
 function setSpriteAction(side,action,duration=0){
   const root=actor(side),el=root.querySelector('.sprite-body');if(!el)return;
   root.dataset.state=action;
+  // A clip-route sheet already playing this action keeps its pose: restarting it would flash frame 0 (the guard)
+  // between the staging's pose calls (combat-v3 restarts "attack" before the launch).
+  const playing=spritePlayback.get(el);if(playing?.clip&&playing.action===action&&el.dataset.action===action)return;
   const idle=action==='idle';el.dataset.loop=String(idle);
+  // Back to rest from the middle of a clip sheet with roles (its last frame is the rest): it plays on to that frame
+  // first, a thrust pulled all the way back, never a jump to the resting pose (owner 12/11).
+  if(idle&&playing?.clip&&!reduced&&el.dataset.action===playing.action&&!playing.finishing){
+    const sheet=spriteDefinition(el.dataset.family,el.dataset.key,playing.action).sheet,from=+el.dataset.frame;
+    if(sheet.roles&&!sheet.clock&&from<sheet.count-1){spriteClipFinish(el,playing.action,sheet,from,duration);return;}
+  }
   spritePlayback.set(el,{action,start:performance.now(),duration:duration||1200,manual:false});
   spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)&&el.dataset.family!=='hero'?4:0);
 }
 function setSpriteFrame(side,action,index){
   const el=actor(side).querySelector('.sprite-body');if(!el)return;
-  if(spriteDefinition(el.dataset.family,el.dataset.key,action).sheet.baked)return;   // a baked rig one-shot plays on setSpriteAction's clock
-  el.dataset.loop='false';spritePlayback.set(el,{action,manual:true});spriteApply(el,action,index);
+  const sheet=spriteDefinition(el.dataset.family,el.dataset.key,action).sheet;
+  if(sheet.baked)return;   // a baked rig one-shot plays on setSpriteAction's clock
+  el.dataset.loop='false';
+  // Clip-route sheets (assets/heroes/clip_pipeline.py, owner 12/11): many frames drawn from one video clip.
+  if(sheet.clock&&!reduced){if(index===0||spritePlayback.get(el)?.action!==action)spriteClipClock(el,action,sheet);return;}
+  if(sheet.roles){spriteClipStep(el,action,sheet,Math.max(0,Math.min(sheet.roles.length-1,index|0)));return;}
+  spritePlayback.set(el,{action,manual:true});spriteApply(el,action,index);
+}
+// A clip sheet with a clock plays on the action's own clock from its frame 0: segments {t:[from,to] ms, f:[first,last]}
+// run through their frames (a slow one never skips a pose; a fast one, a strike, may drop a frame on a busy device),
+// {t, loop:[first,last], step, endOnFirst} repeats a held pose's living loop (hair and cloth keep moving) and lands on its
+// first frame as the next segment begins. The staging's later pose calls are ignored while it plays.
+function spriteClockFrame(clock,t,last){
+  for(const s of clock){
+    const [t0,t1]=s.t;if(t>t1&&s!==clock[clock.length-1])continue;const u=Math.max(0,Math.min(t,t1)-t0),span=Math.max(1,t1-t0);
+    if(s.loop){const [a,b]=s.loop,n=b-a+1,want=s.step||70,k=s.endOnFirst?Math.max(n,n*Math.round(span/(n*want)))+1:Math.round(span/want),step=span/k;
+      return a+Math.floor(u/step)%n;}
+    // {t, seq:[frames in play order]}: in-betweens added to a sheet after its numbering was fixed (appended cells).
+    if(s.seq)return s.seq[Math.min(s.seq.length-1,Math.floor(s.seq.length*u/span))];
+    const [f0,f1]=s.f,f=Math.round(f0+(f1-f0)*u/span);
+    return span/Math.max(1,Math.abs(f1-f0))>=30&&last>=f0&&f>last+1?last+1:f;
+  }
+  return 0;
+}
+function spriteClipClock(el,action,sheet){
+  const playback={action,manual:true,clip:true},start=performance.now();spritePlayback.set(el,playback);
+  const end=sheet.clock[sheet.clock.length-1].t[1];let last=-1;
+  const tick=now=>{
+    if(spritePlayback.get(el)!==playback||!el.isConnected)return;
+    const f=spriteClockFrame(sheet.clock,now-start,last);if(f!==last){last=f;spriteApply(el,action,f);}
+    if(now-start<end)requestAnimationFrame(tick);
+  };tick(start);
+}
+// A clip sheet with roles: the staging asks for its usual six poses (0..5); each maps to a clip frame, reached through
+// every frame between (forward, sheet.stepMs apart); a pose behind the current one is shown at once.
+function spriteClipStep(el,action,sheet,role){
+  // From the pose on screen (a setSpriteAction between two pose calls restarts the playback but leaves the frame shown).
+  const old=spritePlayback.get(el);let from=old?.clip&&old.action===action?old.shown:el.dataset.sheet?.split(':')[0]===spriteDefinition(el.dataset.family,el.dataset.key,action).action?+el.dataset.frame:-1;
+  let target=sheet.roles[role];
+  // A pose behind the current one: a sheet with rolesBack goes on forward to its drawn way back (a thrust pulled back
+  // to guard, then to rest); from the sheet's last frame (back at rest) a new strike starts over from frame 0.
+  let viaBack=false;
+  if(from>=0&&target<from){const back=sheet.rolesBack?.[role];
+    // Already on that pose's way-back frame (back on guard after the thrust): stay; going "back" to the first guard would
+    // play the whole thrust again on the way to rest (owner 12/11: six-star Mika thrust twice).
+    if(back===from)return;
+    if(back!=null&&back>from){target=back;viaBack=true;}else if(from===sheet.count-1)from=0;}
+  // Asked again for the pose it is already stepping to (a swing that names its pose every animation frame): carry on.
+  if(old?.clip&&old.action===action&&old.target===target)return;
+  const playback={action,manual:true,clip:true,shown:from,target};
+  spritePlayback.set(el,playback);
+  if(reduced||from<0||target<=from||(!viaBack&&target-from>sheet.count/2)){playback.shown=target;spriteApply(el,action,target);return;}
+  let at=performance.now();const step=sheet.stepMs||17;
+  const tick=now=>{
+    if(spritePlayback.get(el)!==playback||!el.isConnected)return;
+    if(now-at>=step){at=now;playback.shown++;spriteApply(el,action,playback.shown);}
+    if(playback.shown<target)requestAnimationFrame(tick);
+  };requestAnimationFrame(tick);
+}
+function spriteClipFinish(el,action,sheet,from,duration){
+  const playback={action,manual:true,clip:true,finishing:true,shown:from,target:sheet.count-1};spritePlayback.set(el,playback);
+  let at=performance.now();const step=sheet.stepMs||17;
+  const tick=now=>{
+    if(spritePlayback.get(el)!==playback||!el.isConnected)return;
+    if(now-at>=step){at=now;playback.shown++;spriteApply(el,action,playback.shown);}
+    if(playback.shown<playback.target){requestAnimationFrame(tick);return;}
+    spritePlayback.set(el,{action:'idle',start:performance.now(),duration:duration||1200,manual:false});el.dataset.loop='true';spriteApply(el,'idle',0);
+  };requestAnimationFrame(tick);
 }
 function spriteTick(now){
   requestAnimationFrame(spriteTick);
