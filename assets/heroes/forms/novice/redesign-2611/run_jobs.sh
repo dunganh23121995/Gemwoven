@@ -1,5 +1,6 @@
 #!/bin/bash
-# Redraws each old Hiro sheet in the approved plain look (two Codex jobs at a time).
+# Redraws each old Hiro sheet in the approved plain look (two Codex jobs at a time). Since 12-13/11 the attack, hurt, run and
+# skill sheets come from the clip route (clips/); only the cast sheets are left here (jobs.txt).
 cd "$(dirname "$0")"
 one(){ f=$1; a=$2; old=$3; c=$4; r=$5; n=f$f-$a
   python - "$old" "sheets/$n-old.png" <<'PY'
