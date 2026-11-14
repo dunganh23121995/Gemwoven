@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T03:27:12Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\ice\\form-3\\rig\\combat\\rest.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\ice\\clips\\f3-run\\keys\\pose-ref-f2run.png"
+  ],
+  "prompt": "Image 1 is the exact character: A chibi bunny-eared ice priestess with long silver-lavender braids, blue eyes, a crystal snowflake tiara, a white and ice-blue gown with crystal patterns, a long navy and ice-blue cape, white crystal armoured boots, holding a tall staff topped with a large ice-blue crystal crescent moon in her right hand and a crystal ice fan in her left hand. Keep her identity, face, costume, colours, proportions, line style and the staff and fan design from Image 1, at the same size and camera distance as Image 1.\nImage 2 is a pose reference only (another outfit of the same hero): copy its running pose energy, not its costume.\n\nDraw ONE single full-body sprite of her running fast toward screen-right, three-quarter view facing screen-right, in a dynamic mid-stride pose:\n- her body leans forward into the run, determined face visible;\n- her front leg (her left) stepping far forward with the knee lifted high, her back leg pushing off far behind her, both legs and boots fully visible and clearly separated with open space between them;\n- her long robe, skirt hem and cape are swept back behind her by the wind of the run, above the knees in front, so they never hide her legs;\n- the items stay in the SAME hands as in Image 1 (13/11: a key with them swapped made the staff vanish in the clip): the tall crescent-moon staff stays in the hand on the screen-right side of her body, held upright and slanted a little back beside her, the crescent moon above her head, the staff whole and clearly visible; the crystal ice fan stays open in her other hand on the screen-left side, behind her, as in Image 1. Do NOT mirror her;\n- her long braid, rabbit ears and cape stream back behind her.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character and the whole staff fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No snow, sparkles, aura, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the reference character (bunny ears, silver braid, ice gown, crystal fan and crescent staff), has a flat magenta background, and shows the full body and whole staff with margins on all sides. Both legs are visible and separated, the cape and braid stream back, and there is no text or extra content. The fan sits closer to the body center than the prompt's 'behind her', which is minor drift, not a defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000669
+  }
+}

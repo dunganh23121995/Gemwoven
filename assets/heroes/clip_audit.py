@@ -2,7 +2,7 @@
 contact-sheet reviews). For each sheet: bodies per frame (separate large opaque blobs), body size (area, steel left out),
 the soles' line and back boot, and the jumps between neighbouring frames; the first/last frame against the resting frame.
 
-python assets/heroes/clip_audit.py            every Mika sheet
+python assets/heroes/clip_audit.py [hero] [--transitions]    every clip sheet of a hero (default fire = Mika)
 """
 import json, sys
 from pathlib import Path
@@ -11,6 +11,7 @@ from PIL import Image
 from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parents[2]
+HERO = next((a for a in sys.argv[1:] if not a.startswith('-')), 'fire')
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 
@@ -31,20 +32,14 @@ def frame_stats(cell):
 
 
 def sheets():
-    yield '1', 'smash', ROOT / 'assets/reimagined/heroes/fire/smash.webp', 6
-    for a in ('attack', 'cast', 'hurt', 'run'):
-        yield '1', a, ROOT / f'assets/reimagined/heroes/fire/{a}.webp', 6
-    forms = json.loads((ROOT / 'assets/heroes/forms/fire/forms.json').read_text(encoding='utf-8'))['forms']
-    for f, e in forms.items():
-        for a, s in e['actions'].items():
-            if a in ('idle', 'dash'):
-                continue
-            yield f, a, ROOT / s['file'], s['cols']
+    """Every clip-route sheet of the hero (its specs' outputs)."""
+    for sp in sorted((ROOT / 'assets/heroes/forms' / HERO / 'clips').glob('f*/spec.json')):
+        spec = json.loads(sp.read_text(encoding='utf-8'))
+        if spec.get('out') and (ROOT / spec['out']).exists() and spec.get('pick'):
+            yield spec['id'][1], spec['id'][3:], ROOT / spec['out'], spec.get('cols', 6)
 
 
 def audit():
-    rest = {'1': ROOT / 'assets/heroes/forms/fire/form-1/sharp/rest.webp', '2': ROOT / 'assets/heroes/forms/fire/form-2/rig/combat/rest.png',
-            '3': ROOT / 'assets/heroes/forms/fire/form-3/rig/combat/rest.png'}
     report = []
     orders = {}
     for sp in (ROOT / 'assets/heroes/forms').glob('*/clips/*/spec.json'):
@@ -73,7 +68,7 @@ def audit():
     return report
 
 
-if __name__ == '__main__':
+if __name__ == '__main__' and '--transitions' not in sys.argv:
     for name, n, issues in audit():
         print(f'{name} ({n} khung):', 'OK' if not issues else '; '.join(issues))
 
@@ -100,7 +95,7 @@ def transitions():
     sys.path.insert(0, str(Path(__file__).parent))
     import clip_pipeline as cp
     out = []
-    for sp in sorted((ROOT / 'assets/heroes/forms/fire/clips').glob('f*/spec.json')):
+    for sp in sorted((ROOT / 'assets/heroes/forms' / HERO / 'clips').glob('f*/spec.json')):
         spec = json.loads(sp.read_text(encoding='utf-8'))
         rest = look(cp.rest_cell(spec))
         path = ROOT / spec['out']; sh = Image.open(path).convert('RGBA'); cols = spec.get('cols', 6); n = len(spec['pick'])

@@ -1,0 +1,286 @@
+{
+ "id": "f1-attack",
+ "hero": "ice",
+ "title": "Yuki hình thái 1 · attack",
+ "rest": "assets/heroes/forms/ice/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/ice/attack.webp",
+ "meta": "assets/reimagined/heroes/ice/attack/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 40,
+ "keys": {
+  "ready": {
+   "file": "assets/heroes/forms/ice/clips/f1-attack/keys/ready.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/ice/attack.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     1.0,
+     0,
+     1
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt)"
+  },
+  "push": {
+   "file": "assets/heroes/forms/ice/clips/f1-attack/keys/push.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/ice/attack.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.0,
+     0,
+     1
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "ready",
+   "length": 9,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a dark navy hood with white rabbit ears and a snowflake ornament, a white fur-trimmed navy and ice-blue robe with a long flowing cape, white stockings and boots, holding a slender silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, brings the staff forward in both hands, ready to strike, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "ready",
+   "end": "push",
+   "length": 9,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a dark navy hood with white rabbit ears and a snowflake ornament, a white fur-trimmed navy and ice-blue robe with a long flowing cape, white stockings and boots, holding a slender silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, thrusts the staff forward toward screen-right in one quick jab into the pose of the last frame, the staff clearly visible. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "push",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a dark navy hood with white rabbit ears and a snowflake ornament, a white fur-trimmed navy and ice-blue robe with a long flowing cape, white stockings and boots, holding a slender silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, draws the staff back and returns to her calm stance of the last frame. No second attack. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_ready",
+   "start": "ready",
+   "end": "ready",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_push",
+   "start": "push",
+   "end": "push",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "combat-v3 attack(): roles 0 guard, 1 drawn back, 2 swing starts, 3 contact ~427ms, 4 follow-through, 5 recover",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   3
+  ],
+  [
+   "A",
+   7,
+   5
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "key",
+   "ready"
+  ],
+  [
+   "B",
+   7,
+   1
+  ],
+  [
+   "B",
+   7,
+   3
+  ],
+  [
+   "B",
+   7,
+   5
+  ],
+  [
+   "B",
+   7,
+   7
+  ],
+  [
+   "key",
+   "push"
+  ],
+  [
+   "C",
+   7,
+   1
+  ],
+  [
+   "C",
+   7,
+   3
+  ],
+  [
+   "C",
+   7,
+   5
+  ],
+  [
+   "C",
+   7,
+   7
+  ],
+  [
+   "C",
+   7,
+   9
+  ],
+  [
+   "C",
+   7,
+   11
+  ],
+  [
+   "C",
+   7,
+   13
+  ],
+  [
+   "C",
+   7,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_ready",
+   7,
+   2
+  ],
+  [
+   "H_ready",
+   7,
+   4
+  ],
+  [
+   "H_ready",
+   7,
+   6
+  ],
+  [
+   "H_ready",
+   7,
+   8
+  ],
+  [
+   "H_ready",
+   7,
+   10
+  ],
+  [
+   "H_push",
+   7,
+   2
+  ],
+  [
+   "H_push",
+   7,
+   4
+  ],
+  [
+   "H_push",
+   7,
+   6
+  ],
+  [
+   "H_push",
+   7,
+   8
+  ],
+  [
+   "H_push",
+   7,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  5,
+  5,
+  10,
+  10,
+  19
+ ],
+ "stepMs": 17,
+ "lock_area": "all",
+ "end": 19,
+ "holds": {
+  "5": [
+   20,
+   24
+  ],
+  "10": [
+   25,
+   29
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  21,
+  23,
+  26,
+  28
+ ]
+}

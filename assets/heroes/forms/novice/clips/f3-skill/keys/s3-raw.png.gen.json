@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T03:10:47Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\form-3\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand. Keep his identity, face, costume, colours, proportions, line style and the exact sword design from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the sword stays in the same hand as in Image 1 (both hands on the hilt only where the pose says so), and the sword is always ONE whole rigid blade.\n\nDraw ONE single full-body sprite of him taking a long forward step toward screen-right with the longsword still loaded high behind his shoulder in both hands, body compact and low, the blade clear of his head. A clear, readable, powerful silhouette for a small phone screen; the body commits to the action (feet, hips and shoulders), not only the arm. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character and the whole sword fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, slash trail, glow, wind, sparks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Flat #FF00FF background with no gradient, floor or shadow; the character matches the reference design (ahoge, brown hair, olive cape, steel armour, brown leather) and the sword is one rigid blade fully inside the frame with no cut-off limbs, no extra text or effects, and no visible anatomy errors. The pose differs from the prompt, which asked for the sword loaded high behind the shoulder, but this is a prompt-adherence issue rather than a raw-material defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00071
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-12T15:19:10Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\ice\\clips\\f1-run\\soft-0.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\ice\\clips\\f1-run\\keys\\rest.png"
+  ],
+  "prompt": "Image 1 is a 3 by 2 animation sheet of a chibi game character (6 equal cells, read left to right, top to bottom) taken from a soft video clip. Redraw EXACTLY the same sheet at full resolution with exactly 6 equal cells: in every cell the same pose, the same limb and weapon angles, the same size and the same position inside the cell as Image 1, and the same shape and position of the hair, braid, scarf, cape, tail and every loose cloth piece, because the cells play as one smooth animation. Same camera distance in all cells. No borders between cells. Nothing crosses a cell edge.\nImage 2 is the approved crisp drawing of the same character at rest: copy the exact face, eyes, hair colour, ears, costume, every armour piece and ornament, weapon design, tail and colours from Image 2 into every cell, while each cell keeps the pose of Image 1. Take only the rendering and the design details from Image 2, never its pose.\nWhere an arm, hand or weapon passes in front of the face or hair, draw each part clearly separated (glove, sleeve, hair, face), never melt them into a smudge or a distorted face.\nDo not redesign, add or remove anything; no extra weapon, no extra hands. Add no effects at all: no lightning, sparks, glow, aura, magic, speed lines or particles (12/11: a redraw added purple lightning).\nRedraw it as a crisp, high-resolution finished game illustration with clean sharp dark outlines, fine readable detail in hair strands, cloth folds and metal, rich saturated colours and clear highlights. No blur, no motion smear, no soft focus, no pixelation. All 6 cells must look like the same drawing: identical line weight, colours and details.\nBackground 100% solid flat magenta #FF00FF. No gradients in the background, no text, no labels, no shadow on the ground.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "wrong_character",
+        "detail": "The candidate's outfit reads as darker navy/grey with black accents and a dark hood, while REFERENCE 2 shows a brighter blue dress with white fur trim and light blue cape. The staff head also looks different. This may be stylistic drift, but it could be a colour-scheme mismatch."
+      }
+    ],
+    "summary": "The candidate has the requested 3x2 arrangement of six separate figures on flat magenta, with no visible cut-offs, text or extra figures. The main doubt is whether the costume colours match the reference closely enough, so I am marking it unsure rather than failing it.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000766
+  }
+}

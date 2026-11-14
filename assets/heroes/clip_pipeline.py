@@ -21,6 +21,13 @@ sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
 MAG = (255, 0, 255)
+GREEN = False   # spec "bg": "green": a hero dressed in purple/violet (Lumi) runs the whole route on a #00FF00 background
+
+
+def set_bg(spec):
+    global MAG, GREEN
+    GREEN = spec.get('bg') == 'green'
+    MAG = (0, 255, 0) if GREEN else (255, 0, 255)
 IMAGEGEN = Path.home() / '.claude/skills/generate2dsprite/scripts/codex_image_gen.py'
 SIZE = 768        # clip resolution (square)
 CELL = 512        # runtime cell
@@ -39,7 +46,9 @@ def folder(ref):
 
 def load(ref):
     d = folder(ref)
-    return d, json.loads((d / 'spec.json').read_text(encoding='utf-8'))
+    spec = json.loads((d / 'spec.json').read_text(encoding='utf-8'))
+    set_bg(spec)
+    return d, spec
 
 
 def save(d, spec):
@@ -54,6 +63,44 @@ def on_magenta(im):
     return bg.convert('RGB')
 
 
+def put(canvas, im, x, y):
+    """im alpha-composited at (x, y), parts outside the canvas (negative offsets too) cut off."""
+    x0, y0 = max(0, -x), max(0, -y)
+    part = im.crop((x0, y0, min(im.width, canvas.width - x), min(im.height, canvas.height - y)))
+    if part.width > 0 and part.height > 0:
+        canvas.alpha_composite(part, (x + x0, y + y0))
+    return canvas
+
+
+def sheet_fit(rest, cell):
+    """[scale, dx, dy]: how an older sheet's resting cell (512 px) lies on the resting frame (512 px), best silhouette overlap."""
+    a = np.asarray(rest.convert('RGBA').resize((CELL, CELL)))[..., 3] > 100
+    best = (0, 1, 0, 0)
+    for s in np.arange(.70, 1.42, .02):
+        size = round(CELL * s); m = np.asarray(cell.convert('RGBA').resize((size, size)))[..., 3] > 100
+        for dy in range(-60, 61, 4):
+            for dx in range(-60, 61, 4):
+                b = np.zeros((CELL, CELL), bool); x, y = round((CELL - size) / 2 + dx), round((CELL - size) / 2 + dy)
+                xs, ys = slice(max(0, x), min(CELL, x + size)), slice(max(0, y), min(CELL, y + size))
+                b[ys, xs] = m[ys.start - y:ys.stop - y, xs.start - x:xs.stop - x]
+                iou = (a & b).sum() / max(1, (a | b).sum())
+                if iou > best[0]:
+                    best = (iou, s, dx, dy)
+    # refine by single pixels
+    _, s0, dx0, dy0 = best
+    for s in np.arange(s0 - .02, s0 + .021, .005):
+        size = round(CELL * s); m = np.asarray(cell.convert('RGBA').resize((size, size)))[..., 3] > 100
+        for dy in range(dy0 - 4, dy0 + 5):
+            for dx in range(dx0 - 4, dx0 + 5):
+                b = np.zeros((CELL, CELL), bool); x, y = round((CELL - size) / 2 + dx), round((CELL - size) / 2 + dy)
+                xs, ys = slice(max(0, x), min(CELL, x + size)), slice(max(0, y), min(CELL, y + size))
+                b[ys, xs] = m[ys.start - y:ys.stop - y, xs.start - x:xs.stop - x]
+                iou = (a & b).sum() / max(1, (a | b).sum())
+                if iou > best[0]:
+                    best = (iou, s, dx, dy)
+    return [round(float(best[1]), 3), int(best[2]), int(best[3])], round(float(best[0]), 3)
+
+
 def keyframe(spec, name):
     """A keyframe as a padded magenta square (the clip canvas): 'rest' or spec['keys'][name] = {file, cell:[i,cols,rows]}."""
     k = {'file': spec['rest']} if name == 'rest' else spec['keys'][name]
@@ -64,6 +111,17 @@ def keyframe(spec, name):
         i, cols, rows = k['cell']
         cw, ch = im.width // cols, im.height // rows
         im = im.crop(((i % cols) * cw, (i // cols) * ch, (i % cols + 1) * cw, (i // cols + 1) * ch))
+    if 'fit' in k:
+        # A cell of an older sheet placed on the resting frame the way its own resting cell overlaps the resting frame best
+        # (sheet_fit: [scale, dx, dy] in the 512 px resting frame), then padded like the resting frame.
+        s, dx, dy = k['fit']
+        im = im.resize((CELL, CELL), Image.LANCZOS)
+        size = round(CELL * s); cell = im.resize((size, size), Image.LANCZOS)
+        pad = spec.get('pad', 1.0); n = round(CELL * pad)
+        # the cell's own content may reach past the 512 frame (a raised weapon): place the uncropped cell on the padded canvas
+        ox, oy = round((n - CELL) * spec.get('originX', .5)), n - CELL - round((n - CELL) * .15)
+        canvas = put(Image.new('RGBA', (n, n), (0, 0, 0, 0)), cell, ox + round((CELL - size) / 2 + dx), oy + round((CELL - size) / 2 + dy))
+        return on_magenta(canvas).resize((SIZE, SIZE), Image.LANCZOS)
     if 'sheet_scale' in k:
         # A cell of an approved forms.json sheet drawn at its own scale: the game grows its box about (0.5, footY), so a cell
         # pixel (u, v) sits at idle-cell (-g/2 + u*s, -g*foot + v*s), g = s-1. Put it on the padded clip canvas the same way.
@@ -85,6 +143,8 @@ def keyframe(spec, name):
 
 def mask(rgb):
     a = np.asarray(rgb).astype(int)
+    if GREEN:   # green clearly above red and blue (Wan darkens the screen green toward a clip's end)
+        return ~((a[..., 1] > 100) & (a[..., 1] - np.maximum(a[..., 0], a[..., 2]) > 70))
     return ~((a[..., 0] > 190) & (a[..., 2] > 190) & (a[..., 1] < 80))
 
 
@@ -121,6 +181,12 @@ def boots(rgb):
 def key_magenta(im):
     a = np.asarray(im.convert('RGB')).astype(np.float32)
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    if GREEN:   # green screen: chroma of green over the larger of red and blue; spill pulled down to that
+        mx = np.maximum(g, 1); chroma = np.clip((g - np.maximum(r, b)) / mx, 0, 1)
+        alpha = np.clip(1 - (chroma - .30) / .25, 0, 1)
+        spill = np.clip(g - np.maximum(r, b), 0, None) * (1 - alpha)
+        out = a.copy(); out[..., 1] -= spill
+        return Image.fromarray(np.dstack([np.clip(out, 0, 255), alpha * 255]).astype(np.uint8), 'RGBA')
     mx = np.maximum(np.maximum(r, b), 1)
     chroma = np.clip((np.minimum(r, b) - g) / mx, 0, 1)
     hue_ok = np.abs(r - b) < .45 * mx
@@ -184,12 +250,21 @@ def cmd_clip(ref, seeds, only=None):
         p = d / 'keys' / f'{n}.png'
         keyframe(spec, n).save(p)
         uploaded[n] = cc.upload(str(p))
+        # Frozen at once: a key cut from an older sheet becomes its clip-canvas image, since assembling replaces that sheet
+        # (12/11: a later clip from the replaced sheet's cell drew a grid of tiny frames).
+        k = spec.get('keys', {}).get(n)
+        if k and not k.get('canvas') and ('cell' in k or 'fit' in k or 'sheet_scale' in k):
+            spec['keys'][n] = {'file': p.relative_to(ROOT).as_posix(), 'canvas': True, 'from': {kk: k[kk] for kk in ('file', 'cell', 'fit', 'sheet_scale') if kk in k}, 'note': k.get('note', '')}
+    save(d, spec)
     sem = threading.Semaphore(3)
     common = spec.get('style', '')
 
     def job(seg, seed):
         with sem:
             out = d / 'clip' / f"{seg['name']}-s{seed}"
+            # a re-made segment replaces its old take: a shorter new clip left the old one's last frames behind (13/11)
+            for old in out.glob('*-n16-*.png'):
+                old.unlink()
             cc.run(wan(uploaded[seg['start']], uploaded.get(seg.get('end')), seg['prompt'] + ' ' + common, f"{seg['name']}-s{seed}", seed, seg['length']),
                    str(out), f"{seg['name']}-s{seed}")
             frames = sorted(out.glob('*-n16-*.png'))
@@ -198,6 +273,109 @@ def cmd_clip(ref, seeds, only=None):
     ts = [threading.Thread(target=job, args=(s, sd)) for s in spec['segments'] if not only or s['name'] in only for sd in seeds]
     [t.start() for t in ts]
     [t.join() for t in ts]
+
+
+def qwen_edit(image, prompt, prefix, seed):
+    """Qwen Image Edit 2511 (Lightning 4 steps + Consistency LoRA): one pose change on the same character (a hit recoil, a
+    stomp), the picture's size kept. Used for keyframes the old sheets never drew."""
+    return {
+        '1': {'class_type': 'UNETLoader', 'inputs': {'unet_name': 'qwen_image_edit_2511_fp8mixed.safetensors', 'weight_dtype': 'default'}},
+        '2': {'class_type': 'LoraLoaderModelOnly', 'inputs': {'model': ['1', 0], 'lora_name': 'Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors', 'strength_model': 1.0}},
+        '20': {'class_type': 'LoraLoaderModelOnly', 'inputs': {'model': ['2', 0], 'lora_name': 'Qwen-Image-Edit-2511_Consistency.safetensors', 'strength_model': 1.0}},
+        '3': {'class_type': 'ModelSamplingAuraFlow', 'inputs': {'model': ['20', 0], 'shift': 3.0}},
+        '4': {'class_type': 'CFGNorm', 'inputs': {'model': ['3', 0], 'strength': 1.0}},
+        '5': {'class_type': 'CLIPLoader', 'inputs': {'clip_name': 'qwen_2.5_vl_7b_fp8_scaled.safetensors', 'type': 'qwen_image'}},
+        '6': {'class_type': 'VAELoader', 'inputs': {'vae_name': 'qwen_image_vae.safetensors'}},
+        '7': {'class_type': 'LoadImage', 'inputs': {'image': image}},
+        '8': {'class_type': 'TextEncodeQwenImageEditPlus', 'inputs': {'clip': ['5', 0], 'prompt': prompt, 'vae': ['6', 0], 'image1': ['7', 0]}},
+        '9': {'class_type': 'TextEncodeQwenImageEditPlus', 'inputs': {'clip': ['5', 0], 'prompt': '', 'vae': ['6', 0], 'image1': ['7', 0]}},
+        '10': {'class_type': 'VAEEncode', 'inputs': {'pixels': ['7', 0], 'vae': ['6', 0]}},
+        '11': {'class_type': 'KSampler', 'inputs': {'model': ['4', 0], 'seed': seed, 'steps': 4, 'cfg': 1.0, 'sampler_name': 'euler', 'scheduler': 'simple',
+               'positive': ['8', 0], 'negative': ['9', 0], 'latent_image': ['10', 0], 'denoise': 1.0}},
+        '12': {'class_type': 'VAEDecode', 'inputs': {'samples': ['11', 0], 'vae': ['6', 0]}},
+        '13': {'class_type': 'SaveImage', 'inputs': {'images': ['12', 0], 'filename_prefix': prefix}},
+    }
+
+
+def cmd_edit(ref, name, seeds):
+    """A new keyframe drawn by Qwen Edit from the resting frame (spec edits.<name>: prompt): keys/<name>-s<seed>.png at 512 px
+    (unpadded, like the resting frame), plus a contact sheet; the chosen take is copied to keys/<name>-src.png."""
+    import comfy_cloud as cc
+    d, spec = load(ref)
+    (d / 'keys').mkdir(exist_ok=True)
+    src = d / 'keys' / 'edit-src.png'
+    # The body cropped square with a margin (a small body in a big frame makes Qwen zoom in and reframe), edited at 1024 px,
+    # then put back on the same box of the 512 px frame.
+    rest = Image.open(ROOT / spec['rest']).convert('RGBA').resize((CELL, CELL), Image.LANCZOS)
+    x0, y0, x1, y1 = rest.getchannel('A').point(lambda v: 255 if v > 40 else 0).getbbox()
+    side = round(max(x1 - x0, y1 - y0) * 1.22); cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    box = (round(cx - side / 2), round(cy - side / 2), round(cx - side / 2) + side, round(cy - side / 2) + side)
+    crop = put(Image.new('RGBA', (side, side), (0, 0, 0, 0)), rest, -box[0], -box[1])
+    on_magenta(crop).resize((1024, 1024), Image.LANCZOS).save(src)
+    up = cc.upload(str(src)); prompt = spec['edits'][name]
+    def job(seed):
+        out = d / 'clip' / f'edit-{name}-s{seed}'
+        cc.run(qwen_edit(up, prompt, f'edit-{name}-s{seed}', seed), str(out), f'edit-{name}-s{seed}')
+        f = sorted(out.glob('*.png'))[0]
+        back = key_magenta(Image.open(f).convert('RGB').resize((side, side), Image.LANCZOS))
+        on_magenta(put(Image.new('RGBA', (CELL, CELL), (0, 0, 0, 0)), back, box[0], box[1])).save(d / 'keys' / f'{name}-s{seed}.png')
+    ts = [threading.Thread(target=job, args=(s,)) for s in seeds]
+    [t.start() for t in ts]; [t.join() for t in ts]
+    contact([Image.open(src)] + [Image.open(d / 'keys' / f'{name}-s{s}.png') for s in seeds], d / f'edit-{name}.jpg', cols=len(seeds) + 1, cell=320,
+            labels=['rest'] + [f's{s}' for s in seeds])
+
+
+def cmd_placekey(ref, name, raw, dx=0.0, mult=1.0):
+    """A key pose Codex drew (magenta background, any size) put on the clip canvas: scaled so its head matches the resting
+    frame's (head_scale), soles on the resting soles' line, body centre on the resting body's centre (+dx of the canvas).
+    Writes keys/<name>-src.png (clip canvas, 768) and registers spec keys.<name> as a canvas key."""
+    d, spec = load(ref)
+    rest = Image.open(ROOT / spec['rest']).convert('RGBA').resize((CELL, CELL), Image.LANCZOS)
+    n = round(CELL * spec.get('pad', 1.0)); off_y = n - CELL - round((n - CELL) * .15); off_x = round((n - CELL) * spec.get('originX', .5))
+    im = key_magenta(Image.open(raw)); im = im.crop(im.getchannel('A').point(lambda v: 255 if v > 40 else 0).getbbox())
+    rb = rest.getchannel('A').point(lambda v: 255 if v > 40 else 0).getbbox()
+    s = (rb[3] - rb[1]) / im.height
+    for _ in range(4):
+        t = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
+        k = head_scale(rest, t); s /= k
+        if abs(k - 1) < .021:
+            break
+    s *= mult   # set by eye when the head match misses (a pale face: Yuki)
+    t = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
+    rx, ry = pose_xy(rest); tx, ty = pose_xy(t)
+    canvas = put(Image.new('RGBA', (n, n), (0, 0, 0, 0)), t, round(off_x + rx - tx + dx * n), round(off_y + ry - ty))
+    out = d / 'keys' / f'{name}-src.png'
+    on_magenta(canvas).resize((SIZE, SIZE), Image.LANCZOS).save(out)
+    spec.setdefault('keys', {})[name] = {'file': out.relative_to(ROOT).as_posix(), 'canvas': True, 'note': f'tư thế Codex vẽ ({Path(raw).name}), đặt theo cỡ đầu khung nghỉ'}
+    save(d, spec)
+    print('placed', name, 'scale', round(s, 3), 'size', t.size)
+
+
+LIVE = (" holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep "
+        "moving gently with natural follow-through, then everything settles back into the pose of the last frame.")
+
+
+def cmd_holds(ref, names, seeds):
+    """Living holds for poses the staging holds until its next call (owner 12/11: never a frozen frame): a loop clip from each
+    named key back to itself (segment H_<name>), five of its frames appended after the sheet's own sequence, spec holds and end."""
+    d, spec = load(ref)
+    first = spec['segments'][0]['prompt']
+    who = first[:first.index(' from ')] + ', ' if ' from ' in first else ''
+    keep = first[first.index(' Arms, shoulders'):] if ' Arms, shoulders' in first else ''
+    segs = [g for g in spec['segments'] if not g['name'].startswith('H_')]
+    for n in names:
+        segs.append({'name': f'H_{n}', 'start': n, 'end': n, 'length': 13, 'prompt': who + LIVE + keep})
+    spec['segments'] = segs; save(d, spec)
+    cmd_clip(ref, seeds, [f'H_{n}' for n in names])
+    d, spec = load(ref)
+    main = [p for p in spec['pick'] if not p[0].startswith('H_')]
+    end = max(i for i, p in enumerate(main) if p == ['key', 'rest'])
+    pick = main[:end + 1]; holds = {}
+    for n in names:
+        k = next(i for i, p in enumerate(pick) if p == ['key', n]); a = len(pick)
+        pick += [[f'H_{n}', seeds[0], f] for f in (2, 4, 6, 8, 10)]; holds[str(k)] = [a, len(pick) - 1]
+    spec['pick'] = pick; spec['end'] = end; spec['holds'] = holds; save(d, spec)
+    print('holds', holds, 'end', end, 'frames', len(pick))
 
 
 def clip_frame(d, seg, seed, k):
@@ -227,7 +405,7 @@ def zoom_box(fr):
     from scipy import ndimage
     for f in fr:
         a = np.asarray(f).astype(int)
-        body = ~((a[..., 0] > 150) & (a[..., 2] > 150) & (a[..., 1] < 110))      # off-magenta (clip edges drift a little)
+        body = ~((a[..., 1] > 100) & (a[..., 1] - np.maximum(a[..., 0], a[..., 2]) > 60)) if GREEN else ~((a[..., 0] > 150) & (a[..., 2] > 150) & (a[..., 1] < 110))      # off the background (clip edges drift a little)
         body = ndimage.binary_opening(body, iterations=2)
         lab, n = ndimage.label(body)
         if not n:
@@ -251,27 +429,33 @@ def out_cell(spec):
     return max(CELL, min(1152, round(384 * spec.get('pad', 1.0))))
 
 
+def keep_or_save(im, path):
+    """A soft sheet rewritten only when its picture changed: its sharpened drawing (sharp-N, newer) stays valid when frames
+    are appended to a spec (living holds)."""
+    if path.exists() and np.array_equal(np.asarray(Image.open(path).convert('RGB')), np.asarray(im.convert('RGB'))):
+        return
+    im.save(path)
+
+
 def cmd_soft(ref):
     d, spec = load(ref)
     fr = picks(d, spec)
     contact(fr, d / 'picked.jpg', cols=12)
     if hires(spec):        # two frames per Codex image, cropped to the bodies: each drawn at 768x1024
         box = spec.get('zoom_box_fixed') or zoom_box(fr); spec['zoom_box'] = box; save(d, spec)   # fixed: keep drawn pairs valid
-        for f in d.glob('soft-*.png'):
-            f.unlink()
         x, y, w, h = box
         for s in range(math.ceil(len(fr) / 2)):
             sh = Image.new('RGB', (1536, 1024), MAG)
             for i, f in enumerate(fr[s * 2:(s + 1) * 2]):
                 c = Image.new('RGB', (w, h), MAG); c.paste(f, (-x, -y))
                 sh.paste(c.resize((768, 1024), Image.LANCZOS), (i * 768, 0))
-            sh.save(d / f'soft-{s}.png')
+            keep_or_save(sh, d / f'soft-{s}.png')
         return
     for s in range(math.ceil(len(fr) / 6)):
         sh = Image.new('RGB', (3 * CELL, 2 * CELL), MAG)
         for i, f in enumerate(fr[s * 6:(s + 1) * 6]):
             sh.paste(f.resize((CELL, CELL), Image.LANCZOS), ((i % 3) * CELL, (i // 3) * CELL))
-        sh.save(d / f'soft-{s}.png')
+        keep_or_save(sh, d / f'soft-{s}.png')
 
 
 SHARPEN = (ROOT / 'assets/heroes/clip_sharpen_prompt.txt')
@@ -281,12 +465,19 @@ PAIR = (ROOT / 'assets/heroes/clip_sharpen_pair_prompt.txt')
 def cmd_sharpen(ref, sheets=None, model='gpt-6.1-sol', effort='low'):
     d, spec = load(ref)
     ref_img = d / 'keys' / 'rest.png'
+    if not ref_img.exists():      # a loop on a drawn pose (Lumi's ride) has no rest key: the hero's resting frame
+        ref_img = ROOT / spec['rest']
     n = len(list(d.glob('soft-*.png')))
     sys.stdout.reconfigure(line_buffering=True)
     prompt = PAIR if hires(spec) else SHARPEN
-    if spec.get('sharpen_note'):      # a spec's own extra rule for its frames (hands on a shaft, a held weapon)
+    if spec.get('sharpen_note') or GREEN:      # a spec's own extra rule (hands on a shaft), or the green background
+        text = (PAIR if hires(spec) else SHARPEN).read_text(encoding='utf-8').rstrip() + chr(10) + spec.get('sharpen_note', '') + chr(10)
+        if GREEN:
+            text = text.replace('magenta #FF00FF', 'green #00FF00').replace('magenta', 'green')
+            text += ('Nothing on the character may be green: keep every gem, orb and jewel in the exact colours of the soft '
+                     'frame (a blue-purple orb stays blue-purple; 13/11 a redraw turned Lumi\'s orb green).' + chr(10))
         prompt = d / 'sharpen-prompt.txt'
-        prompt.write_text((PAIR if hires(spec) else SHARPEN).read_text(encoding='utf-8').rstrip() + chr(10) + spec['sharpen_note'] + chr(10), encoding='utf-8')
+        prompt.write_text(text, encoding='utf-8')
     for s in (sheets or range(n)):
         out = d / f'sharp-{s}.png'
         if not sheets and out.exists() and out.stat().st_mtime > (d / f'soft-{s}.png').stat().st_mtime:
@@ -317,10 +508,11 @@ def body_center(rgb):
     return int(np.percentile(ys, 99.5)), float(np.median(xs))
 
 
-def lock(sharp, soft, mode='boot'):
+def lock(sharp, soft, mode='boot', whole=False):
     """The sharpened cell put back on its clip frame: same body area (blades left out) and the same back boot
-    (mode 'center': the body's centre, for runs whose feet keep moving)."""
-    s = (area(sharp) / max(1, area(soft))) ** .5
+    (mode 'center': the body's centre, for runs whose feet keep moving). whole: the whole silhouette's area, for a hero
+    dressed in white (Yuki: her white robe and hair read as steel and the body measure flickered by 20-50%, 12/11)."""
+    s = ((int(mask(sharp).sum()) / max(1, int(mask(soft).sum()))) if whole else (area(sharp) / max(1, area(soft)))) ** .5
     im = sharp.resize((round(sharp.width / s), round(sharp.height / s)), Image.LANCZOS)
     anchor = body_center if mode == 'center' else back_boot
     fy, fx = anchor(np.asarray(soft))
@@ -497,6 +689,8 @@ def fit_to_rest(rest, im):
     a = np.asarray(rest)[..., 3] > 128; src = np.asarray(im)[..., 3] > 128; C = im.width; r = C / CELL
     best = (0, 1.0, 0, 0)
     hs = 1 / head_scale(rest, im)      # the size from the head; the silhouette only places it
+    if not .94 <= hs <= 1.06:           # a missed face (Yuki's pale face and white hair): keep the clip frame's own size
+        hs = 1.0
     for s in (hs,):
         size = round(C * s); ms = np.asarray(Image.fromarray((src * 255).astype(np.uint8)).resize((size, size))) > 127
         step = max(1, round(3 * r)); lim = round(40 * r)
@@ -556,6 +750,305 @@ def match_keys(spec, keyed):
     return keyed
 
 
+def head_size(ref_cell, im, box):
+    """How much bigger im draws the head than ref_cell (box: the head in ref_cell): multi-scale template match on grey,
+    returns (score, scale). Works on profile faces where head_scale's skin search finds nothing."""
+    import cv2
+
+    def prep(c):
+        a = np.asarray(c).astype(np.float32); al = a[..., 3:] / 255
+        return cv2.GaussianBlur(cv2.cvtColor((a[..., :3] * al + 128 * (1 - al)).astype(np.uint8), cv2.COLOR_RGB2GRAY), (3, 3), 0)
+    t = prep(ref_cell)[box[0]:box[1], box[2]:box[3]]; g = prep(im); best = (-1.0, 1.0)
+    for s in np.arange(.80, 1.36, .01):
+        tt = cv2.resize(t, None, fx=s, fy=s, interpolation=cv2.INTER_AREA)
+        if tt.shape[0] < g.shape[0] and tt.shape[1] < g.shape[1]:
+            r = float(cv2.matchTemplate(g, tt, cv2.TM_CCOEFF_NORMED).max())
+            if r > best[0]:
+                best = (r, float(s))
+    return best
+
+
+def head_lock(spec, keyed, rest_img, tol=.03, trust=.42):
+    """Scale each frame of the sheet's own sequence so its head matches the resting frame's, about its soles; a hold loop
+    frame takes its pose's factor. Weak matches (a raised arm over the face) take their neighbours' factor."""
+    a = np.asarray(rest_img.getchannel('A')) > 100; ys, xs = np.where(a); top, h = ys.min(), ys.max() - ys.min()
+    cx = int(np.median(np.where(a[top:top + int(h * .38)])[1])); w = int(h * .30)
+    box = (top, top + int(h * .38), max(0, cx - w), cx + w)
+    end = spec.get('end', len(keyed) - 1)
+    raw = []
+    for i in range(end + 1):
+        r, s = (1.0, 1.0) if is_rest(spec, spec['pick'][i]) else head_size(rest_img, keyed[i], box)
+        raw.append(s if r >= trust else None)
+    known = [i for i, s in enumerate(raw) if s is not None]
+    est = [raw[i] if raw[i] is not None else
+           np.interp(i, known, [raw[k] for k in known]) for i in range(end + 1)]
+    est = [float(np.median(est[max(0, i - 1):i + 2])) for i in range(end + 1)]    # one-frame outliers out
+    fac = [1.0 / s if abs(s - 1) > tol else 1.0 for s in est]
+    holds = {int(k): v for k, v in (spec.get('holds') or {}).items()}
+    full = fac + [1.0] * (len(keyed) - len(fac))
+    for k, (h0, h1) in holds.items():
+        for i in range(h0, h1 + 1):
+            full[i] = fac[k]
+    out = []
+    for k, f in zip(keyed, full):
+        if f == 1.0:
+            out.append(k); continue
+        al = np.asarray(k.getchannel('A')) > 100; yy, xx = np.where(al)
+        fy = yy.max(); fx = float(np.median(xx[yy >= fy - k.height * .02]))
+        t = k.resize((round(k.width * f), round(k.height * f)), Image.LANCZOS)
+        c = put(Image.new('RGBA', k.size, (0, 0, 0, 0)), t, round(fx - fx * f), round(fy - fy * f))
+        out.append(c)
+    return out, [round(f, 3) for f in full]
+
+
+def body_lock(spec, keyed, rest_img, give=.04, trust=18):
+    """size_lock "body" (owner 13/11: six-star Mika's ultimate "kích thước loạn": its keys and in-betweens came out ~10%
+    apart and her nine-tail fan shrank to ~0.82 in the crouch, while her head is often hidden so head_lock misjudged).
+    Each frame: the body's scale from SIFT matches on the resting frame's central column (face, torso, legs; similarity
+    transform, RANSAC) and the silhouette's scale (sqrt of the opaque area). It is scaled about its soles so the
+    silhouette matches the resting frame's as far as the body may stay within +-give of it. Factors are smoothed along
+    the play order (spec order), a weak body match takes its play-order neighbours'."""
+    import cv2
+
+    def gray(c):
+        a = np.asarray(c).astype(np.float32); al = a[..., 3:] / 255
+        return cv2.cvtColor((a[..., :3] * al + 128 * (1 - al)).astype(np.uint8), cv2.COLOR_RGB2GRAY)
+    al = np.asarray(rest_img.getchannel('A')) > 100; ys, _ = np.where(al); top, bot = ys.min(), ys.max(); h = bot - top
+    cx = int(np.median(np.where(al[top + int(h * .2):top + int(h * .6)])[1])); w = int(h * .22)
+    mask = np.zeros(al.shape, np.uint8); mask[top + int(h * .12):bot - int(h * .05), max(0, cx - w):cx + w] = 255
+    sift = cv2.SIFT_create(6000, contrastThreshold=.02); kr, dr = sift.detectAndCompute(gray(rest_img), mask)
+    bf = cv2.BFMatcher(); a0 = float(al.sum())
+    order = [i for i in (spec.get('order') or range(len(spec['pick']))) if i < len(keyed)]
+    body, sil = {}, {}
+    for i in order:
+        if is_rest(spec, spec['pick'][i]):
+            body[i], sil[i] = 1.0, 1.0; continue
+        sil[i] = float(np.sqrt((np.asarray(keyed[i].getchannel('A')) > 100).sum() / a0))
+        k, d = sift.detectAndCompute(gray(keyed[i]), None)
+        if d is None or len(k) < 8:
+            continue
+        good = [m for m, n2 in bf.knnMatch(dr, d, k=2) if m.distance < .8 * n2.distance]
+        if len(good) < 8:
+            continue
+        A, inl = cv2.estimateAffinePartial2D(np.float32([kr[m.queryIdx].pt for m in good]), np.float32([k[m.trainIdx].pt for m in good]),
+                                             method=cv2.RANSAC, ransacReprojThreshold=3)
+        if A is not None and inl is not None and int(inl.sum()) >= trust:
+            body[i] = float(np.hypot(A[0, 0], A[1, 0]))
+    known = [j for j, i in enumerate(order) if i in body]
+    bseq = [body.get(i) if i in body else float(np.interp(j, known, [body[order[q]] for q in known])) for j, i in enumerate(order)]
+    want = []
+    for sb, i in zip(bseq, order):
+        f = min(max(1 / sil[i], (1 - give) / sb), (1 + give) / sb)
+        want.append(f)
+    fac = {i: float(np.median(want[max(0, j - 1):j + 2])) for j, i in enumerate(order)}
+    for i in order:
+        if is_rest(spec, spec['pick'][i]):
+            fac[i] = 1.0
+    holds = {int(k): v for k, v in (spec.get('holds') or {}).items()}
+    for k, (h0, h1) in holds.items():
+        for i in range(h0, h1 + 1):
+            fac[i] = fac.get(k, 1.0)
+    out, full = [], []
+    for i, k in enumerate(keyed):
+        f = fac.get(i, 1.0)
+        if abs(f - 1) < .01:
+            out.append(k); full.append(1.0); continue
+        a = np.asarray(k.getchannel('A')) > 100; yy, xx = np.where(a)
+        fy = yy.max(); fx = float(np.median(xx[yy >= fy - k.height * .02]))
+        t = k.resize((round(k.width * f), round(k.height * f)), Image.LANCZOS)
+        if f > 1.02:
+            from PIL import ImageFilter
+            t = t.filter(ImageFilter.UnsharpMask(radius=1.4, percent=int(60 + 300 * (f - 1)), threshold=2))
+        out.append(put(Image.new('RGBA', k.size, (0, 0, 0, 0)), t, round(fx - fx * f), round(fy - fy * f))); full.append(round(f, 3))
+    return out, full
+
+
+# ---- thinning: at most 24 frames a sheet (owner 13/11) -------------------------------------------------------------
+# "Để max tối đa 24 frame thôi. Giữ frame quan trọng. Áp dụng cho tất cả các tướng": Yuki's six-star ultimate (57 frames,
+# one frame a 17 ms step) stuttered. spec keep = the frames kept, in sheet order: every pose the staging names (roles, the
+# way back, the end), a clock's segment ends and grip keys, a run's lead-in ends; in-betweens spread evenly over each
+# stretch; a run's cycle every other frame (twice the time each); a living hold keeps two of its drawings (one when the
+# swings would be left too bare). The game's timings keep their length (step, loop, lead-in, hold pace).
+MAX_FRAMES = 24
+
+
+def _spread(chain, k):
+    """k inner frames of a chain (its two ends kept), evenly spaced."""
+    inner = chain[1:-1]
+    if k >= len(inner):
+        return list(inner)
+    return [inner[round((j + 1) * (len(inner) + 1) / (k + 1)) - 1] for j in range(k)]
+
+
+def thin_plan(spec, cap=MAX_FRAMES):
+    n = len(spec['pick'])
+    if n <= cap:
+        return None
+    if spec.get('loop'):            # a run: lead-in 0..a-1 once, then the cycle a..b
+        a, b = spec['loop']; L = b - a + 1
+        cyc = list(range(a, b + 1, 2)) if L % 2 == 0 and L >= 10 else list(range(a, b + 1))
+        lead = sorted(set(([0, a - 1] if a > 1 else list(range(a))) + _spread(list(range(a)), cap - len(cyc) - 2)))
+        return sorted(set(lead + cyc))
+    must, chains, holds = set(), [], []
+    if spec.get('clock'):
+        for s in spec['clock']:
+            if 'seq' in s:
+                c = list(s['seq'])
+            elif 'loop' in s:
+                c = list(range(s['loop'][0], s['loop'][1] + 1)) + [s['loop'][0]]   # a living loop closes on its first frame
+            else:
+                c = list(range(s['f'][0], s['f'][1] + 1))
+            must |= {c[0], c[-1]}; chains.append(c)
+    else:
+        end = spec.get('end', n - 1)
+        must |= {0, end} | set(spec.get('roles', [])) | {r for r in spec.get('rolesBack', []) if r is not None}
+        chains.append(list(range(end + 1)))
+        holds = [list(range(h0, h1 + 1)) for h0, h1 in (spec.get('holds') or {}).values()]
+    must |= set(spec.get('gripKeys', []))
+    stretches = []
+    for c in chains:
+        cut = [i for i, f in enumerate(c) if f in must]
+        for i0, i1 in zip(cut, cut[1:]):
+            if i1 - i0 > 1:
+                stretches.append(c[i0:i1 + 1])
+    inner_total = sum(len(s) - 2 for s in stretches)
+    per_hold = 0
+    if holds:
+        # one drawing per hold toggled with its pose read as a nod (owner 13/11: Hiro 3's face "gật gật"): two, or none
+        per_hold = 2 if cap - len(must) - 2 * len(holds) >= .4 * inner_total else 0
+    budget = cap - len(must) - per_hold * len(holds)
+    assert budget >= 0, (spec['id'], len(must), budget)
+    want = [(len(s) - 2) * budget / max(1, inner_total) for s in stretches]
+    got = [int(w) for w in want]
+    for i in sorted(range(len(want)), key=lambda i: got[i] - want[i])[:max(0, min(budget, inner_total) - sum(got))]:
+        got[i] += 1
+    keep = set(must)
+    for s, k in zip(stretches, got):
+        keep |= set(_spread(s, k))
+    for h in holds:
+        keep |= set(_spread([None] + h + [None], per_hold))
+    keep = sorted(keep)
+    assert len(keep) <= cap, (spec['id'], len(keep))
+    return keep
+
+
+def thin_entry(e, spec, keep):
+    """A runtime meta entry (forms.json action, runtime-meta.json, Hiro's meta action) for the kept frames only."""
+    n0 = len(spec['pick']); M = {o: i for i, o in enumerate(keep)}
+    hi = lambda o: M[max(k for k in keep if k <= o)]
+    for key in ('count', 'frames'):
+        if key in e:
+            e[key] = len(keep)
+    cols = e.get('cols') or e.get('columns') or spec.get('cols', 6)
+    if 'rows' in e:
+        e['rows'] = math.ceil(len(keep) / cols)
+    for key in ('heads', 'headAnchors', 'grips', 'sockets'):
+        if isinstance(e.get(key), list) and len(e[key]) == n0:
+            e[key] = [e[key][o] for o in keep]
+    if e.get('roles'):
+        e['roles'] = [M[r] for r in e['roles']]
+    if e.get('rolesBack'):
+        e['rolesBack'] = [None if r is None else M[r] for r in e['rolesBack']]
+    main0 = e.get('end', n0 - 1) + 1
+    if 'end' in e:
+        e['end'] = M[e['end']]
+    main1 = e.get('end', len(keep) - 1) + 1
+    if e.get('holds'):
+        h2, f0, f1 = {}, 0, 0
+        for k, (h0, h1) in e['holds'].items():
+            kept = [o for o in keep if h0 <= o <= h1]; f0 += h1 - h0 + 2; f1 += len(kept) + 1
+            if kept:
+                h2[str(M[int(k)])] = [M[kept[0]], M[kept[-1]]]
+        e['holds'] = h2
+        e['holdMs'] = round(min(140, (e.get('holdMs') or 70) * f0 / max(1, f1)))
+    if e.get('stepMs') and e.get('roles'):
+        e['stepMs'] = round(e['stepMs'] * main0 / main1)
+    if e.get('gripKeys'):
+        e['gripKeys'] = [M[g] for g in e['gripKeys']]
+    if e.get('clock'):
+        c2 = []
+        for s in e['clock']:
+            s = dict(s)
+            if 'seq' in s:
+                q = []
+                for o in s['seq']:
+                    if o in M and (not q or q[-1] != M[o]):
+                        q.append(M[o])
+                s['seq'] = q
+            elif 'loop' in s:
+                a, b = s['loop']; L0 = b - a + 1; s['loop'] = [M[a], hi(b)]; L1 = s['loop'][1] - s['loop'][0] + 1
+                if L1 < L0:
+                    s['step'] = round(min(110, (s.get('step') or 70) * L0 / L1))
+            else:
+                s['f'] = [M[s['f'][0]], M[s['f'][1]]]
+            c2.append(s)
+        e['clock'] = c2
+    if e.get('loop'):
+        a, b = e['loop']; L0 = b - a + 1; e['loop'] = [M[a], hi(b)]; r = L0 / (e['loop'][1] - e['loop'][0] + 1)
+        if e.get('loopMs'):
+            e['loopMs'] = round(e['loopMs'] * r)
+        if e.get('frameDuration'):
+            e['frameDuration'] = round(e['frameDuration'] * r)      # the plaza's cycle pace
+        if e.get('introTimes'):
+            t = e['introTimes']; lead = [o for o in keep if o < a]
+            e['introTimes'] = [sum(t[o:(lead[i + 1] if i + 1 < len(lead) else a)]) for i, o in enumerate(lead)]
+    return e
+
+
+def write_kept_sheet(frames, out, cols, CO):
+    """The kept frames as the sheet, its row bands written afresh (stale bands of a longer sheet removed)."""
+    rows = math.ceil(len(frames) / cols)
+    sheet = Image.new('RGBA', (cols * CO, rows * CO), (0, 0, 0, 0))
+    for i, k in enumerate(frames):
+        sheet.paste(k, ((i % cols) * CO, (i // cols) * CO))
+    sheet.save(out, quality=92, method=6) if out.suffix == '.webp' else sheet.save(out)
+    for old in out.parent.glob(f'{out.stem}.r*{out.suffix}'):
+        if old.stem[len(out.stem) + 2:].isdigit():
+            old.unlink()
+    return rows, write_chunks(sheet, out, cols, rows)
+
+
+def meta_entry(spec):
+    """(whole meta, the sheet's entry in it, save) of the sheet's runtime meta."""
+    if spec.get('meta'):
+        p = ROOT / spec['meta']; m = json.loads(p.read_text(encoding='utf-8'))
+        return m, m, lambda: p.write_text(json.dumps(m, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    if spec.get('novice_meta'):
+        p = ROOT / spec['novice_meta']; m = json.loads(p.read_text(encoding='utf-8')); action = spec['out'].rsplit('/', 1)[1].split('.')[0]
+        return m, m['actions'][action], lambda: p.write_text(json.dumps(m, ensure_ascii=False, indent=2) + chr(10), encoding='utf-8')
+    p = ROOT / 'assets/heroes/forms' / spec['hero'] / 'forms.json'; m = json.loads(p.read_text(encoding='utf-8'))
+    form, action = spec['forms']
+    return m, m['forms'][form]['actions'][action], lambda: p.write_text(json.dumps(m, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+
+
+def cmd_thin(ref, cap=MAX_FRAMES):
+    """Thin an assembled sheet in place to spec keep (planned when missing): its approved cells cut out, not redrawn."""
+    d, spec = load(ref)
+    n0 = len(spec['pick'])
+    m, e, save_meta = meta_entry(spec)
+    count = e.get('count') or e.get('frames')
+    if count != n0:
+        raise SystemExit(f'{ref}: the sheet has {count} frames, the spec {n0}: thin only a full sheet (assemble first)')
+    keep = spec.get('keep') or thin_plan(spec, cap)
+    if not keep:
+        print(ref, 'already', n0); return
+    out = ROOT / spec['out']; cols = e.get('cols') or e.get('columns') or spec.get('cols', 6)
+    im = Image.open(out).convert('RGBA'); CO = im.width // cols
+    frames = [im.crop(((i % cols) * CO, (i // cols) * CO, (i % cols + 1) * CO, (i // cols + 1) * CO)) for i in range(n0)]
+    rows, chunk = write_kept_sheet([frames[i] for i in keep], out, cols, CO)
+    thin_entry(e, spec, keep)
+    if chunk is None:
+        e.pop('chunkRows', None)
+    else:
+        e['chunkRows'] = chunk
+    for other in spec.get('also_actions', []):
+        m['forms'][spec['forms'][0]]['actions'][other] = dict(e)
+    save_meta()
+    spec['keep'] = keep; save(d, spec)
+    contact([frames[i] for i in keep], d / 'thinned.jpg', cols=12)
+    print(ref, n0, '->', len(keep), keep)
+
+
 def cmd_assemble(ref):
     d, spec = load(ref)
     n = len(spec['pick'])
@@ -569,14 +1062,14 @@ def cmd_assemble(ref):
         sharp = sum([cells(d / f'sharp-{s}.png') for s in range(math.ceil(n / 6))], [])[:n]
     keyed, report = [], []
     for i, (a, b) in enumerate(zip(soft, sharp)):
-        im, s = lock(b, a, spec.get('lock', 'boot'))
+        im, s = lock(b, a, spec.get('lock', 'boot'), spec.get('lock_area') == 'all')
         if hires(spec):        # the zoomed crop back onto the whole padded canvas, at the stored cell size
             x, y, w, h = spec['zoom_box']; k = CO / SIZE
             k_im = key_magenta(im).resize((round(w * k), round(h * k)), Image.LANCZOS)
             cell = Image.new('RGBA', (CO, CO), (0, 0, 0, 0)); cell.alpha_composite(k_im, (round(x * k), round(y * k)))
             keyed.append(cell)
-        else:
-            keyed.append(key_magenta(im))
+        else:   # (a pad between 4/3 and 1.4 stores cells a little over 512 px: every frame at that size, 12/11)
+            keyed.append(key_magenta(im) if CO == CELL else key_magenta(im).resize((CO, CO), Image.LANCZOS))
         report.append(round(s, 3))
     # The resting pose is the resting frame itself (the idle shows it): same drawing, colour and sharpness at every switch.
     rest_img = rest_cell(spec, CO)
@@ -610,6 +1103,44 @@ def cmd_assemble(ref):
     # to): one drawing, so the jump shows nothing (owner 12/11).
     for i, j in spec.get('same', {}).items():
         keyed[int(i)] = keyed[j].copy()
+    # head_lock: every frame drawn at the resting frame's head size, scaled about its soles (13/11: Nori's six-star skill grew
+    # 15-30% through its clips, a drawn key placed too big by a profile face; the owner saw him swell and shrink).
+    if spec.get('size_lock') == 'body':
+        keyed, factors = body_lock(spec, keyed, rest_img)
+        report = [(r, f) if abs(f - 1) > .005 else r for r, f in zip(report, factors)]
+        print('body_lock', ' '.join(f'{i}:{f}' for i, f in enumerate(factors) if f != 1.0))
+    elif spec.get('head_lock'):
+        keyed, factors = head_lock(spec, keyed, rest_img)
+        report = [(r, f) if abs(f - 1) > .005 else r for r, f in zip(report, factors)]
+    # scale_fix {frame: factor}: a frame the size locks misjudge (a face turned up to the sky, 13/11 Nori's hammer throw),
+    # scaled by eye about its soles after them.
+    for i, f in (spec.get('scale_fix') or {}).items():
+        k = keyed[int(i)]; al = np.asarray(k.getchannel('A')) > 100; yy, xx = np.where(al)
+        fy = yy.max(); fx = float(np.median(xx[yy >= fy - k.height * .02]))
+        t = k.resize((round(k.width * f), round(k.height * f)), Image.LANCZOS)
+        if f > 1.02:
+            from PIL import ImageFilter
+            t = t.filter(ImageFilter.UnsharpMask(radius=1.4, percent=int(60 + 300 * (f - 1)), threshold=2))
+        keyed[int(i)] = put(Image.new('RGBA', k.size, (0, 0, 0, 0)), t, round(fx - fx * f), round(fy - fy * f))
+        report[int(i)] = (report[int(i)], 'fix', f)
+    # Living holds (spec holds {pose frame: [first, last]}, frames appended after the sheet's own sequence): each loop frame
+    # stands where its pose stands, keeps the pose's body and takes from its clip frame only what moves (hair, cloth).
+    if spec.get('holds'):
+        from scipy import ndimage
+        for k, (h0, h1) in spec['holds'].items():
+            k = int(k); base = keyed[k]; bx, by = pose_xy(base); s0 = np.asarray(soft[k]).astype(np.float32)
+            for i in range(h0, h1 + 1):
+                hx, hy = pose_xy(keyed[i]); al = shift_rgba(keyed[i], bx - hx, by - hy)
+                moved = np.abs(np.asarray(soft[i]).astype(np.float32) - s0).max(-1) > 40
+                moved = ndimage.binary_dilation(ndimage.binary_opening(moved, iterations=2), iterations=10)
+                if hires(spec):
+                    x, y, w, h = spec['zoom_box']; kk = CO / SIZE
+                    mm = Image.fromarray((moved * 255).astype(np.uint8)).resize((round(w * kk), round(h * kk)))
+                    moved = np.asarray(put(Image.new('L', (CO, CO), 0).convert('RGBA'), mm.convert('RGBA'), round(x * kk), round(y * kk)))[..., 0] > 127
+                else:
+                    moved = np.asarray(Image.fromarray((moved * 255).astype(np.uint8)).resize((CO, CO))) > 127
+                m = ndimage.gaussian_filter(moved.astype(np.float32), 4)[..., None]
+                keyed[i] = Image.fromarray((np.asarray(base).astype(np.float32) * (1 - m) + np.asarray(al).astype(np.float32) * m).clip(0, 255).astype(np.uint8), 'RGBA')
     cols = spec.get('cols', 6)
     rows = math.ceil(n / cols)
     sheet = Image.new('RGBA', (cols * CO, rows * CO), (0, 0, 0, 0))
@@ -630,14 +1161,21 @@ def cmd_assemble(ref):
             moved = np.abs(np.asarray(soft[i]).astype(np.float32) - s0).max(-1) > 40
             moved = ndimage.binary_opening(moved, iterations=2)
             moved = ndimage.binary_dilation(moved, iterations=10)
+            if hires(spec):   # the soft frame is the zoomed crop: its mask back onto the stored cell
+                x, y, w, h = spec['zoom_box']; kk = CO / SIZE
+                mm = Image.fromarray((moved * 255).astype(np.uint8)).resize((round(w * kk), round(h * kk)))
+                moved = np.asarray(put(Image.new('L', (CO, CO), 0).convert('RGBA'), mm.convert('RGBA'), round(x * kk), round(y * kk)))[..., 0] > 127
             m = ndimage.gaussian_filter(moved.astype(np.float32), 4)[..., None]
             keyed[i] = Image.fromarray((base * (1 - m) + np.asarray(keyed[i]).astype(np.float32) * m).clip(0, 255).astype(np.uint8), 'RGBA')
             report[i] = (report[i], 'hold', round(float(m.mean()), 3))
-        sheet = Image.new('RGBA', (cols * CELL, rows * CELL), (0, 0, 0, 0))
+        sheet = Image.new('RGBA', (cols * CO, rows * CO), (0, 0, 0, 0))
         for i, k in enumerate(keyed):
-            sheet.paste(k, ((i % cols) * CELL, (i // cols) * CELL))
+            sheet.paste(k, ((i % cols) * CO, (i // cols) * CO))
         sheet.save(out, quality=92, method=6) if out.suffix == '.webp' else sheet.save(out)
-    spec['chunkRows'] = write_chunks(sheet, out, cols, rows)
+    if spec.get('keep'):    # thinned to at most 24 frames (cmd_thin, owner 13/11): the kept frames only
+        rows, spec['chunkRows'] = write_kept_sheet([keyed[i] for i in spec['keep']], out, cols, CO)
+    else:
+        spec['chunkRows'] = write_chunks(sheet, out, cols, rows)
     contact(keyed, d / 'assembled.jpg', cols=12)
     heads = [head_anchor(k) for k in keyed]
     sockets = None
@@ -768,7 +1306,7 @@ def convert_grips(spec):
 
 
 def write_meta(spec, cols, rows, n, heads, sockets):
-    extra = {k: spec[k] for k in ('clock', 'roles', 'rolesBack', 'gripKeys', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil') if spec.get(k) is not None}
+    extra = {k: spec[k] for k in ('clock', 'roles', 'rolesBack', 'gripKeys', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil', 'holds', 'end', 'holdMs') if spec.get(k) is not None}
     if spec.get('legacy_grips'):
         extra['grips'] = convert_grips(spec)
     if sockets:
@@ -778,15 +1316,37 @@ def write_meta(spec, cols, rows, n, heads, sockets):
     if spec.get('meta'):        # form 1: assets/reimagined/heroes/<hero>/<action>/runtime-meta.json
         p = ROOT / spec['meta']; m = json.loads(p.read_text(encoding='utf-8'))
         for k in ('frameFiles', 'framePixelHashes', 'uniqueFrames', 'sourceSha256', 'qc', 'recoveredGridCrossings', 'originalAnchorYStd',
-                  'clock', 'roles', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil'):
+                  'clock', 'roles', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil', 'holds', 'end', 'holdMs'):
             m.pop(k, None)
         m.update(columns=cols, rows=rows, frames=n, frameWidth=CELL // 2, frameHeight=CELL // 2, frameDuration=spec.get('frameDuration', 40),
                  headAnchors=heads, source=folder_of(spec).relative_to(ROOT).as_posix() + '/spec.json', **extra)
+        for k in ('scale', 'footY', 'feetY', 'feetX'):
+            m.pop(k, None)
+        if spec.get('pad', 1) > 1:   # a padded form-1 sheet (a wide run): grown about footY like the forms' sheets
+            n2 = round(CELL * spec['pad']); off = n2 - CELL - round((n2 - CELL) * .15)
+            m.update(scale=spec['pad'], footY=round(off / (n2 - CELL), 4), feetY=round((off + .94 * CELL) / n2, 4))
+        if spec.get('_feetX') is not None:
+            m['feetX'] = spec['_feetX']
+        if spec.get('keep'):
+            thin_entry(m, spec, spec['keep'])
         p.write_text(json.dumps(m, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    if spec.get('novice_meta'):  # Hiro's form 1: one assets/heroes/novice/meta.json holds every action
+        p = ROOT / spec['novice_meta']; m = json.loads(p.read_text(encoding='utf-8')); action = spec['out'].rsplit('/', 1)[1].split('.')[0]
+        e = {k: v for k, v in m['actions'].get(action, {}).items() if k not in ('frameFiles', 'framePixelHashes', 'uniqueFrames', 'qc', 'fallbackOf', 'note', 'clock', 'roles',
+             'rolesBack', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'recoil', 'feetX', 'scale', 'source', 'holds', 'end', 'holdMs')}
+        e.update(hero='novice', action=action, accepted=True, atlas=f'{action}.webp', columns=cols, rows=rows, frames=n, count=n, cols=cols,
+                 frameWidth=CELL // 2, frameHeight=CELL // 2, frameDuration=spec.get('frameDuration', 40), headAnchors=heads,
+                 source=folder_of(spec).relative_to(ROOT).as_posix() + '/spec.json', **extra)
+        if spec.get('pad', 1) > 1:
+            e['scale'] = spec['pad']
+        if spec.get('keep'):
+            thin_entry(e, spec, spec['keep'])
+        m['actions'][action] = e
+        p.write_text(json.dumps(m, ensure_ascii=False, indent=2) + chr(10), encoding='utf-8')
     if spec.get('forms'):       # forms 2-3: assets/heroes/forms/<hero>/forms.json [form, action]
         p = ROOT / 'assets/heroes/forms' / spec['hero'] / 'forms.json'; m = json.loads(p.read_text(encoding='utf-8'))
         form, action = spec['forms']
-        e = {k: v for k, v in m['forms'][form]['actions'].get(action, {}).items() if k not in ('clock', 'roles', 'rolesBack', 'gripKeys', 'grips', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'note', 'feetX', 'recoil')}
+        e = {k: v for k, v in m['forms'][form]['actions'].get(action, {}).items() if k not in ('clock', 'roles', 'rolesBack', 'gripKeys', 'grips', 'sockets', 'stepMs', 'loop', 'loopMs', 'introMs', 'introTimes', 'chunkRows', 'note', 'feetX', 'recoil', 'holds', 'end', 'holdMs')}
         e.update(file=spec['out'], cols=cols, rows=rows, count=n, heads=heads, frameDuration=spec.get('frameDuration', 40), **extra)
         if spec.get('scale'):
             e['scale'] = spec['scale']
@@ -798,6 +1358,8 @@ def write_meta(spec, cols, rows, n, heads, sockets):
             e['feetY'] = round((off + .94 * CELL) / n, 4)
         if 'originX' in spec:
             e['originX'] = spec['originX']
+        if spec.get('keep'):
+            thin_entry(e, spec, spec['keep'])
         m['forms'][form]['actions'][action] = e
         for other in spec.get('also_actions', []):   # another action played on the same sheet (six-star Mika's dash = run)
             m['forms'][form]['actions'][other] = dict(e)
@@ -833,12 +1395,21 @@ if __name__ == '__main__':
     a = ap.parse_args()
     if a.cmd == 'clip':
         cmd_clip(a.ref, [int(s) for s in a.seeds.split(',')], [s for s in a.only.split(',') if s])
+    elif a.cmd == 'holds':       # holds <hero/id> --only key1,key2 [--seeds 7]
+        cmd_holds(a.ref, [n for n in a.only.split(',') if n], [int(x) for x in a.seeds.split(',')])
+    elif a.cmd == 'placekey':     # placekey <hero/id> --only <name> --images <raw.png> [--ask dx]
+        cmd_placekey(a.ref, a.only, a.images, float(a.ask or 0), float(a.sheets or 1))
+    elif a.cmd == 'edit':
+        for name in a.only.split(','):
+            cmd_edit(a.ref, name, [int(s) for s in a.seeds.split(',')])
     elif a.cmd == 'soft':
         cmd_soft(a.ref)
     elif a.cmd == 'sharpen':
         cmd_sharpen(a.ref, [int(s) for s in a.sheets.split(',') if s] or None)
     elif a.cmd == 'assemble':
         cmd_assemble(a.ref)
+    elif a.cmd == 'thin':          # thin <hero/id>: the assembled sheet cut to at most 24 frames (spec keep)
+        cmd_thin(a.ref)
     elif a.cmd == 'review':
         cmd_review(a.ref, a.stage, [p for p in a.images.split(',') if p], a.ask)
     else:

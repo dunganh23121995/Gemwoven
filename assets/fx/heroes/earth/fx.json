@@ -1,42 +1,99 @@
 {
-  "tree": {
-    "file": "assets/fx/heroes/earth/tree.webp",
+  "stomp": {
+    "file": "assets/fx/heroes/earth/stomp.webp",
     "count": 8,
-    "frameDuration": 95,
+    "frameDuration": 55,
     "aspect": 1,
-    "foot": 0.9375,
-    "anchorX": 0.4984
-  },
-  "roots": {
-    "file": "assets/fx/heroes/earth/roots.webp",
-    "count": 8,
-    "frameDuration": 80,
-    "aspect": 1,
-    "foot": 0.84,
+    "foot": 0.8,
     "anchorX": 0.5
   },
-  "quake": {
-    "file": "assets/fx/heroes/earth/quake.webp",
+  "shieldburst": {
+    "file": "assets/fx/heroes/earth/shieldburst.webp",
     "count": 8,
     "frameDuration": 60,
     "aspect": 1,
-    "foot": 0.775,
-    "anchorX": 0.515
+    "foot": 0.94,
+    "anchorX": 0.5
   },
-  "jadetree": {
-    "file": "assets/fx/heroes/earth/jadetree.webp",
+  "hit1": {
+    "file": "assets/fx/heroes/earth/hit1.webp",
+    "count": 8,
+    "frameDuration": 45,
+    "aspect": 1,
+    "foot": 0.9,
+    "anchorX": 0.5
+  },
+  "hit2": {
+    "file": "assets/fx/heroes/earth/hit2.webp",
+    "count": 8,
+    "frameDuration": 45,
+    "aspect": 1,
+    "foot": 0.92,
+    "anchorX": 0.5
+  },
+  "hit3": {
+    "file": "assets/fx/heroes/earth/hit3.webp",
+    "count": 8,
+    "frameDuration": 45,
+    "aspect": 1,
+    "foot": 0.88,
+    "anchorX": 0.5
+  },
+  "footlock": {
+    "file": "assets/fx/heroes/earth/footlock.webp",
+    "count": 8,
+    "frameDuration": 70,
+    "aspect": 1,
+    "foot": 0.94,
+    "anchorX": 0.5
+  },
+  "bigshield2": {
+    "file": "assets/fx/heroes/earth/bigshield2.webp",
     "count": 8,
     "frameDuration": 80,
     "aspect": 1,
-    "foot": 0.903,
+    "foot": 0.955,
     "anchorX": 0.5
   },
-  "shards": {
-    "file": "assets/fx/heroes/earth/shards.webp",
+  "citadel": {
+    "file": "assets/fx/heroes/earth/citadel.webp",
     "count": 8,
-    "frameDuration": 0,
+    "frameDuration": 70,
     "aspect": 1,
-    "foot": 0.5,
+    "foot": 0.89,
     "anchorX": 0.5
+  },
+  "antlerlock": {
+    "file": "assets/fx/heroes/earth/antlerlock.webp",
+    "count": 8,
+    "frameDuration": 60,
+    "aspect": 1,
+    "foot": 0.93,
+    "anchorX": 0.5
+  },
+  "renewal": {
+    "file": "assets/fx/heroes/earth/renewal.webp",
+    "count": 8,
+    "frameDuration": 70,
+    "aspect": 1,
+    "foot": 0.55,
+    "anchorX": 0.55
+  },
+  "crack": {
+    "file": "assets/fx/heroes/earth/crack.webp",
+    "count": 1,
+    "frameDuration": 0,
+    "aspect": 14.815,
+    "foot": 0.5093,
+    "anchorX": 0
+  },
+  "hammer2": {
+    "file": "assets/fx/heroes/earth/hammer2.webp",
+    "count": 1,
+    "frameDuration": 0,
+    "aspect": 0.5583,
+    "head": 0.1569,
+    "headBottom": 0.3014,
+    "grip": 0.93
   }
 }

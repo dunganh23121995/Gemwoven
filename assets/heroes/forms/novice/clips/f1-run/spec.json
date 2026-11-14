@@ -1,0 +1,255 @@
+{
+ "id": "f1-run",
+ "hero": "novice",
+ "title": "Hiro hình thái 1 · rời sân + Quảng Trường (sheet run)",
+ "rest": "assets/heroes/forms/novice/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "out": "assets/heroes/novice/run.webp",
+ "novice_meta": "assets/heroes/novice/meta.json",
+ "cols": 6,
+ "frameDuration": 55,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "lock": "center",
+ "plaza_feet": true,
+ "head_lock": true,
+ "redo": "Hiro redo 13/11 (redo-1311.md): Codex-drawn keys, new clips",
+ "keys": {
+  "R": {
+   "file": "assets/heroes/forms/novice/clips/f1-run/keys/R-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (R-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "R",
+   "length": 17,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, from his calm guard starts to run toward screen-right: he lowers the sword beside his hip with the blade trailing back and down, leans forward and breaks into a running stride, ending in the running pose of the last frame. Locked stationary camera, no horizontal drift. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "F",
+   "start": "R",
+   "end": "R",
+   "length": 17,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, runs quickly in place toward screen-right: two long running strides, his two legs clearly alternating with clear foot contacts, his free arm pumping; the sword stays low beside his hip with the blade trailing back and down the whole time, never raised; scarf and cape streaming back; locked stationary camera, no drift, back to the running pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "pick": [
+  [
+   "A",
+   7,
+   0
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   2
+  ],
+  [
+   "A",
+   7,
+   3
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   5
+  ],
+  [
+   "A",
+   7,
+   6
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "A",
+   7,
+   8
+  ],
+  [
+   "A",
+   7,
+   9
+  ],
+  [
+   "A",
+   7,
+   10
+  ],
+  [
+   "A",
+   7,
+   11
+  ],
+  [
+   "A",
+   7,
+   12
+  ],
+  [
+   "A",
+   7,
+   13
+  ],
+  [
+   "A",
+   7,
+   14
+  ],
+  [
+   "A",
+   7,
+   15
+  ],
+  [
+   "F",
+   7,
+   0
+  ],
+  [
+   "F",
+   7,
+   1
+  ],
+  [
+   "F",
+   7,
+   2
+  ],
+  [
+   "F",
+   7,
+   3
+  ],
+  [
+   "F",
+   7,
+   4
+  ],
+  [
+   "F",
+   7,
+   5
+  ],
+  [
+   "F",
+   7,
+   6
+  ],
+  [
+   "F",
+   7,
+   7
+  ],
+  [
+   "F",
+   7,
+   8
+  ],
+  [
+   "F",
+   7,
+   9
+  ],
+  [
+   "F",
+   7,
+   10
+  ],
+  [
+   "F",
+   7,
+   11
+  ],
+  [
+   "F",
+   7,
+   12
+  ],
+  [
+   "F",
+   7,
+   13
+  ],
+  [
+   "F",
+   7,
+   14
+  ],
+  [
+   "F",
+   7,
+   15
+  ]
+ ],
+ "loop": [
+  16,
+  31
+ ],
+ "game": {
+  "code": "rời sân: vào chạy 1 lần rồi lặp; Quảng Trường dùng cùng sheet (loop)",
+  "plan": "A vào chạy (rest→R) + F vòng 2 sải (R→R)"
+ },
+ "loopMs": 24,
+ "introTimes": [
+  80,
+  80,
+  80,
+  80,
+  55,
+  52,
+  49,
+  47,
+  44,
+  41,
+  38,
+  35,
+  32,
+  30,
+  27,
+  24
+ ],
+ "run_pace_note": "13/11: loopMs 24 so the planted foot moves back as fast as the body crosses the ground (ratio 1)",
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30
+ ]
+}

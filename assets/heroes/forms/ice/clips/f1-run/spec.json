@@ -1,0 +1,257 @@
+{
+ "id": "f1-run",
+ "hero": "ice",
+ "title": "Yuki hình thái 1 · rời sân + Quảng Trường (sheet run)",
+ "rest": "assets/heroes/forms/ice/form-1/rig/combat/rest.png",
+ "pad": 1.3,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/ice/run.webp",
+ "meta": "assets/reimagined/heroes/ice/run/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 55,
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "R",
+   "length": 17,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a dark navy hood with white rabbit ears and a snowflake ornament, a white fur-trimmed navy and ice-blue robe with a long flowing cape, white stockings and boots, holding a slender silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, from her calm stance, holding the staff, starts to run toward screen-right: she leans forward and breaks into a running stride, her robe and cape sweeping back, ending in the running pose of the last frame. Locked stationary camera, no horizontal drift. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "F",
+   "start": "R",
+   "end": "R",
+   "length": 17,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a dark navy hood with white rabbit ears and a snowflake ornament, a white fur-trimmed navy and ice-blue robe with a long flowing cape, white stockings and boots, holding a slender silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, runs quickly in place toward screen-right with short, fast steps: four quick running steps, her two legs clearly alternating with clear foot contacts and her boots visible, her robe hem and cape streaming back so the legs stay visible, her braid and ears bouncing; locked stationary camera, no drift, back to the running pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "rời sân: vào chạy 1 lần rồi lặp; Quảng Trường dùng cùng sheet (loop)",
+  "plan": "khung vào chạy + vòng kín (loop_pairs)"
+ },
+ "lock": "center",
+ "pick": [
+  [
+   "A",
+   21,
+   0
+  ],
+  [
+   "A",
+   21,
+   1
+  ],
+  [
+   "A",
+   21,
+   2
+  ],
+  [
+   "A",
+   21,
+   3
+  ],
+  [
+   "A",
+   21,
+   4
+  ],
+  [
+   "A",
+   21,
+   5
+  ],
+  [
+   "A",
+   21,
+   6
+  ],
+  [
+   "A",
+   21,
+   7
+  ],
+  [
+   "A",
+   21,
+   8
+  ],
+  [
+   "A",
+   21,
+   9
+  ],
+  [
+   "A",
+   21,
+   10
+  ],
+  [
+   "A",
+   21,
+   11
+  ],
+  [
+   "A",
+   21,
+   12
+  ],
+  [
+   "A",
+   21,
+   13
+  ],
+  [
+   "A",
+   21,
+   14
+  ],
+  [
+   "A",
+   21,
+   15
+  ],
+  [
+   "F",
+   7,
+   0
+  ],
+  [
+   "F",
+   7,
+   1
+  ],
+  [
+   "F",
+   7,
+   2
+  ],
+  [
+   "F",
+   7,
+   3
+  ],
+  [
+   "F",
+   7,
+   4
+  ],
+  [
+   "F",
+   7,
+   5
+  ],
+  [
+   "F",
+   7,
+   6
+  ],
+  [
+   "F",
+   7,
+   7
+  ],
+  [
+   "F",
+   7,
+   8
+  ],
+  [
+   "F",
+   7,
+   9
+  ],
+  [
+   "F",
+   7,
+   10
+  ],
+  [
+   "F",
+   7,
+   11
+  ],
+  [
+   "F",
+   7,
+   12
+  ],
+  [
+   "F",
+   7,
+   13
+  ],
+  [
+   "F",
+   7,
+   14
+  ],
+  [
+   "F",
+   7,
+   15
+  ]
+ ],
+ "loop": [
+  16,
+  31
+ ],
+ "introTimes": [
+  70,
+  65,
+  60,
+  60,
+  58,
+  56,
+  55,
+  52,
+  50,
+  47,
+  45,
+  42,
+  40,
+  37,
+  35,
+  32
+ ],
+ "loopMs": 32,
+ "plaza_feet": true,
+ "pick_note": "Codex game 7,5/frames 7,8 (váy che chân) -> mốc chạy R Codex vẽ (hai chân tách, váy bay ra sau), A s21 vào chạy 0-15, F s7 vòng 4 bước 0-15; 50ms/khung ~200ms/bước",
+ "lock_area": "all",
+ "scale": 1.3,
+ "footY": 0.8506,
+ "keys": {
+  "R": {
+   "file": "assets/heroes/forms/ice/clips/f1-run/keys/R-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (R-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "run_pace_note": "13/11: loopMs 50 -> 32: the body crossed the ground 1.55x faster than the planted foot moved back (owner: the run turned into long strides after the lead-in)",
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30
+ ]
+}

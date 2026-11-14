@@ -1,0 +1,468 @@
+{
+ "id": "f1-cast",
+ "hero": "lightning",
+ "title": "Lumi hình thái 1 · cast",
+ "rest": "assets/heroes/forms/lightning/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid green background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/lightning/cast.webp",
+ "meta": "assets/reimagined/heroes/lightning/cast/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 40,
+ "bg": "green",
+ "keys": {
+  "book": {
+   "file": "assets/heroes/forms/lightning/clips/f1-cast/keys/book.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/lightning/cast.webp",
+    "cell": [
+     1,
+     3,
+     2
+    ],
+    "fit": [
+     1.05,
+     -12,
+     -3
+    ]
+   },
+   "note": "ô 1 của sheet cũ (đã duyệt)"
+  },
+  "lift": {
+   "file": "assets/heroes/forms/lightning/clips/f1-cast/keys/lift.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/lightning/cast.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     1.05,
+     -12,
+     -3
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt)"
+  },
+  "high": {
+   "file": "assets/heroes/forms/lightning/clips/f1-cast/keys/high.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/lightning/cast.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.05,
+     -12,
+     -3
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  },
+  "point": {
+   "file": "assets/heroes/forms/lightning/clips/f1-cast/keys/point.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/lightning/cast.webp",
+    "cell": [
+     4,
+     3,
+     2
+    ],
+    "fit": [
+     1.05,
+     -12,
+     -3
+    ]
+   },
+   "note": "ô 4 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "book",
+   "length": 9,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, opens her spellbook, gathering lightning, into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "book",
+   "end": "lift",
+   "length": 9,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, lifts the staff up beside the open book into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "lift",
+   "end": "high",
+   "length": 13,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, raises the staff high above her head, calling the storm, into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "high",
+   "end": "point",
+   "length": 9,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, swings the staff down to point forward at the enemy toward screen-right into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "E",
+   "start": "point",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, lowers the staff and floats back into her calm pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_book",
+   "start": "book",
+   "end": "book",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_lift",
+   "start": "lift",
+   "end": "lift",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_high",
+   "start": "high",
+   "end": "high",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_point",
+   "start": "point",
+   "end": "point",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_rest",
+   "start": "rest",
+   "end": "rest",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "combat-v3 rageChoreography (form 1 ultimate): cast 0, 1, 2 during the wind-up, then the attack frames; hits play the cast sheet",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   21,
+   1
+  ],
+  [
+   "A",
+   21,
+   3
+  ],
+  [
+   "A",
+   21,
+   5
+  ],
+  [
+   "key",
+   "book"
+  ],
+  [
+   "B",
+   21,
+   1
+  ],
+  [
+   "B",
+   21,
+   3
+  ],
+  [
+   "B",
+   21,
+   5
+  ],
+  [
+   "key",
+   "lift"
+  ],
+  [
+   "C",
+   21,
+   1
+  ],
+  [
+   "C",
+   21,
+   3
+  ],
+  [
+   "C",
+   21,
+   6
+  ],
+  [
+   "C",
+   21,
+   8
+  ],
+  [
+   "key",
+   "high"
+  ],
+  [
+   "D",
+   21,
+   1
+  ],
+  [
+   "D",
+   21,
+   3
+  ],
+  [
+   "D",
+   21,
+   5
+  ],
+  [
+   "key",
+   "point"
+  ],
+  [
+   "E",
+   21,
+   1
+  ],
+  [
+   "E",
+   21,
+   3
+  ],
+  [
+   "E",
+   21,
+   5
+  ],
+  [
+   "E",
+   21,
+   8
+  ],
+  [
+   "E",
+   21,
+   10
+  ],
+  [
+   "E",
+   21,
+   12
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_book",
+   21,
+   2
+  ],
+  [
+   "H_book",
+   21,
+   4
+  ],
+  [
+   "H_book",
+   21,
+   6
+  ],
+  [
+   "H_book",
+   21,
+   8
+  ],
+  [
+   "H_book",
+   21,
+   10
+  ],
+  [
+   "H_lift",
+   21,
+   2
+  ],
+  [
+   "H_lift",
+   21,
+   4
+  ],
+  [
+   "H_lift",
+   21,
+   6
+  ],
+  [
+   "H_lift",
+   21,
+   8
+  ],
+  [
+   "H_lift",
+   21,
+   10
+  ],
+  [
+   "H_high",
+   21,
+   2
+  ],
+  [
+   "H_high",
+   21,
+   4
+  ],
+  [
+   "H_high",
+   21,
+   6
+  ],
+  [
+   "H_high",
+   21,
+   8
+  ],
+  [
+   "H_high",
+   21,
+   10
+  ],
+  [
+   "H_point",
+   21,
+   2
+  ],
+  [
+   "H_point",
+   21,
+   4
+  ],
+  [
+   "H_point",
+   21,
+   6
+  ],
+  [
+   "H_point",
+   21,
+   8
+  ],
+  [
+   "H_point",
+   21,
+   10
+  ],
+  [
+   "H_rest",
+   21,
+   2
+  ],
+  [
+   "H_rest",
+   21,
+   4
+  ],
+  [
+   "H_rest",
+   21,
+   6
+  ],
+  [
+   "H_rest",
+   21,
+   8
+  ],
+  [
+   "H_rest",
+   21,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  4,
+  8,
+  13,
+  17,
+  24
+ ],
+ "stepMs": 17,
+ "pick_note": "nền xanh: khung cuối clip ngắn bị bóng chồng/nền tối -> mỗi đoạn chỉ lấy phần đầu clip, seed nền sạch nhất (Codex frames 7-7,5)",
+ "end": 24,
+ "holds": {
+  "4": [
+   25,
+   29
+  ],
+  "8": [
+   30,
+   34
+  ],
+  "13": [
+   35,
+   39
+  ],
+  "17": [
+   40,
+   44
+  ],
+  "0": [
+   45,
+   49
+  ]
+ },
+ "keep": [
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  11,
+  13,
+  15,
+  17,
+  19,
+  21,
+  22,
+  24,
+  26,
+  28,
+  31,
+  33,
+  36,
+  38,
+  41,
+  43,
+  46,
+  48
+ ]
+}

@@ -505,7 +505,7 @@ function showHeroDetail(){
 }
 $('heroBackBtn').addEventListener('click',()=>showHeroList());
 function startStage(){
-  state.noriStunTurns=0;state.noriStoredDamage=0;state.controlGuard=0;state.iceBar=0;state.playerIceBar=0;state.playerLock=null;state.tfDodge=false;state.noriSealFree=false;
+  state.noriStunTurns=0;state.noriStoredDamage=0;state.noriBurst=0;state.controlGuard=0;state.iceBar=0;state.playerIceBar=0;state.playerLock=null;state.tfDodge=false;state.noriSealFree=false;
   state.noriRegenTurns=0;clearNoriRenewal();
   stopCombatVoices();bossDeathVoicePlayed=false;
   resetBoardCombo();

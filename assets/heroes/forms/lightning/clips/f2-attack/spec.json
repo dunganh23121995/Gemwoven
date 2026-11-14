@@ -1,0 +1,339 @@
+{
+ "id": "f2-attack",
+ "hero": "lightning",
+ "title": "Lumi hình thái 2 · attack",
+ "rest": "assets/heroes/forms/lightning/form-2/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid green background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/lightning/form-2/attack.webp",
+ "forms": [
+  "2",
+  "attack"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "bg": "green",
+ "keys": {
+  "w": {
+   "file": "assets/heroes/forms/lightning/clips/f2-attack/keys/w.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/lightning/form-2/attack.webp",
+    "cell": [
+     1,
+     3,
+     2
+    ],
+    "fit": [
+     0.96,
+     -19,
+     8
+    ]
+   },
+   "note": "ô 1 của sheet cũ (đã duyệt)"
+  },
+  "l": {
+   "file": "assets/heroes/forms/lightning/clips/f2-attack/keys/l.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/lightning/form-2/attack.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     0.96,
+     -19,
+     8
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  },
+  "f": {
+   "file": "assets/heroes/forms/lightning/clips/f2-attack/keys/f.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/lightning/form-2/attack.webp",
+    "cell": [
+     4,
+     3,
+     2
+    ],
+    "fit": [
+     0.96,
+     -19,
+     8
+    ]
+   },
+   "note": "ô 4 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "w",
+   "length": 9,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and star charms, a purple and gold star-patterned cape, a spellbook on her belt, black shorts and black boots, holding a golden staff topped with a dark star orb in her right hand, draws the staff back over her shoulder, winding up, into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "w",
+   "end": "l",
+   "length": 13,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and star charms, a purple and gold star-patterned cape, a spellbook on her belt, black shorts and black boots, holding a golden staff topped with a dark star orb in her right hand, flings the staff forward toward screen-right, throwing a spell, into the pose of the last frame, the staff clearly visible. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "l",
+   "end": "f",
+   "length": 9,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and star charms, a purple and gold star-patterned cape, a spellbook on her belt, black shorts and black boots, holding a golden staff topped with a dark star orb in her right hand, follows through into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "f",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and star charms, a purple and gold star-patterned cape, a spellbook on her belt, black shorts and black boots, holding a golden staff topped with a dark star orb in her right hand, floats back into her calm pose of the last frame. No second attack. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_w",
+   "start": "w",
+   "end": "w",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_f",
+   "start": "f",
+   "end": "f",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "forms-lumi.js lumiStarAttack form 2: windup 1, launch 3, follow 4, then 5",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   21,
+   1
+  ],
+  [
+   "A",
+   21,
+   2
+  ],
+  [
+   "A",
+   21,
+   4
+  ],
+  [
+   "A",
+   21,
+   5
+  ],
+  [
+   "key",
+   "w"
+  ],
+  [
+   "B",
+   7,
+   3
+  ],
+  [
+   "B",
+   7,
+   6
+  ],
+  [
+   "B",
+   7,
+   8
+  ],
+  [
+   "B",
+   7,
+   9
+  ],
+  [
+   "B",
+   7,
+   10
+  ],
+  [
+   "B",
+   7,
+   11
+  ],
+  [
+   "key",
+   "l"
+  ],
+  [
+   "C",
+   21,
+   1
+  ],
+  [
+   "C",
+   21,
+   3
+  ],
+  [
+   "C",
+   21,
+   5
+  ],
+  [
+   "key",
+   "f"
+  ],
+  [
+   "D",
+   7,
+   1
+  ],
+  [
+   "D",
+   7,
+   3
+  ],
+  [
+   "D",
+   7,
+   5
+  ],
+  [
+   "D",
+   7,
+   7
+  ],
+  [
+   "D",
+   7,
+   8
+  ],
+  [
+   "D",
+   7,
+   10
+  ],
+  [
+   "D",
+   7,
+   12
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_w",
+   21,
+   2
+  ],
+  [
+   "H_w",
+   21,
+   4
+  ],
+  [
+   "H_w",
+   21,
+   6
+  ],
+  [
+   "H_w",
+   21,
+   8
+  ],
+  [
+   "H_w",
+   21,
+   10
+  ],
+  [
+   "H_f",
+   21,
+   2
+  ],
+  [
+   "H_f",
+   21,
+   4
+  ],
+  [
+   "H_f",
+   21,
+   6
+  ],
+  [
+   "H_f",
+   21,
+   8
+  ],
+  [
+   "H_f",
+   21,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  5,
+  5,
+  12,
+  16,
+  24
+ ],
+ "stepMs": 17,
+ "pick_note": "nền xanh: khung cuối clip ngắn bị bóng chồng/nền tối -> mỗi đoạn chỉ lấy phần đầu clip, seed nền sạch nhất (Codex frames 7-7,5)",
+ "end": 24,
+ "holds": {
+  "5": [
+   25,
+   29
+  ],
+  "16": [
+   30,
+   34
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  2,
+  4,
+  5,
+  6,
+  7,
+  9,
+  10,
+  11,
+  12,
+  13,
+  15,
+  16,
+  17,
+  19,
+  20,
+  21,
+  23,
+  24,
+  26,
+  28,
+  31,
+  33
+ ]
+}

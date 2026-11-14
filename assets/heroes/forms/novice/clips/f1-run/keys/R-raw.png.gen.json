@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T03:11:33Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\form-1\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand. Keep his identity, face, costume, colours, proportions, line style and the exact sword design from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the sword stays in the same hand as in Image 1 (both hands on the hilt only where the pose says so), and the sword is always ONE whole rigid blade.\n\nDraw ONE single full-body sprite of him running fast toward screen-right in a long clear stride, body leaning forward, front foot about to land and rear leg extended behind, the free left arm swinging forward; the wooden sword is held LOW beside his right hip, its blade trailing backward and downward behind him, never raised; scarf streaming back. A clear, readable, powerful silhouette for a small phone screen; the body commits to the action (feet, hips and shoulders), not only the arm. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character and the whole sword fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, slash trail, glow, wind, sparks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the reference character's outfit, scarf, hair and sword design on a flat magenta background, with the full figure and sword inside the frame. The pose matches the running brief, and I see no cut-offs, extra text, or anatomy errors.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000723
+  }
+}

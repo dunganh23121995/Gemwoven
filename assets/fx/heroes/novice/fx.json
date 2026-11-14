@@ -33,23 +33,36 @@
     "frameDuration": 70,
     "aspect": 1.1406
   },
-  "f3-gems": {
-    "file": "assets/fx/heroes/novice/f3-gems.webp",
-    "count": 6,
-    "frameDuration": 90,
-    "aspect": 1.059
-  },
-  "f3-crescent": {
-    "file": "assets/fx/heroes/novice/f3-crescent.webp",
-    "count": 6,
-    "frameDuration": 55,
-    "aspect": 0.7526
-  },
-  "f3-crest": {
-    "file": "assets/fx/heroes/novice/f3-crest.webp",
+  "f3-hilt": {
+    "file": "assets/fx/heroes/novice/f3-hilt.webp",
     "count": 8,
-    "frameDuration": 85,
-    "aspect": 2.1016,
-    "foot": 0.8889
+    "frameDuration": 90,
+    "aspect": 3.276
+  },
+  "f3-cleave": {
+    "file": "assets/fx/heroes/novice/f3-cleave.webp",
+    "count": 8,
+    "frameDuration": 45,
+    "aspect": 0.9866
+  },
+  "f3-split": {
+    "file": "assets/fx/heroes/novice/f3-split.webp",
+    "count": 8,
+    "frameDuration": 70,
+    "aspect": 2.4349,
+    "foot": 0.9451
+  },
+  "f3-downcut": {
+    "file": "assets/fx/heroes/novice/f3-downcut.webp",
+    "count": 8,
+    "frameDuration": 40,
+    "aspect": 0.8094
+  },
+  "f3-dust": {
+    "file": "assets/fx/heroes/novice/f3-dust.webp",
+    "count": 8,
+    "frameDuration": 60,
+    "aspect": 2.5312,
+    "foot": 0.9358
   }
 }

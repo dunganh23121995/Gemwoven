@@ -160,53 +160,75 @@ async function noctMoonRage(raw,{hits=5,onRelease=()=>{}}={}){
     root.classList.remove('combat-v3-acting','charging-ultimate','noct-shadowed');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }
 }
-// Basic attack: he dashes in close with the sword sheathed, then one battōjutsu draw-cut: the left
-// hand keeps the scabbard, the right hand rips the blade out and flings it forward in a single
-// horizontal cut (one straight cut line), and he sheathes it on the way back. The rules are
-// shadowAttack's, unchanged: the chain multiplier, the critical third, raw/hits per hit through
-// bladeContact (every hit lands on the one cut).
+// Basic attack, samurai style (owner 14/11: "cho bạn toàn quyền ... phong cách samurai"; Claude + Codex design in
+// assets/heroes/forms/shadow/clips/f2-attack/design/codex-design.md). One iaido draw: he dashes in with the sword sheathed,
+// turns it along his left hip, the right hand draws one slightly rising cut that leaves a hairline across the foe exactly on
+// the blade's path and bursts open into the dark cut (basic-fx noct2) as the blade ends high, the blow landing with it (owner
+// 14/11: "vết chém xuất hiện ngay sau khi kiếm phất ra"), then a short zanshin and the noto (the tip finds the scabbard's mouth,
+// the blade slides home, the click of the guard closes it). The sheet plays on its
+// own clock (forms.json attack.clock, from the end of the dash); these times follow it. The rules are shadowAttack's,
+// unchanged: the chain multiplier, the critical third, raw/hits per hit through bladeContact (every hit on the one cut).
+const NOCT2_CUT={hair:140,burst:185,sheath:460,end:780,
+  // the drawn slash (noct2 strip): its angle up from level, the chord of his rising draw (owner 14/11: drawn and flicked up at once;
+  // sheet frame 5, the blade out level, is where it passes through the foe, frame 7 the blade high), and its length as a share of the cell
+  drawn:32.3,length:1.007};
+// The hairline across the foe's body on the arc's chord: the drawn slash, centred on the body (Codex 14/11: through the body,
+// not over its head; about 1.2 times the body's width, round the part that is cut), thinner when it bursts. Returns the node.
+function noctCutLine(critical){
+  const sheet=ART.heroFx?.basic?.noct2;if(!sheet||reduced)return null;
+  const foe=mikaFoeBody(),angle=NOCT2_CUT.drawn,len=Math.min($('scene').clientWidth*.45,Math.max(foe.width*1.15,150))*(critical?1.12:1),size=len/NOCT2_CUT.length;
+  const node=document.createElement('span');node.className='mika-fx basic-fx basic-noct2';node.setAttribute('aria-hidden','true');
+  node.style.cssText=`background-image:url('${sheet.src}');background-size:${sheet.count*100}% 100%;left:${foe.x}px;top:${foe.bottom-foe.height*.5}px;width:${size}px;height:${size}px;z-index:3;opacity:0`;
+  // the hairline at full width with a faint glow (readable on a bright sky); the burst is a thin slit (scaleY .42)
+  node.dataset.angle=angle;node.style.transform=noctCutTransform(angle,1);node.style.filter='drop-shadow(0 0 3px #bff6ffcc)';
+  $('combatEffects').append(node);return node;
+}
+function noctCutTransform(angle,thin){return `translate(-50%,-50%) rotate(${-angle}deg) scaleY(${thin}) rotate(${NOCT2_CUT.drawn}deg)`;}
+function noctCutFrame(node,i){const n=ART.heroFx.basic.noct2.count;node.style.backgroundPosition=`${i/(n-1)*100}% 0`;}
 async function noctDrawCut(raw,{hits=1,damageLedger=null,attackChain=1}={}){
-  const root=actor('hero'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];
-  const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,to.x-from.x-from.width*.42);
+  const root=actor('hero'),old=root.style.transform,oldZ=root.style.zIndex,pending=[];let line=null;
+  // (14/11 front-view draw-cut) he stops a blade's length short: the body stays clear of the foe, the katana reaches it
+  const from=combatV3Point('hero'),to=combatV3Point('enemy'),travel=Math.max(0,to.x-from.x-from.width*.75);
   const chain=Math.max(1,Math.floor(attackChain)),critical=chain>=3&&chain%3===0;
   raw*=attackChainMultiplier(chain)*(critical?1.5:1);hits=Math.max(1,Math.min(8,Math.round(hits)||1));
   const ledger=damageLedger||{raw:0,applied:0};let amount=0,blocked=0;
   root.classList.add('combat-v3-acting');root.style.zIndex='4';root.dataset.attackChain=chain;root.dataset.attackStance='iai';
   try{
-    combatVoice('hero','attack');setSpriteFrame('hero','attack',1);await wait(90);
+    combatVoice('hero','attack');
     // The dash, sword still sheathed.
     setSpriteFrame('hero','cast',3);shadowTransitEchoes(0,travel,pending);playNoctSound('dash',{volume:.22,pan:.28});
     await animate(root,[{transform:old||'none'},{transform:`translateX(${travel}px)`}],{duration:150,easing:'cubic-bezier(.12,.8,.3,1)'});root.style.transform=`translateX(${travel}px)`;
-    setSpriteFrame('hero','attack',1);await wait(70);
-    // The draw and the cut, in one motion.
-    setSpriteFrame('hero','attack',2);playNoctSound('draw',{volume:.2,pan:.3});await wait(50);
-    setSpriteFrame('hero','attack',3);combatV3Whoosh('shadow',critical,60);
-    const target=combatV3Point('enemy');noctCut(target,critical?1:0,1,pending,{length:Math.min(260,target.width*1.7),angle:critical?-42:-38,thick:1.3});   // owner 07/11: the gleam cuts diagonally upward
+    // The sheet's clock starts here; every beat below is timed to it.
+    const t0=performance.now(),at=async ms=>{if(!reduced)await wait(Math.max(0,t0+ms-performance.now()));};
+    setSpriteFrame('hero','attack',0);
+    await at(70);playNoctSound('draw',{volume:.2,pan:.3});
+    await at(150);combatV3Whoosh('shadow',critical,60);
+    // The blade passes through the foe: a hairline flashes on its path...
+    await at(NOCT2_CUT.hair);line=noctCutLine(critical);
+    if(line){noctCutFrame(line,0);line.style.opacity='1';}
+    // ...and bursts open as the blade ends high: the blow lands at once.
+    await at(NOCT2_CUT.burst);
+    if(line){line.getAnimations().forEach(x=>x.cancel());line.style.opacity='1';line.style.filter='none';line.style.transform=noctCutTransform(+line.dataset.angle,.42);const node=line;
+      pending.push((async()=>{try{for(const f of [1,2,3]){noctCutFrame(node,f);await wait(f===2?70:55);}await animate(node,[{opacity:1},{opacity:0}],{duration:160,fill:'forwards'});}finally{node.remove();}})());}
+    playNoctSound('slash2',{volume:.26,pan:.35});
+    // the burst lands hard: a strong shake and the foe flashes pale for an instant
+    combatV3Camera(1,true,false,pending);
+    {const foeBody=actor('enemy').querySelector('.sprite-body');if(foeBody&&!reduced)pending.push(animate(foeBody,[{filter:'brightness(2.4) saturate(.3)'},{filter:'none'}],{duration:180,easing:'ease-out'}).catch(()=>{}));}
     for(let i=0;i<hits;i++){const result=bladeContact(raw/hits,ledger,i,1,critical,pending);amount+=result.amount;blocked+=result.blocked;if(i<hits-1)await wait(40);}
-    await wait(130);setSpriteFrame('hero','attack',4);await wait(120);
-    // Back to his place, sheathing.
-    setSpriteFrame('hero','cast',4);bladeFacing(-1);shadowTransitEchoes(travel,0,pending);
+    // Zanshin, then the noto: the slide of the blade, its click on the guard at 660 ms (sheath.wav peaks at 200 ms).
+    await at(NOCT2_CUT.sheath);playNoctSound('sheath',{volume:.36,pan:.25});
+    await at(NOCT2_CUT.end+120);
+    // Back to his place in a shadow step.
+    setSpriteAction('hero','idle');bladeFacing(-1);shadowTransitEchoes(travel,0,pending);
     await animate(root,[{transform:root.style.transform},{transform:old||'none'}],{duration:190,easing:'ease-out'});root.style.transform=old;
-    bladeFacing(1);setSpriteFrame('hero','attack',5);playNoctSound('sheath',{volume:.22});await wait(120);
-    await Promise.all(pending);return {amount,blocked};
+    bladeFacing(1);await Promise.all(pending);return {amount,blocked};
   }finally{
-    await Promise.allSettled(pending);root.style.transform=old;root.style.zIndex=oldZ;bladeFacing(1);delete root.dataset.facing;delete root.dataset.attackChain;delete root.dataset.attackStance;
+    await Promise.allSettled(pending);line?.remove();root.style.transform=old;root.style.zIndex=oldZ;bladeFacing(1);delete root.dataset.facing;delete root.dataset.attackChain;delete root.dataset.attackStance;
     root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }
 }
 const shadowAttackBase=shadowAttack;
 shadowAttack=function(raw,options){return noctMoonForm()?noctDrawCut(raw,options):shadowAttackBase(raw,options);};
-// A hero facing left (back from a dash, or standing on the right) draws with the same right hand, so
-// he shows his front: the form's attackLeft sheet (drawn facing left, stored mirrored) is used then.
-const spriteDefinitionBase=spriteDefinition;
-spriteDefinition=function(family,key,action){
-  const def=spriteDefinitionBase(family,key,action);
-  if(family!=='hero'||def.action!=='attack')return def;
-  const left=ART.heroForms?.[key]?.[combatHeroForm(key)]?.attackLeft,root=actor('hero');
-  // He looks left when his actor is turned (-1) or the whole stage is mirrored (studio), not both.
-  const turned=root?.dataset.facing==='-1'||root?.classList.contains('duel-facing-left'),mirrored=document.documentElement.dataset.heroSide==='right';
-  return left&&turned!==mirrored?{sheet:left,action:'attackLeft'}:def;
-};
 // Six-star Noct (Hắc Liêm Đoạt Hồn, shadow-combat.js reaperVeilRage) gets a sky of his own too: the
 // stage darkens and a huge blood moon rises over the stage, gone when he returns.
 const reaperVeilRageBase=reaperVeilRage;

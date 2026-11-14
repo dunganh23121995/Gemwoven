@@ -56,99 +56,99 @@
     "rms": 0.063,
     "sha256": "49e8483dcb6bdb99f1da6d6d672ae26765a4405ff002fda85905f5dc53175f29"
   },
-  "novice-f2-hit": {
-    "file": "hero-forms/novice/f2-hit.wav",
-    "duration": 0.52,
-    "beat": "sword strikes the body on the finishing cross cut, the damage (struck 80 ms in)",
+  "novice-f3-steel": {
+    "file": "hero-forms/novice/f3-steel.wav",
+    "duration": 0.35,
+    "beat": "long steel blade sliding and ringing as the four hilt stones wake (peaks 160 ms in)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Sword hits the body.wav",
-        "author": "vdovitsky",
-        "source_url": "https://freesound.org/people/vdovitsky/sounds/411122/",
+        "title": "Unsheathing sword, slow, dramatic.wav",
+        "author": "mht23SD",
+        "source_url": "https://freesound.org/people/mht23SD/sounds/707339/",
         "license": "CC0-1.0",
-        "sha256": "c314bdd106058a5520aac20497a8e3db69c473e7081c6898e90da403bd91fd46"
+        "sha256": "20f01c96d6fa7967f0f52c6d21df55f6453b43444b7a96acdb85b5f8a5e10e81"
       }
     ],
-    "processing": "excerpt 0.20-0.72 s of one recording, 60 Hz high-pass, edge fades, gain",
-    "peak": 0.82,
-    "rms": 0.061,
-    "sha256": "d091ecc5c170d9341c36c597dcb6b27b6acfbe6e7c9039048a347ff4b37910cb"
+    "processing": "excerpt 0.06-0.41 s of one recording, 120 Hz high-pass, edge fades, gain",
+    "peak": 0.5,
+    "rms": 0.054,
+    "sha256": "5ae64e2d4020312dc9f676bdb32f48c429743b560ebed3a275eaf0edf2e6ef51"
   },
-  "novice-f3-gather": {
-    "file": "hero-forms/novice/f3-gather.wav",
-    "duration": 1.1,
-    "beat": "soft gust of his wind as plain wind lines draw the four motes into the blade (0-1.1 s)",
+  "novice-f3-heavy": {
+    "file": "hero-forms/novice/f3-heavy.wav",
+    "duration": 0.597,
+    "beat": "a heavy blade tearing the air: the great downward cut (peaks 130 ms in)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "a gust of wind blowing some leaves",
-        "author": "F3ather",
-        "source_url": "https://freesound.org/people/F3ather/sounds/711441/",
+        "title": "swing.mp3",
+        "author": "GaussTheWizard",
+        "source_url": "https://freesound.org/people/GaussTheWizard/sounds/367182/",
         "license": "CC0-1.0",
-        "sha256": "a8412d03bc0832117ce39fc81da3880fa708f7869650669ef8a58458f2c23071"
+        "sha256": "977cb4ff230704fe340a744216a5d4c719d612185a9e972d37619fc401d8fd3f"
       }
     ],
-    "processing": "excerpt 0.30-1.40 s of one recording, 90 Hz high-pass, edge fades, gain",
-    "peak": 0.4,
-    "rms": 0.06,
-    "sha256": "fb5eb951706f8d6b4a39c62644f8000a6a388e4e34703bc64ebe313dea62a039"
-  },
-  "novice-f3-swing": {
-    "file": "hero-forms/novice/f3-swing.wav",
-    "duration": 0.8,
-    "beat": "low swoosh of the great downward cut (peaks 160 ms in)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "FX - Swoosh - Low Pitch",
-        "author": "bolkmar",
-        "source_url": "https://freesound.org/people/bolkmar/sounds/475135/",
-        "license": "CC0-1.0",
-        "sha256": "f618f47f61005225e6442e2b0e385fd0b3950b307fd932fee4497bb663885278"
-      }
-    ],
-    "processing": "excerpt 0.06-0.86 s of one recording, 50 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.10-0.70 s of one recording, 50 Hz high-pass, edge fades, gain",
     "peak": 0.6,
-    "rms": 0.082,
-    "sha256": "edb8a507f41d3f7009c4a9e1c1693e3fa47b2266061a0c6bd1859467d9682748"
+    "rms": 0.086,
+    "sha256": "ffb479c0651149ed9fef414cbc62d77d09897513cd2a6d0ca373de2979a187a8"
   },
-  "novice-f3-crest": {
-    "file": "hero-forms/novice/f3-crest.wav",
-    "duration": 1.0,
-    "beat": "soil cracking as the ground shock spreads under the foe, rising into the dust ring (1460-2460 ms)",
+  "novice-f3-blow": {
+    "file": "hero-forms/novice/f3-blow.wav",
+    "duration": 0.35,
+    "beat": "steel striking rock: the six-star basic down-cut lands (struck 50 ms in; the ultimate had it until 14/11)",
     "license": "CC0-1.0",
     "sources": [
       {
-        "title": "Cracking Earthquake (cracking soil, cracking stone)",
-        "author": "uagadugu",
-        "source_url": "https://freesound.org/people/uagadugu/sounds/222521/",
+        "title": "Stone hit",
+        "author": "CamoMano",
+        "source_url": "https://freesound.org/people/CamoMano/sounds/431019/",
         "license": "CC0-1.0",
-        "sha256": "c0711d04a2c000e0dfbbd9284210056051920b1768b26403182f22d12703a0b8"
+        "sha256": "4931b810647c8254bc1310bcbbb02fe148c6b31d4abf0d47fa6a841ffa019057"
       }
     ],
-    "processing": "excerpt 0.30-1.30 s of one recording, 50 Hz high-pass, edge fades, gain",
-    "peak": 0.45,
-    "rms": 0.136,
-    "sha256": "66c56aade90f40ec62d23857e35c5669556d99b5ce965bc04b4ef0946b6dd892"
-  },
-  "novice-f3-hit": {
-    "file": "hero-forms/novice/f3-hit.wav",
-    "duration": 0.52,
-    "beat": "the four-star sword striking the body: the great cut lands, the damage (struck 80 ms in)",
-    "license": "CC0-1.0",
-    "sources": [
-      {
-        "title": "Sword hits the body.wav",
-        "author": "vdovitsky",
-        "source_url": "https://freesound.org/people/vdovitsky/sounds/411122/",
-        "license": "CC0-1.0",
-        "sha256": "c314bdd106058a5520aac20497a8e3db69c473e7081c6898e90da403bd91fd46"
-      }
-    ],
-    "processing": "excerpt 0.20-0.72 s of one recording, 60 Hz high-pass, edge fades, gain",
+    "processing": "excerpt 0.00-0.35 s of one recording, 45 Hz high-pass, edge fades, gain",
     "peak": 0.82,
-    "rms": 0.061,
-    "sha256": "d091ecc5c170d9341c36c597dcb6b27b6acfbe6e7c9039048a347ff4b37910cb"
+    "rms": 0.045,
+    "sha256": "1911a342bd2c0b039e7bf1a618a02becec89f55f252fbb0123a11aecf821d809"
+  },
+  "novice-f3-bswing": {
+    "file": "hero-forms/novice/f3-bswing.wav",
+    "duration": 0.5,
+    "beat": "a short sword swing: the basic down-cut (peaks 160 ms in)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Knife/sword swing",
+        "author": "spycrah",
+        "source_url": "https://freesound.org/people/spycrah/sounds/471097/",
+        "license": "CC0-1.0",
+        "sha256": "2aebde083f273dd530c5dd70caa348b8579761a243628288f9171abdc75df4c3"
+      }
+    ],
+    "processing": "excerpt 1.70-2.20 s of one recording, 90 Hz high-pass, edge fades, gain",
+    "peak": 0.55,
+    "rms": 0.075,
+    "sha256": "fada32af730f90fd0e136a6c22b5bd32f7d8bd62690280737c3ee492841333e6"
+  },
+  "novice-f3-bhit": {
+    "file": "hero-forms/novice/f3-bhit.wav",
+    "duration": 0.55,
+    "beat": "a ringing steel sword hit: the great blow of the six-star ultimate lands, the damage (struck 90 ms in; the basic cut had it until 14/11)",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "title": "Hit Impact Sword 3",
+        "author": "CogFireStudios",
+        "source_url": "https://freesound.org/people/CogFireStudios/sounds/547042/",
+        "license": "CC0-1.0",
+        "sha256": "bfa9309e46739a5bd2fc4424b98f383a55e080012e5b0eec1bb747e910329bb9"
+      }
+    ],
+    "processing": "excerpt 0.00-0.55 s of one recording, 70 Hz high-pass, edge fades, gain",
+    "peak": 0.75,
+    "rms": 0.107,
+    "sha256": "9cee2f3fc1d1c69c5d7962765e4660baf116aa935671b738092b797b29ca31f5"
   }
 }

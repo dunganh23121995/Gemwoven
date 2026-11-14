@@ -1,0 +1,23 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-12T22:53:39Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\lightning\\form-1\\rig\\combat\\rest.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\lightning\\clips\\f1-attack\\keys\\thrust.png"
+  ],
+  "prompt": "Image 1 is the exact character: A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand. Image 2 shows her next pose (thrusting the staff forward), for reference only. Keep her identity, face, costume, colours, proportions, line style and the exact staff design from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror her.\n\nDraw ONE single full-body sprite of her winding up a spell, floating: the SAME hand that holds the staff in Image 1 and Image 2 (her arm on the screen-right side of her body, the one that thrusts in Image 2) raises the staff high above her hat, elbow bent up beside her head, the staff tilted back so the dark star orb is high up behind her toward screen-left, well ABOVE and clear of the hat, the whole staff from orb to tip clearly visible against the background; her other arm (screen-left side) is empty and swings back for balance; her body leans back slightly, eager focused face, hair and cape swaying back. The staff never changes hands.\n\nBackground: 100% solid flat pure green #00FF00, no gradient, no floor, no shadow. Nothing on the character is green: keep the staff orb and every gem in the colours of Image 1. Centered, the whole character and staff fully inside the image with a wide green margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No glow, aura, lightning, sparks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "wrong_character",
+        "detail": "The staff differs from both references. Reference 1 and 2 show a gold staff with a ring-shaped orb holding a purple/white gem, but the candidate shows a black orb with gold spikes. The prompt itself describes a dark star-orb, so the drift may come from the prompt rather than the model."
+      }
+    ],
+    "summary": "Flat #00FF00 background, whole figure and staff inside the frame, single figure, no text, and the costume, hat, cape, braids, book and boots match the references. The only doubtful point is the staff design, which doesn't match the reference staff, so I'm marking it unsure rather than a clear fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00086
+  }
+}

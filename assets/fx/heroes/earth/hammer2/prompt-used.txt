@@ -1,0 +1,5 @@
+Image 1 shows the character Nori holding his war hammer. Draw ONLY his war hammer, alone, exactly the same design as in Image 1: the grey stone hammer head with gold bands and the green emerald set in its face, the long wooden handle with gold bands and a gold pommel. No hand, no character, no shield.
+
+The hammer stands perfectly upright and vertical in the centre of the image: the head at the TOP, the handle straight down below it, seen from the side so the emerald face shows. It fills about 80% of the image height, the whole hammer inside the image with a magenta margin on all sides.
+
+Background: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Clean anime game art, crisp dark outlines, the same colours, rendering and line style as Image 1, sharp and detailed (it will be shown large). No glow, motion blur, sparks, dust, text or labels.

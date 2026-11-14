@@ -1,14 +1,24 @@
 /* Nori's star-form skill art (forms-nori.js): authored strips stepped frame by frame. */
 .nori-fx{position:absolute;pointer-events:none;z-index:6;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%}
-.nori-fx-roots{filter:drop-shadow(0 0 5px #d8f0a088)}
-.nori-fx-roots.form-3{filter:drop-shadow(0 0 7px #ffe8909a)}
-.nori-fx-quake{filter:drop-shadow(0 0 4px #c6e76888)}
-/* The world-tree rises behind the foe: a layer under the actors, over the landscape. */
-.nori-fx-back{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.nori-fx-tree{filter:drop-shadow(0 0 10px #ffe9a0aa)}
 /* The shield glow's sockets are form 1's drawings; the star forms carry their own form aura. */
 .hero-actor:is([data-hero-form="2"],[data-hero-form="3"]) .nori-shield-aura{display:none}
-.nori-fx-jadetree{filter:drop-shadow(0 0 6px #7dffc488)}
-.nori-fx-quake.fissure{filter:drop-shadow(0 0 4px #7dffc4aa) hue-rotate(-12deg)}
-/* four-star jade shards scattering from the shattered cage (forms-nori.js noriShards) */
-.nori-shard{position:absolute;pointer-events:none;z-index:7;background-repeat:no-repeat;filter:drop-shadow(0 1px 1px #0006)}
+/* The behind-the-actors layer noriStrip(behind) draws into. */
+.nori-fx-back{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+/* the crack and the ground bursts sit on the ground line */
+.nori-fx-crack{z-index:5;background-repeat:no-repeat;filter:brightness(1.18) contrast(1.15) drop-shadow(0 0 6px #9dffaecc) drop-shadow(0 0 2px #fff6c0)}
+.nori-fx-stomp{z-index:5}
+/* whole-kit redo (owner 13/11): the locks are drawn twice, behind the foe (inside its actor) and in front of it; the
+   front copy of the root clamp keeps only its base and its top so the foe's face and body show between */
+.actor>.nori-fx.under{z-index:0}
+.nori-fx.antler.front{z-index:6;filter:drop-shadow(0 0 4px #ffe9a066)}
+.nori-fx-renewal{z-index:7}
+/* the foot-lock clamps in front of the foe's feet: drawn whole, over it */
+.nori-fx.whole.front{z-index:6}
+/* four stars, the hammer throw: the hammer itself (thrown, giant, called back), drawn over the foe; the shadow of its fall */
+.nori-hammer{background-size:100% 100%;background-repeat:no-repeat;z-index:7;transform-origin:50% 50%;filter:drop-shadow(0 0 3px #b8ffcf99)}
+.nori-hammer.giant{filter:drop-shadow(0 0 2px #1b2a1f) drop-shadow(0 0 10px #8dffb4aa)}
+/* head down, its handle rising toward the foe's bar: the handle's far end fades out (Codex 13/11) */
+.nori-hammer.giant{-webkit-mask-image:linear-gradient(to bottom,#000 58%,transparent 96%);mask-image:linear-gradient(to bottom,#000 58%,transparent 96%)}
+.nori-hammer.ghost{z-index:6;filter:blur(.6px) brightness(1.35) drop-shadow(0 0 3px #d9ffe6) drop-shadow(0 0 7px #6dff9e)}
+.nori-fall-shadow{z-index:4;border-radius:50%;background:radial-gradient(closest-side,#0b1a10cc,#0b1a1066 60%,transparent);transform-origin:50% 50%}
+.nori-fx-stomp.impact{z-index:8}

@@ -1,0 +1,24 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:47:57Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: an ANGULAR STONE IMPACT WITH JADE SEAMS. Side-view RPG battle camera, slight 3/4 from the front. GROUND LINE at 86% of the cell height, impact point horizontally centred. Palette: grey-brown angular stone, dark jade-green glowing seams inside the cracks, worn gold sparks, sandy dust. Frame 1: the ground splits under the blow, jade light in the cracks. Frame 2: angular stone blocks burst up and a low flat pressure ring of dust spreads. Frame 3: blocks highest (32% of the cell height), ring widest (90% of the cell width). Frame 4: blocks falling. Frame 5: blocks landing, ring fading. Frame 6: dust settling, seams dimming. Frame 7: cracked ground with faint seams. Frame 8: fading. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no weapon, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The tan sandy dust discs under the stone blocks in frames 2-7 may read as a ground plate, which the prompt forbids, though they could also be the requested sandy dust."
+      },
+      {
+        "kind": "other",
+        "detail": "In the middle-row frames the ground/dust spans nearly the full cell width (roughly 3% side padding), which may fall short of the required 6% magenta padding. This conflicts with the 90% ring-width instruction, so it is not a clear defect."
+      }
+    ],
+    "summary": "The canvas shows eight frames in a 2x4 grid on flat magenta with no text, characters, or cropped subjects, so the layout and background look correct. Two borderline points remain: whether the tan dust discs count as a forbidden ground plate, and whether the wide ring leaves less than the required 6% padding. Neither is clearly a defect, so the verdict is unsure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000874
+  }
+}

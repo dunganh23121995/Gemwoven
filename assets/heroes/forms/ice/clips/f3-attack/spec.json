@@ -1,0 +1,289 @@
+{
+ "id": "f3-attack",
+ "hero": "ice",
+ "title": "Yuki hình thái 3 · attack",
+ "rest": "assets/heroes/forms/ice/form-3/rig/combat/rest.png",
+ "pad": 1.1,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/ice/form-3/attack.webp",
+ "forms": [
+  "3",
+  "attack"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.1,
+ "footY": 0.8431,
+ "keys": {
+  "up": {
+   "file": "assets/heroes/forms/ice/clips/f3-attack/keys/up.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-3/attack.webp",
+    "cell": [
+     1,
+     3,
+     2
+    ],
+    "fit": [
+     1.005,
+     1,
+     1
+    ]
+   },
+   "note": "ô 1 của sheet cũ (đã duyệt)"
+  },
+  "fwd": {
+   "file": "assets/heroes/forms/ice/clips/f3-attack/keys/fwd.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-3/attack.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     1.005,
+     1,
+     1
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt)"
+  },
+  "push": {
+   "file": "assets/heroes/forms/ice/clips/f3-attack/keys/push.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-3/attack.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.005,
+     1,
+     1
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "up",
+   "length": 9,
+   "prompt": "A chibi bunny-eared ice priestess with long silver-lavender braids, blue eyes, a crystal snowflake tiara, a white and ice-blue gown with crystal patterns, a long navy and ice-blue cape, white crystal armoured boots, holding a tall staff topped with a large ice-blue crystal crescent moon in her right hand and a crystal ice fan in her left hand, lifts the crystal fan up in her left hand into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "up",
+   "end": "fwd",
+   "length": 9,
+   "prompt": "A chibi bunny-eared ice priestess with long silver-lavender braids, blue eyes, a crystal snowflake tiara, a white and ice-blue gown with crystal patterns, a long navy and ice-blue cape, white crystal armoured boots, holding a tall staff topped with a large ice-blue crystal crescent moon in her right hand and a crystal ice fan in her left hand, brings the open fan forward into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "fwd",
+   "end": "push",
+   "length": 9,
+   "prompt": "A chibi bunny-eared ice priestess with long silver-lavender braids, blue eyes, a crystal snowflake tiara, a white and ice-blue gown with crystal patterns, a long navy and ice-blue cape, white crystal armoured boots, holding a tall staff topped with a large ice-blue crystal crescent moon in her right hand and a crystal ice fan in her left hand, sweeps the fan forward toward screen-right in one quick gust into the pose of the last frame, the fan clearly visible. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "push",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi bunny-eared ice priestess with long silver-lavender braids, blue eyes, a crystal snowflake tiara, a white and ice-blue gown with crystal patterns, a long navy and ice-blue cape, white crystal armoured boots, holding a tall staff topped with a large ice-blue crystal crescent moon in her right hand and a crystal ice fan in her left hand, draws the fan back to her chest and returns to her calm stance of the last frame. No second attack. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_push",
+   "start": "push",
+   "end": "push",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "combat-v3 attack(): roles 0 guard .. 3 contact .. 5 recover",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   3
+  ],
+  [
+   "A",
+   7,
+   5
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "key",
+   "up"
+  ],
+  [
+   "B",
+   7,
+   1
+  ],
+  [
+   "B",
+   7,
+   4
+  ],
+  [
+   "B",
+   7,
+   7
+  ],
+  [
+   "key",
+   "fwd"
+  ],
+  [
+   "C",
+   7,
+   1
+  ],
+  [
+   "C",
+   7,
+   3
+  ],
+  [
+   "C",
+   7,
+   5
+  ],
+  [
+   "C",
+   7,
+   7
+  ],
+  [
+   "key",
+   "push"
+  ],
+  [
+   "D",
+   7,
+   1
+  ],
+  [
+   "D",
+   7,
+   3
+  ],
+  [
+   "D",
+   7,
+   5
+  ],
+  [
+   "D",
+   7,
+   7
+  ],
+  [
+   "D",
+   7,
+   9
+  ],
+  [
+   "D",
+   7,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_push",
+   7,
+   2
+  ],
+  [
+   "H_push",
+   7,
+   4
+  ],
+  [
+   "H_push",
+   7,
+   6
+  ],
+  [
+   "H_push",
+   7,
+   8
+  ],
+  [
+   "H_push",
+   7,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  5,
+  9,
+  14,
+  14,
+  21
+ ],
+ "stepMs": 17,
+ "lock_area": "all",
+ "end": 21,
+ "holds": {
+  "14": [
+   22,
+   26
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  23,
+  25
+ ]
+}

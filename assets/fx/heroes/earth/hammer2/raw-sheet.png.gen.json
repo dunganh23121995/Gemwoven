@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T10:27:16Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-2\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 shows the character Nori holding his war hammer. Draw ONLY his war hammer, alone, exactly the same design as in Image 1: the grey stone hammer head with gold bands and the green emerald set in its face, the long wooden handle with gold bands and a gold pommel. No hand, no character, no shield.\n\nThe hammer stands perfectly upright and vertical in the centre of the image: the head at the TOP, the handle straight down below it, seen from the side so the emerald face shows. It fills about 80% of the image height, the whole hammer inside the image with a magenta margin on all sides.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Clean anime game art, crisp dark outlines, the same colours, rendering and line style as Image 1, sharp and detailed (it will be shown large). No glow, motion blur, sparks, dust, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate shows only the war hammer, upright and whole, on a flat magenta background with a margin on all sides. The stone head, gold bands, green emerald, wooden handle and gold pommel match the reference design. No text, extra figures, or background bleed were found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000456
+  }
+}

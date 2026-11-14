@@ -51,7 +51,7 @@ async function mikaSwordWave(){
 function mikaHeavyImpact(pending){
   if(reduced)return;
   const p=combatV3Point('enemy'),scene=$('scene'),ground={x:p.x,y:p.foot-5};
-  const contact={x:p.x-10,y:p.y-4},size=Math.min(280,scene.clientWidth*.76);
+  const contact={x:p.x-10,y:p.y-4},size=combatV3Fit(contact.x,contact.y,Math.min(280,scene.clientWidth*.76),.8);
   const blast=combatV3Element('mika-impact mika-impact-explosion',contact,size,'',combatV3Palette.fire);
   blast.style.backgroundImage=`url('${ART.skillFx.mikaExplosion}')`;
   const start=performance.now();let frameId;

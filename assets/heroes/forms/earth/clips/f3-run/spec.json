@@ -1,0 +1,262 @@
+{
+ "id": "f3-run",
+ "hero": "earth",
+ "title": "Nori hình thái 3 · rời sân + Quảng Trường (sheet run)",
+ "rest": "assets/heroes/forms/earth/form-3/rig/combat/rest.png",
+ "pad": 1.3,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/earth/form-3/run.webp",
+ "forms": [
+  "3",
+  "run"
+ ],
+ "cols": 6,
+ "frameDuration": 55,
+ "scale": 1.3,
+ "footY": 0.8506,
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "R",
+   "length": 17,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a long leaf cape, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem on his left arm, from his guard stance lowers the hammer to trail low behind his right hip, brings the shield forward in front of him, leans forward and breaks into a heavy charging run toward screen-right, ending in the running pose of the last frame. Locked stationary camera, no horizontal drift. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible, on the same arms. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "F",
+   "start": "R",
+   "end": "R",
+   "length": 17,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a long leaf cape, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem on his left arm, charges at a run in place toward screen-right: two long heavy running strides, his two legs clearly alternating with clear foot contacts and a strong body bob, leaning forward the whole time; the shield stays in front of him angled forward, the hammer stays low behind his right hip, never raised; leaf cape and roots streaming back; locked stationary camera, no drift, back to the running pose of the last frame. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible, on the same arms. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "rời sân: vào chạy 1 lần rồi lặp; Quảng Trường dùng cùng sheet (loop)",
+  "plan": "A vào chạy (rest→R) + F vòng 2 sải (R→R)"
+ },
+ "lock": "center",
+ "pick": [
+  [
+   "A",
+   21,
+   0
+  ],
+  [
+   "A",
+   21,
+   1
+  ],
+  [
+   "A",
+   21,
+   2
+  ],
+  [
+   "A",
+   21,
+   3
+  ],
+  [
+   "A",
+   21,
+   4
+  ],
+  [
+   "A",
+   21,
+   5
+  ],
+  [
+   "A",
+   21,
+   6
+  ],
+  [
+   "A",
+   21,
+   7
+  ],
+  [
+   "A",
+   21,
+   8
+  ],
+  [
+   "A",
+   21,
+   9
+  ],
+  [
+   "A",
+   21,
+   10
+  ],
+  [
+   "A",
+   21,
+   11
+  ],
+  [
+   "A",
+   21,
+   12
+  ],
+  [
+   "A",
+   21,
+   13
+  ],
+  [
+   "A",
+   21,
+   14
+  ],
+  [
+   "A",
+   21,
+   15
+  ],
+  [
+   "F",
+   21,
+   0
+  ],
+  [
+   "F",
+   21,
+   1
+  ],
+  [
+   "F",
+   21,
+   2
+  ],
+  [
+   "F",
+   21,
+   3
+  ],
+  [
+   "F",
+   21,
+   4
+  ],
+  [
+   "F",
+   21,
+   5
+  ],
+  [
+   "F",
+   21,
+   6
+  ],
+  [
+   "F",
+   21,
+   7
+  ],
+  [
+   "F",
+   21,
+   8
+  ],
+  [
+   "F",
+   21,
+   9
+  ],
+  [
+   "F",
+   21,
+   10
+  ],
+  [
+   "F",
+   21,
+   11
+  ],
+  [
+   "F",
+   21,
+   12
+  ],
+  [
+   "F",
+   21,
+   13
+  ],
+  [
+   "F",
+   21,
+   14
+  ],
+  [
+   "F",
+   21,
+   15
+  ]
+ ],
+ "loop": [
+  16,
+  31
+ ],
+ "plaza_feet": true,
+ "keys": {
+  "R": {
+   "file": "assets/heroes/forms/earth/clips/f3-run/keys/R-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (R-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "head_lock": false,
+ "redo": "Nori f3 run redo 13/11 (owner: \"Làm lại tư thế chạy\"): Codex-drawn charge key R (f3_run_keys.py), new clips",
+ "pick_note": "13/11 redo: seed 21 (F s7 kept the legs nearly still); A rest->R 0-15, F R->R loop 16-31",
+ "size_note": "13/11 redo: head_lock misread the head (frames 18-20/30-31 -> 0.82) and body_lock cannot match the run to the rest (all 0.79); both clips start and end on keys placed at the rest head size, so no lock",
+ "loopMs": 20,
+ "introTimes": [
+  80,
+  80,
+  80,
+  80,
+  55,
+  52,
+  49,
+  45,
+  42,
+  39,
+  36,
+  33,
+  30,
+  26,
+  23,
+  20
+ ],
+ "run_pace_note": "13/11 redo: two strides in 16 loop frames like Hiro f3 -> loopMs 20 (planted foot vs ground ~1); lead-in eases 80 -> 20",
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30
+ ]
+}

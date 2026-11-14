@@ -15,7 +15,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
   const url=`http://127.0.0.1:${server.address().port}`,errors=[];
-  const browser=await chromium.launch({channel:process.env.BROWSER_CHANNEL||'msedge',headless:true});
+  const browser=await chromium.launch({channel:process.env.BROWSER_CHANNEL||'chrome',headless:true});
   try{
     const open=async qa=>{
       const page=await (await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1})).newPage();

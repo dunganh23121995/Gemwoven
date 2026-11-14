@@ -489,7 +489,7 @@
   {
    "t": [
     1550,
-    2350
+    1880
    ],
    "seq": [
     14,
@@ -509,8 +509,8 @@
   },
   {
    "t": [
-    2350,
-    2800
+    1880,
+    2120
    ],
    "f": [
     18,
@@ -518,7 +518,7 @@
    ]
   }
  ],
- "clock_note": "mốc cũ: 650 rút đao (k1=4), 1250 quét (k2=7), 1350 (k3=11), 1550 tung hồ ly (k4=14), 2350 thu (k5=18); 12/11 lần 2 (chủ dự án: vuốt đao từ sau ra trước chậm): giữ thế đao sau lưng 650-1140, vuốt ra trước nhanh 1140-1350 (35,36,7 rồi 8-11, ~30 ms mỗi khung); Codex game-v2: 45-46 ~35 ms (rời thế giữ 1080); chủ dự án 12/11 lần 3: vuốt nhanh hơn nữa -> 6 rời ở 1180, 7,45,46,8,10,11 mỗi khung 25 ms (150 ms), bỏ 36 và 9; tiếng mài thép (draw) vang cùng nhát vuốt; chủ dự án 12/11 lần 4: vuốt dứt khoát thật nhanh -> 7,45,46,8,11 trong 85 ms (~17 ms mỗi khung) từ 1250",
+ "clock_note": "mốc cũ: 650 rút đao (k1=4), 1250 quét (k2=7), 1350 (k3=11), 1550 tung hồ ly (k4=14), 2350 thu (k5=18); 12/11 lần 2 (chủ dự án: vuốt đao từ sau ra trước chậm): giữ thế đao sau lưng 650-1140, vuốt ra trước nhanh 1140-1350 (35,36,7 rồi 8-11, ~30 ms mỗi khung); Codex game-v2: 45-46 ~35 ms (rời thế giữ 1080); chủ dự án 12/11 lần 3: vuốt nhanh hơn nữa -> 6 rời ở 1180, 7,45,46,8,10,11 mỗi khung 25 ms (150 ms), bỏ 36 và 9; tiếng mài thép (draw) vang cùng nhát vuốt; chủ dự án 12/11 lần 4: vuốt dứt khoát thật nhanh -> 7,45,46,8,11 trong 85 ms (~17 ms mỗi khung) từ 1250; chủ dự án 13/11: thu đao về nhanh -> 14..18 trong 1550-1880 (~25 ms mỗi khung), 18..23 về nghỉ 1880-2120",
  "zoom_box": [
   119,
   102,
@@ -581,5 +581,34 @@
   23
  ],
  "even_size": true,
- "feet_lock": true
+ "feet_lock": true,
+ "head_lock": true,
+ "size_lock": "body",
+ "size_note": "13/11 owner \"Mika form 3 tung tuyệt kỹ kích thước loạn hết cả lên\": keys 15-17 ~10% smaller than their in-betweens 39-44, tail fan ~0.82 in the crouch; head_lock missed (head hidden) -> body_lock (SIFT body +-4%, silhouette area)",
+ "keep": [
+  0,
+  2,
+  4,
+  5,
+  6,
+  7,
+  11,
+  13,
+  14,
+  16,
+  18,
+  20,
+  21,
+  23,
+  25,
+  26,
+  29,
+  30,
+  33,
+  38,
+  39,
+  42,
+  43,
+  46
+ ]
 }

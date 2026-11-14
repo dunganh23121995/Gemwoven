@@ -128,7 +128,7 @@ function spriteApply(el,action,index){
   }
   const box=spriteBox(el.dataset.family,el.dataset.key,sheet,grow),moved=grow||box.left||box.top;
   for(const [k,v] of Object.entries(moved?{left:box.left*100+'%',top:box.top*100+'%',width:box.width*100+'%',height:box.width*100+'%'}:{left:'',top:'',width:'',height:''}))el.style.setProperty(k,v,moved?'important':'');
-  el.dataset.box=box.left+','+box.width;
+  el.dataset.box=box.left+','+box.width;el.dataset.boxTop=String(box.top);
   // The step in (and back out at rest) is a short slide, never a jump.
   const inset=spriteInset(el,sheet,box),was=+(el.dataset.inset||0);
   if(inset!==was){el.dataset.inset=inset;el.style.translate=inset?`${-inset}px 0`:'';if(!reduced&&el.isConnected)el.animate([{translate:`${-was}px 0`},{translate:`${-inset}px 0`}],{duration:220,easing:'ease-out'});}
@@ -152,6 +152,14 @@ function spriteApply(el,action,index){
   updateActorHead(el,action,frame);
   if(el.dataset.family==='hero'&&el.dataset.key==='earth')updateNoriShieldAura(el);
 }
+// The body's own box on screen, whatever sheet is showing: a sheet drawn in a bigger cell (scale) grows its drawing box
+// about the feet, so its rect is bigger and lower-reaching than the body's. Effects measure from this one (owner 13/11:
+// Yuki's aegis was placed 35% too big and off her body while her padded skill sheet showed; Nori's shield changed size).
+function spriteBaseRect(el){
+  const r=el.getBoundingClientRect(),[l,w]=(el.dataset.box||'0,1').split(',').map(Number),t=+(el.dataset.boxTop||0),k=w||1;
+  const width=r.width/k,height=r.height/k,left=r.left-l*width,top=r.top-t*height;
+  return {left,top,width,height,right:left+width,bottom:top+height,x:left,y:top};
+}
 // Whether the body has a hurt sheet of its own (plain or armoured) rather than the attack sheet's recoil frames.
 function spriteOwnHurt(el){return /^hurt(_armored)?$/.test(spriteDefinition(el.dataset.family,el.dataset.key,'hurt').action);}
 function setSpriteAction(side,action,duration=0){
@@ -165,7 +173,9 @@ function setSpriteAction(side,action,duration=0){
   // first, a thrust pulled all the way back, never a jump to the resting pose (owner 12/11).
   if(idle&&playing?.clip&&!reduced&&el.dataset.action===playing.action&&!playing.finishing){
     const sheet=spriteDefinition(el.dataset.family,el.dataset.key,playing.action).sheet,from=+el.dataset.frame;
-    if(sheet.roles&&!sheet.clock&&from<sheet.count-1){spriteClipFinish(el,playing.action,sheet,from,duration);return;}
+    // (a pose held in its living loop shows a loop frame: it finishes from the pose itself)
+    const shown=playing.target!=null&&sheet.holds?.[playing.target]?Math.min(from,playing.target):from;
+    if(sheet.roles&&!sheet.clock&&shown<spriteClipEnd(sheet)){spriteClipFinish(el,playing.action,sheet,shown,duration);return;}
   }
   spritePlayback.set(el,{action,start:performance.now(),duration:duration||1200,manual:false});
   spriteApply(el,action,action==='hurt'&&!spriteOwnHurt(el)&&el.dataset.family!=='hero'?4:0);
@@ -223,21 +233,47 @@ function spriteClipStep(el,action,sheet,role){
     // Already on that pose's way-back frame (back on guard after the thrust): stay; going "back" to the first guard would
     // play the whole thrust again on the way to rest (owner 12/11: six-star Mika thrust twice).
     if(back===from)return;
-    if(back!=null&&back>from){target=back;viaBack=true;}else if(from===sheet.count-1)from=0;}
+    if(back!=null&&back>from){target=back;viaBack=true;}else if(from===spriteClipEnd(sheet))from=0;}
   // Asked again for the pose it is already stepping to (a swing that names its pose every animation frame): carry on.
   if(old?.clip&&old.action===action&&old.target===target)return;
   const playback={action,manual:true,clip:true,shown:from,target};
   spritePlayback.set(el,playback);
-  if(reduced||from<0||target<=from||(!viaBack&&target-from>sheet.count/2)){playback.shown=target;spriteApply(el,action,target);return;}
+  // Coming from another sheet (the idle) to a first pose that is not the sheet's frame 0 (Hiro's skill opens on a raised
+  // sword): the clip's lead-in from the resting frame plays, not a jump (owner 12/11 review, Hiro).
+  if(!reduced&&from<0&&target>0&&target<=spriteClipEnd(sheet)/2){from=0;playback.shown=0;spriteApply(el,action,0);}
+  if(reduced||from<0||target<=from||(!viaBack&&target-from>spriteClipEnd(sheet)/2)){playback.shown=target;spriteApply(el,action,target);spriteClipHold(el,action,sheet,playback);return;}
   let at=performance.now();const step=sheet.stepMs||17;
   const tick=now=>{
     if(spritePlayback.get(el)!==playback||!el.isConnected)return;
     if(now-at>=step){at=now;playback.shown++;spriteApply(el,action,playback.shown);}
-    if(playback.shown<target)requestAnimationFrame(tick);
+    if(playback.shown<target)requestAnimationFrame(tick);else spriteClipHold(el,action,sheet,playback);
+  };requestAnimationFrame(tick);
+}
+// Resolves once the side's clip sheet has stepped through to the pose last asked for (at most `limit` ms): staging that
+// fires a projectile on a pose waits for the drawn swing to reach it (owner 13/11: Lumi's bolt flew before her staff).
+function spriteArrival(side,limit=420){
+  const el=actor(side)?.querySelector('.sprite-body');if(!el||reduced)return Promise.resolve();
+  const t0=performance.now();
+  return new Promise(resolve=>{const tick=now=>{const p=spritePlayback.get(el);
+    if(!p?.clip||p.finishing||p.shown==null||p.shown>=p.target||now-t0>=limit)return resolve();requestAnimationFrame(tick);};requestAnimationFrame(tick);});
+}
+// The sheet's last frame of its own sequence (the resting frame): a sheet with living holds keeps their loop frames after it.
+function spriteClipEnd(sheet){return sheet.end??sheet.count-1;}
+// A pose the staging holds until its next call (owner 12/11: a held pose is a living loop, never a frozen frame): a sheet
+// with holds {pose frame: [first, last]} cycles the pose and its drawn loop (hair, cloth moving, the body still) every
+// ~70 ms until the next call; the pose stays the frame the next step starts from.
+function spriteClipHold(el,action,sheet,playback){
+  const loop=sheet.holds?.[playback.target];if(!loop||reduced)return;
+  const frames=[playback.target];for(let f=loop[0];f<=loop[1];f++)frames.push(f);
+  let at=performance.now(),i=0;
+  const tick=now=>{
+    if(spritePlayback.get(el)!==playback||!el.isConnected)return;
+    if(now-at>=(sheet.holdMs||70)){at=now;i=(i+1)%frames.length;spriteApply(el,action,frames[i]);}
+    requestAnimationFrame(tick);
   };requestAnimationFrame(tick);
 }
 function spriteClipFinish(el,action,sheet,from,duration){
-  const playback={action,manual:true,clip:true,finishing:true,shown:from,target:sheet.count-1};spritePlayback.set(el,playback);
+  const playback={action,manual:true,clip:true,finishing:true,shown:Math.min(from,spriteClipEnd(sheet)),target:spriteClipEnd(sheet)};spritePlayback.set(el,playback);
   let at=performance.now();const step=sheet.stepMs||17;
   const tick=now=>{
     if(spritePlayback.get(el)!==playback||!el.isConnected)return;
@@ -271,7 +307,7 @@ function spriteTick(now){
     }else{
       const elapsed=Math.max(0,now-playback.start);
       const fallbackHurt=playback.action==='hurt'&&!spriteOwnHurt(el);if(fallbackHurt&&el.dataset.family==='hero'){if(el.dataset.frame!=='0')spriteApply(el,'hurt',0);return;}
-      const frame=fallbackHurt?Math.min(def.count-1,4+Math.floor(elapsed/Math.max(1,playback.duration)*2)):Math.min(def.count-1,Math.floor(elapsed/(playback.duration||1000)*def.count));
+      const frame=fallbackHurt?Math.min(def.count-1,4+Math.floor(elapsed/Math.max(1,playback.duration)*2)):Math.min(spriteClipEnd(def),Math.floor(elapsed/(playback.duration||1000)*(spriteClipEnd(def)+1)));
       if(+el.dataset.frame!==frame)spriteApply(el,playback.action,frame);
     }
   });

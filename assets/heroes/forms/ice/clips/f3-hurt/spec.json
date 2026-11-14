@@ -1,0 +1,114 @@
+{
+ "id": "f3-hurt",
+ "hero": "ice",
+ "title": "Yuki hình thái 3 · bị đánh",
+ "rest": "assets/heroes/forms/ice/form-3/rig/combat/rest.png",
+ "pad": 1.1,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/ice/form-3/hurt.webp",
+ "forms": [
+  "3",
+  "hurt"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.1,
+ "footY": 0.8431,
+ "keys": {
+  "recoil": {
+   "file": "assets/heroes/forms/ice/clips/f3-hurt/keys/recoil-src.png",
+   "note": "giật nhắm mắt (Qwen Edit 2511 + Consistency)"
+  }
+ },
+ "edits": {
+  "recoil": "Change only her pose and expression: she is struck hard from the right side, a painful grimace: eyebrows knitted down, eyes squeezed shut, teeth gritted, clearly hurt and NOT smiling or laughing, head and shoulders thrown back toward the left, knees bent absorbing the blow, still holding her staff. No motion lines, sweat drops, tears, shadow or effects. Keep exactly the same character, costume, colours and staff design, the same size and position in the picture, flat magenta background."
+ },
+ "recoil": {
+  "deg": -6,
+  "ms": 360
+ },
+ "segments": [
+  {
+   "name": "K2",
+   "start": "recoil",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi bunny-eared ice priestess with long silver-lavender braids, blue eyes, a crystal snowflake tiara, a white and ice-blue gown with crystal patterns, a long navy and ice-blue cape, white crystal armoured boots, holding a tall staff topped with a large ice-blue crystal crescent moon in her right hand and a crystal ice fan in her left hand, already recoiling from a hard hit at the first frame, dazed with eyes shut, immediately begins recovering: no second jolt. She opens her eyes, steadies herself with a slight knee flex and returns smoothly to her guard stance of the last frame; hair and cape swing with one diminishing overshoot. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "setSpriteAction(hero,hurt,~420ms) phát đều",
+  "plan": "rest -> recoil (giật tức thì) -> K2 hồi phục -> rest"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "key",
+   "recoil"
+  ],
+  [
+   "K2",
+   7,
+   1
+  ],
+  [
+   "K2",
+   7,
+   2
+  ],
+  [
+   "K2",
+   7,
+   3
+  ],
+  [
+   "K2",
+   7,
+   4
+  ],
+  [
+   "K2",
+   7,
+   5
+  ],
+  [
+   "K2",
+   7,
+   6
+  ],
+  [
+   "K2",
+   7,
+   7
+  ],
+  [
+   "K2",
+   7,
+   8
+  ],
+  [
+   "K2",
+   7,
+   9
+  ],
+  [
+   "K2",
+   7,
+   10
+  ],
+  [
+   "K2",
+   7,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "fit_rest": true,
+ "lock_area": "all"
+}

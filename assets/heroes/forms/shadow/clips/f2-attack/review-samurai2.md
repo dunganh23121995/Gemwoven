@@ -1,0 +1,9 @@
+**7,5/10 — LÀM LẠI.** Cung kiếm đã đọc ra nhát chém rõ hơn vòng trước; còn yếu ở thu kiếm và độ tiết chế của hiệu ứng. Đánh số khung **1–23**, trái sang phải, trên xuống dưới.
+
+- **Khung 6–9 — rút kiếm/chém:** khung 6 duỗi tay và kiếm gần thẳng về trước, vẫn thoáng đọc thành đâm; sang 7–8 lưỡi mới hạ thấp rồi 9 mới ngang. **Sửa:** giảm duỗi khuỷu ở 6, cho chuôi dẫn sát hông và nối hướng lưỡi xuống thấp rõ hơn. Cung **7–11** hiện đã đọc được.
+- **Khung 11–13 — zanshin:** dáng giữ kiếm cao có chất samurai, mặt và mắt vẫn hướng về đối thủ. Tuy nhiên **13 còn gần tư thế giơ cao**, chưa đọc rõ bước hạ kiếm như mô tả. **Sửa:** bắt đầu hạ cổ tay và khuỷu ngay ở 13.
+- **Khung 15–19 — noto:** lưỡi nằm chéo ngang thân, tay và miệng bao bị trang phục che; **khung 16 chưa thấy rõ mũi kiếm chạm miệng bao**. Các khung sau giống lưỡi ngắn/mất dần hơn là trượt vào bao. **Sửa:** tách bàn tay giữ bao khỏi thân, lộ miệng bao ở hông trái; giữ cùng trục lưỡi–bao và cho chiều dài thép giảm liên tục.
+- **Ảnh trận 175/300 ms:** kiếm đã lên cao trong khi đường tơ xuyên thân quái — **hợp lý với dấu chém lưu lại**. Góc dây cung đã tốt hơn. Nhưng dây kéo từ gần chân Noct đến sát mép phải, nhìn dài hơn mục tiêu khoảng 1,45 bề ngang quái. **Sửa:** rút hai đầu, tập trung quanh vùng trúng.
+- **700/780 ms:** khe bung thành **mảng nêm đen khá dày**, đặc biệt ở 780 ms; chưa ra “khe mảnh”, còn lấn hình quái. **Sửa:** thu bề dày và phần đuôi, giảm bung nở sau sát thương.
+
+**Chất samurai: đạt về dáng và zanshin; chưa đạt ở động tác tra kiếm.** Ảnh tĩnh chưa xác nhận được tiếng cạch hay chính xác mốc 170/660/670 ms. Cần sửa noto và khe bung trước khi duyệt.

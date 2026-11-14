@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-12T12:22:13Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\clips\\f3-skill\\keys\\rest-1024.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\clips\\f3-skill\\keys\\knee-raw-v1.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young forest knight with messy brown hair, big golden antlers with green leaves, green eyes, ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a long leafy cape and tabard, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by pale roots and leaves on his left arm. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1.\n\nDraw ONE single full-body sprite of him about to stomp, in a clear and readable silhouette: his big emerald shield still rests on the ground in front of him (screen-right); he stands tall on his left leg and lifts his near right leg HIGH, the thigh horizontal, the knee pointing forward-left and the armoured boot hanging below it, the raised knee and boot clearly visible against the background beside the shield with open empty space under the thigh and between his legs, nothing covering the raised leg; his cape and leaves swept back so they do not hide the leg; the crystal hammer held low at his right side; fierce focused face.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No glow, aura, dust, cracks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the character's identity, costume, antlers, hammer and shield designs. The background is flat magenta, the whole figure sits inside the frame with margin, and no text or extra figures appear. The raised leg is visible, and the hammer and shield placement is a minor interpretation of the prompt rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000771
+  }
+}

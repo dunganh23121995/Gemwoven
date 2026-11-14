@@ -4,7 +4,7 @@
  * The bot plays like the simulator: the game's own hint score, the best move 80% of the time,
  * the ultimate as soon as it is ready.
  *   node qa/gemwoven/real-fights.cjs [fights=20] [--pages 3] [--json out.json] [--only "Hiro 1★"] [--stage 100] [--mult 1,1.5]
- * Needs the dev server on 127.0.0.1:8080 and Edge (Playwright channel msedge).
+ * Needs the dev server on 127.0.0.1:8080 and Chrome (Playwright channel chrome; owner 13/11: tests run in Chrome).
  */
 const path=require('node:path'),fs=require('node:fs');
 const {chromium}=require(path.join(__dirname,'runtime/node_modules/playwright'));
@@ -67,7 +67,7 @@ async function oneFight(page,save,index,variant){
 (async()=>{
   // Each page has its own context (its own save in localStorage); static files are fetched once and served
   // from memory, so the dev server is not asked for every asset per fight.
-  const browser=await chromium.launch({channel:'msedge'}),jobs=[],cache=new Map();
+  const browser=await chromium.launch({channel:'chrome'}),jobs=[],cache=new Map();
   async function contextWithCache(){
     const context=await browser.newContext({viewport:{width:1100,height:800}});
     await context.addInitScript(V=>{const v=new URLSearchParams(location.search).get('gwv');if(v&&V[v])globalThis.GW_VARIANT=V[v];},VARIANTS);

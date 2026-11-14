@@ -1,0 +1,409 @@
+{
+ "id": "f3-skill",
+ "hero": "lightning",
+ "title": "Lumi hình thái 3 · skill",
+ "rest": "assets/heroes/forms/lightning/form-3/rig/combat/rest.png",
+ "pad": 1.3,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid green background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/lightning/form-3/skill.webp",
+ "forms": [
+  "3",
+  "skill"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "bg": "green",
+ "scale": 1.3,
+ "footY": 0.8506,
+ "keys": {
+  "s2": {
+   "file": "assets/heroes/forms/lightning/clips/f3-skill/keys/s2.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/lightning/form-3/skill.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     1.375,
+     0,
+     -84
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt)"
+  },
+  "s3": {
+   "file": "assets/heroes/forms/lightning/clips/f3-skill/keys/s3.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/lightning/form-3/skill.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.375,
+     0,
+     -84
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  },
+  "s4": {
+   "file": "assets/heroes/forms/lightning/clips/f3-skill/keys/s4.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/lightning/form-3/skill.webp",
+    "cell": [
+     4,
+     3,
+     2
+    ],
+    "fit": [
+     1.375,
+     0,
+     -84
+    ]
+   },
+   "note": "ô 4 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "s2",
+   "length": 13,
+   "prompt": "A chibi blonde star sorceress floating in the air, long golden hair, amber eyes, a white and purple witch hat crowned with golden stars and a crescent moon, small golden wings, a white, gold and purple star gown with a long cape, white armoured boots, holding a tall golden spear-staff topped with a star inside golden orbit rings in her right hand, raises the spear-staff high above her head into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "s2",
+   "end": "s3",
+   "length": 13,
+   "prompt": "A chibi blonde star sorceress floating in the air, long golden hair, amber eyes, a white and purple witch hat crowned with golden stars and a crescent moon, small golden wings, a white, gold and purple star gown with a long cape, white armoured boots, holding a tall golden spear-staff topped with a star inside golden orbit rings in her right hand, holds the spear-staff up to the sky, calling the storm, into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "s3",
+   "end": "s4",
+   "length": 13,
+   "prompt": "A chibi blonde star sorceress floating in the air, long golden hair, amber eyes, a white and purple witch hat crowned with golden stars and a crescent moon, small golden wings, a white, gold and purple star gown with a long cape, white armoured boots, holding a tall golden spear-staff topped with a star inside golden orbit rings in her right hand, levels the spear-staff and thrusts it forward toward screen-right into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "s4",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi blonde star sorceress floating in the air, long golden hair, amber eyes, a white and purple witch hat crowned with golden stars and a crescent moon, small golden wings, a white, gold and purple star gown with a long cape, white armoured boots, holding a tall golden spear-staff topped with a star inside golden orbit rings in her right hand, lowers the spear-staff and floats back into her calm pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s2",
+   "start": "s2",
+   "end": "s2",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s3",
+   "start": "s3",
+   "end": "s3",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s4",
+   "start": "s4",
+   "end": "s4",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_rest",
+   "start": "rest",
+   "end": "rest",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "forms-lumi.js (six stars): skill 0, 1 at 200, 2 at 460, 3 at 1180 (channel), 4 at 1480 (release), 5 at 2450; depart: skill 1 then ride",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   21,
+   1
+  ],
+  [
+   "A",
+   21,
+   3
+  ],
+  [
+   "A",
+   21,
+   5
+  ],
+  [
+   "A",
+   21,
+   6
+  ],
+  [
+   "A",
+   21,
+   8
+  ],
+  [
+   "key",
+   "s2"
+  ],
+  [
+   "B",
+   21,
+   1
+  ],
+  [
+   "B",
+   21,
+   3
+  ],
+  [
+   "B",
+   21,
+   6
+  ],
+  [
+   "B",
+   21,
+   8
+  ],
+  [
+   "key",
+   "s3"
+  ],
+  [
+   "C",
+   33,
+   2
+  ],
+  [
+   "C",
+   33,
+   4
+  ],
+  [
+   "C",
+   33,
+   6
+  ],
+  [
+   "C",
+   33,
+   8
+  ],
+  [
+   "key",
+   "s4"
+  ],
+  [
+   "D",
+   21,
+   1
+  ],
+  [
+   "D",
+   21,
+   3
+  ],
+  [
+   "D",
+   21,
+   5
+  ],
+  [
+   "D",
+   21,
+   8
+  ],
+  [
+   "D",
+   21,
+   10
+  ],
+  [
+   "D",
+   21,
+   12
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_s2",
+   21,
+   2
+  ],
+  [
+   "H_s2",
+   21,
+   4
+  ],
+  [
+   "H_s2",
+   21,
+   6
+  ],
+  [
+   "H_s2",
+   21,
+   8
+  ],
+  [
+   "H_s2",
+   21,
+   10
+  ],
+  [
+   "H_s3",
+   21,
+   2
+  ],
+  [
+   "H_s3",
+   21,
+   4
+  ],
+  [
+   "H_s3",
+   21,
+   6
+  ],
+  [
+   "H_s3",
+   21,
+   8
+  ],
+  [
+   "H_s3",
+   21,
+   10
+  ],
+  [
+   "H_s4",
+   21,
+   2
+  ],
+  [
+   "H_s4",
+   21,
+   4
+  ],
+  [
+   "H_s4",
+   21,
+   6
+  ],
+  [
+   "H_s4",
+   21,
+   8
+  ],
+  [
+   "H_s4",
+   21,
+   10
+  ],
+  [
+   "H_rest",
+   21,
+   2
+  ],
+  [
+   "H_rest",
+   21,
+   4
+  ],
+  [
+   "H_rest",
+   21,
+   6
+  ],
+  [
+   "H_rest",
+   21,
+   8
+  ],
+  [
+   "H_rest",
+   21,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  0,
+  6,
+  11,
+  16,
+  23
+ ],
+ "stepMs": 17,
+ "pick_note": "nền xanh: khung cuối clip ngắn bị bóng chồng/nền tối -> mỗi đoạn chỉ lấy phần đầu clip, seed nền sạch nhất (Codex frames 7-7,5); Codex 7,5: bỏ 2 khung bóng dư trước mốc s4",
+ "end": 23,
+ "holds": {
+  "6": [
+   24,
+   28
+  ],
+  "11": [
+   29,
+   33
+  ],
+  "16": [
+   34,
+   38
+  ],
+  "0": [
+   39,
+   43
+  ]
+ },
+ "head_lock": true,
+ "keep": [
+  0,
+  2,
+  3,
+  4,
+  6,
+  8,
+  9,
+  11,
+  13,
+  14,
+  16,
+  17,
+  19,
+  20,
+  22,
+  23,
+  25,
+  27,
+  30,
+  32,
+  35,
+  37,
+  40,
+  42
+ ]
+}

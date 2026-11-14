@@ -38,7 +38,9 @@ function yukiFoeBody(){
 }
 // Yuki's own drawn body (her idle sheet) in scene pixels.
 function yukiHeroBody(){
-  const sprite=actor('hero').querySelector('.sprite-body'),scene=$('scene').getBoundingClientRect(),r=sprite.getBoundingClientRect();
+  // The body's own box (spriteBaseRect), not the padded skill sheet's bigger drawing box (owner 13/11: the aegis sat
+  // low, 35% too big and off her body).
+  const sprite=actor('hero').querySelector('.sprite-body'),scene=$('scene').getBoundingClientRect(),r=spriteBaseRect(sprite);
   const look=spriteDefinition('hero','ice','idle').sheet,foot=look.footY||.94,height=r.height*(look.bodyHeight||.75);
   const feet=r.top-scene.top+r.height*foot;
   return {x:r.left-scene.left+r.width*(look.feetX??.5),feet,top:feet-height,height,width:r.width*.6};

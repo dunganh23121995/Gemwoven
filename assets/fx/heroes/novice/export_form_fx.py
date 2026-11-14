@@ -32,9 +32,13 @@ FX = {
     'f2-slash': (3, 2, 6, 256, 50, None, False),   # one steel cut of the chain (turned per cut)
     'f2-cross': (4, 2, 8, 320, 70, None, False),   # the finishing cross cut that bursts into wind and leaves
     # plain redesign (owner 07/11): no jewel light left, so no form keeps rose pixels
-    'f3-gems': (3, 2, 6, 288, 90, None, False),     # four small dull motes gathering into the raised blade
-    'f3-crescent': (3, 2, 6, 384, 55, None, False),  # the big steel crescent swept down
-    'f3-crest': (4, 2, 8, 384, 85, 0, False),       # the ground shock under the foe after the heavy blow
+    # six-star redo (owner 13/11, fx_prompts_f3v2.py): hilt stones, the steel blade-aura, the ground split, the basic
+    # down-cut with sparks, the boot dust
+    'f3-hilt': (2, 4, 8, 192, 90, None, False),
+    'f3-cleave': (2, 4, 8, 448, 45, None, False),
+    'f3-split': (2, 4, 8, 384, 70, 0, False),
+    'f3-downcut': (2, 4, 8, 320, 40, None, False),
+    'f3-dust': (2, 4, 8, 192, 60, 0, False),
 }
 
 

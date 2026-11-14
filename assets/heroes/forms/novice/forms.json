@@ -1,376 +1,1054 @@
 {
-  "hero": "novice",
-  "forms": {
-    "2": {
-      "name": "Lữ Khách Kiếm Sĩ",
-      "poster": "assets/heroes/forms/novice/form-2/master.png",
-      "portrait": "assets/heroes/forms/novice/form-2/portrait.png",
-      "actions": {
-        "idle": {
-          "file": "assets/heroes/forms/novice/form-2/idle.webp",
-          "cols": 2,
-          "rows": 4,
-          "count": 8,
-          "heads": [
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 200
-        },
-        "attack": {
-          "file": "assets/heroes/forms/novice/form-2/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 110
-        },
-        "cast": {
-          "file": "assets/heroes/forms/novice/form-2/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 150
-        },
-        "run": {
-          "file": "assets/heroes/forms/novice/form-2/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100
-        },
-        "skill": {
-          "file": "assets/heroes/forms/novice/form-2/skill.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ],
-            [
-              120,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 110
-        }
-      }
+ "hero": "novice",
+ "forms": {
+  "2": {
+   "name": "Lữ Khách Kiếm Sĩ",
+   "poster": "assets/heroes/forms/novice/form-2/master.png",
+   "portrait": "assets/heroes/forms/novice/form-2/portrait.png",
+   "actions": {
+    "idle": {
+     "file": "assets/heroes/forms/novice/form-2/idle.webp",
+     "cols": 2,
+     "rows": 4,
+     "count": 8,
+     "heads": [
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 200
     },
-    "3": {
-      "name": "Anh Hùng Diệu Ngọc",
-      "poster": "assets/heroes/forms/novice/form-3/master.png",
-      "portrait": "assets/heroes/forms/novice/form-3/portrait.png",
-      "actions": {
-        "idle": {
-          "file": "assets/heroes/forms/novice/form-3/idle.webp",
-          "cols": 2,
-          "rows": 4,
-          "count": 8,
-          "heads": [
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 200
-        },
-        "attack": {
-          "file": "assets/heroes/forms/novice/form-3/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 110
-        },
-        "cast": {
-          "file": "assets/heroes/forms/novice/form-3/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 150
-        },
-        "run": {
-          "file": "assets/heroes/forms/novice/form-3/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100,
-          "scale": 0.9
-        },
-        "skill": {
-          "file": "assets/heroes/forms/novice/form-3/skill.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ],
-            [
-              121,
-              70
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 110
-        }
-      }
+    "attack": {
+     "file": "assets/heroes/forms/novice/form-2/attack.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 24,
+     "heads": [
+      [
+       129,
+       68
+      ],
+      [
+       128,
+       70
+      ],
+      [
+       134,
+       73
+      ],
+      [
+       92,
+       52
+      ],
+      [
+       116,
+       63
+      ],
+      [
+       143,
+       80
+      ],
+      [
+       210,
+       64
+      ],
+      [
+       143,
+       75
+      ],
+      [
+       150,
+       68
+      ],
+      [
+       152,
+       78
+      ],
+      [
+       159,
+       85
+      ],
+      [
+       168,
+       82
+      ],
+      [
+       168,
+       84
+      ],
+      [
+       168,
+       80
+      ],
+      [
+       156,
+       70
+      ],
+      [
+       137,
+       66
+      ],
+      [
+       131,
+       66
+      ],
+      [
+       129,
+       68
+      ],
+      [
+       116,
+       63
+      ],
+      [
+       116,
+       63
+      ],
+      [
+       116,
+       63
+      ],
+      [
+       172,
+       80
+      ],
+      [
+       172,
+       79
+      ],
+      [
+       170,
+       82
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 40,
+     "roles": [
+      0,
+      4,
+      6,
+      9,
+      12,
+      17
+     ],
+     "stepMs": 17,
+     "chunkRows": 1,
+     "holds": {
+      "4": [
+       18,
+       20
+      ],
+      "12": [
+       21,
+       23
+      ]
+     },
+     "end": 17,
+     "holdMs": 90
+    },
+    "cast": {
+     "file": "assets/heroes/forms/novice/form-2/cast.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ],
+      [
+       120,
+       70
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 150
+    },
+    "run": {
+     "file": "assets/heroes/forms/novice/form-2/run.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 24,
+     "heads": [
+      [
+       129,
+       68
+      ],
+      [
+       132,
+       68
+      ],
+      [
+       133,
+       69
+      ],
+      [
+       136,
+       69
+      ],
+      [
+       138,
+       70
+      ],
+      [
+       141,
+       70
+      ],
+      [
+       142,
+       74
+      ],
+      [
+       142,
+       76
+      ],
+      [
+       142,
+       78
+      ],
+      [
+       144,
+       80
+      ],
+      [
+       144,
+       80
+      ],
+      [
+       146,
+       82
+      ],
+      [
+       148,
+       82
+      ],
+      [
+       150,
+       85
+      ],
+      [
+       154,
+       88
+      ],
+      [
+       154,
+       94
+      ],
+      [
+       153,
+       98
+      ],
+      [
+       158,
+       98
+      ],
+      [
+       156,
+       100
+      ],
+      [
+       152,
+       101
+      ],
+      [
+       152,
+       100
+      ],
+      [
+       152,
+       96
+      ],
+      [
+       152,
+       96
+      ],
+      [
+       150,
+       96
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 110,
+     "loop": [
+      16,
+      23
+     ],
+     "loopMs": 36,
+     "introTimes": [
+      80,
+      80,
+      80,
+      80,
+      55,
+      52,
+      48,
+      45,
+      42,
+      38,
+      35,
+      31,
+      28,
+      25,
+      21,
+      18
+     ],
+     "chunkRows": 1,
+     "feetX": 0.4772
+    },
+    "skill": {
+     "file": "assets/heroes/forms/novice/form-2/skill.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 24,
+     "heads": [
+      [
+       126,
+       94
+      ],
+      [
+       140,
+       115
+      ],
+      [
+       142,
+       136
+      ],
+      [
+       144,
+       135
+      ],
+      [
+       156,
+       128
+      ],
+      [
+       158,
+       128
+      ],
+      [
+       156,
+       114
+      ],
+      [
+       149,
+       107
+      ],
+      [
+       141,
+       102
+      ],
+      [
+       140,
+       102
+      ],
+      [
+       147,
+       64
+      ],
+      [
+       98,
+       26
+      ],
+      [
+       60,
+       41
+      ],
+      [
+       61,
+       50
+      ],
+      [
+       76,
+       42
+      ],
+      [
+       136,
+       35
+      ],
+      [
+       150,
+       122
+      ],
+      [
+       104,
+       132
+      ],
+      [
+       96,
+       124
+      ],
+      [
+       138,
+       100
+      ],
+      [
+       133,
+       102
+      ],
+      [
+       135,
+       100
+      ],
+      [
+       130,
+       92
+      ],
+      [
+       126,
+       100
+      ]
+     ],
+     "footY": 0.8529,
+     "frameDuration": 40,
+     "scale": 1.2,
+     "feetY": 0.9255,
+     "roles": [
+      2,
+      5,
+      9,
+      13,
+      17,
+      20
+     ],
+     "stepMs": 23,
+     "chunkRows": 1,
+     "end": 23
+    },
+    "hurt": {
+     "file": "assets/heroes/forms/novice/form-2/hurt.webp",
+     "cols": 6,
+     "rows": 3,
+     "count": 14,
+     "heads": [
+      [
+       129,
+       68
+      ],
+      [
+       128,
+       70
+      ],
+      [
+       130,
+       68
+      ],
+      [
+       130,
+       68
+      ],
+      [
+       130,
+       69
+      ],
+      [
+       130,
+       68
+      ],
+      [
+       126,
+       74
+      ],
+      [
+       126,
+       70
+      ],
+      [
+       126,
+       72
+      ],
+      [
+       126,
+       72
+      ],
+      [
+       125,
+       72
+      ],
+      [
+       125,
+       70
+      ],
+      [
+       130,
+       66
+      ],
+      [
+       129,
+       68
+      ]
+     ],
+     "frameDuration": 40,
+     "chunkRows": 1,
+     "recoil": {
+      "deg": -6,
+      "ms": 360
+     }
     }
+   }
+  },
+  "3": {
+   "name": "Anh Hùng Diệu Ngọc",
+   "poster": "assets/heroes/forms/novice/form-3/master.png",
+   "portrait": "assets/heroes/forms/novice/form-3/portrait.png",
+   "actions": {
+    "idle": {
+     "file": "assets/heroes/forms/novice/form-3/idle.webp",
+     "cols": 2,
+     "rows": 4,
+     "count": 8,
+     "heads": [
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 200
+    },
+    "attack": {
+     "file": "assets/heroes/forms/novice/form-3/attack.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 20,
+     "heads": [
+      [
+       126,
+       69
+      ],
+      [
+       130,
+       67
+      ],
+      [
+       134,
+       74
+      ],
+      [
+       85,
+       34
+      ],
+      [
+       125,
+       41
+      ],
+      [
+       205,
+       27
+      ],
+      [
+       144,
+       83
+      ],
+      [
+       142,
+       88
+      ],
+      [
+       142,
+       87
+      ],
+      [
+       144,
+       90
+      ],
+      [
+       142,
+       94
+      ],
+      [
+       144,
+       92
+      ],
+      [
+       146,
+       74
+      ],
+      [
+       141,
+       66
+      ],
+      [
+       128,
+       70
+      ],
+      [
+       126,
+       69
+      ],
+      [
+       125,
+       41
+      ],
+      [
+       125,
+       41
+      ],
+      [
+       145,
+       92
+      ],
+      [
+       146,
+       92
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 40,
+     "roles": [
+      0,
+      4,
+      4,
+      7,
+      10,
+      15
+     ],
+     "stepMs": 29,
+     "chunkRows": 1,
+     "holds": {
+      "4": [
+       16,
+       17
+      ],
+      "10": [
+       18,
+       19
+      ]
+     },
+     "end": 15,
+     "holdMs": 140
+    },
+    "cast": {
+     "file": "assets/heroes/forms/novice/form-3/cast.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ],
+      [
+       121,
+       70
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 150
+    },
+    "run": {
+     "file": "assets/heroes/forms/novice/form-3/run.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 24,
+     "heads": [
+      [
+       126,
+       69
+      ],
+      [
+       128,
+       66
+      ],
+      [
+       131,
+       67
+      ],
+      [
+       134,
+       67
+      ],
+      [
+       136,
+       69
+      ],
+      [
+       138,
+       70
+      ],
+      [
+       140,
+       70
+      ],
+      [
+       140,
+       71
+      ],
+      [
+       142,
+       73
+      ],
+      [
+       144,
+       72
+      ],
+      [
+       144,
+       75
+      ],
+      [
+       146,
+       78
+      ],
+      [
+       151,
+       80
+      ],
+      [
+       154,
+       82
+      ],
+      [
+       155,
+       82
+      ],
+      [
+       155,
+       88
+      ],
+      [
+       155,
+       88
+      ],
+      [
+       154,
+       92
+      ],
+      [
+       154,
+       94
+      ],
+      [
+       152,
+       90
+      ],
+      [
+       154,
+       90
+      ],
+      [
+       152,
+       90
+      ],
+      [
+       153,
+       94
+      ],
+      [
+       150,
+       98
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 110,
+     "scale": 0.9,
+     "loop": [
+      16,
+      23
+     ],
+     "loopMs": 40,
+     "introTimes": [
+      80,
+      80,
+      80,
+      80,
+      55,
+      52,
+      49,
+      45,
+      42,
+      39,
+      36,
+      33,
+      30,
+      26,
+      23,
+      20
+     ],
+     "chunkRows": 1,
+     "feetX": 0.4775
+    },
+    "skill": {
+     "file": "assets/heroes/forms/novice/form-3/skill.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 24,
+     "heads": [
+      [
+       124,
+       95
+      ],
+      [
+       126,
+       94
+      ],
+      [
+       142,
+       69
+      ],
+      [
+       142,
+       74
+      ],
+      [
+       144,
+       76
+      ],
+      [
+       148,
+       60
+      ],
+      [
+       146,
+       78
+      ],
+      [
+       122,
+       83
+      ],
+      [
+       76,
+       76
+      ],
+      [
+       63,
+       94
+      ],
+      [
+       62,
+       91
+      ],
+      [
+       71,
+       104
+      ],
+      [
+       68,
+       103
+      ],
+      [
+       70,
+       86
+      ],
+      [
+       147,
+       70
+      ],
+      [
+       141,
+       118
+      ],
+      [
+       140,
+       116
+      ],
+      [
+       140,
+       112
+      ],
+      [
+       142,
+       106
+      ],
+      [
+       134,
+       103
+      ],
+      [
+       133,
+       101
+      ],
+      [
+       133,
+       96
+      ],
+      [
+       128,
+       94
+      ],
+      [
+       124,
+       95
+      ]
+     ],
+     "footY": 0.8529,
+     "frameDuration": 40,
+     "scale": 1.2,
+     "feetY": 0.9255,
+     "roles": [
+      3,
+      6,
+      9,
+      12,
+      16,
+      19
+     ],
+     "stepMs": 25,
+     "chunkRows": 1,
+     "holds": {},
+     "end": 23,
+     "holdMs": 140
+    },
+    "hurt": {
+     "file": "assets/heroes/forms/novice/form-3/hurt.webp",
+     "cols": 6,
+     "rows": 3,
+     "count": 14,
+     "heads": [
+      [
+       126,
+       69
+      ],
+      [
+       143,
+       77
+      ],
+      [
+       142,
+       74
+      ],
+      [
+       140,
+       72
+      ],
+      [
+       137,
+       72
+      ],
+      [
+       135,
+       66
+      ],
+      [
+       134,
+       70
+      ],
+      [
+       132,
+       69
+      ],
+      [
+       128,
+       72
+      ],
+      [
+       127,
+       69
+      ],
+      [
+       126,
+       70
+      ],
+      [
+       126,
+       69
+      ],
+      [
+       125,
+       68
+      ],
+      [
+       126,
+       69
+      ]
+     ],
+     "frameDuration": 40,
+     "chunkRows": 1,
+     "recoil": {
+      "deg": -6,
+      "ms": 360
+     }
+    }
+   }
   }
+ }
 }

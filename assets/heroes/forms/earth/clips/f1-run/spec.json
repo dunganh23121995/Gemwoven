@@ -1,0 +1,248 @@
+{
+ "id": "f1-run",
+ "hero": "earth",
+ "title": "Nori hình thái 1 · rời sân + Quảng Trường (sheet run)",
+ "rest": "assets/heroes/forms/earth/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/earth/run.webp",
+ "meta": "assets/reimagined/heroes/earth/run/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 55,
+ "segments": [
+  {
+   "name": "X",
+   "start": "rest",
+   "length": 49,
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, from his guard stance first lowers the hammer to his side, then begins a steady jog in place toward screen-right, shield held in front: locked stationary camera, no horizontal drift, pan, zoom or turn. His legs alternate in a clear running gait with clear foot contacts and his torso bobs subtly; he keeps the same pace to the end. Cape and scarf bounce behind him. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "rời sân: vào chạy 1 lần rồi lặp; Quảng Trường dùng cùng sheet (loop)",
+  "plan": "khung vào chạy + vòng kín (loop_pairs)"
+ },
+ "lock": "center",
+ "pick": [
+  [
+   "X",
+   21,
+   0
+  ],
+  [
+   "X",
+   21,
+   3
+  ],
+  [
+   "X",
+   21,
+   6
+  ],
+  [
+   "X",
+   21,
+   9
+  ],
+  [
+   "X",
+   21,
+   12
+  ],
+  [
+   "X",
+   21,
+   13
+  ],
+  [
+   "X",
+   21,
+   14
+  ],
+  [
+   "X",
+   21,
+   15
+  ],
+  [
+   "X",
+   21,
+   16
+  ],
+  [
+   "X",
+   21,
+   17
+  ],
+  [
+   "X",
+   21,
+   18
+  ],
+  [
+   "X",
+   21,
+   19
+  ],
+  [
+   "X",
+   21,
+   20
+  ],
+  [
+   "X",
+   21,
+   21
+  ],
+  [
+   "X",
+   21,
+   22
+  ],
+  [
+   "X",
+   21,
+   23
+  ],
+  [
+   "X",
+   21,
+   24
+  ],
+  [
+   "X",
+   21,
+   25
+  ],
+  [
+   "X",
+   21,
+   26
+  ],
+  [
+   "X",
+   21,
+   27
+  ],
+  [
+   "X",
+   21,
+   28
+  ],
+  [
+   "X",
+   21,
+   29
+  ],
+  [
+   "X",
+   21,
+   30
+  ],
+  [
+   "X",
+   21,
+   31
+  ],
+  [
+   "X",
+   21,
+   32
+  ],
+  [
+   "X",
+   21,
+   33
+  ],
+  [
+   "X",
+   21,
+   34
+  ],
+  [
+   "X",
+   21,
+   35
+  ],
+  [
+   "X",
+   21,
+   36
+  ],
+  [
+   "X",
+   21,
+   37
+  ],
+  [
+   "X",
+   21,
+   38
+  ],
+  [
+   "X",
+   21,
+   39
+  ],
+  [
+   "X",
+   21,
+   40
+  ]
+ ],
+ "loop": [
+  20,
+  32
+ ],
+ "introTimes": [
+  80,
+  80,
+  80,
+  80,
+  55,
+  53,
+  51,
+  49,
+  47,
+  45,
+  43,
+  41,
+  38,
+  36,
+  34,
+  32,
+  30,
+  28,
+  26,
+  24
+ ],
+ "loopMs": 24,
+ "plaza_feet": true,
+ "pick_note": "X s21: hạ búa [0,3,6,9] 80ms, bắt đầu bước 12..27 nhanh dần tới nhịp vòng, vòng kín 28..40 (loop_pairs) ~2 bước; ~200ms/bước",
+ "run_pace_note": "13/11: loopMs 31 -> 24: the body crossed the ground 1.29x faster than the planted foot moved back (owner: the run turned into long strides after the lead-in)",
+ "keep": [
+  0,
+  2,
+  4,
+  6,
+  8,
+  10,
+  11,
+  13,
+  15,
+  17,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32
+ ]
+}

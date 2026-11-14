@@ -25,6 +25,7 @@ section{background:var(--panel);border:1px solid var(--line);border-radius:12px;
 .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 button,select{background:#2f281f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font:inherit;cursor:pointer}
 button:hover{border-color:var(--gold)}button.on{background:var(--gold);color:#1a1409;border-color:var(--gold);font-weight:600}
+.sheet-steps{margin-top:6px;font-size:13px;color:var(--muted,#b9ab8f)}.sheet-steps button{padding:3px 10px;font-size:13px}.sheet-steps i{font-style:normal;opacity:.6}
 button.absent{opacity:.5;border-style:dashed}button.absent.on{background:transparent;color:inherit;border-color:var(--gold)}
 label{display:inline-flex;gap:6px;align-items:center;color:var(--dim)}
 .status{color:var(--dim);font-size:13px}
@@ -106,7 +107,7 @@ canvas.play{width:400px;height:400px;border-radius:8px;background:repeating-coni
 .sheet{position:relative;max-width:100%;overflow:auto;border-radius:8px;background:repeating-conic-gradient(#2a241d 0 25%,#221d17 0 50%) 0 0/16px 16px}
 .sheet img{display:block;max-width:none}
 .sheet .cell{position:absolute;border:1px solid #e8c26a55;color:#e8c26a;font:11px monospace;padding:1px 3px;cursor:pointer}
-.sheet .cell.cur{border-color:var(--gold);background:#e8c26a22}
+.sheet .cell.cur{border-color:var(--gold);background:#e8c26a22}.sheet .cell.unused{background:#0b0906b8;color:#e8c26a66}
 .meta{font:12px monospace;color:var(--dim)}
 /* While a combat test plays, the showcases and the sheet player rest so the fight gets every frame (owner 12/11:
    the clip-route ultimate stuttered with them running). */
@@ -173,6 +174,7 @@ body.combat-busy .stage,body.combat-busy canvas.play{visibility:hidden}
     <section>
       <h2>Sprite sheet trong trận</h2>
       <div class="row" id="actions"></div>
+      <div class="row sheet-steps" id="steps" hidden></div>
       <div class="row" style="margin:8px 0">
         <button id="playpause">Tạm dừng</button><button id="prev">◀ Khung trước</button><button id="next">Khung sau ▶</button>
         <label>ms/khung <input type="range" id="ms" min="40" max="600" value="150"><span id="msv">150</span></label>
@@ -426,53 +428,76 @@ const SHEET_STATES=[['idle','Nghỉ'],['attack','Đánh thường'],['cast','G�
   ['run','Vào / rời sân'],['hover','Bay lơ lửng'],['skill','Tuyệt kỹ']];
 const SHEET_EXTRA={smash:'Tuyệt kỹ (smash)',slash:'Đánh thường riêng (slash)',dash:'Lướt (dash)'};
 const COMBAT_MOMENTS=[['attack','Đánh thường'],['ultimate','Tuyệt kỹ'],['hit','Bị đánh'],['buff','Nhận máu / giáp'],['depart','Rời sân'],['afterglow','Dư âm'],['transform','Biến thân']];
-let combatStates=null;
-fetch('assets/heroes/combat-states.json').then(r=>r.ok?r.json():null).then(j=>{combatStates=j?.heroes||null;if(gq()?.art)loadSheets();}).catch(()=>{});
+let combatStates=null,combatFrames=null;
+fetch('assets/heroes/combat-states.json').then(r=>r.ok?r.json():null).then(j=>{combatStates=j?.heroes||null;combatFrames=j?.frames||null;if(gq()?.art)loadSheets();}).catch(()=>{});
 function ownSheet(name){return sheets[name]&&!sheets[name].aliasOf?sheets[name]:null;}
+// One button a combat moment (owner 14/11: "Sao chỗ này của Noct loạn thế này": one button listed every moment sharing a
+// sheet); a moment playing several sheets shows them in its order on a row below. The button opens the sheet the moment
+// really animates (the most frames shown); a sheet lending it only a pose or two (Noct 2's departure: skill frame 4, cast
+// frame 2, then the run, owner 14/11 "Chỗ này sai rồi nhé") is named with its frames, and only those frames play.
+function realSheet(name){
+  // a state without a sheet of its own plays a borrowed one (sprite-runtime.js spriteDefinition): shown on that one
+  return ownSheet(name)?name:sheets[name]?.aliasOf&&ownSheet(sheets[name].aliasOf)?sheets[name].aliasOf:ownSheet(SHEET_BORROW[name])?SHEET_BORROW[name]:null;
+}
 function combatTabs(){
   const seen=combatStates?.[hero]?.[String(form)];if(!seen)return null;
-  const tabs=[],pic=s=>s.src||s.bands?.[0];
-  const add=(label,name)=>{
-    // a state without a sheet of its own plays a borrowed one (sprite-runtime.js spriteDefinition): shown on that one
-    const real=ownSheet(name)?name:sheets[name]?.aliasOf&&ownSheet(sheets[name].aliasOf)?sheets[name].aliasOf:ownSheet(SHEET_BORROW[name])?SHEET_BORROW[name]:null;if(!real)return;
-    const same=tabs.find(t=>pic(ownSheet(t.name))===pic(ownSheet(real)));
-    if(same){if(!same.label.split(' / ').includes(label))same.label+=' / '+label;return;}
-    tabs.push({name:real,label});
-  };
-  add('Nghỉ','idle');
+  const shownFrames=combatFrames?.[hero]?.[String(form)]||{};
+  const tabs=[{key:'idle',label:'Nghỉ',sheets:['idle'],frames:{}}];
   for(const [k,label] of COMBAT_MOMENTS){
-    const list=k==='buff'?['buff']:(seen[k]||[]);
-    list.forEach(n=>add(list.length>1?`${label} · ${n}`:label,n));
+    const frames={};
+    for(const n of k==='buff'?['buff']:(seen[k]||[])){const r=realSheet(n);if(!r)continue;const f=shownFrames[k]?.[n];
+      frames[r]=f?[...new Set([...(frames[r]||[]),...f])].sort((a,b)=>a-b):frames[r]||null;}
+    const list=Object.keys(frames);if(!list.length)continue;
+    // a sheet showing every frame it has plays whole; the most frames shown is the moment's own animation
+    for(const n of list)if(frames[n]&&frames[n].length>=ownSheet(n).count)frames[n]=null;
+    const size=n=>frames[n]?frames[n].length:ownSheet(n).count;
+    tabs.push({key:k,label,sheets:list,frames,main:list.reduce((a,b)=>size(b)>size(a)?b:a)});
   }
   return tabs;
 }
+let moment='idle',momentTabs=null;
 function loadSheets(){
   const art=gq().art;
   sheets=(form>1&&art.heroForms?.[hero]?.[String(form)])||art.heroes[hero]||{};
-  const measured=combatTabs();
-  const states=measured?measured.map(t=>[t.name,t.label]):[...SHEET_STATES,...Object.keys(sheets).filter(k=>!SHEET_STATES.some(([s])=>s===k)).map(k=>[k,SHEET_EXTRA[k]||k])];
-  $('actions').replaceChildren(...states.map(([k,label])=>{const b=document.createElement('button');b.dataset.state=k;b.textContent=label;
-    b.title=k;b.className=(k===action?'on ':'')+(ownSheet(k)?'':'absent');b.onclick=()=>pick(k);return b;}));
-  pick(states.some(([k])=>k===action)?action:'idle');
+  momentTabs=combatTabs();
+  // without a measure the list falls back to every sheet the form has, one button each
+  const tabs=momentTabs||[...SHEET_STATES,...Object.keys(sheets).filter(k=>!SHEET_STATES.some(([s])=>s===k)).map(k=>[k,SHEET_EXTRA[k]||k])].map(([k,label])=>({key:k,label,sheets:[k],frames:{}}));
+  momentTabs=tabs;
+  $('actions').replaceChildren(...tabs.map(t=>{const b=document.createElement('button');b.dataset.moment=t.key;b.textContent=t.label;
+    b.title=t.sheets.join(' → ');b.className=t.sheets.some(ownSheet)?'':'absent';b.onclick=()=>pickMoment(t.key);return b;}));
+  pickMoment(tabs.some(t=>t.key===moment)?moment:'idle',action);
 }
-const SHEET_BORROW={buff:'cast',hurt:'attack'};
-function pick(name){
-  action=name;for(const b of $('actions').children)b.classList.toggle('on',b.dataset.state===name);
+function pickMoment(key,prefer){
+  moment=key;const t=momentTabs.find(x=>x.key===key)||momentTabs[0];
+  for(const b of $('actions').children)b.classList.toggle('on',b.dataset.moment===t.key);
+  const steps=$('steps');steps.hidden=t.sheets.length<2;
+  steps.replaceChildren(...(t.sheets.length<2?[]:[Object.assign(document.createElement('span'),{textContent:'Thứ tự sheet:'}),...t.sheets.flatMap((n,i)=>{
+    const f=t.frames[n],b=document.createElement('button');b.dataset.state=n;
+    b.textContent=n+(f?` · khung ${f.join(', ')}`:'');b.title=f?'Chỉ mượn các khung này làm tư thế':'Cả sheet';b.onclick=()=>pick(n,f);
+    return i?[Object.assign(document.createElement('i'),{textContent:'→'}),b]:[b];})]));
+  const name=t.sheets.includes(prefer)?prefer:t.main||t.sheets[0];pick(name,t.frames[name]);
+}
+// as the game does (sprite-runtime.js spriteDefinition): a hero without a hurt sheet holds its resting pose (only a foe
+// recoils on its attack sheet), one without a buff sheet plays its cast
+const SHEET_BORROW={buff:'cast',hurt:'idle'};
+let useFrames=null;   // the frames this moment shows of the open sheet (null: all of them)
+function pick(name,frames=null){
+  action=name;useFrames=frames?.length?frames:null;for(const b of $('steps').querySelectorAll('button'))b.classList.toggle('on',b.dataset.state===name);
   const s=ownSheet(name);
   if(!s){
     img=null;$('play').getContext('2d').clearRect(0,0,512,512);$('sheet').replaceChildren();
     const borrow=sheets[name]?.aliasOf||(SHEET_BORROW[name]&&sheets[SHEET_BORROW[name]]?SHEET_BORROW[name]:'');
     $('meta').textContent='Không có trạng thái này'+(borrow?` · trong trận dùng sheet «${borrow}»`:'');return;
   }
-  img=new Image();img.onload=()=>{findCrop();drawSheet();};img.src=s.src||s.bands?.[0]?.replace(/\.r0(\.[a-z]+)$/i,'$1');cur=0;acc=0;shown=s;crop=null;planIngame();
+  img=new Image();img.onload=()=>{findCrop();drawSheet();};img.src=s.src||s.bands?.[0]?.replace(/\.r0(\.[a-z]+)$/i,'$1');cur=useFrames?useFrames[0]:0;acc=0;shown=s;crop=null;planIngame();
   if(s.frameDuration){$('ms').value=s.frameDuration;$('msv').textContent=s.frameDuration;}
 }
 function drawSheet(){
   const s=shown,box=$('sheet'),scale=Math.min(1,560/img.naturalWidth,440/img.naturalHeight);
   box.replaceChildren();const im=img.cloneNode();im.style.width=img.naturalWidth*scale+'px';box.append(im);
   const cw=img.naturalWidth/s.cols*scale,ch=img.naturalHeight/s.rows*scale;
-  for(let i=0;i<s.count;i++){const c=document.createElement('div');c.className='cell';c.textContent=i;Object.assign(c.style,{left:(i%s.cols)*cw+'px',top:Math.floor(i/s.cols)*ch+'px',width:cw+'px',height:ch+'px'});c.onclick=()=>{cur=i;playing=false;$('playpause').textContent='Phát';};box.append(c);}
-  $('meta').textContent=`${action}: ${s.count} khung · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${!$('ingameBox').hidden?' · trong trận: theo thứ tự đòn (bật «Như trong trận»)':s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
+  for(let i=0;i<s.count;i++){const c=document.createElement('div');c.className='cell';c.textContent=i;Object.assign(c.style,{left:(i%s.cols)*cw+'px',top:Math.floor(i/s.cols)*ch+'px',width:cw+'px',height:ch+'px'});if(useFrames&&!useFrames.includes(i))c.classList.add('unused');c.onclick=()=>{cur=i;playing=false;$('playpause').textContent='Phát';};box.append(c);}
+  $('meta').textContent=`${action}: ${s.count} khung${useFrames?` (khoảnh khắc này chỉ dùng khung ${useFrames.join(', ')})`:''} · lưới ${s.cols}×${s.rows} · ${img.naturalWidth}×${img.naturalHeight}px${!$('ingameBox').hidden?' · trong trận: theo thứ tự đòn (bật «Như trong trận»)':s.frameDuration?` · ${s.frameDuration} ms/khung trong game`:''}`;
 }
 // The basic attack as the game plays it (forms-mika.js orders, read from the game; the call times measured in
 // combat, ms from the strike's start): first cut, two linked cuts, then the walk back to rest.
@@ -501,24 +526,26 @@ function findCrop(){
   crop={x:(cx-side/2)/cw,y:(cy-side/2)/ch,w:side/cw,h:side/ch};
 }
 function cell(i){const s=shown,w=img.naturalWidth/s.cols,h=img.naturalHeight/s.rows,c=crop||{x:0,y:0,w:1,h:1};return [(i%s.cols+c.x)*w,(Math.floor(i/s.cols)+c.y)*h,w*c.w,h*c.h];}
+// the next / previous frame the preview steps to: through the moment's frames only when it uses a few
+function step(i,d,count){if(!useFrames)return (i+d+count)%count;const k=useFrames.indexOf(i);return useFrames[((k<0?0:k)+d+useFrames.length)%useFrames.length];}
 function render(now){
   requestAnimationFrame(render);if(document.body.classList.contains('combat-busy')){last=now;return;}const s=ownSheet(action);if(!img?.complete||!s)return;
   const ms=+$('ms').value,plan=$('ingame').checked&&!$('ingameBox').hidden?ingamePlan:null;
   if(plan){if(playing){acc=(acc+now-(last||now))%plan.total;let f=plan[0].f;for(const st of plan)if(st.t<=acc)f=st.f;cur=f;}last=now;}
-  else{if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=(cur+1)%s.count;}}last=now;}
+  else{if(playing){acc+=now-(last||now);while(acc>=ms){acc-=ms;cur=step(cur,1,s.count);}}last=now;}
   const g=$('play').getContext('2d'),k=playing&&$('blend').checked&&!plan?acc/ms:0,m=k*k*(3-2*k);
   g.clearRect(0,0,512,512);
-  if($('onion').checked){g.globalAlpha=.3;g.drawImage(img,...cell((cur+s.count-1)%s.count),0,0,512,512);}
+  if($('onion').checked){g.globalAlpha=.3;g.drawImage(img,...cell(step(cur,-1,s.count)),0,0,512,512);}
   g.globalAlpha=1;g.drawImage(img,...cell(cur),0,0,512,512);
-  if(m>0){g.globalAlpha=m;g.drawImage(img,...cell((cur+1)%s.count),0,0,512,512);}
+  if(m>0&&!(useFrames?.length===1)){g.globalAlpha=m;g.drawImage(img,...cell(step(cur,1,s.count)),0,0,512,512);}
   g.globalAlpha=1;
   for(const c of $('sheet').querySelectorAll('.cell'))c.classList.toggle('cur',+c.textContent===cur);
 }
 requestAnimationFrame(render);
 $('ms').oninput=()=>$('msv').textContent=$('ms').value;
 $('playpause').onclick=()=>{playing=!playing;$('playpause').textContent=playing?'Tạm dừng':'Phát';};
-$('prev').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+shown.count-1)%shown.count;};
-$('next').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=(cur+1)%shown.count;};
+$('prev').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=step(cur,-1,shown.count);};
+$('next').onclick=()=>{if(!ownSheet(action))return;playing=false;$('playpause').textContent='Phát';cur=step(cur,1,shown.count);};
 
 fillForms();showcases();
 </script>

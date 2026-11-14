@@ -15,7 +15,14 @@ ROOT = Path(__file__).resolve().parent
 PROC = 'C:/Users/dungc/.codex/skills/generate2dsprite/scripts/generate2dsprite.py'
 CELL = 320
 # name: (frame ms, ground anchor kind)
-FX = {'tree': (95, 'trunk'), 'roots': (80, 'fixed'), 'quake': (60, 'fixed'), 'jadetree': (80, 'fixed'), 'shards': (0, 'fixed')}
+FX = {      # ultimate v2 (ult-v2-design.md, owner 12/11); the old world-tree, root cage and jade-tree cage went with the old staging
+      'stomp': (55, 'fixed'),       # form 2 v3 (owner 13/11, Claude + Codex): the jade guardian tree behind Nori and the roots that bind the foe
+            # owner 13/11: the roots wrap the whole foe (a cage), the giant shield bursts on the foe
+      'shieldburst': (60, 'fixed'),
+      # whole-kit redo (owner 13/11, ult_v3_prompts.py): basic-attack impacts, the foot-lock, the root clamp, the
+      # monumental shield, the shield ramparts and the antler lock, the renewal stream
+      'hit1': (45, 'fixed'), 'hit2': (45, 'fixed'), 'hit3': (45, 'fixed'), 'footlock': (70, 'fixed'),
+      'bigshield2': (80, 'fixed'), 'citadel': (70, 'fixed'), 'antlerlock': (60, 'fixed'), 'renewal': (70, 'fixed')}
 
 
 def keyed(name):
@@ -42,7 +49,8 @@ GROUND_JADETREE = (.903, .5)  # the jade tree's ground line, measured on the raw
 for name, (ms, kind) in FX.items():
     if not (ROOT / name / 'raw-sheet.png').exists(): continue
     # the jade tree wraps foes of every size (shown up to ~3x a common foe): keep the raw cell's resolution
-    CELL = {'jadetree': 440, 'shards': 160}.get(name, 320)  # shards: separate pieces, one per cell
+    CELL = {'jadetree': 440, 'shards': 160, 'shieldburst': 480, 'hit1': 320, 'hit2': 360, 'hit3': 400, 'footlock': 400,
+            'bigshield2': 480, 'citadel': 480, 'antlerlock': 480, 'renewal': 320}.get(name, 320)  # shards: separate pieces, one per cell
     sheet = keyed(name); W, H = sheet.width / 2, sheet.height / 4
     cells = [np.asarray(sheet.crop((round(c * W), round(r * H), round((c + 1) * W), round((r + 1) * H))).resize((CELL, CELL), Image.LANCZOS), dtype=np.float32) for r in range(4) for c in range(2)]
     # ground point per frame: the trunk's base (lowest solid run in the central columns) or the prompt's fixed point
@@ -60,7 +68,9 @@ for name, (ms, kind) in FX.items():
         shifts = [(0, 0)] * 8
         # ground lines measured on the raws: the root ring's front edge (where the front roots leave the soil,
         # so the cage stands on the foe's ground line), the quake's flash, the jade sapling's crack line
-        foot, ax = {'roots': (.84, .5), 'quake': (.775, .515), 'jadetree': GROUND_JADETREE, 'shards': (.5, .5)}[name]
+        foot, ax = {'roots': (.84, .5), 'jadetree': GROUND_JADETREE, 'shards': (.5, .5),                     'stomp': (.80, .5), 'shieldburst': (.94, .5),
+                    'hit1': (.90, .5), 'hit2': (.92, .5), 'hit3': (.88, .5), 'footlock': (.94, .5), 'bigshield2': (.955, .5),
+                    'citadel': (.89, .5), 'antlerlock': (.93, .5), 'renewal': (.55, .55)}[name]
     strip = Image.new('RGBA', (CELL * 8, CELL))
     for i, (a, (dx, dy)) in enumerate(zip(cells, shifts)):
         im = Image.fromarray(despill(a.copy()).clip(0, 255).astype('uint8'), 'RGBA')
@@ -68,4 +78,38 @@ for name, (ms, kind) in FX.items():
     strip.save(ROOT / f'{name}.webp', 'WEBP', quality=92, alpha_quality=100, method=6)
     meta[name] = {'file': f'assets/fx/heroes/earth/{name}.webp', 'count': 8, 'frameDuration': ms, 'aspect': 1, 'foot': round(float(foot), 4), 'anchorX': round(float(ax), 4)}
     print(name, 'ground', meta[name]['foot'], 'shifts', shifts)
+for band_name in ('crack',):   # long ground bands the game reveals from Nori to the foe
+  if (ROOT / band_name / 'raw-sheet.png').exists():
+      key = ROOT / band_name / 'key'
+      if not (key / 'raw-sheet-clean.png').exists():
+          subprocess.run([sys.executable, PROC, 'process', '--input', str(ROOT / band_name / 'raw-sheet.png'), '--target', 'asset', '--mode', 'fx', '--output-dir', str(key),
+                          '--rows', '1', '--cols', '1', '--fit-scale', '1', '--align', 'center', '--scale-strategy', 'preserve', '--component-mode', 'all'], check=True, capture_output=True)
+      a = np.asarray(Image.open(key / 'raw-sheet-clean.png').convert('RGBA'), dtype=np.float32)
+      ys = np.where((a[..., 3] > 30).sum(1) > 4)[0]; y0, y1 = max(0, ys.min() - 4), min(a.shape[0], ys.max() + 5)
+      band = Image.fromarray(despill(a[y0:y1].copy()).clip(0, 255).astype('uint8'), 'RGBA')
+      band = band.resize((1600, round(band.height * 1600 / band.width)), Image.LANCZOS)
+      band.save(ROOT / f'{band_name}.webp', 'WEBP', quality=92, alpha_quality=100, method=6)
+      # the fissure's middle row (where the glow is) is the ground line the crack lies on
+      al = np.asarray(band)[..., 3] > 100; rows = al.sum(1)
+      meta[band_name] = {'file': f'assets/fx/heroes/earth/{band_name}.webp', 'count': 1, 'frameDuration': 0, 'aspect': round(band.width / band.height, 3), 'foot': round(float(np.argmax(rows)) / band.height, 4), 'anchorX': 0}
+      print(band_name, band.size, meta[band_name])
+# Nori's four-star hammer on its own (owner 13/11, the hammer-throw ultimate): one upright drawing, head up, the game spins
+# it into the sky, brings it down giant on the foe (head down) and back to his hand. head = the head's centre, as a share
+# of the height (the giant hammer lands on it); grip = the pommel end, where his hand holds it.
+if (ROOT / 'hammer2' / 'raw-sheet.png').exists():
+    key = ROOT / 'hammer2' / 'key'
+    if not (key / 'raw-sheet-clean.png').exists():
+        subprocess.run([sys.executable, PROC, 'process', '--input', str(ROOT / 'hammer2' / 'raw-sheet.png'), '--target', 'asset', '--mode', 'fx', '--output-dir', str(key),
+                        '--rows', '1', '--cols', '1', '--fit-scale', '1', '--align', 'center', '--scale-strategy', 'preserve', '--component-mode', 'all'], check=True, capture_output=True)
+    a = np.asarray(Image.open(key / 'raw-sheet-clean.png').convert('RGBA'), dtype=np.float32)
+    ys, xs = np.where(a[..., 3] > 30)
+    a = a[max(0, ys.min() - 3):ys.max() + 4, max(0, xs.min() - 3):xs.max() + 4]
+    im = Image.fromarray(despill(a.copy()).clip(0, 255).astype('uint8'), 'RGBA')
+    im = im.resize((round(im.width * 720 / im.height), 720), Image.LANCZOS)
+    im.save(ROOT / 'hammer2.webp', 'WEBP', quality=92, alpha_quality=100, method=6)
+    al = np.asarray(im)[..., 3] > 100; wide = al.sum(1) > im.width * .5       # the head: the rows wider than half the image
+    rows = np.where(wide)[0]
+    meta['hammer2'] = {'file': 'assets/fx/heroes/earth/hammer2.webp', 'count': 1, 'frameDuration': 0, 'aspect': round(im.width / im.height, 4),
+                       'head': round(float((rows.min() + rows.max()) / 2 / im.height), 4), 'headBottom': round(float(rows.max() / im.height), 4), 'grip': .93}
+    print('hammer2', im.size, meta['hammer2'])
 (ROOT / 'fx.json').write_text(json.dumps(meta, indent=2) + '\n', encoding='utf-8')

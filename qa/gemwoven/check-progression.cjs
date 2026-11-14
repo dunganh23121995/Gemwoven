@@ -119,6 +119,8 @@ assert.equal(M.WORLD.CHAPTERS.length,24);assert.equal(Object.keys(M.WORLD.BOSSES
   // Forms and evolution perks.
   for(const forms of Object.values(M.HERO_FORMS)){assert.deepEqual(forms.map(f=>f.power),[1,1.1,1.25]);assert.equal(new Set(forms.map(f=>f.skill)).size,3,'Each form has its own skill name');assert.ok(forms[2].signature);}
   const f3=key=>M.skillKit(key,{level:500,stars:6,evolution:0,skills:[1,1,0,0]});
+  // Nori form 3 (owner 14/11): chained ultimates in one turn raise the burst by Fibonacci steps of 0.5.
+  assert.deepEqual([1,2,3,4,5,6].map(n=>M.noriChainBurst(3.5,n)),[3.5,4,5,6.5,9,13])
   assert.equal(f3('fire').burn.turns,3);assert.equal(f3('ice').armor,40);assert.equal(f3('ice').enemyDrain,25);assert.equal(f3('earth').burst,3.5);assert.equal(f3('earth').regenTurns,4);assert.equal(f3('lightning').hits,9);assert.deepEqual(f3('shadow').execute,{threshold:.3,bonus:1.5});
   assert.equal(M.skillKit('fire',{level:500,stars:4,evolution:0,skills:[1,1,0,0]}).power,1.1);
   assert.deepEqual([0,1,2,3,4,5,6].map(e=>M.evolutionBonus(e).startEnergy),[0,0,0,20,20,20,40]);assert.deepEqual([0,1,5,6].map(e=>M.evolutionBonus(e).power),[1,1.05,1.05,1.15]);

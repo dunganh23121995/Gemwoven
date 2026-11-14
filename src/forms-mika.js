@@ -305,14 +305,15 @@ async function mikaNineSunSweep(raw,onRelease){
     combatVoice('hero','cast');mikaSound('gather',.34,-.15);mikaSound('f3-flare',.38,-.25);popActorSkill('hero',HEROES.fire.skill,true,pending);
     setSpriteFrame('hero','skill',0);flare=mikaTailFlare(root,pending);
     const foe=mikaFoeBody(),hero=combatV3Point('hero'),reach=Math.max(150,foe.right+10-mikaGrip(3,3).x);
-    // Drawn back, the glaive reaches off the stage behind her; swung round, past the foe.
-    back=mikaWeapon('glaive3',reach*.75);front=mikaWeapon('glaive3',reach);
     // WHIP: a clip-route sheet whips the glaive round from behind her before the sweep's level reach (owner 12/11: fast).
     const WIND=650,SWEEP=1250,HIT=1420,whipped=!!ART.heroForms?.fire?.['3']?.skill?.clock,WHIP=whipped?1250:SWEEP;
+    // Drawn back, the glaive reaches off the stage behind her; swung round, past the foe. A clip sheet draws its own glaive
+    // turning behind her, so the straight fire glaive laid over it there doubled the blade (owner 13/11): the sweep's only.
+    back=whipped?null:mikaWeapon('glaive3',reach*.75);front=mikaWeapon('glaive3',reach);
     const track=now=>{
-      if(!back?.node.isConnected)return;
+      if(!front?.node.isConnected)return;
       const t=now-start;
-      if(t>=WIND&&t<WHIP+80){
+      if(!back);else if(t>=WIND&&t<WHIP+80){
         const g=mikaGrip(3,1),grow=mikaEase((t-WIND)/480);
         back.frame(t<WIND+260?0:1+Math.floor(t/90)%2);back.place(g.x,g.y,180,mikaLerp(.35,1,grow));
         back.node.style.opacity=String(t<WHIP?mikaLerp(0,1,(t-WIND)/120):Math.max(0,1-(t-WHIP)/80));
@@ -325,7 +326,7 @@ async function mikaNineSunSweep(raw,onRelease){
       if(ring?.isConnected){const g=mikaGrip(3,3);ring.style.left=g.x+'px';ring.style.top=g.y+'px';}
       frameId=requestAnimationFrame(track);
     };
-    if(back&&front){back.node.style.opacity='0';front.node.style.opacity='0';frameId=requestAnimationFrame(track);}
+    if(front){if(back)back.node.style.opacity='0';front.node.style.opacity='0';frameId=requestAnimationFrame(track);}
     // A clip sheet whips the glaive round on the steel's scrape (owner 12/11: fast, on the sharpening sound): the scrape
     // (loud 40-360 ms into it) rings through the whip, the fire whoosh with the ring at the sweep's level reach.
     await at(WIND);setSpriteFrame('hero','skill',1);root.dataset.ragePhase='draw';if(!whipped)mikaSound('draw',.34,-.3);
@@ -337,13 +338,14 @@ async function mikaNineSunSweep(raw,onRelease){
     await at(SWEEP+100);setSpriteFrame('hero','skill',3);if(ring)mikaFxFrame(ring,'ring3',1);mikaSound('cut',.34,.2);
     await at(HIT);root.dataset.ragePhase='impact';root.dataset.rageHit='1';delete root.dataset.mikaFlare;
     result=mikaContact(raw,onRelease,pending);mikaSound('f3-sun',.56,.3);mikaSound('finale',.4,.25);
-    mikaBurst('impact3',{x:foe.x,y:foe.y},Math.min($('scene').clientWidth*.85,Math.max(foe.width,foe.height)*1.9),pending,{hold:1.25,fade:240});
+    mikaBurst('impact3',{x:foe.x,y:foe.y},combatV3Fit(foe.x,foe.y,Math.min($('scene').clientWidth*.85,Math.max(foe.width,foe.height)*1.9),1.05),pending,{hold:1.25,fade:240});
     mikaShake(pending,1.6);mikaFlash(pending,'sun');combatV3Camera(1,true,state.boss,pending);
     if(ring){const node=ring;pending.push((async()=>{await wait(110);mikaFxFrame(node,'ring3',2);await wait(170);mikaFxFrame(node,'ring3',3);await animate(node,[{opacity:1},{opacity:0}],{duration:260,fill:'forwards'});})().finally(()=>node.remove()));}
     await at(HIT+130);setSpriteFrame('hero','skill',4);root.dataset.ragePhase='spirits';
     mikaFoxSpirits({x:mikaGrip(3,4).x,foot:hero.foot},foe,pending);
-    await at(2350);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
-    await at(2850);await Promise.all(pending);return result;
+    // A clip sheet pulls the glaive back home quickly (owner 13/11: "thu đao về nhanh"), clock 1550-2120.
+    await at(whipped?1880:2350);setSpriteFrame('hero','skill',5);root.dataset.ragePhase='recover';
+    await at(whipped?2150:2850);await Promise.all(pending);return result;
   }finally{
     await Promise.allSettled(pending);cancelAnimationFrame(frameId);back?.remove();front?.remove();ring?.remove();flare?.remove();root.style.zIndex=oldZ;
     delete root.dataset.mikaFlare;delete root.dataset.ragePhase;delete root.dataset.rageHit;root.classList.remove('combat-v3-acting');setSpriteAction('hero','idle');setSpriteAction('enemy','idle');

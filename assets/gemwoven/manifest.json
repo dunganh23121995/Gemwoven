@@ -12325,15 +12325,15 @@
     ],
     "file": "assets/reimagined/heroes/fire/smash.webp",
     "width": 3072,
-    "height": 3584,
+    "height": 2048,
     "cell": [
       1024,
-      1792
+      1024
     ],
     "body": {
-      "crown": 0.06194196428571429,
-      "foot": 1.0,
-      "x": 0.52978515625
+      "crown": 0.103515625,
+      "foot": 0.98828125,
+      "x": 0.498046875
     }
   },
   "ulti-fire-2-wave": {
@@ -12431,15 +12431,15 @@
     ],
     "file": "assets/heroes/forms/fire/form-2/skill.webp",
     "width": 3228,
-    "height": 4304,
+    "height": 2152,
     "cell": [
       807,
-      1434
+      717
     ],
     "body": {
-      "crown": 0.08368200836820083,
+      "crown": 0.1297071129707113,
       "foot": 1.0,
-      "x": 0.5446096654275093
+      "x": 0.18649318463444858
     }
   },
   "ulti-fire-3-wave": {
@@ -12513,25 +12513,25 @@
     ],
     "file": "assets/heroes/forms/fire/form-3/skill.webp",
     "width": 4032,
-    "height": 5376,
+    "height": 2688,
     "cell": [
       1344,
-      2688
+      1344
     ],
     "body": {
-      "crown": 0.09672619047619048,
-      "foot": 0.9720982142857143,
-      "x": 0.5022321428571429
+      "crown": 0.19717261904761904,
+      "foot": 0.9508928571428571,
+      "x": 0.5334821428571429
     }
   },
   "cmove-novice-1": {
     "file": "assets/heroes/novice/run.webp",
-    "cols": 2,
-    "rows": 2,
-    "count": 4,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
     "scale": 1,
     "footY": 0.94,
-    "ms": 100,
+    "ms": 110,
     "headPx": 13.5,
     "cellPx": 256,
     "bodyPx": 177
@@ -12551,11 +12551,11 @@
   "cmove-fire-1": {
     "file": "assets/reimagined/heroes/fire/run.webp",
     "cols": 6,
-    "rows": 7,
-    "count": 39,
+    "rows": 4,
+    "count": 24,
     "scale": 1,
     "footY": 0.94,
-    "ms": 55,
+    "ms": 110,
     "headPx": 12.06,
     "cellPx": 256,
     "bodyPx": 163
@@ -12575,11 +12575,11 @@
   "cmove-fire-2": {
     "file": "assets/heroes/forms/fire/form-2/run.webp",
     "cols": 6,
-    "rows": 7,
-    "count": 40,
+    "rows": 4,
+    "count": 24,
     "scale": 1.25,
     "footY": 0.8516,
-    "ms": 55,
+    "ms": 110,
     "headPx": 12.08,
     "cellPx": 256,
     "bodyPx": 196
@@ -12599,11 +12599,11 @@
   "cmove-fire-3": {
     "file": "assets/heroes/forms/fire/form-3/run.webp",
     "cols": 6,
-    "rows": 6,
-    "count": 32,
+    "rows": 4,
+    "count": 24,
     "scale": 1.55,
     "footY": 0.851,
-    "ms": 55,
+    "ms": 110,
     "headPx": 11.51,
     "cellPx": 256,
     "bodyPx": 223
@@ -12622,12 +12622,12 @@
   },
   "cmove-ice-1": {
     "file": "assets/reimagined/heroes/ice/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
     "scale": 1,
     "footY": 0.94,
-    "ms": 150,
+    "ms": 110,
     "headPx": 12.08,
     "cellPx": 256,
     "bodyPx": 171
@@ -12646,12 +12646,12 @@
   },
   "cmove-ice-2": {
     "file": "assets/heroes/forms/ice/form-2/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
     "scale": 1,
     "footY": 0.94,
-    "ms": 100,
+    "ms": 55,
     "headPx": 13.78,
     "cellPx": 256,
     "bodyPx": 197
@@ -12670,12 +12670,12 @@
   },
   "cmove-ice-3": {
     "file": "assets/heroes/forms/ice/form-3/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
-    "scale": 1,
-    "footY": 0.94,
-    "ms": 100,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "scale": 1.3,
+    "footY": 0.8506,
+    "ms": 110,
     "headPx": 12.24,
     "cellPx": 256,
     "bodyPx": 191
@@ -12694,12 +12694,12 @@
   },
   "cmove-earth-1": {
     "file": "assets/reimagined/heroes/earth/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
     "scale": 1,
     "footY": 0.94,
-    "ms": 150,
+    "ms": 55,
     "headPx": 9.8,
     "cellPx": 256,
     "bodyPx": 143
@@ -12718,12 +12718,12 @@
   },
   "cmove-earth-2": {
     "file": "assets/heroes/forms/earth/form-2/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
-    "scale": 1.1765,
-    "footY": 0.94,
-    "ms": 100,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "scale": 1.25,
+    "footY": 0.8516,
+    "ms": 110,
     "headPx": 15.6,
     "cellPx": 256,
     "bodyPx": 189
@@ -12742,12 +12742,12 @@
   },
   "cmove-earth-3": {
     "file": "assets/heroes/forms/earth/form-3/run.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
-    "scale": 1.1765,
-    "footY": 0.94,
-    "ms": 100,
+    "cols": 6,
+    "rows": 4,
+    "count": 24,
+    "scale": 1.3,
+    "footY": 0.8506,
+    "ms": 110,
     "headPx": 13.87,
     "cellPx": 256,
     "bodyPx": 191
@@ -12766,12 +12766,12 @@
   },
   "cmove-lightning-1": {
     "file": "assets/reimagined/heroes/lightning/hover.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
+    "cols": 6,
+    "rows": 4,
+    "count": 23,
     "scale": 1,
     "footY": 0.94,
-    "ms": 150,
+    "ms": 70,
     "headPx": 11.1,
     "cellPx": 256,
     "bodyPx": 169
@@ -12790,12 +12790,12 @@
   },
   "cmove-lightning-2": {
     "file": "assets/heroes/forms/lightning/form-2/hover.webp",
-    "cols": 3,
-    "rows": 2,
-    "count": 6,
+    "cols": 6,
+    "rows": 4,
+    "count": 23,
     "scale": 1,
     "footY": 0.94,
-    "ms": 110,
+    "ms": 70,
     "headPx": 11.99,
     "cellPx": 256,
     "bodyPx": 189

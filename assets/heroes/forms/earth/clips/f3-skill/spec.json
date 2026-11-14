@@ -1,0 +1,400 @@
+{
+ "id": "f3-skill",
+ "hero": "earth",
+ "title": "Nori hình thái 3 · tuyệt kỹ mới (sheet skill)",
+ "rest": "assets/heroes/forms/earth/form-3/rig/combat/rest.png",
+ "pad": 1.45,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/earth/form-3/skill.webp",
+ "forms": [
+  "3",
+  "skill"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.45,
+ "footY": 0.8522,
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "plant",
+   "length": 13,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, from his guard stance thrusts his big emerald shield forward and plants its lower rim firmly on the ground in front of him, bracing behind it, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H",
+   "start": "plant",
+   "end": "plant",
+   "length": 17,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, braced behind his shield planted on the ground in front of him, gathering power, breathing steadily. He holds this pose steadily; only his hair, cape, scarf and leaves keep moving gently in the wind, then everything returns to the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "plant",
+   "end": "knee",
+   "length": 9,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, behind his planted shield stands tall on his left leg and quickly lifts his near right leg high, the thigh rising to horizontal with the boot hanging below the knee, clearly visible beside the shield, about to stomp, into the pose of the last frame. The shield stays planted on the ground. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "knee",
+   "end": "stomp",
+   "length": 9,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, drives his raised boot straight down and slams it flat onto the ground in one explosive stomp (the stomping leg clearly visible all the way down, his standing foot staying planted in place), then drops into a very wide low stance, into the pose of the last frame; the shield stays planted, cape and leaves fling outward from the impact. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "L",
+   "start": "stomp",
+   "end": "stomp",
+   "length": 13,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, holds his wide low stance right after a mighty stomp, shield planted in front, shouting. He holds this pose steadily; only his hair, cape, scarf and leaves keep moving gently in the wind, then everything returns to the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "stomp",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, rises from the wide low stance, lifts his shield from the ground and returns smoothly to his calm guard stance of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "keys": {
+  "plant": {
+   "file": "assets/heroes/forms/earth/clips/f3-skill/keys/plant-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (plant-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "knee": {
+   "file": "assets/heroes/forms/earth/clips/f3-skill/keys/knee-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (knee-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "stomp": {
+   "file": "assets/heroes/forms/earth/clips/f3-skill/keys/stomp-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (stomp-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "game": {
+  "code": "src/forms-nori.js noriFormUltimate (v2, assets/fx/heroes/earth/ult-v2-design.md): đồng hồ clock",
+  "plan": "xem ult-v2-design.md"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   2
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   6
+  ],
+  [
+   "A",
+   7,
+   8
+  ],
+  [
+   "A",
+   7,
+   10
+  ],
+  [
+   "A",
+   7,
+   11
+  ],
+  [
+   "key",
+   "plant"
+  ],
+  [
+   "H",
+   7,
+   2
+  ],
+  [
+   "H",
+   7,
+   4
+  ],
+  [
+   "H",
+   7,
+   6
+  ],
+  [
+   "H",
+   7,
+   8
+  ],
+  [
+   "H",
+   7,
+   10
+  ],
+  [
+   "H",
+   7,
+   12
+  ],
+  [
+   "H",
+   7,
+   14
+  ],
+  [
+   "B",
+   21,
+   2
+  ],
+  [
+   "B",
+   21,
+   4
+  ],
+  [
+   "B",
+   21,
+   5
+  ],
+  [
+   "B",
+   21,
+   6
+  ],
+  [
+   "B",
+   21,
+   7
+  ],
+  [
+   "key",
+   "knee"
+  ],
+  [
+   "C",
+   33,
+   2
+  ],
+  [
+   "C",
+   33,
+   4
+  ],
+  [
+   "C",
+   33,
+   5
+  ],
+  [
+   "key",
+   "stomp"
+  ],
+  [
+   "L",
+   7,
+   2
+  ],
+  [
+   "L",
+   7,
+   4
+  ],
+  [
+   "L",
+   7,
+   6
+  ],
+  [
+   "L",
+   7,
+   8
+  ],
+  [
+   "L",
+   7,
+   10
+  ],
+  [
+   "D",
+   7,
+   2
+  ],
+  [
+   "D",
+   7,
+   4
+  ],
+  [
+   "D",
+   7,
+   6
+  ],
+  [
+   "D",
+   7,
+   8
+  ],
+  [
+   "D",
+   7,
+   10
+  ],
+  [
+   "D",
+   7,
+   12
+  ],
+  [
+   "D",
+   7,
+   14
+  ],
+  [
+   "D",
+   7,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "clock": [
+  {
+   "t": [
+    0,
+    400
+   ],
+   "f": [
+    0,
+    7
+   ]
+  },
+  {
+   "t": [
+    400,
+    850
+   ],
+   "loop": [
+    7,
+    14
+   ],
+   "endOnFirst": true
+  },
+  {
+   "t": [
+    850,
+    1000
+   ],
+   "f": [
+    15,
+    20
+   ]
+  },
+  {
+   "t": [
+    1000,
+    1040
+   ],
+   "f": [
+    20,
+    20
+   ]
+  },
+  {
+   "t": [
+    1040,
+    1100
+   ],
+   "f": [
+    21,
+    24
+   ]
+  },
+  {
+   "t": [
+    1100,
+    1900
+   ],
+   "loop": [
+    24,
+    29
+   ],
+   "endOnFirst": true
+  },
+  {
+   "t": [
+    1900,
+    2600
+   ],
+   "f": [
+    30,
+    38
+   ]
+  }
+ ],
+ "hold_lock": {
+  "frames": [
+   [
+    7,
+    14
+   ],
+   [
+    24,
+    29
+   ]
+  ]
+ },
+ "even_size": true,
+ "feet_lock": false,
+ "pick_note": "A s7 cắm khiên, H vòng giữ (hào quang), B nhấc gối, C dậm, L vòng giữ sau dậm, D về thủ; nhịp ult-v2-design.md (sau review Codex); Codex frames 7,5 -> mốc gối vẽ lại (đùi ngang, giày lộ rõ), B s21, C s33 chân dậm thẳng xuống",
+ "zoom_box": [
+  57,
+  70,
+  615,
+  821
+ ],
+ "same": {
+  "18": 17
+ },
+ "same_note": "khung 18 (B s21:6) Codex vẽ lệch, khóa giày sau nhận sai -> búa bị cắt mép: dùng hình khung 17",
+ "head_lock": true,
+ "keep": [
+  0,
+  2,
+  4,
+  5,
+  7,
+  9,
+  10,
+  12,
+  13,
+  15,
+  17,
+  18,
+  20,
+  21,
+  23,
+  24,
+  26,
+  28,
+  30,
+  32,
+  33,
+  35,
+  36,
+  38
+ ]
+}

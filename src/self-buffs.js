@@ -141,16 +141,18 @@ async function tickNoriRenewal(){
   if(!state.noriRegenTurns)pending.push(selfBuffSpiral('heal',650));
   await Promise.all(pending);
 }
+// The multiplier the running seal bursts with: the kit's, or the higher one form 3's chained ultimates set (forms-nori.js).
+function noriBurstNow(){return state.noriBurst||progressionKit('earth').burst;}
 function syncNoriDamageSeal(){
   const target=actor('enemy');let seal=target.querySelector('.nori-damage-seal');
   if(state.key!=='earth'||state.hp<=0||state.enemyHp<=0||ended){
     if(state.noriStunTurns>0)state.stunned=false;
-    state.noriStunTurns=0;state.noriStoredDamage=0;
+    state.noriStunTurns=0;state.noriStoredDamage=0;state.noriBurst=0;
   }
   if(!(state.noriStunTurns>0)){seal?.remove();return;}
   if(!seal){seal=document.createElement('span');seal.className='nori-damage-seal';seal.setAttribute('aria-hidden','true');seal.innerHTML='<i></i><b></b>';target.append(seal);}
   seal.style.setProperty('--seal-power',String(Math.min(1,(state.noriStoredDamage||0)/100)));
-  const burst=progressionKit('earth').burst,times='×'+burst.toLocaleString('vi-VN');
+  const burst=noriBurstNow(),times='×'+burst.toLocaleString('vi-VN');
   seal.querySelector('b').textContent='TÍCH '+(state.noriStoredDamage||0)+' '+times;
   const status=document.createElement('span');status.className='status-pill nori-seal-status';status.textContent=state.noriStunTurns+' lượt';status.title='Choáng của Nori · hết choáng nổ '+times+' sát thương tích trữ';
   $('enemyStatuses').append(status);
@@ -163,7 +165,7 @@ async function consumeNoriStunTurn(){
   if(state.noriStunTurns>0){update();return;}
   // Store post-element/critical damage before armor. Apply armor exactly once
   // to the burst, without multiplying elemental or Nori's base damage again.
-  const stored=state.noriStoredDamage||0,burst=progressionKit('earth').burst,total=Math.round(stored*burst),times='×'+burst.toLocaleString('vi-VN');state.noriStoredDamage=0;update();
+  const stored=state.noriStoredDamage||0,burst=noriBurstNow(),total=Math.round(stored*burst),times='×'+burst.toLocaleString('vi-VN');state.noriStoredDamage=0;state.noriBurst=0;update();
   if(!stored||state.enemyHp<=0||state.hp<=0)return;
   const target=actor('enemy'),jobs=[],point=combatV3Point('enemy');
   const flare=castFx('earth','seal-burst',point,150,'',650,jobs,[

@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T10:15:22Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-2\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone-and-gold war hammer in his right hand and a green kite shield with a golden tree emblem strapped to his left forearm. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the hammer and the shield stay on the same arms as in Image 1, the hammer always ONE whole rigid weapon.\n\nDraw ONE single full-body sprite of him commanding the sky with his EMPTY right hand: his right arm raised high above his head and pointing up and forward toward the upper right, the index finger pointing, the arm passing ABOVE the top rim of the shield; the kite shield stays strapped to his LEFT forearm on the screen-right side in front of his body exactly as in Image 1; feet planted wide and firm, looking up toward the upper right, shouting a command, mouth open; NO hammer anywhere in the picture. A clear, readable, powerful silhouette for a small phone screen; the whole body commits to the motion. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, impact flash, dust, cracks, glow, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Flat solid magenta background, single character with no hammer, whole body inside the frame with margin, shield on the screen-right forearm, and the same costume, antlers, and green eyes as the reference. The pointing arm is raised toward the upper right but sits closer to shoulder height than fully overhead, a minor pose deviation rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000772
+  }
+}

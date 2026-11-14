@@ -1,0 +1,233 @@
+{
+ "id": "f2-attack",
+ "hero": "novice",
+ "title": "Hiro hình thái 2 · attack",
+ "rest": "assets/heroes/forms/novice/form-2/rig/combat/rest.png",
+ "pad": 1.0,
+ "out": "assets/heroes/forms/novice/form-2/attack.webp",
+ "forms": [
+  "2",
+  "attack"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "stepMs": 17,
+ "head_lock": true,
+ "redo": "Hiro redo 13/11 (redo-1311.md): Codex-drawn keys, new clips",
+ "keys": {
+  "W": {
+   "file": "assets/heroes/forms/novice/clips/f2-attack/keys/W-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (W-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "F": {
+   "file": "assets/heroes/forms/novice/clips/f2-attack/keys/F-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (F-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "C": {
+   "file": "assets/heroes/forms/novice/clips/f2-attack/keys/C-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (C-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "M": {
+   "file": "assets/heroes/forms/novice/clips/f2-attack/keys/M-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (M-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "W",
+   "length": 13,
+   "prompt": "A chibi young boy swordsman with messy light-brown hair with an ahoge, brown eyes, a long tattered olive-green scarf and cape, a steel shoulder guard, a quilted brown leather jerkin, leather bracers, brown trousers and boots, holding a plain steel sword in his right hand, draws the sword back over his rear shoulder, bending his knees and loading his weight onto his back leg, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "W",
+   "end": "M",
+   "length": 9,
+   "prompt": "A chibi young boy swordsman with messy light-brown hair with an ahoge, brown eyes, a long tattered olive-green scarf and cape, a steel shoulder guard, a quilted brown leather jerkin, leather bracers, brown trousers and boots, holding a plain steel sword in his right hand, steps toward screen-right and whips the steel sword up over his shoulder in one hand, the blade rising above his head and slanting forward, starting a fast diagonal downward slash, the hips turning hard, into the pose of the last frame, the blade clearly visible in every frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "E",
+   "start": "M",
+   "end": "C",
+   "length": 9,
+   "prompt": "A chibi young boy swordsman with messy light-brown hair with an ahoge, brown eyes, a long tattered olive-green scarf and cape, a steel shoulder guard, a quilted brown leather jerkin, leather bracers, brown trousers and boots, holding a plain steel sword in his right hand, brings the steel sword down in one fast one-handed diagonal slash from above his head to slanting down-forward in front of him, planting his lead foot in a long step, the torso twisting into the cut, into the pose of the last frame, the blade clearly visible in every frame and always a downward cut, never a level thrust. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "C",
+   "end": "F",
+   "length": 9,
+   "prompt": "A chibi young boy swordsman with messy light-brown hair with an ahoge, brown eyes, a long tattered olive-green scarf and cape, a steel shoulder guard, a quilted brown leather jerkin, leather bracers, brown trousers and boots, holding a plain steel sword in his right hand, carries the diagonal slash through: the blade sweeps on down to low beside his front knee, the body folding forward over the bent front knee, the cape whipping round, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "F",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi young boy swordsman with messy light-brown hair with an ahoge, brown eyes, a long tattered olive-green scarf and cape, a steel shoulder guard, a quilted brown leather jerkin, leather bracers, brown trousers and boots, holding a plain steel sword in his right hand, rises from the low follow-through and settles back into his calm guard of the last frame, the sword lowered to his side. No second attack. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_W",
+   "start": "W",
+   "end": "W",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_F",
+   "start": "F",
+   "end": "F",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   2
+  ],
+  [
+   "A",
+   7,
+   6
+  ],
+  [
+   "A",
+   7,
+   10
+  ],
+  [
+   "key",
+   "W"
+  ],
+  [
+   "B",
+   7,
+   4
+  ],
+  [
+   "key",
+   "M"
+  ],
+  [
+   "E",
+   7,
+   2
+  ],
+  [
+   "E",
+   7,
+   6
+  ],
+  [
+   "key",
+   "C"
+  ],
+  [
+   "C",
+   7,
+   3
+  ],
+  [
+   "C",
+   7,
+   6
+  ],
+  [
+   "key",
+   "F"
+  ],
+  [
+   "D",
+   21,
+   2
+  ],
+  [
+   "D",
+   21,
+   5
+  ],
+  [
+   "D",
+   21,
+   8
+  ],
+  [
+   "D",
+   21,
+   10
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_W",
+   7,
+   3
+  ],
+  [
+   "H_W",
+   7,
+   6
+  ],
+  [
+   "H_W",
+   7,
+   9
+  ],
+  [
+   "H_F",
+   21,
+   3
+  ],
+  [
+   "H_F",
+   21,
+   6
+  ],
+  [
+   "H_F",
+   21,
+   9
+  ]
+ ],
+ "roles": [
+  0,
+  4,
+  6,
+  9,
+  12,
+  17
+ ],
+ "game": {
+  "code": "combat-v3 attack() (forms-hiro hiroStarAttack 2): roles 0 guard .. 3 contact .. 5 recover",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "end": 17,
+ "holds": {
+  "4": [
+   18,
+   20
+  ],
+  "12": [
+   21,
+   23
+  ]
+ },
+ "redo2": "owner 14/11 \"Động tác đánh thường của Hiro2 làm lại\": the level chest cut read as a thrust; a one-handed diagonal down-slash, keys M (mid-swing, blade up-forward over his head), C (blade down-forward 45 deg), F (low past the front knee) redrawn, W kept",
+ "pick_note": "14/11 diagonal down-slash: E s7 2 and 6 skip its level-blade frames (3-5, they read as a thrust); B s7 4 (its frame 5 shrank the blade to a sliver, Codex 14/11 8/10); D s21 (s7 hazes at its end)",
+ "holdMs": 90
+}

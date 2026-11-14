@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-12T12:02:35Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\clips\\f3-skill\\keys\\rest-1024.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young forest knight with messy brown hair, big golden antlers with green leaves, green eyes, ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a long leafy cape and tabard, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by pale roots and leaves on his left arm. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1.\n\nDraw ONE single full-body sprite of him planting his shield: he thrusts the big emerald shield forward and down so its lower rim rests firmly on the ground in front of him, his left arm and shoulder pressing into it, knees bent in a strong wide braced stance, the crystal hammer held low at his right side, his determined face visible above the shield rim, cape and leaves swinging forward with the motion.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No glow, aura, dust, cracks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Single chibi forest knight on a flat magenta background, full body inside the frame with margins, matching the reference's costume, antlers, hammer and shield designs. The planted-shield pose is loosely followed, and the shield rim sits near the ground. No text, extra figures or clear anatomy errors are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000639
+  }
+}

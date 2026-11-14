@@ -26,12 +26,10 @@ REPO = HERE.parents[4]
 sys.path.insert(0, str(Path.home() / ".codex/skills/generate2dsprite/scripts"))
 from generate2dsprite import remove_bg_magenta  # noqa: E402
 
-ACTIONS = ("attack", "attackLeft", "cast", "run", "skill")   # no hover: he runs, he never floats
-# The draw-cut is drawn twice: facing right he turns his back to the viewer (attack-back/, the right
-# arm that draws is the near one); facing left the viewer sees his front (attack-front/, drawn facing
-# left and stored mirrored, since the runtime mirrors a hero who faces left). attackLeft is picked by
-# the runtime whenever he faces left (src/forms-noct.js).
-SOURCE = {"attack": ("attack-back", False), "attackLeft": ("attack-front", True)}
+ACTIONS = ("cast", "run", "skill")   # no hover: he runs, he never floats
+# The draw-cut (attack) comes from the clip route (assets/heroes/clip_pipeline.py, shadow/f2-attack; keys drawn by Codex in
+# clips/f2_attack_keys.py), his front facing right (owner 14/11); the old back-view sheet and its mirrored front-view twin (attackLeft) are gone.
+SOURCE = {}
 CELL = 256
 FACE = (130, 88, 182, 126)          # eyes and hood brim on the resting frame (eyes at about 146,108 and 160,111)
 PORTRAIT = (104, 50, 204, 150)      # head and shoulders on the resting frame
@@ -104,7 +102,7 @@ def to_ground(frame, target):
 
 
 # Poses that stand on the ground (the rest are mid-dash or mid-stride and keep their drawn height).
-GROUNDED = {"attack": range(6), "attackLeft": range(6), "cast": (0, 1, 2, 4, 5), "skill": range(6)}
+GROUNDED = {"cast": (0, 1, 2, 4, 5), "skill": range(6)}
 
 
 def despeckle(img, min_area=40):
@@ -151,7 +149,7 @@ def cells(action):
 # pixel size, and the runtime grows those cells about the feet by the same factor (sprite-runtime.js
 # sheet.scale), so the body keeps its size and the blade is never clipped.
 NO_SIZE_FIX = {"skill"}
-WIDE = {"attack": 1.5, "attackLeft": 1.5}
+WIDE = {}
 
 
 def wide_cells(action, factor):

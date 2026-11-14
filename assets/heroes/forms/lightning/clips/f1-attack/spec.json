@@ -1,0 +1,279 @@
+{
+ "id": "f1-attack",
+ "hero": "lightning",
+ "title": "Lumi hình thái 1 · attack",
+ "rest": "assets/heroes/forms/lightning/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid green background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/lightning/attack.webp",
+ "meta": "assets/reimagined/heroes/lightning/attack/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 40,
+ "bg": "green",
+ "keys": {
+  "pull": {
+   "file": "assets/heroes/forms/lightning/clips/f1-attack/keys/pull-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (pull-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "thrust": {
+   "file": "assets/heroes/forms/lightning/clips/f1-attack/keys/thrust.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/lightning/attack.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.02,
+     -5,
+     -4
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "pull",
+   "length": 9,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, draws the staff in close, ready to cast, into the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "pull",
+   "end": "thrust",
+   "length": 13,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, thrusts the staff forward toward screen-right in one quick cast into the pose of the last frame, the staff clearly visible. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "thrust",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, draws the staff back and floats back into her calm pose of the last frame. No second attack. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_pull",
+   "start": "pull",
+   "end": "pull",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_thrust",
+   "start": "thrust",
+   "end": "thrust",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "combat-v3 attack(): roles 0 guard, 1 drawn back, 2 swing starts, 3 contact, 4 follow-through, 5 recover",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   2
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   5
+  ],
+  [
+   "key",
+   "pull"
+  ],
+  [
+   "B",
+   7,
+   2
+  ],
+  [
+   "B",
+   7,
+   4
+  ],
+  [
+   "B",
+   7,
+   6
+  ],
+  [
+   "B",
+   7,
+   8
+  ],
+  [
+   "B",
+   7,
+   10
+  ],
+  [
+   "key",
+   "thrust"
+  ],
+  [
+   "C",
+   21,
+   1
+  ],
+  [
+   "C",
+   21,
+   3
+  ],
+  [
+   "C",
+   21,
+   4
+  ],
+  [
+   "C",
+   21,
+   6
+  ],
+  [
+   "C",
+   21,
+   7
+  ],
+  [
+   "C",
+   21,
+   9
+  ],
+  [
+   "C",
+   21,
+   10
+  ],
+  [
+   "C",
+   21,
+   12
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_pull",
+   21,
+   2
+  ],
+  [
+   "H_pull",
+   21,
+   4
+  ],
+  [
+   "H_pull",
+   21,
+   6
+  ],
+  [
+   "H_pull",
+   21,
+   8
+  ],
+  [
+   "H_pull",
+   21,
+   10
+  ],
+  [
+   "H_thrust",
+   21,
+   2
+  ],
+  [
+   "H_thrust",
+   21,
+   4
+  ],
+  [
+   "H_thrust",
+   21,
+   6
+  ],
+  [
+   "H_thrust",
+   21,
+   8
+  ],
+  [
+   "H_thrust",
+   21,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  5,
+  5,
+  11,
+  11,
+  20
+ ],
+ "stepMs": 17,
+ "pick_note": "nền xanh: khung cuối clip ngắn bị bóng chồng/nền tối -> mỗi đoạn chỉ lấy phần đầu clip, seed nền sạch nhất (Codex frames 7-7,5)",
+ "end": 20,
+ "holds": {
+  "5": [
+   21,
+   25
+  ],
+  "11": [
+   26,
+   30
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  17,
+  18,
+  19,
+  20,
+  22,
+  24,
+  27,
+  29
+ ]
+}

@@ -1,0 +1,24 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:50:32Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: a THIN STREAM OF EMERALD SAP-LIGHT flowing into a knight's shield (the knight is NOT drawn). GEOMETRY: the stream enters a target point at 55% of the cell width, 55% of the cell height, coming in from the lower right in a gentle curve, with a few small fresh green leaves riding it. Frame 1: the first motes of jade light appear at the lower right. Frame 2: a thin curving ribbon of emerald light. Frame 3: the ribbon reaching the target point, leaves along it. Frame 4: the ribbon flowing in, a small soft glow at the target. Frame 5: the ribbon thinning, the glow strongest. Frame 6: the last of the stream entering. Frame 7: a soft glow and two drifting leaves. Frame 8: fading. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no weapon, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "The top-right ribbon in the first row reaches roughly x=493 of a 512px-wide canvas, which may break the required 6% magenta padding (about 15px per 256px cell). It is borderline, not clearly cut off."
+      },
+      {
+        "kind": "not_an_image_of_the_request",
+        "detail": "Frame 1 should show the first motes at the lower right of its cell, but the first motes sit in the upper-left area of the top-left cell. The frame-by-frame sequence is hard to verify from a single image."
+      }
+    ],
+    "summary": "The image is magenta-background, has no character, text, or visible grid lines, and roughly follows the 2x4 layout. The padding edge on the top-right ribbon and the placement of the first motes are uncertain, so the verdict is unsure rather than a clear fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00075
+  }
+}

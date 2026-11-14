@@ -75,3 +75,5 @@ attack=async function(side,raw,options={}){
   }
   return boardControlAttack(side,raw,options);
 };
+// QA: cast every full gauge the way a turn does, and read the ultimates cast this turn (Nori form 3's chained burst).
+setTimeout(()=>{if(window.gameQA)Object.assign(window.gameQA,{castReadyUltimates:()=>castReadyUltimates(),boardUltTurn,consumeNoriStunTurn:()=>consumeNoriStunTurn()});},0);

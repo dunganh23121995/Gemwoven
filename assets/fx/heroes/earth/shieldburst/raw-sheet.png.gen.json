@@ -1,0 +1,15 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T03:51:01Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: a GIANT SPECTRAL SHIELD SHATTERING ON IMPACT. The shield: a tall oval emerald shield seen in three-quarter view facing screen-right, a large golden tree emblem in its centre, its rim framed by pale-ivory roots and fresh green leaves, glowing mint-green, the same shield in frame 1 as a druid knight's giant spectral tree shield. GROUND ANCHOR: the shield's bottom rim rests on one fixed point, horizontally centred, at 94% of the cell height; at frame 1 it fills 80% of the cell height. Frame 1: the whole shield, leaning forward, bright cracks of white-gold light splitting across its face. Frame 2: it breaks apart explosively into big jade-green crystal shards and leaves, a bright burst of golden light in its centre. Frame 3: large emerald shards, leaves and gold motes flying outward in every direction from the centre, the widest burst (90% of the cell width). Frame 4: the pieces flying farther and spinning, the light fading. Frame 5: shards falling, leaves fluttering. Frame 6: fewer pieces, falling toward the ground line. Frame 7: small shards and leaves near the ground line. Frame 8: faint motes and a few leaves fading. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no weapon, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Eight frames in a 2x4 grid on a flat magenta background, with no visible text, borders, character, or cut-off effect. The shield breaks apart and the pieces fall in the expected order. Some faint pinkish highlights appear in the burst and leaves, which may conflict with the no-pink instruction, but they are too subtle to call a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000627
+  }
+}

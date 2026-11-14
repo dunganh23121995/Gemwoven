@@ -1,0 +1,20 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:49:44Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: an EARTH FOOT-LOCK pinning an enemy's feet (the enemy is NOT drawn). Side-view RPG battle camera, slight 3/4 from the front. GEOMETRY (most important): ground line at 92% of the cell height; an EMPTY space in the middle (centred, 44% of the cell width wide, from the ground line up to 45% of the cell height) where the enemy stands. Two squat heavy wedges of grey stone bound with old dark wood and dark jade veins, one on each side of the space, snap inward to clamp the enemy's feet; a worn-gold forest-shield sigil (a round shield with a tree emblem) stamps flat onto the ground between them. Wedges at most 38% of the cell height. Frame 1: the ground cracks on both sides of the space. Frame 2: the wedges burst up, leaning outward. Frame 3: the wedges snap inward against the space, the sigil slamming down glowing. Frame 4: locked tight, dust bursting sideways, the sigil brightest. Frame 5: locked, steady. Frame 6: locked, the sigil pulsing once. Frame 7: the wedges sinking back into the ground. Frame 8: only cracked ground and a fading sigil. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no weapon, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "other",
+        "detail": "Frame 2 (row 1, column 2) shows only small ground cracks, not the wedges bursting up and leaning outward that the prompt asks for. The frame sequence is loose, but this is a timing/content mismatch rather than a clear objective defect."
+      }
+    ],
+    "summary": "The sheet has eight cells in a 2x4 grid on a flat magenta background, with no visible text, borders, figures, or cut-off effects. Frames 1, 7 and 8 match the brief. Frame 2 does not show the burst-up stage, so the verdict is unsure rather than a clear fail.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000828
+  }
+}

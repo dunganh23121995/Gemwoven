@@ -1,0 +1,113 @@
+{
+ "id": "f3-hurt",
+ "hero": "earth",
+ "title": "Nori hình thái 3 · bị đánh",
+ "rest": "assets/heroes/forms/earth/form-3/rig/combat/rest.png",
+ "pad": 1.3,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/earth/form-3/hurt.webp",
+ "forms": [
+  "3",
+  "hurt"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.3,
+ "footY": 0.8506,
+ "keys": {
+  "recoil": {
+   "file": "assets/heroes/forms/earth/clips/f3-hurt/keys/recoil-src.png",
+   "note": "giật nhắm mắt (Qwen Edit 2511 + Consistency)"
+  }
+ },
+ "edits": {
+  "recoil": "Change only his pose and expression: he is struck hard from the right side, his eyes squeezed shut in pain, head and shoulders thrown back toward the left, knees bent absorbing the blow, still holding his hammer and his shield. No motion lines, sweat drops, shadow or effects. Keep exactly the same character, costume, colours, hammer and shield design, the same size and position in the picture, flat magenta background."
+ },
+ "recoil": {
+  "deg": -6,
+  "ms": 360
+ },
+ "segments": [
+  {
+   "name": "K2",
+   "start": "recoil",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi young forest knight with messy brown hair, big golden antlers with leaves and green eyes, in ornate white-gold and emerald armour wrapped in pale roots and covered in green leaves, a huge emerald crystal war hammer bound with pale roots in his right hand and a large emerald shield with a golden tree emblem framed by roots and leaves in his left, already recoiling from a hard hit at the first frame, dazed with eyes shut, immediately begins recovering: no second jolt. He opens his eyes, steadies himself with a slight knee flex and returns smoothly to his guard stance of the last frame; hair and cape swing with one diminishing overshoot. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "setSpriteAction(hero,hurt,~420ms) phát đều",
+  "plan": "rest -> recoil (giật tức thì) -> K2 hồi phục -> rest"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "key",
+   "recoil"
+  ],
+  [
+   "K2",
+   7,
+   1
+  ],
+  [
+   "K2",
+   7,
+   2
+  ],
+  [
+   "K2",
+   7,
+   3
+  ],
+  [
+   "K2",
+   7,
+   4
+  ],
+  [
+   "K2",
+   7,
+   5
+  ],
+  [
+   "K2",
+   7,
+   6
+  ],
+  [
+   "K2",
+   7,
+   7
+  ],
+  [
+   "K2",
+   7,
+   8
+  ],
+  [
+   "K2",
+   7,
+   9
+  ],
+  [
+   "K2",
+   7,
+   10
+  ],
+  [
+   "K2",
+   7,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "fit_rest": true
+}

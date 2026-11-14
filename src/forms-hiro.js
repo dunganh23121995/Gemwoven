@@ -46,7 +46,7 @@ function hiroHudFloor(id='enemyHeadHud'){
 }
 // Hiro's own sprite cell and drawn body in scene pixels; `at(fx,fy)` turns a point of his 512 px cell into the scene.
 function hiroHeroBody(){
-  const sprite=actor('hero').querySelector('.sprite-body'),scene=$('scene').getBoundingClientRect(),r=sprite.getBoundingClientRect();
+  const sprite=actor('hero').querySelector('.sprite-body'),scene=$('scene').getBoundingClientRect(),r=spriteBaseRect(sprite);
   const look=spriteDefinition('hero','novice','idle').sheet,foot=look.footY||.94,height=r.height*(look.bodyHeight||.69);
   const feet=r.top-scene.top+r.height*foot;
   return {x:r.left-scene.left+r.width*(look.feetX??.47),feet,top:feet-height,height,width:r.width*.55,
@@ -90,7 +90,7 @@ function hiroShake(force,pending){
   const f=force;
   pending.push(animate($('scene'),[{translate:'0px 0px'},{translate:`${-7*f}px ${9*f}px`,offset:.07},{translate:`${7*f}px ${-5*f}px`,offset:.18},{translate:`${-4*f}px ${4*f}px`,offset:.32},{translate:`${3*f}px ${-2*f}px`,offset:.5},{translate:'0px 0px'}],{duration:500,easing:'ease-out'}));
 }
-// A cut that does not resolve damage yet: the foe flinches under it (the numbers come with the finishing blow).
+// A cut lands: the foe flinches under it (four-star cuts resolve their part of the damage with it, 14/11).
 function hiroFlinch(target,pending){
   setSpriteAction('enemy','hurt',240);
   if(reduced)return;
@@ -105,7 +105,7 @@ function hiroFlinch(target,pending){
 // with the phase it fell in.
 function hiroScore(at,pending,hit,cues){
   const context=combatV3AudioContext();   // decoded up front, as form 1's, so the first beats are not late
-  if(context)for(const name of new Set([hit,...cues.map(c=>c[1])]))decodeCastSound(context,'novice-'+name).catch(()=>{});
+  if(context)for(const name of new Set([hit,...cues.map(c=>c[1])].filter(Boolean)))decodeCastSound(context,'novice-'+name).catch(()=>{});
   if(reduced)return;
   for(const [ms,name,volume,pan] of cues)pending.push(at(ms).then(()=>hiroSound(name,{volume,pan})));
 }
@@ -133,14 +133,16 @@ function hiroReach(share=.3){
   return Math.max(0,Math.min(body.left+body.width*share-(hero.x-hero.width*.5+hero.width*.8),$('scene').clientWidth-hero.x-hero.width*.4));
 }
 // The plain ultimate's hits, unchanged: attack('hero',kit.base,{hits}) resolved each as damage('hero',kit.base/hits).
-function hiroHits(kit,pending,sound){
+// `share` (four-star chain, owner 14/11: "Tuyệt kỹ tung nhiều đòn đánh, khi cuối lại mới có âm thanh địch bị thương thì hơi vô
+// lý") resolves only that part of the total on this blow, so every cut that lands hurts and is heard (the parts sum to 1).
+function hiroHits(kit,pending,sound,share=1,index=0){
   const hits=Math.max(1,Math.min(8,Math.round(kit.hits)||1));let amount=0,blocked=0;
   for(let i=0;i<hits;i++){
-    const result=damage('hero',kit.base/hits,null);amount+=result.amount;blocked+=result.blocked;
+    const result=damage('hero',kit.base*share/hits,null);amount+=result.amount;blocked+=result.blocked;
     combatVoice('enemy','hurt');hitAccents('hero',result,false,pending);setSpriteAction('enemy','hurt',560);
-    combatV3Number('enemy',result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?'damage':'armor',i,pending);
+    combatV3Number('enemy',result.stored?'TÍCH +'+result.stored:result.amount?'-'+result.amount:'CHẶN '+result.blocked,result.stored?'stored':result.amount?'damage':'armor',index+i,pending);
   }
-  hiroSound(sound,{volume:.8,pan:.25,hit:true});
+  if(sound)hiroSound(sound,{volume:.8,pan:.25,hit:true});
   update();
   return {amount,blocked};
 }
@@ -166,14 +168,14 @@ async function hiroChainSlash(kit){
   const old=root.style.transform,oldZ=root.style.zIndex;
   let gale=null,cuts=[],cross=null,result={amount:0,blocked:0};
   // ms from the cast; the swings peak 100 ms in, the body hit 80 ms in (prepare_hiro_star_form_sounds.py PLAYS[2]).
-  hiroScore(at,pending,'f2-hit',[
+  hiroScore(at,pending,null,[
     [0,'f2-gust',.5,-.2],        // the traveller's wind whirls up round his boots
     [60,'charge-cry',.55,-.2],   // form 1's battle cry as he plants his feet
     [740,'dash-steps',.5,0],     // form 1's strides: the dash
     [760,'dash-rush',.5,.1],     // form 1's rush of his clothes over the dash
     [930,'f2-swing',.5,.2],      // first cut (1000 ms)
     [1190,'f2-swing-up',.5,.2],  // rising cut (1260 ms)
-    [1450,'f2-swing',.55,.25]]); // the finishing cut (1520 ms); the body hit plays with the damage (1780 ms)
+    [1450,'f2-swing',.55,.25]]); // the finishing cut (1520 ms); the cross bursts on the damage (1780 ms) without a body thud (owner 13/11)
   root.dataset.ragePhase='stance';
   try{
     hiroOpen(root,2,pending);setSpriteFrame('hero','skill',0);
@@ -193,15 +195,15 @@ async function hiroChainSlash(kit){
     const inside=(x,w)=>Math.min(x,W-6-w/2);   // a cut's tapered tip stays inside the arena
     // His pose is the follow-through of a wide sweep (skill frame 2: the blade drawn level across his body at waist
     // height, his sword hand at about 72% x 62% of his cell): the arc starts at his hand and sweeps on through the foe.
-    const blade=hiroHeroBody().at(.72,.62),cutWidth=Math.max(size,(foe.right-blade.x)*1.25);
+    const blade=hiroHeroBody().at(.645,.563),cutWidth=Math.max(size,(foe.right-blade.x)*1.25);
     const cut1=hiroStrip('f2-slash',{x:inside(blade.x+cutWidth*.36,cutWidth),y:blade.y-cutWidth/ART.heroFx.novice['f2-slash'].aspect*.4,width:cutWidth,rotate:4});
     if(cut1){cuts.push(cut1);cut1.play(0,5,45).then(()=>cut1.fade(90,pending));}
-    hiroFlinch(target,pending);
+    hiroFlinch(target,pending);let landed=hiroHits(kit,pending,null,.25,0);
     // Second cut: up through it from low behind to high in front.
     await at(1240);root.dataset.ragePhase='rise';setSpriteFrame('hero','skill',3);await move(near,-6,90,'ease-out');
     const cut2=hiroStrip('f2-slash',{x:inside(foe.x+foe.width*.04,size*.8),y:foe.top+foe.height*.42,width:size,rotate:-38});
     if(cut2){cuts.push(cut2);cut2.play(0,5,45).then(()=>cut2.fade(90,pending));}
-    hiroFlinch(target,pending);
+    hiroFlinch(target,pending);const second=state.enemyHp>0?hiroHits(kit,pending,null,.25,1):{amount:0,blocked:0};
     // The finishing cut lays an X over the foe; it holds, then bursts on the hit.
     await at(1500);root.dataset.ragePhase='finish';setSpriteFrame('hero','skill',4);move(near,0,80,'ease-in');
     const crossY=foe.top+foe.height*.5;
@@ -209,7 +211,8 @@ async function hiroChainSlash(kit){
     cross?.play(0,3,70);
     await at(1780);root.dataset.ragePhase='burst';
     cross?.play(4,7,75);
-    result=hiroHits(kit,pending,'f2-hit');
+    const last=state.enemyHp>0?hiroHits(kit,pending,null,.5,2):{amount:0,blocked:0};
+    result={amount:landed.amount+second.amount+last.amount,blocked:landed.blocked+second.blocked+last.blocked};
     combatV3Camera(1,true,state.boss,pending);hiroShake(state.boss?1.1:.85,pending);hiroFlash('wind',pending);
     if(!reduced){
       target.style.filter='brightness(1.35)';
@@ -229,77 +232,63 @@ async function hiroChainSlash(kit){
 }
 
 // ---- Six-star: Diệu Ngọc Tứ Hệ Trảm ----------------------------------------------------------------
-// Where the four motes meet in their strip (frames 4-5): about its centre column, 30% down.
-const HIRO_GEM_MEET={x:.49,y:.3};
-// The longsword's tip in skill frames 0 and 1 (share of his 512 px cell, measured on skill.webp).
-const HIRO_TIP=[{x:.521,y:.053},{x:.505,y:.162}];
 async function hiroJewelSlash(kit){
   if(state.hp<=0||state.enemyHp<=0)return;
   const root=actor('hero'),target=actor('enemy'),pending=[],at=hiroTimeline(),move=hiroMover(root),W=$('scene').clientWidth;
   const old=root.style.transform,oldZ=root.style.zIndex;
-  let gems=null,crest=null,crescent=null,result={amount:0,blocked:0};
-  // ms from the cast; the swoosh peaks 160 ms in, the sword hit 80 ms in (PLAYS[3]). Three clear beats after the
-  // charge: the crescent sweeps (1400 ms), the dust ring rises (1700 ms), the blow lands (1950 ms, the hit).
-  hiroScore(at,pending,'f3-hit',[
-    [0,'f3-gather',.4,-.2],      // a soft gust as the wind lines draw the motes into the blade (0-1.1 s)
+  let hilt=null,cleave=null,split=null,result={amount:0,blocked:0};
+  // (redo 13/11, owner: "Làm lại cả hiro 3 ... Âm thanh nghe không hay, xấu ... Hình ảnh hoạt ảnh cũng sơ sài"; Codex's
+  // design: the weight of a steel longsword) the four hilt stones wake with a steel ring, he draws the sword back, steps
+  // in and a giant translucent steel blade cleaves down: the blow lands at 1400 ms (the damage, moved from 1950 so it
+  // falls on the cut: same hits, same total), the ground splits and a low dust wave throws stones; he holds, then guards.
+  hiroScore(at,pending,'f3-bhit',[
+    [0,'f3-steel',.45,-.2],      // the long blade rings as the hilt stones wake (peaks ~160 ms)
     [60,'charge-cry',.55,-.2],   // form 1's battle cry as he raises the sword
     [1150,'dash-steps',.45,0],   // form 1's strides: he steps in
-    [1290,'f3-swing',.6,.15],    // the great downward cut (1450 ms)
-    [1460,'f3-crest',.45,.3]]);  // soil cracking under the foe, rising into the dust ring (1700 ms); the sword hit plays with the damage
+    [1250,'f3-heavy',.5,.15]]);  // the heavy blade tears the air, peaking just before the blow (the blow plays with the damage)
   root.dataset.ragePhase='raise';
   try{
     hiroOpen(root,3,pending);setSpriteFrame('hero','skill',0);
-    // Four dull motes ride wind lines round him and meet at the raised blade's tip (effects layer, scene pixels: he
-    // stands still meanwhile), kept under his own name and HP bars.
-    const hero=hiroHeroBody();
-    const sheet=ART.heroFx?.novice?.['f3-gems'],gemWidth=hero.height*1.05,tip=hero.at(HIRO_TIP[0].x,HIRO_TIP[0].y);
-    if(sheet){
-      const gemHeight=gemWidth/sheet.aspect,heroHud=hiroHudFloor('heroHeadHud');
-      const centre=Math.max(tip.y+(.5-HIRO_GEM_MEET.y)*gemHeight,heroHud+gemHeight*.5);
-      gems=hiroStrip('f3-gems',{x:tip.x+(.5-HIRO_GEM_MEET.x)*gemWidth,y:centre,width:gemWidth,className:'hiro-gems'});
-      gems?.play(0,5,95);
-    }
+    // The four hilt stones wake in turn at his hands (his raised guard), small and restrained.
+    const hero=hiroHeroBody(),guard=hero.at(.555,.5),hiltWidth=hero.height*.62;
+    hilt=hiroStrip('f3-hilt',{x:guard.x,y:guard.y,width:hiltWidth,className:'hiro-hilt'});
+    if(hilt)pending.push((async()=>{await wait(reduced?0:140);await hilt?.play(0,5,95);})());
     await at(620);root.dataset.ragePhase='salute';setSpriteFrame('hero','skill',1);
-    await at(900);root.dataset.ragePhase='coil';setSpriteFrame('hero','skill',2);gems?.fade(120,pending);gems=null;await move(-6,0,160,'ease-out');
-    // The ground cracks under the foe before the cut: cracks spreading, small rocks popping up.
-    const foe=hiroFoeBody(),hud=hiroHudFloor();
-    const crestSheet=ART.heroFx?.novice?.['f3-crest'],crestAspect=(crestSheet?.aspect)||1;
-    const crestWidth=Math.min(W*.62,Math.max(foe.width*1.6,foe.height*1.25/crestAspect,100),(foe.feet+6-hud)/((crestSheet?.foot)||1)*crestAspect);
-    await at(1000);root.dataset.ragePhase='crest';
-    crest=hiroStrip('f3-crest',{x:foe.x,feet:foe.feet+6,width:crestWidth});
-    crest?.play(0,2,90);
-    // He steps in, the sword high.
+    await at(860);hilt?.play(6,7,90);
+    await at(900);root.dataset.ragePhase='coil';setSpriteFrame('hero','skill',2);hilt?.fade(120,pending);hilt=null;await move(-6,0,160,'ease-out');
+    // He steps in, the sword loaded behind his shoulder; a puff of dust off his rear boot.
     const near=hiroReach(.05)*.75;
     await at(1150);root.dataset.ragePhase='step';setSpriteFrame('hero','skill',3);
+    const boots=hiroHeroBody(),dust=hiroStrip('f3-dust',{x:boots.x-boots.width*.2,feet:boots.feet+2,width:boots.height*.75,className:'hiro-dust'});
+    if(dust){const d=dust;d.play(0,7,55).then(()=>d.remove());}
     hiroEcho(pending,0,'steel');
     await move(near,-6,220,'cubic-bezier(.4,0,.6,1)');
-    // Beat 1, the great downward cut: a steel crescent sweeps down through the foe and is gone.
-    await at(1400);root.dataset.ragePhase='cut';setSpriteFrame('hero','skill',4);move(near,0,90,'ease-in');
-    // It stands on the foe's feet (not over the name and HP bars above it) and covers the whole drawn body.
-    const crescentHeight=Math.min($('scene').clientHeight*.8,Math.max(foe.height*1.2,160),foe.feet+8-hud),cs=ART.heroFx?.novice?.['f3-crescent'];
-    crescent=hiroStrip('f3-crescent',{x:foe.x+foe.width*.05,y:foe.feet+8-crescentHeight*.5,width:crescentHeight*((cs?.aspect)||.875)});
-    if(crescent){const c=crescent;c.play(0,5,45).then(()=>c.fade(90,pending));}
-    combatV3Camera(1,false,state.boss,pending);hiroFlinch(target,pending);
-    // Beat 2, a ring of dust rises round the foe from the cracks.
-    await at(1700);root.dataset.ragePhase='dust';crest?.play(3,4,90);
-    // Beat 3, the blow lands: the hit, the dust at its widest and settling.
-    await at(1950);root.dataset.ragePhase='hit';
-    crest?.play(5,7,95);
-    result=hiroHits(kit,pending,'f3-hit');
-    combatV3Camera(1,true,state.boss,pending);hiroShake(state.boss?1.25:1,pending);hiroFlash('dust',pending);
+    // 1300: the steel blade-aura sweeps down from above him through the foe (its lower end lands on the foe).
+    const foe=hiroFoeBody(),hud=hiroHudFloor();
+    const size=Math.min(W*.86,Math.max(foe.height*2,boots.height*1.9,200),(foe.feet+16-hud)*1.12);
+    // (Codex 13/11) its contact frame (3: the blade's tip bursts into sparks) shows at 1400, with the damage
+    await at(1270);root.dataset.ragePhase='cut';
+    cleave=hiroStrip('f3-cleave',{x:foe.x-size*.2,y:foe.feet+16-size*.56,width:size,className:'hiro-cleave'});
+    if(cleave){const c=cleave;pending.push((async()=>{await c.play(0,2,40);await wait(50);if(!c.node.isConnected)return;c.set(3);await wait(130);await c.play(4,7,70);await wait(70);if(c.node.isConnected)c.fade(120,pending);})());}
+    // 1400: the blow lands (the damage, the strongest beat): the ground splits under the foe, a low dust wave.
+    await at(1400);root.dataset.ragePhase='hit';setSpriteFrame('hero','skill',4);move(near,0,90,'ease-in');
+    const splitWidth=Math.min(W*.78,Math.max(foe.width*1.9,170));
+    split=hiroStrip('f3-split',{x:foe.x,feet:foe.feet+4,width:splitWidth,className:'hiro-split'});
+    if(split){const t=split;pending.push((async()=>{await t.play(0,1,35);await wait(35);await t.play(2,7,95);})());}
+    result=hiroHits(kit,pending,'f3-bhit');   // the ringing steel hit (owner 14/11: the ultimate's and the basic cut's hits swapped)
+    combatV3Camera(1,true,state.boss,pending);hiroShake(state.boss?1.1:.9,pending);
     if(!reduced){
-      target.style.filter='brightness(1.4)';
       const recoil=combatOuterMotion('enemy',15,7);
-      await combatV3Pose(target,`translate(${recoil.distance}px,-5px) rotate(${recoil.tilt}deg)`,80);
+      await combatV3Pose(target,`translate(${recoil.distance}px,-4px) rotate(${recoil.tilt}deg)`,80);
     }
-    await at(2180);target.style.filter='';combatV3Pose(target,'translate(0px,0px) rotate(0deg)',300);
+    await at(1650);combatV3Pose(target,'translate(0px,0px) rotate(0deg)',300);
+    await at(1950);split?.fade(260,pending);split=null;
     await at(2240);root.dataset.ragePhase='finish';setSpriteFrame('hero','skill',5);
-    await at(2300);crest?.fade(220,pending);crest=null;
     await at(2440);root.dataset.ragePhase='return';await hiroHopBack(root,near);
     await at(3000);await Promise.all(pending);
     return result;
   }finally{
-    await Promise.allSettled(pending);gems?.remove();crest?.remove();crescent?.remove();
+    await Promise.allSettled(pending);hilt?.remove();cleave?.remove();split?.remove();
     hiroClose(root,target,old,oldZ,3);
   }
 }
@@ -317,6 +306,17 @@ combatV3Slash=function(point,key,index,ultimate,direction,pending){
   if(hiroSlashForm&&key==='novice'&&direction>0&&!ultimate&&!reduced)return hiroBasicSlash(hiroSlashForm,index,pending);
   return hiroSharedSlash(point,key,index,ultimate,direction,pending);
 };
+// Six stars: the basic down-cut's own short swing and the short steel-on-rock strike (prepare_hiro_star_form_sounds.py
+// f3-bswing, f3-blow; owner 14/11: "Hiro3 đổi âm thanh lúc đánh trúng của tuyệt kỹ và đánh thường cho nhau").
+const hiroSharedWhoosh=combatV3Whoosh,hiroSharedHitSound=combatV3HitSound;
+combatV3Whoosh=function(key,strong,contactDelay){
+  if(hiroSlashForm===3&&key==='novice'){if(!reduced)wait(Math.max(0,(contactDelay||0)-160)).then(()=>playCastSound('novice','f3-bswing',{volume:.5,pan:.1}));return;}
+  return hiroSharedWhoosh(key,strong,contactDelay);
+};
+combatV3HitSound=function(key,strong=false){
+  if(hiroSlashForm===3&&key==='novice')return playCastSound('novice','f3-blow',{volume:strong?.8:.7,pan:.25});
+  return hiroSharedHitSound(key,strong);
+};
 // The strike's caption names the form's own sword (HERO_FORMS weapon), not form 1's wooden one.
 const hiroSharedCue=combatV3Cue;
 combatV3Cue=function(side,key,ultimate,hits,pending){
@@ -324,13 +324,26 @@ combatV3Cue=function(side,key,ultimate,hits,pending){
   if(weapon)return popActorSkill(side,weapon,false,pending);
   return hiroSharedCue(side,key,ultimate,hits,pending);
 };
+// Six-star basic attack (redo 13/11): a compact steel down-cut from above and in front of the foe to low behind it,
+// three to five warm steel sparks where it lands; the cut sweeps in over the contact time, then its tail breaks up.
+function hiroDownCut(pending){
+  const sheet=ART.heroFx?.novice?.['f3-downcut'];if(!sheet)return;
+  const foe=hiroFoeBody(),height=Math.min(190,Math.max(120,foe.height*1.05)),width=height*sheet.aspect;
+  const strip=hiroStrip('f3-downcut',{x:foe.x-foe.width*.05,y:foe.y-height*.08,width,className:'hiro-basic'});if(!strip)return;
+  const contact=combatV3Duration(COMBAT_V3_STRIKES.novice.contact);
+  // its sweep rides the drawn blade: the cut steps from the raised sword down ~50 ms after the contact pose is asked for
+  // (owner 13/11: the cut flashed while the sword was still up)
+  pending.push((async()=>{strip.node.style.opacity='0';await wait(reduced?0:50);strip.node.style.opacity='';await strip.play(0,2,Math.max(20,contact/3));await strip.play(3,7,45);await strip.fade(90);})());
+}
 function hiroBasicSlash(form,index,pending){
   const foe=hiroFoeBody(),stance=index%3;   // the shared attack's sweep, rising and overhead strikes
-  const name=form===3?'f3-crescent':'f2-slash',sheet=ART.heroFx?.novice?.[name];if(!sheet)return;
-  // f2-slash is drawn sweeping left to right; f3-crescent sweeping top to bottom (a quarter turn apart).
-  const rotate=(form===3?-90:0)+[14,-34,58][stance];
-  const width=form===3?Math.min(170,Math.max(110,foe.height*.9))*sheet.aspect:Math.min(200,Math.max(120,foe.width*1.2,foe.height*.9));
-  const strip=hiroStrip(name,{x:foe.x-foe.width*.06,y:foe.top+foe.height*[.5,.42,.48][stance],width,rotate,className:'hiro-basic'});if(!strip)return;
+  if(form===3)return hiroDownCut(pending);
+  const name='f2-slash',sheet=ART.heroFx?.novice?.[name];if(!sheet)return;
+  // f2-slash is drawn sweeping left to right; every combo step plays the same drawn diagonal down-slash (owner 14/11: "Động
+  // tác đánh thường của Hiro2 làm lại"), so the arc runs one way, from high behind the foe's front down through it
+  const rotate=[38,42,46][stance];
+  const width=Math.min(200,Math.max(120,foe.width*1.2,foe.height*.9));
+  const strip=hiroStrip(name,{x:foe.x-foe.width*.06,y:foe.top+foe.height*.46,width,rotate,className:'hiro-basic'});if(!strip)return;
   const contact=combatV3Duration(COMBAT_V3_STRIKES.novice.contact);
   pending.push((async()=>{await strip.play(0,2,Math.max(25,contact/3));await strip.play(3,5,55);await strip.fade(90);})());
 }

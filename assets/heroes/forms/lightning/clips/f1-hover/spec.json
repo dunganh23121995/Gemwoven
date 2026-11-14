@@ -1,0 +1,147 @@
+{
+ "id": "f1-hover",
+ "hero": "lightning",
+ "title": "Lumi hình thái 1 · hover",
+ "rest": "assets/heroes/forms/lightning/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid green background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/lightning/hover.webp",
+ "meta": "assets/reimagined/heroes/lightning/hover/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 70,
+ "bg": "green",
+ "keys": {},
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "rest",
+   "length": 25,
+   "prompt": "A chibi blonde witch girl floating in the air, long golden hair in low braids, violet eyes, a big purple witch hat with a golden crescent moon and stars, a purple and gold star-patterned cape, black shorts and black thigh boots, a spellbook at her hip, holding a dark star-orb staff in her right hand, floats in the air, bobbing gently up and down on the wind, her hair, braids, hat tip and cape flowing; she stays on the same spot and returns to the pose of the last frame. She keeps floating in the air on the same spot, feet off the ground, without drifting; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "rời sân (bay) + Quảng Trường: vòng bay lơ lửng",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   2
+  ],
+  [
+   "A",
+   7,
+   3
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   5
+  ],
+  [
+   "A",
+   7,
+   6
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "A",
+   7,
+   8
+  ],
+  [
+   "A",
+   7,
+   9
+  ],
+  [
+   "A",
+   7,
+   10
+  ],
+  [
+   "A",
+   7,
+   11
+  ],
+  [
+   "A",
+   7,
+   13
+  ],
+  [
+   "A",
+   7,
+   14
+  ],
+  [
+   "A",
+   7,
+   15
+  ],
+  [
+   "A",
+   7,
+   16
+  ],
+  [
+   "A",
+   7,
+   17
+  ],
+  [
+   "A",
+   7,
+   18
+  ],
+  [
+   "A",
+   7,
+   19
+  ],
+  [
+   "A",
+   7,
+   20
+  ],
+  [
+   "A",
+   7,
+   21
+  ],
+  [
+   "A",
+   7,
+   22
+  ],
+  [
+   "A",
+   7,
+   23
+  ]
+ ],
+ "loop": [
+  0,
+  22
+ ]
+}

@@ -1,0 +1,15 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:49:29Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: a COMPACT DIAGONAL DOWNWARD STEEL SLASH with contact sparks (a basic sword attack). Silver-white edge, pale steel trail, warm silver sparks with tiny pale-gold roots; not blue. The slash runs from the upper middle of the cell down to the lower right, narrow at its origin, a crisp contact sweep, a thin tail. Frame 1: a thin bright line at the top. Frame 2: the slash sweeping down, broad in the middle. Frame 3: the full slash, brightest; at its lower end 3-5 short warm silver sparks spray back up and left. Frame 4: the slash thinning, sparks flying. Frame 5: a thin tail and fading sparks. Frame 6: tail breaking up. Frame 7: two last sparks. Frame 8: gone except a faint glint. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no hand, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The sheet has eight slash frames in a 2x4 arrangement on a flat magenta background, with no visible text, figures or border. Each slash stays inside its cell with the required padding, and the progression from thin line to broad slash to fading sparks reads correctly. The image appears to be 512x1024 rather than the requested 1024x2048, but that is a scale difference, not a content defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000707
+  }
+}

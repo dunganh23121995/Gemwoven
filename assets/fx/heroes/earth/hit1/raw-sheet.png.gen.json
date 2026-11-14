@@ -1,0 +1,24 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:47:06Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: a HEAVY HAMMER GROUND DENT. Side-view RPG battle camera, slight 3/4 from the front. GROUND LINE at 88% of the cell height, impact point horizontally centred. Palette: warm brown earth, grey stone, sandy dust. Frame 1: a dark dent punched into the ground. Frame 2: 3-4 flat stone chips and a low flat dust spray thrown sideways (never tall). Frame 3: chips at their highest (25% of the cell height), dust widest (75% of the cell width). Frame 4: chips falling. Frame 5: chips landing, dust thinning. Frame 6: dust settling. Frame 7: a cracked dent and a few pebbles. Frame 8: faint dent fading. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no weapon, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "unsure",
+    "problems": [
+      {
+        "kind": "cut_off",
+        "detail": "Row 2 left frame's dust spray runs almost to the right edge of its cell (roughly x=10 to x=255 of a 256px cell), which may break the required 6% magenta padding and look cropped. Hard to confirm at this resolution."
+      },
+      {
+        "kind": "other",
+        "detail": "Row 4 right frame's faint dent/dust has a pinkish-mauve tint that may conflict with the rule against magenta, pink or purple in the effect. Could be a rendering tint rather than a real defect."
+      }
+    ],
+    "summary": "Layout appears to be 2x4 with eight plausible frames, flat magenta background, and no text or character. Possible edge crowding in one frame and a possible pink tint in another, neither clearly a defect, so flagged as unsure.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000793
+  }
+}

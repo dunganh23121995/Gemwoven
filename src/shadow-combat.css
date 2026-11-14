@@ -16,12 +16,12 @@
 .dragon-flame-ember{opacity:0;background:#ffdc97;box-shadow:0 0 5px #ff7e38;border-radius:50%;mix-blend-mode:screen}
 body.reduced-motion .shadow-veil{display:none}
 body.ambience-paused .shadow-veil i{animation-play-state:paused}
-/* Grim Reaper (six-star Noct): scythe crescents and the harvested soul. */
+/* Grim Reaper (six-star Noct): scythe crescents and the harvested soul (a reaper's pale aqua soul, owner 13/11). */
 .reaper-cut{mix-blend-mode:normal;z-index:6;filter:drop-shadow(0 0 8px #050506) drop-shadow(0 0 3px #b0b0b8)}
 .reaper-finale{z-index:7;filter:drop-shadow(0 0 12px #030304) drop-shadow(0 0 5px #c8c8d0)}
 .reaper-soul{z-index:7;opacity:0}
-.reaper-soul i{position:absolute;inset:0;border-radius:50% 50% 46% 46%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 38%,#fbfbfc 0 14%,#d8d8de 26%,#8a8a92aa 48%,transparent 70%);filter:blur(.6px) drop-shadow(0 0 8px #c4c4cc)}
-.reaper-soul i::after{content:'';position:absolute;left:30%;right:30%;top:55%;height:85%;border-radius:0 0 50% 50%;background:linear-gradient(#d0d0d8aa,transparent);filter:blur(2px)}
+.reaper-soul i{position:absolute;inset:0;border-radius:50% 50% 46% 46%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 38%,#f6fffe 0 14%,#c4f5f1 26%,#3a9b97aa 48%,transparent 70%);filter:blur(.6px) drop-shadow(0 0 8px #8ee6de)}
+.reaper-soul i::after{content:'';position:absolute;left:30%;right:30%;top:55%;height:85%;border-radius:0 0 50% 50%;background:linear-gradient(#a6ede8aa,transparent);filter:blur(2px)}
 /* Veil (six-star Noct after Hắc Liêm Đoạt Hồn): half-there, flickering, untouchable for one enemy turn. */
 .scene .hero-actor[data-veiled="true"]>.sprite-body{opacity:.42;animation:reaper-veil 1.6s ease-in-out infinite}
 .scene .hero-actor[data-veiled="true"] .combat-form-aura{opacity:.5}
@@ -38,7 +38,7 @@ body.reduced-motion .scene .hero-actor[data-veiled="true"]>.sprite-body{animatio
 @keyframes smoke-billow{from{transform:translate(0,0) rotate(var(--r0)) scale(calc(var(--s0) * var(--flip)),var(--s0))}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r1)) scale(calc(var(--s1) * var(--flip)),var(--s1))}}
 /* The soul hangs from the hook at the back of the scythe and streams out behind Noct. */
 .noct-soul{position:absolute;z-index:1;pointer-events:none;width:78%;aspect-ratio:1;left:-46%;top:-8%;background-repeat:no-repeat;background-size:calc(var(--fx-count) * 100%) 100%;
-  animation:noct-soul-frames var(--soul-ms) steps(var(--fx-count),jump-none) infinite,noct-soul-trail 1.1s ease-in-out infinite;filter:drop-shadow(0 0 4px #d8ecffaa)}
+  animation:noct-soul-frames var(--soul-ms) steps(var(--fx-count),jump-none) infinite,noct-soul-trail 1.1s ease-in-out infinite;filter:drop-shadow(0 0 4px #b6f3eeaa) drop-shadow(0 0 10px #5fd1ca66)}
 @keyframes noct-soul-frames{from{background-position:0% 0}to{background-position:100% 0}}
 @keyframes noct-soul-trail{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(7%) rotate(3deg)}}
 body.reduced-motion .noct-soul{display:none}

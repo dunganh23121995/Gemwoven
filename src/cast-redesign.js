@@ -324,7 +324,7 @@ async function departLumiHero(){
         const p=Math.min(1,(now-start)/duration),camera=width*.95*p;
         root.style.transform=`translateX(${width*1.65*p-camera}px)`;
         root.dataset.worldX=String(width*1.65*p);$('scene').dataset.cameraX=String(camera);
-        setSpriteFrame('hero','hover',Math.floor((now-start)/160)%6);fx?.tick(now,camera);
+        {const hover=spriteDefinition('hero','lightning','hover').sheet;setSpriteFrame('hero','hover',Math.floor((now-start)/(hover.count>6?hover.frameDuration||70:160))%hover.count);}fx?.tick(now,camera);
         layers.forEach(layer=>layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`);
         if(p<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);

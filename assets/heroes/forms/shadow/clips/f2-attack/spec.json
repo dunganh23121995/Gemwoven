@@ -1,0 +1,258 @@
+{
+ "id": "f2-attack",
+ "hero": "shadow",
+ "title": "Noct hình thái 2 · attack (rút kiếm iai)",
+ "rest": "assets/heroes/forms/shadow/form-2/rig/combat/rest.png",
+ "pad": 1.35,
+ "originX": 0.25,
+ "scale": 1.35,
+ "footY": 0.8492,
+ "out": "assets/heroes/forms/shadow/form-2/attack.webp",
+ "forms": [
+  "2",
+  "attack"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "stepMs": 17,
+ "style": "Static locked camera, three-quarter FRONT view facing screen-right, matching the reference (his front and glowing eyes visible, never his back), the whole body, katana and scabbard always inside the frame with a margin, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hood, cloak, tassels and loose cloth always keep moving with natural delay and follow-through, never frozen.",
+ "redo": "owner 14/11 \"Noct 2 đánh thường làm lại được không?\": the old sheet showed his back facing right; one front-view battōjutsu draw-cut through Codex-drawn keys R D C F S (f2_attack_keys.py)",
+ "game": {
+  "code": "forms-noct.js noctDrawCut: attack 1 ready, cast 3 dash, attack 1, attack 2 draw, attack 3 cut (hits), attack 4 flick, cast 4 back, attack 5 sheath, idle"
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "R",
+   "length": 13,
+   "prompt": "A chibi hooded moon ronin swordsman in a black hooded cloak with silver trim and a silver crescent moon on its long tail, his face hidden in shadow with two glowing pale aqua eyes under the hood, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black boots, a katana with a pale-aqua wrapped hilt in a black lacquered scabbard, turns the sheathed sword from across the front of his waist to his LEFT side, the black scabbard swinging round to lie along his left hip pointing backward, partly hidden behind his body, while he drops into a low crouch with his right hand on the hilt, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; the hood, cloak and tassels follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid katana, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "R",
+   "end": "D",
+   "length": 9,
+   "prompt": "A chibi hooded moon ronin swordsman in a black hooded cloak with silver trim and a silver crescent moon on its long tail, his face hidden in shadow with two glowing pale aqua eyes under the hood, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black boots, a katana with a pale-aqua wrapped hilt in a black lacquered scabbard, turns the sheathed sword from across the front of his waist to his LEFT side, the black scabbard swinging round to lie along his left hip pointing backward, partly hidden behind his body, while he pulls the katana FORWARD out of the scabbard at his left hip in one fast motion, the scabbard staying along his hip pointing backward, the bright steel blade sliding out forward toward screen-right, stepping forward, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; the hood, cloak and tassels follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid katana, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "E2",
+   "start": "W",
+   "end": "U",
+   "length": 9,
+   "prompt": "A chibi hooded moon ronin swordsman in a black hooded cloak with silver trim and a silver crescent moon on its long tail, his face hidden in shadow with two glowing pale aqua eyes under the hood, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black boots, a katana with a pale-aqua wrapped hilt in a black lacquered scabbard, carries the low sweep up in one fast rising diagonal cut, the blade swinging from pointing down-forward through level to pointing high up toward the upper right, his body twisting into the cut, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; the hood, cloak and tassels follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid katana, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_U",
+   "start": "U",
+   "end": "U",
+   "length": 13,
+   "prompt": "A chibi hooded moon ronin swordsman in a black hooded cloak with silver trim and a silver crescent moon on its long tail, his face hidden in shadow with two glowing pale aqua eyes under the hood, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black boots, a katana with a pale-aqua wrapped hilt in a black lacquered scabbard, holds the end of the rising cut steadily, the arm and the high katana still; only the hood, cloak and tassels keep moving with natural follow-through, then everything settles back into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; the hood, cloak and tassels follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid katana, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "K",
+   "start": "U",
+   "end": "D",
+   "length": 13,
+   "prompt": "A chibi hooded moon ronin swordsman in a black hooded cloak with silver trim and a silver crescent moon on its long tail, his face hidden in shadow with two glowing pale aqua eyes under the hood, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black boots, a katana with a pale-aqua wrapped hilt in a black lacquered scabbard, lowers the katana from high above in a calm controlled arc and brings it back down and round BEHIND his body, its tip going back toward the mouth of the black scabbard at his left hip, until only the hilt and a short piece of blade show in front of his belly, held forward by his right hand, exactly the way it came out, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; the hood, cloak and tassels follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid katana, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "keys": {
+  "R": {
+   "file": "assets/heroes/forms/shadow/clips/f2-attack/keys/R-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (R-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "D": {
+   "file": "assets/heroes/forms/shadow/clips/f2-attack/keys/D-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (D-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "W": {
+   "file": "assets/heroes/forms/shadow/clips/f2-attack/keys/W-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (W-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "U": {
+   "file": "assets/heroes/forms/shadow/clips/f2-attack/keys/U-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (U-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   21,
+   4
+  ],
+  [
+   "A",
+   21,
+   7
+  ],
+  [
+   "key",
+   "R"
+  ],
+  [
+   "B",
+   7,
+   3
+  ],
+  [
+   "E2",
+   21,
+   4
+  ],
+  [
+   "E2",
+   21,
+   6
+  ],
+  [
+   "key",
+   "U"
+  ],
+  [
+   "H_U",
+   7,
+   4
+  ],
+  [
+   "H_U",
+   7,
+   8
+  ],
+  [
+   "K",
+   7,
+   5
+  ],
+  [
+   "K",
+   7,
+   9
+  ],
+  [
+   "key",
+   "D"
+  ],
+  [
+   "B",
+   7,
+   5
+  ],
+  [
+   "B",
+   7,
+   3
+  ],
+  [
+   "key",
+   "R"
+  ],
+  [
+   "A",
+   21,
+   7
+  ],
+  [
+   "A",
+   21,
+   4
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "pick_note": "noto = the draw reversed: K s7 5/9 (U -> D), then D, B s7 5, B s7 3, R",
+ "sharpen_note": "This hero never shows a face: under the hood there is only shadow and two glowing pale aqua eyes, exactly as in the resting frame. The katana is always ONE whole rigid straight steel blade with a pale-aqua wrapped hilt; the scabbard is plain black. No glow or trail on the blade. His LEFT hand is on the far side of his body: never draw a hand holding the scabbard behind his back hip; behind him only the scabbard shows, coming out from behind his body. The hilt has ONE fixed short length (the pale-aqua wrapped grip is only a little longer than his fist, as in the resting frame); it never grows. While he draws, the part of the katana between the front edge of his body and his right fist is bright STEEL blade (silver-white, a thin straight blade), growing longer frame by frame as the fist moves forward; the rest of the blade is hidden behind his body. When something long sticks out FORWARD past his right fist (the blade whipping round for the cut), it is the silver STEEL blade, even where the soft frame tints it green or aqua: draw it as thin bright steel, with only the short aqua grip inside his fist.",
+ "redo2": "Codex game review 14/11 7.5/10: frames 10-11 clipped the blade and jumped from the lunge to standing; the sheathing did not read -> bridge keys T (blade raised by his head) and N (tip at the scabbard mouth)",
+ "redo3": "owner 14/11 \"xoay sang phía bên trái để kiếm dọc theo người ... rồi mới dùng tay phải rút kiếm\": keys R and D redrawn (scabbard along his left hip, pointing back, partly behind the body; the right hand draws forward), A and B re-clipped",
+ "redo4": "owner 14/11 on key D: \"Tay phải rút. Tay trái vẫn cầm bao bên hông trái. Lưỡi kiếm sẽ chỉ thấy phần người không che\" -> D redrawn (only the right hand on the hilt, the left hand holds the scabbard at the far hip, the blade runs behind the body); B, E re-clipped, B s7 3/6, E s7 3/6",
+ "redo5": "owner 14/11 \"Tay trái bên kia thì làm sao mà thấy được?\": D and C drew the far-side left hand on the scabbard behind his hip; edited out by Codex (f2_attack_keys.py --fix D C); B, E, G1, H_C re-clipped: B s7 3/5, E s21 3/6, G1 s21 4, H_C s21 3/6/9",
+ "redo6": "Codex game review 14/11 round 4 (7.5/10): the sword flipped from hilt-leading to blade-forward between frames 7 and 8 -> sweep key W (blade out, pointing down-forward at hip height); E split into E1 (D->W) and E2 (W->C); the cut hold keeps two loop frames",
+ "redo7": "owner 14/11 \"0~6 >> 10 >> 22 (22 kiếm dài chúc lên cao) xong quay về nghỉ luôn\": the draw (0-6) snaps to the cut C, then key U (the blade pointing high), then back to rest; the slash shows only after the sword is sheathed (forms-noct.js noctDrawCut, basic-fx noct2). The flick/sheathing keys and clips (W T F N S, E1 E2 G1 G2 K1 K2 L H_C) are gone.",
+ "redo8": "owner 14/11 \"cho bạn toàn quyền ... phong cách samurai\": Claude + Codex design (design/codex-design.md): draw, one slightly rising cut that leaves a hairline on the foe, a short zanshin, the noto (P tip toward the mouth, N tip in, slide in), the click bursts the hairline into the dark cut; the high-blade key U is gone",
+ "clock": [
+  {
+   "t": [
+    0,
+    70
+   ],
+   "f": [
+    1,
+    3
+   ]
+  },
+  {
+   "t": [
+    70,
+    120
+   ],
+   "f": [
+    3,
+    4
+   ]
+  },
+  {
+   "t": [
+    120,
+    175
+   ],
+   "f": [
+    4,
+    7
+   ]
+  },
+  {
+   "t": [
+    175,
+    340
+   ],
+   "loop": [
+    7,
+    9
+   ],
+   "step": 45
+  },
+  {
+   "t": [
+    340,
+    460
+   ],
+   "f": [
+    10,
+    12
+   ]
+  },
+  {
+   "t": [
+    460,
+    660
+   ],
+   "f": [
+    12,
+    15
+   ]
+  },
+  {
+   "t": [
+    660,
+    780
+   ],
+   "f": [
+    15,
+    18
+   ]
+  }
+ ],
+ "redo9": "Codex 14/11 samurai pass 6.5/10 (the straight cut read as a thrust, the noto unclear, the line over the foe's head): the cut is an arc D -> W (low) -> U (high, the owner's own idea), N redrawn with the scabbard mouth clear; C, E, H_C, K1 gone",
+ "redo10": "owner 14/11 \"ban đầu bao kiếm bên trái được rút từ bên trái. Lúc thu về lại thu bên phải không có bao kiếm\": the noto ran the blade in front of his body (P, N) while the draw runs it behind; now the blade comes down and round behind his body (K: U -> D) and the draw plays backward (D, B, R): the sword goes home the way it came out. P, N, K0, K2, K3 gone.",
+ "redo11": "owner 14/11 \"Tút kiếm ra hất lên luôn cần gì đổi thế kiếm? Tút bạt kiếm phải hất luôn\": the low sweep (E1, W) left out: the hilt pulled, the blade out level through the foe (E2 s21 4), rising (E2 s21 6), high (U); the key W stays only as the clip E2's start"
+}

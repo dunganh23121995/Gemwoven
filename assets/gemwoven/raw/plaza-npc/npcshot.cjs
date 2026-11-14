@@ -13,7 +13,7 @@ async function stand(f,pos){await f.evaluate(p=>{const P=window.GemwovenPlaza.st
 // Tap the NPC (she is in reach): her sheet opens (help for the guide, the lantern for the weaver).
 async function talk(f,id){await f.evaluate(id=>{const a=window.GemwovenPlaza.state.actors.get('npc-'+id);a.el.querySelector('.pz-hit').click();},id);await sleep(1500);}
 (async()=>{
-  const b=await chromium.launch({channel:'msedge'});const errs=[];
+  const b=await chromium.launch({channel:'chrome'});const errs=[];
   const init=()=>{window.GEMWOVEN_SOCIAL_URL='ws://127.0.0.1:9/none';};
   const ph=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true});await ph.addInitScript(init);
   const p=await ph.newPage();p.on('pageerror',e=>errs.push('phone: '+e.message));p.on('response',r=>{if(r.status()>=400)errs.push('phone '+r.status()+' '+r.url());});

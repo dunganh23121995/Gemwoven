@@ -1,415 +1,509 @@
 {
-  "hero": "shadow",
-  "forms": {
-    "2": {
-      "name": "Dạ Ảnh Kiếm Sĩ",
-      "poster": "assets/heroes/forms/shadow/form-2/master.png",
-      "portrait": "assets/heroes/forms/shadow/form-2/portrait.png",
-      "actions": {
-        "idle": {
-          "file": "assets/heroes/forms/shadow/form-2/idle.webp",
-          "cols": 2,
-          "rows": 4,
-          "count": 8,
-          "heads": [
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ],
-            [
-              145,
-              62
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 200
-        },
-        "attack": {
-          "file": "assets/heroes/forms/shadow/form-2/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              131,
-              46
-            ],
-            [
-              143,
-              65
-            ],
-            [
-              125,
-              48
-            ],
-            [
-              111,
-              66
-            ],
-            [
-              143,
-              93
-            ],
-            [
-              125,
-              43
-            ]
-          ],
-          "scale": 1.5,
-          "footY": 0.94,
-          "frameDuration": 100
-        },
-        "attackLeft": {
-          "file": "assets/heroes/forms/shadow/form-2/attackLeft.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              145,
-              63
-            ],
-            [
-              179,
-              91
-            ],
-            [
-              141,
-              66
-            ],
-            [
-              97,
-              78
-            ],
-            [
-              91,
-              64
-            ],
-            [
-              145,
-              65
-            ]
-          ],
-          "scale": 1.5,
-          "footY": 0.94,
-          "frameDuration": 100
-        },
-        "cast": {
-          "file": "assets/heroes/forms/shadow/form-2/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              145,
-              62
-            ],
-            [
-              125,
-              45
-            ],
-            [
-              125,
-              75
-            ],
-            [
-              175,
-              44
-            ],
-            [
-              123,
-              56
-            ],
-            [
-              135,
-              49
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100
-        },
-        "run": {
-          "file": "assets/heroes/forms/shadow/form-2/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              175,
-              60
-            ],
-            [
-              173,
-              63
-            ],
-            [
-              169,
-              57
-            ],
-            [
-              175,
-              42
-            ],
-            [
-              177,
-              49
-            ],
-            [
-              183,
-              46
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100
-        },
-        "skill": {
-          "file": "assets/heroes/forms/shadow/form-2/skill.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              159,
-              97
-            ],
-            [
-              135,
-              154
-            ],
-            [
-              139,
-              46
-            ],
-            [
-              137,
-              43
-            ],
-            [
-              137,
-              43
-            ],
-            [
-              129,
-              36
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100
-        }
-      }
+ "hero": "shadow",
+ "forms": {
+  "2": {
+   "name": "Dạ Ảnh Kiếm Sĩ",
+   "poster": "assets/heroes/forms/shadow/form-2/master.png",
+   "portrait": "assets/heroes/forms/shadow/form-2/portrait.png",
+   "actions": {
+    "idle": {
+     "file": "assets/heroes/forms/shadow/form-2/idle.webp",
+     "cols": 2,
+     "rows": 4,
+     "count": 8,
+     "heads": [
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ],
+      [
+       145,
+       62
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 200
     },
-    "3": {
-      "name": "Tử Thần Vô Diện",
-      "poster": "assets/heroes/forms/shadow/form-3/master.png",
-      "portrait": "assets/heroes/forms/shadow/form-3/portrait.png",
-      "actions": {
-        "idle": {
-          "file": "assets/heroes/forms/shadow/form-3/idle.webp",
-          "cols": 2,
-          "rows": 4,
-          "count": 8,
-          "heads": [
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ],
-            [
-              148,
-              84
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 200
-        },
-        "attack": {
-          "file": "assets/heroes/forms/shadow/form-3/attack.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              147,
-              96
-            ],
-            [
-              160,
-              97
-            ],
-            [
-              152,
-              94
-            ],
-            [
-              148,
-              93
-            ],
-            [
-              150,
-              111
-            ],
-            [
-              147,
-              96
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100,
-          "scale": 1.111
-        },
-        "cast": {
-          "file": "assets/heroes/forms/shadow/form-3/cast.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              145,
-              91
-            ],
-            [
-              142,
-              90
-            ],
-            [
-              140,
-              91
-            ],
-            [
-              141,
-              88
-            ],
-            [
-              140,
-              88
-            ],
-            [
-              141,
-              88
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100,
-          "scale": 1.053
-        },
-        "run": {
-          "file": "assets/heroes/forms/shadow/form-3/run.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              185,
-              116
-            ],
-            [
-              176,
-              102
-            ],
-            [
-              196,
-              97
-            ],
-            [
-              192,
-              113
-            ],
-            [
-              174,
-              105
-            ],
-            [
-              179,
-              107
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100,
-          "scale": 1.075
-        },
-        "hover": {
-          "file": "assets/heroes/forms/shadow/form-3/hover.webp",
-          "cols": 3,
-          "rows": 2,
-          "count": 6,
-          "heads": [
-            [
-              156,
-              90
-            ],
-            [
-              155,
-              90
-            ],
-            [
-              156,
-              90
-            ],
-            [
-              156,
-              90
-            ],
-            [
-              156,
-              91
-            ],
-            [
-              159,
-              92
-            ]
-          ],
-          "footY": 0.94,
-          "frameDuration": 100,
-          "scale": 1.087
-        }
+    "attack": {
+     "file": "assets/heroes/forms/shadow/form-2/attack.webp",
+     "cols": 6,
+     "rows": 4,
+     "count": 19,
+     "heads": [
+      [
+       123,
+       109
+      ],
+      [
+       133,
+       109
+      ],
+      [
+       140,
+       120
+      ],
+      [
+       141,
+       120
+      ],
+      [
+       142,
+       117
+      ],
+      [
+       139,
+       106
+      ],
+      [
+       132,
+       100
+      ],
+      [
+       223,
+       58
+      ],
+      [
+       223,
+       58
+      ],
+      [
+       225,
+       55
+      ],
+      [
+       135,
+       108
+      ],
+      [
+       140,
+       115
+      ],
+      [
+       141,
+       118
+      ],
+      [
+       142,
+       115
+      ],
+      [
+       142,
+       117
+      ],
+      [
+       140,
+       120
+      ],
+      [
+       140,
+       118
+      ],
+      [
+       132,
+       108
+      ],
+      [
+       123,
+       109
+      ]
+     ],
+     "scale": 1.35,
+     "footY": 0.8492,
+     "feetY": 0.9165,
+     "originX": 0.25,
+     "frameDuration": 40,
+     "clock": [
+      {
+       "t": [
+        0,
+        70
+       ],
+       "f": [
+        1,
+        3
+       ]
+      },
+      {
+       "t": [
+        70,
+        120
+       ],
+       "f": [
+        3,
+        4
+       ]
+      },
+      {
+       "t": [
+        120,
+        175
+       ],
+       "f": [
+        4,
+        7
+       ]
+      },
+      {
+       "t": [
+        175,
+        340
+       ],
+       "loop": [
+        7,
+        9
+       ],
+       "step": 45
+      },
+      {
+       "t": [
+        340,
+        460
+       ],
+       "f": [
+        10,
+        12
+       ]
+      },
+      {
+       "t": [
+        460,
+        660
+       ],
+       "f": [
+        12,
+        15
+       ]
+      },
+      {
+       "t": [
+        660,
+        780
+       ],
+       "f": [
+        15,
+        18
+       ]
       }
+     ],
+     "stepMs": 17,
+     "chunkRows": 1
+    },
+    "cast": {
+     "file": "assets/heroes/forms/shadow/form-2/cast.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       145,
+       62
+      ],
+      [
+       125,
+       45
+      ],
+      [
+       125,
+       75
+      ],
+      [
+       175,
+       44
+      ],
+      [
+       123,
+       56
+      ],
+      [
+       135,
+       49
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100
+    },
+    "run": {
+     "file": "assets/heroes/forms/shadow/form-2/run.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       175,
+       60
+      ],
+      [
+       173,
+       63
+      ],
+      [
+       169,
+       57
+      ],
+      [
+       175,
+       42
+      ],
+      [
+       177,
+       49
+      ],
+      [
+       183,
+       46
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100
+    },
+    "skill": {
+     "file": "assets/heroes/forms/shadow/form-2/skill.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       159,
+       97
+      ],
+      [
+       135,
+       154
+      ],
+      [
+       139,
+       46
+      ],
+      [
+       137,
+       43
+      ],
+      [
+       137,
+       43
+      ],
+      [
+       129,
+       36
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100
     }
+   }
+  },
+  "3": {
+   "name": "Tử Thần Vô Diện",
+   "poster": "assets/heroes/forms/shadow/form-3/master.png",
+   "portrait": "assets/heroes/forms/shadow/form-3/portrait.png",
+   "actions": {
+    "idle": {
+     "file": "assets/heroes/forms/shadow/form-3/idle.webp",
+     "cols": 2,
+     "rows": 4,
+     "count": 8,
+     "heads": [
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ],
+      [
+       148,
+       84
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 200
+    },
+    "attack": {
+     "file": "assets/heroes/forms/shadow/form-3/attack.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       147,
+       96
+      ],
+      [
+       160,
+       97
+      ],
+      [
+       152,
+       94
+      ],
+      [
+       148,
+       93
+      ],
+      [
+       150,
+       111
+      ],
+      [
+       147,
+       96
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100,
+     "scale": 1.111
+    },
+    "cast": {
+     "file": "assets/heroes/forms/shadow/form-3/cast.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       145,
+       91
+      ],
+      [
+       142,
+       90
+      ],
+      [
+       140,
+       91
+      ],
+      [
+       141,
+       88
+      ],
+      [
+       140,
+       88
+      ],
+      [
+       141,
+       88
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100,
+     "scale": 1.053
+    },
+    "run": {
+     "file": "assets/heroes/forms/shadow/form-3/run.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       185,
+       116
+      ],
+      [
+       176,
+       102
+      ],
+      [
+       196,
+       97
+      ],
+      [
+       192,
+       113
+      ],
+      [
+       174,
+       105
+      ],
+      [
+       179,
+       107
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100,
+     "scale": 1.075
+    },
+    "hover": {
+     "file": "assets/heroes/forms/shadow/form-3/hover.webp",
+     "cols": 3,
+     "rows": 2,
+     "count": 6,
+     "heads": [
+      [
+       156,
+       90
+      ],
+      [
+       155,
+       90
+      ],
+      [
+       156,
+       90
+      ],
+      [
+       156,
+       90
+      ],
+      [
+       156,
+       91
+      ],
+      [
+       159,
+       92
+      ]
+     ],
+     "footY": 0.94,
+     "frameDuration": 100,
+     "scale": 1.087
+    }
+   }
   }
+ }
 }

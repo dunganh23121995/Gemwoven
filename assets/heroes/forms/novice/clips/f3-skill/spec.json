@@ -1,0 +1,529 @@
+{
+ "id": "f3-skill",
+ "hero": "novice",
+ "title": "Hiro hình thái 3 · skill",
+ "rest": "assets/heroes/forms/novice/form-3/rig/combat/rest.png",
+ "pad": 1.2,
+ "out": "assets/heroes/forms/novice/form-3/skill.webp",
+ "forms": [
+  "3",
+  "skill"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.2,
+ "footY": 0.8529,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "stepMs": 17,
+ "head_lock": true,
+ "redo": "Hiro redo 13/11 (redo-1311.md): Codex-drawn keys, new clips",
+ "keys": {
+  "s4": {
+   "file": "assets/heroes/forms/novice/clips/f3-skill/keys/s4-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (s4-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "s0": {
+   "file": "assets/heroes/forms/novice/clips/f3-skill/keys/s0-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (s0-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "s5": {
+   "file": "assets/heroes/forms/novice/clips/f3-skill/keys/s5-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (s5-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "s2": {
+   "file": "assets/heroes/forms/novice/clips/f3-skill/keys/s2-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (s2-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "s1": {
+   "file": "assets/heroes/forms/novice/clips/f3-skill/keys/s1-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (s1-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "s3": {
+   "file": "assets/heroes/forms/novice/clips/f3-skill/keys/s3-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (s3-raw.png), đặt theo cỡ đầu khung nghỉ"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "s0",
+   "length": 9,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, lifts the longsword upright in front of his chest with both hands into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "s0",
+   "end": "s1",
+   "length": 9,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, raises the upright longsword a little, bracing his shoulders, the tip staying in place, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "s1",
+   "end": "s2",
+   "length": 13,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, draws the longsword with both hands up and back over his rear shoulder, turning his hips, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "s2",
+   "end": "s3",
+   "length": 9,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, takes a long step forward toward screen-right, the longsword still loaded behind his shoulder, into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "E",
+   "start": "s3",
+   "end": "s4",
+   "length": 13,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, sweeps the longsword down and forward in one great crescent cut into a low stance into the pose of the last frame, the blade clearly visible in every frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "F",
+   "start": "s4",
+   "end": "s5",
+   "length": 13,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, rises into a firm low guard into the pose of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "G",
+   "start": "s5",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand, settles back into his calm guard of the last frame. Locked stationary camera; no turning or scale change; his size stays the same in every frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s0",
+   "start": "s0",
+   "end": "s0",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s1",
+   "start": "s1",
+   "end": "s1",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s2",
+   "start": "s2",
+   "end": "s2",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s3",
+   "start": "s3",
+   "end": "s3",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s4",
+   "start": "s4",
+   "end": "s4",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s5",
+   "start": "s5",
+   "end": "s5",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s0"
+  ],
+  [
+   "B",
+   7,
+   1
+  ],
+  [
+   "B",
+   7,
+   4
+  ],
+  [
+   "B",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s1"
+  ],
+  [
+   "C",
+   7,
+   1
+  ],
+  [
+   "C",
+   7,
+   4
+  ],
+  [
+   "C",
+   7,
+   8
+  ],
+  [
+   "C",
+   7,
+   11
+  ],
+  [
+   "key",
+   "s2"
+  ],
+  [
+   "D",
+   7,
+   1
+  ],
+  [
+   "D",
+   7,
+   4
+  ],
+  [
+   "D",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s3"
+  ],
+  [
+   "E",
+   21,
+   1
+  ],
+  [
+   "E",
+   21,
+   3
+  ],
+  [
+   "E",
+   21,
+   6
+  ],
+  [
+   "E",
+   21,
+   9
+  ],
+  [
+   "E",
+   21,
+   11
+  ],
+  [
+   "key",
+   "s4"
+  ],
+  [
+   "F",
+   7,
+   1
+  ],
+  [
+   "F",
+   7,
+   4
+  ],
+  [
+   "F",
+   7,
+   8
+  ],
+  [
+   "F",
+   7,
+   11
+  ],
+  [
+   "key",
+   "s5"
+  ],
+  [
+   "G",
+   7,
+   1
+  ],
+  [
+   "G",
+   7,
+   3
+  ],
+  [
+   "G",
+   7,
+   6
+  ],
+  [
+   "G",
+   7,
+   9
+  ],
+  [
+   "G",
+   7,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_s0",
+   7,
+   2
+  ],
+  [
+   "H_s0",
+   7,
+   4
+  ],
+  [
+   "H_s0",
+   7,
+   6
+  ],
+  [
+   "H_s0",
+   7,
+   8
+  ],
+  [
+   "H_s0",
+   7,
+   10
+  ],
+  [
+   "H_s1",
+   7,
+   2
+  ],
+  [
+   "H_s1",
+   7,
+   4
+  ],
+  [
+   "H_s1",
+   7,
+   6
+  ],
+  [
+   "H_s1",
+   7,
+   8
+  ],
+  [
+   "H_s1",
+   7,
+   10
+  ],
+  [
+   "H_s2",
+   7,
+   2
+  ],
+  [
+   "H_s2",
+   7,
+   4
+  ],
+  [
+   "H_s2",
+   7,
+   6
+  ],
+  [
+   "H_s2",
+   7,
+   8
+  ],
+  [
+   "H_s2",
+   7,
+   10
+  ],
+  [
+   "H_s3",
+   7,
+   2
+  ],
+  [
+   "H_s3",
+   7,
+   4
+  ],
+  [
+   "H_s3",
+   7,
+   6
+  ],
+  [
+   "H_s3",
+   7,
+   8
+  ],
+  [
+   "H_s3",
+   7,
+   10
+  ],
+  [
+   "H_s4",
+   7,
+   2
+  ],
+  [
+   "H_s4",
+   7,
+   4
+  ],
+  [
+   "H_s4",
+   7,
+   6
+  ],
+  [
+   "H_s4",
+   7,
+   8
+  ],
+  [
+   "H_s4",
+   7,
+   10
+  ],
+  [
+   "H_s5",
+   7,
+   2
+  ],
+  [
+   "H_s5",
+   7,
+   4
+  ],
+  [
+   "H_s5",
+   7,
+   6
+  ],
+  [
+   "H_s5",
+   7,
+   8
+  ],
+  [
+   "H_s5",
+   7,
+   10
+  ]
+ ],
+ "roles": [
+  4,
+  8,
+  13,
+  17,
+  23,
+  28
+ ],
+ "game": {
+  "code": "forms-hiro.js hiroJewelSlash: skill 0 at 0, 1 at 620 (salute), 2 at 900 (coil), 3 at 1150 (step), 4 at 1400 (cut), 5 at 2240 (finish)",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "end": 34,
+ "holds": {
+  "4": [
+   35,
+   39
+  ],
+  "8": [
+   40,
+   44
+  ],
+  "13": [
+   45,
+   49
+  ],
+  "17": [
+   50,
+   54
+  ],
+  "23": [
+   55,
+   59
+  ],
+  "28": [
+   60,
+   64
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  3,
+  4,
+  5,
+  7,
+  8,
+  10,
+  11,
+  13,
+  14,
+  16,
+  17,
+  19,
+  20,
+  21,
+  23,
+  25,
+  26,
+  28,
+  30,
+  31,
+  32,
+  34
+ ]
+}

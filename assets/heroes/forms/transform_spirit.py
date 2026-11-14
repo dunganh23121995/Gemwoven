@@ -3,8 +3,10 @@ weapon removed). Codex draws it on pure black; here it is keyed by brightness so
 fill thins (steeper curve) so the bright lines carry the shape, and its base of flames dissolves at the bottom. The aura
 that stays after it is not a drawing: it is built from the hero's own silhouette in src/transform-fx.css.
 
-python assets/heroes/forms/transform_spirit.py <hero>   (reads assets/gemwoven/raw/transform2-<hero>/raw-spirit.png,
+python assets/heroes/forms/transform_spirit.py <hero> [--spirit-only]   (reads assets/gemwoven/raw/transform2-<hero>/raw-spirit.png,
 writes assets/heroes/forms/<hero>/transform/spirit.webp, mist.webp (from raw-mist.png, if any) and v2.json, which switches the hero to the v2 look in build.py)
+--spirit-only rebuilds spirit.webp alone (a redrawn spirit, owner 14/11): Noct's mist.webp was retoned after it was built
+(shadow/retone_cyan.py, retone_soul.py) and its raw is still violet.
 """
 import json
 import sys
@@ -30,7 +32,7 @@ def fade_bottom(rgba, start=.86):
     return rgba
 
 
-def main(hero):
+def main(hero, spirit_only=False):
     raw = ROOT / f'assets/gemwoven/raw/transform2-{hero}'
     out = ROOT / f'assets/heroes/forms/{hero}/transform'
     out.mkdir(parents=True, exist_ok=True)
@@ -38,6 +40,9 @@ def main(hero):
     spirit = spirit.resize((768, round(768 * spirit.height / spirit.width)), Image.LANCZOS)
     rgba = fade_bottom(luma_key(np.asarray(spirit, np.float32)))
     Image.fromarray(np.clip(rgba, 0, 255).astype(np.uint8), 'RGBA').save(out / 'spirit.webp', quality=90, method=6)
+    if spirit_only:
+        print(hero, 'spirit', spirit.size)
+        return
     # The hero's own dissolving mist, if drawn: four separate wisps in four equal columns (curl, ribbon, curled ribbon, puffs).
     if (raw / 'raw-mist.png').exists():
         mist = Image.open(raw / 'raw-mist.png').convert('RGB')
@@ -49,4 +54,5 @@ def main(hero):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1] if len(sys.argv) > 1 else 'fire')
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    main(args[0] if args else 'fire', '--spirit-only' in sys.argv)

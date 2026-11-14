@@ -1,0 +1,19 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-14T02:24:07Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-2\\rig\\combat\\rest.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\clips\\f2-attack\\keys\\D-raw.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\clips\\f2-attack\\keys\\C-raw.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi hooded moon ronin swordsman: a black hooded cloak with silver trim and a big silver crescent moon on its long tail, his face hidden in shadow under the hood with two glowing pale icy-aqua eyes, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black armoured boots, a katana with a pale-aqua wrapped hilt and a round guard in a black lacquered scabbard. Keep his identity, hood, glowing eyes, costume, colours, proportions, line style and the exact katana and scabbard design from Image 1, at the same size and camera distance as Image 1, three-quarter FRONT view facing screen-right like Image 1 (we see his front and his glowing eyes, never his back). Do NOT mirror him. The katana is always ONE whole rigid blade.\n\nDraw ONE single full-body sprite of him the instant the blade clears the scabbard: his right shoulder driving forward, his RIGHT arm swinging the katana forward and DOWN in a low arc at hip height, the whole blade out and visible, pointing down and forward toward the ground in front of his front foot at about 45 degrees, the short hilt in his right fist; the black scabbard still along his left hip behind him, his left hand hidden behind his body; the front knee bent in the lunge, the cloak and tassels trailing behind. A clear, readable, powerful silhouette for a small phone screen; the body commits to the action (feet, hips and shoulders), not only the arm.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, the whole katana and the whole scabbard fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, slash trail, glow effects, wind, sparks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Single full-body chibi hooded moon ronin on a flat solid magenta background with a wide margin. Character identity, crescent cloak, glowing eyes, armour, boots and the katana and scabbard are consistent with the references. Nothing is cut off, no text or extra figures appear, and the katana is one whole blade. Only minor pose drift from the prompt, which is a pass.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000819
+  }
+}

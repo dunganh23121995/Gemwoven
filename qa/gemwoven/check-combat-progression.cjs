@@ -10,7 +10,9 @@ function art(){
   for(const key of ['fire','ice','earth','lightning','shadow','novice']){
     a.heroes[key]={};for(const action of ['idle','attack','cast','hurt','buff','run','hover','smash']){
       let meta;try{if(key==='novice')meta=JSON.parse(read('assets/heroes/novice/meta.json')).actions[action];else if(key!=='shadow')meta=JSON.parse(read(`assets/reimagined/heroes/${key}/${action}/runtime-meta.json`));}catch{}
-      a.heroes[key][action]={src:`assets/heroes/${key}/${action}.webp`,cols:meta?.columns||2,rows:meta?.rows||2,count:meta?.frames||4,heads:meta?.headAnchors||[[128,78],[128,78],[128,78],[128,78]],frameDuration:meta?.frameDuration};
+      a.heroes[key][action]={src:`assets/heroes/${key}/${action}.webp`,cols:meta?.columns||2,rows:meta?.rows||2,count:meta?.frames||4,heads:meta?.headAnchors||[[128,78],[128,78],[128,78],[128,78]],frameDuration:meta?.frameDuration,
+        // a clip-route run's lead-in and cycle, as build.py passes them
+        ...Object.fromEntries(['loopMs','introMs','introTimes'].filter(k=>meta?.[k]!=null).map(k=>[k,meta[k]])),...(Array.isArray(meta?.loop)?{loop:meta.loop}:{})};
     }
     if(!['shadow','novice'].includes(key)){a.enemies[key]=a.heroes[key];a.bosses[key]=a.heroes[key];a.parallax[key]=['','',''];a.scenes[key]='';}
   }

@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T17:44:59Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-2\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone-and-gold war hammer in his right hand and a green kite shield with a golden tree emblem strapped to his left forearm. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the hammer and the shield stay on the same arms as in Image 1, the hammer always ONE whole rigid weapon.\n\nDraw ONE single full-body sprite of him winding up to hurl his war hammer into the sky: the stone war hammer raised high in his RIGHT hand ALONE, his right arm cocked up and back above his head gripping the end of the long handle, the hammer head up above and behind his head; his LEFT arm stays LOW and bent in front of his body, holding the kite shield strapped to his left forearm close in front of his chest and belly on the screen-right side exactly as in Image 1 (the left hand never touches the hammer, the shield stays on that forearm); knees bent, leaning back to throw, a fierce determined face with the mouth closed (not smiling). A clear, readable, powerful silhouette for a small phone screen; the whole body commits to the motion. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, impact flash, dust, cracks, glow, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate is a single full-body chibi knight on a flat magenta background, with the whole figure, hammer and shield inside the frame. The character matches the reference (antlers, green eyes, green cape and tabard, gold-trimmed armour, stone hammer, tree shield). The hammer is raised in the right hand, the shield is held on the left forearm at the chest, and there is no text or extra content. No clear defects found.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000632
+  }
+}

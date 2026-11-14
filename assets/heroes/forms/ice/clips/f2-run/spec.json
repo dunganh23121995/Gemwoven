@@ -1,0 +1,290 @@
+{
+ "id": "f2-run",
+ "hero": "ice",
+ "title": "Yuki hình thái 2 · rời sân + Quảng Trường (sheet run)",
+ "rest": "assets/heroes/forms/ice/form-2/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/ice/form-2/run.webp",
+ "forms": [
+  "2",
+  "run"
+ ],
+ "cols": 6,
+ "frameDuration": 55,
+ "segments": [
+  {
+   "name": "X",
+   "start": "rest",
+   "length": 49,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a navy hood with tall white rabbit ears and a crescent and snowflake ornament, a white fur-collared navy coat with a long ice-blue snowflake cape, white stockings and boots, holding a tall silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, from her guard stance first holds the staff upright at her side, then begins a quick, light running stride in place toward screen-right, lifting her knees, her long robe hem and cape swept back behind her by the run so that both her legs and boots are clearly visible and separated at every step: locked stationary camera, no horizontal drift, pan, zoom or turn. Her two legs alternate in a clear, open running gait, one knee lifted forward while the other leg pushes off behind, with clear foot contacts and her torso bobs subtly; she keeps the same pace to the end. Hair braid, ears and cape bounce behind her. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "rời sân: vào chạy 1 lần rồi lặp; Quảng Trường dùng cùng sheet (loop)",
+  "plan": "khung vào chạy + vòng kín (loop_pairs)"
+ },
+ "lock": "center",
+ "pick": [
+  [
+   "X",
+   45,
+   0
+  ],
+  [
+   "X",
+   45,
+   3
+  ],
+  [
+   "X",
+   45,
+   6
+  ],
+  [
+   "X",
+   45,
+   9
+  ],
+  [
+   "X",
+   45,
+   12
+  ],
+  [
+   "X",
+   45,
+   13
+  ],
+  [
+   "X",
+   45,
+   14
+  ],
+  [
+   "X",
+   45,
+   15
+  ],
+  [
+   "X",
+   45,
+   16
+  ],
+  [
+   "X",
+   45,
+   17
+  ],
+  [
+   "X",
+   45,
+   18
+  ],
+  [
+   "X",
+   45,
+   19
+  ],
+  [
+   "X",
+   45,
+   20
+  ],
+  [
+   "X",
+   45,
+   21
+  ],
+  [
+   "X",
+   45,
+   22
+  ],
+  [
+   "X",
+   45,
+   23
+  ],
+  [
+   "X",
+   45,
+   24
+  ],
+  [
+   "X",
+   45,
+   25
+  ],
+  [
+   "X",
+   45,
+   26
+  ],
+  [
+   "X",
+   45,
+   27
+  ],
+  [
+   "X",
+   45,
+   28
+  ],
+  [
+   "X",
+   45,
+   29
+  ],
+  [
+   "X",
+   45,
+   30
+  ],
+  [
+   "X",
+   45,
+   31
+  ],
+  [
+   "X",
+   45,
+   32
+  ],
+  [
+   "X",
+   45,
+   33
+  ],
+  [
+   "X",
+   45,
+   34
+  ],
+  [
+   "X",
+   45,
+   35
+  ],
+  [
+   "X",
+   45,
+   36
+  ],
+  [
+   "X",
+   45,
+   37
+  ],
+  [
+   "X",
+   45,
+   38
+  ],
+  [
+   "X",
+   45,
+   39
+  ],
+  [
+   "X",
+   45,
+   40
+  ],
+  [
+   "X",
+   45,
+   41
+  ],
+  [
+   "X",
+   45,
+   42
+  ],
+  [
+   "X",
+   45,
+   43
+  ],
+  [
+   "X",
+   45,
+   44
+  ],
+  [
+   "X",
+   45,
+   45
+  ],
+  [
+   "X",
+   45,
+   46
+  ]
+ ],
+ "loop": [
+  28,
+  38
+ ],
+ "introTimes": [
+  80,
+  80,
+  80,
+  80,
+  55,
+  54,
+  52,
+  51,
+  50,
+  49,
+  47,
+  46,
+  45,
+  44,
+  42,
+  41,
+  40,
+  39,
+  37,
+  36,
+  35,
+  34,
+  32,
+  31,
+  30,
+  29,
+  27,
+  26
+ ],
+ "loopMs": 26,
+ "plaza_feet": true,
+ "pick_note": "Codex game 7,5 (váy che chân) -> prompt mới thấy rõ hai chân; X s45, vòng kín 36..46 (11 khung, 2 bước) ~200ms/bước",
+ "lock_area": "all",
+ "run_pace_note": "13/11: loopMs 36 -> 26: the body crossed the ground 1.37x faster than the planted foot moved back (owner: the run turned into long strides after the lead-in)",
+ "keep": [
+  0,
+  2,
+  4,
+  7,
+  9,
+  11,
+  14,
+  16,
+  18,
+  20,
+  22,
+  25,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38
+ ]
+}

@@ -1,0 +1,24 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:49:48Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: an ANTLER-SHAPED LOCKING LINTEL SLAMMING DOWN (front layer of a prison; the enemy is NOT drawn). Side-view RPG battle camera, slight 3/4 from the front. GEOMETRY (most important): ground line at 93% of the cell height; two short stone-wood buttresses stand at the left and right edges of the middle space (centred, 46% of the cell width apart), up to 30% of the cell height; a heavy horizontal lintel shaped like golden stag antlers slams down onto them at 22% of the cell height from the top. The middle between the buttresses and under the lintel stays EMPTY magenta (the enemy's face and body show there). Frame 1: the buttresses burst up from the ground. Frame 2: the antler lintel appears high above, glowing jade. Frame 3: the lintel dropping fast. Frame 4: the lintel SLAMS onto the buttresses, a bright ivory-white flash at the joints, dust bursting. Frame 5: locked, steady. Frame 6: locked, jade pulsing in the joints. Frame 7: the lintel and buttresses sinking. Frame 8: fading. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no weapon, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "fail",
+    "problems": [
+      {
+        "kind": "layout",
+        "detail": "The image does not show eight frames in a 2x4 grid of equal square cells. Content spans across apparent cell boundaries: buttresses sit at four evenly spread x-positions in row 2, the top row has a single lintel offset to the right, and the lintel and buttresses are not confined to individual cells. The sequence does not read as one clean left-to-right, top-to-bottom progression."
+      },
+      {
+        "kind": "other",
+        "detail": "The sprite sheet appears to have been drawn as a loose composition rather than eight isolated cells, so the frame-by-frame animation logic (burst, drop, slam, lock, sink, fade) cannot be cleanly separated into cells for redrawing."
+      }
+    ],
+    "summary": "The candidate fails the mechanical layout check: it does not present exactly eight frames in a 2 columns by 4 rows grid of equal square cells, with elements crossing what should be cell boundaries. The magenta background and antler/buttress subject matter are otherwise consistent with the prompt.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000795
+  }
+}

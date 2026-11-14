@@ -42,9 +42,13 @@ def bands(path, sheet):
     return {'bands': [image(path.with_name(f'{path.stem}.r{k}{path.suffix}')) for k in range(n)]}
 
 
+PLAZA_MOVES = ('run', 'dash', 'hover', 'ride')
+
+
 def banded(name, sheet):
-    """Only the bands ship for a banded sheet; the run keeps its whole sheet too (the plaza walks on it)."""
-    return {k: v for k, v in sheet.items() if k not in ('src', 'file') or not sheet.get('bands') or name in ('run', 'dash')}
+    """Only the bands ship for a banded sheet; the sheets a hero travels on keep their whole sheet too (the plaza walks on
+    the one it leaves the stage on: run, dash, hover or ride)."""
+    return {k: v for k, v in sheet.items() if k not in ('src', 'file') or not sheet.get('bands') or name in PLAZA_MOVES}
 
 
 def sound(path):
@@ -149,7 +153,7 @@ for family in ['heroes', 'bosses']:
                      'rows':meta['rows'], 'count':meta['frames'], 'heads':meta['headAnchors'],
                      **({'frameDuration':meta['frameDuration']} if meta['frames'] >= 8 else {}),
                      # A clip-route sheet (assets/heroes/clip_pipeline.py): its clock or pose roles and weapon sockets.
-                     **{k:meta[k] for k in ('clock','roles','rolesBack','sockets','stepMs','loop','loopMs','introMs','introTimes','chunkRows','recoil') if k in meta and (k!='loop' or isinstance(meta[k],list))}}
+                     **{k:meta[k] for k in ('clock','roles','rolesBack','sockets','stepMs','loop','loopMs','introMs','introTimes','chunkRows','recoil','holds','end','holdMs','scale','footY','feetY','feetX') if k in meta and (k!='loop' or isinstance(meta[k],list))}}
             sheet.update(bands(base.parent/f'{action}.webp', sheet))
             art[family].setdefault(key,{})[action]=sheet
 for name in ['sword', 'heart', 'crystal', 'snow', 'shield']:
@@ -161,7 +165,10 @@ art['specialFx'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorte
 # Board item pieces (owner 05/11, Codex-drawn, assets/gemwoven/raw/board-items/prep.py): dressed on by src/board-items.js.
 art['boardItems'] = {p.stem: image(p.relative_to(root).as_posix()) for p in sorted((root/'assets/board-items').glob('*.webp'))}
 novice_meta=json.loads((root/'assets/heroes/novice/meta.json').read_text(encoding='utf-8'))
-art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration'],**({'scale':meta['scale']} if 'scale' in meta else {})} for action,meta in novice_meta['actions'].items()}
+art['heroes']['novice']={action:{'src':image(f'assets/heroes/novice/{action}.webp'),'cols':meta['columns'],'rows':meta['rows'],'count':meta['frames'],'heads':meta['headAnchors'],'frameDuration':meta['frameDuration'],**({'scale':meta['scale']} if 'scale' in meta else {}),
+    # a clip-route sheet (assets/heroes/clip_pipeline.py): its clock or pose roles, run loop, recoil
+    **{k:meta[k] for k in ('clock','roles','rolesBack','stepMs','loop','loopMs','introMs','introTimes','chunkRows','recoil','feetX','holds','end','holdMs') if k in meta and (k!='loop' or isinstance(meta[k],list))}} for action,meta in novice_meta['actions'].items()}
+for action,sheet in art['heroes']['novice'].items():sheet.update(bands(root/f'assets/heroes/novice/{action}.webp',sheet))
 art['heroes']['novice']['buff']=art['heroes']['novice']['cast']
 art['campaignCreatures']={}
 journey_items=json.loads((root/'assets/gemwoven/journey-items.json').read_text(encoding='utf-8'))['items']
@@ -552,16 +559,26 @@ for looks in [art['heroes'].get(h, {}) for h in art['heroes']] + [f for forms in
             looks[name] = banded(name, sheet)
 shared_art=share_blobs(art)
 resolve_blobs="(function resolve(node){for(const k in node){const v=node[k];if(typeof v==='string'&&v.startsWith('@blob:'))node[k]=ART_BLOBS[+v.slice(6)];else if(v&&typeof v==='object')resolve(v);}})(ART);\n"
-# The plaza (src/gemwoven/plaza.js) walks every hero in town: each form's resting loop and run (Lumi hovers),
-# with the same feet line and head-based size as combat.
+# The plaza (src/gemwoven/plaza.js) walks every hero in town on the sheet the hero leaves a cleared stage on (owner 14/11:
+# "Tư thế rời sân của Noct lấy làm di chuyển trong gặp gỡ luôn đi.. Các tướng khác cũng thế"): the last travelling sheet
+# its departure plays (assets/heroes/combat-states.json, measured in combat): Noct floats (forms 1, 3) or runs (2), six-star
+# Mika dashes, Lumi hovers and six-star Lumi rides her spear; the rest run. Same feet line and head-based size as combat.
 plaza_sprites={}
+combat_seen=json.loads((root/'assets/heroes/combat-states.json').read_text(encoding='utf-8')).get('heroes',{})
+# the pace Noct's departures step those sheets at, whatever the sheet says (shadow-combat.js, forms-noct.js)
+PLAZA_STEP={('shadow','1'):180,('shadow','3'):180,('shadow','2'):85}
 # A clip-route sheet's footY is the pivot combat grows its padded cell about; the plaza stands its feet (feetY) on the ground.
 def plaza_sheet(sheet):return {**{k:sheet[k] for k in ('src','cols','rows','count','frameDuration','footY','bodyHeight','feetX','scale','loop') if k in sheet},**({'footY':sheet['feetY']} if 'feetY' in sheet else {})}
 for hero in art['heroes']:
     looks={'1':art['heroes'][hero],**art['heroForms'].get(hero,{})}
     for form,actions in looks.items():
-        move=actions.get('hover') if hero=='lightning' else actions.get('run')
-        plaza_sprites.setdefault(hero,{})[form]={'idle':plaza_sheet(actions['idle']),'move':plaza_sheet(move or actions['idle']),'head':art['heroHead'].get(hero,{}).get(form)}
+        leaves=[n for n in combat_seen.get(hero,{}).get(form,{}).get('depart',[]) if n in PLAZA_MOVES and n in actions]
+        name=leaves[-1] if leaves else 'hover' if hero=='lightning' else 'run'
+        move=actions.get(name)
+        if move and move.get('aliasOf'):move=actions.get(move['aliasOf'])
+        move=plaza_sheet(move or actions['idle'])
+        if (hero,form) in PLAZA_STEP:move['frameDuration']=PLAZA_STEP[(hero,form)]
+        plaza_sprites.setdefault(hero,{})[form]={'idle':plaza_sheet(actions['idle']),'move':move,'head':art['heroHead'].get(hero,{}).get(form)}
 (root/'assets/gemwoven/plaza/sprites.json').write_text(json.dumps(plaza_sprites,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 extensions = '\n'.join((root/f'src/gemwoven/{name}.js').read_text(encoding='utf-8') for name in ['boss-chapters','boss-tactics','world','progression','board-rules'])+'\nconst ART_BLOBS=' + json.dumps(blobs, separators=(',', ':')) + ';\nconst ART=' + json.dumps(shared_art, separators=(',', ':')) + ';\n' + resolve_blobs
 extensions += '\n'.join((root / f'src/{p}').read_text(encoding='utf-8')

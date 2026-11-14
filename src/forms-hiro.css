@@ -3,9 +3,7 @@
 /* Plain art since the redesign (owner 07/11): no glow round the strips, only a thin shade to read on any field.
    The traveller's wind whirls round his boots, inside his actor. */
 .actor .hiro-gale{z-index:-1;opacity:.95}
-.hiro-fx-f3-gems{z-index:6;filter:drop-shadow(0 1px 1px #0006)}
-.hiro-fx-f2-slash,.hiro-fx-f2-cross,.hiro-fx-f3-crescent{z-index:6;filter:drop-shadow(0 1px 1px #0005)}
-.hiro-fx-f3-crest{z-index:5}
+.hiro-fx-f2-slash,.hiro-fx-f2-cross{z-index:6;filter:drop-shadow(0 1px 1px #0005)}
 .hiro-basic{opacity:.95}
 /* Under his star forms' own arcs the shared contact star stays small and faint, so the form's arc reads first. */
 #combatEffects.hiro-strike .combat-v3-contact{scale:.55;filter:opacity(.55)}
@@ -21,3 +19,10 @@
 .scene .hero-actor[data-hero-element="novice"] .combat-form-aura .form-aura-band{width:calc(var(--hero-visible-height,120px) * 1.55)}
 .scene .hero-actor[data-hero-element="novice"][data-departing] .combat-form-aura{opacity:0;transition:opacity .15s}
 body.reduced-motion .hiro-echo,body.reduced-motion .hiro-fx{display:none}
+/* six-star redo (owner 13/11): hilt stones, steel blade-aura, ground split, boot dust, basic down-cut */
+.hiro-fx-f3-hilt,.hiro-fx-f3-downcut{z-index:6;filter:drop-shadow(0 1px 1px #0005)}
+/* the giant steel blade-aura: a crisp bright rim against bright arenas */
+.hiro-fx-f3-cleave{z-index:6;filter:brightness(1.15) contrast(1.35) drop-shadow(0 0 1.5px #1b2740) drop-shadow(0 0 1px #1b2740) drop-shadow(0 0 7px #a9cbffd9) drop-shadow(0 0 16px #ffffff8c)}
+.hiro-fx-f3-hilt{filter:brightness(1.25) drop-shadow(0 0 4px #fff8)}
+.hiro-fx-f3-split,.hiro-fx-f3-dust{z-index:5}
+.hiro-fx-f3-split{filter:contrast(1.2) saturate(1.1) drop-shadow(0 2px 2px #0007)}

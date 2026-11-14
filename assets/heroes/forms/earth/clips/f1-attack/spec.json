@@ -1,0 +1,251 @@
+{
+ "id": "f1-attack",
+ "hero": "earth",
+ "title": "Nori hình thái 1 · attack",
+ "rest": "assets/heroes/forms/earth/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/reimagined/heroes/earth/attack.webp",
+ "meta": "assets/reimagined/heroes/earth/attack/runtime-meta.json",
+ "cols": 6,
+ "frameDuration": 40,
+ "keys": {
+  "raise": {
+   "file": "assets/heroes/forms/earth/clips/f1-attack/keys/raise.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/earth/attack.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     1.015,
+     -1,
+     -1
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt)"
+  },
+  "slam": {
+   "file": "assets/heroes/forms/earth/clips/f1-attack/keys/slam.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/reimagined/heroes/earth/attack.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.015,
+     -1,
+     -1
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  },
+  "top": {
+   "file": "assets/heroes/forms/earth/clips/f1-attack/keys/top-src.png",
+   "canvas": true,
+   "note": "búa thẳng đứng trên đầu (khung B s21:4), mốc giữa cho cú nện"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "raise",
+   "length": 13,
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, from his guard stance swings the war hammer up and back over his shoulder into the raised pose of the last frame, the shield staying in front of him. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "slam",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, after the heavy smash the hammer head rests a moment low in front, then he lifts it back into his guard stance of the last frame. No second attack. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "top",
+   "end": "slam",
+   "length": 9,
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, from the raised pose with the war hammer held straight up above his head, brings it down in one heavy, fast overhead smash toward screen-right: the hammer swings forward in a big arc IN FRONT of his face and shield, its head clearly visible in every frame, never passing behind his head, ending low on the ground in front of him in the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "combat-v3 attack(): roles 0 guard, 1 drawn back, 2 swing starts, 3 contact ~427ms, 4 follow-through, 5 recover",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   21,
+   1
+  ],
+  [
+   "A",
+   21,
+   2
+  ],
+  [
+   "A",
+   21,
+   3
+  ],
+  [
+   "A",
+   21,
+   4
+  ],
+  [
+   "A",
+   21,
+   5
+  ],
+  [
+   "A",
+   21,
+   6
+  ],
+  [
+   "A",
+   21,
+   7
+  ],
+  [
+   "key",
+   "top"
+  ],
+  [
+   "D",
+   33,
+   1
+  ],
+  [
+   "D",
+   33,
+   2
+  ],
+  [
+   "D",
+   33,
+   3
+  ],
+  [
+   "D",
+   33,
+   4
+  ],
+  [
+   "D",
+   33,
+   5
+  ],
+  [
+   "D",
+   33,
+   6
+  ],
+  [
+   "D",
+   33,
+   7
+  ],
+  [
+   "key",
+   "slam"
+  ],
+  [
+   "C",
+   7,
+   1
+  ],
+  [
+   "C",
+   7,
+   3
+  ],
+  [
+   "C",
+   7,
+   5
+  ],
+  [
+   "C",
+   7,
+   6
+  ],
+  [
+   "C",
+   7,
+   8
+  ],
+  [
+   "C",
+   7,
+   10
+  ],
+  [
+   "C",
+   7,
+   11
+  ],
+  [
+   "C",
+   7,
+   13
+  ],
+  [
+   "C",
+   7,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ]
+ ],
+ "roles": [
+  0,
+  4,
+  8,
+  16,
+  18,
+  26
+ ],
+ "stepMs": 17,
+ "pick_note": "A21 1-7 búa lên trước mặt; mốc top = búa thẳng đứng (B s21:4); D s33 1-7 búa vòng trước mặt nện xuống (Codex frames 7/10: búa khuất sau đầu -> sửa)",
+ "keep": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  7,
+  8,
+  9,
+  10,
+  11,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  23,
+  24,
+  25,
+  26
+ ]
+}

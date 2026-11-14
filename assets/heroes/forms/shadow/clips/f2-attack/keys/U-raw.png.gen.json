@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-14T02:24:06Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-2\\rig\\combat\\rest.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\clips\\f2-attack\\keys\\C-raw.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi hooded moon ronin swordsman: a black hooded cloak with silver trim and a big silver crescent moon on its long tail, his face hidden in shadow under the hood with two glowing pale icy-aqua eyes, black samurai armour, wide black hakama trousers, pale aqua cord tassels at the waist, black armoured boots, a katana with a pale-aqua wrapped hilt and a round guard in a black lacquered scabbard. Keep his identity, hood, glowing eyes, costume, colours, proportions, line style and the exact katana and scabbard design from Image 1, at the same size and camera distance as Image 1, three-quarter FRONT view facing screen-right like Image 1 (we see his front and his glowing eyes, never his back). Do NOT mirror him. The katana is always ONE whole rigid blade.\n\nDraw ONE single full-body sprite of him the end of a rising diagonal cut (kiriage): still in the deep lunge toward screen-right, his body twisted into the cut, his RIGHT arm swung up and extended forward and UP above his head height, the long katana in his right hand pointing HIGH up toward the upper right at about 60 degrees above level, the whole long blade clearly visible; the black scabbard along his left hip behind him, his left hand hidden behind his body; the cloak and tassels whipping up after the cut. A clear, readable, powerful silhouette for a small phone screen; the body commits to the action (feet, hips and shoulders), not only the arm.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, the whole katana and the whole scabbard fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, slash trail, glow effects, wind, sparks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the hooded moon ronin identity, glowing eyes, crescent-moon cloak, aqua tassels, armour, boots and katana from the references, on a flat magenta background. The katana is raised up and to the right as the prompt asks, and the whole blade, cloak and scabbard sit inside the frame. The only soft point is that the top of the blade comes fairly close to the upper edge, which is a margin nuance rather than a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000665
+  }
+}

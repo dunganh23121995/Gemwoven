@@ -1,0 +1,15 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-12T12:12:05Z",
+  "refs": [],
+  "prompt": "Create ONE wide VFX image: a long GROUND CRACK running straight across the ground from the far left edge to the far right edge, seen from a low side-view RPG battle camera (slight 3/4 from the front), so the ground plane is a thin flat strip: the crack is a jagged horizontal fissure lying on the ground, zig-zagging slightly up and down within a band only 12% of the image height tall, centred at 55% of the image height, with a few short side branches. Inside the fissure: bright glowing emerald-green and pale-gold light shining up; along its edges small chunks of brown rock and jade chips popping up a little (low, never taller than 10% of the image height). The crack is thick and clearly readable (about 3% of the image height wide), roughly the same along the whole length. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art, painted fully opaque with crisp shapes, no haze, no smoke, no fog. No character, no text, no labels, no borders, no ground plate or floor surface (only the crack, its glow and the chips). The crack touches the left and right image edges. Background 100% solid flat #FF00FF magenta everywhere else, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt: a flat #FF00FF magenta background, a single jagged horizontal crack spanning the full width and touching both edges, green and gold glow inside it, and small rock and jade chips along the edges. No characters, text, borders or ground plate are visible. The crack sits roughly centred in the image and the chips stay low. Thickness and band height are approximate but within a plausible range.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000382
+  }
+}

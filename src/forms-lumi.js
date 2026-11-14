@@ -86,7 +86,8 @@ async function lumiStarAttack(form,raw,{hits=1,damageLedger=null,attackChain=1}=
       setSpriteFrame('hero','attack',pose.windup);
       if(!reduced)pending.push(animate(root,[{transform:old||'none'},{transform:'translate(-6px,-2px)'}],{duration:150,easing:'ease-out',fill:'forwards'}));
       await wait(i?110:170);
-      setSpriteFrame('hero','attack',pose.launch);lumiSound(form===3?'shot':'throw',{volume:.34,pan:-.15},true);
+      // The bolt leaves the staff when the drawn swing reaches the launch pose, not when it is asked for (owner 13/11).
+      setSpriteFrame('hero','attack',pose.launch);await spriteArrival('hero');lumiSound(form===3?'shot':'throw',{volume:.34,pan:-.15},true);
       const body=lumiFoeBody(),from=lumiTip(form,'attack',pose.launch),to={x:body.x-body.width*.08,y:body.top+body.height*.45};
       if(!reduced)pending.push(animate(root,[{transform:'translate(-6px,-2px)'},{transform:'translate(3px,0px)'},{transform:old||'none'}],{duration:320,easing:'ease-out'}));
       await lumiThrow(projectile,from,to,form===3?Math.min(118,body.height*.85+30):Math.min(104,body.height*.7+30),reduced?1:230);
@@ -195,7 +196,12 @@ async function lumiStarRage(form,raw,{hits=1,onRelease=()=>{}}={}){
       const to={x:body.x+(last?0:lane*body.width*.62),y:body.bottom-2};
       if(form===2)lumiFx('starpop',from,sign*.42,{frameMs:45});// the star that fires flares
       lumiStarBolt(from,to,last?strike*1.3:strike,last);
-      if(last){lumiFx(form===3?'ringburst':'starpop',{x:body.x,y:body.top+body.height*.5},Math.min(240,body.height*1.6+40),{cls:'lumi-finale'});lumiFlash(pending);}
+      // The finale burst stays inside the stage (Codex review 13/11: on the phone stage its star rays ran off the right and
+      // bottom edges and hid the foe): no wider than twice the room right of the foe, its centre nudged up and in to fit.
+      if(last){const W=$('scene').clientWidth,H=$('scene').clientHeight,y0=body.top+body.height*.5;
+        const size=Math.max(110,Math.min(240,body.height*1.6+40,(W-body.x-4)*2.2,W*.6));
+        const c={x:Math.min(body.x,W-size*.42),y:Math.min(y0,H-size*.42)};
+        lumiFx(form===3?'ringburst':'starpop',c,size,{cls:'lumi-finale'});lumiFlash(pending);}
       const result=lumiBoltHit(form,i,count,raw,ledger,target,oldTarget,pending);amount+=result.amount;blocked+=result.blocked;
       if(last){onRelease(pending);update();}
     }
@@ -254,15 +260,21 @@ async function departLumiRide(){
   try{
     setSpriteFrame('hero','skill',1);await wait(reduced?0:220);
     const p=combatV3Point('hero');lumiFx('starpop',{x:p.x,y:p.y-p.height*.08},p.width*.8);lumiSound('stream',{volume:.26,pan:-.2});
-    root.dataset.riding='true';setSpriteFrame('hero','ride',0);fx=departFx('lightning');
+    root.dataset.riding='true';fx=departFx('lightning');
+    /* the ride loop runs from the moment she sits on the spear, through the lift too (13/11: frame 0 froze 380 ms) */
+    const rideSheet=spriteDefinition('hero','lightning','ride').sheet,rideT0=performance.now();
+    const rideFrame=now=>setSpriteFrame('hero','ride',Math.floor(Math.max(0,now-rideT0)/(rideSheet.frameDuration||110))%rideSheet.count);
+    let lifting=true;rideFrame(rideT0);
+    (function lift(now){if(!lifting)return;rideFrame(now);requestAnimationFrame(lift);})(rideT0);
     await animate(root,[{transform:'translate(0px,0px)'},{transform:'translate(0px,-8px)'}],{duration:reduced?1:260,easing:'ease-out'});
+    lifting=false;
     const start=performance.now(),duration=reduced?1:2400;
     await new Promise(resolve=>{
       function tick(now){
         const t=Math.min(1,(now-start)/duration),camera=width*.95*t;
         root.style.transform=`translate(${width*1.65*t-camera}px,${-8-38*t*t+Math.sin((now-start)/170)*1.6}px)`;
         root.dataset.worldX=String(width*1.65*t);$('scene').dataset.cameraX=String(camera);
-        setSpriteFrame('hero','ride',Math.floor((now-start)/110)%6);fx?.tick(now,camera);
+        rideFrame(now);fx?.tick(now,camera);
         layers.forEach(layer=>layer.style.transform=`translateX(${-camera*Number(layer.dataset.speed)}px)`);
         if(t<1)requestAnimationFrame(tick);else resolve();
       }requestAnimationFrame(tick);

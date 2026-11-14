@@ -42,3 +42,20 @@ through, 6 ready) by form-3/redraw_attack.py: the scythe is the resting frame's 
 to a straight shaft), Codex drew the hands round it. The basic attack now plays 1-2-3-4-5 at the foe and stops a scythe's length
 short (shadow-combat.js); its hit is a drawn underworld soul-cyan crescent (assets/fx/heroes/basic/noct3) instead of the vector
 cut. Codex 8/10.
+
+13/11 (owner, with a Karthus reference picture): every soul glow of Noct, effects and his own hems, eyes and aura, is a pale
+icy aqua round a near-white core (assets/heroes/forms/shadow/retone_soul.py; CSS glows in forms-noct.css, shadow-combat.css).
+
+14/11 (owner: "Noct 2 đánh thường làm lại được không?" and the notes after it): form 2's basic attack is a clip-route sheet
+(assets/heroes/forms/shadow/clips/f2-attack, keys by f2_attack_keys.py): front three-quarter view, the sword turned to his left hip first,
+the right hand draws (the left hand stays hidden on the far side), one snap cut, the blade held high, then home at once; after a click
+and a beat the delayed assassin slash tears open on the foe (basic-fx noct2) and the blow lands. attackLeft is gone; he stops a
+blade's length short (forms-noct.js noctDrawCut). Codex 8.2/10.
+14/11 later (owner: "cho bạn toàn quyền ... phong cách samurai"): form 2's basic attack is an iaido draw designed with Codex
+(clips/f2-attack/design/codex-design.md): one rising arc from the hip (low sweep W to the blade high U), a hairline left on the foe on
+the arc's chord, zanshin, the noto (P, N: the tip finds the scabbard's mouth), and on the click the hairline bursts (basic-fx noct2).
+The sheet plays on its own clock; forms-noct.js NOCT2_CUT times every beat to it. Codex 8/10.
+Then (owner: "vết chém xuất hiện ngay sau khi kiếm phất ra"): the hairline bursts as the blade ends high (NOCT2_CUT.burst 205 ms), the
+blow lands with it; the zanshin and the noto follow, the click only closes the move.
+Then: the draw flicks straight up (no low sweep: hilt, blade out level, up, high) and the noto plays the draw backward (the blade comes
+round behind his body into the scabbard at his left hip). 19 frames.

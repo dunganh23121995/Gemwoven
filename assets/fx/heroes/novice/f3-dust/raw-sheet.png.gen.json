@@ -1,0 +1,15 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T04:50:12Z",
+  "refs": [],
+  "prompt": "Create an animated VFX sprite sheet: a SMALL DRY DUST PUFF KICKED BACKWARD BY A HEAVY BOOT. Side-view RPG battle camera. GROUND LINE at 86% of the cell height, the kick point at 60% of the cell width. Palette: sandy beige and light brown dust, a few grey grit specks. Frame 1: a small burst of grit at the kick point. Frame 2: dust puffing backward to the left, low. Frame 3: the puff widest (60% of the cell width), low (25% of the cell height). Frame 4: drifting and thinning. Frame 5: settling. Frame 6: thin. Frame 7: faint. Frame 8: gone. LAYOUT: exactly eight frames in a 2 COLUMNS x 4 ROWS grid of equal square cells, tall 1024x2048 canvas, read left-to-right, top-to-bottom, one continuous one-shot effect. Clean HD painterly anime game VFX matching a chibi fantasy RPG, NOT pixel art; everything painted fully opaque with crisp shapes (no soft haze, no smoke, no translucent fog). No character, no creature, no hero, no hand, no text, no labels, no borders, no grid lines, no ground plate, no floor, no shadow. Everything stays fully inside its own cell with at least 6% magenta padding on all four sides in every frame. Background 100% solid flat #FF00FF magenta, no gradient. Never use magenta, pink or purple in the effect.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The sheet has a flat #FF00FF background with no visible cropping, text, or extra figures. It is laid out as 2 columns by 4 rows, and the dust puff shrinks and fades left to right and top to bottom as the prompt asks. The last cell is empty, which fits a 'gone' frame 8. The flame tips look faintly pinkish, but that is too subtle to call a clear defect.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000653
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T03:10:09Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\novice\\form-3\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young boy knight with messy light-brown hair with an ahoge, brown eyes, a tattered olive-green cape, a steel breastplate and steel arm and leg armour over brown leather, holding a long steel longsword in his right hand. Keep his identity, face, costume, colours, proportions, line style and the exact sword design from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the sword stays in the same hand as in Image 1 (both hands on the hilt only where the pose says so), and the sword is always ONE whole rigid blade.\n\nDraw ONE single full-body sprite of him the same upright longsword with both hands, the tip at exactly the same place as when held at the chest, shoulders settled and braced, the hilt raised to chin height, eyes open, solemn determined face. A clear, readable, powerful silhouette for a small phone screen; the body commits to the action (feet, hips and shoulders), not only the arm. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character and the whole sword fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, slash trail, glow, wind, sparks, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the reference character's identity, costume, cape and sword design. The background is flat magenta with the whole figure and sword inside the frame, and there is no visible text, extra figures or obvious anatomy errors. The pose matches the prompt's two-handed raised-sword stance.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000535
+  }
+}

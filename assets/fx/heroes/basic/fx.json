@@ -34,27 +34,6 @@
     "width": 512,
     "height": 512
   },
-  "nori1": {
-    "file": "assets/fx/heroes/basic/nori1.webp",
-    "count": 4,
-    "frameDuration": 60,
-    "width": 512,
-    "height": 512
-  },
-  "nori2": {
-    "file": "assets/fx/heroes/basic/nori2.webp",
-    "count": 4,
-    "frameDuration": 60,
-    "width": 512,
-    "height": 512
-  },
-  "nori3": {
-    "file": "assets/fx/heroes/basic/nori3.webp",
-    "count": 4,
-    "frameDuration": 65,
-    "width": 512,
-    "height": 512
-  },
   "lumi1orb": {
     "file": "assets/fx/heroes/basic/lumi1orb.webp",
     "count": 4,
@@ -73,6 +52,13 @@
     "file": "assets/fx/heroes/basic/noct3.webp",
     "count": 4,
     "frameDuration": 55,
+    "width": 512,
+    "height": 512
+  },
+  "noct2": {
+    "file": "assets/fx/heroes/basic/noct2.webp",
+    "count": 4,
+    "frameDuration": 60,
     "width": 512,
     "height": 512
   }

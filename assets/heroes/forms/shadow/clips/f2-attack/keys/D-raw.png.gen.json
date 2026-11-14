@@ -1,0 +1,18 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T23:50:28Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\form-2\\rig\\combat\\rest.png",
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\shadow\\clips\\f2-attack\\keys\\D-before-fix.png"
+  ],
+  "prompt": "Image 2 is the drawing to keep: change NOTHING in it except one thing. Remove the gloved LEFT hand that holds the black scabbard behind his back hip (on the left side of the picture): his left hand is on the FAR side of his body and must be completely hidden behind his body and cloak. Behind him only the black scabbard is seen, coming out from behind his body at the hip and slanting back and down; redraw that spot as cloak, hakama and scabbard. Keep the pose, the right hand on the hilt, the katana, the size, the position, the lighting and every other line exactly as in Image 2. Same flat solid magenta #FF00FF background, no text.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the hooded chibi ninja, black-and-silver cloak with crescent emblem, teal-accented armour, katana and flat magenta background from the references. The left-side gloved hand behind the hip is gone, and only the black scabbard emerges from the cloak. No cropping, extra text or anatomy defects are visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.00059
+  }
+}

@@ -1,0 +1,600 @@
+{
+ "id": "f1-skill",
+ "hero": "novice",
+ "title": "Hiro hình thái 1 · skill",
+ "rest": "assets/heroes/forms/novice/form-1/rig/combat/rest.png",
+ "pad": 1.0,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/novice/skill.webp",
+ "novice_meta": "assets/heroes/novice/meta.json",
+ "cols": 6,
+ "frameDuration": 40,
+ "keys": {
+  "s0": {
+   "file": "assets/heroes/forms/novice/clips/f1-skill/keys/s0.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/novice/skill.webp (git 53d205bd)",
+    "cell": [
+     0,
+     3,
+     2
+    ],
+    "fit": [
+     0.884,
+     5,
+     28
+    ]
+   },
+   "note": "ô 0 của sheet cũ (đã duyệt) · sheet skill cũ hiện ở scale 0.88 (meta.json): thu về cỡ khung nghỉ quanh bàn chân"
+  },
+  "s1": {
+   "file": "assets/heroes/forms/novice/clips/f1-skill/keys/s1.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/novice/skill.webp (git 53d205bd)",
+    "cell": [
+     1,
+     3,
+     2
+    ],
+    "fit": [
+     0.884,
+     5,
+     28
+    ]
+   },
+   "note": "ô 1 của sheet cũ (đã duyệt) · sheet skill cũ hiện ở scale 0.88 (meta.json): thu về cỡ khung nghỉ quanh bàn chân"
+  },
+  "s2": {
+   "file": "assets/heroes/forms/novice/clips/f1-skill/keys/s2.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/novice/skill.webp (git 53d205bd)",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     0.884,
+     5,
+     28
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt) · sheet skill cũ hiện ở scale 0.88 (meta.json): thu về cỡ khung nghỉ quanh bàn chân"
+  },
+  "s3": {
+   "file": "assets/heroes/forms/novice/clips/f1-skill/keys/s3.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/novice/skill.webp (git 53d205bd)",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     0.884,
+     5,
+     28
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt) · sheet skill cũ hiện ở scale 0.88 (meta.json): thu về cỡ khung nghỉ quanh bàn chân"
+  },
+  "s4": {
+   "file": "assets/heroes/forms/novice/clips/f1-skill/keys/s4.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/novice/skill.webp (git 53d205bd)",
+    "cell": [
+     4,
+     3,
+     2
+    ],
+    "fit": [
+     0.884,
+     5,
+     28
+    ]
+   },
+   "note": "ô 4 của sheet cũ (đã duyệt) · sheet skill cũ hiện ở scale 0.88 (meta.json): thu về cỡ khung nghỉ quanh bàn chân"
+  },
+  "s5": {
+   "file": "assets/heroes/forms/novice/clips/f1-skill/keys/s5.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/novice/skill.webp (git 53d205bd)",
+    "cell": [
+     5,
+     3,
+     2
+    ],
+    "fit": [
+     0.884,
+     5,
+     28
+    ]
+   },
+   "note": "ô 5 của sheet cũ (đã duyệt) · sheet skill cũ hiện ở scale 0.88 (meta.json): thu về cỡ khung nghỉ quanh bàn chân"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "s0",
+   "length": 9,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, raises the wooden sword straight up in front of him, eager, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "s0",
+   "end": "s1",
+   "length": 13,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, winds up, dropping into a low crouch with the sword drawn back behind him, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "s1",
+   "end": "s2",
+   "length": 9,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, springs forward into a low dash, the sword held back low, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "s2",
+   "end": "s3",
+   "length": 9,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, rises up out of the dash, lifting the sword high overhead with both hands, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "E",
+   "start": "s3",
+   "end": "s4",
+   "length": 9,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, brings the wooden sword down in one big earnest overhead chop into the low follow-through of the last frame, the blade clearly visible. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "F",
+   "start": "s4",
+   "end": "s5",
+   "length": 13,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, straightens up and lifts the sword proudly upright beside him into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "G",
+   "start": "s5",
+   "end": "rest",
+   "length": 13,
+   "prompt": "A chibi young boy adventurer with messy light-brown hair with an ahoge, brown eyes, a green scarf, a brown leather vest over a cream shirt, brown trousers and boots, holding a simple wooden training sword in his right hand, lowers the sword back into his ready stance of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s0",
+   "start": "s0",
+   "end": "s0",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s1",
+   "start": "s1",
+   "end": "s1",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s2",
+   "start": "s2",
+   "end": "s2",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s3",
+   "start": "s3",
+   "end": "s3",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s4",
+   "start": "s4",
+   "end": "s4",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s5",
+   "start": "s5",
+   "end": "s5",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid sword, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "forms-tan.js tanSpiritSword: skill 0 at 0, 1 at 460 (wind-up), 2 at 860 (dash), 3 rise, 4 at 1270 (slash), 5 at 1760",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s0"
+  ],
+  [
+   "B",
+   7,
+   1
+  ],
+  [
+   "B",
+   7,
+   3
+  ],
+  [
+   "B",
+   7,
+   6
+  ],
+  [
+   "B",
+   7,
+   9
+  ],
+  [
+   "B",
+   7,
+   11
+  ],
+  [
+   "key",
+   "s1"
+  ],
+  [
+   "C",
+   7,
+   1
+  ],
+  [
+   "C",
+   7,
+   4
+  ],
+  [
+   "C",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s2"
+  ],
+  [
+   "D",
+   7,
+   1
+  ],
+  [
+   "D",
+   7,
+   4
+  ],
+  [
+   "D",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s3"
+  ],
+  [
+   "E",
+   7,
+   1
+  ],
+  [
+   "E",
+   7,
+   4
+  ],
+  [
+   "E",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s4"
+  ],
+  [
+   "F",
+   7,
+   1
+  ],
+  [
+   "F",
+   7,
+   3
+  ],
+  [
+   "F",
+   7,
+   6
+  ],
+  [
+   "F",
+   7,
+   9
+  ],
+  [
+   "F",
+   7,
+   11
+  ],
+  [
+   "key",
+   "s5"
+  ],
+  [
+   "G",
+   7,
+   1
+  ],
+  [
+   "G",
+   7,
+   3
+  ],
+  [
+   "G",
+   7,
+   6
+  ],
+  [
+   "G",
+   7,
+   9
+  ],
+  [
+   "G",
+   7,
+   11
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_s0",
+   7,
+   2
+  ],
+  [
+   "H_s0",
+   7,
+   4
+  ],
+  [
+   "H_s0",
+   7,
+   6
+  ],
+  [
+   "H_s0",
+   7,
+   8
+  ],
+  [
+   "H_s0",
+   7,
+   10
+  ],
+  [
+   "H_s1",
+   7,
+   2
+  ],
+  [
+   "H_s1",
+   7,
+   4
+  ],
+  [
+   "H_s1",
+   7,
+   6
+  ],
+  [
+   "H_s1",
+   7,
+   8
+  ],
+  [
+   "H_s1",
+   7,
+   10
+  ],
+  [
+   "H_s2",
+   7,
+   2
+  ],
+  [
+   "H_s2",
+   7,
+   4
+  ],
+  [
+   "H_s2",
+   7,
+   6
+  ],
+  [
+   "H_s2",
+   7,
+   8
+  ],
+  [
+   "H_s2",
+   7,
+   10
+  ],
+  [
+   "H_s3",
+   7,
+   2
+  ],
+  [
+   "H_s3",
+   7,
+   4
+  ],
+  [
+   "H_s3",
+   7,
+   6
+  ],
+  [
+   "H_s3",
+   7,
+   8
+  ],
+  [
+   "H_s3",
+   7,
+   10
+  ],
+  [
+   "H_s4",
+   7,
+   2
+  ],
+  [
+   "H_s4",
+   7,
+   4
+  ],
+  [
+   "H_s4",
+   7,
+   6
+  ],
+  [
+   "H_s4",
+   7,
+   8
+  ],
+  [
+   "H_s4",
+   7,
+   10
+  ],
+  [
+   "H_s5",
+   7,
+   2
+  ],
+  [
+   "H_s5",
+   7,
+   4
+  ],
+  [
+   "H_s5",
+   7,
+   6
+  ],
+  [
+   "H_s5",
+   7,
+   8
+  ],
+  [
+   "H_s5",
+   7,
+   10
+  ]
+ ],
+ "roles": [
+  4,
+  10,
+  14,
+  18,
+  22,
+  28
+ ],
+ "stepMs": 17,
+ "end": 34,
+ "holds": {
+  "4": [
+   35,
+   39
+  ],
+  "10": [
+   40,
+   44
+  ],
+  "14": [
+   45,
+   49
+  ],
+  "18": [
+   50,
+   54
+  ],
+  "22": [
+   55,
+   59
+  ],
+  "28": [
+   60,
+   64
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  3,
+  4,
+  6,
+  7,
+  8,
+  10,
+  11,
+  13,
+  14,
+  15,
+  17,
+  18,
+  20,
+  22,
+  24,
+  25,
+  26,
+  28,
+  30,
+  31,
+  32,
+  34
+ ]
+}

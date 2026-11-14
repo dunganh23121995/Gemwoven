@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-13T10:11:58Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-2\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone-and-gold war hammer in his right hand and a green kite shield with a golden tree emblem strapped to his left forearm. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the hammer and the shield stay on the same arms as in Image 1, the hammer always ONE whole rigid weapon.\n\nDraw ONE single full-body sprite of him has just hurled his war hammer straight up into the sky: his right arm flung straight up above his head with the hand open and EMPTY, fingers spread, body stretched upward on his toes, chin up looking at the sky, the kite shield still strapped to his left forearm held out to the side; the hammer is NOT in the picture at all (it has flown away above). A clear, readable, powerful silhouette for a small phone screen; the whole body commits to the motion. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, impact flash, dust, cracks, glow, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "Single full-body chibi knight on a flat, solid magenta background with a wide margin on all sides. The character matches the reference design (antlers, leaves, green cape and tabard, gold-trimmed armour, tree shield). The right arm is raised with an open, empty hand, the hammer is absent, and the shield stays on the left arm. No text, extra figures, or cropping is visible.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000579
+  }
+}

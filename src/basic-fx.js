@@ -7,13 +7,12 @@
  *  - yuki1, yuki2: an ice-lance shatter and a moon-frost burst on the foe;
  *  - yuki3: the fan gust (her six-star attack sheet waves the fan): drawn from her side to the foe, it blooms into
  *    an ice flower on it (the foe sits 75% across the strip);
- *  - nori1-3: the hammer smash's shockwave, rocks (and jade for the star forms) at the foe's feet;
+ *  - (Nori's impacts moved to forms-nori.js with his whole-kit redo, owner 13/11);
  *  - lumi1orb, lumi1pop: (owner 07/11: "không phù hợp với form 2 và 3") like her higher forms' star and orbit bolts, a
  *    crackling spark orb thrown from her staff that bursts on the foe; no star, no rings (theirs). */
 const BASIC_FX={
   fire:{1:'mika1',2:'mika2'},
   ice:{1:'yuki1',2:'yuki2',3:'yuki3'},
-  earth:{1:'nori1',2:'nori2',3:'nori3'},
   lightning:{1:'lumi1orb'}
 };
 // How each strip sits on the foe: its anchor (fraction of the strip cell) on the foe's centre or feet, and its size.
@@ -21,10 +20,7 @@ const BASIC_FX_LOOK={
   mika1:{anchor:[.62,.6],on:'centre',size:1.7},
   mika2:{anchor:[.62,.62],on:'centre',size:1.8},
   yuki1:{anchor:[.5,.5],on:'centre',size:1.55},
-  yuki2:{anchor:[.5,.5],on:'centre',size:1.6},
-  nori1:{anchor:[.5,.85],on:'feet',size:1.85},
-  nori2:{anchor:[.5,.85],on:'feet',size:1.95},
-  nori3:{anchor:[.5,.86],on:'feet',size:2.1}
+  yuki2:{anchor:[.5,.5],on:'centre',size:1.6}
 };
 // Set while an ultimate plays through attack(): its own staging stays.
 let basicFxUltimate=false;
@@ -68,8 +64,10 @@ function basicFxPlace(name,origin){
     return {x:foe.x-.25*width,y:foe.y,width,height};
   }
   // sized on the foe, never smaller than a readable hit on a small foe nor wider than the arena allows
-  const look=BASIC_FX_LOOK[name],side=Math.min(Math.max(Math.max(foe.height,foe.width)*look.size,125),260);
-  const ax=foe.x,ay=look.on==='feet'?foe.bottom:foe.y;
+  const look=BASIC_FX_LOOK[name],ax=foe.x,ay=look.on==='feet'?foe.bottom:foe.y;
+  let side=Math.min(Math.max(Math.max(foe.height,foe.width)*look.size,125),260);
+  // Yuki's centred bursts keep every spike inside a phone's arena (Codex 13/11)
+  if(name.startsWith('yuki'))side=combatV3Fit(ax,ay,side,.95);
   return {x:ax+(.5-look.anchor[0])*side,y:ay+(.5-look.anchor[1])*side,width:side,height:side};
 }
 const basicFxBaseVisual=castAttackVisual;

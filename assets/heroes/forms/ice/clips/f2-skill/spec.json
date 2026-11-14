@@ -1,0 +1,486 @@
+{
+ "id": "f2-skill",
+ "hero": "ice",
+ "title": "Yuki hình thái 2 · skill",
+ "rest": "assets/heroes/forms/ice/form-2/rig/combat/rest.png",
+ "pad": 1.25,
+ "style": "Static locked camera, three-quarter view facing screen-right, matching the reference, the whole body, weapon and shield always inside the frame with a margin, the face visible, the flat solid magenta background never changes. Clean anime game sprite animation, crisp lines. Hair, cloth, cape and loose pieces always keep moving with natural delay and follow-through, never frozen.",
+ "out": "assets/heroes/forms/ice/form-2/skill.webp",
+ "forms": [
+  "2",
+  "skill"
+ ],
+ "cols": 6,
+ "frameDuration": 40,
+ "scale": 1.25,
+ "footY": 0.8516,
+ "keys": {
+  "s1": {
+   "file": "assets/heroes/forms/ice/clips/f2-skill/keys/s1.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-2/skill.webp",
+    "cell": [
+     1,
+     3,
+     2
+    ],
+    "fit": [
+     1.03,
+     1,
+     -3
+    ]
+   },
+   "note": "ô 1 của sheet cũ (đã duyệt)"
+  },
+  "s2": {
+   "file": "assets/heroes/forms/ice/clips/f2-skill/keys/s2.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-2/skill.webp",
+    "cell": [
+     2,
+     3,
+     2
+    ],
+    "fit": [
+     1.03,
+     1,
+     -3
+    ]
+   },
+   "note": "ô 2 của sheet cũ (đã duyệt)"
+  },
+  "s3": {
+   "file": "assets/heroes/forms/ice/clips/f2-skill/keys/s3.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-2/skill.webp",
+    "cell": [
+     3,
+     3,
+     2
+    ],
+    "fit": [
+     1.03,
+     1,
+     -3
+    ]
+   },
+   "note": "ô 3 của sheet cũ (đã duyệt)"
+  },
+  "s4": {
+   "file": "assets/heroes/forms/ice/clips/f2-skill/keys/s4.png",
+   "canvas": true,
+   "from": {
+    "file": "assets/heroes/forms/ice/form-2/skill.webp",
+    "cell": [
+     4,
+     3,
+     2
+    ],
+    "fit": [
+     1.03,
+     1,
+     -3
+    ]
+   },
+   "note": "ô 4 của sheet cũ (đã duyệt)"
+  }
+ },
+ "segments": [
+  {
+   "name": "A",
+   "start": "rest",
+   "end": "s1",
+   "length": 9,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a navy hood with tall white rabbit ears and a crescent and snowflake ornament, a white fur-collared navy coat with a long ice-blue snowflake cape, white stockings and boots, holding a tall silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, closes her eyes and holds the staff close, gathering moonlight, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "B",
+   "start": "s1",
+   "end": "s2",
+   "length": 13,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a navy hood with tall white rabbit ears and a crescent and snowflake ornament, a white fur-collared navy coat with a long ice-blue snowflake cape, white stockings and boots, holding a tall silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, raises the staff high above her head and opens her free hand into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "C",
+   "start": "s2",
+   "end": "s3",
+   "length": 9,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a navy hood with tall white rabbit ears and a crescent and snowflake ornament, a white fur-collared navy coat with a long ice-blue snowflake cape, white stockings and boots, holding a tall silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, holds the staff up high to the moon into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "D",
+   "start": "s3",
+   "end": "s4",
+   "length": 9,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a navy hood with tall white rabbit ears and a crescent and snowflake ornament, a white fur-collared navy coat with a long ice-blue snowflake cape, white stockings and boots, holding a tall silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, sweeps the staff down low toward screen-right, sending the moonbeam, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "E",
+   "start": "s4",
+   "end": "rest",
+   "length": 17,
+   "prompt": "A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a navy hood with tall white rabbit ears and a crescent and snowflake ornament, a white fur-collared navy coat with a long ice-blue snowflake cape, white stockings and boots, holding a tall silver staff topped with a crescent moon and an ice-blue snowflake in her right hand, rises and returns to her calm stance of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s1",
+   "start": "s1",
+   "end": "s1",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s2",
+   "start": "s2",
+   "end": "s2",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s3",
+   "start": "s3",
+   "end": "s3",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  },
+  {
+   "name": "H_s4",
+   "start": "s4",
+   "end": "s4",
+   "length": 13,
+   "prompt": " holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve her identity, costume, proportions and the single rigid staff, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+  }
+ ],
+ "game": {
+  "code": "forms-yuki.js (four stars): skill 0 at 0, 1 at 260, 2 at 560 (moonrise), 3 at 900, 4 at 1250 (moonbeam), 5 at 1600, 0 at 2600 (recover)",
+  "plan": "chuỗi tư thế đã duyệt của sheet cũ làm khung mốc, clip giữa hai mốc"
+ },
+ "pick": [
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "A",
+   7,
+   1
+  ],
+  [
+   "A",
+   7,
+   4
+  ],
+  [
+   "A",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s1"
+  ],
+  [
+   "B",
+   7,
+   1
+  ],
+  [
+   "B",
+   7,
+   3
+  ],
+  [
+   "B",
+   7,
+   6
+  ],
+  [
+   "B",
+   7,
+   9
+  ],
+  [
+   "B",
+   7,
+   11
+  ],
+  [
+   "key",
+   "s2"
+  ],
+  [
+   "C",
+   7,
+   1
+  ],
+  [
+   "C",
+   7,
+   4
+  ],
+  [
+   "C",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s3"
+  ],
+  [
+   "D",
+   7,
+   1
+  ],
+  [
+   "D",
+   7,
+   3
+  ],
+  [
+   "D",
+   7,
+   5
+  ],
+  [
+   "D",
+   7,
+   7
+  ],
+  [
+   "key",
+   "s4"
+  ],
+  [
+   "E",
+   7,
+   1
+  ],
+  [
+   "E",
+   7,
+   3
+  ],
+  [
+   "E",
+   7,
+   6
+  ],
+  [
+   "E",
+   7,
+   8
+  ],
+  [
+   "E",
+   7,
+   10
+  ],
+  [
+   "E",
+   7,
+   13
+  ],
+  [
+   "E",
+   7,
+   15
+  ],
+  [
+   "key",
+   "rest"
+  ],
+  [
+   "H_s1",
+   7,
+   2
+  ],
+  [
+   "H_s1",
+   7,
+   4
+  ],
+  [
+   "H_s1",
+   7,
+   6
+  ],
+  [
+   "H_s1",
+   7,
+   8
+  ],
+  [
+   "H_s1",
+   7,
+   10
+  ],
+  [
+   "H_s2",
+   7,
+   2
+  ],
+  [
+   "H_s2",
+   7,
+   4
+  ],
+  [
+   "H_s2",
+   7,
+   6
+  ],
+  [
+   "H_s2",
+   7,
+   8
+  ],
+  [
+   "H_s2",
+   7,
+   10
+  ],
+  [
+   "H_s3",
+   7,
+   2
+  ],
+  [
+   "H_s3",
+   7,
+   4
+  ],
+  [
+   "H_s3",
+   7,
+   6
+  ],
+  [
+   "H_s3",
+   7,
+   8
+  ],
+  [
+   "H_s3",
+   7,
+   10
+  ],
+  [
+   "H_s4",
+   7,
+   2
+  ],
+  [
+   "H_s4",
+   7,
+   4
+  ],
+  [
+   "H_s4",
+   7,
+   6
+  ],
+  [
+   "H_s4",
+   7,
+   8
+  ],
+  [
+   "H_s4",
+   7,
+   10
+  ]
+ ],
+ "roles": [
+  0,
+  4,
+  10,
+  14,
+  19,
+  27
+ ],
+ "rolesBack": [
+  27,
+  null,
+  null,
+  null,
+  null,
+  null
+ ],
+ "stepMs": 17,
+ "lock_area": "all",
+ "end": 27,
+ "holds": {
+  "4": [
+   28,
+   32
+  ],
+  "10": [
+   33,
+   37
+  ],
+  "14": [
+   38,
+   42
+  ],
+  "19": [
+   43,
+   47
+  ]
+ },
+ "keep": [
+  0,
+  1,
+  3,
+  4,
+  6,
+  8,
+  10,
+  12,
+  14,
+  16,
+  17,
+  19,
+  21,
+  23,
+  25,
+  27,
+  29,
+  31,
+  34,
+  36,
+  39,
+  41,
+  44,
+  46
+ ],
+ "size_lock": "body",
+ "size_note": "13/11 owner \"Yuki2 ulti có 1 đoạn bị thu nhỏ\": the raised-staff and low-sweep poses stood 5-7% under the rest -> body_lock; owner 13/11 \"lúc ngửa mặt vẫn bị nhỏ hơn\": the raised-staff poses (face up, 6-18, their holds 33-42) ~7-8% small by the head and ears -> scale_fix",
+ "scale_fix": {
+  "6": 1.04,
+  "7": 1.05,
+  "8": 1.07,
+  "9": 1.08,
+  "10": 1.08,
+  "11": 1.08,
+  "12": 1.08,
+  "13": 1.08,
+  "14": 1.08,
+  "15": 1.06,
+  "16": 1.05,
+  "17": 1.04,
+  "18": 1.02,
+  "33": 1.08,
+  "34": 1.08,
+  "35": 1.08,
+  "36": 1.08,
+  "37": 1.08,
+  "38": 1.08,
+  "39": 1.08,
+  "40": 1.08,
+  "41": 1.08,
+  "42": 1.08
+ }
+}

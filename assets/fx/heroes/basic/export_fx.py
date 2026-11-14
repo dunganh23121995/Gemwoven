@@ -10,8 +10,9 @@ from pathlib import Path
 from PIL import Image
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT.parent / 'fire')); from export_fx import key_out
-FX = {name: (512, ms) for name, ms in [('mika1', 50), ('mika2', 55), ('yuki1', 55), ('yuki2', 60), ('yuki3', 75), ('nori1', 60),
-                                       ('nori2', 60), ('nori3', 65), ('lumi1orb', 55), ('lumi1pop', 60), ('noct3', 55)]}
+# Nori's nori1-3 retired 13/11 (his whole-kit redo draws its own impacts: assets/fx/heroes/earth hit1-3)
+FX = {name: (512, ms) for name, ms in [('mika1', 50), ('mika2', 55), ('yuki1', 55), ('yuki2', 60), ('yuki3', 75),
+                                       ('lumi1orb', 55), ('lumi1pop', 60), ('noct3', 55), ('noct2', 60)]}
 meta = {}
 for name, (out, ms) in FX.items():
     raw = key_out(Image.open(ROOT / name / 'raw-sheet.png')); cw, ch = raw.width / 2, raw.height / 2
@@ -23,4 +24,12 @@ for name, (out, ms) in FX.items():
     strip.save(ROOT / f'{name}.webp', 'WEBP', quality=92, alpha_quality=95, method=6)
     meta[name] = {'file': f'assets/fx/heroes/basic/{name}.webp', 'count': 4, 'frameDuration': ms, 'width': out, 'height': out}
     print('[ok]', name)
+# Noct's strips are drawn with violet smoke: his violet went to cyan (07/11) and his soul glow to pale aqua (13/11), so each goes
+# through his retone scripts after packing (noct2: the delayed assassin cut, owner 14/11).
+import subprocess
+SHADOW = ROOT.parents[2] / 'heroes/forms/shadow'
+for name in ('noct2',):
+    out = ROOT / f'{name}.webp'
+    subprocess.run([sys.executable, str(SHADOW / 'retone_cyan.py'), 'file', str(out)], check=True)
+    subprocess.run([sys.executable, str(SHADOW / 'retone_soul.py'), 'file', str(out)], check=True)
 (ROOT / 'fx.json').write_text(json.dumps(meta, indent=2) + '\n', encoding='utf-8')

@@ -29,7 +29,9 @@ function yukiStaffLight(root,pending){
 }
 function yukiFallingBoulder(point,pending){
   if(reduced)return {drop(){return Promise.resolve();},shatter(){},remove(){}};
-  const size=Math.min(195,$('scene').clientWidth*.52),node=document.createElement('span');
+  // (Codex 13/11) the block lands centred on the foe's drawn body, and shrinks rather than leave a phone's arena
+  const W=$('scene').clientWidth,x=yukiFoeBody().x,size=Math.min(195,W*.52,Math.max(2*Math.min(x,W-x)/.9,120));
+  point={...point,x};const node=document.createElement('span');
   const start=-size*.88,peek=-size*.68,end=point.foot-size*.88;
   node.className='rage-skyfall yuki-glacier';node.dataset.skyOrigin=String(start);node.dataset.caster='hero';
   node.dataset.phase='summoning';

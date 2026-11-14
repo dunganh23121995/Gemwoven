@@ -265,5 +265,31 @@
   35
  ],
  "loopMs": 33,
- "loop_note": "chủ dự án 12/11: nhịp chân rời sân như mấy bước đầu của dạng 3 cho cả quãng -> ~200 ms mỗi bước: vòng 6 khung/bước x 33 ms (Quảng Trường giữ frameDuration), bước khởi động nhanh dần 55 -> 35"
+ "loop_note": "chủ dự án 12/11: nhịp chân rời sân như mấy bước đầu của dạng 3 cho cả quãng -> ~200 ms mỗi bước: vòng 6 khung/bước x 33 ms (Quảng Trường giữ frameDuration), bước khởi động nhanh dần 55 -> 35",
+ "keep": [
+  0,
+  2,
+  3,
+  5,
+  6,
+  8,
+  10,
+  11,
+  13,
+  14,
+  16,
+  17,
+  19,
+  21,
+  22,
+  24,
+  25,
+  27,
+  28,
+  30,
+  32,
+  34,
+  36,
+  38
+ ]
 }

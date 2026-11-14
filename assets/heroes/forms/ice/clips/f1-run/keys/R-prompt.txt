@@ -1,0 +1,11 @@
+Image 1 is the exact character: A chibi bunny-eared girl mage with long silver-lavender hair in a thick braid, blue eyes, a dark navy hood with white rabbit ears and a snowflake ornament, a white fur-trimmed navy and ice-blue robe with a long flowing cape, white stockings and boots, holding a slender silver staff topped with a crescent moon and an ice-blue snowflake in her right hand. Keep her identity, face, costume, colours, proportions, line style and the staff design from Image 1, at the same size and camera distance as Image 1.
+Image 2 is a pose reference only (another outfit of the same hero): copy its running pose energy, not its costume.
+
+Draw ONE single full-body sprite of her running fast toward screen-right, three-quarter view facing screen-right, in a dynamic mid-stride pose:
+- her body leans forward into the run, determined face visible;
+- her front leg (her left) stepping far forward with the knee lifted high, her back leg pushing off far behind her, both legs and boots fully visible and clearly separated with open space between them;
+- her long robe, skirt hem and cape are swept back behind her by the wind of the run, above the knees in front, so they never hide her legs;
+- she holds the staff in her right hand slanted back, her free left arm swinging forward;
+- her long braid, rabbit ears and cape stream back behind her.
+
+Background: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character and the whole staff fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No snow, sparkles, aura, particles, speed lines, text or labels.

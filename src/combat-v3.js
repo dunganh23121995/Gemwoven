@@ -35,6 +35,12 @@ function combatV3Point(side){
   const scene=$('scene').getBoundingClientRect(),r=actor(side).getBoundingClientRect();
   return {x:r.left-scene.left+r.width*.5,y:r.top-scene.top+r.height*.62,foot:r.bottom-scene.top-r.height*.06,width:r.width,height:r.height};
 }
+// A burst centred at (x,y) keeps its centre and shrinks to stay inside the scene (Codex 13/11: on a phone the foe stands near
+// the right edge and a full-size burst was cut off); `fill` is how much of its cell the drawn burst covers; never below 60%.
+function combatV3Fit(x,y,size,fill=.9){
+  const scene=$('scene'),room=Math.min(x,scene.clientWidth-x,y,scene.clientHeight-y)*2/fill;
+  return Math.min(size,Math.max(room,size*.6));
+}
 function combatV3Element(className,point,size,html='',palette=combatV3Palette.fire){
   const node=document.createElement('span');
   node.className='combat-v3-effect '+className;
@@ -319,6 +325,8 @@ attack=async function(side,raw,{ultimate=false,hits=1,damageLedger=null,charged=
         await combatV3Pose(source,`translate(${direction*(travel-7)}px,${melee?-7:-3}px) rotate(${-direction*(i%2?8:4)}deg)`,melee?130:85);
         combatV3Frame(side,action,strike.launch);await combatV3Wait(melee?45:35);
       }
+      // Lumi's form-1 bolt strikes once her drawn thrust reaches its pose (owner 13/11: the bolt came before the staff).
+      if(side==='hero'&&key==='lightning'&&!ultimate){combatV3Frame(side,action,strike.contact);await spriteArrival('hero');}
       const origin=combatV3Point(side),contact=combatV3Point(targetSide);
       const contactDelay=COMBAT_V3_STRIKES[pounce?'novice':key==='fire'&&side==='enemy'?'breath':key].contact;
       combatV3Whoosh(key,strong||boss,contactDelay);

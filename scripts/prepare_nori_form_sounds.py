@@ -1,13 +1,11 @@
 """Nori's four- and six-star ultimate sounds (src/forms-nori.js), rebuilt from scratch the way Yuki's approved set is.
 
-Backbone: Nori's form-1 ultimate has one real recording, the shield bash (sources/mika-nori/shield-bash.mp3,
-Hybrid_V); earth-charge, earth-launch and earth-finish are synthesized textures and are not used. The shield bash
-plays for the six-star bash as in form 1. Every other cue is the literal sound of its motion, one clean real
-recording each (Freesound CC0 HQ previews in sources/freesound/<id>-<slug>/ with source.json): leaves and wind
-swirling up, a heavy whoosh, a heavy body falling on the ground for the hammer, a deep stomp boom with its long
-natural decay under it (the loudest moment; six stars: faded within ~1 s, no long ring-out), splintering wood for vines and roots tearing the
-soil, a ceramic shatter for the jade, a stressed wooden hull creaking for the growing tree, falling leaves, armoured
-footsteps for the charge. Processing: excerpt, gentle high-pass, gain to ~0.12 RMS with a peak ceiling (never
+Backbone (whole-kit redo 13/11, "khống chế, mạnh mẽ, bộc phát"): Nori's form-1 shield bash (sources/mika-nori/
+shield-bash.mp3, Hybrid_V) still plays for the shield blows. Every other cue is the literal sound of its motion, one
+clean real recording each (Freesound CC0 HQ previews in sources/freesound/<id>-<slug>/ with source.json): a heavy
+swing, the hammer striking, the slam on the ground (the loudest moment), roots tearing the soil, a stressed wooden
+hull creaking as the roots or the shield walls clamp, a trunk splitting for the root lock, a small bell for the
+renewal. Processing: excerpt, gentle high-pass, gain to ~0.12 RMS with a peak ceiling (never
 pushed into distortion), short edge fades; natural attack and tail kept; no layering, pitch/time change,
 synthesis, saturation or limiting. Sources were checked for clipping, hiss and noise floor.
 Output: assets/audio/hero-forms/earth/*.wav and assets/audio/hero-forms/earth-manifest.json
@@ -66,22 +64,22 @@ def clip(name, ref, start, end, beat, highpass=60, fade_in=.006, fade_out=.25, t
 for old in OUT.glob('*.wav'):
     old.unlink()
 # Shared (both forms)
-clip('gather', '569786', 2.0, 4.0, 'chant: leaves and wind swirl up around him as the healing spiral rises and he lifts the hammer, 0-2.0 s', highpass=120, fade_in=.25, fade_out=.5)
-clip('swing', '427979', .22, .75, 'the hammer swings down; the whoosh peaks on the blow', highpass=80, fade_in=.01, fade_out=.2)
 clip('slam', '734629', .46, 1.36, 'the hammer hits the earth: a heavy weight thudding into the ground, natural settle', highpass=35, fade_in=.003, fade_out=.3)
-clip('boom', '512483', 0, 1.05, 'deep stomp boom under the six-star slam for its weight, faded out within ~1 s so the ending finishes cleanly (no long ring-out)', highpass=30, fade_in=.01, fade_out=.5)
 clip('roots', '869103', 3.36, 4.36, 'wood splintering: vines/roots tear up through the soil and lock the foe, natural crackle', highpass=100, fade_in=.02, fade_out=.3)
-# Four-star: Ngọc Thụ Hộ Thể (rebuilt again on its own; the six-star set above/below is approved and unchanged)
-clip('f2-swirl', '397988', 5.3, 7.3, 'chant: the healing spiral, glassy stone wind chimes shimmering (jade), 0-2.0 s', highpass=200, fade_in=.15, fade_out=.6)
+# Four-star, hammer throw (owner 13/11 second redesign: "ném búa lên trời rơi xuống hóa to vào địch rồi gọi búa về"): the
+# swing hurls it up, f2-fall = its rushing descent swelling into the blow, f2-strike = the giant hammer landing (the
+# stun), f2-return = it spinning back through the air (each pulse a turn), f2-catch = the handle slapping into his palm.
 clip('f2-swing', '244598', 4.18, 4.6, 'the hammer swings down; the swish peaks on the blow', highpass=80, fade_in=.01, fade_out=.12)
 clip('f2-strike', '669719', 4.53, 5.35, 'the jade hammer strikes the ground hard: a heavy thump on stone, natural settle (the loudest hit)', highpass=35, fade_in=.002, fade_out=.25)
-clip('f2-rubble', '703247', 0, 4.6, 'under the strike the ground cracks open and the crack runs to the foe: stone debris crashing and crumbling, ringing out with its natural decay to the end', highpass=40, fade_in=.01, fade_out=.9)
-clip('f2-vines', '862083', .93, 1.65, 'the jade vines and sapling burst up: a fresh plant stalk snapping and cracking', highpass=120, fade_in=.005, fade_out=.2)
-clip('f2-clink', '634154', 4.98, 5.95, 'the vines lock round the foe and the sapling opens: a ringing ceramic/jade clink with its natural ring', highpass=150, fade_in=.002, fade_out=.25)
-clip('f2-shatter', '675897', 3.94, 6.6, 'the jade shatters like pottery and its pieces settle: the natural ending', highpass=80, fade_in=.003, fade_out=.6)
-# Six-star: Vạn Mộc Thiên Thành
-clip('rush', '770083', 36.55, 36.92, 'armoured footsteps: the shield charge', highpass=60, fade_in=.005, fade_out=.1)
-clip('bash', 'mika-nori/shield-bash.mp3', .08, 1.0, "the shield bash: form 1's own recording, natural decay", highpass=45, fade_in=.002, fade_out=.25)
-clip('tree', '675785', 2.6, 4.6, 'the world-tree grows: a great wooden hull creaking and stressing, natural swell and fall', highpass=50, fade_in=.05, fade_out=.4)
-clip('leaves', '489911', 0, 2.45, 'the blazing crown sheds its leaves as it fades', highpass=150, fade_in=.01, fade_out=.5)
+clip('f2-fall', '431976', .38, .80, 'the thrown hammer rushing down from the sky, the whoosh swelling into the blow', highpass=60, fade_in=.05, fade_out=.03, target_rms=.1)
+clip('f2-return', '486234', .82, 1.5, 'the hammer spinning back through the air to his hand, one whoosh a turn', highpass=80, fade_in=.02, fade_out=.12, target_rms=.09)
+clip('f2-catch', '454381', .23, .75, 'the hammer handle slapping into his palm: a short solid wooden thunk', highpass=70, fade_in=.002, fade_out=.2, target_rms=.1)
+# Six-star: Vạn Mộc Thiên Thành, v2 (owner 12/11, ult-v2-design.md): bash = the shield bites into the ground, slam = the
+# stomp, roots = the crack running to the foe, boom (+slam) = the shockwave, leaves = the giant shield falling apart.
+# The old charge (rush), hammer whoosh (swing) and world-tree (tree) cues went with the old staging.
+# Whole-kit redo (owner 13/11 "khống chế, mạnh mẽ và bộc phát"; Codex's four sources): A = wood under load creaking as he
+# gathers force, B = f2-strike (heavy thump on stone) for every lock and impact, D = a small bell for the renewal entering
+# him (C, the tree trunk of the root clamp, went with the four-star root staging).
+clip('creak', '506665', 0.0, 0.50, 'A: old wood under load creaking short and low as he gathers force', highpass=60, fade_in=.004, fade_out=.15)
+clip('bell', '791477', 0.0, 0.60, 'D: a small soft bell as the renewal enters him', highpass=200, fade_in=.003, fade_out=.25, target_rms=.06)
 (AUDIO / 'hero-forms/earth-manifest.json').write_text(json.dumps(MANIFEST, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')

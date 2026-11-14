@@ -46,7 +46,7 @@ function fight(hero,enc,seed,{skill=.8}={}){
   const heal=n=>{const before=st.hp;st.hp=Math.min(st.max,st.hp+n);return st.hp-before;};
   const blocked=()=>!OLD&&(st.guard>0||st.frozen||st.stun>0);
   // The burst lands once, without the element, power or other multipliers a second time (as combat does).
-  const burst=()=>{const b2=Math.round(st.stored*kit.burst);st.stored=0;const blocked=Math.min(st.eArmor,b2);st.eArmor-=blocked;st.eHp-=b2-blocked;if(st.tf>0)st.tfDmg+=b2;else st.baseDmg+=b2;};
+  const burst=()=>{const b2=Math.round(st.stored*(st.burstMult||kit.burst));st.stored=0;st.burstMult=0;const blocked=Math.min(st.eArmor,b2);st.eArmor-=blocked;st.eHp-=b2-blocked;if(st.tf>0)st.tfDmg+=b2;else st.baseDmg+=b2;};
   const value=(m,side)=>{let v=0;const own=side==='hero';for(const k of m){const t=b[k];v+=t===SWORD?1:t===CRYSTAL?(own?(st.energy>=60?.9:.6):.7):t===HEART?(own?(st.hp<st.max*.5?1:.3):.3):t===SHIELD?.4:.35;}return v;};
   const pick=side=>{const list=moves(b);let best=list[0],bv=-1;for(const mv of list){const v=value(mv[2],side)+rand()*.01;if(v>bv){bv=v;best=mv;}}return rand()<(side==='hero'?skill:.85)?best:list[Math.floor(rand()*list.length)];};
   const enemySkills=enc.skillSet.length?enc.skillSet:[{kind:'strike',power:1}];let skillTurn=0;
@@ -85,6 +85,8 @@ function fight(hero,enc,seed,{skill=.8}={}){
     }
     if(st.eHp<=0)break;
     for(let cast=0;st.energy>=100&&st.eHp>0&&(OLD||cast<(+process.env.ULT_PER_TURN||R.ULTIMATE.perTurn));cast++){st.energy-=100;st.ults++;const exec=kit.execute&&st.eHp<st.eMax*kit.execute.threshold?kit.execute.bonus:1;
+      // Nori form 3 (owner 14/11): each further ultimate this turn raises the seal's burst (progression.js noriChainBurst).
+      if(hero.key==='earth'&&kit.form===3){const chain=M.noriChainBurst(kit.burst,cast+1);st.burstMult=st.stun>0||st.sealFree>0?Math.max(st.burstMult||kit.burst,chain):chain;}
       if(hero.key==='earth'){if(blocked()){if(!st.sealFree)st.sealFree=kit.stun;}else st.stun=Math.max(st.stun,kit.stun);st.regen=kit.regenTurns;}
       else hitFoe(kit.base*kit.power*s.attack*exec*(TF==='old'&&tf?1+tf.attack:1));
       if(hero.key==='ice'){st.armor=Math.min(heroCap,st.armor+kit.armor);if(!blocked())st.stun=Math.max(st.stun,1);if(kit.mutationArmor)st.armor=Math.min(heroCap,st.armor+Math.round(st.max*kit.mutationArmor));}
