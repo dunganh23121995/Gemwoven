@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-14T11:01:20Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-1\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left hand. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the hammer and the shield stay on the same arms as in Image 1, the hammer always ONE whole rigid weapon.\n\nDraw ONE single full-body sprite of him gathering momentum to charge his shield into the foe, at his normal standing height (not crouching, not ducking, not hiding): his weight rocked back onto his bent back leg (screen-left), his front leg stepped forward toward screen-right with the knee bent, torso leaning slightly forward, his LEFT shoulder pressed against the inside of the tall tower shield which he holds firmly in front of his chest, angled toward the foe at screen-right, its golden tree emblem facing the viewer; his head and face clearly visible above and behind the shield's top rim, eyes fixed on the foe, a fierce determined face, mouth closed; his RIGHT hand holds the war hammer low and back behind his hip, gripped at the end of the handle, the hammer head trailing behind him near the ground; cape swinging back. Coiled like a sprinter about to burst forward. A clear, readable, powerful silhouette for a small phone screen; the whole body commits to the pose. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, impact flash, dust, cracks, glow, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate keeps the reference character's antlers, leaf accents, green cape, gold-and-bronze armour and the hammer and shield designs. The background is flat magenta with no text, extra figures or cut-off limbs. The sprite sits low and off-centre with a large empty top area, which is a composition choice rather than a clear defect under the filter rules.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000686
+  }
+}

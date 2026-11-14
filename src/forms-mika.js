@@ -414,7 +414,9 @@ function mikaPierce(point,direction,sheet,pending){
 // wind-up, the lunge carries her in; the resting pose's colours; the clip-route attack sheet, its roles): 0 rest, 1 guard, 2 full thrust.
 // She stands on guard while she gathers, and moves in only as the right hand pushes (owner 06/11: "khi tay phải đẩy
 // lên thì mới tiến lại gần chọc"): the thrust pose from the start of the lunge to the contact, then back to the guard.
-const MIKA_SLASH_FIRST=[1,1,2,2,2,2,1],MIKA_SLASH_NEXT=[1,2,2,2,1],MIKA_SLASH_REST=[1,0];
+// The way back to rest is one drawn motion (owner 14/11 "thu đao về bị khựng"): it used to stop on the guard (the
+// sheet's way-back frame 17) for 90 ms before walking on to rest; rest alone plays the same frames through the guard.
+const MIKA_SLASH_FIRST=[1,1,2,2,2,2,1],MIKA_SLASH_NEXT=[1,2,2,2,1],MIKA_SLASH_REST=[0];
 window.mikaSlashOrders={first:MIKA_SLASH_FIRST,next:MIKA_SLASH_NEXT,rest:MIKA_SLASH_REST};// the Studio's in-combat preview
 let mikaSlashCalls=0,mikaSlashOrder=MIKA_SLASH_FIRST,mikaSlashShorten=0,mikaLinkShorten=0,mikaSlashSteps=0;
 const mikaBaseFrame=combatV3Frame,mikaBasePose=combatV3Pose;

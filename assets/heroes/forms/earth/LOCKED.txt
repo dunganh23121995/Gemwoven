@@ -5,3 +5,14 @@ Re-locked after the defect review and head-scale fixes: 2026-10-26.
 Lock confirmed by the player on the current state (commit 571c3b2): 2026-10-27.
 Lock confirmed by the player on the current state: 2026-10-28.
 Lock confirmed by the player on the current state: 2026-10-29.
+
+Changed on request 2026-11-14: form 2 ultimate, the raised hand that pointed at the sky with the shield left hanging is now
+the shield itself raised on its arm and glowing to command and call back the hammer (key RAISE, clips T/L/R, forms-nori.js
+noriShieldGlow); form 3 ultimate, a sound when the shield is planted (shield-bash, then creak as the giant shield grows).
+14/11 (owner: "Nori1. Khi tung tuyệt kỹ có thu người lại trông không được đẹp", then "Búa lỗi này"): form 1's ultimate no longer sinks
+into the crouch hidden behind the shield. A first BRACE (hammer over the shoulder) read as a hammer blow (owner: "Tôi vẫn muốn là dùng khiên để huých vào địch
+... tư thế lấy đà"): Codex key WINDUP (clips/f1_cast_keys.py; the run-up, shoulder in the shield aimed at the foe, hammer trailing low,
+face visible) replaces it before the kept shield rush; clips A, B and the run-up hold redrawn, sharpen_note keeps the hammer whole,
+size_lock body.
+14/11 (owner: "Nori 3 lúc chưởng trúng địch sao địch k có hiệu ứng giống lúc bị đánh thường"): the form 3 burst plays the foe's hurt
+sheet and the basic attack's impact star at 1400 ms, and knocks back a foe that resists the stun (forms-nori.js).

@@ -28,3 +28,4 @@ body.reduced-motion .actor>.sprite-body::after{display:none}
 .scene .hero-actor[data-hero="shadow"][data-hero-form="3"][data-state="idle"] .scythe-glint{display:block;animation:scythe-glint 5.8s ease-in-out infinite}
 @keyframes scythe-glint{0%,70%{background-position:62% 0;opacity:0}71.5%{opacity:1}86%{background-position:20% 0;opacity:1}88%,100%{background-position:20% 0;opacity:0}}
 body.reduced-motion .scythe-glint{animation:none!important;display:none!important}
+.actor>.sprite-keep-idle{position:absolute;inset:0;z-index:-1;opacity:.01;pointer-events:none;background-repeat:no-repeat}.actor>.sprite-keep-idle[hidden]{display:none}

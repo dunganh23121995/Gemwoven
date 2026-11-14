@@ -11,3 +11,13 @@ speckled; it is redrawn crisp by sharpen_heroes.py (rendering taken from her hov
 rebaked. Her six-star aura is redrawn at 512px without its comets (aura/export_aura.py); the two comets are one drawn
 ring that CSS spins round a tilted orbit, behind her and in front (.aura-orbit). Cửu Thiên Tinh Phạt's galaxy is
 replaced by a storm orb (assets/fx/heroes/lightning/stormorb) with lightning crackling round its rim (stormarc).
+
+Changed on request 2026-11-14 ("Lumi1 tuyệt kỹ ảnh 16, 21 bị sao này? ... Lumi bị thay đổi màu sắc giữa các ảnh ... Rà soát lumi cùng codex"):
+every clip sheet re-assembled with hold_face (living-hold faces from the clean key), hue_lock (robe hues mapped onto the
+resting frame) and, for form 1 hurt and form 3 attack/skill, feet_lock "torso"; Codex review round 2 passes faces, colour
+and position. Still open: staff-head drift, form 2 attack frame 3 without its staff, form 3 skill shoulder fans.
+14/11 (owner agreed to Codex round 2's redraw list): the staff head of forms 1-2 is the resting frame's hollow gold ring (violet rim, a
+white sparkle / four-point star, background seen through), not the solid blue orb the action sheets drew; form 2's attack holds the
+staff through its swing; form 3's skill keeps its compact shoulder feathers. Codex redrew the sheets with close-ups of the rest
+(clips/staff-head-f1.png, staff-head-f2.png, shoulders-f3.png via spec sharpen_refs; per-sheet sharpen_sheet_notes); the green-screen
+cut now pulls the green spill off solid edge pixels too.

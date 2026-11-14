@@ -59,3 +59,11 @@ Then (owner: "vết chém xuất hiện ngay sau khi kiếm phất ra"): the hai
 blow lands with it; the zanshin and the noto follow, the click only closes the move.
 Then: the draw flicks straight up (no low sweep: hilt, blade out level, up, high) and the noto plays the draw backward (the blade comes
 round behind his body into the scabbard at his left hip). 19 frames.
+14/11 (owner: "Noct 3 màu vạt áo tôi muốn như của trạng thái xoay lưỡi hái, không quá sáng. Màu mắt giữ nguyên nhưng hình dáng thì
+phải sửa giống dáng mắt xoay lưỡi hái. Đồng bộ tất cả các trạng thái."): form-3/sync_spin_look.py. `hems` maps the soul-cyan cloth of
+the combat sheets (attack, cast, hover, run), both rigs (combat rest/idle/buff, show rest/idle) and hub-idle onto the "Xoay lưỡi hái"
+fidget's hue/saturation/brightness spread (the fidgets darkpalm/emerge/rift already matched it); `eyes` lays the spin's own two eyes
+over every frame's (old glow inpainted, new glow in the old eyes' colour). Run once each; to redo, git checkout the pictures first.
+Then (owner: "Ê cái liềm sai màu rồi"): the rift fidget's frames 2 and 4-6 still had the cyan scythe glow (the `scythe` step had run on
+the whole sheet and missed them); whitened frame by frame with retone_cyan.whiten_scythe (darkpalm frame 1 left alone: its soul
+flame is meant to be cyan).

@@ -5046,7 +5046,7 @@
     "assets/reimagined/heroes/earth/run.webp",
     "assets/reimagined/heroes/earth/smash.webp"
    ],
-   "bytes": 12737582
+   "bytes": 13109762
   },
   {
    "id": "hero-earth-f2",
@@ -5083,7 +5083,7 @@
     "assets/heroes/forms/earth/form-2/skill.r2.webp",
     "assets/heroes/forms/earth/form-2/skill.r3.webp"
    ],
-   "bytes": 12080671
+   "bytes": 12078247
   },
   {
    "id": "hero-earth-f3",
@@ -5277,7 +5277,7 @@
     "assets/heroes/forms/fire/form-3/skill.r3.webp",
     "assets/heroes/forms/fire/form-3/skill.webp"
    ],
-   "bytes": 18692251
+   "bytes": 18698659
   },
   {
    "id": "hero-ice-f1",
@@ -5485,7 +5485,7 @@
     "assets/reimagined/heroes/lightning/hurt.r1.webp",
     "assets/reimagined/heroes/lightning/hurt.r2.webp"
    ],
-   "bytes": 11696652
+   "bytes": 11760034
   },
   {
    "id": "hero-lightning-f2",
@@ -5524,7 +5524,7 @@
     "assets/heroes/forms/lightning/form-2/skill.r3.webp",
     "assets/heroes/forms/lightning/form-2/skill.webp"
    ],
-   "bytes": 12276494
+   "bytes": 12470800
   },
   {
    "id": "hero-lightning-f3",
@@ -5564,7 +5564,7 @@
     "assets/heroes/forms/lightning/form-3/skill.r3.webp",
     "assets/heroes/forms/lightning/form-3/skill.webp"
    ],
-   "bytes": 19603369
+   "bytes": 19702343
   },
   {
    "id": "hero-novice-f1",
@@ -5790,7 +5790,7 @@
     "assets/heroes/forms/shadow/form-3/showcase/rift.webp",
     "assets/heroes/forms/shadow/form-3/showcase/scythespin.webp"
    ],
-   "bytes": 7522268
+   "bytes": 7477784
   },
   {
    "id": "summon",

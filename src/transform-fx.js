@@ -61,14 +61,20 @@ function transformSilFilter(){if(document.getElementById('tf2-cut'))return;const
 const TF2_SIL_PROPS=['backgroundImage','backgroundSize','backgroundPosition','transform','translate','scale','rotate','transformOrigin'];
 function transformSilMirror(hero,back){const body=hero.querySelector('.sprite-body'),sils=[...back.querySelectorAll('.tf2-sil')];if(!body||!sils.length)return;transformSilFilter();
   back.style.setProperty('--u',(hero.offsetHeight*(parseFloat(getComputedStyle(back).getPropertyValue('--h'))||.75)/100).toFixed(2)+'px');
-  cancelAnimationFrame(back._silRaf);const last=new Map();
+  cancelAnimationFrame(back._silRaf);back._silObserver?.disconnect();const last=new Map();
   const set=(el,k,v)=>{const key=el.className+k;if(last.get(key)!==v){last.set(key,v);el.style[k]=v;}};
-  const tick=()=>{if(!back.isConnected||!body.isConnected)return;const cs=getComputedStyle(body);
+  const sync=()=>{if(!back.isConnected||!body.isConnected)return false;const cs=getComputedStyle(body);
     for(const el of sils){const box=el.parentElement===back?{x:0,y:0}:{x:el.parentElement.offsetLeft,y:el.parentElement.offsetTop};
       set(el,'inset','auto');set(el,'left',(body.offsetLeft-box.x)+'px');set(el,'top',(body.offsetTop-box.y)+'px');
       set(el,'width',body.offsetWidth+'px');set(el,'height',body.offsetHeight+'px');
       for(const k of TF2_SIL_PROPS)set(el,k,cs[k]);}
-    back._silRaf=requestAnimationFrame(tick);};
+    return true;};
+  // A frame change copies at once, before the paint (owner 14/11, six-star Mika's thrust: copied only on the next animation
+  // frame, the light drew the pose before the body's, a glowing glaive beside the real one at a 17 ms clip step).
+  back._silObserver=new MutationObserver(()=>{if(!sync())back._silObserver.disconnect();});
+  back._silObserver.observe(body,{attributes:true,attributeFilter:['style','data-frame','data-action']});
+  // Motion that no attribute reports (Web Animations on the body) is caught every animation frame.
+  const tick=()=>{if(sync())back._silRaf=requestAnimationFrame(tick);else back._silObserver.disconnect();};
   tick();}
 // Biến Thân sounds only the spirit-rise cue every hero shares, exactly the approved preview b3 (owner 04/11: no hero
 // flame cue on top of or after it). The hero's own cue is kept for the end of the transformed turns.
@@ -89,7 +95,7 @@ function transformLookSync(flare=false){
   const key=transformLook(),phase=!key||!progressionTransform?null:progressionTransform.left>0?'active':'after';
   hero.classList.toggle('has-tf-look',!!phase);hero.classList.toggle('has-tf-v2',!!phase&&!!ART.transformLooks[key]?.v2);
   let back=hero.querySelector(':scope > .tf-look'),front=hero.querySelector(':scope > .tf-front');
-  if(!phase){if(back)cancelAnimationFrame(back._silRaf);back?.remove();front?.remove();return;}
+  if(!phase){if(back){cancelAnimationFrame(back._silRaf);back._silObserver?.disconnect();}back?.remove();front?.remove();return;}
   if(!back||!front){back?.remove();front?.remove();[back,front]=transformLookBuild(key);
     const glow=hero.querySelector(':scope > .combat-evo-glow');if(glow)glow.after(back);else hero.prepend(back);hero.append(front);
     if(back.classList.contains('tf-v2'))transformSilMirror(hero,back);}

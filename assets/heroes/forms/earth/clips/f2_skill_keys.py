@@ -1,6 +1,5 @@
 """Nori form 2 ultimate keys (owner 13/11, second redesign: "dùng búa ném lên trời rơi xuống hóa to vào địch rồi gọi búa
-về"): the hammer raised in his right hand alone, the shield arm low (SKY, owner 14/11), hurled straight up (THROW, empty-handed), the empty hand commanding it down
-onto the foe (CALL) and catching it overhead (CATCH; he reaches for it in the THROW pose, Codex 13/11); the shield strapped to the left forearm. Codex (Sol low) from the resting frame -> clips/f2-skill/keys/<name>-raw.png.
+về"): the hammer raised in his right hand alone, the shield arm low (SKY, owner 14/11), hurled straight up (THROW, empty-handed), the shield raised and glowing to command it down onto the foe and call it back (RAISE, owner 14/11; was an empty pointing hand, CALL) and catching it overhead (CATCH; he reaches for it in the THROW pose, Codex 13/11); the shield strapped to the left forearm. Codex (Sol low) from the resting frame -> clips/f2-skill/keys/<name>-raw.png.
 python f2_skill_keys.py [name ...]"""
 import os, subprocess, sys
 from pathlib import Path
@@ -18,7 +17,10 @@ POSES = {
     'THROW': "has just hurled his war hammer straight up into the sky: his right arm flung straight up above his head with the hand open and EMPTY, fingers spread, body stretched upward on his toes, chin up looking at the sky, the kite shield still strapped to his left forearm held out to the side; the hammer is NOT in the picture at all (it has flown away above)",
     # His right arm is the far one (screen-left), the shield arm the near one (screen-right): the right hand works ABOVE his
     # head, over the shield's rim, so the shield never changes arm (the first CALL/RECV/CATCH swapped it, 13/11).
-    'CALL': "commanding the sky with his EMPTY right hand: his right arm raised high above his head and pointing up and forward toward the upper right, the index finger pointing, the arm passing ABOVE the top rim of the shield; the kite shield stays strapped to his LEFT forearm on the screen-right side in front of his body exactly as in Image 1; feet planted wide and firm, looking up toward the upper right, shouting a command, mouth open; NO hammer anywhere in the picture",
+    # Owner 14/11: "Nori 2 khi dơ tay chỉ thì đang không có gì cầm khiên. Logic này phi lý ... thay bằng vẫn cầm khiên nhưng dơ lên và
+    # phát sáng khiến như kiểu khiên gọi búa về": the shield itself calls the hammer, raised on the arm that wears it (the
+    # glow is the game's own layer, not drawn). His right arm is the far one: empty and low, hidden behind his body.
+    'RAISE': "raising his kite shield high to call his flying hammer back: his LEFT forearm, with the green kite shield with the golden tree emblem strapped to it, lifted up and forward above his head toward the upper right, the shield's face turned up toward the sky at about 45 degrees, its whole front and the golden tree emblem clearly visible; the shield stays strapped to his LEFT forearm exactly as in Image 1, the same size and design; his RIGHT arm is the far arm, empty and low at his far side, HIDDEN behind his body (do not draw the right hand); feet planted wide and firm, chest open, looking up toward the shield and the sky, a determined shout, mouth open; NO hammer anywhere in the picture",
     'CATCH': "has just caught his war hammer above his head: his right hand raised high above his head gripping the long handle, the hammer held upright above and slightly behind his head with its stone-and-gold head at the top, knees bent absorbing the weight; the kite shield stays strapped to his LEFT forearm on the screen-right side in front of his body exactly as in Image 1; a confident grin",
 }
 

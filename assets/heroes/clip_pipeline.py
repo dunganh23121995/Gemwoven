@@ -185,6 +185,11 @@ def key_magenta(im):
         mx = np.maximum(g, 1); chroma = np.clip((g - np.maximum(r, b)) / mx, 0, 1)
         alpha = np.clip(1 - (chroma - .30) / .25, 0, 1)
         spill = np.clip(g - np.maximum(r, b), 0, None) * (1 - alpha)
+        # Solid pixels on the cut edge keep a green cast (14/11, Codex: green dots round Lumi's hollow staff ring): within 3 px
+        # of the background, green above red/blue is pulled down to them (a green ribbon inside the body is left alone).
+        from scipy import ndimage
+        edge = ndimage.binary_dilation(alpha < .5, iterations=3)
+        spill = np.where(edge, np.clip(g - np.maximum(r, b), 0, None) * .9, spill)
         out = a.copy(); out[..., 1] -= spill
         return Image.fromarray(np.dstack([np.clip(out, 0, 255), alpha * 255]).astype(np.uint8), 'RGBA')
     mx = np.maximum(np.maximum(r, b), 1)
@@ -478,13 +483,23 @@ def cmd_sharpen(ref, sheets=None, model='gpt-6.1-sol', effort='low'):
                      'frame (a blue-purple orb stays blue-purple; 13/11 a redraw turned Lumi\'s orb green).' + chr(10))
         prompt = d / 'sharpen-prompt.txt'
         prompt.write_text(text, encoding='utf-8')
+    # sharpen_refs (owner 14/11, Lumi's staff head and shoulder fans drifted from the resting design): close-ups cut from the
+    # resting frame, sent as Image 3, 4... after it; the spec's sharpen_note says what each one shows.
+    extra = sum([['--ref', str(ROOT / p)] for p in spec.get('sharpen_refs', [])], [])
+    base_prompt = prompt
     for s in (sheets or range(n)):
         out = d / f'sharp-{s}.png'
         if not sheets and out.exists() and out.stat().st_mtime > (d / f'soft-{s}.png').stat().st_mtime:
             continue     # already drawn from this soft sheet (a resumed run)
+        # sharpen_sheet_notes {sheet: text} (14/11: Lumi 2's clip dropped her staff mid-swing on one sheet): an extra rule
+        # for that sheet only.
+        prompt = base_prompt
+        if str(s) in spec.get('sharpen_sheet_notes', {}):
+            prompt = d / f'sharpen-prompt-{s}.txt'
+            prompt.write_text(Path(base_prompt).read_text(encoding='utf-8').rstrip() + chr(10) + spec['sharpen_sheet_notes'][str(s)] + chr(10), encoding='utf-8')
         env = {**os.environ, 'IMAGEGEN_BACKEND': 'codex'}
         r = subprocess.run([sys.executable, str(IMAGEGEN), '--prompt-file', str(prompt), '--out', str(d / f'sharp-{s}.png'),
-                            '--ref', str(d / f'soft-{s}.png'), '--ref', str(ref_img), '--model', model, '--effort', effort],
+                            '--ref', str(d / f'soft-{s}.png'), '--ref', str(ref_img)] + extra + ['--model', model, '--effort', effort],
                            env=env, capture_output=True, text=True)
         g = json.loads((d / f'sharp-{s}.png.gen.json').read_text(encoding='utf-8')) if (d / f'sharp-{s}.png.gen.json').exists() else {}
         pre = g.get('precheck')
@@ -618,7 +633,12 @@ def feet_lock(spec, keyed):
     def mid(k):
         a = np.asarray(k)[..., 3] > 128; ys, xs = np.where(a); yb = np.percentile(ys, 99.7); low = xs[ys > yb - k.height * .03]
         return (low.min() + low.max()) / 2
-    m = [mid(keyed[f]) for f in order]
+
+    def torso(k):   # feet_lock "torso" (owner 14/11, Lumi floats and her staff hangs below her boots): the body's middle band
+        a = np.asarray(k)[..., 3] > 128; ys, xs = np.where(a); top, bot = ys.min(), ys.max()
+        band = (ys > top + (bot - top) * .35) & (ys < top + (bot - top) * .6)
+        return float(np.median(xs[band]))
+    m = [(torso if spec.get('feet_lock') == 'torso' else mid)(keyed[f]) for f in order]
     anchor = [picks[f][0] == 'key' or is_rest(spec, picks[f]) for f in order]
     idx = [r for r, a in enumerate(anchor) if a]
     for r0, r1 in zip(idx, idx[1:]):
@@ -722,6 +742,38 @@ def color_match(im, rest):
     rgb = (g + (rgb - g) * fs) * fv
     return Image.fromarray(np.dstack([np.clip(rgb, 0, 255), a[..., 3]]).astype(np.uint8), 'RGBA')
 
+
+def hue_match(im, rest, ranges):
+    """spec hue_lock [[lo, hi], ...] (hue degrees; owner 14/11, Lumi "bị thay đổi màu sắc giữa các ảnh"): Codex redraws
+    each batch of frames on its own and its robe drifted from the approved violet to a brighter red-magenta. Inside each
+    hue range only (the robe, not the hat's cyan gems, the gold or the skin), the frame's hue, saturation and brightness
+    are mapped onto the resting frame's distributions (quantile matching), feathered over the range's edges."""
+    import cv2
+    a = np.asarray(im).astype(np.uint8); r = np.asarray(rest).astype(np.uint8)
+    hsv = cv2.cvtColor(np.ascontiguousarray(a[..., :3]), cv2.COLOR_RGB2HSV_FULL).astype(np.float32)
+    rh = cv2.cvtColor(np.ascontiguousarray(r[..., :3]), cv2.COLOR_RGB2HSV_FULL).astype(np.float32)
+    deg = lambda x: x[..., 0] * 360 / 256
+    q = np.linspace(0, 1, 101)
+
+    def qmap(src, ref):   # value -> the reference's value at the same quantile
+        sq, rq = np.quantile(src, q), np.quantile(ref, q)
+        return lambda x: np.interp(x, sq, rq)
+    for lo, hi in ranges:
+        def pick(h, al):
+            d = deg(h); return (al > 200) & (h[..., 1] > 60) & (h[..., 2] > 40) & (d >= lo) & (d <= hi)
+        m, mr = pick(hsv, a[..., 3]), pick(rh, r[..., 3])
+        if m.sum() < 500 or mr.sum() < 500:
+            continue
+        d = deg(hsv); edge = 12
+        w = np.clip(np.minimum(d - (lo - edge), (hi + edge) - d) / edge, 0, 1) * (hsv[..., 1] > 40) * (a[..., 3] > 0)
+        fh, fsat, fv = qmap(d[m], deg(rh)[mr]), qmap(hsv[..., 1][m], rh[..., 1][mr]), qmap(hsv[..., 2][m], rh[..., 2][mr])
+        inside = w > 0
+        nd = d.copy(); nd[inside] = d[inside] + (np.clip(fh(d[inside]), lo - edge, hi + edge) - d[inside]) * w[inside]
+        ns = hsv[..., 1].copy(); ns[inside] += (fsat(ns[inside]) - ns[inside]) * w[inside]
+        nv = hsv[..., 2].copy(); nv[inside] += (fv(nv[inside]) - nv[inside]) * w[inside]
+        hsv[..., 0] = (nd % 360) * 256 / 360; hsv[..., 1] = ns; hsv[..., 2] = nv
+    rgb = cv2.cvtColor(np.clip(hsv, 0, 255).astype(np.uint8), cv2.COLOR_HSV2RGB_FULL)
+    return Image.fromarray(np.dstack([rgb, a[..., 3]]), 'RGBA')
 
 def match_keys(spec, keyed):
     """A keyframe taken from an older sheet can be drawn at another size than the clip frames around it: scale it (about its
@@ -1049,6 +1101,35 @@ def cmd_thin(ref, cap=MAX_FRAMES):
     print(ref, n0, '->', len(keep), keep)
 
 
+
+def hold_face_box(spec, rest_img, base):
+    """spec hold_face [x0, y0, x1, y1] (fractions of the resting PNG, spec rest): that face found on a hold's pose frame
+    (template match of the resting face, at the cell's scale), as a pixel box of the cell, or None."""
+    import cv2
+    if not spec.get('hold_face'):
+        return None
+    rest = Image.open(ROOT / spec['rest']).convert('RGBA')
+    a = np.asarray(rest_img.getchannel('A')) > 100; b = np.asarray(rest.getchannel('A')) > 100
+    ya, xa = np.where(a); yb, xb = np.where(b); k = (ya.max() - ya.min()) / (yb.max() - yb.min())
+    x0, y0, x1, y1 = [v * rest.width for v in spec['hold_face']]
+    box = [round(xa.min() + (x0 - xb.min()) * k), round(ya.min() + (y0 - yb.min()) * k),
+           round(xa.min() + (x1 - xb.min()) * k), round(ya.min() + (y1 - yb.min()) * k)]
+
+    def gray(c):
+        q = np.asarray(c).astype(np.float32); al = q[..., 3:] / 255
+        return cv2.cvtColor((q[..., :3] * al + 128 * (1 - al)).astype(np.uint8), cv2.COLOR_RGB2GRAY)
+    tmpl = gray(rest_img)[box[1]:box[3], box[0]:box[2]]; g = gray(base); best = None
+    for sc in (.9, .95, 1.0, 1.05, 1.1):
+        t = cv2.resize(tmpl, None, fx=sc, fy=sc)
+        if t.shape[0] >= g.shape[0] or t.shape[1] >= g.shape[1]:
+            continue
+        r = cv2.matchTemplate(g, t, cv2.TM_CCOEFF_NORMED); _, v, _, at = cv2.minMaxLoc(r)
+        if best is None or v > best[0]:
+            best = (v, at[0], at[1], t.shape[1], t.shape[0])
+    if not best or best[0] < .35:
+        print('hold_face: no face found', round(best[0], 2) if best else None); return None
+    return [best[1], best[2], best[1] + best[3], best[2] + best[4]]
+
 def cmd_assemble(ref):
     d, spec = load(ref)
     n = len(spec['pick'])
@@ -1099,6 +1180,8 @@ def cmd_assemble(ref):
                 m = Image.new('RGBA', k.size, (0, 0, 0, 0)); m.alpha_composite(k, (dx, dy)); keyed[i] = m
                 report[i] = (report[i], dx, dy)
     keyed = [color_match(k, rest_img) if not is_rest(spec, p) else k for k, p in zip(keyed, spec['pick'])]
+    if spec.get('hue_lock'):
+        keyed = [hue_match(k, rest_img, spec['hue_lock']) if not is_rest(spec, p) else k for k, p in zip(keyed, spec['pick'])]
     # Frames the game jumps between with no step (spec same {"17": 6}: a second thrust starts from the guard it came back
     # to): one drawing, so the jump shows nothing (owner 12/11).
     for i, j in spec.get('same', {}).items():
@@ -1129,6 +1212,9 @@ def cmd_assemble(ref):
         from scipy import ndimage
         for k, (h0, h1) in spec['holds'].items():
             k = int(k); base = keyed[k]; bx, by = pose_xy(base); s0 = np.asarray(soft[k]).astype(np.float32)
+            # hold_face (owner 14/11, Lumi: "ảnh 16, 21 bị sao này?"): the soft clip blinks or ghosts the face while the pose
+            # holds, so the moved mask took a smeared, doubled eye from the clip frame; the face always stays the pose's.
+            face = hold_face_box(spec, rest_img, base)
             for i in range(h0, h1 + 1):
                 hx, hy = pose_xy(keyed[i]); al = shift_rgba(keyed[i], bx - hx, by - hy)
                 moved = np.abs(np.asarray(soft[i]).astype(np.float32) - s0).max(-1) > 40
@@ -1139,8 +1225,15 @@ def cmd_assemble(ref):
                     moved = np.asarray(put(Image.new('L', (CO, CO), 0).convert('RGBA'), mm.convert('RGBA'), round(x * kk), round(y * kk)))[..., 0] > 127
                 else:
                     moved = np.asarray(Image.fromarray((moved * 255).astype(np.uint8)).resize((CO, CO))) > 127
+                if face:
+                    fx0, fy0, fx1, fy1 = face; px, py = round((fx1 - fx0) * .12), round((fy1 - fy0) * .12)
+                    moved[max(0, fy0 - py):fy1 + py, max(0, fx0 - px):fx1 + px] = False
                 m = ndimage.gaussian_filter(moved.astype(np.float32), 4)[..., None]
                 keyed[i] = Image.fromarray((np.asarray(base).astype(np.float32) * (1 - m) + np.asarray(al).astype(np.float32) * m).clip(0, 255).astype(np.uint8), 'RGBA')
+    # same_final {frame: frame}: a living-hold frame whose blend still ghosts (two slightly different drawings of a prop laid
+    # over each other, 14/11 Lumi's staff ring) shows a clean neighbour of the same loop after the blend.
+    for i, j in spec.get('same_final', {}).items():
+        keyed[int(i)] = keyed[j].copy()
     cols = spec.get('cols', 6)
     rows = math.ceil(n / cols)
     sheet = Image.new('RGBA', (cols * CO, rows * CO), (0, 0, 0, 0))

@@ -111,7 +111,9 @@ canvas.play{width:400px;height:400px;border-radius:8px;background:repeating-coni
 .meta{font:12px monospace;color:var(--dim)}
 /* While a combat test plays, the showcases and the sheet player rest so the fight gets every frame (owner 12/11:
    the clip-route ultimate stuttered with them running). */
-body.combat-busy .stage,body.combat-busy canvas.play{visibility:hidden}
+/* They pause, still painted: hidden, their 3840 px sheets were dropped and decoded again (~120 ms) the moment a test ended, a
+   hitch in the fight's last frames (owner 14/11: Mika 3 "thu đao về bị khựng"). */
+body.combat-busy .stage *{animation-play-state:paused!important}
 </style>
 </head>
 <body>
@@ -400,8 +402,19 @@ document.querySelectorAll('[data-do]').forEach(b=>b.onclick=async()=>{
     if(b.dataset.do==='depart')await q.departVictoriousHero();
     if(b.dataset.do==='hit'){const hp=q.state.hp,blow=foeBlow();await q.attack('enemy',100);say(`Bị đánh${blow?' ('+blow+')':''}: mất ${hp-q.state.hp} HP`);return;}
     say('Xong: '+b.textContent);
-  }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');document.body.classList.remove('combat-busy');}
+  }catch(e){say('Lỗi: '+e.message);}finally{b.classList.remove('busy');resumeShowcases();}
 });
+// The showcases start again only once the fight is back at rest and their big sheets are decoded again (owner 14/11: Mika 3
+// "thu đao về bị khựng"; restarted at the strike's end, three 3840 px sheets decoded at once froze the fight for ~120 ms).
+let resumeTimer=0;
+function resumeShowcases(){
+  clearTimeout(resumeTimer);
+  resumeTimer=setTimeout(async()=>{
+    const urls=[...new Set([...document.querySelectorAll('.stage .hero-show')].map(e=>/url\(["']?([^"')]+)/.exec(getComputedStyle(e).backgroundImage)?.[1]).filter(Boolean))];
+    await Promise.all(urls.map(u=>{const im=new Image();im.src=u;return im.decode().catch(()=>{});}));
+    if(!document.querySelector('[data-do].busy'))document.body.classList.remove('combat-busy');
+  },900);
+}
 // An elite's basic blow, what the "Bị đánh" button plays; the list below holds only what it casts on a full rage gauge.
 const foeBlow=()=>{const [tier,key]=$('enemy').value.split(':');return tier==='elite'?M.WORLD.ELITE_BASIC[key]?.name:'';};
 const showFoeRule=()=>{const blow=foeBlow();$('foeRule').textContent=[$('foeSkill').selectedOptions[0]?.title,blow&&`Đòn thường (nút Bị đánh): ${blow}`].filter(Boolean).join(' · ');};

@@ -32,23 +32,23 @@
   {
    "name": "T",
    "start": "throw",
-   "end": "call",
+   "end": "raise",
    "length": 9,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone war hammer with gold bands and a green kite shield with a golden tree emblem strapped to his left forearm, his hand now empty, settles into a wide firm stance and points his empty right hand up and forward toward the upper right, shouting a command, into the pose of the last frame. No hammer anywhere. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single shield, always drawn whole on his left forearm. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone war hammer with gold bands and a green kite shield with a golden tree emblem strapped to his left forearm, his hand now empty, settles into a wide firm stance and lifts his LEFT forearm with the strapped kite shield high above his head toward the upper right, turning the shield's face up to the sky, while his empty right arm drops to his far side behind his body, shouting a command, into the pose of the last frame. No hammer anywhere. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single shield, always drawn whole on his left forearm. No added effects, aura, glow, dust or particles."
   },
   {
    "name": "L",
-   "start": "call",
-   "end": "call",
+   "start": "raise",
+   "end": "raise",
    "length": 13,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone war hammer with gold bands and a green kite shield with a golden tree emblem strapped to his left forearm, holds this commanding pose steadily, pointing up toward the upper right with his empty right hand; only his hair, cape, scarf and leaves keep moving gently in the wind, then everything returns to the pose of the last frame. No hammer anywhere. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single shield, always drawn whole on his left forearm. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone war hammer with gold bands and a green kite shield with a golden tree emblem strapped to his left forearm, holds this pose steadily, the kite shield raised high on his LEFT forearm toward the sky, his empty right arm hidden at his far side; only his hair, cape, scarf and leaves keep moving gently in the wind, then everything returns to the pose of the last frame. No hammer anywhere. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single shield, always drawn whole on his left forearm. No added effects, aura, glow, dust or particles."
   },
   {
    "name": "R",
-   "start": "call",
+   "start": "raise",
    "end": "throw",
    "length": 9,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone war hammer with gold bands and a green kite shield with a golden tree emblem strapped to his left forearm, lowers his pointing arm and swings his empty right hand high up above his head on the far side, fingers spread open, ready to catch, into the pose of the last frame. No hammer anywhere. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single shield, always drawn whole on his left forearm. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone war hammer with gold bands and a green kite shield with a golden tree emblem strapped to his left forearm, brings the raised shield back down in front of his body on his LEFT forearm and swings his empty right hand high up above his head on the far side, fingers spread open, ready to catch, into the pose of the last frame. No hammer anywhere. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single shield, always drawn whole on his left forearm. No added effects, aura, glow, dust or particles."
   },
   {
    "name": "C",
@@ -69,15 +69,15 @@
    "canvas": true,
    "note": "tư thế Codex vẽ (THROW-raw.png), đặt theo cỡ đầu khung nghỉ"
   },
-  "call": {
-   "file": "assets/heroes/forms/earth/clips/f2-skill/keys/call-src.png",
-   "canvas": true,
-   "note": "tư thế Codex vẽ (CALL-raw.png), đặt theo cỡ đầu khung nghỉ"
-  },
   "catch": {
    "file": "assets/heroes/forms/earth/clips/f2-skill/keys/catch-src.png",
    "canvas": true,
    "note": "tư thế Codex vẽ (CATCH-raw.png), đặt theo cỡ đầu khung nghỉ"
+  },
+  "raise": {
+   "file": "assets/heroes/forms/earth/clips/f2-skill/keys/raise-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (RAISE-raw.png), đặt theo cỡ đầu khung nghỉ"
   }
  },
  "game": {
@@ -86,7 +86,7 @@
  },
  "even_size": true,
  "head_lock": true,
- "redo_note": "13/11 owner second redesign \"dùng búa ném lên trời rơi xuống hóa to vào địch rồi gọi búa về\": keys sky (kept), throw, call, recv, catch (f2_skill_keys.py) | 14/11 owner \"2 tay không tay nào cầm khiên mà khiên vẫn ở không trung\": SKY redrawn one-handed (the shield arm stays low), A and B re-clipped",
+ "redo_note": "13/11 owner second redesign \"dùng búa ném lên trời rơi xuống hóa to vào địch rồi gọi búa về\": keys sky (kept), throw, call, recv, catch (f2_skill_keys.py) | 14/11 owner \"2 tay không tay nào cầm khiên mà khiên vẫn ở không trung\": SKY redrawn one-handed (the shield arm stays low), A and B re-clipped | 14/11 owner \"khi dơ tay chỉ thì đang không có gì cầm khiên ... thay bằng vẫn cầm khiên nhưng dơ lên và phát sáng\": key call -> raise (RAISE-raw.png, the shield raised on its own arm, the far hand hidden), T, L and R re-clipped; the glow is the game layer (forms-nori.js)",
  "pick": [
   [
    "key",
@@ -142,7 +142,7 @@
   ],
   [
    "key",
-   "call"
+   "raise"
   ],
   [
    "L",
@@ -237,7 +237,7 @@
   {
    "t": [
     760,
-    1500
+    2200
    ],
    "loop": [
     11,
@@ -247,23 +247,13 @@
   },
   {
    "t": [
-    1500,
-    1800
+    2200,
+    2400
    ],
    "seq": [
     11,
     16,
     17,
-    18
-   ]
-  },
-  {
-   "t": [
-    1800,
-    2400
-   ],
-   "f": [
-    18,
     18
    ]
   },
@@ -278,7 +268,7 @@
    ]
   }
  ],
- "clock_note": "forms-nori.js NORI_THROW: 520 the hammer leaves (throw key), 760-1500 commanding hold, 1400 impact, 1500-1800 the reach, 2400 the catch",
+ "clock_note": "forms-nori.js NORI_THROW: 520 the hammer leaves (throw key), 760-2200 the shield raised and glowing (living hold) while it commands the fall (1400 impact) and calls the hammer back (1750-2400), 2200-2400 the shield comes down and the right hand reaches up, 2400 the catch (owner 14/11)",
  "hold_lock": {
   "frames": [
    11,

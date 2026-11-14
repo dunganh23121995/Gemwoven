@@ -46,25 +46,26 @@
    },
    "note": "ô 3 của sheet cũ (đã duyệt)"
   },
-  "crouch": {
-   "file": "assets/heroes/forms/earth/clips/f1-cast/keys/crouch-src.png",
-   "note": "ngồi thụp sau khiên, đầu vai khuất (Qwen Edit s7, Codex frames 7,5 -> mốc mới)"
+  "windup": {
+   "file": "assets/heroes/forms/earth/clips/f1-cast/keys/windup-src.png",
+   "canvas": true,
+   "note": "tư thế Codex vẽ (WINDUP-raw.png), đặt theo cỡ đầu khung nghỉ"
   }
  },
  "segments": [
   {
    "name": "A",
    "start": "rest",
-   "end": "crouch",
+   "end": "windup",
    "length": 13,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, from his guard stance sinks into a deep, low crouch behind his tower shield: knees bent wide, the shield planted firmly in front of his chest, his head tucked behind its rim, the hammer head lowered to rest on the ground, gathering strength, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left,,, from his guard stance sets himself to charge: he steps his front foot forward, rocks his weight onto his bent back leg, leans in and presses his shoulder against the inside of his tall tower shield, which he swings round to face the foe at chest height, and lets the hammer drop low and trail behind his hip, his head staying clearly visible above the shield rim, into the pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
   },
   {
    "name": "B",
-   "start": "crouch",
+   "start": "windup",
    "end": "rush",
    "length": 13,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, from the low crouch explodes forward out of the deep crouch, his back leg pushing off and extending, rising and lunging behind his tower shield: his shoulder drives into the shield, which leads at chest height in front of him, his body leaning low and forward like a battering ram, the hammer drawn back behind him, into the shield-rush pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left,,, from the coiled run-up stance bursts forward: his back leg drives off and extends, his shoulder rams into the shield, which leads at chest height in front of him, his body low and forward like a battering ram, the hammer still trailing behind him, into the shield-rush pose of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
   },
   {
    "name": "C",
@@ -74,18 +75,18 @@
    "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left, after the shield rush rises and steps back into his calm guard stance of the last frame. Feet adjust minimally between the supplied endpoint stances, staying grounded without sliding or hopping; no turning or scale change. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
   },
   {
-   "name": "H_crouch",
-   "start": "crouch",
-   "end": "crouch",
+   "name": "H_windup",
+   "start": "windup",
+   "end": "windup",
    "length": 13,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left,,  holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left,,,,  holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
   },
   {
    "name": "H_rush",
    "start": "rush",
    "end": "rush",
    "length": 13,
-   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left,,  holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
+   "prompt": "A chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in bronze and gold armour with a white fur collar, a green leaf-pattern tabard and cape, a stone-and-gold war hammer in his right hand and a tall rectangular green tower shield with a golden tree emblem in his left,,,,  holds this pose steadily, the body and the weapon staying still; only the hair, ears, scarf, cape and loose cloth keep moving gently with natural follow-through, then everything settles back into the pose of the last frame. Arms, shoulders and torso drive the action; hair, cloth and cape follow with natural overlapping motion. Preserve his identity, costume, proportions and the single rigid hammer and the single shield, always drawn whole and clearly visible. No added effects, aura, glow, dust or particles."
   }
  ],
  "game": {
@@ -129,7 +130,7 @@
   ],
   [
    "key",
-   "crouch"
+   "windup"
   ],
   [
    "B",
@@ -210,27 +211,27 @@
    "rest"
   ],
   [
-   "H_crouch",
+   "H_windup",
    7,
    2
   ],
   [
-   "H_crouch",
+   "H_windup",
    7,
    4
   ],
   [
-   "H_crouch",
+   "H_windup",
    7,
    6
   ],
   [
-   "H_crouch",
+   "H_windup",
    7,
    8
   ],
   [
-   "H_crouch",
+   "H_windup",
    7,
    10
   ],
@@ -269,10 +270,7 @@
   23
  ],
  "stepMs": 17,
- "pick_note": "A s7 ngồi thụp sâu (mốc Qwen crouch s33: chỉ gạc lộ trên khiên), B s7 bật dậy lao khiên đi trước, mốc rush cũ; Codex frames 6,5 -> 7,5 -> 7,5 -> mốc sâu hơn; roles: cast1 và cast2 cùng về thế ngồi thụp (giữ sống), cast4 lao khiên giữ sống tới cast5",
- "edits": {
-  "crouch": "Change only his pose: he crouches extremely low behind his tall tower shield, almost kneeling, knees fully bent, the shield planted on the ground in front of him, his whole head and shoulders hidden behind the shield so only his golden antler tips show above its top rim, the hammer lowered to the ground behind him, coiled to charge. Keep exactly the same character, costume, colours, hammer and shield design, the same size and facing, flat magenta background. No motion lines, shadow or effects."
- },
+ "pick_note": "A s7 từ thế thủ vào thế lấy đà (mốc WINDUP 14/11: vai tì khiên, khiên chĩa về địch, búa kéo thấp sau hông), B s7 bật lao khiên, mốc rush cũ; roles: cast1 và cast2 cùng về thế lấy đà (giữ sống), cast4 lao khiên giữ sống tới cast5",
  "end": 23,
  "holds": {
   "7": [
@@ -309,5 +307,14 @@
   27,
   30,
   32
- ]
+ ],
+ "size_lock": "body",
+ "why_size_lock": "owner 14/11 ('thu người lại trông không được đẹp'): the rise out of the old crouch drew him ~15% taller for two frames",
+ "redo_note": "14/11 (owner: \"Nori1. Khi tung tuyệt kỹ có thu người lại trông không được đẹp\"): the low crouch hidden behind the shield (Qwen key \"crouch\") replaced by a tall braced stance, shield planted, hammer over the shoulder (Codex key BRACE, f1_cast_keys.py); clips A, B and the living hold redrawn. Then (owner: \"Nori 1 không được. Tôi vẫn muốn là dùng khiên để huých vào địch ... Tôi muốn tư thế lấy đà để cầm khiên lao vào địch\"): BRACE (hammer over the shoulder) replaced by WINDUP, the run-up to the shield charge: shoulder in the shield, hammer trailing.",
+ "sharpen_note": "The stone-and-gold war hammer is ONE whole rigid weapon held in his right hand in every cell, never missing, never melted into a smear: his fist always grips the BOTTOM END of the long straight handle by the golden pommel, the stone head at the other end. Where the soft clip blurs or loses the hammer while he trails it low behind him through the run-up and the shield rush, draw it whole in his hand, between its positions in the neighbouring cells (held low behind his hip, the head trailing near the ground). The tall tower shield stays whole in his left hand. The hammer head is exactly the one in Image 2 in every cell: the same big rectangular grey stone block with gold bands and the golden tree emblem, the same size relative to his head; never smaller, thinner, rounder, bent or stretched, even where the soft clip shrinks or warps it (owner 14/11 circled cells where the clip deformed it). The handle stays straight and the same length and thickness as in Image 2.",
+ "why_sharpen_note": "owner 14/11 (\"Búa lỗi này\"): the first BRACE gripped the hammer by its neck; clip B loses the hammer mid-swing",
+ "sharpen_sheet_notes": {
+  "2": "In every cell where he lunges behind the shield, the hammer trails behind him at its FULL length: his fist at the bottom end of the long handle by the golden pommel, the whole straight handle visible between his fist and the stone head, as long as in Image 2; never a short handle, never the hand next to the head (Codex round 5). His shoulder drives forward into the shield, the shield pushed ahead at chest height: a forceful shove, not an open stretch.",
+  "5": "In every cell where he lunges behind the shield, the hammer trails behind him at its FULL length: his fist at the bottom end of the long handle by the golden pommel, the whole straight handle visible between his fist and the stone head, as long as in Image 2; never a short handle, never the hand next to the head (Codex round 5). His shoulder drives forward into the shield, the shield pushed ahead at chest height: a forceful shove, not an open stretch."
+ }
 }

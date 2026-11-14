@@ -243,7 +243,7 @@ async function noriWardenForm1(){
 // the stun); 1750 the renewal stream (D); 2300 the walls sink, guard. Sheet `skill` on its own clock (clips/f3-skill).
 async function noriAegisUltimate(){
   if(state.hp<=0)return;
-  noriWarmSheets(3);noriWarmSounds(['f2-strike','slam','bell','roots']);
+  noriWarmSheets(3);noriWarmSounds(['shield-bash','creak','f2-strike','slam','bell','roots']);
   const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   const me=noriHeroBody(),foe=noriFoeBody();
@@ -252,7 +252,10 @@ async function noriAegisUltimate(){
     combatVoice('hero','cast');popActorSkill('hero',HEROES.earth.skill,true,pending);
     setSpriteFrame('hero','skill',0);
     // The monumental shield rises beside him: 1.25x his height (the drawing fills 86% of its cell), out in front of him.
+    // 400: the shield is driven into the ground (owner 14/11: "khi dậm khiên xuống để tạo khiên lớn ... muốn có âm thanh"):
+    // his own form-1 shield bash bites into the earth, and the old wood groans as the giant shield grows out of it.
     await at(400);root.dataset.ragePhase='aegis';
+    playCastSound('earth','shield-bash',{volume:.7,pan:-.05});noriCue(pending,'creak',90,.4,.1);
     const tall=Math.max(me.height*1.15,Math.min(me.height*1.25,me.ground-me.sceneHeight*.08)),width=tall/.86;
     const shieldX=Math.min(me.sceneWidth-width*.3,me.right+width*.12);
     const shield=noriStrip('bigshield2',{x:shieldX,feet:me.ground+2,width,className:'form-3'});
@@ -278,8 +281,12 @@ async function noriAegisUltimate(){
     const want=Math.max(foeNow.width/.44,foeNow.height*1.05/.72);
     noriLock('citadel',foeNow,want,me.sceneWidth,{front:false,cls:'form-3'}).play(NORI_LOCK,220,pending);
     noriLock('antlerlock',foeNow,want,me.sceneWidth,{front:true,cls:'form-3 antler'}).play(NORI_LOCK,220,pending);
+    // The burst lands like a blow (owner 14/11: "lúc chưởng trúng địch sao địch k có hiệu ứng giống lúc bị đánh thường"): the
+    // basic attack's hurt sheet and impact star, also on a foe that shrugs off the stun (a boss: PHONG ẤN, no squeeze).
+    if(state.enemyHp>0){setSpriteAction('enemy','hurt',560);combatV3Impact('enemy','earth',1,true,pending);}
     noriStun(kit,pending,{jolt:false});
     if(!state.noriSealFree&&!reduced)pending.push(noriSqueeze(target,420));
+    else if(!reduced&&state.enemyHp>0)pending.push(animate(target,[{translate:'0px 0px'},{translate:'14px -4px',offset:.25},{translate:'-2px 0px',offset:.6},{translate:'0px 0px'}],{duration:420,easing:'ease-out'}).catch(()=>{}));
     await at(1750);root.dataset.ragePhase='renewal';noriRenewalStream(me,pending);noriRenewal(kit,pending);
     await at(2300);root.dataset.ragePhase='recover';
     await at(2800);await Promise.all(pending);
@@ -293,7 +300,8 @@ async function noriAegisUltimate(){
 // ---- Ngọc Thụ Hộ Thể (four stars): the hammer throw (owner 13/11: "dùng búa ném lên trời rơi xuống hóa to vào địch rồi
 // gọi búa về") ------------------------------------------------------------------------------------------------------------
 // 0 the hammer rises overhead (no opening creak: owner 13/11 "lúc tung tuyệt kỹ ban đầu có âm thanh gì ... bỏ đi"); 520 he hurls it into the sky (the swing), it spins up off the stage and his hand
-// is empty; he points it down onto the foe, a shadow gathering under it; 1120-1400 it plunges, growing into a giant
+// is empty; he raises his shield and it glows, commanding it down onto the foe (owner 14/11: the shield, not an empty
+// pointing hand, calls the hammer), a shadow gathering under it; 1120-1400 it plunges, growing into a giant
 // hammer, head first; 1400 it lands on the foe (B, the stun: dust, cracks both ways, the shake); 1750 it shrinks and
 // rises, 1950-2400 spins back to his raised hand (one whoosh a turn); 2400 he catches it (the thunk) and the renewal
 // flows into him (D). Sheet `skill` (clips/f2-skill, its own clock); the flying hammer is ART.heroFx.earth.hammer2.
@@ -301,7 +309,19 @@ const NORI_THROW={launch:520,fall:1120,impact:1400,lift:1750,fly:1950,catch:2400
   // measured on the skill sheet (shares of its cell): the hammer leaving his right hand in the last frame that draws it
   // (its centre, tilt and drawn height; one-handed since 14/11, the shield arm stays low), and the hammer caught overhead
   // (its centre), drawn .32 of the cell tall
-  leave:{x:.37,y:.2,angle:0,height:.26},caught:{x:.433,y:.36},height:.32};
+  leave:{x:.37,y:.2,angle:0,height:.26},caught:{x:.433,y:.36},height:.32,
+  // the raised shield's centre on the living hold (frames 11-15) and its drawn height, shares of the cell (owner 14/11)
+  shield:{x:.675,y:.412,size:.21},lower:2200};
+// The raised shield glows as it calls the hammer (owner 14/11: "vẫn cầm khiên nhưng dơ lên và phát sáng khiến như kiểu khiên
+// gọi búa về"): a jade light on the shield's face, a soft breath while it commands the fall, flaring as the hammer comes back.
+function noriShieldGlow(){
+  if(reduced)return null;const T=NORI_THROW,c=noriCellPoint(T.shield.x,T.shield.y),size=c.cell*T.shield.size*1.55;
+  const node=document.createElement('span');node.className='nori-fx nori-shield-glow';node.setAttribute('aria-hidden','true');
+  node.style.cssText=`left:${c.x}px;top:${c.y}px;width:${size}px;height:${size}px`;$('combatEffects').append(node);
+  const breath=node.animate([{opacity:.55,scale:'.9'},{opacity:.85,scale:'1.04'},{opacity:.55,scale:'.9'}],{duration:620,iterations:Infinity,easing:'ease-in-out'});
+  return {node,flare(){breath.cancel();node.animate([{opacity:.7,scale:'1'},{opacity:1,scale:'1.25'},{opacity:.85,scale:'1.1'}],{duration:260,fill:'forwards',easing:'ease-out'});},
+    out(){return node.animate([{opacity:getComputedStyle(node).opacity},{opacity:0,scale:'.7'}],{duration:180,fill:'forwards'}).finished.catch(()=>{}).finally(()=>node.remove());}};
+}
 // A point of the shown hero sheet's cell in scene pixels (the cell as drawn on screen, transforms included).
 function noriCellPoint(u,v){
   const scene=$('scene').getBoundingClientRect(),box=actor('hero').querySelector('.sprite-body').getBoundingClientRect();
@@ -334,7 +354,7 @@ async function noriHammerThrowUltimate(){
   const start=performance.now(),pending=[],root=actor('hero'),target=actor('enemy'),oldZ=root.style.zIndex,kit=progressionKit('earth');
   const at=async ms=>{if(!reduced)await wait(Math.max(0,start+ms-performance.now()));};
   const me=noriHeroBody(),foe=noriFoeBody(),T=NORI_THROW;
-  let thrown=null,giant=null,shadow=null;
+  let thrown=null,giant=null,shadow=null,glow=null;
   root.dataset.ragePhase='chant';root.dataset.noriUltimate='2';root.classList.add('combat-v3-acting');root.style.zIndex='4';
   try{
     combatVoice('hero','cast');popActorSkill('hero',HEROES.earth.skill,true,pending);
@@ -353,6 +373,8 @@ async function noriHammerThrowUltimate(){
       shadow.animate([{opacity:0,transform:'scale(.35)'},{opacity:.75,transform:'scale(1)'}],{duration:T.impact-760,delay:Math.max(0,start+760-performance.now()),easing:'ease-in',fill:'forwards'});
     }
     noriCue(pending,'f2-fall',Math.max(0,start+T.impact-420-performance.now()),.6,.3);
+    // 760: the shield is raised and starts to glow (it commands the fall and later calls the hammer back).
+    await at(760);glow=noriShieldGlow();
     // 1120-1400: it plunges onto the foe head first, growing into a giant hammer as it falls.
     await at(T.fall);root.dataset.ragePhase='fall';
     // centred on the foe; its head (as wide as the drawing) kept inside the stage: shrunk about that centre, never under 60%
@@ -372,7 +394,8 @@ async function noriHammerThrowUltimate(){
     if(giant&&!reduced)pending.push(animate(giant.node,[{translate:'0 0'},{translate:'0 -7px',offset:.35},{translate:'0 0'}],{duration:180,easing:'ease-out'}).catch(()=>{}));
     if(noriStun(kit,pending,{jolt:false})&&!state.noriSealFree&&!reduced)pending.push(wait(40).then(()=>noriSqueeze(target,520)));
     // 1750: it shrinks and rises off the foe; 1950-2400 it spins back to his raised hand.
-    await at(T.lift);root.dataset.ragePhase='recall';
+    await at(T.lift);root.dataset.ragePhase='recall';glow?.flare();
+    pending.push(wait(reduced?0:Math.max(0,start+T.lower-performance.now())).then(()=>{const g=glow;glow=null;return g?.out();}));
     noriCue(pending,'f2-return',Math.max(0,start+T.catch-510-performance.now()),.5,.1);
     if(giant){
       const g=giant,lift=k=>({x:foe.x,y:noriLerp(landY,landY-G*.25,k),height:G*noriLerp(1,.42,k),angle:180+k*180});
@@ -389,7 +412,7 @@ async function noriHammerThrowUltimate(){
     await at(3000);await Promise.all(pending);
     return {amount:0,blocked:0};
   }finally{
-    await Promise.allSettled(pending);thrown?.node.remove();giant?.node.remove();shadow?.remove();
+    await Promise.allSettled(pending);thrown?.node.remove();giant?.node.remove();shadow?.remove();glow?.node.remove();
     delete root.dataset.ragePhase;delete root.dataset.noriUltimate;root.classList.remove('combat-v3-acting');root.style.zIndex=oldZ;target.style.translate='';
     $('combatEffects').querySelectorAll('.nori-fx').forEach(n=>n.remove());document.querySelectorAll('.actor > .nori-fx.under').forEach(n=>n.remove());setSpriteAction('hero','idle');setSpriteAction('enemy','idle');
   }

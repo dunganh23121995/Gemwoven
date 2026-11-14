@@ -1,0 +1,17 @@
+{
+  "backend": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "at": "2026-11-14T05:11:07Z",
+  "refs": [
+    "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\form-2\\rig\\combat\\rest.png"
+  ],
+  "prompt": "Image 1 is the exact character: a chibi young knight with messy brown hair, small golden antlers with green leaves and green eyes, in silver plate armour with gold trim, a green scarf, a green leaf-pattern tabard and cape, a grey stone-and-gold war hammer in his right hand and a green kite shield with a golden tree emblem strapped to his left forearm. Keep his identity, face, costume, colours, proportions, line style and the exact hammer and shield designs from Image 1, at the same size and camera distance as Image 1, three-quarter view facing screen-right like Image 1. Do NOT mirror him: the hammer and the shield stay on the same arms as in Image 1, the hammer always ONE whole rigid weapon.\n\nDraw ONE single full-body sprite of him raising his kite shield high to call his flying hammer back: his LEFT forearm, with the green kite shield with the golden tree emblem strapped to it, lifted up and forward above his head toward the upper right, the shield's face turned up toward the sky at about 45 degrees, its whole front and the golden tree emblem clearly visible; the shield stays strapped to his LEFT forearm exactly as in Image 1, the same size and design; his RIGHT arm is the far arm, empty and low at his far side, HIDDEN behind his body (do not draw the right hand); feet planted wide and firm, chest open, looking up toward the shield and the sky, a determined shout, mouth open; NO hammer anywhere in the picture. A clear, readable, powerful silhouette for a small phone screen; the whole body commits to the motion. Eyes open.\n\nBackground: 100% solid flat magenta #FF00FF, no gradient, no floor, no shadow. Centered, the whole character, hammer and shield fully inside the image with a wide magenta margin on all four sides. Clean anime game sprite, crisp lines, same rendering as Image 1. No motion blur, impact flash, dust, cracks, glow, particles, speed lines, text or labels.",
+  "precheck": {
+    "verdict": "pass",
+    "problems": [],
+    "summary": "The candidate matches the prompt: one full-body chibi knight with the same antlers, hair, armour, green cape and tabard, and the golden-tree kite shield raised high on the arm that holds it. No hammer is visible, the background is flat magenta with clear margins on all sides, and the character is fully in frame with open eyes and a shouting mouth. I see no clear defects.",
+    "model": "claude-haiku-5-5",
+    "usd": 0.000646
+  }
+}

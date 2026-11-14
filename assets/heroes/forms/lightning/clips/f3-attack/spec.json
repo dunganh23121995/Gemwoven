@@ -291,5 +291,20 @@
   22,
   24,
   26
- ]
+ ],
+ "hold_face": [
+  0.4004,
+  0.3516,
+  0.5859,
+  0.5078
+ ],
+ "hue_lock": [
+  [
+   265,
+   355
+  ]
+ ],
+ "why_hue_lock": "owner 14/11 \"Lumi bị thay đổi màu sắc giữa các ảnh\": Codex redrew each batch on its own and the robe drifted from the approved violet to red-magenta (Codex review 14/11); the robe hues are brought to the resting frame",
+ "feet_lock": "torso",
+ "why_feet_lock": "owner 14/11 review with Codex: the clip crept sideways and snapped back onto the key (form 3 attack 19->20, skill 0->1->2, form 1 hurt 6); the body follows the line between its keys"
 }

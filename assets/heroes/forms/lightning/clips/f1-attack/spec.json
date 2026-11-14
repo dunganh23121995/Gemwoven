@@ -275,5 +275,27 @@
   24,
   27,
   29
- ]
+ ],
+ "hold_face": [
+  0.4297,
+  0.4199,
+  0.5957,
+  0.5664
+ ],
+ "hue_lock": [
+  [
+   265,
+   355
+  ]
+ ],
+ "why_hue_lock": "owner 14/11 \"Lumi bị thay đổi màu sắc giữa các ảnh\": Codex redrew each batch on its own and the robe drifted from the approved violet to red-magenta (Codex review 14/11); the robe hues are brought to the resting frame",
+ "sharpen_note": "Image 3 is a close-up of the staff head in the resting frame: copy it exactly in every cell where the staff shows. The staff head is a thin gold ring with gold spikes (one long spike on top, small spikes around the ring) on a dark shaft, and the ring is HOLLOW: inside it there is only flat background, with a thin violet rim along its inner edge and one small white sparkle in the middle. Never a solid orb: no blue, dark, black, rainbow or glowing sphere filling the ring, no gem inside it. The staff is always held in her hand in every cell, never missing.",
+ "sharpen_refs": [
+  "assets/heroes/forms/lightning/clips/staff-head-f1.png"
+ ],
+ "why_sharpen_refs": "owner 14/11 (Codex review 2): the staff head / shoulder fans drifted from the resting design; close-up of the rest sent as Image 3",
+ "why_same_22": "owner 14/11 (Codex rounds 3-4): the pull hold frame 22 ghosted a doubled staff ring after the blend; it shows frame 24",
+ "same_final": {
+  "22": 24
+ }
 }

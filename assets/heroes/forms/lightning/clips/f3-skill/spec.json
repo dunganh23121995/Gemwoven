@@ -405,5 +405,29 @@
   37,
   40,
   42
- ]
+ ],
+ "hold_face": [
+  0.4004,
+  0.3516,
+  0.5859,
+  0.5078
+ ],
+ "hue_lock": [
+  [
+   265,
+   355
+  ]
+ ],
+ "why_hue_lock": "owner 14/11 \"Lumi bị thay đổi màu sắc giữa các ảnh\": Codex redrew each batch on its own and the robe drifted from the approved violet to red-magenta (Codex review 14/11); the robe hues are brought to the resting frame",
+ "feet_lock": "torso",
+ "why_feet_lock": "owner 14/11 review with Codex: the clip crept sideways and snapped back onto the key (form 3 attack 19->20, skill 0->1->2, form 1 hurt 6); the body follows the line between its keys",
+ "sharpen_note": "Image 3 is a close-up of her chest and shoulders in the resting frame. The soft clip (Image 1) wrongly grew her gold shoulder feathers into big spread wings beside her shoulders and arms: do NOT copy those wings. In every cell draw only the small gold feather pauldrons of Image 3, folded tight on top of each shoulder, no wider than the shoulder itself, same size and number of feathers as Image 3. Where the soft clip shows wing feathers, draw her hair, sleeve, cape or plain background instead. No wings, no fanned gold leaves anywhere on her back, shoulders or arms.",
+ "sharpen_refs": [
+  "assets/heroes/forms/lightning/clips/shoulders-f3.png"
+ ],
+ "why_sharpen_refs": "owner 14/11 (Codex review 2): the staff head / shoulder fans drifted from the resting design; close-up of the rest sent as Image 3",
+ "sharpen_sheet_notes": {
+  "1": "The gold feathers on her shoulders are SHORT, no longer than her shoulder is wide, layered flat against the shoulder like the pauldrons in Image 3: never long feathers fanning out behind her neck or beside her arms (Codex round 5: still read as two wings).",
+  "5": "The gold feathers on her shoulders are SHORT, no longer than her shoulder is wide, layered flat against the shoulder like the pauldrons in Image 3: never long feathers fanning out behind her neck or beside her arms (Codex round 5: still read as two wings)."
+ }
 }

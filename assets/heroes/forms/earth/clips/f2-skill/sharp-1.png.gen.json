@@ -2,7 +2,7 @@
   "backend": "codex",
   "model": "gpt-6.1-sol",
   "effort": "low",
-  "at": "2026-11-13T17:50:11Z",
+  "at": "2026-11-14T05:16:44Z",
   "refs": [
     "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\clips\\f2-skill\\soft-1.png",
     "D:\\Project\\Gemwoven\\assets\\heroes\\forms\\earth\\clips\\f2-skill\\keys\\rest.png"
@@ -11,8 +11,8 @@
   "precheck": {
     "verdict": "pass",
     "problems": [],
-    "summary": "The candidate is a 3x2 grid of six chibi poses on a flat magenta background with no visible borders, text, or effects. The character design (antlers, leaf circlet, green cloak, tree shield, silver armour, stone hammer) matches the reference, and the limbs look anatomically sound. The raised hammer in the top-left cell sits close to the top edge, as in the reference sheet, but is not clearly cropped.",
+    "summary": "The candidate is a 3x2 grid of six cells on a flat magenta background, with no visible text, borders, or extra figures. The character matches the reference design (brown hair, antler headpiece, green cape, gold-trimmed armour, tree shield, stone hammer) and the six poses follow the reference sheet. The raised hammer in the top-left cell comes close to the top edge but does not appear cropped. Pose and position drift between cells is minor and does not count as a defect under this filter.",
     "model": "claude-haiku-5-5",
-    "usd": 0.000746
+    "usd": 0.00067
   }
 }

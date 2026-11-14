@@ -85,6 +85,8 @@
     function tick(now){
       if(stopped)return;timer=requestAnimationFrame(tick);
       if(stage.isConnected)tick.seen=true;else if(tick.seen){stopped=true;return;}   // the screen was re-rendered
+      // The hero studio's combat test runs: the showcase rests on its frame, still painted (its sheets stay decoded).
+      if(document.body.classList.contains('combat-busy'))return;
       if(playing){
         // An action may hold some frames longer (show.sheets.timing: ms per frame).
         const p=playing,hold=show.sheets.timing?.[p.src]?.[Math.max(0,p.frame-1)]??p.ms;if(p.frame&&now-p.last<hold)return;p.last=now;stage.style.backgroundPosition=cell(p.frame);

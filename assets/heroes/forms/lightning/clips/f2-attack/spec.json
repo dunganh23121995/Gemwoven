@@ -335,5 +335,26 @@
   28,
   31,
   33
- ]
+ ],
+ "hold_face": [
+  0.4102,
+  0.332,
+  0.5859,
+  0.4785
+ ],
+ "hue_lock": [
+  [
+   265,
+   355
+  ]
+ ],
+ "why_hue_lock": "owner 14/11 \"Lumi bị thay đổi màu sắc giữa các ảnh\": Codex redrew each batch on its own and the robe drifted from the approved violet to red-magenta (Codex review 14/11); the robe hues are brought to the resting frame",
+ "sharpen_note": "Image 3 is a close-up of the staff head in the resting frame: copy it exactly in every cell where the staff shows. The staff head is a thin gold ring with gold spikes (one long spike on top, small spikes around the ring) on a dark shaft, and the ring is HOLLOW: inside it there is only flat background, with a thin violet rim along its inner edge and one small white four-point star floating in the middle. Never a solid orb: no blue, dark, black, rainbow or glowing sphere filling the ring, no gem inside it. The staff is always held in her hand in every cell, never missing.",
+ "sharpen_refs": [
+  "assets/heroes/forms/lightning/clips/staff-head-f2.png"
+ ],
+ "why_sharpen_refs": "owner 14/11 (Codex review 2): the staff head / shoulder fans drifted from the resting design; close-up of the rest sent as Image 3",
+ "sharpen_sheet_notes": {
+  "0": "The soft clip lost the staff in cell 4 (bottom left) and cell 5 (bottom middle): draw the full staff in both, gripped in her hands, as it swings from cell 3 (held upright beside her on the right of the picture, head up) to cell 6 (lifted with both hands over her left shoulder, head pointing up-left). Cell 4: both hands together in front of her chest, the staff almost upright, its head above the hat brim on the right. Cell 5: hands raised near her face, the staff tilted to the upper left, its head beside the hat crown. Same staff design and length as in cells 3 and 6; the hat and face stay unchanged."
+ }
 }

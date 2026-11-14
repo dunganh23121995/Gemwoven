@@ -464,5 +464,18 @@
   43,
   46,
   48
- ]
+ ],
+ "hold_face": [
+  0.4297,
+  0.4199,
+  0.5957,
+  0.5664
+ ],
+ "hue_lock": [
+  [
+   265,
+   355
+  ]
+ ],
+ "why_hue_lock": "owner 14/11 \"Lumi bị thay đổi màu sắc giữa các ảnh\": Codex redrew each batch on its own and the robe drifted from the approved violet to red-magenta (Codex review 14/11); the robe hues are brought to the resting frame"
 }

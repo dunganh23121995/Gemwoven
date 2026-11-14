@@ -106,6 +106,19 @@ function spriteInset(el,sheet,box){
   const W=root.offsetParent?.clientWidth||0,right=root.offsetLeft+(box.left+sheet.span[1]*box.width)*root.offsetWidth;
   return W?Math.max(0,Math.round(right-(W-Math.max(4,W*COMBAT_BOSS_EDGE)))):0;
 }
+// While another sheet plays, the resting sheet stays painted at its own size, nearly invisible, behind the body
+// (owner 14/11: six-star Mika "thu đao về bị khựng"): unpainted for the length of a strike, the browser drops its decoded
+// pixels and the way back to rest waited ~130 ms on a 3072 px sheet being decoded again.
+function spriteKeepIdle(el,sheet){
+  const root=el.closest('.actor');if(!root||reduced)return;
+  const idle=spriteDefinition(el.dataset.family,el.dataset.key,'idle').sheet;
+  let keep=root.querySelector(':scope > .sprite-keep-idle');
+  if(!idle||idle===sheet){if(keep)keep.hidden=true;return;}
+  if(!keep){keep=document.createElement('span');keep.className='sprite-keep-idle';keep.setAttribute('aria-hidden','true');el.before(keep);}
+  const cell=spriteSheetCell(idle,0),image=`url('${cell.src}')`;if(!cell.src){if(keep)keep.hidden=true;return;}
+  if(keep.dataset.src!==cell.src){keep.dataset.src=cell.src;keep.style.backgroundImage=image;keep.style.backgroundSize=cell.size;keep.style.backgroundPosition=cell.position;}
+  keep.hidden=false;
+}
 function spriteApply(el,action,index){
   if(!el)return;
   spriteWarm(el.dataset.family,el.dataset.key);
@@ -136,6 +149,7 @@ function spriteApply(el,action,index){
   // The idle's own cross-fade is always drawn at the idle's size (a resized fading pose is an action's).
   else for(const k of ['--tw-l','--tw-t','--tw-w'])el.style.removeProperty(k);
   el.style.setProperty('--tween-img',el.style.backgroundImage);el.style.setProperty('--tween-size',el.style.backgroundSize);el.style.setProperty('--cell-pos',el.style.backgroundPosition);
+  spriteKeepIdle(el,sheet);
   // Noct moves like black mist: outside idle, each pose change leaves the previous pose
   // dissolving over the new one instead of snapping (idle has its own continuous cross-fade).
   if(el.dataset.key==='shadow'&&el.closest('.actor')&&!reduced&&previous.image&&(previous.frame!==String(frame)||previous.action!==action)&&action!=='idle'){
